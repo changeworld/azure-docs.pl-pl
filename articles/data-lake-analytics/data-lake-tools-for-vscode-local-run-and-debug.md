@@ -36,7 +36,7 @@ Tylko instalacje systemu Windows Azure Data Lake Tools for Visual Studio obsług
 
     ![Zainstaluj BuildTools](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2,2 Aby zainstalować **Win10SDK 10240**, kliknij sdksetup. exe w folderze LocalRunDependency/win10sdk_ 10.0.10240 _2, a następnie postępuj zgodnie z instrukcjami kreatora.  
+   2,2 Aby zainstalować **Win10SDK 10240**, kliknij sdksetup. exe w folderze LocalRunDependency/Win10SDK_10.0.10240 _2, a następnie postępuj zgodnie z instrukcjami kreatora.  
 
     ![Zainstaluj program Win10SDK 10240](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
@@ -59,7 +59,8 @@ W przypadku użytkownika pierwszego czasu Użyj **ADL: Pobierz pakiet Run Local*
    ![Data Lake narzędzia dla Visual Studio Code wybierz pozycję lokalne](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
 5. Po przesłaniu zadania można wyświetlić szczegóły dotyczące przesyłania. Aby wyświetlić szczegóły dotyczące przesłania, wybierz pozycję **jobUrl** w oknie **danych wyjściowych** . Możesz również wyświetlić stan przesłania zadania z konsoli cmd. Wprowadź **7** w konsoli cmd, aby poznać więcej szczegółów zadań.
 
-   @no__t 0Data Lake Tools for Visual Studio Code Local Run Output @ no__t-1 @ no__t-2Data Lake Tools for Visual Studio Code Local Run cmd status @ no__t-3 
+   ![Data Lake Tools for Visual Studio Code dane wyjściowe uruchamiania lokalnego](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
+   ![Data Lake narzędzia dla Visual Studio Code stanu lokalnego uruchomienia cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
 
 
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Rozpocznij debugowanie lokalne dla zadania U-SQL  
@@ -68,7 +69,7 @@ Dla użytkownika pierwszego czasu:
 1. Użyj **ADL: Pobierz pakiet Run Local** w celu pobrania lokalnych pakietów Run, jeśli nie [skonfigurowano lokalnego środowiska uruchomieniowego U-SQL](#set-up-the-u-sql-local-run-environment).
 2. Zainstaluj zestaw .NET Core SDK 2,0 zgodnie z opisem w polu komunikat, jeśli nie jest zainstalowany.
  
-   @ no__t-1reminder instaluje dotnet @ no__t-2
+  ![przypomnień instaluje](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png) dotnet
 3. Zainstaluj C# program dla Visual Studio Code zgodnie z opisem w oknie komunikatu, jeśli nie jest zainstalowany. Kliknij przycisk **Instaluj** , aby kontynuować, a następnie uruchom ponownie programu vscode.
 
     ![Przypomnienie do zainstalowaniaC#](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)

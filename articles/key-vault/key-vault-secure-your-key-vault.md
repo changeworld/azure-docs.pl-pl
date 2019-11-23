@@ -51,7 +51,7 @@ Aplikacje uzyskują dostęp do płaszczyzn za pomocą punktów końcowych. Kontr
 
 W poniższej tabeli przedstawiono punkty końcowe dla punktów zarządzania i płaszczyzny danych.
 
-| Dostęp do programu @ no__t-0plane | Punkty końcowe dostępu | Operations | Dostęp do mechanizmu no__t-0control |
+| &nbsp;płaszczyzny dostępu | Punkty końcowe dostępu | Operacje | Mechanizm kontroli dostępu&nbsp; |
 | --- | --- | --- | --- |
 | Płaszczyzna zarządzania | **Cały świat:**<br> management.azure.com:443<br><br> **Azure Chiny 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> management.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> management.microsoftazure.de:443 | Tworzenie, odczytywanie, aktualizowanie i usuwanie magazynów kluczy<br><br>Ustawianie zasad dostępu Key Vault<br><br>Ustawianie tagów Key Vault | Azure Resource Manager RBAC |
 | Płaszczyzna danych | **Cały świat:**<br> &lt;nazwa_magazynu&gt;.vault.azure.net:443<br><br> **Azure Chiny 21Vianet:**<br> &lt;nazwa_magazynu&gt;.vault.azure.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> &lt;nazwa_magazynu&gt;.vault.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> &lt;nazwa_magazynu&gt;.vault.microsoftazure.de:443 | Klucze: Odszyfruj, Szyfruj,<br> odpakowywanie, zawijanie, weryfikowanie, podpisywanie,<br> Pobieranie, wyświetlanie, aktualizowanie, tworzenie,<br> Importuj, Usuń, Utwórz kopię zapasową, Przywróć<br><br> Wpisy tajne: pobieranie, wyświetlanie, Ustawianie, usuwanie | Zasady dostępu Key Vault |
@@ -60,7 +60,7 @@ W poniższej tabeli przedstawiono punkty końcowe dla punktów zarządzania i p�
 
 Na płaszczyźnie zarządzania należy używać RBAC (Access Control oparte na rolach) do autoryzacji operacji, które może wykonać obiekt wywołujący. W modelu RBAC Każda subskrypcja platformy Azure ma wystąpienie usługi Azure AD. Przyznasz użytkownikom, grupom i aplikacjom dostęp do tego katalogu. Dostęp jest udzielany do zarządzania zasobami w ramach subskrypcji platformy Azure, która używa modelu wdrażania Azure Resource Manager. Aby udzielić dostępu, użyj [Azure Portal](https://portal.azure.com/), [interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md), [Azure PowerShell](/powershell/azureps-cmdlets-docs)lub [interfejsów API REST Azure Resource Manager](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
-Utwórz magazyn kluczy w grupie zasobów i Zarządzaj dostępem za pomocą usługi Azure AD. Użytkownicy lub grupy mogą zarządzać magazynami kluczy w grupie zasobów. Przyznanie dostępu do określonego poziomu zakresu przez przypisanie odpowiednich ról RBAC. Aby udzielić użytkownikowi dostępu do zarządzania magazynami kluczy, należy przypisać wstępnie zdefiniowaną rolę `key vault Contributor` do użytkownika w określonym zakresie. Następujące poziomy zakresów można przypisać do roli RBAC:
+Utwórz magazyn kluczy w grupie zasobów i Zarządzaj dostępem za pomocą usługi Azure AD. Użytkownicy lub grupy mogą zarządzać magazynami kluczy w grupie zasobów. Przyznanie dostępu do określonego poziomu zakresu przez przypisanie odpowiednich ról RBAC. Aby udzielić użytkownikowi dostępu do zarządzania magazynami kluczy, należy przypisać do użytkownika wstępnie zdefiniowaną rolę `key vault Contributor` w określonym zakresie. Następujące poziomy zakresów można przypisać do roli RBAC:
 
 - **Subskrypcja**: rola RBAC przypisana na poziomie subskrypcji ma zastosowanie do wszystkich grup zasobów i zasobów w ramach tej subskrypcji.
 - **Grupa zasobów**: rola RBAC przypisana na poziomie grupy zasobów ma zastosowanie do wszystkich zasobów w tej grupie zasobów.
@@ -69,7 +69,7 @@ Utwórz magazyn kluczy w grupie zasobów i Zarządzaj dostępem za pomocą usłu
 Istnieje kilka wstępnie zdefiniowanych ról. Jeśli wstępnie zdefiniowana rola nie spełnia Twoich potrzeb, możesz zdefiniować własną rolę. Aby uzyskać więcej informacji, zobacz [RBAC: role wbudowane](../role-based-access-control/built-in-roles.md).
 
 > [!IMPORTANT]
-> Jeśli użytkownik ma uprawnienia `Contributor` do płaszczyzny zarządzania magazynu kluczy, użytkownik może udzielić sobie dostępu do płaszczyzny danych przez ustawienie zasad dostępu Key Vault. Należy ściśle kontrolować, kto ma dostęp do roli `Contributor` do Twoich magazynów kluczy. Upewnij się, że tylko autoryzowani osoby mają dostęp do magazynów kluczy, kluczy, wpisów tajnych i certyfikatów oraz nimi zarządzać.
+> Jeśli użytkownik ma `Contributor` uprawnienia do płaszczyzny zarządzania magazynu kluczy, użytkownik może udzielić sobie dostępu do płaszczyzny danych przez ustawienie zasad dostępu Key Vault. Należy ściśle kontrolować, kto ma `Contributor` dostęp do swoich magazynów kluczy. Upewnij się, że tylko autoryzowani osoby mają dostęp do magazynów kluczy, kluczy, wpisów tajnych i certyfikatów oraz nimi zarządzać.
 >
 
 <a id="data-plane-access-control"></a> 
@@ -126,11 +126,11 @@ Poniższa tabela zawiera podsumowanie uprawnień dostępu dla naszych ról i apl
 | Rola | Uprawnienia do płaszczyzny zarządzania | Uprawnienia do płaszczyzny danych |
 | --- | --- | --- |
 | Zespół ds. zabezpieczeń | Współautor Key Vault | Klucze: wykonywanie kopii zapasowej, tworzenie, usuwanie, pobieranie, importowanie, wyświetlanie, przywracanie<br>Wpisy tajne: wszystkie operacje |
-| Deweloperzy i @ no__t — 0operators | Uprawnienie do wdrażania Key Vault<br><br> **Uwaga**: to uprawnienie umożliwia wdrożonym maszynom wirtualnym pobieranie wpisów tajnych z magazynu kluczy. | Brak |
+| Deweloperzy i&nbsp;operatory | Uprawnienie do wdrażania Key Vault<br><br> **Uwaga**: to uprawnienie umożliwia wdrożonym maszynom wirtualnym pobieranie wpisów tajnych z magazynu kluczy. | Brak |
 | Audytorzy | Brak | Klucze: wyświetlanie<br>Wpisy tajne: wyświetlanie<br><br> **Uwaga**: to uprawnienie umożliwia audytorom inspekcję atrybutów (tagów, dat aktywacji, dat wygaśnięcia) dla kluczy i wpisów tajnych, które nie są emitowane w dziennikach. |
 | Aplikacja | Brak | Klucze: podpisywanie<br>Wpisy tajne: pobieranie |
 
-Trzy role zespołu potrzebują dostępu do innych zasobów wraz z uprawnieniami Key Vault. Aby wdrożyć maszyny wirtualne (lub Web Apps funkcję Azure App Service), deweloperzy i operatorzy potrzebują @no__t dostęp do tych typów zasobów. Audytorzy muszą mieć dostęp do odczytu do konta magazynu, w którym są przechowywane dzienniki Key Vault.
+Trzy role zespołu potrzebują dostępu do innych zasobów wraz z uprawnieniami Key Vault. Aby wdrożyć maszyny wirtualne (lub Web Apps funkcję Azure App Service), deweloperzy i operatorzy potrzebują `Contributor` dostępu do tych typów zasobów. Audytorzy muszą mieć dostęp do odczytu do konta magazynu, w którym są przechowywane dzienniki Key Vault.
 
 Aby uzyskać więcej informacji na temat sposobu wdrażania certyfikatów, kluczy dostępu i wpisów tajnych, zobacz następujące zasoby:
 - Dowiedz się, jak [wdrażać certyfikaty na maszynach wirtualnych z magazynu kluczy zarządzanego przez klienta](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) (wpis w blogu).
@@ -183,7 +183,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 Nasze zdefiniowane role niestandardowe można przypisać tylko do subskrypcji, w której jest tworzona Grupa zasobów **ContosoAppRG** . Aby użyć roli niestandardowej dla innych projektów w innych subskrypcjach, Dodaj inne subskrypcje do zakresu roli.
 
-W przypadku naszego DevOps personelowi niestandardowe przypisanie roli dla magazynu kluczy `deploy/action` jest ograniczone do grupy zasobów. Tylko maszyny wirtualne utworzone w grupie zasobów **ContosoAppRG** mają dostęp do wpisów tajnych (certyfikaty SSL i Bootstrap). Maszyny wirtualne utworzone w innych grupach zasobów przez DevOps element członkowski nie mogą uzyskać dostępu do tych kluczy tajnych, nawet jeśli maszyna wirtualna ma identyfikatory URI.
+W przypadku naszego działu DevOpsego niestandardowe przypisanie roli dla magazynu kluczy uprawnienia `deploy/action` jest ograniczone do grupy zasobów. Tylko maszyny wirtualne utworzone w grupie zasobów **ContosoAppRG** mają dostęp do wpisów tajnych (certyfikaty SSL i Bootstrap). Maszyny wirtualne utworzone w innych grupach zasobów przez DevOps element członkowski nie mogą uzyskać dostępu do tych kluczy tajnych, nawet jeśli maszyna wirtualna ma identyfikatory URI.
 
 Nasz przykład opisuje prosty scenariusz. Scenariusze życiowe mogą być bardziej skomplikowane. Możesz dostosować uprawnienia do magazynu kluczy w zależności od potrzeb. Zakładamy, że zespół ds. zabezpieczeń zawiera odwołania do kluczy i wpisów tajnych (identyfikatorów URI i odcisków palców), które są używane przez personel DevOps w swoich aplikacjach. Deweloperzy i operatorzy nie potrzebują dostępu do płaszczyzny danych. Firma Microsoft koncentruje się na sposobie zabezpieczania magazynu kluczy. Zadawaj podobne kwestie w przypadku zabezpieczania [maszyn wirtualnych](https://azure.microsoft.com/services/virtual-machines/security/), [kont magazynu](../storage/common/storage-security-guide.md)i innych zasobów platformy Azure.
 

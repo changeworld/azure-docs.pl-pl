@@ -189,7 +189,7 @@ W poniższej tabeli przedstawiono ustawienia konfiguracji dla właściwości chm
 
 ## <a name="add-customizations"></a>Dodawanie dostosowań
 
-Dostosowań należy używać w przypadku konieczności modyfikacji zaimportowanego interfejsu lub dodania funkcji specyficznych dla IoT Central do funkcji. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Możesz na przykład:
+Dostosowań należy używać w przypadku konieczności modyfikacji zaimportowanego interfejsu lub dodania funkcji specyficznych dla IoT Central do funkcji. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Można na przykład:
 
 - Dostosuj nazwę wyświetlaną i jednostki możliwości.
 - Dodaj domyślny kolor, który ma być używany, gdy wartość pojawia się na wykresie.

@@ -20,7 +20,7 @@ ms.locfileid: "73826429"
 
 Ten dokument zawiera informacje o tym, co dalej dla komercyjnego rynku firmy Microsoft dla wydawców, odbiorców i klientów. Przechwytuje ona niektóre istotne funkcje, które zostały przez nas przekazane, ale przybliżony czas, w którym można oczekiwać na ich wyświetlenie i będzie odświeżany co miesiąc. Nie jest to kompletna lista wszystkich nowych funkcji, ale ma na celu zapewnienie widoczności najważniejszych inwestycji. Te zestawy funkcji i ramy czasu dostarczania są aktualne i mogą ulec zmianie.
 
-Zapraszamy do Twoich sugestii. Dołącz do konwersacji w [społeczności partnerów firmy Microsoft](https://www.microsoftpartnercommunity.com/) , aby uzyskać najnowsze aktualizacje dotyczące nowych możliwości, programów i zdarzeń.
+Chętnie poznamy Twoje propozycje! Dołącz do konwersacji w [społeczności partnerów firmy Microsoft](https://www.microsoftpartnercommunity.com/) , aby uzyskać najnowsze aktualizacje dotyczące nowych możliwości, programów i zdarzeń.
 
 ## <a name="roadmap"></a>Harmonogram działania
 ![Plan witryny Marketplace w listopadzie 2019](./media/marketplace-publishers-guide/roadmap-nov19.png)

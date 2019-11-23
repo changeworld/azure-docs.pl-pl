@@ -28,7 +28,7 @@ ms.locfileid: "72388659"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
->  Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+>  Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 Ten artykuł zawiera szczegółowe informacje i przykłady pokazujące, jak korzystać z zaplecza Node. js w funkcji Mobile Apps Azure App Service.
 
@@ -65,7 +65,7 @@ Każdy Mobile Apps zaplecza Node. js jest uruchamiany jako aplikacja ExpressJS. 
         cd basicapp
         npm init
 
-   Polecenie `npm init` pyta o zestaw pytań, aby zainicjować projekt. Zobacz przykładowe dane wyjściowe:
+   Polecenie `npm init` żąda zestawu pytań do zainicjowania projektu. Zobacz przykładowe dane wyjściowe:
 
    ![Dane wyjściowe init npm][0]
 
@@ -108,10 +108,10 @@ Kod tej aplikacji podstawowej można znaleźć w [przykład basicapp w witrynie 
 
 Program Visual Studio 2015 wymaga rozszerzenia do tworzenia aplikacji node. js w środowisku IDE. Aby rozpocząć, zainstaluj [Narzędzia Node. js Tools 1,1 dla programu Visual Studio]. Po zakończeniu instalacji Utwórz aplikację Express 4. x:
 
-1. Otwórz okno dialogowe **Nowy projekt** (z **pliku** > **Nowy** > **projekt**).
+1. Otwórz okno dialogowe **Nowy projekt** (z **pliku** > **nowym** > **projekcie**).
 1. Rozwiń **szablon** > **JavaScript** > **Node. js**.
 1. Wybierz **podstawową aplikację Azure Node. js Express 4**.
-1. Wypełnij pole Nazwa projektu. Kliknij przycisk **OK**.
+1. Wypełnij pole Nazwa projektu. Wybierz **OK**.
 
    ![Nowy projekt programu Visual Studio 2015][1]
 1. Kliknij prawym przyciskiem myszy węzeł **npm** i wybierz pozycję **Instaluj nowe pakiety npm**.
@@ -120,14 +120,14 @@ Program Visual Studio 2015 wymaga rozszerzenia do tworzenia aplikacji node. js w
 
    ![Instalowanie nowych pakietów npm][2]
 1. Wybierz polecenie **Zamknij**.
-1. Otwórz plik App. js, aby dodać obsługę zestawu SDK Mobile Apps. W wierszu 6 i u dołu instrukcji `require` Dodaj następujący kod:
+1. Otwórz plik App. js, aby dodać obsługę zestawu SDK Mobile Apps. W wierszu 6 w dolnej części instrukcji `require` biblioteki Dodaj następujący kod:
 
     ```javascript
     var bodyParser = require('body-parser');
     var azureMobileApps = require('azure-mobile-apps');
     ```
 
-    W około wierszu 27 od innych instrukcji `app.use` Dodaj następujący kod:
+    W około wierszu 27 po innych instrukcjach `app.use` Dodaj następujący kod:
 
     ```javascript
     app.use('/users', users);
@@ -211,7 +211,7 @@ Ten internetowy interfejs API obsługuje protokół [OData] i rozszerza schemat 
 
 Aby można było użyć tabeli, należy ją zdefiniować. Tabele można definiować przy użyciu schematu statycznego (w którym można definiować kolumny w schemacie) lub dynamicznie (gdzie zestaw SDK kontroluje schemat w oparciu o przychodzące żądania). Ponadto można kontrolować określone aspekty interfejsu API sieci Web, dodając kod JavaScript do definicji.
 
-Najlepszym rozwiązaniem jest zdefiniowanie każdej tabeli w pliku JavaScript w katalogu `tables`, a następnie użycie metody `tables.import()` do zaimportowania tabel. Rozszerzając przykład podstawowej aplikacji, należy dostosować plik App. js:
+Najlepszym rozwiązaniem jest zdefiniowanie każdej tabeli w pliku JavaScript w katalogu `tables`, a następnie użycie metody `tables.import()` w celu zaimportowania tabel. Rozszerzając przykład podstawowej aplikacji, należy dostosować plik App. js:
 
 ```javascript
 var express = require('express'),
@@ -245,7 +245,7 @@ var table = azureMobileApps.table();
 module.exports = table;
 ```
 
-Domyślnie tabele używają schematu dynamicznego. Aby globalnie wyłączyć schemat dynamiczny, dla Azure Portal ustaw wartość false dla ustawienia aplikacji `MS_DynamicSchema`.
+Domyślnie tabele używają schematu dynamicznego. Aby globalnie wyłączyć schemat dynamiczny, w Azure Portal należy ustawić wartość false dla ustawienia aplikacji `MS_DynamicSchema`.
 
 Pełny przykład można znaleźć w przykładowym [przykład do zrobienia w serwisie GitHub].
 
@@ -303,7 +303,7 @@ Zestaw SDK Mobile Apps Node. js używa [Pakiet MSSQL Node. js] do nawiązywania 
 
       ![Konfigurowanie SQL Server Express protokołu TCP/IP][3]
 
-   g. Kliknij przycisk **OK**. W podręcznym oknie dialogowym wybierz pozycję **OK** .
+   g. Wybierz **OK**. W podręcznym oknie dialogowym wybierz pozycję **OK** .
 
    h. W menu drzewa wybierz pozycję **usługi SQL Server** .
 
@@ -316,19 +316,19 @@ Zestaw SDK Mobile Apps Node. js używa [Pakiet MSSQL Node. js] do nawiązywania 
    1. Kliknij prawym przyciskiem myszy wystąpienie w Eksplorator obiektów i wybierz polecenie **Właściwości**.
    1. Wybierz stronę **zabezpieczenia** .
    1. Upewnij się, że wybrano **SQL Server i tryb uwierzytelniania systemu Windows** .
-   1. Kliknij przycisk **OK**.
+   1. Wybierz **OK**.
 
       ![Konfigurowanie uwierzytelniania SQL Server Express][4]
-   1. Rozwiń węzeł **zabezpieczenia** > **logowania** w Eksplorator obiektów.
+   1. Rozwiń węzeł **zabezpieczenia** > **nazwy logowania** w Eksplorator obiektów.
    1. Kliknij prawym przyciskiem myszy pozycję **logowania** i wybierz pozycję **Nowa nazwa logowania**.
    1. Wprowadź nazwę logowania. Wybierz pozycję **Uwierzytelnianie programu SQL Server**. Wprowadź hasło, a następnie wprowadź to samo hasło w polu **Potwierdź hasło**. Hasło musi spełniać wymagania dotyczące złożoności systemu Windows.
-   1. Kliknij przycisk **OK**.
+   1. Wybierz **OK**.
 
       ![Dodaj nowego użytkownika do SQL Server Express][5]
    1. Kliknij prawym przyciskiem myszy nową nazwę logowania i wybierz pozycję **Właściwości**.
    1. Wybierz stronę **role serwera** .
    1. Zaznacz pole wyboru dla roli serwera **dbcreator** .
-   1. Kliknij przycisk **OK**.
+   1. Wybierz **OK**.
    1. Zamknij Management Studio SQL Server 2015.
 
 Pamiętaj, aby zapisać wybraną nazwę użytkownika i hasło. W zależności od wymagań bazy danych może być konieczne przypisanie dodatkowych ról lub uprawnień serwera.
@@ -377,17 +377,17 @@ Większość ustawień w pliku azureMobile. js ma odpowiednie ustawienie aplikac
 
 | Ustawienie aplikacji | ustawienie azureMobile. js | Opis | Prawidłowe wartości |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |Nazwa aplikacji |string |
-| **MS_MobileLoggingLevel** |Rejestrowanie. poziom |Minimalny poziom rejestrowania komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje, pełne, debugowanie, parapet |
-| **MS_DebugMode** |Rozpocząć |Włącza lub wyłącza tryb debugowania |prawda, FAŁSZ |
-| **MS_TableSchema** |dane. schemat |Domyślna nazwa schematu dla tabel SQL |ciąg (domyślnie: dbo) |
-| **MS_DynamicSchema** |Data. dynamicSchema |Włącza lub wyłącza tryb debugowania |prawda, FAŁSZ |
-| **MS_DisableVersionHeader** |wersja (ustawiona na wartość undefined) |Wyłącza nagłówek X-ZUMO-Server-version |prawda, FAŁSZ |
-| **MS_SkipVersionCheck** |skipversioncheck |Wyłącza sprawdzanie wersji interfejsu API klienta |prawda, FAŁSZ |
+| **MS_MobileAppName** |name |Nazwa aplikacji |ciąg |
+| **MS_MobileLoggingLevel** |logging.level |Minimalny poziom rejestrowania komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje, pełne, debugowanie, parapet |
+| **MS_DebugMode** |rozpocząć |Włącza lub wyłącza tryb debugowania |wartość true, false |
+| **MS_TableSchema** |data.schema |Domyślna nazwa schematu dla tabel SQL |ciąg (domyślnie: dbo) |
+| **MS_DynamicSchema** |data.dynamicSchema |Włącza lub wyłącza tryb debugowania |wartość true, false |
+| **MS_DisableVersionHeader** |wersja (ustawiona na wartość undefined) |Wyłącza nagłówek X-ZUMO-Server-version |wartość true, false |
+| **MS_SkipVersionCheck** |skipversioncheck |Wyłącza sprawdzanie wersji interfejsu API klienta |wartość true, false |
 
 Aby ustawić ustawienie aplikacji:
 
-1. Zaloguj się do [Azure Portal].
+1. Zaloguj się w witrynie [Azure Portal].
 1. Wybierz pozycję **wszystkie zasoby** lub **App Services**a następnie wybierz nazwę aplikacji mobilnej.
 1. Domyślnie zostanie otwarte okienko **ustawień** . Jeśli nie, wybierz pozycję **Ustawienia**.
 1. W menu **Ogólne** wybierz pozycję **Ustawienia aplikacji**.
@@ -404,7 +404,7 @@ Zmiana większości ustawień aplikacji wymaga ponownego uruchomienia usługi.
 
 Używanie Azure SQL Database jako magazynu danych jest identyczne we wszystkich typach aplikacji Azure App Service. Jeśli jeszcze tego nie zrobiono, wykonaj następujące kroki, aby utworzyć Mobile Apps zaplecza:
 
-1. Zaloguj się do [Azure Portal].
+1. Zaloguj się w witrynie [Azure Portal].
 1. W lewym górnym rogu okna wybierz przycisk **+ nowy** > **Sieć Web + aplikacje mobilne** > **aplikacji mobilnej**, a następnie podaj nazwę Mobile Apps zaplecza.
 1. W polu **Grupa zasobów** Wprowadź taką samą nazwę jak aplikacja.
 1. Wybrano domyślny plan App Service. Jeśli chcesz zmienić plan App Service:
@@ -415,7 +415,7 @@ Używanie Azure SQL Database jako magazynu danych jest identyczne we wszystkich 
 
    d. Wybierz odpowiednią warstwę cenową dla usługi. Wybierz pozycję **Wyświetl wszystko** , aby wyświetlić więcej opcji cenowych, takich jak **bezpłatne** i **udostępnione**.
 
-   d. Kliknij przycisk **Wybierz** .
+   d. Kliknij przycisk **wybierz** przycisku.
 
    e. W okienku **App Service plan** wybierz pozycję **OK**.
 1. Wybierz pozycję **Utwórz**.
@@ -428,21 +428,21 @@ Możesz połączyć istniejącą bazę danych SQL z zaplecem Mobile Apps lub utw
 > Jeśli masz już bazę danych w tej samej lokalizacji co Mobile Apps zaplecza, zamiast tego wybierz opcję **Użyj istniejącej bazy danych** , a następnie wybierz tę bazę danych. Nie zalecamy korzystania z bazy danych w innej lokalizacji z powodu wyższych opóźnień.
 
 1. Na stronie nowy Mobile Apps zaplecza wybierz pozycję **ustawienia** > **aplikacja mobilna** > **dane** >  **+ Dodaj**.
-1. W okienku **Dodawanie połączenia danych** wybierz pozycję **SQL Database — skonfiguruj wymagane ustawienia** > **Utwórz nową bazę danych**. Wprowadź nazwę nowej bazy danych w polu **Nazwa** .
-1. Wybierz pozycję **serwer**. W okienku **nowy serwer** wprowadź unikatową nazwę serwera w polu **Nazwa serwera** , a następnie podaj odpowiedni identyfikator logowania i hasło administratora serwera. Upewnij się, że wybrano opcję **Zezwalaj usługom platformy Azure na dostęp do serwera** . Kliknij przycisk **OK**.
+1. W okienku **Dodawanie połączenia danych** wybierz pozycję **SQL Database — skonfiguruj wymagane ustawienia** , > **utworzyć nową bazę danych**. Wprowadź nazwę nowej bazy danych w polu **Nazwa** .
+1. Wybierz pozycję **serwer**. W okienku **nowy serwer** wprowadź unikatową nazwę serwera w polu **Nazwa serwera** , a następnie podaj odpowiedni identyfikator logowania i hasło administratora serwera. Upewnij się, że wybrano opcję **Zezwalaj usługom platformy Azure na dostęp do serwera** . Wybierz **OK**.
 
    ![Tworzenie bazy danych Azure SQL Database][6]
 1. W okienku **Nowa baza danych** wybierz **przycisk OK**.
-1. Wróć do okienka **Dodawanie połączenia danych** , wybierz pozycję **Parametry połączenia**, a następnie wprowadź nazwę logowania i hasło podane podczas tworzenia bazy danych. W przypadku korzystania z istniejącej bazy danych podaj poświadczenia logowania dla tej bazy danych. Kliknij przycisk **OK**.
+1. Wróć do okienka **Dodawanie połączenia danych** , wybierz pozycję **Parametry połączenia**, a następnie wprowadź nazwę logowania i hasło podane podczas tworzenia bazy danych. W przypadku korzystania z istniejącej bazy danych podaj poświadczenia logowania dla tej bazy danych. Wybierz **OK**.
 1. Ponownie w okienku **Dodaj połączenie danych** wybierz pozycję **OK** , aby utworzyć bazę danych.
 
 <!--- END OF ALTERNATE INCLUDE -->
 
-Tworzenie bazy danych może potrwać kilka minut. Za pomocą obszaru **powiadomienia** Monitoruj postęp wdrożenia. Nie wykonuj postępów, dopóki baza danych nie zostanie pomyślnie wdrożona. Po wdrożeniu bazy danych są tworzone parametry połączenia dla wystąpienia SQL Database w ustawieniach aplikacji zaplecza Mobile Apps. To ustawienie aplikacji można zobaczyć w **ustawieniach** > **Ustawienia aplikacji** > **Parametry połączenia**.
+Tworzenie bazy danych może potrwać kilka minut. Za pomocą obszaru **powiadomienia** Monitoruj postęp wdrożenia. Nie wykonuj postępów, dopóki baza danych nie zostanie pomyślnie wdrożona. Po wdrożeniu bazy danych są tworzone parametry połączenia dla wystąpienia SQL Database w ustawieniach aplikacji zaplecza Mobile Apps. To ustawienie aplikacji można zobaczyć w obszarze **ustawienia** > **Ustawienia aplikacji** > **Parametry połączenia**.
 
 ### <a name="howto-tables-auth"></a>Wymagaj uwierzytelniania w celu uzyskania dostępu do tabel
 
-Jeśli chcesz użyć uwierzytelniania App Service za pomocą punktu końcowego `tables`, musisz najpierw skonfigurować uwierzytelnianie App Service w [Azure Portal] . Aby uzyskać więcej informacji, zobacz Przewodnik dotyczący konfiguracji dostawcy tożsamości, którego zamierzasz użyć:
+Jeśli chcesz użyć uwierzytelniania App Service przy użyciu punktu końcowego `tables`, najpierw należy skonfigurować uwierzytelnianie App Service w [Azure Portal] . Aby uzyskać więcej informacji, zobacz Przewodnik dotyczący konfiguracji dostawcy tożsamości, którego zamierzasz użyć:
 
 * [Konfigurowanie uwierzytelniania Azure Active Directory]
 * [Konfigurowanie uwierzytelniania w usłudze Facebook]
@@ -481,7 +481,7 @@ Właściwość dostępu może przyjmować jedną z trzech wartości:
 Jeśli właściwość dostępu jest niezdefiniowana, dozwolony jest nieuwierzytelniony dostęp.
 
 ### <a name="howto-tables-getidentity"></a>Używanie oświadczeń uwierzytelniania z tabelami
-Można skonfigurować różne oświadczenia, które są wymagane podczas konfigurowania uwierzytelniania. Te oświadczenia nie są zwykle dostępne za pomocą obiektu `context.user`. Można je jednak pobrać przy użyciu metody `context.user.getIdentity()`. Metoda `getIdentity()` zwraca obietnicę, która jest rozpoznawana jako obiekt. Obiekt jest poddany przez metodę uwierzytelniania (`facebook`, `google`, `twitter`, `microsoftaccount` lub `aad`).
+Można skonfigurować różne oświadczenia, które są wymagane podczas konfigurowania uwierzytelniania. Te oświadczenia nie są zwykle dostępne za pomocą obiektu `context.user`. Można je jednak pobrać przy użyciu metody `context.user.getIdentity()`. Metoda `getIdentity()` zwraca obietnicę, która jest rozpoznawana jako obiekt. Obiekt jest poddany przez metodę uwierzytelniania (`facebook`, `google`, `twitter`, `microsoftaccount`lub `aad`).
 
 Na przykład jeśli skonfigurujesz konto Microsoft uwierzytelnianie i zażądasz wniosku e-mail, możesz dodać adres e-mail do rekordu z następującym kontrolerem tabel:
 
@@ -546,10 +546,10 @@ Aby zobaczyć, jakie oświadczenia są dostępne, użyj przeglądarki sieci Web,
 
 Oprócz wyświetlania w tabeli Właściwość dostępu może służyć do kontrolowania poszczególnych operacji. Istnieją cztery operacje:
 
-* `read` to operacja pobrania RESTful w tabeli.
-* `insert` jest operacją RESTful POST na tabeli.
+* `read` jest operacją pobierania RESTful na tabeli.
+* `insert` jest operacją RESTful POST w tabeli.
 * `update` jest operacją RESTful PATCH w tabeli.
-* `delete` jest operacją usuwania RESTful w tabeli.
+* `delete` jest operacją usuwania RESTful z tabeli.
 
 Na przykład możesz chcieć podać nieuwierzytelnioną tabelę tylko do odczytu:
 
@@ -602,7 +602,7 @@ table.insert(function (context) {
 module.exports = table;
 ```
 
-Operacje, które zwykle uruchamiają zapytanie, mają właściwość zapytania, którą można dostosować za pomocą klauzuli `where`. Właściwość zapytania jest obiektem [QueryJS] , który jest używany do konwertowania zapytania OData na element, który może przetwarzać zaplecze danych. W przypadku prostych przypadków równości (takich jak poprzednia) można użyć mapy. Można również dodać określone klauzule SQL:
+Operacje, które zwykle uruchamiają zapytanie, mają właściwość zapytania, którą można dostosować przy użyciu klauzuli `where`. Właściwość zapytania jest obiektem [QueryJS] , który jest używany do konwertowania zapytania OData na element, który może przetwarzać zaplecze danych. W przypadku prostych przypadków równości (takich jak poprzednia) można użyć mapy. Można również dodać określone klauzule SQL:
 
 ```javascript
 context.query.where('myfield eq ?', 'value');
@@ -667,7 +667,7 @@ module.exports = table;
 
 Wypełnianie danych odbywa się tylko wtedy, gdy do utworzenia tabeli użyto zestawu SDK Mobile Apps. Jeśli tabela już istnieje w bazie danych, żadne dane nie są wstrzykiwane do tabeli. Jeśli schemat dynamiczny jest włączony, schemat jest wywnioskowany na podstawie danych z inicjatora.
 
-Zalecamy jawne wywołanie metody `tables.initialize()` w celu utworzenia tabeli, gdy usługa zostanie uruchomiona.
+Zalecamy jawnie wywołać metodę `tables.initialize()`, aby utworzyć tabelę, gdy usługa zostanie uruchomiona.
 
 ### <a name="Swagger"></a>Włącz obsługę struktury Swagger
 Mobile Apps zawiera wbudowaną obsługę [Swagger] . Aby włączyć obsługę struktury Swagger, najpierw zainstaluj strukturę Swagger — interfejs użytkownika jako zależność:
@@ -686,11 +686,11 @@ Prawdopodobnie chcesz włączyć obsługę struktury Swagger tylko w wersjach de
 var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' });
 ```
 
-Punkt końcowy `swagger` znajduje się w http://*yoursite*. azurewebsites.NET/Swagger. Dostęp do interfejsu użytkownika struktury Swagger można uzyskać za pośrednictwem punktu końcowego `/swagger/ui`. W przypadku wybrania opcji wymagania uwierzytelniania w całej aplikacji struktura Swagger generuje błąd. Aby uzyskać najlepsze wyniki, wybierz Zezwalanie na nieuwierzytelnione żądania w Azure App Service ustawieniach uwierzytelniania/autoryzacji, a następnie Kontroluj uwierzytelnianie przy użyciu właściwości `table.access`.
+Punkt końcowy `swagger` znajduje się w http://*yoursite*. azurewebsites.NET/Swagger. Dostęp do interfejsu użytkownika struktury Swagger można uzyskać za pośrednictwem punktu końcowego `/swagger/ui`. W przypadku wybrania opcji wymagania uwierzytelniania w całej aplikacji struktura Swagger generuje błąd. Aby uzyskać najlepsze wyniki, wybierz opcję zezwalania na nieuwierzytelnione żądania w Azure App Service ustawieniach uwierzytelniania/autoryzacji, a następnie kontrolowanie uwierzytelniania przy użyciu właściwości `table.access`.
 
 Możesz również dodać opcję Swagger do pliku azureMobile. js, jeśli chcesz, aby obsługiwały strukturę Swagger lokalnie.
 
-## <a name="a-namepushpush-notifications"></a>powiadomienia @no__t 0Push
+## <a name="a-namepushpush-notifications"></a><a name="push"/>powiadomień wypychanych
 
 Mobile Apps integrują się z usługą Azure Notification Hubs, dzięki czemu możesz wysyłać skierowane do milionów urządzeń w ramach wszystkich głównych platform. Za pomocą Notification Hubs można wysyłać powiadomienia wypychane do urządzeń z systemem iOS, Android i Windows. Aby dowiedzieć się więcej na temat wszystkich informacji, które można wykonać za pomocą Notification Hubs, zobacz [omówienie Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md).
 
@@ -751,7 +751,7 @@ Po zarejestrowaniu się w celu otrzymywania powiadomień wypychanych z poziomu u
 
 ### <a name="howto-customapi-basic"></a>Definiowanie niestandardowego interfejsu API
 
-Oprócz interfejsu API dostępu do danych za pośrednictwem punktu końcowego `/tables` Mobile Apps może zapewnić niestandardowe pokrycie interfejsu API. Niestandardowe interfejsy API są zdefiniowane w podobny sposób do definicji tabeli i mogą uzyskać dostęp do wszystkich tych samych obiektów, w tym uwierzytelniania.
+Oprócz interfejsu API dostępu do danych za pośrednictwem punktu końcowego `/tables`, Mobile Apps może zapewnić niestandardowe pokrycie interfejsu API. Niestandardowe interfejsy API są zdefiniowane w podobny sposób do definicji tabeli i mogą uzyskać dostęp do wszystkich tych samych obiektów, w tym uwierzytelniania.
 
 Jeśli chcesz użyć uwierzytelniania App Service z niestandardowym interfejsem API, najpierw należy skonfigurować uwierzytelnianie App Service w [Azure Portal] . Aby uzyskać więcej informacji, zobacz Przewodnik dotyczący konfiguracji dostawcy tożsamości, którego zamierzasz użyć:
 
@@ -833,7 +833,7 @@ api.get.access = 'authenticated';
 module.exports = api;
 ```
 
-Ten sam token, który jest używany przez punkt końcowy `tables` musi być używany dla niestandardowych interfejsów API, które wymagają uwierzytelniania.
+Ten sam token, który jest używany przez punkt końcowy `tables`, musi być używany dla niestandardowych interfejsów API, które wymagają uwierzytelniania.
 
 ### <a name="howto-customapi-auth"></a>Obsługa dużych operacji przekazywania plików
 
@@ -907,7 +907,7 @@ Aby rozpocząć rozwiązywanie problemów z zapleczem środowiska Node. js Mobil
 * [Włączanie rejestrowania diagnostycznego w Azure App Service]
 * [Rozwiązywanie problemów Azure App Service w programie Visual Studio]
 
-Aplikacje Node. js mają dostęp do szerokiego zakresu narzędzi dzienników diagnostycznych. Wewnętrznie zestaw SDK Mobile Apps Node. js używa [Winston] do rejestrowania diagnostycznego. Rejestrowanie jest włączane automatycznie po włączeniu trybu debugowania lub ustawieniu dla ustawienia aplikacji `MS_DebugMode` wartości true w [Azure Portal]. Wygenerowane dzienniki są wyświetlane w dziennikach diagnostycznych w [Azure Portal].
+Aplikacje Node. js mają dostęp do szerokiego zakresu narzędzi dzienników diagnostycznych. Wewnętrznie zestaw SDK Mobile Apps Node. js używa [Winston] do rejestrowania diagnostycznego. Rejestrowanie jest włączane automatycznie po włączeniu trybu debugowania lub ustawieniu dla ustawienia aplikacji `MS_DebugMode` wartość true w [Azure Portal]. Wygenerowane dzienniki są wyświetlane w dziennikach diagnostycznych w [Azure Portal].
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png

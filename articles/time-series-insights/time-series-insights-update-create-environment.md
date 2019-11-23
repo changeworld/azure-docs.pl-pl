@@ -171,7 +171,7 @@ Teraz, gdy wdrożono środowisko Time Series Insights, Rozpocznij przesyłanie s
 
     [Pulpit nawigacyjny symulacji usługi Azure IoT ![](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
-## <a name="analyze-data"></a>Analizowanie danych
+## <a name="analyze-data"></a>Analizuj dane
 
 W tej sekcji przeprowadzimy podstawową analizę danych szeregów czasowych przy użyciu [eksploratora wersji zapoznawczej usługi Azure Time Series Insights](./time-series-insights-update-explorer.md).
 

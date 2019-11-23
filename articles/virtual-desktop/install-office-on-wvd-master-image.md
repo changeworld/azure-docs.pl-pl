@@ -53,7 +53,7 @@ Oto co to jest przykładowy kod XML konfiguracji:
 - Zainstaluj usługę OneDrive w trybie dla użytkownika. Aby dowiedzieć się więcej, zobacz [Instalowanie usługi OneDrive w trybie dla komputera](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Aktywację komputera udostępnionego można skonfigurować za zasady grupy obiektów zasad grupy (GPO) lub ustawień rejestru. Obiekt zasad grupy znajduje się w **konfiguracji komputera @ no__t-1Policies @ no__t-2Administrative templates @ no__t-3Microsoft Office 2016 (Machine) \\Licensing Settings**
+>Aktywację komputera udostępnionego można skonfigurować za zasady grupy obiektów zasad grupy (GPO) lub ustawień rejestru. Obiekt zasad grupy znajduje się w obszarze **Konfiguracja komputera\\zasad\\Szablony administracyjne\\Microsoft Office 2016 (Machine)\\ustawienia licencjonowania**
 
 Narzędzie wdrażania pakietu Office zawiera plik Setup. exe. Aby zainstalować pakiet Office, uruchom następujące polecenie w wierszu polecenia:
 
@@ -130,7 +130,7 @@ Usługa OneDrive jest zwykle instalowana dla poszczególnych użytkowników. W t
 
 Poniżej przedstawiono sposób instalowania usługi OneDrive w trybie na maszynę:
 
-1. Najpierw Utwórz lokalizację, aby przemieścić Instalatora usługi OneDrive. Folder dysku lokalnego lub lokalizacji [\\ @ no__t-1unc] (file://unc) jest prawidłowy.
+1. Najpierw Utwórz lokalizację, aby przemieścić Instalatora usługi OneDrive. Folder dysku lokalnego lub lokalizacji [\\\\UNC] (file://unc) jest prawidłowy.
 
 2. Pobierz OneDriveSetup. exe do lokalizacji przygotowanej za pomocą tego linku: <https://aka.ms/OneDriveWVD-Installer>
 

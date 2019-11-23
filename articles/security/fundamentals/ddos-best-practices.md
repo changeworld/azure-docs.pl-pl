@@ -97,7 +97,7 @@ DDoS Protection Standard uwidacznia rozbudowane dane telemetryczne za pośrednic
 
 ##### <a name="ddos-mitigation-policies"></a>Zasady ograniczania DDoS
 
-W Azure Portal wybierz pozycję **monitoruj**  > **metryki**. W okienku **metryk** wybierz grupę zasobów, wybierz typ zasobu **publiczny adres IP**, a następnie wybierz publiczny adres IP platformy Azure. Metryki DDoS są widoczne w okienku **Dostępne metryki** .
+W Azure Portal wybierz pozycję **monitoruj** > **metryki**. W okienku **metryk** wybierz grupę zasobów, wybierz typ zasobu **publiczny adres IP**, a następnie wybierz publiczny adres IP platformy Azure. Metryki DDoS są widoczne w okienku **Dostępne metryki** .
 
 DDoS Protection standard stosuje trzy zasady ograniczania ryzyka (TCP SYN, TCP i UDP) dla każdego publicznego adresu IP chronionego zasobu w sieci wirtualnej z włączoną funkcją DDoS. Progi zasad można wyświetlić, wybierając pakiety przychodzące metryczne, **Aby wyzwolić DDoS ograniczenia**.
 
@@ -235,7 +235,7 @@ W tej architekturze w sieci wirtualnej jest włączony DDoS Protection Standard.
 
 #### <a name="paas-web-application"></a>Aplikacja internetowa PaaS
 
-Ta architektura referencyjna pokazuje, jak działa aplikacja Azure App Service w jednym regionie. Ta architektura pokazuje zestaw sprawdzonych rozwiązań dla aplikacji sieci Web korzystających z [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)  and [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
+Ta architektura referencyjna pokazuje, jak działa aplikacja Azure App Service w jednym regionie. Ta architektura pokazuje zestaw sprawdzonych rozwiązań dla aplikacji sieci Web, które używają [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) i [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
 W przypadku scenariuszy trybu failover jest ustawiany region w stanie wstrzymania.
 
 ![Diagram architektury referencyjnej dla aplikacji sieci Web PaaS](./media/ddos-best-practices/image11.png)

@@ -30,7 +30,7 @@ Aby uzyskać 8-minutowy wprowadzenie i demonstrację tej funkcji, Obejrzyj nast�
 
 Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy pamiętać, że [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) *nie* jest `JObject`.) Każdy typ zwracany inny niż `JObject` kończy się niepowodzeniem i podnosi *zawartość odpowiedzi na błąd użytkownika nie jest prawidłowym JObject*.
 
-| **Właściwość** | **Opis** | **Wymagane** |
+| **Property** | **Opis** | **Wymagane** |
 | --- | --- | --- |
 | type   | Właściwość Type musi mieć wartość: **AzureFunction** | tak |
 | adres URL aplikacji funkcji | Adres URL aplikacja funkcji platformy Azure. Format jest `https://<accountname>.azurewebsites.net`. Ten adres URL jest wartością w sekcji **adresu URL** podczas wyświetlania aplikacja funkcji w Azure Portal  | tak |
@@ -39,11 +39,11 @@ Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy 
 
 ## <a name="azure-function-activity"></a>Działanie funkcji platformy Azure
 
-| **Właściwość**  | **Opis** | **Dozwolone wartości** | **Wymagane** |
+| **Property**  | **Opis** | **Dozwolone wartości** | **Wymagane** |
 | --- | --- | --- | --- |
 | name  | Nazwa działania w potoku  | Ciąg | tak |
 | type  | Typ działania to "AzureFunctionActivity" | Ciąg | tak |
-| Połączona usługa | Połączona usługa funkcji platformy Azure dla odpowiednich aplikacja funkcji platformy Azure  | Odwołanie do połączonej usługi | tak |
+| połączona usługa | Połączona usługa funkcji platformy Azure dla odpowiednich aplikacja funkcji platformy Azure  | Odwołanie do połączonej usługi | tak |
 | Nazwa funkcji  | Nazwa funkcji w aplikacja funkcji platformy Azure, którą wywołuje to działanie | Ciąg | tak |
 | method  | Metoda interfejsu API REST dla wywołania funkcji | Obsługiwane typy ciągów: "GET", "POST", "PUT"   | tak |
 | nagłówek  | Nagłówki wysyłane do żądania. Na przykład, aby ustawić język i typ dla żądania: "heads": {"Accept-Language": "en-us", "Content-Type": "Application/JSON"} | Ciąg (lub wyrażenie z typem ResultType ciągu) | Nie |

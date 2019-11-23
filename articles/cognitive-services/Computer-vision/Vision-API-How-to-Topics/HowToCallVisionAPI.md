@@ -31,7 +31,7 @@ W tym artykule przedstawiono sposób wywoływania interfejs API przetwarzania ob
 - Obsługiwane metody wejściowe: plik binarny RAW obrazu w postaci aplikacji/strumienia oktetowego lub adresu URL obrazu
 - Obsługiwane formaty plików obrazów: JPEG, PNG, GIF i BMP
 - Rozmiar pliku obrazu: 4 MB lub mniej
-- Wymiary obrazu: 50 @no__t – 0 50 pikseli lub więcej
+- Wymiary obrazu: 50 &times; 50 pikseli lub więcej
   
 W przykładach w tym artykule przedstawiono następujące funkcje:
 
@@ -246,7 +246,7 @@ categories[].name    | `string` | Nazwa z listy Taksonomia kategorii 86.
 categories[].score  | `number`  | Wynik pewności z zakresu od 0 do 1.
 categories[].detail  | `object?`      | Obowiązkowe Obiekt szczegółowy.
 
-Jeśli wiele kategorii jest zgodnych (na przykład klasyfikator kategorii 86-Category zwróci wynik dla "people_" i "people_young", gdy model = osobistości), szczegóły są dołączane do najbardziej ogólnego dopasowania poziomu ("people_", w tym przykładzie).
+Jeśli wiele kategorii jest zgodnych (na przykład klasyfikator kategorii 86 — zwraca ocenę dla obu "people_" i "people_young," gdy model = osobistości), szczegóły są dołączane do najbardziej ogólnego dopasowania poziomu ("people_" w tym przykładzie).
 
 ## <a name="error-responses"></a>Odpowiedzi na błędy
 

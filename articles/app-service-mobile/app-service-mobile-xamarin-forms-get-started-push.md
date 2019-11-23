@@ -28,9 +28,9 @@ ms.locfileid: "72388531"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do wszystkich projektów, które powstały w ramach [szybkiego startu Xamarin. Forms](app-service-mobile-xamarin-forms-get-started.md). Oznacza to, że powiadomienie wypychane jest wysyłane do wszystkich klientów na wielu platformach za każdym razem, gdy rekord zostanie wstawiony.
 
@@ -67,7 +67,7 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
 1. W projekcie **Droid** kliknij prawym przyciskiem myszy pozycję **odwołania > Zarządzaj pakietami NuGet.** ...
 1. W oknie Menedżer pakietów NuGet Wyszukaj pakiet **Xamarin. Firebase. Messaging** i dodaj go do projektu.
 1. We właściwościach projektu projektu **Droid** Ustaw aplikację na kompilację przy użyciu systemu Android w wersji 7,0 lub nowszej.
-1. Dodaj plik **Google-Services. JSON** pobrany z konsoli Firebase do katalogu głównego projektu **Droid** i ustaw jego akcję kompilacji na **GoogleServicesJson**. Aby uzyskać więcej informacji, zobacz [Dodawanie pliku JSON usług Google Services](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
+1. Dodaj plik **Google-Services. JSON** pobrany z konsoli Firebase do katalogu głównego projektu **Droid** i ustaw jego akcję kompilacji na **GoogleServicesJson**. Aby uzyskać więcej informacji, zobacz [Dodaj plik JSON usługi Google](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Rejestrowanie w usłudze Firebase Cloud Messaging
 
@@ -84,9 +84,9 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     </receiver>
     ```
 
-#### <a name="implementing-the-firebase-instance-id-service"></a>Implementowanie usługi identyfikatora wystąpienia Firebase
+#### <a name="implementing-the-firebase-instance-id-service"></a>Wdrażanie usługi Identyfikatora wystąpienia usługi Firebase
 
-1. Dodaj nową klasę do projektu **Droid** o nazwie `FirebaseRegistrationService` i upewnij się, że na początku pliku znajdują się następujące instrukcje `using`:
+1. Dodaj nową klasę do projektu **Droid** o nazwie `FirebaseRegistrationService`i upewnij się, że na początku pliku znajdują się następujące instrukcje `using`:
 
     ```csharp
     using System.Threading.Tasks;
@@ -123,13 +123,13 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     }
     ```
 
-    Klasa `FirebaseRegistrationService` jest odpowiedzialna za generowanie tokenów zabezpieczających, które autoryzują aplikację w celu uzyskania dostępu do FCM. Metoda `OnTokenRefresh` jest wywoływana, gdy aplikacja otrzymuje token rejestracji z FCM. Metoda pobiera token z właściwości `FirebaseInstanceId.Instance.Token`, która jest asynchronicznie aktualizowana przez FCM. Metoda `OnTokenRefresh` jest rzadko wywoływana, ponieważ token jest aktualizowany tylko wtedy, gdy aplikacja jest zainstalowana lub odinstalowana, gdy użytkownik usuwa dane aplikacji, gdy aplikacja wymazuje identyfikator wystąpienia lub gdy zabezpieczenia tokenu zostały naruszone. Ponadto usługa identyfikatora wystąpienia FCM będzie żądać, aby aplikacja odświeża swój token okresowo, zazwyczaj co 6 miesięcy.
+    Klasa `FirebaseRegistrationService` jest odpowiedzialna za generowanie tokenów zabezpieczających, którzy autoryzują aplikację w celu uzyskania dostępu do FCM. `OnTokenRefresh` Metoda jest wywoływana, gdy aplikacja odbiera token rejestracji z usługi FCM. Metoda pobiera token z `FirebaseInstanceId.Instance.Token` właściwość, która asynchronicznie jest aktualizowany za pomocą usługi FCM. `OnTokenRefresh` Wywoływana jest metoda rzadko, ponieważ token są aktualizowane tylko po zainstalowaniu lub odinstalowaniu, gdy użytkownik usuwa dane aplikacji, gdy aplikacja Usuwa identyfikator wystąpienia aplikacji lub gdy zabezpieczeń tokenu naruszenie bezpieczeństwa. Ponadto usługi Identyfikatora wystąpienia usługi FCM zażąda, że aplikacja odświeża jej token okresowo zazwyczaj co 6 miesięcy.
 
-    Metoda `OnTokenRefresh` wywołuje również metodę `SendRegistrationTokenToAzureNotificationHub`, która jest używana do kojarzenia tokena rejestracji użytkownika z centrum powiadomień platformy Azure.
+    `OnTokenRefresh` Wywołuje również metodę `SendRegistrationTokenToAzureNotificationHub` metody, która służy do kojarzenia tokenu rejestracji w usłudze Azure Notification Hubs.
 
-#### <a name="registering-with-the-azure-notification-hub"></a>Rejestrowanie w usłudze Azure Notification Hub
+#### <a name="registering-with-the-azure-notification-hub"></a>Rejestrowanie w usłudze Azure Notification Hubs
 
-1. Dodaj nową klasę do projektu **Droid** o nazwie `AzureNotificationHubService` i upewnij się, że na początku pliku znajdują się następujące instrukcje `using`:
+1. Dodaj nową klasę do projektu **Droid** o nazwie `AzureNotificationHubService`i upewnij się, że na początku pliku znajdują się następujące instrukcje `using`:
 
     ```csharp
     using System;
@@ -168,11 +168,11 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     }
     ```
 
-    Metoda `RegisterAsync` tworzy prosty szablon komunikatu z powiadomieniem jako kod JSON i rejestruje otrzymywanie powiadomień o szablonach z centrum powiadomień przy użyciu tokenu rejestracji Firebase. Dzięki temu wszystkie powiadomienia wysyłane z centrum powiadomień platformy Azure będą ukierunkowane na urządzenie reprezentowane przez token rejestracji.
+    Metoda `RegisterAsync` tworzy prosty szablon wiadomości z powiadomieniem jako kod JSON i rejestruje je w celu otrzymywania powiadomień o szablonach z centrum powiadomień przy użyciu tokenu rejestracji Firebase. Daje to gwarancję, że wszelkie powiadomienia wysyłane z Centrum powiadomień platformy Azure będą ukierunkowane na urządzenie, reprezentowane przez tokenu rejestracji.
 
-#### <a name="displaying-the-contents-of-a-push-notification"></a>Wyświetlanie zawartości powiadomienia wypychanego
+#### <a name="displaying-the-contents-of-a-push-notification"></a>Wyświetlanie zawartości powiadomienia Wypychanego
 
-1. Dodaj nową klasę do projektu **Droid** o nazwie `FirebaseNotificationService` i upewnij się, że na początku pliku znajdują się następujące instrukcje `using`:
+1. Dodaj nową klasę do projektu **Droid** o nazwie `FirebaseNotificationService`i upewnij się, że na początku pliku znajdują się następujące instrukcje `using`:
 
     ```csharp
     using Android.App;
@@ -225,7 +225,7 @@ Zaplecze skonfigurowanym za pomocą FCM można dodać składniki i kody do klien
     }
     ```
 
-    Metoda `OnMessageReceived` wywoływana, gdy aplikacja odbiera powiadomienie z FCM, wyodrębnia zawartość komunikatu i wywołuje metodę `SendNotification`. Ta metoda umożliwia konwersję zawartości komunikatu do lokalnego powiadomienia, które zostało uruchomione, gdy aplikacja jest uruchomiona, z powiadomieniem wyświetlanym w obszarze powiadomień.
+    Metoda `OnMessageReceived`, która jest wywoływana, gdy aplikacja otrzymuje powiadomienie z FCM, wyodrębnia zawartość komunikatu i wywołuje metodę `SendNotification`. Ta metoda Konwertuje zawartość komunikatu do lokalnego powiadomienia, który jest uruchamiany, gdy aplikacja jest uruchomiona z powiadomieniem znajdujących się w obszarze powiadomień.
 
 Teraz możesz zacząć testować powiadomienia wypychane w aplikacji uruchomionej na urządzeniu z systemem Android lub w emulatorze.
 
@@ -411,7 +411,7 @@ Ta sekcja służy do uruchamiania projektów Xamarin. Forms WinApp i WinPhone81 
 Więcej informacji na temat powiadomień wypychanych można znaleźć w tematach:
 
 * [Wysyłanie powiadomień wypychanych z usługi Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Obsługa komunikatów w chmurze Firebase](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Usługa Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [Powiadomienia zdalne z obsługą komunikatów w chmurze Firebase](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Diagnozuj problemy z powiadomieniem wypychanym](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   Istnieją różne przyczyny, dla których powiadomienia mogą zostać porzucone lub nie kończyć się na urządzeniach. W tym temacie pokazano, jak analizować i ustalić główną przyczynę niepowodzeń powiadomień wypychanych.
@@ -421,7 +421,7 @@ Możesz również przejść do jednego z następujących samouczków:
 * [Dodawanie uwierzytelniania do aplikacji](app-service-mobile-xamarin-forms-get-started-users.md)  
   Dowiedz się, jak uwierzytelniać użytkowników aplikacji przy użyciu dostawcy tożsamości.
 * [Włączanie synchronizacji w trybie offline dla aplikacji](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Dowiedz się, jak dodać obsługę aplikacji w trybie offline przy użyciu zaplecza funkcji Mobile Apps. Dzięki synchronizacji w trybie offline użytkownicy mogą korzystać z aplikacji mobilnej @ no__t-0viewing, dodając lub modyfikując dane @ no__t-1even, gdy nie ma połączenia sieciowego.
+  Dowiedz się, jak dodać obsługę aplikacji w trybie offline przy użyciu zaplecza funkcji Mobile Apps. Dzięki synchronizacji w trybie offline użytkownicy mogą korzystać z aplikacji mobilnej&mdash;przeglądania, dodawania i modyfikowania danych&mdash;nawet w przypadku braku połączenia sieciowego.
 
 <!-- Images. -->
 

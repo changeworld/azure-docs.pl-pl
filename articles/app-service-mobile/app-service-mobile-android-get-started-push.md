@@ -28,9 +28,9 @@ ms.locfileid: "72389025"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do projektu [Android — szybki start] , aby Powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy rekord zostanie wstawiony.
 
@@ -94,7 +94,7 @@ Teraz po ukończeniu tego samouczka Rozważ przejście do jednego z następując
 * [Dodawanie uwierzytelniania do aplikacji systemu Android](app-service-mobile-android-get-started-users.md).
   Dowiedz się, jak dodać uwierzytelnianie do projektu szybkiego startu todolist w systemie Android przy użyciu obsługiwanego dostawcy tożsamości.
 * [Włącz synchronizację w trybie offline dla aplikacji systemu Android](app-service-mobile-android-get-started-offline-data.md).
-  Dowiedz się, jak dodać obsługę offline do aplikacji przy użyciu zaplecza Mobile Apps. Dzięki synchronizacji w trybie offline użytkownicy mogą korzystać z aplikacji mobilnej @ no__t-0viewing, dodając lub modyfikując dane @ no__t-1even, gdy nie ma połączenia sieciowego.
+  Dowiedz się, jak dodać obsługę offline do aplikacji przy użyciu zaplecza Mobile Apps. Dzięki synchronizacji w trybie offline użytkownicy mogą korzystać z aplikacji mobilnej&mdash;przeglądania, dodawania i modyfikowania danych&mdash;nawet w przypadku braku połączenia sieciowego.
 
 <!-- URLs -->
 [Android — szybki start]: app-service-mobile-android-get-started.md

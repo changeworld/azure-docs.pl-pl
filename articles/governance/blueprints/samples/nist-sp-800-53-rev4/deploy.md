@@ -111,7 +111,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń|Przypisywanie zasad|Prefiks konta magazynu dla diagnostyki sieciowej grupy zabezpieczeń|Ten prefiks zostanie połączony z lokalizacją sieciowej grupy zabezpieczeń w celu utworzenia nazwy utworzonego konta magazynu.|
 |Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń|Przypisywanie zasad|Nazwa grupy zasobów dla konta magazynu dla diagnostyki sieciowej grupy zabezpieczeń (musi istnieć)|Grupa zasobów, w której zostanie utworzone konto magazynu. Ta grupa zasobów musi już istnieć.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po przejrzeniu kroków w celu wdrożenia przykładu z planu NIST SP 800-53 R4 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o mapowaniu planów i kontroli:
 

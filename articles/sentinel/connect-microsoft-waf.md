@@ -40,7 +40,7 @@ Po wdrożeniu i pobieraniu danych przez zaporę aplikacji sieci Web firmy Micros
     
 1. W portalu wskaźnikowym platformy Azure wybierz pozycję **Łączniki danych**.
 1. Na stronie łączniki danych wybierz kafelek **WAF** .
-1. Przejdź do obszaru [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)@no__t — 1AND wybierz WAF.
+1. Przejdź do obszaru [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) i wybierz pozycję WAF.
     1. Wybierz pozycję **Ustawienia diagnostyczne**.
     1. Wybierz pozycję **+ Dodaj ustawienie diagnostyczne** w tabeli.
     1. Na stronie **Ustawienia diagnostyczne** wpisz **nazwę** i wybierz pozycję **Wyślij do log Analytics**.

@@ -28,9 +28,9 @@ ms.locfileid: "72388625"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do projektu [szybkiego startu systemu Windows](app-service-mobile-windows-store-dotnet-get-started.md) , aby Powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy rekord zostanie wstawiony.
 
@@ -66,7 +66,7 @@ Musisz przesłać aplikację do Microsoft Store, a następnie skonfigurować pro
 
 ## <a id="update-service"></a>Aktualizowanie serwera w celu wysyłania powiadomień wypychanych
 
-Wykonaj poniższą procedurę, która pasuje do typu projektu zaplecza @ no__t-0either [.NET](#dotnet) lub zaplecza [Node. js](#nodejs).
+Użyj poniższej procedury, która jest zgodna z typem projektu wewnętrznej bazy danych&mdash;[zaplecza platformy .NET](#dotnet) lub [zaplecza Node. js](#nodejs).
 
 ### <a name="dotnet"></a>Projekt zaplecza .NET
 

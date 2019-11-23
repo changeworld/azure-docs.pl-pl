@@ -309,12 +309,12 @@ ms.locfileid: "70101385"
 
 
 
-W tym dokumencie omówiono kilka różnych obszarów, które należy wziąć pod uwagę podczas wdrażania MaxDB, liveCache i serwera zawartości na platformie Azure IaaS. Jako warunek wstępny do tego dokumentu należy przeczytać zagadnienia dotyczące dokumentu [dotyczące wdrożenia systemu azure Virtual Machines DBMS dotyczące obciążeń SAP](dbms_guide_general.md) oraz innych przewodników w obciążeniu [SAP w dokumentacji platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+W tym dokumencie omówiono kilka różnych obszarów, które należy wziąć pod uwagę podczas wdrażania MaxDB, liveCache i serwera zawartości na platformie Azure IaaS. Jako warunek wstępny do tego dokumentu należy przeczytać [zagadnienia dotyczące dokumentu dotyczące wdrożenia systemu azure Virtual Machines DBMS dotyczące obciążeń SAP](dbms_guide_general.md) oraz innych przewodników w [obciążeniu SAP w dokumentacji platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Specyficzne dla wdrożeń SAP MaxDB w systemie Windows
 ### <a name="sap-maxdb-version-support-on-azure"></a>Obsługa wersji SAP MaxDB na platformie Azure
-System SAP obecnie obsługuje oprogramowanie SAP MaxDB w wersji 7,9 lub nowszej do użycia z produktami opartymi na oprogramowaniu SAP NetWeaver na platformie Azure. Wszystkie aktualizacje sterowników oprogramowania SAP MaxDB Server lub JDBC i ODBC, które mają być używane z produktami opartymi na oprogramowaniu SAP NetWeaver, są dostarczane wyłącznie za <https://support.sap.com/swdc>pośrednictwem platformy SAP Service Marketplace pod adresem.
-Ogólne informacje na temat uruchamiania oprogramowania SAP NetWeaver w systemie SAP MaxDB można <https://www.sap.com/community/topic/maxdb.html>znaleźć pod adresem.
+System SAP obecnie obsługuje oprogramowanie SAP MaxDB w wersji 7,9 lub nowszej do użycia z produktami opartymi na oprogramowaniu SAP NetWeaver na platformie Azure. Wszystkie aktualizacje sterowników oprogramowania SAP MaxDB Server lub JDBC i ODBC, które mają być używane z produktami opartymi na oprogramowaniu SAP NetWeaver, są dostarczane wyłącznie za pośrednictwem platformy SAP Service Marketplace w <https://support.sap.com/swdc>.
+Ogólne informacje na temat uruchamiania oprogramowania SAP NetWeaver w systemie SAP MaxDB można znaleźć pod adresem <https://www.sap.com/community/topic/maxdb.html>.
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Obsługiwane wersje systemu Microsoft Windows i typy maszyn wirtualnych platformy Azure dla systemu SAP MaxDB DBMS
 Aby znaleźć obsługiwaną wersję systemu Microsoft Windows dla oprogramowania SAP MaxDB DBMS na platformie Azure, zobacz:
@@ -338,11 +338,11 @@ Najlepsze rozwiązania dotyczące usługi Azure Storage dla oprogramowania SAP M
 
 Krótko mówiąc:
 
-* Jeśli używasz kont usługi Azure Storage, Ustaw konto usługi Azure Storage, które przechowuje woluminy danych i dzienników SAP MaxDB (pliki danych i dziennika) do **magazynu lokalnego nadmiarowego (LRS)** , zgodnie z opisem w temacie [uwagi dotyczące wdrażania systemu Azure Virtual Machines DBMS dla oprogramowania SAP obciążenie](dbms_guide_general.md).
+* Jeśli używasz kont usługi Azure Storage, Ustaw konto usługi Azure Storage, które przechowuje woluminy danych i dzienników SAP MaxDB (pliki danych i dziennika) do **magazynu lokalnego nadmiarowego (LRS)** , zgodnie z opisem w temacie [uwagi dotyczące wdrażania platformy Azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md).
 * Oddziel ścieżkę we/wy dla woluminów danych SAP MaxDB (pliki danych) ze ścieżki we/wy dla woluminów dziennika (pliki dzienników). Oznacza to, że woluminy danych SAP MaxDB (pliki danych) muszą być zainstalowane na jednym dysku logicznym, a woluminy dzienników SAP MaxDB muszą być zainstalowane na innym dysku logicznym.
-* Ustaw odpowiedni typ buforowania dla każdego dysku, w zależności od tego, czy jest on używany dla woluminów danych i dzienników SAP MaxDB (pliki danych i dziennika), oraz czy używasz platformy Azure w warstwie Standardowa czy Azure Premium Storage, zgodnie z opisem w temacie [zagadnienia dotyczące wdrażania systemu azure Virtual Machines DBMS w przypadku obciążeń SAP](dbms_guide_general.md).
+* Ustaw odpowiedni typ buforowania dla każdego dysku, w zależności od tego, czy jest on używany dla danych MaxDB oprogramowania SAP czy woluminów dziennika (plików danych i dziennika), oraz czy korzystasz z platformy Azure w warstwie Standardowa czy Azure Premium Storage, zgodnie z opisem w temacie [zagadnienia dotyczące wdrażania platformy azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md).
 * Tak długo, jak bieżąca liczba operacji we/wy na dysk spełnia wymagania, można przechowywać wszystkie woluminy danych na jednym zainstalowanym dysku, a także przechowywać wszystkie woluminy dziennika bazy danych na innym dysku zainstalowanym.
-* Jeśli wymagana jest większa liczba operacji we/wy i/lub spacja, zaleca się korzystanie z pul magazynów systemu Windows (dostępne tylko w systemie Microsoft Windows Server 2012 lub nowszym) w celu utworzenia jednego dużego urządzenia logicznego na wielu zainstalowanych dyskach. Aby uzyskać więcej informacji, zobacz również zagadnienia dotyczące [wdrażania systemu Azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md). To podejście upraszcza administrację zarządzaniem miejscem na dysku i pozwala uniknąć wysiłku ręcznego dystrybuowania plików na wielu zainstalowanych dyskach.
+* Jeśli wymagana jest większa liczba operacji we/wy i/lub spacja, zaleca się korzystanie z pul magazynów systemu Windows (dostępne tylko w systemie Microsoft Windows Server 2012 lub nowszym) w celu utworzenia jednego dużego urządzenia logicznego na wielu zainstalowanych dyskach. Aby uzyskać więcej informacji, zobacz również [zagadnienia dotyczące wdrażania systemu Azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md). To podejście upraszcza administrację zarządzaniem miejscem na dysku i pozwala uniknąć wysiłku ręcznego dystrybuowania plików na wielu zainstalowanych dyskach.
 * zdecydowanie zaleca się używanie Premium Storage platformy Azure na potrzeby wdrożeń MaxDB. 
 
 ![Konfiguracja referencyjna maszyny wirtualnej usługi Azure IaaS dla systemu SAP MaxDB DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
@@ -459,7 +459,7 @@ Dostępne są dwie opcje:
    1. Zainstaluj serwer pamięci podręcznej SAP w środowisku lokalnym, blisko lokalnej przeglądarki sieci Web (opcja na rysunku poniżej)
    2. Skonfiguruj usługę Azure ExpressRoute, która oferuje dedykowane i niskie opóźnienia połączenie sieciowe między lokalnym centrum danych a centrum danych platformy Azure.
 
-![Opcja instalacji lokalnego serwera pamięci podręcznej SAP](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
+Opcja ![instalacji lokalnego serwera pamięci podręcznej SAP](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Wykonywanie kopii zapasowych i ich przywracanie

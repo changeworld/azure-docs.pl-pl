@@ -23,12 +23,12 @@ ms.locfileid: "72299992"
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Wprowadzenie do usługi Azure Table Storage i usług połączonych programu Visual Studio (projekty usług Cloud Services)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule opisano, jak rozpocząć korzystanie z usługi Azure Table Storage w programie Visual Studio po utworzeniu lub przywoływaniu konta usługi Azure Storage w projekcie usług w chmurze za pomocą okna dialogowego **Dodawanie połączonych usług** programu Visual Studio. Operacja **Dodaj podłączone usługi** instaluje odpowiednie pakiety NuGet w celu uzyskania dostępu do usługi Azure Storage w projekcie i dodaje parametry połączenia dla konta magazynu do plików konfiguracji projektu.
 
-Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa to magazyn danych NoSQL, który akceptuje uwierzytelnione wywołania z chmury platformy Azure i poza nią. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.
+Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.
 
-Aby rozpocząć, musisz najpierw utworzyć tabelę na koncie magazynu. Pokażemy Ci, jak utworzyć tabelę platformy Azure w kodzie, a także jak wykonywać podstawowe operacje tabeli i jednostek, takie jak dodawanie, modyfikowanie, odczytywanie i odczytywanie jednostek tabeli. Przykłady są zapisywane w kodzie C @ no__t-0 i używają [biblioteki klienta Microsoft Azure Storage dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Aby rozpocząć, musisz najpierw utworzyć tabelę na koncie magazynu. Pokażemy Ci, jak utworzyć tabelę platformy Azure w kodzie, a także jak wykonywać podstawowe operacje tabeli i jednostek, takie jak dodawanie, modyfikowanie, odczytywanie i odczytywanie jednostek tabeli. Przykłady są zapisywane w języku C\# kodu i używają [Microsoft Azure Storage biblioteki klienckiej dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 **Uwaga:** Niektóre interfejsy API, które wykonują wywołania do usługi Azure Storage, są asynchroniczne. Aby uzyskać więcej informacji [, zobacz Programowanie asynchroniczne z Async i await](https://msdn.microsoft.com/library/hh191443.aspx) . W poniższym kodzie przyjęto, że są używane asynchroniczne metody programowania.
 

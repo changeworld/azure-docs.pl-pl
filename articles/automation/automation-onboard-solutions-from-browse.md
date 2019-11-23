@@ -20,7 +20,7 @@ ms.locfileid: "72372787"
 
 Azure Automation udostępnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenia zmian i spisu, co jest zainstalowane na komputerach. Istnieje wiele sposobów, aby dołączać maszyny, można dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md)do [konta usługi Automation](automation-onboard-solutions-from-automation-account.md)podczas przeglądania maszyn wirtualnych lub przez [element Runbook](automation-onboard-solutions.md). W tym artykule opisano dołączanie tych rozwiązań podczas przeglądania maszyn wirtualnych na platformie Azure.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
@@ -99,7 +99,7 @@ Jeśli użyto rozwiązania Update Management, opcjonalnie możesz chcieć usuną
 
 * Harmonogramy aktualizacji — każda z nich będzie mieć nazwy zgodne z utworzonymi wdrożeniami aktualizacji)
 
-* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda z nich będzie podobna do maszyna1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
+* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda z nich będzie podobna do maszyna1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
 Jeśli użyto rozwiązania Start/Stop VMs during off-hours, opcjonalnie możesz chcieć usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
@@ -113,7 +113,7 @@ Możesz również odłączyć obszar roboczy od konta usługi Automation z pozio
 
 Podczas dołączania wielu maszyn mogą istnieć maszyny, które są wyświetlane jako **niemożliwe do włączenia**. Istnieją różne przyczyny, dla których niektóre maszyny mogą nie być włączone. W poniższych sekcjach przedstawiono możliwe przyczyny stanu **nie można włączyć** na maszynie wirtualnej podczas próby dołączenia.
 
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Raporty maszyny wirtualnej do innego obszaru roboczego: "\<workspaceName @ no__t-1".  Zmień konfigurację, aby była używana do włączania
+### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Raport maszyny wirtualnej jest w innym obszarze roboczym: "\<WorkspaceName\>".  Zmień konfigurację, aby była używana do włączania
 
 **Przyczyna**: ten błąd pokazuje, że maszyna wirtualna, którą próbujesz dołączyć do raportów, do innego obszaru roboczego.
 
@@ -151,7 +151,7 @@ Podczas dołączania wielu maszyn mogą istnieć maszyny, które są wyświetlan
 
 Aby usunąć maszynę wirtualną z Update Management:
 
-* W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania w obszarze Konfiguracja zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
+* W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania `MicrosoftDefaultScopeConfig-Updates`konfiguracji zakresu. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
 * Usuń [program Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Następne kroki

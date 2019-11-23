@@ -128,12 +128,12 @@ Następujący szablon działania kopiowania zawiera pełną listę obsługiwanyc
 
 | Właściwość | Opis | Wymagana? |
 |:--- |:--- |:--- |
-| type | Dla działania kopiowania ustaw wartość `Copy` | Yes |
-| inputs | Określ utworzony zestaw danych, który wskazuje na dane źródłowe. Działanie kopiowania obsługuje tylko pojedyncze dane wejściowe. | Yes |
-| outputs | Określ utworzony zestaw danych, który wskazuje na dane ujścia. Działanie kopiowania obsługuje tylko pojedyncze dane wyjściowe. | Yes |
-| typeProperties | Określ właściwości, aby skonfigurować działanie kopiowania. | Yes |
-| source | Określ typ źródła kopiowania i odpowiednie właściwości do pobierania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Yes |
-| sink | Określ typ ujścia kopiowania i odpowiadające im właściwości zapisywania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Yes |
+| type | Dla działania kopiowania ustaw wartość `Copy` | Tak |
+| inputs | Określ utworzony zestaw danych, który wskazuje na dane źródłowe. Działanie kopiowania obsługuje tylko pojedyncze dane wejściowe. | Tak |
+| outputs | Określ utworzony zestaw danych, który wskazuje na dane ujścia. Działanie kopiowania obsługuje tylko pojedyncze dane wyjściowe. | Tak |
+| typeProperties | Określ właściwości, aby skonfigurować działanie kopiowania. | Tak |
+| source | Określ typ źródła kopiowania i odpowiednie właściwości do pobierania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Tak |
+| sink | Określ typ ujścia kopiowania i odpowiadające im właściwości zapisywania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Tak |
 | translator | Określ mapowania kolumn jawne ze źródła do ujścia. Ta właściwość ma zastosowanie, gdy domyślne zachowanie kopiowania nie spełnia Twoich potrzeb.<br/><br/>Aby uzyskać więcej informacji, zobacz [Mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md). | Nie |
 | dataIntegrationUnits | Określ miarę, która przedstawia ilość mocy używanej przez [środowisko Azure Integration Runtime](concepts-integration-runtime.md) do kopiowania danych. Te jednostki były wcześniej znane jako jednostki przenoszenia danych w chmurze (DMU). <br/><br/>Aby uzyskać więcej informacji, zobacz [jednostki integracji danych](copy-activity-performance.md#data-integration-units). | Nie |
 | parallelCopies | Określ równoległość, która ma być używana przez działanie kopiowania podczas odczytywania danych ze źródła i zapisywania danych do ujścia.<br/><br/>Aby uzyskać więcej informacji, zobacz [Kopiowanie równoległe](copy-activity-performance.md#parallel-copy). | Nie |

@@ -37,7 +37,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 ## <a name="set-up-feature-management"></a>Konfigurowanie zarządzania funkcjami
 
-@No__t-0 jest pobierana przez Menedżera funkcji sprężyny. W związku z tym można zdefiniować flagi funkcji aplikacji przy użyciu dowolnego źródła konfiguracji obsługiwanego przez rozruch sprężynowy, w tym lokalnego pliku *Bootstrap. yml* lub zmiennych środowiskowych. `FeatureManager` opiera się na iniekcji zależności. Usługi zarządzania funkcjami można zarejestrować przy użyciu standardowych konwencji:
+Menedżer funkcji rozruchu sprężynowego `FeatureManager` pobiera flagi funkcji z natywnego systemu konfiguracji struktury. W związku z tym można zdefiniować flagi funkcji aplikacji przy użyciu dowolnego źródła konfiguracji obsługiwanego przez rozruch sprężynowy, w tym lokalnego pliku *Bootstrap. yml* lub zmiennych środowiskowych. `FeatureManager` opiera się na iniekcji zależności. Usługi zarządzania funkcjami można zarejestrować przy użyciu standardowych konwencji:
 
 ```java
 private FeatureManager featureManager;
@@ -85,7 +85,7 @@ Zgodnie z Konwencją sekcja `feature-management` tego dokumentu YML jest używan
 
 * `FeatureA` jest *włączona*.
 * `FeatureB` jest *wyłączona*.
-* `FeatureC` określa filtr o nazwie `Percentage` z właściwością `Parameters`. `Percentage` to konfigurowalny filtr. W tym przykładzie `Percentage` określa prawdopodobieństwo 50 procent dla flagi @no__t- *1.*
+* `FeatureC` określa filtr o nazwie `Percentage` z właściwością `Parameters`. `Percentage` to konfigurowalny filtr. W tym przykładzie `Percentage` określa prawdopodobieństwo 50 procent dla flagi *`FeatureC`.*
 
 ## <a name="feature-flag-checks"></a>Sprawdzanie flag funkcji
 
@@ -102,7 +102,7 @@ if (featureManager.isEnabled("FeatureA"))
 
 ## <a name="dependency-injection"></a>Wstrzykiwanie zależności
 
-W przypadku rozruchu sprężynowego można uzyskać dostęp do programu Feature Manager `FeatureManager` przez iniekcję zależności:
+W przypadku rozruchu sprężynowego można uzyskać dostęp do programu Feature Manager `FeatureManager` za pomocą iniekcji zależności:
 
 ```java
 @Controller
@@ -118,7 +118,7 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Akcje kontrolera
 
-W kontrolerach MVC należy użyć atrybutu `@FeatureGate`, aby określić, czy określona akcja jest włączona. Następująca akcja `Index` wymaga *, aby `FeatureA` przed* uruchomieniem:
+W kontrolerach MVC Użyj atrybutu `@FeatureGate`, aby określić, czy określona akcja jest włączona. Aby można było uruchomić następujące akcje `Index`, `FeatureA` musi ono być *włączone* :
 
 ```java
 @GetMapping("/")
@@ -132,7 +132,7 @@ Gdy kontroler MVC lub akcja jest blokowana, ponieważ flaga funkcji kontrolując
 
 ## <a name="mvc-filters"></a>Filtry MVC
 
-Filtry MVC można skonfigurować tak, aby były aktywowane na podstawie stanu flagi funkcji. Poniższy kod dodaje filtr MVC o nazwie `FeatureFlagFilter`. Ten filtr jest wyzwalany w ramach potoku MVC tylko wtedy, gdy jest włączony `FeatureA`.
+Filtry MVC można skonfigurować tak, aby były aktywowane na podstawie stanu flagi funkcji. Poniższy kod dodaje filtr MVC o nazwie `FeatureFlagFilter`. Ten filtr jest wyzwalany w ramach potoku MVC tylko wtedy, gdy `FeatureA` jest włączona.
 
 ```java
 @Component
@@ -156,7 +156,7 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>Trasy
 
-Za pomocą flag funkcji można przekierowywać trasy. Następujący kod przekierowuje użytkownika z `FeatureA` jest włączone:
+Za pomocą flag funkcji można przekierowywać trasy. Następujący kod przekierowuje użytkownika z `FeatureA` jest włączony:
 
 ```java
 @GetMapping("/redirect")

@@ -1,6 +1,6 @@
 ---
-title: Wymagania dotyczące usługi Azure Import/Export | Microsoft Docs
-description: Zapoznaj się z wymaganiami dotyczącymi oprogramowania i sprzętu usługi Azure Import/Export.
+title: Wymagania dotyczące usługi Azure Import/Export | Dokumentacja firmy Microsoft
+description: Zrozumienie wymagań sprzętu i oprogramowania dla usługi Azure Import/Export.
 author: alkohli
 services: storage
 ms.service: storage
@@ -15,21 +15,21 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 10/23/2019
 ms.locfileid: "72821397"
 ---
-# <a name="azure-importexport-system-requirements"></a>Wymagania systemowe usługi Azure Import/Export
+# <a name="azure-importexport-system-requirements"></a>Wymagania dotyczące systemu Azure Import/Export
 
-W tym artykule opisano ważne wymagania dotyczące usługi Azure Import/Export. Zalecamy dokładne zapoznanie się z informacjami przed użyciem usługi Import/Export, a następnie odwołują się do niej w miarę potrzeb podczas operacji.
+W tym artykule opisano ważne wymagania dotyczące usługi Azure Import/Export. Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed korzystania z usługi Import/Export, a następnie wrócić do niego zgodnie z potrzebami podczas operacji.
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
-Aby przygotować dyski twarde przy użyciu narzędzia WAImportExport, obsługiwane są następujące **64-bitowe systemy operacyjne, które obsługują szyfrowanie dysków funkcją BitLocker** .
+Aby przygotować dyski twarde, za pomocą narzędzia WAImportExport, następujące **64-bitowego systemu operacyjnego, który obsługuje szyfrowanie dysków funkcją BitLocker** są obsługiwane.
 
 
 |Platforma |Wersja |
 |---------|---------|
-|Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise <br> Windows 10        |
+|Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8.1 Pro, Windows 8 Enterprise, Windows 8 Pro, Windows 8.1 Enterprise <br> Windows 10        |
 |Oprogramowanie Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
 
-## <a name="other-required-software-for-windows-client"></a>Inne wymagane oprogramowanie dla klienta systemu Windows
+## <a name="other-required-software-for-windows-client"></a>Inne wymagane oprogramowanie klienta Windows
 
 |Platforma |Wersja |
 |---------|---------|
@@ -45,55 +45,55 @@ Usługa Azure Import/Export obsługuje następujące typy kont magazynu:
 - Konta usługi Blob Storage
 - Konta magazynu Ogólnego przeznaczenia V1 (zarówno w przypadku wdrożeń klasycznych, jak i Azure Resource Manager), 
 
-Aby uzyskać więcej informacji na temat kont magazynu, zobacz [Omówienie kont usługi Azure Storage](storage-account-overview.md).
+Aby uzyskać więcej informacji na temat kont magazynu, zobacz [omówienie kont magazynu platformy Azure](storage-account-overview.md).
 
-Każde zadanie może służyć do transferowania danych do lub z tylko jednego konta magazynu. Innymi słowy, pojedyncze zadanie importu/eksportu nie może obejmować wielu kont magazynu. Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [jak utworzyć konto magazynu](storage-quickstart-create-account.md).
+Każde zadanie może służyć do przesyłania danych do lub z tylko jednego konta magazynu. Innymi słowy zadanie importu/eksportu pojedynczej nie mogą rozciągać się na wielu kontach magazynu. Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-quickstart-create-account.md).
 
 > [!IMPORTANT] 
-> Usługa eksportu Azure import nie obsługuje kont magazynu, w których włączono funkcję [punktów końcowych Virtual Network usługi](../../virtual-network/virtual-network-service-endpoints-overview.md) . 
+> Usługa Azure Import/Eksport obsługują kont magazynu, gdzie [punkty końcowe usługi sieci wirtualnej](../../virtual-network/virtual-network-service-endpoints-overview.md) funkcja została włączona. 
 
-## <a name="supported-storage-types"></a>Obsługiwane typy magazynów
+## <a name="supported-storage-types"></a>Obsługiwane typy
 
-Poniższa lista typów magazynu jest obsługiwana przez usługę Azure Import/Export.
+Poniższa lista typów magazynu jest obsługiwana przy użyciu usługi Azure Import/Export.
 
 
-|Zadanie  |Usługa magazynu |Obsługiwane  |Brak obsługi  |
+|Zadanie  |Usługa Storage |Obsługiwane  |Nieobsługiwane  |
 |---------|---------|---------|---------|
-|Import     |  Azure Blob Storage <br><br> Usługa Azure File Storage       | Obsługiwane obiekty blob i stronicowe obiekty blob <br><br> Obsługiwane pliki          |
-|Eksportuj     |   Azure Blob Storage       | Obsługiwane są blokowe obiekty blob, stronicowe obiekty blob i dołączane obiekty blob         | Nieobsługiwane Azure Files
+|Import     |  Azure Blob Storage <br><br> Usługa Azure File storage       | Blokowe obiekty BLOB i stronicowe obiekty BLOB, obsługiwane <br><br> Obsługiwane pliki          |
+|Eksportowanie     |   Azure Blob Storage       | Blokowe obiekty BLOB, stronicowe obiekty BLOB i obiekty BLOB dołączania obsługiwane         | Usługa pliki systemu Azure nie jest obsługiwane
 
 
-## <a name="supported-hardware"></a>Obsługiwany sprzęt 
+## <a name="supported-hardware"></a>Obsługiwane usługi sprzętowego 
 
-W przypadku usługi Azure Import/Export potrzebujesz obsługiwanych dysków do kopiowania danych.
+Dla usługi Azure Import/Export potrzebne są obsługiwane dyski do kopiowania danych.
 
 ### <a name="supported-disks"></a>Obsługiwane dyski
 
-Następująca lista dysków umożliwia korzystanie z usługi Import/Export.
+Poniższa lista dysków jest obsługiwane do użytku z usługi Import/Export.
 
 
 |Typ dysku  |Rozmiar  |Obsługiwane |
 |---------|---------|---------|
-|SSD    |   2,5 "      |SATA III          | 
-|HDD     |  2,5 "<br>3,5 "       |SATA II, SATA III         |
+|SSD    |   2,5"      |SATA III          | 
+|HDD     |  2,5"<br>3,5"       |SATA II SATA III         |
 
 Następujące typy dysków nie są obsługiwane:
 - USBs.
 - Zewnętrzny dysk twardy z wbudowaną adapterem USB.
 - Dyski, które znajdują się w obudowie zewnętrznego dysku twardego.
 
-Pojedyncze zadanie importu/eksportu może mieć następujące wartości:
-- Maksymalnie 10 dysków twardych/dysków SSD.
-- Mieszany dysk twardy/SSD dowolnego rozmiaru.
+Zadania importu/eksportu pojedynczego może mieć:
+- Maksymalnie 10 HDD/SSD.
+- Kombinacja HDD/SSD o dowolnym rozmiarze.
 
-Duża liczba dysków można rozłożyć na wiele zadań, a liczba zadań, które można utworzyć, nie jest ograniczona. W przypadku zadań importu tylko pierwszy wolumin danych na dysku jest przetwarzany. Wolumin danych musi być sformatowany w systemie plików NTFS.
+Duża liczba dysków mogły być rozkładane na wiele zadań i nie ma nieograniczoną liczbę zadań, które mogą być tworzone. Zadań importu jest przetwarzany tylko pierwszy wolumin danych na dysku. Ilość danych muszą być sformatowane jako NTFS.
 
-Podczas przygotowywania dysków twardych i kopiowania danych przy użyciu narzędzia WAImportExport można użyć zewnętrznych adapterów USB. Większość z przedziałów USB 3,0 lub nowszych powinna być w pełni zastosowana. 
+Podczas przygotowywania dysków twardych i kopiowanie danych przy użyciu narzędzia WAImportExport, można użyć zewnętrznej karty USB. Większość standardowych USB 3.0 lub nowszej adapterów powinny działać. 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Konfigurowanie narzędzia WAImportExport](storage-import-export-tool-how-to.md)
 * [Transfer danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md)
-* [Przykład interfejsu API REST usługi Azure Import Export](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
+* [Przykład interfejsu API REST wyeksportować importu Azure](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
 

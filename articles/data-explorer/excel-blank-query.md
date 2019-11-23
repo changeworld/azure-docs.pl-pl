@@ -39,7 +39,7 @@ Usługa Azure Eksplorator danych oferuje dwie opcje łączenia się z danymi w p
 
 1. Otwórz **program Microsoft Excel**.
 
-1. Na karcie **dane** wybierz pozycję **Pobierz dane** > **z innych źródeł** > **puste zapytanie**.
+1. Na karcie **dane** wybierz pozycję **Pobierz dane** > **z innych źródeł** > **pustego zapytania**.
 
     ![Pobierz dane i wybierz puste zapytanie](media/excel-blank-query/get-data-blank-query.png)
 

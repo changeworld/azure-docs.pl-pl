@@ -200,7 +200,7 @@ Plan pomaga zapewnić, że transfer informacji w ramach usług platformy Azure j
 - Inspekcja włączania tylko bezpiecznych połączeń z Redis Cache
 - Inspekcja bezpiecznego transferu na konta magazynu
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po przejrzeniu mapowania kontroli usługi udostępnionej ISO 27001 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o architekturze i sposobie wdrażania tego przykładu:
 

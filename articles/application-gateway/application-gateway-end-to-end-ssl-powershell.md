@@ -16,7 +16,7 @@ ms.locfileid: "72286454"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu Application Gateway z programem PowerShell
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Azure Application Gateway obsługuje kompleksowe szyfrowanie ruchu sieciowego. Application Gateway przerywa połączenie SSL w bramie aplikacji. Następnie Brama stosuje reguły routingu do ruchu, ponownie szyfruje pakiet i przekazuje pakiet do odpowiedniego serwera zaplecza na podstawie zdefiniowanych reguł routingu. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego.
 
@@ -167,7 +167,7 @@ Wszystkie elementy konfiguracji są ustawione przed utworzeniem bramy aplikacji.
    > [!NOTE]
    > Domyślna sonda Pobiera klucz publiczny z *domyślnego* powiązania SSL na adres IP zaplecza i porównuje wartość klucza publicznego, którą otrzymuje do wartości klucza publicznego, którą podano w tym miejscu. 
    > 
-   > Jeśli używasz nagłówków hosta i Oznaczanie nazwy serwera (SNI) na zapleczu, pobrany klucz publiczny może nie być zamierzoną lokacją, do której przepływy ruchu. Jeśli masz wątpliwości, odwiedź https://127.0.0.1/ na serwerach zaplecza, aby potwierdzić, który certyfikat jest używany dla *domyślnego* powiązania protokołu SSL. Użyj klucza publicznego z tego żądania w tej sekcji. Jeśli korzystasz z nagłówków hosta i SNI na powiązaniach HTTPS i nie otrzymasz odpowiedzi i certyfikatu z żądania przeglądarki ręcznej do https://127.0.0.1/ na serwerach zaplecza, musisz skonfigurować domyślne powiązanie protokołu SSL. Jeśli nie zostanie to zrobione, sondy zakończą się niepowodzeniem, a zaplecze nie listy dozwolonych.
+   > Jeśli używasz nagłówków hosta i Oznaczanie nazwy serwera (SNI) na zapleczu, pobrany klucz publiczny może nie być zamierzoną lokacją, do której przepływy ruchu. Jeśli masz wątpliwości, odwiedź https://127.0.0.1/ na serwerach zaplecza, aby potwierdzić, który certyfikat jest używany dla *domyślnego* powiązania protokołu SSL. Użyj klucza publicznego z tego żądania w tej sekcji. W przypadku korzystania z nagłówków hosta i SNI na powiązaniach HTTPS, gdy nie otrzymujesz odpowiedzi ani certyfikatu z żądania przeglądarki ręcznej do https://127.0.0.1/ na serwerach zaplecza, należy skonfigurować domyślne powiązanie protokołu SSL. Jeśli nie zostanie to zrobione, sondy zakończą się niepowodzeniem, a zaplecze nie listy dozwolonych.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +200,7 @@ Wszystkie elementy konfiguracji są ustawione przed utworzeniem bramy aplikacji.
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Skonfiguruj rozmiar wystąpienia bramy aplikacji. Dostępne są rozmiary **standardowe @ no__t-1Small**, **Standard @ no__t-3Medium**i **Standard @ no__t-5Large**.  W celu uzyskania pojemności dostępne są wartości od **1** do **10**.
+10. Skonfiguruj rozmiar wystąpienia bramy aplikacji. Dostępne rozmiary to **standardowe\_małe**, **standardowe\_średniej**i **standardowe\_duże**.  W celu uzyskania pojemności dostępne są wartości od **1** do **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +217,7 @@ Wszystkie elementy konfiguracji są ustawione przed utworzeniem bramy aplikacji.
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Poniższy przykład ustawia minimalną wersję protokołu na **TLSv1_2** i włącza **protokół TLS @ no__t-2ECDHE @ no__t-3ECDSA @ no__t-4WITH @ no__t-5AES @ no__t-6128 @ no__t-7GCM @ no__t-8SHA256**, **TLS @ no__t-10ECDHE @ no__t-11ECDSA @ no__t-12WITH @ No __t-13AES @ no__t-14256 @ no__t-15GCM @ no__t-16SHA384**i **TLS @ NO__T-18RSA @ NO__T-19WITH @ NO__T-20AES @ no__t-21128 @ NO__T-22GCM @ NO__T-23SHA256** .
+    W poniższym przykładzie ustawiono minimalną wersję protokołu do **TLSv1_2** i włącza **protokół TLS\_ECDHE\_ECDSA\_z\_aes\_128\_GCM\_SHA256**, **TLS\_ECDHE\_** ECDSA\_\_AES\_256\_GCM\_SHA384 oraz **TLS\_GCM\_\_AES\_128\_SHA256\_** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -310,7 +310,7 @@ Powyższe kroki przeprowadziły przez proces tworzenia aplikacji z kompleksowym 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Zdefiniuj zasady SSL. W poniższym przykładzie **TLSv 1.0** i **TLSv 1.1** są wyłączone i szyfr Suite **TLS @ no__t-3ECDHE @ no__t-4ECDSA @ no__t-5WITH @ no__t-6AES @ no__t-7128 @ no__t-8GCM @ no__t-9SHA256**, **TLS @ no__t-11ECDHE @ no__t-12ECDSA @ no__ t-13WITH @ no__t-14AES @ no__t-15256 @ no__t-16GCM @ no__t-17SHA384**i **TLS @ NO__T-19RSA @ NO__T-20WITH @ NO__T-21AES @ no__t-22128 @ NO__T-23GCM @ NO__T-24SHA256** to jedyne dozwolone.
+2. Zdefiniuj zasady SSL. W poniższym przykładzie **TLSv 1.0** i **TLSv 1.1** są wyłączone i szyfrowe mechanizmy **TLS\_ECDHE\_ECDSA\_z\_aes\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_\_AES\_256**\_GCM\_SHA384 i tls\_GCM\_ **\_AES\_128\_SHA256\_** .
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

@@ -24,8 +24,8 @@ Akcje skryptu można również publikować w portalu Azure Marketplace jako apli
 
 W przypadku klastra usługi HDInsight przyłączonego do domeny istnieją dwa uprawnienia Apache Ambari, które są wymagane w przypadku korzystania z akcji skryptów w klastrze:
 
-* **AMBARI. Uruchom @ no__t-1CUSTOM @ no__t-2COMMAND**. To uprawnienie jest domyślnie objęte rolą administratora Ambari.
-* **Klaster. Uruchom @ no__t-1CUSTOM @ no__t-2COMMAND**. Zarówno administrator klastra usługi HDInsight, jak i administrator Ambari domyślnie mają to uprawnienie.
+* **AMBARI. Uruchom\_niestandardowe\_polecenie**. To uprawnienie jest domyślnie objęte rolą administratora Ambari.
+* **Klaster. Uruchom\_niestandardowe\_polecenie**. Zarówno administrator klastra usługi HDInsight, jak i administrator Ambari domyślnie mają to uprawnienie.
 
 Aby uzyskać więcej informacji na temat pracy z uprawnieniami w usłudze HDInsight przyłączonych do domeny, zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu pakiet Enterprise Security](./domain-joined/apache-domain-joined-manage.md).
 
@@ -123,7 +123,7 @@ Błąd w skrypcie uruchomionym na już uruchomionym klastrze nie powoduje automa
 >
 > Akcje skryptów są uruchamiane z uprawnieniami głównymi. Upewnij się, że rozumiesz, co skrypt wykonuje przed zastosowaniem go do klastra.
 
-Po zastosowaniu skryptu do klastra stan klastra zmienia się z **uruchomione** na **zaakceptowane**. Następnie zmieni się on na **Konfiguracja usługi HDInsight** , a wreszcie ponownie, aby **uruchomić** skrypty. Stan skryptu jest rejestrowany w historii akcji skryptu. Te informacje informują o tym, czy skrypt zakończył się powodzeniem, czy niepowodzeniem. Na przykład polecenie cmdlet programu PowerShell `Get-AzHDInsightScriptActionHistory` wyświetla stan skryptu. Zwraca informacje podobne do następującego tekstu:
+Po zastosowaniu skryptu do klastra stan klastra zmienia się z **uruchomione** na **zaakceptowane**. Następnie zmieni się on na **Konfiguracja usługi HDInsight** , a wreszcie ponownie, aby **uruchomić** skrypty. Stan skryptu jest rejestrowany w historii akcji skryptu. Te informacje informują o tym, czy skrypt zakończył się powodzeniem, czy niepowodzeniem. Na przykład polecenie cmdlet programu `Get-AzHDInsightScriptActionHistory` PowerShell pokazuje stan skryptu. Zwraca informacje podobne do następującego tekstu:
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 8/14/2017 7:40:55 PM
@@ -138,7 +138,7 @@ Po zastosowaniu skryptu do klastra stan klastra zmienia się z **uruchomione** n
 Skrypty akcji skryptu mogą być używane w następujących narzędziach:
 
 * Witryna Azure Portal
-* Program Azure PowerShell
+* Azure PowerShell
 * Klasyczny interfejs wiersza polecenia platformy Azure
 * Zestaw SDK HDInsight An .NET
 
@@ -157,7 +157,7 @@ W tej sekcji opisano różne sposoby używania akcji skryptu podczas tworzenia k
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Użyj akcji skryptu podczas tworzenia klastra z Azure Portal
 
-1. Rozpocznij tworzenie klastra zgodnie z opisem w temacie [Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md). Podczas tworzenia klastra docieramy do kroku 6, **Akcje skryptu**. Przejdź do **opcjonalnego** >  **+ Prześlij nowy**.
+1. Rozpocznij tworzenie klastra zgodnie z opisem w temacie [Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md). Podczas tworzenia klastra docieramy do kroku 6, **Akcje skryptu**. Przejdź do **opcjonalnego** > **i Prześlij nowy**.
 
     ![Akcja skryptu Azure Portal klastra](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
 
@@ -172,7 +172,7 @@ W tej sekcji opisano różne sposoby używania akcji skryptu podczas tworzenia k
     | Wybierz skrypt | Aby użyć własnego skryptu, wybierz opcję __niestandardowy__. W przeciwnym razie wybierz jeden z podanych skryptów. |
     | Nazwa |Określ nazwę akcji skryptu. |
     | Identyfikator URI skryptu bash |Określ identyfikator URI skryptu. |
-    | Kierownik/proces roboczy/dozorcy |Określ węzły, w których skrypt jest uruchamiany: **główna**, **proces roboczy**lub **dozorcy**. |
+    | Head/Worker/Zookeeper |Określ węzły, w których skrypt jest uruchamiany: **główna**, **proces roboczy**lub **dozorcy**. |
     | Parametry |Określ parametry, jeśli są wymagane przez skrypt. |
 
     Aby upewnić się, że skrypt jest stosowany podczas operacji skalowania, należy użyć wpisu __akcji Utrwalaj ten skrypt__ .
@@ -205,7 +205,7 @@ Uzyskaj więcej informacji na temat wdrażania szablonu:
 
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
-* [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
+* [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Użyj akcji skryptu podczas tworzenia klastra z Azure PowerShell
 
@@ -231,7 +231,7 @@ W tej sekcji wyjaśniono, jak zastosować akcje skryptu do działającego klastr
 
 Przejdź do [Azure Portal](https://portal.azure.com):
 
-1. W menu po lewej stronie przejdź do **wszystkich usług** >  **Analytics** > **HDInsight klastrów**.
+1. W menu po lewej stronie przejdź do **wszystkich usług** >  **Analytics** > **klastrów usługi HDInsight**.
 
 1. Wybierz z listy klaster, który otworzy widok domyślny.
 
@@ -252,7 +252,7 @@ Przejdź do [Azure Portal](https://portal.azure.com):
     | Wybierz skrypt | Aby użyć własnego skryptu, wybierz opcję __niestandardowy__. W przeciwnym razie wybierz podany skrypt. |
     | Nazwa |Określ nazwę akcji skryptu. |
     | Identyfikator URI skryptu bash |Określ identyfikator URI skryptu. |
-    | Kierownik/proces roboczy/dozorcy |Określ węzły, w których skrypt jest uruchamiany: **główna**, **proces roboczy**lub **dozorcy**. |
+    | Head/Worker/Zookeeper |Określ węzły, w których skrypt jest uruchamiany: **główna**, **proces roboczy**lub **dozorcy**. |
     | Parametry |Określ parametry, jeśli są wymagane przez skrypt. |
 
     Użyj wpisu __Akcja Utrwalaj ten skrypt__ , aby upewnić się, że skrypt jest stosowany podczas operacji skalowania.
@@ -300,9 +300,9 @@ Przed rozpoczęciem upewnij się, że zainstalowano i skonfigurowano interfejs w
     azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
     ```
 
-    W przypadku pominięcia parametrów dla tego polecenia zostanie wyświetlony monit o ich podanie. Jeśli skrypt określony za pomocą `-u` przyjmuje parametry, można je określić za pomocą parametru `-p`.
+    W przypadku pominięcia parametrów dla tego polecenia zostanie wyświetlony monit o ich podanie. Jeśli skrypt określony za pomocą `-u` akceptuje parametry, można je określić za pomocą parametru `-p`.
 
-    Prawidłowe typy węzłów to `headnode`, `workernode` i `zookeeper`. Jeśli skrypt ma być stosowany do kilku typów węzłów, określ typy rozdzielone średnikami `;`. Na przykład `-n headnode;workernode`.
+    Prawidłowe typy węzłów to `headnode`, `workernode`i `zookeeper`. Jeśli skrypt ma być stosowany do kilku typów węzłów, określ typy rozdzielone średnikami `;`. Na przykład `-n headnode;workernode`.
 
     Aby zachować skrypt, Dodaj `--persistOnSuccess`. Możesz również utrzymać skrypt później za pomocą `azure hdinsight script-action persisted set`.
 
@@ -328,9 +328,9 @@ Aby zapoznać się z przykładem użycia zestawu SDK platformy .NET do zastosowa
 
 ### <a name="the-azure-portal"></a>Witryna Azure Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-1. W menu po lewej stronie przejdź do **wszystkich usług** > **Analytics** > **HDInsight klastrów**.
+1. W menu po lewej stronie przejdź do **wszystkich usług** > **Analytics** > **klastrów usługi HDInsight**.
 
 1. Wybierz z listy klaster, który otworzy widok domyślny.
 
@@ -348,9 +348,9 @@ Aby zapoznać się z przykładem użycia zestawu SDK platformy .NET do zastosowa
 
     ![Usuwanie akcji utrwalonego skryptu](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
-| Parametr | Funkcja |
+| parametr | Funkcja |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |Pobierz informacje o akcjach utrwalonego skryptu. |
 | `Get-AzHDInsightScriptActionHistory` |Pobierz historię akcji skryptu zastosowanych do klastra lub szczegółowych informacji dotyczących określonego skryptu. |
@@ -366,7 +366,7 @@ Poniższy przykładowy skrypt demonstruje użycie poleceń cmdlet do podniesieni
 
 ### <a name="the-azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia platformy Azure
 
-| Parametr | Funkcja |
+| parametr | Funkcja |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |Pobierz listę utrwalonych akcji skryptów. |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |Pobierz informacje o określonej akcji utrwalonego skryptu. |
@@ -430,7 +430,7 @@ Za pomocą interfejsu użytkownika sieci Web Ambari można wyświetlać informac
 
     ![Pasek interfejsu użytkownika sieci Web Ambari z wybranym elementem Ops](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
-3. Znajdź w kolumnie **operacje** wpisy z **uruchomioną kolumną @ no__t-1customscriptaction** . Te wpisy są tworzone po uruchomieniu akcji skryptu.
+3. Znajdź w kolumnie **operacje** wpisy, które mają **uruchomioną\_customscriptaction** . Te wpisy są tworzone po uruchomieniu akcji skryptu.
 
     ![Operacje akcji skryptu Apache Ambari](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
@@ -440,7 +440,7 @@ Za pomocą interfejsu użytkownika sieci Web Ambari można wyświetlać informac
 
 Jeśli utworzenie klastra zakończy się niepowodzeniem z powodu błędu skryptu, dzienniki są przechowywane na koncie magazynu klastra.
 
-* Dzienniki magazynu są dostępne pod adresem `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`.
+* Dzienniki magazynu są dostępne w `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`.
 
     ![Dzienniki akcji skryptu](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
@@ -450,15 +450,15 @@ Jeśli utworzenie klastra zakończy się niepowodzeniem z powodu błędu skryptu
 
     * **Węzeł procesu roboczego**: `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
 
-    * **Dozorcy — węzeł**: `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+    * **Węzeł dozorcy**: `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* Wszystkie **stdout** i **stderr** odpowiedniego hosta są przekazywane do konta magazynu. Istnieje jedno **wyjście — @no__t -1. txt** i **Błędy — @no__t -3. txt** dla każdej akcji skryptu. Plik **Output-*. txt** zawiera informacje o identyfikatorze URI skryptu, który został uruchomiony na hoście. Poniżej przedstawiono przykład tych informacji:
+* Wszystkie **stdout** i **stderr** odpowiedniego hosta są przekazywane do konta magazynu. Istnieje jedno **wyjście —\*. txt** i **Błędy-\*. txt** dla każdej akcji skryptu. Plik **Output-*. txt** zawiera informacje o identyfikatorze URI skryptu, który został uruchomiony na hoście. Poniżej przedstawiono przykład tych informacji:
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
 * Istnieje możliwość wielokrotnego utworzenia klastra akcji skryptu o tej samej nazwie. W takim przypadku można odróżnić odpowiednie dzienniki na podstawie nazwy folderu **daty** . Na przykład struktura folderów dla klastra, obiekt **webcluster**, utworzony w różnych datach, wygląda podobnie jak w przypadku następujących wpisów dziennika:
 
-    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
+    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04``\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
 * Jeśli utworzysz klaster akcji skryptu o tej samej nazwie w tym samym dniu, możesz użyć unikatowego prefiksu, aby zidentyfikować odpowiednie pliki dziennika.
 

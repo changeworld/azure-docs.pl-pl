@@ -36,7 +36,7 @@ W przypadku usług, które nie są powiązane z określonym protokołem lub stos
 Obsługę zdalną usługi można skonfigurować w dwóch prostych krokach:
 
 1. Utwórz interfejs do wdrożenia usługi. Ten interfejs definiuje metody, które są dostępne dla zdalnego wywołania procedury w usłudze. Metody muszą być zwracanymi metodami asynchronicznymi. Interfejs musi implementować `Microsoft.ServiceFabric.Services.Remoting.IService`, aby sygnalizować, że usługa ma interfejs komunikacji zdalnej.
-2. Użyj odbiornika komunikacji zdalnej w usłudze. Odbiornik komunikacji zdalnej jest implementacją `ICommunicationListener`, która zapewnia możliwości komunikacji zdalnej. Przestrzeń nazw `Microsoft.ServiceFabric.Services.Remoting.Runtime` zawiera metodę rozszerzenia `CreateServiceRemotingInstanceListeners` dla usług bezstanowych i stanowych, których można użyć do utworzenia odbiornika usług zdalnych przy użyciu domyślnego protokołu transportowego komunikacji zdalnej.
+2. Użyj odbiornika komunikacji zdalnej w usłudze. Odbiornik komunikacji zdalnej jest implementacją `ICommunicationListener`, która udostępnia możliwości komunikacji zdalnej. Przestrzeń nazw `Microsoft.ServiceFabric.Services.Remoting.Runtime` zawiera metodę rozszerzenia `CreateServiceRemotingInstanceListeners` dla usług bezstanowych i stanowych, których można użyć do utworzenia odbiornika usług zdalnych przy użyciu domyślnego protokołu transportowego komunikacji zdalnej.
 
 >[!NOTE]
 >Przestrzeń nazw `Remoting` jest dostępna jako oddzielny pakiet NuGet o nazwie `Microsoft.ServiceFabric.Services.Remoting`.
@@ -90,7 +90,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-Struktura komunikacji zdalnej propaguje wyjątki zgłoszone przez usługę do klienta programu. W związku z tym, gdy używany jest @no__t 0is, klient jest odpowiedzialny za obsługę wyjątków zgłoszonych przez usługę.
+Struktura komunikacji zdalnej propaguje wyjątki zgłoszone przez usługę do klienta programu. W związku z tym, gdy `ServiceProxy`jest używany, klient jest odpowiedzialny za obsługę wyjątków zgłoszonych przez usługę.
 
 ## <a name="service-proxy-lifetime"></a>Okres istnienia serwera proxy usługi
 
@@ -98,7 +98,7 @@ Tworzenie serwera proxy usługi jest operacją uproszczoną, więc można utworz
 
 ### <a name="service-proxy-factory-lifetime"></a>Okres istnienia fabryki serwerów proxy usługi
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) to fabryka, która tworzy wystąpienia serwera proxy dla różnych interfejsów komunikacji zdalnej. W przypadku korzystania z interfejsu API `ServiceProxyFactory.CreateServiceProxy` w celu utworzenia serwera proxy, struktura tworzy serwer proxy usługi pojedynczej.
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) to fabryka, która tworzy wystąpienia serwera proxy dla różnych interfejsów komunikacji zdalnej. W przypadku tworzenia serwera proxy za pomocą interfejsu API `ServiceProxyFactory.CreateServiceProxy` Framework tworzy serwer proxy usługi pojedynczej.
 Warto utworzyć je ręcznie, gdy zachodzi potrzeba zastąpienia właściwości [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) .
 Tworzenie fabryki jest kosztowną operacją. Fabryka serwerów proxy usługi utrzymuje wewnętrzną pamięć podręczną klienta komunikacyjnego.
 Najlepszym rozwiązaniem jest buforowanie fabryki proxy usługi tak długo, jak to możliwe.
@@ -289,7 +289,7 @@ Wykonaj następujące kroki:
    </Resources>
    ```
 
-2. Użyj [odbiornika usług zdalnych w wersji 2](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Domyślną nazwą zasobu punktu końcowego usługi jest "ServiceEndpointV2_1". Musi być zdefiniowany w manifeście usługi.
+2. Użyj [odbiornika usług zdalnych w wersji 2](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Użyta nazwa domyślnego zasobu punktu końcowego usługi to "ServiceEndpointV2_1". Musi być zdefiniowany w manifeście usługi.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -322,12 +322,12 @@ Wykonaj następujące kroki:
 W celu uaktualnienia z wersji 1 do wersji 2 (zgodnej z interfejsem, znanej jako V2_1) wymagane są uaktualnienia dwuetapowe. Wykonaj kroki opisane w tej sekwencji.
 
 > [!NOTE]
-> W przypadku uaktualniania z wersji 1 do wersji 2 Upewnij się, że przestrzeń nazw `Remoting` jest aktualizowana do korzystania z wersji 2. Przykład: "Microsoft. servicefabric. Services. zdalne. v2. FabricTransport. Client"
+> W przypadku uaktualniania z wersji 1 do wersji 2 Upewnij się, że przestrzeń nazw `Remoting` została zaktualizowana do korzystania z wersji 2. Przykład: "Microsoft. servicefabric. Services. zdalne. v2. FabricTransport. Client"
 >
 >
 
 1. Uaktualnij usługę V1 do usługi V2_1 przy użyciu następującego atrybutu.
-Ta zmiana polega na tym, że usługa nasłuchuje w systemie V1 i odbiorniku V2_1.
+Ta zmiana gwarantuje, że usługa nasłuchuje w punkcie 1 i odbiorniku V2_1.
 
     a. Dodaj zasób punktu końcowego o nazwie "ServiceEndpointV2_1" w manifeście usługi.
       ```xml
@@ -347,13 +347,13 @@ Ta zmiana polega na tym, że usługa nasłuchuje w systemie V1 i odbiorniku V2_1
     }
     ```
 
-    d. Dodaj atrybut zestawu do interfejsów zdalnych, aby korzystać z odbiornika V1, V2_1 i klienta V2_1.
+    d. Dodaj atrybut Assembly do interfejsów zdalnych, aby używać odbiornika V1, V2_1 i V2_1 Client.
     ```csharp
    [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1 | RemotingListenerVersion.V1, RemotingClientVersion = RemotingClientVersion.V2_1)]
 
       ```
-2. Uaktualnij klienta V1 do klienta V2_1 za pomocą atrybutu klienta V2_1.
-Ten krok zapewnia, że klient korzysta z stosu V2_1.
+2. Uaktualnij klienta V1 do klienta V2_1 przy użyciu atrybutu V2_1 Client.
+Ten krok zapewnia, że klient używa stosu V2_1.
 Brak zmian w projekcie/usłudze klienta nie jest wymagana. Wystarcza tworzenie projektów klientów ze zaktualizowanym zestawem interfejsów.
 
 3. Ten krok jest opcjonalny. Usuń wersję odbiornika V1 z atrybutu, a następnie Uaktualnij usługę v2.
@@ -530,7 +530,7 @@ Wykonaj następujące kroki:
     }
     ```
 
-2. Zastąp domyślny dostawcę serializacji `JsonSerializationProvider` dla odbiornika komunikacji zdalnej.
+2. Zastąp domyślny dostawcę serializacji `JsonSerializationProvider` dla odbiornika usług zdalnych.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -546,7 +546,7 @@ Wykonaj następujące kroki:
    }
    ```
 
-3. Zastąp domyślny dostawcę serializacji `JsonSerializationProvider` dla fabryki klienta usług zdalnych.
+3. Zastąp domyślny dostawcę serializacji `JsonSerializationProvider`ą dla fabryki klienta usług zdalnych.
 
     ```csharp
     var proxyFactory = new ServiceProxyFactory((c) =>

@@ -86,7 +86,7 @@ Przed rozpoczęciem instalacji zapoznaj się z następującymi informacjami i do
 | [IBM DB2 HADR Cluster 11,1][db2-hadr-11.1] |
 | [IBM DB2 HADR Cluster R 10,5][db2-hadr-10.5] |
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aby zapewnić wysoką dostępność, program IBM DB2 LUW z HADR Cluster jest instalowany na co najmniej dwóch maszynach wirtualnych platformy Azure, które są wdrażane w [zestawie dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) lub w różnych [strefy dostępności platformy Azureach](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
 
 Poniższa Grafika przedstawia konfigurację dwóch maszyn wirtualnych platformy Azure na serwerze bazy danych. Zarówno maszyny wirtualne platformy Azure z serwerem bazy danych mają podłączony własny magazyn, jak i są uruchomione. W HADR Cluster, jedno wystąpienie bazy danych na jednej z maszyn wirtualnych platformy Azure ma rolę wystąpienia podstawowego. Wszyscy klienci są połączeni z tym wystąpieniem podstawowym. Wszystkie zmiany transakcji bazy danych są utrwalane lokalnie w dzienniku transakcji programu DB2. Ponieważ rekordy dziennika transakcji są utrwalane lokalnie, rekordy są transferowane za pośrednictwem protokołu TCP/IP do wystąpienia bazy danych na drugim serwerze bazy danych, serwerze rezerwy lub wystąpieniu gotowości. Wystąpienie gotowości aktualizuje lokalną bazę danych, przechodząc do przodu przesłanych rekordów dziennika transakcji. W ten sposób serwer rezerwy jest zsynchronizowany z serwerem podstawowym.
@@ -201,7 +201,7 @@ Aby skonfigurować podstawowe wystąpienie bazy danych programu IBM DB2 LUW:
 
 Aby skonfigurować serwer bazy danych w stanie gotowości przy użyciu procedury kopiowania jednorodnego systemu SAP, wykonaj następujące kroki:
 
-1. Wybierz opcję **kopiowania systemu** > systemie **docelowym systemy** > **rozproszone** > **wystąpienie bazy danych**.
+1. Wybierz opcję **kopiowania systemu** > **systemy docelowe** > **rozproszone** **wystąpienie bazy danych** > .
 1. Jako metodę kopiowania wybierz **jednorodny system** , aby można było użyć kopii zapasowej do przywrócenia kopii zapasowej w wystąpieniu serwera w stanie gotowości.
 1. Po dojściu do kroku zakończenia, aby przywrócić bazę danych jednorodnej kopii systemu, zamknij Instalatora. Przywróć bazę danych z kopii zapasowej hosta podstawowego. Wszystkie kolejne etapy instalacji zostały już wykonane na podstawowym serwerze bazy danych.
 1. Skonfiguruj HADR Cluster dla programu IBM DB2.
@@ -214,11 +214,11 @@ Aby skonfigurować serwer bazy danych w stanie gotowości przy użyciu procedury
 
    W przypadku korzystania z urządzenia SBD dla systemu Linux Pacemaker ustaw następujące parametry programu DB2 HADR cluster:
    + Czas trwania okna równorzędnego HADR Cluster (w sekundach) (HADR_PEER_WINDOW) = 300  
-   + HADR Cluster wartość limitu czasu (HADR_TIMEOUT) = 60
+   + Wartość limitu czasu HADR Cluster (HADR_TIMEOUT) = 60
 
    W przypadku korzystania z Agenta ogrodzenia Pacemaker platformy Azure ustaw następujące parametry:
    + Czas trwania okna równorzędnego HADR Cluster (w sekundach) (HADR_PEER_WINDOW) = 900  
-   + HADR Cluster wartość limitu czasu (HADR_TIMEOUT) = 60
+   + Wartość limitu czasu HADR Cluster (HADR_TIMEOUT) = 60
 
 Zalecamy stosowanie powyższych parametrów na podstawie wstępnego testowania trybu failover/przejęcia. Wymagane jest przetestowanie pod kątem poprawnej funkcjonalności trybu failover i przejęcia z tymi ustawieniami parametrów. Ponieważ poszczególne konfiguracje mogą się różnić, parametry mogą wymagać korekty. 
 
@@ -409,7 +409,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 #  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-SBD (stonith: External/SBD): uruchomiono azibmdb02
 #  <a name="resource-group-g_ip_db2ptr_ptr"></a>Grupa zasobów: g_ip_db2ptr_PTR
 #      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR (OCF:: puls: IPaddr2): uruchomiono azibmdb02
-#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: Pulse: cokolwiek): uruchomiono azibmdb02
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: puls: cokolwiek): uruchomiono azibmdb02
 #  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Zestaw główny/podrzędny: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
 #      <a name="masters--azibmdb02-"></a>Wzorce: [azibmdb02]
 #      <a name="slaves--azibmdb01-"></a>Elementy podrzędne: [azibmdb01]
@@ -430,7 +430,7 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    d. Ustaw **przypisanie** na **static**, a następnie wprowadź adres IP **Virtual-IP** zdefiniowany na początku.
 
-   d. Kliknij przycisk **OK**.
+   d. Wybierz **OK**.
 
    e. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
 
@@ -446,7 +446,7 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    e. Wybierz Maszyny wirtualne w klastrze programu IBM DB2.
 
-   f. Kliknij przycisk **OK**.
+   f. Wybierz **OK**.
 
 1. Utwórz sondę kondycji:
 
@@ -456,7 +456,7 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    d. Wybierz pozycję **TCP** jako protokół i port **62500**. Pozostaw wartość **interwału** ustawioną na **5**i pozostaw wartość **progową złej kondycji** ustawioną na **2**.
 
-   d. Kliknij przycisk **OK**.
+   d. Wybierz **OK**.
 
 1. Utwórz reguły równoważenia obciążenia:
 
@@ -472,7 +472,7 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    f. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
 
-   g. Kliknij przycisk **OK**.
+   g. Wybierz **OK**.
 
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Wprowadzanie zmian w profilach SAP do używania wirtualnego adresu IP na potrzeby połączenia
@@ -483,7 +483,7 @@ Aby nawiązać połączenie z podstawowym wystąpieniem konfiguracji HADR Cluste
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<identyfikator SID >/Global/DB6/db2cli.ini
+/sapmnt/\<SID>/global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -596,9 +596,9 @@ Przeprowadź migrację zasobu z powrotem do *azibmdb01* i wyczyść ograniczenia
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **migracja zasobów programu crm \<res_name > \<hosta >:** Tworzy ograniczenia lokalizacji i może powodować problemy z przejęciem
+- **\<migracji zasobów programu crm res_name > \<host >:** Tworzy ograniczenia lokalizacji i może powodować problemy z przejęciem
 - **czyszczenie zasobów programu crm \<res_name >** : czyści ograniczenia lokalizacji
-- **czyszczenie zasobów programu crm \<res_name >** : czyści wszystkie błędy zasobu
+- **\<oczyszczania zasobów programu crm res_name >** : czyści wszystkie błędy zasobu
 
 ### <a name="test-the-fencing-agent"></a>Testowanie czynnika ogrodzenia
 

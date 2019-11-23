@@ -40,7 +40,7 @@ Konto, za pomocą którego logujesz się, musi należeć do roli bazy danych mod
     ![Połącz z wybierz model z programu Excel](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
   [biblioteki klienckie](analysis-services-data-providers.md)  
 [Zarządzanie serwerem](analysis-services-manage.md)     

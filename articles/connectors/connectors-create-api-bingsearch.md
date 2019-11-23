@@ -56,11 +56,11 @@ Lub, jeśli połączenie już istnieje, podaj niezbędne informacje dla wyzwalac
 
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | Zapytanie wyszukiwania | Tak | <*wyszukiwania — słowa*> | Wprowadź słowa kluczowe wyszukiwania, które mają być używane. |
-   | Rynek | Tak | <*locale*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
-   | Bezpieczne wyszukiwanie | Tak | @no__t*poziomu wyszukiwania*<-2 | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
-   | Liczba | Nie | wyniki < *-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
-   | Przesunięcie | Nie | <*Skip-value*> | Liczba wyników do pominięcia przed zwróceniem wyników |
+   | Search Query | Tak | <*Wyszukiwanie słów*> | Wprowadź słowa kluczowe wyszukiwania, które mają być używane. |
+   | Market | Tak | <*Ustawienia regionalne*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
+   | Safe Search | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
+   | Licznik | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
+   | Przesunięcie | Nie | <*wartość pomijania*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
    Na przykład:
@@ -107,11 +107,11 @@ Z listy Akcje wybierz żądaną akcję.
 
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | Zapytanie wyszukiwania | Tak | <*Search-expression*> | Wprowadź wyrażenie służące do wykonywania zapytań dotyczących wyników wyzwalacza. Możesz wybrać spośród pól na liście zawartości dynamicznej lub utworzyć wyrażenie przy użyciu Konstruktora wyrażeń. |
-   | Rynek | Tak | <*locale*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
-   | Bezpieczne wyszukiwanie | Tak | @no__t*poziomu wyszukiwania*<-2 | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
-   | Liczba | Nie | wyniki < *-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
-   | Przesunięcie | Nie | <*Skip-value*> | Liczba wyników do pominięcia przed zwróceniem wyników |
+   | Search Query | Tak | <*search-expression*> | Wprowadź wyrażenie służące do wykonywania zapytań dotyczących wyników wyzwalacza. Możesz wybrać spośród pól na liście zawartości dynamicznej lub utworzyć wyrażenie przy użyciu Konstruktora wyrażeń. |
+   | Market | Tak | <*Ustawienia regionalne*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
+   | Safe Search | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
+   | Licznik | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
+   | Przesunięcie | Nie | <*wartość pomijania*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
    Załóżmy na przykład, że chcesz uzyskać te wyniki, których nazwa kategorii zawiera wyraz "Tech".
@@ -154,7 +154,7 @@ Z listy Akcje wybierz żądaną akcję.
 
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | Nazwa połączenia | Tak | <*Nazwa połączenia*> | Nazwa do utworzenia dla połączenia |
+   | Nazwa połączenia | Tak | <*nazwę połączenia*> | Nazwa do utworzenia dla połączenia |
    | Wersja interfejsu API | Tak | <*API-version*> | Domyślnie wersja interfejsu API Wyszukiwanie Bing jest ustawiona na bieżącą wersję. W razie potrzeby możesz wybrać wcześniejszą wersję. |
    | Klucz interfejsu API | Tak | <*API-key*> | Wcześniej pobrano klucz interfejsu API Wyszukiwanie Bing. Jeśli nie masz klucza, Pobierz [klucz interfejsu API teraz](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  

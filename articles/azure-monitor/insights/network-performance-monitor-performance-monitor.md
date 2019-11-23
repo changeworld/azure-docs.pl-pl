@@ -27,7 +27,7 @@ Funkcja monitora wydajności w [Network Performance Monitor](network-performance
 
 ![Monitor wydajności sieci](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 Aby otworzyć konfigurację Network Performance Monitor, Otwórz [rozwiązanie Network Performance Monitor](network-performance-monitor.md)i wybierz pozycję **Konfiguruj**.
 
 ![Konfigurowanie rozwiązania Network Performance Monitor](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
@@ -95,7 +95,7 @@ Przed wybraniem protokołu należy wziąć pod uwagę następujące informacje:
 
 Jeśli podczas wdrażania wybrano opcję użycia protokołu ICMP, można w dowolnym momencie przełączyć się do protokołu TCP, edytując domyślną regułę monitorowania.
 
-1. Przejdź do **wydajności sieci**> **monitorowanie** > **Skonfiguruj** > **monitorowanie**. Następnie wybierz pozycję **domyślna reguła**. 
+1. Przejdź do **wydajności sieci** > **monitorowanie** > **Skonfiguruj** > **monitorowanie**. Następnie wybierz pozycję **domyślna reguła**. 
 2. Przewiń do sekcji **Protokół** i wybierz protokół, który ma być używany. 
 3. Wybierz pozycję **Zapisz** , aby zastosować ustawienie. 
 

@@ -33,9 +33,9 @@ W ramach klasyfikacji "Dorosła" są kilka różnych kategorii:
 - Obrazy **erotycznej** są definiowane jako obrazy, które mają charakter płciowo sugerujący i często zawierają mniej wyraźną zawartość z Seksem niż obrazy otagowane jako **osoba dorosła**.
 - Obrazy **gorii** są definiowane jako te, które przedstawiają Gore.
 
-## <a name="use-the-api"></a>Korzystanie z interfejsu API
+## <a name="use-the-api"></a>Używanie interfejsu API
 
-Możesz wykryć zawartość dla dorosłych za pomocą interfejsu API [analizy obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Po dodaniu wartości `Adult` do parametru zapytania **visualFeatures** interfejs API zwraca trzy właściwości logiczne @ no__t-2 @ no__t-3, `isRacyContent` i `isGoryContent` @ no__t-6in jego odpowiedź JSON. Metoda zwraca również odpowiednie właściwości @ no__t-0 @ no__t-1, `racyScore` i `goreScore` @ no__t-4which reprezentuje wyniki zaufania między zerem i jedną dla każdej odpowiedniej kategorii.
+Możesz wykryć zawartość dla dorosłych za pomocą interfejsu API [analizy obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Po dodaniu wartości `Adult` do parametru zapytania **visualFeatures** interfejs API zwraca trzy właściwości logiczne&mdash;`isAdultContent`, `isRacyContent`i `isGoryContent`&mdash;w swojej odpowiedzi JSON. Metoda zwraca również odpowiednie właściwości&mdash;`adultScore`, `racyScore`i `goreScore`&mdash;, które reprezentują wyniki zaufania od zera i jeden dla każdej odpowiedniej kategorii.
 
 - [Szybki Start: analizowanie obrazu (zestaw SDK dla platformy .NET)](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [Szybki Start: analizowanie obrazu (interfejs API REST)](./quickstarts/csharp-analyze.md)

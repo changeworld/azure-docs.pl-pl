@@ -35,7 +35,7 @@ Azure SQL Database źródła danych wystąpienia zarządzanego są uruchamiane w
     ![Zawsze używaj właściwości bramy](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 [Łączenie z lokalnymi źródłami danych](analysis-services-gateway.md)   
 [Zainstalowanie i skonfigurowanie lokalnej bramy danych](analysis-services-gateway-install.md)   
 [Virtual Network platformy Azure (Sieć wirtualna)](../virtual-network/virtual-networks-overview.md)   

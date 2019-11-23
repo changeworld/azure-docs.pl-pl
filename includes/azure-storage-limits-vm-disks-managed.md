@@ -15,18 +15,18 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 09/18/2019
 ms.locfileid: "67183222"
 ---
-**HDD w warstwie Standardowa Managed disks**
+**HDD w warstwie Standardowa dyski zarządzane**
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**SSD w warstwie Standardowa Managed disks**
+**SSD w warstwie Standardowa dyski zarządzane**
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**SSD w warstwie Premium Managed disks: Limity dla dysku**
+**SSD w warstwie Premium dyski zarządzane: limity dla dysku**
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**SSD w warstwie Premium Managed disks: Limity dla maszyn wirtualnych**
+**SSD w warstwie Premium Managed disks: limity dla maszyn wirtualnych**
 
-| Resource | Limit domyślny |
+| Zasób | Limit domyślny |
 | --- | --- |
 | Maksymalna liczba operacji we/wy na maszynę wirtualną |80 000 operacji we/wy z maszyną wirtualną GS5 |
 | Maksymalna przepływność na maszynę wirtualną |2 000 MB/s z maszyną wirtualną GS5 |

@@ -42,26 +42,26 @@ Użyj tej tabeli, aby określić, które metryki najlepiej sprawdzają się w sc
 |CommandPoolJobQueueLength|Długość kolejki zadań puli poleceń|Licznik|Średnia|Liczba zadań w kolejce puli wątków poleceń.|
 |Wartości CurrentConnections|Połączenie: bieżące połączenia|Licznik|Średnia|Bieżąca liczba ustanowionych połączeń klientów.|
 |CurrentUserSessions|Bieżące sesje użytkowników|Licznik|Średnia|Bieżąca liczba ustanowionych sesji użytkowników.|
-|mashup_engine_memory_metric|Pamięć aparatu M|Szybkość|Średnia|Użycie pamięci przez procesy aparatu mashupów|
+|mashup_engine_memory_metric|Pamięć aparatu M|Bajty|Średnia|Użycie pamięci przez procesy aparatu mashupów|
 |mashup_engine_qpu_metric|M QPU aparatu|Licznik|Średnia|QPU użycie przez procesy aparatu mashupów|
-|memory_metric|Memory (Pamięć)|Szybkość|Średnia|Rozmiar. Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|
+|memory_metric|Memory (Pamięć)|Bajty|Średnia|Rozmiar. Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|
 |memory_thrashing_metric|Migotanie pamięci|Procent|Średnia|Średnia pamięć migotanie.|
 |CleanerCurrentPrice|Pamięć: bieżąca cena oczyszczarki|Licznik|Średnia|Bieżąca cena pamięci, $/Byte/Time, znormalizowana do 1000.|
-|CleanerMemoryNonshrinkable|Pamięć: pamięć oczyszczarki niemożliwa do zmniejszenia|Szybkość|Średnia|Ilość pamięci (w bajtach), która nie podlega wyprzeczyszczaniu przez oczyszczarkę w tle.|
-|CleanerMemoryShrinkable|Pamięć: zmniejszanie ilości pamięci czyszczącej|Szybkość|Średnia|Ilość pamięci, w bajtach, podlegająca przeczyszczaniu przez oczyszczarkę w tle.|
-|MemoryLimitHard|Pamięć: sztywny limit pamięci|Szybkość|Średnia|Limit pamięci twardej z pliku konfiguracji.|
-|MemoryLimitHigh|Pamięć: limit pamięci jest wysoki|Szybkość|Średnia|Górny limit pamięci z pliku konfiguracji.|
-|MemoryLimitLow|Pamięć: limit pamięci — niski|Szybkość|Średnia|Limit braku pamięci z pliku konfiguracji.|
-|MemoryLimitVertiPaq|Pamięć: limit pamięci — tryb VertiPaq|Szybkość|Średnia|Limit w pamięci z pliku konfiguracji.|
-|MemoryUsage|Pamięć: użycie pamięci|Szybkość|Średnia|Użycie pamięci przez proces serwera jako używany do obliczania ceny pamięci czyszczącej. Równe licznikowi Process\PrivateBytes i rozmiar danych mapowanych na pamięć, ignorowanie wszelkich pamięci, które zostały zamapowane lub przydzielone przez aparat analityczny w pamięci (VertiPaq) przekraczające limit pamięci aparatu.|
-|private_bytes_metric|Bajty prywatne |Szybkość|Średnia|Całkowita ilość pamięci przydzielona przez proces aparatu Analysis Services i procesy kontenera mashupów, bez uwzględnienia pamięci współdzielonej z innymi procesami.|
-|virtual_bytes_metric|Bajty wirtualne |Szybkość|Średnia|Bieżący rozmiar wirtualnej przestrzeni adresowej używanej przez proces aparatu i procesy kontenera mashupów Analysis Services.|
-|mashup_engine_private_bytes_metric|Liczba prywatnych bajtów aparatu M |Szybkość|Średnia|Łączna ilość pamięci w procesach kontenera programu mashup pamięć została przydzielona, bez uwzględnienia pamięci współdzielonej z innymi procesami.|
-|mashup_engine_virtual_bytes_metric|Liczba bajtów wirtualnych aparatu M |Szybkość|Średnia|Bieżący rozmiar wirtualnej przestrzeni adresowej, z której korzystają procesy kontenera mashupu.|
-|Przydział|Pamięć: limit przydziału|Szybkość|Średnia|Bieżący limit pamięci (w bajtach). Przydział pamięci jest również nazywany przydziałem pamięci lub rezerwacją pamięci.|
+|CleanerMemoryNonshrinkable|Pamięć: pamięć oczyszczarki niemożliwa do zmniejszenia|Bajty|Średnia|Ilość pamięci (w bajtach), która nie podlega wyprzeczyszczaniu przez oczyszczarkę w tle.|
+|CleanerMemoryShrinkable|Pamięć: zmniejszanie ilości pamięci czyszczącej|Bajty|Średnia|Ilość pamięci, w bajtach, podlegająca przeczyszczaniu przez oczyszczarkę w tle.|
+|MemoryLimitHard|Pamięć: sztywny limit pamięci|Bajty|Średnia|Limit pamięci twardej z pliku konfiguracji.|
+|MemoryLimitHigh|Pamięć: limit pamięci jest wysoki|Bajty|Średnia|Górny limit pamięci z pliku konfiguracji.|
+|MemoryLimitLow|Pamięć: limit pamięci — niski|Bajty|Średnia|Limit braku pamięci z pliku konfiguracji.|
+|MemoryLimitVertiPaq|Pamięć: limit pamięci — tryb VertiPaq|Bajty|Średnia|Limit w pamięci z pliku konfiguracji.|
+|MemoryUsage|Pamięć: użycie pamięci|Bajty|Średnia|Użycie pamięci przez proces serwera jako używany do obliczania ceny pamięci czyszczącej. Równe licznikowi Process\PrivateBytes i rozmiar danych mapowanych na pamięć, ignorowanie wszelkich pamięci, które zostały zamapowane lub przydzielone przez aparat analityczny w pamięci (VertiPaq) przekraczające limit pamięci aparatu.|
+|private_bytes_metric|Bajty prywatne |Bajty|Średnia|Całkowita ilość pamięci przydzielona przez proces aparatu Analysis Services i procesy kontenera mashupów, bez uwzględnienia pamięci współdzielonej z innymi procesami.|
+|virtual_bytes_metric|Bajty wirtualne |Bajty|Średnia|Bieżący rozmiar wirtualnej przestrzeni adresowej używanej przez proces aparatu i procesy kontenera mashupów Analysis Services.|
+|mashup_engine_private_bytes_metric|Liczba prywatnych bajtów aparatu M |Bajty|Średnia|Łączna ilość pamięci w procesach kontenera programu mashup pamięć została przydzielona, bez uwzględnienia pamięci współdzielonej z innymi procesami.|
+|mashup_engine_virtual_bytes_metric|Liczba bajtów wirtualnych aparatu M |Bajty|Średnia|Bieżący rozmiar wirtualnej przestrzeni adresowej, z której korzystają procesy kontenera mashupu.|
+|Przydział|Pamięć: limit przydziału|Bajty|Średnia|Bieżący limit pamięci (w bajtach). Przydział pamięci jest również nazywany przydziałem pamięci lub rezerwacją pamięci.|
 |QuotaBlocked|Pamięć: zablokowany limit przydziału|Licznik|Średnia|Bieżąca liczba żądań przydziałów blokowanych do momentu zwolnienia innych limitów przydziału pamięci.|
-|VertiPaqNonpaged|Pamięć: VertiPaq niestronicowana|Szybkość|Średnia|Bajty pamięci zablokowane w zestawie roboczym do użycia przez aparat w pamięci.|
-|VertiPaqPaged|Pamięć: stronicowana na stronie VertiPaq|Szybkość|Średnia|Bajty stronicowanej pamięci w użyciu dla danych w pamięci.|
+|VertiPaqNonpaged|Pamięć: VertiPaq niestronicowana|Bajty|Średnia|Bajty pamięci zablokowane w zestawie roboczym do użycia przez aparat w pamięci.|
+|VertiPaqPaged|Pamięć: stronicowana na stronie VertiPaq|Bajty|Średnia|Bajty stronicowanej pamięci w użyciu dla danych w pamięci.|
 |ProcessingPoolJobQueueLength|Długość kolejki zadań puli przetwarzania|Licznik|Średnia|Liczba zadań innych niż zadania we/wy w kolejce puli wątków przetwarzania.|
 |RowsConvertedPerSec|Przetwarzanie: przekonwertowane wiersze na sekundę|CountPerSecond|Średnia|Szybkość wierszy przekonwertowanych podczas przetwarzania.|
 |RowsReadPerSec|Przetwarzanie: odczytane wiersze na sekundę|CountPerSecond|Średnia|Współczynnik wierszy odczytanych ze wszystkich relacyjnych baz danych.|

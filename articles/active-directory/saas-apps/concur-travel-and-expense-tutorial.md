@@ -90,25 +90,25 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     > [!NOTE]
     > Identyfikator (identyfikator jednostki) i adres URL odpowiedzi (adres URL usługi Konsumenckej potwierdzenia) są specyficzne dla regionu. Wybierz pozycję na podstawie centrum danych jednostki Concur. Jeśli nie znasz centrum danych jednostki Concur, skontaktuj się z pomocą techniczną Concur. 
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióra, aby zmienić ustawienia **atrybutu użytkownika** . Unikatowy identyfikator użytkownika musi pasować do Concur użytkownika login_id. Zwykle należy zmienić **User. userPrincipalName** na **User. mail**.
+5. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióra, aby zmienić ustawienia **atrybutu użytkownika** . Unikatowy identyfikator użytkownika musi pasować do login_id użytkownika Concur. Zwykle należy zmienić **User. userPrincipalName** na **User. mail**.
 
     ![Edytowanie atrybutu użytkownika](common/edit-attribute.png)
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać metadane i zapisać je na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -118,7 +118,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **Concur podróże i wydatki**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -141,10 +141,10 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ### <a name="create-concur-travel-and-expense-test-user"></a>Utwórz użytkownika testowego podróży i wydatków Concur
 
-W tej sekcji utworzysz użytkownika o nazwie B. Simon w Concur podróży i obrachunku. Współpracuj z zespołem pomocy technicznej Concur, aby dodać użytkowników z platformy podróży i wydatków Concur. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika o nazwie B. Simon w Concur podróży i obrachunku. Współpracuj z zespołem pomocy technicznej Concur, aby dodać użytkowników z platformy podróży i wydatków Concur. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
 > [!NOTE]
-> B. identyfikator logowania Concur Simon musi pasować do unikatowego identyfikatora B. Simon w usłudze Azure AD. Na przykład jeśli Simon usługi Azure AD @no__t identyfikator. B. identyfikator logowania Concur Simon musi być `B.Simon@contoso.com`. 
+> B. identyfikator logowania Concur Simon musi pasować do unikatowego identyfikatora B. Simon w usłudze Azure AD. Na przykład jeśli Simon usługi Azure AD `B.Simon@contoso.com`identyfikator. B. Simon identyfikator logowania Concur musi być również `B.Simon@contoso.com`. 
 
 ## <a name="configure-concur-mobile-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Concur Mobile
 Aby włączyć logowanie jednokrotne w usłudze Concur Mobile, należy przyznać Concur obsługę **adresu URL dostępu użytkownika**zespołu. Wykonaj poniższe kroki, aby uzyskać **adres URL dostępu użytkownika** z usługi Azure AD:
@@ -158,11 +158,11 @@ Aby włączyć logowanie jednokrotne w usłudze Concur Mobile, należy przyznać
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka podróży i wydatków usługi Concur w panelu dostępu należy automatycznie zalogować się do Concur podróży i wydatków, dla których skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

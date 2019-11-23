@@ -87,7 +87,7 @@ Po włączeniu magazynu zapytań dane są zapisywane w 15-minutowych oknach agre
 
 Następujące opcje są dostępne na potrzeby konfigurowania parametrów magazynu zapytań.
 
-| **Konstruktora** | **Opis** | **Domyślne** | **Zakres** |
+| **Parametr** | **Opis** | **Domyślne** | **Zakres** |
 |---|---|---|---|
 | query_store_capture_mode | Włącz/Wyłącz funkcję magazynu zapytań na podstawie wartości. Uwaga: Jeśli performance_schema jest wyłączona, włączenie query_store_capture_mode spowoduje włączenie performance_schema i podzestawu narzędzi schematu wydajności wymaganych dla tej funkcji. | CAŁĄ | BRAK, WSZYSTKIE |
 | query_store_capture_interval | Interwał przechwytywania magazynu zapytań (w minutach). Umożliwia określenie interwału, w którym metryki zapytania są agregowane | 15 | 5 - 60 |
@@ -96,13 +96,13 @@ Następujące opcje są dostępne na potrzeby konfigurowania parametrów magazyn
 
 Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
 
-| **Konstruktora** | **Opis** | **Domyślne** | **Zakres** |
+| **Parametr** | **Opis** | **Domyślne** | **Zakres** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Umożliwia włączenie/wyłączenie statystyk oczekiwania. | DAWAJ | BRAK, WSZYSTKIE |
 | query_store_wait_sampling_frequency | Zmienia częstotliwość próbkowania oczekiwania w sekundach. od 5 do 300 sekund. | 30 | 5-300 |
 
 > [!NOTE]
-> Obecnie **query_store_capture_mode** zastępuje tę konfigurację, co oznacza, że zarówno **query_store_capture_mode** , jak i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** muszą być włączone dla wszystkich, aby statystyki oczekiwania mogły działać. Jeśli **query_store_capture_mode** jest wyłączone, a następnie zaczekaj, statystyki są również wyłączone, ponieważ statystyki oczekiwania wykorzystują performance_schema włączone i zapytanie_tekst przechwycone przez magazyn zapytań.
+> Obecnie **query_store_capture_mode** zastępuje tę konfigurację, co oznacza, że oba **query_store_capture_mode** i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** muszą być włączone dla wszystkich, aby statystyki oczekiwania mogły działać. Jeśli **query_store_capture_mode** jest wyłączone, a następnie zaczekaj, statystyki są również wyłączone, ponieważ statystyki oczekiwania wykorzystują performance_schema włączone i query_text przechwycone przez magazyn zapytań.
 
 Użyj  [Azure Portal](howto-server-parameters.md) lub [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md) , aby uzyskać lub ustawić inną wartość dla parametru.
 
@@ -145,7 +145,7 @@ Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego i
 | `first_seen` | sygnatura czasowa| NO| Pierwsze wystąpienie (UTC) zapytania w oknie agregacji|
 | `last_seen` | sygnatura czasowa| NO| Ostatnie wystąpienie (UTC) zapytania w tym oknie agregacji|
 
-### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden wiersz dla każdego identyfikatora bazy danych, identyfikatora użytkownika, identyfikatora zapytania i zdarzenia.
 

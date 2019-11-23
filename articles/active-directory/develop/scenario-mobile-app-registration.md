@@ -57,7 +57,7 @@ Należy pamiętać, że w portalu rejestracji aplikacji jest dostępne środowis
    ![obraz](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
 2. Wybierz pozycję **dodaj
-   platformy**![obraz](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+   platformy** ![obraz](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
 3. Gdy lista platform jest obsługiwana, wybierz pozycję **iOS**
    ![obraz](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
@@ -66,7 +66,7 @@ Należy pamiętać, że w portalu rejestracji aplikacji jest dostępne środowis
    ![Image](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. Identyfikator URI przekierowania jest obliczany dla Ciebie.
-   ](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png) obrazu ![
+   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 Jeśli wolisz ręcznie skonfigurować identyfikator URI przekierowania, możesz to zrobić za pomocą manifestu aplikacji. Zalecany format jest następujący:
 
@@ -76,7 +76,7 @@ Jeśli wolisz ręcznie skonfigurować identyfikator URI przekierowania, możesz 
 
 ### <a name="username-password"></a>Hasło użytkownika
 
-Jeśli aplikacja używa tylko nazwy użytkownika/hasła, nie trzeba rejestrować identyfikatora URI przekierowania dla aplikacji. W rzeczywistości ten przepływ wykonuje rundy w punkcie końcowym Microsoft Identity platform v 2.0, a aplikacja nie zostanie wywołana ponownie na żadnym konkretnym identyfikatorze URI. Należy jednak pamiętać, że aplikacja jest publiczną aplikacją kliencką. Tę konfigurację można uzyskać, przechodząc do sekcji **uwierzytelnianie** dla aplikacji, a następnie w podsekcji **Ustawienia zaawansowane** wybierz pozycję **tak**, a pytanie **Traktuj aplikację jako klienta publicznego** ( **domyślnie akapit typu klient** )
+Jeśli aplikacja używa tylko nazwy użytkownika/hasła, nie trzeba rejestrować identyfikatora URI przekierowania dla aplikacji. W rzeczywistości ten przepływ wykonuje rundy w punkcie końcowym Microsoft Identity platform v 2.0, a aplikacja nie zostanie wywołana ponownie na żadnym konkretnym identyfikatorze URI. Należy jednak pamiętać, że aplikacja jest publiczną aplikacją kliencką. Tę konfigurację można uzyskać, przechodząc do sekcji **uwierzytelnianie** dla aplikacji, a następnie w podsekcji **Ustawienia zaawansowane** wybierz pozycję **tak**, na pytanie **Traktuj aplikację jako klienta publicznego** (w **domyślnym obszarze typu klienta** ).
 
 ## <a name="api-permissions"></a>Uprawnienia interfejsu API
 

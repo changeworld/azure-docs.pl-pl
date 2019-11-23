@@ -308,19 +308,19 @@ ms.locfileid: "70101323"
 
 
 
-W tym dokumencie omówiono kilka różnych obszarów, które należy wziąć pod uwagę podczas wdrażania oprogramowania SAP ASE na platformie Azure IaaS. Jako warunek wstępny do tego dokumentu należy przeczytać zagadnienia dotyczące dokumentu [dotyczące wdrożenia systemu azure Virtual Machines DBMS dotyczące obciążeń SAP](dbms_guide_general.md) i innych przewodników w obciążeniu [SAP w dokumentacji platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+W tym dokumencie omówiono kilka różnych obszarów, które należy wziąć pod uwagę podczas wdrażania oprogramowania SAP ASE na platformie Azure IaaS. Jako warunek wstępny do tego dokumentu należy przeczytać [zagadnienia dotyczące dokumentu dotyczące wdrożenia systemu azure Virtual Machines DBMS dotyczące obciążeń SAP](dbms_guide_general.md) i innych przewodników w [obciążeniu SAP w dokumentacji platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
 ## <a name="specifics-to-sap-ase-on-windows"></a>Specyficzne dla oprogramowania SAP ASE w systemie Windows
 Począwszy od Microsoft Azure można migrować istniejące aplikacje SAP ASE do usługi Azure Virtual Machines. System SAP ASE na maszynie wirtualnej platformy Azure umożliwia zredukowanie całkowitego kosztu posiadania wdrożenia, zarządzania i konserwacji aplikacji korporacyjnych przez łatwe Migrowanie tych aplikacji do Microsoft Azure. W przypadku oprogramowania SAP ASE na maszynie wirtualnej platformy Azure Administratorzy i deweloperzy mogą nadal korzystać z tych samych narzędzi programistycznych i administracyjnych, które są dostępne lokalnie.
 
-Umowy SLA for Azure Virtual Machines można znaleźć tutaj:<https://azure.microsoft.com/support/legal/sla/virtual-machines>
+Umowy SLA for Azure Virtual Machines można znaleźć tutaj: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
 
 Microsoft Azure oferuje wiele różnych typów maszyn wirtualnych, które pozwalają uruchamiać najmniejsze systemy SAP i Landscapes do dużych systemów SAP i Landscapes z tysiącami użytkowników. Numery punktów SAP ustalania rozmiarów dla różnych jednostek SKU certyfikowanej maszyny wirtualnej SAP są udostępniane w programie SAP Note [1928533].
 
 Instrukcje i zalecenia dotyczące użycia usługi Azure Storage, wdrożenia maszyn wirtualnych SAP lub monitorowania SAP zawarto w temacie [zagadnienia dotyczące wdrażania systemu azure Virtual Machines DBMS dla obciążenia SAP](dbms_guide_general.md) dotyczą również wdrożeń oprogramowania SAP ASE.
 
 ### <a name="sap-ase-version-support"></a>Obsługa wersji oprogramowania SAP ASE
-SAP obecnie obsługuje oprogramowanie SAP ASE w wersji 16,0 do użycia z produktami SAP Business Suite. Wszystkie aktualizacje dla serwera SAP ASE lub sterowników JDBC i ODBC, które mają być używane z produktami SAP Business Suite, są dostępne wyłącznie za pośrednictwem platformy SAP <https://support.sap.com/swdc>Service Marketplace w:.
+SAP obecnie obsługuje oprogramowanie SAP ASE w wersji 16,0 do użycia z produktami SAP Business Suite. Wszystkie aktualizacje oprogramowania SAP ASE Server oraz sterowników JDBC i ODBC, które mają być używane z produktami SAP Business Suite, są dostępne wyłącznie za pośrednictwem platformy SAP Service Marketplace pod adresem: <https://support.sap.com/swdc>.
 
 Nie pobieraj aktualizacji dla serwera SAP ASE ani sterowników JDBC i ODBC bezpośrednio z witryn sieci Web programu Sybase. Aby uzyskać szczegółowe informacje na temat poprawek, które są obsługiwane do użytku z produktami SAP lokalnie i na platformie Virtual Machines Azure, zobacz następujące informacje dotyczące oprogramowania SAP:
 
@@ -333,7 +333,7 @@ Ogólne informacje na temat uruchamiania programu SAP Business Suite w systemie 
 #### <a name="structure-of-the-sap-ase-deployment"></a>Struktura wdrożenia oprogramowania SAP ASE
 Pliki wykonywalne oprogramowania SAP ASE należy zlokalizować lub zainstalować na dysku systemowym dysku systemu operacyjnego maszyny wirtualnej (dysk c:\). Zazwyczaj większość baz danych systemu i narzędzi SAP ASE nie ma dużego obciążenia. W związku z tym bazy danych systemu i narzędzi (Master, model, saptools, sybmgmtdb, sybsystemdb) mogą pozostawać na C:\ litera. 
 
-Wyjątkiem może być tymczasowa baza danych, która w przypadku niektórych obciążeń SAP ERP i wszystkie obciążenia z dużą ilością danych może wymagać wyższego woluminu lub woluminu operacji we/wy. Woluminy lub operacje we/wy, które nie mogą zostać dostarczone przez dysk systemu operacyjnego\)maszyny wirtualnej (dysk C:.
+Wyjątkiem może być tymczasowa baza danych, która w przypadku niektórych obciążeń SAP ERP i wszystkie obciążenia z dużą ilością danych może wymagać wyższego woluminu lub woluminu operacji we/wy. Woluminy lub operacje we/wy, które nie mogą zostać dostarczone przez dysk systemu operacyjnego maszyny wirtualnej (dysk C:\).
 
 W zależności od wersji SAPInst/SWPM używanej do instalacji, konfiguracja wystąpienia oprogramowania SAP ASE może wyglądać następująco:
 
@@ -384,7 +384,7 @@ a linki wygenerowane w ramach transakcji DBACockpit wyglądają podobnie do:
 > 
 > 
 
-W zależności od tego, jak maszyna wirtualna platformy Azure hostującym system SAP jest połączona z usługami AD i DNS, należy się upewnić, że ICM korzysta z w pełni kwalifikowanej nazwy hosta, którą można rozwiązać na komputerze, na którym jest otwierany DBACockpit. Zobacz temat SAP Uwaga [773830] , aby zrozumieć, jak ICM określa w pełni kwalifikowaną nazwę hosta na podstawie parametrów profilu i w razie potrzeby jawnie ustaw parametr ICM/host_name_full.
+W zależności od tego, jak maszyna wirtualna platformy Azure hostującym system SAP jest połączona z usługami AD i DNS, należy się upewnić, że ICM korzysta z w pełni kwalifikowanej nazwy hosta, którą można rozwiązać na komputerze, na którym jest otwierany DBACockpit. Zobacz temat SAP Uwaga [773830] , aby zrozumieć, jak ICM określa w pełni kwalifikowaną nazwę hosta na podstawie parametrów profilu i w razie potrzeby jawnie ustaw parametr icm/host_name_full.
 
 Jeśli maszyna wirtualna została wdrożona w scenariuszu obejmującym tylko chmurę bez połączenia między środowiskiem lokalnym i platformą Azure, musisz zdefiniować publiczny adres IP i domainlabel. Format publicznej nazwy DNS maszyny wirtualnej wygląda następująco:
 
@@ -394,7 +394,7 @@ Jeśli maszyna wirtualna została wdrożona w scenariuszu obejmującym tylko chm
 
 Więcej szczegółów dotyczących nazwy DNS można znaleźć [tutaj][virtual-machines-azurerm-versus-azuresm].
 
-Ustawienie parametrów profilu SAP/host_name_full na nazwę DNS maszyny wirtualnej platformy Azure link może wyglądać podobnie do:
+Ustawienie opcji ICM/host_name_full parametru profilu SAP na nazwę DNS maszyny wirtualnej platformy Azure link może wyglądać podobnie do:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -448,7 +448,7 @@ Aby zwiększyć liczbę obiektów docelowych do zapisu, dostępne są dwie opcje
 * Rozłożenie woluminu docelowego kopii zapasowej na wiele dysków zainstalowanych w celu zwiększenia przepływności operacji we/wy na woluminie rozłożonym
 * Tworzenie konfiguracji zrzutu na poziomie oprogramowania SAP ASE, która używa więcej niż jednego katalogu docelowego do zapisywania zrzutu
 
-Rozłożenie woluminu dysku na wiele zainstalowanych dysków zostało omówione w temacie [uwagi dotyczące wdrażania platformy Azure Virtual Machines DBMS dla obciążenia SAP](dbms_guide_general.md). Więcej informacji o używaniu wielu katalogów w konfiguracji zrzutów SAP ASE można znaleźć w dokumentacji procedury składowanej sp_config_dump, która jest używana do tworzenia konfiguracji zrzutu w programie [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
+Rozłożenie woluminu dysku na wiele zainstalowanych dysków zostało omówione w temacie [uwagi dotyczące wdrażania platformy Azure Virtual Machines DBMS dla obciążenia SAP](dbms_guide_general.md). Więcej informacji o używaniu wielu katalogów w konfiguracji zrzutów SAP ASE można znaleźć w dokumentacji procedury przechowywanej sp_config_dump, która jest używana do tworzenia konfiguracji zrzutu w programie [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Odzyskiwanie po awarii z maszynami wirtualnymi platformy Azure
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikacja danych przy użyciu serwera replikacji SAP Sybase
@@ -461,9 +461,9 @@ Oprogramowanie SAP ASE HADR Cluster nie wymaga wewnętrznego Load Balancer platf
 ## <a name="specifics-to-sap-ase-on-linux"></a>Specyficzne dla oprogramowania SAP ASE w systemie Linux
 Począwszy od Microsoft Azure można łatwo migrować istniejące aplikacje SAP ASE do usługi Azure Virtual Machines. System SAP ASE na maszynie wirtualnej umożliwia zredukowanie całkowitego kosztu posiadania wdrożenia, zarządzania i konserwacji aplikacji korporacyjnych przez łatwe Migrowanie tych aplikacji do Microsoft Azure. W przypadku oprogramowania SAP ASE na maszynie wirtualnej platformy Azure Administratorzy i deweloperzy mogą nadal korzystać z tych samych narzędzi programistycznych i administracyjnych, które są dostępne lokalnie.
 
-W przypadku wdrażania maszyn wirtualnych platformy Azure ważne jest, aby znać oficjalną umowy SLA, którą można znaleźć tutaj:<https://azure.microsoft.com/support/legal/sla>
+W przypadku wdrażania maszyn wirtualnych platformy Azure ważne jest, aby znać oficjalną umowy SLA, którą można znaleźć tutaj: <https://azure.microsoft.com/support/legal/sla>
 
-Informacje o ustalaniu wielkości SAP i listę jednostek SKU certyfikowanej maszyny wirtualnej SAP są dostępne w programie SAP Note [1928533]. Dodatkowe dokumenty dotyczące ustalania rozmiarów SAP dla maszyn wirtualnych platformy Azure <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> można znaleźć tutaj i<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Informacje o ustalaniu wielkości SAP i listę jednostek SKU certyfikowanej maszyny wirtualnej SAP są dostępne w programie SAP Note [1928533]. Dodatkowe dokumenty dotyczące ustalania rozmiarów oprogramowania SAP dla maszyn wirtualnych platformy Azure można znaleźć tutaj <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> a tutaj <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 Instrukcje i zalecenia dotyczące użycia usługi Azure Storage, wdrożenia maszyn wirtualnych SAP lub monitorowania SAP mają zastosowanie do wdrożeń oprogramowania SAP ASE w połączeniu z aplikacjami SAP zgodnie z opisem w pierwszym z czterech rozdziałów tego dokumentu.
 
@@ -473,7 +473,7 @@ Poniższe dwa uwagi SAP zawierają ogólne informacje dotyczące środowiska ASE
 * [1941500]
 
 ### <a name="sap-ase-version-support"></a>Obsługa wersji oprogramowania SAP ASE
-SAP obecnie obsługuje oprogramowanie SAP ASE w wersji 16,0 do użycia z produktami SAP Business Suite. Wszystkie aktualizacje dla serwera SAP ASE lub sterowników JDBC i ODBC, które mają być używane z produktami SAP Business Suite, są dostępne wyłącznie za pośrednictwem platformy SAP <https://support.sap.com/swdc>Service Marketplace w:.
+SAP obecnie obsługuje oprogramowanie SAP ASE w wersji 16,0 do użycia z produktami SAP Business Suite. Wszystkie aktualizacje oprogramowania SAP ASE Server oraz sterowników JDBC i ODBC, które mają być używane z produktami SAP Business Suite, są dostępne wyłącznie za pośrednictwem platformy SAP Service Marketplace pod adresem: <https://support.sap.com/swdc>.
 
 Tak jak w przypadku instalacji lokalnych, nie pobieraj aktualizacji serwera SAP ASE ani sterowników JDBC i ODBC bezpośrednio z witryn sieci Web programu Sybase. Aby uzyskać szczegółowe informacje na temat poprawek, które są obsługiwane w przypadku produktów SAP Business Suite w środowisku lokalnym i na platformie Virtual Machines Azure, zobacz następujące informacje dotyczące oprogramowania SAP:
 
@@ -537,7 +537,7 @@ a linki wygenerowane w ramach transakcji DBACockpit będą wyglądać podobnie d
 > 
 > 
 
-W zależności od tego, jak maszyna wirtualna platformy Azure hostującym system SAP jest połączona z usługami AD i DNS, należy się upewnić, że ICM korzysta z w pełni kwalifikowanej nazwy hosta, którą można rozwiązać na komputerze, na którym jest otwierany DBACockpit. Zobacz temat SAP Uwaga [773830] , aby zrozumieć, jak ICM określa w pełni kwalifikowaną nazwę hosta w zależności od parametrów profilu i w razie potrzeby jawnie ustaw parametr ICM/host_name_full.
+W zależności od tego, jak maszyna wirtualna platformy Azure hostującym system SAP jest połączona z usługami AD i DNS, należy się upewnić, że ICM korzysta z w pełni kwalifikowanej nazwy hosta, którą można rozwiązać na komputerze, na którym jest otwierany DBACockpit. Zobacz temat SAP Uwaga [773830] , aby zrozumieć, jak ICM określa w pełni kwalifikowaną nazwę hosta w zależności od parametrów profilu i w razie potrzeby jawnie ustaw parametr icm/host_name_full.
 
 Jeśli maszyna wirtualna została wdrożona w scenariuszu obejmującym tylko chmurę bez połączenia między środowiskiem lokalnym i platformą Azure, musisz zdefiniować publiczny adres IP i domainlabel. Format publicznej nazwy DNS maszyny wirtualnej wygląda następująco:
 
@@ -547,7 +547,7 @@ Jeśli maszyna wirtualna została wdrożona w scenariuszu obejmującym tylko chm
 
 Więcej szczegółów dotyczących nazwy DNS można znaleźć [tutaj][virtual-machines-azurerm-versus-azuresm].
 
-Ustawienie parametrów profilu SAP/host_name_full na nazwę DNS maszyny wirtualnej platformy Azure link może wyglądać podobnie do:
+Ustawienie opcji ICM/host_name_full parametru profilu SAP na nazwę DNS maszyny wirtualnej platformy Azure link może wyglądać podobnie do:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -601,7 +601,7 @@ Aby zwiększyć liczbę obiektów docelowych do zapisu, dostępne są dwie opcje
 * Rozłożenie woluminu docelowego kopii zapasowej na wiele dysków zainstalowanych w celu zwiększenia przepływności operacji we/wy na woluminie rozłożonym
 * Tworzenie konfiguracji zrzutu na poziomie oprogramowania SAP ASE, która używa więcej niż jednego katalogu docelowego do zapisywania zrzutu
 
-Rozłożenie woluminu dysku na wiele zainstalowanych dysków zostało omówione w temacie [uwagi dotyczące wdrażania platformy Azure Virtual Machines DBMS dla obciążenia SAP](dbms_guide_general.md). Więcej informacji o używaniu wielu katalogów w konfiguracji zrzutów SAP ASE można znaleźć w dokumentacji procedury składowanej sp_config_dump, która jest używana do tworzenia konfiguracji zrzutu w programie [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
+Rozłożenie woluminu dysku na wiele zainstalowanych dysków zostało omówione w temacie [uwagi dotyczące wdrażania platformy Azure Virtual Machines DBMS dla obciążenia SAP](dbms_guide_general.md). Więcej informacji o używaniu wielu katalogów w konfiguracji zrzutów SAP ASE można znaleźć w dokumentacji procedury przechowywanej sp_config_dump, która jest używana do tworzenia konfiguracji zrzutu w programie [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Odzyskiwanie po awarii z maszynami wirtualnymi platformy Azure
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikacja danych przy użyciu serwera replikacji SAP Sybase

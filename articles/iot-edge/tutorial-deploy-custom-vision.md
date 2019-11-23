@@ -32,7 +32,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 <center>
 
-![Diagram — architektura samouczka, etap i wdrażanie klasyfikatora @ no__t-1 @ no__t-2
+Diagram ![— architektura samouczka, etap i wdrażanie klasyfikatora](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+</center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -137,7 +138,7 @@ W tym miejscu kończy się tworzenie i szkolenie projektu usługi Custom Vision.
 
 Na maszynie deweloperskiej masz teraz pliki dla wersji kontenera Twojego klasyfikatora obrazów. W tej sekcji skonfigurujesz kontener klasyfikatora obrazów tak, aby był on uruchamiany jako moduł usługi IoT Edge. Utworzysz również drugi moduł, który zostanie wdrożony obok klasyfikatora obrazów. Drugi moduł publikuje żądania do klasyfikatora i wysyła wyniki jako komunikaty do usługi IoT Hub. 
 
-### <a name="create-a-new-solution"></a>Utwórz nowe rozwiązanie
+### <a name="create-a-new-solution"></a>Tworzenie nowego rozwiązania
 
 Rozwiązanie jest logicznym sposobem tworzenia i organizowania wielu modułów dla pojedynczego wdrożenia usługi IoT Edge. Zawiera ono kod dla jednego lub więcej modułów, a także manifest wdrożenia deklarujący sposób skonfigurowania ich na urządzeniu usługi IoT Edge. 
 
@@ -151,7 +152,7 @@ Rozwiązanie jest logicznym sposobem tworzenia i organizowania wielu modułów d
    | Podaj nazwę rozwiązania | Wprowadź opisową nazwę rozwiązania, na przykład **CustomVisionSolution**, lub zaakceptuj nazwę domyślną. |
    | Wybierz szablon modułu | Wybierz pozycję **Moduł Python**. |
    | Podaj nazwę modułu | Nadaj modułowi nazwę **classifier**.<br><br>Nazwa modułu musi być pisana małymi literami. Podczas odwoływania się do modułów usługa IoT Edge rozróżnia wielkość liter, a to rozwiązanie korzysta z biblioteki, która formatuje wszystkie żądania małymi literami. |
-   | Podaj repozytorium obrazów platformy Docker dla modułu | Repozytorium obrazów zawiera nazwę rejestru kontenerów oraz nazwę obrazu kontenera. Obraz kontenera jest wstępnie wypełniany w ostatnim kroku. Zastąp ciąg **localhost:5000** wartością serwera logowania z rejestru kontenerów platformy Azure. Serwer logowania możesz pobrać ze strony Przegląd rejestru kontenerów w witrynie Azure Portal.<br><br>Końcowy ciąg wygląda jak **\<registry Name\>.azurecr.io/Classifier**. |
+   | Podaj repozytorium obrazów platformy Docker dla modułu | Repozytorium obrazów zawiera nazwę rejestru kontenerów oraz nazwę obrazu kontenera. Obraz kontenera jest wstępnie wypełniany w ostatnim kroku. Zastąp ciąg **localhost:5000** wartością serwera logowania z rejestru kontenerów platformy Azure. Serwer logowania możesz pobrać ze strony Przegląd rejestru kontenerów w witrynie Azure Portal.<br><br>Końcowy ciąg wygląda jak **\<Nazwa rejestru\>. azurecr.IO/Classifier**. |
  
    ![Udostępnianie repozytorium obrazów platformy Docker](./media/tutorial-deploy-custom-vision/repository.png)
 

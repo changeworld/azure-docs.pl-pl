@@ -23,15 +23,15 @@ ms.locfileid: "72299957"
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Wprowadzenie z usługą Azure Storage (projekty zadań WebJob platformy Azure)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule C# przedstawiono przykłady kodu, które pokazują, jak używać zestawu SDK Azure WebJobs w wersji 1. x z usługą Azure Table Storage. Przykłady kodu używają [zestawu SDK zadań WebJob](https://github.com/Azure/azure-webjobs-sdk/wiki) w wersji 1. x.
 
-Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa to magazyn danych NoSQL, który akceptuje uwierzytelnione wywołania z chmury platformy Azure i poza nią. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.  Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
+Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.  Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
 
 Niektóre fragmenty kodu pokazują atrybut **tabeli** używany w funkcjach, które są wywoływane ręcznie, czyli nie przy użyciu jednego z atrybutów wyzwalacza.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Jak dodać jednostki do tabeli
-Aby dodać jednostki do tabeli, Użyj atrybutu **Table** z **ICollector @ no__t-2T >** lub **IAsyncCollector @ no__t-4T >** parametru, gdzie **t** określa schemat jednostek, które chcesz dodać. Konstruktor atrybutu przyjmuje parametr ciągu, który określa nazwę tabeli.
+Aby dodać jednostki do tabeli, Użyj atrybutu **Table** z **ICollector\<t >** lub **IAsyncCollector\<t >** parametru, gdzie **t** określa schemat jednostek, które chcesz dodać. Konstruktor atrybutu przyjmuje parametr ciągu, który określa nazwę tabeli.
 
 Poniższy przykładowy kod dodaje jednostki **osoby** do tabeli o nazwie transfery *wejściowe*.
 
@@ -80,7 +80,7 @@ Po zakończeniu działania strony **szczegóły wywołania** zgłasza liczbę ut
 ![Zakończono funkcję transferu danych przychodzących](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Jak odczytać wiele jednostek z tabeli
-Aby odczytać tabelę, Użyj atrybutu **Table** z parametrem **IQueryable @ no__t-2T >** , w którym typ **t** pochodzi od **klasy tableentity** lub implementuje **ITableEntity**.
+Aby odczytać tabelę, należy użyć atrybutu **Table** z parametrem **IQueryable\<t >** , gdzie Type **t** pochodzi z **klasy tableentity** lub implementuje **ITableEntity**.
 
 Poniższy przykładowy kod odczytuje i rejestruje wszystkie wiersze z tabeli danych **wejściowych** :
 

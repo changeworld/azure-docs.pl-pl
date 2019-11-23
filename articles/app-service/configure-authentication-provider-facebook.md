@@ -42,7 +42,7 @@ Aby wykonać procedurę opisaną w tym artykule, musisz mieć konto w serwisie F
    1. Ukończ sprawdzanie zabezpieczeń.
 
    Zostanie otwarty pulpit nawigacyjny dewelopera dla nowej aplikacji w serwisie Facebook.
-1. Wybierz pozycję **pulpit nawigacyjny** > **Logowanie w serwisie Facebook** > **Skonfiguruj** **Sieć Web**@no__t 5.
+1. Wybierz pozycję **pulpit nawigacyjny** > **Logowanie** do usługi Facebook > **skonfigurować** > **sieci Web**.
 1. W lewym okienku nawigacji w obszarze **Logowanie do serwisu Facebook**wybierz pozycję **Ustawienia**.
 1. W polu **prawidłowe identyfikatory URI przekierowania OAuth** wprowadź `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback`. Pamiętaj, aby zastąpić `<app-name>` nazwą aplikacji Azure App Service.
 1. Wybierz pozycję **Zapisz zmiany**.
@@ -55,14 +55,14 @@ Aby wykonać procedurę opisaną w tym artykule, musisz mieć konto w serwisie F
 
 1. Konto w serwisie Facebook użyte do zarejestrowania aplikacji jest administratorem aplikacji. W tym momencie tylko Administratorzy mogą logować się do tej aplikacji.
 
-   Aby uwierzytelnić inne konta w usłudze Facebook, wybierz pozycję **Przegląd aplikacji** i Włącz opcję **Udostępnij \<your-App-Name > Public** , aby umożliwić ogółowi publiczne dostęp do aplikacji przy użyciu uwierzytelniania w serwisie Facebook.
+   Aby uwierzytelnić inne konta usługi Facebook, wybierz pozycję **Przegląd aplikacji** i Włącz opcję **Udostępnij \<nazwę aplikacji > publiczny** , aby umożliwić ogółowi dostęp do aplikacji za pomocą uwierzytelniania w usłudze Facebook.
 
 ## <a name="secrets"> </a>Dodawanie informacji w serwisie Facebook do aplikacji
 
 1. Zaloguj się do [Azure Portal] i przejdź do aplikacji App Service.
 1. Wybierz pozycję **ustawienia** > **uwierzytelnianie/autoryzacja**i upewnij się, że **App Service uwierzytelnianie** jest **włączone**.
 1. Wybierz pozycję **Facebook**, a następnie wklej wartości w polu Identyfikator aplikacji i klucz tajny aplikacji, które zostały uzyskane wcześniej. Włącz wszystkie zakresy wymagane przez aplikację.
-1. Kliknij przycisk **OK**.
+1. Wybierz **OK**.
 
    ![Zrzut ekranu ustawień serwisu Facebook aplikacji mobilnych][0]
 

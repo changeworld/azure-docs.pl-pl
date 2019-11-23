@@ -31,10 +31,10 @@ Na poniższej ilustracji przedstawiono klaster, który ma dwa typy węzłów o n
 ## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Mapuj wystąpienia zestawu skalowania maszyn wirtualnych na węzły
 Jak pokazano na powyższym rysunku, wystąpienia zestawu skalowania rozpoczynają się w wystąpieniu 0, a następnie zwiększają się o 1. Numerowanie jest odzwierciedlone w nazwach węzłów. Na przykład węzeł BackEnd_0 jest wystąpieniem 0 zestawu skalowania zaplecza. Ten konkretny zestaw skalowania ma pięć wystąpień o nazwie BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 i BackEnd_4.
 
-W przypadku skalowania w górę zestawu skalowania jest tworzone nowe wystąpienie. Nowa nazwa wystąpienia zestawu skalowania jest zwykle nazwą zestawu skalowania i kolejnym numerem wystąpienia. W naszym przykładzie jest to BackEnd_5.
+W przypadku skalowania w górę zestawu skalowania jest tworzone nowe wystąpienie. Nowa nazwa wystąpienia zestawu skalowania jest zwykle nazwą zestawu skalowania i kolejnym numerem wystąpienia. W naszym przykładzie jest BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Moduły równoważenia obciążenia zestawu skalowania mapy z typami węzłów i zestawami skalowania
-Jeśli klaster został wdrożony w Azure Portal lub użyto przykładowego szablonu Azure Resource Manager, zostanie wyświetlona lista wszystkich zasobów w grupie zasobów. Moduły równoważenia obciążenia są widoczne dla każdego zestawu skalowania lub typu węzła. Nazwa usługi równoważenia obciążenia używa następującego formatu: **lb-&lt;node type name @ no__t-2**. Przykładem jest LB-sfcluster4doc-0, jak pokazano na poniższym rysunku:
+Jeśli klaster został wdrożony w Azure Portal lub użyto przykładowego szablonu Azure Resource Manager, zostanie wyświetlona lista wszystkich zasobów w grupie zasobów. Moduły równoważenia obciążenia są widoczne dla każdego zestawu skalowania lub typu węzła. Nazwa usługi równoważenia obciążenia używa następującego formatu: **&lt;nazwa typu węzła LB&gt;** . Przykładem jest LB-sfcluster4doc-0, jak pokazano na poniższym rysunku:
 
 ![Zasoby][Resources]
 
@@ -77,19 +77,19 @@ Poniżej przedstawiono opisy właściwości:
 
 | **Nazwa** | **Dozwolone wartości** | ** --- ** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-| name | string | --- | Unikatowa nazwa rozszerzenia |
+| name | ciąg | --- | Unikatowa nazwa rozszerzenia |
 | type | "ServiceFabricLinuxNode" lub "ServiceFabricWindowsNode" | --- | Identyfikuje Service Fabric systemu operacyjnego |
-| Włączoną flagą autoupgrademinorversion | prawda lub FAŁSZ | --- | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
-| dawc | Microsoft. Azure. servicefabric | --- | Nazwa wydawcy Service Fabricego w zakresie |
-| clusterEndpont | string | --- | URI: PORT do punktu końcowego zarządzania |
-| nodeTypeRef | string | --- | Nazwa nodeType |
-| durabilityLevel | brąz, Silver, Gold, Platinum | --- | czas, w którym można wstrzymać niezmienne infrastruktury platformy Azure |
-| enableParallelJobs | prawda lub FAŁSZ | --- | Włącz funkcję COMPUTE ParallelJobs, na przykład Usuń maszynę wirtualną i ponownie uruchom maszynę wirtualną w zestawie skalowania równoległego |
-| nicPrefixOverride | string | --- | Prefiks podsieci, taki jak "10.0.0.0/24" |
-| commonNames | ciąg [] | --- | Typowe nazwy zainstalowanych certyfikatów klastra |
-| x509StoreName | string | --- | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
+| autoUpgradeMinorVersion | true lub false | --- | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
+| publisher | Microsoft.Azure.ServiceFabric | --- | Nazwa wydawcy Service Fabricego w zakresie |
+| clusterEndpont | ciąg | --- | URI: PORT do punktu końcowego zarządzania |
+| nodeTypeRef | ciąg | --- | Nazwa nodeType |
+| durabilityLevel | bronze, silver, gold, platinum | --- | czas, w którym można wstrzymać niezmienne infrastruktury platformy Azure |
+| enableParallelJobs | true lub false | --- | Włącz funkcję COMPUTE ParallelJobs, na przykład Usuń maszynę wirtualną i ponownie uruchom maszynę wirtualną w zestawie skalowania równoległego |
+| nicPrefixOverride | ciąg | --- | Prefiks podsieci, taki jak "10.0.0.0/24" |
+| commonNames | string[] | --- | Typowe nazwy zainstalowanych certyfikatów klastra |
+| x509StoreName | ciąg | --- | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
 | typeHandlerVersion | 1.1 | --- | Wersja rozszerzenia. 1,0 klasycznej wersji rozszerzenia zaleca się uaktualnienie do 1,1 |
-| Ścieżka datapath | string | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
+| dataPath | ciąg | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
 
 ## <a name="next-steps"></a>Następne kroki
 * Zobacz [Omówienie funkcji "wdróż gdziekolwiek" i porównanie z klastrami zarządzanymi przez platformę Azure](service-fabric-deploy-anywhere.md).
