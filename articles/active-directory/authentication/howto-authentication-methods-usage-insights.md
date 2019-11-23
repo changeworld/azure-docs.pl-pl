@@ -1,101 +1,101 @@
 ---
-title: Metody uwierzytelniania użycie & Insights Reporting (wersja zapoznawcza) — Azure Active Directory
-description: Raportowanie w usłudze Azure AD Samoobsługowe resetowanie hasła i użycie metody uwierzytelniania Multi-Factor Authentication
+title: Authentication methods usage & insights - Azure Active Directory
+description: Reporting on Azure AD self-service password reset and Multi-Factor Authentication authentication method usage
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfea07989f52c463816318276fd5b6643cb2041
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 0d6a87b5797ea5c8f4ac116d6df9e6a48204f1fd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255069"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381896"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>Użycie metod uwierzytelniania & Insights (wersja zapoznawcza)
+# <a name="authentication-methods-usage--insights-preview"></a>Authentication methods usage & insights (preview)
 
-Usługa & Insights umożliwia zrozumienie, jak metody uwierzytelniania dla funkcji, takich jak platforma Azure Multi-Factor Authentication i Samoobsługowe resetowanie haseł, działają w organizacji. Ta funkcja raportowania umożliwia organizacji korzystanie z metod, aby zrozumieć, jakie metody są rejestrowane i jak są używane.
+Usage & insights enables you to understand how authentication methods for features like Azure Multi-Factor Authentication and self-service password reset are working in your organization. This reporting capability provides your organization with the means to understand what methods are being registered and how they are being used.
 
-## <a name="permissions-and-licenses"></a>Uprawnienia i licencje
+## <a name="permissions-and-licenses"></a>Permissions and licenses
 
-Następujące role mogą uzyskać dostęp do użycia i szczegółowych informacji:
+The following roles can access usage and insights:
 
 - Administrator globalny
-- Czytelnik zabezpieczeń
-- Administrator zabezpieczeń
-- Czytelnik raportów
+- Security Reader
+- Security Administrator
+- Reports Reader
 
-Do uzyskania dostępu do informacji o użyciu i szczegółowych informacji nie są wymagane żadne dodatkowe licencje. Informacje dotyczące licencjonowania Multi-Factor Authentication platformy Azure i samoobsługowego resetowania hasła (SSPR) znajdują się w [witrynie Azure Active Directory cenowej](https://azure.microsoft.com/pricing/details/active-directory/).
+No additional licensing is required to access usage and insights. Azure Multi-Factor Authentication and self-service password reset (SSPR) licensing information can be found on the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="how-it-works"></a>Zasady działania
 
-Aby uzyskać dostęp do informacji o użyciu metody uwierzytelniania i szczegółowych informacji:
+To access authentication method usage and insights:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-1. Przejdź do **Azure Active Directory** > **resetowania hasła** > **użycie & szczegółowych**informacji.
-1. Z omówienia **rejestracji** lub **użycia** można wybrać opcję otwarcia wstępnie filtrowanych raportów do filtrowania na podstawie Twoich potrzeb.
+1. Browse to **Azure Active Directory** > **Password reset** > **Usage & insights**.
+1. From the **Registration** or **Usage** overviews, you can choose to open the pre-filtered reports to filter based on your needs.
 
-![Omówienie użycia & Insights](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![Usage & insights overview](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-Aby uzyskać dostęp do & szczegółowych informacji, przejdź do [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). Ten link spowoduje przeprowadzenie przeglądu rejestracji.
+To access usage & insights directly, go to [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). This link will bring you to the registration overview.
 
-Kafelki Użytkownicy zarejestrowani, użytkownicy i użytkownicy z możliwością obsługi użytkowników pokazują następujące dane rejestracyjne dla użytkowników:
+The Users registered, Users enabled, and Users capable tiles show the following registration data for your users:
 
-- Zarejestrowane: użytkownik jest uważany za zarejestrowany, jeśli (lub administrator) zarejestrował wystarczającą metodę uwierzytelniania w celu spełnienia zasad SSPR lub Multi-Factor Authentication organizacji.
-- Włączone: użytkownik jest uznawany za włączony, jeśli znajdują się w zakresie zasad SSPRymi. Jeśli SSPR jest włączona dla grupy, użytkownik jest uznawany za włączony, jeśli znajdują się w tej grupie. Jeśli SSPR jest włączona dla wszystkich użytkowników, zostaną uznane za włączone wszyscy użytkownicy w dzierżawie (z wyjątkiem Gości).
-- Możliwe: użytkownik jest uznawany za możliwy do zarejestrowania i włączenia. Ten stan oznacza, że w razie konieczności można wykonać SSPR w dowolnym momencie.
+- Registered: A user is considered registered if they (or an admin) have registered enough authentication methods to meet your organization's SSPR or Multi-Factor Authentication policy.
+- Enabled: A user is considered enabled if they are in scope for the SSPR policy. If SSPR is enabled for a group, then the user is considered enabled if they are in that group. If SSPR is enabled for all users, then all users in the tenant (excluding guests) are considered enabled.
+- Capable: A user is considered capable if they are both registered and enabled. This status means that they can perform SSPR at any time if needed.
 
-Kliknięcie dowolnego z tych kafelków lub szczegółowych informacji w nich spowoduje przełączenie do wstępnie przefiltrowanej listy szczegółów rejestracji.
+Clicking on any of these tiles or the insights shown in them will bring you to a pre-filtered list of registration details.
 
-Na wykresie **rejestracje** na karcie **rejestracja** wyświetlana jest liczba pomyślnych i nieudanych rejestracji metod uwierzytelniania przez metodę uwierzytelniania. Na wykresie **resetowania** na karcie **użycie** wyświetlana jest liczba pomyślnych i nieudanych uwierzytelnień podczas przepływu resetowania hasła przez metodę uwierzytelniania.
+The **Registrations** chart on the **Registration** tab shows the number of successful and failed authentication method registrations by authentication method. The **Resets** chart on the **Usage** tab shows the number of successful and failed authentications during the password reset flow by authentication method.
 
-Kliknięcie dowolnego z wykresów spowoduje przełączenie do wstępnie filtrowanej listy zdarzeń rejestracji lub resetowania.
+Clicking on either of the charts will bring you to a pre-filtered list of registration or reset events.
 
-Za pomocą kontrolki w górnym prawym rogu można zmienić zakres dat dla danych inspekcji pokazywanych w rejestracjach i resetować wykresy do 24 godzin, 7 dni lub 30 dni.
+Using the control in the upper, right-hand corner, you can change the date range for the audit data shown in the Registrations and Resets charts to 24 hours, 7 days, or 30 days.
 
-### <a name="registration-details"></a>Szczegóły rejestracji
+### <a name="registration-details"></a>Registration details
 
-Kliknięcie kafelków **Użytkownicy**, **którzy włączyli**rejestrację lub Użytkownicy **mogą** uzyskać szczegółowe informacje o rejestracji.
+Clicking on the **Users registered**, **Users enabled**, or **Users capable** tiles or insights will bring you to the registration details.
 
-Raport szczegóły rejestracji zawiera następujące informacje dla każdego użytkownika:
-
-- Nazwa
-- Nazwa użytkownika
-- Stan rejestracji (wszystkie, zarejestrowane, niezarejestrowane)
-- Włączony stan (wszystkie, włączone, nie włączono)
-- Stan możliwości (wszystkie, obsługujące, nieobsługujący)
-- Metody (powiadomienie aplikacji, kod aplikacji, połączenie telefoniczne, wiadomości SMS, wiadomości E-mail, pytania zabezpieczające)
-
-Za pomocą kontrolek w górnej części listy można wyszukać użytkownika i odfiltrować listę użytkowników na podstawie wyświetlanych kolumn.
-
-### <a name="reset-details"></a>Resetuj szczegóły
-
-Kliknięcie na wykresach rejestracji lub resetowania spowoduje przełączenie do szczegółów resetowania.
-
-Raport szczegóły resetu przedstawia zdarzenia rejestracji i resetowania z ostatnich 30 dni, w tym:
+The registration details report shows the following information for each user:
 
 - Nazwa
 - Nazwa użytkownika
-- Funkcja (wszystkie, rejestracja, Reset)
-- Metoda uwierzytelniania (powiadomienie aplikacji, kod aplikacji, połączenie telefoniczne, połączenie biurowe, wiadomość SMS, adres E-mail, pytania zabezpieczające)
-- Stan (wszystkie, sukces, niepowodzenie)
+- Registration status (All, Registered, Not registered)
+- Enabled status (All, Enabled, Not enabled)
+- Capable status (All, Capable, Not capable)
+- Methods (App notification, App code, Phone call, SMS, Email, Security questions)
 
-Za pomocą kontrolek w górnej części listy można wyszukać użytkownika i odfiltrować listę użytkowników na podstawie wyświetlanych kolumn.
+Using the controls at the top of the list, you can search for a user and filter the list of users based on the columns shown.
+
+### <a name="reset-details"></a>Reset details
+
+Clicking on the Registrations or Resets charts will bring you to the reset details.
+
+The reset details report shows registration and reset events from the last 30 days including:
+
+- Nazwa
+- Nazwa użytkownika
+- Feature (All, Registration, Reset)
+- Authentication method (App notification, App code, Phone call, Office call, SMS, Email, Security questions)
+- Status (All, Success, Failure)
+
+Using the controls at the top of the list, you can search for a user and filter the list of users based on the columns shown.
 
 ## <a name="limitations"></a>Ograniczenia
 
-Dane wyświetlane w tych raportach zostaną opóźnione o maksymalnie 60 minut. Pole "ostatnio odświeżone" istnieje w Azure Portal, aby określić, jak ostatnie dane są.
+The data shown in these reports will be delayed by up to 60 minutes. A “Last refreshed" field exists in the Azure portal to identify how recent your data is.
 
-Dane dotyczące użycia i szczegółowych informacji nie są zamiennikiem raportów dotyczących aktywności platformy Azure Multi-Factor Authentication ani informacje zawarte w raporcie dotyczącym logowania w usłudze Azure AD.
+Usage and insights data is not a replacement for the Azure Multi-Factor Authentication activity reports or information contained in the Azure AD sign-ins report.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Praca z interfejsem API raportów użycia metod uwierzytelniania](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [Wybieranie metod uwierzytelniania dla organizacji](concept-authentication-methods.md)
-- [Połączone środowisko rejestracji](concept-registration-mfa-sspr-combined.md)
+- [Working with the authentication methods usage report API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Choosing authentication methods for your organization](concept-authentication-methods.md)
+- [Combined registration experience](concept-registration-mfa-sspr-combined.md)

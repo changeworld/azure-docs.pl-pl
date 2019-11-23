@@ -1,145 +1,181 @@
 ---
-title: Wykrywanie znaków animowanych za pomocą Video Indexer
+title: Animated character detection with Video Indexer
 titleSuffix: Azure Media Services
-description: W tym temacie przedstawiono sposób korzystania z wykrywania animowanych znaków w Video Indexer.
+description: This topic demonstrates how to use animated character detection with Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 584d3fa787fbd44ad47d21c51ea67f301c04436d
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8cc097bc7083729a0e99c93376fe46b170760cf4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300315"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327482"
 ---
-# <a name="animated-character-detection-preview"></a>Wykrywanie znaków animowanych (wersja zapoznawcza)
+# <a name="animated-character-detection-preview"></a>Animated character detection (preview)
 
-Azure Media Services Video Indexer obsługuje wykrywanie, grupowanie i rozpoznawanie znaków w animowanej zawartości poprzez integrację z [Cognitive Services wzrokiem niestandardowym](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Ta funkcja jest dostępna zarówno w portalu, jak i za pomocą interfejsu API.
+Azure Media Services Video Indexer supports detection, grouping, and recognition of characters in animated content via integration with [Cognitive Services custom vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). This functionality is available both through the portal and through the API.
 
-Po przekazaniu animowanego wideo z określonym modelem animacji Video Indexer wyodrębnia ramki kluczowe, wykrywa animowane znaki w tych ramkach, grupuje podobne znaki i wybiera najlepszy przykład. Następnie wysyła zgrupowane znaki do Custom Vision, które identyfikują znaki na podstawie modeli, na których nadano szkolenia. 
+After uploading an animated video with a specific animation model, Video Indexer extracts keyframes, detects animated characters in these frames, groups similar character, and chooses the best sample. Then, it sends the grouped characters to Custom Vision that identifies characters based on the models it was trained on. 
 
-Przed rozpoczęciem szkolenia modelu znaki są wykrywane namelessly. Podczas dodawania nazw i uczenia modelu Video Indexer rozpoznawania znaków i nadaje im odpowiednie nazwy.
+Before you start training your model, the characters are detected namelessly. As you add names and train the model the Video Indexer will recognize the characters and name them accordingly.
 
 ## <a name="flow-diagram"></a>Diagram przepływu
 
-Na poniższym diagramie przedstawiono przepływ procesu wykrywania animowanych znaków.
+The following diagram demonstrates the flow of the animated character detection process.
 
 ![Diagram przepływu](./media/animated-characters-recognition/flow.png)
 
 ## <a name="accounts"></a>Konta
 
-W zależności od typu konta Video Indexer dostępne są różne zestawy funkcji. Aby uzyskać informacje na temat sposobu łączenia konta z platformą Azure, zobacz [Tworzenie konta Video Indexer połączonego z platformą Azure](connect-to-azure.md).
+Depending on a type of your Video Indexer account, different feature sets are available. For information on how to connect your account to Azure, see [Create a Video Indexer account connected to Azure](connect-to-azure.md).
 
-* Konto wersji próbnej: Video Indexer używa wewnętrznego konta Custom Vision do tworzenia modelu i łączenia go z kontem Video Indexer. 
-* Płatne konto: połączenie konta Custom Vision z kontem Video Indexer (jeśli jeszcze tego nie zrobiono, należy najpierw utworzyć konto).
+* Trial account: Video Indexer uses an internal Custom Vision account to create model and connect it to your Video Indexer account. 
+* Paid account: you connect your Custom Vision account to your Video Indexer account (if you don’t already have one, you need to create an account first).
 
-### <a name="trial-vs-paid"></a>Wersja próbna a płatna
+### <a name="trial-vs-paid"></a>Trial vs. paid
 
-|Funkcja|Wersja próbna|Płatne|
+|Funkcjonalność|Wersja próbna|Płatne|
 |---|---|---|
-|Konto Custom Vision|Zarządzane w tle przez Video Indexer. |Twoje konto Custom Vision jest połączone z Video Indexer.|
-|Liczba modeli animacji|Je|Do 100 modeli na konto (ograniczenie Custom Vision).|
-|Uczenie modelu|Video Indexer pociąga za model dla nowych znaków dodatkowe przykłady istniejących znaków.|Właściciel konta pociąga za niego gotowość do wprowadzenia zmian.|
-|Opcje zaawansowane w Custom Vision|Brak dostępu do portalu Custom Vision.|Modele można dostosować samodzielnie w portalu Custom Vision.|
+|Custom Vision account|Managed behind the scenes by Video Indexer. |Your Custom Vision account is connected to Video Indexer.|
+|Number of animation models|One|Up to 100 models per account (Custom Vision limitation).|
+|Training the model|Video Indexer trains the model for new characters additional examples of existing characters.|The account owner trains the model when they are ready to make changes.|
+|Advanced options in Custom Vision|No access to the Custom Vision portal.|You can adjust the models yourself in the Custom Vision portal.|
 
-## <a name="use-the-animated-character-detection-with-portal"></a>Używanie wykrywania animowanych znaków z portalem 
+## <a name="use-the-animated-character-detection-with-portal"></a>Use the animated character detection with portal 
 
-W tej sekcji opisano kroki, które należy wykonać, aby rozpocząć korzystanie z modelu wykrywania animowanych znaków.
+This section describes the steps you need to take to start using the animated character detection model. 
 
-### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Połącz konto Custom Vision (tylko płatne konta)
+Since in  the trial accounts the Custom Vision integration is managed by Video Indexer, you can start creating and using the animated characters model and skip the following section ("Connect your Custom Vision account").
 
-Jeśli masz konto płatne Video Indexer, musisz najpierw połączyć konto Custom Vision. Jeśli nie masz już konta Custom Vision, utwórz je. Aby uzyskać więcej informacji, zobacz [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
+### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Connect your Custom Vision account (paid accounts only)
 
-### <a name="create-an-animated-characters-model"></a>Utwórz model znaków animowanych
-
-1. Przejdź do witryny internetowej [Video Indexer](https://vi.microsoft.com/) i zaloguj się.
-1. Kliknij przycisk dostosowywania modelu zawartości w prawym górnym rogu strony.
-
-    ![Dostosowywanie modelu zawartości](./media/animated-characters-recognition/content-model-customization.png)
-1. Przejdź do karty **animowane znaki** w sekcji Dostosowywanie modelu.
-1. Kliknij pozycję **Dodaj model**.
-1. Nazwij model i kliknij przycisk ENTER, aby zapisać nazwę.
+If you own a Video Indexer paid account, you need to connect a Custom Vision account first. If you don't have a Custom Vision account already, please create one. For more information, see [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
 
 > [!NOTE]
-> Najlepszym rozwiązaniem jest posiadanie jednego niestandardowego modelu obsługi dla każdej z nich. 
+> Both accounts need to be in the same region. The Custom Vision integration is currently not supported in the Japan region.
 
-### <a name="index-a-video-with-an-animated-model"></a>Indeksowanie wideo przy użyciu modelu animowanego
+#### <a name="connect-a-custom-vision-account-with-api"></a>Connect a Custom Vision account with API 
 
-1. Kliknij przycisk **Przekaż** w górnym menu.
-1. Wybierz wideo do przekazania (z pliku lub adresu URL).
-1. Kliknij pozycję **Opcje zaawansowane**.
-1. W obszarze **osoby/animowane znaki** wybierz pozycję **modele animacji**.
-1. Jeśli masz jeden model, zostanie wybrany automatycznie i jeśli masz wiele modeli, możesz wybrać odpowiednią opcję z menu rozwijanego.
-1. Kliknij pozycję Przekaż.
-1. Po indeksowaniu wideo zobaczysz wykryte znaki w sekcji **animowane znaki** w okienku **Insights (szczegółowe informacje** ).
+Follow these steps to connect you Custom Vision account to Video Indexer, or to change the Custom Vision account that is currently connected to Video Indexer:
+
+1. Browse to [www.customvision.ai](https://www.customvision.ai) and login.
+1. Copy the following keys: 
+
+    * Training key (for the training resource)
+    * Prediction key (for the prediction resource)
+    * Punkt końcowy 
+    * Prediction resource ID
+    
+    > [!NOTE]
+    > To provide all the keys you need to have two separate resources in Custom Vision, one for training and one for prediction.
+1. Browse and sign in to the [Video Indexer](https://vi.microsoft.com/).
+1. Click on the question mark on the top-right corner of the page and choose **API Reference**.
+1. Make sure you are subscribed to API Management by clicking **Products** tab. If you have an API connected you can continue to the next step, otherwise, subscribe. 
+1. On the developer portal, click the **Complete API Reference** and browse to **Operations**.  
+1. Select **Connect Custom Vision Account (PREVIEW)** and click **Try it**.
+1. Fill in the required fields as well as the access token and click **Send**. 
+
+    For more information about how to get the Video Indexer access token go to the [developer portal](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?), and see the [relevant documentation](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
+1. Once the call return 200 OK response, your account is connected.
+1. To verify your connection by browse to the [Video Indexer](https://vi.microsoft.com/)) portal:
+1. Click on the **Content model customization** button in the top-right corner.
+1. Go to the **Animated characters** tab.
+1. Once you click on Manage models in Custom Vision”**, you will be transferred to the Custom Vision account you just connected.
+
+> [!NOTE]
+> Currently, only models that were created via Video Indexer are supported. Models that are created through Custom Vision will not be available. In addition, the best practice is to edit models that were created through Video Indexer only through the Video Indexer platform, since changes made through Custom Vision may cause unintended results.
+
+### <a name="create-an-animated-characters-model"></a>Create an animated characters model
+
+1. Przejdź do witryny internetowej [Video Indexer](https://vi.microsoft.com/) i zaloguj się.
+1. Click on the content model customization button on the top-right corner of the page.
+
+    ![Content model customization](./media/animated-characters-recognition/content-model-customization.png)
+1. Go to the **Animated characters** tab in the model customization section.
+1. Click on **Add model**.
+1. Name you model and click enter to save the name.
+
+> [!NOTE]
+> The best practice is to have one custom vision model for each animated series. 
+
+### <a name="index-a-video-with-an-animated-model"></a>Index a video with an animated model
+
+1. Click on the **Upload** button from the top menu.
+1. Choose a video to upload (from a file or a URL).
+1. Click on **Advanced options**.
+1. Under **People / Animated characters** choose **Animation models**.
+1. If you have one model it will be chosen automatically, and if you have multiple models you can choose the relevant one out of the dropdown menu.
+1. Click on upload.
+1. Once the video is indexed, you will see the detected characters in the **Animated characters** section in the **Insights** pane.
 
 > [!NOTE] 
-> Przed znakowaniem i uczeniem modelu wszystkie animowane znaki będą nazwane "nieznany #X". Po przeprowadzeniu szkolenia model zostanie również rozpoznany.
+> Before tagging and training the model, all animated characters will be named “Unknown #X”. After you train the model they will also be recognized.
 
-### <a name="customize-the-animated-characters-models"></a>Dostosuj modele znaków animowanych
+### <a name="customize-the-animated-characters-models"></a>Customize the animated characters models
 
-1. Oznacz i Przeszkol model.
+1. Tag and train the model.
 
-    1. Oznacz wykryty znak, edytując jego nazwę. Gdy znak jest przeszkolony do modelu, zostanie on rozpoznany jako następne wideo indeksowane z tym modelem. 
-    1. Aby oznaczyć animowany znak w filmie wideo, przejdź do karty **szczegółowe informacje** i kliknij przycisk **Edytuj** w prawym górnym rogu okna.
-    1. W okienku **szczegółowe informacje** kliknij dowolny z wykrytych animowanych znaków i zmień ich nazwy z "nieznane #X" (lub nazwę, która została wcześniej przypisana do znaku).
-    1. Po wpisaniu nowej nazwy kliknij ikonę wyboru obok nowej nazwy. Spowoduje to zapisanie nowej nazwy w modelu w Video Indexer.
-    1. Po zakończeniu edycji wszystkich żądanych nazw musisz nauczyć się modelu.
+    1. Tag the detected character by editing its name. Once a character is trained into the model, it will be recognized it the next video indexed with that model. 
+    1. To tag an animated character in your video, go to the **Insights** tab and click on the **Edit** button on the top-right corner of the window.
+    1. In the **Insights** pane, click on any of the detected animated characters and change their names from "Unknown #X" (or the name that was previously assigned to the character).
+    1. After typing in the new name, click on the check icon next to the new name. This saves the new name in the model in Video Indexer.
+    1. After you finished editing all names you want, you need to train the model.
 
-        Otwórz stronę Dostosowywanie i kliknij kartę **animowane znaki** , a następnie kliknij przycisk **uczenie** , aby nauczyć model.
+        Open the customization page and click on the **Animated characters** tab and then click on the **Train** button to train your model.
          
-        Jeśli masz płatne konto, możesz kliknąć link **Zarządzaj modelami w programie Customer Vision** (jak pokazano poniżej). Następnie zostanie przekierowany do strony modelu w **Custom Vision**.
+        If you have a paid account, you can click the **Manage models in Customer Vision** link (as shown below). You will then be forwarded to the model's page in **Custom Vision**.
  
-        ![Dostosowywanie modelu zawartości](./media/animated-characters-recognition/content-model-customization-tab.png)
+        ![Content model customization](./media/animated-characters-recognition/content-model-customization-tab.png)
 
-     1. Po przeszkoleniu wszystkie filmy wideo, które będą indeksowane lub ponownego indeksowania przy użyciu tego modelu, będą rozpoznawać przeszkolone znaki. 
-    Płatne konta, które mają dostęp do konta Custom Vision, mogą zobaczyć modele i obrazy otagowane. Dowiedz się więcej o [ulepszaniu klasyfikatora w Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
+     1. Once trained, any video that will be indexed or reindexed with that model will recognize the trained characters. 
+    Paid accounts that have access to their Custom Vision account can see the models and tagged images there. Learn more about [improving your classifier in Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 
-1. Usuń animowany znak.
+1. Delete an animated character.
 
-    1. Aby usunąć animowany znak z wglądu w dane wideo, przejdź do karty **szczegółowe informacje** i kliknij przycisk **Edytuj** w prawym górnym rogu okna.
-    1. Wybierz animowany znak, a następnie kliknij przycisk **Usuń** w obszarze ich nazwy.
+    1. To delete an animated character in your video insights, go to the **Insights** tab and click on the **Edit** button on the top-right corner of the window.
+    1. Choose the animated character and then click on the **Delete** button under their name.
 
     > [!NOTE]
-    > Spowoduje to usunięcie szczegółowych informacji z tego wideo, ale nie wpłynie na model.
+    > This will delete the insight from this video but will not affect the model.
 
-1. Usuń model.
+1. Delete a model.
 
-    1. Kliknij przycisk **dostosowania modelu zawartości** w górnym menu i przejdź do karty **animowane znaki** .
-    1. Kliknij ikonę wielokropka po prawej stronie modelu, który chcesz usunąć, a następnie na przycisku Usuń.
+    1. Click on the **Content model customization** button on the top menu and go to the **Animated characters** tab.
+    1. Click on the ellipsis icon to the right of the model you wish to delete and then on the delete button.
     
-    * Płatne konto: model zostanie odłączony od Video Indexer i nie będzie można go ponownie połączyć.
-    * Konto wersji próbnej: model zostanie również usunięty z wizji celnej. 
+    * Paid account: the model will be disconnected from Video Indexer and you will not be able to reconnect it.
+    * Trial account: the model will be deleted from Customs vision as well. 
     
         > [!NOTE]
-        > W ramach konta próbnego masz tylko jeden model, którego można użyć. Po jego usunięciu nie można szkolić innych modeli.
+        > In a trial account, you only have one model you can use. After you delete it, you can’t train other models.
 
-## <a name="use-the-animated-character-detection-with-api"></a>Używanie wykrywania animowanych znaków z interfejsem API 
+## <a name="use-the-animated-character-detection-with-api"></a>Use the animated character detection with API 
 
-1. Połącz konto Custom Vision.
+1. Connect a Custom Vision account.
 
-    Jeśli masz konto płatne Video Indexer, musisz najpierw połączyć konto Custom Vision. <br/>
-    Jeśli nie masz już konta Custom Vision, utwórz je. Aby uzyskać więcej informacji, zobacz [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
+    If you own a Video Indexer paid account, you need to connect a Custom Vision account first. <br/>
+    If you don’t have a Custom Vision account already, please create one. For more information, see [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
 
-    [Połącz konto Custom Vision przy użyciu interfejsu API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
-1. Utwórz model animowanych znaków.
+    [Connect your Custom Vision account using API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
+1. Create an animated characters model.
 
-    Użyj interfejsu API [tworzenia modelu animacji](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) .
-1. Indeksuj lub ponownie Indeksuj wideo.
+    Use the [create animation model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) API.
+1. Index or re-index a video.
 
-    Użyj interfejsu API [ponownego indeksowania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) . 
-1. Dostosuj modele znaków animowanych.
+    Use the [re-indexing](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) API. 
+1. Customize the animated characters models.
 
-    Użyj interfejsu API [modelu animacji uczenia](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) .
+    Use the [train animation model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) API.
 
-### <a name="view-the-output"></a>Wyświetlanie danych wyjściowych
+### <a name="view-the-output"></a>View the output
 
-Zobacz animowane znaki w wygenerowanym pliku JSON.
+See the animated characters in the generated JSON file.
 
 ```json
 "animatedCharacters": [
@@ -172,9 +208,9 @@ Zobacz animowane znaki w wygenerowanym pliku JSON.
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Obecnie funkcja "Identyfikacja animacji" nie jest obsługiwana w regionie wschodnim Azja.
-* Znaki, które wydaje się być małe lub daleko w wideo, mogą nie być poprawnie identyfikowane, jeśli jakość wideo jest niska.
-* Zalecenie polega na użyciu modelu na zestaw animowanych znaków (na przykład dla serii animowanej).
+* Currently, the "animation identification" capability is not supported in East-Asia region.
+* Characters that appear to be small or far in the video may not be identified properly if the video's quality is poor.
+* The recommendation is to use a model per set of animated characters (for example per an animated series).
 
 ## <a name="next-steps"></a>Następne kroki
 

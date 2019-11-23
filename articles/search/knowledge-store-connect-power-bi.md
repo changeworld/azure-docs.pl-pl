@@ -1,87 +1,87 @@
 ---
-title: Nawiązywanie połączenia z usługą Knowledge Store (wersja zapoznawcza) za pomocą Power BI
+title: Connect to a knowledge store (preview) with Power BI
 titleSuffix: Azure Cognitive Search
-description: Połącz usługę Azure Wyszukiwanie poznawcze Knowledge Store (wersja zapoznawcza) z Power BI do analizy i eksploracji.
-author: lisaleib
+description: Connect an Azure Cognitive Search knowledge store (preview) with Power BI for analysis and exploration.
+author: HeidiSteen
+ms.author: heidist
 manager: nitinme
-ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7b12f0f14003389d36e2df5bcffe7828c135cf2b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d1e836e0f463d1d2ce2b71d689ed590239cfb607
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715494"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406588"
 ---
-# <a name="connect-a-knowledge-store-with-power-bi"></a>Łączenie ze sklepem wiedzy Power BI
+# <a name="connect-a-knowledge-store-with-power-bi"></a>Connect a knowledge store with Power BI
 
 > [!IMPORTANT] 
-> Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Dostępna jest obecnie ograniczona obsługa portalu i nie ma obsługi zestawu SDK platformy .NET.
+> Knowledge store is currently in public preview. Preview functionality is provided without a service level agreement, and is not recommended for production workloads. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). The [REST API version 2019-05-06-Preview](search-api-preview.md) provides preview features. There is currently limited portal support, and no .NET SDK support.
 
-W tym artykule dowiesz się, jak nawiązać połączenie z magazynem wiedzy i poznać go przy użyciu Power Query w aplikacji Power BI Desktop. Możesz szybko zacząć korzystać z szablonów lub utworzyć niestandardowy pulpit nawigacyjny od podstaw.
+In this article, learn how to connect to and explore a knowledge store using Power Query in the Power BI Desktop app. You can get started faster with templates, or build a custom dashboard from scratch.
 
-+ Wykonaj kroki opisane w temacie [Tworzenie sklepu z bazami danych w Azure Portal](knowledge-store-create-portal.md) lub [Utwórz magazyn wiedzy Azure wyszukiwanie poznawcze przy użyciu opcji REST](knowledge-store-create-rest.md) , aby utworzyć przykładowy magazyn wiedzy użyty w tym instruktażu. Potrzebna będzie również nazwa konta usługi Azure Storage, które zostało użyte do utworzenia magazynu wiedzy, wraz z jego kluczem dostępu z poziomu Azure Portal.
++ Follow the steps in [Create a knowledge store in the Azure portal](knowledge-store-create-portal.md) or [Create an Azure Cognitive Search knowledge store by using REST](knowledge-store-create-rest.md) to create the sample knowledge store used in this walkthrough. You will also need the name of the Azure storage account that you used to create the knowledge store, along with its access key from the Azure portal.
 
-+ [Zainstaluj Power BI Desktop](https://powerbi.microsoft.com/downloads/)
++ [Install Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
-## <a name="sample-power-bi-template---azure-portal-only"></a>Przykładowy szablon Power BI Azure Portal tylko
+## <a name="sample-power-bi-template---azure-portal-only"></a>Sample Power BI template - Azure portal only
 
-Jeśli [Twój sklep merytoryczny został utworzony przy użyciu Azure Portal](knowledge-store-create-portal.md), możesz użyć [przykładowego szablonu Power BI platformy Azure wyszukiwanie poznawcze](https://github.com/Azure-Samples/cognitive-search-templates) , aby wyświetlić wizualizacje Power BI i eksperymentować z nich. Ten szablon jest również dostępny do pobrania po przekroczeniu kreatora **importu danych** .
+If you [created your knowledge store using the Azure portal](knowledge-store-create-portal.md), you can use the [Azure Cognitive Search Power BI template sample](https://github.com/Azure-Samples/cognitive-search-templates) to view and experiment with Power BI visualizations. This template is also available for download when you step through the **Import data** wizard.
 
-Przykładowy szablon automatycznie wykona czynności konfiguracyjne opisane w dalszej części tego artykułu. Jeśli jednak korzystasz z interfejsu API REST w celu utworzenia sklepu z bazami danych, Pomiń szablon i Skorzystaj z pozostałych sekcji w tym artykule, aby połączyć sklep z usługą Power BI. Zacznij od [połączenia z Power BI](#connect-with-power-bi).
+The sample template will automatically perform the setup steps outlined in the remainder of this article. However, if you used the REST API to create your knowledge store, skip the template and use the remaining sections in this article to connect your knowledge store to Power BI. Start with [Connect with Power BI](#connect-with-power-bi).
 
-Przykładowy szablon zawiera kilka wizualizacji, takich jak WordCloud i Nawigator sieci. W przypadku niektórych wizualizacji w szablonie, takich jak Mapa lokalizacji i Podgląd grafu obiektów, nie będą wyświetlane dane dla przykładowego magazynu wiedzy utworzonego w [artykule Tworzenie magazynu wiedzy w Azure Portal](knowledge-store-create-portal.md). Wynika to z faktu, że zostały użyte tylko podzbiór wzbogaceń AI dostępnych w kreatorze **importu danych** .
+The sample template includes several visualizations, such as WordCloud and Network Navigator. Some visualizations in the template, such as the Locations map and the Entity-Graph Viewer, will not show data for the sample knowledge store created in [Create a knowledge store in the Azure portal](knowledge-store-create-portal.md). This is because only a subset of the AI enrichments available in the **Import data** wizard were used.
 
-![Przykładowy szablon Power BI Wyszukiwanie poznawcze platformy Azure](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Przykładowy szablon Power BI")
+![Sample Azure Cognitive Search Power BI Template](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Sample Power BI template")
 
 ## <a name="connect-with-power-bi"></a>Łączenie z usługą Power BI
 
-1. Rozpocznij Power BI Desktop a następnie kliknij pozycję **Pobierz dane**.
+1. Start Power BI Desktop and click **Get data**.
 
-1. W oknie **pobieranie danych** wybierz pozycję **Azure**, a następnie wybierz pozycję **Azure Table Storage**.
+1. In the **Get Data** window, select **Azure**, and then select **Azure Table Storage**.
 
 1. Kliknij przycisk **Połącz**.
 
-1. W polu **nazwa konta lub adres URL**wprowadź nazwę konta usługi Azure Storage (pełny adres URL zostanie utworzony).
+1. For **Account Name or URL**, enter in your Azure Storage account name (the full URL will be created for you).
 
-1. Jeśli zostanie wyświetlony monit, wprowadź klucz konta magazynu.
+1. If prompted, enter the storage account key.
 
-1. Wybierz tabele *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*i *hotelReviewsSsPages* . Te tabele to projekcje tabeli platformy Azure dotyczące przykładowych danych w hotelu i zawierają wzbogacenia AI, które zostały wybrane podczas tworzenia magazynu wiedzy.
+1. Select the *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*, and *hotelReviewsSsPages* tables. These tables are Azure table projections of the hotel reviews sample data and include the AI enrichments that were selected when the knowledge store was created.
 
-1. Kliknij przycisk **Załaduj**.
+1. Click **Load**.
 
-1. Na górnej wstążce kliknij przycisk **Edytuj zapytania** , aby otworzyć **Edytor Power Query**.
+1. On the top ribbon, click **Edit Queries** to open the **Power Query Editor**.
 
-   ![Otwórz Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Otwórz Power Query")
+   ![Open Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Open Power Query")
 
-1. Wybierz pozycję *hotelReviewsSsDocument*, a następnie usuń kolumny *PartitionKey*, *RowKey*i *timestamp* . 
+1. Select *hotelReviewsSsDocument*, and then remove the *PartitionKey*, *RowKey*, and *Timestamp* columns. 
 
-   ![Edytuj tabele](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Edytuj tabele")
+   ![Edit tables](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Edit tables")
 
-1. Kliknij ikonę z przeciwległymi strzałkami w prawym górnym rogu tabeli, aby rozwinąć *zawartość*. Gdy zostanie wyświetlona lista kolumn, zaznacz opcję wszystkie kolumny, a następnie usuń zaznaczenie kolumn, które zaczynają się od "Metadata". Kliknij przycisk **OK** , aby wyświetlić wybrane kolumny.
+1. Click the icon with opposing arrows at the upper right side of the table to expand the *Content*. When the list of columns appears, select all columns, and then deselect columns that start with 'metadata'. Click **OK** to show the selected columns.
 
-   ![Edytuj tabele](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Rozwiń zawartość")
+   ![Edit tables](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Expand content")
 
-1. Zmień typ danych dla następujących kolumn, klikając ikonę ABC-123 w lewym górnym rogu kolumny.
+1. Change the data type for the following columns by clicking the  ABC-123 icon at the top left of the column.
 
-   + W obszarze *Content. Latitude* i *Content. Długość geograficzna*wybierz **liczbę dziesiętną**.
-   + W przypadku *Content. reviews_date* i *Content. Reviews_dateAdded*wybierz pozycję **Data/godzina**.
+   + For *content.latitude* and *Content.longitude*, select **Decimal Number**.
+   + For *Content.reviews_date* and *Content.reviews_dateAdded*,  select **Date/Time**.
 
-   ![Zmień typy danych](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Zmień typy danych")
+   ![Change data types](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Change data types")
 
-1. Wybierz pozycję *hotelReviewsSsPages*, a następnie powtórz kroki 9 i 10, aby usunąć kolumny i rozwinąć *zawartość*.
-1. Zmień typ danych *Content. SentimentScore* na **liczbę dziesiętną**.
-1. Wybierz pozycję *hotelReviewsSsKeyPhrases* , a następnie powtórz kroki 9 i 10, aby usunąć kolumny i rozwinąć *zawartość*. Brak modyfikacji typu danych dla tej tabeli.
+1. Select *hotelReviewsSsPages*, and then repeat steps 9 and 10 to delete the columns and expand the *Content*.
+1. Change the data type for *Content.SentimentScore* to **Decimal Number**.
+1. Select *hotelReviewsSsKeyPhrases* and repeat steps 9 and 10 to delete the columns and expand the *Content*. There are no data type modifications for this table.
 
-1. Na pasku poleceń kliknij przycisk **Zamknij i Zastosuj**.
+1. On the command bar, click **Close and Apply**.
 
-1. Kliknij kafelek model w lewym okienku nawigacji i sprawdź, czy Power BI pokazują relacje między wszystkimi trzema tabelami.
+1. Click on the Model tile on the left navigation pane and validate that Power BI shows relationships between all three tables.
 
-   ![Weryfikuj relacje](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Weryfikuj relacje")
+   ![Validate relationships](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Validate relationships")
 
-1. Kliknij dwukrotnie każdą relację i upewnij się, że ustawiono **kierunek filtrowania krzyżowego** **.**  Umożliwia to odświeżanie wizualizacji w przypadku zastosowania filtru.
+1. Double-click each relationship and make sure that the **Cross-filter direction** is set to **Both**.  This enables your visuals to refresh when a filter is applied.
 
 <!-- ## Try with larger data sets
 
@@ -102,20 +102,20 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Gdy pracujesz nad własną subskrypcją, dobrym pomysłem jest zakończenie projektu w celu ustalenia, czy nadal potrzebujesz utworzonych zasobów. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
 
-Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystkie zasoby** lub **grupy zasobów** w okienku nawigacji po lewej stronie.
+You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
 
-Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu, aby zachować limit.
+If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak eksplorować ten magazyn wiedzy przy użyciu Eksplorator usługi Storage, zobacz następujący artykuł.
+To learn how to explore this knowledge store using Storage Explorer, see the following article.
 
 > [!div class="nextstepaction"]
-> [Wyświetl z Eksplorator usługi Storage](knowledge-store-view-storage-explorer.md)
+> [View with Storage Explorer](knowledge-store-view-storage-explorer.md)
 
-Aby dowiedzieć się, jak utworzyć magazyn wiedzy przy użyciu interfejsów API REST i programu Poster, zobacz następujący artykuł.  
+To learn how to create a knowledge store using the REST APIs and Postman, see the following article.  
 
 > [!div class="nextstepaction"]
-> [Tworzenie sklepu merytorycznego w usłudze REST](knowledge-store-howto.md)
+> [Create a knowledge store in REST](knowledge-store-howto.md)

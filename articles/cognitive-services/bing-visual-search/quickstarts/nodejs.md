@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: uzyskiwanie szczegółowych informacji dotyczących obrazu przy użyciu interfejsu API REST wyszukiwania wizualnego Bing i platformy Node.js'
+title: 'Quickstart: Get image insights using the REST API and Node.js - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przekazać obraz do interfejsu API wyszukiwania wizualnego Bing i uzyskać szczegółowe informacje na jego temat.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9414bac220d928618b403aa2f7df7748772e0e9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ecfe341fa050e693f919f35c29c8120c687c88f8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60832612"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383189"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Szybki start: uzyskiwanie szczegółowych informacji dotyczących obrazu przy użyciu interfejsu API REST wyszukiwania wizualnego Bing i platformy Node.js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Node.js
 
-Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania wizualnego Bing i wyświetlenie wyników wyszukiwania. Ta prosta aplikacja JavaScript przekazuje obraz do interfejsu API i wyświetla zwrócone informacje na jego temat. Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania interfejsu API wyszukiwania wizualnego Bing i wyświetlenie wyników wyszukiwania. Ta prosta aplikacja JavaScript przekazuje obraz do interfejsu API i wyświetla zwrócone informacje na jego temat. Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Podczas przekazywania obrazu lokalnego, mogą zawierać dane formularza `Content-Disposition` nagłówka. Należy ustawić jego `name` parametr "image", a `filename` parametr może być ustawiony na dowolny ciąg. Zawartość formularza obejmują dane binarne obrazu. Maksymalny rozmiar obrazu, który można przekazać, wynosi 1 MB.
+When uploading a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and the `filename` parameter can be set to any string. The contents of the form include the binary data of the image. Maksymalny rozmiar obrazu, który można przekazać, wynosi 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -35,14 +35,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Node.js](https://nodejs.org/en/download/)
-* Moduł żądania dla języka JavaScript. Możesz użyć `npm install request` polecenie, aby zainstalować moduł.
-* Moduł danych formularza. Możesz użyć `npm install form-data` polecenie, aby zainstalować moduł. 
+* The Request module for JavaScript. You can use `npm install request` command to install the module.
+* The form-data module. You can use the `npm install form-data` command to install the module. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Inicjowanie aplikacji
 
-1. Utwórz plik JavaScript w Twoim ulubionym środowiskiem IDE lub edytora i ustaw następujące wymagania:
+1. Create a JavaScript file in your favorite IDE or editor, and set the following requirements:
 
     ```javascript
     var request = require('request');
@@ -50,7 +50,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var fs = require('fs');
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, klucz subskrypcji oraz ścieżkę do obrazu:
+2. Create variables for your API endpoint, subscription key, and the path to your image:
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -58,7 +58,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var imagePath = "path-to-your-image";
     ```
 
-3. Tworzenie funkcji o nazwie `requestCallback()` do drukowania odpowiedzi z interfejsu API:
+3. Create a function named `requestCallback()` to print the response from the API:
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -68,14 +68,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="construct-and-send-the-search-request"></a>Tworzenie i wysyłanie żądania wyszukiwania
 
-1. Utwórz nową **pobranie** przy użyciu `FormData()`, obiektów blob i uzupełnialnych Twojej ścieżki obrazu, za pomocą `fs.createReadStream()`:
+1. Create a new **FormData** object using `FormData()`, and append your image path to it, using `fs.createReadStream()`:
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. Przekaż obraz, za pomocą biblioteki żądania i wywołać `requestCallback()` do drukowania w odpowiedzi. Pamiętaj dodać klucz subskrypcji do nagłówka żądania:
+2. Use the request library to upload the image, and call `requestCallback()` to print the response. Be sure to add your subscription key to the request header:
 
     ```javascript
     form.getLength(function(err, length){
@@ -88,7 +88,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     });
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji internetowej z jednej strony wyszukiwania wizualnego](../tutorial-bing-visual-search-single-page-app.md)
+> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)

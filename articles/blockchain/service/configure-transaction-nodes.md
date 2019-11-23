@@ -1,143 +1,137 @@
 ---
-title: Konfigurowanie węzłów transakcji usługi Azure łańcucha bloków Service
-description: Jak skonfigurować węzły transakcji usługi Azure łańcucha bloków
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Configure Azure Blockchain Service transaction nodes
+description: How to configure Azure Blockchain Service transaction nodes
 ms.date: 11/20/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 2885e5c9376264875cba03865c45b6b1e5d4aaf2
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286824"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326304"
 ---
-# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurowanie węzłów transakcji usługi Azure łańcucha bloków Service
+# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Configure Azure Blockchain Service transaction nodes
 
-Węzły transakcji są używane do wysyłania transakcji łańcucha bloków do usługi Azure łańcucha bloków Service za pomocą publicznego punktu końcowego. Domyślny węzeł transakcji zawiera klucz prywatny konta Ethereum zarejestrowany w łańcucha bloków i nie można go usunąć.
+Transaction nodes are used to send blockchain transactions to Azure Blockchain Service through a public endpoint. The default transaction node contains the private key of the Ethereum account registered on the blockchain, and as such cannot be deleted.
 
-Aby wyświetlić szczegóły domyślnego węzła transakcji:
+To view the default transaction node details:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków. Wybierz **węzły transakcji**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Navigate to your Azure Blockchain Service member. Select **Transaction nodes**.
 
-    ![Wybierz domyślny węzeł transakcji](./media/configure-transaction-nodes/nodes.png)
+    ![Select default transaction node](./media/configure-transaction-nodes/nodes.png)
 
-    Szczegóły przeglądu obejmują publiczne adresy punktów końcowych i klucz publiczny.
+    Overview details include public endpoint addresses and public key.
 
-## <a name="create-transaction-node"></a>Utwórz węzeł transakcji
+## <a name="create-transaction-node"></a>Create transaction node
 
-Można dodać do dziewięciu dodatkowych węzłów transakcji do składowej łańcucha bloków, co łącznie 10 węzłów transakcji. Dodając węzły transakcji, można zwiększyć skalowalność lub rozłożyć obciążenie. Można na przykład mieć punkt końcowy węzła transakcji dla różnych aplikacji klienckich.
+You can add up to nine additional transaction nodes to your blockchain member, for a total of 10 transaction nodes. By adding transaction nodes, you can increase scalability or distribute load. For example, you could have a transaction node endpoint for different client applications.
 
-Aby dodać węzeł transakcji:
+To add a transaction node:
 
-1. W Azure Portal przejdź do elementu członkowskiego usługi Azure łańcucha bloków i wybierz pozycję **węzły transakcji > Dodaj**.
-1. Ukończ ustawienia dla nowego węzła transakcji.
+1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Add**.
+1. Complete the settings for the new transaction node.
 
-    ![Dodaj węzeł transakcji](./media/configure-transaction-nodes/add-node.png)
+    ![Add transaction node](./media/configure-transaction-nodes/add-node.png)
 
     | Ustawienie | Opis |
     |---------|-------------|
-    | Nazwa | Nazwa węzła transakcji. Nazwa służy do tworzenia adresu DNS dla punktu końcowego węzła transakcji. Na przykład `newnode-myblockchainmember.blockchain.azure.com`. Nazwy węzła nie można zmienić po jego utworzeniu. |
-    | Hasło | Ustaw silne hasło. Użyj hasła, aby uzyskać dostęp do punktu końcowego węzła transakcji z uwierzytelnianiem podstawowym.
+    | Nazwa | Transaction node name. The name is used to create the DNS address for the transaction node endpoint. Na przykład `newnode-myblockchainmember.blockchain.azure.com`. The node name cannot be changed once it is created. |
+    | Hasło | Set a strong password. Use the password to access the transaction node endpoint with basic authentication.
 
-1. Wybierz **tworzenie**.
+1. Wybierz pozycję **Utwórz**.
 
-    Inicjowanie obsługi nowego węzła transakcji trwa około 10 minut. Dodatkowe węzły transakcji wiążą się z kosztami. Aby uzyskać więcej informacji o kosztach, zobacz [Cennik platformy Azure](https://aka.ms/ABSPricing).
+    Provisioning a new transaction node takes about 10 minutes. Additional transaction nodes incur cost. For more information on costs, see [Azure pricing](https://aka.ms/ABSPricing).
 
 ## <a name="endpoints"></a>Punkty końcowe
 
-Węzły transakcji mają unikatową nazwę DNS i publiczne punkty końcowe.
+Transaction nodes have a unique DNS name and public endpoints.
 
-Aby wyświetlić szczegóły punktu końcowego węzła transakcji:
+To view a transaction node's endpoint details:
 
-1. W Azure Portal przejdź do jednego z węzłów transakcji członków usługi Azure łańcucha bloków, a następnie wybierz pozycję **Przegląd**.
+1. In the Azure portal, navigate to one of your Azure Blockchain Service member transaction nodes and select **Overview**.
 
     ![Punkty końcowe](./media/configure-transaction-nodes/endpoints.png)
 
-Punkty końcowe węzła transakcji są bezpieczne i wymagają uwierzytelniania. Można nawiązać połączenie z punktem końcowym transakcji przy użyciu uwierzytelniania usługi Azure AD, uwierzytelniania podstawowego HTTPS i przy użyciu klucza dostępu za pośrednictwem protokołu HTTPS lub protokołu WebSocket za pośrednictwem protokołu SSL.
+Transaction node endpoints are secure and require authentication. You can connect to a transaction endpoint using Azure AD authentication, HTTPS basic authentication, and using an access key over HTTPS or Websocket over SSL.
 
 ### <a name="azure-active-directory-access-control"></a>Kontrola dostępu za pomocą usługi Azure Active Directory
 
-Punkty końcowe węzła transakcji usługi Azure łańcucha bloków obsługują uwierzytelnianie Azure Active Directory (Azure AD). Możesz udzielić użytkownikowi, grupie i dostępowi jednostki usługi Azure AD do punktu końcowego.
+Azure Blockchain Service transaction node endpoints support Azure Active Directory (Azure AD) authentication. You can grant Azure AD user, group, and service principal access to your endpoint.
 
-Aby udzielić kontroli dostępu usługi Azure AD do punktu końcowego:
+To grant Azure AD access control to your endpoint:
 
-1. W Azure Portal przejdź do elementu członkowskiego usługi Azure łańcucha bloków i wybierz pozycję **węzły transakcji > Kontrola dostępu (IAM) > dodaj > Dodaj przypisanie roli**.
-1. Utwórz nowe przypisanie roli dla użytkownika, grupy lub nazwy głównej usługi (ról aplikacji).
+1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Access control (IAM) > Add > Add role assignment**.
+1. Create a new role assignment for a user, group, or service principal (application roles).
 
-    ![Dodaj rolę IAM](./media/configure-transaction-nodes/add-role.png)
+    ![Add IAM role](./media/configure-transaction-nodes/add-role.png)
 
-    | Ustawienie | Akcja |
+    | Ustawienie | Działanie |
     |---------|-------------|
-    | Rola | Wybierz **właściciela**, **współautora**lub **czytelnika**.
-    | Przypisywanie dostępu do | Wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**.
-    | Wybierz pozycję | Wyszukaj użytkownika, grupę lub jednostkę usługi, którą chcesz dodać.
+    | Rola | Select **Owner**, **Contributor**, or **Reader**.
+    | Assign access to | Select **Azure AD user, group, or service principal**.
+    | Wybierz | Search for the user, group, or service principal you want to add.
 
-1. Wybierz pozycję **Zapisz** , aby dodać przypisanie roli.
+1. Select **Save** to add the role assignment.
 
-Aby uzyskać więcej informacji na temat kontroli dostępu w usłudze Azure AD, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+For more information on Azure AD access control, see [Manage access to Azure resources using RBAC and the Azure portal](../../role-based-access-control/role-assignments-portal.md)
 
-Aby uzyskać szczegółowe informacje na temat nawiązywania połączenia przy użyciu uwierzytelniania usługi Azure AD, zobacz [nawiązywanie połączenia z węzłem przy użyciu uwierzytelniania w usłudze AAD](configure-aad.md).
+For details on how to connect using Azure AD authentication, see [connect to your node using AAD authentication](configure-aad.md).
 
 ### <a name="basic-authentication"></a>Uwierzytelnianie podstawowe
 
-W przypadku uwierzytelniania HTTPS Basic poświadczenia nazwy użytkownika i hasła są przesyłane w nagłówku HTTPS żądania do punktu końcowego.
+For HTTPS basic authentication, user name and password credentials are passed in the HTTPS header of the request to the endpoint.
 
-Możesz wyświetlić szczegóły podstawowego punktu końcowego uwierzytelniania węzła transakcji w Azure Portal. Przejdź do jednego z węzłów transakcji członków usługi Azure łańcucha bloków, a następnie wybierz pozycję **uwierzytelnianie podstawowe** w obszarze Ustawienia.
+You can view a transaction node's basic authentication endpoint details in the Azure portal. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Basic Authentication** in settings.
 
 ![Uwierzytelnianie podstawowe](./media/configure-transaction-nodes/basic.png)
 
-Nazwa użytkownika jest nazwą węzła i nie można jej zmienić.
+The user name is the name of your node and cannot be changed.
 
-Aby użyć adresu URL, Zastąp \<hasło\> hasłem ustawionym podczas aprowizacji węzła. Hasło można zaktualizować, wybierając pozycję **Resetuj hasło**.
+To use the URL, replace \<password\> with the password set when the node was provisioned. You can update the password by selecting **Reset password**.
 
-### <a name="access-keys"></a>Klucze dostępu
+### <a name="access-keys"></a>Klawisze dostępu
 
-W przypadku uwierzytelniania za pomocą klucza dostępu klucz dostępu jest uwzględniany w adresie URL punktu końcowego. Po udostępnieniu węzła transakcji są generowane dwa klucze dostępu. Klucz dostępu może być używany do uwierzytelniania. Dwa klucze umożliwiają zmienianie i obracanie kluczy.
+For access key authentication, the access key is included in the endpoint URL. When the transaction node is provisioned, two access keys are generated. Either access key can be used for authentication. Two keys enable you to change and rotate keys.
 
-Można wyświetlić szczegóły klucza dostępu węzła transakcji i skopiować adresy punktów końcowych, które zawierają klucze dostępu. Przejdź do jednego z węzłów transakcji członków usługi Azure łańcucha bloków i wybierz pozycję **klucze dostępu** w obszarze Ustawienia.
+You can view a transaction node's access key details and copy endpoint addresses that include the access keys. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Access Keys** in settings.
 
 ### <a name="firewall-rules"></a>Reguły zapory
 
-Reguły zapory umożliwiają ograniczenie adresów IP, które mogą próbować uwierzytelniać się w węźle transakcji.  Jeśli nie skonfigurowano żadnych reguł zapory dla węzła transakcji, nie będzie on dostępny dla żadnej ze stron.  
+Firewall rules enable you to limit the IP addresses that can attempt to authenticate to your transaction node.  If no firewall rules are configured for your transaction node, it cannot be accessed by any party.  
 
-Aby wyświetlić reguły zapory węzła transakcji, przejdź do jednego z węzłów transakcji członków usługi Azure łańcucha bloków i wybierz pozycję **reguły zapory** w ustawieniach.
+To view a transaction node's firewall rules, navigate to one of your Azure Blockchain Service member transaction nodes and select **Firewall rules** in settings.
 
-Reguły zapory można dodać, wprowadzając nazwę reguły, początkowy adres IP i końcowy adres IP w siatce **reguły zapory** .
+You can add firewall rules by entering a rule name, starting IP address, and an ending IP address in the **Firewall rules** grid.
 
 ![Reguły zapory](./media/configure-transaction-nodes/firewall-rules.png)
 
-Aby włączyć:
+To enable:
 
-* **Pojedynczy adres IP:** Skonfiguruj ten sam adres IP dla początkowych i końcowych adresów IP.
-* **Zakres adresów IP:** Skonfiguruj początkowy i końcowy zakres adresów IP. Na przykład zakres zaczynający się od 10.221.34.0 i kończący się na 10.221.34.255 spowoduje włączenie całej podsieci 10.221.34.xxx.
-* **Zezwalaj na wszystkie adresy IP:** Skonfiguruj początkowy adres IP na wartość 0.0.0.0 i końcowy adres IP na 255.255.255.255.
+* **Single IP address:** Configure the same IP address for the starting and ending IP addresses.
+* **IP address range:** Configure the starting and ending IP address range. For example, a range starting at 10.221.34.0 and ending at 10.221.34.255 would enable the entire 10.221.34.xxx subnet.
+* **Allow all IP addresses:** Configure the starting IP address to 0.0.0.0 and the ending IP address to 255.255.255.255.
 
 ## <a name="connection-strings"></a>Parametry połączeń
 
-Składnia parametrów połączenia dla węzła Transaction jest udostępniana na potrzeby uwierzytelniania podstawowego lub przy użyciu kluczy dostępu. Dostępne są parametry połączenia, w tym klucze dostępu za pośrednictwem protokołu HTTPS i usługi WebSockets.
+Connection string syntax for your transaction node is provided for basic authentication or using access keys. Connection strings including access keys over HTTPS and WebSockets are provided.
 
-Można wyświetlić parametry połączenia węzła transakcji i adresy punktów końcowych kopiowania. Przejdź do jednego z węzłów transakcji członków usługi Azure łańcucha bloków, a następnie wybierz pozycję **Parametry połączenia** w ustawieniach.
+You can view a transaction node's connection strings and copy endpoint addresses. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Connection strings** in settings.
 
 ![Parametry połączeń](./media/configure-transaction-nodes/connection-strings.png)
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Przykładowy kod umożliwia szybkie włączenie połączenia z węzłem transakcji za pośrednictwem Web3, Nethereum, Web3js i Truffle.
+Sample code is provided to quickly enable connecting to your transaction node via Web3, Nethereum, Web3js, and Truffle.
 
-Możesz wyświetlić przykładowy kod połączenia węzła transakcji i skopiować go do użycia z popularnymi narzędziami deweloperskimi. Przejdź do jednego z węzłów transakcji członków usługi Azure łańcucha bloków, a następnie wybierz pozycję **przykładowy kod** w obszarze Ustawienia.
+You can view a transaction node's sample connection code and copy it to use with popular developer tools. Go to one of your Azure Blockchain Service member transaction nodes and select **Sample Code** in settings.
 
-Wybierz kartę Web3, Nethereum, Truffle lub Web3j, aby wyświetlić przykładowy kod, którego chcesz użyć.
+Choose the Web3, Nethereum, Truffle, or Web3j tab to view the code sample you want to use.
 
 ![Przykładowy kod](./media/configure-transaction-nodes/sample-code.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie węzłów transakcji przy użyciu interfejsu wiersza polecenia platformy Azure](manage-cli.md)
+> [Configure transaction nodes using Azure CLI](manage-cli.md)

@@ -1,32 +1,32 @@
 ---
-title: Monitorowanie i rejestrowanie w usłudze Azure AD hasła ochrony — Azure Active Directory
-description: Omówienie monitorowania i rejestrowania ochrony hasłem w usłudze Azure AD
+title: Password protection monitor and logging- Azure Active Directory
+description: Understand Azure AD Password Protection monitoring and logging
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a763f15b57bf7f23eeb52c81dd48de7f02adc5e4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 77f1ac530fe4e20fe26f3a6b7d0111b0bd432928
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853553"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381676"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Monitorowanie i rejestrowanie w usłudze Azure AD Password Protection
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD Password Protection monitoring and logging
 
-Po wdrożeniu ochrony hasłem usługi Azure AD monitorowanie i raportowanie są istotnymi zadaniami. Ten artykuł zawiera szczegółowe informacje ułatwiające zapoznanie się z różnymi technikami monitorowania, w tym o tym, gdzie każda usługa rejestruje dane i jak raportować użycie ochrony hasłem usługi Azure AD.
+After the deployment of Azure AD Password Protection, monitoring and reporting are essential tasks. This article goes into detail to help you understand various monitoring techniques, including where each service logs information and how to report on the use of Azure AD Password Protection.
 
-Monitorowanie i raportowanie odbywa się przy użyciu komunikatów dziennika zdarzeń lub poleceń cmdlet programu PowerShell. Zarówno Agent DC, jak i usługi proxy rejestrują komunikaty dziennika zdarzeń. Wszystkie polecenia cmdlet programu PowerShell opisane poniżej są dostępne tylko na serwerze proxy (Zobacz moduł AzureADPasswordProtection PowerShell). Oprogramowanie agenta kontrolera domeny nie instaluje modułu programu PowerShell.
+Monitoring and reporting are done either by event log messages or by running PowerShell cmdlets. The DC agent and proxy services both log event log messages. All PowerShell cmdlets described below are only available on the proxy server (see the AzureADPasswordProtection PowerShell module). The DC agent software does not install a PowerShell module.
 
-## <a name="dc-agent-event-logging"></a>Rejestrowanie zdarzeń agenta DC
+## <a name="dc-agent-event-logging"></a>DC agent event logging
 
-Na każdym kontrolerze domeny oprogramowanie usługi Agent DC zapisuje wyniki każdej operacji walidacji hasła indywidualnego (i innego stanu) do lokalnego dziennika zdarzeń:
+On each domain controller, the DC agent service software writes the results of each individual password validation operation (and other status) to a local event log:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
@@ -34,52 +34,52 @@ Na każdym kontrolerze domeny oprogramowanie usługi Agent DC zapisuje wyniki ka
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
-Dziennik administratora agenta kontrolera domeny to podstawowe źródło informacji na temat sposobu, w jaki działa oprogramowanie.
+The DC agent Admin log is the primary source of information for how the software is behaving.
 
-Należy pamiętać, że dziennik śledzenia jest domyślnie wyłączony.
+Note that the Trace log is off by default.
 
-Zdarzenia zarejestrowane przez różne składniki agenta kontrolera domeny mieszczą się w następujących zakresach:
+Events logged by the various DC agent components fall within the following ranges:
 
-|Składnik |Zakres identyfikatorów zdarzeń|
+|Składnik |Event ID range|
 | --- | --- |
-|Biblioteka DLL filtru haseł agenta DC| 10000-19999|
-|Proces hostingu usługi agenta kontrolera domeny| 20000-29999|
-|Logika walidacji zasad usługi agenta DC| 30000-39999|
+|DC Agent password filter dll| 10000-19999|
+|DC agent service hosting process| 20000-29999|
+|DC agent service policy validation logic| 30000-39999|
 
-## <a name="dc-agent-admin-event-log"></a>Dziennik zdarzeń administratora agenta DC
+## <a name="dc-agent-admin-event-log"></a>DC agent Admin event log
 
-### <a name="password-validation-outcome-events"></a>Zdarzenia wyniku weryfikacji hasła
+### <a name="password-validation-outcome-events"></a>Password validation outcome events
 
-Na każdym kontrolerze domeny oprogramowanie usługi Agent DC zapisuje wyniki poszczególnych indywidualnych walidacji hasła do dziennika zdarzeń administratora agenta kontrolera domeny.
+On each domain controller, the DC agent service software writes the results of each individual password validation to the DC agent admin event log.
 
-W przypadku pomyślnej operacji weryfikacji hasła istnieje zazwyczaj jedno zdarzenie rejestrowane z biblioteki DLL filtru haseł agenta kontrolera domeny. W przypadku niepowodzenia operacji weryfikacji hasła zwykle rejestrowane są dwa zdarzenia, jeden z usługi Agent DC i jeden z biblioteki DLL filtru haseł agenta kontrolera domeny.
+For a successful password validation operation, there is generally one event logged from the DC agent password filter dll. For a failing password validation operation, there are generally two events logged, one from the DC agent service, and one from the DC Agent password filter dll.
 
-Zdarzenia dyskretne umożliwiające przechwycenie tych sytuacji są rejestrowane na podstawie następujących czynników:
+Discrete events to capture these situations are logged, based around the following factors:
 
-* Określa, czy hasło jest ustawiane czy zmieniane.
-* Czy sprawdzanie poprawności danego hasła zakończyło się pomyślnie lub nie powiodło się.
-* Czy Walidacja nie powiodła się z powodu zasad globalnych firmy Microsoft, zasad organizacyjnych lub kombinacji.
-* Czy tryb tylko inspekcja jest obecnie włączony, czy wyłączony dla bieżących zasad haseł.
+* Whether a given password is being set or changed.
+* Whether validation of a given password passed or failed.
+* Whether validation failed due to the Microsoft global policy, the organizational policy, or a combination.
+* Whether audit only mode is currently on or off for the current password policy.
 
-Zdarzenia związane z walidacją hasła klucza są następujące:
+The key password-validation-related events are as follows:
 
-|   |Zmiana hasła |Ustawiono hasło|
+|   |Zmiana hasła |Password set|
 | --- | :---: | :---: |
-|Powodzenie |10014 |10015|
-|Niepowodzenie (z powodu zasad haseł klienta)| 10016, 30002| 10017, 30003|
-|Niepowodzenie (z powodu zasad haseł firmy Microsoft)| 10016, 30004| 10017, 30005|
-|Niepowodzenie (ze względu na połączone zasady haseł firmy Microsoft i klientów)| 10016, 30026| 10017, 30027|
-|Przekazywanie tylko do inspekcji (nie powiodło się zasady haseł klienta)| 10024, 30008| 10025, 30007|
-|Zakończyło się tylko Inspekcja (w przypadku niepowodzenia zasad haseł firmy Microsoft)| 10024, 30010| 10025, 30009|
-|Zakończyło się tylko Inspekcja (nie udało się połączyć zasad haseł firmy Microsoft i klientów)| 10024, 30028| 10025, 30029|
+|Pass |10014 |10015|
+|Fail (due to customer password policy)| 10016, 30002| 10017, 30003|
+|Fail (due to Microsoft password policy)| 10016, 30004| 10017, 30005|
+|Fail (due to combined Microsoft and customer password policies)| 10016, 30026| 10017, 30027|
+|Audit-only Pass (would have failed customer password policy)| 10024, 30008| 10025, 30007|
+|Audit-only Pass (would have failed Microsoft password policy)| 10024, 30010| 10025, 30009|
+|Audit-only Pass (would have failed combined Microsoft and customer password policies)| 10024, 30028| 10025, 30029|
 
-Przypadki w powyższej tabeli odnoszące się do "połączonych zasad" odnoszą się do sytuacji, w których znaleziono hasło użytkownika zawierające co najmniej jeden token z listy zakazanych haseł Microsoft i listy haseł wykluczonych od klientów.
+The cases in the table above that refer to "combined policies" are referring to situations where a user's password was found to contain at least one token from both the Microsoft banned password list and the customer banned password list.
 
-Gdy para zdarzeń jest rejestrowana razem, oba zdarzenia są jawnie skojarzone przez posiadanie tego samego korelacji.
+When a pair of events is logged together, both events are explicitly associated by having the same CorrelationId.
 
-### <a name="password-validation-summary-reporting-via-powershell"></a>Raportowanie podsumowania hasła w programie PowerShell
+### <a name="password-validation-summary-reporting-via-powershell"></a>Password validation summary reporting via PowerShell
 
-`Get-AzureADPasswordProtectionSummaryReport` Polecenie cmdlet może służyć do tworzenia widoku podsumowania działania weryfikacji hasła. Przykładowe dane wyjściowe tego polecenia cmdlet są następujące:
+The `Get-AzureADPasswordProtectionSummaryReport` cmdlet may be used to produce a summary view of password validation activity. An example output of this cmdlet is as follows:
 
 ```powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
@@ -94,11 +94,11 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-Zakres raportowania polecenia cmdlet może mieć wpływ na użycie jednego z parametrów – lasu,-Domain lub – kontroler domeny. Nie określono parametru – Las.
+The scope of the cmdlet’s reporting may be influenced using one of the –Forest, -Domain, or –DomainController parameters. Not specifying a parameter implies –Forest.
 
-`Get-AzureADPasswordProtectionSummaryReport` Polecenie cmdlet działa przez wykonanie zapytania dotyczącego dziennika zdarzeń administratora agenta kontrolera domeny, a następnie zliczanie łącznej liczby zdarzeń, które odpowiadają każdej wyświetlonej kategorii wynik. Poniższa tabela zawiera mapowania między każdym wynikiem i odpowiednim IDENTYFIKATORem zdarzenia:
+The `Get-AzureADPasswordProtectionSummaryReport` cmdlet works by querying the DC agent admin event log, and then counting the total number of events that correspond to each displayed outcome category. The following table contains the mappings between each outcome and its corresponding event ID:
 
-|Get-AzureADPasswordProtectionSummaryReport Właściwość |Identyfikator odpowiedniego zdarzenia|
+|Get-AzureADPasswordProtectionSummaryReport property |Corresponding event ID|
 | :---: | :---: |
 |PasswordChangesValidated |10014|
 |PasswordSetsValidated |10015|
@@ -109,17 +109,17 @@ Zakres raportowania polecenia cmdlet może mieć wpływ na użycie jednego z par
 |PasswordChangeErrors |10012|
 |PasswordSetErrors |10013|
 
-Należy pamiętać, `Get-AzureADPasswordProtectionSummaryReport` że polecenie cmdlet jest dostarczane w postaci skryptu programu PowerShell, a jeśli to możliwe, może być przywoływane bezpośrednio w następującej lokalizacji:
+Note that the `Get-AzureADPasswordProtectionSummaryReport` cmdlet is shipped in PowerShell script form and if needed may be referenced directly at the following location:
 
 `%ProgramFiles%\WindowsPowerShell\Modules\AzureADPasswordProtection\Get-AzureADPasswordProtectionSummaryReport.ps1`
 
 > [!NOTE]
-> To polecenie cmdlet działa, otwierając sesję programu PowerShell na każdym kontrolerze domeny. Aby pomyślnie zadziałała, należy włączyć obsługę sesji zdalnej programu PowerShell na każdym kontrolerze domeny, a klient musi mieć wystarczające uprawnienia. Aby uzyskać więcej informacji na temat wymagań zdalnej sesji programu PowerShell, uruchom polecenie "Get-Help about_Remote_Troubleshooting" w oknie programu PowerShell.
+> This cmdlet works by opening a PowerShell session to each domain controller. In order to succeed, PowerShell remote session support must be enabled on each domain controller, and the client must have sufficient privileges. For more information on PowerShell remote session requirements, run 'Get-Help about_Remote_Troubleshooting' in a PowerShell window.
 
 > [!NOTE]
-> To polecenie cmdlet działa zdalnie za pomocą zapytania o dziennik zdarzeń administratora usługi agenta kontrolera domeny. Jeśli dzienniki zdarzeń zawierają dużą liczbę zdarzeń, wykonanie polecenia cmdlet może zająć dużo czasu. Ponadto zbiorcze zapytania sieciowe dotyczące dużych zestawów danych mogą mieć wpływ na wydajność kontrolera domeny. W związku z tym to polecenie cmdlet powinno być używane starannie w środowiskach produkcyjnych.
+> This cmdlet works by remotely querying each DC agent service’s Admin event log. If the event logs contain large numbers of events, the cmdlet may take a long time to complete. In addition, bulk network queries of large data sets may impact domain controller performance. Therefore, this cmdlet should be used carefully in production environments.
 
-### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Przykładowy komunikat dziennika zdarzeń dla zdarzenia o IDENTYFIKATORze 10014 (pomyślna zmiana hasła)
+### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Sample event log message for Event ID 10014 (successful password change)
 
 ```text
 The changed password for the specified user was validated as compliant with the current Azure password policy.
@@ -128,7 +128,7 @@ The changed password for the specified user was validated as compliant with the 
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Przykładowy komunikat dziennika zdarzeń dla zdarzenia o IDENTYFIKATORze 10017 i 30003 (zestaw niezakończonych haseł)
+### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Sample event log message for Event ID 10017 and 30003 (failed password set)
 
 10017:
 
@@ -148,7 +148,7 @@ The reset password for the specified user was rejected because it matched at lea
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Przykładowy komunikat dziennika zdarzeń dla zdarzenia o IDENTYFIKATORze 30001 (hasło zostało zaakceptowane ze względu na brak dostępnych zasad)
+### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Sample event log message for Event ID 30001 (password accepted due to no policy available)
 
 ```text
 The password for the specified user was accepted because an Azure password policy is not available yet
@@ -175,7 +175,7 @@ This condition may be caused by one or more of the following reasons:%n
    Resolution steps: ensure network connectivity exists to the domain.
 ```
 
-### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Przykładowy komunikat dziennika zdarzeń dla zdarzenia o IDENTYFIKATORze 30006 (trwa wymuszone nowe zasady)
+### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Sample event log message for Event ID 30006 (new policy being enforced)
 
 ```text
 The service is now enforcing the following Azure password policy.
@@ -187,7 +187,7 @@ The service is now enforcing the following Azure password policy.
  Enforce tenant policy: 1
 ```
 
-### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Przykładowy komunikat dziennika zdarzeń dla zdarzenia o IDENTYFIKATORze 30019 (ochrona hasłem w usłudze Azure AD jest wyłączona)
+### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Sample event log message for Event ID 30019 (Azure AD Password Protection is disabled)
 
 ```text
 The most recently obtained Azure password policy was configured to be disabled. All passwords submitted for validation from this point on will automatically be considered compliant with no processing performed.
@@ -196,63 +196,63 @@ No further events will be logged until the policy is changed.%n
 
 ```
 
-## <a name="dc-agent-operational-log"></a>Dziennik operacyjny agenta kontrolera domeny
+## <a name="dc-agent-operational-log"></a>DC Agent Operational log
 
-Usługa agenta kontrolera domeny będzie również rejestrować zdarzenia związane z działaniem w następującym dzienniku:
+The DC agent service will also log operational-related events to the following log:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
 
-## <a name="dc-agent-trace-log"></a>Dziennik śledzenia agenta DC
+## <a name="dc-agent-trace-log"></a>DC Agent Trace log
 
-Usługa agenta kontrolera domeny może również rejestrować pełne zdarzenia śledzenia na poziomie debugowania do następującego dziennika:
+The DC agent service can also log verbose debug-level trace events to the following log:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
-Rejestrowanie śledzenia jest domyślnie wyłączone.
+Trace logging is disabled by default.
 
 > [!WARNING]
-> Gdy ta funkcja jest włączona, dziennik śledzenia odbiera dużą liczbę zdarzeń i może mieć wpływ na wydajność kontrolera domeny. W związku z tym ten Rozszerzony Dziennik powinien być włączany tylko wtedy, gdy problem wymaga dokładniejszego zbadania, a następnie tylko przez minimalny czas.
+> When enabled, the Trace log receives a high volume of events and may impact domain controller performance. Therefore, this enhanced log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
 
-## <a name="dc-agent-text-logging"></a>Rejestrowanie tekstu agenta kontrolera domeny
+## <a name="dc-agent-text-logging"></a>DC Agent text logging
 
-Usługę agenta DC można skonfigurować tak, aby zapisywać dane w dzienniku tekstowym przez ustawienie następującej wartości rejestru:
+The DC agent service can be configured to write to a text log by setting the following registry value:
 
 ```text
 HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 ```
 
-Rejestrowanie tekstu jest domyślnie wyłączone. Aby zmiany tej wartości zaczęły obowiązywać, wymagane jest ponowne uruchomienie usługi agenta DC. Po włączeniu usługa agenta DC zapisze w pliku dziennika w obszarze:
+Text logging is disabled by default. A restart of the DC agent service is required for changes to this value to take effect. When enabled the DC agent service will write to a log file located under:
 
 `%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
 
 > [!TIP]
-> Dziennik tekstowy odbiera te same wpisy poziomu debugowania, które mogą być rejestrowane w dzienniku śledzenia, ale zazwyczaj jest to łatwiejszy format do przejrzenia i przeanalizowania.
+> The text log receives the same debug-level entries that can be logged to the Trace log, but is generally in an easier format to review and analyze.
 
 > [!WARNING]
-> Gdy ta funkcja jest włączona, ten dziennik otrzymuje dużą ilość zdarzeń i może mieć wpływ na wydajność kontrolera domeny. W związku z tym ten Rozszerzony Dziennik powinien być włączany tylko wtedy, gdy problem wymaga dokładniejszego zbadania, a następnie tylko przez minimalny czas.
+> When enabled, this log receives a high volume of events and may impact domain controller performance. Therefore, this enhanced log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
 
-## <a name="dc-agent-performance-monitoring"></a>Monitorowanie wydajności agenta DC
+## <a name="dc-agent-performance-monitoring"></a>DC agent performance monitoring
 
-Oprogramowanie usługi Agent DC instaluje obiekt licznika wydajności o nazwie **Azure AD Password Protection**. Obecnie dostępne są następujące liczniki wydajności:
+The DC agent service software installs a performance counter object named **Azure AD Password Protection**. The following perf counters are currently available:
 
-|Nazwa licznika wydajności | Opis|
+|Perf counter name | Opis|
 | --- | --- |
-|Przetworzone hasła |Ten licznik wyświetla łączną liczbę przetworzonych haseł (zaakceptowanych lub odrzuconych) od momentu ostatniego uruchomienia.|
-|Hasła zostały zaakceptowane |Ten licznik wyświetla łączną liczbę haseł zaakceptowanych od momentu ostatniego uruchomienia.|
-|Odrzucone hasła |Ten licznik wyświetla łączną liczbę haseł odrzuconych od momentu ostatniego uruchomienia.|
-|Żądania filtru haseł w toku |Ten licznik wyświetla liczbę żądań filtru haseł, które są obecnie w toku.|
-|Szczytowe żądania filtru haseł |Ten licznik wyświetla szczytową liczbę współbieżnych żądań filtru haseł od momentu ostatniego uruchomienia.|
-|Błędy żądania filtru hasła |Ten licznik wyświetla łączną liczbę żądań filtru hasła, które nie powiodły się z powodu błędu od momentu ostatniego uruchomienia. Błędy mogą wystąpić, gdy usługa agenta DC ochrony hasła usługi Azure AD nie jest uruchomiona.|
-|Żądania filtru haseł/s |Ten licznik przedstawia szybkość, z jaką są przetwarzane hasła.|
-|Czas przetwarzania żądania filtru haseł |Ten licznik wyświetla średni czas wymagany do przetworzenia żądania filtru haseł.|
-|Czas przetwarzania żądania filtru hasła szczytowego |Ten licznik wyświetla maksymalny czas przetwarzania żądania filtru haseł od momentu ostatniego uruchomienia.|
-|Hasła zostały zaakceptowane z powodu trybu inspekcji |Ten licznik przedstawia łączną liczbę haseł, które zostałyby odrzucony, ale zostały zaakceptowane, ponieważ zasady haseł zostały skonfigurowane tak, aby były w trybie inspekcji (od momentu ostatniego ponownego uruchomienia).|
+|Passwords processed |This counter displays the total number of passwords processed (accepted or rejected) since last restart.|
+|Passwords accepted |This counter displays the total number of passwords that were accepted since last restart.|
+|Passwords rejected |This counter displays the total number of passwords that were rejected since last restart.|
+|Password filter requests in progress |This counter displays the number of password filter requests currently in progress.|
+|Peak password filter requests |This counter displays the peak number of concurrent password filter requests since the last restart.|
+|Password filter request errors |This counter displays the total number of password filter requests that failed due to an error since last restart. Errors can occur when the Azure AD Password Protection DC agent service is not running.|
+|Password filter requests/sec |This counter displays the rate at which passwords are being processed.|
+|Password filter request processing time |This counter displays the average time required to process a password filter request.|
+|Peak password filter request processing time |This counter displays the peak password filter request processing time since the last restart.|
+|Passwords accepted due to audit mode |This counter displays the total number of passwords that would normally have been rejected, but were accepted because the password policy was configured to be in audit-mode (since last restart).|
 
-## <a name="dc-agent-discovery"></a>Odnajdywanie agenta kontrolera domeny
+## <a name="dc-agent-discovery"></a>DC Agent discovery
 
-`Get-AzureADPasswordProtectionDCAgent` Polecenie cmdlet może służyć do wyświetlania podstawowych informacji o różnych agentach kontrolera domeny działających w domenie lub lesie. Te informacje są pobierane z obiektów serviceConnectionPoint zarejestrowanych przez uruchomione usługi agenta kontrolera domeny.
+The `Get-AzureADPasswordProtectionDCAgent` cmdlet may be used to display basic information about the various DC agents running in a domain or forest. This information is retrieved from the serviceConnectionPoint object(s) registered by the running DC agent service(s).
 
-Przykładowe dane wyjściowe tego polecenia cmdlet są następujące:
+An example output of this cmdlet is as follows:
 
 ```powershell
 Get-AzureADPasswordProtectionDCAgent
@@ -263,17 +263,17 @@ PasswordPolicyDateUTC : 2/16/2018 8:35:01 AM
 HeartbeatUTC          : 2/16/2018 8:35:02 AM
 ```
 
-Różne właściwości są aktualizowane przez poszczególne usługi agenta kontrolera domeny co godzinę. Dane nadal podlegają Active Directory opóźnieniu replikacji.
+The various properties are updated by each DC agent service on an approximate hourly basis. The data is still subject to Active Directory replication latency.
 
-Zakres zapytania polecenia cmdlet może mieć wpływ na parametry — lasu lub — domeny.
+The scope of the cmdlet’s query may be influenced using either the –Forest or –Domain parameters.
 
-Jeśli wartość HeartbeatUTC jest przestarzała, może to być objawem, że Agent DC ochrony hasłem usługi Azure AD na tym kontrolerze domeny nie jest uruchomiony lub został odinstalowany lub że komputer został obniżony i nie jest już kontrolerem domeny.
+If the HeartbeatUTC value gets stale, this may be a symptom that the Azure AD Password Protection DC Agent on that domain controller is not running, or has been uninstalled, or the machine was demoted and is no longer a domain controller.
 
-Jeśli wartość PasswordPolicyDateUTC jest nieaktualna, może to być objawem, że Agent DC ochrony hasłem usługi Azure AD na tym komputerze nie działa prawidłowo.
+If the PasswordPolicyDateUTC value gets stale, this may be a symptom that the Azure AD Password Protection DC Agent on that machine is not working properly.
 
-## <a name="dc-agent-newer-version-available"></a>Dostępna jest nowsza wersja agenta DC
+## <a name="dc-agent-newer-version-available"></a>DC agent newer version available
 
-W celu wykrycia, że dostępna jest nowsza wersja oprogramowania Agent DC, usługa agenta kontrolera domeny będzie rejestrować zdarzenia ostrzegawcze 30034 w dzienniku operacyjnym.
+The DC agent service will log a 30034 warning event to the Operational log upon detecting that a newer version of the DC agent software is available, for example:
 
 ```text
 An update for Azure AD Password Protection DC Agent is available.
@@ -287,14 +287,14 @@ https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
 Current version: 1.2.116.0
 ```
 
-Powyższe zdarzenie nie określa wersji nowszego oprogramowania. Aby uzyskać te informacje, należy przejść do linku w komunikacie dotyczącym zdarzenia.
+The event above does not specify the version of the newer software. You should go to the link in the event message for that information.
 
 > [!NOTE]
-> Pomimo odwołań do "autoupgrade" w powyższym komunikacie o zdarzeniu oprogramowanie Agent DC nie obsługuje obecnie tej funkcji.
+> Despite the references to "autoupgrade" in the above event message, the DC agent software does not currently support this feature.
 
-## <a name="proxy-service-event-logging"></a>Rejestrowanie zdarzeń usługi serwera proxy
+## <a name="proxy-service-event-logging"></a>Proxy service event logging
 
-Usługa serwera proxy emituje minimalny zestaw zdarzeń do następujących dzienników zdarzeń:
+The Proxy service emits a minimal set of events to the following event logs:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
 
@@ -302,50 +302,50 @@ Usługa serwera proxy emituje minimalny zestaw zdarzeń do następujących dzien
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
 
-Należy pamiętać, że dziennik śledzenia jest domyślnie wyłączony.
+Note that the Trace log is off by default.
 
 > [!WARNING]
-> Gdy ta funkcja jest włączona, dziennik śledzenia otrzymuje dużą liczbę zdarzeń, co może mieć wpływ na wydajność hosta serwera proxy. W związku z tym dziennik ten należy włączyć tylko wtedy, gdy problem wymaga dokładniejszego zbadania, a następnie tylko przez minimalny czas.
+> When enabled, the Trace log receives a high volume of events and this may impact performance of the proxy host. Therefore, this log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
 
-Zdarzenia są rejestrowane przez różne składniki serwera proxy przy użyciu następujących zakresów:
+Events are logged by the various Proxy components using the following ranges:
 
-|Składnik |Zakres identyfikatorów zdarzeń|
+|Składnik |Event ID range|
 | --- | --- |
-|Proces hostingu usługi proxy| 10000-19999|
-|Podstawowa logika biznesowa usługi proxy| 20000-29999|
+|Proxy service hosting process| 10000-19999|
+|Proxy service core business logic| 20000-29999|
 |Polecenia cmdlet programu PowerShell| 30000-39999|
 
-## <a name="proxy-service-text-logging"></a>Rejestrowanie tekstu usługi serwera proxy
+## <a name="proxy-service-text-logging"></a>Proxy service text logging
 
-Usługę serwera proxy można skonfigurować do zapisu do dziennika tekstowego przez ustawienie następującej wartości rejestru:
+The Proxy service can be configured to write to a text log by setting the following registry value:
 
-HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters! EnableTextLogging = 1 (wartość REG_DWORD)
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 
-Rejestrowanie tekstu jest domyślnie wyłączone. Aby zmiany tej wartości zaczęły obowiązywać, wymagane jest ponowne uruchomienie usługi serwera proxy. Po włączeniu usługa proxy zapisze w pliku dziennika w lokalizacji:
+Text logging is disabled by default. A restart of the Proxy service is required for changes to this value to take effect. When enabled the Proxy service will write to a log file located under:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
 > [!TIP]
-> Dziennik tekstowy odbiera te same wpisy poziomu debugowania, które mogą być rejestrowane w dzienniku śledzenia, ale zazwyczaj jest to łatwiejszy format do przejrzenia i przeanalizowania.
+> The text log receives the same debug-level entries that can be logged to the Trace log, but is generally in an easier format to review and analyze.
 
 > [!WARNING]
-> Gdy ta funkcja jest włączona, ten dziennik otrzymuje dużą ilość zdarzeń i może mieć wpływ na wydajność maszyny. W związku z tym ten Rozszerzony Dziennik powinien być włączany tylko wtedy, gdy problem wymaga dokładniejszego zbadania, a następnie tylko przez minimalny czas.
+> When enabled, this log receives a high volume of events and may impact the machine's performance. Therefore, this enhanced log should only be enabled when a problem requires deeper investigation, and then only for a minimal amount of time.
 
-## <a name="powershell-cmdlet-logging"></a>Rejestrowanie poleceń cmdlet programu PowerShell
+## <a name="powershell-cmdlet-logging"></a>PowerShell cmdlet logging
 
-Polecenia cmdlet programu PowerShell, które powodują zmianę stanu (na przykład Register-AzureADPasswordProtectionProxy), zwykle rejestrują zdarzenie wynikowe w dzienniku operacyjnym.
+PowerShell cmdlets that result in a state change (for example, Register-AzureADPasswordProtectionProxy) will normally log an outcome event to the Operational log.
 
-Ponadto większość poleceń cmdlet programu PowerShell w usłudze Azure AD Password Protection zapisuje dane w dzienniku tekstowym, który znajduje się w obszarze:
+In addition, most of the Azure AD Password Protection PowerShell cmdlets will write to a text log located under:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
-Jeśli wystąpi błąd polecenia cmdlet i rozwiązanie and\or problemu nie jest łatwo widoczne, te dzienniki mogą być również konsultowane.
+If a cmdlet error occurs and the cause and\or solution is not readily apparent, these text logs may also be consulted.
 
-## <a name="proxy-discovery"></a>Odnajdywanie serwera proxy
+## <a name="proxy-discovery"></a>Proxy discovery
 
-`Get-AzureADPasswordProtectionProxy` Polecenie cmdlet może służyć do wyświetlania podstawowych informacji o różnych usługach proxy ochrony haseł usługi Azure AD działających w domenie lub lesie. Te informacje są pobierane z obiektów usługi serviceConnectionPoint zarejestrowanych przez uruchomione usługi serwera proxy.
+The `Get-AzureADPasswordProtectionProxy` cmdlet may be used to display basic information about the various Azure AD Password Protection Proxy services running in a domain or forest. This information is retrieved from the serviceConnectionPoint object(s) registered by the running Proxy service(s).
 
-Przykładowe dane wyjściowe tego polecenia cmdlet są następujące:
+An example output of this cmdlet is as follows:
 
 ```powershell
 Get-AzureADPasswordProtectionProxy
@@ -355,15 +355,15 @@ Forest                : bplRootDomain.com
 HeartbeatUTC          : 12/25/2018 6:35:02 AM
 ```
 
-Różne właściwości są aktualizowane przez poszczególne usługi serwera proxy w przybliżeniu co godzinę. Dane nadal podlegają Active Directory opóźnieniu replikacji.
+The various properties are updated by each Proxy service on an approximate hourly basis. The data is still subject to Active Directory replication latency.
 
-Zakres zapytania polecenia cmdlet może mieć wpływ na parametry — lasu lub — domeny.
+The scope of the cmdlet’s query may be influenced using either the –Forest or –Domain parameters.
 
-Jeśli wartość HeartbeatUTC jest przestarzała, może to być objawem, że serwer proxy ochrony hasłem usługi Azure AD na tym komputerze nie jest uruchomiony lub został odinstalowany.
+If the HeartbeatUTC value gets stale, this may be a symptom that the Azure AD Password Protection Proxy on that machine is not running or has been uninstalled.
 
-## <a name="proxy-agent-newer-version-available"></a>Dostępna jest nowsza wersja agenta proxy
+## <a name="proxy-agent-newer-version-available"></a>Proxy agent newer version available
 
-Usługa serwera proxy rejestruje zdarzenie ostrzeżenia 20002 w dzienniku operacyjnym po wykryciu, że dostępna jest nowsza wersja oprogramowania serwera proxy, na przykład:
+The Proxy service will log a 20002 warning event to the Operational log upon detecting that a newer version of the proxy software is available, for example:
 
 ```text
 An update for Azure AD Password Protection Proxy is available.
@@ -378,12 +378,12 @@ Current version: 1.2.116.0
 .
 ```
 
-Powyższe zdarzenie nie określa wersji nowszego oprogramowania. Aby uzyskać te informacje, należy przejść do linku w komunikacie dotyczącym zdarzenia.
+The event above does not specify the version of the newer software. You should go to the link in the event message for that information.
 
-To zdarzenie będzie emitowane nawet wtedy, gdy Agent proxy jest skonfigurowany z włączonym autouaktualnianiem.
+This event will be emitted even if the Proxy agent is configured with autoupgrade enabled.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Rozwiązywanie problemów z ochroną hasłem w usłudze Azure AD](howto-password-ban-bad-on-premises-troubleshoot.md)
+[Troubleshooting for Azure AD Password Protection](howto-password-ban-bad-on-premises-troubleshoot.md)
 
-Aby uzyskać więcej informacji na temat globalnych i niestandardowych list zakazanych haseł, zobacz artykuł Zablokuj [złe hasła](concept-password-ban-bad.md)
+For more information on the global and custom banned password lists, see the article [Ban bad passwords](concept-password-ban-bad.md)

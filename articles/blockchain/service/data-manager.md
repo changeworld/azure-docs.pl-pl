@@ -1,50 +1,46 @@
 ---
-title: Co to jest łańcucha bloków Data Manager dla usługi Azure łańcucha bloków Service
-description: Łańcucha bloków Data Manager do przechwytywania, przekształcania i dostarczania danych łańcucha bloków do tematów Event Grid.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: What is Blockchain Data Manager for Azure Blockchain Service
+description: Blockchain Data Manager to captures, transforms, and delivers blockchain data to Event Grid Topics.
 ms.date: 11/04/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 94534d9b98f6c93d1d439775d3269df71f587ca4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6583a99ef6efaefa732178d0228708cea82365b1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577484"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326200"
 ---
-# <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Co to jest łańcucha bloków Data Manager dla usługi Azure łańcucha bloków Service?
+# <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Co to jest menedżer danych łańcucha bloków dla usługi Azure Blockchain Service?
 
-Łańcucha bloków Data Manager przechwytuje, przekształca i dostarcza dane transakcji usługi Azure łańcucha bloków Service do Azure Event Grid tematów zapewniających niezawodną i skalowalną integrację z księgą łańcucha bloków z usługami platformy Azure.
+Blockchain Data Manager captures, transforms, and delivers Azure Blockchain Service transaction data to Azure Event Grid Topics providing reliable and scalable blockchain ledger integration with Azure services.
 
-W większości scenariuszy łańcucha bloków w przedsiębiorstwie, Księga łańcucha bloków jest jedną częścią rozwiązania. Na przykład aby przenieść zasób z jednej jednostki do innej, wymagany jest mechanizm przesyłania transakcji. Następnie potrzebny jest mechanizm odczytywania danych księgi w celu upewnienia się, że transakcja została zaakceptowana, a następnie wprowadzone zmiany stanu są zintegrowane z kompleksowym rozwiązaniem. W tym przykładzie, jeśli napiszesz kontrakt inteligentny do transferu zasobów, możesz użyć łańcucha bloków Data Manager, aby zintegrować aplikacje w łańcuchu i magazyny danych. W przypadku transferu zasobów Przykładowo, gdy element zawartości jest transferowany w łańcucha bloków, zmiany stanu zdarzeń i właściwości są dostarczane przez łańcucha bloków Data Manager za pośrednictwem Event Grid. Następnie można użyć wielu możliwych programów obsługi zdarzeń, aby Event Grid do przechowywania danych poza łańcuchami lub reagowania na zmiany stanu w czasie rzeczywistym.
+In most enterprise blockchain scenarios, a blockchain ledger is one part of a solution. For example, to transfer an asset from one entity to another, you need a mechanism for submitting the transaction. You then need a mechanism for reading ledger data to ensure the transaction occurred, was accepted, and the resulting state changes are then integrated with your end-to-end solution. In this example, if you write a smart contract to transfer assets, you can use Blockchain Data Manager to integrate off-chain applications and data stores. For the asset transfer example, when an asset is transferred on the blockchain, events and property state changes are delivered by Blockchain Data Manager via Event Grid. You can then use multiple possible event handlers for Event Grid to store blockchain data off-chain or react to state changes in real time.
 
-Łańcucha bloków Data Manager wykonuje trzy główne funkcje: Przechwytywanie, przekształcanie i dostarczanie.
+Blockchain Data Manager performs three main functions: capture, transform, and deliver.
 
-![Funkcje Data Manager łańcucha bloków](./media/data-manager/functions.png)
+![Blockchain Data Manager functions](./media/data-manager/functions.png)
 
 ## <a name="capture"></a>Przechwytywanie
 
-Każde wystąpienie Data Manager łańcucha bloków nawiązuje połączenie z jednym węzłem transakcji elementu członkowskiego usługi Azure łańcucha bloków. Tylko użytkownicy z dostępem do węzła transakcji mogą utworzyć połączenie zapewniające odpowiednią kontrolę dostępu do danych klienta. Wystąpienie Data Manager łańcucha bloków niezawodnie przechwytuje wszystkie nieprzetworzone dane nieprzetworzonych danych i nieprzetworzonych transakcji z węzła transakcji oraz może skalować do obsługi obciążeń przedsiębiorstwa.
+Each Blockchain Data Manager instance connects to one Azure Blockchain Service member transaction node. Only users with access to the transaction node can create a connection ensuring proper access control to customer data. A Blockchain Data Manager instance reliably captures all raw block and raw transaction data from the transaction node and can scale to support enterprise workloads.
 
 ## <a name="transform"></a>Przekształcaj
 
-Za pomocą łańcucha bloków Data Manager można zdekodować zdarzenie i stan właściwości przez skonfigurowanie aplikacji inteligentnych kontraktów w łańcucha bloków Data Manager. Aby dodać kontrakt inteligentny, należy podać ABI kontraktu i kod bajtowy. Łańcucha bloków Data Manager używa artefaktów kontraktu inteligentnego do dekodowania i odnajdywania adresów kontraktu. Po dodaniu aplikacji łańcucha bloków do wystąpienia łańcucha bloków Data Manager dynamicznie odnajduje adres kontraktu inteligentnego w przypadku wdrożenia kontraktu inteligentnego w ramach konsorcjum i wysyła zdekodowane zdarzenie i stan właściwości do skonfigurowanych miejsc docelowych.
+You can use Blockchain Data Manager to decode event and property state by configuring smart contract applications within Blockchain Data Manager. To add a smart contract, you provide the contract ABI and bytecode. Blockchain Data Manager uses the smart contract artifacts to decode and discover contract addresses. After adding the blockchain application to the instance, Blockchain Data Manager dynamically discovers the smart contract address when the smart contract is deployed to the consortium and sends decoded event and property state to configured destinations.
 
 ## <a name="deliver"></a>Dostarczanie
 
-Łańcucha bloków Data Manager obsługuje wiele połączeń wychodzących tematu Event Grid dla danego wystąpienia Data Manager łańcucha bloków. Dane łańcucha bloków można wysyłać do jednego miejsca docelowego lub wysyłać dane łańcucha bloków do wielu miejsc docelowych. Korzystając z łańcucha bloków Data Manager, można utworzyć skalowalne rozwiązanie do publikowania danych oparte na zdarzeniach dla dowolnego wdrożenia łańcucha bloków.
+Blockchain Data Manager supports multiple Event Grid Topic outbound connections for any given Blockchain Data Manager instance. You can send blockchain data to a single destination or send blockchain data to multiple destinations. Using Blockchain Data Manager, you can build a scalable event-based data publishing solution for any blockchain deployment.
 
 ## <a name="configuration-options"></a>Opcje konfiguracji
 
-Data Manager można skonfigurować w taki sposób, aby spełniały potrzeby rozwiązania. Można na przykład udostępnić:
+You can configure Blockchain Data Manager to meet the needs of your solution. For example, you can provision:
 
-* Pojedyncze wystąpienie łańcucha bloków Data Manager dla elementu członkowskiego usługi Azure łańcucha bloków.
-* Wystąpienie Data Manager łańcucha bloków na węzeł transakcji usługi Azure łańcucha bloków. Na przykład prywatne węzły transakcji mogą mieć własne wystąpienie łańcucha bloków Data Manager, aby zachować poufność.
-* Wystąpienie Data Manager łańcucha bloków może obsługiwać wiele połączeń wyjściowych. Jedno wystąpienie Data Manager łańcucha bloków może służyć do zarządzania wszystkimi punktami integracji publikowania danych dla elementu członkowskiego usługi Azure łańcucha bloków.
+* A single Blockchain Data Manager instance for an Azure Blockchain Service member.
+* A Blockchain Data Manager instance per Azure Blockchain Service transaction node. For example, private transaction nodes can have their own Blockchain Data Manager instance to maintain confidentiality.
+* A Blockchain Data Manager instance can support multiple output connections. One Blockchain Data Manager instance can be used to manage all data publishing integration points for an Azure Blockchain Service member.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Spróbuj [utworzyć wystąpienie Data Manager łańcucha bloków](data-manager-portal.md) dla elementu członkowskiego usługi Azure łańcucha bloków.
+Try [creating a Blockchain Data Manager instance](data-manager-portal.md) for an Azure Blockchain Service member.

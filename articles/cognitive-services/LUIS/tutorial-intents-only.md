@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: przewidywanie zamiarów — LUIS'
+title: 'Tutorial: Predict intentions - LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz niestandardową aplikację, która będzie przewidywać intencje użytkownika. Ta aplikacja to najprostszy rodzaj aplikacji usługi LUIS, ponieważ nie wyodrębnia ona z tekstu wypowiedzi różnych elementów danych, takich jak adresy e-mail czy daty.
 services: cognitive-services
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 1e39126324de486d118f808b37672c9fd08af711
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822762"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325921"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Samouczek: kompilowanie aplikacji LUIS w celu określenia zamiarów użytkownika
+# <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Tutorial: Build a LUIS app to determine user intentions
 
-W tym samouczku utworzysz aplikację niestandardową, która przewiduje zamiar użytkownika w oparciu o wypowiedź (tekst). 
+In this tutorial, you create a custom app that predicts a user's intention based on the utterance (text). 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -32,7 +32,7 @@ W tym samouczku utworzysz aplikację niestandardową, która przewiduje zamiar u
 > * Dodawanie przykładowych wypowiedzi
 > * Szkolenie aplikacji
 > * Publikowanie aplikacji
-> * Pobierz prognozowanie intencji z punktu końcowego
+> * Get intent prediction from endpoint
 
 
 [!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
@@ -47,10 +47,10 @@ Intencje są podzielone na kategorie **intencji**.
 
 |Intencja|Przeznaczenie|
 |--|--|
-|`ModifyOrder`|Określ kolejność Pizza użytkownika.|
-|`Greeting`|Rozpocznij KONWERSACJĘ bot.|
-|`ConfirmOrder`|Potwierdź zamówienie Pizza.|
-|`None`|Ustal, czy użytkownik jest proszony o to, że aplikacja nie powinna odpowiedzieć. Ta intencja jest dostarczana jako część procesu tworzenia aplikacji i nie można jej usunąć. |
+|`ModifyOrder`|Determine user's pizza order.|
+|`Greeting`|Begin bot conversation.|
+|`ConfirmOrder`|Confirm pizza order.|
+|`None`|Determine if user is asking something the app is not supposed to answer. Ta intencja jest dostarczana jako część procesu tworzenia aplikacji i nie można jej usunąć. |
 
 ## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
 
@@ -58,13 +58,13 @@ Intencje są podzielone na kategorie **intencji**.
 
 ## <a name="create-a-new-intent"></a>Tworzenie nowej intencji 
 
-1. W [portalu Luis w wersji zapoznawczej](https://preview.luis.ai)w sekcji **kompilacja** aplikacji wybierz pozycję **+ Utwórz**. Wprowadź nazwę nowego zamiaru na liście poniżej, a następnie wybierz pozycję **gotowe**.
+1. In the portal, inside the app's **Build** section, select **+ Create**. Enter the new intent name, `OrderPizza`, then select **Done**.
 
-    Zamierzone `OrderPizza` jest przewidywane: użytkownik chce zamówić Pizza. 
+    The `OrderPizza` intent is predicted when: a user wants to order a pizza. 
 
 1. Dodaj kilka przykładowych wypowiedzi do tej intencji — takich, których spodziewasz się ze strony użytkownika:
 
-    |`OrderPizza` przykład wyrażenia długości|
+    |`OrderPizza` example utterances|
     |--|
     |`can i get a pepperoni pizza and a can of coke please`|
     |`can i get a small pizza with onions peppers and olives`|
@@ -78,11 +78,11 @@ Intencje są podzielone na kategorie **intencji**.
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
 
-## <a name="create-remaining-intents"></a>Utwórz pozostałe intencje
+## <a name="create-remaining-intents"></a>Create remaining intents
 
-1. Utwórz zamiar `Greeting` i Dodaj następujący przykład wyrażenia długości. Jest to cel, aby określić, czy użytkownik rozpoczyna nową konwersację z kolejnością Pizza.
+1. Create the `Greeting` intent and add the following example utterances. This is the intent to determine if a user is beginning a new pizza order conversation.
 
-    |`Greeting` przykład wyrażenia długości|
+    |`Greeting` example utterances|
     |--|
     |`Hi`|
     |`Hello`|
@@ -90,9 +90,9 @@ Intencje są podzielone na kategorie **intencji**.
     |`Start`|
     |`Begin`|
 
-1. Utwórz zamiar `Confirm` i Dodaj następujący przykład wyrażenia długości. Jest to cel, aby określić, czy użytkownik ukończy porządkowanie i akceptuje szczegóły zamówienia. 
+1. Create the `Confirm` intent and add the following example utterances. This is the intent to determine if a user is done ordering and accepts the order details. 
 
-    |`Confirm` przykład wyrażenia długości|
+    |`Confirm` example utterances|
     |--|
     |`Go ahead`|
     |`ok`|
@@ -100,7 +100,7 @@ Intencje są podzielone na kategorie **intencji**.
     |`Sure`|
 
 
-## <a name="none-intent-example-utterances"></a>Brak przykładu zamiaru wyrażenia długości
+## <a name="none-intent-example-utterances"></a>None intent example utterances
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
@@ -108,21 +108,21 @@ Intencje są podzielone na kategorie **intencji**.
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>Publikowanie aplikacji 
+## <a name="publish-the-app"></a>Publish the app 
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
 
-## <a name="get-intent-prediction"></a>Pobierz prognozowanie intencji
+## <a name="get-intent-prediction"></a>Get intent prediction
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Przejdź na koniec adresu URL na pasku adresu i wprowadź:
+1. Go to the end of the URL in the address bar and enter:
 
     `get a medium vegetarian pizza for delivery` 
 
-    Nie jest to dokładnie takie samo, jak przykład wypowiedź, dlatego jest dobrym testem, aby sprawdzić, czy LUIS może dowiedzieć się, co należy przewidzieć w tym zamierzeniu.
+    This is not exactly the same as an example utterance so it is a good test to see if LUIS can learn what should be predicted with this intent.
 
-    Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź nie przypomina żadnej z przykładowych wypowiedzi. Jest to dobry test, który powinien zwrócić intencję `OrderPizza` jako najwyżej ocenioną. 
+    Ostatni parametr ciągu zapytania to `query`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź nie przypomina żadnej z przykładowych wypowiedzi. Jest to dobry test, który powinien zwrócić intencję `OrderPizza` jako najwyżej ocenioną. 
 
     ```JSON
     {
@@ -148,15 +148,15 @@ Intencje są podzielone na kategorie **intencji**.
     }
     ```
 
-    Tablica jednostek jest pusta, ponieważ ta aplikacja obecnie nie ma żadnych jednostek. 
+    The entities array is empty because this app currently does not have any entities (unit of data inside the utterance to extract). 
 
-    Wynik w formacie JSON określa najwyżej ocenioną intencję jako właściwość **`prediction.topIntent`** . Wszystkie wyniki są z zakresu od 1 do 0, a lepszy wynik jest zbliżony do 1. 
+    Wynik w formacie JSON określa najwyżej ocenioną intencję jako właściwość **`prediction.topIntent`** . All scores are between 1 and 0, with the better score being closer to 1. 
 
-1. Zmień parametr **zapytania** adresu URL, aby określić cel **powitania** :
+1. Change the URL **query** parameter to target the **Greeting** intent:
 
     `Howdy`
 
-    Nie jest to dokładnie takie samo, jak przykład wypowiedź, dlatego jest dobrym testem, aby sprawdzić, czy LUIS może dowiedzieć się, co należy przewidzieć w tym zamierzeniu. 
+    This is not exactly the same as an example utterance so it is a good test to see if LUIS can learn what should be predicted with this intent. 
 
     ```json
     {
@@ -182,7 +182,7 @@ Intencje są podzielone na kategorie **intencji**.
     }    
     ```
  
-    To prognozowanie ma 44% wyniku ufności. Aby zwiększyć wynik pewności, Dodaj od 15 do 30 przykład wyrażenia długości.  
+    This prediction has a 44% confidence score. To increase the confidence score, add between 15 and 30 example utterances.  
 
 ## <a name="client-application-next-steps"></a>Następne czynności dotyczące aplikacji klienckiej
 
@@ -202,7 +202,7 @@ Gdy usługa LUIS zwróci odpowiedź w formacie JSON, żądanie zostanie wykonane
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku utworzono aplikację LUIS, utworzono intencje, dodano przykład wyrażenia długości do każdego zamiaru, dodaliśmy przykład wyrażenia długości do zamiaru brak, przeszkolony, opublikowany i przetestowany w punkcie końcowym. Są to podstawowe kroki tworzenia modelu usługi LUIS. 
+This tutorial created a LUIS app, created intents, added example utterances to each intent, added example utterances to the None intent, trained, published, and tested at the endpoint. Są to podstawowe kroki tworzenia modelu usługi LUIS. 
 
 > [!div class="nextstepaction"]
-> [Dodawanie wstępnie utworzonych intencji i jednostek do aplikacji](tutorial-machine-learned-entity.md)
+> [Add a decomposable entity to this app](tutorial-machine-learned-entity.md)

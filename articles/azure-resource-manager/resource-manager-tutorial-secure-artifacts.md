@@ -1,22 +1,22 @@
 ---
-title: Bezpieczne artefakty w szablonach
+title: Secure artifacts in templates
 description: Dowiedz się, jak zabezpieczać artefakty używane w szablonach usługi Azure Resource Manager.
 author: mumian
 ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4aea85fe7f71d09c77b0596b4a8ec54922c8eee8
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: b37f7e284b655a362c5a4231a7c1da3719762644
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150417"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326438"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Samouczek: bezpieczne artefakty we wdrożeniach szablonów Azure Resource Manager
+# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Tutorial: Secure artifacts in Azure Resource Manager template deployments
 
-Dowiedz się, jak zabezpieczać artefakty używane w szablonach usługi Azure Resource Manager za pomocą konta usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego (SAS). Artefakty wdrożenia to dowolne pliki oprócz pliku szablonu głównego, które są potrzebne do ukończenia wdrożenia. Na przykład w [samouczku: Importowanie plików SQL BACPAC za pomocą szablonów Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), główny szablon tworzy Azure SQL Database; wywołuje również plik BACPAC, aby tworzyć tabele i wstawiać dane. Artefaktem jest na przykład plik BACPAC. Artefakt jest przechowywany na koncie usługi Azure Storage z dostępem publicznym. W tym samouczku użyjesz sygnatury dostępu współdzielonego w celu przyznania ograniczonego dostępu do pliku BACPAC na swoim koncie usługi Azure Storage. Aby uzyskać więcej informacji o sygnaturze dostępu współdzielonego, zobacz [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Używanie sygnatur dostępu współdzielonego).
+Dowiedz się, jak zabezpieczać artefakty używane w szablonach usługi Azure Resource Manager za pomocą konta usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego (SAS). Artefakty wdrożenia to dowolne pliki oprócz pliku szablonu głównego, które są potrzebne do ukończenia wdrożenia. For example, in [Tutorial: Import SQL BACPAC files with Azure Resource Manager templates](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), the main template creates an Azure SQL Database; it also calls a BACPAC file to create tables and insert data. Plik BACPAC jest tu artefaktem. Artefakt jest przechowywany na koncie usługi Azure Storage z dostępem publicznym. W tym samouczku użyjesz sygnatury dostępu współdzielonego w celu przyznania ograniczonego dostępu do pliku BACPAC na swoim koncie usługi Azure Storage. Aby uzyskać więcej informacji o sygnaturze dostępu współdzielonego, zobacz [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Używanie sygnatur dostępu współdzielonego).
 
-Aby dowiedzieć się, jak zabezpieczyć połączony szablon, zobacz [Samouczek: Tworzenie połączonych Azure Resource Manager szablonów](./resource-manager-tutorial-create-linked-templates.md).
+To learn how to secure linked template, see [Tutorial: Create linked Azure Resource Manager templates](./resource-manager-tutorial-create-linked-templates.md).
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -33,8 +33,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
-* Program [Visual Studio Code](https://code.visualstudio.com/) z rozszerzeniem Resource Manager Tools. Zobacz [Instalowanie rozszerzenia](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
-* Samouczek przeglądowy [: Importowanie plików BACPAC SQL za pomocą szablonów Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). W tym samouczku został utworzony szablon używany w ramach bieżącego samouczka. W tym artykule udostępniono link do pobrania ukończonego szablonu.
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Review [Tutorial: Import SQL BACPAC files with Azure Resource Manager templates](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). W tym samouczku został utworzony szablon używany w ramach bieżącego samouczka. W tym artykule udostępniono link do pobrania ukończonego szablonu.
 * Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora programu SQL Server. Poniżej przedstawiono przykład służący do generowania hasła:
 
     ```azurecli-interactive
@@ -66,10 +66,10 @@ Pobierz [plik BACPAC](https://github.com/Azure/azure-docs-json-samples/raw/maste
 2. Wprowadź następujące właściwości:
 
     * **Subskrypcja**: wybierz subskrypcję platformy Azure.
-    * **Grupa zasobów**: wybierz pozycję **Utwórz nową** i nadaj jej nazwę. Grupa zasobów jest kontenerem zasobów platformy Azure używanym na potrzeby zarządzania. W tym samouczku możesz użyć tej samej grupy zasobów dla konta magazynu i bazy danych Azure SQL Database. Zanotuj nazwę tej grupy zasobów, ponieważ będzie ona później potrzebna podczas tworzenia bazy danych Azure SQL Database w następnych samouczkach.
-    * **Lokalizacja**: Wybierz region. Na przykład **Środkowe stany USA**.
+    * **Resource Group**: Select **Create new** and give it a name. Grupa zasobów jest kontenerem zasobów platformy Azure używanym na potrzeby zarządzania. W tym samouczku możesz użyć tej samej grupy zasobów dla konta magazynu i bazy danych Azure SQL Database. Zanotuj nazwę tej grupy zasobów, ponieważ będzie ona później potrzebna podczas tworzenia bazy danych Azure SQL Database w następnych samouczkach.
+    * **Location**: Select a region. Na przykład **Środkowe stany USA**.
     * **Typ konta magazynu**: użyj wartości domyślnej — **Standard_LRS**.
-    * **Lokalizacja**: Użyj wartości domyślnej, która jest **[resourceName (). Location]** . Oznacza to, że używasz lokalizacji grupy zasobów dla konta magazynu.
+    * **Location**: Use the default value, which is **[resourceGroup().location]** . Oznacza to, że używasz lokalizacji grupy zasobów dla konta magazynu.
     * **Wyrażam zgodę na powyższe warunki i postanowienia**: (zaznaczone)
 3. Wybierz pozycję **Kup**.
 4. Wybierz ikonę powiadomienia (ikonę dzwonka) w prawym górnym rogu portalu, aby wyświetlić stan wdrożenia.
@@ -101,8 +101,8 @@ Kontener obiektów blob jest wymagany, aby można było przekazywać pliki.
 1. Wybierz pozycję **Przekaż**.
 2. Wprowadź następujące wartości:
 
-    * **Pliki**: postępując zgodnie z instrukcjami, aby wybrać pobrany wcześniej plik BACPAC. Jego nazwa domyślna to **SQLDatabaseExtension.bacpac**.
-    * **Typ uwierzytelniania**: wybierz pozycję **SAS**.  Wartość *SAS* jest wartością domyślną.
+    * **Files**: Following the instructions to select the BACPAC file you downloaded earlier. Jego nazwa domyślna to **SQLDatabaseExtension.bacpac**.
+    * **Authentication type**: Select **SAS**.  Wartość *SAS* jest wartością domyślną.
 3. Wybierz pozycję **Przekaż**.  Po pomyślnym przekazaniu pliku jego nazwa będzie widoczna w kontenerze.
 
 ### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />Generowanie tokenu SAS
@@ -110,23 +110,23 @@ Kontener obiektów blob jest wymagany, aby można było przekazywać pliki.
 1. Kliknij prawym przyciskiem myszy plik **SQLDatabaseExtension.bacpac** w kontenerze, a następnie wybierz polecenie **Generuj sygnaturę dostępu współdzielonego**.
 2. Wprowadź następujące wartości:
 
-    * **Uprawnienie**: Użyj ustawienia domyślnego, **Odczytaj**.
-    * **Data/godzina rozpoczęcia i wygaśnięcia**: wartość domyślna to osiem godzin do użycia z tokenem SAS. Jeśli potrzebujesz więcej czasu na ukończenie tego samouczka, zaktualizuj wartość **Data wygaśnięcia**.
-    * **Dozwolone adresy IP**: pozostaw to pole puste.
-    * **Dozwolone protokoły**: Użyj wartości domyślnej: **https**.
-    * **Klucz podpisywania**: Użyj wartości domyślnej: **klucz 1**.
+    * **Permission**: Use the default, **Read**.
+    * **Start and expiry date/time**: The default value gives you eight hours to use the SAS token. Jeśli potrzebujesz więcej czasu na ukończenie tego samouczka, zaktualizuj wartość **Data wygaśnięcia**.
+    * **Allowed IP addresses**: Leave this field blank.
+    * **Allowed protocols**: use the default value: **HTTPS**.
+    * **Signing key**: use the default value: **Key 1**.
 3. Wybierz pozycję **Generuj token i adres URL sygnatury dostępu współdzielonego obiektu blob**.
 4. Utwórz kopię **adresu URL sygnatury dostępu współdzielonego obiektu blob**. W środku adresu URL jest nazwa pliku **SQLDatabaseExtension.bacpac**.  Ta nazwa pliku dzieli adres URL na trzy części:
 
    - **Lokalizacja artefaktu**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Upewnij się, że lokalizacja kończy się znakiem „/”.
-   - **Nazwa pliku BACPAC**: SQLDatabaseExtension. BACPAC.
-   - **Token sygnatury dostępu współdzielonego lokalizacji artefaktu**: Upewnij się, że token poprzedza znak "?".
+   - **BACPAC file name**: SQLDatabaseExtension.bacpac.
+   - **Artifact location SAS token**: Make sure the token precedes with a "?."
 
      Te trzy wartości będą Ci potrzebne w sekcji [Wdrażanie szablonu](#deploy-the-template).
 
 ## <a name="open-an-existing-template"></a>Otwieranie istniejącego szablonu
 
-W tej sesji należy zmodyfikować szablon utworzony w [samouczku: Importowanie plików SQL BACPAC za pomocą szablonów Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) , aby wywołać plik BACPAC z tokenem SAS.  Szablon opracowany w samouczku rozszerzenia SQL jest udostępniany w serwisie [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
+In this session, you modify the template you created in [Tutorial: Import SQL BACPAC files with Azure Resource Manager templates](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) to call the BACPAC file with a SAS token.  The template developed in the SQL extension tutorial is shared in [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
 1. W programie Visual Studio Code wybierz pozycję **File (Plik)** >**Open File (Otwórz plik)** .
 2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
@@ -229,7 +229,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wdrożono program SQL Server i usługę SQL Database oraz zaimportowano plik BACPAC przy użyciu tokenu SAS. Aby dowiedzieć się, jak utworzyć potok platformy Azure, aby ciągle opracowywać i wdrażać szablony Menedżer zasobów, zobacz
+W tym samouczku wdrożono program SQL Server i usługę SQL Database oraz zaimportowano plik BACPAC przy użyciu tokenu SAS. To learn how to create an Azure Pipeline to continuously develop and deploy Resource Manager templates, see
 
 > [!div class="nextstepaction"]
-> [Ciągła integracja z potokiem platformy Azure](./resource-manager-tutorial-use-azure-pipelines.md)
+> [Continuous integration with Azure Pipeline](./resource-manager-tutorial-use-azure-pipelines.md)

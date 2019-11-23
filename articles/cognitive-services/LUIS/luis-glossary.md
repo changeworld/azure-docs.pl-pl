@@ -1,7 +1,7 @@
 ---
-title: Słownik — LUIS
+title: Glossary - LUIS
 titleSuffix: Azure Cognitive Services
-description: Słownik objaśnia warunki, które mogą wystąpić podczas pracy z usługą interfejsu API LUIS.
+description: The glossary explains terms that you might encounter as you work with the LUIS API Service.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,182 +10,181 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 22e8fa8fb6999828076ea5f8f34b1f601b920013
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f78b4c50f4cd65f3dc32c48cea81b705dc44de1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499572"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325942"
 ---
-# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Słownik dotyczący typowego słownictwa i koncepcji
-W słowniku Language Understanding (LUIS) objaśniono warunki, które mogą wystąpić podczas pracy z usługą interfejsu API LUIS.
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language understanding glossary of common vocabulary and concepts
+The Language Understanding (LUIS) glossary explains terms that you might encounter as you work with the LUIS API Service.
 
-## <a name="active-version"></a>Aktywna wersja
+## <a name="active-version"></a>Active version
 
-Aktywna wersja usługi LUIS to wersja, która otrzymuje zmiany w modelu. Jeśli chcesz wprowadzić zmiany w wersji, która nie jest wersją aktywną, w portalu [Luis](luis-reference-regions.md) należy najpierw ustawić tę wersję jako aktywną.
+The active LUIS version is the version that receives any changes to the model. In the [LUIS](luis-reference-regions.md) portal, if you want to make changes to a version that is not the active version, you need to first set that version as active.
 
-## <a name="authoring"></a>Projekt
+## <a name="authoring"></a>Authoring
 
-Tworzenie umożliwia tworzenie i wdrażanie [aplikacji Luis](#luis-app)oraz zarządzanie nią przy użyciu portalu [Luis](luis-reference-regions.md) lub [interfejsów API tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087).
+Authoring is the ability to create, manage and deploy a [LUIS app](#luis-app), either using the [LUIS](luis-reference-regions.md) portal or the [authoring APIs](https://go.microsoft.com/fwlink/?linkid=2092087).
 
-## <a name="authoring-key"></a>Klucz tworzenia
+## <a name="authoring-key"></a>Authoring Key
 
-Wcześniej nazwany kluczem "programowy". Służy do tworzenia aplikacji. Nieużywane dla zapytań punktów końcowych na poziomie produkcyjnym. Aby uzyskać więcej informacji, zobacz [limity kluczy](luis-boundaries.md#key-limits).   
+Previously named "Programmatic" key. Used to author the app. Not used for production-level endpoint queries. For more information, see [Key limits](luis-boundaries.md#key-limits).
 
-## <a name="batch-test-json-file"></a>Plik JSON tekstu wsadowego
+## <a name="batch-test-json-file"></a>Batch test JSON file
 
-Testowanie wsadowe to możliwość weryfikacji bieżącego modelu aplikacji LUIS przy użyciu spójnego i znanego zestawu testów wyrażenia długości użytkownika. Test wsadowy jest zdefiniowany w [pliku sformatowanym w formacie JSON](luis-concept-batch-test.md#batch-file-format).
+Batch testing is the ability to validate a current LUIS app's model with a consistent and known test set of user utterances. The batch test is defined in a [JSON formatted file](luis-concept-batch-test.md#batch-file-format).
 
-Zobacz też: 
+Zobacz też:
 * [Pojęcia](luis-concept-batch-test.md)
-* [Instrukcje](luis-how-to-batch-test.md)
+* [How-to](luis-how-to-batch-test.md)
 * [Samouczek](luis-tutorial-batch-testing.md)
 
+## <a name="collaborator"></a>Collaborator
 
-## <a name="collaborator"></a>Współpracownika
+A collaborator/contributor, is not the [owner](#owner) of the app, but has the same permissions to add, edit, and delete the intents, entities, utterances.
 
-Współpracownik/współautor nie jest [właścicielem](#owner) aplikacji, ale ma takie same uprawnienia, aby dodawać, edytować i usuwać intencje, jednostki, wyrażenia długości.
+## <a name="contributor"></a>Contributor
 
-## <a name="contributor"></a>Trybu
+A contributor is the same thing as a [collaborator](#collaborator).
 
-Współautor jest tym samym elementem co [współpracownik](#collaborator).
+## <a name="descriptor"></a>Descriptor
 
-## <a name="descriptor"></a>Opis
+A descriptor is a [feature](#features) applied to a model at training time, including [phrase lists](#phrase-list) and [entities](#entity). 
 
-Deskryptor jest [funkcją](#features) zastosowana do modelu w czasie uczenia, w tym [listy zwrotów](#phrase-list) i [jednostek](#entity). 
+## <a name="domain"></a>Domain
 
-## <a name="domain"></a>Domeny
+In the LUIS context, a **domain** is an area of knowledge. Your domain is specific to your app area of knowledge. This can be a general area such as the travel agent app. A travel agent app can also be specific to just the areas of information for your company such as specific geographical locations, languages, and services.
 
-W kontekście LUIS **domena** jest obszarem wiedzy. Twoja domena jest specyficzna dla Twojej dziedziny Twojej aplikacji. Może to być ogólny obszar, taki jak aplikacja agenta podróży. Aplikacja agenta podróży może być również specyficzna dla tylko obszarów informacji dla firmy, takich jak określone lokalizacje geograficzne, Języki i usługi.
+## <a name="endpoint"></a>Endpoint
 
-## <a name="endpoint"></a>Punktu końcowego
+The [LUIS endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) URL is where you submit LUIS queries after the [LUIS app](#luis-app) is authored and published. The endpoint URL contains the region of the published app as well as the app ID. You can find the endpoint on the **[Keys and endpoints](luis-how-to-azure-subscription.md)** page of your app, or you can get the endpoint URL from the [Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
 
-Adres URL [punktu końcowego Luis](https://go.microsoft.com/fwlink/?linkid=2092356) to miejsce, w którym przesyłane są zapytania Luis po utworzeniu i opublikowaniu [aplikacji Luis](#luis-app) . Adres URL punktu końcowego zawiera region opublikowanej aplikacji oraz identyfikator aplikacji. Punkt końcowy można znaleźć na stronie **[klucze i punkty końcowe](luis-how-to-azure-subscription.md)** aplikacji lub uzyskać adres URL punktu końcowego za pomocą interfejsu API [pobierania informacji o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) .
+## <a name="entity"></a>Entity
 
-## <a name="entity"></a>Podmiotów
+[Entities](luis-concept-entity-types.md) are important words in [utterances](luis-concept-utterance.md) that describe information relevant to the [intent](luis-concept-intent.md), and sometimes they are essential to it. An entity is essentially a datatype in LUIS.
 
-[Jednostki](luis-concept-entity-types.md) są ważnymi wyrazami w [wyrażenia długości](luis-concept-utterance.md) , które opisują informacje istotne dla [zamiaru](luis-concept-intent.md)i czasami są dla nich niezbędne. Jednostka jest zasadniczo typem danych w LUIS.
+## <a name="f-measure"></a>F-measure
 
-## <a name="f-measure"></a>Miara F
+In [batch testing](luis-interactive-test.md#batch-testing), a measure of the test's accuracy.
 
-W [testach wsadowych](luis-interactive-test.md#batch-testing)mierzy się dokładność testu.
+## <a name="false-negative"></a>False negative (FN)
 
-## <a name="false-negative"></a>Wartość fałszywa ujemna (FN)
+In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app incorrectly predicted the absence of the target intent/entity.
 
-W [testach wsadowych](luis-interactive-test.md#batch-testing)punkty danych przedstawiają wyrażenia długości, w których aplikacja niepoprawnie przewidywalna nieobecność docelowego celu/jednostki.
+## <a name="false-positive"></a>False positive (FP)
 
-## <a name="false-positive"></a>Fałszywie dodatnie (FP)
+In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app incorrectly predicted the existence of the target intent/entity.
 
-W [testach wsadowych](luis-interactive-test.md#batch-testing)punkty danych reprezentują wyrażenia długości, w których aplikacja niepoprawnie przewidywalna istnienie docelowego celu/jednostki.
+## <a name="features"></a>Features
 
-## <a name="features"></a>Oferowanych
+In machine learning, a [feature](luis-concept-feature.md) is a distinguishing trait or attribute of data that your system observes.
 
-W uczeniu maszynowym [Funkcja](luis-concept-feature.md) jest odróżnianą cechą lub atrybutem danych, które są przestrzegane przez system.
+## <a name="intent"></a>Intent
 
-## <a name="intent"></a>Intencji
+An [intent](luis-concept-intent.md) represents a task or action the user wants to perform. It is a purpose or goal expressed in a user's input, such as booking a flight, paying a bill, or finding a news article. In LUIS, the intent prediction is based on the entire utterance. Entities, by comparison, are pieces of an utterance.
 
-[Cel](luis-concept-intent.md) reprezentuje zadanie lub akcję, które użytkownik chce wykonać. Jest to cel lub cel wyrażony w danych wejściowych użytkownika, na przykład w przypadku rezerwacji lotu, płacenia rachunku lub znajdowania artykułu z wiadomościami. W LUIS prognozowanie zamierzania opiera się na całym wypowiedź. Jednostki, porównując, są elementami wypowiedź.
+## <a name="labeling"></a>Labeling
 
-## <a name="labeling"></a>Etykietowania
+Labeling, or marking, is the process of associating a word or phrase in an intent's [utterance](#utterance) with an [entity](#entity) (datatype).
 
-Oznacza to, że jest to proces kojarzenia wyrazu lub frazy w [wypowiedź](#utterance) zamiaru z [jednostką](#entity) (DataType).
+## <a name="luis-app"></a>LUIS app
 
-## <a name="luis-app"></a>Aplikacja LUIS
+A LUIS app is a collection of language models for natural language processing including [intents](#intent), [entities](#entity), and labeled [utterances](#utterance).
 
-Aplikacja LUIS to zbiór modeli języka do przetwarzania języka naturalnego, w tym [intencje](#intent), [podmioty](#entity)i etykiety [wyrażenia długości](#utterance).
+## <a name="owner"></a>Owner
 
-## <a name="owner"></a>Właociciela
+Each app has one owner who is the person that created the app. The owner can add [collaborators](#collaborator).
 
-Każda aplikacja ma jednego właściciela, który jest osobą, która utworzyła aplikację. Właściciel może dodawać [współpracowników](#collaborator).
+## <a name="pattern"></a>Patterns
+The previous Pattern feature is replaced with [Patterns](luis-concept-patterns.md). Use patterns to improve prediction accuracy by providing fewer training examples.
 
-## <a name="pattern"></a>Modele
-Funkcja poprzedniego wzorca jest zastępowana [wzorcami](luis-concept-patterns.md). Użyj wzorców, aby poprawić dokładność przewidywania, oferując mniejszą liczbę przykładów szkoleniowych.
+## <a name="phrase-list"></a>Phrase list
 
-## <a name="phrase-list"></a>Lista fraz
+A [phrase list](luis-concept-feature.md) includes a group of values (words or phrases) that belong to the same class and must be treated similarly (for example, names of cities or products). An interchangeable list is treated as synonyms.
 
-[Lista fraz](luis-concept-feature.md) zawiera grupę wartości (wyrazów lub fraz) należących do tej samej klasy i musi być traktowana podobnie (na przykład nazwy miast lub produktów). Lista zamienna jest traktowana jako synonimy.
+## <a name="prebuilt-domains"></a>Prebuilt domain
 
-## <a name="prebuilt-domains"></a>Preskompilowana domena
+A [prebuilt domain](luis-how-to-use-prebuilt-domains.md) is a LUIS app configured for a specific domain such as home automation (HomeAutomation) or restaurant reservations (RestaurantReservation). The intents, utterances, and entities are configured for this domain.
 
-[Preskompilowana domena](luis-how-to-use-prebuilt-domains.md) jest aplikacją Luis skonfigurowaną dla konkretnej domeny, taką jak Automatyzacja główna (HomeAutomation) lub rezerwacje restauracji (RestaurantReservation). Zamiary, wyrażenia długości i jednostki są skonfigurowane dla tej domeny.
+## <a name="prebuilt-entity"></a>Prebuilt entity
 
-## <a name="prebuilt-entity"></a>Wstępnie utworzona jednostka
+A [prebuilt entity](luis-prebuilt-entities.md) is an entity LUIS provides for common types of information such as number, URL, and email. You choose to add a prebuilt entity to your application.
 
-[Wstępnie utworzona jednostka](luis-prebuilt-entities.md) to Luis jednostki zapewniające wspólne typy informacji, takie jak Number, URL i email. Wybierzesz opcję dodania wstępnie skompilowanej jednostki do aplikacji.
+## <a name="precision"></a>Precision
+In [batch testing](luis-interactive-test.md#batch-testing), precision (also called positive predictive value) is the fraction of relevant utterances among the retrieved utterances.
 
-## <a name="precision"></a>Dokładne
-W [testach wsadowych](luis-interactive-test.md#batch-testing)precyzja (zwana również dodatnią wartością predykcyjną) jest częścią odpowiednich wyrażenia długości wśród pobranego wyrażenia długościu.
+## <a name="programmatic-key"></a>Programmatic key
 
-## <a name="programmatic-key"></a>Klucz programistyczny
+Renamed to [authoring key](#authoring-key).
 
-Zmieniono nazwę [klucza tworzenia](#authoring-key).
+## <a name="publish"></a>Publish
 
-## <a name="publish"></a>Wycofywan
+Publishing means making a LUIS active version available on either the staging or production [endpoint](#endpoint).  
 
-Opublikowanie oznacza, że dostępna jest LUIS aktywna wersja na etapie przejściowym [lub produkcyjnym](#endpoint).  
+## <a name="quota"></a>Quota
 
-## <a name="quota"></a>Działa
+LUIS quota is the limitation of the [Azure subscription tier](https://aka.ms/luis-price-tier). The LUIS quota can be limited by both requests per second (HTTP Status 429) and total requests in a month (HTTP Status 403).
 
-Limit przydziału LUIS to ograniczenie [warstwy subskrypcji platformy Azure](https://aka.ms/luis-price-tier). Limit przydziału LUIS może być ograniczony przez oba żądania na sekundę (stan HTTP 429) i łączne żądania w miesiącu (stan HTTP 403).
+## <a name="recall"></a>Recall
+In [batch testing](luis-interactive-test.md#batch-testing), recall (also known as sensitivity), is the ability for LUIS to generalize.
 
-## <a name="recall"></a>Wycofaniu
-W [testach wsadowych](luis-interactive-test.md#batch-testing)funkcja odwoływania (znana także jako czułość) jest Luis do uogólniania.
+## <a name="semantic-dictionary"></a>Semantic dictionary
+A semantic dictionary is provided on the List entity page as well as the Phrase list page. The semantic dictionary provides suggestions of words based on the current scope.
 
-## <a name="semantic-dictionary"></a>Słownik semantyczny
-Słownik semantyczny jest dostępny na stronie jednostki listy, a także na stronie Lista fraz. Słownik semantyczny zawiera sugestie wyrazów w oparciu o bieżący zakres.
+## <a name="sentiment-analysis"></a>Sentiment Analysis
+Sentiment analysis provides positive or negative values of the utterances provided by [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
 
-## <a name="sentiment-analysis"></a>analiza tonacji
-Tonacji Analysis zawiera wartości dodatnie lub ujemne wyrażenia długości dostarczone przez [Analiza tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
+## <a name="speech-priming"></a>Speech priming
 
-## <a name="speech-priming"></a>Napełnianiu mowy
+Speech priming allows your speech service to be primed with your LUIS model.
 
-Funkcja Speech napełnianiu umożliwia korzystanie z usługi mowy z modelem LUIS.
+## <a name="spelling-correction"></a>Spelling correction
 
-## <a name="spelling-correction"></a>Poprawianie pisowni
+Enable Bing spell checker to correct misspelled words in the utterances before prediction.
 
-Włączenie sprawdzania pisowni Bing w celu skorygowania błędnie napisanych wyrazów w wyrażenia długości przed przewidywaniam.
+## <a name="starter-key"></a>Starter key
 
-## <a name="starter-key"></a>Klucz początkowy
+A free key to use when first starting out using LUIS.
 
-Bezpłatny klucz, który będzie używany podczas pierwszego uruchamiania przy użyciu LUIS.
+## <a name="structure"></a>Structure
 
-## <a name="structure"></a>XML
+Add structure to a machine-learned entity to provide subcomponents with descriptors (features) and constraints (regular expression or list entities).
 
-Dodaj strukturę do jednostki uczenia maszynowego, aby zapewnić podskładniki z deskryptorami (funkcjami) i ograniczeniami (wyrażenie regularne lub Lista jednostek).
+## <a name="subscription-key"></a>Subscription key
 
-## <a name="subscription-key"></a>Klucz subskrypcji
+The subscription key is the **prediction endpoint** key associated with the LUIS service [you created in Azure](luis-how-to-azure-subscription.md). This key is not the [authoring key](#programmatic-key). If you have an endpoint key, it should be used for any endpoint requests instead of the authoring key. You can see your current endpoint key inside the endpoint URL at the bottom of [**Keys and endpoints** page](luis-how-to-azure-subscription.md) in [LUIS](luis-reference-regions.md) website. It is the value of **subscription-key** name/value pair.
 
-Klucz subskrypcji to klucz **punktu końcowego przewidywania** skojarzony z usługą Luis [utworzoną na platformie Azure](luis-how-to-azure-subscription.md). Ten klucz nie jest [kluczem autorskim](#programmatic-key). Jeśli masz klucz punktu końcowego, powinien on być używany w przypadku żądań punktu końcowego zamiast klucza tworzenia. Bieżący klucz punktu końcowego można zobaczyć w adresie URL punktu końcowego u dołu strony [ **klucze i punkty końcowe** ](luis-how-to-azure-subscription.md) w witrynie sieci Web [Luis](luis-reference-regions.md) . Jest to wartość pary nazwa/wartość **klucza subskrypcji** .
+## <a name="test"></a>Test
 
-## <a name="test"></a>Badan
+[Testing](luis-interactive-test.md#test-your-app) a LUIS app means passing an utterance to LUIS and viewing the JSON results.
 
-[Testowanie](luis-interactive-test.md#test-your-app) aplikacji Luis oznacza przekazywanie wypowiedź do Luis i wyświetlanie wyników JSON.
+## <a name="timezoneoffset"></a>Timezone offset
 
-## <a name="timezoneoffset"></a>Przesunięcie strefy czasowej
+The endpoint includes timezoneOffset. This is the number in minutes you want to add or remove from the datetimeV2 prebuilt entity. For example, if the utterance is "what time is it now?", the datetimeV2 returned is the current time for the client request. If your client request is coming from a bot or other application that is not the same as your bot's user, you should pass in the offset between the bot and the user.
 
-Punkt końcowy zawiera timezoneOffset. Jest to liczba minut, którą chcesz dodać lub usunąć ze wstępnie skompilowanej jednostki datetimeV2. Na przykład, jeśli wypowiedź jest "jaki jest teraz?", zwracana wartość datetimeV2 to bieżąca godzina żądania klienta. Jeśli żądanie klienta pochodzi z bot lub innej aplikacji, która nie jest taka sama jak użytkownika bot, należy przekazać przesunięcie między bot i użytkownikiem.
+See [Change time zone of prebuilt datetimeV2 entity](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
 
-Zobacz [Zmiana strefy czasowej prekompilowanej jednostki datetimeV2](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
+## <a name="token"></a>Token
+A token is the smallest unit that can be labeled in an entity. Tokenization is based on the application's [culture](luis-language-support.md#tokenization).
 
-## <a name="token"></a>Klucza
-Token jest najmniejszą jednostką, która może być oznaczona w jednostce. Tokenizacji jest oparta na [kulturze](luis-language-support.md#tokenization)aplikacji.
+## <a name="train"></a>Train
 
-## <a name="train"></a>Trasy
+Training is the process of teaching LUIS about any changes to the active version since the last training.
 
-Szkolenie to proces uczenia LUIS o wszelkich zmianach w aktywnej wersji od ostatniego szkolenia.
+## <a name="true-negative"></a>True negative (TN)
 
-## <a name="true-negative"></a>True ujemna (TN)
+In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app correctly predicted the absence of the target intent/entity.
 
-W [testach wsadowych](luis-interactive-test.md#batch-testing)punkty danych reprezentują wyrażenia długości, w których aplikacja prawidłowo przewidywalna nieobecność docelowego celu/jednostki.
+## <a name="true-positive"></a>True positive (TP)
 
-## <a name="true-positive"></a>Prawda dodatnia (TP)
+In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app correctly predicted the existence of the target intent/entity.
 
-W [testach wsadowych](luis-interactive-test.md#batch-testing)punkty danych przedstawiają wyrażenia długości, w którym aplikacja prawidłowo przewidywalna istnienie docelowego celu/jednostki.
+## <a name="utterance"></a>Utterance
 
-## <a name="utterance"></a>Wypowiedź
+An utterance is a natural language phrase such as "book 2 tickets to Seattle next Tuesday". Example utterances are added to the intent.
 
-Wypowiedź to wyrażenie języka naturalnego, takie jak "Book 2 bilety do Seattle następnego wtorku". Do zamiaru są dodawane przykładowe wyrażenia długości.
+## <a name="version"></a>Version
 
-## <a name="version"></a>Wersja
-
-LUIS [wersja](luis-how-to-manage-versions.md) jest określonym modelem danych skojarzonym z identyfikatorem aplikacji Luis i opublikowanym punktem końcowym. Każda aplikacja LUIS ma co najmniej jedną wersję.
+A LUIS [version](luis-how-to-manage-versions.md) is a specific data model associated with a LUIS app ID and the published endpoint. Every LUIS app has at least one version.

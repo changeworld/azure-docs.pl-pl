@@ -1,20 +1,20 @@
 ---
-title: 'Samouczek: Włączanie domeny niestandardowej z protokołem SSL w statycznej witrynie internetowej przy użyciu usługi Azure CDN — Azure Storage'
+title: 'Tutorial: Enable custom domain & SSL for a static website in Azure'
 description: Dowiedz się, w jaki sposób skonfigurować domenę niestandardową w celu hostowania statycznej witryny internetowej.
 author: normesta
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a65c0e677182eb224f6bfa7ed834740458b97098
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 893ac53dc9f0b6b162c5ec22e478cd15706e50fb
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847009"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327495"
 ---
-# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Samouczek: Korzystanie z usługi Azure CDN w celu włączenia domeny niestandardowej dla statycznej witryny internetowej
+# <a name="tutorial-enable-custom-domain--ssl-for-a-static-website-in-azure"></a>Tutorial: Enable custom domain & SSL for a static website in Azure
 
 Ten samouczek jest drugą częścią serii. Dowiesz się z niego, jak włączyć punkt końcowy domeny niestandardowej z protokołem SSL na potrzeby statycznej witryny internetowej. 
 
@@ -28,7 +28,7 @@ Część druga serii zawiera informacje na temat wykonywania następujących czy
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem pracy z tym samouczkiem ukończ część pierwszą, [Samouczek: Hostowanie statycznej witryny internetowej w usłudze Blob Storage ](storage-blob-static-website-host.md). 
+Before you begin this tutorial, complete part one, [Tutorial: Host a static website on Blob Storage](storage-blob-static-website-host.md). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -36,27 +36,27 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/), aby rozpoczą
 
 ## <a name="create-a-cdn-endpoint-on-the-static-website-endpoint"></a>Tworzenie punktu końcowego usługi CDN w puncie końcowym statycznej witryny internetowej
 
-1. Znajdź konto magazynu w Azure Portal i Wyświetl przegląd konta.
+1. Locate your storage account in the Azure portal and display the account overview.
 1. Wybierz pozycję **Azure CDN** w menu **Blob Service**, aby skonfigurować usługę Azure CDN.
-1. W sekcji **profil usługi CDN** określ nowy lub istniejący profil usługi CDN. Aby uzyskać więcej informacji, zobacz temat [Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN](../../cdn/cdn-create-new-endpoint.md).
-1. Określ warstwę cenową punktu końcowego usługi CDN. Ten samouczek używa standardowej warstwy cenowej **Akamai** , ponieważ szybko propaguje, zazwyczaj w ciągu kilku minut. Inne warstwy cenowe mogą trwać dłużej, ale mogą również oferować inne zalety. Aby uzyskać więcej informacji, zobacz [porównanie Azure CDN funkcji produktu](../../cdn/cdn-features.md).
-1. W polu **Nazwa punktu końcowego usługi CDN** Podaj nazwę punktu końcowego sieci CDN. Punkt końcowy usługi CDN musi być unikatowy na platformie Azure.
-1. Określ, że jesteś statycznym punktem końcowym witryny sieci Web w polu **Nazwa hosta źródła** . Aby znaleźć punkt końcowy statycznej witryny internetowej, przejdź do ustawień **statycznej witryny internetowej** dla konta magazynu. Skopiuj podstawowy punkt końcowy i wklej go do konfiguracji usługi CDN, usuwając Identyfikator protokołu (*np.* https).
+1. In the **CDN profile** section, specify a new or existing CDN profile. Aby uzyskać więcej informacji, zobacz [Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN](../../cdn/cdn-create-new-endpoint.md).
+1. Specify a pricing tier for the CDN endpoint. This tutorial uses the **Standard Akamai** pricing tier, because it propagates quickly, typically within a few minutes. Other pricing tiers may take longer to propagate, but may also offer other advantages. For more information, see [Compare Azure CDN product features](../../cdn/cdn-features.md).
+1. In the **CDN endpoint name** field, specify a name for your CDN endpoint. The CDN endpoint must be unique across Azure.
+1. Specify your the static website endpoint in the **Origin hostname** field. To find your static website endpoint, navigate to the **Static website** settings for your storage account. Copy the primary endpoint and paste it into the CDN configuration, removing the protocol identifier (*e.g.* , HTTPS).
 
-    Na poniższej ilustracji przedstawiono przykładową konfigurację punktu końcowego:
+    The following image shows an example endpoint configuration:
 
-    ![Zrzut ekranu przedstawiający przykładową konfigurację punktu końcowego usługi CDN](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
+    ![Screenshot showing sample CDN endpoint configuration](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-1. Utwórz punkt końcowy usługi CDN i poczekaj na jego propagowanie.
-1. Aby sprawdzić, czy punkt końcowy usługi CDN został prawidłowo skonfigurowany, kliknij punkt końcowy, aby przejść do jego ustawień. W obszarze przegląd usługi CDN dla konta magazynu Znajdź nazwę hosta punktu końcowego i przejdź do punktu końcowego, jak pokazano na poniższej ilustracji. Format punktu końcowego usługi CDN będzie podobny do `https://staticwebsitesamples.azureedge.net`.
+1. Create the CDN endpoint and wait for it to propagate.
+1. To verify that the CDN endpoint is configured correctly, click on the endpoint to navigate to its settings. From the CDN overview for your storage account, locate the endpoint hostname, and navigate to the endpoint, as shown in the following image. The format of your CDN endpoint will be similar to `https://staticwebsitesamples.azureedge.net`.
 
-    ![Zrzut ekranu przedstawiający przegląd punktu końcowego usługi CDN](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
+    ![Screenshot showing overview of CDN endpoint](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-    Po zakończeniu propagacji punktu końcowego usługi CDN przechodzenie do punktu końcowego usługi CDN spowoduje wyświetlenie zawartości pliku index. html, który został wcześniej przekazany do statycznej witryny sieci Web.
+    Once the CDN endpoint propagation is complete, navigating to the CDN endpoint displays the contents of the index.html file that you previously uploaded to your static website.
 
-1. Aby przejrzeć ustawienia źródła dla punktu końcowego usługi CDN, przejdź do lokalizacji źródłowej w sekcji **Ustawienia** dla punktu końcowego usługi CDN. Zobaczysz, że w polu **Typ źródła** jest ustawiona wartość *Źródło niestandardowe* i że w polu **Nazwa hosta źródła** jest wyświetlany statyczny punkt końcowy witryny sieci Web.
+1. To review the origin settings for your CDN endpoint, navigate to **Origin** under the **Settings** section for your CDN endpoint. You will see that the **Origin type** field is set to *Custom Origin* and that the **Origin hostname** field displays your static website endpoint.
 
-    ![Zrzut ekranu przedstawiający ustawienia źródła dla punktu końcowego usługi CDN](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
+    ![Screenshot showing Origin settings for CDN endpoint](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 
 ## <a name="enable-custom-domain-and-ssl"></a>Włączanie domeny niestandardowej oraz protokołu SSL
 
@@ -64,19 +64,19 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/), aby rozpoczą
 
     ![Określanie rekordu CNAME dla poddomeny www](media/storage-blob-static-website-custom-domain/subdomain-cname-record.png)
 
-1. W Azure Portal Wyświetl ustawienia punktu końcowego usługi CDN. Przejdź do pozycji **domeny niestandardowe** w obszarze **Ustawienia** , aby skonfigurować domenę niestandardową i certyfikat SSL.
+1. In the Azure portal, display the settings for your CDN endpoint. Navigate to **Custom domains** under **Settings** to configure the custom domain and the SSL certificate.
 1. Wybierz polecenie **Dodaj domenę niestandardową** i wprowadź nazwę domeny, a następnie kliknij polecenie **Dodaj**.
-1. Wybierz nowe niestandardowe mapowanie domeny, aby zainicjować certyfikat SSL.
-1. Dla **domeny niestandardowej** ustaw wartość **włączone**, a następnie kliknij przycisk **Zapisz**. Skonfigurowanie domeny niestandardowej może potrwać kilka godzin. W portalu jest wyświetlany postęp, jak pokazano na poniższej ilustracji.
+1. Select the new custom domain mapping to provision an SSL certificate.
+1. Set **Custom Domain HTTPS** to **ON**, then click **Save**. It may take several hours to configure your custom domain. The portal displays progress as shown in the following image.
 
-    ![Zrzut ekranu przedstawiający postęp niestandardowej konfiguracji domeny](media/storage-blob-static-website-custom-domain/configure-custom-domain-https.png)
+    ![Screenshot showing progress of custom domain configuration](media/storage-blob-static-website-custom-domain/configure-custom-domain-https.png)
 
-1. Przetestuj mapowanie statycznej witryny internetowej na domenę niestandardową, uzyskując dostęp do adresu URL domeny niestandardowej.
+1. Test the mapping of your static website to your custom domain by accessing the URL for your custom domain.
 
-Aby uzyskać więcej informacji na temat włączania protokołu HTTPS dla [domen niestandardowych, zobacz Samouczek: Skonfiguruj protokół HTTPS w domenie](../../cdn/cdn-custom-ssl.md)niestandardowej Azure CDN.
+For more information about enabling HTTPS for custom domains, see [Tutorial: Configure HTTPS on an Azure CDN custom domain](../../cdn/cdn-custom-ssl.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
 W drugiej części tego samouczka pokazano, jak skonfigurować domenę niestandardową z protokołem SSL w usłudze Azure CDN dla statycznej witryny internetowej.
 
-Aby uzyskać więcej informacji o konfigurowaniu i używaniu Azure CDN, zobacz [co to jest Azure CDN?](../../cdn/cdn-overview.md).
+For more information about configuring and using Azure CDN, see [What is Azure CDN?](../../cdn/cdn-overview.md).

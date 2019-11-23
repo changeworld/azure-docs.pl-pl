@@ -1,152 +1,152 @@
 ---
-title: Jaki jest warunek lokalizacji w Azure Active Directory dostęp warunkowy? | Microsoft Docs
-description: Dowiedz się, jak za pomocą warunku lokalizacji kontrolować dostęp do aplikacji w chmurze na podstawie lokalizacji sieciowej użytkownika.
+title: Location condition in Azure Active Directory Conditional Access
+description: Learn how to use the location condition to control access to your cloud apps based on a user's network location.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 799a994e1351f62fac9f5a07060658cea60c9274
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74065729"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380294"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Jaki jest warunek lokalizacji w Azure Active Directory dostęp warunkowy? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>What is the location condition in Azure Active Directory Conditional Access? 
 
-Za pomocą [dostępu warunkowego Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)można kontrolować sposób, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze. Warunek lokalizacji zasad dostępu warunkowego umożliwia powiązanie ustawień kontroli dostępu z lokalizacjami sieciowymi użytkowników.
+With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users can access your cloud apps. The location condition of a Conditional Access policy enables you to tie access controls settings to the network locations of your users.
 
-Ten artykuł zawiera informacje potrzebne do skonfigurowania warunku lokalizacji.
+This article provides you with the information you need to configure the location condition.
 
 ## <a name="locations"></a>Lokalizacje
 
-Usługa Azure AD umożliwia logowanie jednokrotne do urządzeń, aplikacji i usług z dowolnego miejsca w publicznym Internecie. Warunek lokalizacji pozwala kontrolować dostęp do aplikacji w chmurze na podstawie lokalizacji sieciowej użytkownika. Typowe przypadki użycia dla warunku lokalizacji są następujące:
+Azure AD enables single sign-on to devices, apps, and services from anywhere on the public internet. With the location condition, you can control access to your cloud apps based on the network location of a user. Common use cases for the location condition are:
 
-- Wymaganie uwierzytelniania wieloskładnikowego dla użytkowników uzyskujących dostęp do usługi w przypadku wyłączenia sieci firmowej.
-- Blokowanie dostępu dla użytkowników uzyskujących dostęp do usługi z określonych krajów lub regionów.
+- Requiring multi-factor authentication for users accessing a service when they are off the corporate network.
+- Blocking access for users accessing a service from specific countries or regions.
 
-Lokalizacja to etykieta lokalizacji sieciowej, która reprezentuje nazwaną lokalizację lub Zaufane adresy IP usługi uwierzytelniania wieloskładnikowego.
+A location is a label for a network location that either represents a named location or multi-factor authentication Trusted IPs.
 
-## <a name="named-locations"></a>Nazwane lokalizacje
+## <a name="named-locations"></a>Named locations
 
-Przy użyciu nazwanych lokalizacji można tworzyć logiczne grupowania zakresów adresów IP lub krajów i regionów.
+With named locations, you can create logical groupings of IP address ranges or countries and regions.
 
-Dostęp do nazwanych lokalizacji można uzyskać w sekcji **Zarządzanie** na stronie dostęp warunkowy.
+You can access your named locations in the **Manage** section of the Conditional Access page.
 
-![Nazwane lokalizacje w dostępie warunkowym](./media/location-condition/02.png)
+![Named locations in Conditional Access](./media/location-condition/02.png)
 
-Nazwana Lokalizacja ma następujące składniki:
+A named location has the following components:
 
-![Utwórz nową nazwę lokalizacji](./media/location-condition/42.png)
+![Create a new named location](./media/location-condition/42.png)
 
-- **Nazwa** — wyświetlana nazwa lokalizacji.
-- **Zakresy IP** — co najmniej jeden zakres adresów IPv4 w formacie CIDR. Określanie zakresu adresów IPv6 nie jest obsługiwane.
+- **Name** - The display name of a named location.
+- **IP ranges** - One or more IPv4 address ranges in CIDR format. Specifying an IPv6 address range is not supported.
 
    > [!NOTE]
-   > W nazwanej lokalizacji nie można obecnie uwzględnić zakresów adresów IPv6. Oznacza to, że zakresy adresów IPv6 nie mogą być wykluczone z zasad dostępu warunkowego.
+   > IPv6 address ranges cannot currently be included in a named location. This means IPv6 ranges cannot be excluded from a Conditional Access policy.
 
-- **Oznacz jako zaufaną lokalizację** — flagę, którą można ustawić dla nazwanej lokalizacji, aby wskazać zaufaną lokalizację. Zazwyczaj Zaufane lokalizacje to obszary sieci, które są kontrolowane przez dział IT. Oprócz dostępu warunkowego zaufane nazwane lokalizacje są również używane przez usługę Azure Identity Protection i raporty zabezpieczeń usługi Azure AD w celu zmniejszenia liczby [fałszywych dodatnich](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
-- **Kraje/regiony** — ta opcja umożliwia wybranie co najmniej jednego kraju lub regionu w celu zdefiniowania nazwanej lokalizacji.
-- **Uwzględnij nieznane obszary** — niektóre adresy IP nie są zamapowane do określonego kraju lub regionu. Ta opcja umożliwia wybranie, czy te adresy IP mają być uwzględnione w nazwanej lokalizacji. Użyj tego ustawienia, jeśli zasady używające nazwanej lokalizacji mają być stosowane do nieznanych lokalizacji.
+- **Mark as trusted location** - A flag you can set for a named location to indicate a trusted location. Typically, trusted locations are network areas that are controlled by your IT department. In addition to Conditional Access, trusted named locations are also used by Azure Identity Protection and Azure AD security reports to reduce [false positives](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
+- **Countries/Regions** - This option enables you to select one or more country or region to define a named location.
+- **Include unknown areas** - Some IP addresses are not mapped to a specific country or region. This option allows you to choose if these IP addresses should be included in the named location. Use this setting when the policy using the named location should apply to unknown locations.
 
-Liczba nazwanych lokalizacji, które można skonfigurować, jest ograniczona przez rozmiar powiązanego obiektu w usłudze Azure AD. Lokalizacje można skonfigurować w oparciu o następujące ograniczenia:
+The number of named locations you can configure is constrained by the size of the related object in Azure AD. You can configure locations based on of the following limitations:
 
-- Jedna nazwana lokalizacja z maksymalnie 1200 zakresami adresów IP.
-- Maksymalnie 90 nazwanych lokalizacji z jednym zakresem adresów IP przypisanym do każdego z nich.
+- One named location with up to 1200 IP ranges.
+- A maximum of 90 named locations with one IP range assigned to each of them.
 
-Zasady dostępu warunkowego dotyczą ruchu IPv4 i IPv6. Obecnie nazwane lokalizacje nie umożliwiają konfigurowania zakresów adresów IPv6. To ograniczenie powoduje następujące sytuacje:
+Conditional Access policy applies to IPv4 and IPv6 traffic. Currently named locations do not allow IPv6 ranges to be configured. This limitation causes the following situations:
 
-- Zasady dostępu warunkowego nie mogą być wskazywane dla określonych zakresów adresów IPv6
-- Zasady dostępu warunkowego nie mogą wykluczać określonych zakresów adresów IPV6
+- Conditional Access policy cannot be targeted to specific IPv6 ranges
+- Conditional Access policy cannot exclude specific IPV6 ranges
 
-Jeśli zasady są skonfigurowane do zastosowania do "dowolnej lokalizacji", będą stosowane do ruchu IPv4 i IPv6. Nazwane lokalizacje skonfigurowane dla określonych krajów i regionów obsługują tylko adresy IPv4. Ruch IPv6 jest uwzględniany tylko wtedy, gdy wybrano opcję "Uwzględnij nieznane obszary".
+If a policy is configured to apply to “Any location”, it will apply to IPv4 and IPv6 traffic. Named locations configured for specified countries and regions only support IPv4 addresses. IPv6 traffic is only included if the option to “include unknown areas” selected.
 
 ## <a name="trusted-ips"></a>Zaufane adresy IP
 
-Możesz również skonfigurować zakresy adresów IP reprezentujące Lokalny intranet organizacji w [ustawieniach usługi uwierzytelniania wieloskładnikowego](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Ta funkcja umożliwia skonfigurowanie maksymalnie 50 zakresów adresów IP. Zakresy adresów IP są w formacie CIDR. Aby uzyskać więcej informacji, zobacz [Zaufane adresy IP](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
+You can also configure IP address ranges representing your organization's local intranet in the [multi-factor authentication service settings](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). This feature enables you to configure up to 50 IP address ranges. The IP address ranges are in CIDR format. For more information, see [Trusted IPs](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
-Jeśli skonfigurowano Zaufane adresy IP, są one wyświetlane jako **Zaufane adresy IP usługi MFA** na liście lokalizacji warunku lokalizacji.
+If you have Trusted IPs configured, they show up as **MFA Trusted IPS** in the list of locations for the location condition.
 
-### <a name="skipping-multi-factor-authentication"></a>Pomijanie uwierzytelniania wieloskładnikowego
+### <a name="skipping-multi-factor-authentication"></a>Skipping multi-factor authentication
 
-Na stronie Ustawienia usługi uwierzytelniania wieloskładnikowego można zidentyfikować użytkowników intranetu firmowego, wybierając pozycję **Pomiń uwierzytelnianie wieloskładnikowe w przypadku żądań od użytkowników federacyjnych w moim intranecie**. To ustawienie wskazuje, że wewnątrz roszczeń sieci firmowej, które jest wydawane przez AD FS, powinno być zaufane i używane do identyfikowania użytkownika jako sieci firmowej. Aby uzyskać więcej informacji, zobacz [Włączanie funkcji Zaufane adresy IP przy użyciu dostępu warunkowego](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+On the multi-factor authentication service settings page, you can identify corporate intranet users by selecting  **Skip multi-factor authentication for requests from federated users on my intranet**. This setting indicates that the inside corporate network claim, which is issued by AD FS, should be trusted and used to identify the user as being on the corporate network. For more information, see [Enable the Trusted IPs feature by using Conditional Access](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
-Po zaznaczeniu tej opcji, w tym nazwanej **Zaufane adresy IP usługi MFA** , będą stosowane do wszystkich zasad z wybraną opcją.
+After checking this option, including the named location **MFA Trusted IPS** will apply to any policies with this option selected.
 
-W przypadku aplikacji mobilnych i klasycznych, które mają długotrwałe okresy istnienia sesji, dostęp warunkowy jest okresowo obliczany. Wartość domyślna to raz na godzinę. Gdy wystąpiło tylko w trakcie uwierzytelniania wewnętrznego, usługa Azure AD może nie mieć listy zaufanych zakresów adresów IP. W takim przypadku trudniejsze jest określenie, czy użytkownik nadal znajduje się w sieci firmowej:
+For mobile and desktop applications, which have long lived session lifetimes, Conditional Access is periodically reevaluated. The default is once an hour. When the inside corporate network claim is only issued at the time of the initial authentication, Azure AD may not have a list of trusted IP ranges. In this case, it is more difficult to determine if the user is still on the corporate network:
 
-1. Sprawdź, czy adres IP użytkownika należy do jednego z zaufanych zakresów adresów IP.
-2. Sprawdź, czy pierwsze trzy oktety adresu IP użytkownika pasują do pierwszych trzech oktetów adresu IP początkowego uwierzytelniania. Adres IP jest porównywany z początkowym uwierzytelnianiem, gdy pierwotne twierdzenie sieci firmowej zostało wystawione i zweryfikowano lokalizację użytkownika.
+1. Check if the user’s IP address is in one of the trusted IP ranges.
+2. Check whether the first three octets of the user’s IP address match the first three octets of the IP address of the initial authentication. The IP address is compared with the initial authentication when the inside corporate network claim was originally issued and the user location was validated.
 
-Jeśli oba kroki zakończą się niepowodzeniem, użytkownik jest uznawany za niebędący już w zaufanym adresie IP.
+If both steps fail, a user is considered to be no longer on a trusted IP.
 
-## <a name="location-condition-configuration"></a>Konfiguracja warunku lokalizacji
+## <a name="location-condition-configuration"></a>Location condition configuration
 
-Podczas konfigurowania warunku lokalizacji można rozróżnić następujące opcje:
+When you configure the location condition, you have the option to distinguish between:
 
-- Dowolna lokalizacja
-- Wszystkie Zaufane lokalizacje
-- Wybrane lokalizacje
+- Any location
+- All trusted locations
+- Selected locations
 
-![Konfiguracja warunku lokalizacji](./media/location-condition/01.png)
+![Location condition configuration](./media/location-condition/01.png)
 
-### <a name="any-location"></a>Dowolna lokalizacja
+### <a name="any-location"></a>Any location
 
-Domyślnie wybranie **dowolnej lokalizacji** powoduje, że zasady mają być stosowane do wszystkich adresów IP, co oznacza dowolny adres w Internecie. To ustawienie nie jest ograniczone do adresów IP skonfigurowanych jako nazwana lokalizacja. W przypadku wybrania **dowolnej lokalizacji**można nadal wykluczać określone lokalizacje z zasad. Na przykład można zastosować zasady do wszystkich lokalizacji, z wyjątkiem zaufanych lokalizacji, aby ustawić zakres dla wszystkich lokalizacji, z wyjątkiem sieci firmowej.
+By default, selecting **Any location** causes a policy to be applied to all IP addresses, which means any address on the Internet. This setting is not limited to IP addresses you have configured as named location. When you select **Any location**, you can still exclude specific locations from a policy. For example, you can apply a policy to all locations except trusted locations to set the scope to all locations, except the corporate network.
 
-### <a name="all-trusted-locations"></a>Wszystkie Zaufane lokalizacje
+### <a name="all-trusted-locations"></a>All trusted locations
 
-Ta opcja ma zastosowanie do:
+This option applies to:
 
-- Wszystkie lokalizacje oznaczone jako zaufane
-- **Zaufane adresy IP usługi MFA** (jeśli zostały skonfigurowane)
+- All locations that have been marked as trusted location
+- **MFA Trusted IPS** (if configured)
 
-### <a name="selected-locations"></a>Wybrane lokalizacje
+### <a name="selected-locations"></a>Selected locations
 
-Za pomocą tej opcji można wybrać jedną lub więcej nazwanych lokalizacji. Aby można było zastosować zasady z tym ustawieniem, użytkownik musi nawiązać połączenie z dowolnych z wybranych lokalizacji. Po kliknięciu przycisku **Wybierz wybraną** kontrolkę Wybieranie sieci, która wyświetla listę nazwanych sieci otwiera się. Lista pokazuje również, czy lokalizacja sieciowa została oznaczona jako zaufana. Nazwana lokalizacja o nazwie **Zaufane adresy IP usługi MFA** służy do uwzględnienia ustawień protokołu IP, które można skonfigurować na stronie Ustawienia usługi uwierzytelniania wieloskładnikowego.
+With this option, you can select one or more named locations. For a policy with this setting to apply, a user needs to connect from any of the selected locations. When you click **Select** the named network selection control that shows the list of named networks opens. The list also shows if the network location has been marked as trusted. The named location called **MFA Trusted IPs** is used to include the IP settings that can be configured in the multi-factor authentication service setting page.
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 
-### <a name="when-is-a-location-evaluated"></a>Kiedy jest szacowana lokalizacja?
+### <a name="when-is-a-location-evaluated"></a>When is a location evaluated?
 
-Zasady dostępu warunkowego są oceniane, gdy:
+Conditional Access policies are evaluated when:
 
-- Użytkownik najpierw loguje się do aplikacji sieci Web, mobilnej lub klasycznej.
-- Aplikacja mobilna lub klasyczna korzystająca z nowoczesnego uwierzytelniania korzysta z tokenu odświeżania w celu uzyskania nowego tokenu dostępu. Domyślnie to sprawdzenie jest za godzinę.
+- A user initially signs in to a web app, mobile or desktop application.
+- A mobile or desktop application that uses modern authentication, uses a refresh token to acquire a new access token. By default this check is once an hour.
 
-To sprawdzenie oznacza, że aplikacje mobilne i klasyczne używają nowoczesnego uwierzytelniania, zmiana lokalizacji zostanie wykryta w ciągu godziny zmiany lokalizacji sieciowej. W przypadku aplikacji mobilnych i klasycznych, które nie korzystają z nowoczesnego uwierzytelniania, zasady są stosowane do każdego żądania tokenu. Częstotliwość żądania może się różnić w zależności od aplikacji. Podobnie w przypadku aplikacji sieci Web zasady są stosowane podczas początkowego logowania i są dobre dla okresu istnienia sesji w aplikacji sieci Web. Ze względu na różnice w okresach istnienia sesji między aplikacjami, czas między oceną zasad będzie również różny. Za każdym razem, gdy aplikacja żąda nowego tokenu logowania, zasady są stosowane.
+This check means for mobile and desktop applications using modern authentication, a change in location would be detected within an hour of changing the network location. For mobile and desktop applications that don’t use modern authentication, the policy is applied on each token request. The frequency of the request can vary based on the application. Similarly, for web applications, the policy is applied at initial sign-in and is good for the lifetime of the session at the web application. Due to differences in session lifetimes across applications, the time between policy evaluation will also vary. Each time the application requests a new sign-in token, the  policy is applied.
 
-Domyślnie usługa Azure AD wystawia token co godzinę. Po przejściu z sieci firmowej w ciągu godziny zasady są wymuszane dla aplikacji korzystających z nowoczesnego uwierzytelniania.
+By default, Azure AD issues a token on an hourly basis. After moving off the corporate network, within an hour the policy is enforced for applications using modern authentication.
 
-### <a name="user-ip-address"></a>Adres IP użytkownika
+### <a name="user-ip-address"></a>User IP address
 
-Adres IP, który jest używany w ocenie zasad, to publiczny adres IP użytkownika. W przypadku urządzeń w sieci prywatnej ten adres IP nie jest adresem IP klienta urządzenia użytkownika w intranecie. jest to adres używany przez sieć do łączenia się z publicznym Internetem.
+The IP address that is used in policy evaluation is the public IP address of the user. For devices on a private network, this IP address is not the client IP of the user’s device on the intranet, it is the address used by the network to connect to the public internet.
 
 > [!WARNING]
-> Jeśli urządzenie ma tylko adres IPv6, skonfigurowanie warunku lokalizacji nie jest obsługiwane.
+> If your device has only an IPv6 address, configuring the location condition is not supported.
 
-### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Zbiorcze przekazywanie i pobieranie nazwanych lokalizacji
+### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Bulk uploading and downloading of named locations
 
-Podczas tworzenia lub aktualizowania nazwanych lokalizacji w przypadku aktualizacji zbiorczych można przekazać lub pobrać plik CSV z zakresami adresów IP. Przekazywanie zastępuje zakresy adresów IP na liście tymi z pliku. Każdy wiersz pliku zawiera jeden zakres adresów IP w formacie CIDR.
+When you create or update named locations, for bulk updates, you can upload or download a CSV file with the IP ranges. An upload replaces the IP ranges in the list with those from the file. Each row of the file contains one IP Address range in CIDR format.
 
-### <a name="cloud-proxies-and-vpns"></a>Serwery proxy w chmurze i sieci VPN
+### <a name="cloud-proxies-and-vpns"></a>Cloud proxies and VPNs
 
-W przypadku korzystania z serwera proxy hostowanego w chmurze lub rozwiązania sieci VPN adres IP używany przez usługę Azure AD podczas oceniania zasad jest adresem IP serwera proxy. Nagłówek X-Forwarded-For (XFF), który zawiera publiczny adres IP użytkownika, nie jest używany, ponieważ nie ma weryfikacji, że pochodzi on z zaufanego źródła, dlatego należy przedstawić metodę faking adresu IP.
+When you use a cloud hosted proxy or VPN solution, the IP address Azure AD uses while evaluating a policy is the IP address of the proxy. The X-Forwarded-For (XFF) header that contains the user’s public IP address is not used because there is no validation that it comes from a trusted source, so would present a method for faking an IP address.
 
-Gdy serwer proxy w chmurze jest na miejscu, można użyć zasad, które są używane do wymagania urządzenia przyłączonego do domeny, lub wewnątrz roszczeń sieci firmowej z AD FS.
+When a cloud proxy is in place, a policy that is used to require a domain joined device can be used, or the inside corpnet claim from AD FS.
 
-### <a name="api-support-and-powershell"></a>Obsługa interfejsu API i programu PowerShell
+### <a name="api-support-and-powershell"></a>API support and PowerShell
 
-Interfejsy API i PowerShell nie są jeszcze obsługiwane dla nazwanych lokalizacji ani dla zasad dostępu warunkowego.
+API and PowerShell is not yet supported for named locations, or for Conditional Access policies.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Jeśli chcesz dowiedzieć się, jak skonfigurować zasady dostępu warunkowego, zobacz [Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji, Azure Active Directory dostępu warunkowego](app-based-mfa.md).
-- Aby skonfigurować zasady dostępu warunkowego dla środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory](best-practices.md).
+- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
+- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).

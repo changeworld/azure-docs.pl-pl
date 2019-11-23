@@ -1,85 +1,85 @@
 ---
-title: Używanie Azure Data Box do migrowania danych z lokalnego magazynu systemu plików HDFS do usługi Azure Storage
-description: Migrowanie danych z lokalnego magazynu systemu plików HDFS do usługi Azure Storage
+title: Migrate from on-prem HDFS store to Azure Storage with Azure Data Box
+description: Migrate data from an on-premises HDFS store to Azure Storage
 author: normesta
 ms.service: storage
-ms.date: 06/11/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 508c67f73bc0e11330b5772b1c1ba3f9bee5e231
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3360209e9de54d6011a2a430cd2c1fb54a315c43
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255675"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327600"
 ---
-# <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Używanie Azure Data Box do migrowania danych z lokalnego magazynu systemu plików HDFS do usługi Azure Storage
+# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrate from on-prem HDFS store to Azure Storage with Azure Data Box
 
-Dane można migrować z lokalnego magazynu systemu plików HDFS klastra Hadoop do usługi Azure Storage (BLOB Storage lub Data Lake Storage Gen2) za pomocą urządzenia urządzenie Data Box. Można wybrać jedną z 80-TB urządzenie Data Box lub Data Box Heavy 770-TB.
+You can migrate data from an on-premises HDFS store of your Hadoop cluster into Azure Storage (blob storage or Data Lake Storage Gen2) by using a Data Box device. You can choose from an 80-TB Data Box or a 770-TB Data Box Heavy.
 
-Ten artykuł ułatwia wykonywanie następujących zadań:
+This article helps you complete these tasks:
 
 > [!div class="checklist"]
-> * Przygotuj się do migracji danych.
-> * Skopiuj dane do urządzenie Data Box lub Data Box Heavy urządzenia.
-> * Wyślij urządzenie z powrotem do firmy Microsoft.
-> * Przenieś dane na Data Lake Storage Gen2.
+> * Prepare to migrate your data.
+> * Copy your data to a Data Box or a Data Box Heavy device.
+> * Ship the device back to Microsoft.
+> * Move the data onto Data Lake Storage Gen2.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Te elementy są niezbędne do ukończenia migracji.
+You need these things to complete the migration.
 
-* Dwa konta magazynu; na nim jest włączona hierarchiczna przestrzeń nazw, a nie.
+* Two storage accounts; one that has a hierarchical namespace enabled on it, and one that doesn't.
 
-* Lokalny klaster Hadoop, który zawiera dane źródłowe.
+* An on-premises Hadoop cluster that contains your source data.
 
-* [Urządzenie Azure Data Box](https://azure.microsoft.com/services/storage/databox/).
+* An [Azure Data Box device](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Zamów urządzenie Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) lub [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). Podczas porządkowania urządzenia Pamiętaj, aby wybrać konto magazynu, na którym **nie** są włączone hierarchiczne przestrzenie nazw. Wynika to z faktu, że urządzenia urządzenie Data Box nie obsługują jeszcze bezpośredniego pozyskiwania w Azure Data Lake Storage Gen2. Należy skopiować do konta magazynu, a następnie wykonać drugą kopię na koncie ADLS Gen2. Instrukcje dotyczące tego są podane w poniższych krokach.
+  * [Order your Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) or [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). While ordering your device, remember to choose a storage account that **doesn't** have hierarchical namespaces enabled on it. This is because Data Box devices do not yet support direct ingestion into Azure Data Lake Storage Gen2. You will need to copy into a storage account and then do a second copy into the ADLS Gen2 account. Instructions for this are given in the steps below.
 
-  * Podłącz [urządzenie Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) lub [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) do sieci lokalnej przy użyciu kabla.
+  * Cable and connect your [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) or [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) to an on-premises network.
 
-Jeśli wszystko jest gotowe, zacznijmy.
+If you are ready, let's start.
 
-## <a name="copy-your-data-to-a-data-box-device"></a>Kopiowanie danych na urządzenie urządzenie Data Box
+## <a name="copy-your-data-to-a-data-box-device"></a>Copy your data to a Data Box device
 
-Jeśli dane pasują do jednego urządzenie Data Boxego urządzenia, skopiujesz dane na urządzenie urządzenie Data Box. 
+If your data fits into a single Data Box device, then you'll copy the data to the Data Box device. 
 
-Jeśli rozmiar danych przekracza pojemność urządzenia urządzenie Data Box, należy użyć [opcjonalnej procedury w celu podzielenia danych na wiele urządzenie Data Box urządzeń](#appendix-split-data-across-multiple-data-box-devices) , a następnie wykonać ten krok. 
+If your data size exceeds the capacity of the Data Box device, then use the [optional procedure to split the data across multiple Data Box devices](#appendix-split-data-across-multiple-data-box-devices) and then perform this step. 
 
-Aby skopiować dane z lokalnego magazynu systemu plików HDFS na urządzenie urządzenie Data Box, należy ustawić kilka rzeczy, a następnie użyć narzędzia [pomocą distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) .
+To copy the data from your on-premises HDFS store to a Data Box device, you'll set a few things up, and then use the [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) tool.
 
-Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów API REST magazynu obiektów BLOB/obiektów do urządzenia urządzenie Data Box. Interfejs API REST sprawia, że urządzenie będzie widoczne jako magazyn systemu plików HDFS w klastrze.
+Follow these steps to copy data via the REST APIs of Blob/Object storage to your Data Box device. The REST API interface will make the device appear as an HDFS store to your cluster.
 
-1. Przed skopiowaniem danych za pomocą usługi REST Zidentyfikuj elementy podstawowe zabezpieczeń i połączenia w celu nawiązania połączenia z interfejsem REST na urządzenie Data Box lub Data Box Heavy. Zaloguj się do lokalnego interfejsu użytkownika sieci Web urządzenie Data Box i przejdź do strony **łączenie i kopiowanie** . Na koncie usługi Azure Storage dla urządzenia w obszarze **Ustawienia dostępu**Znajdź i wybierz pozycję **rest**.
+1. Before you copy the data via REST, identify the security and connection primitives to connect to the REST interface on the Data Box or Data Box Heavy. Sign in to the local web UI of Data Box and go to **Connect and copy** page. Against the Azure storage account for your device, under **Access settings**, locate, and select **REST**.
 
-    ![Strona "łączenie i kopiowanie"](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
+    !["Connect and copy" page](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. W oknie dialogowym dostęp do konta magazynu i przekazywania danych Skopiuj **BLOB Service punkt końcowy** i **klucz konta magazynu**. W punkcie końcowym usługi BLOB należy pominąć `https://` i końcowy ukośnik.
+2. In the Access storage account and upload data dialog, copy the **Blob service endpoint** and the **Storage account key**. From the blob service endpoint, omit the `https://` and the trailing slash.
 
-    W tym przypadku punkt końcowy to: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Część hosta identyfikatora URI, który będzie używany, to: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Aby zapoznać się z przykładem, zobacz jak [nawiązać połączenie z usługą REST za pośrednictwem protokołu HTTP](/azure/databox/data-box-deploy-copy-data-via-rest). 
+    In this case, the endpoint is: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. The host portion of the URI that you'll use is: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. For an example, see how to [Connect to REST over http](/azure/databox/data-box-deploy-copy-data-via-rest). 
 
-     ![Okno dialogowe uzyskiwanie dostępu do konta magazynu i przekazywanie danych](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
+     !["Access storage account and upload data" dialog](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. Dodaj punkt końcowy oraz adres IP urządzenie Data Box lub Data Box Heavy węzła, aby `/etc/hosts` w każdym węźle.
+3. Add the endpoint and the Data Box or Data Box Heavy node IP address to `/etc/hosts` on each node.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
     ```
 
-    Jeśli używasz innego mechanizmu dla systemu DNS, upewnij się, że można rozpoznać urządzenie Data Box punkt końcowy.
+    If you are using some other mechanism for DNS, you should ensure that the Data Box endpoint can be resolved.
 
-4. Ustaw zmienną powłoki `azjars` do lokalizacji plików jar `hadoop-azure` i `azure-storage`. Te pliki można znaleźć w katalogu instalacji usługi Hadoop.
+4. Set the shell variable `azjars` to the location of the `hadoop-azure` and `azure-storage` jar files. You can find these files under the Hadoop installation directory.
 
-    Aby określić, czy te pliki istnieją, użyj następującego polecenia: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`. Zastąp symbol zastępczy `<hadoop_install_dir>` ścieżką do katalogu, w którym została zainstalowana usługa Hadoop. Upewnij się, że używasz w pełni kwalifikowanych ścieżek.
+    To determine if these files exist, use the following command: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`. Replace the `<hadoop_install_dir>` placeholder with the path to the directory where you've installed Hadoop. Be sure to use fully qualified paths.
 
     Przykłady:
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
-5. Utwórz kontener magazynu, który ma być używany do kopiowania danych. Należy również określić katalog docelowy jako część tego polecenia. Może to być w tym momencie fikcyjny katalog docelowy.
+5. Create the storage container that you want to use for data copy. You should also specify a destination directory as part of this command. This could be a dummy destination directory at this point.
 
     ```
     hadoop fs -libjars $azjars \
@@ -88,15 +88,15 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Zastąp symbol zastępczy `<blob_service_endpoint>` nazwą punktu końcowego usługi BLOB Service.
+    * Replace the `<blob_service_endpoint>` placeholder with the name of your blob service endpoint.
 
-    * Zastąp symbol zastępczy `<account_key>` kluczem dostępu do konta.
+    * Replace the `<account_key>` placeholder with the access key of your account.
 
-    * Zastąp symbol zastępczy `<container-name>` nazwą kontenera.
+    * Replace the `<container-name>` placeholder with the name of your container.
 
-    * Zastąp symbol zastępczy `<destination_directory>` nazwą katalogu, do którego chcesz skopiować dane.
+    * Replace the `<destination_directory>` placeholder with the name of the directory that you want to copy your data to.
 
-6. Uruchom polecenie list, aby upewnić się, że kontener i katalog zostały utworzone.
+6. Run a list command to ensure that your container and directory were created.
 
     ```
     hadoop fs -libjars $azjars \
@@ -105,13 +105,13 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * Zastąp symbol zastępczy `<blob_service_endpoint>` nazwą punktu końcowego usługi BLOB Service.
+   * Replace the `<blob_service_endpoint>` placeholder with the name of your blob service endpoint.
 
-   * Zastąp symbol zastępczy `<account_key>` kluczem dostępu do konta.
+   * Replace the `<account_key>` placeholder with the access key of your account.
 
-   * Zastąp symbol zastępczy `<container-name>` nazwą kontenera.
+   * Replace the `<container-name>` placeholder with the name of your container.
 
-7. Skopiuj dane z usługi Hadoop HDFS do urządzenie Data Box Storage BLOB do utworzonego wcześniej kontenera. Jeśli nie można odnaleźć katalogu, do którego ma zostać skopiowane, polecenie zostanie automatycznie utworzone.
+7. Copy data from the Hadoop HDFS to Data Box Blob storage, into the container that you created earlier. If the directory that you are copying into is not found, the command automatically creates it.
 
     ```
     hadoop distcp \
@@ -123,21 +123,21 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Zastąp symbol zastępczy `<blob_service_endpoint>` nazwą punktu końcowego usługi BLOB Service.
+    * Replace the `<blob_service_endpoint>` placeholder with the name of your blob service endpoint.
 
-    * Zastąp symbol zastępczy `<account_key>` kluczem dostępu do konta.
+    * Replace the `<account_key>` placeholder with the access key of your account.
 
-    * Zastąp symbol zastępczy `<container-name>` nazwą kontenera.
+    * Replace the `<container-name>` placeholder with the name of your container.
 
-    * Zastąp symbol zastępczy `<exlusion_filelist_file>` nazwą pliku, który zawiera listę wykluczeń plików.
+    * Replace the `<exlusion_filelist_file>` placeholder with the name of the file that contains your list of file exclusions.
 
-    * Zastąp symbol zastępczy `<source_directory>` nazwą katalogu zawierającego dane, które chcesz skopiować.
+    * Replace the `<source_directory>` placeholder with the name of the directory that contains the data that you want to copy.
 
-    * Zastąp symbol zastępczy `<destination_directory>` nazwą katalogu, do którego chcesz skopiować dane.
+    * Replace the `<destination_directory>` placeholder with the name of the directory that you want to copy your data to.
 
-    Opcja `-libjars` umożliwia udostępnienie `hadoop-azure*.jar` oraz zależnych plików `azure-storage*.jar` do `distcp`. Może to być spowodowane niektórymi klastrami.
+    The `-libjars` option is used to make the `hadoop-azure*.jar` and the dependent `azure-storage*.jar` files available to `distcp`. This    may already occur for some clusters.
 
-    Poniższy przykład pokazuje, jak polecenie `distcp` służy do kopiowania danych.
+    The following example shows how the `distcp` command is used to copy data.
 
     ```
      hadoop distcp \
@@ -149,103 +149,103 @@ Wykonaj następujące kroki, aby skopiować dane za pośrednictwem interfejsów 
     wasb://hdfscontainer@mystorageaccount.blob.mydataboxno.microsoftdatabox.com/data
     ```
   
-    Aby zwiększyć szybkość kopiowania:
+    To improve the copy speed:
 
-    * Spróbuj zmienić liczbę odwzorów. (W powyższym przykładzie są wykorzystywane `m` = 4 mapowania.)
+    * Try changing the number of mappers. (The above example uses `m` = 4 mappers.)
 
-    * Spróbuj uruchomić wiele `distcp` równolegle.
+    * Try running multiple `distcp` in parallel.
 
-    * Należy pamiętać, że duże pliki działają lepiej niż małe pliki.
+    * Remember that large files perform better than small files.
 
-## <a name="ship-the-data-box-to-microsoft"></a>Wyślij urządzenie Data Box do firmy Microsoft
+## <a name="ship-the-data-box-to-microsoft"></a>Ship the Data Box to Microsoft
 
-Wykonaj następujące kroki, aby przygotować i dostarczyć urządzenie Data Box urządzenie do firmy Microsoft.
+Follow these steps to prepare and ship the Data Box device to Microsoft.
 
-1. Najpierw [przygotowanie do wysłania na urządzenie Data Box lub Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+1. First,  [Prepare to ship on your Data Box or Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
 
-2. Po zakończeniu przygotowywania urządzenia Pobierz pliki BOM. Te pliki BOM lub manifestów zostaną użyte później do zweryfikowania danych przekazywanych do platformy Azure.
+2. After the device preparation is complete, download the BOM files. You will use these BOM or manifest files later to verify the data uploaded to Azure.
 
-3. Zamknij urządzenie i Usuń kable.
+3. Shut down the device and remove the cables.
 
 4. Zaplanuj odbiór przez firmę UPS.
 
-    * Aby uzyskać urządzenie Data Box urządzeń, zobacz artykuł [dostarczanie urządzenie Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
+    * For Data Box devices, see [Ship your Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
 
-    * Aby uzyskać Data Box Heavy urządzeń, zobacz artykuł [dostarczanie Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
+    * For Data Box Heavy devices, see [Ship your Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
 
-5. Gdy firma Microsoft odbierze urządzenie, jest ono połączone z siecią centrum danych i dane zostaną przekazane do określonego konta magazynu (z wyłączonymi hierarchicznymi przestrzeniami nazw) podczas umieszczania zamówienia urządzenia. Sprawdź pliki BOM, które wszystkie dane są przekazywane do platformy Azure. Teraz można przenieść te dane na konto magazynu Data Lake Storage Gen2.
+5. After Microsoft receives your device, it is connected to the data center network and the data is uploaded to the storage account you specified (with hierarchical namespaces disabled) when you placed the device order. Verify against the BOM files that all your data is uploaded to Azure. You can now move this data to a Data Lake Storage Gen2 storage account.
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Przenieś dane do Azure Data Lake Storage Gen2
+## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Move the data into Azure Data Lake Storage Gen2
 
-Masz już dane do konta usługi Azure Storage. Teraz skopiujesz dane do konta magazynu Azure Data Lake i zastosujesz uprawnienia dostępu do plików i katalogów.
+You already have the data into your Azure Storage account. Now you will copy the data into your Azure Data Lake storage account and apply access permissions to files and directories.
 
 > [!NOTE]
-> Ten krok jest wymagany, jeśli używasz Azure Data Lake Storage Gen2 jako magazynu danych. Jeśli używasz tylko konta usługi BLOB Storage bez hierarchicznej przestrzeni nazw jako magazynu danych, możesz pominąć tę sekcję.
+> This step is needed if you are using Azure Data Lake Storage Gen2 as your data store. If you are using just a blob storage account without hierarchical namespace as your data store, you can skip this section.
 
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Kopiuj dane do konta Azure Data Lake Storage Gen 2
+### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Copy data to the Azure Data Lake Storage Gen 2 account
 
-Dane można kopiować przy użyciu Azure Data Factory lub przy użyciu klastra Hadoop opartego na platformie Azure.
+You can copy data by using Azure Data Factory, or by using your Azure-based Hadoop cluster.
 
-* Aby użyć Azure Data Factory, zobacz [Azure Data Factory do przenoszenia danych do ADLS Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2). Upewnij się, że jako źródło określono **BLOB Storage platformy Azure** .
+* To use Azure Data Factory, see [Azure Data Factory to move data to ADLS Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2). Make sure to specify **Azure Blob Storage** as the source.
 
-* Aby korzystać z klastra Hadoop opartego na platformie Azure, Uruchom to polecenie pomocą distcp:
+* To use your Azure-based Hadoop cluster, run this DistCp command:
 
     ```bash
     hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
     ```
 
-    * Zastąp symbole zastępcze `<source_account>` i `<dest_account>` nazwami źródłowych i docelowych kont magazynu.
+    * Replace the `<source_account>` and `<dest_account>` placeholders with the names of the source and destination storage accounts.
 
-    * Zastąp symbole zastępcze `<source_container>` i `<dest_container>` nazwami kontenerów źródłowych i docelowych.
+    * Replace the `<source_container>` and `<dest_container>` placeholders with the names of the source and destination containers.
 
-    * Zastąp symbole zastępcze `<source_path>` i `<dest_path>` ścieżkami katalogu źródłowego i docelowego.
+    * Replace the `<source_path>` and `<dest_path>` placeholders with the source and destination directory paths.
 
-    * Zastąp symbol zastępczy `<source_account_key>` kluczem dostępu do konta magazynu zawierającego dane.
+    * Replace the `<source_account_key>` placeholder with the access key of the storage account that contains the data.
 
-    To polecenie kopiuje dane i metadane z konta magazynu do konta magazynu Data Lake Storage Gen2.
+    This command copies both data and metadata from your storage account into your Data Lake Storage Gen2 storage account.
 
-### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Tworzenie nazwy głównej usługi dla konta Azure Data Lake Storage Gen2
+### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Create a service principal for your Azure Data Lake Storage Gen2 account
 
-Aby utworzyć jednostkę usługi, zobacz [How to: Use the Portal, aby utworzyć aplikację usługi Azure AD i nazwę główną usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+To create a service principal, see [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 * Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano rolę **Współautor danych obiektu blob magazynu** do jednostki usługi.
 
-* Podczas wykonywania kroków opisanych w sekcji [pobieranie wartości dla logowania w](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) artykule Zapisz identyfikator aplikacji i klucz tajny klienta w pliku tekstowym. Wkrótce będą potrzebne.
+* When performing the steps in the [Get values for signing in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) section of the article, save application ID, and client secret values into a text file. Wkrótce będą potrzebne.
 
-### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Generuj listę skopiowanych plików z ich uprawnieniami
+### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Generate a list of copied files with their permissions
 
-W lokalnym klastrze usługi Hadoop Uruchom następujące polecenie:
+From the on-premises Hadoop cluster, run this command:
 
 ```bash
 
 sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 ```
 
-To polecenie generuje listę skopiowanych plików z ich uprawnieniami.
+This command generates a list of copied files with their permissions.
 
 > [!NOTE]
-> W zależności od liczby plików w systemie HDFS uruchomienie tego polecenia może zająć dużo czasu.
+> Depending on the number of files in the HDFS, this command can take a long time to run.
 
-### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Wygeneruj listę tożsamości i zamapuj je na Azure Active Directory (Dodaj) tożsamości
+### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Generate a list of identities and map them to Azure Active Directory (ADD) identities
 
-1. Pobierz skrypt `copy-acls.py`. Zobacz sekcję [pobieranie skryptów pomocnika i skonfiguruj węzeł brzegowy, aby uruchomić je w](#download-helper-scripts) tym artykule.
+1. Download the `copy-acls.py` script. See the [Download helper scripts and set up your edge node to run them](#download-helper-scripts) section of this article.
 
-2. Uruchom to polecenie, aby wygenerować listę unikatowych tożsamości.
+2. Run this command to generate a list of unique identities.
 
    ```bash
    
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   Ten skrypt generuje plik o nazwie `id_map.json`, który zawiera tożsamości, które są potrzebne do mapowania na tożsamości oparte na DODAWANiu.
+   This script generates a file named `id_map.json` that contains the identities that you need to map to ADD-based identities.
 
-3. Otwórz plik `id_map.json` w edytorze tekstu.
+3. Open the `id_map.json` file in a text editor.
 
-4. Dla każdego obiektu JSON, który pojawia się w pliku, zaktualizuj atrybut `target` nazwy głównej użytkownika usługi AAD (UPN) lub identyfikatora obiektu ObjectId (OID) przy użyciu odpowiedniej zamapowanej tożsamości. Po zakończeniu Zapisz plik. Ten plik będzie potrzebny w następnym kroku.
+4. For each JSON object that appears in the file, update the `target` attribute of either an AAD User Principal Name (UPN) or ObjectId (OID), with the appropriate mapped identity. After you're done, save the file. You'll need this file in the next step.
 
-### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Zastosuj uprawnienia do skopiowanych plików i Zastosuj mapowania tożsamości
+### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Apply permissions to copied files and apply identity mappings
 
-Uruchom to polecenie, aby zastosować uprawnienia do danych skopiowanych na konto Data Lake Storage Gen2:
+Run this command to apply permissions to the data that you copied into the Data Lake Storage Gen2 account:
 
 ```bash
 ./copy-acls.py -s ./filelist.json -i ./id_map.json  -A <storage-account-name> -C <container-name> --dest-spn-id <application-id>  --dest-spn-secret <client-secret>
@@ -253,19 +253,19 @@ Uruchom to polecenie, aby zastosować uprawnienia do danych skopiowanych na kont
 
 * Zastąp symbol zastępczy `<storage-account-name>` nazwą konta magazynu.
 
-* Zastąp symbol zastępczy `<container-name>` nazwą kontenera.
+* Replace the `<container-name>` placeholder with the name of your container.
 
-* Zastąp symbole zastępcze `<application-id>` i `<client-secret>` IDENTYFIKATORem aplikacji i kluczem tajnym klienta zebranym podczas tworzenia jednostki usługi.
+* Replace the `<application-id>` and `<client-secret>` placeholders with the application ID and client secret that you collected when you created the service principal.
 
-## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Dodatek: dzielenie danych między wieloma urządzenie Data Box urządzeniami
+## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Appendix: Split data across multiple Data Box devices
 
-Przed przeniesieniem danych na urządzenie urządzenie Data Box należy pobrać niektóre skrypty pomocnika, upewnić się, że dane są zorganizowane tak, aby mieściły się na urządzeniu urządzenie Data Box i wykluczyć zbędne pliki.
+Before you move your data onto a Data Box device, you'll need to download some helper scripts, ensure that your data is organized to fit onto a Data Box device, and exclude any unnecessary files.
 
 <a id="download-helper-scripts" />
 
-### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Pobierz skrypty pomocnika i skonfiguruj węzeł brzegowy, aby uruchomić je
+### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Download helper scripts and set up your edge node to run them
 
-1. Z poziomu brzegu lub węzła głównego lokalnego klastra Hadoop Uruchom następujące polecenie:
+1. From your edge or head node of your on-premises Hadoop cluster, run this command:
 
    ```bash
    
@@ -273,23 +273,23 @@ Przed przeniesieniem danych na urządzenie urządzenie Data Box należy pobrać 
    cd databox-adls-loader
    ```
 
-   To polecenie klonuje repozytorium GitHub zawierające skrypty pomocnika.
+   This command clones the GitHub repository that contains the helper scripts.
 
-2. Upewnij się, że na komputerze lokalnym jest zainstalowany pakiet [JQ](https://stedolan.github.io/jq/) .
+2. Make sure that have the [jq](https://stedolan.github.io/jq/) package installed on your local computer.
 
    ```bash
    
    sudo apt-get install jq
    ```
 
-3. Zainstaluj pakiet [żądań](http://docs.python-requests.org/en/master/) języka Python.
+3. Install the [Requests](http://docs.python-requests.org/en/master/) python package.
 
    ```bash
    
    pip install requests
    ```
 
-4. Ustaw uprawnienia EXECUTE dla wymaganych skryptów.
+4. Set execute permissions on the required scripts.
 
    ```bash
    
@@ -297,15 +297,15 @@ Przed przeniesieniem danych na urządzenie urządzenie Data Box należy pobrać 
 
    ```
 
-### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>Upewnij się, że dane są zorganizowane tak, aby zmieściły się na urządzenie Data Box urządzeniu
+### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>Ensure that your data is organized to fit onto a Data Box device
 
-Jeśli rozmiar danych przekracza rozmiar pojedynczego urządzenia urządzenie Data Box, można podzielić pliki do grup, które można przechowywać na wielu urządzenie Data Box urządzeniach.
+If the size of your data exceeds the size of a single Data Box device, you can split files up into groups that you can store onto multiple Data Box devices.
 
-Jeśli dane nie przekroczą rozmiaru pojedynczego urządzenia urządzenie Data Box, można przejdź do następnej sekcji.
+If your data doesn't exceed the size of a singe Data Box device, you can proceed to the next section.
 
-1. Mając podwyższony poziom uprawnień, Uruchom pobrany skrypt `generate-file-list`, postępując zgodnie ze wskazówkami w poprzedniej sekcji.
+1. With elevated permissions, run the `generate-file-list` script that you downloaded by following the guidance in the previous section.
 
-   Oto opis parametrów poleceń:
+   Here's a description of the command parameters:
 
    ```
    sudo -u hdfs ./generate-file-list.py [-h] [-s DATABOX_SIZE] [-b FILELIST_BASENAME]
@@ -333,17 +333,17 @@ Jeśli dane nie przekroczą rozmiaru pojedynczego urządzenia urządzenie Data B
                         Level of log information to output. Default is 'INFO'.
    ```
 
-2. Skopiuj wygenerowane listy plików do systemu plików HDFS, aby były dostępne dla zadania [pomocą distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) .
+2. Copy the generated file lists to HDFS so that they are accessible to the [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) job.
 
    ```
    hadoop fs -copyFromLocal {filelist_pattern} /[hdfs directory]
    ```
 
-### <a name="exclude-unnecessary-files"></a>Wyklucz niepotrzebne pliki
+### <a name="exclude-unnecessary-files"></a>Exclude unnecessary files
 
-Konieczne będzie wykluczenie niektórych katalogów z zadania DisCp. Na przykład Wyklucz katalogi zawierające informacje o stanie, które przechowują klaster.
+You'll need to exclude some directories from the DisCp job. For example, exclude directories that contain state information that keep the cluster running.
 
-W lokalnym klastrze usługi Hadoop, w którym planujesz zainicjować zadanie pomocą distcp, Utwórz plik, który określa listę katalogów, które chcesz wykluczyć.
+On the on-premises Hadoop cluster where you plan to initiate the DistCp job, create a file that specifies the list of directories that you want to exclude.
 
 Oto przykład:
 
@@ -354,4 +354,4 @@ Oto przykład:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak Data Lake Storage Gen2 współpracuje z klastrami usługi HDInsight. Zobacz [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Learn how Data Lake Storage Gen2 works with HDInsight clusters. Zobacz [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).

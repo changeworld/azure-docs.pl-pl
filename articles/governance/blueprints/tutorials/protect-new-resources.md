@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Protect new resources with locks'
 description: In this tutorial, you use the Azure Blueprints resource locks options Read Only and Do Not Delete to protect newly deployed resources.
-ms.date: 03/28/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: 5be8834e7d598e1d6a98ff7b46184ac0781190f5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210175"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327442"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Protect new resources with Azure Blueprints resource locks
 
@@ -25,7 +25,7 @@ In this tutorial, you'll complete these steps:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
 ## <a name="create-a-blueprint-definition"></a>Create a blueprint definition
 
@@ -53,9 +53,10 @@ First, create the blueprint definition.
    1. Select **Add** to add the artifact to the blueprint.
 
 1. Add a template under the resource group:
-   1. Select the **Add artifact** row under the **RGtoLock** entry. 
-   1. Select **Azure Resource Manager template** under **Artifact type**, set **Artifact display name** to **StorageAccount**, and leave **Description** blank. 
-   1. On the **Template** tab, paste the following Resource Manager template into the editor box. After you paste in the template, select **Add** to add the artifact to the blueprint.
+   1. Select the **Add artifact** row under the **RGtoLock** entry.
+   1. Select **Azure Resource Manager template** under **Artifact type**, set **Artifact display name** to **StorageAccount**, and leave **Description** blank.
+   1. On the **Template** tab, paste the following Resource Manager template into the editor box.
+      After you paste in the template, select **Add** to add the artifact to the blueprint.
 
    ```json
    {
@@ -224,9 +225,7 @@ When you're finished with this tutorial, delete these resources:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../concepts/lifecycle.md).
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md).
-- Find out how to use [blueprint resource locking](../concepts/resource-locking.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
-- [Troubleshoot issues](../troubleshoot/general.md) during the assignment of a blueprint.
+In this tutorial, you've learned how to protect new resources deployed with Azure Blueprints. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](../concepts/lifecycle.md)

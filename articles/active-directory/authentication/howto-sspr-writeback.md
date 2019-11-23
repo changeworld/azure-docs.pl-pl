@@ -1,26 +1,26 @@
 ---
-title: Jak skonfigurować funkcję zapisywania zwrotnego haseł dla usługi Azure AD SSPR — Azure Active Directory
-description: Używanie usługi Azure AD i Azure AD Connect do zapisywania zwrotnego haseł w katalogu lokalnym
+title: Configure password writeback for SSPR - Azure Active Directory
+description: Use Azure AD and Azure AD Connect to writeback passwords to an on-premises directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1acda877ecadc8ad0abd09b78d5453743e2470b1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021775"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381154"
 ---
-# <a name="how-to-configure-password-writeback"></a>Instrukcje: Konfigurowanie zapisywania zwrotnego haseł
+# <a name="how-to-configure-password-writeback"></a>How-to: Configure password writeback
 
-W poniższych krokach przyjęto założenie, że Azure AD Connect w środowisku został już skonfigurowany przy użyciu ustawień [ekspresowych](../hybrid/how-to-connect-install-express.md) lub [niestandardowych](../hybrid/how-to-connect-install-custom.md) .
+The following steps assume you have already configured Azure AD Connect in your environment by using the [Express](../hybrid/how-to-connect-install-express.md) or [Custom](../hybrid/how-to-connect-install-custom.md) settings.
 
 1. Aby skonfigurować i włączyć zapisywanie zwrotne haseł, zaloguj się na serwerze programu Azure AD Connect i uruchom kreatora konfiguracji programu **Azure AD Connect**.
 2. Na **stronie powitalnej** wybierz pozycję **Konfiguruj**.
@@ -28,81 +28,81 @@ W poniższych krokach przyjęto założenie, że Azure AD Connect w środowisku 
 4. Na stronie **Łączenie z usługą Azure AD** wprowadź poświadczenia administratora globalnego, a następnie wybierz pozycję **Dalej**.
 5. Na stronach filtrowania **Łączenie katalogów** i **Domena/jednostka OU** wybierz pozycję **Dalej**.
 6. Na stronie **Funkcje opcjonalne** zaznacz pole obok pozycji **Zapisywanie zwrotne haseł** i wybierz pozycję **Dalej**.
-   ![Włącz funkcję zapisywania zwrotnego haseł w Azure AD Connect][Writeback]
+   ![Enable password writeback in Azure AD Connect][Writeback]
 7. Na stronie **Wszystko gotowe do skonfigurowania** wybierz pozycję **Konfiguruj** i poczekaj na zakończenie procesu.
 8. Po ukończeniu konfiguracji wybierz pozycję **Zakończ**.
 
-Typowe zadania związane z rozwiązywaniem problemów dotyczące funkcji zapisywania zwrotnego haseł znajdują się w sekcji [Rozwiązywanie problemów z funkcją zapisywania zwrotnego haseł](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) w naszym artykule
+For common troubleshooting tasks related to password writeback, see the section [Troubleshoot password writeback](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) in our troubleshooting article.
 
 > [!WARNING]
-> Zapisywanie zwrotne haseł przestanie działać dla klientów korzystających z Azure AD Connect wersji 1.0.8641.0 i starszych, gdy [usługa Azure Access Control Service (ACS) zostanie wycofana w dniu 7 listopada, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect wersje 1.0.8641.0 i starsze nie będą już zezwalały na zapisywanie zwrotne haseł, ponieważ zależą one od usług ACS dla tej funkcji.
+> Password writeback will stop working for customers who are using Azure AD Connect versions 1.0.8641.0 and older when the [Azure Access Control service (ACS) is retired on November 7th, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect versions 1.0.8641.0 and older will no longer allow password writeback at that time because they depend on ACS for that functionality.
 >
-> Aby uniknąć przerw w działaniu usługi, należy uaktualnić poprzednią wersję Azure AD Connect do nowszej wersji, zapoznaj się z artykułem [Azure AD Connect: uaktualnienie z poprzedniej wersji do najnowszej](../hybrid/how-to-upgrade-previous-version.md)
+> To avoid a disruption in service, upgrade from a previous version of Azure AD Connect to a newer version, see the article [Azure AD Connect: Upgrade from a previous version to the latest](../hybrid/how-to-upgrade-previous-version.md)
 >
 
-## <a name="licensing-requirements-for-password-writeback"></a>Wymagania dotyczące licencjonowania dla zapisywania zwrotnego haseł
+## <a name="licensing-requirements-for-password-writeback"></a>Licensing requirements for password writeback
 
-**Samoobsługowe resetowanie/zmiana/odblokowanie hasła przy użyciu lokalnego zapisywania zwrotnego to funkcja Premium usługi Azure AD**. Aby uzyskać więcej informacji o licencjonowaniu, zobacz [witrynę Azure Active Directory cenowej](https://azure.microsoft.com/pricing/details/active-directory/).
+**Self-Service Password Reset/Change/Unlock with on-premises writeback is a premium feature of Azure AD**. For more information about licensing, see the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Aby korzystać z funkcji zapisywania zwrotnego haseł, musisz mieć jedną z następujących licencji przypisanych do dzierżawy:
+To use password writeback, you must have one of the following licenses assigned on your tenant:
 
 * Usługa Azure AD — warstwa Premium P1
 * Usługa Azure AD — warstwa Premium P2
-* Enterprise Mobility + Security E3 lub A3
-* Enterprise Mobility + Security E5 lub A5
-* Microsoft 365 E3 lub A3
-* Microsoft 365 E5 lub A5
+* Enterprise Mobility + Security E3 or A3
+* Enterprise Mobility + Security E5 or A5
+* Microsoft 365 E3 or A3
+* Microsoft 365 E5 or A5
 * Microsoft 365 F1
 * Microsoft 365 Business
 
 > [!WARNING]
-> Autonomiczne plany licencjonowania pakietu Office 365 *nie obsługują funkcji samoobsługowego resetowania hasła/zmiany/odblokowywania przy użyciu lokalnego zapisywania zwrotnego* i wymagają posiadania jednego z powyższych planów, aby ta funkcja działała.
+> Standalone Office 365 licensing plans *don't support "Self-Service Password Reset/Change/Unlock with on-premises writeback"* and require that you have one of the preceding plans for this functionality to work.
 >
 
-## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Uprawnienia Active Directory i lokalne zasady złożoności haseł 
+## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory permissions and on-premises password complexity policies 
 
-Konto określone w narzędziu Azure AD Connect musi mieć ustawione następujące elementy, jeśli chcesz mieć zakres dla SSPR:
+The account specified in the Azure AD Connect utility must have the following items set if you want to be in scope for SSPR:
 
 * **Resetowanie hasła** 
 * **Zmień hasło** 
-* **Uprawnienia do zapisu** w `lockoutTime`
-* **Uprawnienia do zapisu** w `pwdLastSet`
-* **Rozszerzone prawa** na:
-   * Obiekt główny *każdej domeny* w tym lesie
-   * Jednostki organizacyjne (OU) użytkownika, które mają być objęte zakresem dla SSPR
+* **Write permissions** on `lockoutTime`
+* **Write permissions** on `pwdLastSet`
+* **Extended rights** on either:
+   * The root object of *each domain* in that forest
+   * The user organizational units (OUs) you want to be in scope for SSPR
 
-Jeśli nie masz pewności, do którego konta odwołuje się podane konto, Otwórz interfejs użytkownika konfiguracji Azure Active Directory Connect i wybierz opcję **Wyświetl bieżącą konfigurację** . Konto, do którego należy dodać uprawnienie, znajduje się na liście **synchronizowanych katalogów**.
+If you're not sure what account the described account refers to, open the Azure Active Directory Connect configuration UI and select the **View current configuration** option. The account that you need to add permission to is listed under **Synchronized Directories**.
 
-Jeśli ustawisz te uprawnienia, konto usługi MA dla każdego lasu może zarządzać hasłami w imieniu kont użytkowników w tym lesie. 
+If you set these permissions, the MA service account for each forest can manage passwords on behalf of the user accounts within that forest. 
 
 > [!IMPORTANT]
-> Jeśli nie Poprzednia przypiszesz tych uprawnień, mimo że zapisywanie zwrotne zostanie prawidłowo skonfigurowane, użytkownicy będą napotykać błędy podczas próby zarządzania hasłami lokalnymi w chmurze.
+> If you neglect to assign these permissions, then, even though writeback appears to be configured correctly, users will encounter errors when they attempt to manage their on-premises passwords from the cloud.
 >
 
 > [!NOTE]
-> Replikowanie tych uprawnień do wszystkich obiektów w katalogu może potrwać do godziny lub dłużej.
+> It might take up to an hour or more for these permissions to replicate to all the objects in your directory.
 >
 
-Aby skonfigurować odpowiednie uprawnienia do zapisywania zwrotnego haseł, wykonaj następujące czynności:
+To set up the appropriate permissions for password writeback to occur, complete the following steps:
 
-1. Otwórz Active Directory Użytkownicy i komputery przy użyciu konta, które ma odpowiednie uprawnienia do administrowania domeną.
-2. W menu **Widok** upewnij się, że **funkcje zaawansowane** są włączone.
-3. W lewym panelu kliknij prawym przyciskiem myszy obiekt, który reprezentuje katalog główny domeny, a następnie wybierz polecenie **właściwości** > **zabezpieczenia** > **Zaawansowane**.
-4. Na karcie **uprawnienia** wybierz pozycję **Dodaj**.
-5. Wybierz konto, do którego są stosowane uprawnienia (z konfiguracji Azure AD Connect).
-6. Z listy rozwijanej **Zastosuj do** wybierz pozycję **obiekty podrzędne użytkownika**.
-7. W obszarze **uprawnienia**zaznacz pola wyboru dla następujących opcji:
+1. Open Active Directory Users and Computers with an account that has the appropriate domain administration permissions.
+2. From the **View** menu, make sure **Advanced features** is turned on.
+3. In the left panel, right-click the object that represents the root of the domain and select **Properties** > **Security** > **Advanced**.
+4. From the **Permissions** tab, select **Add**.
+5. Pick the account that permissions are being applied to (from the Azure AD Connect setup).
+6. In the **Applies to** drop-down list, select **Descendant User objects**.
+7. Under **Permissions**, select the boxes for the following options:
     * **Zmień hasło**
     * **Resetowanie hasła**
-8. W obszarze **Właściwości**wybierz pola z następującymi opcjami:
-    * **LockoutTime zapisu**
-    * **PwdLastSet zapisu**
-9. Wybierz pozycję **Zastosuj/OK** , aby zastosować zmiany i zamknąć wszystkie otwarte okna dialogowe.
+8. Under **Properties**, select the boxes for the following options:
+    * **Write lockoutTime**
+    * **Write pwdLastSet**
+9. Select **Apply/OK** to apply the changes and exit any open dialog boxes.
 
-Ze względu na to, że źródło urzędu jest lokalnie, zasady złożoności haseł są stosowane z tego samego połączonego źródła danych. Upewnij się, że zostały zmienione istniejące zasady grupy dla "minimalnego wieku hasła". Zasady grupy nie powinny mieć wartości 1, co oznacza, że hasło powinno mieć co najmniej dzień starego, zanim będzie można je zaktualizować. Musisz upewnić się, że jest ustawiona na 0. Te ustawienia można znaleźć w `gpmc.msc` w obszarze **Konfiguracja komputera > zasady > ustawienia systemu Windows > ustawienia zabezpieczeń > zasad konta**. Uruchom `gpupdate /force`, aby upewnić się, że zmiana zacznie obowiązywać. 
+Since the source of authority is on premises, the password complexity policies apply from the same connected data source. Make sure you've changed the existing group policies for "Minimum password age". The group policy shouldn't be set to 1, which means password should be at least a day old before it can be updated. You need make sure it's set to 0. These settings can be found in `gpmc.msc` under **Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies**. Run `gpupdate /force` to ensure that the change takes effect. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Co to jest zapisywanie zwrotne haseł?](concept-sspr-writeback.md)
+[What is password writeback?](concept-sspr-writeback.md)
 
-[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Włącz funkcję zapisywania zwrotnego haseł w Azure AD Connect"
+[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Enable password writeback in Azure AD Connect"
