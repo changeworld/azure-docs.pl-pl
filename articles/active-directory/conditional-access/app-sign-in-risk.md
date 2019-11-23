@@ -1,28 +1,28 @@
 ---
-title: Szybki Start — Blokuj dostęp w przypadku wykrycia ryzyka sesji przy użyciu Azure Active Directory dostępu warunkowego | Microsoft Docs
-description: W tym przewodniku szybki start dowiesz się, jak skonfigurować zasady dostępu warunkowego Azure Active Directory (Azure AD) w celu blokowania logowania na podstawie ryzyka związanego z sesją.
+title: Use risk detections with Azure Active Directory Conditional Access
+description: In this quickstart, you learn how you can configure an Azure Active Directory (Azure AD) Conditional Access policy to block sign-ins based on session risks.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: quickstart
-ms.date: 12/14/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 619f1ea3bae001d25eb520f43da33ca94a3160c8
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 9338c1a42737180ec5395f30060b4eed35ce5eda
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880335"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381069"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki Start: Blokuj dostęp w przypadku wykrycia ryzyka sesji przy użyciu Azure Active Directory dostępu warunkowego  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Quickstart: Block access when a session risk is detected with Azure Active Directory Conditional Access  
 
-Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników przed zalogowaniem się. [Usługa Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analizuje poszczególne logowania i oblicza prawdopodobieństwo, że próba logowania nie została wykonana przez uprawnionego właściciela konta użytkownika. Prawdopodobieństwo (niski, średni, wysoki) jest wskazywane w postaci wartości obliczanej o nazwie [poziomy ryzyka logowania](conditions.md#sign-in-risk). Ustawiając warunek ryzyka związanego z logowaniem, można skonfigurować zasady dostępu warunkowego w celu reagowania na określone poziomy ryzyka związanego z logowaniem.
+To keep your environment protected, you might want to block suspicious users from sign-in. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyzes each sign-in and calculates the likelihood that a sign-in attempt was not performed by the legitimate owner of a user account. The likelihood (low, medium, high) is indicated in form of a calculated value called [sign-in risk levels](conditions.md#sign-in-risk). By setting the sign-in risk condition, you can configure a Conditional Access policy to respond to specific sign-in risk levels.
 
-Ten przewodnik Szybki Start przedstawia sposób konfigurowania [zasad dostępu warunkowego](../active-directory-conditional-access-azure-portal.md) , które blokują logowanie, gdy wykryto skonfigurowany poziom ryzyka związanego z logowaniem.
+This quickstart shows how to configure a [Conditional Access policy](../active-directory-conditional-access-azure-portal.md) that blocks a sign-in when a configured sign-in risk level has been detected.
 
 ![Tworzenie zasad](./media/app-sign-in-risk/1000.png)
 
@@ -32,150 +32,150 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Do ukończenia scenariusza zaprezentowanego w tym samouczku potrzebne są następujące elementy:
 
-- **Dostęp do Azure AD — wersja Premium P2 wersja** — podczas gdy dostęp warunkowy jest Azure AD — wersja Premium P1, potrzebna jest wersja P2, ponieważ scenariusz w tym przewodniku Szybki Start wymaga ochrony tożsamości.
-- **Ochrona tożsamości** — scenariusz w tym przewodniku Szybki Start wymaga włączenia ochrony tożsamości. Jeśli nie wiesz, jak włączyć ochronę tożsamości, zobacz [włączanie Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md).
-- **Przeglądarka sieci Tor** — [przeglądarka tor](https://www.torproject.org/projects/torbrowser.html.en) została zaprojektowana tak, aby pomóc zachować prywatność w trybie online. Ochrona tożsamości wykrywa logowanie z przeglądarki tor jako logowania z anonimowych adresów IP, które mają poziom ryzyka średniego. Aby uzyskać więcej informacji, zobacz [Azure Active Directory wykrywania zagrożeń](../reports-monitoring/concept-risk-events.md).  
-- **Konto testowe o nazwie Alain Charon** — Jeśli nie wiesz, jak utworzyć konto testowe, zobacz [Dodawanie użytkowników opartych na chmurze](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Access to an Azure AD Premium P2 edition** - While Conditional Access is an Azure AD Premium P1 capability, you need a P2 edition because the scenario in this quickstart requires Identity Protection.
+- **Identity Protection** - The scenario in this quickstart requires Identity Protection to be enabled. If you don't know how to enable Identity Protection, see [Enabling Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md).
+- **Tor Browser** - The [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) is designed to help you preserve your privacy online. Identity Protection detects a sign-in from a Tor Browser as sign-ins from anonymous IP addresses, which have a medium risk level. For more information, see [Azure Active Directory risk detections](../reports-monitoring/concept-risk-events.md).  
+- **A test account called Alain Charon** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
-## <a name="test-your-sign-in"></a>Testowanie logowania
+## <a name="test-your-sign-in"></a>Test your sign-in
 
-Celem tego kroku jest upewnienie się, że konto testowe może uzyskać dostęp do dzierżawy przy użyciu przeglądarki sieci Tor.
+The goal of this step is to make sure that your test account can access your tenant using the Tor Browser.
 
-**Aby przetestować Logowanie:**
+**To test your sign-in:**
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako **Alain Charon**.
+1. Sign in to your [Azure portal](https://portal.azure.com) as **Alain Charon**.
 1. Wyloguj się.
 
-## <a name="create-your-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
+## <a name="create-your-conditional-access-policy"></a>Create your Conditional Access policy
 
-Scenariusz w tym przewodniku szybki start używa logowania z przeglądarki Tor w celu wygenerowania wykrytych logowań **z anonimowych adresów IP** . Poziom ryzyka tego wykrywania ryzyka to średni. Aby odpowiedzieć na wykrycie tego ryzyka, należy ustawić wartość średni warunek ryzyka logowania. W środowisku produkcyjnym należy określić warunek ryzyka logowania na wartość wysoki lub średni i wysoki.
+The scenario in this quickstart uses a sign-in from a Tor Browser to generate a detected **Sign-ins from anonymous IP addresses** risk detection. The risk level of this risk detection is medium. To respond to this risk detection, you set the sign-in risk condition to medium. In a production environment, you should set the sign-in risk condition either to high or to medium and high.
 
-W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowego. W zasadach ustaw następujące ustawienia:
+This section shows how to create the required Conditional Access policy. In your policy, set:
 
 | Ustawienie | Wartość |
 | --- | --- |
 | Użytkownicy i grupy | Alain Charon  |
-| Aplikacje w chmurze | Wszystkie aplikacje w chmurze |
-| Ryzyko związane z logowaniem | Średnie |
-| Dawać | Blokuj dostęp |
+| Cloud apps | All cloud apps |
+| Sign-in risk | Średnie |
+| Grant | Block access |
 
 ![Tworzenie zasad](./media/app-sign-in-risk/130.png)
 
-**Aby skonfigurować zasady dostępu warunkowego:**
+**To configure your Conditional Access policy:**
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
-1. W Azure Portal na lewym pasku nawigacyjnym kliknij pozycję **Azure Active Directory**.
+1. Sign in to your [Azure portal](https://portal.azure.com) as global administrator, security administrator, or a Conditional Access administrator.
+1. In the Azure portal, on the left navbar, click **Azure Active Directory**.
 
    ![Usługa Active Directory systemu Azure](./media/app-sign-in-risk/02.png)
 
-1. Na stronie **Azure Active Directory** w sekcji **zabezpieczenia** kliknij pozycję **dostęp warunkowy**.
+1. On the **Azure Active Directory** page, in the **Security** section, click **Conditional Access**.
 
    ![Dostęp warunkowy](./media/app-sign-in-risk/03.png)
 
-1. Na stronie **dostęp warunkowy** na pasku narzędzi u góry kliknij przycisk **Dodaj**.
+1. On the **Conditional Access** page, in the toolbar on the top, click **Add**.
 
    ![Nazwa](./media/app-sign-in-risk/108.png)
 
-1. Na **nowej** stronie w polu tekstowym **Nazwa** wpisz **blok dostęp dla poziomu średniego ryzyka**.
+1. On the **New** page, in the **Name** textbox, type **Block access for medium risk level**.
 
    ![Nazwa](./media/app-sign-in-risk/104.png)
 
-1. W sekcji **przypisanie** kliknij pozycję **Użytkownicy i grupy**.
+1. In the **Assignment** section, click **Users and groups**.
 
    ![Użytkownicy i grupy](./media/app-sign-in-risk/06.png)
 
-1. Na stronie **Użytkownicy i grupy** :
+1. On the **Users and groups** page:
 
    ![Dostęp warunkowy](./media/app-sign-in-risk/107.png)
 
-   1. Kliknij pozycję **Wybierz użytkowników i grupy**, a następnie wybierz pozycję **Użytkownicy i grupy**.
+   1. Click **Select users and groups**, and then select **Users and groups**.
    1. Kliknij pozycję **Wybierz**.
-   1. Na stronie **Wybierz** wybierz pozycję **Alain Charon**, a następnie kliknij pozycję **Wybierz**.
-   1. Na stronie **Użytkownicy i grupy** kliknij przycisk **gotowe**.
-1. Kliknij pozycję **aplikacje w chmurze**.
+   1. On the **Select** page, select **Alain Charon**, and then click **Select**.
+   1. On the **Users and groups** page, click **Done**.
+1. Click **Cloud apps**.
 
-   ![Aplikacje w chmurze](./media/app-sign-in-risk/08.png)
+   ![Cloud apps](./media/app-sign-in-risk/08.png)
 
-1. Na stronie **aplikacje w chmurze** :
+1. On the **Cloud apps** page:
 
    ![Dostęp warunkowy](./media/app-sign-in-risk/109.png)
 
-   1. Kliknij pozycję **wszystkie aplikacje w chmurze**.
+   1. Click **All cloud apps**.
    1. Kliknij przycisk **Gotowe**.
-1. Kliknij pozycję **warunki**.
+1. Click **Conditions**.
 
-   ![Kontrola dostępu](./media/app-sign-in-risk/19.png)
+   ![Access controls](./media/app-sign-in-risk/19.png)
 
-1. Na stronie **warunki** :
+1. On the **Conditions** page:
 
-   ![Poziom ryzyka związanego z logowaniem](./media/app-sign-in-risk/21.png)
+   ![Sign-in risk level](./media/app-sign-in-risk/21.png)
 
-   1. Kliknij pozycję **ryzyko związane z logowaniem**.
-   1. W obszarze **Konfiguracja**kliknij przycisk **tak**.
-   1. Jako poziom ryzyka związanego z logowaniem wybierz pozycję **Średni**.
+   1. Click **Sign-in risk**.
+   1. As **Configure**, click **Yes**.
+   1. As sign-in risk level, select **Medium**.
    1. Kliknij pozycję **Wybierz**.
-   1. Na stronie **warunki** kliknij przycisk **gotowe**.
-1. W sekcji **kontrole dostępu** kliknij pozycję **Udziel**.
+   1. On the **Conditions** page, click **Done**.
+1. In the **Access controls** section, click **Grant**.
 
-   ![Kontrola dostępu](./media/app-sign-in-risk/10.png)
+   ![Access controls](./media/app-sign-in-risk/10.png)
 
-1. Na stronie **Grant** :
+1. On the **Grant** page:
 
    ![Dostęp warunkowy](./media/app-sign-in-risk/105.png)
 
-   1. Wybierz pozycję **Blokuj dostęp**.
+   1. Select **Block access**.
    1. Kliknij pozycję **Wybierz**.
-1. W sekcji **Włączanie zasad** **kliknij pozycję włączone.**
+1. In the **Enable policy** section, click **On**.
 
-   ![Włącz zasady](./media/app-sign-in-risk/18.png)
+   ![Enable policy](./media/app-sign-in-risk/18.png)
 
 1. Kliknij przycisk **Utwórz**.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Oceń symulowane logowanie
+## <a name="evaluate-a-simulated-sign-in"></a>Evaluate a simulated sign-in
 
-Teraz, po skonfigurowaniu zasad dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działa zgodnie z oczekiwaniami. Pierwszym krokiem jest użycie **Narzędzia do działania** warunkowego, co pozwala na symulowanie logowania użytkownika testowego. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji.  
+Now that you have configured your Conditional Access policy, you probably want to know whether it works as expected. As a first step, use the Conditional Access **what if policy tool** to simulate a sign-in of your test user. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji.  
 
-Po uruchomieniu w tym scenariuszu narzędzia do wykonywania działań w **przypadku** **zablokowania dostęp dla poziomu średniego ryzyka** powinien zostać wyświetlony w obszarze **zasady, które mają zastosowanie**.
+When you run the **what if policy tool** for this scenario, the **Block access for medium risk level** should be listed under **Policies that will apply**.
 
 ![Użytkownik](./media/app-sign-in-risk/117.png)
 
-**Aby oszacować zasady dostępu warunkowego:**
+**To evaluate your Conditional Access policy:**
 
-1. Na stronie [zasady dostępu warunkowego](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) w menu u góry kliknij pozycję **What If**.  
+1. On the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page, in the menu on the top, click **What If**.  
 
-   ![A co jeżeli](./media/app-sign-in-risk/14.png)
+   ![What If](./media/app-sign-in-risk/14.png)
 
-1. Kliknij pozycję **użytkownik**, wybierz pozycję **Artur Charon** na stronie **Użytkownicy** , a następnie kliknij pozycję **Wybierz**.
+1. Click **User**, select **Alan Charon** on the **Users** page, and then click **Select**.
 
    ![Użytkownik](./media/app-sign-in-risk/116.png)
 
-1. Jako **ryzyko związane z logowaniem**wybierz pozycję **Średni**.
+1. As **Sign-in risk**, select **Medium**.
 
    ![Użytkownik](./media/app-sign-in-risk/119.png)
 
-1. Kliknij **What If**.
+1. Click **What If**.
 
-## <a name="test-your-conditional-access-policy"></a>Testowanie zasad dostępu warunkowego
+## <a name="test-your-conditional-access-policy"></a>Test your Conditional Access policy
 
-W poprzedniej sekcji wiesz już, jak oszacować symulowaną logowanie. Oprócz symulacji należy również przetestować zasady dostępu warunkowego, aby upewnić się, że działa zgodnie z oczekiwaniami.
+In the previous section, you have learned how to evaluate a simulated sign-in. In addition to a simulation, you should also test your Conditional Access policy to make sure that it works as expected.
 
-Aby przetestować zasady, spróbuj zalogować się do [Azure Portal](https://portal.azure.com) jako **Artur Charon** przy użyciu przeglądarki sieci Tor. Próba logowania powinna być blokowana przez zasady dostępu warunkowego.
+To test your policy, try to sign-in to your [Azure portal](https://portal.azure.com) as **Alan Charon** using the Tor Browser. Your sign-in attempt should be blocked by your Conditional Access policy.
 
 ![Uwierzytelnianie wieloskładnikowe](./media/app-sign-in-risk/118.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebne, Usuń użytkownika testowego, przeglądarkę sieci Tor i zasady dostępu warunkowego:
+When no longer needed, delete the test user, the Tor Browser, and the Conditional Access policy:
 
-- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usuwanie użytkowników z usługi Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- Aby usunąć zasady, wybierz zasady, a następnie kliknij przycisk **Usuń** na pasku narzędzi Szybki dostęp.
+- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
+- To delete your policy, select your policy, and then click **Delete** in the quick access toolbar.
 
    ![Uwierzytelnianie wieloskładnikowe](./media/app-sign-in-risk/33.png)
 
-- Aby uzyskać instrukcje dotyczące usuwania przeglądarki tor, zobacz [Odinstalowywanie](https://tb-manual.torproject.org/uninstalling/).
+- For instructions to remove the Tor Browser, see [Uninstalling](https://tb-manual.torproject.org/uninstalling/).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Wymagaj zaakceptowania warunków użytkowania](require-tou.md)
-> [Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji](app-based-mfa.md)
+> [Require terms of use to be accepted](require-tou.md)
+> [Require MFA for specific apps](app-based-mfa.md)

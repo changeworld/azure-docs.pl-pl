@@ -1,66 +1,66 @@
 ---
-title: Co to są zależności usługi w Azure Active Directory dostęp warunkowy? | Microsoft Docs
-description: Dowiedz się, w jaki sposób warunki są używane w Azure Active Directory dostęp warunkowy, aby wyzwolić zasady.
+title: Conditional Access service dependencies - Azure Active Directory
+description: Learn how conditions are used in Azure Active Directory Conditional Access to trigger a policy.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c7f2abda282d0219dd8787a9f6a2b6c1cda15df
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257909"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380010"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Co to są zależności usługi w Azure Active Directory dostęp warunkowy? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>What are service dependencies in Azure Active Directory Conditional Access? 
 
-Za pomocą zasad dostępu warunkowego można określić wymagania dostępu do witryn sieci Web i usług. Na przykład wymagania dostępu mogą obejmować wymaganie uwierzytelniania wieloskładnikowego (MFA) lub [urządzeń zarządzanych](require-managed-devices.md). 
+With Conditional Access policies, you can specify access requirements to websites and services. For example, your access requirements can include requiring multi-factor authentication (MFA) or [managed devices](require-managed-devices.md). 
 
-W przypadku bezpośredniego dostępu do witryny lub usługi, wpływ powiązanych zasad jest zwykle łatwy do oceny. Na przykład jeśli masz zasady, które wymagają skonfigurowania usługi MFA dla usługi SharePoint Online, uwierzytelnianie wieloskładnikowe jest wymuszane dla każdego logowania do portalu sieci Web programu SharePoint. Nie zawsze jest to jednak proste, aby ocenić wpływ zasad, ponieważ istnieją aplikacje w chmurze z zależnościami od innych aplikacji w chmurze. Na przykład firma Microsoft Teams może zapewnić dostęp do zasobów w usłudze SharePoint Online. W związku z tym podczas uzyskiwania dostępu do programu Microsoft Teams w naszym bieżącym scenariuszu podlegają one również zasadom MFA programu SharePoint.   
+When you access a site or service directly, the impact of a related policy is typically easy to assess. For example, if you have a policy that requires MFA for SharePoint Online configured, MFA is enforced for each sign-in to the SharePoint web portal. However, it is not always straight-forward to assess the impact of a policy because there are cloud apps with dependencies to other cloud apps. For example, Microsoft Teams can provide access to resources in SharePoint Online. So, when you access Microsoft Teams in our current scenario, you are also subject to the SharePoint MFA policy.   
 
 ## <a name="policy-enforcement"></a>Wymuszanie zasad 
 
-Jeśli masz skonfigurowaną zależność usługi, zasady mogą być stosowane przy użyciu wczesnego lub późnego wymuszania. 
+If you have a service dependency configured, the policy may be applied using early-bound or late-bound enforcement. 
 
-- **Wczesne wymuszanie zasad** przed uzyskaniem dostępu do aplikacji wywołującej musi spełniać zależne zasady usługi. Na przykład użytkownik musi spełnić zasady programu SharePoint przed zalogowaniem się do usługi MS Teams. 
-- **Wymuszanie zasad z późnym** wiązaniem jest wykonywane po zalogowaniu się użytkownika do aplikacji wywołującej. Wymuszanie jest odroczone do podczas wywoływania żądań aplikacji, tokenu usługi podrzędnej. Przykładami mogą być MS Teams uzyskujący dostęp do planisty i Office.com dostępu do programu SharePoint. 
+- **Early-bound policy enforcement** means a user must satisfy the dependent service policy before accessing the calling app. For example, a user must satisfy SharePoint policy before signing into MS Teams. 
+- **Late-bound policy enforcement** occurs after the user signs into the calling app. Enforcement is deferred to when calling app requests, a token for the downstream service. Examples include MS Teams accessing Planner and Office.com accessing SharePoint. 
 
-Na poniższym diagramie przedstawiono zależności usługi MS Teams. Pełne strzałki wskazują na wczesny zakres wymuszania kreskowaną strzałkę dla usługi Planner wskazuje wymuszanie z późnym wiązaniem. 
+The diagram below illustrates MS Teams service dependencies. Solid arrows indicate early-bound enforcement the dashed arrow for Planner indicates late-bound enforcement. 
 
-![Zależności usługi MS Teams](./media/service-dependencies/01.png)
+![MS Teams service dependencies](./media/service-dependencies/01.png)
 
-Najlepszym rozwiązaniem jest skonfigurowanie w miarę możliwości wspólnych zasad w ramach powiązanych aplikacji i usług. Posiadanie spójnej stan zabezpieczeń zapewnia najlepsze środowisko użytkownika. Na przykład ustawienie wspólnych zasad w usłudze Exchange Online, SharePoint Online, Microsoft Teams i Skype dla firm znacznie zmniejsza nieoczekiwane komunikaty, które mogą wynikać z różnych zasad stosowanych do usług podrzędnych. 
+As a best practice, you should set common policies across related apps and services whenever possible. Having a consistent security posture provides you with the best user experience. For example, setting a common policy across Exchange Online, SharePoint Online, Microsoft Teams, and Skype for business significantly reduces unexpected prompts that may arise from different policies being applied to downstream services. 
 
-W poniższej tabeli wymieniono dodatkowe zależności usługi, w przypadku których aplikacje klienckie muszą być zgodne  
+The below table lists additional service dependencies, where the client apps must satisfy  
 
-| Aplikacje klienckie         | Usługa podrzędny                          | Tytułu |
+| Client apps         | Downstream service                          | Enforcement |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | Zarządzanie Microsoft Azure (Portal i interfejs API) | Wczesna granica |
-| Microsoft Classroom | Exchange                                    | Wczesna granica |
-|                     | Program SharePoint                                  | Wczesna granica |
-| Microsoft Teams     | Exchange                                    | Wczesna granica |
-|                     | Planista firmy Microsoft                                  | Późne wiązanie  |
-|                     | Program SharePoint                                  | Wczesna granica |
-|                     | Skype dla firm Online                   | Wczesna granica |
-| Portal Office       | Exchange                                    | Późne wiązanie  |
-|                     | Program SharePoint                                  | Późne wiązanie  |
-| Grupy programu Outlook      | Exchange                                    | Wczesna granica |
-|                     | Program SharePoint                                  | Wczesna granica |
-| Aplikacje PowerApp           | Zarządzanie Microsoft Azure (Portal i interfejs API) | Wczesna granica |
-|                     | Azure Active Directory systemu Windows              | Wczesna granica |
-| Projekt             | Dynamics CRM                                | Wczesna granica |
-| Skype dla firm  | Exchange                                    | Wczesna granica |
-| Visual Studio       | Zarządzanie Microsoft Azure (Portal i interfejs API) | Wczesna granica |
-| Microsoft Forms     | Exchange                                    | Wczesna granica |
-|                     | Program SharePoint                                  | Wczesna granica |
-| Microsoft To-Do     | Exchange                                    | Wczesna granica |
+| Azure Data Lake     | Microsoft Azure Management (portal and API) | Early-bound |
+| Microsoft Classroom | Wymiana                                    | Early-bound |
+|                     | Sharepoint                                  | Early-bound |
+| Microsoft Teams     | Wymiana                                    | Early-bound |
+|                     | MS Planner                                  | Late-bound  |
+|                     | Sharepoint                                  | Early-bound |
+|                     | Skype dla firm Online                   | Early-bound |
+| Office Portal       | Wymiana                                    | Late-bound  |
+|                     | Sharepoint                                  | Late-bound  |
+| Outlook groups      | Wymiana                                    | Early-bound |
+|                     | Sharepoint                                  | Early-bound |
+| Aplikacje PowerApp           | Microsoft Azure Management (portal and API) | Early-bound |
+|                     | Windows Azure Active Directory              | Early-bound |
+| Project             | Dynamics CRM                                | Early-bound |
+| Skype dla firm  | Wymiana                                    | Early-bound |
+| Visual Studio       | Microsoft Azure Management (portal and API) | Early-bound |
+| Microsoft Forms     | Wymiana                                    | Early-bound |
+|                     | Sharepoint                                  | Early-bound |
+| Microsoft To-Do     | Wymiana                                    | Early-bound |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak zaimplementować dostęp warunkowy w środowisku, zapoznaj się z tematem [Planowanie wdrożenia dostępu warunkowego w Azure Active Directory](plan-conditional-access.md).
+To learn how to implement Conditional Access in your environment, see [Plan your Conditional Access deployment in Azure Active Directory](plan-conditional-access.md).

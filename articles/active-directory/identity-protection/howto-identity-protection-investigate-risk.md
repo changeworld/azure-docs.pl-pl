@@ -1,6 +1,6 @@
 ---
-title: Jak zbadać ryzyko w Azure Active Directory Identity Protection
-description: Dowiedz się, jak zbadać ryzykowne użytkownicy, wykrywania i logowania w Azure Active Directory Identity Protection
+title: Investigate risk Azure Active Directory Identity Protection
+description: Learn how to investigate risky users, detections, and sign-ins in Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,85 +11,85 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e04cadef1f6a4aee7d8f807fc7aaa999ba6da8d7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887093"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382122"
 ---
-# <a name="how-to-investigate-risk"></a>Instrukcje: badanie ryzyka
+# <a name="how-to-investigate-risk"></a>How To: Investigate risk
 
-Ochrona tożsamości zapewnia organizacjom trzy raporty, których mogą używać do badania zagrożeń związanych z tożsamościami w ich środowisku. Te raporty to **ryzykowni użytkownicy**, **ryzykowne logowania**i **wykrycia ryzyka**. Badanie zdarzeń jest kluczem do lepszego zrozumienia i zidentyfikowania wszystkich słabych punktów w strategii zabezpieczeń.
+Identity Protection provides organizations with three reports they can use to investigate identity risks in their environment. These reports are the **risky users**, **risky sign-ins**, and **risk detections**. Investigation of events is key to better understanding and identifying any weak points in your security strategy.
 
-Wszystkie trzy raporty umożliwiają pobieranie zdarzeń w programie. Format CSV do dalszej analizy poza Azure Portal. Raporty ryzykownych użytkowników i ryzykownych logowań umożliwiają pobranie najnowszych wpisów 2500, podczas gdy raport wykrywania ryzyka umożliwia pobranie najnowszych rekordów 5000.
+All three reports allow for downloading of events in .CSV format for further analysis outside of the Azure portal. The risky users and risky sign-ins reports allow for downloading the most recent 2500 entries, while the risk detections report allows for downloading the most recent 5000 records.
 
-Organizacje mogą wykorzystać integracje interfejsów API Microsoft Graph do agregowania danych z innymi źródłami, do których mogą mieć dostęp jako organizacja.
+Organizations can take advantage of the Microsoft Graph API integrations to aggregate data with other sources they may have access to as an organization.
 
-Trzy raporty znajdują się w **Azure Portal** > **Azure Active Directory** > **zabezpieczenia**.
+The three reports are found in the **Azure portal** > **Azure Active Directory** > **Security**.
 
-## <a name="navigating-the-reports"></a>Nawigowanie po raportach
+## <a name="navigating-the-reports"></a>Navigating the reports
 
-Każdy raport zostanie uruchomiony z listą wszystkich wykrytych wykryć dla okresu wyświetlanego w górnej części raportu. Każdy raport umożliwia dodanie lub usunięcie kolumn na podstawie preferencji administratora. Administratorzy mogą wybrać pobranie danych z programu. Format CSV. Raporty można filtrować przy użyciu filtrów w górnej części raportu.
+Each report launches with a list of all detections for the period shown at the top of the report. Each report allows for the addition or removal of columns based on administrator preference. Administrators can choose to download the data in .CSV format. Reports can be filtered using the filters across the top of the report.
 
-Wybranie poszczególnych wpisów może spowodować włączenie dodatkowych wpisów w górnej części raportu, takich jak możliwość potwierdzenia, że logowanie zostało naruszone lub bezpieczne, potwierdzenie użytkownika jako złamane lub odrzucanie ryzyka związanego z użytkownikiem.
+Selecting individual entries may enable additional entries at the top of the report such as the ability to confirm a sign-in as compromised or safe, confirm a user as compromised, or dismiss user risk.
 
-Wybranie poszczególnych wpisów rozszerza okno Szczegóły poniżej wykrycia. Widok szczegóły umożliwia administratorom badanie i wykonywanie akcji przy każdym wykryciu. 
+Selecting individual entries expands a details window below the detections. The details view allows administrators to investigate and perform actions on each detection. 
 
-![Przykładowy raport dotyczący ochrony tożsamości przedstawiający ryzykowne logowania i szczegóły](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
+![Example Identity Protection report showing risky sign-ins and details](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
 
-## <a name="risky-users"></a>Ryzykowni użytkownicy
+## <a name="risky-users"></a>Risky users
 
-Z informacjami udostępnianymi przez raport ryzykownych użytkowników Administratorzy mogą znaleźć następujące informacje:
+With the information provided by the risky users report, administrators can find:
 
-- Którzy użytkownicy podlegają zagrożeniom, mają ryzyko skorygowane lub ryzyko odrzucone?
-- Szczegóły dotyczące wykrywania
-- Historia ryzykownych logowań
-- Historia ryzyka
+- Which users are at risk, have had risk remediated, or have had risk dismissed?
+- Details about detections
+- History of risky sign-ins
+- Risk history
  
-Administratorzy mogą następnie podjąć odpowiednie działania dotyczące tych zdarzeń. Administratorzy mogą wybrać następujące opcje:
+Administrators can then choose to take action on these events. Administrators can choose to:
 
-- Zresetuj hasło użytkownika
-- Potwierdzanie naruszenia użytkowników
-- Odrzuć ryzyko związane z użytkownikiem
-- Zablokuj Logowanie użytkownika
-- Zbadaj więcej przy użyciu usługi Azure ATP
+- Reset the user password
+- Confirm user compromise
+- Dismiss user risk
+- Block user from signing in
+- Investigate further using Azure ATP
 
 ## <a name="risky-sign-ins"></a>Ryzykowne logowania
 
-Raport dotyczący ryzykownych logowań zawiera dane z możliwością filtrowania do 30 ostatnich dni (1 miesiąc).
+The risky sign-ins report contains filterable data for up to the past 30 days (1 month).
 
-Korzystając z informacji dostarczonych przez raport dotyczący ryzykownych logowań, Administratorzy mogą znaleźć następujące informacje:
+With the information provided by the risky sign-ins report, administrators can find:
 
-- Zalogowania są klasyfikowane jako zagrożone, potwierdzone z naruszeniem, potwierdzone bezpiecznymi, odrzucone lub skorygowane.
-- Zagregowane poziomy ryzyka związane z próbami logowania.
-- Wyzwolone typy wykrywania
-- Zastosowane zasady dostępu warunkowego
-- Szczegóły usługi MFA
-- Informacje o urządzeniu
+- Which sign-ins are classified as at risk, confirmed compromised, confirmed safe, dismissed, or remediated.
+- Real-time and aggregate risk levels associated with sign-in attempts.
+- Detection types triggered
+- Conditional Access policies applied
+- MFA details
+- Device information
 - Informacje o aplikacji
-- Informacje o lokalizacji
+- Location information
 
-Administratorzy mogą następnie podjąć odpowiednie działania dotyczące tych zdarzeń. Administratorzy mogą wybrać następujące opcje:
+Administrators can then choose to take action on these events. Administrators can choose to:
 
-- Potwierdź naruszenie logowania
-- Potwierdź bezpieczne logowanie
+- Confirm sign-in compromise
+- Confirm sign-in safe
 
 ## <a name="risk-detections"></a>Wykrycia ryzyka
 
-Raport wykrywania ryzyka zawiera dane z możliwością filtrowania do ostatnich 90 dni (3 miesiące).
+The risk detections report contains filterable data for up to the past 90 days (3 months).
 
-Korzystając z informacji podanych w raporcie wykrywania ryzyka, Administratorzy mogą znaleźć następujące informacje:
+With the information provided by the risk detections report, administrators can find:
 
-- Informacje o każdym wykrywaniu ryzyka włącznie z typem.
-- Inne zagrożenia wyzwalane w tym samym czasie
-- Lokalizacja próby logowania
-- Połącz się z bardziej szczegółowymi informacjami z Microsoft Cloud App Security (MCAS).
+- Information about each risk detection including type.
+- Other risks triggered at the same time
+- Sign-in attempt location
+- Link out to more detail from Microsoft Cloud App Security (MCAS).
 
-Administratorzy mogą następnie powrócić do raportu o zagrożeniu lub zalogowaniu użytkownika, aby podjąć działania na podstawie zebranych informacji.
+Administrators can then choose to return to the user's risk or sign-ins report to take actions based on information gathered.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Zasady dostępne w celu ograniczenia ryzyka](concept-identity-protection-policies.md)
+- [Policies available to mitigate risks](concept-identity-protection-policies.md)
 
-- [Włącz zasady logowania i ryzyka dla użytkowników](howto-identity-protection-configure-risk-policies.md)
+- [Enable sign-in and user risk policies](howto-identity-protection-configure-risk-policies.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wdrażanie usługi Azure Digital bliźniaczych reprezentacji'
+title: 'Tutorial: Deploy a preview environment and spatial graph - Azure Digital Twins| Microsoft Docs'
 description: Dowiedz się, jak wdrożyć wystąpienie usługi Azure Digital Twins i skonfigurować zasoby przestrzenne przy użyciu kroków opisanych w tym samouczku.
 services: digital-twins
 ms.author: alinast
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 4d4e7e47b82c46cca53fab0540a4867031eaab85
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 20174a4eafb4e72fb62eeff6df2d129b91016b9e
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107744"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383025"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: wdrażanie usługi Azure Digital bliźniaczych reprezentacji Preview i Konfigurowanie wykresu przestrzennego
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Deploy Azure Digital Twins Preview and configure a spatial graph
 
-Możesz użyć usługi Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej, aby połączyć osoby, miejsca i urządzenia w spójny system przestrzenny. W tej serii samouczków przedstawiono sposób wykrywania zajętości pomieszczeń z optymalnymi warunkami temperatury i jakości powietrza za pomocą usługi Azure Digital Twins. 
+You can use the Azure Digital Twins Preview service to bring together people, places, and devices in a coherent spatial system. W tej serii samouczków przedstawiono sposób wykrywania zajętości pomieszczeń z optymalnymi warunkami temperatury i jakości powietrza za pomocą usługi Azure Digital Twins. 
 
 Samouczki przeprowadzą Cię przez proces tworzenia w aplikacji konsoli .NET scenariusza budynku biurowego. Budynek składa się z wielu pięter i pomieszczeń na każdym piętrze. W pomieszczeniach znajdują się urządzenia z podłączonymi czujnikami, które wykrywają ruch, temperaturę otoczenia i jakość powietrza. 
 
@@ -52,7 +52,7 @@ Wykonaj kroki opisane w tej sekcji, aby utworzyć nowe wystąpienie usługi Azur
 
 ## <a name="grant-permissions-to-your-app"></a>Udzielanie uprawnień dla Twojej aplikacji
 
-Usługa Digital Twins steruje [dostępem do odczytu/zapisu](../active-directory/fundamentals/active-directory-whatis.md) w usłudze, korzystając z usługi [Azure Active Directory](../active-directory/develop/v1-permissions-and-consent.md) (Azure AD). Każda aplikacja, która wymaga połączenia z wystąpieniem usługi Digital Twins, musi być zarejestrowana w usłudze Azure AD. W tej sekcji opisano procedurę rejestrowania przykładowej aplikacji.
+Usługa Digital Twins steruje [dostępem do odczytu/zapisu](../active-directory/develop/v1-permissions-and-consent.md) w usłudze, korzystając z usługi [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD). Każda aplikacja, która wymaga połączenia z wystąpieniem usługi Digital Twins, musi być zarejestrowana w usłudze Azure AD. W tej sekcji opisano procedurę rejestrowania przykładowej aplikacji.
 
 Jeśli już masz zarejestrowaną aplikację, możesz wykorzystać ją jako przykład. Jednak przejrzyj tę sekcję, aby upewnić się, że Twoja rejestracja aplikacji jest poprawnie skonfigurowana.
 
@@ -150,7 +150,7 @@ Plik **provisionSample.yaml** zawiera następujące węzły:
 
 - **devices**: miejsca mogą zawierać urządzenia (`devices`) będące jednostkami fizycznymi lub wirtualnymi, które zarządzają pewną liczbą czujników. Na przykład urządzeniem może być telefon użytkownika, zasobnik czujników urządzenia Raspberry Pi lub brama. W wymyślonym budynku z Twojego przykładu zwróć uwagę na sposób umieszczenia urządzenia **Raspberry Pi 3 A1** w pomieszczeniu **Focus Room**. Każdy węzeł urządzenia jest identyfikowany przez unikatowy identyfikator `hardwareId` trwale zakodowany w przykładzie. Aby skonfigurować ten przykład na potrzeby rzeczywistego środowiska produkcyjnego, zamień te wartości na wartości z Twojej konfiguracji.  
 
-- **sensors**: urządzenie może zawierać wiele czujników (`sensors`). Umożliwiają one wykrywanie i rejestrowanie zmian fizycznych, takich jak temperatura, ruch i poziom naładowania baterii. Każdy węzeł czujnika jest unikatowo identyfikowany za pomocą identyfikatora `hardwareId` trwale zapisanego w tym miejscu. Na potrzeby rzeczywistej aplikacji zamień te identyfikatory, używając unikatowych identyfikatorów czujników z Twojej konfiguracji. Plik provisionSample.yaml ma dwa czujniki umożliwiające rejestrowanie ruchu (*Motion*) i dwutlenku węgla (*CarbonDioxide*). Dodaj kolejny czujnik, aby rejestrować temperaturę (*Temperature*), dodając poniższe wiersze pod wierszami dotyczącymi czujnika CarbonDioxide. Zauważ, że w pliku provisionSample.yaml są one ujęte w wierszach komentarzy. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza. 
+- **sensors**: urządzenie może zawierać wiele czujników (`sensors`). Umożliwiają one wykrywanie i rejestrowanie zmian fizycznych, takich jak temperatura, ruch i poziom naładowania baterii. Each sensor node is uniquely identified by a `hardwareId`, hardcoded here. Na potrzeby rzeczywistej aplikacji zamień te identyfikatory, używając unikatowych identyfikatorów czujników z Twojej konfiguracji. Plik provisionSample.yaml ma dwa czujniki umożliwiające rejestrowanie ruchu (*Motion*) i dwutlenku węgla (*CarbonDioxide*). Dodaj kolejny czujnik, aby rejestrować temperaturę (*Temperature*), dodając poniższe wiersze pod wierszami dotyczącymi czujnika CarbonDioxide. Zauważ, że w pliku provisionSample.yaml są one ujęte w wierszach komentarzy. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza. 
 
     ```yaml
             - dataType: Temperature

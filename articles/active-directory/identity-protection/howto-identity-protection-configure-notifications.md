@@ -1,6 +1,6 @@
 ---
-title: Powiadomienia Azure Active Directory Identity Protection | Microsoft Docs
-description: Dowiedz się, jak powiadomienia obsługują Twoje działania dochodzeniowe.
+title: Azure Active Directory Identity Protection notifications
+description: Learn how notifications support your investigation activities.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,59 +11,59 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81452f4d1f77c07222bbff05093a7e8d5d0a1bee
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887548"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382153"
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Powiadomienia Azure Active Directory Identity Protection
+# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection notifications
 
-Azure AD Identity Protection wysyła dwa typy zautomatyzowanych wiadomości e-mail z powiadomieniami, które ułatwiają zarządzanie ryzykiem użytkownika i wykrywaniem ryzyka:
+Azure AD Identity Protection sends two types of automated notification emails to help you manage user risk and risk detections:
 
-- Użytkownicy z wykrytymi zagrożeniami wiadomości e-mail
-- Tygodniowy adres e-mail w postaci skróconej
+- Users at risk detected email
+- Weekly digest email
 
-Ten artykuł zawiera omówienie obu wiadomości e-mail z powiadomieniami.
+This article provides you with an overview of both notification emails.
 
-## <a name="users-at-risk-detected-email"></a>Użytkownicy z wykrytymi zagrożeniami wiadomości e-mail
+## <a name="users-at-risk-detected-email"></a>Users at risk detected email
 
-W odpowiedzi na wykryte konto zagrożone Azure AD Identity Protection generuje alert e-mail z **użytkownikami narażonymi na ryzyko wykryte** jako temat. Wiadomość e-mail zawiera link do raportu **[Użytkownicy oflagowani w związku z ryzykiem](../reports-monitoring/concept-user-at-risk.md)** . Najlepszym rozwiązaniem jest natychmiastowe badanie narażonych użytkowników.
+In response to a detected account at risk, Azure AD Identity Protection generates an email alert with **Users at risk detected** as subject. The email includes a link to the **[Users flagged for risk](../reports-monitoring/concept-user-at-risk.md)** report. As a best practice, you should immediately investigate the users at risk.
 
-Konfiguracja tego alertu umożliwia określenie poziomu ryzyka użytkownika, który ma zostać wygenerowany przez alert. Wiadomość e-mail zostanie wygenerowana, gdy poziom ryzyka użytkownika osiągnie określone elementy. jednak nie otrzymasz nowych użytkowników na ryzyko wykrycia alertów e-mail dla tego użytkownika po przejściu na ten poziom ryzyka użytkownika. Jeśli na przykład ustawisz zasady, aby otrzymywać alerty na średnim ryzyku użytkownika, a użytkownik Jan przejdzie do średniego ryzyka, otrzymasz wiadomość e-mail z informacją o ryzyku wykrytym przez Jan. Jednak nie otrzymasz alertu drugiego użytkownika o zagrożeniu, jeśli Jan następnie przejdzie do wysokiego ryzyka lub wykryje dodatkowe ryzyko.
+The configuration for this alert allows you to specify at what user risk level you want the alert to be generated. The email will be generated when the user's risk level reaches what you have specified; however, you will not receive new users at risk detected email alerts for this user after they move to this user risk level. For example, if you set the policy to alert on medium user risk and your user John moves to medium risk, you will receive the users at risk detected email for John. However, you will not receive a second user at risk detected alert if John then moves to high risk or has additional risk detections.
 
-![Użytkownicy z wykrytymi zagrożeniami wiadomości e-mail](./media/howto-identity-protection-configure-notifications/01.png)
+![Users at risk detected email](./media/howto-identity-protection-configure-notifications/01.png)
 
-### <a name="configure-users-at-risk-detected-alerts"></a>Konfigurowanie alertów wykrytych dla użytkowników
+### <a name="configure-users-at-risk-detected-alerts"></a>Configure users at risk detected alerts
 
-Jako administrator możesz ustawić:
+As an administrator, you can set:
 
-- **Poziom ryzyka użytkownika wyzwalający generowanie tej wiadomości e-mail** — domyślnie poziom ryzyka jest ustawiany na "wysoki".
-- Adresaci **tej wiadomości e-mail** — domyślnie odbiorcy obejmują wszystkich administratorów globalnych. Administratorzy globalni mogą również dodawać innych administratorów globalnych, administratorów zabezpieczeń, czytelników zabezpieczeń jako odbiorców.
-   - Opcjonalnie możesz **dodać dodatkowe wiadomości e-mail w celu otrzymywania powiadomień o alertach** , ponieważ ta funkcja jest dostępna w wersji zapoznawczej, a zdefiniowane przez użytkowników muszą mieć odpowiednie uprawnienia do wyświetlania raportów połączonych w Azure Portal.
+- **The user risk level that triggers the generation of this email** - By default, the risk level is set to “High” risk.
+- **The recipients of this email** - By default, recipients include all Global Admins. Global Admins can also add other Global Admins, Security Admins, Security Readers as recipients.
+   - Optionally you can **Add additional emails to receive alert notifications** this feature is a preview and users defined must have the appropriate permissions to view the linked reports in the Azure portal.
 
-Należy skonfigurować użytkowników pod kątem ryzykownych wiadomości e-mail w **Azure Portal** w obszarze **Azure Active Directory** > **zabezpieczenia** > j **ochrony tożsamości** > **Użytkownicy na wykryciu zagrożeń**.
+Configure the users at risk email in the **Azure portal** under **Azure Active Directory** > **Security** > **Identity Protection** > **Users at risk detected alerts**.
 
-## <a name="weekly-digest-email"></a>Tygodniowy adres e-mail w postaci skróconej
+## <a name="weekly-digest-email"></a>Weekly digest email
 
-Cotygodniowa wiadomość e-mail z podsumowaniem zawiera streszczenie nowych wykrytych zagrożeń.  
-Obejmuje:
+The weekly digest email contains a summary of new risk detections.  
+It includes:
 
 - Narażeni użytkownicy
-- Podejrzane działania
-- Wykryte luki w zabezpieczeniach
-- Linki do pokrewnych raportów w usłudze Identity Protection
+- Suspicious activities
+- Detected vulnerabilities
+- Links to the related reports in Identity Protection
 
-![Tygodniowy adres e-mail w postaci skróconej](./media/howto-identity-protection-configure-notifications/400.png)
+![Weekly digest email](./media/howto-identity-protection-configure-notifications/400.png)
 
-Domyślnie odbiorcy obejmują wszystkich administratorów globalnych. Administratorzy globalni mogą również dodawać innych administratorów globalnych, administratorów zabezpieczeń, czytelników zabezpieczeń jako odbiorców.
+By default, recipients include all Global Admins. Global Admins can also add other Global Admins, Security Admins, Security Readers as recipients.
 
-### <a name="configure-weekly-digest-email"></a>Konfigurowanie tygodniowego adresu e-mail w postaci skróconej
+### <a name="configure-weekly-digest-email"></a>Configure weekly digest email
 
-Jako administrator możesz przełączać wysyłanie cotygodniowej wiadomości e-mail z podsumowaniem lub wyłączyć ją i wybrać użytkowników przypisanych do odbierania wiadomości e-mail.
+As an administrator, you can switch sending a weekly digest email on or off and choose the users assigned to receive the email.
 
-Skonfiguruj cotygodniowe wiadomości e-mail z podsumowaniem w **Azure Portal** w obszarze **Azure Active Directory** > **zabezpieczenia** > **Identity Protection** > **cotygodniowe podsumowanie**.
+Configure the weekly digest email in the **Azure portal** under **Azure Active Directory** > **Security** > **Identity Protection** > **Weekly digest**.
 
 ## <a name="see-also"></a>Zobacz także
 

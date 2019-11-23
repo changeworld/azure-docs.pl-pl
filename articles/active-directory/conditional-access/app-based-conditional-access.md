@@ -1,269 +1,269 @@
 ---
-title: Jak wymagać zatwierdzonych aplikacji klienckich do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego w Azure Active Directory | Microsoft Docs
-description: Dowiedz się, jak wymagać zatwierdzonych aplikacji klienckich do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego w Azure Active Directory.
+title: Approved client apps with Conditional Access - Azure Active Directory
+description: Learn how to require approved client apps for cloud app access with Conditional Access in Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45eeef7d96f194e224e5b44421e73eb5ee5d9c0d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515147"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381118"
 ---
-# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj zatwierdzonych aplikacji klienckich do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego 
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>How To: Require approved client apps for cloud app access with Conditional Access 
 
-Pracownicy używają urządzeń przenośnych zarówno do zadań osobistych, jak i służbowych. Zapewniając, że pracownicy mogą pracować wydajnie, możesz również zapobiec utracie danych. Za pomocą dostępu warunkowego usługi Azure Active Directory (Azure AD) można ograniczyć dostęp do aplikacji w chmurze do zatwierdzonych aplikacji klienckich, które mogą chronić dane firmowe.  
+Your employees use mobile devices for both personal and work tasks. While making sure your employees can be productive, you also want to prevent data loss. With Azure Active Directory (Azure AD) Conditional Access, you can restrict access to your cloud apps to approved client apps that can protect your corporate data.  
 
-W tym temacie opisano sposób konfigurowania zasad dostępu warunku, które wymagają zatwierdzonych aplikacji klienckich.
+This topic explains how to configure condition access policies that require approved client apps.
 
 ## <a name="overview"></a>Przegląd
 
-Za pomocą [dostępu warunkowego usługi Azure AD](overview.md)możesz dostosować sposób, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do zasobów. Można na przykład ograniczyć dostęp do aplikacji w chmurze do zaufanych urządzeń.
+With [Azure AD Conditional Access](overview.md), you can fine-tune how authorized users can access your resources. For example, you can limit the access to your cloud apps to trusted devices.
 
-[Zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) mogą pomóc w ochronie danych firmy. Zasady ochrony aplikacji usługi Intune nie wymagają rozwiązania do zarządzania urządzeniami przenośnymi (MDM), które umożliwia ochronę danych firmy za pomocą lub bez rejestracji urządzeń w rozwiązaniu do zarządzania urządzeniami.
+You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data. Intune app protection policies don't require mobile-device management (MDM) solution, which enables you to protect your company’s data with or without enrolling devices in a device management solution.
 
-Azure Active Directory dostęp warunkowy umożliwia ograniczenie dostępu do aplikacji w chmurze do aplikacji klienckich, które obsługują zasady ochrony aplikacji usługi Intune. Na przykład możesz ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook.
+Azure Active Directory Conditional Access enables you to limit access to your cloud apps to client apps that support Intune app protection policies. For example, you can restrict access to Exchange Online to the Outlook app.
 
-W terminologii dostępu warunkowego te aplikacje klienckie są nazywane zatwierdzonymi **aplikacjami klienckimi**.  
+In the Conditional Access terminology, these client apps are known as **approved client apps**.  
 
 ![Dostęp warunkowy](./media/app-based-conditional-access/05.png)
 
-Aby uzyskać listę zatwierdzonych aplikacji klienckich, zobacz [wymagania dotyczące zatwierdzonej aplikacji klienckiej](technical-reference.md#approved-client-app-requirement).
+For a list of approved client apps, see [approved client app requirement](technical-reference.md#approved-client-app-requirement).
 
-Zasady dostępu warunkowego opartego na aplikacji można łączyć z innymi zasadami, takimi jak [zasady dostępu warunkowego oparte na urządzeniach](require-managed-devices.md) , aby zapewnić elastyczność w zakresie ochrony danych zarówno na urządzeniach osobistych, jak i firmowych.
+You can combine app-based Conditional Access policies with other policies such as [device-based Conditional Access policies](require-managed-devices.md) to provide flexibility in how to protect data for both personal and corporate devices.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym temacie założono, że znasz:
+This topic assumes that you are familiar with:
 
-- Informacje techniczne [dotyczące zatwierdzonej aplikacji klienckiej](technical-reference.md#approved-client-app-requirement) .
-- Podstawowe pojęcia związane z [dostępem warunkowym w Azure Active Directory](overview.md).
-- Jak [skonfigurować zasady dostępu warunkowego](app-based-mfa.md).
-- [Migracja zasad dostępu warunkowego](best-practices.md#policy-migration).
+- The [approved client app requirement](technical-reference.md#approved-client-app-requirement) technical reference.
+- The basic concepts of [Conditional Access in Azure Active Directory](overview.md).
+- How to [configure a Conditional Access policy](app-based-mfa.md).
+- The [migration of Conditional Access policies](best-practices.md#policy-migration).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby utworzyć zasady dostępu warunkowego opartego na aplikacji, musisz mieć Enterprise Mobility + Security Azure Active Directory lub subskrypcję Premium, a użytkownicy muszą mieć licencję na usługi EMS lub Azure AD. 
+To create an app-based Conditional Access policy, you must have an Enterprise Mobility + Security or an Azure Active Directory premium subscription, and the users must be licensed for EMS or Azure AD. 
 
-## <a name="exchange-online-policy"></a>Zasady usługi Exchange Online 
+## <a name="exchange-online-policy"></a>Exchange Online policy 
 
-Ten scenariusz składa się z zasad dostępu warunkowego opartego na aplikacji dla dostępu do usługi Exchange Online.
+This scenario consists of an app-based Conditional Access policy for access to Exchange Online.
 
-### <a name="scenario-playbook"></a>Element PlayBook scenariusza
+### <a name="scenario-playbook"></a>Scenario playbook
 
-W tym scenariuszu przyjęto założenie, że użytkownik:
+This scenario assumes that a user:
 
-- Konfiguruje pocztę e-mail przy użyciu natywnej aplikacji poczty w systemach iOS i Android w celu nawiązania połączenia z programem Exchange
-- Odbiera wiadomość e-mail wskazującą, że dostęp jest dostępny tylko przy użyciu aplikacji Outlook
-- Pobiera aplikację za pomocą linku
-- Otwiera aplikację Outlook i loguje się przy użyciu poświadczeń usługi Azure AD
-- Zostanie wyświetlony monit o zainstalowanie uwierzytelniania (iOS) lub Portal firmy (Android) w celu kontynuowania
-- Instaluje aplikację i może powrócić do aplikacji Outlook, aby kontynuować
-- Jest monitowany o zarejestrowanie urządzenia
-- Jest w stanie uzyskać dostęp do poczty e-mail
+- Configures email using a native mail application on iOS or Android to connect to Exchange
+- Receives an email that indicates that access is only available using Outlook app
+- Downloads the application with the link
+- Opens the Outlook application and signs in with the Azure AD credentials
+- Is prompted to install either Authenticator (iOS) or Company Portal (Android) to continue
+- Installs the application and can return to the Outlook app to continue
+- Is prompted to register a device
+- Is able to access email
 
-Wszystkie zasady ochrony aplikacji usługi Intune są aktywowane w momencie uzyskiwania dostępu do danych firmowych i mogą monitować użytkownika o ponowne uruchomienie aplikacji, użycie dodatkowego numeru PIN itp. (jeśli jest skonfigurowany dla aplikacji i platformy).
+Any Intune app protection policies are activated at the time the access corporate data and may prompt the user to restart the application, use an additional PIN etc. (if configured for the application and platform).
 
 ### <a name="configuration"></a>Konfigurowanie 
 
-**Krok 1 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online**
 
-W przypadku zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. **Nazwa** zasad dostępu warunkowego.
-1. **Użytkownicy i grupy**: Dla każdej zasady dostępu warunkowego należy wybrać co najmniej jednego użytkownika lub grupę.
-1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet Office 365 Exchange Online**.
-1. **Przyczyn** W przypadku **warunków**należy skonfigurować **platformy urządzeń** i **aplikacje klienckie**:
-   1. Jako **platformy urządzeń**wybierz pozycję **Android** i **iOS**.
-   1. Jako **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i aplikacje klasyczne** oraz **nowoczesne komputery klienckie uwierzytelniania**.
-1. Jako **kontroli dostępu**musisz mieć wybraną pozycję **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**.
+1. **Conditions:** As **Conditions**, you need to configure **Device platforms** and **Client apps**:
+   1. As **Device platforms**, select **Android** and **iOS**.
+   1. As **Client apps (preview)** , select **Mobile apps and desktop apps** and **Modern authentication clients**.
+1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
 
    ![Dostęp warunkowy](./media/app-based-conditional-access/05.png)
 
-**Krok 2 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online z funkcją Active Sync (EAS)**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-W przypadku zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. **Nazwa** zasad dostępu warunkowego.
-1. **Użytkownicy i grupy**: Dla każdej zasady dostępu warunkowego należy wybrać co najmniej jednego użytkownika lub grupę.
-1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet Office 365 Exchange Online**.
-1. **Przyczyn** Zgodnie z **warunkami**należy skonfigurować **aplikacje klienckie (wersja zapoznawcza)** . 
-   1. Jako **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
-   1. Jako **kontroli dostępu**musisz mieć wybraną pozycję **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**.
+1. **Conditions:** As **Conditions**, you need to configure **Client apps (preview)** . 
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Exchange ActiveSync clients**.
+   1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
 
       ![Dostęp warunkowy](./media/app-based-conditional-access/05.png)
 
-**Krok 3 — Konfigurowanie zasad ochrony aplikacji usługi Intune dla aplikacji klienckich dla systemów iOS i Android**
+**Step 3 - Configure Intune app protection policy for iOS and Android client applications**
 
-Aby uzyskać więcej informacji [, zobacz Ochrona aplikacji i danych za pomocą Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) .
+See [Protect apps and data with Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) for more information.
 
-## <a name="exchange-online-and-sharepoint-online-policy"></a>Zasady usługi Exchange Online i SharePoint Online
+## <a name="exchange-online-and-sharepoint-online-policy"></a>Exchange Online and SharePoint Online policy
 
-Ten scenariusz składa się z dostępu warunkowego za pomocą zasad zarządzania aplikacjami mobilnymi w celu uzyskiwania dostępu do usługi Exchange Online i SharePoint Online z zatwierdzonymi aplikacjami.
+This scenario consists of a Conditional Access with mobile app management policy for access to Exchange Online and SharePoint Online with approved apps.
 
-### <a name="scenario-playbook"></a>Element PlayBook scenariusza
+### <a name="scenario-playbook"></a>Scenario playbook
 
-W tym scenariuszu przyjęto założenie, że użytkownik:
+This scenario assumes that a user:
 
-- Próbuje nawiązać połączenie za pomocą aplikacji SharePoint, a także wyświetlić ich Lokacje firmowe
-- Próbuje zalogować się przy użyciu tych samych poświadczeń, które są poświadczeniami aplikacji Outlook
-- Nie musi ponownie rejestrować i uzyskać dostępu do zasobów
+- Tries to use the SharePoint app to connect and also to view their corporate sites
+- Attempts to sign in with the same credentials as the Outlook app credentials
+- Does not have to re-register and can get access to the resources
 
 ### <a name="configuration"></a>Konfigurowanie
 
-**Krok 1 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usług Exchange Online i SharePoint Online**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online and SharePoint Online**
 
-W przypadku zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. **Nazwa** zasad dostępu warunkowego.
-1. **Użytkownicy i grupy**: Dla każdej zasady dostępu warunkowego należy wybrać co najmniej jednego użytkownika lub grupę.
-1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet office 365 Exchange Online** i **pakiet Office 365 SharePoint Online**. 
-1. **Przyczyn** W przypadku **warunków**należy skonfigurować **platformy urządzeń** i **aplikacje klienckie**:
-   1. Jako **platformy urządzeń**wybierz pozycję **Android** i **iOS**.
-   1. Jako **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **nowoczesne komputery klienckie uwierzytelniania**.
-1. Jako **kontroli dostępu**musisz mieć wybraną pozycję **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online** and **Office 365 SharePoint Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Device platforms** and **Client apps**:
+   1. As **Device platforms**, select **Android** and **iOS**.
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Modern authentication clients**.
+1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
 
    ![Dostęp warunkowy](./media/app-based-conditional-access/05.png)
 
-**Krok 2 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online z funkcją Active Sync (EAS)**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-W przypadku zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. **Nazwa** zasad dostępu warunkowego.
-1. **Użytkownicy i grupy**: Dla każdej zasady dostępu warunkowego należy wybrać co najmniej jednego użytkownika lub grupę.
-1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet Office 365 Exchange Online**. Online 
-1. **Przyczyn** W przypadku **warunków**należy skonfigurować **aplikacje klienckie**:
-   1. Jako **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
-   1. Jako **kontroli dostępu**musisz mieć wybraną pozycję **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**. Online 
+1. **Conditions:** As **Conditions**, you need to configure **Client apps**:
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Exchange ActiveSync clients**.
+   1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
 
       ![Dostęp warunkowy](./media/app-based-conditional-access/05.png)
 
-**Krok 3 — Konfigurowanie zasad ochrony aplikacji usługi Intune dla aplikacji klienckich dla systemów iOS i Android**
+**Step 3 - Configure Intune app protection policy for iOS and Android client applications**
 
 ![Dostęp warunkowy](./media/app-based-conditional-access/09.png)
 
-Aby uzyskać więcej informacji [, zobacz Ochrona aplikacji i danych za pomocą Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) .
+See [Protect apps and data with Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) for more information.
 
-## <a name="app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Zasady zgodne z aplikacjami lub urządzeniami dla usługi Exchange Online i SharePoint Online
+## <a name="app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>App-based or compliant device policy for Exchange Online and SharePoint Online
 
-Ten scenariusz składa się z zasad dostępu warunkowego na podstawie aplikacji lub zgodnego urządzenia na potrzeby dostępu do usługi Exchange Online.
+This scenario consists of an app-based or compliant device Conditional Access policy for access to Exchange Online.
 
-### <a name="scenario-playbook"></a>Element PlayBook scenariusza
+### <a name="scenario-playbook"></a>Scenario playbook
 
-W tym scenariuszu przyjęto założenie, że:
+This scenario assumes that:
  
-- Niektórzy użytkownicy są już zarejestrowani (z urządzeniami firmowymi lub bez nich)
-- Użytkownicy, którzy nie są zarejestrowani i zarejestrowani w usłudze Azure AD przy użyciu aplikacji chronionej przez aplikację, muszą zarejestrować urządzenie w celu uzyskania dostępu do zasobów
-- Zarejestrowani użytkownicy korzystający z aplikacji chronionej przez aplikację nie muszą ponownie rejestrować urządzenia
+- Some users are already enrolled (with or without corporate devices)
+- Users who are not enrolled and registered with Azure AD using an app protected application need to register a device to access resources
+- Enrolled users using the app protected application don't have to re-register the device
 
 ### <a name="configuration"></a>Konfigurowanie
 
-**Krok 1 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usług Exchange Online i SharePoint Online**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online and SharePoint Online**
 
-W przypadku zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. **Nazwa** zasad dostępu warunkowego.
-1. **Użytkownicy i grupy**: Dla każdej zasady dostępu warunkowego należy wybrać co najmniej jednego użytkownika lub grupę.
-1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet office 365 Exchange Online** i **pakiet Office 365 SharePoint Online**. 
-1. **Przyczyn** W przypadku **warunków**należy skonfigurować **platformy urządzeń** i **aplikacje klienckie**. 
-   1. Jako **platformy urządzeń**wybierz pozycję **Android** i **iOS**.
-   1. Jako **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **nowoczesne komputery klienckie uwierzytelniania**.
-1. Jako **kontroli dostępu**należy wybrać następujące elementy:
-   - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
-   - **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)**
-   - **Wymagaj jednej z wybranych kontrolek**   
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online** and **Office 365 SharePoint Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Device platforms** and **Client apps**. 
+   1. As **Device platforms**, select **Android** and **iOS**.
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Modern authentication clients**.
+1. As **Access controls**, you need to have the following selected:
+   - **Require device to be marked as compliant**
+   - **Require approved client app (preview)**
+   - **Require one of the selected controls**   
  
       ![Dostęp warunkowy](./media/app-based-conditional-access/11.png)
 
-**Krok 2 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online z funkcją Active Sync (EAS)**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-W przypadku zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. **Nazwa** zasad dostępu warunkowego.
-1. **Użytkownicy i grupy**: Dla każdej zasady dostępu warunkowego należy wybrać co najmniej jednego użytkownika lub grupę.
-1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet Office 365 Exchange Online**. 
-1. **Przyczyn** Zgodnie z **warunkami**należy skonfigurować **aplikacje klienckie**. 
-   1. Jako **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
-1. Jako **kontroli dostępu**musisz mieć wybraną pozycję **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Client apps**. 
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Exchange ActiveSync clients**.
+1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
  
    ![Dostęp warunkowy](./media/app-based-conditional-access/11.png)
 
-**Krok 3 — Konfigurowanie zasad ochrony aplikacji usługi Intune dla aplikacji klienckich dla systemów iOS i Android**
+**Step 3 - Configure Intune app protection policy for iOS and Android client applications**
 
 ![Dostęp warunkowy](./media/app-based-conditional-access/09.png)
 
-Aby uzyskać więcej informacji [, zobacz Ochrona aplikacji i danych za pomocą Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) .
+See [Protect apps and data with Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) for more information.
 
-## <a name="app-based-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Zasady aplikacji i zgodne urządzenia dla usługi Exchange Online i SharePoint Online
+## <a name="app-based-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>App-based and compliant device policy for Exchange Online and SharePoint Online
 
-Ten scenariusz składa się z zasad dostępu warunkowego na podstawie aplikacji i zgodnych urządzeń w celu uzyskania dostępu do usługi Exchange Online.
+This scenario consists of an app-based and compliant device Conditional Access policy for access to Exchange Online.
 
-### <a name="scenario-playbook"></a>Element PlayBook scenariusza
+### <a name="scenario-playbook"></a>Scenario playbook
 
-W tym scenariuszu przyjęto założenie, że użytkownik:
+This scenario assumes that a user:
  
-- Konfiguruje pocztę e-mail przy użyciu natywnej aplikacji poczty w systemach iOS i Android w celu nawiązania połączenia z programem Exchange
-- Odbiera wiadomość e-mail z informacją, że dostęp wymaga zarejestrowania urządzenia
-- Pobiera Portal firmy i loguje się do portalu firmy
-- Sprawdza pocztę i prosi o korzystanie z aplikacji Outlook
-- Pobiera aplikację Outlook
-- Otwiera aplikację Outlook i wprowadza poświadczenia używane podczas rejestracji
-- Użytkownik może uzyskać dostęp do poczty e-mail
+- Configures email using a native mail application on iOS or Android to connect to Exchange
+- Receives an email that indicates that access requires your device to be enrolled
+- Downloads the company portal and signs in to company portal
+- Checks mail and is asked to use the Outlook app
+- Downloads the Outlook app
+- Opens the Outlook app and enters the credentials used in the enrollment
+- User is able to access email
 
-Wszystkie zasady ochrony aplikacji usługi Intune są aktywowane w momencie uzyskiwania dostępu do danych firmowych i mogą monitować użytkownika o ponowne uruchomienie aplikacji, użycie dodatkowego numeru PIN itp. (jeśli jest skonfigurowany dla aplikacji i platformy)
+Any Intune app protection policies are activated at the time of access to the corporate data and may prompt the user to restart the application, use an additional PIN etc. (if configured for the application and platform)
 
 ### <a name="configuration"></a>Konfigurowanie
 
-**Krok 1 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usług Exchange Online i SharePoint Online**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online and SharePoint Online**
 
-W przypadku zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. **Nazwa** zasad dostępu warunkowego.
-1. **Użytkownicy i grupy**: Dla każdej zasady dostępu warunkowego należy wybrać co najmniej jednego użytkownika lub grupę.
-1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet office 365 Exchange Online** i **pakiet Office 365 SharePoint Online**. 
-1. **Przyczyn** W przypadku **warunków**należy skonfigurować **platformy urządzeń** i **aplikacje klienckie**. 
-   1. Jako **platformy urządzeń**wybierz pozycję **Android** i **iOS**.
-   1. Jako **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i aplikacje klasyczne** oraz **nowoczesne komputery klienckie uwierzytelniania**.
-1. Jako **kontroli dostępu**należy wybrać następujące elementy:
-   - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
-   - **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)**
-   - **Wymagaj wszystkich zaznaczonych kontrolek**   
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online** and **Office 365 SharePoint Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Device platforms** and **Client apps**. 
+   1. As **Device platforms**, select **Android** and **iOS**.
+   1. As **Client apps (preview)** , select **Mobile apps and desktop apps** and **Modern authentication clients**.
+1. As **Access controls**, you need to have the following selected:
+   - **Require device to be marked as compliant**
+   - **Require approved client app (preview)**
+   - **Require all the selected controls**   
  
       ![Dostęp warunkowy](./media/app-based-conditional-access/13.png)
 
-**Krok 2 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online z funkcją Active Sync (EAS)**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-W przypadku zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. **Nazwa** zasad dostępu warunkowego.
-1. **Użytkownicy i grupy**: Dla każdej zasady dostępu warunkowego należy wybrać co najmniej jednego użytkownika lub grupę.
-1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet Office 365 Exchange Online**. 
-1. **Przyczyn** Zgodnie z **warunkami**należy skonfigurować **aplikacje klienckie (wersja zapoznawcza)** . 
-   1. Jako **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Client apps (preview)** . 
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Exchange ActiveSync clients**.
 
    ![Dostęp warunkowy](./media/app-based-conditional-access/92.png)
 
-1. Jako **kontroli dostępu**należy wybrać następujące elementy:
-   - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
-   - **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)**
-   - **Wymagaj wszystkich zaznaczonych kontrolek**   
+1. As **Access controls**, you need to have the following selected:
+   - **Require device to be marked as compliant**
+   - **Require approved client app (preview)**
+   - **Require all the selected controls**   
 
-**Krok 3 — Konfigurowanie zasad ochrony aplikacji usługi Intune dla aplikacji klienckich dla systemów iOS i Android**
+**Step 3 - Configure Intune app protection policy for iOS and Android client applications**
 
 ![Dostęp warunkowy](./media/app-based-conditional-access/09.png)
 
-Aby uzyskać więcej informacji [, zobacz Ochrona aplikacji i danych za pomocą Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) .
+See [Protect apps and data with Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) for more information.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli chcesz dowiedzieć się, jak skonfigurować zasady dostępu warunkowego, zobacz [Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji, Azure Active Directory dostępu warunkowego](app-based-mfa.md).
+If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
 
-Aby skonfigurować zasady dostępu warunkowego dla środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory](best-practices.md). 
+If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 

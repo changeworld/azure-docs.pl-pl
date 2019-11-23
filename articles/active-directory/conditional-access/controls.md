@@ -1,172 +1,172 @@
 ---
-title: Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego? | Microsoft Docs
-description: Dowiedz się, jak kontrolę dostępu w usłudze Azure Active Directory dostępu warunkowego pracy.
+title: Access controls in Azure Active Directory Conditional Access
+description: Learn how access controls in Azure Active Directory Conditional Access work.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fc672898a56d8b3e1486b1d8d84cf532fa2b6d
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509405"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380805"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co to są kontroli dostępu w usłudze Azure Active Directory dostępu warunkowego?
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>What are access controls in Azure Active Directory Conditional Access?
 
-Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak autoryzowanego dostępu użytkowników można kontrolować swoje aplikacje w chmurze. W zasadach dostępu warunkowego zdefiniujesz odpowiedzi ("to") można Przyczyna służącą do wyzwalania zasad ("w takim przypadku").
+With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users access your cloud apps. In a Conditional Access policy, you define the response ("do this") to the reason for triggering your policy ("when this happens").
 
-![Formant](./media/controls/10.png)
+![Kontrola](./media/controls/10.png)
 
-W kontekście dostępu warunkowego
+In the context of Conditional Access,
 
-- "**w takim przypadku**" nosi nazwę **warunków**
-- "**To zrobić**" nosi nazwę **kontrole dostępu**
+- "**When this happens**" is called **conditions**
+- "**Then do this**" is called **access controls**
 
-Kombinacja instrukcja warunku, za pomocą formantów reprezentuje zasady dostępu warunkowego.
+The combination of a condition statement with your controls represents a Conditional Access policy.
 
-![Formant](./media/controls/61.png)
+![Kontrola](./media/controls/61.png)
 
-Każdy formant jest wymaganie, które muszą zostać spełnione przez osobę lub logowania systemu lub ograniczenia na to, jak użytkownik można zrobić po zarejestrowaniu się.
+Each control is either a requirement that must be fulfilled by the person or system signing in, or a restriction on what the user can do after signing in.
 
-Istnieją dwa typy formantów:
+There are two types of controls:
 
-- **Kontrolki udzielania** — dostęp do bramy
-- **Kontrolki sesji** — w celu ograniczenia dostępu w ramach sesji
+- **Grant controls** - To gate access
+- **Session controls** - To restrict access within a session
 
-W tym temacie wyjaśniono różne formanty, które są dostępne w funkcji dostępu warunkowego usługi Azure AD. 
+This topic explains the various controls that are available in Azure AD Conditional Access. 
 
-## <a name="grant-controls"></a>Udziel kontroli
+## <a name="grant-controls"></a>Grant controls
 
-Za pomocą Udziel kontroli możesz całkowicie blokowanie dostępu lub zezwolić na dostęp z dodatkowymi wymaganiami, wybierając odpowiednią kontrolki. W przypadku wielu kontrolek możesz wymagać od:
+With grant controls, you can either block access altogether or allow access with additional requirements by selecting the desired controls. For multiple controls, you can require:
 
-- Wszystkie wybrane formanty, które należy spełnić (*i*)
-- Jeden zaznaczony formant do spełnienia (*lub*)
+- All selected controls to be fulfilled (*AND*)
+- One selected control to be fulfilled (*OR*)
 
-![Formant](./media/controls/18.png)
+![Kontrola](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
-Możesz użyć tego formantu, aby wymagać uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do aplikacji określonej chmury. Ten formant obsługuje następujących dostawców usługi Multi-Factor Authentication:
+You can use this control to require multi-factor authentication to access the specified cloud app. This control supports the following multi-factor providers:
 
-- Azure Multi-Factor Authentication
-- Dostawcę usługi Multi-Factor authentication w środowisku lokalnym, łączyć się z usługi Active Directory Federation Services (AD FS).
+- Usługa Azure Multi-Factor Authentication
+- An on-premises multi-factor authentication provider, combined with Active Directory Federation Services (AD FS).
 
-Przy użyciu usługi uwierzytelnianie wieloskładnikowe pomaga chronić zasoby przed dostępem nieautoryzowany użytkownik, który może mieć uzyskał dostęp do podstawowych poświadczeń prawidłowego użytkownika.
+Using multi-factor authentication helps protect resources from being accessed by an unauthorized user who might have gained access to the primary credentials of a valid user.
 
 ### <a name="compliant-device"></a>Zgodne urządzenie
 
-Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniach, które jest tylko udzielić dostępu do aplikacji w wybranej chmurze z [urządzeń zarządzanych przy użyciu](require-managed-devices.md). Wymaganie urządzenie było oznaczone jako zgodne jest jedną z opcji należy ograniczyć dostęp do zarządzanych urządzeń. Urządzenie może zostać oznaczony jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez system MDM innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami Przenośnymi innej firmy dla systemu operacyjnego urządzenia typów innych niż Windows 10 nie są obsługiwane. 
+You can configure Conditional Access policies that are device-based. The objective of a device-based Conditional Access policy is to only grant access to the selected cloud apps from [managed devices](require-managed-devices.md). Requiring a device to be marked as compliant is one option you have to limit access to managed devices. A device can be marked as compliant by Intune (for any device OS) or by your third-party MDM system for Windows 10 devices. Third-party MDM systems for device OS types other than Windows 10 are not supported. 
 
-Urządzenie musi być zarejestrowany w usłudze Azure AD przed mogą zostać oznaczone jako zgodne. Aby zarejestrować urządzenie, masz trzy opcje: 
+Your device needs to be registered to Azure AD before it can be marked as compliant. To register a device, you have three options: 
 
 - Urządzenia zarejestrowane w usłudze Azure AD
 - Urządzenia dołączone do usługi Azure AD  
 - Urządzenia dołączone hybrydowo do usługi Azure AD
 
-Te trzy opcje zostały omówione w artykule [co to jest tożsamość urządzenia?](../devices/overview.md)
+These three options are discussed in the article [What is a device identity?](../devices/overview.md)
 
-Aby uzyskać więcej informacji, zobacz [sposób wymagać zarządzanych urządzeń w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](require-managed-devices.md).
+For more information, see [how to require managed devices for cloud app access with Conditional Access](require-managed-devices.md).
 
-### <a name="hybrid-azure-ad-joined-device"></a>Urządzenia przyłączone do hybrydowej usługi Azure AD
+### <a name="hybrid-azure-ad-joined-device"></a>Hybrid Azure AD joined device
 
-Wymaganie hybrydowych dołączonym do urządzenia w usłudze Azure AD inną opcję, należy skonfigurować zasady dostępu warunkowego opartego na urządzeniach. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów przedsiębiorstwa, które są przyłączone do lokalnej usługi Active Directory Windows. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje dostęp do podjętych z urządzeniami, które są przyłączone do lokalnej usługi Active Directory i usługi Azure Active Directory.  
+Requiring a Hybrid Azure AD joined device is another option you have to configure device-based Conditional Access policies. This requirement refers to Windows desktops, laptops, and enterprise tablets that are joined to an on-premises Active Directory. If this option is selected, your Conditional Access policy grants access to access attempts made with devices that are joined to your on-premises Active Directory and your Azure Active Directory.  
 
-Aby uzyskać więcej informacji, zobacz [skonfigurować zasady dostępu warunkowego opartego na urządzeniach w usłudze Azure Active Directory](require-managed-devices.md).
+For more information, see [set up Azure Active Directory device-based Conditional Access policies](require-managed-devices.md).
 
-### <a name="approved-client-app"></a>Zatwierdzonej aplikacji klienckiej
+### <a name="approved-client-app"></a>Approved client app
 
-Pracownicy używają urządzeń przenośnych na potrzeby osobiste i zadania, możesz chcieć mieć możliwość ochrony danych firmowych, uzyskiwać dostęp za pomocą urządzeń, nawet w przypadku, gdy nie są zarządzane przez użytkownika.
-Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy jest niezależna od wszelkich rozwiązań do zarządzania urządzeniami przenośnymi (MDM).
+Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
+You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
 
-Przy użyciu zatwierdzonych aplikacji klienckich, możesz wymagać od aplikacji klienckiej, która próbuje uzyskać dostęp do obsługi aplikacji w chmurze [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook. Zasady dostępu warunkowego, które wymagają zatwierdzonych aplikacji klienckich jest także znana jako [zasad dostępu warunkowego opartego na aplikacji](app-based-conditional-access.md). Aby uzyskać listę obsługiwanych zatwierdzonych aplikacji klienckich, zobacz [zatwierdzone klienta aplikacji wymaganie](technical-reference.md#approved-client-app-requirement).
+With approved client apps, you can require a client app that attempts to access your cloud apps to support [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app. A Conditional Access policy that requires approved client apps is  also known as [app-based Conditional Access policy](app-based-conditional-access.md). For a list of supported approved client apps, see [approved client app requirement](technical-reference.md#approved-client-app-requirement).
 
-### <a name="app-protection-policy-preview"></a>Zasady ochrony aplikacji (wersja zapoznawcza)
+### <a name="app-protection-policy-preview"></a>App protection policy (preview)
 
-Pracownicy używają urządzeń przenośnych na potrzeby osobiste i zadania, możesz chcieć mieć możliwość ochrony danych firmowych, uzyskiwać dostęp za pomocą urządzeń, nawet w przypadku, gdy nie są zarządzane przez użytkownika.
-Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy jest niezależna od wszelkich rozwiązań do zarządzania urządzeniami przenośnymi (MDM).
+Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
+You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
 
-Za pomocą zasad ochrony aplikacji, można ograniczyć dostęp do aplikacji klienckich, które zostały zgłoszone do usługi Azure AD ma otrzymały [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która zawiera zasady ochrony aplikacji usługi Intune. Zasady dostępu warunkowego, które wymagają zasad ochrony aplikacji jest również nazywany [zasad dostępu warunkowego oparte na ochronę aplikacji](app-protection-based-conditional-access.md). 
+With app protection policy, you can limit access to client applications that have reported to Azure AD has having received [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app that has an Intune app protection policy. A Conditional Access policy that requires app protection policy is also known as [app protection-based Conditional Access policy](app-protection-based-conditional-access.md). 
 
-Urządzenie musi być zarejestrowana do usługi Azure AD, zanim aplikacja może być oznaczony jako chroniony zasad.
+Your device must be registered to Azure AD before an application can be marked as policy protected.
 
-Aby uzyskać listę zasad obsługiwanych klientów chronionych, zobacz [wymaganie dotyczące zasad ochrony aplikacji](technical-reference.md#app-protection-policy-requirement).
+For a list of supported policy protected client apps, see [app protection policy requirement](technical-reference.md#app-protection-policy-requirement).
 
 ### <a name="terms-of-use"></a>Warunki użytkowania
 
-Użytkownik może wymagać w dzierżawie, aby wyrazić zgodę na warunki użytkowania, zanim zostanie im przyznany dostęp do zasobu. Jako administrator można skonfigurować i dostosować warunki użytkowania, przekazywania dokumentów PDF. Jeśli użytkownik znajduje się w zakresie Ta kontrola dostępu do aplikacji, otrzymuje tylko jeśli uzgodniono warunki użytkowania.
+You can require a user in your tenant to consent to the terms of use before being granted access to a resource. As an administrator, you can configure and customize terms of use by uploading a PDF document. If a user falls in scope of this control access to an application is only granted if the terms of use have been agreed.
 
-## <a name="custom-controls-preview"></a>Formanty niestandardowe (wersja zapoznawcza)
+## <a name="custom-controls-preview"></a>Custom controls (preview)
 
-Kontrolki niestandardowe są możliwości wersji usługi Azure Active Directory Premium P1. Używając niestandardowych formantów, użytkownicy są przekierowywane do zgodnych usługi w celu dalszego spełniają wymagania poza usługą Azure Active Directory. W celu spełnienia tego formantu, przeglądarki użytkownika jest przekierowywany do zewnętrznej usługi, wykonuje wszelkie wymagane uwierzytelnianie lub sprawdzania poprawności działania i jest następnie przekierowywane do usługi Azure Active Directory. Usługa Azure Active Directory weryfikuje odpowiedzi i, jeśli użytkownik został pomyślnie uwierzytelniony ani zweryfikowany, użytkownik będzie kontynuowana w przepływ dostępu warunkowego.
+Custom controls are a capability of the Azure Active Directory Premium P1 edition. When using custom controls, your users are redirected to a compatible service to satisfy further requirements outside of Azure Active Directory. To satisfy this control, a user’s browser is redirected to the external service, performs any required authentication or validation activities, and is then redirected back to Azure Active Directory. Azure Active Directory verifies the response and, if the user was successfully authenticated or validated, the user continues in the Conditional Access flow.
 
-Te kontrolki Zezwalaj na korzystanie z niektórych usług zewnętrznych lub niestandardowe jako kontroli dostępu warunkowego, a rozszerzenie możliwości dostępu warunkowego.
+These controls allow the use of certain external or custom services as Conditional Access controls, and generally extend the capabilities of Conditional Access.
 
-Obejmują obecnie oferującymi usługę zgodnych dostawców:
+Providers currently offering a compatible service include:
 
-- [Rozwiązanie Duo umożliwia zabezpieczeń](https://duo.com/docs/azure-ca)
-- [Datacard Entrust](https://www.entrustdatacard.com/products/authentication/intellitrust)
+- [Duo Security](https://duo.com/docs/azure-ca)
+- [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
-- [(Firmy Gemalto) firmy Thales](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
+- [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
-Aby uzyskać więcej informacji na temat tych usług skontaktuj się bezpośrednio z dostawców.
+For more information on those services, contact the providers directly.
 
-### <a name="creating-custom-controls"></a>Tworzenie niestandardowych formantów
+### <a name="creating-custom-controls"></a>Creating custom controls
 
-Aby utworzyć formant niestandardowy, najpierw skontaktuj się dostawcą, który chcesz wykorzystać. Każdy dostawca firm innych niż Microsoft ma swój własny proces i wymagania dotyczące Zarejestruj, subskrybowanie lub w przeciwnym razie stają się częścią usługi i wskazują, że chcesz zintegrować z dostępem warunkowym. W tym momencie dostawcę udostępni bloku danych w formacie JSON. Te dane umożliwia dostawcy i dostępu warunkowego współpracują ze sobą w dzierżawie, tworzy nowy formant i definiuje, jak można sprawdzić dostępu warunkowego w przypadku użytkowników zostały wykonane pomyślnie weryfikacji za pomocą dostawcy.
+To create a custom control, you should first contact the provider that you wish to utilize. Each non-Microsoft provider has its own process and requirements to sign up, subscribe, or otherwise become a part of the service, and to indicate that you wish to integrate with Conditional Access. At that point, the provider will provide you with a block of data in JSON format. This data allows the provider and Conditional Access to work together for your tenant, creates the new control and defines how Conditional Access can tell if your users have successfully performed verification with the provider.
 
-Nie można użyć niestandardowych kontrolek, za pomocą usługi Identity Protection automation wymaganie uwierzytelniania wieloskładnikowego lub podniesienie poziomu ról w Privileged Identity Manager (PIM).
+Custom controls cannot be used with Identity Protection's automation requiring multi-factor authentication or to elevate roles in Privileged Identity Manager (PIM).
 
-Kopiowanie danych JSON, a następnie wklej go w polu tekstowym powiązane. Nie należy wprowadzać żadnych zmian za pomocą pliku JSON, chyba że jawnie zrozumieć zmiany, które wprowadzasz. Wprowadzania żadnych zmian może przerwać połączenie między dostawcą a firmą Microsoft i potencjalnie zablokować Ty i Twoi użytkownicy spoza Twojego konta.
+Copy the JSON data and then paste it into the related textbox. Do not make any changes to the JSON unless you explicitly understand the change you’re making. Making any change could break the connection between the provider and Microsoft and potentially lock you and your users out of your accounts.
 
-Trwa opcję, aby utworzyć formant niestandardowy **Zarządzaj** części **dostępu warunkowego** strony.
+The option to create a custom control is in the **Manage** section of the **Conditional Access** page.
 
-![Formant](./media/controls/82.png)
+![Kontrola](./media/controls/82.png)
 
-Klikając **nowego formantu niestandardowego**, zostanie otwarty blok zawierający pole tekstowe dla danych JSON kontrolki.  
+Clicking **New custom control**, opens a blade with a textbox for the JSON data of your control.  
 
-![Formant](./media/controls/81.png)
+![Kontrola](./media/controls/81.png)
 
-### <a name="deleting-custom-controls"></a>Usuwanie kontrolek niestandardowych
+### <a name="deleting-custom-controls"></a>Deleting custom controls
 
-Aby usunąć formant niestandardowy, należy się najpierw upewnić, nie jest on używany w żadnych zasad dostępu warunkowego. Po zakończeniu:
+To delete a custom control, you must first ensure that it isn’t being used in any Conditional Access policy. Once complete:
 
-1. Przejdź do listy formantów niestandardowych
-1. Kliknij pozycję...  
+1. Go to the Custom controls list
+1. Click …  
 1. Wybierz pozycję **Usuń**.
 
-### <a name="editing-custom-controls"></a>Niestandardowe formanty do edycji
+### <a name="editing-custom-controls"></a>Editing custom controls
 
-Aby edytować kontrolkę niestandardową, należy usunąć bieżącą kontroli i utworzyć nowy formant przy użyciu zaktualizowanych informacji.
+To edit a custom control, you must delete the current control and create a new control with the updated information.
 
-## <a name="session-controls"></a>Kontrolki sesji
+## <a name="session-controls"></a>Session controls
 
-Kontrolki sesji umożliwiają korzystanie z ograniczonego środowiska w ramach aplikacji w chmurze. Kontrolki sesji są wymuszane przez aplikacje w chmurze i opierają się na dodatkowe informacje podane przez usługę Azure AD do aplikacji o sesji.
+Session controls enable limited experience within a cloud app. The session controls are enforced by cloud apps and rely on additional information provided by Azure AD to the app about the session.
 
-![Formant](./media/controls/31.png)
+![Kontrola](./media/controls/31.png)
 
-### <a name="use-app-enforced-restrictions"></a>Użyj ograniczeń wymuszonych przez aplikację
+### <a name="use-app-enforced-restrictions"></a>Use app enforced restrictions
 
-Możesz użyć tego formantu, aby wymagają usługi Azure AD do przekazania informacji o urządzeniu do aplikacji w wybranej chmurze. Informacje o urządzeniu umożliwia aplikacji w chmurze należy wiedzieć, czy połączenie jest inicjowane z urządzenia zgodne lub dołączone do domeny. Ten formant obsługuje tylko usługi SharePoint Online i Exchange Online jako aplikacji w wybranej chmurze. Po wybraniu aplikacji w chmurze używa informacji o urządzeniu użytkownikom, w zależności od stanu urządzenia, za pomocą ograniczony lub pełnego środowiska.
+You can use this control to require Azure AD to pass device information to the selected cloud apps. The device information enables the cloud apps to know whether a connection is initiated from a compliant or domain-joined device. This control only supports SharePoint Online and Exchange Online as selected cloud apps. When selected, the cloud app uses the device information to provide users, depending on the device state, with a limited or full experience.
 
 Aby dowiedzieć się więcej, zobacz:
 
-- [Włączanie ograniczony dostęp z usługą SharePoint Online](https://aka.ms/spolimitedaccessdocs)
-- [Włączanie ograniczony dostęp z usługą Exchange Online](https://aka.ms/owalimitedaccess)
+- [Enabling limited access with SharePoint Online](https://aka.ms/spolimitedaccessdocs)
+- [Enabling limited access with Exchange Online](https://aka.ms/owalimitedaccess)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
-- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md).
+- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
+- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
