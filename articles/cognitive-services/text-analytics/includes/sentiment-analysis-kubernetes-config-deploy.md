@@ -1,54 +1,54 @@
 ---
-title: analiza tonacji Kubernetes konfigurację i wdrażanie kroków
+title: Sentiment Analysis Kubernetes config and deploy steps
 titleSuffix: Azure Cognitive Services
-description: analiza tonacji Kubernetes konfigurację i wdrażanie kroków
+description: Sentiment Analysis Kubernetes config and deploy steps
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: f1c571e421dccad366abf403de350b07113e04ba
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: bd93773e4d3c5e06bca752612dac6c563a2f5da1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130032"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383499"
 ---
-### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>Wdrażanie kontenera analiza tonacji w klastrze AKS
+### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>Deploy the Sentiment Analysis container to an AKS cluster
 
-1. Otwórz interfejs wiersza polecenia platformy Azure i zaloguj się do platformy Azure.
+1. Open the Azure CLI, and sign in to Azure.
 
     ```azurecli
     az login
     ```
 
-1. Zaloguj się do klastra AKS. Zamień `your-cluster-name` i`your-resource-group` na odpowiednie wartości.
+1. Sign in to the AKS cluster. Replace `your-cluster-name` and `your-resource-group` with the appropriate values.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Po uruchomieniu tego polecenia raport przedstawia komunikat podobny do następującego:
+    After this command runs, it reports a message similar to the following:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Jeśli masz wiele subskrypcji na Twoim koncie platformy Azure, a `az aks get-credentials` polecenie zwróci błąd, typowy problem polega na tym, że używasz niewłaściwej subskrypcji. Ustaw kontekst sesji interfejsu wiersza polecenia platformy Azure, aby użyć tej samej subskrypcji, w której zostały utworzone zasoby, i spróbuj ponownie.
+    > If you have multiple subscriptions available to you on your Azure account and the `az aks get-credentials` command returns with an error, a common problem is that you're using the wrong subscription. Set the context of your Azure CLI session to use the same subscription that you created the resources with and try again.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Otwórz Edytor tekstu. Ten przykład używa Visual Studio Code.
+1. Open the text editor of choice. This example uses Visual Studio Code.
 
     ```azurecli
     code .
     ```
 
-1. W edytorze tekstów Utwórz nowy plik o nazwie *tonacji. YAML*i wklej do niego następujący YAML. Pamiętaj, aby `billing/value` zamienić `apikey/value` i wraz z własnymi informacjami.
+1. Within the text editor, create a new file named *sentiment.yaml*, and paste the following YAML into it. Be sure to replace `billing/value` and `apikey/value` with your own information.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -66,6 +66,13 @@ ms.locfileid: "71130032"
             image: mcr.microsoft.com/azure-cognitive-services/sentiment
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -87,39 +94,39 @@ ms.locfileid: "71130032"
         app: sentiment-app
     ```
 
-1. Zapisz plik i Zamknij Edytor tekstu.
-1. Uruchom polecenie Kubernetes `apply` z plikiem *tonacji. YAML* jako obiektem docelowym:
+1. Save the file, and close the text editor.
+1. Run the Kubernetes `apply` command with the *sentiment.yaml* file as its target:
 
     ```console
-    kuberctl apply -f sentiment.yaml
+    kubectl apply -f sentiment.yaml
     ```
 
-    Gdy polecenie pomyślnie zastosuje konfigurację wdrożenia, zostanie wyświetlony komunikat podobny do następującego:
+    After the command successfully applies the deployment configuration, a message appears similar to the following output:
 
     ```console
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
-1. Sprawdź, czy w obszarze został wdrożony:
+1. Verify that the pod was deployed:
 
     ```console
     kubectl get pods
     ```
 
-    Dane wyjściowe dla stanu uruchomienia pod:
+    The output for the running status of the pod:
 
     ```console
     NAME                         READY     STATUS    RESTARTS   AGE
     sentiment-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Sprawdź, czy usługa jest dostępna i Pobierz adres IP.
+1. Verify that the service is available, and get the IP address.
 
     ```console
     kubectl get services
     ```
 
-    Dane wyjściowe dla stanu uruchomienia usługi *tonacji* w obszarze:
+    The output for the running status of the *sentiment* service in the pod:
 
     ```console
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

@@ -1,109 +1,109 @@
 ---
-title: Edytowanie wiedzy — QnA Maker
+title: Edit a knowledge base - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Usługa QnA Maker umożliwia zarządzanie zawartość bazy wiedzy, zapewniając łatwy w użyciu środowisko edycji.
+description: QnA Maker allows you to manage the content of your knowledge base by providing an easy-to-use editing experience.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 11/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1450d6b41d9a193f8069509aacd3343ae646c6ac
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: cc4ead968a0ee2c9890c1cd24a6b70516b2b2e74
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307023"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326799"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>Edytowanie wiedzy w usługi QnA Maker
+# <a name="edit-a-knowledge-base-in-qna-maker"></a>Edit a knowledge base in QnA Maker
 
-Usługa QnA Maker umożliwia zarządzanie zawartość bazy wiedzy, zapewniając łatwy w użyciu środowisko edycji.
+QnA Maker allows you to manage the content of your knowledge base by providing an easy-to-use editing experience.
 
 <a name="add-datasource"></a>
 
-## <a name="edit-your-knowledge-base-content"></a>Edytuj zawartość bazy wiedzy
+## <a name="edit-your-knowledge-base-content"></a>Edit your knowledge base content
 
-1.  Wybierz **moich baz wiedzy** w górnym pasku nawigacyjnym. 
+1.  Select **My knowledge bases** in the top navigation bar. 
 
-    Możesz zobaczyć wszystkie usługi, utworzony lub udostępnione Tobie posortowane malejąco według **Data ostatniej modyfikacji** daty.
+    You can see all the services you created or shared with you sorted in the descending order of the **last modified** date.
 
-    ![Moje bazy wiedzy](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    ![My Knowledge Bases](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-1. Wybierz określoną wiedzy, aby wprowadzić zmiany.
+1. Select a particular knowledge base to make edits to it.
  
-1. Wybierz **ustawienia**. W tym miejscu można edytować wymaganym polem nazwy usługi.
+1. Select **Settings**. Here you can edit mandatory field Service Name.
   
-    |Cel|Akcja|
+    |Cel|Działanie|
     |--|--|
-    |Dodawanie adresu URL|Możesz dodać nowe adresy URL, aby dodać nową zawartość — często zadawane pytania na bazie wiedzy Knowledge base, klikając **wiedzy Zarządzaj -> "+ Dodaj adres URL"** łącza.|
-    |Usuń adres URL|Możesz usunąć istniejące adresy URL, wybierając ikonę usuwania, Kosza.|
-    |Odśwież zawartość adresu URL|Wiedzy do przeszukiwania najnowszej zawartości istniejące adresy URL, zaznacz **Odśwież** pola wyboru. Spowoduje to zaktualizowanie bazy wiedzy o najnowszą zawartość adresu URL.|
-    |Dodaj plik|Można dodać dokument obsługiwany plik należeć wiedzy, wybierając **Zarządzanie wiedzy**, a następnie wybierając pozycję **+ Dodaj plik**|
-    |Import|Możesz również zaimportować wszystkie istniejące bazy wiedzy knowledge base, wybierając **Ímport wiedzy** przycisku. |
-    |Aktualizacja|Aktualizowanie bazy wiedzy knowledge base zależy od **warstwę cenową zarządzania** używane podczas tworzenia usługi QnA Maker skojarzone z bazy wiedzy. Możesz także zaktualizować warstwa zarządzania z witryny Azure portal, jeśli jest to wymagane.
+    |Add URL|You can add new URLs to add new FAQ content to Knowledge base by clicking **Manage knowledge base -> '+ Add URL'** link.|
+    |Delete URL|You can delete existing URLs by selecting the delete icon, the trash can.|
+    |Refresh content|If you want your knowledge base to crawl the latest content of existing URLs, select the **Refresh** checkbox. This will update the knowledge base with latest URL content once. This is not setting a regular schedule of updates.|
+    |Add file|You can add a supported file document to be part of a knowledge base, by selecting **Manage knowledge base**, then selecting **+ Add File**|
+    |Import|You can also import any existing knowledge base by selecting **Ímport Knowledge base** button. |
+    |Aktualizacja|Updating of knowledge base depends on **management pricing tier** used while creating QnA Maker service associated with your knowledge base. You can also update the management tier from Azure portal if required.
 
-1. Po zakończeniu wprowadzania zmian w bazie wiedzy knowledge base, wybierz opcję **Zapisz i szkolenie** w prawym górnym rogu strony aby utrwalić zmiany.    
+1. Once you are done making changes to the knowledge base, select **Save and train** in the top right corner of the page in order to persist the changes.    
 
-    ![Zapisz i uczenie](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+    ![Save and Train](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
     >[!CAUTION]
-    >Jeśli zechcesz opuścić stronę przed wybraniem **Zapisz i szkolenie**, wszystkie zmiany zostaną utracone.
+    >If you leave the page before selecting **Save and train**, all changes will be lost.
 
 ## <a name="add-a-qna-pair"></a>Dodawanie pary pytań i odpowiedzi
 
-Na stronie **Edycja** wybierz pozycję **Dodaj parę QNA** , aby dodać nowy wiersz do tabeli bazy wiedzy.
+On the **EDIT** page, select **Add QnA pair** to add a new row to the knowledge base table.
 
-![Dodaj parę pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+![Add QnA pair](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
-## <a name="delete-a-qna-pair"></a>Usuń parę pytań i odpowiedzi
+## <a name="delete-a-qna-pair"></a>Delete a QnA pair
 
-Aby usunąć pytań i odpowiedzi, kliknij przycisk **Usuń** ikonę na prawym końcu wiersza pytań i odpowiedzi. To jest operacją nieodwracalną. Nie można cofnąć. Należy wziąć pod uwagę swoje KB z eksportowania **Publikuj** strony przed usunięciem pary. 
+To delete a QnA, click the **delete** icon on the far right of the QnA row. This is a permanent operation. It can't be undone. Consider exporting your KB from the **Publish** page before deleting pairs. 
 
-![Usuń parę pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+![Delete QnA pair](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-## <a name="add-alternate-questions"></a>Dodaj alternatywne pytania
+## <a name="add-alternate-questions"></a>Add alternate questions
 
-Dodaj alternatywne pytania do istniejącej pary pytań i odpowiedzi, aby zwiększyć prawdopodobieństwo aby dopasowanie zakończyło się zapytania użytkownika.
+Add alternate questions to an existing QnA pair to improve the likelihood of a match to a user query.
 
-![Dodaj alternatywne pytania](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
+![Add Alternate Questions](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
-## <a name="add-metadata"></a>Dodawanie metadanych
+## <a name="add-metadata"></a>Add metadata
 
-Dodaj pary metadanych, zaznaczając najpierw **Opcje widoku**, a następnie wybierając **Pokaż metadane**. Spowoduje to wyświetlenie kolumny metadanych. Następnie wybierz **+** znak, aby dodać parę metadanych. Ta para składa się z jednego klucza i jednej wartości.
+Add metadata pairs by first selecting **View options**, then selecting **Show metadata**. This displays the metadata column. Next, select the **+** sign to add a metadata pair. This pair consists of one key and one value.
 
-![Dodawanie metadanych](../media/qnamaker-how-to-edit-kb/add-metadata.png)
+![Add Metadata](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
 > [!TIP]
-> Upewnij się okresowo zapisywać i uczenie bazy wiedzy knowledge base po wprowadzeniu zmian w celu uniknięcia utraty zmian.
+> Make sure to periodically Save and train the knowledge base after making edits to avoid losing changes.
 
-## <a name="manage-large-knowledge-bases"></a>Zarządzanie bazami wiedzy duże
+## <a name="manage-large-knowledge-bases"></a>Manage large knowledge bases
 
-* **Grupy źródeł danych**: Bazami są pogrupowane według źródła danych, z którego zostały wyodrębnione. Można rozwinąć lub zwinąć źródła danych.
+* **Data source groups**: The QnAs are grouped by the data source from which they were extracted. You can expand or collapse the data source.
 
-    ![Użyj paska źródła danych QnA Maker, aby zwinąć i rozwinąć pytania i odpowiedzi ze źródła danych](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Use the QnA Maker data source bar to collapse and expand data source questions and answers](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Baza wiedzy wyszukiwania**: Bazę wiedzy można wyszukać, wpisując w polu tekstowym w górnej części tabeli bazy wiedzy. Naciśnij klawisz enter, wyszukiwanie zawartości zapytania, odpowiedzi lub metadanych. Kliknij ikonę X, aby usunąć filtr wyszukiwania.
+* **Search knowledge base**: You can search the knowledge base by typing in the text box at the top of the Knowledge Base table. Click enter to search on the question, answer, or metadata content. Click on the X icon to remove the search filter.
 
-    ![Użyj pola wyszukiwania QnA Maker powyżej pytań i odpowiedzi, aby zmniejszyć widok tylko do elementów zgodnych z filtrem](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Use the QnA Maker search box above the questions and answers to reduce the view to only filter-matching items](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Podział na strony**: Szybkie przechodzenie między źródłami danych w celu zarządzania dużymi bazami wiedzy
+* **Pagination**: Quickly move through data sources to manage large knowledge bases
 
-    ![Użyj QnA Maker funkcji stronicowania nad pytaniami i odpowiedziami, aby poruszać się po stronach pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![Use the QnA Maker pagination features above the questions and answers to move through pages of questions and answers](../media/qnamaker-how-to-edit-kb/pagination.png)
 
-## <a name="delete-knowledge-bases"></a>Usuń z bazy wiedzy
+## <a name="delete-knowledge-bases"></a>Delete knowledge bases
 
-Usuwanie bazy wiedzy (KB) jest operacją nieodwracalną. Nie można cofnąć. Przed usunięciem bazy wiedzy, należy wyeksportować wiedzy z **ustawienia** stronie portalu narzędzia QnA Maker. 
+Deleting a knowledge base (KB) is a permanent operation. It can't be undone. Before deleting a knowledge base, you should export the knowledge base from the **Settings** page of the QnA Maker portal. 
 
-Jeśli udostępniasz wiedzy o [współpracowników](collaborate-knowledge-base.md) usuń go, wszyscy utraci dostęp w KB. 
+If you share your KB with [collaborators](collaborate-knowledge-base.md) then delete it, everyone loses access to the KB. 
 
 ## <a name="delete-azure-resources"></a>Usuwanie zasobów platformy Azure 
 
-Usunięcie wszystkich zasobów platformy Azure używane na potrzeby usługi QnA Maker baz danych, baz wiedzy przestaną działać. Przed usunięciem wszystkich zasobów, upewnij się, możesz wyeksportować swoje baz wiedzy z **ustawienia** strony. 
+If you delete any of the Azure resources used for your QnA Maker knowledge bases, the knowledge bases will no longer function. Before deleting any resources, make sure you export your knowledge bases from the **Settings** page. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Współpracuj nad bazy wiedzy](./collaborate-knowledge-base.md)
+> [Collaborate on a knowledge base](./collaborate-knowledge-base.md)

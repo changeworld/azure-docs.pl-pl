@@ -1,26 +1,20 @@
 ---
 title: 'Quickstart: Create a blueprint in the portal'
 description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts through the Azure portal.
-ms.date: 03/11/2019
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 47c225f3a3e51dc965580e48b8f838f557676d2e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210476"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321945"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Quickstart: Define and assign a blueprint in the portal
 
 When you learn how to create and assign blueprints, you can define common patterns to develop reusable and rapidly deployable configurations based on Azure Resource Manager templates, policy, security, and more. In this tutorial, you learn to use Azure Blueprints to do some of the common tasks related to creating, publishing, and assigning a blueprint within your organization. These tasks include:
 
-> [!div class="checklist"]
-> - Tworzenie nowej strategii i dodawanie różnych obsługiwanych artefaktów
-> - Wprowadzanie zmian do istniejącej strategii, która wciąż znajduje się w stanie **Wersja robocza**
-> - Oznaczanie strategii jako gotowej do przypisania za pomocą stanu **Opublikowano**
-> - Przypisywanie strategii do istniejącej subskrypcji
-> - Sprawdzanie stanu i postępu przypisanej strategii
-> - Usuwanie strategii, która została przypisana do subskrypcji
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
@@ -296,9 +290,7 @@ If you no longer need a blueprint assignment, remove it from a subscription. The
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj informacje na temat [cyklu życia strategii](./concepts/lifecycle.md).
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](./how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](./troubleshoot/general.md).
+In this quickstart, you've created, assigned, and removed a blueprint with Azure portal. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)

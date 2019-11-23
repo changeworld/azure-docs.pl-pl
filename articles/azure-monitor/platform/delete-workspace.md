@@ -1,69 +1,69 @@
 ---
-title: Usuwanie i odzyskiwanie obszaru roboczego usługi Azure Log Analytics | Microsoft Docs
-description: Dowiedz się, jak usunąć obszar roboczy Log Analytics, jeśli został on utworzony w prywatnej subskrypcji lub zmienić strukturę modelu obszaru roboczego.
+title: Delete and recover Azure Log Analytics workspace | Microsoft Docs
+description: Learn how to delete your Log Analytics workspace if you created one in a personal subscription or restructure your workspace model.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 10/28/2019
-ms.openlocfilehash: 709d63b2c764049a698bc538d9ec451b4e75feaa
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: b8fdefb5e8555e90b5c9065672f4593e5bf98e06
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044239"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326509"
 ---
-# <a name="delete-and-restore-azure-log-analytics-workspace"></a>Usuwanie i przywracanie obszaru roboczego usługi Azure Log Analytics
+# <a name="delete-and-restore-azure-log-analytics-workspace"></a>Delete and restore Azure Log Analytics workspace
 
-W tym artykule wyjaśniono koncepcję nietrwałego usunięcia obszaru roboczego usługi Azure Log Analytics i odzyskiwania usuniętego obszaru roboczego. 
+This article explains the concept of Azure Log Analytics workspace soft-delete and how to recover deleted workspace. 
 
-## <a name="considerations-when-deleting-a-workspace"></a>Zagadnienia dotyczące usuwania obszaru roboczego
+## <a name="considerations-when-deleting-a-workspace"></a>Considerations when deleting a workspace
 
-Po usunięciu obszaru roboczego Log Analytics jest wykonywana operacja usuwania nietrwałego umożliwiająca odzyskanie obszaru roboczego, w tym jego danych i podłączonych agentów w ciągu 14 dni, bez względu na to, czy usunięcie było przypadkowe czy celowe. Po okresie usuwania nietrwałego obszar roboczy i jego dane nie są odzyskiwalne i są umieszczane w kolejce do trwałego usunięcia w ciągu 30 dni.
+When you delete a Log Analytics workspace, a soft-delete operation is performed to allow the recovery of the workspace including its data and connected agents within 14 days, whether the deletion was accidental or intentional. After the soft-delete period, the workspace and its data are non-recoverable – data is queued for permanent deletion within 30 days and the workspace name is available and can be used to create a new workspace.
 
-Należy zachować ostrożność podczas usuwania obszaru roboczego, ponieważ mogą istnieć ważne dane i konfiguracja, które mogą negatywnie wpłynąć na działanie usługi. Zapoznaj się z agentami, rozwiązaniami i innymi usługami i źródłami platformy Azure, które przechowują dane w Log Analytics, na przykład:
+You want to exercise caution when you delete a workspace because there might be important data and configuration that may negatively impact your service operation. Review what agents, solutions, and other Azure services and sources that store their data in Log Analytics, such as:
 
 * Rozwiązania do zarządzania
 * Azure Automation
-* Agenci działający na maszynach wirtualnych z systemem Windows i Linux
-* Agenci działający na komputerach z systemem Windows i Linux w danym środowisku
+* Agents running on Windows and Linux virtual machines
+* Agents running on Windows and Linux computers in your environment
 * System Center Operations Manager
 
-Operacja usuwania nietrwałego usuwa zasób obszaru roboczego, a wszystkie powiązane uprawnienia użytkowników są zerwane. Jeśli użytkownicy są powiązani z innymi obszarami roboczymi, mogą nadal korzystać z Log Analytics z tymi innymi obszarami roboczymi.
+The soft-delete operation deletes the workspace resource and any associated users’ permission is broken. If users are associated with other workspaces, then they can continue using Log Analytics with those other workspaces.
 
-## <a name="soft-delete-behavior"></a>Zachowanie nietrwałego usuwania
+## <a name="soft-delete-behavior"></a>Soft-delete behavior
 
-Operacja usuwania obszaru roboczego służy do usuwania obszaru roboczego Menedżer zasobów zasobu, ale jego konfiguracja i dane będą przechowywane przez 14 dni, a jednocześnie zostanie wyświetlony wygląd obszaru roboczego. Wszyscy agenci i System Center Operations Manager grupy zarządzania skonfigurowane do raportowania do obszaru roboczego pozostają w stanie oddzielonym w okresie usuwania nietrwałego. Usługa zapewnia Dodatkowo mechanizm odzyskiwania usuniętego obszaru roboczego, w tym jego danych i połączonych zasobów, głównie cofając operację usuwania.
+The workspace delete operation removes the workspace Resource Manager resource, but its configuration and data are kept for 14 days, while giving the appearance that the workspace is deleted. Any agents and System Center Operations Manager management groups configured to report to the workspace remain in an orphaned state during the soft-delete period. The service further provides a mechanism for recovering the deleted workspace including its data and connected resources, essentially undoing the deletion.
 
 > [!NOTE] 
-> Zainstalowane rozwiązania i połączone usługi, takie jak konto Azure Automation, zostaną trwale usunięte z obszaru roboczego w czasie usuwania i nie można ich odzyskać. Te zmiany należy skonfigurować ponownie po operacji odzyskiwania, aby przełączyć obszar roboczy do wcześniej skonfigurowanego stanu.
+> Installed solutions and linked services like your Azure Automation account are permanently removed from the workspace at deletion time and can’t be recovered. These should be reconfigured after the recovery operation to bring the workspace to its previously configured state.
 
-Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [interfejsu API REST](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)lub w [Azure Portal](https://portal.azure.com).
+You can delete a workspace using [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete), or in the [Azure portal](https://portal.azure.com).
 
-### <a name="delete-workspace-in-azure-portal"></a>Usuwanie obszaru roboczego w Azure Portal
+### <a name="delete-workspace-in-azure-portal"></a>Delete workspace in Azure portal
 
-1. Aby się zalogować, przejdź do [Azure Portal](https://portal.azure.com). 
-2. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
-3. Na liście obszarów roboczych Log Analytics wybierz obszar roboczy, a następnie kliknij przycisk **Usuń** w górnej części środkowego okienka.
-   Opcja usuwania ![z okienka właściwości obszaru roboczego](media/delete-workspace/log-analytics-delete-workspace.png)
-4. Gdy zostanie wyświetlone okno komunikatu potwierdzenia z prośbą o potwierdzenie usunięcia obszaru roboczego, kliknij przycisk **tak**.
-   ![potwierdzić usunięcie obszaru roboczego](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+1. To sign in, go to the [Azure portal](https://portal.azure.com). 
+2. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Select **Log Analytics workspaces**.
+3. In the list of Log Analytics workspaces, select a workspace and then click **Delete**  from the top of the middle pane.
+   ![Delete option from Workspace properties pane](media/delete-workspace/log-analytics-delete-workspace.png)
+4. When the confirmation message window appears asking you to confirm deletion of the workspace, click **Yes**.
+   ![Confirm deletion of workspace](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 
-## <a name="recover-workspace"></a>Odzyskiwanie obszaru roboczego
+## <a name="recover-workspace"></a>Recover workspace
 
-Jeśli masz uprawnienia współautora do subskrypcji i grupy zasobów, do której został skojarzony obszar roboczy przed operacją usuwania nietrwałego, możesz odzyskać ją w okresie usuwania nietrwałego, w tym jego dane, konfigurację i połączone agenci. Po okresie usuwania nietrwałego obszar roboczy nie jest możliwy do odzyskania i zostaje przypisany do trwałego usunięcia. Nazwy usuniętych obszarów roboczych są zachowywane w okresie usuwania nietrwałego i nie mogą być używane podczas próby utworzenia nowego obszaru roboczego.  
+If you have Contributor permissions to the subscription and resource group where the workspace was associated before the soft-delete operation, you can recover it during its soft-delete period including its data, configuration and connected agents. After the soft-delete period, the workspace is non-recoverable and assigned for permanent deletion. Names of deleted workspaces are preserved during the soft-delete period and can't be used when attempting to create a new workspace.  
 
-Obszar roboczy można odzyskać przez ponowne utworzenie go przy użyciu następujących metod tworzenia obszaru roboczego: program [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) lub [interfejs API REST]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , o ile następujące właściwości są wypełniane informacjami o usuniętych obszarach roboczych:
+You can recover a workspace by re-creating it using the following workspace create methods: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) or [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) as long as the following properties are populated with the deleted workspace details:
 
 * Identyfikator subskrypcji
-* Nazwa grupy zasobów
-* Nazwa obszaru roboczego
+* Resource Group name
+* Workspace name
 * Region
 
-Obszar roboczy i wszystkie jego dane zostaną przywrócone po operacji odzyskiwania. Rozwiązania i połączone usługi zostały trwale usunięte z obszaru roboczego, gdy zostało usunięte, i należy je ponownie skonfigurować w celu przeniesienia obszaru roboczego do wcześniej skonfigurowanego stanu. Niektóre dane mogą nie być dostępne dla zapytań po odzyskaniu obszaru roboczego do momentu ponownego zainstalowania skojarzonych rozwiązań, a ich schematy zostaną dodane do obszaru roboczego.
+The workspace and all its data are brought back after the recovery operation. Solutions and linked services were permanently removed from the workspace when it was deleted and these should be reconfigured to bring the workspace to its previously configured state. Some of the data may not be available for query after the workspace recovery until the associated solutions are re-installed and their schemas are added to the workspace.
 
 > [!NOTE]
-> * Odzyskiwanie obszaru roboczego nie jest obsługiwane w [Azure Portal](https://portal.azure.com). 
-> * Ponowne tworzenie obszaru roboczego w okresie usuwania nietrwałego wskazuje, że ta nazwa obszaru roboczego jest już używana. 
+> * Workspace recovery isn't supported in the [Azure portal](https://portal.azure.com). 
+> * Re-creating a workspace during the soft-delete period gives an indication that this workspace name is already in use. 
 > 

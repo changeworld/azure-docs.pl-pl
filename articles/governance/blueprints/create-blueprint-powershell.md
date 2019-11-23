@@ -1,32 +1,26 @@
 ---
 title: 'Quickstart: Create a blueprint with PowerShell'
 description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the PowerShell.
-ms.date: 08/21/2019
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 5fdda0a995388a6f0d12d1b8441a257eecc43374
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ed337fa040804159dae3194de1befc43ff2b698f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217075"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327465"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Quickstart: Define and Assign an Azure Blueprint with PowerShell
 
 Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie typowych wzorców tworzenia konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
 
-> [!div class="checklist"]
-> - Tworzenie nowej strategii i dodawanie różnych obsługiwanych artefaktów
-> - Wprowadzanie zmian do istniejącej strategii, która wciąż znajduje się w stanie **Wersja robocza**
-> - Oznaczanie strategii jako gotowej do przypisania za pomocą stanu **Opublikowano**
-> - Przypisywanie strategii do istniejącej subskrypcji
-> - Sprawdzanie stanu i postępu przypisanej strategii
-> - Usuwanie strategii, która została przypisana do subskrypcji
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
 If it isn't already installed, follow the instructions in [Add the Az.Blueprint module](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) to install and validate the **Az.Blueprint** module from the PowerShell Gallery.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-blueprint"></a>Tworzenie strategii
 
@@ -397,9 +391,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj informacje na temat [cyklu życia strategii](./concepts/lifecycle.md).
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](./how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](./troubleshoot/general.md).
+In this quickstart, you've created, assigned, and removed a blueprint with PowerShell. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)

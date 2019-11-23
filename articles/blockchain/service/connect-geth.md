@@ -1,73 +1,67 @@
 ---
-title: Użyj Geth, aby dołączyć do usługi Azure łańcucha bloków Service
-description: Dołącz do wystąpienia Geth w węźle transakcji usługi Azure łańcucha bloków Service
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Use Geth to attach to Azure Blockchain Service
+description: Attach to a Geth instance on Azure Blockchain Service transaction node
 ms.date: 11/20/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 1c285a7b5cc04aa330e9f68fdb82cfd099a19e03
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 1da38ebd3a264ea173626cc0858d82cd1fc3f30e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285278"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325322"
 ---
-# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Szybki Start: używanie Geth do dołączania do węzła transakcji usługi Azure łańcucha bloków Service
+# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Quickstart: Use Geth to attach to an Azure Blockchain Service transaction node
 
-W tym przewodniku szybki start użyjesz klienta Geth do dołączenia do wystąpienia Geth w węźle transakcji usługi Azure łańcucha bloków. Po dołączeniu należy użyć konsoli JavaScript Geth do wywołania web3 JavaScript Dapp API.
+In this quickstart, you use the Geth client to attach to a Geth instance on an Azure Blockchain Service transaction node. Once attached, you use the Geth JavaScript console to call a web3 JavaScript Dapp API.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj [Geth](https://github.com/ethereum/go-ethereum/wiki/geth)
-* Kończenie [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków usługi Azure łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
+* Install [Geth](https://github.com/ethereum/go-ethereum/wiki/geth)
+* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
 
-## <a name="get-geth-connection-string"></a>Pobierz parametry połączenia usługi Geth
+## <a name="get-geth-connection-string"></a>Get Geth connection string
 
-Parametry połączenia Geth można uzyskać dla węzła transakcji usługi Azure łańcucha bloków w Azure Portal.
+You can get the Geth connection string for an Azure Blockchain Service transaction node in the Azure portal.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków. Wybierz pozycję **węzły transakcji** i domyślne łącze węzła transakcji.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Go to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
 
-    ![Wybierz domyślny węzeł transakcji](./media/connect-geth/transaction-nodes.png)
+    ![Select default transaction node](./media/connect-geth/transaction-nodes.png)
 
-1. Wybierz **Parametry połączenia**.
-1. Skopiuj parametry połączenia z **protokołu HTTPS (dostęp do klucza 1)** . Potrzebujesz ciągu dla następnej sekcji.
+1. Select **Connection strings**.
+1. Copy the connection string from **HTTPS (Access key 1)** . You need the string for the next section.
 
     ![Parametry połączenia](./media/connect-geth/connection-string.png)
 
-## <a name="connect-to-geth"></a>Nawiązywanie połączenia z usługą Geth
+## <a name="connect-to-geth"></a>Connect to Geth
 
-1. Otwórz wiersz polecenia lub powłokę.
-1. Użyj podpolecenia Geth Attach, aby dołączyć do uruchomionego wystąpienia Geth w węźle Transaction. Wklej parametry połączenia jako argument dla podpolecenia Attach. Na przykład:
+1. Open a command prompt or shell.
+1. Use the Geth attach subcommand to attach to the running Geth instance on your transaction node. Paste the connection string as an argument for the attach subcommand. Na przykład:
 
     ``` bash
     geth attach <connection string>
     ```
 
-1. Po nawiązaniu połączenia z konsolą Ethereum węzła transakcji można wywołać interfejs API usługi web3 JavaScript Dapp lub interfejs API administratora.
+1. Once connected to the transaction node's Ethereum console, you can call the web3 JavaScript Dapp API or the admin API.
 
-    Na przykład użyj poniższego interfejsu API, aby dowiedzieć się chainId.
+    For example, use the following API to find out the chainId.
 
     ``` bash
     admin.nodeInfo.protocols.istanbul.config.chainId
     ```
 
-    W tym przykładzie chainId jest 661.
+    In this example, the chainId is 661.
 
-    ![Opcja usługi Azure łańcucha bloków](./media/connect-geth/geth-attach.png)
+    ![Azure Blockchain Service option](./media/connect-geth/geth-attach.png)
 
-1. Aby rozłączyć się z konsolą programu, wpisz `exit`.
+1. To disconnect from the console, type `exit`.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start użyto klienta Geth do dołączenia do wystąpienia Geth w węźle transakcji usługi Azure łańcucha bloków. Wypróbuj następny samouczek, aby użyć usługi Azure łańcucha bloków Development Kit dla Ethereum do tworzenia, kompilowania, wdrażania i wykonywania funkcji kontraktu inteligentnego za pośrednictwem transakcji.
+In this quickstart, you used the Geth client to attach to a Geth instance on an Azure Blockchain Service transaction node. Try the next tutorial to use Azure Blockchain Development Kit for Ethereum to create, build, deploy, and execute a smart contract function via a transaction.
 
 > [!div class="nextstepaction"]
-> [Używanie Visual Studio Code do tworzenia, kompilowania i wdrażania kontraktów inteligentnych](send-transaction.md)
+> [Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md)

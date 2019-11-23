@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Create a custom policy definition'
 description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
-ms.date: 04/23/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: 743e3dea3c6daa7b2e713f2b1d5c1691d60785ec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d93f1acb383782de055983ec9ec33ce5576619d1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216702"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327411"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
 
@@ -31,6 +31,8 @@ Proces tworzenia zasad niestandardowych obejmuje następujące kroki:
 > - Określanie efektu do użycia
 > - Tworzenie definicji zasad
 
+## <a name="prerequisites"></a>Wymagania wstępne
+
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="identify-requirements"></a>Określanie wymagań
@@ -50,12 +52,17 @@ Based on the business requirement, the Azure resource to audit with Azure Policy
 
 Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
+- Azure Policy extension for VS Code
 - Szablony Menedżera zasobów
   - Eksportowanie istniejącego zasobu
   - Środowisko tworzenia
   - Szablony Szybki start (GitHub)
   - Dokumentacja szablonu
 - Eksplorator zasobów Azure
+
+### <a name="view-resources-in-vs-code-extension"></a>View resources in VS Code extension
+
+The [VS Code extension](../how-to/extension-for-vscode.md#search-for-and-view-resources) can be used to browse resources in your environment and see the Resource Manager properties on each resource.
 
 ### <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
 
@@ -156,9 +163,14 @@ Zidentyfikowaliśmy właściwość zasobu, ale musimy zamapować tę właściwo�
 
 Istnieje kilka sposobów określenia aliasów dla zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
+- Azure Policy extension for VS Code
 - Interfejs wiersza polecenia platformy Azure
 - Program Azure PowerShell
 - Graf zasobów platformy Azure
+
+### <a name="get-aliases-in-vs-code-extension"></a>Get aliases in VS Code extension
+
+The Azure Policy extension for VS Code extension makes it easy to browse your resources and [discover aliases](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -188,7 +200,7 @@ Podobnie jak w przypadku interfejsu wiersza polecenia platformy Azure, w wynikac
 
 ### <a name="azure-resource-graph"></a>Graf zasobów platformy Azure
 
-[Azure Resource Graph](../../resource-graph/overview.md) to nowa usługa dostępna w wersji zapoznawczej. Oferuje ona kolejną metodę znajdowania właściwości zasobów platformy Azure. Tutaj przedstawiono przykładowe zapytanie umożliwiające przejrzenie pojedynczego konta magazynu przy użyciu usługi Resource Graph:
+[Azure Resource Graph](../../resource-graph/overview.md) is a new service. Oferuje ona kolejną metodę znajdowania właściwości zasobów platformy Azure. Tutaj przedstawiono przykładowe zapytanie umożliwiające przejrzenie pojedynczego konta magazynu przy użyciu usługi Resource Graph:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -301,12 +313,11 @@ Tutaj przedstawiono przykładowe dane wyjściowe dla konta magazynu dotyczące a
 }
 ```
 
-Usługi Azure Resource Graph (wersja zapoznawcza) można używać za pośrednictwem usługi [Cloud Shell](https://shell.azure.com), co ułatwia i przyspiesza eksplorowanie właściwości zasobów.
+Azure Resource Graph can be used through [Cloud Shell](https://shell.azure.com), making it a fast and easy way to explore the properties of your resources.
 
 ## <a name="determine-the-effect-to-use"></a>Określanie efektu do użycia
 
-Określenie, co należy zrobić z niezgodnymi zasobami, jest niemal tak ważne, jak zdecydowanie, co należy ocenić w pierwszej kolejności. Każda możliwa odpowiedź na niezgodny zasób jest nazywana [efektem](../concepts/effects.md).
-Efekt kontroluje, czy niezgodny zasób jest rejestrowany, blokowany, czy są dołączane do niego dane lub czy jest z nim kojarzone wdrożenie przywracające zasób do stanu zgodności.
+Określenie, co należy zrobić z niezgodnymi zasobami, jest niemal tak ważne, jak zdecydowanie, co należy ocenić w pierwszej kolejności. Każda możliwa odpowiedź na niezgodny zasób jest nazywana [efektem](../concepts/effects.md). Efekt kontroluje, czy niezgodny zasób jest rejestrowany, blokowany, czy są dołączane do niego dane lub czy jest z nim kojarzone wdrożenie przywracające zasób do stanu zgodności.
 
 W naszym przykładzie efekt to Deny (Odmów), ponieważ nie chcemy tworzenia niezgodnych zasobów w naszym środowisku platformy Azure. Audit (Inspekcja) jest dobrym pierwszym wyborem dla efektu zasad, umożliwiając określenie wpływu zasad przed ustawieniem dla nich efektu Deny (Odmów). Jednym ze sposobów na ułatwienie modyfikowania efektu dla przypisania jest sparametryzowanie efektu. Zobacz [Parametry](#parameters) poniżej, aby uzyskać szczegółowe informacje na ten temat.
 

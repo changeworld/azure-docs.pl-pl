@@ -1,88 +1,116 @@
 ---
-title: Przykład wypowiedź jednostki etykiety
+title: Label entity example utterance
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak dodać etykietę do jednostki uczenia maszynowego za pomocą podskładników w przykładowej wypowiedź na stronie szczegółów obiektu w portalu LUIS.
+description: Learn how to label a machine-learned entity with subcomponents in an example utterance in an intent detail page of the LUIS portal.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/15/2019
+ms.date: 11/21/2019
 ms.author: diberry
-ms.openlocfilehash: 87b7375b2da0effbc18fff6a7e9d67383c93a403
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74135110"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383699"
 ---
-# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Etykieta jednostki doznanej przez maszynę w przykładzie wypowiedź
+# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Label machine-learned entity in an example utterance
 
-Etykieta jednostki w przykładzie wypowiedź pokazuje, że LUIS zawiera przykład jednostki i miejsce, w którym jednostka może być wyświetlana w wypowiedź. 
+Labeling an entity in an example utterance gives LUIS an example of what the entity is and where the entity can appear in the utterance. 
 
-## <a name="labeling-machine-learned-entity"></a>Etykieta jednostki uczenia maszynowego
+## <a name="labeling-machine-learned-entity"></a>Labeling machine-learned entity
 
-Rozważ wyrażenie `hi, please I want a cheese pizza in 20 minutes`. 
+Consider the phrase, `hi, please I want a cheese pizza in 20 minutes`. 
 
-1. Zaznacz tekst z lewej strony, a następnie wybierz prawym przyciskiem myszy tekst jednostki. _Pełna kolejność_ jest oznaczona na poniższej ilustracji.
+1. Select the left-most text, then select the right-most text of the entity, then pick the entity you want to label with, in this case Complete Order. The _complete order_ is labeled in the following image.
 
     > [!div class="mx-imgBorder"]
-    > Etykieta ![Pełna jednostka poznania maszynowego](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
+    > ![Label complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. Wybierz jednostkę z okna podręcznego. Jednostka etykiety pełna kolejność Pizza obejmuje wszystkie słowa (od lewej do prawej w języku angielskim), które są oznaczone etykietami. 
+1. Select the entity from the pop-up window. The labeled complete pizza order entity includes all words (from left to right in English) that are labeled. 
 
-> [!TIP]
-> Jednostki dostępne w oknie podręcznym odnoszą się do kontekstu, w którym pojawia się tekst. Na przykład jeśli masz zainstalowaną maszynę 5-poziomą jednostkę i wybierasz tekst na poziomie trzeciego (wskazywanym przez nazwę jednostki oznaczonej etykietą w przykładzie wypowiedź), jednostki dostępne w oknie podręcznym są ograniczone do kontekstu podskładników trzeciego poziom (podskładniki poziomu czwartego). 
+## <a name="review-labeled-text"></a>Review labeled text
 
-## <a name="review-labeled-text"></a>Przejrzyj tekst z etykietą
-
-Po etykietowaniu zapoznaj się z przykładem wypowiedź. LUIS stosuje bieżący model do przykład wypowiedź po etykiecie. Linia ciągła wskazuje, że tekst został oznaczony etykietą. 
+After labeling, review the example utterance and ensure the selected span of text has been underlined with the chosen entity. The solid line indicates the text has been labeled. 
 
 > [!div class="mx-imgBorder"]
-> ![oznaczona jako pełna jednostka poznania maszynowego](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
+> ![Labeled complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
 
-## <a name="when-to-train"></a>Kiedy nauczenie
+## <a name="confirm-predicted-entity"></a>Confirm predicted entity
 
-Jeśli bieżący model powinien obsługiwać jednostkę oznaczoną etykietą, ale przykład wypowiedź nadal wyświetla tekst jako predykcyjny, ale nie jest oznaczony etykietą, nauczenie aplikacji.  
-
-## <a name="confirm-predicted-entity"></a>Potwierdź jednostkę predykcyjną
-
-Jeśli wskaźnik wizualizacji znajduje się powyżej wypowiedź, oznacza to, że tekst jest przewidywany, ale _nie jest jeszcze oznaczony_. Aby włączyć prognozowanie do etykiety, wybierz wypowiedź, a następnie wybierz pozycję **Potwierdź przewidywania jednostek**.
+If there is a dotted-lined box around the span of text and the entity name is above the utterance, it indicates the text is predicted but _not labeled yet_. To turn the prediction into a label, select the utterance row, then select **Confirm entity predictions**.
 
 > [!div class="mx-imgBorder"]
-> ![przewidywanie kompletnej jednostki, na którą nauczysz się](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
+> ![Predict complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
 
-## <a name="label-subcomponent-entity-by-painting-with-entity-palette-cursor"></a>Oznacz jednostkę elementu podskładnikowego przez malowanie kursorem palety jednostek
-
-1. Aby poprawić przewidywania (jednostki, które pojawiają się powyżej przykładu wypowiedź), Otwórz paletę Entity. 
-
-    > [!div class="mx-imgBorder"]
-    > ![paleta jednostek dla jednostki, która jest pouczenia maszynowego](media/label-utterances/pizza-entity-palette-with-pizza-type-selected.png)
-
-1. Wybierz podskładnik jednostki. Ta akcja jest wskazywana wizualnie z nowym kursorem. Kursor jest podążany podczas przenoszenia w portalu. 
-
-    > [!div class="mx-imgBorder"]
-    > ![paleta jednostek dla jednostki, która jest pouczenia maszynowego](media/label-utterances/pizza-type-entity-palette-cursor.png)
-
-1. W przykładzie wypowiedź, _maluj_ jednostki za pomocą kursora. 
-
-    > [!div class="mx-imgBorder"]
-    > ![paleta jednostek dla jednostki, która jest pouczenia maszynowego](media/label-utterances/paint-subcomponent-with-entity-palette-cursor.png)
-
-## <a name="labeling-matching-text-entities-to-a-machine-learned-entity"></a>Etykietowanie jednostek dopasowywania tekstu do jednostki uczeniej maszynowej
-
-Jednostki dopasowywania tekstu obejmują wstępnie utworzone jednostki, jednostki wyrażeń regularnych i jednostki listy. Te informacje są dodawane do jednostki, która jest wykorzystana przez maszynę jako warunki ograniczające do podskładniku, podczas tworzenia lub edytowania jednostki, której dotyczy dana maszyna. 
-
-**Po dodaniu tych ograniczeń nie trzeba etykietować pasującego tekstu w przykładzie wypowiedź.**
-
-## <a name="entity-prediction-errors"></a>Błędy przewidywania jednostek
-
-Błędy przewidywania jednostek pokazują wskaźnik ostrzegawczy. Wskazuje to, że przewidywana jednostka nie jest zgodna z oznaczona jednostką. 
+Alternatively, you could select the entity name above the text, then select **Confirm Prediction** from the menu that appears.
 
 > [!div class="mx-imgBorder"]
-> ![paleta jednostek dla jednostki, która jest pouczenia maszynowego](media/label-utterances/example-utterance-indicates-prediction-error.png)
+> ![Predict complete machine-learned entity with menu](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
+
+## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Label entity by painting with entity palette cursor
+
+The entity palette offers an alternative to the previous labeling experience. It allows you to brush over text to instantly label it with an entity.
+
+1. Open the entity palette by selecting on the Highlighter icon at the top right of the utterance table. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
+
+2. Select the entity component. This action is visually indicated with a new cursor. The cursor follows the mouse as you move in the portal. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
+
+3. In the example utterance, _paint_ the entity with the cursor.
+
+    > [!div class="mx-imgBorder"]
+    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+
+## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Labeling subcomponents of a machine learned entity
+
+Subcomponents in entities are labeled exactly the same way as top level entities. When selecting text, the entities available in the pop-up window are relative to the context in which the text appears. For example, if you have a 5-level machine-learned entity, and you are selecting text that has been labeled with the 1st and 2nd levels (indicated by a labeled entity name under the example utterance), the entities available in the pop-up window are limited to the context of components of the 3rd level. To label the text with other entities, select **Label as another entity** option.
+
+> [!div class="mx-imgBorder"]
+> ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+
+Subcomponents can be labeled only if the parent is also labeled. 
+
+## <a name="unlabel-entities"></a>Unlabel entities
+
+To unlabel an entity, select the entity name underneath the text and select **Unlabel**. If the entity you are trying to unlabel has labeled subcomponents, then the subcomponents must be unlabeled first. 
+
+## <a name="editing-labels-using-the-entity-palette"></a>Editing labels using the entity palette
+
+If you make a mistake while labeling, the entity palette is an easy tool that allows for quick edits. For example, if an entity label spans an extra word by mistake, and it already has labeled subcomponents, then you can use the entity palette to brush over the required shorter span of words.
+
+Na przykład:
+
+1. Pizza Type subcomponent spans "cheese pizza with" which includes an extra incorrect word -- "with"
+
+    > [!div class="mx-imgBorder"]
+    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-1.png)
+
+2. Use the entity palette to pick Pizza Type and brush over "cheese pizza". The outcome is that only cheese pizza is labeled as Pizza Type now.
+
+    > [!div class="mx-imgBorder"]
+    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-2.png)
+
+
+## <a name="labels-for-matching-text-entities"></a>Labels for matching-text entities
+
+Matching-text entities include prebuilt entities, regular expression entities, list entities, and pattern.any entities. These are automatically labeled by LUIS so they are not required to be manually labeled by users.
+
+## <a name="entity-prediction-errors"></a>Entity prediction errors
+
+Entity prediction errors indicate the predicted entity doesn't match the labeled entity. This is visualized with a caution indicator next to the utterance.
+
+> [!div class="mx-imgBorder"]
+> ![Entity palette for machine-learned entity](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Użyj [pulpitu nawigacyjnego](luis-how-to-use-dashboard.md) i [Przejrzyj wyrażenia długości punktu końcowego](luis-how-to-review-endpoint-utterances.md) , aby zwiększyć jakość przewidywania aplikacji.
+Use the [dashboard](luis-how-to-use-dashboard.md) and [review endpoint utterances](luis-how-to-review-endpoint-utterances.md) to improve the prediction quality of your app.

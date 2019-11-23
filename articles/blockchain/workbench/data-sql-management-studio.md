@@ -1,25 +1,20 @@
 ---
-title: Używanie danych usługi Azure łańcucha bloków Workbench z bazą danych SQL
+title: Query Azure Blockchain Workbench data using SQL Server Management Studio
 description: Dowiedz się, jak nawiązać połączenie z bazą danych SQL usługi Azure Blockchain Workbench z poziomu programu SQL Server Management Studio.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 11/20/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 3a734c09b3a74fbe4165f4de25ce450fd3fbde1d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: f87d1880c90202fa26b0477e3b4dfbed5965bb82
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286723"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326035"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Korzystanie z danych usługi Azure Blockchain Workbench w programie SQL Server Management Studio
 
-Microsoft SQL Server Management Studio zapewnia możliwość szybkiego zapisywania i testowania zapytań względem bazy danych SQL usługi Azure łańcucha bloków Workbench. Ta sekcja zawiera przewodnik krok po kroku dotyczący sposobu nawiązywania połączenia z SQL Databaseem usługi Azure łańcucha bloków Workbench z poziomu SQL Server Management Studio.
+Microsoft SQL Server Management Studio provides the ability to rapidly write and test queries against Azure Blockchain Workbench's SQL DB. This section contains a step-by-step walkthrough of how to connect to Azure Blockchain Workbench's SQL Database from within SQL Server Management Studio.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,7 +38,7 @@ Microsoft SQL Server Management Studio zapewnia możliwość szybkiego zapisywan
       ![Lista baz danych](./media/data-sql-management-studio/db-list.png)
 
 5. Aby wyświetlić dane skojarzone z dowolnymi widokami bazy danych, możesz automatycznie wygenerować instrukcję select, wykonując następujące kroki.
-6. Kliknij prawym przyciskiem myszy dowolny widok bazy danych w Eksplorator obiektów.
+6. Right-click any of the database views in the Object Explorer.
 7. Wybierz pozycję **Skrypt widoku jako**.
 8. Wybierz pozycję **SELECT to**.
 9. Wybierz pozycję **Nowe okno edytora zapytań**.

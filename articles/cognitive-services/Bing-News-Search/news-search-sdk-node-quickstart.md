@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wyszukiwanie wiadomości dla środowiska Node.js przy użyciu zestawu SDK wyszukiwania wiadomości Bing'
+title: 'Quickstart: Perform a news search using the SDK for Node.js - Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki start, aby wyszukać wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla platformy Node.js i przetworzyć odpowiedź.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c71d76e93eb1a121163d40fe61dcd5a8546d63f8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9bbad7685cf7d562189871bb5fa4a56d69287db4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203356"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383898"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Szybki start: Wyszukiwanie wiadomości przy użyciu zestawu SDK wyszukiwania wiadomości Bing dla platformy Node.js
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Quickstart: Perform a news search with the Bing News Search SDK for Node.js
 
 Użyj tego przewodnika Szybki start, aby rozpocząć wyszukiwanie wiadomości za pomocą zestawu SDK wyszukiwania wiadomości Bing dla platformy Node.js. Mimo że wyszukiwanie wiadomości Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe zintegrowanie tej usługi z aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
 
@@ -35,7 +35,7 @@ Aby skonfigurować aplikację konsolową przy użyciu zestawu SDK wyszukiwania w
 
 ## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
-1. Utwórz wystąpienie elementu `CognitiveServicesCredentials`. Utwórz zmienne dla swój klucz subskrypcji i termin wyszukiwania.
+1. Utwórz wystąpienie elementu `CognitiveServicesCredentials`. Create variables for your subscription key, and a search term.
 
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
@@ -69,7 +69,7 @@ Ten kod wyświetla elementy `result.value` w konsoli bez analizowania tekstu. Wy
 - `_type: 'VideoObject'`
 - `_type: 'ImageObject'`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)

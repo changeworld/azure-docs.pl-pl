@@ -1,134 +1,134 @@
 ---
-title: Przykład planu PCI-DSS v 3.2.1 plan kontroli
-description: Sterowanie mapowaniem z przykładowej strategii branżowej Data Security Standard v 3.2.1 do Azure Policy i RBAC.
+title: PCI-DSS v3.2.1 blueprint sample - Control mapping
+description: Control mapping of the Payment Card Industry Data Security Standard v3.2.1 blueprint sample to Azure Policy and RBAC.
 ms.date: 06/24/2019
-ms.topic: conceptual
-ms.openlocfilehash: d3e72f923ea3d752d829731d1f741bda090ae9fd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.topic: sample
+ms.openlocfilehash: 050f138e3235c40e44642b6642394f4800450d91
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037278"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406809"
 ---
-# <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu PCI-DSS v 3.2.1
+# <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Control mapping of the PCI-DSS v3.2.1 blueprint sample
 
-W poniższym artykule szczegółowo opisano sposób, w jaki usługa Azure planuje plan PCI-DSS v 3.2.1, jest mapowana na kontrolki PCI-DSS v 3.2.1. Aby uzyskać więcej informacji na temat kontrolek, zobacz [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
+The following article details how the Azure Blueprints PCI-DSS v3.2.1 blueprint sample maps to the PCI-DSS v3.2.1 controls. For more information about the controls, see [PCI-DSS v3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-Następujące mapowania są do kontrolek **PCI-DSS v 3.2.1:2018 r** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz pozycję **\[wersja Zapoznawcza\] inspekcji PCI v 3.2.1:2018 r Controls i Wdróż określone rozszerzenia maszyn wirtualnych, aby zapewnić obsługę zasad inspekcji** wbudowanej.
+The following mappings are to the **PCI-DSS v3.2.1:2018** controls. Use the navigation on the right to jump directly to a specific control mapping. Many of the mapped controls are implemented with an [Azure Policy](../../../policy/overview.md) initiative. To review the complete initiative, open **Policy** in the Azure portal and select the **Definitions** page. Then, find and select the **\[Preview\] Audit PCI v3.2.1:2018 controls and deploy specific VM Extensions to support audit requirements** built-in policy initiative.
 
 > [!IMPORTANT]
-> Każda kontrolka poniżej jest skojarzona z co najmniej jedną definicją [Azure Policy](../../../policy/overview.md) . Te zasady mogą pomóc w [ocenie zgodności](../../../policy/how-to/get-compliance-data.md) z kontrolką; Niemniej jednak często nie jest to 1:1 ani kompletna zgodność między kontrolką a co najmniej jedną zasadą. W związku z tym **zgodność** w Azure Policy odnosi się tylko do samych zasad; nie gwarantuje to, że jest w pełni zgodne ze wszystkimi wymaganiami formantu. Ponadto Standard zgodności zawiera kontrolki, które nie są obecnie rozwiązywane przez żadną Azure Policy definicje. W związku z tym zgodność w Azure Policy jest tylko częściowym widokiem ogólnego stanu zgodności. Skojarzenia między kontrolkami i definicjami Azure Policy dla tego przykładowego planu zgodności mogą ulec zmianie z upływem czasu. Aby wyświetlić historię zmian, zobacz [historię zatwierdzeń usługi GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
+> Each control below is associated with one or more [Azure Policy](../../../policy/overview.md) definitions. These policies may help you [assess compliance](../../../policy/how-to/get-compliance-data.md) with the control; however, there often is not a 1:1 or complete match between a control and one or more policies. As such, **Compliant** in Azure Policy refers only to the policies themselves; this doesn't ensure you're fully compliant with all requirements of a control. In addition, the compliance standard includes controls that aren't addressed by any Azure Policy definitions at this time. Therefore, compliance in Azure Policy is only a partial view of your overall compliance status. The associations between controls and Azure Policy definitions for this compliance blueprint sample may change over time. To view the change history, see the [GitHub Commit History](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
 
-## <a name="132-and-134-boundary-protection"></a>1.3.2 i 1.3.4 granice ochrony
+## <a name="132-and-134-boundary-protection"></a>1.3.2 and 1.3.4 Boundary Protection
 
-Ten plan ułatwia zarządzanie sieciami i sterowanie nimi przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które monitorują grupy zabezpieczeń sieci z regułami ograniczającymi. Reguły, które są zbyt ograniczane, mogą zezwalać na niezamierzony dostęp do sieci i powinny być przeglądane. Ten plan przypisuje jedną Azure Policy definicji, które monitorują niechronione punkty końcowe, aplikacje i konta magazynu. Punkty końcowe i aplikacje, które nie są chronione przez zaporę, i konta magazynu z nieograniczonym dostępem mogą zezwalać na nieograniczony dostęp do informacji zawartych w systemie informacyjnym.
+This blueprint helps you manage and control networks by assigning [Azure Policy](../../../policy/overview.md) definitions that monitors network security groups with permissive rules. Rules that are too permissive may allow unintended network access and should be reviewed. This blueprint assigns one Azure Policy definitions that monitor unprotected endpoints, applications, and storage accounts. Endpoints and applications that aren't protected by a firewall, and storage accounts with unrestricted access can allow unintended access to information contained within the information system.
 
-- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
-- Dostęp za poorednictwem punktu końcowego połączonego z Internetem powinien być ograniczony
+- Audit unrestricted network access to storage accounts
+- Access through Internet facing endpoint should be restricted
 
-## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a, 4,1, 4.1. g, 4.1. h i 6.5.3, ochrona kryptograficzna
+## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4.a, 4.1, 4.1.g, 4.1.h and 6.5.3 Cryptographic Protection
 
-Ten plan pomaga wymuszać zasady przy użyciu kontrolek cryptograph, przypisując definicje [Azure Policy](../../../policy/overview.md) , które wymuszają określone kontrolki cryptograph i inspekcji używają słabych ustawień kryptograficznych. Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną konfigurację kryptograficzną, może pomóc w podejmowaniu działań naprawczych w celu zapewnienia, że zasoby są skonfigurowane zgodnie z zasadami zabezpieczeń informacji. W szczególnych przypadkach zasady przypisane przez ten plan wymagają przezroczystego szyfrowania danych w bazach danych SQL; Inspekcja braku szyfrowania na kontach magazynu i zmiennych konta usługi Automation. Istnieją również zasady, które umożliwiają przeprowadzenie inspekcji niezabezpieczonych połączeń z kontami magazynu, aplikacjami funkcji, WebApp, API Apps i Redis Cache i Przeprowadź inspekcję niezaszyfrowanej komunikacji Service Fabric.
+This blueprint helps you enforce your policy with the use of cryptograph controls by assigning [Azure Policy](../../../policy/overview.md) definitions which enforce specific cryptograph controls and audit use of weak cryptographic settings. Understanding where your Azure resources may have non-optimal cryptographic configurations can help you take corrective actions to ensure resources are configured in accordance with your information security policy. Specifically, the policies assigned by this blueprint require transparent data encryption on SQL databases; audit missing encryption on storage accounts, and automation account variables. There are also policies which address audit insecure connections to storage accounts, Function Apps, WebApp, API Apps, and Redis Cache, and audit unencrypted Service Fabric communication.
 
-- Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS
-- Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS
-- Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS
-- Należy włączyć Transparent Data Encryption baz danych SQL
-- Szyfrowanie dysków powinno być stosowane na maszynach wirtualnych
-- Zmienne konta usługi Automation powinny być szyfrowane
-- Należy włączyć tylko bezpieczne połączenia z Redis Cache
-- Należy włączyć bezpieczny transfer do kont magazynu
-- W klastrach Service Fabric Właściwość ClusterProtectionLevel ma ustawioną wartość EncryptAndSign
-- Należy włączyć Transparent Data Encryption baz danych SQL
-- Wdróż przezroczyste szyfrowanie danych SQL DB
+- Function App should only be accessible over HTTPS
+- Web Application should only be accessible over HTTPS
+- API App should only be accessible over HTTPS
+- Transparent Data Encryption on SQL databases should be enabled
+- Disk encryption should be applied on virtual machines
+- Automation account variables should be encrypted
+- Only secure connections to your Redis Cache should be enabled
+- Secure transfer to storage accounts should be enabled
+- Service Fabric clusters should have the ClusterProtectionLevel property set to EncryptAndSign
+- Transparent Data Encryption on SQL databases should be enabled
+- Deploy SQL DB transparent data encryption
 
-## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 i 11.2.1 luk w zabezpieczeniach oraz aktualizacje systemu
+## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5.1, 6.2, 6.6 and 11.2.1 Vulnerability Scanning and System Updates
 
-Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacyjnego przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które monitorują brakujące aktualizacje systemu, luki w zabezpieczeniach systemu operacyjnego i luki w zabezpieczeniach programu SQL Server w programie Azure Security Center. Azure Security Center udostępnia funkcje raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym.
+This blueprint helps you manage information system vulnerabilities by assigning [Azure Policy](../../../policy/overview.md) definitions that monitor missing system updates, operating system vulnerabilities, SQL vulnerabilities, and virtual machine vulnerabilities in Azure Security Center. Azure Security Center provides reporting capabilities that enable you to have real-time insight into the security state of deployed Azure resources.
 
-- Monitoruj brakujące Endpoint Protection w Azure Security Center
-- Wdróż domyślne rozszerzenie Microsoft IaaSAntimalware dla systemu Windows Server
-- Wdrażanie wykrywania zagrożeń na serwerach SQL
-- Aktualizacje systemu powinny być zainstalowane na maszynach
-- Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach należy skorygować
-- Luki w zabezpieczeniach baz danych SQL należy skorygować
-- Usterki należy skorygować przez rozwiązanie do oceny luk w zabezpieczeniach
+- Monitor missing Endpoint Protection in Azure Security Center
+- Deploy default Microsoft IaaSAntimalware extension for Windows Server
+- Deploy Threat Detection on SQL Servers
+- System updates should be installed on your machines
+- Vulnerabilities in security configuration on your machines should be remediated
+- Vulnerabilities on your SQL databases should be remediated
+- Vulnerabilities should be remediated by a Vulnerability Assessment solution
 
-## <a name="711-712-and-713-separation-of-duties"></a>7.1.1. 7.1.2 i 7.1.3 separacja obowiązków
+## <a name="711-712-and-713-separation-of-duties"></a>7.1.1. 7.1.2 and 7.1.3 Separation of Duties
 
-Posiadanie tylko jednego właściciela subskrypcji platformy Azure nie pozwala na nadmiarowość administracyjną. Bez względu na to, że zbyt wielu właścicieli subskrypcji platformy Azure może zwiększyć prawdopodobieństwo naruszenia za pośrednictwem konta właściciela z naruszeniem. Ten plan pomaga zachować odpowiednią liczbę właścicieli subskrypcji platformy Azure, przypisując definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję liczby właścicieli subskrypcji platformy Azure. Zarządzanie uprawnieniami właściciela subskrypcji może pomóc w zaimplementowaniu odpowiedniego rozdzielenia obowiązków.
+Having only one Azure subscription owner doesn't allow for administrative redundancy. Conversely, having too many Azure subscription owners can increase the potential for a breach via a compromised owner account. This blueprint helps you maintain an appropriate number of Azure subscription owners by assigning [Azure Policy](../../../policy/overview.md) definitions which audit the number of owners for Azure subscriptions. Managing subscription owner permissions can help you implement appropriate separation of duties.
 
-- Do subskrypcji powinien być przypisany więcej niż jeden właściciel
-- Dla subskrypcji należy wyznaczyć maksymalnie 3 właścicieli 
+- There should be more than one owner assigned to your subscription
+- A maximum of 3 owners should be designated for your subscription 
 
-## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a i 8.3.1. b zarządzanie prawami dostępu uprzywilejowanego
+## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2, 7.2.1, 8.3.1.a and 8.3.1.b Management of Privileged Access Rights
 
-Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego, przypisując definicje [Azure Policy](../../../policy/overview.md) do inspekcji kont zewnętrznych przy użyciu uprawnień właściciela, zapisu i/lub odczytu oraz kont pracowników z uprawnieniami właściciela i/lub zapisu, dla których nie włączono usługi uwierzytelniania wieloskładnikowego. Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC) w celu zarządzania dostępem do zasobów platformy Azure. Zrozumienie, gdzie są zaimplementowane niestandardowe reguły RBAC, może pomóc w sprawdzeniu potrzeby i właściwej implementacji, ponieważ niestandardowe reguły RBAC są podatne na błędy. Ten plan przypisuje również definicje [Azure Policy](../../../policy/overview.md) do inspekcji użycia uwierzytelniania Azure Active Directory dla serwerów SQL. Korzystanie z uwierzytelniania Azure Active Directory upraszcza zarządzanie uprawnieniami i scentralizowanie Zarządzanie tożsamościami użytkowników baz danych i innych firmy Microsoft  
-Services.
+This blueprint helps you restrict and control privileged access rights by assigning [Azure Policy](../../../policy/overview.md) definitions to audit external accounts with owner, write and/or read permissions and employee accounts with owner and/or write permissions that don't have multi-factor authentication enabled. Azure implements role-based access control (RBAC) to manage who has access to Azure resources. Understanding where custom RBAC rules are implement can help you verify need and proper implementation, as custom RBAC rules are error prone. This blueprint also assigns [Azure Policy](../../../policy/overview.md) definitions to audit use of Azure Active Directory authentication for SQL Servers. Using Azure Active Directory authentication simplifies permission management and centralizes identity management of database users and other Microsoft  
+services.
  
-- Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
+- External accounts with owner permissions should be removed from your subscription
 - Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji
-- Konta zewnętrzne z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji
-- Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji
-- W ramach usługi MFA należy włączyć konta z uprawnieniami do zapisu w Twojej subskrypcji
-- Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami do odczytu w ramach subskrypcji
-- Dla serwerów SQL powinien zostać zainicjowany administrator Azure Active Directory
-- Inspekcja użycia niestandardowych reguł RBAC
+- External accounts with read permissions should be removed from your subscription
+- MFA should be enabled on accounts with owner permissions on your subscription
+- MFA should be enabled accounts with write permissions on your subscription
+- MFA should be enabled on accounts with read permissions on your subscription
+- An Azure Active Directory administrator should be provisioned for SQL servers
+- Audit usage of custom RBAC rules
 
-## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 i 8.1.5 najniższe uprawnienia i przegląd praw dostępu użytkownika
+## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 and 8.1.5 Least Privilege and Review of User Access Rights
 
-Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC), aby ułatwić zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) do kont inspekcji, dla których należy określić priorytety dla przeglądu, w tym konta z amortyzacją i konta zewnętrzne z podniesionymi uprawnieniami.
+Azure implements role-based access control (RBAC) to helps you manage who has access to resources in Azure. Using the Azure portal, you can review who has access to Azure resources and their permissions. This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions to audit accounts that should be prioritized for review, including depreciated accounts and external accounts with elevated permissions.
 
-- Przestarzałe konta powinny zostać usunięte z subskrypcji
-- Przestarzałe konta z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
-- Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
+- Deprecated accounts should be removed from your subscription
+- Deprecated accounts with owner permissions should be removed from your subscription
+- External accounts with owner permissions should be removed from your subscription
 - Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji
-- Konta zewnętrzne z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji
+- External accounts with read permissions should be removed from your subscription
 
-## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 usunięcie lub dostosowanie praw dostępu
+## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 Removal or Adjustment of Access Rights
 
-Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC), która ułatwia zarządzanie dostępem do zasobów na platformie Azure. Korzystając z Azure Active Directory i RBAC, można aktualizować role użytkowników, aby odzwierciedlały zmiany organizacyjne. W razie potrzeby konta mogą być blokowane przed zalogowaniem (lub usunięciem), które natychmiast usuwa prawa dostępu do zasobów platformy Azure. Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) do inspekcji konta amortyzowanego, które należy wziąć pod uwagę podczas usuwania.
+Azure implements role-based access control (RBAC) to help you manage who has access to resources in Azure. Using Azure Active Directory and RBAC, you can update user roles to reflect organizational changes. When needed, accounts can be blocked from signing in (or removed), which immediately removes access rights to Azure resources. This blueprint assigns [Azure Policy](../../../policy/overview.md) definitions to audit depreciated account that should be considered for removal.
 
-- Przestarzałe konta powinny zostać usunięte z subskrypcji
-- Przestarzałe konta z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
+- Deprecated accounts should be removed from your subscription
+- Deprecated accounts with owner permissions should be removed from your subscription
 
-## <a name="823ab-824ab-and-825-password-based-authentication"></a>8.2.3. a, b, 8.2.4. a, b i 8.2.5 uwierzytelniania opartego na hasłach
+## <a name="823ab-824ab-and-825-password-based-authentication"></a>8.2.3.a,b, 8.2.4.a,b and 8.2.5 Password-based Authentication
 
-Ten plan pomaga wymusić silne hasła, przypisując definicje [Azure Policy](../../../policy/overview.md) , które umożliwiają inspekcję maszyn wirtualnych z systemem Windows, które nie wymuszają minimalnej siły i innych wymagań dotyczących hasła Świadomość maszyn wirtualnych w przypadku naruszenia zasad dotyczących siły haseł ułatwia podejmowanie działań naprawczych w celu zapewnienia zgodności haseł dla wszystkich kont użytkowników maszyny wirtualnej z zasadami.
+This blueprint helps you enforce strong passwords by assigning [Azure Policy](../../../policy/overview.md) definitions that audit Windows VMs that don't enforce minimum strength and other password requirements. Awareness of VMs in violation of the password strength policy helps you take corrective actions to ensure passwords for all VM user accounts are compliant with policy.
 
-- Wersja zapoznawcza \[\]: Inspekcja maszyn wirtualnych z systemem Windows bez maksymalnego wieku hasła 70 dni
-- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
-- \[Podgląd\]: Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
-- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
-- Wersja zapoznawcza \[\]: Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, które zezwalają na ponowne korzystanie z poprzednich 24 haseł
-- \[Podgląd\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
+- \[Preview\]: Audit Windows VMs that do not have a maximum password age of 70 days
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
+- \[Preview\]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
+- \[Preview\]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
+- \[Preview\]: Audit Windows VMs that allow re-use of the previous 24 passwords
+- \[Preview\]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
 
-## <a name="103-and-1054-audit-generation"></a>10,3 i Generowanie inspekcji 10.5.4
+## <a name="103-and-1054-audit-generation"></a>10.3 and 10.5.4 Audit Generation
 
-Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które Przeprowadź inspekcję ustawień dziennika w zasobach platformy Azure.
-Dzienniki diagnostyczne zapewniają wgląd w operacje wykonywane w ramach zasobów platformy Azure. Dzienniki systemu Azure są oparte na zsynchronizowaniu zegarów wewnętrznych w celu utworzenia skorelowanego rekordu zdarzeń między zasobami.
+This blueprint helps you ensure system events are logged by assigning [Azure Policy](../../../policy/overview.md) definitions that audit log settings on Azure resources.
+Diagnostic logs provide insight into operations that were performed within Azure resources. Azure logs rely on synchronized internal clocks to create a time-correlated record of events across resources.
 
-- Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
+- Auditing should be enabled on advanced data security settings on SQL Server
 - Przeprowadzanie inspekcji ustawienia diagnostyki
-- Inspekcja ustawień inspekcji poziomu serwera SQL
-- Wdrażanie inspekcji na serwerach SQL
-- Konta magazynu należy migrować do nowych zasobów Azure Resource Manager
-- Maszyny wirtualne należy migrować do nowych zasobów Azure Resource Manager
+- Audit SQL server level Auditing settings
+- Deploy Auditing on SQL servers
+- Storage accounts should be migrated to new Azure Resource Manager resources
+- Virtual machines should be migrated to new Azure Resource Manager resources
 
-## <a name="1236-and-1237-information-security"></a>Zabezpieczenia informacji 12.3.6 i 12.3.7
+## <a name="1236-and-1237-information-security"></a>12.3.6 and 12.3.7 Information Security
 
-Ten plan ułatwia zarządzanie siecią i sterowanie nią przez przypisanie [Azure Policyych](../../../policy/overview.md) definicji, które przeprowadzają inspekcję akceptowalnych lokalizacji sieciowych i zatwierdzonych produktów firmy dozwolonych dla środowiska. Są one dostosowywane przez każdą firmę za pomocą parametrów zasad w ramach każdej z tych zasad.
+This blueprint helps you manage and control your network by assigning [Azure Policy](../../../policy/overview.md) definitions that audit the acceptable network locations and the approved company products allowed for the environment. These are customizable by each company through the policy parameters within each of these policies.
 
 - Dozwolone lokalizacje
-- Dozwolone lokalizacje grup zasobów
+- Allowed locations for resource groups
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po przejrzeniu mapowania kontroli planu PCI-DSS v 3.2.1 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat omówienia i sposobu wdrażania tego przykładu:
+Now that you've reviewed the control mapping of the PCI-DSS v3.2.1 blueprint, visit the following articles to learn about the overview and how to deploy this sample:
 
 > [!div class="nextstepaction"]
-> [Plan PCI-DSS v 3.2.1 — omówienie](./index.md)
-> [PCI-DSS v 3.2.1 plan — kroki wdrażania](./deploy.md)
+> [PCI-DSS v3.2.1 blueprint - Overview](./index.md)
+> [PCI-DSS v3.2.1 blueprint - Deploy steps](./deploy.md)
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 

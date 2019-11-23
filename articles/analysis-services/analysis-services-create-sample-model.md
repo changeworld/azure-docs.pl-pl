@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Dodawanie przykładowego modelu — Azure Analysis Services | Microsoft Docs
+title: Tutorial - Add a sample model- Azure Analysis Services | Microsoft Docs
 description: W tej lekcji samouczka nauczysz się, jak dodać przykładowy model w usługach Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f76ec20da73c778d024feea9df113de9e4aa0fe9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573083"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326575"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Samouczek: Dodawanie przykładowego modelu z portalu
 
@@ -43,7 +43,7 @@ Zaloguj się do [portalu](https://portal.azure.com/).
 
     ![Tworzenie przykładowego modelu](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. W obszarze **Nowy model** > **Wybierz źródło danych**, sprawdź, czy wybrano **przykładowe dane** , a następnie kliknij przycisk **Dodaj**.
+2. In **New model** > **Choose a data source**,  verify **Sample data** is selected, and then click **Add**.
 
     ![Wybieranie przykładowych danych](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
@@ -62,7 +62,7 @@ W poniższych krokach opisano sposób usuwania modelu z serwera za pomocą progr
 
 2. W polu **Połącz z serwerem** wklej nazwę serwera, a następnie w polu **Uwierzytelnianie** wybierz pozycję **Active Directory — Uniwersalne z obsługą uwierzytelniania wieloskładnikowego**, wprowadź nazwę użytkownika, a następnie kliknij pozycję **Połącz**.
 
-    ![Logowanie](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
+    ![Zaloguj](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
 3. W **Eksploratorze obiektów** kliknij prawym przyciskiem myszy przykładową bazę danych `adventureworks`, a następnie kliknij pozycję **Usuń**.
 
@@ -73,6 +73,6 @@ W poniższych krokach opisano sposób usuwania modelu z serwera za pomocą progr
 W tym samouczku przedstawiono sposób dodawania podstawowego, przykładowego modelu na serwerze. Teraz, gdy już masz bazę danych modelu, możesz nawiązać z nią połączenie z programu SQL Server Management Studio i dodać role użytkowników. Aby dowiedzieć się więcej, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Konfigurowanie ról administratora i użytkowników serwera](analysis-services-database-users.md)
+> [Samouczek: Konfigurowanie ról administratora i użytkowników serwera](tutorials/analysis-services-tutorial-roles.md)
 
 

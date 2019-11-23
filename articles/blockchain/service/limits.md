@@ -1,67 +1,61 @@
 ---
-title: Limity usługi Azure łańcucha bloków
-description: Omówienie limitów usługi i funkcjonalności w usłudze Azure łańcucha bloków Service
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Service limits
+description: Overview of the service and functional limits in Azure Blockchain Service
 ms.date: 05/02/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 20c26db9453220270d17801b74d904384c74cb36
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0500d7c5e2d05d185b4d032a33c008726d996df1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577215"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326155"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Limity w usłudze Azure łańcucha bloków Service
+# <a name="limits-in-azure-blockchain-service"></a>Limits in Azure Blockchain Service
 
-Usługa Azure łańcucha bloków ma limity usługi i funkcjonalne, takie jak liczba węzłów, które może mieć członek, ograniczenia konsorcjum i kwoty magazynu.
+Azure Blockchain Service has service and functional limits such as the number of nodes a member can have, consortium restrictions, and storage amounts.
 
 ## <a name="pricing-tier"></a>Warstwa cenowa
 
-Maksymalne limity dotyczące transakcji i węzłów modułu sprawdzania poprawności zależą od tego, czy usługa Azure łańcucha bloków jest udostępniana w warstwach cenowych w warstwie Podstawowa czy standardowa.
+Maximum limits on transactions and validator nodes depend on whether you provision Azure Blockchain Service at Basic or Standard pricing tiers.
 
-| Warstwa cenowa | Maksymalna liczba węzłów transakcji | Maksymalna liczba węzłów modułu sprawdzania poprawności |
+| Warstwa cenowa | Max transaction nodes | Max validator nodes |
 |:---|:---:|:---:|
-| Podstawowa | 10 | 1 |
-| Standardowa | 10 | 2 |
+| Basic | 10 | 1 |
+| Standardowa (Standard) | 10 | 2 |
 
-Zmiana warstwy cenowej między podstawowa i Standardowa po utworzeniu elementu członkowskiego nie jest obsługiwana.
+Changing the pricing tier between Basic and Standard after member creation is not supported.
 
 ## <a name="storage-capacity"></a>Pojemność magazynu
 
-Maksymalna ilość miejsca do magazynowania, która może być używana na węzeł dla danych i dzienników księgi, to 1,8 terabajtów.
+The maximum amount of storage that can be used per node for ledger data and logs is 1.8 terabytes.
 
-Zmniejszenie rozmiaru księgi i magazynu dzienników nie jest obsługiwane.
+Decreasing ledger and log storage size is not supported.
 
-## <a name="consortium-limits"></a>Limity konsorcjum
+## <a name="consortium-limits"></a>Consortium limits
 
-* **Nazwy konsorcjum i składowe muszą być unikatowe** z innych konsorcjów i nazw członków w usłudze Azure łańcucha bloków.
+* **Consortium and member names must be unique** from other consortium and member names in the Azure Blockchain Service.
 
-* **Nie można zmienić nazw członków i konsorcjum**
+* **Member and consortium names cannot be changed**
 
-* **Wszyscy członkowie konsorcjum muszą znajdować się w tej samej warstwie cenowej**
+* **All members in a consortium must be in the same pricing tier**
 
-* **Wszyscy członkowie, którzy uczestniczą w konsorcjum, muszą znajdować się w tym samym regionie**
+* **All members that participate in a consortium must reside in the same region**
 
-    Pierwszy członek utworzony w ramach konsorcjum wymusza region. Zaproszeni członkowie do konsorcjum muszą znajdować się w tym samym regionie co pierwszy członek. Ograniczenie wszystkich elementów członkowskich do tego samego regionu pomaga zapewnić, że konsensus nie wpłynie negatywnie na sieć.
+    The first member created in a consortium dictates the region. Invited members to the consortium must reside in the same region as the first member. Limiting all members to the same region helps ensure network consensus is not negatively impacted.
 
-* **Konsorcjum musi mieć co najmniej jednego administratora**
+* **A consortium must have at least one administrator**
 
-    Jeśli konsorcjum ma tylko jednego administratora, nie może usunąć siebie z konsorcjum ani usunąć ich członka do momentu dodania lub promocji innego administratora w ramach konsorcjum.
+    If there is only one administrator in a consortium, they cannot remove themselves from the consortium or delete their member until another administrator is added or promoted in the consortium.
 
-* **Nie można ponownie dodać członków usuniętych z konsorcjum**
+* **Members removed from the consortium cannot be added again**
 
-    Należy pamiętać, aby dołączyć do konsorcjum i utworzyć nowego członka. Istniejący zasób członkowski nie został usunięty, aby zachować historyczne transakcje.
+    Rather, they must be reinvited to join the consortium and create a new member. Their existing member resource are not deleted to preserve historical transactions.
 
-* **Wszyscy członkowie w konsorcjum muszą używać tej samej wersji księgi**
+* **All members in a consortium must be using the same ledger version**
 
-    Aby uzyskać więcej informacji na temat poprawek, aktualizacji i wersji księgi dostępnych w usłudze Azure łańcucha bloków, zobacz [poprawki, aktualizacje i wersje](ledger-versions.md).
+    For more information on the patching, updates, and ledger versions available in Azure Blockchain Service, see [Patching, updates, and versions](ledger-versions.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Poprawki, aktualizacje i wersje](ledger-versions.md)
+* [Patching, updates, and versions](ledger-versions.md)

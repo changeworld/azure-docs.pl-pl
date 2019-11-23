@@ -1,88 +1,82 @@
 ---
-title: Azure łańcucha bloków Service Consortium
-description: Dowiedz się, jak usługa Azure łańcucha bloków używa konsorcjum prywatnego
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Service consortium
+description: Understand how Azure Blockchain Service uses a private consortium
 ms.date: 10/14/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: ddb3f02662c0c71ebc90e1a740b4068d6fbcded4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 44a5aa7ca530c230b42e5b8a7d88a912729e5695
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577511"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325234"
 ---
-# <a name="azure-blockchain-service-consortium"></a>Azure łańcucha bloków Service Consortium
+# <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service Consortium
 
-Za pomocą usługi Azure łańcucha bloków można utworzyć sieci prywatnych konsorcjum łańcucha bloków, w przypadku których każda sieć łańcucha bloków może być ograniczona do określonych uczestników sieci. Tylko uczestnicy w sieci prywatnej konsorcjum łańcucha bloków mogą wyświetlać łańcucha bloków i korzystać z nich. Sieci konsorcjum w usłudze Azure łańcucha bloków Service mogą zawierać dwa typy ról uczestników elementu członkowskiego:
+Using Azure Blockchain Service, you can create private consortium blockchain networks where each blockchain network can be limited to specific participants in the network. Only participants in the private consortium blockchain network can view and interact with the blockchain. Consortium networks in Azure Blockchain Service can contain two types of member participant roles:
 
-* Uczestnicy z uprawnieniami **administratora** , którzy mogą podejmować działania związane z zarządzaniem konsorcjum i mogą uczestniczyć w transakcjach łańcucha bloków.
+* **Administrator** - Privileged participants who can take consortium management actions and can participate in blockchain transactions.
 
-* **Użytkownicy** — uczestnicy, którzy nie mogą podejmować żadnych działań związanych z zarządzaniem konsorcjum, ale mogą uczestniczyć w transakcjach łańcucha bloków.
+* **User** -  Participants who cannot take any consortium management action but can participate in blockchain transactions.
 
-Sieci konsorcjum mogą być różnymi rolami uczestników i mogą mieć dowolną liczbę poszczególnych typów ról. Musi istnieć co najmniej jeden administrator.
+Consortium networks can be a mix of participant roles and can have an arbitrary number of each role type. There must be at least one administrator.
 
-Na poniższym diagramie przedstawiono sieć konsorcjum z wieloma uczestnikami:
+The following diagram shows a consortium network with multiple participants:
 
-![Diagram prywatnej sieci konsorcjum](./media/consortium/network-diagram.png)
+![Private consortium network diagram](./media/consortium/network-diagram.png)
 
-Za pomocą zarządzania konsorcjum w usłudze Azure łańcucha bloków można zarządzać uczestnikami w sieci konsorcjum. Zarządzanie konsorcjum opiera się na jednomyślnym modelu sieci. W bieżącej wersji zapoznawczej usługa Azure łańcucha bloków zapewnia scentralizowany model konsensusu do zarządzania konsorcjum. Każdy uczestnik uprzywilejowany z rolą Administruj może podejmować działania związane z zarządzaniem konsorcjum, takie jak dodawanie lub usuwanie uczestników sieci.
+With consortium management in Azure Blockchain Service, you can manage participants in the consortium network. Management of the consortium is based on the consensus model of the network. In the current preview release, Azure Blockchain Service provides a centralized consensus model for consortium management. Any privileged participant with an administer role can take consortium management actions, such as adding or removing participants from a network.
 
 ## <a name="roles"></a>Role
 
-Uczestnicy konsorcjum mogą być osobami lub organizacjami i mogą mieć przypisaną rolę użytkownika lub administratora. Poniższa tabela zawiera listę różnic wysokiego poziomu między obiema rolami:
+Participants in a consortium can be individuals or organizations and can be assigned a user role or an administrator role. The following table lists the high-level differences between the two roles:
 
-| Akcja | Rola użytkownika | Rola administratora
+| Działanie | User role | Administrator role
 |--------|:----:|:------------:|
-| Utwórz nowy element członkowski | Tak | Tak |
-| Zaproś nowych członków | Nie | Tak |
-| Ustaw lub Zmień rolę uczestnika elementu członkowskiego | Nie | Tak |
-| Zmień nazwę wyświetlaną elementu członkowskiego | Tylko dla własnej składowej | Tylko dla własnej składowej |
-| Usuń członków | Tylko dla własnej składowej | Tak |
-| Uczestnictwo w transakcjach łańcucha bloków | Tak | Tak |
+| Create new member | Tak | Tak |
+| Invite new members | Nie | Tak |
+| Set or change member participant role | Nie | Tak |
+| Change member display name | Only for own member | Only for own member |
+| Remove members | Only for own member | Tak |
+| Participate in blockchain transactions | Tak | Tak |
 
-### <a name="user-role"></a>Rola użytkownika
+### <a name="user-role"></a>User role
 
-Użytkownicy są uczestnikami konsorcjum bez możliwości administratora. Nie mogą oni uczestniczyć w zarządzaniu członkami związanymi z konsorcjum. Użytkownicy mogą zmienić nazwę wyświetlaną swojej składowej i mogą usunąć siebie z konsorcjum.
+Users are consortium participants with no administrator capabilities. They cannot participate in managing members related to the consortium. Users can change their member display name and can remove themselves from a consortium.
 
 ### <a name="administrator"></a>Administrator
 
-Administrator może zarządzać członkami w ramach konsorcjum. Administrator może zapraszać członków, usuwać członków lub aktualizować role członków w ramach konsorcjum.
-W ramach konsorcjum musi być zawsze co najmniej jeden administrator. Ostatni administrator musi określić innego uczestnika jako rolę administratora przed opuszczeniem konsorcjum.
+An administrator can manage members within the consortium. An administrator can invite members, remove members, or update members roles within the consortium.
+There must always be at least one administrator within a consortium. The last administrator must specify another participant as an administrator role before leaving a consortium.
 
-## <a name="managing-members"></a>Zarządzanie elementami członkowskimi
+## <a name="managing-members"></a>Managing members
 
-Tylko Administratorzy mogą zapraszać innych uczestników do konsorcjum. Administratorzy zapraszali uczestników przy użyciu identyfikatora subskrypcji platformy Azure.
+Only administrators can invite other participants to the consortium. Administrators invite participants using their Azure subscription ID.
 
-Po zaproszeniu uczestnicy mogą dołączać do konsorcjum łańcucha bloków, wdrażając nową składową w usłudze Azure łańcucha bloków Service. Aby wyświetlić zaproszonych konsorcjum i dołączyć do niego, należy określić ten sam Identyfikator subskrypcji platformy Azure, który jest używany w zaproszeniu przez administratora sieci.
+Once invited, participants can join the blockchain consortium by deploying a new member in Azure Blockchain Service. To view and join the invited consortium, you must specify the same Azure subscription ID used in the invite by the network administrator.
 
-Administratorzy mogą usunąć dowolnego uczestnika z konsorcjum, w tym innych administratorów. Członkowie mogą usuwać tylko siebie z konsorcjum.
+Administrators can remove any participant from the consortium, including other administrators. Members can only remove themselves from a consortium.
 
-## <a name="consortium-management-smart-contract"></a>Inteligentny kontrakt zarządzania konsorcjum
+## <a name="consortium-management-smart-contract"></a>Consortium management smart contract
 
-Zarządzanie konsorcjum w usłudze Azure łańcucha bloków Service jest realizowane za pośrednictwem inteligentnych kontraktów zarządzania konsorcjum. Inteligentne kontrakty są automatycznie wdrażane w węzłach podczas wdrażania nowego elementu członkowskiego łańcucha bloków.
+Consortium management in Azure Blockchain Service is done via consortium management smart contracts. The smart contracts are automatically deployed to your nodes when you deploy a new blockchain member.
 
-Adres inteligentnego kontraktu zarządzania konsorcjum głównego można wyświetlić w Azure Portal. **Adres RootContract** znajduje się w sekcji Przegląd składowej łańcucha bloków.
+The address of the root consortium management smart contract can be viewed in the Azure portal. The **RootContract address** is in blockchain member's overview section.
 
-![Adres RootContract](./media/consortium/rootcontract-address.png)
+![RootContract address](./media/consortium/rootcontract-address.png)
 
-Można korzystać z inteligentnego kontraktu zarządzania konsorcjum przy użyciu [modułu PowerShell](manage-consortium-powershell.md)zarządzania konsorcjum, Azure Portal lub bezpośrednio za pośrednictwem kontraktu inteligentnego przy użyciu usługi Azure łańcucha bloków, która wygenerowała konto Ethereum.
+You can interact with the consortium management smart contract using the consortium management [PowerShell module](manage-consortium-powershell.md), Azure portal, or directly through the smart contract using the Azure Blockchain Service generated Ethereum account.
 
-## <a name="ethereum-account"></a>Konto Ethereum
+## <a name="ethereum-account"></a>Ethereum account
 
-Po utworzeniu elementu członkowskiego zostaje utworzony klucz konta Ethereum. Usługa Azure łańcucha bloków używa klucza do tworzenia transakcji związanych z zarządzaniem konsorcjum. Klucz konta Ethereum jest zarządzany przez usługę Azure łańcucha bloków automatycznie.
+When a member is created, an Ethereum account key is created. Azure Blockchain Service uses the key to create transactions related to consortium management. The Ethereum account key is managed by Azure Blockchain Service automatically.
 
-Konto elementu członkowskiego można wyświetlić w Azure Portal. Konto elementu członkowskiego znajduje się w sekcji Przegląd składowej łańcucha bloków.
+The member account can be viewed in the Azure portal. The member account is in blockchain member's overview section.
 
-![Konto elementu członkowskiego](./media/consortium/member-account.png)
+![Member account](./media/consortium/member-account.png)
 
-Możesz zresetować konto Ethereum, klikając konto elementu członkowskiego i wprowadzając nowe hasło. Zarówno adres konta Ethereum, jak i hasło zostaną zresetowane.  
+You can reset your Ethereum account by clicking on your member account and entering a new password. Both the Ethereum account address and the password will be reset.  
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Jak zarządzać elementami członkowskimi w usłudze Azure łańcucha bloków Service przy użyciu programu PowerShell](manage-consortium-powershell.md)
+[How to manage members in Azure Blockchain Service using PowerShell](manage-consortium-powershell.md)

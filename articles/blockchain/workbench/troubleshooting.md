@@ -1,38 +1,32 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure łańcucha bloków Workbench
-description: Jak rozwiązywać problemy z aplikacją Azure łańcucha bloków Workbench w wersji zapoznawczej.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Workbench troubleshooting
+description: How to troubleshoot an Azure Blockchain Workbench Preview application.
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 3032a81a4411cb162a335189ca65b845f8d6305f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.reviewer: brendal
+ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329081"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324296"
 ---
-# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Rozwiązywanie problemów z usługą Azure łańcucha bloków Workbench Preview
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench Preview troubleshooting
 
-Skrypt programu PowerShell jest dostępny, aby pomóc w debugowaniu i obsłudze deweloperów. Skrypt generuje podsumowanie i zbiera szczegółowe dzienniki dotyczące rozwiązywania problemów. Zebrane dzienniki obejmują:
+A PowerShell script is available to assist with developer debugging or support. The script generates a summary and collects detailed logs for troubleshooting. Collected logs include:
 
-* Sieć łańcucha bloków, taka jak Ethereum
-* Mikrousługi łańcucha bloków Workbench
+* Blockchain network, such as Ethereum
+* Blockchain Workbench microservices
 * Application Insights
-* Monitorowanie platformy Azure (dzienniki Azure Monitor)
+* Azure Monitoring (Azure Monitor logs)
 
-Możesz użyć tych informacji do określenia następnych kroków i ustalenia głównej przyczyny problemów.
+You can use the information to determine next steps and determine root cause of issues.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-## <a name="troubleshooting-script"></a>Skrypt rozwiązywania problemów
+## <a name="troubleshooting-script"></a>Troubleshooting script
 
-Skrypt rozwiązywania problemów z programem PowerShell jest dostępny w witrynie GitHub. [Pobierz plik ZIP](https://github.com/Azure-Samples/blockchain/archive/master.zip) lub sklonuj przykład z usługi GitHub.
+The PowerShell troubleshooting script is available on GitHub. [Pobierz plik ZIP](https://github.com/Azure-Samples/blockchain/archive/master.zip) lub sklonuj przykład z usługi GitHub.
 
 ```
 git clone https://github.com/Azure-Samples/blockchain.git
@@ -41,40 +35,40 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Uruchamianie skryptu
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-Uruchom skrypt `collectBlockchainWorkbenchTroubleshooting.ps1`, aby zebrać dzienniki i utworzyć plik ZIP zawierający folder informacji o rozwiązywaniu problemów. Na przykład:
+Run the `collectBlockchainWorkbenchTroubleshooting.ps1` script to collect logs and create a ZIP file containing a folder of troubleshooting information. Na przykład:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
 ```
-Skrypt akceptuje następujące parametry:
+The script accepts the following parameters:
 
 | Parametr  | Opis | Wymagane |
 |---------|---------|----|
-| Identyfikator | Utwórz identyfikator subskrypcji, aby utworzyć lub zlokalizować wszystkie zasoby. | Tak |
-| ResourceGroupName | Nazwa grupy zasobów platformy Azure, w której wdrożono łańcucha bloków Workbench. | Tak |
-| OutputDirectory | Ścieżka do tworzenia danych wyjściowych. Plik ZIP. Jeśli nie zostanie określony, wartością domyślną jest bieżący katalog. | Nie |
-| LookbackHours | Liczba godzin do użycia podczas ściągania danych telemetrycznych. Wartość domyślna to 24 godziny. Wartość maksymalna to 90 godzin | Nie |
-| OmsSubscriptionId | Identyfikator subskrypcji, w której wdrożone są dzienniki Azure Monitor. Ten parametr należy przekazać tylko wtedy, gdy dzienniki Azure Monitor dla sieci łańcucha bloków są wdrożone poza grupą zasobów łańcucha bloków Workbench.| Nie |
-| OmsResourceGroup |Grupa zasobów, w której wdrożono dzienniki Azure Monitor. Ten parametr należy przekazać tylko wtedy, gdy dzienniki Azure Monitor dla sieci łańcucha bloków są wdrożone poza grupą zasobów łańcucha bloków Workbench.| Nie |
-| OmsWorkspaceName | Nazwa obszaru roboczego Log Analytics. Ten parametr należy przekazać tylko wtedy, gdy dzienniki Azure Monitor dla sieci łańcucha bloków są wdrożone poza grupą zasobów łańcucha bloków Workbench | Nie |
+| SubscriptionID | SubscriptionID to create or locate all resources. | Tak |
+| ResourceGroupName | Name of the Azure Resource Group where Blockchain Workbench has been deployed. | Tak |
+| OutputDirectory | Path to create the output .ZIP file. If not specified, defaults to the current directory. | Nie |
+| LookbackHours | Number of hours to use when pulling telemetry. Default value is 24 hours. Maximum value is 90 hours | Nie |
+| OmsSubscriptionId | The subscription ID where Azure Monitor logs is deployed. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group.| Nie |
+| OmsResourceGroup |The resource group where Azure Monitor logs is deployed. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group.| Nie |
+| OmsWorkspaceName | The Log Analytics workspace name. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group | Nie |
 
-## <a name="what-is-collected"></a>Co jest zbierane?
+## <a name="what-is-collected"></a>What is collected?
 
-Wyjściowy plik ZIP zawiera następującą strukturę folderów:
+The output ZIP file contains the following folder structure:
 
-| Folder lub plik | Opis  |
+| Folder or File | Opis  |
 |---------|---------|
-| \Summary.txt | Podsumowanie systemu |
-| \Metrics\blockchain | Metryki dotyczące łańcucha bloków |
-| \Metrics\Workbench | Metryki dotyczące Workbench |
-| \Details\Blockchain | Szczegółowe dzienniki dotyczące łańcucha bloków |
-| \Details\Workbench | Szczegółowe dzienniki dotyczące Workbench |
+| \Summary.txt | Summary of the system |
+| \Metrics\blockchain | Metrics about the blockchain |
+| \Metrics\Workbench | Metrics about the workbench |
+| \Details\Blockchain | Detailed logs about the blockchain |
+| \Details\Workbench | Detailed logs about the workbench |
 
-Plik podsumowania zawiera migawkę ogólnego stanu aplikacji i kondycji aplikacji. Podsumowanie zawiera zalecane akcje, wyróżnia najważniejsze błędy i metadane dotyczące uruchomionych usług.
+The summary file gives you a snapshot of the overall state of the application and health of the application. The summary provides recommended actions, highlights top errors, and metadata about running services.
 
-Folder **metryk** zawiera metryki różnych składników systemu w miarę upływu czasu. Na przykład plik wyjściowy `\Details\Workbench\apiMetrics.txt` zawiera podsumowanie różnych kodów odpowiedzi i czasów odpowiedzi w ciągu okresu zbierania. Folder **szczegóły** zawiera szczegółowe dzienniki umożliwiające rozwiązywanie określonych problemów z usługą Workbench lub podstawową siecią łańcucha bloków. Na przykład `\Details\Workbench\Exceptions.csv` zawiera listę najnowszych wyjątków, które wystąpiły w systemie, co jest przydatne do rozwiązywania problemów z inteligentnymi kontraktami lub interakcjami z łańcucha bloków. 
+The **Metrics** folder contains metrics of various system components over time. For example, the output file `\Details\Workbench\apiMetrics.txt` contains a summary of different response codes, and response times throughout the collection period. The **Details** folder contains detailed logs for troubleshooting specific issues with Workbench or the underlying blockchain network. For example, `\Details\Workbench\Exceptions.csv` contains a list of the most recent exceptions that have occurred in the system, which is useful for troubleshooting errors with smart contracts or interactions with the blockchain. 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przewodnik rozwiązywania problemów z usługą Azure łańcucha bloków Workbench Application Insights](https://aka.ms/workbenchtroubleshooting)
+> [Azure Blockchain Workbench Application Insights troubleshooting guide](https://aka.ms/workbenchtroubleshooting)

@@ -1,191 +1,189 @@
 ---
-title: 'Samouczek: przykład strategii do nowego środowiska'
-description: W tym samouczku użyto przykładu strategii do utworzenia definicji planu, która konfiguruje dwie grupy zasobów i konfiguruje przypisanie roli dla każdego z nich.
-ms.date: 03/05/2019
+title: 'Tutorial: Blueprint sample to new environment'
+description: In this tutorial, you use a blueprint sample to create a blueprint definition that sets up two resource groups and configures a role assignment for each.
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: 31363f8756a8483533a24a8005c0ca9cb7ea7ea0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216929"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321731"
 ---
-# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Samouczek: Tworzenie środowiska na podstawie przykładu strategii
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Create an environment from a blueprint sample
 
-Przykładowe plany zawierają przykłady czynności, które można wykonać przy użyciu planów platformy Azure. Każdy z nich jest przykładem z konkretnym zamiarem lub przeznaczeniem, ale nie tworzy samodzielnie całego środowiska. Każdy z nich jest przeznaczony do rozpoczęcia eksplorowania przy użyciu planów platformy Azure z różnymi kombinacjami zawartych artefaktów, projektów i parametrów.
+Sample blueprints provide examples of what can be done using Azure Blueprints. Each is a sample with a specific intent or purpose, but doesn't create a complete environment by themselves. Each is intended as a starting place to explore using Azure Blueprints with various combinations of included artifacts, designs, and parameters.
 
-Poniższy samouczek korzysta z **grup zasobów z** przykładowym planem RBAC, aby zaprezentować różne aspekty usługi plany. Omówione są następujące czynności:
+The following tutorial uses the **Resource Groups with RBAC** blueprint sample to showcase different aspects of the Blueprints service. The following steps are covered:
 
 > [!div class="checklist"]
-> - Utwórz nową definicję planu z przykładu
-> - Oznacz swoją kopię przykładowej publikacji jako **opublikowaną**
-> - Przypisz swoją kopię planu do istniejącej subskrypcji
-> - Sprawdzanie wdrożonych zasobów do przypisania
-> - Cofnij przypisanie planu w celu usunięcia blokad
+> - Create a new blueprint definition from the sample
+> - Mark your copy of the sample as **Published**
+> - Assign your copy of the blueprint to an existing subscription
+> - Inspect deployed resources for the assignment
+> - Unassign the blueprint to remove the locks
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka jest wymagana subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+To complete this tutorial, an Azure subscription is needed. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="create-blueprint-definition-from-sample"></a>Utwórz definicję planu z przykładu
+## <a name="create-blueprint-definition-from-sample"></a>Create blueprint definition from sample
 
-Najpierw Zaimplementuj przykład strategii. Importowanie powoduje utworzenie nowego planu w środowisku na podstawie przykładu.
-
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
-
-1. Na stronie **pierwsze kroki** z lewej strony wybierz przycisk **Utwórz** w obszarze _Utwórz plan_.
-
-1. Znajdź **grupy zasobów z** przykładowym planem RBAC w obszarze _inne przykłady_ i wybierz opcję **Użyj tego przykładu**.
-
-1. Wprowadź _podstawy_ przykładu planu:
-
-   - **Nazwa**planu: Podaj nazwę kopii przykładu strategii. W tym samouczku zostanie użyta nazwa _2-RGS-with-role-przypisań_.
-   - **Lokalizacja definicji**: Użyj wielokropka i wybierz grupę zarządzania lub subskrypcję, w której ma zostać zapisana kopia przykładu.
-
-1. Wybierz kartę _artefakty_ w górnej części strony lub **Następny: artefakty** w dolnej części strony.
-
-1. Zapoznaj się z listą artefaktów, które składają się na przykład strategii. Ten przykład definiuje dwie grupy zasobów z nazwami wyświetlanymi _ProdRG_ i _PreProdRG_. Końcowa nazwa i lokalizacja każdej grupy zasobów są ustawiane podczas przypisywania planu. Do grupy zasobów _ProdRG_ jest przypisana rola _współautor_ , a grupa zasobów _PreProdRG_ jest przypisana do ról _właściciel_ i _czytelnicy_ . Role przypisane w definicji są statyczne, ale użytkownik, aplikacja lub Grupa, do której przypisano rolę, jest ustawiana podczas przypisywania strategii.
-
-1. Wybierz pozycję **Zapisz wersję roboczą** po zakończeniu przeglądania przykładu planu.
-
-W tym kroku zostanie utworzona kopia przykładowej definicji planu w wybranej grupie zarządzania lub subskrypcji. Zapisana definicja planu jest zarządzana jak każdy plan utworzony od podstaw. Przykład można zapisać do grupy zarządzania lub subskrypcji dowolną liczbę razy. Jednak każda kopia musi mieć unikatową nazwę.
-
-Po **pomyślnym** wyświetleniu powiadomienia portalu dotyczącego zapisywania definicji planu przejdź do następnego kroku.
-
-## <a name="publish-the-sample-copy"></a>Publikowanie kopii przykładowej
-
-Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. Jest on tworzony w trybie **wersji roboczej** i musi być **opublikowany** , aby można go było przypisać i wdrożyć. Kopię przykładowej strategii można dostosować do środowiska i wymagań. W tym samouczku nie wprowadzimy żadnych zmian.
+First, implement the blueprint sample. Importing creates a new blueprint in your environment based on the sample.
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć definicję strategii _dwurgs-with-role-przypisania_ , a następnie wybierz ją.
+1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
 
-1. Wybierz pozycję **Publikuj plan** w górnej części strony. W nowym okienku po prawej stronie Podaj **wersję** _1,0_ dla kopii przykładu planu. Ta właściwość jest przydatna w przypadku późniejszej modyfikacji. Podaj **Informacje o zmianach** , takie jak "Pierwsza wersja opublikowana z grup zasobów przy użyciu przykładowego planu RBAC". Następnie wybierz pozycję **Publikuj** w dolnej części strony.
+1. Find the **Resource Groups with RBAC** blueprint sample under _Other Samples_ and select **Use this sample**.
 
-Ten krok umożliwia przypisanie planu do subskrypcji. Po opublikowaniu można nadal wprowadzać zmiany. Dodatkowe zmiany wymagają opublikowania z nową wartością **wersji** , aby śledzić różnice między różnymi wersjami tej samej definicji planu.
+1. Enter the _Basics_ of the blueprint sample:
 
-Po **pomyślnym** wyświetleniu powiadomienia portalu publikowanie definicji strategii przejdź do następnego kroku.
+   - **Blueprint name**: Provide a name for your copy of the blueprint sample. For this tutorial, we'll use the name _two-rgs-with-role-assignments_.
+   - **Definition location**: Use the ellipsis and select the management group or subscription to save your copy of the sample to.
 
-## <a name="assign-the-sample-copy"></a>Przypisz przykładową kopię
+1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
 
-Po pomyślnym **opublikowaniu**kopii przykładowej strategii można ją przypisać do subskrypcji w grupie zarządzania, w której został on zapisany. Ten krok polega na tym, że parametry są dostarczane, aby każde wdrożenie kopii przykładowej strategii było unikatowe.
+1. Review the list of artifacts that make up the blueprint sample. This sample defines two resource groups, with display names of _ProdRG_ and _PreProdRG_. The final name and location of each resource group are set during blueprint assignment. The _ProdRG_ resource group is assigned the _Contributor_ role and the _PreProdRG_ resource group is assigned the _Owner_ and _Readers_ roles. The roles assigned in the definition are static, but user, app, or group that is assigned the role is set during blueprint assignment.
+
+1. Select **Save Draft** when you've finished reviewing the blueprint sample.
+
+This step creates a copy of the sample blueprint definition in the selected management group or subscription. The saved blueprint definition is managed like any blueprint created from scratch. You may save the sample to your management group or subscription as many times as needed. However, each copy must be provided a unique name.
+
+Once the **Saving blueprint definition succeeded** portal notification appears, move to the next step.
+
+## <a name="publish-the-sample-copy"></a>Publish the sample copy
+
+Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs. For this tutorial, we won't make any changes.
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć definicję strategii _dwurgs-with-role-przypisania_ , a następnie wybierz ją.
+1. Select the **Blueprint definitions** page on the left. Use the filters to find the _two-rgs-with-role-assignments_ blueprint definition and then select it.
 
-1. Wybierz pozycję **Przypisz plan** w górnej części strony definicji planu.
+1. Select **Publish blueprint** at the top of the page. In the new pane on the right, provide **Version** as _1.0_ for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the resource groups with RBAC blueprint sample." Then select **Publish** at the bottom of the page.
 
-1. Podaj wartości parametrów dla przypisania planu:
+This step makes it possible to assign the blueprint to a subscription. Once published, changes can still be made. Additional changes require publishing with a new **Version** value to track differences between different versions of the same blueprint definition.
+
+Once the **Publishing blueprint definition succeeded** portal notification appears, move to the next step.
+
+## <a name="assign-the-sample-copy"></a>Assign the sample copy
+
+Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
+
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+
+1. Select the **Blueprint definitions** page on the left. Use the filters to find the _two-rgs-with-role-assignments_ blueprint definition and then select it.
+
+1. Select **Assign blueprint** at the top of the blueprint definition page.
+
+1. Provide the parameter values for the blueprint assignment:
 
    - Podstawy
 
-     - **Subskrypcje**: Wybierz co najmniej jedną subskrypcję znajdującą się w grupie zarządzania, do której została zapisana kopia przykładu planu. W przypadku wybrania więcej niż jednej subskrypcji zostanie utworzone przypisanie dla każdego z nich przy użyciu wprowadzonych parametrów.
-     - **Nazwa przypisania**: nazwa jest wstępnie wypełniona dla Ciebie na podstawie nazwy definicji planu.
-     - **Lokalizacja**: Wybierz region, w którym ma zostać utworzona zarządzana tożsamość. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
-       Na potrzeby tego samouczka wybierz pozycję _Wschodnie stany USA 2_.
-     - **Wersja definicji**planu: Wybierz **opublikowaną** wersję _1,0_ kopii przykładowej definicji planu.
+     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
+     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint definition.
+     - **Location**: Select a region for the managed identity to be created in. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
+       For this tutorial, select _East US 2_.
+     - **Blueprint definition version**: Pick the **Published** version _1.0_ of your copy of the sample blueprint definition.
 
-   - Przypisanie blokady
+   - Lock Assignment
 
-     Wybierz tryb blokowania _tylko do odczytu_ . Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../concepts/resource-locking.md).
+     Select the _Read Only_ blueprint lock mode. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../concepts/resource-locking.md).
 
    - Tożsamość zarządzana
 
-     Pozostaw domyślną opcję _przypisaną do systemu_ . Aby uzyskać więcej informacji, zobacz [zarządzane tożsamości](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Leave the default _System assigned_ option. For more information, see [managed identities](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - Parametry artefaktu
+   - Artifact parameters
 
-     Parametry zdefiniowane w tej sekcji dotyczą artefaktu, w ramach którego jest zdefiniowany. Parametry te są [parametrami dynamicznymi](../concepts/parameters.md#dynamic-parameters) , ponieważ są one definiowane podczas przypisywania planu. Dla każdego artefaktu ustaw wartość parametru na wartości zdefiniowane w kolumnie **wartość** . W obszarze `{Your ID}`wybierz swoje konto użytkownika platformy Azure.
+     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For each artifact, set the parameter value to what is defined in the **Value** column. For `{Your ID}`, select your Azure user account.
 
-     |Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Wartość|Opis|
+     |Artifact name|Artifact type|Nazwa parametru|Wartość|Opis|
      |-|-|-|-|-|
-     |Grupa zasobów ProdRG|Grupa zasobów|Nazwa|ProductionRG|Definiuje nazwę pierwszej grupy zasobów.|
-     |Grupa zasobów ProdRG|Grupa zasobów|Lokalizacja|Zachodnie stany USA 2|Ustawia lokalizację pierwszej grupy zasobów.|
-     |Współautor|Przypisanie roli|Użytkownik lub Grupa|{Identyfikator}|Definiuje użytkownika lub grupę, która ma udzielić przypisywania roli _współautor_ w ramach pierwszej grupy zasobów.|
-     |Grupa zasobów PreProdRG|Grupa zasobów|Nazwa|PreProductionRG|Definiuje nazwę drugiej grupy zasobów.|
-     |Grupa zasobów PreProdRG|Grupa zasobów|Lokalizacja|Zachodnie stany USA|Ustawia lokalizację drugiej grupy zasobów.|
-     |Właściciel|Przypisanie roli|Użytkownik lub Grupa|{Identyfikator}|Definiuje użytkownika lub grupę, która ma przyznawać przypisanie roli _właściciela_ w ramach drugiej grupy zasobów.|
-     |Czytelnicy|Przypisanie roli|Użytkownik lub Grupa|{Identyfikator}|Definiuje użytkownika lub grupę, która ma udzielić przypisywania roli _czytelnicy_ w ramach drugiej grupy zasobów.|
+     |ProdRG resource group|Grupa zasobów|Nazwa|ProductionRG|Defines the name of the first resource group.|
+     |ProdRG resource group|Grupa zasobów|Lokalizacja|Zachodnie stany USA 2|Sets the location of the first resource group.|
+     |Współautor|Przypisanie roli|User or Group|{Your ID}|Defines which user or group to grant the _Contributor_ role assignment within the first resource group.|
+     |PreProdRG resource group|Grupa zasobów|Nazwa|PreProductionRG|Defines the name of the second resource group.|
+     |PreProdRG resource group|Grupa zasobów|Lokalizacja|Zachodnie stany USA|Sets the location of the second resource group.|
+     |Właściciel|Przypisanie roli|User or Group|{Your ID}|Defines which user or group to grant the _Owner_ role assignment within the second resource group.|
+     |Czytelnicy|Przypisanie roli|User or Group|{Your ID}|Defines which user or group to grant the _Readers_ role assignment within the second resource group.|
 
-1. Po wprowadzeniu wszystkich parametrów wybierz pozycję **Przypisz** w dolnej części strony.
+1. Once all parameters have been entered, select **Assign** at the bottom of the page.
 
-W tym kroku wdrożono określone zasoby i skonfiguruje wybrane **przypisanie blokady**. Zastosowanie blokad planów może potrwać do 30 minut.
+This step deploys the defined resources and configures the selected **Lock Assignment**. Blueprint locks can take up to 30 minutes to apply.
 
-Po wyświetleniu powiadomienia portalu **przypisywanie definicji planu powiodło** się przejdź do następnego kroku.
+Once the **Assigning blueprint definition succeeded** portal notification appears, move to the next step.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspekcja zasobów wdrożonych przez przypisanie
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspect resources deployed by the assignment
 
-Przypisanie planu tworzy i śledzi artefakty zdefiniowane w definicji strategii. Stan zasobów można zobaczyć na stronie przypisanie strategii i przez bezpośrednie przeszukanie zasobów.
-
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
-
-1. Wybierz stronę **przypisane plany** po lewej stronie. Użyj filtrów, aby znaleźć przypisanie strategii _-dwa-RGS-with-role-przypisania_ , a następnie wybierz je.
-
-   Na tej stronie można zobaczyć, że przypisanie zakończyło się pomyślnie, a także listę utworzonych zasobów wraz z ich stanem blokady. Jeśli przypisanie zostało zaktualizowane, lista rozwijana **operacja przypisywania** zawiera szczegółowe informacje dotyczące wdrożenia każdej wersji definicji. Każdy utworzony zasób na liście można kliknąć i otworzyć stronę właściwości zasoby.
-
-1. Wybierz grupę zasobów **ProductionRG** .
-
-   Zobaczymy, że nazwa grupy zasobów to **ProductionRG** , a nie nazwa wyświetlana artefaktu _ProdRG_. Ta nazwa jest zgodna z wartością ustawioną podczas przypisywania strategii.
-
-1. Wybierz stronę **Kontrola dostępu (IAM)** po lewej stronie, a następnie kartę **przypisania ról** .
-
-   Tutaj widzimy, że Twoje konto ma przydzielone role _współautor_ względem zakresu _tego zasobu_. Przypisanie planu _przypisania 2-RGS-z-rolą_ ma rolę _właściciela_ , która została użyta do utworzenia grupy zasobów. Te uprawnienia są również używane do zarządzania zasobami ze skonfigurowanymi blokadami planów.
-
-1. Ze stron nadrzędnych Azure Portal wybierz pozycję **przypisanie — dwa-RGS-with-role-przypisań** , aby przejść do tyłu jednej strony, a następnie wybierz grupę zasobów **PreProductionRG** .
-
-1. Wybierz stronę **Kontrola dostępu (IAM)** po lewej stronie, a następnie kartę **przypisania ról** .
-
-   W tym miejscu widzimy, że Twoje konto ma przyznane zarówno rolę _właściciela_ , jak i _czytelnika_ , zarówno w zakresie _tego zasobu_. Przypisanie planu ma także rolę _właściciela_ , taką jak pierwsza grupa zasobów.
-
-1. Wybierz kartę **Odmów przypisań** .
-
-   Przypisanie planu spowodowało utworzenie [przypisania odmowy](../../../role-based-access-control/deny-assignments.md) w wdrożonej grupie zasobów w celu wymuszenia trybu blokowania _tylko do odczytu_ . Przypisanie Odmów uniemożliwia komuś z odpowiednimi prawami na karcie _przypisania roli_ w celu podjęcia określonych działań. Przypisanie Odmów ma wpływ na _wszystkich podmiotów zabezpieczeń_.
-
-1. Zaznacz pozycję Odmów przypisania, a następnie wybierz stronę **odmowa uprawnień** po lewej stronie.
-
-   Przypisanie odmowy uniemożliwia wszystkie operacje z **\*ą** i konfiguracją **akcji** , ale zezwala na dostęp do odczytu przez wykluczenie **\*/Read** **za pośrednictwem**No.
-
-1. Ze stron nadrzędnych Azure Portal wybierz pozycję **Kontrola dostępu PreProductionRG (IAM)** . Następnie wybierz stronę **Przegląd** po lewej stronie, a następnie przycisk **Usuń grupę zasobów** . Wprowadź nazwę _PreProductionRG_ , aby potwierdzić usunięcie, a następnie wybierz pozycję **Usuń** w dolnej części okienka.
-
-   Wyświetlenie powiadomienia portalu **nie powiodło się usunięcie grupy zasobów PreProductionRG** . W przypadku, gdy konto ma uprawnienia do usuwania grupy zasobów, zostanie odmowa dostępu przez przypisanie planu. Należy pamiętać, że podczas przypisywania strategii zaznaczono tryb blokowania _tylko do odczytu_ . Blokada strategii uniemożliwia konto z uprawnieniami, nawet _właściciel_, od usunięcia zasobu. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../concepts/resource-locking.md).
-
-Te kroki pokazują, że nasze zasoby zostały utworzone zgodnie z definicją, a blokady planów uniemożliwiły niepożądane usunięcie, nawet z konta z uprawnieniami.
-
-## <a name="unassign-the-blueprint"></a>Cofnij przypisanie planu
-
-Ostatnim krokiem jest usunięcie przydziału planu i wdrożonych zasobów.
-Usunięcie przypisania nie powoduje usunięcia wdrożonych artefaktów.
+The blueprint assignment creates and tracks the artifacts defined in the blueprint definition. We can see the status of the resources from the blueprint assignment page and by looking at the resources directly.
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Wybierz stronę **przypisane plany** po lewej stronie. Użyj filtrów, aby znaleźć przypisanie strategii _-dwa-RGS-with-role-przypisania_ , a następnie wybierz je.
+1. Select the **Assigned blueprints** page on the left. Use the filters to find the _Assignment-two-rgs-with-role-assignments_ blueprint assignment and then select it.
 
-1. Wybierz przycisk **Cofnij przypisanie** planu w górnej części strony. Zapoznaj się z ostrzeżeniem w oknie dialogowym potwierdzenia, a następnie wybierz przycisk **OK**.
+   From this page, we can see the assignment succeeded and the list of created resources along with their blueprint lock state. If the assignment is updated, the **Assignment operation** drop-down shows details about the deployment of each definition version. Each listed resource that was created can be clicked and opens that resources property page.
 
-   Po usunięciu przypisania planu blokady planów również są usuwane. Utworzone zasoby mogą być ponownie usuwane przez konto z uprawnieniami.
+1. Select the **ProductionRG** resource group.
 
-1. Wybierz pozycję **grupy zasobów** z menu platformy Azure, a następnie wybierz pozycję **ProductionRG**.
+   We see that the name of the resource group is **ProductionRG** and not the artifact display name _ProdRG_. This name matches the value set during the blueprint assignment.
 
-1. Wybierz stronę **Kontrola dostępu (IAM)** po lewej stronie, a następnie kartę **przypisania ról** .
+1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
 
-Zabezpieczenia dla każdej grupy zasobów nadal mają wdrożone przypisania ról, ale przypisanie strategii nie ma już dostępu _właściciela_ .
+   Here we see that your account has been granted the _Contributor_ role on the scope of _This resource_. The _Assignment-two-rgs-with-role-assignments_ blueprint assignment has the _Owner_ role as it was used to create the resource group. These permissions are also used to manage resources with configured blueprint locks.
 
-Gdy zostanie wyświetlone powiadomienie o **usunięciu przypisania** strategii, przejdź do następnego kroku.
+1. From the Azure portal breadcrumb, select **Assignment-two-rgs-with-role-assignments** to go back one page, then select the **PreProductionRG** resource group.
+
+1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
+
+   Here we see that your account has been granted both the _Owner_ and _Reader_ roles, both on the scope of _This resource_. The blueprint assignment also has the _Owner_ role like the first resource group.
+
+1. Select the **Deny assignments** tab.
+
+   The blueprint assignment created a [deny assignment](../../../role-based-access-control/deny-assignments.md) on the deployed resource group to enforce the _Read Only_ blueprint lock mode. The deny assignment prevents someone with appropriate rights on the _Role assignments_ tab from taking specific actions. The deny assignment affects _All principals_.
+
+1. Select the deny assignment, then select the **Denied Permissions** page on the left.
+
+   The deny assignment is preventing all operations with the **\*** and **Action** configuration, but allows read access by excluding **\*/read** via **NotActions**.
+
+1. From the Azure portal breadcrumb, select **PreProductionRG - Access control (IAM)** . Then select the **Overview** page on the left and then the **Delete resource group** button. Enter the name _PreProductionRG_ to confirm the delete and select **Delete** at the bottom of the pane.
+
+   The portal notification **Delete resource group PreProductionRG failed** is displayed. The error states that while your account has permission to delete the resource group, access is denied by the blueprint assignment. Remember that we selected the _Read Only_ blueprint lock mode during blueprint assignment. The blueprint lock prevents an account with permission, even _Owner_, from deleting the resource. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../concepts/resource-locking.md).
+
+These steps show that our resources were created as defined and the blueprint locks prevented unwanted deletion, even from an account with permission.
+
+## <a name="unassign-the-blueprint"></a>Unassign the blueprint
+
+The last step is to remove the assignment of the blueprint and the resources that it deployed.
+Removing the assignment doesn't remove the deployed artifacts.
+
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
+
+1. Select the **Assigned blueprints** page on the left. Use the filters to find the _Assignment-two-rgs-with-role-assignments_ blueprint assignment and then select it.
+
+1. Select the **Unassign blueprint** button at the top of the page. Read the warning in the confirmation dialog, then select **OK**.
+
+   With the blueprint assignment removed, the blueprint locks are also removed. The created resources can once again be deleted by an account with permissions.
+
+1. Select **Resource groups** from the Azure menu, then select **ProductionRG**.
+
+1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
+
+The security for each resource groups still has the deployed role assignments, but the blueprint assignment no longer has _Owner_ access.
+
+Once the **Removing blueprint assignment succeeded** portal notification appears, move to the next step.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu pracy z tym samouczkiem Usuń następujące zasoby:
+When finished with this tutorial, delete the following resources:
 
-- _ProductionRG_ grupy zasobów
-- _PreProductionRG_ grupy zasobów
-- Definicja planu _dwa-RGS-with-role-przypisań_
+- Resource group _ProductionRG_
+- Resource group _PreProductionRG_
+- Blueprint definition _two-rgs-with-role-assignments_
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [cyklu życia](../concepts/lifecycle.md) planu
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md)
-- Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md)
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md)
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md)
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md)
+In this tutorial, you've learned how to create a new blueprint from a sample definition. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](../concepts/lifecycle.md)

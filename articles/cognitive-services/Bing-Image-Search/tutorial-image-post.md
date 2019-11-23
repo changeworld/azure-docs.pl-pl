@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Wyodrębnianie szczegółów obrazu przy użyciu interfejsu API wyszukiwania obrazów Bing i języka C#'
+title: 'Tutorial: Extract image details with the REST API and C# - Bing Image Search'
 titleSuffix: Azure Cognitive Services
 description: Przy użyciu tego artykułu możesz utworzyć aplikację w języku C#, która wyodrębnia szczegóły obrazu za pomocą interfejsu API wyszukiwania obrazów Bing.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 995ccc8ffeb436526608803362cc361c74a75316
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e9ba5925ce562e53dbc415d66bbb529c32a725a7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790032"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327006"
 ---
-# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Samouczek: Wyodrębnianie szczegółów obrazu przy użyciu interfejsu API wyszukiwania obrazów Bing i języka C#
+# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Samouczek: wyodrębnianie szczegółów obrazu przy użyciu interfejs API wyszukiwania obrazów Bing i języka C#
 
 Interfejs API wyszukiwania obrazów Bing udostępnia wiele [punktów końcowych](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint). Punkt końcowy `/details` akceptuje żądania POST z obrazem i może zwracać różnorodne szczegółowe informacje o tym obrazie. Ta aplikacja języka C# wysyła obraz przy użyciu tego interfejsu API i wyświetla szczegółowe informacje zwrócone przez usługę Bing, które są obiektami JSON, takimi jak poniższe:
 
@@ -36,7 +36,7 @@ Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://githu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dowolnej wersji programu [programu Visual studio 2017 r. lub nowszej](https://visualstudio.microsoft.com/downloads/).
+* Any edition of [Visual studio 2017 or later](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -106,7 +106,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid
 
 Jeśli na obrazie znajdują się osoby lub miejsca, które można zidentyfikować, to żądanie zwróci informacje na ich temat.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wyświetlanie obrazów i opcji wyszukiwania w jednostronicowej aplikacji internetowej](tutorial-bing-image-search-single-page-app.md)

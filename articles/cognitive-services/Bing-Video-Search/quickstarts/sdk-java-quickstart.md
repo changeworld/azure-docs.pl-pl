@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wyszukiwanie wideo za pomocą zestawu SDK wyszukiwania wideo Bing dla języka Java'
+title: 'Quickstart: Search for videos using the SDK for Java - Bing Video Search'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki start, aby wysyłać żądania wyszukiwania wideo za pomocą zestawu SDK wyszukiwania wideo Bing dla języka Java.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 3051f663f277c216fe18513b816bb86478a2efbd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cbe5f0023b16aec1ed68e7a78ddb3103f40eb85b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447005"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378591"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Szybki start: Wyszukiwanie wideo za pomocą zestawu SDK wyszukiwania wideo Bing dla języka Java
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Java
 
-Użyj tego przewodnika Szybki start, aby rozpocząć wyszukiwanie wiadomości za pomocą zestawu SDK wyszukiwania wideo Bing dla języka Java. Chociaż wyszukiwanie wideo Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. Kod źródłowy dla tego przykładu znajduje się na [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch)z dodatkowych adnotacji i funkcje.
+Użyj tego przewodnika Szybki start, aby rozpocząć wyszukiwanie wiadomości za pomocą zestawu SDK wyszukiwania wideo Bing dla języka Java. Chociaż wyszukiwanie wideo Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), with additional annotations, and features.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zestaw Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* Zestaw [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * [Biblioteka Gson](https://github.com/google/gson)
 
@@ -115,7 +115,7 @@ Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i z
         //...
         ```
 
-## <a name="send-a-search-request-and-receive-the-response"></a>Wyślij żądanie wyszukiwania i otrzymywać odpowiedzi 
+## <a name="send-a-search-request-and-receive-the-response"></a>Send a search request and receive the response 
 
 1. Utwórz funkcję o nazwie `VideoSearch()`, która przyjmujące Twój klucz subskrypcji w postaci ciągu. Utwórz wystąpienie utworzonego wcześniej klienta wyszukiwania.
     
@@ -156,7 +156,7 @@ Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i z
     }
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie internetowej aplikacji jednostronicowej](../tutorial-bing-video-search-single-page-app.md)

@@ -1,6 +1,6 @@
 ---
-title: Zainstaluj lokalną bramę danych — Azure Logic Apps
-description: Aby można było uzyskać dostęp do danych lokalnych z Azure Logic Apps, Pobierz i zainstaluj lokalną bramę danych.
+title: Install on-premises data gateway - Azure Logic Apps
+description: Before you can access data on premises from Azure Logic Apps, download and install the on-premises data gateway
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,273 +9,275 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e1e56d18b0874a724849e28092ed46892a1b5519
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076933"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326370"
 ---
-# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla Azure Logic Apps
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Install on-premises data gateway for Azure Logic Apps
 
-Przed [nawiązaniem połączenia z lokalnymi źródłami danych z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md)Pobierz i zainstaluj lokalną [bramę danych](https://aka.ms/on-premises-data-gateway-installer) na komputerze lokalnym. Brama działa jako most, który zapewnia szybkie przesyłanie i szyfrowanie danych między źródłami danych w środowisku lokalnym i aplikacjami logiki. Możesz użyć tej samej instalacji bramy z innymi usługami w chmurze, takich jak Power BI, Automatyzacja, aplikacje i Azure Analysis Services. Aby uzyskać informacje o sposobach korzystania z bramy za pomocą tych usług, zobacz następujące artykuły:
+Before you can [connect to on-premises data sources from Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), download and install the [on-premises data gateway](https://aka.ms/on-premises-data-gateway-installer) on a local computer. The gateway works as a bridge that provides quick data transfer and encryption between data sources on premises and your logic apps. You can use the same gateway installation with other cloud services, such as Power BI, Power Automate, Power Apps, and Azure Analysis Services. For information about how to use the gateway with these services, see these articles:
 
-* [Microsoft energia — lokalna Brama danych](/power-automate/gateway-reference)
-* [Lokalna Brama danych Power BI firmy Microsoft](/power-bi/service-gateway-onprem)
-* [Lokalna Brama danych firmy Microsoft dla aplikacji zaawansowanych](/powerapps/maker/canvas-apps/gateway-reference)
-* [Azure Analysis Services lokalnej bramy danych](../analysis-services/analysis-services-gateway.md)
+* [Microsoft Power Automate on-premises data gateway](/power-automate/gateway-reference)
+* [Microsoft Power BI on-premises data gateway](/power-bi/service-gateway-onprem)
+* [Microsoft Power Apps on-premises data gateway](/powerapps/maker/canvas-apps/gateway-reference)
+* [Azure Analysis Services on-premises data gateway](../analysis-services/analysis-services-gateway.md)
 
-W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną bramę danych, aby można było uzyskać dostęp do lokalnych źródeł danych z Azure Logic Apps. Możesz również dowiedzieć się więcej o tym [, jak Brama danych działa](#gateway-cloud-service) w dalszej części tego tematu. Aby uzyskać więcej informacji na temat bramy, zobacz [co to jest brama lokalna](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
+This article shows how to download, install, and set up your on-premises data gateway so that you can access on-premises data sources from Azure Logic Apps. You can also learn more about [how the data gateway works](#gateway-cloud-service) later in this topic. For more information about the gateway, see [What is an on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
 
 <a name="requirements"></a>
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Konto i subskrypcja platformy Azure. Jeśli nie masz konta platformy Azure z subskrypcją, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
+* Konto i subskrypcja platformy Azure. If you don't have an Azure account with a subscription, [sign up for a free Azure account](https://azure.microsoft.com/free/).
 
-  * Twoje konto platformy Azure musi należeć do jednej [dzierżawy lub katalogu usługi Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md#terminology). Aby zainstalować bramę na komputerze lokalnym i administrować nią, należy użyć tego samego konta platformy Azure.
+  * Your Azure account must belong to a single [Azure Active Directory (Azure AD) tenant or directory](../active-directory/fundamentals/active-directory-whatis.md#terminology). You must use the same Azure account for installing and administering the gateway on your local computer.
 
-  * Podczas instalacji bramy możesz zalogować się przy użyciu konta platformy Azure, które łączy instalację bramy z kontem platformy Azure i tylko z tym kontem. Później w Azure Portal należy użyć tego samego konta platformy Azure i dzierżawy usługi Azure AD podczas tworzenia zasobu bramy platformy Azure, który rejestruje i zgłasza instalację bramy. W Azure Logic Apps lokalne wyzwalacze i akcje używają zasobu bramy do łączenia się z lokalnymi źródłami danych.
+  * During gateway installation, you sign in with your Azure account, which links your gateway installation to your Azure account and only that account. Later, in the Azure portal, you must use the same Azure account and Azure AD tenant when you create an Azure gateway resource that registers and claims your gateway installation. In Azure Logic Apps, on-premises triggers and actions then use the gateway resource for connecting to on-premises data sources.
 
     > [!NOTE]
-    > Do siebie można połączyć tylko jedną instalację bramy i jeden zasób bramy platformy Azure. Nie można połączyć tej samej instalacji bramy z wieloma kontami platformy Azure lub zasobami bramy platformy Azure. Konto platformy Azure może jednak łączyć się z wieloma instalacjami bramy i zasobami bramy platformy Azure. W lokalnym wyzwalaczu lub akcji możesz wybrać spośród różnych subskrypcji platformy Azure, a następnie wybrać skojarzony zasób bramy.
+    > You can link only one gateway installation and one Azure gateway resource to each other. You can't link the same gateway installation to multiple Azure accounts or Azure gateway resources. However, an Azure account can link to multiple gateway installations and Azure gateway resources. In an on-premises trigger or action, you can select from your various Azure subscriptions, and then select an associated gateway resource.
 
-  * Musisz zalogować się przy użyciu konta służbowego, znanego również jako konto *organizacji* , które wygląda jak `username@contoso.com`. Nie można używać kont B2B (gość) platformy Azure ani osobistych kont Microsoft, takich jak @hotmail.com lub @outlook.com.
+  * You need to sign in with either a work account or school account, also known as an *organization* account, which looks like `username@contoso.com`. You can't use Azure B2B (guest) accounts or personal Microsoft accounts, such as @hotmail.com or @outlook.com.
 
     > [!TIP]
-    > Jeśli zarejestrowano się w celu uzyskania oferty pakietu Office 365 i nie podano służbowego adresu e-mail, adres może wyglądać jak `username@domain.onmicrosoft.com`. Twoje konto jest przechowywane w dzierżawie w Azure Active Directory (Azure AD). W większości przypadków główna nazwa użytkownika (UPN) dla konta usługi Azure AD jest taka sama jak w przypadku Twojego adresu e-mail.
+    > If you signed up for an Office 365 offering and didn't provide your work email address, your address might look like `username@domain.onmicrosoft.com`. Your account is stored within a tenant in an Azure Active Directory (Azure AD). In most cases, the User Principal Name (UPN) for your Azure AD account is the same as your email address.
     >
-    > Aby użyć [standardowej subskrypcji programu Visual Studio](https://visualstudio.microsoft.com/vs/pricing/) , która jest połączona z konto Microsoft, należy najpierw [utworzyć dzierżawę w usłudze Azure AD](../active-directory/develop/quickstart-create-new-tenant.md) lub użyć domyślnego katalogu. Dodaj użytkownika z hasłem do katalogu, a następnie nadaj temu użytkownikowi dostęp do subskrypcji platformy Azure. Następnie możesz zalogować się podczas instalacji bramy przy użyciu tej nazwy użytkownika i hasła.
+    > To use a [Visual Studio Standard subscription](https://visualstudio.microsoft.com/vs/pricing/) that's linked to a Microsoft account, first [create a tenant in Azure AD](../active-directory/develop/quickstart-create-new-tenant.md) or use the default directory. Add a user with a password to the directory, and then give that user access to your Azure subscription. You can then sign in during gateway installation with this username and password.
 
-* Poniżej przedstawiono wymagania dotyczące komputera lokalnego:
+* Here are requirements for your local computer:
 
-  **Minimalne wymagania**
+  **Minimum requirements**
 
   * .NET Framework 4.7.2
-  * 64 — bitowa wersja systemu Windows 7 lub Windows Server 2008 R2 (lub nowszego)
+  * 64-bit version of Windows 7 or Windows Server 2008 R2 (or later)
 
-  **Zalecane wymagania**
+  **Recommended requirements**
 
-  * 8-rdzeniowy procesor CPU
-  * 8 GB pamięci
-  * 64 — bitowa wersja systemu Windows Server 2012 R2 lub nowszego
-  * Magazyn dysków półprzewodnikowych (SSD) do buforowania
+  * 8-core CPU
+  * 8 GB memory
+  * 64-bit version of Windows Server 2012 R2 or later
+  * Solid-state drive (SSD) storage for spooling
 
   > [!NOTE]
-  > Brama nie obsługuje systemu Windows Server Core.
+  > The gateway doesn't support Windows Server Core.
 
-* **Powiązane zagadnienia**
+* **Related considerations**
 
-  * Bramę danych lokalnych można zainstalować tylko na komputerze lokalnym, a nie na kontrolerze domeny. Nie trzeba jednak instalować bramy na tym samym komputerze, na którym znajduje się źródło danych. Wymagana jest tylko jedna brama dla wszystkich źródeł danych, więc nie trzeba instalować bramy dla każdego źródła danych.
+  * Install the on-premises data gateway only on a local computer, not a domain controller. You don't have to install the gateway on the same computer as your data source. You need only one gateway for all your data sources, so you don't need to install the gateway for each data source.
 
     > [!TIP]
-    > Aby zminimalizować opóźnienie, można zainstalować bramę jak najbliżej źródła danych lub na tym samym komputerze, przy założeniu, że masz uprawnienia.
+    > To minimize latency, you can install the gateway as close as possible to your data source, or on the same computer, assuming that you have permissions.
 
-  * Zainstaluj bramę na komputerze, który znajduje się w sieci przewodowej, połączony z Internetem, zawsze włączone i przejdź do trybu uśpienia. W przeciwnym razie nie można uruchomić bramy, a wydajność sieci bezprzewodowej może być niedostępna.
+  * Install the gateway on a computer that's on a wired network, connected to the internet, always turned on, and doesn't go to sleep. Otherwise, the gateway can't run, and performance might suffer over a wireless network.
 
-  * Jeśli planujesz używanie uwierzytelniania systemu Windows, upewnij się, że brama jest zainstalowana na komputerze, który jest członkiem tego samego środowiska Active Directory, co źródła danych.
+  * If you plan to use Windows authentication, make sure that you install the gateway on a computer that's a member of the same Active Directory environment as your data sources.
 
-  * Region wybrany dla instalacji bramy jest tą samą lokalizacją, którą należy wybrać podczas późniejszego tworzenia zasobu bramy platformy Azure dla aplikacji logiki. Domyślnie ten region jest taka sama jak lokalizacja dzierżawy usługi Azure AD, która zarządza Twoim kontem platformy Azure. Można jednak zmienić lokalizację podczas instalacji bramy.
+  * The region that you select for your gateway installation is the same location that you must select when you later create the Azure gateway resource for your logic app. By default, this region is the same location as your Azure AD tenant that manages your Azure account. However, you can change the location during gateway installation.
 
-  * Brama ma dwa tryby: tryb standardowy i tryb osobisty, który ma zastosowanie tylko do Power BI. Na tym samym komputerze nie może znajdować się więcej niż jedna brama uruchomiona w tym samym trybie.
+  * If you're updating your gateway installation to the latest version, uninstall your current gateway first for a cleaner experience.
 
-  * Azure Logic Apps obsługuje operacje odczytu i zapisu za pomocą bramy. Jednak te operacje mają [limity rozmiaru ładunku](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * The gateway has two modes: standard mode and personal mode, which applies only to Power BI. You can't have more than one gateway running in the same mode on the same computer.
+
+  * Azure Logic Apps supports read and write operations through the gateway. However, these operations have [limits on their payload size](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
 ## <a name="install-data-gateway"></a>Instalowanie bramy danych
 
-1. [Pobierz i uruchom Instalatora bramy na komputerze lokalnym](https://aka.ms/on-premises-data-gateway-installer).
+1. [Download and run the gateway installer on a local computer](https://aka.ms/on-premises-data-gateway-installer).
 
-1. Po otwarciu Instalatora wybierz pozycję **dalej**.
+1. After the installer opens, select **Next**.
 
-   ![Ekran Wprowadzenie dla Instalatora bramy](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Intro screen for gateway installer](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
-1. Wybierz pozycję **lokalna Brama danych (zalecane)** , która jest trybem standardowym, a następnie wybierz przycisk **dalej**.
+1. Select **On-premises data gateway (recommended)** , which is standard mode, and then select **Next**.
 
-   ![Wybierz tryb uruchamiania dla bramy danych](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
+   ![Select run mode for data gateway](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
-1. Zapoznaj się z minimalnymi wymaganiami, Zachowaj domyślną ścieżkę instalacji, zaakceptuj warunki użytkowania, a następnie wybierz pozycję **Zainstaluj**.
+1. Review the minimum requirements, keep the default installation path, accept the terms of use, and then select **Install**.
 
-   ![Przejrzyj wymagania i zaakceptuj warunki użytkowania](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
+   ![Review requirements and accept terms of use](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. Po pomyślnym zainstalowaniu bramy Podaj adres e-mail swojego konta platformy Azure, a następnie wybierz pozycję **Zaloguj się**, na przykład:
+1. After the gateway successfully installs, provide the email address for your Azure account, and then select **Sign in**, for example:
 
-   ![Zaloguj się przy użyciu konta służbowego](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
+   ![Sign in with work or school account](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-   Instalacja bramy może być połączona tylko z jednym kontem platformy Azure.
+   Your gateway installation can link to only one Azure account.
 
-1. Wybierz pozycję **zarejestruj nową bramę na tym komputerze** , > **dalej**. Ten krok rejestruje instalację bramy w [usłudze bramy w chmurze](#gateway-cloud-service).
+1. Select **Register a new gateway on this computer** > **Next**. This step registers your gateway installation with the [gateway cloud service](#gateway-cloud-service).
 
-   ![Zarejestruj bramę na komputerze lokalnym](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
+   ![Register gateway on local computer](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
-1. Podaj te informacje na potrzeby instalacji bramy:
+1. Provide this information for your gateway installation:
 
-   * Nazwa bramy, która jest unikatowa w ramach dzierżawy usługi Azure AD
-   * Klucz odzyskiwania, który musi mieć co najmniej osiem znaków, które mają być używane.
-   * Potwierdzenie klucza odzyskiwania
+   * A gateway name that's unique across your Azure AD tenant
+   * The recovery key, which must have at least eight characters, that you want to use
+   * Confirmation for your recovery key
 
-   ![Podaj informacje dotyczące instalacji bramy](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
+   ![Provide information for gateway installation](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
-   > Zapisz i Zachowaj klucz odzyskiwania w bezpiecznym miejscu. Ten klucz będzie potrzebny, jeśli kiedykolwiek chcesz zmienić lokalizację, przenieść, odzyskać lub przejmowanie instalacji bramy.
+   > Save and keep your recovery key in a safe place. You need this key if you ever want to change the location, move, recover, or take over a gateway installation.
 
-   Zwróć uwagę na to, że można **dodać do istniejącego klastra bramy**, który wybierasz podczas instalacji dodatkowych bram w [scenariuszach wysokiej dostępności](#high-availability).
+   Note the option to **Add to an existing gateway cluster**, which you select when you install additional gateways for [high-availability scenarios](#high-availability).
 
-1. Sprawdź region usługi bramy w chmurze i [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) używany przez instalację bramy. Domyślnie ten region jest taka sama jak lokalizacja dzierżawy usługi Azure AD dla Twojego konta platformy Azure.
+1. Check the region for the gateway cloud service and [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) that's used by your gateway installation. By default, this region is the same location as the Azure AD tenant for your Azure account.
 
-   ![Potwierdź region usługi bramy i usługi Service Bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
+   ![Confirm region for gateway service and service bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
-1. Aby zaakceptować domyślny region, wybierz pozycję **Konfiguruj**. Jeśli jednak domyślny region nie jest tym, który znajduje się najbliżej Ciebie, możesz zmienić region.
+1. To accept the default region, select **Configure**. However, if the default region isn't the one that's closest to you, you can change the region.
 
-   *Dlaczego należy zmienić region instalacji bramy?*
+   *Why change the region for your gateway installation?*
 
-   Na przykład w celu zmniejszenia opóźnień można zmienić region bramy na ten sam region, w którym znajduje się aplikacja logiki. Możesz też wybrać region znajdujący się najbliżej lokalnego źródła danych. *Zasób bramy na platformie Azure* i aplikacja logiki mogą mieć różne lokalizacje.
+   For example, to reduce latency, you might change your gateway's region to the same region as your logic app. Or, you might select the region closest to your on-premises data source. Your *gateway resource in Azure* and your logic app can have different locations.
 
-   1. Obok bieżącego regionu wybierz pozycję **Zmień region**.
+   1. Next to the current region, select **Change Region**.
 
-      ![Zmień bieżący region bramy](./media/logic-apps-gateway-install/change-gateway-service-region.png)
+      ![Change the current gateway region](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
-   1. Na następnej stronie Otwórz listę **Wybierz region** , wybierz żądany region, a następnie wybierz pozycję **gotowe**.
+   1. On the next page, open the **Select Region** list, select the region you want, and select **Done**.
 
-      ![Wybierz inny region dla usługi bramy](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Select another region for gateway service](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. Przejrzyj informacje w oknie potwierdzenie końcowe. Ten przykład używa tego samego konta dla Logic Apps, Power BI, aplikacji zaawansowanych i automatyzacji, aby brama była dostępna dla wszystkich tych usług. Gdy wszystko będzie gotowe, wybierz pozycję **Zamknij**.
+1. Review the information in the final confirmation window. This example uses the same account for Logic Apps, Power BI, Power Apps, and Power Automate, so the gateway is available for all these services. When you're ready, select **Close**.
 
-   ![Potwierdź informacje o bramie danych](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Confirm data gateway information](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
-1. Teraz [Utwórz zasób platformy Azure na potrzeby instalacji bramy](../logic-apps/logic-apps-gateway-connection.md).
+1. Now [create the Azure resource for your gateway installation](../logic-apps/logic-apps-gateway-connection.md).
 
-## <a name="check-or-adjust-communication-settings"></a>Sprawdzanie lub Dostosowywanie ustawień komunikacji
+## <a name="check-or-adjust-communication-settings"></a>Check or adjust communication settings
 
-Lokalna Brama danych zależy od [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) łączności z chmurą i ustanawiania odpowiednich połączeń wychodzących do skojarzonego z nią regionu platformy Azure. Jeśli środowisko pracy wymaga, aby ruch przechodzi przez serwer proxy lub zaporę w celu uzyskania dostępu do Internetu, to ograniczenie może uniemożliwić lokalnej bramie danych nawiązanie połączenia z usługą bramy w chmurze i Azure Service Bus. Brama ma kilka ustawień komunikacji, które można dostosować. Aby uzyskać więcej informacji zobacz następujące tematy:
+The on-premises data gateway depends on [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) for cloud connectivity and establishes the corresponding outbound connections to the gateway's associated Azure region. If your work environment requires that traffic goes through a proxy or firewall to access the internet, this restriction might prevent the on-premises data gateway from connecting to the gateway cloud service and Azure Service Bus. The gateway has several communication settings, which you can adjust. For more information, see these topics:
 
-* [Dostosuj ustawienia komunikacji dla lokalnej bramy danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Konfigurowanie ustawień serwera proxy dla lokalnej bramy danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Adjust communication settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
+* [Configure proxy settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
-## <a name="high-availability-support"></a>Obsługa wysokiej dostępności
+## <a name="high-availability-support"></a>High availability support
 
-Aby uniknąć pojedynczych punktów awarii w przypadku dostępu do danych lokalnych, można mieć wiele instalacji bramy (tylko tryb standardowy) z każdym innym komputerem i skonfigurować je jako klaster lub grupę. W ten sposób, jeśli Brama podstawowa jest niedostępna, żądania danych są kierowane do drugiej bramy i tak dalej. Ponieważ na komputerze można zainstalować tylko jedną bramę standardową, należy zainstalować każdą dodatkową bramę znajdującą się w klastrze na innym komputerze. Wszystkie łączniki, które współpracują z lokalną bramą danych, obsługują wysoką dostępność.
+To avoid single points of failure for on-premises data access, you can have multiple gateway installations (standard mode only) with each on a different computer, and set them up as a cluster or group. That way, if the primary gateway is unavailable, data requests are routed to the second gateway, and so on. Because you can install only one standard gateway on a computer, you must install each additional gateway that's in the cluster on a different computer. All the connectors that work with the on-premises data gateway support high availability.
 
-* Musisz mieć już co najmniej jedną instalację bramy z tym samym kontem platformy Azure co Brama podstawowa i klucz odzyskiwania dla tej instalacji.
+* You must already have at least one gateway installation with the same Azure account as the primary gateway and the recovery key for that installation.
 
-* Brama podstawowa musi mieć uruchomioną aktualizację z listopada 2017 lub nowszą.
+* Your primary gateway must be running the gateway update from November 2017 or later.
 
-Po skonfigurowaniu bramy podstawowej po przejściu do pozycji zainstaluj inną bramę wybierz opcję **Dodaj do istniejącego klastra bramy**, wybierz bramę podstawową, która jest pierwszą zainstalowaną bramą, i Podaj klucz odzyskiwania dla tej bramy. Aby uzyskać więcej informacji, zobacz [klastrów o wysokiej dostępności dla lokalnej bramy danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
+After you set up your primary gateway, when you go to install another gateway, select **Add to an existing gateway cluster**, select the primary gateway, which is the first gateway that you installed, and provide the recovery key for that gateway. For more information, see [High availability clusters for on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
-## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Zmień lokalizację, Migruj, Przywróć lub Przejmij istniejącą bramę
+## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Change location, migrate, restore, or take over existing gateway
 
-Jeśli konieczna jest zmiana lokalizacji bramy, przeniesienie instalacji bramy na nowy komputer, odzyskanie uszkodzonej bramy lub przejęcie na własność istniejącej bramy wymaga klucza odzyskiwania, który został dostarczony podczas instalacji bramy.
+If you must change your gateway's location, move your gateway installation to a new computer, recover a damaged gateway, or take ownership for an existing gateway, you need the recovery key that was provided during gateway installation.
 
-1. Uruchom Instalatora bramy na komputerze, który ma istniejącą bramę. Jeśli nie masz najnowszego Instalatora bramy, [Pobierz najnowszą wersję bramy](https://aka.ms/on-premises-data-gateway-installer).
+1. Run the gateway installer on the computer that has the existing gateway. If you don't have the latest gateway installer, [download the latest gateway version](https://aka.ms/on-premises-data-gateway-installer).
 
    > [!NOTE]
-   > Przed przystąpieniem do przywracania bramy na komputerze z oryginalną instalacją bramy należy najpierw odinstalować bramę na tym komputerze. Ta akcja rozłącza pierwotną bramę.
-   > Po usunięciu lub usunięciu klastra bramy dla dowolnej usługi w chmurze nie można przywrócić tego klastra.
+   > Before you restore the gateway on the computer that has the original gateway installation, you must first uninstall the gateway on that computer. This action disconnects the original gateway.
+   > If you remove or delete a gateway cluster for any cloud service, you can't restore that cluster.
 
-1. Po otwarciu Instalatora Zaloguj się przy użyciu tego samego konta platformy Azure, które zostało użyte do zainstalowania bramy.
+1. After the installer opens, sign in with the same Azure account that was used to install the gateway.
 
-1. Wybierz kolejno pozycje **Migruj, Przywróć lub przejęcie istniejącej bramy** > **dalej**, na przykład:
+1. Select **Migrate, restore, or takeover an existing gateway** > **Next**, for example:
 
-   ![Wybieranie opcji "Migruj, Przywróć lub przejęcie istniejącej bramy"](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
+   ![Select "Migrate, restore, or takeover an existing gateway"](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
-1. Wybierz spośród dostępnych klastrów i bram, a następnie wprowadź klucz odzyskiwania dla wybranej bramy, na przykład:
+1. Select from the available clusters and gateways, and enter the recovery key for the selected gateway, for example:
 
-   ![Wybierz bramę i Podaj klucz odzyskiwania](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Select gateway and provide recovery key](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. Aby zmienić region, wybierz pozycję **Zmień region**, a następnie wybierz nowy region.
+1. To change the region, select **Change Region**, and select the new region.
 
-1. Gdy wszystko będzie gotowe, wybierz pozycję **Konfiguruj** , aby można było zakończyć zadanie.
+1. When you're ready, select **Configure** so that you can finish your task.
 
-## <a name="tenant-level-administration"></a>Administracja na poziomie dzierżawy
+## <a name="tenant-level-administration"></a>Tenant-level administration
 
-Aby uzyskać wgląd we wszystkie lokalne bramy danych w dzierżawie usługi Azure AD, Administratorzy globalni w tej dzierżawie mogą zalogować się do [Centrum administracyjnego platformy na platformie zarządzania](https://powerplatform.microsoft.com) jako Administrator dzierżawy i wybrać opcję **bramy danych** . Aby uzyskać więcej informacji, zobacz [administrowanie na poziomie dzierżawy dla lokalnej bramy danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
+To get visibility into all the on-premises data gateways in an Azure AD tenant, global administrators in that tenant can sign in to the [Power Platform Admin center](https://powerplatform.microsoft.com) as a tenant administrator and select the **Data Gateways** option. For more information, see [Tenant-level administration for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Uruchom ponownie bramę
+## <a name="restart-gateway"></a>Restart gateway
 
-Domyślnie instalacja bramy na komputerze lokalnym działa jako konto usługi systemu Windows o nazwie "lokalna Brama danych". Jednak instalacja bramy używa nazwy `NT SERVICE\PBIEgwService` na potrzeby poświadczeń konta "Zaloguj się jako" i ma uprawnienia "Logowanie w trybie usługi".
+By default, the gateway installation on your local computer runs as a Windows service account named "On-premises data gateway service". However, the gateway installation uses the `NT SERVICE\PBIEgwService` name for its "Log On As" account credentials and has "Log on as a service" permissions.
 
 > [!NOTE]
-> Konto usługi systemu Windows różni się od konta używanego do łączenia się z lokalnymi źródłami danych i konta platformy Azure, które jest używane podczas logowania się do usług w chmurze.
+> Your Windows service account differs from the account used for connecting to on-premises data sources and from the Azure account that you use when you sign in to cloud services.
 
-Podobnie jak w przypadku każdej innej usługi systemu Windows, można uruchomić i zatrzymać bramę na różne sposoby. Aby uzyskać więcej informacji, zobacz [Ponowne uruchamianie lokalnej bramy danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
+Like any other Windows service, you can start and stop the gateway in various ways. For more information, see [Restart an on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>Jak działa Brama
+## <a name="how-the-gateway-works"></a>How the gateway works
 
-Użytkownicy w organizacji mogą uzyskiwać dostęp do danych lokalnych, do których mają już dostęp autoryzowany. Jednak zanim użytkownicy będą mogli połączyć się z lokalnym źródłem danych, należy zainstalować i skonfigurować lokalną bramę danych. Zazwyczaj administrator jest osobą, która instaluje i konfiguruje bramę. Te akcje mogą wymagać uprawnień administratora serwera lub specjalnej wiedzy o serwerach lokalnych.
+Users in your organization can access on-premises data for which they already have authorized access. However, before these users can connect to your on-premises data source, you need to install and set up an on-premises data gateway. Usually, an admin is the person who installs and sets up a gateway. These actions might require Server Administrator permissions or special knowledge about your on-premises servers.
 
-Brama ułatwia szybkie i bezpieczne komunikowanie się w tle. Ta komunikacja odbywa się między użytkownikiem w chmurze, usługą bramy w chmurze i lokalnym źródłem danych. Usługa bramy w chmurze szyfruje i przechowuje poświadczenia źródła danych oraz szczegóły bramy. Usługa kieruje także zapytania i ich wyniki między użytkownikiem, bramą i lokalnym źródłem danych.
+The gateway facilitates quick and secure communication behind-the-scenes-communication. This communication flows between a user in the cloud, the gateway cloud service, and your on-premises data source. The gateway cloud service encrypts and stores your data source credentials and gateway details. The service also routes queries and their results between the user, the gateway, and your on-premises data source.
 
-Brama współpracuje z zaporami i używa tylko połączeń wychodzących. Cały ruch pochodzący z agenta bramy jest zabezpieczonym ruchem wychodzącym. Brama przekazuje dane ze źródeł lokalnych w zaszyfrowanej kanale za pośrednictwem [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Ta usługa Service Bus tworzy kanał między bramą a usługą wywołującą, ale nie przechowuje żadnych danych. Wszystkie dane przesyłane przez bramę są szyfrowane.
+The gateway works with firewalls and uses only outbound connections. All traffic originates as secure outbound traffic from the gateway agent. The gateway relays data from on-premises sources on encrypted channels through [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). This service bus creates a channel between the gateway and the calling service, but doesn't store any data. All data that travels through the gateway is encrypted.
 
-![Architektura bramy danych lokalnych](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
+![Architecture for on-premises data gateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
 > [!NOTE]
-> W zależności od usługi w chmurze może być konieczne skonfigurowanie źródła danych dla bramy.
+> Depending on the cloud service, you might need to set up a data source for the gateway.
 
-W tych krokach opisano, co się dzieje w przypadku korzystania z elementu połączonego z lokalnym źródłem danych:
+These steps describe what happens when you interact with an element that's connected to an on-premises data source:
 
-1. Usługa w chmurze tworzy zapytanie wraz z zaszyfrowanymi poświadczeniami dla źródła danych. Następnie usługa wysyła zapytanie i poświadczenia do kolejki bramy w celu przetworzenia.
+1. The cloud service creates a query, along with the encrypted credentials for the data source. The service then sends the query and credentials to the gateway queue for processing.
 
-1. Usługa bramy w chmurze analizuje zapytanie i wypycha żądanie do Azure Service Bus.
+1. The gateway cloud service analyzes the query and pushes the request to Azure Service Bus.
 
-1. Azure Service Bus wysyła oczekujące żądania do bramy.
+1. Azure Service Bus sends the pending requests to the gateway.
 
-1. Brama pobiera zapytanie, odszyfrowuje poświadczenia i nawiązuje połączenie z jednym lub wieloma źródłami danych przy użyciu tych poświadczeń.
+1. The gateway gets the query, decrypts the credentials, and connects to one or more data sources with those credentials.
 
-1. Brama wysyła zapytanie do źródła danych w celu uruchomienia.
+1. The gateway sends the query to the data source for running.
 
-1. Wyniki są wysyłane ze źródła danych z powrotem do bramy, a następnie do usługi bramy w chmurze. Następnie Usługa bramy w chmurze używa wyników.
+1. The results are sent from the data source back to the gateway, and then to the gateway cloud service. The gateway cloud service then uses the results.
 
-### <a name="authentication-to-on-premises-data-sources"></a>Uwierzytelnianie do lokalnych źródeł danych
+### <a name="authentication-to-on-premises-data-sources"></a>Authentication to on-premises data sources
 
-Przechowywane poświadczenia są używane do nawiązywania połączenia z bramą z lokalnymi źródłami danych. Niezależnie od użytkownika, brama używa przechowywanych poświadczeń do nawiązania połączenia. Mogą wystąpić wyjątki uwierzytelniania dla określonych usług, takich jak zapytania bezpośrednie i LiveConnect Analysis Services w Power BI.
+A stored credential is used to connect from the gateway to on-premises data sources. Regardless of the user, the gateway uses the stored credential to connect. There might be authentication exceptions for specific services, such as DirectQuery and LiveConnect for Analysis Services in Power BI.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
-Usługi w chmurze firmy Microsoft używają usługi [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) do uwierzytelniania użytkowników. Dzierżawa usługi Azure AD zawiera nazwy użytkowników i grupy zabezpieczeń. Zwykle adres e-mail używany do logowania jest taki sam jak główna nazwa użytkownika (UPN) dla Twojego konta.
+Microsoft cloud services use [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) to authenticate users. An Azure AD tenant contains usernames and security groups. Typically, the email address that you use for sign-in is the same as the User Principal Name (UPN) for your account.
 
-### <a name="what-is-my-upn"></a>Co to jest moja nazwa UPN?
+### <a name="what-is-my-upn"></a>What is my UPN?
 
-Jeśli nie jesteś administratorem domeny, być może nie znasz nazwy UPN. Aby znaleźć nazwę UPN dla Twojego konta, uruchom polecenie `whoami /upn` na stacji roboczej. Mimo że wynik wygląda podobnie do adresu e-mail, wynik jest nazwą UPN dla lokalnego konta domeny.
+If you're not a domain admin, you might not know your UPN. To find the UPN for your account, run the `whoami /upn` command from your workstation. Although the result looks like an email address, the result is the UPN for your local domain account.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronizowanie Active Directory lokalnego z usługą Azure AD
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronize an on-premises Active Directory with Azure AD
 
-Nazwa UPN lokalnych kont Active Directory i kont usługi Azure AD musi być taka sama. Upewnij się, że każde konto Active Directory lokalnego jest zgodne z kontem usługi Azure AD. Usługi w chmurze wiedzą tylko o kontach w usłudze Azure AD. W związku z tym nie musisz dodawać konta do Active Directory lokalnego. Jeśli konto nie istnieje w usłudze Azure AD, nie można użyć tego konta.
+The UPN for your on-premises Active Directory accounts and Azure AD accounts must be the same. So, make sure that each on-premises Active Directory account matches your Azure AD account. The cloud services know only about accounts within Azure AD. So, you don't need to add an account to your on-premises Active Directory. If the account doesn't exist in Azure AD, you can't use that account.
 
-Poniżej przedstawiono sposoby dopasowywania lokalnych kont Active Directory za pomocą usługi Azure AD.
+Here are ways that you can match your on-premises Active Directory accounts with Azure AD.
 
-* Ręczne dodawanie kont do usługi Azure AD.
+* Add accounts manually to Azure AD.
 
-  Utwórz konto w Azure Portal lub w centrum administracyjnym Microsoft 365. Upewnij się, że nazwa konta jest zgodna z nazwą UPN dla lokalnego konta Active Directory.
+  Create an account in the Azure portal or in the Microsoft 365 admin center. Make sure that the account name matches the UPN for the on-premises Active Directory account.
 
-* Zsynchronizuj konta lokalne z dzierżawą usługi Azure AD za pomocą narzędzia Azure Active Directory Connect.
+* Synchronize local accounts to your Azure AD tenant by using the Azure Active Directory Connect tool.
 
-  Narzędzie Azure AD Connect udostępnia opcje synchronizacji katalogów i konfigurowania uwierzytelniania. Te opcje obejmują funkcję synchronizacji skrótów haseł, uwierzytelniania przekazywanego i Federacji. Jeśli nie jesteś administratorem dzierżawy lub administratorem domeny lokalnej, skontaktuj się z administratorem IT, aby uzyskać konfigurację Azure AD Connect. Azure AD Connect zapewnia, że nazwa UPN usługi Azure AD pasuje do lokalnej Active Directory nazwy UPN. Takie dopasowanie pomaga w przypadku korzystania z Analysis Services połączeń na żywo z funkcją Power BI lub logowania jednokrotnego (SSO).
+  The Azure AD Connect tool provides options for directory synchronization and authentication setup. These options include password hash sync, pass-through authentication, and federation. If you're not a tenant admin or a local domain admin, contact your IT admin to get Azure AD Connect set up. Azure AD Connect ensures that your Azure AD UPN matches your local Active Directory UPN. This matching helps if you're using Analysis Services live connections with Power BI or single sign-on (SSO) capabilities.
 
   > [!NOTE]
-  > Synchronizowanie kont za pomocą narzędzia Azure AD Connect tworzy nowe konta w dzierżawie usługi Azure AD.
+  > Synchronizing accounts with the Azure AD Connect tool creates new accounts in your Azure AD tenant.
 
 <a name="faq"></a>
 
-## <a name="faq-and-troubleshooting"></a>Często zadawane pytania i rozwiązywanie problemów
+## <a name="faq-and-troubleshooting"></a>FAQ and troubleshooting
 
-Aby uzyskać więcej informacji zobacz następujące tematy:
+For more information, see these topics:
 
 * [Lokalna brama danych — często zadawane pytania](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Rozwiązywanie problemów z lokalną bramą danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Monitorowanie i Optymalizowanie wydajności bramy](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Troubleshoot the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Monitor and optimize gateway performance](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Nawiązywanie połączenia z danymi lokalnymi z usługi Logic Apps](../logic-apps/logic-apps-gateway-connection.md)
-* [Funkcje integracji przedsiębiorstwa](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* [Connect to on-premises data from logic apps](../logic-apps/logic-apps-gateway-connection.md)
+* [Enterprise integration features](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Łączniki dla usługi Azure Logic Apps](../connectors/apis-list.md)

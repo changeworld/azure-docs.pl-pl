@@ -1,97 +1,93 @@
 ---
-title: Samouczek tworzenia, kompilowania, & wdrażania inteligentnych kontraktów — usługa Azure łańcucha bloków
-description: Samouczek dotyczący sposobu korzystania z rozszerzenia Azure łańcucha bloków Development Kit for Ethereum w programie Visual Studio Code do tworzenia, kompilowania i wdrażania inteligentnego kontraktu w usłudze Azure łańcucha bloków Service.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Create, build, & deploy smart contracts tutorial - Azure Blockchain Service
+description: Tutorial on how to use the Azure Blockchain Development Kit for Ethereum extension in Visual Studio Code to create, build, and deploy a smart contract on Azure Blockchain Service.
 ms.date: 11/20/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 9e3b9dc7ea10e67b636194d955f3a7b50d990a23
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 2d2cb174656f5ed8f13d4463d416455ebb3f9ec9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286685"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325168"
 ---
-# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Samouczek: Tworzenie, kompilowanie i wdrażanie inteligentnych kontraktów w usłudze Azure łańcucha bloków Service
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Tutorial: Create, build, and deploy smart contracts on Azure Blockchain Service
 
-W tym samouczku Użyj rozszerzenia Azure łańcucha bloków Development Kit for Ethereum w Visual Studio Code, aby utworzyć, skompilować i wdrożyć inteligentny kontrakt w usłudze Azure łańcucha bloków Service. Możesz również użyć Truffle do wykonywania funkcji kontraktu inteligentnego za pośrednictwem transakcji.
+In this tutorial, use the Azure Blockchain Development Kit for Ethereum extension in Visual Studio Code to create, build, and deploy a smart contract on Azure Blockchain Service. You also use Truffle to execute a smart contract function via a transaction.
 
-Używasz zestawu Azure łańcucha bloków Development Kit dla Ethereum:
+You use Azure Blockchain Development Kit for Ethereum to:
 
 > [!div class="checklist"]
-> * Tworzenie kontraktu inteligentnego
-> * Wdrażanie kontraktu inteligentnego
-> * Wykonywanie funkcji kontraktu inteligentnego za pośrednictwem transakcji
-> * Kwerenda stanu kontraktu
+> * Create a smart contract
+> * Deploy a smart contract
+> * Execute a smart contract function via a transaction
+> * Query contract state
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Kończenie [szybkiego startu: użyj Visual Studio Code, aby nawiązać połączenie z siecią Azure łańcucha bloków Service Consortium](connect-vscode.md)
+* Complete [Quickstart: Use Visual Studio Code to connect to a Azure Blockchain Service consortium network](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Rozszerzenie Azure łańcucha bloków Development Kit dla rozszerzenia Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node. js 10.15. x lub nowszy](https://nodejs.org/download)
-* [Git 2.10. x lub nowszy](https://git-scm.com)
-* [2.7.15 Python](https://www.python.org/downloads/release/python-2715/) Dodaj język Python. exe do ścieżki. Wersja 2.7.15 języka Python w ścieżce jest wymagana w przypadku zestawu Azure łańcucha bloków Development Kit.
+* [Azure Blockchain Development Kit for Ethereum extension](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node.js 10.15.x or higher](https://nodejs.org/download)
+* [Git 2.10.x or higher](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Add python.exe to your path. Python version 2.7.15 in your path is required for Azure Blockchain Development Kit.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
-* [Interfejs wiersza polecenia ganache 6.0.0](https://github.com/trufflesuite/ganache-cli)
+* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
-W systemie Windows zainstalowany C++ kompilator jest wymagany dla modułu Node-GYP. Możesz użyć narzędzi MSBuild:
+On Windows, an installed C++ compiler is required for the node-gyp module. You can use the MSBuild tools:
 
-* Jeśli zainstalowano program Visual Studio 2017, należy skonfigurować npm do używania narzędzi MSBuild z poleceniem `npm config set msvs_version 2017 -g`
-* Jeśli zainstalowano program Visual Studio 2019, Ustaw ścieżkę Microsoft Build Tools for npm. Na przykład: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
-* W przeciwnym razie zainstaluj autonomiczne narzędzia programu VS Build przy użyciu `npm install --global windows-build-tools` w powłoce poleceń *administratora* z podwyższonym poziomem uprawnień.
+* If Visual Studio 2017 is installed, configure npm to use the MSBuild tools with the command `npm config set msvs_version 2017 -g`
+* If Visual Studio 2019 is installed, set the MS build tools path for npm. Na przykład: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* Otherwise, install the stand-alone VS Build tools using `npm install --global windows-build-tools` in an elevated *Run as administrator* command shell.
 
-Aby uzyskać więcej informacji na temat węzła Node-GYP, zobacz [repozytorium Node-GYP w witrynie GitHub](https://github.com/node-gyp).
+For more information about node-gyp, see the [node-gyp repository on GitHub](https://github.com/node-gyp).
 
-## <a name="create-a-smart-contract"></a>Tworzenie kontraktu inteligentnego
+## <a name="create-a-smart-contract"></a>Create a smart contract
 
-Zestaw Azure łańcucha bloków Development Kit dla Ethereum używa szablonów projektów i narzędzi Truffle, aby pomóc w tworzeniu i wdrażaniu umów. Przed rozpoczęciem Wypełnij wymagania wstępne [przewodnika Szybki Start: użyj Visual Studio Code, aby nawiązać połączenie z siecią konsorcjum usługi Azure łańcucha bloków](connect-vscode.md). Przewodnik Szybki Start przeprowadzi Cię przez proces instalowania i konfigurowania zestawu Azure łańcucha bloków Development Kit dla Ethereum.
+The Azure Blockchain Development Kit for Ethereum uses project templates and Truffle tools to help scaffold, build, and deploy contracts. Before you begin, complete the prerequisite [Quickstart: Use Visual Studio Code to connect to a Azure Blockchain Service consortium network](connect-vscode.md). The quickstart guides you through the installation and configuration of the Azure Blockchain Development Kit for Ethereum.
 
-1. Z palety poleceń VS Code wybierz pozycję **Azure łańcucha bloków: nowy projekt o stałej**wypełniania.
-1. Wybierz pozycję **Utwórz projekt podstawowy**.
-1. Utwórz nowy folder o nazwie `HelloBlockchain` i **Wybierz pozycję Nowy projekt ścieżka**.
+1. From the VS Code command palette, choose **Azure Blockchain: New Solidity Project**.
+1. Choose **Create basic project**.
+1. Create a new folder named `HelloBlockchain` and **Select new project path**.
 
-Zestaw Azure łańcucha bloków Development Kit tworzy i inicjuje nowy projekt o stałej wypełniania. Projekt podstawowy zawiera przykładową **HelloBlockchainą** umowę i wszystkie pliki niezbędne do kompilowania i wdrażania w składowej konsorcjum usługi Azure łańcucha bloków. Utworzenie projektu może potrwać kilka minut. Postęp można monitorować w panelu terminalu VS Code, wybierając dane wyjściowe dla usługi Azure łańcucha bloków.
+The Azure Blockchain Development Kit creates and initializes a new Solidity project for you. The basic project includes a sample **HelloBlockchain** smart contract and all the necessary files to build and deploy to your consortium member in Azure Blockchain Service. It may take several minutes for the project to be created. You can monitor the progress in VS Code's terminal panel by selecting the output for Azure Blockchain.
 
-Struktura projektu wygląda podobnie do poniższego przykładu:
+The project structure looks like the following example:
 
-   ![Projekt o stałej mocy](./media/send-transaction/solidity-project.png)
+   ![Solidity project](./media/send-transaction/solidity-project.png)
 
-## <a name="build-a-smart-contract"></a>Tworzenie kontraktu inteligentnego
+## <a name="build-a-smart-contract"></a>Build a smart contract
 
-Inteligentne kontrakty znajdują się w katalogu **kontraktów** projektu. Możesz kompilować inteligentne kontrakty przed wdrożeniem ich w usłudze łańcucha bloków. Użyj polecenia **Kompiluj kontrakty** , aby skompilować wszystkie inteligentne kontrakty w projekcie.
+Smart contracts are located in the project's **contracts** directory. You compile smart contracts before you deploy them to a blockchain. Use the **Build Contracts** command to compile all the smart contracts in your project.
 
-1. Na pasku bocznym Eksploratora VS Code rozwiń folder **kontrakty** w projekcie.
-1. Kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Kompiluj kontrakty** z menu.
+1. In the VS Code explorer sidebar, expand the **contracts** folder in your project.
+1. Right-click **HelloBlockchain.sol** and choose **Build Contracts** from the menu.
 
-    ![Kontrakty kompilacji](./media/send-transaction/build-contracts.png)
+    ![Build contracts](./media/send-transaction/build-contracts.png)
 
-Usługa Azure łańcucha bloków Development Kit używa Truffle do kompilowania inteligentnych kontraktów.
+Azure Blockchain Development Kit uses Truffle to compile the smart contracts.
 
-![Kompiluj dane wyjściowe](./media/send-transaction/compile-output.png)
+![Compile output](./media/send-transaction/compile-output.png)
 
-## <a name="deploy-a-smart-contract"></a>Wdrażanie kontraktu inteligentnego
+## <a name="deploy-a-smart-contract"></a>Deploy a smart contract
 
-Truffle używa skryptów migracji do wdrażania kontraktów w sieci Ethereum. Migracje to pliki JavaScript znajdujące się w katalogu **migracji** projektu.
+Truffle uses migration scripts to deploy your contracts to an Ethereum network. Migrations are JavaScript files located in the project's **migrations** directory.
 
-1. Aby wdrożyć kontrakt inteligentny, kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Wdróż kontrakty** z menu.
-1. Wybierz sieć Azure łańcucha bloków Consortium w palecie poleceń. Sieć konsorcjum łańcucha bloków została dodana do pliku konfiguracji Truffle projektu podczas tworzenia projektu.
-1. Wybierz **Generuj**polecenie. Wybierz nazwę pliku i Zapisz plik w folderze projektu. Na przykład `myblockchainmember.env`. Ten plik jest używany do generowania klucza prywatnego Ethereum dla członka łańcucha bloków.
+1. To deploy your smart contract, right-click **HelloBlockchain.sol** and choose **Deploy Contracts** from the menu.
+1. Choose your Azure Blockchain consortium network in the command palette. The consortium blockchain network was added to the project's Truffle configuration file when you created the project.
+1. Choose **Generate mnemonic**. Choose a filename and save the mnemonic file in the project folder. Na przykład `myblockchainmember.env`. The mnemonic file is used to generate an Ethereum private key for your blockchain member.
 
-Usługa Azure łańcucha bloków Development Kit używa Truffle do wykonania skryptu migracji w celu wdrożenia umów w usłudze łańcucha bloków.
+Azure Blockchain Development Kit uses Truffle to execute the migration script to deploy the contracts to the blockchain.
 
-![Pomyślnie wdrożono kontrakt](./media/send-transaction/deploy-contract.png)
+![Successfully deployed contract](./media/send-transaction/deploy-contract.png)
 
-## <a name="call-a-contract-function"></a>Wywoływanie funkcji kontraktu
+## <a name="call-a-contract-function"></a>Call a contract function
 
-Funkcja **SendRequest** kontraktu **HelloBlockchain** zmienia zmienną stanu **RequestMessage** . Zmiana stanu sieci łańcucha bloków odbywa się za pośrednictwem transakcji. Możesz utworzyć skrypt, aby wykonać funkcję **SendRequest** za pośrednictwem transakcji.
+The **HelloBlockchain** contract's **SendRequest** function changes the **RequestMessage** state variable. Changing the state of a blockchain network is done via a transaction. You can create a script to execute the **SendRequest** function via a transaction.
 
-1. Utwórz nowy plik w katalogu głównym projektu Truffle i nadaj mu nazwę `sendrequest.js`. Dodaj następujący kod JavaScript Web3 do pliku.
+1. Create a new file in the root of your Truffle project and name it `sendrequest.js`. Add the following Web3 JavaScript code to the file.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -112,26 +108,26 @@ Funkcja **SendRequest** kontraktu **HelloBlockchain** zmienia zmienną stanu **R
     };
     ```
 
-1. Po utworzeniu projektu w usłudze Azure łańcucha bloków Development Kit zostanie wygenerowany plik konfiguracji Truffle z informacjami o szczegółach punktu końcowego sieci konsorcjum łańcucha bloków. Otwórz **Truffle-config. js** w projekcie. Plik konfiguracji zawiera listę dwóch sieci: jeden o nazwie programowanie i jeden o takiej samej nazwie jak konsorcjum.
-1. W okienku terminalu VS Code Użyj Truffle, aby wykonać skrypt w sieci łańcucha bloków konsorcjum. Na pasku menu okienka terminalu wybierz kartę **Terminal** i program **PowerShell** na liście rozwijanej.
+1. When Azure Blockchain Development Kit creates a project, the Truffle configuration file is generated with your consortium blockchain network endpoint details. Open **truffle-config.js** in your project. The configuration file lists two networks: one named development and one with the same name as the consortium.
+1. In VS Code's terminal pane, use Truffle to execute the script on your consortium blockchain network. In the terminal pane menu bar, select the **Terminal** tab and **PowerShell** in the dropdown.
 
     ```PowerShell
     truffle exec sendrequest.js --network <blockchain network>
     ```
 
-    Zastąp \<łańcucha bloków Network\> nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
+    Replace \<blockchain network\> with the name of the blockchain network defined in the **truffle-config.js**.
 
-Truffle wykonuje skrypt w sieci łańcucha bloków.
+Truffle executes the script on your blockchain network.
 
-![Dane wyjściowe skryptu](./media/send-transaction/execute-transaction.png)
+![Script output](./media/send-transaction/execute-transaction.png)
 
-Gdy wykonujesz funkcję kontraktu za pośrednictwem transakcji, transakcja nie zostanie przetworzona do momentu utworzenia bloku. Funkcje przeznaczone do wykonania za pośrednictwem transakcji zwracają identyfikator transakcji zamiast wartości zwracanej.
+When you execute a contract's function via a transaction, the transaction isn't processed until a block is created. Functions meant to be executed via a transaction return a transaction ID instead of a return value.
 
-## <a name="query-contract-state"></a>Kwerenda stanu kontraktu
+## <a name="query-contract-state"></a>Query contract state
 
-Funkcje kontraktu inteligentnego mogą zwracać bieżącą wartość zmiennych stanu. Dodajmy funkcję, aby zwrócić wartość zmiennej stanu.
+Smart contract functions can return the current value of state variables. Let's add a function to return the value of a state variable.
 
-1. W **HelloBlockchain. peruwiański**Dodaj funkcję **GetMessage** do kontraktu inteligentnego **HelloBlockchain** .
+1. In **HelloBlockchain.sol**, add a **getMessage** function to the **HelloBlockchain** smart contract.
 
     ``` solidity
     function getMessage() public view returns (string memory)
@@ -143,11 +139,11 @@ Funkcje kontraktu inteligentnego mogą zwracać bieżącą wartość zmiennych s
     }
     ```
 
-    Funkcja zwraca komunikat przechowywany w zmiennej stanu na podstawie bieżącego stanu kontraktu.
+    The function returns the message stored in a state variable based on the current state of the contract.
 
-1. Kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Kompiluj kontrakty** z menu, aby skompilować zmiany do kontraktu inteligentnego.
-1. Aby wdrożyć, kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Wdróż kontrakty** z menu. Po wyświetleniu monitu wybierz Sieć Azure łańcucha bloków Consortium w palecie poleceń.
-1. Następnie utwórz skrypt, używając programu w celu wywołania funkcji **GetMessage** . Utwórz nowy plik w katalogu głównym projektu Truffle i nadaj mu nazwę `getmessage.js`. Dodaj następujący kod JavaScript Web3 do pliku.
+1. Right-click **HelloBlockchain.sol** and choose **Build Contracts** from the menu to compile the changes to the smart contract.
+1. To deploy, right-click **HelloBlockchain.sol** and choose **Deploy Contracts** from the menu. When prompted, choose your Azure Blockchain consortium network in the command palette.
+1. Next, create a script using to call the **getMessage** function. Create a new file in the root of your Truffle project and name it `getmessage.js`. Add the following Web3 JavaScript code to the file.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -168,38 +164,38 @@ Funkcje kontraktu inteligentnego mogą zwracać bieżącą wartość zmiennych s
     };
     ```
 
-1. W okienku terminalu VS Code Użyj Truffle, aby wykonać skrypt w sieci łańcucha bloków. Na pasku menu okienka terminalu wybierz kartę **Terminal** i program **PowerShell** na liście rozwijanej.
+1. In VS Code's terminal pane, use Truffle to execute the script on your blockchain network. In the terminal pane menu bar, select the **Terminal** tab and **PowerShell** in the dropdown.
 
     ```bash
     truffle exec getmessage.js --network <blockchain network>
     ```
 
-    Zastąp \<łańcucha bloków Network\> nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
+    Replace \<blockchain network\> with the name of the blockchain network defined in the **truffle-config.js**.
 
-Skrypt wysyła zapytanie do inteligentnego kontraktu przez wywołanie funkcji GetMessage. Zwracana jest bieżąca wartość zmiennej stanu **RequestMessage** .
+The script queries the smart contract by calling the getMessage function. The current value of the **RequestMessage** state variable is returned.
 
-![Dane wyjściowe skryptu](./media/send-transaction/execute-get.png)
+![Script output](./media/send-transaction/execute-get.png)
 
-Zwróć uwagę na to, że wartość nie jest **Hello, łańcucha bloków!** . Zamiast tego zwracana wartość jest symbolem zastępczym. W przypadku zmiany i wdrożenia kontraktu zmieniony kontrakt zostanie wdrożony pod nowym adresem, a zmienne stanu są przypisywane wartości w konstruktorze kontraktu inteligentnego. Skrypt migracji Truffle Sample **2_deploy_contracts. js** wdraża inteligentny kontrakt i przekazuje wartość symbolu zastępczego jako argument. Konstruktor ustawia zmienną stanu **RequestMessage** na wartość symbolu zastępczego, co oznacza, że jest zwracana.
+Notice the value is not **Hello, blockchain!** . Instead, the returned value is a placeholder. When you change and deploy the contract, the changed contract is deployed at a new address and the state variables are assigned values in the smart contract constructor. The Truffle sample **2_deploy_contracts.js** migration script deploys the smart contract and passes a placeholder value as an argument. The constructor sets the **RequestMessage** state variable to the placeholder value and that's what is returned.
 
-1. Aby ustawić zmienną stanu **RequestMessage** i wykonać zapytanie dotyczące wartości, ponownie uruchom skrypty **SendRequest. js** i **GetMessage. js** .
+1. To set the **RequestMessage** state variable and query the value, run the **sendrequest.js** and **getmessage.js** scripts again.
 
-    ![Dane wyjściowe skryptu](./media/send-transaction/execute-set-get.png)
+    ![Script output](./media/send-transaction/execute-set-get.png)
 
-    **SendRequest. js** ustawia zmienną stanu **RequestMessage** na **Hello, łańcucha bloków!** a **GetMessage. js** wysyła zapytanie do kontraktu o wartość zmiennej stanu **RequestMessage** i zwraca **Hello, łańcucha bloków!** .
+    **sendrequest.js** sets the **RequestMessage** state variable to **Hello, blockchain!** and **getmessage.js** queries the contract for value of **RequestMessage** state variable and returns **Hello, blockchain!** .
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy zasoby nie będą już potrzebne, można je usunąć, usuwając grupę zasobów `myResourceGroup` utworzoną w ramach przewodnika Szybki Start dotyczącego *tworzenia elementu członkowskiego łańcucha bloków* .
+When no longer needed, you can delete the resources by deleting the `myResourceGroup` resource group you created in the *Create a blockchain member* prerequisite quickstart.
 
-Aby usunąć grupę zasobów:
+To delete the resource group:
 
-1. W Azure Portal przejdź do **grupy zasobów** w okienku nawigacji po lewej stronie i wybierz grupę zasobów, którą chcesz usunąć.
-1. Wybierz pozycję **Usuń grupę zasobów**. Sprawdź usuwanie, wprowadzając nazwę grupy zasobów i wybierz pozycję **Usuń**.
+1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete.
+1. Wybierz pozycję **Usuń grupę zasobów**. Verify deletion by entering the resource group name and select **Delete**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono Tworzenie przykładowego projektu z jednolitością przy użyciu zestawu Azure łańcucha bloków Development Kit. Skompilowano i wdrożono inteligentny kontrakt o nazwie funkcja za pośrednictwem transakcji w sieci łańcucha bloków Consortium hostowanej w usłudze Azure łańcucha bloków Service.
+In this tutorial, you created a sample Solidity project using Azure Blockchain Development Kit. You built and deployed a smart contract then called a function via a transaction on a blockchain consortium network hosted on Azure Blockchain Service.
 
 > [!div class="nextstepaction"]
-> [Opracowywanie aplikacji łańcucha bloków przy użyciu usługi Azure łańcucha bloków Service](develop.md)
+> [Developing blockchain applications using Azure Blockchain Service](develop.md)

@@ -1,55 +1,61 @@
 ---
-title: Co nowego w usłudze QnA Maker?
+title: What's new in QnA Maker service?
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera informacje o QnA Maker.
+description: This article contains news about QnA Maker.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 10/14/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 0ce44429c7222e4eaa0ef523dadf0fa08723e975
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 94c2f86b6d0a592e53c2ab1f9833bdb045f81583
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327894"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325889"
 ---
-# <a name="whats-new-in-qna-maker"></a>Co nowego w QnA Maker
+# <a name="whats-new-in-qna-maker"></a>What's new in QnA Maker
 
-Dowiedz się, co nowego w usłudze. Te elementy mogą wydawania informacji, wideo, wpisów w blogu i innych typów. Oznacz Tę stronę zakładką, aby zapewnić aktualność usługi.  
+Learn what's new in the service. These items may release notes, videos, blog posts, and other types of information. Bookmark this page to keep up-to-date with the service.  
 
 ## <a name="release-notes"></a>Informacje o wersji 
 
-Dowiedz się, co nowego w QnA Maker.
+Learn what's new with QnA Maker.
 
-### <a name="october-2019"></a>Październik 2019
+### <a name="november-2019"></a>Listopad 2019 r.
 
-* [Jawne ustawienie języka](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) dla wszystkich baz wiedzy w usłudze QNA Maker. 
+* [US Government cloud support](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) for QnA Maker
+* [Multi-turn](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) feature in GA
+* [Chit-chat support](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support) available in tier-1 languages
 
-### <a name="september-2019"></a>2019 września
+### <a name="october-2019"></a>Październik 2019 r.
 
-* Importowanie i eksportowanie w [formacie pliku xls](concepts/data-sources-supported.md) 
+* [Explicitly setting the language](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) for all knowledge bases in the  QnA Maker service. 
 
-### <a name="june-2019"></a>Czerwiec 2019
+### <a name="september-2019"></a>Wrzesień 2019 r.
 
-* Ulepszony [model rangi](concepts/knowledge-base.md#ranker-process) w języku francuskim, włoskim, niemieckim, hiszpańskim, portugalskim
+* Import and export with [XLS file format](concepts/data-sources-supported.md) 
 
-### <a name="april-2019"></a>Kwiecień 2019
+### <a name="june-2019"></a>Czerwiec 2019 r.
 
-* Obsługa wyodrębniania zawartości witryny sieci Web
-* Obsługa [dokumentu programu SharePoint](how-to/add-sharepoint-datasources.md) na podstawie dostępu uwierzytelnionego
+* Improved [ranker model](concepts/knowledge-base.md#ranker-process) for French, Italian, German, Spanish, Portuguese
 
-### <a name="march-2019"></a>Marzec 2019
+### <a name="april-2019"></a>Kwiecień 2019 r.
 
-* [Usługa Active Learning](how-to/improve-knowledge-base.md) zawiera sugestie dotyczące nowych alternatyw związanych z pytaniami w oparciu o prawdziwe pytania użytkowników
-* Udoskonalony model [rangi](concepts/knowledge-base.md#ranker-process) przetwarzania języka naturalnego (NLP) dla języka angielskiego 
+* Support website content extraction
+* [SharePoint document](how-to/add-sharepoint-datasources.md) support from authenticated access
+
+### <a name="march-2019"></a>Marzec 2019 r.
+
+* [Active learning](how-to/improve-knowledge-base.md) provides suggestions for new question alternatives based on real user questions
+* Improved natural language processing (NLP) [ranker](concepts/knowledge-base.md#ranker-process) model for English 
 
 > [!div class="nextstepaction"]
 > [Tworzenie usługi QnA Maker](how-to/set-up-qnamaker-service-azure.md)
 
-## <a name="cognitive-service-updates"></a>Aktualizacje usługi poznawczej
+## <a name="cognitive-service-updates"></a>Cognitive Service updates
 
-[Anonse aktualizacji platformy Azure dla Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Azure update announcements for Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

@@ -1,21 +1,21 @@
 ---
-title: Ustawianie uprawnień dla usługi Data Lake Storage Gen2 za pomocą Eksploratora usługi Azure Storage
+title: 'Azure Storage Explorer: Manage access in Azure Data Lake Storage Gen2'
 description: Z tego artykułu z instrukcjami dowiesz się, jak za pomocą Eksploratora usługi Azure Storage skonfigurować uprawnienia do plików i katalogów na koncie magazynu obsługującego usługę Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/11/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2cc93ad9ae1d9d6d21064a2a80c3d62bf661dabc
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: b34103e521def678acce17e3292e04fca95b5e6e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992282"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327982"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Ustawianie uprawnień na poziomie plików i katalogów przy użyciu Eksploratora usługi Azure Storage w usłudze Azure Data Lake Storage Gen2
+# <a name="use-azure-storage-explorer-to-manage-access-in-azure-data-lake-storage-gen2"></a>Use Azure Storage Explorer to manage access in Azure Data Lake Storage Gen2
 
 Pliki przechowywane w usłudze Azure Data Lake Storage Gen2 obsługują uprawnienia szczegółowe i zarządzanie listą kontroli dostępu (ACL). Uprawnienia szczegółowe w połączeniu z zarządzaniem listą ACL umożliwiają zarządzanie dostępem do danych na bardzo szczegółowym poziomie.
 
@@ -28,11 +28,11 @@ Ten artykuł zawiera informacje dotyczące wykonywania następujących czynnośc
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby jak najlepiej przedstawić ten proces, wymagane jest ukończenie [przewodnika Szybki start dotyczącego Eksploratora usługi Azure Storage](data-lake-storage-Explorer.md). Pozwala to zagwarantować, że konto magazynu będzie w najbardziej odpowiednim stanie (utworzonym kontenerze i przekazanym do niego danymi).
+Aby jak najlepiej przedstawić ten proces, wymagane jest ukończenie [przewodnika Szybki start dotyczącego Eksploratora usługi Azure Storage](data-lake-storage-Explorer.md). This ensures your storage account will be in the most appropriate state (container created and data uploaded to it).
 
 ## <a name="managing-access"></a>Zarządzanie dostępem
 
-Możesz ustawić uprawnienia w katalogu głównym kontenera. Aby to zrobić, należy zalogować się do Eksplorator usługi Azure Storage przy użyciu indywidualnego konta z uprawnieniami do tego celu (w przeciwieństwie do parametrów połączenia). Kliknij prawym przyciskiem myszy kontener i wybierz pozycję **Zarządzaj uprawnieniami**, a następnie okno dialogowe **Zarządzanie uprawnieniami** .
+You can set permissions at the root of your container. To do so, you must be logged into Azure Storage Explorer with your individual account with rights to do so (as opposed to with a connection string). Right-click your container and select **Manage Permissions**, bringing up the **Manage Permission** dialog box.
 
 ![Eksplorator usługi Microsoft Azure Storage — zarządzanie dostępem do katalogów](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
@@ -49,11 +49,11 @@ Użytkownika lub grupę będzie teraz widać w polu **Użytkownicy i grupy:** , 
 
 Istnieją dwie kategorie uprawnień, które można przypisać: listy ACL dostępu i domyślne listy ACL.
 
-* **Dostęp**: Listy ACL dostępu kontrolują dostęp do obiektu. Pliki i katalogi mają osobne listy ACL dostępu.
+* **Access**: Access ACLs control access to an object. Pliki i katalogi mają osobne listy ACL dostępu.
 
-* **Domyślne**: Szablon list ACL skojarzonych z katalogiem, który określa listy ACL dostępu dla wszystkich elementów podrzędnych, które zostały utworzone w tym katalogu. Pliki nie mają domyślnych list ACL.
+* **Default**: A template of ACLs associated with a directory that determines the access ACLs for any child items that are created under that directory. Pliki nie mają domyślnych list ACL.
 
-Obie te kategorie obejmują trzy uprawnienia, które można przypisać do plików lub katalogów: **Odczyt**, **Zapis** i **Wykonywanie**.
+Within both of these categories, there are three permissions you can then assign on files or directories: **Read**, **Write**, and **Execute**.
 
 >[!NOTE]
 > Dokonanie wyboru w tym miejscu nie spowoduje ustawienie uprawnień dla wszystkich elementów znajdujących się obecnie w katalogu. Jeśli dany plik już istnieje, należy przejść do poszczególnych elementów i ustawić uprawnienia ręcznie.

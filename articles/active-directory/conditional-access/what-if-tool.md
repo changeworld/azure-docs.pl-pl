@@ -1,109 +1,109 @@
 ---
-title: Co to jest co jeśli narzędzie jest dostępne w usłudze Azure Active Directory dostępu warunkowego?
-description: Dowiedz się, jak może zrozumieć wpływ zasad dostępu warunkowego w swoim środowisku.
+title: The Conditional Access What If tool - Azure Active Directory
+description: Learn how you can understand the impact of your Conditional Access policies on your environment.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97d2ec4099045e17b8482fcde313d31720083583
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: a5846934a8ad8455ca375b4bc54fc46d45aba1cd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67506739"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379976"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co to jest co jeśli narzędzie jest dostępne w usłudze Azure Active Directory dostępu warunkowego?
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Troubleshoot using the What If tool in Conditional Access
 
-[Dostęp warunkowy](../active-directory-conditional-access-azure-portal.md) jest to funkcja usługi Azure Active Directory (Azure AD), która umożliwia kontrolowanie sposobu autoryzowany dostęp użytkowników aplikacji w chmurze. Skąd wiadomo, czego oczekiwać od zasad dostępu warunkowego w środowisku? Aby odpowiedzieć na to pytanie, można użyć **narzędzie warunkowego dostępu What If**.
+[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active Directory (Azure AD) that enables you to control how authorized users access your cloud apps. How do you know what to expect from the Conditional Access policies in your environment? To answer this question, you can use the **Conditional Access What If tool**.
 
-W tym artykule wyjaśniono, jak można użyć tego narzędzia do testowania zasad dostępu warunkowego.
+This article explains how you can use this tool to test your Conditional Access policies.
 
-## <a name="what-it-is"></a>Co to jest
+## <a name="what-it-is"></a>Opis
 
-**Narzędzia Zasady warunkowego dostępu What If** umożliwia zrozumienie wpływu zasad dostępu warunkowego w swoim środowisku. Zamiast testować zasady, przeprowadzając wiele logowań w sposób ręczny, to narzędzie umożliwia ocenianie symulowanego logowania użytkownika. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji. Raport nie zawiera tylko zastosowane zasady dostępu warunkowego, ale także [zasady klasyczne](policy-migration.md#classic-policies) jeśli takie istnieją.    
+The **Conditional Access What If policy tool** allows you to understand the impact of your Conditional Access policies on your environment. Zamiast testować zasady, przeprowadzając wiele logowań w sposób ręczny, to narzędzie umożliwia ocenianie symulowanego logowania użytkownika. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji. The report does not only list the applied Conditional Access policies but also [classic policies](policy-migration.md#classic-policies) if they exist.    
 
-**Co zrobić, jeśli** narzędzie zapewnia sposób, aby szybko określić zasady, które są stosowane do określonego użytkownika. Informacje, można użyć na przykład, jeśli trzeba rozwiązać problem.    
+The **What If** tool provides a way to quickly determine the policies that apply to a specific user. You can use the information, for example, if you need to troubleshoot an issue.    
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
-W **narzędzie warunkowego dostępu What If**, najpierw musisz skonfigurować ustawienia logowania scenariusza, które chcesz zasymulować. Te ustawienia obejmują:
+In the **Conditional Access What If tool**, you first need to configure the settings of the sign-in scenario you want to simulate. These settings include:
 
-- Użytkownik, który chcesz przetestować 
-- Aplikacje w chmurze, które użytkownik może próbować uzyskać dostęp do
-- Warunki, w których dostęp do konfiguruje chmurze jest wykonywane w aplikacji
+- The user you want to test 
+- The cloud apps the user would attempt to access
+- The conditions under which access to the configures cloud apps is performed
      
-Kolejnym krokiem może zainicjować symulacji Uruchom ocenia ustawienia. Tylko te zasady, które są włączone są częścią uruchomić ocenę.
+As a next step, you can initiate a simulation run that evaluates your settings. Only policies that are enabled are part of an evaluation run.
 
-Po zakończeniu oceny narzędzie generuje raport o usterce zasad.
+When the evaluation has finished, the tool generates a report of the affected policies.
 
-## <a name="running-the-tool"></a>Uruchamianie narzędzia
+## <a name="running-the-tool"></a>Running the tool
 
-Możesz znaleźć **co zrobić, jeśli** narzędzie **[dostępu warunkowego — zasady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** strony w witrynie Azure portal.
+You can find the **What If** tool on the **[Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** page in the Azure portal.
 
-Aby uruchomić to narzędzie, na pasku narzędzi na górze listy zasad, kliknij przycisk **co zrobić, jeśli**.
+To start the tool, in the toolbar on top of the list of policies, click **What If**.
 
-![A co jeżeli](./media/what-if-tool/01.png)
+![What If](./media/what-if-tool/01.png)
 
-Zanim będzie można uruchomić oceny, należy skonfigurować ustawienia.
+Before you can run an evaluation, you must configure the settings.
 
 ## <a name="settings"></a>Ustawienia
 
-Ta sekcja zawiera przy użyciu informacji o ustawieniach uruchamiania symulacji.
+This section provides you with information about the settings of simulation run.
 
-![A co jeżeli](./media/what-if-tool/02.png)
+![What If](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>Użytkownik
 
-Można wybrać tylko jeden użytkownik. Jest to jedyne wymagane pole.
+You can only select one user. This is the only required field.
 
-### <a name="cloud-apps"></a>Aplikacje w chmurze
+### <a name="cloud-apps"></a>Cloud apps
 
-Wartość domyślna tego ustawienia to **wszystkie aplikacje w chmurze**. Ustawieniem domyślnym przeprowadza ocenę wszystkich dostępnych zasad w danym środowisku. Można zawęzić zakres, do wywierania wpływu na aplikacje w chmurze określonych zasad.
+The default for this setting is **All cloud apps**. The default setting performs an evaluation of all available policies in your environment. You can narrow down the scope to policies affecting specific cloud apps.
 
 ### <a name="ip-address"></a>Adres IP
 
-Adres IP jest jeden adres IPv4, aby mógł naśladować [warunek lokalizacji](location-condition.md). Adres reprezentuje adres urządzenia używane przez użytkownika na potrzeby logowania z Internetem. Możesz sprawdzić adres IP urządzenia, na przykład, przechodząc do [jaki jest mój adres IP](https://whatismyipaddress.com).    
+The IP address is a single IPv4 address to mimic the [location condition](location-condition.md). The address represents Internet facing address of the device used by your user to sign in. You can verify the IP address of a device by, for example, navigating to [What is my IP address](https://whatismyipaddress.com).    
 
-### <a name="device-platforms"></a>Platformy urządzeń
+### <a name="device-platforms"></a>Device platforms
 
-To ustawienie naśladuje [warunek platform urządzeń](conditions.md#device-platforms) i stanowi odpowiednik **wszystkich platform (w tym nieobsługiwane)** . 
+This setting mimics the [device platforms condition](conditions.md#device-platforms) and represents the equivalent of **All platforms (including unsupported)** . 
 
-### <a name="client-apps"></a>Aplikacje klienckie
+### <a name="client-apps"></a>Client apps
 
-To ustawienie naśladuje [warunek aplikacje klienckie](conditions.md#client-apps).
-Domyślnie to ustawienie powoduje, że ocena wszystkich zasad mających **przeglądarki** lub **aplikacje mobilne i klienci stacjonarni** albo indywidualnie lub oba wybrane. Ta funkcja wykrywa także zasady, które wymuszają **programu Exchange ActiveSync (EAS)** . To ustawienie można zawęzić, wybierając:
+This setting mimics the [client apps condition](conditions.md#client-apps).
+By default, this setting causes an evaluation of all policies having **Browser** or **Mobile apps and desktop clients** either individually or both selected. It also detects policies that enforce **Exchange ActiveSync (EAS)** . You can narrow this setting down by selecting:
 
-- **Przeglądarka** do oceny, wszystkie zasady, o co najmniej **przeglądarki** wybrane. 
-- **Aplikacje mobilne i klienci stacjonarni** do oceny, wszystkie zasady, o co najmniej **aplikacje mobilne i klienci stacjonarni** wybrane. 
+- **Browser** to evaluate all policies having at least **Browser** selected. 
+- **Mobile apps and desktop clients** to evaluate all policies having at least **Mobile apps and desktop clients** selected. 
 
-### <a name="sign-in-risk"></a>Ryzyko logowania
+### <a name="sign-in-risk"></a>Sign-in risk
 
-To ustawienie naśladuje [warunkiem ryzyka logowania](conditions.md#sign-in-risk).   
+This setting mimics the [sign-in risk condition](conditions.md#sign-in-risk).   
 
-## <a name="evaluation"></a>Ocena 
+## <a name="evaluation"></a>Evaluation 
 
-Rozpocznij ocenę, klikając **co zrobić, jeśli**. Wynik oceny zawiera raport, który składa się z: 
+You start an evaluation by clicking **What If**. The evaluation result provides you with a report that consists of: 
 
-![A co jeżeli](./media/what-if-tool/03.png)
+![What If](./media/what-if-tool/03.png)
 
-- Wskazuje czy istnieją zasady klasyczne w danym środowisku
-- Zasady, które są stosowane do użytkownika
-- Zasady, które nie mają zastosowania do użytkownika
+- An indicator whether classic policies exist in your environment
+- Policies that apply to your user
+- Policies that don't apply to your user
 
-Jeśli [zasady klasyczne](policy-migration.md#classic-policies) istnieje dla aplikacji w wybranej chmurze, wskaźnik jest dołączona. Klikając pozycję wskaźnika, nastąpi przekierowanie do strony zasady klasyczne. Na stronie zasad klasycznych można migracji zasad klasycznych lub po prostu ją wyłączyć. Możesz wrócić do swojej wynik oceny, zamykając tej strony.
+If [classic policies](policy-migration.md#classic-policies) exist for the selected cloud apps, an indicator is presented to you. By clicking the indicator, you are redirected to the classic policies page. On the classic policies page, you can migrate a classic policy or just disable it. You can return to your evaluation result by closing this page.
 
-Na liście zasad, które są stosowane do wybranych użytkowników, możesz również znaleźć listę [Udziel kontroli](controls.md#grant-controls) i [sesji](controls.md#session-controls) kontrolki użytkownika musi spełniać.
+On the list of policies that apply to your selected user, you can also find a list of [grant controls](controls.md#grant-controls) and [session](controls.md#session-controls) controls your user must satisfy.
 
-Na liście zasad, które nie mają zastosowania do użytkownika można, a także znajdować powodów dlaczego te zasady nie mają zastosowania. Dla każdej z wymienionych zasad przyczynę reprezentuje pierwszy warunek, który nie był spełniony. Możliwa przyczyna zasady, która nie została zastosowana jest wyłączone zasady, ponieważ nie są analizowane dalsze.   
+On the list of policies that don't apply to your user, you can and also find the reasons why these policies don't apply. For each listed policy, the reason represents the first condition that was not satisfied. A possible reason for a policy that is not applied is a disabled policy because they are not further evaluated.   
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
-- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 
-- Jeśli chcesz przeprowadzić migrację zasady klasyczne, zobacz [Migrowanie zasad klasycznych w witrynie Azure portal](policy-migration.md)  
+- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
+- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 
+- if you want to migrate classic policies, see [Migrate classic policies in the Azure portal](policy-migration.md)  

@@ -1,78 +1,78 @@
 ---
-title: Wykonywanie analizy tonacji przy użyciu interfejsu API REST analiza tekstu
+title: Perform sentiment analysis with Text Analytics REST API
 titleSuffix: Azure Cognitive Services
-description: W tym artykule przedstawiono sposób wykrywania tonacji w tekście przy użyciu interfejsu API REST usługi Azure Cognitive Services analiza tekstu.
+description: This article will show you how to detect sentiment in text with the Azure Cognitive Services Text Analytics REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/23/2019
+ms.date: 11/21/2019
 ms.author: aahi
-ms.openlocfilehash: 292619bdf114f366f5d0aff0efdfd8d9606842b1
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 33c9c708adcc196bc7d9b2e8a066d18e4dd20608
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286553"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326624"
 ---
-# <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: wykrywanie tonacji z analiza tekstu
+# <a name="example-detect-sentiment-with-text-analytics"></a>Example: Detect sentiment with Text Analytics
 
-[Interfejs API usługi Azure analiza tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) oblicza dane wejściowe tekstu i zwraca wynik tonacji dla każdego dokumentu. Wyniki mieszczą się w zakresie od 0 (wartość ujemna) do 1 (wartość dodatnia).
+The [Azure Sentiment Analysis API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) evaluates text input and returns a sentiment score for each document. Scores range from 0 (negative) to 1 (positive).
 
-Ta możliwość jest przydatna do wykrywania pozytywnych i negatywnych opinii w mediach społecznościowych, recenzjach klientów i na forach dyskusyjnych. Zawartość jest udostępniana przez użytkownika. Modele i dane szkoleniowe są udostępniane przez usługę.
+Ta możliwość jest przydatna do wykrywania pozytywnych i negatywnych opinii w mediach społecznościowych, recenzjach klientów i na forach dyskusyjnych. Content is provided by you. Models and training data are provided by the service.
 
-Obecnie interfejs API analiza tonacji obsługuje w języku angielskim, niemieckim, hiszpańskim i francuskim. Inne języki są dostępne w wersji zapoznawczej. Więcej informacji, zobacz [Obsługiwane języki](../text-analytics-supported-languages.md).
+Currently, the Sentiment Analysis API supports English, German, Spanish, and French. Inne języki są dostępne w wersji zapoznawczej. Więcej informacji, zobacz [Obsługiwane języki](../text-analytics-supported-languages.md).
 
 > [!TIP]
-> Usługa Azure interfejs API analizy tekstu udostępnia również obraz kontenera platformy Docker oparty na systemie Linux na potrzeby analizy tonacji, dzięki czemu można [zainstalować i uruchomić analiza tekstu kontener](text-analytics-how-to-install-containers.md) blisko swoich danych.
+> The Azure Text Analytics API also provides a Linux-based Docker container image for sentiment analysis, so you can [install and run the Text Analytics container](text-analytics-how-to-install-containers.md) close to your data.
 
 ## <a name="concepts"></a>Pojęcia
 
-Analiza tekstu używa algorytmu klasyfikacji uczenia maszynowego do wygenerowania oceny opinii z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną opinię, a wyniki zbliżone do wartości 0 wskazują na negatywną opinię. Model jest wstępnie uczony za pomocą rozbudowanego zestawu tekstów ze skojarzonymi opiniami. Obecnie nie jest możliwe udostępnianie własnych danych szkoleniowych. Model używa kombinacji technik podczas analizy tekstu. Techniki obejmują przetwarzanie tekstu, analizę części mowy, umieszczanie słów i skojarzenia słów. Aby uzyskać więcej informacji na temat algorytmu, zobacz [Introducing Text Analytics (Wprowadzenie do analizy tekstu)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
+Analiza tekstu używa algorytmu klasyfikacji uczenia maszynowego do wygenerowania oceny opinii z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną opinię, a wyniki zbliżone do wartości 0 wskazują na negatywną opinię. Model jest wstępnie uczony za pomocą rozbudowanego zestawu tekstów ze skojarzonymi opiniami. Currently, it isn't possible to provide your own training data. The model uses a combination of techniques during text analysis. Techniques include text processing, part-of-speech analysis, word placement, and word associations. Aby uzyskać więcej informacji na temat algorytmu, zobacz [Introducing Text Analytics (Wprowadzenie do analizy tekstu)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
 
-Analiza opinii odbywa się dla całego dokumentu, w przeciwieństwie do wyodrębniania opinii dla konkretnej jednostki w tekście. W rzeczywistości istnieje tendencja do oceny dokładności oceniania, gdy dokumenty zawierają jedno lub dwa zdania, a nie duży blok tekstu. W fazie oceny obiektywizmu model określa, czy dokumentu jako całość jest obiektywny, czy też zawiera opinię. Dokument, który jest przede wszystkim nie przechodzi do fazy wykrywania tonacji, co skutkuje wynikami 0,50, bez dalszej obróbki. W przypadku dokumentów, które kontynuują się w potoku, następna faza generuje wynik powyżej lub poniżej 0,50. Wynik zależy od stopnia wykrycia elementu tonacji w dokumencie.
+Analiza opinii odbywa się dla całego dokumentu, w przeciwieństwie do wyodrębniania opinii dla konkretnej jednostki w tekście. In practice, there's a tendency for scoring accuracy to improve when documents contain one or two sentences rather than a large block of text. W fazie oceny obiektywizmu model określa, czy dokumentu jako całość jest obiektywny, czy też zawiera opinię. A document that's mostly objective doesn't progress to the sentiment detection phase, which results in a 0.50 score, with no further processing. For documents that continue in the pipeline, the next phase generates a score above or below 0.50. The score depends on the degree of sentiment detected in the document.
 
-## <a name="sentiment-analysis-v3-public-preview"></a>Publiczna wersja zapoznawcza analiza tonacji v3
+## <a name="sentiment-analysis-v3-public-preview"></a>Sentiment Analysis v3 public preview
 
-[Następna wersja analiza tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) jest teraz dostępna w publicznej wersji zapoznawczej. Zapewnia znaczącą poprawę dokładności i szczegółowości kategoryzacji tekstu interfejsu API i oceniania.
+The next version of Sentiment Analysis is now available for public preview. It provides significant improvements in the accuracy and detail of the API's text categorization and scoring. Try it using the [API test console](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment).
 
 > [!NOTE]
-> * Format żądania analiza tonacji v3 i [limity danych](../overview.md#data-limits) są takie same jak w poprzedniej wersji.
-> * W tej chwili analiza tonacji v3:
->    * Obecnie obsługuje angielski (`en`), japoński (`ja`), chiński uproszczony (`zh-Hans`), chiński tradycyjny (`zh-Hant`), francuski (`fr`), włoski (`it`), hiszpański (`es`), holenderski (`nl`), portugalski (`pt`) i niemiecki (`de`).
->    * Dostępne w następujących regionach: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`i `West US 2`.
+> * The Sentiment Analysis v3 request format and [data limits](../overview.md#data-limits) are the same as the previous version.
+> * At this time, Sentiment Analysis v3:
+>    * Currently supports the English (`en`), Japanese (`ja`), Chinese Simplified (`zh-Hans`),  Chinese Traditional (`zh-Hant`), French (`fr`), Italian (`it`), Spanish (`es`), Dutch (`nl`), Portuguese (`pt`), and German (`de`) languages.
+>    * Is available in the following regions: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`, and `West US 2`.
 
 |Funkcja |Opis  |
 |---------|---------|
-|Ulepszona dokładność     | znacznie lepsze niż w poprzednich wersjach wykrywanie pozytywnej, neutralnej, negatywnej i mieszanej tonacji dokumentów tekstowych.           |
-|Wynik tonacji na poziomie dokumentu i zdania     | wykrywanie tonacji zarówno dokumentu, jak i poszczególnych zdań. Jeśli dokument zawiera wiele zdań, wynik tonacji jest również przypisywany do każdego zdania.         |
-|Tonacji etykietowania i oceniania     | Interfejs API teraz zwraca tonacji kategorie dla tekstu, oprócz oceny tonacji. Kategorie są `positive`, `negative`, `neutral`i `mixed`.       |
-| Ulepszone dane wyjściowe | Analiza tonacji teraz zwraca informacje dla całego dokumentu tekstowego i jego poszczególnych zdań. |
-| Model — parametr wersji | Opcjonalny parametr służący do wybierania, która wersja modelu analiza tekstu jest używana w danych. |
+|Improved accuracy     | znacznie lepsze niż w poprzednich wersjach wykrywanie pozytywnej, neutralnej, negatywnej i mieszanej tonacji dokumentów tekstowych.           |
+|Document and sentence-level sentiment score     | wykrywanie tonacji zarówno dokumentu, jak i poszczególnych zdań. Jeśli dokument zawiera wiele zdań, wynik tonacji jest również przypisywany do każdego zdania.         |
+|Sentiment labeling and scoring     | The API now returns sentiment categories for text, in addition to a sentiment score. The categories are `positive`, `negative`, `neutral`, and `mixed`.       |
+| Improved output | Sentiment analysis now returns information for both an entire text document and its individual sentences. |
+| model-version parameter | An optional parameter for choosing which version of the Text Analytics model is used on your data. |
 
-### <a name="sentiment-labeling"></a>Etykietowanie tonacji
+### <a name="sentiment-labeling"></a>Sentiment labeling
 
-Analiza tonacji v3 może zwracać wyniki i etykiety na poziomie zdania i dokumentu. Wyniki i etykiety są `positive`, `negative`i `neutral`. Na poziomie dokumentu może być również zwracana etykieta `mixed` tonacji (a nie wynik). Tonacji dokumentu jest określany przez zsumowanie wyników zdań.
+Sentiment Analysis v3 can return scores and labels at a sentence and document level. The scores and labels are `positive`, `negative`, and `neutral`. At the document level, the `mixed` sentiment label (not the score) also can be returned. The sentiment of the document is determined by aggregating the scores of the sentences.
 
-| Tonacji zdania                                                        | Etykieta zwracanego dokumentu |
+| Sentence sentiment                                                        | Returned document label |
 |---------------------------------------------------------------------------|----------------|
-| Co najmniej jedno zdanie dodatnie i pozostałe zdania są neutralne. | `positive`     |
-| Co najmniej jedno zdanie negatywne i pozostałe zdania są neutralne.  | `negative`     |
-| Co najmniej jedno wyrażenie negatywne i co najmniej jedno wyrażenie dodatnie.         | `mixed`        |
-| Wszystkie zdania są neutralne.                                                 | `neutral`      |
+| At least one positive sentence and the rest of the sentences are neutral. | `positive`     |
+| At least one negative sentence and the rest of the sentences are neutral.  | `negative`     |
+| At least one negative sentence and at least one positive sentence.         | `mixed`        |
+| All sentences are neutral.                                                 | `neutral`      |
 
-### <a name="model-versioning"></a>Przechowywanie wersji modelu
+### <a name="model-versioning"></a>Model versioning
 
 > [!NOTE]
-> Wersje modeli dla analizy tonacji są dostępne w wersji `v3.0-preview.1`.
+> Model versioning for sentiment analysis is available starting in version `v3.0-preview.1`.
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-### <a name="sentiment-analysis-v3-example-request"></a>Przykładowe żądanie analiza tonacji v3
+### <a name="sentiment-analysis-v3-example-request"></a>Sentiment Analysis v3 example request
 
-Poniższy kod JSON jest przykładem żądania wysłanego do nowej wersji analiza tonacji. Formatowanie żądania jest takie samo jak w poprzedniej wersji:
+The following JSON is an example of a request made to the new version of Sentiment Analysis. The request formatting is the same as the previous version:
 
 ```json
     {
@@ -91,9 +91,9 @@ Poniższy kod JSON jest przykładem żądania wysłanego do nowej wersji analiza
     }
 ```
 
-### <a name="sentiment-analysis-v3-example-response"></a>Przykładowa odpowiedź analiza tonacji v3
+### <a name="sentiment-analysis-v3-example-response"></a>Sentiment Analysis v3 example response
 
-Format żądania jest taki sam jak w poprzedniej wersji, więc format odpowiedzi został zmieniony. Poniższy kod JSON to Przykładowa odpowiedź z nowej wersji interfejsu API:
+While the request format is the same as the previous version, the response format has changed. The following JSON is an example response from the new version of the API:
 
 ```json
     {
@@ -165,17 +165,17 @@ Format żądania jest taki sam jak w poprzedniej wersji, więc format odpowiedzi
     }
 ```
 
-### <a name="example-c-code"></a>Przykładowy C# kod
+### <a name="example-c-code"></a>Example C# code
 
-Przykładową C# aplikację, która wywołuje tę wersję analiza tonacji w serwisie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs), można znaleźć.
+You can find an example C# application that calls this version of Sentiment Analysis on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
 
-## <a name="preparation"></a>Przygotowanie
+## <a name="preparation"></a>Przygotowywanie
 
-Analiza tonacji daje wynik wyższej jakości, gdy podajesz im mniejsze fragmenty tekstu do pracy. Jest to przeciwieństwo wyodrębniania kluczowych fraz, które działa lepiej na większych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
+Sentiment analysis produces a higher-quality result when you give it smaller chunks of text to work on. Jest to przeciwieństwo wyodrębniania kluczowych fraz, które działa lepiej na większych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
 
-Musisz mieć dokumenty JSON w tym formacie: ID, text i Language.
+You must have JSON documents in this format: ID, text, and language.
 
-Rozmiar dokumentu musi zawierać 5 120 znaków na dokument. Możesz mieć do 1 000 elementów (identyfikatorów) na kolekcję. Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest przykładem zawartości, która może zostać przesłana do analizy tonacji:
+Document size must be under 5,120 characters per document. You can have up to 1,000 items (IDs) per collection. Kolekcja jest przesyłana w treści żądania. The following sample is an example of content you might submit for sentiment analysis:
 
 ```json
     {
@@ -211,33 +211,33 @@ Rozmiar dokumentu musi zawierać 5 120 znaków na dokument. Możesz mieć do 1 0
 
 ## <a name="step-1-structure-the-request"></a>Krok 1: Określenie struktury żądania
 
-Aby uzyskać więcej informacji na temat definicji żądania, zobacz [wywoływanie interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
+For more information on request definition, see [Call the Text Analytics API](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
-+ Utwórz żądanie POST. Aby zapoznać się z dokumentacją interfejsu API dla tego żądania, zobacz [interfejs api analiza tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9).
++ Create a POST request. To review the API documentation for this request, see the [Sentiment Analysis API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9).
 
-+ Ustaw punkt końcowy HTTP na potrzeby analizy tonacji przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Należy uwzględnić `/text/analytics/v2.1/sentiment` w adresie URL. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
++ Set the HTTP endpoint for sentiment analysis by using either a Text Analytics resource on Azure or an instantiated [Text Analytics container](text-analytics-how-to-install-containers.md). You must include `/text/analytics/v2.1/sentiment` in the URL. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
 
-+ Ustaw nagłówek żądania w taki sposób, aby zawierał [klucz dostępu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dla operacji analiza tekstu.
++ Set a request header to include the [access key](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) for Text Analytics operations.
 
 + W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
 
 > [!Tip]
-> Użyj programu [Poster](text-analytics-how-to-call-api.md) lub Otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) , aby utworzyć strukturę żądania i opublikować ją w usłudze.
+> Use [Postman](text-analytics-how-to-call-api.md) or open the **API testing console** in the [documentation](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) to structure the request and post it to the service.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
 
-Analiza jest wykonywana po odebraniu żądania. Aby uzyskać informacje na temat rozmiaru i liczby żądań wysyłanych na minutę i sekundę, zobacz sekcję [limity danych](../overview.md#data-limits) w przeglądzie.
+Analiza jest wykonywana po odebraniu żądania. For information on the size and number of requests you can send per minute and second, see the [data limits](../overview.md#data-limits) section in the overview.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
 
-## <a name="step-3-view-the-results"></a>Krok 3. Wyświetlanie wyników
+## <a name="step-3-view-the-results"></a>Step 3: View the results
 
-Analizator tonacji klasyfikuje tekst jako "dodatnie" lub ujemne. Przypisuje wynik z zakresu od 0 do 1. Wartości zbliżone do 0,5 oznaczają opinię neutralną lub brak opinii. Wynik 0,5 oznacza opinię neutralną. Gdy nie można przeanalizować ciągu dla tonacji lub nie ma tonacji, wynik jest zawsze 0,5 dokładnie. Na przykład jeśli przekażesz ciąg w języku hiszpańskim z kodem języka angielskiego, wynik będzie wynosić 0,5.
+The sentiment analyzer classifies text as predominantly positive or negative. It assigns a score in the range of 0 to 1. Wartości zbliżone do 0,5 oznaczają opinię neutralną lub brak opinii. Wynik 0,5 oznacza opinię neutralną. When a string can't be analyzed for sentiment or has no sentiment, the score is always 0.5 exactly. Na przykład jeśli przekażesz ciąg w języku hiszpańskim z kodem języka angielskiego, wynik będzie wynosić 0,5.
 
-Dane wyjściowe są zwracane natychmiast. Można przesyłać strumieniowo wyniki do aplikacji, która akceptuje kod JSON lub zapisuje dane wyjściowe do pliku w systemie lokalnym. Następnie zaimportuj dane wyjściowe do aplikacji, która może być używana do sortowania, wyszukiwania i manipulowania danymi.
+Dane wyjściowe są zwracane natychmiast. You can stream the results to an application that accepts JSON or save the output to a file on the local system. Then, import the output into an application that you can use to sort, search, and manipulate the data.
 
-Poniższy przykład przedstawia odpowiedzi dla kolekcji dokumentów w tym artykule:
+The following example shows the response for the document collection in this article:
 
 ```json
     {
@@ -269,12 +269,12 @@ Poniższy przykład przedstawia odpowiedzi dla kolekcji dokumentów w tym artyku
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym artykule przedstawiono koncepcje i przepływ pracy analizy tonacji przy użyciu analiza tekstu na platformie Azure Cognitive Services. Podsumowanie:
+In this article, you learned concepts and workflow for sentiment analysis by using Text Analytics in Azure Cognitive Services. Podsumowanie:
 
-+ [Interfejs API analiza tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) jest dostępny dla wybranych języków.
-+ Dokumenty JSON w treści żądania obejmują identyfikator, tekst i kod języka.
-+ Żądanie POST jest punktem końcowym `/sentiment` przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , który jest prawidłowy dla Twojej subskrypcji.
-+ Dane wyjściowe odpowiedzi, które składają się z wyniku tonacji dla każdego identyfikatora dokumentu, mogą być przesyłane strumieniowo do dowolnej aplikacji, która akceptuje kod JSON. Przykładowe aplikacje to programy Excel i Power BI, aby podać kilka nazw.
++ The [Sentiment Analysis API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) is available for selected languages.
++ JSON documents in the request body include an ID, text, and language code.
++ The POST request is to a `/sentiment` endpoint by using a personalized [access key and an endpoint](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) that's valid for your subscription.
++ Response output, which consists of a sentiment score for each document ID, can be streamed to any app that accepts JSON. Example apps include Excel and Power BI, to name a few.
 
 ## <a name="see-also"></a>Zobacz także
 

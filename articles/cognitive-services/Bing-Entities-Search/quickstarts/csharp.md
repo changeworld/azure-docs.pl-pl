@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing przy użyciu języka C#'
+title: 'Quickstart: Send a search request to the REST API using C# - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejsu API REST wyszukiwania wiadomości Bing przy użyciu języka C# i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: e41d99b4ddee41778e97aac9b5b947c0aa0eac5a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: efb2c646d364a93910d2105edb6527ad1116ccb2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404960"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327167"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Szybki start: wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing przy użyciu języka C#
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Quickstart: Send a search request to the Bing Entity Search REST API using C#
 
 Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania jednostek Bing i wyświetlenie odpowiedzi JSON. Ta prosta aplikacja w języku C# wysyła zapytanie wyszukiwania wiadomości do interfejsu API i wyświetla odpowiedź. Kod źródłowy tej aplikacji jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
 
@@ -26,15 +26,15 @@ Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą in
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Dowolna wersja programu [Visual Studio 2017 lub nowszego](https://www.visualstudio.com/downloads/).
+- Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
 
-- Struktura [Json.NET](https://www.newtonsoft.com/json) dostępna jako pakiet NuGet. Aby zainstalować pakiet NuGet w programie Visual Studio:
+- Struktura [Json.NET](https://www.newtonsoft.com/json) dostępna jako pakiet NuGet. To install the NuGet package in Visual Studio:
 
-   1. Kliknij prawym przyciskiem myszy projekt w **Eksplorator rozwiązań**.
-   2. Wybierz pozycję **Zarządzaj pakietami NuGet**.
-   3. Wyszukaj plik *Newtonsoft. JSON* i zainstaluj pakiet.
+   1. Right click your project in **Solution Explorer**.
+   2. Select **Manage NuGet Packages**.
+   3. Search for *Newtonsoft.Json* and install the package.
 
-- Jeśli używasz systemu Linux/MacOS, ta aplikacja może być uruchamiana przy użyciu narzędzia [mono](https://www.mono-project.com/).
+- If you're using Linux/MacOS, this application can be run by  using [Mono](https://www.mono-project.com/).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
@@ -77,7 +77,7 @@ Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą in
 
    1. Łącząc hosta i ścieżkę, utwórz identyfikator URI Twojego żądania. Następnie dodaj swój rynek i zakoduj adres URL zapytania.
    2. Poczekaj `client.GetAsync()`, aby uzyskać odpowiedź HTTP, a następnie zapisz odpowiedź w formacie JSON, oczekując na `ReadAsStringAsync()`.
-   3. Sformatuj ciąg `JsonConvert.DeserializeObject()` json i wydrukuj go w konsoli.
+   3. Format the JSON string with `JsonConvert.DeserializeObject()` and print it to the console.
 
       ```csharp
       async static void Search()

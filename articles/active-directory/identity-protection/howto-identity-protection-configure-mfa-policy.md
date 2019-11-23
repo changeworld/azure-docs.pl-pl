@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować zasady rejestracji uwierzytelniania wieloskładnikowego w programie Azure Active Directory Identity Protection
-description: Dowiedz się, jak skonfigurować Azure AD Identity Protection zasady rejestracji w usłudze uwierzytelniania wieloskładnikowego.
+title: Configure the MFA registration policy - Azure Active Directory Identity Protection
+description: Learn how to configure the Azure AD Identity Protection multi-factor authentication registration policy.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,52 +11,52 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc98f645c6b24069e090560a049ccb4fcd03dfec
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887574"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382141"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Instrukcje: Konfigurowanie zasad rejestracji w usłudze Azure Multi-Factor Authentication
+# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>How To: Configure the Azure Multi-Factor Authentication registration policy
 
-Azure AD Identity Protection ułatwia zarządzanie rejestracją usługi Azure Multi-Factor Authentication (MFA) przez skonfigurowanie zasad dostępu warunkowego, aby wymagać rejestracji MFA niezależnie od tego, w jaki sposób jest zapisywana aplikacja do uwierzytelniania.
+Azure AD Identity Protection helps you manage the roll-out of Azure Multi-Factor Authentication (MFA) registration by configuring a Conditional Access policy to require MFA registration no matter what modern authentication app you are signing in to.
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Co to są zasady rejestracji w usłudze Azure Multi-Factor Authentication?
+## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>What is the Azure Multi-Factor Authentication registration policy?
 
-Usługa Azure Multi-Factor Authentication umożliwia sprawdzenie, kto jest używany więcej niż nazwa użytkownika i hasło. Zapewnia drugą warstwę zabezpieczeń do logowania użytkowników. Aby użytkownicy mogli odpowiadać na monity usługi MFA, muszą najpierw zarejestrować się w usłudze Azure Multi-Factor Authentication.
+Azure Multi-Factor Authentication provides a means to verify who you are using more than just a username and password. It provides a second layer of security to user sign-ins. In order for users to be able to respond to MFA prompts, they must first register for Azure Multi-Factor Authentication.
 
-Zalecamy, aby dla logowania użytkownika wymagało Multi-Factor Authentication platformy Azure, ponieważ:
+We recommend that you require Azure Multi-Factor Authentication for user sign-ins because it:
 
-- Zapewnia silne uwierzytelnianie za pomocą zakresu opcji weryfikacji.
-- Odgrywa kluczową rolę w przygotowaniu organizacji do samodzielnego korygowania od wykrywania ryzyka w ramach ochrony tożsamości.
+- Delivers strong authentication through a range of verification options.
+- Plays a key role in preparing your organization to self-remediate from risk detections in Identity Protection.
 
-Aby uzyskać więcej informacji na temat usługi Azure Multi-Factor Authentication, zobacz [co to jest usługa azure Multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md)
+For more information on Azure Multi-Factor Authentication, see [What is Azure Multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md)
 
 ## <a name="policy-configuration"></a>Konfiguracja zasad
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **Identity Protection** > **zasad rejestracji usługi MFA**.
-   1. W obszarze **przypisania**
-      1. **Użytkownicy** — wybierz opcję **Wszyscy użytkownicy** lub **Wybierz osoby i grupy w** przypadku ograniczenia wdrożenia.
-         1. Opcjonalnie możesz zdecydować się na wykluczenie użytkowników z zasad.
-   1. W obszarze **Controls**
-      1. Upewnij się, że pole wyboru **Wymagaj rejestracji w usłudze Azure MFA** jest zaznaczone, a następnie wybierz **pozycję Wybierz**.
-   1. **Wymuś** - zasad **na**
-   1. **Pisał**
+1. Browse to **Azure Active Directory** > **Security** > **Identity Protection** > **MFA registration policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+   1. Under **Controls**
+      1. Ensure the checkbox **Require Azure MFA registration** is checked and choose **Select**.
+   1. **Enforce Policy** - **On**
+   1. **Save**
 
-## <a name="user-experience"></a>Środowisko użytkownika
+## <a name="user-experience"></a>User experience
 
-Azure Active Directory Identity Protection będzie monitować użytkowników o zarejestrowanie się przy następnym logowaniu się interaktywnie i przeprowadzenie rejestracji przez 14 dni. W ramach tego 14-dniowego okresu można ominąć rejestrację, ale na koniec okresu, w którym będą one wymagane do ukończenia procesu logowania.
+Azure Active Directory Identity Protection will prompt your users to register the next time they sign in interactively and they will have 14 days to complete registration. During this 14-day period, they can bypass registration but at the end of the period they will be required to register before they can complete the sign-in process.
 
-Aby zapoznać się z omówieniem środowiska użytkownika powiązanego, zobacz:
+For an overview of the related user experience, see:
 
-- [Środowisko logowania przy użyciu Azure AD Identity Protection](concept-identity-protection-user-experience.md).  
+- [Sign-in experiences with Azure AD Identity Protection](concept-identity-protection-user-experience.md).  
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Włącz zasady logowania i ryzyka dla użytkowników](howto-identity-protection-configure-risk-policies.md)
+- [Enable sign-in and user risk policies](howto-identity-protection-configure-risk-policies.md)
 
-- [Włącz Samoobsługowe resetowanie haseł w usłudze Azure AD](../authentication/howto-sspr-deployment.md)
+- [Enable Azure AD self-service password reset](../authentication/howto-sspr-deployment.md)
 
-- [Włącz Multi-Factor Authentication platformy Azure](../authentication/howto-mfa-getstarted.md)
+- [Enable Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

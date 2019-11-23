@@ -1,39 +1,39 @@
 ---
-title: Korzystanie z rozpoznawania jednostek z interfejs API analizy tekstu
+title: Use entity recognition with the Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak identyfikować i odróżnić tożsamość jednostki znalezionej w tekście za pomocą interfejsu API REST analiza tekstu.
+description: Learn how to identify and disambiguate the identity of an entity found in text with the Text Analytics REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 ms.author: aahi
-ms.openlocfilehash: d3869438f299383a0b3096babbd4874c24f08b3a
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: ae5222dcd05740ecb9747037b315c4e920b3eabd
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286588"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326637"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>How to use Named Entity Recognition in Text Analytics
 
-[Interfejs API rozpoznawania jednostek nazwanych](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) Pobiera tekst bez struktury, a dla każdego dokumentu JSON zwraca listę niejednoznacznych jednostek z linkami do dodatkowych informacji na temat sieci Web (Wikipedia i Bing).
+The [Named Entity Recognition API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) takes unstructured text, and for each JSON document, returns a list of disambiguated entities with links to more information on the web (Wikipedia and Bing).
 
-## <a name="entity-linking-and-named-entity-recognition"></a>Łączenie jednostek i rozpoznawanie nazwanych jednostek
+## <a name="entity-linking-and-named-entity-recognition"></a>Entity Linking and Named Entity Recognition
 
-Analiza tekstu "`entities` punkt końcowy obsługuje zarówno rozpoznawanie jednostek nazwanych (NER), jak i łączenie jednostek.
+The Text Analytics' `entities` endpoint supports both named entity recognition (NER) and entity linking.
 
-### <a name="entity-linking"></a>Łączenie jednostek
-Łączenie jednostek to możliwość identyfikacji i odróżnienia tożsamości jednostki znalezionej w tekście (na przykład określenie, czy element "Mars" jest używany jako globalnej, czy jako Rzymskie akty Boże War). Ten proces wymaga obecności bazy wiedzy, do której są połączone powiązane jednostki — jest używana jako baza wiedzy dla analiza tekstu punktu końcowego `entities`.
+### <a name="entity-linking"></a>Łączenie podmiotów
+Entity linking is the ability to identify and disambiguate the identity of an entity found in text (for example, determining whether the "Mars" is being used as the planet or as the Roman god of war). This process requires the presence of a knowledge base to which recognized entities are linked - Wikipedia is used as the knowledge base for the `entities` endpoint Text Analytics.
 
-### <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek nazwanych (NER)
-Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania różnych jednostek w tekście i kategoryzowania ich w wstępnie zdefiniowanych klasach lub typach. 
+### <a name="named-entity-recognition-ner"></a>Named Entity Recognition (NER)
+Named entity recognition (NER) is the ability to identify different entities in text and categorize them into pre-defined classes, or types. 
 
-## <a name="named-entity-recognition-v3-public-preview"></a>Niestandardowa wersja próbna rozpoznawania jednostek v3
+## <a name="named-entity-recognition-v3-public-preview"></a>Named Entity Recognition v3 public preview
 
-[Następna wersja rozpoznawania nazwanych jednostek](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) jest teraz dostępna w publicznej wersji zapoznawczej. Udostępnia ona aktualizacje zarówno do łączenia jednostek, jak i nazwanego rozpoznawania jednostek.
+The next version of Named Entity Recognition is now available for public preview. It provides updates to both entity linking and Named Entity Recognition. Try it using the [API test console](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral).
 
 :::row:::
     :::column span="":::
@@ -46,94 +46,96 @@ Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania 
 <!-- expanded types and subtypes row-->
 :::row:::
     :::column span="":::
-        Rozwinięte typy i podtypy jednostek
+        Expanded entity types and subtypes
     :::column-end:::
     :::column span="":::
-     Rozszerzona klasyfikacja i wykrywanie dla kilku typów jednostek nazwanych.
+     Expanded classification and detection for several named entity types.
     :::column-end:::
 :::row-end:::
 <!-- separate endpoints row-->
 :::row:::
     :::column span="":::
-        Oddziel punkty końcowe żądania 
+        Separate request endpoints 
     :::column-end:::
     :::column span="":::
-        Oddziel punkty końcowe do wysyłania połączeń jednostek i żądań NER.
+        Separate endpoints for sending entity linking and NER requests.
     :::column-end:::
 :::row-end:::
 <!-- model-version row -->
 :::row:::
     :::column span="":::
-        `model-version` parametr
+        `model-version` parameter
     :::column-end:::
     :::column span="":::
-        Opcjonalny parametr służący do wybierania wersji modelu analiza tekstu. Obecnie tylko domyślny model jest dostępny do użycia.
+        An optional parameter for choosing a version of the Text Analytics model. Currently only the default model is available for use.
     :::column-end:::
 :::row-end:::
 
-### <a name="entity-types"></a>Typy jednostek
+### <a name="entity-types"></a>Entity types
 
-Rozpoznawanie jednostek nazwanych v3 zapewnia rozszerzone wykrywanie w wielu typach. Obecnie NER v3 może rozpoznać następujące kategorie jednostek. Aby uzyskać szczegółową listę obsługiwanych jednostek i języków, zobacz artykuł [typy jednostek nazwanych](../named-entity-types.md) .
+Named Entity Recognition v3 provides expanded detection across multiple types. Currently, NER v3 can recognize the following categories of entities. For a detailed list of supported entities and languages, see the [Named entity types](../named-entity-types.md) article.
 
 * Ogólne
-* Dane osobowe 
+* Personal Information 
 
-### <a name="request-endpoints"></a>Punkty końcowe żądania
+### <a name="request-endpoints"></a>Request endpoints
 
-Nazwanego rozpoznawania jednostek v3 używa oddzielnych punktów końcowych dla żądań NER i konsolidacji jednostek. Użyj poniższego formatu adresu URL na podstawie Twojego żądania:
+Named Entity Recognition v3 uses separate endpoints for NER and entity linking requests. Use a URL format below based on your request:
 
 NER
-* Jednostki ogólne — `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+* General entities - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Jednostki danych osobowych — `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* Personal information entities - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
-Łączenie jednostek
+Entity linking
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-### <a name="model-versioning"></a>Przechowywanie wersji modelu
+### <a name="model-versioning"></a>Model versioning
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-## <a name="supported-types-for-named-entity-recognition-v2"></a>Obsługiwane typy dla nazwanego rozpoznawania jednostek v2
+## <a name="supported-types-for-named-entity-recognition-v2"></a>Supported Types for Named Entity Recognition v2
 
 > [!NOTE]
-> Następujące jednostki są obsługiwane przez funkcję rozpoznawania jednostek nazwanych (NER) w wersji 2. [Ner v3](#named-entity-recognition-v3-public-preview) jest dostępna w publicznej wersji zapoznawczej i znacząco rozszerza liczbę i głębokość jednostek rozpoznawanych w tekście.   
+> The following entities are supported by Named Entity Recognition(NER) version 2. [NER v3](#named-entity-recognition-v3-public-preview) is in public preview, and greatly expands the number and depth of the entities recognized in text.   
 
 | Typ  | SubType | Przykład |
 |:-----------   |:------------- |:---------|
-| Person (Osoba)        | Nie dotyczy\*         | "Jan", "bramy Bill"     |
-| Lokalizacja      | Nie dotyczy\*         | „Redmond, Washington”, „Paris”  |
-| Organizacja  | Nie dotyczy\*         | „Microsoft”   |
-| Liczba      | Liczba        | „6”, „six”     |
-| Liczba      | Wartość procentowa    | „50%”, „fifty percent”|
-| Liczba      | Liczba porządkowa       | „2nd”, „second”     |
-| Liczba      | Wiek           | "90 dzień dawna", "30 lat starych"    |
-| Liczba      | Waluta      | „$10,99”     |
-| Liczba      | Wymiar     | „10 miles”, „40 cm”     |
-| Liczba      | Temperatura   | „32 degrees”    |
-| DateTime      | Nie dotyczy\*         | „6:30PM February 4, 2012”      |
-| DateTime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
-| DateTime      | Godzina          | "8:00", "8:00"  |
-| DateTime      | Zakres dat     | „May 2nd to May 5th”    |
-| DateTime      | Zakres czasu     | „6pm to 7pm”     |
-| DateTime      | Duration      | „1 minute and 45 seconds”   |
-| DateTime      | Set           | „every Tuesday”     |
-| Adres URL           | Nie dotyczy\*         | "https:\//www.bing.com"    |
-| Adres e-mail         | Nie dotyczy\*         | „support@contoso.com” |
+| Osoba        | N/A\*         | "Jeff", "Bill Gates"     |
+| Lokalizacja      | N/A\*         | „Redmond, Washington”, „Paris”  |
+| Organizacja  | N/A\*         | „Microsoft”   |
+| Ilość      | Liczba        | „6”, „six”     |
+| Ilość      | Wartość procentowa    | „50%”, „fifty percent”|
+| Ilość      | Liczba porządkowa       | „2nd”, „second”     |
+| Ilość      | Wiek           | "90 day old", "30 years old"    |
+| Ilość      | Waluta      | „$10,99”     |
+| Ilość      | Wymiar     | „10 miles”, „40 cm”     |
+| Ilość      | Temperatura   | „32 degrees”    |
+| Data i godzina      | N/A\*         | „6:30PM February 4, 2012”      |
+| Data i godzina      | Data          | „May 2nd, 2017”, „05/02/2017”   |
+| Data i godzina      | Czas          | "8am", "8:00"  |
+| Data i godzina      | Zakres dat     | „May 2nd to May 5th”    |
+| Data i godzina      | Zakres czasu     | „6pm to 7pm”     |
+| Data i godzina      | Czas trwania      | „1 minute and 45 seconds”   |
+| Data i godzina      | Zestaw           | „every Tuesday”     |
+| Adres URL           | N/A\*         | "https:\//www.bing.com"    |
+| Adres e-mail         | N/A\*         | „support@contoso.com” |
+| US Phone Number  | N/A\*         | (US phone numbers only) "(312) 555-0176" |
+| Adres IP    | N/A\*         | "10.0.0.100" |
 
-\* w zależności od danych wejściowych i wyodrębnionych, niektóre jednostki mogą pominąć `SubType`.  Wszystkie obsługiwane typy jednostek są dostępne tylko w językach angielskim, chińskim, francuskim, niemieckim i hiszpańskim.
+\* Depending on the input and extracted entities, certain entities may omit the `SubType`.  All the supported entity types listed are available only for the English, Chinese-Simplified, French, German, and Spanish languages.
 
 ### <a name="language-support"></a>Obsługa języków
 
-Używanie łączenia jednostek w różnych językach wymaga użycia odpowiedniej bazy wiedzy w każdym z języków. W przypadku łączenia jednostek w analiza tekstu oznacza to, że każdy język, który jest obsługiwany przez punkt końcowy `entities`, zostanie połączony z odpowiednim korpus witryny Wikipedia w tym języku. Ponieważ rozmiar korpusy różni się między językami, oczekuje się, że odwołanie do funkcji łączenia jednostki również będzie się różnić. Aby uzyskać więcej informacji, zobacz artykuł [Obsługa języka](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
+Using entity linking in various languages requires using a corresponding knowledge base in each language. For entity linking in Text Analytics, this means each language that is supported by the `entities` endpoint will link to the corresponding Wikipedia corpus in that language. Since the size of corpora varies between languages, it is expected that the entity linking functionality's recall will also vary. See the [language support](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) article for more information.
 
-## <a name="preparation"></a>Przygotowanie
+## <a name="preparation"></a>Przygotowywanie
 
-Musisz mieć dokumenty JSON w tym formacie: ID, text, language
+You must have JSON documents in this format: ID, text, language
 
-W przypadku obecnie obsługiwanych języków zapoznaj się z [tą listą](../text-analytics-supported-languages.md).
+For currently supported languages, see [this list](../text-analytics-supported-languages.md).
 
-Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest ilustracją zawartości, którą można przesłać do obiektu łączącego.
+Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. The following example is an illustration of content you might submit to the entity linking end.
 
 ```json
     {
@@ -156,11 +158,11 @@ Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymal
 
 Szczegółowe informacje na temat definicji żądania można znaleźć w artykule [Jak wywołać interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
-+ Utwórz żądanie **POST**. Przejrzyj dokumentację interfejsu API dla tego żądania: [interfejs API jednostek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ Utwórz żądanie **POST**. Review the API documentation for this request: [Entities API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Ustaw punkt końcowy HTTP na potrzeby wyodrębniania fraz kluczowych przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musisz dołączyć `/text/analytics/v2.1/entities`. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
++ Set the HTTP endpoint for key phrase extraction by using either a Text Analytics resource on Azure or an instantiated [Text Analytics container](text-analytics-how-to-install-containers.md). You must include `/text/analytics/v2.1/entities`. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
-+ Ustaw nagłówek żądania w taki sposób [, aby zawierał klucz dostępu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dla operacji analiza tekstu.
++ Set a request header to include [the access key](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) for Text Analytics operations.
 
 + W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
 
@@ -169,7 +171,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
 
-Analiza jest wykonywana po odebraniu żądania. Zapoznaj się z sekcją [limity danych](../overview.md#data-limits) w temacie Omówienie dotyczącej rozmiaru i liczby żądań wysyłanych na minutę i sekundę.
+Analiza jest wykonywana po odebraniu żądania. See the [data limits](../overview.md#data-limits) section in the overview for information on the size and number of requests you can send per minute and second.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
@@ -179,7 +181,7 @@ Wszystkie żądania POST zwracają odpowiedź w formacie JSON z identyfikatorami
 
 Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi.
 
-Przykład danych wyjściowych dla łączenia encji jest pokazany poniżej:
+An example of the output for entity linking is shown next:
 
 ```json
     {
@@ -339,12 +341,12 @@ Przykład danych wyjściowych dla łączenia encji jest pokazany poniżej:
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym artykule przedstawiono koncepcje i przepływ pracy dotyczące łączenia jednostek przy użyciu analiza tekstu w Cognitive Services. Podsumowanie:
+In this article, you learned concepts and workflow for entity linking using Text Analytics in Cognitive Services. Podsumowanie:
 
-+ [Interfejs API jednostek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) jest dostępny dla wybranych języków.
-+ Dokumenty JSON w treści żądania obejmują identyfikator, tekst i kod języka.
++ [Entities API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) is available for selected languages.
++ JSON documents in the request body include an ID, text, and language code.
 + Żądanie POST jest wysyłane do punktu końcowego `/entities` za pomocą spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) prawidłowego dla używanej subskrypcji.
-+ Dane wyjściowe odpowiedzi, które obejmują połączone jednostki (w tym wyniki pewności, przesunięcia i linki sieci Web dla każdego identyfikatora dokumentu) mogą być używane w dowolnej aplikacji
++ Response output, which consists of linked entities (including confidence scores, offsets, and web links, for each document ID) can be used in any application
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -4,81 +4,81 @@ services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: 5eec9771e964cf6b47492fdad34bcba14d897d41
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s '
+ms.openlocfilehash: 0e5a0f71a299b3d41ce48005fa4676f31cbcb95e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279716"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325455"
 ---
-# <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
+# <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces troubleshooting
 
-Ten przewodnik zawiera informacje o typowych problemów, które mogą mieć w przypadku korzystania z usługi Azure Dev miejsca do magazynowania.
+This guide contains information about common problems you may have when using Azure Dev Spaces.
 
-Jeśli wystąpi problem podczas korzystania z Azure Dev Spaces, Utwórz [problem w repozytorium Azure dev Spaces GitHub](https://github.com/Azure/dev-spaces/issues).
+If you have a problem when using Azure Dev Spaces, create an [issue in the Azure Dev Spaces GitHub repository](https://github.com/Azure/dev-spaces/issues).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby bardziej efektywnie rozwiązywać problemy, może to pomóc w tworzeniu bardziej szczegółowych dzienników do przeglądu.
+To troubleshoot problems more effectively, it may help to create more detailed logs for review.
 
-Rozszerzenie programu Visual Studio można ustawić `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` zmiennej środowiskowej 1. Pamiętaj ponownie uruchomić program Visual Studio dla zmiennej środowiskowej zaczęły obowiązywać. Po włączeniu szczegółowe dzienniki są zapisywane w katalogu `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools`.
+For the Visual Studio extension, set the `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` environment variable to 1. Be sure to restart Visual Studio for the environment variable to take effect. Once enabled, detailed logs are written to your `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` directory.
 
-W interfejsie wiersza polecenia, użytkownik może zapewniać dane wyjściowe informacji podczas wykonywania polecenia przy użyciu `--verbose` przełącznika. Można również przeglądać szczegółowe dzienniki w `%TEMP%\Azure Dev Spaces`. Na komputerze Mac, można znaleźć katalogu TEMP, uruchamiając `echo $TMPDIR` z okna terminalu. Na komputerze z systemem Linux katalogu TEMP jest zazwyczaj `/tmp`.
+In the CLI, you can output more information during command execution by using the `--verbose` switch. You can also browse more detailed logs in `%TEMP%\Azure Dev Spaces`. On a Mac, the TEMP directory can be found by running `echo $TMPDIR` from a terminal window. On a Linux computer, the TEMP directory is usually `/tmp`.
 
-Azure Dev Spaces sprawdza się również najlepiej podczas debugowania pojedynczego wystąpienia lub pod. Plik `azds.yaml` zawiera ustawienie *replicaCount*, które wskazuje liczbę Kubernetes uruchomionych dla usługi. Jeśli zmienisz *replicaCount* w celu skonfigurowania aplikacji tak, aby uruchamiała wiele zasobników dla danej usługi, debuger dołącza do pierwszego pod, gdy zostanie wyświetlony alfabetycznie. Debuger dołącza się do innego, pod, kiedy pierwotne odzyskanie, prawdopodobnie wystąpiło nieoczekiwane zachowanie.
+Azure Dev Spaces also works best when debugging a single instance, or pod. The `azds.yaml` file contains a setting, *replicaCount*, that indicates the number of pods that Kubernetes runs for your service. If you change the *replicaCount* to configure your application to run multiple pods for a given service, the debugger attaches to the first pod, when listed alphabetically. The debugger attaches to a different pod when the original pod recycles, possibly resulting in unexpected behavior.
 
-## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Typowe problemy występujące podczas włączania Azure Dev Spaces
+## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Common issues when enabling Azure Dev Spaces
 
-### <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Błąd "nie można utworzyć kontrolera Azure Dev Spaces"
+### <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Error "Failed to create Azure Dev Spaces controller"
 
-Można napotkać ten błąd, gdy coś pójdzie nie tak z tworzeniem kontrolera. Jeśli jest to błąd przejściowy, Usuń i Utwórz ponownie kontroler, aby rozwiązać ten problem.
+You might see this error when something goes wrong with the creation of the controller. If it's a transient error, delete and recreate the controller to fix it.
 
-Możesz również spróbować usunąć kontroler:
+You can also try deleting the controller:
 
 ```bash
 azds remove -g <resource group name> -n <cluster name>
 ```
 
-Użyj interfejsu wiersza polecenia Azure Dev Spaces, aby usunąć kontroler. Nie można usunąć kontrolera z programu Visual Studio. Nie można również zainstalować interfejsu wiersza polecenia Azure Dev Spaces w Azure Cloud Shell, dlatego nie można usunąć kontrolera z Azure Cloud Shell.
+Use the Azure Dev Spaces CLI to delete a controller. It’s not possible to delete a controller from Visual Studio. You also can't install the Azure Dev Spaces CLI in the Azure Cloud Shell so you can't delete a controller from the Azure Cloud Shell.
 
-Jeśli nie masz zainstalowanego interfejsu wiersza polecenia Azure Dev Spaces, możesz go najpierw zainstalować przy użyciu następującego polecenie, a następnie usunąć kontroler:
+If you don't have the Azure Dev Spaces CLI installed, you can first install it using the following command then delete your controller:
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-Ponowne tworzenie kontrolera może odbywać się z interfejsu wiersza polecenia lub programu Visual Studio. Przykłady można znaleźć w temacie [programowanie zespołowe](quickstart-team-development.md) lub [opracowywanie za pomocą](quickstart-netcore-visualstudio.md) przewodnika Szybki Start dla platformy .NET Core.
+Recreating the controller can be done from the CLI or Visual Studio. See the [Team development](quickstart-team-development.md) or [Develop with .NET Core](quickstart-netcore-visualstudio.md) quickstarts for examples.
 
-### <a name="controller-create-failing-because-of-controller-name-length"></a>Tworzenie kontrolera kończy się niepowodzeniem z powodu długości nazwy kontrolera
+### <a name="controller-create-failing-because-of-controller-name-length"></a>Controller create failing because of controller name length
 
-Nazwa kontrolera Azure Dev Spaces nie może być dłuższa niż 31 znaków. Jeśli nazwa kontrolera przekracza 31 znaków po włączeniu funkcji miejsca do magazynowania w klastrze AKS lub utworzeniu kontrolera, zostanie wyświetlony komunikat o błędzie. Na przykład:
+An Azure Dev Spaces controller's name can't be longer than 31 characters. If your controller's name exceeds 31 characters when you enable Dev Spaces on an AKS cluster or create a controller, you'll receive an error. Na przykład:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Aby rozwiązać ten problem, Utwórz kontroler z alternatywną nazwą. Na przykład:
+To fix this issue, create a controller with an alternate name. Na przykład:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
 ```
 
-### <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Włączanie funkcji Spaces dev, gdy pule węzłów systemu Windows są dodawane do klastra AKS
+### <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Enabling Dev Spaces failing when Windows node pools are added to an AKS cluster
 
-Obecnie Azure Dev Spaces jest przeznaczony do uruchamiania tylko w przypadku systemów i węzłów systemu Linux. Jeśli masz klaster AKS z pulą węzłów systemu Windows, musisz upewnić się, że Azure Dev Spaces są planowane tylko w węzłach z systemem Linux. Jeśli Azure Dev Spaces pod zaplanowano uruchomienie w węźle systemu Windows, nie zostanie on uruchomiony, a włączenie funkcji Spaces nie powiedzie się.
+Currently, Azure Dev Spaces is intended to run on Linux pods and nodes only. When you have an AKS cluster with a Windows node pool, you must ensure that Azure Dev Spaces pods are only scheduled on Linux nodes. If an Azure Dev Spaces pod is scheduled to run on a Windows node, that pod won't start and enabling Dev Spaces will fail.
 
-Aby rozwiązać ten problem, [Dodaj](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) do klastra AKS, aby upewnić się, że w węźle systemu Windows nie zaplanowano uruchamiania systemów Linux.
+To fix this issue, [add a taint](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) to your AKS cluster to ensure Linux pods aren't scheduled to run on a Windows node.
 
-### <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Błąd "znaleziono brak przygotowanych węzłów systemu Linux w stanie gotowe w klastrze. Do wdrożenia w przestrzeni nazw "azds" musi być co najmniej jeden węzeł systemu Linux, który jest w stanie gotowości.
+### <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Error "Found no untainted Linux nodes in Ready state on the cluster. There needs to be at least one untainted Linux node in Ready state to deploy pods in 'azds' namespace."
 
-Azure Dev Spaces nie można utworzyć kontrolera w klastrze AKS, ponieważ nie można odnaleźć w stanie *gotowości* węzła niemającego przystosowanego do harmonogramu. Azure Dev Spaces wymaga co najmniej jednego węzła systemu Linux w stanie *gotowości* , który umożliwia planowanie zasobników bez określania tolerowania.
+Azure Dev Spaces couldn't create a controller on your AKS cluster because it couldn't find an untainted node in a *Ready* state to schedule pods on. Azure Dev Spaces requires at least one Linux node in a *Ready* state that allows for scheduling pods without specifying tolerations.
 
-Aby rozwiązać ten problem, [zaktualizuj konfigurację tego programu](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) w klastrze AKS, aby upewnić się, że co najmniej jeden węzeł systemu Linux zezwala na planowanie zasobników bez określania tolerowanych danych. Ponadto upewnij się, że co najmniej jeden węzeł systemu Linux, który umożliwia planowanie zasobników bez określania tolerowania, jest w stanie *gotowe* . Jeśli Twój węzeł zajmuje dużo czasu na osiągnięcie stanu *gotowości* , możesz spróbować ponownie uruchomić węzeł.
+To fix this issue, [update your taint configuration](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) on your AKS cluster to ensure at least one Linux node allows for scheduling pods without specifying tolerations. Also, ensure that at least one Linux node that allows scheduling pods without specifying tolerations is in the *Ready* state. If your node is taking a long time to reach the *Ready* state, you can try restarting your node.
 
-### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Błąd "Azure Dev Spaces interfejs wiersza polecenia nie został poprawnie zainstalowany" podczas uruchamiania `az aks use-dev-spaces`
+### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Error "Azure Dev Spaces CLI not installed properly" when running `az aks use-dev-spaces`
 
-Aktualizacja interfejsu wiersza polecenia Azure Dev Spaces została zmieniona ścieżka instalacji. Jeśli używasz wersji interfejsu wiersza polecenia platformy Azure starszej niż 2.0.63, może pojawić się ten błąd. Aby wyświetlić wersję interfejsu wiersza polecenia platformy Azure, użyj `az --version`.
+An update to the Azure Dev Spaces CLI changed its installation path. If you're using a version of the Azure CLI earlier than 2.0.63, you may see this error. To display your version of the Azure CLI, use `az --version`.
 
 ```bash
 $ az --version
@@ -86,44 +86,44 @@ azure-cli                         2.0.60 *
 ...
 ```
 
-Oprócz komunikatu o błędzie podczas uruchamiania `az aks use-dev-spaces` z wersją interfejsu wiersza polecenia platformy Azure przed 2.0.63, instalacja zakończy się pomyślnie. Można nadal używać `azds` bez żadnych problemów.
+Despite the error message when running `az aks use-dev-spaces` with a version of the Azure CLI before 2.0.63, the installation does succeed. You can continue to use `azds` without any issues.
 
-Aby rozwiązać ten problem, zaktualizuj instalację [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) do 2.0.63 lub nowszego. Ta aktualizacja rozwiązuje komunikat o błędzie, który pojawia się podczas uruchamiania `az aks use-dev-spaces`. Alternatywnie można nadal używać bieżącej wersji interfejsu wiersza polecenia platformy Azure i interfejsu wiersza polecenia Azure Dev Spaces.
+To fix this issue, update your installation of the [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) to 2.0.63 or later. This update will resolve the error message you receive when running `az aks use-dev-spaces`. Alternatively, you can continue to use your current version of the Azure CLI and the Azure Dev Spaces CLI.
 
-### <a name="error-unable-to-reach-kube-apiserver"></a>Błąd "nie można nawiązać połączenia z polecenia-apiserver"
+### <a name="error-unable-to-reach-kube-apiserver"></a>Error "Unable to reach kube-apiserver"
 
-Ten błąd może pojawić się, gdy Azure Dev Spaces nie może nawiązać połączenia z serwerem interfejsu API klastra AKS. 
+You might see this error when Azure Dev Spaces is unable to connect to your AKS cluster's API server. 
 
-Jeśli dostęp do serwera interfejsu API klastra AKS jest zablokowany lub jeśli masz włączone [zakresy dozwolonych adresów IP serwera interfejsu API](../aks/api-server-authorized-ip-ranges.md) dla klastra AKS, należy również [utworzyć](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) lub [zaktualizować](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) klaster, aby zezwolić na [dodatkowe zakresy w oparciu o region](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+If access to your AKS cluster API server is locked down or if you have [API server authorized IP address ranges](../aks/api-server-authorized-ip-ranges.md) enabled for your AKS cluster, you must also [create](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) or [update](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) your cluster to [allow additional ranges based on your region](https://github.com/Azure/dev-spaces/tree/master/public-ips).
 
-Upewnij się, że serwer interfejsu API jest dostępny, uruchamiając polecenia polecenia kubectl. Jeśli serwer interfejsu API jest niedostępny, skontaktuj się z pomocą techniczną usługi AKS i spróbuj ponownie, gdy działa serwer interfejsu API.
+Ensure that the API server is available by running kubectl commands. If the API server is unavailable, please contact AKS support and try again when the API server is working.
 
-## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Typowe problemy podczas przygotowywania projektu dla Azure Dev Spaces
+## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Common issues when preparing your project for Azure Dev Spaces
 
-### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Ostrzeżenie "nie można wygenerować pliku dockerfile z powodu nieobsługiwanego języka"
-Usługa Azure Dev do magazynowania zapewnia macierzystą obsługę języka C# i Node.js. Po uruchomieniu `azds prep` w katalogu z kodem zapisanym w jednym z tych języków Azure Dev Spaces automatycznie tworzy odpowiednie pliku dockerfile.
+### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Warning "Dockerfile could not be generated due to unsupported language"
+Azure Dev Spaces provides native support for C# and Node.js. When you run `azds prep` in a directory with code written in one of these languages, Azure Dev Spaces automatically creates an appropriate Dockerfile for you.
 
-Nadal możesz używać Azure Dev Spaces z kodem zapisanym w innych językach, ale musisz ręcznie utworzyć pliku dockerfile przed uruchomieniem `azds up` po raz pierwszy.
+You can still use Azure Dev Spaces with code written in other languages, but you need to manually create the Dockerfile before running `azds up` for the first time.
 
-Jeśli aplikacja jest zapisywana w języku, który Azure Dev Spaces nie obsługuje natywnie, musisz podać odpowiedni pliku dockerfile, aby utworzyć obraz kontenera, w którym działa kod. Platforma Docker zawiera [listę najlepszych rozwiązań dotyczących pisania wieloetapowe dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) i [odwołania pliku dockerfile](https://docs.docker.com/engine/reference/builder/) , które mogą pomóc napisać pliku dockerfile, który odpowiada Twoim potrzebom.
+If your application is written in a language that Azure Dev Spaces doesn't natively support, you need to provide an appropriate Dockerfile to build a container image running your code. Docker provides a [list of best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) and a [Dockerfile reference](https://docs.docker.com/engine/reference/builder/) that can help you write a Dockerfile that suits your needs.
 
-Po wybraniu odpowiedniej pliku dockerfile należy uruchomić `azds up`, aby uruchomić aplikację w Azure Dev Spaces.
+Once you have an appropriate Dockerfile in place, you run `azds up` to run your application in Azure Dev Spaces.
 
-## <a name="common-issues-when-starting-or-stopping-services-with-azure-dev-spaces"></a>Typowe problemy występujące podczas uruchamiania lub zatrzymywania usług za pomocą Azure Dev Spaces
+## <a name="common-issues-when-starting-or-stopping-services-with-azure-dev-spaces"></a>Common issues when starting or stopping services with Azure Dev Spaces
 
-### <a name="error-config-file-not-found"></a>Błąd "nie znaleziono pliku konfiguracji:"
+### <a name="error-config-file-not-found"></a>Error "Config file not found:"
 
-Podczas uruchamiania `azds up`może zostać wyświetlony ten błąd. Zarówno `azds up`, jak i `azds prep` muszą być uruchamiane z katalogu głównego projektu, który ma być uruchamiany w obszarze dev.
+When running `azds up`, you may see this error. Both `azds up` and `azds prep` must be run from the root directory of the project you want to run in your dev space.
 
 Aby rozwiązać ten problem:
-1. Zmień bieżący katalog do folderu głównego zawierającego kod w języku usługi. 
-1. Jeśli nie masz pliku _azds. YAML_ w folderze Code, uruchom `azds prep`, aby wygenerować zasoby Docker, Kubernetes i Azure dev Spaces.
+1. Change your current directory to the root folder containing your service code. 
+1. If you don't have a _azds.yaml_ file in the code folder, run `azds prep` to generate Docker, Kubernetes, and Azure Dev Spaces assets.
 
-### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Limit czasu w "Oczekiwanie na kompilację obrazu kontenera..." krok z węzłami wirtualnymi AKS
+### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Timeout at "Waiting for container image build..." step with AKS virtual nodes
 
-Ten limit czasu występuje podczas próby użycia obszarów deweloperskich do uruchomienia usługi, która jest skonfigurowana do uruchamiania w [węźle wirtualnym AKS](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Obszary deweloperów nie obsługują obecnie usług kompilowania i debugowania w węzłach wirtualnych.
+This timeout occurs when you attempt to use Dev Spaces to run a service that is configured to run on an [AKS virtual node](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Dev Spaces doesn't currently support building or debugging services on virtual nodes.
 
-Jeśli uruchomisz `azds up` z przełącznikiem `--verbose` lub włączysz pełne rejestrowanie w programie Visual Studio, zobaczysz dodatkowe szczegóły:
+If you run `azds up` with the `--verbose` switch, or enable verbose logging in Visual Studio, you see additional detail:
 
 ```cmd
 $ azds up --verbose
@@ -135,31 +135,31 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-Powyższe polecenie pokazuje, że usługa poniżej została przypisana do *wirtualnego węzła-ACI-Linux*, który jest węzłem wirtualnym.
+The above command shows that the service's pod was assigned to *virtual-node-aci-linux*, which is a virtual node.
 
-Aby rozwiązać ten problem, zaktualizuj wykres Helm dla usługi, aby usunąć wszelkie wartości *nodeSelector* lub *tolerowania* , które umożliwiają uruchamianie usługi w węźle wirtualnym. Te wartości są zwykle zdefiniowane w pliku `values.yaml` wykresu.
+To fix this issue, update the Helm chart for the service to remove any *nodeSelector* or *tolerations* values that allow the service to run on a virtual node. These values are typically defined in the chart's `values.yaml` file.
 
-Nadal można korzystać z klastra AKS, który ma włączoną funkcję węzłów wirtualnych, jeśli usługa, którą chcesz skompilować lub debugować za pośrednictwem funkcji Spaces, działa w węźle maszyny wirtualnej. Domyślną konfiguracją jest uruchamianie usługi z miejscami deweloperskimi w węźle maszyny wirtualnej.
+You can still use an AKS cluster that has the virtual nodes feature enabled, if the service you wish to build or debug via Dev Spaces runs on a VM node. Running a service with Dev Spaces on a VM node is the default configuration.
 
-### <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>Błąd "nie można znaleźć gotowego do przydzielenia na" pod "podczas uruchamiania miejsc programistycznych
+### <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>Error "could not find a ready tiller pod" when launching Dev Spaces
 
-Ten błąd występuje, jeśli klient narzędzia Helm już nie może komunikować się pod Tiller uruchomionych w klastrze.
+This error occurs if the Helm client can no longer talk to the Tiller pod running in the cluster.
 
-Aby rozwiązać ten problem, uruchom ponownie węzły agenta w klastrze.
+To fix this issue, restart the agent nodes in your cluster.
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Błąd "Release azds-\<Identifier\>-\<spacename\>-\<ServiceName\> nie powiodło się: usługi"\<ServiceName\>"już istnieje" lub "odmowa dostępu do ściągania dla \<ServiceName\>, repozytorium nie istnieje lub może wymagać elementu" Docker login' "
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Error "release azds-\<identifier\>-\<spacename\>-\<servicename\> failed: services '\<servicename\>' already exists" or "Pull access denied for \<servicename\>, repository does not exist or may require 'docker login'"
 
-Te błędy mogą wystąpić, jeśli Mieszasz uruchomione bezpośrednie polecenia Helm (takie jak `helm install`, `helm upgrade`lub `helm delete`) za pomocą poleceń dev Spaces (takich jak `azds up` i `azds down`) w tym samym obszarze dev. Są one wykonywane, ponieważ spacje do deweloperów mają własne wystąpienie do przyciągania, które powoduje konflikt z własnym wystąpieniem programu do wykonywania w tym samym obszarze dev.
+These errors can occur if you mix running direct Helm commands (such as `helm install`, `helm upgrade`, or `helm delete`) with Dev Spaces commands (such as `azds up` and `azds down`) inside the same dev space. They occur because Dev Spaces has its own Tiller instance, which conflicts with your own Tiller instance running in the same dev space.
 
-Warto używać zarówno poleceń Helm, jak i poleceń dev Spaces z tym samym klastrem AKS, ale każda przestrzeń nazw z włączoną funkcją dev Spaces powinna używać jednego lub drugiego.
+It's fine to use both Helm commands and Dev Spaces commands against the same AKS cluster, but each Dev Spaces-enabled namespace should use either one or the other.
 
-Załóżmy na przykład, że używasz polecenia Helm do uruchamiania całej aplikacji w nadrzędnym obszarze dev. Można utworzyć podrzędne miejsca deweloperskie dla tego elementu nadrzędnego, użyć funkcji miejsca do magazynowania w celu uruchomienia poszczególnych usług w podrzędnych miejscach dev i przetestowania usług. Gdy wszystko będzie gotowe do zaewidencjonowania zmian, użyj polecenia Helm w celu wdrożenia zaktualizowanego kodu w nadrzędnym obszarze dev. Nie należy używać `azds up` do uruchamiania zaktualizowanej usługi w nadrzędnym obszarze dev, ponieważ spowoduje to konflikt z usługą uruchomioną początkowo przy użyciu Helm.
+For example, suppose you use a Helm command to run your entire application in a parent dev space. You can create child dev spaces off that parent, use Dev Spaces to run individual services inside the child dev spaces, and test the services together. When you're ready to check in your changes, use a Helm command to deploy the updated code to the parent dev space. Don't use `azds up` to run the updated service in the parent dev space, because it will conflict with the service initially run using Helm.
 
-### <a name="existing-dockerfile-not-used-to-build-a-container"></a>Istniejące pliku dockerfile nie są używane do kompilowania kontenera
+### <a name="existing-dockerfile-not-used-to-build-a-container"></a>Existing Dockerfile not used to build a container
 
-Azure Dev do magazynowania można skonfigurować, aby wskazać konkretną _pliku Dockerfile_ w projekcie. Jeśli jest wyświetlany Azure Dev Spaces nie używa _pliku dockerfile_ , aby móc kompilować kontenery, może być konieczne jawne poinformowanie Azure dev Spaces, których pliku dockerfile użyć. 
+Azure Dev Spaces can be configured to point to a specific _Dockerfile_ in your project. If it appears Azure Dev Spaces isn't using the _Dockerfile_ you expect to build your containers, you might need to explicitly tell Azure Dev Spaces which Dockerfile to use. 
 
-Aby rozwiązać ten problem, Otwórz plik _azds. YAML_ , który Azure dev Spaces wygenerowany w projekcie. *Konfiguracje aktualizacji: Programowanie: kompilacja: pliku dockerfile* , aby wskazać pliku dockerfile, którego chcesz użyć. Na przykład:
+To fix this issue, open the _azds.yaml_ file that Azure Dev Spaces generated in your project. Update *configurations: develop: build: dockerfile* to point to the Dockerfile you want to use. Na przykład:
 
 ```yaml
 ...
@@ -169,13 +169,13 @@ configurations:
       dockerfile: Dockerfile.develop
 ```
 
-### <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>Błąd "nieautoryzowane: wymagane uwierzytelnienie" podczas próby użycia obrazu platformy Docker z rejestru prywatnego
+### <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>Error "unauthorized: authentication required" when trying to use a Docker image from a private registry
 
-Używasz obrazu platformy Docker z rejestru prywatnego wymagającego uwierzytelniania.
+You're using a Docker image from a private registry that requires authentication.
 
-Aby rozwiązać ten problem, można zezwolić na używanie obszarów deweloperskich do uwierzytelniania i ściągania obrazów z tego rejestru prywatnego przy użyciu usługi [imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets). Aby użyć imagePullSecrets, [Utwórz wpis tajny Kubernetes](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) w przestrzeni nazw, w której jest używany obraz. Podaj klucz tajny jako imagePullSecret w `azds.yaml`.
+To fix this issue, you can allow Dev Spaces to authenticate and pull images from this private registry using [imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets). To use imagePullSecrets, [create a Kubernetes secret](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) in the namespace where you're using the image. Then provide the secret as an imagePullSecret in `azds.yaml`.
 
-Poniżej znajduje się przykład określenia imagePullSecrets w `azds.yaml`.
+Below is an example of a specifying imagePullSecrets in `azds.yaml`.
 
 ```yaml
 kind: helm-release
@@ -200,28 +200,28 @@ install:
 ```
 
 > [!IMPORTANT]
-> Ustawienie imagePullSecrets w `azds.yaml` spowoduje przesłonięcie imagePullSecrets określonych w `values.yaml`.
+> Setting imagePullSecrets in `azds.yaml` will override imagePullSecrets specified in the `values.yaml`.
 
-### <a name="error-service-cannot-be-started"></a>Błąd "nie można uruchomić usługi".
+### <a name="error-service-cannot-be-started"></a>Error "Service cannot be started."
 
-Ten błąd może pojawić się po kodzie usługi nie powiedzie się. Przyczyną jest często w kodzie użytkownika. Aby uzyskać więcej informacji diagnostycznych, należy włączyć bardziej szczegółowe rejestrowanie podczas uruchamiania usługi.
+You might see this error when your service code fails to start. The cause is often in user code. To get more diagnostic information, enable more detailed logging when starting your service.
 
-W wierszu polecenia Użyj `--verbose`, aby umożliwić bardziej szczegółowe rejestrowanie. Możesz również określić format danych wyjściowych przy użyciu `--output`. Na przykład:
+From the command line, use the `--verbose` to enable more detailed logging. You can also specify an output format using `--output`. Na przykład:
 
 ```cmd
 azds up --verbose --output json
 ```
 
-W programie Visual Studio:
+In Visual Studio:
 
-1. Otwórz **Narzędzia > Opcje** i w obszarze **projekty i rozwiązania**, wybierz **kompilowanie i uruchamianie**.
-2. Zmień ustawienia **poziom szczegółowości danych wyjściowych kompilacji projektu programu MSBuild** do **szczegółowe** lub **diagnostycznych**.
+1. Open **Tools > Options** and under **Projects and Solutions**, choose **Build and Run**.
+2. Change the settings for **MSBuild project build output verbosity** to **Detailed** or **Diagnostic**.
 
-    ![Zrzut ekranu opcji narzędzi okna dialogowego](media/common/VerbositySetting.PNG)
+    ![Screenshot of Tools Options dialog](media/common/VerbositySetting.PNG)
 
-### <a name="rerunning-a-service-after-controller-re-creation"></a>Ponowne uruchamianie usługi po ponownym utworzeniu kontrolera
+### <a name="rerunning-a-service-after-controller-re-creation"></a>Rerunning a service after controller re-creation
 
-Wystąpił błąd *podczas próby ponownego uruchomienia usługi* po usunięciu i ponownym utworzeniu kontrolera Azure dev Spaces skojarzonego z tym klastrem. W tej sytuacji pełne dane wyjściowe zawierają następujący tekst:
+You receive a *Service cannot be started* error when attempting to rerun a service after you have removed and then recreated the Azure Dev Spaces controller associated with this cluster. In this situation, the verbose output contains the following text:
 
 ```cmd
 Installing Helm chart...
@@ -231,13 +231,13 @@ Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" do
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
 ```
 
-Ten błąd występuje, ponieważ usunięcie kontrolera usługi Dev Spaces nie powoduje usunięcia usług wcześniej zainstalowanych przez ten kontroler. Ponowne tworzenie kontrolera, a następnie próbując do uruchamiania usług przy użyciu nowego kontrolera nie działa, ponieważ stare usługi wciąż znajdują się w miejscu.
+This error occurs because removing the Dev Spaces controller doesn't remove services previously installed by that controller. Recreating the controller and then attempting to run the services using the new controller fails because the old services are still in place.
 
-Aby rozwiązać ten problem, użyj polecenia `kubectl delete`, aby ręcznie usunąć stare usługi z klastra, a następnie ponownie uruchom obszary deweloperów, aby zainstalować nowe usługi.
+To address this problem, use the `kubectl delete` command to manually remove the old services from your cluster, then rerun Dev Spaces to install the new services.
 
-### <a name="error-service-cannot-be-started-when-using-multi-stage-dockerfiles"></a>Błąd "nie można uruchomić usługi". w przypadku korzystania z wieloetapowych wieloetapowe dockerfile
+### <a name="error-service-cannot-be-started-when-using-multi-stage-dockerfiles"></a>Error "Service cannot be started." when using multi-stage Dockerfiles
 
-W przypadku korzystania z wieloetapowej pliku dockerfile *nie można uruchomić usługi* . W tej sytuacji pełne dane wyjściowe zawierają następujący tekst:
+You receive a *Service cannot be started* error when using a multi-stage Dockerfile. In this situation, the verbose output contains the following text:
 
 ```cmd
 $ azds up -v
@@ -252,195 +252,195 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-Ten błąd występuje, ponieważ w węzłach AKS jest uruchomiona Starsza wersja platformy Docker, która nie obsługuje kompilacji wieloetapowych. Aby uniknąć kompilacji wieloetapowych, napisz ponownie pliku dockerfile.
+This error occurs because AKS nodes run an older version of Docker that doesn't support multi-stage builds. To avoid multi-stage builds, rewrite your Dockerfile.
 
-## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Typowe problemy związane z używaniem programu Visual Studio i Visual Studio Code z Azure Dev Spaces
+## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Common issues using Visual Studio and Visual Studio Code with Azure Dev Spaces
 
-### <a name="error-required-tools-and-configurations-are-missing"></a>Błąd "Brak wymaganych narzędzi i konfiguracji"
+### <a name="error-required-tools-and-configurations-are-missing"></a>Error "Required tools and configurations are missing"
 
-Ten błąd może wystąpić przy uruchamianiu programu VS Code: "[Azure Dev miejsca do magazynowania] narzędzi i konfiguracji, aby kompilować i debugować,"[Nazwa projektu]"Brak wymaganych."
-Ten błąd oznacza, że tego azds.exe nie znajduje się w zmiennej środowiskowej PATH, jak pokazano w programie VS Code.
+This error might occur when launching VS Code: "[Azure Dev Spaces] Required tools and configurations to build and debug '[project name]' are missing."
+The error means that azds.exe is not in the PATH environment variable, as seen in VS Code.
 
-Spróbuj uruchomić VS Code z poziomu wiersza polecenia, gdzie zmienna środowiskowa PATH jest ustawiona prawidłowo.
+Try launching VS Code from a command prompt where the PATH environment variable is set properly.
 
-### <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Błąd "wymagane narzędzia do kompilacji i debugowania" ProjectName "są nieaktualne".
+### <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Error "Required tools to build and debug 'projectname' are out of date."
 
-Ten błąd jest wyświetlany w Visual Studio Code, jeśli masz nowszą wersję rozszerzenia VS Code dla Azure Dev Spaces, ale starszą wersję interfejsu wiersza polecenia Azure Dev Spaces.
+You see this error in Visual Studio Code if you have a newer version of the VS Code extension for Azure Dev Spaces, but an older version of the Azure Dev Spaces CLI.
 
-Spróbuj pobrać i zainstalować najnowszą wersję interfejsu wiersza polecenia Azure Dev Spaces:
+Try downloading and installing the latest version of the Azure Dev Spaces CLI:
 
 * [Windows](https://aka.ms/get-azds-windows)
 * [Mac](https://aka.ms/get-azds-mac)
 * [Linux](https://aka.ms/get-azds-linux)
 
-### <a name="error-failed-to-find-debugger-extension-for-typecoreclr"></a>Błąd: "nie można odnaleźć rozszerzenia debugera dla typu: CoreCLR"
+### <a name="error-failed-to-find-debugger-extension-for-typecoreclr"></a>Error: "Failed to find debugger extension for type:coreclr"
 
-Ten błąd może pojawić się podczas uruchamiania debugera Visual Studio Code. Być może nie masz rozszerzenia VS Code C# zainstalowanego na komputerze deweloperskim. C# Rozszerzenie obejmuje obsługę debugowania dla platformy .NET Core (CoreCLR).
+You may see this error when running the Visual Studio Code debugger. You might not have the VS Code extension for C# installed on your development machine. The C# extension includes debugging support for .NET Core (CoreCLR).
 
-Aby rozwiązać ten problem, zainstaluj [rozszerzenie vs Code dla programu C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+To fix this issue, install the [VS Code extension for C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
-### <a name="error-configured-debug-type-coreclr-is-not-supported"></a>Błąd "skonfigurowany typ debugowania" CoreCLR "nie jest obsługiwany"
+### <a name="error-configured-debug-type-coreclr-is-not-supported"></a>Error "Configured debug type 'coreclr' is not supported"
 
-Ten błąd może pojawić się podczas uruchamiania debugera Visual Studio Code. Być może nie masz rozszerzenia VS Code Azure Dev Spaces zainstalowane na komputerze deweloperskim.
+You may see this error when running the Visual Studio Code debugger. You might not have the VS Code extension for Azure Dev Spaces installed on your development machine.
 
-Aby rozwiązać ten problem, zainstaluj [rozszerzenie vs Code dla Azure dev Spaces](get-started-netcore.md).
+To fix this issue, install the [VS Code extension for Azure Dev Spaces](get-started-netcore.md).
 
-### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Błąd "Nieprawidłowa wartość" cwd ""/src ". System nie może odnaleźć określonego pliku." lub "Uruchom: program"/ src / [ścieżka do pliku binarnego projektu]"nie istnieje."
+### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Error "Invalid 'cwd' value '/src'. The system cannot find the file specified." or "launch: program '/src/[path to project binary]' does not exist"
 
-Ten błąd może pojawić się podczas uruchamiania debugera Visual Studio Code. Domyślnie używa rozszerzenia programu VS Code `src` jako katalog roboczy dla projektu w kontenerze. Jeśli zaktualizowano swoje `Dockerfile` Aby określić inny katalog roboczy, może zostać wyświetlony ten błąd.
+You may see this error when running the Visual Studio Code debugger. By default, the VS Code extension uses `src` as the working directory for the project on the container. If you've updated your `Dockerfile` to specify a different working directory, you may see this error.
 
-Aby rozwiązać ten problem, zaktualizuj plik `launch.json` w podkatalogu `.vscode` folderu projektu. Zmiana `configurations->cwd` dyrektywy, aby wskazywała na tym samym katalogu co `WORKDIR` zdefiniowane w swoim projekcie `Dockerfile`. Również może być konieczne zaktualizowanie `configurations->program` również dyrektywę.
+To fix this issue, update the `launch.json` file under the `.vscode` subdirectory of your project folder. Change the `configurations->cwd` directive to point to the same directory as the `WORKDIR` defined in your project's `Dockerfile`. You may also need to update the `configurations->program` directive as well.
 
-### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Błąd "azds" programu potoku "zakończył się nieoczekiwanie z kodem 126."
+### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Error "The pipe program 'azds' exited unexpectedly with code 126."
 
-Ten błąd może pojawić się podczas uruchamiania debugera Visual Studio Code.
+You may see this error when running the Visual Studio Code debugger.
 
-Aby rozwiązać ten problem, Zamknij i ponownie otwórz Visual Studio Code. Uruchom ponownie debuger.
+To fix this issue, close and reopen Visual Studio Code. Restart the debugger.
 
-### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Błąd "nie można wykonać monitorowania wewnętrznego: Watch ENOSPC" podczas dołączania debugowania do aplikacji node. js
+### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Error "Internal watch failed: watch ENOSPC" when attaching debugging to a Node.js application
 
-Ten błąd występuje, gdy węzeł, na którym działa program, z aplikacją Node. js, którą próbujesz dołączyć do debugera, przekroczył wartość *FS. inotify. max_user_watches* . W niektórych przypadkach [Domyślna wartość *FS. inotify. max_user_watches* może być zbyt mała, aby obsłużyć bezpośrednie dołączenie debugera do poziomu](https://github.com/Azure/AKS/issues/772).
+This error occurs when the node running the pod with the Node.js application you're trying to attach to with a debugger has exceeded the *fs.inotify.max_user_watches* value. In some cases, [the default value of *fs.inotify.max_user_watches* may be too small to handle attaching a debugger directly to a pod](https://github.com/Azure/AKS/issues/772).
 
-Tymczasowe obejście tego problemu polega na zwiększeniu wartości *FS. inotify. max_user_watches* w każdym węźle klastra i ponownym uruchomieniu tego węzła, aby zmiany zaczęły obowiązywać.
+A temporary workaround for this issue is to increase the value of *fs.inotify.max_user_watches* on each node in the cluster and restart that node for the changes to take effect.
 
-## <a name="other-common-issues"></a>Inne typowe problemy
+## <a name="other-common-issues"></a>Other common issues
 
-### <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>Błąd "azds" nie został rozpoznany jako polecenie wewnętrzne lub zewnętrzne, program interoperacyjny lub plik wsadowy
+### <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>Error "azds" is not recognized as an internal or external command, operable program, or batch file
 
-Ten błąd może wystąpić, jeśli `azds.exe` nie został poprawnie zainstalowany lub skonfigurowany.
+This error can happen if `azds.exe` is not installed or configured correctly.
 
 Aby rozwiązać ten problem:
 
-1. Sprawdź lokalizację% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLI dla `azds.exe`. Jeśli jest określony, dodanie jej do zmiennej środowiskowej PATH.
-2. Jeśli `azds.exe` nie jest zainstalowana, uruchom następujące polecenie:
+1. Check the location %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev Spaces CLI for `azds.exe`. If it's there, add that location to the PATH environment variable.
+2. If `azds.exe` isn't installed, run the following command:
 
     ```cmd
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
 
-### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Błąd autoryzacji "Microsoft. DevSpaces/Register/Action"
+### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Authorization error "Microsoft.DevSpaces/register/action"
 
-Aby zarządzać Azure Dev Spaces, musisz mieć dostęp do *właściciela* lub *współautora* w ramach subskrypcji platformy Azure. Jeśli próbujesz zarządzać miejscami deweloperskimi, a nie masz dostępu *właściciela* lub *współautora* do skojarzonej subskrypcji platformy Azure, może zostać wyświetlony błąd autoryzacji. Na przykład:
+You need *Owner* or *Contributor* access in your Azure subscription to manage Azure Dev Spaces. If you're trying to manage Dev Spaces and you don't have *Owner* or *Contributor* access to the associated Azure subscription, you may see an authorization error. Na przykład:
 
 ```console
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
 ```
 
-Aby rozwiązać ten problem, użyj konta z dostępem *właściciela* lub *współautora* do subskrypcji platformy Azure, ręcznie Zarejestruj `Microsoft.DevSpaces` przestrzeni nazw:
+To fix this issue, using an account with *Owner* or *Contributor* access to the Azure subscription, manually register the `Microsoft.DevSpaces` namespace:
 
 ```console
 az provider register --namespace Microsoft.DevSpaces
 ```
 
-### <a name="new-pods-arent-starting"></a>Nowe zasobniki nie są uruchamiane
+### <a name="new-pods-arent-starting"></a>New pods aren't starting
 
-Inicjator Kubernetes nie może zastosować PodSpec dla nowych, z powodu zmian uprawnień RBAC w roli *administratora klastra* w klastrze. Nowy element pod może również mieć nieprawidłową PodSpec, na przykład konto usługi skojarzone ze znakiem "już nie istnieje". Aby wyświetlić zasobniki, które znajdują się w stanie *oczekiwania* ze względu na problem z inicjatorem, użyj polecenia `kubectl get pods`:
+The Kubernetes initializer can't apply the PodSpec for new pods due to RBAC permission changes to the *cluster-admin* role in the cluster. The new pod may also have an invalid PodSpec, for example the service account associated with the pod no longer exists. To see the pods that are in a *Pending* state due to the initializer issue, use the `kubectl get pods` command:
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
 ```
 
-Ten problem może mieć wpływ na *wszystkie przestrzenie nazw* w klastrze, w tym przestrzenie nazw, w których Azure dev Spaces nie jest włączona.
+This issue can impact pods in *all namespaces* in the cluster including namespaces where Azure Dev Spaces is not enabled.
 
-Aby rozwiązać ten problem, [zaktualizuj interfejs wiersza polecenia dev Spaces do najnowszej wersji](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) , a następnie usuń *azds InitializerConfiguration* z kontrolera Azure dev Spaces:
+To fix this issue, [update the Dev Spaces CLI to the latest version](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) and then deleting the *azds InitializerConfiguration* from the Azure Dev Spaces controller:
 
 ```bash
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
 kubectl delete InitializerConfiguration azds
 ```
 
-Po usunięciu *InitializerConfiguration azds* z kontrolera Azure dev Spaces należy użyć `kubectl delete`, aby usunąć wszystkie z nich w stanie *oczekiwania* . Po usunięciu wszystkich oczekujących zasobników należy ponownie wdrożyć Twoje dane.
+Once you have removed the *azds InitializerConfiguration* from the Azure Dev Spaces controller, use `kubectl delete` to remove any pods in a *Pending* state. After all pending pods have been removed, redeploy your pods.
 
-Jeśli nowe zasobniki nadal są zablokowane w stanie *oczekiwania* po ponownej instalacji, należy użyć `kubectl delete`, aby usunąć wszystkie zasobniki w stanie *oczekiwania* . Po usunięciu wszystkich oczekujących zasobników Usuń kontroler z klastra i zainstaluj go ponownie:
+If new pods are still stuck in a *Pending* state after a redeployment, use `kubectl delete` to remove any pods in a *Pending* state. After all pending pods have been removed, delete the controller from the cluster and reinstall it:
 
 ```bash
 azds remove -g <resource group name> -n <cluster name>
 azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
 ```
 
-Po ponownym zainstalowaniu kontrolera ponownie Wdróż swój zasobnik.
+After your controller is reinstalled, redeploy your pods.
 
-### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Nieprawidłowe uprawnienia RBAC do wywoływania kontrolera i interfejsów API programu dev Spaces
+### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Incorrect RBAC permissions for calling Dev Spaces controller and APIs
 
-Użytkownik, który uzyskuje dostęp do kontrolera Azure Dev Spaces, musi mieć dostęp do odczytu *kubeconfig* administratora w klastrze AKS. Na przykład to uprawnienie jest dostępne w [wbudowanej roli administratora klastra usługi Kubernetes platformy Azure](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Użytkownik uzyskujący dostęp do kontrolera Azure Dev Spaces musi mieć także rolę RBAC *współautora* lub *właściciela* dla kontrolera. Więcej szczegółów na temat aktualizowania uprawnień użytkownika do klastra AKS są dostępne [tutaj](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group).
+The user accessing the Azure Dev Spaces controller must have access to read the admin *kubeconfig* on the AKS cluster. For example, this permission is available in the [built-in Azure Kubernetes Service Cluster Admin Role](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). The user accessing the Azure Dev Spaces controller must also have the *Contributor* or *Owner* RBAC role for the controller. More details on updating a user's permissions for an AKS cluster are available [here](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group).
 
-Aby zaktualizować rolę RBAC użytkownika dla kontrolera:
+To update the user's RBAC role for the controller:
 
 1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
-1. Przejdź do grupy zasobów zawierającej kontroler, która jest zwykle taka sama jak w przypadku klastra AKS.
-1. Włącz pole wyboru *Pokaż ukryte typy* .
-1. Kliknij kontroler.
-1. Otwórz okienko *Access Control (IAM)* .
-1. Kliknij kartę *przypisania ról* .
-1. Kliknij przycisk *Dodaj* , a następnie *Dodaj przypisanie roli*.
-    * W obszarze *rola*wybierz opcję *współautor* lub *właściciel*.
-    * W obszarze *Przypisywanie dostępu do*wybierz pozycję *użytkownik, Grupa lub nazwa główna usługi Azure AD*.
-    * Dla *opcji wybierz*Wyszukaj użytkownika, którym chcesz nadać uprawnienia.
-1. Kliknij pozycję *Zapisz*.
+1. Navigate to the Resource Group containing the controller, which is usually the same as your AKS cluster.
+1. Enable the *Show hidden types* checkbox.
+1. Click on the controller.
+1. Open the *Access Control (IAM)* pane.
+1. Click on the *Role Assignments* tab.
+1. Click *Add* then *Add role assignment*.
+    * For *Role*, select either *Contributor* or *Owner*.
+    * For *Assign access to*, select *Azure AD user, group, or service principal*.
+    * For *Select*, search for the user you want to give permissions.
+1. Kliknij przycisk *Save* (Zapisz).
 
-### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Rozpoznawanie nazw DNS nie powiedzie się publiczny adres URL skojarzony z usługą Dev miejsca do magazynowania
+### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>DNS name resolution fails for a public URL associated with a Dev Spaces service
 
-Możesz skonfigurować publiczny punkt końcowy adresu URL dla usługi, określając `--public` Przełącz do polecenia `azds prep` lub wybierając pole wyboru `Publicly Accessible` w programie Visual Studio. Publiczna nazwa DNS jest automatycznie rejestrowana podczas uruchamiania usługi w obszarze dev Spaces. Jeśli ta nazwa DNS nie jest zarejestrowana, zobaczysz, że *nie można wyświetlić strony* lub *nie można uzyskać dostępu do witryny* w przeglądarce sieci Web podczas łączenia się z publicznym adresem URL.
+You can configure a public URL endpoint for your service by specifying the `--public` switch to the `azds prep` command, or by selecting the `Publicly Accessible` checkbox in Visual Studio. The public DNS name is automatically registered when you run your service in Dev Spaces. If this DNS name is not registered, you see a *Page cannot be displayed* or *Site cannot be reached* error in your web browser when connecting to the public URL.
 
 Aby rozwiązać ten problem:
 
-* Sprawdź stan wszystkich adresów URL skojarzonych z usługami dev Spaces:
+* Check the status of all URLs associated with your Dev Spaces services:
 
   ```console
   azds list-uris
   ```
 
-* Jeśli adres URL jest w stanie *oczekiwania* , spacje deweloperów nadal czekają na ukończenie rejestracji DNS. Czasami zajmuje kilka minut, zanim rejestracji w celu ukończenia. Miejsca do magazynowania dev otwiera również tunel localhost dla każdej usługi, którego można użyć podczas oczekiwania na rejestrację serwera DNS.
-* Jeśli adres URL pozostaje w stanie *oczekiwania* przez więcej niż 5 minut, może to wskazywać na problem z zewnętrznym systemem DNS, który tworzy publiczny punkt końcowy lub kontroler Nginx transferu danych przychodzących pod warunkiem, że uzyskuje publiczny punkt końcowy. Użyj następujących poleceń, aby usunąć te zasobniki i zezwolić AKS na ich automatyczne odtworzenie:
+* If a URL is in the *Pending* state, Dev Spaces is still waiting for DNS registration to complete. Sometimes, it takes a few minutes for registration to complete. Dev Spaces also opens a localhost tunnel for each service, which you can use while waiting on DNS registration.
+* If a URL stays in the *Pending* state for more than 5 minutes, it may indicate a problem with the external DNS pod that creates the public endpoint or the nginx ingress controller pod that acquires the public endpoint. Use the following commands to delete these pods and allow AKS to automatically recreate them:
   ```console
   kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
   kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
   ```
 
-### <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Błąd "Wystąpił błąd połączenia nadrzędnego lub odłącz/Zresetuj przed nagłówkami"
+### <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Error "upstream connect error or disconnect/reset before headers"
 
-Podczas próby uzyskania dostępu do usługi, zostanie wyświetlony ten błąd. Na przykład, gdy nastąpi przejście do adresu URL usługi, w przeglądarce. Ten błąd oznacza, że port kontenera nie jest dostępny. Może to być spowodowane następującymi przyczynami:
+You may see this error when trying to access your service. For example, when you go to the service's URL in a browser. This error means the container port isn't available. This can for the follow reasons:
 
-* Kontener trwa nadal trwa utworzeniu i wdrożeniu. Ten problem może wystąpić, jeśli uruchomisz `azds up` lub uruchom debuger, a następnie spróbuj dostępu do kontenera zanim została pomyślnie wdrożona.
-* Konfiguracja portów nie jest spójność w ramach usługi _pliku Dockerfile_, narzędzia Helm i wszelki kod serwera, który otwiera port.
-
-Aby rozwiązać ten problem:
-
-1. Jeśli kontener jest właśnie utworzone/wdrażane, możesz odczekaj 2 – 3 sekund, a następnie spróbuj ponownie uzyskać dostęp do usługi. 
-1. Sprawdź konfigurację portu. Określone numery portów powinny być **identyczne** we wszystkich następujących zasobach:
-    * **Plik Dockerfile:** określony przez `EXPOSE` instrukcji.
-    * **[Narzędzia Helm](https://docs.helm.sh):** określony przez `externalPort` i `internalPort` wartości dla usługi (często znajduje się w `values.yml` pliku),
-    * Wszystkie porty są otwarte w kodzie aplikacji, na przykład w środowisku Node.js: `var server = app.listen(80, function () {...}`
-
-### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Nie można znaleźć nazwy typu lub przestrzeni nazw "Moja biblioteka"
-
-Nie można znaleźć projektu biblioteki, którego używasz. W przypadku obszarów programistycznych kontekst kompilacji jest domyślnie na poziomie projektu/usługi.  
+* The container is still in the process of being built and deployed. This issue can arise if you run `azds up` or start the debugger, and then try to access the container before it has successfully deployed.
+* Port configuration is not consistent across your _Dockerfile_, Helm Chart, and any server code that opens up a port.
 
 Aby rozwiązać ten problem:
 
-1. Zmodyfikuj plik `azds.yaml`, aby ustawić kontekst kompilacji na poziom rozwiązania.
-2. Zmodyfikuj `Dockerfile` i `Dockerfile.develop` plików, aby odwoływać się do plików projektu, na przykład `.csproj`, prawidłowo względem nowego kontekstu kompilacji.
-3. Dodaj `.dockerignore` w tym samym katalogu, w którym znajduje się plik `.sln`.
-4. Zaktualizuj `.dockerignore` przy użyciu dodatkowych wpisów zgodnie z wymaganiami.
+1. If the container is in the process of being built/deployed, you can wait 2-3 seconds and try accessing the service again. 
+1. Check your port configuration. The specified port numbers should be **identical** in all of the following assets:
+    * **Dockerfile:** Specified by the `EXPOSE` instruction.
+    * **[Helm chart](https://docs.helm.sh):** Specified by the `externalPort` and `internalPort` values for a service (often located in a `values.yml` file),
+    * Any ports being opened up in application code, for example in Node.js: `var server = app.listen(80, function () {...}`
 
-Przykład można znaleźć [tutaj](https://github.com/sgreenmsft/buildcontextsample).
+### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>The type or namespace name "MyLibrary" couldn't be found
 
-### <a name="horizontal-pod-autoscaling-not-working-in-a-dev-space"></a>Skalowanie w poziomie nie działa w obszarze dev
+A library project you're using can't be found. With Dev Spaces, the build context is at the project/service level by default.  
 
-Po uruchomieniu usługi w obszarze deweloperskim, ta usługa jest wprowadzana [z dodatkowymi kontenerami dla Instrumentacji](how-dev-spaces-works.md#prepare-your-aks-cluster) , a wszystkie kontenery w miejscu muszą mieć limity zasobów i żądania ustawione na automatyczne skalowanie w poziomie.
+Aby rozwiązać ten problem:
 
-Aby rozwiązać ten problem, Zastosuj żądanie zasobu i Ogranicz do wprowadzonych kontenerów miejsc dev. Żądania zasobów i limity można zastosować dla wstrzykniętego kontenera (devspaces-proxy), dodając adnotację `azds.io/proxy-resources` do specyfikacji pod. Wartość powinna być ustawiona na obiekt JSON reprezentujący sekcję zasobów specyfikacji kontenera dla serwera proxy.
+1. Modify the `azds.yaml` file to set the build context to the solution level.
+2. Modify the `Dockerfile` and `Dockerfile.develop` files to refer to the project files, for example `.csproj`, correctly relative to the new build context.
+3. Add a `.dockerignore` in the same directory as the `.sln` file.
+4. Update the `.dockerignore` with additional entries as needed.
 
-Poniżej znajduje się przykład adnotacji zasobów serwera proxy, która ma zostać zastosowana do specyfikacji pod.
+You can find an example at [here](https://github.com/sgreenmsft/buildcontextsample).
+
+### <a name="horizontal-pod-autoscaling-not-working-in-a-dev-space"></a>Horizontal pod autoscaling not working in a dev space
+
+When you run a service in a dev space, that service's pod is [injected with additional containers for instrumentation](how-dev-spaces-works.md#prepare-your-aks-cluster) and all the containers in a pod need to have resource limits and requests set for Horizontal Pod Autoscaling.
+
+To fix this issue, apply a resource request and limit to the injected Dev Spaces containers. Resource requests and limits can be applied for the injected container (devspaces-proxy) by adding the `azds.io/proxy-resources` annotation to your pod spec. The value should be set to a JSON object representing the resources section of the container spec for the proxy.
+
+Below is an example of a proxy-resources annotation that is to be applied to your pod spec.
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
 
-### <a name="enable-azure-dev-spaces-on-an-existing-namespace-with-running-pods"></a>Włącz Azure Dev Spaces w istniejącej przestrzeni nazw z uruchomionymi jednostkami
+### <a name="enable-azure-dev-spaces-on-an-existing-namespace-with-running-pods"></a>Enable Azure Dev Spaces on an existing namespace with running pods
 
-Być może masz istniejący klaster AKS i przestrzeń nazw z uruchomionymi jednostkami, w których chcesz włączyć Azure Dev Spaces.
+You may have an existing AKS cluster and namespace with running pods where you want to enable Azure Dev Spaces.
 
-Aby włączyć Azure Dev Spaces w istniejącej przestrzeni nazw w klastrze AKS, uruchom polecenie `use-dev-spaces` i użyj `kubectl`, aby ponownie uruchomić wszystkie zasobniki w tej przestrzeni nazw.
+To enable Azure Dev Spaces on an existing namespace in an AKS cluster, run `use-dev-spaces` and use `kubectl` to restart all pods in that namespace.
 
 ```console
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -448,14 +448,14 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space my-namespace --yes
 kubectl -n my-namespace delete pod --all
 ```
 
-Po ponownym uruchomieniu swoich zasobników możesz rozpocząć korzystanie z istniejącej przestrzeni nazw za pomocą Azure Dev Spaces.
+After your pods have restarted, you can begin using your existing namespace with Azure Dev Spaces.
 
-### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>Włącz Azure Dev Spaces w klastrze AKS z ograniczonym ruchem wychodzącym dla węzłów klastra
+### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>Enable Azure Dev Spaces on AKS cluster with restricted egress traffic for cluster nodes
 
-Aby włączyć Azure Dev Spaces w klastrze AKS, dla którego ruch wychodzący z węzłów klastra jest ograniczony, należy zezwolić na następujące nazwy FQDN:
+To enable Azure Dev Spaces on an AKS cluster for which the egress traffic from cluster nodes is restricted, you will have to allow following FQDNs:
 
-| NAZWA FQDN                                    | Port      | Użycie      |
+| FQDN                                    | Port      | Eksploatacja      |
 |-----------------------------------------|-----------|----------|
-| cloudflare.docker.com | HTTPS:443 | Aby ściągnąć obrazy z systemem Linux Alpine i innymi Azure Dev Spaces |
-| gcr.io | HTTP: 443 | Aby ściągnąć obrazy Helm/er|
-| storage.googleapis.com | HTTP: 443 | Aby ściągnąć obrazy Helm/er|
+| cloudflare.docker.com | HTTPS:443 | To pull linux alpine and other Azure Dev Spaces images |
+| gcr.io | HTTP:443 | To pull helm/tiller images|
+| storage.googleapis.com | HTTP:443 | To pull helm/tiller images|

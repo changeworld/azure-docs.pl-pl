@@ -1,28 +1,24 @@
 ---
 title: 'Quickstart: Create a blueprint with REST API'
 description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the REST API.
-ms.date: 02/04/2019
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 40ae1eb3647f1eba6df920459fcc3673b31bfa01
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217061"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322151"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Define and Assign an Azure Blueprint with REST API
 
 Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie typowych wzorców tworzenia konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
 
-> [!div class="checklist"]
-> - Tworzenie nowej strategii i dodawanie różnych obsługiwanych artefaktów
-> - Wprowadzanie zmian do istniejącej strategii, która wciąż znajduje się w stanie **Wersja robocza**
-> - Oznaczanie strategii jako gotowej do przypisania za pomocą stanu **Opublikowano**
-> - Przypisywanie strategii do istniejącej subskrypcji
-> - Sprawdzanie stanu i postępu przypisanej strategii
-> - Usuwanie strategii, która została przypisana do subskrypcji
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="getting-started-with-rest-api"></a>Wprowadzenie do interfejsu API REST
 
@@ -393,7 +389,8 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
 
    - Tożsamość zarządzana przypisana przez użytkownika
 
-     W przypisaniu strategii można również użyć [tożsamości zarządzanej przypisanej przez użytkownika](../../active-directory/managed-identities-azure-resources/overview.md). W tym przypadku część dotycząca **tożsamości** w treści żądania zmienia się w poniższy sposób.  Zastąp elementy `{yourRG}` i `{userIdentity}` odpowiednio nazwą grupy zasobów i nazwą tożsamości zarządzanej przypisanej przez użytkownika.
+     W przypisaniu strategii można również użyć [tożsamości zarządzanej przypisanej przez użytkownika](../../active-directory/managed-identities-azure-resources/overview.md).
+     W tym przypadku część dotycząca **tożsamości** w treści żądania zmienia się w poniższy sposób. Zastąp elementy `{yourRG}` i `{userIdentity}` odpowiednio nazwą grupy zasobów i nazwą tożsamości zarządzanej przypisanej przez użytkownika.
 
      ```json
      "identity": {
@@ -432,9 +429,7 @@ Aby usunąć samą strategię, wykonaj następującą operację interfejsu API R
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj informacje na temat [cyklu życia strategii](./concepts/lifecycle.md).
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md).
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md).
-- Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md).
-- Dowiedz się, jak [zaktualizować istniejące przypisania](./how-to/update-existing-assignments.md).
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](./troubleshoot/general.md).
+In this quickstart, you've created, assigned, and removed a blueprint with REST API. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)

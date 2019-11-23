@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: analizowanie danych Apache Spark usługi Azure HDInsight za pomocą Power BI'
-description: Samouczek — używanie Power BI firmy Microsoft do wizualizacji Apache Spark przechowywanych klastrów usługi HDInsight danych
+title: 'Tutorial: Analyze Azure HDInsight Apache Spark data with Power BI'
+description: Tutorial - Use Microsoft Power BI to visualize Apache Spark data stored HDInsight clusters
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: c2d6a5acba304d7421b000cab2ee5cee5b85e5ce
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3fd1405d8421d71f52d9cd215dd055ce1595abd0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241358"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327278"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Samouczek: analizowanie danych platformy Apache Spark przy użyciu usługi Power BI w usłudze HDInsight
 
-W tym samouczku dowiesz się, jak za pomocą [programu Microsoft Power BI](https://powerbi.microsoft.com/) wizualizować dane w klastrze Apache Spark w [usłudze Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
+In this tutorial, you learn how to use [Microsoft Power BI](https://powerbi.microsoft.com/) to visualize data in an Apache Spark cluster in [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -27,15 +27,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Wykonaj instrukcje w [samouczku: ładowanie danych i uruchamianie zapytań w klastrze Apache Spark w usłudze Azure HDInsight](./apache-spark-load-data-run-query.md).
+* Complete the article [Tutorial: Load data and run queries on an Apache Spark cluster in Azure HDInsight](./apache-spark-load-data-run-query.md).
 
 * [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
-* Opcjonalnie: [Power BI subskrypcję wersji próbnej](https://app.powerbi.com/signupredirect?pbi_source=web).
+* Optional: [Power BI trial subscription](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="verify-the-data"></a>Weryfikowanie danych
 
-[Notes Jupyter](https://jupyter.org/) utworzony w ramach [poprzedniego samouczka](apache-spark-load-data-run-query.md) zawiera kod do utworzenia tabeli `hvac`. Ta tabela jest oparta na pliku CSV, który jest dostępny we wszystkich klastrach usługi HDInsight Spark w `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`. Postępuj zgodnie z następującą procedurą, aby sprawdzić dane.
+[Notes Jupyter](https://jupyter.org/) utworzony w ramach [poprzedniego samouczka](apache-spark-load-data-run-query.md) zawiera kod do utworzenia tabeli `hvac`. This table is based on the CSV file available on all HDInsight Spark clusters at `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`. Postępuj zgodnie z następującą procedurą, aby sprawdzić dane.
 
 1. Z notesu Jupyter wklej poniższy kod, a następnie naciśnij klawisze **SHIFT + ENTER**. Kod sprawdza obecność tabel.
 
@@ -74,27 +74,27 @@ Pierwsze kroki podczas pracy z platformą Spark obejmują połączenie się z kl
 > [!NOTE]  
 > Łącznik zaprezentowany w tym artykule jest obecnie w wersji zapoznawczej. Podziel się swoją opinią za pośrednictwem witryny [społeczności usługi Power BI](https://community.powerbi.com/) lub witryny [pomysłów dla usługi Power BI](https://ideas.powerbi.com/forums/265200-power-bi-ideas).
 
-1. Otwórz program Power BI Desktop. Zamknij ekran powitalny uruchamiania, jeśli zostanie otwarty.
+1. Otwórz program Power BI Desktop. Close the start-up splash screen if it opens.
 
-2. Na karcie **Narzędzia główne** przejdź do okna **pobieranie danych** >  **.** ..
+2. From the **Home** tab, navigate to **Get Data** > **More..** .
 
-    ![Pobierz dane do Power BI Desktop z usługi HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Pobieranie danych do Power BI z poziomu usługi Apache Spark BI")
+    ![Get data into Power BI Desktop from HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Get data into Power BI from Apache Spark BI")
 
-3. Wprowadź `Spark` w polu wyszukiwania wybierz pozycję **Azure HDInsight Spark**, a następnie wybierz pozycję **Połącz**.
+3. Enter `Spark` in the search box, select **Azure HDInsight Spark**, and then select **Connect**.
 
-    ![Pobieranie danych do Power BI z poziomu usługi Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Pobieranie danych do Power BI z poziomu usługi Apache Spark BI")
+    ![Get data into Power BI from Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Get data into Power BI from Apache Spark BI")
 
-4. Wprowadź adres URL klastra (w formacie `mysparkcluster.azurehdinsight.net`) w polu tekstowym **serwer** .
+4. Enter your cluster URL (in the form `mysparkcluster.azurehdinsight.net`) in the **Server** text box.
 
-5. W obszarze **tryb łączności danych**wybierz pozycję **zapytanie**bezpośrednie. Następnie wybierz przycisk **OK**.
+5. Under **Data connectivity mode**, select **DirectQuery**. Następnie wybierz przycisk **OK**.
 
     Platforma Spark umożliwia wykorzystanie dowolnego trybu łączności danych. Jeśli używasz zapytania bezpośredniego, zmiany są uwzględniane w raportach bez odświeżania całego zestawu danych. W przypadku importowania danych należy odświeżyć zestaw danych, aby zobaczyć zmiany. Aby uzyskać więcej informacji o tym, jak i kiedy korzystać z zapytania bezpośredniego, zobacz [Używanie zapytania bezpośredniego w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
-6. Wprowadź informacje o koncie logowania usługi HDInsight, a następnie wybierz pozycję **Połącz**. Domyślna nazwa konta to *admin*.
+6. Enter the HDInsight login account information, then select **Connect**. Domyślna nazwa konta to *admin*.
 
-7. Wybierz tabelę `hvac`, zaczekaj na wyświetlenie podglądu danych, a następnie wybierz pozycję **Załaduj**.
+7. Select the `hvac` table, wait to see a preview of the data, and then select **Load**.
 
-    ![Nazwa użytkownika i hasło klastra Spark](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Nazwa użytkownika i hasło klastra Spark")
+    ![Spark cluster user name and password](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Spark cluster user name and password")
 
     Program Power BI Desktop posiada informacje niezbędne do połączenia się z klastrem Spark i załadowania danych z tabeli `hvac`. Tabela i jej kolumny zostaną wyświetlone w okienku **Pola**.
 
@@ -104,27 +104,27 @@ Pierwsze kroki podczas pracy z platformą Spark obejmują połączenie się z kl
 
     2. Przeciągnij pole **BuildingID** do obszaru **Oś** i przeciągnij pola **ActualTemp** i **TargetTemp** do obszaru **Wartość**.
 
-        ![Dodaj kolumny wartości](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Dodaj kolumny wartości")
+        ![add value columns](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "add value columns")
 
         Diagram wygląda następująco:
 
-        ![suma wykresu warstwowego](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "suma wykresu warstwowego")
+        ![area graph sum](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "area graph sum")
 
-        Domyślnie wizualizacja pokazuję sumę wartości **ActualTemp** i **TargetTemp**. Wybierz strzałkę w dół obok pozycji **ActualTemp** i **TragetTemp** w okienku wizualizacje, aby zobaczyć pozycję **Suma** jest zaznaczona.
+        Domyślnie wizualizacja pokazuję sumę wartości **ActualTemp** i **TargetTemp**. Select the down arrow next to **ActualTemp** and **TragetTemp** in the Visualizations pane, you can see **Sum** is selected.
 
-    3. Wybierz strzałkę w dół obok pozycji **ActualTemp** i **TragetTemp** w okienku wizualizacje, a następnie wybierz pozycję **średnia** , aby uzyskać średnią rzeczywistą i docelową temperaturę dla każdego budynku.
+    3. Select the down arrows next to **ActualTemp** and **TragetTemp** in the Visualizations pane, select **Average** to get an average of actual and target temperatures for each building.
 
-        ![Średnia wartość](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Średnia wartość")
+        ![average of values](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "average of values")
 
         Twoja wizualizacja danych będzie podobna do przedstawionej na zrzucie ekranu. Przesuń kursor nad wizualizację, aby wyświetlić etykietki narzędzi z odpowiednimi danymi.
 
-        ![Wykres warstwowy](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Wykres warstwowy")
+        ![area graph](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "area graph")
 
-9. Przejdź do **pliku** > **Zapisz**, wprowadź nazwę `BuildingTemperature` dla pliku, a następnie wybierz pozycję **Zapisz**.
+9. Navigate to **File** > **Save**, enter the name `BuildingTemperature` for the file, then select **Save**.
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>Publikowanie raportu w usłudze Power BI (opcjonalnie)
 
-Usługa Power BI umożliwia udostępnianie raportów i pulpitów nawigacyjnych w ramach organizacji. W tej sekcji opublikuj najpierw zestaw danych i raport. Następnie przypnij raport do pulpitu nawigacyjnego. Pulpity nawigacyjne są zwykle używane do skoncentrowania się na podzbiorze danych w raporcie. W raporcie znajduje się tylko jedna Wizualizacja, ale nadal warto wykonać kroki opisane w sekcji.
+Usługa Power BI umożliwia udostępnianie raportów i pulpitów nawigacyjnych w ramach organizacji. W tej sekcji opublikuj najpierw zestaw danych i raport. Następnie przypnij raport do pulpitu nawigacyjnego. Dashboards are typically used to focus on a subset of data in a report. You have only one visualization in your report, but it's still useful to go through the steps.
 
 1. Otwórz program Power BI Desktop.
 
@@ -134,27 +134,27 @@ Usługa Power BI umożliwia udostępnianie raportów i pulpitów nawigacyjnych w
 
 1. Wybierz obszar roboczy, do którego chcesz opublikować zestaw danych i raport, a następnie kliknij pozycję **Wybierz**. Na poniższej ilustracji domyślnie wybrany jest **Mój obszar roboczy**.
 
-    ![Wybierz obszar roboczy, aby opublikować zestaw danych i raport](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Wybierz obszar roboczy, aby opublikować zestaw danych i raport") 
+    ![Select workspace to publish dataset and report to](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Select workspace to publish dataset and report to") 
 
 1. Po pomyślnym zakończeniu publikowania kliknij pozycję **Otwórz „BuildingTemperature.pbix” w usłudze Power BI**.
 
-    ![Publikowanie powiodło się, kliknij, aby wprowadzić poświadczenia](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publikowanie powiodło się, kliknij, aby wprowadzić poświadczenia") 
+    ![Publish success, click to enter credentials](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publish success, click to enter credentials") 
 
 1. W usłudze Power BI kliknij pozycję **Wprowadź poświadczenia**.
 
-    ![Wprowadź poświadczenia w usługa Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Wprowadź poświadczenia w usługa Power BI")
+    ![Enter credentials in Power BI service](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Enter credentials in Power BI service")
 
 1. Kliknij pozycję **Edytuj poświadczenia**.
 
-    ![Edytuj poświadczenia w usługa Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Edytuj poświadczenia w usługa Power BI")
+    ![Edit credentials in Power BI service](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Edit credentials in Power BI service")
 
 1. Wprowadź dane konta logowania usługi HDInsight, a następnie kliknij przycisk **Zaloguj**. Domyślna nazwa konta to *admin*.
 
-    ![Logowanie do klastra Spark](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Logowanie do klastra Spark")
+    ![Sign in to Spark cluster](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Sign in to Spark cluster")
 
 1. W okienku po lewej stronie przejdź do pozycji **Obszary robocze** > **Mój obszar roboczy** > **RAPORTY**, a następnie kliknij pozycję **BuildingTemperature** (temperatura budynku).
 
-    ![Raport wyświetlany w obszarze raporty w okienku po lewej stronie](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Raport wyświetlany w obszarze raporty w okienku po lewej stronie")
+    ![Report listed under reports in left pane](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Report listed under reports in left pane")
 
     Pozycja **BuildingTemperature** powinna również zostać wyświetlona w obszarze **ZESTAWY DANYCH** w okienku po lewej stronie.
 
@@ -162,11 +162,11 @@ Usługa Power BI umożliwia udostępnianie raportów i pulpitów nawigacyjnych w
 
 1. Umieść kursor na wizualizacji, a następnie kliknij ikonę pinezki w prawym górnym rogu.
 
-    ![Raport w usługa Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Raport w usługa Power BI")
+    ![Report in the Power BI service](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Report in the Power BI service")
 
 1. Wybierz pozycję „Nowy pulpit nawigacyjny”, wprowadź nazwę `Building temperature`, a następnie kliknij przycisk **Przypnij**.
 
-    ![Przypnij do nowego pulpitu nawigacyjnego](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Przypnij do nowego pulpitu nawigacyjnego")
+    ![Pin to new dashboard](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Pin to new dashboard")
 
 1. W raporcie kliknij pozycję **Przejdź do pulpitu nawigacyjnego**.
 
@@ -174,13 +174,13 @@ Wizualizacja zostanie przypięta do pulpitu nawigacyjnego — możesz dodać inn
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po ukończeniu korzystania z samouczka warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, dzięki czemu można bezpiecznie usunąć klaster, gdy nie jest używany. Opłata jest naliczana również za klaster usługi HDInsight, nawet wtedy, gdy nie jest używana. Ze względu na to, że opłaty za klaster są dużo razy większe niż opłaty za magazyn, sprawia to, że należy usunąć klastry, gdy nie są używane.
+Po ukończeniu korzystania z samouczka warto usunąć klaster. With HDInsight, your data is stored in Azure Storage, so you can safely delete a cluster when it isn't in use. You're also charged for an HDInsight cluster, even when it isn't in use. Since the charges for the cluster are many times more than the charges for storage, it makes economic sense to delete clusters when they aren't in use.
 
-Aby usunąć klaster, zobacz [usuwanie klastra usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../hdinsight-delete-cluster.md).
+To delete a cluster, see [Delete an HDInsight cluster using your browser, PowerShell, or the Azure CLI](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób korzystania z [Power BI firmy Microsoft](https://powerbi.microsoft.com/) w celu wizualizacji danych w klastrze Apache Spark w [usłudze Azure HDInsight](https://azure.microsoft.com/services/hdinsight/). Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
+In this tutorial, you learned how to use [Microsoft Power BI](https://powerbi.microsoft.com/) to visualize data in an Apache Spark cluster in [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/). Advance to the next article to see you can create a machine learning application.
 
 > [!div class="nextstepaction"]
-> [Uruchamianie zadania przesyłania strumieniowego na platformie Apache Spark](apache-spark-eventhub-streaming.md)
+> [Create a machine learning application](./apache-spark-ipython-notebook-machine-learning.md)

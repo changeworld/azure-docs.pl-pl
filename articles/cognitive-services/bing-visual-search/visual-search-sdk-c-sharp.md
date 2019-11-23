@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu zestawu SDK wyszukiwania wizualnego Bing dla języka C#'
+title: 'Quickstart: Get image insights using the SDK for C# - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przekazać obraz przy użyciu zestawu SDK wyszukiwania wizualnego Bing oraz uzyskać szczegółowe informacje na jego temat.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 2c98484eca027d20fbbe72ffb333a3e281e6f46b
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 3db40f999770823052f07a328d3d8dc8c01ce345
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849890"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383593"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Szybki start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu zestawu SDK wyszukiwania wizualnego Bing dla języka C#
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Quickstart: Get image insights using the Bing Visual Search SDK for C#
 
 Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych danych o obrazie w usłudze wyszukiwania wizualnego Bing przy użyciu zestawu SDK dla języka C#. Chociaż wyszukiwanie wizualne Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch).
 

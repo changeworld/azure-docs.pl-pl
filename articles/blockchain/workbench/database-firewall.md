@@ -1,21 +1,15 @@
 ---
-title: Konfigurowanie zapory bazy danych SQL DB usługi Azure Blockchain Workbench
-description: Dowiedz się, jak skonfigurować zaporę SQL DB usługi Azure łańcucha bloków Workbench.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Configure Azure Blockchain Workbench database firewall
+description: Learn how to configure the Azure Blockchain Workbench Preview database firewall to allow external clients and applications to connect.
 ms.date: 09/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 0153065ca0ccd6cf34456d630d7437d5ea7c5b48
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e6739b7ead9299f020465d3c50ed01826334ca76
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845220"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325998"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Konfigurowanie zapory bazy danych usługi Azure Blockchain Workbench
 
@@ -25,7 +19,7 @@ W tym artykule przedstawiono sposób konfigurowania reguły zapory przy użyciu 
 
 Aby połączyć się z bazą danych, w której chcesz skonfigurować regułę:
 
-1. Zaloguj się do Azure Portal przy użyciu konta z uprawnieniami **właściciela** dla zasobów usługi Azure łańcucha bloków Workbench.
+1. Sign in to the Azure portal with an account that has **Owner**     permissions for the Azure Blockchain Workbench resources.
 2. W lewym okienku nawigacji wybierz pozycję **Grupy zasobów**.
 3. Wybierz nazwę grupy zasobów dla danego wdrożenia usługi Blockchain Workbench.
 4. Wybierz **Typ**, aby posortować listę zasobów, a następnie wybierz **program SQL Server**.

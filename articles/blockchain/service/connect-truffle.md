@@ -1,79 +1,73 @@
 ---
-title: Nawiązywanie połączenia z usługą Azure łańcucha bloków przy użyciu programu Truffle
-description: Nawiązywanie połączenia z siecią usługi Azure łańcucha bloków za pomocą Truffle
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Use Truffle to connect to Azure Blockchain Service
+description: Connect to an Azure Blockchain Service network using Truffle
 ms.date: 11/20/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: f5d752c99331d454e7f9f98c06b9ba0209de8cc7
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: b83685ccaf29f1004b01f9125a2a438251bc9239
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285363"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325282"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Szybki Start: używanie Truffle do nawiązywania połączenia z usługą Azure łańcucha bloków
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Quickstart: Use Truffle to connect to Azure Blockchain Service
 
-W tym przewodniku szybki start użyjesz połączenia Truffle z węzłem transakcji usługi Azure łańcucha bloków. Następnie należy użyć konsoli interaktywnej Truffle do wywołania metod **web3** w celu interakcji z siecią łańcucha bloków.
+In this quickstart, you use Truffle connect to an Azure Blockchain Service transaction node. You then use the Truffle interactive console to call **web3** methods to interact with your blockchain network.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Kończenie [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków usługi Azure łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
-* Zainstaluj [Truffle](https://github.com/trufflesuite/truffle). Truffle wymaga zainstalowania kilku narzędzi, w tym [Node. js](https://nodejs.org), [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Zainstaluj środowisko [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Środowisko Python jest niezbędne dla Web3.
+* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
+* Install [Truffle](https://github.com/trufflesuite/truffle). Truffle requires several tools to be installed including [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Install [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python is needed for Web3.
 
-## <a name="create-truffle-project"></a>Utwórz projekt Truffle
+## <a name="create-truffle-project"></a>Create Truffle project
 
-1. Otwórz wiersz polecenia środowiska Node. js lub powłokę.
-1. Zmień katalog na miejsce, w którym chcesz utworzyć katalog projektu Truffle.
-1. Utwórz katalog dla projektu i zmień ścieżkę do nowego katalogu. Na przykład
+1. Open a Node.js command prompt or shell.
+1. Change directory to where you want to create the Truffle project directory.
+1. Create a directory for the project and change your path to the new directory. Na przykład:
 
     ``` bash
     mkdir truffledemo
     cd truffledemo
     ```
 
-1. Zainicjuj projekt Truffle.
+1. Initialize the Truffle project.
 
     ``` bash
     truffle init
     ```
 
-1. Zainstaluj interfejs API Ethereum JavaScript web3 w folderze projektu. Obecnie jest wymagana wersja web3 wersja 1.0.0-beta. 37.
+1. Install Ethereum JavaScript API web3 in the project folder. Currently, version web3 version 1.0.0-beta.37 is required.
 
     ``` bash
     npm install web3@1.0.0-beta.37
     ```
 
-    Podczas instalacji mogą pojawić się ostrzeżenia npm.
+    You may receive npm warnings during installation.
     
-## <a name="configure-truffle-project"></a>Konfigurowanie projektu Truffle
+## <a name="configure-truffle-project"></a>Configure Truffle project
 
-Aby skonfigurować projekt Truffle, potrzebne są pewne informacje o węźle transakcji z Azure Portal.
+To configure the Truffle project, you need some transaction node information from the Azure portal.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków. Wybierz pozycję **węzły transakcji** i domyślne łącze węzła transakcji.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Go to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
 
-    ![Wybierz domyślny węzeł transakcji](./media/connect-truffle/transaction-nodes.png)
+    ![Select default transaction node](./media/connect-truffle/transaction-nodes.png)
 
-1. Wybierz **Parametry połączenia**.
-1. Skopiuj parametry połączenia z **protokołu HTTPS (dostęp do klucza 1)** . Potrzebujesz ciągu dla następnej sekcji.
+1. Select **Connection strings**.
+1. Copy the connection string from **HTTPS (Access key 1)** . You need the string for the next section.
 
     ![Parametry połączenia](./media/connect-truffle/connection-string.png)
 
-### <a name="edit-configuration-file"></a>Edytuj plik konfiguracji
+### <a name="edit-configuration-file"></a>Edit configuration file
 
-Następnie należy zaktualizować plik konfiguracji Truffle za pomocą punktu końcowego węzła transakcji.
+Next, you need to update the Truffle configuration file with the transaction node endpoint.
 
-1. W folderze projektu **truffledemo** Otwórz plik konfiguracji Truffle `truffle-config.js` w edytorze.
-1. Zastąp zawartość pliku następującymi informacjami o konfiguracji. Dodaj zmienną zawierającą adres punktu końcowego. Zamień nawias ostry na wartości zebrane z poprzedniej sekcji.
+1. In the **truffledemo** project folder, open the Truffle configuration file `truffle-config.js` in an editor.
+1. Replace the contents of the file with the following configuration information. Add a variable containing the endpoint address. Replace the angle bracket with values you collected from the previous section.
 
     ``` javascript
     var defaultnode = "<default transaction node connection string>";   
@@ -89,23 +83,23 @@ Następnie należy zaktualizować plik konfiguracji Truffle za pomocą punktu ko
     }
     ```
 
-1. Zapisz zmiany w `truffle-config.js`.
+1. Save the changes to `truffle-config.js`.
 
 ## <a name="connect-to-transaction-node"></a>Łączenie z węzłem transakcji
 
-Użyj *Web3* , aby nawiązać połączenie z węzłem transakcji.
+Use *Web3* to connect to the transaction node.
 
-1. Użyj konsoli Truffle, aby nawiązać połączenie z domyślnym węzłem transakcji. W wierszu polecenia lub powłoce Uruchom następujące polecenie:
+1. Use the Truffle console to connect to the default transaction node. At a command prompt or shell, run the following command:
 
     ``` bash
     truffle console --network defaultnode
     ```
 
-    Truffle nawiązuje połączenie z domyślnym węzłem transakcji i udostępnia konsolę interaktywną.
+    Truffle connects to the default transaction node and provides an interactive console.
 
-    Możesz wywoływać metody w obiekcie **web3** , aby móc korzystać z sieci łańcucha bloków.
+    You can call methods on the **web3** object to interact with your blockchain network.
 
-1. Wywołaj metodę **getBlockNumber** , aby zwrócić bieżący numer bloku.
+1. Call the **getBlockNumber** method to return the current block number.
 
     ```bash
     web3.eth.getBlockNumber();
@@ -117,7 +111,7 @@ Użyj *Web3* , aby nawiązać połączenie z węzłem transakcji.
     truffle(defaultnode)> web3.eth.getBlockNumber();
     18567
     ```
-1. Zamknij konsolę Truffle.
+1. Exit the Truffle console.
 
     ```bash
     .exit
@@ -125,9 +119,9 @@ Użyj *Web3* , aby nawiązać połączenie z węzłem transakcji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start użyto Truffle do nawiązania połączenia z domyślnym węzłem transakcji usługi Azure łańcucha bloków i użycia konsoli interaktywnej do zwrócenia bieżącego numeru bloku łańcucha bloków.
+In this quickstart, you used Truffle connect to an Azure Blockchain Service default transaction node and used the interactive console to return the current blockchain block number.
 
-Wypróbuj następny samouczek, aby użyć usługi Azure łańcucha bloków Development Kit dla Ethereum do tworzenia, kompilowania, wdrażania i wykonywania funkcji kontraktu inteligentnego za pośrednictwem transakcji.
+Try the next tutorial to use Azure Blockchain Development Kit for Ethereum to create, build, deploy, and execute a smart contract function via a transaction.
 
 > [!div class="nextstepaction"]
-> [Używanie Visual Studio Code do tworzenia, kompilowania i wdrażania kontraktów inteligentnych](send-transaction.md)
+> [Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md)

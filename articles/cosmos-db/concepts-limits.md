@@ -1,185 +1,190 @@
 ---
-title: Przydziały usługi Azure Cosmos DB
-description: Azure Cosmos DB przydziały usługi i domyślne limity dla różnych typów zasobów.
+title: Azure Cosmos DB service quotas
+description: Azure Cosmos DB service quotas and default limits on different resource types.
 author: arramac
 ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 45cf7b7d9383de467f72769465a3ad382fe9d589
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 7ce15a0fe55c32ad7e381ba70e4dffee11c76bee
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064045"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383405"
 ---
-# <a name="azure-cosmos-db-service-quotas"></a>Przydziały usługi Azure Cosmos DB
+# <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB service quotas
 
-Ten artykuł zawiera omówienie domyślnych przydziałów oferowanych różnym zasobom w Azure Cosmos DB.
+This article provides an overview of the default quotas offered to different resources in the Azure Cosmos DB.
 
-## <a name="storage-and-throughput"></a>Magazyn i przepływność
+## <a name="storage-and-throughput"></a>Storage and throughput
 
-Po utworzeniu konta usługi Azure Cosmos w ramach subskrypcji możesz zarządzać danymi na swoim koncie przez [Tworzenie baz danych, kontenerów i elementów](databases-containers-items.md). Przepustowość można zainicjować na poziomie kontenera lub na poziomie bazy danych w warunkach [jednostek żądania (ru/s lub jednostek ru)](request-units.md). W poniższej tabeli wymieniono limity dotyczące magazynu i przepływności dla kontenera/bazy danych.
+After you create an Azure Cosmos account under your subscription, you can manage data in your account by [creating databases, containers, and items](databases-containers-items.md). You can provision throughput at a container-level or a database-level in terms of [request units (RU/s or RUs)](request-units.md). The following table lists the limits for storage and throughput per container/database.
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalna jednostek ru na kontener ([tryb aprowizacji dedykowanej przepustowości](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 domyślnie. Możesz ją zwiększyć, [bilet pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
-| Maksymalna liczba jednostek ru na bazę danych ([tryb aprowizacji udostępnionej przepustowości](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 domyślnie. Możesz ją zwiększyć, [bilet pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
-| Maksymalny jednostek ru na (logiczny) klucz partycji | 10 000 |
-| Maksymalny rozmiar magazynu dla wszystkich elementów na (logiczne) klucza partycji| 10 GB |
-| Maksymalna liczba różnych (logicznych) kluczy partycji | Bez ograniczeń |
-| Maksymalny rozmiar magazynu na kontener | Bez ograniczeń |
-| Maksymalny rozmiar magazynu na bazę danych | Bez ograniczeń |
-| Maksymalny rozmiar załączników na konto (funkcja załącznika jest amortyzowana) | 2 GB | 
+| Maximum RUs per container ([dedicated throughput provisioned mode](databases-containers-items.md#azure-cosmos-containers)) | 1,000,000 by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
+| Maximum RUs per database ([shared throughput provisioned mode](databases-containers-items.md#azure-cosmos-containers)) | 1,000,000 by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
+| Maximum RUs per (logical) partition key | 10 000 |
+| Maximum storage across all items per (logical) partition key| 10 GB |
+| Maximum number of distinct (logical) partition keys | Bez ograniczeń |
+| Maximum storage per container | Bez ograniczeń |
+| Maximum storage per database | Bez ograniczeń |
+| Maximum attachment size per Account (Attachment feature is being depreciated) | 2 GB |
+| Minimum RUs required per 1 GB | 10 RU/s |
 
 > [!NOTE]
-> Aby dowiedzieć się więcej o najlepszych rozwiązaniach dotyczących zarządzania obciążeniami z kluczami partycji wymagającymi wyższych limitów dla magazynu lub przepływności, zobacz [Tworzenie klucza partycji syntetycznej](synthetic-partition-keys.md).
+> To learn about best practices for managing workloads that have partition keys requiring higher limits for storage or throughput, see [Create a synthetic partition key](synthetic-partition-keys.md).
 >
 
-Kontener Cosmos (lub udostępniona baza danych przepływności) musi mieć minimalną przepływność wynoszącą 400 jednostek ru. Wraz z rozwojem kontenera Minimalna obsługiwana przepływność zależy również od następujących czynników:
+A Cosmos container (or shared throughput database) must have a minimum throughput of 400 RUs. As the container grows, the minimum supported throughput also depends on the following factors:
 
-* Minimalna przepływność, którą można ustawić dla kontenera, zależy od maksymalnej przepływności, która jest kiedykolwiek obsługiwana w kontenerze. Na przykład jeśli przepustowość została zwiększona do 10000 jednostek ru, najniższa możliwa przepustowość zainicjowana to 1000 jednostek ru
-* Minimalna przepływność dla udostępnionej bazy danych przepływności zależy również od całkowitej liczby kontenerów utworzonych kiedykolwiek w udostępnionej bazie danych przepływności, mierzoną przy 100 jednostek ru na kontener. Jeśli na przykład utworzono pięć kontenerów w ramach udostępnionej bazy danych przepływności, przepływność musi wynosić co najmniej 500 jednostek ru
+* The minimum throughput that you can set on a container depends on the maximum throughput ever provisioned on the container. For example, if your throughput was increased to 10000 RUs, then the lowest possible provisioned throughput would be 1000 RUs
+* The minimum throughput on a shared throughput database also depends on the total number of containers that you have ever created in a shared throughput database, measured at 100 RUs per container. For example, if you have created five containers within a shared throughput database, then the throughput must be at least 500 RUs
 
-Bieżącą i minimalną przepływność kontenera lub bazy danych można pobrać z Azure Portal lub zestawów SDK. Aby uzyskać więcej informacji, zobacz temat [udostępnianie przepływności na kontenerach i bazach danych](set-throughput.md). 
+The current and minimum throughput of a container or a database can be retrieved from the Azure portal or the SDKs. For more information, see [Provision throughput on containers and databases](set-throughput.md). 
 
 > [!NOTE]
-> W niektórych przypadkach może być możliwe obniżenie przepływności do mniejszej niż 10%. Użyj interfejsu API w celu uzyskania dokładnej minimalnej jednostek ru na kontener.
+> In some cases, you may be able to lower throughput to lesser than 10%. Use the API to get the exact minimum RUs per container.
 >
 
-Poniżej znajduje się podsumowanie minimalnych limitów przydziałów RU. 
+In summary, here are the minimum provisioned RU limits. 
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Minimalna jednostek ru na kontener ([tryb aprowizacji dedykowanej przepustowości](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimalna jednostek ru na bazę danych ([tryb aprowizacji udostępnionej przepustowości](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimalna jednostek ru na kontener w ramach udostępnionej bazy danych przepływności | 100 |
+| Minimum  RUs per container ([dedicated throughput provisioned mode](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimum  RUs per database ([shared throughput provisioned mode](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimum  RUs per container within a shared throughput database | 100 |
 
-Cosmos DB obsługuje elastyczne skalowanie przepływności (jednostek ru) na kontener lub bazę danych za pośrednictwem zestawów SDK lub portalu. Każdy kontener można skalować synchronicznie i od razu w zakresie od 10 do 100 razy od wartości minimalnej i maksymalnej. Jeśli żądana wartość przepływności znajduje się poza zakresem, skalowanie jest wykonywane asynchronicznie. Skalowanie asynchroniczne może zająć kilka minut, w zależności od wymaganej przepływności i rozmiaru magazynu danych w kontenerze.  
+Cosmos DB supports elastic scaling of throughput (RUs) per container or database via the SDKs or portal. Each container can scale synchronously and immediately within a scale range of 10 to 100 times, between minimum and maximum values. If the requested throughput value is outside the range, scaling is performed asynchronously. Asynchronous scaling may take minutes to hours to complete depending on the requested throughput and data storage size in the container.  
 
-## <a name="control-plane-operations"></a>Operacje płaszczyzny kontroli
+## <a name="control-plane-operations"></a>Control plane operations
 
-Możesz [zainicjować konto usługi Azure Cosmos i zarządzać](how-to-manage-database-account.md) nim przy użyciu szablonów Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy azure i Azure Resource Manager. W poniższej tabeli wymieniono limity dla każdej subskrypcji, konta i liczby operacji.
+You can [provision and manage your Azure Cosmos account](how-to-manage-database-account.md) using the Azure portal, Azure PowerShell, Azure CLI, and Azure Resource Manager templates. The following table lists the limits per subscription, account, and number of operations.
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalna liczba kont bazy danych na subskrypcję | 50 domyślnie. Możesz ją zwiększyć, [bilet pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
-| Maksymalna liczba regionalnych trybu failover | Domyślnie 1 godzinę. Możesz ją zwiększyć, [bilet pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
+| Maximum database accounts per subscription | 50 by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
+| Maximum number of regional failovers | 1/hour by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
 
 > [!NOTE]
-> Regionalne przejścia w tryb failover mają zastosowanie tylko do jednego regionu zapisy konta. Konta zapisu w regionie wieloregionowym nie wymagają ani nie mają ograniczeń dotyczących zmiany regionu zapisu.
+> Regional failovers only apply to single region writes accounts. Multi-region write accounts do not require or have any limits on changing the write region.
 
-Cosmos DB automatycznie pobiera kopie zapasowe danych w regularnych odstępach czasu. Aby uzyskać szczegółowe informacje na temat interwałów przechowywania i okien kopii zapasowych, zobacz [kopia zapasowa online i przywracanie danych na żądanie w Azure Cosmos DB](online-backup-and-restore.md).
+Cosmos DB automatically takes backups of your data at regular intervals. For details on backup retention intervals and windows, see [Online backup and on-demand data restore in Azure Cosmos DB](online-backup-and-restore.md).
 
-## <a name="per-account-limits"></a>Limity dla konta
-
-| Zasób | Limit domyślny |
-| --- | --- |
-| Maksymalna liczba baz danych | Bez ograniczeń |
-| Maksymalna liczba kontenerów na bazę danych (lub konto) | Bez ograniczeń |
-| Maksymalna liczba regionów | Brak limitu (wszystkie regiony platformy Azure) |
-
-## <a name="per-container-limits"></a>Limity dla kontenerów
-
-W zależności od używanego interfejsu API kontener usługi Azure Cosmos może reprezentować kolekcję, tabelę lub wykres. Kontenery obsługują konfiguracje dla [ograniczeń unique Key](unique-keys.md), [procedur składowanych, wyzwalaczy i UDF](stored-procedures-triggers-udfs.md)oraz [zasad indeksowania](how-to-manage-indexing-policy.md). W poniższej tabeli wymieniono limity specyficzne dla konfiguracji w kontenerze. 
+## <a name="per-account-limits"></a>Per-account limits
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalna długość nazwy bazy danych lub kontenera | 255 |
-| Maksymalna liczba procedur składowanych na kontener | 100 <sup>*</sup>|
-| Maksymalna UDF na kontener | 25 <sup>*</sup>|
-| Maksymalna liczba ścieżek w zasadach indeksowania| 100 <sup>*</sup>|
-| Maksymalna liczba unikatowych kluczy na kontener|10 <sup>*</sup>|
-| Maksymalna liczba ścieżek na ograniczenie unikatowego klucza|16 <sup>*</sup>|
+| Maximum number of databases | Bez ograniczeń |
+| Maximum number of containers per database (or account) | Bez ograniczeń |
+| Maximum number of regions | No limit (All Azure regions) |
 
-<sup>*</sup> Można zwiększyć dowolne z tych limitów kontenerów, kontaktując się z pomocą techniczną platformy Azure.
+## <a name="per-container-limits"></a>Per-container limits
 
-## <a name="per-item-limits"></a>Limity dla każdego elementu
-
-W zależności od używanego interfejsu API element platformy Azure Cosmos może reprezentować dokument w kolekcji, wiersz w tabeli lub węzeł lub krawędź wykresu. W poniższej tabeli przedstawiono limity dla każdego elementu w Cosmos DB. 
+Depending on which API you use, an Azure Cosmos container can represent either a collection, a table, or graph. Containers support configurations for [unique key constraints](unique-keys.md), [stored procedures, triggers, and UDFs](stored-procedures-triggers-udfs.md), and [indexing policy](how-to-manage-indexing-policy.md). The following table lists the limits specific to configurations within a container. 
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalny rozmiar elementu | 2 MB (długość UTF-8 w reprezentacji JSON) |
-| Maksymalna długość wartości klucza partycji | 2048 bajtów |
-| Maksymalna długość wartości identyfikatora | 1024 bajtów |
-| Maksymalna liczba właściwości na element | Brak praktycznego limitu |
-| Maksymalna głębokość zagnieżdżenia | Brak praktycznego limitu |
-| Maksymalna długość nazwy właściwości | Brak praktycznego limitu |
-| Maksymalna długość wartości właściwości | Brak praktycznego limitu |
-| Maksymalna długość wartości właściwości ciągu | Brak praktycznego limitu |
-| Maksymalna długość wartości właściwości liczbowej | IEEE754 o podwójnej precyzji 64-bitowej |
+| Maximum length of database or container name | 255 |
+| Maximum stored procedures per container | 100 <sup>*</sup>|
+| Maximum UDFs per container | 25 <sup>*</sup>|
+| Maximum number of paths in indexing policy| 100 <sup>*</sup>|
+| Maximum number of unique keys per container|10 <sup>*</sup>|
+| Maximum number of paths per unique key constraint|16 <sup>*</sup>|
 
-Nie ma żadnych ograniczeń dotyczących ładunków elementów, takich jak liczba właściwości i głębokość zagnieżdżenia, z wyjątkiem ograniczeń długości klucza partycji i wartości identyfikatora oraz całkowitego ograniczenia rozmiaru wynoszącego 2 MB. Może być konieczne skonfigurowanie zasad indeksowania dla kontenerów z dużymi lub złożonymi strukturami elementów w celu ograniczenia zużycia RU. Zobacz [modelowanie elementów w Cosmos DB](how-to-model-partition-example.md) , aby zapoznać się z rzeczywistym przykładem i wzorcem do zarządzania dużymi elementami.
+<sup>*</sup> You can increase any of these per-container limits by contacting Azure Support.
 
-## <a name="per-request-limits"></a>Limity żądań na żądanie
+## <a name="per-item-limits"></a>Per-item limits
 
-Cosmos DB obsługuje [operacje CRUD i zapytań](https://docs.microsoft.com/rest/api/cosmos-db/) wobec zasobów, takich jak kontenery, elementy i bazy danych.  
+Depending on which API you use, an Azure Cosmos item can represent either a document in a collection, a row in a table, or a node or edge in a graph. The following table shows the limits per item in Cosmos DB. 
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalny czas wykonywania pojedynczej operacji (na przykład wykonanie procedury składowanej lub pobranie pojedynczej strony zapytania)| 5 sekund |
-| Maksymalny rozmiar żądania (procedura składowana, CRUD)| 2 MB |
-| Maksymalny rozmiar odpowiedzi (na przykład zapytanie z podziałem na strony) | 4 MB |
+| Maximum size of an item | 2 MB (UTF-8 length of JSON representation) |
+| Maximum length of partition key value | 2048 bytes |
+| Maximum length of id value | 1024 bytes |
+| Maximum number of properties per item | No practical limit |
+| Maximum nesting depth | No practical limit |
+| Maximum length of property name | No practical limit |
+| Maximum length of property value | No practical limit |
+| Maximum length of string property value | No practical limit |
+| Maximum length of numeric property value | IEEE754 double-precision 64-bit |
 
-Gdy operacja, taka jak zapytanie osiągnie limit czasu wykonania lub wartość ograniczenia rozmiaru, zwraca stronę wyników i token kontynuacji klientowi, aby wznowić wykonywanie. Nie ma praktycznego limitu czasu trwania pojedynczego zapytania, które można uruchomić na stronach/kontynuacji.
+There are no restrictions on the item payloads like number of properties and nesting depth, except for the length restrictions on partition key and id values, and the overall size restriction of 2 MB. You may have to configure indexing policy for containers with large or complex item structures to reduce RU consumption. See [Modeling items in Cosmos DB](how-to-model-partition-example.md) for a real-world example, and patterns to manage large items.
 
-Cosmos DB używa algorytmu HMAC do autoryzacji. Możesz użyć klucza głównego lub [tokenów zasobów](secure-access-to-data.md) do precyzyjnej kontroli dostępu do zasobów, takich jak kontenery, klucze partycji lub elementy. W poniższej tabeli wymieniono limity tokenów autoryzacji w Cosmos DB.
+## <a name="per-request-limits"></a>Per-request limits
 
-| Zasób | Limit domyślny |
-| --- | --- |
-| Maksymalny czas wygaśnięcia tokenu głównego | 15 minut  |
-| Minimalny czas wygaśnięcia tokenu zasobów | 10 min  |
-| Maksymalny czas wygaśnięcia tokenu zasobu | Domyślnie 24 h. Możesz ją zwiększyć, [bilet pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
-| Maksymalne przechylenie zegara na potrzeby autoryzacji tokenu| 15 minut |
-
-Cosmos DB obsługuje wykonywanie wyzwalaczy podczas operacji zapisu. Usługa obsługuje maksymalnie jednego wyzwalacza wstępnego i jednego wyzwalacza końcowego dla operacji zapisu. 
-
-## <a name="sql-query-limits"></a>Limity zapytań SQL
-
-Cosmos DB obsługuje wykonywanie zapytań względem elementów przy użyciu [języka SQL](how-to-sql-query.md). W poniższej tabeli opisano ograniczenia dotyczące instrukcji zapytania, na przykład w przypadku liczby klauzul lub długości zapytań.
+Cosmos DB supports [CRUD and query operations](https://docs.microsoft.com/rest/api/cosmos-db/) against resources like containers, items, and databases.  
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalna długość zapytania SQL| 256 KB <sup>*</sup>|
-| Maksymalna liczba sprzężeń na zapytanie| 5 <sup>*</sup>|
-| Maksymalna liczba ANDs na zapytanie| 2000 <sup>*</sup>|
-| Maksymalna liczba ORs na zapytanie| 2000 <sup>*</sup>|
-| Maksymalna liczba UDF na zapytanie| 10 <sup>*</sup>|
-| Maksymalna liczba argumentów na wyrażenie| 6000 <sup>*</sup>|
-| Maksymalna liczba punktów na wielokąt| 4096 <sup>*</sup>|
+| Maximum execution time for a single operation (like a stored procedure execution or a single query page retrieval)| 5 sec |
+| Maximum request size (stored procedure, CRUD)| 2 MB |
+| Maximum response size (for example, paginated query) | 4 MB |
 
-<sup>*</sup> Możesz zwiększyć dowolny z tych limitów zapytań SQL, kontaktując się z pomocą techniczną platformy Azure.
+Once an operation like query reaches the execution timeout or response size limit, it returns a page of results and a continuation token to the client to resume execution. There is no practical limit on the duration a single query can run across pages/continuations.
 
-## <a name="mongodb-api-specific-limits"></a>Limity specyficzne dla interfejsu API MongoDB
-
-Cosmos DB obsługuje protokół sieci szkieletowej MongoDB dla aplikacji, które są zapisywane w MongoDB. Obsługiwane polecenia i wersje protokołu można znaleźć w [obsługiwanych funkcjach i składni MongoDB](mongodb-feature-support.md).
-
-W poniższej tabeli wymieniono limity dotyczące obsługi funkcji MongoDB. Inne limity usług wymienione dla interfejsu API języka SQL (rdzeń) również mają zastosowanie do interfejsu API MongoDB.
+Cosmos DB uses HMAC for authorization. You can use either a master key, or a [resource tokens](secure-access-to-data.md) for fine-grained access control to resources like containers, partition keys, or items. The following table lists limits for authorization tokens in Cosmos DB.
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalny rozmiar pamięci zapytania MongoDB | 40 MB |
-| Maksymalny czas wykonywania operacji MongoDB| 30 s |
+| Maximum master token expiry time | 15 min  |
+| Minimum resource token expiry time | 10 min  |
+| Maximum resource token expiry time | 24 h by default. You can increase it by [filing an Azure support ticket](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
+| Maximum clock skew for token authorization| 15 min |
 
-## <a name="try-cosmos-db-free-limits"></a>Wypróbuj Cosmos DB limitów bezpłatnych
+Cosmos DB supports execution of triggers during writes. The service supports a maximum of one pre-trigger and one post-trigger per write operation. 
 
-W poniższej tabeli przedstawiono limity dla [Azure Cosmos DB Wypróbuj bezpłatną](https://azure.microsoft.com/try/cosmosdb/) wersję próbną.
+## <a name="autopilot-mode-limits"></a>Autopilot mode limits
+
+See the [Autopilot](provision-throughput-autopilot.md#autopilot-limits) article for the throughput and storage limits in autopilot mode.
+
+## <a name="sql-query-limits"></a>SQL query limits
+
+Cosmos DB supports querying items using [SQL](how-to-sql-query.md). The following table describes restrictions in query statements, for example in terms of number of clauses or query length.
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Okres próbny | 30 dni (można odnowić dowolną liczbę razy) |
-| Maksymalna liczba kontenerów na subskrypcję (SQL, Gremlin, interfejs API tabel) | 1 |
-| Maksymalna liczba kontenerów na subskrypcję (interfejs API MongoDB) | 3 |
-| Maksymalna przepływność na kontener | 5000 |
-| Maksymalna przepływność na wspólną bazę danych przepływności | 20000 |
-| Maksymalna liczba magazynów na konto | 10 GB |
+| Maximum length of SQL query| 256 KB <sup>*</sup>|
+| Maximum JOINs per query| 5 <sup>*</sup>|
+| Maximum ANDs per query| 2000 <sup>*</sup>|
+| Maximum ORs per query| 2000 <sup>*</sup>|
+| Maximum UDFs per query| 10 <sup>*</sup>|
+| Maximum arguments per IN expression| 6000 <sup>*</sup>|
+| Maximum points per polygon| 4096 <sup>*</sup>|
 
-Wypróbuj Cosmos DB obsługuje dystrybucję globalną tylko w regionach Środkowe stany USA, Europa Północna i Azja Południowo-Wschodnia. Nie można utworzyć biletów pomocy technicznej systemu Azure dla usług try Azure Cosmos DB. Jednak pomoc techniczna jest świadczona dla subskrybentów z istniejącymi planami pomocy technicznej.
+<sup>*</sup> You can increase any of these SQL query limits by contacting Azure Support.
+
+## <a name="mongodb-api-specific-limits"></a>MongoDB API-specific limits
+
+Cosmos DB supports the MongoDB wire protocol for applications written against MongoDB. You can find the supported commands and protocol versions at [Supported MongoDB features and syntax](mongodb-feature-support.md).
+
+The following table lists the limits specific to MongoDB feature support. Other service limits mentioned for the SQL (core) API also apply to the MongoDB API.
+
+| Zasób | Limit domyślny |
+| --- | --- |
+| Maximum MongoDB query memory size | 40 MB |
+| Maximum execution time for MongoDB operations| 30s |
+
+## <a name="try-cosmos-db-free-limits"></a>Try Cosmos DB Free limits
+
+The following table lists the limits for the [Try Azure Cosmos DB for Free](https://azure.microsoft.com/try/cosmosdb/) trial.
+
+| Zasób | Limit domyślny |
+| --- | --- |
+| Duration of the trial | 30 days (can be renewed any number of times) |
+| Maximum containers per subscription (SQL, Gremlin, Table API) | 1 |
+| Maximum containers per subscription (MongoDB API) | 3 |
+| Maximum throughput per container | 5000 |
+| Maximum throughput per shared-throughput database | 20000 |
+| Maximum total storage per account | 10 GB |
+
+Try Cosmos DB supports global distribution in only the Central US, North Europe, and Southeast Asia regions. Azure support tickets can't be created for Try Azure Cosmos DB accounts. However, support is provided for subscribers with existing support plans.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat [ogólnej dystrybucji](distribute-data-globally.md) i [partycjonowania](partitioning-overview.md) podstawowych pojęć dotyczących [Cosmos DB.](request-units.md)
+Read more about Cosmos DB's core concepts [global distribution](distribute-data-globally.md) and [partitioning](partitioning-overview.md) and [provisioned throughput](request-units.md).
 
 Rozpocznij pracę z usługą Azure Cosmos DB, korzystając z jednego z naszych przewodników:
 
