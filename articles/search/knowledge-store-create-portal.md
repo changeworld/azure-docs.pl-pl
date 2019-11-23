@@ -1,150 +1,150 @@
 ---
-title: Utwórz magazyn wiedzy (wersja zapoznawcza) w Azure Portal
+title: Create a knowledge store (preview) in the Azure portal
 titleSuffix: Azure Cognitive Search
-description: Za pomocą Kreatora importu danych można utworzyć magazyn wiedzy używany do utrwalania wzbogaconej zawartości. Nawiąż połączenie z magazynem wiedzy na potrzeby analizy z innych aplikacji lub Wyślij ulepszoną zawartość do procesów podrzędnych. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
-author: lisaleib
+description: Use the Import data wizard to create a knowledge store used for persisting enriched content. Connect to a knowledge store for analysis from other apps, or send enriched content to downstream processes. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
+author: HeidiSteen
+ms.author: heidist
 manager: nitinme
-ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 56053a942604a6f1cb935e6bddcae85ffc5a9e54
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 26cd979cecfa08ed7c6c446cd7be7ac0cb7ba810
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720110"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406577"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Szybki Start: Tworzenie sklepu z bazami danych Azure Wyszukiwanie poznawcze w Azure Portal
+# <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Quickstart: Create an Azure Cognitive Search knowledge store in the Azure portal
 
 > [!IMPORTANT] 
-> Magazyn wiedzy jest obecnie w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Knowledge store is currently in public preview. Preview functionality is provided without a service level agreement, and is not recommended for production workloads. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-Sklep z bazami informacji to funkcja platformy Azure Wyszukiwanie poznawcze, która utrzymuje dane wyjściowe potoku umiejętności poznawcze dla kolejnych analiz lub przetwarzania podrzędnego. 
+Knowledge store is a feature of Azure Cognitive Search that persists output from a cognitive skills pipeline for subsequent analyses or downstream processing. 
 
-Potok akceptuje obrazy i niestrukturalny tekst jako zawartość nieprzetworzona, stosuje AI do Cognitive Services (takich jak przetwarzanie obrazów i języka naturalnego) i tworzy wzbogaconą zawartość (nowe struktury i informacje) jako dane wyjściowe. Jednym z artefaktów fizycznych utworzonych w potoku jest [Magazyn wiedzy](knowledge-store-concept-intro.md), do którego można uzyskać dostęp za pomocą narzędzi, aby analizować i eksplorować zawartość.
+A pipeline accepts images and unstructured text as raw content, applies AI through Cognitive Services (such as image and natural language processing), and creates enriched content (new structures and information) as output. One of the physical artifacts created by a pipeline is a [knowledge store](knowledge-store-concept-intro.md), which you can access through tools to analyze and explore content.
 
-W tym przewodniku szybki start utworzysz usługi i dane w chmurze platformy Azure w celu utworzenia sklepu z bazami informacji. Gdy wszystko będzie na miejscu, uruchom kreatora **importowania danych** w portalu, aby ściągnąć wszystkie te elementy. Wynik końcowy jest oryginalny oraz zawartość wygenerowana przez AI, którą można wyświetlić w portalu ([Eksplorator magazynu](knowledge-store-view-storage-explorer.md)).
+In this quickstart, you'll combine services and data in the Azure cloud to create a knowledge store. Once everything is in place, you'll run the **Import data** wizard in the portal to pull it all together. The end result is original plus AI-generated content that you can view in the portal ([Storage explorer](knowledge-store-view-storage-explorer.md)).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-services-and-load-data"></a>Tworzenie usług i ładowanie danych
+## <a name="create-services-and-load-data"></a>Create services and load data
 
-Ten przewodnik Szybki Start używa platformy Azure Wyszukiwanie poznawcze, usługi Azure Blob Storage i [usługi azure Cognitive Services dla systemu](https://azure.microsoft.com/services/cognitive-services/) AI. 
+This quickstart uses Azure Cognitive Search, Azure Blob storage, and [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) for the AI. 
 
-Ze względu na to, że obciążenie jest małe, Cognitive Services jest wybierana w tle, aby zapewnić bezpłatne przetwarzanie do 20 transakcji codziennie w przypadku wywołania z usługi Azure Wyszukiwanie poznawcze. Jeśli używasz przykładowych danych, które udostępniamy, możesz pominąć tworzenie i dołączanie zasobów Cognitive Services.
+Because the workload is so small, Cognitive Services is tapped behind the scenes to provide free processing for up to 20 transactions daily when invoked from Azure Cognitive Search. As long as you use the sample data we provide, you can skip creating or attaching a Cognitive Services resource.
 
-1. [Pobierz HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Te dane to dane z przeglądu hotelu zapisane w pliku CSV (pochodzące z Kaggle.com) i zawierają 19 opinii klientów na temat pojedynczego hotelu. 
+1. [Download HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). This data is hotel review data saved in a CSV file (originates from Kaggle.com) and contains 19 pieces of customer feedback about a single hotel. 
 
-1. [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) lub [Znajdź istniejące konto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) w ramach bieżącej subskrypcji. Będziesz używać usługi Azure Storage do importowania nieprzetworzonej zawartości oraz magazynu wiedzy, który jest wynikiem końcowym.
+1. [Create an Azure storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) or [find an existing account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) under your current subscription. You'll use Azure storage for both the raw content to be imported, and the knowledge store that is the end result.
 
-   Dla tego konta istnieją dwa wymagania:
+   There are two requirements for this account:
 
-   + Wybierz ten sam region co usługa Azure Wyszukiwanie poznawcze. 
+   + Choose the same region as Azure Cognitive Search. 
    
-   + Wybierz typ konta StorageV2 (ogólnego przeznaczenia w wersji 2). 
+   + Choose the StorageV2 (general purpose V2) account type. 
 
-1. Otwórz strony usługi BLOB Services i Utwórz kontener.  
+1. Open the Blob services pages and create a container.  
 
 1. Kliknij pozycję **Przekaż**.
 
-    ![Przekaż dane](media/knowledge-store-create-portal/upload-command-bar.png "Przekaż przeglądy hotelu")
+    ![Upload the data](media/knowledge-store-create-portal/upload-command-bar.png "Upload the hotel reviews")
 
-1. Wybierz plik **HotelReviews-Free. csv** , który został pobrany w pierwszym kroku.
+1. Select the **HotelReviews-Free.csv** file you downloaded in the first step.
 
-    ![Tworzenie kontenera obiektów blob platformy Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Tworzenie kontenera obiektów blob platformy Azure")
+    ![Create the Azure Blob container](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Create the Azure Blob container")
 
 <!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. Get a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
 
-1. [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach tej samej subskrypcji. Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start.
+1. [Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under the same subscription. You can use a free service for this quickstart.
 
-Teraz można przystąpić do przenoszenia Kreatora importu danych.
+You are now ready to move on the Import data wizard.
 
-## <a name="run-the-import-data-wizard"></a>Uruchom Kreatora importowania danych
+## <a name="run-the-import-data-wizard"></a>Run the Import data wizard
 
-Na stronie Przegląd usługi wyszukiwania kliknij pozycję **Importuj dane** na pasku poleceń, aby utworzyć magazyn wiedzy w czterech krokach.
+In the search service Overview page, click **Import data** on the command bar to create a knowledge store in four steps.
 
   ![Polecenie importu danych](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1. Tworzenie źródła danych
 
 1. W obszarze **Nawiązywanie połączenia z danymi** wybierz opcję **Magazyn obiektów blob Azure**, a następnie wybierz konto i utworzony kontener. 
-1. W polu **Nazwa**wprowadź `hotel-reviews-ds`.
-1. W obszarze **tryb analizy**wybierz pozycję **Tekst rozdzielany**, a następnie zaznacz pole wyboru **pierwszy wiersz zawiera nagłówek** . Upewnij się, że **znak ogranicznika** jest przecinkiem (,).
-1. Wprowadź **Parametry połączenia** usługi magazynu zapisane w poprzednim kroku.
-1. W obszarze **nazwa kontenera**wprowadź `hotel-reviews`.
-1. Kliknij przycisk **Dalej: Dodaj wzbogacanie AI (opcjonalnie)** .
+1. For the **Name**, enter `hotel-reviews-ds`.
+1. For **Parsing mode**, select **Delimited text**, and then select the **First Line Contains Header** checkbox. Make sure the **Delimiter character** is a comma (,).
+1. Enter your storage service **Connection String** that you saved in a previous step.
+1. For **Container name**, enter `hotel-reviews`.
+1. Click **Next: Add AI enrichment (Optional)** .
 
-      ![Tworzenie obiektu źródła danych](media/knowledge-store-create-portal/hotel-reviews-ds.png "Tworzenie obiektu źródła danych")
+      ![Create a data source object](media/knowledge-store-create-portal/hotel-reviews-ds.png "Create a data source object")
 
 1. Przejdź do następnej strony.
 
 ### <a name="step-2-add-cognitive-skills"></a>Krok 2. Dodawanie umiejętności poznawczych
 
-W tym kroku kreatora utworzysz zestawu umiejętności z wzbogacaniem umiejętności poznawczych. Umiejętności, których używamy w tym przykładzie, będą wyodrębniać kluczowe frazy i wykrywać język i tonacji. W późniejszym kroku te wzbogacania będą "zorganizowane" w sklepie z bazami danych jako tabele platformy Azure.
+In this wizard step, you will create a skillset with cognitive skill enrichments. The skills we use in this sample will extract key phrases and detect the language and sentiment. In a later step, these enrichments will be "projected" into a knowledge store as Azure tables.
 
-1. Rozwiń węzeł **Attach Cognitive Services**. Wartość **bezpłatna (ograniczone wzbogacania)** jest domyślnie zaznaczona. Możesz użyć tego zasobu, ponieważ liczba rekordów w HotelReviews-Free. CSV to 19, a ten bezpłatny zasób umożliwia maksymalnie 20 transakcji dziennie.
-1. Rozwiń węzeł **Dodawanie umiejętności poznawczych**.
-1. W obszarze **Nazwa zestawu umiejętności**wprowadź `hotel-reviews-ss`.
-1. W **polu Źródło danych**wybierz pozycję **reviews_text**.
-1. Aby uzyskać **poziom szczegółowości wzbogacenia**, wybierz pozycję **strony (fragmenty: 5000 znaków).**
-1. Wybierz następujące umiejętności poznawcze:
+1. Expand **Attach Cognitive Services**. **Free (Limited enrichments)** is selected by default. You can use this resource because number of records in HotelReviews-Free.csv is 19 and this free resource allows up to 20 transactions a day.
+1. Expand **Add cognitive skills**.
+1. For **Skillset name**, enter `hotel-reviews-ss`.
+1. For **Source data field**, select **reviews_text**.
+1. For **Enrichment granularity level**, select **Pages (5000 characters chunks)**
+1. Select these cognitive skills:
     + **Wyodrębnianie kluczowych fraz**
-    + **Wykryj język**
-    + **Wykrywanie tonacji**
+    + **Detect language**
+    + **Detect sentiment**
 
-      ![Utwórz zestawu umiejętności](media/knowledge-store-create-portal/hotel-reviews-ss.png "Tworzenie zestawu umiejętności")
+      ![Create a skillset](media/knowledge-store-create-portal/hotel-reviews-ss.png "Tworzenie zestawu umiejętności")
 
-1. Rozwiń pozycję **Zapisz wzbogacanie do sklepu merytorycznego**.
-1. Wprowadź **Parametry połączenia konta magazynu** zapisane w poprzednim kroku.
-1. Wybierz następujące **projekcje tabeli platformy Azure**:
-    + **Secret**
+1. Expand **Save enrichments to knowledge store**.
+1. Enter the **Storage account Connection String** that you saved in a previous step.
+1. Select these **Azure table projections**:
+    + **Documents**
     + **Strony**
-    + **Kluczowe frazy**
+    + **Key phrases**
 
-    ![Konfigurowanie sklepu merytorycznego](media/knowledge-store-create-portal/hotel-reviews-ks.png "Konfigurowanie sklepu merytorycznego")
+    ![Configure knowledge store](media/knowledge-store-create-portal/hotel-reviews-ks.png "Configure knowledge store")
 
 1. Przejdź do następnej strony.
 
 ### <a name="step-3-configure-the-index"></a>Krok 3. Konfigurowanie indeksu
 
-W tym kroku kreatora skonfigurujesz indeks opcjonalnych zapytań wyszukiwania pełnotekstowego. Kreator posłuży do próbkowania źródła danych w celu wywnioskowania pól i typów danych. Musisz tylko wybrać atrybuty żądanego zachowania. Na przykład atrybut możliwy do **pobierania** zezwoli usłudze wyszukiwania na zwrócenie wartości pola, podczas gdy **przeszukiwanie** spowoduje włączenie wyszukiwania pełnotekstowego w polu.
+In this wizard step, you will configure an index for optional full-text search queries. The wizard will sample your data source to infer fields and data types. You only need to select the attributes for your desired behavior. For example, the **Retrievable** attribute will allow the search service to return a field value while the **Searchable** will enable full text search on the field.
 
-1. W obszarze **Nazwa indeksu**wprowadź `hotel-reviews-idx`.
-1. W przypadku atrybutów należy wybrać następujące opcje:
-    + Wybierz opcję **pobierania** dla wszystkich pól.
-    + Wybierz opcję z możliwością **filtrowania** i **kroju** dla tych pól: *tonacji*, *Język*, *frazy* kluczowe
-    + Wybierz opcję **wyszukiwania** dla tych pól: *miasto*, *Nazwa*, *reviews_text*, *Język*, *frazy* kluczowe
+1. For **Index name**, enter `hotel-reviews-idx`.
+1. For attributes, make these selections:
+    + Select **Retrievable** for all fields.
+    + Select **Filterable** and **Facetable** for these fields: *Sentiment*, *Language*, *Keyphrases*
+    + Select **Searchable** for these fields: *city*, *name*, *reviews_text*, *language*, *Keyphrases*
 
-    Indeks powinien wyglądać podobnie do poniższej ilustracji. Ponieważ lista jest długa, nie wszystkie pola są widoczne na obrazie.
+    Your index should look similar to the following image. Because the list is long, not all fields are visible in the image.
 
-    ![Skonfiguruj indeks](media/knowledge-store-create-portal/hotel-reviews-idx.png "Skonfiguruj indeks")
+    ![Configure an index](media/knowledge-store-create-portal/hotel-reviews-idx.png "Configure an index")
 
 1. Przejdź do następnej strony.
 
 ### <a name="step-4-configure-the-indexer"></a>Krok 4. Konfigurowanie indeksatora
 
-W tym kroku kreatora skonfigurujesz indeksator, który będzie ściągał źródło danych, zestawu umiejętności i indeks zdefiniowany w poprzednich krokach kreatora.
+In this wizard step, you will configure an indexer that will pull together the data source, skillset, and the index you defined in the previous wizard steps.
 
-1. W obszarze **Nazwa**wprowadź `hotel-reviews-idxr`.
-1. W polu **harmonogram**Zachowaj wartość domyślną **jeden raz**.
-1. Kliknij przycisk **Prześlij** , aby uruchomić indeksator. W tym kroku jest wyodrębnianie danych, indeksowanie i stosowanie umiejętności poznawczych.
+1. For **Name**, enter `hotel-reviews-idxr`.
+1. For **Schedule**, keep the default **Once**.
+1. Click **Submit** to run the indexer. Data extraction, indexing, application of cognitive skills all happen in this step.
 
-## <a name="monitor-status"></a>Monitorowanie stanu
+## <a name="monitor-status"></a>Monitor status
 
-Indeksowanie umiejętności poznawcze trwa dłużej niż typowe indeksowanie tekstowe. Kreator powinien otworzyć listę Indeksator na stronie przeglądu, co pozwala na śledzenie postępu. W przypadku samodzielnej nawigacji przejdź do strony Przegląd i kliknij opcję **Indeksatory**.
+Cognitive skill indexing takes longer to complete than typical text-based indexing. Kreator powinien otworzyć listę Indeksator na stronie przeglądu, co pozwala na śledzenie postępu. W przypadku samodzielnej nawigacji przejdź do strony Przegląd i kliknij opcję **Indeksatory**.
 
-W Azure Portal można także monitorować dziennik aktywności powiadomień dla łącza stanu **powiadomień wyszukiwanie poznawcze platformy Azure** . Wykonanie może potrwać kilka minut.
+In the Azure portal, you can also monitor the Notifications activity log for a clickable **Azure Cognitive Search notification** status link. Execution may take several minutes to complete.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy dane zostały wzbogacone przy użyciu Cognitive Services i zostały przedstawione wyniki w sklepie z bazami danych, można użyć Eksplorator usługi Storage lub Power BI do eksplorowania wzbogaconego zestawu.
+Now that you have enriched your data using Cognitive Services and projected the results into a knowledge store, you can use Storage Explorer or Power BI to explore your enriched data set.
 
-Możesz wyświetlić zawartość w Eksplorator usługi Storage lub zawęzić krok z Power BI, aby uzyskać wgląd w dane za pomocą wizualizacji.
+You can view content in Storage Explorer, or take it a step further with Power BI to gain insights through visualization.
 
 > [!div class="nextstepaction"]
-> [Widok z Eksplorator usługi Storage](knowledge-store-view-storage-explorer.md)
+> [View with Storage Explorer](knowledge-store-view-storage-explorer.md)
 > [Connect with Power BI](knowledge-store-connect-power-bi.md)
 
 > [!Tip]
-> Jeśli chcesz powtórzyć to ćwiczenie lub spróbować użyć innego instruktażu do wzbogacania, Usuń usługę *Hotel-Recenzje-idxr* indeksator. Usunięcie indeksatora resetuje bezpłatny dzienny licznik transakcji do zera na potrzeby przetwarzania Cognitive Services.
+> If you want to repeat this exercise or try a different AI enrichment walkthrough, delete the *hotel-reviews-idxr* indexer. Deleting the indexer resets the free daily transaction counter back to zero for Cognitive Services processing.

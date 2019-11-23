@@ -1,135 +1,135 @@
 ---
-title: Wdrażanie usługi Azure FarmBeats
-description: Opisuje sposób wdrażania FarmBeats
+title: Deploy Azure FarmBeats
+description: Describes how to deploy FarmBeats
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: acc64486ac8bd15a9abab1f2010ea56b752a1e86
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ccd8fc293d284150d7318242b71a46a99fec12fa
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927666"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406320"
 ---
 # <a name="deploy-farmbeats"></a>Wdrażanie projektu FarmBeats
 
-W tym artykule opisano sposób konfigurowania usługi Azure FarmBeats.
+This article describes how to set up Azure FarmBeats.
 
-Usługa Azure FarmBeats to charakterystyczne dla branży rozwiązanie dla rolnictwa opartego na danych, które umożliwia bezproblemową obsługę administracyjną i urządzenia czujnika łączności z chmurą platformy Azure, zbieraniem danych telemetrii i agregacją. Usługa Azure FarmBeats ma różne czujniki, takie jak aparaty fotograficzne, dronom, czujniki gleby i zarządzanie urządzeniami z chmury, w tym infrastruktury i usług na platformie Azure dla urządzeń z systemem IoT-Read (Internet rzeczy) do extendible aplikacji sieci Web i mobilnej, aby zapewnić Wizualizacja, alerty i szczegółowe informacje.
+Azure FarmBeats is an industry-specific, extensible solution for data-driven farming that enables seamless provisioning and sensor devices connectivity to Azure cloud, telemetry data collection, and aggregation. Azure FarmBeats has various sensors such as cameras, drones, soil sensors, and management of devices from the cloud, which includes infrastructure and services in Azure for the IoT-ready (Internet of Things) devices to an extendible web and mobile app to provide visualization, alerts, and insights.
 
 > [!NOTE]
-> Usługa Azure FarmBeats jest obsługiwana tylko w środowiskach chmury publicznej. Aby uzyskać więcej informacji na temat środowiska chmury, zobacz [Azure](https://azure.microsoft.com/overview/what-is-a-public-cloud/).
+> Azure FarmBeats is supported only in Public Cloud Environments. For more information about cloud environment, see [Azure](https://azure.microsoft.com/overview/what-is-a-public-cloud/).
 
-Usługa Azure FarmBeats ma dwa następujące składniki:
+Azure FarmBeats has the following two components:
 
-- **Centrum danych** — centrum danych to warstwa platformy platformy Azure FarmBeats, która umożliwia tworzenie, przechowywanie, przetwarzanie danych i uzyskiwanie szczegółowych informacji z istniejących lub nowych potoków danych. Ta warstwa platformy jest przydatna do uruchamiania i kompilowania potoków danych i modeli w rolnictwie.
+- **Data hub** - Data hub is the platform layer of Azure FarmBeats that lets you build, store, process data and draw insights from existing or new data pipelines. This platform layer is useful to run and build your agriculture data pipelines and models.
 
-- **Akcelerator** -akcelerator to warstwa rozwiązania platformy Azure FarmBeats, która ma wbudowaną aplikację do zilustrowania możliwości usługi Azure FarmBeats przy użyciu wstępnie utworzonych modeli rolnictwa. Ta warstwa rozwiązania umożliwia tworzenie granic farmy i uzyskiwanie szczegółowych informacji z danych rolnictwa w kontekście granicy farmy.
+- **Accelerator** - Accelerator is the solution layer of Azure FarmBeats that has a built-in application to illustrate the capabilities of Azure FarmBeats using the pre-created agriculture models. This solution layer lets you create farm boundaries and draw insights from the agriculture data within the context of the farm boundary.
 
-Szybkie wdrożenie usługi Azure FarmBeats powinno trwać krócej niż godzinę. Koszty dla centrum danych i akceleratora różnią się w zależności od użycia.
+A quick deployment of Azure FarmBeats should take less than an hour. Costs for the Data hub and Accelerator vary based on usage.
 
-## <a name="deployed-resources"></a>Wdrożone zasoby
+## <a name="deployed-resources"></a>Deployed resources
 
-Wdrożenie usługi Azure FarmBeats powoduje utworzenie wymienionych poniżej zasobów w ramach subskrypcji:
+Azure FarmBeats deployment creates the below listed resources within your subscription:
 
-|L.p.  |Nazwa zasobu  |Składnik Azure FarmBeats  |
+|L.p.  |Nazwa zasobu  |Azure FarmBeats Component  |
 |---------|---------|---------|
-|1  |       Azure Cosmos DB   |  Centrum danych       |
-|2  |    Application Insights      |     Centrum danych/akcelerator     |
-|3  |Azure Cache for Redis   |Centrum danych   |
-|4  |       Magazyn kluczy platformy Azure    |  Centrum danych/akcelerator        |
-|5  |    Time Series Insights       |     Centrum danych      |
-|6 |      Przestrzeń nazw EventHub    |  Centrum danych       |
-|7  |    Azure Data Factory V2       |     Centrum danych/akcelerator      |
-|8  |Konto usługi Batch    |Centrum danych   |
-|9  |       Konto magazynu     |  Centrum danych/akcelerator        |
-|10  |    Aplikacja logiki        |     Centrum danych      |
-|11  |    Połączenie interfejsu API        |     Centrum danych      |
-|12|      Usługa App Service      |  Centrum danych/akcelerator       |
-|13 |    plan usługi App Service        |     Centrum danych/akcelerator      |
-|14 |Konto Azure Maps     |Skrót    |
-|15 |       Time Series Insights      |  Centrum danych     |
+|1  |       Azure Cosmos DB   |  Data hub       |
+|2  |    Application Insights      |     Data hub/Accelerator     |
+|3  |Azure Cache for Redis   |Data hub   |
+|4  |       Azure KeyVault    |  Data hub/ Accelerator        |
+|5  |    Time Series Insights       |     Data hub      |
+|6 |      EventHub Namespace    |  Data hub       |
+|7  |    Azure Data Factory V2       |     Data hub/ Accelerator      |
+|8  |Konto usługi Batch    |Data hub   |
+|9  |       Konto magazynu     |  Data hub/ Accelerator        |
+|10  |    Aplikacja logiki        |     Data hub      |
+|11  |    API connection        |     Data hub      |
+|12|      App service      |  Data hub/Accelerator       |
+|13 |    App service plan        |     Data hub/ Accelerator      |
+|14 |Azure Maps account     |Accelerator    |
+|15 |       Time Series Insights      |  Data hub     |
 
-Usługa Azure FarmBeats jest dostępna do pobrania z witryny Azure Marketplace. Możesz uzyskać do niego dostęp bezpośrednio z Azure Portal.  
+Azure FarmBeats is available for you to download from the Azure Marketplace. You can access it directly from Azure portal.  
 
-## <a name="create-azure-farmbeats-offer-on-marketplace"></a>Tworzenie oferty Azure FarmBeats na rynku Marketplace
+## <a name="create-azure-farmbeats-offer-on-marketplace"></a>Create Azure FarmBeats offer on marketplace
 
-Wykonaj następujące kroki, aby utworzyć ofertę platformy Azure FarmBeats w portalu Marketplace:
+Use these steps to create an Azure FarmBeats offer in the marketplace:
 
-1. Zaloguj się do Azure Portal i wybierz swoje konto w prawym górnym rogu i przejdź do dzierżawy usługi Azure AD, w której chcesz wdrożyć Microsoft Azure FarmBeats.
-2. Usługa Azure FarmBeats jest dostępna w witrynie Azure Marketplace. Na stronie Marketplace wybierz pozycję "Pobierz teraz".
-3. Wybierz pozycję Utwórz i wprowadź następujące informacje:
-    - Nazwa subskrypcji.
-    - istniejąca nazwa grupy zasobów (tylko pusta Grupa zasobów) lub Utwórz nową grupę zasobów na potrzeby wdrażania usługi Azure FarmBeats. Zanotuj tę grupę zasobów w kolejnych sekcjach.
-4. Region, w którym chcesz zainstalować usługę Azure FarmBeats. Obecnie FarmBeats następujące regiony: środkowe stany USA, Europa Zachodnia, Wschodnie stany USA 2, Europa Północna, zachodnie stany USA, Azja Południowo-Wschodnia, Wschodnie stany USA, Australia Wschodnia, zachodnie stany USA 2.
+1. Sign-in to the Azure portal and select your account in the top-right corner, and switch to the Azure AD tenant where you want to deploy Microsoft Azure FarmBeats.
+2. Azure FarmBeats is available at Azure Marketplace. On the marketplace page, select on “Get it Now”.
+3. Select Create and enter the following information:
+    - subscription name.
+    - an existing resource group name (empty resource group only) or create a new resource group for deploying Azure FarmBeats. Make a note of this resource group in subsequent sections.
+4. The region you want to install Azure FarmBeats. Currently Azure FarmBeats is supported in the following regions: Central US, West Europe, East US 2, North Europe, West US, Southeast Asia, East US, Australia East, West US 2.
 5. Kliknij przycisk **OK**.
-Zostanie wyświetlona strona Warunki użytkowania. Przejrzyj standardowe warunki witryny Marketplace lub wybierz hiperlink, aby przejrzeć warunki użytkowania.
-6. Wybierz pozycję **Zamknij**, a następnie pole wyboru "Zgadzam się", a następnie wybierz pozycję **Utwórz**.
-7. Pomyślnie podpisano umowę licencyjną użytkownika końcowego (EULA) usługi Azure FarmBeats w portalu Marketplace.  
-7. Aby kontynuować wdrażanie, wykonaj kolejne kroki opisane w tym przewodniku.
+The Terms of use page appears. Review the standard marketplace terms or select the hyperlink to review the Terms of Use.
+6. Select **Close**, then the "I agree" checkbox and then select **Create**.
+7. You have now successfully signed Azure FarmBeats's End-user License agreement (EULA) on the marketplace.  
+7. To continue with the deployment, follow the next steps in this guide.
 
 ## <a name="prepare"></a>Przygotowanie
 
-Do wdrożenia usługi Azure FarmBeats potrzebne są następujące uprawnienia:
+You need the following permissions for deploying Azure FarmBeats:
 
-- Dzierżawca: dostęp do odczytu
-- Subskrypcja: współautor lub właściciel
-- Grupa zasobów: właściciel
+- Tenant: Read Access
+- Subscription: contributor or owner
+- Resource group: owner
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Przed zainicjowaniem wdrożenia programu upewnij się, że zostały wymienione następujące elementy:
+Before initiating the deployment, ensure you've the following:
 
-- Konto wskaźnikiem
-- Rejestracja aplikacji Azure Active Directory (AD)
+- Sentinel account
+- Azure Active Directory (AD) app registration
 
-## <a name="create-a-sentinel-account"></a>Tworzenie konta wskaźnikowego    
+## <a name="create-a-sentinel-account"></a>Create a sentinel account    
 
-Konto z wskaźnikiem kontrolnym pomaga w pobieraniu obrazów satelitarnych ze wskaźnikami z oficjalnej witryny sieci Web do urządzenia. Wykonaj następujące kroki, aby utworzyć bezpłatne konto:
+An account with sentinel helps you to download the sentinel satellite imagery from their official website to your device. Follow these steps to create a free account:
 
-Przejdź do pozycji https://scihub.copernicus.eu/dhus/#/self-registration (Plik > Nowy > Inny). Na stronie Rejestracja Podaj imię, nazwisko, nazwę użytkownika, hasło i adres e-mail.
-Do potwierdzenia zostanie wysłana wiadomość e-mail z weryfikacją. Wybierz łącze i potwierdź. Proces rejestracji został ukończony.
+Przejdź do pozycji https://scihub.copernicus.eu/dhus/#/self-registration (Plik > Nowy > Inny). In the registration page, provide a first name, last name, username, password, and email.
+A verification email will be sent to the registered email address for confirmation. Select the link and confirm. Your registration process is complete.
 
-## <a name="create-azure-ad-app-registration"></a>Utwórz rejestrację aplikacji usługi Azure AD
+## <a name="create-azure-ad-app-registration"></a>Create Azure AD app registration
 
-W celu uwierzytelniania i autoryzacji w usłudze Azure FarmBeats należy mieć rejestrację aplikacji usługi Azure Active Directory, która:
+For authentication and authorization on Azure FarmBeats, you must have an Azure active directory application registration which:
 
-- Przypadek 1: Instalator może utworzyć automatycznie (pod warunkiem, że masz wymagane uprawnienia dostępu dzierżawców, subskrypcji i grupy zasobów).
-- Przypadek 2: możesz utworzyć i skonfigurować przed wdrożeniem usługi Azure FarmBeats (wymaga ręcznego wykonywania kroków).
+- Case 1: Installer can create automatically (provided you have the required tenant, subscription, and resource group access permissions).
+- Case 2: You can create and configure before deploying Azure FarmBeats (requires manual steps).
 
-**Przypadek 1**:: Jeśli masz dostęp do tworzenia rejestracji aplikacji usługi AAD, możesz pominąć ten krok i pozwolić Instalatorowi na utworzenie rejestracji aplikacji. Przejdź do następnej sekcji: [Przygotuj plik INPUT. JSON](#prepare-input-json-file)
+**Case 1**: : If you have access to create an AAD app registration, you may skip this step and let the installer create the app registration. Please continue to the next section: [Prepare input.json file](#prepare-input-json-file)
 
-Jeśli masz już subskrypcję, możesz bezpośrednio przenieść ją do następnej procedury.
+If you already have a subscription, you can directly moved to the next procedure.
 
-**Przypadek 2**: Ta metoda jest preferowanym krokiem, gdy nie masz wystarczających uprawnień, aby utworzyć i skonfigurować rejestrację aplikacji usługi Azure AD w ramach subskrypcji. Poproś administratora o użycie [niestandardowego skryptu](https://aka.ms/FarmBeatsAADScript), co pomoże administratorowi IT automatycznie generować i konfigurować rejestrację aplikacji usługi Azure AD na Azure Portal. Jako dane wyjściowe do uruchamiania tego skryptu niestandardowego przy użyciu środowiska PowerShell administrator IT musi udostępnić Ci Azure Active Directory identyfikator klienta aplikacji i klucz tajny hasła. Zanotuj te wartości.
+**Case 2**: This method is the preferred step when you don't have enough rights to create and configure an Azure AD app registration within your subscription. Request your  admin to use the [custom script](https://aka.ms/FarmBeatsAADScript), which will help IT admin automatically generate and configure the Azure AD app registration on the Azure portal. As an output to running this custom script using PowerShell environment the IT admin needs to share an Azure Active Directory Application Client ID and password secret with you. Make a note of these values.
 
-Wykonaj następujące kroki, aby uruchomić skrypt rejestracji aplikacji usługi Azure AD:
+Use the following steps to run the Azure AD application registration script:
 
-1. Pobierz [skrypt](https://aka.ms/FarmBeatsAADScript).
-2. Zaloguj się do Azure Portal i wybierz swoją subskrypcję i dzierżawcę usługi AD.
+1. Download [script](https://aka.ms/FarmBeatsAADScript).
+2. Sign in to Azure portal and select your subscription and AD tenant.
 3. Uruchom usługę Cloud Shell z górnego obszaru nawigacyjnego witryny Azure Portal.
 
-    ![Farmy projektów](./media/prepare-for-deployment/navigation-bar-1.png)
+    ![Project Farm Beats](./media/prepare-for-deployment/navigation-bar-1.png)
 
 
-4. Użytkownicy po raz pierwszy będą monitowani o wybranie subskrypcji w celu utworzenia konta magazynu i udziału plików Microsoft Azure. Wybierz pozycję **Utwórz magazyn**.
-5. Gdy użytkownicy będą monitowani o wybranie preferowanego środowiska powłoki — bash lub PowerShell. Wybierz pozycję PowerShell.
-6. Przekaż skrypt (z kroku 1) do Cloud Shell i zanotuj lokalizację przekazanego pliku.
+4. First-time users will be prompted to select a subscription to create a storage account and Microsoft Azure Files share. Wybierz pozycję **Utwórz magazyn**.
+5. First time users will be prompted with a choice of preferred shell experience- Bash or PowerShell. Choose PowerShell.
+6. Upload the script (from step 1) to the Cloud Shell and note the location of the uploaded file.
 
     > [!NOTE]
-    > Domyślnie jest on przekazywany do katalogu macierzystego.
+    > By default, it is uploaded to your home directory.
 
-    Użyj następującego skryptu:
+    Use the following script:
 
     ```azurepowershell-interactive
     ./create_aad_script.ps1
     ```
-7. Zanotuj identyfikator aplikacji usługi Azure AD i klucz tajny klienta, aby udostępnić uczestnikowi wdrażanie usługi Azure FarmBeats.
+7. Make a note of the Azure AD application ID and client secret to share with person deploying Azure FarmBeats.
 
-### <a name="prepare-input-json-file"></a>Przygotuj wejściowy plik JSON
+### <a name="prepare-input-json-file"></a>Prepare Input Json file
 
-W ramach instalacji Utwórz plik INPUT. JSON w następujący sposób:
+As part of the installation, create an input.json file as follows:
 
 ```json
     {  
@@ -146,46 +146,46 @@ W ramach instalacji Utwórz plik INPUT. JSON w następujący sposób:
     }
 ```
 
-Ten plik jest plikiem wejściowym do Azure Cloud Shell i parametrów, których wartości są używane podczas instalacji. Wszystkie parametry w formacie JSON muszą zostać zastąpione odpowiednimi wartościami lub usunięte; w przypadku usunięcia Instalator wyświetli monit z pytaniem podczas instalacji
+This file is your input file to Azure Cloud Shell and parameters whose values are used during the installation. All params in the json needs to be replaced with appropriate values or removed; if removed, installer will prompt you during installation
 
 
-Przejrzyj parametry przed przygotowaniem pliku.
+Review the parameters before preparing the file.
 
 |Polecenie | Opis|
 |--- | ---|
-|sku  | Zapewnia możliwość pobrania albo obu składników usługi Azure FarmBeats. Określa składniki do pobrania. Aby zainstalować tylko centrum danych, użyj "onlydatabhub". Aby zainstalować centrum danych i akcelerator, użyj "obu"|
-|subscriptionId | Określa subskrypcję do zainstalowania FarmBeats|
-|datahubResourceGroup| Nazwa grupy zasobów dla zasobów centrum danych|
-|location |Lokalizacja, w której chcesz utworzyć zasoby|
-|acceleratorWebsiteName |Unikatowy prefiks adresu URL do nazwy centrum danych|
-|acceleratorResourceGroup  | Unikatowy prefiks adresu URL, aby nawiązać nazwę witryny sieci Web akceleratora.|
-|datahubWebsiteName  | UUnique prefiks adresu URL, aby nazwać witrynę sieci Web centrum danych. |
-|sentinelUsername | Nazwa użytkownika do zalogowania: https://scihub.copernicus.eu/dhus/#/self-registration.|
-|notificationEmailAddress  | Adres e-mail, na który będą wysyłane powiadomienia dotyczące alertów skonfigurowanych w ramach centrum danych.|
-|updateIfExists|Obowiązkowe Parametr, który ma być uwzględniony w pliku Input. JSON tylko wtedy, gdy chcesz uaktualnić istniejące wystąpienie FarmBeats. W przypadku uaktualniania inne szczegóły na przykład. nazwy grup zasobów, lokalizacje itp. muszą być takie same.|
-|aadAppClientId | [**Opcjonalne**] Parametr, który ma zostać uwzględniony w pliku Input. JSON tylko wtedy, gdy już istnieje aplikacja usługi Azure AD.  |
-|aadAppClientSecret  | [**Opcjonalne**] Parametr, który ma zostać uwzględniony w pliku Input. JSON tylko wtedy, gdy już istnieje aplikacja usługi Azure AD.|
+|sku  | Provides a choice to download either or both the components of Azure FarmBeats. Specifies which components to download. To install only Data hub, use “onlydatabhub”. To install Data hub and Accelerator, use “both”|
+|subscriptionId | Specifies the subscription for installing Azure FarmBeats|
+|datahubResourceGroup| Resource group name for Data hub resources|
+|location |Location where you would like to create the resources|
+|acceleratorWebsiteName |Unique URL prefix to name your Data hub|
+|acceleratorResourceGroup  | Unique URL prefix to name your accelerator website.|
+|datahubWebsiteName  | UUnique URL prefix to name your Data hub website. |
+|sentinelUsername | user name to sign into: https://scihub.copernicus.eu/dhus/#/self-registration.|
+|notificationEmailAddress  | Email address to receive the notifications for any alerts that you configure within Data hub.|
+|updateIfExists|[Optional] Parameter to be included within Input.Json only if you want to upgrade an existing Azure FarmBeats instance. For upgrade, other details eg. the resource group names, locations etc. need to be the same.|
+|aadAppClientId | [**Optional**] Parameter to be included within Input.Json only if Azure AD app already exists.  |
+|aadAppClientSecret  | [**Optional**] Parameter to be included within Input.Json only if Azure AD app already exists.|
 
-## <a name="deploy-within-cloud-shell-browser-based-command-line"></a>Wdrażanie w ramach wiersza polecenia opartego na przeglądarce Cloud Shell
+## <a name="deploy-within-cloud-shell-browser-based-command-line"></a>Deploy within Cloud Shell browser-based command line
 
-W ramach przepływu pracy w portalu Marketplace należy utworzyć jedną grupę zasobów i podpisać umowę licencyjną użytkownika końcowego, która może zostać ponownie zweryfikowana w ramach rzeczywistego wdrożenia. Wdrożenie można przeprowadzić za pośrednictwem Azure Cloud Shell (wiersz polecenia oparty na przeglądarce) przy użyciu środowiska bash. Przejdź do następnych sekcji, aby przeprowadzić wdrożenie za pośrednictwem Cloud Shell.
+As part of the marketplace workflow above, you must have created one Resource Group and signed the End-user License Agreement, which can be reviewed once again as part of the actual deployment. The deployment can be done via Azure Cloud Shell (browser-based command line) using Bash environment. Please continue to the next sections to deploy via the Cloud Shell.
 
 > [!NOTE]
-> Nieaktywne sesje Cloud Shell wygasną po upływie 20 minut. Spróbuj wykonać wdrożenie w tym czasie.
+> Inactive Cloud Shell sessions expire after 20 minutes. Try to complete the deployment within this time.
 
-1. Zaloguj się do Azure Portal i wybierz żądaną subskrypcję i dzierżawcę usługi AD.
+1. Sign into Azure portal and select the desired subscription and AD tenant.
 2. Uruchom usługę Cloud Shell z górnego obszaru nawigacyjnego witryny Azure Portal.
-3. Jeśli używasz Cloud Shell po raz pierwszy, zostanie wyświetlony monit o wybranie subskrypcji w celu utworzenia konta magazynu i udziału plików Microsoft Azure.
-4. Wybierz pozycję **Utwórz magazyn**.  
+3. If you are using the Cloud Shell for the first time, you will be prompted to select a subscription to create a storage account and Microsoft Azure Files share.
+4. Select **Create Storage**.  
 
-Wybierz środowisko jako bash (a nie PowerShell).
+Select the environment as Bash (and not PowerShell).
 
-## <a name="deployment-scenario-1"></a>Scenariusz wdrażania 1
+## <a name="deployment-scenario-1"></a>Deployment scenario 1
 
-Instalator tworzy aplikacja usługi Azure AD rejestracji (przypadek 1 powyżej)
+Installer creates the Azure AD App Registration (Case 1 above)
 
-1. Skopiuj następujący szablon i nadaj mu nazwę input. JSON.  
-Przykładowe dane wejściowe JSON:
+1. Copy the following template and name it to input.json.  
+Sample JSON input:
 
     ```json
     {  
@@ -202,40 +202,40 @@ Przykładowe dane wejściowe JSON:
     }
     ```
 
-2. Zapisz plik i Zanotuj ścieżkę (na komputerze lokalnym).
-3. Przejdź do Azure Cloud Shell i po pomyślnym uwierzytelnieniu wybierz pozycję Przekaż (zobacz wyróżnioną ikonę poniżej obrazu) i Przekaż plik INPUT. JSON do magazynu Cloud Shell Storage.  
+2. Save the file and make a note of the path (on your local computer).
+3. Go to Azure Cloud Shell and after successful authentication, select the upload (see highlighted icon in below image) and upload the input.json file to Cloud Shell storage.  
 
-    ![Farmy projektów](./media/prepare-for-deployment/bash-2-1.png)
+    ![Project Farm Beats](./media/prepare-for-deployment/bash-2-1.png)
 
-4. Przejdź do katalogu macierzystego w usłudze Cloud Shell. Domyślnie jest to/Home/<username>
-5. Wpisz lub Wklej następujące polecenie do Cloud Shell. Upewnij się, że ścieżka została zmodyfikowana. plik JSON i naciśnij klawisz ENTER.
+4. Go to your home directory in the cloud shell. By default, it is /home/<username>
+5. Type or paste the following command into the Cloud Shell. Make sure to modify the path to input. Json file and press enter.
 
    ```bash
       wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
-     Instalator automatycznie pobiera wszystkie zależności i kompiluje wdrożenie. Zostanie wyświetlony monit o wyrażenie zgody na umowę licencyjną użytkownika oprogramowania platformy Azure FarmBeats (EULA).
+     The installer automatically downloads all dependencies and builds the deployer. You will be prompted to agree to the Azure FarmBeats End-user license agreement (EULA).
 
-     - Wprowadź wartość "Y", jeśli zgadzasz się i przejdziesz do następnego kroku.
-     - Wprowadź wartość "N", jeśli nie akceptujesz warunków, a wdrożenie zakończy się.
+     - Enter ‘Y’ if you agree and you will proceed to the next step.
+     - Enter ‘N’ if you do not agree to the terms and the deployment will terminate.
 
-6. Następnie zostanie wyświetlony monit o wprowadzenie tokenu dostępu dla wdrożenia. Skopiuj wygenerowany kod i zaloguj się, aby https://microsoft.com/devicelogin przy użyciu poświadczeń platformy Azure.
+6. Then you will be prompted to enter an access token for the deployment. Copy the code generated and login to https://microsoft.com/devicelogin with your Azure credentials.
 
     > [!NOTE]
-    > Token wygasa po 60 minutach. Po jego wygaśnięciu można uruchomić ponownie, wpisując polecenie wdrożenia ponownie.
+    > The token expires after 60 minutes. When it expires you can restart by typing the deployment command again.
 
-7. Po wyświetleniu monitu wprowadź hasło do konta wskaźnikowego.
-8. Instalator sprawdzi teraz i rozpocznie wdrażanie, co może potrwać około 20 minut.
-9. Po pomyślnym wdrożeniu otrzymasz poniższe linki wyjściowe:
+7. When prompted, enter your Sentinel account password.
+8. The installer now validates and starts deploying, which can take about 20 minutes.
+9. Once the deployment is successful, you will receive the below output links:
 
- - **Adres URL centrum danych**: Link Swagger umożliwiający wypróbowanie interfejsów API usługi Azure FarmBeats.
- - **Adres URL akceleratora**: interfejs użytkownika umożliwiający Eksplorowanie akceleratora usługi Azure FarmBeats Smart Farm.
- - Plik **dziennika wdrażania**— plik dziennika utworzony podczas wdrażania. Może służyć do rozwiązywania problemów, jeśli jest to wymagane.
+ - **Data hub URL**: Swagger link to try Azure FarmBeats APIs.
+ - **Accelerator URL**: User Interface to explore Azure FarmBeats Smart Farm Accelerator.
+ - **Deployer log file**- Log file created during deployment. It can be used for troubleshooting if required.
 
-## <a name="deployment-scenario-2"></a>Scenariusz wdrażania 2
+## <a name="deployment-scenario-2"></a>Deployment scenario 2
 
-Istniejąca Rejestracja aplikacji Azure Active Directory jest używana do wdrożenia (przypadek 2 powyżej)
+Existing Azure Active Directory app registration is used to deploy (Case 2 above)
 
-1. Skopiuj poniższy plik JSON, który zawiera identyfikator i hasło klienta aplikacji platformy Azure w pliku Input. JSON, i Zapisz go.
+1. Copy the below JSON file, which includes the Azure Application Client ID and password in the input.json, and save it.
 
     ```json
    {
@@ -256,109 +256,109 @@ Istniejąca Rejestracja aplikacji Azure Active Directory jest używana do wdroż
    }
    ```
 
-Wykonaj pozostałe kroki:
+Follow the rest of the steps:
 
-2. Zanotuj ścieżkę do pliku Input. JSON (na komputerze lokalnym).
-3. Przejdź do Azure Cloud Shell ponownie, a po pomyślnym uwierzytelnieniu wybierz przycisk Przekaż (zobacz wyróżnioną ikonę poniżej obrazu) i Przekaż plik INPUT. JSON do Cloud Shell Storage.
+2. Make a note of the path to your input.json file (on your local computer).
+3. Go to Azure Cloud Shell once again and you're successfully authenticated, select the upload button (see highlighted icon in below image) and upload the input.json file to Cloud Shell storage.
 
-    ![Farmy projektów](./media/prepare-for-deployment/bash-2-1.png)
+    ![Project Farm Beats](./media/prepare-for-deployment/bash-2-1.png)
 
-4. Przejdź do katalogu macierzystego w usłudze Cloud Shell. Domyślnie jest to/Home/<username>
-5. Wpisz lub Wklej następujące polecenie do Cloud Shell. Upewnij się, że ścieżka została zmodyfikowana. plik JSON i naciśnij klawisz ENTER.
+4. Go to your home directory in the cloud shell. By default, it is /home/<username>
+5. Type or paste the following command into the Cloud Shell. Make sure to modify the path to input. Json file and press enter.
 
     ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 
-Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Follow the onscreen instructions.
 
-6. Skrypt automatycznie pobiera wszystkie zależności i kompiluje wdrożenie.
-7. Zostanie wyświetlony monit o odczytanie i zaakceptowanie umowy licencyjnej użytkownika oprogramowania platformy Azure FarmBeats.
+6. The script automatically downloads all dependencies and builds the deployer.
+7. You will be prompted to read and agree to the Azure FarmBeats End-user license agreement (EULA).
 
-    - Wprowadź wartość "Y", jeśli zgadzasz się i przejdziesz do kolejnego kroku.
-    - Wprowadź wartość "N", jeśli nie akceptujesz warunków, a wdrożenie zakończy się.
+    - Enter 'Y' if you agree and you will continue to the next step.
+    - Enter 'N' if you don't agree to the terms and the deployment will terminate.
 
-8. Zostanie wyświetlony monit o wprowadzenie tokenu dostępu dla wdrożenia. Skopiuj wygenerowany kod i zaloguj się do https://microsoft.com/devicelogin przy użyciu poświadczeń platformy Azure.
-9. Instalator sprawdzi teraz i rozpocznie tworzenie zasobów, co może potrwać około 20 minut. W tym czasie sesja powinna być aktywna na Cloud Shell.
-10. Po pomyślnym przejściu wdrożenia zostaną wyświetlone poniższe linki wyjściowe:
+8. You will be prompted to enter an access token for the deployment. Copy the code generated and sign in to https://microsoft.com/devicelogin with your Azure credentials.
+9. The installer will now validate and start creating the resources, which can take about 20 minutes. Keep the session active on Cloud Shell during this time.
+10. Once the deployment goes through successfully, you will receive the below output links:
 
- - **Adres URL centrum danych**: Link Swagger do wypróbowania interfejsów API FarmBeats.
- - **Adres URL akceleratora**: interfejs użytkownika umożliwiający Eksplorowanie akceleratora FarmBeats Smart Farm.
- - **Plik dziennika wdrażania**: plik dziennika utworzony podczas wdrażania. Może służyć do rozwiązywania problemów, jeśli jest to wymagane.
+ - **Data hub URL**: Swagger link to try Azure FarmBeats APIs.
+ - **Accelerator URL**: User Interface to explore Azure FarmBeats Accelerator.
+ - **Deployer log file**: Log file created during deployment. It can be used for troubleshooting if required.
 
-Jeśli napotkasz jakiekolwiek problemy, przejrzyj [problemy](troubleshoot-project-farmbeats.md).
+If you encounter any issues, review [Troubleshoot](troubleshoot-project-farmbeats.md).
 
 
-## <a name="validate-deployment"></a>Weryfikuj wdrożenie
+## <a name="validate-deployment"></a>Validate deployment
 
-### <a name="data-hub"></a>Centrum danych
+### <a name="data-hub"></a>Data hub
 
-Po zakończeniu instalacji centrum danych otrzymasz adres URL umożliwiający dostęp do interfejsów API usługi Azure FarmBeats za pośrednictwem interfejsu Swagger w formacie: https://\<yourdatahub-Website-Name >. azurewebsites. NET
+Once the data hub installation is complete, you'll receive the URL to access Azure FarmBeats APIs via the Swagger interface in the format: https://\<yourdatahub-website-name>.azurewebsites.net/swagger
 
-1. Aby zalogować się za pomocą struktury Swagger, skopiuj i wklej adres URL w przeglądarce.
-2. Zaloguj się przy użyciu poświadczeń Azure Portal.
-3. Test Sanity (opcjonalnie)
+1. To sign in via Swagger, copy and paste the URL in the browser.
+2. Sign in with Azure portal credentials.
+3. Sanity test (Optional)
 
-     - Można pomyślnie zalogować się do portalu Swagger przy użyciu linku centrum danych, który został odebrany jako dane wyjściowe do pomyślnego wdrożenia.
-     - Rozszerzone typy pobieranie interfejsu API — wybierz pozycję "Wypróbuj to/Execute"
-     - Powinien zostać wyświetlony kod odpowiedzi serwera 200, a nie wyjątek, taki jak 403 "nieautoryzowany użytkownik".
+     - Able to successfully sign in to the Swagger portal using the Data hub link, which you received as an output to a successful deployment.
+     - Extended types Get API- Select "Try it out /Execute"
+     - You should receive the server response Code 200 and not an exception such as 403 "unauthorized user".
 
-### <a name="accelerator"></a>Skrót
+### <a name="accelerator"></a>Accelerator
 
-Po zakończeniu instalacji akceleratora otrzymasz adres URL w celu uzyskania dostępu do interfejsu użytkownika FarmBeats w formacie: https://\<akcelerator-Website-Name >. azurewebsites. NET
+Once the Accelerator installation is complete, you'll receive the URL to access Azure FarmBeats user-interface in the format: https://\<accelerator-website-name>.azurewebsites.net
 
-1. Aby zalogować się z akceleratora, skopiuj i wklej adres URL w przeglądarce.
-2. Zaloguj się przy użyciu poświadczeń Azure Portal.
+1. To sign in from Accelerator, copy and paste the URL in the browser.
+2. Sign in with Azure portal credentials.
 
 ## <a name="upgrade"></a>Uaktualnienie
 
-Kroki uaktualniania są podobne do instalacji po raz pierwszy. Wykonaj następujące kroki:
+The steps for upgrade are similar to the first-time installation. Wykonaj następujące kroki:
 
-1. Zaloguj się do Azure Portal i wybierz żądaną subskrypcję i dzierżawcę usługi AD.
+1. Sign in to Azure portal and select your desired subscription and AD tenant.
 2. Uruchom usługę Cloud Shell z górnego obszaru nawigacyjnego witryny Azure Portal.
 
-   ![Farmy projektów](./media/prepare-for-deployment/navigation-bar-1.png)
+   ![Project Farm Beats](./media/prepare-for-deployment/navigation-bar-1.png)
 
-3. Wybierz środowisko jako "bash" z listy rozwijanej z lewej strony powłoki.
-4. Wprowadź zmiany w pliku Input. JSON tylko wtedy, gdy jest to konieczne, i Przekaż do Azure Cloud Shell. Na przykład możesz zaktualizować adres e-mail powiadomienia, które chcesz otrzymywać.
-5. Przekaż plik INPUT. JSON do Azure Cloud Shell.
-6. Wpisz lub wklej poniższe dwa polecenia do Cloud Shell. Upewnij się, że ścieżka została zmodyfikowana do pliku Input. JSON, a następnie naciśnij klawisz ENTER.
+3. Select the environment as “Bash” from the drop-down from the left of the of shell.
+4. Make changes to your input.json file only if needed and upload to the Azure Cloud Shell. For example, you can update your email address for the notification you want to receive.
+5. Upload the input.json file to Azure Cloud Shell.
+6. Type or paste the following two commands into the Cloud Shell. Make sure to modify the path to input.json file and press enter.
 
     ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
-Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie:
+Follow the onscreen instructions:
 
-7. Instalator automatycznie wyświetli wymagane dane wejściowe w czasie wykonywania:
-8. Wprowadź token dostępu dla wdrożenia. Skopiuj wygenerowany kod i zaloguj się do https://microsoft.com/devicelogin przy użyciu poświadczeń platformy Azure.
-9. Hasło do kontrolki
-10. Instalator sprawdzi teraz i rozpocznie tworzenie zasobów, co może potrwać około 20 minut.
-11. Po pomyślnym wdrożeniu otrzymasz poniższe linki wyjściowe:
- - **Adres URL centrum danych**: Link Swagger do wypróbowania interfejsów API FarmBeats.
- - **Adres URL akceleratora**: interfejs użytkownika umożliwiający Eksplorowanie akceleratora FarmBeats Smart Farm.
- - **Plik dziennika wdrażania**: zapisuje dzienniki podczas wdrażania. Może służyć do rozwiązywania problemów.
+7. The Installer automatically prompts the required inputs at run-time:
+8. Enter an access token for deployment. Copy the code generated and sign in to https://microsoft.com/devicelogin with your Azure credentials.
+9. Sentinel password
+10. The installer now validates and starts creating the resources, which can take about 20 minutes.
+11. Once the deployment is successful, you will receive the below output links:
+ - **Data hub URL**: Swagger link to try Azure FarmBeats APIs.
+ - **Accelerator URL**: User interface to explore Azure FarmBeats Accelerator.
+ - **Deployer log file**: saves logs during deployment. It can be used for troubleshooting.
 
 > [!NOTE]
-> Zanotuj powyższe wartości do użycia w przyszłości.
+> Make note of the above values for future use.
 
 
 ## <a name="uninstall"></a>Dezinstalacja
 
-Obecnie nie jest obsługiwana automatyczna Dezinstalacja FarmBeats przy użyciu Instalatora. Aby usunąć centrum danych lub akcelerator, w Azure Portal Usuń grupę zasobów, w której te składniki są zainstalowane, lub ręcznie usuń zasoby.
+Currently we don't support automated uninstallation of Azure FarmBeats using the installer. To remove the Data hub or  Accelerator, in the Azure portal, delete the resource group in which these components are installed, or delete resources manually.
 
-Przykładowo w przypadku wdrożenia centrum danych i akceleratora w dwóch różnych grupach zasobów te grupy zasobów można usunąć w następujący sposób:
+For example, if you deployed Data hub and Accelerator in two different resource groups, you delete those resource groups as follows:
 
 1. Zaloguj się do witryny Azure Portal.
-2. Wybierz swoje konto w prawym górnym rogu i przejdź do odpowiedniej dzierżawy usługi Azure AD, w której chcesz wdrożyć program Microsoft FarmBeats.
+2. Select your account in the top right corner, and switch to the desired Azure AD tenant where you want to deploy Azure FarmBeats.
 
    > [!NOTE]
-   > Aby akcelerator działał prawidłowo, wymagany jest centrum danych. Nie zalecamy odinstalowywania centrum danych bez odinstalowywania akceleratora.
+   > Data hub is needed for Accelerator to work properly. We don’t recommend uninstalling Data hub without uninstalling Accelerator.
 
-3. Wybierz pozycję grupy zasobów, a następnie wpisz nazwę grupy zasobów, która ma zostać usunięta.
-4. Wybierz nazwę grupy zasobów. Wpisz ponownie nazwę, aby zaznaczyć pole wyboru podwójne, a następnie wybierz pozycję Usuń, aby usunąć grupę zasobów i wszystkie jej zasoby bazowe.
-5. Alternatywnie możesz usunąć poszczególne zasoby ręcznie, co nie jest zalecane.
-7. Aby usunąć/odinstalować centrum danych, przejdź do grupy zasobów bezpośrednio na platformie Azure i Usuń z niej grupę zasobów.
+3. Select Resource Groups, and type in the name of the Data hub or Accelerator resource group that you want to delete.
+4. Wybierz nazwę grupy zasobów. Type in the name again to double-check, and select Delete to remove the resource group, and all its underlying resources.
+5. Alternatively, you can delete each resource manually, which is not recommended.
+7. To delete/uninstall data hub, go to the Resource group directly on Azure and delete the resource group from there.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wdrożono usługę Azure FarmBeats. Teraz Dowiedz się, jak [tworzyć farmy](manage-farms.md#create-farms).
+You have deployed Azure FarmBeats. Now, learn how to [create farms](manage-farms.md#create-farms).

@@ -1,78 +1,78 @@
 ---
-title: Limity usługi publicznej wersji zapoznawczej — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs
-description: Dowiedz się więcej na temat limitów usługi Public Preview bliźniaczych reprezentacji dla platformy Azure.
+title: Public preview service limits - Azure Digital Twins | Microsoft Docs
+description: Learn about public preview service, subscription, instance, and rate limits for Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 3cea4fe65e49bfa2d49822d443103ae6cc6ce69f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/21/2019
+ms.openlocfilehash: f54311af65d9678b2a51b23a38bab66111a818ca
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014165"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383070"
 ---
 # <a name="public-preview-service-limits"></a>Limity usługi w publicznej wersji zapoznawczej
 
-W publicznej wersji zapoznawczej usługa Azure Digital bliźniaczych reprezentacji ma następującą tymczasową subskrypcję, wystąpienie i limity szybkości.
+During the public preview, Azure Digital Twins has the following temporary subscription, instance, and rate limits.
 
-Te ograniczenia istnieją, aby uprościć uczenie się nowej usługi i jej wielu funkcji.
+These constraints exist to help simplify learning about the new service and its many features.
 
 > [!NOTE]
-> Te limity zostaną zwiększone lub usunięte w ogólnej dostępności.
+> These limits will be increased or removed by general availability (GA).
 
-## <a name="per-subscription-limits"></a>Limity dla subskrypcji
+## <a name="per-subscription-limits"></a>Per-subscription limits
 
-W publicznej wersji zapoznawczej Każda subskrypcja platformy Azure może w danym momencie utworzyć lub uruchomić tylko jedno wystąpienie usługi Azure Digital bliźniaczych reprezentacji.
+During the public preview, each Azure subscription can create or run only one Azure Digital Twins instance at a time.
 
 > [!TIP]
-> Jeśli usuniesz wystąpienie, możesz utworzyć nowe.
+> If you delete your instance, you can create a new one.
 
-## <a name="per-instance-limits"></a>Limity dla wystąpień
+## <a name="per-instance-limits"></a>Per-instance limits
 
-Z kolei każde wystąpienie usługi Azure Digital bliźniaczych reprezentacji może mieć następujące możliwości:
+In turn, each Azure Digital Twins instance can have:
 
-- Dokładnie jeden osadzony zasób **IoTHub** , który jest tworzony automatycznie podczas aprowizacji usługi.
-- Dokładnie jeden punkt końcowy **EventHub** dla typu zdarzenia **DeviceMessage**.
-- Maksymalnie trzy punkty końcowe **EventHub**, **ServiceBus**lub **EventGrid** typu zdarzenia **SensorChange**, **SpaceChange**, **TopologyOperation**lub **UdfCustom**.
+- Exactly one embedded **IoTHub** resource that's created automatically during service provisioning.
+- Exactly One **EventHub** endpoint for the event type **DeviceMessage**.
+- Up to three **EventHub**, **ServiceBus**, or **EventGrid** endpoints of the event type **SensorChange**, **SpaceChange**, **TopologyOperation**, or **UdfCustom**.
 
 > [!NOTE]
-> Niektóre parametry, które są zwykle zdefiniowane w procesie tworzenia powyższych jednostek usługi Azure IoT, nie są wymagane w publicznej wersji zapoznawczej.
-> - Aby zapoznać się z najnowszymi specyfikacjami interfejsu API, zapoznaj się z [dokumentacją dotyczącą struktury Swagger](./how-to-use-swagger.md) .
+> Some parameters that are usually defined in creating the above Azure IoT entities are not required during public preview.
+> - Consult the [Swagger reference documentation](./how-to-use-swagger.md) for the most recent API specifications.
 
-## <a name="azure-digital-twins-management-api-limits"></a>Limity interfejsu API usługi Azure Digital bliźniaczych reprezentacji Management
+## <a name="azure-digital-twins-management-api-limits"></a>Azure Digital Twins Management API limits
 
-Limity liczby żądań dla interfejsu API usługi Azure Digital bliźniaczych reprezentacji Management to:
+The request rate limits for your Azure Digital Twins Management API are:
 
-- 100 żądań na sekundę do interfejsu API usługi Azure Digital bliźniaczych reprezentacji Management.
-- Do 1 000 obiektów zwracanych przez pojedyncze zapytanie interfejsu API zarządzania bliźniaczych reprezentacji Azure Digital.
+- 100 requests per second to the Azure Digital Twins Management API.
+- Up to 1,000 objects returned by a single Azure Digital Twins Management API query.
 
 > [!IMPORTANT]
-> W przypadku przekroczenia limitu 1 000-obiektowego występuje błąd i musi uprościć zapytanie.
+> If you exceed the 1,000-object limit, you receive an error and must simplify your query.
 
-## <a name="user-defined-functions-rate-limits"></a>Limity szybkości funkcji zdefiniowanych przez użytkownika
+## <a name="user-defined-functions-rate-limits"></a>User-defined functions rate limits
 
-Poniższe limity ustawiają łączną liczbę wszystkich wywołań funkcji zdefiniowanych przez użytkownika w wystąpieniu usługi Azure Digital bliźniaczych reprezentacji:
+The following limits set the total number of all user-defined function calls made to your Azure Digital Twins instance:
 
-- 400 wywołań biblioteki klienta na sekundę
-- 100 wywołań **SendNotification** na sekundę
+- 400 client library calls per second
+- 100 **SendNotification** calls per second
 
 > [!NOTE]
-> Następujące akcje mogą spowodować tymczasowe stosowanie dodatkowych limitów szybkości:
-> - Zmiany wprowadzone w metadanych obiektu topologii
-> - Aktualizacje wprowadzone w definicji funkcji zdefiniowanej przez użytkownika
-> - Urządzenia wysyłające dane telemetryczne po raz pierwszy
+> The following actions might cause additional rate limits to be applied temporarily:
+> - Edits made to the topology object metadata
+> - Updates made to the user-defined function definition
+> - Devices that send telemetry for the first time
 
-## <a name="device-telemetry-limits"></a>Limity telemetrii urządzeń
+## <a name="device-telemetry-limits"></a>Device telemetry limits
 
-Następujące ograniczenia ograniczają łączną liczbę wszystkich komunikatów, które urządzenia mogą wysłać do wystąpienia usługi Azure Digital bliźniaczych reprezentacji:
+The following limits cap the total number of all messages your devices can send to your Azure Digital Twins instance:
 
-- 100 komunikatów na sekundę na wszystkich urządzeniach
--   25 komunikatów na sekundę na urządzenie
+- 100 messages per second across all devices
+-   25 messages per second per device
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby wypróbować próbkę Digital bliźniaczych reprezentacji na platformie Azure, przejdź do [przewodnika Szybki Start, aby znaleźć dostępne pokoje](./quickstart-view-occupancy-dotnet.md).
+- To try out an Azure Digital Twins sample, go to [Quickstart to find available rooms](./quickstart-view-occupancy-dotnet.md).

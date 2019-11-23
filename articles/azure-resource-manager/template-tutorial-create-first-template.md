@@ -1,55 +1,55 @@
 ---
-title: Samouczek — Tworzenie szablonu wdrażania &
-description: Utwórz pierwszy szablon Azure Resource Manager. Samouczek zawiera informacje na temat składni pliku szablonu i sposobu wdrażania konta magazynu.
+title: Tutorial - Create & deploy template
+description: Create your first Azure Resource Manager template. In the tutorial, you learn about the template file syntax and how to deploy a storage account.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 961c68ca6d5e0bf6dda95a26a684c3fff60b1d1b
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9650b8c67e3fd5c786b066c53e78b106935e11e1
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74148014"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406034"
 ---
-# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Samouczek: Tworzenie i wdrażanie pierwszego szablonu Azure Resource Manager
+# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Tutorial: Create and deploy your first Azure Resource Manager template
 
-W tym samouczku przedstawiono Azure Resource Manager szablonów. Pokazuje, jak utworzyć początkowy szablon i wdrożyć go na platformie Azure. Poznasz strukturę szablonu i narzędzia potrzebne do pracy z szablonami. Ukończenie tego samouczka zajmuje około **12 minut** , ale rzeczywisty czas będzie różny w zależności od liczby narzędzi, które należy zainstalować.
+This tutorial introduces you to Azure Resource Manager templates. It shows you how to create a starter template and deploy it to Azure. You'll learn about the structure of the template and the tools you'll need for working with templates. It takes about **12 minutes** to complete this tutorial, but the actual time will vary based on how many tools you need to install.
 
-Ten samouczek jest pierwszą częścią serii. W miarę postępów przez serię należy zmodyfikować szablon startowy krok po kroku do momentu zbadania wszystkich podstawowych części szablonu Menedżer zasobów. Elementy te są blokami konstrukcyjnymi dla znacznie bardziej złożonych szablonów. Mamy nadzieję, że na końcu serii masz pewność, że tworzysz własne szablony i chcesz zautomatyzować wdrożenia przy użyciu szablonów.
+This tutorial is the first of a series. As you progress through the series, you modify the starting template step-by-step until you've explored all of the core parts of a Resource Manager template. These elements are the building blocks for much more complex templates. We hope by the end of the series you're confident creating your own templates and ready to automate your deployments with templates.
 
-Jeśli chcesz dowiedzieć się więcej na temat korzyści z używania szablonów i dlaczego należy zautomatyzować wdrażanie za pomocą szablonów, zobacz [Azure Resource Manager templates](template-deployment-overview.md).
+If you want to learn about the benefits of using templates and why you should automate deployment with templates, see [Azure Resource Manager templates](template-deployment-overview.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="get-tools"></a>Pobierz narzędzia
+## <a name="get-tools"></a>Get tools
 
-Zacznijmy od zagwarantowania, że masz narzędzia potrzebne do tworzenia i wdrażania szablonów.
+Let's start by making sure you have the tools you need to create and deploy templates.
 
 ### <a name="editor"></a>Edytor
 
-Szablony są plikami JSON. Do tworzenia szablonów potrzebny jest dobry Edytor JSON. Zalecamy Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów Tools. Jeśli zachodzi potrzeba zainstalowania tych narzędzi, zobacz [tworzenie Azure Resource Manager szablonów przy użyciu Visual Studio Code](./resource-manager-tools-vs-code.md).
+Templates are JSON files. To create templates, you need a good JSON editor. We recommend Visual Studio Code with the Resource Manager Tools extension. If you need to install these tools, see [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
-### <a name="command-line-deployment"></a>Wdrożenie wiersza polecenia
+### <a name="command-line-deployment"></a>Command-line deployment
 
-Do wdrożenia szablonu wymagane są również Azure PowerShell lub interfejs wiersza polecenia platformy Azure. Instrukcje instalacji znajdują się w temacie:
+You also need either Azure PowerShell or Azure CLI to deploy the template. For the installation instructions, see:
 
 - [Instalowanie programu Azure PowerShell](/powershell/azure/install-az-ps)
-- [Instalowanie interfejsu wiersza polecenia platformy Azure w systemie Windows](/cli/azure/install-azure-cli-windows)
-- [Instalowanie interfejsu wiersza polecenia platformy Azure w systemie Linux](/cli/azure/install-azure-cli-linux)
+- [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows)
+- [Install Azure CLI on Linux](/cli/azure/install-azure-cli-linux)
 
-Po zainstalowaniu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure upewnij się, że logujesz się po raz pierwszy. Aby uzyskać pomoc, zobacz artykuł [Logowanie — PowerShell](/powershell/azure/install-az-ps#sign-in) lub [Logowanie się do interfejsu wiersza polecenia platformy Azure](/cli/azure/get-started-with-azure-cli#sign-in).
+After installing either Azure PowerShell or Azure CLI, make sure you sign in for the first time. For help, see [Sign in - PowerShell](/powershell/azure/install-az-ps#sign-in) or [Sign in - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
-Teraz możesz zacząć uczenie się o szablonach.
+Okay, you're ready to start learning about templates.
 
-## <a name="create-your-first-template"></a>Utwórz swój pierwszy szablon
+## <a name="create-your-first-template"></a>Create your first template
 
-1. Otwórz Visual Studio Code z zainstalowanym rozszerzeniem narzędzi Menedżer zasobów.
-1. Z menu **plik** wybierz pozycję **nowy plik** , aby utworzyć nowy plik.
-1. Z menu **plik** wybierz polecenie **Zapisz jako**.
-1. Nazwij plik **azuredeploy** i wybierz rozszerzenie pliku **JSON** . Pełna nazwa pliku **azuredeploy. JSON**.
-1. Zapisz plik na stacji roboczej. Wybierz ścieżkę, która jest łatwa do zapamiętania, ponieważ będzie ona dostarczana później podczas wdrażania szablonu.
-1. Skopiuj i wklej następujący kod JSON do pliku:
+1. Open Visual Studio Code with the Resource Manager Tools extension installed.
+1. From the **File** menu, select **New File** to create a new file.
+1. From the **File** menu, select **Save as**.
+1. Name the file **azuredeploy** and select the **JSON** file extension. The complete name of the file **azuredeploy.json**.
+1. Save the file to your workstation. Select a path that is easy to remember because you'll provide that path later when deploying the template.
+1. Copy and paste the following JSON into the file:
 
     ```json
     {
@@ -59,25 +59,25 @@ Teraz możesz zacząć uczenie się o szablonach.
     }
     ```
 
-    Oto jak wygląda środowisko VS Code:
+    Here's what your VS Code environment looks like:
 
-    ![Szablon Menedżer zasobów szablonu Visual Studio Code First](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![Resource Manager template visual studio code first template](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
-    Ten szablon nie wdraża żadnych zasobów. Zaczynamy od pustego szablonu, dzięki czemu możesz zapoznać się z krokami wdrażania szablonu, minimalizując ryzyko wystąpienia problemu.
+    This template doesn't deploy any resources. We're starting with a blank template so you can get familiar with the steps to deploy a template while minimizing the chance of something going wrong.
 
-    Plik JSON zawiera następujące elementy:
+    The JSON file has these elements:
 
-    - **$Schema**: określa lokalizację pliku schematu JSON. Plik schematu opisuje właściwości, które są dostępne w ramach szablonu. Na przykład schemat definiuje **zasoby** jako jedną z prawidłowych właściwości szablonu. Nie martw się, że data schematu to 2015-01-01. Ta wersja schematu jest aktualna i zawiera wszystkie najnowsze funkcje. Data schematu nie została zmieniona, ponieważ od wprowadzenia nie wprowadzono żadnych zmian.
-    - **contentversion —** : określa wersję szablonu (na przykład 1.0.0.0). Możesz podać dowolną wartość dla tego elementu. Użyj tej wartości, aby udokumentować znaczące zmiany w szablonie. W przypadku wdrażania zasobów przy użyciu szablonu Ta wartość może być używana do upewnienia się, że odpowiedni szablon jest używany.
-    - **zasoby**: zawiera zasoby, które mają zostać wdrożone lub zaktualizowane. Obecnie jest ona pusta, ale później dodasz zasoby.
+    - **$schema**: Specifies the location of the JSON schema file. The schema file describes the properties that are available within a template. For example, the schema defines **resources** as one of the valid properties for a template. Don't worry that the date for the schema is 2015-01-01. This schema version is up-to-date and includes all of the latest features. The schema date hasn't been changed because there have been no breaking changes since its introduction.
+    - **contentVersion**: Specifies the version of the template (such as 1.0.0.0). You can provide any value for this element. Use this value to document significant changes in your template. When deploying resources using the template, this value can be used to make sure that the right template is being used.
+    - **resources**: Contains the resources you want to deploy or update. Currently, it's empty, but you'll add resources later.
 
 1. Zapisz plik.
 
-Gratulacje, utworzono pierwszy szablon.
+Congratulations, you've created your first template.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Aby rozpocząć pracę z interfejsem wiersza polecenia Azure PowerShell/Azure, zaloguj się przy użyciu poświadczeń platformy Azure.
+To start working with Azure PowerShell/Azure CLI, sign in with your Azure credentials.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -94,7 +94,7 @@ az login
 ---
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
-Podczas wdrażania szablonu należy określić grupę zasobów, która będzie zawierać zasoby. Przed uruchomieniem polecenia wdrożenia Utwórz grupę zasobów przy użyciu interfejsu wiersza polecenia platformy Azure lub Azure PowerShell. Wybierz karty w poniższej sekcji kodu, aby wybrać między Azure PowerShell i interfejsem wiersza polecenia platformy Azure.
+When you deploy a template, you specify a resource group that will contain the resources. Before running the deployment command, create the resource group with either Azure CLI or Azure PowerShell. Select the tabs in the following code section to choose between Azure PowerShell and Azure CLI. The CLI examples in this article are written for the Bash shell.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -116,7 +116,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-Aby wdrożyć szablon, użyj interfejsu wiersza polecenia platformy Azure lub Azure PowerShell. Użyj utworzonej grupy zasobów. Nadaj nazwę wdrożenia, aby można je było łatwo zidentyfikować w historii wdrażania. Dla wygody należy również utworzyć zmienną, która przechowuje ścieżkę do pliku szablonu. Ta zmienna ułatwia uruchamianie poleceń wdrażania, ponieważ nie trzeba ponownie wpisywać ścieżki przy każdym wdrożeniu.
+To deploy the template, use either Azure CLI or Azure PowerShell. Use the resource group you created. Give a name to the deployment so you can easily identify it in the deployment history. For convenience, also create a variable that stores the path to the template file. This variable makes it easier for you to run the deployment commands because you don't have to retype the path every time you deploy.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -131,7 +131,7 @@ New-AzResourceGroupDeployment `
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli
-$templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{provide-the-path-to-the-template-file}"
 az group deployment create \
   --name blanktemplate \
   --resource-group myResourceGroup \
@@ -140,45 +140,45 @@ az group deployment create \
 
 ---
 
-Polecenie wdrożenia zwraca wyniki. Poszukaj `ProvisioningState`, aby sprawdzić, czy wdrożenie zakończyło się pomyślnie.
+The deployment command returns results. Look for `ProvisioningState` to see whether the deployment succeeded.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-![Stan aprowizacji wdrożenia programu PowerShell](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
+![PowerShell deployment provisioning state](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-![Stan aprowizacji wdrożenia interfejsu wiersza polecenia platformy Azure](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
+![Azure CLI deployment provisioning state](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
-Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
+You can verify the deployment by exploring the resource group from the Azure portal.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. From the left menu, select **Resource groups**.
 
-1. Wybierz wdrożenie grupy zasobów w ostatniej procedurze. Nazwa domyślna to moja **resourceName**. W grupie zasobów nie ma żadnego wdrożonego zasobu.
+1. Select the resource group deploy in the last procedure. The default name is **myResourceGroup**. You shall see no resource deployed within the resource group.
 
-1. W prawym górnym rogu przeglądu zostanie wyświetlony stan wdrożenia. Wybieranie **1 zakończyło się pomyślnie**.
+1. Notice in the upper right of the overview, the status of the deployment is displayed. Select **1 Succeeded**.
 
-   ![Wyświetl stan wdrożenia](./media/template-tutorial-create-first-template/deployment-status.png)
+   ![View deployment status](./media/template-tutorial-create-first-template/deployment-status.png)
 
-1. Zobaczysz historię wdrożenia grupy zasobów. Wybierz pozycję **blanktemplate**.
+1. You see a history of deployment for the resource group. Select **blanktemplate**.
 
-   ![Wybieranie wdrożenia](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
+   ![Select deployment](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
 
-1. Zostanie wyświetlone podsumowanie wdrożenia. W tym przypadku nie istnieje dużo do sprawdzenia, ponieważ nie wdrożono żadnych zasobów. W dalszej części tej serii pomocne może okazać się zapoznanie się z podsumowaniem w historii wdrażania. Zwróć uwagę na to, że po lewej stronie można wyświetlić dane wejściowe i wyjściowe oraz szablon użyty podczas wdrażania.
+1. You see a summary of the deployment. In this case, there's not a lot to see because no resources were deployed. Later in this series you might find it helpful to review the summary in the deployment history. Notice on the left you can view inputs, outputs, and the template used during deployment.
 
-   ![Wyświetl podsumowanie wdrożenia](./media/template-tutorial-create-first-template/view-deployment-summary.png)
+   ![View deployment summary](./media/template-tutorial-create-first-template/view-deployment-summary.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
+If you're moving on to the next tutorial, you don't need to delete the resource group.
 
-Jeśli zatrzymasz teraz, możesz chcieć usunąć grupę zasobów.
+If you're stopping now, you might want to delete the resource group.
 
 1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
@@ -187,7 +187,7 @@ Jeśli zatrzymasz teraz, możesz chcieć usunąć grupę zasobów.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utworzono prosty szablon do wdrożenia na platformie Azure. W następnym samouczku dodasz do szablonu konto magazynu i wdrożono je w grupie zasobów.
+You created a simple template to deploy to Azure. In the next tutorial, you'll add a storage account to the template and deploy it to your resource group.
 
 > [!div class="nextstepaction"]
-> [Dodaj zasób](template-tutorial-add-resource.md)
+> [Add resource](template-tutorial-add-resource.md)

@@ -1,53 +1,53 @@
 ---
-title: Integracja z serwerem Azure MFA i usługi Active Directory — usługa Azure Active Directory
+title: Azure MFA Server and Active Directory - Azure Active Directory
 description: Opis sposobu integracji serwera Azure Multi-Factor Authentication z usługą Active Directory, w wyniku której możliwa jest synchronizacja katalogów.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eac6cff0f0f12daaf772549f547aafd670600d61
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: b02d6468ede0d5748409a620a6641109cd523a09
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536978"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404226"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integracja katalogu między serwerem Azure MFA i usługą Active Directory
 
 Sekcja Integracja katalogu serwera usługi Azure MFA umożliwia przeprowadzenie integracji z usługą Active Directory lub innym katalogiem LDAP. Pozwala ona skonfigurować atrybuty w celu ich dostosowania do schematu katalogu oraz ustawić automatyczną synchronizację użytkowników.
 
 > [!IMPORTANT]
-> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
+> As of July 1, 2019, Microsoft will no longer offer MFA Server for new deployments. New customers who would like to require multi-factor authentication from their users should use cloud-based Azure Multi-Factor Authentication. Existing customers who have activated MFA Server prior to July 1 will be able to download the latest version, future updates and generate activation credentials as usual.
 
 ## <a name="settings"></a>Ustawienia
 
 Domyślnie serwer usługi Azure Multi-Factor Authentication (MFA) jest skonfigurowany pod kątem importowania lub synchronizowania użytkowników z usługi Active Directory.  Karta Integracja katalogu pozwala zastąpić domyślne zachowanie i utworzyć powiązanie z innym katalogiem LDAP, katalogiem ADAM lub określonym kontrolerem domeny usługi Active Directory.  Umożliwia także korzystanie z uwierzytelniania LDAP w odniesieniu do serwera proxy protokołu LDAP lub do powiązania protokołu LDAP jako obiektu docelowego usługi RADIUS, uwierzytelniania wstępnego w ramach uwierzytelniania IIS lub uwierzytelniania podstawowego dla portalu użytkownika.  W poniższej tabeli opisano poszczególne ustawienia.
 
-![Edycja konfiguracji LDAP na serwerze MFA](./media/howto-mfaserver-dir-ad/dirint.png)
+![Edit LDAP configuration in MFA Server](./media/howto-mfaserver-dir-ad/dirint.png)
 
 > [!NOTE]
-> Integracja katalogu nie musi pracować z katalogami, innego niż Active Directory Domain Services.
+> Directory integration is not guaranteed to work with directories other than Active Directory Domain Services.
 
-| Cecha | Opis |
+| Funkcja | Opis |
 | --- | --- |
-| Użyj usługi Active Directory |Wybierz opcję Użyj usługi Active Directory, aby użyć tej usługi do importowania i synchronizacji.  Jest to ustawienie domyślne. <br>Uwaga: Integracja usługi Active Directory działała poprawnie Dołączanie komputera do domeny i zaloguj się przy użyciu konta domeny. |
+| Użyj usługi Active Directory |Wybierz opcję Użyj usługi Active Directory, aby użyć tej usługi do importowania i synchronizacji.  Jest to ustawienie domyślne. <br>Uwaga: aby integracja z usługą Active Directory działała prawidłowo, przyłącz komputer do domeny i zaloguj się przy użyciu konta domeny. |
 | Uwzględnij domeny zaufane |Zaznacz pole wyboru **Uwzględnij domeny zaufane**, jeśli chcesz, aby agent podejmował próbę nawiązania połączenia z domenami ustawionymi jako zaufane dla bieżącej domeny lub innej domeny w lesie albo domenami zaufanymi lasu.  Jeśli nie zachodzi importowanie ani synchronizowanie użytkowników z żadnej z zaufanych domen, usuń zaznaczenie pola wyboru, aby poprawić wydajność.  Pole jest domyślnie zaznaczone. |
-| Użyj określonej konfiguracji LDAP |Wybierz opcję Użyj LDAP, aby użyć ustawień LDAP określonych dla importowania i synchronizacji. Uwaga: Po wybraniu opcji Użyj LDAP interfejs użytkownika zmienia odwołania z usługi Active Directory LDAP. |
+| Użyj określonej konfiguracji LDAP |Wybierz opcję Użyj LDAP, aby użyć ustawień LDAP określonych dla importowania i synchronizacji. Uwaga: po wybraniu opcji Użyj LDAP interfejs użytkownika odwołuje się do katalogu LDAP, a nie do usługi Active Directory. |
 | Przycisk Edytuj |Przycisk Edytuj pozwala modyfikować bieżące ustawienia konfiguracji LDAP. |
-| Użyj zapytań dotyczących zakresu atrybutów |Określa, czy należy użyć zapytań dotyczących zakresu atrybutów.  Zapytania dotyczące zakresu atrybutów umożliwiają wydajne wyszukiwanie w katalogu obejmujące kwalifikację rekordów na podstawie wpisów w atrybucie innego rekordu.  Serwer usługi Azure Multi-Factor Authentication wykorzystuje zapytania dotyczące zakresu atrybutów do wydajnego przesyłania zapytań dotyczących użytkowników, którzy są członkami grupy zabezpieczeń.   <br>Uwaga:  Istnieją przypadki, gdzie kwerend dotyczących zakresu atrybutów są obsługiwane, ale nie powinny być używane.  Na przykład w usłudze Active Directory mogą wystąpić problemy z zapytaniami dotyczącymi zakresu atrybutów, jeśli grupa zabezpieczeń zawiera członków z więcej niż jednej domeny. W takim przypadku usuń zaznaczenie pola wyboru. |
+| Użyj zapytań dotyczących zakresu atrybutów |Określa, czy należy użyć zapytań dotyczących zakresu atrybutów.  Zapytania dotyczące zakresu atrybutów umożliwiają wydajne wyszukiwanie w katalogu obejmujące kwalifikację rekordów na podstawie wpisów w atrybucie innego rekordu.  Serwer usługi Azure Multi-Factor Authentication wykorzystuje zapytania dotyczące zakresu atrybutów do wydajnego przesyłania zapytań dotyczących użytkowników, którzy są członkami grupy zabezpieczeń.   <br>Uwaga: w określonych przypadkach zapytania dotyczące zakresu atrybutów są obsługiwane, nie powinny jednak być używane.  Na przykład w usłudze Active Directory mogą wystąpić problemy z zapytaniami dotyczącymi zakresu atrybutów, jeśli grupa zabezpieczeń zawiera członków z więcej niż jednej domeny. W takim przypadku usuń zaznaczenie pola wyboru. |
 
 W poniższej tabeli opisano ustawienia konfiguracji LDAP.
 
 | Funkcja | Opis |
 | --- | --- |
-| Serwer |Wprowadź nazwę hosta lub adres IP serwera z uruchomionym katalogiem LDAP.  Serwer zapasowy można także określić osobno, oddzielając go średnikiem. <br>Uwaga: Jeśli typ powiązania to SSL, wymagana jest w pełni kwalifikowana nazwa hosta. |
+| Serwer |Wprowadź nazwę hosta lub adres IP serwera z uruchomionym katalogiem LDAP.  Serwer zapasowy można także określić osobno, oddzielając go średnikiem. <br>Uwaga: jeśli typ powiązania to SSL, wymagana jest w pełni kwalifikowana nazwa hosta. |
 | Podstawowa nazwa wyróżniająca |Wprowadź nazwę wyróżniającą obiektu podstawowego katalogu, z którego będą uruchamiane wszystkie zapytania katalogu.  Na przykład: dc=abc,dc=com. |
 | Typ powiązania — zapytania |Wybierz odpowiedni typ powiązania do użycia podczas tworzenia powiązań w celu przeprowadzania wyszukiwań w katalogu LDAP.  Ten typ jest wykorzystywany do importowania, synchronizacji oraz rozpoznania nazw użytkowników. <br><br>  Anonimowe — jest tworzone anonimowe powiązanie.  Powiązana nazwa wyróżniająca oraz powiązane hasło nie są używane.  Użycie tej metody jest możliwe tylko wtedy, gdy katalog LDAP umożliwia tworzenie anonimowych powiązań i jeśli uprawnienia zezwalają na przesyłanie zapytań dotyczących odpowiednich rekordów i atrybutów.  <br><br> Proste — powiązana nazwa wyróżniająca oraz powiązane hasło są przekazywane jako zwykły tekst w celu utworzenia powiązania z katalogiem LDAP.  Ta opcja jest przeznaczona do celów testowych. Umożliwia sprawdzenie, czy można połączyć się z serwerem i czy konto powiązania może uzyskać odpowiedni dostęp. Po zainstalowaniu odpowiedniego certyfikatu, należy używać typu SSL.  <br><br> SSL — powiązana nazwa wyróżniająca oraz powiązane hasło są szyfrowane z użyciem protokołu SSL w celu utworzenia powiązania z katalogiem LDAP.  Zainstaluj lokalny certyfikat, któremu ufa katalog LDAP.  <br><br> Windows — powiązana nazwa użytkownika oraz powiązane hasło są używane do bezpiecznego połączenia z kontrolerem domeny usługi Active Directory lub katalogiem ADAM.  Jeśli pole Powiązana nazwa użytkownika pozostanie puste, do powiązania zostanie użyte konto, do którego zalogował się użytkownik. |
 | Typ powiązania — uwierzytelnienia |Wybierz typ powiązania odpowiedni do użycia podczas przeprowadzania uwierzytelniania powiązania LDAP.  Zobacz opisy typów powiązań w obszarze Typ powiązania — zapytania.  Dzięki temu możliwe jest na przykład użycie anonimowego powiązania w odniesieniu do zapytań i korzystanie z powiązania SSL w celu zabezpieczenia uwierzytelnień powiązania LDAP. |
@@ -60,34 +60,34 @@ W poniższej tabeli opisano ustawienia konfiguracji LDAP.
 
 Filtry umożliwiają ustawienie kryteriów kwalifikowania rekordów podczas przeprowadzania wyszukiwania w katalogu.  Ustawiając filtr, można określić zakres obiektów, które mają podlegać synchronizacji.  
 
-![Konfigurowanie katalogu filtrowania na serwerze MFA](./media/howto-mfaserver-dir-ad/dirint2.png)
+![Configure directory filtering in MFA Server](./media/howto-mfaserver-dir-ad/dirint2.png)
 
 Usługa Azure Multi-Factor Authentication zapewnia dostęp do następujących trzech opcji filtrowania:
 
-* **Filtr kontenera** — pozwala określić kryteria filtru wykorzystywane do kwalifikowania rekordów kontenera podczas przeprowadzania wyszukiwania w katalogu.  W przypadku katalogów Active Directory i ADAM często używane są kryteria filtrowania (|(objectClass=organizationalUnit)(objectClass=container)).  W przypadku innych katalogów LDAP w zależności od schematu katalogu użyj kryteriów filtrowania służących do kwalifikowania poszczególnych typów obiektu kontenera.  <br>Uwaga:  Jeśli pole pozostanie puste, ((objectClass=organizationalUnit)(objectClass=container)) jest używany domyślnie.
-* **Filtr grupy zabezpieczeń** — pozwala określić kryteria filtru wykorzystywane do kwalifikowania rekordów grupy zabezpieczeń podczas przeprowadzania wyszukiwania w katalogu.  W przypadku katalogów Active Directory i ADAM często używane są kryteria filtrowania (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)).  W przypadku innych katalogów LDAP w zależności od schematu katalogu użyj kryteriów filtrowania służących do kwalifikowania poszczególnych typów obiektu grupy zabezpieczeń.  <br>Uwaga:  Jeśli pole pozostanie puste, (&(objectCategory=Group) & (objectCategory=Group)(groupType:1.2.840.113556.1.4.804:=-2147483648)))) jest używane domyślnie.
-* **Filtr użytkownika** — pozwala określić kryteria filtru wykorzystywane do kwalifikowania rekordów użytkowników podczas przeprowadzania wyszukiwania w katalogu.  W przypadku katalogów Active Directory i ADAM często używane są kryteria filtrowania (&(objectClass=user)(objectCategory=person)).  W przypadku innych katalogów LDAP w zależności od schematu katalogu użyj kryteriów (objectClass=inetOrgPerson) lub podobnych. <br>Uwaga:  Jeśli pole pozostanie puste, filtrowania (& (objectCategory=person)(objectClass=user)) jest używany domyślnie.
+* **Filtr kontenera** — pozwala określić kryteria filtru wykorzystywane do kwalifikowania rekordów kontenera podczas przeprowadzania wyszukiwania w katalogu.  W przypadku katalogów Active Directory i ADAM często używane są kryteria filtrowania (|(objectClass=organizationalUnit)(objectClass=container)).  W przypadku innych katalogów LDAP w zależności od schematu katalogu użyj kryteriów filtrowania służących do kwalifikowania poszczególnych typów obiektu kontenera.  <br>Uwaga: jeśli pole pozostanie puste, domyślnie używane są kryteria filtrowania ((objectClass=organizationalUnit)(objectClass=container)).
+* **Filtr grupy zabezpieczeń** — pozwala określić kryteria filtru wykorzystywane do kwalifikowania rekordów grupy zabezpieczeń podczas przeprowadzania wyszukiwania w katalogu.  W przypadku katalogów Active Directory i ADAM często używane są kryteria filtrowania (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)).  W przypadku innych katalogów LDAP w zależności od schematu katalogu użyj kryteriów filtrowania służących do kwalifikowania poszczególnych typów obiektu grupy zabezpieczeń.  <br>Uwaga: jeśli pole pozostanie puste, domyślnie używane są kryteria filtrowania (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)).
+* **Filtr użytkownika** — pozwala określić kryteria filtru wykorzystywane do kwalifikowania rekordów użytkowników podczas przeprowadzania wyszukiwania w katalogu.  W przypadku katalogów Active Directory i ADAM często używane są kryteria filtrowania (&(objectClass=user)(objectCategory=person)).  W przypadku innych katalogów LDAP w zależności od schematu katalogu użyj kryteriów (objectClass=inetOrgPerson) lub podobnych. <br>Uwaga: jeśli pole pozostanie puste, domyślnie używane są kryteria filtrowania (&(objectCategory=person)(objectClass=user)).
 
 ## <a name="attributes"></a>Atrybuty
 
-Atrybuty można w razie potrzeby dostosować pod kątem określonego katalogu.  Pozwala to na dodawanie atrybutów niestandardowych oraz dostosowanie synchronizacji wyłącznie pod kątem określonych atrybutów. Użyj nazwy atrybutu, zgodnie z definicją w schemacie katalogu dla wartości każdego pola atrybutu. Poniższa tabela zawiera dodatkowe informacje na temat każdej funkcji.
+Atrybuty można w razie potrzeby dostosować pod kątem określonego katalogu.  Pozwala to na dodawanie atrybutów niestandardowych oraz dostosowanie synchronizacji wyłącznie pod kątem określonych atrybutów. Use the name of the attribute as defined in the directory schema for the value of each attribute field. Poniższa tabela zawiera dodatkowe informacje na temat każdej funkcji.
 
 Atrybuty mogą być wprowadzane ręcznie i nie muszą odpowiadać atrybutom na liście.
 
-![Dostosowywanie atrybuty integracji katalogu na serwerze MFA](./media/howto-mfaserver-dir-ad/dirint3.png)
+![Customize directory integration attributes in MFA Server](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| Cecha | Opis |
+| Funkcja | Opis |
 | --- | --- |
 | Unikatowy identyfikator |Wprowadź nazwę atrybutu, która pełni rolę unikatowego identyfikatora rekordów kontenera, grupy zabezpieczeń i użytkowników.  W katalogu Active Directory jest to zazwyczaj wartość elementu objectGUID. Inne implementacje katalogu LDAP mogą używać wartości entryUUID lub podobnej.  Wartość domyślna to objectGUID. |
 | Typ unikatowego identyfikatora |Wybierz typ atrybutu unikatowego identyfikatora.  W katalogu Active Directory atrybut objectGUID ma typ GUID. Inne implementacje katalogu LDAP mogą używać typu tablicy bajtowej znaków ASCII lub ciągu.  Wartość domyślna to GUID. <br><br>Poprawne ustawienie tego typu jest istotne, ponieważ elementy synchronizacji są przywoływane przy użyciu ich unikatowych identyfikatorów. Typ unikatowego identyfikatora jest używany do bezpośredniego odnajdywania obiektu w katalogu.  Ustawienie typu ciągu w przypadku, gdy wartość jest przechowywana w katalogu jako tablica bajtowa znaków ASCII, uniemożliwia prawidłową synchronizację. |
-| Nazwa wyróżniająca |Wprowadź nazwę atrybutu, który zawiera nazwę wyróżniającą każdego z rekordów.  W katalogu Active Directory jest to zazwyczaj atrybut distinguishedName. Inne implementacje katalogu LDAP mogą używać atrybutu entryDN lub podobnego.  Wartość domyślna to distinguishedName. <br><br>Jeśli nie istnieje atrybut zawierający tylko nazwę wyróżniającą, może zostać użyty atrybut ścieżki reklam.  Część „LDAP://\<serwer\>/” ścieżki jest automatycznie usuwana, co pozwala uzyskać samą nazwę wyróżniającą obiektu. |
+| Nazwa wyróżniająca |Wprowadź nazwę atrybutu, który zawiera nazwę wyróżniającą każdego z rekordów.  W katalogu Active Directory jest to zazwyczaj atrybut distinguishedName. Inne implementacje katalogu LDAP mogą używać atrybutu entryDN lub podobnego.  Wartość domyślna to distinguishedName. <br><br>If an attribute containing just the distinguished name doesn't exist, the ads path attribute may be used.  Część „LDAP://\<serwer\>/” ścieżki jest automatycznie usuwana, co pozwala uzyskać samą nazwę wyróżniającą obiektu. |
 | Nazwa kontenera |Wprowadź nazwę atrybutu, który zawiera nazwę w rekordzie kontenera.  Wartość tego atrybutu jest wyświetlana w hierarchii kontenera podczas importowania pozycji z katalogu Active Directory lub dodawania elementów do synchronizacji.  Wartość domyślna to name. <br><br>Jeśli różne kontenery używają różnych atrybutów dla swoich nazw, rozdziel poszczególne atrybuty nazw kontenera średnikami.  Pierwszy atrybut nazwy kontenera znaleziony w obiekcie kontenera pełni rolę jego nazwy wyświetlanej. |
 | Nazwa grupy zabezpieczeń |Wprowadź nazwę atrybutu, który zawiera nazwę w rekordzie grupy zabezpieczeń.  Wartość tego atrybutu jest wyświetlana na liście grupy zabezpieczeń podczas importowania pozycji z katalogu Active Directory lub dodawania elementów do synchronizacji.  Wartość domyślna to name. |
 | Nazwa użytkownika |Wprowadź nazwę atrybutu, który zawiera nazwę użytkownika w rekordzie użytkownika.  Wartość tego atrybutu jest używana jako nazwa użytkownika serwera usługi Multi-Factor Authentication.  Drugi atrybut może zostać określony jako atrybut zapasowy względem pierwszego.  Drugi atrybut jest używany tylko wtedy, gdy pierwszy atrybut nie zawiera wartości użytkownika.  Wartości domyślne to userPrincipalName i sAMAccountName. |
 | Imię |Wprowadź nazwę atrybutu, który zawiera imię w rekordzie użytkownika.  Wartość domyślna to givenName. |
 | Nazwisko |Wprowadź nazwę atrybutu, który zawiera nazwisko w rekordzie użytkownika.  Wartość domyślna to sn. |
-| Adres e-mail |Wprowadź nazwę atrybutu, który zawiera adres e-mail w rekordzie użytkownika.  Adres e-mail jest używany do przesłania użytkownikowi powitalnej wiadomości e-mail oraz w celu przesyłania wiadomości dotyczących aktualizacji.  Wartość domyślna to mail. |
-| Grupy użytkowników |Wprowadź nazwę atrybutu, który zawiera grupę użytkowników w rekordzie użytkownika.  Grupa użytkowników może służyć do filtrowania użytkowników w agencie i w raportach w portalu zarządzania serwerem usługi Multi-Factor Auth. |
+| Email address (Adres e-mail) |Wprowadź nazwę atrybutu, który zawiera adres e-mail w rekordzie użytkownika.  Adres e-mail jest używany do przesłania użytkownikowi powitalnej wiadomości e-mail oraz w celu przesyłania wiadomości dotyczących aktualizacji.  Wartość domyślna to mail. |
+| Grupa użytkowników |Wprowadź nazwę atrybutu, który zawiera grupę użytkowników w rekordzie użytkownika.  Grupa użytkowników może służyć do filtrowania użytkowników w agencie i w raportach w portalu zarządzania serwerem usługi Multi-Factor Auth. |
 | Opis |Wprowadź nazwę atrybutu, który zawiera opis w rekordzie użytkownika.  Opis jest wykorzystywany wyłącznie do celów wyszukiwania.  Wartością domyślną jest description. |
 | Język połączenia telefonicznego |Wprowadź nazwę atrybutu, który zawiera skróconą nazwę języka używanego na potrzeby połączeń głosowych użytkownika. |
 | Język wiadomości SMS |Wprowadź nazwę atrybutu, który zawiera skróconą nazwę języka używanego na potrzeby wiadomości SMS użytkownika. |
@@ -99,13 +99,13 @@ Atrybuty mogą być wprowadzane ręcznie i nie muszą odpowiadać atrybutom na l
 | Telefon komórkowy |Wprowadź nazwę atrybutu, który zawiera numer telefonu komórkowego w rekordzie użytkownika.  Wartość domyślna to mobile. |
 | Faks |Wprowadź nazwę atrybutu, który zawiera numer faksu w rekordzie użytkownika.  Wartość domyślna to facsimileTelephoneNumber. |
 | Telefon VoIP |Wprowadź nazwę atrybutu, który zawiera numer telefonu VoIP w rekordzie użytkownika.  Wartość domyślna to ipPhone. |
-| Niestandardowy |Wprowadź nazwę atrybutu, który zawiera niestandardowy numer telefonu w rekordzie użytkownika.  Pole jest domyślnie puste. |
-| Wewnętrzny |Wprowadź nazwę atrybutu, który zawiera numer wewnętrzny w rekordzie użytkownika.  Wartość pola numeru wewnętrznego jest używana wyłącznie dla podstawowego numeru telefonu.  Pole jest domyślnie puste. <br><br>Jeśli nie określono atrybutu Wewnętrzny, numer wewnętrzny można uwzględnić w atrybucie numeru telefonu. W takim przypadku poprzedź rozszerzenie znakiem „x”, aby zostało poprawnie przeanalizowane.  Na przykład wartość 555-123-4567 x890 zostanie zinterpretowana jako numer telefonu 555-123-4567 i numer wewnętrzny 890. |
+| Niestandardowe |Wprowadź nazwę atrybutu, który zawiera niestandardowy numer telefonu w rekordzie użytkownika.  Pole jest domyślnie puste. |
+| Rozszerzenie |Wprowadź nazwę atrybutu, który zawiera numer wewnętrzny w rekordzie użytkownika.  Wartość pola numeru wewnętrznego jest używana wyłącznie dla podstawowego numeru telefonu.  Pole jest domyślnie puste. <br><br>Jeśli nie określono atrybutu Wewnętrzny, numer wewnętrzny można uwzględnić w atrybucie numeru telefonu. W takim przypadku poprzedź rozszerzenie znakiem „x”, aby zostało poprawnie przeanalizowane.  Na przykład wartość 555-123-4567 x890 zostanie zinterpretowana jako numer telefonu 555-123-4567 i numer wewnętrzny 890. |
 | Przycisk Przywróć domyślne |Kliknij przycisk **Przywróć domyślne**, aby przywrócić wartości domyślne wszystkich atrybutów.  Ustawienia domyślne powinny działać prawidłowo z normalnym schematem usługi Active Directory lub ADAM. |
 
-Aby edytować atrybuty, kliknij przycisk **Edytuj** na karcie Atrybuty.  Spowoduje to otworzenie okna umożliwiającego edytowanie atrybutów. Wybierz przycisk **...** obok dowolnego atrybutu, aby otworzyć okno, w którym można określić atrybuty do wyświetlenia.
+To edit attributes, click **Edit** on the Attributes tab.  This brings up a window where you can edit the attributes. Wybierz przycisk **...** obok dowolnego atrybutu, aby otworzyć okno, w którym można określić atrybuty do wyświetlenia.
 
-![Edytuj mapowanie atrybutów katalogu na serwerze MFA](./media/howto-mfaserver-dir-ad/dirint4.png)
+![Edit directory attribute mapping in MFA Server](./media/howto-mfaserver-dir-ad/dirint4.png)
 
 ## <a name="synchronization"></a>Synchronizacja
 
@@ -117,14 +117,14 @@ Usługa Multi-Factor Auth ADSync wykorzystuje rozszerzenie serwera DirSync LDAP 
 
 Jeśli katalog LDAP obsługuje narzędzie DirSync i jest skonfigurowany do jego używania, sondowanie w poszukiwaniu zmian w zakresie użytkowników i grup zabezpieczeń będzie działać tak samo, jak w przypadku katalogu Active Directory.  Jeśli katalog LDAP nie obsługuje kontrolki DirSync, podczas każdego cyklu ma miejsce pełna synchronizacja.
 
-![Synchronizacja obiektów katalogu do serwera MFA](./media/howto-mfaserver-dir-ad/dirint5.png)
+![Synchronization of directory objects to MFA Server](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 Poniższa tabela zawiera dodatkowe informacje na temat każdego ustawienia na karcie Synchronizacja.
 
-| Cecha | Opis |
+| Funkcja | Opis |
 | --- | --- |
-| Włącz synchronizację z usługą Active Directory |W przypadku zaznaczenia tej opcji usługa serwera Multi-Factor Authentication okresowo sonduje pod kątem zmian w katalogu Active Directory. <br><br>Uwaga: Należy dodać co najmniej jeden element synchronizacji i wybrać opcję Synchronizuj teraz należy wykonać, zanim usługa Multi-Factor Auth Server zacznie przetwarzać zmiany. |
-| Synchronizuj co |Określ interwał czasu oczekiwania usługi Multi-Factor Auth Server między sondowaniem pod kątem zmian oraz przetwarzaniem zmian. <br><br> Uwaga: Interwał jest określany jako czas między rozpoczęciami poszczególnych cyklów.  Jeśli czas przetwarzania zmian przekracza interwał, nastąpi natychmiastowe rozpoczęcie kolejnego sondowania. |
+| Włącz synchronizację z usługą Active Directory |W przypadku zaznaczenia tej opcji usługa serwera Multi-Factor Authentication okresowo sonduje pod kątem zmian w katalogu Active Directory. <br><br>Uwaga: zanim usługa Multi-Factor Auth Server zacznie przetwarzać zmiany, należy dodać co najmniej jeden element synchronizacji i wybrać opcję Synchronizuj teraz. |
+| Synchronizuj co |Określ interwał czasu oczekiwania usługi Multi-Factor Auth Server między sondowaniem pod kątem zmian oraz przetwarzaniem zmian. <br><br> Uwaga: wskazany interwał to czas, jaki mija przed rozpoczęciem każdego kolejnego cyklu.  Jeśli czas przetwarzania zmian przekracza interwał, nastąpi natychmiastowe rozpoczęcie kolejnego sondowania. |
 | Usuń użytkowników, którzy nie są już zarejestrowani w usłudze Active Directory |W przypadku zaznaczenia tego pola usługa Multi-Factor Auth Server przetworzy relikty usuniętego użytkownika usługi Active Directory i spowoduje usunięcie powiązanego użytkownika Multi-Factor Auth Server. |
 | Zawsze wykonuj pełną synchronizację |W przypadku zaznaczenia tego pola usługa Multi-Factor Auth Server będzie zawsze wykonywać pełną synchronizację.  Gdy pole opcji nie jest zaznaczone, usługa Multi-Factor Auth Server będzie wykonywać synchronizację przyrostową, sondując tylko użytkowników, w przypadku których nastąpiły zmiany.  Domyślnie pole nie jest zaznaczone. <br><br>Jeśli pole nie jest zaznaczone, serwer usługi Azure MFA wykonuje synchronizację przyrostową tylko wtedy, gdy katalog obsługuje kontrolkę DirSync, a konto tworzące powiązanie z katalogiem ma uprawnienia do przeprowadzania zapytań przyrostowych DirSync.  Jeśli konto nie ma odpowiednich uprawnień lub synchronizacja obejmuje wiele domen, serwer usługi Azure MFA wykonuje pełną synchronizację. |
 | Wyłączenie lub usunięcie więcej niż X użytkowników powinno być zatwierdzane przez administratora. |Elementy synchronizacji można skonfigurować pod kątem wyłączania lub usuwania użytkowników, którzy nie są już członkami kontenera lub grupy zabezpieczeń elementu.  Ze względów bezpieczeństwa w sytuacji, gdy liczba użytkowników do wyłączenia lub usunięcia przekracza próg, może być wymagane zatwierdzenie operacji przez administratora.  W przypadku zaznaczenia pola zatwierdzenie jest wymagane dla określonego progu.  Wartość domyślna to 5, natomiast zakres wynosi od 1 do 999. <br><br> Zatwierdzenie jest ułatwione dzięki wysyłce wiadomości e-mail z powiadomieniem do administratorów. Powiadomienie e-mail zawiera instrukcje dotyczące przeglądania i zatwierdzania operacji wyłączania i usuwania użytkowników.  Po uruchomieniu interfejsu użytkownika usługi Multi-Factor Auth Server jest wyświetlany monit o zatwierdzenie. |
@@ -143,8 +143,8 @@ Przyciski Przenieś w górę i Przenieś w dół umożliwiają administratorowi 
 > [!TIP]
 > Po usunięciu elementów synchronizacji należy przeprowadzić pełną synchronizację.  Po określeniu kolejności elementów synchronizacji należy przeprowadzić pełną synchronizację.  Kliknij przycisk **Synchronizuj teraz**, aby przeprowadzić pełną synchronizację.
 
-## <a name="multi-factor-authentication-servers"></a>Serwery uwierzytelniania wieloskładnikowego
+## <a name="multi-factor-authentication-servers"></a>Multi-Factor Authentication servers
 
-Dodatkowe serwery Multi-Factor Authentication można skonfigurować do obsługi tworzenia kopii zapasowej serwer proxy RADIUS, serwer proxy LDAP, lub do uwierzytelniania w usługach IIS. Konfiguracja synchronizacji jest współdzielona przez wszystkich agentów. Jednak tylko jeden z tych agentów może być uruchomiona usługa serwera Multi-Factor Authentication. Ta karta służy do wyboru Serwer Multi-Factor Authentication, która powinna zostać włączona synchronizacja.
+Additional Multi-Factor Authentication servers may be set up to serve as a backup RADIUS proxy, LDAP proxy, or for IIS Authentication. Konfiguracja synchronizacji jest współdzielona przez wszystkich agentów. However, only one of these agents may have the Multi-Factor Authentication server service running. This tab allows you to select the Multi-Factor Authentication server that should be enabled for synchronization.
 
-![Związane z serwerów usługi Multi-Factor Authentication](./media/howto-mfaserver-dir-ad/dirint6.png)
+![Related Multi-Factor Authentication Servers](./media/howto-mfaserver-dir-ad/dirint6.png)

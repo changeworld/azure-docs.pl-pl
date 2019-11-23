@@ -1,27 +1,27 @@
 ---
-title: 'C#Samouczek: indeksowanie danych z baz danych usługi Azure SQL Database'
+title: 'Tutorial: Index data in C# from Azure SQL databases'
 titleSuffix: Azure Cognitive Search
-description: C#przykład kodu przedstawiający sposób nawiązywania połączenia z usługą Azure SQL Database, wyodrębniania danych z możliwością wyszukiwania i wczytywania ich do indeksu Wyszukiwanie poznawcze platformy Azure.
+description: In this C# tutorial, connect to Azure SQL database, extract searchable data, and load it into an Azure Cognitive Search index.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 4e8097eeb07420bee4ba30eb0fedbe5d4db2db9d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 36215403f99cc86ab4fb111ce95a6b3190063d7b
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113327"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406711"
 ---
-# <a name="c-tutorial-import-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Samouczek: Importowanie usługi Azure SQL Database przy użyciu indeksatorów usługi Azure Wyszukiwanie poznawcze
+# <a name="tutorial-import-azure-sql-database-in-c-using-azure-cognitive-search-indexers"></a>Tutorial: Import Azure SQL database in C# using Azure Cognitive Search indexers
 
-Dowiedz się, jak skonfigurować indeksator do wyodrębniania danych z możliwością wyszukiwania z przykładowej bazy danych SQL Azure. [Indeksatory](search-indexer-overview.md) są składnikiem platformy Azure wyszukiwanie poznawcze przeszukiwania zewnętrznych źródeł danych, wypełniania [indeksu wyszukiwania](search-what-is-an-index.md) zawartością. Dla wszystkich indeksatorów, indeksator dla Azure SQL Database jest najczęściej używany. 
+Learn how to configure an indexer for extracting searchable data from a sample Azure SQL database. [Indexers](search-indexer-overview.md) are a component of Azure Cognitive Search that crawl external data sources, populating a [search index](search-what-is-an-index.md) with content. Of all indexers, the indexer for Azure SQL Database is the most widely used. 
 
 Zaawansowanie w zakresie obsługi konfiguracji indeksatora jest pomocne, ponieważ upraszcza proces zapisu i obsługiwania kodu oraz zmniejsza jego ilość. Zamiast przygotowywać i wypychać zestaw danych JSON zgodny ze schematem, można dołączyć indeksator do źródła danych, poczekać, aż indeksator wyodrębni dane i wstawi je do indeksu, a następnie opcjonalnie uruchomić indeksator zgodnie z cyklicznym harmonogramem w celu zastosowania zmian w odpowiednim źródle.
 
-W tym samouczku Użyj [bibliotek klienckich platformy .net Wyszukiwanie poznawcze](https://aka.ms/search-sdk) i aplikacji konsolowej platformy .NET Core do wykonywania następujących zadań:
+In this tutorial, use the [Azure Cognitive Search .NET client libraries](https://aka.ms/search-sdk) and a .NET Core console application to perform the following tasks:
 
 > [!div class="checklist"]
 > * Dodawanie informacji o usłudze wyszukiwania do ustawień aplikacji
@@ -35,39 +35,39 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym przewodniku Szybki Start są używane następujące usługi, narzędzia i dane. 
+The following services, tools, and data are used in this quickstart. 
 
-[Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
+[Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this tutorial.
 
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) przechowuje zewnętrzne źródło danych używane przez indeksator. Przykładowe rozwiązanie udostępnia plik danych SQL w celu utworzenia tabeli. Kroki związane z tworzeniem usługi i bazy danych są dostępne w tym samouczku.
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) stores the external data source used by an indexer. Przykładowe rozwiązanie udostępnia plik danych SQL w celu utworzenia tabeli. Steps for creating the service and database are provided in this tutorial.
 
-Do uruchamiania przykładowego rozwiązania można użyć [programu Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), dowolnej wersji. Przykładowy kod i instrukcje zostały przetestowane w wersji bezpłatnej społeczności.
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), any edition, can be used to run the sample solution. Sample code and instructions were tested on the free Community edition.
 
-[Azure-Samples/Search — dotnet — wprowadzenie](https://github.com/Azure-Samples/search-dotnet-getting-started) zapewnia przykładowe rozwiązanie, które znajduje się w repozytorium GitHub usługi Azure Samples. Pobierz i Wyodrębnij rozwiązanie. Domyślnie rozwiązania są tylko do odczytu. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wyczyść atrybut tylko do odczytu, aby można było modyfikować pliki.
+[Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) provides the sample solution, located in the Azure samples GitHub repository. Download and extract the solution. By default, solutions are read-only. Right-click the solution and clear the read-only attribute so that you can modify files.
 
 > [!Note]
-> Jeśli używasz bezpłatnej usługi Wyszukiwanie poznawcze platformy Azure, masz ograniczone do trzech indeksów, trzech indeksatorów i trzech źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Upewnij się, że miejsce w usłudze jest wystarczające do zaakceptowania nowych zasobów.
+> If you are using the free Azure Cognitive Search service, you are limited to three indexes, three indexers, and three data sources. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Upewnij się, że miejsce w usłudze jest wystarczające do zaakceptowania nowych zasobów.
 
-## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
+## <a name="get-a-key-and-url"></a>Get a key and URL
 
-Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. Usługa wyszukiwania jest tworzona razem z usługą, więc jeśli do subskrypcji dodano Wyszukiwanie poznawcze platformy Azure, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. A search service is created with both, so if you added Azure Cognitive Search to your subscription, follow these steps to get the necessary information:
 
-1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
+1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, get the URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
-1. W obszarze **ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
+1. In **Settings** > **Keys**, get an admin key for full rights on the service. There are two interchangeable admin keys, provided for business continuity in case you need to roll one over. You can use either the primary or secondary key on requests for adding, modifying, and deleting objects.
 
-![Pobieranie punktu końcowego HTTP i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego HTTP i klucza dostępu")
+![Get an HTTP endpoint and access key](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
 
-Wszystkie żądania wymagają klucza API dla każdego żądania wysyłanego do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
+All requests require an api-key on every request sent to your service. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
 ## <a name="set-up-connections"></a>Konfigurowanie połączeń
 Informacje o połączeniu z wymaganymi usługami są określane w pliku **appsettings.json** w rozwiązaniu. 
 
-1. W programie Visual Studio Otwórz plik **DotNetHowToIndexers. sln** .
+1. In Visual Studio, open the **DotNetHowToIndexers.sln** file.
 
-1. W Eksplorator rozwiązań otwórz plik **appSettings. JSON** , aby można było wypełnić każde ustawienie.  
+1. In Solution Explorer, open **appsettings.json** so that you can populate each setting.  
 
-Pierwsze dwa wpisy, które można teraz wypełnić, przy użyciu adresu URL i kluczy administracyjnych usługi Azure Wyszukiwanie poznawcze. Mając punkt końcowy `https://mydemo.search.windows.net`, nazwa usługi do udostępnienia jest `mydemo`.
+The first two entries you can fill in right now, using the URL and admin keys for your Azure Cognitive Search service. Given an endpoint of `https://mydemo.search.windows.net`, the service name to provide is `mydemo`.
 
 ```json
 {
@@ -77,17 +77,17 @@ Pierwsze dwa wpisy, które można teraz wypełnić, przy użyciu adresu URL i kl
 }
 ```
 
-Ostatni wpis wymaga istniejącej bazy danych. Utworzysz ją w następnym kroku.
+The last entry requires an existing database. You'll create it in the next step.
 
-## <a name="prepare-sample-data"></a>Przygotowywanie przykładowych danych
+## <a name="prepare-sample-data"></a>Prepare sample data
 
-W tym kroku zostanie utworzone zewnętrzne źródło danych, które indeksator może przeszukiwać. Przy użyciu witryny Azure Portal i pliku *hotels.sql* z przykładu można utworzyć zestaw danych w bazie danych Azure SQL Database. Usługa Azure Wyszukiwanie poznawcze zużywa spłaszczone zestawy wierszy, takie jak wygenerowane na podstawie widoku lub zapytania. Plik SQL w przykładowym rozwiązaniu umożliwia utworzenie i wypełnienie pojedynczej tabeli.
+W tym kroku zostanie utworzone zewnętrzne źródło danych, które indeksator może przeszukiwać. Przy użyciu witryny Azure Portal i pliku *hotels.sql* z przykładu można utworzyć zestaw danych w bazie danych Azure SQL Database. Azure Cognitive Search consumes flattened rowsets, such as one generated from a view or query. Plik SQL w przykładowym rozwiązaniu umożliwia utworzenie i wypełnienie pojedynczej tabeli.
 
 W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz danych — obydwa te elementy zostaną utworzone w kroku 2. Jeśli zasób istnieje można również dodać do niego tabelę hotels, zaczynając pracę od kroku 4.
 
-1. [Zaloguj się do Azure Portal](https://portal.azure.com/). 
+1. [Sign in to the Azure portal](https://portal.azure.com/). 
 
-2. Znajdź lub Utwórz **Azure SQL Database** , aby utworzyć bazę danych, serwer i grupę zasobów. Możesz użyć wartości domyślnych i warstwy cenowej najniższego poziomu. Jedną z zalet tworzenia serwera jest możliwość określenia nazwy i hasła użytkownika administratora. Są one niezbędne do utworzenia i załadowania tabel w późniejszym kroku.
+2. Find or create an **Azure SQL Database** to create a database, server, and resource group. Możesz użyć wartości domyślnych i warstwy cenowej najniższego poziomu. Jedną z zalet tworzenia serwera jest możliwość określenia nazwy i hasła użytkownika administratora. Są one niezbędne do utworzenia i załadowania tabel w późniejszym kroku.
 
    ![Strona nowej bazy danych](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 
@@ -97,7 +97,7 @@ W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz d
 
    ![Strona bazy danych SQL Database](./media/search-indexer-tutorial/hotels-db.png)
 
-4. W okienku nawigacji kliknij pozycję **Edytor zapytań (wersja zapoznawcza)** .
+4. On the navigation pane, click **Query editor (preview)** .
 
 5. Kliknij pozycję **Zaloguj się**, a następnie wprowadź nazwę użytkownika i hasło administratora serwera.
 
@@ -135,7 +135,7 @@ W poniższym ćwiczeniu założono, że nie ma istniejących serwerów ani baz d
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-Gdy dane i ustawienia konfiguracji są stosowane, przykładowy program w **DotNetHowToIndexers. sln** jest gotowy do kompilowania i uruchamiania. Przed wykonaniem tych czynności poświęć chwilę na zapoznanie się z definicjami indeksu i indeksatora dla tego przykładu. Odpowiedni kod znajduje się w dwóch plikach:
+Once the data and configuration settings are in place, the sample program in **DotNetHowToIndexers.sln** is ready to build and run. Przed wykonaniem tych czynności poświęć chwilę na zapoznanie się z definicjami indeksu i indeksatora dla tego przykładu. Odpowiedni kod znajduje się w dwóch plikach:
 
   + **hotel.cs**, który zawiera schemat definiujący indeks
   + **Program.cs**, który zawiera funkcje służące do tworzenia struktur i zarządzania nimi w usłudze
@@ -153,13 +153,13 @@ public string HotelName { get; set; }
 
 Schemat może również obejmować inne elementy, w tym profile oceniania na potrzeby poprawiania wyniku wyszukiwania, niestandardowe analizatory i inne konstrukcje. Jednak na nasze potrzeby zdefiniowaliśmy bardzo prosty schemat, który zawiera tylko pola znalezione w przykładowych bazach danych.
 
-W tym samouczku indeksator ściąga dane z jednego źródła danych. W tym celu można dołączyć wiele indeksatorów do tego samego indeksu, tworząc skonsolidowany indeks z możliwością wyszukiwania z wielu źródeł danych. Możesz użyć tej samej pary indeks-indeksator różniącej się tylko źródłami danych lub jednego indeksu z różnymi kombinacjami indeksatora i źródła danych, w zależności od tego, w jakim obszarze chcesz zachować elastyczność.
+W tym samouczku indeksator ściąga dane z jednego źródła danych. In practice, you can attach multiple indexers to the same index, creating a consolidated searchable index from multiple data sources. Możesz użyć tej samej pary indeks-indeksator różniącej się tylko źródłami danych lub jednego indeksu z różnymi kombinacjami indeksatora i źródła danych, w zależności od tego, w jakim obszarze chcesz zachować elastyczność.
 
 ### <a name="in-programcs"></a>W pliku Program.cs
 
-Program główny zawiera logikę tworzenia klienta, indeksu, źródła danych i indeksatora. Kod sprawdza i usuwa istniejące zasoby o tej samej nazwie, przy założeniu, że ten program może być uruchamiany wiele razy.
+The main program includes logic for creating a client, an index, a data source, and an indexer. Kod sprawdza i usuwa istniejące zasoby o tej samej nazwie, przy założeniu, że ten program może być uruchamiany wiele razy.
 
-Obiekt źródła danych jest skonfigurowany przy użyciu ustawień specyficznych dla zasobów usługi Azure SQL Database, w tym [indeksowania przyrostowego](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) do korzystania z wbudowanych [funkcji wykrywania zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) w usłudze Azure SQL. Baza danych hoteli demonstracyjna w usłudze Azure SQL zawiera kolumnę "Usuwanie trwałe" o nazwie **IsDeleted**. Gdy ta kolumna ma wartość true w bazie danych, indeksator usuwa odpowiedni dokument z indeksu Wyszukiwanie poznawcze platformy Azure.
+The data source object is configured with settings that are specific to Azure SQL database resources, including [incremental indexing](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) for leveraging the built-in [change detection features](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) of Azure SQL. The demo hotels database in Azure SQL has a "soft delete" column named **IsDeleted**. When this column is set to true in the database, the indexer removes the corresponding document from the Azure Cognitive Search index.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -176,7 +176,7 @@ Obiekt źródła danych jest skonfigurowany przy użyciu ustawień specyficznych
   searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
   ```
 
-Obiekt indeksatora to platform-niezależny od, w których konfiguracja, planowanie i wywoływanie są takie same, niezależnie od źródła. Ten przykład indeksatora zawiera harmonogram, opcję resetowania, która czyści historię indeksatora, i wywołuje metodę, aby natychmiast utworzyć i uruchomić indeksator.
+An indexer object is platform-agnostic, where  configuration, scheduling, and invocation are the same regardless of the source. This example indexer includes a schedule, a reset option that clears indexer history, and calls a method to create and run the indexer immediately.
 
   ```csharp
   Console.WriteLine("Creating Azure SQL indexer...");
@@ -230,7 +230,7 @@ Kod jest uruchamiany lokalnie w programie Visual Studio. Łączy się on z usłu
 
 + Informacje o połączeniu z bazą danych w pliku **appsettings.json**. Powinny to być parametry połączenia ADO.NET uzyskane z portalu i zmodyfikowane w celu uwzględnienia nazwy użytkownika i hasła, które obowiązują w przypadku Twojej bazy danych. Konto użytkownika musi mieć uprawnienia do pobierania danych.
 
-+ Limity zasobów. Należy przypomnieć, że warstwa Bezpłatna ma limity trzech indeksów, indeksatorów i źródeł danych. W usłudze obsługującej maksymalny limit nie można tworzyć nowych obiektów.
++ Limity zasobów. Recall that the Free tier has limits of 3 indexes, indexers, and data sources. W usłudze obsługującej maksymalny limit nie można tworzyć nowych obiektów.
 
 ## <a name="search-the-index"></a>Przeszukiwanie indeksu 
 
@@ -254,18 +254,18 @@ W witrynie Azure Portal na stronie przeglądu usługi wyszukiwania kliknij pozyc
 
 W portalu są wyświetlane wszystkie indeksatory, w tym właśnie utworzony przy użyciu programu. Możesz otworzyć definicję indeksatora i wyświetlić źródło danych lub skonfigurować harmonogram odświeżania w celu zidentyfikowania nowych i zmienionych wierszy.
 
-1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania kliknij linki do **indeksów**, **indeksatorów**i **źródeł danych**.
-3. Wybierz poszczególne obiekty, aby wyświetlić lub zmodyfikować ustawienia konfiguracji.
+1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, click the links for **Indexes**, **Indexers**, and **Data Sources**.
+3. Select individual objects to view or modify configuration settings.
 
    ![Kafelki Indeksatory i Źródła danych](./media/search-indexer-tutorial/tiles-portal.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Najszybszym sposobem oczyszczenia po samouczku jest usunięcie grupy zasobów zawierającej usługę Wyszukiwanie poznawcze platformy Azure. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. Nazwa grupy zasobów w portalu znajduje się na stronie Przegląd usługi Azure Wyszukiwanie poznawcze.
+The fastest way to clean up after a tutorial is by deleting the resource group containing the Azure Cognitive Search service. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. In the portal, the resource group name is on the Overview page of Azure Cognitive Search service.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Można dołączyć algorytmy wzbogacania AI do potoku indeksatora. Aby wykonać następny krok, przejdź do kolejnego samouczka.
+You can attach AI enrichment algorithms to an indexer pipeline. Aby wykonać następny krok, przejdź do kolejnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Indexing Documents in Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (Indeksowanie dokumentów w usłudze Azure Blob Storage)

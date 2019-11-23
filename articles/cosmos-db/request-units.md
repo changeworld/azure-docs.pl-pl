@@ -1,78 +1,78 @@
 ---
-title: Jednostki żądań i przepływność w Azure Cosmos DB
-description: Dowiedz się, jak określić i oszacować wymagania jednostki żądań w Azure Cosmos DB
+title: Request Units and throughput in Azure Cosmos DB
+description: Learn about how to specify and estimate Request Unit requirements in Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 6e5d95a47261445e3031f55368f4e2cd8e2830a7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754863"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383108"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Jednostki żądań w Azure Cosmos DB
+# <a name="request-units-in-azure-cosmos-db"></a>Request Units in Azure Cosmos DB
 
-Dzięki Azure Cosmos DB płacisz za zainicjowaną przepływność i ilość miejsca do magazynowania zużywanego co godzinę. Obsługa przepływności musi być dostępna, aby zapewnić, że dla bazy danych usługi Azure Cosmos są wystarczające zasoby systemowe. Potrzebujesz wystarczającej ilości zasobów, aby spełnić lub przekroczyć [Azure Cosmos DB umowy SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
+With Azure Cosmos DB, you pay for the throughput you provision and the storage you consume on an hourly basis. Throughput must be provisioned to ensure that sufficient system resources are available for your Azure Cosmos database at all times. You need enough resources to meet or exceed the [Azure Cosmos DB SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
 
-Azure Cosmos DB obsługuje wiele interfejsów API, takich jak SQL, MongoDB, Cassandra, Gremlin i Table. Każdy interfejs API ma swój własny zestaw operacji bazy danych. Te operacje obejmują między innymi odczyty punktów prostych i zapisów w złożonych zapytaniach. Każda operacja bazy danych zużywa zasoby systemowe na podstawie złożoności operacji. 
+Azure Cosmos DB supports many APIs, such as SQL, MongoDB, Cassandra, Gremlin, and Table. Each API has its own set of database operations. These operations range from simple point reads and writes to complex queries. Each database operation consumes system resources based on the complexity of the operation. 
 
-Koszt wszystkich operacji bazy danych jest znormalizowany przez Azure Cosmos DB i jest wyrażony przez *jednostki żądania* (lub jednostek ru, dla krótkich). Jednostek ru na sekundę można traktować jako walutę dla przepływności. Jednostek ru na sekundę to waluta oparta na stawkach. Jest to abstrakcyjne zasoby systemowe, takie jak procesor CPU, operacje we/wy i pamięć, które są wymagane do wykonania operacji bazy danych obsługiwanych przez Azure Cosmos DB. 
+The cost of all database operations is normalized by Azure Cosmos DB and is expressed by *Request Units* (or RUs, for short). You can think of RUs per second as the currency for throughput. RUs per second is a rate-based currency. It abstracts the system resources such as CPU, IOPS, and memory that are required to perform the database operations supported by Azure Cosmos DB. 
 
-Koszt odczytania 1 KB elementu to 1 jednostka żądania (lub 1 RU). Wszystkie inne operacje bazy danych są podobne do kosztów za pomocą jednostek ru. Niezależnie od tego, który interfejs API jest używany do współpracy z kontenerem usługi Azure Cosmos, koszty są zawsze mierzone przez jednostek ru. Niezależnie od tego, czy operacja bazy danych jest zapisem, odczytem lub zapytaniem, koszty są zawsze mierzone w jednostek ru.
+The cost to read a 1 KB item is 1 Request Unit (or 1 RU). A minimum of 10 RU/s is required to store each 1 GB of data. All other database operations are similarly assigned a cost using RUs. No matter which API you use to interact with your Azure Cosmos container, costs are always measured by RUs. Whether the database operation is a write, read, or query, costs are always measured in RUs.
 
-Na poniższej ilustracji przedstawiono ogólny pomysł jednostek ru:
+The following image shows the high-level idea of RUs:
 
-![Operacje bazy danych zużywają jednostki żądań](./media/request-units/request-units.png)
+![Database operations consume Request Units](./media/request-units/request-units.png)
 
-Aby zarządzać pojemnością i planować ją, Azure Cosmos DB zapewnia, że liczba jednostek ru dla danej operacji bazy danych w danym zestawie danych jest deterministyczna. Możesz sprawdzić nagłówek odpowiedzi, aby śledzić liczbę jednostek ru używanych przez dowolną operację bazy danych. Gdy zrozumiesz [czynniki wpływające na opłaty za usługę ru](request-units.md#request-unit-considerations) i wymagania dotyczące przepływności aplikacji, możesz efektywnie uruchamiać swoją aplikację.
+To manage and plan capacity, Azure Cosmos DB ensures that the number of RUs for a given database operation over a given dataset is deterministic. You can examine the response header to track the number of RUs that are consumed by any database operation. When you understand the [factors that affect RU charges](request-units.md#request-unit-considerations) and your application's throughput requirements, you can run your application cost effectively.
 
-Liczba jednostek ru dla aplikacji jest inicjowana na sekundę w przyrostach wynoszących 100 jednostek ru na sekundę. Aby skalować zainicjowaną przepływność dla aplikacji, możesz w dowolnym momencie zwiększyć lub zmniejszyć liczbę jednostek ru. Możesz skalować przyrosty lub zmniejszyć liczbę 100 jednostek ru. Zmiany można wprowadzać programowo lub za pomocą Azure Portal. Opłaty są naliczane godzinowo.
+You provision the number of RUs for your application on a per-second basis in increments of 100 RUs per second. To scale the provisioned throughput for your application, you can increase or decrease the number of RUs at any time. You can scale in increments or decrements of 100 RUs. You can make your changes either programmatically or by using the Azure portal. You are billed on an hourly basis.
 
-Przepustowość można zainicjować na dwa różne szczegóły: 
+You can provision throughput at two distinct granularities: 
 
-* **Kontenery**: Aby uzyskać więcej informacji, zobacz temat [udostępnianie przepływności w kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
-* **Bazy danych**: Aby uzyskać więcej informacji, zobacz temat [udostępnianie przepływności w bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
+* **Containers**: For more information, see [Provision throughput on an Azure Cosmos container](how-to-provision-container-throughput.md).
+* **Databases**: For more information, see [Provision throughput on an Azure Cosmos database](how-to-provision-database-throughput.md).
 
-## <a name="request-unit-considerations"></a>Zagadnienia dotyczące jednostki żądania
+## <a name="request-unit-considerations"></a>Request Unit considerations
 
-Podczas szacowania liczby jednostek ru na sekundę do aprowizacji należy wziąć pod uwagę następujące czynniki:
+While you estimate the number of RUs per second to provision, consider the following factors:
 
-* **Rozmiar elementu**: w miarę wzrostu rozmiaru elementu, liczba jednostek ru zużytych do odczytu lub zapisu elementu również rośnie.
+* **Item size**: As the size of an item increases, the number of RUs consumed to read or write the item also increases.
 
-* **Indeksowanie elementów**: Domyślnie każdy element jest automatycznie indeksowany. Jeśli zdecydujesz się nie indeksować niektórych elementów w kontenerze, są używane mniej jednostek ru.
+* **Item indexing**: By default, each item is automatically indexed. Fewer RUs are consumed if you choose not to index some of your items in a container.
 
-* **Liczba właściwości elementów**: przy założeniu, że domyślne indeksowanie jest we wszystkich właściwościach, liczba jednostek ru zużytych do napisania elementu zwiększa się wraz ze wzrostem liczby właściwości elementu.
+* **Item property count**: Assuming the default indexing is on all properties, the number of RUs consumed to write an item increases as the item property count increases.
 
-* **Właściwości indeksowane**: zasady indeksu dla każdego kontenera określają, które właściwości są indeksowane domyślnie. Aby zmniejszyć zużycie RU dla operacji zapisu, należy ograniczyć liczbę indeksowanych właściwości.
+* **Indexed properties**: An index policy on each container determines which properties are indexed by default. To reduce the RU consumption for write operations, limit the number of indexed properties.
 
-* **Spójność danych**: mocne i ograniczone nieodświeżone poziomy spójności zużywają około dwa razy więcej jednostek ru podczas wykonywania operacji odczytu w porównaniu z innymi obniżonymi poziomami spójności.
+* **Data consistency**: The strong and bounded staleness consistency levels consume approximately two times more RUs while performing read operations when compared to that of other relaxed consistency levels.
 
-* **Wzorce zapytań**: złożoność zapytania wpływa na liczbę jednostek ru używanych dla operacji. Czynniki wpływające na koszt operacji związanych z kwerendą obejmują: 
+* **Query patterns**: The complexity of a query affects how many RUs are consumed for an operation. Factors that affect the cost of query operations include: 
     
-    - Liczba wyników zapytania
-    - Liczba predykatów
-    - Charakter predykatów
-    - Liczba funkcji zdefiniowanych przez użytkownika
-    - Rozmiar danych źródłowych.
-    - Rozmiar zestawu wyników.
+    - The number of query results
+    - The number of predicates
+    - The nature of the predicates
+    - The number of user-defined functions
+    - The size of the source data
+    - The size of the result set
     - Projekcje
 
-  Azure Cosmos DB gwarantuje, że te same zapytania dotyczące tych samych danych są zawsze kosztami tej samej liczby jednostek ru przy powtarzanych wykonaniach.
+  Azure Cosmos DB guarantees that the same query on the same data always costs the same number of RUs on repeated executions.
 
-* **Użycie skryptu**: podobnie jak w przypadku kwerend, procedury składowane i wyzwalacze wykorzystują jednostek RU w oparciu o złożoność wykonywanych operacji. Podczas opracowywania aplikacji Sprawdź [nagłówek opłata za żądanie](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) , aby lepiej zrozumieć, jak dużo zdolności produkcyjnych zużywa każda operacja.
+* **Script usage**: As with queries, stored procedures and triggers consume RUs based on the complexity of the operations that are performed. As you develop your application, inspect the [request charge header](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) to better understand how much RU capacity each operation consumes.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [tym, jak zainicjować przepływność w kontenerach i bazach danych usługi Azure Cosmos](set-throughput.md).
-* Dowiedz się więcej na temat [partycji logicznych](partition-data.md).
-* Dowiedz się więcej o tym, jak [globalnie skalować zainicjowaną przepływność](scaling-throughput.md).
-* Dowiedz się, jak [zainicjować przepływność na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
-* Dowiedz się, jak [udostępnić przepływność w bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
-* Dowiedz się [, jak znaleźć opłatę jednostkową żądania dla operacji](find-request-unit-charge.md).
-* Informacje na temat [optymalizowania alokowanego kosztu przepływności w Azure Cosmos DB](optimize-cost-throughput.md).
-* Dowiedz się [, jak zoptymalizować operacje odczytu i zapisu w Azure Cosmos DB](optimize-cost-reads-writes.md).
-* Dowiedz się, jak [zoptymalizować koszt zapytań w Azure Cosmos DB](optimize-cost-queries.md).
-* Dowiedz się [, jak używać metryk do monitorowania przepływności](use-metrics.md).
+* Learn more about how to [provision throughput on Azure Cosmos containers and databases](set-throughput.md).
+* Learn more about [logical partitions](partition-data.md).
+* Learn more about how to [globally scale provisioned throughput](scaling-throughput.md).
+* Learn how to [provision throughput on an Azure Cosmos container](how-to-provision-container-throughput.md).
+* Learn how to [provision throughput on an Azure Cosmos database](how-to-provision-database-throughput.md).
+* Learn how to [find the request unit charge for an operation](find-request-unit-charge.md).
+* Learn how to [optimize provisioned throughput cost in Azure Cosmos DB](optimize-cost-throughput.md).
+* Learn how to [optimize reads and writes cost in Azure Cosmos DB](optimize-cost-reads-writes.md).
+* Learn how to [optimize query cost in Azure Cosmos DB](optimize-cost-queries.md).
+* Learn how to [use metrics to monitor throughput](use-metrics.md).

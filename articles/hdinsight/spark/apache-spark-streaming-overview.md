@@ -1,60 +1,60 @@
 ---
-title: Przesyłanie strumieniowe Spark w usłudze Azure HDInsight
-description: Jak używać aplikacji przesyłania strumieniowego Apache Spark w klastrach usługi HDInsight Spark.
-ms.service: hdinsight
+title: Spark Streaming in Azure HDInsight
+description: How to use Apache Spark Streaming applications on HDInsight Spark clusters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/11/2019
-ms.openlocfilehash: f990e5eb2761f1743c2731f499ecc341990edf53
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 11/20/2019
+ms.openlocfilehash: 521d72642a27995d096402a4ca0e4af632b0788c
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814000"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406263"
 ---
-# <a name="overview-of-apache-spark-streaming"></a>Omówienie Apache Spark przesyłania strumieniowego
+# <a name="overview-of-apache-spark-streaming"></a>Overview of Apache Spark Streaming
 
-[Apache Spark](https://spark.apache.org/) Funkcja przesyłania strumieniowego zapewnia przetwarzanie strumieni danych w klastrach usługi HDInsight Spark z gwarancją, że każde zdarzenie wejściowe jest przetwarzane dokładnie jeden raz, nawet jeśli wystąpi awaria węzła. Strumień Spark to długotrwałe zadanie, które odbiera dane wejściowe z wielu różnych źródeł, w tym Azure Event Hubs, IoT Hub platformy Azure, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ](http://zeromq.org/), RAW Socket TCP lub z monitorowania [Apache Systemy plików PRZĘDZy usługi Hadoop](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) . W przeciwieństwie do samego procesu sterowanego zdarzeniami, Strumień Spark przetwarza dane wejściowe w oknach czasu, takich jak 2-sekundowy wycink, a następnie przekształca każdą partię danych przy użyciu map, zmniejszania, sprzęgania i wyodrębniania operacji. Strumień Spark zapisuje następnie przekształcone dane do systemów plików, baz danych, pulpitów nawigacyjnych i konsoli programu.
+[Apache Spark](https://spark.apache.org/) Streaming provides data stream processing on HDInsight Spark clusters, with a guarantee that any input event is processed exactly once, even if a node failure occurs. A Spark Stream is a long-running job that receives input data from a wide variety of sources, including Azure Event Hubs, an Azure IoT Hub, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ](http://zeromq.org/), raw TCP sockets, or from monitoring [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) filesystems. Unlike a solely event-driven process, a Spark Stream batches input data into time windows, such as a 2-second slice, and then transforms each batch of data using map, reduce, join, and extract operations. The Spark Stream then writes the transformed data out to filesystems, databases, dashboards, and the console.
 
-![Przetwarzanie strumieni z użyciem usługi HDInsight i usługi przesyłania strumieniowego Spark](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
+![Stream Processing with HDInsight and Spark Streaming](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Aplikacje strumieniowe Spark muszą czekać część sekund, aby zebrać każdą *mikropartię* zdarzeń przed wysłaniem tej partii na potrzeby przetwarzania. Z kolei aplikacja oparta na zdarzeniach natychmiast przetwarza każde zdarzenie. Opóźnienie przesyłania strumieniowego Spark jest zwykle w ciągu kilku sekund. Zalety metody Micro-Batch to wydajniejsze przetwarzanie danych i prostsze obliczenia zagregowane.
+Spark Streaming applications must wait a fraction of a second to collect each *micro-batch* of events before sending that batch on for processing. In contrast, an event-driven application processes each event immediately. Spark Streaming latency is typically under a few seconds. The benefits of the micro-batch approach are more efficient data processing and simpler aggregate calculations.
 
-## <a name="introducing-the-dstream"></a>Wprowadzenie do DStream
+## <a name="introducing-the-dstream"></a>Introducing the DStream
 
-Przesyłanie strumieniowe Spark reprezentuje ciągły strumień danych przychodzących przy użyciu *strumienia zdyskretyzowanej* o nazwie DStream. DStream można utworzyć ze źródeł danych wejściowych, takich jak Event Hubs lub Kafka, lub stosując przekształcenia na innym DStream.
+Spark Streaming represents a continuous stream of incoming data using a *discretized stream* called a DStream. A DStream can be created from input sources such as Event Hubs or Kafka, or by applying transformations on another DStream.
 
-DStream zapewnia warstwę abstrakcji na podstawie nieprzetworzonych danych zdarzeń. 
+A DStream provides a layer of abstraction on top of the raw event data.
 
-Zacznij od pojedynczego zdarzenia, zapoznaj się z odczytem temperatury ze połączonego termostatu. Po odebraniu tego zdarzenia w aplikacji przesyłania strumieniowego Spark zdarzenie jest przechowywane w niezawodny sposób, gdzie jest replikowane w wielu węzłach. Odporność na uszkodzenia gwarantuje, że awaria dowolnego pojedynczego węzła nie spowoduje utraty zdarzenia. Platforma Spark używa struktury danych, która dystrybuuje dane między wieloma węzłami w klastrze, gdzie każdy węzeł zwykle utrzymuje własne dane w pamięci w celu uzyskania najlepszej wydajności. Ta struktura danych jest nazywana *rozproszonym zestawem danych* (RDD).
+Start with a single event, say a temperature reading from a connected thermostat. When this event arrives at your Spark Streaming application, the event is stored in a reliable way, where it's replicated on multiple nodes. This fault-tolerance ensures that the failure of any single node won't result in the loss of your event. The Spark core uses a data structure that distributes data across multiple nodes in the cluster, where each node generally maintains its own data in-memory for best performance. This data structure is called a *resilient distributed dataset* (RDD).
 
-Każdy RDD reprezentuje zdarzenia zbierane przez zdefiniowany przez użytkownika czas o nazwie *Interwał partii*. Po upływie każdego interwału partii tworzony jest nowy RDD, który zawiera wszystkie dane z tego interwału. Ciągły zestaw odporne są gromadzone w DStream. Jeśli na przykład interwał wsadowy jest dłuższy niż jedna sekunda, DStream emituje wsadowe co sekundę zawierające jedną RDD, która zawiera wszystkie dane, które zostały odebrane w ciągu sekundy. Podczas przetwarzania DStream, zdarzenie temperatury pojawia się w jednej z tych partii. Aplikacja Spark Streaming przetwarza partie zawierające zdarzenia i ostatecznie działa na danych przechowywanych w każdym RDD.
+Each RDD represents events collected over a user-defined timeframe called the *batch interval*. As each batch interval elapses, a new RDD is produced that contains all the data from that interval. The continuous set of RDDs are collected into a DStream. For example, if the batch interval is one second long, your DStream emits a batch every second containing one RDD that contains all the data ingested during that second. When processing the DStream, the temperature event appears in one of these batches. A Spark Streaming application processes the batches that contain the events and ultimately acts on the data stored in each RDD.
 
-![Przykład DStream ze zdarzeniami temperatury](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+![Example DStream with Temperature Events](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
-## <a name="structure-of-a-spark-streaming-application"></a>Struktura aplikacji do przesyłania strumieniowego Spark
+## <a name="structure-of-a-spark-streaming-application"></a>Structure of a Spark Streaming application
 
-Aplikacja do przesyłania strumieniowego Spark to długotrwała aplikacja, która odbiera dane ze źródeł pozyskiwania, stosuje przekształcenia do przetwarzania danych, a następnie wypchnięcie danych do jednego lub większej liczby miejsc docelowych. Struktura aplikacji przesyłania strumieniowego Spark ma część statyczną i część dynamiczną. Część statyczna określa, skąd pochodzą dane, jakie przetwarzanie ma być wykonywane na danych, oraz miejsce, w którym powinny się znaleźć wyniki. W części dynamicznej jest uruchomiona aplikacja przez czas oczekiwania na sygnał zatrzymania.
+A Spark Streaming application is a long-running application that receives data from ingest sources, applies transformations to process the data, and then pushes the data out to one or more destinations. The structure of a Spark Streaming application has a static part and a dynamic part. The static part  defines where the data comes from, what processing to do on the data, and where the results should go. The dynamic part is running  the application indefinitely, waiting for a stop signal.
 
-Na przykład następująca prosta aplikacja odbiera wiersz tekstu za pośrednictwem gniazda TCP i zlicza liczbę wyświetlanych plików.
+For example, the following simple application  receives a line of text over a TCP socket and counts the number of times each word appears.
 
-### <a name="define-the-application"></a>Definiowanie aplikacji
+### <a name="define-the-application"></a>Define the application
 
-Definicja logiki aplikacji zawiera cztery kroki:
+The application logic definition has four steps:
 
-1. Utwórz element StreamingContext.
-2. Utwórz element DStream z StreamingContext.
-3. Zastosuj przekształcenia do DStream.
-4. Wyprowadza wyniki.
+1. Create a StreamingContext.
+2. Create a DStream from the StreamingContext.
+3. Apply transformations to the DStream.
+4. Output the results.
 
-Ta definicja jest statyczna i żadne dane nie są przetwarzane do momentu uruchomienia aplikacji.
+This definition is static, and no data is processed until you run the application.
 
-#### <a name="create-a-streamingcontext"></a>Utwórz StreamingContext
+#### <a name="create-a-streamingcontext"></a>Create a StreamingContext
 
-Utwórz StreamingContext z SparkContext, który wskazuje na klaster. Podczas tworzenia StreamingContext należy określić rozmiar partii w sekundach, na przykład:  
+Create a StreamingContext from the SparkContext that points to your cluster. When creating a StreamingContext, you specify the size of the batch in seconds, for example:  
 
 ```
 import org.apache.spark._
@@ -63,17 +63,17 @@ import org.apache.spark.streaming._
 val ssc = new StreamingContext(sc, Seconds(1))
 ```
 
-#### <a name="create-a-dstream"></a>Utwórz DStream
+#### <a name="create-a-dstream"></a>Create a DStream
 
-Za pomocą wystąpienia StreamingContext Utwórz DStream wejściowy dla źródła danych wejściowych. W takim przypadku aplikacja jest oglądana pod kątem wyglądu nowych plików w domyślnym magazynie dołączonym do klastra usługi HDInsight.
+With the StreamingContext instance, create an input DStream for your input source. In this case, the application is watching for the appearance of new files in the default storage attached to the HDInsight cluster.
 
 ```
 val lines = ssc.textFileStream("/uploads/Test/")
 ```
 
-#### <a name="apply-transformations"></a>Zastosuj przekształcenia
+#### <a name="apply-transformations"></a>Apply transformations
 
-Przetwarzanie przetwarzania można zaimplementować, stosując przekształcenia na DStream. Ta aplikacja odbiera jeden wiersz tekstu jednocześnie z pliku, dzieli każdy wiersz na wyrazy, a następnie używa wzorca ze zmniejszeniem mapy do zliczania, ile razy pojawia się każdy wyraz.
+You implement the processing by applying transformations on the DStream. This application receives one line of text at a time from the file, splits each line into words, and then uses a map-reduce pattern to count the number of times each word appears.
 
 ```
 val words = lines.flatMap(_.split(" "))
@@ -81,9 +81,9 @@ val pairs = words.map(word => (word, 1))
 val wordCounts = pairs.reduceByKey(_ + _)
 ```
 
-#### <a name="output-results"></a>Wyniki wyjściowe
+#### <a name="output-results"></a>Output results
 
-Wypchnij wyniki transformacji do systemów docelowych, stosując operacje wyjściowe. W takim przypadku wynik każdego przebiegu przez obliczenie jest drukowany w danych wyjściowych konsoli.
+Push the transformation results out to the destination systems by applying output operations. In this case,  the result of each run through the computation is printed in the console output.
 
 ```
 wordCounts.print()
@@ -91,16 +91,16 @@ wordCounts.print()
 
 ### <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację przesyłania strumieniowego i uruchom do momentu otrzymania sygnału zakończenia.
+Start the streaming application and run until a termination signal is received.
 
 ```
 ssc.start()
 ssc.awaitTermination()
 ```
 
-Aby uzyskać szczegółowe informacje na temat interfejsu API usługi Spark, a także źródeł zdarzeń, przekształceń i operacji wyjściowych, które obsługuje, zobacz [Apache Spark Przewodnik programowania przesyłania strumieniowego](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
+For details on the Spark Stream API, along with the event sources, transformations, and output operations it supports, see [Apache Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
 
-Następująca przykładowa aplikacja jest samodzielna, więc można ją uruchomić wewnątrz [Jupyter Notebook](apache-spark-jupyter-notebook-kernels.md). W tym przykładzie tworzony jest makietowe źródło danych w klasie DummySource, która wyprowadza wartość licznika i bieżący czas w milisekundach co pięć sekund. Nowy obiekt StreamingContext ma interwał partii wynoszący 30 sekund. Za każdym razem, gdy tworzona jest partia, aplikacja przesyłania strumieniowego analizuje wygenerowane RDD, konwertuje RDD na ramkę danych Spark i tworzy tabelę tymczasową dla ramki danych.
+The following sample application is self-contained, so you can run it inside a [Jupyter Notebook](apache-spark-jupyter-notebook-kernels.md). This example creates a mock data source in the class DummySource that outputs the value of a counter and the current time in milliseconds every five seconds. A  new StreamingContext object  has a batch interval of 30 seconds. Every time a batch is created, the streaming application examines the RDD produced, converts the RDD to a Spark DataFrame, and creates a temporary table over the DataFrame.
 
 ```
 class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
@@ -139,22 +139,22 @@ stream.foreachRDD { rdd =>
     val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
     _sqlContext.createDataFrame(rdd).toDF("value", "time")
         .registerTempTable("demo_numbers")
-} 
+}
 
 // Start the stream processing
 ssc.start()
 ```
 
-Odczekaj około 30 sekund od rozpoczęcia powyższej aplikacji.  Następnie można wykonać zapytanie o ramy czasowe w celu wyświetlenia bieżącego zestawu wartości obecnych w partii, na przykład za pomocą tego zapytania SQL:
+Wait for about 30 seconds after starting the application above.  Then, you can query the DataFrame periodically to see the current set of values present in the batch, for example using this SQL query:
 
 ```sql
 %%sql
 SELECT * FROM demo_numbers
 ```
 
-Wynikowe dane wyjściowe wyglądają następująco:
+The resulting output looks like the following:
 
-| value | time |
+| wartość | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -163,19 +163,19 @@ Wynikowe dane wyjściowe wyglądają następująco:
 |14 | 1497314485327 |
 |15 | 1497314490346 |
 
-Istnieje sześć wartości, ponieważ DummySource tworzy wartość co 5 sekund, a aplikacja emituje partię co 30 sekund.
+There are six values, since the DummySource creates a value every 5 seconds and the application emits a batch every 30 seconds.
 
-## <a name="sliding-windows"></a>Okna przewijania
+## <a name="sliding-windows"></a>Sliding windows
 
-Aby wykonać obliczenia agregowane na DStream w pewnym okresie czasu, na przykład aby uzyskać średnią temperaturę w ciągu ostatnich dwóch sekund, można użyć operacji *przewijania okna* dołączonego do przesyłania strumieniowego Spark. Ruchome okno ma czas trwania (długość okna) i interwał, w jakim zawartość okna jest szacowana (interwał slajdu).
+To perform aggregate calculations on your DStream over some time period, for example to get an average temperature over the last two seconds, you can use the *sliding window* operations included with Spark Streaming. A sliding window has a duration (the window length) and the interval during which the window's contents are evaluated (the slide interval).
 
-Przesuwane okna mogą się nakładać, na przykład można zdefiniować okno o długości co najmniej dwóch sekund, które slajdy są co sekundę. Oznacza to, że za każdym razem, gdy wykonywane jest obliczanie agregacji, okno będzie zawierać dane z ostatniej sekundy poprzedniego okna oraz nowe dane w ciągu następnych sekund.
+Sliding windows can overlap, for example, you can define a window with a length of two seconds, that slides every one second. This means every time you perform an aggregation calculation, the window will include data from the last one second of the previous window as well as any new data in the next one second.
 
-![Przykładowe okno początkowe ze zdarzeniami temperatury](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
+![Example Initial Window with Temperature Events](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
 
-![Przykładowe okno ze zdarzeniami temperatury po przesuwaniu](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
+![Example Window with Temperature Events After Sliding](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
 
-Poniższy przykład aktualizuje kod, który używa DummySource, do zbierania partii do okna z jednominutowym czasem trwania i slajdem jednominutowym.
+The following example  updates the code that uses the DummySource, to collect the batches into a window with a one-minute duration and a one-minute slide.
 
 ```
 class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
@@ -214,15 +214,15 @@ stream.window(org.apache.spark.streaming.Minutes(1)).foreachRDD { rdd =>
     val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
     _sqlContext.createDataFrame(rdd).toDF("value", "time")
     .registerTempTable("demo_numbers")
-} 
+}
 
 // Start the stream processing
 ssc.start()
 ```
 
-Po pierwszej minucie istnieją 12 wpisów — sześć wpisów z każdej z dwóch partii zebranych w oknie.
+After the first minute, there are 12 entries - six entries from each of the two batches collected in the window.
 
-| value | time |
+| wartość | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158
@@ -237,22 +237,22 @@ Po pierwszej minucie istnieją 12 wpisów — sześć wpisów z każdej z dwóch
 | 11 | 1497316344339
 | 12 | 1497316349361
 
-Funkcje okna przesuwania dostępne w interfejsie API przesyłania strumieniowego Spark obejmują okna, countByWindow, reduceByWindow i countByValueAndWindow. Aby uzyskać szczegółowe informacje o tych funkcjach, zobacz [przekształcenia w DStreams](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html#transformations-on-dstreams).
+The sliding window functions available in the Spark Streaming API include window, countByWindow, reduceByWindow, and countByValueAndWindow. For details on these functions, see [Transformations on DStreams](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html#transformations-on-dstreams).
 
 ## <a name="checkpointing"></a>Tworzenie punktów kontrolnych
 
-W celu zapewnienia odporności i odporności na uszkodzenia, funkcja przesyłania strumieniowego Spark polega na tworzeniu punktów kontrolnych, co pozwala na dalsze nieprzerwanie przetwarzania strumieni, nawet w przypadku awarii węzła. W usłudze HDInsight platforma Spark tworzy punkty kontrolne do trwałego magazynu (Azure Storage lub Data Lake Storage). Te punkty kontrolne przechowują metadane dotyczące aplikacji przesyłania strumieniowego, takie jak konfiguracja, operacje zdefiniowane przez aplikację i wszystkie partie, które zostały dodane do kolejki, ale nie zostały jeszcze przetworzone. W niektórych przypadkach punkty kontrolne również obejmują zapisywanie danych w odporne, aby szybciej odbudować stan danych z tego, co jest obecne w odporne zarządzanym przez platformę Spark.
+To deliver resiliency and fault tolerance, Spark Streaming relies on checkpointing to ensure that stream processing can continue uninterrupted, even in the face of node failures. In HDInsight, Spark creates checkpoints to durable storage (Azure Storage or Data Lake Storage). These checkpoints store the metadata about the streaming application such as the configuration, the operations defined by the application, and any batches that were queued but not yet processed. In some cases, the checkpoints will also include saving the data in the RDDs to more quickly rebuild the state of the data from what is present in the RDDs managed by Spark.
 
-## <a name="deploying-spark-streaming-applications"></a>Wdrażanie aplikacji do przesyłania strumieniowego Spark
+## <a name="deploying-spark-streaming-applications"></a>Deploying Spark Streaming applications
 
-Zazwyczaj tworzysz aplikację do przesyłania strumieniowego Spark lokalnie do pliku JAR, a następnie wdróż ją na platformie Spark w usłudze HDInsight, kopiując plik JAR do magazynu domyślnego dołączonego do klastra usługi HDInsight. Aplikację można uruchomić za pomocą interfejsów API REST usługi LIVY dostępnych w klastrze przy użyciu operacji POST. Treść wpisu zawiera dokument JSON, który zawiera ścieżkę do pliku JAR, nazwę klasy, której Metoda Main definiuje i uruchamia aplikację przesyłania strumieniowego oraz opcjonalnie wymagania dotyczące zasobów zadania (takie jak liczba modułów wykonujących, pamięć i rdzenie). i wszystkie ustawienia konfiguracji wymagane przez kod aplikacji.
+You typically build a Spark Streaming application locally into a JAR file and then deploy it to Spark on HDInsight by copying the JAR file  to the default storage attached to your HDInsight cluster. You can start your application  with the LIVY REST APIs available from your cluster using  a POST operation. The body of the POST includes a JSON document that provides the path to your JAR, the name of the class whose main method defines and runs the streaming application, and optionally the resource requirements of the job (such as the number of executors, memory and cores), and any configuration settings your application code requires.
 
-![Wdrażanie aplikacji do przesyłania strumieniowego Spark](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+![Deploying a Spark Streaming application](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Stan wszystkich aplikacji można również sprawdzić za pomocą żądania GET w odniesieniu do punktu końcowego usługi LIVY. Na koniec możesz przerwać działającą aplikację, wydając żądanie DELETE względem punktu końcowego usługi LIVY. Aby uzyskać szczegółowe informacje o interfejsie API usługi LIVY, zobacz [zdalne zadania z Apache usługi Livy](apache-spark-livy-rest-interface.md)
+The status of all applications can also be checked with a GET request against a LIVY endpoint. Finally, you can terminate a running application by issuing a DELETE request against the LIVY endpoint. For details on the LIVY API, see [Remote jobs with Apache LIVY](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie klastra platformy Apache Spark w usłudze HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Przewodnik programowania przesyłania strumieniowego Apache Spark](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
-* [Zdalne uruchamianie zadań Apache Spark za pomocą platformy Apache usługi LIVY](apache-spark-livy-rest-interface.md)
+* [Apache Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
+* [Launch Apache Spark jobs remotely with Apache LIVY](apache-spark-livy-rest-interface.md)

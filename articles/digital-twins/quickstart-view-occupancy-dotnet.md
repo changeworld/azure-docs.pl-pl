@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: znajdowanie dostępnych pokojów — Azure Digital bliźniaczych reprezentacji'
+title: 'Quickstart: Find available rooms - Azure Digital Twins | Microsoft Docs'
 description: W tym przewodniku Szybki start uruchomisz dwie przykładowe aplikacje platformy .NET Core, aby wysłać symulowane dane telemetryczne ruchu i dwutlenku węgla do obszaru w usłudze Azure Digital Twins. Celem jest znalezienie dostępnych pomieszczeń ze świeżym powietrzem z poziomu interfejsów API zarządzania po przetwarzaniu obliczeniowym w chmurze.
 ms.author: alinast
 author: alinamstanciu
@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 11/12/2019
-ms.openlocfilehash: 44ef646328f5f55d16dfa2d6906b78866292ebd9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: b150167ca6a808e0da337be4a609a21cd974598a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123193"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383143"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Szybki start: wyszukiwanie dostępnych pomieszczeń przy użyciu usługi Azure Digital Twins
 
@@ -59,7 +59,7 @@ Skompiluj aplikację dotyczącą zajętości pomieszczeń, wykonując poniższe 
     - **Tenant**: wprowadź identyfikator katalogu dzierżawy usługi Azure AD, który również został zanotowany w poprzedniej sekcji.
     - **BaseUrl**: adres URL interfejsu API zarządzania wystąpienia usługi Digital Twins, który ma format `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Zamień symbole zastępcze w tym adresie URL na wartości odpowiadające Twojemu wystąpieniu z poprzedniej sekcji.
 
-    Zapisz zmodyfikowany plik.
+    Save the updated file.
 
 ## <a name="provision-graph"></a>Aprowizowanie wykresu
 
@@ -76,56 +76,56 @@ Wykres przestrzenny zostanie zaaprowizowany przy użyciu pliku [provisionSample.
 1. Uruchom polecenie `dotnet run ProvisionSample`.
 
     >[!NOTE]
-    >Używamy narzędzia interfejsu wiersza polecenia platformy Azure logowania do urządzenia, aby uwierzytelnić użytkownika w usłudze Azure AD. Użytkownik musi wprowadzić podany kod, aby przeprowadzić uwierzytelnienie przy użyciu strony [logowania firmy Microsoft](https://microsoft.com/devicelogin). Po wprowadzeniu kodu postępuj zgodnie z instrukcjami w celu uwierzytelnienia. Uwierzytelnienie użytkownika wymaga uruchomienia narzędzia.
+    >Używamy narzędzia interfejsu wiersza polecenia platformy Azure logowania do urządzenia, aby uwierzytelnić użytkownika w usłudze Azure AD. Użytkownik musi wprowadzić podany kod, aby przeprowadzić uwierzytelnienie przy użyciu strony [logowania firmy Microsoft](https://microsoft.com/devicelogin). After the code is entered, follow the steps to authenticate. Uwierzytelnienie użytkownika wymaga uruchomienia narzędzia.
 
     >[!TIP]
     > Jeśli podczas wykonywania tego kroku pojawi się komunikat o błędzie `EXIT: Unexpected error: The input is not a valid Base-64 string ...`, upewnij się, że zmienne zostały skopiowane poprawnie
 
 1. Aprowizowanie może potrwać kilka minut. W ramach wystąpienia usługi Digital Twins aprowizowane jest również centrum IoT Hub. Działanie pętli kończy się, gdy stan centrum IoT Hub ma wartość `Running`.
 
-    [![Inicjowanie obsługi przykładowego stanu = uruchomienie](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [![Provision the sample - Status=Running](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
 
 1. Na koniec wykonywania skopiuj wartość parametru `ConnectionString` urządzenia — będzie ona potrzebna w przykładzie symulatora urządzenia. Skopiuj tylko ciąg wyróżniony na poniższym rysunku.
 
-    [![skopiować parametrów połączenia](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
+    [![Copy the connection string](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
 
     >[!TIP]
     > Wykres przestrzenny można wyświetlać i modyfikować przy użyciu narzędzia [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer).
 
-Pozostaw otwarte okno konsoli do późniejszego użycia.
+Keep the console window open for use again later.
 
 ## <a name="send-sensor-data"></a>Wysyłanie danych z czujników
 
-Skompiluj i uruchom aplikację urządzenia czujnika czujników, wykonując następujące kroki.
+Build and run the sensor simulator device application by following these steps.
 
-1. Otwórz nowy wiersz polecenia. Przejdź do projektu pobranego w folderze `digital-twins-samples-csharp-master`.
+1. Otwórz nowy wiersz polecenia. Go to the project you downloaded in the `digital-twins-samples-csharp-master` folder.
 1. Uruchom polecenie `cd device-connectivity`.
 1. Uruchom polecenie `dotnet restore`.
-1. Zmodyfikuj plik [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json), aby zaktualizować wartość **DeviceConnectionString** za pomocą wartości `ConnectionString` skopiowanej powyżej. Zapisz zmodyfikowany plik.
+1. Zmodyfikuj plik [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json), aby zaktualizować wartość **DeviceConnectionString** za pomocą wartości `ConnectionString` skopiowanej powyżej. Save the updated file.
 1. Uruchom polecenie `dotnet run`, aby rozpocząć wysyłanie danych z czujników. Na poniższej ilustracji przedstawiono wysyłanie danych do usługi Digital Twins.
 
-     [![łączności urządzeń](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
+     [![Device Connectivity](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
 
 1. Pozostaw ten symulator uruchomiony, aby jego wyniki były widoczne obok wyników uzyskanych po wykonaniu kolejnego kroku. To okno zawiera dane symulowanych czujników wysyłane do usługi Digital Twins. Następny krok obejmuje wysyłanie zapytania w czasie rzeczywistym, które umożliwia znalezienie dostępnych pomieszczeń ze świeżym powietrzem.
 
     >[!TIP]
-    > Jeśli podczas wykonywania tego kroku pojawi się komunikat o błędzie `DeviceConnectionString`, upewnij się, że wartość `EXIT: Unexpected error: The input is not a valid Base-64 string ...` została skopiowana poprawnie
+    > Jeśli podczas wykonywania tego kroku pojawi się komunikat o błędzie `EXIT: Unexpected error: The input is not a valid Base-64 string ...`, upewnij się, że wartość `DeviceConnectionString` została skopiowana poprawnie
 
 ## <a name="find-available-spaces-with-fresh-air"></a>Znajdowanie dostępnych obszarów ze świeżym powietrzem
 
 W przykładzie są symulowane losowe wartości z dwóch czujników. Są to czujnik ruchu i czujnik dwutlenku węgla. Dostępne obszary ze świeżym powietrzem są zdefiniowane w naszym przykładzie przez brak obecności w pomieszczeniu. Ponadto poziom dwutlenku węgla musi być niższy niż 1000 ppm. Jeśli ten warunek nie jest spełniony, to pomieszczenie nie jest dostępne lub jakość powietrza jest niska.
 
-1. Otwórz wiersz polecenia, który został użyty do uruchomienia kroku aprowizacji wcześniej.
+1. Open the command prompt you used to run the provisioning step earlier.
 1. Uruchom polecenie `dotnet run GetAvailableAndFreshSpaces`.
 1. Umieść ten wiersz polecenia obok wiersza polecenia danych czujnika i przyjrzyj się im.
 
-    Wiersz polecenia danych czujnika wysyła symulowane ruchy i dane ditlenku węgla do bliźniaczych reprezentacji cyfrowych co pięć sekund. Drugi wiersz polecenia odczytuje Graf w czasie rzeczywistym, aby znaleźć dostępne pokoje z świeżym powietrzem na podstawie losowo symulowanych danych. Polecenie to wyświetla jeden z tych warunków niemal w czasie rzeczywistym na podstawie ostatnio wysłanych danych czujników:
+    The sensor data command prompt sends simulated motion and carbon dioxide data to Digital Twins every five seconds. The other command prompt reads the graph in real time to find out available rooms with fresh air based on random simulated data. Polecenie to wyświetla jeden z tych warunków niemal w czasie rzeczywistym na podstawie ostatnio wysłanych danych czujników:
    - `Room is available and air is fresh`
    - `Room is not available or air quality is poor`
 
-     [![Uzyskaj dostępne miejsca z świeżym powietrzem](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
+     [![Get available spaces with fresh air](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
 
-Aby zrozumieć, co się stało w tym przewodniku Szybki Start i jakie interfejsy API zostały wywołane, Otwórz [Visual Studio Code](https://code.visualstudio.com/Download) z projektem obszaru roboczego kod znalezionym w `digital-twins-samples-csharp`. Użyj następującego polecenia:
+To understand what happened in this quickstart and what APIs were called, open [Visual Studio Code](https://code.visualstudio.com/Download) with the code workspace project found in `digital-twins-samples-csharp`. Użyj następującego polecenia:
 
 ```cmd
 <path>\occupancy-quickstart\src>code ..\..\digital-twins-samples.code-workspace
@@ -140,7 +140,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 | Nazwa | Zamień na |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Nazwa używanego wystąpienia usługi Digital Twins |
-| YOUR_LOCATION | Region serwera, w którym jest hostowane wystąpienie |
+| YOUR_LOCATION | The server region where your instance is hosted |
 
 Dla wygody możesz też otworzyć witrynę [Digital Twins Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
 
@@ -157,11 +157,11 @@ Jeśli planujesz kontynuować pracę z samouczkami, nie usuwaj zasobów utworzon
 1. W menu po lewej stronie w witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Wszystkie zasoby**. Następnie wybierz zasób usługi Digital Twins. U góry okienka **Wszystkie zasoby** wybierz polecenie **Usuń**.
 
     > [!TIP]
-    > Jeśli wcześniej wystąpił problem podczas usuwania wystąpienia bliźniaczych reprezentacji cyfrowego, aktualizacja usługi została wdrożona przy użyciu poprawki. Ponów próbę usunięcia wystąpienia.
+    > If you previously experienced trouble deleting your Digital Twins instance, a service update has been rolled out with the fix. Ponów próbę usunięcia wystąpienia.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ten przewodnik Szybki Start używa prostego scenariusza i przykładowych aplikacji, aby pokazać, w jaki sposób Digital bliźniaczych reprezentacji może służyć do znajdowania pokojów z dobrymi warunkami pracy. Aby zapoznać się ze szczegółową analizą tego scenariusza, przejdź do następującego samouczka:
+This quickstart used a simple scenario and sample applications to show how Digital Twins can be used to find rooms with good working conditions. Aby zapoznać się ze szczegółową analizą tego scenariusza, przejdź do następującego samouczka:
 
 >[!div class="nextstepaction"]
 >[Samouczek: wdrażanie usługi Azure Digital Twins i konfigurowanie wykresu przestrzennego](tutorial-facilities-setup.md)

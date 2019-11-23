@@ -1,68 +1,67 @@
 ---
-title: Zrozumienie blokowania zasobów
-description: Zapoznaj się z opcjami blokowania, aby chronić zasoby podczas przypisywania planu.
+title: Understand resource locking
+description: Learn about the locking options in Azure Blueprints to protect resources when assigning a blueprint.
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960483"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406408"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania zasobów w planach platformy Azure
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Understand resource locking in Azure Blueprints
 
-Tworzenie spójnych środowisk na dużą skalę jest naprawdę cenne, jeśli istnieje mechanizm zapewnienia spójności. W tym artykule wyjaśniono, jak blokada zasobów działa w planach platformy Azure. Aby zapoznać się z przykładem blokowania zasobów i stosowania _przypisań Odmów_, zobacz artykuł [Ochrona nowych zasobów](../tutorials/protect-new-resources.md) .
+The creation of consistent environments at scale is only truly valuable if there's a mechanism to maintain that consistency. This article explains how resource locking works in Azure Blueprints. To see an example of resource locking and application of _deny assignments_, see the [protecting new resources](../tutorials/protect-new-resources.md) tutorial.
 
-## <a name="locking-modes-and-states"></a>Tryby blokowania i Stany
+## <a name="locking-modes-and-states"></a>Locking modes and states
 
-Tryb blokowania ma zastosowanie do przypisania planu i ma trzy opcje: **nie blokuj**, **tylko do odczytu**lub nie **usuwaj**. Tryb blokowania jest konfigurowany podczas wdrażania artefaktu podczas jego przypisywania. Inny tryb blokowania można ustawić, aktualizując przypisanie planu.
-Nie można jednak zmienić trybów blokowania poza planami.
+Locking Mode applies to the blueprint assignment and it has three options: **Don't Lock**, **Read Only**, or **Do Not Delete**. The locking mode is configured during artifact deployment during a blueprint assignment. A different locking mode can be set by updating the blueprint assignment.
+Locking modes, however, can't be changed outside of Blueprints.
 
-Zasoby utworzone przez artefakty w przypisaniu planu mają cztery stany: **nie zablokowane**, **tylko do odczytu**, **nie można edytować/usuwać**ani **nie mogą go usunąć**. Każdy typ artefaktu może być w stanie **niezablokowanym** . Poniższa tabela może służyć do określenia stanu zasobu:
+Resources created by artifacts in a blueprint assignment have four states: **Not Locked**, **Read Only**, **Cannot Edit / Delete**, or **Cannot Delete**. Each artifact type can be in the **Not Locked** state. The following table can be used to determine the state of a resource:
 
-|Tryb|Typ zasobu artefaktu|Stan|Opis|
+|Tryb|Artifact Resource Type|Stan|Opis|
 |-|-|-|-|
-|Nie blokuj|*|Niezablokowane|Zasoby nie są chronione przez plany. Ten stan jest również używany w przypadku zasobów dodanych do elementu " **tylko do odczytu** " lub nie **usuwaj** artefaktu grupy zasobów spoza przypisania planu.|
-|Tylko do odczytu|Grupa zasobów|Nie można edytować/usunąć|Grupa zasobów jest tylko do odczytu i nie można modyfikować tagów w grupie zasobów. **Niezablokowane** zasoby mogą być dodawane, przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
-|Tylko do odczytu|Grupa niezasobów|Tylko do odczytu|Nie można zmienić zasobu w jakikolwiek sposób — brak zmian i nie można go usunąć.|
-|Nie usuwaj|*|Nie można usunąć|Zasoby można zmienić, ale nie można ich usunąć. **Niezablokowane** zasoby mogą być dodawane, przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
+|Don't Lock|*|Not Locked|Resources aren't protected by Blueprints. This state is also used for resources added to a **Read Only** or **Do Not Delete** resource group artifact from outside a blueprint assignment.|
+|Tylko do odczytu|Grupa zasobów|Cannot Edit / Delete|The resource group is read only and tags on the resource group can't be modified. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
+|Tylko do odczytu|Non-resource group|Tylko do odczytu|The resource can't be altered in any way -- no changes and it can't be deleted.|
+|Do Not Delete|*|Cannot Delete|The resources can be altered, but can't be deleted. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
 
-## <a name="overriding-locking-states"></a>Zastępowanie Stanów blokowania
+## <a name="overriding-locking-states"></a>Overriding locking states
 
-Jest to zwykle możliwe dla kogoś z odpowiednią [rolą kontroli dostępu opartej na rolach](../../../role-based-access-control/overview.md) (RBAC) w ramach subskrypcji, takiej jak rola "właściciel", aby umożliwić zmianę lub usunięcie dowolnego zasobu. Ten dostęp nie jest dozwolony w przypadku, gdy plany stosują blokowanie w ramach wdrożonego przypisania. Jeśli przypisanie zostało ustawione przy użyciu opcji **tylko do odczytu** lub **nie usuwaj** , a właściciel subskrypcji może wykonać zablokowaną akcję dla chronionego zasobu.
+It's typically possible for someone with appropriate [role-based access control](../../../role-based-access-control/overview.md) (RBAC) on the subscription, such as the 'Owner' role, to be allowed to alter or delete any resource. This access isn't the case when Blueprints applies locking as part of a deployed assignment. If the assignment was set with the **Read Only** or **Do Not Delete** option, not even the subscription owner can perform the blocked action on the protected resource.
 
-Ten środek zabezpieczeń chroni spójność zdefiniowanego planu i środowiska, które zostało zaprojektowane do tworzenia z przypadkowego lub programowego usunięcia lub zmiany.
+This security measure protects the consistency of the defined blueprint and the environment it was designed to create from accidental or programmatic deletion or alteration.
 
-## <a name="removing-locking-states"></a>Usuwanie Stanów blokowania
+## <a name="removing-locking-states"></a>Removing locking states
 
-Jeśli konieczna będzie modyfikacja lub usunięcie zasobu chronionego przez przypisanie, istnieją dwa sposoby tego celu.
+If it becomes necessary to modify or delete a resource protected by an assignment, there are two ways to do so.
 
-- Aktualizowanie przypisania planu do trybu blokowania **nie blokuj**
-- Usuń przypisanie planu
+- Updating the blueprint assignment to a locking mode of **Don't Lock**
+- Delete the blueprint assignment
 
-Po usunięciu przypisania blokady utworzone przez plany są usuwane. Zasób jest jednak pozostawiony i musi zostać usunięty w normalny sposób.
+When the assignment is removed, the locks created by Blueprints are removed. However, the resource is left behind and would need to be deleted through normal means.
 
-## <a name="how-blueprint-locks-work"></a>Jak działają blokowane plany
+## <a name="how-blueprint-locks-work"></a>How blueprint locks work
 
-Akcja Odmów [przypisania](../../../role-based-access-control/deny-assignments.md) kontroli RBAC jest stosowana do zasobów artefaktu podczas przypisywania planu, jeśli przypisanie zabrało opcję **tylko do odczytu** lub **nie usuwaj** . Akcja Odmów jest dodawana przez zarządzaną tożsamość przypisania planu i może zostać usunięta tylko z zasobów artefaktów przez tę samą tożsamość zarządzaną. Ta miara zabezpieczeń wymusza mechanizm blokowania i uniemożliwia usunięcie blokady strategii poza planami.
+An RBAC [deny assignments](../../../role-based-access-control/deny-assignments.md) deny action is applied to artifact resources during assignment of a blueprint if the assignment selected the **Read Only** or **Do Not Delete** option. The deny action is added by the managed identity of the blueprint assignment and can only be removed from the artifact resources by the same managed identity. This security measure enforces the locking mechanism and prevents removing the blueprint lock outside Blueprints.
 
-![Zablokuj przypisanie do grupy zasobów](../media/resource-locking/blueprint-deny-assignment.png)
+![Blueprint deny assignment on resource group](../media/resource-locking/blueprint-deny-assignment.png)
 
-[Właściwości przypisania Odmów](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) dla każdego trybu są następujące:
+The [deny assignment properties](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) of each mode are as follows:
 
-|Tryb |Uprawnienia. akcje |Uprawnienia. nonaruszone |Podmioty zabezpieczeń [i]. Wprowadź |ExcludePrincipals [i]. # | DoNotApplyToChildScopes |
+|Tryb |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Tylko do odczytu |**\*** |**\*/Read** |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
-|Nie usuwaj |**\*/Delete** | |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
+|Tylko do odczytu |**\*** |**\*/read** |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
+|Do Not Delete |**\*/delete** | |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
 
 > [!IMPORTANT]
-> Azure Resource Manager buforuje Szczegóły przydziału roli przez maksymalnie 30 minut. W związku z tym odmowa akcji Odmów przypisań na zasoby strategii może nie być od razu całkowicie w pełni funkcjonalna. W tym czasie może być możliwe usunięcie zasobu przeznaczonego do ochrony przez blokady planu.
+> Azure Resource Manager caches role assignment details for up to 30 minutes. As a result, deny assignments deny action's on blueprint resources may not immediately be in full effect. During this period of time, it might be possible to delete a resource intended to be protected by blueprint locks.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Wyklucz podmiot zabezpieczeń z przypisania Odmów
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Exclude a principal from a deny assignment
 
-W niektórych scenariuszach projektowych lub zabezpieczających może być konieczne wykluczenie podmiotu zabezpieczeń z [przydziału Odmów](../../../role-based-access-control/deny-assignments.md) , które tworzy. Jest to realizowane w interfejsie API REST przez dodanie maksymalnie pięciu wartości do tablicy **excludedPrincipals** we właściwości **Locks** podczas [tworzenia przypisania](/rest/api/blueprints/assignments/createorupdate).
-Jest to przykład treści żądania, która zawiera **excludedPrincipals**:
+In some design or security scenarios, it may be necessary to exclude a principal from the [deny assignment](../../../role-based-access-control/deny-assignments.md) the blueprint assignment creates. This is done in REST API by adding up to five values to the **excludedPrincipals** array in the **locks** property when [creating the assignment](/rest/api/blueprints/assignments/createorupdate). This is an example of a request body that includes **excludedPrincipals**:
 
 ```json
 {
@@ -106,7 +105,7 @@ Jest to przykład treści żądania, która zawiera **excludedPrincipals**:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Postępuj zgodnie z samouczkiem [Ochrona nowych zasobów](../tutorials/protect-new-resources.md) .
+- Follow the [protect new resources](../tutorials/protect-new-resources.md) tutorial.
 - Uzyskaj informacje na temat [cyklu życia strategii](lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).

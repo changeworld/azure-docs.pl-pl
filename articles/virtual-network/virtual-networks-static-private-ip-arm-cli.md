@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie prywatnych adresów IP dla maszyn wirtualnych — interfejs wiersza polecenia platformy Azure
-description: Dowiedz się, jak skonfigurować prywatne adresy IP dla maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: Configure private IP addresses for VMs - Azure CLI
+description: Learn how to configure private IP addresses for virtual machines using the Azure command-line interface (CLI).
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
-ms.openlocfilehash: 5734b96466801efaa991a971bd87f60aafc9df32
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: dfc56d86d2e516a7c7bb82ef7a5e84105e049188
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196612"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404463"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurowanie prywatnych adresów IP dla maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Configure private IP addresses for a virtual machine using the Azure CLI
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
@@ -30,23 +30,23 @@ ms.locfileid: "74196612"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-W tym artykule opisano model wdrażania usługi Resource Manager. Można także [zarządzać statycznym prywatnym adresem IP w klasycznym modelu wdrażania](virtual-networks-static-private-ip-classic-cli.md).
+W tym artykule opisano model wdrażania usługi Resource Manager. You can also [manage static private IP address in the classic deployment model](virtual-networks-static-private-ip-classic-cli.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> Następujące przykłady poleceń interfejsu wiersza polecenia platformy Azure oczekują istniejącego środowiska prostego. Jeśli chcesz uruchamiać polecenia, ponieważ są one wyświetlane w tym dokumencie, najpierw utworzyć środowisko testowe opisane w [tworzenie sieci wirtualnej](quick-create-cli.md).
+> The following sample Azure CLI commands expect an existing simple environment. If you want to run the commands as they are displayed in this document, first build the test environment described in [create a vnet](quick-create-cli.md).
 
-## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Określ statyczny prywatny adres IP podczas tworzenia maszyny wirtualnej
+## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Specify a static private IP address when creating a VM
 
-Aby utworzyć maszynę wirtualną o nazwie *DNS01* w podsieci *frontonu* sieci wirtualnej o nazwie *TestVNet* ze statycznym prywatnym adresem IP *192.168.1.101*, wykonaj następujące czynności:
+To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet* with a static private IP of *192.168.1.101*, complete the following steps:
 
-1. Jeśli jeszcze tego nie zrobiono, zainstaluj i skonfiguruj najnowszy [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i zaloguj się na konto platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index).
+1. If you haven't yet, install and configure the latest [Azure CLI](/cli/azure/install-azure-cli) and log in to an Azure account using [az login](/cli/azure/reference-index).
 
-2. Utwórz publiczny adres IP dla maszyny wirtualnej za pomocą polecenia [AZ Network Public-IP Create](/cli/azure/network/public-ip) . Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
+2. Create a public IP for the VM with the [az network public-ip create](/cli/azure/network/public-ip) command. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
 
     > [!NOTE]
-    > Może być konieczne lub konieczne użycie różnych wartości argumentów w tym i kolejnych krokach, w zależności od środowiska.
+    > You may want or need to use different values for your arguments in this and subsequent steps, depending upon your environment.
 
     ```azurecli
     az network public-ip create \
@@ -70,11 +70,11 @@ Aby utworzyć maszynę wirtualną o nazwie *DNS01* w podsieci *frontonu* sieci w
     }
     ```
 
-   * `--resource-group`: Nazwa grupy zasobów, w której ma zostać utworzony publiczny adres IP.
-   * `--name`: Nazwa publicznego adresu IP.
-   * `--location`: region świadczenia usługi Azure, w którym ma zostać utworzony publiczny adres IP.
+   * `--resource-group`: Name of the resource group in which to create the public IP.
+   * `--name`: Name of the public IP.
+   * `--location`: Azure region in which to create the public IP.
 
-3. Uruchom polecenie [AZ Network nic Create](/cli/azure/network/nic) , aby utworzyć kartę sieciową ze statycznym prywatnym adresem IP. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów. 
+3. Run the [az network nic create](/cli/azure/network/nic) command to create a NIC with a static private IP. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów. 
    
     ```azurecli
     az network nic create \
@@ -122,11 +122,11 @@ Aby utworzyć maszynę wirtualną o nazwie *DNS01* w podsieci *frontonu* sieci w
     
     Parametry:
 
-    * `--private-ip-address`: statyczny prywatny adres IP karty sieciowej.
-    * `--vnet-name`: Nazwa sieci wirtualnej, w której ma zostać utworzona karta sieciowa.
-    * `--subnet`: Nazwa podsieci, w której ma zostać utworzona karta sieciowa.
+    * `--private-ip-address`: Static private IP address for the NIC.
+    * `--vnet-name`: Name of the VNet in which to create the NIC.
+    * `--subnet`: Name of the subnet in which to create the NIC.
 
-4. Uruchom polecenie [Azure VM Create](/cli/azure/vm/nic) , aby utworzyć maszynę wirtualną przy użyciu publicznego adresu IP i karty sieciowej utworzonej wcześniej. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
+4. Run the [azure vm create](/cli/azure/vm/nic) command to create the VM using the public IP and NIC created previously. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
    
     ```azurecli
     az vm create \
@@ -154,15 +154,15 @@ Aby utworzyć maszynę wirtualną o nazwie *DNS01* w podsieci *frontonu* sieci w
     }
     ```
    
-   Parametry inne niż podstawowe polecenie [AZ VM Create](/cli/azure/vm) Parameters.
+   Parameters other than the basic [az vm create](/cli/azure/vm) parameters.
 
-   * `--nics`: Nazwa karty sieciowej, do której jest dołączona maszyna wirtualna.
+   * `--nics`: Name of the NIC to which the VM is attached.
    
-Zaleca się, aby nie przypisywać statycznie prywatnego adresu IP przypisanego do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej, o ile nie jest to konieczne, [na przykład podczas przypisywania wielu adresów IP do maszyny wirtualnej z systemem Windows](virtual-network-multiple-ip-addresses-cli.md). Jeśli ręcznie ustawisz prywatny adres IP w ramach systemu operacyjnego, upewnij się, że jest to ten sam adres, co prywatny adres IP przypisany do [interfejsu sieciowego](virtual-network-network-interface-addresses.md#change-ip-address-settings)platformy Azure, lub utracisz łączność z maszyną wirtualną. Dowiedz się więcej o ustawieniach [prywatnych adresów IP](virtual-network-network-interface-addresses.md#private) .
+It’s recommended that you do not statically assign the private IP assigned to the Azure virtual machine within the operating system of a VM, unless necessary, such as when [assigning multiple IP addresses to a Windows VM](virtual-network-multiple-ip-addresses-cli.md). If you do manually set the private IP address within the operating system, ensure that it is the same address as the private IP address assigned to the Azure [network interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), or you can lose connectivity to the virtual machine. Learn more about [private IP address](virtual-network-network-interface-addresses.md#private) settings.
 
-## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Pobieranie informacji o statycznym prywatnym adresie IP dla maszyny wirtualnej
+## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Retrieve static private IP address information for a VM
 
-Uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure, aby obserwować wartości *IP Alloc-Metoda* i *prywatny adres IP*:
+Run the following Azure CLI command to observe the values for *Private IP alloc-method* and *Private IP address*:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -174,7 +174,7 @@ Oczekiwane dane wyjściowe:
 "192.168.1.101"
 ```
 
-Aby wyświetlić informacje o adresie IP karty sieciowej dla tej maszyny wirtualnej, należy wykonać zapytanie na kartę sieciową w specjalny sposób:
+To display the specific IP information of the NIC for that VM, query the NIC specifically:
 
 ```azurecli
 az network nic show \
@@ -195,15 +195,15 @@ Dane wyjściowe wyglądają mniej więcej tak:
 }
 ```
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Usuwanie statycznego prywatnego adresu IP z maszyny wirtualnej
+## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Remove a static private IP address from a VM
 
-Nie można usunąć statycznego prywatnego adresu IP z karty sieciowej w interfejsie wiersza polecenia platformy Azure na potrzeby wdrożeń Azure Resource Manager. Należy:
-- Tworzenie nowej karty sieciowej korzystającej z dynamicznego adresu IP
-- Skonfiguruj kartę sieciową na maszynie wirtualnej, aby była nowo utworzona karta sieciowa. 
+You cannot remove a static private IP address from a NIC in Azure CLI for Azure Resource Manager deployments. You must:
+- Create a new NIC that uses a dynamic IP
+- Set the NIC on the VM do the newly created NIC. 
 
-Aby zmienić kartę sieciową dla maszyny wirtualnej używanej w poprzednich poleceniach, wykonaj następujące czynności:
+To change the NIC for the VM used in the previous commands, complete the following steps:
 
-1. Uruchom polecenie **Azure Network nic Create** , aby utworzyć nową kartę sieciową przy użyciu dynamicznego przydzielania adresów IP przy użyciu nowego adresu IP. Ponieważ nie określono żadnego adresu IP, metoda alokacji jest **dynamiczna**.
+1. Run the **azure network nic create** command to create a new NIC using dynamic IP allocation with a new IP address. Because no IP address is specified, the allocation method is **Dynamic**.
 
     ```azurecli
     az network nic create     \
@@ -248,10 +248,10 @@ Aby zmienić kartę sieciową dla maszyny wirtualnej używanej w poprzednich pol
     }
     ```
 
-2. Uruchom polecenie **Azure VM Set** , aby zmienić kartę sieciową używaną przez maszynę wirtualną.
+2. Run the **azure vm set** command to change the NIC used by the VM.
    
     ```azurecli
-    azure vm set -g TestRG -n DNS01 -N TestNIC2
+   az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
     ```
 
     Oczekiwane dane wyjściowe:
@@ -267,8 +267,8 @@ Aby zmienić kartę sieciową dla maszyny wirtualnej używanej w poprzednich pol
     ```
 
     > [!NOTE]
-    > Jeśli maszyna wirtualna jest wystarczająco duża, aby można było korzystać z więcej niż jednej karty sieciowej, należy uruchomić polecenie **Usuń sieć nic sieci platformy Azure** w celu usunięcia starej karty sieciowej.
+    > If the VM is large enough to have more than one NIC, run the **azure network nic delete** command to delete the old NIC.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat zarządzania [ustawieniami adresów IP](virtual-network-network-interface-addresses.md).
+Learn about managing [IP address settings](virtual-network-network-interface-addresses.md).

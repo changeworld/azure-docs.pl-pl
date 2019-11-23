@@ -1,61 +1,61 @@
 ---
-title: Administratorzy zarządzają użytkownikami i urządzeniami — Azure MFA — Azure Active Directory
-description: Jak Administratorzy mogą zmieniać ustawienia użytkownika, takie jak wymuszenie ponownego uruchomienia procesu weryfikacji przez użytkowników.
+title: Manage users and devices Azure MFA - Azure Active Directory
+description: How can administrators change user settings such as forcing the users to do the proof-up process again.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 808faaed76ff63d69feb8170eaac72021c7bd49d
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 5fd03ea807e48f6f0e287bb4497e4d20268995db
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042119"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404164"
 ---
-# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Zarządzanie ustawieniami użytkownika przy użyciu usługi Azure Multi-Factor Authentication w chmurze
+# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Manage user settings with Azure Multi-Factor Authentication in the cloud
 
-Jako administrator możesz zarządzać następującymi ustawieniami użytkownika i urządzenia:
+As an administrator, you can manage the following user and device settings:
 
-* Wymagaj od użytkowników ponownego podania metod kontaktu
-* Usuwanie haseł aplikacji
-* Wymagaj uwierzytelniania wieloskładnikowego na wszystkich zaufanych urządzeniach
+* Require users to provide contact methods again
+* Delete app passwords
+* Require MFA on all trusted devices
 
-## <a name="manage-authentication-methods"></a>Zarządzanie metodami uwierzytelniania
+## <a name="manage-authentication-methods"></a>Manage authentication methods
 
-Jako administrator z przypisaną rolą Administrator uwierzytelniania można wymagać od użytkowników zresetowania hasła, ponownego zarejestrowania się w usłudze MFA lub odwołania istniejących sesji usługi MFA z obiektu użytkownika.
+As an administrator assigned the Authentication Administrator role you can require users to reset their password, re-register for MFA, or revoke existing MFA sessions from their user object.
 
-![Zarządzanie metodami uwierzytelniania z poziomu Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
-
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. Po lewej stronie wybierz pozycję **Azure Active Directory**  > **Użytkownicy**  > **Wszyscy użytkownicy**.
-1. Wybierz użytkownika, na którym chcesz wykonać akcję, i wybierz pozycję **metody uwierzytelniania**.
-   - **Resetowanie hasła** spowoduje zresetowanie hasła użytkownika i przypisanie tymczasowego hasła, które należy zmienić przy następnym logowaniu.
-   - **Wymagaj ponownej rejestracji usługi MFA** spowoduje to, że gdy użytkownik zaloguje się w następnym momencie, zostanie poproszony o skonfigurowanie nowej metody uwierzytelniania MFA.
-   - **Odwoływanie sesji usługi MFA** czyści sesje usługi MFA zalogowanych przez użytkownika i wymaga ich do wykonania uwierzytelniania MFA przy następnym zażądaniu zasad na urządzeniu.
-
-## <a name="delete-users-existing-app-passwords"></a>Usuń użytkowników istniejące hasła aplikacji
-
-To ustawienie usuwa wszystkie hasła aplikacji utworzone przez użytkownika. Aplikacje nie korzystające z przeglądarki, które zostały skojarzone z tymi hasłami aplikacji, przestają działać do momentu utworzenia nowego hasła aplikacji. Aby wykonać tę akcję, wymagane są uprawnienia administratora globalnego.
-
-### <a name="how-to-delete-users-existing-app-passwords"></a>Jak usunąć użytkowników istniejące hasła aplikacji
+![Manage authentication methods from the Azure portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-2. Po lewej stronie wybierz pozycję **Azure Active Directory**  > **Użytkownicy**  > **Wszyscy użytkownicy**.
-3. Po prawej stronie wybierz pozycję **Multi-Factor Authentication** na pasku narzędzi. Zostanie otwarta strona uwierzytelnianie wieloskładnikowe.
-4. Zaznacz pole wyboru obok użytkownika lub użytkowników, którym chcesz zarządzać. Lista opcji szybkiego kroku pojawia się po prawej stronie.
-5. Wybierz pozycję **Zarządzaj ustawieniami użytkownika**.
-6. Zaznacz pole wyboru **Usuń wszystkie istniejące hasła aplikacji wygenerowane przez wybranych użytkowników**.
-   ![usunąć wszystkie istniejące hasła aplikacji](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. On the left, select **Azure Active Directory** > **Users** > **All users**.
+1. Choose the user you wish to perform an action on and select **Authentication methods**.
+   - **Reset Password** will reset the user's password and assign a temporary password that must be changed on the next sign in.
+   - **Require Re-register MFA** will make it so that when the user signs in next time, they will be requested to setup a new MFA authentication method.
+   - **Revoke MFA Sessions** clears the user's remembered MFA sessions and requires them to perform MFA the next time it is required by the policy on the device.
+
+## <a name="delete-users-existing-app-passwords"></a>Delete users existing app passwords
+
+This setting deletes all of the app passwords that a user has created. Non-browser apps that were associated with these app passwords stop working until a new app password is created. Global administrator permissions are required to perform this action.
+
+### <a name="how-to-delete-users-existing-app-passwords"></a>How to delete users existing app passwords
+
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+2. On the left, select **Azure Active Directory** > **Users** > **All users**.
+3. On the right, select **Multi-Factor Authentication** on the toolbar. The multi-factor authentication page opens.
+4. Check the box next to the user or users that you wish to manage. A list of quick step options appears on the right.
+5. Select **Manage user settings**.
+6. Check the box for **Delete all existing app passwords generated by the selected users**.
+   ![Delete all existing app passwords](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. Kliknij pozycję **Zapisz**.
-8. Kliknij przycisk **Zamknij**.
+8. Click **close**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj więcej informacji na temat sposobu [konfigurowania ustawień usługi Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
-- Jeśli użytkownicy będą potrzebować pomocy, należy zapoznać się z [podręcznikiem użytkownika w celu weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user.md)
+- Get more information about how to [Configure Azure Multi-Factor Authentication settings](howto-mfa-mfasettings.md)
+- If your users need help, point them towards the [User guide for two-step verification](../user-help/multi-factor-authentication-end-user.md)

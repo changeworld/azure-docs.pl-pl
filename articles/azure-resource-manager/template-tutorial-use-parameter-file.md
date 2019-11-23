@@ -1,58 +1,58 @@
 ---
-title: Samouczek — używanie pliku parametrów do wdrażania szablonu
-description: Użyj plików parametrów, które zawierają wartości używane do wdrażania szablonu Azure Resource Manager.
+title: Tutorial - use parameter file to deploy template
+description: Use parameter files that contain the values to use for deploying your Azure Resource Manager template.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7ebf8a3eed81c8f5233f7212df7e245a27f7fd16
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 1b01e9ece2d194d76c7184a676f17d626c41a011
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149166"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405988"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Samouczek: używanie plików parametrów do wdrożenia szablonu Menedżer zasobów
+# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Tutorial: Use parameter files to deploy your Resource Manager template
 
-W ramach tego samouczka nauczysz się używać [plików parametrów](resource-manager-parameter-files.md) do przechowywania wartości przekazywanych podczas wdrażania. W poprzednich samouczkach użyto parametrów wbudowanych z poleceniem wdrożenia. Takie podejście działało do testowania szablonu, ale w przypadku automatyzowania wdrożeń może być łatwiejsze przekazanie zestawu wartości dla danego środowiska. Pliki parametrów ułatwiają pakowanie wartości parametrów dla określonego środowiska. W tym samouczku utworzysz pliki parametrów dla środowisk deweloperskich i produkcyjnych. Ukończenie może potrwać około **12 minut** .
+In this tutorial, you learn how to use [parameter files](resource-manager-parameter-files.md) to store the values you pass in during deployment. In the previous tutorials, you used inline parameters with your deployment command. This approach worked for testing your template, but when automating deployments it can be easier to pass a set of values for your environment. Parameter files make it easier to package parameter values for a specific environment. In this tutorial, you'll create parameter files for development and production environments. It takes about **12 minutes** to complete.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zalecamy ukończenie [samouczka dotyczącego tagów](template-tutorial-add-tags.md), ale nie jest to wymagane.
+We recommend that you complete the [tutorial about tags](template-tutorial-add-tags.md), but it's not required.
 
-Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
+You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Przejrzyj szablon
+## <a name="review-template"></a>Review template
 
-Szablon zawiera wiele parametrów, które można podać podczas wdrażania. Na końcu poprzedniego samouczka szablon wyglądał następująco:
+Your template has many parameters you can provide during deployment. At the end of the previous tutorial, your template looked like:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
 
-Ten szablon działa dobrze, ale teraz chcesz łatwo zarządzać parametrami przekazywanymi do szablonu.
+This template works well, but now you want to easily manage the parameters that you pass in for the template.
 
-## <a name="add-parameter-files"></a>Dodaj pliki parametrów
+## <a name="add-parameter-files"></a>Add parameter files
 
-Pliki parametrów to pliki JSON ze strukturą podobną do szablonu. W pliku podaj wartości parametrów, które mają być przekazywane podczas wdrażania.
+Parameter files are JSON files with a structure that is similar to your template. In the file, you provide the parameter values you want to pass in during deployment.
 
-W VS Code Utwórz nowy plik z następującą zawartością. Zapisz plik o nazwie **azuredeploy. Parameters. dev. JSON**.
+In VS Code, create a new file with following content. Save the file with the name **azuredeploy.parameters.dev.json**.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
 
-Ten plik jest plikiem parametrów środowiska deweloperskiego. Zwróć uwagę, że używa Standard_LRS dla konta magazynu, nazw zasobów z prefiksem **dev** i ustawia tag **środowiska** na **dev**.
+This file is your parameter file for the development environment. Notice that it uses Standard_LRS for the storage account, names resources with a **dev** prefix, and sets the **Environment** tag to **Dev**.
 
-Utwórz nowy plik o następującej zawartości. Zapisz plik o nazwie **azuredeploy. Parameters. prod. JSON**.
+Again, create a new file with the following content. Save the file with the name **azuredeploy.parameters.prod.json**.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
 
-Ten plik jest plikiem parametrów dla środowiska produkcyjnego. Zwróć uwagę, że używa Standard_GRS dla konta magazynu, nazw zasobów z prefiksem **contoso** i ustawia tag **środowiska** na **produkcyjny**. W rzeczywistym środowisku produkcyjnym warto również używać usługi App Service z jednostką SKU inną niż bezpłatna, ale będziemy nadal korzystać z tej jednostki SKU dla tego samouczka.
+This file is your parameter file for the production environment. Notice that it uses Standard_GRS for the storage account, names resources with a **contoso** prefix, and sets the **Environment** tag to **Production**. In a real production environment, you would also want to use an app service with a SKU other than free, but we'll continue to use that SKU for this tutorial.
 
-## <a name="deploy-the-template"></a>Wdrożenie szablonu
+## <a name="deploy-template"></a>Wdrażanie szablonu
 
-Użyj interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby wdrożyć szablon.
+Use either Azure CLI or Azure PowerShell to deploy the template.
 
-Jako ostatni test szablonu Utwórzmy dwie nowe grupy zasobów. Jeden dla środowiska deweloperskiego i jeden dla środowiska produkcyjnego.
+As a final test of your template, let's create two new resource groups. One for the dev environment and one for the production environment.
 
-Po pierwsze wdrożenie zostanie wdrożone w środowisku deweloperskim.
+First, we'll deploy to the dev environment.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -85,7 +85,7 @@ az group deployment create \
 
 ---
 
-Teraz wdrażamy je w środowisku produkcyjnym.
+Now, we'll deploy to the production environment.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -116,27 +116,27 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
+## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
-Możesz zweryfikować wdrożenie, przeeksplorowanie grup zasobów z Azure Portal.
+You can verify the deployment by exploring the resource groups from the Azure portal.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
-1. Zobaczysz dwie nowe grupy zasobów wdrożone w tym samouczku.
-1. Wybierz pozycję Grupa zasobów i Wyświetl wdrożone zasoby. Zwróć uwagę, że są one zgodne z wartościami określonymi w pliku parametrów dla danego środowiska.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. From the left menu, select **Resource groups**.
+1. You see the two new resource groups you deployed in this tutorial.
+1. Select either resource group and view the deployed resources. Notice that they match the values you specified in your parameter file for that environment.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
-2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**. Jeśli ta seria została ukończona, istnieją trzy grupy zasobów do usunięcia — zasobu, myResourceGroupDev i myResourceGroupProd.
+2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**. If you've completed this series, you have three resource groups to delete - myResourceGroup, myResourceGroupDev, and myResourceGroupProd.
 3. Wybierz nazwę grupy zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Gratulacje, wprowadzenie do wdrożenia szablonów na platformie Azure. Daj nam znać, jeśli masz jakieś komentarze i sugestie w sekcji Opinie. Dziękujemy.
+Congratulations, you've finished this introduction to deploying templates to Azure. Let us know if you have any comments and suggestions in the feedback section. Dziękujemy!
 
-Możesz teraz przejść do bardziej zaawansowanych koncepcji dotyczących szablonów. Następny samouczek zawiera więcej szczegółów dotyczących korzystania z dokumentacji szablonów referencyjnych, aby ułatwić Definiowanie zasobów do wdrożenia.
+You're ready to jump into more advanced concepts about templates. The next tutorial goes into more detail about using template reference documentation to help with defining resources to deploy.
 
 > [!div class="nextstepaction"]
 > [Korzystanie z dokumentacji szablonów](resource-manager-tutorial-create-encrypted-storage-accounts.md)

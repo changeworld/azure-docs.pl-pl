@@ -1,25 +1,25 @@
 ---
-title: Pobierz prognozowanie za pomocą wywołania REST wC#
+title: Get prediction with REST call in C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 9ab477ffd7001f0f492f63355baaee26827db845
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2d3a000040ff1b4f6e0ae548b578e8be014dc06a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125569"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414470"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
+* [.NET Core V2.2+](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Identyfikator aplikacji publicznej: df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>Pobieranie klucza usługi LUIS
 
@@ -27,20 +27,22 @@ ms.locfileid: "74125569"
 
 ## <a name="get-intent-programmatically"></a>Pobieranie intencji w sposób programistyczny
 
-Użyj C# , aby wykonać zapytanie o [interfejs API](https://aka.ms/luis-apim-v3-prediction) uzyskiwania punktu końcowego przewidywania, aby uzyskać wynik przewidywania. 
+Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
 
-1. Utwórz nową aplikację konsolową przeznaczoną C# dla języka z nazwą projektu i folderu `predict-with-rest`. 
+1. Create a new console application targeting the C# language, with a project and folder name of `predict-with-rest`. 
 
     ```console
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. Zainstaluj wymagane zależności z następującymi poleceniami interfejsu wiersza polecenia dotnet.
+1. Change to the `predict-with-rest` directory you just created, and install required dependencies with these commands:  
 
     ```console
+    cd predict-with-rest
     dotnet add package System.Net.Http
     ```
-1. Zastąp plik Program.cs przy użyciu następującego kodu:
+
+1. Open `Program.cs` in your favorite IDE or editor. Then overwrite `Program.cs` with the following code:
     
    ```csharp
     using System;
@@ -100,31 +102,31 @@ Użyj C# , aby wykonać zapytanie o [interfejs API](https://aka.ms/luis-apim-v3-
 
    ```
 
-1. Zastąp następujące wartości:
+1. Replace the following values:
 
-    * `YOUR-KEY` z kluczem początkowym
-    * `YOUR-ENDPOINT` z punktem końcowym, na przykład `westus2.api.cognitive.microsoft.com`
+    * `YOUR-KEY` with your starter key.
+    * `YOUR-ENDPOINT` with your endpoint. Na przykład `westus2.api.cognitive.microsoft.com`.
 
-1. Skompiluj aplikację konsolową. 
+1. Build the console application with this command: 
 
     ```console
     dotnet build
     ```
 
-1. Uruchom aplikację konsolową. Dane wyjściowe konsoli wyświetlają ten sam kod JSON, który został wyświetlony wcześniej w oknie przeglądarki.
+1. Uruchom aplikację konsolową. The console output displays the same JSON that you saw earlier in the browser window.
 
     ```console
     dotnet run
     ```
 
-1. Przejrzyj odpowiedź przewidywania w formacie JSON:
+1. Review the prediction response, which is returned as JSON:
 
     ```console
     Hit ENTER to exit...
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Odpowiedź JSON sformatowana pod kątem czytelności: 
+    The JSON response formatted for readability: 
 
     ```JSON
     {
@@ -173,9 +175,9 @@ Użyj C# , aby wykonać zapytanie o [interfejs API](https://aka.ms/luis-apim-v3-
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu pracy z tym przewodnikiem Szybki Start Usuń plik z systemu plików. 
+When you are finished with this quickstart, delete the file from the file system. 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dodawanie wyrażenia długości i uczenie](../get-started-get-model-rest-apis.md)
+> [Add utterances and train](../get-started-get-model-rest-apis.md)
