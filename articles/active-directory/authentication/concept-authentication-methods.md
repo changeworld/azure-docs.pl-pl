@@ -1,6 +1,6 @@
 ---
-title: Metody uwierzytelniania — Azure Active Directory
-description: Metody uwierzytelniania dostępne w usłudze Azure AD dla usług MFA i SSPR
+title: Authentication methods - Azure Active Directory
+description: Authentication methods available in Azure AD for MFA and SSPR
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,158 +11,158 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 4a7110ad3e6c9c66179c90c02c1572ee83cb9f15
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808411"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420767"
 ---
 # <a name="what-are-authentication-methods"></a>Co to są metody uwierzytelniania?
 
-Jako administrator wybieraj metody uwierzytelniania dla usługi Azure Multi-Factor Authentication i samoobsługowego resetowania hasła (SSPR) zaleca się, aby użytkownicy musieli zarejestrować wiele metod uwierzytelniania. Gdy metoda uwierzytelniania nie jest dostępna dla użytkownika, może wybrać opcję uwierzytelnienia przy użyciu innej metody.
+As an administrator, choosing authentication methods for Azure Multi-Factor Authentication and self-service password reset (SSPR) it is recommended that you require users to register multiple authentication methods. When an authentication method is not available for a user, they can choose to authenticate with another method.
 
-Administratorzy mogą definiować w zasadach, które metody uwierzytelniania są dostępne dla użytkowników usługi SSPR i MFA. Niektóre metody uwierzytelniania mogą nie być dostępne dla wszystkich funkcji. Aby uzyskać więcej informacji na temat konfigurowania zasad, zobacz artykuł [jak pomyślnie wdrożyć Samoobsługowe resetowanie haseł](howto-sspr-deployment.md) i [zaplanować Multi-Factor Authentication platformy Azure opartej na chmurze](howto-mfa-getstarted.md)
+Administrators can define in policy which authentication methods are available to users of SSPR and MFA. Some authentication methods may not be available to all features. For more information about configuring your policies see the articles [How to successfully roll out self-service password reset](howto-sspr-deployment.md) and [Planning a cloud-based Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 
-Firma Microsoft zdecydowanie zaleca administratorów pozwala użytkownikom wybrać więcej niż minimalną wymaganą liczbę metod uwierzytelniania na wypadek, gdyby nie mieli dostępu do jednego.
+Microsoft highly recommends Administrators enable users to select more than the minimum required number of authentication methods in case they do not have access to one.
 
 |Metoda uwierzytelniania|Użycie|
 | --- | --- |
-| Hasło | Uwierzytelnianie MFA i SSPR |
-| Pytania zabezpieczające | Tylko SSPR |
-| Email address (Adres e-mail) | Tylko SSPR |
-| Aplikacja Microsoft Authenticator | Uwierzytelnianie MFA i SSPR |
-| Token sprzętowy OATH | Publiczna wersja zapoznawcza usługi MFA i SSPR |
-| SMS | Uwierzytelnianie MFA i SSPR |
-| Połączenie głosowe | Uwierzytelnianie MFA i SSPR |
-| Hasła aplikacji | MFA tylko w niektórych przypadkach |
+| Hasło | MFA and SSPR |
+| Pytania zabezpieczające | SSPR Only |
+| Email address (Adres e-mail) | SSPR Only |
+| Aplikacja Microsoft Authenticator | MFA and SSPR |
+| OATH Hardware token | Public preview for MFA and SSPR |
+| SMS | MFA and SSPR |
+| Połączenie głosowe | MFA and SSPR |
+| Hasła aplikacji | MFA only in certain cases |
 
-![Metody uwierzytelniania używane na ekranie logowania](media/concept-authentication-methods/overview-login.png)
+![Authentication methods in use at the sign-in screen](media/concept-authentication-methods/overview-login.png)
 
 |     |
 | --- |
-| Tokeny sprzętowe OATH dla usługi MFA i SSPR są funkcjami publicznej wersji zapoznawczej programu Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure|
+| OATH Hardware tokens for MFA and SSPR are public preview features of Azure Active Directory. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="password"></a>Hasło
 
-Hasło usługi Azure AD jest uznawane za metodę uwierzytelniania. Jest to jedna z metod, której **nie można wyłączyć**.
+Your Azure AD password is considered an authentication method. It is the one method that **cannot be disabled**.
 
 ## <a name="security-questions"></a>Pytania zabezpieczające
 
-Pytania zabezpieczające są dostępne tylko w ramach samoobsługowego **resetowania hasła w usłudze Azure AD** do kont innych niż administracyjne.
+Security questions are available **only in Azure AD self-service password reset** to non-administrator accounts.
 
-Jeśli używasz pytań zabezpieczających, zalecamy ich użycie w połączeniu z inną metodą. Pytania zabezpieczające mogą być mniej bezpieczne niż inne metody, ponieważ niektóre osoby mogą znać odpowiedzi na pytania innego użytkownika.
+If you use security questions, we recommend using them in conjunction with another method. Security questions can be less secure than other methods because some people might know the answers to another user's questions.
 
 > [!NOTE]
-> Pytania zabezpieczające są przechowywane prywatnie i bezpiecznie w obiekcie użytkownika w katalogu i mogą być udzielane tylko przez użytkowników podczas rejestracji. Nie ma możliwości, aby administrator mógł odczytywać lub modyfikować pytania lub odpowiedzi użytkownika.
+> Security questions are stored privately and securely on a user object in the directory and can only be answered by users during registration. There is no way for an administrator to read or modify a user's questions or answers.
 >
 
-### <a name="predefined-questions"></a>Wstępnie zdefiniowane pytania
+### <a name="predefined-questions"></a>Predefined questions
 
-* W jakim mieście Twój pierwszy współmałżonek/partner?
-* W jakim mieście spotkali się rodzice?
-* W jakim mieście znajduje się najbliższy element równorzędny?
-* W jakim mieście urodziły się ojciec?
-* W jakim mieście było Twoje pierwsze zadanie?
-* W jakim mieście urodziła się twoja matka?
-* W którym mieście nastąpiło w nowym roku 2000?
-* Jaka jest nazwisko Twojego ulubionego nauczyciela w wysokiej szkoły?
-* Jaka jest nazwa uczelni, która została zastosowana, ale nie uczestniczyła?
-* Jaka jest nazwa miejsca, w którym ma zostać przeprowadzone pierwsze odbiór z ślubu?
-* Co to jest drugie imię Twojego ojca?
-* Jaka jest Twoja ulubiona żywność?
-* Co to jest imię i nazwisko matki babcia?
-* Co to jest imię i nazwisko matki?
-* Co to jest miesiąc i rok urodzinowy Twojego elementu równorzędnego? (np. listopad 1985)
-* Jaka jest nazwa najstarszego elementu równorzędnego?
-* Co to jest imię i nazwisko z Paternal dziadka?
-* Co to jest drugie imię z najmłodszego elementu równorzędnego?
-* Jaką szkołę znasz na szóstej ocenie?
-* Jakie było imię i nazwisko najlepszego przyjaciela?
-* Jakie było imię i nazwisko Twojego pierwszego znaczenia?
-* Jaka była nazwisko Twojego ulubionego nauczyciela szkoły szkolnej?
-* Co to jest marka i model Twojego pierwszego samochodu lub motocykla?
-* Jaka była nazwa pierwszej szkolnej szkoły?
-* Jaka była nazwa szpitala, z którego korzystasz?
-* Jaka była nazwa ulicy Twojego pierwszego domu z domem?
-* Jaka była nazwa Twojego heroi z domu?
-* Jaka była nazwa ulubionego zwierzęcia?
-* Jaka była nazwa Twojego pierwszego zwierzęcia domowego?
-* Jaki był pseudonim w Twoim domu,?
-* Jaki był Twój ulubiony sport w dużej szkole?
-* Jakie było Twoje pierwsze zadanie?
-* Jakie były cztery ostatnie cyfry Twojego numeru telefonu w Twoim serwisie
-* Kiedy jesteś w młodych, co chcesz zrobić po wzrósłe?
-* Kto jest najbardziej sławęą osobą?
+* In what city did you meet your first spouse/partner?
+* In what city did your parents meet?
+* In what city does your nearest sibling live?
+* In what city was your father born?
+* In what city was your first job?
+* In what city was your mother born?
+* What city were you in on New Year's 2000?
+* What is the last name of your favorite teacher in high school?
+* What is the name of a college you applied to but didn't attend?
+* What is the name of the place in which you held your first wedding reception?
+* What is your father's middle name?
+* What is your favorite food?
+* What is your maternal grandmother's first and last name?
+* What is your mother's middle name?
+* What is your oldest sibling's birthday month and year? (e.g. November 1985)
+* What is your oldest sibling's middle name?
+* What is your paternal grandfather's first and last name?
+* What is your youngest sibling's middle name?
+* What school did you attend for sixth grade?
+* What was the first and last name of your childhood best friend?
+* What was the first and last name of your first significant other?
+* What was the last name of your favorite grade school teacher?
+* What was the make and model of your first car or motorcycle?
+* What was the name of the first school you attended?
+* What was the name of the hospital in which you were born?
+* What was the name of the street of your first childhood home?
+* What was the name of your childhood hero?
+* What was the name of your favorite stuffed animal?
+* What was the name of your first pet?
+* What was your childhood nickname?
+* What was your favorite sport in high school?
+* What was your first job?
+* What were the last four digits of your childhood telephone number?
+* When you were young, what did you want to be when you grew up?
+* Who is the most famous person you have ever met?
 
-Wszystkie wstępnie zdefiniowane pytania zabezpieczające są tłumaczone i lokalizowane do pełnego zestawu języków pakietu Office 365 na podstawie ustawień regionalnych przeglądarki użytkownika.
+All of the predefined security questions are translated and localized into the full set of Office 365 languages based on the user's browser locale.
 
-### <a name="custom-security-questions"></a>Niestandardowe pytania zabezpieczające
+### <a name="custom-security-questions"></a>Custom security questions
 
-Niestandardowe pytania zabezpieczające nie są zlokalizowane. Wszystkie pytania niestandardowe są wyświetlane w tym samym języku, w jakim są wprowadzane w administracyjnym interfejsie użytkownika, nawet jeśli ustawienia regionalne przeglądarki użytkownika są inne. Jeśli potrzebujesz zlokalizowanych pytań, musisz użyć wstępnie zdefiniowanych pytań.
+Custom security questions are not localized. All custom questions are displayed in the same language as they are entered in the administrative user interface, even if the user's browser locale is different. If you need localized questions, you should use the predefined questions.
 
-Maksymalna długość niestandardowego pytania zabezpieczającego to 200 znaków.
+The maximum length of a custom security question is 200 characters.
 
-### <a name="security-question-requirements"></a>Wymagania dotyczące zabezpieczeń
+### <a name="security-question-requirements"></a>Security question requirements
 
-* Minimalny limit znaków odpowiedzi to trzy znaki.
-* Maksymalny limit znaków odpowiedzi to 40 znaków.
-* Użytkownicy nie mogą odpowiedzieć na te same pytania więcej niż jeden raz.
-* Użytkownicy nie mogą udzielić odpowiedzi na więcej niż jedno pytanie.
-* Dowolny zestaw znaków może służyć do definiowania pytań i odpowiedzi, w tym znaków Unicode.
-* Liczba zdefiniowanych pytań musi być większa lub równa liczbie pytań, które były wymagane do zarejestrowania.
+* The minimum answer character limit is three characters.
+* The maximum answer character limit is 40 characters.
+* Users can't answer the same question more than one time.
+* Users can't provide the same answer to more than one question.
+* Any character set can be used to define the questions and the answers, including Unicode characters.
+* The number of questions defined must be greater than or equal to the number of questions that were required to register.
 
 ## <a name="email-address"></a>Email address (Adres e-mail)
 
-Adres e-mail jest dostępny **tylko w funkcji samoobsługowego resetowania hasła usługi Azure AD**.
+Email address is available **only in Azure AD self-service password reset**.
 
-Firma Microsoft zaleca użycie konta e-mail, które nie wymaga hasła usługi Azure AD użytkownika do uzyskania dostępu.
+Microsoft recommends the use of an email account that would not require the user's Azure AD password to access.
 
 ## <a name="microsoft-authenticator-app"></a>Aplikacja Microsoft Authenticator
 
-Aplikacja Microsoft Authenticator zapewnia dodatkowy poziom zabezpieczeń dla konta służbowego lub szkolnego usługi Azure AD lub konto Microsoft.
+The Microsoft Authenticator app provides an additional level of security to your Azure AD work or school account or your Microsoft account.
 
 Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
 
 > [!NOTE]
-> Użytkownicy nie będą mogli zarejestrować swojej aplikacji mobilnej podczas rejestrowania się w celu samoobsługowego resetowania hasła. Zamiast tego użytkownicy mogą rejestrować swoją aplikację mobilną w [https://aka.ms/mfasetup](https://aka.ms/mfasetup) lub w wersji zapoznawczej rejestracji informacji o zabezpieczeniach w [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
+> Users will not have the option to register their mobile app when registering for self-service password reset. Instead, users can register their mobile app at [https://aka.ms/mfasetup](https://aka.ms/mfasetup) or in the security info registration preview at [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
 >
 
-### <a name="notification-through-mobile-app"></a>Powiadomienie za poorednictwem aplikacji mobilnej
+### <a name="notification-through-mobile-app"></a>Notification through mobile app
 
-Aplikacja Microsoft Authenticator może pomóc zapobiec nieautoryzowanemu dostępowi do kont i zatrzymywać fałszywe transakcje przez wypychanie powiadomienia do telefonu lub tabletu. Użytkownicy wyświetlają powiadomienie i jeśli są wiarygodne, wybierz pozycję Weryfikuj. W przeciwnym razie można wybrać opcję Odmów.
+The Microsoft Authenticator app can help prevent unauthorized access to accounts and stop fraudulent transactions by pushing a notification to your smartphone or tablet. Users view the notification, and if it's legitimate, select Verify. Otherwise, they can select Deny.
 
 > [!WARNING]
-> Do samoobsługowego resetowania hasła, gdy do resetowania jest wymagana tylko jedna metoda, kod weryfikacyjny jest jedyną opcją dostępną dla użytkowników **w celu zapewnienia najwyższego poziomu zabezpieczeń**.
+> For self-service password reset when only one method is required for reset, verification code is the only option available to users **to ensure the highest level of security**.
 >
-> Gdy wymagane są dwie metody, użytkownicy będą mogli resetować przy **użyciu** powiadomienia **lub** kodu weryfikacyjnego oprócz innych włączonych metod.
+> When two methods are required users will be able to reset using **EITHER** notification **OR** verification code in addition to any other enabled methods.
 >
 
-Jeśli włączysz powiadomienia za pośrednictwem aplikacji mobilnej i kodu weryfikacyjnego z aplikacji mobilnej, użytkownicy rejestrujący aplikację Microsoft Authenticator przy użyciu powiadomienia będą mogli zweryfikować swoją tożsamość przy użyciu zarówno powiadomienia, jak i kodu.
+If you enable the use of both notification through mobile app and verification code from mobile app, users who register the Microsoft Authenticator app using a notification are able to use both notification and code to verify their identity.
 
 > [!NOTE]
-> Jeśli Twoja organizacja ma pracowników pracujących w trakcie lub podróży z Chin, **powiadomienie za pomocą metody aplikacji mobilnej** na **urządzeniach z systemem Android** nie działa w tym kraju. Dla tych użytkowników należy udostępnić alternatywne metody.
+> If your organization has staff working in or traveling to China, the **Notification through mobile app** method on **Android devices** does not work in that country. Alternate methods should be made available for those users.
 
-### <a name="verification-code-from-mobile-app"></a>Kod weryfikacyjny z aplikacji mobilnej
+### <a name="verification-code-from-mobile-app"></a>Verification code from mobile app
 
-Aplikacja Microsoft Authenticator lub inne aplikacje innych firm mogą służyć jako token oprogramowania do generowania kodu weryfikacyjnego OATH. Po wprowadzeniu nazwy użytkownika i hasła wprowadzasz kod dostarczony przez aplikację na ekranie logowania. Kod weryfikacyjny zapewnia drugą formę uwierzytelniania.
+The Microsoft Authenticator app or other third-party apps can be used as a software token to generate an OATH verification code. After entering your username and password, you enter the code provided by the app into the sign-in screen. The verification code provides a second form of authentication.
 
 > [!WARNING]
-> Do samoobsługowego resetowania hasła, gdy tylko jedna metoda jest wymagana do resetowania kodu weryfikacyjnego jest jedyną opcją dostępną dla użytkowników **w celu zapewnienia najwyższego poziomu zabezpieczeń**.
+> For self-service password reset when only one method is required for reset verification code is the only option available to users **to ensure the highest level of security**.
 >
 
-Użytkownicy mogą mieć kombinację maksymalnie pięciu tokenów sprzętowych OATH lub aplikacji uwierzytelniania, takich jak aplikacja Microsoft Authenticator skonfigurowana do użycia w dowolnym momencie.
+Users may have a combination of up to five OATH hardware tokens or authenticator applications such as the Microsoft Authenticator app configured for use at any time.
 
-## <a name="oath-hardware-tokens-public-preview"></a>Tokeny sprzętowe OATH (publiczna wersja zapoznawcza)
+## <a name="oath-hardware-tokens-public-preview"></a>OATH hardware tokens (public preview)
 
-OATH to otwarty standard, który określa sposób generowania kodów haseł jednorazowych (OTP). Usługa Azure AD będzie obsługiwać użycie tokenów SHA-TOTP w liczbie 2 sekund lub 60 sekund. Klienci mogą odliczać te tokeny od wybranego przez siebie dostawcy. Klucze tajne są ograniczone do 128 znaków, które mogą nie być zgodne ze wszystkimi tokenami. Klucze tajne muszą być zakodowane w Base32.
+OATH is an open standard that specifies how one-time password (OTP) codes are generated. Azure AD will support the use of OATH-TOTP SHA-1 tokens of the 30-second or 60-second variety. Customers can procure these tokens from the vendor of their choice. Secret keys are limited to 128 characters, which may not be compatible with all tokens. The secret keys need to be encoded in Base32.
 
-![Przekazywanie tokenów OATH do bloku tokenów OATH serwera usługi MFA](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![Uploading OATH tokens to the MFA Server OATH tokens blade](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-Tokeny sprzętowe OATH są obsługiwane w ramach publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure
+OATH hardware tokens are being supported as part of a public preview. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-Po uzyskaniu tokenów należy przekazać je w formacie pliku wartości rozdzielanych przecinkami (CSV), w tym nazwy UPN, numeru seryjnego, klucza tajnego, interwału czasu, producenta i modelu, jak pokazano poniżej.
+Once tokens are acquired they must be uploaded in a comma-separated values (CSV) file format including the UPN, serial number, secret key, time interval, manufacturer, and model as the example below shows.
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
@@ -170,99 +170,99 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 ```
 
 > [!NOTE]
-> Upewnij się, że w pliku CSV znajduje się wiersz nagłówka, jak pokazano powyżej.
+> Make sure you include the header row in your CSV file as shown above.
 
-Po prawidłowym sformatowaniu pliku CSV administrator może następnie zalogować się do Azure Portal i przejść do **Azure Active Directory**, **serwera MFA**, **tokenów Oath**i przekazać plik CSV z wynikiem.
+Once properly formatted as a CSV file, an administrator can then sign in to the Azure portal and navigate to **Azure Active Directory**, **MFA Server**, **OATH tokens**, and upload the resulting CSV file.
 
-Proces może potrwać kilka minut, w zależności od rozmiaru pliku CSV. Kliknij przycisk **Odśwież** , aby uzyskać bieżący stan. W przypadku wystąpienia błędów w pliku można pobrać plik CSV zawierający listę błędów, które należy rozwiązać.
+Depending on the size of the CSV file, it may take a few minutes to process. Click the **Refresh** button to get the current status. If there are any errors in the file, you will have the option to download a CSV file listing any errors for you to resolve.
 
-Po rozwiązaniu jakichkolwiek błędów administrator może aktywować każdy klucz, klikając **Aktywuj** dla tokenu, który ma zostać aktywowany, i wprowadzając uwierzytelnianie OTP wyświetlane na tokenie.
+Once any errors have been addressed, the administrator then can activate each key by clicking **Activate** for the token to be activated and entering the OTP displayed on the token.
 
-Użytkownicy mogą mieć kombinację maksymalnie pięciu tokenów sprzętowych OATH lub aplikacji uwierzytelniania, takich jak aplikacja Microsoft Authenticator skonfigurowana do użycia w dowolnym momencie.
+Users may have a combination of up to five OATH hardware tokens or authenticator applications such as the Microsoft Authenticator app configured for use at any time.
 
-## <a name="phone-options"></a>Opcje telefonu
+## <a name="phone-options"></a>Phone options
 
 ### <a name="mobile-phone"></a>Telefon komórkowy
 
-Dla użytkowników korzystających z telefonów komórkowych są dostępne dwie opcje.
+Two options are available to users with mobile phones.
 
-Jeśli użytkownicy nie chcą, aby Twój numer telefonu komórkowego był widoczny w katalogu, ale nadal chcą używać go do resetowania haseł, Administratorzy nie muszą wypełniać go w katalogu. Użytkownicy powinni wypełnić atrybut **telefonu uwierzytelniania** za pośrednictwem [portalu rejestracji resetowania haseł](https://aka.ms/ssprsetup). Administratorzy mogą zobaczyć te informacje w profilu użytkownika, ale nie zostały opublikowane w innym miejscu.
+If users don't want their mobile phone number to be visible in the directory, but they still want to use it for password reset, administrators should not populate it in the directory. Users should populate their **Authentication Phone** attribute via the [password reset registration portal](https://aka.ms/ssprsetup). Administrators can see this information in the user's profile, but it's not published elsewhere.
 
-Aby działały prawidłowo, numery telefonów muszą mieć format *+ CountryCode*, na przykład + 1 4255551234.
+To work properly, phone numbers must be in the format *+CountryCode PhoneNumber*, for example, +1 4255551234.
 
 > [!NOTE]
-> Musi być odstęp między kodem kraju i numerem telefonu.
+> There needs to be a space between the country code and the phone number.
 >
-> Resetowanie hasła nie obsługuje rozszerzeń telefonu. Nawet w formacie 4255551234X12345 + 1 rozszerzenia są usuwane przed umieszczeniem wywołania.
+> Password reset does not support phone extensions. Even in the +1 4255551234X12345 format, extensions are removed before the call is placed.
 
-Firma Microsoft nie gwarantuje spójnego dostarczania wiadomości SMS lub głosowych Multi-Factor Authentication na podstawie tej samej liczby. W interesie naszych użytkowników firma Microsoft może dodawać lub usuwać krótkie kody w dowolnym momencie, gdy wprowadzimy zmiany trasy w celu poprawy możliwości dostarczania wiadomości SMS. Firma Microsoft nie obsługuje krótkich kodów dla krajów/regionów poza Stany Zjednoczone i Kanadę.
+Microsoft does not guarantee consistent SMS or Voice-based Multi-Factor Authentication prompt delivery by the same number. In the interest of our users, Microsoft may add or remove Short codes at any time as we make route adjustments to improve SMS deliverability. Microsoft does not support short codes for countries/regions besides the United States and Canada.
 
 #### <a name="text-message"></a>Wiadomość SMS
 
-Wiadomość SMS jest wysyłana na numer telefonu komórkowego zawierający kod weryfikacyjny. Aby kontynuować, wprowadź kod weryfikacyjny podany w interfejsie logowania.
+An SMS is sent to the mobile phone number containing a verification code. Enter the verification code provided in the sign-in interface to continue.
 
-#### <a name="phone-call"></a>Połączenie telefoniczne
+#### <a name="phone-call"></a>Phone call
 
-Automatyczne połączenie głosowe jest nawiązywane na podanym numerze telefonu. Odpowiedz na połączenie i naciśnij klawisz # na klawiaturze telefonu, aby przeprowadzić uwierzytelnianie
-
-> [!IMPORTANT]
-> Począwszy od marca 2019 opcje połączenia telefonicznego nie będą dostępne dla usługi MFA i SSPR użytkowników w bezpłatnych/bezpłatnych dzierżawach Azure AD. Ta zmiana nie ma wpływu na wiadomości SMS. Połączenie telefoniczne będzie nadal dostępne dla użytkowników w płatnych dzierżawach usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżawy usługi Azure AD bezpłatne/próbne.
-
-### <a name="office-phone"></a>Telefon biurowy
-
-Automatyczne połączenie głosowe jest nawiązywane na podanym numerze telefonu. Odpowiedz na wywołanie i naciśnij klawisz # na klawiaturze telefonu w celu uwierzytelnienia.
-
-Aby działały prawidłowo, numery telefonów muszą mieć format *+ CountryCode*, na przykład + 1 4255551234.
-
-Atrybut telefon biurowy jest zarządzany przez administratora.
+An automated voice call is made to the phone number you provide. Answer the call and press # in the phone keypad to authenticate
 
 > [!IMPORTANT]
-> Począwszy od marca 2019 opcje połączenia telefonicznego nie będą dostępne dla usługi MFA i SSPR użytkowników w bezpłatnych/bezpłatnych dzierżawach Azure AD. Ta zmiana nie ma wpływu na wiadomości SMS. Połączenie telefoniczne będzie nadal dostępne dla użytkowników w płatnych dzierżawach usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżawy usługi Azure AD bezpłatne/próbne.
+> Starting in March of 2019 the phone call options will not be available to MFA and SSPR users in free/trial Azure AD tenants. SMS messages are not impacted by this change. Phone call will continue to be available to users in paid Azure AD tenants. This change only impacts free/trial Azure AD tenants.
+
+### <a name="office-phone"></a>Office phone
+
+An automated voice call is made to the phone number you provide. Answer the call and presses # in the phone keypad to authenticate.
+
+To work properly, phone numbers must be in the format *+CountryCode PhoneNumber*, for example, +1 4255551234.
+
+The office phone attribute is managed by your administrator.
+
+> [!IMPORTANT]
+> Starting in March of 2019 the phone call options will not be available to MFA and SSPR users in free/trial Azure AD tenants. SMS messages are not impacted by this change. Phone call will continue to be available to users in paid Azure AD tenants. This change only impacts free/trial Azure AD tenants.
 
 > [!NOTE]
-> Musi być odstęp między kodem kraju i numerem telefonu.
+> There needs to be a space between the country code and the phone number.
 >
-> Resetowanie hasła nie obsługuje rozszerzeń telefonu. Nawet w formacie 4255551234X12345 + 1 rozszerzenia są usuwane przed umieszczeniem wywołania.
+> Password reset does not support phone extensions. Even in the +1 4255551234X12345 format, extensions are removed before the call is placed.
 
-### <a name="troubleshooting-phone-options"></a>Rozwiązywanie problemów z opcjami telefonu
+### <a name="troubleshooting-phone-options"></a>Troubleshooting phone options
 
-Typowe problemy związane z metodami uwierzytelniania przy użyciu numeru telefonu:
+Common problems related to authentication methods using a phone number:
 
-* Zablokowany identyfikator obiektu wywołującego na jednym urządzeniu
-   * Rozwiązywanie problemów z urządzeniem
-* Nieprawidłowy numer telefonu, nieprawidłowy kod kraju, numer telefonu domowego i numer telefonu służbowego
-   * Rozwiązywanie problemów z obiektem użytkownika i skonfigurowanymi metodami uwierzytelniania. Upewnij się, że zarejestrowano poprawne numery telefonów.
-* Wprowadzono nieprawidłowy kod PIN
-   * Upewnij się, że użytkownik użył poprawnego numeru PIN zarejestrowanego na serwerze usługi Azure MFA.
-* Połączenie przekazane do poczty głosowej
-   * Upewnij się, że użytkownik ma włączony telefon i że usługa jest dostępna w swoim obszarze lub użyj alternatywnej metody.
+* Blocked caller ID on a single device
+   * Troubleshoot device
+* Wrong phone number, incorrect country code, home phone number versus work phone number
+   * Troubleshoot user object and configured authentication methods. Ensure correct phone numbers are registered.
+* Wrong PIN entered
+   * Confirm user has used the correct PIN registered in Azure MFA Server.
+* Call forwarded to voicemail
+   * Ensure user has phone turned on and that service is available in their area or use alternate method.
 * Użytkownik jest zablokowany
-   * Należy odblokować użytkownika w Azure Portal.
-* Wiadomość SMS nie jest subskrybowana na urządzeniu
-   * Użytkownik zmienia metody lub aktywuje wiadomość SMS na urządzeniu.
-* Błędni dostawcy Telecom (nie wykryto danych wejściowych telefonu, brakujące sygnały DTMF, zablokowany identyfikator rozmówcy na wielu urządzeniach lub zablokowany program SMS na wielu urządzeniach)
-   * Firma Microsoft używa wielu dostawców Telecom do przesyłania połączeń telefonicznych i wiadomości SMS w celu uwierzytelnienia. Jeśli widzisz którykolwiek z powyższych problemów, użytkownik próbuje użyć metody co najmniej 5 razy w ciągu 5 minut i dysponować informacjami o tym użytkowniku podczas kontaktowania się z pomocą techniczną firmy Microsoft.
+   * Have administrator unblock the user in the Azure portal.
+* SMS is not subscribed on the device
+   * Have the user change methods or activate SMS on the device.
+* Faulty telecom providers (No phone input detected, missing DTMF tones issues, blocked caller ID on multiple devices, or blocked SMS across multiple devices)
+   * Microsoft uses multiple telecom providers to route phone calls and SMS messages for authentication. If you are seeing any of the above issues have a user attempt to use the method at least 5 times within 5 minutes and have that user's information available when contacting Microsoft support.
 
-## <a name="app-passwords"></a>Hasła aplikacji
+## <a name="app-passwords"></a>App Passwords
 
-Niektóre aplikacje nie korzystające z przeglądarki nie obsługują uwierzytelniania wieloskładnikowego, jeśli użytkownik włączył uwierzytelnianie wieloskładnikowe i spróbuje korzystać z aplikacji niekorzystających z przeglądarki, nie może się uwierzytelnić. Hasło aplikacji umożliwia użytkownikom dalsze uwierzytelnianie
+Certain non-browser apps do not support multi-factor authentication, if a user has been enabled for multi-factor authentication and attempt to use non-browser apps, they are unable to authenticate. An app password allows users to continue to authenticate
 
-W przypadku wymuszania Multi-Factor Authentication przy użyciu zasad dostępu warunkowego, a nie za poorednictwem usługi MFA dla poszczególnych użytkowników, nie można tworzyć haseł aplikacji. Aplikacje korzystające z zasad dostępu warunkowego do sterowania dostępem nie potrzebują haseł aplikacji.
+If you enforce Multi-Factor Authentication through Conditional Access policies and not through per-user MFA, you cannot create app passwords. Applications that use Conditional Access policies to control access do not need app passwords.
 
-Jeśli Twoja organizacja jest federacyjnym logowaniem jednokrotnym w usłudze Azure AD i zamierzasz korzystać z usługi Azure MFA, weź pod uwagę następujące informacje:
+If your organization is federated for SSO with Azure AD and you are going to be using Azure MFA, then be aware of the following details:
 
-* Hasło aplikacji jest weryfikowane przez usługę Azure AD i w związku z tym pomija Federacji. Federacja jest używana tylko podczas konfigurowania haseł aplikacji. W przypadku użytkowników federacyjnych (SSO) hasła są przechowywane w IDENTYFIKATORze organizacji. Jeśli użytkownik opuści firmę, informacja ta musi być przepływa do identyfikatora organizacji przy użyciu narzędzia DirSync. Synchronizacja/usunięcie konta może potrwać do 3 godzin, co opóźnia wyłączenie/usunięcie haseł aplikacji w usłudze Azure AD.
+* The app password is verified by Azure AD and therefore bypasses federation. Federation is only used when setting up app passwords. For federated (SSO) users, passwords are stored in the organizational ID. If the user leaves the company, that info has to flow to organizational ID using DirSync. Account disable/deletion may take up to three hours to sync, which delays disable/deletion of app passwords in Azure AD.
 * Ustawienia lokalnej kontroli dostępu klienta nie są uznawane przez hasło aplikacji.
-* Nie jest dostępna funkcja rejestrowania/inspekcji lokalnego uwierzytelniania dla haseł aplikacji.
-* Niektóre zaawansowane projekty architektury mogą wymagać użycia kombinacji nazwy użytkownika i haseł w organizacji oraz haseł aplikacji podczas przeprowadzania weryfikacji dwuetapowej z klientami, w zależności od tego, gdzie są uwierzytelniane. W przypadku klientów, którzy uwierzytelniają się w infrastrukturze lokalnej, należy użyć nazwy użytkownika i hasła organizacji. W przypadku klientów, którzy uwierzytelniają się w usłudze Azure AD, Użyj hasła aplikacji.
-* Domyślnie użytkownicy nie mogą tworzyć haseł aplikacji. Jeśli musisz zezwolić użytkownikom na tworzenie haseł aplikacji, wybierz **opcję Zezwalaj użytkownikom na tworzenie haseł aplikacji do logowania się do aplikacji niekorzystających z przeglądarki** w obszarze Ustawienia usługi.
+* No on-premises authentication logging/auditing capability is available for app passwords.
+* Certain advanced architectural designs may require using a combination of organizational username and passwords and app passwords when using two-step verification with clients, depending on where they authenticate. For clients that authenticate against an on-premises infrastructure, you would use an organizational username and password. For clients that authenticate against Azure AD, you would use the app password.
+* By default, users cannot create app passwords. If you need to allow users to create app passwords, select the **Allow users to create app passwords to sign into non-browser applications option** under service settings.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Włącz Samoobsługowe resetowanie hasła dla organizacji](quickstart-sspr.md)
+[Enable self service password reset for your organization](quickstart-sspr.md)
 
-[Włączanie Multi-Factor Authentication platformy Azure dla Twojej organizacji](howto-mfa-getstarted.md)
+[Enable Azure Multi-Factor Authentication for your organization](howto-mfa-getstarted.md)
 
-[Włącz rejestrację połączoną w dzierżawie](howto-registration-mfa-sspr-combined.md)
+[Enable combined registration in your tenant](howto-registration-mfa-sspr-combined.md)
 
-[Dokumentacja konfiguracji metody uwierzytelniania użytkownika końcowego](https://aka.ms/securityinfoguide)
+[End-user authentication method configuration documentation](https://aka.ms/securityinfoguide)

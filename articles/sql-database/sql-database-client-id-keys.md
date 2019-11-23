@@ -1,6 +1,6 @@
 ---
-title: Pobierz wartości uwierzytelniania aplikacji
-description: Utwórz nazwę główną usługi, aby uzyskać dostęp do SQL Database z kodu.
+title: Get values for app authentication
+description: Create a service principal for accessing SQL Database from code.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,67 +11,95 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 1c2f45aeeaadbbaedc839dd0e2c10804d720a6cd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d357740d340b248859d6dfadf73f83b6e6bb8014
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827177"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421328"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Pobierz wymagane wartości w celu uwierzytelnienia aplikacji w celu uzyskania dostępu do SQL Database z kodu
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Get the required values for authenticating an application to access SQL Database from code
 
-Aby utworzyć SQL Database z kodu i zarządzać nim, musisz zarejestrować aplikację w domenie Azure Active Directory (AAD) w subskrypcji, w której zostały utworzone zasoby platformy Azure.
+To create and manage SQL Database from code you must register your app in the Azure Active Directory (AAD) domain  in the subscription where your Azure resources have been created.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Tworzenie jednostki usługi w celu uzyskania dostępu do zasobów z aplikacji
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Create a service principal to access resources from an application
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+The following examples create the Active Directory (AD) application and the service principal that we need to authenticate our C# app. Skrypt generuje wartości wyjściowe potrzebne w poprzednim przykładzie w języku C#. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie usługi podmiotu używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+
 > [!IMPORTANT]
-> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
+> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
 
-Poniższy skrypt środowiska PowerShell tworzy aplikację usługi Active Directory (AD) oraz jednostkę usługi wymaganą do uwierzytelnienia aplikacji w języku C#. Skrypt generuje wartości wyjściowe potrzebne w poprzednim przykładzie w języku C#. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie usługi podmiotu używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+```powershell
+# sign in to Azure
+Connect-AzAccount
 
-    # Sign in to Azure.
-    Connect-AzAccount
+# for multiple subscriptions, uncomment and set to the subscription you want to work with
+#$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
+#Set-AzContext -SubscriptionId $subscriptionId
 
-    # If you have multiple subscriptions, uncomment and set to the subscription you want to work with.
-    #$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
-    #Set-AzContext -SubscriptionId $subscriptionId
+$appName = "{app-name}" # display name for your app, must be unique in your directory
+$uri = "http://{app-name}" # does not need to be a real uri
+$secret = "{app-password}"
 
-    # Provide these values for your new AAD app.
-    # $appName is the display name for your app, must be unique in your directory.
-    # $uri does not need to be a real uri.
-    # $secret is a password you create.
+# create an AAD app
+$azureAdApplication = New-AzADApplication -DisplayName $appName -HomePage $Uri -IdentifierUris $Uri -Password $secret
 
-    $appName = "{app-name}"
-    $uri = "http://{app-name}"
-    $secret = "{app-password}"
+# create a Service Principal for the app
+$svcprincipal = New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
-    # Create an AAD app
-    $azureAdApplication = New-AzADApplication -DisplayName $appName -HomePage $Uri -IdentifierUris $Uri -Password $secret
+Start-Sleep -s 15 # to avoid a PrincipalNotFound error, pause here for 15 seconds
 
-    # Create a Service Principal for the app
-    $svcprincipal = New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+# if you still get a PrincipalNotFound error, then rerun the following until successful.
+$roleassignment = New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
-    # To avoid a PrincipalNotFound error, I pause here for 15 seconds.
-    Start-Sleep -s 15
+# output the values we need for our C# application to successfully authenticate
+Write-Output "Copy these values into the C# sample app"
 
-    # If you still get a PrincipalNotFound error, then rerun the following until successful. 
-    $roleassignment = New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+Write-Output "_subscriptionId:" (Get-AzContext).Subscription.SubscriptionId
+Write-Output "_tenantId:" (Get-AzContext).Tenant.TenantId
+Write-Output "_applicationId:" $azureAdApplication.ApplicationId.Guid
+Write-Output "_applicationSecret:" $secret
+```
 
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-    # Output the values we need for our C# application to successfully authenticate
+```azure-cli
+# sign in to Azure
+az login
 
-    Write-Output "Copy these values into the C# sample app"
+# for multiple subscriptions, uncomment and set to the subscription you want to work with
+#$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
+#az account set --subscription $subscriptionId
 
-    Write-Output "_subscriptionId:" (Get-AzContext).Subscription.SubscriptionId
-    Write-Output "_tenantId:" (Get-AzContext).Tenant.TenantId
-    Write-Output "_applicationId:" $azureAdApplication.ApplicationId.Guid
-    Write-Output "_applicationSecret:" $secret
+$appName = "{app-name}" # display name for your app, must be unique in your directory
+$uri = "http://{app-name}" # does not need to be a real uri
+$secret = "{app-password}"
 
+# create an AAD app
+$azureAdApplication = az ad app create --display-name $appName --homepage $Uri --identifier-uris $Uri --password $secret
 
+# create a Service Principal for the app
+$svcprincipal = az ad sp create --id $azureAdApplication.ApplicationId
 
+Start-Sleep -s 15 # to avoid a PrincipalNotFound error, pause for 15 seconds
 
-## <a name="see-also"></a>Zobacz też
-* [Tworzenie bazy danych SQL za pomocąC#](sql-database-get-started-csharp.md)
-* [Nawiązywanie połączenia z SQL Database przy użyciu uwierzytelniania Azure Active Directory](sql-database-aad-authentication.md)
+# if you still get a PrincipalNotFound error, then rerun the following until successful.
+$roleassignment = az role assignment create --role "Contributor" --assignee $azureAdApplication.ApplicationId.Guid
 
+# output the values we need for our C# application to successfully authenticate
+Write-Output "Copy these values into the C# sample app"
+
+Write-Output "_subscriptionId:" (az account show --query "id")
+Write-Output "_tenantId:" (az account show --query "tenantId")
+Write-Output "_applicationId:" $azureAdApplication.ApplicationId.Guid
+Write-Output "_applicationSecret:" $secret
+```
+
+* * *
+
+## <a name="see-also"></a>Zobacz także
+
+[Create a SQL database with C#](sql-database-get-started-csharp.md)  
+[Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md)

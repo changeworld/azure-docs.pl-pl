@@ -1,113 +1,92 @@
 ---
-title: Jednostki magazynu danych (jednostek dwu, cDWUs) w usłudze Azure Synapse Analytics (dawniej SQL DW)
-description: Zalecenia dotyczące wyboru idealnej liczby jednostek magazynu danych (jednostek dwu, cDWUs) w celu zoptymalizowania cen i wydajności oraz sposobu zmiany liczby jednostek.
+title: Data Warehouse Units (DWUs) in Azure Synapse Analytics (formerly SQL DW)
+description: Recommendations on choosing the ideal number of data warehouse units (DWUs) to optimize price and performance, and how to change the number of units.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: caa23d3e86fba86aa45e677f7ab85859cda6ddce
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7cd6a037f339f193f63cbe152f0ea9964679c231
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133162"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420482"
 ---
-# <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednostki magazynu danych (jednostek dwu) i jednostki magazynu danych obliczeniowych (cDWUs)
+# <a name="data-warehouse-units-dwus"></a>Data Warehouse Units (DWUs)
 
-Zalecenia dotyczące wyboru idealnej liczby jednostek magazynu danych (jednostek dwu, cDWUs) w celu zoptymalizowania cen i wydajności oraz sposobu zmiany liczby jednostek.
+Recommendations on choosing the ideal number of data warehouse units (DWUs) to optimize price and performance, and how to change the number of units.
 
-## <a name="what-are-data-warehouse-units"></a>Co to są jednostki magazynu danych
+## <a name="what-are-data-warehouse-units"></a>What are Data Warehouse Units
 
-Pula SQL reprezentuje kolekcję zasobów analitycznych, które są obsługiwane podczas korzystania z usługi [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse). Zasoby analityczne są definiowane jako kombinacja procesora CPU, pamięci i operacji we/wy. Te trzy zasoby są powiązane z jednostkami skali obliczeniowej o nazwie jednostki magazynu danych (jednostek dwu). JEDNOSTEK dwu reprezentuje abstrakcyjną, znormalizowaną miarę zasobów obliczeniowych i wydajności. Zmiana poziomu usługi zmienia liczbę jednostek dwu, które są dostępne dla systemu, co z kolei dostosowuje wydajność i koszt systemu.
+A [SQL pool](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) represents a collection of analytic resources that are being provisioned when using [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse). Analytic resources are defined as a combination of CPU, memory and IO. These three resources are bundled into units of compute scale called Data Warehouse Units (DWUs). A DWU represents an abstract, normalized measure of compute resources and performance. A change to your service level alters the number of DWUs that are available to the system, which in turn adjusts the performance, and the cost, of your system.
 
-Aby uzyskać większą wydajność, można zwiększyć liczbę jednostek magazynu danych. W przypadku mniejszej wydajności Zmniejsz liczbę jednostek magazynu danych. Opłaty za magazyn i opłaty za zasoby obliczeniowe są rozliczane oddzielnie, więc zmiana jednostek magazynu danych nie ma wpływu na koszty magazynowania.
+For higher performance, you can increase the number of data warehouse units. For less performance, reduce data warehouse units. Storage and compute costs are billed separately, so changing data warehouse units does not affect storage costs.
 
-Wydajność dla jednostek magazynu danych jest oparta na następujących metrykach obciążenia:
+Performance for data warehouse units is based on these workload metrics:
 
-- Jak Fast kwerenda magazynu danych w warstwie Standardowa może skanować dużą liczbę wierszy, a następnie przeprowadzać złożoną agregację. Ta operacja jest operacją we/wy i intensywnie wykorzystującą procesor CPU.
-- Jak szybko magazyn danych może pozyskać dane z obiektów BLOB usługi Azure Storage lub Azure Data Lake. Ta operacja jest intensywnie korzystające z sieci i procesora CPU.
-- Jak szybko [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) polecenie t-SQL może skopiować tabelę. Ta operacja obejmuje odczytywanie danych z magazynu, ich dystrybucję w węzłach urządzenia i ponowne zapisywanie w magazynie. Ta operacja polega na procesorach CPU, we/wy i intensywnym wykorzystaniu sieci.
+- How fast a standard data warehousing query can scan a large number of rows and then perform a complex aggregation. This operation is I/O and CPU intensive.
+- How fast the data warehouse can ingest data from Azure Storage Blobs or Azure Data Lake. This operation is network and CPU intensive.
+- How fast the [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL command can copy a table. This operation involves reading data from storage, distributing it across the nodes of the appliance and writing to storage again. This operation is CPU, IO, and network intensive.
 
-Zwiększanie jednostek dwu:
+Increasing DWUs:
 
-- Liniowie zmienia wydajność systemu na potrzeby skanów, agregacji i instrukcji CTAS
-- Zwiększa liczbę czytników i autorów dla operacji ładowania bazowego
-- Zwiększa maksymalną liczbę współbieżnych zapytań i miejsc współbieżności.
+- Linearly changes performance of the system for scans, aggregations, and CTAS statements
+- Increases the number of readers and writers for PolyBase load operations
+- Increases the maximum number of concurrent queries and concurrency slots.
 
-## <a name="service-level-objective"></a>Cel poziomu usługi
+## <a name="service-level-objective"></a>Service Level Objective
 
-Cel poziomu usługi (SLO) to ustawienie skalowalności określające koszt i poziom wydajności magazynu danych. Poziomy usługi dla puli SQL Gen2 są mierzone w jednostkach obliczeniowych magazynu danych (cDWU), na przykład DW2000c. Gen1 poziomy usługi puli SQL są mierzone w jednostek dwu, na przykład DW2000.
-  > [!NOTE]
-  > Pula SQL generacji 2 niedawno dodała dodatkowe możliwości skalowania do obsługi warstw obliczeniowych jako 100 cDWU. Istniejące pule SQL obecnie w usłudze Gen1, które wymagają niższych warstw obliczeń, można teraz uaktualnić do Gen2 w regionach, które są obecnie dostępne bez dodatkowych kosztów.  Jeśli region nie jest jeszcze obsługiwany, można nadal przeprowadzić uaktualnienie do obsługiwanego regionu. Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-latest-generation.md).
+The Service Level Objective (SLO) is the scalability setting that determines the cost and performance level of your data warehouse. The service levels for Gen2 SQL pool are measured in data warehouse units (DWU), for example DW2000c.
 
-W języku T-SQL ustawienie SERVICE_OBJECTIVE określa poziom usług i warstwę wydajności dla puli SQL.
+In T-SQL, the SERVICE_OBJECTIVE setting determines the service level for your SQL pool.
 
 ```sql
---Gen1
-CREATE DATABASE myElasticSQLDW
-WITH
-(    SERVICE_OBJECTIVE = 'DW1000'
-)
-;
-
---Gen2
-CREATE DATABASE myComputeSQLDW
-(Edition = 'Datawarehouse'
+CREATE DATABASE mySQLDW
+( EDITION = 'Datawarehouse'
  ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="performance-tiers-and-data-warehouse-units"></a>Warstwy wydajności i jednostki magazynu danych
+## <a name="capacity-limits"></a>Limity pojemności
 
-Każda warstwa wydajności używa nieco innej jednostki miary dla jednostek magazynu danych. Różnica ta jest odzwierciedlana na fakturze, ponieważ jednostka skali bezpośrednio tłumaczy na rozliczenia.
+Each SQL server (for example, myserver.database.windows.net) has a [Database Transaction Unit (DTU)](../sql-database/sql-database-what-is-a-dtu.md) quota that allows a specific number of data warehouse units. For more information, see the [workload management capacity limits](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
-- Gen1 pule SQL są mierzone w jednostkach magazynu danych (jednostek dwu).
-- Gen2 pule SQL są mierzone w jednostkach obliczeniowych magazynu danych (cDWUs).
+## <a name="how-many-data-warehouse-units-do-i-need"></a>How many data warehouse units do I need
 
-Zarówno jednostek dwu, jak i cDWUs obsługują skalowanie w górę i w dół oraz wstrzymywanie obliczeń, gdy nie trzeba używać puli SQL. Wszystkie te operacje są na żądanie. Gen2 używa lokalnej pamięci podręcznej opartej na dyskach w węzłach obliczeniowych w celu zwiększenia wydajności. W przypadku skalowania lub wstrzymania systemu pamięć podręczna jest unieważniona i dlatego przed osiągnięciem optymalnej wydajności jest wymagane przeprowadzenie pamięci podręcznej.  
+The ideal number of data warehouse units depends very much on your workload and the amount of data you have loaded into the system.
 
-W miarę zwiększania liczby jednostek magazynu danych zwiększa się liniowo zasoby obliczeniowe. Gen2 zapewnia najlepszą wydajność zapytań i najwyższą skalę. Systemy Gen2 korzystają również z pamięci podręcznej.
+Steps for finding the best DWU for your workload:
 
-### <a name="capacity-limits"></a>Limity pojemności
+1. Begin by selecting a smaller DWU.
+2. Monitor your application performance as you test data loads into the system, observing the number of DWUs selected compared to the performance you observe.
+3. Identify any additional requirements for periodic periods of peak activity. Workloads that show significant peaks and troughs in activity may need to be scaled frequently.
 
-Każdy serwer SQL (na przykład myserver.database.windows.net) ma przydział [jednostki transakcji bazy danych (DTU)](../sql-database/sql-database-what-is-a-dtu.md) , który umożliwia określoną liczbę jednostek magazynu danych. Aby uzyskać więcej informacji, zobacz [limity wydajności zarządzania obciążeniami](sql-data-warehouse-service-capacity-limits.md#workload-management).
-
-## <a name="how-many-data-warehouse-units-do-i-need"></a>Ile jest potrzebnych jednostek magazynu danych
-
-Idealna liczba jednostek magazynu danych zależy znacznie od obciążenia i ilości danych załadowanych do systemu.
-
-Kroki umożliwiające znalezienie najlepszego jednostek dwu dla obciążenia:
-
-1. Zacznij od wybrania mniejszej jednostek dwu.
-2. Monitoruj wydajność aplikacji podczas testowania obciążeń danych w systemie, obserwując liczbę jednostek dwu wybranych w porównaniu z podaną wydajnością.
-3. Określ dodatkowe wymagania dla okresowych okresów aktywności szczytowej. Obciążenia pokazujące znaczące wartości szczytowe i troughs w działaniu mogą wymagać częstego skalowania.
-
-SQL Analytics to system skalowalny w poziomie, który umożliwia udostępnianie ogromnych ilości danych obliczeniowych i zapytań pokaźną. Aby wyświetlić prawdziwe możliwości skalowania, szczególnie w przypadku większych jednostek dwu, zalecamy skalowanie zestawu danych w miarę skalowania, aby upewnić się, że dane są wystarczające do strumieniowego korzystania z procesorów. W celu przetestowania skali zalecamy użycie co najmniej 1 TB.
+SQL Analytics is a scale-out system that can provision vast amounts of compute and query sizeable quantities of data. To see its true capabilities for scaling, especially at larger DWUs, we recommend scaling the data set as you scale to ensure that you have enough data to feed the CPUs. For scale testing, we recommend using at least 1 TB.
 
 > [!NOTE]
 >
-> Wydajność zapytań zwiększa się tylko o więcej przetwarzanie równoległe, jeśli prace można podzielić między węzłami obliczeniowymi. Jeśli okaże się, że skalowanie nie zmienia wydajności, może być konieczne dostrojenie projektu tabeli i/lub zapytań. Aby uzyskać wskazówki dotyczące dostrajania zapytań, zobacz [Zarządzanie pytaniami użytkowników](sql-data-warehouse-overview-manage-user-queries.md).
+> Query performance only increases with more parallelization if the work can be split between compute nodes. If you find that scaling is not changing your performance, you may need to tune your table design and/or your queries. For query tuning guidance, see [Manage user queries](sql-data-warehouse-overview-manage-user-queries.md).
 
 ## <a name="permissions"></a>Uprawnienia
 
-Zmiana jednostek magazynu danych wymaga uprawnień opisanych w temacie [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql).
+Changing the data warehouse units requires the permissions described in [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql).
 
-Wbudowane role dla zasobów platformy Azure, takie jak współautor bazy danych SQL i współautor SQL Server, mogą zmieniać ustawienia jednostek dwu.
+Built-in roles for Azure resources such as SQL DB Contributor and SQL Server Contributor can change DWU settings.
 
-## <a name="view-current-dwu-settings"></a>Wyświetlanie bieżących ustawień jednostek dwu
+## <a name="view-current-dwu-settings"></a>View current DWU settings
 
-Aby wyświetlić bieżące ustawienie jednostek dwu:
+To view the current DWU setting:
 
-1. Otwórz Eksplorator obiektów SQL Server w programie Visual Studio.
-2. Nawiąż połączenie z bazą danych Master skojarzoną z serwerem logicznym SQL Database.
-3. Wybierz opcję z dynamicznego widoku zarządzania sys. database_service_objectives. Oto przykład:
+1. Open SQL Server Object Explorer in Visual Studio.
+2. Connect to the master database associated with the logical SQL Database server.
+3. Select from the sys.database_service_objectives dynamic management view. Oto przykład:
 
 ```sql
 SELECT  db.name [Database]
@@ -118,48 +97,48 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 ;
 ```
 
-## <a name="change-data-warehouse-units"></a>Zmień jednostki magazynu danych
+## <a name="change-data-warehouse-units"></a>Change data warehouse units
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Aby zmienić jednostek dwu lub cDWUs:
+To change DWUs:
 
-1. Otwórz [Azure Portal](https://portal.azure.com), Otwórz bazę danych, a następnie kliknij pozycję **Skaluj**.
+1. Open the [Azure portal](https://portal.azure.com), open your database, and click **Scale**.
 
-2. W obszarze **skalowanie**przesuń suwak w lewo lub w prawo, aby zmienić ustawienie jednostek dwu.
+2. Under **Scale**, move the slider left or right to change the DWU setting.
 
-3. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat z potwierdzeniem. Kliknij pozycję **tak**, aby potwierdzić, lub **nie**, aby anulować.
+3. Kliknij przycisk **Save** (Zapisz). Zostanie wyświetlony komunikat z potwierdzeniem. Kliknij pozycję **tak**, aby potwierdzić, lub **nie**, aby anulować.
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aby zmienić jednostek dwu lub cDWUs, należy użyć polecenia cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) programu PowerShell. Poniższy przykład ustawia cel poziomu usługi wartości DW1000 dla bazy danych MySQLDW, która jest hostowana na serwerze serwera programu.
+To change the DWUs, use the [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet. The following example sets the service level objective to DW1000c for the database MySQLDW that is hosted on server MyServer.
 
 ```Powershell
-Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
+Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Aby uzyskać więcej informacji, zobacz [polecenia cmdlet programu PowerShell dla SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md)
+For more information, see [PowerShell cmdlets for SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 ### <a name="t-sql"></a>T-SQL
 
-Przy użyciu języka T-SQL można wyświetlić bieżące ustawienia jednostek dwu lub cDWU, zmienić ustawienia i sprawdzić postęp.
+With T-SQL you can view the current DWU settings, change the settings, and check the progress.
 
-Aby zmienić jednostek dwu lub cDWUs:
+To change the DWUs:
 
-1. Nawiąż połączenie z bazą danych Master skojarzoną z serwerem logicznym SQL Database.
-2. Użyj instrukcji [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL. Poniższy przykład ustawia cel poziomu usługi wartości DW1000 dla bazy danych MySQLDW.
+1. Connect to the master database associated with your logical SQL Database server.
+2. Use the [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL statement. The following example sets the service level objective to DW1000c for the database MySQLDW.
 
 ```Sql
 ALTER DATABASE MySQLDW
-MODIFY (SERVICE_OBJECTIVE = 'DW1000')
+MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 ;
 ```
 
 ### <a name="rest-apis"></a>Interfejsy API REST
 
-Aby zmienić jednostek dwu, użyj interfejsu API REST [tworzenia lub aktualizacji bazy danych](/rest/api/sql/databases/createorupdate) . Poniższy przykład ustawia cel poziomu usługi wartości DW1000 dla bazy danych MySQLDW, która jest hostowana na serwerze serwera programu. Serwer należy do grupy zasobów platformy Azure o nazwie ResourceGroup1.
+To change the DWUs, use the [Create or Update Database](/rest/api/sql/databases/createorupdate) REST API. The following example sets the service level objective to DW1000c for the database MySQLDW, which is hosted on server MyServer. The server is in an Azure resource group named ResourceGroup1.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -167,26 +146,26 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000
+        "requestedServiceObjectiveName": DW1000c
     }
 }
 ```
 
-Aby uzyskać więcej przykładów interfejsu API REST, zobacz [interfejsy API REST dla SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
+For more REST API examples, see [REST APIs for SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
 
-## <a name="check-status-of-dwu-changes"></a>Sprawdź stan zmian jednostek dwu
+## <a name="check-status-of-dwu-changes"></a>Check status of DWU changes
 
-JEDNOSTEK dwu zmiany mogą potrwać kilka minut. Jeśli skalowanie odbywa się automatycznie, należy rozważyć zaimplementowanie logiki, aby upewnić się, że niektóre operacje zostały zakończone przed przejściem do innej akcji.
+DWU changes may take several minutes to complete. If you are scaling automatically, consider implementing logic to ensure that certain operations have been completed before proceeding with another action.
 
-Sprawdzenie stanu bazy danych za pomocą różnych punktów końcowych pozwala na prawidłowe wdrożenie automatyzacji. Portal udostępnia powiadomienie po zakończeniu operacji i bazach danych w bieżącym stanie, ale nie umożliwia programistycznego sprawdzania stanu.
+Checking the database state through various endpoints allows you to correctly implement automation. The portal provides notification upon completion of an operation and the databases current state but does not allow for programmatic checking of state.
 
-Nie można sprawdzić stanu bazy danych dla operacji skalowania w poziomie przy użyciu Azure Portal.
+You cannot check the database state for scale-out operations with the Azure portal.
 
-Aby sprawdzić stan jednostek dwu zmian:
+To check the status of DWU changes:
 
-1. Nawiąż połączenie z bazą danych Master skojarzoną z serwerem logicznym SQL Database.
+1. Connect to the master database associated with your logical SQL Database server.
 
-1. Prześlij następujące zapytanie, aby sprawdzić stan bazy danych.
+1. Submit the following query to check database state.
 
     ```sql
     SELECT    *
@@ -194,7 +173,7 @@ Aby sprawdzić stan jednostek dwu zmian:
     ;
     ```
     
-1. Prześlij następujące zapytanie, aby sprawdzić stan operacji
+1. Submit the following query to check status of operation
 
     ```sql
     SELECT    *
@@ -204,15 +183,15 @@ Aby sprawdzić stan jednostek dwu zmian:
     ;
     ```
     
-Ta DMV zwraca informacje o różnych operacjach zarządzania w puli SQL, takich jak operacja i stan operacji, która jest IN_PROGRESS lub UKOŃCZONa.
+This DMV returns information about various management operations on your SQL pool such as the operation and the state of the operation, which is either IN_PROGRESS or COMPLETED.
 
-## <a name="the-scaling-workflow"></a>Przepływ pracy skalowania
+## <a name="the-scaling-workflow"></a>The scaling workflow
 
-Po rozpoczęciu operacji skalowania system najpierw kasuje wszystkie otwarte sesje, wycofywanie wszelkich otwartych transakcji w celu zapewnienia spójnego stanu. W przypadku operacji skalowania skalowanie odbywa się tylko po zakończeniu wycofywania transakcyjnego.  
+When you start a scale operation, the system first kills all open sessions, rolling back any open transactions to ensure a consistent state. For scale operations, scaling only occurs after this transactional rollback has completed.  
 
-- W przypadku operacji skalowania system Odłącza wszystkie węzły obliczeniowe, Inicjuje obsługę dodatkowych węzłów obliczeniowych, a następnie dołącza je do warstwy magazynowania.
-- W przypadku operacji skalowania w dół system Odłącza wszystkie węzły obliczeniowe, a następnie ponownie dołącza do warstwy magazynowania tylko konieczne węzły.
+- For a scale-up operation, the system detaches all compute nodes, provisions the additional compute nodes, and then reattaches to the storage layer.
+- For a scale-down operation, the system detaches all compute nodes and then reattaches only the needed nodes to the storage layer.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o zarządzaniu wydajnością, zobacz [klasy zasobów dla zarządzania obciążeniami](resource-classes-for-workload-management.md) oraz [limity pamięci i współbieżności](memory-concurrency-limits.md).
+To learn more about managing performance, see [Resource classes for workload management](resource-classes-for-workload-management.md) and [Memory and concurrency limits](memory-concurrency-limits.md).

@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: diagnozowanie problemów z komunikacją między sieciami — Azure Portal'
+title: Tutorial - Diagnose communication problem between networks using the Azure portal
 titleSuffix: Azure Network Watcher
-description: Dowiedz się, jak zdiagnozować problem z komunikacją występujący między siecią wirtualną platformy Azure podłączoną do lokalnej lub innej sieci wirtualnej za pomocą bramy sieci wirtualnej platformy Azure przy użyciu diagnostyki sieci VPN usługi Network Watcher.
+description: In this tutorial, learn how to diagnose a communication problem between an Azure virtual network connected to an on-premises, or other virtual network, through an Azure virtual network gateway, using Network Watcher's VPN diagnostics capability.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 0f7ce37bd6454492980525f288212fbff2c06625
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276145"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419735"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Samouczek: diagnozowanie problemu z komunikacją między sieciami przy użyciu witryny Azure Portal
 
@@ -40,14 +40,14 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby móc używać diagnostyki sieci VPN, musisz mieć istniejącą i działającą bramę sieci VPN. Jeśli nie masz istniejącej bramy sieci VPN do diagnozowania, możesz ją wdrożyć przy użyciu [skryptu programu PowerShell](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Skrypt programu PowerShell możesz uruchomić z następujących lokalizacji:
-- **Lokalna instalacja programu PowerShell**: skrypt wymaga modułu `Az` Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+- **A local PowerShell installation**: The script requires the Azure PowerShell `Az` module. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 - **Usługa Azure Cloud Shell**: usługa [Azure Cloud Shell](https://shell.azure.com/powershell) ma zainstalowaną i skonfigurowaną najnowszą wersję programu PowerShell i powoduje zalogowanie na platformie Azure.
 
 Utworzenie bramy sieci VPN za pomocą tego skryptu trwa około godziny. W pozostałych krokach przyjęto założenie, że diagnozowana brama została wdrożona przy użyciu tego skryptu. Jeśli zamiast tego diagnozujesz własną istniejącą bramę, wyniki będą się różnić.
 
 ## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher
 
@@ -80,7 +80,7 @@ Jeśli masz już włączoną usługę Network Watcher w regionie Wschodnie stany
     W kolumnie **STAN ROZWIĄZYWANIA PROBLEMÓW** jest wyświetlana wartość **W złej kondycji**. Widać też **Podsumowanie** i **Szczegóły** problemu na karcie **Stan**.
 10. Po wybraniu karty **Akcja** diagnostyka sieci VPN udostępnia dodatkowe informacje. W przykładzie pokazanym na poniższej ilustracji diagnostyka sieci VPN informuje o tym, że należy sprawdzić kondycję każdego połączenia:
 
-    ![Akcja](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Działanie](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Diagnozowanie połączenia bramy
 
@@ -109,7 +109,7 @@ Jeśli bramę sieci VPN utworzono przy użyciu skryptu z sekcji [Wymagania wstę
 
 1. Wprowadź *TestRG1* w polu **Wyszukiwanie** w górnej części portalu. Po wyświetleniu nazwy **TestRG1** w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **TestRG1**, a następnie wybierz pozycję **Usuń**.
+3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *TestRG1*, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

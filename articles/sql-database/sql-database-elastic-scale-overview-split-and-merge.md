@@ -1,6 +1,6 @@
 ---
 title: Przenoszenie danych między skalowanymi bazami danych w chmurze
-description: Wyjaśnia, jak manipulować fragmentów i przenosić dane za pośrednictwem samodzielnej usługi przy użyciu interfejsów API Elastic Database.
+description: Explains how to manipulate shards and move data via a self-hosted service using elastic database APIs.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,264 +11,270 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 00f579017ce4dd79e913565ee27698398b5feb38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823586"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421556"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Przenoszenie danych między skalowanymi bazami danych w chmurze
 
-Jeśli jesteś oprogramowaniem jako deweloperem usługi, a nagle aplikacja przejdzie na ogromne zapotrzebowanie, musisz pomieścić rozwój. Dodaj więcej baz danych (fragmentów). Jak przeprowadzić ponowną dystrybucję danych do nowych baz danych bez zakłócania integralności danych? Użyj **Narzędzia Split-Merge** , aby przenieść dane z ograniczonych baz danych do nowych baz danych.  
+If you are a Software as a Service developer, and suddenly your app undergoes tremendous demand, you need to accommodate the growth. So you add more databases (shards). How do you redistribute the data to the new databases without disrupting the data integrity? Use the **split-merge tool** to move data from constrained databases to the new databases.  
 
-Narzędzie do dzielenia i scalania działa jako usługa sieci Web platformy Azure. Administrator lub deweloper używa narzędzia do przenoszenia podfragmentów (dane z fragmentu) między różnymi bazami danych (fragmentów). Narzędzie używa zarządzania mapami fragmentu do obsługi bazy danych metadanych usługi i zapewnia spójne mapowania.
+The split-merge tool runs as an Azure web service. An administrator or developer uses the tool to move shardlets (data from a shard) between different databases (shards). The tool uses shard map management to maintain the service metadata database, and ensure consistent mappings.
 
-![Omówienie][1]
+![Przegląd][1]
 
-## <a name="download"></a>Do pobrania
+## <a name="download"></a>Pobierz
 
-[Microsoft. Azure. SQLDatabase. ElasticScale. Service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentacja
 
-1. [Samouczek narzędzia do dzielenia i scalania Elastic Database](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [Konfiguracja zabezpieczeń Split-Merge](sql-database-elastic-scale-split-merge-security-configuration.md)
-3. [Zagadnienia dotyczące zabezpieczeń z podziałem na scalanie](sql-database-elastic-scale-split-merge-security-configuration.md)
+1. [Elastic database Split-Merge tool tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+2. [Split-Merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md)
+3. [Split-merge security considerations](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [Zarządzanie mapami fragmentów](sql-database-elastic-scale-shard-map-management.md)
-5. [Migrowanie istniejących baz danych do skalowania w poziomie](sql-database-elastic-convert-to-use-elastic-tools.md)
-6. [Narzędzia Elastic Database](sql-database-elastic-scale-introduction.md)
-7. [Słownik narzędzi Elastic Database](sql-database-elastic-scale-glossary.md)
+5. [Migrate existing databases to scale-out](sql-database-elastic-convert-to-use-elastic-tools.md)
+6. [Elastic database tools](sql-database-elastic-scale-introduction.md)
+7. [Elastic Database tools glossary](sql-database-elastic-scale-glossary.md)
 
-## <a name="why-use-the-split-merge-tool"></a>Dlaczego warto używać narzędzia do dzielenia i scalania
+## <a name="why-use-the-split-merge-tool"></a>Why use the split-merge tool
 
-- **Zasady**
+- **Flexibility**
 
-  Aplikacje muszą rozciągnąć się elastycznie poza limity pojedynczej bazy danych usługi Azure SQL DB. Użyj narzędzia, aby przenieść dane zgodnie z wymaganiami do nowych baz danych, zachowując integralność.
+  Applications need to stretch flexibly beyond the limits of a single Azure SQL DB database. Use the tool to move data as needed to new databases while retaining integrity.
 
-- **Podziel do wzrostu**
+- **Split to grow**
 
-  Aby zwiększyć ogólną pojemność do obsłużenia wzrostu wybuchu, należy utworzyć dodatkową pojemność przez fragmentowania danych i rozpowszechnić je w przyrostowo większej liczbie baz danych, dopóki nie zostaną spełnione potrzeby pojemności. Jest to przykładowa funkcja **Split** .
+  To increase overall capacity to handle explosive growth, create additional capacity by sharding the data and by distributing it across incrementally more databases until capacity needs are fulfilled. This is a prime example of the **split** feature.
 
-- **Scal, aby zmniejszyć**
+- **Merge to shrink**
 
-  Pojemność wymaga zmniejszenia ze względu na sezonowy charakter firmy. Narzędzie umożliwia skalowanie w dół do mniejszej liczby jednostek skalowania, gdy firma jest niska. Funkcja "merge" w usłudze Split-Merge w ramach skalowania elastycznego obejmuje to wymaganie.
+  Capacity needs shrink due to the seasonal nature of a business. The tool lets you scale down to fewer scale units when business slows. The ‘merge’ feature in the Elastic Scale split-merge Service covers this requirement.
 
-- **Zarządzaj hotspotami, przenosząc podfragmentów**
+- **Manage hotspots by moving shardlets**
 
-  W przypadku wielu dzierżawców na bazę danych alokacja podfragmentów do fragmentów może prowadzić do wąskich gardeł wydajności w przypadku niektórych fragmentów. Wymaga to ponownej alokacji podfragmentów lub przeniesieniu podfragmentów zajętego na nowe lub mniej wykorzystane fragmentów.
+  With multiple tenants per database, the allocation of shardlets to shards can lead to capacity bottlenecks on some shards. This requires re-allocating shardlets or moving busy shardlets to new or less utilized shards.
 
-## <a name="concepts--key-features"></a>Pojęcia dotyczące kluczowych funkcji &
+## <a name="concepts--key-features"></a>Concepts & key features
 
-- **Usługi hostowane przez klienta**
+- **Customer-hosted services**
 
-  Funkcja Split-Scale jest dostarczana jako usługa hostowana przez klienta. Musisz wdrożyć usługę i hostować ją w ramach subskrypcji Microsoft Azure. Pakiet pobrany z narzędzia NuGet zawiera szablon konfiguracji, który można wykonać przy użyciu informacji dotyczących określonego wdrożenia. Aby uzyskać szczegółowe informacje, zobacz [samouczek Split-Merge](sql-database-elastic-scale-configure-deploy-split-and-merge.md) . Ponieważ usługa jest uruchomiona w ramach subskrypcji platformy Azure, można kontrolować i konfigurować większość aspektów zabezpieczeń usługi. Szablon domyślny zawiera opcje konfigurowania protokołu SSL, uwierzytelniania klientów opartych na certyfikatach, szyfrowania przechowywanych poświadczeń, ochrony systemu DoS i ograniczeń adresów IP. Więcej informacji na temat aspektów zabezpieczeń można znaleźć w poniższej [konfiguracji zabezpieczeń Split-Merge](sql-database-elastic-scale-split-merge-security-configuration.md).
+  The split-merge is delivered as a customer-hosted service. You must deploy and host the service in your Microsoft Azure subscription. The package you download from NuGet contains a configuration template to complete with the information for your specific deployment. See the [split-merge tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md) for details. Since the service runs in your Azure subscription, you can control and configure most security aspects of the service. The default template includes the options to configure SSL, certificate-based client authentication, encryption for stored credentials, DoS guarding and IP restrictions. You can find more information on the security aspects in the following document [split-merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-  Domyślna wdrożona usługa działa z jednym procesem roboczym i jedną rolą sieci Web. Każdy z nich używa rozmiaru maszyny wirtualnej a1 w usłudze Azure Cloud Services. Podczas wdrażania pakietu nie można modyfikować tych ustawień, ale można je zmienić po pomyślnym wdrożeniu w uruchomionej usłudze w chmurze (za pomocą Azure Portal). Należy pamiętać, że roli proces roboczy nie można skonfigurować dla więcej niż jednego wystąpienia ze względów technicznych.
+  The default deployed service runs with one worker and one web role. Each uses the A1 VM size in Azure Cloud Services. While you cannot modify these settings when deploying the package, you could change them after a successful deployment in the running cloud service, (through the Azure portal). Note that the worker role must not be configured for more than a single instance for technical reasons.
 
-- **Integracja mapy fragmentu**
+- **Shard map integration**
 
-  Usługa Split-Merge współdziała z mapą fragmentu aplikacji. W przypadku korzystania z usługi Split-Merge do dzielenia lub scalania zakresów lub przenoszenia podfragmentów między fragmentów usługa automatycznie utrzymuje aktualną mapę fragmentu. W tym celu usługa nawiązuje połączenie z bazą danych Menedżera mapy fragmentu aplikacji i utrzymuje zakresy i mapowania jako postęp operacji dzielenia/scalania/przenoszenia. Dzięki temu Mapa fragmentu zawsze przedstawia aktualny widok, gdy trwa operacja dzielenia i scalania. Operacje dzielenia, scalania i podfragmentu przenoszenia są implementowane przez przeniesienie partii podfragmentów z fragmentu źródłowego do docelowego fragmentu. Podczas operacji przenoszenia podfragmentu element podfragmentów, który podlega bieżącej partii, jest oznaczany jako offline w mapie fragmentu i nie jest dostępny dla połączeń routingu zależnych od danych przy użyciu interfejsu API **OpenConnectionForKey** .
+  The split-merge service interacts with the shard map of the application. When using the split-merge service to split or merge ranges or to move shardlets between shards, the service automatically keeps the shard map up-to-date. To do so, the service connects to the shard map manager database of the application and maintains ranges and mappings as split/merge/move requests progress. This ensures that the shard map always presents an up-to-date view when split-merge operations are going on. Split, merge and shardlet movement operations are implemented by moving a batch of shardlets from the source shard to the target shard. During the shardlet movement operation the shardlets subject to the current batch are marked as offline in the shard map and are unavailable for data-dependent routing connections using the **OpenConnectionForKey** API.
 
-- **Spójne połączenia podfragmentu**
+- **Consistent shardlet connections**
 
-  Po rozpoczęciu przenoszenia danych dla nowej partii podfragmentów wszystkie powiązane z danymi połączenia routingu opartego na danych do fragmentu przechowywania podfragmentu są zabijane, a kolejne połączenia z interfejsów API mapy fragmentu do podfragmentów są blokowane podczas przenoszenia danych w toku w celu uniknięcia niespójności. Połączenia z innymi podfragmentówami w tym samym fragmentu również zostaną zabite, ale pozostaną natychmiast ponownie po ponowieniu próby. Po przeniesieniu partii podfragmentów są ponownie oznaczane online dla docelowego fragmentu, a dane źródłowe zostaną usunięte z fragmentu źródłowego. Usługa przechodzi przez te kroki dla każdej partii, dopóki nie zostaną przesunięte wszystkie podfragmentów. Spowoduje to wykonanie kilku operacji kasowania połączenia w trakcie trwania operacji dzielenia/scalania/przenoszenia.  
+  When data movement starts for a new batch of shardlets, any shard-map provided data-dependent routing connections to the shard storing the shardlet are killed and subsequent connections from the shard map APIs to the shardlets are blocked while the data movement is in progress in order to avoid inconsistencies. Connections to other shardlets on the same shard will also get killed, but will succeed again immediately on retry. Once the batch is moved, the shardlets are marked online again for the target shard and the source data is removed from the source shard. The service goes through these steps for every batch until all shardlets have been moved. This will lead to several connection kill operations during the course of the complete split/merge/move operation.  
 
-- **Zarządzanie dostępnością podfragmentu**
+- **Managing shardlet availability**
 
-  Ograniczenie odstrzału połączenia do bieżącej partii podfragmentów, jak wspomniano powyżej, ogranicza zakres niedostępności do jednej partii podfragmentów w danym momencie. Ta metoda jest preferowana w przypadku, gdy kompletny fragmentu pozostanie w trybie offline dla wszystkich podfragmentów w trakcie operacji dzielenia lub scalania. Rozmiar partii, zdefiniowany jako liczba odrębnych podfragmentów do przeniesienia w danym momencie, jest parametrem konfiguracji. Można ją zdefiniować dla każdej operacji dzielenia i scalania, w zależności od wymagań dotyczących dostępności i wydajności aplikacji. Należy zauważyć, że zakres, który jest zablokowany w mapie fragmentu, może być większy niż określony rozmiar partii. Wynika to z faktu, że usługa wybiera rozmiar zakresu, tak że rzeczywista liczba wartości klucza fragmentowania w danych jest w przybliżeniu zgodna z rozmiarem partii. Jest to ważne, aby pamiętać, że szczególnie w przypadku rozrzedzonie wypełnionych kluczy fragmentowania.
+  Limiting the connection killing to the current batch of shardlets as discussed above restricts the scope of unavailability to one batch of shardlets at a time. This is preferred over an approach where the complete shard would remain offline for all its shardlets during the course of a split or merge operation. The size of a batch, defined as the number of distinct shardlets to move at a time, is a configuration parameter. It can be defined for each split and merge operation depending on the application’s availability and performance needs. Note that the range that is being locked in the shard map may be larger than the batch size specified. This is because the service picks the range size such that the actual number of sharding key values in the data approximately matches the batch size. This is important to remember in particular for sparsely populated sharding keys.
 
-- **Magazyn metadanych**
+- **Metadata storage**
 
-  Usługa Split-Merge używa bazy danych do przechowywania stanu i przechowywania dzienników podczas przetwarzania żądania. Użytkownik tworzy tę bazę danych w swojej subskrypcji i dostarcza dla niej parametry połączenia w pliku konfiguracyjnym wdrożenia usługi. Administratorzy z organizacji użytkownika mogą także połączyć się z tą bazą danych, aby sprawdzić postęp żądania i zbadać szczegółowe informacje dotyczące potencjalnych awarii.
+  The split-merge service uses a database to maintain its status and to keep logs during request processing. The user creates this database in their subscription and provides the connection string for it in the configuration file for the service deployment. Administrators from the user’s organization can also connect to this database to review request progress and to investigate detailed information regarding potential failures.
 
-- **Fragmentowania — świadomość**
+- **Sharding-awareness**
 
-  Usługa Split-Merge rozróżnia (1) tabele podzielonej na fragmenty, (2) tabele odwołań i (3) normalne tabele. Semantyka operacji Split/Merge/Move zależy od typu używanej tabeli i są zdefiniowane w następujący sposób:
+  The split-merge service differentiates between (1) sharded tables, (2) reference tables, and (3) normal tables. The semantics of a split/merge/move operation depend on the type of the table used and are defined as follows:
 
-  - **Tabele podzielonej na fragmenty**
+  - **Sharded tables**
 
-    Operacje dzielenia, scalania i przenoszenia umożliwiają przeniesienie podfragmentów z lokalizacji źródłowej na fragmentu. Po pomyślnym zakończeniu żądania całkowitego te podfragmentów nie są już obecne w źródle. Zwróć uwagę, że tabele docelowe muszą istnieć w docelowym fragmentu i nie mogą zawierać danych w zakresie docelowym przed przetworzeniem operacji.
+    Split, merge, and move operations move shardlets from source to target shard. After successful completion of the overall request, those shardlets are no longer present on the source. Note that the target tables need to exist on the target shard and must not contain data in the target range prior to processing of the operation.
 
-  - **Tabele odwołań**
+  - **Reference tables**
 
-    W przypadku tabel referencyjnych operacje dzielenia, scalania i przenoszenia kopiują dane ze źródła do docelowego fragmentu. Należy jednak pamiętać, że żadne zmiany nie nastąpiły w docelowym fragmentu dla danej tabeli, jeśli którykolwiek wiersz jest już obecny w tej tabeli w miejscu docelowym. Tabela musi być pusta dla każdej operacji kopiowania tabeli odwołań do przetworzenia.
+    For reference tables, the split, merge and move operations copy the data from the source to the target shard. Note, however, that no changes occur on the target shard for a given table if any row is already present in this table on the target. The table has to be empty for any reference table copy operation to get processed.
 
-  - **Inne tabele**
+  - **Other Tables**
 
-    Inne tabele mogą być obecne na źródłowym lub docelowym operacji dzielenia i scalania. Usługa Split-Merge nie uwzględnia tych tabel w przypadku operacji przenoszenia lub kopiowania danych. Należy jednak zauważyć, że mogą one zakłócać te operacje w przypadku ograniczeń.
+    Other tables can be present on either the source or the target of a split and merge operation. The split-merge service disregards these tables for any data movement or copy operations. Note, however, that they can interfere with these operations in case of constraints.
 
-    Informacje dotyczące tabel Reference i podzielonej na fragmenty są udostępniane przez interfejsy API `SchemaInfo` na mapie fragmentu. Poniższy przykład ilustruje użycie tych interfejsów API w danym obiekcie Menedżera mapy fragmentu:
+    The information on reference vs. sharded tables is provided by the `SchemaInfo` APIs on the shard map. The following example illustrates the use of these APIs on a given shard map manager object:
 
     ```csharp
     // Create the schema annotations
     SchemaInfo schemaInfo = new SchemaInfo();
 
-    // Reference tables
+    // reference tables
     schemaInfo.Add(new ReferenceTableInfo("dbo", "region"));
     schemaInfo.Add(new ReferenceTableInfo("dbo", "nation"));
 
-    // Sharded tables
+    // sharded tables
     schemaInfo.Add(new ShardedTableInfo("dbo", "customer", "C_CUSTKEY"));
     schemaInfo.Add(new ShardedTableInfo("dbo", "orders", "O_CUSTKEY"));
-    // Publish
+
+    // publish
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    Tabele "region" i "kraj" są zdefiniowane jako tabele referencyjne i zostaną skopiowane za pomocą operacji Split/Merge/Move. z kolei "Customer" i "Orders" są zdefiniowane jako tabele podzielonej na fragmenty. `C_CUSTKEY` i `O_CUSTKEY` stanowią klucz fragmentowania.
+    The tables ‘region’ and ‘nation’ are defined as reference tables and will be copied with split/merge/move operations. ‘customer’ and ‘orders’ in turn are defined as sharded tables. `C_CUSTKEY` and `O_CUSTKEY` serve as the sharding key.
 
-- **Integralność referencyjna**
+- **Referential Integrity**
 
-  Usługa Split-Merge analizuje zależności między tabelami i używa relacji klucza obcego klucza głównego w celu przygotowania operacji do przeniesienia tabel odwołań i podfragmentów. Ogólnie rzecz biorąc, tabele odwołań są kopiowane najpierw w kolejności zależności, a następnie podfragmentów są kopiowane w kolejności ich zależności w ramach każdej partii. Jest to konieczne, aby ograniczenia klucza FK-PK na fragmentu docelowym były uznawane za nowe dane.
+  The split-merge service analyzes dependencies between tables and uses foreign key-primary key relationships to stage the operations for moving reference tables and shardlets. In general, reference tables are copied first in dependency order, then shardlets are copied in order of their dependencies within each batch. This is necessary so that FK-PK constraints on the target shard are honored as the new data arrives.
 
-- **Fragmentu spójność mapy i ostateczne uzupełnianie**
+- **Shard Map Consistency and Eventual Completion**
 
-  W przypadku awarii usługa Split-Merge wznawia operacje po wystąpieniu awarii i ma na celu ukończenie wszelkich żądań w toku. Jednak mogą istnieć nieodwracalne sytuacje, na przykład gdy docelowy fragmentu zostanie utracony lub naruszony po naprawieniu. W tych okolicznościach niektóre podfragmentów, które miały zostać przeniesione, mogą nadal znajdować się na źródłowym fragmentu. Usługa zapewnia, że mapowania podfragmentu są aktualizowane dopiero po pomyślnym skopiowaniu wymaganych danych do obiektu docelowego. Podfragmentów są usuwane tylko w źródle, gdy wszystkie jego dane zostały skopiowane do obiektu docelowego, a odpowiednie mapowania zostały pomyślnie zaktualizowane. Operacja usuwania odbywa się w tle, podczas gdy zakres jest już w trybie online w docelowym fragmentu. Usługa Split-Merge zawsze gwarantuje prawidłowość mapowań przechowywanych na mapie fragmentu.
+  In the presence of failures, the split-merge service resumes operations after any outage and aims to complete any in progress requests. However, there may be unrecoverable situations, e.g., when the target shard is lost or compromised beyond repair. Under those circumstances, some shardlets that were supposed to be moved may continue to reside on the source shard. The service ensures that shardlet mappings are only updated after the necessary data has been successfully copied to the target. Shardlets are only deleted on the source once all their data has been copied to the target and the corresponding mappings have been updated successfully. The deletion operation happens in the background while the range is already online on the target shard. The split-merge service always ensures correctness of the mappings stored in the shard map.
 
-## <a name="the-split-merge-user-interface"></a>Interfejs użytkownika z podziałem i scalaniem
+## <a name="the-split-merge-user-interface"></a>The split-merge user interface
 
-Pakiet usługi Split-Merge obejmuje rolę procesu roboczego i rolę sieci Web. Rola sieci Web służy do przesyłania żądań Split-Merge w sposób interaktywny. Główne składniki interfejsu użytkownika są następujące:
+The split-merge service package includes a worker role and a web role. The web role is used to submit split-merge requests in an interactive way. The main components of the user interface are as follows:
 
-- **Typ operacji**
+- **Operation Type**
 
-  Typ operacji to przycisk radiowy, który steruje rodzajem operacji wykonywanej przez usługę dla tego żądania. Możesz wybrać między scenariuszami Split, Merge i Move. Możesz również anulować wcześniej przesłaną operację. Możesz użyć żądań Split, Merge i Move dla zakresu fragmentu Maps. Lista mapy fragmentu obsługuje tylko operacje przenoszenia.
+  The operation type is a radio button that controls the kind of operation performed by the service for this request. You can choose between the split, merge and move scenarios. You can also cancel a previously submitted operation. You can use split, merge and move requests for range shard maps. List shard maps only support move operations.
 
-- **Mapa fragmentu**
+- **Shard Map**
 
-  Następna sekcja parametrów żądania zawiera informacje na temat mapy fragmentu i bazy danych, która hostuje mapę fragmentu. W szczególności należy podać nazwę serwera Azure SQL Database i bazy danych hostujący shardmap, poświadczenia umożliwiające połączenie z bazą danych mapowania fragmentu, a na koniec nazwę mapy fragmentu. Obecnie operacja akceptuje tylko jeden zestaw poświadczeń. Te poświadczenia muszą mieć wystarczające uprawnienia do wykonywania zmian mapy fragmentu oraz danych użytkownika w fragmentów.
+  The next section of request parameters covers information about the shard map and the database hosting your shard map. In particular, you need to provide the name of the Azure SQL Database server and database hosting the shardmap, credentials to connect to the shard map database, and finally the name of the shard map. Currently, the operation only accepts a single set of credentials. These credentials need to have sufficient permissions to perform changes to the shard map as well as to the user data on the shards.
 
-- **Zakres źródłowy (dzielenie i scalanie)**
+- **Source Range (split and merge)**
 
-  Operacja dzielenia i scalania przetwarza zakres przy użyciu jego klucza niskiego i wysokiego. Aby określić operację z niepowiązaną wartością klucza wyższego poziomu, zaznacz pole wyboru "wysoki klucz jest Max" i pozostaw pole wysokiego klucza puste. Określone wartości klucza zakresu nie wymagają dokładnego dopasowania mapowania i jego granic na mapie fragmentu. Jeśli nie określisz żadnych granic zakresu w całej usłudze, będzie ona automatycznie wywnioskować najbliższy zakres. Aby pobrać bieżące mapowania w danej mapie fragmentu, można użyć skryptu getmappings. ps1 programu PowerShell.
+  A split and merge operation processes a range using its low and high key. To specify an operation with an unbounded high key value, check the “High key is max” check box and leave the high key field empty. The range key values that you specify do not need to precisely match a mapping and its boundaries in your shard map. If you do not specify any range boundaries at all the service will infer the closest range for you automatically. You can use the GetMappings.ps1 PowerShell script to retrieve the current mappings in a given shard map.
 
-- **Zachowanie podziału źródła (podzielone)**
+- **Split Source Behavior (split)**
 
-  Dla operacji podziału Zdefiniuj punkt, w którym ma zostać podzielony zakres źródłowy. W tym celu należy podać klucz fragmentowania, w którym ma nastąpić podział. Użyj przycisku radiowego Określ, czy chcesz, aby dolna część zakresu (z wyłączeniem klucza podziału) była przenoszona, czy chcesz, aby Górna część była przenoszona (łącznie z kluczem podziału).
+  For split operations, define the point to split the source range. You do this by providing the sharding key where you want the split to occur. Use the radio button specify whether you want the lower part of the range (excluding the split key) to move, or whether you want the upper part to move (including the split key).
 
-- **Podfragmentu źródłowa (Przenieś)**
+- **Source Shardlet (move)**
 
-  Operacje przenoszenia różnią się od operacji dzielenia lub scalania, ponieważ nie wymagają one zakresu do opisywania źródła. Źródło do przeniesienia jest po prostu identyfikowane przez wartość klucza fragmentowania, która ma zostać przeniesiona.
+  Move operations are different from split or merge operations as they do not require a range to describe the source. A source for move is simply identified by the sharding key value that you plan to move.
 
-- **Docelowa fragmentu (Split)**
+- **Target Shard (split)**
 
-  Po podaniu informacji w źródle operacji podziału należy określić miejsce, do którego dane mają zostać skopiowane, dostarczając serwer usługi Azure SQL DB i nazwę bazy danych dla celu.
+  Once you have provided the information on the source of your split operation, you need to define where you want the data to be copied to by providing the Azure SQL Db server and database name for the target.
 
-- **Zakres docelowy (Scalanie)**
+- **Target Range (merge)**
 
-  Operacje scalania Przenieś podfragmentów do istniejącego fragmentu. Istniejący fragmentu można zidentyfikować, podając granice zakresu istniejącego zakresu, z którym chcesz się połączyć.
+  Merge operations move shardlets to an existing shard. You identify the existing shard by providing the range boundaries of the existing range that you want to merge with.
 
-- **Rozmiar wsadu**
+- **Batch Size**
 
-  Rozmiar wsadu określa liczbę podfragmentów, które będą przełączane do trybu offline w danym momencie podczas przenoszenia danych. Jest to wartość całkowita, w której można używać mniejszych wartości, gdy jest to poufne dla długich okresów przestoju dla podfragmentów. Większe wartości spowodują wydłużenie czasu, w którym dana podfragmentu jest w trybie offline, ale może zwiększyć wydajność.
+  The batch size controls the number of shardlets that will go offline at a time during the data movement. This is an integer value where you can use smaller values when you are sensitive to long periods of downtime for shardlets. Larger values will increase the time that a given shardlet is offline but may improve performance.
 
-- **Identyfikator operacji (Anuluj)**
+- **Operation ID (Cancel)**
 
-  Jeśli masz trwającą operację, która nie jest już wymagana, możesz anulować operację, podając jej Identyfikator operacji w tym polu. Identyfikator operacji można pobrać z tabeli stan żądania (patrz sekcja 8,1) lub z danych wyjściowych w przeglądarce sieci Web, w której zostało przesłane żądanie.
+  If you have an ongoing operation that is no longer needed, you can cancel the operation by providing its operation ID in this field. You can retrieve the operation ID from the request status table (see Section 8.1) or from the output in the web browser where you submitted the request.
 
-## <a name="requirements-and-limitations"></a>Wymagania i ograniczenia
+## <a name="requirements-and-limitations"></a>Requirements and Limitations
 
-Bieżącą implementację usługi Split-Merge podlegają następujące wymagania i ograniczenia:
+The current implementation of the split-merge service is subject to the following requirements and limitations:
 
-- Fragmentów musi istnieć i być zarejestrowany na mapie fragmentu przed wykonaniem operacji Split-Scale na tych fragmentów.
-- Usługa nie tworzy tabel ani żadnych innych obiektów bazy danych automatycznie w ramach operacji. Oznacza to, że schemat dla wszystkich tabel podzielonej na fragmenty i tabel referencyjnych musi istnieć w docelowym fragmentu przed operacją Split/Merge/Move. Tabele podzielonej na fragmenty w szczególności muszą być puste w zakresie, w którym nowe podfragmentów mają być dodawane przez operację Split/Merge/Move. W przeciwnym razie operacja zakończy się niepowodzeniem po wstępnym sprawdzeniu spójności w docelowym fragmentu. Należy również zauważyć, że dane referencyjne są kopiowane tylko wtedy, gdy tabela referencyjna jest pusta i nie ma gwarancji spójności w odniesieniu do innych współbieżnych operacji zapisu w tabelach referencyjnych. Zalecamy to: podczas wykonywania operacji dzielenia/scalania nie są wprowadzane żadne inne operacje zapisu w tabelach referencyjnych.
-- Usługa korzysta z tożsamości wiersza ustanowionej przy użyciu unikatowego indeksu lub klucza, który zawiera klucz fragmentowania, aby zwiększyć wydajność i niezawodność dla dużych podfragmentówów. Dzięki temu usługa może przenosić dane z jeszcze większą szczegółowością niż wartość klucza fragmentowania. Pozwala to zmniejszyć maksymalną ilość miejsca w dzienniku i blokad, które są wymagane podczas operacji. Rozważ utworzenie unikatowego indeksu lub klucza podstawowego, w tym klucza fragmentowania w danej tabeli, jeśli chcesz użyć tej tabeli z żądaniami Split/Merge/Move. Ze względu na wydajność klucz fragmentowania powinien być początkową kolumną w kluczu lub indeksem.
-- W trakcie przetwarzania żądania niektóre dane podfragmentu mogą być obecne zarówno na źródłowym, jak i docelowym fragmentu. Jest to konieczne do ochrony przed błędami podczas przenoszenia podfragmentu. Integracja z funkcją Split-Merge z mapą fragmentu gwarantuje, że połączenia za pośrednictwem interfejsów API routingu zależnego od danych za pomocą metody **OpenConnectionForKey** na mapie fragmentu nie widzą żadnych niespójnych stanów pośrednich. Jednak podczas nawiązywania połączenia ze źródłem lub docelowym fragmentów bez użycia metody **OpenConnectionForKey** , niespójne Stany pośrednie mogą być widoczne po przejściu na żądania dzielenia/scalania/przenoszenia. Te połączenia mogą pokazać częściowe lub zduplikowane wyniki w zależności od chronometrażu lub fragmentugo połączenia. To ograniczenie obejmuje obecnie połączenia wykonywane przez wiele fragmentu kwerend.
-- Baza danych metadanych dla usługi Split-Merge nie może być współdzielona między różnymi rolami. Na przykład rola usługi Split-Merge działającej w ramach przemieszczania musi wskazywać inną bazę danych metadanych niż rola produkcyjna.
+- The shards need to exist and be registered in the shard map before a split-merge operation on these shards can be performed.
+- The service does not create tables or any other database objects automatically as part of its operations. This means that the schema for all sharded tables and reference tables needs to exist on the target shard prior to any split/merge/move operation. Sharded tables in particular are required to be empty in the range where new shardlets are to be added by a split/merge/move operation. Otherwise, the operation will fail the initial consistency check on the target shard. Also note that reference data is only copied if the reference table is empty and that there are no consistency guarantees with regard to other concurrent write operations on the reference tables. We recommend this: when running split/merge operations, no other write operations make changes to the reference tables.
+- The service relies on row identity established by a unique index or key that includes the sharding key to improve performance and reliability for large shardlets. This allows the service to move data at an even finer granularity than just the sharding key value. This helps to reduce the maximum amount of log space and locks that are required during the operation. Consider creating a unique index or a primary key including the sharding key on a given table if you want to use that table with split/merge/move requests. For performance reasons, the sharding key should be the leading column in the key or the index.
+- During the course of request processing, some shardlet data may be present both on the source and the target shard. This is necessary to protect against failures during the shardlet movement. The integration of split-merge with the shard map ensures that connections through the data-dependent routing APIs using the **OpenConnectionForKey** method on the shard map do not see any inconsistent intermediate states. However, when connecting to the source or the target shards without using the **OpenConnectionForKey** method, inconsistent intermediate states might be visible when split/merge/move requests are going on. These connections may show partial or duplicate results depending on the timing or the shard underlying the connection. This limitation currently includes the connections made by Elastic Scale Multi-Shard-Queries.
+- The metadata database for the split-merge service must not be shared between different roles. For example, a role of the split-merge service running in staging needs to point to a different metadata database than the production role.
 
 ## <a name="billing"></a>Rozliczenia
 
-Usługa Split-Merge działa jako usługa w chmurze w ramach subskrypcji Microsoft Azure. W związku z tym opłaty za usługi w chmurze mają zastosowanie do Twojego wystąpienia usługi. Jeśli operacje dzielenia/scalania/przenoszenia nie są często wykonywane, zalecamy usunięcie usługi w chmurze z podziałem. Pozwala to zaoszczędzić koszty uruchamiania lub wdrażania wystąpień usługi w chmurze. Możesz ponownie wdrożyć i rozpocząć swoją możliwy do uruchomienia konfigurację, ilekroć trzeba wykonać operacje dzielenia lub scalania.
+The split-merge service runs as a cloud service in your Microsoft Azure subscription. Therefore charges for cloud services apply to your instance of the service. Unless you frequently perform split/merge/move operations, we recommend you delete your split-merge cloud service. That saves costs for running or deployed cloud service instances. You can re-deploy and start your readily runnable configuration whenever you need to perform split or merge operations.
 
 ## <a name="monitoring"></a>Monitorowanie
 
-### <a name="status-tables"></a>Tabele stanu
+### <a name="status-tables"></a>Status tables
 
-Usługa Split-Merge oferuje tabelę **stanem żądania** w bazie danych magazynu metadanych na potrzeby monitorowania ukończonych i bieżących żądań. W tabeli przedstawiono wiersz dla każdego żądania Split-Merge, które zostało przesłane do tego wystąpienia usługi Split-Merge. Podaje następujące informacje dotyczące każdego żądania:
+The split-merge Service provides the **RequestStatus** table in the metadata store database for monitoring of completed and ongoing requests. The table lists a row for each split-merge request that has been submitted to this instance of the split-merge service. It gives the following information for each request:
 
 - **Sygnatura czasowa**
 
-  Godzina i Data rozpoczęcia żądania.
+  The time and date when the request was started.
 
 - **OperationId**
 
-  Identyfikator GUID, który jednoznacznie identyfikuje żądanie. Tego żądania można także użyć do anulowania operacji, gdy nadal trwa.
+  A GUID that uniquely identifies the request. This request can also be used to cancel the operation while it is still ongoing.
 
 - **Stan**
 
-  Bieżący stan żądania. W przypadku bieżących żądań jest również wyświetlana bieżąca faza, w której jest to żądanie.
+  The current state of the request. For ongoing requests, it also lists the current phase in which the request is.
 
 - **CancelRequest**
 
-  Flaga wskazująca, czy żądanie zostało anulowane.
+  A flag that indicates whether the request has been canceled.
 
-- **Wykonywane**
+- **Progress**
 
-  Procentowe oszacowanie ukończenia operacji. Wartość 50 wskazuje, że operacja jest około 50%.
+  A percentage estimate of completion for the operation. A value of 50 indicates that the operation is approximately 50% complete.
 
 - **Szczegóły**
 
-  Wartość XML, która zapewnia bardziej szczegółowy raport postępu. Raport postępu jest okresowo aktualizowany, ponieważ zestawy wierszy są kopiowane z lokalizacji źródłowej do docelowej. W przypadku awarii lub wyjątków ta kolumna zawiera również bardziej szczegółowe informacje o błędzie.
+  An XML value that provides a more detailed progress report. The progress report is periodically updated as sets of rows are copied from source to target. In case of failures or exceptions, this column also includes more detailed information about the failure.
 
 ### <a name="azure-diagnostics"></a>Diagnostyka Azure
 
-Usługa Split-Merge używa Diagnostyka Azure w oparciu o zestaw Azure SDK 2,5 na potrzeby monitorowania i diagnostyki. Możesz kontrolować konfigurację diagnostyki, jak wyjaśniono tutaj: [Włączanie diagnostyki na platformie Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Pakiet pobierania obejmuje dwie konfiguracje diagnostyczne — jedną dla roli sieci Web i jedną dla roli proces roboczy. Zawiera definicje służące do rejestrowania liczników wydajności, dzienników usług IIS, dzienników zdarzeń systemu Windows i dzienników zdarzeń aplikacji dzielących scalanie.
+The split-merge service uses Azure Diagnostics based on Azure SDK 2.5 for monitoring and diagnostics. You control the diagnostics configuration as explained here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). The download package includes two diagnostics configurations - one for the web role and one for the worker role. It includes the definitions to log Performance Counters, IIS logs, Windows Event Logs, and split-merge application event logs.
 
-## <a name="deploy-diagnostics"></a>Wdróż diagnostykę
+## <a name="deploy-diagnostics"></a>Deploy Diagnostics
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
-Aby włączyć monitorowanie i diagnostykę przy użyciu konfiguracji diagnostyki dla ról sieci Web i procesów roboczych dostarczonych przez pakiet NuGet, uruchom następujące polecenia przy użyciu Azure PowerShell:
+> [!IMPORTANT]
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+
+To enable monitoring and diagnostics using the diagnostic configuration for the web and worker roles provided by the NuGet package, run the following commands using Azure PowerShell:
 
 ```powershell
-    $storage_name = "<YourAzureStorageAccount>"
-    $key = "<YourAzureStorageAccountKey"
-    $storageContext = New-AzStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
-    $config_path = "<YourFilePath>\SplitMergeWebContent.diagnostics.xml"
-    $service_name = "<YourCloudServiceName>"
-    Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWeb"
-    $config_path = "<YourFilePath>\SplitMergeWorkerContent.diagnostics.xml"
-    $service_name = "<YourCloudServiceName>"
-    Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
+$storageName = "<azureStorageAccount>"
+$key = "<azureStorageAccountKey"
+$storageContext = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey $key
+$configPath = "<filePath>\SplitMergeWebContent.diagnostics.xml"
+$serviceName = "<cloudServiceName>"
+
+Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
+    -DiagnosticsConfigurationPath $configPath -ServiceName $serviceName `
+    -Slot Production -Role "SplitMergeWeb"
+
+Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
+    -DiagnosticsConfigurationPath $configPath -ServiceName $serviceName `
+    -Slot Production -Role "SplitMergeWorker"
 ```
 
-Więcej informacji na temat sposobu konfigurowania i wdrażania ustawień diagnostycznych można znaleźć tutaj: [Włączanie diagnostyki na platformie Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+You can find more information on how to configure and deploy diagnostics settings here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
-## <a name="retrieve-diagnostics"></a>Pobierz diagnostykę
+## <a name="retrieve-diagnostics"></a>Retrieve diagnostics
 
-Możesz łatwo uzyskać dostęp do danych diagnostycznych z programu Visual Studio Eksplorator serwera w części Azure drzewa Eksplorator serwera. Otwórz wystąpienie programu Visual Studio, a następnie na pasku menu kliknij pozycję Widok, a Eksplorator serwera. Kliknij ikonę platformy Azure, aby nawiązać połączenie z subskrypcją platformy Azure. Następnie przejdź do usługi Azure-> Storage — > `<your storage account>`-> Tabele-> WADLogsTable. Aby uzyskać więcej informacji, zobacz [Eksplorator serwera](https://msdn.microsoft.com/library/x603htbk.aspx).
+You can easily access your diagnostics from the Visual Studio Server Explorer in the Azure part of the Server Explorer tree. Open a Visual Studio instance, and in the menu bar click View, and Server Explorer. Click the Azure icon to connect to your Azure subscription. Then navigate to Azure -> Storage -> `<your storage account>` -> Tables -> WADLogsTable. For more information, see [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
 
 ![WADLogsTable][2]
 
-WADLogsTable wyróżniony na powyższym rysunku zawiera szczegółowe zdarzenia z dziennika aplikacji usługi Split-Merge. Należy pamiętać, że domyślna konfiguracja pobranego pakietu jest ukierunkowana na wdrożenie produkcyjne. W związku z tym Interwał pobierania dzienników i liczników z wystąpień usługi jest duży (5 minut). W celu testowania i opracowywania Obniż interwał przez dostosowanie ustawień diagnostycznych sieci Web lub roli procesu roboczego do Twoich potrzeb. Kliknij prawym przyciskiem myszy rolę w Eksplorator serwera programu Visual Studio (patrz powyżej), a następnie dostosuj okres transferu w oknie dialogowym dla ustawień konfiguracji diagnostyki:
+The WADLogsTable highlighted in the figure above contains the detailed events from the split-merge service’s application log. Note that the default configuration of the downloaded package is geared towards a production deployment. Therefore the interval at which logs and counters are pulled from the service instances is large (5 minutes). For test and development, lower the interval by adjusting the diagnostics settings of the web or the worker role to your needs. Right-click on the role in the Visual Studio Server Explorer (see above) and then adjust the Transfer Period in the dialog for the Diagnostics configuration settings:
 
-![Konfiguracja][3]
+![Konfigurowanie][3]
 
 ## <a name="performance"></a>Wydajność
 
-Ogólnie rzecz biorąc, lepsza wydajność jest oczekiwana w przypadku wyższych, bardziej wydajnych warstw usług w Azure SQL Database. Wyższe ilości operacji we/wy, procesora CPU i pamięci dla wyższych warstw usług korzystają z operacji kopiowania zbiorczego i usuwania, których używa Usługa Split-Merge. Z tego powodu należy zwiększyć warstwę usługi tylko dla tych baz danych przez zdefiniowany, ograniczony okres.
+In general, better performance is to be expected from the higher, more performant service tiers in Azure SQL Database. Higher IO, CPU and memory allocations for the higher service tiers benefit the bulk copy and delete operations that the split-merge service uses. For that reason, increase the service tier just for those databases for a defined, limited period of time.
 
-Usługa wykonuje również zapytania weryfikacyjne w ramach zwykłych operacji. Te zapytania weryfikacyjne sprawdzają nieoczekiwaną obecność danych w zakresie docelowym i zapewniają, że wszystkie operacje dzielenia/scalania/przenoszenia zaczynają się od spójnego stanu. Wszystkie te zapytania przekraczają zakresy fragmentowania klucze zdefiniowane przez zakres operacji oraz rozmiar wsadu podany w ramach definicji żądania. Zapytania te działają najlepiej, gdy istnieje indeks, który ma klucz fragmentowania jako początkową kolumnę.
+The service also performs validation queries as part of its normal operations. These validation queries check for unexpected presence of data in the target range and ensure that any split/merge/move operation starts from a consistent state. These queries all work over sharding key ranges defined by the scope of the operation and the batch size provided as part of the request definition. These queries perform best when an index is present that has the sharding key as the leading column.
 
-Ponadto Właściwość unikatowości z kluczem fragmentowania jako wiodąca kolumna umożliwi usłudze użycie zoptymalizowanego podejścia, które ogranicza użycie zasobów w odniesieniu do przestrzeni dziennika i pamięci. Ta właściwość unikatowości jest wymagana do przenoszenia dużych rozmiarów danych (zwykle przekracza 1 GB).
+In addition, a uniqueness property with the sharding key as the leading column will allow the service to use an optimized approach that limits resource consumption in terms of log space and memory. This uniqueness property is required to move large data sizes (typically above 1GB).
 
-## <a name="how-to-upgrade"></a>Jak uaktualnić
+## <a name="how-to-upgrade"></a>How to upgrade
 
-1. Wykonaj kroki opisane w temacie [wdrażanie usługi Split-Merge](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-2. Zmień plik konfiguracji usługi w chmurze dla wdrożenia Split-Merge, aby odzwierciedlał nowe parametry konfiguracji. Nowy wymagany parametr to informacje o certyfikacie używanym do szyfrowania. W łatwy sposób można porównać nowy plik szablonu konfiguracji z pobrania z istniejącą konfiguracją. Upewnij się, że dodano ustawienia dla elementu "DataEncryptionPrimaryCertificateThumbprint" i "DataEncryptionPrimary" dla roli sieć Web i proces roboczy.
-3. Przed wdrożeniem aktualizacji na platformie Azure upewnij się, że wszystkie aktualnie uruchomione operacje dzielenia i scalania zostały zakończone. Można to łatwo zrobić, wykonując zapytania dotyczące tabel stanem żądania i PendingWorkflows w bazie danych metadanych Split-Merge dla bieżących żądań.
-4. Zaktualizuj istniejące wdrożenie usługi w chmurze na potrzeby dzielenia i scalania w ramach subskrypcji platformy Azure z nowym pakietem i zaktualizowanym plikiem konfiguracji usługi.
+1. Follow the steps in [Deploy a split-merge service](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+2. Change your cloud service configuration file for your split-merge deployment to reflect the new configuration parameters. A new required parameter is the information about the certificate used for encryption. An easy way to do this is to compare the new configuration template file from the download against your existing configuration. Make sure you add the settings for “DataEncryptionPrimaryCertificateThumbprint” and “DataEncryptionPrimary” for both the web and the worker role.
+3. Before deploying the update to Azure, ensure that all currently running split-merge operations have finished. You can easily do this by querying the RequestStatus and PendingWorkflows tables in the split-merge metadata database for ongoing requests.
+4. Update your existing cloud service deployment for split-merge in your Azure subscription with the new package and your updated service configuration file.
 
-Nie trzeba udostępniać nowej bazy danych metadanych na potrzeby operacji Split-Merge do uaktualnienia. Nowa wersja automatycznie uaktualni istniejącą bazę danych metadanych do nowej wersji.
+You do not need to provision a new metadata database for split-merge to upgrade. The new version will automatically upgrade your existing metadata database to the new version.
 
-## <a name="best-practices--troubleshooting"></a>Najlepsze rozwiązania & Rozwiązywanie problemów
+## <a name="best-practices--troubleshooting"></a>Best practices & troubleshooting
 
-- Zdefiniuj dzierżawę testową i realizuj najważniejsze operacje dzielenia/scalania/przenoszenia przy użyciu dzierżawy testowej w kilku fragmentów. Upewnij się, że wszystkie metadane są poprawnie zdefiniowane na mapie fragmentu i że operacje nie naruszają ograniczeń lub kluczy obcych.
-- Zachowaj test rozmiaru danych dzierżawy powyżej maksymalnego rozmiaru danych największej dzierżawy, aby upewnić się, że nie występują problemy związane z rozmiarem danych. Dzięki temu można ocenić górną granicę czasu potrzebnego na przeniesienie pojedynczej dzierżawy.
-- Upewnij się, że schemat zezwala na usuwanie. Usługa Split-Merge wymaga możliwości usunięcia danych z fragmentu źródłowego, gdy dane zostaną pomyślnie skopiowane do obiektu docelowego. Na przykład **Usuń wyzwalacze** mogą uniemożliwić usunięcie danych ze źródła przez usługę, co może spowodować niepowodzenie operacji.
-- Klucz fragmentowania powinien być początkową kolumną w kluczu podstawowym lub unikatowym definicją indeksu. Zapewnia to najlepszą wydajność dla zapytań dotyczących podzielenia lub scalania, a także dla rzeczywistych operacji przenoszenia i usuwania danych, które zawsze działają względem zakresów kluczy fragmentowania.
-- Kolokacja usługi Split-Merge w regionie i centrum danych, w którym znajdują się bazy danych.
+- Define a test tenant and exercise your most important split/merge/move operations with the test tenant across several shards. Ensure that all metadata is defined correctly in your shard map and that the operations do not violate constraints or foreign keys.
+- Keep the test tenant data size above the maximum data size of your largest tenant to ensure you are not encountering data size related issues. This helps you assess an upper bound on the time it takes to move a single tenant around.
+- Make sure that your schema allows deletions. The split-merge service requires the ability to remove data from the source shard once the data has been successfully copied to the target. For example, **delete triggers** can prevent the service from deleting the data on the source and may cause operations to fail.
+- The sharding key should be the leading column in your primary key or unique index definition. That ensures the best performance for the split or merge validation queries, and for the actual data movement and deletion operations which always operate on sharding key ranges.
+- Collocate your split-merge service in the region and data center where your databases reside.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

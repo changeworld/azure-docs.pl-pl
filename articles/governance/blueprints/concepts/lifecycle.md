@@ -1,110 +1,109 @@
 ---
 title: Omówienie cyklu życia strategii
-description: Dowiedz się więcej na temat cyklu życia i szczegółów dotyczących poszczególnych etapów.
+description: Learn about the lifecycle that a blueprint definition goes through and details about each stage, including updating and removing blueprint assignments.
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: d071a2af985d294bc87a5363d9e7566762e0fd8a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960492"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404593"
 ---
-# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Zapoznaj się z cyklem życia Azure Blueprint
+# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Understand the lifecycle of an Azure Blueprint
 
-Podobnie jak w przypadku wielu zasobów platformy Azure, plan w planach platformy Azure ma typowy i naturalny cykl życia. Są one tworzone, wdrażane i usuwane, gdy nie są już potrzebne lub są istotne.
-Plany obsługują standardowe operacje cyklu życia. Następnie kompiluje je w celu zapewnienia dodatkowych poziomów stanu, które obsługują wspólną ciągłą integrację i ciągłe wdrażanie potoków dla organizacji, które zarządzają infrastrukturą jako kodu — elementu klucza w DevOps.
+Like many resources within Azure, a blueprint in Azure Blueprints has a typical and natural lifecycle. They're created, deployed, and finally deleted when no longer needed or relevant.
+Blueprints supports standard lifecycle operations. It then builds upon them to provide additional levels of status that support common continuous integration and continuous deployment pipelines for organizations that manage their Infrastructure as Code – a key element in DevOps.
 
-Aby w pełni zrozumieć plany i etapy, zajmiemy się standardowym cyklem życia:
+To fully understand a blueprint and the stages, we'll cover a standard lifecycle:
 
 > [!div class="checklist"]
-> - Tworzenie i Edytowanie planu
-> - Publikowanie planu
-> - Tworzenie i edytowanie nowej wersji planu
-> - Publikowanie nowej wersji planu
-> - Usuwanie określonej wersji planu
-> - Usuwanie planu
+> - Creating and editing a blueprint
+> - Publishing the blueprint
+> - Creating and editing a new version of the blueprint
+> - Publishing a new version of the blueprint
+> - Deleting a specific version of the blueprint
+> - Deleting the blueprint
 
-## <a name="creating-and-editing-a-blueprint"></a>Tworzenie i Edytowanie planu
+## <a name="creating-and-editing-a-blueprint"></a>Creating and editing a blueprint
 
-Podczas tworzenia planu Dodaj do niego artefakty, Zapisz je w grupie zarządzania lub subskrypcji i podano unikatową nazwę i unikatową wersję. Plan jest teraz w trybie **wersji roboczej** i nie można go jeszcze przypisać. W trybie **wersji roboczej** można nadal aktualizować i zmieniać.
+When creating a blueprint, add artifacts to it, save to a management group or subscription, and provided a unique name and a unique version. The blueprint is now in a **Draft** mode and can't yet be assigned. While in the **Draft** mode, it can continue to be updated and changed.
 
-Nieopublikowana strategia w trybie **wersji roboczej** wyświetla inną ikonę na stronie **definicje** strategii niż te, które zostały **opublikowane**. **Najnowsza wersja** jest wyświetlana jako **wersja robocza** dla tych, które nigdy nie zostały opublikowane.
+A never published blueprint in **Draft** mode displays a different icon on the **Blueprint Definitions** page than ones that have been **Published**. The **Latest Version** is displayed as **Draft** for these never published blueprints.
 
-Utwórz i Edytuj plan za pomocą [Azure Portal](../create-blueprint-portal.md#create-a-blueprint) lub [interfejsu API REST](../create-blueprint-rest-api.md#create-a-blueprint).
+Create and edit a blueprint with the [Azure portal](../create-blueprint-portal.md#create-a-blueprint) or [REST API](../create-blueprint-rest-api.md#create-a-blueprint).
 
-## <a name="publishing-a-blueprint"></a>Publikowanie strategii
+## <a name="publishing-a-blueprint"></a>Publishing a blueprint
 
-Gdy wszystkie planowane zmiany zostały wprowadzone do planu w trybie **wersji roboczej** , można je **opublikować** i udostępnić do przypisania. **Opublikowana** wersja planu nie może zostać zmieniona.
-Po **opublikowaniu**plan jest wyświetlany z inną ikoną niż szkice **robocze** i wyświetla podany numer wersji w kolumnie **Najnowsza wersja** .
+Once all planned changes have been made to a blueprint in **Draft** mode, it can be **Published** and made available for assignment. The **Published** version of the blueprint can't be altered. Once **Published**, the blueprint displays with a different icon than **Draft** blueprints and displays the provided version number in the **Latest Version** column.
 
-Opublikuj plan za pomocą [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) lub [interfejsu API REST](../create-blueprint-rest-api.md#publish-a-blueprint).
+Publish a blueprint with the [Azure portal](../create-blueprint-portal.md#publish-a-blueprint) or [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
-## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Tworzenie i edytowanie nowej wersji planu
+## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Creating and editing a new version of the blueprint
 
-Nie można zmienić **opublikowanej** wersji planu. Jednak nową wersję planu można dodać do istniejącego planu i zmodyfikować zgodnie z wymaganiami. Wprowadź zmiany w istniejącym planie, edytując je. Po zapisaniu nowych zmian plan ma teraz **nieopublikowane zmiany**. Te zmiany są nową wersją **projektu** planu.
+A **Published** version of a blueprint can't be altered. However, a new version of the blueprint can be added to the existing blueprint and modified as needed. Make changes to an existing blueprint by editing it. When the new changes are saved, the blueprint now has **Unpublished Changes**. These changes are a new **Draft** version of the blueprint.
 
-Edytuj plan przy użyciu [Azure Portal](../create-blueprint-portal.md#edit-a-blueprint).
+Edit a blueprint with the [Azure portal](../create-blueprint-portal.md#edit-a-blueprint).
 
-## <a name="publishing-a-new-version-of-the-blueprint"></a>Publikowanie nowej wersji planu
+## <a name="publishing-a-new-version-of-the-blueprint"></a>Publishing a new version of the blueprint
 
-Przed przypisaniem każdej edytowanej wersji strategii należy ją **opublikować** . Po dokonaniu **nieopublikowanych zmian** w planie, ale nie **opublikowanych**, przycisk **Publikuj plan** jest dostępny na stronie Edytuj plan. Jeśli przycisk nie jest widoczny, plan został już **opublikowany** i nie ma żadnych **nieopublikowanych zmian**.
-
-> [!NOTE]
-> Jeden plan może mieć wiele **opublikowanych** wersji, które można przypisać do subskrypcji.
-
-Aby opublikować plan z **nieopublikowanymi zmianami**, wykonaj te same kroki w celu opublikowania nowego planu.
-
-## <a name="deleting-a-specific-version-of-the-blueprint"></a>Usuwanie określonej wersji planu
-
-Każda wersja planu jest unikatowym obiektem i może być indywidualnie **opublikowana**. W związku z tym można również usunąć każdą wersję planu. Usunięcie wersji planu nie ma żadnego wpływu na inne wersje tego planu.
+Each edited version of a blueprint must be **Published** before it can be assigned. When **Unpublished Changes** have been made to a blueprint but not **Published**, the **Publish Blueprint** button is available on the edit blueprint page. If the button isn't visible, the blueprint has already been **Published** and has no **Unpublished Changes**.
 
 > [!NOTE]
-> Nie można usunąć planu, który ma aktywne przypisania. Najpierw usuń przypisania, a następnie Usuń wersję, którą chcesz usunąć.
+> A single blueprint can have multiple **Published** versions that can each be assigned to subscriptions.
+
+To publish a blueprint with **Unpublished Changes**, use the same steps for publishing a new blueprint.
+
+## <a name="deleting-a-specific-version-of-the-blueprint"></a>Deleting a specific version of the blueprint
+
+Each version of a blueprint is a unique object and can be individually **Published**. As such, each version of a blueprint can also be deleted. Deleting a version of a blueprint doesn't have any impact on other versions of that blueprint.
+
+> [!NOTE]
+> It's not possible to delete a blueprint that has active assignments. Delete the assignments first and then delete the version you wish to remove.
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Wybierz pozycję **definicje** strategii ze strony po lewej stronie, a następnie użyj opcji filtru, aby zlokalizować plan, dla którego chcesz usunąć wersję. Kliknij go, aby otworzyć stronę Edycja.
+1. Select **Blueprint definitions** from the page on the left and use the filter options to locate the blueprint you want to delete a version of. Select it to open the edit page.
 
-1. Kliknij kartę **opublikowane wersje** i Znajdź wersję, którą chcesz usunąć.
+1. Select the **Published versions** tab and locate the version you wish to delete.
 
-1. Kliknij prawym przyciskiem myszy wersję, którą chcesz usunąć, a następnie wybierz pozycję **Usuń tę wersję**.
+1. Right-click on the version to delete and select **Delete this version**.
 
-## <a name="deleting-the-blueprint"></a>Usuwanie planu
+## <a name="deleting-the-blueprint"></a>Deleting the blueprint
 
-Można również usunąć podstawowe plany. Usunięcie podstawowego planu spowoduje również usunięcie wszystkich wersji strategii tego planu, w tym **projektów** i **opublikowanych** planów. Podobnie jak w przypadku usuwania wersji planu, usunięcie podstawowego planu nie powoduje usunięcia istniejących przypisań żadnej wersji planu.
+The core blueprint can also be deleted. Deleting the core blueprint also deletes any blueprint versions of that blueprint, including both **Draft** and **Published** blueprints. As with deleting a version of a blueprint, deleting the core blueprint doesn't remove the existing assignments of any of the blueprint versions.
 
 > [!NOTE]
-> Nie można usunąć planu, który ma aktywne przypisania. Najpierw usuń przypisania, a następnie Usuń wersję, którą chcesz usunąć.
+> It's not possible to delete a blueprint that has active assignments. Delete the assignments first and then delete the version you wish to remove.
 
-Usuń plan z [Azure portalem](../create-blueprint-portal.md#delete-a-blueprint) lub [interfejsem API REST](../create-blueprint-rest-api.md#delete-a-blueprint).
+Delete a blueprint with the [Azure portal](../create-blueprint-portal.md#delete-a-blueprint) or [REST API](../create-blueprint-rest-api.md#delete-a-blueprint).
 
 ## <a name="assignments"></a>Przypisania
 
-W trakcie cyklu życia można przypisać plan do subskrypcji. Po **opublikowaniu**trybu wersji planu ta wersja może być przypisana do subskrypcji. Ten cykl życia umożliwia korzystanie z wersji planu i aktywnie przypisywania podczas tworzenia nowszej wersji.
+There's several points during the lifecycle a blueprint can be assigned to a subscription. When the mode of a version of the blueprint is **Published**, then that version can be assigned to a subscription. This lifecycle enables versions of a blueprint to be used and actively assigned while a newer version is being developed.
 
-Gdy są przypisane wersje planów, ważne jest, aby zrozumieć, gdzie są przypisane, i z którymi parametrami zostały przypisane. Parametry mogą być statyczne lub dynamiczne. Aby dowiedzieć się więcej, zobacz [Parametry statyczne i dynamiczne](parameters.md).
+As versions of blueprints are assigned, it's important to understand where they're assigned and with what parameters they've been assigned with. The parameters can either be static or dynamic. To learn more, see [static and dynamic parameters](parameters.md).
 
-### <a name="updating-assignments"></a>Aktualizowanie przypisań
+### <a name="updating-assignments"></a>Updating assignments
 
-Po przypisaniu planu można zaktualizować przypisanie. Istnieje kilka powodów, dla których należy zaktualizować istniejące przypisanie, w tym:
+When a blueprint is assigned, the assignment can be updated. There are several reasons for updating an existing assignment, including:
 
-- Dodawanie lub usuwanie [blokowania zasobów](resource-locking.md)
-- Zmień wartość [parametrów dynamicznych](parameters.md#dynamic-parameters)
-- Uaktualnij przypisanie do nowszej **opublikowanej** wersji planu
+- Add or remove [resource locking](resource-locking.md)
+- Change the value of [dynamic parameters](parameters.md#dynamic-parameters)
+- Upgrade the assignment to a newer **Published** version of the blueprint
 
-Aby dowiedzieć się, jak to zrobić, zobacz [aktualizowanie istniejących przypisań](../how-to/update-existing-assignments.md).
+To learn how, see [update existing assignments](../how-to/update-existing-assignments.md).
 
-### <a name="unassigning-assignments"></a>Cofanie przypisania przypisań
+### <a name="unassigning-assignments"></a>Unassigning assignments
 
-Jeśli plan nie jest już wymagany, można go przypisać do grupy zarządzania lub subskrypcji. Podczas przypisywania strategii następuje:
+If the blueprint is no longer needed, it can be unassigned from the management group or subscription. During blueprint unassignment, the following occurs:
 
-- Usuwanie [blokowania zasobów](resource-locking.md) planu
-- Usuwanie obiektu przypisania strategii
-- Warunk Jeśli użyto **tożsamości zarządzanej przypisanej do systemu** , zostanie ona również usunięta
+- Removal of [blueprint resource locking](resource-locking.md)
+- Deletion of the blueprint assignment object
+- (Conditional) If a **system-assigned managed identity** was used, it's also deleted
 
 > [!NOTE]
-> Wszystkie zasoby wdrożone przez przypisanie planu pozostają na miejscu, ale nie są już chronione przez plany platformy Azure.
+> All resources deployed by the blueprint assignment remain in place, but are no longer protected by Azure Blueprints.
 
 ## <a name="next-steps"></a>Następne kroki
 

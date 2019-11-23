@@ -1,76 +1,76 @@
 ---
-title: Łączenie komputerów z systemem Windows w celu Azure Monitor | Microsoft Docs
-description: W tym artykule opisano sposób łączenia komputerów z systemem Windows hostowanych w innych chmurach lub lokalnych w celu Azure Monitor z agentem Log Analytics dla systemu Windows.
+title: Connect Windows computers to Azure Monitor | Microsoft Docs
+description: This article describes how to connect Windows computers hosted in other clouds or on-premises to Azure Monitor with the Log Analytics agent for Windows.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 10/07/2019
-ms.openlocfilehash: abe114a989c4ec672d391a7fd7d83341d4c52638
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 42183ca7b02ba75b241ee1a83b5a0dc936a8c1c8
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932771"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420416"
 ---
-# <a name="connect-windows-computers-to-azure-monitor"></a>Podłącz komputery z systemem Windows do Azure Monitor
+# <a name="connect-windows-computers-to-azure-monitor"></a>Connect Windows computers to Azure Monitor
 
-W celu monitorowania maszyn wirtualnych lub komputerów fizycznych w lokalnym centrum danych lub w innym środowisku chmury przy użyciu Azure Monitor należy wdrożyć agenta Log Analytics (określanego także jako Microsoft Monitoring Agent (MMA)) i skonfigurować go na potrzeby Zgłoś do co najmniej jednego obszaru roboczego Log Analytics. Agent obsługuje również rolę hybrydowego procesu roboczego elementu Runbook dla Azure Automation.  
+In order to monitor and manage virtual machines or physical computers in your local datacenter or other cloud environment with Azure Monitor, you need to deploy the Log Analytics agent (also referred to as the Microsoft Monitoring Agent (MMA)) and configure it to report to one or more Log Analytics workspaces. The agent also supports the Hybrid Runbook Worker role for Azure Automation.  
 
-Na monitorowanym komputerze z systemem Windows Agent jest wyświetlany jako usługa Microsoft Monitoring Agent. Usługa Microsoft Monitoring Agent zbiera zdarzenia z plików dziennika, dziennika zdarzeń systemu Windows, danych wydajności i innych danych telemetrycznych. Nawet jeśli Agent nie może komunikować się z Azure Monitorą raportów, Agent nadal uruchamia i kolejkuje zebrane dane na dysku monitorowanego komputera. Po przywróceniu połączenia usługa Microsoft Monitoring Agent wysyła zebrane dane do usługi.
+On a monitored Windows computer, the agent is listed as the Microsoft Monitoring Agent service. The Microsoft Monitoring Agent service collects events from log files and Windows event log, performance data, and other telemetry. Even when the agent is unable to communicate with Azure Monitor it reports to, the agent continues to run and queues the collected data on the disk of the monitored computer. When the connection is restored, the Microsoft Monitoring Agent service sends collected data to the service.
 
-Agenta programu można zainstalować przy użyciu jednej z poniższych metod. Większość instalacji używa kombinacji tych metod w celu zainstalowania różnych zestawów komputerów, odpowiednio do potrzeb.  Szczegółowe informacje o używaniu każdej metody są podane w dalszej części artykułu.
+The agent may be installed by using one of the following methods. Most installations use a combination of these methods to install different sets of computers, as appropriate.  Details on using each method are provided later in the article.
 
-* Instalacja ręczna. Instalator jest uruchamiany ręcznie na komputerze przy użyciu Kreatora instalacji, z wiersza polecenia lub wdrożony za pomocą istniejącego narzędzia do dystrybucji oprogramowania.
-* Azure Automation konfiguracji żądanego stanu (DSC). Korzystanie z usługi DSC w Azure Automation ze skryptem dla komputerów z systemem Windows, które zostały już wdrożone w danym środowisku.  
-* Skrypt programu PowerShell.
-* Menedżer zasobów szablon dla maszyn wirtualnych z systemem Windows lokalnie w programie Azure Stack. 
+* Manual installation. Setup is manually run on the computer using the setup wizard, from the command line, or deployed using an existing software distribution tool.
+* Azure Automation Desired State Configuration (DSC). Using DSC in Azure Automation with a script for Windows computers already deployed in your environment.  
+* PowerShell script.
+* Resource Manager template for virtual machines running Windows on-premises in Azure Stack. 
 
 >[!NOTE]
->Azure Security Center (ASC) zależy od Microsoft Monitoring Agent (nazywanego również Log Analytics agentem systemu Windows) i zostanie zainstalowany i skonfigurowany do raportowania do obszaru roboczego Log Analytics w ramach wdrożenia. Funkcja ASC obejmuje automatyczną opcję aprowizacji, która umożliwia automatyczną instalację Log Analytics agenta systemu Windows na wszystkich maszynach wirtualnych w ramach subskrypcji i konfiguruje go w celu raportowania do określonego obszaru roboczego. Aby uzyskać więcej informacji na temat tej opcji, zobacz [Włącz automatyczną obsługę administracyjną agenta log Analytics](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-the-log-analytics-agent-).
+>Azure Security Center (ASC) depends on the Microsoft Monitoring Agent (also referred to as the Log Analytics Windows agent) and will install and configure it to report to a Log Analytics workspace as part of its deployment. ASC includes an automatic provisioning option which enables automatic installation of the Log Analytics Windows agent on all VMs in your subscription and configures it to report to a specific workspace. For more information about this option, see [Enable automatic provisioning of Log Analytics agent](../../security-center/security-center-enable-data-collection.md#auto-provision-mma).
 >
 
-Jeśli konieczne jest skonfigurowanie agenta w celu raportowania do więcej niż jednego obszaru roboczego, nie można wykonać tej operacji podczas początkowej konfiguracji, dopiero później przez zaktualizowanie ustawień z panelu sterowania lub programu PowerShell zgodnie z opisem w temacie [Dodawanie lub usuwanie obszaru roboczego](agent-manage.md#adding-or-removing-a-workspace).  
+If you need to configure the agent to report to more than one workspace, this cannot be performed during initial setup, only afterwards by updating the settings from Control Panel or PowerShell as described in [Adding or removing a workspace](agent-manage.md#adding-or-removing-a-workspace).  
 
 Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Windows](log-analytics-agent.md#supported-windows-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-agent.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Uzyskiwanie identyfikatora i klucza obszaru roboczego
-Przed zainstalowaniem agenta Log Analytics dla systemu Windows musisz mieć identyfikator i klucz obszaru roboczego dla obszaru roboczego Log Analytics.  Te informacje są wymagane podczas instalacji z każdej metody instalacji w celu poprawnego skonfigurowania agenta i upewnienia się, że może on pomyślnie komunikować się z Azure Monitor w chmurze dla instytucji rządowych na platformie Azure. 
+Before installing the Log Analytics agent for Windows, you need the workspace ID and key for your Log Analytics workspace.  This information is required during setup from each installation method to properly configure the agent and ensure it can successfully communicate with Azure Monitor in Azure commercial and US Government cloud. 
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
-2. Na liście obszarów roboczych Log Analytics wybierz obszar roboczy, w którym ma zostać skonfigurowany Agent do raportowania.
+2. In your list of Log Analytics workspaces, select the workspace you intend on configuring the agent to report to.
 3. Wybierz pozycję **Ustawienia zaawansowane**.<br><br> ![Ustawienia zaawansowane usługi Log Analytics](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. Wybierz **Połączone źródła**, a następnie **Serwery Windows**.   
-5. Skopiuj i wklej w ulubionym edytorze, **Identyfikator obszaru roboczego** i **klucz podstawowy**.    
+5. Copy and paste into your favorite editor, the **Workspace ID** and **Primary Key**.    
    
-## <a name="configure-agent-to-use-tls-12"></a>Konfigurowanie agenta do korzystania z protokołu TLS 1,2
-Aby skonfigurować użycie protokołu [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) do komunikacji między agentem systemu Windows a usługą log Analytics, można wykonać poniższe kroki, aby włączyć, zanim Agent zostanie zainstalowany na maszynie wirtualnej lub później.
+## <a name="configure-agent-to-use-tls-12"></a>Configure Agent to use TLS 1.2
+To configure use of the [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) protocol for communication between the Windows agent and the Log Analytics service, you can follow the steps below to enable before the agent is installed on the virtual machine or afterwards.
 
 >[!NOTE]
->Jeśli konfigurujesz maszynę wirtualną z systemem Windows Server 2008 z dodatkiem SP2 x64 do korzystania z protokołu TLS 1,2, przed wykonaniem poniższych kroków należy najpierw zainstalować następującą [aktualizację obsługi podpisywania kodu SHA-2](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) . 
+>If you are configuring a VM running Windows Server 2008 SP2 x64 to use TLS 1.2, you first need to install the following [SHA-2 code signing support update](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) before performing the steps below. 
 >
 
-1. Zlokalizuj następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
-2. Utwórz podklucz w obszarze **Protokoły** dla protokołu TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**
-3. Utwórz podklucz **klienta** w podkluczu wersji protokołu TLS 1,2 utworzonego wcześniej. Na przykład **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Client**.
-4. Utwórz następujące wartości DWORD w obszarze **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Client**:
+1. Locate the following registry subkey: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
+2. Create a subkey under **Protocols** for TLS 1.2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
+3. Create a **Client** subkey under the TLS 1.2 protocol version subkey you created earlier. For example, **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**.
+4. Create the following DWORD values under **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**:
 
-    * **Włączone** [wartość = 1]
-    * **DisabledByDefault** [wartość = 0]  
+    * **Enabled** [Value = 1]
+    * **DisabledByDefault** [Value = 0]  
 
-Skonfiguruj .NET Framework 4,6 lub nowszy, aby obsługiwać szyfrowanie Secure, tak jak domyślnie jest ono wyłączone. [Silne Kryptografia](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) korzysta z bezpieczniejszych protokołów sieciowych, takich jak TLS 1,2, i blokuje protokoły, które nie są bezpieczne. 
+Configure .NET Framework 4.6 or later to support secure cryptography, as by default it is disabled. The [strong cryptography](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) uses more secure network protocols like TLS 1.2, and blocks protocols that are not secure. 
 
-1. Zlokalizuj następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\. NETFramework\v4.0.30319**.  
-2. Utwórz wartość DWORD **schusestrongcrypto we** w tym podkluczu o wartości **1**.  
-3. Zlokalizuj następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
-4. Utwórz wartość DWORD **schusestrongcrypto we** w tym podkluczu o wartości **1**. 
-5. Aby ustawienia zaczęły obowiązywać, należy ponownie uruchomić system. 
+1. Locate the following registry subkey: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**.  
+2. Create the DWORD value **SchUseStrongCrypto** under this subkey with a value of **1**.  
+3. Locate the following registry subkey: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**.  
+4. Create the DWORD value **SchUseStrongCrypto** under this subkey with a value of **1**. 
+5. Restart the system for the settings to take effect. 
 
-## <a name="install-the-agent-using-setup-wizard"></a>Instalowanie agenta za pomocą Kreatora instalacji
-Poniższe kroki instalują i konfigurują agenta Log Analytics na platformie Azure i w chmurze Azure Government przy użyciu Kreatora instalacji agenta na komputerze. Jeśli chcesz dowiedzieć się, jak skonfigurować agenta do raportowania do System Center Operations Manager grupy zarządzania, zobacz [wdrażanie agenta Operations Manager za pomocą Kreatora instalacji agenta](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
+## <a name="install-the-agent-using-setup-wizard"></a>Install the agent using setup wizard
+The following steps install and configure the Log Analytics agent in Azure and Azure Government cloud by using the setup wizard for the agent on your computer. If you want to learn how to configure the agent to also report to a System Center Operations Manager management group, see [deploy the Operations Manager agent with the Agent Setup Wizard](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
 
-1. W obszarze roboczym Log Analytics na stronie **serwery z systemem Windows** , do której przejdziesz wcześniej, wybierz odpowiednią wersję **agenta pobierania systemu Windows** do pobrania w zależności od architektury procesora systemu operacyjnego Windows.   
+1. In your Log Analytics workspace, from the **Windows Servers** page you navigated to earlier, select the appropriate **Download Windows Agent** version to download depending on the processor architecture of the Windows operating system.   
 2. Uruchom Instalatora, aby zainstalować agenta na komputerze.
 2. Na **stronie powitalnej** kliknij przycisk **Dalej**.
 3. Na stronie **Postanowienia licencyjne** zapoznaj się z postanowieniami licencyjnymi, a następnie kliknij przycisk **Zgadzam się**.
@@ -83,62 +83,62 @@ Poniższe kroki instalują i konfigurują agenta Log Analytics na platformie Azu
 8. Na stronie **Gotowe do zainstalowania** przejrzyj wybrane opcje, a następnie kliknij pozycję **Zainstaluj**.
 9. Na stronie **Konfiguracja została zakończona pomyślnie** kliknij przycisk **Zakończ**.
 
-Po ukończeniu instalacji program **Microsoft Monitoring Agent** będzie wyświetlany w **Panelu sterowania**. Aby potwierdzić, że jest on raportowany do Log Analytics, przejrzyj temat [Weryfikowanie łączności agenta z log Analytics](#verify-agent-connectivity-to-log-analytics). 
+Po ukończeniu instalacji program **Microsoft Monitoring Agent** będzie wyświetlany w **Panelu sterowania**. To confirm it is reporting to Log Analytics, review [Verify agent connectivity to Log Analytics](#verify-agent-connectivity-to-log-analytics). 
 
-## <a name="install-the-agent-using-the-command-line"></a>Instalowanie agenta przy użyciu wiersza polecenia
-Pobrany plik dla agenta to samodzielny pakiet instalacyjny.  Program instalacyjny agenta i plików pomocniczych są zawarte w pakiecie i muszą zostać wyodrębnione w celu poprawnej instalacji przy użyciu wiersza polecenia pokazanego w poniższych przykładach.    
+## <a name="install-the-agent-using-the-command-line"></a>Install the agent using the command line
+The downloaded file for the agent is a self-contained installation package.  The setup program for the agent and supporting files are contained in the package and need to be extracted in order to properly install using the command line shown in the following examples.    
 
 >[!NOTE]
->Jeśli chcesz uaktualnić agenta, musisz użyć interfejsu API obsługi skryptów Log Analytics. Aby uzyskać więcej informacji, zobacz temat [zarządzanie log Analytics agentem dla systemów Windows i Linux](agent-manage.md) .
+>If you want to upgrade an agent, you need to use the Log Analytics scripting API. See the topic [Managing and maintaining the Log Analytics agent for Windows and Linux](agent-manage.md) for further information.
 
-W poniższej tabeli przedstawiono określone parametry obsługiwane przez Instalatora dla agenta, w tym informacje o wdrażaniu przy użyciu Automation DSC.
+The following table highlights the specific parameters supported by setup for the agent, including when deployed using Automation DSC.
 
-|Opcje specyficzne dla MMA                   |Uwagi         |
+|MMA-specific options                   |Uwagi         |
 |---------------------------------------|--------------|
-| PARAMETR NOAPM = 1                               | Opcjonalny parametr. Instaluje agenta programu bez programu .NET Application Performance Monitoring.|   
-|ADD_OPINSIGHTS_WORKSPACE               | 1 = Skonfiguruj agenta do raportowania do obszaru roboczego                |
-|OPINSIGHTS_WORKSPACE_ID                | Identyfikator obszaru roboczego (GUID) dla obszaru roboczego do dodania                    |
-|OPINSIGHTS_WORKSPACE_KEY               | Klucz obszaru roboczego używany do początkowego uwierzytelniania przy użyciu obszaru roboczego |
-|OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | Określ środowisko chmury, w którym znajduje się obszar roboczy <br> 0 = chmura komercyjna Azure (wartość domyślna) <br> 1 = Azure Government |
-|OPINSIGHTS_PROXY_URL               | Identyfikator URI, który ma być używany przez serwer proxy |
-|OPINSIGHTS_PROXY_USERNAME               | Nazwa użytkownika, aby uzyskać dostęp do uwierzytelnionego serwera proxy |
-|OPINSIGHTS_PROXY_PASSWORD               | Hasło dostępu do uwierzytelnionego serwera proxy |
+| NOAPM=1                               | Optional parameter. Installs the agent without .NET Application Performance Monitoring.|   
+|ADD_OPINSIGHTS_WORKSPACE               | 1 = Configure the agent to report to a workspace                |
+|OPINSIGHTS_WORKSPACE_ID                | Workspace ID (guid) for the workspace to add                    |
+|OPINSIGHTS_WORKSPACE_KEY               | Workspace key used to initially authenticate with the workspace |
+|OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | Specify the cloud environment where the workspace is located <br> 0 = Azure commercial cloud (default) <br> 1 = Azure Government |
+|OPINSIGHTS_PROXY_URL               | URI for the proxy to use |
+|OPINSIGHTS_PROXY_USERNAME               | Username to access an authenticated proxy |
+|OPINSIGHTS_PROXY_PASSWORD               | Password to access an authenticated proxy |
 
-1. Aby wyodrębnić pliki instalacyjne agenta, w wierszu polecenia z podwyższonym poziomem uprawnień `MMASetup-<platform>.exe /c` i zostanie wyświetlony monit o podanie ścieżki, do której zostaną wyodrębnione pliki.  Alternatywnie możesz określić ścieżkę, przekazując argumenty `MMASetup-<platform>.exe /c /t:<Full Path>`.  
-2. Aby zainstalować agenta w trybie dyskretnym i skonfigurować go do raportowania do obszaru roboczego w chmurze komercyjnej platformy Azure, z folderu wyodrębnione pliki instalacyjne do wpisania: 
+1. To extract the agent installation files, from an elevated command prompt run `MMASetup-<platform>.exe /c` and it will prompt you for the path to extract files to.  Alternatively, you can specify the path by passing the arguments `MMASetup-<platform>.exe /c /t:<Full Path>`.  
+2. To silently install the agent and configure it to report to a workspace in Azure commercial cloud, from the folder you extracted the setup files to type: 
    
      ```dos
     setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
 
-   Aby skonfigurować agenta do raportowania w chmurze platformy Azure dla instytucji rządowych, wpisz: 
+   or to configure the agent to report to Azure US Government cloud, type: 
 
      ```dos
     setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
     >[!NOTE]
-    >Wartości ciągu parametrów *OPINSIGHTS_WORKSPACE_ID* i *OPINSIGHTS_WORKSPACE_KEY* muszą być hermetyzowane w podwójnych cudzysłowach, aby polecić Instalator Windows Interprit jako prawidłowe opcje pakietu. 
+    >The string values for the parameters *OPINSIGHTS_WORKSPACE_ID* and *OPINSIGHTS_WORKSPACE_KEY* need to be encapsulated in double-quotes to instruct Windows Installer to interprit as valid options for the package. 
 
-## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Zainstaluj agenta przy użyciu usługi DSC w Azure Automation
+## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Install the agent using DSC in Azure Automation
 
-Aby zainstalować agenta za pomocą Azure Automation DSC, można użyć następującego przykładowego skryptu.   Jeśli nie masz konta usługi Automation, zobacz artykuł Wprowadzenie do [Azure Automation](/azure/automation/) , aby poznać wymagania i kroki związane z tworzeniem konta usługi Automation wymaganego przed użyciem usługi Automation DSC.  Jeśli nie znasz Automation DSC, zapoznaj [się z tematem wprowadzenie do Automation DSC](../../automation/automation-dsc-getting-started.md).
+You can use the following script example to install the agent using Azure Automation DSC.   If you do not have an Automation account, see [Get started with Azure Automation](/azure/automation/) to understand requirements and steps for creating an Automation account required before using Automation DSC.  If you are not familiar with Automation DSC, review [Getting started with Automation DSC](../../automation/automation-dsc-getting-started.md).
 
-W poniższym przykładzie jest instalowany Agent 64-bitowy identyfikowany przez wartość `URI`. Możesz również użyć wersji 32-bitowej, zastępując wartość identyfikatora URI. Identyfikatory URI obu wersji są następujące:
+The following example installs the 64-bit agent, identified by the `URI` value. You can also use the 32-bit version by replacing the URI value. The URIs for both versions are:
 
-- Windows 64-bit Agent- https://go.microsoft.com/fwlink/?LinkId=828603
-- Windows 32-bit Agent- https://go.microsoft.com/fwlink/?LinkId=828604
+- Windows 64-bit agent - https://go.microsoft.com/fwlink/?LinkId=828603
+- Windows 32-bit agent - https://go.microsoft.com/fwlink/?LinkId=828604
 
 
 >[!NOTE]
->Ta procedura i przykład skryptu nie obsługują uaktualniania agenta już wdrożonego na komputerze z systemem Windows.
+>This procedure and script example does not support upgrading the agent already deployed to a Windows computer.
 
-32-bitowe i 64-bitowe wersje pakietu agenta mają różne kody produktów i wydane nowe wersje mają również unikatową wartość.  Kod produktu jest identyfikatorem GUID, który jest identyfikatorem podmiotu zabezpieczeń aplikacji lub produktu i jest reprezentowany przez właściwość Instalator Windows **ProductCode** .  Wartość `ProductId` w skrypcie **MMAgent. ps1** musi być zgodna z kodem produktu z pakietu instalatora agenta 32-bitowego lub 64-bitowego.
+The 32-bit and 64-bit versions of the agent package have different product codes and new versions released also have a unique value.  The product code is a GUID that is the principal identification of an application or product and is represented by the Windows Installer **ProductCode** property.  The `ProductId` value in the **MMAgent.ps1** script has to match the product code from the 32-bit or 64-bit agent installer package.
 
-Aby bezpośrednio pobrać kod produktu z pakietu instalacji agenta, można użyć programu Orca. exe ze [składników Windows SDK, aby Instalator Windows deweloperów](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , którzy są składnikiem zestawu Windows Software Development Kit lub przy użyciu programu PowerShell po [ Przykładowy skrypt](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) pisany przez firmę Microsoft (MVP).  W obu przypadkach najpierw należy wyodrębnić plik **pliku MOMAgent. msi** z pakietu instalacyjnego MMASetup.  Jest to pokazane wcześniej w pierwszym kroku w sekcji [Instalowanie agenta przy użyciu wiersza polecenia](#install-the-agent-using-the-command-line).  
+To retrieve the product code from the agent install package directly, you can use Orca.exe from the [Windows SDK Components for Windows Installer Developers](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) that is a component of the Windows Software Development Kit or using PowerShell following an [example script](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)  written by a Microsoft Valuable Professional (MVP).  For either approach, you first need to extract the **MOMagent.msi** file from the MMASetup installation package.  This is shown earlier in the first step under the section [Install the agent using the command line](#install-the-agent-using-the-command-line).  
 
-1. Zaimportuj moduł xPSDesiredStateConfiguration DSC z [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
-2.  Utwórz Azure Automation zasobów zmiennych dla *OPSINSIGHTS_WS_ID* i *OPSINSIGHTS_WS_KEY*. Ustaw wartość *OPSINSIGHTS_WS_ID* na identyfikator obszaru roboczego log Analytics i ustaw wartość *OPSINSIGHTS_WS_KEY* na klucz podstawowy obszaru roboczego.
-3.  Skopiuj skrypt i Zapisz go jako MMAgent. ps1.
+1. Import the xPSDesiredStateConfiguration DSC Module from [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) into Azure Automation.  
+2.  Create Azure Automation variable assets for *OPSINSIGHTS_WS_ID* and *OPSINSIGHTS_WS_KEY*. Set *OPSINSIGHTS_WS_ID* to your Log Analytics workspace ID and set *OPSINSIGHTS_WS_KEY* to the primary key of your workspace.
+3.  Copy the script and save it as MMAgent.ps1.
 
     ```powershell
     Configuration MMAgent
@@ -176,21 +176,21 @@ Aby bezpośrednio pobrać kod produktu z pakietu instalacji agenta, można uży�
 
     ```
 
-4. Zaktualizuj wartość `ProductId` w skrypcie o kod produktu wyodrębniony z najnowszej wersji pakietu instalacji agenta przy użyciu zalecanych wcześniej metod. 
-5. [Zaimportuj skrypt konfiguracyjny MMAgent. ps1](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) do konta usługi Automation. 
-5. [Przypisz komputer lub węzeł systemu Windows](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) do konfiguracji. W ciągu 15 minut węzeł sprawdza swoją konfigurację, a agent jest wypychany do węzła.
+4. Update the `ProductId` value in the script with the product code extracted from the latest version of the agent install package using the methods recommended earlier. 
+5. [Import the MMAgent.ps1 configuration script](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) into your Automation account. 
+5. [Assign a Windows computer or node](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) to the configuration. Within 15 minutes, the node checks its configuration and the agent is pushed to the node.
 
-## <a name="verify-agent-connectivity-to-log-analytics"></a>Sprawdź łączność z agentem Log Analytics
+## <a name="verify-agent-connectivity-to-log-analytics"></a>Verify agent connectivity to Log Analytics
 
-Po zakończeniu instalacji agenta Weryfikowanie jego pomyślnego połączenia i raportowanie można wykonać na dwa sposoby.  
+Once installation of the agent is complete, verifying it is successfully connected and reporting can be accomplished in two ways.  
 
-W **Panelu sterowania** na komputerze znajdź element **Microsoft Monitoring Agent**.  Wybierz go i na karcie **log Analytics Azure** Agent powinien wyświetlić komunikat z informacją: **Microsoft Monitoring Agent pomyślnie nawiązał połączenie z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+W **Panelu sterowania** na komputerze znajdź element **Microsoft Monitoring Agent**.  Select it and on the **Azure Log Analytics** tab, the agent should display a message stating: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
-Możesz również wykonać prostą kwerendę dziennika w Azure Portal.  
+You can also perform a simple log query in the Azure portal.  
 
-1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Azure monitor**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **Azure monitor**.  
-2. Wybierz pozycję **dzienniki** w menu. 
-2. W okienku dzienniki w polu Typ zapytania wpisz:  
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. In the list of resources, type **Azure Monitor**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Select **Azure Monitor**.  
+2. Select **Logs** in the menu. 
+2. On the Logs pane, in the query field type:  
 
     ```
     Heartbeat 
@@ -198,10 +198,10 @@ Możesz również wykonać prostą kwerendę dziennika w Azure Portal.
     | where TimeGenerated > ago(30m)  
     ```
 
-W zwróconych wynikach wyszukiwania powinny być widoczne rekordy pulsu dla komputera, który wskazuje, że jest on połączony i zgłaszany do usługi.   
+In the search results returned, you should see heartbeat records for the computer indicating it is connected and reporting to the service.   
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z tematem [Zarządzanie agentem log Analytics dla systemów Windows i Linux oraz ich obsługiwanie](agent-manage.md) , aby dowiedzieć się, jak ponownie skonfigurować, uaktualnić lub usunąć agenta z maszyny wirtualnej.
+- Review [Managing and maintaining the Log Analytics agent for Windows and Linux](agent-manage.md) to learn about how to reconfigure, upgrade, or remove the agent from the virtual machine.
 
-- Sprawdź [Rozwiązywanie problemów z agentem systemu Windows,](agent-windows-troubleshoot.md) Jeśli wystąpią problemy podczas instalowania agenta lub zarządzania nim.
+- Review [Troubleshooting the Windows agent](agent-windows-troubleshoot.md) if you encounter issues while installing or managing the agent.

@@ -1,56 +1,56 @@
 ---
-title: Skonfiguruj ukierunkowane Routing ruchu w trybie okrężnym — Traffic Manager platformy Azure
-description: W tym artykule wyjaśniono, jak równoważyć obciążenie ruchu przy użyciu metody okrężnej w Traffic Manager
+title: Tutorial - Configure weighted round-robin traffic routing with Azure Traffic Manager
+description: This tutorial explains how to load balance traffic using a round-robin method in Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: allensu
-ms.openlocfilehash: 0bfed558ec8db0ef715dad044c3965c1b1d8052b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 06bb86e635b7b3377e1f313ef3aa3487e1c215bc
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040332"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422774"
 ---
-# <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu ruchu ważonego w Traffic Manager
+# <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Tutorial: Configure the weighted traffic routing method in Traffic Manager
 
-Typowym wzorcem metody routingu ruchu jest zapewnienie zestawu identycznych punktów końcowych, takich jak usługi w chmurze i witryny sieci Web, a także wysyłanie ruchu do każdego z nich. Poniższe kroki przedstawiają sposób konfigurowania tego typu metody routingu ruchu.
+A common traffic routing method pattern is to provide a set of identical endpoints, which include cloud services and websites, and send traffic to each equally. The following steps outline how to configure this type of traffic routing method.
 
 > [!NOTE]
-> Usługa Azure Web App już zapewnia funkcję równoważenia obciążenia z działaniem okrężnym dla witryn sieci Web w regionie świadczenia usługi Azure (co może obejmować wiele centrów danych). Traffic Manager umożliwia dystrybucję ruchu między witrynami sieci Web w różnych centrach danych.
+> Azure Web App already provides round-robin load balancing functionality for websites within an Azure Region (which may comprise multiple datacenters). Traffic Manager allows you to distribute traffic across websites in different datacenters.
 
-## <a name="to-configure-the-weighted-traffic-routing-method"></a>Aby skonfigurować metodę routingu ruchu ważonego
+## <a name="to-configure-the-weighted-traffic-routing-method"></a>To configure the weighted traffic routing method
 
 1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](https://portal.azure.com). Jeśli jeszcze nie masz konta, możesz skorzystać z [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/free/). 
-2. Na pasku wyszukiwania portalu Wyszukaj **Traffic Manager profile** , a następnie kliknij nazwę profilu, dla którego chcesz skonfigurować metodę routingu.
-3. W bloku **Traffic Manager profilu** Sprawdź, czy istnieją zarówno usługi w chmurze, jak i witryny sieci Web, które mają zostać uwzględnione w konfiguracji.
-4. W sekcji **Ustawienia** kliknij pozycję **Konfiguracja**, a następnie w bloku **Konfiguracja** wykonaj następujące czynności:
-    1. W przypadku **ustawień metody routingu ruchu**Sprawdź, czy metoda routingu ruchu jest **ważona**. Jeśli nie, kliknij przycisk **ważone** z listy rozwijanej.
-    2. Ustaw **Ustawienia monitora punktu końcowego** identyczne dla wszystkich punktów końcowych w ramach tego profilu w następujący sposób:
-        1. Wybierz odpowiedni **Protokół**i określ numer **portu** . 
-        2. Dla **ścieżki** wpisz ukośnik */* . Aby monitorować punkty końcowe, należy określić ścieżkę i nazwę pliku. Ukośnik "/" jest prawidłowym wpisem ścieżki względnej i oznacza, że plik znajduje się w katalogu głównym (domyślnie).
-        3. W górnej części strony kliknij pozycję **Zapisz**.
-5. Przetestuj zmiany w konfiguracji w następujący sposób:
-    1.  Na pasku wyszukiwania portalu Wyszukaj nazwę profilu Traffic Manager i kliknij profil Traffic Manager w wyświetlonych wynikach.
-    2.  W bloku profil **Traffic Manager** kliknij pozycję **Przegląd**.
-    3.  W bloku **profil Traffic Manager** zostanie wyświetlona nazwa DNS nowo utworzonego profilu Traffic Manager. Może to być używane przez dowolnego klienta (na przykład przez przechodzenie do niego przy użyciu przeglądarki sieci Web) do kierowania do prawego punktu końcowego określonego przez typ routingu. W takim przypadku wszystkie żądania są kierowane do każdego punktu końcowego w sposób okrężny.
-6. Po zakończeniu działania profilu Traffic Manager Edytuj rekord DNS na autorytatywnym serwerze DNS, aby wskazywał nazwę domeny firmowej na nazwę domeny Traffic Manager.
+2. In the portal’s search bar, search for the **Traffic Manager profiles** and then click the profile name that you want to configure the routing method for.
+3. In the **Traffic Manager profile** blade, verify that both the cloud services and websites that you want to include in your configuration are present.
+4. In the **Settings** section, click **Configuration**, and in the **Configuration** blade, complete as follows:
+    1. For **traffic routing method settings**, verify that the traffic routing method is **Weighted**. If it is not, click **Weighted** from the dropdown list.
+    2. Set the **Endpoint monitor settings** identical for all every endpoint within this profile as follows:
+        1. Select the appropriate **Protocol**, and specify the **Port** number. 
+        2. For **Path** type a forward slash */* . To monitor endpoints, you must specify a path and filename. A forward slash "/" is a valid entry for the relative path and implies that the file is in the root directory (default).
+        3. At the top of the page, click **Save**.
+5. Test the changes in your configuration as follows:
+    1.  In the portal’s search bar, search for the Traffic Manager profile name and click the Traffic Manager profile in the results that the displayed.
+    2.  In the **Traffic Manager** profile blade, click **Overview**.
+    3.  The **Traffic Manager profile** blade displays the DNS name of your newly created Traffic Manager profile. This can be used by any clients (for example,by navigating to it using a web browser) to get routed to the right endpoint as determined by the routing type. In this case all requests are routed each endpoint in a round-robin fashion.
+6. Once your Traffic Manager profile is working, edit the DNS record on your authoritative DNS server to point your company domain name to the Traffic Manager domain name.
 
-![Konfigurowanie metody routingu ruchu ważonego za pomocą Traffic Manager][1]
+![Configuring weighted traffic routing method using Traffic Manager][1]
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [metodzie routingu ruchu priorytetowego](traffic-manager-configure-priority-routing-method.md).
-- Dowiedz się więcej o [metodzie routingu ruchu wydajnościowego](traffic-manager-configure-performance-routing-method.md).
+- Learn about [priority traffic routing method](traffic-manager-configure-priority-routing-method.md).
+- Learn about [performance traffic routing method](traffic-manager-configure-performance-routing-method.md).
 - Dowiedz się więcej o [geograficznej metodzie routingu](traffic-manager-configure-geographic-routing-method.md).
-- Dowiedz się, jak [testować Traffic Manager ustawienia](traffic-manager-testing-settings.md).
+- Learn how to [test Traffic Manager settings](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-routing-method.png

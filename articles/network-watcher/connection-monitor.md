@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie komunikacji sieciowej — samouczek — Azure Portal | Microsoft Docs
-description: Dowiedz się, jak monitorować komunikację sieciową między dwiema maszynami wirtualnymi za pomocą możliwości monitorowania połączenia usługi Azure Network Watcher.
+title: Tutorial - Monitor network communication using the Azure portal
+description: In this tutorial, learn how to monitor network communication between two virtual machines with Azure Network Watcher's connection monitor capability.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233891"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419698"
 ---
-# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: Monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
 
 Pomyślna komunikacja między maszyną wirtualną i punktem końcowym, takim jak inna maszyna wirtualna, może być krytyczna dla działania organizacji. Czasami są wprowadzane zmiany konfiguracji, co może powodować przerwy w komunikacji. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -35,9 +35,9 @@ Pomyślna komunikacja między maszyną wirtualną i punktem końcowym, takim jak
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Tworzenie maszyn wirtualnych
 
@@ -51,12 +51,12 @@ Utwórz dwie maszyny wirtualne.
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|myVm1|
+    |Nazwa|myVm1|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Subskrypcja| Wybierz subskrypcję.|
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę **myResourceGroup**.|
-    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**|
+    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
 
 4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
 5. W obszarze **Ustawienia** wybierz pozycję **Rozszerzenia**. Wybierz polecenie **Dodaj rozszerzenie** i wybierz pozycję **Network Watcher Agent for Windows**, jak pokazano na poniższej ilustracji:
@@ -71,13 +71,13 @@ Utwórz dwie maszyny wirtualne.
 
 Wykonaj ponownie kroki z sekcji [Tworzenie pierwszej maszyny wirtualnej](#create-the-first-vm) z następującymi zmianami:
 
-|Krok|Ustawienie|Wartość|
+|Czynność|Ustawienie|Wartość|
 |---|---|---|
 | 1 | Wybierz wersję **Ubuntu Server** |                                                                         |
-| 3 | Name (Nazwa)                                  | myVm2                                                                   |
+| 3 | Nazwa                                  | myVm2                                                                   |
 | 3 | Typ uwierzytelniania                   | Wklej klucz publiczny SSH lub wybierz opcję **Hasło** i wprowadź hasło. |
 | 3 | Grupa zasobów                        | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.                 |
-| 6 | Rozszerzenia                            | **Agent usługi Network Watcher dla systemu Linux**                                             |
+| 6 | Rozszerzenia                            | **Network Watcher Agent for Linux**                                             |
 
 Wdrożenie maszyny wirtualnej potrwa kilka minut. Zanim przejdziesz do pozostałych kroków, poczekaj na zakończenie wdrażania maszyny wirtualnej.
 
@@ -93,10 +93,10 @@ Utwórz monitor połączeń na potrzeby monitorowania komunikacji na porcie TCP 
 
     | Ustawienie                  | Wartość               |
     | ---------                | ---------           |
-    | Name (Nazwa)                     | myVm1-myVm2(22)     |
-    | Source                   |                     |
+    | Nazwa                     | myVm1-myVm2(22)     |
+    | Źródło                   |                     |
     | Maszyna wirtualna          | myVm1               |
-    | Lokalizacja docelowa              |                     |
+    | Cel              |                     |
     | Wybierz maszynę wirtualną |                     |
     | Maszyna wirtualna          | myVm2               |
     | Port                     | 22                  |
@@ -149,10 +149,10 @@ Domyślnie platforma Azure zezwala na komunikację na wszystkich portach między
 
     | Ustawienie                 | Wartość          |
     | ---                     | ---            |
-    | Docelowe zakresy portów | 22             |
-    | action                  | Odrzuć           |
+    | Zakresy portów docelowych | 22             |
+    | Działanie                  | Odmów           |
     | Priorytet                | 100            |
-    | Name (Nazwa)                    | DenySshInbound |
+    | Nazwa                    | DenySshInbound |
 
 5. Ponieważ monitor połączeń sonduje co 60 sekund, zaczekaj kilka minut, po lewej stronie portalu wybierz kolejno pozycje **Network Watcher** i **Monitor połączeń**, a następnie ponownie wybierz monitor  **myVm1-myVm2(22)** . Teraz wyniki są inne, jak pokazano na poniższej ilustracji:
 
@@ -160,7 +160,7 @@ Domyślnie platforma Azure zezwala na komunikację na wszystkich portach między
 
     Widać, że w kolumnie Stan znajduje się ikona czerwonego wykrzyknika dla interfejsu sieciowego **myvm2529**.
 
-6. Aby dowiedzieć się, jaka jest przyczyna zmiany stanu, wybierz adres 10.0.0.5 widoczny na poprzedniej ilustracji. Monitor połączeń informuje, że przyczyna niepowodzenia komunikacji jest następująca: *Ruch zablokowany z powodu następującej reguły sieciowej grupy zabezpieczeń: UserRule_DenySshInbound*.
+6. Aby dowiedzieć się, jaka jest przyczyna zmiany stanu, wybierz adres 10.0.0.5 widoczny na poprzedniej ilustracji. Monitor połączeń informuje o następującej przyczynie komunikacji: *Zablokowano ruch zgodnie z następującą regułą grupy zabezpieczeń sieci: UserRule_DenySshInbound*.
 
     Dzięki monitorowi połączeń możesz dowiedzieć się, że ktoś zaimplementował regułę zabezpieczeń podobną do tej, którą utworzono w kroku 4, i że ona powoduje problem z komunikacją. Następnie możesz zmienić, przesłonić lub usunąć tę regułę, aby przywrócić komunikację między maszynami wirtualnymi.
 
@@ -172,7 +172,7 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób monitorowania połączenia między dwiema maszynami wirtualnymi. Reguła sieciowej grupy zabezpieczeń uniemożliwiała komunikację z maszyną wirtualną. Aby uzyskać informacje o wszystkich różnych odpowiedziach, które może zwrócić monitor połączeń, zobacz [typy odpowiedzi](network-watcher-connectivity-overview.md#response). Można również monitorować połączenie między maszyną wirtualną, w pełni kwalifikowaną nazwą domeny, identyfikatorem URI lub adresem IP.
 
