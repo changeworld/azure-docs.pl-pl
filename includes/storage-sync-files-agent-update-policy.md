@@ -14,8 +14,8 @@ ms.locfileid: "72391736"
 Agent Azure File Sync jest regularnie aktualizowany, aby można było dodać nowe funkcje i rozwiązać problemy. Zalecamy skonfigurowanie Microsoft Update do pobierania aktualizacji dla agenta Azure File Sync, gdy są one dostępne.
 
 #### <a name="major-vs-minor-agent-versions"></a>Wersje agenta głównego a pomocniczego
-* Wersje głównych agentów często zawierają nowe funkcje i mają rosnącą liczbę jako pierwszą część numeru wersji. Na przykład: \*2. \*. \* @ no__t-3
-* Wersje agentów pomocniczych są również nazywane "poprawkami" i są wydawane częściej niż wersje główne. Często zawierają poprawki błędów i mniejsze ulepszenia, ale nie nowe funkcje. Na przykład: \* @ no__t-1.3. \* @ no__t-3
+* Wersje głównych agentów często zawierają nowe funkcje i mają rosnącą liczbę jako pierwszą część numeru wersji. Na przykład: \*2.\*.\*\*
+* Wersje agentów pomocniczych są również nazywane "poprawkami" i są wydawane częściej niż wersje główne. Często zawierają poprawki błędów i mniejsze ulepszenia, ale nie nowe funkcje. Na przykład: \*\*. 3.\*\*
 
 #### <a name="upgrade-paths"></a>Ścieżki uaktualniania
 Istnieją cztery zatwierdzone i przetestowane sposoby instalowania aktualizacji agenta Azure File Sync. 
@@ -61,7 +61,7 @@ Azure File Sync to usługa w chmurze, która ciągle wprowadza nowe funkcje i ul
 - Wersje głównych agentów są obsługiwane przez co najmniej sześć miesięcy od dnia wydania wersji początkowej.
 - Firma Microsoft gwarantuje, że istnieje nakładanie się co najmniej przez trzy miesiące między wsparciem dla głównych wersji agentów. 
 - Ostrzeżenia są wydawane dla zarejestrowanych serwerów za pomocą wkrótce wygasłego agenta co najmniej trzy miesiące przed wygaśnięciem. Możesz sprawdzić, czy serwer zarejestrowany korzysta ze starszej wersji agenta w sekcji zarejestrowane serwery usługi synchronizacji magazynu.
-- Okres istnienia pomocniczej wersji agenta jest powiązany z skojarzoną wersją główną. Na przykład po wydaniu agenta w wersji 3,0 Agent wersji 2. \* spowoduje, że wszystkie wygaśnie.
+- Okres istnienia pomocniczej wersji agenta jest powiązany z skojarzoną wersją główną. Na przykład po udostępnieniu agenta w wersji 3,0 Agent wersji 2. wszystkie\* zostaną ustawione tak, aby wygaśnieli razem.
 
 > [!Note]
 > Zainstalowanie wersji agenta z ostrzeżeniem o wygaśnięciu spowoduje wyświetlenie ostrzeżenia, ale powiedzie się. Próba zainstalowania lub połączenia z wygasłą wersją agenta nie jest obsługiwana i zostanie zablokowana.

@@ -44,11 +44,11 @@ Podczas tworzenia projektu modelu tabelarycznego tworzysz role i Dodaj użytkown
   
     |Uprawnienie|Opis|  
     |----------------|-----------------|  
-    |**Dawaj**|Członkowie nie mogą modyfikować schematu modelu i nie mogą wykonywać zapytań dotyczących danych.|  
+    |**Brak**|Członkowie nie mogą modyfikować schematu modelu i nie mogą wykonywać zapytań dotyczących danych.|  
     |**Odczyt**|Członkowie mogą wykonywać zapytania dotyczące danych (na podstawie filtrów wierszy), ale nie mogą modyfikować schematu modelu.|  
     |**Odczyt i proces**|Członkowie mogą wykonywać zapytania dotyczące danych (na podstawie filtrów na poziomie wiersza) i uruchamiać proces i przetwarzać wszystkie operacje, ale nie mogą modyfikować schematu modelu.|  
     |**Podstawowych**|Członkowie mogą uruchamiać proces i przetwarzać wszystkie operacje. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania dotyczącego danych.|  
-    |**Administratora**|Członkowie mogą modyfikować schemat modelu i wykonywać zapytania dotyczące wszystkich danych.|   
+    |**Administrator**|Członkowie mogą modyfikować schemat modelu i wykonywać zapytania dotyczące wszystkich danych.|   
   
 5.  Jeśli tworzona rola ma uprawnienia Odczyt lub odczyt i przetwarzanie, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij kartę **filtry wierszy** , a następnie wybierz tabelę, a następnie kliknij pole **Filtr języka DAX** , a następnie wpisz formułę języka DAX.
   
@@ -65,7 +65,7 @@ Podczas tworzenia projektu modelu tabelarycznego tworzysz role i Dodaj użytkown
 
 Aby dodać role i użytkowników do wdrożonej bazy danych modelu, należy połączyć się z serwerem jako administrator serwera lub już w roli bazy danych z uprawnieniami administratora.
 
-1. W obiekcie Exporer kliknij prawym przyciskiem myszy pozycję **role** > **Nowa rola**.
+1. W obiekcie Exporer kliknij prawym przyciskiem myszy pozycję **role** > **nową rolę**.
 
 2. W obszarze **Utwórz rolę**wprowadź nazwę i opis roli.
 
@@ -139,7 +139,7 @@ Filtry wierszy dotyczą określonych wierszy i powiązanych wierszy. Gdy tabela 
   
 |Tabela|Wyrażenie języka DAX|  
 |-----------|--------------------|  
-|Region|= Region [Country] = "USA"|  
+|Region|=Region[Country]="USA"|  
 |ProductCategory|= ProductCategory [nazwa] = "rowery"|  
 |Transakcje|= Transakcje [Year] = 2016|  
   

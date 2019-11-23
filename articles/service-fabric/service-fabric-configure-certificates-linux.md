@@ -42,7 +42,7 @@ W przypadku niektórych usług można skonfigurować certyfikaty X. 509 w [Confi
 
 ### <a name="using-x509-securitycredentialstype"></a>Korzystanie z certyfikatu x509 SecurityCredentialsType
 
-Za pomocą zestawów SDK dla platformy .NET lub Java możesz określić opcję **x509** dla **SecurityCredentialsType**. Odnosi się to do typu `SecurityCredentials`[(java @no__t](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)-[2 java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) programu `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)@no__t[-6.](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)
+Za pomocą zestawów SDK dla platformy .NET lub Java możesz określić opcję **x509** dla **SecurityCredentialsType**. Odpowiada to `X509Credentials` ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) typu `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
 
 Odwołanie **x509** lokalizuje certyfikat w magazynie certyfikatów. Poniższy kod XML przedstawia parametry używane do określania lokalizacji certyfikatu:
 
@@ -52,7 +52,7 @@ Odwołanie **x509** lokalizuje certyfikat w magazynie certyfikatów. Poniższy k
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-W przypadku usługi działającej w systemie Linux **LocalMachine**/**My** wskazuje domyślną lokalizację dla certyfikatów, katalog */var/lib/sfcerts* . W przypadku systemu Linux wszystkie inne kombinacje **CertificateStoreLocation** i **CertificateStoreName** są niezdefiniowane. 
+W przypadku usługi działającej w systemie Linux **LocalMachine**/**Moje** punkty w domyślną lokalizację dla certyfikatów, katalog */var/lib/sfcerts* . W przypadku systemu Linux wszystkie inne kombinacje **CertificateStoreLocation** i **CertificateStoreName** są niezdefiniowane. 
 
 Zawsze należy określić **LocalMachine** dla parametru **CertificateStoreLocation** . Nie trzeba określać parametru **CertificateStoreName** , ponieważ jego wartość domyślna to "my". Za pomocą odwołania **x509** pliki certyfikatów muszą znajdować się w katalogu */var/lib/sfcerts* w węźle klastra.  
 
@@ -71,9 +71,9 @@ Poniższy kod XML przedstawia sekcję **TransportSettings** na podstawie tego st
 </Section>
 ```
 
-### <a name="using-x509_2-securitycredentialstype"></a>Korzystanie z X509_2 SecurityCredentialsType
+### <a name="using-x509_2-securitycredentialstype"></a>Używanie X509_2 SecurityCredentialsType
 
-Za pomocą zestawu SDK języka Java można określić **X509_2** dla **SecurityCredentialsType**. Odnosi się do `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) typu `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
+Za pomocą zestawu SDK języka Java można określić **X509_2** dla **SecurityCredentialsType**. Odnosi się to do typu `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
 
 Za pomocą odwołania **X509_2** należy określić parametr path, aby można było zlokalizować certyfikat w katalogu innym niż */var/lib/sfcerts*.  Poniższy kod XML przedstawia parametry używane do określania lokalizacji certyfikatu: 
 

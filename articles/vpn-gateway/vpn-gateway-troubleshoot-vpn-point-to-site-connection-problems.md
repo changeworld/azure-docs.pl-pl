@@ -47,10 +47,10 @@ Aby rozwiązać ten problem, wykonaj następujące kroki:
 
     | Certyfikat | Lokalizacja |
     | ------------- | ------------- |
-    | AzureClient. pfx  | Bieżący User\Personal\Certificates |
+    | AzureClient.pfx  | Bieżący User\Personal\Certificates |
     | AzureRoot. cer    | Główne urzędy certyfikacji Computer\Trusted lokalnego|
 
-3. Przejdź do pozycji C:\Users @ no__t-0UserName > \AppData\Roaming\Microsoft\Network\Connections\Cm @ no__t-1GUID >, ręcznie Zainstaluj certyfikat (plik *. cer) w sklepie użytkownika i komputera.
+3. Przejdź do pozycji C:\Users\<UserName > \AppData\Roaming\Microsoft\Network\Connections\Cm\<identyfikator GUID > ręcznie Zainstaluj certyfikat (plik *. cer) w sklepie użytkownika i komputera.
 
 Więcej informacji o sposobie instalowania certyfikatu klienta znajduje się w temacie [generowanie i eksportowanie certyfikatów dla połączeń punkt-lokacja](vpn-gateway-certificates-point-to-site.md).
 
@@ -77,11 +77,11 @@ Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2
 
 1. Zainstaluj aktualizację.
 
-   | Wersja systemu operacyjnego | Data | Numer/link |
+   | Wersja systemu operacyjnego | Date | Numer/link |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10 w wersji 1709 | 22 marca, 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows 10 w wersji 1709 | 22 marca 2018 r. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
 2. Ustaw wartość klucza rejestru. Utwórz lub Ustaw klucz REG_DWORD `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` w rejestrze na 1.
@@ -123,9 +123,9 @@ Podczas próby nawiązania połączenia z siecią wirtualną platformy Azure prz
 
     | Certyfikat | Lokalizacja |
     | ------------- | ------------- |
-    | AzureClient. pfx  | Bieżący User\Personal\Certificates |
-    | Azuregateway-*GUID*. cloudapp.NET  | Bieżące główne urzędy certyfikacji User\Trusted|
-    | AzureGateway-*GUID*. cloudapp.NET, AzureRoot. cer    | Główne urzędy certyfikacji Computer\Trusted lokalnego|
+    | AzureClient.pfx  | Bieżący User\Personal\Certificates |
+    | Azuregateway-*GUID*.cloudapp.net  | Bieżące główne urzędy certyfikacji User\Trusted|
+    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Główne urzędy certyfikacji Computer\Trusted lokalnego|
 
 2. Jeśli certyfikaty znajdują się już w tej lokalizacji, spróbuj je usunąć i zainstalować ponownie. Certyfikat **azuregateway-*GUID*. cloudapp.NET** znajduje się w pakiecie konfiguracji klienta sieci VPN pobranym z Azure Portal. Do wyodrębnienia plików z pakietu można użyć archiwów plików.
 
@@ -174,7 +174,7 @@ Wyodrębnij pakiet konfiguracji klienta sieci VPN i Znajdź plik. cer. Aby zains
 1. Otwórz program MMC. exe.
 2. Dodaj przystawkę **Certyfikaty** .
 3. Wybierz konto **komputera** dla komputera lokalnego.
-4. Kliknij prawym przyciskiem myszy węzeł **Zaufane główne** urzędy certyfikacji. Kliknij kolejno pozycje **wszystkie-zadanie** > **Import**i przejdź do pliku CER wyodrębnionego z pakietu konfiguracji klienta sieci VPN.
+4. Kliknij prawym przyciskiem myszy węzeł **Zaufane główne** urzędy certyfikacji. Kliknij kolejno pozycje **wszystkie — zadanie** > **Importuj**i przejdź do pliku CER wyodrębnionego z pakietu konfiguracji klienta sieci VPN.
 5. Uruchom ponownie komputer. 
 6. Spróbuj zainstalować klienta sieci VPN.
 
@@ -184,7 +184,7 @@ Wyodrębnij pakiet konfiguracji klienta sieci VPN i Znajdź plik. cer. Aby zains
 
 Podczas próby zapisania zmian dla bramy sieci VPN w Azure Portal zostanie wyświetlony następujący komunikat o błędzie:
 
-**Nie można zapisać bramy sieci wirtualnej &lt;*bramy nazwa*&gt;. Dane dla certyfikatu &lt;*Identyfikator certyfikatu*&gt; jest nieprawidłowy.**
+**Nie można zapisać bramy sieci wirtualnej &lt;&gt;*nazwy bramy* . Dane certyfikatu &lt;*identyfikatora certyfikatu*&gt; są nieprawidłowe.**
 
 ### <a name="cause"></a>Przyczyna 
 
@@ -219,7 +219,7 @@ Upewnij się, że dane w certyfikacie nie zawierają nieprawidłowych znaków, t
 
 Podczas próby zapisania zmian dla bramy sieci VPN w Azure Portal zostanie wyświetlony następujący komunikat o błędzie: 
 
-**Nie można zapisać bramy sieci wirtualnej &lt;*bramy nazwa*&gt;. Nazwa zasobu &lt;*Nazwa certyfikatu, którą próbujesz przekazać*&gt; jest nieprawidłowa**.
+**Nie można zapisać bramy sieci wirtualnej &lt;&gt;*nazwy bramy* . Nazwa zasobu &lt;*Nazwa certyfikatu, którą próbujesz przekazać*&gt; jest nieprawidłowa**.
 
 ### <a name="cause"></a>Przyczyna
 
@@ -278,7 +278,7 @@ Należy usunąć połączenie sieci VPN punkt-lokacja, a następnie ponownie zai
 
 ### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, usuń stare pliki konfiguracji klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections @ no__t-1VirtualNetworkId >** , a następnie ponownie uruchom Instalatora klienta sieci VPN.
+Aby rozwiązać ten problem, usuń stare pliki konfiguracji klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >** , a następnie ponownie uruchom Instalatora klienta sieci VPN.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Klient sieci VPN typu punkt-lokacja nie może rozpoznać nazwy FQDN zasobów w domenie lokalnej
 
@@ -307,7 +307,7 @@ Aby rozwiązać ten problem, [Zresetuj usługę Azure VPN Gateway](vpn-gateway-r
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Błąd: "funkcja odwoływania nie mogła sprawdzić odwołania, ponieważ serwer odwołań był w trybie offline. (Błąd 0x80092013) "
 
 ### <a name="causes"></a>Przyczyny
-Ten komunikat o błędzie występuje, gdy klient nie może uzyskać dostępu http://crl3.digicert.com/ssca-sha2-g1.crl i http://crl4.digicert.com/ssca-sha2-g1.crl.  Sprawdzanie odwołania wymaga dostępu do tych dwóch lokacji.  Ten problem zwykle występuje na kliencie, na którym skonfigurowano serwer proxy. W niektórych środowiskach, jeśli żądania nie przechodzą przez serwer proxy, nastąpi odmowa w zaporze brzegowej.
+Ten komunikat o błędzie występuje, gdy klient nie może uzyskać dostępu do http://crl3.digicert.com/ssca-sha2-g1.crl i http://crl4.digicert.com/ssca-sha2-g1.crl.  Sprawdzanie odwołania wymaga dostępu do tych dwóch lokacji.  Ten problem zwykle występuje na kliencie, na którym skonfigurowano serwer proxy. W niektórych środowiskach, jeśli żądania nie przechodzą przez serwer proxy, nastąpi odmowa w zaporze brzegowej.
 
 ### <a name="solution"></a>Rozwiązanie
 
@@ -363,7 +363,7 @@ Ten problem może być spowodowany przez poprzednie instalacje klienta sieci VPN
 
 ### <a name="solution"></a>Rozwiązanie
 
-Usuń stare pliki konfiguracji klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections @ no__t-1VirtualNetworkId >** i ponownie uruchom Instalatora klienta sieci VPN. 
+Usuń stare pliki konfiguracji klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >** i ponownie uruchom Instalatora klienta sieci VPN. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>Klient sieci VPN jest w stanie hibernacji lub uśpienia po pewnym czasie
 

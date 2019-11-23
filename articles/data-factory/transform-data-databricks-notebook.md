@@ -57,7 +57,7 @@ Poniżej znajduje się przykładowa definicja JSON działania notesu datakostky:
 
 W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
-|Właściwość|Opis|Wymagany|
+|Właściwość|Opis|Wymagane|
 |---|---|---|
 |name|Nazwa działania w potoku.|Tak|
 |description|Tekst opisujący działanie działania.|Nie|

@@ -57,14 +57,14 @@ W tym dokumencie przedstawiono zagadnienia dotyczące uruchamiania systemów DBM
 ## <a name="definitions"></a>Definicje
 W całym dokumencie są używane następujące warunki:
 
-* **IaaS**: Infrastruktura jako usługa.
-* **PaaS**: Platforma jako usługa.
-* **SaaS**: Oprogramowanie jako usługa.
-* **Składnik SAP**: Pojedyncza aplikacja SAP, taka jak ERP Central Component (ECC), Business Warehouse (BW), Menedżer rozwiązań lub Enterprise Portal (EP). Składniki SAP mogą opierać się na tradycyjnych technologiach ABAP lub Java lub w aplikacjach opartych na innej NetWeaver, takich jak obiekty biznesowe.
-* **Środowisko SAP**: Jeden lub więcej składników SAP logicznie pogrupowanych w celu wykonywania funkcji biznesowej, takich jak programowanie, gwarancja jakości, szkolenia, odzyskiwanie po awarii lub produkcja.
-* **SAP pozioma**: Termin ten odnosi się do całego zasobu SAP w poziomie IT klienta. System SAP zawiera wszystkie środowiska produkcyjne i nieprodukcyjne.
-* **System SAP**: Kombinacja warstwy DBMS i warstwy aplikacji programu, na przykład systemu programistycznego SAP ERP, systemu testowego programu SAP Business Warehouse lub systemu produkcyjnego SAP CRM. W przypadku wdrożeń platformy Azure dzielenie tych dwóch warstw między środowiskiem lokalnym i platformą Azure nie jest obsługiwane. W efekcie system SAP został wdrożony lokalnie lub wdrożony na platformie Azure. Różne systemy oprogramowania SAP można wdrożyć na platformie Azure lub lokalnie. Można na przykład wdrożyć systemy deweloperskie i testowe oprogramowania SAP CRM na platformie Azure, ale wdrożyć system produkcyjny SAP CRM lokalnie.
-* **Wiele**lokalizacji: Opisuje scenariusz, w którym maszyny wirtualne są wdrażane w ramach subskrypcji platformy Azure, która ma łączność między lokacjami, w wielu lokacjach lub na platformie Azure ExpressRoute między lokalnymi centrami danych i platformą Azure. W typowej dokumentacji platformy Azure te rodzaje wdrożeń są również opisane jako scenariusze obejmujące wiele lokalizacji. 
+* **IaaS**: infrastruktura jako usługa.
+* **PaaS**: platforma jako usługa.
+* **SaaS**: oprogramowanie jako usługa.
+* **Składnik SAP**: indywidualna aplikacja SAP, taka jak ERP Central Component (ECC), Business Warehouse (BW), Menedżer rozwiązań lub Enterprise Portal (EP). Składniki SAP mogą opierać się na tradycyjnych technologiach ABAP lub Java lub w aplikacjach opartych na innej NetWeaver, takich jak obiekty biznesowe.
+* **Środowisko SAP**: co najmniej jeden składnik SAP logicznie zgrupowany do wykonywania funkcji biznesowej, takich jak programowanie, gwarancja jakości, szkolenia, odzyskiwanie po awarii lub produkcja.
+* **SAP krajobraz**: ten termin odnosi się do całego zasobu SAP w poziomie klienta IT. System SAP zawiera wszystkie środowiska produkcyjne i nieprodukcyjne.
+* **System SAP**: kombinacja warstwy DBMS i warstwy aplikacji programu, na przykład systemu PROGRAMISTYCZNEGO SAP ERP, systemu testowego programu SAP Business Warehouse lub systemu produkcyjnego SAP CRM. W przypadku wdrożeń platformy Azure dzielenie tych dwóch warstw między środowiskiem lokalnym i platformą Azure nie jest obsługiwane. W efekcie system SAP został wdrożony lokalnie lub wdrożony na platformie Azure. Różne systemy oprogramowania SAP można wdrożyć na platformie Azure lub lokalnie. Można na przykład wdrożyć systemy deweloperskie i testowe oprogramowania SAP CRM na platformie Azure, ale wdrożyć system produkcyjny SAP CRM lokalnie.
+* **Wiele**lokalizacji: opisuje scenariusz, w którym maszyny wirtualne są wdrażane w ramach subskrypcji platformy Azure, która ma łączność między lokacjami, w wielu lokacjach lub na platformie Azure ExpressRoute między lokalnymi centrami danych i platformą Azure. W typowej dokumentacji platformy Azure te rodzaje wdrożeń są również opisane jako scenariusze obejmujące wiele lokalizacji. 
 
     Przyczyną połączenia jest rozszerzonie domen lokalnych, lokalnych Active Directory i lokalnych nazw DNS na platformę Azure. Lokalne poziomy są rozszerzane do zasobów platformy Azure w ramach subskrypcji. Dzięki temu rozszerzeniu maszyny wirtualne mogą być częścią domeny lokalnej. Użytkownicy domeny lokalnej mogą uzyskiwać dostęp do serwerów i uruchamiać usługi na tych maszynach wirtualnych, takich jak usługi DBMS. Możliwa jest komunikacja i rozpoznawanie nazw między maszynami wirtualnymi wdrożonymi lokalnie i maszynami wirtualnymi wdrożonymi na platformie Azure. Ten scenariusz jest najpopularniejszym scenariuszem używanym do wdrażania zasobów SAP na platformie Azure. Aby uzyskać więcej informacji, zobacz [Planowanie i projektowanie dla bramy sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
@@ -78,27 +78,27 @@ W całym dokumencie są używane następujące warunki:
 Niektóre dokumenty firmy Microsoft opisują scenariusze obejmujące wiele lokalizacji inaczej, szczególnie w przypadku konfiguracji o wysokiej dostępności w systemie DBMS. W przypadku dokumentów związanych z systemem SAP scenariusz obejmujący wiele lokalizacji jest zachodzący do połączenia typu lokacja-lokacja lub prywatnego [ExpressRoute](https://azure.microsoft.com/services/expressroute/) oraz oprogramowania SAP, które jest dystrybuowane między środowiskiem lokalnym i platformą Azure.
 
 ## <a name="resources"></a>Zasoby
-Dostępne są inne artykuły dotyczące obciążeń SAP na platformie Azure. Zacznij od [obciążenia SAP na platformie Azure: Rozpocznij pracę](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) , a następnie wybierz interesujący Cię obszar.
+Dostępne są inne artykuły dotyczące obciążeń SAP na platformie Azure. Zacznij od [obciążenia SAP na platformie Azure: Zacznij pracę](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) , a następnie wybierz interesujący Cię obszar.
 
 Poniższe uwagi dotyczące oprogramowania SAP są powiązane z oprogramowaniem SAP na platformie Azure w odniesieniu do obszaru objętego tym dokumentem.
 
 | Numer notatki | Tytuł |
 | --- | --- |
-| [1928533] |Aplikacje SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
-| [2015553] |System SAP na Microsoft Azure: Wymagania wstępne dotyczące obsługi |
+| [1928533] |Aplikacje SAP na platformie Azure: obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
+| [2015553] |SAP on Microsoft Azure: wymagania wstępne dotyczące pomocy technicznej |
 | [1999351] |Rozwiązywanie problemów z ulepszonym monitorowaniem platformy Azure dla oprogramowania SAP |
 | [2178632] |Metryki monitorowania kluczy dla SAP na Microsoft Azure |
-| [1409604] |Wirtualizacja w systemie Windows: Ulepszone monitorowanie |
-| [2191498] |System SAP w systemie Linux z platformą Azure: Ulepszone monitorowanie |
-| [2039619] |Aplikacje SAP na Microsoft Azure przy użyciu bazy danych Oracle: Obsługiwane produkty i wersje |
-| [2233094] |DB6: Aplikacje SAP na platformie Azure korzystające z programu IBM DB2 dla systemów Linux, UNIX i Windows: Dodatkowe informacje |
-| [2243692] |Maszyna wirtualna z systemem Linux na Microsoft Azure (IaaS): Problemy z licencją SAP |
-| [1984787] |SUSE LINUX Enterprise Server 12: Uwagi dotyczące instalacji |
-| [2002167] |Red Hat Enterprise Linux 7.x: Instalacja i uaktualnianie |
+| [1409604] |Wirtualizacja w systemie Windows: ulepszone monitorowanie |
+| [2191498] |SAP w systemie Linux z platformą Azure: ulepszone monitorowanie |
+| [2039619] |Aplikacje SAP na Microsoft Azure przy użyciu bazy danych Oracle: obsługiwane produkty i wersje |
+| [2233094] |DB6: Aplikacje SAP na platformie Azure korzystające z programu IBM DB2 dla systemów Linux, UNIX i Windows: informacje dodatkowe |
+| [2243692] |Maszyna wirtualna z systemem Linux na Microsoft Azure (IaaS): problemy z licencją SAP |
+| [1984787] |SUSE LINUX Enterprise Server 12: uwagi dotyczące instalacji |
+| [2002167] |Red Hat Enterprise Linux 7. x: Instalowanie i uaktualnianie |
 | [2069760] |Oracle Linux 7. x instalacja i uaktualnienie SAP |
 | [1597355] |Zalecenie wymiany miejsca dla systemu Linux |
-| [2171857] |12c Oracle Database: Obsługa systemu plików w systemie Linux |
-| [1114181] |11g Oracle Database: Obsługa systemu plików w systemie Linux |
+| [2171857] |Oracle Database 12c: obsługa systemu plików w systemie Linux |
+| [1114181] |Oracle Database 11g: obsługa systemu plików w systemie Linux |
 
 
 Aby uzyskać więcej informacji na temat wszystkich uwag SAP dla systemu Linux, zobacz witrynę [typu wiki społeczności SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes).
@@ -301,11 +301,11 @@ Te najlepsze rozwiązania są wynikiem setek wdrożeń klientów:
 >
 
 > [!IMPORTANT]
-> Innym nieobsługiwanym projektem jest podział warstwy aplikacji SAP i warstwy DBMS na różne sieci wirtualne platformy Azure, które nie są połączone za pomocą [komunikacji równorzędnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) . Zalecamy rozdzielenie warstwy aplikacji SAP i systemu DBMS przy użyciu podsieci w sieci wirtualnej platformy Azure, a nie za pomocą różnych sieci wirtualnych platformy Azure. 
+> Innym *nieobsługiwanym* projektem jest podział warstwy aplikacji SAP i warstwy DBMS na różne sieci wirtualne platformy Azure, które nie są połączone za pomocą [komunikacji równorzędnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) . Zalecamy rozdzielenie warstwy aplikacji SAP i systemu DBMS przy użyciu podsieci w sieci wirtualnej platformy Azure, a nie za pomocą różnych sieci wirtualnych platformy Azure. 
 >
 > Jeśli zdecydujesz się nie przestrzegać rekomendacji, a zamiast tego rozdzielić dwie warstwy na różne sieci wirtualne, muszą być połączone za pomocą [komunikacji równorzędnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). 
 >
-> Należy pamiętać, że ruch sieciowy między [](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) dwiema równorzędnymi sieciami wirtualnymi platformy Azure podlega kosztom transferu. Duże ilości danych składające się z wielu terabajtów są wymieniane między warstwą aplikacji SAP a warstwą DBMS. W przypadku podzielenia między dwiema równorzędnymi sieciami wirtualnymi platformy Azure można zbierać istotne koszty.
+> Należy pamiętać, że ruch sieciowy między dwiema [równorzędnymi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) sieciami wirtualnymi platformy Azure podlega kosztom transferu. Duże ilości danych składające się z wielu terabajtów są wymieniane między warstwą aplikacji SAP a warstwą DBMS. W przypadku podzielenia między dwiema równorzędnymi sieciami wirtualnymi platformy Azure można zbierać istotne koszty.
 
 Użyj dwóch maszyn wirtualnych do wdrożenia produkcyjnego w systemie DBMS w ramach zestawu dostępności platformy Azure. Należy również użyć oddzielnego routingu dla warstwy aplikacji SAP oraz ruchu związanego z zarządzaniem i eksploatacją do dwóch maszyn wirtualnych systemu DBMS. Zobacz poniższy obraz:
 

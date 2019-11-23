@@ -29,7 +29,7 @@ Po kliknięciu przycisku **Wybierz zasób** nie widzisz żądanego zasobu w okni
 
 1. Upewnij się, że wybrano właściwą grupę zasobów.
     > [!WARNING]
-    > W celu uzyskania najlepszej wydajności podczas pierwszego otwarcia Eksploratora metryk lista rozwijana **Grupa zasobów** nie ma wstępnie wybranych grup zasobów. Aby wyświetlić jakiekolwiek zasoby, musisz wybrać co najmniej jedną grupę.
+    > Aby zapewnić najlepszą wydajność, przy pierwszym otwarciu Eksploratora metryk na liście rozwijanej **Grupa zasobów** nie ma żadnych wstępnie wybranych grup zasobów. Aby wyświetlić jakiekolwiek zasoby, musisz wybrać co najmniej jedną grupę.
 
 ## <a name="chart-shows-no-data"></a>Wykres nie zawiera żadnych danych
 
@@ -80,22 +80,22 @@ Ten problem może wystąpić, gdy pulpit nawigacyjny został utworzony z metryk�
 ## <a name="chart-shows-dashed-line"></a>Wykres pokazuje linię kreskowaną
 
 Wykresy metryk platformy Azure używają stylu linii kreskowanej, aby wskazać, że brakuje wartości ("wartość null") między dwoma znanymi punktami danych ziarna. Na przykład jeśli w selektorze czasowym wybrano poziom szczegółowości "1 minutę", ale Metryka została zgłoszona o 07:26, 07:27, 07:29 i 07:30 (Zwróć uwagę na minutę między sekundą i trzecimi punktami danych), linia przerywana nawiąże połączenie z 07:27 i 07:29, a linia ciągła nawiąże połączenie wszystkie inne punkty danych. Linia kreskowana zmniejsza się do zera, gdy Metryka używa agregacji **Count** i **sum** . Dla agregacji **średniej**, **minimalnej** lub **maksymalnej** , linia kreskowana łączy dwa najbliższe znane punkty danych. Ponadto gdy brakuje danych z prawej lub lewej krawędzi wykresu, linia przerywana jest rozwijana w kierunku brakującego punktu danych.
-  ![metric Image @ no__t-1
+  obraz metryki ![](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
 
-**Rozwiązanie:** Takie zachowanie jest zaprojektowane. Jest to przydatne do identyfikowania brakujących punktów danych. Wykres liniowy jest najlepszym wyborem dla wizualizacji trendów metryk o wysokiej gęstości, ale trudno jest interpretować metryki z wartościami rozrzedzonymi, szczególnie gdy współdzielne wartości z ziarnem czasu są ważne. Linia przerywana ułatwia czytanie tych wykresów, ale jeśli wykres jest nadal niejasny, rozważ wyświetlanie metryk za pomocą innego typu wykresu. Na przykład wykres wykresu słupkowego dla tej samej metryki wyraźnie pokazuje każdy ziarna, tylko wizualizuje kropkę, gdy istnieje wartość i pomijają punkt danych całkowicie w przypadku braku wartości: ![metric Image @ no__t-1
+**Rozwiązanie:** Takie zachowanie jest zaprojektowane. Jest to przydatne do identyfikowania brakujących punktów danych. Wykres liniowy jest najlepszym wyborem dla wizualizacji trendów metryk o wysokiej gęstości, ale trudno jest interpretować metryki z wartościami rozrzedzonymi, szczególnie gdy współdzielne wartości z ziarnem czasu są ważne. Linia przerywana ułatwia czytanie tych wykresów, ale jeśli wykres jest nadal niejasny, rozważ wyświetlanie metryk za pomocą innego typu wykresu. Na przykład wykres wykresu słupkowego dla tej samej metryki wyraźnie pokazuje każdy ziarna, tylko wizualizuje kropkę, gdy istnieje wartość i pomijają punkt danych całkowicie w przypadku braku wartości: ![](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png) obrazu metryki
 
    > [!NOTE]
    > Jeśli wciąż preferujesz wykres liniowy dla metryk, przesunięcie kursora myszy nad wykresem może pomóc ocenić stopień szczegółowości czasu przez wyróżnienie punktu danych w położeniu wskaźnika myszy.
 
 ## <a name="chart-shows-unexpected-drop-in-values"></a>Wykres zawiera nieoczekiwane porzucenie wartości
 
-W wielu przypadkach widoczny spadek wartości metryk jest spowodowany niezrozumieniem danych wyświetlanych na wykresie. Spadek sum lub liczb może wprowadzać w błąd, gdy na wykresie są wyświetlane ostatnie minuty, ponieważ ostatnie punkty danych metryk nie zostały jeszcze odebrane lub przetworzone przez platformę Azure. W zależności od usługi opóźnienie przetwarzania metryk może obejmować zakres kilku minut. W przypadku wykresów pokazujących ostatni zakres czasu z dokładnością od 1 do 5 minut, spadek wartości w ciągu ostatnich kilku minut jest bardziej zauważalny: ![metric Image @ no__t-1
+W wielu przypadkach widoczny spadek wartości metryk jest spowodowany niezrozumieniem danych wyświetlanych na wykresie. Spadek sum lub liczb może wprowadzać w błąd, gdy na wykresie są wyświetlane ostatnie minuty, ponieważ ostatnie punkty danych metryk nie zostały jeszcze odebrane lub przetworzone przez platformę Azure. W zależności od usługi opóźnienie przetwarzania metryk może obejmować zakres kilku minut. W przypadku wykresów pokazujących ostatni zakres czasu z dokładnością od 1 do 5 minut, spadek wartości w ciągu ostatnich kilku minut jest bardziej zauważalny: ![](./media/metrics-troubleshoot/drop-in-values.png) obrazu metryki
 
 **Rozwiązanie:** Takie zachowanie jest zaprojektowane. Uważamy, że wyświetlanie danych natychmiast po ich otrzymaniu jest korzystne nawet wtedy, gdy dane są *częściowe* lub *niekompletne*. Pozwala to szybciej wyciągnąć ważne wnioski i od razu przyjrzeć się sprawie. Na przykład w przypadku metryki, która pokazuje liczbę błędów, wyświetlenie częściowej wartości X informuje o tym, że w danej minucie wystąpiło co najmniej X błędów. Dzięki temu można od razu przystąpić do badania problemu, zamiast czekać na wyświetlenie dokładnej liczby błędów, które wystąpiły w ciągu tej minuty, co może nie być istotne. Wykres zostanie zaktualizowany po otrzymaniu całego zestawu danych, ale w tym czasie mogą być również wyświetlane nowe, niekompletne punkty danych z kolejnych minut.
 
 ## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>Nie można wybrać przestrzeni nazw i metryk systemu operacyjnego gościa
 
-Maszyny wirtualne i zestawy skalowania maszyn wirtualnych mają dwie kategorie metryk: metryki **hostów maszyn wirtualnych** , które są zbierane przez środowisko hostingu platformy Azure i METRYKI **systemu operacyjnego gościa (klasyczne)** , które są zbierane przez [agenta monitorowania ](agents-overview.md)uruchomione na maszynach wirtualnych. Aby zainstalować agenta monitorowania, należy włączyć [rozszerzenie Diagnostyki Azure](diagnostics-extension-overview.md).
+Maszyny wirtualne i zestawy skalowania maszyn wirtualnych mają dwie kategorie metryk: metryki **hostów maszyn wirtualnych** , które są zbierane przez środowisko hostingu platformy Azure i METRYKI **systemu operacyjnego gościa (klasyczne)** , które są zbierane przez [agenta monitorowania](agents-overview.md) uruchomionego na maszynach wirtualnych. Aby zainstalować agenta monitorowania, należy włączyć [rozszerzenie Diagnostyki Azure](diagnostics-extension-overview.md).
 
 Domyślnie metryki systemu operacyjnego gościa są przechowywane na koncie usługi Azure Storage, które wybrano na karcie **Ustawienia diagnostyczne** zasobu. Jeśli metryki systemu operacyjnego gościa nie są zbierane lub Eksplorator metryk nie można uzyskać do nich dostępu, widoczna jest tylko przestrzeń nazw metryki **hosta maszyny wirtualnej**:
 
@@ -109,7 +109,7 @@ Domyślnie metryki systemu operacyjnego gościa są przechowywane na koncie usł
 
 1. Upewnij się, że dostawca zasobów **Microsoft. Insights** został [zarejestrowany dla Twojej subskrypcji](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
 
-1. Sprawdź, czy konto magazynu nie jest chronione przez zaporę. Azure Portal potrzebuje dostępu do konta magazynu w celu pobrania danych metryk i wykreślania wykresów.
+1. Sprawdź, czy konto magazynu nie jest chronione przez zaporę. Witryna Azure Portal potrzebuje dostępu do konta magazynu na potrzeby pobierania danych metryk i rysowania wykresów.
 
 1. Użyj [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/), aby zweryfikować, że metryki przepływają do konta usługi Storage. Jeśli metryki nie są zbierane, postępuj zgodnie z [przewodnikiem rozwiązywania problemów z rozszerzeniem Diagnostyki Azure](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 

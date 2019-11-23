@@ -77,7 +77,7 @@ Obsługa języków \* jest w wersji zapoznawczej
 
 \** również dostępna w [Analiza tonacji v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) i/lub [nazwane wersje zapoznawcze programu rozpoznawania jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) w wersji 3.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Strona dokumentacji Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
 [Strona produktu usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

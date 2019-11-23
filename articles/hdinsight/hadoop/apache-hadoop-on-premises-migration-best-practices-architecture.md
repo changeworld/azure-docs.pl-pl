@@ -32,7 +32,7 @@ Klastry usługi Azure HDInsight są przeznaczone do określonego typu obliczeń 
 |IoT/Streaming|Kafka, burza, Spark|
 |NoSQL transakcyjne przetwarzanie|HBase|
 |Interakcyjne i szybsze zapytania z buforowaniem w pamięci|Zapytanie interakcyjne|
-|Nauka o danych|Usługi ML, Spark|
+|Do nauki o danych|Usługi ML, Spark|
 
 W poniższej tabeli przedstawiono różne metody, których można użyć do utworzenia klastra usługi HDInsight.
 

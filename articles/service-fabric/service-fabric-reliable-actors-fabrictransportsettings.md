@@ -60,7 +60,7 @@ Aby zmodyfikować konfigurację domyślną, można użyć [pakietu konfiguracyjn
 
 Dodaj sekcję TransportSettings w pliku Settings. XML.
 
-Domyślnie kod aktora wyszukuje Sekcjęname jako "&lt;ActorName @ no__t-1TransportSettings". Jeśli ta wartość nie zostanie znaleziona, sprawdza obecność Sekcjiname jako "TransportSettings".
+Domyślnie kod aktora wyszukuje Sekcjęname jako "&lt;Aktorname&gt;TransportSettings". Jeśli ta wartość nie zostanie znaleziona, sprawdza obecność Sekcjiname jako "TransportSettings".
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -79,7 +79,7 @@ Domyślnie kod aktora wyszukuje Sekcjęname jako "&lt;ActorName @ no__t-1Transpo
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Konfigurowanie ustawień FabricTransport dla zestawu klienta aktora
 
-Jeśli klient nie działa w ramach usługi, można utworzyć plik "&lt;Client exe Name&gt;.settings.xml" w tej samej lokalizacji, w której znajduje się plik Client. exe. Następnie Dodaj sekcję TransportSettings w tym pliku. Sekcjaname powinna mieć wartość "TransportSettings".
+Jeśli klient nie działa w ramach usługi, można utworzyć plik "&lt;Client exe Name&gt;. Settings. xml" w tej samej lokalizacji, w której znajduje się plik Client. exe. Następnie Dodaj sekcję TransportSettings w tym pliku. Sekcjaname powinna mieć wartość "TransportSettings".
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

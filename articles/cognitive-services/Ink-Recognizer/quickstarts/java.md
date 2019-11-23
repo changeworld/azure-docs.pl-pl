@@ -21,7 +21,7 @@ ms.locfileid: "71996839"
 
 Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć korzystanie z interfejsu API rozpoznawania atramentu na potrzeby pociągnięć atramentów cyfrowych Ta aplikacja Java wysyła żądanie interfejsu API zawierające dane pociągnięcia odręcznego w formacie JSON i pobiera odpowiedź.
 
-Gdy aplikacja jest zapisywana w języku Java, interfejs API jest usługą sieci Web RESTful zgodną z większością języków programowania.
+Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 Zazwyczaj można wywołać interfejs API z aplikacji cyfrowego odręcznego. Ten przewodnik Szybki Start wysyła dane pociągnięć odręcznych dla poniższego przykładu napisanego ręcznie z pliku JSON.
 
@@ -31,7 +31,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Zestaw Java @ no__t-1 Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszy.
+- [Zestaw Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszy.
 
 - Zaimportuj te biblioteki z repozytorium Maven
     - [Kod JSON w pakiecie java](https://mvnrepository.com/artifact/org.json/json)
@@ -43,9 +43,9 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
 
 [!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
-## <a name="create-a-new-application"></a>Utwórz nową aplikację
+## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
 
-1. Utwórz nowy projekt Java w ulubionym środowisku IDE lub edytorze, a następnie zaimportuj poniższe biblioteki.
+1. Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i zaimportuj poniższe biblioteki.
     
     [!code-java[import statements](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=imports)]
 
@@ -55,17 +55,17 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
 
 ## <a name="create-a-function-to-send-requests"></a>Utwórz funkcję do wysyłania żądań
 
-1. Utwórz nową funkcję o nazwie `sendRequest()`, która przyjmuje zmienne utworzone powyżej. Następnie wykonaj następujące czynności.
+1. Utwórz nową funkcję o nazwie `sendRequest()`, która przyjmuje zmienne utworzone powyżej. Następnie wykonaj poniższe czynności.
 
 2. Utwórz obiekt `CloseableHttpClient`, który może wysyłać żądania do interfejsu API. Wyślij żądanie do obiektu żądania `HttpPut` przez połączenie punktu końcowego i adresu URL aparatu rozpoznawania atramentu.
 
-3. Użyj funkcji `setHeader()` żądania, aby ustawić nagłówek `Content-Type` na `application/json`, a następnie Dodaj swój klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
+3. Użyj funkcji `setHeader()` żądania, aby ustawić nagłówek `Content-Type` do `application/json`, a następnie Dodaj swój klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
 
-4. Użyj funkcji `setEntity()` żądania, aby przesłać dane do wysłania.   
+4. Użyj `setEntity()` żądania do wysyłanych danych.   
 
 5. Wyślij żądanie przy użyciu funkcji `execute()` klienta i Zapisz ją w obiekcie `CloseableHttpResponse`. 
 
-6. Utwórz obiekt `HttpEntity` do przechowywania zawartości odpowiedzi. Pobierz zawartość z `getEntity()`. Jeśli odpowiedź nie jest pusta, zwróć ją.
+6. Utwórz obiekt `HttpEntity` do przechowywania zawartości odpowiedzi. Pobierz zawartość za pomocą `getEntity()`. Jeśli odpowiedź nie jest pusta, zwróć ją.
     
     [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
@@ -95,8 +95,8 @@ Uruchom aplikację. Pomyślna odpowiedź jest zwracana w formacie JSON. Odpowied
 
 
 Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w aplikacji do cyfrowego odkróla, zapoznaj się z następującymi przykładowymi aplikacjami w witrynie GitHub:
-* [C#i platforma uniwersalna systemu Windows (platformy UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Aplikacja internetowa przeglądarki JavaScript](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Aplikacje mobilne Java i Android](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Aplikacja mobilna SWIFT i iOS](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Aplikacja mobilna języka Java i systemu Android](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Aplikacja mobilna języka Swift i systemu iOS](https://go.microsoft.com/fwlink/?linkid=2089805)

@@ -40,21 +40,21 @@ Interfejs API Twilio jest interfejsem API RESTful, który zapewnia funkcje głos
 Kluczowe aspekty interfejsu API Twilio są czasownikami Twilio i Twilio Markup Language (TwiML).
 
 ### <a id="Verbs"></a>Zlecenia Twilio
-Interfejs API korzysta z czasowników Twilio; na przykład czasownik **&lt;Say @ no__t-2** instruuje Twilio, aby audibly dostarczą komunikat w wywołaniu.
+Interfejs API korzysta z czasowników Twilio; na przykład, **&lt;powiedzieć&gt;** czasownik instruuje Twilio, aby audibly Dostarcz komunikat w wywołaniu.
 
 Poniżej znajduje się lista zleceń Twilio. Zapoznaj się z innymi zleceniami i możliwościami za pośrednictwem [dokumentacji języka Twilio Markup][twiml]Language.
 
-* **&lt;Dial @ no__t-2**: łączy obiekt wywołujący z innym numerem telefonu.
-* **&lt;Gather @ no__t-2**: zbiera cyfry numeryczne wprowadzone na klawiaturze telefonu.
-* **&lt;Hangup @ no__t-2**: przerywa wywołanie.
-* **&lt;Pause @ no__t-2**: czeka w trybie cichym przez określoną liczbę sekund.
-* **&lt;Play @ no__t-2**: odtwarza plik audio.
-* **&lt;Queue @ no__t-2**: Dodaj do kolejki obiektów wywołujących.
-* **&lt;Record @ no__t-2**: rejestruje głos obiektu wywołującego i zwraca adres URL pliku, który zawiera nagranie.
-* **&lt;Redirect @ no__t-2**: przenosi kontrolę nad wywołaniem lub wiadomością SMS na TwiML pod innym adresem URL.
-* **&lt;Reject @ no__t-2**: odrzuca przychodzące wywołanie do numeru Twilio bez rozliczania.
-* **&lt;Say @ no__t-2**: konwertuje tekst na mowę, która jest wykonywana w wywołaniu.
-* **&lt;Sms @ no__t-2**: wysyła wiadomość SMS.
+* **&lt;&gt;wybierania** : łączy obiekt wywołujący z innym numerem telefonu.
+* **&lt;zbieranie&gt;** : zbiera cyfry numeryczne wprowadzone na klawiaturze telefonu.
+* **&lt;&gt;** rozłączenia: przerywa wywołanie.
+* **&lt;wstrzymaj&gt;** : czeka w trybie cichym przez określoną liczbę sekund.
+* **&lt;odtwórz&gt;** : odtwarza plik audio.
+* **&lt;kolejki&gt;** : Dodaj do kolejki obiektów wywołujących.
+* **&lt;rekordu&gt;** : rejestruje głos obiektu wywołującego i zwraca adres URL pliku, który zawiera nagranie.
+* **&lt;przekierowania&gt;** : przenosi kontrolę wywołania lub wiadomości SMS do TwiML pod innym adresem URL.
+* **&lt;Odrzuć&gt;** : odrzuca wywołanie przychodzące do numeru Twilio bez rozliczeń.
+* **&lt;powiedzieć&gt;** : konwertuje tekst na mowę, która jest wykonywana w wywołaniu.
+* **&lt;sms&gt;** : wysyła wiadomość SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML to zestaw instrukcji opartych na języku XML opartych na zleceniach Twilio, które informują Twilio o sposobie przetwarzania wywołania lub wiadomości SMS.
@@ -78,7 +78,7 @@ Gdy zarejestrujesz się w celu korzystania z konta usługi Twilio, otrzymasz ide
 ## <a id="create_app"></a>Tworzenie aplikacji w języku Python
 Aplikacja języka Python korzystająca z usługi Twilio i działająca na platformie Azure nie jest inna niż jakakolwiek inna aplikacja w języku Python, która korzysta z usługi Twilio. Chociaż usługi Twilio są oparte na architekturze REST i mogą być wywoływane z poziomu języka Python na kilka sposobów, ten artykuł koncentruje się na sposobach używania usług Twilio Services z [biblioteką Twilio dla języka Python z usługi GitHub][twilio_python]. Aby uzyskać więcej informacji o korzystaniu z biblioteki Twilio dla języka Python, zobacz [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
 
-Najpierw [Skonfiguruj nową maszynę wirtualną platformy Azure z systemem Linux] [azure_vm_setup] do działania jako host dla nowej aplikacji sieci Web w języku Python. Po uruchomieniu maszyny wirtualnej należy uwidocznić aplikację na porcie publicznym, zgodnie z poniższym opisem.
+Najpierw [Skonfiguruj nową maszynę wirtualną platformy Azure z systemem Linux] [azure_vm_setup], aby pełnić rolę hosta dla nowej aplikacji sieci Web w języku Python. Po uruchomieniu maszyny wirtualnej należy uwidocznić aplikację na porcie publicznym, zgodnie z poniższym opisem.
 
 ### <a name="add-an-incoming-rule"></a>Dodawanie reguły przychodzącej
   1. Przejdź do strony [Network Security Group] [azure_nsg].
@@ -107,14 +107,14 @@ Aplikację można skonfigurować tak, aby korzystała z biblioteki Twilio dla j�
 
         $ python setup.py install
 
-Po zainstalowaniu biblioteki Twilio dla języka Python możesz ją `import` w plikach w języku Python:
+Po zainstalowaniu biblioteki Twilio dla języka Python można `import` ją w plikach w języku Python:
 
         import twilio
 
 Aby uzyskać więcej informacji, zobacz [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md).
 
 ## <a id="howto_make_call"></a>Instrukcje: wykonywanie wywołania wychodzącego
-Poniżej pokazano, jak wykonać połączenie wychodzące. Ten kod używa również witryny dostarczonej przez Twilio do zwrócenia odpowiedzi Twilio Markup Language (TwiML). Przed uruchomieniem kodu Zastąp wartości dla numerów telefonów **from_number** i **to_number** i upewnij się, że zweryfikowano numer telefonu **from_number** dla konta Twilio.
+Poniżej pokazano, jak wykonać połączenie wychodzące. Ten kod używa również witryny dostarczonej przez Twilio do zwrócenia odpowiedzi Twilio Markup Language (TwiML). Przed uruchomieniem kodu Zastąp wartości **from_number** i **to_number** numerów telefonów i upewnij się, że zostałeś zweryfikowany **from_number** numer telefonu dla konta usługi Twilio.
 
     from urllib.parse import urlencode
 
@@ -150,7 +150,7 @@ Poniżej pokazano, jak wykonać połączenie wychodzące. Ten kod używa równie
 Jak wspomniano, ten kod używa witryny dostarczonej przez Twilio do zwrócenia odpowiedzi TwiML. Zamiast tego możesz użyć własnej lokacji, aby zapewnić odpowiedź TwiML; Aby uzyskać więcej informacji, zobacz artykuł [jak zapewnić odpowiedzi TwiML z własnej witryny sieci Web](#howto_provide_twiml_responses).
 
 ## <a id="howto_send_sms"></a>Instrukcje: wysyłanie wiadomości SMS
-Poniżej przedstawiono sposób wysyłania wiadomości SMS przy użyciu klasy `TwilioRestClient`. Numer **from_number** jest dostarczany przez Twilio dla kont próbnych do wysyłania wiadomości SMS. Przed uruchomieniem kodu należy zweryfikować numer **to_number** dla konta Twilio.
+Poniżej przedstawiono sposób wysyłania wiadomości SMS przy użyciu klasy `TwilioRestClient`. Numer **from_number** jest dostarczany przez Twilio dla kont próbnych do wysyłania wiadomości SMS. Przed uruchomieniem kodu należy zweryfikować numer **to_number** konta usługi Twilio.
 
     # Import the Twilio Python Client.
     from twilio.rest import TwilioRestClient
@@ -172,7 +172,7 @@ Poniżej przedstawiono sposób wysyłania wiadomości SMS przy użyciu klasy `Tw
                                      body=message)
 
 ## <a id="howto_provide_twiml_responses"></a>Instrukcje: udostępnianie odpowiedzi TwiML z własnej witryny sieci Web
-Gdy aplikacja inicjuje wywołanie interfejsu API Twilio, Twilio wyśle żądanie do adresu URL, który powinien zwrócić odpowiedź TwiML. Powyższy przykład używa adresu URL podanego przez Twilio [https://twimlets.com/message][twimlet_message_url]. (Podczas gdy TwiML jest przeznaczony do użytku przez Twilio, można wyświetlić go w przeglądarce. Na przykład kliknij [https://twimlets.com/message][twimlet_message_url] , aby zobaczyć pusty element `<Response>`; w innym przykładzie kliknij [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] , aby zobaczyć element `<Response>` zawierający element `<Say>`.)
+Gdy aplikacja inicjuje wywołanie interfejsu API Twilio, Twilio wyśle żądanie do adresu URL, który powinien zwrócić odpowiedź TwiML. W powyższym przykładzie używa się [https://twimlets.com/message][twimlet_message_url]adresu URL podanego przez Twilio. (Podczas gdy TwiML jest przeznaczony do użytku przez Twilio, można wyświetlić go w przeglądarce. Na przykład kliknij [https://twimlets.com/message][twimlet_message_url] , aby wyświetlić pusty element `<Response>`; w innym przykładzie kliknij przycisk [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] , aby wyświetlić element `<Response>` zawierający element `<Say>`).
 
 Zamiast polegać na adresie URL podanego przez Twilio, można utworzyć własną lokację, która zwraca odpowiedzi HTTP. Lokację można utworzyć w dowolnym języku, który zwraca odpowiedzi XML; w tym temacie założono, że przy użyciu języka Python utworzysz TwiML.
 

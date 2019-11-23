@@ -47,9 +47,9 @@ Poniższe kroki dodają podstawowy plik NAS:
 
 1. W panelu sterowania avere kliknij kartę **Ustawienia** w górnej części ekranu.
 
-1. Kliknij pozycję **podstawowy plik plików** > **Zarządzanie podstawowymi plikami plików** po lewej stronie.
+1. Kliknij przycisk **podstawowe pliki** > **zarządzać podstawowymi plikami plików** po lewej stronie.
 
-1. Kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
    ![Zrzut ekranu przedstawiający stronę Dodawanie nowej podstawowej klasy plików z kursorem nad przyciskiem Utwórz](media/avere-vfxt-add-core-filer-start.png)
 
@@ -98,7 +98,7 @@ Aby dodać magazyn obiektów BLOB po utworzeniu klastra, wykonaj następujące k
 
    Możesz użyć Azure Portal lub kliknąć przycisk "wdróż na platformie Azure" poniżej.
 
-   [@no__t — 1Button, aby utworzyć konto magazynu](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
+   [przycisk ![tworzenia konta magazynu](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
 
 1. Po utworzeniu konta przejdź do strony konto magazynu.
 
@@ -112,7 +112,7 @@ Aby dodać magazyn obiektów BLOB po utworzeniu klastra, wykonaj następujące k
 
    ![Azure Portal graficzny interfejs użytkownika do kopiowania klucza](media/avere-vfxt-copy-storage-key.png) 
 
-1. Otwórz Panel sterowania avere dla klastra. Kliknij pozycję **Ustawienia**, a następnie otwórz **klaster** > **poświadczenia chmury** w okienku nawigacji po lewej stronie. Na stronie poświadczenia chmury kliknij pozycję **Dodaj poświadczenie**.
+1. Otwórz Panel sterowania avere dla klastra. Kliknij pozycję **Ustawienia**, a następnie otwórz okno **klaster** > **poświadczenia chmury** w okienku nawigacji po lewej stronie. Na stronie poświadczenia chmury kliknij pozycję **Dodaj poświadczenie**.
 
    ![Kliknij przycisk Dodaj poświadczenia na stronie Konfiguracja poświadczeń w chmurze](media/avere-vfxt-new-credential-button.png)
 
@@ -126,11 +126,11 @@ Aby dodać magazyn obiektów BLOB po utworzeniu klastra, wykonaj następujące k
    | Subskrypcja | subscription ID |
    | Klucz dostępu do magazynu | Klucz konta usługi Azure Storage (skopiowany w poprzednim kroku) | 
 
-   Kliknij przycisk **Prześlij**.
+   Kliknij przycisk **Submit** (Prześlij).
 
    ![Formularz ukończonych poświadczeń w chmurze w panelu sterowania avere](media/avere-vfxt-new-credential-submit.png)
 
-1. Następnie Utwórz podstawowy plik. W lewej części panelu sterowania avere kliknij pozycję **podstawowy**plik plików  >  **Zarządzanie podstawowymi plikami**programu. 
+1. Następnie Utwórz podstawowy plik. W lewej części panelu sterowania avere kliknij pozycję **rdzeń plików** >  **Zarządzanie podstawowymi plikami**programu. 
 
 1. Kliknij przycisk **Utwórz** na stronie **Zarządzanie ustawieniami plików podstawowych** .
 
@@ -159,13 +159,13 @@ Następnie należy [utworzyć połączenie](#create-a-junction).
 
 Połączenie jest ścieżką utworzoną dla klientów. Klienci instalują ścieżkę i docierają do wybranego miejsca docelowego.
 
-Można na przykład utworzyć `/avere/files`, aby mapować do NetApp podstawowego pliku `/vol0/data` eksportu i podkatalogu `/project/resources`.
+Można na przykład utworzyć `/avere/files` do zamapowania na NetApp podstawowy plik `/vol0/data` eksportu i `/project/resources` podkatalogu.
 
 Więcej informacji o połączeniach można znaleźć w [sekcji przestrzeń nazw podręcznika konfiguracji klastra avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
 
 Wykonaj następujące kroki w interfejsie ustawień panelu sterowania avere:
 
-* Kliknij pozycję **VServer** > **przestrzeń nazw** w lewym górnym rogu.
+* W lewym górnym rogu kliknij pozycję **VServer** > **przestrzeń nazw** .
 * Podaj ścieżkę przestrzeni nazw rozpoczynającą się od znaku/(ukośnik), np. ``/avere/data``.
 * Wybierz podstawowy plik.
 * Wybierz eksport pliku podstawowego.

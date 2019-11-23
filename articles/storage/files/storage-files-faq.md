@@ -22,7 +22,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 1. Sekcja komentarzy w tym artykule.
 2. [Forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Pomoc techniczna firmy Microsoft. Aby utworzyć nowe żądanie obsługi, w Azure Portal na karcie **Pomoc** wybierz przycisk **Pomoc i obsługa techniczna** , a następnie wybierz pozycję **nowe żądanie obsługi**.
+4. pomoc techniczna firmy Microsoft. Aby utworzyć nowe żądanie obsługi, w Azure Portal na karcie **Pomoc** wybierz przycisk **Pomoc i obsługa techniczna** , a następnie wybierz pozycję **nowe żądanie obsługi**.
 
 ## <a name="general"></a>Ogólne
 * <a id="why-files-useful"></a>
@@ -81,7 +81,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
   **naprawdę chcę zobaczyć konkretną funkcję dodaną do Azure Files. Czy można je dodać?**  
     Zespół Azure Files ma na celu wysłuchanie wszelkich opinii na temat naszej usługi. Zagłosuj na żądania funkcji w witrynie [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Czekamy na poszukiwanie wielu nowych funkcji.
 
-## <a name="azure-file-sync"></a>Azure File Sync
+## <a name="azure-file-sync"></a>Usługa Azure File Sync
 
 * <a id="afs-region-availability"></a>
   **jakie regiony są obsługiwane dla Azure File Sync?**  
@@ -128,18 +128,18 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 * <a id="afs-files-excluded"></a>
   **które pliki lub foldery są automatycznie wykluczane przez Azure File Sync?**  
     Domyślnie Azure File Sync wyklucza następujące pliki:
-  * plik Desktop. ini
-  * kciuki. DB
+  * desktop.ini
+  * thumbs.db
   * ehThumbs. DB
-  * \*~$.\*
-  * \*. LACCDB
-  * \*. tmp
+  * ~$\*.\*
+  * \*.laccdb
+  * \*.tmp
   * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
     Następujące foldery są również Domyślnie wykluczone:
 
   * Informacje o woluminie \System
-  * odzyskanie \$. OKREŚLONEJ
+  * \$RECYCLE.BIN
   * \SyncShareState
 
 * <a id="afs-os-support"></a>
@@ -252,7 +252,7 @@ czy **można określić uprawnienia tylko do odczytu lub tylko do zapisu w folde
 
     Udział plików można zainstalować przy użyciu protokołu SMB, jeśli jest otwarty port 445 (ruch wychodzący TCP), a klient obsługuje protokół SMB 3,0 (na przykład jeśli używasz systemu Windows 10 lub Windows Server 2016). Jeśli port 445 jest blokowany przez zasady organizacji lub przez usługodawcę internetowego, możesz użyć Azure File Sync, aby uzyskać dostęp do udziału plików platformy Azure.
 
-## <a name="backup"></a>Tworzenie kopii zapasowych
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak mogę utworzyć kopię zapasową udziału plików platformy Azure?**  
     Można użyć okresowych [migawek udziałów](storage-snapshots-files.md) do ochrony przed przypadkowym usunięciem. Można również użyć narzędzia do tworzenia kopii zapasowych AzCopy, Robocopy lub innych firm, które umożliwia utworzenie kopii zapasowej zainstalowanego udziału plików. Azure Backup oferuje kopię zapasową Azure Files. Dowiedz się więcej [na temat tworzenia kopii zapasowych udziałów plików platformy Azure przez Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
@@ -384,7 +384,7 @@ mogę **usunąć mój udział, ale nie usunąć moich migawek udostępniania?**
 **Jak mogę użyć Azure Files z IBM MQ?**  
     Firma IBM wydała dokument, który pomaga klientom firmy IBM MQ skonfigurować Azure Files z usługą firmy IBM. Aby uzyskać więcej informacji, zobacz [jak skonfigurować usługę zarządzania wieloma wystąpieniami programu IBM MQ z usługą Microsoft Azure Files](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Rozwiązywanie problemów Azure Files w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Rozwiązywanie problemów Azure Files w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md)
 * [Rozwiązywanie problemów z usługą Azure File Sync](storage-sync-files-troubleshoot.md)

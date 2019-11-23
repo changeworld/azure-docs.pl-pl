@@ -26,7 +26,7 @@ W tym przewodniku szybki start utworzysz rolę niestandardową z uprawnieniem do
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="prerequisite"></a>Wymagania wstępne
+## <a name="prerequisite"></a>Warunek wstępny
 
 Najmniej uprzywilejowana rola wymagana do tworzenia i przypisywania ról niestandardowych usługi Azure AD jest administratorem roli uprzywilejowanej.
 

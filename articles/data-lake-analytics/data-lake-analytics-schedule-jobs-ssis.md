@@ -46,7 +46,7 @@ Aby zapewnić łatwą konserwację i Zarządzanie kodem, należy umieścić tylk
 
 ![Edytuj wbudowany skrypt U-SQL w zadaniu usług SSIS](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-Pokrewny artykuł: [Jak przekazać parametr do procedur składowanych](#scenario-6-pass-parameters-to-u-sql-script)
+Pokrewny artykuł: [jak przekazać parametr do procedur składowanych](#scenario-6-pass-parameters-to-u-sql-script)
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>Scenariusz 2 — używanie plików U-SQL w Azure Data Lake Store
 
@@ -77,7 +77,7 @@ W widoku projektu pakietu usług SSIS Dodaj **zadanie systemu plików Azure Data
 
 2. Ustaw **folder** pod grupą **Konfiguracja modułu wyliczającego** do folderu tymczasowego zawierającego pobrane skrypty U-SQL.
 
-3. Ustaw **pliki** w obszarze **Konfiguracja modułu wyliczającego** na `*.usql`, aby kontener pętli przechwytł tylko pliki kończące się na `.usql`.
+3. Ustaw **pliki** w obszarze **Konfiguracja modułu wyliczającego** na `*.usql` tak, aby kontener pętli przechwytywał tylko pliki kończące się na `.usql`.
 
     ![Konfigurowanie kontenera pętli Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
@@ -93,7 +93,7 @@ W widoku projektu pakietu usług SSIS Dodaj **zadanie systemu plików Azure Data
     
     Aby utworzyć to połączenie z plikiem:
 
-   1. Wybierz **połączenie \<New... >** w ustawieniu FileConnection.
+   1. Wybierz **\<nowe połączenie... >** w ustawieniu FileConnection.
    2. Ustaw **Typ użycia** na **istniejący plik**i ustaw **plik** na ścieżkę pliku istniejącego pliku.
 
        ![Konfigurowanie kontenera pętli Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
@@ -111,7 +111,7 @@ W widoku projektu pakietu usług SSIS Dodaj **zadanie systemu plików Azure Data
 5. Użyj **wyrażeń** do dynamicznego ustawiania nazwy zadania U-SQL:
 
     1. Na stronie **wyrażenia** Dodaj nową parę klucz-wartość wyrażenia dla **JobName**.
-    2. Ustaw wartość JobName na zmienną zdefiniowaną w kontenerze pętli Foreach, na przykład `@[User::FileName]`.
+    2. Ustaw dla JobName wartość zmiennej zdefiniowanej w kontenerze pętli Foreach, na przykład `@[User::FileName]`.
     
         ![Skonfiguruj wyrażenie SSIS dla nazwy zadania U-SQL](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
 
@@ -119,7 +119,7 @@ W widoku projektu pakietu usług SSIS Dodaj **zadanie systemu plików Azure Data
 
 Możesz użyć plików U-SQL w usłudze Azure Blob Storage przy użyciu **zadania pobierania obiektów blob platformy Azure** w pakiecie Azure Feature Pack. Takie podejście umożliwia korzystanie ze skryptów w chmurze.
 
-Kroki są podobne do [Scenario 2: Użyj plików U-SQL w Azure Data Lake Store @ no__t-0. Zmień zadanie systemu plików Azure Data Lake Store na zadanie pobierania obiektów blob platformy Azure. [Dowiedz się więcej na temat zadania pobierania obiektów blob platformy Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+Kroki są podobne do [scenariusza 2: Użyj plików U-SQL w Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Zmień zadanie systemu plików Azure Data Lake Store na zadanie pobierania obiektów blob platformy Azure. [Dowiedz się więcej na temat zadania pobierania obiektów blob platformy Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 Przepływ sterowania jest podobny do poniższego.
 

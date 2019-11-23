@@ -47,13 +47,13 @@ Dokumentacja — [odwołanie do SqlServer](/powershell/module/sqlserver)
 |Polecenie cmdlet|Opis|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Dodaj członka do roli bazy danych.| 
-|[Kopia zapasowa — ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Utwórz kopię zapasową bazy danych Analysis Services.|  
+|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Utwórz kopię zapasową bazy danych Analysis Services.|  
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Usuń członka z roli bazy danych.|   
 |[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Wykonaj skrypt TMSL.|
 |[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Przetwarzaj bazę danych.|  
 |[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Przetwórz partycję.| 
-|[Invoke-Processing](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Przetwórz tabelę.|  
-|[Scalanie partycji](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Scal partycję.|  
+|[Invoke-ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Przetwórz tabelę.|  
+|[Merge-Partition](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Scal partycję.|  
 |[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Przywróć bazę danych Analysis Services.| 
   
 

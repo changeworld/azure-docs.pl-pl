@@ -20,7 +20,7 @@ ms.locfileid: "72025785"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Zrozumienie i rozwiązywanie problemów serwer proxy aplikacji usługi Azure Active Directory CORS
 
-[Współużytkowanie zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/)@no__t 1can czasami stwarza wyzwania dla aplikacji i interfejsów API publikowanych za pomocą serwer proxy aplikacji usługi Azure Active Directory. W tym artykule omówiono zagadnienia i rozwiązania CORS serwer proxy aplikacji usługi Azure AD platformy Azure.
+[Współużytkowanie zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/) może czasami stwarzać wyzwania dla aplikacji i interfejsów API publikowanych za pomocą serwer proxy aplikacji usługi Azure Active Directory. W tym artykule omówiono zagadnienia i rozwiązania CORS serwer proxy aplikacji usługi Azure AD platformy Azure.
 
 Zabezpieczenia przeglądarki zazwyczaj uniemożliwiają stronom sieci Web wykonywanie żądań AJAX do innej domeny. To ograniczenie jest nazywane *zasadami tego samego źródła*i uniemożliwia złośliwym lokacjom odczytywanie poufnych danych z innej lokacji. Czasami jednak może być konieczne, aby inne Lokacje wywoływały internetowy interfejs API. CORS to W3C standard, który umożliwia serwerowi złagodzenie zasad tego samego źródła i Zezwalanie na niektóre żądania między źródłami podczas odrzucania innych.
 
@@ -28,15 +28,15 @@ Zabezpieczenia przeglądarki zazwyczaj uniemożliwiają stronom sieci Web wykony
 
 Dwa adresy URL mają te same źródła, jeśli mają identyczne schematy, hosty i porty ([RFC 6454](https://tools.ietf.org/html/rfc6454)), takie jak:
 
--   http: \//contoso.com/foo.html
--   http: \//contoso.com/bar.html
+-   http:\//contoso.com/foo.html
+-   http:\//contoso.com/bar.html
 
 Następujące adresy URL mają różne źródła niż poprzednie dwa:
 
--   http: \//contoso. NET — inna domena
--   http: \//contoso.com:9000/foo.html-inny port
--   https: \//contoso.com/foo.html — inny schemat
--   http: \//www.contoso.com/foo.html — inna poddomena
+-   http:\//contoso.net — inna domena
+-   http:\//contoso.com:9000/foo.html — inny port
+-   https:\//contoso.com/foo.html — inny schemat
+-   http:\//www.contoso.com/foo.html — inna poddomena
 
 Zasady tego samego źródła uniemożliwiają aplikacjom uzyskiwanie dostępu do zasobów z innych źródeł, chyba że korzystają z prawidłowych nagłówków kontroli dostępu. Jeśli nagłówki CORS są nieobecne lub nieprawidłowe, żądania między źródłami kończą się niepowodzeniem. 
 
@@ -46,7 +46,7 @@ Problemy CORS można zidentyfikować za pomocą narzędzi debugowania przegląda
 1. Naciśnij klawisz **F12** , aby wyświetlić konsolę debugowania.
 1. Spróbuj odtworzyć transakcję i przejrzyj komunikat konsoli. Naruszenie mechanizmu CORS powoduje błąd konsoli dotyczącej źródła.
 
-Na poniższym zrzucie ekranu, wybierając przycisk **Wypróbuj ten** komunikat o błędzie, że nie znaleziono protokołu https: \//corswebclient-contoso. msappproxy. NET w nagłówku Access-Control-Allow-Origin.
+Na poniższym zrzucie ekranu wybierz przycisk **Wypróbuj ten** element spowodował komunikat o błędzie mechanizmu CORS informujący o tym, że w nagłówku Access-Control-Allow-Origin nie znaleziono protokołu https:\//corswebclient-contoso.msappproxy.NET.
 
 ![Problem CORS](./media/application-proxy-understand-cors-issues/image3.png)
 
@@ -82,8 +82,8 @@ Zamiast tego należy ustawić **wewnętrzny adres URL** w celu opublikowania kat
 
 W efekcie adresy URL aplikacji skutecznie rozwiązują problem z CORS:
 
-- https: \//corswebclient-contoso. msappproxy. NET/CORSWebService
-- https: \//corswebclient-contoso. msappproxy. NET/CORSWebClient
+- https:\//corswebclient-contoso.msappproxy.net/CORSWebService
+- https:\//corswebclient-contoso.msappproxy.net/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>Opcja 3: aktualizowanie nagłówków HTTP
 
@@ -94,14 +94,14 @@ Dodaj niestandardowy nagłówek odpowiedzi HTTP w usłudze sieci Web, aby dopaso
 Ta modyfikacja nie wymaga żadnych zmian w kodzie. Można to sprawdzić w śladach programu Fiddler:
 
 **Opublikuj dodanie nagłówka**\
-HTTP/1.1 200 OK \
+HTTP/1.1 200 OK\
 Cache-Control: Brak pamięci podręcznej \
 Pragma: Brak pamięci podręcznej \
 Content-Type: text/zwykły; charset = utf-8 \
 Wygasa:-1 \
 Zróżnicuj: Accept-Encoding \
 Serwer: Microsoft-IIS/8,5 Microsoft-pliku HTTPAPI/2.0 \
-**Access-Control-Allow-Origin: https @ no__t-1//corswebclient-contoso. msappproxy. net**\
+**Access-Control-Allow-Origin: https\://corswebclient-contoso.msappproxy.net**\
 X-AspNet-Version: 4.0.30319 \
 X-zasilany przez: ASP.NET \
 Długość zawartości: 17

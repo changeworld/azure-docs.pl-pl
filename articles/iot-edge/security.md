@@ -22,7 +22,7 @@ Azure IoT Edge odnosi się do ryzyka, które są związane podczas przesuwania d
 
 IoT Edge działa na różnych urządzeniach i modelach sprzętu, obsługuje kilka systemów operacyjnych i ma zastosowanie do różnorodnych scenariuszy wdrażania. Scenariusz wdrażania zależy od czynników, które obejmują własność rozwiązania, lokalizację geograficzną wdrożenia, czułość danych, prywatność, aplikacje w pionie i wymagania prawne. Zamiast oferować specjalne rozwiązania dla konkretnych scenariuszy, IoT Edge to rozszerzalna platforma zabezpieczeń oparta na zasadach, które są przeznaczone do skalowania. 
  
-Ten artykuł zawiera omówienie struktury zabezpieczeń IoT Edge. Aby uzyskać więcej informacji, zobacz [zabezpieczanie inteligentnych rozwiązań brzegowych](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
+Ten artykuł zawiera omówienie struktury zabezpieczeń IoT Edge. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie inteligentnej krawędzi](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
 
 ## <a name="standards"></a>Standardy
 
@@ -36,7 +36,7 @@ Wszystkie urządzenia, moduły i aktory współpracujące z urządzeniem Azure I
 
 Aby uzyskać więcej informacji, zobacz [Azure IoT Edge użycie certyfikatu](iot-edge-certs.md).
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Autoryzacja
 
 Zasada najniższych uprawnień oznacza, że użytkownicy i składniki systemu powinny mieć dostęp tylko do minimalnego zestawu zasobów i danych wymaganych do wykonywania ich ról. Urządzenia, moduły i aktory powinny uzyskiwać dostęp tylko do zasobów i danych w ramach ich zakresu uprawnień i tylko wtedy, gdy jest to możliwe pod kątem architektury. Niektóre uprawnienia można konfigurować przy użyciu wystarczających uprawnień, a inne są wymuszane w architekturze.  Na przykład niektóre moduły mogą być autoryzowane do łączenia się z usługą Azure IoT Hub. Nie istnieje jednak powód, dla którego moduł w jednym IoT Edge urządzenie ma dostęp do sznurka modułu w innym IoT Edge urządzeniu.
 
@@ -44,7 +44,7 @@ Inne schematy autoryzacji obejmują prawa do podpisywania certyfikatu oraz kontr
 
 ## <a name="attestation"></a>Zaświadczanie
 
-Zaświadczanie gwarantuje integralność bitów oprogramowania, co jest ważne w przypadku wykrywania i zapobiegania złośliwemu oprogramowaniu.  Struktura zabezpieczeń usługi Azure IoT Edge klasyfikuje zaświadczania w obszarze trzy główne kategorie:
+Zaświadczanie gwarantuje integralność bitów oprogramowania, co jest ważne w przypadku wykrywania i zapobiegania złośliwemu oprogramowaniu.  Azure IoT Edge Framework zabezpieczeń klasyfikuje zaświadczanie w ramach trzech głównych kategorii:
 
 * Statyczne zaświadczania
 * Środowisko uruchomieniowe zaświadczania
@@ -68,19 +68,19 @@ W przypadku wielu inteligentnych urządzeń brzegowych, szczególnie urządzeń,
 
 ## <a name="certification"></a>Certyfikacja
 
-Aby ułatwić klientom podejmowanie świadomych decyzji podczas Azure IoT Edge urządzeń w celu ich wdrożenia, struktura IoT Edge obejmuje wymagania dotyczące certyfikacji.  Podstawowe te wymogi są certyfikaty dotyczące bezpieczeństwa i certyfikaty dotyczące weryfikacji wdrożenia zabezpieczeń.  Na przykład certyfikat dotyczący zabezpieczenia polega na tym, że urządzenie IoT Edge używa bezpiecznego sprzętu znanego na ataki z rozruchem. Certyfikat weryfikacji oznacza, że bezpieczny sprzęt został prawidłowo zaimplementowany, aby zaoferować tę wartość na urządzeniu.  Zgodnie z zasadą prostoty, struktura próbuje zachować ciężar certyfikacji w minimalnym stopniu.   
+Aby ułatwić klientom podejmowanie świadomych decyzji podczas Azure IoT Edge urządzeń w celu ich wdrożenia, struktura IoT Edge obejmuje wymagania dotyczące certyfikacji.  Podstawą tych wymagań są certyfikaty odnoszące się do oświadczeń zabezpieczeń i certyfikacji odnoszących się do weryfikacji implementacji zabezpieczeń.  Na przykład certyfikat dotyczący zabezpieczenia polega na tym, że urządzenie IoT Edge używa bezpiecznego sprzętu znanego na ataki z rozruchem. Certyfikat weryfikacji oznacza, że bezpieczny sprzęt został prawidłowo zaimplementowany, aby zaoferować tę wartość na urządzeniu.  Zgodnie z zasadą prostoty, struktura próbuje zachować ciężar certyfikacji w minimalnym stopniu.   
 
 ## <a name="extensibility"></a>Rozszerzalność
 
-Dzięki technologii IoT prowadzącej do różnych rodzajów transformacji biznesowej zabezpieczenia należy rozwijać równolegle w celu rozwiązania powstających scenariuszy.  Struktura zabezpieczeń usługi Azure IoT Edge rozpoczyna się od solidną podstawę, na którym opiera się on w rozszerzalności w różnych wymiarach do uwzględnienia: 
+Dzięki technologii IoT prowadzącej do różnych rodzajów transformacji biznesowej zabezpieczenia należy rozwijać równolegle w celu rozwiązania powstających scenariuszy.  Azure IoT Edge Framework zabezpieczeń rozpoczyna się od solidnej podstawy, na której kompiluje się w celu rozszerzenia do różnych wymiarów, aby uwzględnić: 
 
 * Pierwsze usługi zabezpieczeń innych firm, takich jak usługi Device Provisioning Service dla usługi Azure IoT Hub.
 * Usługi innych firm, takie jak zarządzane usługi zabezpieczeń dla różnych pionowych aplikacji (na przykład przemysłowych lub opieki zdrowotnej), lub technologie, takie jak monitorowanie zabezpieczeń w sieciach siatkowych lub usługi zaświadczania sprzętu krzemowego, za pomocą bogatej sieci partnerów.
 * Starsze systemy obejmujący modernizacji za pomocą strategii zabezpieczeń alternatywne, np. przy użyciu technologii zabezpieczeń innych niż certyfikatów do uwierzytelniania i zarządzania tożsamościami.
 * Bezpieczny sprzęt na potrzeby wdrażania nowych technologii sprzętowych i wkładów partnerów krzemu.
 
-Na koniec Zabezpieczanie inteligentnej krawędzi wymaga od członków współpracy z otwartą społecznością.  Tych wkładów może być w formie bezpiecznego technologii lub usług.  Struktura zabezpieczeń usługi Azure IoT Edge zapewnia solidną podstawę dla zabezpieczeń, którą można rozszerzać, aby zapewnić maksymalne pokrycie do zaoferowania w tym samym poziomie zaufania i integralności w inteligentnych węzłach brzegowych jako za pomocą usługi Azure cloud.  
+Na koniec Zabezpieczanie inteligentnej krawędzi wymaga od członków współpracy z otwartą społecznością.  Te wkłady mogą mieć formę bezpiecznych technologii lub usług.  Usługa Azure IoT Edge Security Framework oferuje solidną podstawę dla zabezpieczeń, która jest rozszerzalna dla maksymalnego pokrycia, aby zaoferować ten sam poziom zaufania i integralności w inteligentnej krawędzi, jak w przypadku chmury platformy Azure.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przeczytaj więcej na temat sposobu usługi Azure IoT Edge jest [zabezpieczanie inteligentnych rozwiązań brzegowych](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).

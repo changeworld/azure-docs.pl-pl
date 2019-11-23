@@ -38,7 +38,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
 
 [!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
-## <a name="create-a-new-application"></a>Utwórz nową aplikację
+## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
 
 1. W ulubionym środowisku IDE lub edytorze Utwórz nowy plik `.html`. Następnie Dodaj do niego podstawowy kod HTML, który zostanie dodany później.
     
@@ -75,10 +75,10 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
 
 ## <a name="load-the-example-json-data"></a>Ładowanie przykładowych danych JSON
 
-1. W tagu `<script>` Utwórz zmienną dla sampleJson. Następnie Utwórz funkcję języka JavaScript o nazwie `openFile()` otwierającą Eksploratora plików, aby można było wybrać plik JSON. Po kliknięciu przycisku `Recognize ink` wywoła tę funkcję i rozpocznie odczytywanie pliku.
-2. Aby przetwarzać plik asynchronicznie, użyj funkcji `onload()` obiektu @no__t. 
-    1. Zastąp wszystkie znaki `\n` lub `\r` w pliku ciągiem pustym. 
-    2. Użyj `JSON.parse()` do przekonwertowania tekstu na prawidłowy kod JSON
+1. W tagu `<script>` Utwórz zmienną dla sampleJson. Następnie Utwórz funkcję języka JavaScript o nazwie `openFile()`, która otwiera Eksploratora plików, aby można było wybrać plik JSON. Po kliknięciu przycisku `Recognize ink` wywoła tę funkcję i rozpocznie odczytywanie pliku.
+2. Użyj funkcji `onload()` obiektu `FileReader`, aby przetwarzać plik asynchronicznie. 
+    1. Zastąp wszystkie `\n` lub `\r` znaków w pliku ciągiem pustym. 
+    2. Użyj `JSON.parse()`, aby przekonwertować tekst na prawidłowy kod JSON
     3. Zaktualizuj pole tekstowe `request` w aplikacji. Użyj `JSON.stringify()`, aby sformatować ciąg JSON. 
     
     ```javascript
@@ -106,7 +106,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
     }
     ```
 
-    1. Utwórz zmienne dla adresu URL punktu końcowego, klucza subskrypcji i przykładowego pliku JSON. Następnie Utwórz obiekt `XMLHttpRequest` w celu wysłania żądania interfejsu API. 
+    1. Utwórz zmienne dla adresu URL punktu końcowego, klucza subskrypcji i przykładowego pliku JSON. Następnie Utwórz obiekt `XMLHttpRequest`, aby wysłać żądanie interfejsu API. 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
@@ -133,7 +133,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
         }
         ```
 
-    4. Utwórz funkcję dla właściwości `onreadystatechange` obiektu request. Gdy stan gotowości obiektu żądania ulegnie zmianie, zostaną zastosowane powyższe funkcje Return i Error.
+    4. Utwórz funkcję dla właściwości `onreadystatechange` obiektu żądania. Gdy stan gotowości obiektu żądania ulegnie zmianie, zostaną zastosowane powyższe funkcje Return i Error.
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -167,8 +167,8 @@ Ta aplikacja może być uruchamiana w przeglądarce internetowej. Pomyślna odpo
 > [Dokumentacja interfejsu API REST](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w aplikacji do cyfrowego odkróla, zapoznaj się z następującymi przykładowymi aplikacjami w witrynie GitHub:
-* [C#i platforma uniwersalna systemu Windows (platformy UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Aplikacja internetowa przeglądarki JavaScript](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Aplikacje mobilne Java i Android](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Aplikacja mobilna SWIFT i iOS](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Aplikacja mobilna języka Java i systemu Android](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Aplikacja mobilna języka Swift i systemu iOS](https://go.microsoft.com/fwlink/?linkid=2089805)

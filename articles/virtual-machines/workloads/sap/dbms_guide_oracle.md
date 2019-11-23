@@ -320,13 +320,13 @@ Poniższe uwagi dotyczące oprogramowania SAP są powiązane z oprogramowaniem S
 
 | Numer notatki | Tytuł |
 | --- | --- |
-| [1928533] |Aplikacje SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
-| [2015553] |System SAP na Microsoft Azure: Wymagania wstępne dotyczące obsługi |
+| [1928533] |Aplikacje SAP na platformie Azure: obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
+| [2015553] |SAP on Microsoft Azure: wymagania wstępne dotyczące pomocy technicznej |
 | [1999351] |Rozwiązywanie problemów z ulepszonym monitorowaniem platformy Azure dla oprogramowania SAP |
 | [2178632] |Metryki monitorowania kluczy dla SAP na Microsoft Azure |
-| [2191498] |System SAP w systemie Linux z platformą Azure: Ulepszone monitorowanie |
-| [2039619] |Aplikacje SAP na Microsoft Azure przy użyciu bazy danych Oracle: Obsługiwane produkty i wersje |
-| [2243692] |Maszyna wirtualna z systemem Linux na Microsoft Azure (IaaS): Problemy z licencją SAP |
+| [2191498] |SAP w systemie Linux z platformą Azure: ulepszone monitorowanie |
+| [2039619] |Aplikacje SAP na Microsoft Azure przy użyciu bazy danych Oracle: obsługiwane produkty i wersje |
+| [2243692] |Maszyna wirtualna z systemem Linux na Microsoft Azure (IaaS): problemy z licencją SAP |
 | [2069760] |Oracle Linux 7. x instalacja i uaktualnienie SAP |
 | [1597355] |Zalecenie wymiany miejsca dla systemu Linux |
 | [2171857] |Oracle Database 12c — obsługa systemu plików w systemie Linux |
@@ -364,7 +364,7 @@ Dyski sieciowe lub udziały zdalne, takie jak usługi plików platformy Azure, n
 - [Persisting connections to Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx) (Utrwalanie połączeń z plikami platformy Microsoft Azure)
 
 
-Jeśli używasz dysków opartych na usłudze Azure Page BLOB Storage lub Managed Disks, instrukcje w temacie zagadnienia [dotyczące wdrażania platformy azure Virtual Machines DBMS dla obciążenia SAP](dbms_guide_general.md) dotyczą również wdrożeń z Oracle Database.
+Jeśli używasz dysków opartych na usłudze Azure Page BLOB Storage lub Managed Disks, instrukcje w temacie [zagadnienia dotyczące wdrażania platformy azure Virtual Machines DBMS dla obciążenia SAP](dbms_guide_general.md) dotyczą również wdrożeń z Oracle Database.
 
 Istnieją limity przepływności operacji we/wy na sekundę dla dysków platformy Azure. Omawiane koncepcje zostały omówione w temacie [zagadnienia dotyczące wdrażania systemu Azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md). Dokładne przydziały zależą od używanego typu maszyny wirtualnej. Listę typów maszyn wirtualnych z ich przydziałami można znaleźć w [obszarze rozmiary dla maszyn wirtualnych z systemem Windows na platformie Azure][virtual-machines-sizes-windows].
 
@@ -376,8 +376,8 @@ Minimalna konfiguracja jest następująca:
 | --- | ---| --- | --- |
 | \oracle\<SID > \origlogaA & mirrlogB | Premium | Brak | Niewymagane |
 | \oracle\<SID > \origlogaB & mirrlogA | Premium | Brak | Niewymagane |
-| Identyfikator\<SID \oracle > \sapdata1... Azotan | Premium | Tylko do odczytu | Mogą być używane |
-| Identyfikator\<SID \oracle > \oraarch | Standardowa (Standard) | Brak | Niewymagane |
+| \oracle\<identyfikator SID > \sapdata1... Azotan | Premium | Tylko do odczytu | Mogą być używane |
+| \oracle\<identyfikator SID > \oraarch | Standardowa (Standard) | Brak | Niewymagane |
 | Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | | Niewymagane |
 
 
@@ -387,13 +387,13 @@ Konfiguracja wydajności jest następująca:
 
 | Składnik | Dysk | Buforowanie | Pula magazynów |
 | --- | ---| --- | --- |
-| Identyfikator\<SID \oracle > \origlogaA | Premium | Brak | Mogą być używane  |
-| Identyfikator\<SID \oracle > \origlogaB | Premium | Brak | Mogą być używane |
-| Identyfikator\<SID \oracle > \mirrlogAB | Premium | Brak | Mogą być używane |
-| Identyfikator\<SID \oracle > \mirrlogBA | Premium | Brak | Mogą być używane |
-| Identyfikator\<SID \oracle > \sapdata1... Azotan | Premium | Tylko do odczytu | Zalecane  |
+| \oracle\<identyfikator SID > \origlogaA | Premium | Brak | Mogą być używane  |
+| \oracle\<identyfikator SID > \origlogaB | Premium | Brak | Mogą być używane |
+| \oracle\<identyfikator SID > \mirrlogAB | Premium | Brak | Mogą być używane |
+| \oracle\<identyfikator SID > \mirrlogBA | Premium | Brak | Mogą być używane |
+| \oracle\<identyfikator SID > \sapdata1... Azotan | Premium | Tylko do odczytu | Zalecane  |
 | \oracle\SID\sapdata (n + 1) * | Premium | Brak | Mogą być używane |
-| Identyfikator\<SID \oracle > \oraarch * | Premium | Brak | Niewymagane |
+| \oracle\<SID > \oraarch * | Premium | Brak | Niewymagane |
 | Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | Niewymagane |
 
 \* (n + 1): hostowanie systemu, TEMP i COFAnie tabel. Wzorzec we/wy systemowych i cofania tabel przeszukanych różni się od innych tabel przechowujących dane aplikacji. Żadne buforowanie nie jest najlepszą opcją dla wydajności systemu i cofania tabel.
@@ -418,7 +418,7 @@ Funkcja Oracle Data Guard jest obsługiwana w celu zapewnienia wysokiej dostępn
 
 Aby uzyskać więcej informacji na temat odzyskiwania po awarii dla baz danych Oracle na platformie Azure, zobacz [odzyskiwanie awaryjne dla Oracle Database bazy danych 12c w środowisku platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Przyspieszona sieć
+### <a name="accelerated-networking"></a>Wydajniejsze sieci
 W przypadku wdrożeń Oracle w systemie Windows zdecydowanie zalecamy szybsze korzystanie z sieci zgodnie z opisem w oknie [przyspieszonej sieci platformy Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Należy również wziąć pod uwagę zalecenia dotyczące [wdrażania systemu Azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md). 
 ### <a name="other"></a>Inne
 [Zagadnienia dotyczące wdrażania systemu Azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md) zawiera inne ważne pojęcia związane z wdrożeniami maszyn wirtualnych z Oracle Database, w tym zestawy dostępności platformy Azure i monitorowanie SAP.
@@ -466,11 +466,11 @@ Minimalna konfiguracja:
 | --- | ---| --- | --- |
 | /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Brak | Niewymagane |
 | /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Brak | Niewymagane |
-| Identyfikator\<SID/Oracle/>/sapdata1... Azotan | Premium | Tylko do odczytu | Mogą być używane |
-| Identyfikator\<SID/Oracle/>/oraarch | Standardowa (Standard) | Brak | Niewymagane |
+| /Oracle/\<identyfikator SID >/sapdata1... Azotan | Premium | Tylko do odczytu | Mogą być używane |
+| /Oracle/\<identyfikator SID >/oraarch | Standardowa (Standard) | Brak | Niewymagane |
 | Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | | Niewymagane |
 
-Obcięcie LVM lub MDADM przy użyciu RAID0
+\* Odcięcie: LVM lub MDADM przy użyciu RAID0
 
 Wybór dysku do hostowania dzienników wykonywania w trybie online firmy Oracle powinien być oparty na wymaganiach IOPS. Możliwe jest przechowywanie wszystkich sapdata1... n (obszary tabel) na jednym zainstalowanym dysku tak długo, jak wolumin, operacje we/wy i przepływność spełniają wymagania. 
 
@@ -478,18 +478,18 @@ Konfiguracja wydajności:
 
 | Składnik | Dysk | Buforowanie | Obcięcie |
 | --- | ---| --- | --- |
-| Identyfikator\<SID/Oracle/>/origlogaA | Premium | Brak | Mogą być używane  |
-| Identyfikator\<SID/Oracle/>/origlogaB | Premium | Brak | Mogą być używane |
-| Identyfikator\<SID/Oracle/>/mirrlogAB | Premium | Brak | Mogą być używane |
-| Identyfikator\<SID/Oracle/>/mirrlogBA | Premium | Brak | Mogą być używane |
-| Identyfikator\<SID/Oracle/>/sapdata1... Azotan | Premium | Tylko do odczytu | Zalecane  |
+| /Oracle/\<identyfikator SID >/origlogaA | Premium | Brak | Mogą być używane  |
+| /Oracle/\<identyfikator SID >/origlogaB | Premium | Brak | Mogą być używane |
+| /Oracle/\<identyfikator SID >/mirrlogAB | Premium | Brak | Mogą być używane |
+| /Oracle/\<identyfikator SID >/mirrlogBA | Premium | Brak | Mogą być używane |
+| /Oracle/\<identyfikator SID >/sapdata1... Azotan | Premium | Tylko do odczytu | Zalecane  |
 | /oracle/\<SID>/sapdata(n+1)* | Premium | Brak | Mogą być używane |
-| Identyfikator\<SID/Oracle/>/oraarch * | Premium | Brak | Niewymagane |
+| /Oracle/\<SID >/oraarch * | Premium | Brak | Niewymagane |
 | Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | Niewymagane |
 
-Obcięcie LVM lub MDADM przy użyciu RAID0
+\* Odcięcie: LVM lub MDADM przy użyciu RAID0
 
-\* (n + 1): hostowanie systemu, tymczasowe i COFAjące się obszary tabel: Wzorzec we/wy systemowych i cofania tabel przeszukanych różni się od innych tabel przechowujących dane aplikacji. Żadne buforowanie nie jest najlepszą opcją dla wydajności systemu i cofania tabel.
+\* (n + 1): hostowanie systemowych, tymczasowych i COFAjących się tabel: wzorzec we/wy systemu i cofanie tabel przeszukanych różni się od innych tabel, które obsługują dane aplikacji. Żadne buforowanie nie jest najlepszą opcją dla wydajności systemu i cofania tabel.
 
 \* oraarch: Pula magazynów nie jest konieczna z punktu widzenia wydajności.
 
@@ -507,12 +507,12 @@ W przypadku funkcji tworzenia kopii zapasowej/przywracania narzędzia SAP BR * T
 Aby uzyskać więcej informacji na temat korzystania z usług Azure Backup i Recovery Services na potrzeby tworzenia kopii zapasowych i odzyskiwania baz danych Oracle, zobacz [Tworzenie kopii zapasowej i odzyskiwanie bazy danych Oracle Database 12c na maszynie wirtualnej platformy Azure z systemem Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery).
 
 ### <a name="high-availability"></a>Wysoka dostępność
-Funkcja Oracle Data Guard jest obsługiwana w celu zapewnienia wysokiej dostępności i odzyskiwania po awarii. Aby uzyskać automatyczną pracę awaryjną w usłudze Data Guard, należy użyć funkcji szybkiego startu trybu failover (FSFA). Funkcja obserwatora (FSFA) wyzwala tryb failover. Jeśli nie korzystasz z FSFA, możesz użyć tylko ręcznej konfiguracji trybu failover. Aby uzyskać więcej informacji, zobacz Implementowanie funkcji [Oracle Data Guard na maszynie wirtualnej platformy Azure z systemem Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
+Funkcja Oracle Data Guard jest obsługiwana w celu zapewnienia wysokiej dostępności i odzyskiwania po awarii. Aby uzyskać automatyczną pracę awaryjną w usłudze Data Guard, należy użyć funkcji szybkiego startu trybu failover (FSFA). Funkcja obserwatora (FSFA) wyzwala tryb failover. Jeśli nie korzystasz z FSFA, możesz użyć tylko ręcznej konfiguracji trybu failover. Aby uzyskać więcej informacji, zobacz [Implementowanie funkcji Oracle Data Guard na maszynie wirtualnej platformy Azure z systemem Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
 
 
 Zagadnienia dotyczące odzyskiwania po awarii dla baz danych Oracle na platformie Azure zostały przedstawione w artykule [odzyskiwanie po awarii dla Oracle Database bazy danych 12c w środowisku platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Przyspieszona sieć
+### <a name="accelerated-networking"></a>Wydajniejsze sieci
 Obsługa przyspieszonej sieci platformy Azure w Oracle Linux jest dostępna z Oracle Linux 7 Update 5 (Oracle Linux 7,5). Jeśli nie można uaktualnić do najnowszej wersji Oracle Linux 7,5, może wystąpić obejście przy użyciu jądra zgodnego z RedHat (RHCK) zamiast jądra UEK firmy Oracle. 
 
 Używanie jądra RHEL w Oracle Linux jest obsługiwane zgodnie z [#1565179](https://launchpad.support.sap.com/#/notes/1565179)uwagi SAP. W przypadku usługi Azure przyspieszonej, minimalna wersja jądra RHCKL musi być 3.10.0-862.13.1. el7. Jeśli używasz jądra UEK w Oracle Linux w połączeniu z [usługą Azure przyspieszone sieci](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), musisz użyć jądra Oracle UEK w wersji 5.

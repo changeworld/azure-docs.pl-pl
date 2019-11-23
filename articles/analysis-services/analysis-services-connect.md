@@ -18,7 +18,7 @@ ms.locfileid: "73147319"
 
 W tym artykule opisano nawiązywanie połączenia z serwerem za pomocą aplikacji do modelowania i zarządzania danymi, takich jak SQL Server Management Studio (SSMS) lub Visual Studio z projektami Analysis Services lub z aplikacjami raportowania klienta, takimi jak Microsoft Excel, Power BI Aplikacje klasyczne lub niestandardowe. Połączenia z Azure Analysis Services korzystają z protokołu HTTPS.
 
-## <a name="client-libraries"></a>Biblioteki klienckie
+## <a name="client-libraries"></a>Biblioteki klienta
 
 [Pobierz najnowsze biblioteki klienckie](analysis-services-data-providers.md)
 
@@ -76,7 +76,7 @@ W przypadku starszych wersji programu Excel użytkownicy mogą łączyć się z 
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Łączenie z programem Excel](analysis-services-connect-excel.md)    
-[Nawiązywanie połączenia z Power BI](analysis-services-connect-pbi.md)   
+[Łączenie z  em programu Excel](analysis-services-connect-excel.md)  
+[Połącz się z Power BI](analysis-services-connect-pbi.md)   
 [Zarządzanie serwerem](analysis-services-manage.md)   
 

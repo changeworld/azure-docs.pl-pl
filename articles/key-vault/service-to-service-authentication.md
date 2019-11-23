@@ -20,7 +20,7 @@ ms.locfileid: "72177470"
 
 Aby uwierzytelnić się w Azure Key Vault, musisz mieć poświadczenia Azure Active Directory (Azure AD), wspólny klucz tajny lub certyfikat.
 
-Zarządzanie takimi poświadczeniami może być trudne. Zachęcamy do podzielenia poświadczeń do aplikacji przez uwzględnienie ich w plikach źródłowych lub konfiguracji. @No__t-0 dla biblioteki .NET upraszcza ten problem. Używa poświadczeń dewelopera do uwierzytelniania podczas lokalnego tworzenia oprogramowania. Gdy rozwiązanie zostanie wdrożone później na platformie Azure, biblioteka automatycznie przełączy się na poświadczenia aplikacji. Korzystanie z poświadczeń dewelopera podczas lokalnego tworzenia jest bezpieczniejsze, ponieważ nie ma potrzeby tworzenia poświadczeń usługi Azure AD ani udostępniania poświadczeń między deweloperami.
+Zarządzanie takimi poświadczeniami może być trudne. Zachęcamy do podzielenia poświadczeń do aplikacji przez uwzględnienie ich w plikach źródłowych lub konfiguracji. `Microsoft.Azure.Services.AppAuthentication` dla biblioteki .NET upraszcza ten problem. Używa poświadczeń dewelopera do uwierzytelniania podczas lokalnego tworzenia oprogramowania. Gdy rozwiązanie zostanie wdrożone później na platformie Azure, biblioteka automatycznie przełączy się na poświadczenia aplikacji. Korzystanie z poświadczeń dewelopera podczas lokalnego tworzenia jest bezpieczniejsze, ponieważ nie ma potrzeby tworzenia poświadczeń usługi Azure AD ani udostępniania poświadczeń między deweloperami.
 
 Biblioteka `Microsoft.Azure.Services.AppAuthentication` zarządza uwierzytelnianiem automatycznie, co z kolei umożliwia skoncentrowanie się na rozwiązaniu, a nie na poświadczeniach. Obsługuje ona lokalne Programowanie przy użyciu Microsoft Visual Studio, interfejsu wiersza polecenia platformy Azure lub zintegrowanego uwierzytelniania usługi Azure AD. W przypadku wdrożenia do zasobu platformy Azure, który obsługuje tożsamość zarządzaną, biblioteka automatycznie używa [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/msi-overview.md). Nie są wymagane żadne zmiany kodu ani konfiguracji. Biblioteka obsługuje również bezpośrednie użycie [poświadczeń klienta](../azure-resource-manager/resource-group-authenticate-service-principal.md) usługi Azure AD, gdy zarządzana tożsamość nie jest dostępna lub gdy nie można określić kontekstu zabezpieczeń dewelopera podczas lokalnego tworzenia.
 
@@ -32,9 +32,9 @@ Biblioteka `Microsoft.Azure.Services.AppAuthentication` zarządza uwierzytelnian
 
 ## <a name="using-the-library"></a>Korzystanie z biblioteki
 
-W przypadku aplikacji .NET Najprostszym sposobem na współpracę z zarządzaną tożsamością jest pakiet `Microsoft.Azure.Services.AppAuthentication`. Oto jak rozpocząć pracę:
+W przypadku aplikacji .NET Najprostszym sposobem pracy z zarządzaną tożsamością jest pakiet `Microsoft.Azure.Services.AppAuthentication`. Oto jak rozpocząć pracę:
 
-1. Wybierz **pozycję narzędzia** > **menedżer pakietów NuGet** > **Zarządzanie pakietami NuGet dla rozwiązania** , aby dodać odwołania do pakietów NuGet [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) i [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) Twój projekt.
+1. Wybierz pozycję **narzędzia** > **menedżer pakietów NuGet** > **Zarządzaj pakietami NuGet dla rozwiązania** , aby dodać odwołania do pakietów NuGet [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) i [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
 
 1. Dodaj następujący kod:
 
@@ -51,7 +51,7 @@ W przypadku aplikacji .NET Najprostszym sposobem na współpracę z zarządzaną
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-Klasa `AzureServiceTokenProvider` buforuje token w pamięci i pobiera go z usługi Azure AD tuż przed wygaśnięciem. W związku z tym nie trzeba już sprawdzać wygaśnięcia przed wywołaniem metody `GetAccessTokenAsync`. Po prostu wywołaj metodę, aby użyć tokenu.
+Klasa `AzureServiceTokenProvider` buforuje token w pamięci i pobiera ją z usługi Azure AD tuż przed wygaśnięciem. W związku z tym nie trzeba już sprawdzać wygaśnięcia przed wywołaniem metody `GetAccessTokenAsync`. Po prostu wywołaj metodę, aby użyć tokenu.
 
 Metoda `GetAccessTokenAsync` wymaga identyfikatora zasobu. Aby dowiedzieć się więcej na temat usług Microsoft Azure Services, zobacz [co to jest tożsamość zarządzana dla zasobów platformy Azure](../active-directory/msi-overview.md).
 
@@ -63,19 +63,19 @@ W przypadku lokalnego projektowania istnieją dwa podstawowe scenariusze uwierzy
 
 Maszyny lokalne nie obsługują tożsamości zarządzanych dla zasobów platformy Azure. W związku z tym Biblioteka `Microsoft.Azure.Services.AppAuthentication` używa poświadczeń dewelopera do uruchamiania w lokalnym środowisku programistycznym. Gdy rozwiązanie zostanie wdrożone na platformie Azure, biblioteka używa zarządzanej tożsamości w celu przełączenia się do przepływu przydzielenia poświadczeń klienta OAuth 2,0. Takie podejście oznacza, że można testować ten sam kod lokalnie i zdalnie bez obaw.
 
-W przypadku programowania lokalnego `AzureServiceTokenProvider` pobiera tokeny przy użyciu **programu Visual Studio**, **interfejsu wiersza polecenia platformy Azure** lub **zintegrowanego uwierzytelniania usługi Azure AD**. Każda opcja jest podejmowana sekwencyjnie, a Biblioteka używa pierwszej opcji, która się powiedzie. Jeśli żadna opcja nie działa, zostanie zgłoszony wyjątek `AzureServiceTokenProviderException` ze szczegółowymi informacjami.
+W przypadku lokalnego projektowania `AzureServiceTokenProvider` pobiera tokeny przy użyciu **programu Visual Studio**, **interfejsu wiersza polecenia platformy Azure** lub **zintegrowanego uwierzytelniania usługi Azure AD**. Każda opcja jest podejmowana sekwencyjnie, a Biblioteka używa pierwszej opcji, która się powiedzie. Jeśli żadna opcja nie działa, zostanie zgłoszony wyjątek `AzureServiceTokenProviderException` ze szczegółowymi informacjami.
 
 #### <a name="authenticating-with-visual-studio"></a>Uwierzytelnianie za pomocą programu Visual Studio
 
 Aby uwierzytelnić się za pomocą programu Visual Studio:
 
-1. Zaloguj się do programu Visual Studio i Użyj **narzędzi**&nbsp; @ no__t-2 @ no__t-3**Options** , aby otworzyć **Opcje**.
+1. Zaloguj się do programu Visual Studio i Użyj **narzędzi**&nbsp;>&nbsp;**Opcje** , aby otworzyć **Opcje**.
 
 1. Wybierz pozycję **uwierzytelnianie usługi platformy Azure**, wybierz konto do lokalnego tworzenia i wybierz pozycję **OK**.
 
 W przypadku problemów z używaniem programu Visual Studio, takich jak błędy, które obejmują plik dostawcy tokenu, należy uważnie przejrzeć powyższe kroki.
 
-Może być konieczne ponowne uwierzytelnienie tokenu dewelopera. W tym celu wybierz pozycję **narzędzia**&nbsp; @ no__t-2 @ no__t-3**Opcje**, a następnie wybierz pozycję **Azure @ no__t-6Service @ no__t-7Authentication**. Poszukaj linku **ponowne uwierzytelnianie** w ramach wybranego konta. Wybierz go do uwierzytelnienia.
+Może być konieczne ponowne uwierzytelnienie tokenu dewelopera. W tym celu wybierz pozycję **narzędzia**&nbsp;>&nbsp;**Opcje**, a następnie wybierz pozycję **Azure&nbsp;Service&nbsp;uwierzytelnianie**. Poszukaj linku **ponowne uwierzytelnianie** w ramach wybranego konta. Wybierz go do uwierzytelnienia.
 
 #### <a name="authenticating-with-azure-cli"></a>Uwierzytelnianie za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -89,7 +89,7 @@ Aby użyć interfejsu wiersza polecenia platformy Azure:
 
 1. Sprawdź dostęp, wprowadzając *AZ Account Get-Access-token--resource https://vault.azure.net* . Jeśli wystąpi błąd, sprawdź, czy odpowiednia wersja interfejsu wiersza polecenia platformy Azure jest prawidłowo zainstalowana.
 
-   Jeśli interfejs wiersza polecenia platformy Azure nie jest zainstalowany w katalogu domyślnym, może zostać wyświetlony komunikat o błędzie, który `AzureServiceTokenProvider` nie może znaleźć ścieżki interfejsu wiersza polecenia platformy Azure. Użyj zmiennej środowiskowej **AzureCLIPath** , aby zdefiniować folder instalacyjny interfejsu wiersza polecenia platformy Azure. `AzureServiceTokenProvider` dodaje katalog określony w zmiennej środowiskowej **AzureCLIPath** do zmiennej środowiskowej **Path** , gdy jest to konieczne.
+   Jeśli interfejs wiersza polecenia platformy Azure nie jest zainstalowany w katalogu domyślnym, może zostać wyświetlony komunikat o błędzie, który `AzureServiceTokenProvider` nie może znaleźć ścieżki interfejsu wiersza polecenia platformy Azure. Użyj zmiennej środowiskowej **AzureCLIPath** , aby zdefiniować folder instalacyjny interfejsu wiersza polecenia platformy Azure. w razie potrzeby `AzureServiceTokenProvider` dodaje katalog określony w zmiennej środowiskowej **AzureCLIPath** do zmiennej środowiskowej **Path** .
 
 1. Jeśli logujesz się do interfejsu wiersza polecenia platformy Azure przy użyciu wielu kont lub Twoje konto ma dostęp do wielu subskrypcji, musisz określić subskrypcję, która ma zostać użyta. Wprowadź polecenie *AZ Account Set--subscription < Subscription-id >* .
 
@@ -111,7 +111,7 @@ Podczas tworzenia usługi, która wywołuje usługę niestandardową, Użyj poś
 
 - Zaloguj się do platformy Azure przy użyciu nazwy głównej usługi:
 
-    1. Utwórz nazwę główną usługi. Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
+    1. Tworzenie jednostki usługi. Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
 
     1. Użyj interfejsu wiersza polecenia platformy Azure, aby zalogować się przy użyciu następującego polecenia:
 
@@ -123,7 +123,7 @@ Podczas tworzenia usługi, która wywołuje usługę niestandardową, Użyj poś
 
 - Użyj zmiennych środowiskowych, aby określić szczegóły jednostki usługi. Aby uzyskać więcej informacji, zobacz [Uruchamianie aplikacji przy użyciu nazwy głównej usługi](#running-the-application-using-a-service-principal).
 
-Po zalogowaniu się do platformy Azure `AzureServiceTokenProvider` używa jednostki usługi w celu pobrania tokenu na potrzeby lokalnego tworzenia.
+Po zalogowaniu się do platformy Azure `AzureServiceTokenProvider` używa jednostki usługi w celu pobrania tokenu na potrzeby lokalnego tworzenia oprogramowania.
 
 Takie podejście ma zastosowanie tylko do lokalnego projektowania. Gdy Twoje rozwiązanie zostanie wdrożone na platformie Azure, biblioteka przełączy się do zarządzanej tożsamości w celu uwierzytelnienia.
 
@@ -201,7 +201,7 @@ Zarządzana tożsamość lub tożsamość dewelopera musi mieć uprawnienia do p
 
 Aby użyć certyfikatu klienta do uwierzytelniania jednostki usługi:
 
-1. Utwórz certyfikat główny usługi i automatycznie Zapisz go w Key Vault. Użyj interfejsu wiersza polecenia platformy Azure [AZ AD Sp Create-for-RBAC-\<keyvaultname >--cert \<certificatename >--Create-CERT--Skip-przypisanie](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) polecenie:
+1. Utwórz certyfikat główny usługi i automatycznie Zapisz go w Key Vault. Użyj interfejsu wiersza polecenia platformy Azure [AZ AD Sp Create-for-RBAC-------kluczy \<directory >--cert \<certificatename >--Create--Certificate--Skip-przypisania](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
     ```azurecli
     az ad sp create-for-rbac --keyvault <keyvaultname> --cert <certificatename> --create-cert --skip-assignment
@@ -209,7 +209,7 @@ Aby użyć certyfikatu klienta do uwierzytelniania jednostki usługi:
 
     Identyfikator certyfikatu będzie adresem URL w formacie `https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
 
-1. Zastąp `{KeyVaultCertificateSecretIdentifier}` w tym parametrach połączenia identyfikatorem certyfikatu:
+1. Zastąp `{KeyVaultCertificateSecretIdentifier}` w tych parametrach połączenia identyfikatorem certyfikatu:
 
     ```azurecli
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
@@ -225,21 +225,21 @@ Aby użyć certyfikatu klienta do uwierzytelniania jednostki usługi:
 
 Domyślnie, `AzureServiceTokenProvider` używa wielu metod do pobrania tokenu.
 
-Aby kontrolować proces, użyj parametrów połączenia przekazaną do konstruktora `AzureServiceTokenProvider` lub określonego w zmiennej środowiskowej *AzureServicesAuthConnectionString* .
+Aby kontrolować proces, należy użyć parametrów połączenia przekazaną do konstruktora `AzureServiceTokenProvider` lub określonych w zmiennej środowiskowej *AzureServicesAuthConnectionString* .
 
 Obsługiwane są następujące opcje:
 
 | Opcja parametrów połączenia | Scenariusz | Komentarze|
 |:--------------------------------|:------------------------|:----------------------------|
-| `RunAs=Developer; DeveloperTool=AzureCli` | Programowanie lokalne | `AzureServiceTokenProvider` używa AzureCli, aby uzyskać token. |
-| `RunAs=Developer; DeveloperTool=VisualStudio` | Programowanie lokalne | `AzureServiceTokenProvider` używa programu Visual Studio, aby uzyskać token. |
-| `RunAs=CurrentUser` | Programowanie lokalne | `AzureServiceTokenProvider` używa zintegrowanego uwierzytelniania usługi Azure AD w celu uzyskania tokenu. |
-| `RunAs=App` | [Zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` używa tożsamości zarządzanej do uzyskiwania tokenu. |
+| `RunAs=Developer; DeveloperTool=AzureCli` | Programowanie lokalne | `AzureServiceTokenProvider` pobiera token przy użyciu AzureCli. |
+| `RunAs=Developer; DeveloperTool=VisualStudio` | Programowanie lokalne | `AzureServiceTokenProvider` uzyskuje token przy użyciu programu Visual Studio. |
+| `RunAs=CurrentUser` | Programowanie lokalne | `AzureServiceTokenProvider` uzyskać tokenu przy użyciu zintegrowanego uwierzytelniania usługi Azure AD. |
+| `RunAs=App` | [Tożsamości zarządzane dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` używa tożsamości zarządzanej do uzyskiwania tokenu. |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Tożsamość przypisana przez użytkownika dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | `AzureServiceTokenProvider` używa tożsamości przypisanej do użytkownika w celu uzyskania tokenu. |
-| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Niestandardowe uwierzytelnianie usług | `KeyVaultCertificateSecretIdentifier` to identyfikator wpisu tajnego certyfikatu. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Nazwa główna usługi | `AzureServiceTokenProvider` używa certyfikatu w celu uzyskania tokenu z usługi Azure AD. |
+| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Niestandardowe uwierzytelnianie usług | `KeyVaultCertificateSecretIdentifier` jest identyfikatorem tajnym certyfikatu. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Nazwa główna usługi | `AzureServiceTokenProvider` używa certyfikatu w celu pobrania tokenu z usługi Azure AD. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Nazwa główna usługi | `AzureServiceTokenProvider` używa certyfikatu w celu uzyskania tokenu z usługi Azure AD|
-| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Nazwa główna usługi |`AzureServiceTokenProvider` używa klucza tajnego do pobrania tokenu z usługi Azure AD. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Nazwa główna usługi |`AzureServiceTokenProvider` pobiera token z usługi Azure AD przy użyciu klucza tajnego. |
 
 ## <a name="samples"></a>Przykłady
 
@@ -277,7 +277,7 @@ Używany podmiot zabezpieczeń nie ma dostępu do zasobu, do którego próbuje u
 
 #### <a name="managed-identity-isnt-set-up-on-the-app-service"></a>Tożsamość zarządzana nie jest skonfigurowana na App Service
 
-Sprawdź zmienne środowiskowe MSI_ENDPOINT i MSI_SECRET istnieje za pomocą [konsoli debugowania kudu](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/). Jeśli te zmienne środowiskowe nie istnieją, tożsamość zarządzana nie jest włączona na App Service.
+Sprawdź zmienne środowiskowe MSI_ENDPOINT i MSI_SECRET istnieją przy użyciu [konsoli debugowania kudu](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/). Jeśli te zmienne środowiskowe nie istnieją, tożsamość zarządzana nie jest włączona na App Service.
 
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>Typowe problemy występujące podczas wdrażania lokalnego przy użyciu usług IIS
 
@@ -288,7 +288,7 @@ Domyślnie AppAuth jest uruchamiany w innym kontekście użytkownika w usługach
 - Skonfiguruj wartość "setProfileEnvironment" jako "true". Więcej informacji można znaleźć [tutaj](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration). 
 
     - Przejdź do%windir%\System32\inetsrv\config\applicationHost.config
-    - Wyszukaj ciąg "setProfileEnvironment". Jeśli jest ustawiona na wartość "false", Zmień ją na "true". Jeśli nie jest obecny, Dodaj go jako atrybut do elementu processModel (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) i ustaw go na wartość "true".
+    - Wyszukaj ciąg "setProfileEnvironment". Jeśli jest ustawiona na wartość "false", Zmień ją na "true". Jeśli nie istnieje, Dodaj go jako atrybut do elementu processModel (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) i ustaw dla niego wartość "true".
 
 - Dowiedz się więcej o [zarządzanych tożsamościach dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/index.yml).
 - Dowiedz się więcej o [scenariuszach uwierzytelniania usługi Azure AD](../active-directory/develop/active-directory-authentication-scenarios.md).

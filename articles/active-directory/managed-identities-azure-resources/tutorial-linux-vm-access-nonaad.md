@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Key Vault - Linux - Azure AD
+title: Samouczek`:` korzystania z tożsamości zarządzanej w celu uzyskania dostępu do Azure Key Vault-Linux — Azure AD
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -40,7 +40,7 @@ Omawiane kwestie:
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Udzielanie maszynie wirtualnej dostępu do wpisu tajnego przechowywanego w usłudze Key Vault  
 
-Przy użyciu tożsamości usługi zarządzanej dla zasobów platformy Azure kod może uzyskać tokeny dostępu, aby uwierzytelniać zasoby obsługujące uwierzytelnianie usługi Azure Active Directory. However, not all Azure services support Azure AD authentication. To use managed identities for Azure resources with those services, store the service credentials in Azure Key Vault, and use managed identities for Azure resources to access Key Vault to retrieve the credentials. 
+Przy użyciu tożsamości usługi zarządzanej dla zasobów platformy Azure kod może uzyskać tokeny dostępu, aby uwierzytelniać zasoby obsługujące uwierzytelnianie usługi Azure Active Directory. Jednak nie wszystkie usługi platformy Azure obsługują uwierzytelnianie w usłudze Azure AD. Aby używać tożsamości zarządzanych dla zasobów platformy Azure w ramach tych usług, należy przechowywać poświadczenia usługi w Azure Key Vault i używać tożsamości zarządzanych dla zasobów platformy Azure, aby uzyskać dostęp do Key Vault do pobierania poświadczeń. 
 
 Najpierw musimy utworzyć usługę Key Vault i udzielić przypisanej przez system tożsamości zarządzanej naszej maszyny wirtualnej dostępu do usługi Key Vault.   
 
@@ -49,7 +49,7 @@ Najpierw musimy utworzyć usługę Key Vault i udzielić przypisanej przez syste
 3. Znajdź usługę Key Vault w tej samej subskrypcji i grupie zasobów co wcześniej utworzona maszyna wirtualna. 
 4. Wybierz opcję **Zasady dostępu** i kliknij opcję **Dodaj nową**. 
 5. W pozycji Konfiguruj na podstawie szablonu wybierz opcję **Zarządzanie wpisami tajnymi**. 
-6. Wybierz opcję **Wybierz podmiot zabezpieczeń**, a następnie w polu wyszukiwania wprowadź nazwę wcześniej utworzonej maszyny wirtualnej.  Select the VM in the result list and click **Select**. 
+6. Wybierz opcję **Wybierz podmiot zabezpieczeń**, a następnie w polu wyszukiwania wprowadź nazwę wcześniej utworzonej maszyny wirtualnej.  Na liście wyników wybierz maszynę wirtualną, a następnie kliknij pozycję **Wybierz**. 
 7. Kliknij przycisk **OK**, aby zakończyć dodawanie nowych zasad dostępu, a następnie kliknij przycisk **OK**, aby zakończyć wybór zasad dostępu. 
 8. Kliknij przycisk **Utwórz**, aby zakończyć tworzenie usługi Key Vault. 
 
@@ -60,13 +60,13 @@ Następnie dodaj wpis tajny do usługi Key Vault, aby umożliwić późniejsze p
 1. Wybierz opcję **Wszystkie zasoby**, a następnie znajdź i wybierz utworzoną usługę Key Vault. 
 2. Wybierz opcję **Wpisy tajne** i kliknij opcję **Dodaj**. 
 3. Wybierz opcję **Ręczne** z pozycji **Opcje przekazywania**. 
-4. Wprowadź nazwę i wartość wpisu tajnego.  The value can be anything you want. 
+4. Wprowadź nazwę i wartość wpisu tajnego.  Wartość może być dowolna. 
 5. Pozostaw pustą datę aktywacji i datę wygaśnięcia oraz zostaw opcję **Włączone** ustawioną na wartość **Tak**. 
 6. Kliknij pozycję **Utwórz**, aby utworzyć wpis tajny. 
  
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej oraz używanie go do pobrania wpisu tajnego z usługi Key Vault  
 
-Aby wykonać te kroki, potrzebujesz klienta SSH.  If you are using Windows, you can use the SSH client in the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about). Jeżeli potrzebujesz pomocy w konfigurowaniu kluczy klienta SSH, zobacz [Jak używać kluczy SSH z systemem Windows na platformie Azure](../../virtual-machines/linux/ssh-from-windows.md) lub [Jak utworzyć i użyć parę publicznego i prywatnego klucza SSH dla maszyn wirtualnych z systemem Linux na platformie Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Aby wykonać te kroki, potrzebujesz klienta SSH.  Jeśli używasz systemu Windows, możesz użyć klienta SSH w [podsystemie Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about). Jeżeli potrzebujesz pomocy w konfigurowaniu kluczy klienta SSH, zobacz [Jak używać kluczy SSH z systemem Windows na platformie Azure](../../virtual-machines/linux/ssh-from-windows.md) lub [Jak utworzyć i użyć parę publicznego i prywatnego klucza SSH dla maszyn wirtualnych z systemem Linux na platformie Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
  
 1. W portalu przejdź do maszyny wirtualnej z systemem Linux i w pozycji **Przegląd** kliknij opcję **Połącz**. 
 2. **Połącz** się z maszyną wirtualną przy użyciu wybranego klienta SSH. 
@@ -91,7 +91,7 @@ Aby wykonać te kroki, potrzebujesz klienta SSH.  If you are using Windows, you
     "token_type":"Bearer"} 
     ```
     
-    Możesz użyć tego tokenu dostępu, aby przeprowadzić uwierzytelnianie do usługi Azure Key Vault.  The next CURL request shows how to read a secret from Key Vault using CURL and the Key Vault REST API.  You’ll need the URL of your Key Vault, which is in the **Essentials** section of the **Overview** page of the Key Vault.  You will also need the access token you obtained on the previous call. 
+    Możesz użyć tego tokenu dostępu, aby przeprowadzić uwierzytelnianie do usługi Azure Key Vault.  Żądanie Next ZWINIĘCIE pokazuje, jak odczytać wpis tajny z Key Vault przy użyciu zwinięcia i Key Vault interfejsu API REST.  Wymagany jest adres URL Key Vault, który znajduje się w sekcji **podstawowe** strony **Przegląd** Key Vault.  Wymagany jest również token dostępu uzyskany dla poprzedniego wywołania. 
         
     ```bash
     curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 

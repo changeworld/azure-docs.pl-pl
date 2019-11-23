@@ -79,7 +79,7 @@ Poniżej przedstawiono przepływ danych wysokiego poziomu dla i Podsumowanie kro
 * Jeśli maszyna hosta jest w stanie hibernacji, Brama nie odpowiada na żądania danych. W związku z tym przed zainstalowaniem bramy należy skonfigurować odpowiedni **Plan** na komputerze. Jeśli komputer jest skonfigurowany do hibernacji, instalacja bramy monituje o komunikat.
 * Aby pomyślnie zainstalować i skonfigurować bramę zarządzania danymi, musisz być administratorem na komputerze. Możesz dodać dodatkowych użytkowników do lokalnej grupy systemu Windows **Użytkownicy bramy zarządzania danymi** . Członkowie tej grupy mogą korzystać z narzędzia **Configuration Manager gateway zarządzanie danymi** , aby skonfigurować bramę.
 
-Gdy przebiega działania kopiowania odbywa się z określoną częstotliwością, użycie zasobów (procesor, pamięć) na komputerze również jest zgodne z tym samym wzorcem i okresem bezczynności. Użycie zasobów również jest zależne od ilości przenoszonych danych. Gdy trwa wykonywanie wielu zadań kopiowania, zostanie wyświetlone użycie zasobów w godzinach szczytu.
+Gdy przebiega działania kopiowania odbywa się z określoną częstotliwością, użycie zasobów (procesor, pamięć) na komputerze również jest zgodne z tym samym wzorcem i okresem bezczynności. Wykorzystanie zasobów zależy również od intensywnie ilości danych przenoszonych. Gdy trwa wykonywanie wielu zadań kopiowania, zostanie wyświetlone użycie zasobów w godzinach szczytu.
 
 ### <a name="installation-options"></a>Opcje instalacji
 Bramę zarządzania danymi można zainstalować w następujący sposób:
@@ -98,7 +98,7 @@ Bramę zarządzania danymi można zainstalować w następujący sposób:
 4. Na stronie **powitalnej** wybierz **Język** , a następnie kliknij przycisk **dalej**.
 5. **Zaakceptuj** umowę licencyjną użytkownika oprogramowania i kliknij przycisk **dalej**.
 6. Wybierz **folder** , aby zainstalować bramę, a następnie kliknij przycisk **dalej**.
-7. Na stronie **gotowy do instalacji** kliknij przycisk **Zainstaluj**.
+7. Na **gotowe do zainstalowania** kliknij **zainstalować**.
 8. Kliknij przycisk **Zakończ** , aby zakończyć instalację.
 9. Pobierz klucz z Azure Portal. Instrukcje krok po kroku znajdują się w następnej sekcji.
 10. Na stronie **Rejestrowanie bramy** **Zarządzanie danymi bramy Configuration Manager** uruchomionej na maszynie wykonaj następujące czynności:
@@ -144,8 +144,8 @@ Na poziomie zapory korporacyjnej wymagane jest skonfigurowanie następujących d
 | Nazwy domen | Porty | Opis |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Używany do komunikacji z zapleczem usługi przenoszenia danych |
-| *. core.windows.net |443 |Używane do kopiowania etapowego przy użyciu obiektu blob platformy Azure (jeśli jest skonfigurowany)|
-| *. frontend.clouddatahub.net |443 |Używany do komunikacji z zapleczem usługi przenoszenia danych |
+| *.core.windows.net |443 |Używane do kopiowania etapowego przy użyciu obiektu blob platformy Azure (jeśli jest skonfigurowany)|
+| *.frontend.clouddatahub.net |443 |Używany do komunikacji z zapleczem usługi przenoszenia danych |
 | *.servicebus.windows.net |9350-9354, 5671 |Opcjonalny przekaźnik usługi Service Bus za pośrednictwem protokołu TCP używany przez Kreatora kopiowania |
 
 Na poziomie zapory systemu Windows te porty wychodzące są zwykle włączone. W przeciwnym razie można odpowiednio skonfigurować domeny i porty na maszynie bramy.
@@ -382,7 +382,7 @@ W poniższej tabeli przedstawiono możliwe stany **węzła bramy**:
 Stan  | Komentarze/scenariusze
 :------- | :------------------
 Online | Węzeł połączony z usługą Data Factory.
-Stanie | Węzeł jest w trybie offline.
+W trybie offline | Węzeł jest w trybie offline.
 Unowocześnieni | Węzeł jest aktualizowany w sposób autouzupełniania.
 Ograniczone | Z powodu problemu z łącznością. Może to być spowodowane problemem z portem HTTP 8050, problemem z łącznością usługi Service Bus lub problemem z synchronizacją poświadczeń.
 Nieaktywne | Węzeł jest w konfiguracji innej niż Konfiguracja innych węzłów większości.<br/><br/> Węzeł może być nieaktywny, jeśli nie może połączyć się z innymi węzłami.
@@ -393,7 +393,7 @@ Stan | Komentarze
 :----- | :-------
 Wymaga rejestracji | Żaden węzeł nie jest jeszcze zarejestrowany w tej bramie logicznej
 Online | Węzły bramy są w trybie online
-Stanie | Brak węzła w stanie online.
+W trybie offline | Brak węzła w stanie online.
 Ograniczone | Nie wszystkie węzły w tej bramie są w dobrej kondycji. Ten stan jest ostrzeżeniem, że niektóre węzły mogą być wyłączone. <br/><br/>Może to być spowodowane problemem z synchronizacją poświadczeń w węźle dyspozytora/proces roboczy.
 
 ## <a name="scale-up-gateway"></a>Skalowanie bramy w górę

@@ -129,7 +129,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pula adresów IP frontonu**, a następnie wybierz pozycję **Dodaj**.
       1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **Hana-fronton**).
       1. Ustaw **przypisanie** na **static** i wprowadź adres IP (na przykład **10.0.0.13**).
-      1. Kliknij przycisk **OK**.
+      1. Wybierz **OK**.
       1. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
 
    1. Następnie Utwórz pulę zaplecza:
@@ -146,7 +146,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
       1. Wprowadź nazwę nowej sondy kondycji (na przykład **Hana-HP**).
       1. Wybierz pozycję **TCP** jako protokół i port 625**03**. Pozostaw wartość **interwału** ustawioną na 5, a wartość **progowa złej kondycji** równa 2.
-      1. Kliknij przycisk **OK**.
+      1. Wybierz **OK**.
 
    1. Następnie utwórz reguły równoważenia obciążenia:
    
@@ -156,7 +156,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Wybierz pozycję **porty ha**.
       1. Zwiększ **limit czasu bezczynności** do 30 minut.
       1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-      1. Kliknij przycisk **OK**.
+      1. Wybierz **OK**.
 
    > [!Note]
    > Gdy maszyny wirtualne bez publicznych adresów IP są umieszczane w puli zaplecza wewnętrznego (bez publicznego adresu IP) standardowego modułu równoważenia obciążenia platformy Azure, nie będzie wychodzące połączenie z Internetem, chyba że zostanie przeprowadzona dodatkowa konfiguracja zezwalająca na kierowanie do publicznych punktów końcowych. Aby uzyskać szczegółowe informacje na temat sposobu osiągnięcia łączności wychodzącej, zobacz [publiczna łączność z punktem końcowym dla Virtual Machines przy użyciu usługi Azure usługa Load Balancer w warstwie Standardowa w scenariuszach wysokiej dostępności SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
@@ -167,7 +167,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pula adresów IP frontonu**, a następnie wybierz pozycję **Dodaj**.
       1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **Hana-fronton**).
       1. Ustaw **przypisanie** na **static** i wprowadź adres IP (na przykład **10.0.0.13**).
-      1. Kliknij przycisk **OK**.
+      1. Wybierz **OK**.
       1. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
 
    1. Następnie Utwórz pulę zaplecza:
@@ -177,14 +177,14 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Wybierz pozycję **Dodaj maszynę wirtualną**.
       1. Wybierz zestaw dostępności utworzony w kroku 3.
       1. Wybierz Maszyny wirtualne klastra SAP HANA.
-      1. Kliknij przycisk **OK**.
+      1. Wybierz **OK**.
 
    1. Następnie utwórz sondę kondycji:
 
       1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
       1. Wprowadź nazwę nowej sondy kondycji (na przykład **Hana-HP**).
       1. Wybierz pozycję **TCP** jako protokół i port 625**03**. Pozostaw wartość **interwału** ustawioną na 5, a wartość **progowa złej kondycji** równa 2.
-      1. Kliknij przycisk **OK**.
+      1. Wybierz **OK**.
 
    1. W przypadku SAP HANA 1,0 Utwórz reguły równoważenia obciążenia:
 
@@ -194,7 +194,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**15.
       1. Zwiększ **limit czasu bezczynności** do 30 minut.
       1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-      1. Kliknij przycisk **OK**.
+      1. Wybierz **OK**.
       1. Powtórz te kroki dla portu 3**03**17.
 
    1. W przypadku SAP HANA 2,0 Utwórz reguły równoważenia obciążenia dla systemowej bazy danych:
@@ -205,7 +205,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**13.
       1. Zwiększ **limit czasu bezczynności** do 30 minut.
       1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-      1. Kliknij przycisk **OK**.
+      1. Wybierz **OK**.
       1. Powtórz te kroki dla portu 3**03**14.
 
    1. W przypadku SAP HANA 2,0 najpierw utwórz reguły równoważenia obciążenia dla bazy danych dzierżawcy:
@@ -216,13 +216,13 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**40.
       1. Zwiększ **limit czasu bezczynności** do 30 minut.
       1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-      1. Kliknij przycisk **OK**.
+      1. Wybierz **OK**.
       1. Powtórz te kroki dla portów 3**03**41 i 3**03**42.
 
 Aby uzyskać więcej informacji na temat wymaganych portów dla SAP HANA, zapoznaj się z rozdziałem [połączenia z bazami danych dzierżawy](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) w Przewodniku obsługi [bazy danych dzierżaw SAP HANA](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) lub [Uwaga 2388694][2388694].
 
 > [!IMPORTANT]
-> Nie należy włączać sygnatur czasowych protokołu TCP na maszynach wirtualnych platformy Azure umieszczonych za Azure Load Balancer. Włączenie sygnatur czasowych protokołu TCP spowoduje niepowodzenie sond kondycji. Ustaw parametr **net. IPv4. TCP _timestamps** na **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nie należy włączać sygnatur czasowych protokołu TCP na maszynach wirtualnych platformy Azure umieszczonych za Azure Load Balancer. Włączenie sygnatur czasowych protokołu TCP spowoduje niepowodzenie sond kondycji. Ustaw parametr **net. IPv4. tcp_timestamps** na **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 > Zobacz również artykuł SAP Uwaga [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="install-sap-hana"></a>Instalowanie platformy SAP HANA
@@ -685,7 +685,7 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 Możesz przetestować instalację Agenta ogrodzenia platformy Azure, wyłączając interfejs sieciowy w węźle, w którym SAP HANA jest uruchomiony jako główny.
-Zapoznaj się z [artykułem 79523 w bazie wiedzy Red Hat](https://access.redhat.com/solutions/79523) , aby uzyskać opis sposobu symulowania awarii sieci. W tym przykładzie użyjemy skryptu net_breaker, aby zablokować dostęp do sieci.
+Zapoznaj się z [artykułem 79523 w bazie wiedzy Red Hat](https://access.redhat.com/solutions/79523) , aby uzyskać opis sposobu symulowania awarii sieci. W tym przykładzie używamy skryptu net_breaker, aby zablokować dostęp do sieci.
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>

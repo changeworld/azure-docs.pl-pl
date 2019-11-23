@@ -34,7 +34,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak `StringToObject` zachowuje się w różnych typach. 
+  Poniższy przykład pokazuje, jak `StringToObject` działa w różnych typach. 
   
  Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
 
@@ -56,7 +56,7 @@ W tym miejscu znajduje się zestaw wyników.
 ```
 
  Poniżej przedstawiono przykłady z nieprawidłowymi danymi wejściowymi.
-Mimo że są one prawidłowe w ramach zapytania, nie będą analizowane pod kątem prawidłowych obiektów. Ciągi w ciągu obiektu muszą mieć wartość ucieczki "{\\" a @ no__t-1 ": \\" str @ no__t-3 "}" lub otaczające cudzysłowy muszą być pojedynczymi "{" a ":" str "}".
+Mimo że są one prawidłowe w ramach zapytania, nie będą analizowane pod kątem prawidłowych obiektów. Ciągi w ciągu obiektu muszą mieć wartość ucieczki "{\\" a\\":\\" str\\"}" lub otaczające cudzysłowy muszą być pojedynczym ciągiem "{" a ":" str "}".
 
 Pojedyncze cudzysłowy otaczające nazwy właściwości nie są prawidłowymi formatami JSON.
 

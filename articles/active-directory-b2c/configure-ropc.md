@@ -58,7 +58,7 @@ Następujące przepływy nie są obsługiwane:
 ## <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
 Użyj ulubionej aplikacji do programowania interfejsów API do wygenerowania wywołania interfejsu API i przejrzyj odpowiedź, aby debugować przepływ użytkownika. Utwórz wywołanie podobne do tego z informacjami w poniższej tabeli jako treść żądania POST:
-- Zastąp *@no__t -1yourtenant. onmicrosoft. com >* nazwą dzierżawy B2C.
+- Zastąp *\<yourtenant. onmicrosoft. com >* nazwą dzierżawy B2C.
 - Zastąp *\<B2C_1A_ROPC_Auth >* pełną nazwą zasad poświadczeń hasła właściciela zasobu.
 - Zastąp *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* identyfikatorem aplikacji z rejestracji.
 
@@ -67,10 +67,10 @@ Użyj ulubionej aplikacji do programowania interfejsów API do wygenerowania wyw
 | Klucz | Wartość |
 | --- | ----- |
 | nazwa użytkownika | leadiocl@outlook.com |
-| hasło | Passxword1 |
-| grant_type | hasło |
+| password | Passxword1 |
+| grant_type | password |
 | scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | id_token tokenu |
 
 *Client_id* jest wartością zanotowaną wcześniej jako identyfikator aplikacji. *Offline_access* jest opcjonalne, jeśli chcesz otrzymać token odświeżenia. Używana nazwa użytkownika i hasło muszą być poświadczeniami istniejącego użytkownika w dzierżawie Azure AD B2C.
@@ -108,11 +108,11 @@ Utwórz wywołanie POST podobne do przedstawionego tutaj z informacjami w poniż
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
-| Zasoby | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* i *Resource* to wartości, które zostały wcześniej zanotowane jako identyfikator aplikacji. *Refresh_token* to token otrzymany wcześniej w wywołaniu uwierzytelniania.
+*Client_id* i *zasób* to wartości, które zostały wcześniej zanotowane jako identyfikator aplikacji. *Refresh_token* to token otrzymany wcześniej w wywołaniu uwierzytelniania.
 
 Pomyślna odpowiedź wygląda podobnie do poniższego przykładu:
 
@@ -132,7 +132,7 @@ Pomyślna odpowiedź wygląda podobnie do poniższego przykładu:
 }
 ```
 > [!NOTE]
-> Podczas tworzenia użytkowników za pośrednictwem interfejs API programu Graph aplikacja musi mieć uprawnienia "OpenID Connect", "offline_access" i "Profile" z Microsoft Graph.
+> Podczas tworzenia użytkowników za pośrednictwem interfejs API programu Graph aplikacja musi mieć uprawnienia "OpenID Connect", "offline_access" i "Profile" w Microsoft Graph.
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementowanie przy użyciu preferowanego natywnego zestawu SDK lub korzystanie z aplikacji App-auth
 

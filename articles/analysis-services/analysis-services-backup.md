@@ -37,7 +37,7 @@ Przed utworzeniem kopii zapasowej należy skonfigurować ustawienia magazynu dla
 
 2.  Kliknij pozycję **włączone**, a następnie kliknij pozycję **ustawienia magazynu**.
 
-    ![Włączanie](./media/analysis-services-backup/aas-backup-enable.png)
+    ![Włączenie](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. Wybierz konto magazynu lub Utwórz nowe.
 
@@ -49,7 +49,7 @@ Przed utworzeniem kopii zapasowej należy skonfigurować ustawienia magazynu dla
 
     ![Zapisz ustawienia kopii zapasowej](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Tworzenie kopii zapasowych
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>Aby utworzyć kopię zapasową przy użyciu programu SSMS
 

@@ -19,7 +19,7 @@ Przed użyciem nowo utworzonego klastra usługi Azure FXT Edge, należy sprawdzi
 
 W tym samouczku wyjaśniono ustawienia sieci, które mogą być konieczne do dostosowania nowego klastra. 
 
-Dowiesz się więcej na temat następujących zagadnień: 
+Dowiesz się: 
 
 > [!div class="checklist"]
 > * Jakie ustawienia sieciowe mogą wymagać aktualizacji po utworzeniu klastra
@@ -45,7 +45,7 @@ Aby dowiedzieć się więcej na temat ustawień sieci dla klastra, przeczytaj te
 
 * Skonfiguruj pliki do pobrania dla Active Directory i nazwy użytkownika/grupy (w razie konieczności)
 
-  Jeśli hosty sieci używają Active Directory lub innego rodzaju zewnętrznej usługi katalogowej, należy zmodyfikować konfigurację usług katalogowych klastra, aby skonfigurować sposób, w jaki klaster pobiera informacje o nazwie użytkownika i grupie. Aby uzyskać szczegółowe informacje **, przeczytaj artykuł** > **usługi katalogowej** w przewodniku konfiguracji klastra.
+  Jeśli hosty sieci używają Active Directory lub innego rodzaju zewnętrznej usługi katalogowej, należy zmodyfikować konfigurację usług katalogowych klastra, aby skonfigurować sposób, w jaki klaster pobiera informacje o nazwie użytkownika i grupie. Aby uzyskać szczegółowe informacje, przeczytaj temat > **usług katalogowych** **klastra** w przewodniku konfiguracji klastra.
 
   Jeśli chcesz obsługiwać protokół SMB, wymagany jest serwer usługi AD. Skonfiguruj usługi AD przed rozpoczęciem konfigurowania protokołu SMB.
 
@@ -58,7 +58,7 @@ Aby dowiedzieć się więcej na temat ustawień sieci dla klastra, przeczytaj te
   Jeśli klaster używa serwera proxy w celu uzyskania dostępu do adresów zewnętrznych, wykonaj następujące kroki, aby go skonfigurować:
 
   1. Definiowanie serwera proxy na stronie ustawień **konfiguracji serwera proxy**
-  1. Zastosuj konfigurację serwera proxy za pomocą strony**instalacji ogólnej** **klastra** >  lub strony **szczegółów podstawowego pliku** .
+  1. Zastosuj konfigurację serwera proxy za pomocą strony **klastra** > **Ogólne ustawienia** lub stronę **szczegółów pliku podstawowego** .
   
   Aby uzyskać więcej informacji, zapoznaj się z tematem [Korzystanie z serwerów proxy sieci Web](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/proxy_overview.html) w podręczniku konfiguracji klastra.
 
@@ -74,9 +74,9 @@ Klaster programu FXT Edge używa certyfikatów X. 509 dla następujących funkcj
 
 * Weryfikowanie certyfikatów serwera dostawcy chmury
 
-Jeśli konieczne jest przekazanie certyfikatów do klastra, użyj strony ustawień**certyfikatów** **@no__t-** 1. Szczegóły znajdują się na stronie [> certyfikatów](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) w przewodniku konfigurowania klastra.
+Jeśli zachodzi potrzeba przekazania certyfikatów do klastra, użyj strony ustawień **certyfikatów** > **klastra** . Szczegóły znajdują się na stronie [> certyfikatów](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) w przewodniku konfigurowania klastra.
 
-Aby zaszyfrować komunikację z zarządzaniem klastrami, użyj strony**Ogólne ustawienia konfiguracji** **klastra** > , aby wybrać certyfikat do użycia w administracyjnym protokole SSL.
+Aby zaszyfrować komunikację z zarządzaniem klastrami, należy użyć strony **klaster** > **Ogólne ustawienia instalacji** , aby wybrać certyfikat do użycia w administracyjnym protokole SSL.
 
 > [!Note] 
 > Klucze dostępu do usługi w chmurze są przechowywane przy użyciu strony Konfiguracja **poświadczeń w chmurze** . Powyżej przedstawiono przykładową sekcję [Dodawanie podstawowego pliku](fxt-add-storage.md#add-a-core-filer) Szczegółowe informacje znajdują się [w sekcji Przewodnik po konfiguracji](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) klastra. 
@@ -105,13 +105,14 @@ W celu uzyskania optymalnej wydajności Skonfiguruj serwer DNS, aby obsługiwał
 
 Vserver klastra jest pokazywany po lewej stronie, a adresy IP są wyświetlane w centrum i po prawej stronie. Skonfiguruj każdy punkt dostępu klienta zawierający rekordy i wskaźniki, jak pokazano.
 
-Diagram DNS 0Cluster Round-Robin-szczegółowy link do tekstu alternatywnego po obrazie @ no__t-1[szczegółowy opis tekstowy](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html) @no__t
+Diagram DNS działania okrężnego klastra ![— szczegółowe łącze do tekstu alternatywnego następuje po obrazie](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
+[szczegółowy opis tekstu](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
 
 Każdy adres IP skierowany na klienta musi mieć unikatową nazwę do użytku wewnętrznego w klastrze. (Na tym diagramie adresy IP klientów mają nazwę VS1-Client-IP-* dla jasności, ale w środowisku produkcyjnym należy raczej używać czegoś bardziej zwięzłego, takiego jak klient *).
 
 Klienci instalują klaster przy użyciu nazwy vserver jako argumentu serwera. 
 
-Zmodyfikuj plik ``named.conf`` serwera DNS, aby ustawić kolejność cykliczną dla zapytań do vserver. Ta opcja zapewnia, że wszystkie dostępne wartości są przetwarzane przez. Dodaj następującą instrukcję:
+Zmodyfikuj plik ``named.conf`` serwera DNS, aby ustawić kolejność cykliczną zapytań do vserver. Ta opcja zapewnia, że wszystkie dostępne wartości są przetwarzane przez. Dodaj następującą instrukcję:
 
 ```
 options {
@@ -121,7 +122,7 @@ options {
 };
 ```
 
-Następujące polecenia ``nsupdate`` udostępniają przykład prawidłowej konfiguracji usługi DNS:
+Następujące polecenia ``nsupdate`` umożliwiają poprawne skonfigurowanie usługi DNS:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -137,7 +138,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ### <a name="enable-dns-in-the-cluster"></a>Włączanie usługi DNS w klastrze 
 
-Określ serwer DNS, którego klaster używa na stronie ustawień**sieci administracyjnej**  >  w **klastrze**. Ustawienia na tej stronie obejmują:
+Określ serwer DNS, którego klaster używa na stronie ustawień **sieci administracyjnej** > **klastra** . Ustawienia na tej stronie obejmują:
 
 * Adres serwera DNS
 * Nazwa domeny DNS

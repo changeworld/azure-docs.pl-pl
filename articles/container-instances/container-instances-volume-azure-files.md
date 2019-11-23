@@ -18,7 +18,7 @@ ms.locfileid: "72175934"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Instalowanie udziału plików platformy Azure w Azure Container Instances
 
-Domyślnie Azure Container Instances są bezstanowe. Jeśli kontener ulegnie awarii lub zostanie zatrzymany, jego stan zostanie utracony. Aby zachować stan poza okres istnienia kontenera, należy zainstalować wolumin ze sklepu zewnętrznego. Jak pokazano w tym artykule, Azure Container Instances może zainstalować udział plików platformy Azure utworzony przy użyciu [Azure Files](../storage/files/storage-files-introduction.md). Azure Files oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem protokołu Server Message Block (SMB). Korzystanie z udziału plików platformy Azure z Azure Container Instances zapewnia funkcje udostępniania plików podobne do korzystania z udziału plików platformy Azure z maszynami wirtualnymi platformy Azure.
+Domyślnie Azure Container Instances są bezstanowe. Jeśli kontener ulegnie awarii lub zostanie zatrzymany, jego stan zostanie utracony. Aby zachować stan poza okres istnienia kontenera, należy zainstalować wolumin ze sklepu zewnętrznego. Jak pokazano w tym artykule, Azure Container Instances może zainstalować udział plików platformy Azure utworzony przy użyciu [Azure Files](../storage/files/storage-files-introduction.md). Usługa Pliki Azure oferuje w pełni zarządzane udziały plików w chmurze, dostępne za pośrednictwem protokołu Server Message Block (SMB) będącego standardem branżowym. Korzystanie z udziału plików platformy Azure z Azure Container Instances zapewnia funkcje udostępniania plików podobne do korzystania z udziału plików platformy Azure z maszynami wirtualnymi platformy Azure.
 
 > [!NOTE]
 > Instalowanie udziału Azure Files jest obecnie ograniczone do kontenerów systemu Linux. Znajdź bieżące różnice w platformie w [przeglądzie](container-instances-overview.md#linux-and-windows-containers).
@@ -52,7 +52,7 @@ az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STO
 
 Aby zainstalować udział plików platformy Azure jako wolumin w Azure Container Instances, potrzebne są trzy wartości: nazwa konta magazynu, nazwa udziału i klucz dostępu do magazynu.
 
-Jeśli użyto powyższego skryptu, nazwa konta magazynu była przechowywana w zmiennej $ACI _PERS_STORAGE_ACCOUNT_NAME. Aby wyświetlić nazwę konta, wpisz:
+Jeśli użyto powyższego skryptu, nazwa konta magazynu była przechowywana w zmiennej _PERS_STORAGE_ACCOUNT_NAME $ACI. Aby wyświetlić nazwę konta, wpisz:
 
 ```console
 echo $ACI_PERS_STORAGE_ACCOUNT_NAME
@@ -100,7 +100,7 @@ Możesz również wdrożyć grupę kontenerów i zainstalować wolumin w kontene
 
 Poniższy szablon YAML definiuje grupę kontenerów z jednym kontenerem utworzonym za pomocą obrazu `aci-hellofiles`. Kontener instaluje *acishare* udział plików platformy Azure utworzony wcześniej jako wolumin. Gdzie to wskazane, wprowadź nazwę i klucz magazynu dla konta magazynu, które obsługuje udział plików. 
 
-Podobnie jak w przykładzie interfejsu wiersza polecenia wartość `dnsNameLabel` musi być unikatowa w regionie świadczenia usługi Azure, w którym tworzysz wystąpienie kontenera. W razie konieczności zaktualizuj wartość w pliku YAML.
+Podobnie jak w przykładzie interfejsu wiersza polecenia, wartość `dnsNameLabel` musi być unikatowa w regionie świadczenia usługi Azure, w którym tworzysz wystąpienie kontenera. W razie konieczności zaktualizuj wartość w pliku YAML.
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -148,13 +148,13 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 Oprócz wdrożenia interfejsu wiersza polecenia i YAML można wdrożyć grupę kontenerów i zainstalować wolumin w kontenerze przy użyciu [szablonu Menedżer zasobów](/azure/templates/microsoft.containerinstance/containergroups)platformy Azure.
 
-Najpierw Wypełnij tablicę `volumes` w sekcji @no__t grupy kontenerów szablonu. 
+Najpierw Wypełnij tablicę `volumes` w sekcji `properties` grupy kontenerów szablonu. 
 
 Następnie dla każdego kontenera, w którym chcesz zainstalować wolumin, Wypełnij tablicę `volumeMounts` w sekcji `properties` definicji kontenera.
 
-Poniższy szablon Menedżer zasobów definiuje grupę kontenerów z jednym kontenerem utworzonym za pomocą obrazu `aci-hellofiles`. Kontener instaluje *acishare* udział plików platformy Azure utworzony wcześniej jako wolumin. Gdzie to wskazane, wprowadź nazwę i klucz magazynu dla konta magazynu, które obsługuje udział plików. 
+Poniższy szablon Menedżer zasobów definiuje grupę kontenerów z jednym kontenerem utworzonym za pomocą `aci-hellofiles` obrazu. Kontener instaluje *acishare* udział plików platformy Azure utworzony wcześniej jako wolumin. Gdzie to wskazane, wprowadź nazwę i klucz magazynu dla konta magazynu, które obsługuje udział plików. 
 
-Jak w poprzednich przykładach wartość `dnsNameLabel` musi być unikatowa w regionie świadczenia usługi Azure, w którym tworzysz wystąpienie kontenera. W razie konieczności zaktualizuj wartość w szablonie.
+Tak jak w poprzednich przykładach, wartość `dnsNameLabel` musi być unikatowa w regionie świadczenia usługi Azure, w którym tworzysz wystąpienie kontenera. W razie konieczności zaktualizuj wartość w szablonie.
 
 ```JSON
 {
@@ -273,8 +273,8 @@ Następnie dla każdego kontenera w grupie kontenerów, w której chcesz zainsta
 
 Dowiedz się, jak zainstalować inne typy woluminów w Azure Container Instances:
 
-* [Zainstaluj wolumin emptyDir w Azure Container Instances](container-instances-volume-emptydir.md)
-* [Zainstaluj wolumin gitRepo w Azure Container Instances](container-instances-volume-gitrepo.md)
+* [Zainstalować emptyDir woluminu w wystąpień kontenera platformy Azure](container-instances-volume-emptydir.md)
+* [Zainstalować wolumin gitRepo w wystąpień kontenera platformy Azure](container-instances-volume-gitrepo.md)
 * [Zainstaluj wolumin tajny w Azure Container Instances](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->

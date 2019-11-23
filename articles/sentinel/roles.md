@@ -24,21 +24,21 @@ ms.locfileid: "71316801"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Uprawnienia na platformie Azure — wskaźnik
 
-Wskaźnik platformy Azure używa [Access Control opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md), aby zapewnić [wbudowane role](../role-based-access-control/built-in-roles.md) , które można przypisać do użytkowników, grup i usług na platformie Azure.
+Wskaźnik platformy Azure używa [Access Control opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md), aby zapewnić [wbudowane role](../role-based-access-control/built-in-roles.md) , które mogą być przypisane do użytkowników, grup i usług na platformie Azure.
 
 Za pomocą RBAC można użyć i utworzyć role w zespole operacji zabezpieczeń, aby udzielić odpowiedniego dostępu do usługi Azure wskaźnikowej. Na podstawie ról masz szczegółową kontrolę nad tym, co mogą widzieć użytkownicy mający dostęp do platformy Azure. Role RBAC można przypisać bezpośrednio do obszaru roboczego wskaźnikowego platformy Azure lub do subskrypcji lub grupy zasobów, do której należy obszar roboczy.
 
 Istnieją trzy specyficzne role kontrolki wskaźnikowej platformy Azure.  
 **Wszystkie wbudowane role funkcji wskaźnikowej platformy Azure umożliwiają dostęp do odczytu do danych w obszarze roboczym wskaźnikowego platformy Azure.**
-- **Czytnik wskaźnikowy platformy Azure**: Użytkownik przypisany do tej roli ma uprawnienia do wyświetlania informacji o wskaźniku platformy Azure. Użytkownik może wyświetlać zdarzenia i dane, ale nie może wprowadzać zmian.
-- **Obiekt odpowiadający wskaźnikowi platformy Azure**: Użytkownik przypisany za pomocą tej roli może odczytywać i wykonywać działania związane z zdarzeniami, takimi jak zmiany przydziału i ważności.
-- **Współautor wskaźnikowego platformy Azure**: Użytkownik przypisany za pomocą tej roli może odczytywać i wykonywać działania dotyczące zdarzeń oraz tworzyć i usuwać reguły analityczne.
+- **Czytnik wskaźnikowy platformy Azure**: użytkownik przypisany do tej roli ma uprawnienia do wyświetlania na platformie Azure. Użytkownik może wyświetlać zdarzenia i dane, ale nie może wprowadzać zmian.
+- **Obiekt odpowiadający usługi Azure wskaźnikowej**: użytkownik przypisany za pomocą tej roli może odczytywać i wykonywać działania związane z zdarzeniami, takimi jak zmiany przydziału i ważności.
+- **Współautor wskaźnikowego platformy Azure**: użytkownik przypisany za pomocą tej roli może odczytywać i wykonywać działania dotyczące zdarzeń oraz tworzyć i usuwać reguły analityczne.
 
 Oprócz ról RBAC opartych na platformie Azure, istnieją role RBAC platformy Azure i Log Analytics, które mogą udzielić szerszego zestawu uprawnień, które obejmują dostęp do obszaru roboczego wskaźnikowego platformy Azure i innych zasobów:
 
-- **Role platformy Azure:** [Właściciel](../role-based-access-control/built-in-roles.md#owner), [współautor](../role-based-access-control/built-in-roles.md#contributor)i [czytelnik](../role-based-access-control/built-in-roles.md#reader). Role platformy Azure umożliwiają dostęp do wszystkich zasobów platformy Azure, w tym Log Analytics obszarów roboczych i zasobów wskaźnikowych platformy Azure.
+- **Role platformy Azure:** [właściciel](../role-based-access-control/built-in-roles.md#owner), [współautor](../role-based-access-control/built-in-roles.md#contributor)i [czytelnik](../role-based-access-control/built-in-roles.md#reader). Role platformy Azure umożliwiają dostęp do wszystkich zasobów platformy Azure, w tym Log Analytics obszarów roboczych i zasobów wskaźnikowych platformy Azure.
 
--   **Role Log Analytics:** [Współautor log Analytics](../role-based-access-control/built-in-roles.md#log-analytics-contributor), [log Analytics Reader](../role-based-access-control/built-in-roles.md#log-analytics-reader). Role Log Analytics udzielą dostępu we wszystkich Log Analytics obszarach roboczych. 
+-   **Role log Analytics:** [współautor Log Analytics](../role-based-access-control/built-in-roles.md#log-analytics-contributor), [czytelnik log Analytics](../role-based-access-control/built-in-roles.md#log-analytics-reader). Role Log Analytics udzielą dostępu we wszystkich Log Analytics obszarach roboczych. 
 
 > [!NOTE]
 > Role Log Analytics zapewniają również dostęp do odczytu dla wszystkich zasobów platformy Azure, ale tylko uprawnienia do zapisu do zasobów Log Analytics.
@@ -56,7 +56,7 @@ Na przykład użytkownik przypisany za pomocą **czytnika wskaźnikowego platfor
 
 W poniższej tabeli przedstawiono role i dozwolone akcje na platformie Azure — wskaźnik. Symbol X wskazuje, że akcja jest dozwolona dla tej roli.
 
-| Role | Utwórz i uruchom elementy PlayBook| Twórz i edytuj pulpity nawigacyjne, reguły analityczne i inne zasoby wskaźnikowe platformy Azure | Zarządzanie zdarzeniami (odrzucanie, przypisywanie itp.) | Wyświetl dane, zdarzenia, pulpity nawigacyjne i inne zasoby wskaźnikowe platformy Azure |
+| Rola | Utwórz i uruchom elementy PlayBook| Twórz i edytuj pulpity nawigacyjne, reguły analityczne i inne zasoby wskaźnikowe platformy Azure | Zarządzanie zdarzeniami (odrzucanie, przypisywanie itp.) | Wyświetl dane, zdarzenia, pulpity nawigacyjne i inne zasoby wskaźnikowe platformy Azure |
 |--- |---|---|---|---|
 | Czytnik wskaźnikowy platformy Azure | -- | -- | -- | X |
 | Obiekt odpowiadający wskaźnikowi platformy Azure|--|--| X | X |

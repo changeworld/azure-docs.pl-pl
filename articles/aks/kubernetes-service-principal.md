@@ -1,6 +1,6 @@
 ---
-title: Nazwy główne usług dla usług Azure Kubernetes Services (AKS)
-description: Tworzenie jednostki usługi Azure Active Directory i zarządzanie nią dla klastra w usłudze Azure Kubernetes Service (AKS)
+title: Jednostki usługi dla usługi Azure Kubernetes Service (AKS)
+description: Tworzenie jednostki usługi Azure Active Directory dla klastra w usłudze Azure Kubernetes Service (AKS) i zarządzanie nią
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,25 +14,25 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2019
 ms.locfileid: "72263907"
 ---
-# <a name="service-principals-with-azure-kubernetes-service-aks"></a>Nazwy główne usług w usłudze Azure Kubernetes Service (AKS)
+# <a name="service-principals-with-azure-kubernetes-service-aks"></a>Jednostki usługi w usłudze Azure Kubernetes Service (AKS)
 
-Aby można było korzystać z interfejsów API platformy Azure, klaster AKS wymaga jednostki [usługi Azure Active Directory (AD)][aad-service-principal]. Jednostka usługi jest wymagana do dynamicznego tworzenia i zarządzania innymi zasobami platformy Azure, takimi jak moduł równoważenia obciążenia platformy Azure lub rejestr kontenerów (ACR).
+Aby można było korzystać z interfejsów API platformy Azure, klaster AKS wymaga jednostki [usługi Azure Active Directory (AD)][aad-service-principal]. Jednostka usługi jest potrzebna do dynamicznego tworzenia innych zasobów platformy Azure, takich jak usługa Azure Load Balancer lub usługa Azure Container Registry i zarządzania nimi.
 
-W tym artykule przedstawiono sposób tworzenia i używania jednostki usługi dla klastrów AKS.
+W tym artykule przedstawiono sposób tworzenia jednostki usługi dla klastra usługi AKS i zarządzania nią.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby utworzyć jednostkę usługi Azure AD, musisz mieć uprawnienia do zarejestrowania aplikacji w dzierżawie usługi Azure AD i przypisania aplikacji do roli w ramach subskrypcji. Jeśli nie masz wymaganych uprawnień, może być konieczne poproszenie administratora usługi Azure AD lub subskrypcji o przypisanie niezbędnych uprawnień lub wstępne utworzenie jednostki usługi do użycia z klastrem AKS.
+Aby utworzyć jednostkę usługi Azure AD, musisz mieć uprawnienia do zarejestrowania aplikacji w swojej dzierżawie usługi Azure AD i przypisania aplikacji do roli w swojej subskrypcji. Jeśli nie masz niezbędnych uprawnień, może być konieczne zwrócenie się z prośbą do administratora usługi Azure AD lub subskrypcji o przyznanie niezbędnych uprawnień lub wstępne utworzenie jednostki usługi do użycia z klastrem usługi AKS.
 
 Jeśli używasz jednostki usługi z innej dzierżawy usługi Azure AD, istnieją dodatkowe zagadnienia dotyczące uprawnień dostępnych podczas wdrażania klastra. Licencjobiorca może nie mieć odpowiednich uprawnień do odczytu i zapisu informacji katalogowych. Aby uzyskać więcej informacji, zobacz [co to są domyślne uprawnienia użytkownika w Azure Active Directory?][azure-ad-permissions]
 
-Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Uruchom @ no__t-0, aby znaleźć wersję. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatyczne tworzenie i używanie jednostki usługi
 
 Podczas tworzenia klastra AKS w Azure Portal lub przy użyciu polecenia [AZ AKS Create][az-aks-create] platforma Azure może automatycznie wygenerować jednostkę usługi.
 
-W poniższym przykładzie interfejsu wiersza polecenia platformy Azure nie określono nazwy głównej usługi. W tym scenariuszu interfejs wiersza polecenia platformy Azure tworzy nazwę główną usługi dla klastra AKS. Aby pomyślnie ukończyć operację, konto platformy Azure musi mieć odpowiednie prawa do tworzenia jednostki usługi.
+W poniższym przykładzie dotyczącym interfejsu wiersza polecenia platformy Azure nie została określona jednostka usługi. W tym scenariuszu interfejs wiersza polecenia platformy Azure tworzy jednostkę usługi dla klastra usługi AKS. Aby można było pomyślnie ukończyć tę operację, Twoje konto platformy Azure musi mieć odpowiednie uprawnienia do tworzenia jednostki usługi.
 
 ```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup
@@ -40,13 +40,13 @@ az aks create --name myAKSCluster --resource-group myResourceGroup
 
 ## <a name="manually-create-a-service-principal"></a>Ręczne tworzenie jednostki usługi
 
-Aby ręcznie utworzyć jednostkę usługi za pomocą interfejsu wiersza polecenia platformy Azure, użyj polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create] . W poniższym przykładzie parametr `--skip-assignment` zapobiega przypisaniu dodatkowych przypisań domyślnych:
+Aby ręcznie utworzyć jednostkę usługi za pomocą interfejsu wiersza polecenia platformy Azure, użyj polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create] . W poniższym przykładzie parametr `--skip-assignment` zapobiega przypisaniu jakichkolwiek dodatkowych przypisań:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
-Dane wyjściowe są podobne do poniższego przykładu. Zanotuj własne `appId` i `password`. Te wartości są używane podczas tworzenia klastra AKS w następnej sekcji.
+Dane wyjściowe będą podobne do poniższego przykładu. Zanotuj własne wartości `appId` i `password`. Te wartości będą używane podczas tworzenia klastra usługi AKS w następnej sekcji.
 
 ```json
 {
@@ -58,9 +58,9 @@ Dane wyjściowe są podobne do poniższego przykładu. Zanotuj własne `appId` i
 }
 ```
 
-## <a name="specify-a-service-principal-for-an-aks-cluster"></a>Określanie nazwy głównej usługi dla klastra AKS
+## <a name="specify-a-service-principal-for-an-aks-cluster"></a>Określanie jednostki usługi dla klastra usługi AKS
 
-Aby użyć istniejącej jednostki usługi podczas tworzenia klastra AKS za pomocą polecenia [AZ AKS Create][az-aks-create] , użyj parametrów `--service-principal` i `--client-secret`, aby określić `appId` i `password` z danych wyjściowych polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create] :
+Aby użyć istniejącej nazwy głównej usługi podczas tworzenia klastra AKS za pomocą polecenia [AZ AKS Create][az-aks-create] , użyj parametrów `--service-principal` i `--client-secret`, aby określić `appId` i `password` z danych wyjściowych polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create] :
 
 ```azurecli-interactive
 az aks create \
@@ -70,69 +70,69 @@ az aks create \
     --client-secret <password>
 ```
 
-W przypadku wdrażania klastra AKS przy użyciu Azure Portal na stronie *uwierzytelnianie* w oknie dialogowym **Tworzenie klastra Kubernetes** wybierz opcję **skonfigurowania jednostki usługi**. Wybierz pozycję **Użyj istniejącej**i określ następujące wartości:
+W przypadku wdrażania klastra usługi AKS przy użyciu witryny Azure Portal na stronie *Uwierzytelnianie* okna dialogowego **Tworzenie klastra Kubernetes**, wybierz opcję **Konfigurowanie jednostki usługi**. Wybierz pozycję **Użyj istniejącej**, a następnie określ następujące wartości:
 
-- **Identyfikator klienta nazwy głównej usługi** to Twój *Identyfikator aplikacji*
-- **Klucz tajny klienta jednostki usługi** jest wartością *hasła*
+- **Identyfikator klienta jednostki usługi** to Twój *appId*
+- **Klucz tajny klienta jednostki usługi** to wartość *hasła*
 
-![Obraz przedstawiający przechodzenie do głosu platformy Azure](media/kubernetes-service-principal/portal-configure-service-principal.png)
+![Obraz przedstawiający przechodzenie do aplikacji Azure Vote](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
 ## <a name="delegate-access-to-other-azure-resources"></a>Delegowanie dostępu do innych zasobów platformy Azure
 
-Nazwa główna usługi dla klastra AKS może być używana do uzyskiwania dostępu do innych zasobów. Jeśli na przykład chcesz wdrożyć klaster AKS w istniejącej podsieci sieci wirtualnej platformy Azure lub połączyć się z usługą Azure Container Registry (ACR), musisz delegować dostęp do tych zasobów do nazwy głównej usługi.
+Nazwa główna usługi klastra AKS może służyć do dostępu do innych zasobów. Jeśli na przykład chcesz wdrożyć klaster AKS w istniejącej podsieci sieci wirtualnej platformy Azure lub połączyć się z usługą Azure Container Registry (ACR), musisz delegować dostęp do tych zasobów do nazwy głównej usługi.
 
-Aby delegować uprawnienia, Utwórz przypisanie roli za pomocą polecenia [AZ role przypisanie Create][az-role-assignment-create] . Przypisz `appId` do określonego zakresu, na przykład grupy zasobów lub zasobu sieci wirtualnej. Następnie rola definiuje, jakie uprawnienia jednostka usługi ma w danym zasobie, jak pokazano w następującym przykładzie:
+Aby delegować uprawnienia, Utwórz przypisanie roli za pomocą polecenia [AZ role przypisanie Create][az-role-assignment-create] . Przypisz `appId` do określonego zakresu, na przykład grupy zasobów lub zasobu sieci wirtualnej. Rola następnie definiuje uprawnienia, które jednostka usługi ma względem zasobu, jak pokazano w poniższym przykładzie:
 
 ```azurecli
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
 ```
 
-Wartość `--scope` dla zasobu musi być pełnym IDENTYFIKATORem zasobu, na przykład */subscriptions/\<guid @ no__t-3/resourceGroups/Webresources* lub */subscriptions/\<guid @ no__t-6/resourceGroups/myResourceGroupVnet/Providers/Microsoft. Network/virtualNetworks/myVnet*
+Opcja `--scope` dla zasobu musi być pełnym identyfikatorem zasobu, takim jak */subscriptions/\<identyfikator GUID\>/resourceGroups/myResourceGroup* lub */subscriptions/\<identyfikator GUID\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
 
-W poniższych sekcjach szczegółowo opisano typowe delegowania, które mogą być potrzebne.
+W poniższych sekcjach opisano typowe delegacje, które należy wykonać.
 
 ### <a name="azure-container-registry"></a>Azure Container Registry
 
 Jeśli używasz Azure Container Registry (ACR) jako magazynu obrazów kontenerów, musisz udzielić uprawnień do jednostki usługi dla klastra AKS w celu odczytywania i ściągania obrazów. Obecnie zalecaną konfiguracją jest użycie polecenia [AZ AKS Create][az-aks-create] lub [AZ AKS Update] [AZ-AKS-Update] w celu zintegrowania z rejestrem i przypisania odpowiedniej roli dla jednostki usługi. Aby uzyskać szczegółowe instrukcje, zobacz [uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes][aks-to-acr].
 
-### <a name="networking"></a>Obsługa sieci
+### <a name="networking"></a>Networking
 
-Możesz użyć zaawansowanej sieci, w której Sieć wirtualna i podsieć lub publiczne adresy IP znajdują się w innej grupie zasobów. Przypisz jeden z następujących uprawnień roli:
+Możesz użyć zaawansowanych funkcji sieciowych, w przypadku których sieć wirtualna i podsieć lub publiczne adresy IP znajdują się w innej grupie zasobów. Przypisz jeden z następujących zestawów uprawnień ról:
 
 - Utwórz [rolę niestandardową][rbac-custom-role] i Zdefiniuj następujące uprawnienia roli:
-  - *Microsoft. Network/virtualNetworks/Subnets/Join/Action*
-  - *Microsoft. Network/virtualNetworks/podsieci/odczyt*
-  - *Microsoft. Network/virtualNetworks/podsieci/zapis*
-  - *Microsoft. Network/adresów publicipaddress/Join/Action*
-  - *Microsoft. Network/adresów publicipaddress/odczyt*
-  - *Microsoft. Network/adresów publicipaddress/Write*
+  - *Microsoft.Network/virtualNetworks/subnets/join/action*
+  - *Microsoft.Network/virtualNetworks/subnets/read*
+  - *Microsoft.Network/virtualNetworks/subnets/write*
+  - *Microsoft.Network/publicIPAddresses/join/action*
+  - *Microsoft.Network/publicIPAddresses/read*
+  - *Microsoft.Network/publicIPAddresses/write*
 - Lub Przypisz wbudowaną rolę [współautor sieci][rbac-network-contributor] w podsieci w sieci wirtualnej
 
 ### <a name="storage"></a>Magazyn
 
-Może być konieczne uzyskanie dostępu do istniejących zasobów dyskowych w innej grupie zasobów. Przypisz jeden z następujących uprawnień roli:
+Konieczne może być uzyskanie dostępu do istniejących zasobów dysku w innej grupie zasobów. Przypisz jeden z następujących zestawów uprawnień ról:
 
 - Utwórz [rolę niestandardową][rbac-custom-role] i Zdefiniuj następujące uprawnienia roli:
-  - *Microsoft. COMPUTE/disks/Read*
-  - *Microsoft. COMPUTE/disks/Write*
+  - *Microsoft.Compute/disks/read*
+  - *Microsoft.Compute/disks/write*
 - Lub Przypisz wbudowaną rolę [współautor konta magazynu][rbac-storage-contributor] w grupie zasobów
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
-W przypadku korzystania z usługi Virtual Kubelet do integrowania z usługą AKS i uruchamiania Azure Container Instances (ACI) w grupie zasobów oddzielonej do klastra AKS, nazwa główna usługi musi mieć przydzielone uprawnienia *współautora* w grupie zasobów AKS.
+Jeśli do integracji z usługą AKS używasz rozwiązania Virtual Kubelet i decydujesz się na uruchamianie usługi Azure Container Instances (ACI) w grupie zasobów niezależnie od klastra AKS, jednostka usługi AKS musi otrzymać uprawnienia *Współautor* w grupie zasobów usługi ACI.
 
 ## <a name="additional-considerations"></a>Dodatkowe zagadnienia
 
-W przypadku korzystania z AKS i nazw głównych usługi Azure AD należy pamiętać o następujących kwestiach.
+Podczas korzystania z jednostek usług AKS i Azure AD należy pamiętać o następujących kwestiach.
 
-- Nazwa główna usługi dla Kubernetes jest częścią konfiguracji klastra. Nie należy jednak używać tożsamości do wdrożenia klastra.
+- Jednostka usługi dla rozwiązania Kubernetes jest częścią konfiguracji klastra. Nie należy jednak używać tożsamości do wdrażania klastra.
 - Domyślnie poświadczenia jednostki usługi są ważne przez jeden rok. [Poświadczenia nazwy głównej usługi można zaktualizować lub obrócić][update-credentials] w dowolnym momencie.
-- Każda jednostka usługi jest skojarzona z aplikacją usługi Azure AD. Nazwa główna usługi dla klastra Kubernetes może być skojarzona z dowolną prawidłową nazwą aplikacji usługi Azure AD (na przykład: *https://www.contoso.org/example* ). Adres URL aplikacji nie musi być rzeczywistym punktem końcowym.
-- Podczas określania **identyfikatora klienta**jednostki usługi należy użyć wartości `appId`.
+- Każda jednostka usługi jest skojarzona z aplikacją usługi Azure AD. Jednostka usługi dla klastra Kubernetes może zostać skojarzona z dowolną prawidłową nazwą aplikacji usługi Azure AD (na przykład *https://www.contoso.org/example* ). Adres URL dla aplikacji nie musi być rzeczywistym punktem końcowym.
+- Podczas określania **identyfikatora klienta** jednostki usługi użyj wartości `appId`.
 - Na maszynach wirtualnych węzłów agenta w klastrze Kubernetes poświadczenia jednostki usługi są przechowywane w pliku `/etc/kubernetes/azure.json`
-- W przypadku użycia polecenia [AZ AKS Create][az-aks-create] w celu automatycznego wygenerowania jednostki usługi poświadczenia jednostki usługi są zapisywane w pliku `~/.azure/aksServicePrincipal.json` na maszynie użytej do uruchomienia polecenia.
+- Po użyciu polecenia [AZ AKS Create][az-aks-create] w celu automatycznego wygenerowania jednostki usługi poświadczenia jednostki usługi są zapisywane w pliku `~/.azure/aksServicePrincipal.json` na komputerze używanym do uruchomienia polecenia.
 - Po usunięciu klastra AKS, który został utworzony przez [AZ AKS Create][az-aks-create], nazwa główna usługi utworzona automatycznie nie jest usuwana.
-    - Aby usunąć nazwę główną usługi, wykonaj zapytanie dotyczące klastra *servicePrincipalProfile. clientId* , a następnie usuń za pomocą [AZ AD App Delete][az-ad-app-delete]. Zastąp następujące nazwy grup zasobów i klastra własnymi wartościami:
+    - Aby usunąć nazwę główną usługi, wykonaj zapytanie dotyczące klastra *servicePrincipalProfile. clientId* , a następnie usuń za pomocą [AZ AD App Delete][az-ad-app-delete]. Zastąp następujące nazwy klastra i grupy zasobów własnymi wartościami:
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)

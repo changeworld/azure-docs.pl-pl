@@ -28,16 +28,16 @@ Gdy zasoby złożone zostały zaimportowane na konto usługi Automation, można 
 
 Aby można było przypisać konfigurację z zasobów złożonych w Azure Portal, należy ją utworzyć. Można to zrobić, korzystając z **konfiguracji redagowania** na stronie **Konfiguracja stanu (DSC)** , a także na kartach **konfiguracje** lub **skompilowane konfiguracje** .
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. Na stronie **konto usługi Automation** wybierz pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **konfiguracje** lub **skompilowane konfiguracje** , a następnie kliknij pozycję **Utwórz konfigurację** w menu w górnej części strony.
 1. Na etapie **podstawowe** Podaj nową nazwę konfiguracji (wymagana) i kliknij w dowolnym miejscu w wierszu każdego zasobu złożonego, który ma zostać uwzględniony w nowej konfiguracji, a następnie kliknij przycisk **dalej** lub kliknij krok **kod źródłowy** . W przypadku następujących kroków wybieramy zasoby złożone **PSExecutionPolicy** i **RenameAndDomainJoin** .
-   ![Screenshot podstawowe kroki strony Konfiguracja redagowania @ no__t-1
+   ![zrzut ekranu przedstawiający podstawowe kroki strony konfiguracji redagowania](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
 1. Krok **kod źródłowy** pokazuje, jak wygląda pozłożona konfiguracja wybranych zasobów złożonych. Można zobaczyć scalanie wszystkich parametrów i sposób przekazywania ich do zasobu złożonego. Po zakończeniu przeglądania nowego kodu źródłowego kliknij przycisk **dalej** lub kliknij etap **parametrów** .
-   ![Screenshot kroku kodu źródłowego strony redagowanie konfiguracji @ no__t-1
+   ![zrzut ekranu przedstawiający krok kod źródłowy na stronie redagowanie konfiguracji](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
 1. W kroku **Parametry** , parametr, który został uwidoczniony każdy zasób złożony, aby można było je udostępnić. Jeśli parametr ma opis, zostanie wyświetlony obok pola parametru. Jeśli pole jest parametrem typu **PSCredential** , lista rozwijana do skonfigurowania zawiera listę obiektów **poświadczeń** na bieżącym koncie usługi Automation. Dostępna jest również opcja **+ Add a Credential** . Po podaniu wszystkich wymaganych parametrów kliknij przycisk **Zapisz i skompiluj**.
-   ![Screenshot kroku o parametrach strony konfiguracji redagowania @ no__t-1
+   ![zrzut ekranu przedstawiający krok parametrów na stronie Konfiguracja redagowania](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
 Po zapisaniu nowej konfiguracji zostanie ona przesłana do kompilacji. Stan zadania kompilacji można wyświetlić jak każda zaimportowana konfiguracja. Aby uzyskać więcej informacji, zobacz [Wyświetlanie zadania kompilacji](automation-dsc-getting-started.md#viewing-a-compilation-job).
 

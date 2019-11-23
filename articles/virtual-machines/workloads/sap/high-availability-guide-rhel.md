@@ -89,7 +89,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SA
 > [!IMPORTANT]
 > Klastrowanie z obsługą wiele identyfikatorów SID oprogramowania SAP ASCS/wykres WYWOŁUJĄCYCH z systemem Red Hat Linux jako systemu operacyjnego gościa na maszynach wirtualnych platformy Azure **nie jest obsługiwane**. Klastrowanie z wieloma SIDmi opisuje instalację wielu wystąpień SAP ASCS/wykres WYWOŁUJĄCYCH z różnymi identyfikatorami SID w jednym klastrze Pacemaker.
 
-### <a name="ascs"></a>Z SCS
+### <a name="ascs"></a>(A)SCS
 
 * Konfiguracja frontonu
   * Adres IP 10.0.0.7
@@ -108,7 +108,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SA
     * 5<strong>&lt;nr&gt;</strong>14 TCP
     * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-### <a name="ers"></a>Wykres WYWOŁUJĄCYCH
+### <a name="ers"></a>ERS
 
 * Konfiguracja frontonu
   * Adres IP 10.0.0.8
@@ -262,17 +262,17 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker Red Hat Enterprise Lin
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Przygotowanie do instalacji oprogramowania SAP NetWeaver
 
-Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
+Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
 
-1. **[A]** rozpoznawanie nazw hostów
+1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
 
-   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
+   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
+   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
 
    <pre><code># IP addresses of the GlusterFS nodes
    <b>10.0.0.40 glust-0</b>
@@ -637,13 +637,13 @@ W poniższych krokach założono, że serwer aplikacji jest instalowany na serwe
 
 1. Konfiguracja rozpoznawania nazw hostów
 
-   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
+   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
+   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
 
    <pre><code># IP addresses of the GlusterFS nodes
    <b>10.0.0.40 glust-0</b>

@@ -1,5 +1,5 @@
 ---
-title: Zadania dla lidera projektu w procesie nauki danych zespołu
+title: Zadania w projekcie przewodzenia w procesie nauki o danych zespołu
 description: Szczegółowy przewodnik dotyczący zadań dla projektu, który prowadzi do zespołu procesów nauki o danych zespołowych
 author: marktab
 manager: cgronlun
@@ -48,7 +48,7 @@ W tym samouczku przyjęto założenie, że [Menedżer grupy](group-manager-tasks
 Aby klonować repozytoria i modyfikować zawartość na komputerze lokalnym lub Data Science Virtual Machine (DSVM) lub skonfigurować usługę Azure File Storage i zainstalować ją w DSVM, potrzebne są również następujące elementy:
 
 - Subskrypcja platformy Azure.
-- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zapoznaj się z [dodatkiem platformy i narzędzia](platforms-and-tools.md#appendix).
+- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).
 - Jeśli chcesz użyć DSVM, system Windows lub Linux DSVM utworzony i skonfigurowany na platformie Azure. Aby uzyskać więcej informacji i instrukcje, zapoznaj się z [dokumentacją Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - W przypadku systemu Windows DSVM na komputerze zainstalowano program [git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . W pliku *README.MD* przewiń w dół do sekcji **pobieranie i instalacja** , a następnie wybierz **najnowszy Instalator**. Pobierz instalatora *exe* ze strony Instalatora i uruchom go. 
 - W przypadku systemu Linux DSVM klucz publiczny skonfigurowany na DSVM i dodany do usługi Azure DevOps. Aby uzyskać więcej informacji i instrukcje, zobacz sekcję **Tworzenie klucza publicznego SSH** w [dodatku platformy i narzędzia](platforms-and-tools.md#appendix). 
@@ -57,7 +57,7 @@ Aby klonować repozytoria i modyfikować zawartość na komputerze lokalnym lub 
 
 Aby utworzyć repozytorium projektu w projekcie **Webteam** zespołu:
 
-1. Przejdź do strony **podsumowania** projektu zespołu przy *użyciu protokołu https: \/ @ no__t-3 @ no__t-4server name >/\<organization name >/\<team Name >* , na przykład **https: \//dev. Azure. com/DataScienceUnit/Webteam**i Wybierz **repozytoria** z lewego okienka nawigacji. 
+1. Przejdź do strony **podsumowania** projektu zespołu przy *użyciu protokołu https:\//\<nazwa serwera >/\<nazwa organizacji >/\<Nazwa zespołu >* , na przykład **https:\//dev.Azure.com/DataScienceUnit/myTeam**, a następnie wybierz pozycję **repozytoria** z lewego obszaru nawigacji. 
    
 1. Wybierz nazwę repozytorium w górnej części strony, a następnie wybierz pozycję **nowe repozytorium** z listy rozwijanej.
    
@@ -83,7 +83,7 @@ Aby wypełnić repozytorium projektu zawartością Twojego repozytorium szablon�
    
    ![Wybierz pozycję Importuj](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. W oknie dialogowym **Importowanie repozytorium git** wybierz pozycję **git** jako **Typ źródła**, a następnie wprowadź adres URL repozytorium **TeamTemplate** w obszarze **Klonowanie adresu URL**. Adres URL to *https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/\<team name >/_git/\<team Template name >* . Na przykład: **https: \//dev. Azure. com/DataScienceUnit/Webteam/_git/TeamTemplate**. 
+1. W oknie dialogowym **Importowanie repozytorium git** wybierz pozycję **git** jako **Typ źródła**, a następnie wprowadź adres URL repozytorium **TeamTemplate** w obszarze **Klonowanie adresu URL**. Adres URL to *https:\//\<nazwa serwera >/\<nazwa organizacji >/\<Nazwa zespołu >/_git/\<Nazwa repozytorium szablonu zespołu*>. Na przykład: **https:\//dev.Azure.com/DataScienceUnit/myTeam/_git/TeamTemplate**. 
    
 1. Wybierz pozycję **Importuj**. Zawartość repozytorium szablonów zespołu jest importowana do repozytorium projektu. 
    
@@ -95,6 +95,6 @@ Jeśli musisz dostosować zawartość repozytorium projektu w celu spełnienia o
 
 Poniżej znajdują się linki do szczegółowych opisów innych ról i zadań zdefiniowanych przez proces nauka danych zespołu:
 
-- [Zadania Menedżera grupy dla zespołu ds. analizy danych](group-manager-tasks.md)
-- [Zadania lidera zespołu dla zespołu ds. analizy danych](team-lead-tasks.md)
+- [Menedżer grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md)
+- [Zadania kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
 - [Indywidualne zadania współautor dla zespołu ds. analizy danych](project-ic-tasks.md)

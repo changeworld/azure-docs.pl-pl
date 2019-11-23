@@ -65,9 +65,9 @@ Widok `sys.sql_feature_restrictions` przedstawia wszystkie obecnie zdefiniowane 
 
 | Nazwa kolumny | Typ danych | Opis |
 |-------------|-----------|-------------|
-| określonej       | nvarchar (128) | Klasa obiektu, do którego stosuje się ograniczenie |
-| obiekt      | nvarchar (256) | Nazwa obiektu, do którego odnosi się ograniczenie |
-| Ona     | nvarchar (128) | Funkcja, która jest ograniczona |
+| Klasa       | nvarchar (128) | Klasa obiektu, do którego stosuje się ograniczenie |
+| obiekt      | nvarchar(256) | Nazwa obiektu, do którego odnosi się ograniczenie |
+| ona     | nvarchar (128) | Funkcja, która jest ograniczona |
 
 ## <a name="feature-restrictions"></a>Ograniczenia funkcji
 

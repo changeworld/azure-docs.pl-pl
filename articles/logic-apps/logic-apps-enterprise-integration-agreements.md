@@ -18,8 +18,8 @@ ms.locfileid: "72680415"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Tworzenie umów partnerów handlowych w programie Azure Logic Apps i zarządzanie nimi
 
-*Umowa*  
- [partnera handlowego](../logic-apps/logic-apps-enterprise-integration-partners.md) pomaga organizacjom i firmom bezproblemowo komunikować się ze sobą przez zdefiniowanie określonego standardu branżowego, który ma być używany podczas wymiany komunikatów biznesowych (B2B, Business-to-Business). Umowy zapewniają typowe korzyści, na przykład:
+*Umowa* 
+[partnera handlowego](../logic-apps/logic-apps-enterprise-integration-partners.md) pomaga organizacjom i firmom bezproblemowo komunikować się ze sobą przez zdefiniowanie określonego standardu branżowego, który ma być używany podczas wymiany komunikatów biznesowych (B2B, Business-to-Business). Umowy zapewniają typowe korzyści, na przykład:
 
 * Umożliwiają organizacjom wymianę informacji przy użyciu dobrze znanego formatu.
 * Lepsza wydajność podczas przeprowadzania transakcji B2B.
@@ -41,7 +41,7 @@ Aby utworzyć umowy dotyczące wymiany komunikatów RosettaNet, zobacz temat [Ex
 
 ## <a name="create-agreements"></a>Utwórz umowy
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 W głównym menu platformy Azure wybierz pozycję **wszystkie usługi**. W polu wyszukiwania wprowadź "integrację" jako filtr. Z wyników wybierz pozycję ten zasób: **konta integracji**
 
    ![Znajdowanie konta integracji](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
@@ -60,12 +60,12 @@ W głównym menu platformy Azure wybierz pozycję **wszystkie usługi**. W polu 
 
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa** | Tak | *umowa < — > nazwy* | Nazwa umowy |
+   | **Nazwa** | Tak | *umowa <—> nazwy* | Nazwa umowy |
    | **Typ umowy** | Tak | **AS2**, **X12**lub **EDIFACT** | Typ protokołu dla umowy. Podczas tworzenia pliku umowy zawartość tego pliku musi być zgodna z typem umowy. | |  
-   | **Partner hosta** | Tak | <*nazwę partnera hosta* > | Partner hosta reprezentuje organizację, która określa umowę |
-   | **Tożsamość hosta** | Tak | <*Identyfikator partnera hosta* > | Identyfikator partnera hosta |
-   | **Partner gościa** | Tak | <*nazwę partnera partnerskiego* > | Partner gościa reprezentuje organizację, która wykonuje działalność z partnerem hosta |
-   | **Tożsamość gościa** | Tak | <*Identyfikator partnera gościa* > | Identyfikator partnera gościa |
+   | **Partner hosta** | Tak | <*host-partner-name*> | Partner hosta reprezentuje organizację, która określa umowę |
+   | **Tożsamość hosta** | Tak | <*host-partner-identifier*> | Identyfikator partnera hosta |
+   | **Partner gościa** | Tak | <*nazwę partnera partnerskiego*> | Partner gościa reprezentuje organizację, która wykonuje działalność z partnerem hosta |
+   | **Tożsamość gościa** | Tak | <*guest-partner-identifier*> | Identyfikator partnera gościa |
    | **Ustawienia odbierania** | Różna | Różna | Te właściwości określają, jak partner hosta odbiera wszystkie komunikaty przychodzące od partnera gościa w umowie. Aby uzyskać więcej informacji, zobacz odpowiedni typ umowy: <p>- [Ustawienia komunikatu AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Ustawienia komunikatu EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [Ustawienia komunikatu X12](logic-apps-enterprise-integration-x12.md) |
    | **Ustawienia wysyłania** | Różna | Różna | Te właściwości określają, jak partner hosta wysyła wszystkie komunikaty wychodzące do partnera gościa w umowie. Aby uzyskać więcej informacji, zobacz odpowiedni typ umowy: <p>- [Ustawienia komunikatu AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Ustawienia komunikatu EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [Ustawienia komunikatu X12](logic-apps-enterprise-integration-x12.md) |
    |||||

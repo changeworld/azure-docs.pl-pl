@@ -48,13 +48,13 @@ Ponadto należy zarejestrować swoją subskrypcję do korzystania z dostawcy zas
      Wybierz subskrypcję z listy istniejących subskrypcji.
    * **Grupa zasobów**   
      Użyj istniejącej grupy zasobów lub utwórz nową.
-   * **Location**  
+   * **Lokalizacja**  
      Wybierz region, w którym będzie znajdować się konto i jego zasoby podrzędne.  
 
      ![Nowe konto usługi NetApp](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. Kliknij przycisk **Utwórz**.     
+5. Kliknij pozycję **Utwórz**.     
    Utworzone konto usługi NetApp znajduje się teraz w bloku usługi Azure NetApp Files. 
 
 > [!NOTE] 

@@ -23,7 +23,7 @@ ms.locfileid: "72430219"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Dane usługi kondycji są nieaktualne
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Agenci na maszynach lokalnych, którzy Azure AD Connect Health monitoruje okresowo przekazywać dane do usługi Azure AD Connect Health. Jeśli usługa nie odbiera danych od agenta, informacje prezentowane przez portal będą przestarzałe. Aby wyróżnić problem, usługa zgłosi **dane usługi kondycji, które nie są aktualne** . Ten alert jest generowany, gdy usługa nie otrzymała pełnych danych w ciągu ostatnich dwóch godzin.  
 
@@ -47,7 +47,7 @@ W poniższej tabeli przedstawiono typy usług odpowiadające wymaganym typom dan
 | AD DS | Usługa szczegółowych informacji usług AD DS programu Azure AD Connect Health | Wykonywanie testów syntetycznych, zbieranie informacji o topologii, metadane replikacji |  -Dodaje-TopologyInfo-JSON <br /> -Common-TestData-JSON (tworzy wyniki testu)   | 
 |  | Usługa monitorowania usług AD DS programu Azure AD Connect Health | Zbieranie danych liczników wydajności, śledzenia ETW, plików | -Licznik wydajności  <br /> -Common-TestData-JSON (przekazuje wyniki testu)  |
 | AD FS | Usługa diagnostyczna usług AD FS programu Azure AD Connect Health | Wykonaj testy syntetyczne | TestResult (tworzy wyniki testu) | 
-| | Usługa szczegółowych informacji usług AD FS programu Azure AD Connect Health  | Zbieranie metryk użycia usług ADFS | ADFS — UsageMetrics |
+| | Usługa szczegółowych informacji usług AD FS programu Azure AD Connect Health  | Zbieranie metryk użycia usług ADFS | Adfs-UsageMetrics |
 | | Usługa monitorowania usług AD FS programu Azure AD Connect Health | Zbieranie liczników wydajności dotyczących usług AD FS, śledzenia ETW, plików | TestResult (przekazuje wyniki testu) |
 
 ## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów 
@@ -59,7 +59,7 @@ Kroki wymagane do zdiagnozowania problemu są podane poniżej. Pierwszy to zesta
 
 * Upewnij się, że są zainstalowane najnowsze wersje agentów. Wyświetl [historię wydania](reference-connect-health-version-history.md). 
 * Upewnij się, że usługi agentów Azure AD Connect Health są **uruchomione** na tym komputerze. Na przykład program Connect Health dla AD FS powinien mieć trzy usługi.
-  ![Verify Azure AD Connect Health @ no__t-1
+  ![zweryfikować Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
 
 * Upewnij się, że przejdziesz do [sekcji wymagania](how-to-connect-health-agent-install.md#requirements)i spełnisz ją.
 * Za pomocą [Narzędzia do testowania połączeń](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) można wykrywać problemy z łącznością.

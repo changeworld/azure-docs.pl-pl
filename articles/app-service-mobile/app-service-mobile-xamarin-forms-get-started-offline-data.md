@@ -27,9 +27,9 @@ ms.locfileid: "72388429"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku przedstawiono funkcję synchronizacji w trybie offline w usłudze Azure Mobile Apps dla platformy Xamarin. Forms. Synchronizacja w trybie offline umożliwia użytkownikom końcowym korzystanie z aplikacji mobilnej — wyświetlanie, Dodawanie lub modyfikowanie danych — nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie przewróci do trybu online, te zmiany są synchronizowane z usługą zdalną.
 
 Ten samouczek jest oparty na rozwiązaniu Xamarin. Forms szybkiego startu dla Mobile Apps tworzonego po zakończeniu samouczka [Tworzenie aplikacji platformy Xamarin dla systemu iOS]. Rozwiązanie szybkiego startu dla platformy Xamarin. Forms zawiera kod obsługujący synchronizację w trybie offline, który należy tylko włączyć. W tym samouczku należy zaktualizować rozwiązanie szybkiego startu, aby włączyć funkcje w trybie offline platformy Azure Mobile Apps. W aplikacji zostanie również wyróżniony kod specyficzny dla trybu offline. Jeśli nie korzystasz z pobranego rozwiązania szybkiego startu, musisz dodać pakiety rozszerzenia dostępu do danych do projektu. Aby uzyskać więcej informacji o pakietach rozszerzeń serwera, zobacz [Work with the .NET zaplecz Server SDK for Azure Mobile Apps][1].
@@ -37,7 +37,7 @@ Ten samouczek jest oparty na rozwiązaniu Xamarin. Forms szybkiego startu dla Mo
 Aby dowiedzieć się więcej na temat funkcji synchronizacji w trybie offline, zobacz temat [Synchronizacja danych w trybie offline w usłudze Azure Mobile Apps][2].
 
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>Włączanie funkcji synchronizacji w trybie offline w rozwiązaniu szybkiego startu
-Kod synchronizacji w trybie offline jest dołączany do projektu C# za pomocą dyrektyw preprocesora. Gdy jest zdefiniowany symbol **offline @ no__t-1SYNC @ no__t-2ENABLED** , te ścieżki kodu są zawarte w kompilacji. W przypadku aplikacji systemu Windows należy również zainstalować platformę SQLite.
+Kod synchronizacji w trybie offline jest dołączany do projektu C# za pomocą dyrektyw preprocesora. W przypadku zdefiniowania symbolu **włączonej\_synchronizacji\_w trybie offline** te ścieżki kodu są uwzględniane w kompilacji. W przypadku aplikacji systemu Windows należy również zainstalować platformę SQLite.
 
 1. W programie Visual Studio kliknij prawym przyciskiem myszy rozwiązanie > **Zarządzanie pakietami NuGet dla rozwiązania...** , a następnie wyszukaj i zainstaluj pakiet NuGet **Microsoft. Azure. Mobile. Client. SQLiteStore** dla wszystkich projektów w rozwiązaniu.
 2. W Eksplorator rozwiązań otwórz plik TodoItemManager.cs z projektu z **przenośną** nazwą, która jest projektem biblioteki klas przenośnych, a następnie Usuń komentarz z następującej dyrektywy preprocesora:
@@ -55,7 +55,7 @@ Kod synchronizacji w trybie offline jest dołączany do projektu C# za pomocą d
     Nazwy zestawów SDK oprogramowania SQLite różnią się nieco w zależności od platformy systemu Windows.
 
 ## <a name="review-the-client-sync-code"></a>Przejrzyj kod synchronizacji klienta
-Poniżej przedstawiono krótkie omówienie tego, co jest już zawarte w kodzie samouczka wewnątrz dyrektyw `#if OFFLINE_SYNC_ENABLED`. Funkcja synchronizacji w trybie offline znajduje się w pliku projektu TodoItemManager.cs w projekcie biblioteki klas przenośnych. Aby zapoznać się z omówieniem koncepcyjnym tej funkcji, zobacz [Synchronizacja danych offline na platformie Azure Mobile Apps][2].
+Poniżej przedstawiono krótkie omówienie tego, co zostało już zawarte w kodzie samouczka wewnątrz dyrektyw `#if OFFLINE_SYNC_ENABLED`. Funkcja synchronizacji w trybie offline znajduje się w pliku projektu TodoItemManager.cs w projekcie biblioteki klas przenośnych. Aby zapoznać się z omówieniem koncepcyjnym tej funkcji, zobacz [Synchronizacja danych offline na platformie Azure Mobile Apps][2].
 
 * Przed wykonaniem jakiejkolwiek operacji na tabeli należy zainicjować magazyn lokalny. Lokalna baza danych magazynu jest inicjowana w konstruktorze klasy **TodoItemManager** przy użyciu następującego kodu:
 
@@ -131,7 +131,7 @@ Po włączeniu synchronizacji w trybie offline należy uruchomić aplikację kli
 ## <a name="update-the-sync-behavior-of-the-client-app"></a>Aktualizowanie zachowania synchronizacji aplikacji klienckiej
 W tej sekcji zmodyfikuj projekt klienta, aby symulować scenariusz w trybie offline przy użyciu nieprawidłowego adresu URL aplikacji dla zaplecza. Alternatywnie można wyłączyć połączenia sieciowe, przenosząc urządzenie do trybu samolotowego.  W przypadku dodawania lub zmieniania elementów danych te zmiany są przechowywane w magazynie lokalnym, ale nie są synchronizowane z magazynem danych zaplecza, dopóki połączenie nie zostanie ponownie nawiązane.
 
-1. W Eksplorator rozwiązań otwórz plik projektu Constants.cs z **przenośnego** projektu i zmień wartość `ApplicationURL` w celu wskazywania nieprawidłowego adresu URL:
+1. W Eksplorator rozwiązań otwórz plik projektu Constants.cs z **przenośnego** projektu i zmień wartość `ApplicationURL`, aby wskazywał nieprawidłowy adres URL:
 
         public static string ApplicationURL = @"https://your-service.azurewebsites.net/";
 2. Otwórz plik TodoItemManager.cs z **przenośnego** projektu, a następnie Dodaj **przechwycenie** dla bazowej klasy **wyjątków** do instrukcji **try... Catch** Block in **SyncAsync**. Ten blok **catch** zapisuje komunikat o wyjątku w konsoli programu w następujący sposób:
@@ -144,18 +144,18 @@ W tej sekcji zmodyfikuj projekt klienta, aby symulować scenariusz w trybie offl
 4. Zamknij aplikację i uruchom ją ponownie, aby sprawdzić, czy nowe utworzone elementy są utrwalane w magazynie lokalnym.
 5. Obowiązkowe Użyj programu Visual Studio, aby wyświetlić tabelę Azure SQL Database, aby zobaczyć, że dane w bazie danych zaplecza nie uległy zmianie.
 
-    W programie Visual Studio Otwórz **Eksplorator serwera**. Przejdź do bazy danych w **usłudze Azure**@no__t — 1**bazy danych SQL**. Kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz polecenie **Otwórz w Eksplorator obiektów SQL Server**. Teraz możesz przejść do tabeli bazy danych SQL i jej zawartości.
+    W programie Visual Studio Otwórz **Eksplorator serwera**. Przejdź do bazy danych w **usłudze Azure**->**bazy danych SQL**. Kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz polecenie **Otwórz w Eksplorator obiektów SQL Server**. Teraz możesz przejść do tabeli bazy danych SQL i jej zawartości.
 
 ## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>Aktualizowanie aplikacji klienckiej w celu ponownego nawiązania połączenia z zapleczem mobilnym
 W tej sekcji ponownie podłącz aplikację do zaplecza mobilnego, która symuluje aplikację z powrotem do stanu online. Po wykonaniu gestu odświeżania dane są synchronizowane z zapleczem mobilnym.
 
-1. Otwórz ponownie Constants.cs. Popraw wartość `applicationURL`, aby wskazywała prawidłowy adres URL.
+1. Otwórz ponownie Constants.cs. Popraw `applicationURL`, aby wskazywały prawidłowy adres URL.
 2. Skompiluj ponownie i uruchom aplikację kliencką. Aplikacja próbuje przeprowadzić synchronizację z zapleczem aplikacji mobilnej po uruchomieniu. Sprawdź, czy w konsoli debugowania nie zarejestrowano żadnych wyjątków.
 3. Obowiązkowe Wyświetl zaktualizowane dane przy użyciu Eksplorator obiektów SQL Server lub narzędzia REST, takiego jak programu Fiddler lub [Poster][6]. Zauważ, że dane zostały zsynchronizowane między bazą danych zaplecza a magazynem lokalnym.
 
     Zwróć uwagę, że dane zostały zsynchronizowane między bazą danych programu i magazynem lokalnym i zawierają elementy dodane w czasie, gdy aplikacja została odłączona.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps][2]
 * [Azure Mobile Apps .NET SDK porady][8]
 

@@ -327,7 +327,7 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage wykrywa niety
 > [!NOTE]
 > Dostępność określonych definicji Azure Policy może się różnić w zależności od Azure Government i innych chmur krajowych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po przejrzeniu mapowania kontroli planu NIST SP 800-53 R4 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat planu i sposobu wdrażania tego przykładu:
 

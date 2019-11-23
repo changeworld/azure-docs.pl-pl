@@ -118,7 +118,7 @@ Wtyczka Jenkins dla usługi Azure App Service obsługuje potok. Możesz zapozna�
 ### <a name="create-a-jenkins-pipeline"></a>Tworzenie potoku serwera Jenkins
 
 1. Otwórz stronę serwera Jenkins w przeglądarce internetowej. Wybierz pozycję **New Item** (Nowy element).
-2. Podaj nazwę zadania i wybierz pozycję **Pipeline** (Potok). Kliknij przycisk **OK**.
+2. Podaj nazwę zadania i wybierz pozycję **Pipeline** (Potok). Wybierz **OK**.
 3. Wybierz kartę **Pipeline** (Potok).
 4. W polu **Definition** (Definicja) wybierz wartość **Pipeline script from SCM** (Skrypt potoku z menedżera SCM).
 5. W polu **SCM** wybierz wartość **Git**. Wprowadź adres URL usługi GitHub dla swojego rozwidlonego repozytorium. Na przykład: https://&lt;Twoje_rozwidlone_repozytorium>.git.
@@ -186,7 +186,7 @@ W polu **Docker registry URL** (Adres URL rejestru platformy Docker) podaj adres
 ### <a name="create-a-jenkins-pipeline"></a>Tworzenie potoku serwera Jenkins    
 
 1. Otwórz stronę serwera Jenkins w przeglądarce internetowej. Wybierz pozycję **New Item** (Nowy element).
-2. Podaj nazwę zadania i wybierz pozycję **Pipeline** (Potok). Kliknij przycisk **OK**.
+2. Podaj nazwę zadania i wybierz pozycję **Pipeline** (Potok). Wybierz **OK**.
 3. Wybierz kartę **Pipeline** (Potok).
 4. W polu **Definition** (Definicja) wybierz wartość **Pipeline script from SCM** (Skrypt potoku z menedżera SCM).
 5. W polu **SCM** wybierz wartość **Git**. Wprowadź adres URL usługi GitHub dla swojego rozwidlonego repozytorium. Na przykład: https://&lt;Twoje_rozwidlone_repozytorium>.git.

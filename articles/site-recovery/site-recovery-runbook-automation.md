@@ -51,10 +51,10 @@ Po uruchomieniu skryptu wprowadza kontekst planu odzyskiwania do elementu Runboo
 | GroupID |Identyfikuje numer grupy w planie odzyskiwania, gdy plan jest uruchomiony. |
 | VmMap |Tablica wszystkich maszyn wirtualnych w grupie. |
 | Klucz VMMap |Unikatowy klucz (GUID) dla każdej maszyny wirtualnej. |
-| Identyfikator |Identyfikator subskrypcji platformy Azure, w której utworzono maszynę wirtualną. |
-| resourceGroupName | Nazwa grupy zasobów, w której znajduje się maszyna wirtualna.
+| SubscriptionId |Identyfikator subskrypcji platformy Azure, w której utworzono maszynę wirtualną. |
+| ResourceGroupName | Nazwa grupy zasobów, w której znajduje się maszyna wirtualna.
 | CloudServiceName |Nazwa usługi w chmurze platformy Azure, w której została utworzona maszyna wirtualna. |
-| Role |Nazwa maszyny wirtualnej platformy Azure. |
+| RoleName |Nazwa maszyny wirtualnej platformy Azure. |
 | RecoveryPointId|Sygnatura czasowa odzyskiwania maszyny wirtualnej. |
 
 W poniższym przykładzie przedstawiono zmienną kontekstową:
@@ -99,11 +99,11 @@ Blog Aman Sharma w usłudze w [chmurze zbierających](http://harvestingclouds.co
 
 - Jeśli dopiero zaczynasz Azure Automation, możesz [zarejestrować się](https://azure.microsoft.com/services/automation/) i [pobrać przykładowe skrypty](https://azure.microsoft.com/documentation/scripts/).
 - Upewnij się, że konto usługi Automation ma następujące moduły:
-    - AzureRM. profile
-    - AzureRM. resources
-    - AzureRM. Automation
-    - AzureRM. Network
-    - AzureRM. COMPUTE
+    - AzureRM.profile
+    - AzureRM.Resources
+    - AzureRM.Automation
+    - AzureRM.Network
+    - AzureRM.Compute
 
     Wszystkie moduły powinny być zgodne z wersjami. Najprostszym sposobem jest zawsze korzystanie z najnowszych wersji wszystkich modułów.
 
@@ -189,7 +189,7 @@ Aby uzyskać kompletny, kompleksowy skrypt w tym scenariuszu, przejrzyj [ten skr
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>Przechowywanie większej ilości informacji za pomocą złożonej zmiennej
 
-W niektórych scenariuszach może nie być możliwe utworzenie oddzielnych zmiennych dla każdego planu odzyskiwania. Rozważmy scenariusz, w którym jeden skrypt ma przypisywać publiczny adres IP na określonych maszynach wirtualnych. W innym scenariuszu możesz chcieć zastosować różne sieciowych grup zabezpieczeń na różnych maszynach wirtualnych (poza wszystkimi maszynami wirtualnymi). Należy pamiętać o następujących kwestiach:
+W niektórych scenariuszach może nie być możliwe utworzenie oddzielnych zmiennych dla każdego planu odzyskiwania. Rozważmy scenariusz, w którym jeden skrypt ma przypisywać publiczny adres IP na określonych maszynach wirtualnych. W innym scenariuszu możesz chcieć zastosować różne sieciowych grup zabezpieczeń na różnych maszynach wirtualnych (poza wszystkimi maszynami wirtualnymi). Należy pamiętać, że:
 
 - Można utworzyć skrypt do ponownego użycia dla dowolnego planu odzyskiwania.
 - Każdy plan odzyskiwania może mieć zmienną liczbę maszyn wirtualnych.
@@ -251,7 +251,7 @@ Możesz użyć tego samego skryptu dla różnych planów odzyskiwania. Wprowadź
 
 Aby wdrożyć przykładowe skrypty na koncie usługi Automation, kliknij przycisk **Wdróż na platformie Azure** .
 
-[@no__t — 1Deploy na platformę Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Wdrażanie na platformie Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 Ten film wideo zapewnia inny przykład. Przedstawiono w nim sposób odzyskiwania dwuwarstwowej aplikacji WordPress na platformę Azure:
 

@@ -144,7 +144,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |Szablon App Service Environment|Szablon usługi Resource Manager|Lokalizacja środowiska ASE|App Service Environment lokalizacji. Wartość domyślna to _zachodnie stany USA 2_.|
 |Szablon App Service Environment|Szablon usługi Resource Manager|Application Gateway przechowywanie dzienników w dniach|Przechowywanie danych w dniach. Wartość domyślna to _365_.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po przejrzeniu kroków w celu wdrożenia przykładowego planu obciążeń ISO 27001 App Service Environment/SQL Database zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o architekturze i mapowaniu formantów:
 

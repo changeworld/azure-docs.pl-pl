@@ -19,7 +19,7 @@ Te przykładowe zasady możesz wdrożyć przy użyciu następujących narzędzi:
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
 - [Interfejs wiersza polecenia platformy Azure](#azure-cli)
-- [REST API](#rest-api)
+- [Interfejs API REST](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

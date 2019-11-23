@@ -58,17 +58,17 @@ Na poniższej ilustracji przedstawiono sposób działania narzędzia Virtual Net
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed utworzeniem sieci wirtualnej należy otrzymać wiadomość potwierdzającą, która została zarejestrowana w wersji zapoznawczej, i utworzyć co najmniej jedną maszynę wirtualną, która została utworzona przy użyciu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) model wdrażania i rozwiązanie partnerskie do agregowania Naciśnij pozycję ruch w tym samym regionie świadczenia usługi Azure. Jeśli nie masz rozwiązania partnerskiego w sieci wirtualnej, zapoznaj się z tematem [rozwiązania partnerskie](#virtual-network-tap-partner-solutions) , aby wdrożyć aplikację. Możesz użyć tego samego zasobu sieci wirtualnej, aby agregować ruch z wielu interfejsów sieciowych w ramach tej samej lub różnych subskrypcji. Jeśli monitorowane interfejsy sieciowe znajdują się w różnych subskrypcjach, subskrypcje muszą być skojarzone z tą samą dzierżawą Azure Active Directory. Ponadto monitorowane interfejsy sieciowe i docelowy punkt końcowy do agregowania ruchu dla programu TAP mogą znajdować się w równorzędnych sieciach wirtualnych w tym samym regionie. Jeśli używasz tego modelu wdrażania, upewnij się, że [Komunikacja równorzędna sieci wirtualnej](virtual-network-peering-overview.md) jest włączona przed SKONFIGUROWANIEm naciskania sieci wirtualnej.
+Przed utworzeniem sieci wirtualnej należy otrzymać wiadomość potwierdzającą, która została zarejestrowana w wersji zapoznawczej, i utworzyć co najmniej jedną maszynę wirtualną, która została utworzona przy użyciu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) model wdrażania i rozwiązanie partnerskie do agregowania ruchu w ramach tego samego regionu platformy Azure. Jeśli nie masz rozwiązania partnerskiego w sieci wirtualnej, zapoznaj się z tematem [rozwiązania partnerskie](#virtual-network-tap-partner-solutions) , aby wdrożyć aplikację. Możesz użyć tego samego zasobu sieci wirtualnej, aby agregować ruch z wielu interfejsów sieciowych w ramach tej samej lub różnych subskrypcji. Jeśli monitorowane interfejsy sieciowe znajdują się w różnych subskrypcjach, subskrypcje muszą być skojarzone z tą samą dzierżawą Azure Active Directory. Ponadto monitorowane interfejsy sieciowe i docelowy punkt końcowy do agregowania ruchu dla programu TAP mogą znajdować się w równorzędnych sieciach wirtualnych w tym samym regionie. Jeśli używasz tego modelu wdrażania, upewnij się, że [Komunikacja równorzędna sieci wirtualnej](virtual-network-peering-overview.md) jest włączona przed SKONFIGUROWANIEm naciskania sieci wirtualnej.
 
 ## <a name="permissions"></a>Uprawnienia
 
 Konta używane do zastosowania konfiguracji TAP w interfejsach sieciowych muszą być przypisane do roli [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , do której przypisano wymagane akcje z poniższej tabeli:
 
-| Działanie | Nazwa |
+| Akcja | Nazwa |
 |---|---|
-| Microsoft. Network/virtualNetworkTaps/* | Wymagane do utworzenia, zaktualizowania, odczytania i usunięcia sieci wirtualnej naciśnij zasób |
-| Microsoft. Network/networkInterfaces/odczyt | Wymagane do odczytania zasobu interfejsu sieciowego, na którym zostanie skonfigurowany wybór |
-| Microsoft. Network/tapConfigurations/* | Wymagane do utworzenia, zaktualizowania, odczytania i usunięcia konfiguracji TAP w interfejsie sieciowym |
+| Microsoft.Network/virtualNetworkTaps/* | Wymagane do utworzenia, zaktualizowania, odczytania i usunięcia sieci wirtualnej naciśnij zasób |
+| Microsoft.Network/networkInterfaces/read | Wymagane do odczytania zasobu interfejsu sieciowego, na którym zostanie skonfigurowany wybór |
+| Microsoft.Network/tapConfigurations/* | Wymagane do utworzenia, zaktualizowania, odczytania i usunięcia konfiguracji TAP w interfejsie sieciowym |
 
 ## <a name="next-steps"></a>Następne kroki
 

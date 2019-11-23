@@ -39,7 +39,7 @@ Ten artykuł ma zastosowanie do usługi Azure AD interfejs API programu Graph. A
 
 W interfejs API programu Graph, aby uzyskać dostęp do danych i obiektów katalogu (innymi słowy, zasobów lub jednostek), dla których chcesz wykonywać operacje CRUD, możesz użyć adresów URL opartych na protokole Open Data (OData). Adresy URL używane w interfejs API programu Graph składają się z czterech głównych części: katalogu głównego usług, identyfikatora dzierżawy, ścieżki zasobów i opcji ciągu zapytania: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Skorzystaj z przykładu następującego adresu URL: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
-* **Katalog główny usługi**: w usłudze Azure AD interfejs API programu Graph katalog główny usługi jest zawsze https://graph.windows.net.
+* **Katalog główny usługi**: w usłudze Azure AD interfejs API programu Graph katalog główny usługi zawsze jest https://graph.windows.net.
 * **Identyfikator dzierżawy**: Ta sekcja może być zweryfikowaną (zarejestrowaną) nazwą domeny w powyższym przykładzie contoso.com. Może to być również identyfikator obiektu dzierżawy lub alias "weborganization" lub "Me". Aby uzyskać więcej informacji, zobacz temat [adresowanie jednostek i operacji w usłudze Azure AD interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview).
 * **Ścieżka zasobu**: Ta sekcja adresu URL identyfikuje zasób, z którym ma być przeprowadzana praca (użytkowników, grup, określony użytkownik lub określona grupa itp.). W powyższym przykładzie jest to "grupy" najwyższego poziomu, aby określić ten zestaw zasobów. Można również rozwiązać określony obiekt, na przykład "Users/{objectId}" lub "Users/userPrincipalName".
 * **Parametry zapytania**: znak zapytania (?) oddziela sekcję ścieżki zasobu z sekcji parametry zapytania. Parametr zapytania "API-Version" jest wymagany dla wszystkich żądań w usłudze Azure AD interfejs API programu Graph. Usługa Azure AD interfejs API programu Graph obsługuje również następujące opcje zapytania OData: **$Filter**, **$OrderBy**, **$expand**, **$Top**i **$Format**. Następujące opcje zapytania nie są obecnie obsługiwane: **$Count**, **$inlinecount**i **$Skip**. Aby uzyskać więcej informacji, zobacz temat [obsługiwane zapytania, filtry i opcje stronicowania w usłudze Azure AD interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
@@ -58,7 +58,7 @@ Aby zwrócić plik metadanych interfejs API programu Graph usługi Azure AD, Dod
 
 Na przykład `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` zwraca informacje o firmie dla katalogu contoso.com.
 
-Lub `https://graph.windows.net/contoso.com/users?api-version=1.6` wyświetla wszystkie obiekty użytkownika w katalogu contoso.com.
+Lub `https://graph.windows.net/contoso.com/users?api-version=1.6` wyświetla listę wszystkich obiektów użytkowników w katalogu contoso.com.
 
 ## <a name="using-the-azure-ad-graph-explorer"></a>Korzystanie z Eksploratora grafów usługi Azure AD
 Za pomocą Eksploratora usługi Azure AD Graph dla interfejs API programu Graph usługi Azure AD można wysyłać zapytania o dane katalogu podczas kompilowania aplikacji.
@@ -69,14 +69,14 @@ Poniższy zrzut ekranu przedstawia dane wyjściowe, które pojawią się, jeśli
 
 **Załaduj Eksplorator programu Azure AD Graph**: aby załadować narzędzie, przejdź do [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/). Kliknij przycisk **Zaloguj** i zaloguj się przy użyciu poświadczeń konta usługi Azure AD, aby uruchomić Eksploratora grafów usługi Azure AD dla dzierżawy. Jeśli uruchamiasz Eksploratora programu Graph w usłudze Azure AD przy użyciu własnej dzierżawy, ty lub administrator musi wyrazić zgodę podczas logowania. Jeśli masz subskrypcję pakietu Office 365, automatycznie masz dzierżawę usługi Azure AD. Poświadczenia używane do logowania się w usłudze Office 365 to, w rzeczywistości konta usługi Azure AD, i można użyć tych poświadczeń z Eksploratorem Azure AD Graph.
 
-**Uruchom zapytanie**: Aby uruchomić zapytanie, wpisz zapytanie w polu tekstowym żądanie, a następnie kliknij przycisk **Pobierz** lub kliknij klawisz **Enter** . Wyniki są wyświetlane w polu odpowiedź. Na przykład `https://graph.windows.net/myorganization/groups?api-version=1.6` wyświetla wszystkie obiekty grupy w katalogu zalogowanego użytkownika.
+**Uruchom zapytanie**: Aby uruchomić zapytanie, wpisz zapytanie w polu tekstowym żądanie, a następnie kliknij przycisk **Pobierz** lub kliknij klawisz **Enter** . Wyniki są wyświetlane w polu odpowiedź. Na przykład `https://graph.windows.net/myorganization/groups?api-version=1.6` wyświetla listę wszystkich obiektów grupy w katalogu zalogowanego użytkownika.
 
 Należy zwrócić uwagę na następujące funkcje i ograniczenia dotyczące Eksploratora grafów usługi Azure AD:
 
 * Możliwość autouzupełniania w zestawach zasobów. Aby wyświetlić tę funkcję, kliknij pole tekstowe żądanie (gdzie pojawia się adres URL firmy). Zestaw zasobów można wybrać z listy rozwijanej.
 * Historia żądań.
 * Obsługuje aliasy adresów "Me" i "weborganization". Na przykład można użyć `https://graph.windows.net/me?api-version=1.6` do zwrócenia obiektu użytkownika zalogowanego użytkownika lub `https://graph.windows.net/myorganization/users?api-version=1.6`, aby zwrócić wszystkich użytkowników w katalogu zalogowanego użytkownika.
-* Program obsługuje pełne operacje CRUD na własnym katalogu przy użyciu `POST`, `GET`, `PATCH` i `DELETE`.
+* Obsługuje pełne operacje CRUD na własnym katalogu przy użyciu `POST`, `GET`, `PATCH` i `DELETE`.
 * Sekcja nagłówki odpowiedzi. Ta sekcja może pomóc w rozwiązywaniu problemów występujących podczas wykonywania zapytań.
 * Podgląd JSON dla odpowiedzi z możliwościami rozwijania i zwijania.
 * Brak obsługi wyświetlania lub przekazywania fotografii miniatury.
@@ -107,7 +107,7 @@ W poniższym przykładzie użyto debugera sieci Web programu Fiddler w celu utwo
    ```
    
    > [!NOTE]
-   > Zastąp token dostępu @no__t 0your @ no__t-1 tokenem dostępu do katalogu usługi Azure AD.
+   > Zastąp &lt;token dostępu&gt; z tokenem dostępu dla katalogu usługi Azure AD.
 
 5. W polu **treść żądania** wpisz następujący kod JSON:
    

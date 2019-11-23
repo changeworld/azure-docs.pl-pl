@@ -44,7 +44,7 @@ Poniższy przewodnik zawiera instrukcje krok po kroku dotyczące tworzenia niest
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Przewodnik: tworzenie działania niestandardowego
 ### <a name="prerequisites"></a>Wymagania wstępne
-* Program Visual Studio 2012/2013/2015/2017
+* Visual Studio 2012/2013/2015/2017
 * Pobierz i zainstaluj zestaw [SDK .NET Azure](https://azure.microsoft.com/downloads/).
 
 ### <a name="azure-batch-prerequisites"></a>Wymagania wstępne Azure Batch
@@ -551,10 +551,10 @@ W tym kroku utworzysz zestawy danych reprezentujące dane wejściowe i wyjściow
    | Cinek | Godzina rozpoczęcia | Plik wyjściowy |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016 – 11-16 -00. txt |
-   | 2 |2016-11-16T01:00:00 |2016 – 11-16 -01. txt |
-   | 3 |2016-11-16T02:00:00 |2016 – 11-16 -02. txt |
+   | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
+   | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016 – 11-16 -03. txt |
-   | 5 |2016-11-16T04:00:00 |2016 – 11-16 -04. txt |
+   | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
     Należy pamiętać, że wszystkie pliki w folderze wejściowym są częścią wycinka o powyższym czasie początkowym. Po przetworzeniu tego wycinka działanie niestandardowe skanuje każdy plik i tworzy wiersz w pliku wyjściowym z liczbą wystąpień wyszukiwanego terminu ("Microsoft"). Jeśli w folderze wejściowym znajdują się trzy pliki, w pliku wyjściowym znajdują się trzy wiersze: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt itd.
 3. Aby wdrożyć **OutputDataset**, kliknij przycisk **Wdróż** na pasku poleceń.
@@ -699,7 +699,7 @@ Rozwiązywanie problemów obejmuje kilka podstawowych technik:
    Ponadto sprawdź **system-0. log** , aby uzyskać komunikaty o błędach i wyjątki systemu.
 4. Dołącz plik **PDB** do pliku zip, aby szczegóły błędu zawierały informacje, takie jak **stos wywołań** w przypadku wystąpienia błędu.
 5. Wszystkie pliki w archiwum ZIP działania niestandardowego muszą znajdować się na **najwyższym poziomie**, bez podfolderów.
-6. Upewnij się, że element **AssemblyName** (. dll), **punkt wejścia**(MyDotNetActivityNS. packageFile..... dotnet), (customactivitycontainer/. zip) i **packageLinkedService** (powinny wskazywać do magazynu obiektów blob platformy Azure **ogólnego przeznaczenia**, który zawiera plik zip), są ustawiane poprawne wartości.
+6. Upewnij się, że plik **AssemblyName** (. dll), **punkt wejścia**(MyDotNetActivityNS. webdotnet), **PackageFile** (customactivitycontainer/moje dotnet. zip) i **packageLinkedService** (powinien wskazywać magazyn obiektów **blob platformy Azure**, który zawiera pliki zip), są ustawione na poprawne wartości.
 7. Jeśli naprawiono błąd i chcesz przetworzyć wycinek ponownie, kliknij prawym przyciskiem wycinek w bloku **OutputDataset** i kliknij polecenie **Uruchom**.
 8. Jeśli zobaczysz następujący błąd, korzystasz z pakietu usługi Azure Storage w wersji > 4.3.0. Moduł uruchamiający usługi Data Factory wymaga wersji 4,3 programu WindowsAzure. Storage. Jeśli musisz użyć nowszej wersji zestawu Azure Storage, zobacz sekcję [Izolacja domeny aplikacji](#appdomain-isolation) .
 
@@ -1022,7 +1022,7 @@ namespace DataFactoryAPITestApp
 Przykład [środowiska Azure Data Factory-Local](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) w witrynie GitHub zawiera narzędzie, które pozwala debugować niestandardowe działania programu .NET w programie Visual Studio.
 
 ## <a name="sample-custom-activities-on-github"></a>Przykładowe działania niestandardowe w serwisie GitHub
-| Przykład | Jakie działanie niestandardowe wykonuje |
+| Sample | Jakie działanie niestandardowe wykonuje |
 | --- | --- |
 | Narzędzie do [pobierania danych http](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Pobiera dane z punktu końcowego HTTP do platformy Azure Blob Storage przy C# użyciu działania niestandardowego w Data Factory. |
 | [Przykład analiza tonacji Twitter](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Wywołuje model Azure Machine Learning Studio i tonacji analizę, ocenianie, prognozowanie itp. |

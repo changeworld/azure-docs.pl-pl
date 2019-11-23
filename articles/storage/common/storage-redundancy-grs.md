@@ -16,13 +16,13 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 09/29/2019
 ms.locfileid: "71670803"
 ---
-# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Magazyn Geograficznie nadmiarowy (GRS): Replikacja między regionami w ramach usługi Azure Storage
+# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Magazyn Geograficznie nadmiarowy (GRS): replikacja w wielu regionach dla usługi Azure Storage
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
 
 ## <a name="read-access-geo-redundant-storage"></a>Magazyn Geograficznie nadmiarowy do odczytu
 Magazyn Geograficznie nadmiarowy dostępny do odczytu (RA-GRS) maksymalizuje dostępność dla konta magazynu. RA-GRS zapewnia dostęp tylko do odczytu do danych w lokalizacji pomocniczej, a także do replikacji geograficznej w dwóch regionach.
 
-Po włączeniu dostępu tylko do odczytu do danych w regionie pomocniczym dane są dostępne w pomocniczym punkcie końcowym, a także w podstawowym punkcie końcowym dla konta magazynu. Pomocniczy punkt końcowy jest podobny do podstawowego punktu końcowego, ale dołącza sufiks `–secondary` do nazwy konta. Na przykład jeśli podstawowy punkt końcowy Blob service ma `myaccount.blob.core.windows.net`, wówczas pomocniczy punkt końcowy to `myaccount-secondary.blob.core.windows.net`. Klucze dostępu dla konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
+Po włączeniu dostępu tylko do odczytu do danych w regionie pomocniczym dane są dostępne w pomocniczym punkcie końcowym, a także w podstawowym punkcie końcowym dla konta magazynu. Pomocniczy punkt końcowy jest podobny do podstawowego punktu końcowego, ale dołącza sufiks `–secondary` do nazwy konta. Na przykład jeśli podstawowy punkt końcowy Blob service jest `myaccount.blob.core.windows.net`, zostanie `myaccount-secondary.blob.core.windows.net`pomocniczy punkt końcowy. Klucze dostępu dla konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
 
 Zagadnienia, które należy wziąć pod uwagę podczas korzystania z usługi RA-GRS:
 
@@ -43,9 +43,9 @@ Zagadnienia, które należy wziąć pod uwagę podczas korzystania z usługi RA-
    * Czas wymagany przez platformę Azure do przeprowadzenia przejścia w tryb failover przez zmianę podstawowych wpisów DNS w taki sposób, aby wskazywała lokalizację dodatkową.
 
 ## <a name="paired-regions"></a>Sparowane regiony 
-Podczas tworzenia konta magazynu należy wybrać region podstawowy dla konta. Sparowany region pomocniczy jest określany na podstawie regionu podstawowego i nie można go zmienić. Aby uzyskać aktualne informacje dotyczące regionów obsługiwanych przez platformę Azure, zobacz @no__t 0Business — ciągłość i odzyskiwanie po awarii (BCDR): Sparowane regiony](../../best-practices-availability-paired-regions.md)platformy Azure.
+Podczas tworzenia konta magazynu należy wybrać region podstawowy dla konta. Sparowany region pomocniczy jest określany na podstawie regionu podstawowego i nie można go zmienić. Aby uzyskać aktualne informacje dotyczące regionów obsługiwanych przez platformę Azure, zobacz temat [ciągłość działania i odzyskiwanie po awarii (BCDR): wielosparowane regiony platformy Azure](../../best-practices-availability-paired-regions.md).
 
 ## <a name="see-also"></a>Zobacz także
 - [Replikacja usługi Azure Storage](storage-redundancy.md)
-- [Magazyn lokalnie nadmiarowy (LRS): Niski koszt nadmiarowości danych dla usługi Azure Storage](storage-redundancy-lrs.md)
-- [Magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności](storage-redundancy-zrs.md)
+- [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](storage-redundancy-lrs.md)
+- [Magazyn strefowo nadmiarowy (ZRS): aplikacje usługi Azure Storage o wysokiej dostępności](storage-redundancy-zrs.md)

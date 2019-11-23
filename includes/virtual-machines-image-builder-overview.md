@@ -20,7 +20,7 @@ Konstruktor obrazów maszyn wirtualnych platformy Azure (Azure Image Builder) um
 > Usługa Azure Image Builder jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkcje do testowania
+## <a name="preview-features"></a>Funkcje w wersji zapoznawczej
 
 W przypadku wersji zapoznawczej te funkcje są obsługiwane:
 
@@ -33,11 +33,11 @@ W przypadku wersji zapoznawczej te funkcje są obsługiwane:
 - Tworzenie obrazów w formacie VHD.
  
 
-## <a name="regions"></a>Regiony
+## <a name="regions"></a>Regions
 Usługa Azure Image Builder będzie dostępna w wersji zapoznawczej w tych regionach. Obrazy można rozpowszechniać poza tymi regionami.
 - Wschodnie stany USA
 - Wschodnie stany USA 2
-- Zachodnio-środkowe stany USA
+- Środkowo-zachodnie stany USA
 - Zachodnie stany USA
 - Zachodnie stany USA 2
 
@@ -46,10 +46,10 @@ Program AIB obsługuje obrazy podstawowej systemu operacyjnego Azure Marketplace
 - Ubuntu 18.04
 - Ubuntu 16.04
 - RHEL 7,6
-- CentOS 7,6
+- CentOS 7.6
 - Windows 10 RS5 Enterprise/Professional/Enterprise for Virtual Desktop (EVD) 
 - Windows 2016
-- System Windows 2019
+- Windows 2019
 
 AIB będzie obsługiwał RHEL ISO jako źródło dla:
 - RHEL 7,3
@@ -58,7 +58,7 @@ AIB będzie obsługiwał RHEL ISO jako źródło dla:
 
 RHEL 7,6 obrazów ISO nie są obsługiwane, ale są testowane.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 
 ![Koncepcyjne rysowanie programu Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -72,9 +72,9 @@ Konstruktor obrazów platformy Azure to w pełni zarządzana usługa platformy A
 ![Koncepcyjne rysowanie procesu usługi Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Utwórz szablon obrazu jako plik JSON. Ten plik JSON zawiera informacje o źródle, dostosowywaniu i dystrybucji obrazu. Istnieje wiele przykładów w [repozytorium GitHub usługi Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
-1. Prześlij go do usługi, spowoduje to utworzenie artefaktu szablonu obrazu w określonej grupie zasobów. W tle program Image Builder pobierze obraz źródłowy lub plik ISO oraz skrypty zgodnie z wymaganiami. Są one przechowywane w oddzielnej grupie zasobów, która jest tworzona automatycznie w ramach subskrypcji, w formacie: IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName >. 
-1. Po utworzeniu szablonu obrazu można utworzyć obraz. W konstruktorze obrazów w tle program tworzy maszynę wirtualną (D1v2), Sieć, publiczny adres IP i magazyn w IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > grupy zasobów.
-1. W ramach tworzenia obrazu Konstruktor obrazów dystrybuuje obraz zgodnie z szablonem, a następnie usuwa dodatkowe zasoby w IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > grupę zasobów, która została utworzona dla tego procesu.
+1. Prześlij go do usługi, spowoduje to utworzenie artefaktu szablonu obrazu w określonej grupie zasobów. W tle program Image Builder pobierze obraz źródłowy lub plik ISO oraz skrypty zgodnie z wymaganiami. Są one przechowywane w oddzielnej grupie zasobów, która jest tworzona automatycznie w ramach subskrypcji, w formacie: IT_\<DestinationResourceGroup > _\<templateName >. 
+1. Po utworzeniu szablonu obrazu można utworzyć obraz. W konstruktorze obrazów w tle program używa szablonu i plików źródłowych do tworzenia maszyny wirtualnej (D1v2), sieci, publicznego adresu IP i magazynu w IT_\<DestinationResourceGroup > _\<templateName > grupę zasobów.
+1. W ramach tworzenia obrazu Konstruktor obrazów dystrybuuje obraz zgodnie z szablonem, a następnie usuwa dodatkowe zasoby w IT_\<DestinationResourceGroup > _\<templateName > grupę zasobów utworzoną dla tego procesu.
 
 
 ## <a name="permissions"></a>Uprawnienia
@@ -98,7 +98,7 @@ Jeśli nie można znaleźć konta usługi, może to oznaczać, że subskrypcja, 
 ## <a name="costs"></a>Koszty
 Podczas tworzenia, kompilowania i przechowywania obrazów przy użyciu usługi Azure Image Builder naliczane są koszty obliczeń, sieci i magazynu. Koszty te są podobne do kosztów ponoszonych w ramach ręcznego tworzenia obrazów niestandardowych. W przypadku zasobów opłata zostanie naliczona zgodnie z stawką za platformę Azure. 
 
-Podczas tworzenia obrazu pliki są pobierane i przechowywane w grupie zasobów `IT_<DestinationResourceGroup>_<TemplateName>`, co spowoduje powstanie małych kosztów magazynowania. Jeśli nie chcesz ich zachować, Usuń **szablon obrazu** po skompilowaniu obrazu.
+Podczas procesu tworzenia obrazu pliki są pobierane i przechowywane w `IT_<DestinationResourceGroup>_<TemplateName>` grupie zasobów, co spowoduje powstanie małych kosztów magazynowania. Jeśli nie chcesz ich zachować, Usuń **szablon obrazu** po skompilowaniu obrazu.
  
 Konstruktor obrazów tworzy maszynę wirtualną przy użyciu D1v2 rozmiaru maszyny wirtualnej oraz magazynu i sieci potrzebnych dla maszyny wirtualnej. Te zasoby będą trwać na czas trwania procesu kompilacji i zostaną usunięte po zakończeniu tworzenia obrazu przez konstruktora obrazu. 
  

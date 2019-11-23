@@ -25,7 +25,7 @@ Aby krokowo poprowadzić ten przewodnik, musisz:
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Wyświetlanie listy parametrów konfiguracji serwera dla Azure Database for MySQL Server
 Aby wyświetlić listę wszystkich modyfikowalnych parametrów na serwerze i ich wartości, uruchom polecenie [AZ MySQL Server Configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) .
 
-Dla serwera **mydemoserver.MySQL.Database.Azure.com** można wyświetlić listę parametrów konfiguracji serwera w obszarze Grupa zasobów.
+Dla serwera **mydemoserver.MySQL.Database.Azure.com** można wyświetlić listę parametrów konfiguracji serwera w **obszarze Grupa zasobów**.
 ```azurecli-interactive
 az mysql server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
@@ -34,14 +34,14 @@ Aby zapoznać się z definicją każdego z wymienionych parametrów, zobacz sekc
 ## <a name="show-server-configuration-parameter-details"></a>Pokaż szczegóły parametru konfiguracji serwera
 Aby wyświetlić szczegóły dotyczące określonego parametru konfiguracji dla serwera, uruchom polecenie [AZ MySQL Server Configuration show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) .
 
-W tym przykładzie przedstawiono szczegółowe informacje o powolnych **\_parametrach konfiguracji serwera dziennika zapytania\_** dla serwera mydemoserver.MySQL.Database.Azure.com w obszarze Grupa zasobów.
+W tym przykładzie przedstawiono szczegółowe informacje o **powolnych\_zapytań\_** konfiguracji serwera dzienników dla serwera **mydemoserver.MySQL.Database.Azure.com** w obszarze Grupa zasobów **.**
 ```azurecli-interactive
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-a-server-configuration-parameter-value"></a>Modyfikowanie wartości parametru konfiguracji serwera
 Można również zmodyfikować wartość określonego parametru konfiguracji serwera, który aktualizuje podstawową wartość konfiguracyjną dla aparatu serwera MySQL. Aby zaktualizować konfigurację, użyj polecenia [AZ MySQL Server Configuration Set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) . 
 
-Aby zaktualizować parametr konfiguracji " **wolno @ no__t-1query @ no__t-2log** Server" serwera **mydemoserver.MySQL.Database.Azure.com** w obszarze Grupa zasobów **.**
+Aby zaktualizować parametr konfiguracyjny **powolnej\_kwerendy\_dziennik** konfiguracji serwera **mydemoserver.MySQL.Database.Azure.com** w obszarze Grupa zasobów **.**
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -49,7 +49,7 @@ Jeśli chcesz zresetować wartość parametru konfiguracji, Pomiń opcjonalny pa
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
-Ten kod Resetuje konfigurację **dziennika\_wolnych zapytań\_** do wartości domyślnej. 
+Ten kod resetuje **powolne\_kwerendy\_konfiguracji dziennika** do wartości **domyślnej.** 
 
 ## <a name="working-with-the-time-zone-parameter"></a>Praca z parametr strefy czasowej
 
@@ -74,7 +74,7 @@ SELECT name FROM mysql.time_zone_name;
 
 Strefę czasową na poziomie globalnym można ustawić za pomocą polecenia [AZ MySQL Server Configuration Set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) .
 
-Następujące polecenie aktualizuje parametr konfiguracji serwera **strefy\_czasowej** serwera **mydemoserver.MySQL.Database.Azure.com** w obszarze Grupa zasobów zasobu do **Stanów Zjednoczonych/Pacyfiku**.
+Następujące polecenie aktualizuje **czas\_** parametr **konfiguracji serwera strefy w obszarze Grupa** **zasobów zasobu do** **USA/Pacyfik**.
 
 ```azurecli-interactive
 az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"

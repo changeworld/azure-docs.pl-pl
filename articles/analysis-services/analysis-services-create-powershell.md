@@ -34,7 +34,7 @@ Aby utworzyć serwer w ramach subskrypcji, należy użyć modułu [Az.AnalysisSe
 Import-Module Az.AnalysisServices
 ```
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 

@@ -25,7 +25,7 @@ Aby krokowo poprowadzić ten przewodnik, musisz:
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania
 Serwer można skonfigurować tak, aby mógł uzyskiwać dostęp do dzienników zapytań i dzienników błędów. Dzienniki błędów mogą mieć informacje dotyczące autopróżni, połączeń i punktów kontrolnych.
 1. Włącz rejestrowanie.
-2. Aby włączyć rejestrowanie zapytań, zaktualizuj **Dziennik @ no__t-1statement** i **log @ no__t-3min @ no__t-4duration @ no__t-5statement**.
+2. Aby włączyć rejestrowanie zapytań, należy zaktualizować instrukcję **\_dziennika** i **dziennik\_minimalnej\_czasie trwania instrukcji\_** .
 3. Aktualizowanie okresu przechowywania.
 
 Aby uzyskać więcej informacji, zobacz [Dostosowywanie parametrów konfiguracji serwera](howto-configure-server-parameters-using-cli.md).
@@ -33,7 +33,7 @@ Aby uzyskać więcej informacji, zobacz [Dostosowywanie parametrów konfiguracji
 ## <a name="list-logs"></a>Wyświetl listę dzienników
 Aby wyświetlić listę dostępnych plików dziennika dla serwera, uruchom polecenie [AZ Postgres Server-Logs list](/cli/azure/postgres/server-logs) .
 
-Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.Postgres.Database.Azure.com** w **obszarze Grupa zasobów**. Następnie należy skierować listę plików dziennika do pliku tekstowego o nazwie **log @ no__t-1files\_list.txt**.
+Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.Postgres.Database.Azure.com** w **obszarze Grupa zasobów**. Następnie należy skierować listę plików dziennika do pliku tekstowego o nazwie **log\_files\_list. txt**.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

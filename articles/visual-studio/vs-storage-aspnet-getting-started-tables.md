@@ -23,9 +23,9 @@ ms.locfileid: "72298882"
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure Table Storage i usługami połączonymi programu Visual Studio (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa to magazyn danych NoSQL, który akceptuje uwierzytelnione wywołania z chmury platformy Azure i poza nią. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.
+Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz i na zewnątrz chmury platformy Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.
 
 W tym samouczku pokazano, jak napisać kod ASP.NET dla niektórych typowych scenariuszy przy użyciu jednostek usługi Azure Table Storage. Te scenariusze obejmują tworzenie tabeli i Dodawanie, wykonywanie zapytań i usuwanie jednostek tabel. 
 
@@ -115,7 +115,7 @@ Poniższe kroki ilustrują sposób tworzenia tabeli:
     }
     ```
 
-1. W ramach metody **Create** można uzyskać obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W ramach metody **Create** można uzyskać obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -150,7 +150,7 @@ Poniższe kroki ilustrują sposób tworzenia tabeli:
 
 1. W oknie dialogowym **Dodawanie widoku** w polu Nazwa widoku wprowadź wartość **Utwórz** , a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `CreateTable.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `CreateTable.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @{
@@ -178,7 +178,7 @@ Poniższe kroki ilustrują sposób tworzenia tabeli:
 
 ## <a name="add-an-entity-to-a-table"></a>Dodawanie jednostki do tabeli
 
-*Jednostki* mapują do obiektów C @ no__t-1 przy użyciu klasy niestandardowej pochodnej od **klasy tableentity**. Aby dodać jednostkę do tabeli, należy utworzyć klasę, która definiuje właściwości jednostki. W tej sekcji zobaczysz, jak zdefiniować klasę jednostki, która używa imienia klienta jako klucza wiersza i nazwiska jako klucza partycji. Razem klucz partycji i klucz wiersza jednostki jednoznacznie identyfikują jednostkę w tabeli. Jednostki z tym samym kluczem partycji mogą być przeszukiwane szybciej niż jednostki o różnych kluczach partycji, niemniej użycie różnych kluczy partycji umożliwia zwiększenie skalowalności operacji równoległych. Dla każdej właściwości, która powinna być przechowywana w usłudze Table Service, właściwość musi być właściwością publiczną obsługiwanego typu, która ujawnia zarówno ustawienia, jak i pobieranie wartości.
+*Jednostki* mapują do obiektów C\# przy użyciu klasy niestandardowej pochodnej od **klasy tableentity**. Aby dodać jednostkę do tabeli, należy utworzyć klasę, która definiuje właściwości jednostki. W tej sekcji zobaczysz, jak zdefiniować klasę jednostki, która używa imienia klienta jako klucza wiersza i nazwiska jako klucza partycji. Razem klucz partycji i klucz wiersza jednostki jednoznacznie identyfikują jednostkę w tabeli. Jednostki z tym samym kluczem partycji mogą być przeszukiwane szybciej niż jednostki o różnych kluczach partycji, niemniej użycie różnych kluczy partycji umożliwia zwiększenie skalowalności operacji równoległych. Dla każdej właściwości, która powinna być przechowywana w usłudze Table Service, właściwość musi być właściwością publiczną obsługiwanego typu, która ujawnia zarówno ustawienia, jak i pobieranie wartości.
 Klasa jednostki *musi* deklarować publiczny Konstruktor bez parametrów.
 
 > [!NOTE]
@@ -204,7 +204,7 @@ Klasa jednostki *musi* deklarować publiczny Konstruktor bez parametrów.
     }
     ```
 
-1. W metodzie **AddEntity** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie **AddEntity** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -253,7 +253,7 @@ Klasa jednostki *musi* deklarować publiczny Konstruktor bez parametrów.
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź **AddEntity** dla nazwy widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `AddEntity.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `AddEntity.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @{
@@ -299,7 +299,7 @@ Oprócz możliwości [dodawania jednostki do tabeli pojedynczo](#add-an-entity-t
     }
     ```
 
-1. W metodzie **addentities** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie **addentities** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -357,7 +357,7 @@ Oprócz możliwości [dodawania jednostki do tabeli pojedynczo](#add-an-entity-t
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź **addentities** dla nazwy widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `AddEntities.cshtml` i zmodyfikuj go tak, aby wyglądał następująco.
+1. Otwórz `AddEntities.cshtml`i zmodyfikuj go tak, aby wyglądał następująco.
 
     ```csharp
     @model IEnumerable<Microsoft.WindowsAzure.Storage.Table.TableResult>
@@ -419,7 +419,7 @@ W tej części przedstawiono sposób uzyskiwania pojedynczej jednostki z tabeli 
     }
     ```
 
-1. W ramach metody **GetSingle** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W ramach metody **GetSingle** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -438,7 +438,7 @@ W tej części przedstawiono sposób uzyskiwania pojedynczej jednostki z tabeli 
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Utwórz obiekt operacji pobierania, który pobiera obiekt Entity pochodzący z **klasy tableentity**. Pierwszy parametr to *partitionKey*, a drugi parametr to *rowKey*. Korzystając z klasy **CustomerEntity** i danych przedstawionych w sekcji [Dodaj partię jednostek do tabeli](#add-a-batch-of-entities-to-a-table), Poniższy fragment kodu wysyła zapytanie do tabeli dla jednostki **CustomerEntity** o wartości *partitionKey* "Kowalski" i  *rowKey* wartość "Ben":
+1. Utwórz obiekt operacji pobierania, który pobiera obiekt Entity pochodzący z **klasy tableentity**. Pierwszy parametr to *partitionKey*, a drugi parametr to *rowKey*. Korzystając z klasy **CustomerEntity** i danych przedstawionych w sekcji [Dodaj partię jednostek do tabeli](#add-a-batch-of-entities-to-a-table), Poniższy fragment kodu wysyła zapytanie do tabeli dla jednostki **CustomerEntity** o wartości *partitionKey* "Kowalski" i *rowKey* wartość "Ben":
 
     ```csharp
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
@@ -460,7 +460,7 @@ W tej części przedstawiono sposób uzyskiwania pojedynczej jednostki z tabeli 
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź wartość **GetSingle** dla nazwy widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `GetSingle.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `GetSingle.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -519,7 +519,7 @@ Jak wspomniano w sekcji, [Dodaj jednostkę do tabeli](#add-an-entity-to-a-table)
     }
     ```
 
-1. W metodzie **getpartition** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie **getpartition** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -569,7 +569,7 @@ Jak wspomniano w sekcji, [Dodaj jednostkę do tabeli](#add-an-entity-to-a-table)
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź wartość **getpartition** dla nazwy widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `GetPartition.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `GetPartition.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @model IEnumerable<StorageAspnet.Models.CustomerEntity>
@@ -629,7 +629,7 @@ W tej sekcji przedstawiono sposób usuwania jednostki z tabeli.
     }
     ```
 
-1. W metodzie **DeleteEntity** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
+1. W metodzie **DeleteEntity** Pobierz obiekt **CloudStorageAccount** , który reprezentuje informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure: (Zmień *&lt;Storage-account-name >* na nazwę konta usługi Azure Storage, do którego uzyskujesz dostęp).
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -671,7 +671,7 @@ W tej sekcji przedstawiono sposób usuwania jednostki z tabeli.
 
 1. W oknie dialogowym **Dodawanie widoku** wprowadź **DeleteEntity** w polu Nazwa widoku, a następnie wybierz pozycję **Dodaj**.
 
-1. Otwórz `DeleteEntity.cshtml` i zmodyfikuj go tak, aby wyglądał następująco:
+1. Otwórz `DeleteEntity.cshtml`i zmodyfikuj go tak, aby wyglądał następująco:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult

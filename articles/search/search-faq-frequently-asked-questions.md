@@ -23,7 +23,7 @@ ms.locfileid: "72792907"
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Jak platforma Azure Wyszukiwanie poznawcze różni się od wyszukiwania pełnotekstowego w systemie DBMS?
 
-Usługa Azure Wyszukiwanie poznawcze obsługuje wiele źródeł danych, [analizę językową dla wielu języków](https://docs.microsoft.com/rest/api/searchservice/language-support), [niestandardową analizę dla interesujących i nietypowych danych wejściowych](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), wyszukiwanie rangi przy użyciu [profilów oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)i środowiska użytkownika funkcje takie jak typeahead, wyróżnianie trafień i nawigacja aspektów. Zawiera również inne funkcje, takie jak synonimy i rozbudowana składnia zapytań, ale zazwyczaj nie odróżniają funkcji.
+Usługa Azure Wyszukiwanie poznawcze obsługuje wiele źródeł danych, [analizę językową dla wielu języków](https://docs.microsoft.com/rest/api/searchservice/language-support), [niestandardową analizę dla interesujących i nietypowych danych wejściowych](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), wyszukiwania rangi przy użyciu [profilów oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)i funkcji środowiska użytkownika, takich jak typeahead, wyróżnianie trafień i nawigacja aspektów. Zawiera również inne funkcje, takie jak synonimy i rozbudowana składnia zapytań, ale zazwyczaj nie odróżniają funkcji.
 
 ### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Jaka jest różnica między usługą Azure Wyszukiwanie poznawcze i Elasticsearch?
 

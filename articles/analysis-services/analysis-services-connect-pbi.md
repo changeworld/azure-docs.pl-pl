@@ -46,7 +46,7 @@ Po utworzeniu serwera na platformie Azure i wdrożeniu modelu tabelarycznego uż
 1. Utwórz plik Power BI Desktop, który ma połączenie na żywo z modelem na serwerze.
 2. W [Power BI](https://powerbi.microsoft.com)kliknij pozycję **Pobierz dane** > **plików**, a następnie Znajdź i wybierz plik pbix.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 [Połącz z Azure Analysis Services](analysis-services-connect.md)   
 [Biblioteki klienckie](analysis-services-data-providers.md)
 

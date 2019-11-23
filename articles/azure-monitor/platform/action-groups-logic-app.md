@@ -19,7 +19,7 @@ ms.locfileid: "72027703"
 
 W tym artykule opisano sposób konfigurowania i wyzwalania aplikacji logiki w celu utworzenia konwersacji w usłudze Microsoft Teams, gdy zostanie wyzwolony alert.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Po wyzwoleniu alertu Azure Monitor jest on wywoływany przez [grupę akcji](../../azure-monitor/platform/action-groups.md). Grupy akcji umożliwiają wywoływanie co najmniej jednej akcji w celu powiadomienia innych o alercie, a także ich korygowania.
 
 Ogólny proces to:
@@ -111,7 +111,7 @@ Ten proces jest podobny, jeśli chcesz, aby aplikacja logiki wykonywała inną a
 
 12. Skonfiguruj akcję Microsoft Teams. **Projektant Logic Apps** prosi o uwierzytelnienie na koncie pakietu Office 365. Wybierz **Identyfikator zespołu** i **Identyfikator kanału** , do którego ma zostać wysłana wiadomość.
 
-13. Skonfiguruj komunikat przy użyciu kombinacji tekstu statycznego i odwołań do \<fields @ no__t-1 w zawartości dynamicznej. Skopiuj i wklej następujący tekst do pola **Message** :
+13. Skonfiguruj komunikat przy użyciu kombinacji tekstu statycznego i odwołań do pól \<\> w zawartości dynamicznej. Skopiuj i wklej następujący tekst do pola **Message** :
 
     ```text
       Activity Log Alert: <eventSource>
@@ -120,7 +120,7 @@ Ten proces jest podobny, jeśli chcesz, aby aplikacja logiki wykonywała inną a
       resourceId: <resourceId>
     ```
 
-    Następnie wyszukaj i Zastąp \<fields @ no__t-1 dynamicznymi tagami zawartości o tej samej nazwie.
+    Następnie wyszukaj i Zastąp pola \<\> za pomocą tagów zawartości dynamicznej o tej samej nazwie.
 
     > [!NOTE]
     > Istnieją dwa pola dynamiczne o nazwie **status**. Dodaj oba te pola do komunikatu. Użyj pola znajdującego się w zbiorze właściwości **activityLog** i Usuń inne pole. Umieść kursor nad polem **stanu** , aby wyświetlić w pełni kwalifikowane odwołanie do pola, jak pokazano na poniższym zrzucie ekranu:
@@ -196,7 +196,7 @@ Wpisy Azure Service Health są częścią dziennika aktywności. Proces tworzeni
 
    1. W przypadku warunku **if true** postępuj zgodnie z instrukcjami podanymi w sekcji kroki od 11 do 13 w temacie [Tworzenie alertu dziennika aktywności](#create-an-activity-log-alert-administrative) , aby dodać akcję Microsoft Teams.
 
-   1. Zdefiniuj komunikat przy użyciu kombinacji HTML i zawartości dynamicznej. Skopiuj i wklej następującą zawartość do pola **wiadomości** . Zastąp pola `[incidentType]`, `[trackingID]`, `[title]` i `[communication]` tagami zawartości dynamicznej o tej samej nazwie:
+   1. Zdefiniuj komunikat przy użyciu kombinacji HTML i zawartości dynamicznej. Skopiuj i wklej następującą zawartość do pola **wiadomości** . Zamień pola `[incidentType]`, `[trackingID]`, `[title]`i `[communication]` na dynamiczne Tagi zawartości o tej samej nazwie:
 
        ```html
        <p>
@@ -285,7 +285,7 @@ Proces tworzenia alertu dotyczącego metryki jest podobny do [tworzenia alertu d
 
       !["Akcja po warunku alertu metryki"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "alertu metryki \"Akcja po spełnieniu warunku")
 
-  1. W warunku w **przypadku wartości false** Zdefiniuj akcję Microsoft Teams, aby komunikować się, że alert metryki nie jest zgodny z oczekiwaniami aplikacji logiki. Uwzględnij ładunek JSON. Zwróć uwagę, jak odwoływać się do zawartości dynamicznej `triggerBody` w wyrażeniu `json()`.
+  1. W warunku w **przypadku wartości false** Zdefiniuj akcję Microsoft Teams, aby komunikować się, że alert metryki nie jest zgodny z oczekiwaniami aplikacji logiki. Uwzględnij ładunek JSON. Zwróć uwagę, jak odwoływać się do `triggerBody` zawartości dynamicznej w wyrażeniu `json()`.
 
       !["Akcja wpisu alertu Metryka"]alert dotyczący(media/action-groups-logic-app/metric-alert-false-condition-post-action.png "metryki \"Akcja po operacji post") "
 

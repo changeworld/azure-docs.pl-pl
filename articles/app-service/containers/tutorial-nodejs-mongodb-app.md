@@ -123,7 +123,7 @@ Aby w dowolnym momencie zatrzymać środowisko Node.js, naciśnij w terminalu kl
 
 W tym kroku utworzysz konto bazy danych przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Aplikacja wdrożona na platformie Azure używa tej bazy danych w chmurze.
 
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -188,7 +188,7 @@ Skopiuj wartość `primaryMasterKey`. Ta informacja będzie potrzebna w następn
 
 W lokalnym repozytorium MEAN.js utwórz w folderze _config/env/_ plik o nazwie _local-production.js_. Plik _gitignore_ skonfigurowano w celu przechowywania tego pliku poza repozytorium.
 
-Skopiuj do niego poniższy kod. Zastąp dwa symbole zastępcze *\<cosmosdb-name >* nazwą bazy danych Cosmos DB i Zastąp symbol zastępczy *\<primary-master-Key >* kluczem skopiowanym w poprzednim kroku.
+Skopiuj do niego poniższy kod. Pamiętaj, aby zastąpić dwa *\<cosmosdb-name >* symbolami zastępczymi Cosmos DB Nazwa bazy danych i Zastąp symbol zastępczy *\<głównego-głównego-klucza >* z kluczem skopiowanym w poprzednim kroku.
 
 ```javascript
 module.exports = {
@@ -259,13 +259,13 @@ Domyślnie w projekcie MEAN.js plik _config/env/local-production.js_ jest przech
 
 Aby określić ustawienia aplikacji, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell.
 
-W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `MONGODB_URI` w aplikacji platformy Azure. Zastąp *\<APP-name >* , *\<cosmosdb-name >* i *@no__t 5primary-Master-Key >* symbolami zastępczymi.
+W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `MONGODB_URI` w aplikacji platformy Azure. Zastąp *\<> nazwy aplikacji*, *\<cosmosdb-name >* i\<symbole zastępcze *primary-Master-Key >* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
 ```
 
-W kodzie Node. js masz [dostęp do tego ustawienia aplikacji](configure-language-nodejs.md#access-environment-variables) z `process.env.MONGODB_URI`, podobnie jak w przypadku dostępu do dowolnej zmiennej środowiskowej.
+W kodzie Node. js [dostęp do tego ustawienia aplikacji jest uzyskiwany](configure-language-nodejs.md#access-environment-variables) za pomocą `process.env.MONGODB_URI`, podobnie jak w przypadku dostępu do dowolnej zmiennej środowiskowej.
 
 W lokalnym repozytorium MEAN.js otwórz plik _config/env/production.js_ (nie _config/env/local-production.js_), w którym znajduje się konfiguracja specyficzna dla środowiska produkcyjnego. Domyślna aplikacja MEAN.js jest już skonfigurowana do używania utworzonej zmiennej środowiskowej `MONGODB_URI`.
 
@@ -445,7 +445,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-Po zakończeniu operacji `git push` przejdź do aplikacji platformy Azure i wypróbuj nowe funkcje.
+Po ukończeniu operacji `git push` przejdź do aplikacji platformy Azure i wypróbuj nowe funkcje.
 
 ![Zmiany w modelu i bazie danych opublikowane na platformie Azure](media/tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 
@@ -483,7 +483,7 @@ Które czynności umiesz wykonać:
 > * Strumieniowe przesyłanie dzienników z platformy Azure do terminala
 > * Zarządzanie aplikacją w witrynie Azure Portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
 > [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)

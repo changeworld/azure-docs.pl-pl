@@ -29,7 +29,7 @@ W tym samouczku wykonasz następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania czynności opisanych w tym samouczku potrzebne są następujące elementy:
+Do ukończenia tego samouczka są potrzebne następujące elementy:
 
 - Podstawowe informacje na temat Kubernetes, Git, CI/CD i obrazów kontenerów
 
@@ -37,7 +37,7 @@ Do wykonania czynności opisanych w tym samouczku potrzebne są następujące el
 
 - [Rejestr Azure Container Registry (ACR)][acr-quickstart], nazwa serwera logowania ACR i klaster AKS skonfigurowany do [uwierzytelniania za pomocą rejestru ACR][acr-authentication]
 
-- Interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej został zainstalowany i skonfigurowany. Uruchom @ no__t-0, aby znaleźć wersję. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+- Interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej został zainstalowany i skonfigurowany. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 - Platforma [Docker zainstalowana][docker-install] w systemie programistycznym
 
@@ -52,7 +52,7 @@ W tym artykule użyto przykładowej aplikacji do głosowania platformy Azure, kt
 > [!NOTE]
 > Przykładowa aplikacja do głosowania platformy Azure używa systemu Linux, który jest zaplanowany do uruchomienia w węźle systemu Linux. Przepływ przedstawiony w tym artykule działa również w przypadku systemu Windows Server pod kątem harmonogramu w węźle systemu Windows Server.
 
-Rozwidlenie następującego repozytorium GitHub dla przykładowej aplikacji — [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis). Aby utworzyć rozwidlenie repozytorium na własne konto w usłudze GitHub, wybierz przycisk **rozwidlenie** w prawym górnym rogu.
+Utwórz rozwidlenie następującego repozytorium GitHub dla przykładowej aplikacji — [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis). Aby utworzyć rozwidlenie repozytorium na koncie usługi GitHub, wybierz przycisk **Rozwidlenie** w prawym górnym rogu.
 
 Sklonuj rozwidlenie do systemu deweloperskiego. Upewnij się, że używasz adresu URL rozwidlenia podczas klonowania tego repozytorium:
 
@@ -72,7 +72,7 @@ Aby utworzyć obrazy kontenerów, które są konieczne dla przykładowej aplikac
 docker-compose up -d
 ```
 
-Wymagane są ściągane obrazy podstawowe oraz skompilowane kontenery aplikacji. Następnie można użyć polecenia [Docker images][docker-images] , aby wyświetlić utworzony obraz. Trzy obrazy zostały pobrane lub utworzone. Obraz `azure-vote-front` zawiera aplikację i używa obrazu `nginx-flask` jako bazy. Obraz `redis` jest używany do uruchamiania wystąpienia Redis:
+Wymagane są ściągane obrazy podstawowe oraz skompilowane kontenery aplikacji. Następnie można użyć polecenia [Docker images][docker-images] , aby wyświetlić utworzony obraz. Zostały pobrane lub utworzone trzy obrazy. Obraz `azure-vote-front` zawiera aplikację i używa obrazu `nginx-flask` jako podstawy. Obraz `redis` jest używany do uruchamiania wystąpienia Redis:
 
 ```
 $ docker images
@@ -103,7 +103,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="deploy-the-sample-application-to-aks"></a>Wdróż przykładową aplikację w usłudze AKS
 
-Aby wdrożyć przykładową aplikację w klastrze AKS, można użyć pliku manifestu Kubernetes w katalogu głównym repozytorium repozytorium głosowania platformy Azure. Otwórz plik manifestu *Azure-głosowa-All-in-in-Redis. YAML* z edytorem, takim jak `vi`. Zastąp `microsoft` nazwą serwera logowania ACR. Ta wartość jest dostępna w wierszu **47** pliku manifestu:
+Aby wdrożyć przykładową aplikację w klastrze AKS, można użyć pliku manifestu Kubernetes w katalogu głównym repozytorium repozytorium głosowania platformy Azure. Otwórz plik manifestu *Azure-głosowa-All-in-in-in-one-Redis. YAML* z edytorem, takim jak `vi`. Zastąp wartość `microsoft` nazwą serwera logowania usługi ACR. Ta wartość jest dostępna w wierszu **47** pliku manifestu:
 
 ```yaml
 containers:
@@ -117,7 +117,7 @@ Następnie użyj polecenia [polecenia kubectl Apply][kubectl-apply] , aby wdroż
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-Zostanie utworzona usługa równoważenia obciążenia Kubernetes w celu udostępnienia aplikacji w Internecie. Ten proces może potrwać kilka minut. Aby monitorować postęp wdrożenia modułu równoważenia obciążenia, użyj polecenia [polecenia kubectl Get Service][kubectl-get] z argumentem `--watch`. Po zmianie adresu *IP zewnętrznego* z *oczekującego* na *adres IP*Użyj `Control + C`, aby zatrzymać proces czujki polecenia kubectl.
+Zostanie utworzona usługa równoważenia obciążenia Kubernetes w celu udostępnienia aplikacji w Internecie. Ten proces może potrwać kilka minut. Aby monitorować postęp wdrożenia modułu równoważenia obciążenia, użyj polecenia [polecenia kubectl Get Service][kubectl-get] z argumentem `--watch`. Po zmianie adresu *EXTERNAL-IP* z *oczekującego* na *adres IP*, zatrzymaj proces śledzenia narzędzia kubectl za pomocą polecenia `Control + C`.
 
 ```console
 $ kubectl get service azure-vote-front --watch
@@ -138,7 +138,7 @@ Aby szybko wdrożyć Jenkins do użycia w tym artykule, można użyć następuj�
 > [!WARNING]
 > Ten przykładowy skrypt służy do pokazania, aby szybko zainicjować środowisko Jenkins, które działa na maszynie wirtualnej platformy Azure. Używa rozszerzenia niestandardowego skryptu platformy Azure, aby skonfigurować maszynę wirtualną, a następnie wyświetlić wymagane poświadczenia. Wartość *~/.Kube/config* jest kopiowana do maszyny wirtualnej Jenkins.
 
-Uruchom następujące polecenia, aby pobrać i uruchomić skrypt. Przed uruchomieniem tego skryptu należy przejrzeć jego zawartość [https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh](https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh).
+Uruchom następujące polecenia, aby pobrać i uruchomić skrypt. Przed uruchomieniem [https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh](https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh)należy przejrzeć jego zawartość.
 
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
@@ -156,17 +156,17 @@ Enter the following to Unlock Jenkins:
 Otwórz przeglądarkę internetową, aby wyświetlić adres URL, a następnie wprowadź klucz odblokowywania. Postępuj zgodnie z monitami wyświetlanymi na ekranie, aby ukończyć konfigurację Jenkins:
 
 - Wybierz pozycję **Zainstaluj sugerowane wtyczki**
-- Utwórz pierwszego użytkownika administracyjnego. Wprowadź nazwę użytkownika, na przykład *azureuser*, a następnie podaj swoje bezpieczne hasło. Na koniec wpisz pełną nazwę i adres e-mail.
-- Wybierz pozycję **Zapisz i Zakończ**
-- Gdy Jenkins jest gotowa, wybierz pozycję **Rozpocznij przy użyciu Jenkins**
-    - Jeśli przeglądarka sieci Web Wyświetla pustą stronę po rozpoczęciu korzystania z programu Jenkins, należy ponownie uruchomić usługę Jenkins. Aby ponownie uruchomić usługę, SSH z publicznym adresem IP wystąpienia usługi Jenkins i wpisz `sudo service jenkins restart`. Po ponownym uruchomieniu usługi Odśwież przeglądarkę internetową.
+- Utwórz pierwszego użytkownika administratora. Wprowadź nazwę użytkownika, na przykład *azureuser*, a następnie podaj swoje bezpieczne hasło. Na koniec wpisz pełną nazwę i adres e-mail.
+- Wybierz pozycję **Zapisz i zakończ**.
+- Gdy narzędzie Jenkins będzie gotowe, wybierz pozycję **Rozpocznij korzystanie z narzędzia Jenkins**.
+    - Jeśli po rozpoczęciu korzystania z narzędzia Jenkins w przeglądarce internetowej zostanie wyświetlona pusta strona, uruchom ponownie usługę Jenkins. Aby ponownie uruchomić usługę, SSH z publicznym adresem IP wystąpienia usługi Jenkins i wpisz `sudo service jenkins restart`. Po ponownym uruchomieniu usługi Odśwież przeglądarkę internetową.
 - Zaloguj się do Jenkins przy użyciu nazwy użytkownika i hasła utworzonego w procesie instalacji.
 
 ## <a name="create-a-jenkins-environment-variable"></a>Utwórz zmienną środowiskową Jenkins
 
 Zmienna środowiskowa Jenkins jest używana do przechowywania nazwy serwera logowania ACR. Ta zmienna jest przywoływana podczas zadania kompilacji Jenkins. Aby utworzyć tę zmienną środowiskową, wykonaj następujące czynności:
 
-- Po lewej stronie portalu Jenkins wybierz pozycję **Zarządzaj Jenkins** > **Konfigurowanie systemu**
+- Po lewej stronie portalu Jenkins wybierz pozycję **Zarządzaj Jenkins** > **Skonfiguruj system**
 - W obszarze **Właściwości globalne**wybierz pozycję **zmienne środowiskowe**. Dodaj zmienną o nazwie `ACR_LOGINSERVER` i wartość serwera logowania ACR.
 
     ![Zmienne środowiskowe Jenkins](media/aks-jenkins/env-variables.png)
@@ -230,8 +230,8 @@ Kliknij przycisk **OK** i wróć do portalu Jenkins.
 Na stronie głównej portalu Jenkins wybierz pozycję **nowy element** po lewej stronie:
 
 1. Wprowadź *zagłosuj na platformę Azure* jako nazwę zadania. Wybierz **projekt Freestyle**, a następnie wybierz przycisk **OK** .
-1. W sekcji **Ogólne** wybierz **projekt GitHub** i wprowadź adres URL repozytorium rozwidlenia, taki jak *https: \//GitHub. com/\<your-GitHub-Account @ no__t-5/Azure-głosowa-App-Redis*
-1. W sekcji **Zarządzanie kodem źródłowym** wybierz pozycję **git**i *wprowadź adres URL repozytorium z* rozwidleniem, taki jak *https: \//GitHub. com/\<your-GitHub-Account @ no__t-6/Azure-Voting-App-Redis. git*
+1. W sekcji **Ogólne** wybierz **projekt GitHub** i wprowadź adres URL repozytorium rozwidlenia, taki jak *https:\//GitHub.com/\<Twoje konto w serwisie GitHub\>/Azure-Voting-App-Redis*
+1. W sekcji **Zarządzanie kodem źródłowym** wybierz pozycję **git**i wprowadź adres URL repozytorium *. git* , na przykład *https:\//GitHub.com/\<Twoje konto w serwisie GitHub\>/Azure-Voting-App-Redis.git*
 
 1. W sekcji **Kompiluj wyzwalacze** wybierz pozycję **wyzwalacz punktu zaczepienia GitHub na potrzeby sondowania GITscm**
 1. W obszarze **środowisko kompilacji**wybierz pozycję **Użyj wpisów lub plików tajnych** .
@@ -279,7 +279,7 @@ Po zakończeniu zadania kompilacji kliknij pozycję **kompilacja #1** w obszarze
 Po pomyślnym ukończeniu ręcznego kompilowania można teraz zintegrować witrynę GitHub z kompilacją Jenkins. Element webhook może służyć do uruchamiania zadania kompilacji Jenkins za każdym razem, gdy w serwisie GitHub zostanie wykonane zatwierdzenie kodu. Aby utworzyć element webhook usługi GitHub, wykonaj następujące czynności:
 
 1. Przejdź do repozytorium GitHub z rozwidleniem w przeglądarce internetowej.
-1. Wybierz pozycję **Ustawienia**, a następnie wybierz pozycję elementy **webhook** po lewej stronie.
+1. Wybierz pozycję **Ustawienia**, a następnie wybierz pozycję **Elementy webhook** po lewej stronie.
 1. Wybierz, aby **dodać element webhook**. W polu *adres URL ładunku*wprowadź `http://<publicIp:8080>/github-webhook/`, gdzie `<publicIp>` jest adresem IP serwera Jenkins. Pamiętaj, aby uwzględnić końcowe/. Pozostaw inne wartości domyślne dla typu zawartości i Wyzwalaj zdarzenia *wypychania* .
 1. Wybierz pozycję **Dodaj element webhook**.
 

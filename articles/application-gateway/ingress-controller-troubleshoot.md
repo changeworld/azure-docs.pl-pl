@@ -111,7 +111,7 @@ Application Gateway zostanie zastosowana następująca konfiguracja:
 - Reguła routingu: ![routing_rule](./media/application-gateway-ingress-controller-troubleshooting/tsg--rule.png)
 
 - Pula zaplecza:
-  - W puli adresów zaplecza będzie dostępny jeden adres IP, który będzie pasował do adresu IP pod zaobserwowanej wcześniej opcją `kubectl get pods -o wide`
+  - W puli adresów zaplecza będzie dostępny jeden adres IP, który będzie pasował do adresu IP pod zaobserwowanej wcześniej usługą `kubectl get pods -o wide`
 ![backend_pool](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png)
 
 
@@ -236,7 +236,7 @@ Poziom 5, z drugiej strony, będzie wyświetlał wszystkie dzienniki, w tym oczy
 Społeczność Kubernetes ustanowiła 9 poziomów rejestrowania dla narzędzia [polecenia kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) . W tym repozytorium wykorzystujemy 3 z nich z podobną semantyką:
 
 
-| Poziom szczegółowości | Opis |
+| Verbosity | Opis |
 |-----------|-------------|
 |  1        | Domyślny poziom rejestrowania; pokazuje szczegóły uruchamiania, ostrzeżenia i błędy |
 |  3        | Rozszerzone informacje o zdarzeniach i zmianach; listy utworzonych obiektów |

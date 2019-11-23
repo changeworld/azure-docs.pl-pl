@@ -81,15 +81,15 @@ Aby dodać witrynę z galerii aplikacji usługi Azure AD, wykonaj następujące 
 
 2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![Blok aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **odwiedzający**, wybierz pozycję **odwiedź** w panelu wyników, a następnie wybierz pozycję **Dodaj** , aby dodać aplikację.
 
-    ![Odwiedź listę wyników](common/search-new-app.png)
+    ![Aplikacja Visitly na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-automatic-user-provisioning-to-visitly"></a>Konfigurowanie automatycznej aprowizacji użytkowników w celu odwiedzania 
 
@@ -100,13 +100,13 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Konfigurowanie automatycznego inicjowania obsługi użytkowników w usłudze Azure AD
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**@no__t — 1**wszystkie aplikacje**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
     ![Wszystkie aplikacje](common/enterprise-applications.png)
 
-2. Na liście Aplikacje wybierz pozycję **odwiedź**.
+2. Na liście aplikacji wybierz pozycję **Visitly**.
 
-    ![Link odwiedzany na liście aplikacji](common/all-applications.png)
+    ![Link do aplikacji Visitly na liście aplikacji](common/all-applications.png)
 
 3. Wybierz kartę **aprowizacji** .
 
@@ -159,7 +159,7 @@ Nie obsługuje żadnych stałych usunięć. Wszystko jest tylko usuwaniem nieela
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

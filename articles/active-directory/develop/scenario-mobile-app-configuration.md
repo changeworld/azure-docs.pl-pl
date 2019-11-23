@@ -82,7 +82,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-Istnieją dodatkowe metody*parametrów* , które ustawiają elementy nadrzędne interfejsu użytkownika, zastępują domyślny urząd, określ nazwę i wersję klienta (dla telemetrii), określ identyfikator URI przekierowania, określ fabrykę http do użycia (na przykład do obsługi serwerów proxy, określ dane telemetryczne i rejestrowanie). Jest to temat dotyczący następujących akapitów.
+Istnieją dodatkowe metody*parametrów* , które ustawiają element nadrzędny interfejsu użytkownika, przesłaniają domyślny urząd, określ nazwę i wersję klienta (dla telemetrii), określ identyfikator URI przekierowania, określ fabrykę http do użycia (na przykład do obsługi serwerów proxy, określ dane telemetryczne i rejestrowanie). Jest to temat dotyczący następujących akapitów.
 
 ##### <a name="specifying-the-parent-uiwindowactivity"></a>Określanie nadrzędnego interfejsu użytkownika/okna/działania
 

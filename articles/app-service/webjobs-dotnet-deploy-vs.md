@@ -66,7 +66,7 @@ Możesz użyć programu Visual Studio, aby zmienić zadanie WebJob tak, aby dzia
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>Zadania WebJob jako .NET Framework aplikacje konsolowe  
 
-Gdy program Visual Studio wdroży projekt aplikacji konsolowej z włączoną obsługą zadań WebJob .NET Framework, kopiuje pliki środowiska uruchomieniowego do odpowiedniego folderu w aplikacji sieci Web (*App_Data/Jobs/Continuous* dla ciągłych zadań WebJob i *App_Data/Jobs/wyzwolone* dla zaplanowane lub na żądanie zadania WebJob).
+Gdy program Visual Studio wdroży projekt aplikacji konsolowej z włączoną obsługą zadań WebJob .NET Framework, kopiuje pliki środowiska uruchomieniowego do odpowiedniego folderu w aplikacji sieci Web (*App_Data/Jobs/Continuous* dla ciągłych zadań webjob i *App_Data/Jobs/Triggered* na potrzeby zadań WebJob zaplanowanych lub na żądanie).
 
 Projekt z włączoną obsługą zadań WebJob ma dodane następujące elementy:
 
@@ -137,7 +137,7 @@ Aby utworzyć nowy projekt z obsługą zadań WebJob, można użyć szablonu pro
 > 
 
 #### <a id="createnolink"></a>Użycie szablonu New-Project nowego projektu dla niezależnego Zadania WebJob
-1. Kliknij pozycję **plik**@no__t-**1 nowy projekt**, a następnie w oknie dialogowym **nowy projekt** kliknij pozycję **Cloud** > **Azure WebJob (.NET Framework)** .
+1. Kliknij pozycję **plik** > **Nowy projekt**, a następnie w oknie dialogowym **nowy projekt** kliknij pozycję **Cloud** > **Zadania WebJob platformy Azure (.NET Framework)** .
    
     ![Okno dialogowe Nowy projekt przedstawiające Szablon Zadania WebJob](./media/webjobs-dotnet-deploy-vs/np.png)
 2. Postępuj zgodnie ze wskazówkami podanymi wcześniej, aby [uczynić aplikację konsolową projektu niezależnego Zadania WebJob](#convertnolink).
@@ -164,8 +164,8 @@ Pola w tym oknie dialogowym odpowiadają polom w oknie dialogowym **Dodawanie za
 > 
 > 
 
-### <a id="publishsettings"></a>zadanie WebJob — publikowanie-Settings. JSON
-Po skonfigurowaniu aplikacji konsolowej do wdrożenia usługi WebJobs program Visual Studio instaluje pakiet NuGet [Microsoft. Web. WebJobs. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) i zapisuje informacje o planowaniu w pliku *WebJob-Publish-Settings. JSON* w projekcie  *Folder właściwości* projektu WebJobs. Oto przykład tego pliku:
+### <a id="publishsettings"></a>webjob-publish-settings.json
+Po skonfigurowaniu aplikacji konsolowej do wdrożenia usługi WebJobs program Visual Studio instaluje pakiet NuGet [Microsoft. Web. WebJobs. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) i zapisuje informacje o harmonogramie w pliku *WebJob-Publish-Settings. JSON* w folderze *Właściwości* projektu projektu WebJobs. Oto przykład tego pliku:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
@@ -177,9 +177,9 @@ Po skonfigurowaniu aplikacji konsolowej do wdrożenia usługi WebJobs program Vi
           "runMode": "Continuous"
         }
 
-Można edytować ten plik bezpośrednio, a program Visual Studio udostępnia funkcję IntelliSense. Schemat pliku jest przechowywany w lokalizacji [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) i może być tam widoczny.  
+Można edytować ten plik bezpośrednio, a program Visual Studio udostępnia funkcję IntelliSense. Schemat pliku jest przechowywany w [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) i można go tam przeglądać.  
 
-### <a id="webjobslist"></a>WebJobs-list. JSON
+### <a id="webjobslist"></a>webjobs-list.json
 W przypadku łączenia projektu z obsługą zadań WebJob z projektem sieci Web program Visual Studio przechowuje nazwę projektu WebJobs w pliku *WebJobs-list. JSON* w folderze *Właściwości* projektu sieci Web. Lista może zawierać wiele projektów zadań WebJob, jak pokazano w następującym przykładzie:
 
         {
@@ -194,7 +194,7 @@ W przypadku łączenia projektu z obsługą zadań WebJob z projektem sieci Web 
           ]
         }
 
-Można edytować ten plik bezpośrednio, a program Visual Studio udostępnia funkcję IntelliSense. Schemat pliku jest przechowywany w lokalizacji [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) i może być tam widoczny.
+Można edytować ten plik bezpośrednio, a program Visual Studio udostępnia funkcję IntelliSense. Schemat pliku jest przechowywany w [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) i można go tam przeglądać.
 
 ### <a id="deploy"></a>Wdróż projekt WebJob
 Projekt zadań WebJob, który został połączony z projektem sieci Web, jest wdrażany automatycznie w projekcie sieci Web. Aby uzyskać informacje na temat wdrażania projektu sieci Web, zobacz **przewodniki dotyczące wykonywania** > **wdrażania aplikacji** w lewym okienku nawigacji.
@@ -215,7 +215,7 @@ Zadania WebJob wykorzystują plik *Settings. job* , aby określić, kiedy ma zos
 }
 ```
 
-Ten plik musi znajdować się w folderze głównym folderu zadań WebJob, po stronie skryptu w tym czasie, na przykład `wwwroot\app_data\jobs\triggered\{job name}` lub `wwwroot\app_data\jobs\continuous\{job name}`. Podczas wdrażania Zadania WebJob z poziomu programu Visual Studio należy oznaczyć właściwości pliku `settings.job` jako **kopie, jeśli nowsze**. 
+Ten plik musi znajdować się w folderze głównym folderu zadań WebJob, na przykład na stronie, na przykład `wwwroot\app_data\jobs\triggered\{job name}` lub `wwwroot\app_data\jobs\continuous\{job name}`. Podczas wdrażania Zadania WebJob z poziomu programu Visual Studio należy oznaczyć `settings.job` właściwości pliku jako **kopię, jeśli jest nowsza**. 
 
 Po [utworzeniu zadania WebJob na podstawie Azure Portal](webjobs-create.md)zostanie utworzony plik Settings. job.
 
@@ -233,10 +233,10 @@ Następujące ustawienia są obsługiwane przez Zadania WebJob:
 
 | **Ustawienie** | **Typ**  | **Opis** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Wszystko | Zezwala na uruchamianie zadania bez uprzedniego kopiowania do folderu tymczasowego. Aby dowiedzieć się więcej, zobacz [katalog roboczy usługi WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Wszystkie | Zezwala na uruchamianie zadania bez uprzedniego kopiowania do folderu tymczasowego. Aby dowiedzieć się więcej, zobacz [katalog roboczy usługi WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Ciągłe | W przypadku skalowania w poziomie należy uruchamiać tylko zadania WebJob w jednym wystąpieniu. Aby dowiedzieć się więcej, zobacz [Ustawianie ciągłego zadania jako pojedyncze](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
 | `schedule` | Wyzwalane | Uruchom zadanie WebJob na podstawie harmonogramu opartego na języku cronus. Aby dowiedzieć się więcej, zobacz artykuł dotyczący [wyzwalacza czasomierza](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
-| `stopping_wait_time`| Wszystko | Umożliwia sterowanie zachowaniem zamknięcia. Aby dowiedzieć się więcej, zobacz temat [bezpieczne zamykanie](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Wszystkie | Umożliwia sterowanie zachowaniem zamknięcia. Aby dowiedzieć się więcej, zobacz temat [bezpieczne zamykanie](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Następne kroki
 

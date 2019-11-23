@@ -141,11 +141,11 @@ Aby wyświetlić wyniki w formacie CSV:
 
 | Plik/folder | Uwaga |
 |-|-|
-| plik Desktop. ini | Plik specyficzny dla systemu |
-| ethumbs. DB $ | Plik tymczasowy dla miniatur |
-| \*~$.\* | Plik tymczasowy pakietu Office |
-| \*. tmp | Plik tymczasowy |
-| \*. LACCDB | Plik blokowania dostępu do bazy danych|
+| Desktop.ini | Plik specyficzny dla systemu |
+| ethumbs.db$ | Plik tymczasowy dla miniatur |
+| ~$\*.\* | Plik tymczasowy pakietu Office |
+| \*.tmp | Plik tymczasowy |
+| \*.laccdb | Plik blokowania dostępu do bazy danych|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Plik synchronizacji wewnętrznej|
 | Informacje o woluminie systemowym \\ | Folder określony dla woluminu |
 | $RECYCLE. OKREŚLONEJ| Folder |
@@ -168,7 +168,7 @@ Zwróć uwagę, że oszczędności woluminu dotyczą tylko serwera programu; Two
 > [!Note]  
 > Deduplikacja danych i Obsługa warstw w chmurze nie są obecnie obsługiwane na tym samym woluminie na serwerze 2019 z powodu błędu, który zostanie rozwiązany w przyszłej aktualizacji.
 
-**System Windows Server 2012 R2**  
+**Windows Server 2012 R2**  
 Azure File Sync nie obsługuje deduplikacji danych i warstw w chmurze na tym samym woluminie w systemie Windows Server 2012 R2. Jeśli Deduplikacja danych jest włączona w woluminie, Obsługa warstw w chmurze musi być wyłączona. 
 
 **Uwagi**
@@ -256,7 +256,7 @@ Azure File Sync jest dostępna tylko w następujących regionach:
 | Kanada Wschodnia | Miasto Quebec |
 | Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
-| Azja Wschodnia | Hongkong SAR |
+| Azja Wschodnia | SRA Hongkong |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Francja Środkowa | Paryż |

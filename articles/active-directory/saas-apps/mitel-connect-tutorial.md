@@ -60,27 +60,27 @@ Aby skonfigurować integrację nawiązywania połączenia z usługą Azure AD, n
 
 2. Kliknij pozycję **aplikacje dla przedsiębiorstw** , a następnie kliknij pozycję **wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Kliknij pozycję **Nowa aplikacja**.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz tekst **ścięcia** , kliknij pozycję **Rozłącz się** z poziomu panelu wyniki, a następnie kliknij przycisk **Dodaj**.
 
      ![Roztoczne połączenie na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD za pomocą MiCloud Connect na podstawie użytkownika testowego o nazwie **Britta Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w programie MiCloud Connect.
 
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu połączenia MiCloud, należy wykonać następujące czynności:
 
 1. **[Skonfiguruj MiCloud Connect dla logowania jednokrotnego za pomocą usługi Azure AD](#configure-micloud-connect-for-sso-with-azure-ad)** — aby umożliwić użytkownikom korzystanie z tej funkcji oraz Konfigurowanie ustawień logowania jednokrotnego po stronie aplikacji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-3. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 4. **[Utwórz test "Roztoczne MiCloud](#create-a-mitel-micloud-connect-test-user)** ", aby uzyskać odpowiednik Britta Simon na koncie MiCloud, które jest połączone z reprezentacją usługi Azure AD.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-micloud-connect-for-sso-with-azure-ad"></a>Konfigurowanie MiCloud Connect dla logowania jednokrotnego za pomocą usługi Azure AD
 
@@ -93,7 +93,7 @@ Aby skonfigurować MiCloud łączenie z logowaniem jednokrotnym w usłudze Azure
 
     a. Na stronie **Rozwiąż połączenie z** integracją aplikacji kliknij pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
     b. W oknie dialogowym **Wybierz metodę logowania** jednokrotnego kliknij pozycję **SAML**.
 
@@ -110,18 +110,18 @@ Aby skonfigurować MiCloud łączenie z logowaniem jednokrotnym w usłudze Azure
     Zostanie wyświetlone okno dialogowe łączenie ustawień logowania jednokrotnego.
     
 3. Zaznacz pole wyboru **Włącz logowanie jednokrotne** .
-    ](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png) obrazu ![
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
 
 
 4. W Azure Portal kliknij ikonę **Edytuj** w sekcji **Podstawowa konfiguracja protokołu SAML** .
-    ](common/edit-urls.png) obrazu ![
+    ![image](common/edit-urls.png)
 
     Zostanie wyświetlone okno dialogowe Podstawowa konfiguracja protokołu SAML.
 
 5.  Skopiuj adres URL z pola **Identyfikator Roztoczny (identyfikator jednostki)** w portalu konta roztocznego i wklej go do pola **Identyfikator (identyfikator jednostki)** w Azure Portal.
 
 6. Skopiuj adres URL z pola **adres URL odpowiedzi (adres URL usługi konsumenckej odbiorcy)** w portalu roztocza konta i wklej go do pola **adres URL odpowiedzi (adres URL usługi konsumenckej odbiorcy)** w Azure Portal.  
-   ](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png) obrazu ![
+   ![image](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
 
 7. W polu tekstowym **adres URL logowania** wpisz jeden z następujących adresów URL:
 
@@ -133,17 +133,17 @@ Aby skonfigurować MiCloud łączenie z logowaniem jednokrotnym w usłudze Azure
 8. Kliknij przycisk **Zapisz** w oknie dialogowym **podstawowe konfiguracje SAML** w Azure Portal.
 
 9. W sekcji **certyfikat podpisywania SAML** na stronie **logowania opartej na protokole SAML** w Azure Portal kliknij pozycję **Pobierz** obok pozycji **certyfikat (base64)** , aby pobrać **certyfikat podpisywania** i zapisać go na komputerze.
-    ](./media/mitel-connect-tutorial/Azure_SigningCert.png) obrazu ![
+    ![image](./media/mitel-connect-tutorial/Azure_SigningCert.png)
 
 10. Otwórz plik certyfikatu podpisywania w edytorze tekstów, skopiuj wszystkie dane z pliku, a następnie wklej dane w polu **certyfikat podpisywania** w portalu konta roztocznego. 
-    ](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png) obrazu ![
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
 
 11. W sekcji **Ustawienia Roztoczne połączenie** na stronie **logowania opartej na protokole SAML** Azure Portal wykonaj następujące czynności:
 
     a. Skopiuj adres URL z pola **adres URL logowania** i wklej go w polu **adres URL** logowania w portalu rozłożenia konta.
 
     b. Skopiuj adres URL z pola **Identyfikator usługi Azure AD** i wklej go do pola **Identyfikator jednostki** w portalu roztocznego konta.
-    ](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png) obrazu ![
+    ![image](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
 
 12. Kliknij przycisk **Zapisz** w oknie dialogowym **łączenie ustawień logowania jednokrotnego** w portalu konta rozłożenia.
 
@@ -165,12 +165,12 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w Azure Port
 
     a. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz brittasimon @\<yourcompanydomain\>.\>rozszerzenia\<.  
+    b. W polu **Nazwa użytkownika** wpisz brittasimon@\<yourcompanydomain\>.\>rozszerzenia\<.  
 Na przykład BrittaSimon@contoso.com.
 
     d. Zaznacz pole wyboru **Pokaż hasło** , a następnie Zapisz wartość, która jest wyświetlana w polu **hasło** .
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -184,9 +184,9 @@ W tej sekcji włączysz usługę Britta Simon do korzystania z logowania jednokr
 
     ![Link roztoczne połączenie na liście aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie kliknij pozycję **Użytkownicy i grupy**.
+3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 4. Kliknij pozycję **Dodaj użytkownika**, a następnie kliknij pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodaj przypisanie** .
 
@@ -222,9 +222,9 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po kliknięciu kafelka roztoczne połączenie w panelu dostępu należy automatycznie przekierować do logowania się do aplikacji MiCloud Connect skonfigurowanej jako wartość domyślna w polu **adres URL logowania** . Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

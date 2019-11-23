@@ -17,7 +17,7 @@ ms.locfileid: "71677826"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi za pomocą Azure Monitor
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule opisano sposób konfigurowania alertów dziennika przy użyciu interfejsu alertów w programie Azure Portal. Definicja reguły alertu składa się z trzech części:
 - Cel: określony zasób platformy Azure, który ma być monitorowany
 - Kryteria: określony warunek lub logika, która pojawia się w sygnale, powinna wyzwalać akcję
@@ -50,7 +50,7 @@ Szczegółowe instrukcje zawiera przewodnik krok po kroku dotyczący używania a
 
    > [!NOTE]
    > W celu utworzenia alertu dziennika — przed kontynuowaniem sprawdź, czy jest dostępny sygnał **dziennika** dla wybranego zasobu.
-   >  ![Select Resource @ no__t-1
+   >  ![wybrać](media/alerts-log/Alert-SelectResourceLog.png) zasobów
 
 1. *Alerty dziennika*: Upewnij się, że **Typ zasobu** to źródło analityczne, takie jak *log Analytics* lub *Application Insights* i typ sygnału jako **Dziennik**, po wybraniu odpowiedniego **zasobu** kliknij przycisk *gotowe*. Następnie użyj przycisku **Dodaj kryteria** , aby wyświetlić listę opcji sygnałów dostępnych dla zasobu oraz z opcji **wyszukiwania niestandardowego dziennika** listy sygnałów dla wybranej usługi monitora dzienników, takiej jak *log Analytics* lub *Application Insights*.
 
@@ -119,11 +119,11 @@ Użytkownicy mogą również sfinalizować swoje zapytanie analityczne w usłudz
     > Reguły alertów dziennika składają się z niestandardowej logiki opartej na zapytaniach, która jest dostarczana przez użytkowników, a tym samym bez rozwiązanego stanu. Z tego powodu, gdy spełnione są warunki określone w regule alertu dziennika, jest on uruchamiany.
 
 1. Wybierz przycisk **Zarządzaj regułami** na górnym pasku, aby przejść do sekcji Zarządzanie regułami, gdzie są wymienione wszystkie reguły alertów. uwzględnienie alertów, które zostały wyłączone.
-    ![ zarządzanie regułami alertów @ no__t-1
+    ![ Zarządzaj regułami alertów](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Zarządzanie alertami dzienników przy użyciu szablonu zasobów platformy Azure
 
-Alerty dzienników w Azure Monitor są skojarzone z typem zasobu `Microsoft.Insights/scheduledQueryRules/`. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz temat [zaplanowano informacje o interfejsie API reguł zapytań Azure monitor](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Alerty dzienników dla Application Insights lub Log Analytics można utworzyć za pomocą [interfejsu API harmonogramu zaplanowanych zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+Alerty dzienników w Azure Monitor są skojarzone z `Microsoft.Insights/scheduledQueryRules/`typu zasobu. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz temat [zaplanowano informacje o interfejsie API reguł zapytań Azure monitor](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Alerty dzienników dla Application Insights lub Log Analytics można utworzyć za pomocą [interfejsu API harmonogramu zaplanowanych zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
 > [!NOTE]
 > Alerty dzienników dla Log Analytics mogą być również zarządzane przy użyciu starszego [interfejsu API alertów log Analytics](api-alerts.md) i starszych szablonów [log Analytics zapisanych wyszukiwań i alertów](../insights/solutions-resources-searches-alerts.md) . Aby uzyskać więcej informacji na temat domyślnego użycia nowego interfejsu API ScheduledQueryRules, zobacz [przełączanie do nowego interfejsu API na potrzeby alertów log Analytics](alerts-log-api-switch.md).
@@ -320,7 +320,7 @@ Azure Monitor — [interfejs API reguł zaplanowanych zapytań](https://docs.mic
 1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): polecenie cmdlet programu PowerShell, aby usunąć istniejącą regułę alertu dziennika
 
 > [!NOTE]
-> Polecenia cmdlet programu PowerShell w programie ScheduledQueryRules mogą zarządzać tylko tymi regułami, które zostały utworzone za pomocą [interfejsu API reguł zapytań Zaplanowanych](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)Azure monitor. Reguły alertów dziennika utworzone przy użyciu starszego [interfejsu API alertów log Analytics](api-alerts.md) i starsze szablony [log Analytics zapisane wyszukiwania i alerty](../insights/solutions-resources-searches-alerts.md) mogą być zarządzane za pomocą poleceń cmdlet programu PowerShell ScheduledQueryRules tylko po ustawieniu [preferencji interfejsu API dla dziennika Alerty analityczne](alerts-log-api-switch.md).
+> Polecenia cmdlet programu PowerShell w programie ScheduledQueryRules mogą zarządzać tylko tymi regułami, które zostały utworzone za pomocą [interfejsu API reguł zapytań Zaplanowanych](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)Azure monitor. Reguły alertów dziennika utworzone przy użyciu starszego [interfejsu API alertów log Analytics](api-alerts.md) i starsze szablony [log Analytics zapisane wyszukiwania i alerty](../insights/solutions-resources-searches-alerts.md) mogą być zarządzane za pomocą poleceń cmdlet programu PowerShell ScheduledQueryRules tylko po ustawieniu [preferencji interfejsu API dla alertów log Analytics](alerts-log-api-switch.md).
 
 Poniżej przedstawiono procedurę tworzenia przykładowej reguły alertu dziennika przy użyciu poleceń cmdlet programu PowerShell scheduledQueryRules.
 ```powershell

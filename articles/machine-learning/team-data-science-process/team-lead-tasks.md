@@ -77,7 +77,7 @@ Nazwy określone dla repozytoriów i katalogów w tym samouczku założono, że 
 - Niewielka grupa nauki o danych, która nie ma wielu zespołów do nauki o danych. 
 - Większa grupa nauki o danych z wieloma zespołami nauki danych, które jednak chcą zoptymalizować współpracę między zespołami z działaniami, takimi jak planowanie przebiegu na poziomie grupy. 
 
-Jeśli zespoły zdecydują się na posiadanie repozytoriów specyficznych dla zespołu w ramach pojedynczego projektu grupy, liderzy zespołu powinni utworzyć repozytoria z nazwami, takimi jak  *\<TeamName > Template* i  *\<TeamName > Utilities*. Na wystąpienie: *TeamATemplate* i *TeamAUtilities*. 
+Jeśli zespoły zdecydują się na posiadanie repozytoriów specyficznych dla zespołu w ramach pojedynczego projektu grupy, liderzy zespołu powinni utworzyć repozytoria z nazwami, takimi jak *\<teamname > Template* i *\<TeamName > Utilities*. Na przykład: *TeamATemplate* i *TeamAUtilities*. 
 
 W każdym przypadku liderzy zespołu muszą pozwolić, aby członkowie zespołu wiedzieli, które szablony i narzędzia są repozytoriami do konfigurowania i klonowania. Potencjalni klienci projektu powinni postępować zgodnie z [zadaniami lidera projektu dla zespołu ds. analizy danych](project-lead-tasks.md) w celu tworzenia repozytoriów projektów, niezależnie od tego, czy są w różnych projektach czy pojedynczym projekcie. 
 
@@ -85,7 +85,7 @@ W każdym przypadku liderzy zespołu muszą pozwolić, aby członkowie zespołu 
 
 Aby utworzyć oddzielny projekt dla zespołu:
 
-1. W przeglądarce internetowej przejdź do strony głównej organizacji usługi Azure DevOps w grupie na adres URL *https:\//\<nazwa serwera >/\<nazwa organizacji >* , a następnie wybierz pozycję **Nowy projekt**. 
+1. W przeglądarce internetowej przejdź do strony głównej organizacji usługi Azure DevOps w grupie na adres URL *https:\//\<nazwa serwera >/\<nazwa organizacji >* i wybierz pozycję **Nowy projekt**. 
    
    ![Wybierz nowy projekt](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
@@ -95,7 +95,7 @@ Aby utworzyć oddzielny projekt dla zespołu:
    
    ![Tworzenie projektu](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Zostanie otwarta strona **Podsumowanie** projektu zespołowego z adresem URL *strony https\/:/\<nazwa serwera >\</nazwa organizacji >\</Nazwa zespołu >* .
+Zostanie otwarta strona **Podsumowanie** projektu zespołowego z adresem URL strony *https:\//\<nazwa serwera >/\<nazwa organizacji >/\<Nazwa zespołu*>.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Zmień nazwę repozytorium domyślnego Webteam na TeamUtilities
 
@@ -140,7 +140,7 @@ Aby wypełnić repozytoria zespołu zawartością grup wspólnych repozytoriów,
    
    ![Wybierz pozycję Importuj](./media/team-lead-tasks/import-repo.png)
    
-1. W oknie dialogowym **Importowanie repozytorium git** wybierz pozycję **git** jako **Typ źródła**, a następnie wprowadź adres URL repozytorium wspólnych szablonów grupy w obszarze **Klonowanie adresu URL**. Adres URL to *https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/_git/\<repository name >* . Na przykład: *https: \//dev. Azure. com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. W oknie dialogowym **Importowanie repozytorium git** wybierz pozycję **git** jako **Typ źródła**, a następnie wprowadź adres URL repozytorium wspólnych szablonów grupy w obszarze **Klonowanie adresu URL**. Adres URL to *https:\//\<nazwa serwera >/\<nazwa organizacji >/_git/\<Nazwa repozytorium*>. Na przykład: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Wybierz pozycję **Importuj**. Zawartość repozytorium szablonów grup jest zaimportowana do repozytorium szablonów zespołu. 
    
@@ -194,12 +194,12 @@ Aby sklonować repozytoria:
    
 1. Na komputerze lokalnym Utwórz następujące katalogi:
    
-   - W przypadku systemu Windows: **C:\GitRepos\MyTeam**
+   - Dla systemu Windows: **C:\GitRepos\MyTeam**
    - W przypadku systemu Linux **$Home/gitrepos/myTeam** 
    
 1. Przejdź do utworzonego katalogu.
    
-1. W narzędziu git bash Uruchom polecenie `git clone <clone URL>`, gdzie \<adres URL klonowania > to adres URL skopiowany z okna dialogowego **klonowania** .
+1. W narzędziu git bash Uruchom polecenie `git clone <clone URL>`, gdzie \<adres URL klonowania > jest adresem URL skopiowanym z okna dialogowego **klonowania** .
    
    Na przykład użyj jednego z poniższych poleceń, aby sklonować repozytorium **TeamUtilities** do katalogu *Webteam* na komputerze lokalnym. 
    
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> Jeśli po raz pierwszy zatwierdzisz repozytorium git, może być konieczne skonfigurowanie parametrów globalnych *User.Name* i *User. email* przed uruchomieniem `git commit` polecenia. Uruchom dwa poniższe polecenia:
+> Jeśli po raz pierwszy zatwierdzisz repozytorium git, może być konieczne skonfigurowanie parametrów globalnych *User.Name* i *User. email* przed uruchomieniem polecenia `git commit`. Uruchom dwa poniższe polecenia:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -250,7 +250,7 @@ Aby dodać członków do zespołu:
    
 1. W oknie dialogowym **Dodawanie użytkowników i grup** Wyszukaj i wybierz członków do dodania do grupy, a następnie wybierz pozycję **Zapisz zmiany**. 
    
-   ![Dodaj użytkowników i grupy](./media/team-lead-tasks/add-users.png)
+   ![Dodawanie użytkowników i grup](./media/team-lead-tasks/add-users.png)
    
 
 Aby skonfigurować uprawnienia dla członków zespołu:

@@ -68,4 +68,4 @@ Teraz, po zapoznaniu się z wprowadzeniem do Azure Database for MySQL i odpowied
 
 - Odwiedzenie strony cennika zawierającej porównania kosztów i kalkulatory. [Cennik](https://azure.microsoft.com/pricing/details/mysql/)
 - Rozpoczęcie pracy przez utworzenie pierwszego serwera. [Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Tworzenie pierwszej aplikacji przy użyciu preferowanego języka: [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.NET (C#)](./connect-csharp.md)@no__t[-12](./connect-go.md)
+- Tworzenie pierwszej aplikacji przy użyciu preferowanego języka: [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [go](./connect-go.md)

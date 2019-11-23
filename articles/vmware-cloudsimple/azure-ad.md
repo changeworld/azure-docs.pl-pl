@@ -83,7 +83,7 @@ Opcjonalnie można skonfigurować inne funkcje usługi Azure AD.  Nie są one wy
 1. [Eskalacja uprawnień](escalate-private-cloud-privileges.md) do chmury prywatnej dla programu vCenter.
 2. Zbierz parametry konfiguracji wymagane do skonfigurowania źródła tożsamości.
 
-    | **Opcja** | **Opis** |
+    | **Option** | **Opis** |
     |------------|-----------------|
     | **Nazwa** | Nazwa źródła tożsamości. |
     | **Podstawowa nazwa wyróżniająca dla użytkowników** | Podstawowa nazwa wyróżniająca dla użytkowników.  W przypadku usługi Azure AD Użyj: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` przykład: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|

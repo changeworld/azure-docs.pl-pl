@@ -103,7 +103,7 @@ Poniżej znajduje się podsumowanie stron kreatora instalacji ekspresowej, zebra
 
 | Strona Kreatora | Zebrane poświadczenia | Wymagane uprawnienia | Używane dla |
 | --- | --- | --- | --- |
-| ND |Użytkownik uruchamiający Kreatora instalacji |Administrator serwera lokalnego |<li>Tworzy konto usługi ADSync, które jest używane jako do uruchamiania usługi synchronizacji. |
+| Nie dotyczy |Użytkownik uruchamiający Kreatora instalacji |Administrator serwera lokalnego |<li>Tworzy konto usługi ADSync, które jest używane jako do uruchamiania usługi synchronizacji. |
 | Łączenie z usługą Azure AD |Poświadczenia katalogu usługi Azure AD |Rola administratora globalnego w usłudze Azure AD |<li>Włączanie synchronizacji w katalogu usługi Azure AD.</li>  <li>Tworzenie konta łącznika usługi Azure AD używanego do przeprowadzania operacji synchronizacji w usłudze Azure AD.</li> |
 | Łączenie z usługami AD DS |Poświadczenia Active Directory lokalnego |Członek grupy Administratorzy przedsiębiorstwa (EA) w Active Directory |<li>Tworzy konto łącznika AD DS w Active Directory i udziela do niego uprawnień. To utworzone konto służy do odczytywania i zapisywania informacji o katalogu podczas synchronizacji.</li> |
 
@@ -120,7 +120,7 @@ Poniżej znajduje się podsumowanie stron kreatora instalacji niestandardowej, z
 
 | Strona Kreatora | Zebrane poświadczenia | Wymagane uprawnienia | Używane dla |
 | --- | --- | --- | --- |
-| ND |Użytkownik uruchamiający Kreatora instalacji |<li>Administrator serwera lokalnego</li><li>W przypadku korzystania z pełnego SQL Server użytkownik musi być administratorem systemu (SA) w SQL</li> |Domyślnie program tworzy konto lokalne, które jest używane jako konto usługi aparatu synchronizacji. Konto jest tworzone tylko wtedy, gdy administrator nie określił określonego konta. |
+| Nie dotyczy |Użytkownik uruchamiający Kreatora instalacji |<li>Administrator serwera lokalnego</li><li>W przypadku korzystania z pełnego SQL Server użytkownik musi być administratorem systemu (SA) w SQL</li> |Domyślnie program tworzy konto lokalne, które jest używane jako konto usługi aparatu synchronizacji. Konto jest tworzone tylko wtedy, gdy administrator nie określił określonego konta. |
 | Instalowanie usług synchronizacji, opcja konta usługi |Poświadczenia konta użytkownika lokalnego lub usługi AD |Użytkownik, uprawnienia są udzielane przez Kreatora instalacji |Jeśli administrator określi konto, to konto jest używane jako konto usługi synchronizacji. |
 | Łączenie z usługą Azure AD |Poświadczenia katalogu usługi Azure AD |Rola administratora globalnego w usłudze Azure AD |<li>Włączanie synchronizacji w katalogu usługi Azure AD.</li>  <li>Tworzenie konta łącznika usługi Azure AD używanego do przeprowadzania operacji synchronizacji w usłudze Azure AD.</li> |
 | Podłączanie katalogów |Poświadczenia Active Directory lokalnych dla każdego lasu połączonego z usługą Azure AD |Uprawnienia są zależne od tego, jakie funkcje są włączane, i można je znaleźć w temacie Tworzenie konta łącznika AD DS |To konto służy do odczytywania i zapisywania informacji o katalogu podczas synchronizacji. |
@@ -167,7 +167,7 @@ W przypadku uaktualniania z jednej wersji Azure AD Connect do nowej wersji wymag
 
 ## <a name="more-about-the-created-accounts"></a>Więcej informacji o utworzonych kontach
 ### <a name="ad-ds-connector-account"></a>Konto łącznika AD DS
-W przypadku korzystania z ustawień ekspresowych konto jest tworzone w Active Directory używanym do synchronizacji. Utworzone konto znajduje się w domenie głównej lasu w kontenerze Użytkownicy i ma swoją nazwę prefiksem **MSOL_** . Konto jest tworzone przy użyciu długiego hasła złożonego, które nie wygasa. Jeśli masz zasady dotyczące haseł w domenie, upewnij się, że dla tego konta są dozwolone długie i złożone hasła.
+W przypadku korzystania z ustawień ekspresowych konto jest tworzone w Active Directory używanym do synchronizacji. Utworzone konto znajduje się w domenie głównej lasu w kontenerze Użytkownicy i ma swoją nazwę prefiksową **MSOL_** . Konto jest tworzone przy użyciu długiego hasła złożonego, które nie wygasa. Jeśli masz zasady dotyczące haseł w domenie, upewnij się, że dla tego konta są dozwolone długie i złożone hasła.
 
 ![Konto usługi AD](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 
@@ -180,7 +180,7 @@ Usługa synchronizacji może działać na różnych kontach. Może działać w r
 | --- | --- | --- |
 | [Konto usługi wirtualnej](#virtual-service-account) | Express i Custom, 2017 kwietnia i nowszych | Jest to opcja używana dla wszystkich instalacji ekspresowej, z wyjątkiem instalacji na kontrolerze domeny. W przypadku opcji Custom jest to opcja domyślna, chyba że jest używana inna opcja. |
 | [Konto usługi zarządzane przez grupę](#group-managed-service-account) | Niestandardowe, 2017 kwietnia i nowsze | Jeśli używasz zdalnego programu SQL Server, zalecamy użycie konta usługi zarządzanego przez grupę. |
-| [Konto użytkownika](#user-account) | Express i Custom, 2017 kwietnia i nowszych | Konto użytkownika poprzedzone prefiksem AAD_ jest tworzone tylko podczas instalacji, gdy jest zainstalowany w systemie Windows Server 2008 i zainstalowany na kontrolerze domeny. |
+| [Konto użytkownika](#user-account) | Express i Custom, 2017 kwietnia i nowszych | Konto użytkownika poprzedzone AAD_ jest tworzone tylko podczas instalacji, gdy jest zainstalowany w systemie Windows Server 2008 i zainstalowany na kontrolerze domeny. |
 | [Konto użytkownika](#user-account) | Express i Custom, 2017 marca i wcześniejszych | Konto lokalne z prefiksem AAD_ jest tworzone podczas instalacji. W przypadku korzystania z instalacji niestandardowej można określić inne konto. |
 
 Jeśli używasz programu Connect z kompilacją z 2017 marca lub wcześniejszych, nie należy resetować hasła na koncie usługi, ponieważ system Windows niszczy klucze szyfrowania ze względów bezpieczeństwa. Nie można zmienić konta na inne konto bez ponownej instalacji Azure AD Connect. W przypadku uaktualnienia do kompilacji z 2017 kwietnia lub nowszej, jest ona obsługiwana, aby zmienić hasło konta usługi, ale nie można zmienić użytego konta.
@@ -201,16 +201,16 @@ Legendy
 - Autonomiczne — [Autonomiczne zarządzane konto usługi](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA — [konto usługi zarządzanej przez grupę](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>Niestandardowe | Zdalne SQL</br>Niestandardowe |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Niestandardowy | Zdalne SQL</br>Niestandardowy |
 | --- | --- | --- | --- |
-| **komputer autonomiczny/Grupa robocza** | Brak obsługi | **ATRYBUTU**</br>Konto lokalne (2008)</br>Konto lokalne |  Brak obsługi |
-| **komputer przyłączony do domeny** | **ATRYBUTU**</br>Konto lokalne (2008) | **ATRYBUTU**</br>Konto lokalne (2008)</br>Konto lokalne</br>Konto domeny</br>Autonomiczne, gMSA | **gMSA**</br>Konto domeny |
-| **Kontroler domeny** | **Konto domeny** | *gMSA*</br>**Konto domeny**</br>Autonomiczne| *gMSA*</br>**Konto domeny**|
+| **komputer autonomiczny/Grupa robocza** | Nieobsługiwane | **VSA**</br>Konto lokalne (2008)</br>Konto lokalne |  Nieobsługiwane |
+| **komputer przyłączony do domeny** | **VSA**</br>Konto lokalne (2008) | **VSA**</br>Konto lokalne (2008)</br>Konto lokalne</br>Konto domeny</br>sMSA,gMSA | **gMSA**</br>Konto domeny |
+| **Kontroler domeny** | **Konto domeny** | *gMSA*</br>**Konto domeny**</br>sMSA| *gMSA*</br>**Konto domeny**|
 
 #### <a name="virtual-service-account"></a>Konto usługi wirtualnej
 Konto usługi wirtualnej jest specjalnym typem konta, które nie ma hasła i jest zarządzane przez system Windows.
 
-![ATRYBUTU](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 Atrybut VSA ma być używany w scenariuszach, w których aparat synchronizacji i SQL znajdują się na tym samym serwerze. Jeśli używasz zdalnego SQL, zalecamy użycie konta usługi zarządzanej przez grupę.
 
@@ -220,7 +220,7 @@ Ta funkcja wymaga systemu Windows Server 2008 R2 lub nowszego. W przypadku zains
 Jeśli używasz zdalnego programu SQL Server, zalecamy użycie **konta usługi zarządzanego przez grupę**. Aby uzyskać więcej informacji na temat przygotowywania Active Directory dla konta usługi zarządzanego przez grupę, zobacz [Omówienie kont usług zarządzanych przez grupę](https://technet.microsoft.com/library/hh831782.aspx).
 
 Aby użyć tej opcji, na stronie [Zainstaluj wymagane składniki](how-to-connect-install-custom.md#install-required-components) wybierz opcję **Użyj istniejącego konta usługi**, a następnie wybierz pozycję **zarządzane konto usługi**.  
-![VSA @ no__t-1  
+![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
 Jest również obsługiwane w przypadku korzystania z [autonomicznego zarządzanego konta usługi](https://technet.microsoft.com/library/dd548356.aspx). Jednak mogą one być używane tylko na komputerze lokalnym i nie ma korzyści z używania ich przez domyślne konto usługi wirtualnej.
 
 Ta funkcja wymaga systemu Windows Server w wersji 2012 lub nowszej. Jeśli konieczne jest użycie starszego systemu operacyjnego i użycie zdalnego programu SQL, należy użyć [konta użytkownika](#user-account).

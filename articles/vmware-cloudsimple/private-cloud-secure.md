@@ -33,11 +33,11 @@ Aby uzyskać więcej informacji na temat RBAC, zobacz [co to jest kontrola dost�
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>RBAC dla chmury prywatnej — vCenter
 
-Domyślny @no__t użytkownika-0 jest tworzony w domenie programu vCenter SSO podczas tworzenia chmury prywatnej.  Użytkownik CloudOwner ma uprawnienia do zarządzania programem vCenter. Do programu vCenter SSO są dodawane dodatkowe źródła tożsamości w celu udzielenia dostępu innym użytkownikom.  Wstępnie zdefiniowane role i grupy są konfigurowane w programie vCenter, który może służyć do dodawania kolejnych użytkowników.
+Domyślny `CloudOwner@cloudsimple.local` użytkownika jest tworzony w domenie programu vCenter SSO podczas tworzenia chmury prywatnej.  Użytkownik CloudOwner ma uprawnienia do zarządzania programem vCenter. Do programu vCenter SSO są dodawane dodatkowe źródła tożsamości w celu udzielenia dostępu innym użytkownikom.  Wstępnie zdefiniowane role i grupy są konfigurowane w programie vCenter, który może służyć do dodawania kolejnych użytkowników.
 
 ### <a name="add-new-users-to-vcenter"></a>Dodawanie nowych użytkowników do programu vCenter
 
-1. [Eskalować uprawnienia](escalate-private-cloud-privileges.md) dla użytkownika **CloudOwner@cloudsimple.local** w chmurze prywatnej.
+1. [Eskalować uprawnienia](escalate-private-cloud-privileges.md) dla **CloudOwner@cloudsimple.local** użytkownika w chmurze prywatnej.
 2. Zaloguj się do programu vCenter przy użyciu **CloudOwner@cloudsimple.local**
 3. [Dodaj użytkowników korzystających z logowania](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html)jednokrotnego w programie vCenter.
 4. Dodawanie użytkowników do [grup programu vCenter Logowanie jednokrotne](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
@@ -51,7 +51,7 @@ Możesz dodać dodatkowych dostawców tożsamości dla domeny vCenter SSO w chmu
 * [Użyj Active Directory jako dostawcy tożsamości](set-vcenter-identity.md) w usłudze vCenter w chmurze prywatnej.
 * [Korzystanie z usługi Azure AD jako dostawcy tożsamości](azure-ad.md) w usłudze vCenter w chmurze prywatnej
 
-1. [Eskalować uprawnienia](escalate-private-cloud-privileges.md) dla użytkownika **CloudOwner@cloudsimple.local** w chmurze prywatnej.
+1. [Eskalować uprawnienia](escalate-private-cloud-privileges.md) dla **CloudOwner@cloudsimple.local** użytkownika w chmurze prywatnej.
 2. Zaloguj się do programu vCenter przy użyciu **CloudOwner@cloudsimple.local**
 3. Dodaj użytkowników z dostawcy tożsamości do [grup usługi vCenter Logowanie jednokrotne](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 

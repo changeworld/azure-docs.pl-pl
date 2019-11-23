@@ -76,7 +76,7 @@ Domyślny zestaw reguł zarządzany przez platformę Azure jest domyślnie włą
 
  ![Zmień zestaw reguł WAF](../media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o zaporze aplikacji sieci Web platformy azure](../overview.md)

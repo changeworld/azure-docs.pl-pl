@@ -54,8 +54,8 @@ Połącz się z [konsolą szeregową, Otwórz wystąpienie programu PowerShell](
 
 2. Pobierz odpowiednią aktualizację do nowego lub istniejącego dysku z danymi, który jest dołączony do działającej maszyny wirtualnej z tego samego regionu:
 
-   - **10.0.14393.594**: [](https://support.microsoft.com/help/4073562)KB4073562 lub nowsza aktualizacja
-   - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) lub nowsza aktualizacja
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) lub nowsza aktualizacja
+   - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) lub nowsza
 
 3. Odłącz dysk narzędzia z działającej maszyny wirtualnej, a następnie dołącz go do uszkodzonej maszyny wirtualnej.
 
@@ -83,7 +83,7 @@ Połącz się z [konsolą szeregową, Otwórz wystąpienie programu PowerShell](
 
 7. Zlokalizuj plik SYSTEMowy w folderze **\Windows\System32\config** .
 
-8. Wybierz pozycję **Otwórz**, wpisz **BROKENSYSTEM** w polu Nazwa, rozwiń klucz **HKEY_LOCAL_MACHINE** , a następnie Znajdź dodatkowy klucz o nazwie **BROKENSYSTEM**.
+8. Wybierz pozycję **Otwórz**, wpisz **BROKENSYSTEM** jako nazwę, rozwiń klucz **HKEY_LOCAL_MACHINE** , a następnie odszukaj dodatkowy klucz o nazwie **BROKENSYSTEM**.
 
 9. Przejdź do następującej lokalizacji:
 
@@ -97,8 +97,8 @@ Połącz się z [konsolą szeregową, Otwórz wystąpienie programu PowerShell](
 
 12. Pobierz odpowiednią aktualizację:
 
-    - **10.0.14393.594**: [](https://support.microsoft.com/help/4073562)KB4073562 lub nowsza aktualizacja
-    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) lub nowsza aktualizacja
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) lub nowsza aktualizacja
+    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) lub nowsza
 
 13. Dołącz dysk systemowy jako dysk danych na maszynie wirtualnej, na której można pobrać aktualizację.
 
@@ -116,6 +116,6 @@ Połącz się z [konsolą szeregową, Otwórz wystąpienie programu PowerShell](
 
 16. [Odłącz dysk systemowy i ponownie utwórz maszynę wirtualną](../windows/troubleshoot-recovery-disks-portal.md).
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 
 Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać swój problem.

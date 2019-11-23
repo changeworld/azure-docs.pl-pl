@@ -31,7 +31,7 @@ Biblioteki klienckie są niezbędne dla aplikacji i narzędzi klienckich do łą
 
 Biblioteki ADOMD Management Objects (AMO) i klienckie usługi są dostępne jako pakiety instalowalne z [NuGet.org](https://www.nuget.org/). Analysis Services Zaleca się przeprowadzenie migracji do odwołań NuGet zamiast używania Instalator Windows. 
 
-|Pakiet  | Wersja produktu  | 
+|Package  | Wersja produktu  | 
 |---------|---------|
 |[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.2.3     |
 |[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.2.3      |

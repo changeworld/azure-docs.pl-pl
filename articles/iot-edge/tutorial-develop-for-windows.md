@@ -47,7 +47,7 @@ W poniższej tabeli przedstawiono obsługiwane scenariusze programowania dla **k
 
 |   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
-| **Usługi platformy Azure** | Azure Functions <br> Usługa Azure Stream Analytics |   |
+| **Usługi platformy Azure** | Stan usługi Funkcje Azure <br> Usługa Azure Stream Analytics |   |
 | **Języki** | C#(debugowanie nie jest obsługiwane) | C <br> C# |
 | **Więcej informacji** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 

@@ -27,7 +27,7 @@ Skrypt U-SQL to język, który łączy deklaratywne SQL C# z niezbędną, aby um
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed przejściem do przykładów U-SQL w tym dokumencie Przeczytaj i zakończono [Tutorial: Tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools for Visual Studio @ no__t-0. Ten samouczek wyjaśnia Mechanics przy użyciu języka U-SQL z Azure Data Lake Tools for Visual Studio.
+Przed przejściem do przykładów U-SQL w tym dokumencie Przeczytaj i kompletny [Samouczek: Tworzenie skryptów u-SQL przy użyciu narzędzi Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Ten samouczek wyjaśnia Mechanics przy użyciu języka U-SQL z Azure Data Lake Tools for Visual Studio.
 
 ## <a name="your-first-u-sql-script"></a>Pierwszy skrypt U-SQL
 
@@ -55,9 +55,9 @@ Ten skrypt nie zawiera żadnych kroków transformacji. Odczytuje z pliku źród�
 Zwróć uwagę na znak zapytania obok typu danych w polu `Duration`. Oznacza to, że pole `Duration` może mieć wartość null.
 
 ### <a name="key-concepts"></a>Kluczowe pojęcia
-* **Zmienne zestawu wierszy**: Każde wyrażenie zapytania, które generuje zestaw wierszy, można przypisać do zmiennej. Język U-SQL jest zgodny ze wzorcem nazewnictwa zmiennych T-SQL (na przykład `@searchlog`) w skrypcie.
-* Słowo kluczowe **Extract** odczytuje dane z pliku i definiuje schemat podczas odczytu. `Extractors.Tsv` to wbudowany Ekstraktor języka U-SQL dla plików wartości rozdzielanych znakami tabulacji. Można opracowywać niestandardowe wyodrębniania.
-* Dane **wyjściowe** są zapisywane z zestawu wierszy do pliku. `Outputters.Csv()` to wbudowany element do tworzenia pliku z wartościami rozdzielanymi przecinkami. Możesz opracowywać niestandardowe wyprowadzenia.
+* **Zmienne zestawu wierszy**: każde wyrażenie zapytania, które generuje zestaw wierszy, można przypisać do zmiennej. Język U-SQL jest zgodny ze wzorcem nazewnictwa zmiennych T-SQL (na przykład`@searchlog`) w skrypcie.
+* Słowo kluczowe **Extract** odczytuje dane z pliku i definiuje schemat podczas odczytu. `Extractors.Tsv` jest wbudowanym ekstraktorem U-SQL dla plików wartości rozdzielanych znakami tabulacji. Można opracowywać niestandardowe wyodrębniania.
+* Dane **wyjściowe** są zapisywane z zestawu wierszy do pliku. `Outputters.Csv()` jest wbudowanym wypełnieniem U-SQL w celu utworzenia pliku z wartościami rozdzielanymi przecinkami. Możesz opracowywać niestandardowe wyprowadzenia.
 
 ### <a name="file-paths"></a>Ścieżki plików
 

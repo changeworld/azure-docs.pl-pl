@@ -23,11 +23,11 @@ Rozpocznij pracę z biblioteką klienta QnA Maker dla języka Python. Wykonaj na
 
 Użyj biblioteki klienta QnA Maker dla języka Python, aby:
 
-* Utwórz bazę wiedzy 
+* Tworzenie bazy wiedzy 
 * Zarządzanie bazą wiedzy
 * Publikowanie bazy wiedzy
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python)@no__t — 1[kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [pakiet (PyPi)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [Python przykłady](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
+[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) [(PyPi)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [przykładów języka Python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -96,7 +96,7 @@ Następnie Utwórz obiekt CognitiveServicesCredentials przy użyciu klucza i uż
 
 [!code-python[Authorization to resource key](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=authorization)]
 
-## <a name="create-a-knowledge-base"></a>Utwórz bazę wiedzy
+## <a name="create-a-knowledge-base"></a>Tworzenie bazy wiedzy
 
  Użyj obiektu klienta, aby uzyskać obiekt [operacji bazy wiedzy](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) .
 
@@ -110,7 +110,7 @@ Wywołaj metodę [Create](https://docs.microsoft.com/python/api/azure-cognitives
 
 [!code-python[Create a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=createkb&highlight=15)]
 
-Upewnij się, że uwzględniono funkcję [`_monitor_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnego utworzenia bazy wiedzy. 
+Upewnij się, że funkcja include [`_monitor_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnego utworzenia bazy wiedzy. 
 
 ## <a name="update-a-knowledge-base"></a>Aktualizowanie bazy wiedzy
 
@@ -118,7 +118,7 @@ Bazę wiedzy można zaktualizować, przekazując informacje o IDENTYFIKATORze ba
 
 [!code-python[Update a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=updatekb&highlight=2)]
 
-Upewnij się, że uwzględniono funkcję [`_monitor_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnej aktualizacji bazy wiedzy. 
+Upewnij się, że funkcja include [`_monitor_operation`](#get-status-of-an-operation) , do której odwołuje się powyższy kod, w celu pomyślnej aktualizacji bazy wiedzy. 
 
 ## <a name="publish-a-knowledge-base"></a>Publikowanie bazy wiedzy
 
@@ -169,5 +169,5 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 >[Samouczek: Tworzenie i odpowiadanie na KB](../tutorials/create-publish-query-in-portal.md)
 
 * [Co to jest interfejs API usługi QnA Maker?](../Overview/overview.md)
-* [Edytowanie bazy wiedzy](../how-to/edit-knowledge-base.md)
+* [Edytowanie wiedzy](../how-to/edit-knowledge-base.md)
 * [Pobierz analizę użycia](../how-to/get-analytics-knowledge-base.md)

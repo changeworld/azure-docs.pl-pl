@@ -62,7 +62,7 @@ IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IRel
 ### <a name="enqueueasync"></a>EnqueueAsync
 Oto kilka fragmentów kodu do użycia EnqueueAsync, a następnie ich oczekiwanych danych wyjściowych.
 
-- *Case 1: Zadanie pojedynczej kolejki @ no__t-0
+- *Przypadek 1: zadanie pojedynczej kolejki*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -81,7 +81,7 @@ Załóżmy, że zadanie zostało ukończone pomyślnie oraz że nie wystąpiły 
 > 20, 10
 
 
-- *Case 2: Równoległe zadanie kolejkowania zadań @ no__t-0
+- *Przypadek 2: równoległe zadanie w kolejce*
 
 ```
 // Parallel Task 1
@@ -110,7 +110,7 @@ Załóżmy, że zadania zostały ukończone pomyślnie, wykonane równolegle zad
 Oto kilka fragmentów kodu do użycia TryDequeueAsync, a następnie oczekiwanych danych wyjściowych. Załóżmy, że kolejka została już wypełniona następującymi elementami w kolejce:
 > 10, 20, 30, 40, 50, 60
 
-- *Case 1: Jednokolejkowe zadanie @ no__t-0
+- *Przypadek 1: pojedyncze zadanie usuwania z kolejki*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -125,7 +125,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Załóżmy, że zadanie zostało ukończone pomyślnie oraz że nie wystąpiły żadne współbieżne transakcje modyfikujące kolejkę. Ponieważ nie można wywnioskować o kolejności elementów w kolejce, wszystkie trzy elementy mogą być dekolejkowane w dowolnej kolejności. Kolejka podejmie próbę zachowania elementów w pierwotnej (kolejkowanej) kolejności, ale może zostać wymuszone ich zmiana kolejności z powodu równoczesnych operacji lub błędów.  
 
-- *Case 2: Równoległe zadanie usuwania z kolejki @ no__t-0
+- *Przypadek 2: równoległe zadanie usuwania z kolejki*
 
 ```
 // Parallel Task 1
@@ -153,7 +153,7 @@ Załóżmy, że zadania zostały ukończone pomyślnie, wykonane równolegle zad
 
 Ten sam element *nie* będzie widoczny na obu listach. W związku z tym, jeśli dequeue1 ma *10*, *30*, wówczas dequeue2 byłaby *20*, *40*.
 
-- @no__t – 0Case 3: Kolejność usuwania z kolejki z przerwaniem transakcji @ no__t-0
+- *Przypadek 3: porządkowanie w kolejce z przerwaniem transakcji*
 
 Przerwanie transakcji z odłożeniami w locie powoduje umieszczenie elementów z powrotem na początku kolejki. Kolejność, w której elementy są umieszczane na początku kolejki, nie jest gwarantowana. Poinformuj nas o następującym kodzie:
 
@@ -275,7 +275,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>Odzyskanie najlepszego wysiłku
-Nie można zagwarantować opróżniania kolejki z powodu jednoczesnego charakteru struktury danych.  Istnieje możliwość, że nawet jeśli żadne operacje użytkownika w kolejce nie są wykonywane w locie, określone wywołanie TryDequeueAsync może nie zwracać elementu, który był wcześniej w kolejce i został przekazany.  Element znajdujący się w kolejce jest zagwarantowany, *aby stał się* widoczny do odłożenia, ale bez mechanizmu komunikacji poza pasmem, niezależny odbiorca nie wie, że kolejka osiągnęła stan stabilny, nawet jeśli wszyscy producenci zostali zatrzymani i nie dozwolone są nowe operacje dodawania do kolejki. W ten sposób operacja opróżniania jest optymalna dla implementacji poniżej.
+Nie można zagwarantować opróżniania kolejki z powodu jednoczesnego charakteru struktury danych.  Istnieje możliwość, że nawet jeśli żadne operacje użytkownika w kolejce nie są wykonywane w locie, określone wywołanie TryDequeueAsync może nie zwracać elementu, który był wcześniej w kolejce i został przekazany.  Element znajdujący się w kolejce jest zagwarantowany, *aby stał się* widoczny do usuwania z kolejki, ale bez mechanizmu komunikacji poza pasmem, niezależny konsument nie może wiedzieć, że kolejka osiągnęła stan stabilny, nawet jeśli wszyscy producenci zostali zatrzymani i nie są dozwolone żadne nowe operacje w kolejce. W ten sposób operacja opróżniania jest optymalna dla implementacji poniżej.
 
 Użytkownik powinien zatrzymać wszystkie pozostałe zadania producenta i konsumenta oraz poczekać na zatwierdzenie lub przerwanie transakcji w locie przed podjęciem próby opróżnienia kolejki.  Jeśli użytkownik zna oczekiwaną liczbę elementów w kolejce, może skonfigurować powiadomienie, które sygnalizuje, że wszystkie elementy zostały odkolejkowane.
 
@@ -313,7 +313,7 @@ do
 } while (ret.HasValue);
 ```
 
-### <a name="peek"></a>Wgląd
+### <a name="peek"></a>Peek
 ReliableConcurrentQueue nie udostępnia interfejsu API *TryPeekAsync* . Użytkownicy mogą uzyskać semantykę wglądu przy użyciu *TryDequeueAsync* , a następnie przerwać transakcję. W tym przykładzie dequeues są przetwarzane tylko wtedy, gdy wartość elementu jest większa niż *10*.
 
 ```

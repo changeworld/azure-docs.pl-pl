@@ -116,7 +116,7 @@ Azure Advisor zidentyfikuje Azure Cosmos DB kontenery używające rozmiaru stron
 
 2.  Na pulpicie nawigacyjnym usługi Advisor kliknij kartę **wydajność** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat zaleceń klasyfikatora, zobacz:
 

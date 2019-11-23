@@ -40,12 +40,12 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 * Odpowiednie porty muszą być otwarte na odpowiednim serwerze Windows Active Directory (AD).  
     Wymagane porty są następujące: 
 
-    |     Usługa           |     Port     |     Protocol (Protokół)     |
+    |     Usługa           |     Port     |     Protokół     |
     |-----------------------|--------------|------------------|
     |    Usługi sieci Web AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    Ruch             |    ND       |    Odpowiedź echa    |
+    |    ICMPv4             |    Nie dotyczy       |    Odpowiedź echa    |
     |    Udziałem           |    464       |    TCP           |
     |    Udziałem           |    464       |    UDP           |
     |    Udziałem           |    88        |    TCP           |
@@ -86,7 +86,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 
     * **Podstawowy serwer DNS**  
         Jest to serwer DNS, który jest wymagany do przyłączania do domeny Active Directory i operacji uwierzytelniania SMB. 
-    * **Pomocniczy serwer DNS**   
+    * **Pomocniczy  DNS**  
         Jest to pomocniczy serwer DNS służący do zapewniania nadmiarowych usług nazw. 
     * **Domeny**  
         To jest nazwa domeny Active Directory Domain Services, do której chcesz dołączyć.

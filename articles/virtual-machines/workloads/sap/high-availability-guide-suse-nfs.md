@@ -228,17 +228,17 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker SUSE Linux Enterprise 
 
 ### <a name="configure-nfs-server"></a>Konfigurowanie serwera NFS
 
-Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
+Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
 
-1. **[A]** rozpoznawanie nazw hostów
+1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
 
-   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
+   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
    
-   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
+   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
    
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>

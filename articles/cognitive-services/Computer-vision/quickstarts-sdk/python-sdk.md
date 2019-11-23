@@ -28,7 +28,7 @@ Użyj biblioteki klienta przetwarzanie obrazów dla języka Python, aby:
 > [!NOTE]
 > Scenariusze w tym przewodniku szybki start korzystają ze zdalnych adresów URL obrazów. Przykładowy kod, który wykonuje te same operacje na obrazach lokalnych, zawiera kod w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | [pakiet (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/) | [przykładów](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) [(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/) [ | ](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -48,7 +48,7 @@ Po otrzymaniu klucza z subskrypcji próbnej lub zasobu [Utwórz zmienne środowi
  
 ### <a name="create-a-new-python-application"></a>Tworzenie nowej aplikacji w języku Python
 
-Utwórz nowy skrypt języka Python @ no__t-0*QuickStart-File.py*, na przykład. Następnie otwórz go w preferowanym edytorze lub środowisku IDE i zaimportuj poniższe biblioteki.
+Utwórz nowy skrypt w języku Python&mdash;*QuickStart-File.py*, na przykład. Następnie otwórz go w preferowanym edytorze lub środowisku IDE i zaimportuj poniższe biblioteki.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
 
@@ -162,7 +162,7 @@ Poniższy kod analizuje dane dotyczące wykrytych punktów orientacyjnych w obra
 
 ### <a name="get-the-image-type"></a>Pobierz typ obrazu
 
-Poniższy kod drukuje informacje o typie obrazu @ no__t-0whether, który jest obiektem clipart lub rysowaniem linii.
+Poniższy kod drukuje informacje o typie obrazu&mdash;niezależnie od tego, czy jest to obiekt clipart czy rysowanie liniowe.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
@@ -172,7 +172,7 @@ Przetwarzanie obrazów może odczytać widoczny tekst w obrazie i przekonwertowa
 
 ### <a name="call-the-read-api"></a>Wywoływanie interfejsu API odczytu
 
-Najpierw użyj następującego kodu, aby wywołać metodę **batch_read_file** dla danego obrazu. Zwraca identyfikator operacji i uruchamia proces asynchroniczny w celu odczytania zawartości obrazu.
+Najpierw użyj poniższego kodu, aby wywołać metodę **batch_read_file** dla danego obrazu. Zwraca identyfikator operacji i uruchamia proces asynchroniczny w celu odczytania zawartości obrazu.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 

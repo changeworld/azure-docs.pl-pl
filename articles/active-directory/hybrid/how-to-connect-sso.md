@@ -51,10 +51,10 @@ Bezproblemowe logowanie jednokrotne może być łączone z [synchronizacją skr�
 
 ## <a name="feature-highlights"></a>Najważniejsze funkcje
 
-- Nazwą użytkownika logowania może być lokalna domyślna nazwa użytkownika (`userPrincipalName`) lub inny atrybut skonfigurowany w Azure AD Connect (`Alternate ID`). Oba przypadki użycia działają, ponieważ bezproblemowe logowanie jednokrotne używa roszczeń `securityIdentifier` w biletu protokołu Kerberos w celu wyszukania odpowiedniego obiektu użytkownika w usłudze Azure AD.
+- Nazwa użytkownika logowania może być lokalną domyślną nazwą użytkownika (`userPrincipalName`) lub innym atrybutem skonfigurowanym w Azure AD Connect (`Alternate ID`). Oba przypadki użycia działają, ponieważ bezproblemowe logowanie jednokrotne korzysta z `securityIdentifier`ego żądania w biletu protokołu Kerberos w celu wyszukania odpowiedniego obiektu użytkownika w usłudze Azure AD.
 - Bezproblemowe logowanie jednokrotne jest funkcją oportunistyczną. Jeśli z jakiegoś powodu nie powiedzie się, środowisko logowania użytkownika powróci do regularnego zachowania — oznacza to, że użytkownik musi wprowadzić hasło na stronie logowania.
-- Jeśli aplikacja (na przykład `https://myapps.microsoft.com/contoso.com`) przekaże parametr `domain_hint` (OpenID Connect Connect) lub `whr` (SAML)-identyfikujący dzierżawę lub `login_hint` parametr-identyfikujący użytkownika w żądaniu logowania usługi Azure AD, użytkownicy są automatycznie zalogowani bez nich Wprowadzanie nazw użytkowników lub haseł.
-- Użytkownicy mogą również korzystać z dyskretnego logowania, jeśli aplikacja (na przykład `https://contoso.sharepoint.com`) wysyła żądania logowania do punktów końcowych usługi Azure AD skonfigurowanych jako dzierżawcy — czyli `https://login.microsoftonline.com/contoso.com/<..>` lub `https://login.microsoftonline.com/<tenant_ID>/<..>` — zamiast wspólnego punktu końcowego usługi Azure AD, czyli `https://login.microsoftonline.com/common/<...>`.
+- Jeśli aplikacja (na przykład `https://myapps.microsoft.com/contoso.com`) przekaże parametr `domain_hint` (OpenID Connect Connect) lub `whr` (SAML) identyfikujący dzierżawcę lub `login_hint` parametr-identyfikujący użytkownika w żądaniu logowania usługi Azure AD, użytkownicy są automatycznie zalogowani bez wprowadzania nazw użytkowników ani haseł.
+- Użytkownicy mogą również korzystać z dyskretnego logowania, jeśli aplikacja (na przykład `https://contoso.sharepoint.com`) wysyła żądania logowania do punktów końcowych usługi Azure AD skonfigurowanych jako dzierżawcy — czyli `https://login.microsoftonline.com/contoso.com/<..>` lub `https://login.microsoftonline.com/<tenant_ID>/<..>`-zamiast wspólnego punktu końcowego usługi Azure AD, czyli `https://login.microsoftonline.com/common/<...>`.
 - Wylogowywanie jest obsługiwane. Dzięki temu użytkownicy mogą wybrać inne konto usługi Azure AD, aby zalogować się za pomocą programu, a nie automatycznie logować się automatycznie za pomocą bezproblemowego logowania jednokrotnego.
 - Klienci Win32 pakietu Office 365 (Outlook, Word, Excel i inne) z wersjami 16.0.8730. xxxx i nowszymi są obsługiwani przy użyciu nieinteraktywnego przepływu. W przypadku usługi OneDrive konieczne będzie aktywowanie [funkcji konfiguracji dyskretnej usługi OneDrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) w celu zalogowania dyskretnego.
 - Można ją włączyć za pośrednictwem Azure AD Connect.
@@ -63,19 +63,19 @@ Bezproblemowe logowanie jednokrotne może być łączone z [synchronizacją skr�
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Tak @ no__t-0|Tak|Tak|Tak @ no__t-0 @ no__t-1 @ no__t-2|ND
-|Windows 8.1|Tak @ no__t-0|ND|Tak|Tak @ no__t-0 @ no__t-1 @ no__t-2|ND
-|Windows 8|Tak @ no__t-0|ND|Tak|Tak @ no__t-0 @ no__t-1 @ no__t-2|ND
-|Windows 7|Tak @ no__t-0|ND|Tak|Tak @ no__t-0 @ no__t-1 @ no__t-2|ND
-|System Windows Server 2012 R2 lub nowszy|Tak @ no__t-0 @ no__t-1|ND|Tak|Tak @ no__t-0 @ no__t-1 @ no__t-2|ND
-|Mac OS X|ND|ND|Tak @ no__t-0 @ no__t-1 @ no__t-2|Tak @ no__t-0 @ no__t-1 @ no__t-2|Tak @ no__t-0 @ no__t-1 @ no__t-2
+|Windows 10|Tak\*|Tak|Tak|Tak\*\*\*|Nie dotyczy
+|Windows 8.1|Tak\*|Nie dotyczy|Tak|Tak\*\*\*|Nie dotyczy
+|Windows 8|Tak\*|Nie dotyczy|Tak|Tak\*\*\*|Nie dotyczy
+|Windows 7|Tak\*|Nie dotyczy|Tak|Tak\*\*\*|Nie dotyczy
+|System Windows Server 2012 R2 lub nowszy|Tak\*\*|Nie dotyczy|Tak|Tak\*\*\*|Nie dotyczy
+|Mac OS X|Nie dotyczy|Nie dotyczy|Tak\*\*\*|Tak\*\*\*|Tak\*\*\*
 
 
-@no__t — 0Requires Internet Explorer w wersji 10 lub nowszej
+\*wymaga programu Internet Explorer w wersji 10 lub nowszej
 
-\* @ no__t-1Requires Internet Explorer w wersji 10 lub nowszej. Wyłącz rozszerzony tryb chroniony
+\*\*wymaga programu Internet Explorer w wersji 10 lub nowszej. Wyłącz rozszerzony tryb chroniony
 
-\* @ no__t-1 @ no__t-2Requires [dodatkowa konfiguracja](how-to-connect-sso-quick-start.md#browser-considerations)
+\*\*\*wymaga [dodatkowej konfiguracji](how-to-connect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
 >W przypadku systemu Windows 10 zaleceniem jest użycie funkcji [Dołącz do usługi Azure AD](../active-directory-azureadjoin-overview.md) w celu zapewnienia optymalnego logowania jednokrotnego w usłudze Azure AD.

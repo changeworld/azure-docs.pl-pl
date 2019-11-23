@@ -90,7 +90,7 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -158,7 +158,7 @@ W lokalnym oknie terminala ponownie uruchom aplikację przykładową.
 dotnet run
 ```
 
-Przejdź do aplikacji przeglądarki pod adresem `http://localhost:5000`. Otwórz okno narzędzia deweloperskie w przeglądarce (`Ctrl` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 w programie Chrome dla systemu Windows) i sprawdź kartę **konsola** . Powinien pojawić się komunikat o błędzie `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Przejdź do aplikacji przeglądarki pod adresem `http://localhost:5000`. Otwórz okno narzędzia deweloperskie w przeglądarce (`Ctrl`+`Shift`+`i` w programie Chrome dla systemu Windows) i sprawdź kartę **konsola** . Powinien pojawić się komunikat o błędzie, `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
 ![Błąd mechanizmu CORS w kliencie przeglądarki](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -177,7 +177,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 W parametrze `properties.cors.allowedOrigins` możesz określić więcej niż jeden adres URL klienta (`"['URL1','URL2',...]"`). Możesz również włączyć adresy URL wszystkich klientów za pomocą wartości `"['*']"`.
 
 > [!NOTE]
-> Jeśli Twoja aplikacja wymaga wysyłania poświadczeń, takich jak pliki cookie lub tokeny uwierzytelniania, przeglądarka może wymagać nagłówka `ACCESS-CONTROL-ALLOW-CREDENTIALS` w odpowiedzi. Aby włączyć tę funkcję w App Service, ustaw `properties.cors.supportCredentials` na `true` w konfiguracji CORS. Nie można go włączyć, jeśli `allowedOrigins` zawiera `'*'`.
+> Jeśli Twoja aplikacja wymaga wysyłania poświadczeń, takich jak pliki cookie lub tokeny uwierzytelniania, przeglądarka może wymagać nagłówka `ACCESS-CONTROL-ALLOW-CREDENTIALS` w odpowiedzi. Aby włączyć tę funkcję w App Service, ustaw `properties.cors.supportCredentials` na `true` w konfiguracji CORS. Nie można go włączyć, gdy `allowedOrigins` zawiera `'*'`.
 
 ### <a name="test-cors-again"></a>Ponowne testowanie mechanizmu CORS
 

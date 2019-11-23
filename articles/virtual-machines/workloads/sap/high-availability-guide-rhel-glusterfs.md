@@ -120,15 +120,15 @@ Najpierw musisz utworzyć maszyny wirtualne dla tego klastra. Następnie należy
 
 Następujące elementy są poprzedzone znakiem **[A]** -odpowiednim dla wszystkich węzłów, **[1]** — dotyczy tylko węzła 1, **[2]** — dotyczy tylko węzła 2, **[3]** — dotyczy tylko węzła 3.
 
-1. **[A]** rozpoznawanie nazw hostów
+1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
 
-   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
+   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
+   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
 
    <pre><code># IP addresses of the Gluster nodes
    <b>10.0.0.40 glust-0</b>

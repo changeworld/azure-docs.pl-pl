@@ -71,9 +71,9 @@ Gdy instalacja łącznika nie powiedzie się, główną przyczyną jest zazwycza
 
 **Aby sprawdzić, czy poświadczenia są poprawne:**
 
-Połącz się z <https://login.microsoftonline.com> i Użyj tych samych poświadczeń. Upewnij się, że logowanie zakończyło się pomyślnie. Rolę użytkownika można sprawdzić, przechodząc do **Azure Active Directory** - @ no__t-2 **użytkowników i grup** - @ No__t-5 **Wszyscy użytkownicy**. 
+Połącz się z <https://login.microsoftonline.com> i Użyj tych samych poświadczeń. Upewnij się, że logowanie zakończyło się pomyślnie. Rolę użytkownika można sprawdzić, przechodząc do **Azure Active Directory** -&gt; **użytkowników i grup** -&gt; **wszystkich użytkowników**. 
 
 Wybierz konto użytkownika, a następnie "rola katalogu" w menu wyników. Sprawdź, czy wybrana rola to "Administrator aplikacji". Jeśli nie możesz uzyskać dostępu do żadnych stron w ramach tych kroków, nie masz wymaganej roli.
 
 ## <a name="next-steps"></a>Następne kroki
-[Omówienie łączników serwer proxy aplikacji usługi Azure AD platformy Azure](application-proxy-connectors.md)
+[Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)

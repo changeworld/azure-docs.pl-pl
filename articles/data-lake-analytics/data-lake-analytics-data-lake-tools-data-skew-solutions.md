@@ -20,7 +20,7 @@ ms.locfileid: "71802554"
 ## <a name="what-is-data-skew"></a>Co to jest odchylone dane?
 
 Krótko podano, skośność danych jest wartością przestawioną przez nadmierną reprezentację. Załóżmy, że przypisano 50ych ekspertów podatkowych do inspekcji podatków, jeden ekspert dla każdego stanu Stanów Zjednoczonych. Test Wyoming, ponieważ populacja jest mała, ma niewiele do zrobienia. W Kalifornii, jednak ten test jest bardzo zajęty z powodu dużej populacji stanu.
-    przykład dotyczący problemu ![Data-no__t-1
+    przykład ![problemu z pochyleniem danych](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
 
 W naszym scenariuszu dane są nierównomiernie dystrybuowane we wszystkich testach podatkowych, co oznacza, że niektóre badania muszą współpracować więcej niż inne. We własnym zadaniu często występują sytuacje, takie jak przykład obtestowania podatku. W celu uzyskania więcej informacji technicznych jeden wierzchołek otrzymuje znacznie więcej danych niż jego elementy równorzędne. sytuacja, w której wierzchołk działa więcej niż pozostałe, a ostatecznie spowalnia całe zadanie. Co się nie dzieje, zadanie może się nie powieść, ponieważ wierzchołki mogą mieć na przykład 5-godzinne ograniczenie środowiska uruchomieniowego i ograniczenie pamięci 6 GB.
 

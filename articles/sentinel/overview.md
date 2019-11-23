@@ -23,7 +23,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 09/25/2019
 ms.locfileid: "71261881"
 ---
-# <a name="what-is-azure-sentinel"></a>Co to jest Azure — Wskaźnikowanie?
+# <a name="what-is-azure-sentinel"></a>Co to jest usługa Azure Sentinel?
 
 Microsoft Azure wskaźnikiem wydajności jest skalowalne i natywne rozwiązanie do **zarządzania zdarzeniami zabezpieczeń (Siem)** i **o (Security Orchestration)** . Platforma Azure — wskaźnik przedstawia inteligentne rozwiązania w zakresie zabezpieczeń i analizy zagrożeń w całym przedsiębiorstwie, zapewniając jedno rozwiązanie do wykrywania alertów, widoczności zagrożeń, aktywnego polowania i reagowania na zagrożenia. 
 
@@ -51,7 +51,7 @@ Aby przejść do tablicy wskaźnikowej platformy Azure, musisz najpierw [nawiąz
 
 ## <a name="workbooks"></a>Skoroszyty
 
-Po [nawiązaniu połączenia ze źródłami](quickstart-onboard.md) danych na platformie Azure — dane można monitorować, korzystając z integracji z Azure monitor skoroszytów platformy Azure, które zapewniają uniwersalność tworzenia niestandardowych skoroszytów. Gdy skoroszyty są wyświetlane inaczej na platformie Azure — wskaźnikiem, może być przydatne, aby zobaczyć, jak [tworzyć interaktywne raporty za pomocą skoroszytów Azure monitor](../azure-monitor/app/usage-workbooks.md). System Azure — wskaźnik kontrolny umożliwia tworzenie niestandardowych skoroszytów w danych, a także udostępnia wbudowane szablony skoroszytów umożliwiające szybkie uzyskiwanie szczegółowych informacji na temat danych, gdy tylko nawiążesz połączenie ze źródłem danych.
+Po [nawiązaniu połączenia ze źródłami danych](quickstart-onboard.md) do kontroli wskaźnikowej platformy Azure można monitorować dane przy użyciu integracji kontroli wskaźnikowej platformy Azure ze skoroszytami Azure monitor, które zapewniają uniwersalność tworzenia niestandardowych skoroszytów. Gdy skoroszyty są wyświetlane inaczej na platformie Azure — wskaźnikiem, może być przydatne, aby zobaczyć, jak [tworzyć interaktywne raporty za pomocą skoroszytów Azure monitor](../azure-monitor/app/usage-workbooks.md). System Azure — wskaźnik kontrolny umożliwia tworzenie niestandardowych skoroszytów w danych, a także udostępnia wbudowane szablony skoroszytów umożliwiające szybkie uzyskiwanie szczegółowych informacji na temat danych, gdy tylko nawiążesz połączenie ze źródłem danych.
 
 ![Pulpity nawigacyjne](./media/tutorial-monitor-data/access-workbooks.png)
 
@@ -68,7 +68,7 @@ Automatyzuj typowe zadania i [Uprość aranżację zabezpieczeń dzięki usłudz
 
 Na przykład w przypadku korzystania z systemu biletów usługi ServiceNow można użyć narzędzi dostępnych Azure Logic Apps do automatyzacji przepływów pracy i otworzyć bilet w usługi ServiceNow za każdym razem, gdy zostanie wykryte określone zdarzenie.
 
-![Podręczniki](./media/tutorial-respond-threats-playbook/logic-app.png)
+![Elementy playbook](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
 ## <a name="investigation"></a>Badanie

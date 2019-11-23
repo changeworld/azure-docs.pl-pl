@@ -84,16 +84,16 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<SUBDOMAIN>.freshworks.com/login`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta Freshworks](mailto:support@freshworks.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając rzeczywistego adresu URL logowania i identyfikatora. Skontaktuj się z [zespołem obsługi klienta Freshworks](mailto:support@freshworks.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-1. Aby zmodyfikować **Podpisywanie** options zgodnie z wymaganiami, kliknij pozycję **Edytuj** Button, aby otworzyć **certyfikat podpisywania SAML** dialog.
+1. Aby zmodyfikować opcje  **podpisywania** zgodnie z wymaganiami, kliknij przycisk **Edytuj** , aby otworzyć okno dialogowe  **certyfikatu podpisywania SAML** .
 
      ![image](common/edit-certificate.png)
 
@@ -101,7 +101,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     a. Wybierz opcję **podpisania odpowiedzi SAML** jako **podpisywania**.
 
-    b. Kliknij przycisk **Save** (Zapisz).
+    b. Kliknij pozycję **Zapisz**.
 
 1. W sekcji **Konfigurowanie Freshworks** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
@@ -112,12 +112,12 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -127,7 +127,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **Freshworks**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -141,7 +141,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 1. Otwórz nowe okno przeglądarki sieci Web i zaloguj się do firmowej witryny Freshworks jako administrator i wykonaj następujące czynności:
 
-2. Z lewej strony menu kliknij pozycję **Security** icon, a następnie sprawdź opcję **logowania** jednokrotnego i wybierz pozycję Logowanie **jednokrotne SAML** w obszarze **metody uwierzytelniania**.
+2. Z lewej strony menu kliknij ikonę  **zabezpieczeń** , a następnie sprawdź opcję **logowania** jednokrotnego i wybierz pozycję Logowanie **jednokrotne SAML** w obszarze **metody uwierzytelniania**.
 
     ![Konfiguracja Freshworks](./media/freshworks-tutorial/configure01.png)
 
@@ -157,19 +157,19 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     d. Otwórz w Notatniku certyfikat szyfrowany algorytmem Base64, skopiuj jego zawartość i wklej go do pola tekstowego **certyfikat zabezpieczeń** .
 
-    e. Kliknij przycisk **Save** (Zapisz).
+    e. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-freshworks-test-user"></a>Utwórz użytkownika testowego Freshworks
 
-W tej sekcji utworzysz użytkownika o nazwie B. Simon w Freshworks. Współpracuj z [zespołem obsługi klienta Freshworks](mailto:support@freshworks.com) , aby dodać użytkowników z platformy Freshworks. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika o nazwie B. Simon w Freshworks. Współpracuj z [zespołem obsługi klienta Freshworks](mailto:support@freshworks.com) , aby dodać użytkowników z platformy Freshworks. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Freshworks w panelu dostępu należy automatycznie zalogować się do Freshworks, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

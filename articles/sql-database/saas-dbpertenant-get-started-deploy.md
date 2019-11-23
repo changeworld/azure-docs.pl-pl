@@ -122,7 +122,7 @@ Centralna strona **centrum zdarzeń** zawiera listę linków do dzierżawców we
 
 Aplikacja Wingtip używa [*platformy Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) do sterowania dystrybucją żądań przychodzących. Adres URL dostępu do strony zdarzeń dla określonej dzierżawy używa następującego formatu:
 
-- http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
     Części powyższego formatu zostały wyjaśnione w poniższej tabeli.
 
@@ -130,7 +130,7 @@ Aplikacja Wingtip używa [*platformy Azure Traffic Manager*](../traffic-manager
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | Części zdarzeń aplikacji Wingtip.<br /><br /> *-DPT* *rozróżnia implementacje biletów Wingtip na podstawie* innych implementacji. Przykładami są implementacje *jednej* dzierżawy ( *-sa*) lub wielodostępnej *bazy danych* ( *-MT*). |
     | . *&gt;użytkownika&lt;* | *AF1* w przykładzie. |
-    | . trafficmanager.net/ | Traffic Manager, podstawowy adres URL. |
+    | .trafficmanager.net/ | Traffic Manager, podstawowy adres URL. |
     | fabrikamjazzclub | Identyfikuje dzierżawcę o nazwie Fabrikam Jazz trefl. |
     | &nbsp; | &nbsp; |
 

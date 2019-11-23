@@ -27,24 +27,24 @@ W tym przewodniku szybki start wyodrębnisz drukowany i/lub odręczny tekst z ob
 
 Możesz pracować z tym przewodnikiem Szybki start krok po kroku, korzystając z aplikacji Jupyter Notebook w usłudze [MyBinder](https://mybinder.org). Aby uruchomić usługę Binder, wybierz poniższy przycisk:
 
-[@no__t — przycisk 1The uruchamiania spinacza](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![przycisku uruchamiania spinacza](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/try/cognitive-services/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
+- Jeśli chcesz uruchomić próbkę lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Skopiuj następujący kod do edytora tekstów.
-1. Opcjonalnie należy zastąpić wartość `image_url` adresem URL innego obrazu, z którego ma zostać wyodrębniony tekst.
+1. Opcjonalnie należy zamienić wartość `image_url` na adres URL innego obrazu, z którego ma zostać wyodrębniony tekst.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `get-text.py`.
 1. Otwórz okno wiersza polecenia.
-1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python get-text.py`.
+1. W tym oknie użyj polecenia `python`, aby uruchomić przykładowy kod. Na przykład `python get-text.py`.
 
 ```python
 import requests

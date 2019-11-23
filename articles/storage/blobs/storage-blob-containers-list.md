@@ -32,7 +32,7 @@ Przeciążenia tych metod zawierają dodatkowe opcje zarządzania kontenerami zw
 
 Domyślnie operacja tworzenia listy zwraca do 5000 wyników jednocześnie. Aby zwrócić mniejszy zestaw wyników, podaj wartość różną od zera dla `maxresults` parametru podczas wywoływania jednej z metod **ListContainerSegmented** .
 
-Jeśli konto magazynu zawiera więcej niż 5000 kontenerów lub jeśli określono wartość `maxresults` w taki sposób, że operacja tworzenia listy zwróci podzestaw kontenerów na koncie magazynu, usługa Azure Storage zwraca *token kontynuacji* z listą opakowania. Token kontynuacji jest wartością nieprzezroczystą, która służy do pobierania następnego zestawu wyników z usługi Azure Storage.
+Jeśli konto magazynu zawiera więcej niż 5000 kontenerów lub jeśli określono wartość `maxresults` w taki sposób, że operacja tworzenia listy zwróci podzestaw kontenerów na koncie magazynu, usługa Azure Storage zwraca *token kontynuacji* z listą kontenerów. Token kontynuacji jest wartością nieprzezroczystą, która służy do pobierania następnego zestawu wyników z usługi Azure Storage.
 
 W kodzie Sprawdź wartość tokenu kontynuacji, aby określić, czy ma ona wartość null. Gdy token kontynuacji ma wartość null, zestaw wyników jest zakończony. Jeśli token kontynuacji nie ma wartości null, ponownie wywołaj **ListContainersSegmented** lub **ListContainersSegmentedAsync** , przekazując token kontynuacji, aby pobrać następny zestaw wyników, dopóki token kontynuacji nie będzie miał wartości null.
 
@@ -99,5 +99,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Zobacz także
 
-[Lista kontenerów](/rest/api/storageservices/list-containers2) 
+[Lista kontenerów](/rest/api/storageservices/list-containers2)
 [wyliczanie zasobów obiektów BLOB](/rest/api/storageservices/enumerating-blob-resources)

@@ -101,8 +101,8 @@ Określanie parametrów nie jest wymagane. Ustawienie domyślne jest stosowane.
 |------------------|-------|--------------|---------|
 | `Type`           | Wyliczenie  | Typ przetwarzania do wykonania. Typy są wyrównane z typami [poleceń Refresh](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) TMSL: Full, clearValues, Oblicz, dataonly, Automatic i defragmentowania. Dodawanie typu nie jest obsługiwane.      |   Automatyczne      |
 | `CommitMode`     | Wyliczenie  | Określa, czy obiekty będą zatwierdzane w partiach, czy tylko po zakończeniu. Tryby to: default, transakcyjna, partialBatch.  |  transakcyjna       |
-| `MaxParallelism` | ZAOKR   | Ta wartość określa maksymalną liczbę wątków, w których uruchamianie poleceń przetwarzania jest równoległe. Ta wartość jest wyrównana z właściwością MaxParallelism, którą można ustawić w TMSL [Sequence polecenia](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
-| `RetryCount`     | ZAOKR   | Wskazuje liczbę ponownych prób wykonania operacji przed zakończeniem się niepowodzeniem.      |     0    |
+| `MaxParallelism` | Int   | Ta wartość określa maksymalną liczbę wątków, w których uruchamianie poleceń przetwarzania jest równoległe. Ta wartość jest wyrównana z właściwością MaxParallelism, którą można ustawić w TMSL [Sequence polecenia](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
+| `RetryCount`     | Int   | Wskazuje liczbę ponownych prób wykonania operacji przed zakończeniem się niepowodzeniem.      |     0    |
 | `Objects`        | Tablica | Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "Tabela" podczas przetwarzania całej tabeli lub "tabeli" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model zostanie odświeżony. |   Przetwórz cały model      |
 
 Wartość CommitMode jest równa partialBatch. Jest on używany podczas wstępnego ładowania dużych zestawów danych, które mogą zająć kilka godzin. Jeśli operacja odświeżania nie powiedzie się po pomyślnym zatwierdzeniu jednej lub większej liczby partii, pomyślnie przekazane partie pozostaną zatwierdzone (nie zostaną wycofane pomyślnie przekazane partie).
@@ -211,7 +211,7 @@ Aby uzyskać więcej informacji na temat konfigurowania nazwy głównej usługi 
 3.  Uruchom przykład.
 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Przykłady](analysis-services-samples.md)   
 [Interfejs API REST](https://docs.microsoft.com/rest/api/analysisservices/servers)   

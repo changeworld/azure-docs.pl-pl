@@ -68,9 +68,9 @@ Mikrousługi stanowe upraszczają projekty aplikacji, ponieważ usuwają potrzeb
 
 Poniższe diagramy ilustrują różnice między projektowaniem aplikacji, która jest bezstanowa i jednego ze stanowych. Dzięki wykorzystaniu modeli programowania [Reliable Services](service-fabric-reliable-services-introduction.md) i [Reliable Actors](service-fabric-reliable-actors-introduction.md) , usługi stanowe zmniejszają złożoność aplikacji przy jednoczesnym osiągnięciu dużej przepływności i małych opóźnień.
 
-Oto przykładowa aplikacja korzystająca z usług bezstanowych: ![Application, które korzystają z usług bezstanowych @ no__t-1
+Oto przykładowa aplikacja korzystająca z usług bezstanowych: ![aplikacji korzystającej z usług bezstanowych][Image1]
 
-Oto przykładowa aplikacja korzystająca z usług stanowych: ![Application, która korzysta z usług stanowych @ no__t-1
+Oto przykładowa aplikacja korzystająca z usług stanowych: ![aplikacji, która korzysta z usług stanowych][Image2]
 
 ## <a name="next-steps"></a>Następne kroki
 

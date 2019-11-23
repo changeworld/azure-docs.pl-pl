@@ -310,7 +310,7 @@ ms.locfileid: "70100004"
 
 
 Za pomocą Microsoft Azure można migrować istniejącą aplikację SAP działającą w systemach IBM DB2 dla systemów Linux, UNIX i Windows (LUW) do maszyn wirtualnych platformy Azure. W przypadku oprogramowania SAP w programie IBM DB2 for LUW Administratorzy i deweloperzy mogą nadal korzystać z tych samych narzędzi programistycznych i administracyjnych, które są dostępne lokalnie.
-Ogólne informacje o uruchamianiu programu SAP Business Suite w programie IBM DB2 for LUW można znaleźć w sieci społeczności SAP (SCN) <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>pod adresem.
+Ogólne informacje o uruchamianiu programu SAP Business Suite w programie IBM DB2 for LUW można znaleźć w witrynie SAP Community Network (SCN) w <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>.
 
 Aby uzyskać więcej informacji i aktualizacji dotyczących oprogramowania SAP w programie DB2 for LUW na platformie Azure, zobacz temat SAP Note [2233094]. 
 
@@ -320,19 +320,19 @@ Poniższe uwagi dotyczące oprogramowania SAP są powiązane z oprogramowaniem S
 
 | Numer notatki | Tytuł |
 | --- | --- |
-| [1928533] |Aplikacje SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
-| [2015553] |System SAP na Microsoft Azure: Wymagania wstępne dotyczące obsługi |
+| [1928533] |Aplikacje SAP na platformie Azure: obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
+| [2015553] |SAP on Microsoft Azure: wymagania wstępne dotyczące pomocy technicznej |
 | [1999351] |Rozwiązywanie problemów z ulepszonym monitorowaniem platformy Azure dla oprogramowania SAP |
 | [2178632] |Metryki monitorowania kluczy dla SAP na Microsoft Azure |
-| [1409604] |Wirtualizacja w systemie Windows: Ulepszone monitorowanie |
-| [2191498] |System SAP w systemie Linux z platformą Azure: Ulepszone monitorowanie |
+| [1409604] |Wirtualizacja w systemie Windows: ulepszone monitorowanie |
+| [2191498] |SAP w systemie Linux z platformą Azure: ulepszone monitorowanie |
 | [2233094] |DB6: Aplikacje SAP na platformie Azure korzystające z programu IBM DB2 dla systemów Linux, UNIX i Windows — dodatkowe informacje |
-| [2243692] |Maszyna wirtualna z systemem Linux na Microsoft Azure (IaaS): Problemy z licencją SAP |
-| [1984787] |SUSE LINUX Enterprise Server 12: Uwagi dotyczące instalacji |
-| [2002167] |Red Hat Enterprise Linux 7.x: Instalowanie i uaktualnianie |
+| [2243692] |Maszyna wirtualna z systemem Linux na Microsoft Azure (IaaS): problemy z licencją SAP |
+| [1984787] |SUSE LINUX Enterprise Server 12: uwagi dotyczące instalacji |
+| [2002167] |Red Hat Enterprise Linux 7. x: Instalowanie i uaktualnianie |
 | [1597355] |Zalecenie wymiany miejsca dla systemu Linux |
 
-Jako żądanie ściągnięcia do tego dokumentu należy przeczytać zagadnienia dotyczące dokumentu [dotyczące wdrożenia systemu azure Virtual Machines DBMS dotyczące obciążeń SAP](dbms_guide_general.md) oraz innych przewodników [dotyczących obciążeń SAP w dokumentacji platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+Jako żądanie ściągnięcia do tego dokumentu należy przeczytać [zagadnienia dotyczące dokumentu dotyczące wdrożenia systemu azure Virtual Machines DBMS dotyczące obciążeń SAP](dbms_guide_general.md) oraz innych przewodników [dotyczących obciążeń SAP w dokumentacji platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>Obsługa wersji IBM DB2 dla systemów Linux, UNIX i Windows
@@ -342,7 +342,7 @@ Aby uzyskać informacje o obsługiwanych produktach SAP i typach maszyn wirtualn
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Wytyczne dotyczące konfiguracji oprogramowania IBM DB2 dla systemów Linux, UNIX i Windows dla instalacji SAP na maszynach wirtualnych platformy Azure
 ### <a name="storage-configuration"></a>Konfiguracja magazynu
-Wszystkie pliki bazy danych muszą być przechowywane w systemie plików NTFS na podstawie bezpośrednio dołączonych dysków. Te dyski są instalowane na maszynę wirtualną platformy Azure i są oparte na usłudze Azure Page<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>BLOB Storage ()<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>lub Managed disks (). Wszystkie rodzaje dysków sieciowych lub udziałów zdalnych, takich jak następujące usługi plików platformy Azure, **nie** są obsługiwane w przypadku plików bazy danych: 
+Wszystkie pliki bazy danych muszą być przechowywane w systemie plików NTFS na podstawie bezpośrednio dołączonych dysków. Te dyski są instalowane na maszynę wirtualną platformy Azure i są oparte na usłudze Azure Page BLOB Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Wszystkie rodzaje dysków sieciowych lub udziałów zdalnych, takich jak następujące usługi plików platformy Azure, **nie** są obsługiwane w przypadku plików bazy danych: 
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
@@ -359,7 +359,7 @@ Alternatywnie można użyć pul magazynu systemu Windows (dostępne tylko w syst
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-W przypadku dysków zawierających ścieżki magazynu DB2 dla katalogów sapdata i saptmp należy określić rozmiar sektora dysku fizycznego wynoszący 512 KB. W przypadku korzystania z pul magazynu systemu Windows należy ręcznie utworzyć pule magazynów za pośrednictwem interfejsu wiersza polecenia `-LogicalSectorSizeDefault`za pomocą parametru. Aby uzyskać więcej informacji, zobacz <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+W przypadku dysków zawierających ścieżki magazynu DB2 dla katalogów sapdata i saptmp należy określić rozmiar sektora dysku fizycznego wynoszący 512 KB. W przypadku korzystania z pul magazynu systemu Windows należy ręcznie utworzyć pule magazynów za pośrednictwem interfejsu wiersza polecenia za pomocą parametru `-LogicalSectorSizeDefault`. Aby uzyskać więcej informacji, zobacz <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 W przypadku maszyny wirtualnej z serii M na platformie Azure opóźnienie zapisu w dziennikach transakcji można zmniejszyć o czynniki w porównaniu z wydajnością Premium Storage platformy Azure, korzystając z usługi Azure akcelerator zapisu. W związku z tym należy wdrożyć akcelerator zapisu platformy Azure dla dysków VHD, które tworzą wolumin dla dzienników transakcji bazy danych DB2. Szczegóły można odczytać w dokumencie [Akcelerator zapisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 
@@ -387,7 +387,7 @@ Serwer klastrów firmy Microsoft (MSCS) nie jest obsługiwany.
 
 Obsługiwane jest odzyskiwanie po awarii o wysokiej dostępności (HADR cluster) programu DB2. Jeśli maszyny wirtualne w konfiguracji HA mają działające rozpoznawanie nazw, instalacja na platformie Azure nie różni się od żadnej instalacji wykonywanej lokalnie. Nie zaleca się korzystania tylko z rozpoznawania adresów IP.
 
-Nie należy używać replikacji geograficznej dla kont magazynu przechowujących dyski bazy danych. Aby uzyskać więcej informacji, zapoznaj się z zagadnieniami dotyczącymi dokumentów [dotyczących wdrażania systemu Azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md). 
+Nie należy używać replikacji geograficznej dla kont magazynu przechowujących dyski bazy danych. Aby uzyskać więcej informacji, zapoznaj się z [zagadnieniami dotyczącymi dokumentów dotyczących wdrażania systemu Azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md). 
 
 ### <a name="accelerated-networking"></a>Accelerated Networking
 W przypadku wdrożeń programu DB2 w systemie Windows zdecydowanie zaleca się korzystanie z funkcji systemu Azure przyspieszonej sieci zgodnie z opisem w dokumencie " [przyspieszona sieć platformy Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Należy również wziąć pod uwagę zalecenia dotyczące [wdrażania systemu Azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md). 
@@ -396,7 +396,7 @@ W przypadku wdrożeń programu DB2 w systemie Windows zdecydowanie zaleca się k
 ### <a name="specifics-for-linux-deployments"></a>Specyficzne dla wdrożeń systemu Linux
 Tak długo, jak bieżąca liczba operacji we/wy na dysk jest wystarczająca, możliwe jest przechowywanie wszystkich plików bazy danych na jednym dysku. Należy zawsze oddzielić pliki danych i pliki dziennika transakcji na różnych dyskach/VHD.
 
-Alternatywnie, jeśli przepustowość operacji we/wy pojedynczego wirtualnego dysku twardego platformy Azure jest niewystarczająca, można użyć LVM (Menedżer woluminów logicznych) lub MDADM zgodnie z opisem w artykule [uwagi dotyczące wdrażania systemu azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md) w celu utworzenia jednego duże urządzenie logiczne na wielu dyskach.
+Alternatywnie, jeśli przepustowość operacji we/wy na pojedynczym dysku VHD platformy Azure nie jest wystarczająca, można użyć LVM (Menedżer woluminów logicznych) lub MDADM, zgodnie z opisem w artykule [uwagi dotyczące wdrażania systemu azure Virtual Machines DBMS dla obciążeń SAP](dbms_guide_general.md) w celu utworzenia jednego dużego urządzenia logicznego na wielu dyskach.
 W przypadku dysków zawierających ścieżki magazynu DB2 dla katalogów sapdata i saptmp należy określić rozmiar sektora dysku fizycznego wynoszący 512 KB.
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->

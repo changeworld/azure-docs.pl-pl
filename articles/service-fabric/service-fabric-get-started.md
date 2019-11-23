@@ -86,7 +86,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ## <a name="install-docker-optional"></a>Zainstaluj platformę Docker (opcjonalnie)
 [Service Fabric to koordynator kontenera](service-fabric-containers-overview.md) służący do wdrażania mikrousług w klastrze maszyn. Aby uruchamiać aplikacje kontenera systemu Windows w lokalnym klastrze programistycznym, należy najpierw zainstalować Docker for Windows. Pobierz [Docker CE for Windows (stabilny)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po zainstalowaniu i uruchomieniu programu Docker kliknij prawym przyciskiem myszy jego ikonę na pasku zadań i wybierz pozycję **Switch to Windows containers** (Przełącz na kontenery systemu Windows). Ten krok jest wymagany do uruchomienia obrazów platformy Docker opartych na systemie Windows.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po skonfigurowaniu środowiska projektowego możesz zacząć kompilować i uruchamiać aplikacje.
 
 * [Dowiedz się, jak tworzyć i wdrażać aplikacje oraz zarządzać nimi](service-fabric-tutorial-create-dotnet-app.md)

@@ -48,7 +48,7 @@ Można użyć wyzwalaczy, które pobierają odpowiedzi z Service Bus i udostępn
 
 Upewnij się, że aplikacja logiki ma uprawnienia do uzyskiwania dostępu do przestrzeni nazw Service Bus.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Przejdź do *przestrzeni nazw*Service Bus. Na stronie przestrzeń nazw w obszarze **Ustawienia**wybierz pozycję **zasady dostępu współdzielonego**. W obszarze **oświadczenia**Sprawdź, czy masz uprawnienia do **zarządzania** tą przestrzenią nazw.
 
@@ -63,7 +63,7 @@ Upewnij się, że aplikacja logiki ma uprawnienia do uzyskiwania dostępu do prz
       ![Kopiuj parametry połączenia Service Bus przestrzeni nazw](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Aby potwierdzić, czy parametry połączenia są skojarzone z przestrzenią nazw Service Bus, czy z jednostką obsługi komunikatów, taką jak kolejka, wyszukaj ciąg połączenia dla `EntityPath`  parameter. Jeśli ten parametr zostanie znaleziony, ciąg połączenia jest przeznaczony dla określonej jednostki i nie jest poprawnym ciągiem używanym z aplikacją logiki.
+   > Aby sprawdzić, czy parametry połączenia są skojarzone z przestrzenią nazw Service Bus, czy z jednostką obsługi komunikatów, taką jak kolejka, Wyszukaj parametry połączenia dla parametru `EntityPath` . Jeśli ten parametr zostanie znaleziony, ciąg połączenia jest przeznaczony dla określonej jednostki i nie jest poprawnym ciągiem używanym z aplikacją logiki.
 
 ## <a name="add-service-bus-trigger"></a>Dodaj wyzwalacz Service Bus
 

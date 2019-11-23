@@ -51,7 +51,7 @@ Udoskonalenia modeli i algorytmów są ogłaszane w przypadku, gdy zmiana jest g
 
 Czy masz pytanie dotyczące brakującej funkcji lub funkcji? Rozważ zażądanie lub oddanie głosu w naszej [witrynie sieci Web](https://cognitive.uservoice.com/forums/555922-text-analytics)w usłudze UserVoice.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
  [StackOverflow: interfejs API analizy tekstu](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

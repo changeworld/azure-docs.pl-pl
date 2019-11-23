@@ -93,11 +93,11 @@ Aby dodać Wrike z galerii aplikacji usługi Azure AD, wykonaj następujące kro
 
 2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **Wrike**, wybierz pozycję **Wrike** w panelu wyników, a następnie wybierz pozycję **Dodaj** , aby dodać aplikację.
 
@@ -113,7 +113,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Konfigurowanie automatycznej aprowizacji użytkowników dla Wrike w usłudze Azure AD
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**@no__t — 1**wszystkie aplikacje**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
     ![Wszystkie aplikacje](common/enterprise-applications.png)
 
@@ -165,7 +165,7 @@ Ta operacja uruchamia początkową synchronizację wszystkich użytkowników lub
 
 Możesz użyć bieżącej sekcji **stanu** , aby monitorować postęp i postępować zgodnie z raportem dotyczącym aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w systemie Wrike. Aby uzyskać więcej informacji, zobacz [Sprawdzanie stanu aprowizacji użytkowników](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Aby zapoznać się z dziennikami aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

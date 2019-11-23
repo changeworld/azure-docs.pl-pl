@@ -53,7 +53,7 @@ Fabryki danych można tworzyć/utworzyć przy użyciu jednego z następujących 
 * **Azure PowerShell** Zobacz [Tworzenie i monitorowanie Azure Data Factory przy użyciu Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) samouczka/wskazówki dotyczące tworzenia fabryki danych przy użyciu programu PowerShell. Aby uzyskać kompleksową dokumentację Data Factory poleceń cmdlet, zobacz artykuł [Dokumentacja dokumentacji dotyczącej poleceń cmdlet Data Factory][adf-powershell-reference] w bibliotece MSDN.
 * **Biblioteka klas .NET** Fabryki danych można programistycznie tworzyć za pomocą Data Factory .NET SDK. Zobacz [Tworzenie i monitorowanie fabryk danych oraz zarządzanie nimi przy użyciu zestawu .NET SDK](data-factory-create-data-factories-programmatically.md) , aby zapoznać się z przewodnikiem tworzenia fabryki danych przy użyciu zestawu SDK platformy .NET. Aby uzyskać kompleksową dokumentację Data Factory zestawu .NET SDK, zobacz [Data Factory Dokumentacja biblioteki klas][msdn-class-library-reference] .
 * **interfejs API REST** Można również użyć interfejsu API REST uwidocznionego przez usługę Azure Data Factory, aby tworzyć i wdrażać fabryki danych. Aby uzyskać kompleksową dokumentację Data Factory interfejsu API REST, zobacz [Data Factory Dokumentacja interfejsu API REST][msdn-rest-api-reference] .
-* **Szablon Azure Resource Manager** Zobacz [samouczek: Utwórz pierwszą fabrykę danych Azure przy użyciu Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md) szablonu szczegółowego.
+* **Szablon Azure Resource Manager** Zobacz [Samouczek: Tworzenie pierwszej fabryki danych Azure przy użyciu Azure Resource Manager szablonu](data-factory-build-your-first-pipeline-using-arm.md) szczegółowego.
 
 ### <a name="can-i-rename-a-data-factory"></a>Czy mogę zmienić nazwę fabryki danych?
 Nie. Podobnie jak w przypadku innych zasobów platformy Azure, nie można zmienić nazwy fabryki danych platformy Azure.
@@ -66,16 +66,16 @@ Tak. Użyj przycisku **Przenieś** w bloku Fabryka danych, jak pokazano na poni�
 ### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Jakie środowiska obliczeniowe są obsługiwane przez Data Factory?
 Poniższa tabela zawiera listę środowisk obliczeniowych obsługiwanych przez Data Factory oraz działania, które można na nich uruchamiać.
 
-| Środowisko obliczeniowe | działania |
+| Środowisko obliczeniowe | activities |
 | --- | --- |
 | [Klaster HDInsight na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) lub [własny klaster usługi HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[Dotnet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [świnie](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), usługa [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Działania Machine Learning: Wykonywanie wsadowe i aktualizowanie zasobu](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Działania usługi Machine Learning: wykonywanie wsadowe i aktualizacja zasobów](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Język U-SQL usługi Data Lake Analytics](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Procedura składowana](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Jak Azure Data Factory porównać z usługą SQL Server Integration Services (SSIS)? 
-[Zobacz Azure Data Factory a Prezentacja](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) SSIS z jednej z naszych MVP (najbardziej cenionych specjalistów): Reza rad. Niektóre ostatnie zmiany w Data Factory mogą nie być wymienione na slajdzie. Nieustannie dodajemy więcej możliwości do Azure Data Factory. Nieustannie dodajemy więcej możliwości do Azure Data Factory. Te aktualizacje zostaną dołączone do porównania technologii integracji danych firmy Microsoft w dalszej części tego roku.   
+Zapoznaj się z prezentacją [Azure Data Factory a SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) z jednej z naszych MVP (najbardziej cenionymi profesjonalistami): Reza rad. Niektóre ostatnie zmiany w Data Factory mogą nie być wymienione na slajdzie. Nieustannie dodajemy więcej możliwości do Azure Data Factory. Nieustannie dodajemy więcej możliwości do Azure Data Factory. Te aktualizacje zostaną dołączone do porównania technologii integracji danych firmy Microsoft w dalszej części tego roku.   
 
 ## <a name="activities---faq"></a>Działania — często zadawane pytania
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Jakie są różne rodzaje działań, których można użyć w potoku Data Factory?
@@ -170,7 +170,7 @@ Możesz ponownie uruchomić wycinek w jeden z następujących sposobów:
 
 * Użyj aplikacji monitorowanie i zarządzanie, aby ponownie uruchomić okno działania lub wycinek. Aby uzyskać instrukcje, zobacz Ponowne uruchamianie [wybranych okien działania](data-factory-monitor-manage-app.md#perform-batch-actions) .   
 * Kliknij przycisk **Uruchom** na pasku poleceń w bloku **wycinka danych** dla wycinka w Azure Portal.
-* Uruchom polecenie cmdlet **Set-AzDataFactorySliceStatus** z ustawionym stanem "Oczekiwanie na wycinek".   
+* Uruchom polecenie cmdlet **Set-AzDataFactorySliceStatus** z ustawionym stanem " **oczekiwanie** na wycinek".   
 
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
@@ -185,7 +185,7 @@ W Azure Portal można również wykonać następujące czynności:
 1. Kliknij pozycję **zestawy** danych kafelek w bloku **fabryka dane** dla fabryki danych.
 2. Kliknij konkretny zestaw danych w bloku **zestawy danych** .
 3. Wybierz wycinek, który Cię interesuje z listy **ostatnie wycinki** w bloku **tabeli** .
-4. Kliknij przebieg działania z listy **uruchomienia działania** w bloku wycinek **danych** .
+4. Kliknij przebieg działania z listy **uruchomienia działania** w bloku **wycinek danych** .
 5. Kliknij kafelek **Właściwości** w bloku **szczegóły uruchomienia działania** .
 6. Powinno zostać wyświetlone pole **Duration** z wartością. Ta wartość to czas potrzebny do przetworzenia wycinka.   
 

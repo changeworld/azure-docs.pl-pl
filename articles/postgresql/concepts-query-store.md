@@ -91,22 +91,22 @@ Po włączeniu magazynu zapytań dane są zapisywane w 15-minutowych oknach agre
 
 Następujące opcje są dostępne na potrzeby konfigurowania parametrów magazynu zapytań.
 
-| **Konstruktora** | **Opis** | **Domyślne** | **Zakres**|
+| **Parametr** | **Opis** | **Domyślne** | **Zakres**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | Ustawia, które instrukcje są śledzone. | brak | Brak, Góra, wszystkie |
-| pg_qs. Max _query_text_length | Ustawia maksymalną długość zapytania, którą można zapisać. Dłuższe zapytania zostaną obcięte. | 6000 | 100 – 10 tys. |
+| pg_qs.max_query_text_length | Ustawia maksymalną długość zapytania, którą można zapisać. Dłuższe zapytania zostaną obcięte. | 6000 | 100 – 10 tys. |
 | pg_qs.retention_period_in_days | Ustawia okres przechowywania. | 7 | 1 - 30 |
-| pg_qs.track_utility | Określa, czy polecenia narzędzi są śledzone | z | włączone, wyłączone |
+| pg_qs.track_utility | Określa, czy polecenia narzędzi są śledzone | włączone | włączone, wyłączone |
 
 Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
 
-| **Konstruktora** | **Opis** | **Domyślne** | **Zakres**|
+| **Parametr** | **Opis** | **Domyślne** | **Zakres**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | Ustawia, które instrukcje są śledzone pod kątem statystyk oczekiwania. | brak | Brak, wszystkie|
-| Pgms_wait_sampling.history_period | Ustaw częstotliwość próbkowania zdarzeń oczekiwania (w milisekundach). | 100 | 1-600000 |
+| Pgms_wait_sampling. history_period | Ustaw częstotliwość próbkowania zdarzeń oczekiwania (w milisekundach). | 100 | 1-600000 |
 
 > [!NOTE] 
-> **pg_qs. query_capture_mode** zastępuje **pgms_wait_sampling. query_capture_mode**. Jeśli pg_qs. query_capture_mode ma wartość NONE, ustawienie pgms_wait_sampling. query_capture_mode nie ma żadnego efektu.
+> **pg_qs. query_capture_mode** zastępuje **pgms_wait_sampling. query_capture_mode**. Jeśli pg_qs. query_capture_mode ma wartość NONE, pgms_wait_sampling. query_capture_mode ustawienie nie ma żadnego wpływu.
 
 
 Użyj [Azure Portal](howto-configure-server-parameters-using-portal.md) lub [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md) , aby uzyskać lub ustawić inną wartość dla parametru.
@@ -122,8 +122,8 @@ Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego i
 |**Nazwa**   |**Typ** | **Wołują**  | **Opis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | Identyfikator z tabeli runtime_stats_entries|
-|user_id    |OID    |pg_authid. OID  |Identyfikator OID użytkownika, który wykonał instrukcję|
-|db_id  |OID    |pg_database. OID    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
+|user_id    |oid    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcję|
+|db_id  |oid    |pg_database.oid    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
 |query_id   |bigint  || Wewnętrzny kod skrótu obliczony na podstawie drzewa analizy instrukcji|
 |query_sql_text |Varchar (10000)  || Tekst deklaracji reprezentatywnej. Różne zapytania o tej samej strukturze są klastrowane ze sobą. Ten tekst jest tekstem dla pierwszych zapytań w klastrze.|
 |plan_id    |bigint |   |Identyfikator planu odpowiadającego temu zapytaniem, nie jest jeszcze dostępny|
@@ -135,7 +135,7 @@ Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego i
 |max_time   |Podwójna precyzja   ||  Maksymalny czas wykonywania zapytania (w milisekundach)|
 |mean_time  |Podwójna precyzja   ||  Średni czas wykonywania zapytania (w milisekundach)|
 |stddev_time|   Podwójna precyzja    ||  Odchylenie standardowe czasu wykonywania zapytania (w milisekundach) |
-|Wierszy   |bigint ||  Łączna liczba wierszy pobranych lub dotkniętych przez instrukcję|
+|wierszy   |bigint ||  Łączna liczba wierszy pobranych lub dotkniętych przez instrukcję|
 |shared_blks_hit|   bigint  ||  Łączna liczba trafień w pamięci podręcznej bloków udostępnionych przez instrukcję|
 |shared_blks_read|  bigint  ||  Łączna liczba bloków udostępnionych odczytywanych przez instrukcję|
 |shared_blks_dirtied|   bigint   || Łączna liczba udostępnionych bloków 'dirtied przez instrukcję |
@@ -147,10 +147,10 @@ Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego i
 |temp_blks_read |bigint  || Łączna liczba bloków tymczasowych odczytywanych przez instrukcję|
 |temp_blks_written| bigint   || Łączna liczba bloków tymczasowych pisanych przez instrukcję|
 |blk_read_time  |Podwójna precyzja    || Łączny czas trwania instrukcji odczytywania bloków w milisekundach (jeśli track_io_timing jest włączona, w przeciwnym razie zero)|
-|blk_write_time |Podwójna precyzja    || Łączny czas, przez jaki instrukcja zapisuje bloki zapisu w milisekundach (jeśli track_io_timing jest włączona, w przeciwnym razie zero)|
+|blk_write_time |Podwójna precyzja    || Łączny czas oczekiwania instrukcji na zapis bloków w milisekundach (jeśli track_io_timing jest włączona, w przeciwnym razie zero)|
     
-### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
-Ten widok zwraca dane tekstu zapytania w magazynie zapytań. Dla każdego oddzielnego argumentu zapytanie_tekst istnieje jeden wiersz.
+### <a name="query_storequery_texts_view"></a>query_store. query_texts_view
+Ten widok zwraca dane tekstu zapytania w magazynie zapytań. Dla każdego oddzielnego query_text istnieje jeden wiersz.
 
 |**Nazwa**|  **Typ**|   **Opis**|
 |---|---|---|
@@ -162,22 +162,22 @@ Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden 
 
 |**Nazwa**|  **Typ**|   **Wołują**| **Opis**|
 |---|---|---|---|
-|user_id    |OID    |pg_authid. OID  |Identyfikator OID użytkownika, który wykonał instrukcję|
-|db_id  |OID    |pg_database. OID    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
+|user_id    |oid    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcję|
+|db_id  |oid    |pg_database.oid    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
 |query_id   |bigint     ||Wewnętrzny kod skrótu obliczony na podstawie drzewa analizy instrukcji|
 |event_type |tekst       ||Typ zdarzenia, dla którego zaplecze oczekuje|
-|wydarzen  |tekst       ||Nazwa zdarzenia oczekiwania, jeśli obecnie trwa oczekiwanie na zaplecze|
+|event  |tekst       ||Nazwa zdarzenia oczekiwania, jeśli obecnie trwa oczekiwanie na zaplecze|
 |Rozmowa  |Liczba całkowita        ||Liczba przechwyconych zdarzeń|
 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkcje
 Query_store. qs_reset () zwraca wartość void
 
-`qs_reset` @ no__t-1discards wszystkie dane statystyczne zebrane do tej pory przez magazyn zapytań. Tę funkcję można wykonać tylko przez rolę administratora serwera.
+`qs_reset` odrzuca wszystkie dane statystyczne zebrane do tej pory przez magazyn zapytań. Tę funkcję można wykonać tylko przez rolę administratora serwera.
 
 Query_store. staging_data_reset () zwraca wartość void
 
-`staging_data_reset` @ no__t-1discards wszystkie dane statystyczne zebrane w pamięci przez magazyn zapytań (czyli dane w pamięci, które nie zostały jeszcze opróżnione do bazy danych). Tę funkcję można wykonać tylko przez rolę administratora serwera.
+`staging_data_reset` odrzuca wszystkie dane statystyczne zebrane w pamięci przez magazyn zapytań (czyli dane w pamięci, które nie zostały jeszcze opróżnione do bazy danych). Tę funkcję można wykonać tylko przez rolę administratora serwera.
 
 ## <a name="limitations-and-known-issues"></a>Ograniczenia i znane problemy
 - Jeśli serwer PostgreSQL ma parametr default_transaction_read_only on, magazyn zapytań nie może przechwycić danych.

@@ -24,8 +24,8 @@ Aby krokowo poprowadzić ten przewodnik, musisz:
 
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania
 Serwer można skonfigurować tak, aby mógł uzyskać dostęp do dziennika wolnych zapytań programu MySQL, wykonując następujące czynności:
-1. Włącz rejestrowanie wolnych zapytań, ustawiając parametr **"wolno @ no__t-1query @ no__t-2log** " na wartość włączone.
-2. Dostosuj inne parametry, takie jak **Long @ no__t-1query @ no__t-2time** i **log @ no__t-4slow @ no__t-5admin @ no__t-6statements**.
+1. Włącz rejestrowanie wolnych zapytań, ustawiając dla **powolnej\_zapytanie\_log** na wartość włączone.
+2. Dostosuj inne parametry, takie jak **long\_query\_Time** i **log\_wolno\_administracyjnych\_instrukcji**.
 
 Aby dowiedzieć się, jak ustawić wartości tych parametrów za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [How to configure Server Parameters](howto-configure-server-parameters-using-cli.md).
 
@@ -40,7 +40,7 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>Wyświetlanie listy dzienników dla Azure Database for MySQL Server
 Aby wyświetlić listę dostępnych wolnych plików dziennika zapytań dla serwera, uruchom polecenie [AZ MySQL Server-Logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) .
 
-Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.MySQL.Database.Azure.com** w **obszarze Grupa zasobów**. Następnie należy skierować listę plików dziennika do pliku tekstowego o nazwie **log @ no__t-1files\_list.txt**.
+Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.MySQL.Database.Azure.com** w **obszarze Grupa zasobów**. Następnie należy skierować listę plików dziennika do pliku tekstowego o nazwie **log\_files\_list. txt**.
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

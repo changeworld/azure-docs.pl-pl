@@ -89,7 +89,7 @@ Aby wyeksportować sieć wirtualną i wdrożyć docelową sieć wirtualną przy 
 
 1. Obowiązkowe Możesz również zmienić inne parametry w szablonie, w zależności od wymagań:
 
-    * **Przestrzeń adresowa**: przed zapisaniem pliku można zmienić przestrzeń adresową sieci wirtualnej, modyfikując **zasoby** > **AddressSpace** sekcja i zmieniając właściwość **addressPrefixes** :
+    * **Przestrzeń adresowa**: przed zapisaniem pliku można zmienić przestrzeń adresową sieci wirtualnej, modyfikując **zasoby** > **addressSpace** i zmieniając właściwość **addressPrefixes** :
 
         ```json
                 "resources": [
@@ -178,13 +178,13 @@ Aby wyeksportować sieć wirtualną i wdrożyć docelową sieć wirtualną przy 
 
 1. W edytorze online wybierz pozycję **Zapisz**.
 
-1. Aby wybrać subskrypcję, w której zostanie wdrożona docelowa sieć wirtualna, wybierz pozycję **podstawowe**@no__t **-1.**
+1. Aby wybrać subskrypcję, w której zostanie wdrożona docelowa sieć wirtualna, wybierz pozycję **podstawowe** > **subskrypcji**.
 
-1. Aby wybrać grupę zasobów, w której zostanie wdrożona docelowa sieć wirtualna, wybierz pozycję **podstawowe** > **grupę zasobów**. 
+1. Aby wybrać grupę zasobów, w której zostanie wdrożona docelowa sieć wirtualna, wybierz pozycję **podstawowe** > **grupie zasobów**. 
 
     Jeśli musisz utworzyć nową grupę zasobów dla docelowej sieci wirtualnej, wybierz pozycję **Utwórz nową**. Upewnij się, że nazwa nie jest taka sama jak nazwa źródłowej grupy zasobów w istniejącej sieci wirtualnej.
 
-1. Sprawdź,czy w obszarze podstawowe**lokalizacje**  >  jest ustawiona lokalizacja docelowa, w której ma zostać wdrożona Sieć wirtualna.
+1. Sprawdź, czy podstawowe **lokalizacje** > są ustawione na lokalizację docelową, w której ma zostać wdrożona Sieć wirtualna.
 
 1. W obszarze **Ustawienia**Sprawdź, czy nazwa jest zgodna z nazwą wprowadzoną wcześniej w edytorze parametrów.
 
@@ -194,13 +194,13 @@ Aby wyeksportować sieć wirtualną i wdrożyć docelową sieć wirtualną przy 
 
 ## <a name="delete-the-target-virtual-network"></a>Usuń docelową sieć wirtualną
 
-Aby odrzucić docelową sieć wirtualną, należy usunąć grupę zasobów zawierającą docelową sieć wirtualną. W tym celu:
+Aby odrzucić docelową sieć wirtualną, należy usunąć grupę zasobów zawierającą docelową sieć wirtualną. Aby to zrobić:
 1. Na pulpicie nawigacyjnym Azure Portal wybierz grupę zasobów.
 1. W górnej części okienka **Przegląd** wybierz pozycję **Usuń**.
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Aby zatwierdzić zmiany i zakończyć przenoszenie sieci wirtualnej, należy usunąć źródłową sieć wirtualną lub grupę zasobów. W tym celu:
+Aby zatwierdzić zmiany i zakończyć przenoszenie sieci wirtualnej, należy usunąć źródłową sieć wirtualną lub grupę zasobów. Aby to zrobić:
 1. Na pulpicie nawigacyjnym Azure Portal wybierz sieć wirtualną lub grupę zasobów.
 1. W górnej części każdego okienka wybierz pozycję **Usuń**.
 

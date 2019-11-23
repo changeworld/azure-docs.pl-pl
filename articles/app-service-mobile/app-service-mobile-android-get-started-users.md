@@ -27,7 +27,7 @@ ms.locfileid: "72388949"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="summary"></a>Podsumowanie
 W tym samouczku dodasz uwierzytelnianie do projektu szybkiego startu todolist w systemie Android przy użyciu obsługiwanego dostawcy tożsamości. Ten samouczek jest oparty na samouczku [wprowadzenie do Mobile Apps] , który należy wykonać w pierwszej kolejności.
@@ -43,11 +43,11 @@ Bezpieczne uwierzytelnianie wymaga zdefiniowania nowego schematu adresu URL dla 
 
 2. Kliknij opcję menu **uwierzytelnianie/autoryzacja** .
 
-3. W polu **dozwolone adresy URL zewnętrznych przekierowań**wprowadź wartość `appname://easyauth.callback`.  Nazwa _użytkownika w tym_ ciągu to schemat adresu URL aplikacji mobilnej.  Powinna być zgodna ze specyfikacją normalnych adresów URL dla protokołu (używaj tylko liter i cyfr i zaczynać się od litery).  Należy zanotować ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnej przy użyciu schematu adresu URL w kilku miejscach.
+3. W polu **dozwolone adresy URL zewnętrznych przekierowań**wprowadź `appname://easyauth.callback`.  Nazwa _użytkownika w tym_ ciągu to schemat adresu URL aplikacji mobilnej.  Powinna być zgodna ze specyfikacją normalnych adresów URL dla protokołu (używaj tylko liter i cyfr i zaczynać się od litery).  Należy zanotować ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnej przy użyciu schematu adresu URL w kilku miejscach.
 
 4. Kliknij przycisk **OK**.
 
-5. Kliknij przycisk **Save** (Zapisz).
+5. Kliknij pozycję **Zapisz**.
 
 ## <a name="permissions"></a>Ograniczanie uprawnień do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -72,7 +72,7 @@ Po ukończeniu tego samouczka dotyczącego uwierzytelniania podstawowego Rozważ
 * [Dodawanie powiadomień wypychanych do aplikacji systemu Android](app-service-mobile-android-get-started-push.md).
   Dowiedz się, jak skonfigurować zaplecze Mobile Apps, aby użyć centrów powiadomień platformy Azure do wysyłania powiadomień wypychanych.
 * [Włącz synchronizację w trybie offline dla aplikacji systemu Android](app-service-mobile-android-get-started-offline-data.md).
-  Dowiedz się, jak dodać obsługę offline do aplikacji przy użyciu zaplecza Mobile Apps. Dzięki synchronizacji w trybie offline użytkownicy mogą korzystać z aplikacji mobilnej @ no__t-0viewing, dodając lub modyfikując dane @ no__t-1even, gdy nie ma połączenia sieciowego.
+  Dowiedz się, jak dodać obsługę offline do aplikacji przy użyciu zaplecza Mobile Apps. Dzięki synchronizacji w trybie offline użytkownicy mogą korzystać z aplikacji mobilnej&mdash;przeglądania, dodawania i modyfikowania danych&mdash;nawet w przypadku braku połączenia sieciowego.
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register

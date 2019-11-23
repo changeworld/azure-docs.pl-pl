@@ -53,13 +53,13 @@ Niezależnie od używanej wersji integracja z siecią wirtualną umożliwia apli
 Funkcja integracji sieci wirtualnej:
 
 * wymaga planu cenowego Standard, Premium lub PremiumV2 
-* obsługuje protokoły TCP i UDP
+* Obsługuje protokoły TCP i UDP
 * współpracuje z aplikacjami App Service i aplikacjami funkcji
 
 Istnieje kilka rzeczy, które nie są obsługiwane przez integrację sieci wirtualnej, w tym:
 
 * Instalowanie dysku
-* Integracja usługi AD 
+* Integracja z usługą AD 
 * NetBios
 
 ## <a name="regional-vnet-integration"></a>Integracja z regionalną siecią wirtualną 
@@ -114,7 +114,7 @@ Aby odłączyć aplikację od sieci wirtualnej, wybierz pozycję **Rozłącz**. 
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
 
-Jeśli używasz App Service w systemie Linux z wbudowanymi obrazami, funkcja integracji regionalnej sieci wirtualnej działa bez dodatkowych zmian. W przypadku używania Web App for Containers należy zmodyfikować obraz platformy Docker, aby można było korzystać z integracji z siecią wirtualną. W obrazie platformy Docker Użyj zmiennej środowiskowej portu jako portu nasłuchu głównego serwera sieci Web, zamiast używać numeru portu stałe. Zmienna środowiskowa portu jest automatycznie ustawiana przez App Service platformę w czasie uruchamiania kontenera. Jeśli używasz protokołu SSH, demon SSH musi być skonfigurowany do nasłuchiwania na numerze portu określonego przez zmienną środowiskową SSH_PORT w przypadku korzystania z integracji regionalnej sieci wirtualnej.
+Jeśli używasz App Service w systemie Linux z wbudowanymi obrazami, funkcja integracji regionalnej sieci wirtualnej działa bez dodatkowych zmian. W przypadku używania Web App for Containers należy zmodyfikować obraz platformy Docker, aby można było korzystać z integracji z siecią wirtualną. W obrazie platformy Docker Użyj zmiennej środowiskowej portu jako portu nasłuchu głównego serwera sieci Web, zamiast używać numeru portu stałe. Zmienna środowiskowa portu jest automatycznie ustawiana przez App Service platformę w czasie uruchamiania kontenera. Jeśli używasz protokołu SSH, demona SSH musi być skonfigurowana do nasłuchiwania numeru portu określonego przez zmienną środowiskową SSH_PORT podczas korzystania z integracji regionalnej sieci wirtualnej.
 
 ### <a name="service-endpoints"></a>Punkty końcowe usługi
 
@@ -175,13 +175,13 @@ Jeśli właśnie tworzysz bramę do użycia z integracją App Service sieci wirt
 Aby włączyć integrację sieci wirtualnej w aplikacji: 
 
 1. Przejdź do aplikacji w Azure Portal i Otwórz aplet Ustawienia aplikacji, a następnie wybierz pozycję Sieć > Integracja z siecią wirtualną. Środowisko ASP musi znajdować się w standardowej jednostce SKU lub lepiej korzystać z funkcji integracji sieci wirtualnej. 
- Interfejs użytkownika integracji @no__t 0VNet @ no__t-1
+ ![interfejsu użytkownika integracji sieci wirtualnej][1]
 
 1. Wybierz pozycję **Dodaj sieć wirtualną**. 
- Integracja z siecią wirtualną @no__t 0Add no__t — 1
+ ![dodać integrację sieci wirtualnej][2]
 
 1. Wybierz sieć wirtualną. 
-  @no__t — 0Select sieci wirtualnej @ no__t-1
+  ![wybrać sieć wirtualną][8]
   
 Aplikacja zostanie ponownie uruchomiona po ostatnim kroku.  
 

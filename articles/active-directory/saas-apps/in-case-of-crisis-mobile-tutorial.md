@@ -53,7 +53,7 @@ W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure A
 
 Aby skonfigurować integrację programu w przypadku kryzysu — urządzenia przenośne w usłudze Azure AD, należy dodać w przypadku kryzysu — urządzenia przenośne z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta służbowego lub konto Microsoft prywatnego.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
 1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
@@ -81,13 +81,13 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-   ![Edytuj podstawową konfigurację języka SAML](common/edit-urls.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawowej konfiguracji SAML** section aplikacja została wstępnie skonfigurowana w trybie **dostawcy tożsamości** Initiated, a wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **zapisz** Button.
+1. W sekcji **Podstawowa konfiguracja SAML** aplikacja została wstępnie skonfigurowana w trybie inicjalizacji programu **dostawcy tożsamości** i wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **zapisz** .
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (RAW)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificateraw.png)
+    ![Link pobierania certyfikatu](common/certificateraw.png)
 
 1. Przejdź do sekcji **Zarządzanie** w lewej części strony, kliknij **kartę właściwości** , a następnie skopiuj **adres URL dostępu użytkownika** i Zapisz go na komputerze.
 
@@ -98,12 +98,12 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz pozycję **nowy użytkownik** w górnej części ekranu.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
-   1. W polu **Nazwa** wprowadź `B.Simon`.  
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
-   1. Zaznacz pole wyboru **Pokaż hasło** , a następnie zanotuj wartość wyświetlaną w polu **hasło** .
-   1. Kliknij przycisk **Utwórz**.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -113,7 +113,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **w przypadku kryzysu — Mobile**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Łącze "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -121,29 +121,29 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz** .
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
 ## <a name="configure-in-case-of-crisis---mobile-sso"></a>Konfigurowanie w przypadku kryzysu — Logowanie jednokrotne dla urządzeń przenośnych
 
-Aby skonfigurować Logowanie jednokrotne **w przypadku systemu kryzysowego** , należy wysłać pobranego **certyfikatu (RAW)** i skopiować **adres URL dostępu użytkownika** z Azure Portal do [programu w przypadku kryzysu-Mobile Support Team](https://www.rockdovesolutions.com/features/enterprise-ready). Ustawili to ustawienie, aby połączenie SAML SSO zostało ustawione prawidłowo po obu stronach.
+Aby skonfigurować Logowanie jednokrotne **w przypadku systemu kryzysowego** , należy wysłać pobranego **certyfikatu (RAW)** i skopiować **adres URL dostępu użytkownika** z Azure Portal do [programu w przypadku kryzysu-Mobile Support Team](https://www.rockdovesolutions.com/features/enterprise-ready). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-in-case-of-crisis---mobile-test-user"></a>Tworzenie w przypadku kryzysu — Użytkownik testowy dla urządzeń przenośnych
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w przypadku kryzysu-Mobile. Praca z usługą [w przypadku wystąpienia kryzysowego — zespół pomocy technicznej dla urządzeń przenośnych](https://www.rockdovesolutions.com/features/enterprise-ready) do dodawania użytkowników w przypadku platformy kryzysowej. Przed użyciem logowania jednokrotnego należy utworzyć i aktywować użytkowników.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w przypadku kryzysu-Mobile. Praca z usługą [w przypadku wystąpienia kryzysowego — zespół pomocy technicznej dla urządzeń przenośnych](https://www.rockdovesolutions.com/features/enterprise-ready) do dodawania użytkowników w przypadku platformy kryzysowej. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka na platformie kryzysowej w panelu dostępu należy automatycznie zalogować się do programu na wypadek kryzysu — urządzenia przenośne, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknięciu kafelka na platformie kryzysowej w panelu dostępu należy automatycznie zalogować się do programu na wypadek kryzysu — urządzenia przenośne, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj w przypadku kryzysu — urządzenia przenośne z usługą Azure AD](https://aad.portal.azure.com/)
 

@@ -54,7 +54,7 @@ Wszystkie zadania dotyczące zasobów przy użyciu Azure Resource Manager muszą
 
 ### <a name="create-an-azure-active-directory-application"></a>Tworzenie aplikacji Azure Active Directory
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Korzystając z subskrypcji zawierającej wystąpienie usługi API Management, przejdź do karty **rejestracje aplikacji** w **Azure Active Directory** (Azure Active Directory > Zarządzaj/rejestracje aplikacji).
 
     > [!NOTE]
@@ -67,7 +67,7 @@ Wszystkie zadania dotyczące zasobów przy użyciu Azure Resource Manager muszą
 4. Wprowadź nazwę aplikacji.
 5. W polu Typ aplikacji wybierz opcję **natywny**.
 6. Wprowadź zastępczy adres URL, taki jak `http://resources` dla **identyfikatora URI przekierowania**, ponieważ jest to pole wymagane, ale wartość nie jest używana później. Kliknij pole wyboru, aby zapisać aplikację.
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 
 ### <a name="add-an-application"></a>Dodawanie aplikacji
 
@@ -113,14 +113,14 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Zastąp `{tenant id}`, `{application id}` i `{redirect uri}`, korzystając z następujących instrukcji:
+Zastąp `{tenant id}`, `{application id}`i `{redirect uri}`, wykonując następujące instrukcje:
 
-1. Zastąp wartość `{tenant id}` IDENTYFIKATORem dzierżawy utworzonej aplikacji Azure Active Directory. Aby uzyskać dostęp do tego identyfikatora, kliknij **rejestracje aplikacji** **punkty końcowe** -> .
+1. Zastąp `{tenant id}` IDENTYFIKATORem dzierżawy utworzonej aplikacji Azure Active Directory. Możesz uzyskać dostęp do tego identyfikatora, klikając **Rejestracje aplikacji** -> **punktów końcowych**.
 
     ![Punkty końcowe][api-management-endpoint]
 
-2. Zastąp wartość `{application id}` wartością pobieraną, przechodząc do strony **Ustawienia** .
-3. Zastąp wartość `{redirect uri}` wartością z karty **URI przekierowania** w aplikacji Azure Active Directory.
+2. Zastąp `{application id}` wartością uzyskaną przez przejście na stronę **ustawień** .
+3. Zastąp `{redirect uri}` wartością z karty **URI przekierowania** w aplikacji Azure Active Directory.
 
     Po określeniu wartości, przykład kodu powinien zwrócić token podobny do następującego:
 
@@ -147,12 +147,12 @@ Aby utworzyć kopię zapasową usługi API Management, należy wydać następuj�
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
-miejscu
+gdzie:
 
--   `subscriptionId` — Identyfikator subskrypcji zawierającej usługę API Management, której kopia zapasowa ma zostać utworzona
+-   Identyfikator `subscriptionId` subskrypcji zawierającej usługę API Management, której kopia zapasowa ma zostać utworzona
 -   `resourceGroupName` — nazwa grupy zasobów usługi Azure API Management
--   `serviceName` — nazwa usługi API Management, w której tworzysz kopię zapasową określoną w momencie jego tworzenia
--   `api-version`-Zamień na `2018-06-01-preview`
+-   `serviceName` — nazwa usługi API Management, dla której tworzysz kopię zapasową określoną w momencie jego tworzenia
+-   `api-version` — Zamień na `2018-06-01-preview`
 
 W treści żądania należy określić docelową nazwę konta usługi Azure Storage, klucz dostępu, nazwę kontenera obiektów blob i nazwę kopii zapasowej:
 
@@ -165,9 +165,9 @@ W treści żądania należy określić docelową nazwę konta usługi Azure Stor
 }
 ```
 
-Ustaw wartość `Content-Type` nagłówka żądania na `application/json`.
+Ustaw wartość `Content-Type` nagłówku żądania, aby `application/json`.
 
-Kopia zapasowa to długotrwała operacja, która może trwać dłużej niż minutę. Jeśli żądanie zakończyło się pomyślnie, a proces tworzenia kopii zapasowej został rozpoczęty, otrzymasz kod stanu odpowiedzi `202 Accepted` z nagłówkiem `Location`. Utwórz żądania "GET" na adresie URL w nagłówku `Location`, aby sprawdzić stan operacji. Gdy trwa wykonywanie kopii zapasowej, nadal otrzymujesz kod stanu "202 zaakceptowany". Kod odpowiedzi `200 OK` wskazuje pomyślne zakończenie operacji tworzenia kopii zapasowej.
+Kopia zapasowa to długotrwała operacja, która może trwać dłużej niż minutę. Jeśli żądanie zakończyło się pomyślnie i rozpoczęto proces tworzenia kopii zapasowej, zostanie wyświetlony kod stanu odpowiedzi `202 Accepted` z nagłówkiem `Location`. Utwórz żądania "GET" na adresie URL w nagłówku `Location`, aby sprawdzić stan operacji. Gdy trwa wykonywanie kopii zapasowej, nadal otrzymujesz kod stanu "202 zaakceptowany". Kod odpowiedzi `200 OK` wskazuje pomyślne zakończenie operacji tworzenia kopii zapasowej.
 
 Podczas wykonywania żądania kopii zapasowej należy pamiętać o następujących ograniczeniach:
 
@@ -188,12 +188,12 @@ Aby przywrócić usługę API Management z utworzonej wcześniej kopii zapasowej
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
-miejscu
+gdzie:
 
--   `subscriptionId` — Identyfikator subskrypcji zawierającej usługę API Management, w której jest przywracana kopia zapasowa
--   `resourceGroupName` — nazwa grupy zasobów, w której znajduje się usługa API Management platformy Azure, do której jest przywracana kopia zapasowa
+-   Identyfikator `subscriptionId` subskrypcji zawierającej usługę API Management, w której jest przywracana kopia zapasowa
+-   `resourceGroupName` — nazwa grupy zasobów, która zawiera usługę API Management platformy Azure, do której jest przywracana kopia zapasowa
 -   `serviceName` — nazwa usługi API Management przywracanej do określonego czasu utworzenia
--   `api-version`-Zamień na `2018-06-01-preview`
+-   `api-version` — Zamień na `2018-06-01-preview`
 
 W treści żądania Określ lokalizację pliku kopii zapasowej. Oznacza to, że należy dodać nazwę konta usługi Azure Storage, klucz dostępu, nazwę kontenera obiektów blob i nazwę kopii zapasowej:
 
@@ -206,7 +206,7 @@ W treści żądania Określ lokalizację pliku kopii zapasowej. Oznacza to, że 
 }
 ```
 
-Ustaw wartość `Content-Type` nagłówka żądania na `application/json`.
+Ustaw wartość `Content-Type` nagłówku żądania, aby `application/json`.
 
 Przywracanie to długotrwała operacja, której ukończenie może potrwać do 30 minut. Jeśli żądanie zakończyło się pomyślnie, a proces przywracania został rozpoczęty, otrzymasz kod stanu odpowiedzi `202 Accepted` z nagłówkiem `Location`. Utwórz żądania "GET" na adresie URL w nagłówku `Location`, aby sprawdzić stan operacji. Gdy przywracanie jest w toku, nadal otrzymujesz kod stanu "202 zaakceptował". Kod odpowiedzi `200 OK` wskazuje pomyślne zakończenie operacji przywracania.
 
@@ -227,7 +227,7 @@ Zapoznaj się z poniższymi zasobami, aby zapoznać się z różnymi przewodnika
 -   [Replikowanie kont usługi Azure API Management](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Automatyzowanie tworzenia kopii zapasowej i przywracania w usłudze API Management za pomocą usługi Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
 -   [Azure API Management: Tworzenie kopii zapasowej i przywracanie konfiguracji](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-    _podejście określone przez Stuarta nie jest zgodne z oficjalnymi wskazówkami, ale są interesujące._
+    _podejście określone przez stuarte nie jest zgodne z oficjalnymi wskazówkami, ale jest interesujący._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

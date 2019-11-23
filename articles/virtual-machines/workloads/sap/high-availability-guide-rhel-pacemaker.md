@@ -108,9 +108,9 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
    > [!IMPORTANT]
    > Firma Microsoft zaleca, aby klienci korzystali z szybszych czasów pracy awaryjnej (lub nowszych), jeśli zakończy się niepowodzeniem, lub węzły klastra nie mogą komunikować się, które są już takie:  
-   > RHEL 7,6: Fence-Agents-4.2.1 -11. el7 _  
-   > RHEL 7,5: Fence-Agents-4.0.11 -86. el7 _ 5.8  
-   > RHEL 7,4: Fence-Agents-4.0.11 -66. el7 _ 4.12  
+   > RHEL 7,6: ogrodzeni-Agents-4.2.1-11. el7_6.8  
+   > RHEL 7,5: ogrodzeni-Agents-4.0.11-86. el7_5.8  
+   > RHEL 7,4: ogrodzeni-Agents-4.0.11-66. el7_4.12  
    > Aby uzyskać więcej informacji, zobacz [maszynę wirtualną platformy Azure działającą jako SKŁADOWA RHEL o wysokiej dostępności trwa bardzo długo lub nie można przekroczyć limitu czasu przed zamknięciem maszyny wirtualnej](https://access.redhat.com/solutions/3408711).
 
    Sprawdź wersję agenta usługi Azure ogrodzenia. W razie potrzeby zaktualizuj ją do wersji równej lub nowszej niż podane powyżej.
@@ -265,7 +265,7 @@ sudo pcs property set stonith-timeout=900
 Użyj następującego polecenia, aby skonfigurować urządzenie ogrodzenia.
 
 > [!NOTE]
-> Opcja "pcmk_host_map" jest wymagana tylko w poleceniu, jeśli nazwy hostów RHEL i nazwy węzłów platformy Azure nie są identyczne. Zapoznaj się z sekcją pogrubienie w poleceniu.
+> Opcja "pcmk_host_map" jest wymagana tylko w poleceniu, jeśli nazwy hosta RHEL i nazwy węzłów platformy Azure nie są identyczne. Zapoznaj się z sekcją pogrubienie w poleceniu.
 
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
 

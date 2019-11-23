@@ -23,8 +23,8 @@ ms.locfileid: "72298748"
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Rozpoczynanie pracy z usługą Azure queue storage i usługami połączonymi programu Visual Studio (projekty zadań WebJob)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Przegląd
-W tym artykule opisano sposób rozpoczynania pracy z usługą Azure queue storage w projekcie WebJob programu Visual Studio Azure po utworzeniu lub przywoływaniu konta usługi Azure Storage za pomocą okna dialogowego **Dodawanie usług połączonych** programu Visual Studio. Po dodaniu konta magazynu do projektu zadania WebJob przy użyciu okna dialogowego **Dodaj połączone usługi** programu Visual Studio są instalowane odpowiednie pakiety NuGet magazynu platformy Azure, odpowiednie odwołania platformy .NET są dodawane do projektu i parametry połączenia dla konto magazynu jest aktualizowane w pliku App. config.  
+## <a name="overview"></a>Omówienie
+W tym artykule opisano sposób rozpoczynania pracy z usługą Azure queue storage w projekcie WebJob programu Visual Studio Azure po utworzeniu lub przywoływaniu konta usługi Azure Storage za pomocą okna dialogowego **Dodawanie usług połączonych** programu Visual Studio. Po dodaniu konta magazynu do projektu zadania WebJob przy użyciu okna dialogowego **Dodaj połączone usługi** programu Visual Studio zostaną zainstalowane odpowiednie pakiety NuGet magazynu platformy Azure, odpowiednie odwołania platformy .NET zostaną dodane do projektu, a parametry połączenia dla konta magazynu są aktualizowane w pliku App. config.  
 
 W tym artykule C# przedstawiono przykłady kodu, które pokazują, jak używać zestawu SDK Azure WebJobs w wersji 1. x z usługą Azure queue storage.
 
@@ -89,9 +89,9 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Typy, które współdziałają z atrybutem QueueTrigger
 Możesz użyć **QueueTrigger** z następującymi typami:
 
-* **parametry**
+* **ciąg**
 * Typ POCO, który jest serializowany jako JSON
-* **Byte []**
+* **byte[]**
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Algorytm sondowania
@@ -191,7 +191,7 @@ Aby uzyskać więcej informacji, zobacz temat [WebJobs bezpiecznie Shutdown](htt
 Aby napisać funkcję, która tworzy nowy komunikat w kolejce, Użyj atrybutu **Queue** . Podobnie jak **QueueTrigger**, należy przekazać nazwę kolejki jako ciąg lub można [ustawić ją dynamicznie](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Komunikaty w kolejce ciągów
-Następujący przykładowy kod nieasynchroniczny tworzy nowy komunikat kolejki w kolejce o nazwie "operacja" z tą samą zawartością, co komunikat kolejki odebrany w kolejce o nazwie "InputQueue". (W przypadku funkcji asynchronicznych Użyj **IAsyncCollector @ no__t-1T >** , jak pokazano w dalszej części tej sekcji).
+Następujący przykładowy kod nieasynchroniczny tworzy nowy komunikat kolejki w kolejce o nazwie "operacja" z tą samą zawartością, co komunikat kolejki odebrany w kolejce o nazwie "InputQueue". (W przypadku funkcji asynchronicznych Użyj **IAsyncCollector\<t >** , jak pokazano w dalszej części tej sekcji).
 
 ```csharp
 public static void CreateQueueMessage(
@@ -217,7 +217,7 @@ public static void CreateQueueMessage(
 Zestaw SDK automatycznie serializować obiekt do formatu JSON. Komunikat kolejki jest zawsze tworzony, nawet jeśli obiekt ma wartość null.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Tworzenie wielu komunikatów lub w funkcjach asynchronicznych
-Aby utworzyć wiele komunikatów, należy utworzyć typ parametru dla kolejki wyjściowej **ICollector @ no__t-1T >** lub **IAsyncCollector @ no__t-3T >** , jak pokazano w poniższym przykładzie.
+Aby utworzyć wiele komunikatów, należy utworzyć typ parametru dla kolejki wyjściowej **ICollector\<t >** lub **IAsyncCollector\<t >** , jak pokazano w poniższym przykładzie.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -545,7 +545,7 @@ Na pulpicie nawigacyjnym zestawu SDK usługi WebJobs są wyświetlane ostatnie 1
 
 ![Przełącz dane wyjściowe](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-W przypadku ciągłego Zadania WebJob Dzienniki aplikacji są wyświetlane w/Data/Jobs/Continuous/ *{webjobname}* /job_log.txt w systemie plików aplikacji sieci Web.
+W przypadku ciągłego Zadania WebJob Dzienniki aplikacji są wyświetlane w/Data/Jobs/Continuous/ *{webjobname}* /job_log. txt w systemie plików aplikacji sieci Web.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

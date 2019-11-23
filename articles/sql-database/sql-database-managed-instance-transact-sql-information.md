@@ -679,7 +679,7 @@ Moduły CLR umieszczane w wystąpieniu zarządzanym oraz połączone serwery lub
 
 **Obejście problemu:** Jeśli to możliwe, Użyj połączeń kontekstu w module CLR.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji o wystąpieniach zarządzanych, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
 - Aby poznać funkcje i listę porównania, zobacz [Azure SQL Database porównanie funkcji](sql-database-features.md).

@@ -35,7 +35,7 @@ Typowe scenariusze w przypadku wyświetlenia wielu usunięć obejmują:
 * Wszystkie obiekty w jednostce organizacyjnej zostały usunięte.
 * Nazwa jednostki organizacyjnej została zmieniona, więc wszystkie obiekty w tej jednostce są uznawane za znajdujące się poza zakresem synchronizacji.
 
-Wartość domyślna dla obiektów 500 można zmienić za pomocą programu PowerShell przy użyciu `Enable-ADSyncExportDeletionThreshold`, która jest częścią modułu AD Sync zainstalowanego z Azure Active Directory Connect. Tę wartość należy skonfigurować w celu dopasowania jej do rozmiaru organizacji. Ponieważ harmonogram synchronizacji jest uruchamiany co 30 minut, wartość jest liczbą usunięć wyświetloną w ciągu 30 minut.
+Wartość domyślna obiektów 500 można zmienić przy użyciu programu PowerShell, używając `Enable-ADSyncExportDeletionThreshold`, który jest częścią modułu AD Sync zainstalowanego z Azure Active Directory Connect. Tę wartość należy skonfigurować w celu dopasowania jej do rozmiaru organizacji. Ponieważ harmonogram synchronizacji jest uruchamiany co 30 minut, wartość jest liczbą usunięć wyświetloną w ciągu 30 minut.
 
 W przypadku zbyt dużej liczby usuniętych etapów, które zostaną wyeksportowane do usługi Azure AD, eksport zostanie zatrzymany i otrzymasz wiadomość e-mail w następujący sposób:
 
@@ -45,8 +45,8 @@ W przypadku zbyt dużej liczby usuniętych etapów, które zostaną wyeksportowa
 >
 > 
 
-Możesz również sprawdzić stan `stopped-deletion-threshold-exceeded` podczas wyszukiwania w interfejsie użytkownika **Synchronization Service Manager** dla profilu eksportu.
-![Prevent Przypadkowe usunięcie synchronizacji Service Manager interfejs użytkownika @ no__t-1
+`stopped-deletion-threshold-exceeded` stanu można także zobaczyć, gdy w interfejsie użytkownika **Synchronization Service Manager** dla profilu eksportu.
+![Zapobiegaj przypadkowemu usunięciu interfejsu użytkownika Service Manager synchronizacji](./media/how-to-connect-sync-feature-prevent-accidental-deletes/syncservicemanager.png)
 
 Jeśli jest to nieoczekiwane, zbadaj i wykonaj akcje naprawcze. Aby zobaczyć, które obiekty mają zostać usunięte, wykonaj następujące czynności:
 
@@ -54,17 +54,17 @@ Jeśli jest to nieoczekiwane, zbadaj i wykonaj akcje naprawcze. Aby zobaczyć, k
 2. Przejdź do **łączników**.
 3. Wybierz łącznik z typem **Azure Active Directory**.
 4. W obszarze **Akcje** po prawej stronie wybierz pozycję **obszar łącznika wyszukiwania**.
-5. W podręcznym obszarze **zakres**wybierz opcję **Rozłączono od momentu** , a następnie wybierz godzinę w przeszłości. Kliknij przycisk **Wyszukaj**. Ta strona zawiera widok wszystkich obiektów, które zostaną usunięte. Klikając każdy element, można uzyskać dodatkowe informacje na temat obiektu. Możesz również kliknąć pozycję **ustawienie kolumny** , aby dodać dodatkowe atrybuty, które mają być widoczne w siatce.
+5. W podręcznym obszarze **zakres**wybierz opcję **Rozłączono od momentu** , a następnie wybierz godzinę w przeszłości. Kliknij polecenie **Wyszukaj**. Ta strona zawiera widok wszystkich obiektów, które zostaną usunięte. Klikając każdy element, można uzyskać dodatkowe informacje na temat obiektu. Możesz również kliknąć pozycję **ustawienie kolumny** , aby dodać dodatkowe atrybuty, które mają być widoczne w siatce.
 
 ![Wyszukaj w obszarze łącznika](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
-[!NOTE] Jeśli nie masz pewności, że wszystkie operacje usuwania są odpowiednie i chcesz przejść do bezpieczniejszej trasy. Można użyć polecenia cmdlet programu PowerShell: `Enable-ADSyncExportDeletionThreshold`, aby ustawić nowy próg zamiast wyłączać wartość progową, co może pozwolić na niepożądane operacje usuwania. 
+[!NOTE] Jeśli nie masz pewności, że wszystkie operacje usuwania są odpowiednie i chcesz przejść do bezpieczniejszej trasy. Można użyć polecenia cmdlet programu PowerShell: `Enable-ADSyncExportDeletionThreshold`, aby ustawić nowy próg zamiast wyłączyć próg, który może pozwolić na niepożądane operacje usuwania. 
 
 ## <a name="if-all-deletes-are-desired"></a>Jeśli wszystkie usunięcia są żądane
 Jeśli wszystkie usunięcia są odpowiednie, wykonaj następujące czynności:
 
 1. Aby pobrać bieżący próg usunięcia, uruchom polecenie cmdlet programu PowerShell `Get-ADSyncExportDeletionThreshold`. Podaj konto i hasło administratora globalnego usługi Azure AD. Wartość domyślna to 500.
-2. Aby tymczasowo wyłączyć tę ochronę i zezwolić na te usunięcia, uruchom polecenie cmdlet programu PowerShell: `Disable-ADSyncExportDeletionThreshold`. Podaj konto i hasło administratora globalnego usługi Azure AD.
+2. Aby tymczasowo wyłączyć tę ochronę i zezwolić na ich usunięcie, uruchom polecenie cmdlet programu PowerShell: `Disable-ADSyncExportDeletionThreshold`. Podaj konto i hasło administratora globalnego usługi Azure AD.
    ![Poświadczenia](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
 3. Po wybraniu łącznika Azure Active Directory wybierz akcję **Uruchom** i wybierz pozycję **Eksportuj**.
 4. Aby ponownie włączyć ochronę, uruchom polecenie cmdlet programu PowerShell: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. Zastąp 500 wartością zauważoną podczas pobierania bieżącego progu usuwania. Podaj konto i hasło administratora globalnego usługi Azure AD.

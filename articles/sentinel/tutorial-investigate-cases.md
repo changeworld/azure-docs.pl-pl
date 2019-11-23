@@ -31,7 +31,7 @@ ms.locfileid: "72024609"
 
 Ten samouczek ułatwia badanie zdarzeń za pomocą platformy Azure. Po nawiązaniu połączenia ze źródłami danych z platformą Azure — użytkownik chce otrzymywać powiadomienia o wystąpieniu podejrzanych sytuacji. Aby można było to zrobić, badanie wskaźnikowe platformy Azure umożliwia tworzenie zaawansowanych reguł alertów, które generują zdarzenia, które można przypisać i zbadać.
 
-W tym artykule omówiono następujące zagadnienia:
+W tym artykule omówiono:
 > [!div class="checklist"]
 > * Badanie zdarzeń
 > * Korzystanie z grafu badania
@@ -97,7 +97,7 @@ Aby użyć grafu badania:
 
     ![Wyświetl powiązane alerty](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Dla każdej kwerendy eksploracji można wybrać opcję otwarcia nieprzetworzonych wyników zdarzeń i zapytania używanego w Log Analytics, wybierając pozycję **zdarzenia @ no__t-1**.
+1. Dla każdego zapytania eksploracji można wybrać opcję otwarcia nieprzetworzonych wyników zdarzenia i zapytania używanego w Log Analytics, wybierając pozycję **zdarzenia\>** .
 
 1. Aby zrozumieć zdarzenie, wykres zawiera równoległą oś czasu.
 

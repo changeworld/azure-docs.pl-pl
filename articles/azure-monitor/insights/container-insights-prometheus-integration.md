@@ -43,14 +43,14 @@ W przypadku określenia adresu URL Azure Monitor dla kontenerów odnosi się tyl
 | Cały klaster | | | | Określ jedną z następujących trzech metod, aby wypróbować punkty końcowe dla metryk. |
 | | `urls` | Ciąg | Tablica rozdzielona przecinkami | Punkt końcowy HTTP (podano adres IP lub prawidłową ścieżkę URL). Na przykład: `urls=[$NODE_IP/metrics]`. ($NODE _IP jest określonym Azure Monitor dla parametru Containers i można go użyć zamiast adresu IP węzła. Musi zawierać wielkie litery). |
 | | `kubernetes_services` | Ciąg | Tablica rozdzielona przecinkami | Tablica usług Kubernetes Services do odporności metryk z metryk polecenia-State-Metrics. Na przykład`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Wartość logiczna | prawda lub FAŁSZ | Po ustawieniu na `true` w ustawieniach całego klastra, Azure Monitor dla agenta kontenerów będą odporne na Kubernetesy w całym klastrze dla następujących adnotacji Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Wartość logiczna | prawda lub FAŁSZ | Włącza odpadków pod. `monitor_kubernetes_pods` musi być ustawiona na `true`. |
+| | `monitor_kubernetes_pods` | Wartość logiczna | true lub false | Po ustawieniu na `true` w ustawieniach całego klastra, Azure Monitor dla agenta kontenerów będą odporne na Kubernetesy w całym klastrze dla następujących adnotacji Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Wartość logiczna | true lub false | Włącza odpadków pod. `monitor_kubernetes_pods` musi być ustawiona na `true`. |
 | | `prometheus.io/scheme` | Ciąg | http lub https | Wartość domyślna to złomowanie za pośrednictwem protokołu HTTP. W razie potrzeby ustaw wartość `https`. | 
 | | `prometheus.io/path` | Ciąg | Tablica rozdzielona przecinkami | Ścieżka zasobu HTTP, z której mają zostać pobrane metryki. Jeśli ścieżka metryk nie jest `/metrics`, zdefiniuj ją z tą adnotacją. |
 | | `prometheus.io/port` | Ciąg | 9102 | Określ port, z którego mają zostać wycinki. Jeśli port nie jest ustawiony, wartość domyślna to 9102. |
 | | `monitor_kubernetes_pods_namespaces` | Ciąg | Tablica rozdzielona przecinkami | Lista dozwolonych przestrzeni nazw do wypadków metryk z Kubernetesowych.<br> Na przykład: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
 | Cały węzeł | `urls` | Ciąg | Tablica rozdzielona przecinkami | Punkt końcowy HTTP (podano adres IP lub prawidłową ścieżkę URL). Na przykład: `urls=[$NODE_IP/metrics]`. ($NODE _IP jest określonym Azure Monitor dla parametru Containers i można go użyć zamiast adresu IP węzła. Musi zawierać wielkie litery). |
-| Cały węzeł lub cały klaster | `interval` | Ciąg | 60 s | Interwał kolekcji jest wartością domyślną 1 minuty (60 sekund). Kolekcję można modyfikować dla wartości *[prometheus_data_collection_settings. Node]* i/lub *[prometheus_data_collection_settings. cluster]* do jednostek czasu, takich jak s, m, h. |
+| Cały węzeł lub cały klaster | `interval` | Ciąg | 60 s | Interwał kolekcji jest wartością domyślną 1 minuty (60 sekund). Kolekcję można modyfikować w przypadku wartości *[prometheus_data_collection_settings. Node]* i/lub *[prometheus_data_collection_settings. cluster]* do jednostek czasu, takich jak s, m, h. |
 | Cały węzeł lub cały klaster | `fieldpass`<br> `fielddrop`| Ciąg | Tablica rozdzielona przecinkami | Można określić, które metryki mają być zbierane lub nie z punktu końcowego przez ustawienie listy Zezwalaj (`fieldpass`) i nie zezwalaj (`fielddrop`). Należy najpierw ustawić listę dozwolonych. |
 
 ConfigMaps jest globalną listą, a do agenta może być zastosowany tylko jeden ConfigMap. Nie można ConfigMaps kolekcji.
@@ -137,7 +137,7 @@ Jeśli wdrożono już ConfigMap w klastrze i chcesz ją zaktualizować przy uży
 
 Zmiana konfiguracji może potrwać kilka minut, zanim zostanie ona uwzględniona, a wszystkie omsagent zostaną uruchomione ponownie. Ponowne uruchomienie jest ponownym uruchomieniem dla wszystkich omsagentch, a nie wszystkich ponownych uruchomień w tym samym czasie. Po zakończeniu ponownych uruchomień zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik: `configmap "container-azm-ms-agentconfig" updated`.
 
-## <a name="verify-configuration"></a>Weryfikuj konfigurację 
+## <a name="verify-configuration"></a>Zweryfikuj konfigurację 
 
 Aby sprawdzić, czy konfiguracja została pomyślnie zastosowana, użyj następującego polecenia, aby przejrzeć dzienniki z agenta pod: `kubectl logs omsagent-fdf58 -n=kube-system`. Jeśli wystąpiły błędy konfiguracji z omsagentch, w danych wyjściowych zostaną wyświetlone błędy podobne do następujących:
 

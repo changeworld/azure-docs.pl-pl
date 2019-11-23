@@ -25,15 +25,15 @@ Aparat grafu Azure Cosmos DB jest ściśle opisany w specyfikacji kroków przech
 
 * ***[Kod bajtowy języka Gremlin](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** to specyfikacja przechodzenia przez graf niezależna od języka programowania. Program Cosmos DB Graph jeszcze nie obsługuje tego programu. Użyj ```GremlinClient.SubmitAsync()``` i przekaż przechodzenie jako ciąg tekstowy.
 
-* Kardynalność zestawu ***```property(set, 'xyz', 1)```*** nie jest obecnie obsługiwana. Zamiast tego użyj ```property(list, 'xyz', 1)```.
+* Kardynalność zestawu ***```property(set, 'xyz', 1)```*** nie jest obecnie obsługiwana. Zamiast nich należy używać słów kluczowych ```property(list, 'xyz', 1)```.
 
-* ***```match()```*** umożliwia wykonywanie zapytań na wykresach przy użyciu specyfikatora wzorca deklaratywnego. Ta funkcja jest niedostępna.
+* ***```match()```*** umożliwia wykonywanie zapytań na wykresach przy użyciu deklaratywnego dopasowania do wzorca. Ta funkcja jest niedostępna.
 
 * ***Obiekty jako właściwości*** dla wierzchołków lub krawędzi nie są obsługiwane. Właściwości mogą być tylko typami pierwotnymi lub tablicami.
 
 * ***Sortowanie według właściwości tablicy*** ```.order().by(<array property>)``` nie jest obsługiwane. Sortowanie jest obsługiwane tylko według typów pierwotnych.
 
-* ***Niepierwotne typy JSON*** nie są obsługiwane. Użyj ```string```, ```number``` lub ```true``` @ no__t-3 @ no__t-4 typów. wartości ```null``` nie są obsługiwane. 
+* ***Niepierwotne typy JSON*** nie są obsługiwane. Użyj ```string```, ```number```lub ```true```/typy ```false```. wartości ```null``` nie są obsługiwane. 
 
 * Serializator ***GraphSONv3*** nie jest obecnie dostępny.
 

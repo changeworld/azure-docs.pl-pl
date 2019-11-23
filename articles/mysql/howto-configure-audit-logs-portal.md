@@ -38,13 +38,13 @@ Włącz i skonfiguruj rejestrowanie inspekcji.
     ![Parametry serwera](./media/howto-configure-audit-logs-portal/server-parameters.png)
 
 1. Zaktualizuj parametr **audit_log_enabled** na wartość on.
-    @no__t — dzienniki inspekcji 0Enable @ no__t-1
+    ![włączyć dzienników inspekcji](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
 1. Wybierz [typy zdarzeń](concepts-audit-logs.md#configure-audit-logging) , które mają być rejestrowane, aktualizując parametr **audit_log_events** .
-    ![Audit zdarzenia dziennika @ no__t-1
+    ![](./media/howto-configure-audit-logs-portal/audit-log-events.png) zdarzeń dziennika inspekcji
 
-1. Dodaj wszystkich użytkowników programu MySQL, którzy mają zostać wykluczeni z rejestrowania przez zaktualizowanie parametru **audit_log_exclude_users** . Określ użytkowników, podając ich nazwę użytkownika MySQL.
-    @no__t 0Audit — wykluczanie użytkowników @ no__t-1
+1. Dodaj wszystkich użytkowników programu MySQL, które mają zostać wykluczone z rejestrowania przez zaktualizowanie parametru **audit_log_exclude_users** . Określ użytkowników, podając ich nazwę użytkownika MySQL.
+    Dziennik inspekcji ![Wyklucz użytkowników](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
 
 1. Po zmianie parametrów możesz kliknąć przycisk **Zapisz**. Możesz też **odrzucić** zmiany.
     ![Zapisz](./media/howto-configure-audit-logs-portal/save-parameters.png)
@@ -53,17 +53,17 @@ Włącz i skonfiguruj rejestrowanie inspekcji.
 
 1. W sekcji **monitorowanie** na pasku bocznym wybierz pozycję **Ustawienia diagnostyczne**.
 
-1. Kliknij pozycję "+ Dodaj ustawienie diagnostyczne" ![Add ustawienia diagnostyczne @ no__t-1
+1. Kliknij pozycję "+ Dodaj ustawienie diagnostyczne" ![Dodaj ustawienia diagnostyczne](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
 1. Podaj nazwę ustawienia diagnostycznego.
 
 1. Określ, które ujścia danych mają wysyłać dzienniki inspekcji (konto magazynu, centrum zdarzeń i/lub Log Analytics obszar roboczy).
 
 1. Wybierz pozycję "MySqlAuditLogs" jako typ dziennika.
-![Configure ustawienia diagnostyczne @ no__t-1
+![skonfigurować ustawienia diagnostyczne](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
 
 1. Po skonfigurowaniu ujścia danych do potoków dzienników inspekcji do programu można kliknąć przycisk **Zapisz**.
-![Save ustawienia diagnostyczne @ no__t-1
+![zapisać ustawienia diagnostycznego](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
 
 1. Uzyskaj dostęp do dzienników inspekcji, przepoznając je w skonfigurowanych ujściach danych. Wyświetlenie dzienników może potrwać do 10 minut.
 

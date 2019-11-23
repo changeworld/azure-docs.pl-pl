@@ -41,13 +41,14 @@ W celu uzyskania optymalnej wydajności Skonfiguruj serwer DNS, aby obsługiwał
 
 Vserver klastra jest pokazywany po lewej stronie, a adresy IP są wyświetlane w centrum i po prawej stronie. Skonfiguruj każdy punkt dostępu klienta zawierający rekordy i wskaźniki, jak pokazano.
 
-Diagram DNS @no__t 0Avere-Robin klastra no__t-1<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
+![diagram DNS działania okrężnego klastra avere](media/avere-vfxt-rrdns-diagram.png) 
+<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Każdy adres IP skierowany na klienta musi mieć unikatową nazwę do użytku wewnętrznego w klastrze. (Na tym diagramie adresy IP klientów mają nazwę VS1-Client-IP-* dla jasności, ale w środowisku produkcyjnym należy raczej używać czegoś bardziej zwięzłego, takiego jak klient *).
 
 Klienci instalują klaster przy użyciu nazwy vserver jako argumentu serwera. 
 
-Zmodyfikuj plik ``named.conf`` serwera DNS, aby ustawić kolejność cykliczną dla zapytań do vserver. Ta opcja zapewnia, że wszystkie dostępne wartości są przetwarzane przez. Dodaj następującą instrukcję:
+Zmodyfikuj plik ``named.conf`` serwera DNS, aby ustawić kolejność cykliczną zapytań do vserver. Ta opcja zapewnia, że wszystkie dostępne wartości są przetwarzane przez. Dodaj następującą instrukcję:
 
 ```
 options {
@@ -73,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>Ustawienia DNS klastra
 
-Określ serwer DNS, którego używa klaster vFXT na stronie ustawień**sieci administracyjnej**  >  w **klastrze**. Ustawienia na tej stronie obejmują:
+Określ serwer DNS, którego używa klaster vFXT na stronie ustawień **sieci administracyjnej** **klastra** > . Ustawienia na tej stronie obejmują:
 
 * Adres serwera DNS
 * Nazwa domeny DNS

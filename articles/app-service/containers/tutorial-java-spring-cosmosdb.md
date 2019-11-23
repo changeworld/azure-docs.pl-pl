@@ -36,7 +36,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/overview) zainstalowany na własnym komputerze. 
-* [Git](https://git-scm.com/)
+* [Usługa Git](https://git-scm.com/)
 * [Java JDK](https://aka.ms/azure-jdks)
 * [Maven](https://maven.apache.org)
 
@@ -146,7 +146,7 @@ Uruchom przykład przy użyciu narzędzia Maven.
 mvn package spring-boot:run
 ```
 
-Dane wyjściowe powinny wyglądać podobnie do poniższych.
+Dane wyjściowe powinny wyglądać następująco.
 
 ```bash
 bash-3.2$ mvn package spring-boot:run

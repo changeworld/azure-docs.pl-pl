@@ -62,11 +62,11 @@ W tym artykule opisano sposób konfigurowania środowiska deweloperskiego i test
 
 3. Uzyskaj poświadczenia SSH wyświetlane w bloku **Przegląd** maszyny wirtualnej za pomocą przycisku **Połącz** . Wybierz kartę **SSH** i skopiuj polecenie SSH Logon do Schowka.
 
-4. Zaloguj się do [powłoki bash](/azure/cloud-shell/quickstart) z lokalnego komputera i Wklej polecenie. Będzie on miał postać **SSH @ no__t-1user ID @ no__t-2 @ no__t-3 @ no__t-4IP adres @ no__t-5**. Gdy zostanie wyświetlony monit o podanie poświadczeń, wprowadź je w celu nawiązania połączenia z katalogiem macierzystym.
+4. Zaloguj się do [powłoki bash](/azure/cloud-shell/quickstart) z lokalnego komputera i Wklej polecenie. Będzie w formacie **ssh\<identyfikator użytkownika\>\@\<adres IP\>** . Gdy zostanie wyświetlony monit o podanie poświadczeń, wprowadź je w celu nawiązania połączenia z katalogiem macierzystym.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Kopiuj plik instalacyjny na serwer
 
-Plik instalacyjny serwera sieci Web to **ZDT @ no__t-1Install @ no__t-2EE\_V12.0.0.1.tgz**. Jest ona uwzględniona na nośniku dostarczonym przez firmę IBM. Musisz przekazać ten plik na maszynę wirtualną Ubuntu.
+Plik instalacyjny dla serwera sieci Web to **ZDT\_zainstaluj\_EE\_v 12.0.0.1. tgz**. Jest ona uwzględniona na nośniku dostarczonym przez firmę IBM. Musisz przekazać ten plik na maszynę wirtualną Ubuntu.
 
 1. W wierszu polecenia wprowadź następujące polecenie, aby upewnić się, że wszystko jest aktualne w nowo utworzonym obrazie:
 
@@ -91,7 +91,7 @@ Plik instalacyjny serwera sieci Web to **ZDT @ no__t-1Install @ no__t-2EE\_V12.0
 
 ## <a name="install-the-enterprise-edition"></a>Zainstaluj wersję Enterprise Edition
 
-1. Przejdź do katalogu ZDT i zdekompresuj plik ZDT @ no__t-0Install @ no__t-1EE\_V12.0.0.1.tgz przy użyciu następujących poleceń:
+1. Przejdź do katalogu ZDT i zdekompresuj ZDT\_Zainstaluj\_EE\_V 12.0.0.1. tgz przy użyciu następujących poleceń:
 
     ```
     cd ZDT

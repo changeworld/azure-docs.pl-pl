@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Private Link service using Azure CLI
-description: Learn how to create an Azure Private Link service using Azure CLI
+title: Tworzenie usługi Azure Private link przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Dowiedz się, jak utworzyć usługę prywatnego połączenia platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,34 +14,34 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229364"
 ---
-# <a name="create-a-private-link-service-using-azure-cli"></a>Create a Private Link service using Azure CLI
-This article shows you how to create a Private Link service in Azure using Azure CLI.
+# <a name="create-a-private-link-service-using-azure-cli"></a>Tworzenie prywatnej usługi linkowej przy użyciu interfejsu wiersza polecenia platformy Azure
+W tym artykule opisano sposób tworzenia usługi linku prywatnego na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-If you decide to install and use Azure CLI locally instead, this quickstart requires you to use the latest Azure CLI version. Aby dowiedzieć się, jaka wersja jest zainstalowana, uruchom polecenie `az --version`. Aby uzyskać informacje na temat instalacji i uaktualnienia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten przewodnik Szybki Start wymaga użycia najnowszej wersji interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się, jaka wersja jest zainstalowana, uruchom polecenie `az --version`. Aby uzyskać informacje na temat instalacji i uaktualnienia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 ## <a name="create-a-private-link-service"></a>Tworzenie usługi łącza prywatnego
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Przed utworzeniem sieci wirtualnej należy utworzyć grupę zasobów, która będzie hostowała tę sieć wirtualną. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). This example creates a resource group named *myResourceGroup* in the *westcentralus* location:
+Przed utworzeniem sieci wirtualnej musisz utworzyć grupę zasobów, która będzie hostowała tę sieć wirtualną. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Ten przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *westcentralus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
-Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). This example creates a default virtual network named *myVirtualNetwork* with one subnet named *mySubnet*:
+Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Ten przykład tworzy domyślną sieć wirtualną o nazwie *myVirtualNetwork* z jedną podsiecią o nazwie Moja *podsieć*:
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-a-subnet"></a>Tworzenie podsieci
-Create a subnet for the virtual network with [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). This example creates a subnet named *mySubnet* in the *myVirtualNetwork* virtual network:
+Utwórz podsieć dla sieci wirtualnej za pomocą [AZ Network VNET Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). Ten przykład tworzy podsieć o nazwie Moja *podsieć* w sieci wirtualnej *myVirtualNetwork* :
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
 ```
-### <a name="create-a-internal-load-balancer"></a>Create a Internal Load Balancer 
-Create a internal load balancer with [az network lb create](/cli/azure/network/lb#az-network-lb-create). This example creates a internal load balancer named *myILB* in resource group named *myResourceGroup*. 
+### <a name="create-a-internal-load-balancer"></a>Tworzenie Load Balancer wewnętrznej 
+Utwórz wewnętrzny moduł równoważenia obciążenia za pomocą właściwości [AZ Network lb Create](/cli/azure/network/lb#az-network-lb-create). Ten przykład powoduje utworzenie wewnętrznego modułu równoważenia obciążenia o nazwie *myILB* w grupie zasobów o nazwie Moja *resourceName*. 
 
 ```azurecli-interactive
 az network lb create --resource-group myResourceGroup --name myILB --sku standard --vnet-name MyVirtualNetwork --subnet mySubnet --frontend-ip-name myFrontEnd --backend-pool-name myBackEndPool
@@ -78,11 +78,11 @@ Reguła modułu równoważenia obciążenia definiuje konfigurację adresu IP fr
 ```
 ### <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
-In this example, we don't cover virtual machine creation. You can follow the steps in [Create an internal load balancer to load balance VMs using Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool) to create two virtual machines to be used as backend servers for the load balancer. 
+W tym przykładzie nie obejmujemy tworzenia maszyn wirtualnych. Można wykonać kroki opisane w temacie [Tworzenie wewnętrznego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool) , aby utworzyć dwie maszyny wirtualne, które będą używane jako serwery zaplecza dla modułu równoważenia obciążenia. 
 
 
-### <a name="disable-private-link-service-network-policies-on-subnet"></a>Disable Private Link service network policies on subnet 
-Private Link service requires an IP from any subnet of your choice  within a virtual network. Currently, we don’t support Network Policies on these IPs.  Hence, we have to disable the network policies on the subnet. Update the subnet to disable Private Link service network policies with [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update).
+### <a name="disable-private-link-service-network-policies-on-subnet"></a>Wyłączanie zasad sieciowych usługi linku prywatnego w podsieci 
+Usługa link prywatny wymaga adresu IP z dowolnej podsieci wybranej w ramach sieci wirtualnej. Obecnie nie obsługujemy zasad sieciowych w tych adresach IP.  W związku z tym musimy wyłączyć zasady sieciowe w podsieci. Zaktualizuj podsieć, aby wyłączyć zasady sieciowe usługi linku prywatnego za pomocą [aktualizacji AZ Network VNET Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update).
 
 ```azurecli-interactive
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
@@ -90,7 +90,7 @@ az network vnet subnet update --resource-group myResourceGroup --vnet-name myVir
  
 ## <a name="create-a-private-link-service"></a>Tworzenie usługi łącza prywatnego  
  
-Create a Private Link service using Standard Load Balancer frontend IP configuration with [az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create). This example creates a Private Link service named *myPLS* using Standard Load Balancer named *myLoadBalancer* in resource group named *myResourceGroup*. 
+Utwórz usługę linku prywatnego przy użyciu konfiguracji adresu IP frontonu usługa Load Balancer w warstwie Standardowa za pomocą polecenia [AZ Network Private-Link-Service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create). W tym przykładzie tworzona jest usługa linku prywatnego o nazwie *myPLS* przy użyciu usługa Load Balancer w warstwie Standardowa o nazwie *myLoadBalancer* w grupie zasobów o nazwie Moja *resourceName*. 
  
 ```azurecli-interactive
 az network private-link-service create \
@@ -102,24 +102,24 @@ az network private-link-service create \
 --lb-frontend-ip-configs myFrontEnd \
 --location westcentralus 
 ```
-Once created, take note of the Private Link Service ID. You will need that later for requesting connection to this service.  
+Po utworzeniu należy zwrócić uwagę na identyfikator usługi linku prywatnego. Będzie potrzebne później do żądania połączenia z tą usługą.  
  
-At this stage, your Private Link service is successfully created and is ready to receive the traffic. Note that above example is only to demonstrate creating Private Link service using Azure CLI.  We haven't configured the load balancer backend pools or any application on the backend pools to listen to the traffic. If you want to see end-to-end traffic flows, you are strongly advised to configure your application behind your Standard Load Balancer.  
+Na tym etapie usługa linku prywatnego została pomyślnie utworzona i będzie gotowa do odbierania ruchu. Należy pamiętać, że powyższy przykład dotyczy tylko tworzenia usługi link prywatny przy użyciu interfejsu wiersza polecenia platformy Azure.  Nie skonfigurowano pul zaplecza modułu równoważenia obciążenia ani żadnej aplikacji w pulach zaplecza do nasłuchiwania ruchu. Jeśli chcesz zobaczyć kompleksowe przepływy ruchu, stanowczo zalecamy skonfigurowanie aplikacji za usługa Load Balancer w warstwie Standardowa.  
  
-Next, we will demonstrate how to map this service to a private endpoint in different virtual network using Azure CLI. Again, the example is limited to creating the private endpoint and connecting to Private Link service created above using Azure CLI. Additionally, you can create virtual machines in the virtual network to send/receive traffic to the private endpoint.        
+Następnie przedstawimy sposób mapowania tej usługi do prywatnego punktu końcowego w innej sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure. Ponownie Przykładowo można utworzyć prywatny punkt końcowy i połączyć się z usługą linków prywatnych utworzoną powyżej przy użyciu interfejsu wiersza polecenia platformy Azure. Ponadto można tworzyć maszyny wirtualne w sieci wirtualnej w celu wysyłania/odbierania ruchu do prywatnego punktu końcowego.        
  
-## <a name="private-endpoints"></a>Private endpoints
+## <a name="private-endpoints"></a>Prywatne punkty końcowe
 
 ### <a name="create-the-virtual-network"></a>Tworzenie sieci wirtualnej 
-Create a virtual network with [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). This example creates a virtual network named *myPEVNet* in resource group named *myResourcegroup*: 
+Utwórz sieć wirtualną za pomocą [AZ Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create). Ten przykład umożliwia utworzenie sieci wirtualnej o nazwie *myPEVNet* w grupie zasobów o nazwie Moja *zasobów*: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
 --name myPEVnet \
 --address-prefix 10.0.0.0/16  
 ```
-### <a name="create-the-subnet"></a>Create the subnet 
-Create a subnet in virtual network with [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). This example creates a subnet named *mySubnet* in virtual network named *myPEVnet* in resource group named *myResourcegroup*: 
+### <a name="create-the-subnet"></a>Utwórz podsieć 
+Utwórz podsieć w sieci wirtualnej za pomocą [AZ Network VNET Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create). Ten przykład tworzy podsieć o nazwie Moja *podsieć* w sieci wirtualnej o nazwie *myPEVnet* w grupie zasobów o nazwie Moja *zasobów*: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -128,8 +128,8 @@ az network vnet subnet create \
 --name myPESubnet \
 --address-prefixes 10.0.0.0/24 
 ```   
-## <a name="disable-private-endpoint-network-policies-on-subnet"></a>Disable private endpoint network policies on subnet 
-Private endpoint can be created in any subnet of your choice within a virtual network. Currently, we don’t support network policies on private endpoints.  Hence, we have to disable the network policies on the subnet. Update the subnet to disable private endpoint network policies with [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update). 
+## <a name="disable-private-endpoint-network-policies-on-subnet"></a>Wyłącz zasady sieci prywatnego punktu końcowego w podsieci 
+Prywatny punkt końcowy można utworzyć w dowolnej podsieci w sieci wirtualnej. Obecnie nie obsługujemy zasad sieciowych dla prywatnych punktów końcowych.  W związku z tym musimy wyłączyć zasady sieciowe w podsieci. Zaktualizuj podsieć, aby wyłączyć zasady sieci prywatnego punktu końcowego za pomocą [aktualizacji AZ Network VNET Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update). 
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -138,8 +138,8 @@ az network vnet subnet update \
 --name myPESubnet \
 --disable-private-endpoint-network-policies true 
 ```
-## <a name="create-private-endpoint-and-connect-to-private-link-service"></a>Create private endpoint and connect to private link service 
-Create a private endpoint for consuming Private Link service created above in your virtual network:
+## <a name="create-private-endpoint-and-connect-to-private-link-service"></a>Tworzenie prywatnego punktu końcowego i nawiązywanie połączenia z usługą linku prywatnego 
+Utwórz prywatny punkt końcowy do korzystania z usługi linku prywatnego utworzonego powyżej w sieci wirtualnej:
   
 ```azurecli-interactive
 az network private-endpoint create \
@@ -151,15 +151,15 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-You can get the *private-connection-resource-id* with `az network private-link-service show` on Private Link service. The ID will look like:   
-/subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
+Możesz uzyskać *połączenie Private-Connection-Resource-ID* z `az network private-link-service show` w usłudze link prywatny. Identyfikator będzie wyglądać następująco:   
+/subscriptions/subID/resourceGroups/*ResourceGroupName*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
-## <a name="show-private-link-service-connections"></a>Show Private Link service connections 
+## <a name="show-private-link-service-connections"></a>Pokaż połączenia usługi link prywatny 
  
-See connection requests on your Private Link service  using [az network private-link-service show](/cli/azure/network/private-link-service#az-network-private-link-service-show).    
+Zobacz żądania połączeń w usłudze linku prywatnym przy użyciu polecenia [AZ Network Private-Link-Service show](/cli/azure/network/private-link-service#az-network-private-link-service-show).    
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```
 ## <a name="next-steps"></a>Następne kroki
-- Learn more about [Azure Private Link service](private-link-service-overview.md)
+- Dowiedz się więcej o [usłudze Azure Private Link Service](private-link-service-overview.md)
  

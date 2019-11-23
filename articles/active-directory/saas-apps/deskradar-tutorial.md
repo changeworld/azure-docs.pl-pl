@@ -55,7 +55,7 @@ Aby skonfigurować integrację aplikacji Deskradar z usługą Azure AD, musisz d
 1. W sekcji **Dodaj z galerii** wpisz **Deskradar** w polu wyszukiwania.
 1. Wybierz pozycję **Deskradar** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Deskradar przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Deskradar.
 
@@ -63,8 +63,8 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Skonfiguruj Logowanie jednokrotne](#configure-deskradar-sso)** w usłudze Deskradar, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego aplikacji Deskradar](#create-deskradar-test-user)**  — aby zapewnić odpowiednik użytkownika Britta Simon w aplikacji Deskradar powiązany z reprezentacją użytkownika usługi Azure AD.
 6. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
@@ -116,11 +116,11 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     f. Kliknij przycisk **OK**.
 
-    g. Kliknij przycisk **Save** (Zapisz).
+    g. Kliknij pozycję **Zapisz**.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-   ![Link do pobierania certyfikatu](common/certificatebase64.png)
+   ![Link pobierania certyfikatu](common/certificatebase64.png)
 
 1. W sekcji **Konfigurowanie Deskradar** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
@@ -161,12 +161,12 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -176,7 +176,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście aplikacji wybierz pozycję **Deskradar**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -188,15 +188,15 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ### <a name="create-deskradar-test-user"></a>Tworzenie użytkownika testowego aplikacji Deskradar
 
-W tej sekcji w aplikacji Deskradar utworzysz użytkownika Britta Simon. We współpracy z  [zespołem pomocy technicznej klienta aplikacji Deskradar](mailto:support@deskradar.com)  dodaj użytkowników na platformie Deskradar. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji w aplikacji Deskradar utworzysz użytkownika Britta Simon. We współpracy z  [zespołem pomocy technicznej klienta aplikacji Deskradar](mailto:support@deskradar.com)  dodaj użytkowników na platformie Deskradar. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 Po wybraniu kafelka Deskradar w panelu dostępu należy automatycznie zalogować się do Deskradar, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

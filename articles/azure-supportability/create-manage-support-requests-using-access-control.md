@@ -95,7 +95,7 @@ Chcesz udzielić dostępu do swojego elementu równorzędnego, Jan, możliwość
 
     ![Nowe żądanie pomocy technicznej](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Kliknięcie pozycji "wszystkie żądania obsługi" Jan może zobaczyć listę żądań pomocy technicznej utworzonych dla tej subskrypcji ![Case szczegóły widoku @ no__t-1
+8. Kliknięcie pozycji "wszystkie żądania obsługi" Jan może zobaczyć listę żądań pomocy technicznej utworzonych dla tej subskrypcji ![widoku szczegółów przypadku](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Usuń dostęp do żądania obsługi w Azure Portal
 

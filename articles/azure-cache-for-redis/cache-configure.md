@@ -169,15 +169,15 @@ Aby uzyskać więcej informacji, zobacz [Redis — powiadomienia dotyczące miej
 ## <a name="azure-cache-for-redis-advisor"></a>Usługa Azure cache for Redis Advisor
 W bloku **Azure cache for Redis Advisor** są wyświetlane zalecenia dotyczące pamięci podręcznej. W trakcie normalnych operacji nie są wyświetlane żadne zalecenia. 
 
-![Zalecenia](./media/cache-configure/redis-cache-no-recommendations.png)
+![Polecane elementy](./media/cache-configure/redis-cache-no-recommendations.png)
 
 Jeśli wystąpią jakiekolwiek warunki podczas operacji pamięci podręcznej, takie jak duże użycie pamięci, przepustowość sieci lub obciążenie serwera, w bloku **pamięci podręcznej platformy Azure dla Redis** zostanie wyświetlony alert.
 
-![Zalecenia](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Polecane elementy](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 Więcej informacji można znaleźć w bloku **zalecenia** .
 
-![Zalecenia](./media/cache-configure/redis-cache-recommendations.png)
+![Polecane elementy](./media/cache-configure/redis-cache-recommendations.png)
 
 Te metryki można monitorować w sekcjach [wykresy monitorowania](cache-how-to-monitor.md#monitoring-charts) i [wykresy użycia](cache-how-to-monitor.md#usage-charts) w bloku **Azure cache for Redis** .
 
@@ -300,7 +300,7 @@ Ustawienia w sekcji **Administracja** umożliwiają wykonywanie następujących 
 * [Ponowne uruchamianie](#reboot)
 
 
-### <a name="importexport"></a>Import/Export
+### <a name="importexport"></a>Import/eksport
 Import/Export to pamięć podręczna platformy Azure do Redis operacji zarządzania danymi, która umożliwia importowanie i eksportowanie danych w pamięci podręcznej przez zaimportowanie i wyeksportowanie bazy danych Azure cache for Redis Database (RDB) z pamięci podręcznej Premium do strony obiektu BLOB na koncie usługi Azure Storage. Usługa Import/Export umożliwia Migrowanie między różnymi pamięciami podręcznymi platformy Azure dla wystąpień Redis lub wypełnianie pamięci podręcznej danymi przed użyciem.
 
 Import może służyć do przenoszenia zgodnych plików RDB Redis z dowolnego serwera Redis działającego w dowolnej chmurze lub środowisku, w tym Redis działających w systemie Linux, Windows lub dowolnym dostawcy chmury, takim jak Amazon Web Services i inne. Importowanie danych to prosty sposób tworzenia pamięci podręcznej z wstępnie wypełnionymi danymi. Podczas procesu importowania usługa Azure cache for Redis ładuje pliki RDB z usługi Azure Storage do pamięci, a następnie wstawia klucze do pamięci podręcznej.

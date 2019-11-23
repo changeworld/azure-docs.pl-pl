@@ -96,7 +96,7 @@ ADLS Gen 2 jest oparta na [usłudze Azure Blob Storage](../../storage/blobs/sto
 
 Podstawową funkcją Data Lake Storage Gen2 jest dodanie [hierarchicznej przestrzeni nazw](../../storage/data-lake-storage/namespace.md) do usługi BLOB Storage, która organizuje obiekty/pliki w hierarchii katalogów na potrzeby wykonywania dostępu do danych. Struktura hierarchiczna umożliwia wykonywanie operacji, takich jak zmiana nazwy lub usuwanie katalogu, aby były jednocyfrowymi operacjami metadanych w katalogu, a nie wyliczeniem i przetwarzaniem wszystkich obiektów, które współużytkują prefiks nazwy katalogu.
 
-W przeszłości Analiza oparta na chmurze musiała być naruszona w obszarach wydajności, zarządzania i zabezpieczeń. Najważniejsze funkcje Azure Data Lake Storage (ADLS) Gen2 są następujące:
+W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w zakresie wydajności, zarządzania i zabezpieczeń. Najważniejsze funkcje Azure Data Lake Storage (ADLS) Gen2 są następujące:
 
 - **Dostęp zgodny**z usługą Hadoop: Azure Data Lake Storage Gen2 umożliwia zarządzanie danymi i uzyskiwanie do nich dostępu tak samo jak w przypadku [rozproszony system plików Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [Sterownik ABFS](../../storage/data-lake-storage/abfs-driver.md) jest dostępny we wszystkich środowiskach Apache Hadoop, które znajdują się w [usłudze Azure HDInsight](../index.yml). Ten sterownik umożliwia dostęp do danych przechowywanych w Data Lake Storage Gen2.
 
@@ -157,7 +157,7 @@ Usługa HDInsight domyślnie ma pełny dostęp do danych na kontach usługi Azur
 
     |Właściwość tokenu|Opis|
     |---|---|
-    |nazwa_zasady|Nazwa, która ma zostać użyta do utworzenia zasad przechowywanych.|
+    |policy_name|Nazwa, która ma zostać użyta do utworzenia zasad przechowywanych.|
     |storage_account_name|Nazwa konta magazynu.|
     |storage_account_key|Klucz dla konta magazynu.|
     |storage_container_name|Kontener na koncie magazynu, do którego ma zostać ograniczony dostęp.|

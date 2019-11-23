@@ -22,7 +22,7 @@ Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego Kubernetes, zobac
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W krokach przedstawionych w tym dokumencie przyjęto założenie, że utworzono klaster AKS i `kubectl` nawiązano połączenie z klastrem. Jeśli musisz utworzyć klaster AKS, zapoznaj się z [przewodnikiem Szybki Start][aks-quickstart]dotyczącym AKS.
+W krokach przedstawionych w tym dokumencie przyjęto założenie, że utworzono klaster AKS i nawiązano połączenie `kubectl` z klastrem. Jeśli musisz utworzyć klaster AKS, zapoznaj się z [przewodnikiem Szybki Start][aks-quickstart]dotyczącym AKS.
 
 Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version` , aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
@@ -34,7 +34,7 @@ Aby uruchomić Pulpit nawigacyjny Kubernetes, użyj polecenia [AZ AKS Browse][az
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-To polecenie tworzy serwer proxy między systemem deweloperskim i interfejsem API Kubernetes, a następnie otwiera przeglądarkę internetową na pulpicie nawigacyjnym Kubernetes. Jeśli przeglądarka sieci Web nie jest otwarta na pulpicie nawigacyjnym Kubernetes, skopiuj i wklej adres URL zanotowany w interfejsie `http://127.0.0.1:8001`wiersza polecenia platformy Azure, zazwyczaj.
+To polecenie tworzy serwer proxy między systemem deweloperskim i interfejsem API Kubernetes, a następnie otwiera przeglądarkę internetową na pulpicie nawigacyjnym Kubernetes. Jeśli przeglądarka sieci Web nie jest otwarta na pulpicie nawigacyjnym Kubernetes, skopiuj i wklej adres URL zanotowany w interfejsie wiersza polecenia platformy Azure, zwykle `http://127.0.0.1:8001`.
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -107,7 +107,7 @@ Wybierz adres punktu końcowego, aby otworzyć okno przeglądarki sieci Web na d
 
 Pulpit nawigacyjny Kubernetes może zapewniać Podstawowe metryki monitorowania i informacje dotyczące rozwiązywania problemów, takie jak dzienniki.
 
-Aby wyświetlić więcej informacji o zasobnikach aplikacji, wybierz pozycję zasobniki w menu po lewej stronie. Zostanie wyświetlona lista dostępnych zasobników. Wybierz *Nginx* pod, aby wyświetlić informacje, takie jak użycie zasobów:
+Aby wyświetlić więcej informacji o zasobnikach aplikacji, wybierz pozycję **zasobniki** w menu po lewej stronie. Zostanie wyświetlona lista dostępnych zasobników. Wybierz *Nginx* pod, aby wyświetlić informacje, takie jak użycie zasobów:
 
 ![Wyświetl informacje pod](./media/kubernetes-dashboard/view-pod-info.png)
 
@@ -119,7 +119,7 @@ Aby edytować wdrożenie:
 
 1. Wybierz pozycję **wdrożenia** w menu po lewej stronie, a następnie wybierz wdrożenie *Nginx* .
 1. Wybierz pozycję **Edytuj** w prawym górnym pasku nawigacyjnym.
-1. `spec.replica` Znajdź wartość w około 20 wierszach. Aby zwiększyć liczbę replik dla aplikacji, należy zmienić tę wartość z *1* na *3*.
+1. Znajdź `spec.replica` wartość w około 20 wierszach. Aby zwiększyć liczbę replik dla aplikacji, należy zmienić tę wartość z *1* na *3*.
 1. Wybierz pozycję **Aktualizuj** , gdy wszystko będzie gotowe.
 
 ![Edytowanie wdrożenia w celu zaktualizowania liczby replik](./media/kubernetes-dashboard/edit-deployment.png)

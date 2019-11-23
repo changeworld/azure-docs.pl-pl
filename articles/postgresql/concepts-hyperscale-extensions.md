@@ -34,7 +34,7 @@ W poniższej tabeli wymieniono standardowe rozszerzenia PostgreSQL, które są o
 > | **Rozszerzenia** | **Opis** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | Zawiera typ ciągu znaków bez uwzględniania wielkości liter. |
-> | [modułów](https://www.postgresql.org/docs/9.6/static/cube.html) | Udostępnia typ danych dla modułów wielowymiarowych. |
+> | [cube](https://www.postgresql.org/docs/9.6/static/cube.html) | Udostępnia typ danych dla modułów wielowymiarowych. |
 > | [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | Dostarcza typ danych do przechowywania zestawów par klucz-wartość. |
 > | [jest](https://www.postgresql.org/docs/9.6/static/isn.html) | Zapewnia typy danych dla międzynarodowych standardów numerowania produktów. |
 > | [Lo](https://www.postgresql.org/docs/current/lo.html) | Konserwacja dużego obiektu. |
@@ -49,7 +49,7 @@ W poniższej tabeli wymieniono standardowe rozszerzenia PostgreSQL, które są o
 > |---|---|
 > | [DICT\_int](https://www.postgresql.org/docs/9.6/static/dict-int.html) | Udostępnia szablon słownika wyszukiwania tekstu dla liczb całkowitych. |
 > | [DICT\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Szablon słownika wyszukiwania tekstu dla rozszerzonego przetwarzania synonimów. |
-> | [deakcentowanie](https://www.postgresql.org/docs/9.6/static/unaccent.html) | Słownik wyszukiwania tekstu, który usuwa akcenty (znaki diakrytyczne) z lexemes. |
+> | [unaccent](https://www.postgresql.org/docs/9.6/static/unaccent.html) | Słownik wyszukiwania tekstu, który usuwa akcenty (znaki diakrytyczne) z lexemes. |
 
 ### <a name="functions-extensions"></a>Rozszerzenia funkcji
 
@@ -71,7 +71,7 @@ W poniższej tabeli wymieniono standardowe rozszerzenia PostgreSQL, które są o
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Udostępnia funkcje, które manipulują całymi tabelami, w tym krzyżowo. |
 > | [tcn](https://www.postgresql.org/docs/current/tcn.html) | Wyzwolone powiadomienia o zmianach. |
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Funkcje do implementowania czasu podróży. |
-> | [identyfikator UUID — OSSP](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generuje unikatowe identyfikatory uniwersalne (UUID). |
+> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generuje unikatowe identyfikatory uniwersalne (UUID). |
 
 ### <a name="hyperscale-extensions"></a>Rozszerzenia do skalowania
 
@@ -87,8 +87,8 @@ W poniższej tabeli wymieniono standardowe rozszerzenia PostgreSQL, które są o
 > | **Rozszerzenia** | **Opis** |
 > |---|---|
 > | [lotem](https://www.postgresql.org/docs/current/bloom.html) | Metoda dostępu rozwiniętego — indeks oparty na plikach sygnatur. |
-> | [Podczas aktywowania RowsetBulk\_ątek](https://www.postgresql.org/docs/9.6/static/btree-gin.html) | Dostarcza przykładowe klasy operatorów ĄTEK, które implementują zachowanie typu B-drzewo dla określonych typów danych. |
-> | [Podczas aktywowania RowsetBulk\_](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | Dostarcza klasy operatorów indeksów indeksu, które implementują B-Tree. |
+> | [btree\_gin](https://www.postgresql.org/docs/9.6/static/btree-gin.html) | Dostarcza przykładowe klasy operatorów ĄTEK, które implementują zachowanie typu B-drzewo dla określonych typów danych. |
+> | [btree\_gist](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | Dostarcza klasy operatorów indeksów indeksu, które implementują B-Tree. |
 
 ### <a name="language-extensions"></a>Rozszerzenia językowe
 
@@ -106,20 +106,20 @@ W poniższej tabeli wymieniono standardowe rozszerzenia PostgreSQL, które są o
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Funkcje do sprawdzania integralności relacji. |
 > | [FDW pliku\_](https://www.postgresql.org/docs/current/file-fdw.html) | Otoka danych obcych na potrzeby prostego dostępu do plików. |
 > | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | Sprawdź zawartość stron bazy danych na niskim poziomie. |
-> | [PG\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | Zapewnia metodę sprawdzania, co dzieje się w pamięci podręcznej buforów udostępnionych w czasie rzeczywistym. |
+> | [pg\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | Zapewnia metodę sprawdzania, co dzieje się w pamięci podręcznej buforów udostępnionych w czasie rzeczywistym. |
 > | [PG\_firmy CRONUS](https://github.com/citusdata/pg_cron) | Harmonogram zadań dla PostgreSQL. |
 > | [PG\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Obejrzyj mapę wolnego miejsca (FSM). |
 > | [przedgrzana\_PG](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | Zapewnia sposób ładowania danych relacji do pamięci podręcznej buforów. |
-> | [\_PG — instrukcje\_](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | Zapewnia metodę śledzenia statystyk wykonywania wszystkich instrukcji SQL wykonywanych przez serwer. Zapoznaj się z sekcją "pg_stat_statements", aby uzyskać informacje o tym rozszerzeniu. |
+> | [\_PG — instrukcje\_](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | Zapewnia metodę śledzenia statystyk wykonywania wszystkich instrukcji SQL wykonywanych przez serwer. Informacje o tym rozszerzeniu można znaleźć w sekcji "pg_stat_statements". |
 > | [widoczność\_PG](https://www.postgresql.org/docs/current/pgvisibility.html) | Obejrzyj mapę widoczności (VM) i informacje o widoczności na poziomie strony. |
 > | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | Zapewnia sposób wyświetlania informacji o blokowaniu na poziomie wiersza. |
 > | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Zapewnia sposób wyświetlania statystyk na poziomie krotki. |
-> | [Postgres\_FDW](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Otoka danych obcych używana do uzyskiwania dostępu do danych przechowywanych na zewnętrznych serwerach PostgreSQL. Informacje o tym rozszerzeniu można znaleźć w sekcji "dblink and postgres_fdw".|
+> | [Postgres\_FDW](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Otoka danych obcych używana do uzyskiwania dostępu do danych przechowywanych na zewnętrznych serwerach PostgreSQL. Informacje o tym rozszerzeniu można znaleźć w sekcji "dblink i postgres_fdw".|
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | Informacje o certyfikatach SSL. |
 > | [\_TSM\_systemowe wierszy](https://www.postgresql.org/docs/current/tsm-system-rows.html) | Metoda reklasy, która akceptuje liczbę wierszy jako limit. |
 > | [czas\_system\_TSM](https://www.postgresql.org/docs/current/tsm-system-time.html) | Metoda potraktować jako limit czas (w milisekundach). |
 > | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Zapewnia metodę tworzenia indeksów hipotetycznych, które nie są kosztami procesora lub dysku. |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Moduł obsługujący połączenia z innymi bazami danych PostgreSQL z poziomu sesji bazy danych. Informacje o tym rozszerzeniu można znaleźć w sekcji "dblink and postgres_fdw". |
+> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | Moduł obsługujący połączenia z innymi bazami danych PostgreSQL z poziomu sesji bazy danych. Informacje o tym rozszerzeniu można znaleźć w sekcji "dblink i postgres_fdw". |
 > | [xml2](https://www.postgresql.org/docs/current/xml2.html) | Zapytania XPath i XSLT. |
 
 
@@ -140,7 +140,7 @@ W poniższej tabeli wymieniono standardowe rozszerzenia PostgreSQL, które są o
 
 Ustawienie `pg_stat_statements.track` określa, jakie instrukcje są zliczane przez rozszerzenie. Domyślnie `top`, co oznacza, że wszystkie instrukcje wydawane bezpośrednio przez klientów są śledzone. Dwa inne poziomy śledzenia są `none` i `all`. To ustawienie można skonfigurować jako parametr serwera za pomocą [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
-Istnieje kompromis między pg_stat_statements informacji o wykonywaniu zapytania i wpływem na wydajność serwera podczas rejestrowania każdej instrukcji SQL. Jeśli nie korzystasz aktywnie z rozszerzenia pg_stat_statements, zalecamy ustawienie `pg_stat_statements.track` na `none`. Niektóre usługi monitorowania innych firm mogą polegać na pg_stat_statements na dostarczenie szczegółowych informacji o wydajności zapytań, dlatego należy sprawdzić, czy tak się dzieje.
+Istnieje kompromis między informacjami o wykonywaniu zapytania pg_stat_statements zapewnia i wpływ na wydajność serwera podczas rejestrowania każdej instrukcji SQL. Jeśli nie korzystasz aktywnie z rozszerzenia pg_stat_statements, zalecamy ustawienie `pg_stat_statements.track` na `none`. Niektóre usługi monitorowania innych firm mogą polegać na pg_stat_statements w celu dostarczenia szczegółowych informacji o wydajności zapytań, dlatego należy sprawdzić, czy tak się dzieje.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink i postgres_fdw
 Można użyć dblink i postgres_fdw, aby nawiązać połączenie z jednego serwera PostgreSQL do innego lub do innej bazy danych na tym samym serwerze. Serwer otrzymujący musi zezwalać na połączenia z serwera wysyłającego za pośrednictwem jego zapory. Aby użyć tych rozszerzeń do łączenia się między serwerami Azure Database for PostgreSQL, ustaw opcję **Zezwalaj na dostęp do usług platformy Azure** . To ustawienie należy również włączyć, jeśli chcesz użyć rozszerzeń do zapętlenia z powrotem do tego samego serwera. Ustawienie **Zezwalaj na dostęp do usług platformy Azure** można znaleźć na stronie Azure Portal serwera Postgres w obszarze **zabezpieczenia połączeń**. Włączenie opcji **Zezwalaj na dostęp do usług platformy Azure** w usłudze dozwolonych wszystkie adresy IP platformy Azure.

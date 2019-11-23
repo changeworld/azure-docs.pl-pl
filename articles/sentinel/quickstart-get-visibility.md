@@ -72,7 +72,7 @@ Wbudowane skoroszyty zapewniają zintegrowane dane z połączonych źródeł dan
       ![PAL Alto Dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Możesz dostosować skoroszyty, edytując główne zapytanie ![button @ no__t-1. Możesz kliknąć przycisk ![button @ no__t-1, aby przejść do [log Analytics, aby edytować zapytanie](../azure-monitor/log-query/get-started-portal.md)w tym miejscu, a następnie wybrać wielokropek (...) i wybrać opcję **Dostosuj dane kafelka**, co umożliwia edytowanie filtru czasu głównego lub usuwanie określonych kafelków z skoroszyt.
+Możesz dostosować skoroszyty, edytując główne](./media/qs-get-visibility/edit-query-button.png)![przycisku. Możesz kliknąć przycisk ![przycisk](./media/qs-get-visibility/go-to-la-button.png), aby przejść do [log Analytics, aby edytować zapytanie](../azure-monitor/log-query/get-started-portal.md)w tym miejscu, a następnie wybrać wielokropek (...) i wybrać opcję **Dostosuj dane kafelka**, co umożliwia edytowanie filtru czasu głównego lub usuwanie określonych kafelków ze skoroszytu.
 
 Aby uzyskać więcej informacji na temat pracy z zapytaniami, zobacz [Samouczek: dane wizualne w log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

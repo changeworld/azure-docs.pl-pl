@@ -51,7 +51,7 @@ Aby skonfigurować Active Directory lokalne jako źródło tożsamości logowani
 
 Podczas konfigurowania domeny Active Directory należy skorzystać z informacji podanych w poniższej tabeli.
 
-| **Opcja** | **Opis** |
+| **Option** | **Opis** |
 |------------|-----------------|
 | **Nazwa** | Nazwa źródła tożsamości. |
 | **Podstawowa nazwa wyróżniająca dla użytkowników** | Podstawowa nazwa wyróżniająca dla użytkowników. |

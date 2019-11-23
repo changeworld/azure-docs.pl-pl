@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect synchronizacji: Wprowadź zmianę konfiguracji w Azure AD Connect synchronizacji | Microsoft Docs'
+title: 'Azure AD Connect Sync: zmiana konfiguracji w usłudze Azure AD Connect Sync | Microsoft Docs'
 description: Przeprowadzi Cię przez proces wprowadzania zmian w konfiguracji w Azure AD Connect synchronizacji.
 services: active-directory
 documentationcenter: ''
@@ -23,7 +23,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 09/29/2019
 ms.locfileid: "71672963"
 ---
-# <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizacji: Wprowadź zmianę konfiguracji domyślnej
+# <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect Sync: wprowadź zmianę konfiguracji domyślnej
 W tym artykule opisano sposób wprowadzania zmian w konfiguracji domyślnej w programie Azure Active Directory (Azure AD) Connect Sync. Zawiera kroki dla niektórych typowych scenariuszy. Korzystając z tej wiedzy, powinno być możliwe wprowadzanie prostych zmian do własnej konfiguracji w oparciu o własne reguły biznesowe.
 
 > [!WARNING]
@@ -33,7 +33,7 @@ W tym artykule opisano sposób wprowadzania zmian w konfiguracji domyślnej w pr
 
 ## <a name="synchronization-rules-editor"></a>Edytor reguł synchronizacji
 Edytor reguł synchronizacji służy do wyświetlania i zmieniania konfiguracji domyślnej. Można go znaleźć w menu **Start** w grupie **Azure AD Connect** .  
-menu @no__t 0Start z edytorem reguł synchronizacji @ no__t-1
+![menu Start z edytorem reguł synchronizacji](./media/how-to-connect-sync-change-the-configuration/startmenu2.png)
 
 Po otwarciu edytora są wyświetlane domyślne reguły, które są wbudowane.
 
@@ -59,20 +59,20 @@ Najczęstszymi zmianami są przepływy atrybutów. Dane w katalogu źródłowym 
 ### <a name="create-the-rule"></a>Utwórz regułę
 1. Kliknij pozycję **Dodaj nową regułę**.
 2. Na stronie **Opis** wprowadź następujące elementy:  
-   ![Inbound reguły filtrowania @ no__t-1  
-   * **Nazwa**: Nadaj regule nazwę opisową.
-   * **Opis**: Zapoznaj się z pewnymi wyjaśnieniami, aby ktoś inny mógł zrozumieć, co to jest reguła.
-   * **Połączony system**: Jest to system, w którym można znaleźć obiekt. W takim przypadku wybierz pozycję **łącznik Active Directory**.
-   * **Typ połączonego systemu/obiektu metaverse**: Wybierz odpowiednio **użytkownika** i **osobę**.
+   ![filtrowania reguł ruchu przychodzącego](./media/how-to-connect-sync-change-the-configuration/description2.png)  
+   * **Nazwa**: nadaj regule nazwę opisową.
+   * **Opis**: Udziel pewnej wyjaśnień, aby ktoś inny mógł zrozumieć, co to jest reguła.
+   * **Połączony system**: jest to system, w którym można znaleźć obiekt. W takim przypadku wybierz pozycję **łącznik Active Directory**.
+   * **Typ połączonego systemu/obiektu metaverse**: wybierz odpowiednio **użytkownika** i **osobę**.
    * **Typ łącza**: Zmień tę wartość, aby **dołączyć**.
    * **Priorytet**: Podaj wartość, która jest unikatowa w systemie. Dolna wartość liczbowa wskazuje wyższy priorytet.
-   * **Tag**: Pozostaw to pole puste. To pole powinno mieć wartość tylko dla wstępnie utworzonych reguł firmy Microsoft.
+   * **Tag**: pozostaw to pole puste. To pole powinno mieć wartość tylko dla wstępnie utworzonych reguł firmy Microsoft.
 3. Na stronie **Filtr zakresu** wprowadź nazwę **ISNOTNULL**.  
-   @no__t — 0Inbound określania zakresu reguł filtr @ no__t-1  
+   Filtr zakresu reguły ruchu przychodzącego ![](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    Ta sekcja służy do definiowania obiektów, do których mają być stosowane reguły. Jeśli ta wartość jest pusta, reguła będzie miała zastosowanie do wszystkich obiektów użytkownika. Jednak może to obejmować pokoje konferencyjne, konta usług i inne obiekty użytkownika niebędące użytkownikami.
 4. Na stronie **reguły sprzężenia** pozostaw pole puste.
 5. Na stronie **przekształcenia** Zmień wartość **flowtype** na **wyrażenie**. Dla **atrybutu Target**wybierz **danąname**. I dla **źródła**wprowadź **PCase ([podaną nazwę])** .
-   ![Inbound przekształcenia reguły @ no__t-1  
+   ![przekształcenia reguły ruchu przychodzącego](./media/how-to-connect-sync-change-the-configuration/transformations.png)  
    W aparacie synchronizacji jest rozróżniana wielkość liter zarówno dla nazwy funkcji, jak i nazwy atrybutu. Jeśli wpiszesz coś niewłaściwego, zobaczysz ostrzeżenie podczas dodawania reguły. Możesz zapisać i kontynuować, ale musisz ponownie otworzyć i poprawić regułę.
 6. Kliknij przycisk **Dodaj** , aby zapisać regułę.
 
@@ -91,7 +91,7 @@ Otwórz **usługę synchronizacji** z menu **Start** . Kroki opisane w tej sekcj
    1. Wybierz pozycję **Łączniki** u góry. Zidentyfikuj łącznik, który został zmieniony w poprzedniej sekcji (w tym przypadku Active Directory Domain Services) i wybierz go. 
    2. W obszarze **Akcje**wybierz pozycję **Uruchom**.
    3. Wybierz pozycję **pełna synchronizacja**, a następnie wybierz przycisk **OK**.
-   ![Full Sync @ no__t-1  
+   ](./media/how-to-connect-sync-change-the-configuration/fullsync.png) pełnej synchronizacji ![  
    Obiekty są teraz aktualizowane w magazynie Metaverse. Sprawdź zmiany, przeglądając obiekt w obiekcie Metaverse.
 
 **Podgląd i pełna synchronizacja pojedynczego obiektu**  
@@ -100,7 +100,7 @@ Otwórz **usługę synchronizacji** z menu **Start** . Kroki opisane w tej sekcj
    2. Wybierz pozycję **obszar łącznika wyszukiwania**. 
    3. Użyj **zakresu** , aby znaleźć obiekt, którego chcesz użyć do przetestowania zmiany. Zaznacz obiekt i kliknij przycisk **Podgląd**. 
    4. Na nowym ekranie wybierz pozycję **Podgląd zatwierdzania**.  
-   ![Commit wersja zapoznawcza @ no__t-1  
+   ![](./media/how-to-connect-sync-change-the-configuration/commitpreview.png) zatwierdzeń  
    Zmiana jest teraz przekazana do obiektu Metaverse.
 
 **Wyświetlanie obiektu w magazynie Metaverse**  
@@ -127,11 +127,11 @@ Aby utworzyć regułę z innymi przepływami atrybutów, wykonaj następujące c
 1. Otwórz **Edytor reguł synchronizacji** z menu **Start** .
 2. Po wybraniu **ruchu przychodzącego** z lewej strony kliknij przycisk **Dodaj nową regułę** .
 3. Nadaj regule nazwę i opis. Wybierz lokalne wystąpienie Active Directory i odpowiednie typy obiektów. W obszarze **Typ łącza**wybierz pozycję **Dołącz**. W obszarze **pierwszeństwo**wybierz liczbę, która nie jest używana przez inną regułę. Początkowe reguły zaczynają się od 100, więc w tym przykładzie można użyć wartości 50.
-  ![Attribute Flow 2 @ no__t-1
+  ![](./media/how-to-connect-sync-change-the-configuration/attributeflowjp2.png)a atrybutu 2
 4. Pozostaw pusty **Filtr zakresu** . (Oznacza to, że powinna być stosowana do wszystkich obiektów użytkownika w lesie).
 5. Pozostaw puste **reguły sprzężenia** . (Oznacza to, że można dołączać do dowolnych reguł out-of-Box).
 6. W **transformacjach**Utwórz następujące przepływy:  
-  ![Attribute Flow 3 @ no__t-1
+  ![przepływu atrybutów 3](./media/how-to-connect-sync-change-the-configuration/attributeflowjp3.png)
 7. Kliknij przycisk **Dodaj** , aby zapisać regułę.
 8. Przejdź do **Synchronization Service Manager**. Na **łącznikach**wybierz łącznik, do którego dodano regułę. Wybierz pozycję **Uruchom**, a następnie wybierz pozycję **pełna synchronizacja**. Pełna synchronizacja ponownie oblicza wszystkie obiekty przy użyciu bieżących reguł.
 
@@ -167,12 +167,12 @@ W tym scenariuszu firmy Fabrikam wprowadziliśmy, że niektóre z atrybutów, kt
 ![Złe atrybuty rozszerzenia](./media/how-to-connect-sync-change-the-configuration/badextensionattribute.png)
 
 1. Utwórz nową regułę synchronizacji ruchu przychodzącego i wypełnij opis.
-  ![Descriptions @ no__t-1
+  Opisy ![](./media/how-to-connect-sync-change-the-configuration/syncruledescription.png)
 2. Utwórz przepływy atrybutów z **wyrażeniem** dla elementu **flowtype** oraz z **AuthoritativeNull** dla **źródła**. Literał **AuthoritativeNull** wskazuje, że wartość powinna być pusta w magazynie Metaverse, nawet jeśli reguła synchronizacji o niższym priorytecie próbuje wypełnić wartość.
-  ![Transformation dla atrybutów rozszerzenia @ no__t-1
+  ![transformacji atrybutów rozszerzenia](./media/how-to-connect-sync-change-the-configuration/syncruletransformations.png)
 3. Zapisz regułę synchronizacji. Uruchom **usługę synchronizacji**, Znajdź łącznik, wybierz pozycję **Uruchom**, a następnie wybierz pozycję **pełna synchronizacja**. Ten krok ponownie oblicza wszystkie przepływy atrybutów.
 4. Sprawdź, czy zamierzone zmiany zostaną wyeksportowane przez przeszukiwanie obszaru łącznika.
-  ![Staged Usuń @ no__t-1
+  ![](./media/how-to-connect-sync-change-the-configuration/deletetobeexported.png) usuwania etapowego
 
 ## <a name="create-rules-with-powershell"></a>Tworzenie reguł przy użyciu programu PowerShell
 Korzystanie z edytora reguł synchronizacji działa prawidłowo, gdy tylko wprowadzono kilka zmian. Jeśli trzeba wprowadzić wiele zmian, program PowerShell może być lepszym rozwiązaniem. Niektóre funkcje zaawansowane są dostępne tylko w programie PowerShell.
@@ -186,7 +186,7 @@ Reguły synchronizacji out-of-Box zaczynają się od wartości priorytetu 100. J
 Możesz nakazać aparatowi synchronizacji, który ma dodać dodatkowe reguły przed regułami, które są używane. Aby uzyskać takie zachowanie, wykonaj następujące kroki:
 
 1. Oznacz pierwszą regułę synchronizacji poza ramką (**w obszarze z elementu AD-User Join**) w Edytorze reguł synchronizacji i wybierz pozycję **Eksportuj**. Skopiuj wartość identyfikatora SR.  
-![PowerShell przed zmianą @ no__t-1  
+![PowerShell przed zmianą](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. Utwórz nową regułę synchronizacji. Aby go utworzyć, można użyć edytora reguł synchronizacji. Wyeksportuj regułę do skryptu programu PowerShell.
 3. We właściwości **PrecedenceBefore**Wstaw wartość identyfikatora z reguły out-of-box. Ustaw dla **pierwszeństwa** wartość **0**. Upewnij się, że atrybut identyfikatora jest unikatowy i że nie używasz identyfikatora GUID z innej reguły. Upewnij się również, że właściwość **ImmutableTag** nie jest ustawiona. Ta właściwość powinna być ustawiona tylko dla reguły wbudowanej.
 4. Zapisz skrypt programu PowerShell i uruchom go. W efekcie reguła niestandardowa ma przypisaną wartość pierwszeństwa 100, a wszystkie inne reguły gotowe są zwiększane.  
@@ -202,7 +202,7 @@ Azure AD Connect obsługuje synchronizację atrybutu **UserType** dla obiektów 
 
 Domyślnie atrybut UserType nie jest włączony dla synchronizacji, ponieważ nie ma odpowiedniego atrybutu UserType w Active Directory lokalnym. Należy ręcznie włączyć synchronizację. Przed wykonaniem tej czynności należy wziąć pod uwagę następujące działania wymuszane przez usługę Azure AD:
 
-- Usługa Azure AD akceptuje tylko dwie wartości atrybutu UserType: **Członek** i **gość**.
+- Usługa Azure AD akceptuje tylko dwie wartości atrybutu UserType: **member** i **gość**.
 - Jeśli atrybut UserType nie jest włączony do synchronizacji w Azure AD Connect, użytkownicy usługi Azure AD utworzeni za pomocą synchronizacji katalogów będą mieli atrybut UserType ustawiony jako **member**.
 - Usługa Azure AD nie zezwala, aby atrybut UserType istniejących użytkowników usługi Azure AD został zmieniony przez Azure AD Connect. Można ją ustawić tylko podczas tworzenia użytkowników usługi Azure AD.
 
@@ -212,7 +212,7 @@ Przed włączeniem synchronizacji atrybutu UserType należy najpierw zdecydować
 
     W przypadku wybrania tej metody należy upewnić się, że wyznaczono atrybut jest wypełniony poprawną wartością dla wszystkich istniejących obiektów użytkownika w Active Directory lokalnym, które są synchronizowane z usługą Azure AD przed włączeniem synchronizacji atrybutu UserType .
 
-- Alternatywnie można utworzyć wartość atrybutu UserType z innych właściwości. Na przykład chcesz zsynchronizować wszystkich użytkowników jako **gościa** , jeśli ich lokalny atrybut AD userPrincipalName kończy się częścią domeny <em>@partners.fabrikam123.org</em>. 
+- Alternatywnie można utworzyć wartość atrybutu UserType z innych właściwości. Na przykład chcesz zsynchronizować wszystkich użytkowników jako **gościa** , jeśli ich lokalny atrybut AD userPrincipalName kończy się z częścią domeny <em>@partners.fabrikam123.org</em>. 
 
     Jak wspomniano wcześniej, Azure AD Connect nie zezwala na zmianę atrybutu UserType dla istniejących użytkowników usługi Azure AD przez Azure AD Connect. Z tego względu należy upewnić się, że ustalona logika jest zgodna ze sposobem, w jaki atrybut UserType jest już skonfigurowany dla wszystkich istniejących użytkowników usługi Azure AD w dzierżawie.
 
@@ -229,15 +229,15 @@ Procedurę włączania synchronizacji atrybutu UserType można podsumować jako:
 >[!NOTE]
 > Pozostała część tej sekcji obejmuje te kroki. Są one opisane w kontekście wdrożenia usługi Azure AD z topologią jednego lasu i bez niestandardowych reguł synchronizacji. Jeśli istnieje topologia z obsługą kilku lasów, skonfigurowano niestandardowe reguły synchronizacji lub serwer przejściowy, należy odpowiednio dostosować kroki.
 
-### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1: Wyłącz harmonogram synchronizacji i sprawdź, czy synchronizacja nie jest w toku
+### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1. wyłączenie harmonogramu synchronizacji i sprawdzenie, czy synchronizacja nie jest w toku
 Aby uniknąć eksportowania niezamierzonych zmian do usługi Azure AD, należy się upewnić, że synchronizacja nie odbywa się w trakcie aktualizacji reguł synchronizacji. Aby wyłączyć wbudowany harmonogram synchronizacji:
 
  1. Uruchom sesję programu PowerShell na serwerze Azure AD Connect.
- 2. Wyłącz zaplanowaną synchronizację, uruchamiając polecenie cmdlet `Set-ADSyncScheduler -SyncCycleEnabled $false`.
- 3. Otwórz Synchronization Service Manager, aby **uruchomić** **usługę synchronizacji** > .
+ 2. Wyłącz zaplanowane synchronizacje, uruchamiając polecenie cmdlet `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+ 3. Otwórz Synchronization Service Manager, **uruchamiając** > **usługę synchronizacji**.
  4. Przejdź do karty **operacje** i upewnij się, że nie ma operacji o stanie *w toku*.
 
-### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Krok 2: Dodawanie atrybutu source do schematu lokalnego łącznika usługi AD
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Krok 2. Dodawanie atrybutu source do schematu lokalnego łącznika usługi AD
 Nie wszystkie atrybuty usługi Azure AD są importowane do lokalnego obszaru łącznika usługi AD. Aby dodać atrybut source do listy importowanych atrybutów:
 
  1. Przejdź do karty **Łączniki** w Synchronization Service Manager.
@@ -245,9 +245,9 @@ Nie wszystkie atrybuty usługi Azure AD są importowane do lokalnego obszaru ł�
  3. W podręcznym oknie dialogowym przejdź do karty **Wybierz atrybuty** .
  4. Upewnij się, że atrybut źródłowy jest zaznaczony na liście atrybutów.
  5. Kliknij przycisk **OK** , aby zapisać.
-![Add atrybut źródłowy do lokalnego łącznika usługi AD @ no__t-1
+![dodać atrybutu źródłowego do lokalnego schematu łącznika usługi AD](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>Krok 3: Dodaj użytkownika do schematu łącznika usługi Azure AD
+### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>Krok 3. Dodawanie użytkownika do schematu łącznika usługi Azure AD
 Domyślnie atrybut UserType nie jest importowany do obszaru Azure AD Connect. Aby dodać atrybut UserType do listy importowanych atrybutów:
 
  1. Przejdź do karty **Łączniki** w Synchronization Service Manager.
@@ -258,41 +258,41 @@ Domyślnie atrybut UserType nie jest importowany do obszaru Azure AD Connect. Ab
 
 ![Dodaj atrybut źródłowy do schematu łącznika usługi Azure AD](./media/how-to-connect-sync-change-the-configuration/usertype2.png)
 
-### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Krok 4: Utwórz regułę synchronizacji ruchu przychodzącego, aby przepływać wartość atrybutu z Active Directory lokalnego
+### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Krok 4. Tworzenie reguły synchronizacji ruchu przychodzącego w celu przepływania wartości atrybutu z lokalnego Active Directory
 Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atrybutu z atrybutu Source z lokalnego Active Directory do obiektu metaverse:
 
-1. Otwórz Edytor reguł synchronizacji, aby **rozpocząć pracę**z**edytorem reguł synchronizacji** > .
-2. Ustaw **kierunek** filtrowania wyszukiwania na **ruch**przychodzący.
+1. Otwórz Edytor reguł synchronizacji, aby **uruchomić** **edytor reguł synchronizacji** > .
+2. Ustaw **kierunek** filtrowania wyszukiwania na **ruch przychodzący**.
 3. Kliknij przycisk **Dodaj nową regułę** , aby utworzyć nową regułę ruchu przychodzącego.
 4. Na karcie **Opis** podaj następującą konfigurację:
 
-    | Atrybut | Value | Szczegóły |
+    | Atrybut | Wartość | Szczegóły |
     | --- | --- | --- |
-    | Name | *Podaj nazwę* | Na przykład *w programie z usługi AD — User UserType* |
+    | Nazwa | *Podaj nazwę* | Na przykład *w programie z usługi AD — User UserType* |
     | Opis | *Podaj opis* |  |
     | Połączony system | *Wybieranie lokalnego łącznika usługi AD* |  |
     | Typ połączonego obiektu systemu | **Użytkownicy** |  |
     | Typ obiektu metaverse | **Sprzedawca** |  |
-    | Typ łącza | **Join** |  |
+    | Typ łącza | **Dołącz** |  |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
 
 5. Przejdź do karty **Filtr zakresu** i Dodaj **pojedynczą grupę filtrów określania zakresu** z następującą klauzulą:
 
-    | Atrybut | Operator | Value |
+    | Atrybut | Operator | Wartość |
     | --- | --- | --- |
-    | adminDescription | NOTSTARTWITH | Użytkownik @ no__t-0 |
+    | adminDescription | NOTSTARTWITH | \_ użytkownika |
 
     Filtr określania zakresu określa, do których lokalnych obiektów usługi AD jest stosowana ta reguła synchronizacji ruchu przychodzącego. W tym przykładzie korzystamy z tego samego filtru określania zakresu, który jest używany w regule *w programie z usługi AD — wspólna* wartość synchronizacji użytkownika, która uniemożliwia stosowanie reguły synchronizacji do obiektów użytkownika utworzonych za pomocą funkcji zapisywania zwrotnego użytkownika usługi Azure AD. Może być konieczne dostosowanie filtru określania zakresu zgodnie ze wdrożeniem Azure AD Connect.
 
 6. Przejdź do karty **transformacja** i zaimplementuj żądaną regułę transformacji. Na przykład jeśli w atrybucie sourceType wyznaczono nieużywany lokalny atrybut usługi AD (na przykład extensionAttribute1), można zaimplementować bezpośredni przepływ atrybutów:
 
-    | Typ przepływu | Atrybut docelowy | Source | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
-    | Bezpośrednie | userType | extensionAttribute1 | Unchecked | Aktualizacja |
+    | Direct | userType | extensionAttribute1 | Unchecked | Aktualizacja |
 
-    W innym przykładzie, chcesz utworzyć wartość atrybutu UserType z innych właściwości. Na przykład chcesz zsynchronizować wszystkich użytkowników jako gościa, jeśli ich lokalny atrybut AD userPrincipalName kończy się częścią domeny <em>@partners.fabrikam123.org</em>. Można zaimplementować wyrażenie podobne do tego:
+    W innym przykładzie, chcesz utworzyć wartość atrybutu UserType z innych właściwości. Na przykład chcesz zsynchronizować wszystkich użytkowników jako gościa, jeśli ich lokalny atrybut AD userPrincipalName kończy się z częścią domeny <em>@partners.fabrikam123.org</em>. Można zaimplementować wyrażenie podobne do tego:
 
-    | Typ przepływu | Atrybut docelowy | Source | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
     | Wyrażenie | userType | IIF (isobecny ([userPrincipalName]), IIF (CBool (InStr (LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "member", "Gość"), błąd ("UserPrincipalName nie jest obecny w celu określenia typu użytkownika")) | Unchecked | Aktualizacja |
 
@@ -304,23 +304,23 @@ Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atry
 Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atrybutu z Metaverse do atrybutu UserType w usłudze Azure AD:
 
 1. Przejdź do edytora reguł synchronizacji.
-2. Ustaw **kierunek** filtrowania wyszukiwania na wychodzący.
+2. Ustaw **kierunek** filtrowania wyszukiwania na **wychodzący**.
 3. Kliknij przycisk **Dodaj nową regułę** .
 4. Na karcie **Opis** podaj następującą konfigurację:
 
-    | Atrybut | Value | Szczegóły |
+    | Atrybut | Wartość | Szczegóły |
     | ----- | ------ | --- |
-    | Name | *Podaj nazwę* | Na przykład *do usługi AAD — User UserType* |
+    | Nazwa | *Podaj nazwę* | Na przykład *do usługi AAD — User UserType* |
     | Opis | *Podaj opis* ||
     | Połączony system | *Wybieranie łącznika usługi AAD* ||
     | Typ połączonego obiektu systemu | **Użytkownicy** ||
     | Typ obiektu metaverse | **Sprzedawca** ||
-    | Typ łącza | **Join** ||
+    | Typ łącza | **Dołącz** ||
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
 
 5. Przejdź do karty **Filtr zakresu** i Dodaj **pojedynczą grupę filtrów określania zakresu** przy użyciu dwóch klauzul:
 
-    | Atrybut | Operator | Value |
+    | Atrybut | Operator | Wartość |
     | --- | --- | --- |
     | sourceObjectType | WIĘKSZY | Użytkownik |
     | cloudMastered | NOTEQUAL | Prawda |
@@ -329,15 +329,15 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
 
 6. Przejdź do karty **transformacja** i zaimplementuj następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Source | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
-    | Bezpośrednie | userType | userType | Unchecked | Aktualizacja |
+    | Direct | userType | userType | Unchecked | Aktualizacja |
 
 7. Kliknij przycisk **Dodaj** , aby utworzyć regułę wychodzącą.
 
 ![Utwórz regułę synchronizacji ruchu wychodzącego](./media/how-to-connect-sync-change-the-configuration/usertype4.png)
 
-### <a name="step-6-run-a-full-synchronization-cycle"></a>Krok 6: Uruchamianie pełnego cyklu synchronizacji
+### <a name="step-6-run-a-full-synchronization-cycle"></a>Krok 6. Uruchamianie pełnego cyklu synchronizacji
 Ogólnie rzecz biorąc, wymagany jest pełny cykl synchronizacji, ponieważ dodano nowe atrybuty do schematów Active Directory i łącznika usługi Azure AD oraz wprowadzono niestandardowe reguły synchronizacji. Chcesz zweryfikować zmiany przed ich eksportowaniem do usługi Azure AD. 
 
 Aby sprawdzić zmiany podczas ręcznego wykonywania kroków, które składają się na pełny cykl synchronizacji, można wykonać poniższe czynności.
@@ -350,7 +350,7 @@ Aby sprawdzić zmiany podczas ręcznego wykonywania kroków, które składają s
    4. Poczekaj na zakończenie operacji.
 
       > [!NOTE]
-      > Możesz pominąć pełny import w lokalnym łączniku usługi AD, jeśli atrybut Source już znajduje się na liście importowanych atrybutów. Innymi słowy, nie musisz wprowadzać żadnych zmian podczas [Step 2: Dodaj atrybut source do lokalnego obiektu łącznika usługi AD @ no__t-0.
+      > Możesz pominąć pełny import w lokalnym łączniku usługi AD, jeśli atrybut Source już znajduje się na liście importowanych atrybutów. Innymi słowy, nie musisz wprowadzać żadnych zmian w [kroku 2: Dodaj atrybut source do schematu lokalnego łącznika usługi AD](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
 
 2. Uruchom **pełny import** z **łącznika usługi Azure AD**:
 
@@ -376,7 +376,7 @@ Aby sprawdzić zmiany podczas ręcznego wykonywania kroków, które składają s
    2. W wyskakującym oknie dialogowym **Wyszukiwanie w miejscu łącznika wyszukiwania** :
 
       - Ustaw **zakres** na **eksport oczekujący**.
-      - Zaznacz wszystkie trzy pola wyboru: **Dodawanie**, **Modyfikowanie**i **usuwanie**.
+      - Zaznacz wszystkie trzy pola wyboru: **Dodaj**, **Modyfikuj**i **Usuń**.
       - Kliknij przycisk **Wyszukaj** , aby uzyskać listę obiektów ze zmianami, które mają zostać wyeksportowane. Aby przejrzeć zmiany dla danego obiektu, kliknij dwukrotnie obiekt.
       - Sprawdź, czy zmiany są oczekiwane.
 
@@ -389,7 +389,7 @@ Aby sprawdzić zmiany podczas ręcznego wykonywania kroków, które składają s
 > [!NOTE]
 > Te kroki nie obejmują pełnej synchronizacji i eksportowania kroków na łączniku usługi Azure AD. Te kroki nie są wymagane, ponieważ wartości atrybutów są przepływane tylko z Active Directory lokalnego do usługi Azure AD.
 
-### <a name="step-7-re-enable-the-sync-scheduler"></a>Krok 7: Włącz ponownie harmonogram synchronizacji
+### <a name="step-7-re-enable-the-sync-scheduler"></a>Krok 7. ponowne włączenie harmonogramu synchronizacji
 Włącz ponownie wbudowany harmonogram synchronizacji:
 
 1. Rozpocznij sesję programu PowerShell.
@@ -402,5 +402,5 @@ Włącz ponownie wbudowany harmonogram synchronizacji:
 
 **Tematy dotyczące omówienia**
 
-* [Synchronizacja w programie Azure AD Connect: Omówienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Azure AD Connect Sync: omówienie i dostosowanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

@@ -36,7 +36,7 @@ Po spełnieniu wymagań wstępnych można zainstalować narzędzia Hive & platfo
 
 1. Otwórz program Visual Studio Code.
 
-2. Na pasku menu Przejdź do widoku, aby **wyświetlić** **rozszerzenia** > .
+2. Na pasku menu Przejdź do **widoku** > **rozszerzenia**.
 
 3. W polu wyszukiwania wprowadź **gałąź & platformy Spark**.
 
@@ -56,13 +56,13 @@ Aby otworzyć folder roboczy i utworzyć plik w Visual Studio Code, wykonaj nast
 
    ![ikona nowego pliku programu Visual Studio Code](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
-3. Nazwij nowy plik, używając `.hql` (zapytania Hive) lub rozszerzenia pliku `.py` (Spark Script). W tym przykładzie zastosowano **HelloWorld. HQL**.
+3. Nazwij nowy plik przy użyciu `.hql` (zapytania Hive) lub rozszerzenia pliku `.py` (Spark Script). W tym przykładzie zastosowano **HelloWorld. HQL**.
 
 ## <a name="set-the-azure-environment"></a>Ustawianie środowiska platformy Azure
 
 W przypadku użytkownika w chmurze krajowej wykonaj następujące kroki, aby najpierw ustawić środowisko platformy Azure, a następnie zaloguj się do platformy Azure przy użyciu polecenia **Azure: Signing** :
 
-1. Przejdź do **pliku** > **Preferencje** > **ustawień**.
+1. Przejdź do **okna preferencji** > **pliku** > **Ustawienia**.
 2. Wyszukaj następujący ciąg: **Azure: Cloud**.
 3. Wybierz z listy chmurę krajową:
 
@@ -82,7 +82,7 @@ Aby można było przesłać skrypty do klastrów z Visual Studio Code, należy p
 
 ### <a name="link-azure-hdinsight"></a>Link: usługa Azure HDInsight
 
-Można połączyć normalny klaster przy użyciu nazwy użytkownika zarządzanego przez firmę [Apache Ambari](https://ambari.apache.org/)lub połączyć klaster usługi Hadoop z pakietem zabezpieczeń przedsiębiorstwa przy użyciu nazwy użytkownika domeny (takiej jak: `user1@contoso.com`).
+Można połączyć normalny klaster przy użyciu nazwy użytkownika zarządzanego przez firmę [Apache Ambari](https://ambari.apache.org/)lub połączyć klaster usługi Hadoop z pakietem zabezpieczeń przedsiębiorstwa przy użyciu nazwy użytkownika domeny (na przykład: `user1@contoso.com`).
 
 1. Na pasku menu Przejdź do **widoku** > **paleta poleceń...** , a następnie wprowadź **Spark/Hive: Połącz klaster**.
 
@@ -111,7 +111,7 @@ Można połączyć normalny klaster przy użyciu nazwy użytkownika zarządzaneg
 
 2. Wybierz pozycję połączony klaster typ **rodzajowy punkt końcowy usługi Livy**.
 
-3. Wprowadź ogólny punkt końcowy usługi Livy. Na przykład: http @ no__t-0//10.172.41.42:18080.
+3. Wprowadź ogólny punkt końcowy usługi Livy. Na przykład: http\://10.172.41.42:18080.
 
 4. Wybierz pozycję typ autoryzacji **podstawowa** lub **Brak**.  W przypadku wybrania opcji **podstawowa**:  
     &emsp;a. Wprowadź nazwę użytkownika Ambari; wartość domyślna to **admin**.  
@@ -265,7 +265,7 @@ Konfiguracja [Apache usługi Livy](https://livy.incubator.apache.org/) jest obs�
 <a id="triggerlivyconf"></a>**Jak wyzwolić konfigurację usługi Livy**
 
 Metoda 1  
-1. Na pasku menu Przejdź do menu **plik** > **Preferencje** > **Ustawienia**.
+1. Na pasku menu Przejdź do **okna preferencji** > **pliku** > **Ustawienia**.
 2. W polu **Wyszukaj ustawienia** wprowadź wartość **przesyłanie zadania usługi HDInsight: usługi Livy conf**.  
 3. Wybierz pozycję **Edytuj w pliku Settings. JSON** , aby uzyskać odpowiedni wynik wyszukiwania.
 
@@ -284,31 +284,31 @@ Metoda 2 przesyła plik i Zauważ, że folder. programu vscode jest automatyczni
 
     | name | description | type |
     | :- | :- | :- |
-    | Rozszerzeniem | Plik zawierający aplikację do wykonania | Ścieżka (wymagana) |
+    | file | Plik zawierający aplikację do wykonania | Ścieżka (wymagana) |
     | proxyUser | Użytkownik do personifikacji podczas uruchamiania zadania | Ciąg |
-    | Nazwą | Aplikacja Java/Spark klasy głównej | Ciąg |
+    | className | Aplikacja Java/Spark klasy głównej | Ciąg |
     | args | Argumenty wiersza polecenia dla aplikacji | Lista ciągów |
     | jars | Jars do użycia w tej sesji | Lista ciągów | 
     | pyFiles | Pliki języka Python, które mają być używane w tej sesji | Lista ciągów |
-    | plikach | Pliki, które mają być używane w tej sesji | Lista ciągów |
+    | files | Pliki, które mają być używane w tej sesji | Lista ciągów |
     | driverMemory | Ilość pamięci do użycia w procesie sterownika | Ciąg |
-    | driverCores | Liczba rdzeni do użycia w procesie sterownika | ZAOKR |
+    | driverCores | Liczba rdzeni do użycia w procesie sterownika | Int |
     | executorMemory | Ilość pamięci do użycia na proces wykonawczy | Ciąg |
-    | executorCores | Liczba rdzeni do użycia dla każdego wykonawcy | ZAOKR |
-    | numExecutors | Liczba uruchomień do uruchomienia dla tej sesji | ZAOKR |
-    | archiwizowan | Archiwa, które mają być używane w tej sesji | Lista ciągów |
+    | executorCores | Liczba rdzeni do użycia dla każdego wykonawcy | Int |
+    | numExecutors | Liczba uruchomień do uruchomienia dla tej sesji | Int |
+    | archives | Archiwa, które mają być używane w tej sesji | Lista ciągów |
     | kolejka | Nazwa kolejki PRZĘDZy do przesłania| Ciąg |
     | name | Nazwa tej sesji | Ciąg |
-    | produkt | Właściwości konfiguracji platformy Spark | Mapa klucza = Val |
+    | conf | Właściwości konfiguracji platformy Spark | Mapa klucza = Val |
 
     Treść odpowiedzi utworzonego obiektu wsadowego.
 
     | name | description | type |
     | :- | :- | :- |
-    | id | Identyfikator sesji | ZAOKR |
+    | id | Identyfikator sesji | Int |
     | appId | Identyfikator aplikacji dla tej sesji | Ciąg |
     | appInfo | Szczegółowe informacje o aplikacji | Mapa klucza = Val |
-    | rejestrowane | Wiersze dziennika | Lista ciągów |
+    | log | Wiersze dziennika | Lista ciągów |
     | state |Stan partii | Ciąg |
 
     > [!NOTE]
@@ -385,7 +385,7 @@ Podczas przesyłania zadania do klastra usługi HDInsight zostanie wyświetlony 
 
   > [!NOTE]
   >
-  >Aby sprawdzić połączony klaster, można użyć `Spark / Hive: List Cluster`:
+  >Aby sprawdzić połączony klaster, można użyć `Spark / Hive: List Cluster`.
   >
   >![Narzędzia programu Hive & platformy Spark dla połączonego czytnika Visual Studio Code](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
@@ -407,7 +407,7 @@ Po przesłaniu zadania do klastra usługi HDInsight przy użyciu Data Lake Stora
 
 ## <a name="unlink-cluster"></a>Odłącz klaster
 
-1. Na pasku menu Przejdź do pozycji **Wyświetl** **paletę poleceń** > , a następnie wprowadź **Spark/Hive: Odłącz klaster**.  
+1. Na pasku menu Przejdź do pozycji **wyświetl** > **paleta poleceń**, a następnie wprowadź **Spark/Hive: Odłącz klaster**.  
 
 2. Wybierz klaster do odłączenia.  
 
@@ -415,7 +415,7 @@ Po przesłaniu zadania do klastra usługi HDInsight przy użyciu Data Lake Stora
 
 ## <a name="sign-out"></a>Wyloguj  
 
-Na pasku menu Przejdź do pozycji **Wyświetl** **paletę poleceń** > , a następnie wprowadź **Azure: Wyloguj się**.
+Na pasku menu Przejdź do pozycji **wyświetl** > **paleta poleceń**, a następnie wprowadź **Azure: Wyloguj się**.
 
 ## <a name="next-steps"></a>Następne kroki
 

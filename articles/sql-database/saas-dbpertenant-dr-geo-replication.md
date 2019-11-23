@@ -91,8 +91,8 @@ Później w oddzielnym kroku repatriacji katalog i bazy danych dzierżawy są pr
 Przed rozpoczęciem procesu odzyskiwania zapoznaj się z normalnym dobrym stanem aplikacji.
 1. W przeglądarce sieci Web otwórz centrum zdarzeń biletów Wingtip (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net-Zastąp &lt;&gt; użytkownika wartością użytkownika wdrożenia).
     * Przewiń w dół strony i zwróć uwagę na nazwę serwera wykazu i lokalizację w stopce. Lokalizacja to region, w którym została wdrożona aplikacja.
-    *Porada: Umieść wskaźnik myszy nad lokalizacją, aby powiększyć ekran.* 
-    stan kondycji centrum zdarzeń ![w oryginalnym regionie](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *Porada: Umieść kursor myszy nad lokalizacją, aby powiększyć wyświetlania.* 
+    ![Dobrej kondycji Centrum zdarzeń w regionie oryginalny](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Kliknij dzierżawę korytarza w firmie Contoso i otwórz jej stronę zdarzeń.
     * W stopce Zwróć uwagę na nazwę serwera dzierżawy. Lokalizacja będzie taka sama jak lokalizacja serwera wykazu.

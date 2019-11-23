@@ -75,7 +75,7 @@ W tej sekcji utworzysz aplikację dla systemu iOS, która będzie łączyć się
 
 1. Podczas ustawiania opcji dla nowego projektu:
 
-   1. Określ **nazwę produktu** (PushDemo) i **identyfikator organizacji** (`com.<organization>`), który został użyty podczas ustawiania **identyfikatora pakietu** w portalu dla deweloperów firmy Apple.
+   1. Określ **nazwę produktu** (PushDemo) i **identyfikator organizacji** (`com.<organization>`), które zostały użyte podczas ustawiania **identyfikatora pakietu** w portalu dla deweloperów firmy Apple.
 
    1. Wybierz **zespół** , dla którego został skonfigurowany **Identyfikator aplikacji** .
 
@@ -91,16 +91,16 @@ W tej sekcji utworzysz aplikację dla systemu iOS, która będzie łączyć się
 
    | Klucz                            | Typ                     | Wartość                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | Ciąg                   | @no__t — 0hubKey >                  |
-   | notificationHubKeyName         | Ciąg                   | @no__t — 0hubKeyName >              |
-   | Ustaw            | Ciąg                   | @no__t — 0hubName >                 |
-   | notificationHubNamespace       | Ciąg                   | @no__t — 0hubNamespace >            |
+   | notificationHubKey             | Ciąg                   | \<hubKey >                  |
+   | notificationHubKeyName         | Ciąg                   | \<hubKeyName>              |
+   | notificationHubName            | Ciąg                   | \<hubName>                 |
+   | notificationHubNamespace       | Ciąg                   | \<hubNamespace >            |
 
    Wymagane wartości można znaleźć, przechodząc do zasobu centrum powiadomień w Azure Portal. W szczególności wartości **Ustaw** i **notificationHubNamespace** znajdują się w prawym górnym rogu podsumowania **Essentials** na stronie **Przegląd** .
 
    ![Podsumowanie Notification Hubs Essentials](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
 
-   Możesz również znaleźć wartości **notificationHubKeyName** i **notificationHubKey** , przechodząc do **zasad dostępu** i wybierając odpowiednie **zasady dostępu**, takie jak `DefaultFullSharedAccessSignature`. Po wykonaniu tej kopiowania Skopiuj z **podstawowych parametrów połączenia** wartość prefiksu `SharedAccessKeyName=` dla `notificationHubKeyName` i wartość prefiksu `SharedAccessKey=` dla `notificationHubKey`.
+   Możesz również znaleźć wartości **notificationHubKeyName** i **notificationHubKey** , przechodząc do **zasad dostępu** i wybierając odpowiednie **zasady dostępu**, takie jak `DefaultFullSharedAccessSignature`. Następnie skopiuj z **podstawowego ciągu połączenia** wartość, która poprzedza `SharedAccessKeyName=` dla `notificationHubKeyName` i wartość prefiksu `SharedAccessKey=` dla `notificationHubKey`.
 
    Parametry połączenia powinny mieć następujący format:
 
@@ -108,15 +108,15 @@ W tej sekcji utworzysz aplikację dla systemu iOS, która będzie łączyć się
    Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
    ```
 
-   Aby zachować prostotę, określ wartość `DefaultFullSharedAccessSignature`, aby można było wysyłać powiadomienia przy użyciu tokenu. W ramach tej metody `DefaultListenSharedAccessSignature` będzie lepszym wyborem w sytuacjach, w których chcesz otrzymywać tylko powiadomienia.
+   Aby zachować prostotę, określ `DefaultFullSharedAccessSignature`, aby można było wysyłać powiadomienia przy użyciu tokenu. W tej sytuacji `DefaultListenSharedAccessSignature` będzie lepszym wyborem w sytuacjach, gdy chcesz otrzymywać tylko powiadomienia.
 
 1. W obszarze **projekt nawigatora**wybierz **nazwę projektu** , a następnie wybierz kartę **Ogólne** .
 
-1. Znajdź **tożsamość** , a następnie ustaw wartość **identyfikatora pakietu** , tak aby pasowała do `com.<organization>.PushDemo`, która jest wartością użytą dla **identyfikatora aplikacji** z poprzedniego kroku.
+1. Znajdź **tożsamość** , a następnie ustaw wartość **identyfikatora pakietu** , tak aby była zgodna `com.<organization>.PushDemo`, która jest wartością użytą dla **identyfikatora aplikacji** z poprzedniego kroku.
 
 1. Znajdź **podpis**, a następnie wybierz odpowiedni **zespół** dla **konta dewelopera firmy Apple**. Wartość **zespołu** powinna być zgodna z tą, w której zostały utworzone certyfikaty i profile.
 
-1. Xcode powinien automatycznie pobrać odpowiednią wartość **profilu aprowizacji** na podstawie **identyfikatora pakietu**. Jeśli nie widzisz nowej wartości **profilu aprowizacji** , spróbuj odświeżyć profile dla **tożsamości podpisywania** , wybierając pozycję **Xcode** > **Preferences** > **Account** > **szczegóły widoku**. Wybierz pozycję **tożsamość podpisywania**, a następnie wybierz przycisk **Odśwież** w prawym dolnym rogu, aby pobrać profile.
+1. Xcode powinien automatycznie pobrać odpowiednią wartość **profilu aprowizacji** na podstawie **identyfikatora pakietu**. Jeśli nie widzisz nowej wartości **profilu aprowizacji** , spróbuj odświeżyć profile dla **tożsamości podpisującej** , wybierając pozycję **Xcode** > **Preferences** > **Account** > **Wyświetl szczegóły**. Wybierz pozycję **tożsamość podpisywania**, a następnie wybierz przycisk **Odśwież** w prawym dolnym rogu, aby pobrać profile.
 
 1. Wybierz kartę **możliwości** i upewnij się, że **powiadomienia wypychane** są włączone.
 
@@ -171,7 +171,7 @@ W tej sekcji utworzysz aplikację dla systemu iOS, która będzie łączyć się
     return true
     ```
 
-    Ten kod pobiera wartości ustawień z **devsettings. plist**, ustawia klasę **AppDelegate** jako delegata **UNUserNotificationCenter** , żąda autoryzacji powiadomień wypychanych, a następnie wywołuje  **registerForRemoteNotifications**.
+    Ten kod pobiera wartości ustawień z **devsettings. plist**, ustawia klasę **AppDelegate** jako delegata **UNUserNotificationCenter** , żąda autoryzacji powiadomień wypychanych, a następnie wywołuje **registerForRemoteNotifications**.
 
     Aby zachować prostotę, kod obsługuje *tylko system iOS 10 i nowsze*. Obsługę wcześniejszych wersji systemu operacyjnego można dodać za pomocą odpowiednich interfejsów API i podejścia, jak zwykle.
 
@@ -286,7 +286,7 @@ Sam proces obejmuje te same sześć kluczowych kroków:
 
 1. Obliczanie daty wygaśnięcia w formacie [czasu epoki systemu UNIX](https://en.wikipedia.org/wiki/Unix_time) , co oznacza liczbę sekund, które upłynęły od północy czasu uniwersalnego skoordynowanego, 1 stycznia 1970.
 1. Formatowanie **ResourceUrl** , który reprezentuje zasób, do którego próbujesz uzyskać dostęp, tak aby był zakodowany za pomocą wartości procentowej i małych liter. **ResourceUrl** ma postać `'https://<namespace>.servicebus.windows.net/<hubName>'`.
-1. Przygotowanie **StringToSign**, który jest sformatowany jako `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`.
+1. Przygotowywanie **StringToSign**, który jest sformatowany jako `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`.
 1. Obliczanie i kodowanie w formacie base64 **sygnatury** przy użyciu skrótu HMAC-SHA256 wartości **StringToSign** . Wartość skrótu jest używana z **kluczową** częścią **parametrów połączenia** dla odpowiedniej **reguły autoryzacji**.
 1. Formatowanie **sygnatury** zakodowanej algorytmem Base64 w celu zakodowania procentowo.
 1. Konstruowanie tokenu w oczekiwanym formacie przy użyciu wartości **UrlEncodedSignature**, **ExpiryEpoch**, **KeyName**i **UrlEncodedResourceUrl** .
@@ -297,7 +297,7 @@ Na potrzeby tego przykładu można użyć biblioteki **CommonCrypto** typu open 
 
 Aby dodać i skonfigurować nagłówek mostkowania:
 
-1. W Xcode wybierz pozycję **plik** > **Nowy** > **plik** > **plik nagłówkowy**. Nazwij plik nagłówka **BridgingHeader. h**.
+1. W Xcode wybierz pozycję **plik** > **nowy** plik ** >  > pliku** **nagłówkowego**. Nazwij plik nagłówka **BridgingHeader. h**.
 
 1. Edytuj plik, aby zaimportować **CommonHMAC. h**:
 
@@ -317,7 +317,7 @@ Aby dodać i skonfigurować nagłówek mostkowania:
 
    1. Upewnij się, że opcja **Zainstaluj w nagłówku zgodności** dla języka C ma ustawioną **wartość tak**.
 
-   1. Wprowadź ścieżkę pliku `'<ProjectName>/BridgingHeader.h'` do **nagłówka mostkowania "cel-C** ". To jest ścieżka do pliku z naszym nagłówkiem łączącym.
+   1. Wprowadź ścieżkę pliku `'<ProjectName>/BridgingHeader.h'` do **nagłówka mostkowania "cel-C"** . To jest ścieżka do pliku z naszym nagłówkiem łączącym.
 
    Jeśli nie możesz znaleźć tych opcji, upewnij się, że masz wybrany widok **wszystkie** , a nie **podstawowy** lub **dostosowany**.
 
@@ -413,7 +413,7 @@ Wykonaj następujące kroki, aby wywołać interfejs API **instalacji** :
    | Klucz           | Wartość            |
    | ------------- | ---------------- |
    | Content-Type  | application/json |
-   | Autoryzacja | @no__t — 0sasToken >       |
+   | Autoryzacja | \<sasToken >       |
    | x-MS-Version  | 2015-01          |
 
 1. Wybierz przycisk **kod** , który pojawia się w prawym górnym rogu przycisku **Zapisz** . Żądanie powinno wyglądać podobnie do poniższego przykładu:
@@ -428,7 +428,7 @@ Wykonaj następujące kroki, aby wywołać interfejs API **instalacji** :
     Postman-Token: <postmanToken>
     ```
 
-1. Kliknij przycisk **Wyślij**.
+1. Wybierz **wysyłania** przycisku.
 
 W tym momencie nie istnieje Rejestracja dla określonego **Identyfikator InstallationID** . Weryfikacja powinna spowodować, że odpowiedź "404 nie zostanie znaleziona" zamiast odpowiedzi "401 Brak autoryzacji". Ten wynik powinien potwierdzić, że token sygnatury dostępu współdzielonego został zaakceptowany.
 
@@ -660,9 +660,9 @@ Powiadomienia można wysyłać za pośrednictwem [interfejsu API REST](/rest/api
 
    | Klucz                            | Wartość                          |
    | ------------------------------ | ------------------------------ |
-   | Content-Type                   | Application/JSON; charset = utf-8 |
-   | Autoryzacja                  | @no__t — 0sasToken >                     |
-   | ServiceBusNotification — format  | szablon                       |
+   | Content-Type                   | application/json;charset=utf-8 |
+   | Autoryzacja                  | \<sasToken >                     |
+   | ServiceBusNotification-Format  | szablon                       |
    | Tagi                           | "12345"                        |
 
 1. Skonfiguruj **treść** żądania w taki sposób, aby korzystała z **surowego pliku JSON (Application. JSON)** z następującym ładunkiem JSON:
@@ -690,7 +690,7 @@ Powiadomienia można wysyłać za pośrednictwem [interfejsu API REST](/rest/api
     }
     ```
 
-1. Kliknij przycisk **Wyślij**.
+1. Wybierz **wysyłania** przycisku.
 
 Należy uzyskać kod stanu sukcesu i odebrać powiadomienie na urządzeniu klienckim.
 
@@ -709,4 +709,4 @@ Masz teraz podstawową aplikację SWIFT dla systemu iOS połączoną z centrum p
 - [Programowe generowanie tokenów SAS](/rest/api/eventhub/generate-sas-token)
 - [Zabezpieczenia firmy Apple: typowe Kryptografia](https://developer.apple.com/security/)
 - [Czas epoki systemu UNIX](https://en.wikipedia.org/wiki/Unix_time)
-- [FUNKCJE](https://en.wikipedia.org/wiki/HMAC)
+- [HMAC](https://en.wikipedia.org/wiki/HMAC)

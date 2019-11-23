@@ -132,7 +132,7 @@ Poniższy kod JSON określa `knowledgeStore`, który jest częścią zestawu umi
 
 Jeśli magazyn wiedzy jest wyprowadzany z potoku wzbogacenia AI, jakie są dane wejściowe? Oryginalne dane, które mają zostać wyodrębnione, wzbogacone i ostatecznie zapisane w sklepie wiedzy, mogą pochodzić od dowolnego źródła danych platformy Azure obsługiwanego przez indeksatory wyszukiwania: 
 
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Usługi Azure Cosmos DB](search-howto-index-cosmosdb.md)
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 
@@ -150,7 +150,7 @@ Tylko dwa interfejsy API mają rozszerzenia wymagane do tworzenia sklepu z bazam
 |--------|----------|-------------|
 | Źródło danych | [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source) (Tworzenie źródła danych)  | Zasób, który identyfikuje zewnętrzne źródło danych platformy Azure, dostarczając dane źródłowe używane do tworzenia wzbogaconych dokumentów.  |
 | zestawu umiejętności | [Create zestawu umiejętności (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób koordynujący korzystanie z [wbudowanych umiejętności](cognitive-search-predefined-skills.md) i [niestandardowych umiejętności poznawczych](cognitive-search-custom-skill-interface.md) używanych w potoku wzbogacenia podczas indeksowania. Zestawu umiejętności ma definicję `knowledgeStore` jako element podrzędny. |
-| indeks | [Utwórz indeks](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schemat przedstawiający indeks wyszukiwania. Pola w indeksie mapują do pól w danych źródłowych lub do pól wyprodukowanych w fazie wzbogacania (na przykład pola nazw organizacji utworzonych przez funkcję rozpoznawania jednostek). |
+| index | [Utwórz indeks](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schemat przedstawiający indeks wyszukiwania. Pola w indeksie mapują do pól w danych źródłowych lub do pól wyprodukowanych w fazie wzbogacania (na przykład pola nazw organizacji utworzonych przez funkcję rozpoznawania jednostek). |
 | indeksatora | [Create indeksator (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób definiujący składniki używane podczas indeksowania: w tym źródła danych, zestawu umiejętności, skojarzenia pól ze źródeł i pośrednich struktur danych do indeksu docelowego i samego indeksu. Uruchomienie indeksatora jest wyzwalaczem do pozyskiwania i wzbogacania danych. Wyjście jest indeksem wyszukiwania opartym na schemacie indeksu, wypełnionym danymi źródłowymi, wzbogaconym przez umiejętności.  |
 
 ### <a name="physical-composition-of-a-knowledge-store"></a>Fizyczna kompozycja sklepu z bazami danych

@@ -683,7 +683,7 @@ W przypadku wdrożenia fabryki do produkcji i zapoznania się z usterką, która
 
 6.  Po zweryfikowaniu poprawki kliknij pozycję **Eksportuj szablon ARM** w celu pobrania szablonu Menedżer zasobów gorąca.
 
-7.  Ręcznie Zaewidencjonuj tę kompilację do gałęzi adf_publish.
+7.  Ręcznie Zaewidencjonuj tę kompilację do adf_publish rozgałęzienia.
 
 8.  Jeśli potoku wydania został skonfigurowany do automatycznego wyzwalania na podstawie zaewidencjonowania adf_publish, nowe wydanie zostanie automatycznie uruchomione. W przeciwnym razie ręcznie wydawanie kolejki.
 

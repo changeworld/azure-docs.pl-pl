@@ -70,21 +70,21 @@ Przed rozpoczęciem instalacji zapoznaj się z następującymi informacjami i do
 
 | Uwaga dotycząca oprogramowania SAP | Opis |
 | --- | --- |
-| [1928533] | Aplikacje SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
-| [2015553] | System SAP na platformie Azure: Wymagania wstępne dotyczące obsługi |
+| [1928533] | Aplikacje SAP na platformie Azure: obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
+| [2015553] | SAP na platformie Azure: wymagania wstępne dotyczące pomocy technicznej |
 | [2178632] | Metryki monitorowania kluczy dla oprogramowania SAP na platformie Azure |
-| [2191498] | System SAP w systemie Linux z platformą Azure: Ulepszone monitorowanie |
-| [2243692] | Maszyna wirtualna z systemem Linux na platformie Azure (IaaS): Problemy z licencją SAP |
-| [2002167] | Red Hat Enterprise Linux 7.x: Instalowanie i uaktualnianie |
+| [2191498] | SAP w systemie Linux z platformą Azure: ulepszone monitorowanie |
+| [2243692] | Maszyna wirtualna z systemem Linux na platformie Azure (IaaS): problemy z licencją SAP |
+| [2002167] | Red Hat Enterprise Linux 7. x: Instalowanie i uaktualnianie |
 | [2694118] | Dodatek Red Hat Enterprise Linux HA na platformie Azure |
 | [1999351] | Rozwiązywanie problemów z ulepszonym monitorowaniem platformy Azure dla oprogramowania SAP |
 | [2233094] | DB6: Aplikacje SAP na platformie Azure korzystające z programu IBM DB2 dla systemów Linux, UNIX i Windows — dodatkowe informacje |
-| [1612105] | DB6: Często zadawane pytania dotyczące bazy danych DB2 z HADR Cluster |
+| [1612105] | DB6: często zadawane pytania dotyczące bazy danych DB2 z HADR Cluster |
 
 
 | Dokumentacja | 
 | --- |
-| [Strona typu wiki społeczności SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Zawiera wszystkie wymagane uwagi SAP dla systemu Linux |
+| [Strona typu wiki społeczności SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): zawiera wszystkie wymagane uwagi SAP dla systemu Linux |
 | Przewodnik po [planowaniu i implementacji usługi Azure Virtual Machines dla oprogramowania SAP w systemie Linux][planning-guide] |
 | [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP w systemie Linux][deployment-guide] (ten artykuł) |
 | [Wdrażanie systemu Azure Virtual Machines Database Management System (DBMS) dla oprogramowania SAP w systemie Linux][dbms-guide] — Przewodnik |
@@ -101,7 +101,7 @@ Przed rozpoczęciem instalacji zapoznaj się z następującymi informacjami i do
 
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aby zapewnić wysoką dostępność, program IBM DB2 LUW z HADR Cluster jest instalowany na co najmniej dwóch maszynach wirtualnych platformy Azure, które są wdrażane w [zestawie dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) lub w różnych [strefy dostępności platformy Azureach](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
 
 Poniższa Grafika przedstawia konfigurację dwóch maszyn wirtualnych platformy Azure na serwerze bazy danych. Zarówno maszyny wirtualne platformy Azure z serwerem bazy danych mają podłączony własny magazyn, jak i są uruchomione. W HADR Cluster, jedno wystąpienie bazy danych na jednej z maszyn wirtualnych platformy Azure ma rolę wystąpienia podstawowego. Wszyscy klienci są połączeni z wystąpieniem podstawowym. Wszystkie zmiany transakcji bazy danych są utrwalane lokalnie w dzienniku transakcji programu DB2. Ponieważ rekordy dziennika transakcji są utrwalane lokalnie, rekordy są transferowane za pośrednictwem protokołu TCP/IP do wystąpienia bazy danych na drugim serwerze bazy danych, serwerze rezerwy lub wystąpieniu gotowości. Wystąpienie gotowości aktualizuje lokalną bazę danych, przechodząc do przodu przesłanych rekordów dziennika transakcji. W ten sposób serwer rezerwy jest zsynchronizowany z serwerem podstawowym.
@@ -157,7 +157,7 @@ Aby uzyskać więcej informacji o systemie Linux Pacemaker na platformie Azure, 
 
 Agent zasobów dla programu IBM DB2 LUW jest dołączany do dodatku Red Hat Enterprise Linux Server HA. W przypadku instalacji opisanej w tym dokumencie należy używać Red Hat Enterprise Linux dla oprogramowania SAP. Portal Azure Marketplace zawiera obraz dla Red Hat Enterprise Linux 7,4 dla oprogramowania SAP lub nowszego, który służy do wdrażania nowych maszyn wirtualnych platformy Azure. Zapoznaj się z różnymi modelami pomocy technicznej lub usług, które są oferowane przez Red Hat za pomocą witryny Azure Marketplace w przypadku wybrania obrazu maszyny wirtualnej na rynku maszyn wirtualnych platformy Azure.
 
-### <a name="hosts-dns-updates"></a>Pracując Aktualizacje rekordów DNS
+### <a name="hosts-dns-updates"></a>Hosty: aktualizacje DNS
 Utwórz listę wszystkich nazw hostów, w tym nazw hostów wirtualnych, i zaktualizuj serwery DNS, aby umożliwić prawidłowemu adresowi IP rozpoznawanie nazw hostów. Jeśli serwer DNS nie istnieje lub nie można zaktualizować i utworzyć wpisów DNS, należy użyć lokalnych plików hosta poszczególnych maszyn wirtualnych, które uczestniczą w tym scenariuszu. Jeśli używasz wpisów plików hosta, upewnij się, że wpisy są stosowane do wszystkich maszyn wirtualnych w środowisku systemowym SAP. Zalecamy jednak korzystanie z systemu DNS, który najlepiej rozszerza się na platformę Azure
 
 
@@ -215,39 +215,39 @@ Aby skonfigurować podstawowe wystąpienie bazy danych programu IBM DB2 LUW:
 
 > [!IMPORTANT] 
 > Zanotuj "port komunikacji bazy danych", który jest ustawiany podczas instalacji. Musi to być ten sam numer portu dla obu wystąpień bazy danych.
->![Definicja portu SAP SWPM](./media/high-availability-guide-rhel-ibm-db2-luw/hadr-swpm-db2-port.png)
+>![definicji portu SAP SWPM](./media/high-availability-guide-rhel-ibm-db2-luw/hadr-swpm-db2-port.png)
 
 ### <a name="ibm-db2-hadr-settings-for-azure"></a>Ustawienia programu IBM DB2 HADR Cluster dla platformy Azure
 
    W przypadku korzystania z Agenta ogrodzenia Pacemaker platformy Azure ustaw następujące parametry:
 
    - Czas trwania okna równorzędnego HADR Cluster (w sekundach) (HADR_PEER_WINDOW) = 240  
-   - HADR Cluster wartość limitu czasu (HADR_TIMEOUT) = 45
+   - Wartość limitu czasu HADR Cluster (HADR_TIMEOUT) = 45
 
 Zalecamy stosowanie powyższych parametrów na podstawie wstępnego testowania trybu failover/przejęcia. Wymagane jest przetestowanie pod kątem poprawnej funkcjonalności trybu failover i przejęcia z tymi ustawieniami parametrów. Ponieważ poszczególne konfiguracje mogą się różnić, parametry mogą wymagać korekty. 
 
 > [!NOTE]
-> Specyficzne dla programu IBM DB2 z konfiguracją HADR Cluster z normalnym uruchamianiem: Aby można było uruchomić wystąpienie podstawowej bazy danych, wystąpienie bazy danych pomocniczej lub zapasowej musi być uruchomione.
+> Specyficzne dla programu IBM DB2 z konfiguracją HADR Cluster z normalnym uruchamianiem: wystąpienie bazy danych pomocniczej lub zapasowej musi być uruchomione, aby można było uruchomić podstawowe wystąpienie bazy danych.
 
    
 > [!NOTE]
-> Aby zainstalować i skonfigurować konfigurację specyficzną dla platformy Azure i Pacemaker: Podczas procedury instalacji za pomocą Menedżera aprowizacji oprogramowania SAP istnieje jawne pytanie o wysoką dostępność dla programu IBM DB2 LUW:
+> Aby przeprowadzić instalację i konfigurację charakterystyczną dla platformy Azure i Pacemaker: podczas procedury instalacji za pomocą Menedżera aprowizacji oprogramowania SAP, istnieje jawne pytanie o wysoką dostępność dla programu IBM DB2 LUW:
 >+ Nie wybieraj programu **IBM DB2 pureScale**.
 >+ Nie wybieraj opcji **Zainstaluj program IBM Tivoli system Automation dla wielu platform**.
 >+ Nie wybieraj opcji **Generuj pliki konfiguracji klastra**.
->![SAP SWPM — opcje wysokiej dostępności](./media/high-availability-guide-rhel-ibm-db2-luw/swpm-db2ha-opt.png)
+>![Opcje systemu SAP SWPM – DB2 HA](./media/high-availability-guide-rhel-ibm-db2-luw/swpm-db2ha-opt.png)
 
 
 Aby skonfigurować serwer bazy danych w stanie gotowości przy użyciu procedury kopiowania jednorodnego systemu SAP, wykonaj następujące kroki:
 
-1. Wybierz opcję **kopiowania systemu** > wystąpienia > **rozproszonej** > **bazy danych**w systemie docelowym.
-1. Jako metodę kopiowania wybierz jednorodny **system** , aby można było użyć kopii zapasowej do przywrócenia kopii zapasowej w wystąpieniu serwera w stanie gotowości.
+1. Wybierz opcję **kopiowania systemu** > **systemy docelowe** > **rozproszone** **wystąpienie bazy danych** > .
+1. Jako metodę kopiowania wybierz **jednorodny system** , aby można było użyć kopii zapasowej do przywrócenia kopii zapasowej w wystąpieniu serwera w stanie gotowości.
 1. Po dojściu do kroku zakończenia, aby przywrócić bazę danych jednorodnej kopii systemu, zamknij Instalatora. Przywróć bazę danych z kopii zapasowej hosta podstawowego. Wszystkie kolejne etapy instalacji zostały już wykonane na podstawowym serwerze bazy danych.
 
 #### <a name="red-hat-firewall-rules-for-db2-hadr"></a>Reguły zapory Red Hat dla programu DB2 HADR Cluster
 Dodaj reguły zapory, aby zezwalać na działanie ruchu do bazy danych DB2 i między programem DB2 for HADR cluster:
 + Port komunikacji z bazą danych. W przypadku używania partycji należy również dodać te porty.
-+ Port HADR Cluster (wartość elementu DB2 Parameter HADR_LOCAL_SVC)
++ Port HADR Cluster (wartość HADR_LOCAL_SVC parametru DB2)
 + Port sondy platformy Azure
 <pre><code>sudo firewall-cmd --add-port=&lt;port&gt;/tcp --permanent
 sudo firewall-cmd --reload</code></pre>
@@ -366,13 +366,13 @@ W przypadku korzystania z Pacemaker w celu automatycznego przełączania do tryb
 
 Następujące elementy są poprzedzone prefiksem:
 
-- **[A]** : Dotyczy wszystkich węzłów
-- **[1]** : Dotyczy tylko węzła 1 
-- **[2]** : Dotyczy tylko węzła 2
+- **[A]** : dotyczy wszystkich węzłów
+- **[1]** : dotyczy tylko węzła 1 
+- **[2]** : dotyczy tylko węzła 2
 
 **[A]** wymagania wstępne dotyczące konfiguracji Pacemaker:
-1. Zamknij oba serwery bazy danych z identyfikatorem\<SID User DB2 > z db2stop.
-1. Zmień środowisko powłoki dla identyfikatora SID\<bazy danych DB2 > użytkownika na */bin/ksh*:
+1. Zamknij oba serwery baz danych, używając identyfikatora SID\<User DB2 > z db2stop.
+1. Zmień środowisko powłoki dla\<SID > użytkownika na */bin/ksh*:
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
@@ -423,7 +423,7 @@ Online: [AZ-idb01 AZ-idb02]
 
 Pełna lista zasobów:
 
- rsc_st_azure (stonith:fence_azure_arm):      Uruchomiono AZ-idb01 Master/podrzędny zestaw: Db2_HADR_ID2-Master [Db2_HADR_ID2] Masters: [AZ-idb01] slave: [AZ-idb02] grupa zasobów: g_ipnc_db2id2_ID2 vip_db2id2_ID2 (OCF:: puls: IPaddr2):       Uruchomiono AZ-idb01 nc_db2id2_ID2 (OCF:: puls: Azure-lb):      Uruchomiono AZ-idb01
+ rsc_st_azure (stonith: fence_azure_arm): uruchomiono AZ-idb01 Master/Slave Set: Db2_HADR_ID2-Master [Db2_HADR_ID2] Masters: [AZ-idb01] slave: [AZ-idb02] grupa zasobów: g_ipnc_db2id2_ID2 vip_db2id2_ID2 (OCF:: puls: IPaddr2): uruchomiono AZ-idb01 nc_db2id2_ID2 (OCF:: puls: Azure-lb): uruchomiono AZ-idb01
 
 Stan demona: Corosync: Active/disabled Pacemaker: Active/disabled pcsd: Active/Enabled
 </pre>
@@ -441,9 +441,9 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    b. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **DB2-Connection**).
 
-   c. Ustaw **przypisanie** na **static**, a następnie wprowadź adres IP **Virtual-IP** zdefiniowany na początku.
+   d. Ustaw **przypisanie** na **static**, a następnie wprowadź adres IP **Virtual-IP** zdefiniowany na początku.
 
-   d. Kliknij przycisk **OK**.
+   d. Wybierz **OK**.
 
    e. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
 
@@ -453,23 +453,23 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    b. Wprowadź nazwę nowej puli zaplecza (na przykład **DB2-zaplecze**).
 
-   c. Wybierz pozycję **Dodaj maszynę wirtualną**.
+   d. Wybierz pozycję **Dodaj maszynę wirtualną**.
 
    d. Wybierz zestaw dostępności lub maszyny wirtualne hostujący bazę danych IBM DB2 utworzoną w poprzednim kroku.
 
    e. Wybierz Maszyny wirtualne w klastrze programu IBM DB2.
 
-   f. Kliknij przycisk **OK**.
+   f. Wybierz **OK**.
 
 1. Utwórz sondę kondycji:
 
-   a. W Azure Portal Otwórz Azure Load Balancer, wybierz pozycję sondy **kondycji**, a następnie wybierz pozycję **Dodaj**.
+   a. W Azure Portal Otwórz Azure Load Balancer, wybierz pozycję **sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
 
    b. Wprowadź nazwę nowej sondy kondycji (na przykład **DB2-HP**).
 
-   c. Wybierz pozycję **TCP** jako protokół i port **62500**. Pozostaw wartość **interwału** ustawioną na **5**i pozostaw wartość **progową złej kondycji** ustawioną na **2**.
+   d. Wybierz pozycję **TCP** jako protokół i port **62500**. Pozostaw wartość **interwału** ustawioną na **5**i pozostaw wartość **progową złej kondycji** ustawioną na **2**.
 
-   d. Kliknij przycisk **OK**.
+   d. Wybierz **OK**.
 
 1. Utwórz reguły równoważenia obciążenia:
 
@@ -477,7 +477,7 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    b. Wprowadź nazwę nowej reguły Load Balancer (na przykład **DB2-SID**).
 
-   c. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **DB2-fronton**).
+   d. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **DB2-fronton**).
 
    d. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port *komunikacyjny bazy danych*portu.
 
@@ -485,7 +485,7 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    f. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
 
-   g. Kliknij przycisk **OK**.
+   g. Wybierz **OK**.
 
 **[A]** Dodaj regułę zapory dla portu sondy:
 <pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
@@ -494,7 +494,7 @@ sudo firewall-cmd --reload</code></pre>
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Wprowadzanie zmian w profilach SAP do używania wirtualnego adresu IP na potrzeby połączenia
 Aby nawiązać połączenie z podstawowym wystąpieniem konfiguracji HADR Cluster, warstwa aplikacji SAP musi używać wirtualnego adresu IP, który został zdefiniowany i skonfigurowany dla Azure Load Balancer. Wymagane są następujące zmiany:
 
-Identyfikator\<SID/sapmnt/>/Profile/default. PFL
+/sapmnt/\<identyfikator SID >/profile/DEFAULT. PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
@@ -547,7 +547,7 @@ Możesz użyć istniejących udziałów NFS o wysokiej dostępności lub Gluster
 
 W tej sekcji opisano, jak można testować konfigurację programu DB2 HADR Cluster. Każdy test zakłada, że program IBM DB2 Primary działa na maszynie wirtualnej *AZ-idb01* . Użytkownik mający uprawnienia sudo lub główny (niezalecane) musi być używany.
 
-Początkowy stan wszystkich przypadków testowych został wyjaśniony tutaj: (crm_mon-r lub PC status)
+Początkowy stan wszystkich przypadków testowych został wyjaśniony tutaj: (stan crm_mon-r lub komputery)
 
 - **stan komputerów** jest migawką stanu Pacemaker w czasie wykonywania 
 - **crm_mon-r** jest ciągłym wyjściem stanu Pacemaker
@@ -587,7 +587,7 @@ Oryginalny stan w systemie SAP jest opisany w temacie Transaction DBACOCKPIT > C
 > Przed rozpoczęciem testu upewnij się, że:
 > * Pacemaker nie ma żadnych akcji zakończonych niepowodzeniem (stan komputerów).
 > * Brak ograniczeń lokalizacji (pozostałości testu migracji)
-> * Synchronizacja programu IBM DB2 HADR Cluster działa. Sprawdź przy użyciu identyfikatora\<SID użytkownika DB2 > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Synchronizacja programu IBM DB2 HADR Cluster działa. Sprawdź przy użyciu identyfikatora SID\<użytkownika DB2 > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Przeprowadź migrację węzła, w którym działa podstawowa baza danych DB2, wykonując następujące polecenie:
@@ -643,9 +643,9 @@ Przeprowadź migrację zasobu z powrotem do *AZ-idb01* i wyczyść ograniczenia 
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
-- **komputery PC Przenieś \<RES_NAME > <host>:** Tworzy ograniczenia lokalizacji i może powodować problemy z przejęciem
-- **> RES_NAME\<** : Czyści ograniczenia lokalizacji
-- **RES_NAME > oczyszczania \<zasobów komputerów**: Czyści wszystkie błędy zasobu
+- **komputery PC przenieś \<res_name > <host>:** Tworzy ograniczenia lokalizacji i może powodować problemy z przejęciem
+- **\<zasobów komputerów PC wyczyść res_name >** : czyści ograniczenia lokalizacji
+- **\<oczyszczania zasobów komputerów pc res_name >** : czyści wszystkie błędy zasobu
 
 ### <a name="test-a-manual-takeover"></a>Testowanie ręcznego przejęcia
 
@@ -740,7 +740,7 @@ Wystąpienie bazy danych DB2 zostanie uruchomione ponownie w roli pomocniczej, k
 
 ### <a name="stop-db-via-db2stop-force-on-the-node-that-runs-the-hadr-primary-database-instance"></a>Zatrzymaj bazę danych za pośrednictwem db2stop Force w węźle, w którym działa wystąpienie podstawowej bazy danych HADR Cluster
 
-Jako identyfikator SID\<użytkownika DB2 > wykonywania polecenia db2stop:
+Gdy użytkownik bazy danych DB2\<identyfikator SID > wykonywania polecenia db2stop:
 <pre><code>az-idb01:db2ptr> db2stop force</code></pre>
 
 Wykryto błąd:
@@ -808,7 +808,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      vip_db2id2_ID2     (ocf::heartbeat:IPaddr2):       Started az-idb01
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb01</code></pre>
 
-Następnym krokiem jest sprawdzenie, czy występuje podzielona sytuacja *mózgów* . Po zakończeniu działania węzła, który wykrył, że węzeł, który ostatnio uruchomił podstawowe wystąpienie bazy danych, nie działa w trybie failover zasobów.
+Następnym krokiem jest sprawdzenie, czy występuje *podzielona sytuacja mózgów* . Po zakończeniu działania węzła, który wykrył, że węzeł, który ostatnio uruchomił podstawowe wystąpienie bazy danych, nie działa w trybie failover zasobów.
 
 <pre><code>2 nodes configured
 5 resources configured

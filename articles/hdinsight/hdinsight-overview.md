@@ -34,10 +34,10 @@ Dane big data są gromadzone szybciej, w większych ilościach i bardziej różn
 
 W tej sekcji wymieniono możliwości usługi Azure HDInsight.
 
-|Możliwość  |Opis  |
+|Możliwości  |Opis  |
 |---------|---------|
 |Natywna usługa w chmurze     |     Usługa Azure HDInsight umożliwia tworzenie na platformie Azure klastrów zoptymalizowanych dla technologii [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md),  [Spark](./spark/apache-spark-jupyter-spark-sql.md),  [zapytania interakcyjnego (LLAP)](./interactive-query/apache-interactive-query-get-started.md),  [Kafka](./kafka/apache-kafka-get-started.md),  [Storm](./storm/apache-storm-tutorial-get-started-linux.md),  [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) i  [usług ML](./r-server/r-server-overview.md). Usługa HDInsight zapewnia również kompleksową umowę dotyczącą poziomu usług dla wszystkich obciążeń produkcyjnych.  |
-|Niskie koszty i skalowalność     | Usługa HDInsight umożliwia [skalowanie](./hdinsight-administer-use-portal-linux.md#scale-clusters)  obciążeń w górę lub w dół. Możesz obniżyć koszty, [tworząc klastry na żądanie](./hdinsight-hadoop-create-linux-clusters-adf.md)  and płacisz tylko za to, czego używasz. Możesz także tworzyć potoki danych w celu operacjonalizacji zadań. Oddzielenie obliczeń i magazynu zapewnia wyższą wydajność i elastyczność. |
+|Niskie koszty i skalowalność     | Usługa HDInsight umożliwia [skalowanie](./hdinsight-administer-use-portal-linux.md#scale-clusters)  obciążeń w górę lub w dół. Możesz obniżyć koszty, [tworząc klastry na żądanie](./hdinsight-hadoop-create-linux-clusters-adf.md) i płacąc tylko za to, czego używasz. Możesz także tworzyć potoki danych w celu operacjonalizacji zadań. Oddzielenie obliczeń i magazynu zapewnia wyższą wydajność i elastyczność. |
 |Bezpieczeństwo i zgodność    | Usługa HDInsight umożliwia ochronę zasobów danych przedsiębiorstwa przy użyciu usługi [Azure Virtual Network](./hdinsight-plan-virtual-network-deployment.md), [szyfrowania](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) oraz integracji z usługą [Azure Active Directory](./domain-joined/hdinsight-security-overview.md). Usługa HDInsight spełnia również najpopularniejsze branżowe i rządowe [normy zgodności](https://azure.microsoft.com/overview/trusted-cloud).        |
 |Monitorowanie    | Usługa Azure HDInsight jest zintegrowana z [dziennikami usługi Azure Monitor](./hdinsight-hadoop-oms-log-analytics-tutorial.md), zapewniając jeden interfejs, za pomocą którego można monitorować wszystkie swoje klastry.        |
 |Globalna dostępność | Usługa HDInsight jest dostępna w większej liczbie  [regionów](https://azure.microsoft.com/regions/services/)  niż jakiekolwiek inne rozwiązanie do analizy danych big data. Usługa Azure HDInsight jest również dostępna w ramach chmur Azure Government, Azure (Chiny) i Azure (Niemcy), dzięki czemu odpowiada na potrzeby Twojego przedsiębiorstwa w najważniejszych obszarach suwerenności. |  
@@ -70,7 +70,7 @@ Przy użyciu usługi HDInsight można tworzyć aplikacje wyodrębniające z dany
 
 ![Architektura usługi HDInsight: Nauka danych](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "Architektura analizy danych HDInsight")
 
-### <a name="hybrid"></a>Hybrydowe
+### <a name="hybrid"></a>Połączenie hybrydowe
 
 Za pomocą usługi HDInsight możesz rozszerzyć istniejącą lokalną infrastrukturę przetwarzania danych big data na platformę Azure, aby korzystać z zaawansowanych funkcji analizy w chmurze.
 
@@ -100,7 +100,7 @@ Klastry HDInsight, takie jak Spark, HBase, Kafka, Hadoop i inne, obsługują wie
 
 |Język programowania  |Informacje  |
 |---------|---------|
-|Domyślna obsługa języka programowania     | Domyślnie klastry usługi HDInsight obsługują języki:<ul><li>Java</li><li>Python</li><li>.NET</li><li>Go</li></ul>  |
+|Domyślna obsługa języka programowania     | Domyślnie klastry usługi HDInsight obsługują języki:<ul><li>Java</li><li>Python</li><li>.NET</li><li>Z rzeczywistym użyciem</li></ul>  |
 |Języki maszyny wirtualnej Java (JVM)     | Wiele języków innych niż Java można uruchamiać za pomocą maszyny wirtualnej Java (JVM). Jednak do uruchomienia niektórych z tych języków mogą być potrzebne dodatkowe składniki zainstalowane w klastrze. W klastrach usługi HDInsight są obsługiwane następujące języki działające w oparciu o JVM: <ul><li>Clojure</li><li>Jython (Python dla platformy Java)</li><li>Scala</li></ul>     |
 |Języki specyficzne dla platformy Hadoop     | Klastry HDInsight obsługują następujące języki specyficzne dla stosu technologii Hadoop: <ul><li>Pig Latin do zadań Pig</li><li>HiveQL do zadań Hive oraz SparkSQL</li></ul>        |
 

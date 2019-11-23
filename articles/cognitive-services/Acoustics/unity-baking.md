@@ -162,7 +162,7 @@ Swoją scenę można tworzenie w klastrze obliczeniowym w chmurze za pomocą us�
 3. Wprowadź swoje poświadczenia platformy Azure w tych polach po utworzeniu konta platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie konta Azure Batch](create-azure-account.md).
 4. Pole tag obrazu platformy Docker dla zestawu narzędzi "akustyczne".
 5. Otwiera Azure Portal w celu zarządzania subskrypcjami, monitorowania użycia i wyświetlania informacji dotyczących rozliczeń.
-6. Określa typ węzła obliczeniowego Azure Batch, który ma być używany do obliczania. Typ węzła musi być obsługiwany przez lokalizację centrum danych platformy Azure. Jeśli nie masz pewności, pozostaw to **Standard_F8s_v2**.
+6. Określa typ węzła obliczeniowego Azure Batch, który ma być używany do obliczania. Typ węzła musi być obsługiwany przez lokalizację centrum danych platformy Azure. Jeśli nie masz pewności, pozostaw jako **Standard_F8s_v2**.
 7. Liczba węzłów do użycia podczas obliczania. Ta liczba ma wpływ na czas tworzenie. Jest on ograniczony przez alokację Azure Batch Core. Alokacja domyślna zezwala tylko na dwa węzły 8-rdzeniowe lub węzeł 1 16-rdzeń, ale może być rozwinięty. Aby uzyskać więcej informacji na temat ograniczeń podstawowych alokacji, zobacz [Tworzenie konta Azure Batch](create-azure-account.md).
 8. Zaznacz to pole wyboru, aby skonfigurować pulę obliczeniową do używania [węzłów o niskim priorytecie](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Węzły obliczeniowe o niskim priorytecie mają znacznie niższy koszt. Ale mogą one nie zawsze być dostępne lub mogą być zastępujące w dowolnym momencie.
 9. Liczba sond dla sceny, obliczona na karcie **sondy** . Liczba sond określa liczbę symulacji, które muszą być uruchamiane w chmurze. Nie można określić większej liczby węzłów niż sondy.
@@ -205,7 +205,7 @@ W celu zapewnienia bezpieczeństwa poświadczenia platformy Azure są przechowyw
 
 Aby oszacować, co tworzenie będzie kosztować, Rozpocznij od **szacowanej wartości kosztu obliczeniowego** , czyli czasu trwania. Pomnóż tę wartość przez koszt godzinowy w lokalnej walucie dla wybranych **typów węzłów maszyny wirtualnej** . Należy zauważyć, że wynik nie będzie zawierać czasu węzła, który jest wymagany do uruchomienia węzłów.
 
-Załóżmy na przykład, że wybrano pozycję **Standard_F8s_v2** dla typu węzła, który ma koszt $0.40/hr. Jeśli **szacowany koszt obliczeniowy** wynosi 3 godziny i 57 minut, szacowany koszt uruchomienia zadania będzie $0,40 * ~ 4 godziny = ~ $1,60. Rzeczywisty koszt będzie prawdopodobnie nieco większy z powodu dodatkowego czasu na rozpoczęcie uruchamiania węzłów.
+Załóżmy na przykład, że wybrano **Standard_F8s_v2** dla typu węzła, który ma koszt $0.40/hr. Jeśli **szacowany koszt obliczeniowy** wynosi 3 godziny i 57 minut, szacowany koszt uruchomienia zadania będzie $0,40 * ~ 4 godziny = ~ $1,60. Rzeczywisty koszt będzie prawdopodobnie nieco większy z powodu dodatkowego czasu na rozpoczęcie uruchamiania węzłów.
 
 Znajdź koszt węzłów co godzinę w [Azure Batch cenach](https://azure.microsoft.com/pricing/details/virtual-machines/linux). (Wybierz opcję **obliczenia zoptymalizowane** lub **o wysokiej wydajności** jako kategoria).
 
@@ -224,9 +224,9 @@ Przykładowo w teście na maszynie 8-rdzeniowej Intel Xeon E5-1660 @ 3 GHz i 32 
 Zainstaluj i skonfiguruj platformę Docker na komputerze, który będzie przetwarzać symulację:
 1. Zainstaluj program [Docker Desktop](https://www.docker.com/products/docker-desktop).
 2. Otwórz ustawienia platformy Docker, przejdź do pozycji **Zaawansowane**i skonfiguruj zasoby dla co najmniej 8 GB pamięci RAM. Im więcej procesorów CPU można przydzielić do platformy Docker, tym szybciej tworzenie zostanie ukończona.  
-![Sample Docker Settings @ no__t-1
+![Przykładowe ustawienia platformy Docker](media/docker-settings.png)
 1. Przejdź do obszaru **udostępnione dyski**i Włącz udostępnianie dysku używanego do przetwarzania.  
-![Docker opcje dysku udostępnionego @ no__t-1
+![opcje udostępnionego dysku platformy Docker](media/docker-shared-drives.png)
 
 ### <a name="run-the-local-bake"></a>Uruchamianie lokalnego tworzenie
 1. Wybierz przycisk **Przygotuj lokalny tworzenie** na karcie **Tworzenie** . Następnie wybierz lokalizację folderu, do której mają zostać zapisane pliki wejściowe i skrypty wykonywania. Następnie można uruchomić tworzenie na dowolnym komputerze, o ile spełnia minimalne wymagania sprzętowe i zainstaluje platformę Docker przez skopiowanie folderu na tę maszynę.
@@ -238,14 +238,14 @@ Zainstaluj i skonfiguruj platformę Docker na komputerze, który będzie przetwa
 Podczas procesu tworzenie tworzone są następujące cztery pliki danych. Jedna z nich zawiera wyniki symulacji i jest dostarczana z Twoim tytułem. Inne osoby przechowują dane dotyczące edytora Unity.
 
 Wynik symulacji:
-* *Zasoby/AcousticsData/akustyczne @ no__t-1 [scenname]. ACE. Bytes*: ten plik jest tabelą odnośników czasu wykonywania. Zawiera wyniki symulacji i voxelized elementy sceny akustycznych. Nazwę i lokalizację tego pliku można zmienić na karcie **sondy** .
+* *Zasoby/AcousticsData/akustyczne\_[scena]. ACE. Bytes*: ten plik jest tabelą odnośników czasu wykonywania. Zawiera wyniki symulacji i voxelized elementy sceny akustycznych. Nazwę i lokalizację tego pliku można zmienić na karcie **sondy** .
 
    *Należy zachować ostrożność, aby nie usunąć pliku z wynikami symulacji. Nie jest to możliwe do odzyskania, z wyjątkiem sytuacji, w której nie należy odzyskać sceny*
 
 Pliki danych edytora:
-* *Zasoby/Edytor/[scena] \_AcousticsParameters. Asset*: ten plik przechowuje dane wprowadzane w polach w interfejsie użytkownika. Nie można zmienić nazwy i lokalizacji tego pliku.
-* *Majątek/AcousticsData/redaktor/Acoustics_ [scena]. Vox*: ten plik przechowuje geometrię voxelized i właściwości materiału, które są obliczane po wybraniu przycisku **Oblicz** na karcie **sondy** . Nazwę i lokalizację tego pliku można zmienić na karcie **sondy** .
-* *Zasoby/AcousticsData/Edytor/akustyczne @ no__t-1 [scenname] @no__t -2config. XML*: ten plik przechowuje parametry symulacji, które są obliczane po wybraniu opcji **Oblicz**. Nazwę i lokalizację tego pliku można zmienić na karcie **sondy** .
+* *Zasoby/Edytor/[scena]\_AcousticsParameters. Asset*: ten plik przechowuje dane wprowadzane w polach w interfejsie użytkownika. Nie można zmienić nazwy i lokalizacji tego pliku.
+* *Majątek/AcousticsData/redaktor/Acoustics_ [scena]. Vox*: ten plik przechowuje geometrię voxelized akustycznych i właściwości materiału, które są obliczane po wybraniu przycisku **Oblicz** na karcie **sondy** . Nazwę i lokalizację tego pliku można zmienić na karcie **sondy** .
+* *Zasoby/AcousticsData/Edytor/akustyczne\_[scenname]\_config. XML*: ten plik przechowuje parametry symulacji, które są obliczane po wybraniu opcji **Oblicz**. Nazwę i lokalizację tego pliku można zmienić na karcie **sondy** .
 
 ## <a name="set-up-the-acoustics-lookup-table"></a>Konfigurowanie tabeli wyszukiwania akustycznego
 Przeciągnij PREFAB **akustyczny projektu** z panelu projektu do swojej sceny:

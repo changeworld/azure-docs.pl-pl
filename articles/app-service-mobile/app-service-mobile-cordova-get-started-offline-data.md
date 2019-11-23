@@ -27,10 +27,10 @@ ms.locfileid: "72388850"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Przegląd
-W tym samouczku przedstawiono funkcję synchronizacji w trybie offline w usłudze Azure Mobile Apps dla oprogramowania Cordova. Synchronizacja w trybie offline umożliwia użytkownikom końcowym korzystanie z aplikacji mobilnej @ no__t-0viewing, Dodawanie lub modyfikowanie danych @ no__t-1even, gdy nie ma połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych.  Gdy urządzenie przewróci do trybu online, te zmiany są synchronizowane z usługą zdalną.
+## <a name="overview"></a>Omówienie
+W tym samouczku przedstawiono funkcję synchronizacji w trybie offline w usłudze Azure Mobile Apps dla oprogramowania Cordova. Synchronizacja w trybie offline umożliwia użytkownikom końcowym współdziałanie z aplikacją mobilną&mdash;wyświetlanie, Dodawanie lub modyfikowanie danych&mdash;nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych.  Gdy urządzenie przewróci do trybu online, te zmiany są synchronizowane z usługą zdalną.
 
 Ten samouczek jest oparty na rozwiązaniu Cordova szybkiego startu dla Mobile Apps tworzonego po zakończeniu samouczka [Apache Cordova Szybki Start]. W tym samouczku należy zaktualizować rozwiązanie szybkiego startu, aby dodać funkcje w trybie offline Mobile Apps platformy Azure.  W aplikacji zostanie również wyróżniony kod specyficzny dla trybu offline.
 
@@ -44,7 +44,7 @@ Kod synchronizacji w trybie offline należy dodać do aplikacji. Synchronizacja 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable;      // Reference to a table endpoint on backend
 
-    z tym kodem:
+    przy użyciu tego kodu:
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable,      // Reference to a table endpoint on backend
@@ -54,7 +54,7 @@ Kod synchronizacji w trybie offline należy dodać do aplikacji. Synchronizacja 
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
 
-    z tym kodem:
+    przy użyciu tego kodu:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
         var store = new WindowsAzure.MobileServiceSqliteStore('store.db');
@@ -82,7 +82,7 @@ Kod synchronizacji w trybie offline należy dodać do aplikacji. Synchronizacja 
 
         todoItemTable = client.getTable('todoitem'); // todoitem is the table name
 
-    z tym kodem:
+    przy użyciu tego kodu:
 
         // Initialize the sync context with the store
         syncContext.initialize(store).then(function () {
@@ -169,7 +169,7 @@ W tej sekcji opisano modyfikowanie projektu klienta w celu symulowania scenarius
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net-fail');
 
-2. W pliku index. html zaktualizuj element CSP `<meta>` z tym samym nieprawidłowym adresem URL.
+2. W pliku index. html zaktualizuj `<meta>` elementu CSP o takim samym nieprawidłowym adresie URL.
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://yourmobileapp.azurewebsites.net-fail; style-src 'self'; media-src *">
 
@@ -179,20 +179,20 @@ W tej sekcji opisano modyfikowanie projektu klienta w celu symulowania scenarius
 
 5. Obowiązkowe Użyj programu Visual Studio, aby wyświetlić tabelę Azure SQL Database, aby zobaczyć, że dane w bazie danych zaplecza nie uległy zmianie.
 
-    W programie Visual Studio Otwórz **Eksplorator serwera**. Przejdź do bazy danych w **usłudze Azure**@no__t — 1**bazy danych SQL**. Kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz polecenie **Otwórz w Eksplorator obiektów SQL Server**. Teraz możesz przejść do tabeli bazy danych SQL i jej zawartości.
+    W programie Visual Studio Otwórz **Eksplorator serwera**. Przejdź do bazy danych w **usłudze Azure**->**bazy danych SQL**. Kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz polecenie **Otwórz w Eksplorator obiektów SQL Server**. Teraz możesz przejść do tabeli bazy danych SQL i jej zawartości.
 
 ## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>Obowiązkowe Testowanie ponownego połączenia z zapleczem mobilnym
 
 W tej sekcji należy ponownie połączyć aplikację z zapleczem mobilnym, co symuluje aplikację z powrotem do stanu online. Po zalogowaniu dane są synchronizowane z zapleczem mobilnym.
 
 1. Otwórz ponownie index. js i Przywróć adres URL aplikacji.
-2. Ponownie otwórz plik index. html i popraw adres URL aplikacji w elemencie CSP `<meta>`.
+2. Ponownie otwórz plik index. html i popraw adres URL aplikacji w elemencie `<meta>` dostawcy usług kryptograficznych.
 3. Skompiluj ponownie i uruchom aplikację kliencką. Aplikacja próbuje przeprowadzić synchronizację z zapleczem aplikacji mobilnej po zalogowaniu. Sprawdź, czy w konsoli debugowania nie zarejestrowano żadnych wyjątków.
 4. Obowiązkowe Wyświetl zaktualizowane dane przy użyciu Eksplorator obiektów SQL Server lub narzędzia REST, takiego jak programu Fiddler. Zauważ, że dane zostały zsynchronizowane między bazą danych zaplecza a magazynem lokalnym.
 
     Zwróć uwagę, że dane zostały zsynchronizowane między bazą danych programu i magazynem lokalnym i zawierają elementy dodane w czasie, gdy aplikacja została odłączona.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]
 * [Visual Studio Tools for Apache Cordova]
 

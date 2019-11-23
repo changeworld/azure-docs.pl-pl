@@ -30,7 +30,7 @@ Integrowanie programu Adobe Experience Manager z usługą Azure AD zapewnia nast
 
 * W usłudze Azure AD możesz kontrolować, kto ma dostęp do programu Adobe Experience Manager.
 * Twoi użytkownicy mogą być automatycznie logowani do programu Adobe Experience Manager (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -56,35 +56,35 @@ Aby skonfigurować integrację programu Adobe Experience Manager z usługą Azur
 
 **Aby dodać program Adobe Experience Manager z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Adobe Experience Manager**, z panelu wyników wybierz pozycję **Adobe Experience Manager**, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
      ![Program Adobe Experience Manager na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją [Application name] w oparciu o użytkownika testowego o nazwie **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji [Application name].
 
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją [Application name], należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w programie Adobe Experience Manager](#configure-adobe-experience-manager-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego programu Adobe Experience Manager](#create-adobe-experience-manager-test-user)** — aby udostępnić w programie Adobe Experience Manager odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -94,7 +94,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Adobe Experience Manager** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -123,7 +123,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
 7. W sekcji **Konfiguracja programu Adobe Experience Manager** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -145,11 +145,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
 3. Wybierz **administratora** lub dowolnego innego odpowiedniego użytkownika.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 4. Wybierz pozycje **Ustawienia konta** > **Zarządzanie magazynem TrustStore**.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
 5. W obszarze **Dodaj certyfikat z pliku CER** kliknij pozycję **Wybierz plik certyfikatu**. Wyszukaj i wybierz plik certyfikatu, który został już pobrany z witryny Azure Portal.
 
@@ -157,19 +157,19 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
 6. Certyfikat jest dodawany do magazynu TrustStore. Zapisz alias certyfikatu.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
 
 7. Na stronie **Użytkownicy** wybierz pozycję **authentication-service**.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
 8. Wybierz pozycję **Ustawienia konta** > **Tworzenie/zarządzanie magazynem kluczy**. Utwórz magazyn kluczy, podając hasło.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
 9. Wróć do ekranu administratora. Następnie wybierz pozycję **Ustawienia** > **Operacje** > **Konsola internetowa**.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
     Spowoduje to otwarcie strony konfiguracji.
 
@@ -177,11 +177,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
 10. Znajdź pozycję **Program obsługi uwierzytelniania Adobe Granite SAML 2.0**. Następnie wybierz ikonę **Dodaj**.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
 
 11. Na tej stronie wykonaj następujące czynności.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
     a. W polu **Ścieżka** wprowadź **/** .
 
@@ -207,15 +207,15 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
     ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
@@ -226,7 +226,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -242,7 +242,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
 4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
@@ -262,13 +262,13 @@ Jeśli chcesz ręcznie tworzyć użytkowników, nawiąż współpracę z [zespo
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Adobe Experience Manager w panelu dostępu powinno nastąpić automatyczne zalogowanie do programu Adobe Experience Manager, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -26,7 +26,7 @@ Użyj biblioteki klienta przetwarzanie obrazów dla języka Java, aby:
 * Analizuj obraz pod kątem tagów, opisu tekstu, twarzy, treści dla dorosłych itd.
 * Rozpoznawanie wydrukowanych i odręcznych tekstu za pomocą interfejsu API odczytu usługi Batch.
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [artefakt (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [przykłady](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentacja referencyjna](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [artefaktu (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [przykłady](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,7 +43,7 @@ Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azur
 * Uzyskaj [klucz wersji próbnej](https://azure.microsoft.com/try/cognitive-services/#decision) ważny przez siedem dni bezpłatnie. Po utworzeniu konta będzie ono dostępne w [witrynie sieci Web systemu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Wyświetl zasób na [Azure Portal](https://portal.azure.com/).
 
-Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi o nazwach odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
+Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ### <a name="create-a-new-gradle-project"></a>Utwórz nowy projekt Gradle
 
@@ -53,7 +53,7 @@ W oknie konsoli (na przykład cmd, PowerShell lub bash) Utwórz nowy katalog dla
 mkdir myapp && cd myapp
 ```
 
-Uruchom polecenie `gradle init` z katalogu roboczego. To polecenie spowoduje utworzenie podstawowych plików kompilacji dla Gradle, w tym *Build. Gradle. KTS*, który jest używany w środowisku uruchomieniowym do tworzenia i konfigurowania aplikacji.
+Uruchom `gradle init` polecenie w katalogu roboczym. To polecenie spowoduje utworzenie podstawowych plików kompilacji dla Gradle, w tym *Build. Gradle. KTS*, który jest używany w środowisku uruchomieniowym do tworzenia i konfigurowania aplikacji.
 
 ```console
 gradle init --type basic
@@ -82,7 +82,7 @@ W katalogu roboczym Uruchom następujące polecenie, aby utworzyć folder źród
 mkdir -p src/main/java
 ```
 
-Przejdź do nowego folderu i Utwórz plik o nazwie *ComputerVisionQuickstarts. Java*. Otwórz go w preferowanym edytorze lub środowisku IDE i Dodaj następujące instrukcje `import`:
+Przejdź do nowego folderu i Utwórz plik o nazwie *ComputerVisionQuickstarts. Java*. Otwórz go w preferowanym edytorze lub w środowisku IDE i Dodaj następujące instrukcje `import`:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imports)]
 
@@ -123,7 +123,7 @@ Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań za p
 > [!NOTE]
 > W tym przewodniku szybki start przyjęto założenie, że dla klucza przetwarzanie obrazów została [utworzona zmienna środowiskowa](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) o nazwie `COMPUTER_VISION_SUBSCRIPTION_KEY`.
 
-Poniższy kod dodaje metodę `main` do klasy i tworzy zmienne dla punktu końcowego i klucza usługi Azure Resource. Musisz wprowadzić własny ciąg punktu końcowego, który można znaleźć, sprawdzając sekcję **omówienie** Azure Portal. 
+Poniższy kod dodaje do klasy metodę `main` i tworzy zmienne dla punktu końcowego i klucza usługi Azure Resource. Musisz wprowadzić własny ciąg punktu końcowego, który można znaleźć, sprawdzając sekcję **omówienie** Azure Portal. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_mainvars)]
 
@@ -140,7 +140,7 @@ Poniższy kod definiuje metodę, `AnalyzeLocalImage`, która używa obiektu klie
 
 ### <a name="set-up-test-image"></a>Konfigurowanie obrazu testu
 
-Najpierw Utwórz **zasoby/** folder w folderze **src/Main/** folder projektu, a następnie Dodaj obraz, który chcesz przeanalizować. Następnie Dodaj następującą definicję metody do klasy **ComputerVisionQuickstarts** . W razie potrzeby zmień wartość `pathToLocalImage`, aby odpowiadała plikowi obrazu. 
+Najpierw Utwórz **zasoby/** folder w folderze **src/Main/** folder projektu, a następnie Dodaj obraz, który chcesz przeanalizować. Następnie Dodaj następującą definicję metody do klasy **ComputerVisionQuickstarts** . W razie potrzeby zmień wartość `pathToLocalImage` tak, aby odpowiadała plikowi obrazu. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
 
@@ -210,7 +210,7 @@ Poniższy kod analizuje dane dotyczące wykrytych punktów orientacyjnych w obra
 
 ### <a name="get-the-image-type"></a>Pobierz typ obrazu
 
-Poniższy kod drukuje informacje o typie obrazu @ no__t-0whether, który jest obiektem clipart lub rysowaniem linii.
+Poniższy kod drukuje informacje o typie obrazu&mdash;niezależnie od tego, czy jest to obiekt clipart czy rysowanie liniowe.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
@@ -223,7 +223,7 @@ Przetwarzanie obrazów może odczytać widoczny tekst w obrazie i przekonwertowa
 
 ### <a name="call-the-recognize-api"></a>Wywoływanie interfejsu API rozpoznawania
 
-Najpierw użyj następującego kodu, aby wywołać metodę **recognizePrintedTextInStream** dla danego obrazu. Po dodaniu tego kodu do projektu, należy zastąpić wartość `localTextImagePath` ścieżką do lokalnego obrazu. 
+Najpierw użyj następującego kodu, aby wywołać metodę **recognizePrintedTextInStream** dla danego obrazu. Po dodaniu tego kodu do projektu należy zastąpić wartość `localTextImagePath` ścieżką do lokalnego obrazu. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 

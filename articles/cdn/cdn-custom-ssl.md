@@ -134,7 +134,7 @@ Udziel usłudze Azure CDN uprawnień dostępu do certyfikatów (wpisów tajnych)
 
 4. Wybierz pozycję **uprawnienia tajne**, a następnie zaznacz pola wyboru dla opcji **Pobierz** i **Wyświetl** , aby umożliwić usłudze CDN wykonywanie tych uprawnień w celu uzyskania i wyświetlenia wpisów tajnych.
 
-5. Kliknij przycisk **OK**. 
+5. Wybierz **OK**. 
 
     Usługa Azure CDN ma teraz dostęp do tego magazynu kluczy i certyfikatów (kluczy tajnych), które są przechowywane w tym magazynie kluczy.
  
@@ -178,7 +178,7 @@ Rekord CNAME powinien mieć następujący format, gdzie *Nazwa* to nazwa domeny 
 
 | Nazwa            | Typ  | Wartość                 |
 |-----------------|-------|-----------------------|
-| < www. contoso. com > | CNAME | contoso.azureedge.net |
+| <www.contoso.com> | CNAME | contoso.azureedge.net |
 
 Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz [Tworzenie rekordu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
@@ -192,7 +192,7 @@ Automatyczna weryfikacja zwykle trwa kilka godzin. Jeśli nie widzisz zweryfikow
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Domena niestandardowa nie została zamapowana do punktu końcowego usługi CDN
 
 >[!NOTE]
->Jeśli używasz **Azure CDN z Akamai**, należy skonfigurować następujący rekord CNAME, aby włączyć automatyczne sprawdzanie poprawności domeny. "_acme-Challenge. &lt;custom domena nazwa hosta @ no__t-1-> CNAME-> &lt;custom domena hostname&gt;.ak-acme-challenge.azureedge.net"
+>Jeśli używasz **Azure CDN z Akamai**, należy skonfigurować następujący rekord CNAME, aby włączyć automatyczne sprawdzanie poprawności domeny. "_acme-wyzwania.&lt;niestandardową nazwę hosta domeny&gt;-> CNAME-> &lt;niestandardową nazwę hosta domeny&gt;. ak-acme-challenge.azureedge.net "
 
 Jeśli wpis rekordu CNAME zawiera poddomenę cdnverify, postępuj zgodnie z pozostałymi instrukcjami w tym kroku.
 

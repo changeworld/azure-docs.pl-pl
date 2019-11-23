@@ -24,7 +24,7 @@ ms.locfileid: "72167513"
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric uaktualniania aplikacji przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
 > * [Program PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
-> * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
+> * [Program Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
 
@@ -51,7 +51,7 @@ Teraz można użyć Service Fabric Explorer, [Aby wyświetlić klaster i aplikac
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2. Aktualizacja przykładu obiektów wizualnych
 Można zauważyć, że w wersji, która została wdrożona w kroku 1, obiekty wizualne nie są obracane. Uaktualnimy tę aplikację do jednego miejsca, w którym obiekty wizualne również są obracane.
 
-Wybierz projekt VisualObjects. ActorService w ramach rozwiązania VisualObjects i Otwórz plik StatefulVisualObjectActor.cs. W tym pliku przejdź do metody `MoveObject`, Dodaj komentarz do `this.State.Move()` i Usuń komentarz `this.State.Move(true)`. Ta zmiana powoduje obrócenie obiektów po uaktualnieniu usługi.
+Wybierz projekt VisualObjects. ActorService w ramach rozwiązania VisualObjects i Otwórz plik StatefulVisualObjectActor.cs. W tym pliku przejdź do metody `MoveObject`, Skomentuj `this.State.Move()`i Usuń komentarz `this.State.Move(true)`. Ta zmiana powoduje obrócenie obiektów po uaktualnieniu usługi.
 
 Należy również zaktualizować plik *servicemanifest. XML* (w obszarze PackageRoot) projektu **VisualObjects. ActorService**. Zaktualizuj *CodePackage* i wersję usługi do 2,0 oraz odpowiadające im wiersze w pliku *servicemanifest. XML* .
 Możesz użyć opcji *Edytuj pliki manifestu* programu Visual Studio po kliknięciu prawym przyciskiem myszy rozwiązania, aby zmienić plik manifestu.
@@ -94,7 +94,7 @@ Teraz aplikacja została skompilowana i gotowa do uaktualnienia. Jeśli otworzys
 
 Pakiet aplikacji jest przechowywany w następującej ścieżce względnej, w której został odkompresowany Service Fabric SDK- *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. Folder "Package" powinien znajdować się w tym katalogu, w którym jest przechowywany pakiet aplikacji. Sprawdź sygnatury czasowe, aby upewnić się, że jest to najnowsza kompilacja (może zajść potrzeba zmodyfikowania odpowiednich ścieżek).
 
-Teraz Skopiuj zaktualizowany pakiet aplikacji do Service Fabric magazynu ImageStore (gdzie pakiety aplikacji są przechowywane przez Service Fabric). Parametr *ApplicationPackagePathInImageStore* Service Fabric informuje, gdzie można znaleźć pakiet aplikacji. Zaktualizowana aplikacja została umieszczona w "VisualObjects @ no__t-0V2" przy użyciu następującego polecenia (może być konieczne ponowne zmodyfikowanie ścieżek).
+Teraz Skopiuj zaktualizowany pakiet aplikacji do Service Fabric magazynu ImageStore (gdzie pakiety aplikacji są przechowywane przez Service Fabric). Parametr *ApplicationPackagePathInImageStore* Service Fabric informuje, gdzie można znaleźć pakiet aplikacji. Zaktualizowana aplikacja została umieszczona w "VisualObjects\_v2" przy użyciu następującego polecenia (należy ponownie zmodyfikować ścieżki).
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"

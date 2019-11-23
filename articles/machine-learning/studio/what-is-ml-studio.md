@@ -42,14 +42,14 @@ Nie jest wymagane programowanie, wizualne łączenie zestawów danych i modułó
 
 Oto krótkie porównanie:
 
-|| Machine Learning Studio (klasyczny) | Azure Machine Learning |
+|| Usługa Machine Learning Studio (klasyczna) | Azure Machine Learning |
 |---| --- | --- |
 | Przeciąganie i upuszczanie interfejsu | Tak | Tak — [Azure Machine Learning Designer (wersja zapoznawcza)](../service/concept-designer.md) |
-| Doświadczenia | Skalowalne (limit danych szkolenia 10 GB) | Skalowanie za pomocą elementu docelowego obliczeń |
+| Eksperyment | Skalowalne (limit danych szkolenia 10 GB) | Skalowanie za pomocą elementu docelowego obliczeń |
 | Moduły dla interfejsu metodą "przeciągnij i upuść" | Ilość | Początkowy zestaw popularnych [modułów](../algorithm-module-reference/module-reference.md)|
 |Szkoleniowe cele obliczeniowe| Własnościowy obiekt docelowy obliczeń, tylko obsługa procesora CPU| Azure Machine Learning obsługuje maszyny wirtualne z maszynami wirtualnymi obliczeniowymi (procesor GPU lub procesor CPU) i notesy.<br/>([Inne obliczenia obsługiwane w zestawie SDK](../service/concept-compute-target.md#train))|
 |Inferencing cele obliczeń| Własny format usługi sieci Web, niedostosowywalny |  Azure Kubernetes Service i AML COMPUTE <br/>([Inne obliczenia obsługiwane w zestawie SDK](../service/how-to-deploy-and-where.md)) |
-| Potok ML | Brak obsługi | Obsługiwane [potoki](../service/concept-ml-pipelines.md) |
+| Potok ML | Nieobsługiwane | Obsługiwane [potoki](../service/concept-ml-pipelines.md) |
 | MLOps | Podstawowe Zarządzanie modelami i wdrażanie | Konfigurowalne i śledzenie wersji i śledzenia potoków wdrożenia |
 | Format modelu | Format własnościowy, tylko Studio | Format standardowy w zależności od typu zadania szkoleniowego |
 |Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w projektancie <br/> ([Obsługiwane w zestawie SDK i stronie docelowej obszaru roboczego](../service/concept-automated-ml.md)) | 

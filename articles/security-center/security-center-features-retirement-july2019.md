@@ -53,7 +53,7 @@ Wycofano pulpit nawigacyjny zdarzeń, który pojawił się po wybraniu obszaru r
 
 Zachęcamy do korzystania z natywnych możliwości platformy Azure Log Analytics do wyświetlania istotnych zdarzeń w obszarach roboczych.
 
-Jeśli utworzono niestandardowe zdarzenia w Security Center, będą one dostępne. W Log Analytics **Wybierz pozycję obszar roboczy**@no__t — 1**zapisane wyszukiwania**. Twoje dane nie zostaną utracone ani zmodyfikowane. Natywne istotne zdarzenia są również dostępne z tego samego ekranu w Log Analytics.
+Jeśli utworzono niestandardowe zdarzenia w Security Center, będą one dostępne. W Log Analytics przejdź do pozycji **Wybierz obszar roboczy** > **zapisane wyszukiwania**. Twoje dane nie zostaną utracone ani zmodyfikowane. Natywne istotne zdarzenia są również dostępne z tego samego ekranu w Log Analytics.
 
 ![Wyszukiwania zapisane w obszarze roboczym][3]
 

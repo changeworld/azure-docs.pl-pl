@@ -30,7 +30,7 @@ Użyj Azure Portal, aby otworzyć bilet pomocy technicznej z obsługą techniczn
     1. Wybierz subskrypcję. 
     1. W obszarze **Usługa**wybierz pozycję **Azure FXT Edge File**. Aby go znaleźć, może być konieczne kliknięcie kontrolki filtru **wszystkie usługi** . 
     1. Wprowadź **Podsumowanie** i wybierz **typ problemu**. 
-    ![Screenshot pustej prośby o pomoc techniczną @ no__t-1 
+    ![zrzut ekranu z niepustym formularzem żądania obsługi](media/fxt-support-populated.png) 
     1. Kliknij przycisk **dalej** , aby kontynuować. 
 1. Na karcie **szczegóły** Dodaj więcej informacji o problemie i sposobie kontaktowania się z Tobą. Można przekazać plik związany z tym problemem. 
 1. W oknie **Recenzja + tworzenie**Sprawdź informacje i kliknij przycisk **Utwórz** , aby przesłać żądanie.

@@ -152,7 +152,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |Szablon Active Directory Domain Services|Szablon usługi Resource Manager|Administrator domeny|Nazwa użytkownika dla konta administratora i do dołączania urządzeń do domeny usługi AD. Musi być zgodna z wartością właściwości **Nazwa użytkownika administratora usługi AD** w **szablonie Key Vault**. Wartość domyślna to _domena-administrator-użytkownik_.|
 |Szablon Active Directory Domain Services|Szablon usługi Resource Manager|Hasło administratora domeny|Ustaw Key Vault szczegóły dotyczące przechowywania hasła. Brak wartości domyślnej i nie można jej pozostawić pustej.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po przejrzeniu kroków w celu wdrożenia przykładowej usługi wspólnych informacji ISO 27001 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o architekturze i mapowaniu formantów:
 

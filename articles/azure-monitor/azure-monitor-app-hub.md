@@ -141,7 +141,7 @@ ms.locfileid: "72899158"
                                                             <a href="./app/azure-vm-vmss-apps.md">Monitorowanie aplikacji maszyny wirtualnej i zestawu skalowania maszyn wirtualnych</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Niestandardowe zdarzenia i metryki</a><br>
                                                             
-<a href="https://github.com/Microsoft/ApplicationInsights-dotnet">repozytorium GitHub zestawu .NET SDK dla usługi Open Source</a>                                                        </p>
+<a href="https://github.com/Microsoft/ApplicationInsights-dotnet">repozytorium GitHub zestawu .NET SDK dla usługi Open Source</a>                                                         </p>
                                                         <br><br>
                                                           <h3>Aplikacje platformy .NET Core</h3>
                                                         <p>
@@ -196,7 +196,7 @@ ms.locfileid: "72899158"
                                                             <a href="./app/usage-workbooks.md">Raportowanie interaktywne</a><br>
                                                             <a href="./app/export-power-bi.md">Integracja Power BI</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Zbadaj
-metryk</a>                                                        </p>
+metryk</a>                                                         </p>
                                                         <br><br>
                                                         <h3>Ochrona prywatności, bezpieczeństwo, użycie &amp; koszt</h3>
                                                         <p>
@@ -211,13 +211,13 @@ metryk</a>                                                        </p>
                                                         <p>
                                                             <a href="./app/data-model.md">Omówienie</a><br>
                                                             <a href="./app/data-model-request-telemetry.md">Żądanie</a><br>
-                                                            <a href="./app/data-model-dependency-telemetry.md">Zależność</a><br>
+                                                            <a href="./app/data-model-dependency-telemetry.md">Zależności</a><br>
                                                             <a href="./app/data-model-exception-telemetry.md">Wyjątek</a><br>
                                                             <a href="./app/data-model-trace-telemetry.md">Ślad</a><br>
-                                                            <a href="./app/data-model-event-telemetry.md">Zdarzenie</a><br>
+                                                            <a href="./app/data-model-event-telemetry.md">Event</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">Metryka</a><br>
                                                             
-<a href="./app/data-model-context.md">kontekstu</a>                                                            </p>
+<a href="./app/data-model-context.md">kontekstu</a>                                                             </p>
                                                         </p>
                                                     </div>
                                                 </div>

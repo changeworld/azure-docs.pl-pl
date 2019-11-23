@@ -1,5 +1,5 @@
 ---
-title: Zadania dla pojedynczego współautora w procesie nauki danych zespołu
+title: Zadania dla poszczególnych współautora w procesie nauki o danych zespołu
 description: Szczegółowy przewodnik dotyczący zadań dla pojedynczego współautora w projekcie zespołowym analizy danych.
 author: marktab
 manager: cgronlun
@@ -17,7 +17,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 10/10/2019
 ms.locfileid: "72244256"
 ---
-# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Zadania dla pojedynczego współautora w procesie nauki danych zespołu
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Zadania dla poszczególnych współautora w procesie nauki o danych zespołu
 
 W tym temacie opisano zadania wykonywane przez *pojedynczego współautor* w celu skonfigurowania projektu w [procesie nauki o danych zespołowych](overview.md) (przetwarzania TDSP). Celem jest praca w środowisku zespołu współpracy, które jest zgodne z przetwarzania TDSP. PRZETWARZANIA TDSP zaprojektowano tak, aby pomóc w ulepszaniu współpracy i uczenia zespołu. Aby zapoznać się z zarysem ról pracowników i skojarzonych z nimi zadań, które są obsługiwane przez zespół ds. analizy danych w przetwarzania TDSP, zobacz temat [role i zadania zespołowego procesu nauki danych](roles-tasks.md).
 
@@ -45,7 +45,7 @@ W tym samouczku przyjęto założenie, że następujące zasoby i uprawnienia zo
 Aby klonować repozytoria i modyfikować zawartość na komputerze lokalnym lub DSVM lub zainstalować usługę Azure File Storage w DSVM, potrzebne są następujące elementy:
 
 - Subskrypcja platformy Azure.
-- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zapoznaj się z [dodatkiem platformy i narzędzia](platforms-and-tools.md#appendix).
+- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).
 - Jeśli chcesz użyć DSVM, system Windows lub Linux DSVM utworzony i skonfigurowany na platformie Azure. Aby uzyskać więcej informacji i instrukcje, zapoznaj się z [dokumentacją Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - W przypadku systemu Windows DSVM na komputerze zainstalowano program [git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . W pliku *README.MD* przewiń w dół do sekcji **pobieranie i instalacja** , a następnie wybierz **najnowszy Instalator**. Pobierz instalatora *exe* ze strony Instalatora i uruchom go. 
 - W przypadku systemu Linux DSVM klucz publiczny skonfigurowany na DSVM i dodany do usługi Azure DevOps. Aby uzyskać więcej informacji i instrukcje, zobacz sekcję **Tworzenie klucza publicznego SSH** w [dodatku platformy i narzędzia](platforms-and-tools.md#appendix). 
@@ -55,7 +55,7 @@ Aby klonować repozytoria i modyfikować zawartość na komputerze lokalnym lub 
 
 Aby lokalnie korzystać z repozytoriów i wypchnąć zmiany do współużytkowanego zespołu i repozytoriów projektu, należy najpierw skopiować lub *sklonować* repozytoria na komputerze lokalnym. 
 
-1. W usłudze Azure DevOps przejdź do strony podsumowania projektu zespołu przy *użyciu protokołu https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/\<team name >* , na przykład **https: \//dev. Azure. com/DataScienceUnit/Webteam**.
+1. W usłudze Azure DevOps przejdź do strony podsumowania projektu zespołu przy *użyciu protokołu https:\//\<nazwa serwera >/\<nazwa organizacji >/\<Nazwa zespołu*>, na przykład **https:\//dev.Azure.com/DataScienceUnit/myTeam**.
    
 1. Wybierz pozycję **repozytoria** w lewym okienku nawigacji, a w górnej części strony wybierz repozytorium, które chcesz sklonować.
    
@@ -100,7 +100,7 @@ Jeśli Twój zespół lub projekt ma udostępnione zasoby w usłudze Azure File 
 
 Poniżej znajdują się linki do szczegółowych opisów innych ról i zadań zdefiniowanych przez proces nauka danych zespołu:
 
-- [Zadania Menedżera grupy dla zespołu ds. analizy danych](group-manager-tasks.md)
-- [Zadania lidera zespołu dla zespołu ds. analizy danych](team-lead-tasks.md)
-- [Zadania lidera projektu dla zespołu ds. analizy danych](project-lead-tasks.md)
+- [Menedżer grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md)
+- [Zadania kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
+- [Zadania potencjalnych klientów dla zespołu do nauki o danych w projekcie](project-lead-tasks.md)
 

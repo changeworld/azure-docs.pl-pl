@@ -27,10 +27,10 @@ Poniższa tabela zawiera listę minimalnych zalecanych przepustowości dla spraw
 
 |Obciążenie        |Przykładowe aplikacje                                                                                           |Zalecana przepustowość|
 |----------------|--------------------------------------------------------------------------------------------------------------|---------------------|
-|Wykonywanie pojedynczych zadań     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1.5 @ no__t-0Mbps        |
-|Proces roboczy pakietu Office   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, podgląd zdjęć                                        |3 @ no__t — 0Mbps          |
-|Pracownik merytoryczny|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java                                  |5 @ no__t — 0Mbps          |
-|Pracownik zaawansowany    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java, CAD/kamera, ilustracja/publikowanie|15 @ no__t — 0Mbps         |
+|Wykonywanie pojedynczych zadań     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1,5&nbsp;MB/s        |
+|Proces roboczy pakietu Office   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, podgląd zdjęć                                        |3&nbsp;MB/s          |
+|Pracownik merytoryczny|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java                                  |5&nbsp;MB/s          |
+|Pracownik zaawansowany    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java, CAD/kamera, ilustracja/publikowanie|15&nbsp;MB/s         |
 
 >[!NOTE]
 >Te zalecenia są stosowane niezależnie od liczby użytkowników, którzy znajdują się w sesji.
@@ -59,6 +59,6 @@ Różne rozdzielczości wyświetlania wymagają różnych dostępnych przepustow
 >[!NOTE]
 >Te zalecenia są stosowane niezależnie od liczby użytkowników, którzy znajdują się w sesji.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 Region świadczenia usługi Azure, w którym jesteś w stanie, może mieć wpływ na środowisko użytkownika tak samo jak w przypadku warunków sieci. Zapoznaj się z tematem [szacowania pulpitu wirtualnego systemu Windows](https://azure.microsoft.com/services/virtual-desktop/assessment/) , aby dowiedzieć się więcej.
