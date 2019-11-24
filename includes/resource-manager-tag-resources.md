@@ -8,66 +8,66 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ab55441650085f6ca89f05613fe74dd4ae3cba54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b1252c455c2dfad2963f914ee746bcb932e59aa9
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183617"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451456"
 ---
-1. Aby wyświetlić tagi dla zasobu lub grupy zasobów, szuka istniejących tagów w przeglądzie. Jeśli wcześniej nie zastosowano tagów, lista będzie pusta.
+1. To view the tags for a resource or a resource group, looks for existing tags in the overview. Jeśli wcześniej nie zastosowano tagów, lista będzie pusta.
    
-     ![Wyświetl tagi dla zasobu lub grupy zasobów](./media/resource-manager-tag-resources/view-tags.png)
-1. Aby dodać tag, wybierz pozycję **kliknij tutaj, aby dodać tagi**.
+     ![View tags for resource or resource group](./media/resource-manager-tag-resources/view-tags.png)
+1. To add a tag, select **Click here to add tags**.
 
-1. Podaj nazwę i wartość. Wybierz **+** Aby dodać tag.
+1. Provide a name and value. Select **+** to add the tag.
    
-     ![Dodaj tag](./media/resource-manager-tag-resources/add-tag.png)
-1. Kontynuuj dodawanie tagów, zgodnie z potrzebami. Po zakończeniu wybierz pozycję **Zapisz**.
+     ![Add tag](./media/resource-manager-tag-resources/add-tag.png)
+1. Continue adding tags as needed. Po zakończeniu wybierz pozycję **Zapisz**.
    
-     ![Zapisz tagi](./media/resource-manager-tag-resources/save-tags.png)
-1. Tagi są teraz wyświetlane w przeglądzie.
+     ![Save tags](./media/resource-manager-tag-resources/save-tags.png)
+1. The tags are now displayed in the overview.
    
-     ![Pokaż tagi](./media/resource-manager-tag-resources/view-new-tags.png)
-1. Aby dodać lub usunąć tag, wybierz **zmienić**.
+     ![Show tags](./media/resource-manager-tag-resources/view-new-tags.png)
+1. To add or delete a tag, select **change**.
    
-1. Aby usunąć tag, wybierz ikonę Kosza na śmieci. Następnie wybierz pozycję **Zapisz**.
+1. To delete a tag, select the trash icon. Następnie wybierz pozycję **Zapisz**.
 
-     ![Usuń tag](./media/resource-manager-tag-resources/delete-tag.png)
+     ![Delete tag](./media/resource-manager-tag-resources/delete-tag.png)
 
 
-Aby zbiorczo przypisać tagi do wielu zasobów:
+To bulk assign tags to multiple resources:
 
-1. Z listy wszelkie zasoby zaznacz pole wyboru dla zasobów, którą chcesz przypisać tagu.
+1. From any list of resources, select the checkbox for the resources you want to assign the tag.
 
-     ![Wybierz wiele zasobów](./media/resource-manager-tag-resources/select-multiple-resources.png)
+     ![Select multiple resources](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Wybierz **Przypisz tagi**
+1. Select **Assign tags**
 
-     ![Przypisz tagi](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Assign tags](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. Po każdej nazwy i wartości, wybierz **+** . Po zakończeniu wybierz pozycję **przypisać**.
+1. After each name and value, select **+** . When done, select **Assign**.
 
-     ![Wybierz opcję Przypisz](./media/resource-manager-tag-resources/select-assign.png)
+     ![Select assign](./media/resource-manager-tag-resources/select-assign.png)
 
-Aby wyświetlić wszystkie zasoby przy użyciu tagu:
+To view all resources with a tag:
 
-1. Wybierz **wszystkich usług** i **tagi**.
+1. On the Azure portal menu, select **All services**. Select **General**, then **Tags**.
 
-     ![Znajdź według tagów](./media/resource-manager-tag-resources/find-tags.png)
+     ![Find by tag](./media/resource-manager-tag-resources/find-tags-general.png)
 
-1. Wybierz tag do wyświetlania zasobów.
+1. Select the tag for viewing resources.
 
-     ![Wybierz tag](./media/resource-manager-tag-resources/select-tag.png)
+     ![Select tag](./media/resource-manager-tag-resources/select-tag.png)
 
-1. Wyświetlane są wszystkie zasoby z tym tagiem.
+1. All resources with that tag are displayed.
 
-     ![Wyświetl zasoby według tagu](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+     ![View resources by tag](./media/resource-manager-tag-resources/view-resources-by-tag.png)
 
-1. Aby uzyskać szybki dostęp, numer pin widok do pulpitu nawigacyjnego.
+1. For quick access, pin the view to the dashboard.
 
      ![Przypnij do pulpitu nawigacyjnego](./media/resource-manager-tag-resources/pin-to-dashboard.png)
 
-1. Widok jest dostępny z poziomu pulpitu nawigacyjnego.
+1. The view is available from the dashboard.
 
-     ![Pulpit nawigacyjny](./media/resource-manager-tag-resources/dashboard.png)
+     ![Pulpit nawigacyjny](./media/resource-manager-tag-resources/dashboard-with-view.png)

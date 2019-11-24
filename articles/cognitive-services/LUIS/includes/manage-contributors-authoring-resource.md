@@ -8,22 +8,22 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 09/02/2018
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 4dd638d825c73d901de0c9b909307bd6995511a2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: a255a68eab6936de18d238b40f596076261049c1
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259718"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451613"
 ---
-Jeśli aplikacje muszą być tworzone przez inne osoby, należy dodać skojarzone adresy e-mail w zasobie tworzenia Azure Portal.
+If your apps need to be authored by other people, you need to add the associated email addresses in the Azure portal's authoring resource.
 
-Jeśli jesteś **właścicielem lub administratorem subskrypcji platformy Azure**, możesz dodać współautora do zasobu. 
+If you are the **owner or administrator of your Azure subscription**, you can add a contributor to the resource. 
 
-Jeśli nie jesteś **właścicielem lub administratorem subskrypcji platformy Azure**, Twoje konto platformy Azure musi mieć `Microsoft.Authorization/roleAssignments/write` uprawnienia.
+If you are **not the owner or administrator of your Azure subscription**, your Azure account needs to have `Microsoft.Authorization/roleAssignments/write` permissions.
 
-Jeśli masz problemy z tym przypisaniem roli, przejrzyj: 
+If you have trouble with this role assignment, review: 
 
-* [Przypisania ról platformy Azure](../../../role-based-access-control/role-assignments-portal.md)
- * [Rozwiązywanie problemów z kontrolą dostępu na platformie Azure](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
+* [Azure role assignments](../../../role-based-access-control/role-assignments-portal.md)
+ * [Azure access control troubleshooting](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
