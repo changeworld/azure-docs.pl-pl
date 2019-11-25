@@ -1,204 +1,267 @@
 ---
-title: Szybki Start — Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu aplikacji sieci Web w węźle | Microsoft Docs
-description: W tym przewodniku szybki start ustawisz i pobrano klucz tajny z Azure Key Vault przy użyciu aplikacji sieci Web Node
-services: key-vault
+title: Quickstart -  Azure Key Vault client library for Node.js (v4)
+description: Learn how to create, retrieve, and delete secrets from an Azure key vault using the Node.js client library
 author: msmbaldwin
-manager: rkarlin
+ms.author: mbaldwin
+ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/03/2010
-ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 376a0778e581b17462fb632d7e49f4762f54b83e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003499"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456756"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Szybki start: Ustawianie i pobieranie wpisu tajnego z Azure Key Vault przy użyciu aplikacji sieci Web Node 
+# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Quickstart: Azure Key Vault client library for Node.js (v4)
 
-W tym przewodniku szybki start przedstawiono sposób przechowywania wpisu tajnego w Azure Key Vault i sposobu pobierania go przy użyciu aplikacji sieci Web. Usługa Key Vault pomaga zabezpieczać informacje. Aby wyświetlić wartość wpisu tajnego, należy uruchomić ten przewodnik Szybki Start na platformie Azure. Samouczek Szybki start używa środowiska Node.js i zarządzanych tożsamości na potrzeby zasobów platformy Azure. Omawiane kwestie:
+Get started with the Azure Key Vault client library for Node.js. Follow the steps below to install the package and try out example code for basic tasks.
 
-* Tworzenie magazynu kluczy.
-* Zapisywanie wpisu tajnego w magazynie kluczy.
-* Pobieranie wpisu tajnego z magazynu kluczy.
-* Tworzenie aplikacji internetowej platformy Azure.
-* Włączanie [tożsamości zarządzanej](../active-directory/managed-service-identity/overview.md) dla aplikacji internetowej.
-* Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji internetowej odczytu danych z magazynu kluczy.
+Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Use the Key Vault client library for Node.js to:
 
-Przed kontynuowaniem upewnij się, że znasz [podstawowe pojęcia dotyczące Key Vault](basic-concepts.md).
+- Increase security and control over keys and passwords.
+- Create and import encryption keys in minutes.
+- Reduce latency with cloud scale and global redundancy.
+- Simplify and automate tasks for SSL/TLS certificates.
+- Use FIPS 140-2 Level 2 validated HSMs.
 
-> [!NOTE]
-> Usługa Key Vault to centralne repozytorium do programistycznego przechowywania wpisów tajnych. W tym celu aplikacje i użytkownicy muszą najpierw uwierzytelnić się w usłudze Key Vault — czyli podać wpis tajny. Aby zastosować najlepsze rozwiązania dotyczące bezpieczeństwa, pierwszy wpis tajny musi być okresowo obracany. 
->
-> Dzięki [tożsamościom usługi zarządzanej dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) aplikacje uruchamiane na platformie Azure uzyskują tożsamość, która jest automatycznie zarządzana przez tę platformę. Dzięki temu można rozwiązać *początkowy problem dotyczący wpisu tajnego*, gdzie użytkownicy i aplikacje mogą postępować zgodnie z najlepszymi wskazówkami i nie muszą pamiętać o obracaniu pierwszego wpisu tajnego.
+[API reference documentation](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [Package (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Node.js](https://nodejs.org/en/)
-* [Usługa Git](https://www.git-scm.com/)
-* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 lub nowszy. Ten przewodnik Szybki Start wymaga lokalnego uruchomienia interfejsu wiersza polecenia platformy Azure. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest).
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- An Azure subscription - [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Current [Node.js](https://nodejs.org) for your operating system.
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) or [Azure PowerShell](/powershell/azure/overview)
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+This quickstart assumes you are running [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) in a Linux terminal window.
 
-Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, wpisz:
+## <a name="setting-up"></a>Setting up
+
+### <a name="install-the-package"></a>Install the package
+
+From the console window, install the Azure Key Vault secrets library for Node.js.
+
+```console
+npm install @azure/keyvault-secrets
+```
+
+For this quickstart, you will need to install the azure.identity package as well:
+
+```console
+npm install @azure/identity
+```
+
+### <a name="create-a-resource-group-and-key-vault"></a>Create a resource group and key vault
+
+This quickstart uses a pre-created Azure key vault. You can create a key vault by following the steps in the [Azure CLI quickstart](quick-create-cli.md), [Azure PowerShell quickstart](quick-create-powershell.md), or [Azure portal quickstart](quick-create-portal.md). Alternatively, you can simply run the Azure CLI commands below.
+
+> [!Important]
+> Each key vault must have a unique name. Replace <your-unique-keyvault-name> with the name of your key vault in the following examples.
 
 ```azurecli
-az login
+az group create --name "myResourceGroup" -l "EastUS"
+
+az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
+The simplest way to authenticate an cloud-based application is with a managed identity; see [Use an App Service managed identity to access Azure Key Vault](managed-identity.md) for details. For the sake of simplicity however, this quickstarts creates a console application. Authenticating a desktop application with Azure requires the use of a service principal and an access control policy.
 
-Wybierz nazwę grupy zasobów i wypełnij symbol zastępczy.
-Poniższy przykład tworzy grupę zasobów w lokalizacji Wschodnie stany USA.
+Create a service principle using the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command:
 
 ```azurecli
-# To list locations: az account list-locations --output table
-az group create --name "<YourResourceGroupName>" --location "East US"
+az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-W tym artykule jest używana właśnie utworzona grupa zasobów.
-
-## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
-
-Następnie utworzysz Magazyn kluczy za pomocą grupy zasobów utworzonej w poprzednim kroku. Chociaż w tym artykule użyto nazwy "ContosoKeyVault", musisz użyć unikatowej nazwy. Podaj następujące informacje:
-
-* Nazwa magazynu kluczy.
-* Nazwa grupy zasobów. nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki 0–9, a–z, A–Z i myślnik (-).
-* Lokalizacja: **Wschodnie stany USA**.
+This operation will return a series of key / value pairs. 
 
 ```azurecli
-az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
+{
+  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
+  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
+  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
+  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
 ```
 
-Twoje konto platformy Azure jest teraz jedynym kontem z uprawnieniami do wykonywania jakichkolwiek operacji na tym nowym magazynie.
+Take note of the clientId and clientSecret, as we will use them in the [Set environmental variable](#set-environmental-variables) step below.
 
-## <a name="add-a-secret-to-the-key-vault"></a>Dodawanie wpisu tajnego do magazynu kluczy
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Give the service principal access to your key vault
 
-Dodajemy wpis tajny, aby zilustrować, jak to działa. Możesz zapisywać parametry połączenia SQL lub inne informacje, które muszą być przechowywane bezpiecznie, ale jednocześnie być dostępne dla aplikacji. W tym samouczku hasło będzie miało nazwę **AppSecret** i będzie w nim przechowywana wartość **MySecret**.
-
-Wpisz następujące polecenia, aby utworzyć wpis tajny w magazynie kluczy o nazwie **AppSecret**. Ten wpis tajny będzie przechowywał wartość **MySecret**.
+Create an access policy for your key vault that grants permission to your service principal by passing the clientId to the [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) command. Give the service principal get, list, and set permissions for both keys and secrets.
 
 ```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-Aby wyświetlić wartość zawartą we wpisie tajnym jako zwykły tekst:
+#### <a name="set-environmental-variables"></a>Set environmental variables
+
+The DefaultAzureCredential method in our application relies on three environmental variables: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID`. Set these variables to the clientId, clientSecret, and tenantId values you noted in the [Create a service principal](#create-a-service-principal) step using the `export VARNAME=VALUE` format. (This only sets the variables for your current shell and processes created from the shell; to permanently add these variables to your environment, edit your `/etc/environment ` file.) 
+
+You will also need to save your key vault name as an environment variable called `KEY_VAULT_NAME`.
+
+```console
+export AZURE_CLIENT_ID=<your-clientID>
+
+export AZURE_CLIENT_SECRET=<your-clientSecret>
+
+export AZURE_TENANT_ID=<your-tenantId>
+
+export KEY_VAULT_NAME=<your-key-vault-name>
+````
+
+## <a name="object-model"></a>Object model
+
+The Azure Key Vault client library for Node.js allows you to manage keys and related assets such as certificates and secrets. The code samples below will show you how to create a client, set a secret, retrieve a secret, and delete a secret.
+
+The entire console app is available at https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+
+## <a name="code-examples"></a>Code examples
+
+### <a name="add-directives"></a>Add directives
+
+Add the following directives to the top of your code:
+
+```javascript
+const { DefaultAzureCredential } = require("@azure/identity");
+const { SecretClient } = require("@azure/keyvault-secrets");
+```
+
+### <a name="authenticate-and-create-a-client"></a>Authenticate and create a client
+
+Authenticating to your key vault and creating a key vault client depends on the environmental variables from the [Set environmental variables](#set-environmental-variables) step above, and the [SecretClient constructor](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-). 
+
+The name of your key vault is expanded to the key vault URI, in the format `https://<your-key-vault-name>.vault.azure.net`. 
+
+```javascript
+const keyVaultName = process.env["KEY_VAULT_NAME"];
+const KVUri = "https://" + keyVaultName + ".vault.azure.net";
+
+const credential = new DefaultAzureCredential();
+const client = new SecretClient(KVUri, credential);
+```
+
+### <a name="save-a-secret"></a>Save a secret
+
+Now that your application is authenticated, you can put a secret into your keyvault using the [client.setSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setsecret-string--string--setsecretoptions-) This requires a name for the secret -- we're using "mySecret" in this sample.  
+
+```javascript
+await client.setSecret(secretName, secretValue);
+```
+
+You can verify that the secret has been set with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
 
 ```azurecli
-az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-To polecenie wyświetla informacje o wpisie tajnym, w tym identyfikator URI. Po wykonaniu tych kroków będziesz mieć identyfikator URI wpisu tajnego w magazynie kluczy. Zanotuj te informacje. Będą one potrzebne w kolejnym kroku.
+### <a name="retrieve-a-secret"></a>Retrieve a secret
 
-## <a name="clone-the-repo"></a>Klonowanie repozytorium
+You can now retrieve the previously set value with the [client.getSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getsecret-string--getsecretoptions-).
 
-Sklonuj repozytorium tak, aby utworzyć kopię lokalną, gdzie możesz edytować źródło. Uruchom następujące polecenie:
+```javascript
+const retrievedSecret = await client.getSecret(secretName);
+ ```
 
+Your secret is now saved as `retrievedSecret.value`.
+
+### <a name="delete-a-secret"></a>Usuń klucz tajny
+
+Finally, let's delete the secret from your key vault with the [client.beginDeleteSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#begindeletesecret-string--begindeletesecretoptions-).
+
+```javascript
+await client.beginDeleteSecret(secretName)
 ```
-git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
-```
 
-## <a name="install-dependencies"></a>Instalowanie zależności
-
-Uruchom następujące polecenia, aby zainstalować zależności:
-
-```
-cd key-vault-node-quickstart
-npm install
-```
-
-W tym projekcie są używane dwa moduły węzłów: [MS-REST-Azure](https://www.npmjs.com/package/ms-rest-azure) i [Azure-](https://www.npmjs.com/package/azure-keyvault)kluczy.
-
-## <a name="publish-the-web-app-to-azure"></a>Publikowanie aplikacji internetowej na platformie Azure
-
-Utwórz plan [Azure App Service](https://azure.microsoft.com/services/app-service/) . Ten plan pozwala na przechowywanie wielu aplikacji internetowych.
-
-    ```
-    az appservice plan create --name myAppServicePlan --resource-group myResourceGroup
-    ```
-Następnie Utwórz aplikację sieci Web. W poniższym przykładzie Zastąp `<app_name>` wartość globalnie unikatową nazwą aplikacji (prawidłowe znaki to a-z, 0-9 i-). Środowisko uruchomieniowe ma ustawioną wartość NODE|6.9. Aby wyświetlić wszystkie obsługiwane środowiska uruchomieniowe, `az webapp list-runtimes`Uruchom polecenie.
-
-    ```
-    # Bash
-    az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9" --deployment-local-git
-    ```
-Po utworzeniu aplikacji internetowej w interfejsie wiersza polecenia platformy Azure zostaną wyświetlone dane wyjściowe podobne do następujących:
-
-    ```
-    {
-      "availabilityState": "Normal",
-      "clientAffinityEnabled": true,
-      "clientCertEnabled": false,
-      "cloningInfo": null,
-      "containerSize": 0,
-      "dailyMemoryTimeQuota": 0,
-      "defaultHostName": "<app_name>.azurewebsites.net",
-      "enabled": true,
-      "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git"
-      < JSON data removed for brevity. >
-    }
-    ```
-Przejdź do nowo utworzonej aplikacji sieci Web i sprawdź, czy działa. Zastąp `<app_name>` unikatową nazwą aplikacji.
-
-    ```
-    http://<app name>.azurewebsites.net
-    ```
-Powyższe polecenie tworzy również aplikację obsługującą git, która umożliwia wdrażanie na platformie Azure z lokalnego repozytorium git. Lokalne repozytorium git jest skonfigurowane przy użyciu tego adresu URL `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`:.
-
-Po zakończeniu poprzedniego polecenia możesz dodać zdalne Azure do lokalnego repozytorium git. Zamień `<url>` na adres URL repozytorium git.
-
-    ```
-    git remote add azure <url>
-    ```
-
-## <a name="enable-a-managed-identity-for-the-web-app"></a>Włączanie tożsamości zarządzanej dla aplikacji internetowej
-
-Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. [Tożsamości zarządzane dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) ułatwiają rozwiązanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
-
-Uruchom polecenie assign-identity w celu utworzenia tożsamości dla tej aplikacji:
+You can verify that the secret is gone with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
 
 ```azurecli
-az webapp identity assign --name <app_name> --resource-group "<YourResourceGroupName>"
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-To polecenie odpowiada przejściu do portalu i przełączeniu ustawienia **Przypisana tożsamość/system** na wartość **Włączone** we właściwościach aplikacji internetowej.
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Przypisywanie do aplikacji uprawnień odczytu wpisów tajnych z usługi Key Vault
-
-Zanotuj dane wyjściowe poprzedniego polecenia. Powinny one mieć następujący format:
-        
-        {
-          "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "type": "SystemAssigned"
-        }
-        
-Następnie uruchom następujące polecenie, używając nazwy magazynu kluczy i wartości **principalId**:
+When no longer needed, you can use the Azure CLI or Azure PowerShell to remove your key vault and the corresponding  resource group.
 
 ```azurecli
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get set
+az group delete -g "myResourceGroup" -l "EastUS" 
 ```
 
-## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>Wdróż aplikację węzła na platformie Azure i Pobierz wartość klucza tajnego
-
-Uruchom następujące polecenie, aby wdrożyć aplikację na platformie Azure:
-
-```
-git push azure master
+```azurepowershell
+Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-Po przejściu do `https://<app_name>.azurewebsites.net`sekcji można zobaczyć wartość klucza tajnego. Upewnij się, że nazwa `<YourKeyVaultName>` została zamieniona na nazwę magazynu.
+## <a name="sample-code"></a>Przykładowy kod
+
+```javascript
+const { DefaultAzureCredential } = require("@azure/identity");
+const { SecretClient } = require("@azure/keyvault-secrets");
+
+const readline = require('readline');
+
+function askQuestion(query) {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+
+    return new Promise(resolve => rl.question(query, ans => {
+        rl.close();
+        resolve(ans);
+    }))
+}
+
+async function main() {
+
+  const keyVaultName = process.env["KEY_VAULT_NAME"];
+  const KVUri = "https://" + keyVaultName + ".vault.azure.net";
+
+  const credential = new DefaultAzureCredential();
+  const client = new SecretClient(KVUri, credential);
+
+  const secretName = "mySecret";
+  var secretValue = await askQuestion("Input the value of your secret > ");
+
+  console.log("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+  await client.setSecret(secretName, secretValue);
+
+  console.log("Done.");
+
+  console.log("Forgetting your secret.");
+  secretValue = "";
+  console.log("Your secret is '" + secretValue + "'.");
+
+  console.log("Retrieving your secret from " + keyVaultName + ".");
+
+  const retrievedSecret = await client.getSecret(secretName);
+
+  console.log("Your secret is '" + retrievedSecret.value + "'.");
+  console.log("Deleting your secret from " + keyVaultName + " ...");
+
+  await client.beginDeleteSecret(secretName);
+
+  console.log("Done.");
+
+}
+
+main()
+
+```
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono Key Vault i Zapisano w nim wpis tajny. Aby dowiedzieć się więcej na temat Key Vault i sposobu integrowania go z aplikacjami, przejdź do artykułu poniżej.
+In this quickstart you created a key vault, stored a secret, and retrieved that secret. 
 
-- Zapoznaj się [z omówieniem Azure Key Vault](key-vault-overview.md)
-- Zobacz [przewodnik dewelopera Azure Key Vault](key-vault-developers-guide.md)
-- Informacje o [kluczach, wpisach tajnych i certyfikatach](about-keys-secrets-and-certificates.md)
-- Przegląd [Azure Key Vault najlepszych](key-vault-best-practices.md) rozwiązań
+To learn more about Key Vault and how to integrate it with your applications, continue on to the articles below.
+
+- Read an [Overview of Azure Key Vault](key-vault-overview.md)
+- See the [Azure Key Vault developer's guide](key-vault-developers-guide.md)
+- Learn about [keys, secrets, and certificates](about-keys-secrets-and-certificates.md)
+- Review [Azure Key Vault best practices](key-vault-best-practices.md)
