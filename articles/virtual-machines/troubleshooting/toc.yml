@@ -171,13 +171,16 @@
       items:
         - name: Interfejs wiersza polecenia
           href: troubleshoot-recovery-disks-linux.md
-        - name: Azure Portal
+        - name: Portal Azure
           href: troubleshoot-recovery-disks-portal-linux.md
-- name: Błędy rozruchu
-  href: boot-error-troubleshoot.md
+- name: Błędy rozruchu systemu Linux
+  href: boot-error-troubleshoot-linux.md
   items:
     - name: Ratunkowy tryb GRUB
       href: troubleshoot-vm-boot-error.md
+- name: Błędy rozruchu systemu Windows
+  href: boot-error-troubleshoot.md
+  items:
     - name: Diagnostyka rozruchu
       href: boot-diagnostics.md
     - name: Błędy funkcji BitLocker

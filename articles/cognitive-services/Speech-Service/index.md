@@ -4,12 +4,12 @@ ms.date: 10-19-2019
 ms.topic: hub-page
 title: Dokumentacja usługi rozpoznawania mowy
 description: Wprowadzenie do usługi Mowa.
-ms.openlocfilehash: 0a07125764908b661216c20279ab4bdf80ae91ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e9fda2788b28ba882b5c5eb232bfd2ffbc85f049
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580327"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406186"
 ---
 <div id="main" class="v2">    
     <div class="container">
@@ -271,7 +271,7 @@ ms.locfileid: "73580327"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Rozpoznawanie mowy, intencji i jednostek</h3>
-                                                    <p>Rozpoznawaj mowę, intencję i jednostki za pomocą zestawu SDK usługi Mowa oraz usługi LUIS.</p>
+                                                    <p>Rozpoznawaj mowę, intencję i jednostki za pomocą zestawu SDK usługi Mowa oraz usługi Language Understanding (LUIS).</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +289,7 @@ ms.locfileid: "73580327"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Dokumentacja usługi LUIS</h3>
+                                                    <h3>Dokumentacja usługi Language Understanding (LUIS)</h3>
                                                     <p>Dowiedz się więcej na temat usługi Language Understanding (LUIS) i przetwarzania języka naturalnego.</p>
                                                 </div>
                                             </div>
@@ -308,7 +308,7 @@ ms.locfileid: "73580327"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Portal usługi LUIS</h3>
+                                                    <h3>Portal usługi Language Understanding (LUIS)</h3>
                                                     <p>Dodawaj obsługę języka naturalnego do aplikacji, botów i urządzeń IoT.</p>
                                                 </div>
                                             </div>

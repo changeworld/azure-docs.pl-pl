@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1546ded1977e1e26792189e1d992d106d3d77ef2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572076"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271282"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Używanie certyfikatu protokołu SSL w kodzie w Azure App Service
 
@@ -38,9 +38,9 @@ Aby wykonać następujące czynności:
 
 ## <a name="find-the-thumbprint"></a>Znajdowanie odcisku palca
 
-W <a href="https://portal.azure.com" target="_blank">Azure Portal</a>z menu po lewej stronie wybierz pozycję **App Services** >  **\<App-Name >** .
+W <a href="https://portal.azure.com" target="_blank">Azure Portal</a>z menu po lewej stronie wybierz pozycję **App Services** > **\<App-Name >**.
 
-W lewym panelu nawigacyjnym aplikacji wybierz pozycję **Ustawienia protokołu TLS/SSL**, a następnie wybierz pozycję **certyfikaty kluczy prywatnych (pfx)** lub **Certyfikaty klucza publicznego (CER)** .
+W lewym panelu nawigacyjnym aplikacji wybierz pozycję **Ustawienia protokołu TLS/SSL**, a następnie wybierz pozycję **certyfikaty kluczy prywatnych (pfx)** lub **Certyfikaty klucza publicznego (CER)**.
 
 Znajdź certyfikat, którego chcesz użyć, i Skopiuj odcisk palca.
 
@@ -141,6 +141,8 @@ Jeśli zachodzi potrzeba załadowania pliku certyfikatu, który zostanie przekaz
 > ```azurecli-interactive
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
+>
+> Takie podejście do korzystania z certyfikatów w kodzie korzysta z funkcji SSL w App Service, co wymaga, aby aplikacja była w warstwie **podstawowa** lub wyższa.
 
 Poniższy C# przykład ładuje certyfikat publiczny ze ścieżki względnej w aplikacji:
 
@@ -161,5 +163,5 @@ Aby dowiedzieć się, jak załadować certyfikat SSL z pliku w Node. js, PHP, Py
 
 * [Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL](configure-ssl-bindings.md)
 * [Wymuszanie protokołu HTTPS](configure-ssl-bindings.md#enforce-https)
-* [Wymuś protokół TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
+* [Enforce TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [Często zadawane pytania: certyfikaty App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

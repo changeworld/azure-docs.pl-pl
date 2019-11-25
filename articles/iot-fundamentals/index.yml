@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: b99b45427cf793eec4f6257190823c102b838cfa
-  ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+  ms.openlocfilehash: cbd3a4dbaa80119d72cd54efa7dd2dc751b91b40
+  ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/10/2019
-  ms.locfileid: "73903344"
+  ms.lasthandoff: 11/23/2019
+  ms.locfileid: "74422818"
 highlightedContent:
   items:
   - title: Co to jest usługa Azure IoT?
@@ -40,7 +40,7 @@ conceptualContent:
   title: Rozpoczynanie tworzenia rozwiązania IoT
   summary: Usługa Azure IoT oferuje platformy IoT w chmurze i brzegowe, a także w pełni zarządzane rozwiązania IoT
   items:
-  - title: Tworzenie własnego rozwiązania IoT za pomocą usługi Azure IoT Hub
+  - title: Tworzenie własnego rozwiązania chmurowego IoT
     links:
     - url: ../iot-hub/about-iot-hub.md
       itemType: overview
@@ -54,7 +54,7 @@ conceptualContent:
     footerLink:
       url: ../iot-hub/index.yml
       text: Zobacz więcej
-  - title: Wdrażanie w pełni zarządzanego rozwiązania IoT za pomocą usługi Azure IoT Central
+  - title: Wdrażanie w pełni zarządzanego rozwiązania IoT
     links:
     - url: ../iot-central/core/overview-iot-central.md
       itemType: overview
@@ -68,7 +68,7 @@ conceptualContent:
     footerLink:
       url: ../iot-central/core/index.yml
       text: Zobacz więcej
-  - title: Dostosowywanie wstępnie utworzonego rozwiązania IoT za pomocą akceleratorów rozwiązań usługi Azure IoT
+  - title: Dostosowywanie wstępnie utworzonego rozwiązania IoT
     links:
     - url: ../iot-accelerators/about-iot-accelerators.md
       itemType: overview
@@ -82,7 +82,7 @@ conceptualContent:
     footerLink:
       url: ../iot-accelerators/index.md
       text: Zobacz więcej
-  - title: Uruchamianie rozwiązań inteligentnych w chmurze na urządzeniach za pomocą usługi Azure IoT Edge
+  - title: Uruchamianie analizy chmury na urządzeniach brzegowych
     links:
     - url: ../iot-edge/about-iot-edge.md
       itemType: overview
@@ -96,7 +96,7 @@ conceptualContent:
     footerLink:
       url: ../iot-edge/index.yml
       text: Zobacz więcej
-  - title: Tworzenie połączonych i inteligentnych infrastruktur za pomocą usługi Azure Digital Twins
+  - title: Tworzenie połączonej i inteligentnej infrastruktury
     links:
     - url: ../digital-twins/about-digital-twins.md
       itemType: overview
@@ -110,7 +110,7 @@ conceptualContent:
     footerLink:
       url: ../digital-twins/index.yml
       text: Zobacz więcej
-  - title: Bezpieczne aprowizowanie urządzeń na dużą skalę przy użyciu usługi Azure IoT Hub Device Provisioning Service
+  - title: Bezpieczne aprowizowanie urządzeń na dużą skalę
     links:
     - url: ../iot-dps/about-iot-dps.md
       itemType: overview
@@ -124,7 +124,7 @@ conceptualContent:
     footerLink:
       url: ../iot-dps/index.yml
       text: Zobacz więcej
-  - title: Badanie i analizowanie danych urządzeń za pomocą usługi Azure Time Series Insights
+  - title: Eksplorowanie i analizowanie danych urządzenia
     links:
     - url: ../time-series-insights/time-series-insights-update-overview.md
       itemType: overview
@@ -138,7 +138,7 @@ conceptualContent:
     footerLink:
       url: ../time-series-insights/index.yml
       text: Zobacz więcej
-  - title: Wdrażanie mobilności w przedsiębiorstwie za pomocą usługi Azure Maps
+  - title: Wdrażanie mobilności w przedsiębiorstwie
     links:
     - url: ../azure-maps/about-azure-maps.md
       itemType: overview

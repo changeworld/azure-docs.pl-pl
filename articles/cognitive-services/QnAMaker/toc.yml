@@ -12,12 +12,8 @@
       href: quickstarts/create-publish-knowledge-base.md
     - name: Dodawanie pytań za pomocą metadanych
       href: quickstarts/add-question-metadata-portal.md
-    - name: Uzyskiwanie odpowiedzi
-      items:
-        - name: Używanie narzędzia Postman
-          href: Quickstarts/get-answer-from-kb-using-postman.md
-        - name: Używanie programu cURL
-          href: Quickstarts/get-answer-from-kb-using-cURL.md
+    - name: Uzyskiwanie odpowiedzi przy użyciu narzędzia Postman lub cURL
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: Korzystanie z interfejsów API REST
       items:
         - name: Tworzenie nowej bazy wiedzy

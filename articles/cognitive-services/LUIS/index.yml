@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentacja usługi Language Understanding (LUIS)
-summary: Dowiedz się, jak używać usługi Language Understanding, aby umożliwić aplikacji rozpoznawanie poleceń wydawanych naturalnymi słowami.
+summary: Dowiedz się, jak usługa Language Understanding umożliwia aplikacji rozpoznawanie poleceń wydawanych naturalnymi słowami.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/19/2019
+  ms.date: 11/22/2019
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Dokumentacja usługi Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Usługa Language Understanding (LUIS) umożliwia aplikacji rozpoznawanie poleceń wydawanych naturalnymi słowami. Usługa LUIS korzysta z uczenia maszynowego, aby umożliwić deweloperom tworzenie aplikacji odbierających dane wejściowe użytkownika w języku naturalnym i wyodrębniających ich znaczenie.
-  ms.openlocfilehash: 70249b540e53ab8182a25f81d7401697b2b888c1
-  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  ms.openlocfilehash: 14386a08b92814b16fb007e4dd01cb4bb5238c0a
+  ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71155031"
+  ms.lasthandoff: 11/22/2019
+  ms.locfileid: "74406150"
 landingContent:
 - title: Informacje o usłudze Language Understanding (LUIS)
   linkLists:
@@ -25,16 +25,18 @@ landingContent:
     links:
     - text: Co to jest rozumienie języka?
       url: what-is-luis.md
-    - text: Co nowego
-      url: whats-new.md
     - text: Portal usługi LUIS
       url: https://www.luis.ai
   - linkListType: concept
     links:
     - text: Planowanie aplikacji
       url: luis-how-plan-your-app.md
-    - text: Cykl tworzenia aplikacji
+    - text: Projekt aplikacji iteracyjnej
       url: luis-concept-app-iteration.md
+  - linkListType: whats-new
+    links:
+    - text: Co nowego?
+      url: whats-new.md
   - linkListType: video
     links:
     - text: 'Pokaz sztucznej inteligencji: LUIS'
@@ -47,9 +49,9 @@ landingContent:
       url: luis-concept-intent.md
     - text: Jednostki
       url: luis-concept-entity-types.md
-    - text: Dobra przykładowa wypowiedź
+    - text: Wypowiedzi
       url: luis-concept-utterance.md
-    - text: Funkcje list fraz
+    - text: Funkcje listy fraz
       url: luis-concept-feature.md
   - linkListType: quickstart
     links:
@@ -89,15 +91,15 @@ landingContent:
       url: sdk-python-quickstart-authoring-app.md#train-the-app
   - linkListType: how-to-guide
     links:
-    - text: Przechowywanie wersji aplikacji
+    - text: Obsługa wersji aplikacji
       url: luis-how-to-manage-versions.md
-    - text: Testowanie interakcyjne
+    - text: Wykonywanie testowania interakcyjnego
       url: luis-interactive-test.md
-    - text: Testowanie wsadowe
+    - text: Wykonywanie testowania wsadowego
       url: luis-how-to-batch-test.md
-    - text: Trenowanie aplikacji
+    - text: Uczenie aplikacji
       url: luis-how-to-train.md
-    - text: Publikowanie w celu używania punktu końcowego przewidywania
+    - text: Publikowanie punktu końcowego przewidywania
       url: luis-how-to-publish-app.md
 - title: Pobieranie przewidywania z punktu końcowego
   linkLists:
@@ -123,7 +125,7 @@ landingContent:
     links:
     - text: Zasoby deweloperów
       url: developer-reference-resource.md
-    - text: Limity aplikacji
+    - text: Ograniczenia aplikacji
       url: luis-boundaries.md
     - text: Wstępnie utworzone jednostki
       url: luis-reference-prebuilt-entities.md

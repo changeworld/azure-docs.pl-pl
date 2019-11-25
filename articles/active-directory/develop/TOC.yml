@@ -289,6 +289,8 @@
               items:
                 - name: Obsługa usług ADFS na platformie MSAL.NET
                   href: msal-net-adfs-support.md
+                - name: Obsługa usług ADFS na platformie MSAL dla języka Java
+                  href: msal-java-adfs-support.md
             - name: Integracja z usługą Azure AD B2C
               items:
                 - name: Android

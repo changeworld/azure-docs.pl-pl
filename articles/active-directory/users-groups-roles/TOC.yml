@@ -86,6 +86,8 @@
           href: groups-members-owners-search.md
         - name: Tworzenie grupy (Azure Portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Przypisywanie etykiet poufności (wersja zapoznawcza)
+          href: groups-assign-sensitivity-labels.md
         - name: Zarządzanie grupami — program PowerShell dla programu Graph (wersja 2)
           href: groups-settings-v2-cmdlets.md
         - name: Zarządzanie grupami — moduł PowerShell MSOnline

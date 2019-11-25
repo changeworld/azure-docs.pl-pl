@@ -34,32 +34,42 @@
           href: connect-macos.md
         - name: Nawiązywanie połączenia z klientem systemu iOS
           href: connect-ios.md
-    - name: Tworzenie puli hostów za pomocą szablonu usługi Azure Resource Manager
-      href: create-host-pools-arm-template.md
-    - name: Tworzenie puli hostów przy użyciu programu PowerShell
-      href: create-host-pools-powershell.md
-    - name: Wdrażanie maszyny wirtualnej z systemem Windows 7 w usłudze Windows Virtual Desktop
-      href: deploy-windows-7-virtual-machine.md
-    - name: Stosowanie licencji systemu Windows do hostów sesji usługi Windows Virtual Desktop
+    - name: Tworzenie puli hostów i hostów sesji
+      items:
+        - name: Szablon usługi Azure Resource Manager
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell.md
+        - name: Wdrażanie maszyny wirtualnej z systemem Windows 7
+          href: deploy-windows-7-virtual-machine.md
+        - name: Wdrażanie hosta sesji opartego na procesorze graficznym
+          href: configure-vm-gpu.md
+    - name: Tworzenie kontenera profilu
+      items:
+        - name: Używanie udziału plików opartego na maszynie wirtualnej
+          href: create-host-pools-user-profile.md
+        - name: Używanie usługi Azure NetApp Files
+          href: create-fslogix-profile-container.md
+    - name: Konfigurowanie ustawień puli hostów
+      items:
+        - name: Właściwości RDP
+          href: customize-rdp-properties.md
+        - name: Równoważenie obciążenia dla pul hostów w pulach
+          href: configure-host-pool-load-balancing.md
+    - name: Używanie licencji Windows Virtual Desktop
       href: apply-windows-license.md
     - name: Tworzenie kontenera profilu dla puli hostów za pomocą udziału plików
       href: create-host-pools-user-profile.md
-    - name: Tworzenie kontenera profilu dla puli hostów za pomocą usługi Azure NetApp Files
-      href: create-fslogix-profile-container.md
-    - name: Konfigurowanie metody równoważenia obciążenia usługi Windows Virtual Desktop
-      href: configure-host-pool-load-balancing.md
-    - name: Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
-      href: set-up-customize-master-image.md
-    - name: Instalowanie pakietu Office w głównym obrazie wirtualnego dysku twardego
-      href: install-office-on-wvd-master-image.md
-    - name: Konfigurowanie procesora GPU dla usługi Windows Virtual Desktop
-      href: configure-vm-gpu.md
+    - name: Dostosowywanie obrazu hosta sesji
+      items:
+        - name: Konfigurowanie głównego obrazu wirtualnego dysku twardego
+          href: set-up-customize-master-image.md
+        - name: Instalowanie pakietu Office w głównym obrazie wirtualnego dysku twardego
+          href: install-office-on-wvd-master-image.md
     - name: Dynamiczne skalowanie hostów sesji
       href: set-up-scaling-script.md
-    - name: Dostosowywanie kanału informacyjnego dla użytkowników usługi Windows Virtual Desktop
+    - name: Dostosowywanie źródła
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Dostosowywanie właściwości protokołu RDP
-      href: customize-rdp-properties.md
     - name: Wdrażanie narzędzia diagnostycznego
       href: deploy-diagnostics.md
     - name: Konfigurowanie dołączania aplikacji MSIX
