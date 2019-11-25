@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z biblioteki Microsoft Authentication Library (MSAL) w chmurach narodowych — platforma tożsamości firmy Microsoft
-description: Biblioteka Microsoft Authentication Library (MSAL) umożliwia deweloperom aplikacji uzyskanie tokenów w celu wywołania zabezpieczonych interfejsów API sieci Web. Te interfejsy API sieci Web mogą być Microsoft Graph, inne interfejsy API firmy Microsoft, interfejsy API sieci Web partnera lub własny internetowy interfejs API. MSAL obsługuje wiele architektur aplikacji i platform.
+title: Use Microsoft Authentication Library (MSAL) in national clouds - Microsoft identity platform
+description: Microsoft Authentication Library (MSAL) enables application developers to acquire tokens in order to call secured web APIs. These web APIs can be Microsoft Graph, other Microsoft APIs, partner web APIs, or your own web API. MSAL supports multiple application architectures and platforms.
 services: active-directory
 documentationcenter: dev-center-name
 author: negoe
@@ -12,87 +12,91 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97855a52831a63a92a46bd0d25d23ba3fc91a07b
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 5c8f6ba4d5b983fc0bf73b0b07d4a8d4f202ad5b
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268576"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452592"
 ---
-# <a name="use-msal-in-a-national-cloud-environment"></a>Korzystanie z MSAL w środowisku chmury krajowej
+# <a name="use-msal-in-a-national-cloud-environment"></a>Use MSAL in a national cloud environment
 
-[Chmury krajowe](authentication-national-cloud.md) to fizyczne izolowane wystąpienia platformy Azure. Te regiony pomocy systemu Azure zapewniają, że wymagania dotyczące miejsca zamieszkania, suwerenności i zgodności są honorowane w granicach geograficznych.
+[National clouds](authentication-national-cloud.md), also known as Sovereign clouds, are physically isolated instances of Azure. These regions of Azure help make sure that data residency, sovereignty, and compliance requirements are honored within geographical boundaries.
 
-Oprócz chmury Microsoft Worldwide Library, biblioteka uwierzytelniania firmy Microsoft (MSAL) umożliwia deweloperom aplikacji w chmurach narodowych uzyskanie tokenów w celu uwierzytelniania i wywoływania zabezpieczonych interfejsów API sieci Web. Te interfejsy API sieci Web mogą być Microsoft Graph lub innych interfejsów API firmy Microsoft.
+In addition to the Microsoft worldwide cloud, the Microsoft Authentication Library (MSAL) enables application developers in national clouds to acquire tokens in order to authenticate and call secured web APIs. These web APIs can be Microsoft Graph or other Microsoft APIs.
 
-W tym chmurę globalną usługa Azure Active Directory (Azure AD) jest wdrażana w następujących chmurach narodowych:  
+Including the global cloud, Azure Active Directory (Azure AD) is deployed in the following national clouds:  
 
-- Azure Government
+- Platforma Azure dla instytucji rządowych
 - Azure w Chinach — 21Vianet
 - Azure (Niemcy)
 
-W tym przewodniku pokazano, jak zalogować się do kont służbowych, uzyskać token dostępu i wywołać interfejs API Microsoft Graph w środowisku [chmury Azure Government](https://azure.microsoft.com/global-infrastructure/government/) .
+This guide demonstrates how to sign in to work and school accounts, get an access token, and call the Microsoft Graph API in the [Azure Government cloud](https://azure.microsoft.com/global-infrastructure/government/) environment.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że spełniono te wymagania wstępne.
+Before you start, make sure that you meet these prerequisites.
 
-### <a name="choose-the-appropriate-identities"></a>Wybierz odpowiednie tożsamości
+### <a name="choose-the-appropriate-identities"></a>Choose the appropriate identities
 
-Aplikacje [Azure Government](https://docs.microsoft.com/azure/azure-government/) mogą uwierzytelniać użytkowników przy użyciu tożsamości instytucji rządowych usługi Azure AD i publicznych tożsamości usługi Azure AD. Ponieważ można użyć dowolnej z tych tożsamości, należy zdecydować, który punkt końcowy urzędu należy wybrać dla danego scenariusza:
+[Azure Government](https://docs.microsoft.com/azure/azure-government/) applications can use Azure AD Government identities and Azure AD Public identities to authenticate users. Because you can use any of these identities, you need to decide which authority endpoint you should choose for your scenario:
 
-- Publiczna usługa Azure AD: Często używane, jeśli organizacja ma już dzierżawę publiczną usługi Azure AD do obsługi pakietu Office 365 (Public lub w zatoce) lub innej aplikacji.
-- Usługa Azure AD dla instytucji rządowych: Często używane, jeśli organizacja ma już dzierżawcę dla instytucji rządowych usługi Azure AD w celu obsługi pakietu Office 365 (w serwisie lub wyższej), lub tworzy nową dzierżawę w usłudze Azure AD dla instytucji rządowych.
+- Azure AD Public: Commonly used if your organization already has an Azure AD Public tenant to support Office 365 (Public or GCC) or another application.
+- Azure AD Government: Commonly used if your organization already has an Azure AD Government tenant to support Office 365 (GCC High or DoD) or is creating a new tenant in Azure AD Government.
 
-Po podjęciu decyzji, szczególnym zagadnieniem jest przeprowadzenie rejestracji aplikacji. Jeśli wybierzesz tożsamość publiczną usługi Azure AD dla aplikacji Azure Government, musisz zarejestrować aplikację w dzierżawie publicznej usługi Azure AD.
+After you decide, a special consideration is where you perform your app registration. If you choose Azure AD Public identities for your Azure Government application, you must register the application in your Azure AD Public tenant.
 
-### <a name="get-an-azure-government-subscription"></a>Pobierz subskrypcję usługi Azure Government
+### <a name="get-an-azure-government-subscription"></a>Get an Azure Government subscription
 
-Aby uzyskać subskrypcję Azure Government, zobacz [Zarządzanie subskrypcją w programie Azure Government i nawiązywanie z nią połączenia](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
+To get an Azure Government subscription, see [Managing and connecting to your subscription in Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
 
-Jeśli nie masz subskrypcji Azure Government, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/global-infrastructure/government/request/) .
+If you don't have an Azure Government subscription, create a [free account](https://azure.microsoft.com/global-infrastructure/government/request/) before you begin.
+
+For details about using a national cloud with a particular programming language, choose the tab matching your language:
+
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ## <a name="javascript"></a>JavaScript
 
-### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
+### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.us/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.us/).
     
-   Aby znaleźć Azure Portal punkty końcowe dla innych chmur narodowych, zobacz [punkty końcowe rejestracji aplikacji](authentication-national-cloud.md#app-registration-endpoints).
+   To find Azure portal endpoints for other national clouds, see [App registration endpoints](authentication-national-cloud.md#app-registration-endpoints).
 
-1. Jeśli Twoje konto zapewnia dostęp do więcej niż jednej dzierżawy, wybierz swoje konto w prawym górnym rogu, a następnie ustaw sesję portalu na żądaną dzierżawę usługi Azure AD.
-1. Przejdź do strony [rejestracje aplikacji](https://aka.ms/ra/ff) na platformie tożsamości firmy Microsoft dla deweloperów.
+1. If your account gives you access to more than one tenant, select your account in the upper-right corner, and set your portal session to the desired Azure AD tenant.
+1. Go to the [App registrations](https://aka.ms/ra/ff) page on the Microsoft identity platform for developers.
 1. Po wyświetleniu strony **Rejestrowanie aplikacji** wprowadź nazwę aplikacji.
-1. W obszarze **obsługiwane typy kont**wybierz pozycję **konta w dowolnym katalogu organizacyjnym**.
-1. W sekcji **Identyfikator URI przekierowania** Wybierz platformę **sieci Web** i ustaw wartość na adres URL aplikacji na podstawie serwera sieci Web. Zobacz następne sekcje, aby uzyskać instrukcje dotyczące ustawiania i uzyskiwania adresu URL przekierowania w programie Visual Studio i węźle.
+1. Under **Supported account types**, select **Accounts in any organizational directory**.
+1. In the **Redirect URI** section, select the **Web** platform and set the value to the application's URL based on your web server. See the next sections for instructions on how to set and obtain the redirect URL in Visual Studio and Node.
 1. Wybierz pozycję **Zarejestruj**.
 1. Na stronie **Przegląd** aplikacji zanotuj wartość **Identyfikator aplikacji (klienta)** .
-1. Ten samouczek wymaga włączenia [niejawnego przepływu dotacji](v2-oauth2-implicit-grant-flow.md). W lewym okienku zarejestrowanej aplikacji wybierz pozycję **uwierzytelnianie**.
-1. W obszarze **Ustawienia zaawansowane**w obszarze **niejawne przyznanie**zaznacz pola wyboru **tokeny identyfikatorów** i **tokeny dostępu** . Tokeny identyfikatorów i tokeny dostępu są wymagane, ponieważ ta aplikacja musi zalogować użytkowników i wywołać interfejs API.
+1. This tutorial requires you to enable the [implicit grant flow](v2-oauth2-implicit-grant-flow.md). In the left pane of the registered application, select **Authentication**.
+1. In **Advanced settings**, under **Implicit grant**, select the **ID tokens** and **Access tokens** check boxes. ID tokens and access tokens are required because this app needs to sign in users and call an API.
 1. Wybierz pozycję **Zapisz**.
 
-### <a name="step-2--set-up-your-web-server-or-project"></a>Krok 2:  Konfigurowanie serwera lub projektu sieci Web
+### <a name="step-2--set-up-your-web-server-or-project"></a>Step 2:  Set up your web server or project
 
-- [Pobierz pliki projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) dla lokalnego serwera sieci Web, na przykład węzeł.
+- [Download the project files](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) for a local web server, such as Node.
 
   lub
 
-- [Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
+- [Download the Visual Studio project](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
 
-Następnie pominięcie, aby [skonfigurować swój Spa JavaScript](#step-4-configure-your-javascript-spa) w celu skonfigurowania przykładu kodu przed jego uruchomieniem.
+Then skip to [Configure your JavaScript SPA](#step-4-configure-your-javascript-spa) to configure the code sample before running it.
 
-### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>Krok 3: Logowanie użytkownika przy użyciu biblioteki uwierzytelniania firmy Microsoft
+### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>Step 3: Use the Microsoft Authentication Library to sign in the user
 
-Wykonaj kroki opisane w [samouczku języka JavaScript](tutorial-v2-javascript-spa.md#create-your-project) , aby utworzyć projekt i zintegrować go z MSAL, aby zalogować użytkownika.
+Follow steps in the [JavaScript tutorial](tutorial-v2-javascript-spa.md#create-your-project) to create your project and integrate with MSAL to sign in the user.
 
-### <a name="step-4-configure-your-javascript-spa"></a>Krok 4: Konfigurowanie protokołu JavaScript SPA
+### <a name="step-4-configure-your-javascript-spa"></a>Step 4: Configure your JavaScript SPA
 
-`index.html` W pliku utworzonym podczas instalacji projektu Dodaj informacje o rejestracji aplikacji. Dodaj następujący kod w górnej części `<script></script>` tagów w treści `index.html` pliku:
+In the `index.html` file created during project setup, add the application registration information. Add the following code at the top within the `<script></script>` tags in the body of your `index.html` file:
 
 ```javascript
 const msalConfig = {
@@ -111,38 +115,37 @@ const graphConfig = {
 const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
-W tym kodzie:
+In that code:
 
-- `Enter_the_Application_Id_here`jest wartością **identyfikatora aplikacji (klienta)** dla zarejestrowanej aplikacji.
-- `Enter_the_Tenant_Info_Here`jest ustawiona na jedną z następujących opcji:
-    - Jeśli aplikacja obsługuje **konta w tym katalogu organizacyjnym**, Zastąp tę wartość identyfikatorem dzierżawy lub nazwą dzierżawy (na przykład contoso.Microsoft.com).
-    - Jeśli aplikacja obsługuje **konta w dowolnym katalogu organizacyjnym**, Zastąp tę wartość `organizations`wartością.
+- `Enter_the_Application_Id_here` is the **Application (client) ID** value for the application that you registered.
+- `Enter_the_Tenant_Info_Here` is set to one of the following options:
+    - If your application supports **Accounts in this organizational directory**, replace this value with the tenant ID or tenant name (for example, contoso.microsoft.com).
+    - If your application supports **Accounts in any organizational directory**, replace this value with `organizations`.
     
-    Aby znaleźć punkty końcowe uwierzytelniania dla wszystkich chmur narodowych, zobacz [punkty końcowe uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+    To find authentication endpoints for all the national clouds, see [Azure AD authentication endpoints](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 
     > [!NOTE]
-    > Osobiste konta Microsoft nie są obsługiwane w chmurach krajowych.
+    > Personal Microsoft accounts are not supported in national clouds.
   
-- `graphEndpoint`jest punktem końcowym Microsoft Graph w chmurze firmy Microsoft dla instytucji rządowych USA.
+- `graphEndpoint` is the Microsoft Graph endpoint for the Microsoft cloud for US government.
 
-   Aby znaleźć Microsoft Graph punkty końcowe dla wszystkich chmur narodowych, zobacz [Microsoft Graph punktów końcowych w chmurach krajowych](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+   To find Microsoft Graph endpoints for all the national clouds, see [Microsoft Graph endpoints in national clouds](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 ## <a name="net"></a>.NET
 
-Możesz użyć MSAL.NET, aby zalogować użytkowników, uzyskać tokeny i wywołać interfejs API Microsoft Graph w chmurach krajowych.
+You can use MSAL.NET to sign in users, acquire tokens, and call the  Microsoft Graph API in national clouds.
 
-W poniższych samouczkach pokazano, jak utworzyć aplikację sieci Web platformy .NET Core 2,2 MVC. Aplikacja używa usługi OpenID Connect Connect do logowania użytkowników przy użyciu konta służbowego w organizacji, która należy do chmury krajowej.
+The following tutorials demonstrate how to build a .NET Core 2.2 MVC Web app. The app uses OpenID Connect to sign in users with a work and school account in an organization that belongs to a national cloud.
 
-- Aby zalogować użytkowników i uzyskać tokeny, postępuj zgodnie z [tym samouczkiem](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
-- Aby wywołać interfejs API Microsoft Graph, postępuj zgodnie z [tym samouczkiem](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
+- To sign in users and acquire tokens, follow [this tutorial](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
+- To call the Microsoft Graph API, follow [this tutorial](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
 
-## <a name="msal-for-ios-and-macos"></a>MSAL dla systemów iOS i macOS
+## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+## <a name="msal-for-ios-and-macos"></a>Biblioteka MSAL dla systemów iOS i macOS
 
-MSAL dla systemów iOS i macOS mogą być używane do uzyskiwania tokenów w chmurach narodowych, ale wymaga dodatkowej `MSALPublicClientApplication`konfiguracji podczas tworzenia.
+MSAL for iOS and macOS can be used to acquire tokens in national clouds, but it requires additional configuration when creating `MSALPublicClientApplication`.
 
-Na przykład jeśli chcesz, aby aplikacja była aplikacją wielodostępną w chmurze krajowej (w tym przypadku dla instytucji rządowych USA), możesz napisać:
-
-Cel-C:
+For instance, if you want your application to be a multi-tenant application in a national cloud (here US Government), you could write:
 
 ```objc
 MSALAADAuthority *aadAuthority =
@@ -161,7 +164,11 @@ MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-Adres
+## <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+MSAL for iOS and macOS can be used to acquire tokens in national clouds, but it requires additional configuration when creating `MSALPublicClientApplication`.
+
+For instance, if you want your application to be a multi-tenant application in a national cloud (here US Government), you could write:
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
@@ -170,10 +177,21 @@ let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>"
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```
 
+## <a name="javatabjava"></a>[Java](#tab/java)
+
+To enable your MSAL for Java application for sovereign clouds, you must:
+
+- Register your application in a specific portal, depending on the cloud
+- Use a specific authority, depending on the cloud in the config file for your application
+- To call the Microsoft Graph API requires a specific Graph endpoint URL, depending on the cloud.
+
+---
+
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o usługach:
 
+- [Authentication in National Clouds](authentication-national-cloud.md)
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure — Chiny](https://docs.microsoft.com/azure/china/)
-- [Azure (Niemcy)](https://docs.microsoft.com/azure/germany/)
+- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure Germany](https://docs.microsoft.com/azure/germany/)

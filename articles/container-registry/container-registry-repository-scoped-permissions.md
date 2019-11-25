@@ -1,53 +1,48 @@
 ---
-title: Uprawnienia do repozytoriów w Azure Container Registry
-description: Tworzenie tokenu z uprawnieniami ograniczonymi do określonych repozytoriów w rejestrze w celu ściągania lub wypychania obrazów
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Permissions to repositories
+description: Create a token with permissions scoped to specific repositories in a registry to pull or push images
 ms.topic: article
 ms.date: 10/31/2019
-ms.author: danlep
-ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cf36a49ffd6c04897e6f44b844f0c813d0992b18
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742751"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454912"
 ---
-# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Uprawnienia w zakresie repozytorium w Azure Container Registry 
+# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Repository-scoped permissions in Azure Container Registry 
 
-Azure Container Registry obsługuje kilka [opcji uwierzytelniania](container-registry-authentication.md) przy użyciu tożsamości, które mają [dostęp oparty na rolach](container-registry-roles.md) do całego rejestru. Jednak w przypadku niektórych scenariuszy może być konieczne zapewnienie dostępu tylko do określonych *repozytoriów* w rejestrze. 
+Azure Container Registry supports several [authentication options](container-registry-authentication.md) using identities that have [role-based access](container-registry-roles.md) to an entire registry. However, for certain scenarios, you might need to provide access only to specific *repositories* in a registry. 
 
-W tym artykule przedstawiono sposób tworzenia i używania tokenu dostępu, który ma uprawnienia do wykonywania akcji tylko dla określonych repozytoriów w rejestrze. Przy użyciu tokenu dostępu można zapewnić użytkownikom lub usługom zakres, ograniczony czasowo dostęp do repozytoriów w celu ściągania lub wypychania obrazów lub wykonywania innych akcji. 
+This article shows how to create and use an access token that has permissions to perform actions on only specific repositories in a registry. With an access token, you can provide users or services with scoped, time-limited access to repositories to pull or push images or perform other actions. 
 
-Zobacz [Informacje o uprawnieniach do zakresu repozytorium](#about-repository-scoped-permissions), w dalszej części tego artykułu, dla celów ogólnych dotyczących pojęć i scenariuszy dotyczących tokenów.
+See [About repository-scoped permissions](#about-repository-scoped-permissions), later in this article, for background about token concepts and scenarios.
 
 > [!IMPORTANT]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej, a niektóre [ograniczenia mają zastosowanie](#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> This feature is currently in preview, and some [limitations apply](#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-* Ta funkcja jest dostępna tylko w rejestrze kontenera w **warstwie Premium** . Aby uzyskać informacje o warstwach i ograniczeniach usługi Registry, zobacz [Azure Container Registry SKU](container-registry-skus.md).
-* Obecnie nie można przypisać uprawnień do zakresu repozytorium do obiektu Azure Active Directory, takiego jak nazwa główna usługi lub tożsamość zarządzana.
+* This feature is only available in a **Premium** container registry. For information about registry service tiers and limits, see [Azure Container Registry SKUs](container-registry-skus.md).
+* You can't currently assign repository-scoped permissions to an Azure Active Directory object such as a service principal or managed identity.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Interfejs wiersza polecenia platformy Azure** — ten artykuł wymaga lokalnej instalacji interfejsu wiersza polecenia platformy Azure (w wersji 2.0.76 lub nowszej). Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
-* **Docker** — aby uwierzytelniać się w rejestrze, potrzebna jest również lokalna instalacja platformy Docker. Platforma Docker dostarcza instrukcje na temat instalacji w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) i [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
-* **Rejestr kontenerów z repozytoriami** — jeśli go nie masz, Utwórz rejestr kontenerów w ramach subskrypcji platformy Azure. Na przykład użyj [Azure Portal](container-registry-get-started-portal.md) lub [interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md). 
+* **Azure CLI** - This article requires a local installation of the Azure CLI (version 2.0.76 or later). Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+* **Docker** - To authenticate with the registry, you also need a local Docker installation. Platforma Docker dostarcza instrukcje na temat instalacji w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) i [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
+* **Container registry with repositories** - If you don't have one, create a container registry in your Azure subscription. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md). 
 
-  Do celów testowych [wypchnij](container-registry-get-started-docker-cli.md) lub [zaimportuj](container-registry-import-images.md) jeden lub więcej przykładowych obrazów do rejestru. Przykłady w tym artykule odnoszą się do następujących obrazów w dwóch repozytoriach: `samples/hello-world:v1` i `samples/nginx:v1`. 
+  For test purposes, [push](container-registry-get-started-docker-cli.md) or [import](container-registry-import-images.md) one or more sample images to the registry. Examples in this article refer to the following images in two repositories: `samples/hello-world:v1` and `samples/nginx:v1`. 
 
-## <a name="create-an-access-token"></a>Tworzenie tokenu dostępu
+## <a name="create-an-access-token"></a>Create an access token
 
-Utwórz token za pomocą polecenia [AZ ACR token Create][az-acr-token-create] . Podczas tworzenia tokenu należy określić co najmniej jeden repozytoria i skojarzone akcje w każdym repozytorium lub określić istniejącą mapę zakresu z tymi ustawieniami.
+Create a token using the [az acr token create][az-acr-token-create] command. When creating a token, specify one or more repositories and associated actions on each repository, or specify an existing scope map with those settings.
 
-### <a name="create-access-token-and-specify-repositories"></a>Tworzenie tokenu dostępu i określanie repozytoriów
+### <a name="create-access-token-and-specify-repositories"></a>Create access token and specify repositories
 
-Poniższy przykład tworzy token dostępu z uprawnieniami do wykonywania akcji `content/write` i `content/read` w repozytorium `samples/hello-world` oraz akcji `content/read` w repozytorium `samples/nginx`. Domyślnie polecenie generuje dwa hasła. 
+The following example creates an access token with permissions to perform `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository. By default, the command generates two passwords. 
 
-Ten przykład ustawia stan tokenu na `enabled` (ustawienie domyślne), ale można w dowolnym momencie zaktualizować token i ustawić stan na `disabled`.
+This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
@@ -55,9 +50,9 @@ az acr token create --name MyToken --registry myregistry \
   --repository samples/nginx content/read --status enabled
 ```
 
-W danych wyjściowych znajdują się szczegółowe informacje o tokenie, w tym wygenerowane hasła i mapa zakresu. Zaleca się zapisanie haseł w bezpiecznym miejscu do późniejszego użycia z `docker login`. Hasła nie mogą zostać pobrane ponownie, ale można generować nowe.
+The output shows details about the token, including generated passwords and scope map. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
 
-Dane wyjściowe pokazują również, że mapa zakresu jest tworzona automatycznie, nazwana `MyToken-scope-map`. Można użyć mapy zakresu, aby zastosować te same akcje repozytorium do innych tokenów. Można też zaktualizować mapowanie zakresu później, aby zmienić uprawnienia tokenu.
+The output also shows that a scope map is automatically created, named `MyToken-scope-map`. You can use the scope map to apply the same repository actions to other tokens. Or, update the scope map later to change the token permissions.
 
 ```console
 {
@@ -90,11 +85,11 @@ Dane wyjściowe pokazują również, że mapa zakresu jest tworzona automatyczni
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
-### <a name="create-a-scope-map-and-associated-token"></a>Tworzenie mapy zakresu i skojarzonego tokenu
+### <a name="create-a-scope-map-and-associated-token"></a>Create a scope map and associated token
 
-Alternatywnie można określić mapowanie zakresu z repozytoriami i skojarzonymi akcjami podczas tworzenia tokenu. Aby utworzyć mapę zakresu, użyj polecenia [AZ ACR Scope-map Create][az-acr-scope-map-create] .
+Alternatively, specify a scope map with repositories and associated actions when creating a token. To create a scope map, use the [az acr scope-map create][az-acr-scope-map-create] command.
 
-Poniższe przykładowe polecenie tworzy mapę zakresu z tymi samymi uprawnieniami, które są używane w poprzednim przykładzie. Umożliwia `content/write` i `content/read` akcji w repozytorium `samples/hello-world` oraz akcję `content/read` w repozytorium `samples/nginx`:
+The following example command creates a scope map with the same permissions used in the previous example. It allows `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository:
 
 ```azurecli
 az acr scope-map create --name MyScopeMap --registry myregistry \
@@ -121,21 +116,21 @@ Dane wyjściowe będą podobne do następujących:
   "type": "Microsoft.ContainerRegistry/registries/scopeMaps"
 ```
 
-Uruchom [AZ ACR token Create][az-acr-token-create] , aby utworzyć token skojarzony z mapą zakresu *MyScopeMap* . Domyślnie polecenie generuje dwa hasła. Ten przykład ustawia stan tokenu na `enabled` (ustawienie domyślne), ale można w dowolnym momencie zaktualizować token i ustawić stan na `disabled`.
+Run [az acr token create][az-acr-token-create] to create a token associated with the *MyScopeMap* scope map. By default, the command generates two passwords. This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry --scope-map MyScopeMap --status enabled
 ```
 
-W danych wyjściowych znajdują się szczegółowe informacje o tokenie, w tym wygenerowane hasła oraz zastosowanym mapowaniu zakresu. Zaleca się zapisanie haseł w bezpiecznym miejscu do późniejszego użycia z `docker login`. Hasła nie mogą zostać pobrane ponownie, ale można generować nowe.
+The output shows details about the token, including generated passwords and the scope map you applied. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
 
-## <a name="generate-passwords-for-token"></a>Generuj hasła dla tokenu
+## <a name="generate-passwords-for-token"></a>Generate passwords for token
 
-Jeśli podczas tworzenia tokenu hasła zostały utworzone, Kontynuuj [uwierzytelnianie przy użyciu rejestru](#authenticate-using-token).
+If passwords were created when you created the token, proceed to [Authenticate with registry](#authenticate-using-token).
 
-Jeśli nie masz hasła do tokenu lub chcesz wygenerować nowe hasła, uruchom polecenie [AZ ACR token Credential Generate][az-acr-token-credential-generate] .
+If you don't have a token password, or you want to generate new passwords, run the [az acr token credential generate][az-acr-token-credential-generate] command.
 
-Poniższy przykład generuje nowe hasło dla utworzonego tokenu z okresem ważności wynoszącym 30 dni. Hasło jest przechowywane w zmiennej środowiskowej TOKEN_PWD. Ten przykład jest sformatowany dla powłoki bash.
+The following example generates a new password for the token you created, with an expiration period of 30 days. It stores the password in the environment variable TOKEN_PWD. This example is formatted for the bash shell.
 
 ```azurecli
 TOKEN_PWD=$(az acr token credential generate \
@@ -143,9 +138,9 @@ TOKEN_PWD=$(az acr token credential generate \
   --password1 --query 'passwords[0].value' --output tsv)
 ```
 
-## <a name="authenticate-using-token"></a>Uwierzytelnianie przy użyciu tokenu
+## <a name="authenticate-using-token"></a>Authenticate using token
 
-Uruchom `docker login`, aby uwierzytelnić się w rejestrze przy użyciu poświadczeń tokenu. Wprowadź nazwę tokenu jako nazwę użytkownika i podaj jedno z jego haseł. Poniższy przykład jest sformatowany dla powłoki bash i zawiera wartości przy użyciu zmiennych środowiskowych.
+Run `docker login` to authenticate with the registry using the token credentials. Enter the token name as the user name and provide one of its passwords. The following example is formatted for the bash shell, and provides the values using environment variables.
 
 ```bash
 TOKEN_NAME=MyToken
@@ -154,22 +149,22 @@ TOKEN_PWD=<token password>
 echo $TOKEN_PWD | docker login --username $TOKEN_NAME --password-stdin myregistry.azurecr.io
 ```
 
-Dane wyjściowe powinny zawierać pomyślne uwierzytelnianie:
+Output should show successful authentication:
 
 ```console
 Login Succeeded
 ```
 
-## <a name="verify-scoped-access"></a>Weryfikuj dostęp z zakresu
+## <a name="verify-scoped-access"></a>Verify scoped access
 
-Można sprawdzić, czy token zapewnia uprawnienia w zakresie do repozytoriów w rejestrze. W tym przykładzie następujące polecenia `docker pull` pomyślnie ukończyły ściąganie obrazów dostępnych w `samples/hello-world` i repozytoriach `samples/nginx`:
+You can verify that the token provides scoped permissions to the repositories in the registry. In this example, the following `docker pull` commands complete successfully to pull images available in the `samples/hello-world` and `samples/nginx` repositories:
 
 ```console
 docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-Ponieważ przykładowy token zezwala na działanie `content/write` tylko w repozytorium `samples/hello-world`, `docker push` kończy się powodzeniem dla tego repozytorium, ale kończy się niepowodzeniem dla `samples/nginx`:
+Because the example token allows the `content/write` action only on the `samples/hello-world` repository, `docker push` succeeds to that repository but fails for `samples/nginx`:
 
 ```console
 # docker push succeeds
@@ -179,90 +174,90 @@ docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-## <a name="update-scope-map-and-token"></a>Aktualizowanie mapy i tokenu zakresu
+## <a name="update-scope-map-and-token"></a>Update scope map and token
 
-Aby zaktualizować uprawnienia tokenu, zaktualizuj uprawnienia w skojarzonej mapie zakresu przy użyciu polecenia [AZ ACR Scope-map Update][az-acr-scope-map-update]. Na przykład aby zaktualizować program *MyScopeMap* w celu usunięcia akcji `content/write` w repozytorium `samples/hello-world`:
+To update token permissions, update the permissions in the associated scope map, using [az acr scope-map update][az-acr-scope-map-update]. For example, to update *MyScopeMap* to remove the `content/write` action on the `samples/hello-world` repository:
 
 ```azurecli
 az acr scope-map update --name MyScopeMap --registry myregistry \
   --remove samples/hello-world content/write
 ```
 
-Jeśli mapa zakresu jest skojarzona z więcej niż jednym tokenem, polecenie aktualizuje uprawnienia wszystkich skojarzonych tokenów.
+If the scope map is associated with more than one token, the command updates the permission of all associated tokens.
 
-Jeśli chcesz zaktualizować token z inną mapą zakresu, uruchom polecenie [AZ ACR token Update][az-acr-token-update]. Na przykład:
+If you want to update a token with a different scope map, run [az acr token update][az-acr-token-update]. Na przykład:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-Po zaktualizowaniu tokenu lub mapie zakresu skojarzonej z tokenem zmiany uprawnień zaczną obowiązywać przy następnym `docker login` lub innym uwierzytelnianiu przy użyciu tokenu.
+After updating a token, or a scope map associated with a token, the permission changes take effect at the next `docker login` or other authentication using the token.
 
-Po zaktualizowaniu tokenu można wygenerować nowe hasła w celu uzyskania dostępu do rejestru. Uruchom [AZ ACR token Credential Generate][az-acr-token-credential-generate]. Na przykład:
+After updating a token, you might want to generate new passwords to access the registry. Run [az acr token credential generate][az-acr-token-credential-generate]. Na przykład:
 
 ```azurecli
 az acr token credential generate \
   --name MyToken --registry myregistry --days 30
 ```
 
-## <a name="about-repository-scoped-permissions"></a>Informacje o uprawnieniach do zakresu repozytorium
+## <a name="about-repository-scoped-permissions"></a>About repository-scoped permissions
 
 ### <a name="concepts"></a>Pojęcia
 
-Aby skonfigurować uprawnienia do zakresu repozytorium, należy utworzyć *token dostępu* i skojarzoną *mapę zakresu* przy użyciu poleceń w interfejsie wiersza polecenia platformy Azure.
+To configure repository-scoped permissions, you create an *access token* and an associated *scope map* using commands in the Azure CLI.
 
-* **Token dostępu** jest poświadczeniem używanym z hasłem do uwierzytelniania za pomocą rejestru. Skojarzone z każdym tokenem są dozwolonymi *akcjami* objętymi zakresem co najmniej jednego repozytoria. Można ustawić czas wygaśnięcia dla każdego tokenu. 
+* An **access token** is a credential used with a password to authenticate with the registry. Associated with each token are permitted *actions* scoped to one or more repositories. You can set an expiration time for each token. 
 
-* **Akcje** w każdym określonym repozytorium obejmują co najmniej jedną z poniższych czynności.
+* **Actions** on each specified repository include one or more of the following.
 
-  |Akcja  |Opis  |
+  |Działanie  |Opis  |
   |---------|---------|
-  |`content/read`     |  Odczytaj dane z repozytorium. Na przykład, należy ściągnąć artefakt.  |
-  |`metadata/read`    | Odczytaj metadane z repozytorium. Na przykład wyświetlanie listy tagów lub wyświetlanie metadanych manifestu.   |
-  |`content/write`     |  Zapisz dane w repozytorium. Użyj polecenia with `content/read`, aby wypchnąć artefakt.    |
-  |`metadata/write`     |  Zapisz metadane w repozytorium. Na przykład zaktualizuj atrybuty manifestu.  |
-  |`content/delete`    | Usuń dane z repozytorium. Na przykład Usuń repozytorium lub manifest. |
+  |`content/read`     |  Read data from the repository. For example, pull an artifact.  |
+  |`metadata/read`    | Read metadata from the repository. For example, list tags or show manifest metadata.   |
+  |`content/write`     |  Write data to the repository. Use with `content/read` to push an artifact.    |
+  |`metadata/write`     |  Write metadata to the repository. For example, update manifest attributes.  |
+  |`content/delete`    | Remove data from the repository. For example, delete a repository or a manifest. |
 
-* **Mapa zakresu** jest obiektem rejestru, który grupuje uprawnienia do repozytorium, które są stosowane do tokenu lub można ponownie zastosować do innych tokenów. Jeśli nie zastosujesz mapy zakresu podczas tworzenia tokenu, zostanie automatycznie utworzona Mapa zakresu, aby zapisać ustawienia uprawnień. 
+* A **scope map** is a registry object that groups repository permissions you apply to a token, or can reapply to other tokens. If you don't apply a scope map when creating a token, a scope map is automatically created for you, to save the permission settings. 
 
-  Mapa zakresu pomaga skonfigurować wielu użytkowników z identycznym dostępem do zestawu repozytoriów. Azure Container Registry udostępnia również mapy zakresu zdefiniowane przez system, które można stosować podczas tworzenia tokenów dostępu.
+  A scope map helps you configure multiple users with identical access to a set of repositories. Azure Container Registry also provides system-defined scope maps that you can apply when creating access tokens.
 
-Poniższy obraz zawiera podsumowanie relacji między tokenami i mapami zakresów. 
+The following image summarizes the relationship between tokens and scope maps. 
 
-![Mapowanie i tokeny zakresu rejestru](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
+![Registry scope maps and tokens](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
 ### <a name="scenarios"></a>Scenariusze
 
-Scenariusze korzystania z tokenu dostępu obejmują:
+Scenarios for using an access token include:
 
-* Zapewnianie urządzeniom IoT z indywidualnymi tokenami w celu ściągania obrazu z repozytorium
-* Udostępnianie zewnętrznej organizacji z uprawnieniami do określonego repozytorium 
-* Ogranicz dostęp do repozytorium do określonych grup użytkowników w organizacji. Na przykład zapewniają dostęp do zapisu i odczytu do deweloperów, którzy tworzą obrazy przeznaczone do określonych repozytoriów, oraz dostęp do odczytu do zespołów, które wdrażają te repozytoria.
+* Provide IoT devices with individual tokens to pull an image from a repository
+* Provide an external organization with permissions to a specific repository 
+* Limit repository access to specific user groups in your organization. For example, provide write and read access to developers who build images that target specific repositories, and read access to teams that deploy from those repositories.
 
-### <a name="authentication-using-token"></a>Uwierzytelnianie przy użyciu tokenu
+### <a name="authentication-using-token"></a>Authentication using token
 
-Użyj nazwy tokenu jako nazwy użytkownika i jednego z skojarzonych haseł do uwierzytelniania w rejestrze docelowym. Metoda uwierzytelniania zależy od skonfigurowanych akcji.
+Use a token name as a user name and one of its associated passwords to authenticate with the target registry. The authentication method depends on the configured actions.
 
-### <a name="contentread-or-contentwrite"></a>zawartość/odczyt lub zawartość/zapis
+### <a name="contentread-or-contentwrite"></a>content/read or content/write
 
-Jeśli token zezwala tylko na akcje `content/read` lub `content/write`, należy podać poświadczenia tokenu w ramach jednego z następujących przepływów uwierzytelniania:
+If the token permits only `content/read` or `content/write` actions, provide token credentials in either of the following authentication flows:
 
-* Uwierzytelnianie za pomocą platformy Docker przy użyciu `docker login`
-* Uwierzytelnianie za pomocą rejestru przy użyciu polecenia [AZ ACR login][az-acr-login] w interfejsie CLI platformy Azure
+* Authenticate with Docker using `docker login`
+* Authenticate with the registry using the [az acr login][az-acr-login] command in the Azure CLI
 
-Po uwierzytelnieniu token zezwala na skonfigurowane akcje w repozytorium lub repozytoriach objętych zakresem. Na przykład, jeśli token zezwala na akcję `content/read` w repozytorium, operacje `docker pull` są dozwolone na obrazach w tym repozytorium.
+Following authentication, the token permits the configured actions on the scoped repository or repositories. For example, if the token permits the `content/read` action on a repository, `docker pull` operations are permitted on images in that repository.
 
-#### <a name="metadataread-metadatawrite-or-contentdelete"></a>metadane/odczyt, metadane/zapis lub zawartość/usuwanie
+#### <a name="metadataread-metadatawrite-or-contentdelete"></a>metadata/read, metadata/write, or content/delete
 
-Jeśli token zezwala na akcje `metadata/read`, `metadata/write`lub `content/delete` w repozytorium, poświadczenia tokenu muszą być podane jako parametry z powiązanymi poleceniami [AZ ACR Repository][az-acr-repository] w interfejsie CLI platformy Azure.
+If the token permits `metadata/read`, `metadata/write`, or `content/delete` actions on a repository, token credentials must be provided as parameters with the related [az acr repository][az-acr-repository] commands in the Azure CLI.
 
-Na przykład jeśli w repozytorium są dozwolone `metadata/read` akcje, Przekaż poświadczenia tokenu podczas uruchamiania polecenia [AZ ACR Repository show-Tags][az-acr-repository-show-tags] , aby wyświetlić listę znaczników.
+For example, if `metadata/read` actions are permitted on a repository, pass the token credentials when running the [az acr repository show-tags][az-acr-repository-show-tags] command to list tags.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zarządzać mapami zakresu i tokenami dostępu, użyj dodatkowych poleceń w poleceniach [AZ ACR Scope-map][az-acr-scope-map] i [AZ ACR token][az-acr-token] groups.
-* Zapoznaj się z [omówieniem uwierzytelniania](container-registry-authentication.md) , aby poznać scenariusze uwierzytelniania w usłudze Azure Container Registry przy użyciu konta administratora lub tożsamości Azure Active Directory.
+* To manage scope maps and access tokens, use additional commands in the [az acr scope-map][az-acr-scope-map] and [az acr token][az-acr-token] command groups.
+* See the [authentication overview](container-registry-authentication.md) for scenarios to authenticate with an Azure container registry using an admin account or an Azure Active Directory identity.
 
 
 <!-- LINKS - External -->

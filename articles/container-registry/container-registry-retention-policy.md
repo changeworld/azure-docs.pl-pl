@@ -1,113 +1,108 @@
 ---
-title: Zasady do zachowywania nieoznakowanych manifestów w Azure Container Registry
-description: Informacje o sposobie włączania zasad przechowywania w rejestrze kontenerów platformy Azure w celu automatycznego usunięcia nieoznakowanych manifestów po upływie określonego czasu.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Policy to retain untagged manifests
+description: Learn how to enable a retention policy in your Azure container registry, for automatic deletion of untagged manifests after a defined period.
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: danlep
-ms.openlocfilehash: 79b3e48373114bfcee6dca2e6142f23bed1699e6
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972654"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454817"
 ---
-# <a name="set-a-retention-policy-for-untagged-manifests"></a>Ustawianie zasad przechowywania dla nieoznakowanych manifestów
+# <a name="set-a-retention-policy-for-untagged-manifests"></a>Set a retention policy for untagged manifests
 
-Azure Container Registry zapewnia opcję ustawiania *zasad przechowywania* dla zapisywanych manifestów obrazów, które nie mają skojarzonych tagów (*nieoznakowane manifesty*). Po włączeniu zasad przechowywania, nieoznaczone manifesty w rejestrze są automatycznie usuwane po upływie kilku dni. Ta funkcja zapobiega wypełnianiu przez rejestr artefaktów, które nie są potrzebne, i pomaga zaoszczędzić na kosztach magazynowania. Jeśli atrybut `delete-enabled` manifestu bez znaczników ma ustawioną wartość `false`, nie można usunąć manifestu, a zasady przechowywania nie będą stosowane.
+Azure Container Registry gives you the option to set a *retention policy* for stored image manifests that don't have any associated tags (*untagged manifests*). When a retention policy is enabled, untagged manifests in the registry are automatically deleted after a number of days you set. This feature prevents the registry from filling up with artifacts that aren't needed and helps you save on storage costs. If the `delete-enabled` attribute of an untagged manifest is set to `false`, the manifest can't be deleted, and the retention policy doesn't apply.
 
-Możesz użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure, aby uruchomić przykłady poleceń w tym artykule. Jeśli chcesz używać go lokalnie, wymagana jest wersja 2.0.74 lub nowsza. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
+You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the command examples in this article. If you'd like to use it locally, version 2.0.74 or later is required. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
 > [!IMPORTANT]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej, a niektóre [ograniczenia mają zastosowanie](#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> This feature is currently in preview, and some [limitations apply](#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 > [!WARNING]
-> Ustawianie zasad przechowywania z obsługą opieki — usunięte dane obrazu są NIEODWRACALNe. Jeśli masz systemy, które pobierają obrazy za pomocą skrótu manifestu (w przeciwieństwie do nazwy obrazu), nie należy ustawiać zasad przechowywania dla nieoznakowanych manifestów. Usunięcie nieoznakowanych obrazów uniemożliwi tym systemom ściąganie obrazów z rejestru. Zamiast ściągania według manifestu należy rozważyć przyjęcie *unikatowego schematu znakowania* , [zalecane najlepsze rozwiązanie](container-registry-image-tag-version.md).
+> Set a retention policy with care--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not set a retention policy for untagged manifests. Deleting untagged images will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-* Tylko rejestr kontenerów w **warstwie Premium** można skonfigurować przy użyciu zasad przechowywania. Aby uzyskać informacje na temat warstw usługi Registry, zobacz [Azure Container Registry SKU](container-registry-skus.md).
-* Zasady przechowywania można ustawić tylko dla manifestów nieoznakowanych.
-* Zasady przechowywania są obecnie stosowane tylko do manifestów, które są nieoznakowane *po* włączeniu zasad. Istniejące nieoznaczone manifesty w rejestrze nie podlegają zasadom. Aby usunąć istniejące nieoznaczone manifesty, zobacz przykłady w temacie [usuwanie obrazów kontenera w Azure Container Registry](container-registry-delete.md).
+* Only a **Premium** container registry can be configured with a retention policy. For information about registry service tiers, see [Azure Container Registry SKUs](container-registry-skus.md).
+* You can only set a retention policy for untagged manifests.
+* The retention policy currently applies only to manifests that are untagged *after* the policy is enabled. Existing untagged manifests in the registry aren't subject to the policy. To delete existing untagged manifests, see examples in [Delete container images in Azure Container Registry](container-registry-delete.md).
 
-## <a name="about-the-retention-policy"></a>Informacje o zasadach przechowywania
+## <a name="about-the-retention-policy"></a>About the retention policy
 
-Azure Container Registry zlicza odwołania do manifestów w rejestrze. Gdy manifest jest nieoznakowany, sprawdza zasady przechowywania. Jeśli zasady przechowywania są włączone, operacja usuwania manifestu jest umieszczana w kolejce z określoną datą, zgodnie z liczbą dni ustawioną w zasadach.
+Azure Container Registry does reference counting for manifests in the registry. When a manifest is untagged, it checks the retention policy. If a retention policy is enabled, a manifest delete operation is queued, with a specific date, according to the number of days set in the policy.
 
-Osobne zadanie zarządzania kolejkami ciągle przetwarza komunikaty, skalowanie w razie konieczności. Załóżmy na przykład, że nie istnieją dwa manifesty, od 1 godziny, w rejestrze z zasadami przechowywania wynoszącymi 30 dni. Dwa komunikaty zostaną dodane do kolejki. Następnie 30 dni później, po 1 godzinie, komunikaty zostaną pobrane z kolejki i przetworzone, przy założeniu, że zasady nadal działają.
+A separate queue management job constantly processes messages, scaling as needed. As an example, suppose you untagged two manifests, 1 hour apart, in a registry with a retention policy of 30 days. Two messages would be queued. Then, 30 days later, approximately 1 hour apart, the messages would be retrieved from the queue and processed, assuming the policy was still in effect.
 
-## <a name="set-a-retention-policy---cli"></a>Ustawianie zasad przechowywania — interfejs wiersza polecenia
+## <a name="set-a-retention-policy---cli"></a>Set a retention policy - CLI
 
-Poniższy przykład pokazuje, jak używać interfejsu wiersza polecenia platformy Azure do ustawiania zasad przechowywania dla nieoznakowanych manifestów w rejestrze.
+The following example shows you how to use the Azure CLI to set a retention policy for untagged manifests in a registry.
 
-### <a name="enable-a-retention-policy"></a>Włączanie zasad przechowywania
+### <a name="enable-a-retention-policy"></a>Enable a retention policy
 
-Domyślnie żadna zasada przechowywania nie jest ustawiona w rejestrze kontenerów. Aby ustawić lub zaktualizować zasady przechowywania, uruchom polecenie [AZ ACR config Recovery Update][az-acr-config-retention-update] w interfejsie wiersza polecenia platformy Azure. Możesz określić liczbę dni z zakresu od 0 do 365, aby zachować nieoznaczone manifesty. Jeśli nie określisz liczby dni, polecenie ustawia domyślną wartość 7 dni. Po okresie przechowywania wszystkie nieoznakowane manifesty w rejestrze zostaną automatycznie usunięte.
+By default, no retention policy is set in a container registry. To set or update a retention policy, run the [az acr config retention update][az-acr-config-retention-update] command in the Azure CLI. You can specify a number of days between 0 and 365 to retain the untagged manifests. If you don't specify a number of days, the command sets a default of 7 days. After the retention period, all untagged manifests in the registry are automatically deleted.
 
-Poniższy przykład ustawia zasady przechowywania wynoszące 30 dni dla nieoznakowanych manifestów w *rejestrze rejestr:*
+The following example sets a retention policy of 30 days for untagged manifests in the registry *myregistry*:
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
 ```
 
-W poniższym przykładzie są ustawiane zasady usuwania dowolnego manifestu w rejestrze, gdy tylko jest to nieoznakowane. Utwórz te zasady, ustawiając okres przechowywania wynoszący 0 dni. 
+The following example sets a policy to delete any manifest in the registry as soon as it's untagged. Create this policy by setting a retention period of 0 days. 
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
 ```
 
-### <a name="validate-a-retention-policy"></a>Sprawdzanie poprawności zasad przechowywania
+### <a name="validate-a-retention-policy"></a>Validate a retention policy
 
-W przypadku włączenia powyższych zasad z okresem przechowywania równym 0 dni można szybko sprawdzić, czy usunięte manifestu nie są usuwane:
+If you enable the preceding policy with a retention period of 0 days, you can quickly verify that untagged manifests are deleted:
 
-1. Wypchnij obraz testowy `hello-world:latest` obraz do rejestru lub Zastąp inny wybrany obraz testowy.
-1. UNTAG obraz `hello-world:latest`, na przykład za pomocą polecenia [AZ ACR Repository UNTAG][az-acr-repository-untag] . Manifest nieoznakowany pozostaje w rejestrze.
+1. Push a test image `hello-world:latest` image to your registry, or substitute another test image of your choice.
+1. Untag the `hello-world:latest` image, for example, using the [az acr repository untag][az-acr-repository-untag] command. The untagged manifest remains in the registry.
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
-1. W ciągu kilku sekund nieoznakowany manifest zostanie usunięty. Można sprawdzić, czy usuwasz listę manifestów w repozytorium, na przykład za pomocą polecenia [AZ ACR Repository show-Manifests][az-acr-repository-show-manifests] . Jeśli obraz testowy był jedynym z nich w repozytorium, samo repozytorium zostanie usunięte.
+1. Within a few seconds, the untagged manifest is deleted. You can verify the deletion by listing manifests in the repository, for example, using the [az acr repository show-manifests][az-acr-repository-show-manifests] command. If the test image was the only one in the repository, the repository itself is deleted.
 
-### <a name="disable-a-retention-policy"></a>Wyłącz zasady przechowywania
+### <a name="disable-a-retention-policy"></a>Disable a retention policy
 
-Aby wyświetlić zasady przechowywania ustawione w rejestrze, uruchom polecenie [AZ ACR config retencja show][az-acr-config-retention-show] :
+To see the retention policy set in a registry, run the [az acr config retention show][az-acr-config-retention-show] command:
 
 ```azurecli
 az acr config retention show --registry myregistry
 ```
 
-Aby wyłączyć zasady przechowywania w rejestrze, uruchom polecenie [AZ ACR config przechowywanie Update][az-acr-config-retention-update] i ustaw `--status disabled`:
+To disable a retention policy in a registry, run the [az acr config retention update][az-acr-config-retention-update] command and set `--status disabled`:
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
 ```
 
-## <a name="set-a-retention-policy---portal"></a>Ustawianie zasad przechowywania — Portal
+## <a name="set-a-retention-policy---portal"></a>Set a retention policy - portal
 
-Można również ustawić zasady przechowywania rejestru w [Azure Portal](https://portal.azure.com). W poniższym przykładzie pokazano, jak za pomocą portalu ustawić zasady przechowywania dla nieoznakowanych manifestów w rejestrze.
+You can also set a registry's retention policy in the [Azure portal](https://portal.azure.com). The following example shows you how to use the portal to set a retention policy for untagged manifests in a registry.
 
-### <a name="enable-a-retention-policy"></a>Włączanie zasad przechowywania
+### <a name="enable-a-retention-policy"></a>Enable a retention policy
 
-1. Przejdź do usługi Azure Container Registry. W obszarze **zasady**wybierz pozycję **przechowywanie** (wersja zapoznawcza).
-1. W obszarze **stan**wybierz pozycję **włączone**.
-1. Wybierz liczbę dni z przedziału od 0 do 365, aby zachować nieoznaczone manifesty. Wybierz pozycję **Zapisz**.
+1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
+1. In **Status**, select **Enabled**.
+1. Select a number of days between 0 and 365 to retain the untagged manifests. Wybierz pozycję **Zapisz**.
 
-![Włączanie zasad przechowywania w Azure Portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
+![Enable a retention policy in Azure portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
-### <a name="disable-a-retention-policy"></a>Wyłącz zasady przechowywania
+### <a name="disable-a-retention-policy"></a>Disable a retention policy
 
-1. Przejdź do usługi Azure Container Registry. W obszarze **zasady**wybierz pozycję **przechowywanie** (wersja zapoznawcza).
-1. W obszarze **stan**wybierz pozycję **wyłączone**. Wybierz pozycję **Zapisz**.
+1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
+1. In **Status**, select **Disabled**. Wybierz pozycję **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o opcjach [usuwania obrazów i repozytoriów](container-registry-delete.md) w programie Azure Container Registry
+* Learn more about options to [delete images and repositories](container-registry-delete.md) in Azure Container Registry
 
-* Dowiedz się, jak [automatycznie czyścić](container-registry-auto-purge.md) wybrane obrazy i manifesty z rejestru
+* Learn how to [automatically purge](container-registry-auto-purge.md) selected images and manifests from a registry
 
-* Dowiedz się więcej o opcjach [blokowania obrazów i manifestów](container-registry-image-lock.md) w rejestrze
+* Learn more about options to [lock images and manifests](container-registry-image-lock.md) in a registry
 
 <!-- LINKS - external -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

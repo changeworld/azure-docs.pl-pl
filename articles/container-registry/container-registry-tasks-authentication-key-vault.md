@@ -1,58 +1,54 @@
 ---
-title: Uwierzytelnianie zewnętrzne w Azure Container Registry zadania
-description: Włącz zarządzaną tożsamość zasobów platformy Azure w ramach zadania Azure Container Registry (ACR), aby umożliwić zadanie odczytywanie poświadczeń usługi Docker Hub przechowywanych w magazynie kluczy Azure.
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: External authentication from ACR task
+description: Enable a managed identity for Azure Resources in an Azure Container Registry (ACR) task to allow the task to read Docker Hub credentials stored in an Azure key vault.
 ms.topic: article
 ms.date: 07/12/2019
-ms.author: danlep
-ms.openlocfilehash: bcaf2918c92ec7b8223d394290a1d7c624fc451c
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509237"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456223"
 ---
-# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Uwierzytelnianie zewnętrzne w ACR zadania przy użyciu tożsamości zarządzanej przez platformę Azure 
+# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>External authentication in an ACR task using an Azure-managed identity 
 
-W [zadaniu ACR](container-registry-tasks-overview.md)można [włączyć zarządzaną tożsamość dla zasobów platformy Azure](container-registry-tasks-authentication-managed-identity.md). Zadanie może korzystać z tożsamości w celu uzyskania dostępu do innych zasobów platformy Azure bez konieczności podania poświadczeń ani zarządzania nimi. 
+In an [ACR task](container-registry-tasks-overview.md), you can [enable a managed identity for Azure resources](container-registry-tasks-authentication-managed-identity.md). The task can use the identity to access other Azure resources, without needing to provide or manage credentials. 
 
-W tym artykule dowiesz się, jak włączyć zarządzaną tożsamość w zadaniu, które uzyskuje dostęp do wpisów tajnych przechowywanych w magazynie kluczy platformy Azure. 
+In this article, you learn how to enable a managed identity in a task that accesses secrets stored in an Azure key vault. 
 
-Aby utworzyć zasoby platformy Azure, ten artykuł wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.68 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
+To create the Azure resources, this article requires that you run the Azure CLI version 2.0.68 or later. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
 ## <a name="scenario-overview"></a>Omówienie scenariusza
 
-Przykładowe zadanie odczytuje poświadczenia usługi Docker Hub przechowywane w magazynie kluczy Azure. Poświadczenia dla konta usługi Docker Hub z uprawnieniami do zapisu (wypychania) do prywatnego repozytorium w usłudze Docker Hub. Aby odczytać poświadczenia, należy skonfigurować zadanie przy użyciu tożsamości zarządzanej i przypisać do niego odpowiednie uprawnienia. Zadanie skojarzone z tożsamością kompiluje obraz i loguje się do centrum Docker w celu wypchnięcia obrazu do repozytorium prywatnego. 
+The example task reads Docker Hub credentials stored in an Azure key vault. The credentials are for a Docker Hub account with write (push) permissions to a private repository in Docker Hub. To read the credentials, you configure the task with a managed identity and assign appropriate permissions to it. The task associated with the identity builds an image, and signs into Docker Hub to push the image to the private repo. 
 
-W tym przykładzie przedstawiono kroki korzystające z tożsamości zarządzanej przypisanej przez użytkownika lub przypisanej do systemu. Wybór tożsamości zależy od potrzeb organizacji.
+This example shows steps using either a user-assigned or system-assigned managed identity. Your choice of identity depends on your organization's needs.
 
-W rzeczywistym scenariuszu firma może publikować obrazy w repozytorium prywatnym w usłudze Docker Hub jako część procesu kompilacji. 
+In a real-world scenario, a company might publish images to a private repo in Docker Hub as part of a build process. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebna jest usługa Azure Container Registry, w której uruchomiono zadanie. W tym artykule rejestr nazywa się rejestrem. Zamień na własną nazwę rejestru w dalszych krokach.
+You need an Azure container registry in which you run the task. In this article, this registry is named *myregistry*. Replace with your own registry name in later steps.
 
-Jeśli nie masz jeszcze usługi Azure Container Registry, zobacz [szybki start: Utwórz prywatny rejestr kontenerów za pomocą interfejsu wiersza](container-registry-get-started-azure-cli.md)polecenia platformy Azure. Nie jest jeszcze konieczne wypychanie obrazów do rejestru.
+If you don't already have an Azure container registry, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md). You don't need to push images to the registry yet.
 
-Potrzebne jest również prywatne repozytorium w usłudze Docker Hub oraz konto centrum Docker z uprawnieniami do zapisu w repozytorium. W tym przykładzie repozytorium nosi nazwę *hubuser/hubrepo*. 
+You also need a private repository in Docker Hub, and a Docker Hub account with permissions to write to the repo. In this example, this repo is named *hubuser/hubrepo*. 
 
-## <a name="create-a-key-vault-and-store-secrets"></a>Tworzenie magazynu kluczy i przechowywanie wpisów tajnych
+## <a name="create-a-key-vault-and-store-secrets"></a>Create a key vault and store secrets
 
-Po pierwsze, jeśli chcesz, Utwórz grupę zasobów o nazwie Moja *zasobów* w lokalizacji *Wschodnie* przy użyciu następującego polecenia [AZ Group Create][az-group-create] :
+First, if you need to, create a resource group named *myResourceGroup* in the *eastus* location with the following [az group create][az-group-create] command:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Użyj polecenia [AZ Key magazynu Create][az-keyvault-create] , aby utworzyć magazyn kluczy. Pamiętaj, aby określić unikatową nazwę magazynu kluczy. 
+Use the [az keyvault create][az-keyvault-create] command to create a key vault. Be sure to specify a unique key vault name. 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
 ```
 
-W magazynie kluczy należy przechowywać wymagane poświadczenia usługi Docker Hub przy użyciu polecenia [AZ Key magazynu tajnego Set][az-keyvault-secret-set] . W tych poleceniach wartości są przesyłane w zmiennych środowiskowych:
+Store the required Docker Hub credentials in the key vault using the [az keyvault secret set][az-keyvault-secret-set] command. In these commands, the values are passed in environment variables:
 
 ```azurecli
 # Store Docker Hub user name
@@ -68,11 +64,11 @@ az keyvault secret set \
   --vault-name mykeyvault
 ```
 
-W rzeczywistym scenariuszu wpisy tajne byłyby prawdopodobnie ustawione i utrzymywane w osobnym procesie.
+In a real-world scenario, secrets would likely be set and maintained in a separate process.
 
-## <a name="define-task-steps-in-yaml-file"></a>Zdefiniuj kroki zadania w pliku YAML
+## <a name="define-task-steps-in-yaml-file"></a>Define task steps in YAML file
 
-Kroki tego przykładowego zadania są zdefiniowane w [pliku YAML](container-registry-tasks-reference-yaml.md). Utwórz plik o nazwie `dockerhubtask.yaml` w lokalnym katalogu roboczym i wklej poniższą zawartość. Pamiętaj, aby zastąpić nazwę magazynu kluczy w pliku nazwą magazynu kluczy.
+The steps for this example task are defined in a [YAML file](container-registry-tasks-reference-yaml.md). Create a file named `dockerhubtask.yaml` in a local working directory and paste the following contents. Be sure to replace the key vault name in the file with the name of your key vault.
 
 ```yml
 version: v1.0.0
@@ -92,22 +88,22 @@ steps:
     - {{.Values.PrivateRepo}}:{{.Run.ID}}
 ```
 
-Kroki zadania wykonaj następujące czynności:
+The task steps do the following:
 
-* Zarządzaj poświadczeniami tajnymi w celu uwierzytelniania za pomocą narzędzia Docker Hub.
-* Uwierzytelnianie za pomocą narzędzia Docker Hub przez przekazanie wpisów `docker login` tajnych do polecenia.
-* Kompilowanie obrazu przy użyciu przykładowej pliku dockerfile w repozytorium [Azure-Samples/ACR-Tasks](https://github.com/Azure-Samples/acr-tasks.git) .
-* Wypchnij obraz do prywatnego repozytorium centrum platformy Docker.
+* Manage secret credentials to authenticate with Docker Hub.
+* Authenticate with Docker Hub by passing the secrets to the `docker login` command.
+* Build an image using a sample Dockerfile in the [Azure-Samples/acr-tasks](https://github.com/Azure-Samples/acr-tasks.git) repo.
+* Push the image to the private Docker Hub repository.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Tworzenie zadania z tożsamością przypisaną przez użytkownika
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Create task with user-assigned identity
 
-Kroki opisane w tej sekcji umożliwiają utworzenie zadania i włączenie tożsamości przypisanej do użytkownika. Jeśli zamiast tego chcesz włączyć tożsamość przypisaną do systemu, zobacz [opcję 2: Utwórz zadanie przy użyciu tożsamości](#option-2-create-task-with-system-assigned-identity)przypisanej do systemu. 
+The steps in this section create a task and enable a user-assigned identity. If you want to enable a system-assigned identity instead, see [Option 2: Create task with system-assigned identity](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>Tworzenie zadania
 
-Utwórz zadanie *dockerhubtask* , wykonując następujące polecenie [AZ ACR Task Create][az-acr-task-create] . Zadanie jest uruchamiane bez kontekstu kodu źródłowego, a polecenie odwołuje się do pliku `dockerhubtask.yaml` w katalogu roboczym. `--assign-identity` Parametr przekazuje identyfikator zasobu tożsamości przypisanej do użytkownika. 
+Create the task *dockerhubtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `dockerhubtask.yaml` in the working directory. The `--assign-identity` parameter passes the resource ID of the user-assigned identity. 
 
 ```azurecli
 az acr task create \
@@ -120,13 +116,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Opcja 2: Tworzenie zadania z tożsamością przypisaną do systemu
+## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Create task with system-assigned identity
 
-Kroki opisane w tej sekcji umożliwiają utworzenie zadania i włączenie tożsamości przypisanej do systemu. Jeśli chcesz zamiast tego włączyć tożsamość przypisaną przez użytkownika, zobacz [opcję 1: Utwórz zadanie z tożsamością](#option-1-create-task-with-user-assigned-identity)przypisaną przez użytkownika. 
+The steps in this section create a task and enable a system-assigned identity. If you want to enable a user-assigned identity instead, see [Option 1: Create task with user-assigned identity](#option-1-create-task-with-user-assigned-identity). 
 
 ### <a name="create-task"></a>Tworzenie zadania
 
-Utwórz zadanie *dockerhubtask* , wykonując następujące polecenie [AZ ACR Task Create][az-acr-task-create] . Zadanie jest uruchamiane bez kontekstu kodu źródłowego, a polecenie odwołuje się do pliku `dockerhubtask.yaml` w katalogu roboczym. `--assign-identity` Parametr bez wartości umożliwia włączenie do zadania tożsamości przypisanej do systemu.  
+Create the task *dockerhubtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `dockerhubtask.yaml` in the working directory. The `--assign-identity` parameter with no value enables the system-assigned identity on the task.  
 
 ```azurecli
 az acr task create \
@@ -139,23 +135,23 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>Udzielanie tożsamości dostępu do magazynu kluczy
+## <a name="grant-identity-access-to-key-vault"></a>Grant identity access to key vault
 
-Uruchom następujące polecenie [AZ KeyBinding Set-Policy][az-keyvault-set-policy] , aby ustawić zasady dostępu w magazynie kluczy. Poniższy przykład umożliwia tożsamości odczytywanie wpisów tajnych z magazynu kluczy. 
+Run the following [az keyvault set-policy][az-keyvault-set-policy] command to set an access policy on the key vault. The following example allows the identity to read secrets from the key vault. 
 
 ```azurecli
 az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
 ```
 
-## <a name="manually-run-the-task"></a>Ręczne uruchamianie zadania
+## <a name="manually-run-the-task"></a>Manually run the task
 
-Aby sprawdzić, czy zadanie, w którym włączono tożsamość zarządzaną, zostało pomyślnie uruchomione, ręcznie Wyzwól zadanie przy użyciu polecenia [AZ ACR Task Run][az-acr-task-run] . `--set` Parametr jest używany do przekazywania nazwy repozytorium prywatnego do zadania. W tym przykładzie nazwa repozytorium zastępczego to *hubuser/hubrepo*.
+To verify that the task in which you enabled a managed identity runs successfully, manually trigger the task with the [az acr task run][az-acr-task-run] command. The `--set` parameter is used to pass the private repo name to the task. In this example, the placeholder repo name is *hubuser/hubrepo*.
 
 ```azurecli
 az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
 ```
 
-Po pomyślnym uruchomieniu zadania dane wyjściowe pokazują pomyślne uwierzytelnienie w usłudze Docker Hub, a obraz został pomyślnie skompilowany i wypychany do repozytorium prywatnego:
+When the task runs successfully, output shows successful authentication to Docker Hub, and the image is successfully built and pushed to the private repo:
 
 ```console
 Queued a run with ID: cf24
@@ -202,12 +198,12 @@ Sending build context to Docker daemon    129kB
 Run ID: cf24 was successful after 15s
 ```
 
-Aby potwierdzić, że obraz jest wypychany, sprawdź tag (`cf24` w tym przykładzie) w prywatnym repozytorium usługi Docker Hub.
+To confirm the image is pushed, check for the tag (`cf24` in this example) in the private Docker Hub repo.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej [na temat włączania tożsamości zarządzanej w zadaniu ACR](container-registry-tasks-authentication-managed-identity.md).
-* Zobacz [odwołanie ACR Tasks YAML](container-registry-tasks-reference-yaml.md)
+* Learn more about [enabling a managed identity in an ACR task](container-registry-tasks-authentication-managed-identity.md).
+* See the [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)
 
 
 <!-- LINKS - Internal -->

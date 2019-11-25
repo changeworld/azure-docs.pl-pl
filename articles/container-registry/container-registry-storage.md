@@ -1,57 +1,52 @@
 ---
-title: Magazyn obrazów w Azure Container Registry
-description: Szczegółowe informacje na temat sposobu przechowywania obrazów kontenerów platformy Docker w Azure Container Registry, w tym zabezpieczeń, nadmiarowości i pojemności.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Container image storage
+description: Details on how your Docker container images are stored in Azure Container Registry, including security, redundancy, and capacity.
 ms.topic: article
 ms.date: 03/21/2018
-ms.author: danlep
-ms.openlocfilehash: 4517cc21ca0087358e750cd480288d4ec3718791
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310536"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456206"
 ---
-# <a name="container-image-storage-in-azure-container-registry"></a>Magazyn obrazów kontenerów w Azure Container Registry
+# <a name="container-image-storage-in-azure-container-registry"></a>Container image storage in Azure Container Registry
 
-Każda usługa Azure Container Registry w warstwach [podstawowa, standardowa i Premium](container-registry-skus.md) nie oferuje zaawansowanych funkcji usługi Azure Storage, takich jak szyfrowanie — w wersji zaszyfrowanej w celu zapewnienia bezpieczeństwa danych obrazu i nadmiarowości geograficznej na potrzeby ochrony danych obrazów. W poniższych sekcjach opisano funkcje i limity magazynu obrazów w Azure Container Registry (ACR).
+Every [Basic, Standard, and Premium](container-registry-skus.md) Azure container registry benefits from advanced Azure storage features like encryption-at-rest for image data security and geo-redundancy for image data protection. The following sections describe both the features and limits of image storage in Azure Container Registry (ACR).
 
 ## <a name="encryption-at-rest"></a>Encryption-at-rest
 
-Wszystkie obrazy kontenerów w rejestrze są szyfrowane w stanie spoczynku. Platforma Azure automatycznie szyfruje obraz przed jego zapisaniem i odszyfrowuje go na bieżąco, gdy użytkownik lub jego aplikacje i usługi pobierają obraz.
+All container images in your registry are encrypted at rest. Azure automatically encrypts an image before storing it, and decrypts it on-the-fly when you or your applications and services pull the image.
 
 ## <a name="geo-redundant-storage"></a>Magazyn geograficznie nadmiarowy
 
-Platforma Azure używa schematu magazynu geograficznie nadmiarowego w celu ochrony przed utratą obrazów kontenerów. Azure Container Registry automatycznie replikuje obrazy kontenerów do wielu odległych geograficznie centrów danych, zapobiegając ich utracie w przypadku awarii magazynu regionalnego.
+Azure uses a geo-redundant storage scheme to guard against loss of your container images. Azure Container Registry automatically replicates your container images to multiple geographically distant data centers, preventing their loss in the event of a regional storage failure.
 
 ## <a name="geo-replication"></a>Replikacja geograficzna
 
-W przypadku scenariuszy wymagających jeszcze większej liczby gwarancji o wysokiej dostępności Rozważ użycie funkcji [replikacji](container-registry-geo-replication.md) geograficznej w rejestrach w warstwie Premium. Replikacja geograficzna pomaga chronić przed utratą dostępu do rejestru w przypadku *całkowitego* błędu regionalnego, a nie tylko awarii magazynu. Replikacja geograficzna zapewnia również inne korzyści, takie jak magazyn obrazów w sieci, w celu szybszego wypychania i ściągania w rozproszonych scenariuszach programistycznych lub wdrożeniowych.
+For scenarios requiring even more high-availability assurance, consider using the [geo-replication](container-registry-geo-replication.md) feature of Premium registries. Geo-replication helps guard against losing access to your registry in the event of a *total* regional failure, not just a storage failure. Geo-replication provides other benefits, too, like network-close image storage for faster pushes and pulls in distributed development or deployment scenarios.
 
-## <a name="image-limits"></a>Limity obrazu
+## <a name="image-limits"></a>Image limits
 
-W poniższej tabeli opisano limity dotyczące obrazów kontenerów i magazynów dla rejestrów kontenerów platformy Azure.
+The following table describes the container image and storage limits in place for Azure container registries.
 
-| Resource | Limit |
+| Zasób | Limit |
 | -------- | :---- |
 | Repozytoria | Bez ograniczeń |
 | Obrazy | Bez ograniczeń |
-| Zaznaczone | Bez ograniczeń |
-| `Tags` | Bez ograniczeń|
-| Magazyn | 5 TB |
+| Layers | Bez ograniczeń |
+| Tagi | Bez ograniczeń|
+| Usługa Storage | 5 TB |
 
-Bardzo duża liczba repozytoriów i tagów może mieć wpływ na wydajność rejestru. Okresowe usuwanie nieużywanych repozytoriów, tagów i obrazów w ramach procedury obsługi rejestru. Usunięte zasoby rejestru, takie jak repozytoria, obrazy i Tagi, *nie mogą* zostać odzyskane po usunięciu. Więcej informacji o usuwaniu zasobów rejestru znajduje się [w temacie Usuwanie obrazów kontenera w Azure Container Registry](container-registry-delete.md).
+Very high numbers of repositories and tags can impact the performance of your registry. Periodically delete unused repositories, tags, and images as part of your registry maintenance routine. Deleted registry resources like repositories, images, and tags *cannot* be recovered after deletion. For more information about deleting registry resources, see [Delete container images in Azure Container Registry](container-registry-delete.md).
 
 ## <a name="storage-cost"></a>Koszt usługi Storage
 
-Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Azure Container Registry][pricing].
+For full details about pricing, see [Azure Container Registry pricing][pricing].
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat różnych jednostek SKU Azure Container Registry (podstawowa, standardowa, Premium), zobacz [Azure Container Registry jednostek SKU](container-registry-skus.md).
+For more information about the different Azure Container Registry SKUs (Basic, Standard, Premium), see [Azure Container Registry SKUs](container-registry-skus.md).
 
 <!-- IMAGES -->
 

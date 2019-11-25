@@ -1,36 +1,30 @@
 ---
-title: Szybki Start — Kompilowanie & uruchamianie obrazu kontenera w Azure Container Registry
-description: Szybko uruchamiaj zadania z Azure Container Registry, aby kompilować i uruchamiać obraz kontenera na żądanie w chmurze.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Quickstart - Build & run container image
+description: Quickly run tasks with Azure Container Registry to build and run a container image on-demand, in the cloud.
 ms.topic: quickstart
 ms.date: 04/02/2019
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: b97249aa61916975fa641d4620179be33e1d5276
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: f0b510607a4d0acf12e0b9caa43835c1cfe6a83d
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931554"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454950"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Szybki Start: kompilowanie i uruchamianie obrazu kontenera za pomocą zadań Azure Container Registry
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Quickstart: Build and run a container image using Azure Container Registry Tasks
 
-W tym przewodniku szybki start użyjesz poleceń Azure Container Registry zadania, aby szybko kompilować, wypchnięciować i uruchamiać obraz kontenera platformy Docker w systemie Azure, pokazując, jak odciążać cykl programowania "pętla wewnętrzna" do chmury. [ACR Tasks][container-registry-tasks-overview] to zestaw funkcji w ramach Azure Container Registry, które ułatwiają zarządzanie obrazami kontenerów w ramach cyklu życia kontenera i ich modyfikowanie. 
+In this quickstart, you use Azure Container Registry Tasks commands to quickly build, push, and run a Docker container image natively within Azure, showing how to offload your "inner-loop" development cycle to the cloud. [ACR Tasks][container-registry-tasks-overview] is a suite of features within Azure Container Registry to help you manage and modify container images across the container lifecycle. 
 
-Po tym przewodniku szybki start zapoznaj się z bardziej zaawansowanymi funkcjami zadań ACR. Zadania ACR umożliwiają automatyzowanie kompilacji obrazów na podstawie zatwierdzeń kodu lub aktualizacji obrazu podstawowego lub testowanie wielu kontenerów równolegle, między innymi scenariuszami. 
+After this quickstart, explore more advanced features of ACR Tasks. ACR Tasks can automate image builds based on code commits or base image updates, or test multiple containers, in parallel, among other scenarios. 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][azure-account].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Podczas pracy z tym przewodnikiem Szybki start możesz użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Jeśli chcesz używać go lokalnie, zalecana jest wersja 2.0.58 lub nowsza. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Podczas pracy z tym przewodnikiem Szybki start możesz użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. If you'd like to use it locally, version 2.0.58 or later is recommended. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
-Jeśli nie masz jeszcze rejestru kontenerów, najpierw utwórz grupę zasobów za pomocą polecenia [AZ Group Create][az-group-create] . Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
+If you don't already have a container registry, first create a resource group with the [az group create][az-group-create] command. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
@@ -40,29 +34,29 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-Utwórz rejestr kontenerów za pomocą polecenia [AZ ACR Create][az-acr-create] . Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. W poniższym przykładzie używany jest *myContainerRegistry008* . Zaktualizuj ją do unikatowej wartości.
+Create a container registry using the [az acr create][az-acr-create] command. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. In the following example, *myContainerRegistry008* is used. Zaktualizuj ją do unikatowej wartości.
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-W tym przykładzie jest tworzony rejestr *podstawowy* , opcja zoptymalizowana pod kątem kosztów dla deweloperów, która uczy się Azure Container Registry. Aby uzyskać szczegółowe informacje o dostępnych warstwach usług, zobacz [jednostki SKU rejestru kontenerów][container-registry-skus].
+This example creates a *Basic* registry,  a cost-optimized option for developers learning about Azure Container Registry. For details on available service tiers, see [Container registry SKUs][container-registry-skus].
 
-## <a name="build-an-image-from-a-dockerfile"></a>Tworzenie obrazu z pliku dockerfile
+## <a name="build-an-image-from-a-dockerfile"></a>Build an image from a Dockerfile
 
-Teraz Użyj Azure Container Registry do skompilowania obrazu. Najpierw Utwórz katalog roboczy, a następnie utwórz pliku dockerfile o nazwie *pliku dockerfile* z następującą zawartością. Jest to prosty przykład, aby utworzyć obraz kontenera systemu Linux, ale możesz utworzyć własne, standardowe pliku dockerfile i obrazy kompilacji dla innych platform.
+Now use Azure Container Registry to build an image. First, create a working directory and then create a Dockerfile named *Dockerfile* with the following content. This is a simple example to build a Linux container image, but you can create your own standard Dockerfile and build images for other platforms.
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-Uruchom polecenie [AZ ACR Build][az-acr-build] , aby skompilować obraz. Po pomyślnym skompilowaniu obraz jest wypychany do rejestru. Poniższy przykład wypycha obraz `sample/hello-world:v1`. `.` na końcu polecenia ustawia lokalizację pliku dockerfile, w tym przypadku bieżący katalog.
+Run the [az acr build][az-acr-build] command to build the image. When successfully built, the image is pushed to your registry. The following example pushes the `sample/hello-world:v1` image. The `.` at the end of the command sets the location of the Dockerfile, in this case the current directory.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
 ```
 
-Dane wyjściowe z pomyślnej kompilacji i wypychania są podobne do następujących:
+Output from a successful build and push is similar to the following:
 
 ```console
 Packing source code into tar to upload...
@@ -114,20 +108,20 @@ v1: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e8
 Run ID: ca8 was successful after 10s
 ```
 
-## <a name="run-the-image"></a>Uruchamianie obrazu
+## <a name="run-the-image"></a>Run the image
 
-Teraz możesz szybko uruchomić utworzony wcześniej obraz i wypchnąć go do rejestru. W przepływie pracy tworzenia kontenera może to być etap walidacji przed wdrożeniem obrazu.
+Now quickly run the image you built and pushed to your registry. In your container development workflow, this might be a validation step before you deploy the image.
 
-Utwórz plik *quickrun. YAML* w lokalnym katalogu roboczym z następującą zawartością dla pojedynczego kroku. Zastąp nazwę serwera logowania w rejestrze dla *\<acrLoginServer\>* . Nazwa serwera logowania ma format *\<Registry-name\>. azurecr.IO* (wszystkie małe litery), na przykład *mycontainerregistry008.azurecr.IO*. W tym przykładzie założono, że utworzono i wypychasz obraz `sample/hello-world:v1` w poprzedniej sekcji:
+Create a file *quickrun.yaml* in a local working directory with the following content for a single step. Substitute the login server name of your registry for *\<acrLoginServer\>* . The login server name is in the format *\<registry-name\>.azurecr.io* (all lowercase), for example, *mycontainerregistry008.azurecr.io*. This example assumes that you built and pushed the `sample/hello-world:v1` image in the previous section:
 
 ```yml
 steps:
   - cmd: <acrLoginServer>/sample/hello-world:v1
 ```
 
-W `cmd` kroku w tym przykładzie jest uruchamiany kontener w konfiguracji domyślnej, ale `cmd` obsługuje dodatkowe parametry `docker run` lub nawet inne polecenia `docker`.
+The `cmd` step in this example runs the container in its default configuration, but `cmd` supports additional `docker run` parameters or even other `docker` commands.
 
-Uruchom kontener za pomocą następującego polecenia:
+Run the container with the following command:
 
 ```azurecli-interactive
 az acr run --registry myContainerRegistry008 --file quickrun.yaml .
@@ -180,7 +174,7 @@ Run ID: cab was successful after 6s
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebne, można użyć polecenia [AZ Group Delete][az-group-delete] , aby usunąć grupę zasobów, rejestr kontenerów i przechowywane tam obrazy kontenerów.
+When no longer needed, you can use the [az group delete][az-group-delete] command to remove the resource group, the container registry, and the container images stored there.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -188,10 +182,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start użyto funkcji zadań ACR do szybkiego kompilowania, wypychania i uruchamiania obrazu kontenera platformy Docker w systemie Azure. Przejdź do samouczków Azure Container Registry, aby dowiedzieć się więcej o używaniu zadań ACR do automatyzowania kompilacji i aktualizacji obrazów.
+In this quickstart, you used features of ACR Tasks to quickly build, push, and run a Docker container image natively within Azure. Continue to the Azure Container Registry tutorials to learn about using ACR Tasks to automate image builds and updates.
 
 > [!div class="nextstepaction"]
-> [Samouczki Azure Container Registry][container-registry-tutorial-quick-task]
+> [Azure Container Registry tutorials][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
