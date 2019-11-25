@@ -1,5 +1,5 @@
 ---
-title: Przykłady kodu i programu PowerShell na potrzeby współpracy B2B — Azure Active Directory | Microsoft Docs
+title: Kod współpracy B2B i przykłady programu PowerShell — Azure AD
 description: Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79352c2c82cae8fe77ef6313d74e60432c710ec0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f3a43ce4c560e89d88594d173aae7b2ad2db99ee
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812502"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273108"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory
 
@@ -26,7 +26,7 @@ Można zbiorczo zaprosić do organizacji użytkowników zewnętrznych za pomocą
 
 1. Przygotuj plik CSV. Utwórz nowy plik CSV i nadaj mu nazwę invitations.csv. W tym przykładzie plik został zapisany w folderze C:\data i zawiera następujące informacje:
   
-   Name (Nazwa)                  |  InvitedUserEmailAddress
+   Nazwa                  |  InvitedUserEmailAddress
    --------------------- | --------------------------
    Osoba zaproszona B2B w usłudze Gmail     | b2binvitee@gmail.com
    Osoba zaproszona B2B w usłudze Outlook   | b2binvitee@outlook.com

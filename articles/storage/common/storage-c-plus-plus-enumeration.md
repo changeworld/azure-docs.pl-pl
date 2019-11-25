@@ -1,5 +1,5 @@
 ---
-title: Wyświetlanie listy zasobów usługi Azure Storage za pomocą biblioteki klienta C++ magazynu dla programu | Microsoft Docs
+title: Wyświetlanie listy zasobów usługi Azure C++ Storage za pomocą biblioteki klienckiej
 description: Dowiedz się, jak wyliczyć kontenery, obiekty blob C++ , kolejki, tabele i jednostki przy użyciu interfejsów API listy w Microsoft Azure Storageej bibliotece klienta programu.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721919"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269447"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Wyświetlanie listy zasobów usługi Azure StorageC++
 
@@ -55,7 +55,7 @@ Jeśli pracujesz z wieloma aplikacjami lub usługami wątkowości, zalecamy bezp
 
 Skala magazynu w chmurze wymaga wyświetlania segmentów. Na przykład możesz mieć ponad milion obiektów BLOB w kontenerze obiektów blob platformy Azure lub za pośrednictwem miliarda jednostek w tabeli platformy Azure. Nie są to liczby teoretyczne, ale prawdziwe przypadki użycia klientów.
 
-W związku z tym nie można wyświetlić listy wszystkich obiektów w pojedynczej odpowiedzi. Zamiast tego można wyświetlić listę obiektów przy użyciu stronicowania. Każdy z interfejsów API zawiera segmenty przeciążenia.
+W związku z tym nie można wyświetlić listy wszystkich obiektów w pojedynczej odpowiedzi. Zamiast tego można wyświetlić listę obiektów przy użyciu stronicowania. Każdy z interfejsów API zawiera *segmenty* przeciążenia.
 
 Odpowiedź na operację tworzenia segmentów z segmentacją obejmuje:
 
@@ -87,7 +87,7 @@ do
 while (!token.empty());
 ```
 
-Należy zauważyć, że liczba wyników zwróconych na stronie może być kontrolowana przez parametr *max_results* w przypadku przeciążenia każdego interfejsu API, na przykład:
+Należy zauważyć, że liczba wyników zwróconych na stronie może być kontrolowana przez parametr *max_results* w przypadku przeciążenia poszczególnych interfejsów API, na przykład:
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
@@ -97,7 +97,7 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
 
 Jeśli parametr *max_results* nie zostanie określony, domyślna wartość maksymalna do 5000 wyników zostanie zwrócona na jednej stronie.
 
-Należy również zauważyć, że zapytanie w usłudze Azure Table Storage może zwracać Brak rekordów lub mniej rekordów niż określona wartość parametru *max_results* , nawet jeśli token kontynuacji nie jest pusty. Jedną z przyczyn może być to, że zapytanie nie zostało wykonane w ciągu pięciu sekund. Tak długo, jak token kontynuacji nie jest pusty, zapytanie powinno być kontynuowane, a Twój kod nie powinien przyjąć rozmiaru wyników segmentu.
+Należy również zauważyć, że zapytanie w usłudze Azure Table Storage może zwracać Brak rekordów lub mniejszą liczbę rekordów niż wartość parametru *max_results* określonego przez użytkownika, nawet jeśli token kontynuacji nie jest pusty. Jedną z przyczyn może być to, że zapytanie nie zostało wykonane w ciągu pięciu sekund. Tak długo, jak token kontynuacji nie jest pusty, zapytanie powinno być kontynuowane, a Twój kod nie powinien przyjąć rozmiaru wyników segmentu.
 
 Zalecany wzorzec kodowania dla większości scenariuszy to lista segmentów, która zapewnia jawny postęp tworzenia listy lub wykonywania zapytań oraz jak usługa odpowiada na każde żądanie. Szczególnie w C++ przypadku aplikacji lub usług kontrola niższego poziomu postępu tworzenia może pomóc w kontroli ilości pamięci i wydajności.
 
@@ -153,7 +153,7 @@ Mimo że lista zachłanne zgłosiła potencjalne problemy, jest to wygodne, jeś
 
 Jeśli używasz również zestawów SDK C# języka Java firmy lub Oracle, należy zapoznać się z wyliczalnym modelem programowania, który oferuje listę w stylu z opóźnieniem, w której dane z określonego przesunięcia są pobierane tylko wtedy, gdy jest to wymagane. W C++programie szablon oparty na iteratorze zapewnia również podobne podejście.
 
-Typowym interfejsem API wyświetlania listy z opóźnieniem, korzystającym z **list_blobs** na przykład, wygląda następująco:
+Typowy interfejs API aukcji z opóźnieniem, przy użyciu **list_blobs** na przykład wygląda następująco:
 
 ```cpp
 list_blob_item_iterator list_blobs() const;
@@ -183,7 +183,7 @@ W porównaniu z listą zachłanne, lista z opóźnieniem pobiera dane tylko w ra
 
 Interfejsy API listy z opóźnieniem znajdują się w bibliotece C++ klienta usługi Storage dla programu w wersji 2.2.0.
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 W tym artykule omówiono różne przeciążenia dotyczące wyświetlania listy interfejsów API dla różnych obiektów w bibliotece klienta usługi Storage C++ . Aby podsumować:
 
@@ -192,7 +192,7 @@ W tym artykule omówiono różne przeciążenia dotyczące wyświetlania listy i
 * Lista z opóźnieniem jest udostępniana w bibliotece jako wygodna otoka w scenariuszach synchronicznych.
 * Lista zachłanne nie jest zalecana i została usunięta z biblioteki.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat usługi Azure Storage i C++biblioteki klienta dla programu, zobacz następujące zasoby.
 

@@ -1,6 +1,6 @@
 ---
-title: Ujednolicone & monitorowania alertów w Azure Monitor zastępują klasyczne alerty & monitorowania
-description: Przegląd wycofywania klasycznych usług i funkcji monitorowania, które przedstawiono wcześniej w Azure Portal w obszarze alerty (klasyczne). Monitorowanie klasycznego alertu & obejmuje klasyczne alerty metryk dla zasobów platformy Azure, klasyczne alerty metryk dla Application Insights, klasyczne alerty WebTest dla Application Insights, klasyczne niestandardowe alerty oparte na metrykach dla Application Insights i klasycznych alerty dla Application Insights SmartDetection v1
+title: Aktualizacja klasycznego alertu & monitorowania w programie Azure Monitor
+description: Opis wycofania usług i funkcji monitorowania klasycznego, wcześniej pokazanych w Azure Portal w obszarze alerty (klasyczne).
 author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: ea50a4f10aa1d794f875cb1eb9601774bec146cd
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676896"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307086"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Ujednolicone & monitorowania alertów w Azure Monitor zastępują klasyczne alerty & monitorowania
 
 Azure Monitor teraz stać się ujednoliconą pełną usługą monitorowania stosu, która obsługuje teraz "jedną metrykę" i "jedno alerty" między zasobami; Aby uzyskać więcej informacji, zobacz nasz [wpis w blogu dotyczący nowych Azure monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Nowe platformy do monitorowania i zgłaszania alertów platformy Azure zostały skompilowane, aby były szybsze, inteligentniejsze i rozszerzalne — dzięki rozwijającej się expanse w chmurze obliczeniowej i w firmie Microsoft Intelligent Cloud. 
 
-Dzięki nowej platformie monitorowania i wysyłania alertów platformy Azure zostanie wycofane "klasyczne" środowisko monitorowania i zgłaszania alertów hostowane w sekcji *Wyświetl alerty klasyczne* w ramach alertów platformy Azure, które **zostaną wycofane z sierpnia 2019 w chmurach publicznych platformy Azure** . Nie wpłynie to na [Azure government w chmurze](../../azure-government/documentation-government-welcome.md) i na [platformie Azure (Chiny](https://docs.azure.cn/) ).
+Dzięki nowej platformie monitorowania i wysyłania alertów platformy Azure zostanie wycofana "Klasyczna" platforma monitorowania i powiadamiania o alertach — obsługiwana w sekcji *Wyświetl alerty klasyczne* w ramach alertów platformy Azure **zostanie wycofana z sierpnia 2019 w chmurach publicznych platformy Azure**. Nie wpłynie to na [Azure government w chmurze](../../azure-government/documentation-government-welcome.md) i na [platformie Azure (Chiny](https://docs.azure.cn/) ).
 
 > [!NOTE]
 > Z powodu opóźnienia w wycofywaniu narzędzia migracji Data wycofania migracji klasycznych alertów została [rozszerzona do 31 sierpnia 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od pierwotnie ogłoszonej daty 30 czerwca 2019.
@@ -70,7 +70,7 @@ Na koniec sierpnia 2019 w Azure Monitor:
 - Niektóre [klasyczne reguły alertów, które nie mogą zostać automatycznie zmigrowane](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated) i wymagają ręcznej akcji od użytkowników, będą nadal uruchamiane do czerwca 2020.
 
 > [!IMPORTANT]
-> Monitor Microsoft Azure został rozmieszczony w [narzędziu faz, aby wkrótce przeprowadzić migrację](alerts-using-migration-tool.md) swoich klasycznych reguł alertów na nową platformę. I uruchom ją przez wymuszenie dla wszystkich klasycznych reguł alertów, które nadal istnieją i można migrować, rozpoczynając od września 2019. Klienci będą musieli zapewnić, że Automatyzacja korzystający z klasycznej reguły alertów jest dostosowywana do obsługi nowego ładunku z [ujednoliconych metryk i alertów w Application Insights](#unified-metrics-and-alerts-in-application-insights) lub [ujednolicone metryki i alerty dla innych zasobów platformy Azure](#unified-metrics-and-alerts-for-other-azure-resources), po migracji klasycznych reguł alertów. Aby uzyskać więcej informacji, zobacz [Przygotowywanie do migracji klasycznej reguły alertów](alerts-prepare-migration.md)
+> Monitor Microsoft Azure został rozmieszczony w [narzędziu faz, aby wkrótce przeprowadzić migrację](alerts-using-migration-tool.md) swoich klasycznych reguł alertów na nową platformę. I uruchom ją przez wymuszenie dla wszystkich klasycznych reguł alertów, które nadal istnieją i można migrować, rozpoczynając od września 2019. Klienci będą musieli zapewnić, że Automatyzacja korzystający z klasycznej reguły alertów jest dostosowywana do obsługi nowego ładunku z [ujednoliconych metryk i alertów w Application Insights](#unified-metrics-and-alerts-in-application-insights) lub [ujednolicone metryki i alerty dla innych zasobów platformy Azure](#unified-metrics-and-alerts-for-other-azure-resources), po migracji z klasycznych reguł alertów. Aby uzyskać więcej informacji, zobacz [Przygotowywanie do migracji klasycznej reguły alertów](alerts-prepare-migration.md)
 
 Ten artykuł będzie aktualizowany w sposób ciągły wraz z linkami & szczegóły dotyczące nowej funkcji alertów & monitorowania platformy Azure, a także dostępności narzędzi do ułatwienia użytkownikom wdrażania nowej platformy Azure Monitor.
 
@@ -87,7 +87,7 @@ Poniżej znajdują się przykłady przypadków, w których zostanie naliczona op
 - Wszystkie zmigrowane reguły alertów, które są edytowane w celu używania nowszych funkcji alertu metryki, takich jak częstotliwość, wiele zasobów/wymiary, [dynamiczne progi](alerts-dynamic-thresholds.md), zmiana zasobu/sygnał i tak dalej.
 - Wszystkie zmigrowane grupy akcji, które są edytowane w celu korzystania z nowszych powiadomień lub typy akcji, takich jak wiadomości SMS, połączenia głosowe i/lub integracja narzędzia ITSM.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Poznaj [nowe ujednolicone Azure monitor](../../azure-monitor/overview.md).
 * Dowiedz się więcej o nowych [alertach platformy Azure](../../azure-monitor/platform/alerts-overview.md).

@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669421"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278541"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki Start: wdrażanie aplikacji w portalu LUIS
 
@@ -29,6 +29,7 @@ W tym przewodniku szybki start dowiesz się, jak wdrożyć aplikację. Tworzysz 
 
 * Uzyskaj [subskrypcję platformy Azure](https://azure.microsoft.com/free).
 * Wykonaj [poprzedni Przewodnik Szybki Start](get-started-portal-build-app.md) lub [Pobierz i zaimportuj aplikację](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Jeśli masz aplikacje, które mają przestarzałe uwierzytelnianie zasobów platformy Azure, [Migruj do zasobu platformy Azure](luis-migration-authoring.md). Niektóre strony portalu wyglądają inaczej, gdy obowiązuje uwierzytelnianie poczty e-mail.
 
 ## <a name="create-the-endpoint-resource"></a>Tworzenie zasobu punktu końcowego
 
@@ -60,7 +61,7 @@ Tworzysz zasób punktu końcowego przewidywania w Azure Portal. Tego zasobu nale
 
 Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do aplikacji LUIS. Po jego przypisaniu nie trzeba wykonać tego kroku ponownie, chyba że zostanie utworzony nowy zasób. Możesz utworzyć nowy zasób, aby rozszerzyć regiony aplikacji lub obsłużyć większą liczbę zapowiadanych zapytań.
 
-1. Zaloguj się do [portalu Luis](https://www.luis.ai) i wybierz aplikację **myEnglishApp** z listy aplikacji.
+1. Zaloguj się do [portalu Luis](https://preview.luis.ai) i wybierz aplikację **myEnglishApp** z listy aplikacji.
 
 1. Wybierz pozycję **Zarządzaj** w prawym górnym menu, a następnie wybierz pozycję **zasoby platformy Azure**.
 
@@ -68,9 +69,9 @@ Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do
 
     ![Aby dodać zasób przewidywania LUIS, wybierz pozycję Dodaj zasób predykcyjny](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz pozycję **Przypisz zasób**.
+1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz **przypisany zasób**.
 
-   ![Przypisywanie zasobu do aplikacji](./media/get-started-portal-deploy-app/assign-resource.png)
+   ![Przydziel zasób do aplikacji](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Wykonaj te same czynności, aby dodać klucz tworzenia do aplikacji.
 
@@ -86,7 +87,7 @@ Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do
 
 ## <a name="prediction-endpoint-request"></a>Żądanie punktu końcowego przewidywania
 
-`query=` na końcu adresu URL polega na tym, że wypowiedź użytkownika jest dołączany do żądania GET. Po `query=`wprowadź tę samą wypowiedź użytkownika, która została użyta na końcu poprzedniego przewodnika Szybki Start:
+W portalu w wersji zapoznawczej `query=` na końcu adresu URL jest dołączany do żądania GET. Po `query=`wprowadź tę samą wypowiedź użytkownika, która została użyta na końcu poprzedniego przewodnika Szybki Start:
 
 ```Is there a form named hrf-234098```
 
@@ -142,7 +143,7 @@ Aby wyświetlić ten sam poziom informacji w okienku testów, należy opublikowa
 
 Po zakończeniu pracy z tym przewodnikiem Szybki Start wybierz pozycję **Moje aplikacje** w górnym menu nawigacji. Zaznacz pole wyboru aplikacji z listy, a następnie wybierz pozycję **Usuń** z paska narzędzi kontekstowego nad listą.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Identyfikowanie typowych intencji i jednostek](luis-tutorial-prebuilt-intents-entities.md)
