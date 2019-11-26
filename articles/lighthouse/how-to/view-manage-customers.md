@@ -1,66 +1,66 @@
 ---
-title: Wyświetlanie klientów i delegowanych zasobów oraz zarządzanie nimi
-description: Jako dostawca usług korzystający z funkcji zarządzania zasobami delegowanymi przez platformę Azure możesz wyświetlić wszystkie delegowane zasoby i subskrypcje klientów, przechodząc do moich klientów w Azure Portal.
+title: View and manage customers and delegated resources
+description: As a service provider using Azure delegated resource management, you can view all of your delegated customer resources and subscriptions by going to My customers in the Azure portal.
 ms.date: 10/23/2019
-ms.topic: overview
-ms.openlocfilehash: ed1f2e5044fe5058acc4f8b155b346dd46c51b28
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131245"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463828"
 ---
-# <a name="view-and-manage-customers-and-delegated-resources"></a>Wyświetlanie klientów i delegowanych zasobów oraz zarządzanie nimi
+# <a name="view-and-manage-customers-and-delegated-resources"></a>View and manage customers and delegated resources
 
-Dostawcy usług korzystający z funkcji [zarządzania zasobami delegowanymi przez platformę Azure](../concepts/azure-delegated-resource-management.md) mogą używać strony **moi klienci** w [Azure Portal](https://portal.azure.com) , aby wyświetlić delegowane zasoby i subskrypcje klientów. Mimo że będziemy odnieść się do dostawców usług i klientów w tym miejscu, przedsiębiorstwa zarządzające wieloma dzierżawcami mogą używać tego samego procesu do konsolidacji ich środowiska zarządzania.
+Service providers using [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) can use the **My customers** page in the [Azure portal](https://portal.azure.com) to view delegated customer resources and subscriptions. While we'll refer to service providers and customers here, enterprises managing multiple tenants can use the same process to consolidate their management experience.
 
-Aby uzyskać dostęp do strony **moi klienci** w Azure Portal, wybierz pozycję **wszystkie usługi**, a następnie wyszukaj pozycję **moi klienci** i wybierz ją. Można ją również znaleźć, wpisując "My Customers" w polu wyszukiwania w górnej części Azure Portal.
+To access the **My customers** page in the Azure portal, select **All services**, then search for **My customers** and select it. You can also find it by entering “My customers” in the search box near the top of the Azure portal.
 
-Należy pamiętać, że w górnej części strony **moi klienci** są wyświetlane tylko informacje o klientach, którzy mają delegowane subskrypcje lub grupy zasobów. Jeśli pracujesz z innymi klientami (na przykład za pomocą [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview)), nie zobaczysz tutaj informacji o tych klientach, chyba że połączysz swoje zasoby w celu zarządzania delegowanymi zasobami. Na stronie, w sekcji **dostawca rozwiązań w chmurze (wersja zapoznawcza)** przedstawiono informacje o rozliczeniach i zasoby dla klientów programu CSP, którzy [podpisali umowę klienta firmy Microsoft (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) i są objęte planem platformy Azure, niezależnie od tego, czy zostały one dołączone Zarządzanie zasobami delegowanymi przez platformę Azure. Aby uzyskać więcej informacji, zobacz artykuł Wprowadzenie [do rozliczeń umowy partnerskiej firmy Microsoft](https://docs.microsoft.com/azure/billing/mpa-overview).
+Keep in mind that the top section of the **My customers** page only shows info about customers who have delegated subscriptions or resource groups. If you work with other customers (such as through the [Cloud Solution Provider program](https://docs.microsoft.com/partner-center/csp-overview), you won’t see info about those customers here unless you onboard their resources for delegated resource management. Lower on the page, the **Cloud Solution Provider (Preview)** section shows billing info and resources for your CSP customers who have [signed the Microsoft Customer Agreement (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) and are under the Azure plan, whether or not they have been onboarded for Azure delegated resource management. For more info, see [Get started with your Microsoft Partner Agreement billing account](https://docs.microsoft.com/azure/billing/mpa-overview).
 
 > [!NOTE]
-> Klienci mogą wyświetlać informacje o dostawcach usług, przechodząc do **dostawców usług** w Azure Portal. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i zarządzanie dostawcami usług](view-manage-service-providers.md).
+> Your customers can view info about service providers by navigating to **Service providers** in the Azure portal. For more info, see [View and manage service providers](view-manage-service-providers.md).
 
-## <a name="view-and-manage-customer-details"></a>Wyświetlanie szczegółów klienta i zarządzanie nimi
+## <a name="view-and-manage-customer-details"></a>View and manage customer details
 
-Aby wyświetlić szczegóły klienta, wybierz pozycję **klienci** po lewej stronie strony **moi klienci** .
+To view customer details, select **Customers** on the left side of the **My customers** page.
 
-Dla każdego klienta zobaczysz nazwę klienta, identyfikator klienta (identyfikator dzierżawy) i ofertę skojarzoną z zaangażowaniem. W kolumnie **delegacje** zostanie wyświetlona liczba delegowanych subskrypcji i/lub liczba delegowanych grup zasobów.
+For each customer, you'll see the customer's name, customer ID (tenant ID), and the offer associated with the engagement. In the **Delegations** column, you'll see the number of delegated subscriptions and/or the number of delegated resource groups.
 
 > [!IMPORTANT]
-> Aby można było wyświetlić delegowanie, użytkownicy muszą mieć przyznaną rolę [czytelnika](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (lub inną wbudowaną rolę, która obejmuje dostęp do czytnika) w procesie dołączania.
+> In order to see a delegation, users must have been granted the [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) role (or another built-in role which includes Reader access) in the onboarding process.
 
-Filtry w górnej części strony pozwalają sortować i grupować informacje o kliencie lub filtrować według określonych klientów, ofert lub słów kluczowych.
+Filters at the top of the page let you sort and group your customer info or filter by specific customers, offers, or keywords.
 
-Na tej stronie można wyświetlić następujące informacje:
+You can view the following info from this page:
 
-- Aby wyświetlić wszystkie subskrypcje, oferty i delegacje skojarzone z klientem, wybierz nazwę klienta.
-- Aby wyświetlić więcej szczegółów na temat oferty i jej delegowania, wybierz nazwę oferty.
-- Aby wyświetlić więcej szczegółów na temat przypisań ról dla delegowanych subskrypcji lub grup zasobów, wybierz wpis w kolumnie **delegacje** .
+- To see all of the subscriptions, offers, and delegations associated with a customer, select the customer's name.
+- To see more details about an offer and its delegations, select the offer name.
+- To view more details about role assignments for delegated subscriptions or resource groups, select the entry in the **Delegations** column.
 
-## <a name="view-delegations"></a>Wyświetl delegowania
+## <a name="view-delegations"></a>View delegations
 
-Delegacje pokazują delegowaną subskrypcję/grupę zasobów wraz z użytkownikami i uprawnieniami, które mają do niej dostęp. Aby wyświetlić te informacje, wybierz opcję **delegacje** po lewej stronie strony **moi klienci** .
+Delegations show the subscription/resource group that has been delegated , along with the users and permissions that have access to it. To view this info, select **Delegations** on the left side of the **My customers** page.
 
-Filtry w górnej części strony pozwalają sortować i grupować informacje o przypisaniu dostępu lub filtrować według określonych klientów, ofert lub słów kluczowych.
+Filters at the top of the page let you sort and group your access assignment info or filter by specific customers, offers, or keywords.
 
-Użytkownicy i uprawnienia skojarzone z każdym delegowaniem są wyświetlane w kolumnie **przypisania ról** . Można wybrać każdy wpis, aby wyświetlić pełną listę użytkowników, grup i jednostek usługi, którym udzielono dostępu do subskrypcji lub grupy zasobów. W tym miejscu możesz wybrać określonego użytkownika, grupę lub nazwę główną usługi, aby uzyskać więcej szczegółów.
+The users and permissions associated with each delegation appear in the **Role assignments** column. You can select each entry to view the full list of users, groups, and service principals that have been granted access to the subscription or resource group. From there, you can select a particular user, group, or service principal name to get more details.
 
-## <a name="work-in-the-context-of-a-delegated-subscription"></a>Pracuj w kontekście delegowanej subskrypcji
+## <a name="work-in-the-context-of-a-delegated-subscription"></a>Work in the context of a delegated subscription
 
-Możesz pracować bezpośrednio w kontekście delegowanej subskrypcji w ramach Azure Portal bez przełączania katalogu, w którym pracujesz. Aby to zrobić:
+You can work directly in the context of a delegated subscription within the Azure portal, without switching the directory you're working in. W tym celu:
 
-1. Wybierz ikonę **katalogu i subskrypcji** w górnej części Azure Portal.
-2. W **globalnym** filtrze subskrypcji upewnij się, że wybrano tylko pole dla tej delegowanej subskrypcji. Za pomocą pola listy rozwijanej **bieżące i delegowane katalogi** można wyświetlić tylko subskrypcje w określonym katalogu. (Nie należy używać opcji **Switch Directory** , ponieważ zmienia katalog, z którym użytkownik jest zalogowany).
+1. Select the **Directory + Subscription** icon near the top of the Azure portal.
+2. In the **Global subscription** filter, ensure that only the box for that delegated subscription is selected. You can use the **Current + delegated directories** drop-down box to show only subscriptions within a specific directory. (Do not use the **Switch directory** option, since that changes the directory to which you're signed in.)
 
-Jeśli następnie uzyskasz dostęp do usługi, która obsługuje [środowiska zarządzania między dzierżawcami](../concepts/cross-tenant-management-experience.md), usługa będzie domyślnie w kontekście wybranej subskrypcji delegowanej. Możesz to zmienić, wykonując powyższe kroki i zaznaczając pole **wyboru Zaznacz wszystko** (lub wybierając co najmniej jedną subskrypcję, w której ma zostać zadziałała).
+If you then access a service which supports [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md), the service will default to the context of the delegated subscription that you selected. You can change this by following the steps above and checking the **Select all** box (or choosing one or more subscriptions to work in instead).
 
 > [!NOTE]
-> Jeśli udzielono dostępu do co najmniej jednej grupy zasobów, a nie dostęp do całej subskrypcji, możesz wybrać subskrypcję, do której należy ta grupa zasobów. Następnie będziesz działać w kontekście tej subskrypcji, ale będzie można uzyskać dostęp tylko do określonych grup zasobów.
+> If you have been granted access to one or more resource groups, rather than access to an entire subscription, you can select the subscription to which that resource group belongs. You'll then work in the context of that subscription, but will only be able to access the designated resource groups.
 
-Możesz również uzyskać dostęp do funkcji związanych z delegowanymi subskrypcjami lub grupami zasobów z poziomu usług, które obsługują obsługę wielu dzierżawców, wybierając subskrypcję lub grupę zasobów z tej usługi.
+You can also access functionality related to delegated subscriptions or resource groups from within services that support cross-tenant management experiences by selecting the subscription or resource group from within that service.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat [środowisk zarządzania między dzierżawcami](../concepts/cross-tenant-management-experience.md).
-- Dowiedz się, w jaki sposób klienci mogą [wyświetlać dostawców usług i zarządzać nimi](view-manage-service-providers.md) , przechodząc do **dostawców usług** w Azure Portal.
+- Learn about [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md).
+- Learn how your customers can [view and manage service providers](view-manage-service-providers.md) by going to **Service providers** in the Azure portal.

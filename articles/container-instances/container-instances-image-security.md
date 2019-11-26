@@ -1,143 +1,138 @@
 ---
-title: Zagadnienia dotyczące zabezpieczeń Azure Container Instances
-description: Zalecenia dotyczące zabezpieczania obrazów i wpisów tajnych Azure Container Instances i ogólne zagadnienia dotyczące zabezpieczeń dla dowolnej platformy kontenera
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Security for container instances
+description: Recommendations to secure images and secrets for Azure Container Instances, and general security considerations for any container platform
 ms.topic: article
 ms.date: 04/29/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 618d3a901698e46760d970f6d4fbc4157c5d2ea3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b25cb4178ba211ff819ba512c9820165e0efbbf1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325923"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481694"
 ---
-# <a name="security-considerations-for-azure-container-instances"></a>Zagadnienia dotyczące zabezpieczeń Azure Container Instances
+# <a name="security-considerations-for-azure-container-instances"></a>Security considerations for Azure Container Instances
 
-W tym artykule przedstawiono zagadnienia dotyczące zabezpieczeń związane z używaniem Azure Container Instances do uruchamiania aplikacji kontenera. Tematy obejmują:
+This article introduces security considerations for using Azure Container Instances to run container apps. Tematy obejmują:
 
 > [!div class="checklist"]
-> * **Zalecenia dotyczące zabezpieczeń** dotyczące zarządzania obrazami i wpisami tajnymi dla Azure Container Instances
-> * **Zagadnienia dotyczące ekosystemu kontenerów** w całym cyklu życia kontenera dla każdej platformy kontenera
+> * **Security recommendations** for managing images and secrets for Azure Container Instances
+> * **Considerations for the container ecosystem**  throughout the container lifecycle, for any container platform
 
-## <a name="security-recommendations-for-azure-container-instances"></a>Zalecenia dotyczące zabezpieczeń Azure Container Instances
+## <a name="security-recommendations-for-azure-container-instances"></a>Security recommendations for Azure Container Instances
 
-### <a name="use-a-private-registry"></a>Korzystanie z rejestru prywatnego
+### <a name="use-a-private-registry"></a>Use a private registry
 
-Kontenery są kompilowane na podstawie obrazów przechowywanych w co najmniej jednym repozytorium. Te repozytoria mogą należeć do rejestru publicznego, takiego jak [Docker Hub](https://hub.docker.com)lub do rejestru prywatnego. Przykładem rejestru prywatnego jest rejestr [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), który można zainstalować w środowisku lokalnym lub w wirtualnej chmurze prywatnej. Można również korzystać z usług rejestru prywatnego kontenerów opartych na chmurze, w tym [Azure Container Registry](../container-registry/container-registry-intro.md). 
+Kontenery są kompilowane na podstawie obrazów przechowywanych w co najmniej jednym repozytorium. These repositories can belong to a public registry, like [Docker Hub](https://hub.docker.com), or to a private registry. Przykładem rejestru prywatnego jest rejestr [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), który można zainstalować w środowisku lokalnym lub w wirtualnej chmurze prywatnej. You can also use cloud-based private container registry services, including [Azure Container Registry](../container-registry/container-registry-intro.md). 
 
-Publicznie dostępny obraz kontenera nie gwarantuje zabezpieczeń. Obrazy kontenerów składają się z wielu warstw oprogramowania, a każda warstwa oprogramowania może mieć luki w zabezpieczeniach. Aby pomóc w zmniejszeniu zagrożenia atakami, należy przechowywać i pobierać obrazy z rejestru prywatnego, takich jak Azure Container Registry lub zaufany rejestr platformy Docker. Oprócz udostępniania rejestru prywatnego, Azure Container Registry obsługuje [uwierzytelnianie oparte na jednostce usługi](../container-registry/container-registry-authentication.md) za pośrednictwem Azure Active Directory na potrzeby przepływów uwierzytelniania podstawowego. To uwierzytelnianie obejmuje dostęp oparty na rolach dla uprawnień tylko do odczytu (ściąganie), zapis (wypychanie) i właściciela.
+A publicly available container image does not guarantee security. Container images consist of multiple software layers, and each software layer might have vulnerabilities. To help reduce the threat of attacks, you should store and retrieve images from a private registry, such as Azure Container Registry or Docker Trusted Registry. In addition to providing a managed private registry, Azure Container Registry supports [service principal-based authentication](../container-registry/container-registry-authentication.md) through Azure Active Directory for basic authentication flows. This authentication includes role-based access for read-only (pull), write (push), and owner permissions.
 
-### <a name="monitor-and-scan-container-images"></a>Monitorowanie i skanowanie obrazów kontenerów
+### <a name="monitor-and-scan-container-images"></a>Monitor and scan container images
 
-Rozwiązania do monitorowania i skanowania zabezpieczeń, takie jak [zabezpieczenia](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) [TwistLock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) i akwamaryna, są dostępne w portalu Azure Marketplace. Można ich użyć do skanowania obrazów kontenerów w rejestrze prywatnym i identyfikowania potencjalnych luk w zabezpieczeniach. Ważne jest zapoznanie się z głębokością skanowania, które oferuje różne rozwiązania. 
+Security monitoring and scanning solutions such as [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) and [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) are available through the Azure Marketplace. You can use them to scan container images in a private registry and identify potential vulnerabilities. It’s important to understand the depth of scanning that the different solutions provide. 
 
-### <a name="protect-credentials"></a>Ochrona poświadczeń
+### <a name="protect-credentials"></a>Protect credentials
 
-Kontenery mogą być rozłożone między kilka klastrów i regionów świadczenia usługi Azure. W związku z tym należy zabezpieczyć poświadczenia wymagane do logowania lub dostępu do interfejsu API, takie jak hasła lub tokeny. Upewnij się, że tylko użytkownicy uprzywilejowani mogą uzyskiwać dostęp do tych kontenerów podczas przesyłania i przechowywania. Wszystkie wpisy tajne poświadczeń, a następnie wymagają, aby deweloperzy korzystali z nowych narzędzi do zarządzania kluczami tajnymi, które są przeznaczone dla platform kontenerów.  Upewnij się, że Twoje rozwiązanie obejmuje zaszyfrowane bazy danych, szyfrowanie TLS dla danych tajnych w tranzycie oraz [kontrolę dostępu opartą na rolach](../role-based-access-control/overview.md)najniższymi uprawnieniami. [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączeń i hasła) dla aplikacji kontenerowych. Ponieważ te dane są poufne i mają krytyczne znaczenie dla działania firmy, bezpieczny dostęp do magazynów kluczy, tak aby tylko autoryzowane aplikacje i użytkownicy mieli do nich dostęp.
+Containers can spread across several clusters and Azure regions. So, you must secure credentials required for logins or API access, such as passwords or tokens. Ensure that only privileged users can access those containers in transit and at rest. Inventory all credential secrets, and then require developers to use emerging secrets-management tools that are designed for container platforms.  Make sure that your solution includes encrypted databases, TLS encryption for secrets data in transit, and least-privilege [role-based access control](../role-based-access-control/overview.md). [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) is a cloud service that safeguards encryption keys and secrets (such as certificates, connection strings, and passwords) for containerized applications. Because this data is sensitive and business critical, secure access to your key vaults so that only authorized applications and users can access them.
 
-## <a name="considerations-for-the-container-ecosystem"></a>Zagadnienia dotyczące ekosystemu kontenerów
+## <a name="considerations-for-the-container-ecosystem"></a>Considerations for the container ecosystem
 
-Następujące miary zabezpieczeń, zaimplementowane prawidłowo i zarządzane, mogą pomóc w zabezpieczeniu i ochronie ekosystemu kontenerów. Te środki są stosowane w całym cyklu życia kontenera, od programowania przy użyciu wdrożenia produkcyjnego oraz do zakresu koordynatorów kontenerów, hostów i platform. 
+The following security measures, implemented well and managed effectively, can help you secure and protect your container ecosystem. These measures apply throughout the container lifecycle, from development through production deployment, and to a range of container orchestrators, hosts, and platforms. 
 
-### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Używanie zarządzania lukami w ramach cyklu życia projektowania kontenera 
+### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Use vulnerability management as part of your container development lifecycle 
 
-Przy użyciu efektywnego zarządzania lukami w całym cyklu tworzenia kontenera można poprawić szanse, które identyfikują i rozwiązują problemy dotyczące zabezpieczeń, zanim staną się bardziej poważnymi problemami. 
+By using effective vulnerability management throughout the container development lifecycle, you improve the odds that you identify and resolve security concerns before they become a more serious problem. 
 
-### <a name="scan-for-vulnerabilities"></a>Skanuj w poszukiwaniu luk w zabezpieczeniach 
+### <a name="scan-for-vulnerabilities"></a>Scan for vulnerabilities 
 
-Nowe luki są wykrywane przez cały czas, dlatego skanowanie w poszukiwaniu i identyfikowanie luk w zabezpieczeniach jest procesem ciągłym. Uwzględnij skanowanie w całym cyklu życia kontenera:
+New vulnerabilities are discovered all the time, so scanning for and identifying vulnerabilities is a continuous process. Incorporate vulnerability scanning throughout the container lifecycle:
 
-* W celu ostatecznego sprawdzenia potoku programistycznego należy przeprowadzić skanowanie w poszukiwaniu luk w zabezpieczeniach kontenerów przed ich wypchnięciem do rejestru publicznego lub prywatnego. 
-* Kontynuuj skanowanie obrazów kontenerów w rejestrze, aby identyfikować wszelkie wady, które były w jakiś sposób pominięte podczas opracowywania i rozwiązywać wszelkie nowo wykryte luki w zabezpieczeniach, które mogą istnieć w kodzie używanym w obrazach kontenera.  
+* As a final check in your development pipeline, you should perform a vulnerability scan on containers before pushing the images to a public or private registry. 
+* Continue to scan container images in the registry both to identify any flaws that were somehow missed during development and to address any newly discovered vulnerabilities that might exist in the code used in the container images.  
 
-### <a name="map-image-vulnerabilities-to-running-containers"></a>Zamapuj luki w zabezpieczeniach obrazu do uruchomionych kontenerów 
+### <a name="map-image-vulnerabilities-to-running-containers"></a>Map image vulnerabilities to running containers 
 
-Konieczne jest zamapowanie luk w zabezpieczeniach, które zostały zidentyfikowane w obrazach kontenera do uruchamiania kontenerów, dzięki czemu problemy z zabezpieczeniami mogą być ograniczane lub rozwiązywane.  
+You need to have a means of mapping vulnerabilities identified in container images to running containers, so security issues can be mitigated or resolved.  
 
-### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Upewnij się, że w danym środowisku są używane tylko zatwierdzone obrazy 
+### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Ensure that only approved images are used in your environment 
 
-W ekosystemie kontenerów jest wystarczająca ilość zmian i lotnych danych bez zezwolenia na korzystanie z nieznanych kontenerów. Zezwalaj tylko na zatwierdzone obrazy kontenerów. Mają narzędzia i procesy, które mają być monitorowane pod kątem i uniemożliwiają korzystanie z niezatwierdzonych obrazów kontenerów. 
+There’s enough change and volatility in a container ecosystem without allowing unknown containers as well. Allow only approved container images. Have tools and processes in place to monitor for and prevent the use of unapproved container images. 
 
-Efektywny sposób zmniejszenia obszaru ataków i uniemożliwianie deweloperom wykonywania krytycznych pomyłek w zabezpieczeniach polega na kontroli przepływu obrazów kontenera w środowisku deweloperskim. Na przykład można zastanowić się, że jedna dystrybucja systemu Linux jest oparta na podstawowym obrazie, najlepiej z jedną z nich, która jest Leane (Alpine lub CoreOS zamiast Ubuntu), aby zminimalizować powierzchnię potencjalnych ataków. 
+An effective way of reducing the attack surface and preventing developers from making critical security mistakes is to control the flow of container images into your development environment. For example, you might sanction a single Linux distribution as a base image, preferably one that is lean (Alpine or CoreOS rather than Ubuntu), to minimize the surface for potential attacks. 
 
-Podpisywanie obrazów lub odciski palców mogą zapewnić łańcuch opieki, który umożliwia zweryfikowanie integralności kontenerów. Na przykład Azure Container Registry obsługuje model [zaufania zawartości](https://docs.docker.com/engine/security/trust/content_trust) platformy Docker, który umożliwia wydawcom obrazów podpisywanie obrazów, które są przekazywane do rejestru, oraz odbiorców obrazów do ściągania tylko podpisanych obrazów.
+Image signing or fingerprinting can provide a chain of custody that enables you to verify the integrity of the containers. For example, Azure Container Registry supports Docker's [content trust](https://docs.docker.com/engine/security/trust/content_trust) model, which allows image publishers to sign images that are pushed to a registry, and image consumers to pull only signed images.
 
-### <a name="permit-only-approved-registries"></a>Zezwalaj tylko na zatwierdzone rejestry 
+### <a name="permit-only-approved-registries"></a>Permit only approved registries 
 
-Rozszerzenie zapewniające, że środowisko używa tylko zatwierdzonych obrazów, jest dozwolone tylko w przypadku korzystania z zatwierdzonych rejestrów kontenerów. Wymaganie korzystania z zatwierdzonych rejestrów kontenerów zmniejsza narażenie na ryzyko przez ograniczenie możliwości wprowadzenia nieznanych luk w zabezpieczeniach lub problemów z zabezpieczeniami. 
+An extension of ensuring that your environment uses only approved images is to permit only the use of approved container registries. Requiring the use of approved container registries reduces your exposure to risk by limiting the potential for the introduction of unknown vulnerabilities or security issues. 
 
-### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Zapewnij integralność obrazów w całym cyklu życia 
+### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Ensure the integrity of images throughout the lifecycle 
 
-Zarządzanie zabezpieczeniami w całym cyklu życia kontenera polega na zapewnieniu spójności obrazów kontenerów w rejestrze i zmianie ich lub wdrożeniu w środowisku produkcyjnym. 
+Part of managing security throughout the container lifecycle is to ensure the integrity of the container images in the registry and as they are altered or deployed into production. 
 
-* Obrazy zawierające luki w zabezpieczeniach, nawet pomocnicze, nie mogą być uruchamiane w środowisku produkcyjnym. W idealnym przypadku wszystkie obrazy wdrożone w środowisku produkcyjnym powinny być zapisane w rejestrze prywatnym dostępnym dla wybranych kilku. Zachowaj niewielką liczbę obrazów produkcyjnych, aby upewnić się, że mogą one być efektywnie zarządzane.
+* Images with vulnerabilities, even minor, should not be allowed to run in a production environment. Ideally, all images deployed in production should be saved in a private registry accessible to a select few. Keep the number of production images small to ensure that they can be managed effectively.
 
-* Ponieważ trudno jest wskazać źródło oprogramowania z publicznie dostępnego obrazu kontenera, Utwórz obrazy ze źródła, aby zapewnić wiedzę o pochodzeniu warstwy. Gdy w samodzielnie kompilowanym obrazie kontenera pojawi się luka w zabezpieczeniach, klienci będą mogli szybciej znaleźć ścieżkę do rozwiązania. W przypadku obrazu publicznego klienci chcą znaleźć katalog główny obrazu publicznego, aby rozwiązać ten problem, lub uzyskać inny bezpieczny obraz od wydawcy. 
+* Because it’s hard to pinpoint the origin of software from a publicly available container image, build images from the source to ensure knowledge of the origin of the layer. Gdy w samodzielnie kompilowanym obrazie kontenera pojawi się luka w zabezpieczeniach, klienci będą mogli szybciej znaleźć ścieżkę do rozwiązania. With a public image, customers would need to find the root of a public image to fix it or get another secure image from the publisher. 
 
-* Starannie skanowany obraz wdrożony w środowisku produkcyjnym nie gwarantuje Aktualności przez okres istnienia aplikacji. Luki w zabezpieczeniach można zgłaszać dla warstw obrazu, które nie były wcześniej znane lub pojawiły się po wdrożeniu produkcyjnym. 
+* A thoroughly scanned image deployed in production is not guaranteed to be up-to-date for the lifetime of the application. Luki w zabezpieczeniach można zgłaszać dla warstw obrazu, które nie były wcześniej znane lub pojawiły się po wdrożeniu produkcyjnym. 
 
-  Okresowe inspekcje obrazów wdrożonych w środowisku produkcyjnym w celu zidentyfikowania obrazów, które są nieaktualne lub nie zostały zaktualizowane w czasie. Aby aktualizować obrazy kontenerów bez przestojów, można używać wbudowanych metod wdrażania i stopniowego uaktualniania. Obrazy można skanować przy użyciu narzędzi opisanych w poprzedniej sekcji. 
+  Periodically audit images deployed in production to identify images that are out of date or have not been updated in a while. You might use blue-green deployment methodologies and rolling upgrade mechanisms to update container images without downtime. You can scan images by using tools described in the preceding section. 
 
-* Użyj potoku ciągłej integracji z funkcją zintegrowanego skanowania zabezpieczeń, aby utworzyć bezpieczne obrazy i wypchnąć je do rejestru prywatnego. Skanowanie luk w zabezpieczeniach wbudowane w rozwiązaniu CI gwarantuje, że obrazy, które przejdą wszystkie testy, zostaną wypchnięte do rejestru prywatnego, z poziomu którego odbywa się wdrażanie obciążeń produkcyjnych. 
+* Use a continuous integration (CI) pipeline with integrated security scanning to build secure images and push them to your private registry. Skanowanie luk w zabezpieczeniach wbudowane w rozwiązaniu CI gwarantuje, że obrazy, które przejdą wszystkie testy, zostaną wypchnięte do rejestru prywatnego, z poziomu którego odbywa się wdrażanie obciążeń produkcyjnych. 
 
-  Awaria potoku CI zapewnia, że zagrożone obrazy nie są przekazywane do rejestru prywatnego używanego do wdrożeń obciążeń produkcyjnych. Automatyzuje także skanowanie zabezpieczeń obrazów, jeśli istnieje znaczna liczba obrazów. W przeciwnym razie proces ręcznego przeprowadzania inspekcji obrazów w celu wyszukania luk w zabezpieczeniach może być niezwykle żmudny i narażony na błędy. 
+  A CI pipeline failure ensures that vulnerable images are not pushed to the private registry that’s used for production workload deployments. It also automates image security scanning if there’s a significant number of images. W przeciwnym razie proces ręcznego przeprowadzania inspekcji obrazów w celu wyszukania luk w zabezpieczeniach może być niezwykle żmudny i narażony na błędy. 
 
-### <a name="enforce-least-privileges-in-runtime"></a>Wymuszaj najmniejsze uprawnienia w czasie wykonywania 
+### <a name="enforce-least-privileges-in-runtime"></a>Enforce least privileges in runtime 
 
-Pojęcie najniższych uprawnień to podstawowe najlepsze rozwiązanie w zakresie zabezpieczeń, które ma zastosowanie również do kontenerów. Gdy jest wykorzystywana Luka w zabezpieczeniach, zapewnia ona zazwyczaj dostęp do osoby atakującej i uprawnienia takie same jak w przypadku zagrożonych aplikacji lub procesów. Upewnienie się, że kontenery działają z najniższymi uprawnieniami i dostęp wymagany do wykonania zadania zmniejsza ryzyko. 
+The concept of least privileges is a basic security best practice that also applies to containers. When a vulnerability is exploited, it generally gives the attacker access and privileges equal to those of the compromised application or process. Ensuring that containers operate with the lowest privileges and access required to get the job done reduces your exposure to risk. 
 
-### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Zmniejszenie podatności na ataki z kontenera przez usunięcie niepotrzebnych uprawnień 
+### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Reduce the container attack surface by removing unneeded privileges 
 
-Możesz również zminimalizować potencjalną podatność na ataki, usuwając wszystkie nieużywane lub niepotrzebne procesy lub uprawnienia z środowiska uruchomieniowego kontenera. Kontenery uprzywilejowane są uruchamiane jako główne. Jeśli złośliwy użytkownik lub obciążenie będzie wyjść z uprzywilejowanego kontenera, kontener zostanie uruchomiony jako element główny w tym systemie.
+You can also minimize the potential attack surface by removing any unused or unnecessary processes or privileges from the container runtime. Privileged containers run as root. If a malicious user or workload escapes in a privileged container, the container will then run as root on that system.
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Dozwolonych i pliki wykonywalne, do których kontener może uzyskać dostęp lub 
+### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Whitelist files and executables that the container is allowed to access or run 
 
-Zmniejszenie liczby zmiennych lub nieznanych ułatwia zachowanie stabilnego, niezawodnego środowiska. Ograniczanie kontenerów, dzięki czemu mogą uzyskać dostęp do lub uruchamiać tylko pliki, które są zatwierdzone lub listy dozwolonych, oraz plików wykonywalnych jest sprawdzoną metodą ograniczania narażenia na ryzyko.  
+Reducing the number of variables or unknowns helps you maintain a stable, reliable environment. Limiting containers so they can access or run only preapproved or whitelisted files and executables is a proven method of limiting exposure to risk.  
 
-Jest to znacznie prostsze zarządzanie dozwolonych, gdy jest on zaimplementowany od początku. Dozwolonych zapewnia miarę kontroli i możliwości zarządzania, ponieważ dowiesz się, jakie pliki i elementy wykonywalne są wymagane do poprawnego działania aplikacji. 
+It’s a lot easier to manage a whitelist when it’s implemented from the beginning. A whitelist provides a measure of control and manageability as you learn what files and executables are required for the application to function correctly. 
 
-Dozwolonych nie tylko zmniejsza powierzchnię ataku, ale może także zapewnić podstawę dla anomalii i uniemożliwiać użycie przypadków użycia "sąsiadów" i scenariuszy kontenerów zagadnień. 
+A whitelist not only reduces the attack surface but can also provide a baseline for anomalies and prevent the use cases of the "noisy neighbor" and container breakout scenarios. 
 
-### <a name="enforce-network-segmentation-on-running-containers"></a>Wymuś segmentację sieci na uruchomionych kontenerach  
+### <a name="enforce-network-segmentation-on-running-containers"></a>Enforce network segmentation on running containers  
 
-Aby chronić kontenery w jednej podsieci przed zagrożeniami związanymi z bezpieczeństwem w innej podsieci, należy zachować segmentację sieci (lub segmentację nano) lub rozdzielenie między uruchomionymi kontenerami. Obsługa segmentacji sieci może być również niezbędna do korzystania z kontenerów w branżach, które są wymagane do spełnienia mandatów dotyczących zgodności.  
+To help protect containers in one subnet from security risks in another subnet, maintain network segmentation (or nano-segmentation) or segregation between running containers. Maintaining network segmentation may also be necessary for using containers in industries that are required to meet compliance mandates.  
 
-Na przykład narzędzie partnerskie [akwamaryna](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) zapewnia zautomatyzowane podejście do segmentacji nano. Akwamaryna monitoruje aktywność sieci kontenera w środowisku uruchomieniowym. Identyfikuje wszystkie przychodzące i wychodzące połączenia sieciowe do/z innych kontenerów, usług, adresów IP i publicznego Internetu. Nano-segmentacja jest automatycznie tworzona na podstawie monitorowanego ruchu. 
+For example, the partner tool [Aqua](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) provides an automated approach for nano-segmentation. Aqua monitors container network activities in runtime. It identifies all inbound and outbound network connections to/from other containers, services, IP addresses, and the public internet. Nano-segmentation is automatically created based on monitored traffic. 
 
-### <a name="monitor-container-activity-and-user-access"></a>Monitorowanie aktywności kontenera i dostępu użytkowników 
+### <a name="monitor-container-activity-and-user-access"></a>Monitor container activity and user access 
 
-Podobnie jak w przypadku każdego środowiska IT, należy spójnie monitorować aktywność i dostęp użytkowników do ekosystemu kontenerów, aby szybko identyfikować podejrzane lub złośliwe działania. Platforma Azure oferuje rozwiązania do monitorowania kontenerów, w tym:
+As with any IT environment, you should consistently monitor activity and user access to your container ecosystem to quickly identify any suspicious or malicious activity. Azure provides container monitoring solutions including:
 
-* [Azure monitor kontenerów](../azure-monitor/insights/container-insights-overview.md) do monitorowania wydajności obciążeń wdrożonych w środowiskach Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS). Usługa Azure Monitor dla kontenerów zapewnia widoczność wydajności na zbieranie pamięci i procesora metryk z kontrolerów, węzły i kontenerów, które są dostępne w usłudze Kubernetes za pomocą interfejsu API metryki. 
+* [Azure Monitor for containers](../azure-monitor/insights/container-insights-overview.md) to monitor the performance of your workloads deployed to Kubernetes environments hosted on Azure Kubernetes Service (AKS). Azure Monitor for containers gives you performance visibility by collecting memory and processor metrics from controllers, nodes, and containers that are available in Kubernetes through the Metrics API. 
 
-* [Rozwiązanie do monitorowania kontenerów platformy Azure](../azure-monitor/insights/containers.md) ułatwia wyświetlanie innych hostów platformy Docker i kontenera systemu Windows oraz zarządzanie nimi w jednej lokalizacji. Na przykład:
+* The [Azure Container Monitoring solution](../azure-monitor/insights/containers.md) helps you view and manage other Docker and Windows container hosts in a single location. Na przykład:
 
-  * Wyświetlanie szczegółowych informacji o inspekcji, w których są wyświetlane polecenia używane z kontenerami. 
-  * Rozwiązywanie problemów z kontenerami przez wyświetlanie i wyszukiwanie scentralizowanych dzienników bez konieczności zdalnego wyświetlania hostów platformy Docker lub Windows.  
-  * Znajdź kontenery, które mogą być zakłóceniami i zużywać nadmierne zasoby na hoście.
-  * Wyświetlanie informacji o scentralizowanym użyciu procesora CPU, pamięci, magazynu i sieci oraz wydajności dla kontenerów.  
+  * View detailed audit information that shows commands used with containers. 
+  * Troubleshoot containers by viewing and searching centralized logs without having to remotely view Docker or Windows hosts.  
+  * Find containers that may be noisy and consuming excess resources on a host.
+  * View centralized CPU, memory, storage, and network usage and performance information for containers.  
 
-  Rozwiązanie obsługuje koordynatorów kontenerów, w tym Docker Swarm, DC/OS, niezarządzane Kubernetes, Service Fabric i Red Hat OpenShift. 
+  The solution supports container orchestrators including Docker Swarm, DC/OS, unmanaged Kubernetes, Service Fabric, and Red Hat OpenShift. 
 
-### <a name="monitor-container-resource-activity"></a>Monitorowanie aktywności zasobów kontenera 
+### <a name="monitor-container-resource-activity"></a>Monitor container resource activity 
 
-Monitoruj aktywność zasobów, na przykład pliki, sieci i inne zasoby, do których mają dostęp kontenery. Monitorowanie wydajności i zużycia zasobów jest przydatne zarówno w przypadku monitorowania sprawności, jak i środków bezpieczeństwa. 
+Monitor your resource activity, like files, network, and other resources that your containers access. Monitoring resource activity and consumption is useful both for performance monitoring and as a security measure. 
 
-[Azure monitor](../azure-monitor/overview.md) umożliwia podstawowe monitorowanie usług platformy Azure, umożliwiając zbieranie metryk, dzienników aktywności i dzienników diagnostycznych. Na przykład dziennik aktywności informuje o utworzeniu lub zmodyfikowaniu nowych zasobów. 
+[Azure Monitor](../azure-monitor/overview.md) enables core monitoring for Azure services by allowing the collection of metrics, activity logs, and diagnostic logs. Na przykład dziennik aktywności informuje o utworzeniu lub zmodyfikowaniu nowych zasobów. 
 
-Są dostępne metryki, które dostarczają statystyki wydajności dla różnych zasobów, a nawet systemu operacyjnego w maszynie wirtualnej. Można wyświetlić te dane za pomocą jednego z eksploratorów w witrynie Azure Portal i utworzyć alerty na podstawie tych metryk. Azure Monitor zapewnia najszybszy potok metryk (5 minut w dół do 1 minuty), dlatego należy go używać do alertów i powiadomień o krytycznym czasie. 
+Są dostępne metryki, które dostarczają statystyki wydajności dla różnych zasobów, a nawet systemu operacyjnego w maszynie wirtualnej. Można wyświetlić te dane za pomocą jednego z eksploratorów w witrynie Azure Portal i utworzyć alerty na podstawie tych metryk. Azure Monitor provides the fastest metrics pipeline (5 minutes down to 1 minute), so you should use it for time-critical alerts and notifications. 
 
-### <a name="log-all-container-administrative-user-access-for-auditing"></a>Rejestruj wszystkich użytkowników administracyjnych kontenera do inspekcji 
+### <a name="log-all-container-administrative-user-access-for-auditing"></a>Log all container administrative user access for auditing 
 
-Należy zachować dokładną historię inspekcji dostępu administracyjnego do ekosystemu kontenerów, rejestru kontenerów i obrazów kontenerów. Te dzienniki mogą być niezbędne do celów inspekcji i będą przydatne jako dowód śledczej po każdym zdarzeniu zabezpieczeń. Aby osiągnąć ten cel, możesz użyć [rozwiązania do monitorowania kontenerów platformy Azure](../azure-monitor/insights/containers.md) . 
+Maintain an accurate audit trail of administrative access to your container ecosystem, container registry, and container images. These logs might be necessary for auditing purposes and will be useful as forensic evidence after any security incident. You can use the [Azure Container Monitoring solution](../azure-monitor/insights/containers.md) to achieve this purpose. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o zarządzaniu usterkami kontenera przy użyciu rozwiązań z [TwistLock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) i [akwamaryna Security](https://www.aquasec.com/solutions/azure-container-security/).
+* Learn more about managing container vulnerabilities with solutions from [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) and [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/).
 
-* Dowiedz się więcej o [zabezpieczeniach kontenerów na platformie Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).
+* Learn more about [container security in Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).

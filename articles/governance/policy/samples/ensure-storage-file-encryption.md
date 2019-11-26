@@ -1,14 +1,14 @@
 ---
 title: Przykład — zapewnianie szyfrowania plików w magazynie
-description: Te przykładowe definicje zasad wymagają włączenia szyfrowania plików na kontach magazynu.
+description: This sample policy definition requires that file encryption is enabled for all Azure storage accounts.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 0c0bb16d05b733ca7eabd665eab2ffea77de2b99
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e10c9a83b0a523848a7c50bc7e2161e92afbca07
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74070050"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463440"
 ---
 # <a name="sample---ensure-storage-file-encryption"></a>Przykład — zapewnianie szyfrowania plików w magazynie
 
@@ -24,7 +24,7 @@ Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdróż przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-file-encryption%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-file-encryption%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -65,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie Odmów przydziały dla zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o Odmów przypisania kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure.
+title: Understand deny assignments for Azure resources | Microsoft Docs
+description: Learn about deny assignments in role-based access control (RBAC) for Azure resources.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,65 +11,68 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165978"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479356"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Zrozumienie Odmów przydziały dla zasobów platformy Azure
+# <a name="understand-deny-assignments-for-azure-resources"></a>Understand deny assignments for Azure resources
 
-Podobnie jak w przypadku przypisania roli *Odmów przypisania* dołącza zbiór akcje odmowy zawsze do użytkownika, grupy lub jednostki usługi w określonym zakresie na potrzeby odmowa dostępu. Odmowa przypisania Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp.
+Similar to a role assignment, a *deny assignment* attaches a set of deny actions to a user, group, or service principal at a particular scope for the purpose of denying access. Deny assignments block users from performing specific Azure resource actions even if a role assignment grants them access.
 
-W tym artykule opisano sposób Odmów przypisania są zdefiniowane.
+This article describes how deny assignments are defined.
 
-## <a name="how-deny-assignments-are-created"></a>Jak uniemożliwić przypisania są tworzone
+## <a name="how-deny-assignments-are-created"></a>How deny assignments are created
 
-Odmowa przypisania są tworzone i zarządzane przez platformę Azure, aby chronić zasoby. Na przykład Azure schematy i na platformie Azure aplikacje zarządzane przez użycie Odmów przydziały, aby chronić zasoby zarządzane przez system. Aby uzyskać więcej informacji, zobacz [chronić nowe zasoby za pomocą blokad zasobów platformy Azure, plany](../governance/blueprints/tutorials/protect-new-resources.md).
+Deny assignments are created and managed by Azure to protect resources. Azure Blueprints and Azure managed apps use deny assignments to protect system-managed resources. Azure Blueprints and Azure managed apps are the only way that deny assignments can be created. You can't directly create your own deny assignments.  For more information, see [Protect new resources with Azure Blueprints resource locks](../governance/blueprints/tutorials/protect-new-resources.md).
 
-## <a name="compare-role-assignments-and-deny-assignments"></a>Porównaj przypisań ról i odmawiać go przypisania
+> [!NOTE]
+> You can't directly create your own deny assignments.
 
-Odmowa przypisania wykonaj podobny wzorzec jako przypisania roli, ale także mieć pewne różnice.
+## <a name="compare-role-assignments-and-deny-assignments"></a>Compare role assignments and deny assignments
 
-| Możliwości | Przypisanie roli | Zezwalaj na przypisanie |
+Deny assignments follow a similar pattern as role assignments, but also have some differences.
+
+| Możliwość | Przypisanie roli | Deny assignment |
 | --- | --- | --- |
 | Udzielanie dostępu | :heavy_check_mark: |  |
 | Odmowa dostępu |  | :heavy_check_mark: |
-| Można bezpośrednio utworzyć | :heavy_check_mark: |  |
-| Stosowanie w zakresie | :heavy_check_mark: | :heavy_check_mark: |
-| Wykluczanie jednostek |  | :heavy_check_mark: |
-| Zapobiegaj dziedziczenia zakresy podrzędne |  | :heavy_check_mark: |
-| Dotyczą [klasyczny administrator subskrypcji](rbac-and-directory-admin-roles.md) przypisania |  | :heavy_check_mark: |
+| Can be directly created | :heavy_check_mark: |  |
+| Apply at a scope | :heavy_check_mark: | :heavy_check_mark: |
+| Exclude principals |  | :heavy_check_mark: |
+| Prevent inheritance to child scopes |  | :heavy_check_mark: |
+| Apply to [classic subscription administrator](rbac-and-directory-admin-roles.md) assignments |  | :heavy_check_mark: |
 
-## <a name="deny-assignment-properties"></a>Odmów przypisania właściwości
+## <a name="deny-assignment-properties"></a>Deny assignment properties
 
- Przypisanie Odmów ma następujące właściwości:
+ A deny assignment has the following properties:
 
 > [!div class="mx-tableFixed"]
 > | Właściwość | Wymagane | Typ | Opis |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Yes | String | Nazwa wyświetlana przypisania Odmów. Nazwy muszą być unikatowe dla danego zakresu. |
-> | `Description` | Nie | String | Opis przypisania Odmów. |
-> | `Permissions.Actions` | Co najmniej jednej akcji lub jednego elementy DataActions | Ciąg] | Tablica ciągów, które określają operacje zarządzania, do których przypisanie Odmów blokuje dostęp. |
-> | `Permissions.NotActions` | Nie | Ciąg] | Tablica ciągów, które określają operacje zarządzania, aby wykluczyć z przypisania Odmów. |
-> | `Permissions.DataActions` | Co najmniej jednej akcji lub jednego elementy DataActions | Ciąg] | Tablica ciągów, które określają operacje danych, do których przypisanie Odmów blokuje dostęp. |
-> | `Permissions.NotDataActions` | Nie | Ciąg] | Tablica ciągów, które określają operacje na danych, aby wykluczyć z przypisania Odmów. |
-> | `Scope` | Nie | String | Ciąg, który określa zakres, który dotyczy przypisania Odmów. |
-> | `DoNotApplyToChildScopes` | Nie | Boolean | Określa, czy przypisanie odmowy mają zastosowanie do zakresy podrzędne. Wartość domyślna to false. |
-> | `Principals[i].Id` | Yes | Ciąg] | Tablica obiektów nazwy głównej usługi Azure AD identyfikatorów (użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana), do których zostanie zastosowana przypisania Odmów. Ustaw na pustym identyfikatorem GUID `00000000-0000-0000-0000-000000000000` do reprezentowania wszystkich podmiotów zabezpieczeń. |
-> | `Principals[i].Type` | Nie | Ciąg] | Tablica typów obiektów, reprezentowane przez jednostki [i] .id. Ustaw `SystemDefined` do reprezentowania wszystkich podmiotów zabezpieczeń. |
-> | `ExcludePrincipals[i].Id` | Nie | Ciąg] | Tablica obiektów nazwy głównej usługi Azure AD identyfikatorów (użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana), do których przypisanie Odmów nie ma zastosowania. |
-> | `ExcludePrincipals[i].Type` | Nie | Ciąg] | Tablica typów obiektów, reprezentowane przez .id ExcludePrincipals [i]. |
-> | `IsSystemProtected` | Nie | Boolean | Określa, czy odmówić przypisania został utworzony przez platformę Azure i nie można edytować ani usunąć. Obecnie wszystkie Odmów przypisania są chronione systemu. |
+> | `DenyAssignmentName` | Tak | Ciąg | The display name of the deny assignment. Names must be unique for a given scope. |
+> | `Description` | Nie | Ciąg | The description of the deny assignment. |
+> | `Permissions.Actions` | At least one Actions or one DataActions | String[] | An array of strings that specify the management operations to which the deny assignment blocks access. |
+> | `Permissions.NotActions` | Nie | String[] | An array of strings that specify the management operations to exclude from the deny assignment. |
+> | `Permissions.DataActions` | At least one Actions or one DataActions | String[] | An array of strings that specify the data operations to which the deny assignment blocks access. |
+> | `Permissions.NotDataActions` | Nie | String[] | An array of strings that specify the data operations to exclude from the deny assignment. |
+> | `Scope` | Nie | Ciąg | A string that specifies the scope that the deny assignment applies to. |
+> | `DoNotApplyToChildScopes` | Nie | Wartość logiczna | Specifies whether the deny assignment applies to child scopes. Default value is false. |
+> | `Principals[i].Id` | Tak | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment applies. Set to an empty GUID `00000000-0000-0000-0000-000000000000` to represent all principals. |
+> | `Principals[i].Type` | Nie | String[] | An array of object types represented by Principals[i].Id. Set to `SystemDefined` to represent all principals. |
+> | `ExcludePrincipals[i].Id` | Nie | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment does not apply. |
+> | `ExcludePrincipals[i].Type` | Nie | String[] | An array of object types represented by ExcludePrincipals[i].Id. |
+> | `IsSystemProtected` | Nie | Wartość logiczna | Specifies whether this deny assignment was created by Azure and cannot be edited or deleted. Currently, all deny assignments are system protected. |
 
-## <a name="the-all-principals-principal"></a>Podmiot zabezpieczeń wszystkich podmiotów zabezpieczeń
+## <a name="the-all-principals-principal"></a>The All Principals principal
 
-Do obsługi odmowy przypisania, podmiot zabezpieczeń zdefiniowaną przez system o nazwie *wszystkich podmiotów zabezpieczeń* zostały wprowadzone. Ten podmiot zabezpieczeń reprezentuje wszystkich użytkowników, grup, nazw głównych usług i zarządzanych tożsamości w katalogu usługi Azure AD. Jeśli identyfikator podmiotu zabezpieczeń jest zerowy identyfikator GUID `00000000-0000-0000-0000-000000000000` i typ podmiotu zabezpieczeń jest `SystemDefined`, podmiot zabezpieczeń reprezentuje wszystkie podmioty zabezpieczeń. W danych wyjściowych programu Azure PowerShell wszystkie podmioty zabezpieczeń wygląda następująco:
+To support deny assignments, a system-defined principal named *All Principals* has been introduced. This principal represents all users, groups, service principals, and managed identities in an Azure AD directory. If the principal ID is a zero GUID `00000000-0000-0000-0000-000000000000` and the principal type is `SystemDefined`, the principal represents all principals. In Azure PowerShell output, All Principals looks like the following:
 
 ```azurepowershell
 Principals              : {
@@ -79,12 +82,12 @@ Principals              : {
                           }
 ```
 
-Wszystkie podmioty zabezpieczeń może być łączone z `ExcludePrincipals` odrzucanie wszystkich podmiotów zabezpieczeń, z wyjątkiem niektórych użytkowników. Wszystkie podmioty zabezpieczeń ma następujące ograniczenia:
+All Principals can be combined with `ExcludePrincipals` to deny all principals except some users. All Principals has the following constraints:
 
-- Może być używana tylko w `Principals` i nie może być używany w `ExcludePrincipals`.
-- `Principals[i].Type` musi być równa `SystemDefined`.
+- Can be used only in `Principals` and cannot be used in `ExcludePrincipals`.
+- `Principals[i].Type` must be set to `SystemDefined`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Lista Odmów przydziały dla zasobów platformy Azure przy użyciu witryny Azure portal](deny-assignments-portal.md)
-* [Zrozumienie definicje ról na potrzeby zasobów platformy Azure](role-definitions.md)
+* [List deny assignments for Azure resources using the Azure portal](deny-assignments-portal.md)
+* [Understand role definitions for Azure resources](role-definitions.md)

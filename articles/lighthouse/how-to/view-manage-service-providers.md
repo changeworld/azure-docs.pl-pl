@@ -1,67 +1,67 @@
 ---
 title: Wyświetlanie dostawców usług i zarządzanie nimi
-description: Klienci mogą używać strony dostawcy usług w Azure Portal do wyświetlania informacji o dostawcach usług, ofertach dostawcy usług i delegowanych zasobach.
+description: Customers can use the Service providers page in the Azure portal to view info about service providers, service provider offers, and delegated resources.
 ms.date: 11/15/2019
-ms.topic: overview
-ms.openlocfilehash: 12ddafe1d1e425ed1c1f1188be1377a584e03936
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.topic: conceptual
+ms.openlocfilehash: 453f5d3ba4ed5c49b5e71c7530298bc0a03c73ee
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169638"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463818"
 ---
 # <a name="view-and-manage-service-providers"></a>Wyświetlanie dostawców usług i zarządzanie nimi
 
-Klienci mogą używać strony **dostawcy usług** w [Azure Portal](https://portal.azure.com) , aby wyświetlić informacje o dostawcach usług i ofertach dostawcy usług, delegować określone zasoby za pomocą [usługi Azure delegowane zarządzanie zasobami](../concepts/azure-delegated-resource-management.md)i kupować dodatkowe oferty dostawców usług. Mimo że będziemy odnieść się do dostawców usług i klientów w tym miejscu, przedsiębiorstwa zarządzające wieloma dzierżawcami mogą używać tego samego procesu do konsolidacji ich środowiska zarządzania.
+Customers can use the **Service providers** page in the [Azure portal](https://portal.azure.com) to view info about service providers and service provider offers, delegate specific resources through [Azure delegated resource management](../concepts/azure-delegated-resource-management.md), and shop for additional service provider offers. While we'll refer to service providers and customers here, enterprises managing multiple tenants can use the same process to consolidate their management experience.
 
-Aby uzyskać dostęp do strony **dostawcy usług** w Azure Portal, klient może wybrać **wszystkie usługi**, a następnie wyszukać **dostawców usług** i wybrać ją. Można je również znaleźć, wprowadzając "dostawcy usług" w polu wyszukiwania w górnej części Azure Portal.
+To access the **Service providers** page in the Azure portal, the customer can select **All services**, then search for **Service providers** and select it. They can also find it by entering “Service providers” in the search box near the top of the Azure portal.
 
-Należy pamiętać, że na stronie **dostawcy usług** są wyświetlane tylko informacje o dostawcach usług, które mają dostęp do subskrypcji lub grup zasobów klienta za pomocą delegowanego zarządzania zasobami platformy Azure. Jeśli klient współpracuje z dodatkowymi dostawcami usług, którzy nie korzystają z zarządzania zasobami delegowanymi przez platformę Azure w celu uzyskania dostępu do zasobów klienta, informacje o tych dostawcach usług nie są wyświetlane w tym miejscu.
+Keep in mind that the **Service providers** page only shows info about the service providers which have access to the customer's subscriptions or resource groups through Azure delegated resource management. If a customer works with additional service providers who don't use Azure delegated resource management to access the customer's resources, info about those service providers is not shown here.
 
 > [!NOTE]
-> Dostawcy usług mogą przeglądać informacje o swoich klientach, przechodząc do **moich klientów** w Azure Portal. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i zarządzanie klientami oraz delegowanymi zasobami](view-manage-customers.md).
+> Service providers can view info about their customers by navigating to **My customers** in the Azure portal. For more info, see [View and manage customers and delegated resources](view-manage-customers.md).
 
-## <a name="view-service-provider-details"></a>Wyświetl szczegóły dostawcy usług
+## <a name="view-service-provider-details"></a>View service provider details
 
-Aby wyświetlić informacje o dostawcach usług, z którymi pracuje klient, można wybrać **oferty dostawcy** po lewej stronie strony **dostawcy usług** .
+To view info about the service provider(s) that a customer is working with, they can select **Provider offers** on the left side of the **Service providers** page.
 
-Dla każdej oferty dostawcy usług klient zobaczy nazwę dostawcy usług i skojarzoną z nim ofertę, a także nazwę wprowadzoną przez klienta podczas procesu dołączania.
+For each service provider offer, the customer will see the service provider's name and the offer associated with it, along with the name that the customer entered during the onboarding process.
 
-W kolumnie **delegacje** klient widzi, ile subskrypcji i/lub grup zasobów zostało delegowanych do dostawcy usług dla tej oferty. Dostawca usług będzie mógł uzyskiwać dostęp do tych subskrypcji i/lub grup zasobów oraz nimi zarządzać zgodnie z poziomami dostępu określonymi w ofercie.
+In the **Delegations** column, the customer sees how many subscriptions and/or resource groups have been delegated to the service provider for that offer. The service provider will be able to access and manage these subscriptions and/or resource groups according to the access levels specified in the offer.
 
-## <a name="delegate-resources"></a>Delegowanie zasobów
+## <a name="delegate-resources"></a>Delegate resources
 
-Zanim dostawca usług będzie mógł uzyskać dostęp do zasobów klienta i zarządzać nim, muszą być delegowane. Jeśli klient zaakceptuje ofertę, ale nie oddelegowano jeszcze żadnych zasobów, zobaczy uwagę w górnej części sekcji **oferty dostawcy** . Pozwala to klientowi na uzyskanie dostępu do dowolnych zasobów klienta, którzy muszą podjąć odpowiednie działania.
+Before a service provider can access and manage a customer's resources, they must be delegated. If a customer has accepted an offer but has not yet delegated any resources, they'll see a note at the top of the **Provider offers** section. This lets the customer know that they need to take action before the service provider can access any of the customer's resources.
 
-Aby delegować subskrypcje lub grupy zasobów:
+To delegate subscriptions or resource groups:
 
-1. Zaznacz pole wyboru dla wiersza zawierającego dostawcę usług, ofertę i nazwę. Następnie wybierz pozycję **Deleguj zasoby** w górnej części ekranu.
-1. W sekcji **szczegóły oferty** na stronie **delegowanie zasobów** Przejrzyj szczegóły dotyczące dostawcy usług i oferty. Aby przejrzeć przypisania ról dla oferty, wybierz **pozycję kliknij tutaj, aby wyświetlić szczegóły wybranej oferty**.
-1. W sekcji **Delegat** wybierz opcję **Deleguj subskrypcje** lub **delegowanie grup zasobów**.
-1. Wybierz subskrypcje i/lub grupy zasobów, które chcesz delegować dla tej oferty, a następnie wybierz pozycję **Dodaj**.
-1. Zaznacz pole wyboru u dołu strony, aby potwierdzić, że chcesz udzielić temu dostawcy usług dostępu do wybranych zasobów, a następnie wybierz opcję **Delegat**.
+1. Check the box for the row containing the service provider, offer, and name. Then select **Delegate resources** at the top of the screen.
+1. In the **Offer details** section of the **Delegate resources** page, review the details about the service provider and offer. To review role assignments for the offer, select **Click here to see the details of the selected offer**.
+1. In the **Delegate** section, select **Delegate subscriptions** or **Delegate resource groups**.
+1. Choose the subscriptions and/or resource groups you'd like to delegate for this offer, then select **Add**.
+1. Select the checkbox at the bottom of the page to confirm that you want to grant this service provider access to the resources that you've selected, then select **Delegate**.
 
-## <a name="add-or-remove-service-provider-offers"></a>Dodaj lub Usuń oferty dostawcy usług
+## <a name="add-or-remove-service-provider-offers"></a>Add or remove service provider offers
 
-Klient może dodać nową ofertę dostawcy usług na stronie **oferty dostawcy** , wybierając pozycję **Dodaj ofertę**. Dostawca usług musi mieć opublikowaną ofertę dla tego klienta. Klient może następnie wybrać tę ofertę na ekranie **oferty prywatne** , a następnie wybrać pozycję **Utwórz**.
+A customer can add a new service provider offer from the **Provider offers** page by selecting **Add offer**. The service provider must have published an offer for this customer. The customer can then select that offer from the **Private offers** screen and then select **Create**.
 
-Jeśli klient chce usunąć ofertę dostawcy usług, może wybrać ikonę kosza w wierszu dla tej oferty. Po potwierdzeniu usunięcia ten dostawca usług nie będzie już miał dostępu do zasobów klienta, które były wcześniej delegowane dla tej oferty.
+If the customer wants to remove a service provider offer, they can select the trash can icon in the row for that offer. After confirming the deletion, that service provider will no longer have access to the customer resources that were formerly delegated for that offer.
 
-## <a name="update-service-provider-offers"></a>Oferty aktualizacji dostawcy usług
+## <a name="update-service-provider-offers"></a>Update service provider offers
 
-Po dodaniu oferty przez klienta dostawca usług może opublikować zaktualizowaną wersję tej samej oferty w witrynie Azure Marketplace. Na przykład mogą chcieć dodać nową definicję roli. Jeśli nowa wersja oferty została opublikowana, na stronie **oferty dostawcy** zostanie wyświetlona ikona "Aktualizacja" w wierszu dla tej oferty. Klient może wybrać tę ikonę, aby zobaczyć różnice między bieżącą wersją oferty a nową.
+After a customer has added an offer, a service provider may publish an updated version of the same offer to Azure Marketplace. For example, they may want to add a new role definition. If a new version of the offer has been published, the **Provider offers** page will show an "update" icon in the row for that offer. The customer can select this icon to see the differences between the current version of the offer and the new one.
 
- ![Ikona aktualizacji oferty](../media/update-offer.jpg)
+ ![Update offer icon](../media/update-offer.jpg)
 
-Po przejrzeniu zmian klient może zdecydować się na zaktualizowanie nowej wersji. Po wykonaniu tych czynności autoryzacje i inne ustawienia określone w nowej wersji będą stosowane do wszystkich subskrypcji i/lub grup zasobów, które zostały delegowane dla tej oferty.
+After reviewing the changes, the customer can choose to update to the new version. Once they do, the authorizations and other settings specified in the new version will apply to any subscriptions and/or resource groups that have been delegated for that offer.
 
-## <a name="view-delegations"></a>Wyświetl delegowania
+## <a name="view-delegations"></a>View delegations
 
-Delegacje reprezentują przypisania ról, które przyznają uprawnienia dostawcy usług dla zasobów delegowanych przez klienta. Aby wyświetlić te informacje, wybierz pozycję **delegacje** w lewej części strony **dostawcy usług** .
+Delegations represent the role assignments that grant permissions to the service provider for the resources a customer has delegated. To view this info, select **Delegations** on the left side of the **Service providers** page.
 
-Filtry w górnej części strony pozwalają sortować i grupować informacje o delegowaniu lub filtrować według określonych klientów, ofert lub słów kluczowych.
+Filters at the top of the page let you sort and group your delegation info or filter by specific customers, offers, or keywords.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [usłudze Azure Lighthouse](../overview.md).
-- Dowiedz się, jak dostawcy usług mogą [wyświetlać klientów i zarządzać nimi](view-manage-customers.md) , przechodząc do **moich klientów** w Azure Portal.
+- Learn more about [Azure Lighthouse](../overview.md).
+- Learn how service providers can [view and manage customers](view-manage-customers.md) by going to **My customers** in the Azure portal.

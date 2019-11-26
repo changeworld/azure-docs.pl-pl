@@ -1,58 +1,58 @@
 ---
 title: Etapy wdrażania strategii
-description: Zapoznaj się z instrukcjami Azure Blueprint usług, które przechodzą przez proces wdrażania.
+description: Learn the security and artifact related steps the Azure Blueprint services goes through while creating a blueprint assignment.
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: b329613e4e4954a1ea1452017a6e6c8b7343f2d3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 4c1d0cd47e0f43b73e3178e18a4ba5d705048a72
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048609"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463553"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Etapy wdrażania strategii
 
-Gdy plan zostanie wdrożony, do wdrożenia zasobów zdefiniowanych w planie jest wykonywana seria akcji podejmowana przez usługę plany platformy Azure. Ten artykuł zawiera szczegółowe informacje o tym, co obejmuje każdy krok.
+When a blueprint gets deployed, a series of actions is taken by the Azure Blueprints service to deploy the resources defined in the blueprint. This article provides details about what each step involves.
 
-Wdrożenie planu jest wyzwalane przez przypisanie planu do subskrypcji lub [zaktualizowanie istniejącego przypisania](../how-to/update-existing-assignments.md). Podczas wdrażania plany zajmują następujące czynności wysokiego poziomu:
+Blueprint deployment is triggered by assigning a blueprint to a subscription or [updating an existing assignment](../how-to/update-existing-assignments.md). During the deployment, Blueprints takes the following high-level steps:
 
 > [!div class="checklist"]
-> - Plany przyznane praw właściciela
-> - Tworzony jest obiekt przypisania strategii
-> - Opcjonalne-plany tworzą tożsamość zarządzaną **przypisaną przez system**
-> - Tożsamość zarządzana wdraża artefakty strategii
-> - Uprawnienia do usługi strategii i zarządzanej tożsamości **przypisane do systemu** są odwoływane
+> - Blueprints granted owner rights
+> - The blueprint assignment object is created
+> - Optional - Blueprints creates **system-assigned** managed identity
+> - The managed identity deploys blueprint artifacts
+> - Blueprint service and **system-assigned** managed identity rights are revoked
 
-## <a name="blueprints-granted-owner-rights"></a>Plany przyznane praw właściciela
+## <a name="blueprints-granted-owner-rights"></a>Blueprints granted owner rights
 
-Nazwa główna usługi planów platformy Azure ma uprawnienia właściciela przypisanej subskrypcji lub subskrypcji, gdy zostanie użyta tożsamość zarządzana [tożsamości zarządzanej przez system](../../../active-directory/managed-identities-azure-resources/overview.md) . Przyznana rola pozwala na tworzenie i późniejsze odwoływanie się do tożsamości zarządzanej **przypisanej do systemu** . Jeśli jest używana tożsamość zarządzana **przypisana przez użytkownika** , jednostka usługi Azure Planes nie jest pobierana i nie wymaga praw właściciela subskrypcji.
+The Azure Blueprints service principal is granted owner rights to the assigned subscription or subscriptions when a [system-assigned managed identity](../../../active-directory/managed-identities-azure-resources/overview.md) managed identity is used. The granted role allows Blueprints to create, and later revoke, the **system-assigned** managed identity. If using a **user-assigned** managed identity, the Azure Blueprints service principal doesn't get and doesn't need owner rights on the subscription.
 
-Prawa są przyznawane automatycznie, jeśli przypisanie odbywa się za pomocą portalu. Jednak jeśli przypisanie odbywa się za pomocą interfejsu API REST, przyznanie praw musi zostać wykonane przy użyciu oddzielnego wywołania interfejsu API. Identyfikator AppId Azure Blueprint jest `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ale jednostka usługi różni się w zależności od dzierżawy. Aby uzyskać nazwę główną usługi, użyj [Azure Active Directory interfejs API programu Graph](../../../active-directory/develop/active-directory-graph-api.md) i [serviceprincipals](/graph/api/resources/serviceprincipal) punktu końcowego. Następnie należy przydzielić roli _właściciela_ na platformę Azure za pomocą [portalu](../../../role-based-access-control/role-assignments-portal.md), [interfejsu](../../../role-based-access-control/role-assignments-rest.md) [wiersza polecenia platformy Azure](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)lub [szablonu Menedżer zasobów](../../../role-based-access-control/role-assignments-template.md).
+The rights are granted automatically if the assignment is done through the portal. However, if the assignment is done through the REST API, granting the rights needs to be done with a separate API call. The Azure Blueprint AppId is `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, but the service principal varies by tenant. Use [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) and REST endpoint [servicePrincipals](/graph/api/resources/serviceprincipal) to get the service principal. Then, grant the Azure Blueprints the _Owner_ role through the [Portal](../../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md), or a [Resource Manager template](../../../role-based-access-control/role-assignments-template.md).
 
-Usługa plany nie wdraża bezpośrednio zasobów.
+The Blueprints service doesn't directly deploy the resources.
 
-## <a name="the-blueprint-assignment-object-is-created"></a>Tworzony jest obiekt przypisania strategii
+## <a name="the-blueprint-assignment-object-is-created"></a>The blueprint assignment object is created
 
-Użytkownik, Grupa lub jednostka usługi przypisuje plan do subskrypcji. Obiekt przypisania istnieje na poziomie subskrypcji, do którego przypisano plan. Zasoby utworzone przez wdrożenie nie są wykonywane w kontekście wdrożenia jednostki.
+A user, group, or service principal assigns a blueprint to a subscription. The assignment object exists at the subscription level where the blueprint was assigned. Resources created by the deployment aren't done in context of the deploying entity.
 
-Podczas tworzenia przypisania planu jest wybierany typ [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md) . Wartością domyślną jest tożsamość zarządzana **przypisana przez system** . Można wybrać tożsamość zarządzaną **przypisaną przez użytkownika** . W przypadku korzystania z tożsamości zarządzanej **przypisanej przez użytkownika** przed utworzeniem przypisania strategii należy zdefiniować i przyznać uprawnienia. Role wbudowanego operatora [i](../../../role-based-access-control/built-in-roles.md#owner) [operator](../../../role-based-access-control/built-in-roles.md#blueprint-operator) planu mają uprawnienia `blueprintAssignment/write` niezbędne do utworzenia przypisania, które korzysta z tożsamości zarządzanej **przypisanej przez użytkownika** .
+While creating the blueprint assignment, the type of [managed identity](../../../active-directory/managed-identities-azure-resources/overview.md) is selected. The default is a **system-assigned** managed identity. A **user-assigned** managed identity can be chosen. When using a **user-assigned** managed identity, it must be defined and granted permissions before the blueprint assignment is created. Both the [Owner](../../../role-based-access-control/built-in-roles.md#owner) and [Blueprint Operator](../../../role-based-access-control/built-in-roles.md#blueprint-operator) built-in roles have the necessary `blueprintAssignment/write` permission to create an assignment that uses a **user-assigned** managed identity.
 
-## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Opcjonalne-plany tworzą tożsamość zarządzaną przypisaną przez system
+## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Optional - Blueprints creates system-assigned managed identity
 
-W przypadku wybrania [tożsamości zarządzanej przypisanej do systemu](../../../active-directory/managed-identities-azure-resources/overview.md) podczas przypisywania program planuje tożsamość i przyznaje zarządzanej tożsamości rolę [właściciela](../../../role-based-access-control/built-in-roles.md#owner) . Jeśli [istniejące przypisanie zostanie uaktualnione](../how-to/update-existing-assignments.md), plany korzystają z wcześniej utworzonej tożsamości zarządzanej.
+When [system-assigned managed identity](../../../active-directory/managed-identities-azure-resources/overview.md) is selected during assignment, Blueprints creates the identity and grants the managed identity the [owner](../../../role-based-access-control/built-in-roles.md#owner) role. If an [existing assignment is upgraded](../how-to/update-existing-assignments.md), Blueprints uses the previously created managed identity.
 
-Zarządzana tożsamość związana z przypisaniem strategii służy do wdrażania lub ponownego wdrażania zasobów zdefiniowanych w planie. Ten projekt pozwala uniknąć nieumyślnego zakłócania przypisań.
-Ten projekt obsługuje również funkcję [blokowania zasobów](./resource-locking.md) , kontrolując zabezpieczenia poszczególnych wdrożonych zasobów z planu.
+The managed identity related to the blueprint assignment is used to deploy or redeploy the resources defined in the blueprint. This design avoids assignments inadvertently interfering with each other.
+This design also supports the [resource locking](./resource-locking.md) feature by controlling the security of each deployed resource from the blueprint.
 
-## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>Tożsamość zarządzana wdraża artefakty strategii
+## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>The managed identity deploys blueprint artifacts
 
-Tożsamość zarządzana następnie wyzwala Menedżer zasobów wdrożenia artefaktów w ramach planu w zdefiniowanej [kolejności sekwencjonowania](./sequencing-order.md). Kolejność można dostosować, aby upewnić się, że artefakty zależne od innych artefaktów są wdrożone w odpowiedniej kolejności.
+The managed identity then triggers the Resource Manager deployments of the artifacts within the blueprint in the defined [sequencing order](./sequencing-order.md). The order can be adjusted to ensure artifacts dependent on other artifacts are deployed in the correct order.
 
-Niepowodzenie dostępu przez wdrożenie jest często wynikiem poziomu dostępu udzielonego tożsamości zarządzanej. Usługa plany zarządza cyklem życia zabezpieczeń zarządzanej tożsamości **przypisanej do systemu** . Jednak użytkownik jest odpowiedzialny za zarządzanie prawami i cyklem życia tożsamości zarządzanej **przypisanej przez użytkownika** .
+An access failure by a deployment is often the result of the level of access granted to the managed identity. The Blueprints service manages the security lifecycle of the **system-assigned** managed identity. However, the user is responsible for managing the rights and lifecycle of a **user-assigned** managed identity.
 
-## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Uprawnienia do usługi strategii i zarządzanej tożsamości przypisane do systemu są odwoływane
+## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Blueprint service and system-assigned managed identity rights are revoked
 
-Po zakończeniu wdrożeń plany odwołują prawa do zarządzanej tożsamości **przypisanej do systemu** z subskrypcji. Następnie usługa plany odwołuje swoje prawa z subskrypcji. Usunięcie praw uniemożliwia nietrwałego właściciela subskrypcji.
+Once the deployments are completed, Blueprints revokes the rights of the **system-assigned** managed identity from the subscription. Then, the Blueprints service revokes its rights from the subscription. Rights removal prevents Blueprints from becoming a permanent owner on a subscription.
 
 ## <a name="next-steps"></a>Następne kroki
 

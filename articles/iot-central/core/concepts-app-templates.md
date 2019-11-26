@@ -1,76 +1,79 @@
 ---
-title: Co to są szablony aplikacji na platformie Azure IoT Central | Microsoft Docs
-description: Szablony aplikacji IoT Central platformy Azure umożliwiają przechodzenie do tworzenia rozwiązań IoT.
+title: What are application templates in Azure IoT Central | Microsoft Docs
+description: Azure IoT Central application templates allow you to jump in to IoT solution development.
 author: philmea
 ms.author: philmea
 ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3389744c44f7eb4f11a1c9a53ea9e370b83dd79b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: af1870ecc9714eceaf69f2892537e59f068c6a70
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890842"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480322"
 ---
 # <a name="what-are-application-templates"></a>Co to są szablony aplikacji?
 
-Szablony aplikacji na platformie Azure IoT Central są narzędziem ułatwiającym kompilacje rozwiązań Stwórz ich rozwój rozwiązań IoT. Za pomocą szablonów aplikacji można korzystać ze wszystkich elementów, co jest możliwe, aby w pełni dostosować aplikacje do swoich klientów.
+Application templates in Azure IoT Central are a tool to help solution builders kickstart their IoT solution development. You can use app templates for everything from getting a feel for what is possible, to fully customizing and your application for resale to your customers.
 
-Szablony aplikacji składają się z:
+Application templates consist of:
 
-- Przykładowe pulpity nawigacyjne operatorów
-- Przykładowe szablony urządzeń
-- Symulowane urządzenia generujące dane w czasie rzeczywistym
-- Wstępnie skonfigurowane reguły i zadania
-- Zaawansowana dokumentacja obejmująca samouczki i porady
+- Sample operator dashboards
+- Sample device templates
+- Simulated devices producing real-time data
+- Pre-configured rules and jobs
+- Rich documentation including tutorials and how-tos
 
-## <a name="preview-templates"></a>Podgląd szablonów
+## <a name="preview-templates"></a>Preview templates
 
-Wybór szablonu aplikacji określa, czy aplikacja używa IoT Central funkcji w wersji zapoznawczej, takich jak Plug and Play dla urządzeń.
+Your choice of application template determines whether your application uses IoT Central preview features such as Plug and Play for devices.
 
-Obecnie szablony aplikacji korzystające z _ogólnie dostępnych_ funkcji są następujące:
+Currently, the application templates that use _generally available_ features are:
 
-- Aplikacja niestandardowa > aplikacji niestandardowej
-- Przykład > aplikacji niestandardowej contoso
-- Devkits przykładowej > aplikacji niestandardowej
+- Custom app > Custom application
+- Custom app > Sample Contoso
+- Custom app > Sample Devkits
 
-Obecnie szablony aplikacji korzystające z funkcji _publicznej wersji zapoznawczej_ są następujące:
+Currently, the application templates that use _public preview_ features are:
 
-- Aplikacja niestandardowa > App Preview
-- Logistyka podłączona > sieci sprzedaży
-- Centrum dystrybucji cyfrowej > sieci sprzedaży
-- Monitorowanie warunków sprzedaży > w sklepie
-- Sprzedaż detaliczna > w sklepie — wyewidencjonowywanie
-- Zarządzanie magazynem w programie > sieci sprzedaży
-- Monitorowanie miernika inteligentnego > energii
-- Monitorowanie na panelu słonecznym > energii
-- Zarządzanie odpadami przez instytucje rządowe >
-- Monitorowanie zużycia wody przez rząd >
-- Monitorowanie jakości wody dla instytucji > rządowych
-- Opieka zdrowotna > ciągłego monitorowania pacjenta
+- Custom app > Preview application
+- Retail > Connected logistics
+- Retail > Digital distribution center
+- Retail > In-store analytics – condition monitoring
+- Retail > In-store analytics – checkout
+- Retail > Smart inventory management
+- Energy > Smart meter monitoring
+- Energy > Solar panel monitoring
+- Government > Connected waste management
+- Government > Water consumption monitoring
+- Government > Water quality monitoring
+- Healthcare > Continuous patient monitoring
 
-## <a name="industry-focused-templates"></a>Szablony skoncentrowane na branży
+> [!NOTE]
+> The **Custom application, Sample Contoso, Sample Devkits** templates are currently  available in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations, while other templates are currently available only in **Europe** and **US** locations.
 
-Azure IoT Central to platforma aplikacji branżowych niezależny od. Szablony aplikacji to przykładowe, dostępne w branży przykłady dla tych branż
+## <a name="industry-focused-templates"></a>Industry focused templates
 
-- [Stępują](../retail/overview-iot-central-retail-pnp.md)
+Azure IoT Central is an industry agnostic application platform. Application templates are industry focused examples available for these industries today, with more to come in the future:
+
+- [Retail](../retail/overview-iot-central-retail-pnp.md)
   - Połączona logistyka
   - Cyfrowe centrum dystrybucji
-  - Monitorowanie warunku analizy w sklepie
-  - Analiza w sklepie — wyewidencjonowywanie
-  - Zarządzanie zapasami inteligentnymi
-- [Efektywności](../energy/overview-iot-central-energy.md)
-  - Inteligentne monitorowanie miernika
-  - Monitorowanie panelu słonecznego
-- [Zarządowi](../government/overview-iot-central-government.md)
+  - In-store analytics - condition monitoring
+  - In-store analytics - checkout
+  - Smart Inventory Management
+- [Energy](../energy/overview-iot-central-energy.md)
+  - Smart meter monitoring
+  - Solar panel monitoring
+- [Government](../government/overview-iot-central-government.md)
   - Połączone zarządzanie odpadami
   - Monitorowanie zużycia wody
   - Monitorowanie jakości wody
-- [Opieka zdrowotna](../healthcare/overview-iot-central-healthcare.md).
+- [Healthcare](../healthcare/overview-iot-central-healthcare.md).
   - Ciągłe monitorowanie pacjenta
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy wiesz, co IoT Central szablonów aplikacji, Zacznij od [utworzenia aplikacji IoT Central](quick-deploy-iot-central.md).
+Now that you know what IoT Central application templates are, get started by [creating an IoT Central Application](quick-deploy-iot-central.md).

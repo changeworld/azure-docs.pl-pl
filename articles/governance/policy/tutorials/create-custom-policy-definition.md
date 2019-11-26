@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Create a custom policy definition'
 description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: d93f1acb383782de055983ec9ec33ce5576619d1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327411"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483975"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
 
@@ -52,7 +52,7 @@ Based on the business requirement, the Azure resource to audit with Azure Policy
 
 Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
-- Azure Policy extension for VS Code
+- Rozszerzenie usługi Azure Policy dla programu VS Code
 - Szablony Menedżera zasobów
   - Eksportowanie istniejącego zasobu
   - Środowisko tworzenia
@@ -163,7 +163,7 @@ Zidentyfikowaliśmy właściwość zasobu, ale musimy zamapować tę właściwo�
 
 Istnieje kilka sposobów określenia aliasów dla zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
-- Azure Policy extension for VS Code
+- Rozszerzenie usługi Azure Policy dla programu VS Code
 - Interfejs wiersza polecenia platformy Azure
 - Program Azure PowerShell
 - Graf zasobów platformy Azure
@@ -450,6 +450,16 @@ Oto kompletna definicja zawierająca wszystkie trzy części zasad:
 ```
 
 Ukończonej definicji można użyć do utworzenia nowych zasad. Portal i każdy z zestawów SDK (interfejsu wiersza polecenia platformy Azure, programu Azure PowerShell i interfejsu API REST) przyjmuje definicję w inny sposób, więc należy przejrzeć polecenia dla każdego z nich, aby zwalidować poprawność składni. Następnie przypisz ją za pomocą sparametryzowanego efektu do odpowiednich zasobów w celu zarządzania zabezpieczeniami kont magazynu.
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Jeśli nie planujesz dalszej pracy z zasobami utworzonymi w tym samouczku, wykonaj poniższe kroki, aby usunąć wszystkie utworzone powyżej przypisania lub definicje:
+
+1. Wybierz pozycję **Definicje** (lub **Przypisania**, jeśli próbujesz usunąć przypisanie) w obszarze **Tworzenie** w lewej części strony usługi Azure Policy.
+
+1. Wyszukaj nowo utworzoną definicję inicjatywy lub zasad (albo przypisanie), którą chcesz usunąć.
+
+1. Kliknij prawym przyciskiem myszy wiersz albo wybierz wielokropek na końcu definicji lub przypisania, a następnie wybierz pozycję **Usuń definicję** (lub **Usuń przypisanie**).
 
 ## <a name="review"></a>Przegląd
 

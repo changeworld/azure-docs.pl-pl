@@ -1,60 +1,60 @@
 ---
-title: Kontenery profilu FSLogix NetApp Windows Virtual Desktop — Azure
-description: Jak utworzyć kontener profilu FSLogix przy użyciu Azure NetApp Files na pulpicie wirtualnym systemu Windows.
+title: FSLogix profile containers NetApp Windows Virtual Desktop - Azure
+description: How to create an FSLogix profile container using Azure NetApp Files in Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 11/25/2019
 ms.author: helohr
-ms.openlocfilehash: 1f5d1050815961f51c2bb1cfce256b1ea37d3ac1
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26d61e0b1ec50e7a3831970af1fd8fad7fed99
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605775"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483660"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Tworzenie kontenera profilu FSLogix dla puli hostów przy użyciu Azure NetApp Files
+# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Create an FSLogix profile container for a host pool using Azure NetApp Files
 
-Zalecamy używanie kontenerów profilów FSLogix jako rozwiązania profilu użytkownika dla [usługi Windows Virtual Desktop Preview](overview.md). Kontenery profilu FSLogix przechowują pełny profil użytkownika w jednym kontenerze i są przeznaczone do roamingu profilów w nietrwałych środowiskach obliczeniowych, takich jak pulpity wirtualne systemu Windows. Po zalogowaniu kontener dynamicznie dołącza do środowiska obliczeniowego przy użyciu lokalnie obsługiwanego wirtualnego dysku twardego (VHD) i wirtualnego dysku twardego funkcji Hyper-V (VHDX). Te zaawansowane technologie sterowników filtru umożliwiają natychmiastowe udostępnienie profilu użytkownika i pojawi się w systemie tak samo jak profil użytkownika lokalnego. Aby dowiedzieć się więcej na temat kontenerów profilów FSLogix, zobacz [kontenery profilu FSLogix i usługi Azure Files](fslogix-containers-azure-files.md).
+We recommend using FSLogix profile containers as a user profile solution for the [Windows Virtual Desktop service](overview.md). FSLogix profile containers store a complete user profile in a single container and are designed to roam profiles in non-persistent remote computing environments like Windows Virtual Desktop. When you sign in, the container dynamically attaches to the computing environment using a locally supported virtual hard disk (VHD) and Hyper-V virtual hard disk (VHDX). These advanced filter-driver technologies allow the user profile to be immediately available and appear in the system exactly like a local user profile. To learn more about FSLogix profile containers, see [FSLogix profile containers and Azure files](fslogix-containers-azure-files.md).
 
-Kontenery profilu FSLogix można tworzyć przy użyciu [Azure NetApp Files](https://azure.microsoft.com/services/netapp/), łatwej w użyciu natywnej platformy platformy Azure, która ułatwia klientom szybkie i niezawodne udostępnianie woluminów SMB klasy korporacyjnej dla środowisk pulpitu wirtualnego systemu Windows. Aby dowiedzieć się więcej na temat Azure NetApp Files, zobacz [co to jest Azure NetApp Files?](../azure-netapp-files/azure-netapp-files-introduction.md)
+You can create FSLogix profile containers using [Azure NetApp Files](https://azure.microsoft.com/services/netapp/), an easy-to-use Azure native platform service that helps customers quickly and reliably provision enterprise-grade SMB volumes for their Windows Virtual Desktop environments. To learn more about Azure NetApp Files, see [What is Azure NetApp Files?](../azure-netapp-files/azure-netapp-files-introduction.md)
 
-W tym przewodniku pokazano, jak skonfigurować konto Azure NetApp Files i utworzyć kontenery profilu FSLogix w systemie Windows Virtual Desktop.
+This guide will show you how to set up an Azure NetApp Files account and create FSLogix profile containers in Windows Virtual Desktop.
 
-W tym artykule przyjęto założenie, że [Pule hostów](create-host-pools-azure-marketplace.md) zostały skonfigurowane i pogrupowane w co najmniej jednej dzierżawie w środowisku pulpitu wirtualnego systemu Windows. Aby dowiedzieć się, jak skonfigurować dzierżawców, zobacz [Tworzenie dzierżawy w systemie Windows Virtual Desktop](tenant-setup-azure-active-directory.md) i [nasz wpis na blogu społeczności Tech](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
+This article assumes you already have [host pools](create-host-pools-azure-marketplace.md) set up and grouped into one or more tenants in your Windows Virtual Desktop environment. To learn how to set up tenants, see [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md) and [our Tech Community blog post](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
-Instrukcje przedstawione w tym przewodniku są przeznaczone dla użytkowników pulpitu wirtualnego systemu Windows. Jeśli szukasz bardziej ogólnych wskazówek dotyczących sposobu konfigurowania Azure NetApp Files i tworzenia kontenerów profilów FSLogix poza pulpitem wirtualnym systemu Windows, zapoznaj się z tematem [konfigurowanie Azure NetApp Files i Tworzenie woluminu systemu plików NFS — szybki start](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
-
->[!NOTE]
->Ten artykuł nie obejmuje najlepszych rozwiązań w zakresie zabezpieczania dostępu do udziału Azure NetApp Files.
+The instructions in this guide are specifically for Windows Virtual Desktop users. If you're looking for more general guidance for how to set up Azure NetApp Files and create FSLogix profile containers outside of Windows Virtual Desktop, see the [Set up Azure NetApp Files and create an NFS volume quickstart](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
 
 >[!NOTE]
->Jeśli szukasz materiału do porównania o różnych opcjach magazynu kontenera profilu FSLogix na platformie Azure, zobacz [Opcje magazynu dla kontenerów profilów FSLogix](store-fslogix-profile.md).
+>This article doesn't cover best practices for securing access to the Azure NetApp Files share.
+
+>[!NOTE]
+>If you're looking for comparison material about the different FSLogix Profile Container storage options on Azure, see [Storage options for FSLogix profile containers](store-fslogix-profile.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed utworzeniem kontenera profilu FSLogix dla puli hostów należy:
+Before you can create an FSLogix profile container for a host pool, you must:
 
-- Konfigurowanie i Konfigurowanie pulpitu wirtualnego systemu Windows
-- Inicjowanie obsługi administracyjnej puli hostów systemu Windows
-- [Włączanie subskrypcji Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+- Set up and configure Windows Virtual Desktop
+- Provision a Windows Virtual Desktop host pool
+- [Enable your Azure NetApp Files subscription](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
 
-## <a name="set-up-your-azure-netapp-files-account"></a>Skonfiguruj konto Azure NetApp Files
+## <a name="set-up-your-azure-netapp-files-account"></a>Set up your Azure NetApp Files account
 
-Aby rozpocząć, musisz skonfigurować konto Azure NetApp Files.
+To get started, you need to set up an Azure NetApp Files account.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Upewnij się, że Twoje konto ma uprawnienia współautora lub administrator.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Make sure your account has contributor or administrator permissions.
 
-2. Wybierz **ikonę Azure Cloud Shell** po prawej stronie paska wyszukiwania, aby otworzyć Azure Cloud Shell.
+2. Select the **Azure Cloud Shell icon** to the right of the search bar to open Azure Cloud Shell.
 
-3. Gdy Azure Cloud Shell jest otwarty, wybierz opcję **PowerShell**.
+3. Once Azure Cloud Shell is open, select **PowerShell**.
 
-4. Jeśli korzystasz z usługi Azure Cloud Shell, Utwórz konto magazynu w tej samej subskrypcji, aby zachować Azure NetApp Files i pulpit wirtualny systemu Windows.
+4. If this is your first time using Azure Cloud Shell, create a storage account in the same subscription you keep your Azure NetApp Files and Windows Virtual Desktop.
 
-   ![W oknie konto magazynu z przyciskiem Utwórz magazyn w dolnej części okna wyróżniono kolor czerwony.](media/create-storage-button.png)
+   ![The storage account window with the create storage button at the bottom of the window highlighted in red.](media/create-storage-button.png)
 
-5. Po załadowaniu Azure Cloud Shell Uruchom następujące dwa polecenia cmdlet.
+5. Once Azure Cloud Shell loads, run the following two cmdlets.
 
    ```powershell
    az account set --subscription <subscriptionID>
@@ -64,127 +64,132 @@ Aby rozpocząć, musisz skonfigurować konto Azure NetApp Files.
    az provider register --namespace Microsoft.NetApp --wait
    ```
 
-6. Po lewej stronie okna wybierz pozycję **wszystkie usługi**. Wprowadź **Azure NetApp Files** w polu wyszukiwania, które pojawia się w górnej części menu.
+6. In the left side of the window, select **All services**. Enter **Azure NetApp Files** into the search box that appears at the top of the menu.
 
-   ![Zrzut ekranu przedstawiający użytkownika, który wprowadza "Azure NetApp Files" do pola wyszukiwania wszystkie usługi. Wyniki wyszukiwania pokazują zasób Azure NetApp Files.](media/azure-netapp-files-search-box.png)
+   ![A screenshot of a user entering "Azure NetApp Files" into the All services search box. The search results show the Azure NetApp Files resource.](media/azure-netapp-files-search-box.png)
 
 
-7. Wybierz **Azure NetApp Files** w wynikach wyszukiwania, a następnie wybierz pozycję **Utwórz**.
+7. Select **Azure NetApp Files** in the search results, then select **Create**.
 
 8. Wybierz przycisk **Add** (Dodaj).
-9. Gdy zostanie otwarty blok **nowe konto NetApp** , wprowadź następujące wartości:
+9. When the **New NetApp account** blade opens, enter the following values:
 
-    - W obszarze **Nazwa**wprowadź nazwę konta usługi NetApp.
-    - W obszarze **subskrypcja**wybierz subskrypcję dla konta magazynu skonfigurowanego w kroku 4 z menu rozwijanego.
-    - W obszarze **Grupa zasobów**wybierz istniejącą grupę zasobów z menu rozwijanego lub Utwórz nową, wybierając pozycję **Utwórz nowe**.
-    - W polu **Lokalizacja**wybierz region konta usługi NetApp z menu rozwijanego. Ten region musi być tym samym regionem co maszyny wirtualne hosta sesji.
+    - For **Name**, enter your NetApp account name.
+    - For **Subscription**, select the subscription for the storage account you set up in step 4 from the drop-down menu.
+    - For **Resource group**, either select an existing resource group from the drop-down menu or create a new one by selecting **Create new**.
+    - For **Location**, select the region for your NetApp account from the drop-down menu. This region must be the same region as your session host VMs.
 
    >[!NOTE]
-   >Azure NetApp Files obecnie nie obsługuje instalowania woluminu w różnych regionach.
+   >Azure NetApp Files currently doesn't support mounting of a volume across regions.
 
-10. Po zakończeniu wybierz pozycję **Utwórz** , aby utworzyć konto NetApp.
+10. When you're finished, select **Create** to create your NetApp account.
 
-## <a name="create-a-capacity-pool"></a>Tworzenie puli pojemności
+## <a name="create-a-capacity-pool"></a>Create a capacity pool
 
-Następnie utwórz nową pulę pojemności: 
+Next, create a new capacity pool: 
 
-1. Przejdź do menu Azure NetApp Files i wybierz nowe konto.
-2. W menu Konto wybierz pozycję **Pule pojemności** w obszarze usługa magazynu.
-3. Wybierz pozycję **Dodaj pulę**.
-4. Gdy zostanie otwarty blok **Nowa pula pojemności** , wprowadź następujące wartości:
+1. Go to the Azure NetApp Files menu and select your new account.
+2. In your account menu, select **Capacity pools** under Storage service.
+3. Select **Add pool**.
+4. When the **New capacity pool** blade opens, enter the following values:
 
-    - W polu **Nazwa**wprowadź nazwę nowej puli pojemności.
-    - W obszarze **poziom usług**wybierz żądaną wartość z menu rozwijanego. Zalecamy korzystanie z wersji **Premium** dla większości środowisk.
+    - For **Name**, enter a name for the new capacity pool.
+    - For **Service level**, select your desired value from the drop-down menu. We recommend **Premium** for most environments.
        >[!NOTE]
-       >Ustawienie Premium zapewnia minimalną przepływność dostępną dla poziomu usługi Premium, czyli 256 MB/s. Może być konieczne dostosowanie tej przepływności dla środowiska produkcyjnego. Końcowa przepływność jest oparta na relacji opisanej w obszarze [limity przepływności](../azure-netapp-files/azure-netapp-files-service-levels.md).
-    - Dla **rozmiaru (TIB)** wprowadź rozmiar puli pojemności, który najlepiej odpowiada Twoim potrzebom. Minimalny rozmiar to 4 TiB.
+       >The Premium setting provides the minimum throughput available for a Premium Service level, which is 256 MBps. You may need to adjust this throughput for a production environment. Final throughput is based on the relationship described in [Throughput limits](../azure-netapp-files/azure-netapp-files-service-levels.md).
+    - For **Size (TiB)** , enter the capacity pool size that best fits your needs. The minimum size is 4 TiB.
 
-5. Gdy skończysz, wybierz **przycisk OK**.
+5. When you're finished, select **OK**.
 
-## <a name="join-an-active-directory-connection"></a>Dołącz do połączenia Active Directory
+## <a name="join-an-active-directory-connection"></a>Join an Active Directory connection
 
-Po tym celu należy przyłączyć połączenie Active Directory.
+After that, you need to join an Active Directory connection.
 
-1. Wybierz pozycję **połączenia Active Directory** w menu po lewej stronie strony, a następnie wybierz przycisk **Dołącz** , aby otworzyć stronę **Active Directory sprzężenia** .
+1. Select **Active Directory connections** in the menu on the left side of the page, then select the **Join** button to open the **Join Active Directory** page.
 
-   ![Zrzut ekranu przedstawiający menu przyłączanie Active Directory połączeń.](media/active-directory-connections-menu.png)
+   ![A screenshot of the Join Active Directory connections menu.](media/active-directory-connections-menu.png)
 
-2. Wprowadź następujące wartości na stronie **Dołączanie Active Directory** , aby dołączyć do połączenia:
+2. Enter the following values in the **Join Active Directory** page to join a connection:
 
-    - W przypadku **podstawowej usługi DNS**wprowadź adres IP serwera DNS w środowisku, który może rozpoznać nazwę domeny.
-    - W obszarze **domena**wprowadź w pełni kwalifikowaną nazwę domeny (FQDN).
-    - Dla **prefiksu serwer SMB (konto komputera)** wpisz ciąg, który ma zostać dołączony do nazwy konta komputera.
-    - W polu **Nazwa użytkownika**wprowadź nazwę konta z uprawnieniami do wykonywania przyłączania do domeny.
-    - W polu **hasło**wprowadź hasło konta.
+    - For **Primary DNS**, enter the IP address of the DNS server in your environment that can resolve the domain name.
+    - For **Domain**, enter your fully qualified domain name (FQDN).
+    - For **SMB Server (Computer Account) Prefix**, enter the string you want to append to the computer account name.
+    - For **Username**, enter the name of the account with permissions to perform domain join.
+    - For **Password**, enter the account's password.
 
   >[!NOTE]
-  >Najlepszym rozwiązaniem jest upewnienie się, że w kontrolerze domeny w obszarze **komputery** lub w **odpowiedniej jednostce organizacyjnej przedsiębiorstwa**pojawiło się konto komputera utworzone w celu [przyłączenia połączenia Active Directory](create-fslogix-profile-container.md#join-an-active-directory-connection) .
+  >It's best practice to confirm that the computer account you created in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection) has appeared in your domain controller under **Computers** or **your enterprise's relevant OU**.
 
-## <a name="create-a-new-volume"></a>Utwórz nowy wolumin
+## <a name="create-a-new-volume"></a>Create a new volume
 
-Następnie musisz utworzyć nowy wolumin.
+Next, you'll need to create a new volume.
 
-1. Wybierz pozycję **woluminy**, a następnie wybierz pozycję **Dodaj wolumin**.
+1. Select **Volumes**, then select **Add volume**.
 
-2. Po otwarciu bloku **Utwórz wolumin** wprowadź następujące wartości:
+2. When the **Create a volume** blade opens, enter the following values:
 
-    - W polu **Nazwa woluminu**wprowadź nazwę nowego woluminu.
-    - W obszarze **Pula pojemności**wybierz właśnie utworzoną pulę pojemności z menu rozwijanego.
-    - Dla **limitu przydziału (GIB)** wprowadź rozmiar woluminu odpowiedni dla danego środowiska.
-    - W obszarze **Sieć wirtualna**wybierz istniejącą sieć wirtualną z połączeniem z kontrolerem domeny z menu rozwijanego.
-    - W obszarze **podsieć**wybierz pozycję **Utwórz nową**. Należy pamiętać, że ta podsieć zostanie delegowana do Azure NetApp Files.
+    - For **Volume name**, enter a name for the new volume.
+    - For **Capacity pool**, select the capacity pool you just created from the drop-down menu.
+    - For **Quota (GiB)** , enter the volume size appropriate for your environment.
+    - For **Virtual network**, select an existing virtual network that has connectivity to the domain controller from the drop-down menu.
+    - Under **Subnet**, select **Create new**. Keep in mind that this subnet will be delegated to Azure NetApp Files.
 
-3.  Wybierz pozycję **Dalej: protokół \>\>** , aby otworzyć kartę Protokół i skonfigurować parametry dostępu do woluminu.
+3.  Select **Next: Protocol \>\>** to open the Protocol tab and configure your volume access parameters.
 
-## <a name="configure-volume-access-parameters"></a>Konfigurowanie parametrów dostępu do woluminów
+## <a name="configure-volume-access-parameters"></a>Configure volume access parameters
 
-Po utworzeniu woluminu Skonfiguruj parametry dostępu do woluminu.
+After you create the volume, configure the volume access parameters.
 
-1.  Wybierz opcję **SMB** jako typ protokołu.
-2.  W obszarze Konfiguracja w menu rozwijanym **Active Directory** wybierz ten sam katalog, z którym nawiązano połączenie przy [użyciu połączenia Active Directory](create-fslogix-profile-container.md#join-an-active-directory-connection). Należy pamiętać, że istnieje limit jednego Active Directory na subskrypcję.
-3.  W polu tekstowym **Nazwa udziału** wprowadź nazwę udziału używanego przez pulę hostów sesji i jej użytkowników.
+1.  Select **SMB** as the protocol type.
+2.  Under Configuration in the **Active Directory** drop-down menu, select the same directory that you originally connected in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection). Keep in mind that there's a limit of one Active Directory per subscription.
+3.  In the **Share name** text box, enter the name of the share used by the session host pool and its users.
 
-4.  Wybierz pozycję **Recenzja + Utwórz** w dolnej części strony. Spowoduje to otwarcie strony Walidacja. Po pomyślnym zweryfikowaniu woluminu wybierz pozycję **Utwórz**.
+4.  Select **Review + create** at the bottom of the page. This opens the validation page. After your volume is validated successfully, select **Create**.
 
-5.  W tym momencie nowy wolumin rozpocznie wdrażanie. Po zakończeniu wdrażania możesz użyć udziału Azure NetApp Files.
+5.  At this point, the new volume will start to deploy. Once deployment is complete, you can use the Azure NetApp Files share.
 
-6.  Aby wyświetlić ścieżkę instalacji, wybierz pozycję **Przejdź do zasobu** i Znajdź ją na karcie Przegląd.
+6.  To see the mount path, select **Go to resource** and look for it in the Overview tab.
 
-    ![Zrzut ekranu przedstawiający ekran przegląd z czerwoną strzałką wskazującą ścieżkę instalacji.](media/overview-mount-path.png)
+    ![A screenshot of the Overview screen with a red arrow pointing at the mount path.](media/overview-mount-path.png)
 
-## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Konfigurowanie FSLogix na maszynach wirtualnych hosta sesji (VM)
+## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Configure FSLogix on session host virtual machines (VMs)
 
-Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md).
+This section is based on [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).
 
-1. [Pobierz plik FSLogix Agent. zip,](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) gdy nadal masz zdalny na maszynie wirtualnej hosta sesji.
+1. [Download the FSLogix agent .zip file](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) while you're still remoted in the session host VM.
 
-2. Rozpakuj pobrany plik.
+2. Unzip the downloaded file.
 
-3. W pliku przejdź do **wersji x64** > **releases** i uruchom program **FSLogixAppsSetup. exe**. Zostanie otwarte menu instalacja.
+3. In the file, go to **x64** > **Releases** and run **FSLogixAppsSetup.exe**. The installation menu will open.
 
-4.  Jeśli masz klucz produktu, wprowadź go w polu tekstowym klucz produktu.
+4.  If you have a product key, enter it in the Product Key text box.
 
-5. Zaznacz pole wyboru obok pozycji **Akceptuję warunki i postanowienia licencyjne**.
+5. Select the check box next to **I agree to the license terms and conditions**.
 
 6. Wybierz pozycję **Zainstaluj**.
 
-7. Przejdź do **C:\\Program Files\\FSLogix\\Apps** , aby potwierdzić, że Agent został zainstalowany.
+7. Navigate to **C:\\Program Files\\FSLogix\\Apps** to confirm the agent installed.
 
-8. Z menu Start Uruchom polecenie **regedit** jako administrator.
+8. From the Start menu, run **RegEdit** as administrator.
 
-9. Przejdź do **komputera\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
+9. Navigate to **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
 
-10. Utwórz klucz o nazwie **Profile**.
+10. Create a key named **Profiles**.
 
-11.  Utwórz wartość o nazwie **Enabled** z typem **REG_DWORD** ustawionym na wartość danych **1**.
+11.  Create a value named **Enabled** with a **REG_DWORD** type set to a data value of **1**.
 
-12. Utwórz wartość o nazwie **VHDLocations** z typem **wielociągowym** i ustaw jej wartość danych na identyfikator URI udziału Azure NetApp Files.
+12. Create a value named **VHDLocations** with a **Multi-String** type and set its data value to the URI for the Azure NetApp Files share.
 
-## <a name="assign-users-to-session-host"></a>Przypisywanie użytkowników do hosta sesji
+13. Create a value named **DeleteLocalProfileWhenVHDShouldApply** with a DWORD value of 1 to avoid problems with existing local profiles before you sign in.
 
-1. Otwórz program **POWERSHELL ISE** jako administrator i zaloguj się do pulpitu wirtualnego systemu Windows.
+     >[!WARNING]
+     >Be careful when creating the DeleteLocalProfileWhenVHDShouldApply value. When the FSLogix Profiles system determines a user should have an FSLogix profile, but a local profile already exists, Profile Container will permanently delete the local profile. The user will then be signed in with the new FSLogix profile.
 
-2. Uruchom następujące polecenia cmdlet:
+## <a name="assign-users-to-session-host"></a>Assign users to session host
+
+1. Open **PowerShell ISE** as administrator and sign in to Windows Virtual Desktop.
+
+2. Run the following cmdlets:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -193,9 +198,9 @@ Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy uży
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-3. Po wyświetleniu monitu o poświadczenia wprowadź poświadczenia dla użytkownika z rolą twórca dzierżawy lub właściciel usług pulpitu zdalnego/RDS w dzierżawie pulpitu wirtualnego systemu Windows.
+3. When prompted for credentials, enter the credentials for the user with the Tenant Creator or RDS Owner/RDS Contributor roles on the Windows Virtual Desktop tenant.
 
-4. Uruchom następujące polecenia cmdlet, aby przypisać użytkownika do grupy Pulpit zdalny:
+4. Run the following cmdlets to assign a user to a Remote Desktop group:
 
    ```powershell
    $wvdTenant = "<your-wvd-tenant>"
@@ -205,26 +210,26 @@ Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy uży
    Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
-## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Upewnij się, że użytkownicy mogą uzyskiwać dostęp do udziału plików usługi Azure NetApp
+## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Make sure users can access the Azure NetApp File share
 
-1. Otwórz przeglądarkę internetową i przejdź do <https://rdweb.wvd.microsoft.com/webclient/index.html>.
+1. Open your internet browser and go to <https://rdweb.wvd.microsoft.com/webclient/index.html>.
 
-2. Zaloguj się przy użyciu poświadczeń użytkownika przypisanych do grupy Pulpit zdalny.
+2. Sign in with the credentials of a user assigned to the Remote Desktop group.
 
-3. Po ustanowieniu sesji użytkownika Zaloguj się do Azure Portal przy użyciu konta administracyjnego.
+3. Once you've established the user session, sign in to the Azure portal with an administrative account.
 
-4. Otwórz **Azure NetApp Files**, wybierz konto Azure NetApp Files, a następnie wybierz pozycję **woluminy**. Po otwarciu menu woluminy wybierz odpowiedni wolumin.
+4. Open **Azure NetApp Files**, select your Azure NetApp Files account, and then select **Volumes**. Once the Volumes menu opens, select the corresponding volume.
 
-   ![Zrzut ekranu konta NetApp skonfigurowanego wcześniej w Azure Portal z wybranym przyciskiem woluminy.](media/netapp-account.png)
+   ![A screenshot of the NetApp account you set up earlier in the Azure portal with the Volumes button selected.](media/netapp-account.png)
 
-5. Przejdź do karty **Przegląd** i upewnij się, że kontener profilu FSLogix używa przestrzeni.
+5. Go to the **Overview** tab and confirm that the FSLogix profile container is using space.
 
-6. Połącz się bezpośrednio z dowolną częścią maszyny wirtualnej puli hostów przy użyciu Pulpit zdalny i Otwórz **Eksploratora plików.** Następnie przejdź do **ścieżki instalacji** (w poniższym przykładzie ścieżka instalacji jest \\\\ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-vol).
+6. Connect directly to any VM part of the host pool using Remote Desktop and open the **File Explorer.** Then navigate to the **Mount path** (in the following example, the mount path is \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\anf-VOL).
 
-   W tym folderze powinien istnieć dysk VHD (lub VHDX) profilu, taki jak ten, w poniższym przykładzie.
+   Within this folder, there should be a profile VHD (or VHDX) like the one in the following example.
 
-   ![Zrzut ekranu przedstawiający zawartość folderu w ścieżce instalacji. Wewnątrz programu jest pojedynczy plik VHD o nazwie "Profile_ssbb".](media/mount-path-folder.png)
+   ![A screenshot of the contents of the folder in the mount path. Inside is a single VHD file named "Profile_ssbb."](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Kontenery profilu FSLogix można użyć do skonfigurowania udziału profilu użytkownika. Aby dowiedzieć się, jak utworzyć udziały profilu użytkownika przy użyciu nowych kontenerów, zobacz [Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md).
+You can use FSLogix profile containers to set up a user profile share. To learn how to create user profile shares with your new containers, see [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).

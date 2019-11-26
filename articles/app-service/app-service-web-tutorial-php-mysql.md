@@ -1,6 +1,6 @@
 ---
-title: PHP (Laravel) z bazą danych MySQL — usługa Azure App Service | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uruchomić aplikację języka PHP na platformie Azure z użyciem połączenia z bazą danych MySQL na platformie Azure. Platformy Laravel jest używany w tym samouczku.
+title: PHP (Laravel) with MySQL - Azure App Service | Microsoft Docs
+description: Dowiedz się, jak uruchomić aplikację języka PHP na platformie Azure z użyciem połączenia z bazą danych MySQL na platformie Azure. Laravel is used in the tutorial.
 services: app-service\web
 documentationcenter: php
 author: cephalin
@@ -12,17 +12,17 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 11/25/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: eddccc9897380e3ff47de49771a617bf6cacc407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bae64b2a7ce91aa9738f8d3dbdf55a15edf8957f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138395"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480954"
 ---
-# <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Samouczek: tworzenie aplikacji języka PHP i MySQL na platformie Azure
+# <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Tutorial: Build a PHP and MySQL app in Azure
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Build a PHP and MySQL app in Azure App Service on Linux (Tworzenie aplikacji języka PHP i MySQL w usłudze Azure App Service w systemie Linux)](./containers/tutorial-php-mysql-app.md).
@@ -51,7 +51,7 @@ W celu ukończenia tego samouczka:
 * [Zainstaluj oprogramowanie Git](https://git-scm.com/)
 * [Zainstaluj środowisko PHP w wersji 5.6.4 lub nowszej](https://php.net/downloads.php)
 * [Zainstaluj oprogramowanie Composer](https://getcomposer.org/doc/00-intro.md)
-* Włącz następujące rozszerzenia PHP, których wymaga platforma Laravel: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
+* Włącz następujące rozszerzenia PHP wymagane przez platformę Laravel: OpenSSL, PDO-MySQL, Mbstring, Tokenizer i XML
 * [Zainstaluj i uruchom oprogramowanie MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>Przygotowywanie lokalnego środowiska MySQL
@@ -66,7 +66,7 @@ W oknie terminala nawiąż połączenie z lokalnym serwerem MySQL. W tym oknie t
 mysql -u root -p
 ```
 
-Jeśli zostanie wyświetlony monit o hasło, wprowadź hasło do konta `root`. Jeśli nie pamiętasz hasła do konta głównego, zobacz [MySQL: How to Reset the Root Password (MySQL: jak zresetować hasło główne)](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
+Jeśli zostanie wyświetlony monit o hasło, wprowadź hasło do konta `root`. Jeśli nie pamiętasz hasła do konta root, zobacz [MySQL: How to Reset the Root Password (MySQL: Jak zresetować hasło konta root)](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
 
 Jeśli polecenie zostanie pomyślnie uruchomione, oznacza to, że serwer MySQL działa. Jeśli nie, upewnij się, że lokalny serwer MySQL został uruchomiony, postępując zgodnie z [procedurą poinstalacyjną MySQL](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
 
@@ -157,7 +157,7 @@ Aby zatrzymać serwer środowiska PHP, naciśnij w terminalu klawisze `Ctrl + C`
 
 W tym kroku utworzysz bazę danych MySQL w usłudze [Azure Database for MySQL](/azure/mysql). Następnie skonfigurujesz aplikację PHP i połączysz ją z tą bazą danych.
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -345,11 +345,11 @@ W tym kroku wdrożysz aplikację PHP połączoną z bazą danych MySQL w usłudz
 [!INCLUDE [Create app service plan no h](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
 <a name="create"></a>
-### <a name="create-a-web-app"></a>Utwórz aplikację internetową
+### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 [!INCLUDE [Create web app no h](../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
-### <a name="configure-database-settings"></a>Konfiguruj ustawienia bazy danych
+### <a name="configure-database-settings"></a>Konfigurowanie ustawień bazy danych
 
 Jak wskazano wcześniej, można nawiązać połączenie z bazą danych Azure MySQL przy użyciu zmiennych środowiskowych w usłudze App Service.
 
@@ -600,7 +600,7 @@ Aby w dowolnym momencie zatrzymać przesyłanie strumieniowe dzienników, wpisz 
 > [!TIP]
 > Aplikacja PHP może użyć standardowej instrukcji [error_log()](https://php.net/manual/function.error-log.php) w celu przesłania danych wyjściowych do konsoli. Przykładowa aplikacja używa tego podejścia w pliku _app/Http/routes.php_.
 >
-> Będące platformą internetową rozwiązanie [Laravel używa produktu Monolog](https://laravel.com/docs/5.4/errors) jako dostawcy logowania. Aby zobaczyć, jak skonfigurować rozwiązanie Monolog do tworzenia komunikatów w obrębie konsoli, zobacz [PHP: How to use monolog to log to console (php://out) (PHP: jak używać rozwiązania monolog w przypadku logowania do konsoli (php://out))](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
+> Będące platformą internetową rozwiązanie [Laravel używa produktu Monolog](https://laravel.com/docs/5.4/errors) jako dostawcy logowania. Aby zobaczyć, jak ustawić rozwiązanie Monolog tak, aby wysyłało komunikaty wyjściowe do konsoli, zobacz [PHP: Jak używać rozwiązania Monolog w przypadku logowania do konsoli(php://out)](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
 >
 >
 

@@ -1,39 +1,39 @@
 ---
 title: Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
-description: W tym artykule opisano sposób tworzenia kopii zapasowych SQL Server na platformie Azure. W artykule objaśniono również proces odzyskiwania programu SQL Server.
+description: This article explains how to back up SQL Server to Azure. W artykule objaśniono również proces odzyskiwania programu SQL Server.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 811f04edb4d5f0326d0af629146b7cee10424df8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172647"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462595"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
 
-Bazy danych programu SQL Server to krytyczne obciążenia, które wymagają niskiego celu punktu odzyskiwania (RPO) i długoterminowego przechowywania. Można utworzyć kopię zapasową SQL Server baz danych uruchomionych na maszynach wirtualnych platformy Azure przy użyciu [Azure Backup](backup-overview.md).
+Bazy danych programu SQL Server to krytyczne obciążenia, które wymagają niskiego celu punktu odzyskiwania (RPO) i długoterminowego przechowywania. You can back up SQL Server databases running on Azure VMs using [Azure Backup](backup-overview.md).
 
-## <a name="backup-process"></a>Proces tworzenia kopii zapasowej
+## <a name="backup-process"></a>Backup process
 
-To rozwiązanie wykorzystuje natywne interfejsy API SQL do wykonywania kopii zapasowych baz danych SQL.
+This solution leverages the SQL native APIs to take backups of your SQL databases.
 
-* Po określeniu maszyny wirtualnej SQL Server, która ma być chroniona, i zapytania dotyczącej baz danych, usługa Azure Backup zainstaluje rozszerzenie kopii zapasowej obciążenia na maszynie wirtualnej przy użyciu rozszerzenia `AzureBackupWindowsWorkload` nazwa.
-* To rozszerzenie składa się z koordynatora i wtyczki SQL. Chociaż koordynator jest odpowiedzialny za wyzwalanie przepływów pracy dla różnych operacji, takich jak konfigurowanie kopii zapasowej, tworzenie kopii zapasowej i przywracanie, wtyczka jest odpowiedzialna za rzeczywisty przepływ danych.
-* Aby móc odnajdywać bazy danych na tej maszynie wirtualnej, Azure Backup tworzy `NT SERVICE\AzureWLBackupPluginSvc`konta. To konto jest używane na potrzeby tworzenia kopii zapasowych i przywracania oraz wymaga uprawnień administratora systemu SQL. Konto `NT SERVICE\AzureWLBackupPluginSvc` jest [kontem usługi wirtualnej](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)i w związku z tym nie wymaga zarządzania hasłami. Azure Backup korzysta z konta `NT AUTHORITY\SYSTEM` w celu odnajdywania i wyszukiwania bazy danych, dlatego to konto musi być publicznym logowaniem w programie SQL Server. Jeśli nie utworzono maszyny wirtualnej programu SQL Server z witryny Azure Marketplace, może wystąpić błąd **UserErrorSQLNoSysadminMembership**. W takim przypadku [wykonaj te instrukcje](#set-vm-permissions).
-* Po zainicjowaniu konfigurowania ochrony dla wybranych baz danych usługa tworzenia kopii zapasowych konfiguruje koordynatora przy użyciu harmonogramów tworzenia kopii zapasowych i innych szczegółów zasad, które są buforowane lokalnie na maszynie wirtualnej.
-* W zaplanowanym czasie koordynator komunikuje się z wtyczką i zaczyna przesyłać strumieniowo dane kopii zapasowej z programu SQL Server przy użyciu infrastruktury VDI.  
-* Wtyczka wysyła dane bezpośrednio do magazynu usługi Recovery Services, co eliminuje konieczność lokalizacji tymczasowej. Dane są szyfrowane i przechowywane przez usługę Azure Backup na kontach magazynu.
-* Po zakończeniu transferu danych koordynator potwierdza zatwierdzenie w usłudze kopii zapasowej.
+* Once you specify the SQL Server VM that you want to protect and query for the databases in it, Azure Backup service will install a workload backup extension on the VM by the name `AzureBackupWindowsWorkload` extension.
+* This extension consists of a coordinator and a SQL plugin. While the coordinator is responsible for triggering workflows for various operations like configure backup, backup and restore, the plugin is responsible for actual data flow.
+* To be able to discover databases on this VM, Azure Backup creates the account `NT SERVICE\AzureWLBackupPluginSvc`. This account is used for backup and restore and requires SQL sysadmin permissions. The `NT SERVICE\AzureWLBackupPluginSvc` account is a [Virtual Service Account](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), and therefore does not require any password management. Azure Backup leverages the `NT AUTHORITY\SYSTEM` account for database discovery/inquiry, so this account needs to be a public login on SQL. Jeśli nie utworzono maszyny wirtualnej programu SQL Server z witryny Azure Marketplace, może wystąpić błąd **UserErrorSQLNoSysadminMembership**. W takim przypadku [wykonaj te instrukcje](#set-vm-permissions).
+* Once you trigger configure protection on the selected databases, the backup service sets up the coordinator with the backup schedules and other policy details, which the extension caches locally on the VM.
+* At the scheduled time, the coordinator communicates with the plugin and it starts streaming the backup data from the SQL server using VDI.  
+* The plugin sends the data directly to the recovery services vault, thus eliminating the need for a staging location. The data is encrypted and stored by the Azure Backup service in storage accounts.
+* When the data transfer is complete, coordinator confirms the commit with the backup service.
 
-  ![Architektura kopii zapasowych SQL](./media/backup-azure-sql-database/backup-sql-overview.png)
+  ![SQL Backup architecture](./media/backup-azure-sql-database/backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Przed rozpoczęciem Sprawdź, czy:
+Before you start, verify the below:
 
 1. Upewnij się, że masz wystąpienie programu SQL Server uruchomione na platformie Azure. Możesz [szybko utworzyć wystąpienie programu SQL Server](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) w witrynie Marketplace.
-2. Zapoznaj się z [zagadnieniami](#feature-consideration-and-limitations) [dotyczącymi funkcji i scenariuszem](#scenario-support).
+2. Review the [feature consideration](#feature-consideration-and-limitations) and [scenario support](#scenario-support).
 3. [Przejrzyj często zadawane pytania](faq-backup-sql-server.md) dotyczące tego scenariusza.
 
 ## <a name="scenario-support"></a>Obsługa scenariuszy
@@ -41,88 +41,88 @@ Przed rozpoczęciem Sprawdź, czy:
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
 **Obsługiwane wdrożenia** | Obsługiwane są maszyny wirtualne SQL Marketplace Azure i maszyny wirtualne spoza witryny Marketplace (z ręcznie instalowanym programem SQL Server).
-**Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia (ASE), Australia Wschodnia (AE), Australia Środkowa (AC), Australia Środkowa 2 (AC) <br> Brazylia Południowa (BRS)<br> Kanada Środkowa (CNC), Kanada Wschodnia (CE)<br> Azja Wschodnia Południowe (SEA), Azja Wschodnia (EA) <br> Wschodnie stany USA (EUS), Wschodnie stany USA 2 (EUS2), zachodnio-środkowe stany USA (WCUS), zachodnie stany USA (WUS); Zachodnie stany USA 2 (WUS 2) Północno-środkowe stany USA (NCUS) środkowe stany USA (CUS) Południowo-środkowe stany USA (SCUS) <br> Indie Środkowe (INC.), Indie Południowe, Indie Zachodnie <br> Japonia Wschodnia (JPE), Japonia Zachodnia (JPW) <br> Korea Środkowa (KRC), Korea Południowa (KRS) <br> Europa Północna (NE), Europa Zachodnia <br> Południowe Zjednoczone Królestwo (UKS), Zachodnie Zjednoczone Królestwo (UKW) <br> US Gov Arizona, US Gov Wirginia, US Gov Teksas, US DoD (region środkowy), US DoD (region wschodni) <br> Niemcy Północne, Niemcy Środkowo-Zachodnie <br> Szwajcaria Północna, Szwajcaria Zachodnia <br> Francja Środkowa <br> Chiny Wschodnie, Chiny Wschodnie 2, Chiny Północne, Chiny Północne 2
-**Obsługiwane systemy operacyjne** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 z dodatkiem SP1 <br/><br/> System Linux nie jest obecnie obsługiwany.
-**Obsługiwane wersje programu SQL Server** | SQL Server 2019, SQL Server 2017 zgodnie z opisem na [stronie cykl życia produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 i SPS zgodnie ze szczegółowymi informacjami na [stronie cykl życia produktu search](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
-**Obsługiwane wersje platformy .NET** | .NET Framework 4.5.2 lub nowszy jest zainstalowany na maszynie wirtualnej
+**Obsługiwane obszary geograficzne** | Australia South East (ASE), East Australia (AE), Australia Central (AC), Australia Central 2 (AC) <br> Brazylia Południowa (BRS)<br> Canada Central (CNC), Canada East (CE)<br> South East Asia (SEA), East Asia (EA) <br> East US (EUS), East US 2 (EUS2), West Central US (WCUS), West US (WUS); West US 2 (WUS 2) North Central US (NCUS) Central US (CUS) South Central US (SCUS) <br> India Central (INC), India South (INS), India West <br> Japan East (JPE), Japan West (JPW) <br> Korea Central (KRC), Korea South (KRS) <br> North Europe (NE), West Europe <br> UK South (UKS), UK West (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD Central, US DoD East <br> Germany North, Germany West Central <br> Switzerland North, Switzerland West <br> Francja Środkowa <br> China East, China East 2, China North, China North 2
+**Obsługiwane systemy operacyjne** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> System Linux nie jest obecnie obsługiwany.
+**Obsługiwane wersje programu SQL Server** | SQL Server 2019, SQL Server 2017 as detailed on the [Search product lifecycle page](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 and SPs as detailed on the [Search product lifecycle page](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
+**Supported .NET versions** | .NET Framework 4.5.2 or later installed on the VM
 
-## <a name="feature-consideration-and-limitations"></a>Zagadnienia i ograniczenia dotyczące funkcji
+## <a name="feature-consideration-and-limitations"></a>Feature consideration and limitations
 
-* SQL Server kopii zapasowej można skonfigurować w Azure Portal lub **PowerShell**. Interfejs wiersza polecenia nie jest obsługiwany.
-* Rozwiązanie jest obsługiwane w przypadku obu rodzajów [wdrożeń](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) — Azure Resource Manager maszyn wirtualnych i klasycznych maszyn wirtualnych.
-* Maszyna wirtualna z systemem SQL Server wymaga łączności z Internetem, aby uzyskać dostęp do publicznych adresów IP platformy Azure.
-* SQL Server **wystąpienia klastra trybu failover (FCI)** i SQL Server zawsze włączone wystąpienie klastra trybu failover nie są obsługiwane.
-* Operacje tworzenia kopii zapasowych i przywracania dla duplikatów baz danych i migawek baz danych nie są obsługiwane.
-* Użycie więcej niż jednego rozwiązania do tworzenia kopii zapasowych w celu utworzenia kopii zapasowej autonomicznego wystąpienia SQL Server lub zawsze włączona Grupa dostępności programu SQL Server może prowadzić do awarii kopii zapasowej; nie należy tego robić.
-* Tworzenie kopii zapasowej dwóch węzłów grupy dostępności indywidualnie z tymi samymi lub różnymi rozwiązaniami może również prowadzić do niepowodzenia kopii zapasowych.
-* Azure Backup obsługuje tylko pełne i pełne kopie zapasowe tylko dla baz danych **tylko do odczytu**
-* Nie można chronić baz danych z dużą liczbą plików. Maksymalna liczba obsługiwanych plików to **~ 1000**.  
-* Można utworzyć kopię zapasową do **~ 2000** SQL Server baz danych w magazynie. Możesz utworzyć wiele magazynów, jeśli masz większą liczbę baz danych.
-* Można skonfigurować kopie zapasowe dla maksymalnie **50** baz danych w jednym z nich. to ograniczenie ułatwia optymalizację obciążeń kopii zapasowych.
-* Obsługiwane są bazy danych o rozmiarze do **2 TB** . w przypadku większych rozmiarów mogą wystąpić problemy z wydajnością.
-* Aby określić, jak wiele baz danych może być chronionych na serwer, należy wziąć pod uwagę czynniki takie jak przepustowość, rozmiar maszyny wirtualnej, częstotliwość tworzenia kopii zapasowych, rozmiar bazy danych itp. [Pobierz](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) planistę zasobów, który zapewnia przybliżoną liczbę baz danych, które można uzyskać na serwer na podstawie zasobów maszyny wirtualnej i zasad tworzenia kopii zapasowych.
-* W przypadku grup dostępności kopie zapasowe są pobierane z różnych węzłów w oparciu o kilka czynników. Zachowanie tworzenia kopii zapasowej dla grupy dostępności znajduje się poniżej.
+* SQL Server backup can be configured in the Azure portal or **PowerShell**. We do not support CLI.
+* The solution is supported on both kinds of [deployments](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) - Azure Resource Manager VMs and classic VMs.
+* VM running SQL Server requires internet connectivity to access Azure public IP addresses.
+* SQL Server **Failover Cluster Instance (FCI)** is not supported.
+* Back up and restore operations for mirror databases and database snapshots aren't supported.
+* Using more than one backup solutions to back up your standalone SQL Server instance or SQL Always on availability group may lead to backup failure; refrain from doing so.
+* Backing up two nodes of an availability group individually with same or different solutions, may also lead to backup failure.
+* Azure Backup supports only Full and Copy-only Full backup types for **Read-only** databases
+* Nie można chronić baz danych z dużą liczbą plików. The maximum number of files that is supported is **~1000**.  
+* You can back up to **~2000** SQL Server databases in a vault. You can create multiple vaults in case you have a greater number of databases.
+* You can configure backup for up to **50** databases in one go; this restriction helps optimize backup loads.
+* We support databases up to **2 TB** in size; for sizes greater than that performance issues may come up.
+* To have a sense of as to how many databases can be protected per server, we need to consider factors such as bandwidth, VM size, backup frequency, database size, etc. [Download](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) the resource planner that gives the approximate number of databases you can have per server based on the VM resources and the backup policy.
+* In case of availability groups, backups are taken from the different nodes based on a few factors. The backup behavior for an availability group is summarized below.
 
-### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Zachowanie tworzenia kopii zapasowej w przypadku zawsze włączonych grup dostępności
+### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Back up behavior in case of Always on availability groups
 
-Zaleca się, aby kopie zapasowe zostały skonfigurowane tylko na jednym węźle w AG. Kopia zapasowa powinna być zawsze konfigurowana w tym samym regionie co węzeł podstawowy. Innymi słowy, w regionie, w którym konfigurujesz kopię zapasową, jest zawsze potrzebny węzeł podstawowy. Jeśli wszystkie węzły w AG znajdują się w tym samym regionie, w którym jest skonfigurowana kopia zapasowa, nie ma żadnego problemu.
+It is recommended that the backup is configured on only one node of an AG. Backup should always be configured in the same region as the primary node. In other words, you always need the primary node to be present in the region in which you are configuring backup. If all the nodes of the AG are in the same region in which the backup is configured, there isn’t any concern.
 
-#### <a name="for-cross-region-ag"></a>W przypadku międzyregionowej AG
+#### <a name="for-cross-region-ag"></a>For cross-region AG
 
-* Niezależnie od preferencji tworzenia kopii zapasowej kopie zapasowe nie będą wykonywane z węzłów, które nie znajdują się w tym samym regionie, w którym jest skonfigurowana kopia zapasowa. Wynika to z faktu, że kopie zapasowe między regionami nie są obsługiwane. Jeśli masz tylko dwa węzły, a węzeł pomocniczy znajduje się w innym regionie; w takim przypadku kopie zapasowe będą nadal wykonywane z węzła podstawowego (chyba że preferencja kopii zapasowej jest tylko pomocnicza).
-* Jeśli przechodzenie w tryb failover następuje w regionie innym niż ten, w którym skonfigurowano tworzenie kopii zapasowej, kopie zapasowe będą kończyć się niepowodzeniem w węzłach w regionie przełączenia w tryb failover.
+* Regardless of the backup preference, backups won’t happen from the nodes that are not in the same region where the backup is configured. This is because the cross-region backups are not supported. If you have only two nodes and the secondary node is in the other region; in this case, the backups will continue to happen from primary node (unless your backup preference is ‘secondary only’).
+* If a fail-over happens to a region different than the one in which the backup is configured, backups would fail on the nodes in the failed-over region.
 
-W zależności od preferencji tworzenia kopii zapasowych i typów kopii zapasowych (pełna/różnicowa/log/Copy-Only) kopie zapasowe są pobierane z określonego węzła (podstawowy/pomocniczy).
+Depending on the backup preference and backups types (full/differential/log/copy-only full), backups are taken from a particular node (primary/secondary).
 
-* **Preferencja kopii zapasowej: podstawowa**
+* **Backup preference: Primary**
 
-**Typ kopii zapasowej** | **Node**
+**Backup Type** | **Node**
     --- | ---
     Pełne | Podstawowy
-    Różnicy | Podstawowy
-    Log |  Podstawowy
-    Tylko kopiowanie pełne |  Podstawowy
+    Differential | Podstawowy
+    Dziennik |  Podstawowy
+    Copy-Only Full |  Podstawowy
 
-* **Preferencja kopii zapasowej: tylko pomocnicza**
+* **Backup preference: Secondary Only**
 
-**Typ kopii zapasowej** | **Node**
+**Backup Type** | **Node**
 --- | ---
 Pełne | Podstawowy
-Różnicy | Podstawowy
-Log |  Pomocniczy
-Tylko kopiowanie pełne |  Pomocniczy
+Differential | Podstawowy
+Dziennik |  Pomocniczy
+Copy-Only Full |  Pomocniczy
 
-* **Preferencja kopii zapasowej: pomocnicza**
+* **Backup preference: Secondary**
 
-**Typ kopii zapasowej** | **Node**
+**Backup Type** | **Node**
 --- | ---
 Pełne | Podstawowy
-Różnicy | Podstawowy
-Log |  Pomocniczy
-Tylko kopiowanie pełne |  Pomocniczy
+Differential | Podstawowy
+Dziennik |  Pomocniczy
+Copy-Only Full |  Pomocniczy
 
-* **Brak preferencji dotyczących kopii zapasowych**
+* **No Backup preference**
 
-**Typ kopii zapasowej** | **Node**
+**Backup Type** | **Node**
 --- | ---
 Pełne | Podstawowy
-Różnicy | Podstawowy
-Log |  Pomocniczy
-Tylko kopiowanie pełne |  Pomocniczy
+Differential | Podstawowy
+Dziennik |  Pomocniczy
+Copy-Only Full |  Pomocniczy
 
 ## <a name="set-vm-permissions"></a>Ustawianie uprawnień maszyny wirtualnej
 
-  Po uruchomieniu odnajdywania na SQL Server, Azure Backup wykonuje następujące czynności:
+  When you run discovery on a SQL Server, Azure Backup does the following:
 
-* Dodaje rozszerzenie AzureBackupWindowsWorkload.
-* Tworzy konto NT SERVICE\AzureWLBackupPluginSvc do odnajdywania baz danych na maszynie wirtualnej. To konto jest używane do tworzenia kopii zapasowych i przywracania oraz wymaga uprawnień administratora systemu SQL.
-* Odnajduje bazy danych, które są uruchomione na maszynie wirtualnej, Azure Backup korzysta z konta NT NT\SYSTEM. To konto musi być publicznym logowaniem na serwerze SQL.
+* Adds the AzureBackupWindowsWorkload extension.
+* Creates an NT SERVICE\AzureWLBackupPluginSvc account to discover databases on the virtual machine. This account is used for a backup and restore and requires SQL sysadmin permissions.
+* Discovers databases that are running on a VM, Azure Backup uses the NT AUTHORITY\SYSTEM account. This account must be a public sign-in on SQL.
 
-Jeśli maszyna wirtualna SQL Server nie została utworzona w portalu Azure Marketplace lub korzystasz z usług SQL 2008 i 2008 R2, może wystąpić błąd **UserErrorSQLNoSysadminMembership** .
+If you didn't create the SQL Server VM in the Azure Marketplace or if you are on SQL 2008 and 2008 R2, you might receive a **UserErrorSQLNoSysadminMembership** error.
 
-W przypadku nadawania uprawnień w przypadku **programów SQL 2008** i **2008 R2** uruchomionych w systemie Windows 2008 R2 zapoznaj się [tutaj](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
+For giving permissions in case of **SQL 2008** and **2008 R2** running on Windows 2008 R2, refer [here](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
 
-W przypadku wszystkich innych wersji należy rozwiązać uprawnienia, wykonując następujące czynności:
+For all other versions, fix permissions with the following steps:
 
   1. Zaloguj się do programu SQL Server Management Studio (SSMS), używając konta z uprawnieniami administratora systemu SQL Server. Jeśli nie potrzebujesz specjalnych uprawnień, uwierzytelnianie systemu Windows powinno działać.
   2. W programie SQL Server otwórz folder **Security/Logins**.
@@ -150,37 +150,37 @@ W przypadku wszystkich innych wersji należy rozwiązać uprawnienia, wykonując
       ![Komunikat o powodzeniu wdrożenia](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
 > [!NOTE]
-> Jeśli SQL Server ma zainstalowanych wiele wystąpień SQL Server, należy dodać uprawnienia sysadmin dla konta **NT Service\AzureWLBackupPluginSvc** do wszystkich wystąpień programu SQL.
+> If your SQL Server has multiple instances of SQL Server installed, then you must add sysadmin permission for **NT Service\AzureWLBackupPluginSvc** account to all SQL instances.
 
-### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>Nadaj uprawnienia administratora systemu SQL dla programu SQL 2008 i programu SQL 2008 R2
+### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>Give SQL sysadmin permissions for SQL 2008 and SQL 2008 R2
 
-Dodaj logowania **NT NT\SYSTEM** i **NT Service\AzureWLBackupPluginSvc** do wystąpienia SQL Server:
+Add **NT AUTHORITY\SYSTEM** and **NT Service\AzureWLBackupPluginSvc** logins to the SQL Server Instance:
 
-1. Przejdź do wystąpienia SQL Server w Eksploratorze obiektów.
-2. Przejdź do > logowania do zabezpieczeń
-3. Kliknij prawym przyciskiem myszy nazwę logowania i kliknij pozycję *nowe logowanie...*
+1. Go the SQL Server Instance in the Object explorer.
+2. Navigate to Security -> Logins
+3. Right click on the Logins and click *New Login…*
 
-    ![Nowa nazwa logowania przy użyciu programu SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
+    ![New Login using SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
-4. Przejdź do karty Ogólne i wprowadź **NT NT\SYSTEM** jako nazwę logowania.
+4. Go to the General tab and enter **NT AUTHORITY\SYSTEM** as the Login Name.
 
-    ![Nazwa logowania dla programu SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+    ![login name for SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
 
-5. Przejdź do *ról serwera* i wybierz role *publiczne* i *sysadmin* .
+5. Go to *Server Roles* and choose *public* and *sysadmin* roles.
 
-    ![Wybieranie ról w programie SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+    ![choosing roles in SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. Przejdź do pozycji *stan*. *Przyznaj* uprawnienie do nawiązywania połączenia z aparatem bazy danych i logowanie jako *włączone*.
+6. Go to *Status*. *Grant* the Permission to connect to database engine and Login as *Enabled*.
 
-    ![Przyznawanie uprawnień w programie SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
+    ![Grant permissions in SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
 7. Kliknij przycisk OK.
-8. Powtórz tę samą sekwencję kroków (1-7 powyżej), aby dodać logowanie NT Service\AzureWLBackupPluginSvc do wystąpienia SQL Server. Jeśli logowanie już istnieje, upewnij się, że ma ona rolę serwera sysadmin i w obszarze stan, przyznaje uprawnienia do nawiązywania połączenia z aparatem bazy danych i logowanie jako włączone.
-9. Po udzieleniu uprawnień ponownie **odkryj baz danych** w portalu: Magazyn **->** infrastruktura kopii zapasowych **->** obciążenie na maszynie wirtualnej platformy Azure:
+8. Repeat the same sequence of steps (1-7 above) to add NT Service\AzureWLBackupPluginSvc login to the SQL Server instance. If the login already exists, make sure it has the sysadmin server role and under Status it has Grant the Permission to connect to database engine and Login as Enabled.
+9. After granting permission, **Rediscover DBs** in the portal: Vault **->** Backup Infrastructure **->** Workload in Azure VM:
 
-    ![Odnajdź baz danych w Azure Portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+    ![Rediscover DBs in Azure portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 
-Alternatywnie można zautomatyzować nadawanie uprawnień, uruchamiając następujące polecenia programu PowerShell w trybie administratora. Nazwa wystąpienia jest domyślnie ustawiona na MSSQLSERVER. W razie potrzeby zmień argument Nazwa wystąpienia w skrypcie:
+Alternatively, you can automate giving the permissions by running the following PowerShell commands in admin mode. The instance name is set to MSSQLSERVER by default. Change the instance name argument in script if need be:
 
 ```powershell
 param(
@@ -217,6 +217,6 @@ catch
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej na temat](backup-sql-server-database-azure-vms.md) tworzenia kopii zapasowych baz danych SQL Server.
+* [Learn about](backup-sql-server-database-azure-vms.md) backing up SQL Server databases.
 * [Dowiedz się więcej](restore-sql-database-azure-vm.md) o przywracaniu baz danych programu SQL Server z kopii zapasowych.
 * [Dowiedz się więcej](manage-monitor-sql-database-backup.md) o zarządzaniu bazami danych programu SQL Server, dla których są tworzone kopie zapasowe.

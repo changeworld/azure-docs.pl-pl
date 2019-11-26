@@ -1,62 +1,62 @@
 ---
 title: Usługa Azure Lighthouse w scenariuszach dla przedsiębiorstw
-description: Możliwości usługi Azure Lighthouse umożliwiają uproszczenie zarządzania różnymi dzierżawcami w przedsiębiorstwie, które korzystają z wielu dzierżawców usługi Azure AD.
+description: The capabilities of Azure Lighthouse can be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
 ms.date: 09/25/2019
-ms.topic: overview
-ms.openlocfilehash: ae2241048e6ae481e319154beedab74c23c91163
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132499"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463920"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Usługa Azure Lighthouse w scenariuszach dla przedsiębiorstw
 
-Najbardziej typowym scenariuszem dla [usługi Azure Lighthouse](../overview.md) jest dostawca usług zarządzający zasobami w dzierżawach Azure Active Directory (Azure AD) klientów. Jednak możliwości usługi Azure Lighthouse umożliwiają również uproszczenie zarządzania dzierżawcą w przedsiębiorstwie korzystającym z wielu dzierżawców usługi Azure AD.
+The most common scenario for [Azure Lighthouse](../overview.md) is a service provider managing resources in its customers’ Azure  Active Directory (Azure AD) tenants. However, the capabilities of Azure Lighthouse can also be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
 
-## <a name="single-vs-multiple-tenants"></a>Pojedyncza a wiele dzierżawców
+## <a name="single-vs-multiple-tenants"></a>Single vs. multiple tenants
 
-W przypadku większości organizacji zarządzanie jest łatwiejsze w przypadku pojedynczej dzierżawy usługi Azure AD. Posiadanie wszystkich zasobów w ramach jednej dzierżawy umożliwia scentralizowanie zadań zarządzania według wyznaczonych użytkowników, grup użytkowników lub jednostek usługi w ramach tej dzierżawy. Jeśli to możliwe, zalecamy używanie jednej dzierżawy dla organizacji.
+For most organizations, management is easier with a single Azure AD tenant. Having all resources within one tenant allows centralization of management tasks by designated users, user groups, or service principals within that tenant. We recommend using one tenant for your organization whenever possible.
 
-W tym samym czasie istnieją sytuacje, w których organizacja może wymagać utrzymania wielu dzierżawców usługi Azure AD. W niektórych przypadkach może to być sytuacja tymczasowa, tak jak w przypadku pozyskiwania i długotrwała strategia konsolidacji dzierżawców zajmie trochę czasu. Organizacja może również wymagać regularnego utrzymania wielu dzierżawców (ze względu na całkowite niezależne jednostki zależne, wymagania geograficzne lub prawne itd.). W przypadkach, gdy wymagana jest architektura z wieloma dzierżawcami, zarządzanie zasobami delegowanymi przez platformę Azure może służyć do scentralizowania i usprawnienia operacji zarządzania. Subskrypcje z wielu dzierżawców można dołączać do [zarządzania zasobami delegowanymi przez platformę Azure](azure-delegated-resource-management.md), umożliwiając Wyznaczeni użytkownikom w dzierżawie zarządzającej wykonywanie [funkcji zarządzania między dzierżawcami](cross-tenant-management-experience.md) w scentralizowany i skalowalny sposób.
+At the same time, there are situations that may require an organization to maintain multiple Azure AD tenants. In some cases, this may be a temporary situation, as when acquisitions have taken place and a long-term tenant consolidation strategy will take some time to define. An organization may also need to maintain multiple tenants on an ongoing basis (due to wholly independent subsidiaries, geographical or legal requirements, and so on). In cases where a multi-tenant architecture is required, Azure delegated resource management can be used to centralize and streamline management operations. Subscriptions from multiple tenants can be onboarded for [Azure delegated resource management](azure-delegated-resource-management.md), allowing designated users in a managing tenant to perform [cross-tenant management functions](cross-tenant-management-experience.md) in a centralized and scalable manner.
 
-## <a name="tenant-management-architecture"></a>Architektura zarządzania dzierżawcą
+## <a name="tenant-management-architecture"></a>Tenant management architecture
 
-Podczas scentralizowania operacji zarządzania dla wielu dzierżawców należy określić, która dzierżawa będzie obejmować użytkowników wykonujących operacje zarządzania dla innych dzierżawców. Innymi słowy, należy określić, który dzierżawca będzie dzierżawą zarządzającą dla innych dzierżawców.
+When centralizing management operations across multiple tenants, you’ll need to determine which tenant will include the users performing management operations for the other tenants. In other words, you will need to determine which tenant will be the managing tenant for other tenants.
 
-Załóżmy na przykład, że organizacja ma jedną dzierżawę, która wywoła *dzierżawę a*. Organizacja uzyskuje dwie dodatkowe dzierżawy, *dzierżawę B* i *dzierżawcę C*, a także masz przyczyny biznesowe, które wymagają utrzymania ich jako osobnych dzierżawców.
+For example, say your organization has a single tenant that we’ll call *Tenant A*. Your organization then acquires two additional tenants, *Tenant B* and *Tenant C*, and you have business reasons that require you to maintain them as separate tenants.
 
-Organizacja chce używać tych samych definicji zasad, metod tworzenia kopii zapasowych i procesów zabezpieczeń we wszystkich dzierżawach. Ponieważ masz już użytkowników (w tym grupy użytkowników i jednostek usługi) odpowiedzialnych za wykonywanie tych zadań w ramach dzierżawy A, możesz dołączyć wszystkie subskrypcje w ramach dzierżawy B i dzierżawy C, aby Ci użytkownicy w dzierżawie mogli wykonać te czynności widoku.
+Your organization wants to use the same policy definitions, backup practices, and security processes across all tenants. Since you already have users (including user groups and service principals) that are responsible for performing these tasks within Tenant A, you can onboard all of the subscriptions within Tenant B and Tenant C so that those same users in Tenant A can perform those tasks.
 
-![Użytkownicy w dzierżawie to zarządzanie zasobami w dzierżawie B i w ramach dzierżawy C](../media/enterprise-azure-lighthouse.jpg)
+![Users in Tenant A managing resources in Tenant B and Tenant C](../media/enterprise-azure-lighthouse.jpg)
 
-## <a name="security-and-access-considerations"></a>Zagadnienia dotyczące zabezpieczeń i dostępu
+## <a name="security-and-access-considerations"></a>Security and access considerations
 
-W większości scenariuszy przedsiębiorstwa należy delegować pełną subskrypcję zarządzania zasobami delegowanymi przez platformę Azure, chociaż można delegować tylko określone grupy zasobów w ramach subskrypcji.
+In most enterprise scenarios, you’ll want to delegate a full subscription for Azure delegated resource management, although you can also delegate only specific resource groups within a subscription.
 
-W obu przypadkach należy [przestrzegać zasad najniższych uprawnień podczas definiowania użytkowników, którzy będą mieli dostęp do zasobów](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Dzięki temu użytkownicy mają uprawnienia wymagane do wykonywania wymaganych zadań i zmniejszają ryzyko przypadkowych błędów.
+Either way, be sure to [follow the principle of least privilege when defining which users will have access to resources](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Doing so helps to ensure that users only have the permissions needed to perform the required tasks and reduces the chance of inadvertent errors.
 
-Usługa Azure Lighthouse i delegowane zarządzanie zasobami platformy Azure udostępniają tylko linki logiczne między dzierżawą zarządzającą i zarządzanymi dzierżawcami, a nie fizycznym przeniesieniem danych lub zasobów. Ponadto dostęp do usługi zawsze odbywa się tylko w jednym kierunku — od dzierżawy zarządzającej do zarządzanych dzierżawców.  Użytkownicy i grupy w dzierżawie zarządzającej powinny nadal korzystać z uwierzytelniania wieloskładnikowego podczas wykonywania operacji zarządzania na zarządzanych zasobach dzierżawy.
+Azure Lighthouse and Azure delegated resource management only provide logical links between a managing tenant and managed tenants, rather than physically moving data or resources. Furthermore, the access always goes in only one direction, from the managing tenant to the managed tenants.  Users and groups in the managing tenant should continue to use multi-factor authentication when performing management operations on managed tenant resources.
 
-Przedsiębiorstwa z wewnętrznym lub zewnętrznym zarządzaniem i zgodnością guardrails mogą korzystać z [dzienników aktywności platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) w celu spełnienia wymagań dotyczących przejrzystości. Gdy dzierżawy przedsiębiorstwa ustanowiły zarządzanie relacjami i zarządzasz nimi, użytkownicy w poszczególnych dzierżawców mogą monitorować i uzyskiwać wgląd w akcje podejmowane przez użytkowników w innej dzierżawie, wyświetlając zarejestrowane działanie.
+Enterprises with internal or external governance and compliance guardrails can use [Azure Activity logs](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) to meet their transparency requirements. When enterprise tenants have established managing and managed tenant relationships, users in each tenant can monitor and gain visibility to actions taken by the users in the other tenant by viewing logged activity.
 
-## <a name="onboarding-process-considerations"></a>Zagadnienia dotyczące procesu dołączania
+## <a name="onboarding-process-considerations"></a>Onboarding process considerations
 
-Subskrypcje (lub grupy zasobów w ramach subskrypcji) można dołączać do zarządzania zasobami delegowanymi przez platformę Azure, wdrażając szablony Azure Resource Manager lub korzystając z usług zarządzanych, które są publikowane w witrynie Azure Marketplace, prywatnie lub formie.
+Subscriptions (or resource groups within a subscription) can be onboarded to Azure delegated resource management either by deploying Azure Resource Manager templates or through Managed Services offers published to Azure Marketplace, either privately or publicly.
 
-Ze względu na to, że użytkownicy korporacyjni zwykle będą mogli uzyskać bezpośredni dostęp do dzierżawców przedsiębiorstwa i nie ma potrzeby wprowadzenia na rynek ani promowania oferty zarządzania, jest to zwykle szybsze i bardziej bezpośrednie do wdrożenia przy użyciu szablonów Azure Resource Manager. W odniesieniu do dostawców usług i klientów w [wytycznych dotyczących](../how-to/onboard-customer.md)dołączania przedsiębiorstwa mogą korzystać z tych samych procesów.
+Since enterprise users will normally be able to gain direct access to the enterprise’s tenants, and there’s no need to market or promote a management offering, it’s generally faster and more straightforward to deploy directly with Azure Resource Manager templates. While we refer to service providers and customers in the [onboarding guidance](../how-to/onboard-customer.md), enterprises can use the same processes.
 
-Jeśli wolisz, dzierżawcy w przedsiębiorstwie można dołączyć, [publikując ofertę usług zarządzanych w witrynie Azure Marketplace](../how-to/publish-managed-services-offers.md). Aby upewnić się, że oferta jest dostępna tylko dla odpowiednich dzierżawców, upewnij się, że plany są oznaczone jako prywatne. Korzystając z planu prywatnego, możesz podać identyfikatory subskrypcji dla każdej dzierżawy, która ma zostać dołączona, a nikt inny nie będzie mógł uzyskać swojej oferty.
+If you prefer, tenants within an enterprise can be onboarded by [publishing a Managed Services offer to Azure Marketplace](../how-to/publish-managed-services-offers.md). To ensure that the offer is only available to the appropriate tenants, be sure that your plans are marked as private. With a private plan, you can provide the subscription IDs for each tenant that you plan to onboard, and no one else will be able to get your offer.
 
-## <a name="terminology-notes"></a>Uwagi dotyczące terminologii
+## <a name="terminology-notes"></a>Terminology notes
 
-W przypadku zarządzania przez wiele dzierżawców w ramach przedsiębiorstwa odwołania do dostawców usług w dokumentacji usługi Azure Lighthouse można zrozumieć, aby zastosować je do dzierżawy zarządzającej w przedsiębiorstwie — czyli dzierżawcy obejmującej użytkowników, którzy będą zarządzać zasobami w innych dzierżawcach za pomocą delegowania zarządzania zasobami platformy Azure. Podobnie odwołania do klientów mogą być zrozumiałe dla dzierżawców, którzy delegowania zasobów do zarządzania przez użytkowników w dzierżawie zarządzającej.
+For cross-tenant management within the enterprise, references to service providers in the Azure Lighthouse documentation can be understood to apply to the managing tenant within an enterprise—that is, the tenant that includes the users who will manage resources in other tenants through Azure delegated resource management. Similarly, references to customers can be understood to apply to the tenants that are delegating resources to be managed through users in the managing tenant.
 
-Na przykład w powyższym przykładzie dzierżawca A może być uważana za dzierżawę dostawcy usług (dzierżawa zarządzająca) oraz dzierżawę B i dzierżawca C mogą być uważane za dzierżawców klientów.
+For instance, in the example described above, Tenant A can be thought of as the service provider tenant (the managing tenant) and Tenant B and Tenant C can be thought of as the customer tenants.
 
-W tym przykładzie Dzierżawca użytkownicy z odpowiednimi uprawnieniami mogą [wyświetlać delegowane zasoby i zarządzać nimi](../how-to/view-manage-customers.md) na stronie **moi klienci** w Azure Portal. Podobnie użytkownicy dzierżawy B i dzierżawy C z odpowiednimi uprawnieniami mogą [wyświetlać zasoby delegowane do dzierżawy i zarządzać nimi](../how-to/view-manage-service-providers.md) na stronie **dostawcy usług** w Azure Portal.
+In that example, Tenant A users with the appropriate permissions can [view and manage delegated resources](../how-to/view-manage-customers.md) in the **My customers** page of the Azure portal. Likewise, Tenant B and Tenant C users with the appropriate permissions can [view and manage the resources that have been delegated](../how-to/view-manage-service-providers.md) to Tenant A in the **Service providers** page of the Azure portal.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat [środowisk zarządzania między dzierżawcami](cross-tenant-management-experience.md).
+- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
 - Dowiedz się więcej o [zarządzaniu zasobami delegowanymi na platformie Azure](azure-delegated-resource-management.md).

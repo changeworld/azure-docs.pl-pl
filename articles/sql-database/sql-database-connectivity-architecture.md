@@ -1,6 +1,6 @@
 ---
-title: Architektura łączności
-description: W tym dokumencie opisano architekturę łączności usługi Azure SQL dla połączeń z bazą danych z platformy Azure lub spoza platformy Azure.
+title: Connectivity Architecture
+description: This document explains the Azure SQL connectivity architecture for database connections from within Azure or from outside of Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,61 +12,67 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: b3b735f7ee644bb017756f3d6378e625fa66d448
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0ac9247f5156eb1b766aec7403b2dc8473114659
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280789"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483721"
 ---
-# <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
+# <a name="azure-sql-connectivity-architecture"></a>Azure SQL Connectivity Architecture
 
-W tym artykule wyjaśniono Azure SQL Database i SQL Data Warehouse architekturę łączności, a także sposób, w jaki różne składniki działają w celu kierowania ruchu do wystąpienia usługi Azure SQL. Te składniki łączności umożliwiają kierowanie ruchu sieciowego do Azure SQL Database lub SQL Data Warehouse z klientami łączącymi się z poziomu platformy Azure i z klientami łączącymi się poza platformą Azure. W tym artykule przedstawiono również przykłady skryptów pozwalające zmienić sposób łączności oraz zagadnienia związane z zmianą domyślnych ustawień łączności.
+This article explains the Azure SQL Database and SQL Data Warehouse connectivity architecture as well as how the different components function to direct traffic to your instance of Azure SQL. These connectivity components function to direct network traffic to the Azure SQL Database or SQL Data Warehouse with clients connecting from within Azure and with clients connecting from outside of Azure. This article also provides script samples to change how connectivity occurs, and the considerations related to changing the default connectivity settings.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
 
-Na poniższym diagramie przedstawiono ogólne omówienie architektury łączności Azure SQL Database.
+The following diagram provides a high-level overview of the Azure SQL Database connectivity architecture.
 
-![Przegląd architektury](./media/sql-database-connectivity-architecture/connectivity-overview.png)
+![architecture overview](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
-W poniższych krokach opisano, jak nawiązać połączenie z bazą danych Azure SQL:
+The following steps describe how a connection is established to an Azure SQL database:
 
-- Klienci łączą się z bramą, która ma publiczny adres IP i nasłuchuje na porcie 1433.
-- Brama, w zależności od obowiązujących zasad połączenia, przekierowuje lub proxy ruchu do odpowiedniego klastra bazy danych.
-- Wewnątrz ruchu klastra bazy danych jest przekazywany do odpowiedniej bazy danych Azure SQL.
+- Clients connect to the gateway, that has a public IP address and listens on port 1433.
+- The gateway, depending on the effective connection policy, redirects or proxies the traffic to the right database cluster.
+- Inside the database cluster traffic is forwarded to the appropriate Azure SQL database.
 
-## <a name="connection-policy"></a>Zasady połączenia
+## <a name="connection-policy"></a>Connection policy
 
-Azure SQL Database obsługuje następujące trzy opcje dla ustawienia zasad połączenia serwera SQL Database:
+Azure SQL Database supports the following three options for the connection policy setting of a SQL Database server:
 
-- **Przekierowanie (zalecane):** Klienci nawiązują połączenia bezpośrednio z węzłem hostującym bazę danych. Aby włączyć łączność, klienci muszą zezwolić na wszystkie adresy IP platformy Azure w regionie przy użyciu grup zabezpieczeń sieci (sieciowej grupy zabezpieczeń) z [tagami usług](../virtual-network/security-overview.md#service-tags) dla portów 11000-11999, a nie tylko adresów ip bramy Azure SQL Database na porcie 1433. Ponieważ pakiety przejdą bezpośrednio do bazy danych, opóźnienia i przepływność zwiększają wydajność.
-- **Serwer proxy:** W tym trybie wszystkie połączenia są nawiązywane za pośrednictwem bram Azure SQL Database. Aby włączyć łączność, klient musi mieć reguły zapory dla ruchu wychodzącego, które zezwalają tylko na adresy IP bramy Azure SQL Database (zazwyczaj dwa adresy IP na region). Wybranie tego trybu może skutkować większym opóźnieniem i niższą przepływność, w zależności od rodzaju obciążenia. Zdecydowanie zalecamy stosowanie zasad połączenia `Redirect` w ramach zasad połączenia `Proxy` dla najmniejszego opóźnienia i najwyższej przepływności.
-- **Wartość domyślna:** Jest to zasada połączenia obowiązująca na wszystkich serwerach po utworzeniu, chyba że jawnie zmienisz zasady połączenia na `Proxy` lub `Redirect`. Obowiązujące zasady zależą od tego, czy połączenia pochodzą z platformy Azure (`Redirect`), czy poza platformą Azure (`Proxy`).
+- **Redirect (recommended):** Clients establish connections directly to the node hosting the database, leading to reduced latency and improved throughout. For connections to use this mode clients need to
+   - Allow inbound and outbound communication from the client to all Azure IP addresses in the region on ports in the range of 11000 11999.  
+   - Allow inbound and outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
 
-## <a name="connectivity-from-within-azure"></a>Łączność z poziomu platformy Azure
+- **Proxy:** In this mode, all connections are proxied via the Azure SQL Database gateways,leading to increased latency and reduced throughout. For connections to use this mode clients need to allow inbound and outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
 
-W przypadku łączenia się z poziomu platformy Azure połączenia mają domyślnie zasady połączenia `Redirect`. Zasady `Redirect` oznacza, że po nawiązaniu sesji protokołu TCP z usługą Azure SQL Database sesja klienta zostanie przekierowana do odpowiedniego klastra bazy danych z zmianą docelowego wirtualnego adresu IP z bramy Azure SQL Database Gateway do usługi hosta. Następnie wszystkie kolejne pakiety przepływają bezpośrednio do klastra, pomijając Azure SQL Database bramę. Na poniższym diagramie przedstawiono ten przepływ ruchu.
+- **Default:** This is the connection policy in effect on all servers after creation unless you explicitly alter the connection policy to either `Proxy` or `Redirect`. The default policy is`Redirect` for all client connections originating inside of Azure (e.g. from an Azure Virtual Machine) and `Proxy`for all client connections originating inside ( e.g. connections from your local workstation)
 
-![Przegląd architektury](./media/sql-database-connectivity-architecture/connectivity-azure.png)
+ We highly recommend the `Redirect` connection policy over the `Proxy` connection policy for the lowest latency and highest throughput.However, you will need to meet the additional requirements for allowing network traffic as outlined above. If the client is an Azure Virtual Machine you can accomplish this using Network Security Groups (NSG) with [service tags](../virtual-network/security-overview.md#service-tags). If the client is connecting from a workstation on-premises then you may need to work with your network admin to allow network traffic through your corporate firewall.
 
-## <a name="connectivity-from-outside-of-azure"></a>Łączność spoza platformy Azure
+## <a name="connectivity-from-within-azure"></a>Connectivity from within Azure
 
-Jeśli łączysz się z spoza systemu Azure, połączenia mają domyślnie zasady połączeń `Proxy`. Zasady `Proxy` oznacza, że sesja protokołu TCP jest ustanawiana za pośrednictwem bramy Azure SQL Database i wszystkie kolejne pakiety są przesyłane przez bramę. Na poniższym diagramie przedstawiono ten przepływ ruchu.
+If you are connecting from within Azure your connections have a connection policy of `Redirect` by default. A policy of `Redirect` means that after the TCP session is established to the Azure SQL database, the client session is then redirected to the right database cluster with a change to the destination virtual IP from that of the Azure SQL Database gateway to that of the cluster. Thereafter, all subsequent packets flow directly to the cluster, bypassing the Azure SQL Database gateway. The following diagram illustrates this traffic flow.
 
-![Przegląd architektury](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+![architecture overview](./media/sql-database-connectivity-architecture/connectivity-azure.png)
+
+## <a name="connectivity-from-outside-of-azure"></a>Connectivity from outside of Azure
+
+If you are connecting from outside Azure, your connections have a connection policy of `Proxy` by default. A policy of `Proxy` means that the TCP session is established via the Azure SQL Database gateway and all subsequent packets flow via the gateway. The following diagram illustrates this traffic flow.
+
+![architecture overview](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Dodatkowo Otwórz porty 14000-14999, aby umożliwić [nawiązywanie połączeń z DAC](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> Additionally open ports 14000-14999 to enable [Connecting with DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Adresy IP bramy usługi Azure SQL Database
 
-W poniższej tabeli przedstawiono adresy IP bram według regionów. Aby nawiązać połączenie z Azure SQL Database, musisz zezwolić na ruch sieciowy & ze **wszystkich** bram dla regionu.
+The table below lists the IP Addresses of Gateways by region. To connect to an Azure SQL Database, you need to allow network traffic to & from **all** Gateways for the region.
 
-Szczegóły dotyczące sposobu migrowania ruchu do nowych bram w określonych regionach znajdują się w następującym artykule: [Azure SQL Database migracji ruchu do nowszych bram](sql-database-gateway-migration.md)
+Details of how traffic shall be migrated to new Gateways in specific regions are in the following article: [Azure SQL Database traffic migration to newer Gateways](sql-database-gateway-migration.md)
 
 
-| Nazwa regionu          | Adresy IP bramy |
+| Nazwa regionu          | Gateway IP Addresses |
 | --- | --- |
 | Australia Środkowa    | 20.36.105.0 |
 | Australia Central2   | 20.36.113.0 |
@@ -82,10 +88,10 @@ Szczegóły dotyczące sposobu migrowania ruchu do nowych bram w określonych re
 | Chiny Północne 2        | 40.73.50.0         |
 | Azja Wschodnia            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | Wschodnie stany USA              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
-| Wschodnie stany USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
+| Wschodnie stany USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0,  191.239.224.107, 104.208.150.3 | 
 | Francja Środkowa       | 40.79.137.0, 40.79.129.1 |
 | Niemcy Środkowe      | 51.4.144.100       |
-| Niemcy Północne wschód   | 51.5.144.179       |
+| Germany North East   | 51.5.144.179       |
 | Indie Środkowe        | 104.211.96.159     |
 | Indie Południowe          | 104.211.224.146    |
 | Indie Zachodnie           | 104.211.160.80     |
@@ -93,36 +99,36 @@ Szczegóły dotyczące sposobu migrowania ruchu do nowych bram w określonych re
 | Japonia Zachodnia           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea Środkowa        | 52.231.32.42       |
 | Korea Południowa          | 52.231.200.86      |
-| Środkowo-północne stany USA     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
+| Północno-środkowe stany USA     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Europa Północna         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Północna Republika Południowej Afryki   | 102.133.152.0      |
 | Północna Republika Południowej Afryki    | 102.133.24.0       |
-| Środkowo-południowe stany USA     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
-| Azja Południowo-Wschodnia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
+| Południowo-środkowe stany USA     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
+| Azja Południowo-wschodnia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Środkowe Zjednoczone Emiraty Arabskie          | 20.37.72.64        |
 | Północne Zjednoczone Emiraty Arabskie            | 65.52.248.0        |
 | Południowe Zjednoczone Królestwo             | 51.140.184.11      |
 | Zachodnie Zjednoczone Królestwo              | 51.141.8.11        |
-| Środkowo-zachodnie stany USA      | 13.78.145.25       |
+| Zachodnio-środkowe stany USA      | 13.78.145.25       |
 | Europa Zachodnia          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | Zachodnie stany USA              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
 | Zachodnie stany USA 2            | 13.66.226.202      |
 |                      |                    |
 
-## <a name="change-azure-sql-database-connection-policy"></a>Zmień zasady połączenia Azure SQL Database
+## <a name="change-azure-sql-database-connection-policy"></a>Change Azure SQL Database connection policy
 
-Aby zmienić Azure SQL Database zasad połączenia dla serwera Azure SQL Database, użyj polecenia [poł-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) .
+To change the Azure SQL Database connection policy for an Azure SQL Database server, use the [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) command.
 
-- Jeśli zasady połączenia są ustawione na `Proxy`, wszystkie pakiety sieciowe będą przepływać przez bramę Azure SQL Database. Dla tego ustawienia należy zezwolić na ruch wychodzący tylko do Azure SQL Database IP bramy. Użycie ustawienia `Proxy` ma więcej opóźnień niż ustawienie `Redirect`.
-- Jeśli ustawienia zasad połączenia są skonfigurowane `Redirect`, wszystkie pakiety sieciowe będą przepływać bezpośrednio do klastra bazy danych. Dla tego ustawienia należy zezwolić na ruch wychodzący do wielu adresów IP.
+- If your connection policy is set to `Proxy`, all network packets flow via the Azure SQL Database gateway. For this setting, you need to allow outbound to only the Azure SQL Database gateway IP. Using a setting of `Proxy` has more latency than a setting of `Redirect`.
+- If your connection policy is setting `Redirect`, all network packets flow directly to the database cluster. For this setting, you need to allow outbound to multiple IPs.
 
-## <a name="script-to-change-connection-settings-via-powershell"></a>Skrypt służący do zmiany ustawień połączenia za pośrednictwem programu PowerShell
+## <a name="script-to-change-connection-settings-via-powershell"></a>Script to change connection settings via PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne. Poniższy skrypt wymaga [modułu Azure PowerShell](/powershell/azure/install-az-ps).
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
 
-Poniższy skrypt programu PowerShell przedstawia sposób zmiany zasad połączenia.
+The following PowerShell script shows how to change the connection policy.
 
 ```powershell
 # Get SQL Server ID
@@ -138,17 +144,17 @@ $id="$sqlserverid/connectionPolicies/Default"
 Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ```
 
-## <a name="script-to-change-connection-settings-via-azure-cli"></a>Skrypt służący do zmiany ustawień połączenia za pośrednictwem interfejsu wiersza polecenia platformy Azure
+## <a name="script-to-change-connection-settings-via-azure-cli"></a>Script to change connection settings via Azure CLI
 
 > [!IMPORTANT]
-> Ten skrypt wymaga [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+> This script requires the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-### <a name="azure-cli-in-a-bash-shell"></a>Interfejs wiersza polecenia platformy Azure w powłoce bash
+### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in a bash shell
 
 > [!IMPORTANT]
-> Ten skrypt wymaga [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+> This script requires the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Poniższy skrypt interfejsu wiersza polecenia przedstawia sposób zmiany zasad połączenia w powłoce bash.
+The following CLI script shows how to change the connection policy in a bash shell.
 
 ```azurecli-interactive
 # Get SQL Server ID
@@ -164,12 +170,12 @@ az resource show --ids $ids
 az resource update --ids $ids --set properties.connectionType=Proxy
 ```
 
-### <a name="azure-cli-from-a-windows-command-prompt"></a>Interfejs wiersza polecenia platformy Azure z wiersza poleceń systemu Windows
+### <a name="azure-cli-from-a-windows-command-prompt"></a>Azure CLI from a Windows command prompt
 
 > [!IMPORTANT]
-> Ten skrypt wymaga [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+> This script requires the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Poniższy skrypt interfejsu wiersza polecenia pokazuje, w jaki sposób zmienić zasady połączenia z wiersza poleceń systemu Windows (z zainstalowanym interfejsem CLI platformy Azure).
+The following CLI script shows how to change the connection policy from a Windows command prompt (with Azure CLI installed).
 
 ```azurecli
 # Get SQL Server ID and set URI
@@ -184,6 +190,6 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać informacje na temat zmiany Azure SQL Database zasad połączenia dla serwera Azure SQL Database, zobacz Connection [-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
-- Aby uzyskać informacje dotyczące zachowania Azure SQL Database połączenia dla klientów korzystających z ADO.NET 4,5 lub nowszej wersji, zobacz [porty wykraczające poza 1433 dla ADO.NET 4,5](sql-database-develop-direct-route-ports-adonet-v12.md).
-- Ogólne informacje dotyczące opracowywania aplikacji można znaleźć w temacie [Omówienie tworzenia aplikacji SQL Database](sql-database-develop-overview.md).
+- For information on how to change the Azure SQL Database connection policy for an Azure SQL Database server, see [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- For information about Azure SQL Database connection behavior for clients that use ADO.NET 4.5 or a later version, see [Ports beyond 1433 for ADO.NET 4.5](sql-database-develop-direct-route-ports-adonet-v12.md).
+- For general application development overview information, see [SQL Database Application Development Overview](sql-database-develop-overview.md).

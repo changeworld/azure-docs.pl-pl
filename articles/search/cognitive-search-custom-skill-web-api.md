@@ -1,28 +1,28 @@
 ---
-title: Niestandardowa umiejętność interfejsu API sieci Web w programie umiejętności
+title: Custom Web API skill in skillsets
 titleSuffix: Azure Cognitive Search
-description: Zwiększaj możliwości usługi Azure Wyszukiwanie poznawcze umiejętności, wywołując do interfejsów API sieci Web. Za pomocą niestandardowej funkcji interfejsu API sieci Web Zintegruj swój kod niestandardowy.
+description: Extend capabilities of Azure Cognitive Search skillsets by calling out to Web APIs. Use the Custom Web API skill to integrate your custom code.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113793"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484111"
 ---
-# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Niestandardowa umiejętność interfejsu API sieci Web w potoku wzbogacenia Wyszukiwanie poznawcze platformy Azure
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Custom Web API skill in an Azure Cognitive Search enrichment pipeline
 
-Niestandardowa umiejętność **interfejsu API sieci Web** umożliwia zwiększenie wzbogacenia AI przez wywołanie do punktu końcowego internetowego interfejsu API dostarczającego operacje niestandardowe. Podobnie jak w przypadku wbudowanych umiejętności, **niestandardowa umiejętność interfejsu API sieci Web** ma dane wejściowe i wyjściowe. W zależności od danych wejściowych internetowy interfejs API odbiera ładunek JSON podczas uruchamiania indeksatora i wyprowadza ładunek JSON jako odpowiedź wraz z kodem stanu sukcesu. Oczekiwano, że odpowiedź będzie miała dane wyjściowe określone przez niestandardową umiejętność. Jakakolwiek inna odpowiedź jest traktowana jako błąd i nie są wykonywane żadne wzbogacania.
+The **Custom Web API** skill allows you to extend AI enrichment by calling out to a Web API endpoint providing custom operations. Similar to built-in skills, a **Custom Web API** skill has inputs and outputs. Depending on the inputs, your Web API receives a JSON payload when the indexer runs, and outputs a JSON payload as a response, along with a success status code. The response is expected to have the outputs specified by your custom skill. Any other response is considered an error and no enrichments are performed.
 
-Struktura ładunków JSON została opisana w dalszej części tego dokumentu.
+The structure of the JSON payloads are described further down in this document.
 
 > [!NOTE]
-> Indeksator zostanie dwukrotnie ponowiony dla niektórych standardowych kodów stanu HTTP zwróconych z internetowego interfejsu API. Kody stanu HTTP: 
+> The indexer will retry twice for certain standard HTTP status codes returned from the Web API. These HTTP status codes are: 
 > * `502 Bad Gateway`
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
@@ -30,29 +30,29 @@ Struktura ładunków JSON została opisana w dalszej części tego dokumentu.
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Custom.WebApiSkill
 
-## <a name="skill-parameters"></a>Parametry umiejętności
+## <a name="skill-parameters"></a>Skill parameters
 
-W parametrach jest rozróżniana wielkość liter.
+Parameters are case-sensitive.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| adresu | Identyfikator URI internetowego interfejsu API, do którego zostanie wysłany ładunek _JSON_ . Dozwolony jest tylko schemat URI **https** |
-| httpMethod | Metoda do użycia podczas wysyłania ładunku. Dozwolone metody to `PUT` lub `POST` |
-| httpHeaders | Kolekcja par klucz-wartość, gdzie klucze reprezentują nazwy i wartości nagłówków, reprezentujące wartości nagłówka, które będą wysyłane do internetowego interfejsu API wraz z ładunkiem. Następujące nagłówki nie są dozwolone w tej kolekcji: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
-| timeout | Obowiązkowe Gdy ta wartość jest określona, wskazuje limit czasu dla klienta http wykonującego wywołanie interfejsu API. Musi być sformatowana jako wartość XSD "dayTimeDuration" (ograniczony podzbiór wartości [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Na przykład `PT60S` przez 60 sekund. Jeśli nie zostanie ustawiona, zostanie wybrana wartość domyślna wynosząca 30 sekund. Limit czasu można ustawić na maksymalnie 230 sekund i co najmniej 1 sekundę. |
-| batchSize | Obowiązkowe Wskazuje, ile "rekordów danych" (patrz struktura ładunku _JSON_ poniżej) zostanie wysłana na wywołanie interfejsu API. Jeśli nie zostanie ustawiona, zostanie wybrana wartość domyślna 1000. Zalecamy użycie tego parametru, aby osiągnąć odpowiednią kompromis między indeksowaniem przepływności i obciążeniem interfejsu API |
-| degreeOfParallelism | Obowiązkowe Gdy ta wartość jest określona, wskazuje liczbę wywołań, które indeksator wykona równolegle do określonego punktu końcowego. Możesz zmniejszyć tę wartość, jeśli punkt końcowy kończy się niepowodzeniem z zbyt dużą liczbą żądań lub zgłoś go, jeśli punkt końcowy jest w stanie zaakceptować więcej żądań i chcesz zwiększyć wydajność indeksatora.  Jeśli nie zostanie ustawiona, zostanie użyta wartość domyślna 5. Dla degreeOfParallelism można ustawić maksymalnie 10 i co najmniej 1. |
+| uri | The URI of the Web API to which the _JSON_ payload will be sent. Only **https** URI scheme is allowed |
+| httpMethod | The method to use while sending the payload. Allowed methods are `PUT` or `POST` |
+| httpHeaders | A collection of key-value pairs where the keys represent header names and values represent header values that will be sent to your Web API along with the payload. The following headers are prohibited from being in this collection:  `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
+| timeout | (Optional) When specified, indicates the timeout for the http client making the API call. It must be formatted as an XSD "dayTimeDuration" value (a restricted subset of an [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) value). For example, `PT60S` for 60 seconds. If not set, a default value of 30 seconds is chosen. The timeout can be set to a maximum of 230 seconds and a minimum of 1 second. |
+| batchSize | (Optional) Indicates how many "data records" (see _JSON_ payload structure below) will be sent per API call. If not set, a default of 1000 is chosen. We recommend that you make use of this parameter to achieve a suitable tradeoff between indexing throughput and load on your API |
+| degreeOfParallelism | (Optional) When specified, indicates the number of calls the indexer will make in parallel to the endpoint you have provided. You can decrease this value if your endpoint is failing under too high of a request load, or raise it if your endpoint is able to accept more requests and you would like an increase in the performance of the indexer.  If not set, a default value of 5 is used. The degreeOfParallelism can be set to a maximum of 10 and a minimum of 1. |
 
-## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
+## <a name="skill-inputs"></a>Skill inputs
 
-Brak "wstępnie zdefiniowanych" danych wejściowych dla tej umiejętności. Można wybrać jedno lub więcej pól, które będą już dostępne w momencie wykonywania tego umiejętności, ponieważ dane wejściowe i ładunek _JSON_ wysyłane do internetowego interfejsu API będą mieć różne pola.
+There are no "predefined" inputs for this skill. You can choose one or more fields that would be already available at the time of this skill's execution as inputs and the _JSON_ payload sent to the Web API will have different fields.
 
-## <a name="skill-outputs"></a>Wyniki umiejętności
+## <a name="skill-outputs"></a>Skill outputs
 
-Brak "wstępnie zdefiniowanych" danych wyjściowych dla tej umiejętności. W zależności od odpowiedzi zwracanej przez internetowy interfejs API Dodaj pola wyjściowe, aby można je było pobrać z odpowiedzi _JSON_ .
+There are no "predefined" outputs for this skill. Depending on the response your Web API will return, add output fields so that they can be picked up from the _JSON_ response.
 
 
-## <a name="sample-definition"></a>Definicja Przykładowa
+## <a name="sample-definition"></a>Sample definition
 
 ```json
   {
@@ -82,15 +82,15 @@ Brak "wstępnie zdefiniowanych" danych wyjściowych dla tej umiejętności. W za
         ]
       }
 ```
-## <a name="sample-input-json-structure"></a>Przykładowa wejściowa struktura JSON
+## <a name="sample-input-json-structure"></a>Sample input JSON structure
 
-Ta struktura _JSON_ reprezentuje ładunek, który zostanie wysłany do internetowego interfejsu API.
-Zawsze będą przestrzegane następujące ograniczenia:
+This _JSON_ structure represents the payload that will be sent to your Web API.
+It will always follow these constraints:
 
-* Jednostka najwyższego poziomu jest nazywana `values` i będzie tablicą obiektów. Liczba takich obiektów będzie największa `batchSize`
-* Każdy obiekt w tablicy `values` będzie miał
-    * Właściwość `recordId`, która jest **unikatowym** ciągiem używanym do identyfikowania tego rekordu.
-    * Właściwość `data`, która jest obiektem _JSON_ . Pola właściwości `data` będą odpowiadać nazwie "names" określonej w sekcji `inputs` definicji umiejętności. Wartość tych pól będzie się znajdować na podstawie `source` tych pól (które mogą pochodzić z pola w dokumencie lub potencjalnie z innej umiejętności)
+* The top-level entity is called `values` and will be an array of objects. The number of such objects will be at most the `batchSize`
+* Each object in the `values` array will have
+    * A `recordId` property that is a **unique** string, used to identify that record.
+    * A `data` property that is a _JSON_ object. The fields of the `data` property will correspond to the "names" specified in the `inputs` section of the skill definition. The value of those fields will be from the `source` of those fields (which could be from a field in the document, or potentially from another skill)
 
 ```json
 {
@@ -135,18 +135,18 @@ Zawsze będą przestrzegane następujące ograniczenia:
 }
 ```
 
-## <a name="sample-output-json-structure"></a>Przykładowa wyjściowa struktura JSON
+## <a name="sample-output-json-structure"></a>Sample output JSON structure
 
-"Wynik" odpowiada odpowiedzi zwróconej przez internetowy interfejs API. Internetowy interfejs API powinien zwrócić ładunek _JSON_ (zweryfikowany, przeglądając nagłówek odpowiedzi `Content-Type`) i powinien spełniać następujące ograniczenia:
+The "output" corresponds to the response returned from your Web API. The Web API should only return a _JSON_ payload (verified by looking at the `Content-Type` response header) and should satisfy the following constraints:
 
-* Powinna istnieć jednostka najwyższego poziomu o nazwie `values`, która powinna być tablicą obiektów.
-* Liczba obiektów w tablicy powinna być taka sama jak liczba obiektów wysyłanych do internetowego interfejsu API.
-* Każdy obiekt powinien mieć:
-   * Właściwość `recordId`
-   * Właściwość `data`, która jest obiektem, w którym pola są wzbogacane pasujące do "names" w `output` i którego wartość jest uważana za wzbogacanie.
-   * Właściwość `errors`, tablica zawierająca wszystkie napotkane błędy, które zostaną dodane do historii wykonywania indeksatora. Ta właściwość jest wymagana, ale może mieć wartość `null`.
-   * Właściwość `warnings`, tablica zawierająca wszystkie wykryte ostrzeżenia, które zostaną dodane do historii wykonywania indeksatora. Ta właściwość jest wymagana, ale może mieć wartość `null`.
-* Obiekty w tablicy `values` nie muszą znajdować się w tej samej kolejności, co obiekty w tablicy `values` wysyłane jako żądanie do internetowego interfejsu API. Jednak `recordId` jest używany do korelacji, dlatego każdy rekord w odpowiedzi zawierający `recordId`, która nie jest częścią oryginalnego żądania do internetowego interfejsu API, zostanie odrzucony.
+* There should be a top-level entity called `values` which should be an array of objects.
+* The number of objects in the array should be the same as the number of objects sent to the Web API.
+* Each object should have:
+   * A `recordId` property
+   * A `data` property, which is an object where the fields are enrichments matching the "names" in the `output` and whose value is considered the enrichment.
+   * An `errors` property, an array listing any errors encountered that will be added to the indexer execution history. This property is required, but can have a `null` value.
+   * A `warnings` property, an array listing any warnings encountered that will be added to the indexer execution history. This property is required, but can have a `null` value.
+* The objects in the `values` array need not be in the same order as the objects in the `values` array sent as a request to the Web API. However, the `recordId` is used for correlation so any record in the response containing a `recordId` which was not part of the original request to the Web API will be discarded.
 
 ```json
 {
@@ -193,16 +193,16 @@ Zawsze będą przestrzegane następujące ograniczenia:
 
 ```
 
-## <a name="error-cases"></a>Przypadki błędów
-Oprócz nieprawidłowego interfejsu API sieci Web lub wysyłania kodów stanu, które nie zostały pomyślnie, są uważane za błędne przypadki:
+## <a name="error-cases"></a>Error cases
+In addition to your Web API being unavailable, or sending out non-successful status codes the following are considered erroneous cases:
 
-* Jeśli internetowy interfejs API zwraca kod stanu sukcesu, ale odpowiedź wskazuje, że nie jest `application/json`, odpowiedź jest uznawana za nieprawidłową i nie zostaną wykonane żadne wzbogacania.
-* Jeśli istnieją **nieprawidłowe** (z `recordId` nie w oryginalnym żądaniu lub ze zduplikowanymi wartościami) w tablicy odpowiedzi `values`, dla **tych** rekordów nie zostanie wykonane wzbogacanie.
+* If the Web API returns a success status code but the response indicates that it is not `application/json` then the response is considered invalid and no enrichments will be performed.
+* If there are **invalid** (with `recordId` not in the original request, or with duplicate values) records in the response `values` array, no enrichment will be performed for **those** records.
 
-W przypadku niedostępności internetowego interfejsu API lub zwrócenie błędu HTTP, przyjazny błąd ze wszystkimi dostępnymi szczegółami dotyczącymi błędu HTTP zostanie dodany do historii wykonywania indeksatora.
+For cases when the Web API is unavailable or returns a HTTP error, a friendly error with any available details about the HTTP error will be added to the indexer execution history.
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
-+ [Dodaj niestandardową umiejętność do potoku wzbogacania AI](cognitive-search-custom-skill-interface.md)
-+ [Przykład: Tworzenie niestandardowej umiejętności dla wzbogacania AI (poznawcze — wyszukiwanie-tworzenie-niestandardowe-umiejętność-example.md)
++ [How to define a skillset](cognitive-search-defining-skillset.md)
++ [Add custom skill to an AI enrichment pipeline](cognitive-search-custom-skill-interface.md)
++ [Example: Creating a custom skill for AI enrichment](cognitive-search-create-custom-skill-example.md)

@@ -1,14 +1,14 @@
 ---
-title: Przykładowa — użycie sieci wirtualnej na liście interfejsów sieciowych maszyn wirtualnych
-description: Te przykładowe definicje zasad wymagają używania zatwierdzonej sieci wirtualnej przez interfejsy sieciowe.
+title: Sample - Use listed vNet for VM network interfaces
+description: This sample policy definition requires that network interfaces use an approved virtual network defined in a parameter.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 64414f3c52da0c1368898abb5d032b3a728b2bda
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 367edbe2f127c363a19e345f7d55ba125006c999
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076138"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463093"
 ---
 # <a name="sample---use-approved-vnet-for-vm-network-interfaces"></a>Przykład — Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
 
@@ -24,7 +24,7 @@ Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdróż przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-vnet%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-vnet%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -65,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

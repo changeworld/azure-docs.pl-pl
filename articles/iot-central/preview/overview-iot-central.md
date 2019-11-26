@@ -1,6 +1,6 @@
 ---
 title: Co to jest usługa Azure IoT Central | Microsoft Docs
-description: Azure IoT Central to platforma aplikacji IoT, która upraszcza tworzenie rozwiązań IoT i pomaga w zmniejszeniu obciążenia i kosztów operacji zarządzania IoT oraz rozwoju. Ten artykuł zawiera omówienie funkcji usługi Azure IoT Central.
+description: Azure IoT Central is an IoT application platform that simplifies the creation of IoT solutions and helps to reduce the burden and cost of IoT management operations, and development. Ten artykuł zawiera omówienie funkcji usługi Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/12/2019
@@ -9,104 +9,104 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 5e84b8777fc7671a19b6d8974f1309eb5af35bd3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048012"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479711"
 ---
-# <a name="what-is-azure-iot-central-preview-features"></a>Co to jest usługa Azure IoT Central (funkcje w wersji zapoznawczej)?
+# <a name="what-is-azure-iot-central-preview-features"></a>What is Azure IoT Central (preview features)?
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 > [!WARNING]
-> Możliwości [Plug and Play IoT](../../iot-pnp/overview-iot-plug-and-play.md) na platformie Azure IoT Central są obecnie dostępne w publicznej wersji zapoznawczej. Nie należy używać [szablonu aplikacji](../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) IoT Central Plug and Play IoT na potrzeby obciążeń produkcyjnych. W przypadku środowisk produkcyjnych używana jest aplikacja IoT Central utworzona na podstawie bieżącego, ogólnie dostępnego [szablonu aplikacji](../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
+> The [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) capabilities in Azure IoT Central are currently in public preview. Don't use an IoT Plug and Play enabled IoT Central [application template](../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) for production workloads. For production environments use an IoT central application created from a current, generally available, [application template](../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
 
-IoT Central to platforma aplikacji IoT, która zmniejsza obciążenie i koszty tworzenia i obsługi rozwiązań IoT klasy korporacyjnej oraz zarządzania nimi. Wybranie opcji kompilowania przy użyciu IoT Central umożliwia skoncentrowanie się na czasie, pieniędzy i energii na transformacje swojej firmy z danymi IoT, a nie tylko utrzymaniem i aktualizacją złożonej i ciągle rosnącej infrastruktury IoT.
+IoT Central is an IoT application platform that reduces the burden and cost of developing, managing, and maintaining enterprise-grade IoT solutions. Choosing to build with IoT Central gives you the opportunity to focus time, money, and energy on transforming your business with IoT data, rather than just maintaining and updating a complex and continually evolving IoT infrastructure.
 
-Interfejs użytkownika sieci Web umożliwia monitorowanie warunków urządzenia, tworzenie reguł oraz zarządzanie milionami urządzeń i ich danych w całym cyklu życia. Ponadto umożliwia ona działanie w usłudze Device Insights poprzez rozszerzenie usługi IoT Intelligence na aplikacje biznesowe.
+The web UI lets you monitor device conditions, create rules, and manage millions of devices and their data throughout their life cycle. Furthermore, it enables you to act on device insights by extending IoT intelligence into line-of-business applications.
 
-Ten artykuł zawiera opis IoT Central:
+This article outlines, for IoT Central:
 
 - Typowe osoby skojarzone z projektem
 - Tworzenie aplikacji
 - Łączenie urządzeń z aplikacją
 - Zarządzanie aplikacją
-- Możliwości Azure IoT Edge w IoT Central.
-- Jak podłączyć urządzenia obsługiwane przez środowisko uruchomieniowe Azure IoT Edge do aplikacji.
+- Azure IoT Edge capabilities in IoT Central.
+- How to connect your Azure IoT Edge runtime powered devices to your application.
 
 ## <a name="known-issues"></a>Znane problemy
 
 > [!Note]
-> Te znane problemy dotyczą tylko aplikacji IoT Central w wersji zapoznawczej.
+> These known issues only apply to the IoT Central preview applications.
 
-- Reguły nie obsługują wszystkich akcji (tylko wiadomości e-mail).
-- W przypadku typów złożonych — reguły, analiza i grupy urządzeń nie są obsługiwane.
-- Ciągły eksport danych nie obsługuje formatu Avro (niezgodność).
-- Symulowane urządzenia nie obsługują wszystkich typów złożonych.
-- GEOJSON nie jest obecnie obsługiwany.
-- Kafelek mapy nie jest obecnie obsługiwany.
-- Zadania nie obsługują typów złożonych.
-- Typy schematów tablicy nie są obsługiwane.
-- Eksportowanie szablonu aplikacji i kopiowanie aplikacji nie są obsługiwane.
-- Obsługiwane są tylko zestawy SDK dla urządzeń C i Node. js.
-- Jest on dostępny tylko w regionach Europy Północnej i środkowe stany USA.
-- Modele możliwości urządzeń muszą mieć wszystkie interfejsy zdefiniowane wewnętrznie w tym samym pliku.
+- Rules don't support all actions (only email).
+- For complex types - rules, analytics, and device groups aren't supported.
+- Continuous data export doesn't support the Avro format (incompatibility).
+- Simulated devices don't support all complex types.
+- GeoJSON isn't currently supported.
+- Map tile isn't currently supported.
+- Jobs don't support complex types.
+- Array schema types aren't supported.
+- Application template export and application copy aren't supported.
+- Only the C device SDK and the Node.js device and service SDKs are supported.
+- It's only available in the United States and Europe locations.
+- Device capability models must have all the interfaces defined inline in the same file.
 
 ## <a name="personas"></a>Osoby
 
-Dokumentacja IoT Central obejmuje cztery osób, którzy współpracują z aplikacją IoT Central:
+The IoT Central documentation refers to four personas who interact with an IoT Central application:
 
-- _Konstruktor rozwiązań_ jest odpowiedzialny za Definiowanie typów urządzeń łączących się z aplikacją i dostosowywania aplikacji dla operatora.
+- A _solution builder_ is responsible for defining the types of devices that connect to the application and customizing the application for the operator.
 - _Operator_ zarządza urządzeniami połączonymi z aplikacją.
-- _Administrator_ jest odpowiedzialny za zadania administracyjne, takie jak zarządzanie [rolami i uprawnieniami użytkownika](howto-administer.md) w aplikacji.
-- _Deweloper urządzenia_ tworzy kod, który jest uruchamiany na urządzeniu lub IoT Edge module podłączonym do aplikacji.
+- An _administrator_ is responsible for administrative tasks such as managing [user roles and permissions](howto-administer.md) within the application.
+- A _device developer_ creates the code that runs on a device or IoT Edge module connected to your application.
 
-## <a name="create-your-iot-central-application"></a>Tworzenie aplikacji IoT Central
+## <a name="create-your-iot-central-application"></a>Create your IoT Central application
 
-Jako Konstruktor rozwiązań możesz utworzyć niestandardowe rozwiązanie IoT hostowane w chmurze dla swojej organizacji za pomocą IoT Central. Niestandardowe rozwiązanie IoT zwykle obejmuje następujące elementy:
+As a solution builder, you use IoT Central to create a custom, cloud-hosted IoT solution for your organization. Niestandardowe rozwiązanie IoT zwykle obejmuje następujące elementy:
 
 - Aplikacja oparta na chmurze, która odbiera dane telemetryczne z urządzeń i umożliwia zarządzanie tymi urządzeniami.
 - Wiele urządzeń z uruchomionym niestandardowym kodem połączonych z aplikacją opartą na chmurze.
 
-Możesz szybko wdrożyć nową aplikację IoT Central, a następnie dostosować ją do określonych wymagań w przeglądarce. Jako Konstruktor rozwiązań można utworzyć _szablon urządzenia_ dla urządzeń, które łączą się z aplikacją za pomocą narzędzi sieci Web. Szablon urządzenia to plan, który definiuje charakterystykę i zachowanie typu urządzenia, takiego jak:
+You can quickly deploy a new IoT Central application and then customize it to your specific requirements in your browser. As a solution builder, you use the web-based tools to create a _device template_ for the devices that connect to your application. A device template is the blueprint that defines the characteristics and behavior of a type of device such as the:
 
-- Dane telemetryczne wysyłane przez nią.
+- Telemetry it sends.
 - Właściwości biznesowe, które może modyfikować operator.
 - Właściwości urządzenia ustawiane przez urządzenie, które są tylko do odczytu w aplikacji.
-- Właściwości, które są ustawiane przez operator, które określają zachowanie urządzenia.
+- Properties, that an operator sets, that determine the behavior of the device.
 
-Ten szablon urządzenia obejmuje następujące:
+This device template includes:
 
-- _Model możliwości urządzenia_ , który opisuje możliwości implementowane przez urządzenie, takie jak dane telemetryczne, które wysyła, oraz właściwości, które zgłasza.
-- Właściwości chmury, które nie są przechowywane na urządzeniu.
-- Dostosowania, pulpity nawigacyjne i formularze, które są częścią aplikacji IoT Central.
+- A _device capability model_ that describes the capabilities a device should implement such as the telemetry it sends and the properties it reports.
+- Cloud properties that aren't stored on the device.
+- Customizations, dashboards, and forms that are part of your IoT Central application.
 
-### <a name="create-device-templates"></a>Tworzenie szablonów urządzeń
+### <a name="create-device-templates"></a>Create device templates
 
-[Plug and Play IoT](../../iot-pnp/overview-iot-plug-and-play.md) umożliwia IoT Central integrację urządzeń bez konieczności pisania kodu urządzenia osadzonego. Na początku Plug and Play IoT jest schemat modelu możliwości urządzenia, który opisuje możliwości urządzeń. W aplikacji IoT Central w wersji zapoznawczej szablony urządzeń używają tych modeli możliwości urządzeń Plug and Play IoT.
+[IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) enables IoT Central to integrate devices without you writing any embedded device code. At the core of IoT Plug and Play, is a device capability model schema that describes device capabilities. In an IoT Central preview application, device templates use these IoT Plug and Play device capability models.
 
-Jako Konstruktor rozwiązań masz kilka opcji tworzenia szablonów urządzeń:
+As a solution builder, you have several options for creating device templates:
 
-- Zaprojektuj szablon urządzenia w IoT Central a następnie Zaimplementuj jego model możliwości urządzenia w kodzie urządzenia.
-- Zaimportuj model możliwości urządzenia z [wykazu urządzeń z certyfikatem platformy Azure dla IoT](https://aka.ms/iotdevcat) , a następnie Dodaj wszystkie właściwości, dostosowania i pulpity nawigacyjne, których potrzebuje IoT Central aplikacji.
-- Utwórz model możliwości urządzenia przy użyciu programu Visual Studio Code. Zaimplementuj swój kod urządzenia z modelu i Połącz urządzenie z aplikacją IoT Central. IoT Central odnajduje model możliwości urządzenia z repozytorium i tworzy prosty szablon urządzenia.
-- Utwórz model możliwości urządzenia przy użyciu programu Visual Studio Code. Zaimplementuj swój kod urządzenia z modelu. Ręcznie zaimportuj model możliwości urządzenia do aplikacji IoT Central, a następnie Dodaj wszystkie właściwości, dostosowania i pulpity nawigacyjne, których potrzebuje aplikacja IoT Central.
+- Design the device template in IoT Central and then implement its device capability model in your device code.
+- Import a device capability model from the [Azure Certified for IoT device catalog](https://aka.ms/iotdevcat) and then add any cloud properties, customizations, and dashboards your IoT Central application needs.
+- Create a device capability model using Visual Studio code. Implement your device code from the model, and connect your device to your IoT Central application. IoT Central finds the device capability model from a repository and creates a simple device template for you.
+- Create a device capability model using Visual Studio code. Implement your device code from the model. Manually import the device capability model into your IoT Central application and then add any cloud properties, customizations, and dashboards your IoT Central application needs.
 
-Jako Konstruktor rozwiązań możesz użyć IoT Central do wygenerowania kodu dla urządzeń testowych, aby sprawdzić poprawność szablonów urządzeń.
+As a solution builder, you can use IoT Central to generate code for test devices to validate your device templates.
 
 ### <a name="customize-the-ui"></a>Dostosowywanie interfejsu użytkownika
 
-Jako Konstruktor rozwiązań można także dostosować interfejs użytkownika aplikacji IoT Central dla operatorów, którzy są odpowiedzialni za codzienne korzystanie z aplikacji. Dostępne są dostosowania dostępne w konstruktorze rozwiązań:
+As a solution builder, you can also customize the IoT Central application UI for the operators who are responsible for the day-to-day use of the application. Customizations that a solution builder can make include:
 
 - Definiowanie układu właściwości i ustawień w szablonie urządzenia.
 - Konfigurowanie niestandardowych pulpitów nawigacyjnych ułatwiających operatorom odnajdywanie szczegółowych informacji i szybsze rozwiązywanie problemów.
 - Konfigurowanie niestandardowych analiz w celu eksplorowania danych serii czasu na połączonych urządzeniach.
 
-## <a name="connect-your-devices"></a>Łączenie urządzeń
+## <a name="connect-your-devices"></a>Podłącz swoje urządzenia
 
-Po zdefiniowaniu przez konstruktora typów urządzeń, które mogą łączyć się z aplikacją, deweloper urządzenia tworzy kod do uruchamiania na urządzeniach. Deweloper urządzenia tworzy kod urządzenia przy użyciu zestawów [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) typu „open source” firmy Microsoft. Te zestawy SDK mają szeroką obsługę języków, platform i protokołów, aby sprostać potrzebom do łączenia urządzeń z aplikacją IoT Central. Zestawy SDK ułatwiają zaimplementowanie następujących możliwości urządzeń:
+Po zdefiniowaniu przez konstruktora typów urządzeń, które mogą łączyć się z aplikacją, deweloper urządzenia tworzy kod do uruchamiania na urządzeniach. Deweloper urządzenia tworzy kod urządzenia przy użyciu zestawów [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) typu „open source” firmy Microsoft. These SDKs have broad language, platform, and protocol support to meet your needs to connect your devices to your IoT Central application. The SDKs help you implement the following device capabilities:
 
 - Tworzenie bezpiecznego połączenia
 - Wysyłanie danych telemetrycznych
@@ -115,9 +115,9 @@ Po zdefiniowaniu przez konstruktora typów urządzeń, które mogą łączyć si
 
 Aby uzyskać więcej informacji, zobacz wpis w blogu [Benefits of using the Azure IoT SDKs, and pitfalls to avoid if you don't](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/).
 
-### <a name="azure-iot-edge-devices"></a>Urządzenia w usłudze Azure IoT Edge
+### <a name="azure-iot-edge-devices"></a>Azure IoT Edge devices
 
-A także urządzeń utworzonych przy użyciu [zestawów SDK usługi Azure IoT](https://github.com/Azure/azure-iot-sdks), można również łączyć [Azure IoT Edge urządzeń](../../iot-edge/about-iot-edge.md) z aplikacją IoT Central. Azure IoT Edge umożliwia uruchamianie analizy chmurowej i logiki niestandardowej bezpośrednio na urządzeniach IoT zarządzanych przez IoT Central. Środowisko uruchomieniowe IoT Edge umożliwia:
+As well as devices created using the [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks), you can also connect [Azure IoT Edge devices](../../iot-edge/about-iot-edge.md) to an IoT Central application. Azure IoT Edge lets you run cloud intelligence and custom logic directly on IoT devices managed by IoT Central. The IoT Edge runtime enables you to:
 
 - Instaluje i aktualizuje pakiety robocze na urządzeniu.
 - Utrzymuje standardy zabezpieczeń usługi Azure IoT Edge na urządzeniu.
@@ -125,28 +125,32 @@ A także urządzeń utworzonych przy użyciu [zestawów SDK usługi Azure IoT](h
 - Przesyła raporty o kondycji modułów do chmury na potrzeby zdalnego monitorowania.
 - Zarządza komunikacją między podrzędnymi urządzeniami liścia usługi IoT Edge, między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem usługi IoT Edge a chmurą.
 
-Aby uzyskać więcej informacji, zobacz [Azure IoT Edge urządzeń i IoT Central](./concepts-architecture.md#azure-iot-edge-devices).
+For more information, see [Azure IoT Edge devices and IoT Central](./concepts-architecture.md#azure-iot-edge-devices).
 
 ## <a name="manage-your-application"></a>Zarządzanie aplikacją
 
-Aplikacje IoT Central są w pełni hostowane przez firmę Microsoft, co zmniejsza koszty administracyjne związane z zarządzaniem aplikacjami.
+IoT Central applications are fully hosted by Microsoft, which reduces the administration overhead of managing your applications.
 
-Jako operator korzystasz z aplikacji IoT Central do zarządzania urządzeniami w rozwiązaniu IoT Central. Operatory wykonywania zadań, takich jak:
+As an operator, you use the IoT Central application to manage the devices in your IoT Central solution. Operators do tasks such as:
 
 - Monitorowanie urządzeń połączonych z aplikacją
 - Rozwiązywanie i korygowanie problemów z urządzeniami
 - Aprowizowanie nowych urządzeń
 
-Jako Konstruktor rozwiązań można definiować niestandardowe reguły i akcje, które działają w ramach przesyłania strumieniowego danych z połączonych urządzeń. Operator może włączyć lub wyłączyć te reguły na poziomie urządzenia, aby kontrolować i automatyzować zadania w aplikacji.
+As a solution builder, you can define custom rules and actions that operate over data streaming from connected devices. Operator może włączyć lub wyłączyć te reguły na poziomie urządzenia, aby kontrolować i automatyzować zadania w aplikacji.
 
-Administratorzy zarządzają dostępem do aplikacji przy użyciu [ról i uprawnień użytkownika](howto-administer.md).
+Administrators manage access to your application with [user roles and permissions](howto-administer.md).
+
+## <a name="quotas"></a>Przydziały
+
+Each Azure subscription has default quotas that could impact the scope of your IoT solution. Currently, IoT Central limits the number of applications you can deploy in a subscription to 10. If you need to increase this limit, contact [Microsoft support](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz przegląd IoT Central, poniżej przedstawiono sugerowane następne kroki:
+Now that you have an overview of IoT Central, here are suggested next steps:
 
-- Zapoznaj się z różnicami między [IoT Central i akceleratorami rozwiązań usługi Azure IoT](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
+- Understand the differences between [IoT Central and Azure IoT solution accelerators](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
 - Zapoznanie się z [interfejsem użytkownika usługi Azure IoT Central](overview-iot-central-tour.md).
 - Rozpoczęcie pracy przez [utworzenie aplikacji usługi Azure IoT Central](quick-deploy-iot-central.md).
-- Dowiedz się więcej o usłudze [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md)
-- Dowiedz się, jak [utworzyć szablon urządzenia Azure IoT Edge](./tutorial-define-edge-device-type.md)
+- Learn more about [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md)
+- Learn how to [Create Azure IoT Edge Device template](./tutorial-define-edge-device-type.md)

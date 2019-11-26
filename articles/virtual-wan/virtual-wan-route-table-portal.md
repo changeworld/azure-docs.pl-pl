@@ -1,6 +1,6 @@
 ---
-title: 'Wirtualna sieć WAN: Tworzenie tabeli tras koncentratora wirtualnego do urządzenie WUS: Azure Portal'
-description: Tabela tras wirtualnego koncentratora sieci WAN do kierowania ruchu do sieciowego urządzenia wirtualnego przy użyciu portalu.
+title: 'Virtual WAN: Create virtual hub route table to NVA: Azure portal'
+description: Virtual WAN virtual hub route table to steer traffic to a network virtual appliance using the portal.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,88 +8,88 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 8f24b94226daffb769993c9f6659909fdff039b6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3aa5660e5b777364ef9d684debe7e06f42acee6e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014979"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482022"
 ---
-# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Tworzenie tabeli tras wirtualnego centrum sieci WAN dla urządzeń WUS: Azure Portal
+# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Create a Virtual WAN hub route table for NVAs: Azure portal
 
-W tym artykule opisano sposób kierowania ruchu z koncentratora do sieciowego urządzenia wirtualnego (urządzenie WUS).
+This article shows you how to steer traffic from a branch (on-premises site) connected to the Virtual WAN hub to a Spoke Vnet via a Network Virtual Appliance (NVA).
 
 ![Diagram usługi Virtual WAN](./media/virtual-wan-route-table/vwanroute.png)
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Sprawdź, czy zostały spełnione następujące kryteria:
+Verify that you have met the following criteria:
 
-*  Masz wirtualne urządzenie sieciowe (urządzenie WUS). Sieciowe urządzenie wirtualne to oferowane przez siebie oprogramowanie innych firm, które jest zazwyczaj inicjowane z portalu Azure Marketplace w sieci wirtualnej.
+*  You have a Network Virtual Appliance (NVA). A Network Virtual Appliance is a third-party software of your choice that is typically provisioned from Azure Marketplace in a virtual network.
 
-    * Prywatny adres IP musi być przypisany do interfejsu sieciowego urządzenie WUS.
+    * A private IP address must be assigned to the NVA network interface.
 
-    * URZĄDZENIE WUS nie jest wdrożona w koncentratorze wirtualnym. Należy ją wdrożyć w oddzielnej sieci wirtualnej.
+    * The NVA is not deployed in the virtual hub. It must be deployed in a separate VNet.
 
-    *  Do sieci wirtualnej urządzenie WUS może być połączona co najmniej jedna sieć wirtualna. W tym artykule odwołujemy się do sieci wirtualnej urządzenie WUS jako "pośrednia Sieć wirtualna". Te sieci wirtualnych mogą być połączone z siecią wirtualną urządzenie WUS przy użyciu komunikacji równorzędnej sieci wirtualnych.
-*  Utworzono 2 sieci wirtualnych. Będą one używane jako szprychy sieci wirtualnych.
+    *  The NVA VNet may have one or many virtual networks connected to it. In this article, we refer to the NVA VNet as an 'indirect spoke VNet'. These VNets can be connected to the NVA VNet by using VNet peering. The Vnet Peering links are depicted by black arrows in the above figure.
+*  You have created 2 VNets. They will be used as spoke VNets.
 
-    * W tym ćwiczeniu przestrzenie adresowe sieci wirtualnej szprych są następujące: VNet1:10.0.2.0/24 i VNet2:10.0.3.0/24. Jeśli potrzebujesz informacji na temat sposobu tworzenia sieci wirtualnej, zobacz [Create a Virtual Network](../virtual-network/quick-create-portal.md).
+    * For this exercise, the VNet spoke address spaces are: VNet1: 10.0.2.0/24 and VNet2: 10.0.3.0/24. If you need information on how to create a VNet, see [Create a virtual network](../virtual-network/quick-create-portal.md).
 
-    * Upewnij się, że w żadnym z sieci wirtualnych nie ma żadnych bram sieci wirtualnej.
-    * W przypadku tej konfiguracji te sieci wirtualnych nie wymagają podsieci bramy.
+    * Ensure there are no virtual network gateways in any of the VNets.
+    * For this configuration, these VNets do not require a gateway subnet.
 
-## <a name="signin"></a>1. Zaloguj się
+## <a name="signin"></a>1. Sign in
 
 Przejdź w przeglądarce do witryny [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 
-## <a name="vwan"></a>2. Tworzenie wirtualnej sieci WAN
+## <a name="vwan"></a>2. Create a virtual WAN
 
-Utwórz wirtualną sieć WAN. Na potrzeby tego ćwiczenia można użyć następujących wartości:
+Create a virtual WAN. For the purposes of this exercise, you can use the following values:
 
-* **Nazwa wirtualnej sieci WAN:** myVirtualWAN
-* **Grupa zasobów:** testRG
-* **Lokalizacja:** Zachodnie stany USA
+* **Virtual WAN name:** myVirtualWAN
+* **Resource group:** testRG
+* **Location:** West US
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="hub"></a>3. Tworzenie centrum
+## <a name="hub"></a>3. Create a hub
 
-Utwórz centrum. Na potrzeby tego ćwiczenia można użyć następujących wartości:
+Create the hub. For the purposes of this exercise, you can use the following values:
 
-* **Lokalizacja:** Zachodnie stany USA
-* **Nazwa:** westushub
-* **Prywatna przestrzeń adresowa centrum:** 10.0.1.0/24
+* **Location:** West US
+* **Name:** westushub
+* **Hub private address space:** 10.0.1.0/24
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="route"></a>4. Tworzenie i stosowanie tabeli tras centrum
+## <a name="route"></a>4. Create and apply a hub route table
 
-Zaktualizuj centrum za pomocą tabeli tras centrum. Na potrzeby tego ćwiczenia można użyć następujących wartości:
+Update the hub with a hub route table. For the purposes of this exercise, you can use the following values:
 
-* **Bezpośrednie przestrzenie adresowe sieci wirtualnej szprych:** (VNet1 i VNet2) 10.0.2.0/24 i 10.0.3.0/24
-* **Prywatny adres IP interfejsu sieciowego urządzenie WUS DMZ:** 10.0.4.5
+* **Indirect spoke VNet address spaces:** (VNet1 and VNet2) 10.0.2.0/24 and 10.0.3.0/24
+* **DMZ NVA network interface private IP address:** 10.0.4.5
 
-1. Przejdź do wirtualnej sieci WAN.
-2. Kliknij centrum, dla którego chcesz utworzyć tabelę tras.
-3. Kliknij przycisk **...** , a następnie kliknij pozycję **Edytuj centrum wirtualne**.
-4. Na stronie **Edytowanie wirtualnego centrum** przewiń w dół i zaznacz pole wyboru **Użyj tabeli do routingu**.
-5. W kolumnie **jeśli prefiks lokalizacji docelowej jest** kolumną Dodaj przestrzenie adresowe. W kolumnie **Wyślij do następnego przeskoku** Dodaj prywatny adres IP urządzenie WUS strefy DMZ.
-6. Kliknij przycisk **Potwierdź** , aby zaktualizować zasób centrum przy użyciu ustawień tabeli tras.
+1. Navigate to your virtual WAN.
+2. Click the hub for which you want to create a route table.
+3. Click the **...** , and then click **Edit virtual hub**.
+4. On the **Edit virtual hub** page, scroll down and select the checkbox **Use table for routing**.
+5. In the **If destination prefix is** column, add the address spaces. In the **Send to next hop** column, add the DMZ NVA network interface private IP address.
+6. Click **Confirm** to update the hub resource with the route table settings.
 
-## <a name="connections"></a>5. Tworzenie połączeń sieci wirtualnej
+## <a name="connections"></a>5. Create the VNet connections
 
-Utwórz połączenie z każdej pośredniej sieci wirtualnej szprychy (VNet1 i VNet2) do centrum. Następnie utwórz połączenie z sieci wirtualnej urządzenie WUS do centrum.
+Create a connection from each indirect spoke VNet (VNet1 and VNet2) to the hub. Then, create a connection from the NVA VNet to the hub. These Vnet Connections are dipicted by blue arrows in the figure above. 
 
- W tym kroku można użyć następujących wartości:
+ For this step, you can use the following values:
 
-| Nazwa sieci wirtualnej| Nazwa połączenia|
+| VNet name| Nazwa połączenia|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-Powtórz poniższą procedurę dla każdej sieci wirtualnej, która ma zostać nawiązane połączenie.
+Repeat the following procedure for each VNet that you want to connect.
 
 1. Na stronie sieci wirtualnej WAN kliknij pozycję **Połączenia sieci wirtualnych**.
 2. Na stronie połączenia sieci wirtualnej kliknij polecenie **+ Dodaj połączenie**.
@@ -99,7 +99,7 @@ Powtórz poniższą procedurę dla każdej sieci wirtualnej, która ma zostać n
     * **Koncentratory** — wybierz koncentrator, z którym chcesz skojarzyć to połączenie.
     * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
     * **Sieć wirtualna** — wybierz sieć wirtualną, którą chcesz połączyć z tym koncentratorem. Sieć wirtualna nie może mieć istniejącej bramy sieci wirtualnej.
-4. Kliknij przycisk **OK** , aby utworzyć połączenie.
+4. Click **OK** to create the connection.
 
 ## <a name="next-steps"></a>Następne kroki
 

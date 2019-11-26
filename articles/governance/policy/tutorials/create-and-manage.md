@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Build policies to enforce compliance'
 description: In this tutorial, you use policies to enforce standards, control costs, maintain security, and impose enterprise wide design principles.
-ms.date: 02/04/2019
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 38c41c94600da1f028c7857febc7de1eef2436ae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 75a1d892a88f2b5bbdbec2a1b8d525245bb1e86f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216908"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482329"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Create and manage policies to enforce compliance
 
@@ -20,7 +20,11 @@ Poznanie sposobu tworzenia zasad i zarządzania nimi na platformie Azure jest wa
 > - Rozwiązywanie problemu w przypadku niezgodnego lub odrzuconego zasobu
 > - Implementowanie nowych zasad w całej organizacji
 
-Przejrzyj artykuły Szybki start, aby dowiedzieć się, jak przypisać zasady w celu identyfikowania bieżącego stanu zgodności istniejących zasobów. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Przejrzyj artykuły Szybki start, aby dowiedzieć się, jak przypisać zasady w celu identyfikowania bieżącego stanu zgodności istniejących zasobów.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="assign-a-policy"></a>Przypisywanie zasad
 
@@ -443,7 +447,7 @@ Jeśli nie planujesz dalszej pracy z zasobami utworzonymi w tym samouczku, wykon
 
 1. Kliknij prawym przyciskiem myszy wiersz albo wybierz wielokropek na końcu definicji lub przypisania, a następnie wybierz pozycję **Usuń definicję** (lub **Usuń przypisanie**).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="review"></a>Przegląd
 
 W tym samouczku pomyślnie wykonano następujące czynności:
 
@@ -452,6 +456,8 @@ W tym samouczku pomyślnie wykonano następujące czynności:
 > - Utworzono i przypisano definicję inicjatywy w celu śledzenia zgodności dla wielu zasobów
 > - Rozwiązano problem w przypadku niezgodnego lub odrzuconego zasobu
 > - Zaimplementowano nowe zasady w całej organizacji
+
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej o strukturach definicji zasad, zapoznaj się z artykułem:
 

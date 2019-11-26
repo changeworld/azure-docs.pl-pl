@@ -1,49 +1,49 @@
 ---
 title: Zarządzanie zasobami delegowanymi na platformie Azure
-description: Dzięki usługom zarządzanym dostawcy usług mogą sprzedawać oferty zarządzania zasobami klientom w portalu Azure Marketplace.
+description: Managed services offers allow service providers to sell resource management offers to customers in Azure Marketplace.
 ms.date: 07/11/2019
-ms.topic: overview
-ms.openlocfilehash: e79252d38e5e3363ef1d6a82ec060b896fa247a8
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133391"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464007"
 ---
 # <a name="azure-delegated-resource-management"></a>Zarządzanie zasobami delegowanymi na platformie Azure
 
-Zarządzanie zasobami delegowanymi przez platformę Azure to jeden z najważniejszych składników usługi Azure Lighthouse. Dzięki funkcji zarządzania zasobami delegowanymi na platformie Azure dostawcy usług mogą uprościć zaangażowanie klientów i dołączanie, a jednocześnie zarządzać zasobami delegowanymi na dużą skalę z elastycznością i dokładnością.
+Azure delegated resource management is one of the key components of Azure Lighthouse. With Azure delegated resource management, service providers can simplify customer engagement and onboarding experiences, while managing delegated resources at scale with agility and precision.
 
-## <a name="what-is-azure-delegated-resource-management"></a>Co to jest zarządzanie zasobami delegowanymi przez platformę Azure?
+## <a name="what-is-azure-delegated-resource-management"></a>What is Azure delegated resource management?
 
-Zarządzanie zasobami delegowanymi przez platformę Azure umożliwia logiczne rzutowanie zasobów z jednej dzierżawy na inną dzierżawcę. Umożliwia to autoryzowanym użytkownikom w jednej Azure Active Directory (Azure AD) wykonywanie operacji zarządzania w różnych dzierżawach usługi Azure AD należących do klientów. Dostawcy usług mogą zalogować się do swojej dzierżawy usługi Azure AD i mieć autoryzację do pracy w delegowanych subskrypcjach klientów i grupach zasobów. Pozwala to na wykonywanie operacji zarządzania w imieniu swoich klientów, bez konieczności logowania się do poszczególnych dzierżaw klientów.
+Azure delegated resource management enables logical projection of resources from one tenant onto another tenant. This lets authorized users in one Azure Active Directory (Azure AD) tenant perform management operations across different Azure AD tenants belonging to their customers. Service providers can sign in to their own Azure AD tenant and have authorization to work in delegated customer subscriptions and resource groups. This lets them perform management operations on behalf of their customers, without having to sign in to each individual customer tenant.
 
 > [!NOTE]
-> Zarządzanie zasobami delegowanymi przez platformę Azure może być również używane [w przedsiębiorstwie, które ma wiele dzierżawców usługi Azure AD](enterprise.md) , aby uprościć zarządzanie między dzierżawcami.
+> Azure delegated resource management can also be used [within an enterprise which has multiple Azure AD tenants of its own](enterprise.md) to simplify cross-tenant management.
 
-Dzięki funkcji zarządzania zasobami delegowanymi na platformie Azure autoryzowani użytkownicy mogą współpracować bezpośrednio w kontekście subskrypcji klienta bez konieczności używania konta w dzierżawie klienta lub współwłaścicielem dzierżawy klienta. Mogą także [wyświetlać wszystkie delegowane subskrypcje klientów i zarządzać nimi na stronie nowe **moi klienci** ](../how-to/view-manage-customers.md) w Azure Portal.
+With Azure delegated resource management, authorized users can work directly in the context of a customer subscription without having an account in that customer's tenant or being a co-owner of the customer's tenant. They can also [view and manage all delegated customer subscriptions in the new **My customers** page](../how-to/view-manage-customers.md) in the Azure portal.
 
-[Środowisko zarządzania przez wiele dzierżawców](cross-tenant-management-experience.md) pomaga wydajniej współpracować z usługami zarządzania platformy Azure, takimi jak Azure Policy, Azure Security Center i nie tylko. Wszystkie działania dostawcy usług są śledzone w dzienniku aktywności, który jest przechowywany w dzierżawach dostawcy usług i klienta. Oznacza to, że zarówno klient, jak i dostawca usług mogą łatwo identyfikować użytkownika skojarzonego ze wszystkimi zmianami.
+The [cross-tenant management experience](cross-tenant-management-experience.md) helps you work more efficiently with Azure management services like Azure Policy, Azure Security Center, and more. All service provider activity is tracked in the activity log, which is stored in both the service provider's and the customer's tenants. This means that both the customer and service provider can easily identify the user associated with any changes.
 
-Po dołączeniu klienta do zarządzania zasobami delegowanymi przez platformę Azure użytkownicy będą mieli dostęp do nowej strony **dostawcy usług** w Azure Portal, w której będą mogli [potwierdzić swoje oferty, dostawców usług i zasoby delegowane oraz zarządzać nimi](../how-to/view-manage-service-providers.md). Jeśli klient kiedykolwiek chce odwołać dostęp dla dostawcy usług, może to zrobić w dowolnym momencie.
+When you onboard a customer to Azure delegated resource management, they’ll have access to the new **Service providers** page in the Azure portal, where they can [confirm and manage their offers, service providers, and delegated resources](../how-to/view-manage-service-providers.md). If the customer ever wants to revoke access for a service provider, they can do so here at any time.
 
-[Nowy typ oferty usługi zarządzanej można opublikować w witrynie Azure Marketplace](../how-to/publish-managed-services-offers.md) , aby w łatwy sposób dołączać klientów do zarządzania zasobami delegowanymi przez platformę Azure. Możesz również [ukończyć proces dołączania, wdrażając szablony Azure Resource Manager](../how-to/onboard-customer.md).
+You can [publish the new Managed Services offer type to Azure Marketplace](../how-to/publish-managed-services-offers.md) to easily onboard customers to Azure delegated resource management. Alternatively, you can [complete the onboarding process by deploying Azure Resource Manager templates](../how-to/onboard-customer.md).
 
-## <a name="how-azure-delegated-resource-management-works"></a>Jak działa zarządzanie zasobami delegowanymi przez platformę Azure
+## <a name="how-azure-delegated-resource-management-works"></a>How Azure delegated resource management works
 
-Na wysokim poziomie poniżej przedstawiono sposób działania zarządzania zasobami delegowanymi przez platformę Azure:
+At a high level, here's how Azure delegated resource management works:
 
-1. Jako dostawca usług identyfikujesz dostęp (role), których grupy, nazwy główne usług lub użytkownicy będą musieli zarządzać zasobami platformy Azure klienta. Definicja dostępu zawiera identyfikator dzierżawy dostawcy usług wraz z wymaganym dostępem do oferty, zdefiniowanym przy użyciu tożsamości **principalId** z dzierżawy zamapowanej do [wbudowanych wartości **definicji** ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (współautor, maszyna wirtualna Współautor, czytelnik itp.).
-2. Należy określić ten dostęp i dołączyć klienta do zarządzania zasobami delegowanymi przez platformę Azure na jeden z dwóch sposobów:
-   - [Publikowanie oferty usług zarządzanych w portalu Azure Marketplace](../how-to/publish-managed-services-offers.md) (prywatnej lub publicznej), która zostanie zaakceptowana przez klienta
-   - [Wdrażanie szablonu Azure Resource Manager w dzierżawie klienta](../how-to/onboard-customer.md) dla jednej lub wielu określonych subskrypcji lub grup zasobów
-3. Po dołączeniu klienta autoryzowani użytkownicy mogą zalogować się do dzierżawy dostawcy usługi i wykonywać zadania zarządzania w danym zakresie klienta na podstawie zdefiniowanego dostępu.
+1. As a service provider, you identify the access (roles) that your groups, service principals, or users will need to manage the customer's Azure resources. The access definition contains the service provider's tenant ID along with the required access for the offer, defined using **principalId** identities from your tenant mapped to [built-in **roleDefinition** values](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (Contributor, VM Contributor, Reader, etc.).
+2. You specify this access and onboard the customer to Azure delegated resource management in one of two ways:
+   - [Publish an Azure Marketplace managed services offer](../how-to/publish-managed-services-offers.md) (private or public) that the customer will accept
+   - [Deploy an Azure Resource Manager template to the customer's tenant](../how-to/onboard-customer.md) for one or more specific subscriptions or resource groups
+3. Once the customer has been onboarded, authorized users can sign in to your service provider tenant and perform management tasks at the given customer scope, based on the access that you defined.
 
-## <a name="support-for-azure-delegated-resource-management"></a>Obsługa zarządzania zasobami delegowanymi przez platformę Azure
+## <a name="support-for-azure-delegated-resource-management"></a>Support for Azure delegated resource management
 
-Jeśli potrzebujesz pomocy związanej z zarządzaniem zasobami delegowanymi przez platformę Azure, możesz otworzyć żądanie pomocy technicznej w Azure Portal. W obszarze **typ problemu**wybierz pozycję **techniczne**. Wybierz subskrypcję, a następnie wybierz pozycję **delegowane zarządzanie zasobami** (w obszarze **monitorowanie & Zarządzanie**).
+If you need help related to Azure delegated resource management, you can open a support request in the Azure portal. For **Issue type**, choose **Technical**. Select a subscription, then select **Delegated Resource Management** (under **Monitoring & Management**).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat [środowisk zarządzania między dzierżawcami](cross-tenant-management-experience.md).
-- Dowiedz się więcej o [ofertach usług zarządzanych w witrynie Azure Marketplace](managed-services-offers.md).
+- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
+- Learn about [managed services offers in Azure Marketplace](managed-services-offers.md).

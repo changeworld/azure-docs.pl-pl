@@ -1,103 +1,98 @@
 ---
-title: Azure Container Instances grupy kontenerów
-description: Więcej informacji na temat grup kontenerów w Azure Container Instances, kolekcja wystąpień, które współużytkują cykl życia i zasoby, takie jak Storage i Network
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Introduction to container groups
+description: Learn about container groups in Azure Container Instances, a collection of instances that share a lifecycle and resources such as storage and network
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: ef6745e18a0df3ee0a572f106d1507d0fca32ac2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9fbf9fea7da0896ee6c0e248d18e18d52798fbd7
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150203"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482108"
 ---
-# <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
+# <a name="container-groups-in-azure-container-instances"></a>Container groups in Azure Container Instances
 
-Zasób najwyższego poziomu w Azure Container Instances jest *grupą kontenerów*. W tym artykule opisano, co to są grupy kontenerów i jakie typy scenariuszy są włączane.
+The top-level resource in Azure Container Instances is the *container group*. This article describes what container groups are and the types of scenarios they enable.
 
-## <a name="what-is-a-container-group"></a>Co to jest Grupa kontenerów?
+## <a name="what-is-a-container-group"></a>What is a container group?
 
-Grupa kontenerów to kolekcja kontenerów, które są planowane na tym samym komputerze-hoście. Kontenery w grupie kontenerów współdzielą cykl życia, zasoby, sieć lokalną i woluminy magazynu. Jest to podobne w *koncepcji w* [Kubernetes][kubernetes-pod].
+A container group is a collection of containers that get scheduled on the same host machine. The containers in a container group share a lifecycle, resources, local network, and storage volumes. It's similar in concept to a *pod* in [Kubernetes][kubernetes-pod].
 
-Na poniższym diagramie przedstawiono przykład grupy kontenerów zawierającej wiele kontenerów:
+The following diagram shows an example of a container group that includes multiple containers:
 
-![Diagram grup kontenerów][container-groups-example]
+![Container groups diagram][container-groups-example]
 
-Ta przykładowa Grupa kontenerów:
+This example container group:
 
-* Zaplanowano na pojedynczym komputerze-hoście.
-* Ma przypisaną etykietę nazw DNS.
-* Udostępnia jeden publiczny adres IP z jednym uwidocznionym portem.
-* Składa się z dwóch kontenerów. Jeden kontener nasłuchuje na porcie 80, podczas gdy drugi nasłuchuje na porcie 5000.
-* Obejmuje dwa udziały plików platformy Azure jako instalacje woluminów, a każdy kontener instaluje jeden z udziałów lokalnie.
+* Is scheduled on a single host machine.
+* Is assigned a DNS name label.
+* Exposes a single public IP address, with one exposed port.
+* Consists of two containers. One container listens on port 80, while the other listens on port 5000.
+* Includes two Azure file shares as volume mounts, and each container mounts one of the shares locally.
 
 > [!NOTE]
-> Grupy wielokontenerowe obsługują obecnie tylko kontenery systemu Linux. W przypadku kontenerów systemu Windows Azure Container Instances obsługuje tylko wdrożenie jednego wystąpienia. Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w [przeglądzie](container-instances-overview.md#linux-and-windows-containers)usługi można znaleźć bieżące różnice między platformami.
+> Multi-container groups currently support only Linux containers. For Windows containers, Azure Container Instances only supports deployment of a single instance. While we are working to bring all features to Windows containers, you can find current platform differences in the service [Overview](container-instances-overview.md#linux-and-windows-containers).
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="deployment"></a>Wdrażanie
 
-Poniżej przedstawiono dwa typowe sposoby wdrażania grupy wielokontenerowej: Użyj [szablonu Menedżer zasobów][resource-manager template] lub [pliku YAML][yaml-file]. Szablon Menedżer zasobów jest zalecany, gdy konieczne jest wdrożenie dodatkowych zasobów usługi platformy Azure (na przykład [udziału Azure Files][azure-files]) podczas wdrażania wystąpień kontenerów. Ze względu na bardziej zwięzły YAML formatu pliku YAML zaleca się, gdy wdrożenie obejmuje tylko wystąpienia kontenerów. Aby uzyskać szczegółowe informacje na temat właściwości, które można ustawić, zapoznaj się z dokumentacją dotyczącą [szablonu Menedżer zasobów](/azure/templates/microsoft.containerinstance/containergroups) lub dokumentacji [referencyjnej YAML](container-instances-reference-yaml.md) .
+Here are two common ways to deploy a multi-container group: use a [Resource Manager template][resource-manager template] or a [YAML file][yaml-file]. A Resource Manager template is recommended when you need to deploy additional Azure service resources (for example, an [Azure Files share][azure-files]) when you deploy the container instances. Due to the YAML format's more concise nature, a YAML file is recommended when your deployment includes only container instances. For details on properties you can set, see the [Resource Manager template reference](/azure/templates/microsoft.containerinstance/containergroups) or [YAML reference](container-instances-reference-yaml.md) documentation.
 
-Aby zachować konfigurację grupy kontenerów, można wyeksportować konfigurację do pliku YAML przy użyciu polecenia [AZ Container Export][az-container-export]na platformie Azure. Eksport umożliwia przechowywanie konfiguracji grupy kontenerów w kontroli wersji dla "konfiguracji jako kodu". Można też użyć wyeksportowanego pliku jako punktu wyjścia podczas tworzenia nowej konfiguracji w programie YAML.
+To preserve a container group's configuration, you can export the configuration to a YAML file by using the Azure CLI command [az container export][az-container-export]. Export allows you to store your container group configurations in version control for "configuration as code." Or, use the exported file as a starting point when developing a new configuration in YAML.
 
 
 
-## <a name="resource-allocation"></a>Alokacja zasobów
+## <a name="resource-allocation"></a>Resource allocation
 
-Azure Container Instances przydzielać zasoby, takie jak procesory CPU, pamięć i opcjonalnie [procesory GPU][gpus] (wersja zapoznawcza) do grupy kontenerów przez dodanie [żądań zasobów][resource-requests] wystąpień w grupie. Jeśli na przykład utworzysz grupę kontenerów z dwoma wystąpieniami, każdy z nich żąda 1 procesora CPU, Grupa kontenerów zostanie przypisana 2 procesory CPU.
+Azure Container Instances allocates resources such as CPUs, memory, and optionally [GPUs][gpus] (preview) to a container group by adding the [resource requests][resource-requests] of the instances in the group. Taking CPU resources as an example, if you create a container group with two instances, each requesting 1 CPU, then the container group is allocated 2 CPUs.
 
-### <a name="resource-usage-by-instances"></a>Użycie zasobów według wystąpień
+### <a name="resource-usage-by-instances"></a>Resource usage by instances
 
-Każde wystąpienie kontenera ma przydzieloną zasoby określone w żądaniu zasobu. Jednak użycie zasobów przez wystąpienie kontenera w grupie zależy od sposobu skonfigurowania jego opcjonalnej właściwości [limitu zasobów][resource-limits] .
+Each container instance is allocated the resources specified in its resource request. However, the resource usage by a container instance in a group depends on how you configure its optional [resource limit][resource-limits] property.
 
-* Jeśli nie określisz limitu zasobów, maksymalne użycie zasobów przez wystąpienie będzie takie samo jak jego żądanie zasobu.
+* If you don't specify a resource limit, the instance's maximum resource usage is the same as its resource request.
 
-* W przypadku określenia limitu zasobów dla wystąpienia można dostosować użycie zasobów wystąpienia dla jego obciążenia, zmniejszając lub zwiększając użycie względem żądania zasobu. Maksymalny limit zasobów, który można ustawić, to łączna liczba zasobów przydzielono do grupy.
+* If you specify a resource limit for an instance, you can adjust the instance's resource usage for its workload, either reducing or increasing usage relative to the resource request. The maximum resource limit you can set is the total resources allocated to the group.
     
-    Na przykład w grupie z dwoma wystąpieniami żądającym 1 procesora CPU jeden z kontenerów może uruchamiać obciążenie, które wymaga więcej niż drugi procesor CPU.
+    For example, in a group with two instances requesting 1 CPU, one of your containers might run a workload that requires more CPUs to run than the other.
 
-    W tym scenariuszu można ustawić limit zasobów 0,5 CPU dla jednego wystąpienia i limit 2 procesorów CPU dla drugiego. Ta konfiguracja ogranicza użycie zasobów pierwszego kontenera do 0,5 procesora CPU, co pozwala drugiemu kontenerowi używać do pełnych 2 procesorów CPU, jeśli są dostępne.
+    In this scenario, you could set a resource limit of 0.5 CPU for one instance, and a limit of 2 CPUs for the second. This configuration limits the first container's resource usage to 0.5 CPU, allowing the second container to use up to the full 2 CPUs if available.
 
-Aby uzyskać więcej informacji, zobacz Właściwość [ResourceRequirements][resource-requirements] w interfejsie API REST grup kontenerów.
+For more information, see the [ResourceRequirements][resource-requirements] property in the container groups REST API.
 
-### <a name="minimum-and-maximum-allocation"></a>Minimalna i maksymalna alokacja
+### <a name="minimum-and-maximum-allocation"></a>Minimum and maximum allocation
 
-* Przydziel **co najmniej** 1 procesor CPU i 1 GB pamięci do grupy kontenerów. Można obsługiwać poszczególne wystąpienia kontenerów w grupie przy użyciu mniej niż 1 procesora CPU i 1 GB pamięci. 
+* Allocate a **minimum** of 1 CPU and 1 GB of memory to a container group. Individual container instances within a group can be provisioned with less than 1 CPU and 1 GB of memory. 
 
-* Aby uzyskać **maksymalną liczbę** zasobów w grupie kontenerów, zapoznaj się z tematem [dostępność zasobów][region-availability] dla Azure Container Instances w regionie wdrożenia.
+* For the **maximum** resources in a container group, see the [resource availability][region-availability] for Azure Container Instances in the deployment region.
 
 ## <a name="networking"></a>Networking
 
-Grupy kontenerów udostępniają adresy IP i przestrzeń nazw portów na tym adresie IP. Aby umożliwić klientom zewnętrznym dotarcie do kontenera w grupie, należy uwidocznić port w adresie IP i z kontenera. Ponieważ kontenery w grupie współużytkują przestrzeń nazw portu, mapowanie portów nie jest obsługiwane. Kontenery w obrębie grupy mogą się łączyć ze sobą za pomocą hosta lokalnego na portach, które zostały uwidocznione, nawet jeśli te porty nie są udostępniane zewnętrznie na adresie IP grupy.
+Container groups share an IP address and a port namespace on that IP address. To enable external clients to reach a container within the group, you must expose the port on the IP address and from the container. Because containers within the group share a port namespace, port mapping isn't supported. Containers within a group can reach each other via localhost on the ports that they have exposed, even if those ports aren't exposed externally on the group's IP address.
 
-Opcjonalnie można wdrożyć grupy kontenerów w usłudze [Azure Virtual Network][virtual-network] (wersja zapoznawcza), aby umożliwić kontenerom bezpieczne komunikowanie się z innymi zasobami w sieci wirtualnej.
+Optionally deploy container groups into an [Azure virtual network][virtual-network] (preview) to allow containers to communicate securely with other resources in the virtual network.
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Usługa Storage
 
-Możesz określić woluminy zewnętrzne do zainstalowania w obrębie grupy kontenerów. Te woluminy można mapować na określone ścieżki w poszczególnych kontenerach w grupie.
+You can specify external volumes to mount within a container group. You can map those volumes into specific paths within the individual containers in a group.
 
 ## <a name="common-scenarios"></a>Typowe scenariusze
 
-Grupy wielu kontenerów są przydatne w przypadkach, w których chcesz podzielić pojedyncze zadanie funkcjonalne na niewielką liczbę obrazów kontenerów. Te obrazy mogą następnie zostać dostarczone przez różne zespoły i mieć oddzielne wymagania dotyczące zasobów.
+Multi-container groups are useful in cases where you want to divide a single functional task into a small number of container images. These images can then be delivered by different teams and have separate resource requirements.
 
-Przykładowe użycie może obejmować:
+Example usage could include:
 
-* Kontener obsługujący aplikację sieci Web i kontener ściągający najnowszą zawartość z kontroli źródła.
-* Kontener aplikacji i kontener rejestrowania. Kontener rejestrowania zbiera dzienniki i metryki dane wyjściowe przez główną aplikację i zapisuje je do magazynu długoterminowego.
-* Kontener aplikacji i kontener monitorowania. Kontener monitorujący okresowo wysyła żądanie do aplikacji, aby upewnić się, że działa i odpowiada poprawnie, i zgłasza alert, jeśli nie jest.
-* Kontener frontonu i kontener zaplecza. Fronton może obtworzyć aplikację sieci Web przy użyciu zaplecza z uruchomioną usługą w celu pobierania danych. 
+* A container serving a web application and a container pulling the latest content from source control.
+* An application container and a logging container. The logging container collects the logs and metrics output by the main application and writes them to long-term storage.
+* An application container and a monitoring container. The monitoring container periodically makes a request to the application to ensure that it's running and responding correctly, and raises an alert if it's not.
+* A front-end container and a back-end container. The front end might serve a web application, with the back end running a service to retrieve data. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak wdrożyć wielokontenerową grupę kontenerów z szablonem Azure Resource Manager:
+Learn how to deploy a multi-container container group with an Azure Resource Manager template:
 
 > [!div class="nextstepaction"]
-> [Wdrażanie grupy kontenerów][resource-manager template]
+> [Deploy a container group][resource-manager template]
 
 <!-- IMAGES -->
 [container-groups-example]: ./media/container-instances-container-groups/container-groups-example.png

@@ -1,14 +1,14 @@
 ---
 title: Przykład — niedozwolone rozszerzenia maszyny wirtualnej
-description: Te przykładowe definicje zasad uniemożliwiają użycie określonych rozszerzeń na maszynach wirtualnych.
+description: This sample policy definition prohibits the use of specified extensions  defined in a parameter on virtual machines.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 639a5dba7e33b9df51be1a7407ac5450af322e86
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8656cf5111ecdcc793ef8bbe69b8794464e040d2
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069981"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463271"
 ---
 # <a name="sample---not-allowed-vm-extensions"></a>Przykład — niedozwolone rozszerzenia maszyny wirtualnej
 
@@ -24,7 +24,7 @@ Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdróż przykład zasad na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fnot-allowed-vmextension%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fnot-allowed-vmextension%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -65,4 +65,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

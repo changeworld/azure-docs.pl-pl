@@ -1,6 +1,6 @@
 ---
-title: Zarządzaj IoT Central z Azure Portal | Microsoft Docs
-description: W tym artykule opisano sposób tworzenia aplikacji IoT Central i zarządzania nimi z poziomu Azure Portal.
+title: Manage IoT Central from the Azure portal | Microsoft Docs
+description: This article describes how to create and manage your IoT Central applications from the Azure portal.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,74 +8,78 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: c9a8ed6d55fbbfcf59c98a86ac98cb4264d31ee4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 2133819ce7c298e2f73fdc5a68b80b64f9e72ea7
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278814"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480426"
 ---
-# <a name="manage-iot-central-from-the-azure-portal"></a>Zarządzaj IoT Central z Azure Portal
+# <a name="manage-iot-central-from-the-azure-portal"></a>Manage IoT Central from the Azure portal
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-Zamiast tworzyć aplikacje IoT Central i zarządzać nimi w witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) , możesz użyć [Azure Portal](https://portal.azure.com) do zarządzania aplikacjami.
+Instead of creating and managing IoT Central applications on the [Azure IoT Central application manager](https://aka.ms/iotcentral) website, you can use the [Azure portal](https://portal.azure.com) to manage your applications.
 
-## <a name="create-iot-central-applications"></a>Tworzenie aplikacji IoT Central
+## <a name="create-iot-central-applications"></a>Create IoT Central applications
 
-Aby utworzyć aplikację, przejdź do [Azure Portal](https://ms.portal.azure.com) i wybierz pozycję **Utwórz zasób** w okienku głównym po lewej stronie.
+To create an application, navigate to the [Azure portal](https://ms.portal.azure.com) and select **Create a resource** in the main pane on the left.
 
-![Portal zarządzania: menu nawigacji](media/howto-manage-iot-central-from-portal/image0.png)
+![Management portal: nav menu](media/howto-manage-iot-central-from-portal/image0.png)
 
-Na pasku wyszukiwania wpisz **IoT Central**.
+In search bar, type **IoT Central**.
 
-![Portal zarządzania: wyszukiwanie](media/howto-manage-iot-central-from-portal/image0a1.png)
+![Management portal: search](media/howto-manage-iot-central-from-portal/image0a1.png)
 
-Wybierz **IoT Central wiersz aplikacji** w wynikach wyszukiwania.
+Select the **IoT Central Application** line-item in the search results.
 
-![Portal zarządzania: wyniki wyszukiwania](media/howto-manage-iot-central-from-portal/image0b1.png)
+![Management Portal: search results](media/howto-manage-iot-central-from-portal/image0b1.png)
 
 Następnie wybierz pozycję **Utwórz**.
 
-![Portal zarządzania: zasób IoT Central](media/howto-manage-iot-central-from-portal/image0c1.png)
+![Management portal: IoT Central resource](media/howto-manage-iot-central-from-portal/image0c1.png)
 
-Wypełnij wszystkie pola w formularzu. Ten formularz jest podobny do formularza wypełnianego, aby utworzyć aplikacje w witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) . Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji IoT Central](quick-deploy-iot-central.md) — Szybki Start.
+Fill in all the fields in the form. This form is similar to the form you fill out to create applications on the [Azure IoT Central application manager](https://aka.ms/iotcentral) website. For more information, see the [Create an IoT Central application](quick-deploy-iot-central.md) quickstart.
 
-**Lokalizacja jest lokalizacją** geograficzną, [w której chcesz](https://azure.microsoft.com/global-infrastructure/geographies/) utworzyć aplikację. Zazwyczaj należy wybrać lokalizację, która jest fizycznie najbliżej Twoich urządzeń, aby uzyskać optymalną wydajność. Usługa Azure IoT Central jest obecnie dostępna w **Stany Zjednoczone**, **Australii**, **Azja i Pacyfik**lub w **Europie**.  Po wybraniu lokalizacji nie można przenieść aplikacji do innej lokalizacji później.
+You can create IoT Central application with general features by selecting **Sample Contoso**, **Custom application** and **Sample Devkits** as application templates, all the other application templates uses public preview features.
 
-> [!NOTE]
-> Szablon **aplikacji w wersji zapoznawczej** jest obecnie dostępny tylko w lokalizacjach **Europa** i **US** .
+![create IoT Central form](media/howto-manage-iot-central-from-portal/image6a.png)
 
-![Portal zarządzania: Tworzenie zasobu IoT Central](media/howto-manage-iot-central-from-portal/image1a.png)  
-
-Po wypełnieniu wszystkich pól wybierz pozycję **Utwórz**.
-
-## <a name="manage-existing-iot-central-applications"></a>Zarządzanie istniejącymi aplikacjami IoT Central
-
-Jeśli masz już aplikację IoT Central platformy Azure, możesz ją usunąć lub przenieść do innej subskrypcji lub grupy zasobów w Azure Portal.
+**Location** is the [geography](https://azure.microsoft.com/global-infrastructure/geographies/) where you’d like to create your application. Typically, you should choose the location that's physically closest to your devices to get optimal performance. Azure IoT Central is currently available in the **United States**, **Australia**, **Asia Pacific**, or in **Europe**.  Once you choose a location, you can't move your application to a different location later.
 
 > [!NOTE]
-> W Azure Portal nie są widoczne aplikacje próbne, ponieważ nie są one skojarzone z Twoją subskrypcją.
+> The preview application templates are currently only available in the **Europe** and **United States** locations.
 
-Aby rozpocząć, wybierz pozycję **wszystkie zasoby** w okienku głównym po lewej stronie. Użyj pola wyszukiwania, aby wpisać nazwę aplikacji, aby znaleźć ją na liście zasobów. Następnie wybierz aplikację IoT Central, którą chcesz zarządzać.
+![Management portal: create IoT Central resource](media/howto-manage-iot-central-from-portal/image1a.png)  
 
-![Portal zarządzania: zarządzanie zasobami](media/howto-manage-iot-central-from-portal/image2a.png)
+After filling out all fields, select **Create**.
 
-Aby przejść do aplikacji, wybierz adres URL aplikacji IoT Central.
+## <a name="manage-existing-iot-central-applications"></a>Manage existing IoT Central applications
 
-![Portal zarządzania: zarządzanie zasobami](media/howto-manage-iot-central-from-portal/image3.png)
+If you already have an Azure IoT Central application you can delete it, or move it to a different subscription or resource group in the Azure portal.
 
-Aby przenieść aplikację do innej grupy zasobów, wybierz pozycję **Zmień** obok grupy zasobów. Na stronie **przenoszenie zasobów** wybierz grupę zasobów, do której chcesz migrować tę aplikację.
+> [!NOTE]
+> You can't see Trial applications in the Azure portal because they are not associated with your subscription.
 
-![Portal zarządzania: zarządzanie zasobami](media/howto-manage-iot-central-from-portal/image4a.png)
+To get started, select **All resources** in the main pane on the left. Use the search box to type in the name of your application to find it in your list of resources. Then select the IoT Central application you'd like to manage.
 
-Aby przenieść aplikację do innej subskrypcji, wybierz łącze **Zmień** obok subskrypcji. Wybierz subskrypcję, do której chcesz migrować tę aplikację w wyświetlonym oknie dialogowym.
+![Management portal: resource management](media/howto-manage-iot-central-from-portal/image2a.png)
 
-![Portal zarządzania: zarządzanie zasobami](media/howto-manage-iot-central-from-portal/image5a.png)
+To navigate to the application, select the IoT Central Application URL.
+
+![Management portal: resource management](media/howto-manage-iot-central-from-portal/image3.png)
+
+To move the application to a different resource group, select **change** beside the resource group. On the **Move resources** page, pick the resource group you'd like to migrate this application to.
+
+![Management portal: resource management](media/howto-manage-iot-central-from-portal/image4a.png)
+
+To move the application to a different subscription, select the **change** link beside the subscription. Pick the subscription to which you'd like to migrate this application in the dialog that appears.
+
+![Management portal: resource management](media/howto-manage-iot-central-from-portal/image5a.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już, jak zarządzać aplikacjami IoT Central platformy Azure z poziomu Azure Portal, poniżej przedstawiono sugerowany następny krok:
+Now that you've learned how to manage Azure IoT Central applications from the Azure portal, here is the suggested next step:
 
 > [!div class="nextstepaction"]
-> [Administruj swoją aplikacją](howto-administer.md)
+> [Administer your application](howto-administer.md)

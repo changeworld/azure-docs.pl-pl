@@ -1,6 +1,6 @@
 ---
-title: Dane punktu klastrowania w Azure Maps | Microsoft Docs
-description: Jak Klastrować dane punktu w zestawie SDK sieci Web
+title: Clustering point data in Azure Maps | Microsoft Docs
+description: How to cluster point data in the Web SDK
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,20 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839477"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480566"
 ---
-# <a name="clustering-point-data"></a>Dane punktu klastrowania
+# <a name="clustering-point-data"></a>Clustering point data
 
-Podczas wizualizacji wielu punktów danych na mapie, punkty nakładają się na siebie, mapa jest nieczytelna i trudno jest zobaczyć i korzystać z niej. Do poprawy tego środowiska użytkownika można użyć klastrowania danych punktów. Dane punktu klastrowania to proces łączenia danych punktów, które są blisko siebie i reprezentowania ich na mapie jako pojedynczy klastrowany punkt danych. Gdy użytkownik powiększa mapę, klastry rozdzielą się na poszczególne punkty danych.
+When visualizing many data points on the map, points overlap each other, the map looks cluttered and it becomes difficult to see and use. Clustering of point data can be used to improve this user experience. Clustering point data is the process of combining point data that are near each other and representing them on the map as a single clustered data point. As the user zooms into the map, the clusters break apart into their individual data points.
 
-## <a name="enabling-clustering-on-a-data-source"></a>Włączanie klastrowania w źródle danych
+<br/>
 
-Klastrowanie można łatwo włączyć w `DataSource` klasie, `cluster` ustawiając dla opcji wartość true. Ponadto promień pikseli służący do wybierania punktów znajdujących się w pobliżu do łączenia się z klastrem `clusterRadius` można ustawić przy użyciu i określić poziom powiększenia, przy którym można wyłączyć logikę klastrowania `clusterMaxZoom` przy użyciu opcji. Oto przykład sposobu włączania klastrowania w źródle danych.
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+## <a name="enabling-clustering-on-a-data-source"></a>Enabling clustering on a data source
+
+Clustering can easily be enabled on the `DataSource` class by setting the `cluster` option to true. Additionally, the pixel radius to select nearby points to combine into a cluster can be set using the `clusterRadius` and a zoom level can be specified at which to disable the clustering logic using the `clusterMaxZoom` option. Here is an example of how to enable clustering in a data source.
 
 ```javascript
 //Create a data source and enable clustering.
@@ -40,105 +44,105 @@ var datasource = new atlas.source.DataSource(null, {
 ```
 
 > [!TIP]
-> Jeśli dwa punkty danych są blisko siebie, możliwe, że klaster nigdy nie ulegnie przerwie, niezależnie od tego, jak zamknięcie użytkownika zostanie powiększone. Aby rozwiązać ten potrzeba, można ustawić `clusterMaxZoom` opcję źródła danych, która określa na poziomie powiększenia, aby wyłączyć logikę klastrowania i po prostu wyświetlić wszystkie.
+> If two data points are close together on the ground, it is possible the cluster will never break apart, no matter how close the user zooms in. To address this, you can set the `clusterMaxZoom` option of the data source which specifies at the zoom level to disable the clustering logic and simply display everything.
 
-`DataSource` Klasa ma również następujące metody związane z klastrowaniem:
+The `DataSource` class also has the following methods related to clustering:
 
-| Metoda | Typ zwracany | Opis |
+| Metoda | Return type | Opis |
 |--------|-------------|-------------|
-| getClusterChildren (clusterId: Number) | &lt;Geometria&lt;&gt; funkcjimacierzy&lt;Promise, dowolny\| kształt&gt;&gt; | Pobiera elementy podrzędne danego klastra na następnym poziomie powiększenia. Te elementy podrzędne mogą być kombinacją kształtów i podklastrów. Podklastry będą funkcjami o właściwościach pasujących do ClusteredProperties. |
-| getClusterExpansionZoom (clusterId: Number) | Numer&lt;obietnicy&gt; | Oblicza poziom powiększenia, przy którym klaster rozpocznie rozszerzanie lub przerywanie. |
-| getClusterLeaves (clusterId: Number, limit: Number, offset: Number) | &lt;Geometria&lt;&gt; funkcjimacierzy&lt;Promise, dowolny\| kształt&gt;&gt; | Pobiera wszystkie punkty w klastrze. Ustaw wartość `offset` na, aby zwracała podzestaw punktów, i użyj strony do za pomocą punktów. `limit` |
+| getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | Retrieves the children of the given cluster on the next zoom level. These children may be a combination of shapes and subclusters. The subclusters will be features with properties matching ClusteredProperties. |
+| getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | Calculates a zoom level at which the cluster will start expanding or break apart. |
+| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | Retrieves all points in a cluster. Set the `limit` to return a subset of the points, and use the `offset` to page through the points. |
 
-## <a name="display-clusters-using-a-bubble-layer"></a>Wyświetlanie klastrów przy użyciu warstwy bąbelkowej
+## <a name="display-clusters-using-a-bubble-layer"></a>Display clusters using a bubble layer
 
-Warstwa bąbelków to świetny sposób renderowania punktów w klastrze, ponieważ można łatwo skalować promień i zmieniać kolor na podstawie liczby punktów w klastrze przy użyciu wyrażenia. Podczas wyświetlania klastrów przy użyciu warstwy bąbelków należy również użyć osobnej warstwy do renderowania nieklastrowanych punktów danych. Często warto również mieć możliwość wyświetlenia rozmiaru klastra w górnej części bąbelków. Do osiągnięcia tego zachowania można użyć warstwy symbol z tekstem i nie ma ikony. 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Podstawowe klastrowanie warstwy bąbelków" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zapoznaj się z warstwą pęcherzykową bąbelki<a href='https://codepen.io/azuremaps'>@azuremaps</a>w <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>warstwie Podstawowa</a> przez Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-## <a name="display-clusters-using-a-symbol-layer"></a>Wyświetlanie klastrów przy użyciu warstwy symboli
-
-Podczas wizualizacji danych punktu przy użyciu warstwy symbol domyślnie automatycznie ukrywa symbole, które nakładają się na siebie w celu utworzenia środowiska czyszczącego, ale może to nie być wymagane środowisko, jeśli chcesz zobaczyć gęstość punktów danych na mapie. Ustawienie opcji właściwości warstwy `iconOptions` symboli powoduje `true` wyłączenie tego środowiska, ale spowoduje wyświetlenie wszystkich wyświetlanych symboli. `allowOverlap` Użycie klastrowania pozwala zobaczyć gęstość wszystkich danych podczas tworzenia całkiem czystego środowiska użytkownika. W tym przykładzie niestandardowe symbole będą używane do reprezentowania klastrów i poszczególnych punktów danych.
+A bubble layer is a great way to render clustered points as you can easily scale the radius and change the color them based on the number of points in the cluster by using an expression. When displaying clusters using a bubble layer, you should also use a separate layer for rendering unclustered data points. It is often nice to also be able to display the size of the cluster on top of the bubbles. A symbol layer with text and no icon can be used to achieve this behavior. 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Klastrowana warstwa symboli" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>warstwę symboli grupowanych</a> piórem według Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Basic bubble layer clustering" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>Basic bubble layer clustering</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="clustering-and-the-heat-maps-layer"></a>Klastrowanie i warstwa mapy cieplnej
+## <a name="display-clusters-using-a-symbol-layer"></a>Display clusters using a symbol layer
 
-Mapy cieplne to doskonały sposób wyświetlania gęstości danych na mapie. Wizualizacja może obsługiwać dużą liczbę punktów danych, ale może obsługiwać jeszcze więcej danych, jeśli punkty danych są klastrowane i rozmiar klastra jest używany jako waga mapy cieplnej. Aby to osiągnąć, ustaw `['get', 'point_count']` opcjęwarstwymapycieplnej.`weight` Gdy promień klastra jest mały, Mapa cieplna będzie wyglądać niemal identycznie jak mapa cieplna korzystająca z nieklastrowanych punktów danych, ale będzie działać znacznie lepiej. Jednak im mniejsza jest wartość promienia klastra, tym dokładniejsza jest mapa cieplna, ale z mniejszą korzyścią dla wydajności.
+When visualizing the point data using the Symbol layer, by default it will automatically hide symbols that overlap each other to create a cleaner experience, however this may not be the desired experience if you want to see the density of data points on the map. Setting the `allowOverlap` option of the Symbol layers `iconOptions` property to `true` disables this experience but will result in all the symbols being displayed. Using clustering allows you to see the density of all the data while creating a nice clean user experience. In this sample, custom symbols will be used to represent clusters and individual data points.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Mapa cieplna ważona klastra" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zapoznaj się <a href='https://codepen.io/azuremaps/pen/VRJrgO/'></a> z Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Clustered Symbol layer" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>Clustered Symbol layer</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="mouse-events-on-clustered-data-points"></a>Zdarzenia myszy w klastrowanych punktach danych
+## <a name="clustering-and-the-heat-maps-layer"></a>Clustering and the heat maps layer
 
-Gdy zdarzenia myszy występują na warstwie zawierającej klastrowane punkty danych, klastrowany punkt danych zostanie zwrócony do zdarzenia jako obiekt funkcji punktu GEOJSON. Ta funkcja wskazuje następujące właściwości:
+Heat maps are a great way to display the density of data on the map. This visualization can handle a large number of data points on its own, but it can handle even more data if the data points are clustered and the cluster size is used as the weight of the heat map. Set the `weight` option of the heat map layer to `['get', 'point_count']` to achieve this. When the cluster radius is small, the heat map will look nearly identical to a heat map using the unclustered data points but will perform much better. However, the smaller the cluster radius, the more accurate the heat map will be but with less of a performance benefit.
 
-| Nazwa właściwości | Type | Opis |
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster weighted Heat Map" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>Cluster weighted Heat Map</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="mouse-events-on-clustered-data-points"></a>Mouse events on clustered data points
+
+When mouse events occur on a layer that contain clustered data points, the clustered data point will be returned to the event as a GeoJSON point feature object. This point feature will have the following properties:
+
+| Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
-| klaster | boolean | Wskazuje, czy funkcja reprezentuje klaster. |
-| cluster_id | ciąg | Unikatowy identyfikator klastra, który może być używany ze źródłem danych `getClusterExpansionZoom`, `getClusterChildren`i `getClusterLeaves` metodami. |
-| point_count | numer | Liczba punktów, które zawiera klaster. |
-| point_count_abbreviated | ciąg | Ciąg, który skróci `point_count` wartość, jeśli jest długi. (na przykład 4 000 to 4K) |
+| cluster | wartość logiczna | Indicates if feature represents a cluster. |
+| cluster_id | string | A unique ID for the cluster that can be used with the DataSource `getClusterExpansionZoom`, `getClusterChildren`, and `getClusterLeaves` methods. |
+| point_count | numer | The number of points the cluster contains. |
+| point_count_abbreviated | string | A string that abbreviates the `point_count` value if it is long. (for example, 4,000 becomes 4K) |
 
-Ten przykład pobiera warstwę bąbelkową, która renderuje punkty klastra i dodaje zdarzenie kliknięcia, które po wyzwoleniu, obliczeniu i powiększeniu mapy do następnego poziomu powiększenia, przy którym klaster zostanie `getClusterExpansionZoom` rozbicie przy `DataSource` użyciu metody klasy i `cluster_id` Właściwość klikniętego klastrowanego punktu danych. 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="GetClusterExpansionZoom klastra" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz <a href='https://codepen.io/azuremaps/pen/moZWeV/'>getClusterExpansionZoom klastra</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-## <a name="display-cluster-area"></a>Wyświetlanie obszaru klastra 
-
-Dane punktów reprezentowane przez klaster są rozłożone na obszar. W tym przykładzie, gdy wskaźnik myszy znajduje się nad klastrem, poszczególne punkty danych, które zawiera, zostaną użyte do obliczenia wypukłego kadłuba i wyświetlenia na mapie w celu wyświetlenia obszaru. Wszystkie punkty zawarte w klastrze mogą być pobierane ze źródła danych przy użyciu `getClusterLeaves` metody. Kadłub wypukły jest wielokątem, który otacza zestaw punktów jak elastyczną i może być obliczany przy użyciu `atlas.math.getConvexHull` metody.
+This example takes a bubble layer that renders cluster points and adds a click event that when triggered, calculate, and zoom the map to the next zoom level at which the cluster will break apart using the `getClusterExpansionZoom` method of the `DataSource` class and the `cluster_id` property of the clicked clustered data point. 
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Kadłub wypukłych obszarów klastra" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zapoznaj się z <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>kadłubem obszar klastra</a> piórem<a href='https://codepen.io/azuremaps'>@azuremaps</a>wypukły przez Azure Maps () w witrynie <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="aggregating-data-in-clusters"></a>Agregowanie danych w klastrach
+## <a name="display-cluster-area"></a>Display cluster area 
 
-Często klastry są reprezentowane przy użyciu symbolu z liczbą punktów znajdujących się w klastrze, jednak czasami pożądane jest dalsze dostosowanie stylu klastrów na podstawie pewnej metryki, na przykład łącznego przychodu wszystkich punktów w klastrze. Właściwości niestandardowe z agregacją klastra mogą być tworzone i wypełniane przy użyciu obliczeń [wyrażeń agregujących](data-driven-style-expressions-web-sdk.md#aggregate-expression) .  Agregacje klastrów można definiować w `clusterProperties` opcjach. `DataSource`
+The point data that a cluster represents is spread over an area. In this sample when the mouse is hovered over a cluster, the individual data points it contains (leaves) will be used to calculate a convex hull and displayed on the map to show the area. All points contained in a cluster can be retrieved from the data source using the `getClusterLeaves` method. A convex hull is a polygon that wraps a set of points like an elastic band and can be calculated using the `atlas.math.getConvexHull` method.
 
-Poniższy przykład używa wyrażenia agregującego, aby obliczyć liczbę na podstawie właściwości typu jednostki każdego punktu danych w klastrze.
+<br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Agregacje klastra" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz agregaty <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>klastra</a> piórem według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+ <iframe height="500" style="width: 100%;" scrolling="no" title="Cluster area convex hull" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Cluster area convex hull</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="aggregating-data-in-clusters"></a>Aggregating data in clusters
 
-Dowiedz się więcej na temat klas i metod używanych w tym artykule:
+Often clusters are represented using a symbol with the number of points that are within the cluster, however sometimes it is desirable to further customize the style of clusters based on some metric, like the total revenue of all points within a cluster. With cluster aggregates custom properties can be created and populated using an [aggregate expression](data-driven-style-expressions-web-sdk.md#aggregate-expression) calculation.  Cluster aggregates can be defined in `clusterProperties` option of the `DataSource`.
 
-> [!div class="nextstepaction"]
-> [DataSource — Klasa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+The following sample uses an aggregate expression to calculate a count based on the entity type property of each data point in a cluster.
 
-> [!div class="nextstepaction"]
-> [Obiekt DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster aggregates" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+See the Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregates</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
-> [!div class="nextstepaction"]
-> [Atlas. Math — przestrzeń nazw](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz przykłady kodu, aby dodać funkcje do aplikacji:
-
-> [!div class="nextstepaction"]
-> [Dodaj warstwę bąbelkową](map-add-bubble-layer.md)
+Learn more about the classes and methods used in this article:
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę symboli](map-add-pin.md)
+> [DataSource class](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę mapy cieplnej](map-add-heat-map-layer.md)
+> [DataSourceOptions object](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [atlas.math namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+
+See code examples to add functionality to your app:
+
+> [!div class="nextstepaction"]
+> [Add a bubble layer](map-add-bubble-layer.md)
+
+> [!div class="nextstepaction"]
+> [Add a symbol layer](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Add a heat map layer](map-add-heat-map-layer.md)

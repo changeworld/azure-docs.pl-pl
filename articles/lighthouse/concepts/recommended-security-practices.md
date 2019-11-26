@@ -1,46 +1,46 @@
 ---
 title: Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
-description: W przypadku korzystania z funkcji zarządzania zasobami delegowanymi przez platformę Azure ważne jest, aby uwzględnić zabezpieczenia i kontrolę dostępu.
+description: When using Azure delegated resource management, it’s important to consider security and access control.
 ms.date: 07/11/2019
-ms.topic: overview
-ms.openlocfilehash: e0f0a9d4cdd56ff1bca9b9faf493d3e0d68e558c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 18decc337722c1dc64fac94679d783dd55915ee6
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132471"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463898"
 ---
 # <a name="recommended-security-practices"></a>Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
 
-W przypadku korzystania z funkcji zarządzania zasobami delegowanymi przez platformę Azure ważne jest, aby uwzględnić zabezpieczenia i kontrolę dostępu. Użytkownicy w dzierżawie będą mieć bezpośredni dostęp do subskrypcji klientów i grup zasobów, dlatego należy podjąć kroki w celu utrzymania bezpieczeństwa dzierżawy. Należy również upewnić się, że zezwolisz na dostęp, który jest potrzebny do efektywnego zarządzania zasobami klientów. Ten temat zawiera zalecenia ułatwiające wykonanie tej czynności.
+When using Azure delegated resource management, it’s important to consider security and access control. Users in your tenant will have direct access to customer subscriptions and resource groups, so you’ll want to take steps to maintain your tenant’s security. You’ll also want to make sure you only allow the access that’s needed to effectively manage your customers’ resources. This topic provides recommendations to help you do so.
 
-## <a name="require-azure-multi-factor-authentication"></a>Wymagaj Multi-Factor Authentication platformy Azure
+## <a name="require-azure-multi-factor-authentication"></a>Require Azure Multi-Factor Authentication
 
-[Usługa Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (znana także jako weryfikacja dwuetapowa) zapobiega uzyskaniu dostępu do konta przez osoby atakujące, wymagając wielu kroków uwierzytelniania. Należy wymagać Multi-Factor Authentication dla wszystkich użytkowników w dzierżawie dostawcy usług, w tym wszystkich użytkowników, którzy będą mieli dostęp do zasobów klienta.
+[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)  (also known as two-step verification) helps prevent attackers from gaining access to an account by requiring multiple authentication steps. You should require Multi-Factor Authentication for all users in your service provider tenant, including any users who will have access to customer resources.
 
-Zalecamy poproszenie klientów o wdrożenie Multi-Factor Authentication platformy Azure w swoich dzierżawach.
+We suggest that you ask your customers to implement Azure Multi-Factor Authentication in their tenants as well.
 
-## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Przypisywanie uprawnień do grup przy użyciu zasad najniższych uprawnień
+## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Assign permissions to groups, using the principle of least privilege
 
-Aby ułatwić zarządzanie, zalecamy korzystanie z grup użytkowników usługi Azure AD dla każdej roli wymaganej do zarządzania zasobami klientów. Pozwala to na dodanie lub usunięcie poszczególnych użytkowników do grupy w zależności od potrzeb, zamiast przypisywania uprawnień bezpośrednio do tego użytkownika.
+To make management easier, we recommend using Azure AD user groups for each role required to manage your customers’ resources. This lets you add or remove individual users to the group as needed, rather than assigning permissions directly to that user.
 
-Podczas tworzenia struktury uprawnień należy przestrzegać zasad najniższych uprawnień, aby użytkownicy mieli tylko uprawnienia potrzebne do ukończenia swoich zadań, co zmniejsza prawdopodobieństwo wystąpienia nieumyślnego błędu.
+When creating your permission structure, be sure to follow the principle of least privilege so that users only have the permissions needed to complete their job, helping to reduce the chance of inadvertent errors.
 
-Na przykład możesz chcieć użyć struktury podobnej do następujących:
+For example, you may want to use a structure like this:
 
-|Nazwa grupy  |Typ  |principalId  |Definicja roli  |Identyfikator definicji roli  |
+|Group name  |Typ  |principalId  |Definicja roli  |Role definition ID  |
 |---------|---------|---------|---------|---------|
-|Architektury     |Grupa użytkowników         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Architects     |Grupa użytkowników         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Ocena     |Grupa użytkowników         |\<principalId\>         |Czytelnik         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|Specjaliści dla maszyn wirtualnych     |Grupa użytkowników         |\<principalId\>         |Współautor maszyny wirtualnej         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automatyzacja     |Główna nazwa usługi (SPN)         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|VM Specialists     |Grupa użytkowników         |\<principalId\>         |VM Contributor         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Automation     |Service principal name (SPN)         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
-Po utworzeniu tych grup można przypisywać użytkowników zgodnie z wymaganiami. Dodawać tylko użytkowników, którzy naprawdę muszą mieć dostęp. Pamiętaj o regularnym przeglądaniu członkostwa w grupach i usunięciu wszystkich użytkowników, którzy nie są już zarejestrowani.
+Once you’ve created these groups, you can assign users as needed. Only add the users who truly need to have access. Be sure to review group membership regularly and remove any users that are no longer appropriate or necessary to include.
 
-Należy pamiętać, że po dołączeniu [klientów za pomocą publicznej oferty usług zarządzanej](../how-to/publish-managed-services-offers.md)każda grupa (lub użytkownik lub nazwa główna usługi) będzie mieć takie same uprawnienia dla każdego klienta, który kupuje plan. Aby przypisać różne grupy do pracy z poszczególnymi klientami, należy opublikować oddzielny plan prywatny, który jest wyłączny dla każdego klienta, lub dołączyć klientów osobno przy użyciu szablonów Azure Resource Manager. Można na przykład opublikować plan publiczny o bardzo ograniczonym dostępie, a następnie skontaktować się z klientem bezpośrednio w celu dołączenia swoich zasobów w celu uzyskania dodatkowego dostępu przy użyciu dostosowanego szablonu zasobów platformy Azure w razie potrzeby.
+Keep  in mind that when you [onboard customers through a public managed service offer](../how-to/publish-managed-services-offers.md), any group (or user or service principal) that you include will have the same permissions for every customer who purchases the plan. To assign different groups to work with each customer, you’ll need to publish a separate private plan that is exclusive to each customer, or onboard customers individually by using Azure Resource Manager templates. For example, you could publish a public plan that has very limited access, then work with the customer directly to onboard their resources for additional access using a customized Azure Resource Template granting additional access as needed.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Wdróż Multi-Factor Authentication platformy Azure](../../active-directory/authentication/howto-mfa-getstarted.md).
-- Dowiedz się więcej na temat [środowisk zarządzania między dzierżawcami](cross-tenant-management-experience.md).
+- [Deploy Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
+- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).

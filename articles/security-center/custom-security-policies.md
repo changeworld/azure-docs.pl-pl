@@ -1,6 +1,6 @@
 ---
-title: Tworzenie niestandardowych zasad zabezpieczeń w Azure Security Center | Microsoft Docs
-description: Definicje zasad niestandardowych platformy Azure monitorowane przez Azure Security Center.
+title: Create custom security policies in Azure Security Center | Microsoft Docs
+description: Azure custom policy definitions monitored by Azure Security Center.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,65 +8,67 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d1ef8852916e598373c104fb98a1c09ab656fbaf
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 3e60c0e165b8f9ec79aac2048011d9e315b0ce18
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196202"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483965"
 ---
-# <a name="using-custom-security-policies-preview"></a>Korzystanie z niestandardowych zasad zabezpieczeń (wersja zapoznawcza)
+# <a name="using-custom-security-policies-preview"></a>Using custom security policies (Preview)
 
-Aby pomóc w zabezpieczeniu systemów i środowiska, Azure Security Center generuje zalecenia dotyczące zabezpieczeń. Zalecenia te są oparte na najlepszych rozwiązaniach branżowych, które są włączone do ogólnych, domyślnych zasad zabezpieczeń dostarczonych wszystkim klientom. Mogą również pochodzić z Security Center znajomości standardów branżowych i prawnych.
+To help secure your systems and environment, Azure Security Center generates security recommendations. These recommendations are based on industry best practices, which are incorporated into the generic, default security policy supplied to all customers. They can also come from Security Center's knowledge of industry and regulatory standards.
 
-Za pomocą tej funkcji w wersji zapoznawczej możesz dodać własne inicjatywy *niestandardowe* . Następnie otrzymasz zalecenia, jeśli środowisko nie będzie zgodne z tworzonymi zasadami.
+With this preview feature, you can add your own *custom* initiatives. You'll then receive recommendations if your environment doesn't follow the policies you create.
 
-Zgodnie z [opisem w dokumentacji](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) Azure Policy, gdy określisz lokalizację dla inicjatywy niestandardowej, musi to być grupa zarządzania lub subskrypcja. 
+As discussed [here](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) in the Azure Policy documentation, when you specify a location for your custom initiative, it must be a management group or a subscription. 
 
-## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Aby dodać inicjatywę niestandardową do subskrypcji 
+## <a name="to-add-a-custom-initiative-to-your-subscription"></a>To add a custom initiative to your subscription 
 
-1. Na pasku bocznym Security Center Otwórz stronę **zasady zabezpieczeń** .
+1. From Security Center's sidebar, open the **Security policy** page.
 
-1. Wybierz subskrypcję lub grupę zarządzania, do której chcesz dodać inicjatywę niestandardową.
+1. Select a subscription or Management Group to which you would like to add a custom initiative.
 
-    [![wybrać subskrypcję, dla której chcesz utworzyć zasady niestandardowe](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
-
-    > [!NOTE]
-    > Dodanie niestandardowego standardu powoduje przypisanie *inicjatywy* do tego zakresu. Dlatego zalecamy wybranie najszerszego zakresu wymaganego dla tego przydziału. 
-
-1. Na stronie zasady zabezpieczeń w obszarze inicjatywy niestandardowe (wersja zapoznawcza) kliknij pozycję **Dodaj inicjatywę niestandardową**.
-
-    [![kliknij pozycję * * Dodaj inicjatywę niestandardową * *](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
-
-    Zostanie wyświetlona następująca strona:
-
-    ![Tworzenie lub Dodawanie zasad](media/custom-security-policies/create-or-add-custom-policy.png)
-
-1. Na stronie Dodawanie niestandardowych inicjatyw Przejrzyj listę zasad niestandardowych już utworzonych w organizacji. Jeśli zobaczysz, że chcesz ją przypisać do swojej subskrypcji, kliknij przycisk **Dodaj**. Jeśli na liście nie ma inicjatywy, która spełnia Twoje wymagania, Pomiń ten krok.
-
-1. Aby utworzyć nową inicjatywę niestandardową:
-
-    1. Kliknij przycisk **Utwórz nowy**.
-    1. Wprowadź lokalizację i nazwę definicji.
-    1. Wybierz zasady do uwzględnienia i kliknij przycisk **Dodaj**.
-    1. Wprowadź wszelkie wymagane parametry.
-    1. Kliknij pozycję **Zapisz**.
-    1. Na stronie Dodaj niestandardowe inicjatywy kliknij przycisk Odśwież, a Twoja nowa inicjatywa będzie wyświetlana jako dostępna.
-    1. Kliknij pozycję **Dodaj** i przypisz ją do subskrypcji.
+    [![Selecting a subscription for which you'll create your custom policy](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > Tworzenie nowych inicjatyw wymaga poświadczeń właściciela subskrypcji. Aby uzyskać więcej informacji na temat ról platformy Azure, zobacz [uprawnienia w Azure Security Center](security-center-permissions.md).
+    > You must add custom standards at the subscription level (or higher) for them to be evaluated and displayed in Security Center. 
+    >
+    > When you add a custom standard, it assigns an *initiative* to that scope. We therefore recommend that you select the widest scope required for that assignment.
 
-1. Aby zobaczyć, jakie są zalecenia dotyczące zasad, kliknij przycisk **zalecenia** na pasku bocznym, aby otworzyć stronę zalecenia. Zalecenia będą wyświetlane z etykietą "niestandardowy" i będą dostępne w ciągu około godziny.
+1. In the Security policy page, under Your custom initiatives (Preview), click **Add a custom initiative**.
 
-    [![zalecenia niestandardowe](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+    [![Click **Add a custom initiative**](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+
+    The following page appears:
+
+    ![Create or add a policy](media/custom-security-policies/create-or-add-custom-policy.png)
+
+1. In the Add custom initiatives page, review the list of custom policies already created in your organization. If you see one you want to assign to your subscription, click **Add**. If there isn't an initiative in the list that meets your needs, skip this step.
+
+1. To create a new custom initiative:
+
+    1. Click **Create new**.
+    1. Enter the definition's location and name.
+    1. Select the policies to include and click **Add**.
+    1. Enter any desired parameters.
+    1. Kliknij przycisk **Save** (Zapisz).
+    1. In the Add custom initiatives page, click refresh and your new initiative will be shown as available.
+    1. Click **Add** and assign it to your subscription.
+
+    > [!NOTE]
+    > Creating new initiatives requires subscription owner credentials. For more information about Azure roles, see [Permissions in Azure Security Center](security-center-permissions.md).
+
+1. To see the resulting recommendations for your policy, click **Recommendations** from the sidebar to open the recommendations page. The recommendations will appear with a “Custom” label and be available within approximately one hour.
+
+    [![Custom recommendations](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób tworzenia niestandardowych zasad zabezpieczeń. 
+In this article, you learned how to create custom security policies. 
 
-Inne powiązane materiały można znaleźć w następujących artykułach: 
+For other related material, see the following articles: 
 
-- [Omówienie zasad zabezpieczeń](tutorial-security-policy.md)
-- [Lista wbudowanych zasad zabezpieczeń](security-center-policy-definitions.md)
+- [The overview of security policies](tutorial-security-policy.md)
+- [A list of the built-in security policies](security-center-policy-definitions.md)

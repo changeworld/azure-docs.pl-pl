@@ -1,187 +1,152 @@
 ---
-title: Informacje o tym, jak alerty metryk działają w Azure Monitor.
-description: Zapoznaj się z informacjami o tym, co możesz zrobić z alertami metryk i jak działają w Azure Monitor.
-author: snehithm
-ms.author: snmuvva
-ms.date: 9/18/2018
+title: Understand how metric alerts work in Azure Monitor.
+description: Get an overview of what you can do with metric alerts and how they work in Azure Monitor.
+author: rboucher
+ms.author: robb
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972059"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484248"
 ---
-# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informacje o tym, jak alerty metryk działają w Azure Monitor
+# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Understand how metric alerts work in Azure Monitor
 
-Alerty metryk w Azure Monitor działają na podstawie metryk wielowymiarowych. Te metryki mogą być [metrykami platformy](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), metrykami niestandardowymi, popularnymi [dziennikami z Azure monitor konwertowane na](../../azure-monitor/platform/alerts-metric-logs.md) metryki i metryki Application Insights. [](../../azure-monitor/platform/metrics-custom-overview.md) Alerty metryk oceniają w regularnych odstępach czasu, aby sprawdzić, czy warunki dotyczące co najmniej jednej z serii czasu metryk są prawdziwe i powiadamiać o spełnieniu oceny. Alerty metryk są stanowe, oznacza to, że wysyłają powiadomienia tylko wtedy, gdy stan zmieni się.
+Metric alerts in Azure Monitor work on top of multi-dimensional metrics. These metrics could be [platform metrics](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [custom metrics](../../azure-monitor/platform/metrics-custom-overview.md), [popular logs from Azure Monitor converted to metrics](../../azure-monitor/platform/alerts-metric-logs.md) and Application Insights metrics. Metric alerts evaluate at regular intervals to check if conditions on one or more metric time-series are true and notify you when the evaluations are met. Metric alerts are stateful, that is, they only send out notifications when the state changes.
 
-## <a name="how-do-metric-alerts-work"></a>Jak działają Alerty metryk?
+## <a name="how-do-metric-alerts-work"></a>How do metric alerts work?
 
-Można zdefiniować regułę alertu metryki, określając zasób docelowy do monitorowania, nazwę metryki, typ warunku (statyczny lub dynamiczny) oraz warunek (operator i próg/czułość) oraz grupę akcji, która ma zostać wyzwolona po wyzwoleniu reguły alertu. Typy warunków mają wpływ na sposób określania progów. [Dowiedz się więcej o opcjach typu i czułości wartości progów dynamicznych](alerts-dynamic-thresholds.md).
+You can define a metric alert rule by specifying a target resource to be monitored, metric name, condition type (static or dynamic), and the condition (an operator and a threshold/sensitivity) and an action group to be triggered when the alert rule fires. Condition types affect the way thresholds are determined. [Learn more about Dynamic Thresholds condition type and sensitivity options](alerts-dynamic-thresholds.md).
 
-### <a name="alert-rule-with-static-condition-type"></a>Reguła alertu z typem warunku statycznego
+### <a name="alert-rule-with-static-condition-type"></a>Alert rule with static condition type
 
-Załóżmy, że utworzono prostą regułę alertu metryki statycznej progu:
+Let's say you have created a simple static threshold metric alert rule as follows:
 
-- Zasób docelowy (zasób platformy Azure, który chcesz monitorować): myVM
-- Metryki Procentowe użycie procesora CPU
-- Typ warunku: Static
-- Agregacja czasu (statystyka, która jest uruchamiana za pośrednictwem wartości metryk nieprzetworzonych. Agregacje obsługiwanego czasu to min, Max, średnia, suma, liczba): Average
-- Okres (wyszukanie okna, nad którym są sprawdzane wartości metryk): W ciągu 5 ostatnich minut
-- Częstotliwość (częstotliwość, z jaką alert dotyczący metryki sprawdza, czy warunki są spełnione): 1 min
-- Zakład Większe niż
-- Próg 70
+- Target Resource (the Azure resource you want to monitor): myVM
+- Metric: Percentage CPU
+- Condition Type: Static
+- Time Aggregation (Statistic that is run over raw metric values. Supported time aggregations are Min, Max, Avg, Total, Count): Average
+- Period (The look back window over which metric values are checked): Over the last 5 mins
+- Frequency (The frequency with which the metric alert checks if the conditions are met): 1 min
+- Operator: Greater Than
+- Threshold: 70
 
-Od momentu utworzenia reguły alertu monitor jest uruchamiany co 1 min i sprawdza wartości metryk dla ostatnich 5 minut i sprawdza, czy średnia z tych wartości przekracza 70. Jeśli spełniony jest warunek, średni procent czasu procesora dla ostatnich 5 minut przekracza 70, reguła alertu wyzwala aktywowane powiadomienie. W przypadku skonfigurowania w grupie akcji skojarzonej z regułą alertu wiadomości e-mail lub elementu webhook zostanie wyświetlone aktywne powiadomienie.
+From the time the alert rule is created, the monitor runs every 1 min and looks at metric values for the last 5 minutes and checks if the average of those values exceeds 70. If the condition is met that is, the average Percentage CPU for the last 5 minutes exceeds 70, the alert rule fires an activated notification. If you have configured an email or a web hook action in the action group associated with the alert rule, you will receive an activated notification on both.
 
-W przypadku korzystania z wielu warunków w jednej regule reguła "ands".  Oznacza to, że alert jest uruchamiany, gdy wszystkie warunki w alercie będą oceniane jako prawdziwe i rozwiązywane, gdy jeden z warunków nie ma już wartości true. Przykładem tego typu alertu będzie alert, gdy "procesor CPU większy niż 90%" i "Długość kolejki przekracza 300 elementów". 
+When you are using multiple conditions in one rule, the rule "ands" the conditions together.  That is, the alert fires when all the conditions in the alert evaluate as true and resolve when one of the conditions is no longer true. And example of this type of alert would be alert when "CPU higher than 90%" and "queue length is over 300 items". 
 
-### <a name="alert-rule-with-dynamic-condition-type"></a>Reguła alertu z typem warunku dynamicznego
+### <a name="alert-rule-with-dynamic-condition-type"></a>Alert rule with dynamic condition type
 
-Załóżmy, że utworzono prostą regułę alertu metryki dynamicznej wartości progowej:
+Let's say you have created a simple Dynamic Thresholds metric alert rule as follows:
 
-- Zasób docelowy (zasób platformy Azure, który chcesz monitorować): myVM
-- Metryki Procentowe użycie procesora CPU
-- Typ warunku: Dynamiczne
-- Agregacja czasu (statystyka, która jest uruchamiana za pośrednictwem wartości metryk nieprzetworzonych. Agregacje obsługiwanego czasu to min, Max, średnia, suma, liczba): Average
-- Okres (wyszukanie okna, nad którym są sprawdzane wartości metryk): W ciągu 5 ostatnich minut
-- Częstotliwość (częstotliwość, z jaką alert dotyczący metryki sprawdza, czy warunki są spełnione): 1 min
-- Zakład Większe niż
-- Czułości Średni
-- Poszukaj kropek: 4
-- Liczba naruszeń: 4
+- Target Resource (the Azure resource you want to monitor): myVM
+- Metric: Percentage CPU
+- Condition Type: Dynamic
+- Time Aggregation (Statistic that is run over raw metric values. Supported time aggregations are Min, Max, Avg, Total, Count): Average
+- Period (The look back window over which metric values are checked): Over the last 5 mins
+- Frequency (The frequency with which the metric alert checks if the conditions are met): 1 min
+- Operator: Greater Than
+- Sensitivity: Medium
+- Look Back Periods: 4
+- Number of Violations: 4
 
-Po utworzeniu reguły alertu algorytm dynamicznej uczenia maszynowego uzyska dostępne dane historyczne, oblicza próg, który najlepiej pasuje do wzorca zachowania serii metryk i będzie stale uczyć się na podstawie nowych danych w celu utworzenia wartość progowa jest bardziej dokładna.
+Once the alert rule is created, the Dynamic Thresholds machine learning algorithm will acquire historical data that is available, calculate threshold that best fits the metric series behavior pattern and will continuously learn based on new data to make the threshold more accurate.
 
-Od momentu utworzenia reguły alertu monitor jest uruchamiany co 1 min i sprawdza wartości metryk w ostatnich 20 minutach pogrupowane w 5 minut i sprawdza, czy średnia wartość okresu w każdym z 4 okresów przekracza oczekiwany próg. Jeśli spełniony jest warunek, średni procent czasu procesora w ostatnich 20 minutach (cztery 5 minut okresów) odbiegał od oczekiwanego zachowania czterokrotnie, reguła alertu wyzwala aktywowane powiadomienie. W przypadku skonfigurowania w grupie akcji skojarzonej z regułą alertu wiadomości e-mail lub elementu webhook zostanie wyświetlone aktywne powiadomienie.
+From the time the alert rule is created, the monitor runs every 1 min and looks at metric values in the last 20 minutes grouped into 5 minutes periods and checks if the average of the period values in each of the 4 periods exceeds the expected threshold. If the condition is met that is, the average Percentage CPU in the last 20 minutes (four 5 minutes periods) deviated from expected behavior four times, the alert rule fires an activated notification. If you have configured an email or a web hook action in the action group associated with the alert rule, you will receive an activated notification on both.
 
-### <a name="view-and-resolution-of-fired-alerts"></a>Wyświetlanie i rozwiązywanie wygenerowanego alertu
+### <a name="view-and-resolution-of-fired-alerts"></a>View and resolution of fired alerts
 
-Powyższe przykłady reguł alertów można również wyświetlić w Azure Portal w bloku **wszystkie alerty** .
+The above examples of alert rules firing can also be viewed in the Azure portal in the **All Alerts** blade.
 
-Załóżmy, że użycie "myVM" jest nadal powyżej progu w kolejnych sprawdzeniach, reguła alertu nie zostanie uruchomiona ponownie, dopóki te warunki nie zostaną rozwiązane.
+Say the usage on "myVM" continues being above the threshold in subsequent checks, the alert rule will not fire again until the conditions are resolved.
 
-Po pewnym czasie użycie na "myVM" powróci do normalnego (spadnie poniżej wartości progowej). Reguła alertu monitoruje warunek przez dwa razy, aby wysłać rozpoznane powiadomienie. Reguła alertu wysyła komunikat rozwiązany/zdezaktywowany, gdy warunek alertu nie jest spełniony przez trzy kolejne okresy, aby zmniejszyć hałas w przypadku warunków niestabilny.
+After some time, the usage on "myVM" comes back down to normal (goes below the threshold). The alert rule monitors the condition for two more times, to send out a resolved notification. The alert rule sends out a resolved/deactivated message when the alert condition is not met for three consecutive periods to reduce noise in case of flapping conditions.
 
-Gdy rozpoznane powiadomienie jest wysyłane za pośrednictwem elementów webhook lub email, stan wystąpienia alertu (nazywany stanem monitora) w Azure Portal jest również ustawiany jako rozwiązany.
+As the resolved notification is sent out via web hooks or email, the status of the alert instance (called monitor state) in Azure portal is also set to resolved.
 
-### <a name="using-dimensions"></a>Korzystanie z wymiarów
+### <a name="using-dimensions"></a>Using dimensions
 
-Alerty metryk w Azure Monitor obsługują również monitorowanie kombinacji wartości wymiarów wielu z jedną regułą. Rozważmy, dlaczego możesz użyć wielu kombinacji wymiarów z pomocą przykładu.
+Metric alerts in Azure Monitor also support monitoring multiple dimensions value combinations with one rule. Let's understand why you might use multiple dimension combinations with the help of an example.
 
-Załóżmy, że masz plan App Service dla witryny sieci Web. Chcesz monitorować użycie procesora CPU w wielu wystąpieniach z uruchomioną witryną sieci Web lub aplikacją. Można to zrobić za pomocą reguły alertu metryk w następujący sposób:
+Say you have an App Service plan for your website. You want to monitor CPU usage on multiple instances running your web site/app. You can do that using a metric alert rule as follows:
 
-- Zasób docelowy: myAppServicePlan
-- Metryki Procentowe użycie procesora CPU
-- Typ warunku: Static
+- Target resource: myAppServicePlan
+- Metric: Percentage CPU
+- Condition Type: Static
 - Wymiary
-  - Wystąpienie = InstanceName1, InstanceName2
-- Agregacja czasu: Average
-- Czasu W ciągu 5 ostatnich minut
-- Jaką 1 min
-- Zakład GreaterThan
-- Próg 70
+  - Instance = InstanceName1, InstanceName2
+- Time Aggregation: Average
+- Period: Over the last 5 mins
+- Frequency: 1 min
+- Operator: GreaterThan
+- Threshold: 70
 
-Tak jak wcześniej, ta reguła monitoruje, czy średnie użycie procesora CPU w ciągu ostatnich 5 minut przekracza 70%. Jednak za pomocą tej samej reguły można monitorować dwa wystąpienia z uruchomioną witryną sieci Web. Każde wystąpienie będzie monitorowane pojedynczo i będzie otrzymywać powiadomienia pojedynczo.
+Like before, this rule monitors if the average CPU usage for the last 5 minutes exceeds 70%. However, with the same rule you can monitor two instances running your website. Each instance will get monitored individually and you will get notifications individually.
 
-Załóżmy, że masz aplikację sieci Web, która widzi ogromne zapotrzebowanie i musisz dodać więcej wystąpień. Powyższa zasada nadal monitoruje tylko dwa wystąpienia. Można jednak utworzyć regułę w następujący sposób:
+Say you have a web app that is seeing massive demand and you will need to add more instances. The above rule still monitors just two instances. However, you can create a rule as follows:
 
-- Zasób docelowy: myAppServicePlan
-- Metryki Procentowe użycie procesora CPU
-- Typ warunku: Static
+- Target resource: myAppServicePlan
+- Metric: Percentage CPU
+- Condition Type: Static
 - Wymiary
-  - Wystąpienie = *
-- Agregacja czasu: Average
-- Czasu W ciągu 5 ostatnich minut
-- Jaką 1 min
-- Zakład GreaterThan
-- Próg 70
+  - Instance = *
+- Time Aggregation: Average
+- Period: Over the last 5 mins
+- Frequency: 1 min
+- Operator: GreaterThan
+- Threshold: 70
 
-Ta reguła będzie automatycznie monitorować wszystkie wartości dla wystąpienia, np. wystąpienia można monitorować w miarę ich występowania, nie trzeba ponownie modyfikować reguły alertu metryki.
+This rule will automatically monitor all values for the instance i.e you can monitor your instances as they come up without needing to modify your metric alert rule again.
 
-W przypadku monitorowania wielu wymiarów reguła alertów dynamicznych umożliwia tworzenie dostosowanych progów dla setek serii metrycznych w danym momencie. Progi dynamiczne mają mniejszą liczbę reguł alertów, które umożliwiają zarządzanie i znaczną oszczędność czasu na potrzeby zarządzania i tworzenia reguł alertów.
+When monitoring multiple dimensions, Dynamic Thresholds alerts rule can create tailored thresholds for hundreds of metric series at a time. Dynamic Thresholds results in fewer alert rules to manage and significant time saving on management and creation of alerts rules.
 
-Załóżmy, że masz aplikację sieci Web z wieloma wystąpieniami i nie wiesz, co to jest najbardziej odpowiedni próg. Powyższe reguły zawsze będą używać progu 70%. Można jednak utworzyć regułę w następujący sposób:
+Say you have a web app with many instances and you don't know what the most suitable threshold is. The above rules will always use threshold of 70%. However, you can create a rule as follows:
 
-- Zasób docelowy: myAppServicePlan
-- Metryki Procentowe użycie procesora CPU
-- Typ warunku: Dynamiczne
+- Target resource: myAppServicePlan
+- Metric: Percentage CPU
+- Condition Type: Dynamic
 - Wymiary
-  - Wystąpienie = *
-- Agregacja czasu: Average
-- Czasu W ciągu 5 ostatnich minut
-- Jaką 1 min
-- Zakład GreaterThan
-- Czułości Średni
-- Poszukaj kropek: 1
-- Liczba naruszeń: 1
+  - Instance = *
+- Time Aggregation: Average
+- Period: Over the last 5 mins
+- Frequency: 1 min
+- Operator: GreaterThan
+- Sensitivity: Medium
+- Look Back Periods: 1
+- Number of Violations: 1
 
-Ta reguła monitoruje, czy średnie użycie procesora CPU w ciągu ostatnich 5 minut przekracza oczekiwane zachowanie dla każdego wystąpienia. Ta sama reguła pozwala monitorować wystąpienia w miarę ich występowania, nie trzeba ponownie modyfikować reguły alertu metryki. Każde wystąpienie uzyska próg, który pasuje do wzorca zachowania serii metryk i ciągle zmienia się w oparciu o nowe dane, aby zapewnić dokładniejszy próg. Podobnie jak przed, każde wystąpienie zostanie monitorowane pojedynczo i otrzymasz powiadomienia pojedynczo.
+This rule monitors if the average CPU usage for the last 5 minutes exceeds the expected behavior for each instance. The same rule you can monitor instances as they come up without needing to modify your metric alert rule again. Each instance will get a threshold that fits the metric series behavior pattern and will continuously change based on new data to make the threshold more accurate. Like before, each instance will be monitored individually and you will get notifications individually.
 
-Rosnące okresy zawracania i liczby naruszeń mogą również umożliwić filtrowanie alertów tylko w przypadku definicji znaczącego odchylenia. [Dowiedz się więcej o opcjach zaawansowanych progów dynamicznych](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
+Increasing look-back periods and number of violations can also allow filtering alerts to only alert on your definition of a significant deviation. [Learn more about Dynamic Thresholds advanced options](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu alertów metryk w Azure Monitor
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitoring at scale using metric alerts in Azure Monitor
 
-Do tej pory dowiesz się, jak można użyć pojedynczego alertu metryki do monitorowania jednej lub wielu serii czasu metryk związanych z pojedynczym zasobem platformy Azure. Wiele razy można chcieć zastosować tę samą regułę alertu do wielu zasobów. Azure Monitor obsługuje również monitorowanie wielu zasobów przy użyciu jednej reguły alertu metryki. Ta funkcja jest obecnie obsługiwana tylko na maszynach wirtualnych. Ponadto pojedynczy alert dotyczący metryki może monitorować zasoby w jednym regionie świadczenia usługi Azure.
+So far, you have seen how a single metric alert could be used to monitor one or many metric time-series related to a single Azure resource. Many times, you might want the same alert rule applied to many resources. Azure Monitor also supports monitoring multiple resources with one metric alert rule. This feature is currently supported only on virtual machines. Also, a single metric alert can monitor resources in one Azure region.
 
-Zakres monitorowania można określić za pomocą pojedynczego alertu dotyczącego metryki na jeden z trzech sposobów:
+You can specify the scope of monitoring by a single metric alert in one of three ways:
 
-- jako lista maszyn wirtualnych w jednym regionie świadczenia usługi Azure w ramach subskrypcji
-- wszystkie maszyny wirtualne (w jednym regionie świadczenia usługi Azure) w jednej lub większej liczbie grup zasobów w subskrypcji
-- wszystkie maszyny wirtualne (w jednym regionie świadczenia usługi Azure) w jednej subskrypcji
+- as a list of virtual machines in one Azure region within a subscription
+- all virtual machines (in one Azure region) in one or more resource groups in a subscription
+- all virtual machines (in one Azure region) in one subscription
 
-Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów, jest podobne do [tworzenia dowolnego innego alertu](alerts-metric.md) dotyczącego metryki monitorującego pojedynczy zasób. Tylko różnica polega na tym, że należy wybrać wszystkie zasoby, które mają być monitorowane. Te reguły można również utworzyć za poorednictwem [szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Zostaną odebrane indywidualne powiadomienia dla każdej maszyny wirtualnej.
+Creating metric alert rules that monitor multiple resources is like [creating any other metric alert](alerts-metric.md) that monitors a single resource. Only difference is that you would select all the resources you want to monitor. You can also create these rules through [Azure Resource Manager templates](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). You will receive individual notifications for each virtual machine.
 
-## <a name="typical-latency"></a>Typowe opóźnienia
+## <a name="typical-latency"></a>Typical latency
 
-W przypadku alertów dotyczących metryk, zazwyczaj otrzymasz powiadomienie w ciągu 5 minut, jeśli ustawisz częstotliwość reguły alertu na 1 min. W przypadku dużego obciążenia systemów powiadomień może pojawić się dłuższe opóźnienie.
+For metric alerts, typically you will get notified in under 5 minutes if you set the alert rule frequency to be 1 min. In cases of heavy load for notification systems, you might see a longer latency.
 
-## <a name="supported-resource-types-for-metric-alerts"></a>Obsługiwane typy zasobów dla alertów metryk
+## <a name="supported-resource-types-for-metric-alerts"></a>Supported resource types for metric alerts
 
-Pełną listę obsługiwanych typów zasobów można znaleźć w tym [artykule](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+You can find the full list of supported resource types in this [article](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-Jeśli obecnie używasz klasycznych alertów metryk i chcesz zobaczyć, czy alerty metryk obsługują wszystkie typy zasobów, z których korzystasz, w poniższej tabeli przedstawiono typy zasobów obsługiwane przez klasyczne alerty metryk i jeśli są one obecnie obsługiwane przez alerty metryk.
-
-|Typ zasobu obsługiwany przez klasyczne alerty metryk | Obsługiwane przez alerty metryk |
-|-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | Tak |
-| Microsoft.Batch/batchAccounts| Tak|
-|Microsoft.Cache/redis| Tak |
-|Microsoft.ClassicCompute/virtualMachines | Nie |
-|Microsoft.ClassicCompute/domainNames/slots/roles | Nie|
-|Microsoft.CognitiveServices/accounts | Nie |
-|Microsoft.Compute/virtualMachines | Tak|
-|Microsoft.Compute/virtualMachineScaleSets| Tak|
-|Microsoft. ClassicStorage/storageAccounts| Nie |
-|Microsoft.DataFactory/datafactories | Tak|
-|Microsoft.DBforMySQL/servers| Tak|
-|Microsoft.DBforPostgreSQL/servers| Tak|
-|Microsoft.Devices/IotHubs | Nie|
-|Microsoft.DocumentDB/databaseAccounts| Tak|
-|Microsoft.EventHub/namespaces | Tak|
-|Microsoft.Logic/workflows | Tak|
-|Microsoft.Network/loadBalancers |Tak|
-|Microsoft.Network/publicIPAddresses| Tak|
-|Microsoft.Network/applicationGateways| Tak|
-|Microsoft.Network/expressRouteCircuits| Tak|
-|Microsoft.Network/trafficManagerProfiles | Tak|
-|Microsoft.Search/searchServices | Tak|
-|Microsoft.ServiceBus/namespaces| Tak |
-|Microsoft.Storage/storageAccounts | Tak|
-|Microsoft.StreamAnalytics/streamingjobs| Tak|
-|Microsoft. TimeSeriesInsights/środowiska | Tak|
-|Microsoft Sieć Web/dopuszczalna | Tak |
-|Microsoft Sieć Web/Lokacje (z wyjątkiem funkcji) | Tak|
-|Microsoft Sieć Web/hostingEnvironments/multiRolePools | Nie|
-|Microsoft Sieć Web/hostingEnvironments/workerPools| Nie |
-|Microsoft.SQL/Servers | Nie |
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się, jak tworzyć i wyświetlać alerty metryk na platformie Azure oraz zarządzać nimi](alerts-metric.md)
-- [Dowiedz się, jak wdrażać alerty metryk przy użyciu szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md)
-- [Dowiedz się więcej na temat grup akcji](action-groups.md)
-- [Dowiedz się więcej o typie warunku progi dynamiczne](alerts-dynamic-thresholds.md)
+- [Learn how to create, view, and manage metric alerts in Azure](alerts-metric.md)
+- [Learn how to deploy metric alerts using Azure Resource Manager templates](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Learn more about action groups](action-groups.md)
+- [Learn more about Dynamic Thresholds condition type](alerts-dynamic-thresholds.md)

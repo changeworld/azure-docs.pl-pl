@@ -1,30 +1,25 @@
 ---
-title: Pobieranie dzienników kontenerów i zdarzeń za pomocą Azure Container Instances
-description: Dowiedz się, jak debugować przy użyciu dzienników kontenerów i zdarzeń za pomocą Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Get container instance logs & events
+description: Learn how to debug with container logs and events with Azure Container Instances
 ms.topic: article
 ms.date: 03/21/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8ae7ab3f53f480f46165800504fbb1eb6649c3e2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 57d35b9423fd8c64e5a58ee4d8055aa3b238ba8c
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325970"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481750"
 ---
-# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Pobieranie dzienników kontenerów i zdarzeń w Azure Container Instances
+# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Retrieve container logs and events in Azure Container Instances
 
-W przypadku kontenera błędna Zacznij od wyświetlenia jego dzienników za pomocą [AZ Container Logs][az-container-logs]i przesyłania strumieniowego standardowego błędu out i standard za pomocą [AZ Container Attach][az-container-attach].
+When you have a misbehaving container, start by viewing its logs with [az container logs][az-container-logs], and streaming its standard out and standard error with [az container attach][az-container-attach].
 
 ## <a name="view-logs"></a>Wyświetlanie dzienników
 
-Aby wyświetlić dzienniki z kodu aplikacji w kontenerze, można użyć polecenia [AZ Container Logs][az-container-logs] .
+To view logs from your application code within a container, you can use the [az container logs][az-container-logs] command.
 
-Poniżej przedstawiono dane wyjściowe dziennika z przykładowego kontenera opartego na zadaniach w [uruchamianiu kontenerowego zadania w ACI](container-instances-restart-policy.md), po otrzymaniu przez niego nieprawidłowego adresu URL do przetworzenia:
+The following is log output from the example task-based container in [Run a containerized task in ACI](container-instances-restart-policy.md), after having fed it an invalid URL to process:
 
 ```console
 $ az container logs --resource-group myResourceGroup --name mycontainer
@@ -50,9 +45,9 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>Dołączanie strumieni wyjściowych
 
-Polecenie [AZ Container Attach][az-container-attach] zawiera informacje diagnostyczne podczas uruchamiania kontenera. Po rozpoczęciu pracy kontenera strumienie STDOUT i STDERR są przesyłane do lokalnej konsoli.
+The [az container attach][az-container-attach] command provides diagnostic information during container startup. Once the container has started, it streams STDOUT and STDERR to your local console.
 
-Na przykład dane wyjściowe z kontenera opartego na zadaniach w programie [uruchamiają zadanie kontenerowe w ACI](container-instances-restart-policy.md), po podaniu prawidłowego adresu URL dużego pliku tekstowego do przetworzenia:
+For example, here is output from the task-based container in [Run a containerized task in ACI](container-instances-restart-policy.md), after having supplied a valid URL of a large text file to process:
 
 ```console
 $ az container attach --resource-group myResourceGroup --name mycontainer
@@ -79,15 +74,15 @@ Start streaming logs:
  ('is', 8195)]
 ```
 
-## <a name="get-diagnostic-events"></a>Pobieranie zdarzeń diagnostycznych
+## <a name="get-diagnostic-events"></a>Get diagnostic events
 
-Jeśli pomyślne wdrożenie kontenera nie powiedzie się, należy przejrzeć informacje diagnostyczne dostarczone przez dostawcę zasobów Azure Container Instances. Aby wyświetlić zdarzenia dla kontenera, uruchom polecenie [AZ Container show] [AZ-Container-show]:
+If your container fails to deploy successfully, you need to review the diagnostic information provided by the Azure Container Instances resource provider. To view the events for your container, run the [az container show][az-container-show] command:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-Dane wyjściowe obejmują podstawowe właściwości kontenera oraz zdarzenia wdrażania (pokazane tutaj obcięte):
+The output includes the core properties of your container, along with deployment events (shown here truncated):
 
 ```JSON
 {
@@ -147,8 +142,8 @@ Dane wyjściowe obejmują podstawowe właściwości kontenera oraz zdarzenia wdr
   ...
 }
 ```
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak [rozwiązywać typowe problemy dotyczące kontenera i wdrażania](container-instances-troubleshooting.md) Azure Container Instances.
+## <a name="next-steps"></a>Następne kroki
+Learn how to [troubleshoot common container and deployment issues](container-instances-troubleshooting.md) for Azure Container Instances.
 
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach

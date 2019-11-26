@@ -1,32 +1,32 @@
 ---
-title: Tworzenie zasad dla właściwości tablicy zasobów
-description: Dowiedz się, jak utworzyć parametry tablicy, utworzyć reguły dla wyrażeń języka tablicy, oszacować alias [*] i dołączyć elementy do istniejącej tablicy z regułami definicji Azure Policy.
+title: Author policies for array properties on resources
+description: Learn to work with array parameters and array language expressions, evaluate the [*] alias, and to append elements with Azure Policy definition rules.
 ms.date: 03/06/2019
 ms.topic: conceptual
-ms.openlocfilehash: f28cffcf928f9c4da6b2dae2a0811200397c1f0d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 96598918f0dbcc2f56e8ccc316844ee768306b75
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959712"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463498"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>Tworzenie zasad dla właściwości tablicy zasobów platformy Azure
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>Author policies for array properties on Azure resources
 
-Właściwości Azure Resource Manager są zwykle określane jako ciągi i wartości logiczne. Gdy istnieje relacja jeden do wielu, właściwości złożone są raczej zdefiniowane jako tablice. W Azure Policy tablice są używane na kilka różnych sposobów:
+Azure Resource Manager properties are commonly defined as strings and booleans. When a one-to-many relationship exists, complex properties are instead defined as arrays. In Azure Policy, arrays are used in several different ways:
 
-- Typ [parametru definicji](../concepts/definition-structure.md#parameters)w celu zapewnienia wielu opcji
-- Część [reguły zasad](../concepts/definition-structure.md#policy-rule) z zastosowaniem warunków **w** lub **notIn**
-- Część reguły zasad, która szacuje [\[\*alias \]](../concepts/definition-structure.md#understanding-the--alias) do oszacowania konkretnych scenariuszy, takich jak **none**, **any**lub **All**
-- W [efekcie dołączania](../concepts/effects.md#append) , aby zastąpić lub dodać do istniejącej tablicy
+- The type of a [definition parameter](../concepts/definition-structure.md#parameters), to provide multiple options
+- Part of a [policy rule](../concepts/definition-structure.md#policy-rule) using the conditions **in** or **notIn**
+- Part of a policy rule that evaluates the [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) to evaluate specific scenarios such as **None**, **Any**, or **All**
+- In the [append effect](../concepts/effects.md#append) to replace or add to an existing array
 
-W tym artykule opisano każde użycie programu według Azure Policy i przedstawiono kilka przykładów definicji.
+This article covers each use by Azure Policy and provides several example definitions.
 
-## <a name="parameter-arrays"></a>Tablice parametrów
+## <a name="parameter-arrays"></a>Parameter arrays
 
-### <a name="define-a-parameter-array"></a>Zdefiniuj tablicę parametrów
+### <a name="define-a-parameter-array"></a>Define a parameter array
 
-Zdefiniowanie parametru jako tablicy umożliwia elastyczność zasad, gdy wymagana jest więcej niż jedna wartość.
-Ta definicja zasad umożliwia określenie dowolnej pojedynczej lokalizacji parametru **allowedLocations** i wartości domyślnych _eastus2_:
+Defining a parameter as an array allows the policy flexibility when more than one value is needed.
+This policy definition allows any single location for the parameter **allowedLocations** and defaults to _eastus2_:
 
 ```json
 "parameters": {
@@ -42,9 +42,9 @@ Ta definicja zasad umożliwia określenie dowolnej pojedynczej lokalizacji param
 }
 ```
 
-Jako **Typ** to _ciąg_, podczas przypisywania zasad można ustawić tylko jedną wartość. Jeśli te zasady są przypisane, zasoby w zakresie są dozwolone tylko w ramach jednego regionu świadczenia usługi Azure. Większość definicji zasad musi zezwalać na listę zatwierdzonych opcji, takich jak Zezwalanie na _eastus2_, _Wschodnie_i _westus2_.
+As **type** was _string_, only one value can be set when assigning the policy. If this policy is assigned, resources in scope are only allowed within a single Azure region. Most policies definitions need to allow for a list of approved options, such as allowing _eastus2_, _eastus_, and _westus2_.
 
-Aby utworzyć definicję zasad w celu zezwolenia na wiele opcji, należy użyć **typu** _tablicy_ . Te same zasady można napisać ponownie w następujący sposób:
+To create the policy definition to allow multiple options, use the _array_ **type**. The same policy can be rewritten as follows:
 
 ```json
 "parameters": {
@@ -67,17 +67,17 @@ Aby utworzyć definicję zasad w celu zezwolenia na wiele opcji, należy użyć 
 ```
 
 > [!NOTE]
-> Po zapisaniu definicji zasad nie można zmienić właściwości **typu** dla parametru.
+> Once a policy definition is saved, the **type** property on a parameter can't be changed.
 
-Ta nowa definicja parametru przyjmuje więcej niż jedną wartość podczas przypisywania zasad. Po zdefiniowaniu właściwości array **allowedValues** wartości dostępne podczas przypisywania są dodatkowo ograniczone do wstępnie zdefiniowanej listy opcji. Użycie **allowedValues** jest opcjonalne.
+This new parameter definition takes more than one value during policy assignment. With the array property **allowedValues** defined, the values available during assignment are further limited to the predefined list of choices. Use of **allowedValues** is optional.
 
-### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Przekazywanie wartości do tablicy parametrów podczas przypisywania
+### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Pass values to a parameter array during assignment
 
-Podczas przypisywania zasad przy użyciu Azure Portal parametr **typu** _Array_ jest wyświetlany jako pojedyncze pole tekstowe. Wskazówka mówi "Use; do oddzielania wartości. (np. Londyn; Nowy Jork) ". Aby przekazać dozwolone wartości lokalizacji _eastus2_, _Wschodnie_i _westus2_ do parametru, użyj następującego ciągu:
+When assigning the policy through the Azure portal, a parameter of **type** _array_ is displayed as a single textbox. The hint says "Use ; to separate values. (e.g. London;New York)". To pass the allowed location values of _eastus2_, _eastus_, and _westus2_ to the parameter, use the following string:
 
 `eastus2;eastus;westus2`
 
-Format wartości parametru jest różny w przypadku korzystania z interfejsu wiersza polecenia platformy Azure, Azure PowerShell lub interfejsu API REST. Wartości są przesyłane przez ciąg JSON, który zawiera również nazwę parametru.
+The format for the parameter value is different when using Azure CLI, Azure PowerShell, or the REST API. The values are passed through a JSON string that also includes the name of the parameter.
 
 ```json
 {
@@ -91,18 +91,18 @@ Format wartości parametru jest różny w przypadku korzystania z interfejsu wie
 }
 ```
 
-Aby użyć tego ciągu z każdym zestawem SDK, użyj następujących poleceń:
+To use this string with each SDK, use the following commands:
 
-- Interfejs wiersza polecenia platformy Azure: polecenie [AZ Policy przypisanie Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) **z parametrem** Parameter
-- Azure PowerShell: polecenie cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) z parametrem **PolicyParameter**
-- Interfejs API REST: w operacji _Put_ [Create](/rest/api/resources/policyassignments/create) jako część treści żądania jako wartość właściwości **Properties. Parameters**
+- Azure CLI: Command [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with parameter **params**
+- Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with parameter **PolicyParameter**
+- REST API: In the _PUT_ [create](/rest/api/resources/policyassignments/create) operation as part of the Request Body as the value of the **properties.parameters** property
 
-## <a name="policy-rules-and-arrays"></a>Reguły i tablice zasad
+## <a name="policy-rules-and-arrays"></a>Policy rules and arrays
 
-### <a name="array-conditions"></a>Warunki tablicy
+### <a name="array-conditions"></a>Array conditions
 
-[Warunki](../concepts/definition-structure.md#conditions) reguły zasad, które mogą być używane w _tablicy_
-**Typ** parametru, są ograniczone do `in` i `notIn`. Wykonaj następującą definicję zasad z warunkiem `equals` na przykład:
+The policy rule [conditions](../concepts/definition-structure.md#conditions) that an _array_
+**type** of parameter may be used with is limited to `in` and `notIn`. Take the following policy definition with condition `equals` as an example:
 
 ```json
 {
@@ -130,20 +130,20 @@ Aby użyć tego ciągu z każdym zestawem SDK, użyj następujących poleceń:
 }
 ```
 
-Próba utworzenia tej definicji zasad za pomocą Azure Portal prowadzi do błędu, takiego jak ten komunikat o błędzie:
+Attempting to create this policy definition through the Azure portal leads to an error such as this error message:
 
-- "Zasad" {GUID} "nie można sparametryzowane z powodu błędów walidacji. Sprawdź, czy parametry zasad są prawidłowo zdefiniowane. Wynik oceny wyjątku wewnętrznego "[Parameters (" allowedLocations ")]" jest typem "Array", oczekiwano typu "String". "."
+- "The policy '{GUID}' could not be parameterized because of validation errors. Please check if policy parameters are properly defined. The inner exception 'Evaluation result of language expression '[parameters('allowedLocations')]' is type 'Array', expected type is 'String'.'."
 
-Oczekiwany **Typ** warunku `equals` to _ciąg_. Ponieważ **allowedLocations** jest zdefiniowany jako _Tablica_typów, aparat zasad szacuje wyrażenie języka i zgłosi błąd. Ze warunkiem `in` i `notIn` aparat zasad oczekuje _tablicy_ **typów** w wyrażeniu języka. Aby rozwiązać ten komunikat o błędzie, Zmień `equals` na `in` lub `notIn`.
+The expected **type** of condition `equals` is _string_. Since **allowedLocations** is defined as **type** _array_, the policy engine evaluates the language expression and throws the error. With the `in` and `notIn` condition, the policy engine expects the **type** _array_ in the language expression. To resolve this error message, change `equals` to either `in` or `notIn`.
 
-### <a name="evaluating-the--alias"></a>Ocenianie aliasu [*]
+### <a name="evaluating-the--alias"></a>Evaluating the [*] alias
 
-Aliasy, które mają **[\*]** dołączone do ich nazwy wskazują, że **Typ** jest _tablicą_. Zamiast oceniać wartość całej tablicy, **[\*]** umożliwia ocenę każdego elementu tablicy. Istnieją trzy scenariusze, które mogą być używane na potrzeby oceny elementu: brak, any i wszystkie.
+Aliases that have **[\*]** attached to their name indicate the **type** is an _array_. Instead of evaluating the value of the entire array, **[\*]** makes it possible to evaluate each element of the array. There are three scenarios this per item evaluation is useful in: None, Any, and All.
 
-Aparat zasad wyzwala **efekt** w **then** tylko wtedy, gdy reguła **if** ma wartość true.
-Ten fakt jest ważne, aby zrozumieć, w kontekście, jak **[\*]** szacuje każdy pojedynczy element tablicy.
+The policy engine triggers the **effect** in **then** only when the **if** rule evaluates as true.
+This fact is important to understand in context of the way **[\*]** evaluates each individual element of the array.
 
-Przykładowa reguła zasad dla poniższej tabeli scenariusza:
+The example policy rule for the scenario table below:
 
 ```json
 "policyRule": {
@@ -162,7 +162,7 @@ Przykładowa reguła zasad dla poniższej tabeli scenariusza:
 }
 ```
 
-Tablica **ipRules** jest następująca dla poniższej tabeli scenariusza:
+The **ipRules** array is as follows for the scenario table below:
 
 ```json
 "ipRules": [
@@ -177,35 +177,35 @@ Tablica **ipRules** jest następująca dla poniższej tabeli scenariusza:
 ]
 ```
 
-Dla każdego poniższego przykładu warunku Zastąp `<field>` z `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
+For each condition example below, replace `<field>` with `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
 
-Poniższe wyniki są wynikiem kombinacji warunku i przykładową regułę zasad i tablicę istniejących wartości powyżej:
+The following outcomes are the result of the combination of the condition and the example policy rule and array of existing values above:
 
 |Warunek |Wynik |Wyjaśnienie |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Wartość |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_ , a efekt nie jest wyzwalany. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Efekt zasad |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_ i zostanie wyzwolony efekt. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Efekt zasad |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Efekt zasad |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **Equals** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Efekt zasad |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Wartość |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_. Operator logiczny ma wartość false (**nie** _true_), więc efekt nie zostanie wyzwolony. |
-|`{<field>,"Equals":"127.0.0.1"}` |Wartość |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
-|`{<field>,"Equals":"10.0.4.1"}` |Wartość |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_ and the effect isn't triggered. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_ and the effect is triggered. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Policy effect |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Policy effect |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_. The logical operator evaluates as false (**not** _true_), so the effect isn't triggered. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nothing |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
 
-## <a name="the-append-effect-and-arrays"></a>Efekt dołączania i tablice
+## <a name="the-append-effect-and-arrays"></a>The append effect and arrays
 
-[Efekt dołączania](../concepts/effects.md#append) zachowuje się inaczej w zależności od tego, czy **pole Details** jest aliasem **[\*]** .
+The [append effect](../concepts/effects.md#append) behaves differently depending on if the **details.field** is a **[\*]** alias or not.
 
-- W przypadku braku aliasu **[\*]** dołączenie zastępuje całą tablicę właściwością **Value**
-- Gdy alias **[\*]** , Append dodaje właściwość **Value** do istniejącej tablicy lub tworzy nową tablicę
+- When not a **[\*]** alias, append replaces the entire array with the **value** property
+- When a **[\*]** alias, append adds the **value** property to the existing array or creates the new array
 
-Aby uzyskać więcej informacji, zobacz [przykłady dołączania](../concepts/effects.md#append-examples).
+For more information, see the [append examples](../concepts/effects.md#append-examples).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
+- Review examples at [Azure Policy samples](../samples/index.md).
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
-- Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
-- Dowiedz się, jak [skorygować niezgodne zasoby](remediate-resources.md).
-- Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).
+- Understand how to [programmatically create policies](programmatically-create.md).
+- Learn how to [remediate non-compliant resources](remediate-resources.md).
+- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).

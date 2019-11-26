@@ -1,112 +1,105 @@
 ---
-title: 'Szybki Start: wykrywanie anomalii jako partii przy użyciu interfejsu API REST usługi wykrywania anomalii i języka Python'
+title: 'Quickstart: Detect anomalies as a batch using the Anomaly Detector REST API and Python'
 titleSuffix: Azure Cognitive Services
-description: Użyj interfejsu API wykrywania anomalii w celu wykrycia nieprawidłowości w seriach danych jako partii lub przesyłania strumieniowego danych.
+description: Use the Anomaly Detector API to detect abnormalities in your data series either as a batch or on streaming data.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 10/14/2019
+ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 571626da0f3f43c8c2a2e33e1147418158c5473b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e24436cef11cc07571adb55bca63add5bda783c4
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754218"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483395"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Szybki Start: wykrywanie anomalii w danych szeregów czasowych przy użyciu interfejsu API REST usługi wykrywania anomalii i języka Python
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Quickstart: Detect anomalies in your time series data using the Anomaly Detector REST API and Python
 
-Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć korzystanie z dwóch trybów wykrywania interfejsu API wykrywania anomalii w celu wykrycia anomalii w danych szeregów czasowych. Ta aplikacja w języku Python wysyła dwa żądania interfejsu API zawierające dane szeregów czasowych w formacie JSON i pobiera odpowiedzi.
+Use this quickstart to start using the Anomaly Detector API's two detection modes to detect anomalies in your time series data. This Python application sends two API requests containing JSON-formatted time series data, and gets the responses.
 
-| Żądanie interfejsu API                                        | Dane wyjściowe aplikacji                                                                                                                         |
+| API request                                        | Dane wyjściowe aplikacji                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Wykryj anomalie jako partię                        | Odpowiedź JSON zawierająca stan anomalii (i inne dane) dla każdego punktu danych w danych szeregów czasowych oraz pozycje wykryte anomalie. |
-| Wykrywanie stanu anomalii najnowszego punktu danych | Odpowiedź JSON zawierająca stan anomalii (i inne dane) dla najnowszego punktu danych w danych szeregów czasowych.                                                                                                                                         |
+| Detect anomalies as a batch                        | The JSON response containing the anomaly status (and other data) for each data point in the time series data, and the positions of any detected anomalies. |
+| Detect the anomaly status of the latest data point | The JSON response containing the anomaly status (and other data) for the latest data point in the time series data.                                                                                                                                         |
 
- Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+ Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. You can find the source code for this quickstart on [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Środowisko Python 2.x lub 3.x](https://www.python.org/downloads/)
+- An Anomaly detector key and endpoint
+- The [Requests library](https://pypi.org/project/requests/) for python
 
-- [Biblioteka żądań](https://pypi.org/project/requests/) dla języka Python
+- A JSON file containing time series data points. The example data for this quickstart can be found on [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
-- Plik JSON zawierający punkty danych szeregów czasowych. Przykładowe dane dla tego przewodnika Szybki Start można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
-
-### <a name="create-an-anomaly-detector-resource"></a>Tworzenie zasobu wykrywania anomalii
+### <a name="create-an-anomaly-detector-resource"></a>Create an Anomaly Detector resource
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
 
 ## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
 
-1. Utwórz nowy plik w języku Python i Dodaj następujące Importy.
+1. Create a new python file and add the following imports.
 
     [!code-python[import statements](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=imports)]
 
-2. Utwórz zmienne dla klucza subskrypcji i punktu końcowego. Poniżej znajdują się identyfikatory URI, których można użyć do wykrywania anomalii. Zostaną one dołączone do punktu końcowego usługi później w celu utworzenia adresów URL żądań interfejsu API.
+2. Create variables for your subscription key and your endpoint. Below are the URIs you can use for anomaly detection. These will be appended to your service endpoint later to create the API request URLs.
 
-    |Metoda wykrywania  |ADRESU  |
+    |Detection method  |URI  |
     |---------|---------|
-    |Wykrywanie partii    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |Wykrywanie najnowszego punktu danych     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    |Batch detection    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
+    |Detection on the latest data point     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
     [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
-3. Przeczytaj plik danych JSON, otwierając go i używając `json.load()`.
+3. Read in the JSON data file by opening it, and using `json.load()`.
 
     [!code-python[Open JSON file and read in the data](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=fileLoad)]
 
-## <a name="create-a-function-to-send-requests"></a>Utwórz funkcję do wysyłania żądań
+## <a name="create-a-function-to-send-requests"></a>Create a function to send requests
 
-1. Utwórz nową funkcję o nazwie `send_request()`, która przyjmuje zmienne utworzone powyżej. Następnie wykonaj poniższe czynności.
+1. Create a new function called `send_request()` that takes the variables created above. Następnie wykonaj poniższe czynności.
 
-2. Utwórz słownik dla nagłówków żądania. Ustaw `Content-Type` na `application/json`, a następnie Dodaj swój klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
+2. Create a dictionary for the request headers. Set the `Content-Type` to `application/json`, and add your subscription key to the `Ocp-Apim-Subscription-Key` header.
 
-3. Wyślij żądanie przy użyciu `requests.post()`. Połącz swój punkt końcowy i adres URL wykrywania anomalii dla adresu URL pełnego żądania oraz Uwzględnij nagłówki i dane żądania JSON. A następnie Zwróć odpowiedź.
+3. Send the request using `requests.post()`. Combine your endpoint and anomaly detection URL for the full request URL, and include your headers, and json request data. And then return the response.
 
-[!code-python[request method](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=request)]
+    [!code-python[request method](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=request)]
 
-## <a name="detect-anomalies-as-a-batch"></a>Wykryj anomalie jako partię
+## <a name="detect-anomalies-as-a-batch"></a>Detect anomalies as a batch
 
-1. Utwórz metodę o nazwie `detect_batch()`, aby wykrywać anomalie w danych jako partię. Wywołaj metodę `send_request()` utworzoną powyżej przy użyciu punktu końcowego, adresu URL, klucza subskrypcji i danych JSON.
+1. Create a method called `detect_batch()` to detect anomalies throughout the data as a batch. Call the `send_request()` method created above with your endpoint, url, subscription key, and json data.
 
-2. Wywołaj `json.dumps()` w wyniku, aby sformatować go i wydrukować w konsoli programu.
+2. Call `json.dumps()` on the result to format it, and print it to the console.
 
-3. Jeśli odpowiedź zawiera pole `code`, Wydrukuj kod błędu i komunikat o błędzie.
+3. If the response contains `code` field, print the error code and error message.
 
-4. W przeciwnym razie Znajdź pozycje anomalii w zestawie danych. Pole `isAnomaly` odpowiedzi zawiera wartość logiczną odnoszącą się do tego, czy dany punkt danych jest anomalią. Wykonaj iterację na liście i wydrukuj indeks dowolnych wartości `True`. Te wartości odpowiadają indeksowi nietypowych punktów danych, jeśli zostały znalezione.
+4. Otherwise, find the positions of anomalies in the data set. The response's `isAnomaly` field contains a boolean value relating to whether a given data point is an anomaly. Iterate through the list, and print the index of any `True` values. These values correspond to the index of anomalous data points, if any were found.
 
-[!code-python[detection as a batch](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectBatch)]
+    [!code-python[detection as a batch](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectBatch)]
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Wykrywanie stanu anomalii najnowszego punktu danych
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Detect the anomaly status of the latest data point
 
-1. Utwórz metodę o nazwie `detect_latest()`, aby określić, czy najnowszy punkt danych w szeregu czasowym jest anomalią. Wywołaj powyższą metodę `send_request()` przy użyciu punktu końcowego, adresu URL, klucza subskrypcji i danych JSON. 
+1. Create a method called `detect_latest()` to determine if the latest data point in your time series is an anomaly. Call the `send_request()` method above with your endpoint, url, subscription key, and json data. 
 
-2. Wywołaj `json.dumps()` w wyniku, aby sformatować go i wydrukować w konsoli programu.
+2. Call `json.dumps()` on the result to format it, and print it to the console.
 
-[!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
+    [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
 ## <a name="send-the-request"></a>Wysyłanie żądania
 
-1. Wywołaj metody wykrywania anomalii utworzone powyżej.
+Call the anomaly detection methods created above.
 
 [!code-python[Method calls](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=methodCalls)]
 
 ### <a name="example-response"></a>Przykładowa odpowiedź
 
-Pomyślna odpowiedź jest zwracana w formacie JSON. Kliknij poniższe linki, aby wyświetlić odpowiedź JSON w serwisie GitHub:
-* [Przykładowa reakcja wykrywania partii](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [Przykład ostatniej odpowiedzi wykrywania punktu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+A successful response is returned in JSON format. Click the links below to view the JSON response on GitHub:
+* [Example batch detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [Example latest point detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
-## <a name="next-steps"></a>Następne kroki
-
-> [!div class="nextstepaction"]
->[Wykrywanie anomalii przesyłania strumieniowego za pomocą Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)
-
-* Co to jest [interfejs API wykrywania anomalii?](../overview.md)
-* [Najlepsze rozwiązania](../concepts/anomaly-detection-best-practices.md) w przypadku korzystania z interfejsu API wykrywania anomalii.
-* Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs).
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

@@ -1,14 +1,14 @@
 ---
-title: Przykład — Wymuś znaczniki i wartość w grupach zasobów
-description: Ta przykładowa definicja zasad wymaga użycia tagu i wartości na grupie zasobów.
+title: Sample - Enforce tag and value on resource groups
+description: This sample policy definition requires a tag and a value defined in a parameter on a resource group.
 ms.date: 01/31/2019
 ms.topic: sample
-ms.openlocfilehash: 1a4bf9d27971b149e3df422987f58d0f184181c2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d04c48e2633e1a23990723c91a66cf8ec219b160
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076271"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463627"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Przykład — wymuszanie tagu i jego wartości na grupach zasobów
 
@@ -48,8 +48,8 @@ Kod JSON definiujący parametry zasad używany przez interfejs wiersza polecenia
 
 |Nazwa |Typ |Pole |Opis |
 |---|---|---|---|
-|tagName |Ciąg |tagów |Nazwa tagu, na przykład costCenter|
-|tagValue |Ciąg |tagów |Wartość tagu, na przykład headquarter|
+|tagName |Ciąg |tags |Nazwa tagu, na przykład costCenter|
+|tagValue |Ciąg |tags |Wartość tagu, na przykład headquarter|
 
 Podczas tworzenia przypisania za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów można przekazać jako kod JSON w ramach ciągu lub pliku przy użyciu opcji `-PolicyParameter` (program PowerShell) lub opcji `--params` (interfejs wiersza polecenia platformy Azure).
 Program PowerShell obsługuje także opcję `-PolicyParameterObject`, która wymaga przekazania do polecenia cmdlet tabeli skrótów Name/Value (Nazwa/Wartość), gdzie parametr **Name** oznacza nazwę parametru, a parametr **Value** oznacza pojedynczą wartość lub tablicę wartości przekazywaną podczas przypisywania.
@@ -69,10 +69,10 @@ W tym przykładowym parametrze jest zdefiniowany tag _tagName_ o wartości **cos
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![wdrożyć przykład zasad na platformie azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
-[![wdrożyć przykład zasad na platformie Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure Gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: monitorowanie urządzeń w usłudze Azure IoT Central'
-description: 'Samouczek: jako operator Użyj aplikacji platformy Azure IoT Central do monitorowania urządzeń.'
+title: 'Tutorial: Monitor your devices in Azure IoT Central'
+description: 'Tutorial: As an operator, use your Azure IoT Central application to monitor your devices.'
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/13/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: db3a9a6ba51394a0473f64a2ccede97e5283bba1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a07a822e863c5ff5d695a20c02bd8d295721efda
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106571"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480259"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Samouczek: Korzystanie z usługi Azure IoT Central do monitorowania urządzeń
 
@@ -41,7 +41,7 @@ Przed rozpoczęciem konstruktor powinien ukończyć trzy samouczki przeznaczone 
 
 Usługa Azure IoT Central wysyła powiadomienia dotyczące urządzeń jako wiadomości e-mail. Konstruktor dodał regułę powodującą wysłanie powiadomienia, gdy temperatura połączonego klimatyzatora przekroczy wartość progową. Sprawdź wiadomości e-mail wysłane na konto wybrane przez konstruktora do odbierania powiadomień.
 
-Otwórz wiadomość e-mail odebraną na końcu samouczka [Konfigurowanie reguł i akcji dla urządzenia](tutorial-configure-rules.md). W wiadomości e-mail wybierz link do urządzenia obok pozycji **Nazwa urządzenia** w sekcji **szczegóły** :
+Otwórz wiadomość e-mail odebraną na końcu samouczka [Konfigurowanie reguł i akcji dla urządzenia](tutorial-configure-rules.md). In the email, select the link to the device next to **Device Name** in the **Details** section:
 
 ![Wiadomość e-mail z alertem](media/tutorial-monitor-devices/email.png)
 
@@ -57,7 +57,7 @@ Wybierz widok **Pulpit nawigacyjny**, aby wyświetlić informacje o urządzeniu.
 
 ![Pulpit nawigacyjny urządzenia](media/tutorial-monitor-devices/initial_screen.png)
 
-Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. Bieżącą temperaturę docelową urządzenia można także zobaczyć na kafelku **Właściwości urządzenia** . Decydujesz, że temperatura docelowa jest zbyt wysoka.
+Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. You can also see the current target temperature for the device in the **Device properties** tile. Decydujesz, że temperatura docelowa jest zbyt wysoka.
 
 ## <a name="remediate-an-issue"></a>Rozwiązywanie problemu
 

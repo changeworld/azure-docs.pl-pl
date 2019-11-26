@@ -1,31 +1,26 @@
 ---
-title: Skonfiguruj sondy na żywo w Azure Container Instances
-description: Dowiedz się, jak skonfigurować sondy na żywo w celu ponownego uruchomienia kontenerów w złej kondycji w Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Set up liveness probe on container instance
+description: Learn how to configure liveness probes to restart unhealthy containers in Azure Container Instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: danlep
-ms.openlocfilehash: 7f9696e9803e9ab168c59b6c5e7413a4f754a6ae
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904432"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481673"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurowanie sond żywotności
 
-Aplikacje kontenerowe mogą być uruchamiane przez dłuższy czas, co spowodowało uszkodzenie Stanów, które mogą wymagać naprawy przez ponowne uruchomienie kontenera. Azure Container Instances obsługuje sondy na żywo, dzięki czemu można skonfigurować kontenery w ramach grupy kontenerów w celu ponownego uruchomienia, jeśli funkcje krytyczne nie działają. Sonda na żywo zachowuje się jak [sonda Kubernetes na żywo](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
+Containerized applications may run for extended periods of time, resulting in broken states that may need to be repaired by restarting the container. Azure Container Instances supports liveness probes so that you can configure your containers within your container group to restart if critical functionality is not working. The liveness probe behaves like a [Kubernetes liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
 
-W tym artykule wyjaśniono, jak wdrożyć grupę kontenerów zawierającą sondę na żywo, pokazującą automatyczne ponowne uruchomienie symulowanego kontenera w złej kondycji.
+This article explains how to deploy a container group that includes a liveness probe, demonstrating the automatic restart of a simulated unhealthy container.
 
-Azure Container Instances obsługuje również [sondy gotowości](container-instances-readiness-probe.md), które można skonfigurować, aby zapewnić, że ruch osiągnie kontener tylko wtedy, gdy jest on gotowy do obsługi.
+Azure Container Instances also supports [readiness probes](container-instances-readiness-probe.md), which you can configure to ensure that traffic reaches a container only when it's ready for it.
 
-## <a name="yaml-deployment"></a>Wdrożenie YAML
+## <a name="yaml-deployment"></a>YAML deployment
 
-Utwórz plik `liveness-probe.yaml` za pomocą poniższego fragmentu kodu. Ten plik definiuje grupę kontenerów, która składa się z kontenera NGNIX, który ostatecznie stał się w złej kondycji.
+Create a `liveness-probe.yaml` file with the following snippet. This file defines a container group that consists of an NGNIX container that eventually becomes unhealthy.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -57,53 +52,53 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Uruchom następujące polecenie, aby wdrożyć tę grupę kontenerów z powyższą konfiguracją YAML:
+Run the following command to deploy this container group with the above YAML configuration:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name livenesstest -f liveness-probe.yaml
 ```
 
-### <a name="start-command"></a>Uruchom polecenie
+### <a name="start-command"></a>Start command
 
-Wdrożenie definiuje uruchamianie polecenia, które ma być uruchamiane podczas pierwszego uruchomienia kontenera, zdefiniowane przez właściwość `command`, która akceptuje tablicę ciągów. W tym przykładzie zostanie uruchomiona sesja bash i utworzysz plik o nazwie `healthy` w katalogu `/tmp` przez przekazanie tego polecenia:
+The deployment defines a starting command to be run when the container first starts running, defined by the `command` property, which accepts an array of strings. In this example, it will start a bash session and create a file called `healthy` within the `/tmp` directory by passing this command:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- Następnie zostanie ona przesunięta przez 30 sekund przed usunięciem pliku, a następnie zostanie przesunięta o 10 minut w tryb uśpienia.
+ It will then sleep for 30 seconds before deleting the file, then enters a 10-minute sleep.
 
-### <a name="liveness-command"></a>Dynamiczność — polecenie
+### <a name="liveness-command"></a>Liveness command
 
-To wdrożenie definiuje `livenessProbe`, który obsługuje `exec` na żywo, który działa jak sprawdzenie na żywo. Jeśli to polecenie kończy się wartością różną od zera, kontener zostanie zamknięty i ponownie uruchomiony, sygnalizując, że nie można odnaleźć pliku `healthy`. Jeśli to polecenie zakończy się pomyślnie z kodem zakończenia 0, nie zostanie podjęta żadna akcja.
+This deployment defines a `livenessProbe` that supports an `exec` liveness command that acts as the liveness check. If this command exits with a non-zero value, the container will be killed and restarted, signaling the `healthy` file could not be found. If this command exits successfully with exit code 0, no action will be taken.
 
-Właściwość `periodSeconds` określa, że polecenie ma być wykonywane co 5 sekund.
+The `periodSeconds` property designates the liveness command should execute every 5 seconds.
 
-## <a name="verify-liveness-output"></a>Sprawdzanie danych wyjściowych na żywo
+## <a name="verify-liveness-output"></a>Verify liveness output
 
-W ciągu pierwszych 30 sekund plik `healthy` utworzony przez polecenie uruchamiania istnieje. Gdy na żywo polecenie sprawdza obecność pliku `healthy`, kod stanu zwraca zero, sygnalizowanie sukcesu, dlatego nie następuje ponowne uruchomienie.
+Within the first 30 seconds, the `healthy` file created by the start command exists. When the liveness command checks for the `healthy` file's existence, the status code returns a zero, signaling success, so no restarting occurs.
 
-Po 30 sekundach `cat /tmp/healthy` rozpocznie się niepowodzeniem, co spowoduje wystąpienie złej kondycji i zabicia zdarzeń.
+After 30 seconds, the `cat /tmp/healthy` will begin to fail, causing unhealthy and killing events to occur.
 
-Te zdarzenia można wyświetlić w Azure Portal lub interfejs wiersza polecenia platformy Azure.
+These events can be viewed from the Azure portal or Azure CLI.
 
-![Zdarzenie w złej kondycji portalu][portal-unhealthy]
+![Portal unhealthy event][portal-unhealthy]
 
-Wyświetlając zdarzenia w Azure Portal, zdarzenia typu `Unhealthy` będą wyzwalane w przypadku niepowodzenia polecenia na żywo. Kolejne zdarzenie będzie typu `Killing`, co oznacza usunięcie kontenera, aby można było rozpocząć ponowne uruchomienie. Liczba ponownych uruchomień dla kontenera jest zwiększana za każdym razem, gdy wystąpi zdarzenie.
+By viewing the events in the Azure portal, events of type `Unhealthy` will be triggered upon the liveness command failing. The subsequent event will be of type `Killing`, signifying a container deletion so a restart can begin. The restart count for the container increments each time this event  occurs.
 
-Ponowne uruchomienia są wykonywane w miejscu, dzięki czemu zasoby, takie jak publiczne adresy IP i zawartość specyficzną dla węzła, zostaną zachowane.
+Restarts are completed in-place so resources like public IP addresses and node-specific contents will be preserved.
 
-![Licznik ponownego uruchamiania portalu][portal-restart]
+![Portal restart counter][portal-restart]
 
-Jeśli sonda na żywo zakończy się niepowodzeniem i wyzwala zbyt wiele ponownych uruchomień, kontener wprowadzi odwrotne opóźnienie.
+If the liveness probe continuously fails and triggers too many restarts, your container will enter an exponential back off delay.
 
-## <a name="liveness-probes-and-restart-policies"></a>Sondy na żywo i zasady ponownego uruchamiania
+## <a name="liveness-probes-and-restart-policies"></a>Liveness probes and restart policies
 
-Zasady ponownego uruchamiania zastępują zachowanie ponownego uruchamiania wyzwalane przez sondy na żywo. Na przykład jeśli ustawisz `restartPolicy = Never` *i* sondę na żywo, Grupa kontenerów nie zostanie ponownie uruchomiona z powodu niepowodzenia sprawdzenia na żywo. Grupa kontenerów będzie w zamian zgodna z zasadami ponownego uruchamiania grupy kontenerów `Never`.
+Restart policies supersede the restart behavior triggered by liveness probes. For example, if you set a `restartPolicy = Never` *and* a liveness probe, the container group will not restart because of a failed liveness check. The container group will instead adhere to the container group's restart policy of `Never`.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Scenariusze oparte na zadaniach mogą wymagać sondy na żywo, aby włączyć automatyczne ponowne uruchamianie, jeśli funkcja wstępna nie działa prawidłowo. Aby uzyskać więcej informacji na temat uruchamiania kontenerów opartych na zadaniach, zobacz [Uruchamianie kontenerów zadań w Azure Container Instances](container-instances-restart-policy.md).
+Task-based scenarios may require a liveness probe to enable automatic restarts if a pre-requisite function is not working properly. For more information about running task-based containers, see [Run containerized tasks in Azure Container Instances](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-liveness-probe/unhealthy-killing.png

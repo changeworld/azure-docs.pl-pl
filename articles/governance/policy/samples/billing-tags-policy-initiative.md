@@ -1,14 +1,14 @@
 ---
 title: Przykład — inicjatywa zasad tagów rozliczeń
-description: Ta przykładowa definicja zasad wymaga określonych wartości tagów dotyczących centrum kosztu i nazwy produktu.
+description: This sample policy initiative (policy set) requires specified tag values defined in parameters for cost center and product name.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: e2fc9a7251fbe548b22f24356e555f92a3a6e22f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 449909b160c2b811c62cd8c6592e74dd0f714e41
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076350"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463388"
 ---
 # <a name="sample---billing-tags-policy-initiative"></a>Przykład — inicjatywa zasad tagów rozliczeń
 
@@ -20,7 +20,7 @@ Ten zestaw zasad wymaga określonych wartości tagów centrum kosztu i nazwy pro
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-Ten szablon można wdrożyć przy użyciu [programu PowerShell](#deploy-with-powershell).
+You can deploy this template with [PowerShell](#deploy-with-powershell).
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -62,4 +62,4 @@ foreach ($r in $resources) {
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

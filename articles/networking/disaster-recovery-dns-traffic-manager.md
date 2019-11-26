@@ -1,6 +1,6 @@
 ---
-title: Odzyskiwanie po awarii przy użyciu usługi Azure DNS i usługi Traffic Manager | Dokumentacja firmy Microsoft
-description: Omówienie rozwiązania odzyskiwania po awarii przy użyciu usługi Azure DNS i usługi Traffic Manager.
+title: Disaster recovery using Azure DNS and Traffic Manager | Microsoft Docs
+description: Overview of the disaster recovery solutions using Azure DNS and Traffic Manager.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -15,97 +15,97 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65501687"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483535"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager
 
-Odzyskiwanie po awarii powinno być skoncentrowane na odzyskiwaniu po poważnej utracie funkcjonalności aplikacji. Aby można było wybrać rozwiązanie odzyskiwania po awarii, właściciele biznesowych i technologicznych należy najpierw ustalić poziom funkcjonalności, wymagany podczas awarii, takie jak - niedostępne, częściowo dostępny za pośrednictwem ograniczoną funkcjonalność lub opóźnione dostępności lub w pełni dostępne.
-Większość klientów korporacyjnych wybierają architektura obejmująca wiele regionów w celu zapewnienia odporności na aplikację lub infrastrukturę poziomu trybu failover. Klienci mogą wybrać kilka metod w quest do osiągnięcia trybu failover i wysokiej dostępności poprzez nadmiarowej architekturze. Oto niektóre z popularnych metod:
+Odzyskiwanie po awarii powinno być skoncentrowane na odzyskiwaniu po poważnej utracie funkcjonalności aplikacji. In order to choose a disaster recovery solution, business and technology owners must first determine the level of functionality that is required during a disaster, such as - unavailable, partially available via reduced functionality, or delayed availability, or fully available.
+Most enterprise customers are choosing a multi-region architecture for resiliency against an application or infrastructure level failover. Customers can choose several approaches in the quest to achieve failover and high availability via redundant architecture. Here are some of the popular approaches:
 
-- **Aktywny / pasywny z zimnym**: W tym rozwiązaniu trybu failover maszyny wirtualne i inne urządzenia, które działają w regionie wstrzymania nie są aktywne, dopóki nie jest wymagane dla trybu failover. Jednak w środowisku produkcyjnym są replikowane w postaci kopii zapasowych, obrazy maszyn wirtualnych lub szablonów usługi Resource Manager, w innym regionie. Ten mechanizm pracy awaryjnej jest to ekonomiczne rozwiązanie, ale zajmuje więcej czasu podjęcia pełną przejścia w tryb failover.
+- **Active-passive with cold standby**: In this failover solution, the VMs and other appliances that are running in the standby region are not active until there is a need for failover. However, the production environment is replicated in the form of backups, VM images, or Resource Manager templates, to a different region. This failover mechanism is cost-effective but takes a longer time to undertake a complete failover.
  
-    ![Aktywny/pasywny z zimnym](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
+    ![Active/Passive with cold standby](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     
-    *Rysunek — aktywny/pasywny z konfiguracji odzyskiwania zimny wstrzymania po awarii*
+    *Figure - Active/Passive with cold standby disaster recovery configuration*
 
-- **Aktywny/pasywny z pilota światła**: W tym rozwiązaniu trybu failover wstrzymania środowiska jest skonfigurowany z minimalną konfiguracją. Instalator ma tylko niezbędne usługi do obsługuje tylko minimalne i krytycznych zbiór aplikacji. W formacie macierzystym w tym scenariuszu można tylko wykonania minimalną liczbę funkcji, ale można skalować w górę i zduplikować dodatkowych usług do zbiorczego obciążenia produkcyjnego w sytuacji, gdy do pracy awaryjnej.
+- **Active/Passive with pilot light**: In this failover solution, the standby environment is set up with a minimal configuration. The setup has only the necessary services running to support only a minimal and critical set of applications. In its native form, this scenario can only execute minimal functionality but can scale up and spawn additional services to take bulk of the production load if a failover occurs.
     
-    ![Aktywny/pasywny z pilota światła](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
+    ![Active/Passive with pilot light](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
-    *Rysunek: Aktywny/pasywny z konfiguracji odzyskiwania po awarii światła pilotażu*
+    *Figure: Active/Passive with pilot light disaster recovery configuration*
 
-- **Aktywny/pasywny z gotowości ciepło**: W tym rozwiązaniu trybu failover wstrzymania region jest wstępnie warmed i jest gotowy do podstawowego obciążenia, automatycznego skalowania jest włączona i wszystkie wystąpienia zostały włączone i uruchomione. To rozwiązanie nie jest skalowana do podjęcia obciążenia pełnym środowisku produkcyjnym, ale będzie działać, a wszystkie usługi są uruchomione. To rozwiązanie jest rozszerzone wersję podejście światła pilotażu.
+- **Active/Passive with warm standby**: In this failover solution, the standby region is pre-warmed and is ready to take the base load, auto scaling is turned on, and all the instances are up and running. This solution is not scaled to take the full production load but is functional, and all services are up and running. This solution is an augmented version of the pilot light approach.
     
-    ![Aktywny/pasywny z gotowości bez wyłączania zasilania](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
+    ![Active/Passive with warm standby](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
-    *Rysunek: Aktywny/pasywny z konfiguracji odzyskiwania po awarii na wstrzymania bez wyłączania zasilania*
+    *Figure: Active/Passive with warm standby disaster recovery configuration*
     
-Aby dowiedzieć się więcej na temat trybu failover i wysokiej dostępności, zobacz [odzyskiwanie po awarii dla aplikacji platformy Azure](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+To learn more about failover and high availability, see [Disaster Recovery for Azure Applications](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 
-## <a name="planning-your-disaster-recovery-architecture"></a>Planowanie architektury odzyskiwania po awarii
+## <a name="planning-your-disaster-recovery-architecture"></a>Planning your disaster recovery architecture
 
-Istnieją dwa aspekty techniczne do konfigurowania architektury odzyskiwania po awarii:
--  Przy użyciu mechanizmu wdrażania do replikowania wystąpień, danych i konfiguracji między środowiskami podstawowy i zapasowy. Ten typ odzyskiwania po awarii może odbywać się natywnie za pośrednictwem usługi Azure Site-Recovery za pośrednictwem usług Microsoft Azure partner urządzenia/Veritas lub NetApp. 
-- Opracowywanie rozwiązań na kierowanie ruchu sieci/sieci web z lokacji głównej do lokacji wstrzymania. Ten typ odzyskiwania po awarii można osiągnąć za pomocą usługi Azure DNS, Manager(DNS) ruchu platformy Azure lub usługi równoważenia obciążenia globalne innych firm.
+There are two technical aspects towards setting up your disaster recovery architecture:
+-  Using a deployment mechanism to replicate instances, data, and configurations between primary and standby environments. This type of disaster recovery can be done natively via Azure Site-Recovery via Microsoft Azure partner appliances/services like Veritas or NetApp. 
+- Developing a solution to divert network/web traffic from the primary site to the standby site. This type of disaster recovery can be achieved via Azure DNS, Azure Traffic Manager(DNS), or third-party global load balancers.
 
-W tym artykule jest ograniczona do metody za pomocą przekierowania ruchu sieci i sieci Web. Aby uzyskać instrukcje dotyczące konfigurowania usługi Azure Site Recovery, zobacz [dokumentację usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
-Serwer DNS jest jeden z najefektywniejszych mechanizmów na kierowanie ruchu sieciowego, ponieważ DNS jest często globalnych i zewnętrzne w stosunku do centrum danych i jest izolowane od błędów poziomu strefy (AZ) regionalne lub dostępności. Umożliwia korzystanie z mechanizmu oparte na systemie DNS trybu failover i na platformie Azure, dwóch usług DNS można wykonać takie same w dowolny sposób — w usłudze Azure DNS (DNS, autorytatywny) i usługi Azure Traffic Manager (oparte na systemie DNS inteligentny routing ruchu w). 
+This article is limited to approaches via Network and Web traffic redirection. For instructions to set up Azure Site Recovery, see [Azure Site Recovery Documentation](https://docs.microsoft.com/azure/site-recovery/).
+DNS is one of the most efficient mechanisms to divert network traffic because DNS is often global and external to the data center and is insulated from any regional or availability zone (AZ) level failures. One can use a DNS-based failover mechanism and in Azure, two DNS services can accomplish the same in some fashion - Azure DNS (authoritative DNS) and Azure Traffic Manager (DNS-based smart traffic routing). 
 
-Warto poznać kilka koncepcji w systemie DNS, które są często używane w celu omówienia rozwiązania, zawarte w tym artykule:
-- **DNS rekordu A** — rekordy są wskaźnikami, które wskazują domenę na adres IPv4. 
-- **Nazwa CNAME lub Canonical** — tego typu rekordu jest używany, aby wskazywał inny rekord DNS. CNAME nie odpowiada za pomocą adresu IP, ale raczej wskaźnik do rekordu, który zawiera adres IP. 
-- **Ważona średnia Routing** — jeden można skojarzyć wagę do punktów końcowych usługi, a następnie dystrybucję ruchu, w oparciu o przypisane wagi. Ta metoda routingu jest jednego z czterech ruchu routingu mechanizmów dostępnych w ramach usługi Traffic Manager. Aby uzyskać więcej informacji, zobacz [metody routingu ważonego](../traffic-manager/traffic-manager-routing-methods.md#weighted).
-- **Routing priorytet** — priorytet routingu opiera się na kontrole kondycji punktów końcowych. Domyślnie usługi Azure Traffic manager wysyła cały ruch do najwyższy priorytet punktu końcowego, a po awarii lub po awarii, usługa Traffic Manager kieruje ruchem do pomocniczego punktu końcowego. Aby uzyskać więcej informacji, zobacz [metody routingu opartego na priorytecie](../traffic-manager/traffic-manager-routing-methods.md#priority).
+It is important to understand few concepts in DNS that are extensively used to discuss the solutions provided in this article:
+- **DNS A Record** – A Records are pointers that point a domain to an IPv4 address. 
+- **CNAME or Canonical name** - This record type is used to point to another DNS record. CNAME doesn’t respond with an IP address but rather the pointer to the record that contains the IP address. 
+- **Weighted Routing** – one can choose to associate a weight to service endpoints and then distribute the traffic based on the assigned weights. This routing method is one of the four traffic routing mechanisms available within Traffic Manager. For more information, see [Weighted routing method](../traffic-manager/traffic-manager-routing-methods.md#weighted).
+- **Priority Routing** – Priority routing is based on health checks of endpoints. By default, Azure Traffic manager sends all traffic to the highest priority endpoint, and upon a failure or disaster, Traffic Manager routes the traffic to the secondary endpoint. For more information, see [Priority routing method](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method).
 
-## <a name="manual-failover-using-azure-dns"></a>Ręczna praca awaryjna przy użyciu usługi Azure DNS
-Rozwiązanie ręcznej pracy awaryjnej usługi Azure DNS do odzyskiwania po awarii używa standardowego mechanizmu DNS w tryb failover do tworzenia kopii zapasowej lokacji. Opcji ręcznej za pośrednictwem usługi Azure DNS sprawdza się najlepiej, gdy jest używana w połączeniu z zimnym lub podejście światła pilotażu. 
+## <a name="manual-failover-using-azure-dns"></a>Manual failover using Azure DNS
+The Azure DNS manual failover solution for disaster recovery uses the standard DNS mechanism to failover to the backup site. The manual option via Azure DNS works best when used in conjunction with the cold standby or the pilot light approach. 
 
-![Ręczna praca awaryjna przy użyciu usługi Azure DNS](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
+![Manual failover using Azure DNS](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
 
-*Rysunek - ręcznej pracy awaryjnej przy użyciu usługi Azure DNS*
+*Figure - Manual failover using Azure DNS*
 
-Dostępne są następujące założenia dotyczące rozwiązania:
-- Punkty końcowe podstawowych i pomocniczych mają statyczne adresy IP, które nie zmieniają się często. Załóżmy, że dla lokacji głównej 100.168.124.44 jest adres IP i adres IP dla lokacji dodatkowej 100.168.124.43.
-- Strefy DNS platformy Azure nie istnieje dla lokacji głównej i dodatkowej. Załóżmy, że dla lokacji głównej punkt końcowy jest prod.contoso.com i tworzenia kopii zapasowej lokacji jest dr.contoso.com. Rekord DNS dla głównej aplikacji, które są znane jako www\.istnieje również contoso.com.   
-- Czas wygaśnięcia jest większa niż określona przez umowę SLA cel czasu odzyskiwania w organizacji. Jeśli na przykład przedsiębiorstwo ustawia RTO odpowiedzi po awarii aplikacji to 60 minut, a następnie czasem wygaśnięcia powinny być mniejsze niż 60 minut, najlepiej małe, tym lepsze. 
-  Możesz skonfigurować usługę Azure DNS do ręcznego przełączania trybu failover w następujący sposób:
+The assumptions made for the solution are:
+- Both primary and secondary endpoints have static IPs that don’t change often. Say for the primary site the IP is 100.168.124.44 and the IP for the secondary site is 100.168.124.43.
+- An Azure DNS zone exists for both the primary and secondary site. Say for the primary site the endpoint is prod.contoso.com and for the backup site is dr.contoso.com. A DNS record for the main application known as www\.contoso.com also exists.   
+- The TTL is at or below the RTO SLA set in the organization. For example, if an enterprise sets the RTO of the application disaster response to be 60 mins, then the TTL should be less than 60 mins, preferably the lower the better. 
+  You can set up Azure DNS for manual failover as follows:
 - Tworzenie strefy DNS
-- Tworzenie rekordów strefy DNS
-- Zaktualizuj rekord CNAME
+- Create DNS zone records
+- Update CNAME record
 
-### <a name="step-1-create-a-dns"></a>Krok 1: Tworzenie systemu DNS
-Tworzenie strefy DNS (na przykład www\.contoso.com) jak pokazano poniżej:
+### <a name="step-1-create-a-dns"></a>Step 1: Create a DNS
+Create a DNS zone (for example, www\.contoso.com) as shown below:
 
-![Tworzenie strefy DNS na platformie Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
+![Create a DNS zone in Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
-*Rysunek — tworzenie strefy DNS na platformie Azure*
+*Figure - Create a DNS zone in Azure*
 
-### <a name="step-2-create-dns-zone-records"></a>Krok 2: Tworzenie rekordów strefy DNS
+### <a name="step-2-create-dns-zone-records"></a>Step 2: Create DNS zone records
 
-W tej strefie Utwórz trzy rekordy (na przykład - www\.contoso.com i prod.contoso.com dr.consoto.com) jako wyświetlane poniżej.
+Within this zone create three records (for example - www\.contoso.com, prod.contoso.com and dr.consoto.com) as show below.
 
-![Tworzenie rekordów strefy DNS](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
+![Create DNS zone records](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
-*Rysunek — tworzenie rekordów w strefie DNS na platformie Azure*
+*Figure - Create DNS zone records in Azure*
 
-W tym scenariuszu, witryny, www\.contoso.com ma TTL 30 minut, co jest znacznie poniżej podane cel czasu odzyskiwania i wskazuje prod.contoso.com lokacji w środowisku produkcyjnym. Ta konfiguracja jest podczas zwykłych operacjach biznesowych. Czas wygaśnięcia prod.contoso.com i dr.contoso.com ustawiono 300 sekund lub 5 minut. Można użyć monitorowania platformy Azure, usługi, takiej jak Azure Monitor lub usługi Azure App Insights lub partnerskich rozwiązań, takich jak Dynatrace monitorowania, można również użyć głównego organicznie rozwiązania, które można monitorować lub wykrywanie awarii poziomu infrastruktury wirtualnej lub aplikacji.
+In this scenario, site, www\.contoso.com has a TTL of 30 mins, which is well below the stated RTO, and is pointing to the production site prod.contoso.com. This configuration is during normal business operations. The TTL of prod.contoso.com and dr.contoso.com has been set to 300 seconds or 5 mins. You can use an Azure monitoring service such as Azure Monitor or Azure App Insights, or, any partner monitoring solutions such as Dynatrace, You can even use home grown solutions that can monitor or detect application or virtual infrastructure level failures.
 
-### <a name="step-3-update-the-cname-record"></a>Krok 3: Zaktualizuj rekord CNAME
+### <a name="step-3-update-the-cname-record"></a>Step 3: Update the CNAME record
 
-Gdy zostanie wykryta awaria, zmień wartość rekordu, aby wskazywał dr.contoso.com, jak pokazano poniżej:
+Once failure is detected, change the record value to point to dr.contoso.com as shown below:
        
-![Zaktualizuj rekord CNAME](./media/disaster-recovery-dns-traffic-manager/update-cname-record.png)
+![Update CNAME record](./media/disaster-recovery-dns-traffic-manager/update-cname-record.png)
 
-*Rysunek — Zaktualizuj rekord CNAME w systemie Azure*
+*Figure - Update the CNAME record in Azure*
 
-W ciągu 30 minut, podczas których większość mechanizmów rozpoznawania odświeży pliku pamięci podręcznej strefy dowolnego zapytania www\.contoso.com nastąpi przekierowanie do dr.contoso.com.
-Można również uruchomić następujące polecenie interfejsu wiersza polecenia platformy Azure, aby zmienić wartość rekordu CNAME:
+Within 30 minutes, during which most resolvers will refresh the cached zone file, any query to www\.contoso.com will be redirected to dr.contoso.com.
+You can also run the following Azure CLI command to change the CNAME value:
  ```azurecli
    az network dns record-set cname set-record \
    --resource-group 123 \
@@ -113,63 +113,63 @@ Można również uruchomić następujące polecenie interfejsu wiersza polecenia
    --record-set-name www \
    --cname dr.contoso.com
 ```
-Ten krok można wykonać ręcznie lub za pośrednictwem usługi automation. Możesz ręcznie za pomocą konsoli lub wiersza polecenia platformy Azure. Zestaw Azure SDK i interfejsu API może służyć do zautomatyzowania aktualizacji rekordu CNAME, dlatego, że jest wymagana żadna interwencja ręczna. Automatyzacja może zostać wbudowana za pośrednictwem usługi Azure functions lub w ramach monitorowania aplikacji innych firm lub nawet ze środowiska lokalnego.
+This step can be executed manually or via automation. It can be done manually via the console or by the Azure CLI. The Azure SDK and API can be used to automate the CNAME update so that no manual intervention is required. Automation can be built via Azure functions or within a third-party monitoring application or even from on- premises.
 
-### <a name="how-manual-failover-works-using-azure-dns"></a>Jak ręczne działania trybu failover przy użyciu usługi Azure DNS
-Ponieważ serwer DNS jest spoza strefy w trybie failover lub po awarii, jest izolację żadnych przestojów. Umożliwia użytkownikowi architektury scenariusza prosty tryb failover, który jest rozwiązaniem tanim i będzie działać, wszystkie godziny przy założeniu, że operator ma połączenie sieciowe podczas awarii i może być przerzucania. Jeśli rozwiązanie jest uwzględnione w skryptach, następnie jednym upewnij się, że serwera lub usługi, uruchamiając skrypt powinny być izolowane przed problemem mające wpływ na środowisko produkcyjne. Ponadto należy pamiętać niski TTL, która została ustawiona względem strefy, dzięki czemu elementu rozwiązującego świata zachowuje punkt końcowy pamięci podręcznej dla długotrwałych i klienci mogą uzyskiwać dostęp do witryny w ramach czas RTO. Zimnym i projekt pilotażowy światła ponieważ niektóre prewarming i innych działań administracyjnych może być wymagane — jeden należy również podać wystarczającą ilość czasu przed wprowadzeniem przerzucania.
+### <a name="how-manual-failover-works-using-azure-dns"></a>How manual failover works using Azure DNS
+Since the DNS server is outside the failover or disaster zone, it is insulated against any downtime. This enables user to architect a simple failover scenario that is cost effective and will work all the time assuming that the operator has network connectivity during disaster and can make the flip. If the solution is scripted, then one must ensure that the server or service running the script should be insulated against the problem affecting the production environment. Also, keep in mind the low TTL that was set against the zone so that no resolver around the world keeps the endpoint cached for long and customers can access the site within the RTO. For a cold standby and pilot light, since some prewarming and other administrative activity may be required – one should also give enough time before making the flip.
 
-## <a name="automatic-failover-using-azure-traffic-manager"></a>Automatyczny tryb failover przy użyciu usługi Azure Traffic Manager
-W przypadku złożone architektury i wiele zestawów zasobów, które może wykonać tę samą funkcję, można skonfigurować usługi Azure Traffic Manager (oparte na DNS) w celu sprawdzenia kondycji zasobów i kierowanie ruchu z innych dobrej kondycji zasobu do dobrej kondycji zasób. W poniższym przykładzie zarówno w regionie podstawowym, jak i w regionie pomocniczym masz pełne wdrożenie. To wdrożenie obejmuje usługi w chmurze i synchronizacja bazy danych. 
+## <a name="automatic-failover-using-azure-traffic-manager"></a>Automatic failover using Azure Traffic Manager
+When you have complex architectures and multiple sets of resources capable of performing the same function, you can configure Azure Traffic Manager (based on DNS) to check the health of your resources and route the traffic from the non-healthy resource to the healthy resource. In the following example, both the primary region and the secondary region have a full deployment. This deployment includes the cloud services and a synchronized database. 
 
-![Automatyczny tryb failover przy użyciu usługi Azure Traffic Manager](./media/disaster-recovery-dns-traffic-manager/automatic-failover-using-traffic-manager.png)
+![Automatic failover using Azure Traffic Manager](./media/disaster-recovery-dns-traffic-manager/automatic-failover-using-traffic-manager.png)
 
-*Rysunek - automatycznej pracy awaryjnej przy użyciu usługi Azure Traffic Manager*
+*Figure - Automatic failover using Azure Traffic Manager*
 
-Jednak region podstawowy jest aktywnie obsługi sieci żądań od użytkowników. Region pomocniczy staje się aktywny tylko wtedy, gdy region podstawowy napotyka przerw w działaniu usługi. W takim przypadku wszystkie nowe żądania sieciowego trasy do regionu pomocniczego. Po wykonaniu kopii zapasowej bazy danych jest niemal natychmiastowe, równoważenia obciążenia mają adresy IP, które mogą być zaznaczone, kondycji i wystąpienia są zawsze aktualne i uruchomiona, ta topologia udostępnia opcję pracę w niski wskaźnik RTO i trybu failover bez żadnej interwencji ręcznej. Region pomocniczy trybu failover musi być gotowy do gotowej do pracy natychmiast po awarii do regionu podstawowego.
-Ten scenariusz jest idealne do użycia z usługi Azure Traffic Manager zawierający wbudowanych sondy dla różnych typów kontroli kondycji, w tym http / https i TCP. Usługa Azure Traffic manager ma także aparat reguł, które mogą być skonfigurowane dla trybu failover, gdy wystąpi błąd, zgodnie z poniższym opisem. Rozważmy następujące rozwiązanie przy użyciu usługi Traffic Manager:
-- Klient ma punkt końcowy Region nr 1, znane jako prod.contoso.com za pomocą statycznego adresu IP jako 100.168.124.44 i punktem końcowym Region nr 2, znane jako dr.contoso.com za pomocą statycznego adresu IP jako 100.168.124.43. 
--   Każda z tych środowisk jest fronted za pośrednictwem publicznego właściwość umożliwiający dostęp do Internetu, jak moduł równoważenia obciążenia. Moduł równoważenia obciążenia można skonfigurować do ma punkt końcowy oparte na systemie DNS lub w pełni kwalifikowaną nazwę domeny (FQDN), jak pokazano powyżej.
--   Wszystkie wystąpienia w regionie 2 znajdują się w pobliżu replikacji w czasie rzeczywistym z regionu 1. Ponadto obrazy maszyn są aktualne, a wszystkie dane oprogramowania i konfiguracji jest poprawek i są zgodne z regionu 1.  
--   Automatyczne skalowanie jest wstępnie skonfigurowany z wyprzedzeniem. 
+However, only the primary region is actively handling network requests from the users. The secondary region becomes active only when the primary region experiences a service disruption. In that case, all new network requests route to the secondary region. Since the backup of the database is near instantaneous, both the load balancers have IPs that can be health checked, and the instances are always up and running, this topology provides an option for going in for a low RTO and failover without any manual intervention. The secondary failover region must be ready to go-live immediately after failure of the primary region.
+This scenario is ideal for the use of Azure Traffic Manager that has inbuilt probes for various types of health checks including http / https and TCP. Azure Traffic manager also has a rule engine that can be configured to failover when a failure occurs as described below. Let’s consider the following solution using Traffic Manager:
+- Customer has the Region #1 endpoint known as prod.contoso.com with a static IP as 100.168.124.44 and a Region #2 endpoint known as dr.contoso.com with a static IP as 100.168.124.43. 
+-   Each of these environments is fronted via a public facing property like a load balancer. The load balancer can be configured to have a DNS-based endpoint or a fully qualified domain name (FQDN) as shown above.
+-   All the instances in Region 2 are in near real-time replication with Region 1. Furthermore, the machine images are up-to-date, and all software/configuration data is patched and are in line with Region 1.  
+-   Autoscaling is preconfigured in advance. 
 
-Kroki podjęte w celu konfigurowania trybu failover za pomocą usługi Azure Traffic Manager są następujące:
-1. Utwórz nowy profil usługi Azure Traffic Manager
-2. Tworzenie punktów końcowych w profilu usługi Traffic Manager
-3. Ustaw konfigurację kondycji wyboru i trybu failover
+The steps taken to configure the failover with Azure Traffic Manager are as follows:
+1. Create a new Azure Traffic Manager profile
+2. Create endpoints within the Traffic Manager profile
+3. Set up health check and failover configuration
 
-### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>Krok 1: Utwórz nowy profil usługi Azure Traffic Manager
-Tworzenie nowego profilu usługi Azure Traffic manager za pomocą contoso123 nazwę i wybierz metodę routingu priorytet. Jeśli masz już istniejącą grupę zasobów, którą chcesz skojarzyć z, a następnie wybrać istniejącą grupę zasobów, w przeciwnym razie utwórz nową grupę zasobów.
+### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>Step 1: Create a new Azure Traffic Manager profile
+Create a new Azure Traffic manager profile with the name contoso123 and select the Routing method as Priority. If you have a pre-existing resource group that you want to associate with, then you can select an existing resource group, otherwise, create a new resource group.
 
-![Tworzenie profilu usługi Traffic Manager](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
+![Create Traffic Manager profile](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
 
-*Rysunek — Tworzenie profilu usługi Traffic Manager*
+*Figure - Create a Traffic Manager profile*
 
-### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Krok 2: Tworzenie punktów końcowych w profilu usługi Traffic Manager
+### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Step 2: Create endpoints within the Traffic Manager profile
 
-W tym kroku utworzysz punktów końcowych, które wskazują na produkcyjne i lokacjach odzyskiwania po awarii. W tym miejscu wybierz **typu** jako zewnętrzny punkt końcowy, ale jeśli zasób jest hostowana na platformie Azure, umożliwiając wybranie **punkt końcowy platformy Azure** także. Jeśli wybierzesz **punkt końcowy platformy Azure**, a następnie wybierz **zasób docelowy** oznacza to jedną **usługi App Service** lub **publiczny adres IP** przydzielony przez Azure. Priorytet został ustawiony jako **1** , ponieważ jest ona podstawowym dla regionu 1.
-Podobnie można utworzyć awaryjnego odzyskiwania punkt końcowy w ramach usługi Traffic Manager również.
+In this step, you create endpoints that point to the production and disaster recovery sites. Here, choose the **Type** as an external endpoint, but if the resource is hosted in Azure, then you can choose **Azure endpoint** as well. If you choose **Azure endpoint**, then select a **Target resource** that is either an **App Service** or a **Public IP** that is allocated by Azure. The priority is set as **1** since it is the primary service for Region 1.
+Similarly, create the disaster recovery endpoint within Traffic Manager as well.
 
-![Tworzenie punktów końcowych odzyskiwania po awarii](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
+![Create disaster recovery endpoints](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
 
-*Rysunek — tworzenie punktów końcowych odzyskiwania po awarii*
+*Figure - Create disaster recovery endpoints*
 
-### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Krok 3: Ustaw konfigurację kondycji wyboru i trybu failover
+### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Step 3: Set up health check and failover configuration
 
-W tym kroku ustawisz czasu wygaśnięcia DNS to 10 sekund, które są uznawane przez większość mechanizmów rozpoznawania cyklicznego dostępnego z Internetu. Ta konfiguracja oznacza, że nie programu rozpoznawania nazw DNS spowoduje buforowanie tych informacji przez więcej niż 10 sekund. Dla ustawienia monitora punktu końcowego, ścieżka jest bieżący zestaw w / lub katalogu głównego, ale można dostosować ustawienia punktu końcowego można obliczyć ścieżki, na przykład prod.contoso.com/index. Poniżej przedstawiono przykład **https** protokół badania. Jednakże, możesz wybrać **http** lub **tcp** także. Zakończ aplikację zależy od wybranego protokołu. Interwał sondowania jest ustawiony na 10 sekund, co pozwala na szybkie badanie i ponowienie próby jest równa 3. Co w efekcie usługi Traffic Manager przejdzie w tryb failover do drugiego punktu końcowego Jeśli kolejne trzy w odstępach czasu zarejestrować błąd. Następująca formuła definiuje łączny czas do automatycznego trybu failover: Czas pracy w trybie Failover = TTL i ponów próbę wykonania * Probing interwał, a w tym przypadku wartość jest 10 + 3 * 10 = 40 sekund (maks.).
-Jeśli ponowienie próby jest ustawiona na 1, a czas wygaśnięcia wynosi 10 sekund, następnie godzinę dla trybu failover 10 + 1 * 10 = 20 sekund. Ustawić ponownych prób na wartość większą niż **1** , aby wyeliminować ryzyko przejścia w tryb failover ze względu na wyniki fałszywie dodatnie lub dowolnym blips pomocniczych sieci. 
+In this step, you set the DNS TTL to 10 seconds, which is honored by most internet-facing recursive resolvers. This configuration means that no DNS resolver will cache the information for more than 10 seconds. For the endpoint monitor settings, the path is current set at / or root, but you can customize the endpoint settings to evaluate a path, for example, prod.contoso.com/index. The example below shows the **https** as the probing protocol. However, you can choose **http** or **tcp** as well. The choice of protocol depends upon the end application. The probing interval is set to 10 seconds, which enables fast probing, and the retry is set to 3. As a result, Traffic Manager will failover to the second endpoint if three consecutive intervals register a failure. The following formula defines the total time for an automated failover: Time for failover = TTL + Retry * Probing interval And in this case, the value is 10 + 3 * 10 = 40 seconds (Max).
+If the Retry is set to 1 and TTL is set to 10 secs, then the time for failover 10 + 1 * 10 = 20 seconds. Set the Retry to a value greater than **1** to eliminate chances of failovers due to false positives or any minor network blips. 
 
 
-![Konfigurowanie kontroli kondycji](./media/disaster-recovery-dns-traffic-manager/set-up-health-check.png)
+![Set up health check](./media/disaster-recovery-dns-traffic-manager/set-up-health-check.png)
 
-*Rysunek — Ustawianie kondycji konfiguracji wyboru i trybu failover*
+*Figure - Set up health check and failover configuration*
 
-### <a name="how-automatic-failover-works-using-traffic-manager"></a>Sposób automatycznego działania trybu failover przy użyciu usługi Traffic Manager
+### <a name="how-automatic-failover-works-using-traffic-manager"></a>How automatic failover works using Traffic Manager
 
-Podczas awarii, pobiera sondowany podstawowego punktu końcowego i stan zmieni się na **negatywny wpływ na dostępność** i lokacji odzyskiwania po awarii pozostaje **Online**. Domyślnie usługa Traffic Manager wysyła cały ruch do podstawowego punktu końcowego (najwyższy priorytet). Jeśli podstawowy punkt końcowy zostanie wyświetlone obniżonej wydajności, usługa Traffic Manager kieruje ruchem do drugiego punktu końcowego, tak długo, jak długo pozostaje on w dobrej kondycji. Jedna ma opcję, aby skonfigurować dodatkowe punkty końcowe w ramach usługi Traffic Manager, które mogą służyć jako punkty końcowe dodatkowej pracy awaryjnej lub, jako obciążenia równoważenia obciążenia między punktami końcowymi udostępniania.
+During a disaster, the primary endpoint gets probed and the status changes to **degraded** and the disaster recovery site remains **Online**. By default, Traffic Manager sends all traffic to the primary (highest-priority) endpoint. If the primary endpoint appears degraded, Traffic Manager routes the traffic to the second endpoint as long as it remains healthy. One has the option to configure more endpoints within Traffic Manager that can serve as additional failover endpoints, or, as load balancers sharing the load between endpoints.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
-- Dowiedz się więcej o [system DNS Azure](../dns/dns-overview.md).
+## <a name="next-steps"></a>Następne kroki
+- Learn more about [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
+- Learn more about [Azure DNS](../dns/dns-overview.md).
 
 
 
