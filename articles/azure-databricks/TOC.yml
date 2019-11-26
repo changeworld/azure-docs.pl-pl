@@ -226,7 +226,7 @@
       maintainContext: true
     - name: Dane
       items:
-        - name: System plików usługi Databricks
+        - name: System plików usługi Databricks (DBFS)
           href: /azure/databricks/data/databricks-file-system
           maintainContext: true
         - name: Bazy danych i tabele
@@ -242,7 +242,7 @@
             - name: Bazy danych SQL używające sterownika JDBC
               href: /azure/databricks/data/data-sources/sql-databases
               maintainContext: true
-            - name: Usługa Azure SQL Database używająca łącznika Apache Spark
+            - name: Bazy danych SQL używające łącznika Apache Spark
               href: /azure/databricks/data/data-sources/sql-databases-azure
               maintainContext: true
             - name: Azure Blob Storage
@@ -254,7 +254,7 @@
             - name: Azure Data Lake Storage
               href: /azure/databricks/data/data-sources/azure/azure-datalake
               maintainContext: true
-            - name: Przekazywanie w usłudze Azure Data Lake Storage
+            - name: Przekazywanie poświadczeń usługi Azure Data Lake Storage
               href: /azure/databricks/data/data-sources/azure/adls-passthrough
               maintainContext: true
             - name: Cosmos DB
@@ -263,7 +263,7 @@
             - name: Azure SQL Data Warehouse
               href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
               maintainContext: true
-            - name: Pliki binarne
+            - name: Plik binarny
               href: /azure/databricks/data/data-sources/binary-file
               maintainContext: true
             - name: Cassandra
@@ -275,7 +275,7 @@
             - name: ElasticSearch
               href: /azure/databricks/data/data-sources/elasticsearch
               maintainContext: true
-            - name: Obrazy
+            - name: Image (Obraz)
               href: /azure/databricks/data/data-sources/image
               maintainContext: true
             - name: Tabele Hive
@@ -641,7 +641,7 @@
             - name: Obsługa nieprawidłowych rekordów i plików
               href: /azure/databricks/spark/latest/spark-sql/handling-bad-records
               maintainContext: true
-            - name: Wywłaszczanie zadania na potrzeby dużej współbieżności
+            - name: Wywłaszczanie zadań na potrzeby dużej współbieżności
               href: /azure/databricks/spark/latest/spark-sql/preemption
               maintainContext: true
             - name: Obsługa dużych zapytań w interaktywnych przepływach pracy
@@ -656,7 +656,7 @@
             - name: Funkcje zdefiniowane przez użytkownika — język Python
               href: /azure/databricks/spark/latest/spark-sql/udf-python
               maintainContext: true
-            - name: Debugowanie funkcji biblioteki Pandas zdefiniowanych przez użytkownika
+            - name: Funkcje biblioteki Pandas zdefiniowane przez użytkownika
               href: /azure/databricks/spark/latest/spark-sql/udf-python-pandas
               maintainContext: true
             - name: Zgodność z programem Apache Hive
@@ -764,16 +764,16 @@
               href: /azure/databricks/applications/deep-learning/data-prep/ddl-data
               maintainContext: true
             - name: Ładowanie danych przy użyciu biblioteki Petastorm
-              href: /azure/databricks//applications/deep-learning/data-prep/petastorm
+              href: /azure/databricks/applications/deep-learning/data-prep/petastorm
               maintainContext: true
             - name: Zapisywanie ramek danych i zestawów danych do plików TFRecord
-              href: /azure/databricks//applications/deep-learning/data-prep/dataset-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/dataset-to-tfrecords
               maintainContext: true
             - name: Ładowanie danych z plików TFRecord za pomocą biblioteki TensorFlow
-              href: /azure/databricks//applications/deep-learning/data-prep/tfrecords-to-tensorflow
+              href: /azure/databricks/applications/deep-learning/data-prep/tfrecords-to-tensorflow
               maintainContext: true
             - name: Zapisywanie danych do plików TFRecord za pomocą biblioteki TensorFlow
-              href: /azure/databricks//applications/deep-learning/data-prep/tensorflow-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
         - name: Trenowania pojedynczego węzła
           items:
@@ -1061,6 +1061,17 @@
         - name: Zarządzanie magazynem obszaru roboczego
           href: /azure/databricks/administration-guide/workspace-storage/storage
           maintainContext: true
+        - name: Włączanie konfiguracji klastra
+          items:
+            - name: Omówienie konfiguracji klastra
+              href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: Włączanie usług kontenerów
+              href: /azure/databricks/administration-guide/clusters/container-services
+              maintainContext: true
+            - name: Włączanie składnika Databricks Runtime dla usługi Genomics
+              href: /azure/databricks/administration-guide/clusters/genomics-runtime
+              maintainContext: true
         - name: Zarządzanie sieciami wirtualnymi
           items:
             - name: Omówienie sieci wirtualnych
@@ -1084,7 +1095,7 @@
     - name: Rozwiązywanie problemów
       items:
         - name: Często zadawane pytania
-          href: /azure/databricks//azure/azure-databricks/frequently-asked-questions-databricks
+          href: /azure/azure-databricks/frequently-asked-questions-databricks
           maintainContext: true
         - name: Administracja
           items:

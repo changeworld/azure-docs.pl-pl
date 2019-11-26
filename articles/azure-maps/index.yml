@@ -45,6 +45,8 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-maps/tutorial-geofence">Konfigurowanie geofencingu</a>
+          - html: <a href="/azure-maps/tutorial-iot-hub-maps">Analiza przestrzenna</a>
+          - html: <a href="/azure/azure-maps/tutorial-ev-routing">Routing EV przy użyciu usługi Azure Notebooks (Python)</a>
   - title: Dokumentacja
     items:
       - type: list
@@ -52,6 +54,6 @@ sections:
         className: cardsW
         items:
           - title: JavaScript
-            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Kontrolka mapy</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Kontrolka mapy</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/">Moduł narzędzi do rysowania</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-rest/">Moduł usług</a></p>'
           - title: REST
             html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Usługa danych</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Usługa geolokalizacji</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">Usługa mobilności</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Search Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Usługa danych przestrzennych</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Timezone Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p>'

@@ -61,6 +61,8 @@
   items:
     - name: Skalowanie
       items:
+        - name: Jedno wystąpienie
+          href: signalr-howto-scale-signalr.md
         - name: Wiele wystąpień
           href: signalr-howto-scale-multi-instances.md
     - name: Bezpieczeństwo

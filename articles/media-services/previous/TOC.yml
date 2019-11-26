@@ -266,18 +266,6 @@
           href: media-services-dotnet-long-operations.md
         - name: Specyfikacja odbierania podzielonej zawartości na żywo w formacie MP4
           href: ../media-services-fmp4-live-ingest-overview.md
-        - name: Wprowadzenie
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: Ładowanie wideo
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: Konfigurowanie skrótów klawiaturowych
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: Konfigurowanie lokalizacji
-          href: media-services-azure-media-clipper-localization.md
-        - name: Przesyłanie zadań przycinania
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: Portal Azure
-          href: media-services-azure-media-clipper-portal.md
     - name: Ochrona zawartości
       href: media-services-content-protection-overview.md
       items:

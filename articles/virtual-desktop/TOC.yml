@@ -58,8 +58,6 @@
           href: configure-host-pool-load-balancing.md
     - name: Używanie licencji Windows Virtual Desktop
       href: apply-windows-license.md
-    - name: Tworzenie kontenera profilu dla puli hostów za pomocą udziału plików
-      href: create-host-pools-user-profile.md
     - name: Dostosowywanie obrazu hosta sesji
       items:
         - name: Konfigurowanie głównego obrazu wirtualnego dysku twardego
@@ -72,7 +70,7 @@
       href: customize-feed-for-virtual-desktop-users.md
     - name: Wdrażanie narzędzia diagnostycznego
       href: deploy-diagnostics.md
-    - name: Publikowanie aplikacji
+    - name: Publikowanie wbudowanych aplikacji
       href: publish-apps.md
     - name: Konfigurowanie dołączania aplikacji MSIX
       href: app-attach.md
@@ -124,6 +122,8 @@
       href: /powershell/windows-virtual-desktop/overview
     - name: Interfejs API REST
       href: /rest/api/virtual-desktop/
+    - name: Obsługiwane ustawienia pliku RDP
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json'
 - name: Zasoby
   items:
     - name: Narzędzie do szacowania środowiska
