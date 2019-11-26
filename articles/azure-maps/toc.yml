@@ -127,7 +127,7 @@
               href: map-add-custom-html.md
             - name: Wyświetlanie ruchu
               href: map-show-traffic.md
-            - name: Interakcja ze zdarzeniami myszy
+            - name: Reagowanie na zdarzenia
               href: map-events.md
             - name: Udostępnianie aplikacji
               href: map-accessibility.md

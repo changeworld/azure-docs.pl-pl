@@ -71,6 +71,8 @@
           href: howto-version-device-template.md
         - name: Zarządzanie urządzeniami
           href: howto-manage-devices.md
+        - name: Konfigurowanie reguł
+          href: howto-configure-rules.md
         - name: Analizowanie danych urządzenia
           href: howto-create-analytics.md
         - name: Dodawanie kafelków do pulpitu nawigacyjnego
