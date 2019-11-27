@@ -133,6 +133,6 @@ Po określeniu vCenter Server i poświadczeń maszyny wirtualnej (opcjonalnie) k
 
 Metadane wykrytych maszyn wirtualnych będą wyświetlane w portalu na około 15 minut. Odnajdywanie zainstalowanych aplikacji, ról i funkcji zajmuje trochę czasu, a czas trwania zależy od liczby wykrytych maszyn wirtualnych. W przypadku maszyn wirtualnych 500 potrzeba około 1 godziny, aby spis aplikacji był wyświetlany w portalu Azure Migrate.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z samouczkami dotyczącymi [oceny oprogramowania VMware](tutorial-assess-vmware.md) i [migracji bez wykorzystania agentów](tutorial-migrate-vmware.md).

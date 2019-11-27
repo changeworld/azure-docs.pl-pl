@@ -182,6 +182,6 @@ Połącz obiekt zasad WAF z istniejącym hostem frontonu i zaktualizuj właściw
 Aby wyświetlić szablon służący do tworzenia zasad usługi Azure Front-drzwiczk i zasad WAF z użyciem niestandardowych reguł ograniczeń adresów IP, przejdź do witryny [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć profil usługi frontonu platformy Azure](../../frontdoor/quickstart-create-front-door.md).

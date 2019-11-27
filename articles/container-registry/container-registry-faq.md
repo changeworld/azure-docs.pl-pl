@@ -1,6 +1,6 @@
 ---
 title: Często zadawane pytania
-description: Answers for frequently asked questions related to the Azure Container Registry service
+description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure Container Registry
 author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
@@ -14,57 +14,57 @@ ms.locfileid: "74456391"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące usługi Azure Container Registry
 
-This article addresses frequently asked questions and known issues about Azure Container Registry.
+W tym artykule opisano często zadawane pytania i znane problemy dotyczące Azure Container Registry.
 
 ## <a name="resource-management"></a>Zarządzanie zasobami
 
-- [Can I create an Azure container registry using a Resource Manager template?](#can-i-create-an-azure-container-registry-using-a-resource-manager-template)
-- [Is there security vulnerability scanning for images in ACR?](#is-there-security-vulnerability-scanning-for-images-in-acr)
-- [How do I configure Kubernetes with Azure Container Registry?](#how-do-i-configure-kubernetes-with-azure-container-registry)
-- [How do I get admin credentials for a container registry?](#how-do-i-get-admin-credentials-for-a-container-registry)
-- [How do I get admin credentials in a Resource Manager template?](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
-- [Delete of replication fails with Forbidden status although the replication gets deleted using the Azure CLI or Azure PowerShell](#delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell)
-- [Firewall rules are updated successfully but they do not take effect](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
+- [Czy mogę utworzyć usługę Azure Container Registry przy użyciu szablonu Menedżer zasobów?](#can-i-create-an-azure-container-registry-using-a-resource-manager-template)
+- [Czy istnieją luki w zabezpieczeniach dotyczące skanowania obrazów w ACR?](#is-there-security-vulnerability-scanning-for-images-in-acr)
+- [Jak mogę skonfigurować Kubernetes z Azure Container Registry?](#how-do-i-configure-kubernetes-with-azure-container-registry)
+- [Jak mogę uzyskać poświadczenia administratora dla rejestru kontenerów?](#how-do-i-get-admin-credentials-for-a-container-registry)
+- [Jak mogę uzyskać poświadczenia administratora w szablonie Menedżer zasobów?](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
+- [Usuwanie replikacji kończy się niepowodzeniem z niedozwolonym stanem, chociaż replikacja zostanie usunięta przy użyciu interfejsu wiersza polecenia platformy Azure lub Azure PowerShell](#delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell)
+- [Reguły zapory zostały pomyślnie zaktualizowane, ale nie zaczną obowiązywać](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
 
-### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Can I create an Azure Container Registry using a Resource Manager template?
+### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Czy można utworzyć Azure Container Registry przy użyciu szablonu Menedżer zasobów?
 
-Tak. Here is [a template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) that you can use to create a registry.
+Tak. Oto [szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , którego można użyć do utworzenia rejestru.
 
-### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Is there security vulnerability scanning for images in ACR?
+### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Czy istnieją luki w zabezpieczeniach dotyczące skanowania obrazów w ACR?
 
-Tak. See the documentation from [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) and [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Tak. Zapoznaj się z dokumentacją z [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) i [akwamaryna](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
-### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>How do I configure Kubernetes with Azure Container Registry?
+### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Jak mogę skonfigurować Kubernetes z Azure Container Registry?
 
-See the documentation for [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) and steps for [Azure Kubernetes Service](../aks/cluster-container-registry-integration.md).
+Zapoznaj się z dokumentacją dotyczącą [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) i kroków [usługi Azure Kubernetes Service](../aks/cluster-container-registry-integration.md).
 
-### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>How do I get admin credentials for a container registry?
+### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>Jak mogę uzyskać poświadczenia administratora dla rejestru kontenerów?
 
 > [!IMPORTANT]
-> The admin user account is designed for a single user to access the registry, mainly for testing purposes. We do not recommend sharing the admin account credentials with multiple users. Individual identity is recommended for users and service principals for headless scenarios. See [Authentication overview](container-registry-authentication.md).
+> Konto użytkownika Administrator służy do uzyskiwania dostępu do rejestru, głównie do celów testowych. Nie zaleca się udostępniania poświadczeń konta administratora wielu użytkownikom. Indywidualna tożsamość jest zalecana dla użytkowników i jednostek usługi dla scenariuszy bezobsługowych. Zobacz [Omówienie uwierzytelniania](container-registry-authentication.md).
 
-Before getting admin credentials, make sure the registry's admin user is enabled.
+Przed pobraniem poświadczeń administratora upewnij się, że administrator rejestru jest włączony.
 
-To get credentials using the Azure CLI:
+Aby uzyskać poświadczenia przy użyciu interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli
 az acr credential show -n myRegistry
 ```
 
-Using Azure Powershell:
+Przy użyciu programu Azure PowerShell:
 
 ```powershell
 Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
 ```
 
-### <a name="how-do-i-get-admin-credentials-in-a-resource-manager-template"></a>How do I get admin credentials in a Resource Manager template?
+### <a name="how-do-i-get-admin-credentials-in-a-resource-manager-template"></a>Jak mogę uzyskać poświadczenia administratora w szablonie Menedżer zasobów?
 
 > [!IMPORTANT]
-> The admin user account is designed for a single user to access the registry, mainly for testing purposes. We do not recommend sharing the admin account credentials with multiple users. Individual identity is recommended for users and service principals for headless scenarios. See [Authentication overview](container-registry-authentication.md).
+> Konto użytkownika Administrator służy do uzyskiwania dostępu do rejestru, głównie do celów testowych. Nie zaleca się udostępniania poświadczeń konta administratora wielu użytkownikom. Indywidualna tożsamość jest zalecana dla użytkowników i jednostek usługi dla scenariuszy bezobsługowych. Zobacz [Omówienie uwierzytelniania](container-registry-authentication.md).
 
-Before getting admin credentials, make sure the registry's admin user is enabled.
+Przed pobraniem poświadczeń administratora upewnij się, że administrator rejestru jest włączony.
 
-To get the first password:
+Aby pobrać pierwsze hasło:
 
 ```json
 {
@@ -72,7 +72,7 @@ To get the first password:
 }
 ```
 
-To get the second password:
+Aby uzyskać drugie hasło:
 
 ```json
 {
@@ -80,61 +80,61 @@ To get the second password:
 }
 ```
 
-### <a name="delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell"></a>Delete of replication fails with Forbidden status although the replication gets deleted using the Azure CLI or Azure PowerShell
+### <a name="delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell"></a>Usuwanie replikacji kończy się niepowodzeniem z niedozwolonym stanem, chociaż replikacja zostanie usunięta przy użyciu interfejsu wiersza polecenia platformy Azure lub Azure PowerShell
 
-The error is seen when the user has permissions on a registry but doesn't have Reader-level permissions on the subscription. To resolve this issue, assign Reader permissions on the subscription to the user:
+Ten błąd jest widoczny, gdy użytkownik ma uprawnienia do rejestru, ale nie ma uprawnień na poziomie czytnika do subskrypcji. Aby rozwiązać ten problem, należy przypisać uprawnienia czytelnika do użytkownika:
 
 
 ```azurecli  
 az role assignment create --role "Reader" --assignee user@contoso.com --scope /subscriptions/<subscription_id> 
 ```
 
-### <a name="firewall-rules-are-updated-successfully-but-they-do-not-take-effect"></a>Firewall rules are updated successfully but they do not take effect
+### <a name="firewall-rules-are-updated-successfully-but-they-do-not-take-effect"></a>Reguły zapory zostały pomyślnie zaktualizowane, ale nie zaczną obowiązywać
 
-It takes some time to propagate firewall rule changes. After you change firewall settings, please wait for a few minutes before verifying this change.
+Propagowanie zmian reguł zapory zajmuje trochę czasu. Po zmianie ustawień zapory poczekaj kilka minut przed zweryfikowaniem tej zmiany.
 
 
 ## <a name="registry-operations"></a>Operacje rejestru
 
-- [How do I access Docker Registry HTTP API V2?](#how-do-i-access-docker-registry-http-api-v2)
-- [How do I delete all manifests that are not referenced by any tag in a repository?](#how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository)
-- [Why does the registry quota usage not reduce after deleting images?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
-- [How do I validate storage quota changes?](#how-do-i-validate-storage-quota-changes)
-- [How do I authenticate with my registry when running the CLI in a container?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [Does Azure Container Registry offer TLS v1.2 only configuration and how to enable TLS v1.2?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
-- [Does Azure Container Registry support Content Trust?](#does-azure-container-registry-support-content-trust)
-- [How do I grant access to pull or push images without permission to manage the registry resource?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
-- [How do I enable automatic image quarantine for a registry](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Jak mogę dostęp do usługi Docker Registry HTTP API v2?](#how-do-i-access-docker-registry-http-api-v2)
+- [Jak mogę usunąć wszystkie manifesty, do których nie odwołują się żadne Tagi w repozytorium?](#how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository)
+- [Dlaczego użycie limitu przydziału rejestru nie jest zmniejszane po usunięciu obrazów?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
+- [Jak mogę sprawdzić poprawność zmian przydziału magazynu?](#how-do-i-validate-storage-quota-changes)
+- [Jak mogę uwierzytelniać się przy użyciu mojego rejestru podczas uruchamiania interfejsu wiersza polecenia w kontenerze?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
+- [Czy Azure Container Registry oferować konfigurację tylko TLS v 1.2 i jak włączyć protokół TLS w wersji 1.2?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
+- [Czy Azure Container Registry obsługuje zaufanie zawartości?](#does-azure-container-registry-support-content-trust)
+- [Jak mogę udzielić dostępu do obrazów ściągania lub wypychania bez zezwolenia na zarządzanie zasobem rejestru?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
+- [Jak mogę włączyć automatycznej kwarantanny obrazu dla rejestru](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 
-### <a name="how-do-i-access-docker-registry-http-api-v2"></a>How do I access Docker Registry HTTP API V2?
+### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Jak mogę dostęp do usługi Docker Registry HTTP API v2?
 
-ACR supports Docker Registry HTTP API V2. The APIs can be accessed at `https://<your registry login server>/v2/`. Przykład: `https://mycontainerregistry.azurecr.io/v2/`
+ACR obsługuje protokół HTTP API v2 usługi Docker. Dostęp do interfejsów API można uzyskać w `https://<your registry login server>/v2/`. Przykład: `https://mycontainerregistry.azurecr.io/v2/`
 
-### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>How do I delete all manifests that are not referenced by any tag in a repository?
+### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>Jak mogę usunąć wszystkie manifesty, do których nie odwołują się żadne Tagi w repozytorium?
 
-If you are on bash:
+Jeśli jesteś w systemie bash:
 
 ```bash
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
-For Powershell:
+Dla programu PowerShell:
 
 ```powershell
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
-Note: You can add `-y` in the delete command to skip confirmation.
+Uwaga: aby pominąć potwierdzenie, można dodać `-y` w poleceniu Delete.
 
-For more information, see [Delete container images in Azure Container Registry](container-registry-delete.md).
+Aby uzyskać więcej informacji, zobacz [usuwanie obrazów kontenerów w Azure Container Registry](container-registry-delete.md).
 
-### <a name="why-does-the-registry-quota-usage-not-reduce-after-deleting-images"></a>Why does the registry quota usage not reduce after deleting images?
+### <a name="why-does-the-registry-quota-usage-not-reduce-after-deleting-images"></a>Dlaczego użycie limitu przydziału rejestru nie jest zmniejszane po usunięciu obrazów?
 
-This situation can happen if the underlying layers are still being referenced by other container images. If you delete an image with no references, the registry usage updates in a few minutes.
+Taka sytuacja może wystąpić, jeśli nadal istnieją odwołania do warstw bazowych innych obrazów kontenerów. Po usunięciu obrazu bez odwołań w ciągu kilku minut są aktualizowane informacje o użyciu rejestru.
 
-### <a name="how-do-i-validate-storage-quota-changes"></a>How do I validate storage quota changes?
+### <a name="how-do-i-validate-storage-quota-changes"></a>Jak mogę sprawdzić poprawność zmian przydziału magazynu?
 
-Create an image with a 1GB layer using the following docker file. This ensures that the image has a layer that is not shared by any other image in the registry.
+Utwórz obraz z warstwą 1 GB przy użyciu następującego pliku platformy Docker. Dzięki temu obraz ma warstwę, która nie jest udostępniana przez żadne inne obrazy w rejestrze.
 
 ```dockerfile
 FROM alpine
@@ -142,189 +142,189 @@ RUN dd if=/dev/urandom of=1GB.bin  bs=32M  count=32
 RUN ls -lh 1GB.bin
 ```
 
-Build and push the image to your registry using the docker CLI.
+Kompiluj i wypchnij obraz do rejestru przy użyciu interfejsu wiersza polecenia platformy Docker.
 
 ```bash
 docker build -t myregistry.azurecr.io/1gb:latest .
 docker push myregistry.azurecr.io/1gb:latest
 ```
 
-You should be able to see that the storage usage has increased in the Azure portal, or you can query usage using the CLI.
+Powinien być w stanie zobaczyć, że użycie magazynu zostało zwiększone w Azure Portal lub można użyć zapytania przy użyciu interfejsu wiersza polecenia.
 
 ```bash
 az acr show-usage -n myregistry
 ```
 
-Delete the image using the Azure CLI or portal and check the updated usage in a few minutes.
+Usuń obraz przy użyciu interfejsu wiersza polecenia platformy Azure lub portalu i sprawdź zaktualizowane użycie w ciągu kilku minut.
 
 ```bash
 az acr repository delete -n myregistry --image 1gb
 ```
 
-### <a name="how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container"></a>How do I authenticate with my registry when running the CLI in a container?
+### <a name="how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container"></a>Jak mogę uwierzytelniać się przy użyciu mojego rejestru podczas uruchamiania interfejsu wiersza polecenia w kontenerze?
 
-You need to run the Azure CLI container by mounting the Docker socket:
+Musisz uruchomić kontener interfejsu wiersza polecenia platformy Azure, instalując gniazdo Docker:
 
 ```bash
 docker run -it -v /var/run/docker.sock:/var/run/docker.sock azuresdk/azure-cli-python:dev
 ```
 
-In the container, install `docker`:
+W kontenerze Zainstaluj `docker`:
 
 ```bash
 apk --update add docker
 ```
 
-Then authenticate with your registry:
+Następnie Uwierzytelnij się w rejestrze:
 
 ```azurecli
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Does Azure Container Registry offer TLS v1.2 only configuration and how to enable TLS v1.2?
+### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Czy Azure Container Registry oferować konfigurację tylko TLS v 1.2 i jak włączyć protokół TLS w wersji 1.2?
 
-Tak. Enable TLS by using any recent docker client (version 18.03.0 and above). 
+Tak. Włącz protokół TLS przy użyciu dowolnego ostatniego klienta platformy Docker (wersja 18.03.0 lub nowsza). 
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Czy usługa Azure Container Registry obsługuje funkcję zaufania do kontenera?
 
-Yes, you can use trusted images in Azure Container Registry, since the [Docker Notary](https://docs.docker.com/notary/getting_started/) has been integrated and can be enabled. For details, see [Content Trust in Azure Container Registry](container-registry-content-trust.md).
+Tak, możesz używać zaufanych obrazów w Azure Container Registry, ponieważ [notariusz platformy Docker](https://docs.docker.com/notary/getting_started/) został zintegrowany i można go włączyć. Aby uzyskać szczegółowe informacje, zobacz [zaufanie zawartości w Azure Container Registry](container-registry-content-trust.md).
 
 
-####  <a name="where-is-the-file-for-the-thumbprint-located"></a>Where is the file for the thumbprint located?
+####  <a name="where-is-the-file-for-the-thumbprint-located"></a>Gdzie znajduje się plik dla odcisku palca?
 
-Under `~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`:
+W `~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`:
 
-* Public keys and certificates of all roles (except delegation roles) are stored in the `root.json`.
-* Public keys and certificates of the delegation role are stored in the JSON file of its parent role (for example `targets.json` for the `targets/releases` role).
+* Klucze publiczne i certyfikaty wszystkich ról (z wyjątkiem ról delegowania) są przechowywane w `root.json`.
+* Klucze publiczne i certyfikaty roli delegowania są przechowywane w pliku JSON jego roli nadrzędnej (na przykład `targets.json` roli `targets/releases`).
 
-It is suggested to verify those public keys and certificates after the overall TUF verification done by the Docker and Notary client.
+Zalecane jest zweryfikowanie tych kluczy publicznych i certyfikatów po ogólnej weryfikacji TUF wykonywanej przez klienta platformy Docker i notariusza.
 
-### <a name="how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource"></a>How do I grant access to pull or push images without permission to manage the registry resource?
+### <a name="how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource"></a>Jak mogę udzielić dostępu do obrazów ściągania lub wypychania bez zezwolenia na zarządzanie zasobem rejestru?
 
-ACR supports [custom roles](container-registry-roles.md) that provide different levels of permissions. Specifically, `AcrPull` and `AcrPush` roles allow users to pull and/or push images without the permission to manage the registry resource in Azure.
+Program ACR obsługuje [role niestandardowe](container-registry-roles.md) , które zapewniają różne poziomy uprawnień. W `AcrPull` i `AcrPush` role umożliwiają użytkownikom ściąganie i/lub wypychanie obrazów bez uprawnień do zarządzania zasobami rejestru na platformie Azure.
 
-* Azure portal: Your registry -> Access Control (IAM) -> Add (Select `AcrPull` or `AcrPush` for the Role).
-* Azure CLI: Find the resource ID of the registry by running the following command:
+* Azure Portal: > rejestru Access Control (IAM) — > Dodaj (wybierz `AcrPull` lub `AcrPush` dla roli).
+* Interfejs wiersza polecenia platformy Azure: Znajdź identyfikator zasobu rejestru, uruchamiając następujące polecenie:
 
   ```azurecli
   az acr show -n myRegistry
   ```
   
-  Then you can assign the `AcrPull` or `AcrPush` role to a user (the following example uses `AcrPull`):
+  Następnie można przypisać rolę `AcrPull` lub `AcrPush` do użytkownika (Poniższy przykład używa `AcrPull`):
 
   ```azurecli
     az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
     ```
 
-  Or, assign the role to a service principle identified by its application ID:
+  Lub Przypisz rolę do zasady usługi identyfikowanej za pomocą identyfikatora aplikacji:
 
   ```
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
-The assignee is then able to authenticate and access images in the registry.
+Przystawka jest następnie w stanie uwierzytelniać obrazy w rejestrze i uzyskiwać do nich dostęp.
 
-* To authenticate to a registry:
+* Aby uwierzytelnić się w rejestrze:
     
   ```azurecli
   az acr login -n myRegistry 
   ```
 
-* To list repositories:
+* Aby wyświetlić listę repozytoriów:
 
   ```azurecli
   az acr repository list -n myRegistry
   ```
 
- To pull an image:
+ Aby ściągnąć obraz:
     
   ```azurecli
   docker pull myregistry.azurecr.io/hello-world
   ```
 
-With the use of only the `AcrPull` or `AcrPush` role, the assignee doesn't have the permission to manage the registry resource in Azure. For example, `az acr list` or `az acr show -n myRegistry` won't show the registry.
+Korzystając tylko z roli `AcrPull` lub `AcrPush`, osoba przydzielona nie ma uprawnień do zarządzania zasobem rejestru na platformie Azure. Na przykład `az acr list` lub `az acr show -n myRegistry` nie będzie wyświetlać rejestru.
 
-### <a name="how-do-i-enable-automatic-image-quarantine-for-a-registry"></a>How do I enable automatic image quarantine for a registry?
+### <a name="how-do-i-enable-automatic-image-quarantine-for-a-registry"></a>Jak mogę włączyć automatyczne kwarantanny obrazu dla rejestru?
 
-Image quarantine is currently a preview feature of ACR. You can enable the quarantine mode of a registry so that only those images which have successfully passed security scan are visible to normal users. For details, see the [ACR GitHub repo](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
+Kwarantanna obrazu jest obecnie funkcją w wersji zapoznawczej ACR. Można włączyć tryb kwarantanny rejestru, aby były widoczne tylko te obrazy, które pomyślnie przekazały skanowanie zabezpieczeń. Aby uzyskać szczegółowe informacje, zobacz [repozytorium GitHub ACR](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
-## <a name="diagnostics-and-health-checks"></a>Diagnostics and health checks
+## <a name="diagnostics-and-health-checks"></a>Testy diagnostyczne i kondycji
 
-- [Check health with `az acr check-health`](#check-health-with-az-acr-check-health)
-- [docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
-- [docker push succeeds but docker pull fails with error: unauthorized: authentication required](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
-- [`az acr login` succeeds, but docker commands fails with error: unauthorized: authentication required](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [Enable and get the debug logs of the docker daemon](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
-- [New user permissions may not be effective immediately after updating](#new-user-permissions-may-not-be-effective-immediately-after-updating)
-- [Authentication information is not given in the correct format on direct REST API calls](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
-- [Why does the Azure portal not list all my repositories or tags?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
-- [Why does the Azure portal fail to fetch repositories or tags?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
-- [Why does my pull or push request fail with disallowed operation?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
-- [How do I collect http traces on Windows?](#how-do-i-collect-http-traces-on-windows)
+- [Sprawdź kondycję za pomocą `az acr check-health`](#check-health-with-az-acr-check-health)
+- [docker pull nie powiodło się z powodu błędu: net/http: żądanie zostało anulowane podczas oczekiwania na połączenie (klient. limit czasu został przekroczony w oczekiwaniu na nagłówki)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
+- [wypychanie Docker kończy się powodzeniem, ale docker pull nie powiodło się z powodu błędu: Brak autoryzacji: wymagane jest uwierzytelnianie](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
+- [`az acr login` powiodło się, ale polecenia platformy Docker kończą się niepowodzeniem z powodu błędu: Brak autoryzacji: wymagane jest uwierzytelnienie](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
+- [Włączanie i pobieranie dzienników debugowania demona platformy Docker](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [Nowe uprawnienia użytkownika mogą nie obowiązywać natychmiast po aktualizacji](#new-user-permissions-may-not-be-effective-immediately-after-updating)
+- [Informacje o uwierzytelnianiu nie są nadawane w poprawnym formacie dla wywołań interfejsu API bezpośredniego REST](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
+- [Dlaczego w Azure Portal nie są wystawiane wszystkie repozytoria lub Tagi?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Dlaczego Azure Portal nie można pobrać repozytoriów lub tagów?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
+- [Dlaczego moje żądanie ściągnięcia lub wypychania zakończy się niepowodzeniem z niedozwoloną operacją?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [Jak mogę zbierać ślady http w systemie Windows?](#how-do-i-collect-http-traces-on-windows)
 
-### <a name="check-health-with-az-acr-check-health"></a>Check health with `az acr check-health`
+### <a name="check-health-with-az-acr-check-health"></a>Sprawdź kondycję za pomocą `az acr check-health`
 
-To troubleshoot common environment and registry issues, see [Check the health of an Azure container registry](container-registry-check-health.md).
+Aby rozwiązać problemy ze wspólnym środowiskiem i rejestrem, zobacz [Sprawdzanie kondycji usługi Azure Container Registry](container-registry-check-health.md).
 
-### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull nie powiodło się z powodu błędu: net/http: żądanie zostało anulowane podczas oczekiwania na połączenie (klient. limit czasu został przekroczony w oczekiwaniu na nagłówki)
 
- - If this error is a transient issue, then retry will succeed.
- - If `docker pull` fails continuously, then there could be a problem with the Docker daemon. The problem can generally be mitigated by restarting the Docker daemon. 
- - If you continue to see this issue after restarting Docker daemon, then the problem could be some network connectivity issues with the machine. To check if general network on the machine is healthy, run the following command to test endpoint connectivity. The minimum `az acr` version that contains this connectivity check command is 2.2.9. Upgrade your Azure CLI if you are using an older version.
+ - Jeśli ten błąd jest przejściowy, a następnie ponów próbę.
+ - Jeśli `docker pull` nie ulegnie awarii w sposób ciągły, może wystąpić problem z demonem Docker. Problem można ogólnie wyeliminować przez ponowne uruchomienie demona platformy Docker. 
+ - Jeśli ten problem będzie nadal występować po ponownym uruchomieniu demona platformy Docker, problem może być przyczyną niektórych problemów z łącznością sieciową z maszyną. Aby sprawdzić, czy sieć ogólna na komputerze jest w dobrej kondycji, uruchom następujące polecenie, aby przetestować łączność z punktem końcowym. Minimalna wersja `az acr`, która zawiera to polecenie kontroli łączności, to 2.2.9. Uaktualnij interfejs wiersza polecenia platformy Azure, jeśli używasz starszej wersji.
  
    ```azurecli
     az acr check-health -n myRegistry
     ```
- - You should always have a retry mechanism on all Docker client operations.
+ - Należy zawsze mieć mechanizm ponawiania prób dla wszystkich operacji klienta platformy Docker.
 
-### <a name="docker-pull-is-slow"></a>Docker pull is slow
-Use [this](http://www.azurespeed.com/Azure/Download) tool to test your machine network download speed. If machine network is slow, consider using Azure VM in the same region as your registry. This usually gives you faster network speed.
+### <a name="docker-pull-is-slow"></a>Wypychanie platformy Docker jest powolne
+Użyj [tego](http://www.azurespeed.com/Azure/Download) narzędzia, aby przetestować szybkość pobierania sieci maszyny. W przypadku powolnej sieci komputerowej należy rozważyć użycie maszyny wirtualnej platformy Azure w tym samym regionie, w którym znajduje się rejestr. Zwykle zapewnia to szybszą szybkość działania sieci.
 
-### <a name="docker-push-is-slow"></a>Docker push is slow
-Use [this](http://www.azurespeed.com/Azure/Upload) tool to test your machine network upload speed. If machine network is slow, consider using Azure VM in the same region as your registry. This usually gives you faster network speed.
+### <a name="docker-push-is-slow"></a>Wypychanie Docker jest powolne
+[To](http://www.azurespeed.com/Azure/Upload) narzędzie służy do testowania szybkości przekazywania w sieci maszynowej. W przypadku powolnej sieci komputerowej należy rozważyć użycie maszyny wirtualnej platformy Azure w tym samym regionie, w którym znajduje się rejestr. Zwykle zapewnia to szybszą szybkość działania sieci.
 
-### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>Docker push succeeds but docker pull fails with error: unauthorized: authentication required
+### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>Wypychanie Docker kończy się powodzeniem, ale docker pull nie powiodło się z powodu błędu: Brak autoryzacji: wymagane jest uwierzytelnianie
 
-This error can happen with the Red Hat version of the Docker daemon, where `--signature-verification` is enabled by default. You can check the Docker daemon options for Red Hat Enterprise Linux (RHEL) or Fedora by running the following command:
+Ten błąd może wystąpić z wersją Red Hat demona platformy Docker, w której `--signature-verification` jest domyślnie włączona. Opcje demona platformy Docker dla Red Hat Enterprise Linux (RHEL) lub Fedora można sprawdzić, uruchamiając następujące polecenie:
 
 ```bash
 grep OPTIONS /etc/sysconfig/docker
 ```
 
-For instance, Fedora 28 Server has the following docker daemon options:
+Na przykład Fedora 28 Server ma następujące opcje demona platformy Docker:
 
 ```
 OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
 ```
 
-With `--signature-verification=false` missing, `docker pull` fails with an error similar to:
+W przypadku braku `--signature-verification=false` `docker pull` kończy się niepowodzeniem z powodu błędu podobnego do:
 
 ```bash
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
-To resolve the error:
-1. Add the option `--signature-verification=false` to the Docker daemon configuration file `/etc/sysconfig/docker`. Na przykład:
+Aby rozwiązać ten problem:
+1. Dodaj `--signature-verification=false` opcji do pliku konfiguracji demona platformy Docker `/etc/sysconfig/docker`. Na przykład:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
   ```
-2. Restart the Docker daemon service by running the following command:
+2. Uruchom ponownie usługę Docker demona, uruchamiając następujące polecenie:
 
   ```bash
   sudo systemctl restart docker.service
   ```
 
-Details of `--signature-verification` can be found by running `man dockerd`.
+Szczegóły `--signature-verification` można znaleźć, uruchamiając `man dockerd`.
 
-### <a name="az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required"></a>az acr login succeeds but docker fails with error: unauthorized: authentication required
+### <a name="az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required"></a>Operacja AZ ACR login powiedzie się, ale program Docker kończy się niepowodzeniem z powodu błędu: Brak autoryzacji: wymagane jest uwierzytelnianie
 
-Make sure you use an all lowercase server URL, for example, `docker push myregistry.azurecr.io/myimage:latest`, even if the registry resource name is uppercase or mixed case, like `myRegistry`.
+Upewnij się, że używasz adresu URL wszystkich małych liter, na przykład `docker push myregistry.azurecr.io/myimage:latest`, nawet jeśli nazwa zasobu rejestru ma wielkie lub małe litery, np. `myRegistry`.
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Enable and get the debug logs of the Docker daemon  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Włączanie i pobieranie dzienników debugowania demona platformy Docker  
 
-Start `dockerd` with the `debug` option. First, create the Docker daemon configuration file (`/etc/docker/daemon.json`) if it doesn't exist, and add the `debug` option:
+Rozpocznij `dockerd` z opcją `debug`. Najpierw utwórz plik konfiguracji demona platformy Docker (`/etc/docker/daemon.json`), jeśli nie istnieje, a następnie Dodaj opcję `debug`:
 
 ```json
 {   
@@ -332,20 +332,20 @@ Start `dockerd` with the `debug` option. First, create the Docker daemon configu
 }
 ```
 
-Then, restart the daemon. For example, with Ubuntu 14.04:
+Następnie ponownie uruchom demona. Na przykład z Ubuntu 14,04:
 
 ```bash
 sudo service docker restart
 ```
 
-Details can be found in the [Docker documentation](https://docs.docker.com/engine/admin/#enable-debugging). 
+Szczegółowe informacje znajdują się w [dokumentacji platformy Docker](https://docs.docker.com/engine/admin/#enable-debugging). 
 
- * The logs may be generated at different locations, depending on your system. For example, for Ubuntu 14.04, it's `/var/log/upstart/docker.log`.   
-See [Docker documentation](https://docs.docker.com/engine/admin/#read-the-logs) for details.    
+ * Dzienniki mogą być generowane w różnych lokalizacjach, w zależności od systemu. Na przykład dla Ubuntu 14,04 jest `/var/log/upstart/docker.log`.   
+Szczegóły można znaleźć w [dokumentacji platformy Docker](https://docs.docker.com/engine/admin/#read-the-logs) .    
 
- * For Docker for Windows, the logs are generated under %LOCALAPPDATA%/docker/. However it may not contain all the debug information yet.   
+ * W przypadku Docker for Windows dzienniki są generowane w lokalizacji% LOCALAPPDATA%/Docker/. Jednak może nie zawierać jeszcze wszystkich informacji o debugowaniu.   
 
-   In order to access the full daemon log, you may need some extra steps:
+   Aby można było uzyskać dostęp do dziennika pełnego demona, może być konieczne wykonanie pewnych dodatkowych czynności:
 
     ```console
     docker run --privileged -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /usr/local/bin/docker:/usr/local/bin/docker alpine sh
@@ -353,21 +353,21 @@ See [Docker documentation](https://docs.docker.com/engine/admin/#read-the-logs) 
     docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh
     chroot /host
     ```
-    Now you have access to all the files of the VM running `dockerd`. The log is at `/var/log/docker.log`.
+    Teraz masz dostęp do wszystkich plików maszyny wirtualnej z uruchomioną `dockerd`. Dziennik jest w `/var/log/docker.log`.
 
-### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>New user permissions may not be effective immediately after updating
+### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>Nowe uprawnienia użytkownika mogą nie obowiązywać natychmiast po aktualizacji
 
-When you grant new permissions (new roles) to a service principal, the change might not take effect immediately. There are two possible reasons:
+Gdy przyznasz nowe uprawnienia (nowe role) do jednostki usługi, zmiana może nie zaczyna obowiązywać natychmiast. Istnieją dwie możliwe przyczyny:
 
-* Azure Active Directory role assignment delay. Normally it's fast, but it could take minutes due to propagation delay.
-* Permission delay on ACR token server. This could take up to 10 minutes. To mitigate, you can `docker logout` and then authenticate again with the same user after 1 minute:
+* Opóźnienie przypisania roli Azure Active Directory. Zwykle jest to szybkie, ale może to potrwać kilka minut z powodu opóźnienia propagacji.
+* Opóźnienie uprawnień na serwerze tokenów ACR. Może to potrwać do 10 minut. Aby zmniejszyć ryzyko, można `docker logout`, a następnie ponownie uwierzytelnić się przy użyciu tego samego użytkownika po 1 minucie:
 
   ```bash
   docker logout myregistry.azurecr.io
   docker login myregistry.azurecr.io
   ```
 
-Currently ACR doesn't support home replication deletion by the users. The workaround is to include the home replication create in the template but skip its creation by adding `"condition": false` as shown below:
+Obecnie ACR nie obsługuje usuwania replikacji domowej przez użytkowników. Obejście polega na uwzględnieniu tworzenia w szablonie replikacji domowej, ale pominięcia jej tworzenia przez dodanie `"condition": false`, jak pokazano poniżej:
 
 ```json
 {
@@ -383,16 +383,16 @@ Currently ACR doesn't support home replication deletion by the users. The workar
 },
 ```
 
-### <a name="authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls"></a>Authentication information is not given in the correct format on direct REST API calls
+### <a name="authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls"></a>Informacje o uwierzytelnianiu nie są nadawane w poprawnym formacie dla wywołań interfejsu API bezpośredniego REST
 
-You may encounter an `InvalidAuthenticationInfo` error, especially using the `curl` tool with the option `-L`, `--location` (to follow redirects).
-For example, fetching the blob using `curl` with `-L` option and basic authentication:
+Może wystąpić błąd `InvalidAuthenticationInfo`, zwłaszcza przy użyciu narzędzia `curl` z `-L`opcji, `--location` (aby wykonać przekierowania).
+Na przykład pobieranie obiektu BLOB przy użyciu `curl` z opcją `-L` i uwierzytelnianie podstawowe:
 
 ```bash
 curl -L -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest
 ```
 
-may result in the following response:
+może skutkować następującą odpowiedzią:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -401,109 +401,109 @@ RequestId:00000000-0000-0000-0000-000000000000
 Time:2019-01-01T00:00:00.0000000Z</Message></Error>
 ```
 
-The root cause is that some `curl` implementations follow redirects with headers from the original request.
+Główną przyczyną jest to, że niektóre implementacje `curl` są zgodne z nagłówkami z oryginalnego żądania.
 
-To resolve the problem, you need to follow redirects manually without the headers. Print the response headers with the `-D -` option of `curl` and then extract: the `Location` header:
+Aby rozwiązać ten problem, należy ponownie wykonać przekierowania ręcznie bez nagłówków. Wydrukuj nagłówki odpowiedzi przy użyciu opcji `-D -` `curl` a następnie wyodrębnij: nagłówek `Location`:
 
 ```bash
 redirect_url=$(curl -s -D - -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest | grep "^Location: " | cut -d " " -f2 | tr -d '\r')
 curl $redirect_url
 ```
 
-### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Why does the Azure portal not list all my repositories or tags? 
+### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Dlaczego w Azure Portal nie są wystawiane wszystkie repozytoria lub Tagi? 
 
-If you are using the Microsoft Edge/IE browser, you can see at most 100 repositories or tags. If your registry has more than 100 repositories or tags, we recommend that you use either the Firefox or Chrome browser to list them all.
+Jeśli używasz przeglądarki Microsoft Edge/IE, możesz zobaczyć maksymalnie 100 repozytoriów lub tagów. Jeśli Rejestr zawiera więcej niż 100 repozytoriów lub tagów, zalecamy użycie przeglądarki Firefox lub Chrome, aby wyświetlić listę wszystkich elementów.
 
-### <a name="why-does-the-azure-portal-fail-to-fetch-repositories-or-tags"></a>Why does the Azure portal fail to fetch repositories or tags?
+### <a name="why-does-the-azure-portal-fail-to-fetch-repositories-or-tags"></a>Dlaczego Azure Portal nie można pobrać repozytoriów lub tagów?
 
-The browser might not be able to send the request for fetching repositories or tags to the server. There could be various reasons such as:
+Przeglądarka może nie być w stanie wysłać żądania pobrania repozytoriów lub tagów na serwer. Mogą istnieć różne przyczyny, takie jak:
 
-* Lack of network connectivity
+* Brak łączności sieciowej
 * Zapora
-* Ad blockers
-* DNS errors
+* Bloki usługi AD
+* Błędy DNS
 
-Please contact your network administrator or check your network configuration and connectivity. Try running `az acr check-health -n yourRegistry` using your Azure CLI to check if your environment is able to connect to the Container Registry. In addition, you could also try an incognito or private session in your browser to avoid any stale browser cache or cookies.
+Skontaktuj się z administratorem sieci lub Sprawdź konfigurację sieci i łączność. Spróbuj uruchomić `az acr check-health -n yourRegistry` przy użyciu interfejsu wiersza polecenia platformy Azure, aby sprawdzić, czy środowisko jest w stanie połączyć się z Container Registry. Ponadto można również wypróbować sesję incognito lub prywatną w przeglądarce, aby uniknąć nieodświeżonej pamięci podręcznej lub plików cookie przeglądarki.
 
-### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Why does my pull or push request fail with disallowed operation?
+### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Dlaczego moje żądanie ściągnięcia lub wypychania zakończy się niepowodzeniem z niedozwoloną operacją?
 
-Here are some senarios where operations maybe disallowed:
-* Classic registries are no longer supported. Please upgrade to a supported [SKUs](https://aka.ms/acr/skus) using [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) or the azure portal.
-* The image or repository maybe locked so that it can't be deleted or updated. You can use the [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) command to view current attributes.
-* Some operations are disallowed if the image is in quarantine. Learn more about [quarantine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
+Poniżej przedstawiono niektóre senarios, w których operacje mogą być niedozwolone:
+* Klasyczne rejestry nie są już obsługiwane. Przeprowadź uaktualnienie do obsługiwanej [jednostki SKU](https://aka.ms/acr/skus) przy użyciu polecenia [AZ ACR Update lub witryny](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) Azure Portal.
+* Obraz lub repozytorium może być zablokowane, aby nie można go było usunąć ani zaktualizować. Aby wyświetlić bieżące atrybuty, można użyć polecenia [AZ ACR show Repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) .
+* Niektóre operacje są niedozwolone, jeśli obraz jest objęty kwarantanną. Dowiedz się więcej o [kwarantannie](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
-### <a name="how-do-i-collect-http-traces-on-windows"></a>How do I collect http traces on Windows?
+### <a name="how-do-i-collect-http-traces-on-windows"></a>Jak mogę zbierać ślady http w systemie Windows?
 
 #### <a name="prerequisites"></a>Wymagania wstępne
 
-- Enable decrypting https in fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
-- Enable Docker to use a proxy through the Docker ui: <https://docs.docker.com/docker-for-windows/#proxies>
-- Be sure to revert when complete.  Docker won't work with this enabled and fiddler not running.
+- Włącz odszyfrowywanie https w programu Fiddler: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Włącz platformę Docker, aby użyć serwera proxy za pomocą interfejsu użytkownika platformy Docker: <https://docs.docker.com/docker-for-windows/#proxies>
+- Pamiętaj, aby przywrócić po zakończeniu.  Platforma Docker nie będzie działać z tym włączonym i programu Fiddler nie jest uruchomiona.
 
 #### <a name="windows-containers"></a>Kontenery systemu Windows
 
-Configure Docker proxy to 127.0.0.1:8888
+Konfigurowanie serwera proxy platformy Docker na adres 127.0.0.1:8888
 
 #### <a name="linux-containers"></a>Kontenery systemu Linux
 
-Find the ip of the Docker vm virtual switch:
+Znajdź adres IP przełącznika wirtualnego Docker VM:
 
 ```powershell
 (Get-NetIPAddress -InterfaceAlias "*Docker*" -AddressFamily IPv4).IPAddress
 ```
 
-Configure the Docker proxy to output of the previous command and the port 8888 (for example 10.0.75.1:8888)
+Skonfiguruj serwer proxy platformy Docker do danych wyjściowych poprzedniego polecenia i portu 8888 (na przykład 10.0.75.1:8888)
 
 ## <a name="tasks"></a>Zadania
 
-- [How do I batch cancel runs?](#how-do-i-batch-cancel-runs)
-- [How do I include the .git folder in az acr build command?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
-- [Does Tasks support GitLab for Source triggers?](#does-tasks-support-gitlab-for-source-triggers)
-- [What git repository management service does Tasks support?](#what-git-repository-management-service-does-tasks-support)
+- [Jak mogę przebiegów zadań wsadowych?](#how-do-i-batch-cancel-runs)
+- [Jak mogę uwzględnić folder. git w polecenia AZ ACR Build?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
+- [Czy zadania obsługują GitLab dla wyzwalaczy źródła?](#does-tasks-support-gitlab-for-source-triggers)
+- [Jakie usługi zarządzania repozytorium git są obsługiwane przez zadania?](#what-git-repository-management-service-does-tasks-support)
 
-### <a name="how-do-i-batch-cancel-runs"></a>How do I batch cancel runs?
+### <a name="how-do-i-batch-cancel-runs"></a>Jak mogę przebiegów zadań wsadowych?
 
-The following commands cancel all running tasks in the specified registry.
+Następujące polecenia powodują anulowanie wszystkich uruchomionych zadań w określonym rejestrze.
 
 ```azurecli
 az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o tsv \
 | xargs -I% az acr task cancel-run -r $myregistry --run-id %
 ```
 
-### <a name="how-do-i-include-the-git-folder-in-az-acr-build-command"></a>How do I include the .git folder in az acr build command?
+### <a name="how-do-i-include-the-git-folder-in-az-acr-build-command"></a>Jak mogę uwzględnić folder. git w polecenia AZ ACR Build?
 
-If you pass a local source folder to the `az acr build` command, the `.git` folder is excluded from the uploaded package by default. You can create a `.dockerignore` file with the following setting. It tells the command to restore all files under `.git` in the uploaded package. 
+W przypadku przekazania lokalnego folderu źródłowego do polecenia `az acr build` folder `.git` zostanie domyślnie wykluczony z przekazanego pakietu. Plik `.dockerignore` można utworzyć przy użyciu poniższego ustawienia. Instruuje polecenie, aby przywrócić wszystkie pliki w `.git` w przekazanym pakiecie. 
 
 ```sh
 !.git/**
 ```
 
-This setting also applies to the `az acr run` command.
+To ustawienie dotyczy również polecenia `az acr run`.
 
-### <a name="does-tasks-support-gitlab-for-source-triggers"></a>Does Tasks support GitLab for Source triggers?
+### <a name="does-tasks-support-gitlab-for-source-triggers"></a>Czy zadania obsługują GitLab dla wyzwalaczy źródła?
 
-We currently do not support GitLab for Source triggers.
+Obecnie nie obsługujemy GitLab dla wyzwalaczy źródłowych.
 
-### <a name="what-git-repository-management-service-does-tasks-support"></a>What git repository management service does Tasks support?
+### <a name="what-git-repository-management-service-does-tasks-support"></a>Jakie usługi zarządzania repozytorium git są obsługiwane przez zadania?
 
-| Git service | Source context | Manual build | Auto build through commit trigger |
+| Usługa git | Kontekst źródła | Kompilacja ręczna | Automatycznie Kompiluj przez wyzwalacz zatwierdzania |
 |---|---|---|---|
-| Witryna GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Tak | Tak |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Tak | Tak |
-| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Tak | Nie |
-| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Tak | Nie |
+| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Yes | Yes |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Yes | Yes |
+| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Yes | Nie |
+| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Yes | Nie |
 
-## <a name="run-error-message-troubleshooting"></a>Run Error Message Troubleshooting
+## <a name="run-error-message-troubleshooting"></a>Rozwiązywanie problemów z komunikatem o błędzie
 
-| Komunikat o błędzie | Podręcznik rozwiązywania problemów |
+| Komunikat o błędzie | Przewodnik rozwiązywania problemów |
 |---|---|
-|No access was configured for the VM, hence no subscriptions were found|This could happen if you are using `az login --identity` in your ACR Task. This is a transient error and occurs when the role assignment of your Managed Identity hasn't propagated. Waiting a few seconds before retrying works.|
+|Nie skonfigurowano dostępu dla maszyny wirtualnej, dlatego nie znaleziono żadnych subskrypcji|Może się tak zdarzyć, jeśli używasz `az login --identity` w zadaniu ACR. Jest to błąd przejściowy i występuje, gdy przypisanie roli zarządzanej tożsamości nie zostanie przekazane. Oczekiwanie na kilka sekund przed ponowną próbą.|
 
-## <a name="cicd-integration"></a>CI/CD integration
+## <a name="cicd-integration"></a>Integracja ciągłej integracji/ciągłego wdrażania
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
-- [GitHub Actions](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
+- [Akcje GitHub](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Learn more](container-registry-intro.md) about Azure Container Registry.
+* [Dowiedz się więcej](container-registry-intro.md) o Azure Container Registry.

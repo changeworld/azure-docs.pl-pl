@@ -56,11 +56,11 @@ Bez względu na to, czy wybierasz [bezpośrednią mowę liniową](direct-line-sp
 
 Oferujemy Przewodniki Szybki Start zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Ta tabela zawiera listę przewodników szybki start dla asystenta głosowego uporządkowanych według języka.
 
-| Szybki start | Platforma | Dokumentacja interfejsów API |
+| Szybki start | Platforma | Dokumentacja interfejsu API |
 |------------|----------|---------------|
-| C#, Platformy UWP | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Przeglądaj](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| C#, Platformy UWP | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Przycisku](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Przycisku](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
@@ -85,7 +85,7 @@ W przypadku asystentów głosowych utworzonych przy użyciu usługi Azure Speech
 * [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
 * [Pobieranie zestawu Speech SDK](speech-sdk.md)

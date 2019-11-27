@@ -17,10 +17,10 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451467"
 ---
-Management of contributions from collaborators depends on the current status of the app.
+Zarządzanie udziałami ze współpracowników zależy od bieżącego stanu aplikacji.
 
-**For [authoring resource migrated](../luis-migration-authoring.md) apps**: _contributors_ are managed in the Azure portal for the authoring resource, using the **Access control (IAM)** page. Add a user, using the collaborator's email address and the _contributor_ role. 
+**W przypadku [tworzenia migrowanych aplikacji zasobów](../luis-migration-authoring.md)** : _Współautorzy_ są zarządzani w Azure Portal dla zasobu tworzenia przy użyciu strony **Kontrola dostępu (IAM)** . Dodaj użytkownika przy użyciu adresu e-mail współpracownika i roli _współautor_ . 
 
-**For apps that have not migrated yet**: all _collaborators_ are managed in the LUIS portal from each app's **Manage -> Collaborators** page. On this page, [add a user's email address](../luis-how-to-collaborate.md). This provides authoring access to this app only. 
+W **przypadku aplikacji, które nie zostały jeszcze zmigrowane**: Wszyscy _współpracownicy_ są zarządzani w portalu Luis z poziomu strony **współpracowników usługi Zarządzanie >ami** dla każdej aplikacji. Na tej stronie [Dodaj adres e-mail użytkownika](../luis-how-to-collaborate.md). Umożliwia to tworzenie tylko dostępu do tej aplikacji. 
 
 

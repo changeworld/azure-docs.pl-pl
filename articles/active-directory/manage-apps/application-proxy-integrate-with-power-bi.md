@@ -70,7 +70,7 @@ Aby skonfigurować KCD, powtórz następujące kroki dla każdej maszyny łączn
 1. Zaloguj się do kontrolera domeny jako administrator domeny, a następnie otwórz **Active Directory Użytkownicy i komputery**.
 2. Znajdź komputera, na którym jest zasilany z łącznika.  
 3. Kliknij dwukrotnie komputer, a następnie wybierz kartę **delegowanie** .
-4. Ustaw ustawienia delegowania, aby **ufać temu komputerowi w delegowaniu tylko do określonych usług**. Następnie wybierz **Użyj dowolnego protokołu uwierzytelniania**.
+4. Ustaw ustawienia delegowania, aby **ufać temu komputerowi w delegowaniu tylko do określonych usług**. Następnie wybierz opcję **Użyj dowolnego protokołu uwierzytelniania**.
 5. Wybierz pozycję **Dodaj**, a następnie wybierz pozycję **Użytkownicy lub komputery**.
 6. Wprowadź konto usługi używane dla usług Reporting Services. Jest to konto, do którego dodano nazwę SPN w ramach konfiguracji usług Reporting Services.
 7. Kliknij przycisk **OK**. Aby zapisać zmiany, kliknij przycisk **OK** ponownie.
@@ -91,15 +91,15 @@ Teraz możesz przystąpić do konfigurowania serwer proxy aplikacji usługi Azur
 
 2. Po opublikowaniu aplikacji pojedynczego ustawień logowania jednokrotnego należy skonfigurować następujące czynności:
 
-   a. Na stronie aplikacji w portalu wybierz **logowanie jednokrotne**.
+   a. Na stronie aplikacji w portalu wybierz pozycję **Logowanie jednokrotne**.
 
    b. W przypadku **trybu logowania**jednokrotnego wybierz pozycję **zintegrowane uwierzytelnianie systemu Windows**.
 
    d. Ustaw **nazwę SPN aplikacji wewnętrznej** na ustawioną wcześniej wartość.  
 
-   d. Wybierz **delegowana tożsamość logowania** dla łącznika do używania w imieniu użytkowników. Aby uzyskać więcej informacji, zobacz [Praca z różnymi tożsamościami lokalnymi i w chmurze](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Wybierz **delegowaną tożsamość logowania** dla łącznika, który ma być używany w imieniu użytkowników. Aby uzyskać więcej informacji, zobacz [Praca z różnymi tożsamościami lokalnymi i w chmurze](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
-   e. Kliknij przycisk **Zapisz** Aby zapisać zmiany.
+   e. Kliknij przycisk **Zapisz** , aby zapisać zmiany.
 
 Aby zakończyć konfigurowanie aplikacji, przejdź do sekcji **Użytkownicy i grupy** i przypisz użytkownikom dostęp do tej aplikacji.
 

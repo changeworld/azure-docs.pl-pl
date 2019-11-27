@@ -75,7 +75,7 @@ Usługa mobilności komunikuje się z urządzeniem replikacji i replikowanymi ma
 
 ## <a name="ports"></a>Porty
 
-**urządzenia** | **połączenia**
+**Pliku** | **Połączenie**
 --- | --- 
 Maszyny wirtualne | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem do replikacji na porcie HTTPS 443 ruchu przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (domyślnie uruchomione na urządzeniu replikacji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
 Urządzenie replikacji | Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.
@@ -97,7 +97,7 @@ Wartości w tej tabeli mogą służyć do ustalenia, czy potrzebujesz dodatkoweg
 - Jeśli dzienny współczynnik zmian (tempo zmiany) przekracza 2 TB, wdróż dodatkowy serwer przetwarzania.
 - W przypadku replikowania więcej niż 200 maszyn należy wdrożyć dodatkowe urządzenie do replikacji.
 
-**CPU** | **Pamięć** | **Wolne miejsce dla buforowania danych** | **Współczynnik zmian** | **Limity replikacji**
+**TESTY** | **Rozmiar** | **Wolne miejsce dla buforowania danych** | **Współczynnik zmian** | **Limity replikacji**
 --- | --- | --- | --- | ---
 8 procesorów wirtualnych vCPU (2 gniazda * 4 rdzenie \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB lub mniej | Maszyny < 100 
 12 procesorów wirtualnych vCPU (2 gniazda * 6 rdzeni \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB do 1 TB | 100-150 maszyn.
@@ -126,6 +126,6 @@ Jeśli zachodzi potrzeba wdrożenia serwera przetwarzania skalowalnego w poziomi
     3. W obszarze **ograniczenie przepustowości**wybierz opcję **Włącz ograniczenie przepustowości Internetu dla operacji tworzenia kopii zapasowej**. Ustaw limity dla godzin pracy i czasu wolnego. Prawidłowe zakresy są z zakresu od 512 KB/s do 1 023 MB/s.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wypróbuj [migrację maszyny wirtualnej VMware](tutorial-migrate-vmware-agent.md) opartą na agencie przy użyciu migracji serwera Azure Migrate.

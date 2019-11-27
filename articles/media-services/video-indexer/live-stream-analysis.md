@@ -41,6 +41,6 @@ Przykładowy odtwarzacz odtwarza strumień na żywo i pobiera szczegółowe info
 
 Pełny kod i przewodnik krok po kroku służący do wdrażania wyników można znaleźć w projekcie usługi GitHub w [celu analizy multimediów na żywo za pomocą Video Indexer](https://aka.ms/livestreamanalysis). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Omówienie usługi Video Indexer](video-indexer-overview.md)

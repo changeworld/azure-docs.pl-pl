@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9caadddf281c6df29f6e36057c7b28abcef0e1c4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d691759f1075a08ad13ec1199eb8af7fd634f5a1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112524"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534475"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Wybierz warstwę cenową dla usługi Azure Wyszukiwanie poznawcze
 
@@ -216,7 +216,7 @@ Funkcje warstwy Bezpłatna i wersja zapoznawcza nie zapewniają [umów dotycząc
 
 + Zezwalaj na metryki do kompilowania zapytań i Zbieraj dane dotyczące wzorców użycia (zapytania w godzinach pracy, indeksowanie w godzinach poza szczytem). Te dane służą do informowania o decyzjach o aprowizacji usług. Chociaż nie jest to praktyczne ani codzienne erze, można dynamicznie dostosować partycje i zasoby, aby uwzględnić planowane zmiany w woluminach zapytań. Możesz również uwzględnić niezaplanowane, ale nieplanowane zmiany, jeśli poziomy są wystarczająco długie, aby zagwarantować wykonanie akcji.
 
-+ Należy pamiętać, że jedynym minusemem niepotrzebnej do obsłużenia jest konieczność odrywania usługi, jeśli rzeczywiste wymagania są większe niż przewidywane przewidywania. Aby uniknąć przerw w działaniu usługi, należy utworzyć nową usługę w tej samej subskrypcji w wyższej warstwie i uruchamiać ją równolegle do momentu, aż wszystkie aplikacje i żądania będą kierowane do nowego punktu końcowego.
++ Należy pamiętać, że jedynym minusemem niepotrzebnej do obsłużenia jest konieczność odrywania usługi, jeśli rzeczywiste wymagania są większe niż przewidywane przewidywania. Aby uniknąć przerw w działaniu usługi, należy utworzyć nową usługę w wyższej warstwie i uruchamiać ją równolegle do momentu, gdy wszystkie aplikacje i żądania będą kierowane do nowego punktu końcowego.
 
 ## <a name="next-steps"></a>Następne kroki
 

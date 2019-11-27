@@ -1,6 +1,6 @@
 ---
-title: Authentication issues in Azure HDInsight
-description: Authentication issues in Azure HDInsight
+title: Problemy z uwierzytelnianiem w usłudze Azure HDInsight
+description: Problemy z uwierzytelnianiem w usłudze Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -14,19 +14,19 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215995"
 ---
-# <a name="authentication-issues-in-azure-hdinsight"></a>Authentication issues in Azure HDInsight
+# <a name="authentication-issues-in-azure-hdinsight"></a>Problemy z uwierzytelnianiem w usłudze Azure HDInsight
 
-This article describes troubleshooting steps and possible resolutions for issues when interacting with Azure HDInsight clusters.
+W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
 
-On secure clusters backed by Azure Data Lake (Gen1 or Gen2), when domain users sign in to the cluster services through HDI Gateway (like signing in to the Apache Ambari portal), HDI Gateway will try to obtain an OAuth token from Azure Active Directory (Azure AD) first, and then get a Kerberos ticket from Azure AD DS. Authentication can fail in either of these stages. This article is aimed at debugging some of those issues.
+W przypadku bezpiecznych klastrów objętych usługą Azure Data Lake (Gen1 lub Gen2), gdy użytkownicy domeny logują się do usług klastra za pośrednictwem bramy HDI (na przykład zalogowanie się do portalu Apache Ambari), program HDI Gateway spróbuje najpierw uzyskać token OAuth od Azure Active Directory (Azure AD) , a następnie Pobierz bilet protokołu Kerberos z usługi Azure AD DS. Uwierzytelnianie może zakończyć się niepowodzeniem w żadnym z tych etapów. Ten artykuł ma na celu debugowanie niektórych z tych problemów.
 
-When the authentication fails, you will get prompted for credentials. If you cancel this dialog, the error message will be printed. Here are some of the common error messages:
+Gdy uwierzytelnianie nie powiedzie się, zostanie wyświetlony monit o podanie poświadczeń. Jeśli anulujesz to okno dialogowe, zostanie wydrukowany komunikat o błędzie. Poniżej przedstawiono niektóre typowe komunikaty o błędach:
 
-## <a name="invalid_grant-or-unauthorized_client-50126"></a>invalid_grant or unauthorized_client, 50126
+## <a name="invalid_grant-or-unauthorized_client-50126"></a>invalid_grant lub unauthorized_client, 50126
 
 ### <a name="issue"></a>Problem
 
-Sign in fails for federated users with error code 50126 (sign in succeeds for cloud users). Error message is similar to:
+Logowanie użytkowników federacyjnych kończy się niepowodzeniem z kodem błędu 50126 (logowanie dla użytkowników w chmurze kończy się niepowodzeniem). Komunikat o błędzie jest podobny do:
 
 ```
 Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_description":"AADSTS70002: Error validating credentials. AADSTS50126: Invalid username or password\r\nTrace ID: 09cc9b95-4354-46b7-91f1-efd92665ae00\r\n Correlation ID: 4209bedf-f195-4486-b486-95a15b70fbe4\r\nTimestamp: 2019-01-28 17:49:58Z","error_codes":[70002,50126], "timestamp":"2019-01-28 17:49:58Z","trace_id":"09cc9b95-4354-46b7-91f1-efd92665ae00","correlation_id":"4209bedf-f195-4486-b486-95a15b70fbe4"}
@@ -34,19 +34,19 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>Przyczyna
 
-Azure AD error code 50126 means the `AllowCloudPasswordValidation` policy has not been set by the tenant.
+Kod błędu usługi Azure AD 50126 oznacza, że zasady `AllowCloudPasswordValidation` nie zostały ustawione przez dzierżawcę.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-The Company Administrator of the Azure AD tenant should enable Azure AD to use password hashes for ADFS backed users.  Apply the `AllowCloudPasswordValidationPolicy` as shown in the article [Use Enterprise Security Package in HDInsight](../domain-joined/apache-domain-joined-architecture.md).
+Administrator firmy w dzierżawie usługi Azure AD powinien zezwolić usłudze Azure AD na używanie skrótów haseł dla użytkowników z kopiami zapasowymi usług ADFS.  Zastosuj `AllowCloudPasswordValidationPolicy`, jak pokazano w artykule [użycie pakiet Enterprise Security w usłudze HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50034"></a>invalid_grant or unauthorized_client, 50034
+## <a name="invalid_grant-or-unauthorized_client-50034"></a>invalid_grant lub unauthorized_client, 50034
 
 ### <a name="issue"></a>Problem
 
-Sign in fails with error code 50034. Error message is similar to:
+Logowanie kończy się niepowodzeniem z kodem błędu 50034. Komunikat o błędzie jest podobny do:
 
 ```
 {"error":"invalid_grant","error_description":"AADSTS50034: The user account Microsoft.AzureAD.Telemetry.Diagnostics.PII does not exist in the 0c349e3f-1ac3-4610-8599-9db831cbaf62 directory. To sign into this application, the account must be added to the directory.\r\nTrace ID: bbb819b2-4c6f-4745-854d-0b72006d6800\r\nCorrelation ID: b009c737-ee52-43b2-83fd-706061a72b41\r\nTimestamp: 2019-04-29 15:52:16Z", "error_codes":[50034],"timestamp":"2019-04-29 15:52:16Z","trace_id":"bbb819b2-4c6f-4745-854d-0b72006d6800", "correlation_id":"b009c737-ee52-43b2-83fd-706061a72b41"}
@@ -54,19 +54,19 @@ Sign in fails with error code 50034. Error message is similar to:
 
 ### <a name="cause"></a>Przyczyna
 
-User name is incorrect (does not exist). The user is not using the same username that is used in Azure portal.
+Nazwa użytkownika jest niepoprawna (nie istnieje). Użytkownik nie korzysta z tej samej nazwy użytkownika, która jest używana w Azure Portal.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-Use the same user name that works in that portal.
+Użyj tej samej nazwy użytkownika, która działa w tym portalu.
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant or unauthorized_client, 50053
+## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant lub unauthorized_client, 50053
 
 ### <a name="issue"></a>Problem
 
-User account is locked out, error code 50053. Error message is similar to:
+Konto użytkownika jest zablokowane, kod błędu 50053. Komunikat o błędzie jest podobny do:
 
 ```
 {"error":"unauthorized_client","error_description":"AADSTS50053: You've tried to sign in too many times with an incorrect user ID or password.\r\nTrace ID: 844ac5d8-8160-4dee-90ce-6d8c9443d400\r\nCorrelation ID: 23fe8867-0e8f-4e56-8764-0cdc7c61c325\r\nTimestamp: 2019-06-06 09:47:23Z","error_codes":[50053],"timestamp":"2019-06-06 09:47:23Z","trace_id":"844ac5d8-8160-4dee-90ce-6d8c9443d400","correlation_id":"23fe8867-0e8f-4e56-8764-0cdc7c61c325"}
@@ -74,19 +74,19 @@ User account is locked out, error code 50053. Error message is similar to:
 
 ### <a name="cause"></a>Przyczyna
 
-Too many sign in attempts with an incorrect password.
+Zbyt wiele prób logowania przy użyciu niepoprawnego hasła.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-Wait for 30 minutes or so, stop any applications that might be trying to authenticate.
+Zaczekaj 30 minut lub tak, Zatrzymaj wszystkie aplikacje, które mogą próbować uwierzytelniać.
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant or unauthorized_client, 50053
+## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant lub unauthorized_client, 50053
 
 ### <a name="issue"></a>Problem
 
-Password expired, error code 50053. Error message is similar to:
+Hasło wygasło, kod błędu 50053. Komunikat o błędzie jest podobny do:
 
 ```
 {"error":"user_password_expired","error_description":"AADSTS50055: Password is expired.\r\nTrace ID: 241a7a47-e59f-42d8-9263-fbb7c1d51e00\r\nCorrelation ID: c7fe4a42-67e4-4acd-9fb6-f4fb6db76d6a\r\nTimestamp: 2019-06-06 17:29:37Z","error_codes":[50055],"timestamp":"2019-06-06 17:29:37Z","trace_id":"241a7a47-e59f-42d8-9263-fbb7c1d51e00","correlation_id":"c7fe4a42-67e4-4acd-9fb6-f4fb6db76d6a","suberror":"user_password_expired","password_change_url":"https://portal.microsoftonline.com/ChangePassword.aspx"}
@@ -94,11 +94,11 @@ Password expired, error code 50053. Error message is similar to:
 
 ### <a name="cause"></a>Przyczyna
 
-Password is expired.
+Hasło wygasło.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-Change the password in the Azure portal (on your on-premises system) and then wait for 30 minutes for sync to catch up.
+Zmień hasło w Azure Portal (w systemie lokalnym), a następnie poczekaj 30 minut na przechwycenie synchronizacji.
 
 ---
 
@@ -106,118 +106,118 @@ Change the password in the Azure portal (on your on-premises system) and then wa
 
 ### <a name="issue"></a>Problem
 
-Receive error message `interaction_required`.
+Odbierz komunikat o błędzie `interaction_required`.
 
 ### <a name="cause"></a>Przyczyna
 
-Zasady dostępu warunkowego lub uwierzytelniania wieloskładnikowego są stosowane do użytkownika. Ponieważ uwierzytelnianie interakcyjne nie jest jeszcze obsługiwane, użytkownika lub klaster należy wykluczyć z uwierzytelniania wieloskładnikowego lub dostępu warunkowego. If you choose to exempt the cluster (IP address based exemption policy), then make sure that the AD `ServiceEndpoints` are enabled for that vnet.
+Zasady dostępu warunkowego lub uwierzytelniania wieloskładnikowego są stosowane do użytkownika. Ponieważ uwierzytelnianie interakcyjne nie jest jeszcze obsługiwane, użytkownika lub klaster należy wykluczyć z uwierzytelniania wieloskładnikowego lub dostępu warunkowego. Jeśli zdecydujesz się na wykluczenie klastra (Zasady wykluczania oparte na adresach IP), upewnij się, że `ServiceEndpoints` usługi AD są włączone dla tej sieci wirtualnej.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-Use conditional access policy and exempt the HDInisght clusters from MFA as shown in [Configure a HDInsight cluster with Enterprise Security Package by using Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
+Użyj zasad dostępu warunkowego i Wyklucz klastry HDInisght z usługi MFA, jak pokazano w temacie [Konfigurowanie klastra usługi HDInsight z pakiet Enterprise Security przy użyciu Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
 
 ---
 
-## <a name="sign-in-denied"></a>Sign in denied
+## <a name="sign-in-denied"></a>Odmowa logowania
 
 ### <a name="issue"></a>Problem
 
-Sign in is denied.
+Odmowa logowania.
 
 ### <a name="cause"></a>Przyczyna
 
-To get to this stage, your OAuth authentication is not an issue, but Kerberos authentication is. If this cluster is backed by ADLS, OAuth sign in has succeeded before Kerberos auth is attempted. On WASB clusters, OAuth sign in is not attempted. There could be many reasons for Kerberos failure - like password hashes are out of sync, user account locked out in Azure AD DS, and so on. Password hashes sync only when the user changes password. When you create the Azure AD DS instance, it will start syncing passwords that are changed after the creation. It won't retroactively sync passwords that were set before its inception.
+Aby przejść do tego etapu, uwierzytelnianie OAuth nie jest problemem, ale uwierzytelnianie Kerberos to. Jeśli ten klaster jest objęty ADLS, logowanie OAuth zakończyło się pomyślnie przed podjęciem próby uwierzytelnienia Kerberos. W klastrach WASB nie podjęto próby logowania przy użyciu protokołu OAuth. Może istnieć wiele powodów użycia protokołu Kerberos skróty haseł, które nie są zsynchronizowane, konto użytkownika zostało zablokowane na platformie Azure AD DS i tak dalej. Skróty haseł synchronizują się tylko wtedy, gdy użytkownik zmienia hasło. Podczas tworzenia wystąpienia usługi Azure AD DS rozpocznie się Synchronizowanie haseł, które zostały zmienione po utworzeniu. Nie synchronizuje wstecz hasła, które zostały ustawione przed jego rozpoczęciem.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-If you think passwords may not be in sync, try changing the password and wait for a few minutes to sync.
+Jeśli uważasz, że hasła mogą nie być zsynchronizowane, spróbuj zmienić hasło i poczekaj kilka minut na synchronizację.
 
-Try to SSH into a You will need to try to authenticate (kinit) using the same user credentials, from a machine that is joined to the domain. SSH into the head / edge node with a local user and then run kinit.
+Spróbuj użyć protokołu SSH w celu uwierzytelnienia (Narzędzie kinit) przy użyciu tych samych poświadczeń użytkownika, z komputera, który jest przyłączony do domeny. Użyj protokołu SSH do węzła głowy/krawędzi z użytkownikiem lokalnym, a następnie uruchom narzędzie kinit.
 
 ---
 
-## <a name="kinit-fails"></a>kinit fails
+## <a name="kinit-fails"></a>Narzędzie kinit kończy się niepowodzeniem
 
 ### <a name="issue"></a>Problem
 
-Kinit fails.
+Narzędzie kinit kończy się niepowodzeniem.
 
 ### <a name="cause"></a>Przyczyna
 
-Varies.
+Różni się.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-For kinit to succeed, you need to know your `sAMAccountName` (this is the short account name without the realm). `sAMAccountName` is usually the account prefix (like bob in `bob@contoso.com`). For some users, it could be different. You will need the ability to browse / search the directory to learn your `sAMAccountName`.
+Aby narzędzie kinit się powieść, musisz znać `sAMAccountName` (to jest krótka nazwa konta bez obszaru). `sAMAccountName` jest zazwyczaj prefiksem konta (na przykład Roberta w `bob@contoso.com`). W przypadku niektórych użytkowników może się to różnić. Aby poznać `sAMAccountName`, będziesz potrzebować możliwości przeglądania i przeszukiwania katalogu.
 
-Ways to find `sAMAccountName`:
+Sposoby znajdowania `sAMAccountName`:
 
-* If you can sign in to Ambari using the local Ambari admin, look at the list of users.
+* Jeśli możesz zalogować się do usługi Ambari przy użyciu lokalnego administratora usługi Ambari, zapoznaj się z listą użytkowników.
 
-* If you have a [domain joined windows machine](../../active-directory-domain-services/manage-domain.md), you can use the standard Windows AD tools to browse. This requires a working account in the domain.
+* Jeśli masz [przyłączoną do domeny maszynę z systemem Windows](../../active-directory-domain-services/manage-domain.md), możesz użyć standardowych narzędzi Windows AD do przeglądania. Wymaga to konta działającego w domenie.
 
-* From the head node, you can use SAMBA commands to search. This requires a valid Kerberos session (successful kinit). net ads search "(userPrincipalName=bob*)"
+* W węźle głównym można wyszukiwać za pomocą poleceń SAMBA. Wymaga to prawidłowej sesji protokołu Kerberos (pomyślne narzędzie kinit). Wyszukiwanie w usłudze net AD "(userPrincipalName = Robert *)"
 
-    The search / browse results should show you the `sAMAccountName` attribute. Also, you could look at other attributes like `pwdLastSet`, `badPasswordTime`, `userPrincipalName` etc. to see if those properties match what you expect.
+    W wynikach wyszukiwania/przeglądania powinien zostać wyświetlony atrybut `sAMAccountName`. Ponadto można przeglądać inne atrybuty, takie jak `pwdLastSet`, `badPasswordTime`, `userPrincipalName` itd., aby sprawdzić, czy te właściwości są zgodne z oczekiwaniami.
 
 ---
 
-## <a name="kinit-fails-with-preauthentication-failure"></a>kinit fails with Preauthentication failure
+## <a name="kinit-fails-with-preauthentication-failure"></a>Narzędzie kinit kończy się niepowodzeniem z powodu niepowodzenia uwierzytelniania wstępnego
 
 ### <a name="issue"></a>Problem
 
-Kinit fails with `Preauthentication` failure.
+Narzędzie kinit kończy się niepowodzeniem z powodu niepowodzenia `Preauthentication`.
 
 ### <a name="cause"></a>Przyczyna
 
-Incorrect username or password.
+Nieprawidłowa nazwa użytkownika lub hasło.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-Check your username and password. Also check for other properties described above. To enable verbose debugging, run `export KRB5_TRACE=/tmp/krb.log` from the session before trying kinit.
+Sprawdź nazwę użytkownika i hasło. Sprawdź również inne opisane powyżej właściwości. Aby włączyć pełne debugowanie, uruchom `export KRB5_TRACE=/tmp/krb.log` z sesji przed podjęciem próby narzędzie kinit.
 
 ---
 
-## <a name="job--hdfs-command-fails-due-to-tokennotfoundexception"></a>Job / HDFS command fails due to TokenNotFoundException
+## <a name="job--hdfs-command-fails-due-to-tokennotfoundexception"></a>Polecenie Job/HDFS nie powiodło się z powodu TokenNotFoundException
 
 ### <a name="issue"></a>Problem
 
-Job / HDFS command fails due to `TokenNotFoundException`.
+Polecenie Job/HDFS nie powiodło się z powodu `TokenNotFoundException`.
 
 ### <a name="cause"></a>Przyczyna
 
-The required OAuth access token was not found for the job / command to succeed. The ADLS / ABFS driver will try to retrieve the OAuth access token from the credential service before making storage requests. This token gets registered when you sign in to the Ambari portal using the same user.
+Nie znaleziono wymaganego tokenu dostępu OAuth, aby zadanie/polecenie zakończyło się pomyślnie. Sterownik ADLS/ABFS podejmie próbę pobrania tokenu dostępu OAuth z usługi Credential przed przekazaniem żądań magazynu. Ten token jest rejestrowany po zalogowaniu się do portalu Ambari przy użyciu tego samego użytkownika.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-Ensure that you have successfully logged in to the Ambari portal once through the username whose identity is used to run the job.
+Upewnij się, że po pomyślnym zalogowaniu się do portalu Ambari za pomocą nazwy użytkownika, której tożsamość jest używana do uruchomienia zadania.
 
 ---
 
-## <a name="error-fetching-access-token"></a>Error fetching access token
+## <a name="error-fetching-access-token"></a>Błąd podczas pobierania tokenu dostępu
 
 ### <a name="issue"></a>Problem
 
-User receives error message `Error fetching access token`.
+Użytkownik otrzymuje komunikat o błędzie `Error fetching access token`.
 
 ### <a name="cause"></a>Przyczyna
 
-This error occurs intermittently when users try to access the ADLS Gen2 using ACLs and the Kerberos token has expired.
+Ten błąd występuje sporadycznie, gdy użytkownicy próbują uzyskać dostęp do ADLS Gen2 przy użyciu list kontroli dostępu, a token Kerberos wygasł.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-* For Azure Data Lake Storage Gen1, clean browser cache and log into Ambari again.
+* W przypadku Azure Data Lake Storage Gen1, wyczyść pamięć podręczną przeglądarki i ponownie zaloguj się do Ambari.
 
-* For Azure Data Lake Storage Gen2, Run `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` for the user the user is trying to login as
+* W przypadku Azure Data Lake Storage Gen2 Uruchom `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` dla użytkownika, w którym użytkownik próbuje się zalogować
 
 ---
 
 ## <a name="next-steps"></a>Następne kroki
 
-If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
+Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 
-* Get answers from Azure experts through [Azure Community Support](https://azure.microsoft.com/support/community/).
+* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Connect with [@AzureSupport](https://twitter.com/azuresupport) - the official Microsoft Azure account for improving customer experience. Connecting the Azure community to the right resources: answers, support, and experts.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
 
-* If you need more help, you can submit a support request from the [Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Select **Support** from the menu bar or open the **Help + support** hub. For more detailed information, review [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Access to Subscription Management and billing support is included with your Microsoft Azure subscription, and Technical Support is provided through one of the [Azure Support Plans](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy technicznej dotyczącej zarządzania subskrypcjami i rozliczeniami jest oferowany w ramach subskrypcji platformy Microsoft Azure, a pomoc techniczna jest świadczona w ramach jednego z [planów pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/).

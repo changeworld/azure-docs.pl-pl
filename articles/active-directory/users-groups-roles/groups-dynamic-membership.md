@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/27/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027128"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538789"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -32,7 +32,7 @@ W przypadku zmiany atrybutów użytkownika lub urządzenia system oblicza wszyst
 
 > [!NOTE]
 > Ta funkcja wymaga Azure AD — wersja Premium licencji P1 dla każdego unikatowego użytkownika, który jest członkiem jednej lub więcej grup dynamicznych. Nie musisz przypisywać licencji użytkownikom, aby nie były członkami grup dynamicznych, ale musisz mieć minimalną liczbę licencji w dzierżawie, aby uwzględnić wszystkich tych użytkowników. Na przykład jeśli masz łącznie 1 000 unikatowych użytkowników we wszystkich grupach dynamicznych w dzierżawie, musisz mieć co najmniej 1 000 licencji na Azure AD — wersja Premium P1, aby spełnić wymagania dotyczące licencji.
->
+> Dla urządzeń, które są członkami dynamicznej grupy urządzeń, nie jest wymagana żadna licencja.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Konstruktor reguł w Azure Portal
 
@@ -98,7 +98,7 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 | city |Dowolna wartość ciągu lub wartość *null* |(User. City-EQ "wartość") |
 | trzeciego |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
 | companyName | Dowolna wartość ciągu lub wartość *null* | (User. NazwaFirmy-EQ "wartość") |
-| Dział |Dowolna wartość ciągu lub wartość *null* |(User. Department-EQ "wartość") |
+| department |Dowolna wartość ciągu lub wartość *null* |(User. Department-EQ "wartość") |
 | displayName |Dowolna wartość ciągu |(User. displayName-EQ "value") |
 | employeeId |Dowolna wartość ciągu |(User. IDPracownika-EQ "value")<br>(User. IDPracownika-ne *null*) |
 | facsimileTelephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. facsimileTelephoneNumber-EQ "wartość") |

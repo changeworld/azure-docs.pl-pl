@@ -130,7 +130,7 @@ Interfejs wiersza polecenia programu Internet Analyzer udostępnia następujące
     ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Przejrzyj [Informacje o interfejsie wiersza polecenia analizatora Internetu](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) , aby zapoznać się z pełną listą obsługiwanych poleceń i przykładów użycia.
 * Przeczytaj [często zadawane pytania dotyczące analizatora Internetu](internet-analyzer-faq.md).

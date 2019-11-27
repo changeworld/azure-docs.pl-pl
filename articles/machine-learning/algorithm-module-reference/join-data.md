@@ -1,7 +1,7 @@
 ---
-title: 'Join Data: Module Reference'
+title: 'Dołącz dane: odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the join Join Data module in Azure Machine Learning to merge datasets.
+description: Dowiedz się, jak scalić zestawy danych za pomocą modułu Join Data JOIN w Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,54 +18,54 @@ ms.locfileid: "74232625"
 ---
 # <a name="join-data"></a>Łączenie danych
 
-This article describes how to use the **Join Data** module in Azure Machine Learning designer (preview) to merge two datasets using a database-style join operation.  
+W tym artykule opisano sposób korzystania z modułu **dołączania danych** w programie Azure Machine Learning Designer (wersja zapoznawcza) w celu scalenia dwóch zestawów danych przy użyciu operacji łączenia w stylu bazy danych.  
 
-## <a name="how-to-configure-join-data"></a>How to configure Join Data
+## <a name="how-to-configure-join-data"></a>Jak skonfigurować dane sprzężenia
 
-To perform a join on two datasets, they should be related by a key column. Composite keys using multiple columns are also supported. 
+Aby wykonać sprzężenie na dwóch zestawach danych, powinny one być powiązane z kolumną klucza. Obsługiwane są również klucze złożone używające wielu kolumn. 
 
-1. Add the datasets you want to combine, and then drag the **Join Data** module into your pipeline. 
+1. Dodaj zestawy danych, które chcesz połączyć, a następnie przeciągnij moduł **Dołącz dane** do potoku. 
 
-    You can find the module in the **Data Transformation** category, under **Manipulation**.
+    Moduł można znaleźć w kategorii **Przekształcanie danych** w obszarze **manipulowanie**.
 
-1. Connect the datasets to the **Join Data** module. 
+1. Połącz zestawy danych z modułem **Join Data** . 
  
-1. Select **Launch column selector** to choose key column(s). Remember to choose columns for both the left and right inputs.
+1. Wybierz pozycję **Uruchom selektor kolumny** , aby wybrać kolumny klucza. Pamiętaj, aby wybrać kolumny dla wejść w lewo i w prawo.
 
-    For a single key:
+    Dla pojedynczego klucza:
 
-    Select a single key column for both inputs.
+    Wybierz jedną kolumnę klucza dla obu danych wejściowych.
     
-    For a composite key:
+    Dla klucza złożonego:
 
-    Select all the key columns from left input and right input in the same order. The **Join Data** module will join the tables when all key columns match. Check the option **Allow duplicates and preserve column order in selection** if the column order isn't the same as the original table. 
+    Zaznacz wszystkie kolumny kluczy od lewej i prawej strony w tej samej kolejności. Moduł **łączenia danych** zostanie dołączony do tabel, gdy wszystkie kolumny klucza są zgodne. Zaznacz opcję **Zezwalaj na duplikowanie i Zachowaj kolejność kolumn w zaznaczeniu** , jeśli kolejność kolumn nie jest taka sama jak oryginalna tabela. 
 
-    ![column-selector](media/module/join-data-column-selector.png)
+    ![Selektor kolumn](media/module/join-data-column-selector.png)
 
 
-1. Select the **Match case** option if you want to preserve case sensitivity on a text column join. 
+1. Wybierz opcję **Uwzględnij wielkość** liter, jeśli chcesz zachować czułość wielkości liter w sprzężeniu kolumny tekstowej. 
    
-1. Use the **Join type** dropdown list to specify how the datasets should be combined.  
+1. Użyj listy rozwijanej **Typ sprzężenia** , aby określić sposób łączenia zestawów danych.  
   
-    * **Inner Join**: An *inner join* is the most common join operation. It returns the combined rows only when the values of the key columns match.  
+    * **Sprzężenie wewnętrzne**: *sprzężenie wewnętrzne* jest najpopularniejszą operacją Join. Zwraca połączone wiersze tylko wtedy, gdy wartości kolumn klucza są zgodne.  
   
-    * **Left Outer Join**: A *left outer join* returns joined rows for all rows from the left table. When a row in the left table has no matching rows in the right table, the returned row contains missing values for all columns that come from the right table. You can also specify a replacement value for missing values.  
+    * **Lewe sprzężenie zewnętrzne**: *lewe sprzężenie zewnętrzne* zwraca dołączone wiersze dla wszystkich wierszy z tabeli po lewej. Gdy wiersz w lewej tabeli nie ma pasujących wierszy w prawej tabeli, zwracany wiersz zawiera brakujące wartości dla wszystkich kolumn, które pochodzą z prawej tabeli. Możesz również określić wartość zastępczą dla brakujące wartości.  
   
-    * **Full Outer Join**: A *full outer join* returns all rows from the left table (**table1**) and from the right table (**table2**).  
+    * **Pełne sprzężenie zewnętrzne**: *pełne sprzężenie zewnętrzne* zwraca wszystkie wiersze z tabeli po lewej (**Tabela1**) i z prawej tabeli (**tabela2**).  
   
-         For each of the rows in either table that have no matching rows in the other, the result includes a row containing missing values.  
+         W przypadku każdego z wierszy w tabeli, które nie mają pasujących wierszy w drugim, wynik zawiera wiersz zawierający brakujące wartości.  
   
-    * **Left Semi-Join**: A *left semi-join* returns only the values from the left table when the values of the key columns match.  
+    * **Lewe odłączenie**: *lewe odłączenie* zwraca tylko wartości z tabeli po lewej, gdy wartości kolumn klucza są zgodne.  
 
-1. For the option **Keep right key columns in joined table**:
+1. Dla opcji **Zachowaj kolumny klucza prawego w połączonej tabeli**:
 
-    * Select this option to view the keys from both input tables.
-    * Deselect to only return the key columns from the left input.
+    * Wybierz tę opcję, aby wyświetlić klucze z obu tabel wejściowych.
+    * Usuń zaznaczenie, aby zwrócić tylko kolumny klucza z lewej strony.
 
-1. Run the pipeline, or select the Join Data module and selected **Run Selected** to perform the join.
+1. Uruchom potok lub wybierz moduł łączenia danych i wybrane **uruchomienie wybrane** do wykonania sprzężenia.
 
-1. To view the results, right-click the **Join Data** > **Results dataset** > **Visualize**.
+1. Aby wyświetlić wyniki, kliknij prawym przyciskiem myszy **element dataset** **dane sprzężenia** > wyników > **Wizualizacja**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

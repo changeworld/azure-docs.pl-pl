@@ -33,6 +33,6 @@ Utwórz podstawowe zasady WAF dla drzwi przednich, postępując zgodnie z instru
     
    ![Reguła ochrony bot](.././media/waf-front-door-configure-bot-protection/botprotect2.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [monitorować WAF](waf-front-door-monitor.md).

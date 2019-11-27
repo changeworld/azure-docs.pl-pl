@@ -1,6 +1,6 @@
 ---
-title: Configure Blockchain Data Manager using Azure portal - Azure Blockchain Service
-description: Create and manage Blockchain Data Manager for Azure Blockchain Service using the Azure portal.
+title: Konfigurowanie Data Manager łańcucha bloków przy użyciu usługi Azure Portal — Azure łańcucha bloków Service
+description: Twórz Data Manager łańcucha bloków dla usługi Azure łańcucha bloków i zarządzaj nimi przy użyciu Azure Portal.
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
@@ -13,160 +13,160 @@ ms.locfileid: "74455815"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurowanie menedżera danych łańcucha bloków przy użyciu witryny Azure Portal
 
-Configure Blockchain Data Manager for Azure Blockchain Service to capture blockchain data and send it to an Azure Event Grid Topic.
+Skonfiguruj Data Manager łańcucha bloków dla usługi Azure łańcucha bloków, aby przechwytywać dane łańcucha bloków i wysyłać je do tematu Azure Event Grid.
 
-To configure a Blockchain Data Manager instance, you:
+Aby skonfigurować wystąpienie Data Manager łańcucha bloków:
 
-* Create a Blockchain Data Manager instance for an Azure Blockchain Service transaction node
-* Add your blockchain applications
+* Utwórz wystąpienie Data Manager łańcucha bloków dla węzła transakcji usługi Azure łańcucha bloków Service
+* Dodawanie aplikacji łańcucha bloków
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
-* Create an [Event Grid Topic](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
-* Learn about [Event handlers in Azure Event Grid](../../event-grid/event-handlers.md)
+* Kończenie [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków usługi Azure łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
+* Tworzenie [tematu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
+* Informacje o [obsłudze zdarzeń w Azure Event Grid](../../event-grid/event-handlers.md)
 
-## <a name="create-instance"></a>Create instance
+## <a name="create-instance"></a>Utwórz wystąpienie
 
-A Blockchain Data Manager instance connects and monitors an Azure Blockchain Service transaction node. Only users with access to the transaction node can create a connection. An instance captures all raw block and raw transaction data from the transaction node.
+Wystąpienie Data Manager łańcucha bloków nawiązuje połączenie i monitoruje węzeł transakcji usługi Azure łańcucha bloków. Połączenie może utworzyć tylko użytkownicy z dostępem do węzła transakcji. Wystąpienie przechwytuje wszystkie nieprzetworzone i nieprzetworzone dane transakcji z węzła transakcji.
 
-An outbound connection sends blockchain data to Azure Event Grid. You configure a single outbound connection when you create the instance. Blockchain Data Manager supports multiple Event Grid Topic outbound connections for any given Blockchain Data Manager instance. You can send blockchain data to a single destination or send blockchain data to multiple destinations. To add another destination, just add additional outbound connections to the instance.
+Połączenie wychodzące wysyła dane łańcucha bloków do Azure Event Grid. Podczas tworzenia wystąpienia można skonfigurować pojedyncze połączenie wychodzące. Łańcucha bloków Data Manager obsługuje wiele połączeń wychodzących tematu Event Grid dla danego wystąpienia Data Manager łańcucha bloków. Dane łańcucha bloków można wysyłać do jednego miejsca docelowego lub wysyłać dane łańcucha bloków do wielu miejsc docelowych. Aby dodać kolejne miejsce docelowe, po prostu Dodaj dodatkowe połączenia wychodzące do wystąpienia.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. Go to the Azure Blockchain Service member you want to connect to Blockchain Data Manager. Select **Blockchain Data Manager**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków, który chcesz połączyć z łańcucha bloków Data Manager. Wybierz pozycję **łańcucha bloków Data Manager**.
 1. Wybierz pozycję **Dodaj**.
 
-    ![Add Blockchain Data Manager](./media/data-manager-portal/add-instance.png)
+    ![Dodaj Data Manager łańcucha bloków](./media/data-manager-portal/add-instance.png)
 
     Wprowadź następujące wartości:
 
     Ustawienie | Opis
     --------|------------
-    Nazwa | Enter a unique name for a connected Blockchain Data Manager. The Blockchain Data Manager name can contain lower case letters and numbers and has a maximum length of 20 characters.
-    Transaction node | Choose a transaction node. Only transaction nodes you have read access are listed.
-    Nazwa połączenia | Enter a unique name of the outbound connection where blockchain transaction data is sent.
-    Event grid endpoint | Choose an event grid topic in the same subscription as the Blockchain Data Manager instance.
+    Nazwa | Wprowadź unikatową nazwę połączonego Data Manager łańcucha bloków. Nazwa Data Manager łańcucha bloków może zawierać małe litery i cyfry, a maksymalna długość wynosi 20 znaków.
+    Węzeł transakcji | Wybierz węzeł transakcji. Wyświetlane są tylko węzły transakcji, do których masz dostęp do odczytu.
+    Nazwa połączenia | Wprowadź unikatową nazwę połączenia wychodzącego, w którym są wysyłane dane transakcji łańcucha bloków.
+    Punkt końcowy siatki zdarzeń | Wybierz temat usługi Event Grid w tej samej subskrypcji co wystąpienie Data Manager łańcucha bloków.
 
 1. Kliknij przycisk **OK**.
 
-    It takes less than a minute to create a Blockchain Data Manager instance. After the instance is deployed, it is automatically started. A running Blockchain Data Manager instance captures blockchain events from the transaction node and sends data to the outbound connections.
+    Utworzenie wystąpienia Data Manager łańcucha bloków może zająć mniej niż minutę. Po wdrożeniu wystąpienia zostanie ono automatycznie uruchomione. Uruchomione wystąpienie Data Manager łańcucha bloków przechwytuje zdarzenia łańcucha bloków z węzła Transaction i wysyła dane do połączeń wychodzących.
 
-    The new instance appears in the list of Blockchain Data Manager instances for the Azure Blockchain Service member.
+    Nowe wystąpienie zostanie wyświetlone na liście wystąpień łańcucha bloków Data Manager dla elementu członkowskiego usługi Azure łańcucha bloków.
 
-    ![List of Blockchain Data Member instances](./media/data-manager-portal/instance-list.png)
+    ![Lista wystąpień elementu członkowskiego danych łańcucha bloków](./media/data-manager-portal/instance-list.png)
 
-## <a name="add-blockchain-application"></a>Add blockchain application
+## <a name="add-blockchain-application"></a>Dodawanie aplikacji łańcucha bloków
 
-If you add a blockchain application, Blockchain Data Manager decodes event and property state for the application. Otherwise, only raw block and raw transaction data is sent. Blockchain Data Manager also discovers contract addresses when the contract is deployed. You can add multiple blockchain applications to a Blockchain Data Manager instance.
+Jeśli dodasz aplikację łańcucha bloków, łańcucha bloków Data Manager dekoduje zdarzenie i stan właściwości aplikacji. W przeciwnym razie wysyłane są tylko nieprzetworzone dane transakcji blokowych i nieprzetworzonych. Łańcucha bloków Data Manager również wykrywa adresy kontraktu po wdrożeniu kontraktu. Można dodać wiele aplikacji łańcucha bloków do wystąpienia Data Manager łańcucha bloków.
 
 > [!IMPORTANT]
-> Currently, blockchain applications that declare Solidity [array types](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) or [mapping types](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) are not fully supported. Properties declared as array or mapping types will not be decoded in *ContractPropertiesMsg* or *DecodedContractEventsMsg* messages.
+> Obecnie aplikacje łańcucha bloków, które deklarują [Typy tablic](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) stałych lub [typy mapowania](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) , nie są w pełni obsługiwane. Właściwości zadeklarowane jako tablica lub typy mapowania nie będą zdekodowane w wiadomościach *ContractPropertiesMsg* lub *DecodedContractEventsMsg* .
 
-Blockchain Data Manager requires a smart contract ABI and deployed bytecode file to add the application.
+Aby można było dodać aplikację, Data Manager łańcucha bloków wymaga inteligentnego ABI kontraktu i wdrożonego pliku kodu.
 
-### <a name="get-contract-abi-and-bytecode"></a>Get Contract ABI and bytecode
+### <a name="get-contract-abi-and-bytecode"></a>Pobierz ABI kontraktu i kod bajtowy
 
-The contract ABI defines the smart contract interfaces. It describes how to interact with the smart contract. You can use the [Azure Blockchain Development Kit for Ethereum extension](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) to copy the contract ABI to the clipboard.
+ABI kontraktu definiuje inteligentne interfejsy kontraktu. Opisuje sposób korzystania z kontraktu inteligentnego. Aby skopiować ABI kontraktu do schowka, możesz użyć [rozszerzenia Azure łańcucha bloków Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) .
 
-1. In the Visual Studio Code explorer pane, expand the **build/contracts** folder of your Solidity project.
-1. Right-click the contract metadata JSON file. The file name is the smart contract name followed by the **.json** extension.
-1. Select **Copy Contract ABI**.
+1. W okienku Eksploratora Visual Studio Code rozwiń folder **kompilacja/kontrakty** w projekcie o trwałym stanie.
+1. Kliknij prawym przyciskiem myszy plik JSON metadanych kontraktu. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
+1. Wybierz pozycję **Kopiuj kontrakt ABI**.
 
-    ![Visual Studio Code pane with the Copy Contract ABI selection](./media/data-manager-portal/abi-devkit.png)
+    ![Visual Studio Code okienku z opcją Kopiuj kontrakt ABI](./media/data-manager-portal/abi-devkit.png)
 
-    The contract ABI is copied to the clipboard.
+    ABI kontraktu jest kopiowany do Schowka.
 
-1. Save the **abi** array as a JSON file. For example, *abi.json*. You use the file in a later step.
+1. Zapisz tablicę **ABI** jako plik JSON. Na przykład *ABI. JSON*. Ten plik jest używany w późniejszym kroku.
 
-Blockchain Data Manager requires the deployed bytecode for the smart contract. The deployed bytecode is different than the smart contract bytecode. You can get the deployed bytecode from the compiled contract metadata file.
+Łańcucha bloków Data Manager wymaga wdrożonego kodu bajtowego dla kontraktu inteligentnego. Wdrożony kod bajtowy jest inny niż kod bajtowy kontraktu inteligentnego. Wdrożony kod bajtowy można uzyskać z skompilowanego pliku metadanych kontraktu.
 
-1. Open the contract metadata file contained in the **build/contracts** folder of your Solidity project. The file name is the smart contract name followed by the **.json** extension.
-1. Find the **deployedBytecode** element in the JSON file.
-1. Copy the hexadecimal value without the quotes.
+1. Otwórz plik metadanych kontraktu znajdujący się w folderze **kompilacja/kontrakty** w projekcie o trwałym stanie. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
+1. Znajdź element **deployedBytecode** w pliku JSON.
+1. Skopiuj wartość szesnastkową bez cudzysłowów.
 
-    ![Visual Studio Code pane with bytecode in the metadata](./media/data-manager-portal/bytecode-metadata.png)
+    ![Visual Studio Code okienku z użyciem kodu bajtowego w metadanych](./media/data-manager-portal/bytecode-metadata.png)
 
-1. Save the **bytecode** value as a JSON file. For example, *bytecode.json*. You use the file in a later step.
+1. Zapisz wartość **kodu bajtowego** jako plik JSON. Na przykład, *kod bajtowy. JSON*. Ten plik jest używany w późniejszym kroku.
 
-The following example shows *abi.json* and *bytecode.json* files open in the VS Code editor. Your files should look similar.
+W poniższym przykładzie przedstawiono pliki *ABI. JSON* i *unformating. JSON* otwarte w edytorze vs Code. Pliki powinny wyglądać podobnie.
 
-![Example of abi.json and bytecode.json files](./media/data-manager-portal/contract-files.png)
+![Przykład plików ABI. JSON i kodu bajtowego JSON](./media/data-manager-portal/contract-files.png)
 
-### <a name="create-contract-abi-and-bytecode-url"></a>Create contract ABI and bytecode URL
+### <a name="create-contract-abi-and-bytecode-url"></a>Utwórz ABI kontraktu i adres URL kodu bajtowego
 
-Blockchain Data Manager requires the contract ABI and bytecode files to be accessible by a URL when adding an application. You can use an Azure Storage account to provide a privately accessible URL.
+Łańcucha bloków Data Manager wymaga dostępności plików ABI i kodu bajtowego kontraktu przez adres URL podczas dodawania aplikacji. Możesz użyć konta usługi Azure Storage, aby podać adres URL dostępny prywatnie.
 
 #### <a name="create-storage-account"></a>Tworzenie konta magazynu
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-#### <a name="upload-contract-files"></a>Upload contract files
+#### <a name="upload-contract-files"></a>Przekazywanie plików kontraktu
 
-1. Create a new container for the storage account. Select **Containers > Container**.
+1. Utwórz nowy kontener dla konta magazynu. Wybierz kontenery **> kontenerze**.
 
-    ![Create a storage account container](./media/data-manager-portal/create-container.png)
+    ![Tworzenie kontenera konta magazynu](./media/data-manager-portal/create-container.png)
 
     | Pole | Opis |
     |-------|-------------|
-    | Nazwa  | Name the container. For example, *smartcontract* |
-    | Public access level | Choose *Private (no anonymous access)* |
+    | Nazwa  | Nazwij kontener. Na przykład *smartcontract* |
+    | Poziom dostępu publicznego | Wybierz pozycję *prywatny (brak dostępu anonimowego)* |
 
 1. Wybierz przycisk **OK**, aby utworzyć kontener.
-1. Select the container then select **Upload**.
-1. Choose both JSON files you created in the [Get Contract ABI and bytecode](#get-contract-abi-and-bytecode) section.
+1. Wybierz kontener, a następnie wybierz pozycję **Przekaż**.
+1. Wybierz pliki JSON, które zostały utworzone w sekcji [Pobierz kontrakt ABI i kod bajtowy](#get-contract-abi-and-bytecode) .
 
-    ![Upload blob](./media/data-manager-portal/upload-blobs.png)
+    ![Przekaż obiekt BLOB](./media/data-manager-portal/upload-blobs.png)
 
     Wybierz pozycję **Przekaż**.
 
-#### <a name="generate-url"></a>Generate URL
+#### <a name="generate-url"></a>Generuj adres URL
 
-For each blob, generate a shared access signature.
+Dla każdego obiektu BLOB Wygeneruj sygnaturę dostępu współdzielonego.
 
-1. Select the ABI JSON blob.
-1. Select **Generate SAS**
-1. Set desired access signature expiration then select **Generate blob SAS token and URL**.
+1. Wybierz obiekt BLOB ABI JSON.
+1. Wybierz pozycję **Generuj SAS**
+1. Ustaw odpowiednie wygaśnięcie sygnatury dostępu, a następnie wybierz pozycję **Generuj token SAS i adres URL**.
 
-    ![Generate SAS token](./media/data-manager-portal/generate-sas.png)
+    ![Generuj token SAS](./media/data-manager-portal/generate-sas.png)
 
-1. Copy the **Blob SAS URL** and save it for the next section.
-1. Repeat the [Generate URL](#generate-url) steps for the bytecode JSON blob.
+1. Skopiuj **adres URL sygnatury dostępu współdzielonego obiektu BLOB** i Zapisz go w następnej sekcji.
+1. Powtórz kroki [Generuj adres URL](#generate-url) dla obiektu BLOB JSON.
 
-### <a name="add-application-to-instance"></a>Add application to instance
+### <a name="add-application-to-instance"></a>Dodaj aplikację do wystąpienia
 
-1. Select your Blockchain Data Manager instance from the instance list.
-1. Select **Blockchain applications**.
+1. Wybierz wystąpienie Data Manager łańcucha bloków z listy wystąpień.
+1. Wybierz pozycję **aplikacje łańcucha bloków**.
 1. Wybierz pozycję **Dodaj**.
 
-    ![Add a blockchain application](./media/data-manager-portal/add-application.png)
+    ![Dodawanie aplikacji łańcucha bloków](./media/data-manager-portal/add-application.png)
 
-    Enter the name of the blockchain application and the smart contract ABI and bytecode URLs.
+    Wprowadź nazwę aplikacji łańcucha bloków oraz adresy URL ABI i kodu bajtowego.
 
     Ustawienie | Opis
     --------|------------
-    Nazwa | Enter a unique name for the blockchain application to track.
-    Contract ABI | URL path to the Contract ABI file. For more information, see [Create contract ABI and bytecode URL](#create-contract-abi-and-bytecode-url).
-    Contract Bytecode | URL path to bytecode file. For more information, see [Create contract ABI and bytecode URL](#create-contract-abi-and-bytecode-url).
+    Nazwa | Wprowadź unikatową nazwę aplikacji łańcucha bloków, która ma być śledzona.
+    ABI kontraktu | Ścieżka URL do pliku ABI kontraktu. Aby uzyskać więcej informacji, zobacz temat [Tworzenie kontraktu ABI i adresu URL kodu bajtowego](#create-contract-abi-and-bytecode-url).
+    Kod bajtowy kontraktu | Ścieżka adresu URL do pliku kodu bajtowego. Aby uzyskać więcej informacji, zobacz temat [Tworzenie kontraktu ABI i adresu URL kodu bajtowego](#create-contract-abi-and-bytecode-url).
 
 1. Kliknij przycisk **OK**.
 
-    Once the application is created, the application appears in the list of blockchain applications.
+    Po utworzeniu aplikacji aplikacja zostanie wyświetlona na liście aplikacji łańcucha bloków.
 
-    ![Blockchain application list](./media/data-manager-portal/artifact-list.png)
+    ![Lista aplikacji łańcucha bloków](./media/data-manager-portal/artifact-list.png)
 
-You can delete the Azure Storage account or use it to configure more blockchain applications. If you wish to delete the Azure Storage account, you can delete the resource group. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego konta magazynu i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
+Możesz usunąć konto usługi Azure Storage lub użyć go do skonfigurowania większej liczby aplikacji łańcucha bloków. Jeśli chcesz usunąć konto usługi Azure Storage, możesz usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego konta magazynu i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
 
-## <a name="stop-instance"></a>Stop instance
+## <a name="stop-instance"></a>Zatrzymaj wystąpienie
 
-Stop the Blockchain Manager instance when you want to stop capturing blockchain events and sending data to the outbound connections. When the instance is stopped, no charges are incurred for Blockchain Data Manager. Aby uzyskać więcej informacji, zobacz [cennik](https://azure.microsoft.com/pricing/details/blockchain-service).
+Zatrzymaj wystąpienie Menedżera łańcucha bloków, jeśli chcesz zatrzymać przechwytywanie zdarzeń łańcucha bloków i wysyłanie danych do połączeń wychodzących. Po zatrzymaniu wystąpienia nie są naliczane opłaty za łańcucha bloków Data Manager. Aby uzyskać więcej informacji, zobacz [cennik](https://azure.microsoft.com/pricing/details/blockchain-service).
 
-1. Go to **Overview** and select **Stop**.
+1. Przejdź do **omówienia** i wybierz pozycję **Zatrzymaj**.
 
-    ![Stop instance](./media/data-manager-portal/stop-instance.png)
+    ![Zatrzymaj wystąpienie](./media/data-manager-portal/stop-instance.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Try the next tutorial creating a blockchain transaction message explorer using Blockchain Data Manager and Azure Cosmos DB.
+Wypróbuj następny samouczek tworzenia Eksploratora komunikatów transakcji łańcucha bloków za pomocą łańcucha bloków Data Manager i Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Use Blockchain Data Manager to send data to Azure Cosmos DB](data-manager-cosmosdb.md)
+> [Wysyłanie danych do Azure Cosmos DB za pomocą łańcucha bloków Data Manager](data-manager-cosmosdb.md)

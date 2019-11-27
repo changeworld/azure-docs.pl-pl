@@ -1,6 +1,6 @@
 ---
-title: Change your work or school account password - Azure AD
-description: Learn to change your work or school account password from the Change Password page of the My Account portal.
+title: Zmienianie hasła konta służbowego — Azure AD
+description: Dowiedz się, jak zmienić hasło konta służbowego ze strony Zmień hasło w portalu My account.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,41 +19,41 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231876"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Change your work or school account password from the My Account portal
+# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Zmień hasło konta służbowego z poziomu portalu My Account
 
-From the **Change password** page of the **My Account** portal, you can update your work or school account password. This will only work if you know your existing password and if you aren't locked out of your account.
+Na stronie **zmiana hasła** w portalu **My Account (Moje konto** ) możesz zaktualizować swoje hasło do konta służbowego. Będzie to możliwe tylko wtedy, gdy znasz istniejące hasło i jeśli nie masz zablokowanego konta użytkownika.
 
-If you don't remember your password, if you've been locked out of your account, or if you never got a password from your company support team, you can use your security info and your mobile device to reset your password. For more information, see [Reset your work or school password](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
+Jeśli nie pamiętasz hasła, jeśli konto zostało zablokowane lub nigdy nie masz hasła od zespołu pomocy technicznej Twojej firmy, możesz użyć informacji zabezpieczających i urządzenia przenośnego, aby zresetować hasło. Aby uzyskać więcej informacji, zobacz [Resetowanie hasła](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password)służbowego.
 
 >[!Note]
->If you're trying to get back into a personal account like for Xbox, hotmail.com, or outlook.com, try the suggestions in the [When you can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) article.
+>Jeśli próbujesz wrócić do konta osobistego, takiego jak Xbox, hotmail.com lub outlook.com, wypróbuj sugestie w programie, [gdy nie możesz zalogować się do konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu.
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>To change your password from the My Account portal
+## <a name="to-change-your-password-from-the-my-account-portal"></a>Aby zmienić hasło w portalu My Account
 
-1. Sign in to your work or school account, using your existing password, and then go to your https://myprofile.microsoft.com/ page.
+1. Zaloguj się do swojego konta służbowego, korzystając z istniejącego hasła, a następnie przejdź do strony https://myprofile.microsoft.com/.
 
-2. Select **Password** from the left navigation pane or select the **Change password** link from the **Password** block.
+2. Wybierz pozycję **hasło** w okienku nawigacji po lewej stronie lub wybierz łącze **Zmień hasło** z bloku **hasła** .
 
-    ![My Account page, showing highlighted Change password link](media/my-account-portal/my-account-portal-change-password.png)
+    ![Strona Moje konto z wyróżnionym linkiem zmiany hasła](media/my-account-portal/my-account-portal-change-password.png)
 
-3. Type your old password, and then create and confirm your new password.
+3. Wpisz stare hasło, a następnie utwórz i Potwierdź nowe hasło.
 
-    ![Change password page, showing password fields](media/my-account-portal/my-account-portal-change-password-page.png)
+    ![Strona zmiany hasła, Pokazywanie pól haseł](media/my-account-portal/my-account-portal-change-password-page.png)
 
 4. Wybierz pozycję **Prześlij**.
 
-    Your password will be changed and you'll be asked to sign in to your work or school account again.
+    Twoje hasło zostanie zmienione i zostanie wyświetlony monit o ponowne zalogowanie się do konta służbowego.
 
 ## <a name="next-steps"></a>Następne kroki
 
-After changing your password, you can:
+Po zmianie hasła można:
 
-- View or manage your [security info](user-help-security-info-overview.md).
+- Wyświetl [informacje zabezpieczające](user-help-security-info-overview.md)lub zarządzaj nimi.
 
-- View or manage your connected [devices](my-account-portal-devices-page.md).
+- Wyświetl podłączone [urządzenia](my-account-portal-devices-page.md)lub zarządzaj nimi.
 
-- View or manage your [organizations](my-account-portal-organizations-page.md).
+- Wyświetl swoje [organizacje](my-account-portal-organizations-page.md)lub zarządzaj nimi.
 
-- View your [sign-in activity](my-account-portal-sign-ins-page.md).
+- Wyświetlanie [działania związanego z logowaniem](my-account-portal-sign-ins-page.md).
 
-- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).
+- Zobacz, w jaki sposób organizacja [używa danych związanych z prywatnością](my-account-portal-privacy-page.md).

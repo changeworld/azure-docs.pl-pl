@@ -1,6 +1,6 @@
 ---
-title: Set up and configure AWS Cost and Usage report integration with Azure Cost Management
-description: This article walks you through setting up and configuring AWS Cost and Usage report integration with Azure Cost Management.
+title: Konfigurowanie i Konfigurowanie integracji raportów o kosztach i użyciu AWS za pomocą Azure Cost Management
+description: W tym artykule przedstawiono sposób konfigurowania i konfigurowania integracji raportów o kosztach i użyciu AWS przy użyciu Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,104 +17,104 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219689"
 ---
-# <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Set up and configure AWS Cost and Usage report integration
+# <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Konfigurowanie i Konfigurowanie integracji raportów o kosztach i użyciu AWS
 
-With Amazon Web Services (AWS) Cost and Usage report (CUR) integration, you monitor and control your AWS spending in Azure Cost Management. The integration allows a single location in the Azure portal where you monitor and control spending for both Azure and AWS. This article explains how to set up the integration and configure it so that you can use Azure Cost Management features to analyze costs and review budgets.
+Dzięki integracji z usługą Amazon Web Services (AWS) i raportem użycia (CUR) można monitorować i kontrolować AWS wydatków w Azure Cost Management. Integracja umożliwia pojedyncze miejsce w Azure Portal, w którym są monitorowane i kontrolowane wydatki na platformę Azure i AWS. W tym artykule wyjaśniono, jak skonfigurować integrację i skonfigurować ją tak, aby można było używać funkcji Azure Cost Management do analizowania kosztów i przeglądania budżetów.
 
-Cost Management processes the AWS Cost and Usage report stored in an S3 bucket by using your AWS access credentials to get report definitions and download report GZIP CSV files.
+Cost Management przetwarza raport o kosztach i użyciu AWS, który jest przechowywany w zasobniku S3 przy użyciu poświadczeń dostępu AWS w celu pobrania definicji raportu i pobrania plików CSV w formacie GZIP.
 
-## <a name="create-a-cost-and-usage-report-in-aws"></a>Create a Cost and Usage report in AWS
+## <a name="create-a-cost-and-usage-report-in-aws"></a>Tworzenie raportu o kosztach i użyciu w AWS
 
-Using a Cost and Usage report is the AWS-recommended way to collect and process AWS costs. For more information, see the [AWS Cost and Usage Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) documentation.
+Użycie raportu o kosztach i użyciu to zalecany AWS sposób zbierania i przetwarzania kosztów AWS. Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą [raportów o kosztach i użyciu AWS](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) .
 
-Use the **Cost & Usage Reports** page of the Billing and Cost Management console in AWS to create a Cost and Usage report with the following steps:
+Na stronie **raporty dotyczące użycia & kosztów** w konsoli rozliczeń i Cost Management w programie AWS można utworzyć raport o kosztach i użyciu, wykonując następujące czynności:
 
-1. Sign in to the AWS Management Console and open the [Billing and Cost Management console](https://console.aws.amazon.com/billing).
-2. In the navigation pane, select **Cost & Usage Reports**.
-3. Select **Create report**.
-4. For **Report name**, enter a name for your report.
-5. Under **Additional report details**, select **Include resource IDs**.
-6. For **Data refresh settings**, select whether you want the AWS Cost and Usage report to refresh if AWS applies refunds, credits, or support fees to your account after finalizing your bill. When a report refreshes, a new report is uploaded to Amazon S3. We recommend that you leave the setting selected.
+1. Zaloguj się do konsoli zarządzania AWS i Otwórz [konsolę rozliczeń i Cost Management](https://console.aws.amazon.com/billing).
+2. W okienku nawigacji wybierz kolejno pozycje **koszt & raporty użycia**.
+3. Wybierz pozycję **Utwórz raport**.
+4. W obszarze **Nazwa raportu**wprowadź nazwę raportu.
+5. W obszarze **dodatkowe szczegóły raportu**wybierz pozycję **Dołącz identyfikatory zasobów**.
+6. W obszarze **Ustawienia odświeżania danych**wybierz, czy chcesz odświeżyć raport o kosztach i użyciu AWS, jeśli AWS stosuje zwroty, kredyty lub opłaty za pomoc techniczną do konta po sfinalizowaniu rachunku. Po odświeżeniu raportu zostanie przekazany nowy raport do usługi Amazon S3. Zalecamy pozostawienie wybranego ustawienia.
 7. Wybierz opcję **Dalej**.
-8. For **S3 bucket**, choose **Configure**.
-9. In the Configure S3 Bucket dialog box, do one of the following tasks:
-    1. Select an existing bucket from the drop-down list and choose **Next**.
-    2. Enter a bucket name and the Region where you want to create a new bucket and choose **Next**.
-10. Select **I have confirmed that this policy is correct**, then click **Save**.
-11. (Optional) For Report path prefix, enter the report path prefix that you want prepended to the name of your report.
-If you don't specify a prefix, the default prefix is the name that you specified for the report. The date range has the `/report-name/date-range/` format.
-12. For **Time unit**, choose  **Hourly**.
-13. For **Report versioning**, choose whether you want each version of the report to overwrite the previous version, or if you want additional new reports.
-14. For **Enable data integration for**, no selection is required.
-15. For **Compression**, select **GZIP**.
+8. W przypadku **zasobnika S3**wybierz pozycję **Konfiguruj**.
+9. W oknie dialogowym Konfigurowanie zasobnika S3 wykonaj jedną z następujących czynności:
+    1. Wybierz istniejący zasobnik z listy rozwijanej i wybierz pozycję **dalej**.
+    2. Wprowadź nazwę zasobnika i region, w którym chcesz utworzyć nowy zasobnik, a następnie wybierz przycisk **dalej**.
+10. Zaznacz pole wyboru **potwierdzam, że te zasady są poprawne**, a następnie kliknij przycisk **Zapisz**.
+11. Obowiązkowe W polu Prefiks ścieżki raportu wprowadź prefiks ścieżki raportu, który ma zostać poprzedzony nazwą raportu.
+Jeśli nie określisz prefiksu, domyślnym prefiksem jest nazwa określona dla raportu. Zakres dat ma format `/report-name/date-range/`.
+12. Dla **jednostki czasu**wybierz opcję **co godzinę**.
+13. W celu zapewnienia obsługi **wersji raportów**wybierz, czy chcesz, aby każda wersja raportu zastąpiła poprzednią wersję, lub jeśli chcesz uzyskać dodatkowe nowe raporty.
+14. W przypadku **włączania integracji danych dla programu**nie jest wymagane zaznaczenie.
+15. W obszarze **kompresja**wybierz pozycję **gzip**.
 16. Wybierz opcję **Dalej**.
-17. After you've reviewed the settings for your report, select **Review and Complete**.
+17. Po przejrzeniu ustawień raportu wybierz pozycję **Przegląd i zakończenie**.
 
-    Note the report name. You'll use it in later steps.
+    Zanotuj nazwę raportu. Zostanie ona użyta w dalszych krokach.
 
-It can take up to 24 hours for AWS to start delivering reports to your Amazon S3 bucket. After delivery starts, AWS updates the AWS Cost and Usage report files at least once a day. You can continue configuring your AWS environment without waiting for delivery to start.
+Rozpoczęcie dostarczania raportów do zasobnika usługi Amazon S3 może potrwać do 24 godzin. Po rozpoczęciu dostarczania program AWS aktualizuje pliki raportów o kosztach i użyciu programu AWS co najmniej raz dziennie. Możesz kontynuować Konfigurowanie środowiska AWS bez oczekiwania na rozpoczęcie dostarczania.
 
-## <a name="create-a-role-and-policy-in-aws"></a>Create a role and policy in AWS
+## <a name="create-a-role-and-policy-in-aws"></a>Tworzenie roli i zasad w programie AWS
 
-Azure Cost Management accesses the S3 bucket where the Cost and Usage report is located several times a day. The service needs access to credentials to check for new data. You create a role and policy in AWS to allow Cost Management to access it.
+Azure Cost Management uzyskuje dostęp do zasobnika S3, w którym raport o kosztach i użyciu jest zlokalizowany kilka razy dziennie. Usługa musi mieć dostęp do poświadczeń w celu sprawdzenia, czy są nowe dane. Tworzysz rolę i zasady w programie AWS, aby umożliwić Cost Management dostęp do niej.
 
-To enable role-based access to an AWS account in Cost Management, the role is created in the AWS console. You need to have the _role ARN_ and _external ID_ from the AWS console. Later, you use them on the **Create an AWS connector** page in Cost Management.
+Aby włączyć dostęp oparty na rolach do konta AWS w Cost Management, rola zostanie utworzona w konsoli AWS. Musisz mieć _rolę ARN_ i _Identyfikator zewnętrzny_ z konsoli AWS. Później te elementy są używane na stronie **Tworzenie łącznika AWS** w Cost Management.
 
-Use the Create a New Role wizard:
+Użyj Kreatora tworzenia nowej roli:
 
-1. Sign in to your AWS console and select **Services**.
-2. In the list of services, select **IAM**.
-3. Select **Roles** and then select **Create Role**.
-4. On the next page, select **Another AWS account**.
-5. In **Account ID**, enter **432263259397**.
-6. In **Options**, select **Require external ID (Best practice when a third party will assume this role)** .
-7. In **External ID**, enter the external ID. The external ID is a shared passcode between the AWS role and Azure Cost Management. The same external ID is also used on the **New Connector** page in Cost Management. For example, an external ID resembles _Companyname1234567890123_.
+1. Zaloguj się do konsoli usługi AWS i wybierz pozycję **usługi**.
+2. Na liście usług wybierz pozycję **IAM**.
+3. Wybierz pozycję **role** , a następnie wybierz pozycję **Utwórz rolę**.
+4. Na następnej stronie wybierz **inne konto AWS**.
+5. W polu **Identyfikator konta**wprowadź **432263259397**.
+6. W obszarze **Opcje**wybierz pozycję **Wymagaj zewnętrznego identyfikatora (najlepszym rozwiązaniem, gdy ta rola zostanie przyjęta przez osobę trzecią)** .
+7. W polu **Identyfikator zewnętrzny**wprowadź identyfikator zewnętrzny. Identyfikator zewnętrzny to współużytkowany kod dostępu między rolą AWS i Azure Cost Management. Ten sam identyfikator zewnętrzny jest również używany na **nowej stronie łącznika** w Cost Management. Na przykład zewnętrzny identyfikator przypomina _Companyname1234567890123_.
 
     > [!NOTE]
-    > Don't change the selection for **Require MFA**. It should remain cleared.
-8. Select **Next: Permissions**.
-9. Select **Create policy**. Zostanie otwarta nowa karta przeglądarki. That's where you create a policy.
-10. Select **Choose a service**.
+    > Nie zmieniaj zaznaczenia dla opcji **Wymagaj uwierzytelniania wieloskładnikowego**. Powinien pozostać wyczyszczony.
+8. Wybierz pozycję **Dalej: uprawnienia**.
+9. Wybierz pozycję **Utwórz zasady**. Zostanie otwarta nowa karta przeglądarki. Jest to miejsce, w którym tworzysz zasady.
+10. Wybierz pozycję **Wybierz usługę**.
 
-Configure permission for the Cost and Usage report:
+Skonfiguruj uprawnienia do raportu o kosztach i użyciu:
 
-1. Enter **Cost and Usage Report**.
-2. Select **Access level** > **Read** > **DescribeReportDefinitions**. This step allows Cost Management to read what CUR reports are defined and determine if they match the report definition prerequisite.
-3. Select **Add additional permissions**.
+1. Wprowadź **raport dotyczący kosztów i użycia**.
+2. Wybierz pozycję **poziom dostępu** > **Odczyt** > **DescribeReportDefinitions**. Ten krok umożliwia Cost Management odczytywanie, jakie bieżące raporty są zdefiniowane, i ustalanie, czy są one zgodne z wymaganiami wstępnymi definicji raportu.
+3. Wybierz pozycję **Dodaj dodatkowe uprawnienia**.
 
-Configure permission for your S3 bucket and objects:
+Skonfiguruj uprawnienie do przedziału i obiektów S3:
 
-1. Select **Choose a service**.
-2. Enter **S3**.
-3. Select **Access level** > **List** > **ListBucket**. This action gets the list of objects in the S3 Bucket.
-4. Select **Access level** > **Read** > **GetObject**. This action allows the download of billing files.
-5. Select **Resources**.
-6. Select **bucket – Add ARN**.
-7. In **Bucket name**, enter the bucket used to store the CUR files.
-8. Select **object – Add ARN**.
-9. In **Bucket name**, enter the bucket used to store the CUR files.
-10. In **Object name**, select **Any**.
-11. Select **Add additional permissions**.
+1. Wybierz pozycję **Wybierz usługę**.
+2. Wprowadź **S3**.
+3. Wybierz pozycję **poziom dostępu** > **liście** > **ListBucket**. Ta akcja pobiera listę obiektów w zasobniku S3.
+4. Wybierz pozycję **poziom dostępu** > **Odczyt** > **GetObject**. Ta akcja umożliwia pobranie plików rozliczeń.
+5. Wybierz pozycję **zasoby**.
+6. Wybierz **zasobnik — Dodaj ARN**.
+7. W polu **Nazwa zasobnika**wprowadź zasobnik używany do przechowywania plików CUR.
+8. Wybierz **obiekt — Dodaj ARN**.
+9. W polu **Nazwa zasobnika**wprowadź zasobnik używany do przechowywania plików CUR.
+10. W polu **Nazwa obiektu**wybierz **dowolny**.
+11. Wybierz pozycję **Dodaj dodatkowe uprawnienia**.
 
-Configure permission for Cost Explorer:
+Konfigurowanie uprawnień dla Eksploratora kosztów:
 
-1. Select **Choose a service**.
-2. Enter **Cost Explorer Service**.
-3. Select **All Cost Explorer Service actions (ce:\*)** . This action validates that the collection is correct.
-4. Select **Add additional permissions**.
+1. Wybierz pozycję **Wybierz usługę**.
+2. Wprowadź **usługę w Eksploratorze kosztów**.
+3. Wybierz pozycję **wszystkie akcje usługi w Eksploratorze kosztów (CE:\*)** . Ta akcja sprawdza, czy kolekcja jest poprawna.
+4. Wybierz pozycję **Dodaj dodatkowe uprawnienia**.
 
-Add permission for AWS Organizations:
+Dodaj uprawnienie dla organizacji AWS:
 
-1. Enter **Organizations**.
-2. Select **Access level** > **List** > **ListAccounts**. This action gets the names of the accounts.
-3. In **Review Policy**, enter a name for the new policy. Check that you entered the correct information, and then select **Create Policy**.
-4. Go back to the previous tab and refresh your browser's webpage. On the search bar, search for your new policy.
-5. Select **Next: Review**.
-6. Enter a name for the new role. Check that you entered the correct information, and then select **Create Role**.
+1. Wprowadź **organizację**.
+2. Wybierz pozycję **poziom dostępu** > **liście** > **ListAccounts**. Ta akcja pobiera nazwy kont.
+3. W obszarze **Przegląd zasad**wprowadź nazwę nowych zasad. Sprawdź, czy wprowadzono poprawne informacje, a następnie wybierz pozycję **Utwórz zasady**.
+4. Wróć do poprzedniej karty i Odśwież stronę sieci Web przeglądarki. Na pasku wyszukiwania Wyszukaj nowe zasady.
+5. Wybierz kolejno pozycje **Dalej: przegląd**.
+6. Wprowadź nazwę nowej roli. Sprawdź, czy wprowadzono poprawne informacje, a następnie wybierz pozycję **Utwórz rolę**.
 
-    Note the role ARN and the external ID used in the preceding steps when you created the role. You'll use them later when you set up the Azure Cost Management connector.
+    Zanotuj rolę ARN i identyfikator zewnętrzny użyty w poprzednich krokach podczas tworzenia roli. Będziesz ich używać później podczas konfigurowania łącznika Azure Cost Management.
 
-The policy JSON should resemble the following example. Replace _bucketname_ with the name of your S3 bucket.
+KOD JSON zasad powinien wyglądać podobnie do poniższego przykładu. Zastąp _wartość nazwą Twojego_ przedziału S3.
 
 ```JSON
 {
@@ -146,89 +146,89 @@ The policy JSON should resemble the following example. Replace _bucketname_ with
 }
 ```
 
-## <a name="set-up-a-new-aws-connector-in-azure"></a>Set up a new AWS connector in Azure
+## <a name="set-up-a-new-aws-connector-in-azure"></a>Konfigurowanie nowego łącznika AWS na platformie Azure
 
-Use the following information to create an AWS connector and start monitoring your AWS costs:
+Skorzystaj z poniższych informacji, aby utworzyć łącznik AWS i rozpocząć monitorowanie kosztów AWS:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-2. Go to **Cost Management + Billing** > **Cost Management**.
-3. Under **Settings**, select **Cloud connectors (Preview)** .  
-    ![Example showing the Cloud connectors (Preview) setting)](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
-4. Select **+Add** at the top of the page to create a connector.
-5. On the **Create an AWS connector** page, in **Display name**, enter a name for your connector.  
-    ![Example of the page for creating an AWS connector](./media/aws-integration-setup-configure/create-aws-connector01.png)
-6. Optionally, select the default management group. It will store all discovered linked accounts. You can set it up later.
-7. In the **Billing** section, select **Automatically charge the 1% at general availability** if you want to ensure continuous operation when the preview expires. If you select the automatic option, you must select a billing subscription.
-8. For **Role ARN**, enter the value that you used when you set up the role in AWS.
-9. For **External ID**, enter the value that you used when you set up the role in AWS.
-10. For **Report Name**, enter the name that you created in AWS.
-11. Select **Next** and then select **Create**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Przejdź do **Cost Management i Rozliczeń** > **Cost Management**.
+3. W obszarze **Ustawienia**wybierz pozycję **Łączniki chmury (wersja zapoznawcza)** .  
+    ![przykład pokazujący ustawienie łączników Cloud (wersja zapoznawcza)](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
+4. Wybierz pozycję **+ Dodaj** w górnej części strony, aby utworzyć łącznik.
+5. Na stronie **Tworzenie łącznika AWS** w polu **Nazwa wyświetlana**wprowadź nazwę łącznika.  
+    ![Przykładowa strona do tworzenia łącznika AWS](./media/aws-integration-setup-configure/create-aws-connector01.png)
+6. Opcjonalnie wybierz domyślną grupę zarządzania. Zostaną zapisane wszystkie wykryte połączone konta. Można skonfigurować go później.
+7. W sekcji **rozliczenia** wybierz opcję **automatycznie naliczaj wartość 1%,** Jeśli chcesz zapewnić ciągłą operację po wygaśnięciu wersji zapoznawczej. W przypadku wybrania opcji automatyczna należy wybrać subskrypcję rozliczeń.
+8. Dla **roli ARN**wprowadź wartość użytą podczas konfigurowania roli w programie AWS.
+9. W polu **Identyfikator zewnętrzny**wprowadź wartość użytą podczas konfigurowania roli w programie AWS.
+10. W polu **Nazwa raportu**wprowadź nazwę UTWORZONĄ w AWS.
+11. Wybierz pozycję **dalej** , a następnie wybierz pozycję **Utwórz**.
 
-It might take a few hours for the new AWS scopes, AWS consolidated account, AWS linked accounts, and their cost data to appear.
+Nowe zakresy AWS mogą potrwać kilka godzin, AWS skonsolidowane konto, AWS połączone konta i ich dane dotyczące kosztów.
 
-After you create the connector, we recommend that you assign access control to it. Users are assigned permissions to the newly discovered scopes: AWS consolidated account and AWS linked accounts. The user who creates the connector is the owner of the connector, the consolidated account, and all linked accounts.
+Po utworzeniu łącznika Zalecamy przypisanie do niego kontroli dostępu. Użytkownicy mają przypisane uprawnienia do nowo odnalezionych zakresów: AWS skonsolidowane konto i AWS połączone konta. Użytkownik tworzący łącznik to właściciel łącznika, skonsolidowane konto i wszystkie połączone konta.
 
-Assigning connector permissions to users after discovery occurs doesn't assign permissions to the existing AWS scopes. Instead, only new linked accounts are assigned permissions.
+Przypisanie uprawnień łącznika do użytkowników po wystąpieniu odnajdywania nie powoduje przypisywania uprawnień do istniejących zakresów AWS. Zamiast tego przypisane są tylko nowe połączone konta.
 
-## <a name="take-additional-steps"></a>Take additional steps
+## <a name="take-additional-steps"></a>Wykonaj dodatkowe czynności
 
-- [Set up management groups](../governance/management-groups/overview.md#initial-setup-of-management-groups), if you haven't already.
-- Check that new scopes are added to your scope picker. Select **Refresh** to view the latest data.
-- On the **Cloud connectors** page, select your connector and select **Go to billing account** to assign the linked account to management groups.
+- [Skonfiguruj grupy zarządzania](../governance/management-groups/overview.md#initial-setup-of-management-groups), jeśli jeszcze tego nie zrobiono.
+- Sprawdź, czy nowe zakresy są dodawane do selektora zakresu. Wybierz pozycję **Odśwież** , aby wyświetlić najnowsze dane.
+- Na stronie **łączniki w chmurze** wybierz swój łącznik i wybierz pozycję **Przejdź do konta rozliczeniowego** , aby przypisać połączone konto do grup zarządzania.
 
-## <a name="manage-cloud-connectors"></a>Manage cloud connectors
+## <a name="manage-cloud-connectors"></a>Zarządzanie łącznikami chmury
 
-When you select a connector on the **Cloud connectors** page, you can:
+Po wybraniu łącznika na stronie **łączniki w chmurze** można wykonać następujące instrukcje:
 
-- Select **Go to Billing Account** to view information for the AWS consolidated account.
-- Select **Access Control** to manage the role assignment for the connector.
-- Select **Edit** to update the connector. You can't change the AWS account number, because it appears in the role ARN. But you can create a new connector.
-- Select **Verify** to rerun the verification test to make sure that Cost Management can collect data by using the connector settings.
+- Wybierz pozycję **Przejdź do konta rozliczeniowego** , aby wyświetlić informacje dotyczące konta skonsolidowanego AWS.
+- Wybierz **Access Control** , aby zarządzać przypisaniem roli dla łącznika.
+- Wybierz pozycję **Edytuj** , aby zaktualizować łącznik. Nie można zmienić numeru konta AWS, ponieważ pojawia się on w roli ARN. Można jednak utworzyć nowy łącznik.
+- Wybierz pozycję **Weryfikuj** , aby ponownie uruchomić test weryfikacyjny, aby upewnić się, że Cost Management może zbierać dane przy użyciu ustawień łącznika.
 
-![Example list of created AWS connectors](./media/aws-integration-setup-configure/list-aws-connectors.png)
+![Przykładowa lista utworzonych łączników AWS](./media/aws-integration-setup-configure/list-aws-connectors.png)
 
-## <a name="set-up-azure-management-groups"></a>Set up Azure management groups
+## <a name="set-up-azure-management-groups"></a>Konfigurowanie grup zarządzania platformy Azure
 
-Place your Azure subscriptions and AWS linked accounts in the same management group to create a single location where you can  see cross-cloud provider information. If you haven't already configured your Azure environment with management groups, see [Initial setup of management groups](../governance/management-groups/overview.md#initial-setup-of-management-groups).
+Umieść subskrypcje platformy Azure i AWS połączone konta w tej samej grupie zarządzania, aby utworzyć pojedynczą lokalizację, w której można wyświetlić informacje o dostawcach międzychmurowych. Jeśli środowisko platformy Azure nie zostało jeszcze skonfigurowane w grupach zarządzania, zobacz [początkowa konfiguracja grup zarządzania](../governance/management-groups/overview.md#initial-setup-of-management-groups).
 
-If you want to separate costs, you can create a management group that holds just AWS linked accounts.
+Jeśli chcesz rozdzielić koszty, możesz utworzyć grupę zarządzania, która zawiera tylko połączone konta AWS.
 
-## <a name="set-up-an-aws-consolidated-account"></a>Set up an AWS consolidated account
+## <a name="set-up-an-aws-consolidated-account"></a>Skonfiguruj skonsolidowane konto AWS
 
-The AWS consolidated account combines billing and payment for multiple AWS accounts. It also acts as an AWS linked account.
+Skonsolidowane konto AWS łączy rozliczenia i płatność dla wielu kont AWS. Działa również jako połączone konto AWS.
 
-![Example details for an AWS consolidated account](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
+![Przykładowe szczegóły konta skonsolidowanego AWS](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
 
-From the page, you can:
+Na stronie można:
 
-- Select **Update** to bulk update the association of AWS linked accounts with a management group.
-- Select **Access Control** to set the role assignment for the scope.
+- Wybierz pozycję **Aktualizuj** , aby zaktualizować zbiorczo skojarzenia AWS połączonych kont z grupą zarządzania.
+- Wybierz **Access Control** , aby ustawić przypisanie roli dla zakresu.
 
-### <a name="permissions-for-an-aws-consolidated-account"></a>Permissions for an AWS consolidated account
+### <a name="permissions-for-an-aws-consolidated-account"></a>Uprawnienia dla konta skonsolidowanego AWS
 
-By default, permissions for an AWS consolidated account are set upon the account's creation, based on the AWS connector permissions. The connector creator is the owner.
+Domyślnie uprawnienia do konta skonsolidowanego AWS są ustawiane podczas tworzenia konta na podstawie uprawnień łącznika AWS. Twórca łącznika jest właścicielem.
 
-You manage the access level by using the **Access Level** page of the AWS consolidated account. However, AWS linked accounts don't inherit permissions to the AWS consolidated account.
+Poziom dostępu można zarządzać przy użyciu strony **poziom dostępu** skonsolidowanego konta AWS. Jednak połączone konta AWS nie dziedziczą uprawnień do skonsolidowanego konta AWS.
 
-## <a name="set-up-an-aws-linked-account"></a>Set up an AWS linked account
+## <a name="set-up-an-aws-linked-account"></a>Skonfiguruj połączone konto AWS
 
-The AWS linked account is where AWS resources are created and managed. A linked account also acts as a security boundary.
+Połączone konto AWS to miejsce, w którym są tworzone i zarządzane zasoby AWS. Połączone konto działa również jako granica zabezpieczeń.
 
-From this page, you can:
+Na tej stronie można:
 
-- Select **Update** to update the association of an AWS linked account with a management group.
-- Select **Access Control** to set a role assignment for the scope.
+- Wybierz pozycję **Aktualizuj** , aby zaktualizować skojarzenie połączonego konta AWS z grupą zarządzania.
+- Wybierz **Access Control** , aby ustawić przypisanie roli dla zakresu.
 
-![Example of the AWS Linked Account page](./media/aws-integration-setup-configure/aws-linked-account01.png)
+![Przykład strony połączonego konta AWS](./media/aws-integration-setup-configure/aws-linked-account01.png)
 
-### <a name="permissions-for-an-aws-linked-account"></a>Permissions for an AWS linked account
+### <a name="permissions-for-an-aws-linked-account"></a>Uprawnienia dla połączonego konta AWS
 
-By default, permissions for an AWS linked account are set upon creation, based on the AWS connector permissions. The connector creator is the owner. You manage the access level by using the **Access Level** page of the AWS linked account. AWS linked accounts don't inherit permissions from an AWS consolidated account.
+Domyślnie uprawnienia dla połączonego konta AWS są ustawiane podczas tworzenia na podstawie uprawnień łącznika AWS. Twórca łącznika jest właścicielem. Poziom dostępu można zarządzać przy użyciu strony **poziom dostępu** połączonego konta AWS. Połączone konta AWS nie dziedziczą uprawnień z skonsolidowanego konta AWS.
 
-AWS linked accounts always inherit permissions from the management group that they belong to.
+Połączone konta AWS zawsze dziedziczą uprawnienia z grupy zarządzania, do której należą.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Now that you've set up and configured AWS Cost and Usage report integration, continue to [Manage AWS costs and usage](aws-integration-manage.md).
-- If you're unfamiliar with cost analysis, see [Explore and analyze costs with cost analysis](quick-acm-cost-analysis.md) quickstart.
-- If you're unfamiliar with budgets in Azure, see [Create and manage Azure budgets](tutorial-acm-create-budgets.md).
+- Teraz, po skonfigurowaniu i skonfigurowaniu integracji raportów o kosztach i użyciu AWS, Kontynuuj [Zarządzanie kosztami AWS i użyciem](aws-integration-manage.md).
+- Jeśli nie znasz analiz kosztów, zobacz [eksplorowanie i analizowanie kosztów za pomocą analizy kosztów](quick-acm-cost-analysis.md) — Szybki Start.
+- Jeśli nie znasz budżetów na platformie Azure, zobacz [Tworzenie budżetów platformy Azure i zarządzanie nimi](tutorial-acm-create-budgets.md).

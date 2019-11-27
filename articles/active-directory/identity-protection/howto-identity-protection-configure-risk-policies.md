@@ -1,6 +1,6 @@
 ---
-title: Risk policies - Azure Active Directory Identity Protection
-description: Enable and configure risk policies in Azure Active Directory Identity Protection
+title: Zasady dotyczące ryzyka — Azure Active Directory Identity Protection
+description: Włączanie i Konfigurowanie zasad ryzyka w Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,66 +18,66 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382174"
 ---
-# <a name="how-to-configure-and-enable-risk-policies"></a>How To: Configure and enable risk policies
+# <a name="how-to-configure-and-enable-risk-policies"></a>Instrukcje: Konfigurowanie i Włączanie zasad ryzyka
 
-As we learned in the previous article, [Identity Protection policies](concept-identity-protection-policies.md) we have two risk policies that we can enable in our directory. 
+Jak opisano w poprzednim artykule, [Zasady ochrony tożsamości](concept-identity-protection-policies.md) mają dwie zasady dotyczące ryzyka, które możemy włączyć w naszym katalogu. 
 
-- Sign-in risk policy
-- User risk policy
+- Zasady dotyczące ryzyka związanego z logowaniem
+- Zasady ryzyka dla użytkowników
 
-![Security overview page to enable user and sign-in risk policies](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
+![Strona Przegląd zabezpieczeń umożliwiająca Włączanie zasad ryzyka użytkownika i logowania](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
-Both policies work to automate the response to risk detections in your environment and allow users to self-remediate when risk is detected. 
+Obie zasady działają w celu zautomatyzowania reakcji na wykrycie zagrożeń w środowisku i umożliwiają użytkownikom samodzielne korygowanie w przypadku wykrycia ryzyka. 
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-If your organization wants to allow users to self-remediate when risks are detected, users must be registered for both self-service password reset and Azure Multi-Factor Authentication. We recommend [enabling the combined security information registration experience](../authentication/howto-registration-mfa-sspr-combined.md) for the best experience. Allowing users to self-remediate gets them back to a productive state more quickly without requiring administrator intervention. Administrators can still see these events and investigate them after the fact. 
+Jeśli organizacja chce zezwolić użytkownikom na samodzielne korygowanie w przypadku wykrycia zagrożeń, użytkownicy muszą być zarejestrowani do samoobsługowego resetowania haseł i platformy Azure Multi-Factor Authentication. Zalecamy [włączenie usługi rejestracji informacji o zabezpieczeniach](../authentication/howto-registration-mfa-sspr-combined.md) w celu uzyskania najlepszego środowiska. Umożliwienie użytkownikom samodzielnego korygowania umożliwia szybsze pobieranie stanu wydajności bez konieczności interwencji administratora. Administratorzy nadal mogą zobaczyć te zdarzenia i zbadać je po fakcie. 
 
-## <a name="choosing-acceptable-risk-levels"></a>Choosing acceptable risk levels
+## <a name="choosing-acceptable-risk-levels"></a>Wybór dopuszczalnych poziomów ryzyka
 
-Organizations must decide the level of risk they are willing to accept balancing user experience and security posture. 
+Organizacje muszą decydować o tym, jaki jest poziom ryzyka, aby akceptować możliwości użytkowników i stan zabezpieczeń. 
 
-Microsoft's recommendation is to set the user risk policy threshold to **High** and the sign-in risk policy to **Medium and above**.
+Zalecenie firmy Microsoft polega na ustawieniu wartości progowej dla zasad ryzyka dla użytkowników na **wysoki** i zasady ryzyka związanego **z logowaniem.**
 
-Choosing a **High** threshold reduces the number of times a policy is triggered and minimizes the impact to users. However, it excludes **Low** and **Medium** risk detections from the policy, which may not block an attacker from exploiting a compromised identity. Selecting a **Low** threshold introduces additional user interrupts, but increased security posture.
+Wybranie **wysokiego** progu zmniejsza liczbę wyzwalanych zasad i minimalizuje wpływ na użytkowników. Nie dotyczy to jednak wykrycia **niskiego** i **średniego** ryzyka z zasad, co może uniemożliwić atakującemu wykorzystanie tożsamości. Wybranie **niskiego** progu powoduje wprowadzenie dodatkowych przerwań przez użytkownika, ale zwiększoną stan zabezpieczeń.
 
 ## <a name="exclusions"></a>Wykluczenia
 
-All of the policies allow for excluding users such as your [emergency access or break-glass administrator accounts](../users-groups-roles/directory-emergency-access.md). Organizations may determine they need to exclude other accounts from specific policies based on the way the accounts are used. All exclusions should be reviewed regularly to see if they are still applicable.
+Wszystkie zasady zezwalają na wykluczenie użytkowników, takich jak [dostęp awaryjny lub konta administratora z przerwaniem](../users-groups-roles/directory-emergency-access.md). Organizacje mogą określić, że muszą wykluczać inne konta z określonych zasad w zależności od sposobu korzystania z kont. Wszystkie wykluczenia powinny być regularnie przeglądane w celu sprawdzenia, czy nadal mają zastosowanie.
 
-## <a name="enable-policies"></a>Enable policies
+## <a name="enable-policies"></a>Włącz zasady
 
-To enable the user risk and sign-in risk policies complete the following steps.
+Aby włączyć ryzyko dla użytkownika i zasady dotyczące ryzyka związanego z logowaniem, wykonaj następujące czynności.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-1. Browse to **Azure Active Directory** > **Security** > **Identity Protection** > **Overview**.
-1. Select **Configure user risk policy**.
-   1. Under **Assignments**
-      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
-         1. Optionally you can choose to exclude users from the policy.
-      1. **Conditions** - **User risk** Microsoft's recommendation is to set this option to **High**.
-   1. Under **Controls**
-      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require password change**.
-   1. **Enforce Policy** - **On**
-   1. **Save** - This action will return you to the **Overview** page.
-1. Select **Configure sign-in risk policy**.
-   1. Under **Assignments**
-      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
-         1. Optionally you can choose to exclude users from the policy.
-      1. **Conditions** - **Sign-in risk** Microsoft's recommendation is to set this option to **Medium and above**.
-   1. Under **Controls**
-      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require multi-factor authentication**.
-   1. **Enforce Policy** - **On**
-   1. **Save**
+1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > usługi **Identity Protection** > **Omówienie**.
+1. Wybierz pozycję **Konfiguruj zasady ryzyka użytkownika**.
+   1. W obszarze **przypisania**
+      1. **Użytkownicy** — wybierz opcję **Wszyscy użytkownicy** lub **Wybierz osoby i grupy w** przypadku ograniczenia wdrożenia.
+         1. Opcjonalnie możesz zdecydować się na wykluczenie użytkowników z zasad.
+      1. **Warunki** - **ryzyko związane z użytkownikiem** polega na ustawieniu tej opcji na **wysoki**.
+   1. W obszarze **Controls**
+      1. **Dostęp** — zalecenia firmy Microsoft mają **na celu umożliwienie dostępu** i **wymaganie zmiany hasła**.
+   1. **Wymuś** - zasad **na**
+   1. **Zapisz** — ta akcja spowoduje powrót do strony **Przegląd** .
+1. Wybierz pozycję **Konfiguruj zasady dotyczące ryzyka związanego z logowaniem**.
+   1. W obszarze **przypisania**
+      1. **Użytkownicy** — wybierz opcję **Wszyscy użytkownicy** lub **Wybierz osoby i grupy w** przypadku ograniczenia wdrożenia.
+         1. Opcjonalnie możesz zdecydować się na wykluczenie użytkowników z zasad.
+      1.  - **warunki** dotyczące **ryzyka związanego z zalogowaniem** firma Microsoft zaleca ustawienie tej opcji na **średni i wyższy**.
+   1. W obszarze **Controls**
+      1. **Dostęp** — zalecenia firmy Microsoft mają na celu **umożliwienie dostępu** i **wymaganie uwierzytelniania wieloskładnikowego**.
+   1. **Wymuś** - zasad **na**
+   1. **Pisał**
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Enable Azure Multi-Factor Authentication registration policy](howto-identity-protection-configure-mfa-policy.md)
+- [Włączanie zasad rejestracji w usłudze Azure Multi-Factor Authentication](howto-identity-protection-configure-mfa-policy.md)
 
-- [What is risk](concept-identity-protection-risks.md)
+- [Co to jest ryzyko](concept-identity-protection-risks.md)
 
-- [Investigate risk detections](howto-identity-protection-investigate-risk.md)
+- [Zbadaj wykryte zagrożenia](howto-identity-protection-investigate-risk.md)
 
-- [Simulate risk detections](howto-identity-protection-simulate-risk.md)
+- [Symulowanie wykrywania ryzyka](howto-identity-protection-simulate-risk.md)

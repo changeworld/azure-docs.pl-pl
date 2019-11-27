@@ -1,6 +1,6 @@
 ---
-title: Create Azure Cosmos containers and databases in autopilot mode.
-description: Learn about the benefits, use cases, and how to provision Azure Cosmos databases and containers in autopilot mode.
+title: Utwórz kontenery usługi Azure Cosmos i bazy danych w trybie autopilotażu.
+description: Poznaj korzyści, przypadki użycia i sposób aprowizacji baz danych i kontenerów usługi Azure Cosmos w trybie autopilotażu.
 author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
@@ -13,100 +13,100 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383088"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Create Azure Cosmos containers and databases in autopilot mode (Preview)
+# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Tworzenie kontenerów i baz danych usługi Azure Cosmos w trybie autopilotażu (wersja zapoznawcza)
 
-Azure Cosmos DB allows you to provision throughput on your containers in either manual or autopilot mode. This article describes the benefits and use cases of autopilot mode.
+Azure Cosmos DB pozwala na inicjowanie obsługi przepływności w kontenerach w trybie ręcznym lub autopilotażowym. W tym artykule opisano zalety i przypadki użycia trybu autopilotażu.
 
 > [!NOTE]
-> Autopilot mode is currently available in public preview. To enable autopilot feature for your Azure Cosmos account, see the [enable autopilot](#enable-autopilot) section of this article. You can enable autopilot for new databases and containers only,it's not available for existing containers and databases.
+> Tryb autopilotażu jest obecnie dostępny w publicznej wersji zapoznawczej. Aby włączyć funkcję autopilotażu dla konta usługi Azure Cosmos, zobacz sekcję [Włączanie autopilotażu](#enable-autopilot) w tym artykule. Funkcję autopilotażu można włączyć tylko dla nowych baz danych i kontenerów, ale nie jest ona dostępna dla istniejących kontenerów i baz danych.
 
-In addition to manual provisioning of throughput, you can now configure Azure cosmos containers in autopilot mode. Azure Cosmos containers and databases configured in autopilot mode will **automatically and instantly scale the provisioned throughput based on your application needs without compromising the SLAs.**
+Oprócz ręcznego inicjowania obsługi przepływności można teraz skonfigurować kontenery usługi Azure Cosmos w trybie autopilotażu. Kontenery usługi Azure Cosmos i bazy danych skonfigurowane w trybie automatycznego pilotażu będą **automatycznie i natychmiast skalować zainicjowaną przepływność na podstawie potrzeb aplikacji bez naruszenia umowy SLA.**
 
-You no longer need to manually manage the provisioned throughput or handle rate-limiting issues. Azure Cosmos containers configured in autopilot mode can be scaled instantly in response to the workload without any impacting the availability, latency, throughput, or performance of the workload globally. Under high utilization, Azure Cosmos containers configured in autopilot mode can be scaled up or down without impacting the ongoing operations.
+Nie trzeba już ręcznie zarządzać zainicjowaną przepływność lub obsłużyć problemów z ograniczaniem szybkości. Kontenery usługi Azure Cosmos skonfigurowane w trybie autopilotażu mogą być natychmiast skalowane w odpowiedzi na obciążenie, bez wywierania wpływu na dostępność, opóźnienia, przepływność lub wydajność obciążeń globalnie. W przypadku wysokiego użycia kontenery usługi Azure Cosmos skonfigurowane w trybie autopilotażu można skalować w górę lub w dół bez wywierania wpływu na bieżące operacje.
 
-When configuring containers and databases in autopilot mode, you need to specify the maximum throughput `Tmax`  not to be exceeded. Containers can then scale instantly based on the workload needs within the `0.1*Tmax < T < Tmax` range. In other words, containers and databases scale instantly based on the workload needs, from as low as 10% of the maximum throughput value that you have configured, and up to the configured maximum throughput value. You can change the maximum throughput (Tmax) setting on autopilot database or container at any point in time. With autopilot option, the 400 RU/s minimum throughput per container or database is no longer applicable.
+Podczas konfigurowania kontenerów i baz danych w trybie autopilotażu należy określić maksymalną przepływność, `Tmax` nie można jej przekroczyć. Kontenery mogą następnie szybko skalować w oparciu o potrzeby związane z obciążeniem w zakresie `0.1*Tmax < T < Tmax`. Innymi słowy, kontenery i bazy danych są skalowane szybko w zależności od potrzeb związanych z obciążeniem, od najmniej do 10% maksymalnej skonfigurowanej przepływności oraz do skonfigurowanej maksymalnej wartości przepływności. W dowolnym momencie można zmienić ustawienie maksymalnej przepływności (Tmax) dla bazy danych lub kontenera w systemie. W przypadku opcji autopilota 400 RU/s minimalna przepływność na kontener lub baza danych nie mają już zastosowania.
 
-During the preview of autopilot, for the specified maximum throughput on the container or the database, the system allows operating within the calculated storage limit. If the storage limit is exceeded, then the maximum throughput is automatically adjusted to a higher value. When using database level throughput with autopilot mode, the number of containers allowed within a database is calculated as: (0.001 * Max throughput ). For example, if you provision 20,000 autopilot RU/s, then the database can have 20 containers.
+W trakcie korzystania z wersji zapoznawczej autopilotażu dla określonej maksymalnej przepływności w kontenerze lub w bazie danych system umożliwia działanie w ramach obliczonego limitu magazynu. W przypadku przekroczenia limitu magazynowania maksymalna przepływność jest automatycznie dostosowywana do wyższej wartości. W przypadku korzystania z przepływności poziomu bazy danych z trybem autopilotażu liczba kontenerów dozwolona w ramach bazy danych jest obliczana jako: (0,001 * maksymalna przepływność). Na przykład jeśli zainicjujesz 20 000 autopilotaż RU/s, baza danych może mieć 20 kontenerów.
 
-## <a name="benefits-of-autopilot-mode"></a>Benefits of autopilot mode
+## <a name="benefits-of-autopilot-mode"></a>Zalety trybu pilotażowego
 
-Azure Cosmos containers that are configured in autopilot mode have the following benefits:
+Kontenery usługi Azure Cosmos, które są skonfigurowane w trybie autopilotażu, mają następujące zalety:
 
-* **Simple:** Containers in autopilot mode remove the complexity to manage provisioned throughput (RUs) and capacity manually for various containers.
+* **Prosty:** Kontenery w trybie autopilotażu usuwają złożoność do ręcznego zarządzania elastyczną przepływność (jednostek ru) i pojemnością dla różnych kontenerów.
 
-* **Scalable:** Containers in autopilot mode seamlessly scale the provisioned throughput capacity as needed. There is no disruption to client connections, applications and they don’t impact any existing SLAs.
+* **Skalowalność:** Kontenery w trybie autopilotażu umożliwiają bezproblemowe skalowanie alokowanej przepływności zgodnie z potrzebami. Nie ma przerw w połączeniach klientów, aplikacje i nie wpływają na żadne istniejące umowy SLA.
 
-* **Cost-effective:** When you use Azure Cosmos containers configured in autopilot mode, you only pay for the resources that your workloads need on a per-hour basis.
+* **Koszt ekonomiczny:** Gdy korzystasz z kontenerów usługi Azure Cosmos skonfigurowanych w trybie autopilotażu, płacisz tylko za zasoby, których obciążenia są wymagane w ciągu godziny.
 
-* **Highly available:** Azure Cosmos containers in autopilot mode use the same globally distributed, fault-tolerant, highly available backend to ensure data durability, and high availability always.
+* **Wysoka dostępność:** Kontenery usługi Azure Cosmos w trybie pilotażu używają tego samego globalnie dystrybuowanego, odpornego na błędy i zaplecza o wysokiej dostępności, aby zapewnić trwałość danych i wysoką dostępność.
 
-## <a name="use-cases-of-autopilot-mode"></a>Use cases of autopilot mode
+## <a name="use-cases-of-autopilot-mode"></a>Przypadki użycia trybu autopilotażu
 
-The use cases for Azure Cosmos containers configured in autopilot mode include:
+Przypadki użycia w przypadku kontenerów usługi Azure Cosmos skonfigurowanych w trybie pilotażu obejmują:
 
-* **Variable workloads:** When you are running a lightly used application with peak usage of 1 hour to several hours few times each day, or several times per year. Examples include applications for human resources, budgeting, and operational reporting. For such scenarios, containers configured in autopilot mode can be used, you no longer need to manually provision for either peak or average capacity.
+* **Obciążenia zmienne:** Gdy korzystasz z aplikacji ze szczytowym użyciem przez 1 godzinę do kilku godzin, lub kilka razy na rok. Przykłady obejmują aplikacje dla zasobów ludzkich, budżetowania i raportowania operacyjnego. W takich scenariuszach można korzystać z kontenerów skonfigurowanych w trybie autopilotażu, ale nie trzeba już ręcznie udostępniać ich w celu zapewnienia szczytu lub średniej wydajności.
 
-* **Unpredictable workloads:** When you are running workloads where there is database usage throughout the day, but also peaks of activity that are hard to predict. An example includes a traffic site that sees a surge of activity when weather forecast changes. Containers configured in autopilot mode adjust the capacity to meet the needs of the application's peak load and scale back down when the surge of activity is over.
+* **Nieprzewidywalne obciążenia:** W przypadku korzystania z obciążeń, w których w ciągu dnia występuje użycie bazy danych, ale także szczytowe działania, które są trudne do przewidywania. Przykład obejmuje lokację ruchu, która widzi wzrost aktywności w przypadku zmiany prognozy pogody. Kontenery skonfigurowane w trybie autopilotażu dostosowują pojemność w celu spełnienia wymagań szczytowego obciążenia aplikacji i skalowania w dół w przypadku przekroczenia działania.
 
-* **New applications:** If you are deploying a new application and are unsure about how much provisioned throughput (i.e., how many RUs) you need. With containers configured in autopilot mode, you can automatically scale to the capacity needs and requirements of your application.
+* **Nowe aplikacje:** Jeśli wdrażasz nową aplikację i nie wiesz, jak dużo zainicjowanej przepływności (tj. ilu jednostek ru) potrzebujesz. Przy użyciu kontenerów skonfigurowanych w trybie automatycznego pilotażu można automatycznie skalować do potrzeb i wymagań aplikacji.
 
-* **Infrequently used applications:** If you have an application that is only used for a few hours several times per day or week or month, such as a low-volume application/web/blog site.
+* **Rzadko używane aplikacje:** Jeśli masz aplikację, która jest używana tylko przez kilka godzin w ciągu dnia lub tygodnia lub miesiąca, na przykład w przypadku aplikacji/witryny sieci Web/blogu o niskiej wielkości.
 
-* **Development and test databases:** Developers use the Azure Cosmos accounts during work hours but don't need them on nights or weekends. With containers configured in autopilot mode, they scale down to minimum when not in use.
+* **Tworzenie i testowanie baz danych:** Deweloperzy używają kont usługi Azure Cosmos w godzinach pracy, ale nie potrzebują ich w nocy lub w weekendy. W przypadku kontenerów skonfigurowanych w trybie pilotażowym skalowanie w dół do minimum, gdy nie jest używane.
 
-* **Scheduled production workloads/queries:** When you have a series of scheduled requests/operations/queries on a single container, and if there are idle periods where you want to run at an absolute low throughput, you can now do that easily. When a scheduled query/request is submitted to a container configured in autopilot mode, it will automatically scale up as much as needed and run the operation.
+* **Zaplanowane obciążenia produkcyjne/zapytania:** Jeśli masz serię zaplanowanych żądań/operacji/zapytań w jednym kontenerze i jeśli istnieją bezczynne okresy, w których chcesz uruchamiać bezwzględnie niską przepływność, możesz to zrobić łatwo. Gdy zaplanowana kwerenda/żądanie zostanie przesłane do kontenera skonfigurowanego w trybie autopilotażu, będzie on automatycznie skalowany w górę, jak to konieczne, i uruchomić operację.
 
-Solutions to the previous problems not only require an enormous amount of time in implementation, but they also introduce complexity in configuration or your code, and frequently require manual intervention to address them. The autopilot mode enables above scenarios out of the box, so that you do not need to worry about these problems anymore.
+Rozwiązania dotyczące poprzednich problemów nie tylko wymagają dużego czasu w implementacji, ale również wprowadzają złożoność w konfiguracji lub kodzie i często wymagają ręcznej interwencji do ich rozwiązania. Tryb autopilotażu włącza powyższe scenariusze, dzięki czemu nie trzeba już martwić się o te problemy.
 
-## <a name="comparison--containers-configured-in-manual-mode-vs-autopilot-mode"></a>Comparison – Containers configured in manual mode vs. autopilot mode
+## <a name="comparison--containers-configured-in-manual-mode-vs-autopilot-mode"></a>Porównanie — kontenery skonfigurowane w trybie ręcznym a trybem autopilotażu
 
-|  | Containers configured in manual mode  | Containers configured in autopilot mode |
+|  | Kontenery skonfigurowane w trybie ręcznym  | Kontenery skonfigurowane w trybie autopilotażu |
 |---------|---------|---------|
-| **Provisioned throughput** | Manually provisioned | Automatically and instantaneously scaled based on the workload usage patterns. |
-| **Rate-limiting of requests/operations (429)**  | May happen, if consumption exceeds provisioned capacity. | Will not happen if the throughput consumed is within the max throughput that you choose with autopilot mode.   |
-| **Planowanie wydajności** |  You have to do an initial capacity planning and provision of the throughput you need. |    You don’t have to worry about capacity planning. The system automatically takes care of capacity planning and capacity management. |
-| **Cennik** | Manually provisioned RU/s per hour. | For single write region accounts, you pay for the throughput used on an hourly basis, by using the autopilot RU/s per hour rate. <br/><br/>For accounts with multiple write regions, there is no extra charge for autopilot. You pay for the throughput used on hourly basis using the same multi-master RU/s per hour rate. |
-| **Best suited for workload types** |  Predictable and stable workloads|   Unpredictable and variable workloads  |
+| **Elastyczna przepływność** | Inicjowane ręcznie | Automatycznie i chwilowo skalowane na podstawie wzorców użycia obciążeń. |
+| **Szybkość ograniczania żądań/operacji (429)**  | Może się tak zdarzyć, jeśli zużycie przekracza przypuszczalną pojemność. | Nie nastąpi, jeśli używana przepływność mieści się w maksymalnej przepływności wybranej z trybem autopilotażu.   |
+| **Planowanie wydajności** |  Należy wykonać planowanie początkowej pojemności i zapewnić wymaganą przepływność. |    Nie musisz martwić się o planowanie pojemności. System automatycznie zajmuje się planowaniem pojemności i zarządzaniem pojemnością. |
+| **Cennik** | Ręcznie aprowizacji RU/s na godzinę. | W przypadku kont z jednym regionem zapisu płacisz za przepływność używaną co godzinę przy użyciu częstotliwości autopilotażowej RU/s na godzinę. <br/><br/>W przypadku kont z wieloma regionami zapisu nie ma dodatkowej opłaty za autopilotaż. Opłata jest naliczana za przepływność użyta co godzinę przy użyciu tego samego kursu wieloskładnikowego RU/s na godzinę. |
+| **Najlepiej dopasowane do typów obciążeń** |  Przewidywalne i stabilne obciążenia|   Nieprzewidywalne obciążenia i zmienne  |
 
-## <a id="enable-autopilot"></a> Enable autopilot from Azure portal
+## <a id="enable-autopilot"></a>Włącz autopilotaż z Azure Portal
 
-You can try out autopilot in your Azure Cosmos accounts by enabling in from Azure portal. Use the following steps to enable the autopilot option:
+Możesz wypróbować autopilotaż na kontach usługi Azure Cosmos, włączając w Azure Portal. Wykonaj następujące kroki, aby włączyć opcję autopilotaż:
 
-1. Sign in to the [Azure portal.](https://portal.azure.com)
+1. Zaloguj się do [Azure Portal.](https://portal.azure.com)
 
-2. Navigate to your Azure Cosmos account and open the **New Features** tab. Select **Auto Pilot** and **Register** as shown in the following screenshot:
+2. Przejdź do konta usługi Azure Cosmos i Otwórz kartę **nowe funkcje** . Wybierz pozycję **autopilotaż** i **zarejestruj** , jak pokazano na poniższym zrzucie ekranu:
 
-![Create a container in autopilot mode](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
+![Tworzenie kontenera w trybie autopilotażu](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
 
-## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Create a database or a container with autopilot mode
+## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Tworzenie bazy danych lub kontenera z trybem autopilotażu
 
-You can configure autopilot for databases or containers while creating them. Use the following steps to a new database or container, enable autopilot, and specify the maximum throughput.
+Można skonfigurować autopilotaż dla baz danych lub kontenerów podczas ich tworzenia. Wykonaj następujące kroki, aby użyć nowej bazy danych lub kontenera, włączyć program autopilotaż i określić maksymalną przepływność.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos explorer.](https://cosmos.azure.com/)
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) lub w [Eksploratorze usługi Azure Cosmos.](https://cosmos.azure.com/)
 
-1. Navigate to your Azure Cosmos account and open the **Data Explorer** tab.
+1. Przejdź do konta usługi Azure Cosmos i Otwórz kartę **Eksplorator danych** .
 
-1. Select **New Container**, enter a name for your container, a partition key. Select the **Autopilot** option, and choose the maximum throughput that the container cannot exceed when using the autopilot option.
+1. Wybierz pozycję **nowy kontener**, wprowadź nazwę kontenera, klucz partycji. Wybierz opcję **autopilotaż** i wybierz maksymalną przepływność, której nie może przekroczyć czas użycia opcji autopilotażu.
 
-   ![Create a container in autopilot mode](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
+   ![Tworzenie kontenera w trybie autopilotażu](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. Kliknij przycisk **OK**
 
-With similar steps, you can also create a database with provisioned throughput in autopilot mode.
+W przypadku podobnych kroków można również utworzyć bazę danych z zainicjowaną przepływność w trybie autopilotażu.
 
-## <a id="autopilot-limits"></a> Throughput and storage limits for autopilot
+## <a id="autopilot-limits"></a>Limity przepływności i magazynu dla autopilotażu
 
-The following table shows the maximum throughout and storage limits for different options in autopilot mode:
+W poniższej tabeli przedstawiono maksymalne limity limitów w granicach i magazynu dla różnych opcji w trybie autopilotażu:
 
-|Maximum throughput limit  |Maximum storage limit  |
+|Maksymalny limit przepływności  |Maksymalny limit magazynu  |
 |---------|---------|
 |4000 RU/s  |   50 GB    |
-|20,000 RU/s  |  200 GB  |
-|100,000 RU/s    |  1 TB   |
-|500,000 RU/s    |  5 TB  |
+|20 000 RU/s  |  200 GB  |
+|100 000 RU/s    |  1 TB   |
+|500 000 RU/s    |  5 TB  |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Learn more about [logical partitions](partition-data.md).
-* Learn how to [provision throughput on an Azure Cosmos container](how-to-provision-container-throughput.md).
-* Learn how to [provision throughput on an Azure Cosmos database](how-to-provision-database-throughput.md).
+* Dowiedz się więcej na temat [partycji logicznych](partition-data.md).
+* Dowiedz się, jak [zainicjować przepływność na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
+* Dowiedz się, jak [udostępnić przepływność w bazie danych Azure Cosmos](how-to-provision-database-throughput.md).

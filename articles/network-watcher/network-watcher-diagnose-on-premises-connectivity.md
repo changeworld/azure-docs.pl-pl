@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275936"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531828"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnozowanie połączeń lokalnych za pośrednictwem bram sieci VPN
 
@@ -42,18 +42,18 @@ Chcesz skonfigurować połączenie lokacja-lokacja między platformą Azure i lo
 
 Szczegółowe wskazówki krok po kroku dotyczące konfigurowania konfiguracji lokacja-lokacja można znaleźć przez odwiedzenie: [Tworzenie sieci wirtualnej z połączeniem lokacja-lokacja przy użyciu Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Jedną z krytycznych czynności konfiguracyjnych jest skonfigurowanie parametrów komunikacji IPsec. Każda niepoważna konfiguracja prowadzi do utraty łączności między siecią lokalną a platformą Azure. Obecnie bramy sieci VPN platformy Azure są skonfigurowane do obsługi następujących parametrów protokołu IPsec dla fazy 1. Uwaga, jak wspomniano wcześniej, te ustawienia nie mogą być modyfikowane.  Jak widać w poniższej tabeli, algorytmy szyfrowania obsługiwane przez platformę Azure VPN Gateway to AES256, AES128 i 3DES.
+Jedną z krytycznych czynności konfiguracyjnych jest skonfigurowanie parametrów komunikacji IPsec. Każda niepoważna konfiguracja prowadzi do utraty łączności między siecią lokalną a platformą Azure. Obecnie bramy sieci VPN platformy Azure są skonfigurowane do obsługi następujących parametrów protokołu IPsec dla fazy 1. Jak widać w poniższej tabeli, algorytmy szyfrowania obsługiwane przez platformę Azure VPN Gateway to AES256, AES128 i 3DES.
 
 ### <a name="ike-phase-1-setup"></a>Konfiguracja usługi IKE fazy 1
 
-| **Property** | **PolicyBased** | **Brama sieci VPN RouteBased i standardowa lub o wysokiej wydajności** |
+| **Właściwość** | **PolicyBased** | **Brama sieci VPN RouteBased i standardowa lub o wysokiej wydajności** |
 | --- | --- | --- |
 | Wersja IKE |IKEv1 |IKEv2 |
 | Grupa Diffie’ego-Hellmana |Grupa 2 (1024 bity) |Grupa 2 (1024 bity) |
 | Metoda uwierzytelniania |Klucz wstępny |Klucz wstępny |
 | Algorytmy szyfrowania |AES256 AES128 3DES |AES256 3DES |
 | Algorytm skrótu |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| Okres istnienia (czas) skojarzenia zabezpieczeń (Security Association — SA) fazy 1 |28 800 sekund |10 800 sekund |
+| Okres istnienia (czas) skojarzenia zabezpieczeń (Security Association — SA) fazy 1 |28 800 sekund |28 800 sekund |
 
 Jako użytkownik musisz skonfigurować FortiGate, ale przykładową konfigurację można znaleźć w witrynie [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Nieświadomie skonfigurowano FortiGate do używania algorytmu SHA-512 jako algorytmem wyznaczania wartości skrótu. Ponieważ ten algorytm nie jest obsługiwanym algorytmem dla połączeń opartych na zasadach, połączenie sieci VPN działa.
 
@@ -84,7 +84,7 @@ Funkcja rozwiązywania problemów z usługą Azure Network Watcher umożliwia di
 
 | Typ błędu | Przyczyna | Log|
 |---|---|---|
-| NoFault | Gdy błąd nie zostanie wykryty. |Tak|
+| NoFault | Gdy błąd nie zostanie wykryty. |Yes|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie jest obsługiwana. |Nie|
 | PlannedMaintenance |  Wystąpienie bramy jest w trakcie konserwacji.  |Nie|
 | UserDrivenUpdate | Gdy aktualizacja użytkownika jest w toku. Może to być operacja zmiany rozmiaru. | Nie |
@@ -92,26 +92,26 @@ Funkcja rozwiązywania problemów z usługą Azure Network Watcher umożliwia di
 | PlatformInActive | Wystąpił problem z platformą. | Nie|
 | ServiceNotRunning | Podstawowa usługa nie jest uruchomiona. | Nie|
 | NoConnectionsFoundForGateway | Brak połączeń w bramie. Jest to tylko ostrzeżenie.| Nie|
-| ConnectionsNotConnected | Żadne z połączeń nie są połączone. Jest to tylko ostrzeżenie.| Tak|
-| GatewayCPUUsageExceeded | Bieżące użycie procesora CPU przez bramę to > 95%. | Tak |
+| ConnectionsNotConnected | Żadne z połączeń nie są połączone. Jest to tylko ostrzeżenie.| Yes|
+| GatewayCPUUsageExceeded | Bieżące użycie procesora CPU przez bramę to > 95%. | Yes |
 
 ### <a name="connection"></a>Połączenie
 
 | Typ błędu | Przyczyna | Log|
 |---|---|---|
-| NoFault | Gdy błąd nie zostanie wykryty. |Tak|
+| NoFault | Gdy błąd nie zostanie wykryty. |Yes|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie jest obsługiwana. |Nie|
 | PlannedMaintenance | Wystąpienie bramy jest w trakcie konserwacji.  |Nie|
 | UserDrivenUpdate | Gdy aktualizacja użytkownika jest w toku. Może to być operacja zmiany rozmiaru.  | Nie |
 | VipUnResponsive | Nie można nawiązać połączenia z podstawowym wystąpieniem bramy. Występuje po niepowodzeniu sondy kondycji. | Nie |
 | ConnectionEntityNotFound | Brak konfiguracji połączenia. | Nie |
 | ConnectionIsMarkedDisconnected | Połączenie jest oznaczone jako "odłączone". |Nie|
-| ConnectionNotConfiguredOnGateway | Usługa bazowa nie ma skonfigurowanego połączenia. | Tak |
-| ConnectionMarkedStandby | Podstawowa usługa jest oznaczona jako w stanie wstrzymania.| Tak|
-| Authentication | Niezgodność klucza wstępnego. | Tak|
-| PeerReachability | Brama równorzędna jest nieosiągalna. | Tak|
-| IkePolicyMismatch | Brama równorzędna ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Tak|
-| Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika WFP. |Tak|
+| ConnectionNotConfiguredOnGateway | Usługa bazowa nie ma skonfigurowanego połączenia. | Yes |
+| ConnectionMarkedStandby | Podstawowa usługa jest oznaczona jako w stanie wstrzymania.| Yes|
+| Authentication | Niezgodność klucza wstępnego. | Yes|
+| PeerReachability | Brama równorzędna jest nieosiągalna. | Yes|
+| IkePolicyMismatch | Brama równorzędna ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Yes|
+| Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika WFP. |Yes|
 
 ## <a name="next-steps"></a>Następne kroki
 

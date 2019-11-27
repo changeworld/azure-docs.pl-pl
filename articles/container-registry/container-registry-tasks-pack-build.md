@@ -1,6 +1,6 @@
 ---
-title: Build image with Cloud Native Buildpack
-description: Use the az acr pack build command to build a container image from an app and push to Azure Container Registry, without using a Dockerfile.
+title: Kompilowanie obrazu za pomocą natywnej chmury Buildpack
+description: Użyj polecenia AZ ACR Pack Build, aby skompilować obraz kontenera z aplikacji i wypchnąć do Azure Container Registry bez użycia pliku dockerfile.
 ms.topic: article
 ms.date: 10/24/2019
 ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
@@ -10,31 +10,31 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456120"
 ---
-# <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Build and push an image from an app using a Cloud Native Buildpack
+# <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Kompilowanie i wypychanie obrazu z aplikacji przy użyciu natywnej Buildpack w chmurze
 
-The Azure CLI command `az acr pack build` uses the [`pack`](https://github.com/buildpack/pack) CLI tool, from [Buildpacks](https://buildpacks.io/), to build an app and push its image into an Azure container registry. This feature provides an option to quickly build a container image from your application source code in Node.js, Java, and other languages without having to define a Dockerfile.
+Polecenie interfejsu wiersza polecenia platformy Azure `az acr pack build` za pomocą narzędzia [`pack`](https://github.com/buildpack/pack) CLI z [Buildpacks](https://buildpacks.io/), aby skompilować aplikację i wypchnąć obraz do usługi Azure Container Registry. Ta funkcja udostępnia opcję szybkiego tworzenia obrazu kontenera na podstawie kodu źródłowego aplikacji w języku Node. js, Java i innych językach bez konieczności definiowania pliku dockerfile.
 
-You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the examples in this article. If you'd like to use it locally, version 2.0.70 or later is required. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Możesz użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure, aby uruchomić przykłady w tym artykule. Jeśli chcesz używać go lokalnie, wymagana jest wersja 2.0.70 lub nowsza. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
-## <a name="use-the-build-command"></a>Use the build command
+## <a name="use-the-build-command"></a>Korzystanie z polecenia Build
 
-To build and push a container image using Cloud Native Buildpacks, run the [az acr pack build][az-acr-pack-build] command. Whereas the [az acr build][az-acr-build] command builds and pushes an image from a Dockerfile source and related code, with `az acr pack build` you specify an application source tree directly.
+Aby skompilować i wypchnąć obraz kontenera za pomocą natywnej Buildpacks w chmurze, uruchom polecenie [AZ ACR Pack Build][az-acr-pack-build] . Podczas gdy polecenie [AZ ACR Build][az-acr-build] kompiluje i wypycha obraz ze źródła pliku dockerfile i powiązanego kodu, z `az acr pack build` należy bezpośrednio określić drzewo źródła aplikacji.
 
-At a minimum, specify the following when you run `az acr pack build`:
+Podczas uruchamiania `az acr pack build`należy określić co najmniej następujące elementy:
 
-* An Azure container registry where you run the command
-* An image name and tag for the resulting image
-* One of the [supported context locations](container-registry-tasks-overview.md#context-locations) for ACR Tasks, such as a local directory, a GitHub repo, or a remote tarball
-* The name of a Buildpack builder image suitable for your application. Azure Container Registry caches builder images such as `cloudfoundry/cnb:0.0.34-cflinuxfs3` for faster builds.  
+* Rejestr kontenerów platformy Azure, w którym jest uruchamiane polecenie
+* Nazwa obrazu i tag dla obrazu uzyskanego
+* Jedna z [obsługiwanych lokalizacji kontekstu](container-registry-tasks-overview.md#context-locations) dla zadań ACR, takich jak katalog lokalny, repozytorium GitHub lub zdalne plik tar
+* Nazwa obrazu programu Buildpack Builder odpowiednie dla Twojej aplikacji. Azure Container Registry pamięci podręcznej obrazów konstruktora, takich jak `cloudfoundry/cnb:0.0.34-cflinuxfs3`, dla szybszych kompilacji.  
 
-`az acr pack build` supports other features of ACR Tasks commands including [run variables](container-registry-tasks-reference-yaml.md#run-variables) and [task run logs](container-registry-tasks-overview.md#view-task-logs) that are streamed and also saved for later retrieval.
+`az acr pack build` obsługuje inne funkcje poleceń ACR Tasks, w tym [uruchamiania zmiennych](container-registry-tasks-reference-yaml.md#run-variables) i [dzienników uruchamiania zadań](container-registry-tasks-overview.md#view-task-logs) , które są przesyłane strumieniowo, a także zapisane do późniejszego pobrania.
 
-## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Example: Build Node.js image with Cloud Foundry builder
+## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Przykład: kompilowanie obrazu Node. js za pomocą konstruktora Cloud Foundry
 
-The following example builds a container image from a Node.js app in the [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) repo, using the `cloudfoundry/cnb:0.0.34-cflinuxfs3` builder. This builder is cached by Azure Container Registry, so a `--pull` parameter isn't required:
+Poniższy przykład tworzy obraz kontenera z aplikacji node. js w repozytorium [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) przy użyciu konstruktora `cloudfoundry/cnb:0.0.34-cflinuxfs3`. Ten konstruktor jest buforowany przez Azure Container Registry, więc parametr `--pull` nie jest wymagany:
 
 ```azurecli
 az acr pack build \
@@ -44,27 +44,27 @@ az acr pack build \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-This example builds the `node-app` image with the `1.0` tag and pushes it to the *myregistry* container registry. In this example, the target registry name is explicitly prepended to the image name. If not specified, the registry login server name is automatically prepended to the image name.
+Ten przykład kompiluje obraz `node-app` ze znacznikiem `1.0` i wypchnij go do rejestru kontenerów *rejestru* . W tym przykładzie docelowa Nazwa rejestru jest jawnie poprzedzona nazwą obrazu. Jeśli nie zostanie określony, nazwa serwera logowania rejestru zostanie automatycznie poprzedzona nazwą obrazu.
 
-Command output shows the progress of building and pushing the image. 
+Dane wyjściowe polecenia pokazują postęp kompilowania i wypychania obrazu. 
 
-After the image is successfully built, you can run it with Docker, if you have it installed. First sign into your registry:
+Po pomyślnym skompilowaniu obrazu można uruchomić go przy użyciu platformy Docker, jeśli jest zainstalowany. Najpierw Zaloguj się do rejestru:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-Run the image:
+Uruchom obraz:
 
 ```console
 docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 ```
 
-Browse to `localhost:1337` in your favorite browser to see the sample web app. Press `[Ctrl]+[C]` to stop the container.
+Przejdź do `localhost:1337` w ulubionej przeglądarce, aby wyświetlić przykładową aplikację internetową. Naciśnij `[Ctrl]+[C]`, aby zatrzymać kontener.
 
-## <a name="example-build-java-image-with-heroku-builder"></a>Example: Build Java image with Heroku builder
+## <a name="example-build-java-image-with-heroku-builder"></a>Przykład: kompilowanie obrazu Java za pomocą konstruktora Heroku
 
-The following example builds a container image from the Java app in the [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) repo, using the `heroku/buildpacks:18` builder. The `--pull` parameter specifies that the command should pull the latest builder image. 
+Poniższy przykład tworzy obraz kontenera z aplikacji Java w repozytorium [buildpack/Sample-Java-App](https://github.com/buildpack/sample-java-app) , używając konstruktora `heroku/buildpacks:18`. Parametr `--pull` określa, że polecenie powinno pobrać najnowszy obraz konstruktora. 
 
 ```azurecli
 az acr pack build \
@@ -74,30 +74,30 @@ az acr pack build \
     https://github.com/buildpack/sample-java-app.git
 ```
 
-This example builds the `java-app` image tagged with the run ID of the command and pushes it to the *myregistry* container registry.
+Ten przykład kompiluje `java-app` obraz oznaczony przy użyciu identyfikatora uruchomienia polecenia i wypchnięcie go do rejestru kontenerów *rejestru* .
 
-Command output shows the progress of building and pushing the image. 
+Dane wyjściowe polecenia pokazują postęp kompilowania i wypychania obrazu. 
 
-After the image is successfully built, you can run it with Docker, if you have it installed. First sign into your registry:
+Po pomyślnym skompilowaniu obrazu można uruchomić go przy użyciu platformy Docker, jeśli jest zainstalowany. Najpierw Zaloguj się do rejestru:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-Run the image, substituting your image tag for *runid*:
+Uruchom obraz, zastępując tag obrazu *RunId*:
 
 ```console
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 ```
 
-Browse to `localhost:8080` in your favorite browser to see the sample web app. Press `[Ctrl]+[C]` to stop the container.
+Przejdź do `localhost:8080` w ulubionej przeglądarce, aby wyświetlić przykładową aplikację internetową. Naciśnij `[Ctrl]+[C]`, aby zatrzymać kontener.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-After you build and push a container image with `az acr pack build`, you can deploy it like any image to a target of your choice. Azure deployment options include running it in [App Service](../app-service/containers/tutorial-custom-docker-image.md) or [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md), among others.
+Po skompilowaniu i wypchnięciu obrazu kontenera za pomocą `az acr pack build`można wdrożyć go jak dowolny obraz w wybranym miejscu docelowym. Opcje wdrażania platformy Azure obejmują uruchamianie go w [App Service](../app-service/containers/tutorial-custom-docker-image.md) lub [usługi Azure Kubernetes](../aks/tutorial-kubernetes-deploy-cluster.md).
 
-For more information about ACR Tasks features, see [Automate container image builds and maintenance with ACR Tasks](container-registry-tasks-overview.md).
+Aby uzyskać więcej informacji na temat funkcji zadań ACR, zobacz [Automatyzacja kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR](container-registry-tasks-overview.md).
 
 
 <!-- LINKS - External -->

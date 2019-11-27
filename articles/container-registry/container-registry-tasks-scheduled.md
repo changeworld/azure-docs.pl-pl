@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Schedule an ACR task
-description: In this tutorial, learn how to run an Azure Container Registry Task on a defined schedule by setting one or more timer triggers
+title: Samouczek — Planowanie zadania ACR
+description: W tym samouczku dowiesz się, jak uruchomić zadanie Azure Container Registry zgodnie ze zdefiniowanym harmonogramem, ustawiając jeden lub więcej wyzwalaczy czasomierza
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
@@ -10,40 +10,40 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454680"
 ---
-# <a name="run-an-acr-task-on-a-defined-schedule"></a>Run an ACR task on a defined schedule
+# <a name="run-an-acr-task-on-a-defined-schedule"></a>Uruchamianie zadania ACR zgodnie ze zdefiniowanym harmonogramem
 
-This tutorial shows you how to run an [ACR Task](container-registry-tasks-overview.md) on a schedule. Schedule a task by setting up one or more *timer triggers*. Timer triggers can be used alone, or in combination with other task triggers.
+W tym samouczku przedstawiono sposób uruchamiania [zadania ACR](container-registry-tasks-overview.md) zgodnie z harmonogramem. Zaplanuj zadanie, konfigurując jeden lub więcej *wyzwalaczy czasomierza*. Wyzwalacze czasomierza mogą być używane samodzielnie lub w połączeniu z innymi wyzwalaczami zadań.
 
-In this tutorial, learn about scheduling tasks and:
+W tym samouczku dowiesz się więcej na temat planowania zadań i:
 
 > [!div class="checklist"]
-> * Create a task with a timer trigger
-> * Manage timer triggers
+> * Tworzenie zadania z wyzwalaczem czasomierza
+> * Zarządzaj wyzwalaczami czasomierza
 
-Scheduling a task is useful for scenarios like the following:
+Planowanie zadania jest przydatne w scenariuszach takich jak następujące:
 
-* Run a container workload for scheduled maintenance operations. For example, run a containerized app to remove unneeded images from your registry.
-* Run a set of tests on a production image during the workday as part of your live-site monitoring.
+* Uruchom obciążenie kontenera dla zaplanowanych operacji konserwacji. Na przykład Uruchom aplikację z kontenerem w celu usunięcia niepotrzebnych obrazów z rejestru.
+* Uruchom zestaw testów w obrazie produkcyjnym w trakcie pracy w ramach monitorowania na żywo.
 
-You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the examples in this article. If you'd like to use it locally, version 2.0.68 or later is required. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Możesz użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure, aby uruchomić przykłady w tym artykule. Jeśli chcesz używać go lokalnie, wymagana jest wersja 2.0.68 lub nowsza. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 
-## <a name="about-scheduling-a-task"></a>About scheduling a task
+## <a name="about-scheduling-a-task"></a>Informacje o planowaniu zadania
 
-* **Trigger with cron expression** - The timer trigger for a task uses a *cron expression*. The expression is a string with five fields specifying the minute, hour, day, month, and day of week to trigger the task. Frequencies of up to once per minute are supported.
+* **Wyzwalacz z wyrażeniem firmy CRONUS** — wyzwalacz czasomierza dla zadania używa *wyrażenia firmy CRONUS*. Wyrażenie jest ciągiem zawierającym pięć pól określające minuty, godzinę, dzień, miesiąc i dzień tygodnia, w których ma zostać wyzwolone zadanie. Obsługiwane są częstotliwości do raz na minutę.
 
-  For example, the expression `"0 12 * * Mon-Fri"` triggers a task at noon UTC on each weekday. See [details](#cron-expressions) later in this article.
-* **Multiple timer triggers** - Adding multiple timers to a task is allowed, as long as the schedules differ.
-    * Specify multiple timer triggers when you create the task, or add them later.
-    * Optionally name the triggers for easier management, or ACR Tasks will provide default trigger names.
-    * If timer schedules overlap at a time, ACR Tasks triggers the task at the scheduled time for each timer.
-* **Other task triggers** - In a timer-triggered task, you can also enable triggers based on [source code commit](container-registry-tutorial-build-task.md) or [base image updates](container-registry-tutorial-base-image-update.md). Like other ACR tasks, you can also [manually trigger][az-acr-task-run] a scheduled task.
+  Na przykład wyrażenie `"0 12 * * Mon-Fri"` wyzwala zadanie o godzinie UTC dla każdego dnia tygodnia. Zobacz [szczegóły](#cron-expressions) w dalszej części tego artykułu.
+* **Wyzwalacze wielu czasomierzy** — Dodawanie wielu czasomierzy do zadania jest dozwolone, o ile harmonogramy różnią się.
+    * Określ wyzwalacze wielu czasomierzy podczas tworzenia zadania lub Dodaj je później.
+    * Opcjonalnie Nazwij wyzwalacze, aby ułatwić zarządzanie, lub ACR zadania będą podawać domyślne nazwy wyzwalaczy.
+    * Jeśli harmonogramy czasomierze nakładają się na siebie, ACR zadania wyzwalają zadanie w zaplanowanym czasie dla każdego czasomierza.
+* **Inne Wyzwalacze zadań** — w zadaniu wyzwalanym czasomierzem można również włączyć wyzwalacze na podstawie [zatwierdzeń kodu źródłowego](container-registry-tutorial-build-task.md) lub [aktualizacji obrazu podstawowego](container-registry-tutorial-base-image-update.md). Podobnie jak w przypadku innych zadań ACR, można także [ręcznie wyzwolić][az-acr-task-run] zaplanowane zadanie.
 
-## <a name="create-a-task-with-a-timer-trigger"></a>Create a task with a timer trigger
+## <a name="create-a-task-with-a-timer-trigger"></a>Tworzenie zadania z wyzwalaczem czasomierza
 
-When you create a task with the [az acr task create][az-acr-task-create] command, you can optionally add a timer trigger. Add the `--schedule` parameter and pass a cron expression for the timer.
+Podczas tworzenia zadania za pomocą polecenia [AZ ACR Task Create][az-acr-task-create] można opcjonalnie dodać wyzwalacz czasomierza. Dodaj parametr `--schedule` i przekaż wyrażenie firmy CRONUS dla czasomierza.
 
-As a simple example, the following command triggers running the `hello-world` image from Docker Hub every day at 21:00 UTC. The task runs without a source code context.
+W prostym przykładzie następujące polecenie wyzwala uruchamianie `hello-world` obrazu z usługi Docker Hub codziennie o godzinie 21:00 czasu UTC. Zadanie jest uruchamiane bez kontekstu kodu źródłowego.
 
 ```azurecli
 az acr task create \
@@ -54,7 +54,7 @@ az acr task create \
   --context /dev/null
 ```
 
-Run the [az acr task show][az-acr-task-show] command to see that the timer trigger is configured. By default, the base image update trigger is also enabled.
+Uruchom polecenie [AZ ACR Task show][az-acr-task-show] , aby zobaczyć, że wyzwalacz czasomierza został skonfigurowany. Domyślnie wyzwalacz aktualizacji obrazu podstawowego jest również włączony.
 
 ```console
 $ az acr task show --name mytask --registry registry --output table
@@ -63,13 +63,13 @@ NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
 ```
 
-Trigger the task manually with [az acr task run][az-acr-task-run] to ensure that it is set up properly:
+Wyzwól zadanie ręcznie przy użyciu [AZ ACR Task Run][az-acr-task-run] , aby upewnić się, że zostało prawidłowo skonfigurowane:
 
 ```azurecli
 az acr task run --name mytask --registry myregistry
 ```
 
-If the container runs successfully, the output is similar to the following:
+Jeśli kontener zostanie uruchomiony pomyślnie, dane wyjściowe są podobne do następujących:
 
 ```console
 Queued a run with ID: cf2a
@@ -84,13 +84,13 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-After the scheduled time, run the [az acr task list-runs][az-acr-task-list-runs] command to verify that the timer triggered the task as expected:
+Po upływie zaplanowanego czasu Uruchom polecenie [AZ ACR Task List-][az-acr-task-list-runs] Run, aby sprawdzić, czy czasomierz wyzwolił zadanie zgodnie z oczekiwaniami:
 
 ```azurecli
 az acr task list-runs --name mytask --registry myregistry --output table
 ```
 
-When the timer is successful, output is similar to the following:
+Po pomyślnym zakończeniu czasomierza dane wyjściowe są podobne do następujących:
 
 ```console
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
@@ -100,13 +100,13 @@ cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00
 cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
 ```
 
-## <a name="manage-timer-triggers"></a>Manage timer triggers
+## <a name="manage-timer-triggers"></a>Zarządzaj wyzwalaczami czasomierza
 
-Use the [az acr task timer][az-acr-task-timer] commands to manage the timer triggers for an ACR task.
+Użyj polecenia [AZ ACR Task Timer][az-acr-task-timer] , aby zarządzać wyzwalaczami czasomierza dla zadania ACR.
 
-### <a name="add-or-update-a-timer-trigger"></a>Add or update a timer trigger
+### <a name="add-or-update-a-timer-trigger"></a>Dodawanie lub aktualizowanie wyzwalacza czasomierza
 
-After a task is created, optionally add a timer trigger by using the [az acr task timer add][az-acr-task-timer-add] command. The following example adds a timer trigger name *timer2* to *mytask* created previously. This timer triggers the task every day at 10:30 UTC.
+Po utworzeniu zadania opcjonalnie Dodaj wyzwalacz czasomierza przy użyciu polecenia [AZ ACR Task Timer Add][az-acr-task-timer-add] . Poniższy przykład dodaje nazwę wyzwalacza czasomierza *timer2* do *zadania* utworzonego wcześniej. Ten czasomierz wyzwala zadanie codziennie o godzinie 10:30 czasu UTC.
 
 ```azurecli
 az acr task timer add \
@@ -116,7 +116,7 @@ az acr task timer add \
   --schedule "30 10 * * *"
 ```
 
-Update the schedule of an existing trigger, or change its status, by using the [az acr task timer update][az-acr-task-timer-update] command. For example, update the trigger named *timer2* to trigger the task at 11:30 UTC:
+Aktualizacja harmonogramu istniejącego wyzwalacza lub zmiana jego stanu za pomocą polecenia [AZ ACR Task Timer Update][az-acr-task-timer-update] . Na przykład zaktualizuj wyzwalacz o nazwie *timer2* , aby wyzwolić zadanie o godzinie 11:30 czasu UTC:
 
 ```azurecli
 az acr task timer update \
@@ -126,9 +126,9 @@ az acr task timer update \
   --schedule "30 11 * * *"
 ```
 
-### <a name="list-timer-triggers"></a>List timer triggers
+### <a name="list-timer-triggers"></a>Lista wyzwalaczy czasomierza
 
-The [az acr task timer list][az-acr-task-timer-list] command shows the timer triggers set up for a task:
+Polecenie [AZ ACR Task Timer list][az-acr-task-timer-list] wyświetla wyzwalacze czasomierza skonfigurowane dla zadania:
 
 ```azurecli
 az acr task timer list --name mytask --registry myregistry
@@ -151,9 +151,9 @@ Przykładowe dane wyjściowe:
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>Remove a timer trigger
+### <a name="remove-a-timer-trigger"></a>Usuwanie wyzwalacza czasomierza
 
-Use the [az acr task timer remove][az-acr-task-timer-remove] command to remove a timer trigger from a task. The following example removes the *timer2* trigger from *mytask*:
+Użyj polecenia [AZ ACR Task Timer Remove][az-acr-task-timer-remove] , aby usunąć wyzwalacz czasomierza z zadania. Poniższy przykład usuwa wyzwalacz *timer2* z *zadania*:
 
 ```azurecli
 az acr task timer remove \
@@ -162,49 +162,49 @@ az acr task timer remove \
   --timer-name timer2
 ```
 
-## <a name="cron-expressions"></a>Cron expressions
+## <a name="cron-expressions"></a>Wyrażenia firmy CRONUS
 
-ACR Tasks uses the [NCronTab](https://github.com/atifaziz/NCrontab) library to interpret cron expressions. Supported expressions in ACR Tasks have five required fields separated by white space:
+Zadania ACR używają biblioteki [NCronTab](https://github.com/atifaziz/NCrontab) do interpretowania wyrażeń firmy cronus. Obsługiwane wyrażenia w zadaniach ACR mają pięć wymaganych pól rozdzielonych odstępem:
 
 `{minute} {hour} {day} {month} {day-of-week}`
 
-The time zone used with the cron expressions is Coordinated Universal Time (UTC). Hours are in 24-hour format.
+Strefa czasowa używana z wyrażeniami firmy CRONUS jest uniwersalnym czasem koordynowanym (UTC). Godziny są w formacie 24-godzinnym.
 
 > [!NOTE]
-> ACR Tasks does not support the `{second}` or `{year}` field in cron expressions. If you copy a cron expression used in another system, be sure to remove those fields, if they are used.
+> ACR zadania nie obsługują pola `{second}` ani `{year}` w wyrażeniach firmy cronus. Jeśli skopiujesz wyrażenie firmy CRONUS używane w innym systemie, pamiętaj, aby usunąć te pola, jeśli są używane.
 
-Each field can have one of the following types of values:
+Każde pole może mieć jeden z następujących typów wartości:
 
-|Typ  |Przykład  |When triggered  |
+|Typ  |Przykład  |Po wyzwoleniu  |
 |---------|---------|---------|
-|A specific value |<nobr>`"5 * * * *"`</nobr>|every hour at 5 minutes past the hour|
-|All values (`*`)|<nobr>`"* 5 * * *"`</nobr>|every minute of the hour beginning 5:00 UTC (60 times a day)|
-|A range (`-` operator)|<nobr>`"0 1-3 * * *"`</nobr>|3 times per day, at 1:00, 2:00, and 3:00 UTC|
-|A set of values (`,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 times per hour, at 20 minutes, 30 minutes, and 40 minutes past the hour|
-|An interval value (`/` operator)|<nobr>`"*/10 * * * *"`</nobr>|6 times per hour, at 10 minutes, 20 minutes, and so on, past the hour
+|Określona wartość |<nobr>`"5 * * * *"`</nobr>|co godzinę w ciągu 5 minut od godziny|
+|Wszystkie wartości (`*`)|<nobr>`"* 5 * * *"`</nobr>|co minutę godziny od 5:00 czasu UTC (60 razy dziennie)|
+|Zakres (operator`-`)|<nobr>`"0 1-3 * * *"`</nobr>|3 razy dziennie, o godzinie 1:00, 2:00 i 3:00 UTC|
+|Zestaw wartości (operator`,`)|<nobr>`"20,30,40 * * * *"`</nobr>|3 razy na godzinę, co 20 minut, 30 minut i 40 minut po godzinie|
+|Wartość interwału (`/` operator)|<nobr>`"*/10 * * * *"`</nobr>|6 razy na godzinę, przy 10 minutach, 20 minutach itd., Ostatnia godzina
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-### <a name="cron-examples"></a>Cron examples
+### <a name="cron-examples"></a>Przykłady dla firmy CRONUS
 
-|Przykład|When triggered  |
+|Przykład|Po wyzwoleniu  |
 |---------|---------|
-|`"*/5 * * * *"`|once every five minutes|
-|`"0 * * * *"`|once at the top of every hour|
-|`"0 */2 * * *"`|once every two hours|
-|`"0 9-17 * * *"`|once every hour from 9:00 to 17:00 UTC|
-|`"30 9 * * *"`|at 9:30 UTC every day|
-|`"30 9 * * 1-5"`|at 9:30 UTC every weekday|
-|`"30 9 * Jan Mon"`|at 9:30 UTC every Monday in January|
+|`"*/5 * * * *"`|co pięć minut|
+|`"0 * * * *"`|raz w górnej części co godzinę|
+|`"0 */2 * * *"`|co dwie godziny|
+|`"0 9-17 * * *"`|co godzinę od 9:00 do 17:00 czasu UTC|
+|`"30 9 * * *"`|Codziennie o 9:30 czasu UTC|
+|`"30 9 * * 1-5"`|o godzinie 9:30 UTC każdego dnia tygodnia|
+|`"30 9 * Jan Mon"`|o 9:30 czasu UTC co poniedziałek w styczniu|
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this tutorial, you learned how to create Azure Container Registry tasks that are automatically triggered by a timer. 
+W tym samouczku przedstawiono sposób tworzenia Azure Container Registry zadań, które są automatycznie wyzwalane przez czasomierz. 
 
-For an example of using a scheduled task to clean up repositories in a registry, see [Automatically purge images from an Azure container registry](container-registry-auto-purge.md).
+Przykład użycia zaplanowanego zadania do czyszczenia repozytoriów w rejestrze można znaleźć w temacie [Automatyczne przeczyszczanie obrazów z usługi Azure Container Registry](container-registry-auto-purge.md).
 
-For examples of tasks triggered by source code commits or base image updates, see other articles in the [ACR Tasks tutorial series](container-registry-tutorial-quick-task.md).
+Przykłady zadań wyzwalanych przez zatwierdzenia kodu źródłowego lub aktualizacje obrazu podstawowego można znaleźć w innych artykułach w [serii samouczków zadań ACR](container-registry-tutorial-quick-task.md).
 
 
 

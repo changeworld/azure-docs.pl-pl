@@ -1,6 +1,6 @@
 ---
-title: Wyłącz Azure Active Directory Domain Services | Microsoft Docs "
-description: Dowiedz się, jak wyłączyć Azure Active Directory Domain Services przy użyciu Azure Portal
+title: Usuń Azure Active Directory Domain Services | Microsoft Docs
+description: Dowiedz się, jak wyłączyć lub usunąć Azure Active Directory Domain Services zarządzaną domenę przy użyciu Azure Portal
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 05c4e73c56b79c6e313ea15124bd0f3d17b2fc70
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 9f0b8a438a7c236c5e016673a59bfb691e9c2152
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842613"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546293"
 ---
-# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Wyłącz Azure Active Directory Domain Services przy użyciu Azure Portal
+# <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Usuwanie Azure Active Directory Domain Services domeny zarządzanej przy użyciu Azure Portal
 
 Jeśli nie potrzebujesz już domeny zarządzanej, możesz usunąć wystąpienie Azure Active Directory Domain Services (AD DS platformy Azure). Nie ma możliwości wyłączenia lub tymczasowego wyłączenia domeny zarządzanej AD DS platformy Azure. Usunięcie domeny zarządzanej AD DS platformy Azure nie powoduje usunięcia lub w inny sposób niekorzystnego wpływu na dzierżawę usługi Azure AD. W tym artykule pokazano, jak usunąć domenę zarządzaną AD DS platformy Azure za pomocą Azure Portal.
 

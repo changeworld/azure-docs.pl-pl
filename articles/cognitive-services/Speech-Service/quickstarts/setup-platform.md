@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Set up dev platform'
+title: 'Szybki Start: Konfigurowanie platformy deweloperskiej'
 titleSuffix: Azure Cognitive Services
-description: In this quickstart, you'll learn how to install the Speech SDK for your preferred platform and programming language combination.
+description: W tym przewodniku szybki start dowiesz się, jak zainstalować zestaw Speech SDK dla preferowanej platformy i kombinacji języka programowania.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -18,17 +18,17 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221968"
 ---
-# <a name="quickstart-setup-development-environment"></a>Quickstart: Setup development environment
+# <a name="quickstart-setup-development-environment"></a>Szybki Start: Konfigurowanie środowiska deweloperskiego
 
 ::: zone pivot="programming-language-csharp"
-**Choose your target environment**
+**Wybierz środowisko docelowe**
 #### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](../includes/quickstarts/platform/csharp-dotnet-windows.md)]
 #### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](../includes/quickstarts/platform/csharp-dotnetcore-windows.md)]
 #### <a name="unitytabunity"></a>[Unity](#tab/unity)
 [!INCLUDE [unity](../includes/quickstarts/platform/csharp-unity.md)]
-#### <a name="uwptabuwp"></a>[UWP](#tab/uwp)
+#### <a name="uwptabuwp"></a>[PLATFORMY UWP](#tab/uwp)
 [!INCLUDE [uwp](../includes/quickstarts/platform/csharp-uwp.md)]
 #### <a name="xamarintabxaml"></a>[Xamarin](#tab/xaml)
 [!INCLUDE [xamarin](../includes/quickstarts/platform/csharp-xamarin.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "74221968"
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-**Choose your target environment**
+**Wybierz środowisko docelowe**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](../includes/quickstarts/platform/cpp-linux.md)]
 #### <a name="macostabmacos"></a>[macOS](#tab/macos)
@@ -48,8 +48,8 @@ ms.locfileid: "74221968"
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-**Choose your target environment**
-#### <a name="java-runtimetabjre"></a>[Java Runtime](#tab/jre)
+**Wybierz środowisko docelowe**
+#### <a name="java-runtimetabjre"></a>[Środowisko uruchomieniowe Java](#tab/jre)
 [!INCLUDE [jre](../includes/quickstarts/platform/java-jre.md)]
 #### <a name="androidtabandroid"></a>[Android](#tab/android)
 [!INCLUDE [android](../includes/quickstarts/platform/java-android.md)]

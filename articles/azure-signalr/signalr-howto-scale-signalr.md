@@ -1,6 +1,6 @@
 ---
-title: Scale an instance of Azure SignalR Service
-description: Learn how to scale an Azure SignalR Service instance to add or reduce capacity, through Azure portal or Azure CLI.
+title: Skalowanie wystąpienia usługi Azure Signal Service
+description: Dowiedz się, jak skalować wystąpienie usługi Azure Signal Service, aby zwiększyć lub zmniejszyć pojemność, za pomocą Azure Portal lub interfejsu wiersza polecenia platformy Azure.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
@@ -13,35 +13,35 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74464180"
 ---
-# <a name="how-to-scale-an-azure-signalr-service-instance"></a>How to scale an Azure SignalR Service instance?
-This article shows you how to scale your instance of Azure SignalR Service. There are two scenarios for scaling, scale up and scale out.
+# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Jak skalować wystąpienie usługi Azure sygnalizujące?
+W tym artykule opisano sposób skalowania wystąpienia usługi Azure Signal Service. Istnieją dwa scenariusze skalowania, skalowanie w górę i w poziomie.
 
-* [Scale up](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Get more units, connections, messages, and more. You scale up by changing the pricing tier from Free to Standard.
-* [Scale out](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Increase the number of SignalR units. You can scale out to as many as 100 units.
+* [Skalowanie w górę](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): uzyskiwanie większej liczby jednostek, połączeń, wiadomości i innych. Skalowanie w górę przez zmianę warstwy cenowej z bezpłatna na Standard.
+* [Skalowanie w poziomie](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Zwiększ liczbę jednostek sygnalizujących. Możesz skalować w poziomie do maksymalnie 100 jednostek.
 
-The scale settings take a few minutes to apply. They don't require you to change your code or redeploy your server application.
+Zastosowanie ustawień skalowania może potrwać kilka minut. Nie wymagają one zmiany kodu ani ponownego wdrażania aplikacji serwera.
 
-For information about the pricing and capacities of individual SignalR Service, see [Azure SignalR Service Pricing Details](https://azure.microsoft.com/pricing/details/signalr-service/).  
+Aby uzyskać informacje na temat cen i pojemności poszczególnych usług sygnalizujących, zobacz [szczegóły cennika usługi Azure sygnalizującej](https://azure.microsoft.com/pricing/details/signalr-service/).  
 
 > [!NOTE]
-> Changing SignalR Service from **Free** tier to **Standard** tier or vice versa, the public service IP will be changed and it usually takes 3-60 minutes to propagate the change to DNS servers across the entire internet. Your service might be unreachable before DNS gets updated. Generally it’s not recommended to change your pricing tier too often.
+> Zmiana usługi sygnalizującej z warstwy **bezpłatna** na warstwę **standardowa** lub odwrotnie, publiczny adres IP usługi zostanie zmieniony i zwykle trwa 3-60 minut, aby PROPAGOWAĆ zmianę do serwerów DNS w całym Internecie. Usługa może być nieosiągalna, zanim system DNS zostanie zaktualizowany. Zazwyczaj nie zaleca się zbyt częstej zmiany warstwy cenowej.
 
 
-## <a name="scale-on-azure-portal"></a>Scale on Azure portal
+## <a name="scale-on-azure-portal"></a>Skalowanie na Azure Portal
 
 1. W przeglądarce otwórz witrynę [Azure Portal](https://portal.azure.com).
 
-2. In your SignalR Service page, from the left menu, select **Scale**.
+2. Z menu po lewej stronie usługi sygnalizującego wybierz pozycję **Skala**.
    
-3. Choose your pricing tier, and then click **Select**. You need to set the unit count for **Standard** Tier.
+3. Wybierz warstwę cenową, a następnie kliknij pozycję **Wybierz**. Należy ustawić liczbę jednostek dla warstwy **standardowa** .
    
-    ![Scale on Portal](./media/signalr-howto-scale/signalr-howto-scale.png)
+    ![Skalowanie w portalu](./media/signalr-howto-scale/signalr-howto-scale.png)
 
-4. Kliknij przycisk **Save** (Zapisz).
+4. Kliknij pozycję **Zapisz**.
 
-## <a name="scale-using-azure-cli"></a>Scale using Azure CLI
+## <a name="scale-using-azure-cli"></a>Skalowanie przy użyciu interfejsu wiersza polecenia platformy Azure
 
-This script creates a new SignalR Service resource of **Free** Tier and a new resource group, and scale it up to **Standard** Tier. 
+Ten skrypt tworzy nowy zasób usługi sygnalizującego dla warstwy **bezpłatna** i nowej grupy zasobów, a następnie skaluje go do warstwy **standardowa** . 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -77,17 +77,17 @@ Zanotuj rzeczywistą nazwę wygenerowaną dla nowej grupy zasobów. Tej nazwy gr
 
 [!INCLUDE [cli-script-clean-up](../../includes/cli-script-clean-up.md)]
 
-## <a name="compare-pricing-tiers"></a>Compare pricing tiers
+## <a name="compare-pricing-tiers"></a>Porównaj warstwy cenowe
 
-For detailed information, such as included messages and connections for each pricing tier, see [SignalR Service Pricing Details](https://azure.microsoft.com/pricing/details/signalr-service/).
+Aby uzyskać szczegółowe informacje, takie jak uwzględnione komunikaty i połączenia dla każdej warstwy cenowej, zobacz [szczegóły cennika usługi sygnalizującego](https://azure.microsoft.com/pricing/details/signalr-service/).
 
-For a table of service limits, quotas, and constraints in each tier, see [SignalR Service limits](../azure-subscription-service-limits.md#azure-signalr-service-limits).
+Aby zapoznać się z tabelą limity usług, przydziałów i ograniczeń w poszczególnych warstwach, zobacz [limity usługi sygnałów](../azure-subscription-service-limits.md#azure-signalr-service-limits).
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this guide, you learned about how to scale single SignalR Service instance.
+W tym przewodniku zawarto informacje na temat skalowania wystąpienia usługi pojedynczej sygnalizacji.
 
-Multiple endpoints are also supported for scaling, sharding and cross-region scenarios.
+Obsługa wielu punktów końcowych jest także obsługiwana w scenariuszach skalowania, fragmentowania i między regionami.
 
 > [!div class="nextstepaction"]
-> [scale SignalR Service with multiple instances](./signalr-howto-scale-multi-instances.md)
+> [Usługa sygnalizująca skalowanie z wieloma wystąpieniami](./signalr-howto-scale-multi-instances.md)

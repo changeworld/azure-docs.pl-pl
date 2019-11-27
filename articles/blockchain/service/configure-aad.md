@@ -1,6 +1,6 @@
 ---
-title: Configure Azure Active Directory access - Azure Blockchain Service
-description: How to configure Azure Blockchain Service with Azure Active Directory access
+title: Konfigurowanie dostępu Azure Active Directory — usługa Azure łańcucha bloków
+description: Jak skonfigurować usługę Azure łańcucha bloków z dostępem Azure Active Directory
 ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
@@ -11,77 +11,77 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455842"
 ---
-# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>How to configure Azure Active Directory access for Azure Blockchain Service
+# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Jak skonfigurować Azure Active Directory dostępu do usługi Azure łańcucha bloków Service
 
-In this article, you learn how to grant access and connect to Azure Blockchain Service nodes using Azure Active Directory (Azure AD) user, group, or application IDs.
+W tym artykule dowiesz się, jak udzielić dostępu i nawiązać połączenie z węzłami usługi Azure łańcucha bloków za pomocą identyfikatorów użytkowników, grup i aplikacji Azure Active Directory (Azure AD).
 
-Azure AD provides cloud-based identity management and allows you to use a single identity across an entire enterprise and access applications in Azure. Azure Blockchain Service is integrated with Azure AD and offers benefits such as ID federation, single sign-on and multi-factor authentication.
+Usługa Azure AD zapewnia oparte na chmurze zarządzanie tożsamościami i umożliwia korzystanie z jednej tożsamości w całym przedsiębiorstwie i uzyskiwanie dostępu do aplikacji na platformie Azure. Usługa Azure łańcucha bloków Service jest zintegrowana z usługą Azure AD i oferuje korzyści, takie jak Federacja identyfikatorów, logowanie jednokrotne i uwierzytelnianie wieloskładnikowe.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Create a blockchain member using the Azure portal](create-member.md)
+* [Tworzenie składowej łańcucha bloków przy użyciu Azure Portal](create-member.md)
 
 ## <a name="grant-access"></a>Udzielanie dostępu
 
-You can grant access at both the member level and the node level. Granting access rights at the member level will in turn grant access to all nodes under the member.
+Można udzielić dostępu zarówno na poziomie elementu członkowskiego, jak i na poziomie węzła. Przyznanie praw dostępu na poziomie elementu członkowskiego spowoduje przyznanie dostępu wszystkim węzłom w ramach elementu członkowskiego.
 
-### <a name="grant-member-level-access"></a>Grant member level access
+### <a name="grant-member-level-access"></a>Przyznaj dostęp na poziomie elementu członkowskiego
 
-To grant access permission at the member level.
+Aby udzielić uprawnienia dostępu na poziomie elementu członkowskiego.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. Navigate to **Access control (IAM) > Add > Add role assignment**.
-1. Select the **Blockchain Member Node Access (Preview)** role and add the Azure AD ID object you wish to grant access to. Azure AD ID object can be:
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Przejdź do **kontroli dostępu (IAM) > dodaj > Dodaj przypisanie roli**.
+1. Wybierz rolę **łańcucha bloków dostęp do węzła członkowskiego (wersja zapoznawcza)** i Dodaj obiekt usługi Azure AD ID, do którego chcesz udzielić dostępu. IDENTYFIKATORem obiektu usługi Azure AD może być:
 
-    | Azure AD object | Przykład |
+    | Obiekt usługi Azure AD | Przykład |
     |-----------------|---------|
-    | Azure AD user   | `kim@contoso.onmicrosoft.com` |
-    | Azure AD group  | `sales@contoso.onmicrosoft.com` |
+    | Użytkownik usługi Azure AD   | `kim@contoso.onmicrosoft.com` |
+    | Grupa usługi Azure AD  | `sales@contoso.onmicrosoft.com` |
     | Identyfikator aplikacji  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 
-    ![Add role assignment](./media/configure-aad/add-role-assignment.png)
+    ![Dodaj przypisanie roli](./media/configure-aad/add-role-assignment.png)
 
 1. Wybierz pozycję **Zapisz**.
 
-### <a name="grant-node-level-access"></a>Grant node level access
+### <a name="grant-node-level-access"></a>Udzielanie dostępu na poziomie węzła
 
-You can grant access at the node level by navigating to node security and click on the node name that you wish to grant access.
+Możesz udzielić dostępu na poziomie węzła, przechodząc do węzła zabezpieczenia i klikając nazwę węzła, do którego chcesz udzielić dostępu.
 
-Select the Blockchain Member Node Access (Preview) role and add the Azure AD ID object you wish to grant access to.
+Wybierz rolę łańcucha bloków dostęp do węzła członkowskiego (wersja zapoznawcza) i Dodaj obiekt usługi Azure AD ID, do którego chcesz udzielić dostępu.
 
-For more information, see [Configure Azure Blockchain Service transaction nodes](configure-transaction-nodes.md#azure-active-directory-access-control).
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie węzłów transakcji usługi Azure łańcucha bloków](configure-transaction-nodes.md#azure-active-directory-access-control).
 
-## <a name="connect-using-azure-blockchain-connector"></a>Connect using Azure Blockchain Connector
+## <a name="connect-using-azure-blockchain-connector"></a>Nawiązywanie połączenia przy użyciu łącznika usługi Azure łańcucha bloków
 
-Download or clone the [Azure Blockchain Connector from GitHub](https://github.com/Microsoft/azure-blockchain-connector/).
+Pobierz lub Sklonuj [Łącznik usługi Azure łańcucha bloków z witryny GitHub](https://github.com/Microsoft/azure-blockchain-connector/).
 
 ```bash
 git clone https://github.com/Microsoft/azure-blockchain-connector.git
 ```
 
-The follow the quickstart section in the **readme** to build the connector from the source code.
+Postępuj zgodnie z sekcją szybkiego startu w **pliku Readme** , aby skompilować łącznik z kodu źródłowego.
 
-### <a name="connect-using-an-azure-ad-user-account"></a>Connect using an Azure AD user account
+### <a name="connect-using-an-azure-ad-user-account"></a>Nawiązywanie połączenia przy użyciu konta użytkownika usługi Azure AD
 
-1. Run the following command to authenticate using an Azure AD user account. Replace \<myAADDirectory\> with an Azure AD domain. Na przykład `yourdomain.onmicrosoft.com`.
+1. Uruchom następujące polecenie, aby uwierzytelnić się przy użyciu konta użytkownika usługi Azure AD. Zastąp \<myAADDirectory\> domeną usługi Azure AD. Na przykład `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
     ```
 
-1. Azure AD prompts for credentials.
-1. Sign in with your user name and password.
-1. Upon successful authentication, your local proxy connects to your blockchain node. You can now attach your Geth client with the local endpoint.
+1. Usługa Azure AD będzie monitował o poświadczenia.
+1. Zaloguj się przy użyciu nazwy użytkownika i hasła.
+1. Po pomyślnym uwierzytelnieniu lokalny serwer proxy nawiązuje połączenie z węzłem łańcucha bloków. Teraz możesz dołączyć klienta Geth z lokalnym punktem końcowym.
 
     ```bash
     geth attach http://127.0.0.1:3100
     ```
 
-### <a name="connect-using-an-application-id"></a>Connect using an application ID
+### <a name="connect-using-an-application-id"></a>Nawiązywanie połączenia przy użyciu identyfikatora aplikacji
 
-Many applications authenticate with Azure AD using an application ID instead of an Azure AD user account.
+Wiele aplikacji jest uwierzytelnianych za pomocą usługi Azure AD przy użyciu identyfikatora aplikacji zamiast konta użytkownika usługi Azure AD.
 
-To connect to your node using an application ID, replace **aadauthcode** with **aadclient**.
+Aby nawiązać połączenie z węzłem przy użyciu identyfikatora aplikacji, Zastąp **aadauthcode** z **aadclient**.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -89,17 +89,17 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | Parametr | Opis |
 |-----------|-------------|
-| tenant-id | Azure AD domain, For example, `yourdomain.onmicrosoft.com`
-| client-id | Client ID of the registered application in Azure AD
-| client-secret | Client secret of the registered application in Azure AD
+| Identyfikator dzierżawy | Na przykład domena usługi Azure AD, `yourdomain.onmicrosoft.com`
+| Identyfikator klienta | Identyfikator klienta zarejestrowanej aplikacji w usłudze Azure AD
+| client-secret | Klucz tajny klienta zarejestrowanej aplikacji w usłudze Azure AD
 
-For more information on how to register an application in Azure AD, see [How to: Use the portal to create an Azure AD application and service principal that can access resources](../../active-directory/develop/howto-create-service-principal-portal.md)
+Aby uzyskać więcej informacji na temat rejestrowania aplikacji w usłudze Azure AD, zobacz [How to: Use the Portal to the Azure AD role and Service Principal, która może uzyskiwać dostęp do zasobów](../../active-directory/develop/howto-create-service-principal-portal.md)
 
-### <a name="connect-a-mobile-device-or-text-browser"></a>Connect a mobile device or text browser
+### <a name="connect-a-mobile-device-or-text-browser"></a>Podłączanie urządzenia przenośnego lub przeglądarki tekstu
 
-For a mobile device or text-based browser where the Azure AD authentication pop-up display is not possible, Azure AD generates a one-time passcode. You can copy the passcode and proceed with Azure AD authentication in another environment.
+W przypadku urządzenia przenośnego lub przeglądarki opartej na tekście, w której nie można wyświetlić okna podręcznego uwierzytelniania usługi Azure AD, usługa Azure AD generuje jednorazowy kod dostępu. Możesz skopiować kod dostępu i kontynuować uwierzytelnianie usługi Azure AD w innym środowisku.
 
-To generate the passcode, replace **aadauthcode** with **aaddevice**. Replace \<myAADDirectory\> with an Azure AD domain. Na przykład `yourdomain.onmicrosoft.com`.
+Aby wygenerować kod dostępu, Zastąp **aadauthcode** z **aaddevice**. Zastąp \<myAADDirectory\> domeną usługi Azure AD. Na przykład `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
@@ -107,4 +107,4 @@ connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAA
 
 ## <a name="next-steps"></a>Następne kroki
 
-For more information about data security in Azure Blockchain Service, see [Azure Blockchain Service security](data-security.md).
+Aby uzyskać więcej informacji o zabezpieczeniach danych w usłudze Azure łańcucha bloków Service, zobacz [zabezpieczenia usługi Azure łańcucha bloków](data-security.md).

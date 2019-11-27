@@ -1,5 +1,5 @@
 ---
-title: Decomposable entity tutorial links
+title: Linki do samouczka jednostek, które należy złożyć
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -14,9 +14,9 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383686"
 ---
-To take advantage of [decomposable concepts](../luis-concept-model.md#v3-authoring-model-decomposition), start with the machine-learned entity. Follow the [machine-learned entity tutorial](../tutorial-machine-learned-entity.md) for steps on how to create this type of entity including examples of:
+Aby skorzystać z możliwości tworzenia [koncepcji](../luis-concept-model.md#v3-authoring-model-decomposition), Zacznij od jednostki, która jest pouczenia maszynowego. Postępuj zgodnie z [samouczkiem](../tutorial-machine-learned-entity.md) dotyczącym jednostki, aby poznać procedurę tworzenia tego typu jednostki, w tym przykłady:
 
-* [Create and label machine-learned entity](../tutorial-machine-learned-entity.md#label-text-as-entities-in-example-utterances) with structure and a descriptor (phrase list) from example utterance on **Intent detail page**
-* [Add prebuilt number entity](../tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data) from the **Entities list page**.
-* [Add subcomponent entity with constraint](../tutorial-machine-learned-entity.md#create-subcomponent-entity-with-constraint-to-help-extract-data) from the **Entity detail page**.
-* [Label example utterance with subcomponent](../tutorial-machine-learned-entity.md#label-example-utterance-to-teach-luis-about-the-entity) on **Intent detail page**
+* [Utwórz i Oznacz jednostkę, która jest poznania maszynowego](../tutorial-machine-learned-entity.md#label-text-as-entities-in-example-utterances) ze strukturą i deskryptorem (listą fraz) z przykładu wypowiedź na **stronie szczegółów intencji**
+* [Dodaj wstępnie utworzoną jednostkę Number](../tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data) na **stronie listy jednostek**.
+* [Dodaj jednostkę podskładniku z ograniczeniami](../tutorial-machine-learned-entity.md#create-subcomponent-entity-with-constraint-to-help-extract-data) ze **strony szczegółów jednostki**.
+* [Etykieta przykład wypowiedź z podskładnikem](../tutorial-machine-learned-entity.md#label-example-utterance-to-teach-luis-about-the-entity) na **stronie szczegółów zamiaru**

@@ -104,7 +104,7 @@ Przed przywróceniem bazy danych należy zwrócić uwagę na następujące kwest
 > Przywracanie kontenerów pojedyncza baza danych (SDC) musi być zgodne z tymi [sprawdzeniami](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore).
 
 * Jeśli ma to zastosowanie, wybierz opcję **Zastąp, jeśli baza danych o takiej samej nazwie już istnieje w wybranym wystąpieniu platformy Hana**.
-* Wybierz **OK**.
+* Kliknij przycisk **OK**.
 
 ![Przywracanie konfiguracji — Ekran końcowy](media/sap-hana-db-restore/restore-configuration-last.png)
 

@@ -1,14 +1,14 @@
 ---
-title: Przykłady usługi CIS Microsoft Azure przykładowe zaleceń planu porównawczego
+title: Przykłady zakrytych w usłudze CIS Microsoft Azure przykładowe kontrolki testu
 description: Rekomendacja zaleceń usługi CIS Microsoft Azure przykłady planów testów porównawczych do Azure Policy.
 ms.date: 10/01/2019
 ms.topic: sample
-ms.openlocfilehash: 7974a5f9e5ccca41cdaa838cf05e3861dbae1b8d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 55abac9f7479f0ee7d1adddea64cb81a1c7cf2b5
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038425"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544544"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Rekomendacja zaleceń przykładowego planu testów usługi CIS Microsoft Azure
 

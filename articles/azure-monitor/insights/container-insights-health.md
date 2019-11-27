@@ -76,9 +76,9 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Wyświetlanie kondycji klastra AKS lub innego niż AKS
 
-Dostęp do Azure Monitor funkcji kondycji kontenerów (wersja zapoznawcza) jest dostępny bezpośrednio w klastrze AKS, wybierając pozycję **szczegółowe** dane w okienku po lewej stronie Azure Portal. W obszarze **Insights** zaznacz **kontenery**. 
+Dostęp do Azure Monitor funkcji kondycji kontenerów (wersja zapoznawcza) jest dostępny bezpośrednio w klastrze AKS, wybierając pozycję **szczegółowe** dane w okienku po lewej stronie Azure Portal. W sekcji **szczegółowe informacje** wybierz pozycję **kontenery**. 
 
-Aby wyświetlić kondycję z klastra AKS, czyli klastra aparatu AKS hostowanego lokalnie lub na Azure Stack, wybierz pozycję **Azure monitor** w lewym okienku w Azure Portal. W obszarze **Insights** zaznacz **kontenery**.  Na stronie wiele klastrów wybierz klaster spoza AKS z listy.
+Aby wyświetlić kondycję z klastra AKS, czyli klastra aparatu AKS hostowanego lokalnie lub na Azure Stack, wybierz pozycję **Azure monitor** w lewym okienku w Azure Portal. W sekcji **szczegółowe informacje** wybierz pozycję **kontenery**.  Na stronie wiele klastrów wybierz klaster spoza AKS z listy.
 
 W Azure Monitor dla kontenerów na stronie **klaster** wybierz pozycję **kondycja**.
 

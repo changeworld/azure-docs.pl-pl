@@ -1,14 +1,14 @@
 ---
-title: Przykład planu IRS 1075 — kroki wdrażania
+title: Przykład wdrażania planu IRS 1075
 description: Wdróż kroki dla przykładowego planu IRS 1075 (Rev. 11-2016), w tym szczegóły parametru artefaktu.
 ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: 033d4b38b7ccaf4d187615ec1df48c200fe5e683
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 15fcac5bfd11d889522d078853bd6f916eb54616
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279501"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546816"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Wdróż przykład planu IRS 1075
 

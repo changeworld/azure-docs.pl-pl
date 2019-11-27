@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842659"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546272"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurowanie ograniczonego delegowania protokołu Kerberos (KCD) w Azure Active Directory Domain Services
 
 Podczas uruchamiania aplikacji może być konieczne, aby te aplikacje miały dostęp do zasobów w kontekście innego użytkownika. Active Directory Domain Services (AD DS) obsługuje mechanizm o nazwie *delegowanie protokołu Kerberos* , który umożliwia użycie tego przypadku. *Ograniczone* delegowanie protokołu Kerberos (KCD) następnie kompiluje ten mechanizm w celu zdefiniowania określonych zasobów, do których można uzyskać dostęp w kontekście użytkownika. Domeny zarządzane Azure Active Directory Domain Services (Azure AD DS) są bezpiecznie zablokowane w tradycyjnych lokalnych środowiskach AD DS, dlatego należy używać bezpieczniejszego KCD *opartego na zasobach* .
 
-W tym artykule opisano sposób konfigurowania ograniczonego delegowania zasobów basd Kerberos w domenie zarządzanej AD DS platformy Azure.
+W tym artykule opisano sposób konfigurowania ograniczonego delegowania protokołu Kerberos opartego na zasobach w domenie zarządzanej AD DS platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,7 +42,9 @@ Aby wykonać ten artykuł, potrzebne są następujące zasoby:
 
 Delegowanie protokołu Kerberos pozwala jednemu kontu personifikować inne konto, aby uzyskać dostęp do zasobów. Na przykład aplikacja sieci Web, która uzyskuje dostęp do składnika sieci Web zaplecza, może personifikować się jako inne konto użytkownika podczas tworzenia połączenia zaplecza. Delegowanie protokołu Kerberos jest niezabezpieczone, ponieważ nie ogranicza to zasobów, do których konto personifikuje może uzyskać dostęp.
 
-Ograniczone delegowanie protokołu Kerberos (KCD) ogranicza usługi lub zasoby, które mogą łączyć się z określonym serwerem lub aplikacją podczas personifikowania innej tożsamości. Tradycyjna KCD wymaga uprawnień administratora domeny do skonfigurowania konta domeny dla usługi i ogranicza konto do działania w jednej domenie. Tradycyjna KCD również zawiera kilka problemów. Na przykład we wcześniejszych systemach operacyjnych administrator usługi nie miał użytecznych metod, aby wiedzieć, które usługi frontonu są delegowane do usługi zasobów, do których należą. Dowolna usługa frontonu, która może delegować do usługi zasobów, jest potencjalnym punktem ataku. W przypadku naruszenia bezpieczeństwa serwera, na którym jest hostowana usługa frontonu skonfigurowana do delegowania usług zasobów, można także złamać zabezpieczenia usług zasobów.
+Ograniczone delegowanie protokołu Kerberos (KCD) ogranicza usługi lub zasoby, które mogą łączyć się z określonym serwerem lub aplikacją podczas personifikowania innej tożsamości. Tradycyjna KCD wymaga uprawnień administratora domeny do skonfigurowania konta domeny dla usługi i ogranicza konto do działania w jednej domenie.
+
+Tradycyjna KCD również zawiera kilka problemów. Na przykład we wcześniejszych systemach operacyjnych administrator usługi nie miał użytecznych metod, aby wiedzieć, które usługi frontonu są delegowane do usługi zasobów, do których należą. Dowolna usługa frontonu, która może delegować do usługi zasobów, jest potencjalnym punktem ataku. W przypadku naruszenia bezpieczeństwa serwera, na którym jest hostowana usługa frontonu skonfigurowana do delegowania usług zasobów, można także złamać zabezpieczenia usług zasobów.
 
 W domenie zarządzanej AD DS platformy Azure nie masz uprawnień administratora domeny. W związku z tym tradycyjne KCD oparte na koncie nie można skonfigurować na platformie Azure AD DS domenie zarządzanej. Zamiast tego można korzystać z KCD opartego na zasobach, co jest również bezpieczniejsze.
 

@@ -154,7 +154,7 @@ Zapoznaj się z wymaganiami dotyczącymi migracji maszyn wirtualnych VMware [na 
 4. Zwróć uwagę na [dostęp do adresu URL](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements).
 5. Przejrzyj [dostęp do portów](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements) , który Azure Migrate składników potrzebnych do dostępu opartego na agentach.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
 

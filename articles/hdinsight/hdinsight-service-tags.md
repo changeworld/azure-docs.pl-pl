@@ -110,7 +110,7 @@ Klastry w regionach **US gov Iowa** i **US gov Wirginia**muszą zezwalać na dwi
 
 Klastry w regionach **Niemiec środkowe** i **Niemcy**Wschodnie muszą zezwalać na dwie znaczniki usługi: `HDInsight.GermanyCentral` i `HDInsight.GermanyNorthEast`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Sieciowe grupy zabezpieczeń — Tagi usług](../virtual-network/security-overview.md#security-rules)
 * [Tworzenie sieci wirtualnych dla klastrów usługi Azure HDInsight](hdinsight-create-virtual-network.md)

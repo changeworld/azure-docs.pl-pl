@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.author: cabailey
-ms.openlocfilehash: d1d048507946850192c1c6f8ca9024c6f9ddf8ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515124"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546862"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Wykrywanie zagrożeń przy użyciu transmisję strumieniową łowiectwa w wskaźniku platformy Azure
 
 > [!IMPORTANT]
-> W publicznej wersji zapoznawczej transmisję strumieniową łowiectwo na platformie Azure.
+> Łowiectwo transmisję strumieniową na platformie Azure — obecnie znajduje się w publicznej wersji zapoznawczej i stopniowo wprowadza do dzierżawców.
 > Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
@@ -63,7 +63,7 @@ Sesję transmisję strumieniową można utworzyć na podstawie istniejącego zap
     1. Wybierz kartę **transmisję strumieniową**
     2. Wybierz pozycję **Przejdź do transmisję strumieniową**.
     
-4. W bloku **transmisję strumieniową** :
+4. W okienku **transmisję strumieniową** :
     
     - Jeśli rozpoczęto transmisję strumieniową z zapytania, przejrzyj zapytanie i wprowadź wszelkie zmiany, które chcesz wprowadzić.
     - Jeśli rozpoczęto transmisję strumieniową od podstaw, Utwórz zapytanie. 
@@ -96,7 +96,7 @@ Ponieważ powiadomienia transmisję strumieniową o nowych zdarzeniach używają
 
 ![Powiadomienie Azure Portal dla transmisję strumieniową](./media/livestream/notification.png)
 
-Wybierz powiadomienie, aby otworzyć blok **transmisję strumieniową** .
+Wybierz powiadomienie, aby otworzyć okienko **transmisję strumieniową** .
  
 ## <a name="elevate-a-livestream-session-to-an-alert"></a>Podnieś poziom sesji transmisję strumieniową do alertu
 

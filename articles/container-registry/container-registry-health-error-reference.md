@@ -1,6 +1,6 @@
 ---
-title: Error reference for health checks
-description: Error codes and possible solutions to problems found by running the az acr check-health diagnostic command in Azure Container Registry
+title: Informacje o błędzie dotyczące kontroli kondycji
+description: Kody błędów i możliwe rozwiązania problemów odnalezionych przez uruchomienie polecenia AZ ACR Check-Health Diagnostic w Azure Container Registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: a921d17ad7d01b134f5bfa33a1d9a768d3ea94df
@@ -10,99 +10,99 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455033"
 ---
-# <a name="health-check-error-reference"></a>Health check error reference
+# <a name="health-check-error-reference"></a>Informacje o błędach sprawdzania kondycji
 
-Following are details about error codes returned by the [az acr check-health][az-acr-check-health] command. For each error, possible solutions are listed.
+Poniżej znajdują się szczegółowe informacje o kodach błędów zwracanych przez polecenie [AZ ACR Check-Health][az-acr-check-health] . Dla każdego błędu są wyświetlane możliwe rozwiązania.
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
-This error means that Docker client for CLI could not be found. As a result, the following additional checks are not run: finding Docker version, evaluating Docker daemon status, and running a Docker pull command.
+Ten błąd oznacza, że nie można odnaleźć klienta platformy Docker dla interfejsu wiersza polecenia. W związku z tym następujące dodatkowe kontrole nie są uruchamiane: znajdowania wersji platformy Docker, oceniania stanu demona platformy Docker i uruchamiania polecenia Docker pull.
 
-*Potential solutions*: Install Docker client; add Docker path to the system variables.
+*Potencjalne rozwiązania*: Zainstaluj klienta platformy Docker; Dodaj ścieżkę Docker do zmiennych systemowych.
 
 ## <a name="docker_daemon_error"></a>DOCKER_DAEMON_ERROR
 
-This error means that the Docker daemon status is unavailable, or that it could not be reached using the CLI. As a result, Docker operations (such as `docker login` and `docker pull`) are unavailable through the CLI.
+Ten błąd oznacza, że stan demona platformy Docker jest niedostępny lub nie można go osiągnąć przy użyciu interfejsu wiersza polecenia. W efekcie operacje platformy Docker (takie jak `docker login` i `docker pull`) nie są dostępne za pomocą interfejsu wiersza polecenia.
 
-*Potential solutions*: Restart Docker daemon, or validate that it is properly installed.
+*Potencjalne rozwiązania*: ponownie uruchom demona platformy Docker lub sprawdź, czy jest ona prawidłowo zainstalowana.
 
 ## <a name="docker_version_error"></a>DOCKER_VERSION_ERROR
 
-This error means that CLI was not able to run the command `docker --version`.
+Ten błąd oznacza, że nie można uruchomić polecenia `docker --version`.
 
-*Potential solutions*: Try running the command manually, make sure you have the latest CLI version, and investigate the error message.
+*Potencjalne rozwiązania*: Spróbuj uruchomić polecenie ręcznie, upewnij się, że masz najnowszą wersję interfejsu wiersza polecenia i Sprawdź komunikat o błędzie.
 
 ## <a name="docker_pull_error"></a>DOCKER_PULL_ERROR
 
-This error means that the CLI was not able to pull a sample image to your environment.
+Ten błąd oznacza, że interfejs wiersza polecenia nie może ściągnąć przykładowego obrazu do środowiska.
 
-*Potential solutions*: Validate that all components necessary to pull an image are running properly.
+*Potencjalne rozwiązania*: Sprawdź, czy wszystkie składniki niezbędne do ściągnięcia obrazu działają prawidłowo.
 
 ## <a name="helm_command_error"></a>HELM_COMMAND_ERROR
 
-This error means that Helm client could not be found by the CLI, which precludes other Helm operations.
+Ten błąd oznacza, że nie można odnaleźć klienta Helm za pomocą interfejsu wiersza polecenia, co uniemożliwia wykonywanie innych operacji Helm.
 
-*Potential solutions*: Verify that Helm client is installed, and that its path is added to the system environment variables.
+*Potencjalne rozwiązania*: Upewnij się, że jest zainstalowany klient Helm i że jego ścieżka jest dodawana do systemowych zmiennych środowiskowych.
 
 ## <a name="helm_version_error"></a>HELM_VERSION_ERROR
 
-This error means that the CLI was unable to determine the Helm version installed. This can happen if the Azure CLI version (or if the Helm version) being used is obsolete.
+Ten błąd oznacza, że interfejs wiersza polecenia nie może określić zainstalowanej wersji programu Helm. Taka sytuacja może wystąpić, jeśli używana wersja interfejsu wiersza polecenia platformy Azure (lub wersja Helm) jest przestarzała.
 
-*Potential solutions*: Update to the latest Azure CLI version or to the recommended Helm version; run the command manually and investigate the error message.
+*Potencjalne rozwiązania*: zaktualizuj do najnowszej wersji interfejsu wiersza polecenia platformy Azure lub zalecaną wersję Helm; Uruchom polecenie ręcznie i Sprawdź komunikat o błędzie.
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 
-This error means that the DNS for the given registry login server was pinged but did not respond, which means it is unavailable. This can indicate some connectivity issues. Alternatively, the registry might not exist, the user might not have the permissions on the registry (to retrieve its login server properly), or the target registry is in a different cloud than the one used in the Azure CLI.
+Ten błąd oznacza, że serwer DNS dla danego serwera logowania rejestru został wysłany za pomocą polecenia ping, ale nie odpowiedział, co oznacza, że jest niedostępny. Może to wskazywać na problemy z łącznością. Alternatywnie rejestr może nie istnieć, użytkownik może nie mieć uprawnień do rejestru (w celu poprawnego pobrania serwera logowania) lub rejestr docelowy znajduje się w innej chmurze niż używany w interfejsie wiersza polecenia platformy Azure.
 
-*Potential solutions*: Validate connectivity; verify spelling of the registry, and that registry exists; verify that the user has the right permissions on it and that the registry's cloud is the same that is used in the Azure CLI.
+*Potencjalne rozwiązania*: Sprawdź poprawność łączności; Sprawdź pisownię rejestru i czy rejestr istnieje; Sprawdź, czy użytkownik ma odpowiednie uprawnienia i czy chmura rejestru jest taka sama, która jest używana w interfejsie wiersza polecenia platformy Azure.
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-This error means that the challenge endpoint for the given registry responded with a 403 Forbidden HTTP status. This error means that users don't have access to the registry, most likely because of a virtual network configuration. To see the currently configured firewall rules, run `az acr show --query networkRuleSet --name <registry>`.
+Ten błąd oznacza, że punkt końcowy wyzwania dla danego rejestru odpowiedział z niedozwolonym stanem HTTP 403. Ten błąd oznacza, że użytkownicy nie mają dostępu do rejestru, najprawdopodobniej ze względu na konfigurację sieci wirtualnej. Aby wyświetlić aktualnie skonfigurowane reguły zapory, uruchom `az acr show --query networkRuleSet --name <registry>`.
 
-*Potential solutions*: Remove virtual network rules, or add the current client IP address to the allowed list.
+*Potencjalne rozwiązania*: Usuń reguły sieci wirtualnej lub Dodaj bieżący adres IP klienta do listy dozwolonych.
 
 ## <a name="connectivity_challenge_error"></a>CONNECTIVITY_CHALLENGE_ERROR
 
-This error means that the challenge endpoint of the target registry did not issue a challenge.
+Ten błąd oznacza, że punkt końcowy wyzwania rejestru docelowego nie wystawia wyzwania.
 
-*Potential solutions*: Try again after some time. If the error persists, open an issue at https://aka.ms/acr/issues.
+*Potencjalne rozwiązania*: spróbuj ponownie za jakiś czas. Jeśli błąd będzie się powtarzać, Otwórz problem w https://aka.ms/acr/issues.
 
 ## <a name="connectivity_aad_login_error"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
-This error means that the challenge endpoint of the target registry issued a challenge, but the registry does not support Azure Active Directory authentication.
+Ten błąd oznacza, że punkt końcowy wyzwania rejestru docelowego wygenerował wyzwanie, ale rejestr nie obsługuje uwierzytelniania Azure Active Directory.
 
-*Potential solutions*: Try a different way to authenticate, for example, with admin credentials. If users need  to authenticate using Azure Active Directory, open an issue at https://aka.ms/acr/issues.
+*Potencjalne rozwiązania*: wypróbuj inny sposób uwierzytelniania, na przykład z poświadczeniami administratora. Jeśli użytkownicy muszą uwierzytelniać się przy użyciu Azure Active Directory, należy otworzyć problem w https://aka.ms/acr/issues.
 
 ## <a name="connectivity_refresh_token_error"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
-This error means that the registry login server did not respond with a refresh token, so access to the target registry was denied. This error can occur if the user does not have the right permissions on the registry or if the user credentials for the  Azure CLI are stale.
+Ten błąd oznacza, że serwer logowania rejestru nie odpowiedział z tokenem odświeżania, więc odmowa dostępu do docelowego rejestru. Ten błąd może wystąpić, jeśli użytkownik nie ma odpowiednich uprawnień do rejestru lub jeśli poświadczenia użytkownika dla interfejsu wiersza polecenia platformy Azure są przestarzałe.
 
-*Potential solutions*: Verify if the user has the right permissions on the registry; run `az login` to refresh permissions, tokens, and credentials.
+*Potencjalne rozwiązania*: Sprawdź, czy użytkownik ma odpowiednie uprawnienia do rejestru; Uruchom `az login`, aby odświeżyć uprawnienia, tokeny i poświadczenia.
 
 ## <a name="connectivity_access_token_error"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
-This error means that the registry login server did not respond with an access token, so that the access to the target registry was denied. This error can occur if the user does not have the right permissions on the registry or if the user credentials for the Azure CLI are stale.
+Ten błąd oznacza, że serwer logowania do rejestru nie odpowiedział z tokenem dostępu, aby uzyskać dostęp do docelowego rejestru. Ten błąd może wystąpić, jeśli użytkownik nie ma odpowiednich uprawnień do rejestru lub jeśli poświadczenia użytkownika dla interfejsu wiersza polecenia platformy Azure są przestarzałe.
 
-*Potential solutions*: Verify if the user has the right permissions on the registry; run `az login` to refresh permissions, tokens, and credentials.
+*Potencjalne rozwiązania*: Sprawdź, czy użytkownik ma odpowiednie uprawnienia do rejestru; Uruchom `az login`, aby odświeżyć uprawnienia, tokeny i poświadczenia.
 
 ## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
 
-This error means that the client was unable to establish a secure connection to the container registry. This error generally occurs if you're running or using a proxy server.
+Ten błąd oznacza, że klient nie mógł nawiązać bezpiecznego połączenia z rejestrem kontenerów. Ten błąd występuje na ogół w przypadku korzystania z serwera proxy lub korzystania z niego.
 
-*Potential solutions*: More information on working behind a proxy can be [found here](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
+*Potencjalne rozwiązania*: więcej informacji na temat pracy za serwerem proxy można [znaleźć tutaj](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 
-This error means that the CLI was unable to find the login server of the given registry, and no default suffix was found for the current cloud. This error can occur if the registry does not exist, if the user does not have the right permissions on the registry, if the registry's cloud and the current Azure CLI cloud do not match, or if the Azure CLI version is obsolete.
+Ten błąd oznacza, że interfejs wiersza polecenia nie może znaleźć serwera logowania danego rejestru i nie znaleziono domyślnego sufiksu dla bieżącej chmury. Ten błąd może wystąpić, jeśli rejestr nie istnieje, jeśli użytkownik nie ma odpowiednich uprawnień do rejestru, jeśli chmura rejestru i bieżąca chmura interfejsu wiersza polecenia platformy Azure nie są zgodne lub jeśli wersja interfejsu wiersza polecenia platformy Azure jest przestarzała.
 
-*Potential solutions*: Verify that the spelling is correct and that the registry exists; verify that user has the right permissions on the registry, and that the clouds of the registry and the CLI environment match; update Azure CLI to the latest version.
+*Potencjalne rozwiązania*: Sprawdź, czy pisownia jest poprawna i czy rejestr istnieje; Upewnij się, że użytkownik ma odpowiednie uprawnienia do rejestru oraz że chmury rejestru i środowiska interfejsu wiersza polecenia pasują do siebie. Zaktualizuj interfejs wiersza polecenia platformy Azure do najnowszej wersji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-For options to check the health of a registry, see [Check the health of an Azure container registry](container-registry-check-health.md).
+Aby sprawdzić kondycję rejestru, zobacz [Sprawdzanie kondycji usługi Azure Container Registry](container-registry-check-health.md).
 
-See the [FAQ](container-registry-faq.md) for frequently asked questions and other known issues about Azure Container Registry.
+Zapoznaj się z [często](container-registry-faq.md) zadawanymi pytaniami i innymi znanymi problemami dotyczącymi Azure Container Registry.
 
 
 

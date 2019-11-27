@@ -34,7 +34,7 @@ Security Center analiza warstwy sieciowej opiera się na przykładowych [danych 
 
 > [!div class="mx-tableFixed"]
 
-|Zgłoś alert|Opis|
+|Alerty|Opis|
 |---|---|
 |**Podejrzane działanie wychodzącej sieci RDP**|Przykładowa analiza ruchu w sieci wykryła nietypową komunikację wychodzącą Remote Desktop Protocol (RDP) pochodzącą z zasobu we wdrożeniu. To działanie jest uznawane za nietypowe w przypadku tego środowiska. Może to wskazywać, że naruszono bezpieczeństwo zasobu i jest on teraz używany do pełnego ataku zewnętrznego punktu końcowego RDP. Ten typ działania może spowodować, że adres IP zostanie oflagowany jako złośliwy przez jednostki zewnętrzne.|
 |**Podejrzane działanie sieci wychodzącej RDP z wieloma lokalizacjami docelowymi**|Przykładowa analiza ruchu w sieci wykryła nietypową wychodzącą komunikację RDP, pochodzącą z zasobu we wdrożeniu do wielu miejsc docelowych. To działanie jest uznawane za nietypowe w przypadku tego środowiska. Może to wskazywać, że naruszono bezpieczeństwo zasobu i jest on teraz używany do pełnego wymuszania ataku zewnętrznych punktów końcowych RDP. Ten typ działania może spowodować, że adres IP zostanie oflagowany jako złośliwy przez jednostki zewnętrzne.|
@@ -60,14 +60,14 @@ Security Center oferuje dodatkową warstwę ochrony przy użyciu zdarzeń Azure 
 
 > [!div class="mx-tableFixed"]
 
-|Zgłoś alert|Opis|
+|Alerty|Opis|
 |---|---|
 |**Uruchomiono zestaw narzędzi mikroserii**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Mikroseria [](https://github.com/NetSPI/MicroBurst) narzędzi może być używana przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji, identyfikowania niezabezpieczonych konfiguracji i przecieku poufnych informacji.|
 |**Azurite zestaw narzędzi**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Narzędzie [azurite](https://github.com/mwrlabs/Azurite) może być używane przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji i identyfikowania niezabezpieczonych konfiguracji.|
 |**Podejrzana sesja zarządzania przy użyciu nieaktywnego konta**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który nie jest używany przez długi czas, wykonuje teraz akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|
 |**Podejrzana sesja zarządzania przy użyciu programu PowerShell**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który regularnie nie używa programu PowerShell do zarządzania środowiskiem subskrypcji, korzysta obecnie z programu PowerShell i wykonuje akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|
 |**Korzystanie z zaawansowanych technik trwałości platformy Azure**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Role niestandardowe otrzymały jednostki tożsamości legitimized. Może to spowodować, że osoba atakująca uzyska utrwalenie w środowisku klienta platformy Azure.|
-|**Aktywność z rzadko występującego kraju**|Wystąpiło działanie z lokalizacji, która nie była ostatnio lub kiedykolwiek odwiedzana przez dowolnego użytkownika w organizacji.<br/>Wykrywanie uwzględnia ostatnie lokalizacje działań do określenia lokalizacji nowych i rzadkie. Aparatu wykrywania anomalii są przechowywane informacje o powyższych lokalizacjach, które posługują się użytkownicy w organizacji. 
+|**Działanie z nieczęstego kraju**|Wystąpiło działanie z lokalizacji, która nie była ostatnio lub kiedykolwiek odwiedzana przez dowolnego użytkownika w organizacji.<br/>Wykrywanie uwzględnia ostatnie lokalizacje działań do określenia lokalizacji nowych i rzadkie. Aparatu wykrywania anomalii są przechowywane informacje o powyższych lokalizacjach, które posługują się użytkownicy w organizacji. 
 |**Aktywność z anonimowych adresów IP**|Wykryto aktywność użytkowników z adresu IP, który został zidentyfikowany jako anonimowy adres IP serwera proxy. <br/>Te serwery proxy są używane przez osoby, które chcą ukryć adres IP urządzenia i mogą być używane do złośliwego celu. Ta funkcja wykrywania używa algorytmu uczenia maszynowego, który zmniejsza liczbę fałszywych dodatnich, takich jak źle otagowane adresy IP, które są szeroko używane przez użytkowników w organizacji.|
 |**Wykryto niemożliwa podróż**|Wystąpiły dwa działania użytkownika (w jednej lub wielu sesjach) pochodzące z lokalizacji geograficznie odległej. Dzieje się tak w przedziale czasowym krótszym niż czas, przez który użytkownik mógł podróżować z pierwszej lokalizacji do drugiej. Oznacza to, że inny użytkownik korzysta z tych samych poświadczeń. <br/>Ta funkcja wykrywania używa algorytmu uczenia maszynowego, który ignoruje oczywistych fałszywych zwracanych wyników, takich jak sieci VPN i lokalizacje regularnie używane przez innych użytkowników w organizacji. Wykrycie ma początkowy okres uczenia wynoszący siedem dni, podczas którego nauczy się wzorca aktywności nowego użytkownika.|
 
@@ -94,7 +94,7 @@ W przypadku wystąpienia nietypowych działań Security Center wyświetla alerty
 
 > [!div class="mx-tableFixed"]
 
-|Zgłoś alert|Opis|
+|Alerty|Opis|
 |---|---|
 |**Dostęp z węzła wyjścia TOR do Key Vault**|Dostęp do Key Vault został uzyskany przez kogoś przy użyciu systemu zachowywanie anonimowości IP sieci w celu ukrycia ich lokalizacji. Złośliwe osoby często próbują ukryć swoje lokalizacje podczas próby uzyskania nieautoryzowanego dostępu do zasobów połączonych z Internetem.|
 |**Podejrzana zmiana zasad i tajne zapytanie w Key Vault**|Została wprowadzona zmiana zasad Key Vault, a następnie wystąpiły operacje wyświetlania i/lub pobierania wpisów tajnych. Ponadto ten wzorzec operacji nie jest zwykle wykonywany przez użytkownika w tym magazynie. Jest to wysoce wskaźnik, że zabezpieczenia Key Vault zostały naruszone i wpisy tajne w ramach programu zostały skradzione przez złośliwy aktor.|

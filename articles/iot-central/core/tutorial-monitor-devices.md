@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Monitor your devices in Azure IoT Central'
-description: 'Tutorial: As an operator, use your Azure IoT Central application to monitor your devices.'
+title: 'Samouczek: monitorowanie urządzeń w usłudze Azure IoT Central'
+description: 'Samouczek: jako operator Użyj aplikacji platformy Azure IoT Central do monitorowania urządzeń.'
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/13/2019
@@ -41,7 +41,7 @@ Przed rozpoczęciem konstruktor powinien ukończyć trzy samouczki przeznaczone 
 
 Usługa Azure IoT Central wysyła powiadomienia dotyczące urządzeń jako wiadomości e-mail. Konstruktor dodał regułę powodującą wysłanie powiadomienia, gdy temperatura połączonego klimatyzatora przekroczy wartość progową. Sprawdź wiadomości e-mail wysłane na konto wybrane przez konstruktora do odbierania powiadomień.
 
-Otwórz wiadomość e-mail odebraną na końcu samouczka [Konfigurowanie reguł i akcji dla urządzenia](tutorial-configure-rules.md). In the email, select the link to the device next to **Device Name** in the **Details** section:
+Otwórz wiadomość e-mail odebraną na końcu samouczka [Konfigurowanie reguł i akcji dla urządzenia](tutorial-configure-rules.md). W wiadomości e-mail wybierz link do urządzenia obok pozycji **Nazwa urządzenia** w sekcji **szczegóły** :
 
 ![Wiadomość e-mail z alertem](media/tutorial-monitor-devices/email.png)
 
@@ -57,7 +57,7 @@ Wybierz widok **Pulpit nawigacyjny**, aby wyświetlić informacje o urządzeniu.
 
 ![Pulpit nawigacyjny urządzenia](media/tutorial-monitor-devices/initial_screen.png)
 
-Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. You can also see the current target temperature for the device in the **Device properties** tile. Decydujesz, że temperatura docelowa jest zbyt wysoka.
+Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. Bieżącą temperaturę docelową urządzenia można także zobaczyć na kafelku **Właściwości urządzenia** . Decydujesz, że temperatura docelowa jest zbyt wysoka.
 
 ## <a name="remediate-an-issue"></a>Rozwiązywanie problemu
 

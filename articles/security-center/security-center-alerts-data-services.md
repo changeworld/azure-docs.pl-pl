@@ -23,13 +23,13 @@ ms.locfileid: "74196128"
 
 * [Azure SQL Database i Azure SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
-* [Usługi Azure Cosmos DB](#cosmos-db)
+* [Azure Cosmos DB](#cosmos-db)
 
 ## SQL Database i SQL Data Warehouse<a name="data-sql"></a>
 
 Wykrywanie zagrożeń SQL identyfikuje anomalie działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. 
 
-|Zgłoś alert|Opis|
+|Alerty|Opis|
 |---|---|
 |**Możliwa Luka w zabezpieczeniach iniekcji SQL**|Aplikacja wygenerowała błędną instrukcję SQL w bazie danych. Może to wskazywać na ewentualną lukę w zabezpieczeniach ataków iniekcji SQL. Istnieją dwie możliwe przyczyny błędnej instrukcji. Usterka w kodzie aplikacji mogła skonstruować błędną instrukcję języka SQL. Lub kod aplikacji lub procedury składowane nie oczyszczają danych wejściowych użytkownika podczas konstruowania nieprawidłowej instrukcji SQL, która może zostać wykorzystana do iniekcji SQL.|
 |**Potencjalna iniekcja SQL**|Nastąpiło aktywne wykorzystanie oprogramowania w odniesieniu do zidentyfikowanych aplikacji narażonych na wstrzyknięcie kodu SQL. Oznacza to, że osoba atakująca próbuje wstrzyknąć złośliwe instrukcje SQL, korzystając z kodu aplikacji lub procedur składowanych.|
@@ -51,7 +51,7 @@ Security Center analizuje dzienniki diagnostyczne żądań odczytu, zapisu i usu
 
 > [!div class="mx-tableFixed"]
 
-|Zgłoś alert|Opis|
+|Alerty|Opis|
 |---|---|
 |**Dostęp z nietypowej lokalizacji do konta magazynu**|Wskazuje, że wprowadzono zmianę wzorca dostępu do konta usługi Azure Storage. Ktoś uzyska dostęp do tego konta z adresu IP uznanego za nieznane w porównaniu z ostatnim działaniem. Osoba atakująca uzyskała dostęp do konta lub uprawniony użytkownik nawiązał połączenie z nowej lub nietypowej lokalizacji geograficznej. Przykładem tej ostatniej usługi jest zdalna konserwacja z nowej aplikacji lub dewelopera.|
 |**Nietypowa aplikacja uzyskała dostęp do konta magazynu**|Wskazuje, że nietypowa aplikacja uzyskuje dostęp do tego konta magazynu. Potencjalną przyczyną jest to, że osoba atakująca uzyskuje dostęp do konta magazynu przy użyciu nowej aplikacji.|
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji na temat alertów dotyczących magazynu, zobacz 
 
 Następujące alerty są generowane przez nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do kont Azure Cosmos DB lub ich wykorzystania:
 
-|Zgłoś alert|Opis|
+|Alerty|Opis|
 |---|---|
 |**Dostęp z nietypowej lokalizacji do konta Cosmos DB**|Wskazuje, że w wzorcu dostępu wprowadzono zmianę dla konta Azure Cosmos DB. Ktoś uzyskał dostęp do tego konta z nieznanego adresu IP w porównaniu z ostatnio używanymi działaniami. Osoba atakująca uzyskała dostęp do konta lub uzyskała dostęp do niego z nowej i nietypowej lokalizacji geograficznej. Przykładem tej ostatniej usługi jest zdalna konserwacja z nowej aplikacji lub dewelopera.|
 |**Nietypowa ilość danych wyodrębnionych z konta Cosmos DB**|Wskazuje, że wystąpił zmiana wzorca wyodrębniania danych z konta Azure Cosmos DB. Ktoś wyodrębnił nietypową ilość danych w porównaniu do ostatnich działań. Osoba atakująca mogła wyodrębnić znaczną ilość danych z bazy danych Azure Cosmos DB (na przykład eksfiltracji danych lub wyciek lub nieautoryzowany transfer danych). Lub uprawniony użytkownik lub aplikacja wykryła nietypową ilość danych z kontenera (na przykład dla działania tworzenia kopii zapasowej konserwacji).|

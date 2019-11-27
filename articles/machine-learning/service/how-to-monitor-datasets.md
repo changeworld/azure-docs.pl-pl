@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 10532ba2b43e40c4ffa2990e924947046d03b576
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049173"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539200"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Wykrywanie dryfowania danych (wersja zapoznawcza) w zestawach DataSet
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -65,11 +65,11 @@ Scenariusz | Opis
 ---|---
 Monitorowanie obsługi danych przez model w celu oddzielenia od danych szkoleniowych modelu | Wyniki z tego scenariusza można interpretować jako monitorowanie serwera proxy dla dokładności modelu, pod warunkiem, że poprzednia dokładność modelu jest niezależna od danych szkoleniowych.
 Monitorowanie zestawu danych szeregów czasowych dla dryfu z poprzedniego okresu. | Ten scenariusz jest bardziej ogólny i może służyć do monitorowania zestawów danych będących w modelu nadrzędnym lub podrzędnym kompilowania modeli.  Docelowy zestaw danych musi mieć kolumnę sygnatur czasowych, natomiast bazowy zestaw danych może być dowolnym tabelarycznym zestawem danych, który zawiera funkcje wspólne z docelowym zestawem danych.
-Wykonywanie analizy danych przeszłych. | Może to służyć do zrozumienia danych historycznych i podejmowania decyzji dotyczących ustawień dla monitorów zestawu danych.
+Wykonywanie analizy danych przeszłych. | Ten scenariusz może służyć do zrozumienia danych historycznych i podejmowania decyzji dotyczących ustawień dla monitorów zestawu danych.
 
 ## <a name="how-dataset-can-monitor-data"></a>Jak zestaw danych może monitorować dane
 
-Za pomocą Azure Machine Learning, dryfowanie danych jest monitorowane za pośrednictwem zestawów DataSet. Aby monitorować do dryfowania danych, bazowy zestaw danych — zwykle jest to zestaw danych szkoleniowych dla modelu — jest określony. Docelowy zestaw danych — zwykle dane wejściowe modelu — jest porównywany z upływem czasu do zestawu danych bazowych. Oznacza to, że docelowy zestaw danych musi mieć określoną kolumnę sygnatur czasowych.
+Za pomocą Azure Machine Learning, dryfowanie danych jest monitorowane za pośrednictwem zestawów DataSet. Aby monitorować do dryfowania danych, bazowy zestaw danych — zwykle jest to zestaw danych szkoleniowych dla modelu — jest określony. Docelowy zestaw danych — zwykle dane wejściowe modelu — jest porównywany z upływem czasu do zestawu danych bazowych. To porównanie oznacza, że docelowy zestaw danych musi mieć określoną kolumnę sygnatur czasowych.
 
 ### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>Ustawianie cech `timeseries` w docelowym zestawie danych
 
@@ -133,9 +133,9 @@ Ta tabela zawiera podstawowe ustawienia używane do monitorowania zestawu danych
 | ------- | ----------- | ---- | ------- | 
 | Nazwa | Nazwa monitora zestawu danych. | | Nie |
 | Bazowy zestaw danych | Tabelaryczny zestaw danych, który będzie używany jako linia bazowa do porównania docelowego zestawu danych w czasie. | Zestaw danych bazowych musi mieć wspólne funkcje z docelowym zestawem danych. Ogólnie rzecz biorąc, linia bazowa powinna być ustawiona na zestaw danych szkoleniowych modelu lub do wycinka docelowego zestawu danych. | Nie |
-| Docelowy zestaw danych | Zestaw danych tabelarycznych z określoną kolumną sygnatur czasowych, który zostanie przeanalizowany pod kątem dryfowania danych | Docelowy zestaw danych musi mieć wspólne funkcje z bazowym zestawem danych, który powinien być `timeseries`m zestawem danych, do którego dodawane są nowe dane. Dane historyczne w docelowym zestawie danych mogą być analizowane lub można monitorować nowe dane. | Nie | 
-| Częstotliwość | Jest to częstotliwość, która zostanie użyta do zaplanowania zadania potoku i przeanalizowania danych historycznych w przypadku uruchamiania wypełniania. Dostępne opcje to codziennie, co tydzień lub co miesiąc. | Dostosuj to ustawienie, aby uwzględnić w linii bazowej porównywalny rozmiar danych. | Nie | 
-| Funkcje | Lista funkcji, które zostaną przeanalizowane pod kątem dryfowania danych w czasie | Ustaw na funkcje wyjściowe modelu, aby zmierzyć dryf koncepcji. Nie należy dołączać funkcji, które naturalnie dryfuje w czasie (miesiąc, rok, indeks itp.). Po dostosowaniu listy funkcji można wypełniać i śledzić istniejący monitor dryfowania danych. | Yes | 
+| Docelowy zestaw danych | Zestaw danych tabelarycznych z określoną kolumną sygnatur czasowych, który zostanie przeanalizowany pod kątem dryfowania danych. | Docelowy zestaw danych musi mieć wspólne funkcje z zestawem danych bazowych i powinien być `timeseries` zestawem danych, do którego dodawane są nowe dane. Dane historyczne w docelowym zestawie danych mogą być analizowane lub można monitorować nowe dane. | Nie | 
+| Częstotliwość | Częstotliwość, która zostanie użyta do zaplanowania zadania potoku i przeanalizowania danych historycznych w przypadku uruchamiania wypełniania. Dostępne opcje to codziennie, co tydzień lub co miesiąc. | Dostosuj to ustawienie, aby uwzględnić w linii bazowej porównywalny rozmiar danych. | Nie | 
+| Funkcje | Lista funkcji, które będą analizowane pod kątem dryfowania danych w czasie. | Ustaw na funkcje wyjściowe modelu, aby zmierzyć dryf koncepcji. Nie należy dołączać funkcji, które naturalnie dryfuje w czasie (miesiąc, rok, indeks itp.). Po dostosowaniu listy funkcji można wypełniać i śledzić istniejący monitor dryfowania danych. | Yes | 
 | Docelowy zasób obliczeniowy | Azure Machine Learning miejsce docelowe obliczeń, aby uruchomić zadania monitorowania zestawu danych. | | Yes | 
 
 ### <a name="monitor-settings"></a>Ustawienia monitora
@@ -144,8 +144,8 @@ Te ustawienia dotyczą potoku monitora harmonogramu zestawu danych, który zosta
 
 | Ustawienie | Opis | Porady | Modyfikowalny | 
 | ------- | ----------- | ---- | ------- |
-| Włączanie | Włączanie lub wyłączanie harmonogramu dla potoku monitora zestawu danych | Wyłącz tę funkcję, aby analizować dane historyczne przy użyciu ustawienia wypełniania. Można ją włączyć po utworzeniu monitora zestawu danych. | Yes | 
-| Opóźnienie | Czas, w godzinach, pobiera dane do zestawu danych. Na przykład jeśli dane mają być dostarczone przez trzy dni w postaci hermetyzacji zestawu danych SQL DB, ustaw opóźnienie na 72. | Nie można zmienić po utworzeniu monitora zestawu danych | Nie | 
+| Włączanie | Włączanie lub wyłączanie harmonogramu dla potoku monitora zestawu danych | Wyłącz harmonogram, aby analizować dane historyczne przy użyciu ustawienia wypełniania. Można ją włączyć po utworzeniu monitora zestawu danych. | Yes | 
+| Opóźnienie | Czas, w godzinach, pobiera dane do zestawu danych. Na przykład jeśli dane mają być dostarczone przez trzy dni w bazie danych bazy danych SQL, należy ustawić opóźnienie na 72. | Nie można zmienić po utworzeniu monitora zestawu danych | Nie | 
 | Adresy e-mail | Adresy e-mail dla alertów na podstawie naruszenia progu procentu dryfu danych. | Wiadomości e-mail są wysyłane za poorednictwem Azure Monitor. | Yes | 
 | Próg | Próg procentowy dryfu danych dla alertów e-mail. | Więcej alertów i zdarzeń można ustawić dla wielu innych metryk w skojarzonym zasobie Application Insightsm obszaru roboczego. | Yes | 
 
@@ -156,7 +156,7 @@ Te ustawienia służą do uruchamiania wypełniania danych w przeszłości na po
 | Ustawienie | Opis | Porady |
 | ------- | ----------- | ---- |
 | Data rozpoczęcia | Data rozpoczęcia zadania wypełniania. | | 
-| Data zakończenia | Data zakończenia zadania wypełniania. | Ta wartość nie może być dłuższa niż 31 * jednostek częstotliwości od daty rozpoczęcia. Na istniejącym monitorze zestawu danych metryki mogą być wypełniane, aby analizować dane historyczne lub zastępować metryki ze zaktualizowanymi ustawieniami. |
+| Data zakończenia | Data zakończenia zadania wypełniania. | Data zakończenia nie może być dłuższa niż 31 * jednostek częstotliwości od daty rozpoczęcia. Na istniejącym monitorze zestawu danych metryki mogą być wypełniane, aby analizować dane historyczne lub zastępować metryki ze zaktualizowanymi ustawieniami. |
 
 ## <a name="create-dataset-monitors"></a>Tworzenie monitorów zestawu danych 
 
@@ -181,7 +181,7 @@ Ten monitor zestawu danych zostanie wyświetlony na liście. Wybierz go, aby prz
 
 Aby uzyskać szczegółowe informacje, zobacz [dokumentację referencyjną języka Python SDK dotyczącą dryfowania danych](/python/api/azureml-datadrift/azureml.datadrift) . 
 
-Poniżej przedstawiono przykład tworzenia monitora zestawu danych przy użyciu zestawu SDK języka Python
+Poniższy przykład pokazuje, jak utworzyć monitor zestawu danych za pomocą zestawu SDK języka Python
 
 ```python
 from azureml.core import Workspace, Dataset
@@ -252,7 +252,7 @@ Na poniższej ilustracji przedstawiono przykładowe wykresy widoczne w **omówie
 
 Sekcja **Szczegóły funkcji** zawiera szczegółowe informacje na temat zmian w dystrybucji wybranej funkcji, a także inne dane statystyczne w miarę upływu czasu. 
 
-Docelowy zestaw danych jest również profilowany w czasie. Odległość statystyczna między rozkładem linii bazowej każdej funkcji jest porównywana z docelowym zestawem danych w czasie, który jest koncepcyjnie podobny do wielkości dryfu danych, z wyjątkiem tego, że dotyczy pojedynczej funkcji. Dostępne są również wartości minimalna, maksymalna i średnia. 
+Docelowy zestaw danych jest również profilowany w czasie. Odległość statystyczna między rozkładem linii bazowej każdej funkcji jest porównywana z docelowym zestawem danych w czasie, który jest koncepcyjnie podobny do wielkości dryfu danych, z wyjątkiem tego, że ta odległość statystyczna dotyczy pojedynczej funkcji. Dostępne są również wartości minimalna, maksymalna i średnia. 
 
 W Azure Machine Learning Studio, jeśli klikniesz punkt danych na grafie, rozkład wyświetlanej funkcji zostanie odpowiednio dostosowany. Domyślnie pokazuje rozkład bazowego zestawu danych i najnowszą dystrybucję przebiegu tej samej funkcji. 
 
@@ -295,7 +295,7 @@ Wybierz pozycję Dzienniki (analiza) w obszarze monitorowanie w okienku po lewej
 
 ![Omówienie usługi Application Insights](media/how-to-monitor-datasets/ai-overview.png)
 
-Metryki monitora zestawu danych są przechowywane jako `customMetrics`. Można napisać i uruchomić proste zapytanie po skonfigurowaniu monitora zestawu danych, aby je wyświetlić:
+Metryki monitora zestawu danych są przechowywane jako `customMetrics`. Można napisać i uruchomić zapytanie po skonfigurowaniu monitora zestawu danych, aby je wyświetlić:
 
 [Zapytanie usługi log Analytics ![](media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
 
@@ -321,7 +321,7 @@ Kolumny lub funkcje w zestawie danych są klasyfikowane jako kategorii lub liczb
 | Typ funkcji | Typ danych | Warunek | Ograniczenia | 
 | ------------ | --------- | --------- | ----------- |
 | Podzielone na kategorie | String, bool, int, float | Liczba unikatowych wartości w funkcji jest mniejsza niż 100 i mniejsza niż 5% liczby wierszy. | Wartość null jest traktowana jako jej własna Kategoria. | 
-| Wartości liczbowych | int, float | Typu danych liczbowych i nie spełnia warunków funkcji kategorii. | Funkcja została porzucona, jeśli > 15% wartości ma wartość null. | 
+| Wartości liczbowych | int, float | Wartości w funkcji mają typ danych liczbowych i nie spełniają warunku funkcji kategorii. | Funkcja została porzucona, jeśli > 15% wartości ma wartość null. | 
 
 ## <a name="next-steps"></a>Następne kroki
 

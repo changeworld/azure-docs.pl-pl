@@ -64,7 +64,7 @@ W przypadku korzystania z dzienników zasobów z centrów zdarzeń będzie to fo
 | category |Kategoria dziennika dla tego zdarzenia. |
 | resourceId |Identyfikator zasobu zasobu, który spowodowało wygenerowanie tego zdarzenia. |
 | operationName |Nazwa operacji. |
-| poziom |Opcjonalny. Wskazuje poziom zdarzenia dziennika. |
+| level |Opcjonalny. Wskazuje poziom zdarzenia dziennika. |
 | properties |Właściwości zdarzenia. Są one różne dla każdej usługi platformy Azure, zgodnie [ ]()z opisem w temacie. |
 
 

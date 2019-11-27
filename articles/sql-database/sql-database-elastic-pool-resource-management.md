@@ -61,8 +61,8 @@ Oprócz tych metryk Azure SQL Database zapewnia widok, który zwraca rzeczywiste
 |Nazwa widoku|Opis|  
 |-----------------|--------------------------------|  
 |[sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)|Zwraca rzeczywiste ustawienia konfiguracji i pojemności używane przez mechanizmy ładu zasobów w bieżącej bazie danych lub puli elastycznej.|
-|[sys.dm_resource_governor_resource_pools](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-transact-sql)|Zwraca informacje o bieżącym stanie puli zasobów, bieżącej konfiguracji pul zasobów i statystykach puli zasobów zbiorczych.|
-|[sys.dm_resource_governor_workload_groups](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-transact-sql)|Zwraca statystyki grup obciążeń skumulowanych i bieżącą konfigurację grupy obciążeń. Ten widok można dołączyć do wykazu sys. dm_resource_governor_resource_pools w kolumnie `pool_id`, aby uzyskać informacje o puli zasobów.|
+|[sys. dm_resource_governor_resource_pools](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-transact-sql)|Zwraca informacje o bieżącym stanie puli zasobów, bieżącej konfiguracji pul zasobów i statystykach puli zasobów zbiorczych.|
+|[sys. dm_resource_governor_workload_groups](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-transact-sql)|Zwraca statystyki grup obciążeń skumulowanych i bieżącą konfigurację grupy obciążeń. Ten widok można dołączyć do wykazu sys. dm_resource_governor_resource_pools w kolumnie `pool_id`, aby uzyskać informacje o puli zasobów.|
 |[sys. dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database)|Zwraca statystykę wykorzystania puli zasobów dla ostatnich 32 minut. Każdy wiersz reprezentuje interwał 20 sekund. Kolumny `delta_` zwracają zmiany w każdej statystyce w interwale.|
 |[sys. dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database)|Zwraca statystykę wykorzystania grup obciążeń dla ostatnich 32 minut. Każdy wiersz reprezentuje interwał 20 sekund. Kolumny `delta_` zwracają zmiany w każdej statystyce w interwale.|
 |||
@@ -113,7 +113,7 @@ SELECT used_log_space_in_percent AS tempdb_log_used_percent
 FROM tempdb.sys.dm_db_log_space_usage;
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z wprowadzeniem do pul elastycznych, zobacz [Pule elastyczne ułatwiają zarządzanie wieloma bazami danych Azure SQL i skalowanie](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)ich.
 * Aby uzyskać informacje na temat dostrajania obciążeń zapytań w celu ograniczenia wykorzystania zasobów, zobacz [monitorowanie i dostrajanie]( https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-tuning-index)oraz [dostrajanie wydajności i monitorowanie](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview).

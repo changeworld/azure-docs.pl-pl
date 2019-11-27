@@ -1,29 +1,29 @@
 ---
-title: 'Quickstart: Create a search service in the portal'
+title: 'Szybki Start: Tworzenie usługi wyszukiwania w portalu'
 titleSuffix: Azure Cognitive Search
-description: In this portal quickstart, learn how to set up an Azure Cognitive Search resource in the Azure portal. Wybierz grupy zasobów, regiony i jednostki SKU lub warstwę cenową.
+description: W tym przewodniku szybki start dowiesz się, jak skonfigurować zasób platformy Azure Wyszukiwanie poznawcze w Azure Portal. Wybierz grupy zasobów, regiony i jednostki SKU lub warstwę cenową.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 79554429ddc9516eb2fbe9aa7b0e75c78fb17662
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: ec794f66866f9773f8b7c0fc57b644d8a13d697a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406670"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534567"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Quickstart: Create an Azure Cognitive Search service in the portal
+# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Szybki Start: Tworzenie usługi Azure Wyszukiwanie poznawcze w portalu
 
-Azure Cognitive Search is a standalone resource used to plug in a search experience in custom apps. Although Azure Cognitive Search integrates easily with other Azure services, you can also use it as a standalone component, or integrate it with apps on network servers, or with software running on other cloud platforms.
+Usługa Azure Wyszukiwanie poznawcze to autonomiczny zasób służący do podłączenia środowiska wyszukiwania w aplikacjach niestandardowych. Mimo że platforma Azure Wyszukiwanie poznawcze łatwo integruje się z innymi usługami platformy Azure, można także użyć jej jako składnika autonomicznego lub zintegrować ją z aplikacjami na serwerach sieciowych lub z oprogramowaniem działającym na innych platformach w chmurze.
 
-In this article, learn how to create a resource in the [Azure portal](https://portal.azure.com/).
+W tym artykule dowiesz się, jak utworzyć zasób w [Azure Portal](https://portal.azure.com/).
 
 [![Animowany obraz GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
-Preferujesz program PowerShell? Użyj [szablonu usługi](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manager. For help with getting started, see [Manage Azure Cognitive Search with PowerShell](search-manage-powershell.md).
+Preferujesz program PowerShell? Użyj [szablonu usługi](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manager. Aby uzyskać pomoc dotyczącą rozpoczynania pracy, zobacz [Zarządzanie usługą Azure wyszukiwanie poznawcze przy użyciu programu PowerShell](search-manage-powershell.md).
 
 ## <a name="subscribe-free-or-paid"></a>Subskrypcja (bezpłatna lub płatna)
 
@@ -31,36 +31,36 @@ Preferujesz program PowerShell? Użyj [szablonu usługi](https://azure.microsoft
 
 Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). W ramach subskrypcji MSDN co miesiąc otrzymasz środki, które możesz przeznaczyć na płatne usługi platformy Azure. 
 
-## <a name="find-azure-cognitive-search"></a>Find Azure Cognitive Search
+## <a name="find-azure-cognitive-search"></a>Znajdź Wyszukiwanie poznawcze platformy Azure
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Kliknij znak plus („+ Utwórz zasób”) w lewym górnym rogu.
-3. Use the search bar to find "Azure Cognitive Search" or navigate to the resource through **Web** > **Azure Cognitive Search**.
+3. Użyj paska wyszukiwania, aby znaleźć "Wyszukiwanie poznawcze platformy Azure" lub przejdź do zasobu za pomocą Wyszukiwanie poznawcze **sieci Web** > **Azure**.
 
-![Create a resource in the portal](./media/search-create-service-portal/find-search3.png "Tworzenie zasobu w portalu")
+![Tworzenie zasobu w portalu](./media/search-create-service-portal/find-search3.png "Tworzenie zasobu w portalu")
 
-## <a name="choose-a-subscription"></a>Choose a subscription
+## <a name="choose-a-subscription"></a>Wybierz subskrypcję
 
-Setting the subscription ID and resource group is your first step. Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usługi magazynu danych lub plików. Azure Cognitive Search can autodetect Azure Table and Blob storage, SQL Database, and Azure Cosmos DB for indexing via [*indexers*](search-indexer-overview.md), but only for services under the same subscription.
+Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich dla usługi wyszukiwania.
 
-## <a name="set-a-resource-group"></a>Set a resource group
+## <a name="set-a-resource-group"></a>Ustawianie grupy zasobów
 
-A resource group is required and is useful for managing resources all-up, including costs. A resource group can consist of one service, or multiple services used together. For example, if you are using Azure Cognitive Search to index an Azure Cosmos DB database, you could make both services part of the same resource group for management purposes. 
+Grupa zasobów jest wymagana i jest przydatna do zarządzania zasobami, w tym do kosztów. Grupa zasobów może składać się z jednej usługi lub wielu używanych jednocześnie usług. Na przykład, jeśli używasz usługi Azure Wyszukiwanie poznawcze do indeksowania bazy danych Azure Cosmos DB, możesz udostępnić obie usługi w tej samej grupie zasobów na potrzeby zarządzania. 
 
-If you aren't combining resources into a single group, or if existing resource groups are filled with resources used in unrelated solutions, create a new resource group just for your Azure Cognitive Search resource. 
+Jeśli zasoby nie są łączone w pojedynczą grupę, a istniejące grupy zasobów są wypełniane zasobami używanymi w niepowiązanych rozwiązaniach, Utwórz nową grupę zasobów tylko dla zasobu usługi Azure Wyszukiwanie poznawcze. 
 
-![Create a new resource group](./media/search-create-service-portal/new-resource-group.png "Utworzenie nowej grupy zasobów")
+![Utwórz nową grupę zasobów](./media/search-create-service-portal/new-resource-group.png "Utworzenie nowej grupy zasobów")
 
-Over time, you can track current and projected costs all-up (as shown in the screenshot) or scroll down to view charges for individual resources. The following screenshot shows the kind of cost information you can eventually expect to see when you combine multiple resources into one group.
+Wraz z upływem czasu można śledzić bieżące i przewidywane koszty wszystkie (jak pokazano na zrzucie ekranu) lub przewijać w dół, aby wyświetlić opłaty dla poszczególnych zasobów. Poniższy zrzut ekranu przedstawia rodzaj informacji o kosztach, które mogą być widoczne w przypadku łączenia wielu zasobów w jedną grupę.
 
-![Manage costs at the resource group level](./media/search-create-service-portal/resource-group-cost-management.png "Manage costs at the resource group level")
+![Zarządzanie kosztami na poziomie grupy zasobów](./media/search-create-service-portal/resource-group-cost-management.png "Zarządzanie kosztami na poziomie grupy zasobów")
 
 > [!TIP]
-> Resource groups simplify cleanup because deleting a group also deletes the services within it. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu.
+> Grupy zasobów upraszczają czyszczenie, ponieważ usunięcie grupy spowoduje również usunięcie w niej usług. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu.
 
-## <a name="name-the-service"></a>Name the service
+## <a name="name-the-service"></a>Nazwij usługę
 
-In Instance Details, provide a service name in the **URL** field. The name is part of the URL endpoint against which API calls are issued: `https://your-service-name.search.windows.net`. Na przykład jeśli chcesz, aby punkt końcowy znajdował się pod adresem `https://myservice.search.windows.net`, wpisz `myservice`.
+W obszarze Szczegóły wystąpienia Podaj nazwę usługi w polu **adres URL** . Nazwa jest częścią punktu końcowego adresu URL, względem którego są wydawane wywołania interfejsu API: `https://your-service-name.search.windows.net`. Na przykład jeśli chcesz, aby punkt końcowy znajdował się pod adresem `https://myservice.search.windows.net`, wpisz `myservice`.
 
 Wymagania dotyczące nazwy usługi:
 
@@ -71,52 +71,52 @@ Wymagania dotyczące nazwy usługi:
 * Nie może zawierać następujących po sobie łączników („--”)
 
 > [!TIP]
-> If you think you'll be using multiple services, we recommend including the region (or location) in the service name as a naming convention. Services within the same region can exchange data at no charge, so if Azure Cognitive Search is in West US, and you have other services also in West US, a name like `mysearchservice-westus` can save you a trip to the properties page when deciding how to combine or attach resources.
+> Jeśli uważasz, że będziesz korzystać z wielu usług, zalecamy uwzględnienie regionu (lub lokalizacji) w nazwie usługi jako konwencji nazewnictwa. Usługi w ramach tego samego regionu mogą bezpłatnie wymieniać dane, więc jeśli platforma Azure Wyszukiwanie poznawcze jest w regionie zachodnie stany USA, a inne usługi znajdują się również w regionie zachodnie stany USA, nazwy takie jak `mysearchservice-westus` mogą zapisywać dane na stronie właściwości podczas podejmowania decyzji o sposobie łączenia lub dołączania zasobów.
 
-## <a name="choose-a-location"></a>Choose a location
+## <a name="choose-a-location"></a>Wybierz lokalizację
 
-As an Azure service, Azure Cognitive Search can be hosted in datacenters around the world. The list of supported regions can be found in the [pricing page](https://azure.microsoft.com/pricing/details/search/). 
+Usługa Azure Wyszukiwanie poznawcze może być hostowana w centrach danych na całym świecie. Listę obsługiwanych regionów można znaleźć na [stronie z cennikiem](https://azure.microsoft.com/pricing/details/search/). 
 
-You can minimize or avoid bandwidth charges by choosing the same location for multiple services. For example, if you are indexing data provided by another Azure service (Azure storage, Azure Cosmos DB, Azure SQL Database), creating your Azure Cognitive Search service in the same region avoids bandwidth charges (there are no charges for outbound data when services are in the same region).
+Możesz zminimalizować lub uniknąć opłat za przepustowość, wybierając tę samą lokalizację dla wielu usług. Na przykład w przypadku indeksowania danych dostarczanych przez inną usługę platformy Azure (Azure Storage, Azure Cosmos DB, Azure SQL Database) Tworzenie usługi Azure Wyszukiwanie poznawcze w tym samym regionie pozwala uniknąć naliczania opłat za przepustowość (nie są naliczane opłaty za dane wychodzące, gdy usługi znajdują się w tym samym regionie).
 
-Additionally, if you are using AI enrichment, create your service in the same region as Cognitive Services. *Co-location of Azure Cognitive Search and Cognitive Services in the same region is a requirement for AI enrichment*.
+Ponadto, jeśli używasz wzbogacania AI, Utwórz usługę w tym samym regionie co Cognitive Services. *Współpraca z platformą Azure wyszukiwanie poznawcze i Cognitive Services w tym samym regionie jest wymagana do wzbogacania AI*.
 
 > [!Note]
-> Central India is currently unavailable for new services. For services already in Central India, you can scale up with no restrictions, and your service is fully supported in that region. The restriction on this region is temporary and limited to new services only. We will remove this note when the restriction no longer applies.
+> Indie Środkowe nie są obecnie dostępne dla nowych usług. W przypadku usług już znajdujących się w centralnym Indiach można skalować w górę bez ograniczeń, a usługa jest w pełni obsługiwana w tym regionie. Ograniczenie w tym regionie jest tymczasowe i ograniczone tylko do nowych usług. Ta uwaga zostanie usunięta, jeśli ograniczenie nie zostanie już zastosowane.
 
-## <a name="choose-a-pricing-tier-sku"></a>Choose a pricing tier (SKU)
+## <a name="choose-a-pricing-tier-sku"></a>Wybierz warstwę cenową (SKU)
 
-[Azure Cognitive Search is currently offered in multiple pricing tiers](https://azure.microsoft.com/pricing/details/search/): Free, Basic, or Standard. Poszczególne warstwy różnią się między sobą [pojemnością i limitami](search-limits-quotas-capacity.md). Aby uzyskać wskazówki, zobacz [Choose a pricing tier or SKU](search-sku-tier.md) (Wybieranie warstwy cenowej lub jednostek SKU).
+[Usługa Azure wyszukiwanie poznawcze jest obecnie oferowana w wielu warstwach cenowych](https://azure.microsoft.com/pricing/details/search/): bezpłatna, podstawowa lub standardowa. Poszczególne warstwy różnią się między sobą [pojemnością i limitami](search-limits-quotas-capacity.md). Aby uzyskać wskazówki, zobacz [Choose a pricing tier or SKU](search-sku-tier.md) (Wybieranie warstwy cenowej lub jednostek SKU).
 
-Basic and Standard are the most common choices for production workloads, but most customers start with the Free service. Key differences among tiers is partition size and speed, and limits on the number of objects you can create.
+Podstawowa i Standardowa są najbardziej typowymi opcjami dotyczącymi obciążeń produkcyjnych, ale większość klientów zaczyna się od bezpłatnej usługi. Najważniejsze różnice między warstwami to rozmiar partycji i szybkość oraz limity dotyczące liczby obiektów, które można utworzyć.
 
-Remember that a pricing tier cannot be changed once the service is created. W razie konieczności przejścia do warstwy wyższej lub niższej należy ponownie utworzyć usługę.
+Należy pamiętać, że nie można zmienić warstwy cenowej po utworzeniu usługi. W razie konieczności przejścia do warstwy wyższej lub niższej należy ponownie utworzyć usługę.
 
 ## <a name="create-your-service"></a>Tworzenie usługi
 
-After you've provided the necessary inputs, go ahead and create the service. 
+Po podaniu niezbędnych danych wejściowych przejdź dalej i Utwórz usługę. 
 
-![Review and create the service](./media/search-create-service-portal/new-service3.png "Review and create the service")
+![Przeglądanie i tworzenie usługi](./media/search-create-service-portal/new-service3.png "Przeglądanie i tworzenie usługi")
 
-Your service is deployed within minutes, which you can monitor through Azure notifications. Consider pinning the service to your dashboard for easy access in the future.
+Twoja usługa zostanie wdrożona w ciągu kilku minut, którą można monitorować za pomocą powiadomień platformy Azure. Rozważ możliwość przypięcia usługi do pulpitu nawigacyjnego w celu ułatwienia dostępu w przyszłości.
 
-![Monitor and pin the service](./media/search-create-service-portal/monitor-notifications.png "Monitor and pin the service")
+![Monitorowanie i Przypinanie usługi](./media/search-create-service-portal/monitor-notifications.png "Monitorowanie i Przypinanie usługi")
 
 ## <a name="get-a-key-and-url-endpoint"></a>Pobieranie klucza i punktu końcowego adresu URL
 
-Unless you are using the portal, programmatic access to your new service requires that you provide the URL endpoint and an authentication api-key.
+Jeśli nie korzystasz z portalu, dostęp programistyczny do nowej usługi wymaga podania punktu końcowego adresu URL oraz klucza API uwierzytelniania.
 
-1. On the **Overview** page, locate and copy the URL endpoint on the right side of the page.
+1. Na stronie **Przegląd** zlokalizuj i skopiuj punkt końcowy adresu URL po prawej stronie strony.
 
-2. On the **Keys** page, copy either one of the admin keys (they are equivalent). Klucze interfejsu API administratora są wymagane do tworzenia, aktualizowania i usuwania obiektów w usłudze. In contrast, query keys provide read-access to index content.
+2. Na stronie **klucze** Skopiuj jeden z kluczy administratora (są one równoważne). Klucze interfejsu API administratora są wymagane do tworzenia, aktualizowania i usuwania obiektów w usłudze. Z kolei klucze zapytań zapewniają dostęp do odczytu do zawartości indeksu.
 
-   ![Service overview page with URL endpoint](./media/search-create-service-portal/get-url-key.png "URL endpoint and other service details")
+   ![Strona przeglądu usługi z punktem końcowym adresu URL](./media/search-create-service-portal/get-url-key.png "Punkt końcowy adresu URL i inne szczegóły usługi")
 
-Klucz i punkt końcowy nie są wymagane do zadań wykonywanych w portalu. The portal is already linked to your Azure Cognitive Search resource with admin rights. For a portal walkthrough, start with [Quickstart: Create an Azure Cognitive Search index in the portal](search-get-started-portal.md).
+Klucz i punkt końcowy nie są wymagane do zadań wykonywanych w portalu. Portal jest już połączony z zasobem usługi Azure Wyszukiwanie poznawcze z uprawnieniami administratora. Przewodnik po samouczku można rozpocząć od [przewodnika Szybki Start: Tworzenie indeksu wyszukiwanie poznawcze platformy Azure w portalu](search-get-started-portal.md).
 
 ## <a name="scale-your-service"></a>Skalowanie usługi
 
-Po aprowizacji usługi można ją skalować stosownie do potrzeb. If you chose the Standard tier for your Azure Cognitive Search service, you can scale your service in two dimensions: replicas and partitions. Wybór warstwy podstawowej oznaczałby, że można dodawać wyłącznie repliki. W razie aprowizacji bezpłatnej usługi skalowanie nie jest dostępne.
+Po aprowizacji usługi można ją skalować stosownie do potrzeb. W przypadku wybrania warstwy Standardowa usługi Azure Wyszukiwanie poznawcze można skalować usługę w dwóch wymiarach: Replicas i partitions. Wybór warstwy podstawowej oznaczałby, że można dodawać wyłącznie repliki. W razie aprowizacji bezpłatnej usługi skalowanie nie jest dostępne.
 
 ***Partycje*** umożliwiają usłudze przechowywanie i przeszukiwanie większej liczby dokumentów.
 
@@ -131,29 +131,29 @@ Dodawanie zasobów wiąże się z dodaniem opłat do rachunku miesięcznego. [Ka
 2. W okienku nawigacji po lewej wybierz kolejno pozycje **Ustawienia** > **Skalowanie**.
 3. Użyj suwaka, aby dodać zasoby wybranego typu.
 
-![Add capacity](./media/search-create-service-portal/settings-scale.png "Add capacity through replicas and partitions")
+![Dodaj pojemność](./media/search-create-service-portal/settings-scale.png "Dodawanie pojemności przy użyciu replik i partycji")
 
 > [!Note]
-> Per-partition storage and speed increases at higher tiers. For more information, see [capacity and limits](search-limits-quotas-capacity.md).
+> Magazyn na partycję i szybkość zwiększają się o wyższe warstwy. Aby uzyskać więcej informacji, zobacz [pojemność i limity](search-limits-quotas-capacity.md).
 
 ## <a name="when-to-add-a-second-service"></a>Kiedy należy dodać drugą usługę
 
-Większość klientów używa tylko jednej usługi aprowizowanej dla danej warstwy, która zapewnia [właściwe rozmieszczenie zasobów](search-sku-tier.md). Jedna usługa może obsługiwać wiele indeksów, z zastrzeżeniem [maksymalnych limitów wybranej warstwy](search-capacity-planning.md), przy czym każdy indeks jest odizolowany od innych. In Azure Cognitive Search, requests can only be directed to one index, minimizing the chance of accidental or intentional data retrieval from other indexes in the same service.
+Większość klientów używa tylko jednej usługi aprowizowanej dla danej warstwy, która zapewnia [właściwe rozmieszczenie zasobów](search-sku-tier.md). Jedna usługa może obsługiwać wiele indeksów, z zastrzeżeniem [maksymalnych limitów wybranej warstwy](search-capacity-planning.md), przy czym każdy indeks jest odizolowany od innych. Na platformie Azure Wyszukiwanie poznawcze żądania mogą być kierowane tylko do jednego indeksu, co minimalizuje ryzyko przypadkowego lub zamierzonego pobrania danych z innych indeksów w tej samej usłudze.
 
 Chociaż większość klientów używa tylko jednej usługi, nadmiarowość usług może być konieczna, jeśli wymagania operacyjne są następujące:
 
-* Odzyskiwanie po awarii (awaria centrum danych). Azure Cognitive Search does not provide instant failover in the event of an outage. Aby uzyskać wskazówki i zalecenia, zobacz [Service administration](search-manage.md) (Administrowanie usługą).
+* Odzyskiwanie po awarii (awaria centrum danych). Usługa Azure Wyszukiwanie poznawcze nie zapewnia natychmiastowej pracy w trybie failover w przypadku awarii. Aby uzyskać wskazówki i zalecenia, zobacz [Service administration](search-manage.md) (Administrowanie usługą).
 * W trakcie badania modelowania wielodostępnego ustalono, że dodatkowe usługi stanowią optymalne rozwiązanie dla danego projektu. Aby uzyskać więcej informacji, zobacz [Design for multi-tenancy](search-modeling-multitenant-saas-applications.md) (Projektowanie na potrzeby wielodostępu).
-* For globally deployed applications, you might require an instance of Azure Cognitive Search in multiple regions to minimize latency of your application’s international traffic.
+* W przypadku aplikacji wdrażanych globalnie może zajść potrzeba wystąpienia platformy Azure Wyszukiwanie poznawcze w wielu regionach w celu zminimalizowania opóźnień ruchu międzynarodowego aplikacji.
 
 > [!NOTE]
-> In Azure Cognitive Search, you cannot segregate indexing and querying operations; thus, you would never create multiple services for segregated workloads. Zapytania względem indeksu zawsze dotyczą usługi, w której został utworzony (nie można utworzyć indeksu w jednej usłudze, by następnie skopiować go do innej).
+> Na platformie Azure Wyszukiwanie poznawcze nie można rozdzielić operacji indeksowania i wykonywania zapytań. w ten sposób nigdy nie utworzysz wielu usług dla rozdzielonych obciążeń. Zapytania względem indeksu zawsze dotyczą usługi, w której został utworzony (nie można utworzyć indeksu w jednej usłudze, by następnie skopiować go do innej).
 
-Druga usługa nie jest wymagana w celu zapewnienia wysokiej dostępności. Wysoka dostępność zapytań ma miejsce wtedy, gdy używane są co najmniej 2 repliki w tej samej usłudze. Replica updates are sequential, which means at least one is operational when a service update is rolled out. For more information about uptime, see [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Druga usługa nie jest wymagana w celu zapewnienia wysokiej dostępności. Wysoka dostępność zapytań ma miejsce wtedy, gdy używane są co najmniej 2 repliki w tej samej usłudze. Aktualizacje repliki są sekwencyjne, co oznacza, że co najmniej jeden z nich działa po przewróceniu aktualizacji usługi. Aby uzyskać więcej informacji na temat czasu [pracy, zobacz umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 ## <a name="next-steps"></a>Następne kroki
 
-After provisioning a service, you can continue in the portal to create your first index.
+Po zainicjowaniu obsługi administracyjnej można kontynuować w portalu, aby utworzyć swój pierwszy indeks.
 
 > [!div class="nextstepaction"]
-> [Quickstart: Create an Azure Cognitive Search index in the portal](search-get-started-portal.md)
+> [Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w portalu](search-get-started-portal.md)

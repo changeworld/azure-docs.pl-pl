@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832017"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538183"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Rozwiązanie Network Performance Monitor — często zadawane pytania
 
@@ -184,6 +184,8 @@ Przeskok może nie reagować na traceroute w co najmniej jednym z poniższych sc
 * Urządzenia sieciowe nie zezwalają na ruch ICMP_TTL_EXCEEDED.
 * Zapora blokuje ICMP_TTL_EXCEEDED odpowiedzi z urządzenia sieciowego.
 
+Gdy jeden z punktów końcowych bazuje na platformie Azure, traceroute pokazuje niezidentyfikowane przeskoki, ponieważ usługa Azure ndrastructure nie ujawnia tożsamości do traceroute. 
+
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Otrzymuję alerty dotyczące testów w złej kondycji, ale nie widzę wysokich wartości w grafie strat i opóźnień NPM. Jak mogę sprawdzić, co jest w złej kondycji?
 NPM zgłasza alert, jeśli opóźnienie końca między źródłem a miejscem docelowym przekracza próg dla każdej ścieżki między nimi. Niektóre sieci mają wiele ścieżek łączących te same źródła i miejsce docelowe. NPM wywołuje alert, każda ścieżka jest w złej kondycji. Utrata i opóźnienie widoczne na wykresach to średnia wartość dla wszystkich ścieżek, dlatego nie może być pokazywana dokładna wartość pojedynczej ścieżki. Aby zrozumieć, gdzie próg został naruszony, poszukaj kolumny "podtyp" w alercie. Jeśli problem jest spowodowany przez ścieżkę, wartość podtypu będzie wartość networkpath ((dla testów monitora wydajności), EndpointPath (dla testów monitora łączności usług) i ExpressRoutePath (dla testów monitora ExpressRotue). 
 
@@ -256,7 +258,7 @@ Może się tak zdarzyć, jeśli co najmniej jeden ma wartość PRAWDA:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>W funkcji Monitor łączności usług czas odpowiedzi usługi to, ale utrata połączenia sieciowego, a także opóźnienia są prawidłowe
 Taka sytuacja może wystąpić, jeśli usługa docelowa nie jest aplikacją internetową, ale test jest skonfigurowany jako test sieci Web. Edytuj konfigurację testu i wybierz typ testowy jako sieć zamiast sieci Web.
 
-## <a name="miscellaneous"></a>Różne postanowienia
+## <a name="miscellaneous"></a>Różne
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Czy istnieje wpływ na wydajność w węźle używanym do monitorowania?
 Proces NPM jest skonfigurowany do zatrzymania, jeśli wykorzystuje ponad 5% zasobów procesora CPU hosta. Ma to na celu zapewnienie, że można nadal korzystać z węzłów dla ich zwykłych obciążeń bez wpływu na wydajność.

@@ -63,7 +63,7 @@ Azure Monitor kontenerów zawiera kilka kluczowych scenariuszy monitorowania, kt
 
 ### <a name="unit-monitors"></a>Monitory jednostkowe
 
-|**Nazwa monitora** | Typ monitora | **Opis** | **Parametr** | **Wartość** |
+|**Nazwa monitora** | Typ monitora | **Opis** | **Konstruktora** | **Wartość** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Użycie pamięci przez węzeł |Monitor jednostkowy |Ten monitor szacuje użycie pamięci przez węzeł co minutę przy użyciu danych raportowanych przez cadvisor. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Użycie procesora CPU przez węzeł |Monitor jednostkowy |Ten monitor sprawdza użycie procesora CPU przez węzeł co minutę przy użyciu danych raportowanych przez cadvisor. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

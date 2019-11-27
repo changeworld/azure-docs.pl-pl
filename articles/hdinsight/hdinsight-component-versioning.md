@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/21/2019
-ms.openlocfilehash: a2955fc72a652ec36304c7856f2ba9ed5f21d7df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
-ms.translationtype: HT
+ms.openlocfilehash: b5687d659103eed0fcba70319aa37030bd85165a
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457558"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539121"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie składniki Apache Hadoop i wersje są dostępne w usłudze HDInsight?
 
@@ -73,9 +73,9 @@ W poniższej tabeli wymieniono wersje usługi HDInsight, które są dostępne w 
 | Wersja usługi HDInsight | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wycofania | Wysoka dostępność |  Dostępność w Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Yes |Yes |
-| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 | 30 czerwca 2020 |31 grudnia 2020 |Yes |Yes |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 | 31 grudnia 2020 |31 grudnia 2020 |Yes |Yes |
 
-Platforma Spark 2,1, 2,2 & Kafka 1,0 wygaśnie 30 czerwca, 2020 i emerytury w dniu 31 grudnia 2020.
+Platforma Spark 2,1, 2,2 & Kafka 1,0 wygaśnie 30 czerwca, 2020.
 
 > [!NOTE]  
 > Po wygaśnięciu obsługi wersji program może nie być dostępny w Microsoft Azure Portal. Wersje klastra są jednak nadal dostępne przy użyciu `Version` parametru w AzHDInsightCluster polecenia programu Windows PowerShell [New-](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) i zestawu .NET SDK do momentu wycofania wersji.

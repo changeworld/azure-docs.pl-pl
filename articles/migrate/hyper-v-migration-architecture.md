@@ -86,6 +86,6 @@ Jeśli masz zapasową przepustowość na potrzeby replikacji, a chcesz zwiększy
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wypróbowanie [migracji funkcji Hyper-V](tutorial-migrate-hyper-v.md) za pomocą migracji serwera Azure Migrate.

@@ -218,6 +218,6 @@ Ta tabela zawiera szczegółowe informacje o polach związanych z magazynem.
 | VolumeFriendlyName             | Tekst          | Przyjazna nazwa woluminu magazynu                          |
 | SourceSystem                   | Tekst          | System źródłowy bieżących danych — Azure                    |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dowiedz się, jak wysyłać dane diagnostyczne do Log Analytics](https://aka.ms/AA6il6r)

@@ -1,6 +1,6 @@
 ---
-title: Threat Modeling Tool Releases - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Documenting the release notes for the threat modeling tool
+title: Threat Modeling Tool releases — Microsoft Threat Modeling Tool na platformie Azure | Microsoft Docs
+description: Dokumentowanie informacji o wersji dla narzędzia do modelowania zagrożeń
 services: security
 documentationcenter: na
 author: jegeib
@@ -21,53 +21,53 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233833"
 ---
-# <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool update release 7.1.61015.1 - 10/16/2019
+# <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool, wersja aktualizacyjna 7.1.61015.1 — 2019-10-16
 
-Version 7.1.61015.1 of the Microsoft Threat Modeling Tool (TMT) was released on October 16 2019 and contains the following changes:
+Wersja 7.1.61015.1 Microsoft Threat Modeling Tool (TMT) została wydana w październiku 16 2019 i zawiera następujące zmiany:
 
-- Accessibility improvements
+- Ulepszenia ułatwień dostępu
 - Poprawki błędów
-- New stencils for Azure Logic Apps and Azure Data Explorer
+- Nowe wzorniki dla Azure Logic Apps i platformy Azure Eksplorator danych
 
-## <a name="notable-bug-fixes"></a>Notable bug fixes
+## <a name="notable-bug-fixes"></a>Istotne poprawki błędów
 
-### <a name="improved-backward-compatibility-with-files-created-in-threat-modeling-tool-2016"></a>Improved backward compatibility with files created in "Threat Modeling Tool 2016"
+### <a name="improved-backward-compatibility-with-files-created-in-threat-modeling-tool-2016"></a>Zwiększona zgodność z poprzednimi wersjami z plikami utworzonymi w "Threat Modeling Tool 2016"
 
-Several bugs related to the opening or display of threat model files created in "Threat Modeling Tool 2016" have been fixed.
+Rozwiązano kilka usterek związanych z otwieraniem lub wyświetlaniem plików modelu zagrożeń utworzonych w "Threat Modeling Tool 2016".
 
-## <a name="feature-enhancements"></a>Feature enhancements
+## <a name="feature-enhancements"></a>Udoskonalenia funkcji
 
-### <a name="new-stencils-for-azure-logic-apps-and-azure-data-explorer"></a>New stencils for Azure Logic Apps and Azure Data Explorer
+### <a name="new-stencils-for-azure-logic-apps-and-azure-data-explorer"></a>Nowe wzorniki dla Azure Logic Apps i platformy Azure Eksplorator danych
 
-New stencils for Azure Logic Apps and Azure Data Explorer were added to the Azure Stencil along with their associated threats and mitigations.
+Do wzornika platformy Azure dodano nowe wzorniki dla Azure Logic Apps i Eksplorator danych platformy Azure, a także powiązane z nimi zagrożenia i środki zaradcze.
 
-![Azure Logic Apps and Azure Data Explorer Stencils](./media/threat-modeling-tool-releases-71610151/tmt-logic-apps.png)
+![Azure Logic Apps i wzorniki Eksplorator danych platformy Azure](./media/threat-modeling-tool-releases-71610151/tmt-logic-apps.png)
 
 ## <a name="known-issues"></a>Znane problemy
 
-### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>Errors related to priority values outside of the expected ranges
+### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>Błędy związane z wartościami priorytetu spoza oczekiwanych zakresów
 
-Some customers have reported receiving the following error message when opening files created in the "Threat Modeling Tool 2016" or custom templates:
+Niektórzy klienci zgłosili następujący komunikat o błędzie podczas otwierania plików utworzonych w szablonach "Threat Modeling Tool 2016" lub szablonów niestandardowych:
 
     System.InvalidOperationException: Invalid Priority value. Accepted values are [0..4] and 'High', 'Medium', 'Low' at ThreatModeling.Model.Threat.get_Priority()
     
     System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'Low' Parameter name: value Actual value was 5.6. at ThreatModeling.Model.Threat.set_Priority(String value)
 
-This issue is under investigation
+Ten problem jest objęty badaniem
 
 ## <a name="system-requirements"></a>Wymagania systemowe
 
 - Obsługiwane systemy operacyjne
-  - [Microsoft Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) or later
-- .NET Version Required
-  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) or later
+  - [Rocznicowa Aktualizacja systemu Microsoft Windows 10](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) lub nowsza wersja
+- Wymagana wersja platformy .NET
+  - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) lub nowszy
 - Wymagania dodatkowe
-  - An Internet connection is required to receive updates to the tool as well as templates.
+  - Do otrzymywania aktualizacji narzędzia oraz szablonów są wymagane połączenia z Internetem.
 
-## <a name="documentation-and-feedback"></a>Documentation and feedback
+## <a name="documentation-and-feedback"></a>Dokumentacja i opinie
 
-- Documentation for the Threat Modeling Tool is located on [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool), and includes information [about using the tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
+- Dokumentacja Threat Modeling Tool znajduje się w witrynie [docs.Microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)i zawiera informacje na [temat korzystania z narzędzia](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Download the latest version of the [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).
+Pobierz najnowszą wersję [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).

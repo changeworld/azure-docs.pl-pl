@@ -50,7 +50,7 @@ W tabeli zestawiono obsługiwane scenariusze dla serwerów fizycznych.
   Indie | Indie Środkowe lub Indie Południowe
   Japonia |  Japonia Wschodnia lub Japonia Zachodnia
   Korea | Korea środkowa lub Korea Południowa
-  Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+  Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
   Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
 
@@ -106,12 +106,12 @@ https://download.microsoft.com/download/* | Zezwala na pobieranie z witryny pobi
 
 Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
-**urządzenia** | **połączenia**
+**Pliku** | **Połączenie**
 --- | ---
 **Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Serwery fizyczne** | **System Windows:** Połączenia przychodzące na portach 443, 5989 do ściągania metadanych konfiguracji i wydajności z serwerów z systemem Windows. <br/> System **Linux:**  Połączenia przychodzące na porcie 22 (UDP) do ściągania metadanych konfiguracji i wydajności z serwerów z systemem Linux. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Przygotuj się do oceny serwera fizycznego](tutorial-prepare-physical.md) na potrzeby oceny i migracji serwera fizycznego.

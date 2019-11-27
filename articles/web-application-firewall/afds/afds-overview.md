@@ -1,6 +1,6 @@
 ---
-title: What is Azure web application firewall on Azure Front Door?
-description: Learn how Azure web application firewall on Azure Front Door service protects your web applications from malicious attacks.
+title: Co to jest Zapora aplikacji sieci Web platformy Azure na platformie Azure front-drzwi?
+description: Dowiedz się, jak Zapora aplikacji sieci Web platformy Azure w usłudze Azure front-drzwi chroni aplikacje sieci Web przed złośliwymi atakami.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -14,103 +14,103 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406210"
 ---
-# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall on Azure Front Door
+# <a name="azure-web-application-firewall-on-azure-front-door"></a>Zapora aplikacji sieci Web platformy Azure na platformie Azure
 
-Azure Web Application Firewall (WAF) on Azure Front Door provides centralized protection for your web applications that are globally delivered using Azure Front Door. Jest ona zaprojektowana i obsługiwana tak, aby chronić Twoje usługi internetowe przed typowymi lukami w zabezpieczeniach oraz zapewnić wysoką dostępność usług dla użytkowników i pomóc w spełnieniu wymogów dotyczących zgodności.
+Zapora aplikacji sieci Web platformy Azure (WAF) na platformie Azure front-drzwi zapewnia scentralizowaną ochronę aplikacji sieci Web, które są globalnie dostarczane przy użyciu usług frontonu platformy Azure. Jest ona zaprojektowana i obsługiwana tak, aby chronić Twoje usługi internetowe przed typowymi lukami w zabezpieczeniach oraz zapewnić wysoką dostępność usług dla użytkowników i pomóc w spełnieniu wymogów dotyczących zgodności.
 
-WAF on Front Door is a global and centralized solution. It is deployed on Azure network edge locations around the globe and every incoming request for a WAF enabled web application delivered by Front Door is inspected at the network edge. This allows WAF to prevent malicious attacks close to the attack sources, before they enter your virtual network and offers global protection at scale without sacrificing performance. A WAF policy can be easily linked to any Front Door profile in your subscription and new rules can be deployed within minutes, allowing you to respond quickly to changing threat patterns.
+WAF na wierzchu drzwi to globalne i scentralizowane rozwiązanie. Jest ona wdrażana w lokalizacjach brzegowych sieci platformy Azure na całym świecie i każde żądanie przychodzące dla aplikacji sieci Web obsługującej WAF, dostarczone przez tylne drzwi, jest sprawdzane na granicy sieci. Pozwala to WAF zapobieganiu złośliwych ataków blisko źródeł ataków przed wprowadzeniem ich do sieci wirtualnej i oferuje globalną ochronę na dużą skalę bez utraty wydajności. Zasady WAFymi można łatwo połączyć z dowolnym profilem drzwi do przodu w ramach subskrypcji. w ciągu kilku minut można wdrożyć nowe reguły, co pozwala szybko reagować na zmiany wzorców zagrożeń.
 
-![Azure web application firewall](../media/overview/wafoverview.png)
+![Zapora aplikacji sieci Web platformy Azure](../media/overview/wafoverview.png)
 
-## <a name="waf-policy-and-rules"></a>WAF policy and rules
+## <a name="waf-policy-and-rules"></a>Zasady i reguły WAF
 
-You can configure a WAF policy and associate that policy to one or more Front Door front-ends for protection. A WAF policy consists of two types of security rules:
+Można skonfigurować zasady WAF i skojarzyć te zasady z co najmniej jednym frontonem czołowym dla ochrony. Zasady WAF obejmują dwa typy reguł zabezpieczeń:
 
-- custom rules that are authored by the customer.
+- Reguły niestandardowe, które zostały utworzone przez klienta.
 
-- managed rule sets that are a collection of Azure-managed pre-configured set of rules.
+- zarządzane zestawy reguł, które są zbiorem wstępnie skonfigurowanych zestawów reguł zarządzanego przez platformę Azure.
 
-When both are present, custom rules are processed before processing the rules in a managed rule set. A rule is made of a match condition, a priority, and an action. Action types supported are: ALLOW, BLOCK, LOG, and REDIRECT. You can create a fully customized policy that meets your specific application protection requirements by combining managed and custom rules.
+Gdy obie są obecne, reguły niestandardowe są przetwarzane przed przetworzeniem reguł w zarządzanym zestawie reguł. Reguła zawiera warunek dopasowania, priorytet i akcję. Obsługiwane typy akcji to: Zezwalaj, Blokuj, Rejestruj i Przekieruj. Można utworzyć w pełni dostosowane zasady spełniające określone wymagania dotyczące ochrony aplikacji przez połączenie reguł zarządzanych i niestandardowych.
 
-Rules within a policy are processed in a prioritized order where priority is a unique integer that defines the order of rules being processed. Smaller integer value denotes a higher priority and those are evaluated before rules with a higher integer value. Once a rule is matched, the corresponding action that was defined in the rule is applied to the request. Once such a match is processed, rules with lower priorities are not processed further.
+Reguły w ramach zasad są przetwarzane w kolejności priorytetów, w której priorytet jest unikatową liczbą całkowitą, która definiuje kolejność przetwarzania reguł. Mniejsza wartość całkowita oznacza wyższy priorytet i są oceniane przed regułami o wyższej wartości całkowitej. Po dopasowaniu reguły odpowiednia akcja zdefiniowana w regule zostanie zastosowana do żądania. Gdy takie dopasowanie zostanie przetworzone, reguły o niższych priorytetach nie są przetwarzane więcej.
 
-A web application delivered by Front Door can have only one WAF policy associated with it at a time. However, you can have a Front Door configuration without any WAF policies associated with it. If a WAF policy is present, it is replicated to all of our edge locations to ensure consistency in security policies across the world.
+Aplikacja sieci Web dostarczana przez tylne drzwi może mieć tylko jedną zasadę WAFą skojarzoną z nim jednocześnie. Istnieje jednak możliwość skonfigurowania drzwi z przodu bez żadnych skojarzonych z nimi zasad WAF. Jeśli zasady WAF są obecne, zostaną zreplikowane do wszystkich naszych lokalizacji brzegowych, aby zapewnić spójność zasad zabezpieczeń na całym świecie.
 
-## <a name="waf-modes"></a>WAF modes
+## <a name="waf-modes"></a>Tryby WAF
 
-WAF policy can be configured to run in the following two modes:
+Zasady WAF można skonfigurować tak, aby były uruchamiane w następujących dwóch trybach:
 
-- **Detection mode:** When run in detection mode, WAF does not take any other actions other than monitors and logs the request and its matched WAF rule to WAF logs. You can turn on logging diagnostics for Front Door (when using portal, this can be achieved by going to the **Diagnostics** section in the Azure portal).
+- **Tryb wykrywania:** Po uruchomieniu w trybie wykrywania usługa WAF nie przyjmuje żadnych innych akcji innych niż monitory i rejestruje żądanie i zgodną regułę WAF z dziennikami WAF. Można włączyć diagnostykę rejestrowania dla drzwi zewnętrznych (w przypadku korzystania z portalu można to osiągnąć, przechodząc do sekcji **Diagnostyka** w Azure Portal).
 
-- **Prevention mode:** When configured to run in prevention mode, WAF takes the specified action if a request matches a rule and if a match is found, no further rules with lower priority are evaluated. Any matched requests are also logged in the WAF logs.
+- **Tryb zapobiegania:** Gdy program jest skonfigurowany do uruchamiania w trybie zapobiegania, WAF wykonuje określoną akcję, jeśli żądanie jest zgodne z regułą i jeśli zostanie znalezione dopasowanie, nie są oceniane dalsze reguły o niższym priorytecie. Wszystkie dopasowane żądania są również rejestrowane w dziennikach WAF.
 
-## <a name="waf-actions"></a>WAF actions
+## <a name="waf-actions"></a>Akcje WAF
 
-WAF customers can choose to run from one of the actions when a request matches a rule’s conditions:
+WAF klienci mogą wybrać uruchamianie z jednej z akcji, gdy żądanie spełnia warunki reguły:
 
-- **Allow:**  Request passes through the WAF and is forwarded to back-end. No further lower priority rules can block this request.
-- **Block:** The request is blocked and WAF sends a response to the client without forwarding the request to the back-end.
-- **Log:**  Request is logged in the WAF logs and WAF continues evaluating lower priority rules.
-- **Redirect:** WAF redirects the request to the specified URI. The URI specified is a policy level setting. Once configured, all requests that match the **Redirect** action will be sent to that URI.
+- **Zezwalaj:**  Żądanie przechodzi przez WAF i jest przekazywane do zaplecza. Żadne dalsze reguły o niższym priorytecie nie mogą blokować tego żądania.
+- **Blokuj:** Żądanie jest blokowane i WAF wysyła odpowiedź do klienta bez przesyłania dalej żądania do zaplecza.
+- **Dziennik:**  Żądanie jest rejestrowane w dziennikach WAF, a WAF kontynuuje szacowanie reguł o niższym priorytecie.
+- **Przekierowanie:** WAF przekierowuje żądanie do określonego identyfikatora URI. Określony identyfikator URI jest ustawieniem poziomu zasad. Po skonfigurowaniu wszystkie żądania zgodne z akcją **przekierowania** zostaną wysłane do tego identyfikatora URI.
 
-## <a name="waf-rules"></a>WAF rules
+## <a name="waf-rules"></a>Reguły WAF
 
-A WAF policy can consist of two types of security rules - custom rules, authored by the customer and managed rulesets, Azure-managed pre-configured set of rules.
+Zasady WAFymi mogą składać się z dwóch typów reguł zabezpieczeń — niestandardowych reguł, utworzonych przez klienta i zarządzane zestawy reguł, zarządzane wstępnie przez platformę Azure.
 
-### <a name="custom-authored-rules"></a>Custom authored rules
+### <a name="custom-authored-rules"></a>Niestandardowe reguły utworzone
 
-You can configure custom rules WAF as follows:
+Niestandardowe reguły WAF można skonfigurować w następujący sposób:
 
-- **IP allow list and block list:** You can configure custom rules to control access to your web applications based on a list of client IP addresses or IP address ranges. Both IPv4 and IPv6 address types are supported. This list can be configured to either block or allow those requests where the source IP matches an IP in the list.
+- **Lista dozwolonych adresów IP i lista zablokowanych:** Można skonfigurować reguły niestandardowe, aby kontrolować dostęp do aplikacji sieci Web na podstawie listy adresów IP klientów lub zakresów adresów IP. Obsługiwane są zarówno typy adresów IPv4, jak i IPv6. Tę listę można skonfigurować do blokowania lub zezwalania na te żądania, w przypadku których źródłowy adres IP jest zgodny z adresem IP na liście.
 
-- **Geographic based access control:** You can configure custom rules to control access to your web applications based on the country code associated with a client’s IP address.
+- **Kontrola dostępu oparta na geograficznym:** Można skonfigurować reguły niestandardowe, aby kontrolować dostęp do aplikacji sieci Web w oparciu o kod kraju skojarzony z adresem IP klienta.
 
-- **HTTP parameters-based access control:** You can configure custom rules based on string matching HTTP/HTTPS request parameters such as query strings, POST args, Request URI, Request Header, and Request Body.
+- **Kontrola dostępu oparta na parametrach http:** Można skonfigurować niestandardowe reguły na podstawie ciągów, które pasują do parametrów żądania HTTP/HTTPS, takich jak ciągi zapytań, argumenty POST, identyfikator URI żądania, nagłówek żądania i treść żądania.
 
-- **Request method-based access control:** You may configure custom rules based on the HTTP request method of the request such as GET, PUT, or HEAD.
+- **Zażądaj kontroli dostępu opartej na metodzie:** Reguły niestandardowe można skonfigurować na podstawie metody żądania HTTP żądania, takiej jak GET, PUT lub szef.
 
-- **Size constraint:** You can configure custom rules based on the lengths of specific parts of a request such as query string, Uri, or request body.
+- **Ograniczenie rozmiaru:** Można skonfigurować niestandardowe reguły na podstawie długości określonych części żądania, takich jak ciąg zapytania, identyfikator URI lub treść żądania.
 
-- **Rate limiting rules:** A rate control rule is to limit abnormal high traffic from any client IP. You may configure a threshold on the number of web requests allowed from a client IP during a one-minute duration. This is distinct from an IP list-based allow/block custom rule that either allows all or blocks all request from a client IP. Rate limiting can be combined with additional match conditions such as HTTP(S) parameters matching for granular rate control.
+- **Reguły ograniczania szybkości:** Reguła kontroli częstotliwości polega na ograniczeniu nietypowego natężenia ruchu z dowolnego adresu IP klienta. W czasie trwania jednej minuty można skonfigurować próg liczby żądań sieci Web dozwolonych przez adres IP klienta. Jest to odrębne względem reguły typu "Zezwól/Blokuj" na podstawie listy adresów IP, która zezwala na wszystkie żądania z adresu IP klienta lub blokuje je. Ograniczanie szybkości może być połączone z dodatkowymi warunkami dopasowania, takimi jak parametry HTTP (S) pasujące do kontroli stopnia szczegółowości.
 
-### <a name="azure-managed-rule-sets"></a>Azure-managed rule sets
+### <a name="azure-managed-rule-sets"></a>Zestawy reguł zarządzane przez platformę Azure
 
-Azure-managed rule sets provide an easy way to deploy protection against a common set of security threats. Since such rulesets are managed by Azure, the rules are updated as needed to protect against new attack signatures. At public preview, the Azure-managed Default Rule Set includes rules against the following threat categories:
+Zestawy reguł zarządzane przez platformę Azure zapewniają łatwy sposób wdrażania ochrony przed wspólnym zbiorem zagrożeń bezpieczeństwa. Ponieważ takie zestaw reguł jest zarządzany przez platformę Azure, reguły są aktualizowane w razie potrzeby w celu ochrony przed nowymi sygnaturami ataków. W publicznej wersji zapoznawczej zarządzana przez platformę Azure reguła domyślna obejmuje reguły dotyczące następujących kategorii zagrożeń:
 
-- Cross-site scripting
-- Java attacks
-- Local file inclusion
-- PHP injection attacks
-- Remote command execution
-- Remote file inclusion
-- Session fixation
+- Skrypty między lokacjami
+- Ataki Java
+- Włączenie lokalnego pliku
+- Ataki w języku PHP
+- Zdalne wykonywanie poleceń
+- Zdalne Dołączanie plików
+- Utrwalanie sesji
 - Ochrona przed atakami polegającymi na iniekcji SQL
-- Protocol attackers
+- Atakujący protokołu
 
-The version number of the Default Rule Set will increment when new attack signatures are added to the rule set.
-Default Rule Set is enabled by default in Detection mode in your WAF policies. You can disable or enable individual rules within the Default Rule Set to meet your application requirements. You can also set specific actions (ALLOW/BLOCK/REDIRECT/LOG) per rule. Default action is to BLOCK. In addition, custom rules can be configured in the same WAF policy if you wish to bypass any of the pre-configured rules in the Default Rule Set.
-Custom rules are always applied before rules in the Default Rule Set are evaluated. If a request matches a custom rule, corresponding rule action is applied, and the request is either blocked or passed through to back-end, without invocation of any further custom rules or the rules in the Default Rule Set. Furthermore, you have the option to remove Default Rule Set from your WAF policies.
+Numer wersji domyślnego zestawu reguł zostanie zwiększony, gdy nowe podpisy ataków zostaną dodane do zestawu reguł.
+Domyślny zestaw reguł jest domyślnie włączony w trybie wykrywania w zasadach WAF. Można wyłączyć lub włączyć poszczególne reguły w ramach domyślnego zestawu reguł, aby spełniały wymagania aplikacji. Można również ustawić określone akcje (Zezwalaj/Blokuj/REDIRECT/LOG) dla każdej reguły. Domyślną akcją jest blokowanie. Ponadto reguły niestandardowe można skonfigurować w ramach tych samych zasad WAF, jeśli chcesz pominąć wszystkie wstępnie skonfigurowane reguły w domyślnym zestawie reguł.
+Reguły niestandardowe są zawsze stosowane przed oceną reguł w domyślnym zestawie reguł. Jeśli żądanie jest zgodne z regułą niestandardową, stosowana jest odpowiednia akcja reguły, a żądanie jest blokowane lub przenoszone przez program do zaplecza bez wywołania dalszych reguł niestandardowych lub reguł w zestawie reguł domyślnych. Ponadto istnieje możliwość usunięcia domyślnego zestawu reguł z zasad WAFymi.
 
 
-### <a name="bot-protection-rule-set-preview"></a>Bot protection rule set (preview)
+### <a name="bot-protection-rule-set-preview"></a>Zestaw reguł ochrony bot (wersja zapoznawcza)
 
-A managed bot protection rule set can be enabled for your WAF to take custom actions on requests from known bot categories. There are three bot categories supported: Bad Bots, Good Bots, and Unknown Bots. Bot signatures are managed and dynamically updated by the WAF platform. Malicious IP addresses for Bad Bots are sourced from the Microsoft Threat Intelligence feed. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) powers Microsoft Threat Intelligence and is used by multiple services including Azure Security Center. Good Bots include validated search engines. Unknown categories include additional bot groups. You may set custom actions to block, allow, log, or redirect for different types of bots.
+Zarządzany zestaw reguł ochrony bot można włączyć dla WAF, aby wykonywał niestandardowe akcje na żądaniach ze znanych kategorii bot. Istnieją trzy kategorie bot: zła botów, dobry botów i nieznany botów. Podpisy bot są zarządzane i dynamicznie aktualizowane przez platformę WAF. Złośliwe adresy IP dla nieprawidłowych botów są źródłem ze źródła analizy zagrożeń firmy Microsoft. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) zapewnia program Microsoft Threat Intelligence i jest używany przez wiele usług, w tym Azure Security Center. Dobre botów obejmują sprawdzone aparaty wyszukiwania. Nieznane kategorie obejmują dodatkowe grupy bot. Można ustawić akcje niestandardowe w celu blokowania, zezwalania, rejestrowania lub przekierowywania dla różnych typów botów.
 
-![Bot Protection Rule Set](../media/afds-overview/botprotect2.png)
+![Zestaw reguł ochrony bot](../media/afds-overview/botprotect2.png)
 
 > [!IMPORTANT]
-> The Bot protection rule set is currently in public preview and is provided with a preview service level agreement. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.  Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zestaw reguł ochrony bot jest obecnie w publicznej wersji zapoznawczej i jest dostarczany z umową dotyczącą poziomu usług w wersji zapoznawczej. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.  Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-If bot protection is enabled, incoming requests that match bot rules are logged at the FrontdoorWebApplicationFirewallLog log. You may access WAF logs from a storage account, event hub, or log analytics.
+Jeśli ochrona bot jest włączona, przychodzące żądania zgodne z regułami bot są rejestrowane w dzienniku FrontdoorWebApplicationFirewallLog. Użytkownik może uzyskać dostęp do dzienników WAF z konta magazynu, centrum zdarzeń lub usługi log Analytics.
 
 ## <a name="configuration"></a>Konfigurowanie
 
-Configuring and deploying all WAF rule types is fully supported using Azure portal, REST APIs, Azure Resource Manager templates, and Azure PowerShell.
+Konfigurowanie i wdrażanie wszystkich typów reguł WAF jest w pełni obsługiwane przy użyciu Azure Portal, interfejsów API REST, szablonów Azure Resource Manager i Azure PowerShell.
 
 ## <a name="monitoring"></a>Monitorowanie
 
-Monitoring for WAF at Front Door is integrated with Azure Monitor to track alerts and easily monitor traffic trends.
+Monitorowanie pod kątem WAFów w drzwiach zewnętrznych jest zintegrowane z Azure Monitor do śledzenia alertów i łatwego monitorowania trendów ruchu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Learn about [Web Application Firewall on Azure Application Gateway](../ag/ag-overview.md)
+- Informacje o [zaporze aplikacji sieci Web w usłudze Azure Application Gateway](../ag/ag-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Next steps for Anomaly Detector quickstarts
+title: Następne kroki dotyczące przewodników szybki start dotyczących wykrywania anomalii
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -17,7 +17,7 @@ ms.locfileid: "74483042"
 ---
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with the resource group.
+Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz usunąć zasób lub grupę zasobów. Usunięcie grupy zasobów spowoduje również usunięcie wszystkich innych zasobów skojarzonych z tą grupą zasobów.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Interfejs wiersza polecenia platformy Azure](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -26,11 +26,11 @@ If you want to clean up and remove a Cognitive Services subscription, you can de
 
 Pojęcia:
 
-* [What is the Anomaly Detector API?](../overview.md)
-* [Anomaly detection methods](../how-to/identify-anomalies.md)
-* [Best practices when using the Anomaly Detector API.](../concepts/anomaly-detection-best-practices.md) 
+* [Co to jest interfejs API wykrywania anomalii?](../overview.md)
+* [Metody wykrywania anomalii](../how-to/identify-anomalies.md)
+* [Najlepsze rozwiązania w przypadku korzystania z interfejsu API wykrywania anomalii.](../concepts/anomaly-detection-best-practices.md) 
 
 Samouczki:
 
-* [Visualize anomalies as a batch using Power BI](../tutorials/batch-anomaly-detection-powerbi.md)
-* [Anomaly detection on streaming data using Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)
+* [Wizualizuj anomalie jako partię przy użyciu Power BI](../tutorials/batch-anomaly-detection-powerbi.md)
+* [Wykrywanie anomalii na danych przesyłanych strumieniowo przy użyciu Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)

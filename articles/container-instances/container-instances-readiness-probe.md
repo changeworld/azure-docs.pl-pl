@@ -1,19 +1,14 @@
 ---
-title: Konfigurowanie sond gotowości w Azure Container Instances
+title: Konfigurowanie sondy gotowości dla wystąpienia kontenera
 description: Dowiedz się, jak skonfigurować sondę, aby upewnić się, że kontenery w Azure Container Instances odbierają żądania tylko wtedy, gdy są gotowe
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 10/17/2019
-ms.author: danlep
-ms.openlocfilehash: 9cdc8362c377be28a3ed1300b599dc8ebef9e903
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905578"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533558"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurowanie sond gotowości
 

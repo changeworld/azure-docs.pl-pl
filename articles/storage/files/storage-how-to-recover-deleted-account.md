@@ -1,5 +1,5 @@
 ---
-title: Use an Azure file share with Azure Storage | Microsoft Docs
+title: Korzystanie z udziału plików platformy Azure w usłudze Azure Storage | Microsoft Docs
 description: Dowiedz się, jak używać udziału plików platformy Azure w systemach Windows i Windows Server.
 author: todmccoy
 manager: dcscontentpm
@@ -17,29 +17,29 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233794"
 ---
-# <a name="how-to-recover-a-deleted-storage-account"></a>How to recover a deleted storage account
+# <a name="how-to-recover-a-deleted-storage-account"></a>Jak odzyskać usunięte konto magazynu
 
-Azure Storage provides data resiliency through automated replicas, but doesn't prevent users or application code from corrupting data, whether accidentally or maliciously. Maintaining data fidelity during instances of application or user error requires more advanced techniques, such as copying the data to a secondary storage location with an audit log.
+Usługa Azure Storage zapewnia odporność na dane za pośrednictwem zautomatyzowanych replik, ale nie zapobiega uszkodzeniu i złośliwemu używaniu danych przez użytkowników ani kod aplikacji. Zachowanie dokładności danych podczas wystąpienia błędu aplikacji lub użytkownika wymaga bardziej zaawansowanych technik, takich jak kopiowanie danych do pomocniczej lokalizacji magazynu z dziennikiem inspekcji.
 
-The following table provides overview of the scope of Storage Account Recovery depending on the replication strategy.
+W poniższej tabeli przedstawiono omówienie zakresu odzyskiwania konta magazynu w zależności od strategii replikacji.
 
-| |LRS|ZRS|GRS|RA - GRS|
+| |LRS|ZRS|GRS|RA-GRS|
 |---|---|---|---|---|
-|Storage Account Azure Resource Manager|Tak|Tak|Tak|Tak|
-|Storage Account Classic|Tak|Tak|Tak|Tak|
+|Azure Resource Manager konta magazynu|Yes|Yes|Yes|Yes|
+|Konto magazynu klasyczne|Yes|Yes|Yes|Yes|
 
-Gather the following information and file a support request with Microsoft Support:
+Zbierz następujące informacje i Zastąp żądanie pomocy technicznej pomoc techniczna firmy Microsoft:
 
 * Nazwa konta magazynu
-* Date of deletion
-* Storage account region
-* How was the storage account deleted?
-* What method deleted the storage account? (Portal, PowerShell, etc.)
+* Data usunięcia
+* Region konta magazynu
+* Jak zostało usunięte konto magazynu?
+* Jaka metoda została usunięta z konta magazynu? (Portal, PowerShell itd.)
 
-Important Points
+Ważne punkty
 
-* It can generally take up to 15 days from the time of deletion for the storage service to perform garbage collection, so storage accounts recovery may not be recovered with an SLA.
-* Microsoft Support will try to recover the Container/Account on a best-effort basis and cannot guarantee the recovery.
+* Może to potrwać do 15 dni od momentu usunięcia usługi magazynu w celu wykonania wyrzucania elementów bezużytecznych, dzięki czemu odzyskiwanie kont magazynu może nie być odzyskiwane z umową SLA.
+* Pomoc techniczna firmy Microsoft podejmie próbę odzyskania kontenera/konta na podstawie najlepszego wysiłku i nie gwarantuje odzyskania.
 
 > [!NOTE]
-> The recovery may not be successful if the account has been re-created. If you have already re-created the account, you must delete it first before recovery can be attempted.
+> Odzyskiwanie może zakończyć się niepowodzeniem, jeśli konto zostało utworzone na nowo. Jeśli konto zostało już utworzone ponownie, należy najpierw usunąć je przed podjęciem próby odzyskania.

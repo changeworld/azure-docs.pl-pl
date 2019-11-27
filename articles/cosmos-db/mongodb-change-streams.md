@@ -71,7 +71,7 @@ Podczas używania strumieni zmian są obsługiwane następujące kody błędów 
 
 * **NamespaceNotFound (OperationType unvalidate)** — w przypadku uruchomienia strumienia zmian w kolekcji, która nie istnieje lub jeśli kolekcja została porzucona, zwracany jest błąd `NamespaceNotFound`. Ponieważ właściwość `operationType` nie może zostać zwrócona w dokumencie wyjściowym, a nie `operationType Invalidate` błędu, zwracany jest błąd `NamespaceNotFound`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Użyj czasu wygaśnięcia, aby automatycznie wygasać dane w interfejsie API Azure Cosmos DB MongoDB](mongodb-time-to-live.md)
 * [Indeksowanie w interfejsie API Azure Cosmos DB dla MongoDB](mongodb-indexing.md)

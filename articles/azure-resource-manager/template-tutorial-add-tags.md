@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add tags to resources in template
-description: Add tags to resources that you deploy in your Azure Resource Manager template. Tags let you logically organize resources.
+title: Samouczek — Dodawanie tagów do zasobów w szablonie
+description: Dodawanie tagów do zasobów wdrażanych w szablonie Azure Resource Manager. Tagi pozwalają logicznie organizować zasoby.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,37 +12,37 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406061"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Tutorial: Add tags in your Resource Manager template
+# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Samouczek: Dodawanie tagów do szablonu Menedżer zasobów
 
-In this tutorial, you learn how to add tags to resources in your template. [Tags](resource-group-using-tags.md) help you logically organize your resources. The tag values show up in cost reports. This tutorial takes **8 minutes** to complete.
+W tym samouczku dowiesz się, jak dodać tagi do zasobów w szablonie. [Tagi](resource-group-using-tags.md) ułatwiają logiczne organizowanie zasobów. Wartości tagów są wyświetlane w raportach kosztów. Ten samouczek trwa **8 minut** .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-We recommend that you complete the [tutorial about Quickstart templates](template-tutorial-quickstart-template.md), but it's not required.
+Zalecamy ukończenie [samouczka dotyczącego szablonów szybkiego startu](template-tutorial-quickstart-template.md), ale nie jest to wymagane.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Przejrzyj szablon
 
-Your previous template deployed a storage account, App Service plan, and web app.
+Poprzedni szablon został wdrożony, konto magazynu, plan App Service i aplikacja internetowa.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json)]
 
-After deploying these resources, you might need to track costs and find resources that belong to a category. You can add tags to help solve these issues.
+Po wdrożeniu tych zasobów może być konieczne śledzenie kosztów i znajdowanie zasobów należących do kategorii. Możesz dodać tagi, aby pomóc w rozwiązaniu tych problemów.
 
 ## <a name="add-tags"></a>Dodawanie tagów
 
-You tag resources to add values that help you identify their use. For example, you can add tags that list the environment and the project. You could add tags that identify a cost center or the team that owns the resource. Add any values that make sense for your organization.
+Oznacz zasoby, aby dodać wartości, które ułatwiają identyfikację ich użycia. Na przykład można dodać tagi, które wyświetlają środowisko i projekt. Można dodać tagi, które identyfikują centrum kosztów lub zespół, który jest właścicielem zasobu. Dodaj wszystkie wartości, które mają sens dla organizacji.
 
-The following example highlights the changes to the template. Copy the whole file and replace your template with its contents.
+Poniższy przykład wyróżnia zmiany w szablonie. Skopiuj cały plik i Zastąp jego zawartość.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-It's time to deploy the template and look at the results.
+Czas na wdrożenie szablonu i sprawdzenie wyników.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -70,20 +70,20 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. Select one of the resources, such as the storage account resource. You see that it now has tags.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. Wybierz grupę zasobów, do której została wdrożona.
+1. Wybierz jeden z zasobów, na przykład zasób konta magazynu. Zobaczysz, że ma teraz Tagi.
 
-   ![Show tags](./media/template-tutorial-add-tags/show-tags.png)
+   ![Pokaż Tagi](./media/template-tutorial-add-tags/show-tags.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
 
 1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
@@ -92,7 +92,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this tutorial, you added tags to the resources. In the next tutorial, you'll learn how to use parameter files to simplify passing in values to the template.
+W tym samouczku dodano znaczniki do zasobów. W następnym samouczku dowiesz się, jak używać plików parametrów, aby uprościć przekazywanie wartości do szablonu.
 
 > [!div class="nextstepaction"]
-> [Use parameter file](template-tutorial-use-parameter-file.md)
+> [Użyj pliku parametrów](template-tutorial-use-parameter-file.md)

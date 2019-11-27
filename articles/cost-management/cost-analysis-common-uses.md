@@ -112,5 +112,5 @@ Wyświetl łączne opłaty netto z upływem czasu, aby poznać ogólne wydatki d
 ![Zakumulowane koszty związane z rejestracją](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
 
 ## <a name="next-steps"></a>Następne kroki
-- Jeśli nie została już zakończona pierwszym przewodniku Szybki Start usługi Cost Management, zapoznaj się z adresem [zacząć analizować koszty](quick-acm-cost-analysis.md).
+- Jeśli nie zostało to jeszcze zrobione z pierwszego przewodnika Szybki Start dla Cost Management, zapoznaj się z tematem [Rozpocznij analizowanie kosztów](quick-acm-cost-analysis.md).
 - Przeczytaj [dokumentację Cost Management](index.yml).

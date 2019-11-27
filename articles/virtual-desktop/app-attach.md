@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop MSIX app attach - Azure
-description: How to set up MSIX app attach for Windows Virtual Desktop.
+title: Dołączanie aplikacji MSIX pulpitu wirtualnego systemu Windows — Azure
+description: Jak skonfigurować dołączenie aplikacji MSIX dla pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -17,43 +17,43 @@ ms.locfileid: "74483825"
 # <a name="set-up-msix-app-attach"></a>Konfigurowanie dołączania aplikacji MSIX
 
 > [!IMPORTANT]
-> MSIX app attach is currently in public preview.
+> Dołączenie do aplikacji MSIX jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-This topic will walk you through how to set up MSIX app attach in a Windows Virtual Desktop environment.
+W tym temacie opisano sposób konfigurowania dołączania aplikacji MSIX w środowisku pulpitu wirtualnego systemu Windows.
 
 ## <a name="requirements"></a>Wymagania
 
-Before you get started, here's what you need to configure MSIX app attach:
+Przed rozpoczęciem należy wykonać następujące czynności w celu skonfigurowania dołączania aplikacji MSIX:
 
-- Access to the Windows Insider portal to obtain the version of Windows 10 with support for the MSIX app attach APIs.
-- A functioning Windows Virtual Desktop deployment. For information, see [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
-- The MSIX packaging tool
-- A network share in your Windows Virtual Desktop deployment where the MSIX package will be stored
+- Dostęp do portalu niejawnego testera systemu Windows w celu uzyskania wersji systemu Windows 10 z obsługą interfejsów API dołączania aplikacji MSIX.
+- Działające wdrożenie pulpitu wirtualnego systemu Windows. Aby uzyskać więcej informacji, zobacz [Tworzenie dzierżawy w systemie Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- Narzędzie MSIX pakowanie
+- Udział sieciowy w wdrożeniu pulpitu wirtualnego systemu Windows, w którym będzie przechowywany pakiet MSIX
 
-## <a name="get-the-os-image"></a>Get the OS image
+## <a name="get-the-os-image"></a>Pobierz obraz systemu operacyjnego
 
-First, you need to get the OS image you'll use for the MSIX app. To get the OS image:
+Najpierw należy uzyskać obraz systemu operacyjnego, który będzie używany dla aplikacji MSIX. Aby uzyskać obraz systemu operacyjnego:
 
-1. Open the [Windows Insider portal](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) and sign in.
+1. Otwórz [Portal niejawnego testera systemu Windows](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) i zaloguj się.
 
      >[!NOTE]
-     >You must be member of the Windows Insider program to access the Windows Insider portal. To learn more about the Windows Insider program, check out our [Windows Insider documentation](https://docs.microsoft.com/windows-insider/at-home/).
+     >Aby uzyskać dostęp do portalu niejawnego testera systemu Windows, musisz być członkiem niejawnego programu testów systemu Windows. Aby dowiedzieć się więcej o programie testów systemu Windows, zapoznaj się z [dokumentacją zatestera systemu Windows](https://docs.microsoft.com/windows-insider/at-home/).
 
-2. Scroll down to the **Select edition** section and select **Windows 10 Insider Preview Enterprise (FAST) – Build XXXXX**.
+2. Przewiń w dół do sekcji **Wybierz wersję** i wybierz pozycję **Windows 10 wersja zapoznawcza wersji zapoznawczej Enterprise (Fast) — Kompilacja XXXXX**.
 
-3. Select **Confirm**, then select the language you wish to use, and then select **Confirm** again.
+3. Wybierz pozycję **Potwierdź**, a następnie wybierz język, którego chcesz użyć, a następnie wybierz pozycję **Potwierdź** ponownie.
     
      >[!NOTE]
-     >At the moment, English is the only language that has been tested with the feature. You can select other languages, but they may not display as intended.
+     >W tej chwili w języku angielskim jest jedynym językiem, który został przetestowany przy użyciu funkcji. Można wybrać inne języki, ale mogą one nie być wyświetlane zgodnie z oczekiwaniami.
     
-4. When the download link is generated, select the **64-bit Download** and save it to your local hard disk.
+4. Po wygenerowaniu linku pobierania wybierz pozycję **64-bitowe pobieranie** i Zapisz ją na lokalnym dysku twardym.
 
-## <a name="prepare-the-vhd-image-for-azure"></a>Prepare the VHD image for Azure 
+## <a name="prepare-the-vhd-image-for-azure"></a>Przygotowanie obrazu wirtualnego dysku twardego dla platformy Azure 
 
-Before you get started, you'll need to create a master VHD image. If you haven't created your master VHD image yet, go to [Prepare and customize a master VHD image](set-up-customize-master-image.md) and follow the instructions there. 
+Przed rozpoczęciem należy utworzyć główny obraz wirtualnego dysku twardego. Jeśli nie utworzono jeszcze głównego obrazu wirtualnego dysku twardego, przejdź do [przygotowania i dostosowania głównego obrazu wirtualnego dysku twardego](set-up-customize-master-image.md) i postępuj zgodnie z instrukcjami w tym miejscu. 
 
-After you've created your master VHD image, you must disable automatic updates for MSIX app attach applications. To disable automatic updates, you'll need to run the following commands in an elevated command prompt:
+Po utworzeniu głównego obrazu wirtualnego dysku twardego należy wyłączyć aktualizacje automatyczne dla aplikacji MSIX. Aby wyłączyć aktualizacje automatyczne, należy uruchomić następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień:
 
 ```cmd
 rem Disable Store auto update:
@@ -73,144 +73,144 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Next, prepare the VM VHD for Azure and upload the resulting VHD disk to Azure. To learn more, see [Prepare and customize a master VHD image](set-up-customize-master-image.md).
+Następnie przygotuj dysk VHD maszyny wirtualnej dla platformy Azure i przekaż otrzymany na platformie Azure plik VHD. Aby dowiedzieć się więcej, zobacz [Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego](set-up-customize-master-image.md).
 
-Once you've uploaded the VHD to Azure, create a host pool that's based on this new image by following the instructions in the [Create a host pool by using the Azure Marketplace](create-host-pools-azure-marketplace.md) tutorial.
+Po przekazaniu wirtualnego dysku twardego na platformę Azure Utwórz pulę hostów opartą na tym nowym obrazie, postępując zgodnie z instrukcjami w temacie [Tworzenie puli hostów za pomocą samouczka Azure Marketplace](create-host-pools-azure-marketplace.md) .
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>Prepare the application for MSIX app attach 
+## <a name="prepare-the-application-for-msix-app-attach"></a>Przygotowywanie aplikacji do dołączenia do aplikacji MSIX 
 
-If you already have an MSIX package, skip ahead to [Configure Windows Virtual Desktop infrastructure](#configure-windows-virtual-desktop-infrastructure). If you want to test legacy applications, follow the instructions in [Create an MSIX package from a desktop installer on a VM](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm) to convert the legacy application to an MSIX package.
+Jeśli masz już pakiet MSIX, przejdź do [konfiguracji infrastruktury pulpitów wirtualnych systemu Windows](#configure-windows-virtual-desktop-infrastructure). Jeśli chcesz przetestować starsze aplikacje, postępuj zgodnie z instrukcjami w temacie [Tworzenie pakietu MSIX z poziomu Instalatora pulpitu na maszynie wirtualnej](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm) w celu przekonwertowania starszej aplikacji na pakiet MSIX.
 
-## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Generate a VHD or VHDX package for MSIX
+## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Wygeneruj pakiet VHD lub VHDX dla MSIX
 
-Packages are in VHD or VHDX format to optimize performance. MSIX requires VHD or VHDX packages to work properly.
+Pakiety są w formacie VHD lub VHDX, aby zoptymalizować wydajność. MSIX wymaga poprawnego działania pakietów VHD lub VHDX.
 
-To generate a VHD or VHDX package for MSIX:
+Aby wygenerować pakiet VHD lub VHDX dla MSIX:
 
-1. [Download the msixmgr tool](https://aka.ms/msixmgr) and save the .zip folder to a folder within a session host VM.
+1. [Pobierz narzędzie msixmgr](https://aka.ms/msixmgr) i Zapisz folder. zip do folderu na maszynie wirtualnej hosta sesji.
 
-2. Unzip the msixmgr tool .zip folder.
+2. Rozpakuj folder Narzędzia msixmgr. zip.
 
-3. Put the source MSIX package into the same folder where you unzipped the msixmgr tool.
+3. Umieść pakiet źródłowy MSIX w tym samym folderze, w którym zostało rozpakowane narzędzie msixmgr.
 
-4. Run the following cmdlet in PowerShell to create a VHD:
+4. Uruchom następujące polecenie cmdlet w programie PowerShell, aby utworzyć dysk VHD:
 
     ```powershell
     New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
     ```
 
     >[!NOTE]
-    >Make sure the size of VHD is large enough to hold the expanded MSIX.*
+    >Upewnij się, że rozmiar wirtualnego dysku twardego jest wystarczająco duży, aby pomieścić rozszerzony MSIX. *
 
-5. Run the following cmdlet to mount the newly created VHD:
+5. Uruchom następujące polecenie cmdlet, aby zainstalować nowo utworzony dysk VHD:
 
     ```powershell
     $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
     ```
 
-6. Run this cmdlet to initialize the VHD:
+6. Uruchom to polecenie cmdlet, aby zainicjować dysk VHD:
 
     ```powershell
     $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
     ```
 
-7. Run this cmdlet to create a new partition:
+7. Uruchom to polecenie cmdlet, aby utworzyć nową partycję:
 
     ```powershell
     $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
     ```
 
-8. Run this cmdlet to format the partition:
+8. Uruchom to polecenie cmdlet, aby sformatować partycję:
 
     ```powershell
     Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
     ```
 
-9. Create a parent folder on the mounted VHD. This step is mandatory as the MSIX app attach requires a parent folder. You can name the parent folder whatever you like.
+9. Utwórz folder nadrzędny na zainstalowanym wirtualnym dysku twardym. Ten krok jest obowiązkowy, ponieważ dołączenie aplikacji MSIX wymaga folderu nadrzędnego. Możesz zmienić nazwę folderu nadrzędnego.
 
-### <a name="expand-msix"></a>Expand MSIX
+### <a name="expand-msix"></a>Rozwiń MSIX
 
-After that, you'll need to "expand" the MSIX image by unpacking it. To unpack the MSIX image:
+Po tym celu należy "rozwinąć" obraz MSIX, rozpakowywanie go. Aby rozpakować obraz MSIX:
 
-1. Open a command prompt as Administrator and navigate to the folder where you downloaded and unzipped the msixmgr tool.
+1. Otwórz wiersz polecenia jako administrator i przejdź do folderu, w którym zostało pobrane i rozpakowane narzędzie msixmgr.
 
-2. Run the following cmdlet to unpack the MSIX into the VHD you created and mounted in the previous section.
+2. Uruchom następujące polecenie cmdlet, aby rozpakować MSIX do dysku VHD, który został utworzony i zainstalowany w poprzedniej sekcji.
 
     ```powershell
     msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
     ```
 
-    The following message should appear once unpacking is done:
+    Następujący komunikat powinien pojawić się po rozpakowaniu:
 
     `Successfully unpacked and applied ACLs for package: <package name>.msix`
 
     >[!NOTE]
-    > If using packages from the Microsoft Store for Business (or Education) within your network, or on devices that are not connected to the internet, you will need to obtain the package licenses from the Store and install them to run the app successfully. See [Use packages offline](#use-packages-offline).
+    > W przypadku używania pakietów z Microsoft Store dla firm (lub edukacji) w sieci lub na urządzeniach, które nie są połączone z Internetem, należy uzyskać licencje pakietu ze sklepu i zainstalować je w celu pomyślnego uruchomienia aplikacji. Zobacz [Korzystanie z pakietów w trybie offline](#use-packages-offline).
 
-3. Navigate to the mounted VHD and open the app folder and confirm package content is present.
+3. Przejdź do zainstalowanego wirtualnego dysku twardego i Otwórz folder aplikacji i sprawdź, czy jest dostępna zawartość pakietu.
 
-4. Unmount the VHD.
+4. Odinstaluj dysk VHD.
 
-## <a name="configure-windows-virtual-desktop-infrastructure"></a>Configure Windows Virtual Desktop infrastructure
+## <a name="configure-windows-virtual-desktop-infrastructure"></a>Konfigurowanie infrastruktury pulpitów wirtualnych systemu Windows
 
-By design, a single MSIX expanded package (the VHD you created in the previous section) can be shared between multiple session host VMs as the VHDs are attached in read-only mode.
+Po zaprojektowaniu jeden rozwinięty pakiet MSIX (wirtualny dysk twardy utworzony w poprzedniej sekcji) może być współużytkowany między wieloma maszynami wirtualnymi hosta sesji, ponieważ wirtualne dyski twarde są dołączone w trybie tylko do odczytu.
 
-Before you start, make sure your network share meets these requirements:
+Przed rozpoczęciem upewnij się, że udział sieciowy spełnia następujące wymagania:
 
-- The share is SMB compatible.
-- The VMs that are part of the session host pool have NTFS permissions to the share.
+- Udział jest zgodny z protokołem SMB.
+- Maszyny wirtualne będące częścią puli hostów sesji mają uprawnienia NTFS do udziału.
 
-### <a name="set-up-an-msix-app-attach-share"></a>Set up an MSIX app attach share 
+### <a name="set-up-an-msix-app-attach-share"></a>Skonfiguruj udział dołączania aplikacji MSIX 
 
-In your Windows Virtual Desktop environment, create a network share and move the package there.
+W środowisku pulpitu wirtualnego systemu Windows Utwórz udział sieciowy i Przenieś pakiet.
 
 >[!NOTE]
-> The best practice for creating MSIX network shares is to set up the network share with NTFS read-only permissions.
+> Najlepszym rozwiązaniem w przypadku tworzenia udziałów sieciowych MSIX jest skonfigurowanie udziału sieciowego z uprawnieniami tylko do odczytu systemu plików NTFS.
 
-## <a name="install-certificates"></a>Install certificates
+## <a name="install-certificates"></a>Instalowanie certyfikatów
 
-If your app uses a certificate that isn't public-trusted or was self-signed, here's how to install it:
+Jeśli aplikacja używa certyfikatu, który nie jest zaufany lub został podpisany z podpisem własnym, poniżej przedstawiono sposób jego instalacji:
 
-1. Right-click the package and select **Properties**.
-2. In the window that appears, select the **Digital signatures** tab. There should be only one item in the list on the tab, as shown in the following image. Select that item to highlight the item, then select **De
-3. When the digital signal details window appears, select the **General** tab, then select **Install certificate**.
-4. When the installer opens, select **local machine** as your storage location, then select **Next**.
-5. If the installer asks you if you want to allow the app to make changes to your device, select **Yes**.
-6. Select **Place all certificates in the following store**, then select **Browse**.
-7. When the select certificate store window appears, select **Trusted people**, then select **OK**.
+1. Kliknij prawym przyciskiem myszy pakiet i wybierz polecenie **Właściwości**.
+2. W wyświetlonym oknie Wybierz kartę **podpisy cyfrowe** . Na karcie powinna znajdować się tylko jeden element, jak pokazano na poniższej ilustracji. Wybierz ten element, aby wyróżnić element, a następnie wybierz pozycję * * de
+3. Po wyświetleniu okna Szczegóły sygnału cyfrowego wybierz kartę **Ogólne** , a następnie wybierz pozycję **Zainstaluj certyfikat**.
+4. Po otwarciu Instalatora wybierz pozycję **komputer lokalny** jako lokalizację magazynu, a następnie wybierz pozycję **dalej**.
+5. Jeśli Instalator wyświetli monit z pytaniem, czy chcesz zezwolić aplikacji na wprowadzanie zmian na urządzeniu, wybierz opcję **tak**.
+6. Wybierz pozycję **Umieść wszystkie certyfikaty w następującym magazynie**, a następnie wybierz pozycję **Przeglądaj**.
+7. Po wyświetleniu okna Wybieranie magazynu certyfikatów wybierz pozycję **zaufane osoby**, a następnie wybierz przycisk **OK**.
 8. Wybierz pozycję **Finish** (Zakończ).
 
-## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Prepare PowerShell scripts for MSIX app attach
+## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Przygotuj skrypty programu PowerShell do dołączenia do aplikacji MSIX
 
-MSIX app attach has four distinct phases that must be performed in the following order:
+Dołączenie do aplikacji MSIX ma cztery różne etapy, które należy wykonać w następującej kolejności:
 
-1. Stage
-2. Zarejestruj
-3. Deregister
-4. Destage
+1. Etap
+2. Zarejestruj subskrypcję
+3. Wyrejestrowania
+4. Cofnij przygotowanie
 
-Each phase creates a PowerShell script. Sample scripts for each phase are available [here](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach).
+Każda faza tworzy skrypt programu PowerShell. Przykładowe skrypty dla każdej fazy są dostępne [tutaj](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach).
 
-### <a name="stage-the-powershell-script"></a>Stage the PowerShell script
+### <a name="stage-the-powershell-script"></a>Przygotowanie skryptu programu PowerShell
 
-Before you update the PowerShell scripts, make sure you have the volume GUID of the volume in the VHD. To get the volume GUID:
+Przed aktualizacją skryptów programu PowerShell upewnij się, że masz identyfikator GUID woluminu woluminu na dysku VHD. Aby uzyskać identyfikator GUID woluminu:
 
-1.  Open the network share where the VHD is located inside the VM where you'll run the script.
+1.  Otwórz udział sieciowy, w którym znajduje się wirtualny dysk twardy na maszynie wirtualnej, na której zostanie uruchomiony skrypt.
 
-2.  Right-click the VHD and select **Mount**. This will mount the VHD to a drive letter.
+2.  Kliknij prawym przyciskiem myszy dysk VHD i wybierz polecenie **Zainstaluj**. Spowoduje to zainstalowanie wirtualnego dysku twardego na literę dysku.
 
-3.  After you mount the VHD, the **File Explorer** window will open. Capture the parent folder and update the **\$parentFolder** variable
+3.  Po zainstalowaniu dysku VHD zostanie otwarte okno **Eksplorator plików** . Przechwyć folder nadrzędny i zaktualizuj zmienną **\$parentFolder**
 
     >[!NOTE]
-    >If you don't see a parent folder, that means the MSIX wasn't expanded properly. Redo the previous section and try again.
+    >Jeśli nie widzisz folderu nadrzędnego, oznacza to, że MSIX nie został prawidłowo rozwinięty. Powtórz poprzednią sekcję i spróbuj ponownie.
 
-4.  Open the parent folder. If correctly expanded, you'll see a folder with the same name as the package. Update the **\$packageName** variable to match the name of this folder.
+4.  Otwórz folder nadrzędny. Jeśli jest prawidłowo rozwinięty, zobaczysz folder o tej samej nazwie co pakiet. Zaktualizuj zmienną **\$PackageName** , aby odpowiadała nazwie tego folderu.
 
     Na przykład `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
-5.  Open a command prompt and enter **mountvol**. This command will display a list of volumes and their GUIDs. Copy the GUID of the volume where the drive letter matches the drive you mounted your VHD to in step 2.
+5.  Otwórz wiersz polecenia i wprowadź polecenie **mountvol**. To polecenie spowoduje wyświetlenie listy woluminów i ich identyfikatorów GUID. Skopiuj identyfikator GUID woluminu, na którym litera dysku jest zgodna z dyskiem, który został zainstalowany w kroku 2.
 
-    For example, in this example output for the mountvol command, if you mounted your VHD to Drive C, you'll want to copy the value above `C:\`:
+    Na przykład w tym przykładzie dane wyjściowe polecenia mountvol, jeśli dysk VHD został zainstalowany na dysku C, należy skopiować wartość powyżej `C:\`:
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -227,9 +227,9 @@ Before you update the PowerShell scripts, make sure you have the volume GUID of 
     ```
 
 
-6.  Update the **\$volumeGuid** variable with the volume GUID you just copied.
+6.  Zaktualizuj zmienną **\$volumeGuid** za pomocą właśnie SKOPIOWANEGO identyfikatora GUID woluminu.
 
-7. Open an Admin PowerShell prompt and update the following PowerShell script with the variables that apply to your environment.
+7. Otwórz wiersz administracyjny programu PowerShell i zaktualizuj następujący skrypt programu PowerShell przy użyciu zmiennych, które są stosowane do danego środowiska.
 
     ```powershell
     #MSIX app attach staging sample
@@ -321,9 +321,9 @@ Before you update the PowerShell scripts, make sure you have the volume GUID of 
     #endregion
     ```
 
-### <a name="register-powershell-script"></a>Register PowerShell script
+### <a name="register-powershell-script"></a>Zarejestruj skrypt programu PowerShell
 
-To run the register script, run the following PowerShell cmdlets with the placeholder values replaced with values that apply to your environment.
+Aby uruchomić skrypt rejestru, uruchom następujące polecenia cmdlet programu PowerShell z wartościami zastępczymi zamienionymi na wartości, które dotyczą danego środowiska.
 
 ```powershell
 #MSIX app attach registration sample
@@ -343,9 +343,9 @@ Add-AppxPackage -Path \$path -DisableDevelopmentMode -Register
 #endregion
 ```
 
-### <a name="deregister-powershell-script"></a>Deregister PowerShell script
+### <a name="deregister-powershell-script"></a>Wyrejestrowywanie skryptu programu PowerShell
 
-For this script, replace the placeholder for **\$packageName** with the name of the package you're testing.
+Dla tego skryptu Zastąp symbol zastępczy elementu **\$PackageName** nazwą testowanego pakietu.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -363,9 +363,9 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 #endregion
 ```
 
-### <a name="destage-powershell-script"></a>Destage PowerShell script
+### <a name="destage-powershell-script"></a>Skrypt zrzutów programu PowerShell
 
-For this script, replace the placeholder for **\$packageName** with the name of the package you're testing.
+Dla tego skryptu Zastąp symbol zastępczy elementu **\$PackageName** nazwą testowanego pakietu.
 
 ```powershell
 #MSIX app attach de staging sample
@@ -389,30 +389,30 @@ rmdir $packageName -Force -Verbose
 #endregion
 ```
 
-## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Set up simulation scripts for the MSIX app attach agent
+## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Konfigurowanie skryptów symulacji dla agenta dołączania aplikacji MSIX
 
-After you create the scripts, users can manually run them or set them up to run automatically as startup, logon, logoff, and shutdown scripts. To learn more about these types of scripts, see [Using startup, shutdown, logon, and logoff scripts in Group Policy](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)).
+Po utworzeniu skryptów użytkownicy mogą ręcznie uruchamiać je lub konfigurować do uruchamiania automatycznie jako skrypty uruchamiania, logowania, wylogowywania i zamykania. Aby dowiedzieć się więcej na temat tych typów skryptów, zobacz [Używanie skryptów uruchamiania, zamykania, logowania i wylogowywania w zasady grupy](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)).
 
-Each of these automatic scripts runs one phase of the app attach scripts:
+W każdym z tych skryptów automatycznych działa jedna faza dołączania skryptów:
 
-- The startup script runs the stage script.
-- The logon script runs the register script.
-- The logoff script runs the deregister script.
-- The shutdown script runs the destage script.
+- Skrypt uruchamiania uruchamia skrypt etapowy.
+- Skrypt logowania uruchamia skrypt rejestru.
+- Skrypt wylogowywania uruchamia skrypt wyrejestrowywania.
+- Skrypt zamykania uruchamia skrypt destage.
 
-## <a name="use-packages-offline"></a>Use packages offline
+## <a name="use-packages-offline"></a>Korzystanie z pakietów w trybie offline
 
-If you're using packages from the [Microsoft Store for Business](https://businessstore.microsoft.com/) or the [Microsoft Store for Education](https://educationstore.microsoft.com/) within your network or on devices that aren't connected to the internet, you need to get the package licenses from the Microsoft Store and install them on your device to successfully run the app. If your device is online and can connect to the Microsoft Store for Business, the required licenses should download automatically, but if you're offline, you'll need to set up the licenses manually. 
+Jeśli używasz pakietów z [Microsoft Store dla firm](https://businessstore.microsoft.com/) lub [Microsoft Store do edukacji](https://educationstore.microsoft.com/) w sieci lub na urządzeniach, które nie są połączone z Internetem, musisz pobrać licencje pakietów z Microsoft Store i zainstalować je na urządzeniu, aby pomyślnie uruchomić aplikację. Jeśli urządzenie jest w trybie online i może nawiązać połączenie z Microsoft Store dla firm, wymagane licencje należy pobrać automatycznie, ale jeśli jesteś w trybie offline, musisz ręcznie skonfigurować licencje. 
 
-To install the license files, you'll need to use a PowerShell script that calls the MDM_EnterpriseModernAppManagement_StoreLicenses02_01 class in the WMI Bridge Provider.  
+Aby zainstalować pliki licencji, należy użyć skryptu programu PowerShell, który wywołuje klasę MDM_EnterpriseModernAppManagement_StoreLicenses02_01 w dostawcy mostka WMI.  
 
-Here's how to set up the licenses for offline use: 
+Poniżej przedstawiono sposób konfigurowania licencji do użytku w trybie offline: 
 
-1. Download the app package, licenses, and required frameworks from the Microsoft Store for Business. You need both the encoded and unencoded license files. Detailed download instructions can be found [here](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
-2. Update the following variables in the script for step 3:
-      1. `$contentID` is the ContentID value from the Unencoded license file (.xml). You can open the license file in a text editor of your choice.
-      2. `$licenseBlob` is the entire string for the license blob in the Encoded license file (.bin). You can open the encoded license file in a text editor of your choice. 
-3. Run the following script from an Admin PowerShell prompt. A good place to perform license installation is at the end of the [staging script](#stage-the-powershell-script) that also needs to be run from an Admin prompt.
+1. Pobierz pakiet aplikacji, licencje i wymagane platformy z Microsoft Store dla firm. Wymagane są zarówno zakodowane, jak i niezakodowane pliki licencji. Szczegółowe instrukcje dotyczące pobierania można znaleźć [tutaj](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
+2. Zaktualizuj następujące zmienne w skrypcie dla kroku 3:
+      1. `$contentID` jest wartością identyfikatorze z niezakodowanego pliku licencji (XML). Możesz otworzyć plik licencji w wybranym edytorze tekstu.
+      2. `$licenseBlob` to cały ciąg dla obiektu BLOB licencji w zakodowanym pliku licencji (bin). Możesz otworzyć zakodowany plik licencji w wybranym edytorze tekstu. 
+3. Uruchom następujący skrypt z wiersza polecenia administratora programu PowerShell. Dobrym miejscem do przeprowadzenia instalacji licencji jest koniec [skryptu przemieszczania](#stage-the-powershell-script) , który również należy uruchomić z poziomu monitu administratora.
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"
@@ -450,6 +450,6 @@ catch [Exception]
 
 ## <a name="next-steps"></a>Następne kroki
 
-This feature isn't currently supported, but you can ask questions to the community at the [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+Ta funkcja nie jest obecnie obsługiwana, ale możesz zadawać pytania do społeczności w [TechCommunity pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-You can also leave feedback for Windows Virtual Desktop at the [Windows Virtual Desktop feedback hub](https://aka.ms/MRSFeedbackHub), or leave feedback for the MSIX app and packaging tool at the [MSIX app attach feedback hub](https://aka.ms/msixappattachfeedback) and the [MSIX packaging tool feedback hub](https://aka.ms/msixtoolfeedback).
+Możesz również wystawić opinię na temat pulpitu wirtualnego systemu Windows w [centrum opinii na pulpicie wirtualnym systemu Windows](https://aka.ms/MRSFeedbackHub)lub pozostawić opinię dotyczącą narzędzia MSIX App i pakowanie w [aplikacji MSIX, dołączając centrum opinii](https://aka.ms/msixappattachfeedback) i [centrum opinii MSIX pakietu](https://aka.ms/msixtoolfeedback).

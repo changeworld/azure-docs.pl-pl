@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12882860b8a9beadd4e56cbb151d670fac4da43b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ff28ae7dbff40910ac0431fb47f7f0be3e1569c0
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798697"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538139"
 ---
 # <a name="overview-of-azure-farmbeats"></a>Omówienie usługi Azure FarmBeats
 
@@ -36,11 +36,11 @@ Usługa Azure FarmBeats zapewnia niezawodny i łatwy sposób wykonywania następ
 - Uzyskaj szczegółowe informacje umożliwiające podjęcie odpowiednich działań, tworząc modele AI/ML na agregacji zagregowanych zestawów danych.
 - Utwórz lub Uzupełnij rozwiązanie do elektronicznego rolnictwu, dostarczając doradcy kondycji farmy.
 
-Składniki usługi Azure FarmBeat zostały omówione w poniższych sekcjach tego artykułu.
+Składniki usługi Azure FarmBeats zostały omówione w poniższych sekcjach tego artykułu.
 
 ## <a name="data-hub"></a>Centrum danych
 
-Warstwa interfejsu API, która umożliwia agregację, normalizację i contextualization różnych zestawów danych rolnictwa między dostawcami. W ramach tej wersji zapoznawczej można korzystać z dwóch dostawców czujników, [narzędzi](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/) [, jednego dostawcy obrazów](https://sentinel.esa.int/web/sentinel/home)satelitarnych i dwóch dostawców obrazów drona [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/). Usługa Data Hub jest zaprojektowana jako platforma interfejsu API i pracujemy nad wieloma dostawcami, aby zintegrować się z usługą Azure FarmBeats, dzięki czemu możesz wybierać więcej informacji podczas kompilowania rozwiązania.
+Centrum danych usługi Azure FarmBeats to warstwa interfejsu API, która umożliwia agregację, normalizację i contextualization różnych zestawów danych rolnictwa między dostawcami. W ramach tej wersji zapoznawczej można korzystać z dwóch dostawców czujników, [narzędzi](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), jednego dostawcy [obrazów satelitarnych, a](https://sentinel.esa.int/web/sentinel/home)także trzech dostawców drona, [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/). Usługa Data Hub jest zaprojektowana jako platforma interfejsu API i pracujemy nad wieloma dostawcami, aby zintegrować się z usługą Azure FarmBeats, dzięki czemu możesz wybierać więcej informacji podczas kompilowania rozwiązania.
 
 ## <a name="accelerator"></a>Skrót
 
@@ -48,8 +48,8 @@ Przykładowe rozwiązanie, które jest oparte na centrum danych, które Jumpstar
 
 ## <a name="resources"></a>Zasoby
 
-Odwiedź [blog](https://aka.ms/AzureFarmBeats) i [fora](https://aka.ms/FarmBeatsMSDN)dotyczące FarmBeats.
+Odwiedź [blog](https://aka.ms/AzureFarmBeats) i [fora](https://aka.ms/FarmBeatsMSDN) dotyczące platformy Azure FarmBeats, aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć pracę z usługą Azure FarmBeats, odwiedź witrynę [Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) , aby ją wdrożyć.
+Aby rozpocząć pracę z usługą Azure FarmBeats, odwiedź witrynę [Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) , aby rozpocząć proces wdrażania.

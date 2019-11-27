@@ -171,7 +171,7 @@ Upewnij się, że obsługiwana przepływność może obsługiwać obciążenie. 
 ## <a name="try-upgrading-to-the-latest-sdk-version"></a>Spróbuj uaktualnić do najnowszej wersji zestawu SDK
 Aby określić najnowszy zestaw SDK, zobacz artykuł [pobieranie zestawu SDK i informacje o wersji](sql-api-sdk-dotnet.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zapoznaj się z poniższymi dokumentami, jak mierzyć jednostek ru na zapytanie, uzyskać statystyki wykonywania w celu dostrajania zapytań i nie tylko:
 
 * [Pobieranie metryk wykonywania zapytań SQL przy użyciu zestawu .NET SDK](profile-sql-api-query.md)

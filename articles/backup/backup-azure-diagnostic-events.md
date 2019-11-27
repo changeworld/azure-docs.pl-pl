@@ -10,7 +10,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74281105"
 ---
-# <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Korzystanie z ustawień diagnostycznych dla magazynów Recovery Services
+# <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Używanie ustawień diagnostyki dla magazynów usługi Recovery Services
 
 Azure Backup wysyła zdarzenia diagnostyczne, które mogą być zbierane i używane na potrzeby analiz, alertów i raportów. 
 

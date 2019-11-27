@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Tokens account management
-description: Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
+title: Zarządzanie kontami tokenów usługi Azure łańcucha bloków
+description: Za pomocą usługi Azure łańcucha bloków Tokens Management można tworzyć grupy i łączyć konta łańcucha bloków w celu kontrolowania dostępu do akcji łańcucha bloków.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
@@ -11,26 +11,26 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326098"
 ---
-# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain Tokens account management
+# <a name="azure-blockchain-tokens-account-management"></a>Zarządzanie kontami tokenów usługi Azure łańcucha bloków
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-For a blockchain solution, users may require different levels of access to the tokens that are created with the Azure Blockchain Tokens service. In most blockchain scenarios, you need to plan and deploy different blockchain accounts that exist on the ledger. You also need to manage access across participants. Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
+W przypadku rozwiązania łańcucha bloków użytkownicy mogą wymagać różnych poziomów dostępu do tokenów, które są tworzone za pomocą usługi Azure łańcucha bloków tokens. W większości scenariuszy łańcucha bloków należy zaplanować i wdrożyć różne konta łańcucha bloków, które istnieją w księdze. Musisz również zarządzać dostępem między uczestnikami. Za pomocą usługi Azure łańcucha bloków Tokens Management można tworzyć grupy i łączyć konta łańcucha bloków w celu kontrolowania dostępu do akcji łańcucha bloków.
 
-## <a name="blockchain-networks"></a>Blockchain networks
+## <a name="blockchain-networks"></a>Sieci łańcucha bloków
 
-Azure Blockchain Tokens enables deployment and management of tokens across a set of blockchain networks. You can connect a single blockchain ledger or several blockchain ledgers to the service.
+Tokeny usługi Azure łańcucha bloków umożliwiają wdrażanie tokenów i zarządzanie nimi w zestawie łańcucha blokówych sieci. Do usługi można podłączyć pojedyncze łańcucha bloków lub kilka ksiąg łańcucha bloków.
 
 ## <a name="accounts"></a>Konta
 
-For blockchain networks connected to Azure Blockchain Tokens, the service creates and manages the account private-public key pairs and performs transaction signing and submission. Azure Blockchain Tokens also provides identity mapping to match accounts with the public key identity on the ledger.
+W przypadku sieci łańcucha bloków podłączonych do tokenów usługi Azure łańcucha bloków Usługa tworzy pary kluczy prywatny-publiczny i zarządza nimi oraz wykonuje podpisywanie i przesyłanie transakcji. Tokeny usługi Azure łańcucha bloków zapewniają również mapowanie tożsamości w celu dopasowania do kont z tożsamością klucza publicznego w księdze.
 
 ## <a name="groups"></a>Grupy
 
-Groups lets you manage a large number of blockchain accounts across connected networks. You can track and audit which applications and users in the directory have the ability to use accounts through Azure Blockchain Tokens APIs. For example, you could group a set of accounts that represent different lines of business or different roles and access to blockchain tokens.
+Grupy umożliwiają zarządzanie dużą liczbą kont łańcucha bloków w połączonych sieciach. Można śledzić i kontrolować, które aplikacje i użytkownicy w katalogu mają możliwość używania kont za pomocą interfejsów API tokenów usługi Azure łańcucha bloków. Można na przykład grupować zestaw kont, które reprezentują różne linie biznesowe lub różne role oraz dostęp do tokenów łańcucha bloków.
 
-You can also associate a group to an Azure Active Directory user or service principal and this principal has permissions to the group and its associated accounts.  
+Można także skojarzyć grupę z użytkownikiem Azure Active Directory lub jednostką usługi, a podmiot zabezpieczeń ma uprawnienia do grupy i skojarzonych z nią kont.  
 
 ## <a name="next-steps"></a>Następne kroki
 
-Learn more about available [Azure Blockchain Tokens templates](templates.md).
+Dowiedz się więcej o dostępnych [szablonach tokenów usługi Azure łańcucha bloków](templates.md).

@@ -27,8 +27,8 @@ Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji kliencki
 
     ![Publikowanie w punkcie końcowym w usłudze LUIS](../media/howto-publish/publish-app-popup.png)
 
-3. Publishing is complete when you see the status bar at the top of the page confirming success.
+3. Publikowanie zostało zakończone, gdy zobaczysz pasek stanu w górnej części strony Potwierdzanie sukcesu.
 
     ![Publikowanie w punkcie końcowym w usłudze LUIS](../media/howto-publish/publish-endpoint-success.png)
 
-4. Select the **Access your endpoint URLs** link in the notification to go to the **Azure Resources** page. The endpoint URLs are listed as the **Example Query**.
+4. Wybierz link **dostęp do adresów URL punktu końcowego** w obszarze powiadomień, aby przejść do strony **zasobów platformy Azure** . Adresy URL punktów końcowych są wyświetlane jako **przykładowe zapytanie**.

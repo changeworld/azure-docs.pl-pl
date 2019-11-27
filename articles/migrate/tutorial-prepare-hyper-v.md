@@ -223,7 +223,7 @@ Na maszynach wirtualnych, które mają być odnajdywane i oceniane, Włącz [us�
 2. [Zapoznaj](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) się z wymaganiami dotyczącymi maszyn wirtualnych funkcji Hyper-V, które chcesz zmigrować na platformę Azure.
 3. [Zwróć uwagę](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) na adresy URL platformy Azure, do których hosty i klastry funkcji Hyper-V potrzebują dostępu do migracji maszyny wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
 

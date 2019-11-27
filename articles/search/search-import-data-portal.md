@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793680"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534550"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Kreator importu danych dla platformy Azure Wyszukiwanie poznawcze
 
@@ -43,7 +43,7 @@ Znane ograniczenia są podsumowywane w następujący sposób:
 
 + Kreator nie obsługuje iteracji ani ponownego użycia. Każda z nich przechodzi przez kreatora tworzy nowy indeks, zestawu umiejętności i konfigurację indeksatora. Tylko źródła danych mogą być utrwalane i ponownie używane w kreatorze. Aby edytować lub udoskonalać inne obiekty, należy użyć interfejsów API REST lub zestawu SDK platformy .NET do pobrania i zmodyfikowania struktur.
 
-+ Zawartość źródłowa musi znajdować się w obsługiwanym źródle danych platformy Azure w usłudze w ramach tej samej subskrypcji.
++ Zawartość źródłowa musi znajdować się w obsługiwanym źródle danych platformy Azure.
 
 + Próbkowanie znajduje się w przedziale danych źródłowych. W przypadku dużych źródeł danych jest możliwe, aby Kreator mógł pominąć pola. Może być konieczne rozbudowa schematu lub poprawienie wywnioskowanych typów danych, jeśli próbkowanie jest niewystarczające.
 
@@ -55,7 +55,7 @@ Znane ograniczenia są podsumowywane w następujący sposób:
 
 ## <a name="data-source-input"></a>Dane wejściowe źródła danych
 
-Kreator **importu danych** łączy się z zewnętrznym źródłem danych przy użyciu wewnętrznej logiki zapewnianej przez usługi Azure wyszukiwanie poznawcze indeksatory, które są wyposażone w przykładowe źródło, odczyt metadanych, dokumenty z krakingów, odczytywanie zawartości i struktury oraz Serializowanie zawartości jako kod JSON dla kolejnego importu do Wyszukiwanie poznawcze platformy Azure.
+Kreator **importu danych** łączy się z zewnętrznym źródłem danych przy użyciu wewnętrznej logiki zapewnianej przez indeksatory usługi Azure wyszukiwanie poznawcze, które są wyposażone w przykładowe źródło, odczyt metadanych, dokumenty z krakingów, odczytywanie zawartości i struktury oraz Serializowanie zawartości w formacie JSON na potrzeby późniejszego importowania do usługi Azure wyszukiwanie poznawcze.
 
 Można importować tylko z pojedynczej tabeli, widoku bazy danych lub równoważnej struktury danych, jednak struktura może zawierać hierarchiczne lub zagnieżdżone struktury podstruktur. Aby uzyskać więcej informacji, zobacz [jak modelować typy złożone](search-howto-complex-data-types.md).
 

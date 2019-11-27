@@ -21,7 +21,7 @@ ms.locfileid: "74451635"
 
     ![Przycisk Train (Ucz)](../media/train-button-preview.png)
 
-2. Training is complete when you see the status confirming success.
+2. Szkolenie zostało zakończone, gdy zobaczysz stan pomyślne potwierdzenie sukcesu.
 
     > [!Tip]
-    > **Notifications** is available in the top-right navigation and includes a history.
+    > **Powiadomienia** są dostępne w prawym górnym rogu i zawiera historię.

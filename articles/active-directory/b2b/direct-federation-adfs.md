@@ -86,7 +86,7 @@ Przed rozpoczęciem tej procedury należy wcześniej skonfigurować i działać 
    - **Typ zgłoszenia wychodzącego**: adres E-mail
 
 8. Wybierz pozycję **Finish** (Zakończ).
-9. W oknie **Edycja reguł roszczeń** zostanie wyświetlona Nowa reguła. Kliknij przycisk **zastosować**. 
+9. W oknie **Edycja reguł roszczeń** zostanie wyświetlona Nowa reguła. Kliknij przycisk **Zastosuj**. 
 10. Kliknij przycisk **OK**.  
 
 ### <a name="create-an-email-transform-rule"></a>Tworzenie reguły przekształcania wiadomości e-mail
@@ -100,7 +100,7 @@ Przed rozpoczęciem tej procedury należy wcześniej skonfigurować i działać 
    - Wybierz pozycję **Przekazuj wszystkie wartości oświadczeń**.
 
 3. Kliknij przycisk **Zakończ**. 
-4. W oknie **Edycja reguł roszczeń** zostaną wyświetlone nowe reguły. Kliknij przycisk **zastosować**. 
+4. W oknie **Edycja reguł roszczeń** zostaną wyświetlone nowe reguły. Kliknij przycisk **Zastosuj**. 
 5. Kliknij przycisk **OK**. Serwer AD FS jest teraz skonfigurowany do bezpośredniej Federacji przy użyciu protokołu SAML 2,0.
 
 ## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>Konfigurowanie AD FS dla Federacji bezpośredniej z obsługą protokołu WS-Direct 
@@ -140,7 +140,7 @@ Przed rozpoczęciem tej procedury należy wcześniej skonfigurować i działać 
    - **Reguła niestandardowa**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. Wybierz pozycję **Finish** (Zakończ). 
-1. W oknie **Edycja reguł roszczeń** zostanie wyświetlona Nowa reguła. Kliknij przycisk **zastosować**.  
+1. W oknie **Edycja reguł roszczeń** zostanie wyświetlona Nowa reguła. Kliknij przycisk **Zastosuj**.  
 1. W tym samym kreatorze **edycji reguł dotyczących roszczeń** wybierz pozycję **Dodaj regułę**. W obszarze **Typ reguły**dla dowolnego węża wybierz opcję **Wyślij atrybuty LDAP jako oświadczenia**. Wybierz opcję **Dalej**.
 1. W obszarze **Konfigurowanie reguły roszczeń**określ następujące wartości: 
 
@@ -150,7 +150,7 @@ Przed rozpoczęciem tej procedury należy wcześniej skonfigurować i działać 
    - **Typ zgłoszenia wychodzącego**: adres E-mail 
 
 1.  Wybierz pozycję **Finish** (Zakończ). 
-1.  W oknie **Edycja reguł roszczeń** zostanie wyświetlona Nowa reguła. Kliknij przycisk **zastosować**.  
+1.  W oknie **Edycja reguł roszczeń** zostanie wyświetlona Nowa reguła. Kliknij przycisk **Zastosuj**.  
 1.  Kliknij przycisk **OK**. Serwer AD FS jest teraz skonfigurowany do bezpośredniej Federacji przy użyciu protokołu WS-karmionego.
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Python
+title: Pobierz zamierzenia z wywołaniem REST w języku Python
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -19,17 +19,17 @@ ms.locfileid: "74414623"
 
 * Środowisko [Python 3.6](https://www.python.org/downloads/) lub nowsze.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Identyfikator aplikacji publicznej: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>Pobieranie klucza usługi LUIS
 
 [!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
-## <a name="get-intent-from-the-prediction-endpoint"></a>Get intent from the prediction endpoint
+## <a name="get-intent-from-the-prediction-endpoint"></a>Pobierz intencję z punktu końcowego przewidywania
 
-Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+Użyj języka Python, aby wykonać zapytanie dotyczące [punktu końcowego przewidywania](https://aka.ms/luis-apim-v3-prediction) i uzyskać wynik przewidywania.
 
-1. Copy this code snippet into a file called `predict.py`:
+1. Skopiuj ten fragment kodu do pliku o nazwie `predict.py`:
 
     ```python
     ########### Python 3.6 #############
@@ -62,30 +62,30 @@ Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predic
         print(f'{e}')
     ```
 
-1. Replace the following values:
+1. Zastąp następujące wartości:
 
-    * `YOUR-KEY` with your starter key.
-    * `YOUR-ENDPOINT` with your endpoint. Na przykład `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` z kluczem początkowym.
+    * `YOUR-ENDPOINT` z punktem końcowym. Na przykład `westus2.api.cognitive.microsoft.com`.
 
-1. Install the `requests` dependency. This is used to make HTTP requests:
+1. Zainstaluj zależność `requests`. Służy do wprowadzania żądań HTTP:
 
     ```console
     pip install requests
     ```
 
-1. Run your script with this console command:
+1. Uruchom skrypt za pomocą tego polecenia konsoli:
 
     ```console
     python predict.py
     ``` 
 
-1. Review the prediction response, which is returned as JSON:
+1. Przejrzyj odpowiedź przewidywania zwracaną jako kod JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Here's the JSON response formatted for readability: 
+    Oto opis odpowiedzi JSON sformatowanych pod kątem czytelności: 
 
     ```JSON
     {
@@ -134,9 +134,9 @@ Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predic
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-When you are finished with this quickstart, delete the file from the file system. 
+Po zakończeniu pracy z tym przewodnikiem Szybki Start Usuń plik z systemu plików. 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Dodawanie wyrażenia długości i uczenie](../get-started-get-model-rest-apis.md)

@@ -436,5 +436,5 @@ Aby uzyskać więcej informacji na temat uzyskiwania dostępu do trybu pojedyncz
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o [usłudze Azure serial Console]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)

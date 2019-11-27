@@ -1,6 +1,6 @@
 ---
-title: Access and customize the managed developer portal - Azure API Management | Microsoft Docs
-description: Learn how to use the managed version of the developer portal in API Management.
+title: Dostęp do zarządzanego portalu deweloperów — API Management platformy Azure | Microsoft Docs
+description: Dowiedz się, jak używać zarządzanej wersji portalu dla deweloperów w API Management.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -19,115 +19,115 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454422"
 ---
-# <a name="access-and-customize-developer-portal"></a>Access and customize developer portal
+# <a name="access-and-customize-developer-portal"></a>Dostęp i dostosowywanie portalu dla deweloperów
 
-Developer portal is an automatically generated, fully customizable website with the documentation of your APIs. It is where API consumers can discover your APIs, learn how to use them, and request access.
+Portal dla deweloperów to automatycznie generowana, w pełni dostosowywalna witryna sieci Web z dokumentacją interfejsów API. W przypadku, gdy konsumenci interfejsu API mogą odnajdywać interfejsy API, dowiedzieć się, jak ich używać, i zażądać dostępu.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Access the managed version of the developer portal
-> * Navigate its administrative interface
-> * Customize the content
-> * Publish the changes
-> * View the published portal
+> * Dostęp do zarządzanej wersji portalu dla deweloperów
+> * Nawigowanie po interfejsie administracyjnym
+> * Dostosowywanie zawartości
+> * Publikowanie zmian
+> * Wyświetlanie opublikowanego portalu
 
-You can find more details on the developer portal in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
+Więcej szczegółowych informacji można znaleźć w portalu dla deweloperów w [portalu deweloperów API Management platformy Azure](api-management-howto-developer-portal.md).
 
-![API Management developer portal - admin mode](media/api-management-howto-developer-portal-customize/cover.png)
+![Portal dla deweloperów API Management — tryb administratora](media/api-management-howto-developer-portal-customize/cover.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
-- Import and publish an Azure API Management instance. For more information, see [Import and publish](import-and-publish.md)
+- Importowanie i publikowanie wystąpienia usługi Azure API Management. Aby uzyskać więcej informacji, zobacz [Importowanie i publikowanie](import-and-publish.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="access-the-portal-as-an-administrator"></a>Access the portal as an administrator
+## <a name="access-the-portal-as-an-administrator"></a>Dostęp do portalu jako administrator
 
-Follow the steps below to access the managed version of the portal.
+Wykonaj poniższe kroki, aby uzyskać dostęp do zarządzanej wersji portalu.
 
-1. Go to your API Management service instance in the Azure portal.
-1. Click on the **Developer portal** button in the top navigation bar. A new browser tab with an administrative version of the portal will open.
+1. Przejdź do wystąpienia usługi API Management w Azure Portal.
+1. Kliknij przycisk **Portal dla deweloperów** na górnym pasku nawigacyjnym. Zostanie otwarta nowa karta przeglądarki z wersją administracyjną portalu.
 
-## <a name="understand-the-portals-administrative-interface"></a>Understand the portal's administrative interface
+## <a name="understand-the-portals-administrative-interface"></a>Informacje o interfejsie administracyjnym portalu
 
-### <a name="default-content"></a>Default content 
+### <a name="default-content"></a>Zawartość domyślna 
 
-If you're accessing the portal for the first time, the default content will be automatically provisioned in the background. Default content has been designed to showcase portal's capabilities and minimize the amount of customizations needed to personalize your portal. You can learn more about what is included in the portal content in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
+Jeśli po raz pierwszy uzyskujesz dostęp do portalu, domyślna zawartość zostanie automatycznie zainicjowana w tle. Zawartość domyślna została zaprojektowana w celu pokazania możliwości portalu i zminimalizowania liczby dostosowań potrzebnych do spersonalizowania portalu. Więcej informacji o tym, co obejmuje zawartość portalu, można znaleźć w temacie [Omówienie portalu deweloperów w usłudze Azure API Management](api-management-howto-developer-portal.md).
 
-### <a name="visual-editor"></a>Visual editor
+### <a name="visual-editor"></a>Edytor wizualny
 
-You can customize the content of the portal with the visual editor. The menu sections on the left let you create or modify pages, media, layouts, menus, styles, or website settings. The menu items on the bottom let you switch between viewports (for example, mobile or desktop), view the elements of the portal visible to authenticated or anonymous users, or save or undo actions.
+Zawartość portalu można dostosować za pomocą edytora wizualnego. Sekcje menu po lewej stronie umożliwiają tworzenie lub modyfikowanie stron, multimediów, układów, menu, stylów lub ustawień witryny sieci Web. Elementy menu u dołu pozwalają przełączać się między okienkami ekranu (na przykład Mobile lub Desktop), wyświetlać elementy portalu widoczne dla uwierzytelnionych lub anonimowych użytkowników albo zapisywać lub cofać akcje.
 
-You can add rows to a page by clicking on a blue icon with a plus sign. Widgets (for example, text, images, or APIs list) can be added by pressing a grey icon with a plus sign. You can rearrange items in a page with the drag-and-drop interaction. 
+Aby dodać wiersze do strony, kliknij niebieską ikonę ze znakiem plus. Widżety (na przykład tekst, obrazy lub lista interfejsów API) można dodać, naciskając szarą ikonę ze znakiem plus. Można zmienić rozmieszczenie elementów na stronie za pomocą interakcji przeciągnij i upuść. 
 
-### <a name="layouts-and-pages"></a>Layouts and pages
+### <a name="layouts-and-pages"></a>Układy i strony
 
-![Pages and layouts](media/api-management-howto-developer-portal-customize/pages-layouts.png)
+![Strony i układy](media/api-management-howto-developer-portal-customize/pages-layouts.png)
 
-Layouts define how pages are displayed. For example, in the default content, there are two layouts - one applies to the home page, and the other to all remaining pages.
+Układy definiują sposób wyświetlania stron. Na przykład w zawartości domyślnej istnieją dwa układy — jeden ma zastosowanie do strony głównej, a drugi do wszystkich pozostałych stron.
 
-A layout gets applied to a page by matching its URL template to the page's URL. For example, layout with a URL template of `/wiki/*` will be applied to every page with the `/wiki/` segment in the URL: `/wiki/getting-started`, `/wiki/styles`, etc.
+Układ zostanie zastosowany do strony, dopasowując jej szablon adresu URL do adresu URL strony. Na przykład układ z szablonem adresu URL `/wiki/*` zostanie zastosowany do każdej strony z segmentem `/wiki/` w adresie URL: `/wiki/getting-started`, `/wiki/styles`itd.
 
-In the image above, content belonging to the layout is marked in blue, while the page is marked in red. The menu sections are marked respectively.
+Na powyższym obrazie zawartość należące do układu jest oznaczona kolorem niebieskim, podczas gdy strona jest oznaczona kolorem czerwonym. Sekcje menu są odpowiednio oznaczone.
 
-### <a name="styling-guide"></a>Styling guide
+### <a name="styling-guide"></a>Przewodnik po stylu
 
-![Styling guide](media/api-management-howto-developer-portal-customize/styling-guide.png)
+![Przewodnik po stylu](media/api-management-howto-developer-portal-customize/styling-guide.png)
 
-Styling guide is a panel created with designers in mind. It allows for overseeing and styling all the visual elements in your portal. The styling is hierarchical - many elements inherit properties from other elements. For example, button elements use colors for text and background. To change a button's color, you need to change the original color variant.
+Przewodnik po stylu jest panelem utworzonym z projektantami. Pozwala na wyświetlanie i Ustawianie stylu wszystkich elementów wizualizacji w portalu. Style są hierarchiczne — wiele elementów dziedziczy właściwości z innych elementów. Na przykład elementy Button używają kolorów dla tekstu i tła. Aby zmienić kolor przycisku, należy zmienić oryginalny wariant koloru.
 
-To edit a variant, click on it and select the pencil icon that appears on top of it. Once you make the changes in the pop-up window, close it.
+Aby edytować wariant, kliknij go i wybierz ikonę ołówka, która pojawia się na górze. Po wprowadzeniu zmian w oknie podręcznym zamknij je.
 
 ### <a name="save-button"></a>Przycisk Save (Zapisz)
 
 ![Przycisk Save (Zapisz)](media/api-management-howto-developer-portal-customize/save-button.png)
 
-Whenever you make a change in the portal, you need to save it manually by pressing the **Save** button in the menu at the bottom. When you save your changes, the modified content is automatically uploaded to your API Management service.
+Za każdym razem, gdy wprowadzisz zmiany w portalu, musisz zapisać je ręcznie, naciskając przycisk **Zapisz** w menu u dołu. Po zapisaniu zmian zmodyfikowana zawartość jest automatycznie przekazywana do usługi API Management.
 
-## <a name="customize-the-portals-content"></a>Customize the portal's content
+## <a name="customize-the-portals-content"></a>Dostosuj zawartość portalu
 
-Before you make your portal available to the visitors, you should personalize the automatically generated content. Recommended changes include the layouts, styles, and the content of the home page.
+Przed udostępnieniem portalu Gościom należy spersonalizować automatycznie wygenerowaną zawartość. Zalecane zmiany obejmują układy, style i zawartość strony głównej.
 
 > [!NOTE]
-> Due to integration considerations, the following pages can't be removed or moved under a different URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
+> Ze względu na integrację nie można usunąć ani przenieść następujących stron pod innym adresem URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
 
 ### <a name="home-page"></a>Strona główna
 
-The default **Home** page is filled with dummy content. You can either remove the whole sections with the content or keep the structure and adjust the elements one by one. Replace the generated text and images with your own and make sure the links point to desired locations.
+Domyślna strona **główna** jest wypełniana zawartością fikcyjną. Można usunąć całe sekcje z zawartością lub zachować strukturę i dostosować elementy po jednym. Zamień wygenerowany tekst i obrazy na własne i upewnij się, że linki wskazują wybrane lokalizacje.
 
-### <a name="layouts"></a>Layouts
+### <a name="layouts"></a>Układy
 
-Replace the automatically generated logo in the navigation bar with your own image.
+Zastąp automatycznie wygenerowany logo na pasku nawigacyjnym własnym obrazem.
 
-### <a name="styling"></a>Styling
+### <a name="styling"></a>Stylów
 
-Although you don't need to adjust any styles, you may consider adjusting particular elements. For example, change the primary color to match your brand's color.
+Chociaż nie musisz dostosowywać żadnych stylów, możesz rozważyć dostosowanie poszczególnych elementów. Na przykład zmień kolor podstawowy, aby pasował do koloru marki.
 
-### <a name="customization-example"></a>Customization example
+### <a name="customization-example"></a>Przykład dostosowania
 
-In the video below we demonstrate how to edit the content of the portal, customize the website's look, and publish the changes.
+W poniższym filmie wideo pokazano, jak edytować zawartość portalu, dostosować wygląd witryny sieci Web i opublikować zmiany.
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish"> </a>Publish the portal
+## <a name="publish"> </a>Publikowanie portalu
 
-To make your portal and its latest changes available to visitors, you need to publish it.
+Aby Portal i najnowsze zmiany były dostępne dla odwiedzających, należy je opublikować.
 
-1. Make sure you saved your changes by clicking on the **Save** icon.
-1. Click on **Publish website** in the **Operations** section of the menu. Ta operacja może potrwać kilka minut.  
-    ![Publish portal](media/api-management-howto-developer-portal-customize/publish-portal.png)
+1. Upewnij się, że Zapisano zmiany, klikając ikonę **Zapisz** .
+1. Kliknij pozycję **Publikuj witrynę sieci Web** w sekcji **operacje** menu. Ta operacja może potrwać kilka minut.  
+    ![Portal publikacji](media/api-management-howto-developer-portal-customize/publish-portal.png)
 
 > [!NOTE]
-> The portal needs to be republished after API Management service configuration changes, such as assigning a custom domain, updating the identity providers, setting delegation, specifying sign-in and product terms, and more.
+> Portal należy ponownie opublikować po API Management zmian konfiguracji usługi, takich jak przypisywanie domeny niestandardowej, aktualizowanie dostawców tożsamości, Ustawianie delegowania, określanie warunków logowania i postanowień.
 
-## <a name="visit-the-published-portal"></a>Visit the published portal
+## <a name="visit-the-published-portal"></a>Odwiedź opublikowany Portal
 
-After you publish the portal, you can access it at the same URL as the administrative panel, for example `https://contoso-api.developer.azure-api.net`. View it in a separate browser session (incognito / private browsing mode) as an external visitor.
+Po opublikowaniu portalu możesz uzyskać do niego dostęp przy użyciu tego samego adresu URL, który jest panelem administracyjnym, na przykład `https://contoso-api.developer.azure-api.net`. Wyświetl je w oddzielnym sesji przeglądarki (incognito/Private Mode) jako gość zewnętrzny.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Learn more about the developer portal:
+Dowiedz się więcej o portalu dla deweloperów:
 
-- [Azure API Management developer portal overview](api-management-howto-developer-portal.md)
+- [Portal deweloperów API Management platformy Azure — omówienie](api-management-howto-developer-portal.md)

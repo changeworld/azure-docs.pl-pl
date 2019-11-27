@@ -1,6 +1,6 @@
 ---
-title: Manage your connected devices from the My Account portal - Azure AD
-description: How to view and disable devices connected to your work or school account from the Devices page of the My Account portal.
+title: Zarządzanie podłączonymi urządzeniami z poziomu portalu My Account — Azure AD
+description: Jak wyświetlać i wyłączać urządzenia połączone z kontem służbowym ze strony urządzenia w portalu My account.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,57 +19,57 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233214"
 ---
-# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Manage devices connected to your work or school account from the Devices page
+# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Zarządzanie urządzeniami połączonymi z kontem służbowym ze strony urządzenia
 
-From the **Devices** page of the **My Account** portal, you can:
+Na stronie **urządzenia** w portalu **My Account** można:
 
-- View your work or school account-connected devices.
+- Wyświetl urządzenia połączone z kontem służbowym.
 
-- Disable any devices you no longer own, have lost, or that have been stolen.
+- Wyłącz wszystkie urządzenia, które nie są już używane, zostały utracone lub skradzione.
 
-## <a name="view-your-connected-devices"></a>View your connected devices
+## <a name="view-your-connected-devices"></a>Wyświetlanie podłączonych urządzeń
 
-1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
 
-2. Select **Devices** from the left navigation pane or select the **Manage devices** link from the **Devices** block.
+2. Wybierz pozycję **urządzenia** w okienku nawigacji po lewej stronie lub wybierz łącze **Zarządzaj urządzeniami** w bloku **urządzenia** .
 
-    ![My Account page, showing highlighted Devices links](media/my-account-portal/my-account-portal-devices.png)
+    ![Strona Moje konto z wyświetlonymi łączami wyróżnionych urządzeń](media/my-account-portal/my-account-portal-devices.png)
 
-3. Review the information for your connected devices, making sure you recognize them all.
+3. Zapoznaj się z informacjami dotyczącymi połączonych urządzeń, aby upewnić się, że są one rozpoznawane.
 
-    ![Device page, showing connected devices](media/my-account-portal/my-account-portal-devices-page.png)
+    ![Strona urządzenia, przedstawiająca podłączone urządzenia](media/my-account-portal/my-account-portal-devices-page.png)
 
-## <a name="disable-a-device"></a>Disable a device
+## <a name="disable-a-device"></a>Wyłącz urządzenie
 
-You can disable any of your connected devices at any time. This is especially important if a device isn't familiar to you or if a device is lost or stolen. After you disable a device, it can no longer be authenticated by your organization, and will be unable to access any of your organization's resources.
+Dowolne z połączonych urządzeń można wyłączyć w dowolnym momencie. Jest to szczególnie ważne, jeśli urządzenie nie jest znane użytkownikowi lub jeśli urządzenie zostało zgubione lub skradzione. Gdy urządzenie nie zostanie już uwierzytelnione przez organizację i nie będzie mogło uzyskać dostępu do żadnych zasobów organizacji.
 
 >[!Important]
->If you disable a device by mistake, there's no way to undo it. You'll have to contact your organization's administrator to add the device again.
+>Jeśli wyłączysz urządzenie przez pomyłkę, nie ma możliwości jego cofnięcia. Musisz skontaktować się z administratorem organizacji, aby ponownie dodać urządzenie.
 
-1. Select **Disable** from the device you want to remove.
+1. Wybierz opcję **Wyłącz** z urządzenia, które chcesz usunąć.
 
-    ![Device page with highlighted Disable link](media/my-account-portal/my-account-portal-devices-disable.png)
+    ![Strona urządzenia z wyróżnionym linkiem Wyłącz](media/my-account-portal/my-account-portal-devices-disable.png)
 
-2. Select **Yes** to confirm you want to disable the device.
+2. Wybierz pozycję **tak** , aby potwierdzić, że chcesz wyłączyć urządzenie.
 
-## <a name="view-a-bitlocker-key"></a>View a BitLocker key
+## <a name="view-a-bitlocker-key"></a>Wyświetlanie klucza funkcji BitLocker
 
-If you're locked out of your device or have a fatal error, you can go to another device and view your BitLocker key from the **My Account** portal.
+Jeśli użytkownik jest zablokowany z urządzenia lub wystąpił błąd krytyczny, można przejść do innego urządzenia i wyświetlić klucz funkcji BitLocker z poziomu portalu **My Account** .
 
-1. On another device, where you're not locked out, go to the **Devices** page of the **My Account** portal.
+1. Na innym urządzeniu, na którym nie masz blokady, przejdź do strony **urządzenia** w portalu **My Account** .
 
-    ![Device page with BitLocker key option](media/my-account-portal/my-account-portal-devices-bitlocker.png)
+    ![Strona urządzenia z opcją klucza funkcji BitLocker](media/my-account-portal/my-account-portal-devices-bitlocker.png)
 
-2. Select **View Bitlocker Keys** for the locked out device and write down the BitLocker key for your locked device.
+2. Wybierz pozycję **Wyświetl klucze funkcji BitLocker** dla zablokowanego urządzenia i Zapisz klucz funkcji BitLocker dla zablokowanego urządzenia.
 
 ## <a name="next-steps"></a>Następne kroki
 
-After viewing your connected devices, you can:
+Po wyświetleniu połączonych urządzeń można:
 
-- Select to view or manage your [security info](user-help-security-info-overview.md).
+- Wybierz, aby wyświetlić [informacje zabezpieczające](user-help-security-info-overview.md)lub zarządzać nimi.
 
-- View and manage your [organizations](my-account-portal-organizations-page.md).
+- Wyświetlaj swoje [organizacje](my-account-portal-organizations-page.md)i zarządzaj nimi.
 
-- View your [sign-in activity](my-account-portal-sign-ins-page.md).
+- Wyświetlanie [działania związanego z logowaniem](my-account-portal-sign-ins-page.md).
 
-- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).
+- Zobacz, w jaki sposób organizacja [używa danych związanych z prywatnością](my-account-portal-privacy-page.md).

@@ -27,7 +27,7 @@ Te grupy są definiowane przez zapytanie, po rozpoczęciu wdrożenia aktualizacj
 * Subskrypcja
 * Grupy zasobów
 * Lokalizacje
-* `Tags`
+* Tagi
 
 ![Wybieranie grup](./media/automation-update-management/select-groups.png)
 

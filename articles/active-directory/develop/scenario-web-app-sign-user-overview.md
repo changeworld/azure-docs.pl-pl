@@ -1,6 +1,6 @@
 ---
-title: Web app that signs in users (overview) - Microsoft identity platform
-description: Learn how to build a web app that signs in users (overview)
+title: Aplikacja internetowa, która loguje się do użytkowników (omówienie) — platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację internetową, która loguje się do użytkowników (omówienie)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -22,9 +22,9 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482490"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web app that signs in users
+# <a name="scenario-web-app-that-signs-in-users"></a>Scenariusz: aplikacja sieci Web, która loguje użytkowników
 
-Learn all you need to build a web app that uses the Microsoft identity platform to sign in users.
+Dowiedz się, co musisz zrobić, aby utworzyć aplikację sieci Web korzystającą z platformy tożsamości firmy Microsoft do logowania użytkowników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,52 +34,52 @@ Learn all you need to build a web app that uses the Microsoft identity platform 
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-If you want to create your first portable (ASP.NET Core) web app that signs in users, follow this quickstart:
+Jeśli chcesz utworzyć swoją pierwszą aplikację sieci Web przenośną (ASP.NET Core), która loguje użytkowników, wykonaj następujące czynności:
 
 > [!div class="nextstepaction"]
-> [Quickstart: ASP.NET Core web app that signs in users](quickstart-v2-aspnet-core-webapp.md)
+> [Szybki Start: ASP.NET Core aplikacji sieci Web, która loguje użytkowników](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-If you want to understand how to add sign-in to an existing ASP.NET web application, try the following quickstart:
+Jeśli chcesz zrozumieć, jak dodać logowanie do istniejącej aplikacji sieci Web ASP.NET, spróbuj wykonać następujące czynności:
 
 > [!div class="nextstepaction"]
-> [Quickstart: ASP.NET web app that signs in users](quickstart-v2-aspnet-webapp.md)
+> [Szybki Start: ASP.NET Web App, który loguje użytkowników](quickstart-v2-aspnet-webapp.md)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-If you're a Java developer, try the following quickstart:
+Jeśli jesteś deweloperem języka Java, spróbuj wykonać następujące czynności:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Add sign-in with Microsoft to a Java web app](quickstart-v2-java-webapp.md)
+> [Szybki Start: Dodawanie logowania do aplikacji sieci Web w języku Java przez firmę Microsoft](quickstart-v2-java-webapp.md)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-If you develop with Python, try the following quickstart:
+Jeśli tworzysz przy użyciu języka Python, wypróbuj następujący Przewodnik Szybki Start:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Add sign-in with Microsoft to a Python web app](quickstart-v2-python-webapp.md)
+> [Szybki Start: Dodawanie logowania z firmą Microsoft do aplikacji sieci Web w języku Python](quickstart-v2-python-webapp.md)
 
 ---
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-You add authentication to your web app so that it can sign in users. Adding authentication enables your web app to access limited profile information in order to customize the experience for users. 
+Należy dodać uwierzytelnianie do aplikacji sieci Web, aby umożliwić użytkownikom logowanie się. Dodanie uwierzytelniania umożliwia aplikacji sieci Web dostęp do ograniczonych informacji o profilach w celu dostosowania środowiska dla użytkowników. 
 
-Web apps authenticate a user in a web browser. In this scenario, the web app directs the user's browser to sign them in to Azure Active Directory (Azure AD). Azure AD returns a sign-in response through the user's browser, which contains claims about the user in a security token. Signing in users takes advantage of the [Open ID Connect](./v2-protocols-oidc.md) standard protocol, simplified by the use of middleware [libraries](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
+Aplikacje sieci Web uwierzytelniają użytkownika w przeglądarce internetowej. W tym scenariuszu aplikacja sieci Web kieruje przeglądarkę użytkownika do podpisania ich w usłudze Azure Active Directory (Azure AD). Usługa Azure AD zwraca odpowiedź logowania za pomocą przeglądarki użytkownika, która zawiera oświadczenia dotyczące użytkownika w tokenie zabezpieczającym. Podpisywanie użytkowników korzysta z protokołu [Open ID Connect](./v2-protocols-oidc.md) Standard, uproszczonego przy użyciu [bibliotek](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)pośredniczących.
 
-![Web app signs in users](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+![Znaki aplikacji sieci Web w użytkownikach](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 
-As a second phase, you can enable your application to call web APIs on behalf of the signed-in user. This next phase is a different scenario, which you'll find in [Web app that calls web APIs](scenario-web-app-call-api-overview.md).
+W drugiej fazie można umożliwić aplikacji wywoływanie interfejsów API sieci Web w imieniu zalogowanego użytkownika. Ta kolejna faza jest innym scenariuszem, który można znaleźć w [aplikacji sieci Web, która wywołuje interfejsy API sieci Web](scenario-web-app-call-api-overview.md).
 
 > [!NOTE]
-> Adding sign-in to a web app is about protecting the web app and validating a user token, which is what  **middleware** libraries do. In the case of .NET, this scenario does not yet require the Microsoft Authentication Library (MSAL), which is about acquiring a token to call protected APIs. Authentication libraries will be introduced in the follow-up scenario, when the web app needs to call web APIs.
+> Dodawanie logowania do aplikacji sieci Web polega na tym, jak chronić aplikację sieci Web i sprawdzać token użytkownika, który jest biblioteką **oprogramowania pośredniczącego** . W przypadku platformy .NET ten scenariusz nie wymaga jeszcze biblioteki uwierzytelniania firmy Microsoft (MSAL), która ma na celu uzyskanie tokenu do wywołania chronionych interfejsów API. Biblioteki uwierzytelniania zostaną wprowadzone w scenariuszu kontynuacji, gdy aplikacja sieci Web wymaga wywołania interfejsów API sieci Web.
 
-## <a name="specifics"></a>Specifics
+## <a name="specifics"></a>Szczegółowych informacji
 
-- During the application registration, you'll need to provide one or several (if you deploy your app to several locations) reply URIs. In some cases (ASP.NET and ASP.NET Core), you'll need to enable the ID token. Finally, you'll want to set up a sign-out URI so that your application reacts to users signing out.
-- In the code for your application, you'll need to provide the authority to which your web app delegates sign-in. You might want to customize token validation (in particular, in partner scenarios).
-- Web applications support any account types. For more information, see [Supported account types](v2-supported-account-types.md).
+- Podczas rejestracji aplikacji należy podać jeden lub kilka (Jeśli aplikacja jest wdrażana w kilku lokalizacjach) identyfikatorów URI odpowiedzi. W niektórych przypadkach (ASP.NET i ASP.NET Core) należy włączyć token identyfikatora. Na koniec należy skonfigurować identyfikator URI, aby aplikacja działała w celu wylogowania użytkowników.
+- W kodzie aplikacji należy podać uprawnienia do logowania pełnomocników aplikacji sieci Web. Możesz chcieć dostosować sprawdzanie poprawności tokenów (w szczególności w scenariuszach partnerskich).
+- Aplikacje sieci Web obsługują wszystkie typy kont. Aby uzyskać więcej informacji, zobacz [obsługiwane typy kont](v2-supported-account-types.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

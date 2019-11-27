@@ -1,6 +1,6 @@
 ---
-title: Enable automatic user provisioning for multi-tenant applications - Azure AD
-description: A guide for independent software vendors for enabling automated provisioning
+title: Włączanie automatycznej aprowizacji użytkowników dla aplikacji wielodostępnych — Azure AD
+description: Przewodnik dla niezależnych dostawców oprogramowania, który umożliwia automatyczne Inicjowanie obsługi
 services: active-directory
 documentationcenter: azure
 author: BarbaraSelden
@@ -22,101 +22,101 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232317"
 ---
-# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Enable automatic user provisioning for your multi-tenant application
+# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Włącz automatyczne Inicjowanie obsługi administracyjnej użytkowników dla aplikacji wielodostępnej
 
-Automatic user provisioning is the process of automating the creation, maintenance, and removal of user identities in target systems like your software-as-a-service applications.
+Automatyczne Inicjowanie obsługi użytkowników to proces automatyzowania tworzenia, obsługi i usuwania tożsamości użytkowników w systemach docelowych, takich jak aplikacje typu "oprogramowanie jako usługa".
 
-## <a name="why-enable-automatic-user-provisioning"></a>Why enable automatic user provisioning?
+## <a name="why-enable-automatic-user-provisioning"></a>Dlaczego należy włączyć automatyczne Inicjowanie obsługi użytkowników?
 
-Applications that require that a user record is present in the application before a user’s first sign in require user provisioning. There are benefits to you as a service provider, and benefits to your customers.
+Aplikacje, które wymagają, aby rekord użytkownika był obecny w aplikacji przed pierwszym logowaniem użytkownika, wymaga zainicjowania obsługi użytkownika. Istnieją korzyści dla Ciebie jako dostawca usług i korzyści dla klientów.
 
-### <a name="benefits-to-you-as-the-service-provider"></a>Benefits to you as the service provider
+### <a name="benefits-to-you-as-the-service-provider"></a>Korzyści dla Ciebie jako dostawca usług
 
-* Increase the security of your application by using the Microsoft identity platform.
+* Zwiększ bezpieczeństwo aplikacji, korzystając z platformy tożsamości firmy Microsoft.
 
-* Reduce actual and perceived customer effort to adopt your application.
+* Zmniejsz rzeczywiste i postrzegane wysiłki dla klientów, aby wdrożyć aplikację.
 
-* Reduce your costs in integrating with multiple identity providers (IdPs) for automatic user provisioning by using System for Cross-Domain Identity Management (SCIM)-based provisioning.
+* Zmniejsz koszty integracji z wieloma dostawcami tożsamości (dostawców tożsamości) w celu automatycznego aprowizacji użytkowników przy użyciu systemu na potrzeby inicjowania obsługi administracyjnej między domenami (standard scim).
 
-* Reduce support costs by providing rich logs to help customers troubleshoot user provisioning issues.
+* Zmniejszenie kosztów pomocy technicznej dzięki udostępnieniu bogatych dzienników ułatwiających klientom Rozwiązywanie problemów z inicjowaniem obsługi użytkowników.
 
-* Increase the visibility of your application in the [Azure AD app gallery](https://azuremarketplace.microsoft.com/marketplace/apps).
+* Zwiększ widoczność aplikacji w [galerii aplikacji usługi Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-* Get a prioritized listing in the App Tutorials page.
+* Uzyskaj priorytetową listę na stronie samouczków aplikacji.
 
-### <a name="benefits-to-your-customers"></a>Benefits to your customers
+### <a name="benefits-to-your-customers"></a>Korzyści dla klientów
 
-* Increase security by automatically removing access to your application for users who change roles or leave the organization to your application.
+* Zwiększ bezpieczeństwo, automatycznie usuwając dostęp do aplikacji dla użytkowników, którzy zmienią role lub opuszczają organizację do swojej aplikacji.
 
-* Simplify user management for your application by avoiding human error and repetitive work associated with manual provisioning.
+* Uprość zarządzanie użytkownikami aplikacji, unikając błędu ludzkiego i powtarzającej się pracy związanej z ręczną obsługą administracyjną.
 
-* Reduce the costs of hosting and maintaining custom-developed provisioning solutions.
+* Zmniejsz koszty hostingu i konserwowania rozwiązań do aprowizacji opracowane przez niestandardowo.
 
-## <a name="choose-a-provisioning-method"></a>Choose a provisioning method
+## <a name="choose-a-provisioning-method"></a>Wybierz metodę aprowizacji
 
-Azure AD provides several integration paths to enable automatic user provisioning for your application.
+Usługa Azure AD udostępnia kilka ścieżek integracji, które umożliwiają automatyczne Inicjowanie obsługi użytkowników dla aplikacji.
 
-* The [Azure AD Provisioning Service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) manages the provisioning and deprovisioning of users from Azure AD to your application (outbound provisioning) and from your application to Azure AD (inbound provisioning). The service connects to the System for Cross-Domain Identity Management (SCIM) user management API endpoints provided by your application.
+* [Usługa Azure AD Provisioning](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) zarządza obsługą administracyjną i anulowaniem aprowizacji użytkowników z usługi Azure AD do aplikacji (aprowizacji wychodzące) i z aplikacji do usługi Azure AD (Udostępnianie przychodzące). Usługa nawiązuje połączenie z systemem dla punktów końcowych interfejsu API zarządzania tożsamościami w różnych domenach (standard scim) udostępnianych przez aplikację.
 
-* When using the [Microsoft Graph](https://docs.microsoft.com/graph/), your application manages inbound and outbound provisioning of users and groups from Azure AD to your application by querying the Microsoft Graph API.
+* W przypadku korzystania z [Microsoft Graph](https://docs.microsoft.com/graph/)aplikacja zarządza przychodzącą i wychodzącą aprowizacji użytkowników i grup z usługi Azure AD do aplikacji przez przeszukiwanie interfejsu API Microsoft Graph.
 
-* The Security Assertion Markup Language Just in Time (SAML JIT) user provisioning can be enabled if your application is using SAML for federation. It uses claims information sent in the SAML token to provision users.
+* Inicjowanie obsługi użytkowników (just in Time) w SAML (JIT) może być włączone, jeśli aplikacja używa protokołu SAML dla Federacji. Używa on informacji o oświadczeniach wysyłanych w tokenie SAML do udostępniania użytkownikom.
 
-To help determine which integration option to use for your application, refer to the high-level comparison table, and then see the more detailed information on each option.
+Aby ułatwić określenie opcji integracji, która ma być używana dla aplikacji, zapoznaj się z tabelą porównawczą wysokiego poziomu, a następnie zapoznaj się z bardziej szczegółowymi informacjami na temat każdej z nich.
 
-| Capabilities enabled or enhanced by Automatic Provisioning| Azure AD Provisioning Service (SCIM 2.0)| Microsoft Graph API (OData v4.0)| SAML JIT |
+| Możliwości włączone lub ulepszone przez automatyczne Inicjowanie obsługi| Usługa Azure AD Provisioning (standard scim 2,0)| Interfejs API Microsoft Graph (OData v 4.0)| PROTOKÓŁ SAML JIT |
 |---|---|---|---|
-| User and group management in Azure AD| √| √| User only |
-| Manage users and groups synced from on-premises Active Directory| √*| √*| User only* |
-| Access data beyond users and groups during provisioning Access to O365 data (Teams, SharePoint, Email, Calendar, Documents, etc.)| X+| √| X |
-| Create, read, and update users based on business rules| √| √| √ |
-| Delete users based on business rules| √| √| X |
-| Manage automatic user provisioning for all applications from the Azure portal| √| X| √ |
-| Support multiple identity providers| √| X| √ |
-| Support guest accounts (B2B)| √| √| √ |
-| Support non-enterprise accounts (B2C)| X| √| √ |
+| Zarządzanie użytkownikami i grupami w usłudze Azure AD| √| √| Tylko użytkownik |
+| Zarządzanie użytkownikami i grupami synchronizowanymi z poziomu lokalnego Active Directory| √*| √*| Tylko użytkownik * |
+| Dostęp do danych poza użytkownikami i grupami podczas aprowizacji dostępu do danych usługi O365 (zespoły, SharePoint, Poczta E-mail, kalendarz, dokumenty itp.)| X+| √| X |
+| Tworzenie, odczytywanie i aktualizowanie użytkowników na podstawie reguł firmy| √| √| √ |
+| Usuwanie użytkowników na podstawie reguł firmy| √| √| X |
+| Zarządzanie automatyczną obsługą użytkowników dla wszystkich aplikacji z Azure Portal| √| X| √ |
+| Obsługa wielu dostawców tożsamości| √| X| √ |
+| Obsługa kont gościa (B2B)| √| √| √ |
+| Obsługa kont nienależących do przedsiębiorstwa (B2C)| X| √| √ |
 
-<sup>*</sup> – Azure AD Connect setup is required to sync users from AD to Azure AD.  
-<sup>+</sup >– Using SCIM for provisioning does not preclude you from integrating your application with MIcrosoft Graph for other purposes.
+<sup>*</sup> — Azure AD Connect konfiguracja jest wymagana do synchronizowania użytkowników z usługi AD z usługą Azure AD.  
+<sup>+</sup >— użycie Standard scim do aprowizacji nie wyklucza integracji aplikacji z programem Microsoft Graph do innych celów.
 
-## <a name="azure-ad-provisioning-service-scim"></a>Azure AD Provisioning Service (SCIM)
+## <a name="azure-ad-provisioning-service-scim"></a>Usługa Azure AD Provisioning (standard scim)
 
-The Azure AD provisioning services uses [SCIM](https://aka.ms/SCIMOverview), an industry standard for provisioning supported by many identity providers (IdPs) as well as applications (e.g. Slack, G Suite, Dropbox). We recommend you use the Azure AD provisioning service if you want to support IdPs in addition to Azure AD, as any SCIM-compliant IdP can connect to your SCIM endpoint. Building a simple /User endpoint, you can enable provisioning without having to maintain your own sync engine. 
+Usługi Azure AD Provisioning wykorzystują [Standard scim](https://aka.ms/SCIMOverview), branżowe standardy do aprowizacji obsługiwane przez wielu dostawców tożsamości (dostawców tożsamości), a także aplikacje (np. zapasy, usługa g Suite, Dropbox). Zalecamy użycie usługi Azure AD Provisioning w celu obsługi dostawców tożsamości oprócz usługi Azure AD, ponieważ wszelkie dostawcy tożsamości zgodne z standard scim mogą łączyć się z punktem końcowym Standard scim. Kompilowanie prostego punktu końcowego/User umożliwia obsługę administracyjną bez konieczności obsługi własnego aparatu synchronizacji. 
 
-For more information on how the Azure AD Provisioning Service users SCIM, see: 
+Aby uzyskać więcej informacji o tym, jak użytkownicy usługi Azure AD Provisioning Standard scim, zobacz: 
 
-* [Learn more about the SCIM standard](https://aka.ms/SCIMOverview)
+* [Dowiedz się więcej na temat standardu Standard scim](https://aka.ms/SCIMOverview)
 
-* [Using System for Cross-Domain Identity Management (SCIM) to automatically provision users and groups from Azure Active Directory to applications](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Używanie systemu do zarządzania tożsamościami między domenami (standard scim) w celu automatycznego aprowizacji użytkowników i grup z Azure Active Directory do aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-* [Understand the Azure AD SCIM implementation](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Opis implementacji usługi Azure AD Standard scim](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph for Provisioning
+## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph do aprowizacji
 
-When you use Microsoft Graph for provisioning, you have access to all the rich user data available in Graph. In addition to the details of users and groups, you can also fetch additional information like the user’s roles, manager and direct reports, owned and registered devices, and hundreds of other data pieces available in the [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
+W przypadku korzystania z Microsoft Graph do inicjowania obsługi administracyjnej masz dostęp do wszystkich bogatych danych użytkownika dostępnych w grafie. Oprócz szczegółów dotyczących użytkowników i grup można także pobrać dodatkowe informacje, takie jak role użytkownika, Menedżer i raporty bezpośrednie, należące do Ciebie i zarejestrowane urządzenia oraz setki innych danych dostępnych w [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
 
-More than 15 million organizations, and 90% of fortune 500 companies use Azure AD while subscribing to Microsoft cloud services like Office 365, Microsoft Azure, Enterprise Mobility Suite, or Microsoft 365. You can use Microsoft Graph to integrate your app with administrative workflows, such as employee onboarding (and termination), profile maintenance, and more. 
+Ponad 15 000 000 organizacji i 90% listy Fortune 500 firmy korzystają z usługi Azure AD podczas subskrybowania usług w chmurze firmy Microsoft, takich jak Office 365, Microsoft Azure, Enterprise Mobility Suite lub Microsoft 365. Za pomocą Microsoft Graph można zintegrować swoją aplikację z administracyjnymi przepływami pracy, takimi jak dołączanie pracownika (i zakończenie), konserwacja profilu i wiele więcej. 
 
-Learn more about using Microsoft Graph for provisioning:
+Dowiedz się więcej o korzystaniu z Microsoft Graph do aprowizacji:
 
-* [Microsoft Graph Home page](https://developer.microsoft.com/graph)
+* [Strona główna Microsoft Graph](https://developer.microsoft.com/graph)
 
 * [Omówienie programu Microsoft Graph](https://docs.microsoft.com/graph/overview)
 
-* [Microsoft Graph Auth Overview](https://docs.microsoft.com/graph/auth/)
+* [Omówienie uwierzytelniania Microsoft Graph](https://docs.microsoft.com/graph/auth/)
 
-* [Getting started with Microsoft Graph](https://developer.microsoft.com/graph/get-started)
+* [Wprowadzenie do Microsoft Graph](https://developer.microsoft.com/graph/get-started)
 
-## <a name="using-saml-jit-for-provisioning"></a>Using SAML JIT for provisioning
+## <a name="using-saml-jit-for-provisioning"></a>Korzystanie z protokołu SAML JIT do aprowizacji
 
-If you want to provision users only upon first sign in to your application, and do not need to automatically deprovision users, SAML JIT is an option. Your application must support SAML 2.0 as a federation protocol to use SAML JIT.
+Jeśli chcesz udostępnić użytkownikom tylko po raz pierwszy, zaloguj się do aplikacji i nie musisz automatycznie cofać aprowizacji użytkowników, jest to opcja. Aplikacja musi obsługiwać SAML 2,0 jako protokół federacyjny, aby można było używać protokołu SAML JIT.
 
-SAML JIT uses the claims information in the SAML token to create and update user information in the application. Customers can configure these required claims in the Azure AD application as needed. Sometimes the JIT provisioning needs to be enabled from the application side so that customer can use this feature. SAML JIT is useful for creating and updating users, but it can't delete or deactivate the users in the application.
+Protokół SAML JIT używa informacji o oświadczeniach w tokenie SAML do tworzenia i aktualizowania informacji o użytkowniku w aplikacji. Klienci mogą skonfigurować te wymagane oświadczenia w aplikacji usługi Azure AD zgodnie z potrzebami. Czasami Inicjowanie obsługi JIT musi być włączone ze strony aplikacji, aby klient mógł używać tej funkcji. Protokół SAML JIT jest przydatny do tworzenia i aktualizowania użytkowników, ale nie może usuwać ani dezaktywować użytkowników w aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Enable Single Sign-on for your application](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Włącz logowanie jednokrotne dla aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
 
-* [Submit your application listing](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) and partner with Microsoft to create documentation on Microsoft’s site.
+* [Prześlij swoją listę aplikacji](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) i partnera do firmy Microsoft, aby utworzyć dokumentację witryny firmy Microsoft.
 
-* [Join the Microsoft Partner Network (free) and create your go to market plan](https://partner.microsoft.com/en-us/explore/commercial).
+* [Dołącz do Microsoft Partner Network (bezpłatnie) i Utwórz plan na rynku](https://partner.microsoft.com/en-us/explore/commercial).

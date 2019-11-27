@@ -1,6 +1,6 @@
 ---
-title: Request process and email notifications in Azure AD entitlement management - Azure Active Directory
-description: Learn about the request process for an access package and when email notifications are sent in Azure Active Directory entitlement management.
+title: Zażądaj procesu i powiadomień e-mail w usłudze Azure AD uprawnień zarządzania — Azure Active Directory
+description: Dowiedz się więcej o procesie żądania dla pakietu dostępu i powiadomieniach e-mail, które są wysyłane w Azure Active Directory zarządzania prawami.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -23,136 +23,136 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206892"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Request process and email notifications in Azure AD entitlement management
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Zażądaj procesu i powiadomień e-mail w usłudze Azure AD uprawnienia do zarządzania
 
-When a user submits a request to an access package, a process begins to deliver that access request. Azure AD entitlement management sends email notifications to approvers and requestors when key events occur during the process. This article describes the request process and the email notifications that are sent.
+Gdy użytkownik przesyła żądanie do pakietu dostępu, rozpocznie się dostarczenie tego żądania dostępu. Zarządzanie prawami w usłudze Azure AD wysyła powiadomienia e-mail do osób zatwierdzających i osoby żądające w przypadku wystąpienia kluczowych zdarzeń w trakcie procesu. W tym artykule opisano proces żądania i wysyłane powiadomienia e-mail.
 
-## <a name="request-process"></a>Request process
+## <a name="request-process"></a>Proces żądania
 
-A user that needs access to an access package can submit an access request. Depending on the configuration of the policy, the request might require an approval. When a request is approved, a process begins to assign the user access to each resource in the access package. The following diagram shows an overview of the process and the different states:
+Użytkownik wymagający dostępu do pakietu dostępu może przesłać żądanie dostępu. W zależności od konfiguracji zasad żądanie może wymagać zatwierdzenia. Gdy żądanie zostanie zatwierdzone, proces zacznie przypisywać użytkownikowi dostęp do każdego zasobu w pakiecie dostępu. Na poniższym diagramie przedstawiono przegląd procesu i różne stany:
 
-![Approval process diagram](./media/entitlement-management-process/request-process.png)
+![Diagram procesu zatwierdzania](./media/entitlement-management-process/request-process.png)
 
 | Stan | Opis |
 | --- | --- |
-| Submitted | User submits a request. |
-| Pending approval | If the policy for an access package requires approval, a request moves to pending approval. |
-| Wygasłe | If no approvers approve a request within the approval request timeout, the request expires. To try again, the user will have to resubmit their request. |
-| Denied | Approver denies a request. |
-| Approved (Zatwierdzono) | Approver approves a request. |
-| Delivering | User has **not** been assigned access to all the resources in the access package. If this is an external user, the user may not have accessed the resource directory yet. They also may not have accepted the consent prompt. |
-| Dostarczono | User has been assigned access to all the resources in the access package. |
-| Access extended | If extensions are allowed in the policy, the user extended the assignment. |
-| Access expired | User's access to the access package has expired. To get access again, the user will have to submit a request. |
+| Złożona | Użytkownik przesyła żądanie. |
+| Oczekuje na zatwierdzenie | Jeśli zasady dla pakietu dostępu wymagają zatwierdzenia, żądanie przechodzi do oczekującego zatwierdzenia. |
+| Wygasłe | Jeśli żadne osoby zatwierdzające nie zatwierdzą żądania w ramach limitu czasu żądania zatwierdzenia, żądanie wygasa. Aby ponowić próbę, użytkownik będzie musiał ponownie przesłać żądanie. |
+| Dozwolone | Osoba zatwierdzająca odrzuca żądanie. |
+| Approved (Zatwierdzono) | Osoba zatwierdzająca zatwierdza żądanie. |
+| Wykonania | Użytkownikowi **nie** przypisano dostępu do wszystkich zasobów w pakiecie dostępu. Jeśli jest to użytkownik zewnętrzny, użytkownik może nie mieć jeszcze dostępu do katalogu zasobów. Ponadto nie zaakceptowali monitu o zgodę. |
+| Dostarczono | Użytkownikowi przypisano dostęp do wszystkich zasobów w pakiecie dostępu. |
+| Dostęp rozszerzony | Jeśli w zasadach są dozwolone rozszerzenia, Użytkownik rozszerzył przypisanie. |
+| Dostęp wygasł | Dostęp użytkownika do pakietu dostępu wygasł. Aby uzyskać dostęp ponownie, użytkownik będzie musiał przesłać żądanie. |
 
 ## <a name="email-notifications"></a>Powiadomienia e-mail
 
-If you're an approver, you're sent email notifications when you need to approve an access request. You also receive notifications when an access request has been completed. You're also sent email notifications that indicate the status of your request if you're a requestor.
+Jeśli jesteś osobą zatwierdzającą, wysyłasz powiadomienia pocztą e-mail, gdy musisz zatwierdzić żądanie dostępu. Otrzymasz również powiadomienia, gdy żądanie dostępu zostało zakończone. Wysyłane są również powiadomienia e-mail, które wskazują stan Twojego żądania, jeśli jesteś zleceniodawcą.
 
-The following diagrams show when these email notifications are sent to either the approvers or the requestor. Reference the [email notifications table](entitlement-management-process.md#email-notifications-table) to find the corresponding number to the email notifications displayed in the diagrams.
+Na poniższych diagramach przedstawiono, kiedy te powiadomienia e-mail są wysyłane do osób zatwierdzających lub osoby żądającej. Odwołuje się do [tabeli powiadomień e-mail](entitlement-management-process.md#email-notifications-table) , aby znaleźć odpowiednią liczbę powiadomień e-mail wyświetlanych na diagramach.
 
-### <a name="first-approvers-and-alternate-approvers"></a>First approvers and alternate approvers
-The following diagram shows the experience of first approvers and alternate approvers, and the email notifications they receive during the request process:
+### <a name="first-approvers-and-alternate-approvers"></a>Pierwsze osoby zatwierdzające i alternatywni osoby zatwierdzające
+Na poniższym diagramie przedstawiono środowisko pierwszej osoby zatwierdzającej i alternatywne osoby zatwierdzające oraz powiadomienia e-mail otrzymywane podczas procesu żądania:
 
-![First and alternate approvers process flow](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
+![Pierwszy i alternatywny przepływ procesu zatwierdzania](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
 
 ### <a name="requestors"></a>Osoby żądające
-The following diagram shows the experience of requestors and the email notifications they receive during the request process:
+Na poniższym diagramie przedstawiono środowisko żądających i powiadomienia e-mail otrzymywane podczas procesu żądania:
 
-![Requestor process flow](./media/entitlement-management-process/requestor-approval-request-flow.png)
+![Przepływ procesu żądającego](./media/entitlement-management-process/requestor-approval-request-flow.png)
 
-### <a name="2-stage-approval"></a>2-stage approval
-The following diagram shows the experience of stage-1 and stage-2 approvers and the email notifications they receive during the request process:
+### <a name="2-stage-approval"></a>2 — zatwierdzenie na etapie
+Na poniższym diagramie przedstawiono środowisko osób zatwierdzających etap-1 i (etap 2) oraz powiadomienia e-mail otrzymywane podczas procesu żądania:
 
-![2-stage approval process flow](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
+![2 — przepływ procesu zatwierdzania na etapie](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
 
-### <a name="email-notifications-table"></a>Email notifications table
-The following table provides more detail about each of these email notifications. To manage these emails, you can use rules. For example, in Outlook, you can create rules to move the emails to a folder if the subject contains words from this table:
+### <a name="email-notifications-table"></a>Tabela powiadomień e-mail
+Poniższa tabela zawiera więcej szczegółów na temat każdej z tych powiadomień e-mail. Aby zarządzać tymi wiadomościami e-mail, możesz użyć reguł. Na przykład w programie Outlook można utworzyć reguły przenoszenia wiadomości e-mail do folderu, jeśli temat zawiera wyrazy z tej tabeli:
 
-| # | Email subject | When sent | Sent to |
+| # | Temat wiadomości e-mail | Po wysłaniu | Wysłane do |
 | --- | --- | --- | --- |
-| 1 | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to Stage-1 alternate approvers (after the request has been escalated) to take action. | Stage-1 alternate approvers |
-| 2 | Action required: Approve or deny request by *[date]* | This email will be sent to the first approver, if escalation is disabled, to take action. | First approver |
-| 3 | Reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is disabled. The email asks them to take action if they haven't. | First approver |
-| 4 | Approve or deny the request by *[time]* on *[date]* | This email will be sent to the first approver (if escalation is enabled) to take action. | First approver |
-| 5 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is enabled. The email asks them to take action if they haven't. | First approver |
-| 6 | Request has expired for *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers after the request has expired. | First approver, stage-1 alternate approvers |
-| 7 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers upon request completion. | First approver, stage-1 alternate approvers |
-| 8 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers of a 2-stage request when the stage-1 request is approved. | First approver, stage-1 alternate approvers |
-| 9 | Request denied to *[access_package]* | This email will be sent to the requestor when their request is denied | Requestor |
-| 10 | Your request has expired for *[access_package]* | This email will be sent to the requestor at the end of a single or 2-stage request. The email notifies the requestor that the request expired. | Requestor |
-| 11 | Action required: Approve or deny request by *[date]* | This email will be sent to the second approver, if escalation is disabled, to take action. | Second approver |
-| 12 | Action required reminder: Approve or deny the request by *[date]* | This reminder email will be sent to the second approver, if escalation is disabled. The notification asks them to take action if they haven't yet. | Second approver |
-| 13 | Action required: Approve or deny the request by *[date]* for *[requestor]* | This email will be sent to second approver, if escalation is enabled, to take action. | Second approver |
-| 14 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the second approver, if escalation is enabled. The notification asks them to take action if they haven't yet. | Second approver |
-| 15 | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to stage-2 alternate approvers, if escalation is enabled, to take action. | Stage-2 alternate approvers |
-| 16 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the second approver and stage-2 alternate approvers upon approving the request. | Second approver, Stage-2 alternate approvers |
-| 17 | A request has expired for *[access_package]* | This email will be sent to the second approver or alternate approvers, after the request expires. | Second approver, stage-2 alternate approvers |
-| 18 | You now have access to *[access_package]* | This email will be sent to the end users to start using their access. | Requestor |
-| 19 | Extend access for *[access_package]* by *[date]* | This email will be sent to the end users before their access expires. | Requestor |
-| 20 | Access has ended for *[access_package]* | This email will be sent to the end users after their access expires. | Requestor |
+| 1 | Wymagana akcja: Zatwierdź lub Odrzuć przekazane żądanie przez *[Date]* | Ta wiadomość e-mail będzie wysyłana do osoby zatwierdzającej alternatywny etap 1 (po eskalacji żądania) w celu podjęcia odpowiednich działań. | Etap-1 alternatywne osoby zatwierdzające |
+| 2 | Wymagana akcja: Zatwierdź lub Odmów żądania przez *[Date]* | Ta wiadomość e-mail zostanie wysłana do pierwszej osoby zatwierdzającej, jeśli eskalacja jest wyłączona, aby podjąć odpowiednie działania. | Pierwsza osoba zatwierdzająca |
+| 3 | Przypomnienie: Zatwierdź lub Odrzuć żądanie przez *[Date]* dla *[osoba żądająca]* | Ta wiadomość e-mail z przypomnieniem zostanie wysłana do pierwszej osoby zatwierdzającej, jeśli eskalacja jest wyłączona. Wiadomość e-mail prosi o podjęcie działania, jeśli nie. | Pierwsza osoba zatwierdzająca |
+| 4 | Zatwierdź lub Odrzuć żądanie przez *[Time]* w dniu *[Date]* | Ta wiadomość e-mail zostanie wysłana do pierwszej osoby zatwierdzającej (w przypadku włączenia eskalacji) w celu podjęcia odpowiednich działań. | Pierwsza osoba zatwierdzająca |
+| 5 | Przypomnienie o wymaganym akcji: Zatwierdź lub Odrzuć żądanie przez *[Date]* dla *[żądającego]* | Ta wiadomość e-mail z przypomnieniem zostanie wysłana do pierwszej osoby zatwierdzającej, jeśli eskalacja jest włączona. Wiadomość e-mail prosi o podjęcie działania, jeśli nie. | Pierwsza osoba zatwierdzająca |
+| 6 | Żądanie wygasło dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do pierwszej osoby zatwierdzającej i od 1 alternatywnej osoby zatwierdzające od momentu wygaśnięcia żądania. | Pierwsze osoby zatwierdzającej, etap 1. alternatywne osoby zatwierdzające |
+| 7 | Żądanie zatwierdzone dla *[żądającej]* do *[access_package]* | Ta wiadomość e-mail zostanie wysłana do pierwszej osoby zatwierdzającej i od 1 alternatywnej osoby zatwierdzające do momentu ukończenia żądania. | Pierwsze osoby zatwierdzającej, etap 1. alternatywne osoby zatwierdzające |
+| 8 | Żądanie zatwierdzone dla *[żądającej]* do *[access_package]* | Ta wiadomość e-mail zostanie wysłana do pierwszej osoby zatwierdzającej i od 1 do zaakceptowania alternatywne osoby zatwierdzające 2-etapowe żądania po zatwierdzeniu żądania etapu 1. | Pierwsze osoby zatwierdzającej, etap 1. alternatywne osoby zatwierdzające |
+| 9 | Żądanie odrzucone do *[access_package]* | Ta wiadomość e-mail zostanie wysłana do osoby żądającej, gdy żądanie zostanie odrzucone | Obiektu żądającego |
+| 10 | Twoje żądanie wygasło dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do osoby żądającej na końcu pojedynczego lub dwuetapowego żądania. Wiadomość e-mail powiadamia żądającego o wygaśnięciu żądania. | Obiektu żądającego |
+| 11 | Wymagana akcja: Zatwierdź lub Odmów żądania przez *[Date]* | Ta wiadomość e-mail zostanie wysłana do drugiej osoby zatwierdzającej, jeśli eskalacja jest wyłączona, aby podjąć odpowiednie działania. | Druga osoba zatwierdzająca |
+| 12 | Przypomnienie o wymaganym akcji: Zatwierdź lub Odrzuć żądanie przez *[Date]* | Ta wiadomość e-mail z przypomnieniem zostanie wysłana do drugiej osoby zatwierdzającej, jeśli eskalacja jest wyłączona. Powiadomienie poprosi o podjęcie działania, jeśli jeszcze nie zostało to zrobione. | Druga osoba zatwierdzająca |
+| 13 | Wymagana akcja: Zatwierdź lub Odrzuć żądanie przez *[Date]* dla *[żądającego]* | Ta wiadomość e-mail zostanie wysłana do drugiej osoby zatwierdzającej, jeśli eskalacja jest włączona, aby podjąć działanie. | Druga osoba zatwierdzająca |
+| 14 | Przypomnienie o wymaganym akcji: Zatwierdź lub Odrzuć żądanie przez *[Date]* dla *[żądającego]* | Ta wiadomość e-mail z przypomnieniem zostanie wysłana do drugiej osoby zatwierdzającej, jeśli eskalacja jest włączona. Powiadomienie poprosi o podjęcie działania, jeśli jeszcze nie zostało to zrobione. | Druga osoba zatwierdzająca |
+| 15 | Wymagana akcja: Zatwierdź lub Odrzuć przekazane żądanie przez *[Date]* | Ta wiadomość e-mail zostanie wysłana do osoby zatwierdzającej alternatywnego etapu 2, jeśli eskalacja jest włączona, aby podjąć działania. | Etapy — 2 alternatywne osoby zatwierdzające |
+| 16 | Żądanie zatwierdzone dla *[żądającej]* do *[access_package]* | Ta wiadomość e-mail zostanie wysłana do drugiej osoby zatwierdzającej i przełożonej na 2 zastępców osoby zatwierdzające po zatwierdzeniu żądania. | Druga osoba zatwierdzająca, etap-2 alternatywne osoby zatwierdzające |
+| 17 | Żądanie wygasło dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do drugiej osoby zatwierdzającej lub alternatywnej osoby zatwierdzającej po wygaśnięciu żądania. | Druga osoba zatwierdzająca, etap-2 alternatywne osoby zatwierdzające |
+| 18 | Masz teraz dostęp do programu *[access_package]* | Ta wiadomość e-mail zostanie wysłana do użytkowników końcowych, aby rozpocząć korzystanie z nich. | Obiektu żądającego |
+| 19 | Rozszerzona dostęp dla *[access_package]* przez *[Date]* | Ta wiadomość e-mail zostanie wysłana do użytkowników końcowych przed wygaśnięciem dostępu. | Obiektu żądającego |
+| 20 | Zakończono dostęp dla *[access_package]* | Ta wiadomość e-mail zostanie wysłana do użytkowników końcowych po wygaśnięciu dostępu. | Obiektu żądającego |
 
-### <a name="access-request-emails"></a>Access request emails
+### <a name="access-request-emails"></a>Adresy e-mail żądania dostępu
 
-When a requestor submits an access request for an access package configured to require approval, all approvers added to the policy will receive an email notification with details of the request. The details in the email include: requestor's name organization, and business justification; and the requested access start and end date (if provided). The details will also include when the request was submitted and when the request will expire.
+Gdy obiekt żądający przesyła żądanie dostępu do pakietu dostępu skonfigurowanego do żądania zatwierdzenia, wszystkie osoby zatwierdzające dodani do zasad otrzymają powiadomienie e-mail z informacjami dotyczącymi żądania. Szczegóły zawarte w wiadomościach e-mail obejmują: organizacja osoby żądającej i uzasadnienie biznesowe. i żądana Data rozpoczęcia i zakończenia dostępu (jeśli została podana). Szczegóły obejmują również czas przesyłania żądania oraz czas wygaśnięcia żądania.
 
-The email includes a link approvers can click on to go to My Access to approve or deny the access request. Here is a sample email notification that is sent to the first approver or second approver (if 2-stage approval is enabled) to complete an access request:
+Wiadomość e-mail zawiera osoby zatwierdzające łącza, które można kliknąć, aby przejść do obszaru mój dostęp, aby zatwierdzić lub odrzucić żądanie dostępu. Oto przykładowe powiadomienie e-mail wysyłane do pierwszej osoby zatwierdzającej lub drugiej osoby zatwierdzającej (Jeśli włączono zatwierdzanie 2-etapowe) w celu ukończenia żądania dostępu:
 
-![Approve request to access package email](./media/entitlement-management-shared/approver-request-email.png)
+![Zatwierdź żądanie uzyskania dostępu do poczty e-mail pakietu](./media/entitlement-management-shared/approver-request-email.png)
 
-Approvers can also receive a reminder email. The email asks the approver to make a decision on the request. Here is a sample email notification the approver receives to remind them to take action:
+Osoby zatwierdzające mogą również otrzymywać wiadomości e-mail z przypomnieniem. Wiadomość e-mail prosi osoby zatwierdzającej o podejmowanie decyzji. Poniżej znajduje się przykładowe powiadomienie e-mail, które osoba zatwierdzająca otrzymuje w celu poinformowania o konieczności podjęcia działania:
 
-![Reminder access request email](./media/entitlement-management-process/approver-access-request-reminder-email.png)
+![Adres e-mail żądania dostępu do przypomnienia](./media/entitlement-management-process/approver-access-request-reminder-email.png)
 
-### <a name="alternate-approvers-request-emails"></a>Alternate approvers request emails
+### <a name="alternate-approvers-request-emails"></a>Alternatywne osoby zatwierdzające wiadomości e-mail
 
-If the alternate approvers setting is enabled and the request is still pending, it will be forwarded. Alternate approvers will receive an email to approve or deny the request. You can enable alternate approvers in stage-1 and stage-2. Here is a sample email of the notification the alternate approvers receive:
+Jeśli ustawienie alternatywne osoby zatwierdzające jest włączone, a żądanie nadal oczekuje, zostanie przesłane dalej. Alternatywne osoby zatwierdzające otrzymają wiadomość e-mail w celu zatwierdzenia lub odrzucenia żądania. Alternatywne osoby zatwierdzające można włączyć w obszarze etap-1 i etap 2. Oto przykładowa wiadomość e-mail z powiadomieniem, że osoby zatwierdzające alternatywne otrzymują:
 
-![Alternate approvers request email](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
+![Adresy e-mail żądania alternatywnej osoby zatwierdzające](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
 
-Both the approver and the alternate approvers can approve or deny the request.
+Osoby zatwierdzające i alternatywne osoby zatwierdzające mogą zatwierdzić lub odrzucić żądanie.
 
-### <a name="approved-or-denied-emails"></a>Approved or denied emails
+### <a name="approved-or-denied-emails"></a>Zatwierdzone lub odrzucone wiadomości e-mail
 
- When an approver receives an access request submitted by a requestor, they can approve or deny the access request. The approver needs to add a business justification for their decision. Here is a sample email sent to the approvers and alternate approvers after a request is approved:
+ Gdy osoba zatwierdzająca odbiera żądanie dostępu przesłane przez żądającego, może zatwierdzić lub odrzucić żądanie dostępu. Osoba zatwierdzająca musi dodać uzasadnienie biznesowe dla swojej decyzji. Oto przykładowa wiadomość e-mail wysyłana do osób zatwierdzających i zastępców osób zatwierdzających po zatwierdzeniu żądania:
 
-![Approved request to access package email](./media/entitlement-management-process/approver-request-email-approved.png)
+![Zatwierdzone żądanie dostępu do pakietu do poczty e-mail](./media/entitlement-management-process/approver-request-email-approved.png)
 
-When an access request is approved, and their access is provisioned, an email notification is sent to the requestor that they now have access to the access package. Here is a sample email notification that is sent to a requestor when they're granted access to an access package:
+Gdy żądanie dostępu zostanie zatwierdzone, a dostęp do nich jest inicjowany, do osoby żądającej jest wysyłana wiadomość e-mail z informacją o tym, że mają teraz dostęp do pakietu dostępu. Oto przykładowe powiadomienie e-mail wysyłane do osoby żądającej, gdy zostanie udzielony dostęp do pakietu dostępu:
 
-![Approved requestor access request email](./media/entitlement-management-process/requestor-email-approved.png)
+![Zatwierdzony adres e-mail żądania dostępu do żądającego](./media/entitlement-management-process/requestor-email-approved.png)
 
-When an access request is denied, an email notification is sent to the requestor. Here is a sample email notification that is sent to a requestor when their access request is denied:
+W przypadku odrzucenia żądania dostępu do osoby żądającej jest wysyłana wiadomość e-mail z powiadomieniem. Oto przykładowe powiadomienie e-mail wysyłane do osoby żądającej, gdy żądanie dostępu zostanie odrzucone:
 
-![Requestor request denied email](./media/entitlement-management-process/requestor-email-denied.png)
+![Adres e-mail żądania żądania osoby żądającej](./media/entitlement-management-process/requestor-email-denied.png)
 
-### <a name="2-stage-approval-access-request-emails"></a>2-stage approval access request emails
+### <a name="2-stage-approval-access-request-emails"></a>2 — adresy e-mail żądań dostępu do zatwierdzenia
 
-If 2-stage approval is enabled, at least two approvers must approve the request, one from each stage, before the requestor can receive access.
+Jeśli jest włączone zatwierdzanie 2-etapowe, co najmniej dwie osoby zatwierdzające muszą zatwierdzić żądanie, jedno z poszczególnych etapów, zanim osoba żądająca będzie mogła uzyskać dostęp.
 
-During stage-1, the first approver will receive the access request email and make a decision. If they approve the request, all first approvers and alternate approvers in stage-1 (if escalation is enabled) will receive notification that stage-1 is complete. Here is a sample email of the notification that is sent when stage-1 is complete:
+W trakcie etapu 1 pierwsza osoba zatwierdzająca otrzyma wiadomość e-mail z żądaniem dostępu i podejmie decyzję. W przypadku zatwierdzenia żądania wszystkie pierwsze osoby zatwierdzające i alternatywne osoby zatwierdzające w etapie-1 (jeśli eskalacji są włączone) otrzymają powiadomienie o ukończeniu etapu 1. Oto przykładowa wiadomość e-mail z powiadomieniem wysyłanym po zakończeniu etapu-1:
 
-![2-stage access request email](./media/entitlement-management-process/approver-request-email-2stage.png)
+![2 — adres e-mail żądania dostępu](./media/entitlement-management-process/approver-request-email-2stage.png)
 
-After the first or alternate approvers approve the request in stage-1, stage-2 begins. During stage-2, the second approver will receive the access request notification email. After the second approver or alternate approvers in stage-2 (if escalation is enabled) decide to approve or deny the request, notification emails are sent to the first and second approvers, and all alternate approvers in stage-1 and stage-2, as well as the requestor.
+Po zatwierdzeniu przez pierwszej lub alternatywnej osoby zatwierdzającej żądanie w etapie-1 rozpoczyna się etap 2. W trakcie etapu 2 druga osoba zatwierdzająca otrzyma wiadomość e-mail z powiadomieniem o żądaniu dostępu. Po drugiej osobie zatwierdzającej lub alternatywne osoby zatwierdzające w fazie 2 (Jeśli włączono eskalację) zdecydują się na zatwierdzenie lub odrzucenie żądania, wiadomości e-mail z powiadomieniem są wysyłane do pierwszej i drugiej osoby zatwierdzającej oraz do wszystkich osób zatwierdzających w ramach etapu-1 i etapu-2, a także od osoby żądającej.
 
-### <a name="expired-access-request-emails"></a>Expired access request emails
+### <a name="expired-access-request-emails"></a>Wygasłe wiadomości e-mail z żądaniem dostępu
 
-Access requests could expire if no approver has approved or denied the request. 
+Żądania dostępu mogły wygasnąć, jeśli żadna osoba zatwierdzająca nie zatwierdziła lub nie odrzuciła żądania. 
 
-When the request reaches its configured expiration date and expires, it can no longer be approved or denied by the approvers. Here is a sample email of the notification sent to all of the first, second (if 2-stage approval is enabled), and alternate approvers:
+Gdy żądanie osiągnie swoją skonfigurowaną datę wygaśnięcia i wygasa, nie może być już zatwierdzone ani odrzucone przez osoby zatwierdzające. Oto przykładowa wiadomość e-mail z powiadomieniem wysyłanym do wszystkich pierwszych, drugi (Jeśli włączono zatwierdzanie 2-etapowe) i zastępców osób zatwierdzających:
 
-![Approvers expired access request email](./media/entitlement-management-process/approver-request-email-expired.png)
+![Osoby zatwierdzające utraciły wiadomość e-mail z żądaniem dostępu](./media/entitlement-management-process/approver-request-email-expired.png)
 
-An email notification is also sent to the requestor, notifying them that their access request has expired, and that they need to resubmit the access request. The following diagram shows the experience of the requestor and the email notifications they receive when they request to extend access:
+Powiadomienie e-mail jest również wysyłane do osoby żądającej, powiadamiają o tym, że ich żądanie dostępu wygasło, i że muszą ponownie przesłać żądanie dostępu. Na poniższym diagramie przedstawiono środowisko osoby żądającej i powiadomienia e-mail odbierane po zażądaniu przekroczenia dostępu:
 
-![Requestor extend access process flow](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
+![Przepływ procesu rozszerzonego dostępu żądania](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
 
-Here is a sample email notification that is sent to a requestor when their access request has expired:
+Oto przykładowe powiadomienie e-mail wysyłane do osoby żądającej, gdy ich żądanie dostępu wygasło:
 
-![Requestor expired access request email](./media/entitlement-management-process/requestor-email-request-expired.png)
+![Wiadomość e-mail z żądaniem żądania dostępu wygasła](./media/entitlement-management-process/requestor-email-request-expired.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Request access to an access package](entitlement-management-request-access.md)
-- [Approve or deny access requests](entitlement-management-request-approve.md)
+- [Zażądaj dostępu do pakietu dostępu](entitlement-management-request-access.md)
+- [Zatwierdzanie lub odrzucanie żądań dostępu](entitlement-management-request-approve.md)

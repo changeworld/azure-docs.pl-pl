@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/26/2019
+ms.date: 11/26/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 8cabc1031f9d0be772ba087109ae1dfc881ce163
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 218031830a7516dfd539e1c0b9b665807822f38d
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680078"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533146"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Rozwiązywanie problemów z łącznikami Azure Data Factory
 
@@ -47,84 +47,6 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
 - **Rozwiązanie**: ponownie uruchom działanie kopiowania po kilku minutach.
 
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-
-### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Komunikat o błędzie: konwersja nie powiodła się podczas konwertowania ciągu znaków na unikatowy identyfikator
-
-- **Objawy**: w przypadku kopiowania danych ze źródła danych tabelarycznych (takich jak SQL Server) do Azure SQL Data Warehouse przy użyciu kopiowania etapowego i bazy, wystąpił następujący błąd:
-
-    ```
-    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
-    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
-    Message=Conversion failed when converting from a character string to uniqueidentifier...
-    ```
-
-- **Przyczyna**: Azure SQL Data Warehouse baza nie może przekonwertować pustego ciągu na identyfikator GUID.
-
-- **Rozwiązanie**: w ujścia działania kopiowania w obszarze Ustawienia bazy danych ustaw wartość false dla opcji**Użyj typu domyślnego**.
-
-### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Komunikat o błędzie: Oczekiwano typu danych: DECIMAL (x, x), wartość powodująca problemy
-
-- **Objawy**: podczas kopiowania danych ze źródła danych tabelarycznych (takich jak SQL Server) do usługi SQL DW przy użyciu kopiowania etapowego i wielopodstawa, wystąpił następujący błąd:
-
-    ```
-    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
-    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
-    Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
-    Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
-    ```
-
-- **Przyczyna**: Azure SQL Data Warehouse Base nie może wstawić pustego ciągu (wartość null) do kolumny dziesiętnej.
-
-- **Rozwiązanie**: w ujścia działania kopiowania w obszarze Ustawienia bazy danych ustaw wartość false dla opcji**Użyj typu domyślnego**.
-
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Komunikat o błędzie: komunikat o wyjątku Java: HdfsBridge:: CreateRecordReader
-
-- **Objawy**: skopiujesz dane do Azure SQL Data Warehouse przy użyciu bazy danych Base i wystąpił następujący błąd:
-
-    ```
-    Message=110802;An internal DMS error occurred that caused this operation to fail. 
-    Details: Exception: Microsoft.SqlServer.DataWarehouse.DataMovement.Common.ExternalAccess.HdfsAccessException, 
-    Message: Java exception raised on call to HdfsBridge_CreateRecordReader. 
-    Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
-    ```
-
-- **Przyczyna**: możliwe przyczyny jest to, że schemat (całkowita szerokość kolumny) jest zbyt duży (większy niż 1 MB). Sprawdź schemat docelowej tabeli programu SQL DW przez dodanie rozmiaru wszystkich kolumn:
-
-    - Int-> 4 bajty
-    - Bigint-> 8 bajtów
-    - Varchar (n), char (n), Binary (n), varbinary (n)-> n bajtów
-    - Nvarchar (n), nchar (n)-> n * 2 bajty
-    - Data — > 6 bajtów
-    - DateTime/(2), smalldatetime-> 16 bajtów
-    - DateTimeOffset — > 20 bajtów
-    - Liczba dziesiętna — > 19 bajtów
-    - Float-> 8 bajtów
-    - Money-> 8 bajtów
-    - Smallmoney — > 4 bajty
-    - Real-> 4 bajty
-    - Smallint — > 2 bajty
-    - Czas — > 12 bajtów
-    - Tinyint — > 1 bajt
-
-- **Rozdzielczość**: Zmniejsz szerokość kolumny, aby była mniejsza niż 1 MB
-
-- Lub użyj metody wstawiania zbiorczego, wyłączając bazę
-
-### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Komunikat o błędzie: warunek określony przy użyciu nagłówków warunkowych HTTP nie jest spełniony
-
-- **Objawy**: używasz zapytania SQL do ściągania danych z Azure SQL Data Warehouse i wystąpił następujący błąd:
-
-    ```
-    ...StorageException: The condition specified using HTTP conditional header(s) is not met...
-    ```
-
-- **Przyczyna**Azure SQL Data Warehouse: Wystąpił błąd podczas wysyłania zapytania do tabeli zewnętrznej w usłudze Azure Storage.
-
-- **Rozwiązanie**: Uruchom to samo zapytanie w programie SSMS i sprawdź, czy widzisz ten sam wynik. Jeśli tak, Otwórz bilet pomocy technicznej, aby Azure SQL Data Warehouse i podać nazwę serwera i bazy danych SQL DW, aby kontynuować rozwiązywanie problemów.
-
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
 ### <a name="error-message-request-size-is-too-large"></a>Komunikat o błędzie: rozmiar żądania jest zbyt duży
@@ -141,7 +63,7 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
 
     ```
     Message=Partition range id 0 | Failed to import mini-batch. 
-    Exception was Message: {"Errors":["Encountered exception while executing function. Exception &#61; Error: {\"Errors\":[\"Unique index constraint violation.\"]}... 
+    Exception was Message: {"Errors":["Encountered exception while executing function. Exception = Error: {\"Errors\":[\"Unique index constraint violation.\"]}... 
     ```
 
 - **Przyczyna**: Istnieją dwie możliwe przyczyny:
@@ -238,6 +160,249 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z łącznik
         ```
 
     - W celu uzyskania przyczyny #3 należy dokładnie sprawdzić, czy plik klucza lub hasło są poprawne przy użyciu innych narzędzi do sprawdzenia, czy można go użyć w celu poprawnego dostępu do serwera SFTP.
+  
+
+## <a name="azure-sql-data-warehouse--azure-sql-database--sql-server"></a>Azure SQL Data Warehouse \ Azure SQL Database \ SQL Server
+
+### <a name="error-code--sqlfailedtoconnect"></a>Kod błędu: SqlFailedToConnect
+
+- **Komunikat**: `Cannot connect to SQL database: '%server;', Database: '%database;', User: '%user;'. Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access.`
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "SqlException", baza danych SQL zgłasza błąd wskazujący, że niektóre konkretne operacje nie powiodły się.
+
+- **Zalecenie**: Aby uzyskać więcej informacji, Wyszukaj według kodu błędu SQL w tym dokumencie odwołania: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną platformy Azure.
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "klient z adresem IP"... " nie ma dostępu do serwera "i próbujesz nawiązać połączenie z usługą Azure SQL Database, zwykle jest to spowodowane problemem z zaporą usługi Azure SQL Database.
+
+- **Zalecenie**: w konfiguracji zapory SQL Server platformy Azure Włącz opcję "Zezwalaj na dostęp do tego serwera dla usług i zasobów platformy Azure". Doc Reference: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
+
+
+### <a name="error-code--sqloperationfailed"></a>Kod błędu: SqlOperationFailed
+
+- **Komunikat**: `A database operation failed. Please search error to get more details.`
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "SqlException", baza danych SQL zgłasza błąd wskazujący, że niektóre konkretne operacje nie powiodły się.
+
+- **Zalecenie**: Aby uzyskać więcej informacji, Wyszukaj według kodu błędu SQL w tym dokumencie odwołania: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną platformy Azure.
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera "PdwManagedToNativeInteropException", zazwyczaj jest spowodowany niezgodnością rozmiarów kolumn źródłowych i ujścia.
+
+- **Zalecenie**: Sprawdź rozmiar kolumn źródłowych i ujścia. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną platformy Azure.
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "InvalidOperationException", zazwyczaj jest to spowodowane przez nieprawidłowe dane wejściowe.
+
+- **Zalecenie**: aby ustalić, który wiersz napotyka problem, Włącz funkcję odporności na uszkodzenia w działaniu kopiowania, która może przekierować problematyczne wiersze do magazynu w celu przeprowadzenia dalszej analizy. Doc Reference: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+
+
+### <a name="error-code--sqlunauthorizedaccess"></a>Kod błędu: SqlUnauthorizedAccess
+
+- **Komunikat**: `Cannot connect to '%connectorName;'. Detail Message: '%message;'`
+
+- **Przyczyna**: poświadczenie jest niepoprawne lub konto logowania nie może uzyskać dostępu do bazy danych SQL.
+
+- **Zalecenie**: Sprawdź, czy konto logowania ma wystarczające uprawnienia dostępu do bazy danych SQL.
+
+
+### <a name="error-code--sqlopenconnectiontimeout"></a>Kod błędu: SqlOpenConnectionTimeout
+
+- **Komunikat**: `Open connection to database timeout after '%timeoutValue;' seconds.`
+
+- **Przyczyna**: może to być błąd przejściowy bazy danych SQL.
+
+- **Zalecenie**: spróbuj ponownie zaktualizować parametry połączenia połączonej usługi z większą wartością limitu czasu połączenia.
+
+
+### <a name="error-code--sqlautocreatetabletypemapfailed"></a>Kod błędu: SqlAutoCreateTableTypeMapFailed
+
+- **Komunikat**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(colunm name:'%colunmName;') in auto-create table.`
+
+- **Przyczyna**: tabela autotworzenia nie może spełnić wymagań źródłowych.
+
+- **Zalecenie**: zaktualizuj typ kolumny w polu "mapowania" lub ręcznie Utwórz tabelę ujścia na serwerze docelowym.
+
+
+### <a name="error-code--sqldatatypenotsupported"></a>Kod błędu: SqlDataTypeNotSupported
+
+- **Komunikat**: `A database operation failed. Please check the SQL errors.`
+
+- **Przyczyna**: Jeśli problem występuje w źródle SQL, a błąd jest związany z przepełnieniem SqlDateTime, wartość danych jest poza zakresem typów logiki (1/1/1753 12:00:00 AM-12/31/9999 11:59:59 PM).
+
+- **Zalecenie**: Przeprowadź rzutowanie typu na ciąg w źródłowym zapytaniu SQL lub w mapowaniu kolumny działania kopiowania Zmień typ kolumny na "String".
+
+- **Przyczyna**: Jeśli problem występuje w usłudze SQL sink i błąd jest związany z przepełnieniem elementu SqlDateTime, wartość danych jest poza dozwolonym zakresem w tabeli ujścia.
+
+- **Zalecenie**: zaktualizuj odpowiedni typ kolumny do typu "datetime2" w tabeli sink.
+
+
+### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Kod błędu: SqlInvalidDbStoredProcedure
+
+- **Komunikat**: `The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
+
+- **Przyczyna**: określona procedura składowana jest nieprawidłowa. Może to być spowodowane tym, że procedura składowana nie zwraca żadnych danych.
+
+- **Zalecenie**: Sprawdź poprawność procedury składowanej przez narzędzia SQL. Upewnij się, że procedura składowana może zwracać dane.
+
+
+### <a name="error-code--sqlinvaliddbquerystring"></a>Kod błędu: SqlInvalidDbQueryString
+
+- **Komunikat**: `The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
+
+- **Przyczyna**: określone zapytanie SQL jest nieprawidłowe. Przyczyną może być to, że zapytanie nie zwraca żadnych danych
+
+- **Zalecenie**: Sprawdź poprawność zapytania SQL przez narzędzia SQL. Upewnij się, że zapytanie może zwracać dane.
+
+
+### <a name="error-code--sqlinvalidcolumnname"></a>Kod błędu: SqlInvalidColumnName
+
+- **Komunikat**: `Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
+
+- **Przyczyna**: nie można odnaleźć kolumny. Nieprawidłowa konfiguracja.
+
+- **Zalecenie**: Upewnij się, że kolumna w zapytaniach "Structure" w elemencie DataSet i "Mappings" w działaniu.
+
+
+### <a name="error-code--sqlbatchwritetimeout"></a>Kod błędu: SqlBatchWriteTimeout
+
+- **Komunikat**: `Timeout in SQL write opertaion.`
+
+- **Przyczyna**: może to być błąd przejściowy bazy danych SQL.
+
+- **Zalecenie**: Jeśli problem Odtwórz, skontaktuj się z pomocą techniczną Azure SQL.
+
+
+### <a name="error-code--sqlbatchwriterollbackfailed"></a>Kod błędu: SqlBatchWriteRollbackFailed
+
+- **Komunikat**: `Timeout in SQL write operation and rollback also fail.`
+
+- **Przyczyna**: może to być błąd przejściowy bazy danych SQL.
+
+- **Zalecenie**: spróbuj ponownie zaktualizować parametry połączenia połączonej usługi z większą wartością limitu czasu połączenia.
+
+
+### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>Kod błędu: SqlBulkCopyInvalidColumnLength
+
+- **Komunikat**: `SQL Bulk Copy failed due to received an invalid column length from the bcp client.`
+
+- **Przyczyna**: Kopiowanie zbiorcze SQL nie powiodło się, ponieważ odebrano nieprawidłową długość kolumny od klienta bcp.
+
+- **Zalecenie**: aby ustalić, który wiersz napotyka problem, Włącz funkcję odporności na uszkodzenia w działaniu kopiowania, która może przekierować problematyczne wiersze do magazynu w celu przeprowadzenia dalszej analizy. Doc Reference: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+
+
+### <a name="error-code--sqlconnectionisclosed"></a>Kod błędu: SqlConnectionIsClosed
+
+- **Komunikat**: `The connection is closed by SQL database.`
+
+- **Przyczyna**: połączenie SQL jest zamknięte przez bazę danych SQL, gdy duże współbieżne uruchomienie i przerwanie połączenia serwera.
+
+- **Zalecenie**: serwer zdalny zamknie połączenie SQL. Spróbuj ponownie. Jeśli problem Odtwórz, skontaktuj się z pomocą techniczną Azure SQL.
+
+### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Komunikat o błędzie: konwersja nie powiodła się podczas konwertowania ciągu znaków na unikatowy identyfikator
+
+- **Objawy**: w przypadku kopiowania danych ze źródła danych tabelarycznych (takich jak SQL Server) do Azure SQL Data Warehouse przy użyciu kopiowania etapowego i bazy, wystąpił następujący błąd:
+
+    ```
+    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
+    Message=Error happened when loading data into SQL Data Warehouse.,
+    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
+    Message=Conversion failed when converting from a character string to uniqueidentifier...
+    ```
+
+- **Przyczyna**: Azure SQL Data Warehouse baza nie może przekonwertować pustego ciągu na identyfikator GUID.
+
+- **Rozwiązanie**: w ujścia działania kopiowania w obszarze Ustawienia bazy danych ustaw wartość false dla opcji**Użyj typu domyślnego**.
+
+### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Komunikat o błędzie: Oczekiwano typu danych: DECIMAL (x, x), wartość powodująca problemy
+
+- **Objawy**: podczas kopiowania danych ze źródła danych tabelarycznych (takich jak SQL Server) do usługi SQL DW przy użyciu kopiowania etapowego i wielopodstawa, wystąpił następujący błąd:
+
+    ```
+    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
+    Message=Error happened when loading data into SQL Data Warehouse.,
+    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
+    Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
+    Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
+    ```
+
+- **Przyczyna**: Azure SQL Data Warehouse Base nie może wstawić pustego ciągu (wartość null) do kolumny dziesiętnej.
+
+- **Rozwiązanie**: w ujścia działania kopiowania w obszarze Ustawienia bazy danych ustaw wartość false dla opcji**Użyj typu domyślnego**.
+
+### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Komunikat o błędzie: komunikat o wyjątku Java: HdfsBridge:: CreateRecordReader
+
+- **Objawy**: skopiujesz dane do Azure SQL Data Warehouse przy użyciu bazy danych Base i wystąpił następujący błąd:
+
+    ```
+    Message=110802;An internal DMS error occurred that caused this operation to fail. 
+    Details: Exception: Microsoft.SqlServer.DataWarehouse.DataMovement.Common.ExternalAccess.HdfsAccessException, 
+    Message: Java exception raised on call to HdfsBridge_CreateRecordReader. 
+    Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
+    ```
+
+- **Przyczyna**: możliwe przyczyny jest to, że schemat (całkowita szerokość kolumny) jest zbyt duży (większy niż 1 MB). Sprawdź schemat docelowej tabeli programu SQL DW przez dodanie rozmiaru wszystkich kolumn:
+
+    - Int-> 4 bajty
+    - Bigint-> 8 bajtów
+    - Varchar (n), char (n), Binary (n), varbinary (n)-> n bajtów
+    - Nvarchar (n), nchar (n)-> n * 2 bajty
+    - Data — > 6 bajtów
+    - DateTime/(2), smalldatetime-> 16 bajtów
+    - DateTimeOffset — > 20 bajtów
+    - Liczba dziesiętna — > 19 bajtów
+    - Float-> 8 bajtów
+    - Money-> 8 bajtów
+    - Smallmoney — > 4 bajty
+    - Real-> 4 bajty
+    - Smallint — > 2 bajty
+    - Czas — > 12 bajtów
+    - Tinyint — > 1 bajt
+
+- **Rozdzielczość**: Zmniejsz szerokość kolumny, aby była mniejsza niż 1 MB
+
+- Lub użyj metody wstawiania zbiorczego, wyłączając bazę
+
+### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Komunikat o błędzie: warunek określony przy użyciu nagłówków warunkowych HTTP nie jest spełniony
+
+- **Objawy**: używasz zapytania SQL do ściągania danych z Azure SQL Data Warehouse i wystąpił następujący błąd:
+
+    ```
+    ...StorageException: The condition specified using HTTP conditional header(s) is not met...
+    ```
+
+- **Przyczyna**Azure SQL Data Warehouse: Wystąpił błąd podczas wysyłania zapytania do tabeli zewnętrznej w usłudze Azure Storage.
+
+- **Rozwiązanie**: Uruchom to samo zapytanie w programie SSMS i sprawdź, czy widzisz ten sam wynik. Jeśli tak, otwórz bilet pomocy technicznej dotyczący usługi Azure SQL Data Warehouse i podaj nazwę serwera i bazy danych SQL DW, aby kontynuować rozwiązywanie problemów.
+            
+
+## <a name="azure-blob-storage"></a>Azure Blob Storage
+
+### <a name="error-code--azurebloboperationfailed"></a>Kod błędu: AzureBlobOperationFailed
+
+- **Komunikat**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
+
+- **Przyczyna**: problem z trafieniem magazynu obiektów BLOB.
+
+- **Zalecenie**: Sprawdź błąd, aby uzyskać szczegółowe informacje. Zapoznaj się z dokumentem pomocy obiektu BLOB: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes. Skontaktuj się z zespołem ds. magazynu, jeśli potrzebujesz pomocy.
+
+
+
+## <a name="azure-data-lake-gen2"></a>Azure Data Lake Gen2
+
+### <a name="error-code--adlsgen2operationfailed"></a>Kod błędu: AdlsGen2OperationFailed
+
+- **Komunikat**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+
+- **Przyczyna**: ADLS Gen2 zgłasza błąd wskazujący, że operacja nie powiodła się.
+
+- **Zalecenie**: Sprawdź szczegółowy komunikat o błędzie wygenerowany przez ADLS Gen2. Jeśli jest to spowodowane błędem przejściowym, spróbuj ponownie. Jeśli potrzebujesz dalszej pomocy, skontaktuj się z pomocą techniczną usługi Azure Storage i podaj identyfikator żądania w komunikacie o błędzie.
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "zabronione", nazwa główna usługi lub tożsamość zarządzana może nie mieć wystarczających uprawnień, aby uzyskać dostęp do ADLS Gen2.
+
+- **Zalecenie**: Zapoznaj się z dokumentem pomocy: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
+
+- **Przyczyna**: Jeśli komunikat o błędzie zawiera wartość "InternalServerError", błąd jest zwracany przez ADLS Gen2.
+
+- **Zalecenie**: może to być spowodowane błędem przejściowym, spróbuj ponownie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną usługi Azure Storage i podaj identyfikator żądania w komunikacie o błędzie.
+
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -249,6 +414,4 @@ Aby uzyskać więcej informacji dotyczących rozwiązywania problemów, wypróbu
 *  [Forum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
 *  [Forum Stack Overflow dla Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informacje o usłudze Twitter dotyczące Data Factory](https://twitter.com/hashtag/DataFactory)
-
-
-
+            

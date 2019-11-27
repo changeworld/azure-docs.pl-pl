@@ -117,7 +117,7 @@ Azure Migrate wymaga uprawnień do odnajdywania serwerów lokalnych.
 - System **Linux:** Na serwerach z systemem Linux, które mają zostać odnajdywane, jest potrzebne konto główne.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
 

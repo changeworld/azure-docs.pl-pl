@@ -1,7 +1,7 @@
 ---
-title: Run Azure Kubernetes Service - Text Analytics
+title: Uruchom usługę Azure Kubernetes Service — analiza tekstu
 titleSuffix: Azure Cognitive Services
-description: Deploy the Text Analytics container image to Azure Kubernetes Service, and test it in a web browser.
+description: Wdróż obraz kontenera analiza tekstu w usłudze Azure Kubernetes i przetestuj go w przeglądarce sieci Web.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -17,39 +17,39 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383487"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Deploy a Text Analytics container to Azure Kubernetes Service
+# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Wdrażanie kontenera analiza tekstu w usłudze Azure Kubernetes Service
 
-Learn how to deploy the Azure Cognitive Services [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) container image to Azure Kubernetes Service (AKS). This procedure shows how to create a Text Analytics resource, how to create an associated sentiment analysis image, and how to exercise this orchestration of the two from a browser. Using containers can shift your attention away from managing infrastructure to instead focusing on application development.
+Dowiedz się, jak wdrożyć obraz kontenera [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) usługi Azure Cognitive Services w usłudze Azure Kubernetes Service (AKS). W tej procedurze pokazano, jak utworzyć zasób analiza tekstu, sposób tworzenia skojarzonego obrazu analizy tonacji oraz jak korzystać z tej aranżacji dwóch z przeglądarki. Korzystanie z kontenerów może przesunąć uwagę na zarządzanie infrastrukturą, aby zamiast tego koncentrować się na tworzeniu aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-This procedure requires several tools that must be installed and run locally. Don't use Azure Cloud Shell. You need the following:
+Ta procedura wymaga kilku narzędzi, które muszą być zainstalowane i uruchomione lokalnie. Nie używaj Azure Cloud Shell. Potrzebne są następujące elementy:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* A text editor, for example, [Visual Studio Code](https://code.visualstudio.com/download).
-* The [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installed.
-* The [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed.
-* An Azure resource with the correct pricing tier. Not all pricing tiers work with this container:
-    * **Azure Text Analytics** resource with F0 or standard pricing tiers only.
-    * **Azure Cognitive Services** resource with the S0 pricing tier.
+* Edytor tekstu, na przykład [Visual Studio Code](https://code.visualstudio.com/download).
+* Zainstalowano [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+* Zainstalowano [interfejs wiersza polecenia Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/) .
+* Zasób platformy Azure z poprawną warstwą cenową. Nie wszystkie warstwy cenowe pracują z tym kontenerem:
+    * Zasób **platformy Azure analiza tekstu** tylko przy użyciu warstw cenowych F0 lub standard.
+    * Zasób **Cognitive Services platformy Azure** z warstwą cenową S0.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
 [!INCLUDE [Create a Text Analytics container on Azure Kubernetes Service (AKS)](../../containers/includes/create-aks-resource.md)]
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Key Phrase Extraction](#tab/keyphrase)
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[wyodrębnianie kluczowych fraz](#tab/keyphrase)
 
 [!INCLUDE [Key Phrase Extraction Kubernetes config and deploy steps](../includes/key-phrase-extraction-kubernetes-config-deploy.md)]
 
 [!INCLUDE [Verify the Key Phrase Extraction container instance](../includes/verify-key-phrase-extraction-container.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Language Detection](#tab/language)
+#### <a name="language-detectiontablanguage"></a>[wykrywanie języka](#tab/language)
 
 [!INCLUDE [Language Detection Kubernetes config and deploy steps](../includes/language-detection-kubernetes-config-deploy.md)]
 
 [!INCLUDE [Verify the Language Detection container instance](../includes/verify-language-detection-container.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Sentiment Analysis](#tab/sentiment)
+#### <a name="sentiment-analysistabsentiment"></a>[analiza tonacji](#tab/sentiment)
 
 [!INCLUDE [Sentiment Analysis Kubernetes config and deploy steps](../includes/sentiment-analysis-kubernetes-config-deploy.md)]
 
@@ -59,5 +59,5 @@ This procedure requires several tools that must be installed and run locally. Do
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Use more [Cognitive Services containers](../../cognitive-services-container-support.md)
-* Use the [Text Analytics Connected Service](../vs-text-connected-service.md)
+* Użyj więcej [kontenerów Cognitive Services](../../cognitive-services-container-support.md)
+* Korzystanie z [Analiza tekstu połączonej usługi](../vs-text-connected-service.md)

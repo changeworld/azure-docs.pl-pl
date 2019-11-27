@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: b47c80f3c23c26828037954c01608cc502c017c9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186611"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534306"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -86,6 +86,11 @@ Cel czasu odzyskiwania (RTO) to miara, jak długo trwa przechodzenie w tryb fail
 
 Każde istniejące konto magazynu można migrować do GZRS lub RA-GZRS. Migrowanie z istniejącego konta ZRS do usługi GZRS lub RA-GZRS jest proste, podczas gdy migracja z konta LRS, GRS lub RA-GRS jest większa. W poniższych sekcjach opisano, jak przeprowadzić migrację w obu przypadkach.
 
+**Znane ograniczenia**
+
+- Warstwa archiwum nie jest obecnie obsługiwana na kontach GZRS (RA-). Aby uzyskać więcej informacji [, zobacz warstwy dostępu gorąca, chłodna i archiwalna](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
+- Dyski zarządzane nie obsługują GZRS (RA-). Można przechowywać migawki i obrazy dla SSD w warstwie Standardowa Managed Disks HDD w warstwie Standardowa magazynu i [wybierać między opcjami LRS i ZRS](https://azure.microsoft.com/pricing/details/managed-disks/).
+
 ### <a name="migrating-from-a-zrs-account"></a>Migrowanie z konta usługi ZRS
 
 Aby przekonwertować istniejące konto ZRS na RA-GZRS, należy użyć polecenia cmdlet [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) w celu zmiany jednostki SKU dla konta. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami:
@@ -146,11 +151,11 @@ Aby zażądać migracji na żywo, użyj [Azure Portal](https://ms.portal.azure.c
     - **Szczegóły**: wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład "Chcę migrować do GZRS z [LRS, GRS] w regionie \_ \_". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ \_".
 5. Wybierz opcję **Dalej**.
 6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje kontaktowe** .
-7. Wybierz **tworzenie**.
+7. Wybierz pozycję **Utwórz**.
 
 Przedstawiciel działu pomocy technicznej skontaktuje się z Tobą, aby zapewnić pomoc.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)

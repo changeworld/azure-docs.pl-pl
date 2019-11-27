@@ -75,7 +75,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > [!WARNING]
 > Upewnij się, że utworzono odpowiednie reguły routingu dla domeny Apex lub dodano domenę do istniejących reguł routingu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

@@ -1,7 +1,7 @@
 ---
-title: Azure AD FS support in Microsoft Authentication Library for Python
+title: Obsługa AD FS platformy Azure w bibliotece uwierzytelniania firmy Microsoft dla języka Python
 titleSuffix: Microsoft identity platform
-description: Learn about Active Directory Federation Services (AD FS) support in Microsoft Authentication Library for Python
+description: Informacje na temat obsługi Active Directory Federation Services (AD FS) w bibliotece uwierzytelniania firmy Microsoft dla języka Python
 services: active-directory
 documentationcenter: dev-center-name
 author: abhidnya13
@@ -25,45 +25,45 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485031"
 ---
-# <a name="active-directory-federation-services-support-in-msal-for-python"></a>Active Directory Federation Services support in MSAL for Python
+# <a name="active-directory-federation-services-support-in-msal-for-python"></a>Obsługa Active Directory Federation Services w programie MSAL for Python
 
-Active Directory Federation Services (AD FS) in Windows Server enables you to add OpenID Connect and OAuth 2.0 based authentication and authorization to your apps by using the Microsoft Authentication Library (MSAL) for Python. Using the MSAL for Python library, your app can authenticate users directly against AD FS. For more information about scenarios, see [AD FS Scenarios for Developers](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+Active Directory Federation Services (AD FS) w systemie Windows Server umożliwia dodawanie uwierzytelniania i autoryzacji usługi OpenID Connect Connect i OAuth 2,0 do aplikacji przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL) dla języka Python. Za pomocą MSAL dla biblioteki języka Python aplikacja może uwierzytelniać użytkowników bezpośrednio przed AD FS. Aby uzyskać więcej informacji na temat scenariuszy, zobacz [AD FS scenariusze dla deweloperów](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
 
-There are usually two ways of authenticating against AD FS:
+Istnieją zwykle dwa sposoby uwierzytelniania w odniesieniu do AD FS:
 
-- MSAL Python talks to Azure Active Directory, which itself is federated with other identity providers. The federation happens through AD FS. MSAL Python connects to Azure AD, which signs in users that are managed in Azure AD (managed users) or users managed by another identity provider such as AD FS (federated users). MSAL Python doesn't  know that a user is federated. It simply talks to Azure AD. The [authority](msal-client-application-configuration.md#authority) you use in this case is the usual authority (authority host name + tenant, common, or organizations).
-- MSAL Python talks directly to an AD FS authority. This is only supported by AD FS 2019 and later.
+- MSAL Język Python rozmowy do Azure Active Directory, który sam jest federacyjny z innymi dostawcami tożsamości. Federacja odbywa się za pomocą AD FS. MSAL Python nawiązuje połączenie z usługą Azure AD, co oznacza, że użytkownicy, którzy są zarządzani za pomocą usługi Azure AD (zarządzani użytkownicy) lub Użytkownicy zarządzani przez innego dostawcę tożsamości, takie jak AD FS (Użytkownicy zafederacyjnych). MSAL Python nie wie, że użytkownik jest federacyjny. Po prostu rozmowy z usługą Azure AD. [Urząd](msal-client-application-configuration.md#authority) , którego używasz w tym przypadku, jest zazwyczaj urzędem certyfikacji (nazwa hosta urzędu + dzierżawca, typowe lub organizacje).
+- MSAL Python bezpośrednio do urzędu AD FS. Jest to obsługiwane tylko przez AD FS 2019 i nowsze.
 
-## <a name="connect-to-active-directory-federated-with-ad-fs"></a>Connect to Active Directory federated with AD FS
+## <a name="connect-to-active-directory-federated-with-ad-fs"></a>Nawiązywanie połączenia z usługą Active Directory Federation with AD FS
 
-### <a name="acquire-a-token-interactively-for-a-federated-user"></a>Acquire a token interactively for a federated user
+### <a name="acquire-a-token-interactively-for-a-federated-user"></a>Interaktywny pozyskiwanie tokenu dla użytkownika federacyjnego
 
-The following applies whether you connect directly to Active Directory Federation Services (AD FS) or through Active Directory.
+Poniżej można nawiązać bezpośrednie połączenie z Active Directory Federation Services (AD FS) lub Active Directory.
 
-When you call `acquire_token_by_authorization_code` or `acquire_token_by_device_flow`, the user experience is typically as follows:
+Podczas wywoływania `acquire_token_by_authorization_code` lub `acquire_token_by_device_flow`środowisko użytkownika jest zwykle następujące:
 
-1. The user enters their account ID.
-2. Azure AD displays briefly the message "Taking you to your organization's page" and the user is redirected to the sign-in page of the identity provider. The sign-in page is usually customized with the logo of the organization.
+1. Użytkownik wprowadza swój identyfikator konta.
+2. Usługa Azure AD wyświetla krótko komunikat "przejmowanie strony organizacji", a użytkownik zostaje przekierowany do strony logowania dostawcy tożsamości. Strona logowania jest zwykle dostosowana do logo organizacji.
 
-The supported AD FS versions in this federated scenario are:
+Obsługiwane wersje AD FS w tym scenariuszu federacyjnym są następujące:
 - Active Directory Federation Services FS v2
 - Active Directory Federation Services v3 (Windows Server 2012 R2)
 - Active Directory Federation Services v4 (AD FS 2016)
 
-### <a name="acquire-a-token-via-username-and-password"></a>Acquire a token via username and password
+### <a name="acquire-a-token-via-username-and-password"></a>Uzyskiwanie tokenu za pomocą nazwy użytkownika i hasła
 
-The following applies whether you connect directly to Active Directory Federation Services (AD FS) or through Active Directory.
+Poniżej można nawiązać bezpośrednie połączenie z Active Directory Federation Services (AD FS) lub Active Directory.
 
-When you acquire a token using `acquire_token_by_username_password`, MSAL Python gets the identity provider to contact based on the username. MSAL Python gets a [SAML 1.1 token](reference-saml-tokens.md) from the identity provider, which it then provides to Azure AD which returns the JSON Web Token (JWT).
+Po pozyskaniu tokenu przy użyciu `acquire_token_by_username_password`, MSAL Python pobiera dostawcę tożsamości do kontaktu na podstawie nazwy użytkownika. MSAL Python pobiera [token SAML 1,1](reference-saml-tokens.md) od dostawcy tożsamości, który następnie zapewnia usłudze Azure AD, która zwraca token sieci Web JSON (JWT).
 
-## <a name="connecting-directly-to-ad-fs"></a>Connecting directly to AD FS
+## <a name="connecting-directly-to-ad-fs"></a>Bezpośrednie łączenie z AD FS
 
-When you connect directory to AD FS, the authority you'll want to use to build your application will be something like `https://somesite.contoso.com/adfs/`
+Po nawiązaniu połączenia z usługą AD FS urząd, który ma być używany do kompilowania aplikacji, będzie podobny do `https://somesite.contoso.com/adfs/`
 
-MSAL Python supports ADFS 2019.
+MSAL Python obsługuje usługi ADFS 2019.
 
-It does not support a direct connection to ADFS 2016 or ADFS v2. If you need to support scenarios requiring a direct connection to ADFS 2016, use the latest version of ADAL Python. Once you have upgraded your on-premises system to ADFS 2019, you can use MSAL Python.
+Nie obsługuje bezpośredniego połączenia z usługami ADFS 2016 i ADFS v2. Jeśli musisz obsługiwać scenariusze wymagające bezpośredniego połączenia z usługami AD FS 2016, użyj najnowszej wersji środowiska Python dla biblioteki ADAL. Po uaktualnieniu systemu lokalnego do usług AD FS 2019 można użyć języka Python MSAL.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- For the federated case, see [Configure Azure Active Directory sign in behavior for an application by using a Home Realm Discovery policy](../manage-apps/configure-authentication-for-federated-users-portal.md)
+- W przypadku federacyjnego przypadku należy zapoznać się z tematem [Konfigurowanie zachowania logowania Azure Active Directory aplikacji przy użyciu zasad odnajdywania obszaru głównego](../manage-apps/configure-authentication-for-federated-users-portal.md) .

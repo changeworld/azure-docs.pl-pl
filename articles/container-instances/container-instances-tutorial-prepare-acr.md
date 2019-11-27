@@ -1,22 +1,17 @@
 ---
-title: Samouczek — przygotowywanie rejestru kontenerów dla usługi Azure Container Instances
+title: Samouczek — przygotowanie rejestru kontenerów do wdrożenia obrazu
 description: Samouczek usługi Azure Container Instances (część 2 z 3) — przygotowywanie usługi Azure Container Registry i wypychanie obrazu
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b3c907eacb14ed65410a60fcf22ebe99fd8cc3bb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d8a14acb196b257d96792444fe41e7e9f6b73592
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325606"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533317"
 ---
-# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Samouczek: Wdrażanie rejestru kontenerów platformy Azure i wypychanie obrazu kontenera
+# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Samouczek: wdrażanie usługi Azure Container Registry i wypychanie obrazu kontenera
 
 Niniejszy samouczek jest drugą częścią trzyczęściowej serii. [W części pierwszej](container-instances-tutorial-prepare-app.md) samouczka utworzono obraz kontenera Docker dla aplikacji internetowej środowiska Node.js. W tym samouczku obraz zostanie wypchnięty do usługi Azure Container Registry. Jeśli obraz kontenera nie został jeszcze utworzony, wróć do artykułu [Samouczek 1 — Tworzenie obrazu kontenera](container-instances-tutorial-prepare-app.md).
 
@@ -95,7 +90,7 @@ Login Succeeded
 
 Aby wypchnąć obraz kontenera do prywatnego rejestru, takiego jak usługa Azure Container Registry, najpierw musisz otagować obraz pełną nazwą serwera logowania rejestru.
 
-Najpierw pobierz pełną nazwę serwera logowania dla rejestru kontenerów platformy Azure. Uruchom następujące polecenie [AZ ACR show][az-acr-show] i Zamień `<acrName>` na nazwę właśnie utworzonego rejestru:
+Najpierw pobierz pełną nazwę serwera logowania dla rejestru kontenerów platformy Azure. Uruchom następujące polecenie [AZ ACR show][az-acr-show] i zastąp `<acrName>` nazwą właśnie utworzonego rejestru:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
@@ -169,7 +164,7 @@ Aby sprawdzić, czy właśnie wypychany obraz jest rzeczywiście w rejestrze kon
 az acr repository list --name <acrName> --output table
 ```
 
-Przykład:
+Na przykład:
 
 ```console
 $ az acr repository list --name mycontainerregistry082 --output table

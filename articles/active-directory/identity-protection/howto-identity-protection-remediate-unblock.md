@@ -1,6 +1,6 @@
 ---
-title: Remediate risks and unblock users in Azure AD Identity Protection
-description: Learn about the options you have close active risk detections.
+title: Korygowanie zagrożeń i odblokowywanie użytkowników w Azure AD Identity Protection
+description: Dowiedz się więcej na temat opcji zamykających aktywne wykrywania zagrożeń.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,77 +18,77 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382101"
 ---
-# <a name="remediate-risks-and-unblock-users"></a>Remediate risks and unblock users
+# <a name="remediate-risks-and-unblock-users"></a>Korygowanie zagrożeń i odblokowywanie użytkowników
 
-After completing your [investigation](howto-identity-protection-investigate-risk.md), you will want to take action to remediate the risk or unblock users. Organizations also have the option to enable automated remediation using their [risk policies](howto-identity-protection-configure-risk-policies.md). Organizations should try to close all risk detections that they are presented with in a time period your organization is comfortable with. Microsoft recommends closing events as soon as possible because time matters when working with risk.
+Po zakończeniu [badania](howto-identity-protection-investigate-risk.md)należy podjąć działania w celu skorygowania ryzyka lub odblokowania użytkowników. Organizacje mogą również włączyć automatyczne korygowanie przy użyciu [zasad ryzyka](howto-identity-protection-configure-risk-policies.md). Organizacje powinny próbować zamknąć wszystkie wykryte zagrożenia, które są prezentowane w danym okresie. Firma Microsoft zaleca zamykanie zdarzeń najszybciej, jak to możliwe, ponieważ czas pracy z ryzykiem.
 
-## <a name="remediation"></a>Remediation
+## <a name="remediation"></a>Korygowanie
 
-All active risk detections contribute to the calculation of a value called user risk level. The user risk level is an indicator (low, medium, high) for the probability that an account has been compromised. As an administrator, you want to get all risk detections closed, so that the affected users are no longer at risk.
+Wszystkie aktywne wykrycia ryzyka przyczyniają się do obliczenia wartości o nazwie poziom ryzyka użytkownika. Poziom ryzyka użytkownika to wskaźnik (niski, średni, wysoki) dla prawdopodobieństwa naruszenia zabezpieczeń konta. Jako administrator chcesz, aby wszystkie wykrycia ryzyka były zamknięte, dzięki czemu zagrożoni użytkownicy nie będą już zagrożeni.
 
-Some risks detections may be marked by Identity Protection as "Closed (system)" because the events were no longer determined to be risky.
+Niektóre wykryte ryzyka mogą być oznaczone przez funkcję ochrony tożsamości jako "zamknięte (systemowe)", ponieważ zdarzenia nie zostały już określone jako ryzykowne.
 
-Administrators have the following options to remediate:
+Administratorzy mogą korzystać z następujących opcji korygowania:
 
-- Self-remediation with risk policy
-- Manual password reset
-- Dismiss user risk
-- Close individual risk detections manually
+- Samodzielne korygowanie z użyciem zasad ryzyka
+- Ręczne resetowanie hasła
+- Odrzuć ryzyko związane z użytkownikiem
+- Ręczne zamykanie indywidualnych wykrycia ryzyka
 
-### <a name="self-remediation-with-risk-policy"></a>Self-remediation with risk policy
+### <a name="self-remediation-with-risk-policy"></a>Samodzielne korygowanie z użyciem zasad ryzyka
 
-If you allow users to self-remediate, with Azure Multi-Factor Authentication (MFA) and self-service password reset (SSPR) in your risk policies, they can unblock themselves when risk is detected. These detections are then considered closed. Users must have previously registered for Azure MFA and SSPR in order to use when risk is detected.
+Jeśli zezwolisz użytkownikom na samodzielne korygowanie, za pomocą usługi Azure Multi-Factor Authentication (MFA) i samoobsługowego resetowania hasła (SSPR) w ramach zasad ryzyka, mogą one odblokować się w przypadku wykrycia ryzyka. Te wykrycia są następnie uważane za zamknięte. Użytkownicy musieli wcześniej zarejestrowani do usługi Azure MFA i SSPR, aby można było używać ich w przypadku wykrycia ryzyka.
 
-Some detections may not raise risk to the level where a user self-remediation would be required but administrators should still evaluate these detections. Administrators may determine that additional measures are necessary like [blocking access from locations](../conditional-access/howto-conditional-access-policy-location.md) or lowering the acceptable risk in their policies.
+Niektóre środki wykrywania mogą nie powodować zagrożenia dla poziomu sytuacji, w której użytkownik będzie musiał przeprowadzić samodzielną korektę, ale Administratorzy powinni nadal oszacować te wykrycia. Administratorzy mogą określić, że dodatkowe środki są niezbędne, takie jak [blokowanie dostępu z lokalizacji](../conditional-access/howto-conditional-access-policy-location.md) lub obniżenie akceptowalnego ryzyka w swoich zasadach.
 
-### <a name="manual-password-reset"></a>Manual password reset
+### <a name="manual-password-reset"></a>Ręczne resetowanie hasła
 
-If requiring a password reset using a user risk policy is not an option, administrators can close all risk detections for a user with a manual password reset.
+Jeśli wymaganie resetowania hasła przy użyciu zasad ryzyka użytkownika nie jest opcją, Administratorzy mogą zamknąć wszystkie wykrycia ryzyka dla użytkownika z ręcznym resetowaniem hasła.
 
-Administrators are given two options when resetting a password for their users:
+Administratorzy otrzymują dwie opcje podczas resetowania hasła dla swoich użytkowników:
 
-- **Generate a temporary password** - By generating a temporary password, you can immediately bring an identity back into a safe state. This method requires contacting the affected users because they need to know what the temporary password is. Because the password is temporary, the user is prompted to change the password to something new during the next sign-in.
+- **Generuj hasło tymczasowe** — przez wygenerowanie hasła tymczasowego możesz natychmiast przywrócić tożsamość z powrotem do stanu bezpiecznego. Ta metoda wymaga skontaktowania się z użytkownikami, których to dotyczy, ponieważ chcą wiedzieć, co to jest hasło tymczasowe. Ponieważ hasło jest tymczasowe, użytkownik jest monitowany o zmianę hasła na coś nowego podczas kolejnego logowania.
 
-- **Require the user to reset password** - Requiring the users to reset passwords enables self-recovery without contacting help desk or an administrator. This method only applies to users that are registered for Azure MFA and SSPR. For users that have not been registered, this option isn't available.
+- **Wymagaj od użytkownika zresetowania hasła** — wymaganie od użytkowników resetowania haseł umożliwia samoodzyskiwanie bez kontaktowania się z pomocą techniczną lub administratorem. Ta metoda ma zastosowanie tylko do użytkowników zarejestrowanych dla usługi Azure MFA i SSPR. W przypadku użytkowników, którzy nie zostali zarejestrowani, ta opcja jest niedostępna.
 
-### <a name="dismiss-user-risk"></a>Dismiss user risk
+### <a name="dismiss-user-risk"></a>Odrzuć ryzyko związane z użytkownikiem
 
-If a password reset is not an option for you, because for example the user has been deleted, you can choose to dismiss user risk detections.
+Jeśli Resetowanie hasła nie jest opcją dla Ciebie, ponieważ na przykład użytkownik został usunięty, można zrezygnować z wykrywania ryzyka użytkownika.
 
-When you click **Dismiss user risk**, all events are closed and the affected user is no longer at risk. However, because this method doesn't have an impact on the existing password, it doesn't bring the related identity back into a safe state. 
+Po kliknięciu przycisku **Odrzuć ryzyko związane z użytkownikiem**wszystkie zdarzenia zostaną zamknięte, a zagrożony użytkownik nie jest już narażony. Jednak ponieważ ta metoda nie ma wpływu na istniejące hasło, nie powoduje, że powiązana tożsamość nie zostanie przywrócona do stanu bezpiecznego. 
 
-### <a name="close-individual-risk-detections-manually"></a>Close individual risk detections manually
+### <a name="close-individual-risk-detections-manually"></a>Ręczne zamykanie indywidualnych wykrycia ryzyka
 
-You can close individual risk detections manually. By closing risk detections manually, you can lower the user risk level. Typically, risk detections are closed manually in response to a related investigation. For example, when talking to a user reveals that an active risk detection is not required anymore. 
+Wykrywanie indywidualnych zagrożeń można zamknąć ręcznie. Poprzez ręczne zamykanie wykrywania ryzyka można obniżyć poziom ryzyka użytkownika. Zazwyczaj wykrycia ryzyka są zamykane ręcznie w odpowiedzi na powiązane badanie. Na przykład podczas rozmowy z użytkownikiem wykaże, że aktywne wykrywanie ryzyka nie jest już wymagane. 
  
-When closing risk detections manually, you can choose to take any of the following actions to change the status of a risk detection:
+Podczas ręcznego zamykania wykrywania ryzyka można wykonać jedną z następujących czynności, aby zmienić stan wykrywania ryzyka:
 
-- Confirm user compromised
-- Dismiss user risk
-- Confirm sign-in safe
-- Confirm sign-in compromised
+- Potwierdzanie naruszenia zabezpieczeń użytkownika
+- Odrzuć ryzyko związane z użytkownikiem
+- Potwierdź bezpieczne logowanie
+- Potwierdzanie naruszenia logowania
 
-## <a name="unblocking-users"></a>Unblocking users
+## <a name="unblocking-users"></a>Odblokowywanie użytkowników
 
-An administrator may choose to block a sign-in based on their risk policy or investigations. A block may occur based on either sign-in or user risk.
+Administrator może zdecydować się na zablokowanie logowania na podstawie ich zasad lub dochodzeń związanych z ryzykiem. Może wystąpić blok oparty na zalogowaniu lub ryzyku użytkownika.
 
-### <a name="unblocking-based-on-user-risk"></a>Unblocking based on user risk
+### <a name="unblocking-based-on-user-risk"></a>Odblokowywanie na podstawie ryzyka użytkownika
 
-To unblock an account blocked due to user risk, administrators have the following options:
+Aby odblokować konto zablokowane z powodu ryzyka użytkownika, Administratorzy mogą korzystać z następujących opcji:
 
-1. **Reset password** - You can reset the user's password.
-1. **Dismiss user risk** - The user risk policy blocks a user if the configured user risk level for blocking access has been reached. You can reduce a user's risk level by dismissing user risk or manually closing reported risk detections.
-1. **Exclude the user from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. For more information, see the section Exclusions in the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md#exclusions).
-1. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. For more information, see the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md).
+1. **Resetowanie hasła** — możesz zresetować hasło użytkownika.
+1. **Odrzuć ryzyko** związane z użytkownikiem — zasady ryzyka dla użytkowników blokują użytkownika, jeśli osiągnięto skonfigurowany poziom ryzyka użytkownika na potrzeby blokowania dostępu. Poziom ryzyka użytkownika można zmniejszyć, odrzucając ryzyko związane z ryzykiem lub ręcznie zamykając zgłoszone wykrycie zagrożeń.
+1. **Wykluczanie użytkownika z zasad** — Jeśli sądzisz, że Bieżąca konfiguracja zasad logowania powoduje problemy dla określonych użytkowników, możesz wykluczyć z niej użytkowników. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w artykule [jak: Konfigurowanie i Włączanie zasad ryzyka](howto-identity-protection-configure-risk-policies.md#exclusions).
+1. **Wyłącz zasady** — Jeśli sądzisz, że konfiguracja zasad powoduje problemy dla wszystkich użytkowników, możesz wyłączyć zasady. Aby uzyskać więcej informacji, zobacz artykuł [jak: Konfigurowanie i Włączanie zasad ryzyka](howto-identity-protection-configure-risk-policies.md).
 
-### <a name="unblocking-based-on-sign-in-risk"></a>Unblocking based on sign-in risk
+### <a name="unblocking-based-on-sign-in-risk"></a>Odblokowywanie na podstawie ryzyka związanego z logowaniem
 
-To unblock an account based on sign-in risk, administrators have the following options:
+Aby odblokować konto na podstawie ryzyka związanego z logowaniem, Administratorzy mogą skorzystać z następujących opcji:
 
-1. **Sign in from a familiar location or device** - A common reason for blocked suspicious sign-ins are sign-in attempts from unfamiliar locations or devices. Your users can quickly determine whether this reason is the blocking reason by trying to sign-in from a familiar location or device.
-1. **Exclude the user from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. For more information, see the section Exclusions in the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md#exclusions).
-1. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. For more information, see the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md).
+1. **Zaloguj się ze znanej lokalizacji lub urządzenia** — typową przyczyną zablokowanych podejrzanych logowań są próby logowania z nieznanych lokalizacji lub urządzeń. Użytkownicy mogą szybko określić, czy powód to powód blokowania, próbując zalogować się ze znajomej lokalizacji lub urządzenia.
+1. **Wykluczanie użytkownika z zasad** — Jeśli sądzisz, że Bieżąca konfiguracja zasad logowania powoduje problemy dla określonych użytkowników, możesz wykluczyć z niej użytkowników. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w artykule [jak: Konfigurowanie i Włączanie zasad ryzyka](howto-identity-protection-configure-risk-policies.md#exclusions).
+1. **Wyłącz zasady** — Jeśli sądzisz, że konfiguracja zasad powoduje problemy dla wszystkich użytkowników, możesz wyłączyć zasady. Aby uzyskać więcej informacji, zobacz artykuł [jak: Konfigurowanie i Włączanie zasad ryzyka](howto-identity-protection-configure-risk-policies.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-To get an overview of Azure AD Identity Protection, see the [Azure AD Identity Protection overview](overview-identity-protection.md).
+Aby zapoznać się z omówieniem Azure AD Identity Protection, zobacz [omówienie Azure AD Identity Protection](overview-identity-protection.md).

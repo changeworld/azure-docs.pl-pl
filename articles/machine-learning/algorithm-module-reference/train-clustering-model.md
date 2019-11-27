@@ -1,7 +1,7 @@
 ---
-title: 'Train Clustering Model: Module Reference'
+title: 'Model usługi Uczenie: informacje o module'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Train Clustering Model module in Azure Machine Learning to train clustering models.
+description: Dowiedz się, w jaki sposób używać modułu uczenie modelu klastra w Azure Machine Learning do uczenia modeli klastrowania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,44 +18,44 @@ ms.locfileid: "74232589"
 ---
 # <a name="train-clustering-model"></a>Trenowanie modelu klastrowania
 
-This article describes a module in Azure Machine Learning designer (preview).
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
-Use this module to train a clustering model.
+Ten moduł służy do uczenia modelu klastrowania.
 
-The module takes an untrained clustering model that you have already configured using the [K-Means Clustering](k-means-clustering.md) module, and trains the model using a labeled or unlabeled data set. The module creates both a trained model that you can use for prediction, and a set of cluster assignments for each case in the training data.
+Moduł przyjmuje niepociąg Model klastrowania, który został już skonfigurowany przy użyciu modułu [K-oznacza klastrowanie](k-means-clustering.md) , i połączy model przy użyciu zestawu danych z etykietą lub bez etykiety. Moduł tworzy zarówno model szkolony, którego można użyć do prognozowania, jak i zestaw przypisań klastra dla każdego przypadku w danych szkoleniowych.
 
 > [!NOTE]
-> A clustering model cannnot be trained using the [Train Model](train-model.md) module, which is the generic module for training machine learning models. That is because [Train Model](train-model.md) works only with supervised learning algorithms. K-means and other clustering algorithms allow unsupervised learning, meaning that the algorithm can learn from unlabeled data.  
+> Model klastrowania nie można być szkolony przy użyciu modułu [uczenie modelu](train-model.md) , który jest modułem ogólnym do uczenia modeli uczenia maszynowego. Wynika to z faktu, że [model uczenia](train-model.md) działa tylko z algorytmami uczenia nadzorowanego. K-oznacza i inne algorytmy klastrowania umożliwiają nienadzorowane uczenie, co oznacza, że algorytm może poznać dane nieoznaczone.  
   
-## <a name="how-to-use-train-clustering-model"></a>How to use Train Clustering Model  
+## <a name="how-to-use-train-clustering-model"></a>Jak używać modelu klastrów uczenia  
 
-1.  Add the **Train Clustering Model** module to your pipeline in the designer. You can find the module under **Machine Learning Modules**, in the **Train** category.  
+1.  Dodaj moduł **uczenie modelu klastra** do potoku w projektancie. Moduł można znaleźć w obszarze **Machine Learning modułów**w kategorii **szkolenie** .  
   
-2. Add the [K-Means Clustering](k-means-clustering.md) module, or another custom module that creates a compatible clustering model, and set the parameters of the clustering model.  
+2. Dodaj moduł [K-oznaczający klastrowanie](k-means-clustering.md) lub inny niestandardowy moduł, który tworzy zgodny Model klastrowania, i ustaw parametry modelu klastrowania.  
     
-3.  Attach a training dataset to the right-hand input of **Train Clustering Model**.
+3.  Dołączanie zestawu danych szkoleniowych do prawego wejścia **modelu klastra**szkoleń.
   
-5.  In **Column Set**, select the columns from the dataset to use in building clusters. Be sure to select columns that make good features: for example, avoid using IDs or other columns that have unique values, or columns that have all the same values.
+5.  W obszarze **zestaw kolumn**wybierz kolumny z zestawu danych, które mają być używane podczas tworzenia klastrów. Pamiętaj, aby wybrać kolumny, które tworzą dobre funkcje: na przykład Unikaj używania identyfikatorów lub innych kolumn, które mają unikatowe wartości, lub kolumn, które mają wszystkie te same wartości.
 
-    If a label is available, you can either use it as a feature, or leave it out.  
+    Jeśli etykieta jest dostępna, możesz użyć jej jako funkcji lub pozostawić ją.  
   
-6. Select the option, **Check for append or uncheck for result only**, if you want to output the training data together with the new cluster label.
+6. Wybierz opcję, zaznacz pole **wyboru Dołącz lub usuń zaznaczenie tylko dla wyniku**, jeśli chcesz, aby dane szkoleniowe były wyprowadzane razem z nową etykietą klastra.
 
-    If you deselect this option, only the cluster assignments are output. 
+    W przypadku zaznaczenia tej opcji tylko przypisania klastra są wyprowadzane. 
 
-7. Run the pipeline, or click the **Train Clustering Model** module and select **Run Selected**.  
+7. Uruchom potok lub kliknij moduł **uczenie modelu klastra** , a następnie wybierz pozycję **Uruchom wybrane**.  
   
 ### <a name="results"></a>Wyniki
 
-After training has completed:
+Po zakończeniu szkolenia:
 
 
-+  To view the values in the dataset, right-click the module, select **Result datasets**, and click **Visualize**.
++  Aby wyświetlić wartości w zestawie danych, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **zestawy danych wynikowych**, a następnie kliknij polecenie **Wizualizuj**.
 
-+ To save the trained model for later reuse, right-click the module, select **Trained model**, and click **Save As Trained Model**.
++ Aby zapisać przeszkolony model do późniejszego ponownego użycia, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **przeszkolony model**i kliknij pozycję **Zapisz jako przeszkolony model**.
 
-+ To generate scores from the model, use [Assign Data to Clusters](assign-data-to-clusters.md).
++ Aby wygenerować wyniki z modelu, użyj [przypisywania danych do klastrów](assign-data-to-clusters.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

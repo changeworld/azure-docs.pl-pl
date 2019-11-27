@@ -98,8 +98,8 @@ Zapoznaj się z dokumentacją dostawcy oprogramowania, aby poznać wymagania dot
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Włącz serwer Proxy aplikacji](application-proxy-add-on-premises-application.md)
+- [Włącz serwer proxy aplikacji](application-proxy-add-on-premises-application.md)
 - [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md)
-- [Rozwiązywanie problemów z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)
+- [Rozwiązywanie problemów z serwerem proxy aplikacji](application-proxy-troubleshoot.md)
 - [Dowiedz się, jak architektura usługi Azure AD obsługuje wysoką dostępność](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

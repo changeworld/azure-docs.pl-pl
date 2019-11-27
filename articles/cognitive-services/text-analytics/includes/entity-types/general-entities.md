@@ -62,7 +62,7 @@ Języki:
 |----------|----------------------------------------------|
 | Nie dotyczy         | Numery telefonów US, na przykład `(312) 555-0176`. |
 
-### <a name="email"></a>Adres e-mail
+### <a name="email"></a>Email
 
 Adres e-mail. 
 

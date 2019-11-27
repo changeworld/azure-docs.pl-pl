@@ -134,7 +134,7 @@ Zamień `<resource_group_name>` na utworzoną powyżej grupę zasobów.
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy wiesz już, jak tworzyć tematy i subskrypcje zdarzeń, Dowiedz się więcej o zdarzeniach kluczowych wartości i jakie Event Grid mogą pomóc:
 

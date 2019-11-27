@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service development overview
-description: Introduction on developing solutions on Azure Blockchain Service.
+title: Omówienie tworzenia usług łańcucha bloków platformy Azure
+description: Wprowadzenie do tworzenia rozwiązań w usłudze Azure łańcucha bloków Service.
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
@@ -11,65 +11,65 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455877"
 ---
-# <a name="azure-blockchain-service-development-overview"></a>Azure Blockchain Service development overview
+# <a name="azure-blockchain-service-development-overview"></a>Omówienie tworzenia usług łańcucha bloków platformy Azure
 
-With Azure Blockchain Service, you can create consortium blockchain networks to enable enterprise scenarios like asset tracking, digital token, loyalty and reward, supply chain financial, and provenance. The following sections introduce Azure Blockchain Service development for implementing enterprise blockchain solutions.
+Za pomocą usługi Azure łańcucha bloków można tworzyć sieci łańcucha bloków konsorcjum, aby umożliwić korzystanie z scenariuszy korporacyjnych, takich jak śledzenie zasobów, token cyfrowy, lojalność, wynagrodzenie i pochodzenie łańcucha dostaw. Poniższe sekcje zawierają wprowadzenie do programowania usługi Azure łańcucha bloków w celu wdrożenia rozwiązań Enterprise łańcucha bloków.
 
-## <a name="connecting-to-azure-blockchain-service"></a>Connecting to Azure Blockchain Service
+## <a name="connecting-to-azure-blockchain-service"></a>Nawiązywanie połączenia z usługą Azure łańcucha bloków
 
-There are different types of clients for blockchain networks including full nodes, light nodes, and remote clients. Azure Blockchain Service builds a blockchain network that includes nodes. You can use different clients as your gateway to Azure Blockchain Service for blockchain development. Azure Blockchain Service offers basic authentication or access key as a development endpoint. The following are popular clients you can use connect.
+Istnieją różne typy klientów dla sieci łańcucha bloków, w tym pełne węzły, węzły lekkie i klienci zdalni. Usługa Azure łańcucha bloków tworzy sieć łańcucha bloków, która zawiera węzły. Możesz użyć różnych klientów jako bramy do usługi Azure łańcucha bloków Service do tworzenia łańcucha bloków. Usługa Azure łańcucha bloków oferuje podstawowe uwierzytelnianie lub klucz dostępu jako punkt końcowy projektowania. Poniżej znajdują się popularne Klienci, których można użyć do nawiązania połączenia.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-You can connect to consortium members using the Azure Blockchain Development Kit Visual Studio Code extension. Once connected to a consortium, you can compile, build, and deploy smart contracts to an Azure Blockchain Service consortium member.
+Można nawiązać połączenie z członkami konsorcjum przy użyciu rozszerzenia Azure łańcucha bloków Development Visual Studio Code Kit. Po nawiązaniu połączenia z konsorcjum można skompilować, skompilować i wdrożyć inteligentne kontrakty w składowej konsorcjum usługi Azure łańcucha bloków.
 
-For more information, see [Quickstart: Use Visual Studio Code to connect to an Azure Blockchain Service consortium network](connect-vscode.md).
+Aby uzyskać więcej informacji, zobacz [Szybki Start: użyj Visual Studio Code, aby nawiązać połączenie z siecią konsorcjum usługi Azure łańcucha bloków](connect-vscode.md).
 
 ### <a name="metamask"></a>MetaMask
 
-MetaMask is a browser-based wallet (remote client), RPC client, and basic contract explorer. Unlike other browser wallets, MetaMask injects a web3 instance into the browser JavaScript context, acting as an RPC client that connects to a variety of Ethereum blockchains (*mainnet*, *Ropsten testnet*, *Kovan testnet*, local RPC node, etc.). You can set up custom RPC easily to connect to Azure Blockchain Service and start blockchain development using Remix.
+Funkcja maskowania to oparty na przeglądarce portfel (Klient zdalny), klient RPC i podstawowy Eksplorator umów. W przeciwieństwie do innych portfeli przeglądarki, usuwanie wystąpienia web3 jest wprowadzane do kontekstu JavaScript przeglądarki, działającego jako klient RPC, który łączy się z wieloma Ethereum blockchains (*mainnet*, *Ropsten testnet*, *KOVAN testnet*, lokalny węzeł RPC, itp.). Możesz łatwo skonfigurować niestandardowe zdalne wywoływanie procedur, aby nawiązać połączenie z usługą Azure łańcucha bloków i rozpocząć programowanie łańcucha bloków przy użyciu Remix.
 
-For more information, see [Quickstart: Use MetaMask to connect and deploy a smart contract](connect-metamask.md)
+Aby uzyskać więcej informacji, zobacz [Szybki Start: korzystanie z usługi dbmask do łączenia i wdrażania kontraktu inteligentnego](connect-metamask.md)
 
 ### <a name="geth"></a>Geth
 
-Geth is the command-line interface for running a full Ethereum node implemented in Go. You don't need to run full node but can launch its interactive console that provides a JavaScript runtime environment exposing a JavaScript API to interact with Azure Blockchain Service.
+Geth jest interfejs wiersza polecenia do uruchamiania pełnego węzła Ethereum zaimplementowanego w programie go. Nie musisz uruchamiać pełnego węzła, ale można uruchomić jego interaktywną konsolę, która zapewnia środowisko uruchomieniowe języka JavaScript, które udostępnia interfejs API języka JavaScript do interakcji z usługą Azure łańcucha bloków.
 
-For more information, see [Quickstart: Use Geth to attach to an Azure Blockchain Service transaction node](connect-geth.md).
+Aby uzyskać więcej informacji, zobacz [Szybki Start: korzystanie z Geth w celu dołączenia do węzła transakcji usługi Azure łańcucha bloków](connect-geth.md).
 
-## <a name="development-framework-configuration"></a>Development framework configuration
+## <a name="development-framework-configuration"></a>Konfiguracja struktury programistycznej
 
-To develop sophisticated enterprise blockchain solutions, a development framework is needed to connect to different blockchain networks and manage smart contract lifecycles.
+Aby opracowywać zaawansowane rozwiązania dla przedsiębiorstw łańcucha bloków, platforma programistyczna jest niezbędna do łączenia się z różnymi sieciami łańcucha bloków i zarządzania cyklami życia kontraktu inteligentnego.
 
-Truffle is a popular blockchain development framework to write, compile, deploy, and test decentralized applications on Ethereum blockchains. You can also think of Truffle as a framework that attempts to seamlessly integrate smart contract development and traditional web development.
+Truffle to popularna platforma programistyczna łańcucha bloków do pisania, kompilowania, wdrażania i testowania zdecentralizowanych aplikacji na Ethereum blockchains. Możesz również traktować Truffle jako platformę, która próbuje bezproblemowo zintegrować inteligentne projektowanie kontraktu i tradycyjne programowanie w sieci Web.
 
-Most projects interact with at least two blockchain nodes. Developers use a local blockchain during development. When the application is ready for test or release, the developer deploys to a blockchain network. For example, the main public Ethereum network or Azure Blockchain Service. Truffle can be used to compile and deploy smart contracts for each network and simplifies final application deployment. For more information, see [Quickstart: Use Truffle to connect to a an Azure Blockchain Service network](connect-truffle.md).
+Większość projektów współdziała z co najmniej dwoma węzłami łańcucha bloków. Deweloperzy używają łańcucha bloków lokalnego podczas opracowywania. Gdy aplikacja jest gotowa do testowania lub wydania, deweloper wdraża ją w sieci łańcucha bloków. Na przykład główna publiczna sieć Ethereum lub usługa Azure łańcucha bloków. Truffle może służyć do kompilowania i wdrażania inteligentnych kontraktów dla każdej sieci i upraszczają wdrażanie ostatecznej aplikacji. Aby uzyskać więcej informacji, zobacz [Szybki Start: korzystanie z Truffle w celu nawiązania połączenia z siecią usługi Azure łańcucha bloków](connect-truffle.md).
 
-## <a name="ethereum-quorum-private-transactions"></a>Ethereum Quorum private transactions
+## <a name="ethereum-quorum-private-transactions"></a>Ethereum transakcji prywatnych kworum
 
-Quorum is an Ethereum-based distributed ledger protocol with transaction plus contract privacy and new consensus mechanisms. Key enhancements over Go-Ethereum include:
+Kworum to oparty na systemie Ethereum protokół księgi rozproszonej z transakcją oraz prywatnością umowy i nowymi konsensusami. Najważniejsze ulepszenia w porównaniu do funkcji go-Ethereum obejmują:
 
-* **Privacy** - Quorum supports private transactions and private contracts through public and private state separation and utilizes peer-to-peer encrypted message exchanges for directed transfer of private data to network participants.
-* **Alternative consensus mechanisms** - proof-of-work or proof-of-stake consensus is not needed for a permissioned network. Quorum offers multiple consensus mechanisms that are designed for consortium chains such as RAFT and IBFT.  Azure Blockchain Service uses the IBFT consensus mechanism.
-* **Peer permissioning** - node and peer permissioning using smart contracts ensures only known parties can join the network.
-* **Higher Performance** - Quorum offers higher performance than public Geth.
+* **Prywatność** — kworum obsługuje transakcje prywatne i prywatne w ramach separacji Stanów publicznych i prywatnych oraz wykorzystuje wymiany komunikatów typu peer-to-peer do bezpośredniego transferu danych prywatnych do uczestników sieci.
+* **Alternatywne metody z Konsensusem** — weryfikacja typu "nie jest wymagana w przypadku sieci z uprawnieniami". Kworum oferuje wiele mechanizmów o consensusu, które są przeznaczone dla łańcuchów konsorcjum, takich jak TRATWy i IBFT.  Usługa Azure łańcucha bloków używa mechanizmu IBFT o konsensusie.
+* **Uprawnienie elementu równorzędnego** — uprawnienia węzła i elementu równorzędnego za pomocą inteligentnych kontraktów zapewniają, że tylko znane strony mogą dołączyć do sieci.
+* **Wyższa wydajność** — kworum zapewnia wyższą wydajność niż publiczne Geth.
 
-## <a name="block-explorers"></a>Block explorers
+## <a name="block-explorers"></a>Eksplorator bloków
 
-Block explorers are online blockchain browsers that display individual block content, transaction address data, and history. Basic block information is available through Azure Monitor in Azure Blockchain Service. However, if you need more detail information during development, block explorers can be useful.  The following block explorers work with Azure Blockchain Service:
+Eksploratory bloków są w trybie online łańcucha bloków przeglądarki, które wyświetlają poszczególne zawartość bloku, dane adresów transakcji i historię. Podstawowe informacje o bloku są dostępne za pomocą Azure Monitor w usłudze Azure łańcucha bloków Service. Jeśli jednak potrzebujesz bardziej szczegółowych informacji podczas programowania, Eksplorator bloków może być przydatny.  Następujące Eksploratory blokowania współpracują z usługą Azure łańcucha bloków:
 
-* [Epirus Azure Blockchain Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) from Web3 Labs
+* [Epirus Azure łańcucha bloków Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) z programu Web3 Labs
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
-You can also build your own block explorer by using Blockchain Data Manager and Azure Cosmos DB, see [Tutorial: Use Blockchain Data Manager to send data to Azure Cosmos DB](data-manager-cosmosdb.md).
+Możesz również utworzyć własny Eksplorator bloków przy użyciu łańcucha bloków Data Manager i Azure Cosmos DB, zobacz [Samouczek: używanie łańcucha bloków Data Manager do wysyłania danych do Azure Cosmos DB](data-manager-cosmosdb.md).
 
-## <a name="tps-measurement"></a>TPS measurement
+## <a name="tps-measurement"></a>Pomiar TPS
 
-As blockchain is used in more enterprise scenarios, transactions per second (TPS) speed is important to avoid bottlenecks and system inefficiencies. High transaction rates can be difficult to maintain within a decentralized blockchain. An accurate TPS measurement may be affected by different factors such as server thread, transaction queue size, network latency, and security. If you need to measure TPS speed during development, a popular open-source tool is [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
+Ponieważ łańcucha bloków jest używany w większej liczbie scenariuszy dla przedsiębiorstw, ważne jest, aby uniknąć wąskich gardeł i niewydajności systemu. Wysokie stawki transakcji mogą być trudne do utrzymania w zdecentralizowanej łańcucha bloków. Do dokładnej miary TPS mogą mieć wpływ różne czynniki, takie jak wątek serwera, rozmiar kolejki transakcji, opóźnienie sieci i zabezpieczenia. Jeśli potrzebujesz mierzyć szybkość TPS podczas opracowywania, popularne narzędzie typu Open Source to [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Try a quickstart using Azure Blockchain Development Kit for Ethereum to attach to a consortium on Azure Blockchain Service.
+Skorzystaj z przewodnika Szybki Start przy użyciu zestawu Azure łańcucha bloków Development Kit, aby dołączyć do konsorcjum w usłudze Azure łańcucha bloków.
 
 > [!div class="nextstepaction"]
-> [Use Visual Studio Code to connect to Azure Blockchain Service](connect-vscode.md)
+> [Użyj Visual Studio Code, aby nawiązać połączenie z usługą Azure łańcucha bloków](connect-vscode.md)

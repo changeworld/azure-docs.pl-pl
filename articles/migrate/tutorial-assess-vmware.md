@@ -334,15 +334,15 @@ Klasyfikacje zaufania dla oceny są następujące.
 **Dostępność punktu danych** | **Ocenę zaufania**
 --- | ---
 0%–20% | 1 gwiazdka
-21%-40% | 2 gwiazdki
+21%–40% | 2 gwiazdki
 41%–60% | 3 gwiazdki
 61%–80% | 4 gwiazdki
-81%-100% | 5 gwiazdek
+81%–100% | 5 gwiazdek
 
 [Dowiedz się więcej](best-practices-assessment.md#best-practices-for-confidence-ratings) o najlepszych rozwiązaniach dotyczących klasyfikacji zaufania.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
 

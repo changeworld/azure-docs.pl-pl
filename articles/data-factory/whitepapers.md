@@ -24,7 +24,7 @@ ms.locfileid: "74217103"
 
 Oficjalne dokumenty umożliwiają Eksplorowanie Azure Data Factory na bardziej szczegółowym poziomie. Ten artykuł zawiera listę dostępnych oficjalnych dokumentów dla Azure Data Factory.
 
-| **Oficjalny dokument** | **Opis** |
+| **Dokumentacji** | **Opis** |
 | --- | --- |
 |[Azure Data Factory — integracja danych w chmurze](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-data-integration-in-the-cloud/Azure_Data_Factory_Data_Integration_in_the_Cloud.pdf) | W tym dokumencie opisano sposób, w jaki Azure Data Factory może umożliwić Kompilowanie nowoczesnego magazynu danych, umożliwienie zaawansowanej analizy w celu kierowania inteligentnych aplikacji SaaS i podnoszenia pakietów usług integracji SQL Server na platformę Azure.|
 |[Migracja danych z lokalnego magazynu danych relacyjnych na platformę Azure przy użyciu Azure Data Factory](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premises-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf) | Ten dokument zawiera złożoność migrowania dziesiątek danych z istniejącego magazynu danych relacyjnych (na przykład Netezza, Oracle, Teradata, SQL Server) na platformę Azure (na przykład Blob Storage lub Azure Data Lake Storage) przy użyciu Azure Data Factory. Problemy i najlepsze rozwiązania przedstawiono w odniesieniu do odporności, wydajności, skalowalności, zarządzania i zabezpieczeń w przypadku podróży pozyskiwania danych Big Data na platformie Azure przez Azure Data Factory. |

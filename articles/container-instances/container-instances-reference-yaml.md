@@ -1,28 +1,23 @@
 ---
-title: Azure Container Instances odwołanie YAML
+title: YAML odwołanie do grupy kontenerów
 description: Odwołanie do pliku YAML obsługiwanego przez Azure Container Instances w celu skonfigurowania grupy kontenerów
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: danlep
-ms.openlocfilehash: 2e6be18371cf3ff96d1ce91d4dde26ff1f14021b
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 5603f2e0f63c4f83a6d3761feb540abb8b8b7d5c
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179906"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533484"
 ---
-# <a name="yaml-reference-azure-container-instances"></a>YAML: Azure Container Instances
+# <a name="yaml-reference-azure-container-instances"></a>Odwołanie YAML: Azure Container Instances
 
 W tym artykule opisano składnię i właściwości pliku YAML obsługiwanego przez Azure Container Instances w celu skonfigurowania [grupy kontenerów](container-instances-container-groups.md). Użyj pliku YAML, aby wprowadzić konfigurację grupy do polecenia [AZ Container Create][az-container-create] w interfejsie CLI platformy Azure. 
 
 Plik YAML jest wygodnym sposobem konfigurowania grupy kontenerów dla powtarzalnych wdrożeń. Jest to zwięzła alternatywa dla używania [szablonu Menedżer zasobów](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups) lub zestawów SDK Azure Container Instances do tworzenia lub aktualizowania grupy kontenerów.
 
 > [!NOTE]
-> To odwołanie dotyczy plików YAML w wersji `2018-10-01`interfejsu API REST Azure Container Instances.
+> To odwołanie dotyczy plików YAML Azure Container Instances `2018-10-01`interfejsu API REST.
 
 ## <a name="schema"></a>Schemat 
 
@@ -142,73 +137,73 @@ W poniższych tabelach opisano wartości, które należy ustawić w schemacie.
 
 ### <a name="microsoftcontainerinstancecontainergroups-object"></a>Obiekt Microsoft. ContainerInstance/containerGroups
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  name | ciąg | Tak | Nazwa grupy kontenerów. |
-|  apiVersion | Wyliczenia | Tak | 2018-10-01 |
+|  name | ciąg | Yes | Nazwa grupy kontenerów. |
+|  apiVersion | Wyliczenia | Yes | 2018-10-01 |
 |  location | ciąg | Nie | Lokalizacja zasobu. |
-|  tags | object | Nie | Tagi zasobów. |
-|  identity | object | Nie | Tożsamość grupy kontenerów, jeśli została skonfigurowana. - [Obiekt ContainerGroupIdentity](#ContainerGroupIdentity) |
-|  properties | object | Tak | [Obiekt ContainerGroupProperties](#ContainerGroupProperties) |
+|  tagów | obiekt | Nie | Tagi zasobów. |
+|  identity | obiekt | Nie | Tożsamość grupy kontenerów, jeśli została skonfigurowana. - [obiekt ContainerGroupIdentity](#ContainerGroupIdentity) |
+|  properties | obiekt | Yes | [Obiekt ContainerGroupProperties](#ContainerGroupProperties) |
 
 
 <a id="ContainerGroupIdentity" />
 
 ### <a name="containergroupidentity-object"></a>Obiekt ContainerGroupIdentity
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
 |  type | Wyliczenia | Nie | Typ tożsamości używany dla grupy kontenerów. Typ "SystemAssigned, UserAssigned" obejmuje zarówno niejawnie utworzoną tożsamość, jak i zestaw tożsamości przypisanych do użytkownika. Typ "none" usunie wszystkie tożsamości z grupy kontenerów. -SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, brak |
-|  Resourceidentity | object | Nie | Lista tożsamości użytkowników skojarzonych z grupą kontenerów. Odwołania do klucza słownika tożsamości użytkownika będą Azure Resource Manager identyfikatorów zasobów w postaci: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName }'. |
+|  Resourceidentity | obiekt | Nie | Lista tożsamości użytkowników skojarzonych z grupą kontenerów. Odwołania do klucza słownika tożsamości użytkownika będą Azure Resource Manager identyfikatorów zasobów w postaci: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}". |
 
 
 <a id="ContainerGroupProperties" />
 
 ### <a name="containergroupproperties-object"></a>Obiekt ContainerGroupProperties
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  containers | array | Tak | Kontenery w obrębie grupy kontenerów. - [Obiekt kontenera](#Container) |
-|  imageRegistryCredentials | array | Nie | Poświadczenia rejestru obrazu, na podstawie których zostanie utworzona grupa kontenerów. - [Obiekt ImageRegistryCredential](#ImageRegistryCredential) |
-|  restartPolicy | Wyliczenia | Nie | Zasady ponownego uruchamiania dla wszystkich kontenerów w grupie kontenerów. - `Always`Zawsze uruchamiaj `OnFailure` ponownie po `Never` niepowodzeniu — nigdy nie uruchamiaj ponownie. -Zawsze, OnFailure, nigdy |
-|  Adresu | object | Nie | Typ adresu IP grupy kontenerów. - [IpAddress — obiekt](#IpAddress) |
-|  osType | Wyliczenia | Tak | Typ systemu operacyjnego wymagany przez kontenery w grupie kontenerów. — Windows lub Linux |
-|  woluminy | array | Nie | Lista woluminów, które mogą być instalowane przez kontenery w tej grupie kontenerów. - [Obiekt woluminu](#Volume) |
-|  diagnostyka | object | Nie | Informacje diagnostyczne dla grupy kontenerów. - [Obiekt ContainerGroupDiagnostics](#ContainerGroupDiagnostics) |
-|  networkProfile | object | Nie | Informacje o profilu sieciowym dla grupy kontenerów. - [Obiekt ContainerGroupNetworkProfile](#ContainerGroupNetworkProfile) |
-|  Powodzenie | object | Nie | Informacje o konfiguracji DNS dla grupy kontenerów. - [Obiekt DnsConfiguration](#DnsConfiguration) |
+|  containers | tablica | Yes | Kontenery w obrębie grupy kontenerów.[obiekt kontenera](#Container)  -  |
+|  imageRegistryCredentials | tablica | Nie | Poświadczenia rejestru obrazu, na podstawie których zostanie utworzona grupa kontenerów. - [obiekt ImageRegistryCredential](#ImageRegistryCredential) |
+|  restartPolicy | Wyliczenia | Nie | Zasady ponownego uruchamiania dla wszystkich kontenerów w grupie kontenerów. - `Always` zawsze uruchamiaj ponownie `OnFailure` ponownego uruchomienia po awarii — `Never` nigdy nie uruchamiaj ponownie. -Zawsze, OnFailure, nigdy |
+|  Adresu | obiekt | Nie | Typ adresu IP grupy kontenerów. - [obiekt IPAddress](#IpAddress) |
+|  osType | Wyliczenia | Yes | Typ systemu operacyjnego wymagany przez kontenery w grupie kontenerów. — Windows lub Linux |
+|  volumes | tablica | Nie | Lista woluminów, które mogą być instalowane przez kontenery w tej grupie kontenerów. - [obiektu woluminu](#Volume) |
+|  Diagnostyka | obiekt | Nie | Informacje diagnostyczne dla grupy kontenerów. - [obiekt ContainerGroupDiagnostics](#ContainerGroupDiagnostics) |
+|  networkProfile | obiekt | Nie | Informacje o profilu sieciowym dla grupy kontenerów. - [obiekt ContainerGroupNetworkProfile](#ContainerGroupNetworkProfile) |
+|  Powodzenie | obiekt | Nie | Informacje o konfiguracji DNS dla grupy kontenerów. - [obiekt DnsConfiguration](#DnsConfiguration) |
 
 
 <a id="Container" />
 
 ### <a name="container-object"></a>Obiekt kontenera
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  name | ciąg | Tak | Nazwa podana przez użytkownika wystąpienia kontenera. |
-|  properties | object | Tak | Właściwości wystąpienia kontenera. - [Obiekt ContainerProperties](#ContainerProperties) |
+|  name | ciąg | Yes | Nazwa podana przez użytkownika wystąpienia kontenera. |
+|  properties | obiekt | Yes | Właściwości wystąpienia kontenera. - [obiekt ContainerProperties](#ContainerProperties) |
 
 
 <a id="ImageRegistryCredential" />
 
 ### <a name="imageregistrycredential-object"></a>Obiekt ImageRegistryCredential
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  server | ciąg | Tak | Serwer rejestru platformy Docker bez protokołu, takiego jak "http" i "https". |
-|  username | ciąg | Tak | Nazwa użytkownika dla rejestru prywatnego. |
-|  password | ciąg | Nie | Hasło do rejestru prywatnego. |
+|  serwer | ciąg | Yes | Serwer rejestru platformy Docker bez protokołu, takiego jak "http" i "https". |
+|  nazwa użytkownika | ciąg | Yes | Nazwa użytkownika dla rejestru prywatnego. |
+|  hasło | ciąg | Nie | Hasło do rejestru prywatnego. |
 
 
 <a id="IpAddress" />
 
 ### <a name="ipaddress-object"></a>IpAddress — obiekt
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  ports | array | Tak | Lista portów uwidocznionych w grupie kontenerów. - [Obiekt portu](#Port) |
-|  type | Wyliczenia | Tak | Określa, czy adres IP jest narażony na publiczny Internet lub prywatną sieć wirtualną. — Publiczne lub prywatne |
-|  adres ip | ciąg | Nie | Adres IP uwidoczniony dla publicznego Internetu. |
+|  ports | tablica | Yes | Lista portów uwidocznionych w grupie kontenerów.[obiekt portu](#Port)  -  |
+|  type | Wyliczenia | Yes | Określa, czy adres IP jest narażony na publiczny Internet lub prywatną sieć wirtualną. — Publiczne lub prywatne |
+|  przegląd | ciąg | Nie | Adres IP uwidoczniony dla publicznego Internetu. |
 |  dnsNameLabel | ciąg | Nie | Etykieta nazwy DNS dla adresu IP. |
 
 
@@ -216,40 +211,40 @@ W poniższych tabelach opisano wartości, które należy ustawić w schemacie.
 
 ### <a name="volume-object"></a>Obiekt woluminu
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  name | ciąg | Tak | Nazwa woluminu. |
-|  AzureFile | object | Nie | Wolumin plików platformy Azure. - [Obiekt AzureFileVolume](#AzureFileVolume) |
-|  emptyDir | object | Nie | Pusty wolumin katalogu. |
-|  secret | object | Nie | Wolumin tajny. |
-|  gitRepo | object | Nie | Wolumin repozytorium git. - [Obiekt GitRepoVolume](#GitRepoVolume) |
+|  name | ciąg | Yes | Nazwa woluminu. |
+|  azureFile | obiekt | Nie | Wolumin plików platformy Azure. - [obiekt AzureFileVolume](#AzureFileVolume) |
+|  emptyDir | obiekt | Nie | Pusty wolumin katalogu. |
+|  wpis tajny | obiekt | Nie | Wolumin tajny. |
+|  gitRepo | obiekt | Nie | Wolumin repozytorium git. - [obiekt GitRepoVolume](#GitRepoVolume) |
 
 
 <a id="ContainerGroupDiagnostics" />
 
 ### <a name="containergroupdiagnostics-object"></a>Obiekt ContainerGroupDiagnostics
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  logAnalytics | object | Nie | Informacje o usłudze log Analytics grupy kontenerów. - [Obiekt LogAnalytics](#LogAnalytics) |
+|  logAnalytics | obiekt | Nie | Informacje o usłudze log Analytics grupy kontenerów. - [obiekt LogAnalytics](#LogAnalytics) |
 
 
 <a id="ContainerGroupNetworkProfile" />
 
 ### <a name="containergroupnetworkprofile-object"></a>Obiekt ContainerGroupNetworkProfile
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  id | ciąg | Tak | Identyfikator profilu sieciowego. |
+|  id | ciąg | Yes | Identyfikator profilu sieciowego. |
 
 
 <a id="DnsConfiguration" />
 
 ### <a name="dnsconfiguration-object"></a>Obiekt DnsConfiguration
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  Serwery nazw | array | Tak | Serwery DNS dla grupy kontenerów. -String |
+|  Serwery nazw | tablica | Yes | Serwery DNS dla grupy kontenerów. -String |
 |  searchDomains | ciąg | Nie | Domeny wyszukiwania DNS dla wyszukiwania nazw hostów w grupie kontenerów. |
 |  options | ciąg | Nie | Opcje usługi DNS dla grupy kontenerów. |
 
@@ -258,37 +253,37 @@ W poniższych tabelach opisano wartości, które należy ustawić w schemacie.
 
 ### <a name="containerproperties-object"></a>Obiekt ContainerProperties
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  image | ciąg | Tak | Nazwa obrazu użytego do utworzenia wystąpienia kontenera. |
-|  Polecenie | array | Nie | Polecenia do wykonania w ramach wystąpienia kontenera w formularzu exec. -String |
-|  ports | array | Nie | Uwidocznione porty w wystąpieniu kontenera. - [Obiekt ContainerPort](#ContainerPort) |
-|  environmentVariables | array | Nie | Zmienne środowiskowe do ustawienia w wystąpieniu kontenera. - [Obiekt zmiennych środowiskowych](#EnvironmentVariable) |
-|  — zasoby | object | Tak | Wymagania dotyczące zasobów wystąpienia kontenera. - [Obiekt ResourceRequirements](#ResourceRequirements) |
-|  volumeMounts | array | Nie | Zainstaluj woluminy dostępne dla wystąpienia kontenera. - [Obiekt VolumeMount](#VolumeMount) |
-|  livenessProbe | object | Nie | Sonda na żywo. - [Obiekt ContainerProbe](#ContainerProbe) |
-|  readinessProbe | object | Nie | Sonda gotowości. - [Obiekt ContainerProbe](#ContainerProbe) |
+|  image | ciąg | Yes | Nazwa obrazu użytego do utworzenia wystąpienia kontenera. |
+|  command | tablica | Nie | Polecenia do wykonania w ramach wystąpienia kontenera w formularzu exec. -String |
+|  ports | tablica | Nie | Uwidocznione porty w wystąpieniu kontenera. - [obiekt ContainerPort](#ContainerPort) |
+|  environmentVariables | tablica | Nie | Zmienne środowiskowe do ustawienia w wystąpieniu kontenera. - [obiekt zmiennych środowiskowych](#EnvironmentVariable) |
+|  produkcyjnych | obiekt | Yes | Wymagania dotyczące zasobów wystąpienia kontenera. - [obiekt ResourceRequirements](#ResourceRequirements) |
+|  volumeMounts | tablica | Nie | Zainstaluj woluminy dostępne dla wystąpienia kontenera. - [obiekt VolumeMount](#VolumeMount) |
+|  livenessProbe | obiekt | Nie | Sonda na żywo. - [obiekt ContainerProbe](#ContainerProbe) |
+|  readinessProbe | obiekt | Nie | Sonda gotowości. - [obiekt ContainerProbe](#ContainerProbe) |
 
 
 <a id="Port" />
 
 ### <a name="port-object"></a>Obiekt portu
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
 |  protocol | Wyliczenia | Nie | Protokół skojarzony z portem. -TCP lub UDP |
-|  port | integer | Tak | Numer portu. |
+|  port | liczba całkowita | Yes | Numer portu. |
 
 
 <a id="AzureFileVolume" />
 
 ### <a name="azurefilevolume-object"></a>Obiekt AzureFileVolume
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  shareName | ciąg | Tak | Nazwa udziału plików platformy Azure, który ma zostać zainstalowany jako wolumin. |
-|  Trybie | boolean | Nie | Flaga wskazująca, czy plik platformy Azure udostępniony jako wolumin jest tylko do odczytu. |
-|  storageAccountName | ciąg | Tak | Nazwa konta magazynu zawierającego udział plików platformy Azure. |
+|  shareName | ciąg | Yes | Nazwa udziału plików platformy Azure, który ma zostać zainstalowany jako wolumin. |
+|  Trybie | wartość logiczna | Nie | Flaga wskazująca, czy plik platformy Azure udostępniony jako wolumin jest tylko do odczytu. |
+|  storageAccountName | ciąg | Yes | Nazwa konta magazynu zawierającego udział plików platformy Azure. |
 |  storageAccountKey | ciąg | Nie | Klucz dostępu konta magazynu używany do uzyskiwania dostępu do udziału plików platformy Azure. |
 
 
@@ -296,10 +291,10 @@ W poniższych tabelach opisano wartości, które należy ustawić w schemacie.
 
 ### <a name="gitrepovolume-object"></a>Obiekt GitRepoVolume
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  katalog | ciąg | Nie | Nazwa katalogu docelowego. Nie może zawierać ani zaczynać się od "..".  Jeśli zostanie podana wartość ".", katalog woluminu będzie repozytorium git.  W przeciwnym razie wolumin będzie zawierać repozytorium Git w podkatalogu o podanej nazwie. |
-|  repository | ciąg | Tak | Adres URL repozytorium |
+|  katalogi | ciąg | Nie | Nazwa katalogu docelowego. Nie może zawierać ani zaczynać się od "..".  Jeśli zostanie podana wartość ".", katalog woluminu będzie repozytorium git.  W przeciwnym razie wolumin będzie zawierać repozytorium Git w podkatalogu o podanej nazwie. |
+|  repozytorium | ciąg | Yes | Adres URL repozytorium |
 |  skorygowan | ciąg | Nie | Skrót zatwierdzenia dla określonej poprawki. |
 
 
@@ -307,32 +302,32 @@ W poniższych tabelach opisano wartości, które należy ustawić w schemacie.
 
 ### <a name="loganalytics-object"></a>Obiekt LogAnalytics
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  workspaceId | ciąg | Tak | Identyfikator obszaru roboczego dla usługi log Analytics |
-|  workspaceKey | ciąg | Tak | Klucz obszaru roboczego dla usługi log Analytics |
+|  workspaceId | ciąg | Yes | Identyfikator obszaru roboczego dla usługi log Analytics |
+|  workspaceKey | ciąg | Yes | Klucz obszaru roboczego dla usługi log Analytics |
 |  logType | Wyliczenia | Nie | Typ dziennika, który ma być używany. -ContainerInsights lub ContainerInstanceLogs |
-|  metadane | object | Nie | Metadane usługi log Analytics. |
+|  metadane | obiekt | Nie | Metadane usługi log Analytics. |
 
 
 <a id="ContainerPort" />
 
 ### <a name="containerport-object"></a>Obiekt ContainerPort
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
 |  protocol | Wyliczenia | Nie | Protokół skojarzony z portem. -TCP lub UDP |
-|  port | integer | Tak | Numer portu uwidoczniony w obrębie grupy kontenerów. |
+|  port | liczba całkowita | Yes | Numer portu uwidoczniony w obrębie grupy kontenerów. |
 
 
 <a id="EnvironmentVariable" />
 
 ### <a name="environmentvariable-object"></a>Obiekt zmiennych środowiskowych
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  name | ciąg | Tak | Nazwa zmiennej środowiskowej. |
-|  value | ciąg | Nie | Wartość zmiennej środowiskowej. |
+|  name | ciąg | Yes | Nazwa zmiennej środowiskowej. |
+|  wartość | ciąg | Nie | Wartość zmiennej środowiskowej. |
 |  secureValue | ciąg | Nie | Wartość zmiennej środowiskowej Secure. |
 
 
@@ -340,88 +335,88 @@ W poniższych tabelach opisano wartości, które należy ustawić w schemacie.
 
 ### <a name="resourcerequirements-object"></a>Obiekt ResourceRequirements
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  Żądania | object | Tak | Żądania zasobów tego wystąpienia kontenera. - [Obiekt ResourceRequests](#ResourceRequests) |
-|  Ograniczeń | object | Nie | Limity zasobów tego wystąpienia kontenera. - [Obiekt ResourceLimits](#ResourceLimits) |
+|  Żądania | obiekt | Yes | Żądania zasobów tego wystąpienia kontenera. - [obiekt ResourceRequests](#ResourceRequests) |
+|  ograniczeń | obiekt | Nie | Limity zasobów tego wystąpienia kontenera. - [obiekt ResourceLimits](#ResourceLimits) |
 
 
 <a id="VolumeMount" />
 
 ### <a name="volumemount-object"></a>Obiekt VolumeMount
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  name | ciąg | Tak | Nazwa instalacji woluminu. |
-|  mountPath | ciąg | Tak | Ścieżka wewnątrz kontenera, w którym należy zainstalować wolumin. Nie może zawierać dwukropka (:). |
-|  Trybie | boolean | Nie | Flaga wskazująca, czy instalacja woluminu jest tylko do odczytu. |
+|  name | ciąg | Yes | Nazwa instalacji woluminu. |
+|  mountPath | ciąg | Yes | Ścieżka wewnątrz kontenera, w którym należy zainstalować wolumin. Nie może zawierać dwukropka (:). |
+|  Trybie | wartość logiczna | Nie | Flaga wskazująca, czy instalacja woluminu jest tylko do odczytu. |
 
 
 <a id="ContainerProbe" />
 
 ### <a name="containerprobe-object"></a>Obiekt ContainerProbe
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  szef | object | Nie | Wykonywanie polecenia do sondowania — [obiekt ContainerExec](#ContainerExec) |
-|  Narzędzia HttpGet | object | Nie | Ustawienia http get do Probe- [ContainerHttpGet Object](#ContainerHttpGet) |
-|  initialDelaySeconds | integer | Nie | Początkowe opóźnienie w sekundach. |
-|  periodSeconds | integer | Nie | Okres w sekundach. |
-|  failureThreshold | integer | Nie | Próg błędu. |
-|  successThreshold | integer | Nie | Próg sukcesu. |
-|  timeoutSeconds | integer | Nie | Limit czasu w sekundach. |
+|  szef | obiekt | Nie | Wykonywanie polecenia do sondowania — [obiekt ContainerExec](#ContainerExec) |
+|  Narzędzia HttpGet | obiekt | Nie | Ustawienia http get do Probe- [ContainerHttpGet Object](#ContainerHttpGet) |
+|  initialDelaySeconds | liczba całkowita | Nie | Początkowe opóźnienie w sekundach. |
+|  periodSeconds | liczba całkowita | Nie | Okres w sekundach. |
+|  failureThreshold | liczba całkowita | Nie | Próg błędu. |
+|  successThreshold | liczba całkowita | Nie | Próg sukcesu. |
+|  timeoutSeconds | liczba całkowita | Nie | Limit czasu w sekundach. |
 
 
 <a id="ResourceRequests" />
 
 ### <a name="resourcerequests-object"></a>Obiekt ResourceRequests
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  memoryInGB | number | Tak | Żądanie pamięci w GB tego wystąpienia kontenera. |
-|  procesor | number | Tak | Żądanie procesora CPU tego wystąpienia kontenera. |
-|  gpu | object | Nie | Żądanie procesora GPU tego wystąpienia kontenera. - [Obiekt GpuResource](#GpuResource) |
+|  memoryInGB | numer | Yes | Żądanie pamięci w GB tego wystąpienia kontenera. |
+|  cpu | numer | Yes | Żądanie procesora CPU tego wystąpienia kontenera. |
+|  gpu | obiekt | Nie | Żądanie procesora GPU tego wystąpienia kontenera. - [obiekt GpuResource](#GpuResource) |
 
 
 <a id="ResourceLimits" />
 
 ### <a name="resourcelimits-object"></a>Obiekt ResourceLimits
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  memoryInGB | number | Nie | Limit pamięci w GB tego wystąpienia kontenera. |
-|  procesor | number | Nie | Limit procesorów dla tego wystąpienia kontenera. |
-|  gpu | object | Nie | Limit procesora GPU dla tego wystąpienia kontenera. - [Obiekt GpuResource](#GpuResource) |
+|  memoryInGB | numer | Nie | Limit pamięci w GB tego wystąpienia kontenera. |
+|  cpu | numer | Nie | Limit procesorów dla tego wystąpienia kontenera. |
+|  gpu | obiekt | Nie | Limit procesora GPU dla tego wystąpienia kontenera. - [obiekt GpuResource](#GpuResource) |
 
 
 <a id="ContainerExec" />
 
 ### <a name="containerexec-object"></a>Obiekt ContainerExec
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  Polecenie | array | Nie | Polecenia do wykonania w kontenerze. -String |
+|  command | tablica | Nie | Polecenia do wykonania w kontenerze. -String |
 
 
 <a id="ContainerHttpGet" />
 
 ### <a name="containerhttpget-object"></a>Obiekt ContainerHttpGet
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
 |  path | ciąg | Nie | Ścieżka do sondy. |
-|  port | integer | Tak | Numer portu do sondowania. |
-|  schemat | Wyliczenia | Nie | Schemat. -http lub https |
+|  port | liczba całkowita | Yes | Numer portu do sondowania. |
+|  równaniu | Wyliczenia | Nie | Schemat. -http lub https |
 
 
 <a id="GpuResource" />
 
 ### <a name="gpuresource-object"></a>Obiekt GpuResource
 
-|  Name | Type | Wymagane | Value |
+|  Nazwa | Typ | Wymagany | Wartość |
 |  ---- | ---- | ---- | ---- |
-|  count | integer | Tak | Liczba zasobów procesora GPU. |
-|  sku | Wyliczenia | Tak | Jednostka SKU zasobu GPU. -K80, P100, V100 |
+|  count | liczba całkowita | Yes | Liczba zasobów procesora GPU. |
+|  sku | Wyliczenia | Yes | Jednostka SKU zasobu GPU. -K80, P100, V100 |
 
 
 ## <a name="next-steps"></a>Następne kroki

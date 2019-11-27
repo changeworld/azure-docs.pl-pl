@@ -1,20 +1,15 @@
 ---
-title: Samouczek — wyzwalanie Azure Container Instances przez funkcję platformy Azure
+title: Samouczek — wyzwalanie grupy kontenerów przez funkcję platformy Azure
 description: Tworzenie wyzwalanej przez protokół HTTP bezserwerowej funkcji programu PowerShell w celu zautomatyzowania tworzenia wystąpień kontenera platformy Azure
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 00bd017b0bcff6386e678802c301087819792744
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179981"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533372"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Samouczek: Tworzenie grupy kontenerów za pomocą funkcji platformy Azure wyzwalanej przez protokół HTTP
 
@@ -66,7 +61,7 @@ az functionapp identity assign \
 
 ## <a name="modify-httptrigger-function"></a>Modyfikuj funkcję HttpTrigger
 
-Zmodyfikuj kod programu PowerShell dla funkcji **HttpTrigger** , aby utworzyć grupę kontenerów. W pliku `run.ps1` dla funkcji Znajdź następujący blok kodu. Ten kod wyświetla wartość nazwy, jeśli jest ona przenoszona jako ciąg zapytania w adresie URL funkcji:
+Zmodyfikuj kod programu PowerShell dla funkcji **HttpTrigger** , aby utworzyć grupę kontenerów. W `run.ps1` pliku dla funkcji Znajdź następujący blok kodu. Ten kod wyświetla wartość nazwy, jeśli jest ona przenoszona jako ciąg zapytania w adresie URL funkcji:
 
 ```powershell
 [...]
@@ -92,11 +87,11 @@ if ($name) {
 [...]
 ```
 
-Ten przykład tworzy grupę kontenerów składającą się z jednego wystąpienia kontenera z `alpine` uruchomionym obrazem. Kontener uruchamia pojedyncze `echo` polecenie, a następnie kończy działanie. W rzeczywistym przykładzie można wyzwolić utworzenie jednej lub większej liczby grup kontenerów na potrzeby uruchamiania zadania usługi Batch.
+Ten przykład tworzy grupę kontenerów składającą się z jednego wystąpienia kontenera z uruchomionym obrazem `alpine`. Kontener uruchamia pojedyncze `echo` polecenie, a następnie kończy działanie. W rzeczywistym przykładzie można wyzwolić utworzenie jednej lub większej liczby grup kontenerów na potrzeby uruchamiania zadania usługi Batch.
  
 ## <a name="test-function-app-locally"></a>Lokalna aplikacja funkcji testowej
 
-Upewnij się, że funkcja jest uruchamiana prawidłowo lokalnie przed ponownym opublikowaniem projektu aplikacji funkcji na platformie Azure. Jak pokazano na [przewodniku Szybki Start programu PowerShell](../azure-functions/functions-create-first-function-powershell.md), Wstaw lokalny punkt przerwania w skrypcie `Wait-Debugger` programu PowerShell i wywołanie powyżej niego. Wskazówki dotyczące debugowania znajdują się w sekcji [debugowanie programu PowerShell Azure Functions lokalnie](../azure-functions/functions-debug-powershell-local.md).
+Upewnij się, że funkcja jest uruchamiana prawidłowo lokalnie przed ponownym opublikowaniem projektu aplikacji funkcji na platformie Azure. Jak pokazano na [przewodniku Szybki Start programu PowerShell](../azure-functions/functions-create-first-function-powershell.md), Wstaw lokalny punkt przerwania w skrypcie programu PowerShell i wywołanie `Wait-Debugger` powyżej niego. Wskazówki dotyczące debugowania znajdują się w sekcji [debugowanie programu PowerShell Azure Functions lokalnie](../azure-functions/functions-debug-powershell-local.md).
 
 
 ## <a name="republish-azure-function-app"></a>Ponowne publikowanie aplikacji funkcji platformy Azure
@@ -104,7 +99,7 @@ Upewnij się, że funkcja jest uruchamiana prawidłowo lokalnie przed ponownym o
 Po sprawdzeniu, że funkcja działa poprawnie na komputerze lokalnym, należy ponownie opublikować projekt w istniejącej aplikacji funkcji na platformie Azure.
 
 > [!NOTE]
-> Pamiętaj, aby usunąć wszystkie wywołania `Wait-Debugger` przed opublikowaniem funkcji na platformie Azure.
+> Pamiętaj, aby usunąć wszystkie wywołania do `Wait-Debugger` przed opublikowaniem funkcji na platformie Azure.
 
 1. W Visual Studio Code Otwórz paletę poleceń. Wyszukaj i wybierz `Azure Functions: Deploy to function app...`.
 1. Wybierz bieżący folder roboczy do pliku zip i Wdróż.
@@ -114,7 +109,7 @@ Po utworzeniu aplikacji funkcji i zastosowaniu pakietu wdrożeniowego zostanie w
 
 ## <a name="run-the-function-in-azure"></a>Uruchamianie funkcji na platformie Azure
 
-Po pomyślnym zakończeniu wdrożenia Pobierz adres URL funkcji. Na przykład użyj **platformy Azure: Obszar** funkcji w programie Visual Studio Code, aby skopiować adres URL funkcji **HttpTrigger** lub uzyskać adres URL funkcji w [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
+Po pomyślnym zakończeniu wdrożenia Pobierz adres URL funkcji. Na przykład użyj obszaru **Azure: Functions** w programie Visual Studio Code, aby skopiować adres URL funkcji **HttpTrigger** lub uzyskać adres URL funkcji w [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
 
 Adres URL funkcji zawiera unikatowy kod i ma postać:
 
@@ -124,7 +119,7 @@ https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0Gng
 
 ### <a name="run-function-without-passing-a-name"></a>Uruchom funkcję bez przekazywania nazwy
 
-Jako pierwszy test Uruchom `curl` polecenie i przekaż adres URL funkcji bez dołączania `name` ciągu zapytania. Upewnij się, że dołączysz unikatowy kod funkcji.
+Jako pierwszy test Uruchom polecenie `curl` i przekaż adres URL funkcji bez dołączania `name` ciągu zapytania. Upewnij się, że dołączysz unikatowy kod funkcji.
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M=="
@@ -151,7 +146,7 @@ Please pass a name on the query string or in the request body.
 
 ### <a name="run-function-and-pass-the-name-of-a-container-group"></a>Uruchom funkcję i przekaż nazwę grupy kontenerów
 
-Teraz uruchom `curl` polecenie, dołączając nazwę grupy kontenerów (obiektu*kontenera*) jako ciąg `&name=mycontainergroup`zapytania:
+Teraz uruchom `curl` polecenie poprzez dołączenie nazwy grupy kontenerów (obiektu*kontenera*) jako ciągu zapytania `&name=mycontainergroup`:
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup"

@@ -74,6 +74,6 @@ Aby migrować duże ilości danych na platformę Azure, możesz zamówić pole d
 2. W obszarze **wybierz Azure Data Box**określ swoją subskrypcję. 
 3. Transfer będzie zaimportowany do platformy Azure. Określ źródło danych oraz miejsce docelowe dla danych w regionie platformy Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wypróbowanie migracji przy użyciu Azure Migrate migracji serwera dla maszyn wirtualnych [funkcji Hyper-V](tutorial-migrate-hyper-v.md) lub programu [VMware](tutorial-migrate-vmware.md) .

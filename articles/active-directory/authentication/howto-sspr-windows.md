@@ -1,6 +1,6 @@
 ---
-title: Self-service password reset for Windows - Azure Active Directory
-description: How to enable self-service password reset using forgot password at the Windows login screen
+title: Samoobsługowe resetowanie haseł dla systemu Windows — Azure Active Directory
+description: Jak włączyć funkcję samoobsługowego resetowania hasła przy użyciu zapomnianego hasła na ekranie logowania systemu Windows
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,46 +18,46 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381233"
 ---
-# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>How to: Enable password reset from the Windows login screen
+# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Instrukcje: Włączanie resetowania hasła na ekranie logowania systemu Windows
 
-For machines running Windows 7, 8, 8.1, and 10 you can enable users to reset their password at the Windows login screen. Users no longer have to find a device with a web browser to access the [SSPR portal](https://aka.ms/sspr).
+W przypadku maszyn z systemem Windows 7, 8, 8,1 i 10 można umożliwić użytkownikom Resetowanie hasła na ekranie logowania do systemu Windows. Użytkownicy nie muszą już znajdować urządzenia z przeglądarką sieci Web, aby uzyskać dostęp do [portalu SSPR](https://aka.ms/sspr).
 
-![Example Windows 7 and 10 login screens with SSPR link shown](./media/howto-sspr-windows/windows-reset-password.png)
+![Przykład ekranu logowania z systemem Windows 7 i 10 z pokazanym linkiem SSPR](./media/howto-sspr-windows/windows-reset-password.png)
 
 ## <a name="general-limitations"></a>Ogólne ograniczenia
 
-- Password reset is not currently supported from a Remote Desktop or from Hyper-V enhanced sessions.
+- Resetowanie hasła nie jest obecnie obsługiwane z poziomu Pulpit zdalny ani rozszerzonych sesji funkcji Hyper-V.
 - Ta funkcja nie działa w przypadku sieci z wdrożonym uwierzytelnianiem sieci 802.1x oraz opcji „Wykonaj bezpośrednio przed logowaniem użytkownika”. W sieciach z wdrożonym uwierzytelnianiem sieci 802.1x zalecane jest używanie uwierzytelniania maszynowego w celu włączenia tej funkcji.
-- Hybrid Azure AD joined machines must have network connectivity line of sight to a domain controller to use the new password and update cached credentials.
-- If using an image, prior to running sysprep ensure that the web cache is cleared for the built-in Administrator prior to performing the CopyProfile step. More information about this step can be found in the support article [Performance poor when using custom default user profile](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
-- The following settings are known to interfere with the ability to use and reset passwords on Windows 10 devices
-    - If Ctrl+Alt+Del is required by policy in versions of Windows 10 before v1809, **Reset password** will not work.
+- Hybrydowe maszyny przyłączone do usługi Azure AD muszą mieć linię łączności sieciowej z kontrolerem domeny, aby użyć nowego hasła i zaktualizować buforowane poświadczenia.
+- Jeśli używasz obrazu, przed uruchomieniem narzędzia Sysprep upewnij się, że pamięć podręczna sieci Web jest wyczyszczona dla wbudowanego administratora przed wykonaniem kroku CopyProfile. Więcej informacji na temat tego kroku można znaleźć w artykule dotyczącym pomocy technicznej [niska w przypadku używania niestandardowego domyślnego profilu użytkownika](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
+- Następujące ustawienia są znane, aby zakłócać możliwość używania i resetowania haseł na urządzeniach z systemem Windows 10
+    - Jeśli kombinacja klawiszy Ctrl + Alt + Del jest wymagana przez zasady w wersjach systemu Windows 10 przed v1809, **Resetowanie hasła** nie będzie działało.
     - Jeśli powiadomienia na ekranie blokady są wyłączone, pozycja **Resetuj hasło** nie będzie działać.
     - Ustawienie HideFastUserSwitching jest włączone lub ustawione na wartość 1
     - Ustawienie DontDisplayLastUserName jest włączone lub ustawione na wartość 1
     - Ustawienie NoLockScreen jest włączone lub ustawione na wartość 1
     - Ustawienie EnableLostMode jest określone na urządzeniu
     - Plik Explorer.exe został zastąpiony niestandardową powłoką
-- The combination of the following specific three settings can cause this feature to not work.
-    - Interactive logon: Do not require CTRL+ALT+DEL = Disabled
-    - DisableLockScreenAppNotifications = 1 or Enabled
-    - IsContentDeliveryPolicyEnforced = 1 or True
+- Ta funkcja nie będzie działała w połączeniu następujących trzech ustawień.
+    - Logowanie interakcyjne: nie wymagaj kombinacji klawiszy CTRL + ALT + DEL = wyłączone
+    - DisableLockScreenAppNotifications = 1 lub włączony
+    - IsContentDeliveryPolicyEnforced = 1 lub prawda
 
-## <a name="windows-10-password-reset"></a>Windows 10 password reset
+## <a name="windows-10-password-reset"></a>Resetowanie hasła w systemie Windows 10
 
-### <a name="windows-10-prerequisites"></a>Windows 10 prerequisites
+### <a name="windows-10-prerequisites"></a>Wymagania wstępne systemu Windows 10
 
-- An administrator must enable Azure AD self-service password reset from the Azure portal.
-- **Users must register for SSPR before using this feature**
-- Network proxy requirements
-   - Windows 10 devices 
-       - Port 443 to `passwordreset.microsoftonline.com` and `ajax.aspnetcdn.com`
-       - Windows 10 devices only support machine-level proxy configuration
-- Run at least Windows 10, version April 2018 Update (v1803), and the devices must be either:
-    - Azure AD joined
-    - Hybrid Azure AD joined
+- Administrator musi włączyć funkcję samoobsługowego resetowania hasła w usłudze Azure AD z poziomu Azure Portal.
+- **Użytkownicy muszą zarejestrować się w usłudze SSPR przed użyciem tej funkcji**
+- Wymagania dotyczące serwera proxy sieci
+   - Urządzenia z systemem Windows 10 
+       - Port 443 do `passwordreset.microsoftonline.com` i `ajax.aspnetcdn.com`
+       - Urządzenia z systemem Windows 10 obsługują tylko konfigurację serwera proxy na poziomie komputera
+- Uruchom co najmniej system Windows 10, wersja kwiecień 2018 Update (v1803), a urządzenia muszą mieć jedną z tych opcji:
+    - Przyłączone do usługi Azure AD
+    - Dołączona hybrydowa usługa Azure AD
 
-### <a name="enable-for-windows-10-using-intune"></a>Enable for Windows 10 using Intune
+### <a name="enable-for-windows-10-using-intune"></a>Włącz dla systemu Windows 10 przy użyciu usługi Intune
 
 Wdrażanie zmiany konfiguracji w celu włączenia możliwości resetowania hasła z poziomu ekranu logowania przy użyciu usługi Intune jest metodą najbardziej elastyczną. Usługa Intune umożliwia wdrażanie zmiany konfiguracji dla określonej zdefiniowanej grupy maszyn. Ta metoda wymaga rejestracji urządzenia w usłudze Intune.
 
@@ -79,9 +79,9 @@ Wdrażanie zmiany konfiguracji w celu włączenia możliwości resetowania hasł
       - Kliknij przycisk **OK**.
    - Kliknij przycisk **OK**.
 1. Kliknij przycisk **Utwórz**
-1. This policy can be assigned to specific users, devices, or groups. More information can be found in the article [Assign user and device profiles in Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
+1. Te zasady mogą być przypisane do określonych użytkowników, urządzeń lub grup. Więcej informacji można znaleźć w artykule [przypisywanie profilów użytkowników i urządzeń w Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
 
-### <a name="enable-for-windows-10-using-the-registry"></a>Enable for Windows 10 using the Registry
+### <a name="enable-for-windows-10-using-the-registry"></a>Włącz dla systemu Windows 10 przy użyciu rejestru
 
 1. Zaloguj się do komputera PC z systemem Windows przy użyciu poświadczeń administracyjnych
 1. Uruchom **regedit** jako administrator
@@ -89,71 +89,71 @@ Wdrażanie zmiany konfiguracji w celu włączenia możliwości resetowania hasł
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-#### <a name="troubleshooting-windows-10-password-reset"></a>Troubleshooting Windows 10 password reset
+#### <a name="troubleshooting-windows-10-password-reset"></a>Rozwiązywanie problemów z resetowaniem haseł systemu Windows 10
 
 Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i typu klienta, które są powiązane z żądaniem resetowania hasła.
 
-![Example Windows 7 password reset in the Azure AD Audit log](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Przykładowe Resetowanie hasła w systemie Windows 7 w dzienniku inspekcji usługi Azure AD](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-When users reset their password from the login screen of a Windows 10 device, a low-privilege temporary account called `defaultuser1` is created. To konto jest używane, aby zapewnić bezpieczeństwo procesu resetowania hasła. Samo konto ma losowo wygenerowane hasło, nie jest widoczne dla logowania urządzenia i zostanie automatycznie usunięte po zresetowaniu hasła użytkownika. Multiple `defaultuser` profiles may exist but can be safely ignored.
+Po zresetowaniu hasła przez użytkownika na ekranie logowania urządzenia z systemem Windows 10 zostanie utworzone konto tymczasowe o niskim poziomie uprawnień o nazwie `defaultuser1`. To konto jest używane, aby zapewnić bezpieczeństwo procesu resetowania hasła. Samo konto ma losowo wygenerowane hasło, nie jest widoczne dla logowania urządzenia i zostanie automatycznie usunięte po zresetowaniu hasła użytkownika. Może istnieć wiele profilów `defaultuser`, ale można je bezpiecznie zignorować.
 
-## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8, and 8.1 password reset
+## <a name="windows-7-8-and-81-password-reset"></a>Resetowanie hasła dla systemu Windows 7, 8 i 8,1
 
-### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8, and 8.1 prerequisites
+### <a name="windows-7-8-and-81-prerequisites"></a>Wymagania wstępne dotyczące systemów Windows 7, 8 i 8,1
 
-- An administrator must enable Azure AD self-service password reset from the Azure portal.
-- **Users must register for SSPR before using this feature**
-- Network proxy requirements
-   - Windows 7, 8, and 8.1 devices
-       - Port 443 to `passwordreset.microsoftonline.com`
-- Patched Windows 7 or Windows 8.1 Operating System.
-- TLS 1.2 enabled using the guidance found in [Transport Layer Security (TLS) registry settings](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
-- If more than one 3rd party credential provider is enabled on your machine, users will see more than one user profile on the login screen.
+- Administrator musi włączyć funkcję samoobsługowego resetowania hasła w usłudze Azure AD z poziomu Azure Portal.
+- **Użytkownicy muszą zarejestrować się w usłudze SSPR przed użyciem tej funkcji**
+- Wymagania dotyczące serwera proxy sieci
+   - Urządzenia z systemami Windows 7, 8 i 8,1
+       - Port 443 do `passwordreset.microsoftonline.com`
+- Poprawiony system operacyjny Windows 7 lub Windows 8.1.
+- Protokół TLS 1,2 został włączony przy użyciu wskazówek dostępnych w [ustawieniach rejestru Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
+- Jeśli na komputerze jest włączony więcej niż jeden dostawca poświadczeń innych firm, na ekranie logowania użytkownicy będą widzieć więcej niż jeden profil użytkownika.
 
 > [!WARNING]
-> TLS 1.2 must be enabled, not just set to auto negotiate
+> Protokół TLS 1,2 musi być włączony, a nie tylko na wartość Autonegocjowanie
 
-### <a name="install"></a>Instalacja
+### <a name="install"></a>Instalowanie
 
-1. Download the appropriate installer for the version of Windows you would like to enable.
-   - Software is available on the Microsoft download center at [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
-1. Sign in to the machine where you would like to install, and run the installer.
-1. After installation, a reboot is highly recommended.
-1. After the reboot, at the login screen choose a user and click "Forgot password?" to initiate the password reset workflow.
-1. Complete the workflow following the onscreen steps to reset your password.
+1. Pobierz odpowiedni Instalator dla wersji systemu Windows, którą chcesz włączyć.
+   - Oprogramowanie jest dostępne w centrum pobierania Microsoft w witrynie [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+1. Zaloguj się na komputerze, na którym chcesz zainstalować program, a następnie uruchom Instalatora.
+1. Po zakończeniu instalacji jest zdecydowanie zalecane.
+1. Po ponownym uruchomieniu na ekranie logowania wybierz użytkownika, a następnie kliknij "zapomniane hasło?". w celu zainicjowania przepływu pracy resetowania hasła.
+1. Ukończ przepływ pracy po wykonaniu kroków Onscreen, aby zresetować hasło.
 
-![Example Windows 7 clicked "Forgot password?" SSPR flow](media/howto-sspr-windows/windows-7-sspr.png)
+![Przykładowo w systemie Windows 7 kliknięto "zapomniane hasło?" Przepływ SSPR](media/howto-sspr-windows/windows-7-sspr.png)
 
-#### <a name="silent-installation"></a>Silent installation
+#### <a name="silent-installation"></a>Instalacja dyskretna
 
-- For silent install, use the command “msiexec /i SsprWindowsLogon.PROD.msi /qn”
-- For silent uninstall, use the command “msiexec /x SsprWindowsLogon.PROD.msi /qn”
+- W przypadku instalacji dyskretnej Użyj polecenia "msiexec/i SsprWindowsLogon. PROD. msi/qn"
+- W przypadku dezinstalacji dyskretnej Użyj polecenia "msiexec/x SsprWindowsLogon. PROD. msi/qn"
 
-#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Troubleshooting Windows 7, 8, and 8.1 password reset
+#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Rozwiązywanie problemów z resetowaniem haseł dla systemu Windows 7, 8 i 8,1
 
-Events will be logged both on the machine and in Azure AD. Azure AD Events will include information about the IP address and ClientType where the password reset occurred.
+Zdarzenia będą rejestrowane zarówno na komputerze, jak i w usłudze Azure AD. Zdarzenia usługi Azure AD będą zawierać informacje o adresie IP i ClientType, w których wystąpiło Resetowanie hasła.
 
-![Example Windows 7 password reset in the Azure AD Audit log](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Przykładowe Resetowanie hasła w systemie Windows 7 w dzienniku inspekcji usługi Azure AD](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-If additional logging is required, a registry key on the machine can be changed to enable verbose logging. Enable verbose logging for troubleshooting purposes only.
+Jeśli wymagane jest dodatkowe rejestrowanie, klucz rejestru na komputerze można zmienić, aby włączyć pełne rejestrowanie. Włącz pełne rejestrowanie tylko do celów związanych z rozwiązywaniem problemów.
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- To enable verbose logging, create a `REG_DWORD: “EnableLogging”`, and set it to 1.
-- To disable verbose logging, change the `REG_DWORD: “EnableLogging”` to 0.
+- Aby włączyć pełne rejestrowanie, Utwórz `REG_DWORD: “EnableLogging”`i ustaw dla niego wartość 1.
+- Aby wyłączyć pełne rejestrowanie, Zmień wartość `REG_DWORD: “EnableLogging”` na 0.
 
 ## <a name="what-do-users-see"></a>Co widzą użytkownicy
 
-Now that you have configured password reset for your Windows devices, what changes for the user? Skąd użytkownicy będą wiedzieć, że mogą zresetować swoje hasło na ekranie logowania?
+Teraz, po skonfigurowaniu resetowania haseł dla urządzeń z systemem Windows, jakie zmiany zostały wprowadzone dla użytkownika? Skąd użytkownicy będą wiedzieć, że mogą zresetować swoje hasło na ekranie logowania?
 
-![Example Windows 7 and 10 login screens with SSPR link shown](./media/howto-sspr-windows/windows-reset-password.png)
+![Przykład ekranu logowania z systemem Windows 7 i 10 z pokazanym linkiem SSPR](./media/howto-sspr-windows/windows-reset-password.png)
 
-When users attempt to sign in, they now see a **Reset password** or **Forgot password** link that opens the self-service password reset experience at the login screen. Ta funkcja umożliwia użytkownikom zresetowanie hasła bez konieczności uzyskiwania dostępu do przeglądarki internetowej przy użyciu innego urządzenia.
+Gdy użytkownicy próbują się zalogować, zobaczymy teraz link **resetowania** hasła lub **zapomnianego hasła** , które powoduje otwarcie funkcji samoobsługowego resetowania hasła na ekranie logowania. Ta funkcja umożliwia użytkownikom zresetowanie hasła bez konieczności uzyskiwania dostępu do przeglądarki internetowej przy użyciu innego urządzenia.
 
 Wskazówki dotyczące używania tej funkcji będzie można znaleźć w artykule [Reset your work or school password (Resetowanie hasła służbowego)](../user-help/active-directory-passwords-update-your-own-password.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Plan authentication methods to allow](concept-authentication-methods.md)
+[Zaplanuj metody uwierzytelniania, aby zezwolić](concept-authentication-methods.md)
 
-[Configure Windows 10](https://docs.microsoft.com/windows/configuration/)
+[Konfigurowanie systemu Windows 10](https://docs.microsoft.com/windows/configuration/)

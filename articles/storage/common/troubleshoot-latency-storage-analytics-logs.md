@@ -99,10 +99,10 @@ W poniższych krokach pokazano, jak identyfikować i rozwiązywać problemy z op
 
    |   |Stanem żądania =<br>Powodzenie|Stanem żądania =<br>SYGNATUR NetworkError|Zalecenie|
    |---|---|---|---|
-   |GetBlob|Tak|Nie|[**Operacja GetBlob:** Stanem żądania = sukces](#getblob-operation-requeststatus--success)|
-   |GetBlob|Nie|Tak|[**Operacja GetBlob:** Stanem żądania = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Tak|Nie|[**Operacja Put:** Stanem żądania = sukces](#put-operation-requeststatus--success)|
-   |PutBlob|Nie|Tak|[**Operacja Put:** Stanem żądania = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Yes|Nie|[**Operacja GetBlob:** Stanem żądania = sukces](#getblob-operation-requeststatus--success)|
+   |GetBlob|Nie|Yes|[**Operacja GetBlob:** Stanem żądania = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Yes|Nie|[**Operacja Put:** Stanem żądania = sukces](#put-operation-requeststatus--success)|
+   |PutBlob|Nie|Yes|[**Operacja Put:** Stanem żądania = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>Wyniki stanu
 

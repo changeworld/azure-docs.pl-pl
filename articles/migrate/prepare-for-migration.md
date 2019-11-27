@@ -144,6 +144,6 @@ Po migracji wykonaj następujące czynności na maszynach wirtualnych platformy 
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zdecyduj, która metoda ma być używana do [migrowania maszyn wirtualnych VMware](server-migrate-overview.md) na platformę Azure, lub Rozpocznij Migrowanie [maszyn wirtualnych funkcji Hyper-V](tutorial-migrate-hyper-v.md) lub [serwerów fizycznych lub zwirtualizowanych/chmurowych maszyn](tutorial-migrate-physical-virtual-machines.md)wirtualnych.

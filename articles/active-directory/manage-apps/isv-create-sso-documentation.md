@@ -1,6 +1,6 @@
 ---
-title: Create & publish single sign-on documentation for your application
-description: Guidance for independent software vendors on integrating with Azure Active Directory
+title: Utwórz & publikowanie dokumentacji logowania jednokrotnego dla aplikacji
+description: Wskazówki dla niezależnych dostawców oprogramowania w ramach integracji z usługą Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -19,46 +19,46 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232281"
 ---
-# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Create and publish single sign-on documentation for your application   
+# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Tworzenie i publikowanie dokumentacji logowania jednokrotnego dla aplikacji   
 
-## <a name="documentation-on-your-site"></a>Documentation on your site
+## <a name="documentation-on-your-site"></a>Dokumentacja witryny
 
-Ease of adoption is a significant factor in enterprise software decisions. Clear easy-to-follow documentation supports your customers in their adoption journey and reduces support costs. Working with thousands of software vendors, Microsoft has seen what works.
+Łatwość wdrażania jest istotnym czynnikiem w podejmowaniu decyzji dotyczących oprogramowania w przedsiębiorstwie. Łatwa w obsłudze dokumentacja pozwala klientom na ich wdrażanie i zmniejsza koszty pomocy technicznej. Pracując z tysiącami dostawców oprogramowania, firma Microsoft widziała, co działa.
 
-We recommend that your documentation on your site at a minimum include the following items.
+Zalecamy, aby dokumentacja w witrynie zawierała co najmniej następujące elementy.
 
-* Introduction to your SSO functionality
+* Wprowadzenie do funkcji logowania jednokrotnego
 
-  * Protocols supported
+  * Obsługiwane protokoły
 
-  * Version and SKU
+  * Wersja i jednostka SKU
 
-  * Supported Identity Providers list with documentation links
+  * Lista obsługiwanych dostawców tożsamości z linkami do dokumentacji
 
-* Licensing information for your application
+* Informacje o licencjonowaniu dla aplikacji
 
-* Role-based access control for configuring SSO
+* Kontrola dostępu oparta na rolach na potrzeby konfigurowania logowania jednokrotnego
 
-* SSO Configuration Steps
+* Kroki konfiguracji logowania jednokrotnego
 
-  * UI configuration elements for SAML with expected values from the provider
+  * Elementy konfiguracji interfejsu użytkownika dla SAML z oczekiwanymi wartościami od dostawcy
 
-  * Service provider information to be passed to identity providers
+  * Informacje o dostawcy usług, które mają zostać przesłane do dostawców tożsamości
 
-* If OIDC/OAuth
+* Jeśli OIDC/OAuth
 
-  * List of permissions required for consent with business justifications
+  * Lista uprawnień wymaganych do wyrażania zgody z uzasadnieniem biznesowym
 
-* Testing steps for pilot users
+* Kroki testowania dla użytkowników pilotażowych
 
-* Troubleshooting information, including error codes and messages
+* Informacje dotyczące rozwiązywania problemów, w tym kody błędów i komunikaty
 
-* Support mechanisms for customers
+* Mechanizmy obsługi dla klientów
 
-## <a name="documentation-on-the-microsoft-site"></a>Documentation on the Microsoft Site
+## <a name="documentation-on-the-microsoft-site"></a>Dokumentacja w witrynie firmy Microsoft
 
-When you list your application with the Azure Active Directory Application Gallery, which also publishes your application in the Azure Marketplace, Microsoft will generate documentation for our mutual customers explaining the step-by-step process. You can see an example [here](https://aka.ms/appstutorial). This documentation is created based on your submission to the gallery, and you can easily update it if you make changes to your application using your GitHub account.
+Po wyświetleniu listy aplikacji za pomocą galerii aplikacji Azure Active Directory, która również publikuje aplikację w portalu Azure Marketplace, firma Microsoft będzie generować dokumentację dla naszych klientów, którzy objaśniają proces krok po kroku. Przykład można zobaczyć [tutaj](https://aka.ms/appstutorial). Ta dokumentacja jest tworzona na podstawie przesłanej do galerii i można ją łatwo zaktualizować w przypadku wprowadzania zmian w aplikacji przy użyciu konta usługi GitHub.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[List your application in the Azure AD Application Gallery](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure AD](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

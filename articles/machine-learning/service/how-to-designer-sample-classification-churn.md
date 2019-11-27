@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Predict churn example'
+title: 'Projektant: przykład prognozowania zmian'
 titleSuffix: Azure Machine Learning
-description: Follow this classification example to predict churn with Azure Machine Learning designer & boosted decision trees.
+description: Postępuj zgodnie z tym przykładem klasyfikacji, aby przewidzieć zmiany w programie Azure Machine Learning Designer & podwyższane drzewa decyzyjne.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,61 +17,61 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225099"
 ---
-# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Use boosted decision tree to predict churn with Azure Machine Learning designer
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Używanie podwyższania drzewa decyzyjnego do przewidywania zmian za pomocą narzędzia Azure Machine Learning Designer
 
-**Designer (preview) sample 5**
+**Projektant (wersja zapoznawcza) — przykład 5**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Learn how to build a complex machine learning pipeline without writing a single line of code using the designer (preview).
+Dowiedz się, jak utworzyć złożony potok uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza).
 
-This pipeline trains 2 **two-class boosted decision tree** classifiers to predict common tasks for customer relationship management (CRM) systems - customer churn. The data values and labels are split across multiple data sources and scrambled to anonymize customer information, however, we can still use the designer to combine data sets and train a model using the obscured values.
+Ten potok pociąga za **dwie klasy klasyfikatory drzewa decyzyjnego** , aby przewidzieć typowe zadania związane z zarządzaniem relacjami z klientami (CRM) dla klientów. Wartości i etykiety danych są podzielone na wiele źródeł danych i szyfrowane w celu zachowywanie anonimowości informacji o klientach, jednak nadal możemy używać projektanta do łączenia zestawów danych i uczenia modelu przy użyciu wartości zasłoniętych.
 
-Because you're trying to answer the question "Which one?" this is called a classification problem, but you can apply the same logic shown in this sample to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
+Ponieważ próbujesz odpowiedzieć na pytanie "? jest to nazywane problemem klasyfikacji, ale można zastosować tę samą logikę pokazaną w tym przykładzie, aby rozwiązać dowolny typ problemu uczenia maszynowego, niezależnie od tego, czy jest to regresja, klasyfikacja, klastrowanie i tak dalej.
 
-Here's the completed graph for this pipeline:
+Oto ukończony wykres dla tego potoku:
 
-![Pipeline graph](./media/how-to-designer-sample-classification-predict-churn/pipeline-graph.png)
+![Wykres potoku](./media/how-to-designer-sample-classification-predict-churn/pipeline-graph.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Click sample 5 to open it. 
+4. Kliknij pozycję przykład 5, aby ją otworzyć. 
 
 ## <a name="data"></a>Dane
 
-The data for this pipeline is from KDD Cup 2009. It has 50,000 rows and 230 feature columns. The task is to predict churn, appetency, and up-selling for customers who use these features. For more information about the data and the task, see the [KDD website](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
+Dane dla tego potoku pochodzą z KDD filiżanki 2009. Zawiera on 50 000 wierszy i 230 kolumn funkcji. Zadaniem jest przewidywanie zmian, pragnienie i sprzedaży dla klientów korzystających z tych funkcji. Aby uzyskać więcej informacji na temat danych i zadania, zobacz [witrynę sieci Web KDD](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
-## <a name="pipeline-summary"></a>Pipeline summary
+## <a name="pipeline-summary"></a>Podsumowanie potoku
 
-This sample pipeline in the designer shows binary classifier prediction of churn, appetency, and up-selling, a common task for customer relationship management (CRM).
+W tym przykładowym potoku w projektancie przedstawiono dane binarne klasyfikatora dotyczące zmian, pragnienie i sprzedaży, typowe zadanie zarządzania relacjami z klientami (CRM).
 
-First, some simple data processing.
+Najpierw kilka prostych operacji przetwarzania danych.
 
-- The raw dataset has many missing values. Use the **Clean Missing Data** module to replace the missing values with 0.
+- Nieprzetworzony zestaw danych ma wiele wartości. Użyj **nieoczyszczonego modułu danych** , aby zastąpić brakujące wartości wartością 0.
 
-    ![Clean the dataset](./media/how-to-designer-sample-classification-predict-churn/cleaned-dataset.png)
+    ![Wyczyść zestaw danych](./media/how-to-designer-sample-classification-predict-churn/cleaned-dataset.png)
 
-- The features and the corresponding churn are in different datasets. Use the **Add Columns** module to append the label columns to the feature columns. The first column, **Col1**, is the label column. From the visualization result we can see the dataset is unbalanced. There way more negative (-1) examples than positive examples (+1). We will use **SMOTE** module to increase underrepresented cases later.
+- Funkcje i odpowiednie zmiany są w różnych zestawach danych. Użyj modułu **dodawania kolumn** , aby dołączyć kolumny etykiet do kolumn funkcji. Pierwsza kolumna, **Kol1**, jest kolumną etykiety. W wyniku wizualizacji można zobaczyć, że zestaw danych jest niezrównoważony. Istnieje bardziej negatywne (-1) przykłady niż pozytywne przykłady (+ 1). Użyjemy modułu **SMOTE** , aby później zwiększyć niereprezentowane przypadki.
 
-    ![Add the column dataset](./media/how-to-designer-sample-classification-predict-churn/added-column1.png)
+    ![Dodaj zestaw danych kolumny](./media/how-to-designer-sample-classification-predict-churn/added-column1.png)
 
 
 
-- Use the **Split Data** module to split the dataset into train and test sets.
+- Użyj modułu **Split Data** , aby podzielić zestaw danych na zestawy pociągowe i testowe.
 
-- Then use the Boosted Decision Tree binary classifier with the default parameters to build the prediction models. Build one model per task, that is, one model each to predict up-selling, appetency, and churn.
+- Następnie użyj podwyższanego klasyfikatora drzewa decyzyjnego z domyślnymi parametrami w celu skompilowania modeli predykcyjnych. Kompiluj jeden model na zadanie, czyli jeden model każdy do przewidywania sprzedaży, pragnienie i zmian.
 
-- In the right part of the pipeline, we use **SMOTE** module to increase the percentage of positive examples. The SMOTE percentage is set to 100 to double the positive examples. Learn more on how SMOTE module works with [SMOTE module reference0](../././algorithm-module-reference/SMOTE.md).
+- W prawej części potoku używamy modułu **SMOTE** , aby zwiększyć procent pozytywnych przykładów. Wartość procentowa SMOTE jest ustawiana na 100, aby dwukrotnie uzyskać pozytywne przykłady. Dowiedz się więcej na temat sposobu działania modułu SMOTE przy użyciu [modułu SMOTE reference0](../././algorithm-module-reference/SMOTE.md).
 
 ## <a name="results"></a>Wyniki
 
-Visualize the output of the **Evaluate Model** module to see the performance of the model on the test set. 
+Wizualizuj dane wyjściowe modułu **oceny modelu** , aby zobaczyć wydajność modelu w zestawie testów. 
 
-![Evaluate the results](./media/how-to-designer-sample-classification-predict-churn/evaluate-result.png)
+![Oceń wyniki](./media/how-to-designer-sample-classification-predict-churn/evaluate-result.png)
 
- You can move the **Threshold** slider and see the metrics change for the binary classification task. 
+ Suwak **progu** można przenieść i zobaczyć zmianę metryk dla zadania klasyfikacji binarnej. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -79,11 +79,11 @@ Visualize the output of the **Evaluate Model** module to see the performance of 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Explore the other samples available for the designer:
+Zapoznaj się z innymi przykładami dostępnymi dla projektanta:
 
-- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
-- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
-- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)
+- [Przykład 1-regresja: przewidywanie ceny za samochód](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Przykład 2-Regresja: porównanie algorytmów do prognozowania cen samochodów](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Przykład 3 — Klasyfikacja z wyborem funkcji: prognozowanie dochodu](how-to-designer-sample-classification-predict-income.md)
+- [Przykład 4 — Klasyfikacja: przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Przykład 6 — Klasyfikacja: przewidywanie opóźnień lotów](how-to-designer-sample-classification-flight-delay.md)
+- [Przykład 7 — Klasyfikacja tekstu: zestaw danych witryny Wikipedia SP 500](how-to-designer-sample-text-classification.md)

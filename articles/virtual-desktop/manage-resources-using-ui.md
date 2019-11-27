@@ -1,6 +1,6 @@
 ---
-title: Deploy management tool - Azure
-description: How to install a user interface tool to manage Windows Virtual Desktop resources.
+title: Wdrażanie narzędzia do zarządzania — Azure
+description: Jak zainstalować narzędzie interfejsu użytkownika do zarządzania zasobami pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,106 +14,106 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384281"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Tutorial: Deploy a management tool
+# <a name="tutorial-deploy-a-management-tool"></a>Samouczek: wdrażanie narzędzia do zarządzania
 
-The management tool provides a user interface (UI) for managing Microsoft Virtual Desktop resources. In this tutorial, you'll learn how to deploy and connect to the management tool.
+Narzędzie do zarządzania udostępnia interfejs użytkownika służący do zarządzania zasobami klasycznymi firmy Microsoft. W tym samouczku dowiesz się, jak wdrożyć narzędzie do zarządzania i nawiązać z nim połączenie.
 
 >[!NOTE]
->These instructions are for a Windows Virtual Desktop-specific configuration that can be used with your organization's existing processes.
+>Te instrukcje dotyczą konfiguracji specyficznej dla pulpitu wirtualnego systemu Windows, która może być używana z istniejącymi procesami w organizacji.
 
-## <a name="important-considerations"></a>Important considerations
+## <a name="important-considerations"></a>Ważne zagadnienia
 
-Since the app requires consent to interact with Windows Virtual Desktop, this tool doesn't support Business-to-Business (B2B) scenarios. Each Azure Active Directory (AAD) tenant's subscription will need its own separate deployment of the management tool.
+Ponieważ aplikacja wymaga zgody na współdziałanie z pulpitem wirtualnym systemu Windows, to narzędzie nie obsługuje scenariuszy biznes-to-Business (B2B). Każda subskrypcja dzierżawy usługi Azure Active Directory (AAD) będzie potrzebować oddzielnego wdrożenia narzędzia do zarządzania.
 
-This management tool is a sample. Microsoft will provide important security and quality updates. The [source code is available in GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Customers and partners are encouraged to customize the tool to fit their business needs.
+To narzędzie do zarządzania jest przykładem. Firma Microsoft zapewni ważne aktualizacje zabezpieczeń i ich jakości. [Kod źródłowy jest dostępny w](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)serwisie GitHub. Zachęcamy klientów i partnerów do dostosowania narzędzia do potrzeb firmy.
 
-To following browsers are compatible with the management tool:
-- Google Chrome 68 or later
-- Microsoft Edge 40.15063 or later
-- Mozilla Firefox 52.0 or later
-- Safari 10 or later (macOS only)
+Do następujących przeglądarek są zgodne narzędzia do zarządzania:
+- Google Chrome 68 lub nowsza
+- Microsoft Edge 40,15063 lub nowsza
+- Mozilla Firefox 52,0 lub nowsza
+- Przeglądarka Safari 10 lub nowsza (tylko macOS)
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>What you need to run the Azure Resource Manager template
+## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Co jest potrzebne do uruchomienia szablonu Azure Resource Manager
 
-Before deploying the Azure Resource Manager template, you'll need an Azure Active Directory user to deploy the management UI. This user must:
+Przed wdrożeniem szablonu Azure Resource Manager musisz Azure Active Directory użytkownika, aby wdrożyć interfejs użytkownika zarządzania. Ten użytkownik musi:
 
-- Have Azure Multi-Factor Authentication (MFA) disabled
-- Have permission to create resources in your Azure subscription
-- Have permission to create an Azure AD application. Follow these steps to check if your user has the [required permissions](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+- Wyłączono usługę Azure Multi-Factor Authentication (MFA)
+- Masz uprawnienia do tworzenia zasobów w ramach subskrypcji platformy Azure
+- Masz uprawnienia do tworzenia aplikacji usługi Azure AD. Wykonaj następujące kroki, aby sprawdzić, czy użytkownik ma [wymagane uprawnienia](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-After deploying the Azure Resource Manager template, you'll want to launch the management UI to validate. This user must:
-- Have a role assignment to view or edit your Windows Virtual Desktop tenant
+Po wdrożeniu szablonu Azure Resource Manager należy uruchomić interfejs użytkownika zarządzania, aby sprawdzić poprawność. Ten użytkownik musi:
+- Przypisywanie roli do wyświetlania lub edytowania dzierżawy pulpitu wirtualnego systemu Windows
 
-## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Run the Azure Resource Manager template to provision the management UI
+## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Uruchom szablon Azure Resource Manager, aby zainicjować obsługę interfejsu użytkownika zarządzania
 
-Before you start, ensure the server and client apps have consent by visiting the [Windows Virtual Desktop Consent Page](https://rdweb.wvd.microsoft.com) for the Azure Active Directory (AAD) represented.
+Przed rozpoczęciem upewnij się, że aplikacje serwera i klienta mają zgodę, odwiedzając [stronę zgody na pulpit wirtualny systemu Windows](https://rdweb.wvd.microsoft.com) dla reprezentowanego Azure Active Directory (AAD).
 
-Follow these instructions to deploy the Azure Resource Management template:
+Postępuj zgodnie z poniższymi instrukcjami, aby wdrożyć szablon usługi Azure Resource Management:
 
-1. Go to the [GitHub Azure RDS-Templates page](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
-2. Deploy the template to Azure.
-    - If you're deploying in an Enterprise subscription, scroll down and select **Deploy to Azure**. See [Guidance for template parameters](#guidance-for-template-parameters).
-    - If you're deploying in a Cloud Solution Provider subscription, follow these instructions to deploy to Azure:
-        1. Scroll down and right-click **Deploy to Azure**, then select **Copy Link Location**.
-        2. Open a text editor like Notepad and paste the link there.
-        3. Right after <https://portal.azure.com/> and before the hashtag (#), enter an at sign (@) followed by the tenant domain name. Here's an example of the format: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
-        4. Sign in to the Azure portal as a user with Admin/Contributor permissions to the Cloud Solution Provider subscription.
-        5. Paste the link you copied to the text editor into the address bar.
+1. Przejdź do [strony usługi GitHub Azure RDS-templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
+2. Wdróż szablon na platformie Azure.
+    - Jeśli wdrażasz w ramach subskrypcji przedsiębiorstwa, przewiń w dół i wybierz pozycję **Wdróż na platformie Azure**. Zobacz [wskazówki dotyczące parametrów szablonu](#guidance-for-template-parameters).
+    - Jeśli wdrażasz w ramach subskrypcji dostawcy rozwiązań w chmurze, postępuj zgodnie z poniższymi instrukcjami, aby wdrożyć platformę Azure:
+        1. Przewiń w dół i kliknij prawym przyciskiem myszy pozycję **Wdróż na platformie Azure**, a następnie wybierz pozycję **Kopiuj lokalizację linku**.
+        2. Otwórz Edytor tekstu, taki jak Notatnik, i Wklej tam link.
+        3. Bezpośrednio po <https://portal.azure.com/> i przed wystąpieniem (#), wprowadź znak (@), a po nim nazwę domeny dzierżawy. Oto przykład formatu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        4. Zaloguj się do Azure Portal jako użytkownik z uprawnieniami administratora/współautora do subskrypcji dostawcy rozwiązań w chmurze.
+        5. Wklej skopiowany link do edytora tekstu na pasku adresu.
 
-### <a name="guidance-for-template-parameters"></a>Guidance for template parameters
-Here's how to enter parameters for configuring the tool:
+### <a name="guidance-for-template-parameters"></a>Wskazówki dotyczące parametrów szablonu
+Oto jak wprowadzić parametry konfigurowania narzędzia:
 
-- For the **isServicePrincipal** parameter, select **false**.
-- For the credentials, enter your Azure Active Directory credentials with multi-factor authentication disabled. These credentials will be the ones you use to sign in to Azure and create the Azure AD application and Azure web app resources. To learn more, see [What you need to run the Azure Resource Manager template](#what-you-need-to-run-the-azure-resource-manager-template).
-- For the **applicationName**, use a unique name for your app that will be registered in your Azure Active Directory. This name will also be used for the web app URL. For example, you can use a name like "Apr3UX."
+- Dla parametru **isServicePrincipal** wybierz **wartość false**.
+- W polu poświadczenia wprowadź poświadczenia Azure Active Directory z wyłączonym uwierzytelnianiem wieloskładnikowym. Te poświadczenia będą używane do logowania się na platformie Azure i tworzenia aplikacji usługi Azure AD i zasobów aplikacji sieci Web platformy Azure. Aby dowiedzieć się więcej, zobacz [co jest potrzebne do uruchomienia szablonu Azure Resource Manager](#what-you-need-to-run-the-azure-resource-manager-template).
+- Dla programu **ApplicationName**Użyj unikatowej nazwy aplikacji, która zostanie zarejestrowana w Azure Active Directory. Ta nazwa będzie również używana dla adresu URL aplikacji sieci Web. Można na przykład użyć nazwy takiej jak "Apr3UX".
 
-## <a name="provide-consent-for-the-management-tool"></a>Provide consent for the management tool
+## <a name="provide-consent-for-the-management-tool"></a>Wyrażanie zgody na narzędzie do zarządzania
 
-After the GitHub Azure Resource Manager template completes, you'll find a resource group containing two app services along with one app service plan in the Azure portal.
+Po zakończeniu szablonu Azure Resource Manager GitHub znajdziesz grupę zasobów zawierającą dwie usługi aplikacji wraz z jednym planem usługi App Service w Azure Portal.
 
-Before you sign in and use the management tool, you'll need to provide consent for the new Azure Active Directory application that is associated with the management tool. By providing consent, you are allowing the management tool to make Windows Virtual Desktop management calls on behalf of the user who's signed into the tool.
+Przed zalogowaniem się i użyciem narzędzia do zarządzania należy wyrazić zgodę na nową aplikację Azure Active Directory, która jest skojarzona z narzędziem do zarządzania. Zapewniając zgodę, zezwalasz narzędziom do zarządzania na wykonywanie wywołań zarządzania pulpitami wirtualnymi systemu Windows w imieniu użytkownika, który jest zalogowany do narzędzia.
 
-![A screenshot showing the permissions being provided when you consent to the UI management tool.](media/management-ui-delegated-permissions.png)
+![Zrzut ekranu przedstawiający uprawnienia podane podczas wyrażania zgody na narzędzie do zarządzania interfejsami użytkownika.](media/management-ui-delegated-permissions.png)
 
-To determine which user you can use to sign in to the tool, go to your [Azure Active Directory user settings page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) and take note of the value for **Users can consent to apps accessing company data on their behalf**.
+Aby określić, którego użytkownika możesz użyć do zalogowania się do narzędzia, przejdź do [strony Ustawienia użytkownika Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) i zanotuj wartość dla **użytkowników, którzy będą mogli wyrazić zgodę na aplikacje uzyskujące dostęp do danych firmy w ich imieniu**.
 
-![A screenshot showing if users can grant consent to applications for just their user.](media/management-ui-user-consent-allowed.png)
+![Zrzut ekranu przedstawiający, czy użytkownicy mogą udzielać zgody na aplikacje dla samego użytkownika.](media/management-ui-user-consent-allowed.png)
 
-- If the value is set to **Yes**, you can sign in with any user account in the Azure Active Directory and provide consent for that user only. However, if you sign in to the management tool with a different user later, you must perform the same consent again.
-- If the value is set to **No**, you must sign in as a Global Administrator in the Azure Active Directory and provide admin consent for all users in the directory. No other users will face a consent prompt.
+- Jeśli wartość jest równa **tak**, możesz zalogować się przy użyciu dowolnego konta użytkownika w Azure Active Directory i zapewnić zgodę tylko dla tego użytkownika. Jednak w przypadku zalogowania się do narzędzia do zarządzania z innym użytkownikiem później należy ponownie wykonać tę samą zgodę.
+- Jeśli wartość jest równa **no**, należy zalogować się jako Administrator globalny w Azure Active Directory i zapewnić zgodę administratora dla wszystkich użytkowników w katalogu. Żaden inny użytkownik nie będzie monitowany na monit o wyrażenie zgody.
 
 
-Once you decide which user you will use to provide consent, follow these instructions to provide consent to the tool:
+Po podjęciu decyzji o tym, którego użytkownika będziesz używać, aby wyrazić zgodę, postępuj zgodnie z tymi instrukcjami, aby wyrazić zgodę na narzędzie:
 
-1. Go to your Azure resources, select the Azure App Services resource with the name you provided in the template (for example, Apr3UX) and navigate to the URL associated with it; for example,  <https://rdmimgmtweb-210520190304.azurewebsites.net>.
-2. Sign in using the appropriate Azure Active Directory user account.
-3. If you authenticated with a Global Administrator, you can now select the checkbox to **Consent on behalf of your organization**. Select **Accept** to provide consent.
+1. Przejdź do zasobów platformy Azure, wybierz zasób App Services platformy Azure o nazwie podanej w szablonie (na przykład Apr3UX) i przejdź do adresu URL skojarzonego z nim. na przykład <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Zaloguj się przy użyciu odpowiedniego konta użytkownika Azure Active Directory.
+3. W przypadku uwierzytelnienia za pomocą administratora globalnego możesz teraz zaznaczyć pole wyboru, aby **wyrazić zgodę w imieniu organizacji**. Wybierz pozycję **Akceptuj** , aby wyrazić zgodę.
    
-   ![A screenshot showing the full consent page that the user or admin will see.](media/management-ui-consent-page.png)
+   ![Zrzut ekranu przedstawiający stronę pełna zgoda, którą zobaczy użytkownik lub administrator.](media/management-ui-consent-page.png)
 
-This will now take you to the management tool.
+Spowoduje to przejście do narzędzia do zarządzania.
 
-## <a name="use-the-management-tool"></a>Use the management tool
+## <a name="use-the-management-tool"></a>Korzystanie z narzędzia do zarządzania
 
-After providing consent for the organization or for a specified user, you can access the management tool at any time.
+Po udzieleniu zgody na organizację lub dla określonego użytkownika można w dowolnym momencie uzyskać dostęp do narzędzia do zarządzania.
 
-Follow these instructions to launch the tool:
+Postępuj zgodnie z poniższymi instrukcjami, aby uruchomić narzędzie:
 
-1. Select the Azure App Services resource with the name you provided in the template (for example, Apr3UX) and navigate to the URL associated with it; for example,  <https://rdmimgmtweb-210520190304.azurewebsites.net>.
-2. Sign in using your Windows Virtual Desktop credentials.
-3. When prompted to choose a Tenant Group, select **Default Tenant Group** from the drop-down list.
-4. When you select Default Tenant Group, a menu should appear on the right side of your window. On this menu, find the name of your tenant group and select it.
+1. Wybierz zasób App Services platformy Azure o nazwie podanej w szablonie (na przykład Apr3UX) i przejdź do adresu URL skojarzonego z nim. na przykład <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Zaloguj się przy użyciu poświadczeń pulpitu wirtualnego systemu Windows.
+3. Po wyświetleniu monitu o wybranie grupy dzierżawców wybierz z listy rozwijanej pozycję **Domyślna grupa dzierżawców** .
+4. Po wybraniu domyślnej grupy dzierżawców menu powinno pojawić się po prawej stronie okna. W tym menu Znajdź nazwę grupy dzierżawców i wybierz ją.
 
 > [!NOTE]
-> If you have a custom Tenant Group, enter the name manually instead of choosing from the drop-down list.
+> Jeśli masz niestandardową grupę dzierżawców, wprowadź nazwę ręcznie zamiast wybierać ją z listy rozwijanej.
 
-## <a name="report-issues"></a>Report issues
+## <a name="report-issues"></a>Zgłoś problemy
 
-If you encounter any issues with the management tool or other Windows Virtual Desktop tools, follow the directions in [ARM Templates for Remote Desktop Services](https://github.com/Azure/RDS-Templates/blob/master/README.md) to report them on GitHub.
+Jeśli występują problemy z narzędziem do zarządzania lub innymi narzędziami pulpitu wirtualnego systemu Windows, postępuj zgodnie z instrukcjami w temacie [Szablony usługi ARM, aby uzyskać usługi pulpitu zdalnego](https://github.com/Azure/RDS-Templates/blob/master/README.md) , aby zgłosić je w serwisie GitHub.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Now that you've learned how to deploy and connect to the management tool, you can learn how to use Azure Service Health to monitor service issues and health advisories.
+Teraz, gdy wiesz już, jak wdrożyć narzędzie do zarządzania i połączyć się z nim, możesz dowiedzieć się, jak używać Azure Service Health do monitorowania problemów z usługami i klasyfikatorów kondycji.
 
 > [!div class="nextstepaction"]
-> [Set up service alerts tutorial](./set-up-service-alerts.md)
+> [Samouczek konfigurowania alertów usługi](./set-up-service-alerts.md)

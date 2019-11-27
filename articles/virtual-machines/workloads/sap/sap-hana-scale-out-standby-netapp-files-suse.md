@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/21/2019
 ms.author: radeltch
-ms.openlocfilehash: 7fb7294cc6f7918b4c6a3afa9e3c9dc7f44504e1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014949"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531410"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Wdróż system SAP HANA skalowalny w poziomie z aktywnym węzłem na maszynach wirtualnych platformy Azure przy użyciu Azure NetApp Files na SUSE Linux Enterprise Server 
 
@@ -99,17 +99,17 @@ Jedną z metod osiągania wysokiej dostępności platformy HANA jest skonfigurow
 ![Omówienie wysokiej dostępności SAP NetWeaver](./media/high-availability-guide-suse-anf/sap-hana-scale-out-standby-netapp-files-suse.png)
 
 Na powyższym diagramie, który następuje po SAP HANA zalecenia dotyczące sieci, trzy podsieci są reprezentowane w jednej sieci wirtualnej platformy Azure: 
+* Do komunikacji z klientem
 * Do komunikacji z systemem magazynu
 * W przypadku wewnętrznej komunikacji między węzłami HANA
-* Do komunikacji z klientem
 
 Woluminy usługi Azure NetApp znajdują się w osobnej podsieci [delegowanej do Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
 W tej przykładowej konfiguracji podsieci są następujące:  
 
+  - `client` 10.23.0.0/24  
   - `storage` 10.23.2.0/24  
   - `hana` 10.23.3.0/24  
-  - `client` 10.23.0.0/24  
   - `anf` 10.23.1.0/26  
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>Konfigurowanie infrastruktury Azure NetApp Files 
@@ -140,7 +140,7 @@ W poniższych instrukcjach przyjęto założenie, że [usługa Azure Virtual Net
 
    Gdy wdrażasz woluminy, pamiętaj o wybraniu wersji **nfsv 4.1** . Obecnie dostęp do NFSv 4.1 wymaga dodatkowych listy dozwolonych. Wdróż woluminy w wyznaczeniej [podsieci](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)Azure NetApp Files. 
    
-   Należy pamiętać, że zasoby Azure NetApp Files i maszyny wirtualne platformy Azure muszą znajdować się w tej samej sieci wirtualnej platformy Azure lub w równorzędnych sieciach wirtualnych platformy Azure. Na przykład **HN1**-Data-Mnt00001, **HN1**-log-mnt00001, i tak dalej są nazwami woluminów oraz NFS://10.23.1.5/**HN1**-Data-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001 i tak dalej, są ścieżkami plików dla woluminów Azure NetApp Files.  
+   Należy pamiętać, że zasoby Azure NetApp Files i maszyny wirtualne platformy Azure muszą znajdować się w tej samej sieci wirtualnej platformy Azure lub w równorzędnych sieciach wirtualnych platformy Azure. Na przykład **HN1**-Data-Mnt00001, **HN1**-log-mnt00001, i tak dalej, są nazwami woluminów oraz NFS://10.23.1.5/**HN1**-Data-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001 i tak dalej, są ścieżkami plików dla woluminów Azure NetApp Files.  
 
    * Volume **HN1**-Data-mnt00001 (NFS://10.23.1.5/**HN1**-Data-mnt00001)
    * Volume **HN1**-Data-mnt00002 (NFS://10.23.1.6/**HN1**-Data-mnt00002)
@@ -165,9 +165,6 @@ Podczas tworzenia Azure NetApp Files dla oprogramowania SAP NetWeaver w architek
 
 > [!IMPORTANT]
 > W przypadku obciążeń SAP HANA małe opóźnienia są krytyczne. Skontaktuj się z przedstawicielem firmy Microsoft, aby upewnić się, że maszyny wirtualne i woluminy Azure NetApp Files są wdrożone w bliskiej bliskości.  
-
-> [!IMPORTANT]
-> Identyfikator użytkownika dla identyfikatora **SID**adm i identyfikator grupy dla `sapsys` na maszynach wirtualnych muszą być zgodne z konfiguracją w Azure NetApp Files. Jeśli wystąpi niezgodność między identyfikatorami maszyn wirtualnych i konfiguracją usługi Azure NetApp, uprawnienia do plików na woluminach NetApp platformy Azure, które są zainstalowane na maszynach wirtualnych, będą wyświetlane jako `nobody`. Należy pamiętać o określeniu poprawnych identyfikatorów podczas dołączania [nowego systemu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) do Azure NetApp Files.
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Ustalanie wielkości dla bazy danych HANA na Azure NetApp Files
 
@@ -209,19 +206,19 @@ SAP HANA konfiguracja układu przedstawionego w tym artykule przy użyciu warstw
 
 ## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Wdrażanie maszyn wirtualnych z systemem Linux za pomocą Azure Portal
 
-Najpierw należy utworzyć woluminy Azure NetApp Files. Wykonaj następujące czynności:
+Najpierw należy utworzyć woluminy Azure NetApp Files. Następnie wykonaj następujące czynności:
 1. Utwórz [podsieci sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) w [sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). 
 1. Wdróż maszyny wirtualne. 
 1. Utwórz dodatkowe interfejsy sieciowe i Dołącz interfejsy sieciowe do odpowiednich maszyn wirtualnych.  
 
-   Każda maszyna wirtualna ma trzy interfejsy sieciowe odpowiadające trzem podsieciom sieci wirtualnej platformy Azure (`storage`, `hana`i `client`). 
+   Każda maszyna wirtualna ma trzy interfejsy sieciowe odpowiadające trzem podsieciom sieci wirtualnej platformy Azure (`client`, `storage` i `hana`). 
 
    Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure z wieloma kartami interfejsu sieciowego](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics).  
 
 > [!IMPORTANT]
 > W przypadku obciążeń SAP HANA małe opóźnienia są krytyczne. Aby osiągnąć małe opóźnienia, skontaktuj się z przedstawicielem firmy Microsoft, aby upewnić się, że maszyny wirtualne i woluminy Azure NetApp Files są wdrożone w bliskiej bliskości. Podczas dołączania [nowego systemu SAP HANA](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) korzystającego z usługi SAP HANA Azure NetApp Files należy przesłać niezbędne informacje. 
  
-W następnych instrukcjach przyjęto założenie, że utworzono już grupę zasobów, sieć wirtualną platformy Azure oraz trzy podsieci sieci wirtualnej platformy Azure: `storage`, `hana`i `client`. Podczas wdrażania maszyn wirtualnych wybierz podsieć magazynu, aby interfejs sieciowy magazynu był podstawowym interfejsem na maszynach wirtualnych. Jeśli to nie jest możliwe, należy skonfigurować jawną trasę do Azure NetApp Files delegowanej podsieci za pośrednictwem bramy podsieci magazynu. 
+W następnych instrukcjach przyjęto założenie, że utworzono już grupę zasobów, sieć wirtualną platformy Azure oraz trzy podsieci sieci wirtualnej platformy Azure: `client`, `storage` i `hana`. Podczas wdrażania maszyn wirtualnych wybierz podsieć klienta, aby interfejs sieciowy klienta był interfejsem podstawowym na maszynach wirtualnych. Należy również skonfigurować jawną trasę do Azure NetApp Files delegowanej podsieci za pośrednictwem bramy podsieci magazynu. 
 
 > [!IMPORTANT]
 > Upewnij się, że wybrany system operacyjny to SAP-Certified for SAP HANA na określonych typach maszyn wirtualnych, których używasz. Aby uzyskać listę SAP HANA certyfikowane typy maszyn wirtualnych i wersje systemu operacyjnego dla tych typów, przejdź do witryny [SAP HANA certyfikowane platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) . Kliknij Szczegóły wymienionego typu maszyny wirtualnej, aby uzyskać pełną listę obsługiwanych przez SAP HANA wydań systemu operacyjnego dla tego typu.  
@@ -234,13 +231,13 @@ W następnych instrukcjach przyjęto założenie, że utworzono już grupę zaso
 
    b. Wybierz zestaw dostępności utworzony wcześniej dla SAP HANA.  
 
-   d. Wybierz podsieć Azure Virtual Network. Wybierz opcję [przyspieszone sieci](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).  
+   d. Wybierz podsieć sieci wirtualnej platformy Azure. Wybierz opcję [przyspieszone sieci](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).  
 
-   Podczas wdrażania maszyn wirtualnych nazwa interfejsu sieciowego jest generowana automatycznie. Odwołujemy się do interfejsów sieciowych dołączonych do podsieci sieci wirtualnej platformy Azure, takich jak **hanadb1-Storage**, **hanadb2-** Storage i **hanadb3-Storage**. 
+   Podczas wdrażania maszyn wirtualnych nazwa interfejsu sieciowego jest generowana automatycznie. W tych instrukcjach dla uproszczenia będziemy odnosić się do automatycznie generowanych interfejsów sieciowych dołączonych do podsieci sieci wirtualnej klienta platformy Azure, jako **hanadb1-Client**, **hanadb2-Client**i **hanadb3-Client**. 
 
-3. Utwórz trzy interfejsy sieciowe, jedną dla każdej maszyny wirtualnej, dla podsieci sieci wirtualnej `hana` (w tym przykładzie **hanadb1-Hana**, **hanadb2-Hana**i **hanadb3-Hana**).  
+3. Utwórz trzy interfejsy sieciowe, jedną dla każdej maszyny wirtualnej, dla podsieci sieci wirtualnej `storage` (w tym przykładzie **hanadb1-Storage**, **hanadb2-** Storage i **hanadb3-Storage**).  
 
-4. Utwórz trzy interfejsy sieciowe, jedną dla każdej maszyny wirtualnej, dla podsieci sieci wirtualnej `client` (w tym przykładzie **hanadb1-Client**, **hanadb2-Client**i **hanadb3-Client**).  
+4. Utwórz trzy interfejsy sieciowe, jedną dla każdej maszyny wirtualnej, dla podsieci sieci wirtualnej `hana` (w tym przykładzie **hanadb1-Hana**, **hanadb2-Hana**i **hanadb3-Hana**).  
 
 5. Dołącz nowo utworzone interfejsy sieci wirtualnej do odpowiednich maszyn wirtualnych, wykonując następujące czynności:  
 
@@ -250,7 +247,7 @@ W następnych instrukcjach przyjęto założenie, że utworzono już grupę zaso
 
     d. W okienku **Przegląd** wybierz pozycję **Zatrzymaj** , aby cofnąć przydział maszyny wirtualnej.  
 
-    d. Wybierz pozycję **Sieć**, a następnie Dołącz interfejs sieciowy. Z listy rozwijanej **Dołącz interfejs sieciowy** wybierz już utworzone interfejsy sieciowe dla `hana` i `client` podsieci.  
+    d. Wybierz pozycję **Sieć**, a następnie Dołącz interfejs sieciowy. Z listy rozwijanej **Dołącz interfejs sieciowy** wybierz już utworzone interfejsy sieciowe dla `storage` i `hana` podsieci.  
     
     e. Wybierz pozycję **Zapisz**. 
  
@@ -258,20 +255,21 @@ W następnych instrukcjach przyjęto założenie, że utworzono już grupę zaso
  
     g. Pozostaw teraz maszyny wirtualne w stanie zatrzymania. Następnie włączysz [przyspieszoną sieć](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) dla wszystkich nowo dołączonych interfejsów sieciowych.  
 
-6. Włącz przyspieszone sieci dla dodatkowych interfejsów sieciowych dla `hana` i `client` podsieci, wykonując następujące czynności:  
+6. Włącz przyspieszone sieci dla dodatkowych interfejsów sieciowych dla `storage` i `hana` podsieci, wykonując następujące czynności:  
 
     a. Otwórz [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) w [Azure Portal](https://portal.azure.com/#home).  
 
-    b. Wykonaj następujące polecenia, aby włączyć przyspieszone sieci dla dodatkowych interfejsów sieciowych dołączonych do `hana` i `client` podsieci.  
+    b. Wykonaj następujące polecenia, aby włączyć przyspieszone sieci dla dodatkowych interfejsów sieciowych dołączonych do `storage` i `hana` podsieci.  
 
     <pre><code>
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-storage</b> --accelerated-networking true
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-storage</b> --accelerated-networking true
+    
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-hana</b> --accelerated-networking true
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-hana</b> --accelerated-networking true
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-hana</b> --accelerated-networking true
-    
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-client</b> --accelerated-networking true
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-client</b> --accelerated-networking true
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-client</b> --accelerated-networking true
+
     </code></pre>
 
 7. Uruchom maszyny wirtualne, wykonując następujące czynności:  
@@ -294,30 +292,47 @@ Skonfiguruj i przygotuj system operacyjny, wykonując następujące czynności:
 
     <pre><code>
     # Storage
-    10.23.2.4   hanadb1
-    10.23.2.5   hanadb2
-    10.23.2.6   hanadb3
+    10.23.2.4   hanadb1-storage
+    10.23.2.5   hanadb2-storage
+    10.23.2.6   hanadb3-storage
     # Client
-    10.23.0.5   hanadb1-client
-    10.23.0.6   hanadb2-client
-    10.23.0.7   hanadb3-client
+    10.23.0.5   hanadb1
+    10.23.0.6   hanadb2
+    10.23.0.7   hanadb3
     # Hana
     10.23.3.4   hanadb1-hana
     10.23.3.5   hanadb2-hana
     10.23.3.6   hanadb3-hana
     </code></pre>
 
-2. **[A]** Zmień ustawienia konfiguracji DHCP i chmury, aby uniknąć niezamierzonych zmian nazwy hosta.  
+2. **[A]** Zmień ustawienia konfiguracji DHCP i chmury dla interfejsu sieciowego dla magazynu, aby uniknąć niezamierzonych zmian nazwy hosta.  
+
+    W poniższych instrukcjach przyjęto założenie, że interfejs sieciowy magazynu jest `eth1`. 
 
     <pre><code>
     vi /etc/sysconfig/network/dhcp
-    #Change the following DHCP setting to "no"
+    # Change the following DHCP setting to "no"
     DHCLIENT_SET_HOSTNAME="no"
-    vi /etc/sysconfig/network/ifcfg-eth0
-    # Edit ifcfg-eth0 
+    vi /etc/sysconfig/network/ifcfg-<b>eth1</b>
+    # Edit ifcfg-eth1 
     #Change CLOUD_NETCONFIG_MANAGE='yes' to "no"
     CLOUD_NETCONFIG_MANAGE='no'
     </code></pre>
+
+2. **[A]** Dodaj trasę sieciową, aby komunikacja do Azure NetApp Files odbywała się za pośrednictwem interfejsu sieciowego magazynu.  
+
+    W poniższych instrukcjach przyjęto założenie, że interfejs sieciowy magazynu jest `eth1`.  
+
+    <pre><code>
+    vi /etc/sysconfig/network/ifroute-<b>eth1</b>
+    # Add the following routes 
+    # RouterIPforStorageNetwork - - -
+    # ANFNetwork/cidr RouterIPforStorageNetwork - -
+    <b>10.23.2.1</b> - - -
+    <b>10.23.1.0/26</b> <b>10.23.2.1</b> - -
+    </code></pre>
+
+    Aby aktywować zmiany, uruchom ponownie maszynę wirtualną.  
 
 3. **[A]** Przygotuj system operacyjny do uruchamiania SAP HANA w systemach NetApp z systemem plików NFS, zgodnie z opisem w [SAP HANA NetApp AFF Systems with system plików NFS Podręcznik konfiguracji](https://www.netapp.com/us/media/tr-4435.pdf). Utwórz plik konfiguracji */etc/sysctl.d/NetApp-Hana.conf* dla ustawień konfiguracji NetApp.  
 
@@ -387,28 +402,33 @@ Skonfiguruj i przygotuj system operacyjny, wykonując następujące czynności:
     umount /mnt/tmp
     </code></pre>
 
-3. **[A]** Sprawdź ustawienie domeny NFS. Upewnij się, że domena jest skonfigurowana jako **`localdomain`** i że mapowanie jest ustawione na wartość **nikt**.  
+3. **[A]** Sprawdź ustawienie domeny NFS. Upewnij się, że domena jest skonfigurowana jako domyślna domena Azure NetApp Files, czyli **`defaultv4iddomain.com`** i mapowanie jest ustawione na wartość **nikt**.  
+
+    > [!IMPORTANT]
+    > Upewnij się, że ustawiono domenę systemu plików NFS w `/etc/idmapd.conf` na maszynie wirtualnej tak, aby była zgodna z domyślną konfiguracją domeny na Azure NetApp Files: **`defaultv4iddomain.com`** . Jeśli istnieje niezgodność między konfiguracją domeny na kliencie NFS (tj. maszyną wirtualną) a serwerem NFS, tj. konfiguracją usługi Azure NetApp, wówczas uprawnienia do plików na woluminach NetApp platformy Azure, które są zainstalowane na maszynach wirtualnych, będą wyświetlane jako `nobody`.  
 
     <pre><code>
-    sudo cat  /etc/idmapd.conf
+    sudo cat /etc/idmapd.conf
     # Example
     [General]
     Verbosity = 0
     Pipefs-Directory = /var/lib/nfs/rpc_pipefs
-    Domain = <b>localdomain</b>
+    Domain = <b>defaultv4iddomain.com</b>
     [Mapping]
     Nobody-User = <b>nobody</b>
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** wyłącz mapowanie identyfikatorów NFSv4. Aby utworzyć strukturę katalogów, w której znajduje się `nfs4_disable_idmapping`, wykonaj polecenie instalacji. Nie będzie można ręcznie utworzyć katalogu w obszarze/sys/modules, ponieważ dostęp jest zarezerwowany dla jądra/sterowników.  
+4. **[A]** Sprawdź `nfs4_disable_idmapping`. Powinna być ustawiona na wartość **Y**. Aby utworzyć strukturę katalogów, w której znajduje się `nfs4_disable_idmapping`, wykonaj polecenie instalacji. Nie będzie można ręcznie utworzyć katalogu w obszarze/sys/modules, ponieważ dostęp jest zarezerwowany dla jądra/sterowników.  
 
     <pre><code>
+    # Check nfs4_disable_idmapping 
+    cat /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # If you need to set nfs4_disable_idmapping to Y
     mkdir /mnt/tmp
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
-    # Disable NFSv4 idmapping. 
-    echo "N" > /sys/module/nfs/parameters/nfs4_disable_idmapping
+    echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
     </code></pre>`
 
 5. **[A]** ręcznie utwórz grupę SAP HANA i użytkownika. Identyfikatory dla grup sapsys i User **hn1**ADM muszą być ustawione na te same identyfikatory, które są dostępne podczas dołączania. (W tym przykładzie identyfikatory są ustawione na **1001**). Jeśli identyfikatory nie są ustawione prawidłowo, nie będzie można uzyskać dostępu do woluminów. Identyfikatory grup sapsys i kont użytkowników **hn1**adm i sapadm muszą być takie same na wszystkich maszynach wirtualnych.  

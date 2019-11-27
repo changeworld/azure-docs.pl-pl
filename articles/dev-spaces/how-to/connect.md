@@ -3,8 +3,8 @@ title: Łączenie komputera deweloperskiego z klastrem AKS
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: Learn how to connect your development machine to an AKS cluster with Azure Dev Spaces
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+description: Dowiedz się, jak połączyć maszynę deweloperskią z klastrem AKS przy użyciu Azure Dev Spaces
+keywords: Azure Dev Spaces, Spaces dev, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery
 ms.openlocfilehash: c26d159d6f883e1c368b09a82bc53c621c70e281
 ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
@@ -14,103 +14,103 @@ ms.locfileid: "74482239"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Łączenie komputera deweloperskiego z klastrem AKS (wersja zapoznawcza)
 
-Azure Dev Spaces allows you to run and debug code with or without a container on your development machine, while still connected to your Kubernetes cluster with the rest of your application or services. Connecting your development machine to your cluster helps you to quickly develop your application and perform end-to-end testing without having to create any Docker or Kubernetes configuration. You can also connect to your AKS cluster without affecting other workloads or users who may be using the same cluster.
+Azure Dev Spaces umożliwia uruchamianie i debugowanie kodu z lub bez kontenera na komputerze deweloperskim, przy jednoczesnym połączeniu z klastrem Kubernetes z pozostałą częścią aplikacji lub usług. Połączenie komputera deweloperskiego z klastrem pomaga szybko opracowywać aplikację i wykonywać kompleksowe testy bez konieczności tworzenia żadnych konfiguracji platformy Docker lub Kubernetes. Możesz również nawiązać połączenie z klastrem AKS bez wpływu na inne obciążenia lub użytkowników, którzy mogą korzystać z tego samego klastra.
 
-Azure Dev Spaces redirects traffic between your connected AKS cluster and your development machine. This traffic redirection allows code on your development machine and services running in your AKS cluster to communicate as if they are in the same AKS cluster. Since your code is running on your development machine, you also have flexibility in the development tools you are using to run and debug that code. Azure Dev Spaces also provides a way to replicate environment variables and mounted files available to pods in your AKS cluster in your development machine.
+Azure Dev Spaces przekierowuje ruch między podłączonym klastrem AKS a maszyną deweloperskią. To przekierowywanie ruchu umożliwia kod na komputerze deweloperskim i usługach uruchomionych w klastrze AKS, aby komunikować się tak, jakby znajdowały się w tym samym klastrze AKS. Ponieważ Twój kod jest uruchomiony na komputerze deweloperskim, masz również elastyczność w narzędziach programistycznych, które są używane do uruchamiania i debugowania tego kodu. Azure Dev Spaces zapewnia również sposób replikowania zmiennych środowiskowych i zainstalowanych plików dostępnych dla zasobników w klastrze AKS na komputerze deweloperskim.
 
-Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
+Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
-* Set up Azure Dev Spaces on a managed Kubernetes cluster in Azure.
-* Deploy a large application with multiple microservices to a dev space.
-* Use Azure Dev Spaces to redirect traffic between your AKS cluster and code running on your development machine.
+* Skonfiguruj Azure Dev Spaces w zarządzanym klastrze Kubernetes na platformie Azure.
+* Wdróż dużą aplikację z wieloma mikrousługami w miejscu dev.
+* Użyj Azure Dev Spaces, aby przekierować ruch między klastrem AKS i kodem uruchomionym na komputerze deweloperskim.
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-This guide uses the [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) to demonstrate connecting your development machine to an AKS cluster. Follow the instructions in the [Azure Dev Spaces Bike Sharing sample application README](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/README.md) to run the sample application. Alternatively, if you have your own application on an AKS cluster you can still follow the steps below and use the names of your own services and pods.
+Ten przewodnik korzysta z [przykładowej aplikacji do udostępniania Azure dev Spaces roweru](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) do zademonstrowania połączenia komputera deweloperskiego z klastrem AKS. Postępuj zgodnie z instrukcjami w [pliku Readme przykładowej aplikacji do udostępniania Azure dev Spaces roweru](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/README.md) , aby uruchomić przykładową aplikację. Alternatywnie, jeśli masz własną aplikację w klastrze AKS, możesz nadal wykonać poniższe kroki i używać nazw własnych usług i zasobników.
 
 ### <a name="limitations"></a>Ograniczenia
 
-* UDP is not supported at this time.
+* Protokół UDP nie jest w tej chwili obsługiwany.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
 * [Zainstalowany interfejs wiersza polecenia platformy Azure][azure-cli].
-* [Visual Studio Code][vs-code] with the [Azure Dev Spaces][azds-vs-code] extension installed and running on MacOS or Windows 10.
-* The [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) or your own application running on an AKS cluster.
+* [Visual Studio Code][vs-code] z rozszerzeniem [Azure dev Spaces][azds-vs-code] zainstalowanym i działającym w systemie MacOS lub Windows 10.
+* [Aplikacja Przykładowa do udostępniania Azure dev Spaces roweru](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) lub własnej aplikacji uruchomionej w klastrze AKS.
 
-## <a name="connect-your-development-machine"></a>Connect your development machine
+## <a name="connect-your-development-machine"></a>Łączenie maszyny deweloperskiej
 
-Open *dev-spaces/samples/BikeSharingApp/Bikes* in Visual Studio Code and use the Azure Dev Spaces extension to connect your development machine to your AKS cluster.
+Otwórz *przystawkę dev Spaces/Samples/BikeSharingApp/Bikes* in Visual Studio Code i użyj rozszerzenia Azure dev Spaces, aby połączyć komputer deweloperski z klastrem AKS.
 
-To use the Azure Dev Spaces extension, open the Command Palette in Visual Studio Code by clicking *View* then *Command Palette*. Begin typing `Azure Dev Spaces: Redirect` and click on either `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`, `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`, or `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`.
+Aby użyć rozszerzenia Azure Dev Spaces, Otwórz paletę poleceń w Visual Studio Code, klikając pozycję *Widok* i *paleta poleceń*. Zacznij pisać `Azure Dev Spaces: Redirect` i kliknij `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`, `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`lub `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`.
 
 ![Polecenia](../media/how-to-connect/connect-commands.png)
 
-### <a name="select-a-redirection-option"></a>Select a redirection option
+### <a name="select-a-redirection-option"></a>Wybierz opcję przekierowania
 
-If you run `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`, you are asked to choose an existing Kubernetes service:
+Jeśli uruchomisz `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`, zostanie wyświetlony monit o wybranie istniejącej usługi Kubernetes:
 
-![Choose Service](../media/how-to-connect/connect-choose-service.png)
+![Wybieranie usługi](../media/how-to-connect/connect-choose-service.png)
 
-This option redirects all traffic in the AKS cluster for this service to the version of your application running in your development machine. If this service has multiple pods running in the AKS cluster, all traffic for this service is only routed to your development machine. Azure Dev Spaces also routes all outbound traffic from the application back to your AKS cluster.
+Ta opcja przekierowuje cały ruch w klastrze AKS dla tej usługi do wersji aplikacji działającej na komputerze deweloperskim. Jeśli ta usługa ma wiele serwerów w klastrze AKS, cały ruch dla tej usługi jest kierowany tylko do komputera deweloperskiego. Azure Dev Spaces również kieruje cały ruch wychodzący z aplikacji z powrotem do klastra AKS.
 
-If you run `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`, you are asked to choose a specific pod:
+Jeśli uruchomisz `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`, zostanie wyświetlony monit o wybranie określonego elementu pod:
 
-![Choose Pod](../media/how-to-connect/connect-choose-pod.png)
+![Wybierz pod](../media/how-to-connect/connect-choose-pod.png)
 
-This option connects to a specific pod. This option is useful for interacting with pods that do not send or receive traffic and replicating terminated pods. If the pod does send and receive traffic, this option behaves in a similar way to `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` and will redirect all traffic in the AKS cluster for all pods related to the service of the selected pod.
+Ta opcja łączy się z konkretnym pod. Ta opcja jest przydatna w przypadku współdziałania z identyfikatorami, które nie wysyłają ani nie odbierają ruchu i replikowania zakończonych zasobników. Jeśli na stronie jest wysyłany i odbierany ruch, ta opcja zachowuje się w podobny sposób, aby `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` i przekierowuje cały ruch w klastrze AKS dla wszystkich elementów, które są powiązane z usługą wybranej usługi.
 
-If you run `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`, you are not prompted to select an existing pod or service. This option redirects all outbound traffic from the application running on your development machine to the AKS cluster.
+W przypadku uruchomienia `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`nie zostanie wyświetlony monit o wybranie istniejącego elementu lub usługi. Ta opcja przekierowuje cały ruch wychodzący z aplikacji uruchomionej na komputerze deweloperskim do klastra AKS.
 
-For this example, choose `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` and select the *bikes* service.
+Na potrzeby tego przykładu wybierz `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` i wybierz usługę *Bikes* .
 
-### <a name="select-a-connection-mode"></a>Select a connection mode
+### <a name="select-a-connection-mode"></a>Wybierz tryb połączenia
 
-After you select your redirection option, you are prompted to choose either the *Replace* or *Clone* connection mode.
+Po wybraniu opcji przekierowania zostanie wyświetlony monit z pytaniem o wybranie trybu *zastępowanie* lub *klonowanie* .
 
-![Replace or Clone](../media/how-to-connect/connect-replace-clone.png)
+![Zastąp lub Klonuj](../media/how-to-connect/connect-replace-clone.png)
 
-The *Replace* option replaces current pod or service in the AKS cluster and redirects all the traffic for that service to your development machine. This option can be disruptive to other services in your AKS cluster that interact with the service you are redirecting may not function until you start the application on your development machine. The *Clone* option allows you to choose an existing child dev space or create a new child dev space for redirecting traffic for a pod or service to your development machine. This option allows you to work in isolation and not disrupt other services since only traffic to that child dev space will be redirected to your development machine. The *Clone* option requires your AKS cluster to have Azure Dev Spaces enabled.
+Opcja *replace* zastępuje bieżący pod lub usługę w klastrze AKS i przekierowuje cały ruch dla tej usługi do komputera deweloperskiego. Ta opcja może być nieprzerwana dla innych usług w klastrze AKS, które współdziałają z usługą przekierowania, mogą nie działać do momentu uruchomienia aplikacji na komputerze deweloperskim. Opcja *klonowania* pozwala wybrać istniejący obszar podrzędny lub utworzyć nowe miejsce w środowisku deweloperskim do przekierowywania ruchu dla usługi lub na komputer deweloperski. Ta opcja pozwala obsłużyć izolację i nie zakłóca innych usług, ponieważ tylko ruch do tego miejsca podrzędnego jest przekierowywany do komputera deweloperskiego. Opcja *klonowania* wymaga, aby klaster AKS miał włączony Azure dev Spaces.
 
-For this example, choose *Replace*.
+Na potrzeby tego przykładu wybierz *Zastąp*.
 
 > [!NOTE]
-> If your existing service's pod has multiple containers, you are also prompted to choose the application's container.
+> Jeśli istniejąca usługa ma wiele kontenerów, zostanie również wyświetlony monit o wybranie kontenera aplikacji.
 
-### <a name="select-a-port-for-your-application"></a>Select a port for your application
+### <a name="select-a-port-for-your-application"></a>Wybierz port dla swojej aplikacji
 
-After you select your connection mode, you are prompted to enter the TCP port your local application. If your application opens multiple ports, separate them by a comma for example *80,81*. If your application does not accept any network requests, enter *0*. For this example, enter *3000*.
+Po wybraniu trybu połączenia zostanie wyświetlony monit o wprowadzenie portu TCP używanej przez lokalną aplikację. Jeśli aplikacja otwiera wiele portów, rozdziel je przecinkami na przykład *80, 81*. Jeśli aplikacja nie akceptuje żadnych żądań sieci, wprowadź *wartość 0*. Na potrzeby tego przykładu wprowadź *3000*.
 
-![Connect choose port](../media/how-to-connect/connect-choose-port.png)
+![Połącz wybierz port](../media/how-to-connect/connect-choose-port.png)
 
-### <a name="confirm-you-are-connected"></a>Confirm you are connected
+### <a name="confirm-you-are-connected"></a>Potwierdź, że masz połączenie
 
-After you select your application's TCP port, Azure Dev Spaces will establish a connection to the AKS cluster. Azure Dev Spaces injects an agent into your AKS cluster to redirect traffic between the AKS cluster and your development machine. Establishing this connection may take a few minutes. Azure Dev Spaces will also request administrator access in order to modify the *hosts* file in your development machine.
+Po wybraniu portu TCP aplikacji Azure Dev Spaces nawiąże połączenie z klastrem AKS. Azure Dev Spaces wprowadza agenta do klastra AKS w celu przekierowania ruchu między klastrem AKS i komputerem deweloperskim. Ustanowienie tego połączenia może potrwać kilka minut. Azure Dev Spaces również poprosić o dostęp administratora w celu zmodyfikowania pliku *hosts* na komputerze deweloperskim.
 
 > [!IMPORTANT]
-> Once Azure Dev Spaces establishes a connection to your AKS cluster, the other services in your AKS cluster may not function correctly until you start the service in your development machine if you choose the *Replace* connection mode. You can choose the *Clone* connection mode instead to create a child dev space for your redirection and avoid any disruption to the parent space. Also, if your service has a dependency that is not available in your development machine, you may need to modify your application or provide [additional configuration](#additional-configuration)
+> Po Azure Dev Spaces ustanowieniu połączenia z klastrem AKS inne usługi w klastrze AKS mogą działać nieprawidłowo, dopóki usługa nie zostanie uruchomiona na komputerze deweloperskim w przypadku wybrania opcji *Zamień* połączenie. Zamiast tego można wybrać tryb połączenia *klonowania* , aby utworzyć podrzędny obszar deweloperski dla przekierowania i uniknąć przerw w miejscu nadrzędnym. Ponadto jeśli usługa ma zależność, która nie jest dostępna na komputerze deweloperskim, może być konieczne zmodyfikowanie aplikacji lub dostarczenie [dodatkowej konfiguracji](#additional-configuration)
 
-Azure Dev Spaces opens a terminal window titled *AZDS Connect - Bikes* after it establishes a connection to your AKS cluster. This terminal window has all the environment variables and DNS entries configured from your AKS cluster. Any code you run in this terminal window or using the Visual Studio Code debugger is connected to the AKS cluster.
+Azure Dev Spaces otwiera okno terminalu zatytułowane *AZDS Connect-Bikes* po ustanowieniu połączenia z klastrem AKS. To okno terminalu ma wszystkie zmienne środowiskowe i wpisy DNS skonfigurowane z klastra AKS. Każdy kod uruchamiany w tym oknie terminalu lub przy użyciu debugera Visual Studio Code jest połączony z klastrem AKS.
 
 ![Terminal](../media/how-to-connect/connect-terminal.png)
 
-Additionally, Azure Dev Spaces creates a window titled *Dev Spaces Connect* with all its output.
+Ponadto Azure Dev Spaces tworzy okno zatytułowane *miejsca deweloperskie Połącz* ze wszystkimi danymi wyjściowymi.
 
 ![Dane wyjściowe](../media/how-to-connect/connect-output.png)
 
-Azure Dev Spaces also has a status bar item showing the connection status.
+Azure Dev Spaces ma także element paska stanu z informacją o stanie połączenia.
 
 ![Stan](../media/how-to-connect/connect-status.png)
 
-Verify the status bar shows *Dev Spaces: Connected to dev/bikes on local port 3000*.
+Sprawdź, czy pasek stanu zawiera *spacje: połączony z dev/Bikes na porcie lokalnym 3000*.
 
-### <a name="configure-your-application-on-your-development-machine"></a>Configure your application on your development machine
+### <a name="configure-your-application-on-your-development-machine"></a>Konfigurowanie aplikacji na komputerze deweloperskim
 
-Open the *AZDS Connect - Bikes* terminal window and run `npm install`:
+Otwórz okno terminalu *AZDS Connect-Bikes* i uruchom `npm install`:
 
 ```console
 $ npm install
@@ -120,7 +120,7 @@ $ npm install
 ...
 ```
 
-Click *Debug* then *Open Configurations*. If prompted to select an environment, choose *Node.js*.This creates a `.vscode/launch.json` file. Replace the contents of that file with the following:
+Kliknij przycisk *Debuguj* , a następnie *Otwórz pozycję konfiguracje*. Jeśli zostanie wyświetlony monit o wybranie środowiska, wybierz pozycję *Node. js*. Spowoduje to utworzenie pliku `.vscode/launch.json`. Zastąp zawartość tego pliku następującym:
 
 ```json
 {
@@ -140,7 +140,7 @@ Click *Debug* then *Open Configurations*. If prompted to select an environment, 
 }
 ```
 
-Open [package.json](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/package.json) and add a debugging script:
+Otwórz plik [Package. JSON](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/package.json) i Dodaj skrypt debugowania:
 
 ```json
   "devDependencies": {
@@ -151,13 +151,13 @@ Open [package.json](https://github.com/Azure/dev-spaces/blob/master/samples/Bike
   }
 ```
 
-### <a name="start-your-application-on-your-development-machine"></a>Start your application on your development machine
+### <a name="start-your-application-on-your-development-machine"></a>Uruchom aplikację na komputerze deweloperskim
 
-Click on the *Debug* icon on the left and click on the start button next to *Launch via NPM* at the top.
+Kliknij ikonę *debugowania* po lewej stronie, a następnie kliknij przycisk Start obok pozycji *Uruchom za pomocą npm* w górnej części ekranu.
 
-![Launch via NPM](../media/how-to-connect/launch-npm.png)
+![Uruchom za pomocą NPM](../media/how-to-connect/launch-npm.png)
 
-Your application will start and Azure Dev Spaces redirects traffic between your AKS cluster and your development machine. You will see messages similar to the below in the *Debug Console*:
+Aplikacja zostanie uruchomiona i Azure Dev Spaces przekierowuje ruch między klastrem AKS a maszyną deweloperskią. Komunikaty podobne do poniższych znajdują się w *konsoli debugowania*:
 
 ```console
 /usr/local/bin/npm run-script debug 
@@ -169,26 +169,26 @@ Connected to MongoDB
 Listening on port 3000
 ```
 
-Navigate to the *bikesharingweb* service by clicking on the Azure Dev Spaces status bar and choosing the public URL of your application. You can also find the public URL from the `azds list-uris` command you ran earlier. If you are not using Azure Dev Spaces on your cluster, use the IP or the URL for the application for the namespace you are using. In the above example, the public URL for the *bikesharingweb* service is `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Select *Aurelia Briggs (customer)* as the user, then select a bike to rent.
+Przejdź do usługi *bikesharingweb* , klikając pasek stanu Azure dev Spaces i wybierając publiczny adres URL aplikacji. Publiczny adres URL można także znaleźć w poleceniu `azds list-uris` uruchomionego wcześniej. Jeśli nie używasz Azure Dev Spaces w klastrze, użyj adresu IP lub adresu URL aplikacji dla używanej przestrzeni nazw. W powyższym przykładzie publiczny adres URL dla usługi *bikesharingweb* jest `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik, a następnie wybierz rower do wynajęcia.
 
-### <a name="set-a-break-point"></a>Set a break point
+### <a name="set-a-break-point"></a>Ustaw punkt przerwania
 
-Open [server.js](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L233) and click somewhere on line 233 to put your cursor there. Set a breakpoint by hitting *F9* or clicking *Debug* then *Toggle Breakpoint*.
+Otwórz [serwer Server. js](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L233) i kliknij w dowolnym miejscu w wierszu 233, aby umieścić w nim kursor. Ustaw punkt przerwania, naciskając klawisz *F9* lub klikając polecenie *Debuguj* , a następnie *Przełącz punkt przerwania*.
 
-Navigate to the *bikesharingweb* service by opening the public URL. Select *Aurelia Briggs (customer)* as the user, then select a bike to rent. Notice the image for the bike does not load. Return to Visual Studio Code and observe line 233 is highlighted. The breakpoint you set has paused the service at line 233. To resume the service, hit *F5* or click *Debug* then *Continue*. Return to your browser and verify you see a placeholder image for the bike.
+Przejdź do usługi *bikesharingweb* , otwierając publiczny adres URL. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik, a następnie wybierz rower do wynajęcia. Zauważ, że obraz dla roweru nie zostanie załadowany. Wróć do Visual Studio Code i obserwuj wiersz 233. Ustawiony punkt przerwania został wstrzymany usługi w wierszu 233. Aby wznowić działanie usługi, naciśnij klawisz *F5* lub kliknij pozycję *Debuguj* i *Kontynuuj*. Wróć do przeglądarki i sprawdź, czy jest wyświetlany obraz symbolu zastępczego dla roweru.
 
-Remove the breakpoint by putting your cursor on line 233 in `server.js` and hitting *F9*.
+Usuń punkt przerwania, umieszczając kursor w wierszu 233 w `server.js` i naciskając klawisz *F9*.
 
-### <a name="update-your-application"></a>Update your application
+### <a name="update-your-application"></a>Aktualizowanie aplikacji
 
-Edit `server.js` to remove lines 232 and 233:
+Edytuj `server.js`, aby usunąć wiersze 232 i 233:
 
 ```javascript
     // Hard code image url *FIX ME*
     theBike.imageUrl = "/static/logo.svg";
 ```
 
-The section should now look like:
+Sekcja powinna teraz wyglądać następująco:
 
 ```javascript
     var theBike = result;
@@ -196,15 +196,15 @@ The section should now look like:
     delete theBike._id;
 ```
 
-Save your changes and click *Debug* then *Restart Debugging*. Refresh your browser and verify that you no longer see a placeholder image for the bike.
+Zapisz zmiany, a następnie kliknij pozycję *Debuguj* , a następnie *ponownie uruchom debugowanie*. Odśwież przeglądarkę i sprawdź, czy nie widzisz już obrazu zastępczego dla roweru.
 
-Click *Debug* then *Stop Debugging* to stop the debugger. Click on the Azure Dev Spaces status bar to disconnect from the AKS cluster.
+Kliknij pozycję *Debuguj* , a następnie *Zatrzymaj debugowanie* , aby zatrzymać debuger. Kliknij pasek stanu Azure Dev Spaces, aby rozłączyć się z klastrem AKS.
 
-## <a name="additional-configuration"></a>Additional configuration
+## <a name="additional-configuration"></a>Dodatkowa konfiguracja
 
-Azure Dev Spaces can handle routing traffic and replicating environment variables without any additional configuration. If you need to download any files that are mounted to the container in your AKS cluster, such as a ConfigMap file, you can create a `azds-local.env` to download those files to your development machine.
+Azure Dev Spaces może obsługiwać ruch routingu i replikowanie zmiennych środowiskowych bez żadnej dodatkowej konfiguracji. Jeśli konieczne jest pobranie plików zainstalowanych do kontenera w klastrze AKS, takich jak plik ConfigMap, można utworzyć `azds-local.env`, aby pobrać te pliki na komputer deweloperski.
 
-Here is an example `azds-local.env`:
+Oto przykład `azds-local.env`:
 
 ```
 # This downloads the "whitelist" volume from the container,
@@ -230,24 +230,24 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 # in addition to the IP in the MYAPP1_SERVICE_HOST environment variable.
 ```
 
-## <a name="using-logging-and-diagnostics"></a>Using logging and diagnostics
+## <a name="using-logging-and-diagnostics"></a>Korzystanie z funkcji rejestrowania i diagnostyki
 
-Logging output is written to the *Dev Spaces Connect* window after connect your development machine to your AKS cluster.
+Dane wyjściowe rejestrowania są zapisywane do okna *dev Spaces Connect* po nawiązaniu połączenia z maszyną deweloperskią z klastrem AKS.
 
 ![Dane wyjściowe](../media/how-to-connect/connect-output.png)
 
-Click on the Azure Dev Spaces status bar and choose *Show diagnostics info*. This command prints the current environment variables and DNS entires in the logging output.
+Kliknij pasek stanu Azure Dev Spaces a następnie wybierz pozycję *Pokaż informacje diagnostyczne*. To polecenie drukuje bieżące zmienne środowiskowe i cały system DNS w danych wyjściowych rejestrowania.
 
-![Output with diagnostics](../media/how-to-connect/connect-output-diagnostics.png)
+![Dane wyjściowe z diagnostyką](../media/how-to-connect/connect-output-diagnostics.png)
 
-Additionally, you can find the diagnostic logs in `Azure Dev Spaces` directory in your [development machine's *TEMP* directory][azds-tmp-dir].
+Ponadto można znaleźć dzienniki diagnostyczne w katalogu `Azure Dev Spaces` w [katalogu *tymczasowym* komputera deweloperskiego][azds-tmp-dir].
 
 ## <a name="next-steps"></a>Następne kroki
 
-Learn how to use Azure Dev Spaces and GitHub Actions to test changes from a pull request directly in AKS before the pull request is merged into your repository’s main branch.
+Dowiedz się, jak za pomocą akcji Azure Dev Spaces i GitHub przetestować zmiany z żądania ściągnięcia bezpośrednio w AKS przed scaleniem żądania ściągnięcia z gałęzią główną repozytorium.
 
 > [!div class="nextstepaction"]
-> [GitHub Actions & Azure Kubernetes Service][gh-actions]
+> [Akcje GitHub & usłudze Azure Kubernetes Service][gh-actions]
 
 [azds-tmp-dir]: ../troubleshooting.md#before-you-begin
 [azds-vs-code]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds

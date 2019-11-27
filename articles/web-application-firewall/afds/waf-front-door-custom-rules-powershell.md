@@ -110,7 +110,7 @@ W poniższym przykładzie użyto nazwy grupy zasobów *myResourceGroupFD1* z za�
 > [!NOTE]
 > Musisz tylko ustawić właściwość *WebApplicationFirewallPolicyLink* , aby połączyć zasady zabezpieczeń z frontonem. Kolejne aktualizacje zasad są automatycznie stosowane do frontonu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [drzwiach zewnętrznych](../../frontdoor/front-door-overview.md) 
 - Dowiedz się więcej o [WAF z przednim drzwiem](afds-overview.md)

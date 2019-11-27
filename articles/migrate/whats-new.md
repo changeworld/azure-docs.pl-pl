@@ -64,7 +64,7 @@ Bieżąca wersja Azure Migrate zawiera wiele nowych funkcji:
 - **Urządzenie Data Box**: zaimportuj duże ilości danych w trybie offline na platformę Azure przy użyciu Azure Data Box w Azure Migrate.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Uzyskaj więcej informacji](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenach usługi Azure Migrate.
 - [Przejrzyj często zadawane pytania](resources-faq.md) dotyczące usługi Azure Migrate.

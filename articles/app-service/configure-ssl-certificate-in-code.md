@@ -38,9 +38,9 @@ Aby wykonać następujące czynności:
 
 ## <a name="find-the-thumbprint"></a>Znajdowanie odcisku palca
 
-W <a href="https://portal.azure.com" target="_blank">Azure Portal</a>z menu po lewej stronie wybierz pozycję **App Services** > **\<App-Name >**.
+W <a href="https://portal.azure.com" target="_blank">Azure Portal</a>z menu po lewej stronie wybierz pozycję **App Services** >  **\<App-Name >** .
 
-W lewym panelu nawigacyjnym aplikacji wybierz pozycję **Ustawienia protokołu TLS/SSL**, a następnie wybierz pozycję **certyfikaty kluczy prywatnych (pfx)** lub **Certyfikaty klucza publicznego (CER)**.
+W lewym panelu nawigacyjnym aplikacji wybierz pozycję **Ustawienia protokołu TLS/SSL**, a następnie wybierz pozycję **certyfikaty kluczy prywatnych (pfx)** lub **Certyfikaty klucza publicznego (CER)** .
 
 Znajdź certyfikat, którego chcesz użyć, i Skopiuj odcisk palca.
 
@@ -163,5 +163,5 @@ Aby dowiedzieć się, jak załadować certyfikat SSL z pliku w Node. js, PHP, Py
 
 * [Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL](configure-ssl-bindings.md)
 * [Wymuszanie protokołu HTTPS](configure-ssl-bindings.md#enforce-https)
-* [Enforce TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
+* [Wymuś protokół TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [Często zadawane pytania: certyfikaty App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

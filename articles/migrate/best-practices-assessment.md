@@ -67,10 +67,10 @@ W zależności od wartości procentowej punktów danych dostępnych dla wybraneg
    **Dostępność punktu danych** | **Ocenę zaufania**
    --- | ---
    0%–20% | 1 gwiazdka
-   21%-40% | 2 gwiazdki
+   21%–40% | 2 gwiazdki
    41%–60% | 3 gwiazdki
    61%–80% | 4 gwiazdki
-   81%-100% | 5 gwiazdek
+   81%–100% | 5 gwiazdek
 
 
 ## <a name="common-assessment-issues"></a>Typowe problemy z oceną
@@ -96,7 +96,7 @@ Ocena może nie zawierać wszystkich punktów danych z kilku powodów:
 - Kilka maszyn wirtualnych zostało utworzonych po uruchomieniu odnajdywania w narzędziu Server Assessment. Jeśli na przykład tworzysz ocenę dla historii wydajności za ostatni miesiąc, ale kilka maszyn wirtualnych zostało utworzonych w środowisku tylko tydzień temu. W tym przypadku dane wydajności dla nowych maszyn wirtualnych nie będą dostępne przez cały czas trwania i ocena ufności będzie niska.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dowiedz się](concepts-assessment-calculation.md) , w jaki sposób są obliczane oceny.
 - [Dowiedz się](how-to-modify-assessment.md) , jak dostosować ocenę.

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Synthesize speech, C# - Speech Service'
+title: 'Szybki Start: synteza mowy C# , usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: do ustalenia
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -17,7 +17,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260821"
 ---
-**Choose your target environment**
+**Wybierz środowisko docelowe**
 
 #### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](./dotnet.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "74260821"
 [!INCLUDE [dotnetcore](./dotnetcore.md)]
 #### <a name="unitytabunity"></a>[Unity](#tab/unity)
 [!INCLUDE [unity](./unity.md)]
-#### <a name="uwptabuwp"></a>[UWP](#tab/uwp)
+#### <a name="uwptabuwp"></a>[PLATFORMY UWP](#tab/uwp)
 [!INCLUDE [uwp](./uwp.md)]
 
 * * *

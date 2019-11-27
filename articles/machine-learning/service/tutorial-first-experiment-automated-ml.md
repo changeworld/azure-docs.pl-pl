@@ -138,7 +138,7 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
         Walidacja | Wybierz typ i liczbę testów.|Typ walidacji:<br>&nbsp;k — złóż&nbsp;a krzyżowego sprawdzania poprawności <br> <br> Liczba walidacji: 2
         Współbieżność| Maksymalna liczba wykonanych równoległych iteracji i użytych rdzeni na iterację| Maksymalnie&nbsp;współbieżnych&nbsp;iteracji: 5<br> Maksymalna liczba rdzeni&nbsp;&nbsp;na&nbsp;iteracja: brak
         
-        Wybierz **OK**.
+        Kliknij przycisk **OK**.
 
 1. Wybierz pozycję **Utwórz** , aby uruchomić eksperyment. Zostanie otwarty ekran **szczegóły uruchamiania** ze **stanem Uruchom** jako przygotowanie eksperymentu.
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 7983e18066578e3f036da84c73b6554ead2c40a1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 16339590c3cfb11235ef4763c2e32c71b521c709
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791571"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539064"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Blob Storage z Azure Databricks przy użyciu Azure Key Vault
 
@@ -32,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Tego samouczka nie można przeprowadzić za pomocą **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
@@ -93,7 +93,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
    |Właściwość|Wartość|
    |--------|-----------|
-   |Opcje przekazywania|Ręczna|
+   |Opcje przekazywania|Ręcznie|
    |Nazwa|Przyjazna nazwa klucza konta magazynu.|
    |Wartość|Klucz1 z konta magazynu.|
 
@@ -129,7 +129,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 4. Gdy obszar roboczy Azure Databricks zostanie otwarty w osobnym oknie, Dołącz **#secrets/CreateScope** do adresu URL. Adres URL powinien mieć następujący format: 
 
-   **https://< \location >. azuredatabricks. NET/? o = < \id > #secrets/CreateScope**.
+   **https://< \location >. azuredatabricks. NET/#secrets/CreateScope**.
 
 5. Wprowadź nazwę zakresu i wprowadź wcześniej zapisany Azure Key Vault nazwę DNS i identyfikator zasobu. Zapisz nazwę zakresu w edytorze tekstu do użycia w dalszej części tego samouczka. Następnie wybierz przycisk **Create** (Utwórz).
 
@@ -166,7 +166,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
    ```
 
    * **Nazwa instalacji** jest ścieżką DBFS reprezentującą lokalizację kontenera BLOB Storage lub folderu wewnątrz kontenera (określonego w źródle).
-   * **conf-Key** może mieć wartość `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` lub `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
+   * **conf-Key** może być `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` lub `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
    * **SCOPE-Name** to nazwa zakresu tajnego utworzonego w poprzedniej sekcji. 
    * **Key-Name** to nazwa klucza tajnego utworzonego dla klucza konta magazynu w magazynie kluczy.
 

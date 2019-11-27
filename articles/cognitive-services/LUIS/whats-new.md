@@ -82,7 +82,7 @@ Następujące funkcje zostały wydane na konferencji Build 2019:
 
 [Bot Framework](https://blog.botframework.com/)
 
-## <a name="videos"></a>Wideo
+## <a name="videos"></a>Filmy wideo
 
 ### <a name="2019-build-videos"></a>wideo kompilacji 2019
 

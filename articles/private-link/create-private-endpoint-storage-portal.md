@@ -84,7 +84,7 @@ W tej sekcji utworzysz sieć wirtualną i podsieć do hostowania maszyny wirtual
     | ------- | ----- |
     | Sieć wirtualna | Pozostaw wartość domyślną **MyVirtualNetwork**.  |
     | Przestrzeń adresowa | Pozostaw wartość domyślną **10.1.0.0/24**.|
-    | Subnet | Pozostaw domyślną wartość moja **podsieć (10.1.0.0/24)** .|
+    | Podsieć | Pozostaw domyślną wartość moja **podsieć (10.1.0.0/24)** .|
     | Publiczny adres IP | Pozostaw wartość domyślną **(nowy) myVm-ip**. |
     | Publiczne porty wejściowe | Wybierz pozycję **Zezwalaj na wybrane porty**. |
     | Wybierz porty wejściowe | Wybierz pozycje **HTTP** i **RDP**.|
@@ -129,12 +129,12 @@ W tej sekcji utworzysz prywatne konto magazynu przy użyciu prywatnego punktu ko
     |Zasób podrzędny magazynu|Pozostaw domyślny **obiekt BLOB**. |
     | **SIECI** |  |
     | Sieć wirtualna  | Wybierz pozycję *MyVirtualNetwork* *z grupy zasobów*. |
-    | Subnet | Wybierz pozycję Moja *podsieć*. |
+    | Podsieć | Wybierz pozycję Moja *podsieć*. |
     | **PRYWATNA INTEGRACJA Z USŁUGĄ DNS**|  |
     | Integracja z prywatną strefą DNS  | Pozostaw wartość domyślną **tak**. |
     | Prywatna strefa DNS  | Pozostaw wartość domyślną * * (New) privatelink.blob.core.windows.net * *. |
     |||
-7. Wybierz **OK**. 
+7. Kliknij przycisk **OK**. 
 8. Wybierz pozycję **Przegląd + utwórz**. Nastąpi przejście do strony **Recenzja i tworzenie** , w której platforma Azure weryfikuje konfigurację. 
 9. Gdy zobaczysz komunikat o **przekazaniu walidacji** , wybierz pozycję **Utwórz**. 
 10. Przejdź do zasobu konta magazynu, który właśnie został utworzony.
@@ -149,7 +149,7 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 
 1. Wybierz przycisk **Połącz**. Po wybraniu przycisku **Połącz** zostanie otwarta strona **Łączenie z maszyną wirtualną**.
 
-1. Wybierz **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
+1. Wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
 
 1. Otwórz pobrany plik RDP *.
 
@@ -160,7 +160,7 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
         > [!NOTE]
         > Może okazać się konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby podać poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
 
-1. Wybierz **OK**.
+1. Kliknij przycisk **OK**.
 
 1. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie o certyfikacie, wybierz opcję **Tak** lub **Kontynuuj**.
 

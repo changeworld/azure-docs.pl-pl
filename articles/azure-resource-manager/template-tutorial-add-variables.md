@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add variable to template
-description: Add variables to your Azure Resource Manager template to simplify the syntax.
+title: Samouczek — Dodawanie zmiennej do szablonu
+description: Dodaj zmienne do szablonu Azure Resource Manager, aby uprościć składnię.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,49 +12,49 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406049"
 ---
-# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Tutorial: Add variables to your Resource Manager template
+# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Samouczek: Dodawanie zmiennych do szablonu Menedżer zasobów
 
-In this tutorial, you learn how to add a variable to your template. Variables simplify your templates by enabling you to write an expression once and reuse it throughout the template. This tutorial takes **7 minutes** to complete.
+W tym samouczku dowiesz się, jak dodać zmienną do szablonu. Zmienne upraszczają szablony, umożliwiając jednokrotne wpisanie wyrażenia i ponowne użycie go przez cały szablon. Ukończenie tego samouczka trwa **7 minut** .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-We recommend that you complete the [tutorial about functions](template-tutorial-add-functions.md), but it's not required.
+Zalecamy ukończenie [samouczka dotyczącego funkcji](template-tutorial-add-functions.md), ale nie jest to wymagane.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Przejrzyj szablon
 
-At the end of the previous tutorial, your template had the following JSON:
+Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
 
-The parameter for the storage account name is hard-to-use because you have to provide a unique name. If you've completed the earlier tutorials in this series, you're probably tired of guessing a unique name. You solve this problem by adding a variable that constructs a unique name for the storage account.
+Parametr nazwy konta magazynu jest trudny do użycia, ponieważ trzeba podać unikatową nazwę. Jeśli wcześniej samouczki zostały wykonane w tej serii, prawdopodobnie nie można już złamać unikatowej nazwy. Ten problem można rozwiązać, dodając zmienną, która konstruuje unikatową nazwę konta magazynu.
 
-## <a name="use-variable"></a>Use variable
+## <a name="use-variable"></a>Użyj zmiennej
 
-The following example highlights the changes to add a variable to your template that creates a unique storage account name. Copy the whole file and replace your template with its contents.
+Poniższy przykład wyróżnia zmiany w celu dodania zmiennej do szablonu, który tworzy unikatową nazwę konta magazynu. Skopiuj cały plik i Zastąp jego zawartość.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
 
-Notice that it includes a variable named **uniqueStorageName**. This variable uses four functions to construct a string value.
+Należy zauważyć, że zawiera zmienną o nazwie **uniqueStorageName**. Ta zmienna używa czterech funkcji do konstruowania wartości ciągu.
 
-You're already familiar with the [parameters](resource-group-template-functions-deployment.md#parameters) function, so we won't examine it.
+Znasz już funkcję [Parameters](resource-group-template-functions-deployment.md#parameters) , więc nie sprawdzimy jej.
 
-You're also familiar with the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. In this case, you get the **id** property instead of the **location** property, as shown in the previous tutorial. The **id** property returns the full identifier of the resource group, including the subscription ID and resource group name.
+Znasz również funkcję [ResourceManager](resource-group-template-functions-resource.md#resourcegroup) . W tym przypadku otrzymujesz Właściwość **ID** zamiast właściwości **Location** , jak pokazano w poprzednim samouczku. Właściwość **ID** zwraca pełny identyfikator grupy zasobów, w tym identyfikator subskrypcji i nazwę grupy zasobów.
 
-The [uniqueString](resource-group-template-functions-string.md#uniquestring) function creates a 13 character hash value. The returned value is determined by the parameters you pass in. For this tutorial, you use the resource group ID as the input for the hash value. That means you could deploy this template to different resource groups and get a different unique string value. However, you get the same value if you deploy to the same resource group.
+Funkcja [uniqueString](resource-group-template-functions-string.md#uniquestring) tworzy 13-znakową wartość skrótu. Zwracana wartość jest określana na podstawie parametrów, które są przekazywane. W tym samouczku użyjesz identyfikatora grupy zasobów jako danych wejściowych dla wartości skrótu. Oznacza to, że można wdrożyć ten szablon w różnych grupach zasobów i uzyskać inną unikatową wartość ciągu. Jednak ta sama wartość jest pobierana w przypadku wdrożenia w tej samej grupie zasobów.
 
-The [concat](resource-group-template-functions-string.md#concat) function takes values and combines them. For this variable, it takes the string from the parameter and the string from the uniqueString function, and combines them into one string.
+Funkcja [concat](resource-group-template-functions-string.md#concat) przyjmuje wartości i łączy je. Dla tej zmiennej Pobiera ciąg z parametru i ciąg z funkcji uniqueString i łączy je w jeden ciąg.
 
-The **storagePrefix** parameter enables you to pass in a prefix that helps you identify storage accounts. You can create your own naming convention that makes it easier to identify storage accounts after deployment from a long list of resources.
+Parametr **storagePrefix** umożliwia przekazywanie prefiksu, który ułatwia identyfikowanie kont magazynu. Można utworzyć własną konwencję nazewnictwa, która ułatwia identyfikowanie kont magazynu po wdrożeniu z długiej listy zasobów.
 
-Finally, notice that the storage name is now set to the variable instead of a parameter.
+Na koniec należy zauważyć, że nazwa magazynu jest teraz ustawiona na zmienną zamiast parametru.
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-Let's deploy the template. Deploying this template is easier than the previous templates because you provide just the prefix for the storage name.
+Wdróżmy szablon. Wdrażanie tego szablonu jest łatwiejsze niż w przypadku poprzednich szablonów, ponieważ podano tylko prefiks nazwy magazynu.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -81,18 +81,18 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. You see that a storage account resource has been deployed. The name of the storage account is **store** plus a string of random characters.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. Wybierz grupę zasobów, do której została wdrożona.
+1. Zobaczysz, że zasób konta magazynu został wdrożony. Nazwa konta magazynu jest **przechowywana** wraz z ciągiem znaków losowych.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
 
 1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
@@ -101,7 +101,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this tutorial, you added a variable that creates a unique name for a storage account. In the next tutorial, you return a value from the deployed storage account.
+W tym samouczku Dodano zmienną, która tworzy unikatową nazwę konta magazynu. W następnym samouczku zwracasz wartość ze wdrożonego konta magazynu.
 
 > [!div class="nextstepaction"]
-> [Add outputs](template-tutorial-add-outputs.md)
+> [Dodawanie danych wyjściowych](template-tutorial-add-outputs.md)

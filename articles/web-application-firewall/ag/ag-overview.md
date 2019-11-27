@@ -1,7 +1,7 @@
 ---
-title: Introduction to Azure Web Application Firewall
+title: Wprowadzenie do zapory aplikacji sieci Web platformy Azure
 titleSuffix: Azure Web Application Firewall
-description: This article provides an overview of web application firewall (WAF) on Application Gateway
+description: Ten artykuł zawiera omówienie zapory aplikacji sieci Web (WAF) na Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -15,156 +15,156 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384111"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall on Azure Application Gateway
+# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Zapora aplikacji sieci Web platformy Azure na platformie Azure Application Gateway
 
-Azure Web Application Firewall (WAF) on Azure Application Gateway provides centralized protection of your web applications from common exploits and vulnerabilities. Web applications are increasingly targeted by malicious attacks that exploit commonly known vulnerabilities. SQL injection and cross-site scripting are among the most common attacks.
+Zapora aplikacji sieci Web platformy Azure (WAF) na platformie Azure Application Gateway zapewnia scentralizowaną ochronę aplikacji sieci Web przed typowymi atakami i lukami w zabezpieczeniach. Aplikacje sieci Web są coraz bardziej przeznaczone dla złośliwych ataków wykorzystujących często znane luki w zabezpieczeniach. Iniekcja kodu SQL i skryptów między lokacjami są między Najczęściej spotykanymi atakami.
 
-WAF on Application Gateway is based on [Core Rule Set (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1, 3.0, or 2.2.9 from the Open Web Application Security Project (OWASP). The WAF automatically updates to include protection against new vulnerabilities, with no additional configuration needed. 
+WAF na Application Gateway opiera się na [podstawowym zestawie reguł (KSR)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 lub 2.2.9 z projektu Open Web Application Security (OWASP). WAF automatycznie aktualizuje, aby uwzględnić ochronę przed nowymi lukami w zabezpieczeniach, bez konieczności dodatkowej konfiguracji. 
 
-All of the WAF features listed below exist inside of a WAF Policy. You can create multiple policies, and they can be associated with an Application Gateway, to individual listeners, or to path-based routing rules on an Application Gateway. This way, you can have separate policies for each site behind your Application Gateway if needed. For more information on WAF Policies, see [Create a WAF Policy](create-waf-policy-ag.md).
+Wszystkie funkcje WAF wymienione poniżej istnieją w zasadach WAF. Można utworzyć wiele zasad i można je skojarzyć z Application Gateway, do poszczególnych odbiorników lub regułami routingu opartymi na ścieżce na Application Gateway. W ten sposób można mieć osobne zasady dla każdej witryny za Application Gateway w razie potrzeby. Aby uzyskać więcej informacji na temat zasad WAFymi, zobacz [Tworzenie zasad WAF](create-waf-policy-ag.md).
 
    > [!NOTE]
-   > Per-site and per-URI WAF Policies are in Public Preview. That means this feature is subject to Microsoft's Supplemental Terms of Use. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > Zasady WAF dla poszczególnych witryn i identyfikatorów URI są dostępne w publicznej wersji zapoznawczej. Oznacza to, że ta funkcja podlega dodatkowym warunkom użytkowania firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-![Application Gateway WAF diagram](../media/ag-overview/waf1.png)
+![Application Gateway diagram WAF](../media/ag-overview/waf1.png)
 
-Application Gateway operates as an application delivery controller (ADC). It offers Secure Sockets Layer (SSL) termination, cookie-based session affinity, round-robin load distribution, content-based routing, ability to host multiple websites, and security enhancements.
+Application Gateway działa jako kontroler dostarczania aplikacji (ADC). Oferuje ona rozwiązanie SSL (SSL), koligację sesji opartą na plikach cookie, dystrybucję obciążenia z rozdziałami, czyli routing oparty na zawartości, możliwość hostowania wielu witryn sieci Web i ulepszeń zabezpieczeń.
 
-Application Gateway security enhancements include SSL policy management and end-to-end SSL support. Application security is strengthened by WAF integration into Application Gateway. The combination protects your web applications against common vulnerabilities. And it provides an easy-to-configure central location to manage.
+Ulepszenia zabezpieczeń Application Gateway obejmują zarządzanie zasadami protokołu SSL i kompleksową obsługę protokołu SSL. Zabezpieczenia aplikacji są wzmacniane przez integrację WAF w Application Gateway. Połączenie chroni aplikacje sieci Web przed typowymi lukami w zabezpieczeniach. Udostępnia ona łatwą do skonfigurowania centralną lokalizację do zarządzania.
 
 ## <a name="benefits"></a>Korzyści
 
-This section describes the core benefits that WAF on Application Gateway provides.
+W tej sekcji opisano podstawowe korzyści, które WAF na Application Gateway.
 
 ### <a name="protection"></a>Ochrona
 
-* Protect your web applications from web vulnerabilities and attacks without modification to back-end code.
+* Ochrona aplikacji sieci Web przed lukami w zabezpieczeniach i atakami w sieci Web bez konieczności modyfikowania kodu zaplecza.
 
-* Protect multiple web applications at the same time. An instance of Application Gateway can host of up to 40 websites that are protected by a web application firewall.
+* Ochrona wielu aplikacji sieci Web w tym samym czasie. Wystąpienie Application Gateway może obsługiwać do 40 witryn sieci Web, które są chronione przez zaporę aplikacji internetowej.
 
-* Create custom WAF policies for different sites behind the same WAF 
+* Tworzenie niestandardowych zasad WAF dla różnych lokacji w tym samym WAF 
 
-* Protect your web applications from malicious bots with the IP Reputation ruleset (preview)
+* Ochrona aplikacji sieci Web przed złośliwym botów z zestawem reguł reputacji adresów IP (wersja zapoznawcza)
 
 ### <a name="monitoring"></a>Monitorowanie
 
-* Monitor attacks against your web applications by using a real-time WAF log. The log is integrated with [Azure Monitor](../../azure-monitor/overview.md) to track WAF alerts and easily monitor trends.
+* Monitoruj ataki do aplikacji sieci Web przy użyciu dziennika WAF w czasie rzeczywistym. Dziennik jest zintegrowany z [Azure monitor](../../azure-monitor/overview.md) do śledzenia alertów WAF i łatwego monitorowania trendów.
 
-* The Application Gateway WAF is integrated with Azure Security Center. Security Center provides a central view of the security state of all your Azure resources.
+* Application Gateway WAF jest zintegrowany z Azure Security Center. Security Center stanowi centralny widok stanu zabezpieczeń wszystkich zasobów platformy Azure.
 
 ### <a name="customization"></a>Dostosowywanie
 
-* Customize WAF rules and rule groups to suit your application requirements and eliminate false positives.
+* Dostosuj reguły WAF i grupy reguł, aby spełniały wymagania aplikacji i wyeliminować fałszywe pozytywne.
 
-* Associate a WAF Policy for each site behind your WAF to allow for site-specific configuration
+* Skojarz zasady WAF z lokacjami za WAF, aby umożliwić konfigurację specyficzną dla lokacji
 
-* Create custom rules to suit the needs of your application
+* Tworzenie reguł niestandardowych w celu dostosowania ich do potrzeb aplikacji
 
 ## <a name="features"></a>Funkcje
 
-- SQL-injection protection.
-- Cross-site scripting protection.
-- Protection against other common web attacks, such as command injection, HTTP request smuggling, HTTP response splitting, and remote file inclusion.
-- Protection against HTTP protocol violations.
-- Protection against HTTP protocol anomalies, such as missing host user-agent and accept headers.
-- Protection against crawlers and scanners.
-- Detection of common application misconfigurations (for example, Apache and IIS).
-- Configurable request size limits with lower and upper bounds.
-- Exclusion lists let you omit certain request attributes from a WAF evaluation. A common example is Active Directory-inserted tokens that are used for authentication or password fields.
-- Create custom rules to suit the specific needs of your applications.
-- Geo-filter traffic to allow or block certain countries from gaining access to your applications. (wersja zapoznawcza)
-- Protect your applications from bots with the bot mitigation ruleset. (wersja zapoznawcza)
+- Ochrona iniekcji SQL.
+- Ochrona skryptów między lokacjami.
+- Ochrona przed innymi typowymi atakami sieci Web, takimi jak iniekcja poleceń, mycie żądań HTTP, dzielenie odpowiedzi HTTP i zdalne Dołączanie plików.
+- Ochrona przed naruszeniami protokołu HTTP.
+- Ochrona przed anomaliami protokołu HTTP, takimi jak brak agenta użytkownika hosta i akceptowanie nagłówków.
+- Ochrona przed przeszukiwarkami i skanerami.
+- Wykrywanie typowych niezwiązanych konfiguracji aplikacji (np. Apache i IIS).
+- Konfigurowalne limity rozmiaru żądań z dolną i górną granicą.
+- Listy wykluczeń pozwalają pominąć niektóre atrybuty żądania z oceny WAF. Typowym przykładem są tokeny wstawione Active Directory, które są używane dla pól uwierzytelniania lub hasła.
+- Utwórz reguły niestandardowe, aby odpowiadały określonym potrzebom aplikacji.
+- Ruch w filtrach geograficznych, aby zezwalać na dostęp do aplikacji lub blokować je w niektórych krajach. (wersja zapoznawcza)
+- Chroń aplikacje przed botów za pomocą zestawu reguł ograniczenia bot. (wersja zapoznawcza)
 
-## <a name="waf-policy"></a>WAF Policy
+## <a name="waf-policy"></a>Zasady WAF
 
-To enable a Web Application Firewall on an Application Gateway, you must create a WAF Policy. This Policy is where all of the managed rules, custom rules, exclusions, and other customizations such as file upload limit exist. 
+Aby włączyć zaporę aplikacji sieci Web na Application Gateway, należy utworzyć zasady WAFymi. Ta zasada polega na tym, że istnieją wszystkie reguły zarządzane, reguły niestandardowe, wykluczenia i inne dostosowania, takie jak limit przekazywania plików. 
 
 ### <a name="core-rule-sets"></a>Podstawowe zestawy reguł
 
-Application Gateway supports three rule sets: CRS 3.1, CRS 3.0, and CRS 2.2.9. These rules protect your web applications from malicious activity.
+Application Gateway obsługuje trzy zestawy reguł: KSR 3,1, KSR 3,0 i 2.2.9 KSR. Te reguły chronią aplikacje sieci Web przed złośliwymi działaniami.
 
-For more information, see [Web application firewall CRS rule groups and rules](application-gateway-crs-rulegroups-rules.md).
+Aby uzyskać więcej informacji, zobacz reguły [i reguły dotyczące reguł KSR aplikacji sieci Web](application-gateway-crs-rulegroups-rules.md).
 
 ### <a name="custom-rules"></a>Reguły niestandardowe
 
-Application Gateway also supports custom rules. With custom rules, you can create your own rules, which are evaluated for each request that passes through WAF. These rules hold a higher priority than the rest of the rules in the managed rule sets. If a set of conditions is met, an action is taken to allow or block. 
+Application Gateway obsługuje także reguły niestandardowe. Za pomocą reguł niestandardowych można utworzyć własne reguły, które są oceniane dla każdego żądania, które przechodzi przez WAF. Reguły te mają wyższy priorytet niż pozostałe reguły w zarządzanych zestawach reguł. W przypadku spełnienia zestawu warunków akcja jest podejmowana do zezwalania lub blokowania. 
 
-The geomatch operator is now available in public preview for custom rules. Please see [geomatch custom rules](custom-waf-rules-overview.md#geomatch-custom-rules-preview) for more information.
-
-> [!NOTE]
-> The geomatch operator for custom rules is currently in public preview and is provided with a preview service level agreement. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-For more information on custom rules, see [Custom Rules for Application Gateway.](custom-waf-rules-overview.md)
-
-### <a name="bot-mitigation-preview"></a>Bot Mitigation (preview)
-
-A managed Bot protection rule set can be enabled for your WAF to block or log requests from known malicious IP addresses, alongside the managed ruleset. The IP addresses are sourced from the Microsoft Threat Intelligence feed. Rozwiązanie Intelligent Security Graph obsługuje analizę zagrożeń firmy Microsoft i jest używane przez wiele usług, w tym usługę Azure Security Center.
+Operator geodopasowania jest teraz dostępny w publicznej wersji zapoznawczej dla reguł niestandardowych. Aby uzyskać więcej informacji, zobacz temat [reguły niestandardowe geodopasowania](custom-waf-rules-overview.md#geomatch-custom-rules-preview) .
 
 > [!NOTE]
-> Bot protection rule set is currently in public preview and is provided with a preview service level agreement. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Operator geodopasowania dla reguł niestandardowych jest obecnie w publicznej wersji zapoznawczej i jest dostarczany z umową dotyczącą poziomu usług w wersji zapoznawczej. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-If Bot Protection is enabled, incoming requests that match Malicious Bot's client IPs are logged in the Firewall log, see more information below. You may access WAF logs from storage account, event hub, or log analytics. 
+Aby uzyskać więcej informacji na temat reguł niestandardowych, zobacz [reguły niestandardowe dla Application Gateway.](custom-waf-rules-overview.md)
 
-### <a name="waf-modes"></a>WAF modes
+### <a name="bot-mitigation-preview"></a>Bot (wersja zapoznawcza)
 
-The Application Gateway WAF can be configured to run in the following two modes:
-
-* **Detection mode**: Monitors and logs all threat alerts. You turn on logging diagnostics for Application Gateway in the **Diagnostics** section. You must also make sure that the WAF log is selected and turned on. Web application firewall doesn't block incoming requests when it's operating in Detection mode.
-* **Prevention mode**: Blocks intrusions and attacks that the rules detect. The attacker receives a "403 unauthorized access" exception, and the connection is closed. Prevention mode records such attacks in the WAF logs.
+Zarządzany zestaw reguł ochrony bot można włączyć dla WAF, aby blokować lub rejestrować żądania ze znanych złośliwych adresów IP obok zarządzanego zestawu reguł. Adresy IP pochodzą ze źródła analizy zagrożeń firmy Microsoft. Rozwiązanie Intelligent Security Graph obsługuje analizę zagrożeń firmy Microsoft i jest używane przez wiele usług, w tym usługę Azure Security Center.
 
 > [!NOTE]
-> It is recommended that you run a newly deployed WAF in Detection mode for a short period of time in a production environment. This provides the opportunity to obtain [firewall logs](../../application-gateway/application-gateway-diagnostics.md#firewall-log) and update any exceptions or [custom rules](./custom-waf-rules-overview.md) prior to transition to Prevention mode. This can help reduce the occurrence of unexpected blocked traffic.
+> Zestaw reguł ochrony bot jest obecnie w publicznej wersji zapoznawczej i jest dostarczany z umową dotyczącą poziomu usług w wersji zapoznawczej. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-### <a name="anomaly-scoring-mode"></a>Anomaly Scoring mode
+Jeśli ochrona bot jest włączona, przychodzące żądania zgodne ze złośliwymi adresami IP klientów bot są rejestrowane w dzienniku zapory, Zobacz więcej informacji poniżej. Użytkownik może uzyskać dostęp do dzienników WAF z konta magazynu, centrum zdarzeń lub usługi log Analytics. 
 
-OWASP has two modes for deciding whether to block traffic: Traditional mode and Anomaly Scoring mode.
+### <a name="waf-modes"></a>Tryby WAF
 
-In Traditional mode, traffic that matches any rule is considered independently of any other rule matches. This mode is easy to understand. But the lack of information about how many rules match a specific request is a limitation. So, Anomaly Scoring mode was introduced. It's the default for OWASP 3.*x*.
+WAF Application Gateway można skonfigurować do uruchamiania w następujących dwóch trybach:
 
-In Anomaly Scoring mode, traffic that matches any rule isn't immediately blocked when the firewall is in Prevention mode. Rules have a certain severity: *Critical*, *Error*, *Warning*, or *Notice*. That severity affects a numeric value for the request, which is called the Anomaly Score. For example, one *Warning* rule match contributes 3 to the score. One *Critical* rule match contributes 5.
+* **Tryb wykrywania**: służy do monitorowania i rejestrowania wszystkich alertów dotyczących zagrożeń. Należy włączyć diagnostykę rejestrowania dla Application Gateway w sekcji **Diagnostyka** . Należy również upewnić się, że dziennik WAF został wybrany i włączony. Zapora aplikacji sieci Web nie blokuje żądań przychodzących, gdy działa w trybie wykrywania.
+* **Tryb zapobiegania**: blokuje wtargnięcie i ataki wykrywane przez zasady. Osoba atakująca otrzymuje wyjątek "403 nieautoryzowany dostęp", a połączenie jest zamknięte. Tryb zapobiegania rejestruje takie ataki w dziennikach WAF.
+
+> [!NOTE]
+> Zaleca się uruchamianie nowo wdrożonych WAF w trybie wykrywania przez krótki czas w środowisku produkcyjnym. Zapewnia to możliwość uzyskiwania [dzienników zapory](../../application-gateway/application-gateway-diagnostics.md#firewall-log) i aktualizowania wyjątków lub [reguł niestandardowych](./custom-waf-rules-overview.md) przed przejściem do trybu zapobiegania. Może to pomóc w zmniejszeniu wystąpienia nieoczekiwanego zablokowanego ruchu.
+
+### <a name="anomaly-scoring-mode"></a>Tryb oceniania anomalii
+
+OWASP ma dwa tryby decydowania, czy ruch ma być blokowany: tryb tradycyjny i tryb oceniania anomalii.
+
+W trybie tradycyjnym ruch pasujący do dowolnej reguły jest traktowany niezależnie od innych dopasowań reguł. Ten tryb jest łatwy do zrozumienia. Jednak brak informacji o liczbie reguł zgodnych z określonym żądaniem jest ograniczeniem. Dlatego wprowadzono tryb oceniania anomalii. Jest to wartość domyślna dla OWASP 3. *x*.
+
+W trybie oceniania anomalii ruch pasujący do dowolnej reguły nie jest natychmiast blokowany, gdy Zapora działa w trybie zapobiegania. Reguły mają określoną wagę: *krytyczny*, *błąd*, *Ostrzeżenie*lub *powiadomienie*. Ważność ta ma wpływ na wartość liczbową żądania, która jest nazywana wynikiem anomalii. Na przykład jedna reguła *ostrzegawcza* współtworzy wynik 3. Jedna zgodność z regułą *krytyczną* współtworzy 5.
 
 |Ważność  |Wartość  |
 |---------|---------|
-|Krytyczna     |5|
+|Krytyczny     |5|
 |Błąd        |4|
 |Ostrzeżenie      |3|
-|Notice       |2|
+|Wzory       |2|
 
-There's a threshold of 5 for the Anomaly Score to block traffic. So, a single *Critical* rule match is enough for the Application Gateway WAF to block a request, even in Prevention mode. But one *Warning* rule match only increases the Anomaly Score by 3, which isn't enough by itself to block the traffic.
+Istnieje próg 5 dla wyniku anomalii, aby blokować ruch. Tak więc pojedyncze dopasowanie reguły *krytycznej* jest wystarczające dla Application Gateway WAF do zablokowania żądania, nawet w trybie zapobiegania. Ale jedna reguła *ostrzegawcza* dopasowuje tylko wynik anomalii o wartości 3, która nie wystarcza do blokowania ruchu.
 
 > [!NOTE]
-> The message that's logged when a WAF rule matches traffic includes the action value "Blocked." But the traffic is actually only blocked for an Anomaly Score of 5 or higher.  
+> Komunikat rejestrowany, gdy reguła WAF jest zgodna z ruchem, zawiera wartość akcji "zablokowana". Jednak ruch jest blokowany tylko dla wyniku anomalii o wartości 5 lub wyższej.  
 
-### <a name="waf-monitoring"></a>WAF monitoring
+### <a name="waf-monitoring"></a>Monitorowanie WAF
 
-Monitorowanie kondycji bramy Application Gateway jest ważne. Monitoring the health of your WAF and the applications that it protects are supported by integration with Azure Security Center, Azure Monitor, and Azure Monitor logs.
+Monitorowanie kondycji bramy Application Gateway jest ważne. Monitorowanie kondycji WAF i aplikacji, które chroni, jest obsługiwane przez integrację z dziennikami Azure Security Center, Azure Monitor i Azure Monitor.
 
-![Diagram of Application Gateway WAF diagnostics](../media/ag-overview/diagnostics.png)
+![Diagram diagnostyki Application Gateway WAF](../media/ag-overview/diagnostics.png)
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-Application Gateway logs are integrated with [Azure Monitor](../../azure-monitor/overview.md). This allows you to track diagnostic information, including WAF alerts and logs. You can access this capability on the **Diagnostics** tab in the Application Gateway resource in the portal or directly through Azure Monitor. To learn more about enabling logs, see [Application Gateway diagnostics](../../application-gateway/application-gateway-diagnostics.md).
+Dzienniki Application Gateway są zintegrowane z [Azure monitor](../../azure-monitor/overview.md). Pozwala to na śledzenie informacji diagnostycznych, w tym alertów WAF i dzienników. Możesz uzyskać dostęp do tej funkcji na karcie **Diagnostyka** w zasobie Application Gateway w portalu lub bezpośrednio za pomocą Azure monitor. Aby dowiedzieć się więcej na temat włączania dzienników, zobacz [Application Gateway Diagnostics](../../application-gateway/application-gateway-diagnostics.md).
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Security Center](../../security-center/security-center-intro.md) helps you prevent, detect, and respond to threats. It provides increased visibility into and control over the security of your Azure resources. Application Gateway is [integrated with Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center scans your environment to detect unprotected web applications. It can recommend Application Gateway WAF to protect these vulnerable resources. You create the firewalls directly from Security Center. These WAF instances are integrated with Security Center. They send alerts and health information to Security Center for reporting.
+[Security Center](../../security-center/security-center-intro.md) pomaga zapobiegać zagrożeniom, wykrywać je i reagować na nie. Zapewnia ona lepszy wgląd w zabezpieczenia zasobów platformy Azure i kontrolę nad nimi. Application Gateway jest [zintegrowana z Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center skanuje środowisko w celu wykrywania niechronionych aplikacji sieci Web. Może być zalecane Application Gateway WAF do ochrony tych zasobów. Zapory są tworzone bezpośrednio z Security Center. Te wystąpienia WAF są zintegrowane z Security Center. Wysyłają one alerty i informacje o kondycji w celu Security Center na potrzeby raportowania.
 
-![Security Center overview window](../media/ag-overview/figure1.png)
+![Okno przeglądu Security Center](../media/ag-overview/figure1.png)
 
-#### <a name="azure-sentinel"></a>Usługa Azure Sentinel
+#### <a name="azure-sentinel"></a>Azure Sentinel
 
-Microsoft Azure Sentinel is a scalable, cloud-native, security information event management (SIEM) and security orchestration automated response (SOAR) solution. Azure Sentinel delivers intelligent security analytics and threat intelligence across the enterprise, providing a single solution for alert detection, threat visibility, proactive hunting, and threat response.
+Microsoft Azure wskaźnikiem wydajności jest skalowalne i natywne rozwiązanie do zarządzania zdarzeniami zabezpieczeń (SIEM) i o (Security Orchestration). Platforma Azure — wskaźnik przedstawia inteligentne rozwiązania w zakresie zabezpieczeń i analizy zagrożeń w całym przedsiębiorstwie, zapewniając jedno rozwiązanie do wykrywania alertów, widoczności zagrożeń, aktywnego polowania i reagowania na zagrożenia.
 
-With the built-in Azure WAF firewall events workbook, you can get an overview of the security events on your WAF. This includes events, matched and blocked rules, and everything else that gets logged in the firewall logs. See more on logging below. 
+Korzystając z wbudowanego skoroszytu WAF zdarzeń zapory platformy Azure, możesz zapoznać się z omówieniem zdarzeń zabezpieczeń w WAF. Obejmuje to zdarzenia, dopasowane i zablokowane reguły oraz wszystkie inne, które są rejestrowane w dziennikach zapory. Zobacz więcej na temat rejestrowania poniżej. 
 
 
-![Sentinel](../media/ag-overview/sentinel.png)
+![Wskaźnik](../media/ag-overview/sentinel.png)
 
 #### <a name="logging"></a>Rejestrowanie
 
-Application Gateway WAF provides detailed reporting on each threat that it detects. Logging is integrated with Azure Diagnostics logs. Alerts are recorded in the .json format. These logs can be integrated with [Azure Monitor logs](../../azure-monitor/insights/azure-networking-analytics.md).
+Application Gateway WAF udostępnia szczegółowe raporty dotyczące każdego wykrytego zagrożenia. Rejestrowanie jest zintegrowane z dziennikami Diagnostyka Azure. Alerty są rejestrowane w formacie JSON. Te dzienniki można zintegrować z [dziennikami Azure monitor](../../azure-monitor/insights/azure-networking-analytics.md).
 
-![Application Gateway diagnostics logs windows](../media/ag-overview/waf2.png)
+![Okna dzienników diagnostyki Application Gateway](../media/ag-overview/waf2.png)
 
 ```json
 {
@@ -204,12 +204,12 @@ Application Gateway WAF provides detailed reporting on each threat that it detec
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Cena jednostki SKU zapory aplikacji sieci Web w usłudze Application Gateway
 
-The pricing models are different for the WAF_v1 and WAF_v2 SKUs. Please see the [Application Gateway pricing](https://azure.microsoft.com/pricing/details/application-gateway/) page to learn more. 
+Modele cen są różne dla WAF_v1 i WAF_v2 jednostek SKU. Aby dowiedzieć się więcej, zobacz stronę z [cennikiem Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) . 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Get started by [Creating a WAF policy](create-waf-policy-ag.md)
-- Learn more about [WAF managed rules](application-gateway-crs-rulegroups-rules.md)
-- Learn more about [Custom Rules](custom-waf-rules-overview.md)
-- Learn about [Web Application Firewall on Azure Front Door](../afds/afds-overview.md)
+- Rozpocznij od [utworzenia zasad WAFymi](create-waf-policy-ag.md)
+- Dowiedz się więcej o [regułach zarządzanych przez WAF](application-gateway-crs-rulegroups-rules.md)
+- Dowiedz się więcej na temat [reguł niestandardowych](custom-waf-rules-overview.md)
+- Dowiedz się więcej o [zaporze aplikacji sieci Web na platformie Azure — drzwi](../afds/afds-overview.md)
 

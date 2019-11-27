@@ -1,6 +1,6 @@
 ---
-title: Image tag best practices
-description: Best practices for tagging and versioning Docker container images when pushing images to and pulling images from an Azure container registry
+title: Najlepsze praktyki dotyczące tagów obrazu
+description: Najlepsze rozwiązania dotyczące tagowania i przechowywania wersji obrazów kontenerów platformy Docker podczas wypychania obrazów do i ściągania obrazów z usługi Azure Container Registry
 author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
@@ -12,50 +12,50 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455003"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Recommendations for tagging and versioning container images
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Zalecenia dotyczące tagowania i przechowywania wersji obrazów kontenerów
 
-When pushing deploying container images to a container registry and then deploying them, you need a strategy for image tagging and versioning. This article discusses two approaches and where each fits during the container lifecycle:
+Podczas wypychania wdrażania obrazów kontenera do rejestru kontenerów, a następnie wdrażania ich, potrzebna jest strategia dla tagowania obrazów i przechowywania wersji. W tym artykule omówiono dwa podejścia i miejsce, w którym każdy z nich mieści się w cyklu życia kontenera:
 
-* **Stable tags** - Tags that you reuse, for example, to indicate a major or minor version such as *mycontainerimage:1.0*.
-* **Unique tags** - A different tag for each image you push to a registry, such as *mycontainerimage:abc123*.
+* **Stałe znaczniki** — Tagi, których można użyć, na przykład, aby wskazać wersję główną lub pomocniczą, taką jak *mycontainerimage: 1.0*.
+* **Unikatowe Tagi** — inny tag dla każdego obrazu, który można wypchnąć do rejestru, taki jak *mycontainerimage: abc123*.
 
-## <a name="stable-tags"></a>Stable tags
+## <a name="stable-tags"></a>Stałe Tagi
 
-**Recommendation**: Use stable tags to maintain **base images** for your container builds. Avoid deployments with stable tags, because those tags continue to receive updates and can introduce inconsistencies in production environments.
+**Zalecenie**: Użyj stabilnych tagów do obsługi **obrazów podstawowych** dla kompilacji kontenerów. Unikaj wdrożeń z stabilnymi tagami, ponieważ te Tagi nadal odbierają aktualizacje i mogą wprowadzać niespójności w środowiskach produkcyjnych.
 
-*Stable tags* mean a developer, or a build system, can continue to pull a specific tag, which continues to get updates. Stable doesn’t mean the contents are frozen. Rather, stable implies the image should be stable for the intent of that version. To stay “stable”, it might be serviced to apply security patches or framework updates.
+*Stałe znaczniki* oznaczają dewelopera lub system kompilacji, można kontynuować ściąganie określonego tagu, który będzie nadal otrzymywać aktualizacje. Stabilne nie oznacza, że zawartość jest zamrożona. Zamiast tego, stabilne oznacza, że obraz powinien być stabilny dla zamiaru tej wersji. Aby zachować stabilność, może być możliwe zastosowanie poprawek zabezpieczeń lub aktualizacji struktury.
 
 ### <a name="example"></a>Przykład
 
-A framework team ships version 1.0. They know they’ll ship updates, including minor updates. To support stable tags for a given major and minor version, they have two sets of stable tags.
+Zespół struktury dostarcza wersję 1,0. Wiedzą oni, że będą dostarczali aktualizacje, w tym drobne aktualizacje. Aby zapewnić obsługę stabilnych tagów dla danej wersji głównej i pomocniczej, mają dwa zestawy stabilnych tagów.
 
-* `:1` – a stable tag for the major version. `1` represents the “newest” or “latest” 1.* version.
-* `:1.0`- a stable tag for version 1.0, allowing a developer to bind to updates of 1.0, and not be rolled forward to 1.1 when it is released.
+* `:1` — stabilny tag wersji głównej. `1` reprezentuje "najnowszą" lub "najnowszą" wersję "1. *".
+* `:1.0`— stabilny tag dla wersji 1,0, dzięki czemu deweloper może powiązać z aktualizacją 1,0 i nie zostać przesunięty do przodu do 1,1 po jego udostępnieniu.
 
-The team also uses the `:latest` tag, which points to the latest stable tag, no matter what the current major version is.
+Zespół używa również znacznika `:latest`, który wskazuje na najnowszy stabilny tag, niezależnie od tego, jaka jest bieżąca wersja główna.
 
-When base image updates are available, or any type of servicing release of the framework, images with the stable tags are updated to the newest digest that represents the most current stable release of that version.
+Gdy dostępne są aktualizacje obrazu podstawowego lub dowolnego typu wersji obsługującej platformę, obrazy z stabilnymi tagami są aktualizowane do najnowszego podsumowania, które reprezentuje najbardziej aktualną, stabilną wersję tej wersji.
 
-In this case, both the major and minor tags are continually being serviced. From a base image scenario, this allows the image owner to provide serviced images.
+W takim przypadku Tagi główne i pomocnicze są stale poddane obsłużeniu. W scenariuszu obrazu podstawowego umożliwia właścicielowi obrazu udostępnianie obrazów z obsługą.
 
-## <a name="unique-tags"></a>Unique tags
+## <a name="unique-tags"></a>Unikatowe Tagi
 
-**Recommendation**: Use unique tags for **deployments**, especially in an environment that could scale on multiple nodes. You likely want deliberate deployments of a consistent version of components. If your container restarts or an orchestrator scales out more instances, your hosts won’t accidentally pull a newer version, inconsistent with the other nodes.
+**Zalecenie**: Użyj unikatowych znaczników dla **wdrożeń**, szczególnie w środowisku, które może być skalowane na wielu węzłach. Możesz chcieć zamierzone wdrożenia spójnej wersji składników. Jeśli kontener zostanie ponownie uruchomiony lub program Orchestrator skaluje więcej wystąpień, hosty nie będą przypadkowo ściągać nowszej wersji, niespójn z innymi węzłami.
 
-Unique tagging simply means that every image pushed to a registry has a unique tag. Tags are not reused. There are several patterns you can follow to generate unique tags, including:
+Unikatowe znakowanie oznacza po prostu, że każdy obraz wypychany do rejestru ma unikatowy tag. Tagi nie są ponownie używane. Istnieje kilka wzorców, które można wykonać, aby generować unikatowe Tagi, w tym:
 
-* **Date-time stamp** - This approach is fairly common, since you can clearly tell when the image was built. But, how to correlate it back to your build system? Do you have to find the build that was completed at the same time? What time zone are you in? Are all your build systems calibrated to UTC?
-* **Git commit**  – This approach works until you start supporting base image updates. If a base image update happens, your build system  kicks off with the same Git commit as the previous build. However, the base image has new content. In general, a Git commit provides a *semi*-stable tag.
-* **Manifest digest** - Each container image pushed to a container registry is associated with a manifest, identified by a unique SHA-256 hash, or digest. While unique, the digest is long, difficult to read, and uncorrelated with your build environment.
-* **Build ID** - This option may be best since it's likely incremental, and it allows you to correlate back to the specific build to find all the artifacts and logs. However, like a manifest digest, it might be difficult for a human to read.
+* **Sygnatura daty i godziny** — ta metoda jest dość powszechna, ponieważ można jasno określić, kiedy obraz został skompilowany. Ale jak skorelować ją z powrotem do systemu kompilacji? Czy musisz znaleźć kompilację, która została ukończona w tym samym czasie? W jakiej strefie czasowej jesteś? Czy wszystkie systemy kompilacji zostały skalibrowane do czasu UTC?
+* **Zatwierdzenie git** — to podejście działa do momentu rozpoczęcia obsługi aktualizacji obrazu podstawowego. W przypadku aktualizacji obrazu podstawowego system kompilacji rozpoczyna pracę z tym samym zatwierdzeniem git co poprzednią kompilację. Obraz podstawowy ma jednak nową zawartość. Ogólnie rzecz biorąc, zatwierdzenie git zawiera tag *częściowo*stabilny.
+* **Szyfrowanie manifestu** — każdy obraz kontenera wypychany do rejestru kontenerów jest skojarzony z manifestem, identyfikowanym przez unikatowy skrót SHA-256 lub skrótem. Chociaż unikatowy, skrót jest długi, trudny do odczytania i nieskorelowany ze środowiskiem kompilacji.
+* **Identyfikator kompilacji** — ta opcja może być Najlepsza, ponieważ jest najprawdopodobniej przyrostowa i umożliwia korelację z powrotem z konkretną kompilacją w celu znalezienia wszystkich artefaktów i dzienników. Jednak takie jak szyfrowanie manifestu może być trudne do odczytania przez człowieka.
 
-  If your organization has several build systems, prefixing the tag with the build system name is a variation on this option: `<build-system>-<build-id>`. For example, you could differentiate builds from the API team’s Jenkins build system and the web team's Azure Pipelines build system.
+  Jeśli organizacja ma kilka systemów kompilacji, poprzedź tag nazwą systemu kompilacji jest odmianą tej opcji: `<build-system>-<build-id>`. Na przykład można odróżnić kompilacje od systemu kompilacji Jenkins zespołu interfejsu API i systemu kompilacji Azure Pipelines zespołu internetowego.
 
 ## <a name="next-steps"></a>Następne kroki
 
-For a more detailed discussion of the concepts in this article, see the blog post [Docker Tagging: Best practices for tagging and versioning docker images](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
+Aby zapoznać się z bardziej szczegółowym omówieniem pojęć opisanych w tym artykule, zobacz wpis w blogu — [znaczniki Docker: najlepsze rozwiązania dotyczące tagowania i przechowywania wersji obrazów platformy Docker](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
 
-To help maximize the performance and cost-effective use of your Azure container registry, see [Best practices for Azure Container Registry](container-registry-best-practices.md).
+Aby zwiększyć wydajność i ekonomiczne użycie usługi Azure Container Registry, zobacz [najlepsze rozwiązania dotyczące Azure Container Registry](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 

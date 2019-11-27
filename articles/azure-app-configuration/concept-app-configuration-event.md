@@ -81,7 +81,7 @@ Aplikacje, które obsługują zdarzenia konfiguracji aplikacji, powinny spełnia
 > * Użyj pola podmiot, aby uzyskać dostęp do zmodyfikowanej wartości klucz-wartość.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o Event Grid i wydawanie zdarzeń konfiguracji aplikacji platformy Azure spróbuj:
 

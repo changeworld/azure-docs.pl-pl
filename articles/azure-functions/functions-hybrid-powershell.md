@@ -1,6 +1,6 @@
 ---
-title: Manage remote on-premises resources by using PowerShell functions
-description: Learn how to configure Hybrid Connections in Azure Relay to connect a PowerShell function app to on-premises resources, which can then be used to remotely manage the on-premises resource.
+title: Zarządzanie zdalnymi zasobami lokalnymi przy użyciu funkcji programu PowerShell
+description: Dowiedz się, jak skonfigurować Połączenia hybrydowe w Azure Relay, aby połączyć aplikację funkcji programu PowerShell z zasobami lokalnymi, które mogą być następnie używane do zdalnego zarządzania zasobem lokalnym.
 author: eamono
 ms.topic: conceptual
 ms.date: 9/5/2019
@@ -12,14 +12,14 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226934"
 ---
-# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Managing hybrid environments with PowerShell in Azure Functions and App Service Hybrid Connections
+# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Zarządzanie środowiskami hybrydowymi przy użyciu programu PowerShell w Azure Functions i App Service Połączenia hybrydowe
 
-The Azure App Service Hybrid Connections feature enables access to resources in other networks. You can learn more about this capability in the [Hybrid Connections](../app-service/app-service-hybrid-connections.md) documentation. This article describes how to use this capability to run PowerShell functions that target an on-premises server. This server can then be used to manage all resources in the on-premises environment from an Azure PowerShell function.
+Funkcja Połączenia hybrydowe Azure App Service umożliwia dostęp do zasobów w innych sieciach. Więcej informacji na temat tej możliwości można znaleźć w dokumentacji [połączenia hybrydowe](../app-service/app-service-hybrid-connections.md) . W tym artykule opisano, jak używać tej funkcji do uruchamiania funkcji programu PowerShell przeznaczonych dla serwera lokalnego. Tego serwera można następnie użyć do zarządzania wszystkimi zasobami w środowisku lokalnym przy użyciu funkcji Azure PowerShell.
 
 
-## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>Configure an on-premises server for PowerShell remoting
+## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>Konfigurowanie serwera lokalnego na potrzeby komunikacji zdalnej programu PowerShell
 
-The following script enables PowerShell remoting, and it creates a new firewall rule and a WinRM https listener. For testing purposes, a self-signed certificate is used. In a production environment, we recommend that you use a signed certificate.
+Poniższy skrypt włącza funkcję komunikacji zdalnej programu PowerShell i tworzy nową regułę zapory i odbiornik https usługi WinRM. Do celów testowych jest używany certyfikat z podpisem własnym. W środowisku produkcyjnym zalecamy korzystanie z podpisanego certyfikatu.
 
 ```powershell
 # For configuration of WinRM, see
@@ -46,98 +46,98 @@ $Cmd = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostname=
 cmd.exe /C $Cmd
 ```
 
-## <a name="create-a-powershell-function-app-in-the-portal"></a>Create a PowerShell function app in the portal
+## <a name="create-a-powershell-function-app-in-the-portal"></a>Tworzenie aplikacji funkcji programu PowerShell w portalu
 
-The App Service Hybrid Connections feature is available only in Basic, Standard, and Isolated pricing plans. When you create the function app with PowerShell, create or select one of these plans.
+Funkcja Połączenia hybrydowe App Service jest dostępna tylko w planach cen w warstwach Podstawowa, standardowa i izolowana. Podczas tworzenia aplikacji funkcji przy użyciu programu PowerShell Utwórz lub wybierz jeden z tych planów.
 
-1. In the [Azure portal](https://portal.azure.com), select **+ Create a resource** in the menu on the left, and then select **Function app**.
+1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **+ Utwórz zasób** w menu po lewej stronie, a następnie wybierz pozycję **aplikacja funkcji**.
 
-1. For **Hosting plan**, select **App Service plan**, and then select **App Service plan/Location**.
+1. W obszarze **Plan hostingu**wybierz pozycję **Plan App Service**, a następnie wybierz pozycję **App Service plan/lokalizacja**.
 
-1. Select **Create new**, type an **App Service plan** name, choose a **Location** in a [region](https://azure.microsoft.com/regions/) near you or near other services your functions access, and then select **Pricing tier**.
+1. Wybierz **pozycję Utwórz nowy**, wpisz **nazwę planu App Service** , wybierz **lokalizację** w [regionie](https://azure.microsoft.com/regions/) blisko siebie lub w niemal innych usługach, do których ma dostęp funkcja, a następnie wybierz pozycję **warstwa cenowa**.
 
-1. Choose the S1 Standard plan, and then select **Apply**.
+1. Wybierz plan Standard S1, a następnie wybierz pozycję **Zastosuj**.
 
-1. Select **OK** to create the plan, and then configure the remaining **Function App** settings as specified in the table immediately after the following screenshot:
+1. Wybierz **przycisk OK** , aby utworzyć plan, a następnie skonfiguruj pozostałe ustawienia **aplikacja funkcji** zgodnie z opisem w tabeli bezpośrednio po poniższym zrzucie ekranu:
 
-    ![PowerShell Core function app](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
+    ![Aplikacja funkcji podstawowych programu PowerShell](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
     | Ustawienie      | Sugerowana wartość  | Opis                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Nazwa aplikacji** | Nazwa unikatowa w skali globalnej | Nazwa identyfikująca nową aplikację funkcji. Prawidłowe znaki to `a-z`, `0-9` i `-`.  | 
     | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w ramach której jest tworzona ta nowa aplikacja funkcji. |
-    | **Grupa zasobów** |  myResourceGroup | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja funkcji. You can also use the suggested value. |
-    | **OS** | Preferred OS | Select Windows. |
-    | **Stos środowiska uruchomieniowego** | Preferowany język | Choose PowerShell Core. |
-    | **Magazyn** |  Nazwa unikatowa w skali globalnej |  Utwórz konto magazynu używane przez aplikację funkcji. Storage account names must be from 3 to 24 characters in length and can contain numbers and lowercase letters only. Możesz także użyć istniejącego konta.
-    | **Application Insights** | Domyślne | Creates an Application Insights resource of the same *App name* in the nearest supported region. By expanding this setting, you can change the **New resource name** or choose a different **Location** in an [Azure geography](https://azure.microsoft.com/global-infrastructure/geographies/) region where you want to store your data. |
+    | **Grupa zasobów** |  myResourceGroup | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja funkcji. Możesz również użyć sugerowanej wartości. |
+    | **OS** | Preferowany system operacyjny | Wybierz pozycję Windows. |
+    | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz pozycję PowerShell Core. |
+    | **Storage** |  Nazwa unikatowa w skali globalnej |  Utwórz konto magazynu używane przez aplikację funkcji. Nazwy kont magazynu muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Możesz także użyć istniejącego konta.
+    | **Application Insights** | Domyślne | Tworzy zasób Application Insights o tej samej *nazwie aplikacji* w najbliższym obsługiwanym regionie. Rozszerzając to ustawienie, można zmienić **nazwę nowego zasobu** lub wybrać inną **lokalizację** w regionie [geograficznym platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , w którym mają być przechowywane dane. |
 
-1. After your settings are validated, select **Create**.
+1. Po sprawdzeniu poprawności ustawień wybierz pozycję **Utwórz**.
 
-1. Select the **Notification** icon in the upper-right corner of the portal, and wait for the "Deployment succeeded" message.
+1. Wybierz ikonę **powiadomienia** w prawym górnym rogu portalu i poczekaj na komunikat "wdrożenie powiodło się".
 
-1. Wybierz pozycję **Przejdź do zasobu**, aby wyświetlić nową aplikację funkcji. You can also select **Pin to dashboard**. Pinning makes it easier to return to this function app resource from your dashboard.
+1. Wybierz pozycję **Przejdź do zasobu**, aby wyświetlić nową aplikację funkcji. Możesz również wybrać pozycję **Przypnij do pulpitu nawigacyjnego**. Przypinanie ułatwia powrót do tego zasobu aplikacji funkcji z pulpitu nawigacyjnego.
 
-## <a name="create-a-hybrid-connection-for-the-function-app"></a>Create a hybrid connection for the function app
+## <a name="create-a-hybrid-connection-for-the-function-app"></a>Tworzenie połączenia hybrydowego dla aplikacji funkcji
 
-Hybrid connections are configured from the networking section of the function app:
+Połączenia hybrydowe są konfigurowane z poziomu sekcji sieci aplikacji funkcji:
 
-1. Select the **Platform features** tab in the function app, and then select **Networking**. 
-   ![App Overview for platform networking](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
-1. Select **Configure your hybrid connections endpoints**.
+1. Wybierz kartę **funkcje platformy** w aplikacji funkcji, a następnie wybierz pozycję **Sieć**. 
+   Omówienie ![aplikacji dla sieci platformy](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
+1. Wybierz pozycję **Konfiguruj punkty końcowe połączeń hybrydowych**.
    ![Sieć](./media/functions-hybrid-powershell/select-network-feature.png)  
-1. Select **Add hybrid connection**.
-   ![Hybrid Connection](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
-1. Enter information about the hybrid connection as shown right after the following screenshot. You have the option of making the **Endpoint Host** setting match the host name of the on-premises server to make it easier to remember the server later when you're running remote commands. The port matches the default Windows remote management service port that was defined on the server earlier.
-  ![Add Hybrid Connection](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
+1. Wybierz pozycję **Dodaj połączenie hybrydowe**.
+   ![połączenie hybrydowe](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
+1. Wprowadź informacje o połączeniu hybrydowym, jak pokazano bezpośrednio po poniższym zrzucie ekranu. Istnieje możliwość ustawienia **hosta punktu końcowego** zgodnego z nazwą hosta serwera lokalnego w celu łatwiejszego zapamiętania serwera podczas wykonywania poleceń zdalnych. Port jest zgodny z domyślnym portem usługi zdalnego zarządzania systemu Windows, który został zdefiniowany na serwerze wcześniej.
+  ![dodać połączenia hybrydowego](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
 
-    **Hybrid connection name**: ContosoHybridOnPremisesServer
+    **Nazwa połączenia hybrydowego**: ContosoHybridOnPremisesServer
     
-    **Endpoint Host**: finance1
+    **Host punktu końcowego**: finance1
     
-    **Endpoint Port**: 5986
+    **Port punktu końcowego**: 5986
     
-    **Servicebus namespace**: Create New
+    **ServiceBus — przestrzeń nazw**: Utwórz nową
     
-    **Location**: Pick an available location
+    **Lokalizacja**: Wybierz dostępną lokalizację
     
-    **Name**: contosopowershellhybrid
+    **Nazwa**: contosopowershellhybrid
 
-5. Select **OK** to create the hybrid connection.
+5. Wybierz **przycisk OK** , aby utworzyć połączenie hybrydowe.
 
-## <a name="download-and-install-the-hybrid-connection"></a>Download and install the hybrid connection
+## <a name="download-and-install-the-hybrid-connection"></a>Pobierz i zainstaluj połączenie hybrydowe
 
-1. Select **Download connection manager** to save the .msi file locally on your computer.
-![Download installer](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
-1. Copy the .msi file from your local computer to the on-premises server.
-1. Run the Hybrid Connection Manager installer to install the service on the on-premises server.
-![Install Hybrid Connection](./media/functions-hybrid-powershell/hybrid-installation.png)  
-1. From the portal, open the hybrid connection and then copy the gateway connection string to the clipboard.
-![Copy hybrid connection string](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
-1. Open the Hybrid Connection Manager UI on the on-premises server.
-![Open Hybrid Connection UI](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
-1. Select the **Enter Manually** button and paste the connection string from the clipboard.
-![Paste connection](./media/functions-hybrid-powershell/enter-manual-connection.png)  
-1. Restart the Hybrid Connection Manager from PowerShell if it doesn't show as connected.
+1. Wybierz pozycję **Pobierz Menedżera połączeń** , aby zapisać plik msi lokalnie na komputerze.
+](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png) Instalatora pobierania ![  
+1. Skopiuj plik msi z komputera lokalnego na serwer lokalny.
+1. Uruchom Instalatora Menedżer połączeń hybrydowych, aby zainstalować usługę na serwerze lokalnym.
+![zainstalować połączenia hybrydowego](./media/functions-hybrid-powershell/hybrid-installation.png)  
+1. W portalu Otwórz połączenie hybrydowe, a następnie skopiuj parametry połączenia bramy do Schowka.
+![Kopiuj parametry połączenia hybrydowego](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
+1. Otwórz interfejs użytkownika Menedżer połączeń hybrydowych na serwerze lokalnym.
+![Otwórz interfejs użytkownika połączenia hybrydowego](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
+1. Wybierz przycisk **wprowadź ręcznie** i wklej parametry połączenia ze schowka.
+![wkleić](./media/functions-hybrid-powershell/enter-manual-connection.png) połączenia  
+1. Uruchom ponownie Menedżer połączeń hybrydowych z programu PowerShell, jeśli nie jest wyświetlany jako połączony.
     ```powershell
     Restart-Service HybridConnectionManager
     ```
 
-## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Create an app setting for the password of an administrator account
+## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Utwórz ustawienie aplikacji dla hasła konta administratora
 
-1. Select the **Platform features** tab in the function app.
-1. Under **General Settings**, select **Configuration**.
-![Select Platform configuration](./media/functions-hybrid-powershell/select-configuration.png)  
-1. Expand **New application setting** to create a new setting for the password.
-1. Name the setting _ContosoUserPassword_, and enter the password.
-1. Select **OK** and then save to store the password in the function application.
-![Add app setting for password](./media/functions-hybrid-powershell/add-appsetting-password.png)  
+1. Wybierz kartę **funkcje platformy** w aplikacji funkcji.
+1. W obszarze **Ustawienia ogólne**wybierz pozycję **Konfiguracja**.
+![wybierz konfigurację platformy](./media/functions-hybrid-powershell/select-configuration.png)  
+1. Rozwiń pozycję **nowe ustawienie aplikacji** , aby utworzyć nowe ustawienie dla hasła.
+1. Nazwij ustawienie _ContosoUserPassword_, a następnie wprowadź hasło.
+1. Wybierz przycisk **OK** , a następnie Zapisz, aby zapisać hasło w aplikacji funkcji.
+![dodać ustawienia aplikacji dla hasła](./media/functions-hybrid-powershell/add-appsetting-password.png)  
 
-## <a name="create-a-function-http-trigger-to-test"></a>Create a function http trigger to test
+## <a name="create-a-function-http-trigger-to-test"></a>Tworzenie wyzwalacza http funkcji do testowania
 
-1. Create a new HTTP trigger function from the function app.
-![Create new HTTP trigger](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
-1. Replace the PowerShell code from the template with the following code:
+1. Utwórz nową funkcję wyzwalacza HTTP z aplikacji funkcji.
+![utworzyć nowy wyzwalacz HTTP](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
+1. Zastąp kod programu PowerShell z szablonu następującym kodem:
 
     ```powershell
     # Input bindings are passed in via param block.
@@ -172,12 +172,12 @@ Hybrid connections are configured from the networking section of the function ap
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-3. Select **Save** and **Run** to test the function.
-![Test the function app](./media/functions-hybrid-powershell/test-function-hybrid.png)  
+3. Wybierz pozycję **Zapisz** i **Uruchom** , aby przetestować funkcję.
+![przetestować aplikacji funkcji](./media/functions-hybrid-powershell/test-function-hybrid.png)  
 
-## <a name="managing-other-systems-on-premises"></a>Managing other systems on-premises
+## <a name="managing-other-systems-on-premises"></a>Zarządzanie innymi systemami lokalnymi
 
-You can use the connected on-premises server to connect to other servers and management systems in the local environment. This lets you manage your datacenter operations from Azure by using your PowerShell functions. The following script registers a PowerShell configuration session that runs under the provided credentials. These credentials must be for an administrator on the remote servers. You can then use this configuration to access other endpoints on the local server or datacenter.
+Połączonego serwera lokalnego można użyć do nawiązania połączenia z innymi serwerami i systemami zarządzania w środowisku lokalnym. Pozwala to na zarządzanie operacjami centrum danych z platformy Azure przy użyciu funkcji programu PowerShell. Poniższy skrypt rejestruje sesję konfiguracji programu PowerShell, która jest uruchamiana w ramach podanych poświadczeń. Te poświadczenia muszą mieć uprawnienia administratora na serwerach zdalnych. Tej konfiguracji można następnie użyć do uzyskiwania dostępu do innych punktów końcowych na serwerze lokalnym lub centrum danych.
 
 ```powershell
 # Input bindings are passed in via param block.
@@ -244,15 +244,15 @@ Invoke-Command -ComputerName $HybridEndpoint `
                -ConfigurationName $SessionName
 ```
 
-Replace the following variables in this script with the applicable values from your environment:
+Zastąp następujące zmienne w tym skrypcie odpowiednimi wartościami z Twojego środowiska:
 * $HybridEndpoint
 * $RemoteServer
 
-In the two preceding scenarios, you can connect and manage your on-premises environments by using PowerShell in Azure Functions and Hybrid Connections. We encourage you to learn more about [Hybrid Connections](../app-service/app-service-hybrid-connections.md) and [PowerShell in functions](./functions-reference-powershell.md).
+W dwóch powyższych scenariuszach można połączyć środowiska lokalne i zarządzać nimi za pomocą programu PowerShell w Azure Functions i Połączenia hybrydowe. Zachęcamy do dowiesz się więcej na temat [połączenia hybrydowe](../app-service/app-service-hybrid-connections.md) i [programu PowerShell w funkcjach](./functions-reference-powershell.md).
 
-You can also use Azure [virtual networks](./functions-create-vnet.md) to connect to your on-premises environment through Azure Functions.
+Za pomocą usługi Azure [Virtual Networks](./functions-create-vnet.md) można także połączyć się ze środowiskiem lokalnym za pomocą Azure Functions.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Learn more about working with PowerShell functions](functions-reference-powershell.md)
+> [Dowiedz się więcej o pracy z funkcjami programu PowerShell](functions-reference-powershell.md)

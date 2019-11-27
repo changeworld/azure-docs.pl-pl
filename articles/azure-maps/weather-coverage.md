@@ -65,7 +65,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Gujana                                   | ✓ |   |  ✓| 
 | Haiti                                    | ✓ |   |  ✓| 
 | Honduras                                 | ✓ |   |  ✓| 
-| Jamaica                                  | ✓ |   |  ✓| 
+| Jamajka                                  | ✓ |   |  ✓| 
 | Martynika                               | ✓ |   |  ✓| 
 | Meksyk                                   | ✓ |   |  ✓| 
 | Montserrat                               | ✓ |   |  ✓| 
@@ -85,7 +85,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Wyspy Georgia Południowa i Sandwich Południowy | ✓ |   |  ✓| 
 | Surinam                                 | ✓ |   |  ✓| 
 | Trynidad i Tobago                      | ✓ |   |  ✓| 
-| Turks i Caicos                 | ✓ |   |  ✓| 
+| Wyspy Turks i Caicos                 | ✓ |   |  ✓| 
 | Odległe wyspy Stanów Zjednoczonych                    | ✓ |   |  ✓| 
 | Wyspy Dziewicze Stanów Zjednoczonych                      | ✓ |   |  ✓| 
 | Stany Zjednoczone                            | ✓ | ✓ |  ✓| 
@@ -97,7 +97,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 
 | Country/region              |  Kafelki satelitarne | Prognoza minutowa, kafelki radarowe | Różnych | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
-| Algeria                     | ✓               |                              |        ✓| 
+| Algieria                     | ✓               |                              |        ✓| 
 | Angola                      | ✓               |                              |        ✓| 
 | Bahrajn                     | ✓               |                              |        ✓| 
 | Benin                       | ✓               |                              |        ✓| 
@@ -197,10 +197,10 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Indie                             | ✓ |   |  ✓| 
 | Indonezja                         | ✓ |   |  ✓| 
 | Japonia                             | ✓ | ✓ |  ✓| 
-| Kazakhstan                        | ✓ |   |  ✓| 
+| Kazachstan                        | ✓ |   |  ✓| 
 | Kiribati                          | ✓ |   |  ✓| 
 | Korea                             | ✓ | ✓ |  ✓| 
-| Kyrgyzstan                        | ✓ |   |  ✓| 
+| Kirgistan                        | ✓ |   |  ✓| 
 | Laos                              | ✓ |   |  ✓| 
 | SRA Makau                         | ✓ |   |  ✓| 
 | Malezja                          | ✓ |   |  ✓| 
@@ -236,7 +236,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Tuvalu                            | ✓ |   |  ✓| 
 | Uzbekistan                        | ✓ |   |  ✓| 
 | Vanuatu                           | ✓ |   |  ✓| 
-| Vietnam                           | ✓ |   |  ✓| 
+| Wietnam                           | ✓ |   |  ✓| 
 | Wallis i Futuna                 | ✓ |   |  ✓| 
 
 
@@ -298,5 +298,5 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Szwajcaria            | ✓ | ✓ |  ✓| 
 | Turcja                 | ✓ |   |  ✓| 
 | Ukraina                | ✓ |   |  ✓| 
-| Zjednoczone Królestwo         | ✓ | ✓ |  ✓| 
+| Wielka Brytania         | ✓ | ✓ |  ✓| 
 | Watykan           | ✓ |   |  ✓| 

@@ -99,7 +99,7 @@ https://download.microsoft.com/download/* | Zezwala na pobieranie z witryny pobi
 
 Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
-**urządzenia** | **połączenia**
+**Pliku** | **Połączenie**
 --- | ---
 **Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Host/klaster funkcji Hyper-V** | Połączenia przychodzące na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności maszyn wirtualnych funkcji Hyper-V przy użyciu sesji model wspólnych informacji (CIM).
@@ -159,13 +159,13 @@ time.windows.com | Weryfikuje synchronizację czasu między systemem i czasem gl
 
 W poniższej tabeli zestawiono wymagania dotyczące portów na hostach i maszynach wirtualnych funkcji Hyper-V na potrzeby migracji maszyn wirtualnych.
 
-**urządzenia** | **połączenia**
+**Pliku** | **Połączenie**
 --- | ---
 Hosty/maszyny wirtualne funkcji Hyper-V | Połączenia wychodzące na porcie HTTPS 443 do wysyłania danych replikacji maszyny wirtualnej do Azure Migrate.
 
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Przygotuj się do oceny maszyn wirtualnych funkcji Hyper-V](tutorial-prepare-hyper-v.md) na potrzeby migracji.

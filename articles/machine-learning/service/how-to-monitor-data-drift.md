@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: e33f8a8090e7840087add0e16252bd2a3e873524
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: acf1df6bb71f4ea8878d8f50f3f42f4ddd831fb5
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276776"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539236"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Wykrywaj dryfowanie danych (wersja zapoznawcza) dla modeli wdrożonych w usłudze Azure Kubernetes Service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ W kontekście uczenia maszynowego, dryfowanie danych to zmiana danych wejściowy
 Za pomocą Azure Machine Learning można monitorować dane wejściowe modelu wdrożonego w AKS i porównywać je z zestawem danych szkoleniowym dla modelu. W regularnych odstępach czasu dane wnioskowania są [migawki i](how-to-explore-prepare-data.md)profilowane, a następnie obliczane względem bazowego zestawu danych w celu utworzenia analizy dryfowania danych: 
 
 + Mierzy wielkość dryfu danych o nazwie współczynnik dryfu.
-+ Mierzy współudziały danych przez funkcję, informując o tym, które funkcje spowodowały dryfowanie danych.
++ Mierzy współudziały danych przez funkcję, wskazując, które funkcje spowodowały dryfowanie danych.
 + Metryki odległości miary. Obecnie Wasserstein i odległość energii są obliczane.
 + Mierzy dystrybucje funkcji. Obecnie szacowanie gęstości jądra i histogramy.
 + Wysyłaj alerty do dryfowania danych za pośrednictwem poczty e-mail.
@@ -90,7 +90,7 @@ from azureml.datadrift import DataDriftDetector, AlertConfiguration
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
 
-# create a new DatadriftDetector object
+# create a new DataDriftDetector object
 datadrift = DataDriftDetector.create(ws, model.name, model.version, services, frequency="Day", alert_config=alert_config)
     
 print('Details of Datadrift Object:\n{}'.format(datadrift))
@@ -112,7 +112,7 @@ run = datadrift.run(target_date, services, feature_list=feature_list, compute_ta
 
 # show details of the data drift run
 exp = Experiment(ws, datadrift._id)
-dd_run = Run(experiment=exp, run_id=run)
+dd_run = Run(experiment=exp, run_id=run.id)
 RunDetails(dd_run).show()
 ```
 
@@ -142,7 +142,7 @@ W poniższym przykładzie w języku Python pokazano, jak wykreślić odpowiednie
 # start and end are datetime objects 
 drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 
-# Show all data drift result figures, one per serivice.
+# Show all data drift result figures, one per service.
 # If setting with_details is False (by default), only the data drift magnitude will be shown; if it's True, all details will be shown.
 drift_figures = datadrift.show(with_details=True)
 ```
@@ -187,7 +187,7 @@ Gdy odchylenie danych ma negatywny wpływ na wydajność wdrożonego modelu, jes
 * Oceń wydajność nowo wygenerowanego modelu.
 * Wdróż nowy model, jeśli wydajność jest lepsza niż model produkcyjny.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z pełnym przykładem korzystania z funkcji dryfowania danych, zobacz [Notes dryfowania danych w usłudze Azure ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/drift-on-aks.ipynb). Ten Jupyter Notebook ilustruje użycie [otwartego zestawu danych platformy Azure](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) do uczenia modelu, aby przewidzieć Pogoda, wdrożyć go w usłudze AKS oraz monitorować dane dotyczące dryfowania danych. 
 

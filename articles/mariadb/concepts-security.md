@@ -1,6 +1,6 @@
 ---
-title: Security in Azure Database for MariaDB - Single Server
-description: An overview of the security features in Azure Database for MariaDB - Single Server.
+title: Zabezpieczenia w Azure Database for MariaDB — pojedynczy serwer
+description: Omówienie funkcji zabezpieczeń w ramach Azure Database for MariaDB-jednego serwera.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -13,42 +13,42 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485187"
 ---
-# <a name="security-in-azure-database-for-mariadb---single-server"></a>Security in Azure Database for MariaDB - Single Server
+# <a name="security-in-azure-database-for-mariadb---single-server"></a>Zabezpieczenia w Azure Database for MariaDB — pojedynczy serwer
 
-There are multiple layers of security that are available to protect the data on your Azure Database for MariaDB server. This article outlines those security options.
+Istnieje wiele warstw zabezpieczeń, które są dostępne do ochrony danych na serwerze Azure Database for MariaDB. W tym artykule opisano opcje zabezpieczeń.
 
-## <a name="information-protection-and-encryption"></a>Information protection and encryption
+## <a name="information-protection-and-encryption"></a>Ochrona informacji i szyfrowanie
 
-### <a name="in-transit"></a>In-transit
-Azure Database for MariaDB secures your data by encrypting data in-transit with Transport Layer Security. Encryption (SSL/TLS) is enforced by default.
+### <a name="in-transit"></a>W trakcie przesyłania
+Azure Database for MariaDB zabezpiecza dane przez szyfrowanie danych podczas przesyłania z Transport Layer Security. Szyfrowanie (SSL/TLS) jest domyślnie wymuszane.
 
-### <a name="at-rest"></a>At-rest
-The Azure Database for MariaDB service uses the FIPS 140-2 validated cryptographic module for storage encryption of data at-rest. Data, including backups, are encrypted on disk, with the exception of temporary files created while running queries. The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys are system managed. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
+### <a name="at-rest"></a>W spoczynku
+Usługa Azure Database for MariaDB używa zatwierdzonego modułu kryptograficznego FIPS 140-2 do szyfrowania magazynu danych w spoczynku. Dane, w tym kopie zapasowe, są szyfrowane na dysku, z wyjątkiem plików tymczasowych utworzonych podczas wykonywania zapytań. Usługa używa szyfru AES 256-bit zawartego w szyfrowaniu usługi Azure Storage, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
 
 
 ## <a name="network-security"></a>Bezpieczeństwo sieci
-Connections to an Azure Database for MariaDB server are first routed through a regional gateway. The gateway has a publicly accessible IP, while the server IP addresses are protected. For more information about the gateway, visit the [connectivity architecture article](concepts-connectivity-architecture.md).  
+Połączenia z serwerem Azure Database for MariaDB są najpierw kierowane przez bramę regionalną. Brama ma publicznie dostępny adres IP, podczas gdy adresy IP serwera są chronione. Więcej informacji o bramie można znaleźć w artykule dotyczącym [architektury łączności](concepts-connectivity-architecture.md).  
 
-A newly created Azure Database for MariaDB server has a firewall that blocks all external connections. Though they reach the gateway, they are not allowed to connect to the server. 
+Nowo utworzony serwer Azure Database for MariaDB ma zaporę, która blokuje wszystkie połączenia zewnętrzne. Chociaż docierają one do bramy, nie mogą łączyć się z serwerem. 
 
-### <a name="ip-firewall-rules"></a>IP firewall rules
-IP firewall rules grant access to servers based on the originating IP address of each request. See the [firewall rules overview](concepts-firewall-rules.md) for more information.
+### <a name="ip-firewall-rules"></a>Reguły zapory adresów IP
+Reguły zapory adresów IP umożliwiają dostęp do serwerów na podstawie źródłowego adresu IP każdego żądania. Aby uzyskać więcej informacji, zobacz [Omówienie reguł zapory](concepts-firewall-rules.md) .
 
 ### <a name="virtual-network-firewall-rules"></a>Reguły zapory sieci wirtualnej
-Virtual network service endpoints extend your virtual network connectivity over the Azure backbone. Using virtual network rules you can enable your Azure Database for MariaDB server to allow connections from selected subnets in a virtual network. For more information, see the [virtual network service endpoint overview](concepts-data-access-security-vnet.md).
+Punkty końcowe usługi sieci wirtualnej zwiększają łączność sieci wirtualnej przez sieć szkieletową platformy Azure. Korzystając z reguł sieci wirtualnej, można włączyć serwer Azure Database for MariaDB, aby zezwalać na połączenia z wybranych podsieci w sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Omówienie punktu końcowego usługi sieci wirtualnej](concepts-data-access-security-vnet.md).
 
 
 ## <a name="access-management"></a>Zarządzanie dostępem
 
-While creating the Azure Database for MariaDB server, you provide credentials for an administrator user. This administrator can be used to create additional MariaDB users.
+Podczas tworzenia serwera Azure Database for MariaDB podajesz poświadczenia dla użytkownika administratora. Ten administrator może służyć do tworzenia dodatkowych użytkowników MariaDB.
 
 
 ## <a name="threat-protection"></a>Ochrona przed zagrożeniami
 
-You can opt in to [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md) which detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit servers.
+Możesz zrezygnować z [zaawansowaną ochronę przed zagrożeniami](concepts-data-access-and-security-threat-protection.md) , która wykrywa nietypowe działania wskazujące nietypową i potencjalnie szkodliwe próby dostępu do serwerów lub korzystania z nich.
 
-[Audit logging](concepts-audit-logs.md) is available to track activity in your databases. 
+[Rejestrowanie inspekcji](concepts-audit-logs.md) jest dostępne do śledzenia aktywności w bazach danych. 
 
 
 ## <a name="next-steps"></a>Następne kroki
-- Enable firewall rules for [IPs](concepts-firewall-rules.md) or [virtual networks](concepts-data-access-security-vnet.md)
+- Włącz reguły zapory dla [adresów IP](concepts-firewall-rules.md) lub [sieci wirtualnych](concepts-data-access-security-vnet.md)

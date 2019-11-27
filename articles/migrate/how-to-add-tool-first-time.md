@@ -48,7 +48,7 @@ Skonfiguruj nowy projekt Azure Migrate w ramach subskrypcji platformy Azure i Do
     Azja   | Azja Południowo-Wschodnia lub Azja Wschodnia
     Europa | Europa Północna lub Europa Zachodnia
     Japonia  | Japonia Wschodnia lub Japonia Zachodnia
-    Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+    Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
     Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
     Kanada | Kanada Środkowa
     Indie  | Indie Środkowe lub Indie Południowe
@@ -81,6 +81,6 @@ W pewnych okolicznościach może być konieczne utworzenie dodatkowych projektó
 3. W obszarze **Ustawienia**wybierz **pozycję kliknij tutaj, aby utworzyć nowy projekt**.
 4. Utwórz nowy projekt i Dodaj nowe narzędzie zgodnie z opisem w poprzedniej procedurze.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak dodać dodatkowe narzędzia do [oceny](how-to-assess.md) i [migracji](how-to-migrate.md) . 

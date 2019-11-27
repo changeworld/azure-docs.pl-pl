@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 5fe19d3800883782187ae15c0a6fc0cd9709f0e9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 525ea421eb0fa0131fa91078b0619b8463f6fbb0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842668"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546245"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurowanie synchronizacji z zakresem z usługi Azure AD do Azure Active Directory Domain Services
 
-Aby zapewnić usługi uwierzytelniania, Azure Active Directory Domain Services (Azure AD DS) synchronizuje użytkowników i grupy z usługi Azure AD. W środowisku hybrydowym Użytkownicy i grupy ze środowiska lokalnego Active Directory Domain Services (AD DS) można najpierw zsynchronizować z usługą Azure AD przy użyciu Azure AD Connect, a następnie zsynchronizowane z usługą Azure AD DS. Domyślnie wszyscy użytkownicy i grupy z katalogu usługi Azure AD są synchronizowane z domeną zarządzaną AD DS platformy Azure. Jeśli masz określone potrzeby, możesz zamiast tego synchronizować tylko zdefiniowanego zestawu użytkowników.
+Aby zapewnić usługi uwierzytelniania, Azure Active Directory Domain Services (Azure AD DS) synchronizuje użytkowników i grupy z usługi Azure AD. W środowisku hybrydowym Użytkownicy i grupy ze środowiska lokalnego Active Directory Domain Services (AD DS) można najpierw zsynchronizować z usługą Azure AD przy użyciu Azure AD Connect, a następnie zsynchronizowane z usługą Azure AD DS.
+
+Domyślnie wszyscy użytkownicy i grupy z katalogu usługi Azure AD są synchronizowane z domeną zarządzaną AD DS platformy Azure. Jeśli masz określone potrzeby, możesz zamiast tego synchronizować tylko zdefiniowanego zestawu użytkowników.
 
 W tym artykule opisano sposób tworzenia domeny zarządzanej AD DS platformy Azure, która używa synchronizacji w zakresie, a następnie zmieniania lub wyłączania zestawu użytkowników z zakresem.
 
@@ -38,11 +40,11 @@ W poniższej tabeli opisano sposób używania synchronizacji w zakresie:
 
 Użyj Azure Portal lub PowerShell, aby skonfigurować ustawienia synchronizacji z zakresem:
 
-| Action | | |
+| Akcja | | |
 |--|--|--|
-| Utwórz domenę zarządzaną platformy Azure AD DS i skonfiguruj synchronizację z zakresem | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Modyfikuj synchronizację w zakresie | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Wyłącz synchronizację z zakresem | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Utwórz domenę zarządzaną platformy Azure AD DS i skonfiguruj synchronizację z zakresem | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [Program PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Modyfikuj synchronizację w zakresie | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [Program PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Wyłącz synchronizację z zakresem | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [Program PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
 > Zmiana zakresu synchronizacji powoduje, że domena zarządzana przez platformę Azure AD DS ponownie zsynchronizuje wszystkie dane.
@@ -53,7 +55,7 @@ Użyj Azure Portal lub PowerShell, aby skonfigurować ustawienia synchronizacji 
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Włącz synchronizację z zakresem przy użyciu Azure Portal
 
-1. Postępuj zgodnie z [samouczkiem, aby utworzyć i skonfigurować wystąpienie usługi Azure AD DS](tutorial-create-instance.md). Wykonaj wszystkie czynności opisane w sekcji wymagania wstępne i wdrożenia inne niż dla zakresu synchronizacji.
+1. Postępuj zgodnie z [samouczkiem, aby utworzyć i skonfigurować wystąpienie usługi Azure AD DS](tutorial-create-instance-advanced.md). Wykonaj wszystkie czynności opisane w sekcji wymagania wstępne i wdrożenia inne niż dla zakresu synchronizacji.
 1. Wybierz **zakres** w kroku synchronizacji, a następnie wybierz grupy usługi Azure AD, które mają zostać zsynchronizowane z wystąpieniem usługi Azure AD DS.
 
 Wdrożenie domeny zarządzanej przez usługę Azure AD DS może potrwać do godziny. W Azure Portal strona **Przegląd** dla domeny zarządzanej platformy Azure AD DS pokazuje bieżący stan w ramach tego etapu wdrożenia.
@@ -62,13 +64,13 @@ Gdy Azure Portal pokazuje, że domena zarządzana AD DS platformy Azure zakończ
 
 * Zaktualizuj ustawienia DNS dla sieci wirtualnej, aby maszyny wirtualne mogły znaleźć domenę zarządzaną do przyłączania do domeny lub uwierzytelniania.
     * Aby skonfigurować system DNS, wybierz domenę zarządzaną platformy Azure AD DS w portalu. W oknie **Przegląd** zostanie wyświetlony monit o automatyczne skonfigurowanie tych ustawień DNS.
-* [Włącz synchronizację haseł w Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , aby użytkownicy końcowi mogli logować się do domeny zarządzanej przy użyciu swoich poświadczeń firmowych.
+* [Włącz synchronizację haseł w Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) , aby użytkownicy końcowi mogli logować się do domeny zarządzanej przy użyciu swoich poświadczeń firmowych.
 
 ## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>Modyfikowanie synchronizacji w zakresie przy użyciu Azure Portal
 
 Aby zmodyfikować listę grup, których użytkownicy mają być synchronizowane z domeną zarządzaną AD DS platformy Azure, wykonaj następujące czynności:
 
-1. W Azure Portal wybierz wystąpienie usługi Azure AD DS, takie jak *contoso.com*.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz wystąpienie, takie jak *contoso.com*.
 1. Z menu po lewej stronie wybierz pozycję **Synchronizacja** .
 1. Aby dodać grupę, wybierz pozycję **+ Wybierz grupy** u góry, a następnie wybierz grupy do dodania.
 1. Aby usunąć grupę z zakresu synchronizacji, wybierz ją z listy aktualnie zsynchronizowanych grup i wybierz pozycję **Usuń grupy**.
@@ -80,7 +82,7 @@ Zmiana zakresu synchronizacji powoduje, że domena zarządzana przez platformę 
 
 Aby wyłączyć synchronizację z zakresem opartym na grupach dla domeny zarządzanej AD DS platformy Azure, wykonaj następujące czynności:
 
-1. W Azure Portal wybierz wystąpienie usługi Azure AD DS, takie jak *contoso.com*.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz wystąpienie, takie jak *contoso.com*.
 1. Z menu po lewej stronie wybierz pozycję **Synchronizacja** .
 1. Ustaw zakres synchronizacji z **zakresu** na **wszystkie**, a następnie wybierz pozycję **Zapisz zakres synchronizacji**.
 
@@ -88,7 +90,7 @@ Zmiana zakresu synchronizacji powoduje, że domena zarządzana przez platformę 
 
 ## <a name="powershell-script-for-scoped-synchronization"></a>Skrypt programu PowerShell dotyczący synchronizacji w zakresie
 
-Aby skonfigurować synchronizację z zakresem przy użyciu programu PowerShell, najpierw Zapisz następujący skrypt do pliku `Select-GroupsToSync.ps1`o nazwie. Ten skrypt służy do konfigurowania usługi Azure AD DS do synchronizowania wybranych grup z usługi Azure AD. Wszystkie konta użytkowników, które są częścią określonych grup są synchronizowane z domeną zarządzaną platformy Azure AD DS.
+Aby skonfigurować synchronizację z zakresem przy użyciu programu PowerShell, najpierw Zapisz następujący skrypt do pliku o nazwie `Select-GroupsToSync.ps1`. Ten skrypt służy do konfigurowania usługi Azure AD DS do synchronizowania wybranych grup z usługi Azure AD. Wszystkie konta użytkowników, które są częścią określonych grup są synchronizowane z domeną zarządzaną platformy Azure AD DS.
 
 Ten skrypt jest używany w dodatkowych krokach przedstawionych w tym artykule.
 
@@ -215,7 +217,9 @@ Gdy Azure Portal pokazuje, że domena zarządzana AD DS platformy Azure zakończ
 
 * Zaktualizuj ustawienia DNS dla sieci wirtualnej, aby maszyny wirtualne mogły znaleźć domenę zarządzaną do przyłączania do domeny lub uwierzytelniania.
     * Aby skonfigurować system DNS, wybierz domenę zarządzaną platformy Azure AD DS w portalu. W oknie **Przegląd** zostanie wyświetlony monit o automatyczne skonfigurowanie tych ustawień DNS.
-* [Włącz synchronizację haseł w Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , aby użytkownicy końcowi mogli logować się do domeny zarządzanej przy użyciu swoich poświadczeń firmowych.
+* Jeśli utworzono domenę zarządzaną platformy Azure AD DS w regionie, który obsługuje Strefy dostępności, Utwórz sieciową grupę zabezpieczeń, aby ograniczyć ruch w sieci wirtualnej dla domeny zarządzanej AD DS platformy Azure. Tworzony jest standardowy moduł równoważenia obciążenia platformy Azure, który wymaga wprowadzenia tych reguł. Ta sieciowa Grupa zabezpieczeń zabezpiecza AD DS platformy Azure i jest wymagana do poprawnego działania domeny zarządzanej.
+    * Aby utworzyć grupę zabezpieczeń sieci i wymagane reguły, wybierz domenę zarządzaną platformy Azure AD DS w portalu. W oknie **Przegląd** zostanie wyświetlony monit o automatyczne utworzenie i skonfigurowanie sieciowej grupy zabezpieczeń.
+* [Włącz synchronizację haseł w Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) , aby użytkownicy końcowi mogli logować się do domeny zarządzanej przy użyciu swoich poświadczeń firmowych.
 
 ## <a name="modify-scoped-synchronization-using-powershell"></a>Modyfikowanie synchronizacji w zakresie przy użyciu programu PowerShell
 

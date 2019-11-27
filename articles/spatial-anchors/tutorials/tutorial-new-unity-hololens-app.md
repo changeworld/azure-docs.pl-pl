@@ -34,7 +34,7 @@ Najpierw skonfigurujemy nasze sceny projektowe i Unity:
 2. Wybierz pozycję **Nowy**.
 4. Upewnij się, że wybrano **3W** .
 5. Nazwij projekt i wprowadź **lokalizację**zapisywania.
-6. Kliknij przycisk **Tworzenie projektu**.
+6. Kliknij pozycję **Utwórz projekt**.
 7. Zapisz pustą domyślną scenę w nowym pliku przy użyciu polecenia: **file** > **Zapisz jako**.
 8. Nazwij nową scenę **główną** i naciśnij przycisk **Zapisz** .
 
@@ -117,7 +117,7 @@ Teraz należy dodać następującą `HandleTap()` metodę poniżej `Update()`. S
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-277,299-300,304-312)]
 
-Teraz musimy utworzyć sferę. Sfera będzie początkowo Biała, ale ta wartość zostanie później zmieniona na. Dodaj następujący kod `CreateAndSaveSphere()` metody:
+Teraz musimy utworzyć sferę. Sfera będzie początkowo Biała, ale ta wartość zostanie później zmieniona na. Dodaj następującą metodę `CreateAndSaveSphere()`:
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-325,390)]
 

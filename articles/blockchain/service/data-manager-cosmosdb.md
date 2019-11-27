@@ -1,6 +1,6 @@
 ---
-title: Use Blockchain Data Manager to update Azure Cosmos DB - Azure Blockchain Service
-description: Use Blockchain Data Manager for Azure Blockchain Service to send blockchain data to Azure Cosmos DB
+title: Użyj Data Manager łańcucha bloków, aby zaktualizować Azure Cosmos DB — usługa Azure łańcucha bloków Service
+description: Wysyłanie danych łańcucha bloków do Azure Cosmos DB za pomocą łańcucha bloków Data Manager dla usługi Azure łańcucha bloków
 ms.date: 11/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
@@ -11,288 +11,288 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326258"
 ---
-# <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Tutorial: Use Blockchain Data Manager to send data to Azure Cosmos DB
+# <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Samouczek: wysyłanie danych do Azure Cosmos DB za pomocą łańcucha bloków Data Manager
 
-In this tutorial, you use Blockchain Data Manager for Azure Blockchain Service to record blockchain transaction data in Azure Cosmos DB. Blockchain Data Manager captures, transforms, and delivers blockchain ledger data to Azure Event Grid Topics. From Azure Event Grid, you use a Azure Logic App connector to create documents in an Azure Cosmos DB database. When finished with tutorial, you can explore blockchain transaction data in Azure Cosmos DB Data Explorer.
+W tym samouczku użyjesz łańcucha bloków Data Manager dla usługi Azure łańcucha bloków, aby zarejestrować dane transakcji łańcucha bloków w Azure Cosmos DB. Łańcucha bloków Data Manager przechwytuje, przekształca i dostarcza dane finansów łańcucha bloków do tematów Azure Event Grid. Z poziomu Azure Event Grid za pomocą łącznika aplikacji logiki platformy Azure można tworzyć dokumenty w Azure Cosmos DB bazie danych. Po zakończeniu pracy z samouczkiem możesz eksplorować dane transakcji łańcucha bloków w Eksplorator danych Azure Cosmos DB.
 
-[![Blockchain transaction detail](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![szczegóły transakcji łańcucha bloków](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
-> * Create a Blockchain Data Manager instance
-> * Add a blockchain application to decode transaction properties and events
-> * Create an Azure Cosmos DB account and database to store transaction data
-> * Create an Azure Logic App to connect an Azure Event Grid Topic to Azure Cosmos DB
-> * Send a transaction to a blockchain ledger
-> * View the decoded transaction data in Azure Cosmos DB
+> * Utwórz wystąpienie Data Manager łańcucha bloków
+> * Dodawanie aplikacji łańcucha bloków do dekodowania właściwości transakcji i zdarzeń
+> * Tworzenie konta Azure Cosmos DB i bazy danych do przechowywania danych transakcji
+> * Utwórz aplikację logiki platformy Azure, aby połączyć temat Azure Event Grid z Azure Cosmos DB
+> * Wyślij transakcję do księgi łańcucha bloków
+> * Wyświetl zdekodowane dane transakcji w Azure Cosmos DB
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
-* Complete [Quickstart: Use Visual Studio Code to connect to an Azure Blockchain Service consortium network](connect-vscode.md). The quickstart guides you though installing [Azure Blockchain Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) and setting up your blockchain development environment.
-* Complete [Tutorial: Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md). The tutorial walks through creating a sample smart contract.
-* Create an [Event Grid Topic](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
-* Learn about [Event handlers in Azure Event Grid](../../event-grid/event-handlers.md)
+* Kończenie [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków usługi Azure łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
+* Kończenie [szybkiego startu: użyj Visual Studio Code, aby nawiązać połączenie z siecią konsorcjum usługi Azure łańcucha bloków](connect-vscode.md). Przewodnik Szybki Start przeprowadzi Cię przez instalację [usługi Azure łańcucha bloków Development Kit dla Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) i skonfigurowanie środowiska deweloperskiego łańcucha bloków.
+* Pełny [Samouczek: Tworzenie, kompilowanie i wdrażanie inteligentnych kontraktów przy użyciu Visual Studio Code](send-transaction.md). Samouczek przeprowadzi Cię przez proces tworzenia przykładowego kontraktu inteligentnego.
+* Tworzenie [tematu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
+* Informacje o [obsłudze zdarzeń w Azure Event Grid](../../event-grid/event-handlers.md)
 
-## <a name="create-instance"></a>Create instance
+## <a name="create-instance"></a>Utwórz wystąpienie
 
-A Blockchain Data Manager instance connects and monitors an Azure Blockchain Service transaction node. An instance captures all raw block and raw transaction data from the transaction node. An outbound connection sends blockchain data to Azure Event Grid. You configure a single outbound connection when you create the instance.
+Wystąpienie Data Manager łańcucha bloków nawiązuje połączenie i monitoruje węzeł transakcji usługi Azure łańcucha bloków. Wystąpienie przechwytuje wszystkie nieprzetworzone i nieprzetworzone dane transakcji z węzła transakcji. Połączenie wychodzące wysyła dane łańcucha bloków do Azure Event Grid. Podczas tworzenia wystąpienia można skonfigurować pojedyncze połączenie wychodzące.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. Go to the Azure Blockchain Service member you created in the prerequisite [Quickstart: Create a blockchain member using the Azure portal](create-member.md). Select **Blockchain Data Manager**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków, który został utworzony w ramach wymagania wstępnego [przewodnika Szybki Start: Tworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal](create-member.md). Wybierz pozycję **łańcucha bloków Data Manager**.
 1. Wybierz pozycję **Dodaj**.
 
-    ![Add Blockchain Data Manager](./media/data-manager-cosmosdb/add-instance.png)
+    ![Dodaj Data Manager łańcucha bloków](./media/data-manager-cosmosdb/add-instance.png)
 
     Wprowadź następujące wartości:
 
     Ustawienie | Przykład | Opis
     --------|---------|------------
-    Nazwa | mywatcher | Enter a unique name for a connected Blockchain Data Manager.
-    Transaction node | myblockchainmember | Choose the default transaction node of the Azure Blockchain Service member you created in the prerequisite.
-    Nazwa połączenia | cosmosdb | Enter a unique name of the outbound connection where blockchain transaction data is sent.
-    Event grid endpoint | myTopic | Choose an event grid topic you created in the prerequisite. Note: The Blockchain Data Manager instance and the event grid topic must be in the same subscription.
+    Nazwa | Czujka | Wprowadź unikatową nazwę połączonego Data Manager łańcucha bloków.
+    Węzeł transakcji | myblockchainmember | Wybierz domyślny węzeł transakcji dla elementu członkowskiego usługi Azure łańcucha bloków, który został utworzony w ramach wymagań wstępnych.
+    Nazwa połączenia | cosmosdb | Wprowadź unikatową nazwę połączenia wychodzącego, w którym są wysyłane dane transakcji łańcucha bloków.
+    Punkt końcowy siatki zdarzeń | Temat | Wybierz temat dotyczący siatki zdarzeń utworzony w ramach wymagania wstępnego. Uwaga: wystąpienie Data Manager łańcucha bloków i temat usługi Event Grid muszą znajdować się w tej samej subskrypcji.
 
 1. Kliknij przycisk **OK**.
 
-    It takes less than a minute to create a Blockchain Data Manager instance. After the instance is deployed, it is automatically started. A running Blockchain Data Manager instance captures blockchain events from the transaction node and sends data to event grid.
+    Utworzenie wystąpienia Data Manager łańcucha bloków może zająć mniej niż minutę. Po wdrożeniu wystąpienia zostanie ono automatycznie uruchomione. Uruchomione wystąpienie Data Manager łańcucha bloków przechwytuje zdarzenia łańcucha bloków z węzła Transaction i wysyła dane do usługi Event Grid.
 
 ## <a name="add-application"></a>Dodawanie aplikacji
 
-Add the **helloblockchain** blockchain application so that Blockchain Data Manager decodes event and property state. Blockchain Data Manager requires the smart contract ABI and bytecode file to add the application.
+Dodaj aplikację łańcucha bloków **helloblockchain** , aby łańcucha bloków Data Manager dekoduje zdarzenie i stan właściwości. Aby można było dodać aplikację, łańcucha bloków Data Manager wymaga pliku ABI i kodu bajtowego kontraktu inteligentnego.
 
-### <a name="get-contract-abi-and-bytecode"></a>Get contract ABI and bytecode
+### <a name="get-contract-abi-and-bytecode"></a>Pobierz ABI kontraktu i kod bajtowy
 
-The contract ABI defines the smart contract interfaces. It describes how to interact with the smart contract. You can use the [Azure Blockchain Development Kit for Ethereum extension](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) to copy the contract ABI to the clipboard.
+ABI kontraktu definiuje inteligentne interfejsy kontraktu. Opisuje sposób korzystania z kontraktu inteligentnego. Aby skopiować ABI kontraktu do schowka, możesz użyć [rozszerzenia Azure łańcucha bloków Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) .
 
-1. In the Visual Studio Code explorer pane, expand the **build/contracts** folder of the **helloblockchain** Solidity project you created in the prerequisite [Tutorial: Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md).
-1. Right-click the contract metadata JSON file. The file name is the smart contract name followed by the **.json** extension.
-1. Select **Copy Contract ABI**.
+1. W okienku Eksploratora Visual Studio Code rozwiń folder **Build/Contract (kompilacja/kontrakty** w projekcie **helloblockchain** Solid) utworzonym w samouczku wymagań wstępnych [: Użyj Visual Studio Code, aby utworzyć, skompilować i wdrożyć inteligentne kontrakty](send-transaction.md).
+1. Kliknij prawym przyciskiem myszy plik JSON metadanych kontraktu. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
+1. Wybierz pozycję **Kopiuj kontrakt ABI**.
 
-    ![Visual Studio Code pane with the Copy Contract ABI selection](./media/data-manager-cosmosdb/abi-devkit.png)
+    ![Visual Studio Code okienku z opcją Kopiuj kontrakt ABI](./media/data-manager-cosmosdb/abi-devkit.png)
 
-    The contract ABI is copied to the clipboard.
+    ABI kontraktu jest kopiowany do Schowka.
 
-1. Save the **abi** array as a JSON file. For example, *abi.json*. You use the file in a later step.
+1. Zapisz tablicę **ABI** jako plik JSON. Na przykład *ABI. JSON*. Ten plik jest używany w późniejszym kroku.
 
-Blockchain Data Manager requires the deployed bytecode for the smart contract. The deployed bytecode is different than the smart contract bytecode. You can get the deployed bytecode from the compiled contract metadata file.
+Łańcucha bloków Data Manager wymaga wdrożonego kodu bajtowego dla kontraktu inteligentnego. Wdrożony kod bajtowy jest inny niż kod bajtowy kontraktu inteligentnego. Wdrożony kod bajtowy można uzyskać z skompilowanego pliku metadanych kontraktu.
 
-1. Open the contract metadata file contained in the **build/contracts** folder of your Solidity project. The file name is the smart contract name followed by the **.json** extension.
-1. Find the **deployedBytecode** element in the JSON file.
-1. Copy the hexadecimal value without the quotes.
+1. Otwórz plik metadanych kontraktu znajdujący się w folderze **kompilacja/kontrakty** w projekcie o trwałym stanie. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
+1. Znajdź element **deployedBytecode** w pliku JSON.
+1. Skopiuj wartość szesnastkową bez cudzysłowów.
 
-    ![Visual Studio Code pane with bytecode in the metadata](./media/data-manager-portal/bytecode-metadata.png)
+    ![Visual Studio Code okienku z użyciem kodu bajtowego w metadanych](./media/data-manager-portal/bytecode-metadata.png)
 
-1. Save the **bytecode** value as a JSON file. For example, *bytecode.json*. You use the file in a later step.
+1. Zapisz wartość **kodu bajtowego** jako plik JSON. Na przykład, *kod bajtowy. JSON*. Ten plik jest używany w późniejszym kroku.
 
-The following example shows *abi.json* and *bytecode.json* files open in the VS Code editor. Your files should look similar.
+W poniższym przykładzie przedstawiono pliki *ABI. JSON* i *unformating. JSON* otwarte w edytorze vs Code. Pliki powinny wyglądać podobnie.
 
-![Example of abi.json and bytecode.json files](./media/data-manager-cosmosdb/contract-files.png)
+![Przykład plików ABI. JSON i kodu bajtowego JSON](./media/data-manager-cosmosdb/contract-files.png)
 
-### <a name="create-contract-abi-and-bytecode-url"></a>Create contract ABI and bytecode URL
+### <a name="create-contract-abi-and-bytecode-url"></a>Utwórz ABI kontraktu i adres URL kodu bajtowego
 
-Blockchain Data Manager requires the contract ABI and bytecode files to be accessible by a URL when adding an application. You can use an Azure Storage account to provide a privately accessible URL.
+Łańcucha bloków Data Manager wymaga dostępności plików ABI i kodu bajtowego kontraktu przez adres URL podczas dodawania aplikacji. Możesz użyć konta usługi Azure Storage, aby podać adres URL dostępny prywatnie.
 
 #### <a name="create-storage-account"></a>Tworzenie konta magazynu
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-#### <a name="upload-contract-files"></a>Upload contract files
+#### <a name="upload-contract-files"></a>Przekazywanie plików kontraktu
 
-1. Create a new container for the storage account. Select **Containers > Container**.
+1. Utwórz nowy kontener dla konta magazynu. Wybierz kontenery **> kontenerze**.
 
-    ![Create a storage account container](./media/data-manager-cosmosdb/create-container.png)
+    ![Tworzenie kontenera konta magazynu](./media/data-manager-cosmosdb/create-container.png)
 
     | Ustawienie | Opis |
     |---------|-------------|
-    | Nazwa  | Name the container. For example, *smartcontract* |
-    | Public access level | Choose *Private (no anonymous access)* |
+    | Nazwa  | Nazwij kontener. Na przykład *smartcontract* |
+    | Poziom dostępu publicznego | Wybierz pozycję *prywatny (brak dostępu anonimowego)* |
 
 1. Wybierz przycisk **OK**, aby utworzyć kontener.
-1. Select the container then select **Upload**.
-1. Choose both JSON files you created in the [Get Contract ABI and bytecode](#get-contract-abi-and-bytecode) section.
+1. Wybierz kontener, a następnie wybierz pozycję **Przekaż**.
+1. Wybierz pliki JSON, które zostały utworzone w sekcji [Pobierz kontrakt ABI i kod bajtowy](#get-contract-abi-and-bytecode) .
 
-    ![Upload blob](./media/data-manager-cosmosdb/upload-blobs.png)
+    ![Przekaż obiekt BLOB](./media/data-manager-cosmosdb/upload-blobs.png)
 
     Wybierz pozycję **Przekaż**.
 
-#### <a name="generate-url"></a>Generate URL
+#### <a name="generate-url"></a>Generuj adres URL
 
-For each blob, generate a shared access signature.
+Dla każdego obiektu BLOB Wygeneruj sygnaturę dostępu współdzielonego.
 
-1. Select the ABI JSON blob.
-1. Select **Generate SAS**
-1. Set desired access signature expiration then select **Generate blob SAS token and URL**.
+1. Wybierz obiekt BLOB ABI JSON.
+1. Wybierz pozycję **Generuj SAS**
+1. Ustaw odpowiednie wygaśnięcie sygnatury dostępu, a następnie wybierz pozycję **Generuj token SAS i adres URL**.
 
-    ![Generate SAS token](./media/data-manager-cosmosdb/generate-sas.png)
+    ![Generuj token SAS](./media/data-manager-cosmosdb/generate-sas.png)
 
-1. Copy the **Blob SAS URL** and save it for the next section.
-1. Repeat the [Generate URL](#generate-url) steps for the bytecode JSON blob.
+1. Skopiuj **adres URL sygnatury dostępu współdzielonego obiektu BLOB** i Zapisz go w następnej sekcji.
+1. Powtórz kroki [Generuj adres URL](#generate-url) dla obiektu BLOB JSON.
 
-### <a name="add-helloblockchain-application-to-instance"></a>Add helloblockchain application to instance
+### <a name="add-helloblockchain-application-to-instance"></a>Dodaj aplikację helloblockchain do wystąpienia
 
-1. Select your Blockchain Data Manager instance from the instance list.
-1. Select **Blockchain applications**.
+1. Wybierz wystąpienie Data Manager łańcucha bloków z listy wystąpień.
+1. Wybierz pozycję **aplikacje łańcucha bloków**.
 1. Wybierz pozycję **Dodaj**.
 
-    ![Add a blockchain application](./media/data-manager-cosmosdb/add-application.png)
+    ![Dodawanie aplikacji łańcucha bloków](./media/data-manager-cosmosdb/add-application.png)
 
-    Enter the name of the blockchain application and the smart contract ABI and bytecode URLs.
+    Wprowadź nazwę aplikacji łańcucha bloków oraz adresy URL ABI i kodu bajtowego.
 
     Ustawienie | Opis
     --------|------------
-    Nazwa | Enter a unique name for the blockchain application to track.
-    Contract ABI | URL path to the Contract ABI file. For more information, see [Create contract ABI and bytecode URL](#create-contract-abi-and-bytecode-url).
-    Contract Bytecode | URL path to bytecode file. For more information, see [Create contract ABI and bytecode URL](#create-contract-abi-and-bytecode-url).
+    Nazwa | Wprowadź unikatową nazwę aplikacji łańcucha bloków, która ma być śledzona.
+    ABI kontraktu | Ścieżka URL do pliku ABI kontraktu. Aby uzyskać więcej informacji, zobacz temat [Tworzenie kontraktu ABI i adresu URL kodu bajtowego](#create-contract-abi-and-bytecode-url).
+    Kod bajtowy kontraktu | Ścieżka adresu URL do pliku kodu bajtowego. Aby uzyskać więcej informacji, zobacz temat [Tworzenie kontraktu ABI i adresu URL kodu bajtowego](#create-contract-abi-and-bytecode-url).
 
 1. Kliknij przycisk **OK**.
 
-    Once the application is created, the application appears in the list of blockchain applications.
+    Po utworzeniu aplikacji aplikacja zostanie wyświetlona na liście aplikacji łańcucha bloków.
 
-    ![Blockchain application list](./media/data-manager-cosmosdb/artifact-list.png)
+    ![Lista aplikacji łańcucha bloków](./media/data-manager-cosmosdb/artifact-list.png)
 
-You can delete the Azure Storage account or use it to configure more blockchain applications. If you wish to delete the Azure Storage account, you can delete the resource group. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego konta magazynu i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
+Możesz usunąć konto usługi Azure Storage lub użyć go do skonfigurowania większej liczby aplikacji łańcucha bloków. Jeśli chcesz usunąć konto usługi Azure Storage, możesz usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego konta magazynu i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
 
-## <a name="create-azure-cosmos-db"></a>Create Azure Cosmos DB
+## <a name="create-azure-cosmos-db"></a>Utwórz Azure Cosmos DB
 
 [!INCLUDE [cosmos-db-create-storage-account](../../../includes/cosmos-db-create-dbaccount.md)]
 
-### <a name="add-a-database-and-container"></a>Add a database and container
+### <a name="add-a-database-and-container"></a>Dodawanie bazy danych i kontenera
 
-You can use the Data Explorer in the Azure portal to create a database and container.
+Możesz użyć Eksplorator danych w Azure Portal, aby utworzyć bazę danych i kontener.
 
-1. Select **Data Explorer** from the left navigation on your Azure Cosmos DB account page, and then select **New Container**.
-1. In the **Add container** pane, enter the settings for the new container.
+1. Wybierz pozycję **Eksplorator danych** w lewym obszarze nawigacji na stronie konta Azure Cosmos DB, a następnie wybierz pozycję **nowy kontener**.
+1. W okienku **Dodaj kontener** wprowadź ustawienia dla nowego kontenera.
 
-    ![Add container settings](./media/data-manager-cosmosdb/add-container.png)
+    ![Dodaj ustawienia kontenera](./media/data-manager-cosmosdb/add-container.png)
 
     | Ustawienie | Opis
     |---------|-------------|
-    | Identyfikator bazy danych | Enter **blockchain-data** as the name for the new database. |
-    | Przepływność | Leave the throughput at **400** request units per second (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.|
-    | Container ID | Enter **Messages** as the name for your new container. |
-    | Klucz partycji | Use **/MessageType** as the partition key. |
+    | Identyfikator bazy danych | Wprowadź **łańcucha bloków-Data** jako nazwę nowej bazy danych. |
+    | Przepływność | Pozostaw przepływność na **400** jednostek żądań na sekundę (ru/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.|
+    | Identyfikator kontenera | Wprowadź **komunikaty** jako nazwę nowego kontenera. |
+    | Klucz partycji | Użyj **/MessageType** jako klucza partycji. |
 
-1. Kliknij przycisk **OK**. The Data Explorer displays the new database and the container that you created.
+1. Kliknij przycisk **OK**. W Eksplorator danych zostanie wyświetlona nowa baza danych i kontener, który został utworzony.
 
 ## <a name="create-logic-app"></a>Tworzenie aplikacji logiki
 
-Azure Logic Apps helps you schedule and automate business processes and workflows when you need to integrate systems and services. You can use a logic app to connect Event Grid to Azure Cosmos DB.
+Azure Logic Apps pomaga zaplanować i zautomatyzować procesy biznesowe i przepływy pracy, gdy trzeba zintegrować systemy i usługi. Za pomocą aplikacji logiki można łączyć Event Grid z Azure Cosmos DB.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób** > **Integracja** > **Aplikacja logiki**.
-1. Provide details on where to create your logic app. After you're done, select **Create**.
+1. Podaj szczegółowe informacje o tym, gdzie utworzyć aplikację logiki. Po zakończeniu wybierz pozycję **Utwórz**.
 
-    For more information on creating logic apps, see [Create automated workflows with Azure Logic Apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
+    Aby uzyskać więcej informacji na temat tworzenia aplikacji logiki, zobacz [Tworzenie zautomatyzowanych przepływów pracy za pomocą Azure Logic Apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. After Azure deploys your app, select your logic app resource.
-1. In the Logic Apps Designer, under **Templates**, select **Blank Logic App**.
+1. Po wdrożeniu aplikacji przez platformę Azure wybierz zasób aplikacji logiki.
+1. W projektancie Logic Apps w obszarze **Szablony**wybierz pozycję **pusta aplikacja logiki**.
 
-### <a name="add-event-grid-trigger"></a>Add Event Grid trigger
+### <a name="add-event-grid-trigger"></a>Dodaj wyzwalacz Event Grid
 
-Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki uruchamiającej i wykonującej przepływ pracy. Use an Azure Event Grid trigger to sends blockchain transaction data from Event Grid to Cosmos DB.
+Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki uruchamiającej i wykonującej przepływ pracy. Użyj wyzwalacza Azure Event Grid, aby wysyłać dane transakcji łańcucha bloków z Event Grid do Cosmos DB.
 
-1. In the Logic Apps Designer, search for and select the **Azure Event Grid** connector.
-1. From the **Triggers** tab, select **When a resource event occurs**.
-1. Create an API connection to your Event Grid Topic.
+1. W projektancie Logic Apps Wyszukaj i wybierz łącznik **Azure Event Grid** .
+1. Na karcie **wyzwalacze** wybierz opcję **gdy występuje zdarzenie zasobu**.
+1. Utwórz połączenie interfejsu API z tematem Event Grid.
 
-    ![Event grid trigger settings](./media/data-manager-cosmosdb/event-grid-trigger.png)
+    ![Ustawienia wyzwalacza siatki zdarzeń](./media/data-manager-cosmosdb/event-grid-trigger.png)
 
     | Ustawienie | Opis
     |---------|-------------|
-    | Subskrypcja | Choose the subscription that contains the Event Grid Topic. |
-    | Typ zasobu | Choose **Microsoft.EventGrid.Topics**. |
-    | Nazwa zasobu | Choose the name of the Event Grid Topic where Blockchain Data Manager is sending transaction data messages. |
+    | Subskrypcja | Wybierz subskrypcję zawierającą Event Grid temat. |
+    | Typ zasobu | Wybierz pozycję **Microsoft. EventGrid. temats**. |
+    | Nazwa zasobu | Wybierz nazwę tematu Event Grid, w którym łańcucha bloków Data Manager wysyła wiadomości danych transakcji. |
 
-### <a name="add-cosmos-db-action"></a>Add Cosmos DB action
+### <a name="add-cosmos-db-action"></a>Dodaj akcję Cosmos DB
 
-Add an action to create a document in Cosmos DB for each transaction. Use the transaction message type as the partition key to categorize the messages.
+Dodaj akcję w celu utworzenia dokumentu w Cosmos DB dla każdej transakcji. Użyj typu komunikatu Transaction jako klucza partycji do kategoryzacji komunikatów.
 
 1. Wybierz pozycję **Nowy krok**.
-1. On **Choose an action**, search for **Azure Cosmos DB**.
-1. Choose **Azure Cosmos DB > Actions > Create or update document**.
-1. Create an API connection to your Cosmos DB database.
+1. W obszarze **Wybierz akcję**Wyszukaj **Azure Cosmos DB**.
+1. Wybierz **Azure Cosmos DB akcje > > Utwórz lub zaktualizuj dokument**.
+1. Utwórz połączenie interfejsu API z bazą danych Cosmos DB.
 
-    ![Cosmos DB connection settings](./media/data-manager-cosmosdb/cosmosdb-connection.png)
+    ![Ustawienia połączenia Cosmos DB](./media/data-manager-cosmosdb/cosmosdb-connection.png)
 
     | Ustawienie | Opis
     |---------|-------------|
-    | Nazwa połączenia | Choose the subscription that contains the Event Grid Topic. |
-    | DocumentDB Account | Choose the DocumentDB account you created in the [Create Azure Cosmos DB account](#create-azure-cosmos-db) section. |
+    | Nazwa połączenia | Wybierz subskrypcję zawierającą Event Grid temat. |
+    | Konto DocumentDB | Wybierz konto DocumentDB utworzone w sekcji [Tworzenie konta Azure Cosmos DB](#create-azure-cosmos-db) . |
 
-1. Enter the **Database ID** and **Collection ID** for your Azure Cosmos DB that you created previously in the [Add a database and container](#add-a-database-and-container) section.
+1. Wprowadź **Identyfikator bazy danych** i **identyfikator kolekcji** dla Azure Cosmos DB utworzonego wcześniej w sekcji [Dodawanie bazy danych i kontenera](#add-a-database-and-container) .
 
-1. Select the **Document** setting. In the *Add dynamic content* pop-out, select **Expression** and copy and paste the following expression:
+1. Wybierz ustawienie **dokumentu** . W okienku *Dodawanie zawartości dynamicznej* wybierz pozycję **wyrażenie** i skopiuj i wklej następujące wyrażenie:
 
     ```
     addProperty(triggerBody()?['data'], 'id', utcNow())
     ```
 
-    The expression gets the data portion of the message and sets the ID  to a timestamp value.
+    Wyrażenie Pobiera część danych komunikatu i ustawia identyfikator na wartość sygnatury czasowej.
 
-1. Select **Add new parameter** and choose **Partition key value**.
-1. Set the **Partition key value** to `"@{triggerBody()['data']['MessageType']}"`. The value must be surrounded by double quotes.
+1. Wybierz pozycję **Dodaj nowy parametr** i wybierz pozycję **wartość klucza partycji**.
+1. Ustaw **wartość klucza partycji** na `"@{triggerBody()['data']['MessageType']}"`. Wartość musi być ujęta w podwójne cudzysłowy.
 
-    ![Logic Apps Designer with Cosmos DB settings](./media/data-manager-cosmosdb/create-action.png)
+    ![Projektant Logic Apps z ustawieniami Cosmos DB](./media/data-manager-cosmosdb/create-action.png)
 
-    The value sets the partition key to the transaction message type.
+    Wartość ustawia klucz partycji typu komunikat transakcji.
 
 1. Wybierz pozycję **Zapisz**.
 
-The logic app monitors the Event Grid Topic. When a new transaction message is sent from Blockchain Data Manager, the logic app creates a document in Cosmos DB.
+Aplikacja logiki monitoruje temat Event Grid. Gdy nowa transakcja jest wysyłana z łańcucha bloków Data Manager, aplikacja logiki tworzy dokument w Cosmos DB.
 
-## <a name="send-a-transaction"></a>Send a transaction
+## <a name="send-a-transaction"></a>Wyślij transakcję
 
-Next, send a transaction to the blockchain ledger to test what you created. Use the **sendrequest.js** script you created in the prerequisite [Tutorial: Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md).
+Następnie Wyślij transakcję do księgi łańcucha bloków, aby przetestować utworzone elementy. Użyj skryptu **SendRequest. js** utworzonego w samouczku wymagań wstępnych [: Użyj Visual Studio Code, aby tworzyć, kompilować i wdrażać kontrakty inteligentne](send-transaction.md).
 
-In VS Code's terminal pane, use Truffle to execute the script on your consortium blockchain network. In the terminal pane menu bar, select the **Terminal** tab and **PowerShell** in the dropdown.
+W okienku terminalu VS Code Użyj Truffle, aby wykonać skrypt w sieci łańcucha bloków konsorcjum. Na pasku menu okienka terminalu wybierz kartę **Terminal** i program **PowerShell** na liście rozwijanej.
 
 ``` PowerShell
 truffle exec sendrequest.js --network <blockchain network>
 ```
 
-Replace \<blockchain network\> with the name of the blockchain network defined in the **truffle-config.js**.
+Zastąp \<łańcucha bloków Network\> nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
 
-![Send transaction](./media/data-manager-cosmosdb/send-request.png)
+![Wyślij transakcję](./media/data-manager-cosmosdb/send-request.png)
 
-## <a name="view-transaction-data"></a>View transaction data
+## <a name="view-transaction-data"></a>Wyświetl dane transakcji
 
-Now that you have connected your Blockchain Data Manager to Azure Cosmos DB, you can view the blockchain transaction messages in Cosmos DB Data Explorer.
+Po powiązaniu Data Manager z usługą łańcucha bloków w celu Azure Cosmos DB można wyświetlić komunikaty łańcucha bloków Transaction w Cosmos DB Eksplorator danych.
 
-1. Go to the Cosmos DB Data Explorer view. For example, **cosmosdb-blockchain > Data Explorer > blockchain-data > Messages > Items**.
+1. Przejdź do widoku Cosmos DB Eksplorator danych. Na przykład **cosmosdb-łańcucha bloków > Eksplorator danych > łańcucha bloków-Data > messages > Items**.
 
-    ![Cosmos DB Data Explorer](./media/data-manager-cosmosdb/data-explorer.png)
+    ![Cosmos DB Eksplorator danych](./media/data-manager-cosmosdb/data-explorer.png)
 
-    Data Explorer lists the blockchain data messages that were created in the Cosmos DB database.
+    Eksplorator danych wyświetla listę łańcucha blokówch komunikatów danych, które zostały utworzone w Cosmos DB bazie danych.
 
-1. Browse through the messages by selecting item ID and find the message with the matching transaction hash.
+1. Przejrzyj komunikaty, wybierając pozycję Identyfikator elementu i Znajdź komunikat ze skrótem pasującej transakcji.
 
-    [![Blockchain transaction detail](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![szczegóły transakcji łańcucha bloków](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
-    The raw transaction message contains detail about the transaction. However, the property information is encrypted.
+    Komunikat nieprzetworzonych transakcji zawiera szczegółowe informacje o transakcji. Jednak informacje o właściwościach są szyfrowane.
 
-    Since you added the HelloBlockchain smart contract to the Blockchain Data Manager instance, a **ContractProperties** message type is also sent that contains decoded property information.
+    Ze względu na to, że dodano kontrakt HelloBlockchain Smart do wystąpienia Data Manager łańcucha bloków, zostanie również wysłany typ komunikatu **ContractProperties** , który zawiera dekodowane informacje o właściwościach.
 
-1. Find the **ContractProperties** message for the transaction. It should be the next message in the list.
+1. Znajdź komunikat **ContractProperties** dla transakcji. Powinien być następnym komunikatem na liście.
 
-    [![Blockchain transaction detail](./media/data-manager-cosmosdb/properties-msg.png)](./media/data-manager-cosmosdb/properties-msg.png#lightbox)
+    [![szczegóły transakcji łańcucha bloków](./media/data-manager-cosmosdb/properties-msg.png)](./media/data-manager-cosmosdb/properties-msg.png#lightbox)
 
-    The **DecodedProperties** array contains the properties of the transaction.
+    Tablica **DecodedProperties** zawiera właściwości transakcji.
 
-Gratulacje! You have successfully created a transaction message explorer using Blockchain Data Manager and Azure Cosmos DB.
+Gratulacje! Eksplorator komunikatów transakcji został pomyślnie utworzony za pomocą łańcucha bloków Data Manager i Azure Cosmos DB.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-When no longer needed, you can delete the resources and resource groups you used for this tutorial. To delete a resource group:
+Gdy nie jest już potrzebne, możesz usunąć zasoby i grupy zasobów użyte w tym samouczku. Aby usunąć grupę zasobów:
 
-1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete.
-1. Wybierz pozycję **Usuń grupę zasobów**. Verify deletion by entering the resource group name and select **Delete**.
+1. W Azure Portal przejdź do **grupy zasobów** w okienku nawigacji po lewej stronie i wybierz grupę zasobów, którą chcesz usunąć.
+1. Wybierz pozycję **Usuń grupę zasobów**. Sprawdź usuwanie, wprowadzając nazwę grupy zasobów i wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Learn more about integrating with blockchain ledgers.
+Dowiedz się więcej o integrowaniu z księgami łańcucha bloków.
 
 > [!div class="nextstepaction"]
-> [Using the Ethereum Blockchain connector with Azure Logic Apps](ethereum-logic-app.md)
+> [Używanie łącznika łańcucha bloków Ethereum z Azure Logic Apps](ethereum-logic-app.md)

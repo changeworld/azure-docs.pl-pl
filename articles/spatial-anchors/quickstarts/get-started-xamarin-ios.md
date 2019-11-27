@@ -48,7 +48,7 @@ Otwórz plik `Xamarin/SampleXamarin.sln` w programie Visual Studio.
 
 Następnym krokiem jest skonfigurowanie aplikacji w taki sposób, aby korzystała z identyfikatora konta i klucza konta. Skopiowano je do edytora tekstu podczas [konfigurowania zasobów kotwic przestrzennych](#create-a-spatial-anchors-resource).
 
-Otwórz `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
+Otwórz plik `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
 Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
 
