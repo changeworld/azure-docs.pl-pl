@@ -66,7 +66,7 @@ Jeśli sieciowa Grupa zabezpieczeń jest skojarzona z interfejsem sieciowym lub 
      > [!NOTE]
      > Wartości portów i adresów IP mogą być pojedynczą wartością, zakresem wartości lub zakresem, na przykład 80-1024, dla portu. Można zdefiniować dowolną liczbę filtrów.
 
-4. Wybierz **OK**.
+4. Kliknij przycisk **OK**.
 
 Po upływie limitu czasu skonfigurowanego dla przechwycenia pakietu przechwycenie pakietu zostanie zatrzymane i będzie można je przejrzeć. Możesz również ręcznie zatrzymać sesję przechwytywania pakietów.
 

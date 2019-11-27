@@ -95,7 +95,7 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * Funkcja
 * Usługa w chmurze
 * VNet
-* Subnet
+* Podsieć
 * Karta sieciowa
 * Sieciowa grupa zabezpieczeń
 * Konto usługi Batch
@@ -110,7 +110,7 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Key Vault
+* Magazyn kluczy
 
 Aby dowiedzieć się więcej na temat obsługiwanych funkcji dla powyższej listy zasobów PaaS, zobacz [obsługiwane funkcje usług PaaS Services](security-center-services.md#paas-services).
 

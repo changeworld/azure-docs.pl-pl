@@ -96,7 +96,7 @@ Usługa Device Provisioning Service, tak jak wszystkie usługi IoT platformy Azu
 
 Usługa Device Provisioning Service obsługuje połączenia HTTPS tylko na potrzeby operacji usługi.
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Regiony
 Usługa Device Provisioning Service jest dostępna w wielu regionach. Aktualna lista obecnych i nowo ogłoszonych regionów dla wszystkich usług jest dostępna na stronie [Regiony świadczenia usługi Azure](https://azure.microsoft.com/regions/). Dostępność usługi Device Provisioning Service można sprawdzić na stronie [Stan platformy Azure](https://azure.microsoft.com/status/).
 
 > [!NOTE]

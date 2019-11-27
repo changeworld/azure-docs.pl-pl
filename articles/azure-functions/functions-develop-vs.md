@@ -42,7 +42,7 @@ Inne zasoby, które są potrzebne, takie jak konto usługi Azure Storage, są tw
 
 ### <a name="check-your-tools-version"></a>Sprawdź wersję narzędzi w programie Visual Studio 2017
 
-1. Z **narzędzia** menu, wybierz **rozszerzenia i aktualizacje**. Rozwiń węzeł **zainstalowane** > **Narzędzia** i wybierz pozycję **Narzędzia do Azure Functions i zadania w sieci Web**.
+1. W menu **Narzędzia** wybierz pozycję **rozszerzenia i aktualizacje**. Rozwiń węzeł **zainstalowane** > **Narzędzia** i wybierz pozycję **Narzędzia do Azure Functions i zadania w sieci Web**.
 
     ![Weryfikowanie wersji narzędzi funkcji](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
