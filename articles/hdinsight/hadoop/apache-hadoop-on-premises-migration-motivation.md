@@ -101,7 +101,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Konfiguracja węzła głównego|m/y, procesor, dysk itd.|
 |Konfiguracja węzłów danych|m/y, procesor, dysk itd.|
 |Konfiguracja węzłów brzegowych|m/y, procesor, dysk itd.|
-|Szyfrowanie HDFS?|Tak|
+|Szyfrowanie HDFS?|Yes|
 |Wysoka dostępność|HDFS HA, magazyn metadanych o wysokiej dostępności|
 |Odzyskiwanie po awarii/kopia zapasowa|Utworzyć kopię zapasową klastra?|  
 |Systemy, które są zależne od klastra|SQL Server, Teradata, Power BI, MongoDB|
@@ -113,7 +113,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Uwierzytelnianie w usłudze Hive & autoryzacja|Sentry, LDAP, AD z Kerberos, Ranger|
 |Inspekcja|Ambari, Nawigator Cloudera, Ranger|
 |Monitorowanie|Graphite, collectd, statsd, Telegraf, InfluxDB|
-|Alerty|Kapacitor, Prometheus, usługi Datadog|
+|Generowanie alertów|Kapacitor, Prometheus, usługi Datadog|
 |Czas przechowywania danych| 3 lata, 5 lat|
 |Administratorzy klastrów|Pojedynczy administrator, wielu administratorów|
 
@@ -167,8 +167,8 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |---|---|---|
 |**Zainteresowany**|**Przykład**|**Udzielić**|
 | Preferowany region|Wschodnie stany USA||
-|Preferowana Sieć wirtualna?|Tak||
-|Wymagana HA/DR?|Tak||
+|Preferowana Sieć wirtualna?|Yes||
+|Wymagana HA/DR?|Yes||
 |Integracja z innymi usługami w chmurze?|ADF, CosmosDB||
 |**Temat**: **przenoszenie danych**  |||
 |Początkowe preferencje ładowania|Pomocą distcp, pole danych, ADF, WANDisco||
@@ -177,25 +177,25 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |**Temat**: **monitorowanie alertów &** |||
 |Korzystanie z usługi Azure Monitoring & alertów vs Integruj monitorowanie innych firm|Korzystanie z alertów usługi Azure Monitoring &||
 |**Temat**: **Preferencje zabezpieczeń** |||
-|Prywatny i chroniony Potok danych?|Tak||
-|Klaster przyłączony do domeny (ESP)?|     Tak||
-|AD Sync lokalnych do chmury?|     Tak||
+|Prywatny i chroniony Potok danych?|Yes||
+|Klaster przyłączony do domeny (ESP)?|     Yes||
+|AD Sync lokalnych do chmury?|     Yes||
 |Liczba użytkowników usługi AD do synchronizacji?|          100||
-|Czy chcesz zsynchronizować hasła z chmurą?|    Tak||
-|Tylko użytkownicy w chmurze?|                 Tak||
+|Czy chcesz zsynchronizować hasła z chmurą?|    Yes||
+|Tylko użytkownicy w chmurze?|                 Yes||
 |Potrzebujesz usługi MFA?|                       Nie|| 
-|Wymagania dotyczące autoryzacji danych?|  Tak||
-|Access Control oparte na rolach?|        Tak||
-|Inspekcja jest wymagana?|                  Tak||
-|Szyfrowanie danych w spoczynku?|          Tak||
-|Szyfrowanie danych jest w trakcie przesyłania?|       Tak||
+|Wymagania dotyczące autoryzacji danych?|  Yes||
+|Access Control oparte na rolach?|        Yes||
+|Inspekcja jest wymagana?|                  Yes||
+|Szyfrowanie danych w spoczynku?|          Yes||
+|Szyfrowanie danych jest w trakcie przesyłania?|       Yes||
 |**Temat**: **Preferencje architektury** |||
 |Pojedynczy klaster a typy klastrów określonych|Określone typy klastrów||
 |Rozłożone magazyny a Magazyn zdalny?|Magazyn zdalny||
 |Mniejszy rozmiar klastra jako dane są przechowywane zdalnie?|Mniejszy rozmiar klastra||
 |Używać wielu mniejszych klastrów zamiast pojedynczego dużego klastra?|Korzystanie z wielu mniejszych klastrów||
-|Używasz zdalnego magazynu metadanych?|Tak||
-|Udostępnić magazyny metadanych między różnymi klastrami?|Tak||
+|Używasz zdalnego magazynu metadanych?|Yes||
+|Udostępnić magazyny metadanych między różnymi klastrami?|Yes||
 |Czy dekonstrukcja obciążeń?|Zastępowanie zadań programu Hive za pomocą zadań platformy Spark||
 |Korzystasz z usługi ADF na potrzeby aranżacji danych?|Nie||
 

@@ -1,6 +1,6 @@
 ---
-title: Manage user-assigned managed identity - Azure CLI - Azure AD
-description: Step by step instructions on how to create, list and delete a user-assigned managed identity using the Azure CLI.
+title: Zarządzanie tożsamością zarządzaną przez użytkownika — interfejs wiersza polecenia platformy Azure — Azure AD
+description: Instrukcje krok po kroku dotyczące tworzenia, wyświetlania i usuwania tożsamości zarządzanej przypisanej przez użytkownika przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,72 +15,72 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 760de0d0bd1f11a34aa5c3998c923d1c7c80185d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232260"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547510"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Create, list or delete a user-assigned managed identity using the Azure CLI
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Tworzenie, wyświetlanie i usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu interfejsu wiersza polecenia platformy Azure
 
 
-Managed identities for Azure resources provides Azure services with a managed identity in Azure Active Directory. You can use this identity to authenticate to services that support Azure AD authentication, without needing credentials in your code. 
+Zarządzane tożsamości dla zasobów platformy Azure zapewniają usługi platformy Azure z zarządzaną tożsamością w Azure Active Directory. Ta tożsamość służy do uwierzytelniania w usługach, które obsługują uwierzytelnianie usługi Azure AD, bez konieczności podania poświadczeń w kodzie. 
 
-In this article, you learn how to create, list and delete a user-assigned managed identity using Azure CLI.
+Ten artykuł zawiera informacje na temat tworzenia, wyświetlania i usuwania tożsamości zarządzanej przypisanej przez użytkownika przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
-- To run the CLI script examples, you have three options:
-    - Use [Azure Cloud Shell](../../cloud-shell/overview.md) from the Azure portal (see next section).
-    - Use the embedded Azure Cloud Shell via the "Try It" button, located in the top right corner of each code block.
-    - [Install the latest version of the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 or later) if you prefer to use a local CLI console. Sign in to Azure using `az login`, using an account that is associated with the Azure subscription under which you would like to deploy the user-assigned managed identity.
+- Aby uruchomić przykłady skryptów interfejsu wiersza polecenia, masz trzy opcje:
+    - Użyj [Azure Cloud Shell](../../cloud-shell/overview.md) z Azure Portal (zobacz następną sekcję).
+    - Użyj osadzonego usługi Azure Cloud Shell za pomocą "Try It" przycisk znajdujący się w prawym górnym rogu każdego bloku kodu.
+    - [Zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 lub nowsza), jeśli wolisz korzystać z lokalnej konsoli interfejsu wiersza polecenia. Zaloguj się do platformy Azure przy użyciu `az login`przy użyciu konta skojarzonego z subskrypcją platformy Azure, w ramach której chcesz wdrożyć tożsamość zarządzaną przypisaną przez użytkownika.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Tworzenie tożsamości zarządzanej przypisanej przez użytkownika 
 
-To create a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Do utworzenia tożsamości zarządzanej przypisanej przez użytkownika konto wymaga przypisania roli [współautor zarządzanej tożsamości](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Use the [az identity create](/cli/azure/identity#az-identity-create) command to create a user-assigned managed identity. The `-g` parameter specifies the resource group where to create the user-assigned managed identity, and the `-n` parameter specifies its name. Replace the `<RESOURCE GROUP>` and `<USER ASSIGNED IDENTITY NAME>` parameter values with your own values:
+Za pomocą polecenia [AZ Identity Create](/cli/azure/identity#az-identity-create) Utwórz tożsamość zarządzaną przypisaną przez użytkownika. `-g` parametr określa grupę zasobów, w której ma zostać utworzona tożsamość zarządzana przypisana przez użytkownika, a parametr `-n` określa jego nazwę. Zastąp wartości parametrów `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` własnymi wartościami:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurecli-interactive
 az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
-## <a name="list-user-assigned-managed-identities"></a>List user-assigned managed identities
+## <a name="list-user-assigned-managed-identities"></a>Wyświetlanie tożsamości zarządzanych przypisanych przez użytkownika
 
-To list/read a user-assigned managed identity, your account needs the [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) or [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Aby wyświetlić/odczytać tożsamość zarządzaną przypisaną przez użytkownika, Twoje konto wymaga [operatora zarządzanej tożsamości](/azure/role-based-access-control/built-in-roles#managed-identity-operator) lub przypisania roli [współautor zarządzanej tożsamości](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-To list user-assigned managed identities, use the [az identity list](/cli/azure/identity#az-identity-list) command. Replace the `<RESOURCE GROUP>` with your own value:
+Aby wyświetlić tożsamości zarządzane przypisane przez użytkownika, użyj polecenia [AZ Identity list](/cli/azure/identity#az-identity-list) . Zastąp `<RESOURCE GROUP>` własną wartością:
 
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
 ```
-In the json response, user-assigned managed identities have `"Microsoft.ManagedIdentity/userAssignedIdentities"` value returned for key, `type`.
+W odpowiedzi JSON tożsamości zarządzane przypisane przez użytkownika mają `"Microsoft.ManagedIdentity/userAssignedIdentities"` wartość zwracana dla klucza, `type`.
 
 `"type": "Microsoft.ManagedIdentity/userAssignedIdentities"`
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Delete a user-assigned managed identity
+## <a name="delete-a-user-assigned-managed-identity"></a>Usuwanie tożsamości zarządzanej przypisanej przez użytkownika
 
-To delete a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Aby usunąć tożsamość zarządzaną przypisaną przez użytkownika, Twoje konto wymaga przypisania roli [współautor zarządzanej tożsamości](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-To delete a user-assigned managed identity, use the [az identity delete](/cli/azure/identity#az-identity-delete) command.  The -n parameter specifies its name and the -g parameter specifies the resource group where the user-assigned managed identity was created. Replace the `<USER ASSIGNED IDENTITY NAME>` and `<RESOURCE GROUP>` parameters values with your own values:
+Aby usunąć tożsamość zarządzaną przypisaną przez użytkownika, użyj polecenia [AZ Identity Delete](/cli/azure/identity#az-identity-delete) .  Parametr-n określa nazwę i parametr-g określa grupę zasobów, w której utworzono tożsamość zarządzaną przez użytkownika. Zastąp wartości parametrów `<USER ASSIGNED IDENTITY NAME>` i `<RESOURCE GROUP>` własnymi wartościami:
 
  ```azurecli-interactive
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>
 ```
 > [!NOTE]
-> Deleting a user-assigned managed identity will not remove the reference, from any resource it was assigned to. Please remove those from VM/VMSS using the `az vm/vmss identity remove` command
+> Usunięcie tożsamości zarządzanej przypisanej przez użytkownika nie spowoduje usunięcia odwołania z dowolnego zasobu, do którego została przypisana. Usuń te z maszyny wirtualnej/VMSS przy użyciu polecenia `az vm/vmss identity remove`
 
 ## <a name="next-steps"></a>Następne kroki
 
-For a full list of Azure CLI identity commands, see [az identity](/cli/azure/identity).
+Aby zapoznać się z pełną listą poleceń dotyczących tożsamości interfejsu wiersza polecenia platformy Azure, zobacz [AZ Identity](/cli/azure/identity).
 
-For information on how to assign a user-assigned managed identity to an Azure VM see, [Configure managed identities for Azure resources on an Azure VM using Azure CLI](qs-configure-cli-windows-vm.md#user-assigned-managed-identity)
+Aby uzyskać informacje na temat sposobu przypisywania tożsamości zarządzanej przypisanej przez użytkownika do maszyny wirtualnej platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md#user-assigned-managed-identity)
 
 
  
