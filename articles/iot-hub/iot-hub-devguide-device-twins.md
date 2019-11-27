@@ -198,7 +198,7 @@ Zaplecze rozwiązania działa na bliźniaczych urządzeniach przy użyciu nastę
 
   - Treść
         
-    Ta sekcja zawiera wszystkie zmiany w formacie JSON. Używa tego samego formatu co poprawka, z różnicą, że może zawierać wszystkie sekcje sznurów: Tagi, właściwości. raportowane, właściwości. wymagane i że zawiera elementy "$metadata". Na przykład
+    Ta sekcja zawiera wszystkie zmiany w formacie JSON. Używa tego samego formatu co poprawka, z różnicą, że może zawierać wszystkie sekcje sznurów: Tagi, właściwości. raportowane, właściwości. wymagane i że zawiera elementy "$metadata". Na przykład:
 
     ```json
     {

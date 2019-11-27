@@ -27,7 +27,7 @@ ms.locfileid: "74277890"
 > [!div class="op_single_selector"]
 > - [Program PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-security-group-view-cli.md)
-> - [REST API](network-watcher-security-group-view-rest.md)
+> - [Interfejs API REST](network-watcher-security-group-view-rest.md)
 
 Widok grupy zabezpieczeń umożliwia skonfigurowanie skonfigurowanych i obowiązujących reguł zabezpieczeń sieci, które są stosowane do maszyny wirtualnej. Ta funkcja jest przydatna do inspekcji i diagnozowania sieciowych grup zabezpieczeń i reguł skonfigurowanych na maszynie wirtualnej w celu zapewnienia, że ruch jest prawidłowo dozwolony lub odrzucany. W tym artykule pokazano, jak pobrać obowiązujące i stosowane reguły zabezpieczeń do maszyny wirtualnej przy użyciu interfejsu API REST
 

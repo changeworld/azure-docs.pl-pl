@@ -1,6 +1,6 @@
 ---
-title: Azure Functions Runtime Overview
-description: Overview of the Azure Functions Runtime Preview
+title: Przegląd środowisko uruchomieniowe usługi Azure Functions
+description: Przegląd środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej
 author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
@@ -12,40 +12,40 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226626"
 ---
-# <a name="azure-functions-runtime-overview-preview"></a>Azure Functions Runtime Overview (preview)
+# <a name="azure-functions-runtime-overview-preview"></a>Przegląd środowisko uruchomieniowe usługi Azure Functions (wersja zapoznawcza)
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-The Azure Functions Runtime (preview) provides a new way for you to take advantage of the simplicity and flexibility of the Azure Functions programming model on-premises. Built on the same open source roots as Azure Functions, Azure Functions Runtime is deployed on-premises to provide a nearly identical development experience as the cloud service.
+Środowisko uruchomieniowe usługi Azure Functions (wersja zapoznawcza) to nowy sposób, dzięki któremu można wykorzystać prostotę i elastyczność modelu programowania Azure Functions lokalnie. Utworzone na tych samych korzeniach typu "open source" jako Azure Functions, środowisko uruchomieniowe usługi Azure Functions wdrażane lokalnie, aby zapewnić niemal identyczne środowisko programistyczne jako usługę w chmurze.
 
-![Azure Functions Runtime Preview Portal][1]
+![Portal środowisko uruchomieniowe usługi Azure Functions w wersji zapoznawczej][1]
 
-The Azure Functions Runtime provides a way for you to experience Azure Functions before committing to the cloud. In this way, the code assets you build can then be taken with you to the cloud when you migrate.  The runtime also opens up new options for you, such as using the spare compute power of your on-premises computers to run batch processes overnight. You can also use devices within your organization to conditionally send data to other systems, both on-premises and in the cloud.
+Środowisko uruchomieniowe usługi Azure Functions zapewnia sposób Azure Functions przed zatwierdzeniem do chmury. W ten sposób skompilowane zasoby kodu można następnie wykonać w chmurze podczas migracji.  Środowisko uruchomieniowe otwiera również nowe opcje, takie jak użycie zapasowej mocy obliczeniowej na komputerach lokalnych do uruchamiania procesów wsadowych w nadporze. Możesz również użyć urządzeń w organizacji, aby warunkowo wysyłać dane do innych systemów, zarówno lokalnie, jak i w chmurze.
 
-The Azure Functions Runtime consists of two pieces:
+Środowisko uruchomieniowe usługi Azure Functions składa się z dwóch części:
 
-* Azure Functions Runtime Management Role
-* Azure Functions Runtime Worker Role
+* Rola zarządzania środowisko uruchomieniowe usługi Azure Functions
+* środowisko uruchomieniowe usługi Azure Functions rolę procesu roboczego
 
-## <a name="azure-functions-management-role"></a>Azure Functions Management Role
+## <a name="azure-functions-management-role"></a>Rola zarządzania Azure Functions
 
-The Azure Functions Management Role provides a host for the management of your Functions on-premises. This role performs the following tasks:
+Rola zarządzanie Azure Functions zapewnia Host do zarządzania funkcjami lokalnymi. Ta rola wykonuje następujące zadania:
 
-* Hosting of the Azure Functions Management Portal, which is the same one you see in the [Azure portal](https://portal.azure.com). The portal provides a consistent experience that lets you develop your functions in the same way as you would in the Azure portal.
-* Distributing functions across multiple Functions workers.
-* Providing a publishing endpoint so that you can publish your functions direct from Microsoft Visual Studio by downloading and importing the publishing profile.
+* Hosting portal zarządzania Azure Functions, który jest taki sam, jak w [Azure Portal](https://portal.azure.com). Portal zapewnia spójne środowisko, które umożliwia tworzenie funkcji w taki sam sposób jak w Azure Portal.
+* Dystrybuowanie funkcji między pracownikami wielu funkcji.
+* Udostępnianie punktu końcowego publikowania, aby można było opublikować funkcje bezpośrednio z Microsoft Visual Studio przez pobranie i zaimportowanie profilu publikowania.
 
-## <a name="azure-functions-worker-role"></a>Azure Functions Worker Role
+## <a name="azure-functions-worker-role"></a>Azure Functions rolę procesu roboczego
 
-The Azure Functions Worker Roles are deployed in Windows Containers and are where your function code executes.  You can deploy multiple Worker Roles throughout your organization and this option is a key way in which customers can make use of spare compute power.  One example of where spare compute exists in many organizations is machines powered on constantly but not being used for large periods of time.
+Role procesu roboczego Azure Functions są wdrażane w kontenerach systemu Windows i są wykonywane w ramach kodu funkcji.  W całej organizacji można wdrożyć wiele ról procesów roboczych. Ta opcja stanowi kluczowy sposób, w jaki klienci mogą korzystać z mocy obliczeniowej zapasowej.  Przykładem, gdzie istnieją obliczenia zapasowe w wielu organizacjach, jest to, że maszyny są zasilane ciągle, ale nie są używane przez długi czas.
 
-## <a name="minimum-requirements"></a>Minimum Requirements
+## <a name="minimum-requirements"></a>Minimalne wymagania
 
-To get started with the Azure Functions Runtime, you must have a machine with Windows Server 2016 or Windows 10 Creators Update with access to a SQL Server instance.
+Aby rozpocząć pracę z środowisko uruchomieniowe usługi Azure Functions, musisz mieć komputer z systemem Windows Server 2016 lub Windows 10 Creators Update z dostępem do wystąpienia SQL Server.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Install the [Azure Functions Runtime preview](https://aka.ms/azafrdoc)
+Zainstaluj wersję [zapoznawczą środowisko uruchomieniowe usługi Azure Functions](https://aka.ms/azafrdoc)
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

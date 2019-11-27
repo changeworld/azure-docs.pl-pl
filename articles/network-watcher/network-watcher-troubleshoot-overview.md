@@ -52,7 +52,7 @@ W poniższych tabelach przedstawiono różne typy błędów (identyfikator w obs
 
 | Typ błędu | Przyczyna | Log|
 |---|---|---|
-| NoFault | Gdy nie wykryto błędu |Tak|
+| NoFault | Gdy nie wykryto błędu |Yes|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie została zainicjowana |Nie|
 | PlannedMaintenance |  Wystąpienie bramy jest w trakcie konserwacji  |Nie|
 | UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizacja może być operacją zmiany rozmiaru. | Nie |
@@ -60,26 +60,26 @@ W poniższych tabelach przedstawiono różne typy błędów (identyfikator w obs
 | PlatformInActive | Wystąpił problem z platformą. | Nie|
 | ServiceNotRunning | Podstawowa usługa nie jest uruchomiona. | Nie|
 | NoConnectionsFoundForGateway | Brak połączeń w bramie. Ten błąd jest tylko ostrzeżeniem.| Nie|
-| ConnectionsNotConnected | Połączenia nie są połączone. Ten błąd jest tylko ostrzeżeniem.| Tak|
-| GatewayCPUUsageExceeded | Bieżące użycie procesora CPU bramy jest > 95%. | Tak |
+| ConnectionsNotConnected | Połączenia nie są połączone. Ten błąd jest tylko ostrzeżeniem.| Yes|
+| GatewayCPUUsageExceeded | Bieżące użycie procesora CPU bramy jest > 95%. | Yes |
 
 ### <a name="connection"></a>Połączenie
 
 | Typ błędu | Przyczyna | Log|
 |---|---|---|
-| NoFault | Gdy nie wykryto błędu |Tak|
+| NoFault | Gdy nie wykryto błędu |Yes|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie została zainicjowana |Nie|
 | PlannedMaintenance | Wystąpienie bramy jest w trakcie konserwacji  |Nie|
 | UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizacja może być operacją zmiany rozmiaru.  | Nie |
 | VipUnResponsive | Ten błąd występuje, gdy nie można skontaktować się z podstawowym wystąpieniem bramy z powodu błędu sondy kondycji. | Nie |
 | ConnectionEntityNotFound | Brak konfiguracji połączenia | Nie |
 | ConnectionIsMarkedDisconnected | Połączenie jest oznaczone jako "rozłączone" |Nie|
-| ConnectionNotConfiguredOnGateway | Usługa bazowa nie ma skonfigurowanego połączenia. | Tak |
-| ConnectionMarkedStandby | Podstawowa usługa jest oznaczona jako w stanie wstrzymania.| Tak|
-| Authentication | Niezgodność klucza wstępnego | Tak|
-| PeerReachability | Brama równorzędna jest nieosiągalna. | Tak|
-| IkePolicyMismatch | Brama równorzędna ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Tak|
-| Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika WFP. |Tak|
+| ConnectionNotConfiguredOnGateway | Usługa bazowa nie ma skonfigurowanego połączenia. | Yes |
+| ConnectionMarkedStandby | Podstawowa usługa jest oznaczona jako w stanie wstrzymania.| Yes|
+| Authentication | Niezgodność klucza wstępnego | Yes|
+| PeerReachability | Brama równorzędna jest nieosiągalna. | Yes|
+| IkePolicyMismatch | Brama równorzędna ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Yes|
+| Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika WFP. |Yes|
 
 ## <a name="supported-gateway-types"></a>Obsługiwane typy bram
 

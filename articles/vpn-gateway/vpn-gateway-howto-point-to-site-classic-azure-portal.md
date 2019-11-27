@@ -61,25 +61,25 @@ Aby uzyskać więcej informacji na temat połączeń punkt-lokacja, zobacz [Czę
 Następujących wartości możesz użyć do tworzenia środowiska testowego lub odwoływać się do tych wartości, aby lepiej zrozumieć przykłady w tym artykule:
 
 - **Ustawienia tworzenia sieci wirtualnej (model klasyczny)**
-   - **Name**: Enter *VNet1*.
-   - **Address space**: Enter *192.168.0.0/16*. W tym przykładzie zostanie wykorzystana tylko jedna przestrzeń adresowa. Istnieje możliwość użycia więcej niż jednej przestrzeni adresowej dla sieci wirtualnej, jak pokazano na diagramie.
-   - **Subnet name**: Enter *FrontEnd*.
-   - **Subnet address range**: Enter *192.168.1.0/24*.
-   - **Subscription**: Select a subscription from the list of available subscriptions.
-   - **Resource group**: Enter *TestRG*. Wybierz pozycję **Utwórz nową**, jeśli grupa zasobów nie istnieje.
-   - **Location**: Select **East US** from the list.
+   - **Nazwa**: wprowadź *VNet1*.
+   - **Przestrzeń adresowa**: wprowadź *192.168.0.0/16*. W tym przykładzie zostanie wykorzystana tylko jedna przestrzeń adresowa. Istnieje możliwość użycia więcej niż jednej przestrzeni adresowej dla sieci wirtualnej, jak pokazano na diagramie.
+   - **Nazwa podsieci**: wprowadź *fronton*.
+   - **Zakres adresów podsieci**: wprowadź *192.168.1.0/24*.
+   - **Subskrypcja**: wybierz subskrypcję z listy dostępnych subskrypcji.
+   - **Grupa zasobów**: wprowadź *TestRG*. Wybierz pozycję **Utwórz nową**, jeśli grupa zasobów nie istnieje.
+   - **Lokalizacja**: wybierz pozycję **Wschodnie stany USA** z listy.
 
   - **Ustawienia połączenia sieci VPN**
-    - **Connection type**: Select **Point-to-site**.
-    - **Client Address Space**: Enter *172.16.201.0/24*. Klienci sieci VPN połączeni z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z określonej puli.
+    - **Typ połączenia**: wybierz pozycję **punkt-lokacja**.
+    - **Przestrzeń adresowa klienta**: wprowadź *172.16.201.0/24*. Klienci sieci VPN połączeni z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z określonej puli.
 
 - **Ustawienia podsieci konfiguracji bramy**
-   - **Name**: Autofilled with *GatewaySubnet*.
-   - **Address range**: Enter *192.168.200.0/24*. 
+   - **Nazwa**: wypełniane *autoGatewaySubnet*.
+   - **Zakres adresów**: wprowadź *192.168.200.0/24*. 
 
 - **Ustawienia konfiguracji bramy**:
-   - **Size**: Select the gateway SKU that you want to use.
-   - **Routing Type**: Select **Dynamic**.
+   - **Rozmiar**: Wybierz jednostkę SKU bramy, która ma być używana.
+   - **Typ routingu**: wybierz pozycję **dynamiczny**.
 
 ## <a name="create-a-virtual-network-and-a-vpn-gateway"></a>Tworzenie sieci wirtualnej i bramy VPN Gateway
 
@@ -89,7 +89,7 @@ Przed rozpoczęciem sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie 
 
 Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Zamieszczone zrzuty ekranu są przykładowe. Przedstawione wartości należy zastąpić własnymi. Aby utworzyć sieć wirtualną przy użyciu witryny Azure Portal, wykonaj poniższe kroki:
 
-1. On the [Azure portal](https://portal.azure.com) menu or from the **Home** page, select **Create a resource**. Zostanie otwarta strona **Nowy**.
+1. W menu [Azure Portal](https://portal.azure.com) lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. Zostanie otwarta strona **Nowy**.
 
 2. W polu **Wyszukaj w witrynie Marketplace** wpisz *sieć wirtualna* i wybierz pozycję **Sieć wirtualna** na liście wyników. Zostanie otwarta strona **Sieć wirtualna**.
 
@@ -113,11 +113,11 @@ Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Zamieszczone zrzuty ekran
 
     Aby dodać serwer DNS, wybierz pozycję **Serwery DNS** na stronie sieci wirtualnej. Wprowadź adres IP serwera DNS, którego chcesz użyć, a następnie wybierz pozycję **Zapisz**.
 
-### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>Part 2: Create a gateway subnet and a dynamic routing gateway
+### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>Część 2: Tworzenie podsieci bramy i bramy routingu dynamicznego
 
 W tym kroku tworzona jest podsieć bramy i brama o dynamicznym routingu. W klasycznym modelu wdrażania w witrynie Azure Portal tworzenie bramy i podsieci bramy można wykonać na tych samych stronach konfiguracji. Podsieć bramy jest używana tylko na potrzeby usług bramy. Nigdy nie należy wdrażać żadnych elementów, takich jak maszyny wirtualne lub inne usługi, bezpośrednio w podsieci bramy.
 
-1. In the Azure portal, go to the virtual network for which you want to create a gateway.
+1. W Azure Portal przejdź do sieci wirtualnej, dla której chcesz utworzyć bramę.
 
 2. Na stronie sieci wirtualnej wybierz pozycję **Przegląd**, a następnie w sekcji **Połączenia VPN** wybierz pozycję **Brama**.
 
@@ -148,7 +148,7 @@ W tym kroku tworzona jest podsieć bramy i brama o dynamicznym routingu. W klasy
 
 Na platformie Azure certyfikaty są używane do uwierzytelniania klientów sieci VPN w obrębie sieci VPN typu punkt-lokacja. Informacje o kluczu publicznym certyfikatu głównego należy przekazać na platformę Azure. Klucz publiczny jest wtedy uważany za *zaufany*. Certyfikaty klienta muszą zostać wygenerowane na podstawie zaufanego certyfikatu głównego, a następnie zainstalowane na każdym komputerze klienckim w magazynie certyfikatów Certificates-Current User\Personal\Certificates. Certyfikat jest używany do uwierzytelniania klienta, gdy inicjuje on połączenie z siecią wirtualną. 
 
-Jeśli używasz certyfikatów z podpisem własnym, musisz je utworzyć przy użyciu określonych parametrów. Certyfikat z podpisem własnym możesz utworzyć przy użyciu polecenia [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) lub instrukcji dotyczących [środowiska PowerShell i systemu Windows 10](vpn-gateway-certificates-point-to-site.md). Ważne jest, aby wykonać kroki opisane w tych instrukcjach w przypadku używania certyfikatów głównych z podpisem własnym i generowania certyfikatów klienta na podstawie certyfikatu głównego z podpisem własnym. W przeciwnym razie utworzone przez Ciebie certyfikaty nie będą zgodne z połączeniami typu punkt-lokacja i zostanie wyświetlony błąd połączenia.
+Jeśli używasz certyfikatów z podpisem własnym, musisz je utworzyć przy użyciu określonych parametrów. Certyfikat z podpisem własnym możesz utworzyć przy użyciu polecenia [MakeCert](vpn-gateway-certificates-point-to-site.md) lub instrukcji dotyczących [środowiska PowerShell i systemu Windows 10](vpn-gateway-certificates-point-to-site-makecert.md). Ważne jest, aby wykonać kroki opisane w tych instrukcjach w przypadku używania certyfikatów głównych z podpisem własnym i generowania certyfikatów klienta na podstawie certyfikatu głównego z podpisem własnym. W przeciwnym razie utworzone przez Ciebie certyfikaty nie będą zgodne z połączeniami typu punkt-lokacja i zostanie wyświetlony błąd połączenia.
 
 ### <a name="acquire-the-public-key-cer-for-the-root-certificate"></a>Uzyskiwanie klucza publicznego (pliku cer) dla certyfikatu głównego
 
@@ -183,7 +183,7 @@ Po utworzeniu bramy przekaż plik cer (który zawiera informacje o kluczu public
 
 Aby nawiązać połączenie z siecią wirtualną przy użyciu połączenia sieci VPN typu punkt-lokacja, na każdym kliencie trzeba zainstalować pakiet do konfiguracji natywnego klienta sieci VPN systemu Windows. Pakiet konfiguracji powoduje skonfigurowanie natywnego klienta sieci VPN systemu Windows za pomocą ustawień koniecznych do łączenia się z siecią wirtualną.
 
-Tego samego pakietu konfiguracji klienta VPN można użyć na każdym komputerze klienckim, o ile wersja jest zgodna z architekturą dla klienta. Lista obsługiwanych systemów operacyjnych klientów znajduje się w sekcji [Często zadawane pytania dotyczące połączeń typu punkt-lokacja](#point-to-site-faq).
+Tego samego pakietu konfiguracyjnego klienta VPN można użyć na każdym komputerze klienckim, o ile wersja jest zgodna z architekturą dla klienta. Lista obsługiwanych systemów operacyjnych klientów znajduje się w sekcji [Często zadawane pytania dotyczące połączeń typu punkt-lokacja](#point-to-site-faq).
 
 ### <a name="generate-and-install-a-vpn-client-configuration-package"></a>Generowanie i instalowanie pakietu konfiguracji klienta sieci VPN
 
@@ -194,7 +194,7 @@ Tego samego pakietu konfiguracji klienta VPN można użyć na każdym komputerze
    * Dla klientów 64-bitowych wybierz pakiet **Klient sieci VPN (64-bitowy)** .
    * Dla klientów 32-bitowych wybierz pakiet **Klient sieci VPN (32-bitowy)** .
 
-   ![Pobieranie pakietu konfiguracji klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
+   ![Pobieranie pakietu konfiguracyjnego klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
 
 3. Gdy pakiet zostanie wygenerowany, pobierz go, a następnie zainstaluj na komputerze klienckim. Jeśli zostanie wyświetlone okno podręczne SmartScreen, wybierz pozycję **Więcej informacji**, a następnie pozycję **Uruchom mimo to**. Możesz także zapisać pakiet w celu zainstalowania go na innych komputerach klienckich.
 
@@ -210,7 +210,7 @@ Aby utworzyć połączenie punkt-lokacja z komputerem klienckim innym niż użyt
 >
 >
 
-1. To connect to your VNet, on the client computer, go to **VPN connections** in the Azure portal and locate the VPN connection that you created. Połączenie sieci VPN ma taką samą nazwę jak sieć wirtualna. Wybierz przycisk **Połącz**. Jeśli pojawi się komunikat podręczny dotyczący certyfikatu, wybierz pozycję **Kontynuuj**, aby użyć podwyższonego poziomu uprawnień.
+1. Aby nawiązać połączenie z siecią wirtualną, na komputerze klienckim przejdź do pozycji **połączenia sieci VPN** w Azure Portal i Znajdź utworzone połączenie sieci VPN. Połączenie sieci VPN ma taką samą nazwę jak sieć wirtualna. Wybierz przycisk **Połącz**. Jeśli pojawi się komunikat podręczny dotyczący certyfikatu, wybierz pozycję **Kontynuuj**, aby użyć podwyższonego poziomu uprawnień.
 
 2. Na stronie stanu **Połączenie** wybierz przycisk **Połącz**, aby rozpocząć połączenie. Jeśli widzisz ekran **Wybierz certyfikat**, sprawdź, czy wyświetlany certyfikat klienta to ten, który ma zostać użyty do nawiązania połączenia. Jeśli nie, wybierz odpowiedni certyfikat z listy rozwijanej, a następnie wybierz przycisk **OK**.
 
@@ -277,7 +277,7 @@ Certyfikat klienta można odwołać przez dodanie odcisku palca do listy odwoła
 
 1. Pobierz odcisk palca certyfikatu klienta. Aby uzyskać więcej informacji, zobacz [Instrukcje: Pobieranie odcisku palca certyfikatu](https://msdn.microsoft.com/library/ms734695.aspx).
 2. Skopiuj informacje do edytora tekstu i usuń wszelkie spacje, tak aby powstał ciąg bez odstępów.
-3. Go to the classic virtual network. Wybierz stronę **Połączenie sieci VPN typu punkt-lokacja**, a następnie wybierz przycisk **Zarządzanie certyfikatami**, aby otworzyć stronę **Certyfikaty**.
+3. Przejdź do klasycznej sieci wirtualnej. Wybierz stronę **Połączenie sieci VPN typu punkt-lokacja**, a następnie wybierz przycisk **Zarządzanie certyfikatami**, aby otworzyć stronę **Certyfikaty**.
 4. Wybierz pozycję **Lista odwołania**, aby otworzyć stronę **Lista odwołania**. 
 5. Wybierz pozycję **Dodaj certyfikat**, aby otworzyć stronę **Dodawanie certyfikatu do listy odwołania**.
 6. W obszarze **Odcisk palca** wklej odcisk palca certyfikatu jako jeden ciągły wiersz tekstu bez odstępów. Wybierz przycisk **OK**, aby zakończyć.

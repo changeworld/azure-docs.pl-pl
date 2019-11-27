@@ -1,6 +1,6 @@
 ---
-title: Azure Queue storage bindings for Azure Functions
-description: Understand how to use the Azure Queue storage trigger and output binding in Azure Functions.
+title: Powiązania usługi Azure queue storage dla Azure Functions
+description: Zapoznaj się z tematem jak używać wyzwalacza usługi Azure queue storage i powiązania danych wyjściowych w Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
@@ -13,46 +13,46 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230997"
 ---
-# <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue storage bindings for Azure Functions
+# <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania usługi Azure queue storage dla Azure Functions
 
-This article explains how to work with Azure Queue storage bindings in Azure Functions. Azure Functions supports trigger and output bindings for queues.
+W tym artykule wyjaśniono, jak korzystać z powiązań usługi Azure queue storage w Azure Functions. Azure Functions obsługuje powiązania wyzwalacza i wyjścia dla kolejek.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-The Queue storage bindings are provided in the [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet package, version 2.x. Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub repository.
+Powiązania magazynu kolejki są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) w wersji 2. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
 
-The Queue storage bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet package, version 3.x. Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub repository.
+Powiązania magazynu kolejek są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="encoding"></a>Encoding
-Functions expect a *base64* encoded string. Any adjustments to the encoding type (in order to prepare data as a *base64* encoded string) need to be implemented in the calling service.
+## <a name="encoding"></a>Kodowanie
+Funkcja oczekuje ciągu zakodowanego w *formacie base64* . Wszelkie zmiany typu kodowania (w celu przygotowania danych jako ciągu zakodowanego *algorytmem Base64* ) muszą zostać zaimplementowane w usłudze wywołującej.
 
 ## <a name="trigger"></a>Wyzwalacz
 
-Use the queue trigger to start a function when a new item is received on a queue. The queue message is provided as input to the function.
+Użyj wyzwalacza kolejki, aby uruchomić funkcję po odebraniu nowego elementu w kolejce. Komunikat kolejki jest dostarczany jako dane wejściowe do funkcji.
 
-## <a name="trigger---example"></a>Trigger - example
+## <a name="trigger---example"></a>Wyzwalacz — przykład
 
-See the language-specific example:
+Zobacz przykład specyficzny dla języka:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#skrypt (. CSX)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 * [Python](#trigger---python-example)
 
-### <a name="trigger---c-example"></a>Trigger - C# example
+### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that polls the `myqueue-items` queue and writes a log each time a queue item is processed.
+Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która sonduje kolejkę `myqueue-items` i zapisuje dziennik za każdym razem, gdy element kolejki jest przetwarzany.
 
 ```csharp
 public static class QueueFunctions
@@ -67,11 +67,11 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger - C# script example
+### <a name="trigger---c-script-example"></a>Wyzwalacz — przykładowy skrypt w języku C#
 
-The following example shows a queue trigger binding in a *function.json* file and [C# script (.csx)](functions-reference-csharp.md) code that uses the binding. The function polls the `myqueue-items` queue and writes a log each time a queue item is processed.
+Poniższy przykład przedstawia powiązanie wyzwalacza kolejki w pliku *Function. JSON* i [ C# kodzie skryptu (. CSX)](functions-reference-csharp.md) , który używa powiązania. Funkcja sonduje kolejkę `myqueue-items` i zapisuje dziennik za każdym razem, gdy element kolejki jest przetwarzany.
 
-Here's the *function.json* file:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -88,9 +88,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
 
-Here's the C# script code:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -120,13 +120,13 @@ public static void Run(CloudQueueMessage myQueueItem,
 }
 ```
 
-The [usage](#trigger---usage) section explains `myQueueItem`, which is named by the `name` property in function.json.  The [message metadata section](#trigger---message-metadata) explains all of the other variables shown.
+W sekcji [użycie](#trigger---usage) objaśniono `myQueueItem`, który jest nazwany przez właściwość `name` w funkcji Function. JSON.  W [sekcji metadane wiadomości](#trigger---message-metadata) objaśniono wszystkie inne wyświetlane zmienne.
 
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript example
+### <a name="trigger---javascript-example"></a>Wyzwalacz — przykład JavaScript
 
-The following example shows a queue trigger binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function polls the `myqueue-items` queue and writes a log each time a queue item is processed.
+W poniższym przykładzie pokazano powiązanie wyzwalacza kolejki w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja sonduje kolejkę `myqueue-items` i zapisuje dziennik za każdym razem, gdy element kolejki jest przetwarzany.
 
-Here's the *function.json* file:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -143,12 +143,12 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
 
 > [!NOTE]
-> The name parameter reflects as `context.bindings.<name>` in the JavaScript code which contains the queue item payload. This payload is also passed as the second parameter to the function.
+> Parametr name odzwierciedla jako `context.bindings.<name>` w kodzie JavaScript, który zawiera ładunek elementu kolejki. Ten ładunek jest również przenoszona jako drugi parametr do funkcji.
 
-Here's the JavaScript code:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = async function (context, message) {
@@ -165,11 +165,11 @@ module.exports = async function (context, message) {
 };
 ```
 
-The [usage](#trigger---usage) section explains `myQueueItem`, which is named by the `name` property in function.json.  The [message metadata section](#trigger---message-metadata) explains all of the other variables shown.
+W sekcji [użycie](#trigger---usage) objaśniono `myQueueItem`, który jest nazwany przez właściwość `name` w funkcji Function. JSON.  W [sekcji metadane wiadomości](#trigger---message-metadata) objaśniono wszystkie inne wyświetlane zmienne.
 
-### <a name="trigger---java-example"></a>Trigger - Java example
+### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
 
-The following Java example shows a storage queue trigger functions which logs the triggered message placed into queue `myqueuename`.
+Poniższy przykład języka Java przedstawia funkcje wyzwalacza kolejki magazynu, które rejestrują wyzwolony komunikat umieszczony do kolejki `myqueuename`.
 
  ```java
  @FunctionName("queueprocessor")
@@ -183,11 +183,11 @@ The following Java example shows a storage queue trigger functions which logs th
  }
  ```
 
-### <a name="trigger---python-example"></a>Trigger - Python example
+### <a name="trigger---python-example"></a>Wyzwalacz — przykład w języku Python
 
-The following example demonstrates how to read a queue message passed to a function via a trigger.
+Poniższy przykład ilustruje sposób odczytywania komunikatu kolejki przekazanego do funkcji za pośrednictwem wyzwalacza.
 
-A Storage queue trigger is defined in *function.json* where *type* is set to `queueTrigger`.
+Wyzwalacz kolejki magazynu jest zdefiniowany w *funkcji Function. JSON* , w której *typ* ma wartość `queueTrigger`.
 
 ```json
 {
@@ -204,7 +204,7 @@ A Storage queue trigger is defined in *function.json* where *type* is set to `qu
 }
 ```
 
-The code *_\_init_\_.py* declares a parameter as `func.ServiceBusMessage` which allows you to read the queue message in your function.
+Kod  *_\_init_\_. PR* deklaruje parametr jako `func.ServiceBusMessage`, który umożliwia odczytywanie komunikatu w kolejce w funkcji.
 
 ```python
 import logging
@@ -231,13 +231,13 @@ def main(msg: func.QueueMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger - attributes
+## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
 
-In [C# class libraries](functions-dotnet-class-library.md), use the following attributes to configure a queue trigger:
+W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj następujących atrybutów, aby skonfigurować wyzwalacz kolejki:
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueTriggerAttribute.cs)
 
-  The attribute's constructor takes the name of the queue to monitor, as shown in the following example:
+  Konstruktor atrybutu przyjmuje nazwę kolejki do monitorowania, jak pokazano w następującym przykładzie:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -249,7 +249,7 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  You can set the `Connection` property to specify the storage account to use, as shown in the following example:
+  Możesz ustawić właściwość `Connection`, aby określić konto magazynu, które ma być używane, jak pokazano w następującym przykładzie:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -261,11 +261,11 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  For a complete example, see [Trigger - C# example](#trigger---c-example).
+  Aby zapoznać się z kompletnym przykładem, zobacz [wyzwalacz- C# example](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Provides another way to specify the storage account to use. The constructor takes the name of an app setting that contains a storage connection string. The attribute can be applied at the parameter, method, or class level. The following example shows class level and method level:
+  Zapewnia inny sposób określania konta magazynu, które ma być używane. Konstruktor przyjmuje nazwę ustawienia aplikacji, które zawiera parametry połączenia magazynu. Ten atrybut można zastosować na parametrów, metody lub poziomie klasy. Poniższy przykład pokazuje poziom klasy i metody:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -279,94 +279,94 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-The storage account to use is determined in the following order:
+Konto magazynu do użycia jest określane w następującej kolejności:
 
-* The `QueueTrigger` attribute's `Connection` property.
-* The `StorageAccount` attribute applied to the same parameter as the `QueueTrigger` attribute.
-* The `StorageAccount` attribute applied to the function.
-* The `StorageAccount` attribute applied to the class.
-* The "AzureWebJobsStorage" app setting.
+* Właściwość `Connection` atrybutu `QueueTrigger`.
+* Atrybut `StorageAccount` stosowany do tego samego parametru, który jest atrybutem `QueueTrigger`.
+* Atrybut `StorageAccount` stosowany do funkcji.
+* Atrybut `StorageAccount` stosowany do klasy.
+* Ustawienie aplikacji "AzureWebJobsStorage".
 
-## <a name="trigger---configuration"></a>Trigger - configuration
+## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `QueueTrigger` attribute.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `QueueTrigger` atrybutu.
 
-|function.json property | Attribute property |Opis|
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | nd.| Must be set to `queueTrigger`. This property is set automatically when you create the trigger in the Azure portal.|
-|**direction**| nd. | In the *function.json* file only. Must be set to `in`. This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | nd. |The name of the variable that contains the queue item payload in the function code.  |
-|**queueName** | **QueueName**| The name of the queue to poll. |
-|**connection** | **Połączenie** |The name of an app setting that contains the Storage connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name here. For example, if you set `connection` to "MyStorage", the Functions runtime looks for an app setting that is named "AzureWebJobsMyStorage." If you leave `connection` empty, the Functions runtime uses the default Storage connection string in the app setting that is named `AzureWebJobsStorage`.|
+|**type** | Nie dotyczy| Musi być ustawiony na `queueTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction**| Nie dotyczy | Tylko w pliku *Function. JSON* . Musi być ustawiony na `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwij** | Nie dotyczy |Nazwa zmiennej, która zawiera ładunek elementu kolejki w kodzie funkcji.  |
+|**Zmienną QueueName** | **Zmienną QueueName**| Nazwa kolejki do sondowania. |
+|**połączenia** | **Połączenie** |Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Trigger - usage
+## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
-In C# and C# script, access the message data by using a method parameter such as `string paramName`. In C# script, `paramName` is the value specified in the `name` property of *function.json*. You can bind to any of the following types:
+W C# skryptach i C# Uzyskuj dostęp do danych komunikatów przy użyciu parametru metody, takiego jak `string paramName`. W C# skrypcie `paramName` jest wartością określoną we właściwości `name` *funkcji Function. JSON*. Można powiązać z dowolnym z następujących typów:
 
-* Object - The Functions runtime deserializes a JSON payload into an instance of an arbitrary class defined in your code. 
+* Object — środowisko uruchomieniowe funkcji deserializacji ładunek JSON do wystąpienia dowolnej klasy zdefiniowanej w kodzie. 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
 
-If you try to bind to `CloudQueueMessage` and get an error message, make sure that you have a reference to [the correct Storage SDK version](#azure-storage-sdk-version-in-functions-1x).
+Jeśli próbujesz powiązać z `CloudQueueMessage` i otrzymać komunikat o błędzie, upewnij się, że masz odwołanie do [odpowiedniej wersji zestawu SDK magazynu](#azure-storage-sdk-version-in-functions-1x).
 
-In JavaScript, use `context.bindings.<name>` to access the queue item payload. If the payload is JSON, it's deserialized into an object.
+W języku JavaScript Użyj `context.bindings.<name>`, aby uzyskać dostęp do ładunku elementu kolejki. Jeśli ładunek jest w formacie JSON, jest deserializowany do obiektu.
 
-## <a name="trigger---message-metadata"></a>Trigger - message metadata
+## <a name="trigger---message-metadata"></a>Wyzwalacz — komunikat metadanych
 
-The queue trigger provides several [metadata properties](./functions-bindings-expressions-patterns.md#trigger-metadata). These properties can be used as part of binding expressions in other bindings or as parameters in your code. These are properties of the [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) class.
+Wyzwalacz kolejki zawiera kilka [właściwości metadanych](./functions-bindings-expressions-patterns.md#trigger-metadata). Te właściwości może służyć jako część wyrażenia wiązania w pozostałych powiązaniach lub jako parametry w kodzie. Są to właściwości klasy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
 
 |Właściwość|Typ|Opis|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Queue payload (if a valid string). If the queue message payload as a string, `QueueTrigger` has the same value as the variable named by the `name` property in *function.json*.|
-|`DequeueCount`|`int`|The number of times this message has been dequeued.|
-|`ExpirationTime`|`DateTimeOffset`|The time that the message expires.|
-|`Id`|`string`|Queue message ID.|
-|`InsertionTime`|`DateTimeOffset`|The time that the message was added to the queue.|
-|`NextVisibleTime`|`DateTimeOffset`|The time that the message will next be visible.|
-|`PopReceipt`|`string`|The message's pop receipt.|
+|`QueueTrigger`|`string`|Ładunek kolejki (w przypadku prawidłowego ciągu). Jeśli ładunek komunikatu w kolejce jako ciąg, `QueueTrigger` ma taką samą wartość jak zmienna o nazwie `name` w *funkcji Function. JSON*.|
+|`DequeueCount`|`int`|Liczba przypadków, w których ten komunikat został usunięty z kolejki.|
+|`ExpirationTime`|`DateTimeOffset`|Godzina wygaśnięcia komunikatu.|
+|`Id`|`string`|Identyfikator komunikatu kolejki.|
+|`InsertionTime`|`DateTimeOffset`|Godzina, o której wiadomość została dodana do kolejki.|
+|`NextVisibleTime`|`DateTimeOffset`|Godzina, o której komunikat będzie dalej widoczny.|
+|`PopReceipt`|`string`|Potwierdzenie wyskakujące komunikatu.|
 
-## <a name="trigger---poison-messages"></a>Trigger - poison messages
+## <a name="trigger---poison-messages"></a>Wyzwalacz - skażone wiadomości
 
-When a queue trigger function fails, Azure Functions retries the function up to five times for a given queue message, including the first try. If all five attempts fail, the functions runtime adds a message to a queue named *&lt;originalqueuename>-poison*. You can write a function to process messages from the poison queue by logging them or sending a  notification that manual attention is needed.
+Gdy funkcja wyzwalacza kolejki kończy się niepowodzeniem, Azure Functions ponawia próbę wykonania funkcji maksymalnie pięć razy dla danego komunikatu kolejki, łącznie z pierwszą próbą. Jeśli wszystkie pięć prób nie powiedzie się, środowisko uruchomieniowe funkcji dodaje komunikat do kolejki o nazwie *&lt;originalqueuename >-Trująca*. Funkcję można napisać, aby przetwarzać komunikaty z kolejki trującej, rejestrując je lub wysyłając powiadomienie, które wymaga ręcznej uwagi.
 
-To handle poison messages manually, check the [dequeueCount](#trigger---message-metadata) of the queue message.
+Aby ręcznie obsłużyć trujące komunikaty, sprawdź [dequeueCount](#trigger---message-metadata) komunikatu w kolejce.
 
-## <a name="trigger---polling-algorithm"></a>Trigger - polling algorithm
+## <a name="trigger---polling-algorithm"></a>Algorytm sondowania wyzwalacza
 
-The queue trigger implements a random exponential back-off algorithm to reduce the effect of idle-queue polling on storage transaction costs.  When a message is found, the runtime waits two seconds and then checks for another message; when no message is found, it waits about four seconds before trying again. After subsequent failed attempts to get a queue message, the wait time continues to increase until it reaches the maximum wait time, which defaults to one minute. The maximum wait time is configurable via the `maxPollingInterval` property in the [host.json file](functions-host-json.md#queues).
+Wyzwalacz kolejki implementuje losowy wykładniczy algorytm wycofywania, aby zmniejszyć wpływ sondowania w kolejce na koszty transakcji magazynu.  Po znalezieniu komunikatu środowisko uruchomieniowe czeka dwa sekundy, a następnie sprawdza inny komunikat; gdy nie zostanie znaleziony żaden komunikat, czeka około czterech sekund przed ponowieniem próby. Po kolejnych nieudanych próbach pobrania komunikatu w kolejce czas oczekiwania będzie się zwiększać do momentu osiągnięcia maksymalnego czasu oczekiwania, który jest wartością domyślną jednej minuty. Maksymalny czas oczekiwania można skonfigurować za pomocą właściwości `maxPollingInterval` w [pliku host. JSON](functions-host-json.md#queues).
 
-## <a name="trigger---concurrency"></a>Trigger - concurrency
+## <a name="trigger---concurrency"></a>Wyzwalacz — współbieżność
 
-When there are multiple queue messages waiting, the queue trigger retrieves a batch of messages and invokes function instances concurrently to process them. By default, the batch size is 16. When the number being processed gets down to 8, the runtime gets another batch and starts processing those messages. So the maximum number of concurrent messages being processed per function on one virtual machine (VM) is 24. This limit applies separately to each queue-triggered function on each VM. If your function app scales out to multiple VMs, each VM will wait for triggers and attempt to run functions. For example, if a function app scales out to 3 VMs, the default maximum number of concurrent instances of one queue-triggered function is 72.
+Gdy oczekuje wiele komunikatów w kolejce, wyzwalacz kolejki pobiera partię komunikatów i wywołuje wystąpienia funkcji współbieżnie, aby je przetworzyć. Domyślnie rozmiar wsadu wynosi 16. Gdy przetworzona liczba jest równa 8, środowisko uruchomieniowe pobiera kolejną partię i uruchamia przetwarzanie tych komunikatów. Maksymalna liczba współbieżnych komunikatów przetwarzanych na funkcję na jednej maszynie wirtualnej wynosi 24. Ten limit dotyczy osobno każdej funkcji wyzwalanej przez kolejkę na każdej maszynie wirtualnej. Jeśli aplikacja funkcji jest skalowana do wielu maszyn wirtualnych, każda maszyna wirtualna będzie czekać na wyzwalacze i próbować uruchamiać funkcje. Na przykład jeśli aplikacja funkcji jest skalowana do 3 maszyn wirtualnych, domyślna maksymalna liczba równoczesnych wystąpień jednej funkcji wyzwalanej przez kolejkę to 72.
 
-The batch size and the threshold for getting a new batch are configurable in the [host.json file](functions-host-json.md#queues). If you want to minimize parallel execution for queue-triggered functions in a function app, you can set the batch size to 1. This setting eliminates concurrency only so long as your function app runs on a single virtual machine (VM). 
+Rozmiar partii i próg pobierania nowej partii można skonfigurować w [pliku host. JSON](functions-host-json.md#queues). Jeśli chcesz zminimalizować wykonywanie równoległe dla funkcji wyzwalanych przez kolejki w aplikacji funkcji, możesz ustawić rozmiar wsadu na 1. To ustawienie eliminuje współbieżność tylko wtedy, gdy aplikacja funkcji działa na jednej maszynie wirtualnej (VM). 
 
-The queue trigger automatically prevents a function from processing a queue message multiple times; functions do not have to be written to be idempotent.
+Wyzwalacz kolejki automatycznie zapobiega przetwarzaniu komunikatów w kolejce przez funkcję wielokrotnie; funkcje nie muszą być zapisywane w taki sposób, aby były idempotentne.
 
-## <a name="trigger---hostjson-properties"></a>Trigger - host.json properties
+## <a name="trigger---hostjson-properties"></a>Wyzwalacz — właściwości host.json
 
-The [host.json](functions-host-json.md#queues) file contains settings that control queue trigger behavior. See the [host.json settings](#hostjson-settings) section for details regarding available settings.
+Plik [host. JSON](functions-host-json.md#queues) zawiera ustawienia sterujące zachowaniem wyzwalacza kolejki. Szczegóły dotyczące dostępnych ustawień można znaleźć w sekcji [Ustawienia hosta. JSON](#hostjson-settings) .
 
 ## <a name="output"></a>Dane wyjściowe
 
-Use the Azure Queue storage output binding to write messages to a queue.
+Użyj powiązania danych wyjściowych usługi Azure queue storage do zapisu komunikatów w kolejce.
 
-## <a name="output---example"></a>Output - example
+## <a name="output---example"></a>Dane wyjściowe — przykład
 
-See the language-specific example:
+Zobacz przykład specyficzny dla języka:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#skrypt (. CSX)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
 * [Python](#output---python-example)
 
-### <a name="output---c-example"></a>Output - C# example
+### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that creates a queue message for each HTTP request received.
+Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która tworzy komunikat kolejki dla każdego odebranego żądania HTTP.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -382,11 +382,11 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>Output - C# script example
+### <a name="output---c-script-example"></a>Dane wyjściowe — przykładowy skrypt w języku C#
 
-The following example shows an HTTP trigger binding in a *function.json* file and [C# script (.csx)](functions-reference-csharp.md) code that uses the binding. The function creates a queue item with a **CustomQueueMessage** object payload for each HTTP request received.
+Poniższy przykład pokazuje powiązanie wyzwalacza http w pliku *Function. JSON* i [ C# kodzie skryptu (. CSX)](functions-reference-csharp.md) , który używa powiązania. Funkcja tworzy element kolejki z ładunkiem obiektu **CustomQueueMessage** dla każdego odebranego żądania HTTP.
 
-Here's the *function.json* file:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -413,9 +413,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
 
-Here's C# script code that creates a single queue message:
+Kod C# skryptu, który tworzy pojedynczy komunikat w kolejce:
 
 ```cs
 public class CustomQueueMessage
@@ -430,7 +430,7 @@ public static CustomQueueMessage Run(CustomQueueMessage input, ILogger log)
 }
 ```
 
-You can send multiple messages at once by using an `ICollector` or `IAsyncCollector` parameter. Here's C# script code that sends multiple messages, one with the HTTP request data and one with hard-coded values:
+Jednocześnie można wysłać wiele komunikatów przy użyciu parametru `ICollector` lub `IAsyncCollector`. Tutaj znajduje C# się kod skryptu, który wysyła wiele komunikatów, jeden z danymi żądania HTTP i jedną z ustalonymi wartościami:
 
 ```cs
 public static void Run(
@@ -443,11 +443,11 @@ public static void Run(
 }
 ```
 
-### <a name="output---javascript-example"></a>Output - JavaScript example
+### <a name="output---javascript-example"></a>Dane wyjściowe — przykład JavaScript
 
-The following example shows an HTTP trigger binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function creates a queue item for each HTTP request received.
+W poniższym przykładzie pokazano powiązanie wyzwalacza HTTP w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja tworzy element kolejki dla każdego odebranego żądania HTTP.
 
-Here's the *function.json* file:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -474,9 +474,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#output---configuration) section explains these properties.
+W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
 
-Here's the JavaScript code:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = function (context, input) {
@@ -484,7 +484,7 @@ module.exports = function (context, input) {
 };
 ```
 
-You can send multiple messages at once by defining a message array for the `myQueueItem` output binding. The following JavaScript code sends two queue messages with hard-coded values for each HTTP request received.
+Można wysłać wiele komunikatów jednocześnie, definiując tablicę komunikatów dla powiązania danych wyjściowych `myQueueItem`. Poniższy kod JavaScript wysyła dwie komunikaty kolejki z ustalonymi wartościami dla każdego odebranego żądania HTTP.
 
 ```javascript
 module.exports = function(context) {
@@ -493,9 +493,9 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>Output - Java example
+### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
 
- The following example shows a Java function that creates a queue message for when triggered by a  HTTP request.
+ Poniższy przykład pokazuje funkcję języka Java, która tworzy komunikat w kolejce dla wyzwalane przez żądanie HTTP.
 
 ```java
 @FunctionName("httpToQueue")
@@ -509,13 +509,13 @@ module.exports = function(context) {
  }
 ```
 
-In the [Java functions runtime library](/java/api/overview/azure/functions/runtime), use the `@QueueOutput` annotation on parameters whose value would be written to Queue storage.  The parameter type should be `OutputBinding<T>`, where T is any native Java type of a POJO.
+W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@QueueOutput` w przypadku parametrów, których wartość zostałaby zapisywana w usłudze queue storage.  Typ parametru powinien być `OutputBinding<T>`, gdzie T jest dowolnym natywnym typem języka Java POJO.
 
-### <a name="output---python-example"></a>Output - Python example
+### <a name="output---python-example"></a>Dane wyjściowe — przykład w języku Python
 
-The following example demonstrates how to output single and multiple values to storage queues. The configuration needed for *function.json* is the same either way.
+Poniższy przykład ilustruje sposób wyprowadzania pojedynczych i wielu wartości do kolejek magazynu. Konfiguracja wymagana dla *funkcji Function. JSON* jest taka sama jak w obu kierunkach.
 
-A Storage queue binding is defined in *function.json* where *type* is set to `queue`.
+Powiązanie kolejki magazynu jest zdefiniowane w *funkcji Function. JSON* , w której *typ* ma wartość `queue`.
 
 ```json
 {
@@ -547,7 +547,7 @@ A Storage queue binding is defined in *function.json* where *type* is set to `qu
 }
 ```
 
-To set a individual message on the queue, you pass a single value to the `set` method.
+Aby ustawić pojedynczy komunikat w kolejce, należy przekazać jedną wartość do metody `set`.
 
 ```python
 import azure.functions as func
@@ -561,7 +561,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-To create multiple messages on the queue, declare a parameter as the appropriate list type and pass an array of values (that match the list type) to the `set` method.
+Aby utworzyć wiele komunikatów w kolejce, zadeklaruj parametr jako odpowiedni typ listy i przekaż tablicę wartości (pasujących do typu listy) do metody `set`.
 
 ```python
 import azure.functions as func
@@ -574,11 +574,11 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Output - attributes
+## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
+W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj klasy [queueattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
-The attribute applies to an `out` parameter or the return value of the function. The attribute's constructor takes the name of the queue, as shown in the following example:
+Ten atrybut ma zastosowanie do parametru `out` lub wartości zwracanej funkcji. Konstruktor atrybutu przyjmuje nazwę kolejki, jak pokazano w następującym przykładzie:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -589,7 +589,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-You can set the `Connection` property to specify the storage account to use, as shown in the following example:
+Możesz ustawić właściwość `Connection`, aby określić konto magazynu, które ma być używane, jak pokazano w następującym przykładzie:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -600,59 +600,59 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-For a complete example, see [Output - C# example](#output---c-example).
+Aby uzyskać pełny przykład, zobacz [Output- C# example](#output---c-example).
 
-You can use the `StorageAccount` attribute to specify the storage account at class, method, or parameter level. For more information, see Trigger - attributes.
+Można użyć atrybutu `StorageAccount`, aby określić konto magazynu na poziomie klasy, metody lub parametru. Aby uzyskać więcej informacji, zobacz wyzwalacz-atrybuty.
 
-## <a name="output---configuration"></a>Output - configuration
+## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `Queue` attribute.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Queue` atrybutu.
 
-|function.json property | Attribute property |Opis|
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | nd. | Must be set to `queue`. This property is set automatically when you create the trigger in the Azure portal.|
-|**direction** | nd. | Must be set to `out`. This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | nd. | The name of the variable that represents the queue in function code. Set to `$return` to reference the function return value.|
-|**queueName** |**QueueName** | The name of the queue. |
-|**connection** | **Połączenie** |The name of an app setting that contains the Storage connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name here. For example, if you set `connection` to "MyStorage", the Functions runtime looks for an app setting that is named "AzureWebJobsMyStorage." If you leave `connection` empty, the Functions runtime uses the default Storage connection string in the app setting that is named `AzureWebJobsStorage`.|
+|**type** | Nie dotyczy | Musi być ustawiony na `queue`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | Nie dotyczy | Musi być ustawiony na `out`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje kolejkę w kodzie funkcji. Ustaw `$return`, aby odwoływać się do zwracanej wartości funkcji.|
+|**Zmienną QueueName** |**Zmienną QueueName** | Nazwa kolejki. |
+|**połączenia** | **Połączenie** |Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Output - usage
+## <a name="output---usage"></a>Dane wyjściowe — użycie
 
-In C# and C# script, write a single queue message by using a method parameter such as `out T paramName`. In C# script, `paramName` is the value specified in the `name` property of *function.json*. You can use the method return type instead of an `out` parameter, and `T` can be any of the following types:
+W C# programie C# i skrypcie Napisz pojedynczy komunikat kolejki przy użyciu parametru metody, takiego jak `out T paramName`. W C# skrypcie `paramName` jest wartością określoną we właściwości `name` *funkcji Function. JSON*. Można użyć typu zwracanego metody zamiast parametru `out`, a `T` może być jednym z następujących typów:
 
-* An object serializable as JSON
+* Obiekt możliwy do serializacji jako plik JSON
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-If you try to bind to `CloudQueueMessage` and get an error message, make sure that you have a reference to [the correct Storage SDK version](#azure-storage-sdk-version-in-functions-1x).
+Jeśli próbujesz powiązać z `CloudQueueMessage` i otrzymać komunikat o błędzie, upewnij się, że masz odwołanie do [odpowiedniej wersji zestawu SDK magazynu](#azure-storage-sdk-version-in-functions-1x).
 
-In C# and C# script, write multiple queue messages by using one of the following types: 
+W C# programie C# i skrypcie Napisz wiele komunikatów w kolejce przy użyciu jednego z następujących typów: 
 
 * `ICollector<T>` lub `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-In JavaScript functions, use `context.bindings.<name>` to access the output queue message. You can use a string or a JSON-serializable object for the queue item payload.
+W funkcjach języka JavaScript Użyj `context.bindings.<name>`, aby uzyskać dostęp do komunikatu w kolejce wyjściowej. Dla ładunku elementu kolejki można użyć ciągu lub obiektu możliwego do serializacji w formacie JSON.
 
 
-## <a name="exceptions-and-return-codes"></a>Exceptions and return codes
+## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
-| Binding |  Informacje ogólne |
+| Powiązanie |  Dokumentacja |
 |---|---|
-| Kolejka | [Queue Error Codes](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
-| Blob, Table, Queue | [Storage Error Codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, Table, Queue |  [Rozwiązywanie problemów](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Kolejka | [Kody błędów kolejki](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
+| Obiekt BLOB, tabela, kolejka | [Kody błędów magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Obiekt BLOB, tabela, kolejka |  [Rozwiązywanie problemów](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>host.json settings
+## <a name="hostjson-settings"></a>Ustawienia host.JSON
 
-This section describes the global configuration settings available for this binding in version 2.x. The example host.json file below contains only the version 2.x settings for this binding. For more information about global configuration settings in version 2.x, see [host.json reference for Azure Functions version 2.x](functions-host-json.md).
+W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2.x. Przykład pliku host.json poniżej zawiera tylko ustawienia 2.x wersji dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersji 2. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions wersji 2. x](functions-host-json.md).
 
 > [!NOTE]
-> For a reference of host.json in Functions 1.x, see [host.json reference for Azure Functions 1.x](functions-host-json-v1.md).
+> Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -672,15 +672,15 @@ This section describes the global configuration settings available for this bind
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|The maximum interval between queue polls. Minimum is 00:00:00.100 (100 ms) and increments up to 00:01:00 (1 min).  In 1.x the data type is milliseconds, and in 2.x it is a TimeSpan.|
-|visibilityTimeout|00:00:00|The time interval between retries when processing of a message fails. |
-|batchSize|16|The number of queue messages that the Functions runtime retrieves simultaneously and processes in parallel. When the number being processed gets down to the `newBatchThreshold`, the runtime gets another batch and starts processing those messages. So the maximum number of concurrent messages being processed per function is `batchSize` plus `newBatchThreshold`. This limit applies separately to each queue-triggered function. <br><br>If you want to avoid parallel execution for messages received on one queue, you can set `batchSize` to 1. However, this setting eliminates concurrency only so long as your function app runs on a single virtual machine (VM). If the function app scales out to multiple VMs, each VM could run one instance of each queue-triggered function.<br><br>The maximum `batchSize` is 32. |
-|maxDequeueCount|5|The number of times to try processing a message before moving it to the poison queue.|
-|newBatchThreshold|batchSize/2|Whenever the number of messages being processed concurrently gets down to this number, the runtime retrieves another batch.|
+|maxPollingInterval|00:00:01|Maksymalny interwał między sondami kolejki. Wartość minimalna to 00:00:00.100 (100 ms) i zwiększa się do 00:01:00 (1 min).  W 1. x typ danych to milisekundy, a w 2. x jest to TimeSpan.|
+|visibilityTimeout|00:00:00|Przedział czasu między ponownymi próbami, gdy przetwarzanie komunikatu kończy się niepowodzeniem. |
+|batchSize|16|Liczba komunikatów w kolejce, które środowisko uruchomieniowe funkcji jednocześnie pobiera i przetwarza równolegle. Gdy przetworzona liczba zostanie Poprzednia `newBatchThreshold`, środowisko uruchomieniowe pobiera kolejną partię i rozpocznie przetwarzanie tych komunikatów. Dlatego Maksymalna liczba współbieżnych komunikatów przetwarzanych na funkcję jest `batchSize` i `newBatchThreshold`. Ten limit dotyczy osobno każdej funkcji wyzwalanej przez kolejkę. <br><br>Aby uniknąć równoległego wykonywania komunikatów odebranych w jednej kolejce, można ustawić `batchSize` na 1. To ustawienie eliminuje jednak współbieżność tylko wtedy, gdy aplikacja funkcji działa na jednej maszynie wirtualnej. Jeśli aplikacja funkcji jest skalowana do wielu maszyn wirtualnych, każda maszyna wirtualna może uruchomić jedno wystąpienie każdej funkcji wyzwalanej przez kolejkę.<br><br>Maksymalna `batchSize` to 32. |
+|maxDequeueCount|5|Liczba prób przetworzenia komunikatu przed przeniesieniem go do kolejki trującej.|
+|newBatchThreshold|batchSize/2|Gdy liczba przetwarzanych komunikatów współbieżnie przyjdzie do tego numeru, środowisko uruchomieniowe pobiera kolejną partię.|
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+* [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
 
 <!--
 > [!div class="nextstepaction"]
@@ -688,7 +688,7 @@ This section describes the global configuration settings available for this bind
 -->
 
 > [!div class="nextstepaction"]
-> [Go to a tutorial that uses a Queue storage output binding](functions-integrate-storage-queue-output-binding.md)
+> [Przejdź do samouczka korzystającego z powiązania wyjściowego magazynu kolejki](functions-integrate-storage-queue-output-binding.md)
 
 <!-- LINKS -->
 

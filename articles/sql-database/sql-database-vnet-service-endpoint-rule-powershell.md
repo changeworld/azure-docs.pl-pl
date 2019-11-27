@@ -1,6 +1,6 @@
 ---
-title: PowerShell for VNet endpoints and rules for single and pooled databases
-description: Provides PowerShell scripts to create and manage Virtual Service endpoints for your Azure SQL Database and SQL Data Warehouse.
+title: Program PowerShell dla punktów końcowych sieci wirtualnych i reguł dla baz danych z pojedynczym i pulą
+description: Udostępnia skrypty programu PowerShell do tworzenia punktów końcowych usługi wirtualnych i zarządzania nimi dla Azure SQL Database i SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -18,65 +18,65 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422493"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Create a Virtual Service endpoint and VNet rule for SQL
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Tworzenie punktu końcowego usługi wirtualnej i reguły sieci wirtualnej dla serwera SQL
 
-*Virtual network rules* are one firewall security feature that controls whether the database server for your single databases and elastic pool in Azure [SQL Database](sql-database-technical-overview.md) or for your databases in [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) accepts communications that are sent from particular subnets in virtual networks.
+*Reguły sieci wirtualnej* to jedna funkcja zabezpieczeń zapory, która kontroluje, czy serwer bazy danych dla pojedynczych baz danych i elastycznej puli na platformie Azure [SQL Database](sql-database-technical-overview.md) lub dla baz danych w [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje komunikację są wysyłane z określonych podsieci w sieciach wirtualnych.
 
 > [!IMPORTANT]
-> This article applies to Azure SQL server, and to both SQL Database and SQL Data Warehouse databases that are created on the Azure SQL server. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. This article does *not* apply to a **managed instance** deployment in Azure SQL Database because it does not have a service endpoint associated with it.
+> Ten artykuł ma zastosowanie do programu Azure SQL Server oraz do baz danych SQL Database i SQL Data Warehouse utworzonych na serwerze SQL platformy Azure. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. Ten artykuł *nie* dotyczy wdrożenia **wystąpienia zarządzanego** w Azure SQL Database, ponieważ nie ma skojarzonego z nim punktu końcowego usługi.
 
-This article provides and explains a PowerShell script that takes the following actions:
+W tym artykule przedstawiono i wyjaśniono skrypt programu PowerShell, który wykonuje następujące czynności:
 
-1. Creates a Microsoft Azure *Virtual Service endpoint* on your subnet.
-2. Adds the endpoint to the firewall of your Azure SQL Database server, to create a *virtual network rule*.
+1. Tworzy *punkt końcowy usługi wirtualnej* Microsoft Azure w podsieci.
+2. Dodaje punkt końcowy do zapory serwera Azure SQL Database, aby utworzyć *regułę sieci wirtualnej*.
 
-Your motivations for creating a rule are explained in: [Virtual Service endpoints for Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
+Twoje motywacje do tworzenia reguł są wyjaśnione w: [punkty końcowe usługi wirtualnej dla Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
-> If all you need is to assess or add the Virtual Service endpoint *type name* for SQL Database to your subnet, you can skip ahead to our more [direct PowerShell script](#a-verify-subnet-is-endpoint-ps-100).
+> Jeśli wystarczy ocenić lub dodać *nazwę typu* punktu końcowego usługi wirtualnej dla SQL Database do podsieci, możesz przejść do naszego bardziej [bezpośredniego skryptu programu PowerShell](#a-verify-subnet-is-endpoint-ps-100).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
-## <a name="major-cmdlets"></a>Major cmdlets
+## <a name="major-cmdlets"></a>Główne polecenia cmdlet
 
-This article emphasizes the **New-AzSqlServerVirtualNetworkRule** cmdlet that adds the subnet endpoint to the access control list (ACL) of your Azure SQL Database server, thereby creating a rule.
+W tym artykule wyróżnia się polecenie cmdlet **New-AzSqlServerVirtualNetworkRule** , które dodaje punkt końcowy podsieci do listy kontroli dostępu (ACL) serwera Azure SQL Database, tworząc regułę.
 
-The following list shows the sequence of other *major* cmdlets that you must run to prepare for your call to **New-AzSqlServerVirtualNetworkRule**. In this article, these calls occur in [script 3 "Virtual network rule"](#a-script-30):
+Na poniższej liście przedstawiono sekwencję innych *najważniejszych* poleceń cmdlet, które należy wykonać, aby przygotować się do wywołania polecenia **New-AzSqlServerVirtualNetworkRule**. W tym artykule te wywołania występują w [skrypcie 3 "reguła sieci wirtualnej"](#a-script-30):
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Creates a subnet object.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Creates your virtual network, giving it the subnet.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): Assigns a Virtual Service endpoint to your subnet.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): Persists updates made to your virtual network.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): After your subnet is an endpoint, adds your subnet as a virtual network rule, into the ACL of your Azure SQL Database server.
-   - This cmdlet Offers the parameter **-IgnoreMissingVNetServiceEndpoint**, starting in Azure RM PowerShell Module version 5.1.1.
+1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): tworzy obiekt podsieci.
+2. Polecenie [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): tworzy sieć wirtualną, podając ją w podsieci.
+3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): przypisuje wirtualny punkt końcowy usługi do podsieci.
+4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): utrzymuje aktualizacje dokonane w sieci wirtualnej.
+5. Polecenie [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): gdy podsieć jest punktem końcowym, program dodaje podsieć jako regułę sieci wirtualnej do listy kontroli dostępu serwera Azure SQL Database.
+   - To polecenie cmdlet oferuje parametr **-IgnoreMissingVNetServiceEndpoint**, zaczynając od modułu Azure RM PowerShell w wersji 5.1.1.
 
-## <a name="prerequisites-for-running-powershell"></a>Prerequisites for running PowerShell
+## <a name="prerequisites-for-running-powershell"></a>Wymagania wstępne dotyczące uruchamiania programu PowerShell
 
-- You can already log in to Azure, such as through the [Azure portal][http-azure-portal-link-ref-477t].
-- You can already run PowerShell scripts.
+- Możesz już zalogować się do platformy Azure, na przykład za pomocą [Azure Portal][http-azure-portal-link-ref-477t].
+- Można już uruchamiać skrypty programu PowerShell.
 
 > [!NOTE]
-> Please ensure that service endpoints are turned on for the VNet/Subnet that you want to add to your Server otherwise creation of the VNet Firewall Rule will fail.
+> Upewnij się, że punkty końcowe usługi są włączone dla sieci wirtualnej/podsieci, która ma zostać dodana do serwera, w przeciwnym razie utworzenie reguły zapory sieci wirtualnej nie powiedzie się.
 
-## <a name="one-script-divided-into-four-chunks"></a>One script divided into four chunks
+## <a name="one-script-divided-into-four-chunks"></a>Jeden skrypt podzielony na cztery fragmenty
 
-Our demonstration PowerShell script is divided into a sequence of smaller scripts. The division eases learning and provides flexibility. The scripts must be run in their indicated sequence. If you do not have time now to run the scripts, our actual test output is displayed after script 4.
+Nasz Demonstracja skrypt programu PowerShell jest podzielony na sekwencję mniejszych skryptów. Dział ułatwia uczenie się i zapewnia elastyczność. Skrypty muszą być uruchamiane w ich wskazanej kolejności. Jeśli nie masz teraz czasu na uruchomienie skryptów, nasze rzeczywiste dane wyjściowe testu są wyświetlane po skrypcie 4.
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Script 1: Variables
+### <a name="script-1-variables"></a>Skrypt 1: zmienne
 
-This first PowerShell script assigns values to variables. The subsequent scripts depend on these variables.
+Ten pierwszy skrypt programu PowerShell przypisuje wartości do zmiennych. Kolejne skrypty zależą od tych zmiennych.
 
 > [!IMPORTANT]
-> Before you run this script, you can edit the values, if you like. For example, if you already have a resource group, you might want to edit your resource group name as the assigned value.
+> Przed uruchomieniem tego skryptu można edytować wartości, jeśli chcesz. Na przykład jeśli masz już grupę zasobów, możesz chcieć edytować nazwę grupy zasobów jako przypisaną wartość.
 >
-> Your subscription name should be edited into the script.
+> Nazwa subskrypcji powinna być edytowana do skryptu.
 
-### <a name="powershell-script-1-source-code"></a>PowerShell script 1 source code
+### <a name="powershell-script-1-source-code"></a>Kod źródłowy skryptu programu PowerShell 1
 
 ```powershell
 ######### Script 1 ########################################
@@ -115,14 +115,14 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>Script 2: Prerequisites
+### <a name="script-2-prerequisites"></a>Skrypt 2: wymagania wstępne
 
-This script prepares for the next script, where the endpoint action is. This script creates for you the following listed items, but only if they do not already exist. You can skip script 2 if you are sure these items already exist:
+Ten skrypt przygotowuje się do następnego skryptu, gdzie akcja punktu końcowego to. Ten skrypt tworzy następujące elementy wymienione na liście, ale tylko wtedy, gdy jeszcze nie istnieją. Możesz pominąć skrypt 2, jeśli masz pewność, że te elementy już istnieją:
 
 - Grupa zasobów platformy Azure
-- Azure SQL Database server
+- Serwer Azure SQL Database
 
-### <a name="powershell-script-2-source-code"></a>PowerShell script 2 source code
+### <a name="powershell-script-2-source-code"></a>Kod źródłowy skryptu programu PowerShell 2
 
 ```powershell
 ######### Script 2 ########################################
@@ -205,11 +205,11 @@ Write-Host 'Completed script 2, the "Prerequisites".';
 
 <a name="a-script-30" />
 
-## <a name="script-3-create-an-endpoint-and-a-rule"></a>Script 3: Create an endpoint and a rule
+## <a name="script-3-create-an-endpoint-and-a-rule"></a>Skrypt 3: Tworzenie punktu końcowego i reguły
 
-This script creates a virtual network with a subnet. Then the script assigns the **Microsoft.Sql** endpoint type to your subnet. Finally the script adds your subnet to the access control list (ACL) of your SQL Database server, thereby creating a rule.
+Ten skrypt tworzy sieć wirtualną z podsiecią. Następnie skrypt przypisuje typ punktu końcowego **Microsoft. SQL** do podsieci. Na koniec skrypt dodaje podsieć do listy kontroli dostępu (ACL) serwera SQL Database, tworząc regułę.
 
-### <a name="powershell-script-3-source-code"></a>PowerShell script 3 source code
+### <a name="powershell-script-3-source-code"></a>Kod źródłowy skryptu programu PowerShell 3
 
 ```powershell
 ######### Script 3 ########################################
@@ -291,16 +291,16 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Script 4: Clean-up
+## <a name="script-4-clean-up"></a>Skrypt 4: oczyszczanie
 
-This final script deletes the resources that the previous scripts created for the demonstration. However, the script asks for confirmation before it deletes the following:
+Ten końcowy skrypt usuwa zasoby, które zostały utworzone przez poprzednie skrypty dla demonstracji. Jednak skrypt prosi o potwierdzenie przed usunięciem następujących danych:
 
-- Azure SQL Database server
+- Serwer Azure SQL Database
 - Grupa zasobów platformy Azure
 
-You can run script 4 any time after script 1 completes.
+Skrypt 4 można uruchomić w dowolnym momencie po zakończeniu działania skryptu 1.
 
-### <a name="powershell-script-4-source-code"></a>PowerShell script 4 source code
+### <a name="powershell-script-4-source-code"></a>Kod źródłowy skryptu programu PowerShell 4
 
 ```powershell
 ######### Script 4 ########################################
@@ -372,31 +372,31 @@ Write-Host 'Completed script 4, the "Clean-Up".';
 
 <a name="a-verify-subnet-is-endpoint-ps-100" />
 
-## <a name="verify-your-subnet-is-an-endpoint"></a>Verify your subnet is an endpoint
+## <a name="verify-your-subnet-is-an-endpoint"></a>Sprawdź, czy podsieć jest punktem końcowym
 
-You might have a subnet that was already assigned the **Microsoft.Sql** type name, meaning it is already a Virtual Service endpoint. You could use the [Azure portal][http-azure-portal-link-ref-477t] to create a virtual network rule from the endpoint.
+Być może istnieje podsieć, która ma już przypisaną nazwę typu **Microsoft. SQL** , co oznacza, że jest już punktem końcowym usługi wirtualnej. [Azure Portal][http-azure-portal-link-ref-477t] można użyć do utworzenia reguły sieci wirtualnej z punktu końcowego.
 
-Or, you might be unsure whether your subnet has the **Microsoft.Sql** type name. You can run the following PowerShell script to take these actions:
+Możesz też nie upewnić się, czy podsieć ma nazwę typu **Microsoft. SQL** . Aby wykonać następujące działania, można uruchomić następujący skrypt programu PowerShell:
 
-1. Ascertain whether your subnet has the **Microsoft.Sql** type name.
-2. Optionally, assign the type name if it is absent.
-    - The script asks you to *confirm*, before it applies the absent type name.
+1. Sprawdź, czy podsieć ma nazwę typu **Microsoft. SQL** .
+2. Opcjonalnie można przypisać nazwę typu, jeśli jest nieobecny.
+    - Skrypt prosi o *potwierdzenie*przed zastosowaniem nieobecnej nazwy typu.
 
-### <a name="phases-of-the-script"></a>Phases of the script
+### <a name="phases-of-the-script"></a>Fazy skryptu
 
-Here are the phases of the PowerShell script:
+Poniżej przedstawiono etapy skryptu programu PowerShell:
 
-1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
-2. Search for your virtual network, and then for your subnet.
-3. Is your subnet tagged as **Microsoft.Sql** endpoint server type?
-4. Add a Virtual Service endpoint of type name **Microsoft.Sql**, on your subnet.
+1. Zaloguj się do konta platformy Azure, które jest konieczne tylko raz na sesję PS.  Przypisz zmienne.
+2. Wyszukaj sieć wirtualną, a następnie dla podsieci.
+3. Czy podsieć jest oznaczona jako typ **Microsoft. SQL** Endpoint Server?
+4. Dodaj punkt końcowy usługi wirtualnej o nazwie **Microsoft. SQL**w podsieci.
 
 > [!IMPORTANT]
-> Before you run this script, you must edit the values assigned to the $-variables, near the top of the script.
+> Przed uruchomieniem tego skryptu należy edytować wartości przypisane do zmiennych $, w górnej części skryptu.
 
-### <a name="direct-powershell-source-code"></a>Direct PowerShell source code
+### <a name="direct-powershell-source-code"></a>Bezpośredni kod źródłowy programu PowerShell
 
-This PowerShell script does not update anything, unless you respond yes if is asks you for confirmation. The script can add the type name **Microsoft.Sql** to your subnet. But the script tries the add only if your subnet lacks the type name.
+Ten skrypt programu PowerShell nie aktualizuje niczego, chyba że odpowie tak, jeśli zostanie wyświetlony monit o potwierdzenie. Skrypt może dodać nazwę typu **Microsoft. SQL** do podsieci. Jednak skrypt próbuje dodać tylko wtedy, gdy podsieć nie ma nazwy typu.
 
 ```powershell
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.

@@ -1,7 +1,7 @@
 ---
-title: Azure Virtual Network FAQ
+title: Azure Virtual Network — często zadawane pytania
 titlesuffix: Azure Virtual Network
-description: Answers to the most frequently asked questions about Microsoft Azure virtual networks.
+description: Odpowiedzi na najczęściej zadawane pytania dotyczące Microsoft Azure sieci wirtualnych.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -20,399 +20,399 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457043"
 ---
-# <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network frequently asked questions (FAQ)
+# <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
-## <a name="virtual-network-basics"></a>Virtual Network basics
+## <a name="virtual-network-basics"></a>Podstawowe informacje Virtual Network
 
-### <a name="what-is-an-azure-virtual-network-vnet"></a>What is an Azure Virtual Network (VNet)?
-An Azure Virtual Network (VNet) is a representation of your own network in the cloud. Jest logiczną izolacją chmury Azure przeznaczoną dla Twojej subskrypcji. You can use VNets to provision and manage virtual private networks (VPNs) in Azure and, optionally, link the VNets with other VNets in Azure, or with your on-premises IT infrastructure to create hybrid or cross-premises solutions. Each VNet you create has its own CIDR block and can be linked to other VNets and on-premises networks as long as the CIDR blocks do not overlap. You also have control of DNS server settings for VNets, and segmentation of the VNet into subnets.
+### <a name="what-is-an-azure-virtual-network-vnet"></a>Co to jest usługa Azure Virtual Network (VNet)?
+Usługa Azure Virtual Network (VNet) to reprezentacja własnej sieci w chmurze. Jest logiczną izolacją chmury Azure przeznaczoną dla Twojej subskrypcji. Za pomocą sieci wirtualnych można udostępniać wirtualne sieci prywatne (VPN) na platformie Azure i zarządzać nimi, opcjonalnie połączyć sieci wirtualnych z innymi sieci wirtualnych na platformie Azure lub z lokalną infrastrukturą INFORMATYCZNą w celu tworzenia rozwiązań hybrydowych lub obejmujących wiele lokalizacji. Każda utworzona sieć wirtualna ma swój własny blok CIDR i może być połączona z innymi sieci wirtualnych i sieciami lokalnymi, o ile bloki CIDR nie nakładają się na siebie. Masz również kontrolę nad ustawieniami serwera DNS dla sieci wirtualnych i segmentacją sieci wirtualnej na podsieci.
 
-Use VNets to:
+Użyj sieci wirtualnych, aby:
 
-* Create a dedicated private cloud-only VNet. Sometimes you don't require a cross-premises configuration for your solution. When you create a VNet, your services and VMs within your VNet can communicate directly and securely with each other in the cloud. You can still configure endpoint connections for the VMs and services that require Internet communication, as part of your solution.
+* Utwórz dedykowaną sieć wirtualną obsługującą tylko chmurę prywatną. Czasami nie jest wymagane, aby Twoje rozwiązanie nie wymagało konfiguracji obejmującej wiele lokalizacji. Podczas tworzenia sieci wirtualnej usługi i maszyny wirtualne w sieci wirtualnej mogą komunikować się bezpośrednio i bezpiecznie ze sobą w chmurze. Nadal można skonfigurować połączenia punktów końcowych dla maszyn wirtualnych i usług, które wymagają komunikacji z Internetem w ramach rozwiązania.
 
-* Securely extend your data center. With VNets, you can build traditional site-to-site (S2S) VPNs to securely scale your datacenter capacity. S2S VPNs use IPSEC to provide a secure connection between your corporate VPN gateway and Azure.
+* Bezpieczne rozszeranie centrum danych. Za pomocą sieci wirtualnych można tworzyć tradycyjne sieci VPN typu lokacja-lokacja (S2S) w celu bezpiecznego skalowania pojemności centrum danych. Sieci VPN S2S używają protokołu IPSEC do zapewnienia bezpiecznego połączenia między firmową bramą sieci VPN i platformą Azure.
 
-* Enable hybrid cloud scenarios. VNets give you the flexibility to support a range of hybrid cloud scenarios. You can securely connect cloud-based applications to any type of on-premises system such as mainframes and Unix systems.
+* Włącz scenariusze chmury hybrydowej. Sieci wirtualnych zapewniają elastyczność umożliwiającą obsługę szeregu scenariuszy chmury hybrydowej. Aplikacje oparte na chmurze można bezpiecznie połączyć z dowolnym typem systemu lokalnego, takim jak Komputery mainframe i systemy UNIX.
 
-### <a name="how-do-i-get-started"></a>Jak rozpocząć pracę?
-Visit the [Virtual network documentation](https://docs.microsoft.com/azure/virtual-network/) to get started. This content provides overview and deployment information for all of the VNet features.
+### <a name="how-do-i-get-started"></a>Jak rozpocząć?
+Przejdź do [dokumentacji sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/) , aby rozpocząć pracę. Ta zawartość zawiera przegląd i informacje dotyczące wdrażania dla wszystkich funkcji sieci wirtualnej.
 
-### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Can I use VNets without cross-premises connectivity?
-Tak. You can use a VNet without connecting it to your premises. For example, you could run Microsoft Windows Server Active Directory domain controllers and SharePoint farms solely in an Azure VNet.
+### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Czy mogę używać sieci wirtualnych bez połączenia między różnymi lokalizacjami?
+Tak. Możesz użyć sieci wirtualnej bez łączenia jej z Twoim lokalem. Można na przykład uruchomić system Microsoft Windows Server Active Directory kontrolery domeny i farmy programu SharePoint wyłącznie w sieci wirtualnej platformy Azure.
 
-### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Can I perform WAN optimization between VNets or a VNet and my on-premises data center?
-Tak. You can deploy a [WAN optimization network virtual appliance](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) from several vendors through the Azure Marketplace.
+### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Czy mogę przeprowadzić optymalizację sieci WAN między sieci wirtualnychą a siecią wirtualną i lokalnym centrum danych?
+Tak. [Wirtualne urządzenie sieciowe optymalizacji sieci WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) można wdrożyć od kilku dostawców za pośrednictwem portalu Azure Marketplace.
 
 ## <a name="configuration"></a>Konfigurowanie
 
-### <a name="what-tools-do-i-use-to-create-a-vnet"></a>What tools do I use to create a VNet?
-You can use the following tools to create or configure a VNet:
+### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Jakie narzędzia są używane do tworzenia sieci wirtualnej?
+Aby utworzyć lub skonfigurować sieć wirtualną, można użyć następujących narzędzi:
 
 * Azure Portal
 * PowerShell
 * Interfejs wiersza polecenia platformy Azure
-* A network configuration file (netcfg - for classic VNets only). See the [Configure a VNet using a network configuration file](virtual-networks-using-network-configuration-file.md) article.
+* Plik konfiguracji sieci (netcfg-tylko klasyczny sieci wirtualnych). Zapoznaj się z artykułem [Konfigurowanie sieci wirtualnej przy użyciu pliku konfiguracji sieciowej](virtual-networks-using-network-configuration-file.md) .
 
-### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>What address ranges can I use in my VNets?
-Any IP address range defined in [RFC 1918](https://tools.ietf.org/html/rfc1918). For example, 10.0.0.0/16. You cannot add the following address ranges:
-* 224.0.0.0/4 (Multicast)
-* 255.255.255.255/32 (Broadcast)
-* 127.0.0.0/8 (Loopback)
+### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Jakie zakresy adresów mogę użyć w mojej sieci wirtualnych?
+Dowolny zakres adresów IP zdefiniowany w [dokumencie RFC 1918](https://tools.ietf.org/html/rfc1918). Na przykład 10.0.0.0/16. Nie można dodać następujących zakresów adresów:
+* 224.0.0.0/4 (multiemisja)
+* 255.255.255.255/32 (emisja)
+* 127.0.0.0/8 (sprzężenie zwrotne)
 * 169.254.0.0/16 (Link-local)
-* 168.63.129.16/32 (Internal DNS)
+* 168.63.129.16/32 (wewnętrzna usługa DNS)
 
-### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Can I have public IP addresses in my VNets?
-Tak. For more information about public IP address ranges, see [Create a virtual network](manage-virtual-network.md#create-a-virtual-network). Public IP addresses are not directly accessible from the internet.
+### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Czy mogę mieć publiczne adresy IP w mojej sieci wirtualnych?
+Tak. Aby uzyskać więcej informacji na temat zakresów publicznych adresów IP, zobacz [Tworzenie sieci wirtualnej](manage-virtual-network.md#create-a-virtual-network). Publiczne adresy IP nie są bezpośrednio dostępne z Internetu.
 
-### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Is there a limit to the number of subnets in my VNet?
-Tak. See [Azure limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) for details. Subnet address spaces cannot overlap one another.
+### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Czy istnieje ograniczenie liczby podsieci w sieci wirtualnej?
+Tak. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Przestrzenie adresowe podsieci nie mogą nakładać się na siebie nawzajem.
 
-### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Are there any restrictions on using IP addresses within these subnets?
-Tak. Platforma Azure rezerwuje 5 adresów IP dla każdej podsieci. These are x.x.x.0-x.x.x.3 and the last address of the subnet. x.x.x.1-x.x.x.3 is reserved in each subnet for Azure services.   
-- x.x.x.0: Network address
-- x.x.x.1: Reserved by Azure for the default gateway
-- x.x.x.2, x.x.x.3: Reserved by Azure to map the Azure DNS IPs to the VNet space
-- x.x.x.255: Network broadcast address
+### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Czy istnieją jakieś ograniczenia dotyczące używania adresów IP w tych podsieciach?
+Tak. Platforma Azure rezerwuje 5 adresów IP dla każdej podsieci. Są to x. x. x. 0-x. x. x. 3 i ostatni adres podsieci. x. x. x. 1-x. x. x. 3 jest zarezerwowane w każdej podsieci dla usług platformy Azure.   
+- x. x. x. 0: adres sieciowy
+- x. x. x. 1: zarezerwowane przez platformę Azure dla bramy domyślnej
+- x. x. x. 2, x. x. x. 3: zarezerwowane przez platformę Azure do mapowania adresów IP Azure DNS na przestrzeń wirtualną
+- x. x. x. 255: adres emisji sieci
 
-### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>How small and how large can VNets and subnets be?
-The smallest supported IPv4 subnet is /29, and the largest is /8 (using CIDR subnet definitions).  IPv6 subnets must be exactly /64 in size.  
+### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Jak mały i jak duży może być sieci wirtualnych i podsieci?
+Najmniejsza obsługiwana podsieć IPv4 to/29, a największe to/8 (przy użyciu definicji podsieci CIDR).  Podsieci IPv6 muszą mieć rozmiar dokładnie/64.  
 
-### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>Can I bring my VLANs to Azure using VNets?
-Nie. VNets are Layer-3 overlays. Azure does not support any Layer-2 semantics.
+### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>Czy mogę przenieść moje sieci VLAN na platformę Azure przy użyciu usługi sieci wirtualnych?
+Nie. Sieci wirtualnych to nakładki warstwy 3. Platforma Azure nie obsługuje żadnej semantyki warstwy 2.
 
-### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>Can I specify custom routing policies on my VNets and subnets?
-Tak. You can create a route table and associate it to a subnet. For more information about routing in Azure, see [Routing overview](virtual-networks-udr-overview.md#custom-routes).
+### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>Czy mogę określić niestandardowe zasady routingu w moich sieci wirtualnychach i podsieciach?
+Tak. Można utworzyć tabelę tras i skojarzyć ją z podsiecią. Aby uzyskać więcej informacji na temat routingu na platformie Azure, zobacz [Omówienie routingu](virtual-networks-udr-overview.md#custom-routes).
 
-### <a name="do-vnets-support-multicast-or-broadcast"></a>Do VNets support multicast or broadcast?
-Nie. Multicast and broadcast are not supported.
+### <a name="do-vnets-support-multicast-or-broadcast"></a>Czy sieci wirtualnych obsługuje multiemisję czy emisję?
+Nie. Multiemisja i emisja nie są obsługiwane.
 
-### <a name="what-protocols-can-i-use-within-vnets"></a>What protocols can I use within VNets?
-You can use TCP, UDP, and ICMP TCP/IP protocols within VNets. Unicast is supported within VNets, with the exception of Dynamic Host Configuration Protocol (DHCP) via Unicast (source port UDP/68 / destination port UDP/67). Multicast, broadcast, IP-in-IP encapsulated packets, and Generic Routing Encapsulation (GRE) packets are blocked within VNets. 
+### <a name="what-protocols-can-i-use-within-vnets"></a>Jakich protokołów mogę używać w ramach sieci wirtualnych?
+W programie sieci wirtualnych można używać protokołów TCP, UDP i ICMP protokołu TCP/IP. Emisja pojedyncza jest obsługiwana w ramach sieci wirtualnych, z wyjątkiem Dynamic Host Configuration Protocol (DHCP) za pośrednictwem emisji pojedynczej (port źródłowy UDP/68/port docelowy UDP/67). Pakiety multiemisji, emisji, pakiety IP w IP hermetyzowane i pakietów GRE (Generic Routing Encapsulation) są blokowane w ramach sieci wirtualnych. 
 
-### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Can I ping my default routers within a VNet?
+### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Czy mogę wysłać polecenie ping do moich domyślnych routerów w sieci wirtualnej?
 Nie.
 
-### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>Can I use tracert to diagnose connectivity?
+### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>Czy mogę użyć polecenia tracert do diagnozowania łączności?
 Nie.
 
-### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>Can I add subnets after the VNet is created?
-Tak. Subnets can be added to VNets at any time as long as the subnet address range is not part of another subnet and there is available space left in the virtual network's address range.
+### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>Czy mogę dodać podsieci po utworzeniu sieci wirtualnej?
+Tak. Podsieci można dodać do sieci wirtualnych w dowolnym momencie, o ile zakres adresów podsieci nie jest częścią innej podsieci i dostępne miejsce pozostawiono w zakresie adresów sieci wirtualnej.
 
-### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Can I modify the size of my subnet after I create it?
-Tak. You can add, remove, expand, or shrink a subnet if there are no VMs or services deployed within it.
+### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Czy mogę zmienić rozmiar podsieci po utworzeniu?
+Tak. Możesz dodać, usunąć, rozwinąć lub zmniejszyć podsieć, jeśli nie ma w niej wdrożonych maszyn wirtualnych ani usług.
 
-### <a name="can-i-modify-subnets-after-i-created-them"></a>Can I modify subnets after I created them?
-Tak. You can add, remove, and modify the CIDR blocks used by a VNet.
+### <a name="can-i-modify-subnets-after-i-created-them"></a>Czy mogę modyfikować podsieci po ich utworzeniu?
+Tak. Bloki CIDR używane przez sieć wirtualną można dodawać, usuwać i modyfikować.
 
-### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>If I am running my services in a VNet, can I connect to the internet?
-Tak. All services deployed within a VNet can connect outbound to the internet. To learn more about outbound internet connections in Azure, see [Outbound connections](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). If you want to connect inbound to a resource deployed through Resource Manager, the resource must have a public IP address assigned to it. To learn more about public IP addresses, see [Public IP addresses](virtual-network-public-ip-address.md). Every Azure Cloud Service deployed in Azure has a publicly addressable VIP assigned to it. You define input endpoints for PaaS roles and endpoints for virtual machines to enable these services to accept connections from the internet.
+### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Czy w przypadku korzystania z usług w sieci wirtualnej można nawiązać połączenie z Internetem?
+Tak. Wszystkie usługi wdrożone w sieci wirtualnej mogą łączyć ruch wychodzący z Internetem. Aby dowiedzieć się więcej o wychodzących połączeniach internetowych na platformie Azure, zobacz [połączenia wychodzące](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Jeśli chcesz nawiązać połączenie przychodzące z zasobem wdrożonym za pomocą Menedżer zasobów, do zasobu musi być przypisany publiczny adres IP. Aby dowiedzieć się więcej o publicznych adresach IP, zobacz [publiczne adresy IP](virtual-network-public-ip-address.md). Każda usługa w chmurze platformy Azure wdrożona na platformie Azure ma publicznie przypisany adres VIP. Należy zdefiniować wejściowe punkty końcowe dla PaaS ról i punktów końcowych dla maszyn wirtualnych, aby umożliwić tym usługom akceptowanie połączeń z Internetu.
 
-### <a name="do-vnets-support-ipv6"></a>Do VNets support IPv6?
-Yes, VNets can be IPv4-only or dual stack (IPv4+IPv6).  For details, see [Overview of IPv6 for Azure Virtual Networks](./ipv6-overview.md).
+### <a name="do-vnets-support-ipv6"></a>Czy sieci wirtualnych obsługuje protokół IPv6?
+Tak, sieci wirtualnych może być tylko IPv4 lub podwójnym stosem (IPv4 + IPv6).  Aby uzyskać szczegółowe informacje, zobacz [Omówienie protokołu IPv6 dla sieci wirtualnych platformy Azure](./ipv6-overview.md).
 
-### <a name="can-a-vnet-span-regions"></a>Can a VNet span regions?
-Nie. A VNet is limited to a single region. A virtual network does, however, span availability zones. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). You can connect virtual networks in different regions with virtual network peering. For details, see [Virtual network peering overview](virtual-network-peering-overview.md)
+### <a name="can-a-vnet-span-regions"></a>Czy mogą istnieć regiony zakresu sieci wirtualnej?
+Nie. Sieć wirtualna jest ograniczona do jednego regionu. Sieć wirtualna obejmuje jednak strefy dostępności. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sieci wirtualne można łączyć w różnych regionach za pomocą komunikacji równorzędnej sieci wirtualnych. Aby uzyskać szczegółowe informacje, zobacz [Omówienie komunikacji równorzędnej sieci wirtualnych](virtual-network-peering-overview.md)
 
-### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Can I connect a VNet to another VNet in Azure?
-Tak. You can connect one VNet to another VNet using either:
-- **Virtual network peering**: For details, see [VNet peering overview](virtual-network-peering-overview.md)
-- **An Azure VPN Gateway**: For details, see [Configure a VNet-to-VNet connection](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Czy mogę połączyć sieć wirtualną z inną siecią wirtualną na platformie Azure?
+Tak. Można połączyć jedną sieć wirtualną z inną siecią wirtualną przy użyciu:
+- **Komunikacja równorzędna sieci wirtualnych**: Aby uzyskać szczegółowe informacje, zobacz [Omówienie komunikacji równorzędnej VNET](virtual-network-peering-overview.md)
+- **VPN Gateway platformy Azure**: Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie połączenia między sieciami wirtualnymi](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
-## <a name="name-resolution-dns"></a>Name Resolution (DNS)
+## <a name="name-resolution-dns"></a>Rozpoznawanie nazw (DNS)
 
-### <a name="what-are-my-dns-options-for-vnets"></a>What are my DNS options for VNets?
-Use the decision table on the [Name Resolution for VMs and Role Instances](virtual-networks-name-resolution-for-vms-and-role-instances.md) page to guide you through all the DNS options available.
+### <a name="what-are-my-dns-options-for-vnets"></a>Jakie są moje Opcje DNS dla sieci wirtualnych?
+Za pomocą tabeli decyzji na stronie [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień ról](virtual-networks-name-resolution-for-vms-and-role-instances.md) można przekierować wszystkie dostępne opcje systemu DNS.
 
-### <a name="can-i-specify-dns-servers-for-a-vnet"></a>Can I specify DNS servers for a VNet?
-Tak. You can specify DNS server IP addresses in the VNet settings. The setting is applied as the default DNS server(s) for all VMs in the VNet.
+### <a name="can-i-specify-dns-servers-for-a-vnet"></a>Czy mogę określić serwery DNS dla sieci wirtualnej?
+Tak. W ustawieniach sieci wirtualnej można określić adresy IP serwerów DNS. To ustawienie jest stosowane jako domyślne serwery DNS dla wszystkich maszyn wirtualnych w sieci wirtualnej.
 
-### <a name="how-many-dns-servers-can-i-specify"></a>How many DNS servers can I specify?
-Reference [Azure limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+### <a name="how-many-dns-servers-can-i-specify"></a>Ile serwerów DNS można określić?
+Odwołania do [limitów platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
-### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Can I modify my DNS servers after I have created the network?
-Tak. You can change the DNS server list for your VNet at any time. If you change your DNS server list, you need to perform a DHCP lease renewal on all affected VMs in the VNet, for the new DNS settings to take effect. For VMs running Windows OS you can do this by typing `ipconfig /renew` directly on the VM. For other OS types, refer to the DHCP lease renewal documentation for the specific OS type. 
+### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Czy mogę zmodyfikować moje serwery DNS po utworzeniu sieci?
+Tak. W dowolnym momencie możesz zmienić listę serwerów DNS dla sieci wirtualnej. W przypadku zmiany listy serwerów DNS należy wykonać odnowienie dzierżawy DHCP na wszystkich maszynach wirtualnych, których dotyczy ta sieć wirtualna, aby nowe ustawienia DNS zaczęły obowiązywać. W przypadku maszyn wirtualnych z systemem operacyjnym Windows można to zrobić, wpisując `ipconfig /renew` bezpośrednio na maszynie wirtualnej. W przypadku innych typów systemów operacyjnych zapoznaj się z dokumentacją dotyczącą odnawiania dzierżawy DHCP dla określonego typu systemu operacyjnego. 
 
-### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>What is Azure-provided DNS and does it work with VNets?
-Azure-provided DNS is a multi-tenant DNS service offered by Microsoft. Azure registers all of your VMs and cloud service role instances in this service. This service provides name resolution by hostname for VMs and role instances contained within the same cloud service, and by FQDN for VMs and role instances in the same VNet. To learn more about DNS, see [Name Resolution for VMs and Cloud Services role instances](virtual-networks-name-resolution-for-vms-and-role-instances.md).
+### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Co to jest usługa DNS udostępniona przez platformę Azure i czy działa ona z usługą sieci wirtualnych?
+System DNS udostępniany przez platformę Azure to wielodostępna usługa DNS oferowana przez firmę Microsoft. Platforma Azure rejestruje wszystkie maszyny wirtualne i wystąpienia roli usługi w chmurze w tej usłudze. Ta usługa zapewnia rozpoznawanie nazw według nazwy hosta dla maszyn wirtualnych i wystąpień ról zawartych w tej samej usłudze w chmurze oraz według nazwy FQDN dla maszyn wirtualnych i wystąpień roli w tej samej sieci wirtualnej. Aby dowiedzieć się więcej na temat usługi DNS, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień ról Cloud Services](virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-There is a limitation to the first 100 cloud services in a VNet for cross-tenant name resolution using Azure-provided DNS. If you are using your own DNS server, this limitation does not apply.
+Istnieje ograniczenie do pierwszych 100 usług w chmurze w sieci wirtualnej na potrzeby rozpoznawania nazw między dzierżawcami przy użyciu systemu DNS udostępnianego przez platformę Azure. Jeśli używasz własnego serwera DNS, to ograniczenie nie ma zastosowania.
 
-### <a name="can-i-override-my-dns-settings-on-a-per-vm-or-cloud-service-basis"></a>Can I override my DNS settings on a per-VM or cloud service basis?
-Tak. You can set DNS servers per VM or cloud service to override the default network settings. However, it's recommended that you use network-wide DNS as much as possible.
+### <a name="can-i-override-my-dns-settings-on-a-per-vm-or-cloud-service-basis"></a>Czy mogę zastąpić moje ustawienia DNS dla maszyny wirtualnej lub usługi w chmurze?
+Tak. Można ustawić serwery DNS na maszynę wirtualną lub usługę w chmurze w celu zastąpienia domyślnych ustawień sieci. Zaleca się jednak używanie systemu DNS w całej sieci, jak to możliwe.
 
-### <a name="can-i-bring-my-own-dns-suffix"></a>Can I bring my own DNS suffix?
-Nie. You cannot specify a custom DNS suffix for your VNets.
+### <a name="can-i-bring-my-own-dns-suffix"></a>Czy mogę przenieść mój własny sufiks DNS?
+Nie. Nie można określić niestandardowego sufiksu DNS dla sieci wirtualnych.
 
-## <a name="connecting-virtual-machines"></a>Connecting virtual machines
+## <a name="connecting-virtual-machines"></a>Łączenie maszyn wirtualnych
 
-### <a name="can-i-deploy-vms-to-a-vnet"></a>Can I deploy VMs to a VNet?
-Tak. All network interfaces (NIC) attached to a VM deployed through the Resource Manager deployment model must be connected to a VNet. VMs deployed through the classic deployment model can optionally be connected to a VNet.
+### <a name="can-i-deploy-vms-to-a-vnet"></a>Czy mogę wdrożyć maszyny wirtualne w sieci wirtualnej?
+Tak. Wszystkie interfejsy sieciowe dołączone do maszyny wirtualnej wdrożonej za pomocą modelu wdrażania Menedżer zasobów muszą być połączone z siecią wirtualną. Maszyny wirtualne wdrożone za pośrednictwem klasycznego modelu wdrażania mogą być opcjonalnie połączone z siecią wirtualną.
 
-### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>What are the different types of IP addresses I can assign to VMs?
-* **Private:** Assigned to each NIC within each VM. The address is assigned using either the static or dynamic method. Private IP addresses are assigned from the range that you specified in the subnet settings of your VNet. Resources deployed through the classic deployment model are assigned private IP addresses, even if they're not connected to a VNet. The behavior of the allocation method is different depending on whether a resource was deployed with the Resource Manager or classic deployment model: 
+### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>Jakie są różne typy adresów IP, które można przypisać do maszyn wirtualnych?
+* **Prywatny:** Przypisane do każdej karty sieciowej w ramach każdej maszyny wirtualnej. Adres jest przypisany przy użyciu metody statycznej lub dynamicznej. Prywatne adresy IP są przypisywane z zakresu określonego w ustawieniach podsieci sieci wirtualnej. Do zasobów wdrożonych za pomocą klasycznego modelu wdrażania są przypisywane prywatne adresy IP, nawet jeśli nie są połączone z siecią wirtualną. Zachowanie metody alokacji jest inne w zależności od tego, czy zasób został wdrożony przy użyciu Menedżer zasobów lub klasycznego modelu wdrażania: 
 
-  - **Resource Manager**: A private IP address assigned with the dynamic or static method remains assigned to a virtual machine (Resource Manager) until the resource is deleted. The difference is that you select the address to assign when using static, and Azure chooses when using dynamic. 
-  - **Classic**: A private IP address assigned with the dynamic method may change when a virtual machine (classic) VM is restarted after having been in the stopped (deallocated) state. If you need to ensure that the private IP address for a resource deployed through the classic deployment model never changes, assign a private IP address with the static method.
+  - **Menedżer zasobów**: prywatny adres IP przypisany za pomocą metody dynamicznej lub statycznej pozostaje przypisany do maszyny wirtualnej (Menedżer zasobów) do momentu usunięcia zasobu. Różnica polega na tym, że wybierasz adres, który ma zostać przypisany przy użyciu statycznej, a platforma Azure wybiera przy użyciu opcji dynamiczny. 
+  - **Klasyczny**: prywatny adres IP przypisany za pomocą metody dynamicznej może ulec zmianie, gdy maszyna wirtualna (klasyczna) zostanie uruchomiona ponownie po przejściu w stan zatrzymania (cofnięto przydział). Jeśli chcesz mieć pewność, że prywatny adres IP zasobu wdrożonego za pomocą klasycznego modelu wdrażania nigdy nie ulegnie zmianie, przypisz prywatny adres IP za pomocą metody statycznej.
 
-* **Public:** Optionally assigned to NICs attached to VMs deployed through the Azure Resource Manager deployment model. The address can be assigned with the static or dynamic allocation method. All VMs and Cloud Services role instances deployed through the classic deployment model exist within a cloud service, which is assigned a *dynamic*, public virtual IP (VIP) address. A public *static* IP address, called a [Reserved IP address](virtual-networks-reserved-public-ip.md), can optionally be assigned as a VIP. You can assign public IP addresses to individual VMs or Cloud Services role instances deployed through the classic deployment model. These addresses are called [Instance level public IP (ILPIP](virtual-networks-instance-level-public-ip.md) addresses and can be assigned dynamically.
+* **Publiczny:** Opcjonalnie przypisane do kart sieciowych dołączonych do maszyn wirtualnych wdrożonych za pomocą modelu wdrażania Azure Resource Manager. Adres można przypisać za pomocą metody alokacji statycznej lub dynamicznej. Wszystkie maszyny wirtualne i wystąpienia ról Cloud Services wdrożone za pośrednictwem klasycznego modelu wdrażania istnieją w ramach usługi w chmurze, która ma przypisany *dynamiczny*, publiczny wirtualny adres IP (VIP). Publiczny *statyczny* adres IP o nazwie [adres zastrzeżony adres IP](virtual-networks-reserved-public-ip.md)można opcjonalnie przypisać do adresu VIP. Publiczne adresy IP można przypisywać do poszczególnych maszyn wirtualnych lub Cloud Services wystąpień ról wdrożonych za pomocą klasycznego modelu wdrażania. Te adresy są nazywane [publicznym adresem IP na poziomie wystąpienia (ILPIP](virtual-networks-instance-level-public-ip.md) ) i mogą być przypisywane dynamicznie.
 
-### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Can I reserve a private IP address for a VM that I will create at a later time?
-Nie. You cannot reserve a private IP address. If a private IP address is available, it is assigned to a VM or role instance by the DHCP server. The VM may or may not be the one that you want the private IP address assigned to. You can, however, change the private IP address of an already created VM, to any available private IP address.
+### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Czy można zarezerwować prywatny adres IP dla maszyny wirtualnej, która zostanie utworzona w późniejszym czasie?
+Nie. Nie można zarezerwować prywatnego adresu IP. Jeśli prywatny adres IP jest dostępny, jest on przypisywany do maszyny wirtualnej lub wystąpienia roli przez serwer DHCP. Maszyna wirtualna może być taka sama jak ta, do której ma przypisany prywatny adres IP. Można jednak zmienić prywatny adres IP już utworzonej maszyny wirtualnej na dowolny dostępny prywatny adres IP.
 
-### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Do private IP addresses change for VMs in a VNet?
-To zależy. If the VM was deployed through Resource Manager, no, regardless of whether the IP address was assigned with the static or dynamic allocation method. If the VM was deployed through the classic deployment model, dynamic IP addresses can change when a VM is started after having been in the stopped (deallocated) state. The address is released from a VM deployed through either deployment model when the VM is deleted.
+### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Czy prywatne adresy IP są zmieniane dla maszyn wirtualnych w sieci wirtualnej?
+To zależy. Jeśli maszyna wirtualna została wdrożona za pomocą Menedżer zasobów nie, niezależnie od tego, czy adres IP został przypisany za pomocą metody alokacji statycznej, czy dynamicznej. Jeśli maszyna wirtualna została wdrożona za pomocą klasycznego modelu wdrażania, dynamiczne adresy IP mogą ulec zmianie, gdy maszyna wirtualna jest uruchomiona po przejściu w stan zatrzymania (cofnięto przydział). Adres jest wydawany z maszyny wirtualnej wdrożonej przy użyciu modelu wdrażania podczas usuwania maszyny wirtualnej.
 
-### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>Can I manually assign IP addresses to NICs within the VM operating system?
-Yes, but it's not recommended unless necessary, such as when assigning multiple IP addresses to a virtual machine. For details, see [Adding multiple IP addresses to a virtual machine](virtual-network-multiple-ip-addresses-portal.md#os-config). If the IP address assigned to an Azure NIC attached to a VM changes, and the IP address within the VM operating system is different, you lose connectivity to the VM.
+### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>Czy mogę ręcznie przypisywać adresy IP do kart sieciowych w ramach systemu operacyjnego maszyny wirtualnej?
+Tak, ale nie jest to zalecane, o ile nie jest to konieczne, na przykład podczas przypisywania wielu adresów IP do maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Dodawanie wielu adresów IP do maszyny wirtualnej](virtual-network-multiple-ip-addresses-portal.md#os-config). Jeśli adres IP przypisany do karty sieciowej platformy Azure dołączony do maszyny wirtualnej ulegnie zmianie, a adres IP w systemie operacyjnym maszyny wirtualnej jest inny, nastąpi utrata łączności z maszyną wirtualną.
 
-### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>If I stop a Cloud Service deployment slot or shutdown a VM from within the operating system, what happens to my IP addresses?
-Nothing. The IP addresses (public VIP, public, and private) remain assigned to the cloud service deployment slot or VM.
+### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Jeśli zatrzymasz miejsce wdrożenia usługi w chmurze lub wyzamykasz maszynę wirtualną z poziomu systemu operacyjnego, co się stanie z moimi adresami IP?
+Wartość. Adresy IP (Public VIP, Public i Private) pozostają przypisane do miejsca wdrożenia usługi w chmurze lub maszyny wirtualnej.
 
-### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Can I move VMs from one subnet to another subnet in a VNet without redeploying?
-Tak. You can find more information in the [How to move a VM or role instance to a different subnet](virtual-networks-move-vm-role-to-subnet.md) article.
+### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Czy mogę przenieść maszyny wirtualne z jednej podsieci do innej podsieci w sieci wirtualnej bez ponownego wdrażania?
+Tak. Więcej informacji można znaleźć w artykule [jak przenieść wystąpienie maszyny wirtualnej lub roli do innego artykułu podsieci](virtual-networks-move-vm-role-to-subnet.md) .
 
-### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>Can I configure a static MAC address for my VM?
-Nie. A MAC address cannot be statically configured.
+### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>Czy mogę skonfigurować statyczny adres MAC dla mojej maszyny wirtualnej?
+Nie. Adres MAC nie może być skonfigurowany statycznie.
 
-### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>Will the MAC address remain the same for my VM once it's created?
-Yes, the MAC address remains the same for a VM deployed through both the Resource Manager and classic deployment models until it's deleted. Previously, the MAC address was released if the VM was stopped (deallocated), but now the MAC address is retained even when the VM is in the deallocated state. The MAC address remains assigned to the network interface until the network interface is deleted or the private IP address assigned to the primary IP configuration of the primary network interface is changed. 
+### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>Czy adres MAC będzie nadal taki sam dla mojej maszyny wirtualnej po jej utworzeniu?
+Tak, adres MAC pozostaje taki sam dla maszyny wirtualnej wdrożonej w ramach Menedżer zasobów i klasycznych modeli wdrażania, dopóki nie zostanie usunięty. Wcześniej adres MAC został ogłoszony, jeśli maszyna wirtualna została zatrzymana (bez przydziału), ale teraz adres MAC jest zachowywany nawet wtedy, gdy maszyna wirtualna jest w stanie cofania przydziału. Adres MAC pozostaje przypisany do interfejsu sieciowego do momentu usunięcia interfejsu sieciowego lub zmiany prywatnego adresu IP przypisanego do podstawowej konfiguracji adresu IP podstawowego interfejsu sieciowego. 
 
-### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Can I connect to the internet from a VM in a VNet?
-Tak. All VMs and Cloud Services role instances deployed within a VNet can connect to the Internet.
+### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Czy mogę połączyć się z Internetem z maszyny wirtualnej w sieci wirtualnej?
+Tak. Wszystkie maszyny wirtualne i wystąpienia roli Cloud Services wdrożone w sieci wirtualnej mogą łączyć się z Internetem.
 
-## <a name="azure-services-that-connect-to-vnets"></a>Azure services that connect to VNets
+## <a name="azure-services-that-connect-to-vnets"></a>Usługi platformy Azure, które łączą się z usługą sieci wirtualnych
 
-### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Can I use Azure App Service Web Apps with a VNet?
-Tak. You can deploy Web Apps inside a VNet using an ASE (App Service Environment), connect the backend of your apps to your VNets with VNet Integration, and lock down inbound traffic to your app with service endpoints. Aby uzyskać więcej informacji zobacz następujące artykuły:
+### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Czy można używać Azure App Service Web Apps z siecią wirtualną?
+Tak. Web Apps można wdrożyć wewnątrz sieci wirtualnej przy użyciu środowiska ASE (App Service Environment), połączyć zaplecze aplikacji z usługą sieci wirtualnych z integracją sieci wirtualnej i zablokować ruch przychodzący do aplikacji za pomocą punktów końcowych usługi. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-* [App Service networking features](../app-service/networking-features.md)
-* [Creating Web Apps in an App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [App Service funkcje sieciowe](../app-service/networking-features.md)
+* [Tworzenie Web Apps w App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Integrowanie aplikacji z usługą Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [App Service access restrictions](../app-service/app-service-ip-restrictions.md)
+* [Ograniczenia dostępu App Service](../app-service/app-service-ip-restrictions.md)
 
-### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Can I deploy Cloud Services with web and worker roles (PaaS) in a VNet?
-Tak. You can (optionally) deploy Cloud Services role instances within VNets. To do so, you specify the VNet name and the role/subnet mappings in the network configuration section of your service configuration. You do not need to update any of your binaries.
+### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Czy można wdrażać Cloud Services z rolą sieci Web i procesu roboczego (PaaS) w sieci wirtualnej?
+Tak. Możesz (opcjonalnie) wdrożyć wystąpienia roli Cloud Services w sieci wirtualnych. W tym celu należy określić nazwę sieci wirtualnej i mapowania role/podsieć w konfiguracji usługi. Nie trzeba aktualizować żadnych plików binarnych.
 
-### <a name="can-i-connect-a-virtual-machine-scale-set-to-a-vnet"></a>Can I connect a virtual machine scale set to a VNet?
-Tak. You must connect a virtual machine scale set to a VNet.
+### <a name="can-i-connect-a-virtual-machine-scale-set-to-a-vnet"></a>Czy można połączyć zestaw skalowania maszyn wirtualnych z siecią wirtualną?
+Tak. Należy podłączyć zestaw skalowania maszyn wirtualnych do sieci wirtualnej.
 
-### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Is there a complete list of Azure services that can I deploy resources from into a VNet?
-Yes, For details, see [Virtual network integration for Azure services](virtual-network-for-azure-services.md).
+### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Czy istnieje kompletna lista usług platformy Azure, które umożliwiają wdrażanie zasobów w sieci wirtualnej?
+Tak, aby uzyskać szczegółowe informacje, zobacz [integracja z siecią wirtualną dla usług platformy Azure](virtual-network-for-azure-services.md).
 
-### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>How can I restrict access to Azure PaaS resources from a VNet?
+### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>Jak ograniczyć dostęp do zasobów usługi Azure PaaS z sieci wirtualnej?
 
-Resources deployed through some Azure PaaS services (such as Azure Storage and Azure SQL Database), can restrict network access to VNet through the use of virtual network service endpoints or Azure Private Link. For details, see [Virtual network service endpoints overview](virtual-network-service-endpoints-overview.md), [Azure Private Link overview](../private-link/private-link-overview.md)
+Zasoby wdrożone za pomocą niektórych usług PaaS platformy Azure (takich jak Azure Storage i Azure SQL Database) mogą ograniczyć dostęp sieciowy do sieci wirtualnej za pomocą punktów końcowych usługi sieci wirtualnej lub prywatnego linku platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md), [Omówienie linku prywatnego platformy Azure](../private-link/private-link-overview.md)
 
-### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Can I move my services in and out of VNets?
-Nie. You cannot move services in and out of VNets. To move a resource to another VNet, you have to delete and redeploy the resource.
+### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Czy mogę przenieść usługi do i z sieci wirtualnych?
+Nie. Nie można przenieść usług do i z sieci wirtualnych. Aby przenieść zasób do innej sieci wirtualnej, należy usunąć i ponownie wdrożyć zasób.
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
-### <a name="what-is-the-security-model-for-vnets"></a>What is the security model for VNets?
-VNets are isolated from one another, and other services hosted in the Azure infrastructure. A VNet is a trust boundary.
+### <a name="what-is-the-security-model-for-vnets"></a>Jaki jest model zabezpieczeń sieci wirtualnych?
+Sieci wirtualnych są odizolowane od siebie nawzajem i inne usługi hostowane w infrastrukturze platformy Azure. Sieć wirtualna jest granicą zaufania.
 
-### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>Can I restrict inbound or outbound traffic flow to VNet-connected resources?
-Tak. You can apply [Network Security Groups](security-overview.md) to individual subnets within a VNet, NICs attached to a VNet, or both.
+### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>Czy mogę ograniczyć przepływ ruchu przychodzącego lub wychodzącego do zasobów podłączonych do sieci wirtualnej?
+Tak. [Sieciowe grupy zabezpieczeń](security-overview.md) można stosować do poszczególnych podsieci w sieci wirtualnej, kart sieciowych podłączonych do sieci wirtualnej lub obu.
 
-### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>Can I implement a firewall between VNet-connected resources?
-Tak. You can deploy a [firewall network virtual appliance](https://azure.microsoft.com/marketplace/?term=firewall) from several vendors through the Azure Marketplace.
+### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>Czy mogę zaimplementować zaporę między zasobami połączonymi z siecią wirtualną?
+Tak. [Urządzenie wirtualne sieci zapory](https://azure.microsoft.com/marketplace/?term=firewall) można wdrożyć z kilku dostawców za pośrednictwem portalu Azure Marketplace.
 
-### <a name="is-there-information-available-about-securing-vnets"></a>Is there information available about securing VNets?
-Tak. For details, see [Azure Network Security Overview](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+### <a name="is-there-information-available-about-securing-vnets"></a>Czy istnieją informacje o zabezpieczaniu sieci wirtualnych?
+Tak. Aby uzyskać szczegółowe informacje, zobacz [Omówienie zabezpieczeń sieci platformy Azure](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="apis-schemas-and-tools"></a>APIs, schemas, and tools
+## <a name="apis-schemas-and-tools"></a>Interfejsy API, schematy i narzędzia
 
-### <a name="can-i-manage-vnets-from-code"></a>Can I manage VNets from code?
-Tak. You can use REST APIs for VNets in the [Azure Resource Manager](/rest/api/virtual-network) and [classic](https://go.microsoft.com/fwlink/?LinkId=296833) deployment models.
+### <a name="can-i-manage-vnets-from-code"></a>Czy mogę zarządzać sieci wirtualnych z kodu?
+Tak. Interfejsów API REST można używać dla sieci wirtualnych w ramach [Azure Resource Manager](/rest/api/virtual-network) i [klasycznych](https://go.microsoft.com/fwlink/?LinkId=296833) modeli wdrażania.
 
-### <a name="is-there-tooling-support-for-vnets"></a>Is there tooling support for VNets?
-Tak. Learn more about using:
-- The Azure portal to deploy VNets through the [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) and [classic](virtual-networks-create-vnet-classic-pportal.md) deployment models.
-- PowerShell to manage VNets deployed through the [Resource Manager](/powershell/module/az.network) and [classic](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) deployment models.
-- The Azure command-line interface (CLI) to deploy and manage VNets deployed through the [Resource Manager](/cli/azure/network/vnet) and [classic](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) deployment models.  
+### <a name="is-there-tooling-support-for-vnets"></a>Czy istnieją narzędzia obsługujące sieci wirtualnych?
+Tak. Dowiedz się więcej o korzystaniu z programu:
+- Azure Portal wdrażania sieci wirtualnych za pomocą [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) i [klasycznych](virtual-networks-create-vnet-classic-pportal.md) modeli wdrażania.
+- Program PowerShell do zarządzania usługą sieci wirtualnych wdrożoną za pomocą [Menedżer zasobów](/powershell/module/az.network) i [klasycznych](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modeli wdrażania.
+- Interfejs wiersza polecenia (CLI) platformy Azure do wdrażania sieci wirtualnych wdrożonych w ramach [Menedżer zasobów](/cli/azure/network/vnet) i [klasycznych](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modeli wdrażania oraz zarządzania nimi.  
 
-## <a name="vnet-peering"></a>Wirtualne sieci równorzędne
+## <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
 
-### <a name="what-is-vnet-peering"></a>What is VNet peering?
-VNet peering (or virtual network peering) enables you to connect virtual networks. A VNet peering connection between virtual networks enables you to route traffic between them privately through IPv4 addresses. Virtual machines in the peered VNets can communicate with each other as if they are within the same network. These virtual networks can be in the same region or in different regions (also known as Global VNet Peering). VNet peering connections can also be created across Azure subscriptions.
+### <a name="what-is-vnet-peering"></a>Co to jest Komunikacja równorzędna sieci wirtualnych?
+Wirtualne sieci równorzędne (lub Komunikacja równorzędna sieci wirtualnych) umożliwiają łączenie z siecią wirtualną. Połączenie komunikacji równorzędnej wirtualnej między sieciami wirtualnymi pozwala na kierowanie ruchu między nimi prywatnie przy użyciu adresów IPv4. Maszyny wirtualne w sieci wirtualnych równorzędnym mogą komunikować się ze sobą, tak jakby znajdowały się w tej samej sieci. Te sieci wirtualne mogą znajdować się w tym samym regionie lub w różnych regionach (nazywanych również globalnymi sieciami równorzędnymi). Połączenia komunikacji równorzędnej sieci wirtualnej można również tworzyć w ramach subskrypcji platformy Azure.
 
-### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Can I create a peering connection to a VNet in a different region?
-Tak. Global VNet peering enables you to peer VNets in different regions. Global VNet peering is available in all Azure public regions, China cloud regions, and Government cloud regions. You cannot globally peer from Azure public regions to national cloud regions.
+### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Czy można utworzyć połączenie komunikacji równorzędnej z siecią wirtualną w innym regionie?
+Tak. Globalna komunikacja równorzędna sieci wirtualnych umożliwia sieci wirtualnych elementów równorzędnych w różnych regionach. Globalna komunikacja równorzędna sieci wirtualnych jest dostępna we wszystkich regionach publicznych platformy Azure, regionach chmury w Chinach i regionach w chmurze dla instytucji rządowych. Nie można globalnie elementów równorzędnych z publicznych regionów platformy Azure do regionów w chmurze krajowej.
 
-### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>What are the constraints related to Global VNet Peering and Load Balancers?
-If the two virtual networks in two different regions are peered over Global VNet Peering, you cannot connect to resources that are behind a Basic Load Balancer through the Front End IP of the Load Balancer. This restriction does not exist for a Standard Load Balancer.
-The following resources can use Basic Load Balancers which means you cannot reach them through the Load Balancer's Front End IP over Global VNet Peering. You can however use Global VNet peering to reach the resources directly through their private VNet IPs, if permitted. 
-- VMs behind Basic Load Balancers
-- Virtual machine scale sets with Basic Load Balancers 
-- Redis Cache 
-- Application Gateway (v1) SKU
-- Sieć szkieletowa usługi
-- SQL MI
+### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Jakie są ograniczenia dotyczące globalnej komunikacji równorzędnej sieci wirtualnej i modułów równoważenia obciążenia?
+Jeśli dwie sieci wirtualne w dwóch różnych regionach są połączone za pomocą komunikacji równorzędnej globalnej sieci równorzędnej, nie można połączyć się z zasobami, które znajdują się za podstawową Load Balancer za pośrednictwem adresu IP frontonu Load Balancer. To ograniczenie nie istnieje dla usługa Load Balancer w warstwie Standardowa.
+Poniższe zasoby mogą korzystać z podstawowych modułów równoważenia obciążenia, co oznacza, że nie można uzyskać dostępu do nich za pośrednictwem adresu IP frontonu Load Balancer w ramach globalnej komunikacji równorzędnej sieci wirtualnej. Można jednak użyć globalnej komunikacji równorzędnej sieci wirtualnej, aby uzyskać dostęp do zasobów bezpośrednio za pomocą prywatnych adresów IP, jeśli jest to dozwolone. 
+- Maszyny wirtualne za podstawowymi usługami równoważenia obciążenia
+- Zestawy skalowania maszyn wirtualnych z podstawowymi usługami równoważenia obciążenia 
+- Pamięć podręczna Redis 
+- Jednostka SKU Application Gateway (v1)
+- Service Fabric
+- SQL — MI
 - API Management
-- Active Directory Domain Service (ADDS)
-- Aplikacje logiki
+- Usługa domena usługi Active Directory (dodaje)
+- Logic Apps
 - HDInsight
 -   Azure Batch
 - Środowisko usługi App Service
 
-You can connect to these resources via ExpressRoute or VNet-to-VNet through VNet Gateways.
+Możesz połączyć się z tymi zasobami za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
 
-### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Can I enable VNet Peering if my virtual networks belong to subscriptions within different Azure Active Directory tenants?
-Tak. It is possible to establish VNet Peering (whether local or global) if your subscriptions belong to different Azure Active Directory tenants. You can do this via PowerShell or CLI. Portal is not yet supported.
+### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Czy mogę włączyć komunikację równorzędną wirtualnych, jeśli moje sieci wirtualne należą do subskrypcji w ramach różnych Azure Active Directory dzierżawców?
+Tak. Istnieje możliwość ustanowienia komunikacji równorzędnej sieci wirtualnej (lokalnego lub globalnego), jeśli subskrypcje należą do różnych dzierżaw Azure Active Directory. Można to zrobić za pomocą programu PowerShell lub interfejsu wiersza polecenia. Portal nie jest jeszcze obsługiwany.
 
-### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>My VNet peering connection is in *Initiated* state, why can't I connect?
-If your peering connection is in an *Initiated* state, this means you have created only one link. A bidirectional link must be created in order to establish a successful connection. For example, to peer VNet A to VNet B, a link must be created from VNetA to VNetB and from VNetB to VNetA. Creating both links will change the state to *Connected*.
+### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Połączenie komunikacji równorzędnej sieci wirtualnej jest w stanie *inicjowania* , dlaczego nie mogę nawiązać połączenia?
+Jeśli połączenie komunikacji równorzędnej jest w stanie *zainicjowanym* , oznacza to, że utworzono tylko jeden link. Aby można było nawiązać połączenie, należy utworzyć dwukierunkowy link. Na przykład aby połączyć równorzędną sieć wirtualną z siecią VNet B, należy utworzyć łącze z VNetA do Vnetc i z Vnetc do VNetA. Utworzenie obu linków spowoduje zmianę stanu na *połączony*.
 
-### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>My VNet peering connection is in *Disconnected* state, why can't I create a peering connection?
-If your VNet peering connection is in a *Disconnected* state, it means one of the links created was deleted. In order to re-establish a peering connection, you will need to delete the link and recreate it.
+### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Połączenie komunikacji równorzędnej sieci wirtualnej jest w stanie *rozłączenia* , dlaczego nie można utworzyć połączenia komunikacji równorzędnej?
+Jeśli połączenie komunikacji równorzędnej sieci wirtualnej jest w stanie *odłączonym* , oznacza to, że jedno z utworzonych linków zostało usunięte. Aby można było ponownie ustanowić połączenie komunikacji równorzędnej, należy usunąć link i ponownie go utworzyć.
 
-### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Can I peer my VNet with a VNet in a different subscription?
-Tak. You can peer VNets across subscriptions and across regions.
+### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Czy mogę połączyć sieć wirtualną z siecią wirtualną w ramach innej subskrypcji?
+Tak. Możesz sieci wirtualnych elementy równorzędne w różnych subskrypcjach i w różnych regionach.
 
-### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Can I peer two VNets with matching or overlapping address ranges?
-Nie. Address spaces must not overlap to enable VNet Peering.
+### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Czy mogę nawiązać połączenie równorzędne dwóch sieci wirtualnych z pasującymi lub nakładanymi zakresami adresów?
+Nie. Przestrzenie adresowe nie mogą się nakładać, aby umożliwić komunikację równorzędną sieci wirtualnych.
 
-### <a name="how-much-do-vnet-peering-links-cost"></a>How much do VNet peering links cost?
-There is no charge for creating a VNet peering connection. Data transfer across peering connections is charged. [See here](https://azure.microsoft.com/pricing/details/virtual-network/).
+### <a name="how-much-do-vnet-peering-links-cost"></a>Ile jest koszt linków komunikacji równorzędnej sieci wirtualnej?
+Nie jest naliczana opłata za utworzenie połączenia komunikacji równorzędnej sieci wirtualnej. Opłaty za transfer danych między połączeniami równorzędnymi są naliczone. [Zobacz tutaj](https://azure.microsoft.com/pricing/details/virtual-network/).
 
-### <a name="is-vnet-peering-traffic-encrypted"></a>Is VNet peering traffic encrypted?
-Nie. Traffic between resources in peered VNets is private and isolated. It remains completely on the Microsoft Backbone.
+### <a name="is-vnet-peering-traffic-encrypted"></a>Czy ruch komunikacji równorzędnej sieci wirtualnej jest szyfrowany?
+Nie. Ruch między zasobami w sieci wirtualnych komunikacji równorzędnej jest prywatny i izolowany. Pozostanie w całości w sieci szkieletowej firmy Microsoft.
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Why is my peering connection in a *Disconnected* state?
-VNet peering connections go into *Disconnected* state when one VNet peering link is deleted. You must delete both links in order to reestablish a successful peering connection.
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Dlaczego moje połączenie komunikacji równorzędnej jest w stanie *odłączonym* ?
+Połączenia komunikacji równorzędnej sieci wirtualnych przechodzą w stan *rozłączenia* , gdy zostanie usunięte łącze komunikacji równorzędnej sieci wirtualnej. Należy usunąć oba linki, aby ponownie ustanowić pomyślne połączenie komunikacji równorzędnej.
 
-### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>If I peer VNetA to VNetB and I peer VNetB to VNetC, does that mean VNetA and VNetC are peered?
-Nie. Transitive peering is not supported. You must peer VNetA and VNetC for this to take place.
+### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Jeśli VNetA równorzędny do Vnetc i i elementów równorzędnych Vnetc do VNetC, czy oznacza to, że jako VNetA i VNetC są połączone za pomocą komunikacji równorzędnej?
+Nie. Przechodnia Komunikacja równorzędna nie jest obsługiwana. Aby to zrobić, musisz mieć VNetAy elementów równorzędnych i VNetC.
 
-### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Are there any bandwidth limitations for peering connections?
-Nie. VNet peering, whether local or global, does not impose any bandwidth restrictions. Bandwidth is only limited by the VM or the compute resource.
+### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Czy istnieją ograniczenia przepustowości dla połączeń komunikacji równorzędnej?
+Nie. Wirtualne sieci równorzędne, lokalne lub globalne, nie nakładają żadnych ograniczeń przepustowości. Przepustowość jest ograniczona tylko przez maszynę wirtualną lub zasób obliczeniowy.
 
-### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>How can I troubleshoot VNet Peering issues?
-Here is a [troubleshooter guide](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) you can try.
+### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Jak mogę rozwiązać problemy dotyczące komunikacji równorzędnej sieci wirtualnej?
+Oto [Przewodnik dotyczący narzędzia do rozwiązywania problemów](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) , który można wypróbować.
 
 ## <a name="virtual-network-tap"></a>Virtual Network TAP
 
-### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Which Azure regions are available for virtual network TAP?
-Virtual network TAP preview is available in all Azure regions. The monitored network interfaces, the virtual network TAP resource, and the collector or analytics solution must be deployed in the same region.
+### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Które regiony platformy Azure są dostępne dla NACISKania sieci wirtualnej?
+Usługa Virtual Network TAP w wersji zapoznawczej jest dostępna we wszystkich regionach świadczenia usługi Azure. Monitorowane interfejsy sieciowe, zasób TAP sieci wirtualnej i rozwiązanie zbierające lub analityczne muszą być wdrożone w tym samym regionie.
 
-### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Does Virtual Network TAP support any filtering capabilities on the mirrored packets?
-Filtering capabilities are not supported with the virtual network TAP preview. When a TAP configuration is added to a network interface a deep copy of all the ingress and egress traffic on the network interface is streamed to the TAP destination.
+### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Czy Virtual Network TAP obsługuje jakiekolwiek możliwości filtrowania na dublowanych pakietach?
+Możliwości filtrowania nie są obsługiwane w przypadku WYBRANia pozycji Podgląd sieci wirtualnej. Po dodaniu konfiguracji TAP do interfejsu sieciowego Szczegółowa kopia całego ruchu przychodzącego i wychodzącego w interfejsie sieciowym jest przesyłana strumieniowo do lokalizacji docelowej.
 
-### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Can multiple TAP configurations be added to a monitored network interface?
-A monitored network interface can have only one TAP configuration. Check with the individual [partner solution](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) for the capability to stream multiple copies of the TAP traffic to the analytics tools of your choice.
+### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Czy do monitorowanego interfejsu sieciowego można dodać wiele konfiguracji TAP?
+Monitorowany interfejs sieciowy może mieć tylko jedną konfigurację TAP. Zapoznaj się z [rozwiązaniem partnera](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) indywidualnego, aby przesłać strumieniowo wiele kopii ruchu TAP do wybranych narzędzi analitycznych.
 
-### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Can the same virtual network TAP resource aggregate traffic from monitored network interfaces in more than one virtual network?
-Tak. The same virtual network TAP resource can be used to aggregate mirrored traffic from monitored network interfaces in peered virtual networks in the same subscription or a different subscription. The virtual network TAP resource and the destination load balancer or destination network interface must be in the same subscription. All subscriptions must be under the same Azure Active Directory tenant.
+### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Czy ta sama sieć wirtualna umożliwia wybranie zasobów zagregowanych z monitorowanych interfejsów sieciowych w więcej niż jednej sieci wirtualnej?
+Tak. Tego samego zasobu sieci wirtualnej można użyć do agregowania dublowanego ruchu z monitorowanych interfejsów sieciowych w równorzędnych sieciach wirtualnych w ramach tej samej subskrypcji lub innej subskrypcji. Zasób TAP sieci wirtualnej i docelowy moduł równoważenia obciążenia lub docelowy interfejs sieciowy muszą znajdować się w tej samej subskrypcji. Wszystkie subskrypcje muszą znajdować się w tej samej dzierżawie Azure Active Directory.
 
-### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Are there any performance considerations on production traffic if I enable a virtual network TAP configuration on a network interface?
+### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Czy w przypadku włączenia konfiguracji sieci wirtualnej w interfejsie sieciowym są brane pod uwagę wydajność w ruchu produkcyjnym?
 
-Virtual network TAP is in preview. During preview, there is no service level agreement. The capability should not be used for production workloads. When a virtual machine network interface is enabled with a TAP configuration, the same resources on the Azure host allocated to the virtual machine to send the production traffic is used to perform the mirroring function and send the mirrored packets. Select the correct [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) or [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtual machine size to ensure that sufficient resources are available for the virtual machine to send the production traffic and the mirrored traffic.
+Wybór sieci wirtualnej jest w wersji zapoznawczej. W trakcie okresu zapoznawczego nie ma umowy dotyczącej poziomu usług. Tej możliwości nie należy używać w przypadku obciążeń produkcyjnych. Gdy interfejs sieciowy maszyny wirtualnej jest włączony z konfiguracją TAP, te same zasoby na hoście platformy Azure przydzieleni do maszyny wirtualnej w celu wysłania ruchu produkcyjnego są używane do wykonywania funkcji dublowania i wysyłania dublowanych pakietów. Wybierz prawidłowy rozmiar maszyny wirtualnej z systemem [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , aby upewnić się, że dla maszyny wirtualnej są dostępne wystarczające zasoby, które będą wysyłać ruch produkcyjny i wolumin dublowany.
 
-### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Is accelerated networking for [Linux](create-vm-accelerated-networking-cli.md) or [Windows](create-vm-accelerated-networking-powershell.md) supported with virtual network TAP?
+### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Czy jest to przyspieszone sieci dla systemu [Linux](create-vm-accelerated-networking-cli.md) lub [Windows](create-vm-accelerated-networking-powershell.md) obsługiwane z naciskiem sieci wirtualnej?
 
-You will be able to add a TAP configuration on a network interface attached to a virtual machine that is enabled with accelerated networking. But the performance and latency on the virtual machine will be affected by adding TAP configuration since the offload for mirroring traffic is currently not supported by Azure accelerated networking.
+Można dodać konfigurację TAP w interfejsie sieciowym podłączonym do maszyny wirtualnej, która jest włączona za pomocą przyspieszonej sieci. Jednak wydajność i opóźnienie na maszynie wirtualnej mają wpływ na dodanie konfiguracji TAP, ponieważ nie jest to obecnie obsługiwane przez przyspieszone sieci platformy Azure.
 
 ## <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi dla sieci wirtualnej
 
-### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>What is the right sequence of operations to set up service endpoints to an Azure service?
-There are two steps to secure an Azure service resource through service endpoints:
-1. Turn on service endpoints for the Azure service.
-2. Set up VNet ACLs on the Azure service.
+### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Jaka jest właściwa sekwencja operacji w celu skonfigurowania punktów końcowych usługi dla usługi platformy Azure?
+Aby zabezpieczyć zasób usługi platformy Azure za pomocą punktów końcowych usługi, należy wykonać dwa kroki:
+1. Włącz punkty końcowe usługi dla usługi platformy Azure.
+2. Skonfiguruj listy ACL sieci wirtualnej w usłudze platformy Azure.
 
-The first step is a network side operation and the second step is a service resource side operation. Both steps can be performed either by the same administrator or different administrators based on the RBAC permissions granted to the administrator role. We recommend that you first turn on service endpoints for your virtual network prior to setting up VNet ACLs on Azure service side. Hence, the steps must be performed in the sequence listed above to set up VNet service endpoints.
+Pierwszym krokiem jest operacja po stronie sieci, a drugi krok to operacja po stronie zasobów usługi. Obie kroki mogą być wykonywane przez tego samego administratora lub różnych administratorów na podstawie uprawnień RBAC przyznanych roli administratora. Zalecamy najpierw włączyć punkty końcowe usługi dla sieci wirtualnej przed skonfigurowaniem list kontroli dostępu wirtualnej w ramach usługi platformy Azure. W związku z tym kroki muszą być wykonywane w sekwencji wymienionej powyżej w celu skonfigurowania punktów końcowych usługi sieci wirtualnej.
 
 >[!NOTE]
-> Both the operations described above must be completed before you can limit the Azure service access to the allowed VNet and subnet. Only turning on service endpoints for the Azure service on the network side does not provide you the limited access. In addition, you must also set up VNet ACLs on the Azure service side.
+> Obie operacje opisane powyżej muszą zostać wykonane, aby można było ograniczyć dostęp usługi platformy Azure do dozwolonej sieci wirtualnej i podsieci. Włączenie punktów końcowych usługi dla usługi platformy Azure po stronie sieci nie zapewnia ograniczonego dostępu. Ponadto należy również skonfigurować listy ACL sieci wirtualnej na stronie usługi platformy Azure.
 
-Certain services (such as SQL and CosmosDB) allow exceptions to the above sequence through the **IgnoreMissingVnetServiceEndpoint** flag. Once the flag is set to **True**, VNet ACLs can be set on the Azure service side prior to setting up the service endpoints on the network side. Azure services provide this flag to help customers in cases where the specific IP firewalls are configured on Azure services and turning on the service endpoints on the network side can lead to a connectivity drop since the source IP changes from a public IPv4 address to a private address. Setting up VNet ACLs on the Azure service side before setting service endpoints on the network side can help avoid a connectivity drop.
+Niektóre usługi (takie jak SQL i CosmosDB) umożliwiają wyjątki od powyższej sekwencji przez flagę **IgnoreMissingVnetServiceEndpoint** . Gdy flaga ma **wartość true**, po stronie usługi platformy Azure można ustawić listy ACL sieci wirtualnej przed skonfigurowaniem punktów końcowych usługi po stronie sieci. Usługi platformy Azure zapewniają tę flagę, aby pomóc klientom w przypadkach, w których określone zapory IP zostały skonfigurowane w usługach platformy Azure i włączające punkty końcowe usługi po stronie sieci mogą prowadzić do porzucenia połączeń, ponieważ źródłowy adres IP zmienia się z publicznego adresu IPv4 na adres prywatny. Skonfigurowanie list ACL sieci wirtualnej na stronie usługi platformy Azure przed ustawieniem punktów końcowych usługi po stronie sieci może pomóc w uniknięciu usuwania łączności.
 
-### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Do all Azure services reside in the Azure virtual network provided by the customer? How does VNet service endpoint work with Azure services?
+### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Czy wszystkie usługi platformy Azure znajdują się w sieci wirtualnej platformy Azure dostarczonej przez klienta? Jak działa punkt końcowy usługi sieci wirtualnej z usługami platformy Azure?
 
-No, not all Azure services reside in the customer's virtual network. The majority of Azure data services such as Azure Storage, Azure SQL, and Azure Cosmos DB, are multi-tenant services that can be accessed over public IP addresses. You can learn more about virtual network integration for Azure services [here](virtual-network-for-azure-services.md). 
+Nie, nie wszystkie usługi platformy Azure znajdują się w sieci wirtualnej klienta. Większość usług danych platformy Azure, takich jak Azure Storage, Azure SQL i Azure Cosmos DB, to usługi wielodostępne, do których można uzyskać dostęp za pośrednictwem publicznych adresów IP. Więcej informacji na temat integracji sieci wirtualnej dla usług platformy Azure można znaleźć [tutaj](virtual-network-for-azure-services.md). 
 
-When you use the VNet service endpoints feature (turning on VNet service endpoint on the network side and setting up appropriate VNet ACLs on the Azure service side), access to an Azure service is restricted from an allowed VNet and subnet.
+W przypadku korzystania z funkcji punktów końcowych usługi sieci wirtualnej (Włączanie punktu końcowego usługi wirtualnej po stronie sieciowej i konfigurowania odpowiednich list ACL sieci wirtualnej na stronie usługi Azure) dostęp do usługi platformy Azure jest ograniczony z dozwolonej sieci wirtualnej i podsieci.
 
-### <a name="how-does-vnet-service-endpoint-provide-security"></a>How does VNet service endpoint provide security?
+### <a name="how-does-vnet-service-endpoint-provide-security"></a>Jak punkt końcowy usługi sieci wirtualnej zapewnia zabezpieczenia?
 
-The VNet service endpoint feature (turning on VNet service endpoint on the network side and setting up appropriate VNet ACLs on the Azure service side) limits the Azure service access to the allowed VNet and subnet, thus providing a network level security and isolation of the Azure service traffic. All traffic using VNet service endpoints flows over Microsoft backbone, thus providing another layer of isolation from the public internet. Moreover, customers can choose to fully remove public Internet access to the Azure service resources and allow traffic only from their virtual network through a combination of IP firewall and VNet ACLs, thus protecting the Azure service resources from unauthorized access.      
+Funkcja punktu końcowego usługi sieci wirtualnej (Włączanie punktu końcowego usługi wirtualnej po stronie sieci i konfigurowania odpowiednich list ACL sieci wirtualnej na stronie usługi platformy Azure) ogranicza dostęp do usługi platformy Azure do dopuszczalnej sieci wirtualnej i podsieci, zapewniając w ten sposób zabezpieczenia na poziomie sieci i izolacja ruchu usługi platformy Azure. Cały ruch korzystający z punktów końcowych usługi sieci wirtualnej przechodzi przez sieć szkieletową firmy Microsoft, co zapewnia kolejną warstwę izolacji z publicznego Internetu. Ponadto klienci mogą wybrać całkowite usunięcie publicznego dostępu do zasobów usługi platformy Azure i Zezwalanie na ruch tylko z sieci wirtualnych za pośrednictwem kombinacji list kontroli dostępu i zapory IP, a tym samym ochronę zasobów usługi platformy Azure przed nieautoryzowanym dostępem niego.      
 
-### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>What does the VNet service endpoint protect - VNet resources or Azure service?
-VNet service endpoints help protect Azure service resources. VNet resources are protected through Network Security Groups (NSGs).
+### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>Co to jest Ochrona punktu końcowego usługi sieci wirtualnej lub usługi platformy Azure?
+Punkty końcowe usługi sieci wirtualnej ułatwiają ochronę zasobów usługi platformy Azure. Zasoby sieci wirtualnej są chronione za poorednictwem sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń).
 
-### <a name="is-there-any-cost-for-using-vnet-service-endpoints"></a>Is there any cost for using VNet service endpoints?
+### <a name="is-there-any-cost-for-using-vnet-service-endpoints"></a>Czy istnieją jakieś koszty używania punktów końcowych usługi sieci wirtualnej?
 
-No, there is no additional cost for using VNet service endpoints.
+Nie. nie ma dodatkowych kosztów za korzystanie z punktów końcowych usługi sieci wirtualnej.
 
-### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-subscriptions"></a>Can I turn on VNet service endpoints and set up VNet ACLs if the virtual network and the Azure service resources belong to different subscriptions?
+### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-subscriptions"></a>Czy mogę włączyć punkty końcowe usługi VNet i skonfigurować listy ACL sieci wirtualnej, jeśli sieć wirtualna i zasoby usługi platformy Azure należą do różnych subskrypcji?
 
-Tak, jest to możliwe. Virtual networks and Azure service resources can be either in the same or different subscriptions. The only requirement is that both the virtual network and Azure service resources must be under the same Active Directory (AD) tenant.
+Tak, jest to możliwe. Sieci wirtualne i zasoby usług platformy Azure mogą należeć do tej samej lub różnych subskrypcji. Jedyny wymóg polega na tym, że zarówno zasoby sieci wirtualnej, jak i usługi platformy Azure muszą znajdować się w tej samej dzierżawie Active Directory (AD).
 
-### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Can I turn on VNet service endpoints and set up VNet ACLs if the virtual network and the Azure service resources belong to different AD tenants?
-No, VNet service endpoints and VNet ACLs are not supported across AD tenants.
+### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Czy mogę włączyć punkty końcowe usługi VNet i skonfigurować listy ACL sieci wirtualnej, jeśli sieć wirtualna i zasoby usługi platformy Azure należą do różnych dzierżawców usługi AD?
+Nie, punkty końcowe usługi sieci wirtualnej i listy kontroli dostępu wirtualne nie są obsługiwane w dzierżawach usługi AD.
 
-### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Can an on-premises device’s IP address that is connected through Azure Virtual Network gateway (VPN) or ExpressRoute gateway access Azure PaaS Service over VNet service endpoints?
-Domyślnie nie można uzyskać dostępu do zasobów usługi platformy Azure zabezpieczonych w sieciach wirtualnych z sieci lokalnych. If you want to allow traffic from on-premises, you must also allow public (typically, NAT) IP addresses from your on-premises or ExpressRoute. These IP addresses can be added through the IP firewall configuration for the Azure service resources.
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Czy można korzystać z adresu IP urządzenia lokalnego, który jest połączony za pośrednictwem usługi Azure Virtual Network Gateway (VPN) lub ExpressRoute Gateway przez punkty końcowe usługi sieci wirtualnej?
+Domyślnie nie można uzyskać dostępu do zasobów usługi platformy Azure zabezpieczonych w sieciach wirtualnych z sieci lokalnych. Jeśli chcesz zezwolić na ruch z lokalnego, musisz również zezwolić na publiczne (zazwyczaj NAT) adresy IP z lokalnego lub ExpressRoute. Te adresy IP można dodać za pomocą konfiguracji zapory adresów IP dla zasobów usługi platformy Azure.
 
-### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>Can I use VNet Service Endpoint feature to secure Azure service to multiple subnets within a virtual network or across multiple virtual networks?
-To secure Azure services to multiple subnets within a virtual network or across multiple virtual networks, enable service endpoints on the network side on each of the subnets independently and then secure Azure service resources to all of the subnets by setting up appropriate VNet ACLs on the Azure service side.
+### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>Czy można użyć funkcji punktu końcowego usługi sieci wirtualnej do zabezpieczenia usługi platformy Azure w wielu podsieciach w ramach sieci wirtualnej lub wielu sieci wirtualnych?
+Aby zabezpieczyć usługi platformy Azure w wielu podsieciach w sieci wirtualnej lub w wielu sieciach wirtualnych, należy niezależnie włączyć punkty końcowe usługi w sieci w każdej podsieci, a następnie zabezpieczyć zasoby usługi platformy Azure we wszystkich podsieciach przez skonfigurowanie odpowiednie listy ACL sieci wirtualnej po stronie usługi platformy Azure.
  
-### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>How can I filter outbound traffic from a virtual network to Azure services and still use service endpoints?
-jeśli chcesz sprawdzić lub filtrować ruch kierowany do usługi platformy Azure z sieci wirtualnej, możesz wdrożyć urządzenie sieci wirtualnej w ramach tej sieci wirtualnej. You can then apply service endpoints to the subnet where the network virtual appliance is deployed and secure Azure service resources only to this subnet through VNet ACLs. This scenario might also be helpful if you wish to restrict Azure service access from your virtual network only to specific Azure resources using network virtual appliance filtering. Aby uzyskać więcej informacji, zobacz [ruch wychodzący z sieciowych urządzeń wirtualnych](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
+### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Jak można filtrować ruch wychodzący z sieci wirtualnej do usług platformy Azure i nadal korzystać z punktów końcowych usługi?
+jeśli chcesz sprawdzić lub filtrować ruch kierowany do usługi platformy Azure z sieci wirtualnej, możesz wdrożyć urządzenie sieci wirtualnej w ramach tej sieci wirtualnej. Następnie można zastosować punkty końcowe usługi do podsieci, w której wdrożono wirtualne urządzenie sieciowe i zabezpieczyć zasoby usługi platformy Azure tylko do tej podsieci za pomocą list ACL sieci wirtualnej. Ten scenariusz może być również przydatny, jeśli chcesz ograniczyć dostęp do usługi platformy Azure z sieci wirtualnej tylko do określonych zasobów platformy Azure przy użyciu filtrowania wirtualnego urządzenia sieciowego. Aby uzyskać więcej informacji, zobacz [ruch wychodzący z sieciowych urządzeń wirtualnych](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
 
-### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>What happens when you access an Azure service account that has a virtual network access control list (ACL) enabled from outside the VNet?
-The HTTP 403 or HTTP 404 error is returned.
+### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Co się stanie w przypadku uzyskania dostępu do konta usługi platformy Azure z włączoną listą kontroli dostępu do sieci wirtualnej z poziomu poza siecią wirtualną?
+Zwracany jest błąd HTTP 403 lub HTTP 404.
 
-### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Are subnets of a virtual network created in different regions allowed to access an Azure service account in another region? 
-Yes, for most of the Azure services, virtual networks created in different regions can access Azure services in another region through the VNet service endpoints. For example, if an Azure Cosmos DB account is in West US or East US and virtual networks are in multiple regions, the virtual network can access Azure Cosmos DB. Storage and SQL are exceptions and are regional in nature and both the virtual network and the Azure service need to be in the same region.
+### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Czy podsieci sieci wirtualnej utworzonej w różnych regionach mogą uzyskać dostęp do konta usługi platformy Azure w innym regionie? 
+Tak. w przypadku większości usług platformy Azure sieci wirtualne utworzone w różnych regionach mogą uzyskiwać dostęp do usług platformy Azure w innym regionie za pomocą punktów końcowych usługi sieci wirtualnej. Na przykład jeśli konto Azure Cosmos DB znajduje się w regionie zachodnie stany USA lub Wschodnie stany USA, a sieci wirtualne znajdują się w wielu regionach, Sieć wirtualna może uzyskać dostęp do Azure Cosmos DB. Magazyn i SQL to wyjątki, które są regionalne, a zarówno w przypadku sieci wirtualnej, jak i usługi platformy Azure, muszą znajdować się w tym samym regionie.
   
-### <a name="can-an-azure-service-have-both-a-vnet-acl-and-an-ip-firewall"></a>Can an Azure service have both a VNet ACL and an IP firewall?
-Yes, a VNet ACL and an IP firewall can co-exist. Both features complement each other to ensure isolation and security.
+### <a name="can-an-azure-service-have-both-a-vnet-acl-and-an-ip-firewall"></a>Czy usługa platformy Azure ma zarówno listę ACL sieci wirtualnej, jak i zaporę IP?
+Tak, ta lista ACL sieci wirtualnej i Zapora IP mogą współistnieć. Obie funkcje uzupełniają się wzajemnie, aby zapewnić izolację i bezpieczeństwo.
  
-### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>What happens if you delete a virtual network or subnet that has service endpoint turned on for Azure service?
-Deletion of VNets and subnets are independent operations and are supported even when service endpoints are turned on for Azure services. In cases where the Azure services have VNet ACLs set up, for those VNets and subnets, the VNet ACL information associated with that Azure service is disabled when a VNet or subnet that has VNet service endpoint turned on is deleted.
+### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>Co się stanie w przypadku usunięcia sieci wirtualnej lub podsieci z włączonym punktem końcowym usługi dla usługi Azure?
+Usuwanie sieci wirtualnych i podsieci są niezależnymi operacjami i są obsługiwane nawet wtedy, gdy punkty końcowe usługi są włączone dla usług platformy Azure. W przypadkach, gdy usługi platformy Azure mają skonfigurowane listy ACL sieci wirtualnej dla tych sieci wirtualnych i podsieci, informacje o liście ACL sieci wirtualnej skojarzone z usługą platformy Azure są wyłączone, gdy zostanie usunięta Sieć wirtualna lub podsieci z włączonym punktem końcowym usługi sieci wirtualnej.
  
-### <a name="what-happens-if-an-azure-service-account-that-has-a-vnet-service-endpoint-enabled-is-deleted"></a>What happens if an Azure service account that has a VNet Service endpoint enabled is deleted?
-The deletion of an Azure service account is an independent operation and is supported even when the service endpoint is enabled on the network side and VNet ACLs are set up on Azure service side. 
+### <a name="what-happens-if-an-azure-service-account-that-has-a-vnet-service-endpoint-enabled-is-deleted"></a>Co się stanie, jeśli konto usługi platformy Azure z włączonym punktem końcowym usługi sieci wirtualnej zostanie usunięte?
+Usuwanie konta usługi platformy Azure jest niezależną operacją i jest obsługiwane nawet wtedy, gdy punkt końcowy usługi jest włączony po stronie sieci, a usługi dostępu wirtualne sieci wirtualnej są skonfigurowane po stronie usług platformy Azure. 
 
-### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>What happens to the source IP address of a resource (like a VM in a subnet) that has VNet service endpoint enabled?
-When virtual network service endpoints are enabled, the source IP addresses of the resources in your virtual network's subnet switches from using public IPV4 addresses to the Azure virtual network's private IP addresses for traffic to Azure service. Note that this can cause specific IP firewalls that are set to public IPV4 address earlier on the Azure services to fail. 
+### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>Co się dzieje ze źródłowym adresem IP zasobu (np. maszyną wirtualną w podsieci), dla którego jest włączony punkt końcowy usługi sieci wirtualnej?
+Po włączeniu punktów końcowych usługi sieci wirtualnej źródłowe adresy IP zasobów w podsieci sieci wirtualnej przełączają się z używania publicznych adresów IPV4 do prywatnych adresów IP sieci wirtualnej platformy Azure dla ruchu do usługi platformy Azure. Należy zauważyć, że może to spowodować niepowodzenie określonych zapór IP skonfigurowanych na publiczny adres IPV4 w usługach platformy Azure. 
 
-### <a name="does-the-service-endpoint-route-always-take-precedence"></a>Does the service endpoint route always take precedence?
-Service endpoints add a system route which takes precedence over BGP routes and provides optimum routing for the service endpoint traffic. Service endpoints always take service traffic directly from your virtual network to the service on the Microsoft Azure backbone network. For more information about how Azure selects a route, see [Azure Virtual network traffic routing](virtual-networks-udr-overview.md).
+### <a name="does-the-service-endpoint-route-always-take-precedence"></a>Czy ma zawsze pierwszeństwo trasy punktu końcowego usługi?
+Punkty końcowe usługi dodają trasę systemową, która ma pierwszeństwo przed trasami BGP i zapewnia optymalny Routing ruchu punktu końcowego usługi. Punkty końcowe usługi zawsze pobierają ruch bezpośrednio z sieci wirtualnej do usługi w sieci szkieletowej Microsoft Azure. Aby uzyskać więcej informacji o tym, jak platforma Azure wybiera trasę, zobacz [routing ruchu w sieci wirtualnej platformy Azure](virtual-networks-udr-overview.md).
  
-### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>How does NSG on a subnet work with service endpoints?
-To reach the Azure service, NSGs need to allow outbound connectivity. If your NSGs are opened to all Internet outbound traffic, then the service endpoint traffic should work. You can also limit the outbound traffic to service IPs only using the Service tags.  
+### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Jak sieciowej grupy zabezpieczeń w podsieci działa z punktami końcowymi usługi?
+Aby dotrzeć do usługi platformy Azure, sieciowych grup zabezpieczeń musi zezwalać na łączność wychodzącą. Jeśli sieciowych grup zabezpieczeń są otwarte dla całego ruchu wychodzącego z Internetu, należy obejść ruch punktu końcowego usługi. Można także ograniczyć ruch wychodzący do adresów IP usługi tylko przy użyciu tagów usługi.  
  
-### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>What permissions do I need to set up service endpoints?
-Service endpoints can be configured on a virtual network independently by a user with write access to the virtual network. To secure Azure service resources to a VNet, the user must have permission **Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action** for the subnets being added. This permission is included in the built-in service administrator role by default and can be modified by creating custom roles. Learn more about built-in roles and assigning specific permissions to [custom roles](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
+### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Jakie uprawnienia muszę skonfigurować punkty końcowe usługi?
+Punkty końcowe usługi można skonfigurować w sieci wirtualnej niezależnie od użytkownika z dostępem do zapisu do sieci wirtualnej. Aby zabezpieczyć zasoby usługi platformy Azure w sieci wirtualnej, użytkownik musi mieć uprawnienia **Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/Action** dla dodawanych podsieci. To uprawnienie jest domyślnie dołączone do wbudowanej roli administratora usługi i można je zmodyfikować, tworząc role niestandardowe. Dowiedz się więcej o rolach wbudowanych i przypisywaniu określonych uprawnień do [ról niestandardowych](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 
-### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Can I filter virtual network traffic to Azure services, allowing only specific azure service resources, over VNet service endpoints? 
+### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Czy można filtrować ruch w sieci wirtualnej do usług platformy Azure, zezwalając na tylko określone zasoby usługi platformy Azure, za pośrednictwem punktów końcowych usługi sieci wirtualnej? 
 
-Virtual network (VNet) service endpoint policies allow you to filter virtual network traffic to Azure services, allowing only specific Azure service resources over the service endpoints. Endpoint policies provide granular access control from the virtual network traffic to the Azure services. You can learn more about the service endpoint policies [here](virtual-network-service-endpoint-policies-overview.md).
+Zasady punktu końcowego usługi sieci wirtualnej umożliwiają filtrowanie ruchu w sieci wirtualnej do usług platformy Azure, co pozwala na dostęp tylko do określonych zasobów usługi platformy Azure za pośrednictwem punktów końcowych usługi. Zasady punktu końcowego zapewniają szczegółową kontrolę dostępu z ruchu w sieci wirtualnej do usług platformy Azure. Więcej informacji na temat zasad punktu końcowego usługi można znaleźć [tutaj](virtual-network-service-endpoint-policies-overview.md).
 
-### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Does Azure Active Directory (Azure AD) support VNet service endpoints?
+### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Czy Azure Active Directory (Azure AD) obsługuje punkty końcowe usługi sieci wirtualnej?
 
-Azure Active Directory (Azure AD) doesn't support service endpoints natively. Complete list of Azure Services supporting VNet service endpoints can be seen [here](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Note that the "Microsoft.AzureActiveDirectory" tag listed under services supporting service endpoints is used for supporting service endpoints to ADLS Gen 1. For ADLS Gen 1, virtual network integration for Azure Data Lake Storage Gen1 makes use of the virtual network service endpoint security between your virtual network and Azure Active Directory (Azure AD) to generate additional security claims in the access token. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu. Learn more about [Azure Data Lake Store Gen 1 VNet Integration](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Azure Active Directory (Azure AD) nie obsługuje natywnych punktów końcowych usługi. Pełną listę usług platformy Azure obsługujących punkty końcowe usługi sieci wirtualnej można zobaczyć [tutaj](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Należy zauważyć, że tag "Microsoft. usługi azureactivedirectory" wymieniony w obszarze punkty końcowe usługi obsługiwanej przez usługi jest używany do obsługi punktów końcowych usługi ADLS Gen 1. W przypadku usługi ADLS Gen 1 Integracja sieci wirtualnej dla Azure Data Lake Storage Gen1 wykorzystuje zabezpieczenia punktu końcowego usługi sieci wirtualnej między siecią wirtualną i Azure Active Directory (Azure AD) w celu wygenerowania dodatkowych oświadczeń zabezpieczeń w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu. Dowiedz się więcej o integracji z siecią [wirtualną Azure Data Lake Store generacji 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
-### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Are there any limits on how many VNet service endpoints I can set up from my VNet?
-There is no limit on the total number of VNet service endpoints in a virtual network. For an Azure service resource (such as an Azure Storage account), services may enforce limits on the number of subnets used for securing the resource. The following table shows some example limits: 
+### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Czy istnieją jakieś ograniczenia dotyczące liczby punktów końcowych usługi sieci wirtualnej, które mogę skonfigurować przy użyciu mojej VNet?
+Nie ma limitu całkowitej liczby punktów końcowych usługi wirtualnej w sieci wirtualnej. W przypadku zasobu usługi platformy Azure (takiego jak konto usługi Azure Storage) usługi mogą wymuszać limity liczby podsieci używanych do zabezpieczania zasobu. W poniższej tabeli przedstawiono niektóre przykładowe limity: 
 
 |||
 |---|---|
-|Usługa platformy Azure| Limits on VNet rules|
+|Usługa platformy Azure| Limity dla reguł sieci wirtualnej|
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Azure KeyVault|    127|
+|Magazyn kluczy platformy Azure|    127|
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
 |Azure Service Bus| 128|
 |Azure Data Lake Store V1|  100|
  
 >[!NOTE]
-> The limits are subjected to changes at the discretion of the Azure service. Refer to the respective service documentation for services details. 
+> Limity są uzależnione od zmiany uznania usługi platformy Azure. Szczegóły dotyczące usług można znaleźć w odpowiedniej dokumentacji usługi. 
 
 
 

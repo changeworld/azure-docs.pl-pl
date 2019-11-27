@@ -24,7 +24,7 @@ ms.locfileid: "74229784"
 
 Rozwiązanie Cloudyn umożliwia przeglądanie użycia i kosztów w celu śledzenia trendów, wykrywania niewydajności i tworzenia alertów. Wszystkie dane użycia i kosztów są wyświetlane na pulpitach nawigacyjnych i w raportach usługi Cloudyn. Przykłady w tym samouczku ilustrują przeglądanie użycia i kosztów za pomocą pulpitów nawigacyjnych i raportów.
 
-Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. Aby uzyskać więcej informacji, zobacz [Azure Cost Management](overview-cost-mgt.md).
+Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. Aby uzyskać więcej informacji, zobacz temat [dotyczący usługi Azure Cost Management](overview-cost-mgt.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -32,14 +32,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Śledzenie trendów użycia i kosztów
 > * Wykrywanie przypadków niewydajnego użycia
 > * Tworzenie alertów dotyczących nietypowych wydatków i przekraczania wydatków
-> * Eksportuj dane
+> * Eksportowanie danych
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Cloudyn.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję rozwiązania Cloudyn.
 
 ## <a name="open-the-cloudyn-portal"></a>Otwieranie portalu Cloudyn
 
@@ -101,7 +101,7 @@ W tym przykładzie skorzystasz z raportu **Actual Cost Over Time** (Koszt rzeczy
 2. Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**.
 3. W prawym górnym rogu raportu wybierz pozycję **Actions** (Akcje), a następnie wybierz pozycję **Schedule report** (Zaplanuj raport).
 4. Aby wysyłać do siebie wiadomość e-mail dotyczącą raportu w zaplanowanych odstępach czasu, wybierz kartę **Scheduling** (Planowanie) w oknie dialogowym **Save or Schedule this report** (Zapisz lub zaplanuj ten raport). Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtry zostaną uwzględnione w raporcie wysłanym w wiadomości e-mail.
-5. Select the **Threshold** tab and then select  **Actual Cost vs. Threshold**.
+5. Wybierz kartę **próg** , a następnie wybierz pozycję **koszt rzeczywisty a próg**.
    1. W polu progu **Red alert** (Czerwony alert) wprowadź wartość 10 000.
    2. W polu progu **Yellow alert** (Żółty alert) wprowadź wartość 9000.
    3. W polu **Number of consecutive alerts** (Liczba kolejnych alertów) wprowadź liczbę alertów, które mają być wysyłane. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane.
@@ -109,9 +109,9 @@ W tym przykładzie skorzystasz z raportu **Actual Cost Over Time** (Koszt rzeczy
 
 ![Przykład pokazujący czerwone i żółte alerty na podstawie progów wydatków](./media/tutorial-review-usage/schedule-alert01.png)
 
-You can also choose the **Cost Percentage vs. Budget** threshold metric to create alerts. Pozwala to określić progi jako wartości procentowe budżetu, a nie jako wartości pieniężne.
+Możesz również wybrać wartość **procentową kosztów a** metryką progu budżetowego, aby utworzyć alerty. Pozwala to określić progi jako wartości procentowe budżetu, a nie jako wartości pieniężne.
 
-## <a name="export-data"></a>Eksportuj dane
+## <a name="export-data"></a>Eksportowanie danych
 
 Podobnie do sposobu tworzenia alertów na potrzeby raportów możesz też wyeksportować dane z dowolnego raportu. Na przykład możesz wyeksportować listę kont Cloudyn lub innych danych użytkowników. Aby wyeksportować dowolny raport, otwórz raport, a następnie w prawym górnym rogu raportu kliknij opcję **Akcje**. Jedną z akcji, które możesz wykonać, jest opcja **Eksportuj wszystkie dane raportów**, która umożliwia pobranie lub wydrukowanie informacji. Możesz też wybrać opcję **Zaplanuj raport**, aby zaplanować raport i wysłać go jako wiadomość e-mail.
 
@@ -123,7 +123,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Śledzenie trendów użycia i kosztów
 > * Wykrywanie przypadków niewydajnego użycia
 > * Tworzenie alertów dotyczących nietypowych wydatków i przekraczania wydatków
-> * Eksportuj dane
+> * Eksportowanie danych
 
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak prognozować wydatki przy użyciu danych historycznych.

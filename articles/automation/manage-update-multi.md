@@ -101,9 +101,9 @@ W poniższej tabeli opisano połączone źródła obsługiwane przez to rozwiąz
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows |Tak |Update Management zbiera informacje o aktualizacjach systemu z agentów systemu Windows, a następnie inicjuje instalację wymaganych aktualizacji. |
-| Agenci dla systemu Linux |Tak |Update Management zbiera informacje o aktualizacjach systemu z agentów z systemem Linux, a następnie inicjuje instalację wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Tak |Update Management zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania. |
+| Agenci dla systemu Windows |Yes |Update Management zbiera informacje o aktualizacjach systemu z agentów systemu Windows, a następnie inicjuje instalację wymaganych aktualizacji. |
+| Agenci dla systemu Linux |Yes |Update Management zbiera informacje o aktualizacjach systemu z agentów z systemem Linux, a następnie inicjuje instalację wymaganych aktualizacji w obsługiwanych dystrybucjach. |
+| Grupa zarządzania programu Operations Manager |Yes |Update Management zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania. |
 | Konto usługi Azure Storage |Nie |Usługa Azure Storage nie zawiera informacji o aktualizacjach systemu. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania

@@ -13,12 +13,12 @@ ms.locfileid: "74224389"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| Maximum number of trusted IP addresses or ranges</a> per subscription |0 |50 |
-| Remember my devices, number of days |14 |60 |
-| Maximum number of app passwords |0 |Bez ograniczeń |
+| Maksymalna liczba zaufanych adresów IP lub zakresów</a> na subskrypcję |0 |50 |
+| Zapamiętaj moje urządzenia, liczbę dni |14 |60 |
+| Maksymalna liczba haseł aplikacji |0 |Bez ograniczeń |
 | Zezwalanie na **X** prób podczas wywołania usługi MFA |1 |99 |
-| Two-way text message timeout seconds |60 |600 |
-| Domyślna liczba sekund jednorazowego obejścia |300 |1,800 |
-| Blokowanie konta użytkownika po **X** kolejnych odmowach ze strony usługi MFA |Not set |99 |
-| Resetowanie licznika blokady konta po **X** minutach |Not set |9,999 |
-| Odblokowanie konta po **X** minutach |Not set |9,999 |
+| Limit czasu dwukierunkowej wiadomości tekstowej w sekundach |60 |600 |
+| Domyślna liczba sekund jednorazowego obejścia |300 |1 800 |
+| Blokowanie konta użytkownika po **X** kolejnych odmowach ze strony usługi MFA |Nie ustawiono |99 |
+| Resetowanie licznika blokady konta po **X** minutach |Nie ustawiono |9 999 |
+| Odblokowanie konta po **X** minutach |Nie ustawiono |9 999 |

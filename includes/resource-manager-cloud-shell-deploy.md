@@ -13,9 +13,9 @@ ms.locfileid: "74451634"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Wdrażanie szablonu za pomocą usługi Cloud Shell
 
-Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/cloud-shell/overview.md). To deploy an external template, provide the URI of the template exactly as you would for any external deployment. To deploy a local template, you must first load your template into the storage account for your Cloud Shell. This section describes how to load the template to your cloud shell account, and deploy it as a local file. If you haven't used Cloud Shell, see [Overview of Azure Cloud Shell](../articles/cloud-shell/overview.md) for information about setting it up.
+Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/cloud-shell/overview.md). Aby wdrożyć szablon zewnętrzny, podaj identyfikator URI szablonu dokładnie tak, jak w przypadku dowolnego wdrożenia zewnętrznego. Aby wdrożyć szablon lokalny, należy najpierw załadować szablon do konta magazynu dla Cloud Shell. W tej sekcji opisano sposób ładowania szablonu do konta usługi Cloud Shell i wdrażania go jako pliku lokalnego. Jeśli Cloud Shell nie zostały użyte, zobacz [omówienie Azure Cloud Shell](../articles/cloud-shell/overview.md) , aby uzyskać informacje o konfigurowaniu IT.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Wybierz swoją grupę zasobów usługi Cloud Shell. Wzorzec nazwy to `cloud-shell-storage-<region>`.
 
@@ -33,29 +33,29 @@ Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/
 
    ![Dodawanie kontenera](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Give your container a name and an access level. The sample template in this article contains no sensitive information, so allow anonymous read access. Kliknij przycisk **OK**.
+1. Nadaj kontenerowi nazwę i poziom dostępu. Przykładowy szablon w tym artykule nie zawiera poufnych informacji, więc Zezwalaj na anonimowy dostęp do odczytu. Kliknij przycisk **OK**.
 
-   ![Provide container values](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
+   ![Podaj wartości kontenera](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. Select the container you created.
+1. Wybierz utworzony kontener.
 
-   ![Select new container](./media/resource-manager-cloud-shell-deploy/select-container.png)
+   ![Wybierz nowy kontener](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. Wybierz pozycję **Przekaż**.
 
-   ![Upload blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
+   ![Przekaż obiekt BLOB](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Znajdź i przekaż swój szablon.
 
    ![Przekazywanie pliku](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
-1. After it has uploaded, select the template.
+1. Po przekazaniu wybierz szablon.
 
-   ![Select new template](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+   ![Wybierz nowy szablon](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
 
-1. Copy the URL.
+1. Skopiuj adres URL.
 
-   ![Copy URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![Kopiuj adres URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Otwórz wiersz polecenia.
 

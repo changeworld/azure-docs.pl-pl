@@ -13,5 +13,5 @@ ms.locfileid: "74224462"
 ---
 | Zasób | Limit domyślny | Limit maksymalny | Uwaga |
 | --- | --- | --- | --- |
-| Azure Network Watcher | 1 per region | 1 per region | Network Watcher is created to enable access to the service. Only one instance of Network Watcher is required per subscription per region. |
-| Packet capture sessions |10,000 per region | 10 000 |Number of sessions only, not saved captures. |
+| Azure Network Watcher | 1 na region | 1 na region | Utworzono Network Watcher, aby umożliwić dostęp do usługi. Na subskrypcję na region wymagane jest tylko jedno wystąpienie Network Watcher. |
+| Sesje przechwytywania pakietów |10 000 na region | 10 000 |Tylko liczba sesji — nie zapisano przechwytywania. |

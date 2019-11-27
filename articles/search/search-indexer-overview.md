@@ -11,7 +11,7 @@ ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 09a1b8e54726accf705515bf077f6a599f0f9b78
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74266923"
@@ -49,7 +49,7 @@ Indeksatory przeszukują magazyny danych na platformie Azure.
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (w wersji zapoznawczej)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Usługi Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Program SQL Server na maszynach wirtualnych platformy Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [Wystąpienia zarządzane SQL na platformie Azure](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
@@ -129,7 +129,7 @@ Historia wykonywania zawiera do 50 najnowszych zakończonych wykonań, które s�
 Teraz, gdy masz już podstawowe informacje, następnym krokiem jest przegląd wymagań i zadań specyficznych dla poszczególnych typów źródeł danych.
 
 * [Usługa Azure SQL Database lub program SQL Server na maszynie wirtualnej platformy Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Usługi Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Indeksowanie obiektów BLOB woluminów CSV za pomocą indeksatora usługi Azure Wyszukiwanie poznawcze BLOB](search-howto-index-csv-blobs.md)

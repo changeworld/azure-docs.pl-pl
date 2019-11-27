@@ -40,8 +40,8 @@ Tych celów można osiągnąć przez dodanie wystąpień urządzeń WUS w puli z
 
 W przypadku scenariuszy urządzeń WUS wysokiej dostępności portów HA następujące zalety:
 - Udostępnianie szybkiego trybu failover do dobrej kondycji wystąpień sond kondycji poszczególnych wystąpień
-- Upewnij się, wyższej wydajności za pomocą skalowalnego w poziomie do *n*-aktywnych wystąpień
-- Podaj *n*— scenariusze aktywnych i aktywny / pasywny
+- Zapewnij wyższą wydajność dzięki skalowaniu w poziomie do *n*-aktywnych wystąpień
+- Udostępnianie scenariuszy *n*-aktywnych i aktywnych-pasywnych
 - Eliminuje potrzebę stosowania złożonych rozwiązań, takich jak Apache ZooKeeper węzłów na potrzeby monitorowania urządzeń
 
 Na poniższym diagramie przedstawiono wdrożenie Gwiazda — sieci wirtualnej. Wymuś tunelowanie szprychy ruch w sieci wirtualnej koncentratora i przez urządzenie WUS przed opuszczeniem zaufanych miejsca. Urządzenia WUS są za wewnętrznego standardowego modułu równoważenia obciążenia z konfiguracją portów wysokiej dostępności. Cały ruch można przetwarzane i przesyłane dalej odpowiednio. Gdy program zostanie skonfigurowany jako widoczny na poniższym diagramie, reguła równoważenia obciążenia portów HA również zapewnia symetrię przepływu dla ruchu przychodzącego i wychodzącego.
@@ -54,7 +54,7 @@ Na poniższym diagramie przedstawiono wdrożenie Gwiazda — sieci wirtualnej. W
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>Równoważenie obciążenia dużej liczby portów
 
-Umożliwia także portów wysokiej dostępności dla aplikacji, które wymagają równoważenia obciążenia z dużą liczbą portów. Te scenariusze można uprościć za pomocą wewnętrznego [Balancer w warstwie standardowa](load-balancer-standard-overview.md) przy użyciu portów wysokiej dostępności. Pojedynczą regułę równoważenia obciążenia zastępuje wiele poszczególnych reguł równoważenia obciążenia, jeden dla każdego portu.
+Umożliwia także portów wysokiej dostępności dla aplikacji, które wymagają równoważenia obciążenia z dużą liczbą portów. Można uprościć te scenariusze przy użyciu [Usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md) wewnętrznej z portami ha. Pojedynczą regułę równoważenia obciążenia zastępuje wiele poszczególnych reguł równoważenia obciążenia, jeden dla każdego portu.
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
@@ -65,8 +65,8 @@ Funkcja portów wysokiej dostępności jest dostępna we wszystkich regionach pl
 ### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Pojedynczy, niezmienny konfiguracji portów wysokiej dostępności adresu IP (inne niż - bezpośredniego zwrotu serwera) na wewnętrznej Balancer w warstwie standardowa
 
 Ta konfiguracja jest podstawową konfigurację portów wysokiej dostępności. Można skonfigurować HA porty równoważenia obciążenia reguła pojedynczego adresu IP frontonu, wykonując następujące czynności:
-1. Podczas konfigurowania standardowego modułu równoważenia obciążenia, wybierz **portów HA** pole wyboru w konfiguracji reguły modułu równoważenia obciążenia.
-2. Aby uzyskać **pływającego adresu IP**, wybierz opcję **wyłączone**.
+1. Podczas konfigurowania usługa Load Balancer w warstwie Standardowa zaznacz pole wyboru **porty ha** w konfiguracji reguły Load Balancer.
+2. W przypadku **zmiennoprzecinkowego adresu IP**wybierz pozycję **wyłączone**.
 
 Ta konfiguracja nie zezwala na innych konfiguracji reguły równoważenia obciążenia w bieżącym zasobu modułu równoważenia obciążenia. Umożliwia także nie innych wewnętrznych konfigurację modułu równoważenia obciążenia zasobu dla danego zestawu wystąpień zaplecza.
 
@@ -74,7 +74,7 @@ Można jednak skonfigurować publiczny standardowego modułu równoważenia obci
 
 ### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Pojedynczy, zmiennoprzecinkowy konfiguracji portów wysokiej dostępności adresu IP (bezpośredniego zwrotu serwera) na wewnętrznego standardowego modułu równoważenia obciążenia
 
-Podobnie można skonfigurować moduł równoważenia obciążenia do użycia regułę równoważenia obciążenia za pomocą **portów HA** za pomocą pojedynczego frontonu, ustawiając **pływającego adresu IP** do **włączone**. 
+Można podobnie skonfigurować moduł równoważenia obciążenia tak, aby korzystał z reguły zrównoważenia obciążenia z **portem ha** z jednym frontonem, ustawiając wartość opcji **zmiennoprzecinkowy adres IP** na **włączone**. 
 
 Za pomocą tej konfiguracji, można dodać więcej zmiennoprzecinkowy IP równoważenia obciążenia reguł i/lub publiczny moduł równoważenia obciążenia. Jednak nie można używać niezmienny adres IP, portów HA konfiguracji równoważenia obciążenia na podstawie tej konfiguracji.
 
@@ -83,11 +83,11 @@ Za pomocą tej konfiguracji, można dodać więcej zmiennoprzecinkowy IP równow
 Jeśli dany scenariusz wymaga, aby skonfigurować więcej niż jeden HA port frontonu na potrzeby tej samej puli zaplecza, można wykonać następujące czynności: 
 - Skonfiguruj więcej niż jeden prywatny adres IP frontonu do jednego zasobu wewnętrznej standardowego modułu równoważenia obciążenia.
 - Skonfiguruj wiele reguł równoważenia obciążenia, w którym każda reguła ma pojedynczej unikatowy adres IP frontonu wybrane.
-- Wybierz **portów HA** opcji, a następnie ustaw **pływającego adresu IP** do **włączone** dla wszystkich reguł równoważenia obciążenia.
+- Wybierz opcję **porty ha** , a następnie ustaw **zmiennoprzecinkowy adres IP** na **włączony** dla wszystkich reguł równoważenia obciążenia.
 
 ### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Wewnętrzny moduł równoważenia obciążenia przy użyciu portów wysokiej dostępności i publiczny moduł równoważenia obciążenia dla tego samego wystąpienia zaplecza
 
-Można skonfigurować *jeden* zasób publicznego standardowego modułu równoważenia obciążenia dla zasobów zaplecza, wraz z jednego wewnętrznego standardowego modułu równoważenia obciążenia przy użyciu portów wysokiej dostępności.
+Istnieje możliwość skonfigurowania *jednego* publicznego zasobu Usługa Load Balancer w warstwie Standardowa na potrzeby zasobów zaplecza oraz jednego wewnętrznego usługa Load Balancer w warstwie Standardowa z portami ha.
 
 >[!NOTE]
 >Ta funkcja jest obecnie dostępna za pośrednictwem usługi Azure Resource Manager, ale nie jest dostępna za pośrednictwem witryny Azure portal.
@@ -98,10 +98,10 @@ Można skonfigurować *jeden* zasób publicznego standardowego modułu równowa�
 - Łączenie z wysokiej dostępności portów reguły równoważenia obciążenia i porty bez wysokiej dostępności, reguły równoważenia obciążenia nie jest obsługiwane.
 - Istniejące fragmenty adresów IP będą przekazywane przez reguły równoważenia obciążenia portów HA do tego samego miejsca docelowego, co pierwszy pakiet.  Fragmentacja IP pakietu UDP lub TCP nie jest obsługiwana.
 - Reguły równoważenia obciążenia portów HA nie są dostępne dla protokołu IPv6.
-- Mechanizm symetrii przepływów (głównie dla scenariuszy urządzenie WUS) jest obsługiwany z wystąpieniem zaplecza i jedną kartą sieciową (i konfiguracją pojedynczego adresu IP) tylko wtedy, gdy jest używana jak pokazano na powyższym diagramie i przy użyciu zasad równoważenia obciążenia portów HA. Nie jest ona dostępna w żadnym innym scenariuszu. Oznacza to, że co najmniej dwa zasoby Load Balancer i ich odpowiednie zasady podejmują niezależne decyzje i nigdy nie są koordynowane. Zobacz opis i diagram dla [sieciowych urządzeń wirtualnych](#nva). W przypadku korzystania z wielu kart sieciowych lub urządzenie WUSi między publiczną i wewnętrzną Load Balancer, symetria przepływu jest niedostępna.  Możliwe jest obejście tego problemu ze źródłem NAT'ing przepływ transferu danych przychodzących do adresu IP urządzenia, aby umożliwić odpowiedzi na te same urządzenie WUS.  Jednak zdecydowanie zalecamy korzystanie z jednej karty sieciowej i używanie architektury referencyjnej pokazanej na powyższym diagramie.
+- Mechanizm symetrii przepływów (głównie dla scenariuszy urządzenie WUS) jest obsługiwany z wystąpieniem zaplecza i jedną kartą sieciową (i konfiguracją pojedynczego adresu IP) tylko wtedy, gdy jest używana jak pokazano na powyższym diagramie i przy użyciu zasad równoważenia obciążenia portów HA. Nie jest ona dostępna w żadnym innym scenariuszu. Oznacza to, że co najmniej dwa zasoby Load Balancer i ich odpowiednie zasady podejmują niezależne decyzje i nigdy nie są koordynowane. Zapoznaj się z opisem i diagramem [wirtualnych urządzeń sieciowych](#nva). W przypadku korzystania z wielu kart sieciowych lub urządzenie WUSi między publiczną i wewnętrzną Load Balancer, symetria przepływu jest niedostępna.  Możliwe jest obejście tego problemu ze źródłem NAT'ing przepływ transferu danych przychodzących do adresu IP urządzenia, aby umożliwić odpowiedzi na te same urządzenie WUS.  Jednak zdecydowanie zalecamy korzystanie z jednej karty sieciowej i używanie architektury referencyjnej pokazanej na powyższym diagramie.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie portów wysokiej dostępności na wewnętrznego standardowego modułu równoważenia obciążenia](load-balancer-configure-ha-ports.md)
-- [Dowiedz się więcej o standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md)
+- [Konfigurowanie portów HA na usługa Load Balancer w warstwie Standardowa wewnętrznym](load-balancer-configure-ha-ports.md)
+- [Dowiedz się więcej o usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Introduction to ML Services on Azure HDInsight
-description: Learn how to use ML Services on HDInsight to create applications for big data analysis.
+title: Wprowadzenie do usługi ML w usłudze Azure HDInsight
+description: Dowiedz się, jak używać usług ML w usłudze HDInsight do tworzenia aplikacji do analizy danych Big Data.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -15,35 +15,35 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74321670"
 ---
-# <a name="what-is-ml-services-in-azure-hdinsight"></a>What is ML Services in Azure HDInsight
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>Co to jest usługa ML w usłudze Azure HDInsight
 
-Microsoft Machine Learning Server is available as a deployment option when you create HDInsight clusters in Azure. The cluster type that provides this option is called **ML Services**. This capability provides data scientists, statisticians, and R programmers with on-demand access to scalable, distributed methods of analytics on HDInsight.
+Microsoft Machine Learning Server jest dostępna jako opcja wdrażania podczas tworzenia klastrów usługi HDInsight na platformie Azure. Typ klastra, który zapewnia tę opcję, nosi nazwę **usługi ml**. Ta funkcja zapewnia analitykom danych, statystyków i programistom języka R dostęp na żądanie do skalowalnych, dystrybuowanych metod analizy w usłudze HDInsight.
 
-ML Services on HDInsight provides the latest capabilities for R-based analytics on datasets of virtually any size, loaded to either Azure Blob or Data Lake storage. Since ML Services cluster is built on open-source R, the R-based applications you build can leverage any of the 8000+ open-source R packages. The routines in ScaleR, Microsoft’s big data analytics package are also available.
+Usługi ML w usłudze HDInsight zapewniają najnowsze możliwości analizy opartej na języku R na zestawach danych praktycznie dowolnego rozmiaru, ładowanych do usługi Azure Blob lub magazynu Data Lake. Ze względu na to, że klaster usługi ML jest oparty na języku R typu "open source", tworzone aplikacje oparte na języku R mogą korzystać z dowolnych pakietów języka R typu "open source". Dostępne są również procedury w ramach skalowania, czyli pakiet do analizy danych Big Data firmy Microsoft.
 
-The edge node of a cluster provides a convenient place to connect to the cluster and to run your R scripts. With an edge node, you have the option of running the parallelized distributed functions of ScaleR across the cores of the edge node server. You can also run them across the nodes of the cluster by using ScaleR’s Hadoop Map Reduce or Apache Spark compute contexts.
+Węzeł brzegowy klastra zapewnia wygodne miejsce do łączenia się z klastrem i uruchamiania skryptów języka R. W węźle brzegowym można uruchamiać równoległe funkcje rozproszone skalowania na wielu rdzeniach serwera węzła brzegowego. Można je również uruchamiać w węzłach klastra przy użyciu mapy usługi Hadoop skalowania w celu zmniejszenia lub Apache Spark kontekstów obliczeniowych.
 
-The models or predictions that result from analysis can be downloaded for on-premises use. They can also be operationalized elsewhere in Azure, in particular through [Azure Machine Learning Studio (classic)](https://studio.azureml.net) [web service](../../machine-learning/studio/deploy-a-machine-learning-web-service.md).
+Modele lub przewidywania powstałe w wyniku analizy mogą być pobierane do użytku lokalnego. Mogą również działać w innym miejscu na platformie Azure, w szczególności za pomocą [usługi sieci web](../../machine-learning/studio/deploy-a-machine-learning-web-service.md) [Azure Machine Learning Studio (klasycznej)](https://studio.azureml.net) .
 
-## <a name="get-started-with-ml-services-on-hdinsight"></a>Get started with ML Services on HDInsight
+## <a name="get-started-with-ml-services-on-hdinsight"></a>Wprowadzenie do usługi l Services w usłudze HDInsight
 
-To create an ML Services cluster in Azure HDInsight, select the **ML Services** cluster type when creating an HDInsight cluster using the Azure portal. The ML Services cluster type includes ML Server on the data nodes of the cluster and on an edge node, which serves as a landing zone for ML Services-based analytics. See [Create Apache Hadoop clusters using the Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) for a walkthrough on how to create the cluster.
+Aby utworzyć klaster usług ML w usłudze Azure HDInsight, podczas tworzenia klastra usługi HDInsight przy użyciu Azure Portal wybierz typ klastra **usług ml** . Typ klastra usługi ML zawiera ML Server w węzłach danych klastra i w węźle brzegowym, który służy jako strefa docelowa dla analiz opartych na usługach ML. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal,](../hdinsight-hadoop-create-linux-clusters-portal.md) aby zapoznać się z przewodnikiem dotyczącym tworzenia klastra.
 
-## <a name="why-choose-ml-services-in-hdinsight"></a>Why choose ML Services in HDInsight?
+## <a name="why-choose-ml-services-in-hdinsight"></a>Dlaczego warto wybrać usługi ML w usłudze HDInsight?
 
-ML Services in HDInsight provides the following benefits:
+Usługi ML w usłudze HDInsight zapewniają następujące korzyści:
 
-### <a name="ai-innovation-from-microsoft-and-open-source"></a>AI innovation from Microsoft and open-source
+### <a name="ai-innovation-from-microsoft-and-open-source"></a>Innowacje AI firmy Microsoft i Open-Source
 
-  ML Services includes highly scalable, distributed set of algorithms such as [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package), and [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) that can work on data sizes larger than the size of physical memory, and run on a wide variety of platforms in a distributed manner. Learn more about the collection of Microsoft's custom [R packages](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) and [Python packages](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) included with the product.
+  Usługa l Services obejmuje wysoce skalowalny, rozproszony zestaw algorytmów, takich jak [kolekcję funkcji revoscaler](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [biblioteki revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)i [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , które mogą pracować z rozmiarem danych większym od rozmiaru pamięci fizycznej i uruchamiać na wielu różnych platformach w sposób dystrybuowany. Dowiedz się więcej na temat kolekcji niestandardowych [pakietów języka R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) firmy Microsoft i [pakietów Python](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) zawartych w produkcie.
   
-  ML Services bridges these Microsoft innovations and contributions coming from the open-source community (R, Python, and AI toolkits) all on top of a single enterprise-grade platform. Any R or Python open-source machine learning package can work side by side with any proprietary innovation from Microsoft.
+  Usługi ML mostkuje te innowacje i wkłady firmy Microsoft pochodzące z społeczności typu "open source" (zestawu narzędzi języka R, Python i AI) na jednej platformie klasy korporacyjnej. Każdy pakiet uczenia maszynowego "open source" w języku R lub Python może współpracować ze wszystkimi zastrzeżonymi innowacyjnymi firmy Microsoft.
 
-### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Simple, secure, and high-scale operationalization and administration
+### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Proste, bezpieczne i wysoce skalowane operacjonalizacji i administracja
 
-  Enterprises relying on traditional paradigms and environments invest much time and effort towards operationalization. This results in inflated costs and delays including the translation time for models, iterations to keep them valid and current, regulatory approval, and managing permissions through operationalization.
+  Przedsiębiorstwa opierają się na tradycyjnych odmianach i środowiskach inwestycji dużo czasu i wysiłku na operacjonalizacji. Wynika to z niezryczałtowanych kosztów i opóźnień, w tym czasu tłumaczenia dla modeli, iteracji, aby zachować ich ważność i bieżące, zatwierdzać prawa i zarządzać uprawnieniami za pomocą operacjonalizacji.
 
-  ML Services offers enterprise grade [operationalization](https://docs.microsoft.com/machine-learning-server/what-is-operationalization), in that, after a machine learning model is completed, it takes just a few clicks to generate web services APIs. These [web services](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) are hosted on a server grid in the cloud and can be integrated with line-of-business applications. The ability to deploy to an elastic grid lets you scale seamlessly with the needs of your business, both for batch and real-time scoring. For instructions, see [Operationalize ML Services on HDInsight](r-server-operationalize.md).
+  Usługi Virtual Services oferują [operacjonalizacji](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)klasy korporacyjnej w tym przypadku, gdy model uczenia maszynowego zostanie ukończony, zajmie zaledwie kilka kliknięć, aby generować interfejsy API usług sieci Web. Te [usługi sieci Web](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) są hostowane w sieci na serwerze w chmurze i mogą być zintegrowane z aplikacjami biznesowymi. Możliwość wdrażania w elastycznej siatce umożliwia bezproblemowe skalowanie z potrzebami firmy zarówno w przypadku partii, jak i w czasie rzeczywistym. Aby uzyskać instrukcje, zobacz [OPERACJONALIZOWAĆ ml Services w usłudze HDInsight](r-server-operationalize.md).
 
 <!---
 * **Deep ecosystem engagements to deliver customer success with optimal total cost of ownership**
@@ -51,97 +51,97 @@ ML Services in HDInsight provides the following benefits:
   Individuals embarking on the journey of making their applications intelligent or simply wanting to learn the new world of AI and machine learning, need the right resources to help them get started. In addition to this documentation, Microsoft provides several learning resources and has engaged several training partners to help you ramp up and become productive quickly.
 --->
 
-## <a name="key-features-of-ml-services-on-hdinsight"></a>Key features of ML Services on HDInsight
+## <a name="key-features-of-ml-services-on-hdinsight"></a>Najważniejsze funkcje usługi ML Services w usłudze HDInsight
 
-The following features are included in ML Services on HDInsight.
+Poniższe funkcje są zawarte w usłudze ML w usłudze HDInsight.
 
-| Feature category | Opis |
+| Kategoria funkcji | Opis |
 |------------------|-------------|
-| R-enabled | [R packages](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) for solutions written in R, with an open source distribution of R, and run-time infrastructure for script execution. |
-| Python-enabled | [Python modules](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) for solutions written in Python, with an open source distribution of Python, and run-time infrastructure for script execution.
-| [Pre-trained models](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | For visual analysis and text sentiment analysis, ready to score data you provide. |
-| [Deploy and consume](r-server-operationalize.md) | Operationalize your server and deploy solutions as a web service. |
-| [Remote execution](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Start remote sessions on ML Services cluster on your network from your client workstation. |
+| Język R — włączony | [Pakiety języka r](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) dla rozwiązań pisanych w języku r, z dystrybucją typu open source dla języka r i infrastruktury czasu wykonywania na potrzeby wykonywania skryptów. |
+| Python — włączono | [Moduły języka Python](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) dla rozwiązań utworzonych w języku Python, z dystrybucją typu open source dla języka Python i infrastruktury czasu wykonywania na potrzeby wykonywania skryptów.
+| [Modele wstępnie nauczone](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Na potrzeby analizy wizualizacji i tekstu tonacji można przystąpić do oceny danych, które zapewniasz. |
+| [Wdrażanie i korzystanie z](r-server-operationalize.md) | Operacjonalizować serwer i wdrażaj rozwiązania jako usługę sieci Web. |
+| [Zdalne wykonywanie](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Uruchom sesje zdalne w klastrze usługi ML w sieci z poziomu stacji roboczej klienta. |
 
 
-## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Data storage options for ML Services on HDInsight
+## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Opcje przechowywania danych dla usług ML w usłudze HDInsight
 
-Default storage for the HDFS file system of HDInsight clusters can be associated with either an Azure Storage account or an Azure Data Lake Storage. This association ensures that whatever data is uploaded to the cluster storage during analysis is made persistent and the data is available even after the cluster is deleted. There are various tools for handling the data transfer to the storage option that you select, including the portal-based upload facility of the storage account and the [AzCopy](../../storage/common/storage-use-azcopy.md) utility.
+Magazyn domyślny dla systemu plików HDFS klastrów usługi HDInsight można skojarzyć z kontem usługi Azure Storage lub Azure Data Lake Storage. To skojarzenie gwarantuje, że dane przesyłane do magazynu klastra podczas analizy są trwałe, a dane są dostępne nawet po usunięciu klastra. Istnieją różne narzędzia do obsługi transferu danych do wybranej opcji magazynu, w tym funkcji przekazywania opartej na portalu dla konta magazynu i narzędzia [AzCopy](../../storage/common/storage-use-azcopy.md) .
 
-You have the option of enabling access to additional Blob and Data lake stores during the cluster provisioning process regardless of the primary storage option in use.  See [Azure Storage options for ML Services on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) article to learn more about using multiple storage accounts.
+Istnieje możliwość włączenia dostępu do dodatkowych obiektów blob i usług Data Lake Store podczas procesu aprowizacji klastra niezależnie od opcji magazynu podstawowego w użyciu.  Aby dowiedzieć się więcej o używaniu wielu kont magazynu, zobacz temat [Opcje usługi Azure Storage dla usług ml w usłudze HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) .
 
-You can also use [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) as a storage option for use on the edge node. Azure Files enables you to mount a file share that was created in Azure Storage to the Linux file system. For more information about these data storage options for ML Services on HDInsight cluster, see [Azure Storage options for ML Services on HDInsight](r-server-storage.md).
+Możesz również użyć [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) jako opcji magazynu do użycia w węźle brzegowym. Azure Files umożliwia zainstalowanie udziału plików utworzonego w usłudze Azure Storage w systemie plików Linux. Aby uzyskać więcej informacji na temat tych opcji przechowywania danych dla usług ML w klastrze usługi HDInsight, zobacz [Opcje usługi Azure Storage dla usług ml w usłudze HDInsight](r-server-storage.md).
 
-## <a name="access-ml-services-edge-node"></a>Access ML Services edge node
+## <a name="access-ml-services-edge-node"></a>Węzeł brzegowy usługi Access Services
 
-You can connect to Microsoft ML Server on the edge node using a browser. It is installed by default during cluster creation.  You can also connect to the cluster edge node from the command line by using SSH/PuTTY to access the R console.
+Można nawiązać połączenie z usługą Microsoft ML Server w węźle brzegowym przy użyciu przeglądarki. Jest instalowana domyślnie podczas tworzenia klastra.  Możesz również połączyć się z węzłem brzegowym klastra z poziomu wiersza polecenia, używając protokołu SSH/wykreśleń w celu uzyskania dostępu do konsoli języka R.
 
-## <a name="develop-and-run-r-scripts"></a>Develop and run R scripts
+## <a name="develop-and-run-r-scripts"></a>Opracowywanie i uruchamianie skryptów języka R
 
-The R scripts you create and run can use any of the 8000+ open-source R packages in addition to the parallelized and distributed routines available in the ScaleR library. In general, a script that is run with ML Services on the edge node runs within the R interpreter on that node. The exceptions are those steps that need to call a ScaleR function with a compute context that is set to Hadoop Map Reduce (RxHadoopMR) or Spark (RxSpark). In this case, the function runs in a distributed fashion across those data (task) nodes of the cluster that are associated with the data referenced. For more information about the different compute context options, see [Compute context options for ML Services on HDInsight](r-server-compute-contexts.md).
+Tworzone i uruchamiane skrypty języka R mogą korzystać z dowolnych z pakietów języka R typu "open source", oprócz równoległych i rozproszonych procedur dostępnych w bibliotece skalowania. Ogólnie rzecz biorąc, skrypt, który jest uruchamiany z usługami ML w węźle brzegowym, działa w obrębie interpretera języka R w tym węźle. Wyjątkami są te kroki, które muszą wywołać funkcję skalowania z kontekstem obliczeniowym ustawionym na wartość ograniczenia mapy Hadoop (RxHadoopMR) lub Spark (obliczeniowego rxspark). W takim przypadku funkcja jest uruchamiana w sposób rozproszony przez węzły danych (zadania) klastra, które są skojarzone z odwołaniami do danych. Aby uzyskać więcej informacji na temat różnych opcji kontekstu obliczeniowego, zobacz [Opcje kontekstu obliczeniowego dla usług w usłudze ml w usłudze HDInsight](r-server-compute-contexts.md).
 
 ## <a name="operationalize-a-model"></a>Operacjonalizowanie modelu
 
-When your data modeling is complete, you can operationalize the model to make predictions for new data either from Azure or on-premises. This process is known as scoring. Scoring can be done in HDInsight, Azure Machine Learning, or on-premises.
+Po zakończeniu modelowania danych można operacjonalizować model, aby utworzyć prognozy dla nowych danych na platformie Azure lub lokalnie. Ten proces jest znany jako ocenianie. Ocenianie może odbywać się w usłudze HDInsight, Azure Machine Learning lub lokalnie.
 
-### <a name="score-in-hdinsight"></a>Score in HDInsight
+### <a name="score-in-hdinsight"></a>Wyniki w usłudze HDInsight
 
-To score in HDInsight, write an R function that calls your model to make predictions for a new data file that you've loaded to your storage account. Then, save the predictions back to the storage account. You can run this routine on-demand on the edge node of your cluster or by using a scheduled job.
+Aby wypróbować w usłudze HDInsight, napisz funkcję języka R, która wywołuje model, aby utworzyć prognozy dla nowego pliku danych, który został załadowany do konta magazynu. Następnie Zapisz przewidywania z powrotem na koncie magazynu. Tę procedurę można uruchomić na żądanie na węźle brzegowym klastra lub przy użyciu zaplanowanego zadania.
 
-### <a name="score-in-azure-machine-learning-aml"></a>Score in Azure Machine Learning (AML)
+### <a name="score-in-azure-machine-learning-aml"></a>Wynik w Azure Machine Learning (AML)
 
-To score using Azure Machine Learning, use the open-source Azure Machine Learning R package known as [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) to publish your model as an Azure web service. For convenience, this package is pre-installed on the edge node. Next, use the facilities in Azure Machine Learning to create a user interface for the web service, and then call the web service as needed for scoring.
+Aby wypróbować Azure Machine Learning, Użyj pakietu języka R "Open Azure Machine Learning source", który jest znany jako [Azure](https://cran.r-project.org/src/contrib/Archive/AzureML/) , aby opublikować model jako usługę sieci Web platformy Azure. Dla wygody ten pakiet jest wstępnie zainstalowany w węźle brzegowym. Następnie użyj funkcji w Azure Machine Learning, aby utworzyć interfejs użytkownika dla usługi sieci Web, a następnie Wywołaj usługę sieci Web zgodnie z wymaganiami dla oceny.
 
-If you choose this option, you must convert any ScaleR model objects to equivalent open-source model objects for use with the web service. Use ScaleR coercion functions, such as `as.randomForest()` for ensemble-based models, for this conversion.
+Jeśli wybierzesz tę opcję, musisz przekonwertować wszystkie obiekty modelu skalowania na równoważne obiekty modelu "open source", które będą używane z usługą sieci Web. W przypadku tej konwersji Użyj funkcji przekształcania skalowania, takich jak `as.randomForest()` dla modeli opartych na modelu.
 
-### <a name="score-on-premises"></a>Score on-premises
+### <a name="score-on-premises"></a>Ocena w środowisku lokalnym
 
-To score on-premises after creating your model, you can serialize the model in R, download it, de-serialize it, and then use it for scoring new data. You can score new data by using the approach described earlier in [Score in HDInsight](#score-in-hdinsight) or by using [web services](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
+Aby oceniać lokalne po utworzeniu modelu, można serializować model w języku R, pobrać go, deserializować, a następnie użyć go do oceny nowych danych. Nowe dane można wystawić przy użyciu opisanego wcześniej podejścia do [oceny usługi HDInsight](#score-in-hdinsight) lub [usług sieci Web](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
 
-## <a name="maintain-the-cluster"></a>Maintain the cluster
+## <a name="maintain-the-cluster"></a>Obsługa klastra
 
-### <a name="install-and-maintain-r-packages"></a>Install and maintain R packages
+### <a name="install-and-maintain-r-packages"></a>Instalowanie i konserwowanie pakietów języka R
 
-Most of the R packages that you use are required on the edge node since most steps of your R scripts run there. To install additional R packages on the edge node, you can use the `install.packages()` method in R.
+Większość używanych pakietów języka R jest wymagana w węźle brzegowym, ponieważ większość kroków skryptów języka R jest w tej chwili uruchamiana. Aby zainstalować dodatkowe pakiety języka R w węźle brzegowym, można użyć metody `install.packages()` w języku R.
 
-If you are just using routines from the ScaleR library across the cluster, you do not usually need to install additional R packages on the data nodes. However, you might need additional packages to support the use of **rxExec** or **RxDataStep** execution on the data nodes.
+Jeśli używasz tylko procedur z biblioteki skalowania w klastrze, zazwyczaj nie musisz instalować dodatkowych pakietów R w węzłach danych. Mogą jednak być potrzebne dodatkowe pakiety do obsługi **rxExec** lub **RxDataStep** wykonywania w węzłach danych.
 
-In such cases, the additional packages can be installed with a script action after you create the cluster. For more information, see [Manage ML Services in HDInsight cluster](r-server-hdinsight-manage.md).
+W takich przypadkach dodatkowe pakiety mogą być instalowane z akcją skryptu po utworzeniu klastra. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługami ml w klastrze usługi HDInsight](r-server-hdinsight-manage.md).
 
-### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Change Apache Hadoop MapReduce memory settings
+### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Zmień ustawienia pamięci Apache Hadoop MapReduce
 
-A cluster can be modified to change the amount of memory that is available to ML Services when it is running a MapReduce job. To modify a cluster, use the Apache Ambari UI that's available through the Azure portal blade for your cluster. For instructions about how to access the Ambari UI for your cluster, see [Manage HDInsight clusters using the Ambari Web UI](../hdinsight-hadoop-manage-ambari.md).
+Klaster można zmodyfikować, aby zmienić ilość pamięci dostępnej dla usług ML, gdy jest uruchomione zadanie MapReduce. Aby zmodyfikować klaster, użyj interfejsu użytkownika Apache Ambari, który jest dostępny za pomocą bloku Azure Portal w klastrze. Aby uzyskać instrukcje dotyczące uzyskiwania dostępu do interfejsu użytkownika Ambari dla klastra, zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Ambari](../hdinsight-hadoop-manage-ambari.md).
 
-It is also possible to change the amount of memory that is available to ML Services by using Hadoop switches in the call to **RxHadoopMR** as follows:
+Istnieje również możliwość zmiany ilości pamięci dostępnej dla usług ML przy użyciu przełączników Hadoop w wywołaniu **RxHadoopMR** w następujący sposób:
 
     hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
 ### <a name="scale-your-cluster"></a>Skalowanie klastra
 
-An existing ML Services cluster on HDInsight can be scaled up or down through the portal. By scaling up, you can gain the additional capacity that you might need for larger processing tasks, or you can scale back a cluster when it is idle. For instructions about how to scale a cluster, see [Manage HDInsight clusters](../hdinsight-administer-use-portal-linux.md).
+Istniejący klaster usług ML w usłudze HDInsight można skalować w górę lub w dół w portalu. Skalowanie w górę pozwala uzyskać dodatkową pojemność, która może być potrzebna w przypadku większych zadań przetwarzania lub można skalować klaster w stan bezczynności. Aby uzyskać instrukcje dotyczące skalowania klastra, zobacz [Zarządzanie klastrami usługi HDInsight](../hdinsight-administer-use-portal-linux.md).
 
-### <a name="maintain-the-system"></a>Maintain the system
+### <a name="maintain-the-system"></a>Obsługa systemu
 
-Maintenance to apply OS patches and other updates is performed on the underlying Linux VMs in an HDInsight cluster during off-hours. Typically, maintenance is done at 3:30 AM (based on the local time for the VM) every Monday and Thursday. Updates are performed in such a way that they don't impact more than a quarter of the cluster at a time.
+Konserwacja w celu zastosowania poprawek systemu operacyjnego i innych aktualizacji jest wykonywana na podstawowych maszynach wirtualnych z systemem Linux w klastrze usługi HDInsight w ciągu kilku godzin. Zwykle konserwacja odbywa się o godzinie 3:30 (na podstawie czasu lokalnego dla maszyny wirtualnej) co poniedziałek i czwartek. Aktualizacje są wykonywane w taki sposób, że nie wpływają na więcej niż jeden kwartał klastra jednocześnie.
 
-Since the head nodes are redundant and not all data nodes are impacted, any jobs that are running during this time might slow down. However, they should still run to completion. Any custom software or local data that you have is preserved across these maintenance events unless a catastrophic failure occurs that requires a cluster rebuild.
+Ponieważ węzły główne są nadmiarowe i nie mają wpływu na wszystkie węzły danych, wszystkie zadania, które są uruchomione w tym czasie, mogą spowalniać działanie. Jednak powinny one nadal działać. Wszelkie niestandardowe oprogramowanie lub dane lokalne są zachowywane w ramach tych zdarzeń konserwacyjnych, chyba że wystąpi błąd krytyczny, który wymaga ponownego skompilowania klastra.
 
-## <a name="ide-options-for-ml-services-on-hdinsight"></a>IDE options for ML Services on HDInsight
+## <a name="ide-options-for-ml-services-on-hdinsight"></a>Opcje środowiska IDE dla usług ML w usłudze HDInsight
 
-The Linux edge node of an HDInsight cluster is the landing zone for R-based analysis. Recent versions of HDInsight provide a default installation of RStudio Server on the edge node as a browser-based IDE. Use of RStudio Server as an IDE for the development and execution of R scripts can be considerably more productive than just using the R console.
+Węzeł brzegowy systemu Linux klastra usługi HDInsight jest strefą docelową analizy na podstawie języka R. Najnowsze wersje usługi HDInsight zapewniają domyślną instalację serwera RStudio na węźle brzegowym jako środowisko IDE oparte na przeglądarce. Korzystanie z serwera RStudio jako środowiska IDE do tworzenia i wykonywania skryptów języka R może być znacznie bardziej wydajne niż w przypadku korzystania z konsoli języka R.
 
-Additionally, you can install a desktop IDE and use it to access the cluster through use of a remote MapReduce or Spark compute context. Options include Microsoft’s [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS), RStudio, and Walware’s Eclipse-based [StatET](http://www.walware.de/goto/statet).
+Ponadto można zainstalować środowisko IDE pulpitu i używać go do uzyskiwania dostępu do klastra za pomocą zdalnego kontekstu obliczeniowego MapReduce lub Spark. Dostępne opcje to: [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) firmy Microsoft (RTVS), RStudio i [Walware.](http://www.walware.de/goto/statet)
 
-Additionally, you can access the R console on the edge node by typing **R** at the Linux command prompt after connecting via SSH or PuTTY. When using the console interface, it is convenient to run a text editor for R script development in another window, and cut and paste sections of your script into the R console as needed.
+Ponadto możesz uzyskać dostęp do konsoli języka R w węźle brzegowym, wpisując **R** w wierszu polecenia systemu Linux po nawiązaniu połączenia za pośrednictwem protokołu SSH lub wyciągania. W przypadku korzystania z interfejsu konsoli można uruchomić Edytor tekstu dla tworzenia skryptów języka R w innym oknie, a następnie wyciąć i wkleić sekcje skryptu do konsoli języka R zgodnie z potrzebami.
 
 ## <a name="pricing"></a>Cennik
 
-The prices that are associated with an ML Services HDInsight cluster are structured similarly to the prices for other HDInsight cluster types. They are based on the sizing of the underlying VMs across the name, data, and edge nodes, with the addition of a core-hour uplift. For more information, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).
+Ceny skojarzone z klastrem usługi HDInsight usług w usłudze ML mają strukturę podobną do cen dla innych typów klastrów HDInsight. Są one oparte na wymiarach podstawowych maszyn wirtualnych w obrębie nazwy, danych i węzłów brzegowych, z dodaniem wzroście-godzinowego. Aby uzyskać więcej informacji, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="next-steps"></a>Następne kroki
 
-To learn more about how to use ML Services on HDInsight clusters, see the following topics:
+Aby dowiedzieć się więcej na temat korzystania z usług ML w klastrach usługi HDInsight, zobacz następujące tematy:
 
-* [Execute an R script on an ML Services cluster in Azure HDInsight using RStudio Server](machine-learning-services-quickstart-job-rstudio.md)
+* [Wykonywanie skryptu języka R w klastrze usług ML w usłudze Azure HDInsight przy użyciu serwera RStudio](machine-learning-services-quickstart-job-rstudio.md)
 * [Compute context options for ML Services cluster on HDInsight (Opcje kontekstu obliczeniowego dla klastra usług ML w usłudze HDInsight)](r-server-compute-contexts.md)
-* [Storage options for ML Services cluster on HDInsight](r-server-storage.md)
+* [Opcje magazynu dla klastra usług ML w usłudze HDInsight](r-server-storage.md)

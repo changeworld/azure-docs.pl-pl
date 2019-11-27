@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Back up Windows Server to Azure
+title: Samouczek — Tworzenie kopii zapasowej systemu Windows Server na platformie Azure
 description: Ten samouczek zawiera szczegółowe instrukcje tworzenia kopii zapasowej lokalnych serwerów z systemem Windows w magazynie usługi Recovery Services.
 ms.topic: tutorial
 ms.date: 08/22/2018
@@ -11,17 +11,17 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226477"
 ---
-# <a name="back-up-windows-server-to-azure"></a>Tworzenie kopii zapasowych serwera z systemem Windows na platformie Azure
+# <a name="back-up-windows-server-to-azure"></a>Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure
 
-Przy użyciu usługi Azure Backup można chronić serwer z systemem Windows przed uszkodzeniem, atakiem czy awarią. Usługa Azure Backup udostępnia proste narzędzie: agenta usługi Microsoft Azure Recovery Services (MARS). Agent usług MARS zainstalowany na serwerze z systemem Windows chroni pliki, foldery i konfigurację serwera przy użyciu stanu systemu Windows Server. W tym samouczku opisano, jak za pomocą agenta usług MARS utworzyć kopię zapasową serwera z systemem Windows na platformie Azure. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Przy użyciu usługi Azure Backup można chronić serwer z systemem Windows przed uszkodzeniem, atakiem czy awarią. Usługa Azure Backup udostępnia proste narzędzie: agenta usługi Microsoft Azure Recovery Services (MARS). Agent usług MARS zainstalowany na serwerze z systemem Windows chroni pliki, foldery i konfigurację serwera przy użyciu stanu systemu Windows Server. W tym samouczku opisano, jak za pomocą agenta usług MARS utworzyć kopię zapasową serwera z systemem Windows na platformie Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 >
 > * Pobieranie i konfigurowanie agenta usług MARS
 > * Konfigurowanie harmonogramu tworzenia i przechowywania kopii zapasowych serwera
-> * Perform an on-demand back up
+> * Wykonaj kopię zapasową na żądanie
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -45,7 +45,7 @@ Aby umożliwić tworzenie kopii zapasowych serwerów z systemem Windows należy 
     * W menu rozwijanym **Lokalizacja** wybierz pozycję *Europa Zachodnia*.
     * Kliknij przycisk **Utwórz**, aby utworzyć magazyn usługi Recovery Services.
 
-Po utworzeniu magazynu pojawi się on na liście magazynów usługi Recovery Services.
+Po utworzeniu magazynu pojawi się on na liście magazynów Usług odzyskiwania.
 
 ## <a name="download-recovery-services-agent"></a>Pobieranie agenta usługi Recovery Services
 
@@ -59,7 +59,7 @@ Agent usługi Microsoft Azure Recovery Services (MARS) tworzy skojarzenie międz
 
 3. W menu **Cel kopii zapasowej**:
 
-   * for **Where is your workload running?** , select **On-premises**
+   * dla **gdzie jest uruchomione Twoje obciążenie?** wybierz pozycję **lokalna**
    * Na liście **Co ma zawierać kopia zapasowa?** zaznacz pozycje **Pliki i foldery** oraz **Stan systemu**.
 
    ![Wprowadzanie informacji o magazynie](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
@@ -90,7 +90,7 @@ Agent usługi Microsoft Azure Recovery Services (MARS) tworzy skojarzenie międz
 
 4. Po wyświetleniu monitu podaj hasło szyfrowania na potrzeby szyfrowania kopii zapasowych serwera z systemem Windows. Zapisz hasło w bezpiecznej lokalizacji, ponieważ w przypadku utraty hasła firma Microsoft nie będzie mogła go odzyskać.
 
-5. Kliknij przycisk **Finish** (Zakończ).
+5. Kliknij przycisk **Zakończ**.
 
 ## <a name="configure-backup-and-retention"></a>Konfigurowanie tworzenia i przechowywania kopii zapasowych
 

@@ -25,7 +25,7 @@ W tym artykule przedstawiono kilka sposobów tworzenia klastrów usługi Azure H
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Subskrypcji platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* [Subskrypcja platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Azure PowerShell i/lub interfejs wiersza polecenia platformy Azure.
 
 ### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager

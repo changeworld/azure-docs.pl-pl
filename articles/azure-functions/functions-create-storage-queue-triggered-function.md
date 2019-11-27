@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by queue messages
+title: Tworzenie funkcji na platformie Azure wyzwalanej przez komunikaty kolejki
 description: Utwórz za pomocą usługi Azure Functions funkcję niewymagającą użycia serwera wywoływaną za pomocą komunikatów przesyłanych do kolejki usługi Azure Storage.
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart

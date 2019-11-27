@@ -1,5 +1,5 @@
 ---
-title: Enroll X.509 devices to Azure Device Provisioning Service using Node.js
+title: Rejestrowanie urządzeń X. 509 w usłudze Azure Device Provisioning przy użyciu środowiska Node. js
 description: W tym przewodniku Szybki start używane są rejestracje grupowe. W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning Service przy użyciu zestawu SDK środowiska Node.js
 author: wesmc7777
 ms.author: wesmc
@@ -32,7 +32,7 @@ Mimo że kroki opisane w tym artykule działają zarówno na maszynach z systeme
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Zainstaluj [środowisko Node.js w wersji 4.0 lub nowszej](https://nodejs.org).
-- [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
+- Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
 
 
 ## <a name="prepare-test-certificates"></a>Przygotowywanie certyfikatów testowych
@@ -111,13 +111,13 @@ Aby użyć tych narzędzi testowych do wygenerowania certyfikatów, wykonaj nast
 ## <a name="run-the-enrollment-group-sample"></a>Uruchamianie przykładowej grupy rejestracji
  
 1. Do uruchomienia przykładu będą potrzebne parametry połączenia usługi aprowizacji. 
-    1. Sign in to the Azure portal, select the **All resources** button on the left-hand menu and open your Device Provisioning service. 
-    2. Click **Shared access policies**, then select the access policy you want to use to open its properties. W oknie **Zasady dostępu** skopiuj i zanotuj parametry połączenia klucza podstawowego. 
+    1. Zaloguj się do Azure Portal, wybierz przycisk **wszystkie zasoby** w menu po lewej stronie i Otwórz swoją usługę Device Provisioning. 
+    2. Kliknij pozycję **zasady dostępu współdzielonego**, a następnie wybierz zasady dostępu, których chcesz użyć, aby otworzyć jego właściwości. W oknie **Zasady dostępu** skopiuj i zanotuj parametry połączenia klucza podstawowego. 
 
        ![Pobieranie parametrów połączenia usługi aprowizacji z portalu](./media/quick-enroll-device-x509-node/get-service-connection-string.png) 
 
 
-3. Jak określono w [przygotowaniu certyfikatów testowych](quick-enroll-device-x509-node.md#prepare-test-certificates), potrzebny będzie także plik pem zawierający certyfikat X.509 pośredniego lub głównego urzędu certyfikacji, który został wcześniej przesłany do usługi aprowizacji i przez nią zweryfikowany. To check that your certificate has been uploaded and verified, on the Device Provisioning Service summary page in the Azure portal, select **Certificates**. Znajdź certyfikat, którego chcesz używać na potrzeby rejestracji grupowej, i upewnij się, że jego stan ma wartość *zweryfikowany*.
+3. Jak określono w [przygotowaniu certyfikatów testowych](quick-enroll-device-x509-node.md#prepare-test-certificates), potrzebny będzie także plik pem zawierający certyfikat X.509 pośredniego lub głównego urzędu certyfikacji, który został wcześniej przesłany do usługi aprowizacji i przez nią zweryfikowany. Aby sprawdzić, czy certyfikat został przekazany i zweryfikowany, na stronie podsumowania usługi Device Provisioning w obszarze Azure Portal wybierz pozycję **Certyfikaty**. Znajdź certyfikat, którego chcesz używać na potrzeby rejestracji grupowej, i upewnij się, że jego stan ma wartość *zweryfikowany*.
 
     ![Zweryfikowany certyfikat w portalu](./media/quick-enroll-device-x509-node/verify-certificate.png) 
 
@@ -136,14 +136,14 @@ Aby użyć tych narzędzi testowych do wygenerowania certyfikatów, wykonaj nast
     ![Właściwości rejestracji w portalu](./media/quick-enroll-device-x509-node/verify-enrollment-portal.png) 
  
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-If you plan to explore the Node.js service samples, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all Azure resources created by this quickstart.
+Jeśli planujesz Eksplorowanie przykładów usługi Node. js, nie czyść zasobów utworzonych w tym przewodniku Szybki Start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące kroki, aby usunąć wszystkie zasoby platformy Azure utworzone w ramach tego przewodnika Szybki Start.
  
 1. Zamknij okno danych wyjściowych przykładu środowiska Node.js na swojej maszynie.
-2. Navigate to your Device Provisioning service in the Azure portal, select **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the check box next to the *GROUP NAME* for the X.509 devices you enrolled using this quickstart, and press the **Delete** button at the top of the pane.    
-3. From your Device Provisioning service in the Azure portal, select **Certificates**, select the certificate you uploaded for this quickstart, and press the **Delete** button at the top of the **Certificate Details** window.  
+2. Przejdź do usługi Device Provisioning w Azure Portal wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz kartę **grupy rejestracji** . Zaznacz pole wyboru obok *nazwy grupy* dla urządzeń X. 509 zarejestrowanych w ramach tego przewodnika Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka.    
+3. W obszarze Azure Portal wybierz pozycję **Certyfikaty**, wybierz certyfikat, który został przekazany do tego przewodnika Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okna **Szczegóły certyfikatu** .  
  
 ## <a name="next-steps"></a>Następne kroki
-In this quickstart, you created a group enrollment for an X.509 intermediate or root CA certificate using the Azure IoT Hub Device Provisioning Service. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
+W tym przewodniku szybki start utworzono rejestrację grupy dla certyfikatu pośredniego lub głównego urzędu certyfikacji X. 509 przy użyciu IoT Hub Device Provisioning Service platformy Azure. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
  
 > [!div class="nextstepaction"]
 > [Samouczki dla usługi Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

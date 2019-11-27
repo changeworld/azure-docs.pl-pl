@@ -205,7 +205,7 @@ Aby dowiedzieć się, jak wyświetlać dane dzienników diagnostycznych, zobacz 
   - Dziennik zdarzeń w następującej ścieżce: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
   - Dziennik licznika reguł w następującej ścieżce: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej na temat [rejestrowania aktywności](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), wcześniej znanego jako Inspekcja lub dzienniki operacyjne. Rejestrowanie aktywności jest domyślnie włączone dla sieciowych grup zabezpieczeń utworzonych za pomocą modelu wdrażania platformy Azure. Aby określić, które operacje zostały wykonane w sieciowych grup zabezpieczeń w dzienniku aktywności, poszukaj wpisów zawierających następujące typy zasobów:
   - Microsoft.ClassicNetwork/networkSecurityGroups

@@ -24,7 +24,7 @@ Użyj Log Analytics model danych do tworzenia niestandardowych alertów z Log An
 
 Możesz użyć następujących pól dostarczonych jako część modelu danych do tworzenia wizualizacji, niestandardowych zapytań i pulpitu nawigacyjnego zgodnie z wymaganiami.
 
-### <a name="alert"></a>Zgłoś alert
+### <a name="alert"></a>Alerty
 
 Ta tabela zawiera szczegółowe informacje o polach związanych z alertami.
 
@@ -204,7 +204,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące pól związanych z zasadam
 | YearlyRetentionDaysOfTheMonth_s |Tekst ||Daty w miesiącu wybrane do przechowywania rocznego |
 | SynchronisationFrequencyPerDay_s |Liczba całkowita |v2|Liczba przypadków synchronizacji kopii zapasowej plików dla programu SC DPM i serwera usługi MAB |
 | DiffBackupFormat_s |Tekst |v2|Format różnicowych kopii zapasowych dla bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure |
-| DiffBackupTime_s |Godzina |v2|Czas różnicowych kopii zapasowych bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure|
+| DiffBackupTime_s |Time |v2|Czas różnicowych kopii zapasowych bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure|
 | DiffBackupRetentionDuration_s |Liczba dziesiętna |v2|Czas przechowywania różnicowych kopii zapasowych dla bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure|
 | LogBackupFrequency_s |Liczba dziesiętna |v2|Częstotliwość tworzenia kopii zapasowych dzienników dla bazy danych SQL|
 | LogBackupRetentionDuration_s |Liczba dziesiętna |v2|Czas przechowywania kopii zapasowych dziennika dla bazy danych SQL w kopii zapasowej maszyny wirtualnej platformy Azure|

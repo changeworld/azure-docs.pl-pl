@@ -1,6 +1,6 @@
 ---
-title: Triggers and bindings in Azure Functions
-description: Learn to use triggers and bindings to connect your Azure Function to online events and cloud-based services.
+title: Wyzwalacze i powiązania w Azure Functions
+description: Dowiedz się, jak używać wyzwalaczy i powiązań, aby połączyć funkcję platformy Azure ze zdarzeniami online i usługami w chmurze.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
@@ -12,45 +12,45 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226560"
 ---
-# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions triggers and bindings concepts
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Pojęcia związane z wyzwalaczami i powiązaniami Azure Functions
 
-In this article you learn the high-level concepts surrounding functions triggers and bindings.
+Ten artykuł zawiera informacje o pojęciach dotyczących wysokiego poziomu otaczających wyzwalacze i powiązania funkcji.
 
-Triggers are what cause a function to run. A trigger defines how a function is invoked and a function must have exactly one trigger. Triggers have associated data, which is often provided as the payload of the function. 
+Wyzwalacze to przyczyny uruchomienia funkcji. Wyzwalacz definiuje sposób wywoływania funkcji, a funkcja musi mieć dokładnie jeden wyzwalacz. Wyzwalacze mają skojarzone dane, które są często dostarczane jako ładunek funkcji. 
 
-Binding to a function is a way of declaratively connecting another resource to the function; bindings may be connected as *input bindings*, *output bindings*, or both. Data from bindings is provided to the function as parameters.
+Powiązanie z funkcją jest sposobem deklaratywnego łączenia innego zasobu z funkcją; powiązania mogą być połączone jako *powiązania wejściowe*, *powiązania wyjściowe*lub oba te elementy. Dane z powiązań są przekazywane do funkcji jako parametry.
 
-You can mix and match different bindings to suit your needs. Bindings are optional and a function might have one or multiple input and/or output bindings.
+Możesz mieszać inne powiązania i dopasować je do swoich potrzeb. Powiązania są opcjonalne, a funkcja może mieć jedno lub wiele powiązań wejściowych i/lub wyjściowych.
 
-Triggers and bindings let you avoid hardcoding access to other services. Your function receives data (for example, the content of a queue message) in function parameters. You send data (for example, to create a queue message) by using the return value of the function. 
+Wyzwalacze i powiązania pozwalają uniknąć zakodowana dostępu do innych usług. Funkcja otrzymuje dane (na przykład zawartość komunikatu w kolejce) w parametrach funkcji. Wysyłasz dane (na przykład w celu utworzenia komunikatu w kolejce) przy użyciu wartości zwracanej funkcji. 
 
-Consider the following examples of how you could implement different functions.
+Rozważmy następujące przykłady sposobu implementacji różnych funkcji.
 
-| Przykładowy scenariusz | Wyzwalacz | Input binding | Output binding |
+| Przykładowy scenariusz | Wyzwalacz | Powiązanie danych wejściowych | Powiązanie danych wyjściowych |
 |-------------|---------|---------------|----------------|
-| A new queue message arrives which runs a function to write to another queue. | Queue<sup>*</sup> | *None* | Queue<sup>*</sup> |
-|A scheduled job reads Blob Storage contents and creates a new Cosmos DB document. | Czasomierz | Blob Storage | Cosmos DB |
-|The Event Grid is used to read an image from Blob Storage and a document from Cosmos DB to send an email. | Event Grid | Blob Storage and  Cosmos DB | SendGrid |
-| A webhook that uses Microsoft Graph to update an Excel sheet. | HTTP | *None* | Microsoft Graph |
+| Zostanie wyświetlony nowy komunikat w kolejce, który uruchamia funkcję do zapisu w innej kolejce. | <sup>*</sup> kolejki | *Dawaj* | <sup>*</sup> kolejki |
+|Zaplanowane zadanie odczytuje Blob Storage zawartość i tworzy nowy dokument Cosmos DB. | Czasomierz | Blob Storage | Cosmos DB |
+|Event Grid jest używany do odczytywania obrazu z Blob Storage i dokumentu z Cosmos DB do wysłania wiadomości e-mail. | Event Grid | Blob Storage i Cosmos DB | SendGrid |
+| Element webhook, który używa Microsoft Graph do aktualizowania arkusza programu Excel. | HTTP | *Dawaj* | Microsoft Graph |
 
-<sup>\*</sup> Represents different queues
+<sup>\*</sup> Reprezentuje różne kolejki
 
-These examples are not meant to be exhaustive, but are provided to illustrate how you can use triggers and bindings together.
+Te przykłady nie są wyczerpujące, ale są dostarczane w celu zilustrowania, jak można używać wyzwalaczy i powiązań jednocześnie.
 
-###  <a name="trigger-and-binding-definitions"></a>Trigger and binding definitions
+###  <a name="trigger-and-binding-definitions"></a>Definicje wyzwalacza i powiązania
 
-Triggers and bindings are defined differently depending on the development approach.
+Wyzwalacze i powiązania są zdefiniowane inaczej w zależności od podejścia do programowania.
 
-| Platforma | Triggers and bindings are configured by... |
+| Platforma | Wyzwalacze i powiązania są konfigurowane przez... |
 |-------------|--------------------------------------------|
-| C# class library | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decorating methods and parameters with C# attributes |
-| All others (including Azure portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updating [function.json](./functions-reference.md) ([schema](http://json.schemastore.org/function)) |
+| C#Biblioteka klas | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dekorowania nazwy metod i parametrów z C# atrybutami |
+| Wszystkie inne (w tym Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aktualizowanie [funkcji Function. JSON](./functions-reference.md) ([schemat](http://json.schemastore.org/function)) |
 
-The portal provides a UI for this configuration, but you can edit the file directly by opening the **Advanced editor** available via the **Integrate** tab of your function.
+Portal udostępnia interfejs użytkownika dla tej konfiguracji, ale można edytować plik bezpośrednio, otwierając **Edytor zaawansowany** dostępny za pośrednictwem karty **integracja** funkcji.
 
-In .NET, the parameter type defines the data type for input data. For instance, use `string` to bind to the text of a queue trigger, a byte array to read as binary and a custom type to de-serialize to an object.
+W programie .NET typ parametru definiuje typ danych danych wejściowych. Na przykład użyj `string`, aby powiązać z tekstem wyzwalacza kolejki, tablicę bajtową do odczytu jako Binary i typ niestandardowy do deserializacji do obiektu.
 
-For languages that are dynamically typed such as JavaScript, use the `dataType` property in the *function.json* file. For example, to read the content of an HTTP request in binary format, set `dataType` to `binary`:
+W przypadku języków, które są dynamicznie wpisywane, takich jak JavaScript, użyj właściwości `dataType` w pliku *Function. JSON* . Aby na przykład odczytać zawartość żądania HTTP w formacie binarnym, ustaw `dataType` na `binary`:
 
 ```json
 {
@@ -61,33 +61,33 @@ For languages that are dynamically typed such as JavaScript, use the `dataType` 
 }
 ```
 
-Other options for `dataType` are `stream` and `string`.
+Inne opcje `dataType` są `stream` i `string`.
 
-## <a name="binding-direction"></a>Binding direction
+## <a name="binding-direction"></a>Kierunek powiązania
 
-All triggers and bindings have a `direction` property in the [function.json](./functions-reference.md) file:
+Wszystkie wyzwalacze i powiązania mają właściwość `direction` w pliku [Function. JSON](./functions-reference.md) :
 
-- For triggers, the direction is always `in`
-- Input and output bindings use `in` and `out`
-- Some bindings support a special direction `inout`. If you use `inout`, only the **Advanced editor** is available via the **Integrate** tab in the portal.
+- W przypadku wyzwalaczy kierunek jest zawsze `in`
+- Powiązania danych wejściowych i wyjściowych używają `in` i `out`
+- Niektóre powiązania obsługują specjalny kierunek `inout`. Jeśli używasz `inout`, tylko **Edytor zaawansowany** jest dostępny za pośrednictwem karty **integracja** w portalu.
 
-When you use [attributes in a class library](functions-dotnet-class-library.md) to configure triggers and bindings, the direction is provided in an attribute constructor or inferred from the parameter type.
+W przypadku używania [atrybutów w bibliotece klas](functions-dotnet-class-library.md) do konfigurowania wyzwalaczy i powiązań, kierunek jest udostępniany w konstruktorze atrybutu lub wywnioskowany na podstawie typu parametru.
 
-## <a name="supported-bindings"></a>Supported bindings
+## <a name="supported-bindings"></a>Obsługiwane powiązania
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-For information about which bindings are in preview or are approved for production use, see [Supported languages](supported-languages.md).
+Aby uzyskać informacje o tym, które powiązania są w wersji zapoznawczej lub są zatwierdzone do użycia w środowisku produkcyjnym, zobacz [obsługiwane języki](supported-languages.md).
 
 ## <a name="resources"></a>Zasoby
-- [Binding expressions and patterns](./functions-bindings-expressions-patterns.md)
-- [Using the Azure Function return value](./functions-bindings-return-value.md)
-- [How to register a binding expression](./functions-bindings-register.md)
-- Testing:
+- [Wyrażenia i wzorce powiązań](./functions-bindings-expressions-patterns.md)
+- [Korzystanie z wartości zwracanej przez funkcję platformy Azure](./functions-bindings-return-value.md)
+- [Jak zarejestrować wyrażenie powiązania](./functions-bindings-register.md)
+- Testowy
   - [Strategie testowania kodu w usłudze Azure Functions](functions-test-a-function.md)
-  - [Manually run a non HTTP-triggered function](functions-manually-run-non-http.md)
-- [Handling binding errors](./functions-bindings-errors.md)
+  - [Ręcznie uruchom funkcję niewyzwalaną przez protokół HTTP](functions-manually-run-non-http.md)
+- [Obsługa błędów powiązań](./functions-bindings-errors.md)
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Register Azure Functions binding extensions](./functions-bindings-register.md)
+> [Rejestrowanie rozszerzeń powiązań Azure Functions](./functions-bindings-register.md)

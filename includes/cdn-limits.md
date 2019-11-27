@@ -13,10 +13,10 @@ ms.locfileid: "74224504"
 ---
 | Zasób | Limit domyślny |
 | --- | --- |
-| Azure Content Delivery Network profiles |25 |
-| Content Delivery Network endpoints per profile |25 |
-| Custom domains per endpoint |25 |
+| Profile usługi Azure Content Delivery Network |25 |
+| Content Delivery Network punkty końcowe na profil |25 |
+| Domeny niestandardowe na punkt końcowy |25 |
 
-A Content Delivery Network subscription can contain one or more Content Delivery Network profiles. A Content Delivery Network profile can contain one or more Content Delivery Network endpoints. You might want to use multiple profiles to organize your Content Delivery Network endpoints by internet domain, web application, or some other criteria. 
+Subskrypcja Content Delivery Network może zawierać co najmniej jeden profil Content Delivery Network. Profil Content Delivery Network może zawierać jeden lub więcej Content Delivery Network punktów końcowych. Możesz chcieć użyć wielu profilów, aby zorganizować Content Delivery Network punkty końcowe przez domenę internetową, aplikację sieci Web lub inne kryteria. 
 
 

@@ -12,7 +12,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230841"
 ---
-# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Quickstart: Create your first function from the command line using Azure CLI
+# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Szybki Start: Tworzenie pierwszej funkcji z poziomu wiersza polecenia przy użyciu interfejsu CLI platformy Azure
 
 Ten temat przewodnika Szybki start przeprowadzi Cię przez tworzenie pierwszej funkcji z poziomu wiersza polecenia lub terminalu. Za pomocą interfejsu wiersza polecenia platformy Azure zostanie utworzona aplikacja funkcji, która jest [bezserwerową](https://azure.microsoft.com/solutions/serverless/) infrastrukturą hostującą funkcję. Projekt kodu funkcji jest generowany na podstawie szablonu przy użyciu narzędzi [Azure Functions Core Tools](functions-run-local.md), które są również używane do wdrażania projektu aplikacji funkcji na platformie Azure.
 
@@ -22,9 +22,9 @@ Poniższe kroki możesz wykonać przy użyciu komputera z systemem Mac, Windows 
 
 Przed uruchomieniem tego przykładu należy dysponować następującymi elementami:
 
-+ Install [Azure Functions Core Tools](./functions-run-local.md#v2) version 2.6.666 or later.
++ Zainstaluj program [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej.
 
-+ Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). This     article requires the Azure CLI version 2.0 or later. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Możesz również użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).
++ Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2,0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Możesz również użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).
 
 + Aktywna subskrypcja platformy Azure.
 
@@ -32,7 +32,7 @@ Przed uruchomieniem tego przykładu należy dysponować następującymi elementa
 
 [!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Enable extension bundles
+## <a name="enable-extension-bundles"></a>Włącz zbiory rozszerzeń
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 

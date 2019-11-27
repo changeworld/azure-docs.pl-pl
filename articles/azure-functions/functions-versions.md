@@ -29,7 +29,7 @@ Główne wersje środowiska uruchomieniowego Azure Functions są powiązane z we
 
 W tym artykule opisano niektóre różnice między różnymi wersjami, sposoby tworzenia poszczególnych wersji oraz zmiany wersji.
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>Języki
 
 Począwszy od wersji 2. x, środowisko uruchomieniowe używa modelu rozszerzalności języka, a wszystkie funkcje w aplikacji funkcji muszą korzystać z tego samego języka. Język funkcji w aplikacji funkcji jest wybierany podczas tworzenia aplikacji i jest przechowywany w usłudze [functions\_ustawienia środowiska uruchomieniowego\_Worker](functions-app-settings.md#functions_worker_runtime) . 
 

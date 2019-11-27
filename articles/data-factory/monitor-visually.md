@@ -32,7 +32,7 @@ Domyślny widok monitorowania to lista uruchomień potoku w wybranym okresie. Wy
 | Nazwa potoku | Nazwa potoku |
 | Akcje | Ikony pozwalające wyświetlać szczegóły działania, anulować lub ponownie uruchomić potok |
 | Uruchom uruchomienie | Data i godzina rozpoczęcia dla uruchomienia potoku (MM/DD/RRRR, gg: MM: SS AM/PM) |
-| Duration | Czas trwania uruchomienia (HH: MM: SS) |
+| Czas trwania | Czas trwania uruchomienia (HH: MM: SS) |
 | Wyzwolone przez | Nazwa wyzwalacza, który uruchomił potok |
 | Stan | **Zakończone niepowodzeniem**, **zakończone powodzeniem**, **w toku**, **anulowane**lub **umieszczone w kolejce** |
 | Adnotacj | Tagi z możliwością filtrowania skojarzone z potokiem  |
@@ -56,7 +56,7 @@ Aby wyświetlić uruchomienia działań dla każdego uruchomienia potoku, wybier
 | Typ działania | Typ działania, na przykład **copy**, **ExecuteDataFlow**lub **AzureMLExecutePipeline** |
 | Akcje | Ikony, które umożliwiają wyświetlanie informacji wejściowych JSON, informacji wyjściowych JSON lub szczegółowych środowisk monitorowania właściwych dla działania | 
 | Uruchom uruchomienie | Data i godzina rozpoczęcia uruchomienia działania (MM/DD/RRRR, HH: MM: SS AM/PM) |
-| Duration | Czas trwania uruchomienia (HH: MM: SS) |
+| Czas trwania | Czas trwania uruchomienia (HH: MM: SS) |
 | Stan | **Zakończone niepowodzeniem**, **zakończone powodzeniem**, **w toku**lub **anulowane** |
 | Integration Runtime | Integration Runtime działanie zostało uruchomione |
 | Właściwości użytkownika | Właściwości działania zdefiniowane przez użytkownika |

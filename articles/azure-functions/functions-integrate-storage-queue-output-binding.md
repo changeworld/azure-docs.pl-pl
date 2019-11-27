@@ -20,7 +20,7 @@ W usłudze Azure Functions powiązania danych wejściowych i wyjściowych zapewn
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start:
+Aby ukończyć ten przewodnik Szybki start:
 
 * Postępuj zgodnie z instrukcjami znajdującymi się w kroku [Tworzenie pierwszej funkcji w witrynie Azure Portal](functions-create-first-azure-function.md) i nie wykonuj kroku **Oczyszczanie zasobów**. W tym przewodniku Szybki start tworzona jest aplikacja funkcji i funkcja używana w tym miejscu.
 

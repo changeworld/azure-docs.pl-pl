@@ -1,6 +1,6 @@
 ---
-title: Overview of reverse DNS in Azure - Azure DNS
-description: In this learning path, get started learning how reverse DNS works and how it can be used in Azure
+title: Omówienie odwrotnego systemu DNS na platformie Azure — Azure DNS
+description: W tej ścieżce szkoleniowej Rozpocznij uczenie się, jak działa odwrotny system DNS i jak można go używać na platformie Azure
 services: dns
 documentationcenter: na
 author: asudbring
@@ -19,48 +19,48 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211028"
 ---
-# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Overview of reverse DNS and support in Azure
+# <a name="overview-of-reverse-dns-and-support-in-azure"></a>Omówienie odwrotnego systemu DNS i pomocy technicznej na platformie Azure
 
-This article gives an overview of how reverse DNS works, and the reverse DNS scenarios supported in Azure.
+Ten artykuł zawiera omówienie sposobu działania odwrotnego systemu DNS oraz scenariusze odwrotnej usługi DNS obsługiwane na platformie Azure.
 
-## <a name="what-is-reverse-dns"></a>What is reverse DNS?
+## <a name="what-is-reverse-dns"></a>Co to jest odwrotny system DNS?
 
-Conventional DNS records enable a mapping from a DNS name (such as 'www.contoso.com') to an IP address (such as 64.4.6.100).  Reverse DNS enables the translation of an IP address (64.4.6.100) back to a name ('www.contoso.com').
+Konwencjonalne rekordy DNS umożliwiają mapowanie nazw DNS (takich jak "www.contoso.com") na adres IP (na przykład 64.4.6.100).  Odwrotny system DNS umożliwia tłumaczenie adresu IP (64.4.6.100) z powrotem na nazwę ("www.contoso.com").
 
-Reverse DNS records are used in a variety of situations. For example, reverse DNS records are widely used in combating e-mail spam by verifying the sender of an e-mail message.  The receiving mail server retrieves the reverse DNS record of the sending server's IP address, and verifies if that host is authorized to send e-mail from the originating domain. 
+Rekordy odwrotnego systemu DNS są używane w różnych sytuacjach. Na przykład rekordy odwrotnego systemu DNS są szeroko używane do walki ze spamem wiadomości e-mail przez zweryfikowanie nadawcy wiadomości e-mail.  Serwer poczty odebranej pobiera rekord odwrotnego systemu DNS adresu IP serwera wysyłającego i weryfikuje, czy ten host jest autoryzowany do wysyłania wiadomości e-mail z domeny źródłowej. 
 
-## <a name="how-reverse-dns-works"></a>How reverse DNS works
+## <a name="how-reverse-dns-works"></a>Jak działa odwrotny system DNS
 
-Reverse DNS records are hosted in special DNS zones, known as 'ARPA' zones.  These zones form a separate DNS hierarchy in parallel with the normal hierarchy hosting domains such as 'contoso.com'.
+Rekordy odwrotnego systemu DNS są hostowane w specjalnych strefach DNS, zwanych strefami "ARPA".  Te strefy tworzą oddzielną Hierarchię DNS równolegle z normalnymi domenami hostingu w hierarchii, takimi jak "contoso.com".
 
-For example, the DNS record 'www.contoso.com' is implemented using a DNS 'A' record with the name 'www' in the zone 'contoso.com'.  This A record points to the corresponding IP address, in this case 64.4.6.100.  The reverse lookup is implemented separately, using a 'PTR' record named '100' in the zone '6.4.64.in-addr.arpa' (note that IP addresses are reversed in ARPA zones.)  This PTR record, if it has been configured correctly, points to the name 'www.contoso.com'.
+Na przykład rekord DNS "www.contoso.com" jest implementowany przy użyciu rekordu "A" DNS o nazwie "www" w strefie "contoso.com".  Ten rekord wskazuje na odpowiedni adres IP, w tym przypadku 64.4.6.100.  Wyszukiwanie wsteczne jest implementowane oddzielnie, przy użyciu rekordu "PTR" o nazwie "100" w strefie "6.4.64.in-addr. arpa" (należy zauważyć, że adresy IP są odwrócone w strefach programu ARPA).  Ten rekord PTR (jeśli został prawidłowo skonfigurowany) wskazuje na nazwę "www.contoso.com".
 
-When an organization is assigned an IP address block, they also acquire the right to manage the corresponding ARPA zone. The ARPA zones corresponding to the IP address blocks used by Azure are hosted and managed by Microsoft. Your ISP may host the ARPA zone for your own IP addresses for you, or may allow you to host the ARPA zone in a DNS service of your choice, such as Azure DNS.
+Gdy organizacja ma przypisany blok adresów IP, uzyska również prawo do zarządzania odpowiednią strefą programu ARPA. Strefy ARPA odpowiadające blokom adresów IP używanym przez platformę Azure są hostowane i zarządzane przez firmę Microsoft. Usługodawca internetowy może hostować strefę programu ARPA pod kątem własnych adresów IP lub może umożliwić hostowanie strefy ARPA w wybranym przez siebie usłudze DNS, takiej jak Azure DNS.
 
 > [!NOTE]
-> Forward DNS lookups and reverse DNS lookups are implemented in separate, parallel DNS hierarchies. The reverse lookup for 'www.contoso.com' is **not** hosted in the zone 'contoso.com', rather it is hosted in the ARPA zone for the corresponding IP address block. Separate zones are used for IPv4 and IPv6 address blocks.
+> Wyszukiwania DNS i odwrotne wyszukiwania DNS są implementowane w oddzielnych, równoległych hierarchiach DNS. Wyszukiwanie wsteczne dla elementu "www.contoso.com" **nie** jest hostowane w strefie "contoso.com", a nie jest hostowane w strefie arpa dla odpowiedniego bloku adresów IP. Dla bloków adresów IPv4 i IPv6 są używane oddzielne strefy.
 
 ### <a name="ipv4"></a>IPv4
 
-The name of an IPv4 reverse lookup zone should be in the following format: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+Nazwa strefy wyszukiwania wstecznego IPv4 powinna mieć następujący format: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
 
-For example, when creating a reverse zone to host records for hosts with IPs that are in the 192.0.2.0/24 prefix, the zone name would be created by isolating the network prefix of the address (192.0.2) and then reversing the order (2.0.192) and adding the suffix `.in-addr.arpa`.
+Na przykład podczas tworzenia strefy odwrotnej w celu hostowania rekordów hostów z adresami IP, które znajdują się w prefiksie 192.0.2.0/24, nazwa strefy zostanie utworzona przez wyodrębnienie prefiksu sieci (192.0.2), a następnie odwrócenie kolejności (2.0.192) i dodanie sufiksu `.in-addr.arpa`.
 
-|Subnet class|Network prefix  |Reversed network prefix  |Standard suffix  |Reverse zone name |
+|Klasa podsieci|Prefiks sieci  |Odwrócony prefiks sieci  |Sufiks standardowy  |Odwróć nazwę strefy |
 |-------|----------------|------------|-----------------|---------------------------|
-|Class A|203.0.0.0/8     | 203        | .in-addr.arpa   | `203.in-addr.arpa`        |
-|Class B|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
-|Class C|192.0.2.0/24    | 2.0.192    | .in-addr.arpa   | `2.0.192.in-addr.arpa`    |
+|Klasa A|203.0.0.0/8     | 203        | .in-addr.arpa   | `203.in-addr.arpa`        |
+|Klasa B|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
+|Klasa C|192.0.2.0/24    | 2.0.192    | .in-addr.arpa   | `2.0.192.in-addr.arpa`    |
 
-### <a name="classless-ipv4-delegation"></a>Classless IPv4 delegation
+### <a name="classless-ipv4-delegation"></a>Delegowanie bezklasowe IPv4
 
-In some cases, the IP range allocated to an organization is smaller than a Class C (/24) range. In this case, the IP range does not fall on a zone boundary within the `.in-addr.arpa` zone hierarchy, and hence cannot be delegated as a child zone.
+W niektórych przypadkach zakres adresów IP przypisywany do organizacji jest mniejszy niż zakres klasy C (/24). W takim przypadku zakres adresów IP nie należy do granicy strefy w `.in-addr.arpa` hierarchii stref i dlatego nie może być delegowany jako strefa podrzędna.
 
-Instead, a different mechanism is used to transfer control of individual reverse lookup (PTR) records to a dedicated DNS zone. This mechanism delegates a child zone for each IP range, then maps each IP address in the range individually to that child zone using CNAME records.
+Zamiast tego inny mechanizm służy do transferu kontroli pojedynczych rekordów wyszukiwania wstecznego (PTR) do dedykowanej strefy DNS. Ten mechanizm deleguje strefę podrzędną dla każdego zakresu adresów IP, a następnie mapuje każdy adres IP z zakresu indywidualnie do tej strefy podrzędnej przy użyciu rekordów CNAME.
 
-For example, suppose an organization is granted the IP range 192.0.2.128/26 by its ISP. This represents 64 IP addresses, from 192.0.2.128 to 192.0.2.191. Reverse DNS for this range is implemented as follows:
-- The organization creates a reverse lookup zone called 128-26.2.0.192.in-addr.arpa. The prefix '128-26' represents the network segment assigned to the organization within the Class C (/24) range.
-- The ISP creates NS records to set up the DNS delegation for the above zone from the Class C parent zone. It also creates CNAME records in the parent (Class C) reverse lookup zone, mapping each IP address in the IP range to the new zone created by the organization:
+Załóżmy na przykład, że organizacja otrzymuje zakres adresów IP 192.0.2.128/26 przez jego usługodawcę internetowego. Reprezentuje to 64 adresów IP, od 192.0.2.128 do 192.0.2.191. Odwrotny serwer DNS dla tego zakresu jest implementowany w następujący sposób:
+- Organizacja tworzy strefę wyszukiwania wstecznego o nazwie 128-26.2.0.192.in-addr. arpa. Prefiks "128-26" reprezentuje segment sieci przypisany do organizacji w zakresie klasy C (/24).
+- Usługodawca internetowy tworzy rekordy NS w celu skonfigurowania delegowania DNS dla powyższej strefy z strefy nadrzędnej klasy C. Tworzy również rekordy CNAME w strefy wyszukiwania wstecznego nadrzędnego (Class C), mapując każdy adres IP w zakresie adresów IP na nową strefę utworzoną przez organizację:
 
 ```
 $ORIGIN 2.0.192.in-addr.arpa
@@ -73,7 +73,7 @@ $ORIGIN 2.0.192.in-addr.arpa
 131       CNAME    131.128-26.2.0.192.in-addr.arpa
 ; etc
 ```
-- The organization then manages the individual PTR records within their child zone.
+- Organizacja następnie zarządza poszczególnymi rekordami PTR w ramach ich strefy podrzędnej.
 
 ```
 $ORIGIN 128-26.2.0.192.in-addr.arpa
@@ -83,35 +83,35 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 131      PTR    partners.contoso.com
 ; etc
 ```
-A reverse lookup for the IP address '192.0.2.129' queries for a PTR record named '129.2.0.192.in-addr.arpa'. This query resolves via the CNAME in the parent zone to the PTR record in the child zone.
+Wyszukiwanie wsteczne dla zapytań adresu IP "192.0.2.129" dla rekordu PTR o nazwie "129.2.0.192.in-addr. arpa". To zapytanie jest rozpoznawane przez rekord CNAME w strefie nadrzędnej do rekordu PTR w strefie podrzędnej.
 
 ### <a name="ipv6"></a>IPv6
 
-The name of an IPv6 reverse lookup zone should be in the following form: `<IPv6 network prefix in reverse order>.ip6.arpa`
+Nazwa strefy wyszukiwania wstecznego IPv6 powinna mieć następującą postać: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
-For example,. When creating a reverse zone to host records for hosts with IPs that are in the 2001:db8:1000:abdc::/64 prefix, the zone name would be created by isolating the network prefix of the address (2001:db8:abdc::). Next expand the IPv6 network prefix to remove [zero compression](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), if it was used to shorten the IPv6 address prefix (2001:0db8:abdc:0000::). Reverse the order, using a period as the delimiter between each hexadecimal number in the prefix, to build the reversed network prefix (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) and add the suffix `.ip6.arpa`.
+Na przykład. W przypadku tworzenia strefy odwrotnej w celu hostowania rekordów o adresach IP, które znajdują się w prefiksie 2001: db8:1000: ABDC::/64, nazwa strefy zostanie utworzona przez wyodrębnienie prefiksu sieci adresu (2001: db8: ABDC::). Następnie rozwiń prefiks sieci IPv6 w celu usunięcia [kompresji zerowej](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), jeśli został on użyty do skrócenia prefiksu adresu IPv6 (2001:0db8: ABDC: 0000::). Odwróć kolejność, używając okresu jako ogranicznika między każdą liczbą szesnastkową w prefiksie, aby skompilować odwrócony prefiks sieci (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) i dodać sufiks `.ip6.arpa`.
 
 
-|Network prefix  |Expanded and reversed network prefix |Standard suffix |Reverse zone name  |
+|Prefiks sieci  |Rozwinięty i odwrócony prefiks sieci |Sufiks standardowy |Odwróć nazwę strefy  |
 |---------|---------|---------|---------|
 |2001:db8:abdc::/64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | .ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
 |2001:db8:1000:9102::/64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | .ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
 
 
-## <a name="azure-support-for-reverse-dns"></a>Azure support for reverse DNS
+## <a name="azure-support-for-reverse-dns"></a>Pomoc techniczna platformy Azure dla odwrotnego systemu DNS
 
-Azure supports two separate scenarios relating to reverse DNS:
+Platforma Azure obsługuje dwa oddzielne scenariusze dotyczące odwrotnego systemu DNS:
 
-**Hosting the reverse lookup zone corresponding to your IP address block.**
-Azure DNS can be used to [host your reverse lookup zones and manage the PTR records for each reverse DNS lookup](dns-reverse-dns-hosting.md), for both IPv4 and IPv6.  The process of creating the reverse lookup (ARPA) zone, setting up the delegation, and configuring PTR records is the same as for regular DNS zones.  The only differences are that the delegation must be configured via your ISP rather than your DNS registrar, and only the PTR record type should be used.
+**Hostowanie strefy wyszukiwania wstecznego odpowiadającego blokowi adresów IP.**
+Azure DNS może służyć do [hostowania stref wyszukiwania wstecznego i zarządzania rekordami PTR dla każdego wyszukiwania odwrotnego systemu DNS](dns-reverse-dns-hosting.md)dla protokołów IPv4 i IPv6.  Proces tworzenia strefy wyszukiwania wstecznego (ARPA), konfigurowania delegowania i konfigurowania rekordów PTR jest taki sam jak w przypadku zwykłych stref DNS.  Jedyne różnice polegają na tym, że delegowanie musi być skonfigurowane za pośrednictwem usługodawcy internetowego, a nie rejestratora DNS, i należy używać tylko typu rekordu PTR.
 
-**Configure the reverse DNS record for the IP address assigned to your Azure service.** Azure enables you to [configure the reverse lookup for the IP addresses allocated to your Azure service](dns-reverse-dns-for-azure-services.md).  This reverse lookup is configured by Azure as a PTR record in the corresponding ARPA zone.  These ARPA zones, corresponding to all the IP ranges used by Azure, are hosted by Microsoft
+**Skonfiguruj rekord odwrotnego systemu DNS dla adresu IP przypisanego do usługi platformy Azure.** System Azure umożliwia [skonfigurowanie wyszukiwania wstecznego dla adresów IP przypisywanych do usługi platformy Azure](dns-reverse-dns-for-azure-services.md).  To wyszukiwanie wsteczne jest konfigurowane przez platformę Azure jako rekord PTR w odpowiedniej strefie ARPA.  Te strefy ARPA, odpowiadające wszystkim zakresom adresów IP używanym przez platformę Azure, są hostowane przez firmę Microsoft
 
 ## <a name="next-steps"></a>Następne kroki
 
-For more information on reverse DNS, see [reverse DNS lookup on Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Aby uzyskać więcej informacji na temat odwrotnej usługi DNS, zobacz [odwrotne wyszukiwanie DNS w witrynie Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Learn how to [host the reverse lookup zone for your ISP-assigned IP range in Azure DNS](dns-reverse-dns-for-azure-services.md).
+Dowiedz się [, jak hostować strefę wyszukiwania wstecznego dla zakresu adresów IP przypisanych przez usługodawcę internetowego w Azure DNS](dns-reverse-dns-for-azure-services.md).
 <br>
-Learn how to [manage reverse DNS records for your Azure services](dns-reverse-dns-for-azure-services.md).
+Dowiedz się, jak [zarządzać rekordami odwrotnego systemu DNS dla usług platformy Azure](dns-reverse-dns-for-azure-services.md).
 

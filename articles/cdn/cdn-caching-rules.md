@@ -113,7 +113,7 @@ Gdy te reguły są ustawione, żądanie dla _nazwy hosta&lt;punktu końcowego&gt
 > - W przypadku **Azure CDN standardowych z profilów Verizon** Propagacja zwykle kończy się w ciągu 10 minut.  
 >
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Jak działa buforowanie](cdn-how-caching-works.md)
 - [Samouczek: ustawianie reguł buforowania usługi Azure CDN](cdn-caching-rules-tutorial.md)

@@ -1,6 +1,6 @@
 ---
-title: Learn how the runtime manages devices - Azure IoT Edge | Microsoft Docs
-description: Learn how the IoT Edge runtime manages modules, security, communication, and reporting on your devices
+title: Dowiedz się, jak środowisko uruchomieniowe zarządza urządzeniami — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak środowisko uruchomieniowe IoT Edge zarządza modułami, zabezpieczeniami, komunikacją i raportowaniem na urządzeniach
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,48 +15,48 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456597"
 ---
-# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Understand the Azure IoT Edge runtime and its architecture
+# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury
 
-The IoT Edge runtime is a collection of programs that turn a device into an IoT Edge device. Collectively, the IoT Edge runtime components enable IoT Edge devices to receive code to run at the edge and communicate the results. 
+Środowisko uruchomieniowe IoT Edge to zbiór programów, które włączają urządzenie do urządzenia IoT Edge. Zbiorowo składniki środowiska uruchomieniowego IoT Edge umożliwiają IoT Edge urządzeniom otrzymywanie kodu do uruchomienia na brzegu i przekazywanie wyników. 
 
-The IoT Edge runtime is responsible for the following functions on IoT Edge devices:
+Środowisko uruchomieniowe IoT Edge jest odpowiedzialne za następujące funkcje na urządzeniach IoT Edge:
 
 * Instaluje i aktualizuje pakiety robocze na urządzeniu.
 * Utrzymuje standardy zabezpieczeń usługi Azure IoT Edge na urządzeniu.
-* Ensure that [IoT Edge modules](iot-edge-modules.md) are always running.
+* Upewnij się, że [moduły IoT Edge](iot-edge-modules.md) są zawsze uruchomione.
 * Przesyła raporty o kondycji modułów do chmury na potrzeby zdalnego monitorowania.
-* Manage communication between downstream devices and IoT Edge devices.
-* Manage communication between modules on the IoT Edge device.
-* Manage communication between the IoT Edge device and the cloud.
+* Zarządzanie komunikacją między urządzeniami podrzędnymi a urządzeniami IoT Edge.
+* Zarządzanie komunikacją między modułami na urządzeniu IoT Edge.
+* Zarządzanie komunikacją między urządzeniem IoT Edge i chmurą.
 
-![Runtime communicates insights and module health to IoT Hub](./media/iot-edge-runtime/Pipeline.png)
+![Środowisko uruchomieniowe komunikuje się szczegółowe informacje i kondycji modułów do usługi IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
-The responsibilities of the IoT Edge runtime fall into two categories: communication and module management. These two roles are performed by two components that are part of the IoT Edge runtime. The *IoT Edge hub* is responsible for communication, while the *IoT Edge agent* deploys and monitors the modules. 
+Obowiązki środowiska uruchomieniowego usługi IoT Edge można podzielić na dwie kategorie: Zarządzanie komunikacji i moduł. Te dwie role są wykonywane przez dwa składniki, które są częścią środowiska uruchomieniowego IoT Edge. *Centrum IoT Edge* jest odpowiedzialne za komunikację, a *Agent IoT Edge* wdraża i monitoruje moduły. 
 
-Both the IoT Edge hub and the IoT Edge agent are modules, just like any other module running on an IoT Edge device. They're sometimes referred to as the *runtime modules*. 
+Zarówno centrum IoT Edge, jak i Agent IoT Edge są modułami, podobnie jak każdy inny moduł uruchomiony na IoT Edge urządzeniu. Są one czasami określane jako *moduły środowiska uruchomieniowego*. 
 
-## <a name="iot-edge-hub"></a>IoT Edge hub
+## <a name="iot-edge-hub"></a>Centrum usługi IoT Edge
 
-The IoT Edge hub is one of two modules that make up the Azure IoT Edge runtime. It acts as a local proxy for IoT Hub by exposing the same protocol endpoints as IoT Hub. This consistency means that clients (whether devices or modules) can connect to the IoT Edge runtime just as they would to IoT Hub. 
+IoT Edge Hub to jeden z dwóch modułów, które tworzą Azure IoT Edge środowiska uruchomieniowego. Działa ona jako lokalny serwer proxy dla usługi IoT Hub, zapewniając tymi samymi punktami końcowymi protokołu, jak usługa IoT Hub. Ten spójności oznacza, że klienci (czy urządzeń lub moduły) mogą łączyć się z środowiska uruchomieniowego usługi IoT Edge tak samo, jak do usługi IoT Hub. 
 
 >[!NOTE]
-> IoT Edge hub supports clients that connect using MQTT or AMQP. It does not support clients that use HTTP. 
+> IoT Edge Hub obsługuje klientów, którzy łączą się za pomocą MQTT lub AMQP. Nie obsługuje klientów korzystających z protokołu HTTP. 
 
-The IoT Edge hub is not a full version of IoT Hub running locally. There are some things that the IoT Edge hub silently delegates to IoT Hub. For example, IoT Edge hub forwards authentication requests to IoT Hub when a device first tries to connect. After the first connection is established, security information is cached locally by IoT Edge hub. Subsequent connections from that device are allowed without having to authenticate to the cloud. 
+Centrum IoT Edge nie jest pełną wersją IoT Hub uruchomioną lokalnie. Istnieje kilka rzeczy, które Centrum IoT Edge dyskretnie deleguje do IoT Hub. Na przykład IoT Edge centrum przekazuje żądania uwierzytelniania do IoT Hub, gdy urządzenie próbuje nawiązać połączenie. Po ustanowieniu pierwszego połączenia informacje o zabezpieczeniach są buforowane lokalnie przez IoT Edge centrum. Kolejnych połączeń z tego urządzenia są dozwolone bez konieczności uwierzytelniania w chmurze. 
 
-To reduce the bandwidth your IoT Edge solution uses, the IoT Edge hub optimizes how many actual connections are made to the cloud. IoT Edge hub takes logical connections from clients like modules or downstream devices and combines them for a single physical connection to the cloud. The details of this process are transparent to the rest of the solution. Clients think they have their own connection to the cloud even though they are all being sent over the same connection. 
+Aby zmniejszyć przepustowość wykorzystywaną przez rozwiązanie IoT Edge, centrum IoT Edge optymalizuje, ile rzeczywistych połączeń odbywa się w chmurze. Usługa IoT Edge Hub pobiera logiczne połączenia z klientów, takich jak moduły lub urządzenia podrzędne, i łączy je z jednym połączeniem fizycznym z chmurą. Szczegóły tego procesu są niewidoczne w pozostałej części rozwiązania. Klienci wydaje się, że mają oni własne połączenia do chmury, nawet jeśli te są wszystkie są wysyłane za pośrednictwem tego samego połączenia. 
 
-![IoT Edge hub is a gateway between physical devices and IoT Hub](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge Hub jest bramą między urządzeniami fizycznymi i IoT Hub](./media/iot-edge-runtime/Gateway.png)
 
-IoT Edge hub can determine whether it's connected to IoT Hub. If the connection is lost, IoT Edge hub saves messages or twin updates locally. Once a connection is reestablished, it syncs all the data. The location used for this temporary cache is determined by a property of the IoT Edge hub’s module twin. The size of the cache is not capped and will grow as long as the device has storage capacity. For more information, see [Offline capabilities](offline-capabilities.md).
+IoT Edge Hub może określić, czy jest on połączony z IoT Hub. W przypadku utraty połączenia IoT Edge centrum zapisuje na komputerze aktualizacje lub sznurki. Po ustanowieniu połączenia, synchronizuje wszystkie dane. Lokalizacja używana dla tymczasowej pamięci podręcznej jest określana przez właściwość sznurka modułu IoT Edge Hub. Rozmiar pamięci podręcznej nie jest ograniczone i będzie się zwiększać tak długo, jak urządzenie ma pojemność magazynu. Aby uzyskać więcej informacji, zobacz [możliwości trybu offline](offline-capabilities.md).
 
-### <a name="module-communication"></a>Module communication
+### <a name="module-communication"></a>Moduł komunikacji
 
-IoT Edge hub facilitates module to module communication. Using IoT Edge hub as a message broker keeps modules independent from each other. Modules only need to specify the inputs on which they accept messages and the outputs to which they write messages. A solution developer can stitch these inputs and outputs together so that the modules process data in the order specific to that solution. 
+IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edge jako brokera komunikatów zachowuje moduły niezależne od siebie. Moduły muszą tylko określić danych wejściowych, które akceptują wiadomości i danych wyjściowych, do których one zapisywania komunikatów. Programista rozwiązań może połączyć te dane wejściowe i dane wyjściowe, aby moduły przetwarzali danych w kolejności specyficznej dla tego rozwiązania. 
 
-![IoT Edge Hub facilitates module-to-module communication](./media/iot-edge-runtime/module-endpoints.png)
+![IoT Edge Hub ułatwia komunikację między modułami](./media/iot-edge-runtime/module-endpoints.png)
 
-To send data to the IoT Edge hub, a module calls the SendEventAsync method. The first argument specifies on which output to send the message. The following pseudocode sends a message on **output1**:
+Aby wysłać dane do centrum IoT Edge, moduł wywołuje metodę SendEventAsync. Pierwszy argument określa, w której dane wyjściowe, aby wysłać wiadomość. Następujący pseudokodzie wysyła komunikat w **output1**:
 
    ```csharp
    ModuleClient client = await ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
@@ -64,59 +64,59 @@ To send data to the IoT Edge hub, a module calls the SendEventAsync method. The 
    await client.SendEventAsync("output1", message); 
    ```
 
-To receive a message, register a callback that processes messages coming in on a specific input. The following pseudocode registers the function messageProcessor to be used for processing all messages received on **input1**:
+Aby komunikat o błędzie, należy zarejestrować wywołanie zwrotne, które przetwarza komunikaty pochodzące na określone dane wejściowe. Następujący pseudokodzie rejestruje funkcję messageProcessor, która ma być używana do przetwarzania wszystkich komunikatów odebranych w **INPUT1**:
 
    ```csharp
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-For more information about the ModuleClient class and its communication methods, see the API reference for your preferred SDK language: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable), or [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Aby uzyskać więcej informacji na temat klasy ModuleClient i jej metod komunikacji, zobacz Dokumentacja interfejsu API dla preferowanego języka SDK [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet):, [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)lub [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
-The solution developer is responsible for specifying the rules that determine how IoT Edge hub passes messages between modules. Routing rules are defined in the cloud and pushed down to IoT Edge hub in its module twin. The same syntax for IoT Hub routes is used to define routes between modules in Azure IoT Edge. For more information, see [Learn how to deploy modules and establish routes in IoT Edge](module-composition.md).   
+Deweloper rozwiązania jest odpowiedzialny za określenie reguł, które określają, jak centrum IoT Edge przekazuje komunikaty między modułami. Reguły routingu są zdefiniowane w chmurze i wypychane do IoT Edge Hub w swoim sznurze modułu. Tej samej składni dla tras usługi IoT Hub jest używane do definiowania trasy między modułami w usłudze Azure IoT Edge. Aby uzyskać więcej informacji, zobacz [Informacje o sposobie wdrażania modułów i ustanawiania tras w programie IoT Edge](module-composition.md).   
 
-![Routes between modules go through IoT Edge hub](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![Trasy między modułami przechodzą przez Centrum IoT Edge](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
-## <a name="iot-edge-agent"></a>IoT Edge agent
+## <a name="iot-edge-agent"></a>Agent usługi IoT Edge
 
-The IoT Edge agent is the other module that makes up the Azure IoT Edge runtime. It is responsible for instantiating modules, ensuring that they continue to run, and reporting the status of the modules back to IoT Hub. This configuration data is written as a property of the IoT Edge agent module twin. 
+Agent usługi IoT Edge jest inny moduł, który tworzy środowisko uruchomieniowe usługi Azure IoT Edge. Jest odpowiedzialny za utworzenie wystąpienia modułów, zapewnienie, że nadal działać i raportowania stanu modułów powrót do Centrum IoT Hub. Te dane konfiguracyjne są zapisywane jako właściwości sznurka modułu agenta IoT Edge. 
 
-The [IoT Edge security daemon](iot-edge-security-manager.md) starts the IoT Edge agent on device startup. The agent retrieves its module twin from IoT Hub and inspects the deployment manifest. The deployment manifest is a JSON file that declares the modules that need to be started. 
+[Demon zabezpieczenia IoT Edge](iot-edge-security-manager.md) uruchamia agenta IoT Edge przy uruchamianiu urządzenia. Agent pobiera jego bliźniaczą reprezentację modułu z usługi IoT Hub i sprawdza manifestu wdrażania. Manifest wdrożenia to plik JSON, która deklaruje moduły, które musiały zostać uruchomione. 
 
-Each item in the deployment manifest contains specific information about a module and is used by the IoT Edge agent for controlling the module’s lifecycle. Some of the more interesting properties are: 
+Każdy element w manifeście wdrożenia zawiera określone informacje o module i jest używany przez agenta IoT Edge do kontrolowania cyklu życia modułu. Bardziej interesujące właściwości, należą: 
 
-* **settings.image** – The container image that the IoT Edge agent uses to start the module. The IoT Edge agent must be configured with credentials for the container registry if the image is protected by a password. Credentials for the container registry can be configured remotely using the deployment manifest, or on the IoT Edge device itself by updating the `config.yaml` file in the IoT Edge program folder.
-* **settings.createOptions** – A string that is passed directly to the Moby container daemon when starting a module’s container. Adding options in this property allows for advanced configurations like port forwarding or mounting volumes into a module’s container.  
-* **status** – The state in which the IoT Edge agent places the module. Usually, this value is set to *running* as most people want the IoT Edge agent to immediately start all modules on the device. However, you could specify the initial state of a module to be stopped and wait for a future time to tell the IoT Edge agent to start a module. The IoT Edge agent reports the status of each module back to the cloud in the reported properties. A difference between the desired property and the reported property is an indicator of a misbehaving device. The supported statuses are:
-   * Downloading
+* **Settings. Image** — obraz kontenera, którego używa Agent IoT Edge do uruchomienia modułu. Jeśli obraz jest chroniony hasłem, Agent IoT Edge musi być skonfigurowany przy użyciu poświadczeń dla rejestru kontenerów. Poświadczenia dla rejestru kontenerów można skonfigurować zdalnie przy użyciu manifestu wdrażania lub na IoT Edge samym urządzeniu, aktualizując plik `config.yaml` w folderze programu IoT Edge.
+* **Settings. SetOptions** — ciąg, który jest przesyłany bezpośrednio do demona kontenera Moby podczas uruchamiania kontenera modułu. Dodanie opcji w tej właściwości pozwala na zaawansowane konfiguracje, takie jak przekazywanie portów lub instalowanie woluminów do kontenera modułu.  
+* **status** — stan, w którym Agent IoT Edge umieszcza moduł. Zazwyczaj ta wartość jest ustawiana jako *uruchomiona* , gdy większość osób chce, aby Agent IoT Edge natychmiast uruchomił wszystkie moduły na urządzeniu. Można jednak określić początkowy stan modułu, który ma zostać zatrzymany, i poczekać na przyszły czas, aby poinformować IoT Edge agenta o konieczności uruchomienia modułu. Agent IoT Edge raportuje stan każdego modułu z powrotem do chmury w raportowanych właściwościach. Różnica między żądaną właściwość i zgłaszanych właściwości jest wskaźnikiem nieprawidłowo funkcjonujące urządzenia. Są obsługiwane stany:
+   * Pobieranie
    * Działanie
-   * Unhealthy
+   * W złej kondycji
    * Niepowodzenie
-   * Zatrzymane
-* **restartPolicy** – How the IoT Edge agent restarts a module. Możliwe wartości obejmują:
-   * `never` – The IoT Edge agent never restarts the module.
-   * `on-failure` - If the module crashes, the IoT Edge agent restarts it. If the module shuts down cleanly, the IoT Edge agent does not restart it.
-   * `on-unhealthy` - If the module crashes or is considered unhealthy, the IoT Edge agent restarts it.
-   * `always` - If the module crashes, is considered unhealthy, or shuts down in any way, the IoT Edge agent restarts it. 
-* **imagePullPolicy** - Whether the IoT Edge agent attempts to pull the latest image for a module automatically or not. If you don't specify a value, the default is *onCreate*. Możliwe wartości obejmują: 
-   * `on-create` - When starting a module or updating a module based on a new deployment manifest, the IoT Edge agent will attempt to pull the module image from the container registry.
-   * `never` - The IoT Edge agent will never attempt to pull the module image from the container registry. The expectation is that the module image is cached on the device, and any module image updates are made manually or managed by a third-party solution. 
+   * Zatrzymano
+* **restartPolicy** — sposób ponownego uruchomienia modułu przez agenta IoT Edge. Możliwe wartości obejmują:
+   * `never` — Agent IoT Edge nigdy nie uruchamia ponownie modułu.
+   * `on-failure` — Jeśli moduł ulegnie awarii, Agent IoT Edge ponownie go uruchomi. Jeśli moduł nie zostanie prawidłowo zamknięty, Agent IoT Edge nie uruchomi go ponownie.
+   * `on-unhealthy` — Jeśli moduł ulegnie awarii lub jest uznawany za nieprawidłowy, Agent IoT Edge ponownie go uruchomi.
+   * `always` — Jeśli moduł ulegnie awarii, jest uznawany za w złej kondycji lub zamknięty w dowolny sposób, Agent IoT Edge ponownie go uruchomi. 
+* **imagePullPolicy** — czy Agent IoT Edge próbuje pobrać najnowszy obraz dla modułu automatycznie. Jeśli nie określisz wartości, wartość domyślna to *OnCreate*. Możliwe wartości obejmują: 
+   * `on-create` — podczas uruchamiania modułu lub aktualizowania modułu na podstawie nowego manifestu wdrożenia Agent IoT Edge podejmie próbę ściągnięcia obrazu modułu z rejestru kontenerów.
+   * `never` — Agent IoT Edge nigdy nie podejmie próby ściągnięcia obrazu modułu z rejestru kontenerów. Oczekuje się, że obraz modułu jest buforowany na urządzeniu, a wszystkie aktualizacje obrazu modułu są wprowadzane ręcznie lub zarządzane przez rozwiązanie innej firmy. 
 
-The IoT Edge agent sends runtime response to IoT Hub. Here is a list of possible responses:
-  * 200 - OK
-  * 400 - The deployment configuration is malformed or invalid.
-  * 417 - The device doesn't have a deployment configuration set.
-  * 412 - The schema version in the deployment configuration is invalid.
-  * 406 - The IoT Edge device is offline or not sending status reports.
-  * 500 - An error occurred in the IoT Edge runtime.
+Agent usługi IoT Edge wysyła odpowiedź środowiska uruchomieniowego do usługi IoT Hub. Oto lista możliwych odpowiedzi:
+  * 200 — OK
+  * 400 - Konfiguracja wdrożenia jest źle sformułowany lub nieprawidłowy.
+  * 417 — urządzenie nie ma ustawionej konfiguracji wdrożenia.
+  * 412 — wersja schematu w konfiguracji wdrożenia jest nieprawidłowa.
+  * 406 — urządzenie IoT Edge jest w trybie offline lub nie wysyła raportów o stanie.
+  * 500 — Wystąpił błąd w czasie wykonywania IoT Edge.
 
-For more information, see [Learn how to deploy modules and establish routes in IoT Edge](module-composition.md).   
+Aby uzyskać więcej informacji, zobacz [Informacje o sposobie wdrażania modułów i ustanawiania tras w programie IoT Edge](module-composition.md).   
 
-### <a name="security"></a>Zabezpieczenia
+### <a name="security"></a>Bezpieczeństwo
 
-The IoT Edge agent plays a critical role in the security of an IoT Edge device. For example, it performs actions like verifying a module’s image before starting it. 
+Agent usługi IoT Edge odgrywa kluczową rolę w zabezpieczeniach urządzenia usługi IoT Edge. Na przykład wykonuje akcje, takie jak weryfikacja do obrazu modułu przed jego uruchomienie. 
 
-For more information about the Azure IoT Edge security framework, read about the [IoT Edge security manager](iot-edge-security-manager.md).
+Aby uzyskać więcej informacji na temat środowiska zabezpieczeń Azure IoT Edge, Przeczytaj o programie [IoT Edge Security Manager](iot-edge-security-manager.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Understand Azure IoT Edge modules](iot-edge-modules.md)
+[Informacje o modułach Azure IoT Edge](iot-edge-modules.md)

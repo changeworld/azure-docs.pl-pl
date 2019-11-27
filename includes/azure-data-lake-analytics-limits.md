@@ -11,11 +11,11 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224472"
 ---
-Azure Data Lake Analytics makes the complex task of managing distributed infrastructure and complex code easy. It dynamically provisions resources, and you can use it to do analytics on exabytes of data. When the job completes, it winds down resources automatically. You pay only for the processing power that was used. Przy wzroście lub spadku ilości przechowywanych danych lub używanej mocy obliczeniowej nie musisz modyfikować kodu. To raise the default limits for your subscription, contact support.
+Azure Data Lake Analytics wykonuje złożone zadanie zarządzania rozproszoną infrastrukturą i skomplikowanym kodem. Dynamicznie udostępnia zasoby i umożliwia analizowanie eksabajtowej danych przy użyciu tej usługi. Po zakończeniu zadania automatycznie przewijane są zasoby. Płacisz tylko za użytą moc przetwarzania. Nawet w sytuacjach zwiększania lub zmniejszania rozmiaru przechowywanych danych lub ilości użytych zasobów obliczeniowych nie trzeba ponownie pisać kodu. Aby zgłosić domyślne limity dla subskrypcji, skontaktuj się z pomocą techniczną.
 
 | **Zasób** | **Limit domyślny** | **Komentarze** |
 | --- | --- | --- |
-| Maximum number of concurrent jobs |20 | |
-| Maximum number of analytics units (AUs) per account |250 | Use any combination of up to a maximum of 250 AUs across 20 jobs. To increase this limit, contact Microsoft Support. |
-| Maximum script size for job submission | 3 MB | |
-| Maximum number of Data Lake Analytics accounts per region per subscription | 5 | To increase this limit, contact Microsoft Support. |
+| Maksymalna liczba współbieżnych zadań |20 | |
+| Maksymalna liczba jednostek analizy (Australia) dla konta |250 | Użyj dowolnej kombinacji maksymalnie 250ych jednostek działania w ramach 20 zadań. Aby zwiększyć ten limit, skontaktuj się z pomoc techniczna firmy Microsoft. |
+| Maksymalny rozmiar skryptu do przesłania zadania | 3 MB | |
+| Maksymalna liczba kont Data Lake Analytics na region na subskrypcję | 5 | Aby zwiększyć ten limit, skontaktuj się z pomoc techniczna firmy Microsoft. |

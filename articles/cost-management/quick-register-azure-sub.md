@@ -21,7 +21,7 @@ ms.locfileid: "74229970"
 
 Korzystając z subskrypcji platformy Azure, możesz zarejestrować się w rozwiązaniu Cloudyn. Rejestracja zapewnia dostęp do portalu firmy Cloudyn. W tym przewodniku Szybki start opisano szczegółowo proces rejestracji niezbędny do utworzenia subskrypcji wersji próbnej rozwiązania Cloudyn i zalogowania w portalu Cloudyn. Przedstawiono w nim także, jak od razu rozpocząć wyświetlanie danych kosztów.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 - Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 

@@ -108,7 +108,7 @@ Aby wykonać zadania w podsieciach, Twoje konto musi być przypisane do roli [ws
 |Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   Włączanie punktu końcowego usługi dla podsieci     |
 |Microsoft.Network/virtualNetworks/subnets/virtualMachines/read           |   Pobieranie maszyn wirtualnych w podsieci       |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Tworzenie sieci wirtualnej i podsieci przy użyciu [programu PowerShell](powershell-samples.md) lub przykładów skryptów [interfejsu wiersza polecenia platformy Azure](cli-samples.md) lub korzystanie z szablonów usługi Azure [Menedżer zasobów](template-samples.md)
 - Tworzenie i stosowanie [zasad platformy Azure](policy-samples.md) dla sieci wirtualnych

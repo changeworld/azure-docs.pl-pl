@@ -1,6 +1,6 @@
 ---
 title: Synchronizacja danych
-description: This overview introduces Azure SQL Data Sync
+description: W tym omówieniu przedstawiono usługi Azure SQL Data Sync
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -18,227 +18,227 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422525"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Sync data across multiple cloud and on-premises databases with SQL Data Sync
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
-SQL Data Sync is a service built on Azure SQL Database that lets you synchronize the data you select bi-directionally across multiple SQL databases and SQL Server instances.
+SQL Data Sync to usługa oparta na usłudze Azure SQL Database, która umożliwia synchronizowanie danych, wybrana dwukierunkowo między wieloma bazami danych SQL i wystąpienia programu SQL Server.
 
 > [!IMPORTANT]
-> Azure SQL Data Sync does not support Azure SQL Database Managed Instance at this time.
+> Usługa Azure SQL Data Sync nie obsługuje w tym momencie Azure SQL Database wystąpienia zarządzanego.
 
-## <a name="when-to-use-data-sync"></a>When to use Data Sync
+## <a name="when-to-use-data-sync"></a>Kiedy należy używać synchronizacji danych
 
-Data Sync is useful in cases where data needs to be kept updated across several Azure SQL databases or SQL Server databases. Here are the main use cases for Data Sync:
+Synchronizacja danych jest przydatna w przypadkach, gdy dane muszą być aktualizowane w kilku bazach danych Azure SQL lub SQL Server bazach danych. Poniżej przedstawiono przypadków głównie do celów synchronizacji danych:
 
-- **Hybrid Data Synchronization:** With Data Sync, you can keep data synchronized between your on-premises databases and Azure SQL databases to enable hybrid applications. This capability may appeal to customers who are considering moving to the cloud and would like to put some of their application in Azure.
-- **Distributed Applications:** In many cases, it's beneficial to separate different workloads across different databases. For example, if you have a large production database, but you also need to run a reporting or analytics workload on this data, it's helpful to have a second database for this additional workload. This approach minimizes the performance impact on your production workload. You can use Data Sync to keep these two databases synchronized.
-- **Globally Distributed Applications:** Many businesses span several regions and even several countries/regions. To minimize network latency, it's best to have your data in a region close to you. With Data Sync, you can easily keep databases in regions around the world synchronized.
+- **Synchronizacja danych hybrydowych:** Dzięki funkcji synchronizacji danych można synchronizować dane między lokalnymi bazami danych i bazami danych Azure SQL, aby umożliwić aplikacjom hybrydowym. Ta funkcja może odwołać się do klientów, którzy rozważają przejście do chmury i chcesz umieścić niektóre z aplikacji na platformie Azure.
+- **Aplikacje rozproszone:** W wielu przypadkach korzystne jest oddzielenie różnych obciążeń między różnymi bazami danych. Na przykład jeśli masz duży produkcyjnej bazy danych, ale trzeba będzie również uruchomić raportowania lub analizy obciążenia oparte na tych danych, warto drugi bazy danych to dodatkowe obciążenie. To podejście minimalizuje wpływu na obciążenia produkcyjne. Aby zachować te dwie bazy danych synchronizacji, można użyć synchronizacji danych.
+- **Aplikacje rozproszone globalnie:** Wiele firm obejmuje kilka regionów, a nawet kilka krajów/regionów. Aby zminimalizować opóźnienie sieci, najlepiej jest mieć swoje dane w regionie bliską. Z opcją synchronizacji danych można pracować z bazami danych w regionach na całym świecie zsynchronizowane.
 
-Data Sync isn't the preferred solution for the following scenarios:
+Synchronizacja danych nie jest preferowanym rozwiązaniem dla następujących scenariuszy:
 
-| Scenariusz | Some recommended solutions |
+| Scenariusz | Niektóre zalecane rozwiązania |
 |----------|----------------------------|
-| Odzyskiwanie po awarii | [Azure geo-redundant backups](sql-database-automated-backups.md) |
-| Read Scale | [Use read-only replicas to load balance read-only query workloads (preview)](sql-database-read-scale-out.md) |
-| ETL (OLTP to OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) or [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Migration from on-premises SQL Server to Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Odzyskiwanie po awarii | [Geograficznie nadmiarowe platformy Azure](sql-database-automated-backups.md) |
+| Odczyt skali | [Używanie replik tylko do odczytu do równoważenia obciążenia obciążeń zapytań tylko do odczytu (wersja zapoznawcza)](sql-database-read-scale-out.md) |
+| ETL (OLTP, aby OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) lub [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| Migracja z programu on-premises SQL Server do usługi Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
-## <a name="overview-of-sql-data-sync"></a>Overview of SQL Data Sync
+## <a name="overview-of-sql-data-sync"></a>Omówienie SQL Data Sync
 
-Data Sync is based around the concept of a Sync Group. A Sync Group is a group of databases that you want to synchronize.
+Synchronizacja danych opiera się wokół koncepcji grupą synchronizacji. Grupa synchronizacji jest grupą baz danych, które mają być synchronizowane.
 
-Data Sync uses a hub and spoke topology to synchronize data. You define one of the databases in the sync group as the Hub Database. The rest of the databases are member databases. Sync occurs only between the Hub and individual members.
+Synchronizacja danych używa topologii gwiazdy, aby synchronizować dane. Należy zdefiniować jedną z baz danych w grupy synchronizacji jako baza danych koncentratora. Pozostała część bazy danych to element członkowski bazy danych. Synchronizacja występuje tylko między Centrum i poszczególnych elementów członkowskich.
 
-- The **Hub Database** must be an Azure SQL Database.
-- The **member databases** can be either SQL Databases, on-premises SQL Server databases, or SQL Server instances on Azure virtual machines.
-- The **Sync Database** contains the metadata and log for Data Sync. The Sync Database has to be an Azure SQL Database located in the same region as the Hub Database. The Sync Database is customer created and customer owned.
+- **Baza danych centrum** musi być Azure SQL Database.
+- **Bazy danych elementów członkowskich** mogą być bazami danych SQL, lokalnymi bazami danych SQL Server lub wystąpieniami SQL Server na maszynach wirtualnych platformy Azure.
+- **Baza danych synchronizacji** zawiera metadane i Dziennik synchronizacji danych. Baza danych synchronizacji musi być Azure SQL Database umieszczona w tym samym regionie, w którym znajduje się baza danych centrów. Baza danych synchronizacji jest klient utworzył i należące do klientów.
 
 > [!NOTE]
-> If you're using an on premises database as a member database, you have to [install and configure a local sync agent](sql-database-get-started-sql-data-sync.md#add-on-prem).
+> W przypadku korzystania z lokalnej bazy danych jako bazy danych będącej członkiem należy [zainstalować i skonfigurować lokalnego agenta synchronizacji](sql-database-get-started-sql-data-sync.md#add-on-prem).
 
-![Sync data between databases](media/sql-database-sync-data/sync-data-overview.png)
+![Synchronizowanie danych między bazami danych](media/sql-database-sync-data/sync-data-overview.png)
 
-A Sync Group has the following properties:
+Grupa synchronizacji ma następujące właściwości:
 
-- The **Sync Schema** describes which data is being synchronized.
-- The **Sync Direction** can be bi-directional or can flow in only one direction. That is, the Sync Direction can be *Hub to Member*, or *Member to Hub*, or both.
-- The **Sync Interval** describes how often synchronization occurs.
-- The **Conflict Resolution Policy** is a group level policy, which can be *Hub wins* or *Member wins*.
+- **Schemat synchronizacji** opisuje, które dane są synchronizowane.
+- **Kierunek synchronizacji** może być dwukierunkowy lub może przepływać tylko w jednym kierunku. Oznacza to, że kierunek synchronizacji może być *centrum do elementu członkowskiego*lub *składowej lub z*obu tych elementów.
+- **Interwał synchronizacji** opisuje, jak często odbywa się synchronizacja.
+- **Zasady rozwiązywania konfliktów** są zasadami na poziomie grupy, które mogą być *centrami WINS* lub *członkowskimi*.
 
-## <a name="how-does-data-sync-work"></a>How does Data Sync work
+## <a name="how-does-data-sync-work"></a>Jak działa synchronizacja danych
 
-- **Tracking data changes:** Data Sync tracks changes using insert, update, and delete triggers. The changes are recorded in a side table in the user database. Note that BULK INSERT doesn't fire triggers by default. If FIRE_TRIGGERS isn't specified, no insert triggers execute. Add the FIRE_TRIGGERS option so Data Sync can track those inserts. 
-- **Synchronizing data:** Data Sync is designed in a Hub and Spoke model. The Hub syncs with each member individually. Changes from the Hub are downloaded to the member and then changes from the member are uploaded to the Hub.
-- **Resolving conflicts:** Data Sync provides two options for conflict resolution, *Hub wins* or *Member wins*.
-  - If you select *Hub wins*, the changes in the hub always overwrite changes in the member.
-  - If you select *Member wins*, the changes in the member overwrite changes in the hub. If there's more than one member, the final value depends on which member syncs first.
+- **Śledzenie zmian danych:** Synchronizacja danych śledzi zmiany przy użyciu wyzwalaczy INSERT, Update i DELETE. Zmiany są zapisywane w tabeli w bazie danych użytkownika po stronie. Należy zauważyć, że BULK INSERT domyślnie nie uruchamia wyzwalaczy. Jeśli FIRE_TRIGGERS nie jest określony, żadne wyzwalacze wstawiania nie są wykonywane. Dodaj opcję FIRE_TRIGGERS, aby synchronizacja danych mogą śledzić te operacje wstawiania. 
+- **Synchronizowanie danych:** Synchronizacja danych została zaprojektowana w modelu gwiazdy. Centrum przeprowadza synchronizację z każdym elementem członkowskim indywidualnie. Zmiany w Centrum są pobierane do elementu członkowskiego, a następnie zmiany w porównaniu z elementu członkowskiego są przekazywane do Centrum.
+- **Rozwiązywanie konfliktów:** Synchronizacja danych oferuje dwie opcje rozwiązywania konfliktów, *centrum WINS* lub *członka usługi WINS*.
+  - W przypadku wybrania *usługi Hub WINS*zmiany w centrum zawsze zastępują zmiany w elemencie członkowskim.
+  - W przypadku wybrania *elementu członkowskiego usługi WINS*zmiany wprowadzone w elemencie członkowskim zastępują zmiany w centrum. Jeśli istnieje więcej niż jeden element członkowski, końcowa wartość jest zależna od która składowa jest najpierw zsynchronizowane.
 
-## <a name="compare-data-sync-with-transactional-replication"></a>Compare Data Sync with Transactional Replication
+## <a name="compare-data-sync-with-transactional-replication"></a>Porównywanie synchronizacji danych z replikacją transakcyjną
 
 | | Synchronizacja danych | Replikacja transakcyjna |
 |---|---|---|
-| Zalety | - Active-active support<br/>- Bi-directional between on-premises and Azure SQL Database | - Lower latency<br/>- Transactional consistency<br/>- Reuse existing topology after migration |
-| Wady | - 5 min or more latency<br/>- No transactional consistency<br/>- Higher performance impact | - Can’t publish from Azure SQL Database single database or pooled database<br/>- High maintenance cost |
+| Zalety | -Aktywne-aktywne wsparcie<br/>-Dwukierunkowe między środowiskiem lokalnym i Azure SQL Database | -Małe opóźnienia<br/>-Spójności transakcyjnej<br/>-Ponowne użycie istniejącej topologii po migracji |
+| Wady | -5 min lub więcej opóźnień<br/>-Brak spójności transakcyjnej<br/>— Wyższy wpływ na wydajność | -Nie można publikować z Azure SQL Database pojedynczej bazy danych lub bazy danych w puli<br/>— Wysoki koszt konserwacji |
 
 ## <a name="get-started-with-sql-data-sync"></a>Rozpoczynanie pracy z usługą SQL Data Sync
 
-### <a name="set-up-data-sync-in-the-azure-portal"></a>Set up Data Sync in the Azure portal
+### <a name="set-up-data-sync-in-the-azure-portal"></a>Konfigurowanie synchronizacji danych w witrynie Azure portal
 
 - [Set up Azure SQL Data Sync (Konfigurowanie usługi Azure SQL Data Sync)](sql-database-get-started-sql-data-sync.md)
 - Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
 
-### <a name="set-up-data-sync-with-powershell"></a>Set up Data Sync with PowerShell
+### <a name="set-up-data-sync-with-powershell"></a>Konfiguruj synchronizację danych przy użyciu programu PowerShell
 
 - [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
 - [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL Database i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 
-### <a name="review-the-best-practices-for-data-sync"></a>Review the best practices for Data Sync
+### <a name="review-the-best-practices-for-data-sync"></a>Przeglądanie najlepszych rozwiązań w celu synchronizacji danych
 
 - [Best practices for Azure SQL Data Sync (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)](sql-database-best-practices-data-sync.md)
 
-### <a name="did-something-go-wrong"></a>Did something go wrong
+### <a name="did-something-go-wrong"></a>Wystąpił problem
 
 - [Troubleshoot issues with Azure SQL Data Sync (Rozwiązywanie problemów z usługą Azure SQL Data Sync)](sql-database-troubleshoot-data-sync.md)
 
-## <a name="consistency-and-performance"></a>Consistency and performance
+## <a name="consistency-and-performance"></a>Spójnością i wydajnością
 
 ### <a name="eventual-consistency"></a>Spójność ostateczna
 
-Since Data Sync is trigger-based, transactional consistency isn't guaranteed. Microsoft guarantees that all changes are made eventually and that Data Sync doesn't cause data loss.
+Ponieważ synchronizacja danych jest oparta na wyzwalaczu, nie ma gwarancji spójności transakcyjnej. Firma Microsoft gwarantuje, że wszystkie zmiany są wprowadzane ostatecznie i synchronizacja danych nie powoduje utraty danych.
 
-### <a name="performance-impact"></a>Performance impact
+### <a name="performance-impact"></a>Wpływ na wydajność
 
-Data Sync uses insert, update, and delete triggers to track changes. It creates side tables in the user database for change tracking. These change tracking activities have an impact on your database workload. Assess your service tier and upgrade if needed.
+Zastosowań synchronizacji danych Wstawianie, aktualizowanie i usuwanie wyzwalaczy do śledzenia zmian. Tworzy tabele w bazie danych użytkownika, śledzenie zmian. Te działania śledzenia zmiany mają wpływ na obciążenie bazy danych. Oceń warstwie usługi i uaktualnienia, jeśli to konieczne.
 
-Provisioning and deprovisioning during sync group creation, update, and deletion may also impact the database performance.
+Zastrzeganie i cofanie zastrzegania podczas Tworzenie grupy synchronizacji, aktualizacji i usuwania może również wpływać na wydajność bazy danych.
 
-## <a name="sync-req-lim"></a> Requirements and limitations
+## <a name="sync-req-lim"></a>Wymagania i ograniczenia
 
 ### <a name="general-requirements"></a>Wymagania ogólne
 
-- Each table must have a primary key. Don't change the value of the primary key in any row. If you have to change a primary key value, delete the row and recreate it with the new primary key value.
+- Każda tabela musi mieć klucz podstawowy. Nie zmieniaj wartości klucza podstawowego w dowolnym wierszu. Jeśli trzeba zmienić wartość klucza podstawowego, Usuń wiersz i odtworzyć go przy użyciu nowych wartości klucza podstawowego.
 
 > [!IMPORTANT]
-> Changing the value of an existing primary key will result in the following faulty behavior:
-> - Data between hub and member can be lost even though sync does not report any issue.
-> - Sync can fail because the tracking table has a non-existing row from source due to the primary key change.
+> Zmiana wartości istniejącego klucza podstawowego spowoduje wystąpienie następujących nieprawidłowych zachowań:
+> - Dane między centrami i elementami członkowskimi mogą zostać utracone nawet wtedy, gdy synchronizacja nie zgłasza żadnego problemu.
+> - Synchronizacja może zakończyć się niepowodzeniem, ponieważ tabela śledzenia ma nieistniejący wiersz ze źródła ze względu na zmianę klucza podstawowego.
 
 - Izolacji migawki musi być włączona. Aby uzyskać więcej informacji, zobacz [Izolacja migawki w programie SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Ogólne ograniczenia
 
-- A table can't have an identity column that isn't the primary key.
-- A primary key can't have the following data types: sql_variant, binary, varbinary, image, xml.
-- Be cautious when you use the following data types as a primary key, because the supported precision is only to the second: time, datetime, datetime2, datetimeoffset.
-- The names of objects (databases, tables, and columns) can't contain the printable characters period (.), left square bracket ([), or right square bracket (]).
-- Azure Active Directory authentication isn't supported.
-- Tables with same name but different schema (for example, dbo.customers and sales.customers) aren't supported.
-- Columns with User Defined Data Types aren't supported
+- Tabela nie może mieć kolumny tożsamości, która nie jest kluczem podstawowym.
+- Klucz podstawowy nie może mieć następujących typów danych: sql_variant, Binary, varbinary, Image, XML.
+- Zachowaj ostrożność korzystając z następujących typów danych jako klucza podstawowego, ponieważ precyzja obsługiwane jest tylko do drugiego: godziny, daty i godziny, datetime2, datetimeoffset.
+- Nazwy obiektów (baz danych, tabel i kolumn) nie mogą zawierać kropki do drukowalnego znaku (.), lewego nawiasu kwadratowego ([) lub prawego nawiasu kwadratowego (]).
+- Uwierzytelnianie Azure Active Directory nie jest obsługiwane.
+- Tabele o tej samej nazwie, ale innym schemacie (na przykład dbo. Customers i Sales. Customers) nie są obsługiwane.
+- Kolumny z typami danych zdefiniowanymi przez użytkownika nie są obsługiwane
 
-#### <a name="unsupported-data-types"></a>Unsupported data types
+#### <a name="unsupported-data-types"></a>Nieobsługiwane typy danych
 
 - FileStream
-- SQL/CLR UDT
-- XMLSchemaCollection (XML supported)
-- Cursor, RowVersion, Timestamp, Hierarchyid
+- UDT SQL/CLR
+- Użyciu klasy XMLSchemaCollection (XML obsługiwane)
+- Kursor, RowVersion, Timestamp, Hierarchyid
 
-#### <a name="unsupported-column-types"></a>Unsupported column types
+#### <a name="unsupported-column-types"></a>Typy kolumn nieobsługiwany
 
-Data Sync can't sync read-only or system-generated columns. Na przykład:
+Synchronizacja danych nie można zsynchronizować tylko do odczytu lub generowanych przez system kolumn. Na przykład:
 
-- Computed columns.
-- System-generated columns for temporal tables.
+- Kolumny obliczane.
+- Wygenerowana przez system kolumny tabel danych czasowych.
 
-#### <a name="limitations-on-service-and-database-dimensions"></a>Limitations on service and database dimensions
+#### <a name="limitations-on-service-and-database-dimensions"></a>Ograniczenia dotyczące usługi i bazy danych
 
-| **Dimensions**                                                  | **Limit**              | **Obejście**              |
+| **Wymiary**                                                  | **Limit**              | **Obejście**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
-| Maximum number of sync groups any database can belong to.       | 5                      |                             |
-| Maximum number of endpoints in a single sync group              | 30                     |                             |
-| Maximum number of on-premises endpoints in a single sync group. | 5                      | Create multiple sync groups |
-| Database, table, schema, and column names                       | 50 characters per name |                             |
-| Tables in a sync group                                          | 500                    | Create multiple sync groups |
-| Columns in a table in a sync group                              | 1000                   |                             |
-| Data row size on a table                                        | 24 Mb                  |                             |
-| Minimum sync interval                                           | 5 minut              |                             |
+| Maksymalna liczba grup synchronizacji dowolnej bazy danych może należeć do.       | 5                      |                             |
+| Maksymalna liczba punktów końcowych w grupie jednej synchronizacji              | 30                     |                             |
+| Maksymalna liczba lokalne punkty końcowe w grupie pojedynczej synchronizacji. | 5                      | Utwórz wiele grup synchronizacji |
+| Nazwy bazy danych, tabel, schematu i kolumn                       | 50 znaków w nazwie |                             |
+| Tabele w grupie synchronizacji                                          | 500                    | Utwórz wiele grup synchronizacji |
+| Kolumny w tabeli w grupie synchronizacji                              | 1000                   |                             |
+| Rozmiar wiersza danych w tabeli                                        | 24 Mb                  |                             |
+| Interwał synchronizacji minimalne                                           | 5 minut              |                             |
 
 > [!NOTE]
-> There may be up to 30 endpoints in a single sync group if there is only one sync group. If there is more than one sync group, the total number of endpoints across all sync groups cannot exceed 30. If a database belongs to multiple sync groups, it is counted as multiple endpoints, not one.
+> Może istnieć maksymalnie 30 punktów końcowych w grupie synchronizacji pojedynczego Jeśli istnieje tylko jedna grupa synchronizacji. Jeśli istnieje więcej niż jednej grupy synchronizacji, całkowitej liczby punktów końcowych we wszystkich grupach synchronizacji nie może przekraczać 30. Jeśli bazy danych należy do wielu grup synchronizacji, jest ona traktowana jako wiele punktów końcowych, nie jeden.
 
-## <a name="faq-about-sql-data-sync"></a>FAQ about SQL Data Sync
+## <a name="faq-about-sql-data-sync"></a>Często zadawane pytania dotyczące SQL Data Sync
 
-### <a name="how-much-does-the-sql-data-sync-service-cost"></a>How much does the SQL Data Sync service cost
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Jak dużo koszt usługi SQL Data Sync
 
-There's no charge for the SQL Data Sync service itself. However, you still collect data transfer charges for data movement in and out of your SQL Database instance. For more info, see [SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/).
+Nie jest naliczana opłata za usługę SQL Data Sync. Jednak nadal są pobierane opłaty za transfer danych w przypadku przenoszenia i wychodzącego wystąpienia SQL Database. Aby uzyskać więcej informacji, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
-### <a name="what-regions-support-data-sync"></a>What regions support Data Sync
+### <a name="what-regions-support-data-sync"></a>Jakie regiony obsługują synchronizację danych
 
-SQL Data Sync is available in all regions.
+SQL Data Sync jest dostępna we wszystkich regionach.
 
-### <a name="is-a-sql-database-account-required"></a>Is a SQL Database account required
+### <a name="is-a-sql-database-account-required"></a>Czy wymagane jest konto SQL Database
 
-Tak. You must have a SQL Database account to host the Hub Database.
+Tak. Musi mieć konta usługi SQL Database do hostowania bazy danych Centrum.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Can I use Data Sync to sync between SQL Server on-premises databases only
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Czy można używać synchronizacji danych do synchronizowania tylko SQL Server lokalnych baz danych
 
-Not directly. You can sync between SQL Server on-premises databases indirectly, however, by creating a Hub database in Azure, and then adding the on-premises databases to the sync group.
+Nie bezpośrednio. Można zsynchronizować między bazami danych programu SQL Server w środowisku lokalnym pośrednio, jednak tworzenie bazy danych Centrum na platformie Azure, a następnie dodając lokalnych baz danych do grupy synchronizacji.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Can I use Data Sync to sync between SQL Databases that belong to different subscriptions
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Czy można używać synchronizacji danych do synchronizacji między bazami danych SQL, które należą do różnych subskrypcji
 
-Tak. You can sync between SQL Databases that belong to resource groups owned by different subscriptions.
+Tak. Można przeprowadzić synchronizację między bazami danych SQL, które należą do grup zasobów należących do różnych subskrypcji.
 
-- If the subscriptions belong to the same tenant, and you have permission to all subscriptions, you can configure the sync group in the Azure portal.
-- Otherwise, you have to use PowerShell to add the sync members that belong to different subscriptions.
+- Jeśli subskrypcje należą do tej samej dzierżawy, a użytkownik ma uprawnienia do wszystkich subskrypcji, grupy synchronizacji można skonfigurować w witrynie Azure portal.
+- W przeciwnym razie trzeba dodać elementów członkowskich synchronizacji, które należą do różnych subskrypcji przy użyciu programu PowerShell.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Can I use Data Sync to sync between SQL Databases that belong to different clouds (like Azure Public Cloud and Azure China 21Vianet)
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Czy można używać synchronizacji danych do synchronizacji między bazami danych SQL, które należą do różnych chmur (takich jak chmura publiczna platformy Azure i usługa Azure Chiny 21Vianet)
 
-Tak. You can sync between SQL Databases that belong to different clouds, you have to use PowerShell to add the sync members that belong to the different subscriptions.
+Tak. Można synchronizować między bazami danych SQL, które należą do różnych chmur, należy użyć programu PowerShell do dodawania elementów członkowskich synchronizacji, które należą do różnych subskrypcji.
 
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Can I use Data Sync to seed data from my production database to an empty database, and then sync them
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Czy można używać synchronizacji danych do wypełniania danych z mojej produkcyjnej bazy danych do pustej bazy danych, a następnie synchronizować ją
 
-Tak. Create the schema manually in the new database by scripting it from the original. After you create the schema, add the tables to a sync group to copy the data and keep it synced.
+Tak. Tworzenie schematu ręcznie w nowej bazy danych za pomocą skryptu go od oryginału. Po utworzeniu schematu, należy dodać tabele do grupy synchronizacji, aby skopiować dane i zsynchronizowane.
 
-### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Should I use SQL Data Sync to back up and restore my databases
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Czy należy używać SQL Data Sync do tworzenia kopii zapasowych i przywracania baz danych
 
-It isn't recommended to use SQL Data Sync to create a backup of your data. You can't back up and restore to a specific point in time because SQL Data Sync synchronizations are not versioned. Furthermore, SQL Data Sync does not back up other SQL objects, such as stored procedures, and doesn't do the equivalent of a restore operation quickly.
+Nie zaleca się używania SQL Data Sync, aby utworzyć kopię zapasową danych. Nie można utworzyć kopii zapasowej i przywrócić do określonego punktu w czasie, ponieważ synchronizacje SQL Data Sync nie są obsługiwane. Ponadto SQL Data Sync nie wykonuje kopii zapasowych innych obiektów SQL, takich jak procedury składowane, i nie wykonuje operacji przywracania szybko.
 
-For one recommended backup technique, see [Copy an Azure SQL database](sql-database-copy.md).
+Aby poznać jedną z zalecanych technik tworzenia kopii zapasowych, zobacz [Kopiowanie bazy danych Azure SQL Database](sql-database-copy.md).
 
-### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Can Data Sync sync encrypted tables and columns
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Czy zaszyfrowane tabele i kolumny synchronizacji synchronizacji danych
 
-- If a database uses Always Encrypted, you can sync only the tables and columns that are *not* encrypted. You can't sync the encrypted columns, because Data Sync can't decrypt the data.
-- If a column uses Column-Level Encryption (CLE), you can sync the column, as long as the row size is less than the maximum size of 24 Mb. Data Sync treats the column encrypted by key (CLE) as normal binary data. To decrypt the data on other sync members, you need to have the same certificate.
+- Jeśli baza danych używa Always Encrypted, można synchronizować tylko tabele i kolumny, które *nie* są zaszyfrowane. Nie można zsynchronizować zaszyfrowanych kolumn, ponieważ synchronizacja danych nie można odszyfrować danych.
+- Jeśli kolumna używa szyfrowania na poziomie kolumny (CLE), można zsynchronizować tę kolumnę, tak długo, jak rozmiar wiersza jest mniejszy niż maksymalny rozmiar 24 Mb. Synchronizacja danych traktuje kolumny szyfrowany przez klucz (CLE) jako normalne dane binarne. Aby odszyfrować dane na innych elementach członkowskich synchronizacji, musisz mieć ten sam certyfikat.
 
-### <a name="is-collation-supported-in-sql-data-sync"></a>Is collation supported in SQL Data Sync
+### <a name="is-collation-supported-in-sql-data-sync"></a>Sortowanie jest obsługiwane w SQL Data Sync
 
-Tak. SQL Data Sync supports collation in the following scenarios:
+Tak. SQL Data Sync obsługuje sortowanie w następujących scenariuszach:
 
-- If the selected sync schema tables aren't already in your hub or member databases, then when you deploy the sync group, the service automatically creates the corresponding tables and columns with the collation settings selected in the empty destination databases.
-- If the tables to be synced already exist in both your hub and member databases, SQL Data Sync requires that the primary key columns have the same collation between hub and member databases to successfully deploy the sync group. There are no collation restrictions on columns other than the primary key columns.
+- Jeśli wybrane tabele schematu synchronizacji nie znajdują się już w centrum lub bazach danych, to podczas wdrażania grupy synchronizacji usługa automatycznie tworzy odpowiednie tabele i kolumny z ustawieniami sortowania wybranymi w pustej docelowej bazie danych.
+- Jeśli tabele, które mają być synchronizowane z już istnieje w bazach danych zarówno Centrum, jak i element członkowski, SQL Data Sync musi mieć czy kolumny klucza podstawowego takiego samego sortowania baz Centrum i element członkowski danych mogła pomyślnie wdrożyć grupę synchronizacji. Istnieją ograniczenia sortowania dla kolumn innych niż kolumny klucza podstawowego.
 
-### <a name="is-federation-supported-in-sql-data-sync"></a>Is federation supported in SQL Data Sync
+### <a name="is-federation-supported-in-sql-data-sync"></a>Czy Federacja jest obsługiwana w SQL Data Sync
 
-Federation Root Database can be used in the SQL Data Sync Service without any limitation. You can't add the Federated Database endpoint to the current version of SQL Data Sync.
+Główna baza danych Federacji może służyć w usłudze SQL Data Sync bez żadnych ograniczeń. Nie można dodać punktu końcowego bazy danych federacyjnych do bieżącej wersji SQL Data Sync.
 
 ## <a name="next-steps"></a>Następne kroki
 
-### <a name="update-the-schema-of-a-synced-database"></a>Update the schema of a synced database
+### <a name="update-the-schema-of-a-synced-database"></a>Zaktualizuj schemat zsynchronizowanych bazy danych
 
-Do you have to update the schema of a database in a sync group? Schema changes aren't automatically replicated. For some solutions, see the following articles:
+Czy masz do zaktualizowania schematu bazy danych w grupie synchronizacji? Zmiany schematu nie są automatycznie replikowane. Niektóre rozwiązania na ten temat można znaleźć w następujących artykułach:
 
-- [Automate the replication of schema changes in Azure SQL Data Sync](sql-database-update-sync-schema.md)
-- [Use PowerShell to update the sync schema in an existing sync group](scripts/sql-database-sync-update-schema.md)
+- [Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync](sql-database-update-sync-schema.md)
+- [Aktualizowanie schematu synchronizacji w istniejącej grupie synchronizacji przy użyciu programu PowerShell](scripts/sql-database-sync-update-schema.md)
 
 ### <a name="monitor-and-troubleshoot"></a>Monitorowanie i rozwiązywanie problemów
 
-Is SQL Data Sync doing as expected? To monitor activity and troubleshoot issues, see the following articles:
+Czy SQL Data Sync działa zgodnie z oczekiwaniami? Aby monitorować aktywność i rozwiązywania problemów, zobacz następujące artykuły:
 
-- [Monitor Azure SQL Data Sync with Azure Monitor logs](sql-database-sync-monitor-oms.md)
+- [Monitorowanie SQL Data Sync platformy Azure przy użyciu dzienników Azure Monitor](sql-database-sync-monitor-oms.md)
 - [Troubleshoot issues with Azure SQL Data Sync (Rozwiązywanie problemów z usługą Azure SQL Data Sync)](sql-database-troubleshoot-data-sync.md)
 
-### <a name="learn-more-about-azure-sql-database"></a>Dowiedz się więcej o Azure SQL Database
+### <a name="learn-more-about-azure-sql-database"></a>Dowiedz się więcej o usłudze Azure SQL Database
 
-For more info about SQL Database, see the following articles:
+Aby uzyskać więcej informacji o usłudze SQL Database zobacz następujące artykuły:
 
 - [Omówienie usługi SQL Database](sql-database-technical-overview.md)
 - [Database Lifecycle Management (Zarządzanie cyklem życia bazy danych)](https://msdn.microsoft.com/library/jj907294.aspx)

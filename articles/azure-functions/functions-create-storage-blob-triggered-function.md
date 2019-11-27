@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by Blob storage
+title: Tworzenie funkcji na platformie Azure wyzwalanej przez usługę BLOB Storage
 description: Utwórz za pomocą usługi Azure Functions funkcję niewymagającą użycia serwera wywoływaną za pomocą elementów dodanych do magazynu obiektów Blob platformy Azure.
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: quickstart

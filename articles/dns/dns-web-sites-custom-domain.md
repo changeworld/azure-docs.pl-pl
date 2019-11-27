@@ -16,7 +16,7 @@ ms.locfileid: "74211207"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Samouczek: tworzenie rekordów DNS w domenie niestandardowej dla aplikacji internetowej 
 
-Możesz skonfigurować usługę Azure DNS, aby hostować domenę niestandardową dla aplikacji internetowych. For example, you can create an Azure web app and have your users access it using either www\.contoso.com or contoso.com as a fully qualified domain name (FQDN).
+Możesz skonfigurować usługę Azure DNS, aby hostować domenę niestandardową dla aplikacji internetowych. Można na przykład utworzyć aplikację internetową platformy Azure i uzyskać do niej dostęp przy użyciu sieci www\.contoso.com lub contoso.com jako w pełni kwalifikowanej nazwy domeny (FQDN).
 
 > [!NOTE]
 > W tym samouczku jako przykład używana jest domena contoso.com. Zastąp contoso.com swoją nazwą domeny.
@@ -47,7 +47,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* You must have a domain name available to test with that you can host in Azure DNS . Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
+* Musisz mieć nazwę domeny dostępną do przetestowania, aby można było hostować w Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 * [Utwórz aplikację usługi App Service](../app-service/app-service-web-get-started-html.md) lub użyj aplikacji utworzonej w innym samouczku.
 
 * Utwórz strefę DNS w usłudze Azure DNS i deleguj strefę u rejestratora do usługi Azure DNS.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Usługa App Services używa tego rekordu tylko podczas konfiguracji, aby sprawdzić, czy jesteś właścicielem domeny niestandardowej. Po zweryfikowaniu i skonfigurowaniu domeny niestandardowej w usłudze App Service możesz usunąć ten rekord TXT.
 
 > [!NOTE]
-> If you want to verify the domain name, but not route production traffic to the web app, you only need to specify the TXT record for the verification step.  Verification does not require an A or CNAME record in addition to the TXT record.
+> Jeśli chcesz zweryfikować nazwę domeny, ale nie kierować ruchu produkcyjnego do aplikacji sieci Web, wystarczy określić rekord TXT dla kroku weryfikacji.  Weryfikacja nie wymaga rekordu A ani CNAME oprócz rekordu TXT.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,7 +173,7 @@ set-AzWebApp `
 Otwórz przeglądarkę i przejdź do `http://www.<your domainname>` oraz `http://<you domain name>`.
 
 > [!NOTE]
-> Make sure you include the `http://` prefix, otherwise your browser may attempt to predict a URL for you!
+> Upewnij się, że dołączysz prefiks `http://`, w przeciwnym razie przeglądarka może próbować przewidzieć adres URL.
 
 Dla obu adresów URL powinna zostać wyświetlona ta sama strona. Na przykład:
 

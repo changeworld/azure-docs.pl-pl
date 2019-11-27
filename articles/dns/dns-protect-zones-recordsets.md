@@ -1,6 +1,6 @@
 ---
-title: Protecting DNS Zones and Records - Azure DNS
-description: In this learning path, get started protecting DNS zones and record sets in Microsoft Azure DNS.
+title: Ochrona Strefy DNS i rekordów — Azure DNS
+description: W tej ścieżce szkoleniowej Rozpocznij ochronę stref DNS i zestawów rekordów w Microsoft Azure DNS.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,82 +14,82 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211446"
 ---
-# <a name="how-to-protect-dns-zones-and-records"></a>How to protect DNS zones and records
+# <a name="how-to-protect-dns-zones-and-records"></a>Jak chronić strefy i rekordy DNS
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-DNS zones and records are critical resources. Deleting a DNS zone or even just a single DNS record can result in a total service outage.  It is therefore important that critical DNS zones and records are protected against unauthorized or accidental changes.
+Strefy i rekordy DNS są istotnymi zasobami. Usunięcie strefy DNS lub nawet pojedynczego rekordu DNS może spowodować całkowitą awarię usługi.  Należy zatem pamiętać, że krytyczne strefy i rekordy DNS są chronione przed nieautoryzowanymi lub przypadkowymi zmianami.
 
-This article explains how Azure DNS enables you to protect your DNS zones and records against such changes.  We apply two powerful security features provided by Azure Resource Manager: [role-based access control](../role-based-access-control/overview.md) and [resource locks](../azure-resource-manager/resource-group-lock-resources.md).
+W tym artykule wyjaśniono, jak Azure DNS pozwala chronić strefy i rekordy DNS przed takimi zmianami.  Stosujemy dwie zaawansowane funkcje zabezpieczeń zapewniane przez Azure Resource Manager: [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) i [blokad zasobów](../azure-resource-manager/resource-group-lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Azure Role-Based Access Control (RBAC) enables fine-grained access management for Azure users, groups, and resources. Using RBAC, you can grant precisely the amount of access that users need to perform their jobs. For more information about how RBAC helps you manage access, see [What is Role-Based Access Control](../role-based-access-control/overview.md).
+Access Control oparte na rolach (RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem użytkowników, grup i zasobów platformy Azure. Korzystając z funkcji RBAC, można udzielić dokładnej ilości dostępu, którą użytkownicy potrzebują do wykonywania swoich zadań. Aby uzyskać więcej informacji o sposobach zarządzania dostępem przez funkcję RBAC, zobacz [co to jest Access Control oparte na rolach](../role-based-access-control/overview.md).
 
-### <a name="the-dns-zone-contributor-role"></a>The DNS Zone Contributor role
+### <a name="the-dns-zone-contributor-role"></a>Rola współautor strefy DNS
 
-The DNS Zone Contributor role is a built-in role provided by Azure for managing DNS resources.  Assigning DNS Zone Contributor permissions to a user or group enables that group to manage DNS resources, but not resources of any other type.
+Rola współautor strefy DNS to wbudowana rola udostępniana przez platformę Azure do zarządzania zasobami DNS.  Przypisanie uprawnień współautora strefy DNS do użytkownika lub grupy umożliwia tej grupie Zarządzanie zasobami DNS, ale nie zasobów dowolnego innego typu.
 
-For example, suppose the resource group *myzones* contains five zones for Contoso Corporation. Granting the DNS administrator DNS Zone Contributor permissions to that resource group, enables full control over those DNS zones. It also avoids granting unnecessary permissions, for example the DNS administrator cannot create or stop Virtual Machines.
+Załóżmy na przykład, że moja *strefa* grupy zasobów zawiera pięć stref dla firmy Contoso Corporation. Przyznanie uprawnienia współautora strefy DNS administratora DNS tej grupie zasobów umożliwia pełną kontrolę nad tymi strefami DNS. Pozwala również uniknąć udzielania niepotrzebnych uprawnień, na przykład administrator DNS nie może utworzyć ani zatrzymać Virtual Machines.
 
-The simplest way to assign RBAC permissions is [via the Azure portal](../role-based-access-control/role-assignments-portal.md).  Open **Access control (IAM)** for the resource group, then select **Add**, then select the **DNS Zone Contributor** role and select the required users or groups to grant permissions.
+Najprostszym sposobem przypisywania uprawnień RBAC jest [za pośrednictwem Azure Portal](../role-based-access-control/role-assignments-portal.md).  Otwórz przystawkę **Kontrola dostępu (IAM)** dla grupy zasobów, a następnie wybierz pozycję **Dodaj**, a następnie wybierz rolę **współautor strefy DNS** i wybierz wymaganych użytkowników lub grupy do udzielenia uprawnień.
 
-![Resource group level RBAC via the Azure portal](./media/dns-protect-zones-recordsets/rbac1.png)
+![Kontrola RBAC na poziomie grupy zasobów za pomocą Azure Portal](./media/dns-protect-zones-recordsets/rbac1.png)
 
-Permissions can also be [granted using Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Uprawnienia można także [przyznawać przy użyciu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
-The equivalent command is also [available via the Azure CLI](../role-based-access-control/role-assignments-cli.md):
+Równoważne polecenie jest również [dostępne za pośrednictwem interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --resourceGroup "<resource group name>"
 ```
 
-### <a name="zone-level-rbac"></a>Zone level RBAC
+### <a name="zone-level-rbac"></a>Kontrola RBAC na poziomie strefy
 
-Azure RBAC rules can be applied to a subscription, a resource group or to an individual resource. In the case of Azure DNS, that resource can be an individual DNS zone, or even an individual record set.
+Reguły RBAC platformy Azure mogą być stosowane do subskrypcji, grupy zasobów lub pojedynczego zasobu. W przypadku Azure DNS ten zasób może być pojedynczą strefą DNS, a nawet pojedynczym zestawem rekordów.
 
-For example, suppose the resource group *myzones* contains the zone *contoso.com* and a subzone *customers.contoso.com* in which CNAME records are created for each customer account.  The account used to manage these CNAME records should be assigned permissions to create records in the *customers.contoso.com* zone only, it should not have access to the other zones.
+Załóżmy na przykład, że moja *strefa* grupy zasobów zawiera strefę *contoso.com* i podstrefę *Customers.contoso.com* , w której tworzone są rekordy CNAME dla każdego konta klienta.  Konto używane do zarządzania tymi rekordami CNAME powinno mieć przypisane uprawnienia do tworzenia rekordów tylko w strefie *Customers.contoso.com* , nie powinno mieć dostępu do innych stref.
 
-Zone-level RBAC permissions can be granted via the Azure portal.  Open **Access control (IAM)** for the zone, then select **Add**, then select the **DNS Zone Contributor** role and select the required users or groups to grant permissions.
+Uprawnienia kontroli RBAC na poziomie strefy można udzielać za pośrednictwem Azure Portal.  Otwórz przystawkę **Kontrola dostępu (IAM)** dla strefy, a następnie wybierz pozycję **Dodaj**, a następnie wybierz rolę **współautor strefy DNS** i wybierz wymaganych użytkowników lub grupy, aby przyznać uprawnienia.
 
-![DNS Zone level RBAC via the Azure portal](./media/dns-protect-zones-recordsets/rbac2.png)
+![Kontrola RBAC na poziomie strefy DNS za pośrednictwem Azure Portal](./media/dns-protect-zones-recordsets/rbac2.png)
 
-Permissions can also be [granted using Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Uprawnienia można także [przyznawać przy użyciu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
-The equivalent command is also [available via the Azure CLI](../role-based-access-control/role-assignments-cli.md):
+Równoważne polecenie jest również [dostępne za pośrednictwem interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 azure role assignment create --signInName <user email address> --roleName "DNS Zone Contributor" --resource-name <zone name> --resource-type Microsoft.Network/DNSZones --resource-group <resource group name>
 ```
 
-### <a name="record-set-level-rbac"></a>Record set level RBAC
+### <a name="record-set-level-rbac"></a>Poziom zestawu rekordów RBAC
 
-We can go one step further. Consider the mail administrator for Contoso Corporation, who needs access to the MX and TXT records at the apex of the contoso.com zone.  She doesn't need access to any other MX or TXT records, or to any records of any other type.  Azure DNS allows you to assign permissions at the record set level, to precisely the records that the mail administrator needs access to.  The mail administrator is granted precisely the control she needs, and is unable to make any other changes.
+Możemy przejść jeszcze jeden krok. Należy wziąć pod uwagę administratora poczty firmy Contoso Corporation, który potrzebuje dostępu do rekordów MX i TXT na wierzchołku strefy contoso.com.  Nie potrzebuje dostępu do żadnych innych rekordów MX lub TXT ani do żadnych rekordów dowolnego innego typu.  Azure DNS umożliwia przypisywanie uprawnień na poziomie zestawu rekordów do precyzyjnego rejestrowania, do których administrator poczty musi mieć dostęp.  Administrator poczty otrzymuje precyzyjną potrzebę kontroli i nie może wprowadzać żadnych innych zmian.
 
-Record-set level RBAC permissions can be configured via the Azure portal, using the **Users** button in the record set page:
+Uprawnienia RBAC na poziomie rekordu można skonfigurować za pomocą Azure Portal przy użyciu przycisku **Użytkownicy** na stronie zestawu rekordów:
 
-![Record set level RBAC via the Azure portal](./media/dns-protect-zones-recordsets/rbac3.png)
+![Ustawianie kontroli RBAC na poziomie rekordu za pośrednictwem Azure Portal](./media/dns-protect-zones-recordsets/rbac3.png)
 
-Record-set level RBAC permissions can also be [granted using Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Na poziomie zestawu rekordów można także udzielić uprawnień RBAC [przy użyciu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell
 # Grant permissions to a specific record set
 New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
-The equivalent command is also [available via the Azure CLI](../role-based-access-control/role-assignments-cli.md):
+Równoważne polecenie jest również [dostępne za pośrednictwem interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant permissions to a specific record set
@@ -98,11 +98,11 @@ azure role assignment create --signInName "<user email address>" --roleName "DNS
 
 ### <a name="custom-roles"></a>Role niestandardowe
 
-The built-in DNS Zone Contributor role enables full control over a DNS resource. It is also possible to build your own customer Azure roles, to provide even finer-grained control.
+Wbudowana rola współautor strefy DNS umożliwia pełną kontrolę nad zasobem DNS. Istnieje również możliwość utworzenia własnych ról platformy Azure dla klientów, aby zapewnić jeszcze dokładniejszą kontrolę.
 
-Consider again the example in which a CNAME record in the zone *customers.contoso.com* is created for each Contoso Corporation customer account.  The account used to manage these CNAMEs should be granted permission to manage CNAME records only.  It is then unable to modify records of other types (such as changing MX records) or perform zone-level operations such as zone delete.
+Rozważmy ponownie przykład, w którym rekord CNAME w strefie *Customers.contoso.com* jest tworzony dla każdego konta klienta Contoso Corporation.  Konto używane do zarządzania tymi rekordami CNAME powinno mieć przyznane uprawnienie do zarządzania rekordami CNAME.  Nie można wtedy modyfikować rekordów innych typów (takich jak Zmienianie rekordów MX) lub wykonywanie operacji na poziomie strefy, takich jak usuwanie strefy.
 
-The following example shows a custom role definition for managing CNAME records only:
+Poniższy przykład przedstawia definicję roli niestandardowej do zarządzania tylko rekordami CNAME:
 
 ```json
 {
@@ -128,93 +128,93 @@ The following example shows a custom role definition for managing CNAME records 
 }
 ```
 
-The Actions property defines the following DNS-specific permissions:
+Właściwość Actions definiuje następujące uprawnienia specyficzne dla systemu DNS:
 
-* `Microsoft.Network/dnsZones/CNAME/*` grants full control over CNAME records
-* `Microsoft.Network/dnsZones/read` grants permission to read DNS zones, but not to modify them, enabling you to see the zone in which the CNAME is being created.
+* `Microsoft.Network/dnsZones/CNAME/*` przyznaje pełną kontrolę nad rekordami CNAME
+* `Microsoft.Network/dnsZones/read` przyznaje uprawnienia do odczytu stref DNS, ale nie zmodyfikuje ich, umożliwiając wyświetlenie strefy, w której jest tworzony rekord CNAME.
 
-The remaining Actions are copied from the [DNS Zone Contributor built-in role](../role-based-access-control/built-in-roles.md#dns-zone-contributor).
+Pozostałe akcje są kopiowane z [wbudowanej roli współautor strefy DNS](../role-based-access-control/built-in-roles.md#dns-zone-contributor).
 
 > [!NOTE]
-> Using a custom RBAC role to prevent deleting record sets while still allowing them to be updated is not an effective control. It prevents record sets from being deleted, but it does not prevent them from being modified.  Permitted modifications include adding and removing records from the record set, including removing all records to leave an empty record set. This has the same effect as deleting the record set from a DNS resolution viewpoint.
+> Niestandardowa rola RBAC pozwala zapobiegać usuwaniu zestawów rekordów, mimo że nie zezwala na ich aktualizację, nie jest skuteczną kontrolą. Zapobiega to usuwaniu zestawów rekordów, ale nie uniemożliwia ich modyfikacji.  Dozwolone modyfikacje obejmują dodawanie i usuwanie rekordów z zestawu rekordów, włącznie z usunięciem wszystkich rekordów, aby pozostawić pusty zestaw rekordów. Ma to taki sam efekt jak usunięcie zestawu rekordów z punktu widzenia rozpoznawania nazw DNS.
 
-Custom role definitions cannot currently be defined via the Azure portal. A custom role based on this role definition can be created using Azure PowerShell:
+Definicji ról niestandardowych nie można obecnie definiować za pośrednictwem Azure Portal. Rolę niestandardową opartą na tej definicji roli można utworzyć przy użyciu Azure PowerShell:
 
 ```azurepowershell
 # Create new role definition based on input file
 New-AzRoleDefinition -InputFile <file path>
 ```
 
-It can also be created via the Azure CLI:
+Można go również utworzyć za pomocą interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli
 # Create new role definition based on input file
 azure role create -inputfile <file path>
 ```
 
-The role can then be assigned in the same way as built-in roles, as described earlier in this article.
+Rolę można następnie przypisać w taki sam sposób jak wbudowane role, zgodnie z opisem we wcześniejszej części tego artykułu.
 
-For more information on how to create, manage, and assign custom roles, see [Custom Roles in Azure RBAC](../role-based-access-control/custom-roles.md).
+Aby uzyskać więcej informacji na temat tworzenia i przypisywania ról niestandardowych oraz zarządzania nimi, zobacz [role niestandardowe w usłudze Azure RBAC](../role-based-access-control/custom-roles.md).
 
-## <a name="resource-locks"></a>Resource locks
+## <a name="resource-locks"></a>Blokady zasobów
 
-In addition to RBAC, Azure Resource Manager supports another type of security control, namely the ability to lock resources. Where RBAC rules allow you to control the actions of specific users and groups, resource locks are applied to the resource, and are effective across all users and roles. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
+Oprócz RBAC, Azure Resource Manager obsługuje inny typ kontroli zabezpieczeń, a mianowicie możliwość blokowania zasobów. W przypadku, gdy reguły RBAC umożliwiają sterowanie akcjami określonych użytkowników i grup, blokady zasobów są stosowane do zasobu i obowiązują dla wszystkich użytkowników i ról. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 
-There are two types of resource lock: **CanNotDelete** and **ReadOnly**. These can be applied either to a DNS zone, or to an individual record set.  The following sections describe several common scenarios, and how to support them using resource locks.
+Istnieją dwa typy blokad zasobów: **CanNotDelete** i **ReadOnly**. Można je zastosować do strefy DNS lub do pojedynczego zestawu rekordów.  W poniższych sekcjach opisano kilka typowych scenariuszy oraz sposób ich obsługi przy użyciu blokad zasobów.
 
-### <a name="protecting-against-all-changes"></a>Protecting against all changes
+### <a name="protecting-against-all-changes"></a>Ochrona przed wszystkimi zmianami
 
-To prevent any changes being made, apply a ReadOnly lock to the zone.  This prevents new record sets from being created, and existing record sets from being modified or deleted.
+Aby zapobiec wprowadzeniu zmian, Zastosuj blokadę tylko do odczytu do strefy.  Zapobiega to tworzeniu nowych zestawów rekordów, a istniejące zestawy rekordów można modyfikować lub usuwać.
 
-Zone level resource locks can be created via the Azure portal.  From the DNS zone page, select **Locks**, then select **+Add**:
+Blokady zasobów na poziomie strefy można tworzyć za pomocą Azure Portal.  Na stronie strefa DNS wybierz pozycję **blokady**, a następnie wybierz pozycję **+ Dodaj**:
 
-![Zone level resource locks via the Azure portal](./media/dns-protect-zones-recordsets/locks1.png)
+![Blokady zasobów na poziomie strefy za pośrednictwem Azure Portal](./media/dns-protect-zones-recordsets/locks1.png)
 
-Zone-level resource locks can also be created via Azure PowerShell:
+Blokady zasobów na poziomie strefy można także utworzyć za pośrednictwem Azure PowerShell:
 
 ```azurepowershell
 # Lock a DNS zone
 New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
 ```
 
-Configuring Azure resource locks is not currently supported via the Azure CLI.
+Konfigurowanie blokad zasobów platformy Azure nie jest obecnie obsługiwane za pośrednictwem interfejsu wiersza polecenia platformy Azure.
 
-### <a name="protecting-individual-records"></a>Protecting individual records
+### <a name="protecting-individual-records"></a>Ochrona pojedynczych rekordów
 
-To prevent an existing DNS record set against modification, apply a ReadOnly lock to the record set.
+Aby zapobiec modyfikacji istniejącego rekordu DNS, należy zastosować blokadę tylko do odczytu zestawu rekordów.
 
 > [!NOTE]
-> Applying a CanNotDelete lock to a record set is not an effective control. It prevents the record set from being deleted, but it does not prevent it from being modified.  Permitted modifications include adding and removing records from the record set, including removing all records to leave an empty record set. This has the same effect as deleting the record set from a DNS resolution viewpoint.
+> Stosowanie blokady CanNotDelete do zestawu rekordów nie jest skuteczną kontrolą. Zapobiega to usuwaniu zestawu rekordów, ale nie uniemożliwia jego modyfikacji.  Dozwolone modyfikacje obejmują dodawanie i usuwanie rekordów z zestawu rekordów, włącznie z usunięciem wszystkich rekordów, aby pozostawić pusty zestaw rekordów. Ma to taki sam efekt jak usunięcie zestawu rekordów z punktu widzenia rozpoznawania nazw DNS.
 
-Record set level resource locks can currently only be configured using Azure PowerShell.  They are not supported in the Azure portal or Azure CLI.
+Blokady zasobów na poziomie zestawu rekordów można obecnie skonfigurować tylko przy użyciu Azure PowerShell.  Nie są one obsługiwane w interfejsie wiersza polecenia Azure Portal ani platformy Azure.
 
 ```azurepowershell
 # Lock a DNS record set
 New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
 ```
 
-### <a name="protecting-against-zone-deletion"></a>Protecting against zone deletion
+### <a name="protecting-against-zone-deletion"></a>Ochrona przed usunięciem strefy
 
-When a zone is deleted in Azure DNS, all record sets in the zone are also deleted.  Tej operacji nie można cofnąć.  Accidentally deleting a critical zone has the potential to have a significant business impact.  It is therefore very important to protect against accidental zone deletion.
+Gdy strefa zostanie usunięta w Azure DNS, wszystkie zestawy rekordów w strefie również zostaną usunięte.  Tej operacji nie można cofnąć.  Przypadkowe usunięcie strefy krytycznej może mieć znaczący wpływ na działalność biznesową.  Dlatego bardzo ważne jest, aby chronić przed przypadkowym usunięciem strefy.
 
-Applying a CanNotDelete lock to a zone prevents the zone from being deleted.  However, since locks are inherited by child resources, it also prevents any record sets in the zone from being deleted, which may be undesirable.  Furthermore, as described in the note above, it is also ineffective since records can still be removed from the existing record sets.
+Zastosowanie blokady CanNotDelete do strefy uniemożliwia usunięcie strefy.  Jednak ponieważ blokady są dziedziczone przez zasoby podrzędne, również uniemożliwiają usunięcie jakichkolwiek zestawów rekordów w strefie, co może być niepożądane.  Ponadto, zgodnie z opisem w powyższej uwadze, jest również nieskuteczna, ponieważ rekordy nadal mogą być usuwane z istniejących zestawów rekordów.
 
-As an alternative, consider applying a CanNotDelete lock to a record set in the zone, such as the SOA record set.  Since the zone cannot be deleted without also deleting the record sets, this protects against zone deletion, while still allowing record sets within the zone to be modified freely. If an attempt is made to delete the zone, Azure Resource Manager detects this would also delete the SOA record set, and blocks the call because the SOA is locked.  No record sets are deleted.
+Alternatywnie rozważ zastosowanie blokady CanNotDelete do zestawu rekordów w strefie, na przykład zestawu rekordów SOA.  Ponieważ nie można usunąć strefy bez również usuwania zestawów rekordów, chroni przed usunięciem strefy, pozostawiając jednocześnie możliwość modyfikacji zestawów rekordów w strefie. Jeśli podjęto próbę usunięcia strefy, Azure Resource Manager wykryje również usunięcie zestawu rekordów SOA i zablokowanie wywołania, ponieważ rekord SOA jest zablokowany.  Żadne zestawy rekordów nie są usuwane.
 
-The following PowerShell command creates a CanNotDelete lock against the SOA record of the given zone:
+Następujące polecenie programu PowerShell tworzy blokadę CanNotDelete względem rekordu SOA danej strefy:
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
 New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
-Another way to prevent accidental zone deletion is by using a custom role to ensure the operator and service accounts used to manage your zones do not have zone delete permissions. When you do need to delete a zone, you can enforce a two-step delete, first granting zone delete permissions (at the zone scope, to prevent deleting the wrong zone) and second to delete the zone.
+Innym sposobem, aby zapobiec przypadkowemu usunięciu strefy jest użycie niestandardowej roli w celu upewnienia się, że operator i konta usług używane do zarządzania strefami nie mają uprawnień do usuwania strefy. Gdy musisz usunąć strefę, możesz wymusić usunięcie dwuetapowe, a najpierw udzielić uprawnień do usuwania strefy (w zakresie strefy, aby zapobiec usunięciu niewłaściwej strefy) i sekundę, aby usunąć strefę.
 
-This second approach has the advantage that it works for all zones accessed by those accounts, without having to remember to create any locks. It has the disadvantage that any accounts with zone delete permissions, such as the subscription owner, can still accidentally delete a critical zone.
+Ta druga metoda ma zaletę, że działa ona dla wszystkich stref, do których uzyskuje dostęp te konta, bez konieczności tworzenia żadnych blokad. Jest to wadą, że wszystkie konta z uprawnieniami do usuwania strefy, takie jak właściciel subskrypcji, nadal mogą przypadkowo usunąć strefę krytyczną.
 
-It is possible to use both approaches - resource locks and custom roles - at the same time, as a defense-in-depth approach to DNS zone protection.
+Można użyć obu metod — blokad zasobów i ról niestandardowych — w tym samym czasie, co w przypadku podejścia do ochrony strefy DNS.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* For more information about working with RBAC, see [Get started with access management in the Azure portal](../role-based-access-control/overview.md).
-* For more information about working with resource locks, see [Lock resources with Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
+* Aby uzyskać więcej informacji na temat pracy z usługą RBAC, zobacz Wprowadzenie do [zarządzania dostępem w Azure Portal](../role-based-access-control/overview.md).
+* Aby uzyskać więcej informacji na temat pracy z blokadami zasobów, zobacz [blokowanie zasobów przy użyciu Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).

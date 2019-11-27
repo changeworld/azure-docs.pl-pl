@@ -1,6 +1,6 @@
 ---
-title: Configure function app settings in Azure
-description: Learn how to configure Azure function app settings.
+title: Konfigurowanie ustawień aplikacji funkcji na platformie Azure
+description: Dowiedz się, jak skonfigurować ustawienia aplikacji funkcji platformy Azure.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 08/14/2019
@@ -12,47 +12,47 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230574"
 ---
-# <a name="manage-your-function-app"></a>Manage your function app 
+# <a name="manage-your-function-app"></a>Zarządzanie aplikacją funkcji 
 
-In Azure Functions, a function app provides the execution context for your individual functions. Function app behaviors apply to all functions hosted by a given function app. All functions in a function app must be of the same [language](supported-languages.md). 
+W Azure Functions aplikacja funkcji udostępnia kontekst wykonywania dla poszczególnych funkcji. Zachowania aplikacji funkcji dotyczą wszystkich funkcji hostowanych przez daną aplikację funkcji. Wszystkie funkcje w aplikacji funkcji muszą być w tym samym [języku](supported-languages.md). 
 
-Individual functions in a function app are deployed together and are scaled together. All functions in the same function app share resources, per instance, as the function app scales. 
+Poszczególne funkcje w aplikacji funkcji są wdrażane razem i są skalowane jednocześnie. Wszystkie funkcje w tym samym zakresie zasobów funkcji, na wystąpienie, jako aplikacja funkcji skaluje się. 
 
-Connection strings, environment variables, and other application settings are defined separately for each function app. Any data that must be shared between function apps should be stored externally in a persisted store.
+Parametry połączenia, zmienne środowiskowe i inne ustawienia aplikacji są definiowane osobno dla każdej aplikacji funkcji. Wszelkie dane, które muszą być współużytkowane przez aplikacje funkcji, powinny być przechowywane zewnętrznie w utrwalonym magazynie.
 
-This article describes how to configure and manage your function apps. 
+W tym artykule opisano sposób konfigurowania aplikacji funkcji i zarządzania nimi. 
 
 > [!TIP]  
-> Many configuration options can also be managed by using the [Interfejs wiersza polecenia platformy Azure]. 
+> Wiele opcji konfiguracji można także zarządzać za pomocą [Interfejs wiersza polecenia platformy Azure]. 
 
 ## <a name="get-started-in-the-azure-portal"></a>Rozpocznij pracę w witrynie Azure Portal
 
-To begin, go to the [Azure portal] and sign in to your Azure account. Na pasku wyszukiwania w górnej części portalu wpisz nazwę aplikacji funkcji i wybierz ją z listy. After selecting your function app, you see the following page:
+Aby rozpocząć, przejdź do [Azure Portal] i zaloguj się na koncie platformy Azure. Na pasku wyszukiwania w górnej części portalu wpisz nazwę aplikacji funkcji i wybierz ją z listy. Po wybraniu aplikacji funkcji zostanie wyświetlona następująca strona:
 
-![Function app overview in the Azure portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+![Przegląd aplikacji funkcji w Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-You can navigate to everything you need to manage your function app from the overview page, in particular the **[Application settings](#settings)** and **[Platform features](#platform-features)** .
+Możesz przejść do wszystkiego, czego potrzebujesz do zarządzania aplikacją funkcji, na stronie przeglądu, w szczególności z **[ustawieniami aplikacji](#settings)** i **[funkcjami platformy](#platform-features)** .
 
-## <a name="settings"></a>Application settings
+## <a name="settings"></a>Ustawienia aplikacji
 
-The **Application Settings** tab maintains settings that are used by your function app. These settings are stored encrypted, and you must select **Show values** to see the values in the portal. You can also access application settings by using the Azure CLI.
+Karta **Ustawienia aplikacji** obsługuje ustawienia, które są używane przez aplikację funkcji. Te ustawienia są przechowywane w postaci zaszyfrowanej i należy wybrać opcję **Pokaż wartości** , aby wyświetlić wartości w portalu. Dostęp do ustawień aplikacji można również uzyskać przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 ### <a name="portal"></a>Portal
 
-To add a setting in the portal, select **New application setting** and add the new key-value pair.
+Aby dodać ustawienie w portalu, wybierz pozycję **nowe ustawienie aplikacji** i Dodaj nową parę klucz-wartość.
 
-![Function app settings in the Azure portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+![Ustawienia aplikacji funkcji w Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-The [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) command returns the existing application settings, as in the following example:
+Polecenie [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) zwraca istniejące ustawienia aplikacji, jak w poniższym przykładzie:
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-The [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command adds or updates an application setting. The following example creates a setting with a key named `CUSTOM_FUNCTION_APP_SETTING` and a value of `12345`:
+Polecenie [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) dodaje lub aktualizuje ustawienie aplikacji. Poniższy przykład tworzy ustawienie z kluczem o nazwie `CUSTOM_FUNCTION_APP_SETTING` i wartością `12345`:
 
 
 ```azurecli-interactive
@@ -61,72 +61,72 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
 
-### <a name="use-application-settings"></a>Use application settings
+### <a name="use-application-settings"></a>Użyj ustawień aplikacji
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-When you develop a function app locally, you must maintain local copies of these values in the local.settings.json project file. To learn more, see [Local settings file](functions-run-local.md#local-settings-file).
+Podczas lokalnego tworzenia aplikacji funkcji należy zachować lokalne kopie tych wartości w pliku projektu Local. Settings. JSON. Aby dowiedzieć się więcej, zobacz [plik ustawień lokalnych](functions-run-local.md#local-settings-file).
 
-## <a name="platform-features"></a>Platform features
+## <a name="platform-features"></a>Funkcje platformy
 
-![Function app platform features tab.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
+![Karta funkcje platformy aplikacji funkcji.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
-Function apps run in, and are maintained, by the Azure App Service platform. As such, your function apps have access to most of the features of Azure's core web hosting platform. The **Platform features** tab is where you access the many features of the App Service platform that you can use in your function apps. 
+Aplikacje funkcji działają w programie i są obsługiwane przez platformę Azure App Service. W związku z tym aplikacje funkcji mają dostęp do większości funkcji platformy hostingu w sieci Web platformy Azure. Karta **funkcje platformy** to miejsce, w którym można uzyskać dostęp do wielu funkcji platformy App Service, których można używać w aplikacjach funkcji. 
 
 > [!NOTE]
-> Not all App Service features are available when a function app runs on the Consumption hosting plan.
+> Nie wszystkie funkcje App Service są dostępne, gdy aplikacja funkcji jest uruchamiana w ramach planu hostingu zużycia.
 
-The rest of this article focuses on the following App Service features in the Azure portal that are useful for Functions:
+Pozostała część tego artykułu koncentruje się na następujących App Service funkcjach w Azure Portal, które są przydatne w przypadku funkcji:
 
-+ [App Service editor](#editor)
++ [Edytor App Service](#editor)
 + [Console](#console)
-+ [Advanced tools (Kudu)](#kudu)
-+ [Deployment options](#deployment)
++ [Narzędzia zaawansowane (kudu)](#kudu)
++ [Opcje wdrażania](#deployment)
 + [CORS](#cors)
 + [Uwierzytelnianie](#auth)
 
-For more information about how to work with App Service settings, see [Configure Azure App Service Settings](../app-service/configure-common.md).
+Aby uzyskać więcej informacji na temat sposobu pracy z ustawieniami App Service, zobacz [konfigurowanie Azure App Service ustawień](../app-service/configure-common.md).
 
-### <a name="editor"></a>App Service Editor
+### <a name="editor"></a>Edytor usługi App Service
 
-![The App Service editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
+![Edytor App Service](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-The App Service editor is an advanced in-portal editor that you can use to modify JSON configuration files and code files alike. Choosing this option launches a separate browser tab with a basic editor. This enables you to integrate with the Git repository, run and debug code, and modify function app settings. This editor provides an enhanced development environment for your functions compared with the built-in function editor.  
+Edytor App Service to zaawansowany edytor w portalu, którego można użyć do modyfikacji plików konfiguracji JSON i plików kodu. Wybranie tej opcji powoduje uruchomienie oddzielnej karty przeglądarki z podstawowym edytorem. Dzięki temu można zintegrować z repozytorium git, uruchamiać i debugować kod oraz modyfikować ustawienia aplikacji funkcji. Ten Edytor zapewnia ulepszone środowisko programistyczne dla funkcji w porównaniu z wbudowanym edytorem funkcji.  
 
-We recommend that you consider developing your functions on your local computer. When you develop locally and publish to Azure, your project files are read-only in the portal. To learn more, see [Code and test Azure Functions locally](functions-develop-local.md).
+Zalecamy rozważenie opracowywania funkcji na komputerze lokalnym. Podczas tworzenia lokalnie i publikowania na platformie Azure pliki projektu są tylko do odczytu w portalu. Aby dowiedzieć się więcej, zobacz temat [kod i test Azure Functions lokalnie](functions-develop-local.md).
 
-### <a name="console"></a>Console
+### <a name="console"></a>Konsoli
 
-![Function app console](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
+![Konsola aplikacji funkcji](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
-The in-portal console is an ideal developer tool when you prefer to interact with your function app from the command line. Common commands include directory and file creation and navigation, as well as executing batch files and scripts. 
+Konsola w portalu jest idealnym narzędziem deweloperskim, gdy wolisz korzystać z aplikacji funkcji z poziomu wiersza polecenia. Typowe polecenia obejmują Tworzenie katalogów i plików oraz nawigację, a także wykonywanie plików wsadowych i skryptów. 
 
-When developing locally, we recommend using the [Azure Functions Core Tools](functions-run-local.md) and the [Interfejs wiersza polecenia platformy Azure].
+Podczas programowania lokalnego zalecamy używanie [Azure Functions Core Tools](functions-run-local.md) i [Interfejs wiersza polecenia platformy Azure].
 
-### <a name="kudu"></a>Advanced tools (Kudu)
+### <a name="kudu"></a>Narzędzia zaawansowane (kudu)
 
-![Configure Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
+![Konfigurowanie kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-The advanced tools for App Service (also known as Kudu) provide access to advanced administrative features of your function app. From Kudu, you manage system information, app settings, environment variables, site extensions, HTTP headers, and server variables. You can also launch **Kudu** by browsing to the SCM endpoint for your function app, like `https://<myfunctionapp>.scm.azurewebsites.net/` 
+Zaawansowane narzędzia dla App Service (znane również jako kudu) zapewniają dostęp do zaawansowanych funkcji administracyjnych aplikacji funkcji. Z usługi kudu można zarządzać informacjami o systemie, ustawieniami aplikacji, zmiennymi środowiskowymi, rozszerzeniami witryn, nagłówkami HTTP i zmiennymi serwera. Możesz również uruchomić **kudu** , przechodząc do punktu końcowego SCM dla swojej aplikacji funkcji, np. `https://<myfunctionapp>.scm.azurewebsites.net/` 
 
 
-### <a name="deployment"></a>Deployment Center
+### <a name="deployment"></a>Centrum wdrażania
 
-When you use a source control solution to develop and maintain your functions code, Deployment Center lets you build and deploy from source control. Your project is built and deployed to Azure when you make updates. For more information, see [Deployment technologies in Azure Functions](functions-deployment-technologies.md).
+W przypadku korzystania z rozwiązania do kontroli źródła w celu opracowywania i konserwowania kodu funkcji centrum wdrażania umożliwia tworzenie i wdrażanie z kontroli źródła. Projekt został skompilowany i wdrożony na platformie Azure podczas wprowadzania aktualizacji. Aby uzyskać więcej informacji, zobacz [technologie wdrażania w Azure Functions](functions-deployment-technologies.md).
 
-### <a name="cors"></a>Cross-origin resource sharing
+### <a name="cors"></a>Współużytkowanie zasobów między źródłami
 
-To prevent malicious code execution on the client, modern browsers block requests from web applications to resources running in a separate domain. [Cross-origin resource sharing (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) lets an `Access-Control-Allow-Origin` header declare which origins are allowed to call endpoints on your function app.
+Aby zapobiec wykonywaniu złośliwego kodu na kliencie, nowoczesne przeglądarki blokują żądania z aplikacji sieci Web do zasobów uruchomionych w oddzielnej domenie. [Współużytkowanie zasobów między źródłami (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) umożliwia `Access-Control-Allow-Origin` nagłówku zadeklarować, które pochodzenia mogą wywoływać punkty końcowe w aplikacji funkcji.
 
 #### <a name="portal"></a>Portal
 
-When you configure the **Allowed origins** list for your function app, the `Access-Control-Allow-Origin` header is automatically added to all responses from HTTP endpoints in your function app. 
+Po skonfigurowaniu listy **dozwolonych źródeł** dla aplikacji funkcji nagłówek `Access-Control-Allow-Origin` jest automatycznie dodawany do wszystkich odpowiedzi z punktów końcowych HTTP w aplikacji funkcji. 
 
-![Configure function app's CORS list](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
+![Skonfiguruj listę CORS aplikacji funkcji](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-When the wildcard (`*`) is used, all other domains are ignored. 
+Gdy jest używany symbol wieloznaczny (`*`), wszystkie pozostałe domeny zostaną zignorowane. 
 
-Use the [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) command to add a domain to the allowed origins list. The following example adds the contoso.com domain:
+Użyj [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) polecenie, aby dodać domenę do listy dozwolonych źródeł. Poniższy przykład dodaje domenę contoso.com:
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -134,18 +134,18 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-Use the [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) command to list the current allowed origins.
+Użyj polecenia [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) , aby wyświetlić listę bieżących dozwolonych źródeł.
 
-### <a name="auth"></a>Authentication
+### <a name="auth"></a>Ponowne
 
-![Configure authentication for a function app](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
+![Konfigurowanie uwierzytelniania dla aplikacji funkcji](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
-When functions use an HTTP trigger, you can require calls to first be authenticated. App Service supports Azure Active Directory authentication and sign-in with social providers, such as Facebook, Microsoft, and Twitter. For details on configuring specific authentication providers, see [Azure App Service authentication overview](../app-service/overview-authentication-authorization.md). 
+Gdy funkcje używają wyzwalacza HTTP, można wymagać, aby wywołania były najpierw uwierzytelniane. App Service obsługuje uwierzytelnianie Azure Active Directory i logowanie się przy użyciu dostawców społecznościowych, takich jak Facebook, Microsoft i Twitter. Aby uzyskać szczegółowe informacje na temat konfigurowania konkretnych dostawców uwierzytelniania, zobacz [Omówienie uwierzytelniania Azure App Service](../app-service/overview-authentication-authorization.md). 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-+ [Configure Azure App Service Settings](../app-service/configure-common.md)
++ [Skonfiguruj ustawienia Azure App Service](../app-service/configure-common.md)
 + [Ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md)
 
 [Interfejs wiersza polecenia platformy Azure]: /cli/azure/

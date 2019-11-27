@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Migrate on-premises data to Azure Storage with AzCopy| Microsoft Docs'
+title: 'Samouczek: Migrowanie danych lokalnych do usługi Azure Storage za pomocą AzCopy | Microsoft Docs'
 description: W tym samouczku narzędzie AzCopy zostanie użyte do migracji lub kopiowania danych z lub do obiektu blob, tabeli i zawartości pliku. W łatwy sposób przeprowadź migrację danych z magazynu lokalnego do usługi Azure Storage.
 author: normesta
 ms.service: storage
@@ -15,7 +15,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327515"
 ---
-#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Tutorial: Migrate on-premises data to cloud storage with AzCopy
+#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Samouczek: Migrowanie danych lokalnych do magazynu w chmurze za pomocą usługi AzCopy
 
 Narzędzie AzCopy to narzędzie wiersza polecenia służące do kopiowania danych do lub z magazynu Azure Blob Storage, Azure Files lub Azure Table przy użyciu prostych poleceń. Polecenia te zostały zaprojektowane w celu uzyskania optymalnej wydajności. Za pomocą narzędzia AzCopy można kopiować dane między systemem plików i kontem magazynu lub między kontami magazynu. Narzędzia AzCopy można użyć do skopiowania danych lokalnych do konta magazynu.
 
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To complete this tutorial, download the latest version of AzCopy. See [Get started with AzCopy](storage-use-azcopy-v10.md).
+Aby ukończyć ten samouczek, Pobierz najnowszą wersję programu AzCopy. Zobacz Rozpoczynanie [pracy z usługą AzCopy](storage-use-azcopy-v10.md).
 
 W systemie Windows konieczne będzie użycie polecenia [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx), ponieważ w tym samouczku jest ono używane w celu zaplanowania zadania. Użytkownicy systemu Linux zamiast tego użyją polecenia crontab.
 
@@ -50,31 +50,31 @@ Wykonaj następujące kroki, aby utworzyć kontener:
  
 Nazwy kontenerów muszą zaczynać się literą lub cyfrą. Mogą one zawierać tylko litery, cyfry i znaki łącznika (-). Aby uzyskać dodatkowe informacje o regułach nazewnictwa kontenerów i obiektów blob, zobacz temat [Naming and Referencing Containers, Blobs, and Metadata (Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-## <a name="download-azcopy"></a>Download AzCopy
+## <a name="download-azcopy"></a>Pobierz AzCopy
 
-Download the AzCopy V10 executable file.
+Pobierz plik wykonywalny AzCopy v10.
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-Place the AzCopy file anywhere on your computer. Add the location of the file to your system path variable so that you can refer to this executable file from any folder on your computer.
+Umieść plik AzCopy w dowolnym miejscu na komputerze. Dodaj lokalizację pliku do zmiennej PATH systemu, aby można było odwołać się do tego pliku wykonywalnego z dowolnego folderu na komputerze.
 
 ## <a name="authenticate-with-azure-ad"></a>Uwierzytelnianie za pomocą usługi Azure AD
 
-First, assign the [Storage Blob Data Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) role to your identity. See [Grant access to Azure blob and queue data with RBAC in the Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
+Najpierw Przypisz rolę [współautor danych obiektów blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) do swojej tożsamości. Zobacz [udzielanie dostępu do obiektów blob platformy Azure i danych w kolejce przy użyciu RBAC w Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
 
-Then, open a command prompt, type the following command, and press the ENTER key.
+Następnie otwórz wiersz polecenia, wpisz poniższe polecenie i naciśnij klawisz ENTER.
 
 ```azcopy
 azcopy login
 ```
 
-This command returns an authentication code and the URL of a website. Open the website, provide the code, and then choose the **Next** button.
+To polecenie zwraca kod uwierzytelniania i adres URL witryny sieci Web. Otwórz witrynę sieci Web, podaj kod, a następnie wybierz przycisk **dalej** .
 
 ![Tworzenie kontenera](media/storage-use-azcopy-v10/azcopy-login.png)
 
-A sign-in window will appear. In that window, sign into your Azure account by using your Azure account credentials. After you've successfully signed in, you can close the browser window and begin using AzCopy.
+Zostanie wyświetlone okno logowania. W tym oknie Zaloguj się do konta platformy Azure przy użyciu poświadczeń konta platformy Azure. Po pomyślnym zalogowaniu możesz zamknąć okno przeglądarki i zacząć korzystać z AzCopy.
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Przekazywanie zawartości folderu do magazynu obiektów blob
 
@@ -84,31 +84,31 @@ Za pomocą narzędzia AzCopy możesz przekazać wszystkie pliki w folderze do ma
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Replace the `<local-folder-path>` placeholder with the path to a folder that contains files (For example: `C:\myFolder` or `/mnt/myFolder`).
+* Zastąp symbol zastępczy `<local-folder-path>` ścieżką do folderu, który zawiera pliki (na przykład: `C:\myFolder` lub `/mnt/myFolder`).
 
 * Zastąp symbol zastępczy `<storage-account-name>` nazwą konta magazynu.
 
-* Replace the `<container-name>` placeholder with the name of the container that you created.
+* Zastąp symbol zastępczy `<container-name>` nazwą utworzonego kontenera.
 
-To upload the contents of the specified directory to Blob storage recursively, specify the `--recursive` option. When you run AzCopy with this option, all subfolders and their files are uploaded as well.
+Aby przekazać zawartość określonego katalogu cyklicznie do magazynu obiektów blob, określ opcję `--recursive`. Po uruchomieniu AzCopy z tą opcją wszystkie podfoldery i ich pliki są również przekazywane.
 
 ## <a name="upload-modified-files-to-blob-storage"></a>Przekazywanie zmodyfikowanych plików do magazynu obiektów blob
 
-You can use AzCopy to upload files based on their last-modified time. 
+Można użyć AzCopy do przekazywania plików na podstawie ich czasu ostatniej modyfikacji. 
 
-Aby z tego skorzystać, zmodyfikuj pliki lub utwórz nowe pliki w katalogu źródłowym do celów testowych. Then, use the AzCopy `sync` command.
+Aby z tego skorzystać, zmodyfikuj pliki lub utwórz nowe pliki w katalogu źródłowym do celów testowych. Następnie użyj polecenia AzCopy `sync`.
 
 ```AzCopy
 azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Replace the `<local-folder-path>` placeholder with the path to a folder that contains files (For example: `C:\myFolder` or `/mnt/myFolder`.
+* Zastąp symbol zastępczy `<local-folder-path>` ścieżką do folderu, który zawiera pliki (na przykład `C:\myFolder` lub `/mnt/myFolder`.
 
 * Zastąp symbol zastępczy `<storage-account-name>` nazwą konta magazynu.
 
-* Replace the `<container-name>` placeholder with the name of the container that you created.
+* Zastąp symbol zastępczy `<container-name>` nazwą utworzonego kontenera.
 
-To learn more about the `sync` command, see [Synchronize files](storage-use-azcopy-blobs.md#synchronize-files).
+Aby dowiedzieć się więcej na temat polecenia `sync`, zobacz [Synchronizing Files](storage-use-azcopy-blobs.md#synchronize-files).
 
 ## <a name="create-a-scheduled-task"></a>Tworzenie zaplanowanego zadania
 
@@ -116,10 +116,10 @@ Możliwe jest utworzenie zaplanowanego zadania lub zadania cron służącego do 
 
 Skopiuj polecenia narzędzia AzCopy do edytora tekstu. Zaktualizuj wartości parametrów polecenia narzędzia AzCopy na odpowiednie wartości. Zapisz plik jako `script.sh` (system Linux) lub `script.bat` (system Windows) na potrzeby narzędzia AzCopy. 
 
-These examples assume that your folder is named `myFolder`, your storage account name is `mystorageaccount` and your container name is `mycontainer`.
+W poniższych przykładach założono, że folder ma nazwę `myFolder`, nazwa konta magazynu jest `mystorageaccount`, a nazwa kontenera to `mycontainer`.
 
 > [!NOTE]
-> The Linux example appends a SAS token. You'll need to provide one in your command. The current version of AzCopy V10 doesn't support Azure AD authorization in cron jobs.
+> Przykład systemu Linux dołącza token SAS. Musisz podać ją w poleceniu. Bieżąca wersja programu AzCopy v10 nie obsługuje autoryzacji usługi Azure AD w zadaniach firmy cronus.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -150,7 +150,7 @@ Określenie wyrażenia cron `*/5 * * * *` w poleceniu wskazuje, że skrypt powł
 
 Aby utworzyć zaplanowane zadanie w systemie Windows, wpisz następujące polecenie w wierszu polecenia lub w programie PowerShell:
 
-This example assumes that your script is located in the root drive of your computer, but your script can be anywhere that you want.
+W tym przykładzie przyjęto założenie, że skrypt znajduje się na dysku głównym komputera, ale skrypt może znajdować się w dowolnym miejscu.
 
 ```cmd
 schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
@@ -174,14 +174,14 @@ Aby dowiedzieć się więcej o sposobach przenoszenia danych lokalnych do usług
 
 * [Przenoszenie danych do i z usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
 
-For more information about AzCopy, see any of these articles:
+Aby uzyskać więcej informacji na temat AzCopy, zobacz dowolny z następujących artykułów:
 
-* [Get started with AzCopy](storage-use-azcopy-v10.md)
+* [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
 
-* [Transfer data with AzCopy and blob storage](storage-use-azcopy-blobs.md)
+* [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
 
-* [Transfer data with AzCopy and file storage](storage-use-azcopy-files.md)
+* [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
 
-* [Transfer data with AzCopy and Amazon S3 buckets](storage-use-azcopy-s3.md)
+* [Transferowanie danych za pomocą zasobników AzCopy i Amazon S3](storage-use-azcopy-s3.md)
  
-* [Configure, optimize, and troubleshoot AzCopy](storage-use-azcopy-configure.md)
+* [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)

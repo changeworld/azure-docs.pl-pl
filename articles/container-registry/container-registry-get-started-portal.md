@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Create registry in portal
-description: Quickly learn to create a private Docker registry in Azure Container Registry with the Azure portal.
+title: Szybki Start — tworzenie rejestru w portalu
+description: Szybka nauka tworzenia rejestru prywatnego platformy Docker w Azure Container Registry z Azure Portal.
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
@@ -11,7 +11,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455224"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Quickstart: Create a private container registry using the Azure portal
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Szybki Start: Tworzenie prywatnego rejestru kontenerów przy użyciu Azure Portal
 
 Usługa Azure Container Registry to rejestr prywatny platformy Docker na platformie Azure, w którym można przechowywać prywatne obrazy kontenerów Docker i zarządzać nimi. W tym przewodniku Szybki start utworzysz rejestr kontenerów za pomocą witryny Azure Portal. Następnie za pomocą poleceń platformy Docker wypchniesz obraz kontenera do rejestru, a na koniec ściągniesz i uruchomisz obraz z rejestru.
 
@@ -19,7 +19,7 @@ Aby zalogować się do rejestru i pracować z obrazami kontenerów w tym przewod
 
 Musisz mieć również zainstalowane lokalnie środowisko Docker. Środowisko Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [Mac][docker-mac], [Windows][docker-windows] lub [Linux][docker-linux].
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -33,7 +33,7 @@ Wprowadź wartości w polach **Nazwa rejestru** i **Grupa zasobów**. Nazwa reje
 
 ![Tworzenie rejestru kontenerów w witrynie Azure Portal][qs-portal-03]
 
-W tym przewodniku Szybki start utworzysz rejestr *Podstawowy*, który jest zoptymalizowaną pod względem kosztów opcją dla deweloperów poznających usługę Azure Container Registry. For details on available service tiers, see [Container registry SKUs][container-registry-skus].
+W tym przewodniku Szybki start utworzysz rejestr *Podstawowy*, który jest zoptymalizowaną pod względem kosztów opcją dla deweloperów poznających usługę Azure Container Registry. Aby uzyskać szczegółowe informacje o dostępnych warstwach usług, zobacz [jednostki SKU rejestru kontenerów][container-registry-skus].
 
 Kiedy pojawi się komunikat **Wdrażanie zakończyło się pomyślnie**, wybierz rejestr kontenerów w portalu. 
 
@@ -43,7 +43,7 @@ Zanotuj wartość **Serwer logowania**. Ta wartość będzie używana w poniższ
 
 ## <a name="log-in-to-registry"></a>Logowanie do rejestru
 
-Przed wypychaniem i ściąganiem obrazów kontenerów musisz zalogować się do wystąpienia usługi ACR. Open a command shell in your operating system, and use the [az acr login][az-acr-login] command in the Azure CLI.
+Przed wypychaniem i ściąganiem obrazów kontenerów musisz zalogować się do wystąpienia usługi ACR. Otwórz powłokę poleceń w systemie operacyjnym, a następnie użyj polecenia [AZ ACR login][az-acr-login] .
 
 ```azurecli
 az acr login --name <acrName>
@@ -57,7 +57,7 @@ Po ukończeniu polecenie zwraca ciąg `Login Succeeded`.
 
 Aby wyświetlić listę obrazów w rejestrze, przejdź do rejestru w portalu i wybierz pozycję **Repozytoria**, a następnie wybierz repozytorium utworzone za pomocą polecenia `docker push`.
 
-In this example, we select the **hello-world** repository, and we can see the `v1`-tagged image under **TAGS**.
+W tym przykładzie wybieramy repozytorium **Hello-World** i w obszarze **tagów**zobaczymy obraz z tagami `v1`.
 
 ![Wyświetlanie listy obrazów kontenerów w witrynie Azure Portal][qs-portal-09]
 
@@ -74,7 +74,7 @@ Aby wyczyścić zasoby, przejdź do grupy zasobów **myResourceGroup** w portalu
 W tym przewodniku Szybki start utworzono usługę Azure Container Registry w witrynie Azure Portal, wypchnięto obraz kontenera oraz ściągnięto i uruchomiono obraz z rejestru. Przejdź do samouczków usługi Azure Container Registry, aby dowiedzieć się więcej o tej usłudze.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry tutorials][container-registry-tutorial-quick-task]
+> [Samouczki Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- IMAGES -->
 [qs-portal-01]: ./media/container-registry-get-started-portal/qs-portal-01.png

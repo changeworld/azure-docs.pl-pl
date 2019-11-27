@@ -1,5 +1,5 @@
 ---
-title: Create an Internal Load Balancer - Azure template
+title: Tworzenie wewnętrznego modułu równoważenia obciążenia — szablon platformy Azure
 titleSuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia przy użyciu szablonu w usłudze Resource Manager
 services: load-balancer
@@ -45,7 +45,7 @@ Aby wdrożyć pobrany szablon przy użyciu programu PowerShell, wykonaj poniższ
 1. Jeśli nie znasz programu Azure PowerShell, zapoznaj się z artykułem [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview) i postępuj zgodnie z instrukcjami aż do momentu logowania się w programie Azure i wyboru subskrypcji.
 2. Pobierz plik parametrów na lokalny dysk twardy.
 3. Edytuj plik i zapisz go.
-4. Run the **New-AzResourceGroupDeployment** cmdlet to create a resource group using the template.
+4. Uruchom polecenie cmdlet **New-AzResourceGroupDeployment** , aby utworzyć grupę zasobów przy użyciu szablonu.
 
     ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
@@ -58,7 +58,7 @@ Aby wdrożyć pobrany szablon przy użyciu programu PowerShell, wykonaj poniższ
 Aby wdrożyć szablon przy użyciu interfejsu wiersza polecenia platformy Azure, wykonaj poniższe kroki.
 
 1. Jeśli po raz pierwszy używasz interfejsu wiersza polecenia Azure, zobacz artykuł [Instalowanie i konfigurowania interfejsu wiersza polecenia Azure](../cli-install-nodejs.md) i postępuj zgodnie z instrukcjami aż do punktu, w którym należy wybrać konto platformy Azure i subskrypcję.
-2. Uruchom polecenie **azure config mode**, aby włączyć tryb usługi Resource Manager, jak pokazano poniżej.
+2. Uruchom polecenie **azure config mode**, aby włączyć tryb Resource Manager, jak pokazano poniżej.
 
     ```azurecli-interactive
     azure config mode arm
@@ -81,4 +81,4 @@ Aby wdrożyć szablon przy użyciu interfejsu wiersza polecenia platformy Azure,
 
 [Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md) (Konfigurowanie ustawień limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia)
 
-For the JSON syntax and properties of a load balancer in a template, see [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+Aby poznać składnię i właściwości JSON modułu równoważenia obciążenia w szablonie, zobacz [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Create geo-replicated registry
+title: Samouczek — Tworzenie rejestru z replikacją geograficzną
 description: Tworzenie rejestru kontenerów platformy Azure, konfigurowanie replikacji geograficznej, przygotowanie obrazu platformy Docker i wdrożenie go w rejestrze. Pierwsza część trzyczęściowej serii.
 ms.topic: tutorial
 ms.date: 04/30/2017
@@ -37,7 +37,7 @@ Usługa Azure Cloud Shell nie zawiera składników platformy Docker wymaganych d
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 Wybierz pozycję **Utwórz zasób** > **Kontenery** > **Azure Container Registry**.
 
@@ -106,13 +106,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-If you don't have `git` installed, you can [download the ZIP archive][acr-helloworld-zip] directly from GitHub.
+Jeśli nie masz zainstalowanego `git`, możesz [pobrać archiwum zip][acr-helloworld-zip] bezpośrednio z witryny GitHub.
 
 ## <a name="update-dockerfile"></a>Aktualizacja pliku Dockerfile
 
 Plik Dockerfile dołączony do przykładu przedstawia sposób tworzenia kontenera. Rozpoczyna się ono od oficjalnego obrazu [aspnetcore][dockerhub-aspnetcore], następnie pliki aplikacji są kopiowane do kontenera, instalowane są zależności, dane wyjściowe są kompilowane za pomocą oficjalnego obrazu [aspnetcore-build][dockerhub-aspnetcore-build] i w końcu jest kompilowany zoptymalizowany obraz aspnetcore.
 
-The [Dockerfile][dockerfile] is located at `./AcrHelloworld/Dockerfile` in the cloned source.
+[Pliku dockerfile][dockerfile] znajduje się w `./AcrHelloworld/Dockerfile` w sklonowanym źródle.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base

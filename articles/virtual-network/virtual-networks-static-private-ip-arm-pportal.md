@@ -109,7 +109,7 @@ W pokazanym powyżej okienku **adresy IP** kliknij pozycję **dynamiczne** w obs
 
 Zaleca się, aby nie przypisywać statycznie prywatnego adresu IP przypisanego do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej, o ile nie jest to konieczne, [na przykład podczas przypisywania wielu adresów IP do maszyny wirtualnej z systemem Windows](virtual-network-multiple-ip-addresses-portal.md). Jeśli ręcznie ustawisz prywatny adres IP w ramach systemu operacyjnego, upewnij się, że jest to ten sam adres, co prywatny adres IP przypisany do [interfejsu sieciowego](virtual-network-network-interface-addresses.md#change-ip-address-settings)platformy Azure, lub utracisz łączność z maszyną wirtualną. Dowiedz się więcej o ustawieniach [prywatnych adresów IP](virtual-network-network-interface-addresses.md#private) . Należy nigdy ręcznie przypisać publiczny adres IP przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat zarządzania [ustawieniami adresów IP](virtual-network-network-interface-addresses.md).
 

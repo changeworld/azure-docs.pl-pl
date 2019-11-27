@@ -17,17 +17,17 @@ ms.locfileid: "74224421"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| vCPUs per [subscription](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10 000 |
-| [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription |200 |200 |
-| [Storage accounts](../articles/storage/common/storage-create-storage-account.md) per subscription<sup>2</sup> |100 |100 |
+| Procesorów wirtualnych vCPU na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10 000 |
+| [Współadministratorzy](../articles/billing-add-change-azure-subscription-administrator.md) na subskrypcję |200 |200 |
+| [Konta magazynu](../articles/storage/common/storage-create-storage-account.md) na subskrypcję<sup>2</sup> |100 |100 |
 | [Usługi w chmurze](../articles/cloud-services/cloud-services-choose-me.md) na subskrypcję |20 |200 |
-| [Local networks](/previous-versions/azure/reference/jj157100(v=azure.100)) per subscription |10 |500 |
-| DNS servers per subscription |9 |100 |
-| Reserved IPs per subscription |20 |100 |
+| [Sieci lokalne](/previous-versions/azure/reference/jj157100(v=azure.100)) na subskrypcję |10 |500 |
+| Serwery DNS na subskrypcję |9 |100 |
+| Zastrzeżone adresy IP na subskrypcję |20 |100 |
 | [Grupy koligacji](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na subskrypcję |256 |256 |
-| Subscription name length (characters) | 64 | 64 |
+| Długość nazwy subskrypcji (znaki) | 64 | 64 |
 
-<sup>1</sup>Extra small instances count as one vCPU toward the vCPU limit despite using a partial CPU core.
+<sup>1</sup> Liczba bardzo małych wystąpień jest traktowana jako jedna vCPU do limitu vCPU, mimo że jest używana część rdzeń procesora CPU.
 
-<sup>2</sup>The storage account limit includes both Standard and Premium storage accounts. 
+<sup>2</sup> Limit konta magazynu obejmuje konta magazynu w warstwie Standardowa i Premium. 
 

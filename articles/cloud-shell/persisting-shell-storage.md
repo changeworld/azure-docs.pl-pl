@@ -141,13 +141,13 @@ Udział plików będzie nadal istnieć, chyba że zostanie usunięty ręcznie. C
 
 ### <a name="list-clouddrive-azure-file-shares"></a>Lista `clouddrive` udziałów plików platformy Azure
 `Get-CloudDrive` polecenie cmdlet pobiera informacje o udziale plików platformy Azure aktualnie zainstalowane przez `clouddrive` w Cloud Shell. <br>
-![Running Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
+![uruchomienie Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
 ### <a name="unmount-clouddrive"></a>Odinstalowanie `clouddrive`
 Można odinstalować udział plików platformy Azure, który jest instalowany w Cloud Shell w dowolnym momencie. Jeśli udział plików platformy Azure został usunięty, zostanie wyświetlony monit o utworzenie i zainstalowanie nowego udziału plików platformy Azure podczas kolejnej sesji.
 
 Polecenie cmdlet `Dismount-CloudDrive` Odinstalowuje udział plików platformy Azure z bieżącego konta magazynu. Odinstalowanie `clouddrive` kończy bieżącą sesję. Użytkownik zostanie poproszony o utworzenie i zainstalowanie nowego udziału plików platformy Azure podczas kolejnej sesji.
-![Running Dismount-CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
+![uruchamiania programu Dismount-CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 

@@ -208,5 +208,5 @@ Innym skutkiem podczas uaktualniania jest to, że klaster Menedżer zasobów wy�
 ### <a name="buffered-capacity--upgrade"></a>Przebuforowana pojemność & uaktualnienie
 Na ogół chcesz przeprowadzić uaktualnienie nawet wtedy, gdy klaster jest ograniczony lub zamknięty. Zarządzanie pojemnością klastra jest jeszcze ważniejsze w przypadku uaktualnień niż zwykle. W zależności od liczby domen uaktualnienia należy przeprowadzić migrację między 5 a 20 procent pojemności w miarę uaktualniania w ramach klastra. Ta współpraca musi znajdować się w dowolnym miejscu. Jest to miejsce, w którym koncepcje [buforowanych pojemności](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) są użyteczne. Pojemność buforowana jest przestrzegana podczas normalnego działania. Klaster Menedżer zasobów może wypełnić węzły do całkowitej pojemności (zużywanej przez bufor) w razie potrzeby.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Zacznij od początku i [zapoznaj się z wprowadzeniem do klastra Service Fabric Menedżer zasobów](service-fabric-cluster-resource-manager-introduction.md)

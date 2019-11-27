@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: Connect and query data'
+title: 'SSMS: łączenie i wykonywanie zapytań dotyczących danych'
 description: Dowiedz się, jak łączyć się z bazą danych SQL Database na platformie Azure przy użyciu programu SQL Server Management Studio (SSMS). Następnie uruchom instrukcje Transact-SQL (T-SQL), aby wykonać zapytanie i edytować dane.
 keywords: łączenie z bazą danych SQL, sql server management studio
 services: sql-database
@@ -19,9 +19,9 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482161"
 ---
-# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Quickstart: Use SQL Server Management Studio to connect and query an Azure SQL database
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Szybki Start: używanie SQL Server Management Studio do nawiązywania połączenia i wysyłania zapytań do bazy danych Azure SQL Database
 
-In this quickstart, you'll use [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) to connect to an Azure SQL database. Następnie uruchomisz instrukcje języka Transact-SQL w celu wykonywania zapytań, wstawiania, aktualizowania i usuwania danych. Program SQL Server Management Studio możesz wykorzystać do zarządzania dowolną infrastrukturą SQL — od programu SQL Server po usługę SQL Database dla systemu Microsoft Windows.  
+W tym przewodniku szybki start użyjesz [SQL Server Management Studio][ssms-install-latest-84g] (SSMS), aby nawiązać połączenie z bazą danych Azure SQL. Następnie uruchomisz instrukcje języka Transact-SQL w celu wykonywania zapytań, wstawiania, aktualizowania i usuwania danych. Program SQL Server Management Studio możesz wykorzystać do zarządzania dowolną infrastrukturą SQL — od programu SQL Server po usługę SQL Database dla systemu Microsoft Windows.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,26 +29,26 @@ Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Przycisk Utwórz| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfiguracja | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
   |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
 
   > [!IMPORTANT]
   > Skrypty zamieszczone w tym artykule korzystają z bazy danych Adventure Works. Za pomocą wystąpienia zarządzanego należy zaimportować bazę danych Adventure Works do bazy danych wystąpienia lub zmodyfikować skrypty znajdujące się w tym artykule, aby korzystały z bazy danych Wide World Importers.
 
 ## <a name="install-the-latest-ssms"></a>Instalowanie najnowszej wersji środowiska SSMS
 
-Before you start, make sure you've installed the latest [SSMS][ssms-install-latest-84g].
+Przed rozpoczęciem upewnij się, że zainstalowano najnowszy program [SSMS][ssms-install-latest-84g].
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 2. Otwórz stronę **Bazy danych SQL** lub **Wystąpienia zarządzane SQL**.
 
@@ -77,7 +77,7 @@ W środowisku SMSS połącz się z serwerem usługi Azure SQL Database.
 
    ![łączenie z serwerem](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. Wybierz pozycję **Opcje** w oknie dialogowym **Połącz z serwerem**. In the **Connect to database** drop-down menu, select **mySampleDatabase**.If you leave the drop down to default, the connection is made to **master** database.
+3. Wybierz pozycję **Opcje** w oknie dialogowym **Połącz z serwerem**. W menu rozwijanym **Połącz z bazą danych** wybierz pozycję **mySampleDatabase**. Jeśli pozostawisz listę rozwijaną domyślną, połączenie zostanie nawiązane z bazą danych **Master** .
 
    ![nawiązywanie połączenia z bazą danych na serwerze](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
@@ -85,7 +85,7 @@ W środowisku SMSS połącz się z serwerem usługi Azure SQL Database.
 
 5. Aby wyświetlić obiekty bazy danych, rozwiń listę **Bazy danych**, a następnie rozwiń węzeł **mojaPrzykladowaBazaDanych**.
 
-   ![mySampleDatabase objects](./media/sql-database-connect-query-ssms/connected.png)  
+   ![mySampleDatabase — obiekty](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Zapytania o dane
 
@@ -104,13 +104,13 @@ Uruchom następujący kod z instrukcją [SELECT](https://msdn.microsoft.com/libr
 
 3. Na pasku narzędzi wybierz pozycję **Wykonaj**, aby pobrać dane z tabel `Product` i `ProductCategory`.
 
-    ![query to retrieve data from table Product and ProductCategory](./media/sql-database-connect-query-ssms/query2.png)
+    ![zapytanie w celu pobrania danych z tabeli produktów i ProductCategory](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Wstawianie danych
 
 Uruchom następujący kod z instrukcją [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) języka Transact-SQL, aby utworzyć nowy produkt w tabeli `SalesLT.Product`.
 
-1. Zastąp poprzednie zapytanie tym.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -135,22 +135,22 @@ Uruchom następujący kod z instrukcją [INSERT](https://msdn.microsoft.com/libr
 
 ## <a name="view-the-result"></a>Wyświetlanie wyniku
 
-1. Zastąp poprzednie zapytanie tym.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    SELECT * FROM [SalesLT].[Product]
    WHERE Name='myNewProduct'
    ```
 
-2. Wybierz pozycję **Wykonaj**. The following result appears.
+2. Wybierz pozycję **Wykonaj**. Zostanie wyświetlony następujący wynik.
 
-   ![result of Product table query](./media/sql-database-connect-query-ssms/result.png)
+   ![wynik zapytania tabeli produktu](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>Aktualizowanie danych
 
-Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
+Uruchom ten kod [aktualizacji](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL, aby zmodyfikować nowy produkt.
 
-1. Zastąp poprzednie zapytanie tym.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -164,7 +164,7 @@ Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL
 
 Uruchom następujący kod z instrukcją [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) języka Transact-SQL, aby usunąć nowy produkt.
 
-1. Zastąp poprzednie zapytanie tym.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    DELETE FROM [SalesLT].[Product]

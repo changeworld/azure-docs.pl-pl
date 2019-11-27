@@ -23,7 +23,7 @@ Rozwiązanie Cloudyn umożliwia zarządzanie kosztami i tworzenie raportów prze
 
 Na przykład może być konieczne uzyskanie zwrotu kosztów inżynieryjnych. Potrzebna jest możliwość przedstawienia zespołowi inżynierów tego, że wymagane jest określona kwota — na podstawie kosztów zasobów. Można pokazać im raport dotyczący wszystkich wykorzystanych zasobów z tagiem *inżynieria*.
 
-W tym artykule tagi i kategorie mają czasami to samo znaczenie. Kategorie to obszerne kolekcje mogące zawierać wiele elementów. Mogą to być na przykład jednostki biznesowe, centra kosztów, usługi internetowe lub inne dowolne elementy oznaczone tagami. Tags are name/value pairs that enable you to categorize resources and to view and manage consolidated billing information by applying the same tag to multiple resources and resource groups. We wcześniejszych wersjach witryny Azure Portal *nazwa tagu* była określana jako *klucz*. Tagi są tworzone i przechowywane dla pojedynczej subskrypcji platformy Azure. Tagi w usługach AWS składają się z pary klucz/wartość. Ponieważ zarówno na platformie Azure, jak i w usługach AWS jest używany termin *klucz*, rozwiązanie Cloudyn korzysta też z tego terminu. Narzędzie Category Manager korzysta z kluczy (nazw tagów) do scalania tagów.
+W tym artykule tagi i kategorie mają czasami to samo znaczenie. Kategorie to obszerne kolekcje mogące zawierać wiele elementów. Mogą to być na przykład jednostki biznesowe, centra kosztów, usługi internetowe lub inne dowolne elementy oznaczone tagami. Tagi to pary nazwa/wartość, które umożliwiają kategoryzowanie zasobów oraz wyświetlanie skonsolidowanych informacji rozliczeniowych i zarządzanie nimi przez zastosowanie tego samego tagu do wielu zasobów i grup zasobów. We wcześniejszych wersjach witryny Azure Portal *nazwa tagu* była określana jako *klucz*. Tagi są tworzone i przechowywane dla pojedynczej subskrypcji platformy Azure. Tagi w usługach AWS składają się z pary klucz/wartość. Ponieważ zarówno na platformie Azure, jak i w usługach AWS jest używany termin *klucz*, rozwiązanie Cloudyn korzysta też z tego terminu. Narzędzie Category Manager korzysta z kluczy (nazw tagów) do scalania tagów.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Cloudyn.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję rozwiązania Cloudyn.
 - [Nieaktywowane konta należy aktywować](activate-subs-accounts.md) w portalu Cloudyn.
 - Na maszynach wirtualnych należy włączyć [monitorowanie na poziomie gościa](azure-vm-extended-metrics.md).
 

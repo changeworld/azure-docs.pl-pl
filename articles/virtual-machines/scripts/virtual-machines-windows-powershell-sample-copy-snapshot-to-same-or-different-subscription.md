@@ -23,11 +23,11 @@ ms.locfileid: "74326340"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Kopiowanie migawki dysku zarządzanego do tej samej lub innej subskrypcji przy użyciu programu PowerShell
 
-Ten skrypt kopiuje migawkę dysku zarządzanego do tej samej lub innej subskrypcji. Use this script for the following scenarios:
+Ten skrypt kopiuje migawkę dysku zarządzanego do tej samej lub innej subskrypcji. Użyj tego skryptu w następujących scenariuszach:
 
-1. Migrate a snapshot in Premium storage (Premium_LRS) to Standard storage (Standard_LRS or Standard_ZRS) to reduce your cost.
-1. Migrate a snapshot from locally redundant storage (Premium_LRS, Standard_LRS) to zone redundant storage (Standard_ZRS) to benefit from the higher reliability of ZRS storage.
-1. Move a snapshot to different subscription in the same region for longer retention.
+1. Przeprowadź migrację migawki w usłudze Premium Storage (Premium_LRS) do magazynu w warstwie Standardowa (Standard_LRS lub Standard_ZRS), aby zmniejszyć koszty.
+1. Przeprowadź migrację migawki z magazynu lokalnie nadmiarowego (Premium_LRS, Standard_LRS) do magazynu Strefowo nadmiarowego (Standard_ZRS), aby korzystać z wyższej niezawodności magazynu ZRS.
+1. Przenieś migawkę do innej subskrypcji w tym samym regionie w celu dłuższego przechowywania.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 

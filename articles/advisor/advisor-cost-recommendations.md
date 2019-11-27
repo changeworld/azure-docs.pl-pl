@@ -58,7 +58,7 @@ Aby zaoszczędzić 60% kosztów, zalecamy przechowywanie migawek w magazynie w w
 
 2.  Na pulpicie nawigacyjnym usługi Advisor kliknij kartę **koszt** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat zaleceń klasyfikatora, zobacz:
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)

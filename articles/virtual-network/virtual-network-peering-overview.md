@@ -21,94 +21,94 @@ ms.locfileid: "74328348"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
-Virtual network peering enables you to seamlessly connect networks in [Azure Virtual Network](virtual-networks-overview.md). The virtual networks appear as one for connectivity purposes. The traffic between virtual machines uses the Microsoft backbone infrastructure. Like traffic between virtual machines in the same network, traffic is routed through Microsoft's *private* network only.
+Komunikacja równorzędna sieci wirtualnych umożliwia bezproblemowe łączenie sieci w [usłudze Azure Virtual Network](virtual-networks-overview.md). Sieci wirtualne są wyświetlane jako jedna na potrzeby łączności. Ruch między maszynami wirtualnymi odbywa się za pomocą infrastruktury sieci szkieletowej firmy Microsoft. Podobnie jak ruch między maszynami wirtualnymi w tej samej sieci, ruch jest kierowany przez sieć *prywatną* firmy Microsoft.
 
-Azure supports the following types of peering:
+Platforma Azure obsługuje następujące typy komunikacji równorzędnej:
 
-* Virtual network peering: Connect virtual networks within the same Azure region.
-* Global virtual network peering: Connecting virtual networks across Azure regions.
+* Komunikacja równorzędna sieci wirtualnych: łączenie sieci wirtualnych w tym samym regionie świadczenia usługi Azure.
+* Globalna komunikacja równorzędna sieci wirtualnych: łączenie sieci wirtualnych w różnych regionach platformy Azure.
 
 Korzystanie z wirtualnych sieci równorzędnych, lokalnych lub globalnych, zapewnia m.in. następujące korzyści:
 
 * Połączenie o małych opóźnieniach i dużej przepustowości między zasobami w różnych sieciach wirtualnych.
-* The ability for resources in one virtual network to communicate with resources in a different virtual network.
-* The ability to transfer data between virtual networks across Azure subscriptions, Azure Active Directory tenants, deployment models, and Azure regions.
-* The ability to peer virtual networks created through the Azure Resource Manager.
-* The ability to peer a virtual network created through Resource Manager to one created through the classic deployment model. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, zapoznaj się z artykułem [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Informacje na temat modeli wdrażania platformy Azure).
+* Możliwość komunikowania się zasobów w jednej sieci wirtualnej z zasobami w innej sieci wirtualnej.
+* Możliwość transferu danych między sieciami wirtualnymi w ramach subskrypcji platformy Azure, Azure Active Directory dzierżawców, modeli wdrażania i regionów świadczenia usługi Azure.
+* Możliwość komunikacji równorzędnej sieci wirtualnych utworzonych za pomocą Azure Resource Manager.
+* Możliwość komunikacji równorzędnej z siecią wirtualną utworzoną za pomocą Menedżer zasobów do jednej utworzonej za pomocą klasycznego modelu wdrażania. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, zapoznaj się z artykułem [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Informacje na temat modeli wdrażania platformy Azure).
 * Brak przestojów zasobów w sieci wirtualnej podczas tworzenia komunikacji równorzędnej albo po utworzeniu komunikacji równorzędnej.
 
 Ruch sieciowy między wirtualnymi sieciami równorzędnymi jest prywatny. Ruch między sieciami wirtualnymi jest utrzymywany w sieci szkieletowej firmy Microsoft. Do komunikacji między sieciami wirtualnymi nie jest wymagany publiczny Internet, bramy ani szyfrowanie.
 
 ## <a name="connectivity"></a>Łączność
 
-For peered virtual networks, resources in either virtual network can directly connect with resources in the peered virtual network.
+W przypadku sieci wirtualnych za pomocą komunikacji równorzędnej zasoby w jednej sieci wirtualnej mogą łączyć się bezpośrednio z zasobami w równorzędnej sieci wirtualnej.
 
 Opóźnienie sieciowe między maszynami wirtualnymi w równorzędnych sieciach wirtualnych w tym samym regionie jest takie samo jak opóźnienie w pojedynczej sieci wirtualnej. Przepływność sieci zależy od przepustowości dozwolonej dla maszyny wirtualnej proporcjonalnie do jej rozmiaru. Nie ma żadnych dodatkowych ograniczeń przepustowości w obrębie komunikacji równorzędnej.
 
 Ruch między maszynami wirtualnymi w równorzędnych sieciach wirtualnych odbywa się bezpośrednio za pomocą infrastruktury sieci szkieletowej firmy Microsoft, a nie przy użyciu bramy lub publicznego Internetu.
 
-You can apply network security groups in either virtual network to block access to other virtual networks or subnets.
-When configuring virtual network peering, either open or close the network security group rules between the virtual networks. If you open full connectivity between peered virtual networks, you can apply network security groups to block or deny specific access. Full connectivity is the default option. To learn more about network security groups, see [Security groups](security-overview.md).
+Aby zablokować dostęp do innych sieci wirtualnych lub podsieci, można zastosować sieciowe grupy zabezpieczeń w jednej sieci wirtualnej.
+Podczas konfigurowania komunikacji równorzędnej sieci wirtualnej należy otworzyć lub zamknąć reguły sieciowej grupy zabezpieczeń między sieciami wirtualnymi. W przypadku otwarcia pełnej łączności między równorzędnymi sieciami wirtualnymi można zastosować sieciowe grupy zabezpieczeń, aby zablokować lub odmówić określonego dostępu. Pełna łączność jest opcją domyślną. Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, zobacz [grupy zabezpieczeń](security-overview.md).
 
 ## <a name="service-chaining"></a>Tworzenie łańcuchów usług
 
-Service chaining enables you to direct traffic from one virtual network to a virtual appliance or gateway in a peered network through user-defined routes.
+Łańcuchy usług umożliwiają kierowanie ruchu z jednej sieci wirtualnej do urządzenia wirtualnego lub bramy w sieci równorzędnej za pośrednictwem tras zdefiniowanych przez użytkownika.
 
-To enable service chaining, configure user-defined routes that point to virtual machines in peered virtual networks as the *next hop* IP address. User-defined routes could also point to virtual network gateways to enable service chaining.
+Aby włączyć tworzenie łańcucha usług, należy skonfigurować trasy zdefiniowane przez użytkownika, które wskazują na maszyny wirtualne w sieciach wirtualnych równorzędnych jako adres IP *następnego przeskoku* . Trasy zdefiniowane przez użytkownika mogą także wskazywać bramy sieci wirtualnej w celu włączenia łańcucha usług.
 
-You can deploy hub-and-spoke networks, where the hub virtual network hosts infrastructure components such as a network virtual appliance or VPN gateway. Następnie wszystkie sieci wirtualne typu gwiazda można połączyć za pomocą komunikacji równorzędnej z centralną siecią wirtualną. Traffic flows through network virtual appliances or VPN gateways in the hub virtual network.
+Można wdrożyć sieci gwiazdy, w których Centrum sieci wirtualnej hostuje składniki infrastruktury, takie jak sieciowe urządzenie wirtualne lub Brama sieci VPN. Następnie wszystkie sieci wirtualne typu gwiazda można połączyć za pomocą komunikacji równorzędnej z centralną siecią wirtualną. Ruch przepływów przez wirtualne urządzenia sieciowe lub bramy sieci VPN w sieci wirtualnej centrum.
 
-Wirtualne sieci równorzędne umożliwiają użycie kolejnego przeskoku w trasie zdefiniowanej przez użytkownika jako adresu IP maszyny wirtualnej w wirtualnej sieci równorzędnej lub bramie sieci VPN. You can't route between virtual networks with a user-defined route that specifies an Azure ExpressRoute gateway as the next hop type. Aby dowiedzieć się więcej o trasach definiowanych przez użytkownika, zobacz [User-defined routes overview](virtual-networks-udr-overview.md#user-defined) (Omówienie tras definiowanych przez użytkownika). To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Wirtualne sieci równorzędne umożliwiają użycie kolejnego przeskoku w trasie zdefiniowanej przez użytkownika jako adresu IP maszyny wirtualnej w wirtualnej sieci równorzędnej lub bramie sieci VPN. Nie można kierować między sieciami wirtualnymi za pomocą trasy zdefiniowanej przez użytkownika, która określa bramę usługi Azure ExpressRoute jako typ następnego przeskoku. Aby dowiedzieć się więcej o trasach definiowanych przez użytkownika, zobacz [User-defined routes overview](virtual-networks-udr-overview.md#user-defined) (Omówienie tras definiowanych przez użytkownika). Aby dowiedzieć się, jak utworzyć topologię sieci piasty i szprych, zobacz [topologia sieci gwiazdy na platformie Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Bramy i łączność lokalna
 
-Each virtual network, including a peered virtual network, can have its own gateway. A virtual network can use its gateway to connect to an on-premises network. You can also configure [virtual network-to-virtual network connections](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) by using gateways, even for peered virtual networks.
+Każda sieć wirtualna, w tym równorzędna Sieć wirtualna, może mieć własną bramę. Sieć wirtualna może używać jej do łączenia się z siecią lokalną. Możesz również skonfigurować [połączenia sieci wirtualnej z](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) siecią wirtualną przy użyciu bram, nawet w przypadku wirtualnych sieci równorzędnych.
 
-When you configure both options for virtual network interconnectivity, the traffic between the virtual networks flows through the peering configuration. The traffic uses the Azure backbone.
+W przypadku skonfigurowania obu opcji wzajemnej łączności między sieciami wirtualnymi ruch między sieciami wirtualnymi odbywa się za pośrednictwem konfiguracji komunikacji równorzędnej. Ruch używa sieci szkieletowej platformy Azure.
 
-You can also configure the gateway in the peered virtual network as a transit point to an on-premises network. In this case, the virtual network that is using a remote gateway can't have its own gateway. A virtual network has only one gateway. The gateway is either a local or remote gateway in the peered virtual network, as shown in the following diagram:
+Możesz również skonfigurować bramę w wirtualnej sieci równorzędnej jako punkt tranzytowy do sieci lokalnej. W takim przypadku Sieć wirtualna korzystająca z bramy zdalnej nie może mieć własnej bramy. Sieć wirtualna ma tylko jedną bramę. Brama jest lokalną lub zdalną bramą w równorzędnej sieci wirtualnej, jak pokazano na poniższym diagramie:
 
 ![przesyłanie w równorzędnych sieciach wirtualnych](./media/virtual-networks-peering-overview/local-or-remote-gateway-in-peered-virual-network.png)
 
-Both virtual network peering and global virtual network peering support gateway transit.
+Zarówno Komunikacja równorzędna sieci wirtualnych, jak i globalne wirtualne sieci równorzędne obsługują tranzyt bramy.
 
-Gateway transit between virtual networks created through different deployment models is supported. The gateway must be in the virtual network in the Resource Manager model. Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Obsługiwane są Tranzyty bramy między sieciami wirtualnymi utworzonymi za poorednictwem różnych modeli wdrażania. Brama musi znajdować się w sieci wirtualnej w modelu Menedżer zasobów. Aby dowiedzieć się więcej na temat przesyłania danych za pomocą bramy, zobacz [Konfigurowanie bramy sieci VPN na potrzeby przesyłania danych w komunikacji równorzędnej sieci wirtualnej](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-When you peer virtual networks that share a single Azure ExpressRoute connection, the traffic between them goes through the peering relationship. That traffic uses the Azure backbone network. Użytkownicy mogą nadal korzystać z bram lokalnych w poszczególnych sieciach wirtualnych, aby łączyć się z obwodem lokalnym. Otherwise, you can use a shared gateway and configure transit for on-premises connectivity.
+W przypadku równorzędnych sieci wirtualnych, które współużytkują pojedyncze połączenie usługi Azure ExpressRoute, ruch między nimi odbywa się przez relację komunikacji równorzędnej. Ten ruch używa sieci szkieletowej platformy Azure. Użytkownicy mogą nadal korzystać z bram lokalnych w poszczególnych sieciach wirtualnych, aby łączyć się z obwodem lokalnym. W przeciwnym razie możesz użyć udostępnionej bramy i skonfigurować tranzyt dla łączności lokalnej.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-To confirm that virtual networks are peered, you can check effective routes. Check routes for a network interface in any subnet in a virtual network. Jeśli istnieje komunikacja równorzędna w sieci wirtualnej, wszystkie podsieci w tej sieci wirtualnej mają trasy z typem następnego przeskoku *Komunikacja równorzędna sieci wirtualnych* dla każdej przestrzeni adresowej w każdej równorzędnej sieci wirtualnej. For more information, see [Diagnose a virtual machine routing problem](diagnose-network-routing-problem.md).
+Aby upewnić się, że sieci wirtualne są połączone za pomocą komunikacji równorzędnej, możesz sprawdzić obowiązujące trasy. Sprawdź trasy dla interfejsu sieciowego w dowolnej podsieci w sieci wirtualnej. Jeśli istnieje komunikacja równorzędna w sieci wirtualnej, wszystkie podsieci w tej sieci wirtualnej mają trasy z typem następnego przeskoku *Komunikacja równorzędna sieci wirtualnych* dla każdej przestrzeni adresowej w każdej równorzędnej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [diagnozowanie problemu z routingiem maszyny wirtualnej](diagnose-network-routing-problem.md).
 
-You can also troubleshoot connectivity to a virtual machine in a peered virtual network using Azure Network Watcher. A connectivity check lets you see how traffic is routed from a source virtual machine's network interface to a destination virtual machine's network interface. For more information, see [Troubleshoot connections with Azure Network Watcher using the Azure portal](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
+Możesz również rozwiązywać problemy z łącznością z maszyną wirtualną w równorzędnej sieci wirtualnej przy użyciu usługi Azure Network Watcher. Kontrola łączności pozwala zobaczyć, jak ruch jest kierowany z interfejsu sieciowego źródłowej maszyny wirtualnej do interfejsu sieciowego docelowej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z usługą Azure Network Watcher przy użyciu Azure Portal](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
 
-You can also try the [Troubleshoot virtual network peering issues](virtual-network-troubleshoot-peering-issues.md).
+Możesz również spróbować [rozwiązywać problemy z komunikacją równorzędną sieci wirtualnej](virtual-network-troubleshoot-peering-issues.md).
 
-## Constraints for peered virtual networks<a name="requirements-and-constraints"></a>
+## Ograniczenia dotyczące równorzędnych sieci wirtualnych<a name="requirements-and-constraints"></a>
 
 Następujące ograniczenia mają zastosowanie tylko wtedy, gdy sieci wirtualne są globalnie połączone za pomocą sieci równorzędnych:
 
-* Resources in one virtual network can't communicate with the front-end IP address of a Basic Internal Load Balancer (ILB)  in a globally peered virtual network.
-* Some services that use a Basic load balancer don't work over global virtual network peering. For more information, see [What are the constraints related to Global VNet Peering and Load Balancers?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+* Zasoby w jednej sieci wirtualnej nie mogą komunikować się z adresem IP frontonu podstawowego wewnętrznego Load Balancer (ILB) w wirtualnej sieci równorzędnej.
+* Niektóre usługi korzystające z podstawowego modułu równoważenia obciążenia nie działają w przypadku globalnej komunikacji równorzędnej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [jakie są ograniczenia dotyczące globalnej komunikacji równorzędnej sieci wirtualnej i modułów równoważenia obciążenia?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
-For more information, see [Requirements and constraints](virtual-network-manage-peering.md#requirements-and-constraints). To learn more about the supported number of peerings, see [Networking limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Aby uzyskać więcej informacji, zobacz [wymagania i ograniczenia](virtual-network-manage-peering.md#requirements-and-constraints). Aby dowiedzieć się więcej o obsługiwanej liczbie komunikacji równorzędnej, zobacz [limity dotyczące sieci](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="permissions"></a>Uprawnienia
 
-To learn about permissions required to create a virtual network peering, see [Permissions](virtual-network-manage-peering.md#permissions).
+Aby dowiedzieć się więcej o uprawnieniach wymaganych do utworzenia komunikacji równorzędnej sieci wirtualnej, zobacz [uprawnienia](virtual-network-manage-peering.md#permissions).
 
 ## <a name="pricing"></a>Cennik
 
-There's a nominal charge for ingress and egress traffic that uses a virtual network peering connection. For more information, see [Virtual Network pricing](https://azure.microsoft.com/pricing/details/virtual-network).
+Jest naliczona nominalna opłata za ruch przychodzący i ruchu wyjściowego, który używa połączenia komunikacji równorzędnej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Cennik usługi Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Gateway Transit is a peering property that enables a virtual network to utilize a VPN/ExpressRoute gateway in a peered virtual network. Gateway transit works for both cross premises and network-to-network connectivity. Traffic to the gateway (ingress or egress) in the peered virtual network incurs virtual network peering charges. For more information, see [VPN Gateway pricing](https://azure.microsoft.com/pricing/details/vpn-gateway/) for VPN gateway charges and ExpressRoute Gateway pricing for ExpressRoute gateway charges.
+Tranzyt bramy to właściwość komunikacji równorzędnej, która umożliwia sieci wirtualnej korzystanie z bramy sieci VPN/ExpressRoute w równorzędnej sieci wirtualnej. Tranzyt bramy działa zarówno w przypadku połączeń między sieciami lokalnymi, jak i między sieciami. Ruch do bramy (ruchu przychodzącego lub wychodzącego) w równorzędnej sieci wirtualnej wiąże się z opłatami za wirtualne sieci równorzędne. Aby uzyskać więcej informacji, zobacz [VPN Gateway cennika](https://azure.microsoft.com/pricing/details/vpn-gateway/) dla opłat za bramę sieci VPN i cennika usługi ExpressRoute Gateway na potrzeby opłat za bramę ExpressRoute.
 
 >[!NOTE]
-> A previous version of this document stated that virtual network peering charges would not apply with Gateway Transit. It now reflects accurate pricing per the pricing page.
+> Poprzednia wersja tego dokumentu stwierdziła, że opłaty za komunikację równorzędną sieci wirtualnych nie będą stosowane z tranzytem bramy. Teraz odzwierciedla dokładne ceny na stronie z cennikiem.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* You can create a peering between two virtual networks. The networks can belong to the same subscription, different deployment models in the same subscription, or different subscriptions. Ukończ samouczek dla jednego z następujących scenariuszy:
+* Można utworzyć komunikację równorzędną między dwiema sieciami wirtualnymi. Sieci mogą należeć do tej samej subskrypcji, różnych modeli wdrażania w tej samej subskrypcji lub w różnych subskrypcjach. Ukończ samouczek dla jednego z następujących scenariuszy:
 
     |Model wdrażania platformy Azure             | Subskrypcja  |
     |---------                          |---------|
@@ -117,6 +117,6 @@ Gateway Transit is a peering property that enables a virtual network to utilize 
     |Jedna sieć — Resource Manager, druga — model klasyczny  |[Ta sama](create-peering-different-deployment-models.md)|
     |                                   |[Różne](create-peering-different-deployment-models-subscriptions.md)|
 
-* To learn how to create a hub and spoke network topology, see [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* To learn about all virtual network peering settings, see [Create, change, or delete a virtual network peering](virtual-network-manage-peering.md).
-* For answers to common virtual network peering and global virtual network peering questions, see [VNet Peering](virtual-networks-faq.md#vnet-peering).
+* Aby dowiedzieć się, jak utworzyć topologię sieci piasty i szprych, zobacz [topologia sieci gwiazdy na platformie Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Aby dowiedzieć się więcej na temat wszystkich ustawień komunikacji równorzędnej sieci wirtualnej, zobacz [Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej](virtual-network-manage-peering.md).
+* Aby uzyskać odpowiedzi na często zadawane pytania dotyczące komunikacji równorzędnej sieci wirtualnej i sieci wirtualnych za pomocą komunikacji równorzędnej, zobacz wirtualne połączenia [równorzędne](virtual-networks-faq.md#vnet-peering).

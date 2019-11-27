@@ -64,7 +64,7 @@ Plik konfiguracji sieci może zawierać następujące elementy. Tytuł każdego 
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Poznaj [Schemat konfiguracji usługi Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093).
 * Informacje o [schemacie konfiguracji usługi platformy Azure](https://msdn.microsoft.com/library/windowsazure/ee758710).
 * [Skonfiguruj sieć wirtualną przy użyciu plików konfiguracji sieci](virtual-networks-using-network-configuration-file.md).

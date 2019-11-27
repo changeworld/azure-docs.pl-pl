@@ -25,15 +25,15 @@ Hostowanie serwera Jenkins na platformie Azure pozwala na centralizowanie automa
 - [Maszyn wirtualnych platformy Azure](/azure/virtual-machines/linux/overview). Zobacz nasz [samouczek](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd), aby utworzyć wystąpienie serwera Jenkins na maszynie wirtualnej.
 - Aby uzyskać informacje na temat klastra Kubernetes działającego w usłudze [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), zobacz nasze [instrukcje](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Monitor and manage your Azure Jenkins deployment using [Azure Monitor logs](/azure/log-analytics/log-analytics-overview) and the [Azure CLI](/cli/azure).
+Monitoruj wdrożenie usługi Azure Jenkins i zarządzaj nimi za pomocą [dzienników Azure monitor](/azure/log-analytics/log-analytics-overview) i [interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
 ## <a name="scale-your-build-automation-on-demand"></a>Skalowanie automatyzacji kompilacji na żądanie
 
-Dodawanie agentów kompilacji do istniejącego wdrożenia serwera Jenkins umożliwia skalowanie pojemności kompilacji narzędzia Jenkins w miarę wzrostu liczby kompilacji oraz stopnia złożoności zadań i potoków. You can run these build agents on Azure virtual machines by using the [Azure VM Agents plug-in](https://plugins.jenkins.io/azure-vm-agents). Zobacz nasz [samouczek](/azure/jenkins/jenkins-azure-vm-agents), aby uzyskać więcej informacji.
+Dodawanie agentów kompilacji do istniejącego wdrożenia serwera Jenkins umożliwia skalowanie pojemności kompilacji narzędzia Jenkins w miarę wzrostu liczby kompilacji oraz stopnia złożoności zadań i potoków. Tych agentów kompilacji można uruchamiać na maszynach wirtualnych platformy Azure przy użyciu [wtyczki agentów maszyny wirtualnej platformy Azure](https://plugins.jenkins.io/azure-vm-agents). Zobacz nasz [samouczek](/azure/jenkins/jenkins-azure-vm-agents), aby uzyskać więcej informacji.
 
 Po skonfigurowaniu przy użyciu [jednostki usługi platformy Azure](/azure/azure-resource-manager/resource-group-overview) potoki i zadania serwera Jenkins mogą korzystać z tego poświadczenia w celu:
 
-- Securely store and archive build artifacts in [Azure Storage](/azure/storage/common/storage-introduction) using the [Azure Storage plug-in](https://plugins.jenkins.io/windows-azure-storage). Aby dowiedzieć się więcej, zapoznaj się z [instrukcjami dotyczącymi magazynu serwera Jenkins](/azure/storage/common/storage-java-jenkins-continuous-integration-solution).
+- Bezpiecznie Przechowuj i Archiwizuj artefakty kompilacji w [usłudze Azure Storage](/azure/storage/common/storage-introduction) przy użyciu [wtyczki usługi Azure Storage](https://plugins.jenkins.io/windows-azure-storage). Aby dowiedzieć się więcej, zapoznaj się z [instrukcjami dotyczącymi magazynu serwera Jenkins](/azure/storage/common/storage-java-jenkins-continuous-integration-solution).
 - Zarządzania zasobami platformy Azure i konfigurowania ich za pomocą [interfejsu wiersza polecenia platformy Azure](/azure/jenkins/execute-cli-jenkins-pipeline).
 
 ## <a name="deploy-your-code-into-azure-services"></a>Wdrażanie swojego kodu w usługach platformy Azure

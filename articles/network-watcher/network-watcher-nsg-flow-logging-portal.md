@@ -1,7 +1,7 @@
 ---
-title: Tutorial - Log network traffic flow to and from a VM using the Azure portal
+title: Samouczek — rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu Azure Portal
 titleSuffix: Azure Network Watcher
-description: In this tutorial, learn how to log network traffic flow to and from a VM using Network Watcher's NSG flow logs capability.
+description: W tym samouczku dowiesz się, jak rejestrować przepływy ruchu sieciowego do i z maszyny wirtualnej przy użyciu możliwości dzienników przepływu sieciowej grupy zabezpieczeń Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -51,7 +51,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Subskrypcja| Wybierz subskrypcję.|
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę **myResourceGroup**.|
-    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
+    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**|
 
 4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
 5. W obszarze **Ustawienia** zaakceptuj wszystkie wartości domyślne i wybierz przycisk **OK**.
@@ -90,13 +90,13 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
     | Ustawienie        | Wartość                                                        |
     | ---            | ---   |
     | Nazwa           | Od 3 do 24 znaków, może zawierać tylko małe litery i cyfry i musi być unikatowa dla wszystkich kont usługi Azure Storage.                                                               |
-    | Lokalizacja       | Wybierz pozycję **Wschodnie stany USA**.                                           |
+    | Lokalizacja       | Wybierz pozycję **Wschodnie stany USA**                                           |
     | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
 
-    Tworzenie konta usługi Storage może potrwać około minuty. Nie wykonuj pozostałych kroków, dopóki konto usługi Storage nie zostanie utworzone. Jeśli zamiast tworzyć nowe konto usługi Storage używasz istniejącego konta, upewnij się, że wybierasz konto usługi Storage, które ma pozycję **Wszystkie sieci** (ustawienie domyślne) wybraną dla pozycji **Zapory i sieci wirtualne** w obszarze **USTAWIENIA** na koncie usługi Storage. In all cases, the storage account must be in the same region as the NSG. 
+    Tworzenie konta usługi Storage może potrwać około minuty. Nie wykonuj pozostałych kroków, dopóki konto usługi Storage nie zostanie utworzone. Jeśli zamiast tworzyć nowe konto usługi Storage używasz istniejącego konta, upewnij się, że wybierasz konto usługi Storage, które ma pozycję **Wszystkie sieci** (ustawienie domyślne) wybraną dla pozycji **Zapory i sieci wirtualne** w obszarze **USTAWIENIA** na koncie usługi Storage. We wszystkich przypadkach konto magazynu musi znajdować się w tym samym regionie co sieciowej grupy zabezpieczeń. 
     
     > [!NOTE]
-    > While Microsoft.Insight and Microsoft.Network providers are currently supported as [trusted Microsoft Services for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), NSG Flow logs is still not fully onboarded. To enable NSG Flow logging, **All Networks** must be selected as mentioned above.
+    > Firma Microsoft. Insights i Microsoft. Network Providers są obecnie obsługiwani jako [Zaufane usługi firmy Microsoft dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), jednak dzienniki przepływu sieciowej grupy zabezpieczeń nie są w pełni dołączane. Aby włączyć rejestrowanie przepływu sieciowej grupy zabezpieczeń, należy wybrać **wszystkie sieci** , jak wspomniano powyżej.
     
 4. W lewym górnym rogu portalu wybierz pozycję **Wszystkie usługi**. W polu **Filtr** wpisz ciąg *Network Watcher*. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
 5. W obszarze **DZIENNIKI** wybierz pozycję **Dzienniki przepływu sieciowej grupy zabezpieczeń**, jak pokazano na poniższej ilustracji:
@@ -105,19 +105,19 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
 
 6. Z listy sieciowych grup zabezpieczeń wybierz grupę o nazwie **myVm-nsg**.
 7. W obszarze **Ustawienia dzienników przepływu** wybierz pozycję **Wł.**
-8. Wybierz wersję dzienników przepływu do rejestrowania. Version 2 contains flow-session statistics (Bytes and Packets)
+8. Wybierz wersję dzienników przepływu do rejestrowania. Wersja 2 zawiera statystykę przepływu/sesji (bajty i pakiety)
 
-   ![Select flow Logs version](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+   ![Wybieranie wersji dzienników przepływów](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. Wybierz konto usługi Storage utworzone w kroku 3.
    > [!NOTE]
-   > NSG Flow Logs do not work with storage accounts if:
-   > * The storage accounts have a firewall enabled.
-   > * The storage accounts have [hierarchical namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) enabled.
+   > Dzienniki przepływu sieciowej grupy zabezpieczeń nie działają w przypadku kont magazynu, jeśli:
+   > * Na kontach magazynu jest włączona Zapora.
+   > * Konta magazynu mają włączoną [hierarchiczną przestrzeń nazw](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
 1. W lewym górnym rogu portalu wybierz pozycję **Wszystkie usługi**. W polu **Filtr** wpisz ciąg *Network Watcher*. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
 10. Ustaw pozycję **Przechowywanie (dni)** na 5, a następnie wybierz pozycję **Zapisz**.
     > [!IMPORTANT]
-    > Currently, there’s an issue where [network security group (NSG) flow logs](network-watcher-nsg-flow-logging-overview.md) for Network Watcher are not automatically deleted from Blob storage based on retention policy settings. If you have an existing non-zero retention policy, we recommend that you periodically delete the storage blobs that are past their retention period to avoid any incurring charges. For more information about how to delete the NSG flow log storage blog, see [Delete NSG flow log storage blobs](network-watcher-delete-nsg-flow-log-blobs.md).
+    > Obecnie występuje problem polegający na tym, że [dzienniki przepływu sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń)](network-watcher-nsg-flow-logging-overview.md) dla Network Watcher nie są automatycznie usuwane z magazynu obiektów BLOB na podstawie ustawień zasad przechowywania. Jeśli masz istniejące zasady przechowywania inne niż zero, zalecamy okresowe usuwanie obiektów blob magazynu, które przekroczyły okres przechowywania, aby uniknąć naliczania opłat. Aby uzyskać więcej informacji o usuwaniu blogu magazynu dzienników sieciowej grupy zabezpieczeń Flow, zobacz [usuwanie obiektów blob magazynu dzienników usługi sieciowej grupy zabezpieczeń Flow](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="download-flow-log"></a>Pobieranie dziennika przepływu
 
@@ -127,10 +127,10 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
    ![Pobieranie dzienników przepływu](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Wybierz konto usługi Storage skonfigurowane w kroku 2 sekcji [Włączanie dziennika przepływu sieciowej grupy zabezpieczeń](#enable-nsg-flow-log).
-4. Under **Blob service**, select **Blobs**, and then select the **insights-logs-networksecuritygroupflowevent** container.
-5. In the container, navigate the folder hierarchy until you get to a PT1H.json file, as shown in the picture that follows. Log files are written to a folder hierarchy that follows the following naming convention: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+4. W obszarze **BLOB Service**wybierz pozycję **obiekty blob**, a następnie wybierz kontener **Insights-Logs-networksecuritygroupflowevent** .
+5. W kontenerze przejdź do hierarchii folderów do momentu uzyskania pliku PT1H. JSON, jak pokazano na poniższej ilustracji. Pliki dziennika są zapisywane w hierarchii folderów, która następuje po następującej konwencji nazewnictwa: https://{storageAccountName}. blob. Core. Windows. NET/Insights-Logs-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {miesiąc}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
 
-   ![Flow log](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
+   ![Dziennik przepływu](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. Wybierz symbol **...** z prawej strony pliku PT1H.json i wybierz pozycję **Pobierz**.
 
@@ -216,9 +216,9 @@ Wartość elementu **mac** w poprzednich danych wyjściowych to adres MAC interf
 | 13.67.143.118     | Docelowy adres IP | Docelowy adres IP, do którego był skierowany przepływ.                                                                                  |
 | 44931        | Port źródłowy            | Port źródłowy, z którego pochodził przepływ.                                           |
 | 443         | Port docelowy       | Port docelowy, do którego był skierowany przepływ. Ponieważ ruch był przeznaczony do portu 443, reguła o nazwie **UserRule_default-allow-rdp** w pliku dziennika przetworzyła przepływ.                                                |
-| trylionów            | Protocol (Protokół)               | Określa rodzaj protokołu przepływu: TCP (T) lub UDP (U).                                  |
+| T            | Protokół               | Określa rodzaj protokołu przepływu: TCP (T) lub UDP (U).                                  |
 | O            | Kierunek              | Określa, czy ruch był przychodzący (I), czy wychodzący (O).                                     |
-| A            | Działanie                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).  
+| A            | Akcja                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).  
 | C            | Stan przepływu **tylko w wersji 2** | Rejestruje stan przepływu. Możliwe stany to **B**: początek — gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: kontynuacja — dotyczy ciągłego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: koniec — gdy przepływ zostanie zakończony. Statystyki są podawane. |
 | 30 | Wysłane pakiety — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. |
 | 16978 | Wysłane bajty — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu. |

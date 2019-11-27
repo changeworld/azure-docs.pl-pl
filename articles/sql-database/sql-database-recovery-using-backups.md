@@ -1,6 +1,6 @@
 ---
-title: Restore a database from a backup
-description: Learn about point-in-time restore, which enables you to roll back an Azure SQL database up to 35 days.
+title: Przywracanie bazy danych z kopii zapasowej
+description: Dowiedz się więcej o przywracaniu do punktu w czasie, który umożliwia wycofanie bazy danych Azure SQL Database do 35 dni.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -18,187 +18,187 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228046"
 ---
-# <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Recover an Azure SQL database by using automated database backups
+# <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL Database przy użyciu zautomatyzowanych kopii zapasowych bazy danych
 
-By default, Azure SQL Database backups are stored in geo-replicated blob storage (RA-GRS storage type). The following options are available for database recovery by using [automated database backups](sql-database-automated-backups.md). Przekonaj się:
+Domyślnie kopie zapasowe Azure SQL Database są przechowywane w replikowanym geograficznie magazynie obiektów BLOB (typ magazynu RA-GRS). Poniższe opcje są dostępne do odzyskiwania bazy danych przy użyciu [zautomatyzowanych kopii zapasowych bazy danych](sql-database-automated-backups.md). Możesz:
 
-- Create a new database on the same SQL Database server, recovered to a specified point in time within the retention period.
-- Create a database on the same SQL Database server, recovered to the deletion time for a deleted database.
-- Create a new database on any SQL Database server in the same region, recovered to the point of the most recent backups.
-- Create a new database on any SQL Database server in any other region, recovered to the point of the most recent replicated backups.
+- Utwórz nową bazę danych na tym samym serwerze SQL Database, a następnie Odzyskaj ją do określonego punktu w czasie w okresie przechowywania.
+- Utwórz bazę danych na tym samym serwerze SQL Database, Odzyskaj do czasu usunięcia usuniętej bazy danych.
+- Utwórz nową bazę danych na dowolnym serwerze SQL Database w tym samym regionie, a następnie Odzyskaj do punktu najnowszych kopii zapasowych.
+- Utwórz nową bazę danych na dowolnym serwerze SQL Database w innym regionie, Odzyskaj do punktu najnowszych zreplikowanych kopii zapasowych.
 
-If you configured [backup long-term retention](sql-database-long-term-retention.md), you can also create a new database from any long-term retention backup on any SQL Database server.
+Jeśli skonfigurowano [długoterminowe przechowywanie kopii zapasowych](sql-database-long-term-retention.md), można także utworzyć nową bazę danych na podstawie dowolnego długoterminowego przechowywania kopii zapasowych na dowolnym serwerze SQL Database.
 
 > [!IMPORTANT]
-> You can't overwrite an existing database during restore.
+> Nie można zastąpić istniejącej bazy danych podczas przywracania.
 
-When you're using the Standard or Premium service tiers, your database restore might incur an extra storage cost. The extra cost is incurred when the maximum size of the restored database is greater than the amount of storage included with the target database's service tier and performance level. For pricing details of extra storage, see the [SQL Database pricing page](https://azure.microsoft.com/pricing/details/sql-database/). If the actual amount of used space is less than the amount of storage included, you can avoid this extra cost by setting the maximum database size to the included amount.
+W przypadku korzystania z warstw usług warstwy Standardowa lub Premium przywrócenie bazy danych może pociągnąć za sobą dodatkowy koszt magazynu. Dodatkowy koszt jest naliczany, gdy maksymalny rozmiar przywróconej bazy danych jest większy niż ilość miejsca do magazynowania dołączona do warstwy usługi i poziomu wydajności docelowej bazy danych. Szczegóły cennika dodatkowego magazynu znajdują się na [stronie cennika SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość zajętego miejsca jest mniejsza niż ilość dostępnego magazynu, możesz uniknąć tego dodatkowego kosztu, ustawiając wartość w polu Maksymalny rozmiar bazy danych na uwzględnioną kwotę.
 
-## <a name="recovery-time"></a>Recovery time
+## <a name="recovery-time"></a>Czas odzyskiwania
 
-The recovery time to restore a database by using automated database backups is affected by several factors:
+Czas odzyskiwania do przywrócenia bazy danych przy użyciu zautomatyzowanych kopii zapasowych bazy danych ma wpływ na kilka czynników:
 
-- The size of the database.
-- The compute size of the database.
-- The number of transaction logs involved.
-- The amount of activity that needs to be replayed to recover to the restore point.
-- The network bandwidth if the restore is to a different region.
-- The number of concurrent restore requests being processed in the target region.
+- Rozmiar bazy danych.
+- Rozmiar obliczeń bazy danych.
+- Liczba użytych dzienników transakcji.
+- Ilość działań, które muszą być odtwarzane w celu odzyskania do punktu przywracania.
+- Przepustowość sieci, jeśli przywracanie jest w innym regionie.
+- Liczba współbieżnych żądań przywracania w regionie docelowym.
 
-For a large or very active database, the restore might take several hours. If there is a prolonged outage in a region, it's possible that a high number of geo-restore requests will be initiated for disaster recovery. When there are many requests, the recovery time for individual databases can increase. Most database restores complete in less than 12 hours.
+W przypadku dużej lub bardzo aktywnej bazy danych Przywracanie może potrwać kilka godzin. Jeśli w regionie występuje długotrwała awaria, możliwe jest zainicjowanie dużej liczby żądań przywracania geograficznego na potrzeby odzyskiwania po awarii. Jeśli istnieje wiele żądań, można zwiększyć czas odzyskiwania poszczególnych baz danych. Większość operacji przywracania bazy danych jest przeprowadzana w czasie krótszym niż 12 godzin.
 
-For a single subscription, there are limitations on the number of concurrent restore requests. These limitations apply to any combination of point-in-time restores, geo-restores, and restores from long-term retention backup.
+W przypadku pojedynczej subskrypcji istnieją ograniczenia liczby współbieżnych żądań przywracania. Te ograniczenia mają zastosowanie do dowolnej kombinacji przywracania do punktu w czasie, przywracania geograficznego i przywracania z kopii zapasowej długoterminowego przechowywania.
 
-| | **Max # of concurrent requests being processed** | **Max # of concurrent requests being submitted** |
+| | **Maksymalna liczba przetwarzanych żądań współbieżnych** | **Maksymalna liczba przesyłanych żądań współbieżnych** |
 | :--- | --: | --: |
-|Single database (per subscription)|10|60|
-|Elastic pool (per pool)|4|200|
+|Pojedyncza baza danych (na subskrypcję)|10|60|
+|Pula elastyczna (na pulę)|4|200|
 ||||
 
-There isn't a built-in method to restore the entire server. For an example of how to accomplish this task, see [Azure SQL Database: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666).
+Nie ma wbudowanej metody przywracania całego serwera. Aby zapoznać się z przykładem wykonywania tego zadania, zobacz [Azure SQL Database: pełne odzyskiwanie serwera](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666).
 
 > [!IMPORTANT]
-> To recover by using automated backups, you must be a member of the SQL Server contributor role in the subscription, or be the subscription owner. For more information, see [RBAC: Built-in roles](../role-based-access-control/built-in-roles.md). You can recover by using the Azure portal, PowerShell, or the REST API. You can't use Transact-SQL.
+> Aby odzyskać przy użyciu zautomatyzowanych kopii zapasowych, musisz być członkiem roli współautor SQL Server w subskrypcji lub być właścicielem subskrypcji. Aby uzyskać więcej informacji, zobacz [RBAC: role wbudowane](../role-based-access-control/built-in-roles.md). Odzyskiwanie można przeprowadzić za pomocą Azure Portal, programu PowerShell lub interfejsu API REST. Nie można używać języka Transact-SQL.
 
 ## <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
-You can restore a standalone, pooled, or instance database to an earlier point in time by using the Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), or the [REST API](https://docs.microsoft.com/rest/api/sql/databases). The request can specify any service tier or compute size for the restored database. Ensure that you have sufficient resources on the server to which you are restoring the database. When complete, the restore creates a new database on the same server as the original database. The restored database is charged at normal rates, based on its service tier and compute size. You don't incur charges until the database restore is complete.
+Za pomocą Azure Portal, [programu PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases)można przywrócić autonomiczną, w puli lub bazę danych wystąpienia do wcześniejszego punktu w czasie. Żądanie może określać dowolną warstwę usług lub rozmiar obliczeń dla przywróconej bazy danych. Upewnij się, że na serwerze, na którym jest przywracana baza danych, jest wystarczająca ilość zasobów. Po zakończeniu przywracania tworzy nową bazę danych na tym samym serwerze, na którym znajduje się oryginalna baza danych. Przywrócona baza danych jest naliczana według normalnych stawek na podstawie jej warstwy usług i rozmiaru obliczeniowego. Nie są naliczane opłaty do momentu zakończenia przywracania bazy danych.
 
-You generally restore a database to an earlier point for recovery purposes. You can treat the restored database as a replacement for the original database, or use it as a data source to update the original database.
+Na ogół przywracana jest baza danych do wcześniejszego punktu na potrzeby odzyskiwania. Przywróconą bazę danych można traktować jako zamiennik do oryginalnej bazy danych lub użyć jej jako źródła danych, aby zaktualizować oryginalną bazę danych.
 
-- **Database replacement**
+- **Zastąpienie bazy danych**
 
-  If you intend the restored database to be a replacement for the original database, you should specify the original database's compute size and service tier. You can then rename the original database, and give the restored database the original name by using the [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) command in T-SQL.
+  Jeśli chcesz, aby przywrócona baza danych była zamiennikiem oryginalnej bazy danych, należy określić rozmiar i warstwę usługi oryginalnej bazy danych. Następnie można zmienić nazwę oryginalnej bazy danych i nadać przywróconą bazę danych oryginalną nazwę przy użyciu polecenia [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) w języku T-SQL.
 
-- **Data recovery**
+- **Odzyskiwanie danych**
 
-  If you plan to retrieve data from the restored database to recover from a user or application error, you need to write and execute a  data recovery script that extracts data from the restored database and applies to the original database. Although the restore operation may take a long time to complete, the restoring database is visible in the database list throughout the restore process. If you delete the database during the restore, the restore operation will be canceled and you will not be charged for the database that did not complete the restore.
+  Jeśli planujesz pobrać dane z przywróconej bazy danych w celu odzyskania sprawności po błędzie użytkownika lub aplikacji, musisz napisać i wykonać skrypt odzyskiwania danych, który wyodrębnia dane z przywróconej bazy danych i ma zastosowanie do oryginalnej bazy danych. Mimo że operacja przywracania może zająć dużo czasu, przywracanie bazy danych jest widoczne na liście baz danych w ramach procesu przywracania. Jeśli baza danych zostanie usunięta podczas przywracania, operacja przywracania zostanie anulowana i nie zostanie naliczona opłata za bazę danych, która nie ukończyła przywracania.
   
-### <a name="point-in-time-restore-by-using-azure-portal"></a>Point-in-time restore by using Azure portal
+### <a name="point-in-time-restore-by-using-azure-portal"></a>Przywracanie do punktu w czasie za pomocą Azure Portal
 
-You can recover a single SQL database or instance database to a point in time from the overview blade of the database you want to restore in the Azure portal.
+Możesz odzyskać pojedynczą bazę danych SQL lub wystąpienie do punktu w czasie z bloku przegląd bazy danych, która ma zostać przywrócona w Azure Portal.
 
-#### <a name="single-azure-sql-database"></a>Single Azure SQL database
+#### <a name="single-azure-sql-database"></a>Pojedyncza baza danych SQL Azure
 
-To recover a single or pooled database to a point in time by using the Azure portal, open the database overview page, and select **Restore** on the toolbar. Choose the backup source, and select the point-in-time backup point from which a new database will be created. 
+Aby odzyskać bazę danych z jednej lub puli do punktu w czasie za pomocą Azure Portal, Otwórz stronę przegląd bazy danych i wybierz pozycję **Przywróć** na pasku narzędzi. Wybierz źródło kopii zapasowej, a następnie wybierz punkt kopii zapasowej do punktu w czasie, z którego zostanie utworzona nowa baza danych. 
 
-  ![Screenshot of database restore options](./media/sql-database-recovery-using-backups/pitr-backup-sql-database-annotated.png)
+  ![Zrzut ekranu przedstawiający Opcje przywracania bazy danych](./media/sql-database-recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
-#### <a name="managed-instance-database"></a>Managed instance database
+#### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
 
-To recover a managed instance database to a point in time by using the Azure portal, open the database overview page, and select **Restore** on the toolbar. Choose the point-in-time backup point from which a new database will be created. 
+Aby odzyskać bazę danych wystąpienia zarządzanego do punktu w czasie za pomocą Azure Portal, Otwórz stronę przegląd bazy danych i wybierz pozycję **Przywróć** na pasku narzędzi. Wybierz punkt w czasie, z którego zostanie utworzona nowa baza danych. 
 
-  ![Screenshot of database restore options](./media/sql-database-recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+  ![Zrzut ekranu przedstawiający Opcje przywracania bazy danych](./media/sql-database-recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
-> To programmatically restore a database from a backup, see [Programmatically performing recovery using automated backups](sql-database-recovery-using-backups.md).
+> Aby programowo przywrócić bazę danych z kopii zapasowej, zobacz programowe [wykonywanie odzyskiwania przy użyciu zautomatyzowanych kopii zapasowych](sql-database-recovery-using-backups.md).
 
-## <a name="deleted-database-restore"></a>Deleted database restore
+## <a name="deleted-database-restore"></a>Przywracanie usuniętej bazy danych
 
-You can restore a deleted database to the deletion time, or an earlier point in time, on the same SQL Database server or the same managed instance. You can accomplish this through the Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), or the [REST (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). You restore a deleted database by creating a new database from the backup.
+Usuniętą bazę danych można przywrócić do czasu usunięcia lub do wcześniejszego punktu w czasie na tym samym serwerze SQL Database lub w tym samym wystąpieniu zarządzanym. Można to zrobić za pomocą Azure Portal, [programu PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)lub [reszty (createmode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). Usunięta baza danych zostanie przywrócona przez utworzenie nowej bazy danych z kopii zapasowej.
 
 > [!IMPORTANT]
-> If you delete an Azure SQL Database server or managed instance, all its databases are also deleted, and can't be recovered. You can't restore a deleted server or managed instance.
+> Jeśli usuniesz serwer Azure SQL Database lub wystąpienie zarządzane, wszystkie jego bazy danych również zostaną usunięte i nie będzie można go odzyskać. Nie można przywrócić usuniętego serwera lub wystąpienia zarządzanego.
 
-### <a name="deleted-database-restore-by-using-the-azure-portal"></a>Deleted database restore by using the Azure portal
+### <a name="deleted-database-restore-by-using-the-azure-portal"></a>Przywracanie bazy danych zostało usunięte przy użyciu Azure Portal
 
-You restore deleted databases from the Azure portal from the server and instance resource.
+Przywrócono usunięte bazy danych z Azure Portal z zasobów serwera i wystąpienia.
 
-#### <a name="single-azure-sql-database"></a>Single Azure SQL database
+#### <a name="single-azure-sql-database"></a>Pojedyncza baza danych SQL Azure
 
-To recover a single or pooled deleted database to the deletion time by using the Azure portal, open the server overview page, and select **Deleted databases**. Select a deleted database that you want to restore, and type the name for the new database that will be created with data restored from the backup.
+Aby odzyskać usuniętą bazę danych z jednej lub puli do czasu usuwania przy użyciu Azure Portal, Otwórz stronę przegląd serwera i wybierz pozycję **usunięte bazy danych**. Wybierz usuniętą bazę danych, którą chcesz przywrócić, a następnie wpisz nazwę nowej bazy danych, która zostanie utworzona z przywróconymi danymi z kopii zapasowej.
 
-  ![Screenshot of restore deleted Azure SQL database](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![Zrzut ekranu przedstawiający przywracanie usuniętej bazy danych Azure SQL Database](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
-#### <a name="managed-instance-database"></a>Managed instance database
+#### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
 
-To recover a managed database by using the Azure portal, open the managed instance overview page, and select **Deleted databases**. Select a deleted database that you want to restore, and type the name for the new database that will be created with data restored from the backup.
+Aby odzyskać zarządzaną bazę danych przy użyciu Azure Portal, Otwórz stronę Omówienie wystąpienia zarządzanego i wybierz pozycję **usunięte bazy danych**. Wybierz usuniętą bazę danych, którą chcesz przywrócić, a następnie wpisz nazwę nowej bazy danych, która zostanie utworzona z przywróconymi danymi z kopii zapasowej.
 
-  ![Screenshot of restore deleted Azure SQL instance database](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
+  ![Zrzut ekranu przedstawiający przywracanie usuniętej bazy danych wystąpienia usługi Azure SQL](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
-### <a name="deleted-database-restore-by-using-powershell"></a>Deleted database restore by using PowerShell
+### <a name="deleted-database-restore-by-using-powershell"></a>Przywracanie bazy danych zostało usunięte przy użyciu programu PowerShell
 
-Use the following sample scripts to restore a deleted database for Azure SQL Database and a managed instance by using PowerShell.
+Poniższe przykładowe skrypty służą do przywracania usuniętej bazy danych dla Azure SQL Database i wystąpienia zarządzanego przy użyciu programu PowerShell.
 
-#### <a name="single-azure-sql-database"></a>Single Azure SQL database
+#### <a name="single-azure-sql-database"></a>Pojedyncza baza danych SQL Azure
 
-For a sample PowerShell script showing how to restore a deleted Azure SQL database, see [Restore a SQL database using PowerShell](scripts/sql-database-restore-database-powershell.md).
+Przykładowy skrypt programu PowerShell przedstawiający sposób przywracania usuniętej bazy danych Azure SQL Database można znaleźć w temacie [przywracanie bazy danych SQL przy użyciu programu PowerShell](scripts/sql-database-restore-database-powershell.md).
 
-#### <a name="managed-instance-database"></a>Managed instance database
+#### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
 
-For a sample PowerShell script showing how to restore a deleted instance database, see [Restore deleted database on managed instance using PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
+Przykładowy skrypt programu PowerShell przedstawiający sposób przywracania usuniętej bazy danych wystąpienia znajduje się w temacie [przywracanie usuniętej bazy danych na zarządzanym wystąpieniu przy użyciu programu PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
 
 > [!TIP]
-> To programmatically restore a deleted database, see [Programmatically performing recovery using automated backups](sql-database-recovery-using-backups.md).
+> Aby programowo przywrócić usuniętą bazę danych, zobacz programowe [wykonywanie odzyskiwania przy użyciu zautomatyzowanych kopii zapasowych](sql-database-recovery-using-backups.md).
 
 ## <a name="geo-restore"></a>Przywracanie geograficzne
 
-You can restore a SQL database on any server in any Azure region from the most recent geo-replicated backups. Geo-restore uses a geo-replicated backup as its source. You can request geo-restore even if the database or datacenter is inaccessible due to an outage.
+Bazę danych SQL można przywrócić na dowolnym serwerze w dowolnym regionie świadczenia usługi Azure z najnowszych kopii zapasowych replikowanych geograficznie. Przywracanie geograficzne używa kopii zapasowej replikowanej geograficznie jako źródła. Możesz zażądać przywracania geograficznego, nawet jeśli baza danych lub Datacenter jest niedostępna z powodu przestoju.
 
-Geo-restore is the default recovery option when your database is unavailable because of an incident in the hosting region. You can restore the database to a server in any other region. There is a delay between when a backup is taken and when it is geo-replicated to an Azure blob in a different region. As a result, the restored database can be up to one hour behind the original database. The following illustration shows a database restore from the last available backup in another region.
+Przywracanie geograficzne jest domyślną opcją odzyskiwania, gdy baza danych jest niedostępna z powodu zdarzenia w regionie hostingu. Bazę danych można przywrócić na serwerze w dowolnym innym regionie. Istnieje opóźnienie między wykonaniem kopii zapasowej a replikacją geograficzną do obiektu blob platformy Azure w innym regionie. W związku z tym przywrócona baza danych może należeć do jednej godziny w stosunku do oryginalnej bazy danych. Na poniższej ilustracji przedstawiono przywracanie bazy danych z ostatniej dostępnej kopii zapasowej w innym regionie.
 
-![Graphic of geo-restore](./media/sql-database-geo-restore/geo-restore-2.png)
+![Ilustracja dotycząca przywracania geograficznego](./media/sql-database-geo-restore/geo-restore-2.png)
 
-### <a name="geo-restore-by-using-the-azure-portal"></a>Geo-restore by using the Azure portal
+### <a name="geo-restore-by-using-the-azure-portal"></a>Przywracanie geograficzne przy użyciu Azure Portal
 
-From the Azure portal, you create a new single or managed instance database, and select an available geo-restore backup. The newly created database contains the geo-restored backup data.
+Z Azure Portal można utworzyć nową bazę danych wystąpienia z jedną lub zarządzaną, a następnie wybrać dostępną kopię zapasową przywracania geograficznego. Nowo utworzona baza danych zawiera dane kopii zapasowej przywróconej do lokalizacji geograficznej.
 
-#### <a name="single-azure-sql-database"></a>Single Azure SQL database
+#### <a name="single-azure-sql-database"></a>Pojedyncza baza danych SQL Azure
 
-To geo-restore a single SQL database from the Azure portal in the region and server of your choice, follow these steps:
+Aby przywrócić geograficzną pojedynczą bazę danych SQL z Azure Portal w wybranym regionie i serwerze, wykonaj następujące kroki:
 
-1. From **Dashboard**, select **Add** > **Create SQL Database**. On the **Basics** tab, enter the required information.
-2. Select **Additional settings**.
-3. For **Use existing data**, select **Backup**.
-4. For **Backup**, select a backup from the list of available geo-restore backups.
+1. Z poziomu **pulpitu nawigacyjnego**wybierz pozycję **dodaj** > **Utwórz SQL Database**. Na karcie **podstawowe** wprowadź wymagane informacje.
+2. Wybierz **dodatkowe ustawienia**.
+3. W obszarze **Użyj istniejących danych**wybierz pozycję **kopia zapasowa**.
+4. W obszarze **kopia zapasowa**wybierz pozycję Kopia zapasowa z listy dostępnych kopii zapasowych przywracania geograficznego.
 
-    ![Screenshot of Create SQL Database options](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
+    ![Zrzut ekranu przedstawiający opcje tworzenia SQL Database](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
 
-Complete the process of creating a new database from the backup. When you create the single Azure SQL database, it contains the restored geo-restore backup.
+Ukończ proces tworzenia nowej bazy danych z kopii zapasowej. Po utworzeniu pojedynczej bazy danych Azure SQL Database zawiera przywróconą kopię zapasową przywracania geograficznego.
 
-#### <a name="managed-instance-database"></a>Managed instance database
+#### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
 
-To geo-restore a managed instance database from the Azure portal to an existing managed instance in a region of your choice, select a managed instance on which you want a database to be restored. Wykonaj następujące kroki:
+Aby przywrócić geograficznie bazę danych wystąpienia zarządzanego z Azure Portal do istniejącego wystąpienia zarządzanego w wybranym regionie, wybierz wystąpienie zarządzane, na którym ma zostać przywrócona baza danych. Wykonaj następujące kroki:
 
-1. Select **New database**.
-2. Type a desired database name.
-3. Under **Use existing data**, select **Backup**.
-4. Select a backup from the list of available geo-restore backups.
+1. Wybierz pozycję **Nowa baza danych**.
+2. Wpisz żądaną nazwę bazy danych.
+3. W obszarze **Użyj istniejących danych**wybierz pozycję **kopia zapasowa**.
+4. Wybierz kopię zapasową z listy dostępnych kopii zapasowych przywracania geograficznego.
 
-    ![Screenshot of New database options](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
+    ![Zrzut ekranu przedstawiający opcje nowej bazy danych](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
 
-Complete the process of creating a new database. When you create the instance database, it contains the restored geo-restore backup.
+Ukończ proces tworzenia nowej bazy danych. Po utworzeniu bazy danych wystąpienia zawiera przywróconą kopię zapasową przywracania geograficznego.
 
-### <a name="geo-restore-by-using-powershell"></a>Geo-restore by using PowerShell
+### <a name="geo-restore-by-using-powershell"></a>Przywracanie geograficzne przy użyciu programu PowerShell
 
-#### <a name="single-azure-sql-database"></a>Single Azure SQL database
+#### <a name="single-azure-sql-database"></a>Pojedyncza baza danych SQL Azure
 
-For a PowerShell script that shows how to perform geo-restore for a single SQL database, see [Use PowerShell to restore an Azure SQL single database to an earlier point in time](scripts/sql-database-restore-database-powershell.md).
+W przypadku skryptu programu PowerShell, który pokazuje, jak przeprowadzić przywracanie geograficzne dla pojedynczej bazy danych SQL, zobacz temat [Używanie programu PowerShell do przywracania pojedynczej bazy danych SQL Azure do wcześniejszego punktu w czasie](scripts/sql-database-restore-database-powershell.md).
 
-#### <a name="managed-instance-database"></a>Managed instance database
+#### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
 
-For a PowerShell script that shows how to perform geo-restore for a managed instance database, see [Use PowerShell to restore a managed instance database to another geo-region](scripts/sql-managed-instance-restore-geo-backup.md).
+W przypadku skryptu programu PowerShell, który pokazuje, jak przeprowadzić przywracanie geograficzne dla bazy danych wystąpienia zarządzanego, zobacz temat [Używanie programu PowerShell do przywracania bazy danych wystąpienia zarządzanego w innym regionie geograficznym](scripts/sql-managed-instance-restore-geo-backup.md).
 
-### <a name="geo-restore-considerations"></a>Geo-restore considerations
+### <a name="geo-restore-considerations"></a>Zagadnienia dotyczące przywracania geograficznego
 
-You can't perform a point-in-time restore on a geo-secondary database. You can only do so on a primary database. For detailed information about using geo-restore to recover from an outage, see [Recover from an outage](sql-database-disaster-recovery.md).
+Nie można wykonać przywracania do punktu w czasie dla pomocniczej bazy danych. Można to zrobić tylko w podstawowej bazie danych. Aby uzyskać szczegółowe informacje o używaniu przywracania geograficznego w celu odzyskania sprawności przed awarią, zobacz [odzyskiwanie po awarii](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Geo-restore is the most basic disaster recovery solution available in SQL Database. It relies on automatically created geo-replicated backups with recovery point objective (RPO) equal to 1 hour, and the estimated recovery time of up to 12 hours. It doesn't guarantee that the target region will have the capacity to restore your databases after a regional outage, because a sharp increase of demand is likely. If your application uses relatively small databases and is not critical to the business, geo-restore is an appropriate disaster recovery solution. For business-critical applications that require large databases and must ensure business continuity, use [Auto-failover groups](sql-database-auto-failover-group.md). It offers a much lower RPO and recovery time objective, and the capacity is always guaranteed. For more information on business continuity choices, see [Overview of business continuity](sql-database-business-continuity.md).
+> Przywracanie geograficzne to najbardziej podstawowe rozwiązanie do odzyskiwania po awarii dostępne w SQL Database. Polega on na automatycznym tworzeniu kopii zapasowych replikowanych geograficznie z celem punktu odzyskiwania (RPO) równym 1 godz. oraz szacowanym czasem odzyskiwania wynoszącym maksymalnie 12 godzin. Nie gwarantuje to, że region docelowy będzie miał zdolność do przywrócenia baz danych po awarii regionalnej, ponieważ prawdopodobnie jest to gwałtowny wzrost popytu. Jeśli aplikacja używa stosunkowo małych baz danych i nie ma znaczenia dla działalności firmy, Funkcja przywracania geograficznego jest odpowiednim rozwiązaniem do odzyskiwania po awarii. W przypadku aplikacji o krytycznym znaczeniu dla firmy, które wymagają dużych baz danych i muszą zapewnić ciągłość działania, należy użyć [grup z obsługą trybu failover](sql-database-auto-failover-group.md). Oferuje on znacznie niższy cel punktu odzyskiwania i odzyskania, a pojemność jest zawsze gwarantowana. Aby uzyskać więcej informacji o opcjach ciągłości biznesowej, zobacz [Omówienie ciągłości działania](sql-database-business-continuity.md).
 
-## <a name="programmatically-performing-recovery-by-using-automated-backups"></a>Programmatically performing recovery by using automated backups
+## <a name="programmatically-performing-recovery-by-using-automated-backups"></a>Programowe wykonywanie odzyskiwania przy użyciu zautomatyzowanych kopii zapasowych
 
-You can also use Azure PowerShell or the REST API for recovery. The following tables describe the set of commands available.
+Można również użyć Azure PowerShell lub interfejsu API REST do odzyskiwania. W poniższych tabelach opisano zestaw dostępnych poleceń.
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Arguments for the commands in the Az module and in AzureRm modules are to a great extent identical.
+> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są dokładnie takie same.
 
-#### <a name="single-azure-sql-database"></a>Single Azure SQL database
+#### <a name="single-azure-sql-database"></a>Pojedyncza baza danych SQL Azure
 
-To restore a standalone or pooled database, see [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
+Aby przywrócić bazę danych autonomiczną lub w puli, zobacz [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
   | Polecenie cmdlet | Opis |
   | --- | --- |
@@ -208,44 +208,44 @@ To restore a standalone or pooled database, see [Restore-AzSqlDatabase](/powersh
   | [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) |Przywraca bazę danych SQL. |
 
   > [!TIP]
-  > For a sample PowerShell script that shows how to perform a point-in-time restore of a database, see [Restore a SQL database using PowerShell](scripts/sql-database-restore-database-powershell.md).
+  > Przykładowy skrypt programu PowerShell, który pokazuje, jak wykonać przywracanie do punktu w czasie dla bazy danych, zobacz [przywracanie bazy danych SQL przy użyciu programu PowerShell](scripts/sql-database-restore-database-powershell.md).
 
-#### <a name="managed-instance-database"></a>Managed instance database
+#### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
 
-To restore a managed instance database, see [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
+Aby przywrócić bazę danych wystąpienia zarządzanego, zobacz [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
   | Polecenie cmdlet | Opis |
   | --- | --- |
-  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Gets one or more managed instances. |
-  | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Gets an instance database. |
-  | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Restores an instance database. |
+  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Pobiera co najmniej jedno wystąpienie zarządzane. |
+  | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Pobiera bazę danych wystąpienia. |
+  | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Przywraca bazę danych wystąpienia. |
 
 ### <a name="rest-api"></a>Interfejs API REST
 
-To restore a single or pooled database by using the REST API:
+Aby przywrócić pojedynczą lub w puli bazę danych przy użyciu interfejsu API REST:
 
-| API | Opis |
+| Interfejs API | Opis |
 | --- | --- |
-| [REST (createMode=Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |Restores a database. |
-| [Get Create or Update Database Status](https://docs.microsoft.com/rest/api/sql/operations) |Returns the status during a restore operation. |
+| [REST (createmode = Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |Przywraca bazę danych. |
+| [Pobieranie lub aktualizowanie stanu bazy danych](https://docs.microsoft.com/rest/api/sql/operations) |Zwraca stan podczas operacji przywracania. |
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-#### <a name="single-azure-sql-database"></a>Single Azure SQL database
+#### <a name="single-azure-sql-database"></a>Pojedyncza baza danych SQL Azure
 
-To restore a single or pooled database by using the Azure CLI, see [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
+Aby przywrócić pojedynczą lub pulę baz danych za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [AZ SQL DB Restore](/cli/azure/sql/db#az-sql-db-restore).
 
-#### <a name="managed-instance-database"></a>Managed instance database
+#### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
 
-To restore a managed instance database by using the Azure CLI, see [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore).
+Aby przywrócić bazę danych wystąpienia zarządzanego przy użyciu interfejsu wiersza polecenia platformy Azure, zobacz [AZ SQL MidB Restore](/cli/azure/sql/midb#az-sql-midb-restore).
 
 ## <a name="summary"></a>Podsumowanie
 
-Automatic backups protect your databases from user and application errors, accidental database deletion, and prolonged outages. This built-in capability is available for all service tiers and compute sizes.
+Automatyczne kopie zapasowe chronią bazy danych przed błędami użytkowników i aplikacji, przypadkowym usunięciem bazy danych i długotrwałym przestojem. Ta wbudowana funkcja jest dostępna dla wszystkich warstw usług i rozmiarów obliczeniowych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Business continuity overview](sql-database-business-continuity.md)
-- [SQL Database automated backups](sql-database-automated-backups.md)
+- [Przegląd ciągłości działania firmy](sql-database-business-continuity.md)
+- [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md)
 - [Długoterminowe przechowywanie](sql-database-long-term-retention.md)
-- To learn about faster recovery options, see [Active geo-replication](sql-database-active-geo-replication.md) or [Auto-failover groups](sql-database-auto-failover-group.md).
+- Aby dowiedzieć się więcej na temat szybszych opcji odzyskiwania, zobacz [aktywne replikacje geograficzne](sql-database-active-geo-replication.md) lub [grupy autopracy awaryjnej](sql-database-auto-failover-group.md).

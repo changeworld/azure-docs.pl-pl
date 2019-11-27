@@ -1,7 +1,7 @@
 ---
-title: Filter on search results
+title: Filtruj według wyników wyszukiwania
 titleSuffix: Azure Cognitive Search
-description: Filter by user security identity, language, geo-location, or numeric values to reduce search results on queries in Azure Cognitive Search, a hosted cloud search service on Microsoft Azure.
+description: Filtruj według tożsamości zabezpieczeń użytkownika, języka, lokalizacji geograficznej lub wartości liczbowych, aby zmniejszyć wyniki wyszukiwania zapytań w usłudze Azure Wyszukiwanie poznawcze, hostowaną usługę wyszukiwania w chmurze na Microsoft Azure.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -15,59 +15,59 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406740"
 ---
-# <a name="filters-in-azure-cognitive-search"></a>Filters in Azure Cognitive Search 
+# <a name="filters-in-azure-cognitive-search"></a>Filtry na platformie Azure Wyszukiwanie poznawcze 
 
-A *filter* provides criteria for selecting documents used in an Azure Cognitive Search query. Unfiltered search includes all documents in the index. A filter scopes a search query to a subset of documents. For example, a filter could restrict full text search to just those products having a specific brand or color, at price points above a certain threshold.
+*Filtr* zawiera kryteria wyboru dokumentów używanych w zapytaniu wyszukiwanie poznawcze platformy Azure. Wyszukiwanie niefiltrowane zawiera wszystkie dokumenty w indeksie. Filtr zakresów zapytania wyszukiwania do podzbioru dokumentów. Na przykład filtr może ograniczyć wyszukiwanie pełnotekstowe do tylko tych produktów mających konkretną markę lub kolor, w odniesieniu do cen powyżej określonego progu.
 
-Some search experiences impose filter requirements as part of the implementation, but you can use filters anytime you want to constrain search using *value-based* criteria (scoping search to product type "books" for category "non-fiction" published by "Simon & Schuster").
+Niektóre środowiska wyszukiwania nakładają wymagania filtru w ramach implementacji, ale można używać filtrów w dowolnym momencie, gdy chcesz ograniczyć wyszukiwanie przy użyciu kryteriów *opartych na wartości* (zakres wyszukiwania do typu produktu "książki" dla kategorii "non-fikcja" opublikowany przez "Simon & Schuster").
 
-If instead your goal is targeted search on specific data *structures* (scoping search to a customer-reviews field), there are alternative methods, described below.
+Jeśli zamiast tego cel jest celem wyszukiwania w określonych *strukturach* danych (Określanie zakresu wyszukiwania do pola Recenzje klienta), istnieją alternatywne metody opisane poniżej.
 
-## <a name="when-to-use-a-filter"></a>When to use a filter
+## <a name="when-to-use-a-filter"></a>Kiedy używać filtru
 
-Filters are foundational to several search experiences, including "find near me", faceted navigation, and security filters that show only  those documents a user is allowed to see. If you implement any one of these experiences, a filter is required. It's the filter attached to the search query that provides the geolocation coordinates, the facet category selected by the user, or the security ID of the requestor.
+Filtry są podstawą dla kilku środowisk wyszukiwania, w tym "Znajdź w pobliżu", nawigacji aspektowej i filtrów zabezpieczeń, które pokazują tylko te dokumenty, które użytkownik może zobaczyć. W przypadku zaimplementowania dowolnego z tych środowisk wymagany jest filtr. Jest to filtr dołączony do zapytania wyszukiwania, który zawiera współrzędne geolokalizacji, kategorię zestawu reguł wybranego przez użytkownika lub identyfikator zabezpieczeń obiektu żądającego.
 
-Example scenarios include the following:
+Przykładowe scenariusze obejmują:
 
-1. Use a filter to slice your index based on data values in the index. Given a schema with city, housing type, and amenities, you might create a filter to explicitly select documents that satisfy your criteria (in Seattle, condos, waterfront). 
+1. Użyj filtru, aby wydzielić indeks na podstawie wartości danych w indeksie. Mając schemat z miasto, typ obudowy i walory, możesz utworzyć filtr, aby jawnie wybrać dokumenty spełniające kryteria (w Seattle, Condos, Waterfront). 
 
-   Full text search with the same inputs often produces similar results, but a filter is more precise in that it requires an exact match of the filter term against content in your index. 
+   Wyszukiwanie pełnotekstowe z tymi samymi danymi wejściowymi często generuje podobne wyniki, ale filtr jest bardziej precyzyjny, ponieważ wymaga dokładnego dopasowania okresu filtrowania do zawartości w indeksie. 
 
-2. Use a filter if the search experience comes with a filter requirement:
+2. Użyj filtru, jeśli środowisko wyszukiwania zawiera wymagania filtru:
 
-   * [Faceted navigation](search-faceted-navigation.md) uses a filter to pass back the facet category selected by the user.
-   * Geo-search uses a filter to pass coordinates of the current location in "find near me" apps. 
-   * Security filters pass security identifiers as filter criteria, where a match in the index serves as a proxy for access rights to the document.
+   * [Nawigacja aspektowa](search-faceted-navigation.md) używa filtru, aby przekazać kategorię zestawu reguł wybraną przez użytkownika.
+   * Wyszukiwanie geograficzne używa filtru do przekazywania współrzędnych bieżącej lokalizacji w aplikacjach "Znajdź w pobliżu". 
+   * Filtry zabezpieczeń przekazują identyfikatory zabezpieczeń jako kryteria filtrowania, gdzie dopasowanie w indeksie służy jako serwer proxy dla praw dostępu do dokumentu.
 
-3. Use a filter if you want search criteria on a numeric field. 
+3. Użyj filtru, jeśli chcesz, aby kryteria wyszukiwania dla pola liczbowego. 
 
-   Numeric fields are retrievable in the document and can appear in search results, but they are not searchable (subject to full text search) individually. If you need selection criteria based on numeric data, use a filter.
+   Pola numeryczne są możliwe do pobierania w dokumencie i mogą być wyświetlane w wynikach wyszukiwania, ale nie są przeszukiwane (z uwzględnieniem wyszukiwania pełnotekstowego) indywidualnie. Jeśli potrzebujesz kryteriów wyboru opartych na danych liczbowych, Użyj filtru.
 
-### <a name="alternative-methods-for-reducing-scope"></a>Alternative methods for reducing scope
+### <a name="alternative-methods-for-reducing-scope"></a>Alternatywne metody ograniczania zakresu
 
-If you want a narrowing effect in your search results, filters are not your only choice. These alternatives could be a better fit, depending on your objective:
+Jeśli chcesz zawęzić efekt wyszukiwania, filtry nie są jedynym wyborem. Te alternatywy mogą być lepiej dopasowane, w zależności od celu:
 
- + `searchFields` query parameter pegs search to specific fields. For example, if your index provides separate fields for English and Spanish descriptions, you can use searchFields to target which fields to use for full text search. 
+ + `searchFields` parametr zapytania Pegs wyszukiwanie do określonych pól. Na przykład jeśli indeks zawiera oddzielne pola dla opisów języka angielskiego i hiszpańskiego, można użyć searchFields, aby określić, które pola będą używane do wyszukiwania pełnotekstowego. 
 
-+ `$select` parameter is used to specify which fields to include in a result set, effectively trimming the response before sending it to the calling application. This parameter does not refine the query or reduce the document collection, but if a smaller response is your goal, this parameter is an option to consider. 
++ parametr `$select` służy do określania, które pola mają być uwzględnione w zestawie wyników, efektywnie przycinania odpowiedzi przed wysłaniem jej do aplikacji wywołującej. Ten parametr nie ogranicza zapytania ani nie zmniejsza kolekcji dokumentów, ale jeśli celem jest mniejsza odpowiedź, ten parametr jest opcją do uwzględnienia. 
 
-For more information about either parameter, see [Search Documents > Request > Query parameters](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+Aby uzyskać więcej informacji na temat każdego z parametrów, zobacz [Wyszukiwanie dokumentów > żądanie > parametry zapytania](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
 
 
-## <a name="how-filters-are-executed"></a>How filters are executed
+## <a name="how-filters-are-executed"></a>Jak są wykonywane filtry
 
-At query time, a filter parser accepts criteria as input, converts the expression into atomic Boolean expressions represented as a tree, and then evaluates the filter tree over filterable fields in an index.
+W czasie zapytania Analizator filtru akceptuje kryteria jako dane wejściowe, konwertuje wyrażenie na cząstkowe wyrażenia logiczne reprezentowane jako drzewo, a następnie szacuje drzewo filtrów na polach z możliwością filtrowania w indeksie.
 
-Filtering occurs in tandem with search, qualifying which documents to include in downstream processing for document retrieval and relevance scoring. When paired with a search string, the filter effectively reduces the recall set of the subsequent search operation. When used alone (for example, when the query string is empty where `search=*`), the filter criteria is the sole input. 
+Filtrowanie odbywa się wspólnie z wyszukiwaniem, co umożliwia kwalifikowanie dokumentów do uwzględnienia w przetwarzaniu podrzędnym na potrzeby pobierania dokumentów i oceny znaczenia. W przypadku sparowania z wyszukiwanym ciągiem filtr efektywnie zmniejsza zestaw odwołań dla kolejnej operacji wyszukiwania. W przypadku użycia samodzielne (na przykład gdy ciąg zapytania jest pusty, gdzie `search=*`), kryteria filtru są jedynymi danymi wejściowymi. 
 
-## <a name="defining-filters"></a>Defining filters
-Filters are OData expressions, articulated using a [subset of OData V4 syntax supported in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
+## <a name="defining-filters"></a>Definiowanie filtrów
+Filtry są wyrażeniami OData, przegubowo wykorzystując [podzbiór składni protokołu OData w wersji v4 obsługiwanej w usłudze Azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
 
-You can specify one filter for each **search** operation, but the filter itself can include multiple fields, multiple criteria, and if you use an **ismatch** function, multiple full-text search expressions. In a multi-part filter expression, you can specify predicates in any order (subject to the rules of operator precedence). There is no appreciable gain in performance if you try to rearrange predicates in a particular sequence.
+Można określić jeden filtr dla każdej operacji **wyszukiwania** , ale filtr może zawierać wiele pól, wiele kryteriów, a jeśli używana jest funkcja **IsMatch** , wiele wyrażeń wyszukiwania pełnotekstowego. W wieloczęściowym wyrażeniu filtru można określić predykaty w dowolnej kolejności (z zastrzeżeniem reguł pierwszeństwa operatora). Jeśli spróbujesz zmienić rozmieszczenie predykatów w określonej sekwencji, nie ma znaczącego zwiększenia wydajności.
 
-One of the limits on a filter expression is the maximum size limit of the request. The entire request, inclusive of the filter, can be a maximum of 16 MB for POST, or 8 KB for GET. There is also a limit on the number of clauses in your filter expression. A good rule of thumb is that if you have hundreds of clauses, you are at risk of running into the limit. We recommend designing your application in such a way that it does not generate filters of unbounded size.
+Jednym z limitów w wyrażeniu filtru jest maksymalny rozmiar żądania. Całe żądanie, włącznie z filtrem, może być maksymalnie 16 MB dla POST lub 8 KB dla GET. Istnieje również limit liczby klauzul w wyrażeniu filtru. Dobrym warunkiem jest to, że jeśli masz setki klauzul, jesteś narażony na działanie w limicie. Zalecamy projektowanie aplikacji w taki sposób, że nie generują one filtrów o nieograniczonej wielkości.
 
-The following examples represent prototypical filter definitions in several APIs.
+Poniższe przykłady przedstawiają definicje filtrów prototypowe w kilku interfejsach API.
 
 ```http
 # Option 1:  Use $filter for GET
@@ -93,23 +93,23 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     var results = searchIndexClient.Documents.Search("*", parameters);
 ```
 
-## <a name="filter-usage-patterns"></a>Filter usage patterns
+## <a name="filter-usage-patterns"></a>Filtrowanie wzorców użycia
 
-The following examples illustrate several usage patterns for filter scenarios. For more ideas, see [OData expression syntax > Examples](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Poniższe przykłady ilustrują kilka wzorców użycia dla scenariuszy filtrowania. Aby uzyskać więcej sugestii, zobacz [przykłady składni wyrażeń OData >](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
-+ Standalone **$filter**, without a query string, useful when the filter expression is able to fully qualify documents of interest. Without a query string, there is no lexical or linguistic analysis, no scoring, and no ranking. Notice the search string is just an asterisk, which means "match all documents".
++ Autonomiczna **$Filter**bez ciągu zapytania, przydatna, gdy wyrażenie filtru jest w stanie w pełni kwalifikować dokumenty. Bez ciągu zapytania nie ma żadnej leksykalnej ani analizy językowej, nie oceniania ani klasyfikacji. Zwróć uwagę, że ciąg wyszukiwania jest tylko gwiazdką, co oznacza, że pasuje do wszystkich dokumentów.
 
    ```
    search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ Combination of query string and **$filter**, where the filter creates the subset, and the query string provides the term inputs for full text search over the filtered subset. The addition of terms (walking distance theaters) introduces search scores in the results, where documents that best match the terms are ranked higher. Using a filter with a query string is the most common usage pattern.
++ Kombinacja ciągu zapytania i **$Filter**, gdzie filtr tworzy podzestaw, a ciąg zapytania zawiera dane wejściowe dla wyszukiwania pełnotekstowego w filtrowanym podzbiorze. Dodanie warunków ("drogi odległości") wprowadza wyniki wyszukiwania w wynikach, gdzie dokumenty, które najlepiej pasują do warunków, są bardziej klasyfikowane. Użycie filtru z ciągiem zapytania jest najbardziej typowym wzorcem użycia.
 
    ```
   search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
    ```
 
-+ Compound queries, separated by "or", each with its own filter criteria (for example, 'beagles' in 'dog' or 'siamese' in 'cat'). Expressions combined with `or` are evaluated individually, with the union of documents matching each expression sent back in the response. This usage pattern is achieved through the `search.ismatchscoring` function. You can also use the non-scoring version, `search.ismatch`.
++ Zapytania złożone, oddzielone znakami "lub", z których każda ma własne kryteria filtrowania (na przykład "Beagles" w "Dog" lub "Siamese" w "Cat"). Wyrażenia połączone z `or` są oceniane indywidualnie, przy czym Unia dokumentów dopasowuje każde wyrażenie wysłane z powrotem w odpowiedzi. Ten wzorzec użycia jest uzyskiwany za pomocą funkcji `search.ismatchscoring`. Możesz również użyć wersji bez oceniania, `search.ismatch`.
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
@@ -119,7 +119,7 @@ The following examples illustrate several usage patterns for filter scenarios. F
    $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  It is also possible to combine full-text search via `search.ismatchscoring` with filters using `and` instead of `or`, but this is functionally equivalent to using the `search` and `$filter` parameters in a search request. For example, the following two queries produce the same result:
+  Istnieje również możliwość łączenia wyszukiwania pełnotekstowego za pośrednictwem `search.ismatchscoring` z filtrami wykorzystującymi `and` zamiast `or`, ale jest to funkcja równoważna z użyciem parametrów `search` i `$filter` w żądaniu wyszukiwania. Na przykład następujące dwa zapytania dają ten sam wynik:
 
   ```
   $filter=search.ismatchscoring('pool') and Rating ge 4
@@ -127,50 +127,50 @@ The following examples illustrate several usage patterns for filter scenarios. F
   search=pool&$filter=Rating ge 4
   ```
 
-Follow up with these articles for comprehensive guidance on specific use cases:
+Zapoznaj się z następującymi artykułami, aby uzyskać kompleksowe wskazówki dotyczące konkretnych przypadków użycia:
 
 + [Filtry aspektów](search-filters-facets.md)
 + [Filtry języków](search-filters-language.md)
 + [Dostosowanie do zabezpieczeń](search-security-trimming-for-azure-search.md) 
 
-## <a name="field-requirements-for-filtering"></a>Field requirements for filtering
+## <a name="field-requirements-for-filtering"></a>Wymagania dotyczące pól dla filtrowania
 
-In the REST API, filterable is *on* by default for simple fields. Filterable fields increase index size; be sure to set `"filterable": false` for fields that you don't plan to actually use in a filter. For more information about settings for field definitions, see [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+W interfejsie API REST filtrowanie jest domyślnie *włączone* w przypadku pól prostych. Pola z możliwością filtrowania zwiększają rozmiar indeksu; Pamiętaj, aby ustawić `"filterable": false` dla pól, które nie są planowane do użycia w filtrze. Aby uzyskać więcej informacji na temat ustawień definicji pól, zobacz [create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-In the .NET SDK, the filterable is *off* by default. You can make a field filterable by setting the [IsFilterable property](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) of the corresponding [Field](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) object to `true`. You can also do this declaratively by using the [IsFilterable attribute](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). In the example below, the attribute is set on the `BaseRate` property of a model class that maps to the index definition.
+W zestawie SDK platformy .NET filtr jest domyślnie *wyłączony* . Można ustawić pole do filtrowania, ustawiając [Właściwość IsFiltered](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) obiektu [field pola](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) na `true`. Można to również zrobić deklaratywnie przy użyciu [atrybutu IsFiltered](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). W poniższym przykładzie atrybut jest ustawiany we właściwości `BaseRate` klasy modelu, która jest mapowana na definicję indeksu.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 ```
 
-### <a name="making-an-existing-field-filterable"></a>Making an existing field filterable
+### <a name="making-an-existing-field-filterable"></a>Tworzenie istniejącego pola do filtrowania
 
-You can't modify existing fields to make them filterable. Instead, you need to add a new field, or rebuild the index. For more information about rebuilding an index or repopulating fields, see [How to rebuild an Azure Cognitive Search index](search-howto-reindex.md).
+Nie można modyfikować istniejących pól, aby umożliwić ich filtrowanie. Zamiast tego należy dodać nowe pole lub ponownie skompilować indeks. Aby uzyskać więcej informacji na temat ponownego kompilowania indeksu lub ponownego wypełniania pól, zobacz [jak ponownie skompilować indeks wyszukiwanie poznawcze platformy Azure](search-howto-reindex.md).
 
-## <a name="text-filter-fundamentals"></a>Text filter fundamentals
+## <a name="text-filter-fundamentals"></a>Podstawy filtrów tekstu
 
-Text filters match string fields against literal strings that you provide in the filter. Unlike full-text search, there is no lexical analysis or word-breaking for text filters, so comparisons are for exact matches only. For example, assume a field *f* contains "sunny day", `$filter=f eq 'Sunny'` does not match, but `$filter=f eq 'sunny day'` will. 
+Filtry tekstu dopasowują pola ciągów do ciągów literałów, które są podano w filtrze. W przeciwieństwie do wyszukiwania pełnotekstowego nie ma żadnej analizy leksykalnej ani dzielenia wyrazów dla filtrów tekstowych, dlatego porównania są tylko dla dokładnych dopasowań. Załóżmy na przykład, że pole *f* zawiera "Sunny Day", `$filter=f eq 'Sunny'` nie jest zgodne, ale `$filter=f eq 'sunny day'` będzie. 
 
-Text strings are case-sensitive. There is no lower-casing of upper-cased words: `$filter=f eq 'Sunny day'` will not find "sunny day".
+Ciągi tekstowe są rozróżniane wielkości liter. Nie istnieje małe litery wyrazów z wielką literą: `$filter=f eq 'Sunny day'` nie znajdzie "Sunny Day".
 
-### <a name="approaches-for-filtering-on-text"></a>Approaches for filtering on text
+### <a name="approaches-for-filtering-on-text"></a>Podejścia do filtrowania tekstu
 
-| Approach | Opis | Kiedy stosować |
+| Podejście | Opis | Kiedy stosować |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | A function that matches a field against a delimited list of strings. | Recommended for [security filters](search-security-trimming-for-azure-search.md) and for any filters where many raw text values need to be matched with a string field. The **search.in** function is designed for speed and is much faster than explicitly comparing the field against each string using `eq` and `or`. | 
-| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | A function that allows you to mix full-text search operations with strictly Boolean filter operations in the same filter expression. | Use **search.ismatch** (or its scoring equivalent, **search.ismatchscoring**) when you want multiple search-filter combinations in one request. You can also use it for a *contains* filter to filter on a partial string within a larger string. |
-| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | A user-defined expression composed of fields, operators, and values. | Use this when you want to find exact matches between a string field and a string value. |
+| [`search.in`](search-query-odata-search-in-function.md) | Funkcja, która dopasowuje pole do rozdzielanej listy ciągów. | Zalecane dla [filtrów zabezpieczeń](search-security-trimming-for-azure-search.md) oraz filtrów, w których wiele wartości tekstowych musi być dopasowanych do pola ciągu. Funkcja **Search.in** została zaprojektowana w celu przyspieszenia i jest znacznie szybsza niż jawne porównanie pola z każdym ciągiem przy użyciu `eq` i `or`. | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Funkcja, która umożliwia mieszanie operacji wyszukiwania pełnotekstowego z ścisłymi operacjami filtru logicznego w tym samym wyrażeniu filtru. | Użyj pozycji **Wyszukaj. IsMatch** (lub jej równoważnej ocenie **Wyszukaj. ismatchscoring**), jeśli chcesz, aby wiele kombinacji filtru wyszukiwania w jednym żądaniu. Można go również użyć dla filtru *zawiera* filtr, aby odfiltrować ciąg częściowy w większym ciągu. |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Wyrażenie zdefiniowane przez użytkownika składające się z pól, operatorów i wartości. | Użyj tego, jeśli chcesz znaleźć dokładne dopasowania między polem ciągu a wartością ciągu. |
 
-## <a name="numeric-filter-fundamentals"></a>Numeric filter fundamentals
+## <a name="numeric-filter-fundamentals"></a>Podstawy filtru liczbowego
 
-Numeric fields are not `searchable` in the context of full text search. Only strings are subject to full text search. For example, if you enter 99.99 as a search term, you won't get back items priced at $99.99. Instead, you would see items that have the number 99 in string fields of the document. Thus, if you have numeric data, the assumption is that you will use them for filters, including ranges, facets, groups, and so forth. 
+Pola liczbowe nie są `searchable` w kontekście wyszukiwania pełnotekstowego. Tylko ciągi są objęte wyszukiwaniem pełnotekstowym. Jeśli na przykład wprowadzisz 99,99 jako termin wyszukiwania, nie będziesz otrzymywać elementów z ceną za $99,99. Zamiast tego zobaczysz elementy mające numer 99 w polach ciągów dokumentu. W związku z tym, jeśli masz dane liczbowe, założono, że będą używane do filtrów, w tym zakresów, zestawów reguł, grup i tak dalej. 
 
-Documents that contain numeric fields (price, size, SKU, ID) provide those values in search results if the field is marked `retrievable`. The point here is that full text search itself is not applicable to numeric field types.
+Dokumenty zawierające pola liczbowe (Cena, rozmiar, jednostka SKU, identyfikator) udostępniają te wartości w wynikach wyszukiwania, jeśli pole jest oznaczone `retrievable`. W tym miejscu jest to, że wyszukiwanie pełnotekstowe nie ma zastosowania do typów pól liczbowych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-First, try **Search explorer** in the portal to submit queries with **$filter** parameters. The [real-estate-sample index](search-get-started-portal.md) provides interesting results for the following filtered queries when you paste them into the search bar:
+Najpierw wypróbuj **Eksploratora wyszukiwania** w portalu, aby przesłać zapytania z parametrami **$Filter** . [Indeks z przykładem liczby rzeczywistej](search-get-started-portal.md) zawiera interesujące wyniki dla następujących filtrowanych zapytań, które są wklejane do paska wyszukiwania:
 
 ```
 # Geo-filter returning documents within 5 kilometers of Redmond, Washington state
@@ -193,12 +193,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-To work with more examples, see [OData Filter Expression Syntax > Examples](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Aby obejść więcej przykładów, zobacz [składnia wyrażenia filtru OData > przykłady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-+ [How full text search works in Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Jak działa wyszukiwanie pełnotekstowe na platformie Azure Wyszukiwanie poznawcze](search-lucene-query-architecture.md)
++ [Interfejs API REST dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Składnia zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Supported data types](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Obsługiwane typy danych](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

@@ -1,6 +1,6 @@
 ---
-title: Service Fabric Azure Files Volume Driver (GA) | Microsoft Docs
-description: Service Fabric supports using Azure Files to backup volumes from your container.
+title: Sterownik woluminu Azure Files Service Fabric (GA) | Microsoft Docs
+description: Service Fabric obsługuje używanie Azure Files do tworzenia kopii zapasowych woluminów z kontenera.
 services: service-fabric
 author: athinanthny
 manager: chackdan
@@ -16,29 +16,29 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422786"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files Volume Driver
-The Azure Files volume plugin, a [Docker volume plugin](https://docs.docker.com/engine/extend/plugins_volume/) that provides [Azure Files](/azure/storage/files/storage-files-introduction) based volumes for Docker containers is now **GA (Generally Available)** .
+# <a name="service-fabric-azure-files-volume-driver"></a>Sterownik woluminu Azure Files Service Fabric
+Wtyczka woluminu Azure Files, [wtyczka woluminu platformy Docker](https://docs.docker.com/engine/extend/plugins_volume/) , która dostarcza woluminy oparte na [Azure Files](/azure/storage/files/storage-files-introduction) dla kontenerów platformy Docker, ma teraz wartość **GA (ogólnie dostępna)** .
 
 Ta wtyczka woluminu platformy Docker ma postać pakietu aplikacji usługi Service Fabric, który można wdrożyć w klastrach usługi Service Fabric. Ma ona na celu udostępnianie woluminów opartych na usłudze Azure Files w innych aplikacjach kontenerów usługi Service Fabric wdrożonych w klastrze.
 
 > [!NOTE]
-> Version 6.5.661.9590 of the Azure Files volume plugin is a GA(Generally available) release. 
+> Wersja 6.5.661.9590 dodatku plug-in woluminu Azure Files to wersja GA (ogólnie dostępna). 
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* The Windows version of the Azure Files volume plugin works on [Windows Server version 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [Windows 10 version 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) or later operating systems only.
+* Wersja systemu Windows wtyczki woluminu Azure Files działa tylko w systemach operacyjnych [Windows Server w wersji 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [Windows 10 w wersji 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) lub nowszej.
 
-* The Linux version of the Azure Files volume plugin works on all operating system versions supported by Service Fabric.
+* Wersja systemu Linux dla wtyczki woluminu Azure Files działa we wszystkich wersjach systemów operacyjnych obsługiwanych przez Service Fabric.
 
-* The Azure Files volume plugin only works on Service Fabric version 6.2 and newer.
+* Wtyczka woluminu Azure Files działa tylko na Service Fabric wersji 6,2 i nowszych.
 
-* Follow the instructions in the [Azure Files documentation](/azure/storage/files/storage-how-to-create-file-share) to create a file share for the Service Fabric container application to use as volume.
+* Postępuj zgodnie z instrukcjami w [dokumentacji Azure Files](/azure/storage/files/storage-how-to-create-file-share) , aby utworzyć udział plików dla aplikacji kontenera Service Fabric do użycia jako wolumin.
 
-* You will need [Powershell with the Service Fabric module](/azure/service-fabric/service-fabric-get-started) or [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) installed.
+* Wymagany jest program [PowerShell z zainstalowanym modułem Service Fabric](/azure/service-fabric/service-fabric-get-started) lub [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) .
 
-* If you are using Hyper-V containers, the following snippets need to be added in the ClusterManifest (local cluster) or fabricSettings section in your Azure Resource Manager template (Azure cluster) or ClusterConfig.json (standalone cluster).
+* W przypadku korzystania z kontenerów funkcji Hyper-V następujące fragmenty kodu muszą zostać dodane w sekcji ClusterManifest (klaster lokalny) lub fabricSettings w szablonie Azure Resource Manager (klaster platformy Azure) lub ClusterConfig. JSON (autonomiczny klaster).
 
-In the ClusterManifest, the following needs to be added in the Hosting section. In this example, the volume name is **sfazurefile** and the port it listens to on the cluster is **19100**. Replace them with the correct values for your cluster.
+W ClusterManifest w sekcji hosting należy dodać następujące elementy. W tym przykładzie nazwa woluminu to **sfazurefile** , a port, do którego nasłuchuje w klastrze, to **19100**. Zastąp je wartościami prawidłowymi dla klastra.
 
 ``` xml 
 <Section Name="Hosting">
@@ -46,7 +46,7 @@ In the ClusterManifest, the following needs to be added in the Hosting section. 
 </Section>
 ```
 
-In the fabricSettings section in your Azure Resource Manager template (for Azure deployments) or ClusterConfig.json (for standalone deployments), the following snippet needs to be added. Again, replace the volume name and port values with your own.
+W sekcji fabricSettings szablonu Azure Resource Manager (dla wdrożeń platformy Azure) lub ClusterConfig. JSON (w przypadku wdrożeń autonomicznych) należy dodać poniższy fragment kodu. Ponownie Zastąp wartości Nazwa woluminu i port własnymi.
 
 ```json
 "fabricSettings": [
@@ -63,31 +63,31 @@ In the fabricSettings section in your Azure Resource Manager template (for Azure
 ```
 
 
-## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Deploy a sample application using Service Fabric Azure Files volume driver
+## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Wdrażanie przykładowej aplikacji przy użyciu sterownika woluminu Azure Files Service Fabric
 
-### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>Using Azure Resource Manager via the provided Powershell script (recommended)
+### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>Używanie Azure Resource Manager za pośrednictwem podanego skryptu programu PowerShell (zalecane)
 
-If your cluster is based in Azure, we recommend deploying applications to it using the Azure Resource Manager application resource model for ease of use and to help move towards the model of maintaining infrastructure as code. This approach eliminates the need to keep track of the app version for the Azure Files volume driver. It also enables you to maintain separate Azure Resource Manager templates for each supported OS. The script assumes you are deploying the latest version of the Azure Files application and takes parameters for OS type, cluster subscription ID, and resource group. You can download the script from the [Service Fabric download site](https://sfazfilevd.blob.core.windows.net/sfazfilevd/DeployAzureFilesVolumeDriver.zip). Note that this automatically sets the ListenPort, which is the port on which the Azure Files volume plugin listens for requests from the Docker daemon, to 19100. You can change it by adding parameter named "listenPort". Ensure that the port does not conflict with any other port that the cluster or your applications uses.
+Jeśli klaster jest oparty na platformie Azure, zalecamy wdrożenie w niej aplikacji przy użyciu modelu zasobów aplikacji Azure Resource Manager, aby ułatwić korzystanie z usługi i poruszanie się w modelu obsługi infrastruktury jako kodu. Takie podejście eliminuje konieczność śledzenia wersji aplikacji dla Azure Files sterownika woluminu. Umożliwia również obsługę oddzielnych szablonów Azure Resource Manager dla każdego obsługiwanego systemu operacyjnego. Skrypt założono, że wdrażasz najnowszą wersję aplikacji Azure Files i pobieramy parametry dla typu systemu operacyjnego, identyfikatora subskrypcji klastra i grupy zasobów. Skrypt można pobrać z [witryny pobierania Service Fabric](https://sfazfilevd.blob.core.windows.net/sfazfilevd/DeployAzureFilesVolumeDriver.zip). Należy zauważyć, że to automatycznie ustawia wartość ListenPort, czyli port, na którym wtyczka woluminu Azure Files nasłuchuje żądań z demona Docker do 19100. Można to zmienić, dodając parametr o nazwie "listenPort". Upewnij się, że port nie jest w konflikcie z żadnym innym portem używanym przez klaster lub aplikacje.
  
 
-Azure Resource Manager deployment command for Windows:
+Azure Resource Manager polecenia wdrażania dla systemu Windows:
 ```powershell
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -windows
 ```
 
-Azure Resource Manager deployment command for Linux:
+Azure Resource Manager polecenia wdrażania dla systemu Linux:
 ```powershell
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -linux
 ```
 
-Once you've successfully run the script, you can skip to the [configuring your application section.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)
+Po pomyślnym uruchomieniu skryptu możesz przejść do [sekcji Konfigurowanie aplikacji.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)
 
 
-### <a name="manual-deployment-for-standalone-clusters"></a>Manual deployment for standalone clusters
+### <a name="manual-deployment-for-standalone-clusters"></a>Ręczne wdrażanie klastrów autonomicznych
 
-The Service Fabric application that provides the volumes for your containers can be downloaded from the [Service Fabric download site](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip). The application can be deployed to the cluster via [PowerShell](./service-fabric-deploy-remove-applications.md), [CLI](./service-fabric-application-lifecycle-sfctl.md) or [FabricClient APIs](./service-fabric-deploy-remove-applications-fabricclient.md).
+Aplikację Service Fabric, która dostarcza woluminy dla kontenerów, można pobrać z [witryny pobierania Service Fabric](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip). Aplikację można wdrożyć w klastrze za pomocą [interfejsów API](./service-fabric-deploy-remove-applications-fabricclient.md) [programu PowerShell](./service-fabric-deploy-remove-applications.md), [interfejsu wiersza polecenia](./service-fabric-application-lifecycle-sfctl.md) lub FabricClient.
 
-1. Using the command line, change directory to the root directory of the downloaded application package.
+1. Przy użyciu wiersza polecenia Zmień katalog na katalog główny pobranego pakietu aplikacji.
 
     ```powershell
     cd .\AzureFilesVolume\
@@ -97,7 +97,7 @@ The Service Fabric application that provides the volumes for your containers can
     cd ~/AzureFilesVolume
     ```
 
-2. Next, copy the application package to the image store  with the appropriate values for [ApplicationPackagePath] and [ImageStoreConnectionString]:
+2. Następnie skopiuj pakiet aplikacji do magazynu obrazów z odpowiednimi wartościami dla [ApplicationPackagePath] i [ImageStoreConnectionString]:
 
     ```powershell
     Copy-ServiceFabricApplicationPackage -ApplicationPackagePath [ApplicationPackagePath] -ImageStoreConnectionString [ImageStoreConnectionString] -ApplicationPackagePathInImageStore AzureFilesVolumePlugin
@@ -108,7 +108,7 @@ The Service Fabric application that provides the volumes for your containers can
     sfctl application upload --path [ApplicationPackagePath] --show-progress
     ```
 
-3. Register the application type
+3. Rejestrowanie typu aplikacji
 
     ```powershell
     Register-ServiceFabricApplicationType -ApplicationPathInImageStore AzureFilesVolumePlugin
@@ -118,7 +118,7 @@ The Service Fabric application that provides the volumes for your containers can
     sfctl application provision --application-type-build-path [ApplicationPackagePath]
     ```
 
-4. Create the application, paying close attention to the **ListenPort** application parameter value. This value is the port on which the Azure Files volume plugin listens for requests from the Docker daemon. Ensure that the port provided to the application matches the VolumePluginPorts in the ClusterManifest and does not conflict with any other port that the cluster or your applications uses.
+4. Utwórz aplikację, zwracając bliską uwagę na wartość parametru **ListenPort** aplikacji. Ta wartość jest portem, na którym wtyczka woluminu Azure Files nasłuchuje żądań z demona platformy Docker. Upewnij się, że port podany dla aplikacji jest zgodny z VolumePluginPorts w ClusterManifest i nie powoduje konfliktu z żadnym innym portem używanym przez klaster lub aplikacje.
 
     ```powershell
     New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
@@ -130,12 +130,12 @@ The Service Fabric application that provides the volumes for your containers can
 
 > [!NOTE]
 > 
-> Windows Server 2016 Datacenter does not support mapping SMB mounts to containers ([That is only supported on Windows Server version 1709](/virtualization/windowscontainers/manage-containers/container-storage)). This constraint prevents network volume mapping and Azure Files volume drivers on versions older than 1709.
+> System Windows Server 2016 Datacenter nie obsługuje mapowania instalacji SMB do kontenerów ([które są obsługiwane tylko w systemie Windows Server w wersji 1709](/virtualization/windowscontainers/manage-containers/container-storage)). To ograniczenie uniemożliwia mapowanie woluminu sieciowego i Azure Files sterowniki woluminów w wersjach starszych niż 1709.
 
-#### <a name="deploy-the-application-on-a-local-development-cluster"></a>Deploy the application on a local development cluster
-Follow steps 1-3 from the [above.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)
+#### <a name="deploy-the-application-on-a-local-development-cluster"></a>Wdrażanie aplikacji w lokalnym klastrze projektowym
+Wykonaj kroki 1-3 z [powyższego.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)
 
- The default service instance count for the Azure Files volume plugin application is -1, which means that there is an instance of the service deployed to each node in the cluster. However, when deploying the Azure Files volume plugin application on a local development cluster, the service instance count should be specified as 1. This can be done via the **InstanceCount** application parameter. Therefore, the command for creating the Azure Files volume plugin application on a local development cluster is:
+ Domyślna liczba wystąpień usługi dla aplikacji wtyczki woluminu Azure Files to-1, co oznacza, że istnieje wystąpienie usługi wdrożone w każdym węźle w klastrze. Jednak podczas wdrażania aplikacji wtyczki woluminu Azure Files w lokalnym klastrze projektowym liczba wystąpień usługi powinna być określona jako 1. Można to zrobić za pomocą parametru aplikacji **InstanceCount** . W związku z tym, polecenie do tworzenia aplikacji wtyczki woluminu Azure Files w lokalnym klastrze projektowym jest następujące:
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
@@ -145,8 +145,8 @@ New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp 
 sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 
-## <a name="configure-your-applications-to-use-the-volume"></a>Configure your applications to use the volume
-The following snippet shows how an Azure Files based volume can be specified in the application manifest file of your application. The specific element of interest is the **Volume** tag:
+## <a name="configure-your-applications-to-use-the-volume"></a>Konfigurowanie aplikacji do korzystania z woluminu
+Poniższy fragment kodu przedstawia, w jaki sposób wolumin oparty na Azure Files może być określony w pliku manifestu aplikacji aplikacji. Określony element zainteresowania jest tagiem **woluminu** :
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -180,17 +180,17 @@ The following snippet shows how an Azure Files based volume can be specified in 
 </ApplicationManifest>
 ```
 
-The driver name for the Azure Files volume plugin is **sfazurefile**. This value is set for the **Driver** attribute of the **Volume** tag element in the application manifest.
+Nazwa sterownika wtyczki woluminu Azure Files to **sfazurefile**. Ta wartość jest ustawiana dla atrybutu **sterownika** elementu tag **woluminu** w manifeście aplikacji.
 
-In the **Volume** tag in the snippet above, the Azure Files volume plugin requires the following attributes:
-- **Source** - This is the name of the volume. The user can pick any name for their volume.
-- **Destination** - This attribute is the location that the volume is mapped to within the running container. Thus, your destination can't be a location that already exists within your container
+W poniższym fragmencie kodu **wtyczka woluminu Azure Files** wymaga następujących atrybutów:
+- **Źródło** — to jest nazwa woluminu. Użytkownik może wybrać dowolną nazwę dla swojego woluminu.
+- **Miejsce docelowe** — ten atrybut jest lokalizacją, w której jest mapowany wolumin w działającym kontenerze. W rezultacie miejsce docelowe nie może być lokalizacją, która już istnieje w kontenerze
 
-As shown in the **DriverOption** elements in the snippet above, the Azure Files volume plugin supports the following driver options:
-- **shareName** - Name of the Azure Files file share that provides the volume for the container.
-- **storageAccountName** - Name of the Azure storage account that contains the Azure Files file share.
-- **storageAccountKey** - Access key for the Azure storage account that contains the Azure Files file share.
-- **storageAccountFQDN** - Domain name associated with the storage account. If storageAccountFQDN is not specified, domain name will be formed by using the default suffix(.file.core.windows.net) with the storageAccountName.  
+Jak pokazano w elementach **DriverOption** w powyższym fragmencie kodu, wtyczka woluminu Azure Files obsługuje następujące opcje sterownika:
+- Nazwa **udziałuname** Azure Files udziału plików, który udostępnia wolumin dla kontenera.
+- **storageAccountName** — nazwa konta usługi Azure Storage, która zawiera Azure Files udział plików.
+- **storageAccountKey** — klucz dostępu dla konta usługi Azure Storage, który zawiera Azure Files udział plików.
+- **storageAccountFQDN** — nazwa domeny skojarzona z kontem magazynu. Jeśli storageAccountFQDN nie zostanie określony, nazwa domeny zostanie utworzona przy użyciu domyślnego sufiksu (. plik. Core. Windows. NET) z storageAccountName.  
 
     ```xml
     - Example1: 
@@ -205,10 +205,10 @@ As shown in the **DriverOption** elements in the snippet above, the Azure Files 
         <DriverOption Name="storageAccountFQDN" Value="myaccount2.file.core.chinacloudapi.cn" />
     ```
 
-## <a name="using-your-own-volume-or-logging-driver"></a>Using your own volume or logging driver
-Service Fabric also allows the usage of your own custom [volume](https://docs.docker.com/engine/extend/plugins_volume/) or [logging](https://docs.docker.com/engine/admin/logging/overview/) drivers. If the Docker volume/logging driver is not installed on the cluster, you can install it manually by using the RDP/SSH protocols. You can perform the install with these protocols through a [virtual machine scale set start-up script](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) or an [SetupEntryPoint script](/azure/service-fabric/service-fabric-application-model).
+## <a name="using-your-own-volume-or-logging-driver"></a>Używanie własnego woluminu lub sterownika rejestrowania
+Service Fabric również umożliwia użycie własnych niestandardowych sterowników [woluminów](https://docs.docker.com/engine/extend/plugins_volume/) lub [dzienników](https://docs.docker.com/engine/admin/logging/overview/) . Jeśli w klastrze nie zainstalowano sterownika rejestrowania woluminów/sterowników platformy Docker, można zainstalować go ręcznie przy użyciu protokołów RDP/SSH. Instalację można przeprowadzić za pomocą tych protokołów za pomocą [skryptu uruchamiania zestawu skalowania maszyn wirtualnych](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) lub [skryptu SetupEntryPoint](/azure/service-fabric/service-fabric-application-model).
 
-An example of the script to install the [Docker volume driver for Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) is as follows:
+Przykładowy skrypt [służący do instalacji sterownika woluminu platformy Docker dla platformy Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) jest następujący:
 
 ```bash
 docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:17.09.0-ce-azure1  \
@@ -218,7 +218,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
     DEBUG=1
 ```
 
-In your applications, to use the volume or logging driver you installed, you would have to specify the appropriate values in the **Volume** and **LogConfig** elements under **ContainerHostPolicies** in your application manifest.
+W aplikacjach, aby użyć zainstalowanego sterownika woluminu lub rejestrowania, należy określić odpowiednie wartości w **woluminie** i **LogConfig** elementy w obszarze **ContainerHostPolicies** w manifeście aplikacji.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv">
@@ -235,7 +235,7 @@ In your applications, to use the volume or logging driver you installed, you wou
 </ContainerHostPolicies>
 ```
 
-When specifying a volume plug-in, Service Fabric automatically creates the volume by using the specified parameters. The **Source** tag for the **Volume** element is the name of the volume and the **Driver** tag specifies the volume driver plug-in. The **Destination** tag is the location that the **Source** is mapped to within the running container. Thus, your destination can't be a location that already exists within your container. Options can be specified by using the **DriverOption** tag as follows:
+Podczas określania wtyczki woluminu Service Fabric automatycznie tworzy wolumin przy użyciu określonych parametrów. Tag **Source** dla elementu **Volume** jest nazwą woluminu, a tag **sterownika** określa wtyczkę sterownika woluminu. Znacznik **docelowy** jest lokalizacją, w której jest mapowane **Źródło** w uruchomionym kontenerze. W rezultacie miejsce docelowe nie może być lokalizacją, która już istnieje w kontenerze. Opcje można określić za pomocą tagu **DriverOption** w następujący sposób:
 
 ```xml
 <Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azure" IsReadOnly="true">
@@ -243,10 +243,10 @@ When specifying a volume plug-in, Service Fabric automatically creates the volum
 </Volume>
 ```
 
-Application parameters are supported for volumes as shown in the preceding manifest snippet (look for `MyStorageVar` for an example use).
+Parametry aplikacji są obsługiwane w przypadku woluminów, jak pokazano w powyższym fragmencie kodu manifestu (Poszukaj `MyStorageVar` w celu użycia przykładu).
 
-If a Docker log driver is specified, you have to deploy agents (or containers) to handle the logs in the cluster. The **DriverOption** tag can be used to specify options for the log driver.
+W przypadku określenia sterownika dziennika platformy Docker należy wdrożyć agentów (lub kontenery) w celu obsługi dzienników w klastrze. Tag **DriverOption** może służyć do określania opcji dla sterownika dziennika.
 
 ## <a name="next-steps"></a>Następne kroki
-* To see container samples, including the volume driver, please visit the [Service Fabric container samples](https://github.com/Azure-Samples/service-fabric-containers)
-* To deploy containers to a Service Fabric cluster, refer the article [Deploy a container on Service Fabric](service-fabric-deploy-container.md)
+* Aby zobaczyć przykłady kontenerów, w tym sterownik woluminu, odwiedź [przykłady kontenerów Service Fabric](https://github.com/Azure-Samples/service-fabric-containers)
+* Aby wdrożyć kontenery w klastrze Service Fabric, zapoznaj się z artykułem [wdrażanie kontenera na Service Fabric](service-fabric-deploy-container.md)

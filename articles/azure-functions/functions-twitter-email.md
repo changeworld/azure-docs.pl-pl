@@ -43,7 +43,7 @@ Jeśli jeszcze tego nie zrobiono, wykonaj teraz te kroki, aby utworzyć aplikacj
 
 Interfejsy API usług Cognitive Services są dostępne na platformie Azure jako pojedyncze zasoby. Użyj interfejsu API analizy tekstu do wykrywania tonacji monitorowanych tweetów.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 2. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 
@@ -121,7 +121,7 @@ Usługa Functions zapewnia doskonały sposób na odciążanie przetwarzania zada
     ```
     Ten kod funkcji zwraca kategorię koloru na podstawie wyniku tonacji otrzymanego w żądaniu. 
 
-4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. W treści odpowiedzi jest zwracana wartość **RED** (Czerwony). 
+4. Aby przetestować funkcję, kliknij przycisk **Testuj** po prawej stronie, aby rozwinąć kartę test. wpisz wartość `0.2` dla **treści żądania**, a następnie kliknij przycisk **Uruchom**. W treści odpowiedzi jest zwracana wartość **RED** (Czerwony). 
 
     ![Testowanie funkcji w witrynie Azure Portal](./media/functions-twitter-email/07-function-test.png)
 
@@ -238,7 +238,7 @@ Ostatnia część przepływu pracy polega na wyzwoleniu wiadomości e-mail, gdy 
 | **Temat** | Wykryto negatywną tonację tweetów  | Wiersz tematu powiadomienia w wiadomości e-mail.  |
 | **Treść** | Tekst tweetu, lokalizacja | Kliknij parametry **Tekst tweetu** i **Lokalizacja**. |
 
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij pozycję **Zapisz**.
 
 Przepływ pracy jest gotowy, można więc włączyć aplikację logiki i przyjrzeć się funkcji w działaniu.
 

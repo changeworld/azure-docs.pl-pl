@@ -14,14 +14,14 @@ ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230429"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Wprowadzenie do usługi Azure Functions  
-Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu („funkcji”) w chmurze. Możesz napisać tylko kod rozwiązujący aktualny problem, nie martwiąc się o całą aplikację ani infrastrukturę do jej uruchomienia. Functions can make development even more productive, and you can use your development language of choice, such as C#, Java, JavaScript, PowerShell, and Python. Płać tylko za czas działania kodu — platforma Azure jest skalowana zgodnie z potrzebami. Usługa Azure Functions pozwala tworzyć na platformie Microsoft Azure aplikacje [bezserwerowe](https://azure.microsoft.com/solutions/serverless/).
+Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu („funkcji”) w chmurze. Możesz napisać tylko kod rozwiązujący aktualny problem, nie martwiąc się o całą aplikację ani infrastrukturę do jej uruchomienia. Funkcje mogą jeszcze bardziej zwiększyć produktywność i można korzystać z wybranego języka programowania, takiego jak C#Java, JavaScript, PowerShell i Python. Płać tylko za czas działania kodu — platforma Azure jest skalowana zgodnie z potrzebami. Usługa Azure Functions pozwala tworzyć na platformie Microsoft Azure aplikacje [bezserwerowe](https://azure.microsoft.com/solutions/serverless/).
 
 W tym temacie przedstawiono ogólne omówienie usługi Azure Functions. Jeśli chcesz od razu rozpocząć korzystanie z usługi Functions, skorzystaj z artykułu [Tworzenie pierwszej funkcji platformy Azure](functions-create-first-azure-function.md). Jeśli chcesz uzyskać informacje techniczne o usłudze Functions, zobacz [dokumentację dla deweloperów](functions-reference.md).
 
 ## <a name="features"></a>Funkcje
 Oto główne funkcje usługi Functions:
 
-* **Choice of language** - Write functions using your choice of C#, Java, Javascript, Python, and other languages. See [Supported languages](supported-languages.md) for the complete list.
+* **Wybór języka** — funkcje zapisu przy użyciu wybranych C#języków Java, JavaScript, Python i innych. Pełną listę można znaleźć w sekcji [obsługiwane języki](supported-languages.md) .
 * **Model cenowy płatności za użycie** — płać tylko za czas działania kodu. Zapoznaj się z opcjami planu hostingowego zużycia w [sekcji cennika](#pricing).  
 * **Korzystaj z własnych zależności** — środowisko Functions obsługuje rozwiązania NuGet i NPM, dzięki czemu można używać ulubionych bibliotek.  
 * **Zintegrowane zabezpieczenia** — ochrona funkcji wyzwalanych przez protokół HTTP za pośrednictwem dostawców uwierzytelniania OAuth, takich jak Azure Active Directory, Facebook, Google, Twitter i konto Microsoft.  

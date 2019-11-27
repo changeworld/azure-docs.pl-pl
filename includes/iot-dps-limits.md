@@ -11,29 +11,29 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224560"
 ---
-The following table lists the limits that apply to Azure IoT Hub Device Provisioning Service resources.
+W poniższej tabeli wymieniono limity dotyczące zasobów usługi Azure IoT Hub Device Provisioning Service.
 
 | Zasób | Limit |
 | --- | --- |
-| Maximum device provisioning services per Azure subscription | 10 |
-| Maximum number of enrollments | 1 000 000 |
-| Maximum number of registrations | 1 000 000 |
-| Maximum number of enrollment groups | 100 |
-| Maximum number of CAs | 25 |
-| Maximum number of linked IoT hubs | 50 |
-| Maximum size of message | 96 KB|
+| Maksymalna liczba usług aprowizacji urządzeń na subskrypcję platformy Azure | 10 |
+| Maksymalna liczba rejestracji | 1 000 000 |
+| Maksymalna liczba rejestracji | 1 000 000 |
+| Maksymalna liczba grup rejestracji | 100 |
+| Maksymalna liczba urzędów certyfikacji | 25 |
+| Maksymalna liczba połączonych centrów IoT | 50 |
+| Maksymalny rozmiar komunikatu | 96 KB|
 
 
 > [!NOTE]
-> To increase the number of instances in your subscription, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Aby zwiększyć liczbę wystąpień w ramach subskrypcji, skontaktuj się z [Pomoc techniczna firmy Microsoft](https://azure.microsoft.com/support/options/).
 
 > [!NOTE]
-> To increase the number of enrollments and registrations on your provisioning service, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Aby zwiększyć liczbę rejestracji i rejestracji w usłudze aprowizacji, skontaktuj się z firmą [Pomoc techniczna firmy Microsoft](https://azure.microsoft.com/support/options/).
 
-The Device Provisioning Service throttles requests when the following quotas are exceeded.
+Usługa Device Provisioning ogranicza żądania w przypadku przekroczenia następujących przydziałów.
 
-| Ograniczenie | Per-unit value |
+| Ograniczenie | Wartość na jednostkę |
 | --- | --- |
-| Operations | 200/min/service |
-| Rejestracje urządzeń | 200/min/service |
-| Device polling operation | 5/10 sec/device |
+| Operacje | 200/min/usługa |
+| Rejestracje urządzeń | 200/min/usługa |
+| Operacja sondowania urządzenia | 5/10 sek/urządzenie |

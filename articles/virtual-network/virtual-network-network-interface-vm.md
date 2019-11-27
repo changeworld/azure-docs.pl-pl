@@ -65,7 +65,7 @@ Przed utworzeniem maszyny wirtualnej Utwórz interfejs sieciowy, wykonując krok
 
    Jeśli nie masz istniejącego interfejsu sieciowego, musisz go najpierw utworzyć. W tym celu wybierz pozycję **Utwórz interfejs sieciowy**. Aby dowiedzieć się więcej na temat tworzenia interfejsu sieciowego, zobacz [Tworzenie interfejsu sieciowego](virtual-network-network-interface.md#create-a-network-interface). Aby dowiedzieć się więcej na temat dodatkowych ograniczeń podczas dodawania interfejsów sieciowych do maszyn wirtualnych, zobacz [ograniczenia](#constraints).
 
-6. Wybierz **OK**.
+6. Kliknij przycisk **OK**.
 7. Wybierz pozycję **Przegląd**, w obszarze **Ustawienia**, a następnie **Uruchom** polecenie, aby uruchomić maszynę wirtualną.
 8. Skonfiguruj system operacyjny maszyny wirtualnej tak, aby używał wielu interfejsów sieciowych prawidłowo. Dowiedz się, jak skonfigurować [system](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) lub Windows dla wielu interfejsów sieciowych.
 
@@ -101,7 +101,7 @@ Możesz wyświetlić interfejsy sieciowe aktualnie dołączone do maszyny wirtua
 
    >[!NOTE]
    >Jeśli na liście znajduje się tylko jeden interfejs sieciowy, nie można go odłączyć, ponieważ maszyna wirtualna musi mieć dołączony co najmniej jeden interfejs sieciowy.
-6. Wybierz **OK**.
+6. Kliknij przycisk **OK**.
 
 ### <a name="commands"></a>Polecenia
 
@@ -124,7 +124,7 @@ Możesz wyświetlić interfejsy sieciowe aktualnie dołączone do maszyny wirtua
 - Usunięcie maszyny wirtualnej nie powoduje usunięcia podłączonych do niej interfejsów sieciowych. Po usunięciu maszyny wirtualnej interfejsy sieciowe są odłączone od maszyny wirtualnej. Możesz dodać interfejsy sieciowe do różnych maszyn wirtualnych lub je usunąć.
 - Podobnie jak w przypadku protokołu IPv6, nie można dołączyć interfejsu sieciowego z włączoną obsługą przyspieszonej sieci do maszyny wirtualnej po jej utworzeniu. Dodatkowo, aby korzystać z przyspieszonej sieci, należy również wykonać kroki opisane w systemie operacyjnym maszyny wirtualnej. Dowiedz się więcej na temat przyspieszonej sieci i innych ograniczeń w przypadku korzystania z niej w przypadku maszyn wirtualnych z [systemem Windows](create-vm-accelerated-networking-powershell.md) lub [Linux](create-vm-accelerated-networking-cli.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby utworzyć maszynę wirtualną z wieloma interfejsami sieciowymi lub adresami IP, zobacz następujące artykuły:
 
 |Zadanie|Narzędzie|

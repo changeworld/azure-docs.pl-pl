@@ -1,5 +1,5 @@
 ---
-title: Use different attestation mechanisms with the Azure IoT Hub Device Provisioning Service Client SDK
+title: Korzystanie z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta IoT Hub Device Provisioning Service platformy Azure
 description: Instrukcje platformy Azure — Jak korzystać z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service na platformie Azure
 author: robinsh
 ms.author: robinsh
@@ -17,7 +17,7 @@ ms.locfileid: "74228286"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Instrukcje dotyczące korzystania z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service dla języka C
 
-W tym artykule przedstawiono sposób korzystania z różnych [mechanizmów zaświadczania](concepts-security.md#attestation-mechanism) przy użyciu zestawu SDK klienta usługi Device Provisioning Service dla języka C. Istnieje możliwość użycia urządzenia fizycznego lub symulatora. The provisioning service supports authentication for two types of attestation mechanisms: X.509 and Trusted Platform Module (TPM).
+W tym artykule przedstawiono sposób korzystania z różnych [mechanizmów zaświadczania](concepts-security.md#attestation-mechanism) przy użyciu zestawu SDK klienta usługi Device Provisioning Service dla języka C. Istnieje możliwość użycia urządzenia fizycznego lub symulatora. Usługa aprowizacji obsługuje uwierzytelnianie dla dwóch typów mechanizmów zaświadczania: X. 509 i moduł TPM (TPM).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,11 +35,11 @@ Aby uzyskać więcej informacji, zobacz [pojęcia związane z zabezpieczeniami](
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Włączanie uwierzytelniania dla obsługiwanych mechanizmów zaświadczania
 
-The SDK authentication mode (X.509 or TPM) must be enabled for the physical device or simulator before they can be enrolled in the Azure portal. Przejdź do folderu głównego elementu azure-iot-sdk-c. Następnie uruchom odpowiednie polecenie, w zależności od wybranego trybu uwierzytelniania:
+Aby można było zarejestrować urządzenie fizyczne lub symulator w Azure Portal, należy włączyć tryb uwierzytelniania zestawu SDK (X. 509 lub moduł TPM). Przejdź do folderu głównego elementu azure-iot-sdk-c. Następnie uruchom odpowiednie polecenie, w zależności od wybranego trybu uwierzytelniania:
 
-### <a name="use-x509-with-simulator"></a>Use X.509 with simulator
+### <a name="use-x509-with-simulator"></a>Używanie X. 509 z symulatorem
 
-The provisioning service ships with a Device Identity Composition Engine (DICE) emulator that generates an **X.509** certificate for authenticating the device. To enable **X.509** authentication, run the following command: 
+Usługa aprowizacji jest dostarczana z emulatorem aparatu kompozycji tożsamości urządzenia, który generuje certyfikat **X. 509** na potrzeby uwierzytelniania urządzenia. Aby włączyć uwierzytelnianie **X. 509** , uruchom następujące polecenie: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -47,9 +47,9 @@ cmake -Ddps_auth_type=x509 ..
 
 Informacje na temat sprzętu z aparatem DICE można znaleźć [tutaj](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/).
 
-### <a name="use-x509-with-hardware"></a>Use X.509 with hardware
+### <a name="use-x509-with-hardware"></a>Używanie X. 509 ze sprzętem
 
-The provisioning service can be used with **X.509** on other hardware. Do ustanowienia połączenia niezbędny jest interfejs między sprzętem i zestawem SDK. Skontaktuj się z producentem modułu HSM, aby uzyskać informacje na temat interfejsu.
+Usługa aprowizacji może być używana z opcją **X. 509** na innym sprzęcie. Do ustanowienia połączenia niezbędny jest interfejs między sprzętem i zestawem SDK. Skontaktuj się z producentem modułu HSM, aby uzyskać informacje na temat interfejsu.
 
 ### <a name="use-tpm"></a>Używanie modułu TPM
 
@@ -148,8 +148,8 @@ Jeśli korzystasz z modułu TPM, postępuj zgodnie z instrukcjami z sekcji [„C
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Zaloguj się w witrynie Azure Portal, kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie i otwórz swoją usługę Device Provisioning.
-   - **X.509 Individual Enrollment**: On the provisioning service summary blade, select **Manage enrollments**. Wybierz kartę **Indywidualne rejestracje** i kliknij u góry przycisk **Dodaj**. Select **X.509** as the identity attestation *Mechanism*, upload the leaf certificate as required by the blade. Gdy skończysz, kliknij przycisk **Zapisz**. 
-   - **X.509 Group Enrollment**: On the provisioning service  summary blade, select **Manage enrollments**. Wybierz kartę **Grupowe rejestracje** i kliknij u góry przycisk **Dodaj**. Select **X.509** as the identity attestation *Mechanism*, enter a group name and certification name, upload the CA/Intermediate certificate as required by the blade. Gdy skończysz, kliknij przycisk **Zapisz**. 
+   - **Rejestracja indywidualna X. 509**: w bloku podsumowania usługi aprowizacji wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Indywidualne rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz pozycję **X. 509** jako *mechanizm*zaświadczania tożsamości, Przekaż certyfikat liścia zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
+   - **Rejestracja grupy X. 509**: w bloku podsumowania usługi aprowizacji wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Grupowe rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz pozycję **X. 509** jako *mechanizm*zaświadczania tożsamości, wprowadź nazwę grupy i nazwę certyfikacji, Przekaż certyfikat urzędu certyfikacji/pośredniego zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Włączanie uwierzytelniania urządzeń przy użyciu niestandardowego mechanizmu zaświadczania (opcjonalnie)
 
@@ -181,7 +181,7 @@ Gdy biblioteka zostanie pomyślnie skompilowana, trzeba będzie ją zintegrować
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>Łączenie z usługą IoT Hub po zakończeniu aprowizacji
 
-Once the device has been provisioned with the provisioning service, this API uses the specified authentication mode (**X.509** or TPM) to connect with IoT Hub: 
+Po zainicjowaniu obsługi administracyjnej urządzenia przy użyciu usługi aprowizacji ten interfejs API używa określonego trybu uwierzytelniania (**X. 509** lub modułu TPM) do łączenia się z IoT Hub: 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

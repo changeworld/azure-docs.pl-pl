@@ -1,6 +1,6 @@
 ---
-title: Learn how modules run logic on your devices - Azure IoT Edge | Microsoft Docs
-description: Azure IoT Edge modules are containerized units of logic that can be deployed and managed remotely so that you can run business logic on IoT Edge devices
+title: Dowiedz się, jak moduły uruchamiają logikę na urządzeniach z systemem — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Moduły platformy Azure IoT Edge to jednostki konteneryzowanych logiki, która może być wdrożone i zdalne zarządzanie, dzięki czemu możesz uruchomić logiki biznesowej na urządzeniach brzegowych IoT urządzenia
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -17,43 +17,43 @@ ms.locfileid: "74456586"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Omówienie modułów usługi Azure IoT Edge
 
-Azure IoT Edge lets you deploy and manage business logic on the edge in the form of *modules*. Azure IoT Edge modules are the smallest unit of computation managed by IoT Edge, and can contain Azure services (such as Azure Stream Analytics) or your own solution-specific code. To understand how modules are developed, deployed, and maintained, it helps to think of the four conceptual elements of a module:
+Azure IoT Edge pozwala wdrożyć logikę biznesową i zarządzać nią na krawędzi w formie *modułów*. Moduły platformy Azure IoT Edge to najmniejsza obliczeń zarządzane przez usługi IoT Edge i może zawierać usług platformy Azure (np. usługi Azure Stream Analytics) lub kodu specyficznego dla rozwiązania. Aby zrozumieć, jak moduły są opracowywane, wdrażane i konserwowane, ułatwiają one poznanie czterech elementów koncepcyjnych modułu:
 
-* A **module image** is a package containing the software that defines a module.
-* A **module instance** is the specific unit of computation running the module image on an IoT Edge device. The module instance is started by the IoT Edge runtime.
-* A **module identity** is a piece of information (including security credentials) stored in IoT Hub, that is associated to each module instance.
-* A **module twin** is a JSON document stored in IoT Hub, that contains state information for a module instance, including metadata, configurations, and conditions. 
+* **Obraz modułu** to pakiet zawierający oprogramowanie, które definiuje moduł.
+* **Wystąpienie modułu** to określona jednostka obliczeniowa, która uruchamia obraz modułu na urządzeniu IoT Edge. Wystąpienia modułu jest uruchomiona przez środowisko uruchomieniowe usługi IoT Edge.
+* **Tożsamość modułu** jest częścią informacji (łącznie z poświadczeniami zabezpieczeń) przechowywaną w IoT Hub, która jest skojarzona z każdym wystąpieniem modułu.
+* **Sznurek modułu** jest dokument JSON przechowywany w IoT Hub, który zawiera informacje o stanie wystąpienia modułu, w tym metadane, konfiguracje i warunki. 
 
-## <a name="module-images-and-instances"></a>Module images and instances
+## <a name="module-images-and-instances"></a>Obrazy modułu i wystąpienia
 
-IoT Edge module images contain applications that take advantage of the management, security, and communication features of the IoT Edge runtime. You can develop your own module images, or export one from a supported Azure service, such as Azure Stream Analytics.
-The images exist in the cloud and they can be updated, changed, and deployed in different solutions. For instance, a module that uses machine learning to predict production line output exists as a separate image than a module that uses computer vision to control a drone. 
+Obrazy modułu usługi IoT Edge zawierają aplikacje wykorzystujące zarządzania, zabezpieczeń i funkcji komunikacji środowiska uruchomieniowego usługi IoT Edge. Możesz tworzyć swoje własne obrazy, modułu lub wyeksportować jeden z obsługiwanych usług platformy Azure, takich jak Azure Stream Analytics.
+Obrazy istnieją w chmurze i mogą być aktualizowane, zmienić i wdrożone w różnych rozwiązaniach. Na przykład moduł, który korzysta z uczenia maszynowego przewiduje linii produkcyjnej, wyjściowy istnieje jako osobny obraz niż moduł, który używa przetwarzania obrazów w celu kontrolowania nagrodę: drona. 
 
-Each time a module image is deployed to a device and started by the IoT Edge runtime, a new instance of that module is created. Two devices in different parts of the world could use the same module image. However, each device would have its own module instance when the module is started on the device. 
+Każdorazowo obraz modułu jest wdrażana na urządzeniu i uruchomiona przez środowisko uruchomieniowe usługi IoT Edge, tworzone jest nowe wystąpienie tego modułu. Dwa urządzenia w różnych częściach świata mogą korzystać z tego samego obrazu modułu. Jednak każde urządzenie będzie miało własne wystąpienie modułu, gdy moduł zostanie uruchomiony na urządzeniu. 
 
-![Diagram - Module images in cloud, module instances on devices](./media/iot-edge-modules/image_instance.png)
+![Diagram — obrazy modułu w chmurze, wystąpień modułu na urządzeniach](./media/iot-edge-modules/image_instance.png)
 
-In implementation, modules images exist as container images in a repository, and module instances are containers on devices. 
+W implementacji obrazów modułów istnieje jako obrazów kontenerów w repozytorium, a wystąpienia modułu to kontenery, które na urządzeniach. 
 
 <!--
 As use cases for Azure IoT Edge grow, new types of module images and instances will be created. For example, resource constrained devices cannot run containers so may require module images that exist as dynamic link libraries and instances that are executables. 
 -->
 
-## <a name="module-identities"></a>Module identities
+## <a name="module-identities"></a>Moduł tożsamości
 
-When a new module instance is created by the IoT Edge runtime, the instance is associated with a corresponding module identity. The module identity is stored in IoT Hub, and is employed as the addressing and security scope for all local and cloud communications for that specific module instance.
+Po utworzeniu nowego wystąpienia modułu przez środowisko uruchomieniowe usługi IoT Edge to wystąpienie jest skojarzony z odpowiedniej tożsamości modułu. Tożsamość modułu jest przechowywany w usłudze IoT Hub, a jako zakres adresowania i zabezpieczeń dla wszystkich lokalnych i chmurze komunikacji dla tego wystąpienia określonego modułu.
 
-The identity associated with a module instance depends on the identity of the device on which the instance is running and the name you provide to that module in your solution. For instance, if you call `insight` a module that uses an Azure Stream Analytics, and you deploy it on a device called `Hannover01`, the IoT Edge runtime creates a corresponding module identity called `/devices/Hannover01/modules/insight`.
+Tożsamość skojarzoną z wystąpieniem modułu zależy od tożsamości urządzenia działającego wystąpienia i nazwę tego modułu jest zapewnienie w rozwiązaniu. Na przykład jeśli wywołasz `insight` moduł, który używa Azure Stream Analytics, i wdrażasz go na urządzeniu o nazwie `Hannover01`, środowisko uruchomieniowe IoT Edge tworzy odpowiednią tożsamość modułu o nazwie `/devices/Hannover01/modules/insight`.
 
-Clearly, in scenarios when you need to deploy one module image multiple times on the same device, you can deploy the same image multiple times with different names.
+Wyraźnie widać w scenariuszach, gdy należy wdrożyć jeden obraz modułu wiele razy w tym samym urządzeniu, można wdrożyć ten sam obraz wielokrotnie pod różnymi nazwami.
 
-![Diagram - Module identities are unique within devices and across devices](./media/iot-edge-modules/identity.png)
+![Diagram — moduł tożsamości są unikatowe w obrębie urządzeń i na urządzeniach](./media/iot-edge-modules/identity.png)
 
-## <a name="module-twins"></a>Module twins
+## <a name="module-twins"></a>Bliźniaczych reprezentacjach modułów
 
-Each module instance also has a corresponding module twin that you can use to configure the module instance. The instance and the twin are associated with each other through the module identity. 
+Każde wystąpienie modułu ma też odpowiedni bliźniaczą reprezentację modułu, które umożliwiają skonfigurowanie wystąpienia modułu. Wystąpienia i bliźniaczej reprezentacji są powiązane ze sobą za pomocą tożsamości modułu. 
 
-A module twin is a JSON document that stores module information and configuration properties. This concept parallels the [device twin](../iot-hub/iot-hub-devguide-device-twins.md) concept from IoT Hub. The structure of a module twin is the same as a device twin. The APIs used to interact with both types of twins are also the same. The only difference between the two is the identity used to instantiate the client SDK. 
+Bliźniacza reprezentacja modułu jest dokumentem JSON, która przechowuje informacje i konfiguracji właściwości modułu. Pojęcie to jest równoległe do koncepcji [przędzy urządzenia](../iot-hub/iot-hub-devguide-device-twins.md) z IoT Hub. Struktura sznurka modułu jest taka sama jak sznurki urządzenia. Interfejsy API używane do interakcji z oboma typami bliźniaczych elementów również są takie same. Jedyną różnicą między tymi dwoma jest to tożsamość używana do tworzenia wystąpienia zestawu SDK klienta. 
 
 ```csharp
 // Create a ModuleClient object. This ModuleClient will act on behalf of a 
@@ -68,9 +68,9 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>Możliwości w trybie offline
 
-Azure IoT Edge modules can operate offline indefinitely after syncing with IoT Hub at least once. IoT Edge devices can also extend this offline capability to other IoT devices. For more information, see [Understand extended offline capabilities for IoT Edge devices, modules, and child devices](offline-capabilities.md).
+Moduły Azure IoT Edge mogą działać w trybie offline w nieskończoność po synchronizacji z IoT Hub co najmniej raz. Urządzenia IoT Edge mogą również zwiększyć tę możliwość w trybie offline na innych urządzeniach IoT. Aby uzyskać więcej informacji, zobacz informacje o [rozszerzonych możliwościach trybu offline dla urządzeń IoT Edge, modułów i urządzeń podrzędnych](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Następne kroki
- - [Understand the requirements and tools for developing IoT Edge modules](module-development.md)
- - [Understand the Azure IoT Edge runtime and its architecture](iot-edge-runtime.md)
+ - [Informacje na temat wymagań i narzędzi do opracowywania modułów IoT Edge](module-development.md)
+ - [Poznaj środowisko uruchomieniowe Azure IoT Edge i jego architekturę](iot-edge-runtime.md)
 

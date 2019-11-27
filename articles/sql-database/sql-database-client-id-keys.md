@@ -1,6 +1,6 @@
 ---
-title: Get values for app authentication
-description: Create a service principal for accessing SQL Database from code.
+title: Pobierz wartości uwierzytelniania aplikacji
+description: Utwórz nazwę główną usługi, aby uzyskać dostęp do SQL Database z kodu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -18,18 +18,18 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421328"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Get the required values for authenticating an application to access SQL Database from code
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Pobierz wymagane wartości w celu uwierzytelnienia aplikacji w celu uzyskania dostępu do SQL Database z kodu
 
-To create and manage SQL Database from code you must register your app in the Azure Active Directory (AAD) domain  in the subscription where your Azure resources have been created.
+Aby utworzyć SQL Database z kodu i zarządzać nim, musisz zarejestrować aplikację w domenie Azure Active Directory (AAD) w subskrypcji, w której zostały utworzone zasoby platformy Azure.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Create a service principal to access resources from an application
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Tworzenie jednostki usługi w celu uzyskania dostępu do zasobów z aplikacji
 
-The following examples create the Active Directory (AD) application and the service principal that we need to authenticate our C# app. Skrypt generuje wartości wyjściowe potrzebne w poprzednim przykładzie w języku C#. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie usługi podmiotu używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Poniższe przykłady umożliwiają utworzenie aplikacji Active Directory (AD) i jednostki usługi, która jest wymagana do uwierzytelniania naszej C# aplikacji. Skrypt generuje wartości wyjściowe potrzebne w poprzednim przykładzie w języku C#. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie usługi podmiotu używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Moduł programu PowerShell Azure Resource Manager (RM) jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. Moduł AzureRM będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020.  Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne. Aby uzyskać więcej informacji o zgodności, zobacz [wprowadzenie do nowego Azure PowerShell AZ module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 # sign in to Azure
@@ -99,7 +99,7 @@ Write-Output "_applicationSecret:" $secret
 
 * * *
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-[Create a SQL database with C#](sql-database-get-started-csharp.md)  
-[Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md)
+[Tworzenie bazy danych SQL za pomocąC#](sql-database-get-started-csharp.md)  
+[Nawiązywanie połączenia z SQL Database przy użyciu uwierzytelniania Azure Active Directory](sql-database-aad-authentication.md)

@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Deploy from geo-replicated registry
+title: Samouczek — wdrażanie z rejestru z replikacją geograficzną
 description: Wdrażanie aplikacji internetowej opartej na systemie Linux w dwóch różnych regionach platformy Azure przy użyciu obrazu kontenera z rejestru kontenerów platformy Azure z replikacją geograficzną. Druga część trzyczęściowej serii.
 ms.topic: tutorial
 ms.date: 08/20/2018
@@ -11,7 +11,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456102"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Deploy a web app from a geo-replicated Azure container registry
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Samouczek: wdrażanie aplikacji sieci Web z rejestru kontenerów platformy Azure z replikacją geograficzną
 
 Niniejszy samouczek jest drugą częścią trzyczęściowej serii. W [pierwszej części](container-registry-tutorial-prepare-registry.md) został utworzony prywatny rejestr kontenerów z replikacją geograficzną, a na podstawie źródła został utworzony i wypchnięty do rejestru obraz kontenera. W tym artykule wykorzystasz aspekt bliskości sieci rejestru z replikacją geograficzną przez wdrożenie kontenera w wystąpieniach aplikacji internetowej w dwóch różnych regionach platformy Azure. Następnie każde wystąpienie pobiera obraz kontenera z najbliższego rejestru.
 
@@ -54,7 +54,7 @@ W oknie usługi **Web App for Containers** wyświetlonym po wybraniu polecenia �
 | **System operacyjny** | Linux |
 
 > [!NOTE]
-> When you create a new app service plan to deploy your containerized app, a default plan is automatically selected to host your application. The default plan depends on the operating system setting.
+> Po utworzeniu nowego planu usługi App Service w celu wdrożenia aplikacji z kontenerem zostanie automatycznie wybrany plan domyślny do hostowania aplikacji. Plan domyślny zależy od ustawienia systemu operacyjnego.
 
 Wybierz pozycję **Utwórz**, aby aprowizować aplikację internetową w regionie *Zachodnie stany USA*.
 

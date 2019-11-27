@@ -97,7 +97,7 @@ Uruchom polecenie `terraform apply`, aby aprowizować maszyny wirtualne na platf
 
 ![Terraform Apply](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
 > [Przeglądaj listę modułów usługi Azure Terraform](https://registry.terraform.io/modules/Azure)

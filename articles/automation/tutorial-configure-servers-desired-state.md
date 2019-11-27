@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie wymaganego stanu serwerów i zarządzanie odejściem od tego stanu za pomocą usługi Azure Automation
-description: Tutorial - Manage server configurations with Azure Automation State Configuration
+description: Samouczek — Zarządzanie konfiguracjami serwera z konfiguracją stanu Azure Automation
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -16,25 +16,25 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231498"
 ---
-# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Configure servers to a desired state and manage drift
+# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurowanie żądanego stanu serwerów i zarządzanie dryfem
 
-Azure Automation State Configuration allows you to specify configurations for your servers and ensure that those servers are in the specified state over time.
+Azure Automation konfiguracja stanu pozwala określić konfiguracje dla serwerów i upewnić się, że te serwery są w określonym stanie z upływem czasu.
 
 > [!div class="checklist"]
-> - Onboard a VM to be managed by Azure Automation DSC
-> - Upload a configuration to Azure Automation
-> - Compile a configuration into a node configuration
-> - Assign a node configuration to a managed node
-> - Check the compliance status of a managed node
+> - Dołączanie maszyny wirtualnej, która ma być zarządzana przez Azure Automation DSC
+> - Przekaż konfigurację do Azure Automation
+> - Kompiluj konfigurację do konfiguracji węzła
+> - Przypisywanie konfiguracji węzła do węzła zarządzanego
+> - Sprawdź stan zgodności zarządzanego węzła
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 - Konto usługi Azure Automation. Aby uzyskać instrukcje dotyczące tworzenia konta Uruchom jako usługi Azure Automation, zobacz [Konto Uruchom jako platformy Azure](automation-sec-configure-azure-runas-account.md).
-- An Azure Resource Manager VM (not Classic) running Windows Server 2008 R2 or later. Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w witrynie Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
-- Azure PowerShell module version 3.6 or later. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
-- Familiarity with Desired State Configuration (DSC). For information about DSC, see [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
+- Maszyna wirtualna w Azure Resource Manager (nieklasyczny) z systemem Windows Server 2008 R2 lub nowszym. Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w witrynie Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- Azure PowerShell module w wersji 3,6 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+- Znajomość konfiguracji żądanego stanu (DSC). Informacje o konfiguracji DSC można znaleźć w temacie [Omówienie żądanego stanu programu Windows PowerShell](/powershell/scripting/dsc/overview/overview) .
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
@@ -44,9 +44,9 @@ Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzureR
 Connect-AzureRmAccount
 ```
 
-## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Create and upload a configuration to Azure Automation
+## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Utwórz i przekaż konfigurację do Azure Automation
 
-For this tutorial, we will use a simple DSC configuration that ensures that IIS is installed on the VM.
+W tym samouczku zostanie użyta prosta Konfiguracja DSC, która zapewnia, że usługi IIS są zainstalowane na maszynie wirtualnej.
 
 Aby uzyskać informacje o konfiguracjach DSC, zobacz [Konfiguracje DSC](/powershell/scripting/dsc/configurations/configurations).
 
@@ -65,62 +65,62 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> In more advanced scenarios where you require multiple modules to be imported that provide DSC Resources, make sure each module has a unique `Import-DscResource` line in your configuration.
+> W bardziej zaawansowanych scenariuszach, w których wymagane jest zaimportowanie wielu modułów, które udostępniają zasoby DSC, upewnij się, że każdy moduł ma unikatowy wiersz `Import-DscResource` w konfiguracji.
 
-Call the `Import-AzureRmAutomationDscConfiguration` cmdlet to upload the configuration into your Automation account:
+Wywołaj polecenie cmdlet `Import-AzureRmAutomationDscConfiguration`, aby przekazać konfigurację do konta usługi Automation:
 
 ```powershell
  Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
 ```
 
-## <a name="compile-a-configuration-into-a-node-configuration"></a>Compile a configuration into a node configuration
+## <a name="compile-a-configuration-into-a-node-configuration"></a>Kompiluj konfigurację do konfiguracji węzła
 
-A DSC configuration must be compiled into a node configuration before it can be assigned to a node.
+Konfiguracja DSC musi zostać skompilowana do konfiguracji węzła, aby można było ją przypisać do węzła.
 
-For information about compiling configurations, see [DSC configurations](/powershell/scripting/dsc/configurations/configurations).
+Informacje o kompilowaniu konfiguracji można znaleźć w temacie [konfiguracje DSC](/powershell/scripting/dsc/configurations/configurations).
 
-Call the `Start-AzureRmAutomationDscCompilationJob` cmdlet to compile the `TestConfig` configuration into a node configuration:
+Wywołaj polecenie cmdlet `Start-AzureRmAutomationDscCompilationJob`, aby skompilować konfigurację `TestConfig` do konfiguracji węzła:
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
 ```
 
-This creates a node configuration named `TestConfig.WebServer` in your Automation account.
+Spowoduje to utworzenie konfiguracji węzła o nazwie `TestConfig.WebServer` na koncie usługi Automation.
 
-## <a name="register-a-vm-to-be-managed-by-state-configuration"></a>Register a VM to be managed by State Configuration
+## <a name="register-a-vm-to-be-managed-by-state-configuration"></a>Rejestrowanie maszyny wirtualnej tak, aby była zarządzana przez konfigurację stanu
 
-You can use Azure Automation State Configuration to manage Azure VMs (both Classic and Resource Manager), on-premises VMs, Linux machines, AWS VMs, and on-premises physical machines. In this topic, we cover how to register only Azure Resource Manager VMs. For information about registering other types of machines, see [Onboarding machines for management by Azure Automation State Configuration](automation-dsc-onboarding.md).
+Konfiguracja stanu Azure Automation służy do zarządzania maszynami wirtualnymi platformy Azure (klasycznymi i Menedżer zasobów), lokalnymi maszynami wirtualnymi, maszynami z systemem Linux, AWS maszynami wirtualnymi i lokalnymi maszynami fizycznymi. W tym temacie omówiono sposób rejestrowania tylko Azure Resource Manager maszyn wirtualnych. Aby uzyskać informacje na temat rejestrowania innych typów maszyn, zobacz sekcję dołączanie [maszyn w celu zarządzania przez Azure Automation konfigurację stanu](automation-dsc-onboarding.md).
 
-Call the `Register-AzureRmAutomationDscNode` cmdlet to register your VM with Azure Automation State Configuration.
+Wywołaj polecenie cmdlet `Register-AzureRmAutomationDscNode`, aby zarejestrować maszynę wirtualną z konfiguracją stanu Azure Automation.
 
 ```powershell
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
 ```
 
-This registers the specified VM as a managed node in State Configuration.
+Spowoduje to zarejestrowanie określonej maszyny wirtualnej jako węzła zarządzanego w konfiguracji stanu.
 
-### <a name="specify-configuration-mode-settings"></a>Specify configuration mode settings
+### <a name="specify-configuration-mode-settings"></a>Określ ustawienia trybu konfiguracji
 
-When you register a VM as a managed node, you can also specify properties of the configuration. For example, you can specify that the state of the machine is to be applied only once (DSC does not attempt to apply the configuration after the initial check) by specifying `ApplyOnly` as the value of the **ConfigurationMode** property:
+Po zarejestrowaniu maszyny wirtualnej jako węzła zarządzanego można także określić właściwości konfiguracji. Na przykład można określić, że stan komputera ma być stosowany tylko raz (Konfiguracja DSC nie próbuje zastosować konfiguracji po wstępnym sprawdzeniu), określając `ApplyOnly` jako wartość właściwości **ConfigurationMode** :
 
 ```powershell
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationMode 'ApplyOnly'
 ```
 
-You can also specify how often DSC checks the configuration state by using the **ConfigurationModeFrequencyMins** property:
+Można również określić częstotliwość sprawdzania stanu konfiguracji przez DSC przy użyciu właściwości **ConfigurationModeFrequencyMins** :
 
 ```powershell
 # Run a DSC check every 60 minutes
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationModeFrequencyMins 60
 ```
 
-For more information about setting configuration properties for a managed node, see [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode).
+Aby uzyskać więcej informacji na temat ustawiania właściwości konfiguracji dla zarządzanego węzła, zobacz [register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode).
 
-For more information about DSC configuration settings, see [Configuring the Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig).
+Aby uzyskać więcej informacji na temat ustawień konfiguracji DSC, zobacz [Konfigurowanie lokalnego Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
-## <a name="assign-a-node-configuration-to-a-managed-node"></a>Assign a node configuration to a managed node
+## <a name="assign-a-node-configuration-to-a-managed-node"></a>Przypisywanie konfiguracji węzła do węzła zarządzanego
 
-Now we can assign the compiled node configuration to the VM we want to configure.
+Teraz możemy przypisać konfigurację skompilowanego węzła do maszyny wirtualnej, którą chcemy skonfigurować.
 
 ```powershell
 # Get the ID of the DSC node
@@ -130,24 +130,24 @@ $node = Get-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Autom
 Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -NodeConfigurationName 'TestConfig.WebServer' -NodeId $node.Id
 ```
 
-This assigns the node configuration named `TestConfig.WebServer` to the registered DSC node named `DscVm`.
-By default, the DSC node is checked for compliance with the node configuration every 30 minutes.
-For information about how to change the compliance check interval, see [Configuring the Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig).
+Spowoduje to przypisanie konfiguracji węzła o nazwie `TestConfig.WebServer` do zarejestrowanego węzła DSC o nazwie `DscVm`.
+Domyślnie węzeł DSC jest sprawdzany pod kątem zgodności z konfiguracją węzła co 30 minut.
+Informacje o sposobie zmiany interwału sprawdzania zgodności znajdują się w temacie [konfigurowanie Configuration Manager lokalnego](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
-## <a name="working-with-partial-configurations"></a>Working with Partial Configurations
+## <a name="working-with-partial-configurations"></a>Praca z konfiguracjami częściowymi
 
-Azure Automation State Configuration supports usage of [partial configurations](/powershell/scripting/dsc/pull-server/partialconfigs).
-In this scenario, DSC is configured to manage multiple configurations independently, and each configuration is retrieved from Azure Automation.
-However, only one configuration can be assigned to a node per automation account.
-This means if you are using two configurations for a node you will require two automation accounts.
+Azure Automation konfiguracja stanu obsługuje użycie [konfiguracji częściowych](/powershell/scripting/dsc/pull-server/partialconfigs).
+W tym scenariuszu Konfiguracja DSC jest konfigurowana w taki sposób, aby zarządzać wieloma konfiguracjami niezależnie, a każda z nich jest pobierana z Azure Automation.
+Tylko jedną konfigurację można jednak przypisać do węzła na konto usługi Automation.
+Oznacza to, że w przypadku korzystania z dwóch konfiguracji dla węzła wymagane są dwa konta usługi Automation.
 
-For details about how to register a partial configuration from pull service, see the documentation for [partial configurations](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
+Aby uzyskać szczegółowe informacje na temat rejestrowania częściowej konfiguracji z usługi ściągania, zapoznaj się z dokumentacją [częściową konfiguracje](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
 
-For more information about how teams can work together to collaboratively manage servers using configuration as code see [Understanding DSC's role in a CI/CD Pipeline](/powershell/scripting/dsc/overview/authoringadvanced).
+Aby uzyskać więcej informacji o tym, jak zespoły mogą współdziałać, aby wspólnie zarządzać serwerami przy użyciu konfiguracji jako kodu, zobacz [Opis roli DSC w potoku](/powershell/scripting/dsc/overview/authoringadvanced)ciągłej integracji/ciągłego wdrażania.
 
-## <a name="check-the-compliance-status-of-a-managed-node"></a>Check the compliance status of a managed node
+## <a name="check-the-compliance-status-of-a-managed-node"></a>Sprawdź stan zgodności zarządzanego węzła
 
-You can get reports on the compliance status of a managed node by calling the `Get-AzureRmAutomationDscNodeReport` cmdlet:
+Możesz uzyskać raporty dotyczące stanu zgodności zarządzanego węzła, wywołując polecenie cmdlet `Get-AzureRmAutomationDscNodeReport`:
 
 ```powershell
 # Get the ID of the DSC node
@@ -160,32 +160,32 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 $reports[0]
 ```
 
-## <a name="removing-nodes-from-service"></a>Removing nodes from service
+## <a name="removing-nodes-from-service"></a>Usuwanie węzłów z usługi
 
-When you add a node to Azure Automation State Configuration, the settings in Local Configuration Manager are set to register with the service and pull configurations and required modules to configure the machine.
-If you choose to remove the node from the service, you can do so using either the Azure portal or the Az cmdlets.
+Po dodaniu węzła do Azure Automation konfiguracji stanu ustawienia w lokalnych Configuration Manager są skonfigurowane do rejestracji w ramach usługi i konfiguracji ściągania oraz wymaganych modułów w celu skonfigurowania maszyny.
+Jeśli zdecydujesz się usunąć węzeł z usługi, możesz to zrobić przy użyciu Azure Portal lub polecenia AZ cmdlets.
 
 > [!NOTE]
-> Unregistering a node from the service only sets the Local Configuration Manager settings so the node is no longer connecting to the service.
-> This does not effect the configuration that is currently applied to the node.
-> To remove the current configuration, use the [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) or delete the local configuration file (this is the only option for Linux nodes).
+> Wyrejestrowanie węzła z usługi ustawia tylko ustawienia Configuration Manager lokalnego, aby węzeł nie był już połączony z usługą.
+> Nie wpływa to na konfigurację, która jest aktualnie stosowana do węzła.
+> Aby usunąć bieżącą konfigurację, użyj programu [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) lub Usuń lokalny plik konfiguracji (jest to jedyna opcja dla węzłów systemu Linux).
 
 ### <a name="azure-portal"></a>Azure Portal
 
-From Azure Automation, click on **State configuration (DSC)** in the table of contents.
-Next click **Nodes** to view the list of nodes that are registered with the service.
-Click on the name of the node you wish to remove.
-In the Node view that opens, click **Unregister**.
+W obszarze Azure Automation kliknij pozycję **Konfiguracja stanu (DSC)** w spisie treści.
+Kliknij pozycję **węzły** , aby wyświetlić listę węzłów, które są zarejestrowane w usłudze.
+Kliknij nazwę węzła, który chcesz usunąć.
+W widoku węzła, który zostanie otwarty, kliknij pozycję **Wyrejestruj**.
 
 ### <a name="powershell"></a>PowerShell
 
-To unregister a node from Azure Automation State Configuration service using PowerShell, follow the documentation for the cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+Aby wyrejestrować węzeł z usługi konfiguracji stanu Azure Automation przy użyciu programu PowerShell, postępuj zgodnie z dokumentacją polecenia cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- To get started, see [Getting started with Azure Automation State Configuration](automation-dsc-getting-started.md)
-- To learn how to onboard nodes, see [Onboarding machines for management by Azure Automation State Configuration](automation-dsc-onboarding.md)
-- To learn about compiling DSC configurations so that you can assign them to target nodes, see [Compiling configurations in Azure Automation State Configuration](automation-dsc-compile.md)
-- For PowerShell cmdlet reference, see [Azure Automation State Configuration cmdlets](/powershell/module/azurerm.automation/#automation)
-- For pricing information, see [Azure Automation State Configuration pricing](https://azure.microsoft.com/pricing/details/automation/)
-- To see an example of using Azure Automation State Configuration in a continuous deployment pipeline, see [Continuous Deployment Using Azure Automation State Configuration and Chocolatey](automation-dsc-cd-chocolatey.md)
+- Aby rozpocząć, zobacz [wprowadzenie do konfiguracji stanu Azure Automation](automation-dsc-getting-started.md)
+- Aby dowiedzieć się, jak dołączyć węzły, zobacz sekcję dołączanie [maszyn w celu zarządzania według konfiguracji stanu Azure Automation](automation-dsc-onboarding.md)
+- Aby dowiedzieć się więcej na temat kompilowania konfiguracji DSC, aby można było przypisać je do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu Azure Automation](automation-dsc-compile.md)
+- Aby uzyskać informacje dotyczące poleceń cmdlet programu PowerShell, zobacz temat [polecenia cmdlet konfiguracji stanu Azure Automation](/powershell/module/azurerm.automation/#automation)
+- Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu Azure Automation](https://azure.microsoft.com/pricing/details/automation/)
+- Aby zapoznać się z przykładem użycia konfiguracji stanu Azure Automation w potoku ciągłego wdrażania, zobacz [wdrażanie ciągłe przy użyciu konfiguracji stanu Azure Automation i czekolady](automation-dsc-cd-chocolatey.md)

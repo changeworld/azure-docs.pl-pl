@@ -1,7 +1,7 @@
 ---
-title: Nested Traffic Manager Profiles in Azure
+title: Zagnieżdżone profile Traffic Manager na platformie Azure
 titleSuffix: Azure Traffic Manager
-description: This article explains the 'Nested Profiles' feature of Azure Traffic Manager
+description: W tym artykule objaśniono funkcję "Profile zagnieżdżone" Traffic Manager platformy Azure
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -22,98 +22,98 @@ ms.locfileid: "74227752"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Zagnieżdżone profile usługi Traffic Manager
 
-Traffic Manager includes a range of traffic-routing methods that allow you to control how Traffic Manager chooses which endpoint should receive traffic from each end user. For more information, see [Traffic Manager traffic-routing methods](traffic-manager-routing-methods.md).
+Traffic Manager obejmuje szereg metod routingu ruchu, które umożliwiają kontrolowanie sposobu, w jaki Traffic Manager decyduje o tym, który punkt końcowy powinien odbierać ruch od każdego użytkownika końcowego. Aby uzyskać więcej informacji, zobacz [Traffic Manager metod routingu ruchu sieciowego](traffic-manager-routing-methods.md).
 
-Each Traffic Manager profile specifies a single traffic-routing method. However, there are scenarios that require more sophisticated traffic routing than the routing provided by a single Traffic Manager profile. You can nest Traffic Manager profiles to combine the benefits of more than one traffic-routing method. Nested profiles allow you to override the default Traffic Manager behavior to support larger and more complex application deployments.
+Każdy profil Traffic Manager określa metodę routingu pojedynczego ruchu sieciowego. Istnieją jednak scenariusze, które wymagają bardziej zaawansowanego routingu ruchu niż Routing dostarczany przez pojedynczy profil Traffic Manager. Profile Traffic Manager można zagnieżdżać, aby łączyć korzyści z więcej niż jednej metody routingu ruchu. Profile zagnieżdżone umożliwiają zastąpienie domyślnego zachowania Traffic Manager w celu obsługi większych i bardziej złożonych wdrożeń aplikacji.
 
-The following examples illustrate how to use nested Traffic Manager profiles in various scenarios.
+W poniższych przykładach pokazano, jak używać zagnieżdżonych profilów Traffic Manager w różnych scenariuszach.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Example 1: Combining 'Performance' and 'Weighted' traffic routing
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Przykład 1: łączenie routingu ruchu "Performance" i "ważone"
 
-Suppose that you deployed an application in the following Azure regions: West US, West Europe, and East Asia. You use Traffic Manager's 'Performance' traffic-routing method to distribute traffic to the region closest to the user.
+Załóżmy, że aplikacja została wdrożona w następujących regionach świadczenia usługi Azure: zachodnie stany USA, Europa Zachodnia i Azja Wschodnia. Używasz metody routingu ruchu "Performance" Traffic Manager, aby dystrybuować ruch do regionu najbliżej użytkownika.
 
-![Single Traffic Manager profile][4]
+![Profil pojedynczego Traffic Manager][4]
 
-Now, suppose you wish to test an update to your service before rolling it out more widely. You want to use the 'weighted' traffic-routing method to direct a small percentage of traffic to your test deployment. You set up the test deployment alongside the existing production deployment in West Europe.
+Teraz Załóżmy, że chcesz przetestować aktualizację do usługi przed jej przeprowadzeniem. Chcesz użyć metody routingu ruchu "ważone", aby skierować mały procent ruchu do wdrożenia testowego. Wdrożenie testowe można skonfigurować wraz z istniejącym wdrożeniem produkcyjnym w regionie Europa Zachodnia.
 
-You cannot combine both 'Weighted' and 'Performance traffic-routing in a single profile. To support this scenario, you create a Traffic Manager profile using the two West Europe endpoints and the 'Weighted' traffic-routing method. Next, you add this 'child' profile as an endpoint to the 'parent' profile. The parent profile still uses the Performance traffic-routing method and contains the other global deployments as endpoints.
+Nie można połączyć jednocześnie routingu "ważone" i "ruch sieciowy" w pojedynczym profilu. Aby obsłużyć ten scenariusz, należy utworzyć profil Traffic Manager przy użyciu dwóch punktów końcowych Europa Zachodnia i metody routingu ruchu "ważone". Następnie należy dodać ten profil "podrzędny" jako punkt końcowy do profilu "Parent". Profil nadrzędny nadal używa metody routingu ruchu sieciowego i zawiera inne globalne wdrożenia jako punkty końcowe.
 
-The following diagram illustrates this example:
+Poniższy diagram ilustruje ten przykład:
 
 ![Zagnieżdżone profile usługi Traffic Manager][2]
 
-In this configuration, traffic directed via the parent profile distributes traffic across regions normally. Within West Europe, the nested profile distributes traffic to the production and test endpoints according to the weights assigned.
+W tej konfiguracji ruch kierowany za pośrednictwem profilu nadrzędnego dystrybuuje ruch między regionami w normalny sposób. W regionie Europa Zachodnia profil zagnieżdżony dystrybuuje ruch do punktów końcowych produkcyjnych i testowych zgodnie z przypisanymi wagami.
 
-When the parent profile uses the 'Performance' traffic-routing method, each endpoint must be assigned a location. The location is assigned when you configure the endpoint. Choose the Azure region closest to your deployment. The Azure regions are the location values supported by the Internet Latency Table. For more information, see [Traffic Manager 'Performance' traffic-routing method](traffic-manager-routing-methods.md#performance).
+Gdy profil nadrzędny używa metody routingu ruchu "Performance", każdy punkt końcowy musi mieć przypisaną lokalizację. Lokalizacja jest przypisywana podczas konfigurowania punktu końcowego. Wybierz region platformy Azure znajdujący się najbliżej wdrożenia. Regiony platformy Azure to wartości lokalizacji obsługiwane przez tabelę opóźnienia Internetu. Aby uzyskać więcej informacji, zobacz [Traffic Manager metodzie routingu ruchu "Performance"](traffic-manager-routing-methods.md#performance).
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Example 2: Endpoint monitoring in Nested Profiles
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Przykład 2: monitorowanie punktu końcowego w profilach zagnieżdżonych
 
-Traffic Manager actively monitors the health of each service endpoint. If an endpoint is unhealthy, Traffic Manager directs users to alternative endpoints to preserve the availability of your service. This endpoint monitoring and failover behavior applies to all traffic-routing methods. For more information, see [Traffic Manager Endpoint Monitoring](traffic-manager-monitoring.md). Endpoint monitoring works differently for nested profiles. With nested profiles, the parent profile doesn't perform health checks on the child directly. Instead, the health of the child profile's endpoints is used to calculate the overall health of the child profile. This health information is propagated up the nested profile hierarchy. The parent profile uses this aggregated health to determine whether to direct traffic to the child profile. See the [FAQ](traffic-manager-FAQs.md#traffic-manager-nested-profiles) for full details on health monitoring of nested profiles.
+Traffic Manager aktywnie monitoruje kondycję każdego punktu końcowego usługi. Jeśli punkt końcowy jest w złej kondycji, Traffic Manager kieruje użytkowników do alternatywnych punktów końcowych w celu zachowania dostępności usługi. Takie monitorowanie punktu końcowego i zachowanie trybu failover mają zastosowanie do wszystkich metod routingu ruchu. Aby uzyskać więcej informacji, zobacz [Traffic Manager monitorowania punktów końcowych](traffic-manager-monitoring.md). Monitorowanie punktów końcowych działa inaczej w przypadku profilów zagnieżdżonych. W przypadku profilów zagnieżdżonych profil nadrzędny nie przeprowadza bezpośrednio kontroli kondycji elementu podrzędnego. W zamian kondycja punktów końcowych w profilu podrzędnym jest używana do obliczania ogólnej kondycji profilu podrzędnego. Te informacje o kondycji są propagowane w hierarchii zagnieżdżonych profilów. Profil nadrzędny używa tej zagregowanej kondycji, aby określić, czy ruch do niego ma być kierowany do profilu podrzędnego. Zapoznaj się z [często zadawanymi pytaniami](traffic-manager-FAQs.md#traffic-manager-nested-profiles) dotyczącymi monitorowania kondycji zagnieżdżonych profilów.
 
-Returning to the previous example, suppose the production deployment in West Europe fails. By default, the 'child' profile directs all traffic to the test deployment. If the test deployment also fails, the parent profile determines that the child profile should not receive traffic since all child endpoints are unhealthy. Then, the parent profile distributes traffic to the other regions.
+Powracając do poprzedniego przykładu, Załóżmy, że wdrożenie produkcyjne w regionie Europa Zachodnia zakończy się niepowodzeniem. Domyślnie profil "podrzędny" kieruje cały ruch do wdrożenia testowego. Jeśli test nie powiedzie się również, profil nadrzędny określa, że profil podrzędny nie powinien odbierać ruchu, ponieważ wszystkie podrzędne punkty końcowe są w złej kondycji. Następnie profil nadrzędny dystrybuuje ruch do innych regionów.
 
-![Nested Profile failover (default behavior)][3]
+![Zagnieżdżony profil trybu failover (zachowanie domyślne)][3]
 
-You might be happy with this arrangement. Or you might be concerned that all traffic for West Europe is now going to the test deployment instead of a limited subset traffic. Regardless of the health of the test deployment, you want to fail over to the other regions when the production deployment in West Europe fails. To enable this failover, you can specify the 'MinChildEndpoints' parameter when configuring the child profile as an endpoint in the parent profile. The parameter determines the minimum number of available endpoints in the child profile. The default value is '1'. For this scenario, you set the MinChildEndpoints value to 2. Below this threshold, the parent profile considers the entire child profile to be unavailable and directs traffic to the other endpoints.
+To rozwiązanie może być zadowalające. Może być również konieczne, aby cały ruch dla Europa Zachodnia przechodził do wdrożenia testowego zamiast ograniczonego ruchu sieciowego. Bez względu na kondycję wdrożenia testowego, przechodzenie w tryb failover do innych regionów w przypadku niepowodzenia wdrożenia produkcyjnego w Europie Zachodniej. Aby włączyć tę pracę w trybie failover, można określić parametr "MinChildEndpoints" podczas konfigurowania profilu podrzędnego jako punktu końcowego w profilu nadrzędnym. Parametr określa minimalną liczbę dostępnych punktów końcowych w profilu podrzędnym. Wartość domyślna to "1". W tym scenariuszu wartość MinChildEndpoints jest ustawiana na 2. Poniżej wartości progowej profil nadrzędny uwzględnia cały profil podrzędny jako niedostępny i kieruje ruch do innych punktów końcowych.
 
-The following figure illustrates this configuration:
+Na poniższej ilustracji przedstawiono tę konfigurację:
 
-![Nested Profile failover with 'MinChildEndpoints' = 2][4]
+![Zagnieżdżony profil trybu failover z opcją "MinChildEndpoints" = 2][4]
 
 > [!NOTE]
-> The 'Priority' traffic-routing method distributes all traffic to a single endpoint. Thus there is little purpose in a MinChildEndpoints setting other than '1' for a child profile.
+> Metoda routingu ruchu "Priority" dystrybuuje cały ruch do pojedynczego punktu końcowego. Z tego względu w ustawieniu MinChildEndpoints innym niż "1" dla profilu podrzędnego istnieje niewielki cel.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Example 3: Prioritized failover regions in 'Performance' traffic routing
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Przykład 3: priorytetowe regiony trybu failover w routingu ruchu "Performance"
 
-The default behavior for the 'Performance' traffic-routing method is when you have endpoints in different geographic locations the end users are routed to the "closest" endpoint in terms of the lowest network latency.
+Domyślne zachowanie metody routingu ruchu "Performance" ma miejsce, gdy punkty końcowe znajdują się w różnych lokalizacjach geograficznych, a użytkownicy końcowi są kierowani do punktu końcowego "najbliższy" w warunkach najmniejszego opóźnienia sieci.
 
-However, suppose you prefer the West Europe traffic failover to West US, and only direct traffic to other regions when both endpoints are unavailable. You can create this solution using a child profile with the 'Priority' traffic-routing method.
+Załóżmy jednak, że preferowany jest tryb failover ruchu Europa Zachodnia w regionie zachodnie stany USA, a ruch jest kierowany tylko do innych regionów, gdy oba punkty końcowe są niedostępne. To rozwiązanie można utworzyć przy użyciu profilu podrzędnego z metodą routingu ruchu "Priority".
 
-!['Performance' traffic routing with preferential failover][6]
+![Routing ruchu "Performance" z preferencyjną trybem failover][6]
 
-Since the West Europe endpoint has higher priority than the West US endpoint, all traffic is sent to the West Europe endpoint when both endpoints are online. If West Europe fails, its traffic is directed to West US. With the nested profile, traffic is directed to East Asia only when both West Europe and West US fail.
+Ponieważ punkt końcowy Europa Zachodnia ma wyższy priorytet niż zachodni punkt końcowy USA, cały ruch jest wysyłany do punktu końcowego Europa Zachodnia, gdy oba punkty końcowe są w trybie online. Jeśli Europa Zachodnia nie powiedzie się, jego ruch jest kierowany do regionu zachodnie stany USA. W przypadku profilu zagnieżdżonego ruch jest kierowany do Azja Wschodnia tylko wtedy, gdy Europa Zachodnia i zachodnie stany USA kończą się niepowodzeniem.
 
-You can repeat this pattern for all regions. Replace all three endpoints in the parent profile with three child profiles, each providing a prioritized failover sequence.
+Można powtórzyć ten wzorzec dla wszystkich regionów. Zastąp wszystkie trzy punkty końcowe w profilu nadrzędnym trzema profilami podrzędnymi, z których każda oferuje priorytetową sekwencję trybu failover.
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Example 4: Controlling 'Performance' traffic routing between multiple endpoints in the same region
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Przykład 4: kontrolowanie routingu ruchu "Performance" między wieloma punktami końcowymi w tym samym regionie
 
-Suppose the 'Performance' traffic-routing method is used in a profile that has more than one endpoint in a particular region. By default, traffic directed to that region is distributed evenly across all available endpoints in that region.
+Załóżmy, że metoda routingu ruchu "Performance" jest używana w profilu, który ma więcej niż jeden punkt końcowy w określonym regionie. Domyślnie ruch kierowany do tego regionu jest dystrybuowany równomiernie między wszystkimi dostępnymi punktami końcowymi w tym regionie.
 
-!['Performance' traffic routing in-region traffic distribution (default behavior)][7]
+![Dystrybucja ruchu w regionie "wydajność" (zachowanie domyślne)][7]
 
-Instead of adding multiple endpoints in West Europe, those endpoints are enclosed in a separate child profile. The child profile is added to the parent as the only endpoint in West Europe. The settings on the child profile can control the traffic distribution with West Europe by enabling priority-based or weighted traffic routing within that region.
+Zamiast dodawania wielu punktów końcowych w Europie Zachodniej, te punkty końcowe są ujęte w oddzielny profil podrzędny. Profil podrzędny jest dodawany do elementu nadrzędnego jako jedyny punkt końcowy w regionie Europa Zachodnia. Ustawienia w profilu podrzędnym mogą kontrolować dystrybucję ruchu przy użyciu Europa Zachodnia, włączając w tym regionie Routing ruchu oparty na priorytetach lub ważony.
 
-!['Performance' traffic routing with custom in-region traffic distribution][8]
+![Routing ruchu "Performance" z niestandardowym rozkładem ruchu w regionie][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>Example 5: Per-endpoint monitoring settings
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Przykład 5: ustawienia monitorowania dla punktów końcowych
 
-Suppose you are using Traffic Manager to smoothly migrate traffic from a legacy on-premises web site to a new Cloud-based version hosted in Azure. For the legacy site, you want to use the home page URI to monitor site health. But for the new Cloud-based version, you are implementing a custom monitoring page (path '/monitor.aspx') that includes additional checks.
+Załóżmy, że używasz Traffic Manager, aby bezproblemowo migrować ruch ze starszej lokalnej witryny sieci Web do nowej, opartej na chmurze wersji hostowanej na platformie Azure. W przypadku starszej witryny należy użyć identyfikatora URI strony głównej do monitorowania kondycji lokacji. Jednak w przypadku nowej wersji opartej na chmurze jest wdrażana niestandardowa strona monitorowania (ścieżka "/monitor.aspx"), która zawiera dodatkowe testy.
 
-![Traffic Manager endpoint monitoring (default behavior)][9]
+![Traffic Manager monitorowania punktów końcowych (zachowanie domyślne)][9]
 
-The monitoring settings in a Traffic Manager profile apply to all endpoints within a single profile. With nested profiles, you use a different child profile per site to define different monitoring settings.
+Ustawienia monitorowania w profilu Traffic Manager mają zastosowanie do wszystkich punktów końcowych w ramach pojedynczego profilu. W przypadku profilów zagnieżdżonych można użyć innego profilu podrzędnego dla każdej lokacji, aby zdefiniować różne ustawienia monitorowania.
 
-![Traffic Manager endpoint monitoring with per-endpoint settings][10]
+![Traffic Manager monitorowania punktów końcowych za pomocą ustawień dla punktów końcowych][10]
 
 ## <a name="faqs"></a>Często zadawane pytania
 
-* [How do I configure nested profiles?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+* [Jak mogę skonfigurować profile zagnieżdżone?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
 
-* [How many layers of nesting does Traffic Manger support?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Ile warstw zagnieżdżenia jest obsługiwana przez program Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [Can I mix other endpoint types with nested child profiles, in the same Traffic Manager profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [Czy można mieszać inne typy punktów końcowych z zagnieżdżonymi profilami podrzędnymi w tym samym profilu Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [How does the billing model apply for Nested profiles?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [Jak ma zastosowanie model rozliczeń dla zagnieżdżonych profilów?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [Is there a performance impact for nested profiles?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [Czy istnieje wpływ na wydajność profilów zagnieżdżonych?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
 
-* [How does Traffic Manager compute the health of a nested endpoint in a parent profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Jak Traffic Manager obliczać kondycję zagnieżdżonego punktu końcowego w profilu nadrzędnym?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Learn more about [Traffic Manager profiles](traffic-manager-overview.md)
+Dowiedz się więcej o [profilach Traffic Manager](traffic-manager-overview.md)
 
-Learn how to [create a Traffic Manager profile](traffic-manager-create-profile.md)
+Dowiedz się, jak [utworzyć profil Traffic Manager](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

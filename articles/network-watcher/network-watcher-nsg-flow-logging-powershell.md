@@ -28,7 +28,7 @@ ms.locfileid: "74277963"
 > - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [Program PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-nsg-flow-logging-cli.md)
-> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [Interfejs API REST](network-watcher-nsg-flow-logging-rest.md)
 
 Dzienniki przepływu sieciowych grup zabezpieczeń są funkcją Network Watcher, która umożliwia wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP za pomocą sieciowej grupy zabezpieczeń. Te dzienniki przepływów są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, karta sieciowa przepływu ma zastosowanie do, 5-informacje o spójnej kolekcji przepływu (źródłowy/docelowy adres IP, port źródłowy/docelowy, protokół) i jeśli ruch był dozwolony lub zabroniony.
 

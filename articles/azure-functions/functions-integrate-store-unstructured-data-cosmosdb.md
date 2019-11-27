@@ -1,5 +1,5 @@
 ---
-title: Store unstructured data using Azure Cosmos DB and Functions
+title: Przechowywanie danych niestrukturalnych przy użyciu Azure Cosmos DB i funkcji
 description: Przechowywanie danych niestrukturalnych przy użyciu usług Azure Functions i Cosmos DB
 ms.topic: quickstart
 ms.date: 10/01/2018

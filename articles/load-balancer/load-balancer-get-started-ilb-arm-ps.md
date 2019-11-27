@@ -1,5 +1,5 @@
 ---
-title: Create an Azure internal Load Balancer by using PowerShell
+title: Tworzenie wewnętrznego równoważenia obciążenia platformy Azure przy użyciu programu PowerShell
 titleSuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia przy użyciu modułu Azure PowerShell z usługą Azure Resource Manager
 services: load-balancer
@@ -251,7 +251,7 @@ Po utworzeniu maszyny wirtualnej należy dodać interfejs sieciowy.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>Krok 1. Zapisywanie zasobów modułu równoważenia obciążenia
 
-Zapisz zasób modułu równoważenia obciążenia w zmiennej (jeśli jeszcze nie zostało to zrobione). We're using the variable name **$lb**. For the attribute values in the script, use the names for the load balancer resources that were created in the previous steps.
+Zapisz zasób modułu równoważenia obciążenia w zmiennej (jeśli jeszcze nie zostało to zrobione). Używamy nazwy zmiennej **$lb**. W przypadku wartości atrybutów w skrypcie Użyj nazw zasobów usługi równoważenia obciążenia, które zostały utworzone w poprzednich krokach.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

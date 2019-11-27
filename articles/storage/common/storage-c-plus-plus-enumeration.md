@@ -192,7 +192,7 @@ W tym artykule omówiono różne przeciążenia dotyczące wyświetlania listy i
 * Lista z opóźnieniem jest udostępniana w bibliotece jako wygodna otoka w scenariuszach synchronicznych.
 * Lista zachłanne nie jest zalecana i została usunięta z biblioteki.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat usługi Azure Storage i C++biblioteki klienta dla programu, zobacz następujące zasoby.
 

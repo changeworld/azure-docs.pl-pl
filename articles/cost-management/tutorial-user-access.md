@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Cloudyn.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję rozwiązania Cloudyn.
 
 ## <a name="create-a-user-with-admin-access"></a>Tworzenie użytkownika z prawami dostępu administratora
 

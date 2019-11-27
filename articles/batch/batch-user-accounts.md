@@ -333,6 +333,6 @@ Usługa Batch w wersji 2017 -01-01.4.0 wprowadza istotną zmianę, zastępując 
 | nie określono `run_elevated` | Aktualizacja nie jest wymagana                                                                                                                                  |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Szczegółowe omówienie usługi Batch można znaleźć w temacie [programowanie równoległych rozwiązań obliczeniowych na dużą skalę za pomocą usługi Batch](batch-api-basics.md).

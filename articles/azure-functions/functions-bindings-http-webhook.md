@@ -72,7 +72,7 @@ public static async Task<IActionResult> Run(
 
 Poniższy przykład pokazuje powiązanie wyzwalacza w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja szuka parametru `name` w ciągu zapytania lub treści żądania HTTP.
 
-Oto *function.json* pliku:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -97,7 +97,7 @@ Oto *function.json* pliku:
 }
 ```
 
-[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
+W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
 
 Kod C# skryptu, który wiąże się z `HttpRequest`:
 
@@ -148,7 +148,7 @@ public class Person {
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja szuka parametru `name` w ciągu zapytania lub treści żądania HTTP.
 
-Oto *function.json* pliku:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -169,7 +169,7 @@ Oto *function.json* pliku:
 }
 ```
 
-[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
+W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -197,7 +197,7 @@ module.exports = function(context, req) {
 
 Poniższy przykład pokazuje powiązanie wyzwalacza w pliku *Function. JSON* i [funkcji języka Python](functions-reference-python.md) , która używa powiązania. Funkcja szuka parametru `name` w ciągu zapytania lub treści żądania HTTP.
 
-Oto *function.json* pliku:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -219,7 +219,7 @@ Oto *function.json* pliku:
 }
 ```
 
-[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
+W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
 
 Oto kod języka Python:
 
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 W poniższych przykładach pokazano powiązanie wyzwalacza HTTP w pliku *Function. JSON* oraz odpowiednie [funkcje języka Java](functions-reference-java.md) , które używają tego powiązania. 
 
-Oto *function.json* pliku:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -513,17 +513,17 @@ Aby uzyskać pełny przykład, zobacz [przykład wyzwalacza](#trigger---example)
 
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `HttpTrigger` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `HttpTrigger` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
 | **type** | Nie dotyczy| Wymagane — musi być ustawiony na `httpTrigger`. |
 | **direction** | Nie dotyczy| Wymagane — musi być ustawiony na `in`. |
-| **name** | Nie dotyczy| Wymagane — nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. |
+| **Nazwij** | Nie dotyczy| Wymagane — nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Określa, jakie klucze (jeśli istnieją) muszą być obecne w żądaniu w celu wywołania funkcji. Poziom autoryzacji może być jedną z następujących wartości: <ul><li><code>anonymous</code>&mdash;nie jest wymagany żaden klucz interfejsu API.</li><li><code>function</code>&mdash;klucz interfejsu API specyficzny dla funkcji jest wymagany. Jest to wartość domyślna, jeśli nie podano żadnej z nich.</li><li><code>admin</code>&mdash;klucz główny jest wymagany.</li></ul> Aby uzyskać więcej informacji, zapoznaj się z sekcją dotyczącej [kluczy autoryzacji](#authorization-keys). |
-| **methods** |**Methods** | Tablica metod HTTP, do których funkcja reaguje. Jeśli nie zostanie określony, funkcja reaguje na wszystkie metody HTTP. Zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
-| **route** | **Route** | Definiuje szablon trasy, który kontroluje adresy URL żądań, które odpowiada funkcja. Wartość domyślna, jeśli nie jest określona, jest `<functionname>`. Aby uzyskać więcej informacji, zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
-| **webHookType** | **WebHookType** | _Obsługiwane tylko dla środowiska uruchomieniowego w wersji 1. x._<br/><br/>Konfiguruje wyzwalacz HTTP do działania jako odbiornik [elementu webhook](https://en.wikipedia.org/wiki/Webhook) dla określonego dostawcy. Nie ustawiaj właściwości `methods`, jeśli ustawisz tę właściwość. Typ elementu webhook może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;punktu końcowego elementu webhook ogólnego przeznaczenia bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko do tych, które używają protokołu HTTP POST i z typem zawartości `application/json`.</li><li><code>github</code>&mdash;funkcja reaguje na elementy [webhook usługi GitHub](https://developer.github.com/webhooks/). Nie należy używać właściwości _authLevel_ z elementami webhook usługi GitHub. Aby uzyskać więcej informacji, zobacz sekcję elementy webhook w usłudze GitHub w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;funkcja reaguje na elementy [webhook zapasowych](https://api.slack.com/outgoing-webhooks). Nie należy używać właściwości _authLevel_ z elementami webhook zapasowych. Aby uzyskać więcej informacji, zobacz sekcję elementy webhooks w dalszej części tego artykułu.</li></ul>|
+| **form** |**Form** | Tablica metod HTTP, do których funkcja reaguje. Jeśli nie zostanie określony, funkcja reaguje na wszystkie metody HTTP. Zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
+| **Szlak** | **Szlak** | Definiuje szablon trasy, który kontroluje adresy URL żądań, które odpowiada funkcja. Wartość domyślna, jeśli nie jest określona, jest `<functionname>`. Aby uzyskać więcej informacji, zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
+| **Element webhooktype** | **Element webhooktype** | _Obsługiwane tylko dla środowiska uruchomieniowego w wersji 1. x._<br/><br/>Konfiguruje wyzwalacz HTTP do działania jako odbiornik [elementu webhook](https://en.wikipedia.org/wiki/Webhook) dla określonego dostawcy. Nie ustawiaj właściwości `methods`, jeśli ustawisz tę właściwość. Typ elementu webhook może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;punktu końcowego elementu webhook ogólnego przeznaczenia bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko do tych, które używają protokołu HTTP POST i z typem zawartości `application/json`.</li><li><code>github</code>&mdash;funkcja reaguje na elementy [webhook usługi GitHub](https://developer.github.com/webhooks/). Nie należy używać właściwości _authLevel_ z elementami webhook usługi GitHub. Aby uzyskać więcej informacji, zobacz sekcję elementy webhook w usłudze GitHub w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;funkcja reaguje na elementy [webhook zapasowych](https://api.slack.com/outgoing-webhooks). Nie należy używać właściwości _authLevel_ z elementami webhook zapasowych. Aby uzyskać więcej informacji, zobacz sekcję elementy webhooks w dalszej części tego artykułu.</li></ul>|
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
@@ -862,9 +862,9 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 |Właściwość  |Opis  |
 |---------|---------|
-| **type** |Musi być równa `http`. |
-| **direction** | Musi być równa `out`. |
-| **name** | Nazwa zmiennej używana w kodzie funkcji dla odpowiedzi lub `$return` do używania wartości zwracanej. |
+| **type** |Musi być ustawiony na `http`. |
+| **direction** | Musi być ustawiony na `out`. |
+| **Nazwij** | Nazwa zmiennej używana w kodzie funkcji dla odpowiedzi lub `$return` do używania wartości zwracanej. |
 
 ## <a name="output---usage"></a>Dane wyjściowe — użycie
 
@@ -874,10 +874,10 @@ Na przykład odpowiedzi, zobacz [przykład wyzwalacza](#trigger---example).
 
 ## <a name="hostjson-settings"></a>Ustawienia host.JSON
 
-W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2.x. Przykład pliku host.json poniżej zawiera tylko ustawienia 2.x wersji dla tego powiązania. Aby uzyskać więcej informacji na temat globalne ustawienia konfiguracji w wersji 2.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions w wersji 2.x](functions-host-json.md).
+W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2.x. Przykład pliku host.json poniżej zawiera tylko ustawienia 2.x wersji dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersji 2. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions wersji 2. x](functions-host-json.md).
 
 > [!NOTE]
-> Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md#http).
+> Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md#http).
 
 ```json
 {
@@ -911,4 +911,4 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
+[Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)

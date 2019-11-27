@@ -11,20 +11,20 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74414467"
 ---
-When you commit to an Azure reserved VM instance you can save money. The reservation discount is applied automatically to the number of running virtual machines that match the reservation scope and attributes. You don't need to assign a reservation to a virtual machine to get the discounts. A reserved instance purchase covers only the compute part of your VM usage. For Windows VMs, the usage meter is split into two separate meters. There's a compute meter, which is same as the Linux meter, and a Windows IP meter. The charges that you see when you make the purchase are only for the compute costs. Charges don't include Windows software costs. For more information about software costs, see [Software costs not included with Azure Reserved VM Instances](../articles/billing/billing-reserved-instance-windows-software-costs.md).
+Po zatwierdzeniu do wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure Możesz zaoszczędzić pieniądze. Rabat rezerwacji jest automatycznie stosowany do liczby uruchomionych maszyn wirtualnych, które pasują do zakresu rezerwacji i atrybutów. Nie musisz przypisywać rezerwacji do maszyny wirtualnej, aby uzyskać rabaty. Zakup wystąpienia zarezerwowanego obejmuje tylko część obliczeniową użycia maszyny wirtualnej. W przypadku maszyn wirtualnych z systemem Windows licznik użycia jest podzielony na dwa oddzielne liczniki. Istnieje licznik obliczeniowy, który jest taki sam jak licznik systemu Linux i miernik adresów IP w systemie Windows. Opłaty, które zobaczysz po dokonaniu zakupu, dotyczą tylko kosztów obliczeń. Opłaty nie obejmują kosztów oprogramowania systemu Windows. Aby uzyskać więcej informacji o kosztach oprogramowania, zobacz [koszty oprogramowania nieuwzględnione w Azure Reserved VM Instances](../articles/billing/billing-reserved-instance-windows-software-costs.md).
 
-## <a name="determine-the-right-vm-size-before-you-buy"></a>Determine the right VM size before you buy
+## <a name="determine-the-right-vm-size-before-you-buy"></a>Ustalanie odpowiedniego rozmiaru maszyny wirtualnej przed zakupem
 
-Before you buy a reservation, you should determine the size of the VM that you need. The following sections will help you determine the right VM size.
+Przed zakupieniem rezerwacji należy określić wymagany rozmiar maszyny wirtualnej. Poniższe sekcje ułatwią określenie odpowiedniego rozmiaru maszyny wirtualnej.
 
-### <a name="use-reservation-recommendations"></a>Use reservation recommendations
+### <a name="use-reservation-recommendations"></a>Korzystanie z rekomendacji dotyczących rezerwacji
 
-You can use reservation recommendations to help determine the reservations you should purchase.
+Możesz użyć zaleceń dotyczących rezerwacji, aby pomóc w ustaleniu zastrzeżeń, które należy zakupić.
 
-- Purchase recommendations and recommended quantity are show when you purchase a VM reserved instance in the Azure portal.
-- Azure Advisor provides purchase recommendations for individual subscriptions.  
-- You can use the APIs to get purchase recommendations for both shared scope and single subscription scope. For more information, see [Reserved instance purchase recommendation APIs for enterprise customers](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
-- For Enterprise Agreement (EA) and Microsoft Customer Agreement (MCA) customers, purchase recommendations for shared and single subscription scopes are available with the [Azure Consumption Insights Power BI content pack](/power-bi/service-connect-to-azure-consumption-insights).
+- Zalecenia dotyczące zakupu i zalecana ilość są wyświetlane podczas zakupu wystąpienia zarezerwowanego maszyny wirtualnej w Azure Portal.
+- Azure Advisor zapewnia rekomendacje zakupu dla poszczególnych subskrypcji.  
+- Możesz użyć interfejsów API, aby uzyskać zalecenia dotyczące zakupu zarówno dla zakresu udostępnionego, jak i dla jednej subskrypcji. Aby uzyskać więcej informacji, zobacz [interfejsy API rekomendacji wystąpień zarezerwowanych dla klientów korporacyjnych](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
+- W przypadku klientów z Umowa Enterprise (EA) i Microsoft Customer Agreement (MCA) można zakupić zalecenia dotyczące współdzielonych i pojedynczych zakresów subskrypcji, korzystając z [pakietu zawartości Azure Consumption Insights Power BI](/power-bi/service-connect-to-azure-consumption-insights).
 
 ### <a name="services-that-get-vm-reservation-discounts"></a>Usługi, dla których są stosowane rabaty na rezerwacje maszyn wirtualnych
 
@@ -37,11 +37,11 @@ Ustawienie elastyczności rozmiaru wystąpienia określa, dla których usług s�
 Niezależnie od tego, czy to ustawienie jest włączone czy wyłączone, rabaty na rezerwację są automatycznie stosowane do każdego pasującego użycia maszyn wirtualnych, dla którego wartość *ConsumedService* to `Microsoft.Compute`. Należy zatem sprawdzić dane użycia dla wartości *ConsumedService*. Oto niektóre przykłady:
 
 - Maszyny wirtualne
-- Virtual Machine Scale Sets
+- Zestawy skalowania maszyn wirtualnych
 - Usługa kontenera
 - Wdrożenia usługi Azure Batch (w trybie subskrypcji użytkownika)
 - Azure Kubernetes Service (AKS)
-- Sieć szkieletowa usługi
+- Service Fabric
 
 Jeśli to ustawienie jest włączone, rabaty na rezerwację są automatycznie stosowane do pasującego użycia maszyn wirtualnych, które ma dowolną z następujących wartości *ConsumedService*:
 
@@ -55,86 +55,86 @@ Sprawdź wartość *ConsumedService* w danych użycia, aby ustalić, czy użycie
 
 Aby uzyskać więcej informacji o elastyczności rozmiaru wystąpienia, zobacz artykuł [Elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
-### <a name="analyze-your-usage-information"></a>Analyze your usage information
-Analyze your usage information to help determine which reservations you should purchase.
+### <a name="analyze-your-usage-information"></a>Analizowanie informacji o użyciu
+Analizuj informacje o użyciu, aby pomóc w ustaleniu, które rezerwacje należy zakupić.
 
-Usage data is available in the usage file and APIs. Use them together to determine which reservation to purchase. Check for VM instances that have high usage on daily basis to determine the quantity of reservations to purchase.
+Dane użycia są dostępne w pliku użycia i interfejsach API. Należy używać ich razem w celu określenia rezerwacji do zakupu. Sprawdź wystąpienia maszyn wirtualnych o wysokim poziomie użycia codziennie, aby określić liczbę rezerwacji do zakupu.
 
-Avoid the `Meter` subcategory and `Product` fields in usage data. They don't distinguish between VM sizes that use premium storage. If you use these fields to determine the VM size for reservation purchase, you may buy the wrong size. Then you won't get the reservation discount you expect. Instead, refer to the `AdditionalInfo` field in your usage file or usage API to determine the correct VM size.
+Należy unikać `Meter` podkategorii i `Product` pól w danych użycia. Nie rozróżniają one rozmiarów maszyn wirtualnych korzystających z magazynu Premium Storage. Jeśli te pola są używane do określenia rozmiaru maszyny wirtualnej dla zakupu rezerwacji, można zakupić niewłaściwy rozmiar. Nie zostanie wyświetlony oczekiwany rabat rezerwacji. Zamiast tego zapoznaj się z polem `AdditionalInfo` w pliku użycia lub interfejsie API użycia, aby określić prawidłowy rozmiar maszyny wirtualnej.
 
-### <a name="purchase-restriction-considerations"></a>Purchase restriction considerations
+### <a name="purchase-restriction-considerations"></a>Zagadnienia związane z ograniczeniami zakupu
 
-Reserved VM Instances are available for most VM sizes with some exceptions. Reservation discounts don't apply for the following VMs:
+Wystąpienia zarezerwowane maszyn wirtualnych są dostępne w przypadku większości niektórych wyjątków maszyn wirtualnych. Rabaty zarezerwowane nie dotyczą następujących maszyn wirtualnych:
 
-- **VM series** - A-series, Av2-series, or G-series.
+- Seria **maszyn wirtualnych** — seria A, Av2 lub seria G.
 
-- **Preview or Promo VMs** - Any VM-series or size that is in preview or uses promotional meter.
+- **Wersja zapoznawcza lub promocja maszyn wirtualnych** — wszystkie maszyny wirtualne lub rozmiary, które są w wersji zapoznawczej lub wykorzystują miernik promocyjny.
 
-- **Clouds** - Reservations aren't available for purchase in Germany or China regions.
+- **Chmury** — rezerwacje nie są dostępne do zakupu w regionach Niemcy i Chiny.
 
-- **Insufficient quota** - A reservation that is scoped to a single subscription must have vCPU quota available in the subscription for the new RI. For example, if the target subscription has a quota limit of 10 vCPUs for D-Series, then you can't buy a reservation for 11 Standard_D1 instances. The quota check for reservations includes the VMs already deployed in the subscription. For example, if the subscription has a quota of 10 vCPUs for D-Series and has two standard_D1 instances deployed, then you can buy a reservation for 10 standard_D1 instances in this subscription. You can [create quote increase request](../articles/azure-supportability/resource-manager-core-quotas-request.md) to resolve this issue.
+- **Niewystarczające limity przydziału** — rezerwacja w zakresie jednej subskrypcji musi mieć przydziały vCPU dostępne w subskrypcji dla nowego wystąpienia RI. Jeśli na przykład subskrypcja docelowa ma limit przydziału równy 10 procesorów wirtualnych vCPU dla serii D, nie można zakupić rezerwacji dla 11 Standard_D1 wystąpień. Sprawdzanie przydziału dla rezerwacji obejmuje maszyny wirtualne już wdrożone w subskrypcji. Na przykład jeśli subskrypcja ma przydział 10 procesorów wirtualnych vCPU dla serii D i ma dwa wystąpienia standard_D1 wdrożonych, można kupić rezerwację dla 10 standard_D1 wystąpień w tej subskrypcji. Aby rozwiązać ten problem, można [utworzyć żądanie zwiększenia oferty](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
 
-- **Capacity restrictions** - In rare circumstances, Azure limits the purchase of new reservations for subset of VM sizes, because of low capacity in a region.
+- **Ograniczenia pojemności** — w rzadkich przypadkach platforma Azure ogranicza zakup nowych rezerwacji dla podzbioru rozmiarów maszyn wirtualnych z powodu niskiej wydajności w regionie.
 
-## <a name="buy-a-reserved-vm-instance"></a>Buy a Reserved VM Instance
+## <a name="buy-a-reserved-vm-instance"></a>Kupowanie zarezerwowanych wystąpień maszyn wirtualnych
 
-You can buy a reserved VM instance in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Płatność za rezerwację jest wnoszona [z góry lub w ratach miesięcznych](../articles/billing/billing-monthly-payments-reservations.md).
-These requirements apply to buying a reserved VM instance:
+Możesz kupić wystąpienie zarezerwowane maszyny wirtualnej w [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Płatność za rezerwację jest wnoszona [z góry lub w ratach miesięcznych](../articles/billing/billing-monthly-payments-reservations.md).
+Te wymagania dotyczą kupowania zarezerwowanych wystąpień maszyn wirtualnych:
 
-- You must be in an Owner role for at least one EA subscription or a subscription with a pay-as-you-go rate.
-- For EA subscriptions, the **Add Reserved Instances** option must be enabled in the [EA portal](https://ea.azure.com/). Or, if that setting is disabled, you must be an EA Admin for the subscription.
-- For the Cloud Solution Provider (CSP) program, only the admin agents or sales agents can buy reservations.
+- Musisz mieć rolę właściciela dla co najmniej jednej subskrypcji EA lub subskrypcji z stawką płatność zgodnie z rzeczywistym użyciem.
+- W przypadku subskrypcji z umową EA należy włączyć opcję **Dodaj wystąpienia zarezerwowane** w [portalu EA](https://ea.azure.com/). Jeśli to ustawienie jest wyłączone, musisz być administratorem EA dla subskrypcji.
+- W przypadku programu Cloud Solution Provider (CSP) tylko agenci administracyjni lub agenci sprzedaży mogą kupować rezerwacje.
 
-To buy an instance:
+Aby kupić wystąpienie:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wybierz pozycję **Wszystkie usługi** > **Rezerwacje**.
-1. Select **Add** to purchase a new reservation and then click **Virtual machine**.
-1. Enter required fields. Running VM instances that match the attributes you select qualify to get the reservation discount. The actual number of your VM instances that get the discount depend on the scope and quantity selected.
+1. Wybierz pozycję **Dodaj** , aby zakupić nową rezerwację, a następnie kliknij pozycję **maszyna wirtualna**.
+1. Podaj wartości w wymaganych polach. Uruchomione wystąpienia maszyn wirtualnych pasujące do wybranych atrybutów kwalifikują się do uzyskania rabatu rezerwacji. Rzeczywista liczba wystąpień maszyn wirtualnych objętych rabatem zależy od wybranego zakresu i wybranej ilości.
 
-If you have an EA agreement, you can use the **Add more option** to quickly add additional instances. The option isn't available for other subscription types.
+Jeśli masz umowę EA, możesz użyć **opcji Dodaj więcej** , aby szybko dodać kolejne wystąpienia. Opcja jest niedostępna dla innych typów subskrypcji.
 
 
 | Pole      | Opis|
 |------------|--------------|
-|Subskrypcja|The subscription used to pay for the reservation. The payment method on the subscription is charged the costs for the reservation. The subscription type must be an enterprise agreement (offer numbers: MS-AZR-0017P or MS-AZR-0148P) or Microsoft Customer Agreement or an individual subscription with pay-as-you-go rates (offer numbers: MS-AZR-0003P or MS-AZR-0023P). The charges are deducted from the monetary commitment balance, if available, or charged as overage. For a subscription with pay-as-you-go rates, the charges are billed to the credit card or invoice payment method on the subscription.|    
-|Zakres       |The reservation’s scope can cover one subscription or multiple subscriptions (shared scope). If you select: <ul><li>**Zakres pojedynczej grupy zasobów** — rabat na rezerwację jest stosowany do odpowiednich zasobów tylko w wybranej grupie zasobów.</li><li>**Zakres pojedynczej subskrypcji** — rabat na rezerwację jest stosowany do odpowiednich zasobów w wybranej subskrypcji.</li><li>**Zakres udostępniony** — rabat na rezerwację jest stosowany do odpowiednich zasobów w kwalifikujących się subskrypcjach w ramach kontekstu rozliczeń. For EA customers, the billing context is the enrollment. W przypadku indywidualnych subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem kontekst rozliczeń stanowią wszystkie kwalifikujące się subskrypcje utworzone przez administratora konta.</li></ul>|
-|Region    |The Azure region that’s covered by the reservation.|    
-|Rozmiar maszyny wirtualnej     |The size of the VM instances.|
-|Optimize for     |VM instance size flexibility is selected by default. Click **Advanced settings** to change the instance size flexibility value to apply the reservation discount to other VMs in the same [VM size group](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). Priorytet pojemności powoduje przydzielanie priorytetów pojemności centrum danych dla wdrożeń. It offers additional confidence in your ability to launch the VM instances when you need them. Capacity priority is only available when the reservation scope is single subscription. |
-|Okres obowiązywania Umowy        |One year or three years.|
-|Ilość    |The number of instances being purchased within the reservation. The quantity is the number of running VM instances that can get the billing discount. For example, if you are running 10 Standard_D2 VMs in the East US, then you would specify quantity as 10 to maximize the benefit for all running VMs. |
+|Subskrypcja|Subskrypcja używana do płacenia za rezerwację. W przypadku metody płatności w ramach subskrypcji jest naliczana opłata za rezerwację. Typ subskrypcji musi być umową Enterprise Agreement (Numer oferty: MS-AZR-0017P lub MS-AZR-0148P) lub umowa klienta firmy Microsoft lub indywidualna subskrypcja z stawką płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P). Opłaty są naliczane od salda zobowiązania pieniężnego, jeśli są dostępne lub są naliczane jako nadwyżkowe. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty są naliczane za kartę kredytową lub formę płatności faktury dla subskrypcji.|    
+|Zakres       |Zakres rezerwacji może obejmować jedną subskrypcję lub wiele subskrypcji (zakres udostępniony). W przypadku wybrania opcji: <ul><li>**Zakres pojedynczej grupy zasobów** — rabat na rezerwację jest stosowany do odpowiednich zasobów tylko w wybranej grupie zasobów.</li><li>**Zakres pojedynczej subskrypcji** — rabat na rezerwację jest stosowany do odpowiednich zasobów w wybranej subskrypcji.</li><li>**Zakres udostępniony** — rabat na rezerwację jest stosowany do odpowiednich zasobów w kwalifikujących się subskrypcjach w ramach kontekstu rozliczeń. W przypadku klientów z umowami EA kontekst rozliczania to rejestracja. W przypadku indywidualnych subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem kontekst rozliczeń stanowią wszystkie kwalifikujące się subskrypcje utworzone przez administratora konta.</li></ul>|
+|Region    |Region świadczenia usługi Azure objęty rezerwacją.|    
+|Rozmiar maszyny wirtualnej     |Rozmiar wystąpień maszyn wirtualnych.|
+|Optymalizuj pod kątem     |Domyślnie wybrana jest elastyczność rozmiaru wystąpienia maszyny wirtualnej. Kliknij pozycję **Ustawienia zaawansowane** , aby zmienić elastyczność rozmiaru wystąpienia, aby zastosować rabat rezerwacji do innych maszyn wirtualnych w tej samej [grupie rozmiarów maszyn wirtualnych](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). Priorytet pojemności powoduje przydzielanie priorytetów pojemności centrum danych dla wdrożeń. Oferuje ona dodatkowe zaufanie do uruchamiania wystąpień maszyn wirtualnych, gdy ich potrzebujesz. Priorytet pojemności jest dostępny tylko wtedy, gdy zakresem rezerwacji jest pojedyncza subskrypcja. |
+|Termin        |Jeden rok lub trzy lata.|
+|Liczba    |Liczba wystąpień zakupionych w ramach rezerwacji. Ilość to liczba uruchomionych wystąpień maszyn wirtualnych, które mogą uzyskać rabat rozliczeń. Jeśli na przykład w regionie Wschodnie stany USA są uruchomione 10 Standard_D2 maszyn wirtualnych, należy określić liczbę jako 10, aby zmaksymalizować korzyść dla wszystkich uruchomionych maszyn wirtualnych. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
-## <a name="usage-data-and-reservation-utilization"></a>Usage data and reservation utilization
+## <a name="usage-data-and-reservation-utilization"></a>Dane użycia i użycie rezerwacji
 
-Dane użycia mają wynikową cenę równą zero za użycie, którego dotyczy rabat rezerwacji. You can see which VM instance received the reservation discount for each reservation.
+Dane użycia mają wynikową cenę równą zero za użycie, którego dotyczy rabat rezerwacji. Można sprawdzić, które wystąpienie maszyny wirtualnej otrzymało rabat rezerwacji dla każdej rezerwacji.
 
-For more information about how reservation discounts appear in usage data, see [Understand Azure reservation usage for your Enterprise enrollment](../articles/billing/billing-understand-reserved-instance-usage-ea.md) if you are an EA customer. If you have an individual subscription, see [Understand Azure reservation usage for your Pay-As-You-Go subscription](../articles/billing/billing-understand-reserved-instance-usage.md).
+Aby uzyskać więcej informacji na temat sposobu wyświetlania rabatów rezerwacji w danych użycia, zobacz [Opis użycia usługi Azure Reservation na potrzeby rejestracji w przedsiębiorstwie](../articles/billing/billing-understand-reserved-instance-usage-ea.md) , jeśli jesteś klientem z umową EA. Jeśli masz pojedynczą subskrypcję, zobacz [Opis użycia usługi Azure Reservation dla subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem](../articles/billing/billing-understand-reserved-instance-usage.md).
 
-## <a name="change-a-reservation-after-purchase"></a>Change a reservation after purchase
+## <a name="change-a-reservation-after-purchase"></a>Zmiana rezerwacji po zakupie
 
 W zakupionej rezerwacji można wprowadzać następujące zmiany:
 
 - Aktualizacja zakresu rezerwacji
-- Instance size flexibility (if applicable)
-- Ownership
+- Elastyczność rozmiaru wystąpienia (jeśli dotyczy)
+- Wyniku
 
-You can also split a reservation into smaller chunks and merge already split reservations. None of the changes cause a new commercial transaction or change the end date of the reservation.
+Można również podzielić rezerwację na mniejsze fragmenty i scalić już rezerwacje. Żadna ze zmian nie powoduje nowej transakcji komercyjnej lub zmiana daty zakończenia rezerwacji.
 
-You can't make the following types of changes after purchase, directly:
+Po zakupie nie można wprowadzać następujących typów zmian bezpośrednio:
 
-- An existing reservation’s region
-- JSZ
-- Ilość
+- Istniejący region rezerwacji
+- SKU
+- Liczba
 - Czas trwania
 
-However, you can *exchange* a reservation if you want to make changes.
+Istnieje jednak możliwość *wymiany* rezerwacji, jeśli chcesz wprowadzić zmiany.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot rezerwacji
+## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot kosztów rezerwacji
 
-Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Self-service exchanges and refunds for Azure Reservations](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
@@ -142,12 +142,12 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz [Zarządzanie rejestracjami platformy Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
-- Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
-    - [Czym są rezerwacje platformy Azure?](../articles/billing/billing-save-compute-costs-reservations.md)
-    - [Zarządzanie rejestracjami platformy Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
+- Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz temat [Manage Azure Reservations](../articles/billing/billing-manage-reserved-vm-instance.md) (Zarządzanie wystąpieniami zarezerwowanymi na platformie Azure).
+- Aby dowiedzieć się więcej na temat rezerwacji na platformie Azure, zobacz następujące artykuły:
+    - [Co to jest Azure Reservations?](../articles/billing/billing-save-compute-costs-reservations.md)
+    - [Zarządzanie rezerwacjami na platformie Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
     - [Jak jest stosowany rabat na rezerwacje](../articles/billing/billing-understand-vm-reservation-charges.md)
     - [Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych](../articles/billing/billing-reserved-instance-windows-software-costs.md)
-    - [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](https://docs.microsoft.com/partner-center/azure-reservations) (Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim)
+    - [Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim](https://docs.microsoft.com/partner-center/azure-reservations)

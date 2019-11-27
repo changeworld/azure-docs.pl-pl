@@ -28,15 +28,15 @@ ms.locfileid: "74196580"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-W tym artykule opisano klasyczny model wdrażania. Możesz również [Zarządzanie statyczny prywatny adres IP w modelu wdrażania usługi Resource Manager](virtual-networks-static-private-ip-arm-cli.md).
+W tym artykule opisano klasyczny model wdrażania. Można także [zarządzać statycznym prywatnym adresem IP w modelu wdrażania Menedżer zasobów](virtual-networks-static-private-ip-arm-cli.md).
 
-Przykład klasycznego wiersza polecenia platformy Azure polecenia tego postępuj zgodnie z oczekiwaniami proste środowisko już utworzony. Jeśli chcesz uruchamiać polecenia, ponieważ są one wyświetlane w tym dokumencie, najpierw utworzyć środowisko testowe opisane w [tworzenie sieci wirtualnej](virtual-networks-create-vnet-classic-cli.md).
+Przykład klasycznego wiersza polecenia platformy Azure polecenia tego postępuj zgodnie z oczekiwaniami proste środowisko już utworzony. Jeśli chcesz uruchomić polecenia w taki sposób, aby były wyświetlane w tym dokumencie, najpierw Skompiluj środowisko testowe opisane w temacie [Tworzenie sieci wirtualnej](virtual-networks-create-vnet-classic-cli.md).
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Jak określić statyczny prywatny adres IP podczas tworzenia maszyny Wirtualnej
-Aby utworzyć nową maszynę Wirtualną o nazwie *DNS01* w nowej usługi w chmurze o nazwie *TestService* oparciu o powyższy scenariusz, wykonaj następujące kroki:
+Aby utworzyć nową maszynę wirtualną o nazwie *DNS01* w nowej usłudze w chmurze o nazwie *TestService* na podstawie powyższego scenariusza, wykonaj następujące kroki:
 
 1. Jeśli po raz pierwszy używasz interfejsu wiersza polecenia Azure, zobacz artykuł [Instalowanie i konfigurowania interfejsu wiersza polecenia Azure](/cli/azure/install-cli-version-1.0) i postępuj zgodnie z instrukcjami aż do punktu, w którym należy wybrać konto platformy Azure i subskrypcję.
-2. Uruchom **usługi platformy azure utworzyć** polecenie, aby utworzyć usługę w chmurze.
+2. Uruchom polecenie **Utwórz usługę platformy Azure** , aby utworzyć usługę w chmurze.
    
         azure service create TestService --location uscentral
    
@@ -46,7 +46,7 @@ Aby utworzyć nową maszynę Wirtualną o nazwie *DNS01* w nowej usługi w chmur
         info:    Creating cloud service
         data:    Cloud service name TestService
         info:    service create command OK
-3. Uruchom **azure utworzyć maszynę wirtualną** polecenie, aby utworzyć maszynę Wirtualną. Należy zauważyć wartość statyczny prywatny adres IP. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
+3. Uruchom polecenie **Azure Create VM** , aby utworzyć maszynę wirtualną. Należy zauważyć wartość statyczny prywatny adres IP. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
    
         azure vm create -l centralus -n DNS01 -w TestVNet -S "192.168.1.101" TestService bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2 adminuser AdminP@ssw0rd
    
@@ -66,16 +66,16 @@ Aby utworzyć nową maszynę Wirtualną o nazwie *DNS01* w nowej usługi w chmur
         info:    vm create command OK
    
    * **-l (lub --location)** . Region platformy Azure, w którym zostanie utworzona maszyna wirtualna. W naszym scenariuszu jest to *centralus*.
-   * **-n (lub--nazwa_maszyny_wirtualnej)** . Nazwa maszyny Wirtualnej, która ma zostać utworzony.
-   * **-w (lub--nazwa wirtualnej sieci)** . Nazwa sieci wirtualnej, w którym zostanie utworzona maszyna wirtualna. 
-   * **-S (lub--static ip)** . Statyczny prywatny adres IP dla maszyny Wirtualnej.
+   * **-n (lub--VM-Name)** . Nazwa maszyny Wirtualnej, która ma zostać utworzony.
+   * **-w (lub--Virtual-Network-Name)** . Nazwa sieci wirtualnej, w którym zostanie utworzona maszyna wirtualna. 
+   * **-S (lub--Static-IP)** . Statyczny prywatny adres IP dla maszyny Wirtualnej.
    * **TestService**. Nazwa usługi w chmurze tworzona maszyna wirtualna.
-   * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**. Obraz użyty do utworzenia maszyny Wirtualnej.
-   * **adminuser**. Administrator lokalny na maszynie Wirtualnej Windows.
+   * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v 14.2**. Obraz użyty do utworzenia maszyny Wirtualnej.
+   * **AdminUser**. Administrator lokalny na maszynie Wirtualnej Windows.
    * <strong>AdminP@ssw0rd</strong>. Hasło administratora lokalnego dla maszyn wirtualnych Windows.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak pobrać statyczne prywatne informacje o adresie IP dla maszyny Wirtualnej
-Aby wyświetlić statyczne prywatne informacje o adresie IP dla maszyny Wirtualnej utworzone za pomocą skryptu powyżej, uruchom następujące polecenie z wiersza polecenia platformy Azure i sprawdź wartość *StaticIP sieci*:
+Aby wyświetlić informacje o statycznym prywatnym adresie IP dla maszyny wirtualnej utworzonej za pomocą powyższego skryptu, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure i obserwuj wartość *StaticIP sieci*:
 
     azure vm static-ip show DNS01
 
@@ -117,7 +117,7 @@ Oczekiwane dane wyjściowe:
 
 Zalecane jest, że nie zostanie statycznie przypisany prywatny adres IP, przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej, o ile to konieczne. Jeśli ręcznie ustawić jako prywatny adres IP w ramach systemu operacyjnego, upewnij się, że jest ten sam adres jako prywatny adres IP przypisany do maszyny Wirtualnej platformy Azure, lub można utracić łączność z maszyną wirtualną. Nie należy ręcznie przypisywać publicznego adresu IP przypisanego do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [publiczny adres IP zarezerwowany](virtual-networks-reserved-public-ip.md) adresów.
-* Dowiedz się więcej o [na poziomie wystąpienia publicznego adresu IP (ILPIP)](virtual-networks-instance-level-public-ip.md) adresów.
-* Zapoznaj się z [zarezerwowanych adresów IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej na temat [zarezerwowanych publicznych adresów IP](virtual-networks-reserved-public-ip.md) .
+* Dowiedz się więcej o publicznych adresach [IP na poziomie wystąpienia (ILPIP)](virtual-networks-instance-level-public-ip.md) .
+* Zapoznaj się z [interfejsami API REST zastrzeżony adres IP](https://msdn.microsoft.com/library/azure/dn722420.aspx).

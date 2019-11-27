@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Provision a simulated TPM device to Azure IoT Hub using Java
-description: Quickstart - Create and provision a simulated TPM device using Java device SDK for Azure IoT Hub Device Provisioning Service. W tym przewodniku Szybki start używane są rejestracje indywidualne.
+title: Szybki Start — Inicjowanie obsługi symulowanego urządzenia TPM w usłudze Azure IoT Hub przy użyciu języka Java
+description: Szybki Start — tworzenie i Inicjowanie obsługi symulowanego urządzenia TPM za pomocą zestawu SDK urządzenia Java dla platformy Azure IoT Hub Device Provisioning Service. W tym przewodniku Szybki start używane są rejestracje indywidualne.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -16,7 +16,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423503"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision a simulated TPM device using Java device SDK for Azure IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Szybki Start: Tworzenie i Inicjowanie symulowanego urządzenia TPM za pomocą zestawu SDK urządzenia Java dla platformy Azure IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -46,7 +46,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-1. Uruchom symulator [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Kliknij pozycję **Zezwól na dostęp**, aby zezwolić na wprowadzanie zmian ustawień _Zapory systemu Windows_. Nasłuchuje on przez gniazdo na portach 2321 i 2322. Do not close this window; you need to keep this simulator running until the end of this quickstart guide. 
+1. Uruchom symulator [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Kliknij pozycję **Zezwól na dostęp**, aby zezwolić na wprowadzanie zmian ustawień _Zapory systemu Windows_. Nasłuchuje on przez gniazdo na portach 2321 i 2322. Nie zamykaj tego okna; należy zachować ten symulator do momentu zakończenia tego przewodnika Szybki Start. 
 
     ```cmd/sh
     .\azure-iot-sdk-java\provisioning\provisioning-tools\tpm-simulator\Simulator.exe
@@ -67,7 +67,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
     cd provisioning/provisioning-samples/provisioning-tpm-sample
     ```
 
-1. Sign in to the Azure portal, select the **All resources** button on the left-hand menu and open your Device Provisioning service. Zanotuj wartości _Zakres identyfikatorów_ i _Globalny punkt końcowy usługi Provisioning Service_.
+1. Zaloguj się do Azure Portal, wybierz przycisk **wszystkie zasoby** w menu po lewej stronie i Otwórz swoją usługę Device Provisioning. Zanotuj wartości _Zakres identyfikatorów_ i _Globalny punkt końcowy usługi Provisioning Service_.
 
     ![Informacje o usłudze Device Provisioning Service](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
 
@@ -80,7 +80,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
     ```
     Zapisz plik.
 
-1. Use the following commands to build the project, navigate to the target folder, and execute the created .jar file. Replace the `version` placeholder with your version of Java.
+1. Użyj następujących poleceń, aby skompilować projekt, przejdź do folderu docelowego i wykonaj utworzony plik JAR. Zastąp symbol zastępczy `version` wersją języka Java.
 
     ```cmd/sh
     mvn clean install
@@ -88,25 +88,25 @@ W tym artykule przedstawiono rejestracje indywidualne.
     java -jar ./provisioning-tpm-sample-{version}-with-deps.jar
     ```
 
-1. Rozpocznie się działanie programu. Note the _Endorsement key_ and _Registration ID_ for the next section and leave the program running.
+1. Rozpocznie się działanie programu. Zanotuj _Klucz poręczenia_ i _Identyfikator rejestracji_ następnej sekcji i pozostaw uruchomiony program.
 
     ![Program urządzenia modułu TPM języka Java](./media/java-quick-create-simulated-device/program.png)
     
 
 ## <a name="create-a-device-enrollment-entry"></a>Tworzenie wpisu rejestracji urządzenia
 
-1. Sign in to the Azure portal, select the **All resources** button on the left-hand menu and open your Device Provisioning service.
+1. Zaloguj się do Azure Portal, wybierz przycisk **wszystkie zasoby** w menu po lewej stronie i Otwórz swoją usługę Device Provisioning.
 
-1. From the Device Provisioning Service menu, select **Manage enrollments**. Select **Individual Enrollments** tab and select the **Add individual enrollment** button at the top. 
+1. W menu usługi Device Provisioning wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **indywidualne rejestracje** i wybierz u góry przycisk **Dodaj rejestrację indywidualną** . 
 
-1. In the **Add Enrollment** panel, enter the following information:
+1. W panelu **Dodawanie rejestracji** wprowadź następujące informacje:
    - Wybierz opcję **TPM** jako *Mechanizm* poświadczania tożsamości.
-   - Enter the *Registration ID* and *Endorsement key* for your TPM device from the values you noted previously.
+   - Wprowadź *Identyfikator rejestracji* i *Klucz poręczenia* dla urządzenia TPM z wartości zanotowanych wcześniej.
    - Wybierz centrum IoT połączone z Twoją usługą aprowizacji.
    - Opcjonalnie można podać następujące informacje:
-       - Enter a unique *Device ID*. Nadając nazwę urządzeniu, unikaj korzystania z danych poufnych. If you choose not to provide one, the registration ID will be used to identify the device instead.
+       - Wprowadź unikatowy *Identyfikator urządzenia*. Nadając nazwę urządzeniu, unikaj korzystania z danych poufnych. W przypadku wybrania opcji nie należy podać identyfikator rejestracji zostanie użyty do zidentyfikowania urządzenia.
        - Zaktualizuj pole **Początkowy stan bliźniaczej reprezentacji urządzenia** za pomocą wybranej konfiguracji początkowej dla urządzenia.
-   - Once complete, press the **Save** button. 
+   - Po zakończeniu naciśnij przycisk **Zapisz** . 
 
      ![Wprowadzanie informacji o rejestracji urządzenia w bloku portalu](./media/java-quick-create-simulated-device/enterdevice-enrollment.png)  
 
@@ -115,11 +115,11 @@ W tym artykule przedstawiono rejestracje indywidualne.
 
 ## <a name="simulate-the-device"></a>Symulowanie urządzenia
 
-1. On the command window running the Java sample code on your machine, press *Enter* to continue running the application. Zwróć uwagę na komunikaty symulujące uruchamianie urządzenia i łączenie z usługą Device Provisioning Service w celu pobrania informacji z Twojego centrum IoT.  
+1. W oknie polecenia z uruchomionym przykładowym kodem Java na maszynie naciśnij klawisz *Enter* , aby kontynuować uruchamianie aplikacji. Zwróć uwagę na komunikaty symulujące uruchamianie urządzenia i łączenie z usługą Device Provisioning Service w celu pobrania informacji z Twojego centrum IoT.  
 
     ![Program urządzenia modułu TPM języka Java (zakończenie)](./media/java-quick-create-simulated-device/program-final.png)
 
-1. On successful provisioning of your simulated device to the IoT hub linked with your provisioning service, the device ID appears on the hub's **IoT devices** blade.
+1. Po pomyślnej aprowizacji symulowanego urządzenia w centrum IoT Hub powiązanym z Twoją usługą aprowizacji identyfikator urządzenia jest wyświetlany w bloku **urządzenia IoT** centrum.
 
     ![Urządzenie jest rejestrowane w centrum IoT](./media/java-quick-create-simulated-device/hubregistration.png) 
 
@@ -128,16 +128,16 @@ W tym artykule przedstawiono rejestracje indywidualne.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-If you plan to continue working on and exploring the device client sample, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all resources created by this quickstart.
+Jeśli planujesz kontynuować pracę i eksplorowanie przykładowego klienta urządzenia, nie czyść zasobów utworzonych w tym przewodniku Szybki Start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki Start.
 
 1. Zamknij okno danych wyjściowych przykładu klienta urządzenia na swojej maszynie.
 1. Zamknij okno symulatora modułu TPM na swojej maszynie.
-1. From the left-hand menu in the Azure portal, select **All resources** and then select your Device Provisioning service. Open the **Manage Enrollments** blade for your service, and then select the **Individual Enrollments** tab. Select the check box next to the *REGISTRATION ID* of the device you enrolled in this quickstart, and press the **Delete** button at the top of the pane. 
-1. From the left-hand menu in the Azure portal, select **All resources** and then select your IoT hub. Open the **IoT devices** blade for your hub, select the check box next to the *DEVICE ID* of the device you registered in this quickstart, and then press the **Delete** button at the top of the pane.
+1. Z menu po lewej stronie w Azure Portal wybierz pozycję **wszystkie zasoby** , a następnie wybierz usługę Device Provisioning. Otwórz blok **Zarządzanie rejestracjami** dla usługi, a następnie wybierz kartę **indywidualne rejestracje** . Zaznacz pole wyboru obok *identyfikatora rejestracji* urządzenia zarejestrowanego w tym przewodniku Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka. 
+1. Z menu po lewej stronie w Azure Portal wybierz pozycję **wszystkie zasoby** , a następnie wybierz swoje centrum IoT Hub. Otwórz blok **urządzenia IoT** dla centrum, zaznacz pole wyboru obok *identyfikatora urządzenia* urządzenia zarejestrowanego w tym przewodniku Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka.
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this quickstart, you’ve created a TPM simulated device on your machine and provisioned it to your IoT hub using the IoT Hub Device Provisioning Service. To learn how to enroll your TPM device programmatically, continue to the quickstart for programmatic enrollment of a TPM device. 
+W tym przewodniku szybki start utworzono symulowane urządzenie modułu TPM na maszynie i udostępniono je Centrum IoT Hub przy użyciu IoT Hub Device Provisioning Service. Aby dowiedzieć się, jak zarejestrować urządzenie TPM programowo, przejdź do przewodnika Szybki Start dotyczącego rejestrowania programowego dla urządzenia TPM. 
 
 > [!div class="nextstepaction"]
-> [Azure quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service](quick-enroll-device-tpm-java.md)
+> [Przewodnik Szybki Start platformy Azure — rejestrowanie urządzenia TPM w usłudze Azure IoT Hub Device Provisioning Service](quick-enroll-device-tpm-java.md)

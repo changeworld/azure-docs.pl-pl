@@ -131,7 +131,7 @@ Zestawy SDK, które zostały zaktualizowane w bieżącej wersji, nie są zgodne 
 | &nbsp; | Wersja 2 | Wersja 1 |
 | ------ | -- | -- | 
 | Azure Portal | [Tak](quickstart-create-data-factory-portal.md) | Nie |
-| Program Azure PowerShell | [Tak](quickstart-create-data-factory-powershell.md) | [Tak](data-factory-build-your-first-pipeline-using-powershell.md) |
+| Azure PowerShell | [Tak](quickstart-create-data-factory-powershell.md) | [Tak](data-factory-build-your-first-pipeline-using-powershell.md) |
 | Zestaw SDK .NET | [Tak](quickstart-create-data-factory-dot-net.md) | [Tak](data-factory-build-your-first-pipeline-using-vs.md) |
 | Interfejs API REST | [Tak](quickstart-create-data-factory-rest-api.md) | [Tak](data-factory-build-your-first-pipeline-using-rest-api.md) |
 | Zestaw SDK dla języka Python | [Tak](quickstart-create-data-factory-python.md) | Nie |

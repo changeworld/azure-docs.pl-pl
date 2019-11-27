@@ -256,7 +256,7 @@ VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway
 Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli chcesz skonfigurować odciążanie protokołu SSL, zobacz artykuł [Configure an application gateway for SSL offload](application-gateway-ssl.md) (Konfigurowanie bramy aplikacji na potrzeby odciążania protokołu SSL).
 

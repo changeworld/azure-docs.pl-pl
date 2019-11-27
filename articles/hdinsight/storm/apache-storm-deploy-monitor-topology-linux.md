@@ -1,6 +1,6 @@
 ---
-title: Deploy and manage Apache Storm topologies on Azure HDInsight
-description: Learn how to deploy, monitor, and manage Apache Storm topologies using the Storm Dashboard on Linux-based HDInsight. Use Hadoop tools for Visual Studio.
+title: Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie nimi
+description: Dowiedz się, jak wdrażać i monitorować topologie Apache Storm i zarządzać nimi za pomocą pulpitu nawigacyjnego burzy w usłudze HDInsight opartej na systemie Linux. Użyj narzędzi Hadoop dla programu Visual Studio.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -15,110 +15,110 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228932"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Deploy and manage Apache Storm topologies on Azure HDInsight 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie nimi 
 
-In this document, learn the basics of managing and monitoring [Apache Storm](https://storm.apache.org/) topologies running on Storm on HDInsight clusters.
+W tym dokumencie przedstawiono podstawowe informacje dotyczące zarządzania i monitorowania topologii [Apache Storm](https://storm.apache.org/) działających w ramach burzy w klastrach usługi HDInsight.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* An Apache Storm cluster on HDInsight. See [Create Apache Hadoop clusters using the Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) and select **Storm** for **Cluster type**.
+* Klaster Apache Storm w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz pozycję **burza** dla **typu klastra**.
 
-* (Optional) Familiarity with Secure Shell (SSH) and Secure Copy (SCP). Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Obowiązkowe Znajomość Secure Shell (SSH) i bezpiecznego kopiowania (SCP). Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* (Optional) Visual Studio, Azure SDK 2.5.1 or newer, and the Data Lake Tools for Visual Studio. For more information, see [Apache Hadoop & Visual Studio Data Lake Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* Obowiązkowe Visual Studio, zestaw Azure SDK 2.5.1 lub nowszy oraz Data Lake Tools for Visual Studio. Aby uzyskać więcej informacji, zobacz [Apache Hadoop & narzędzia Data Lake Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-## <a name="submit-a-topology-using-visual-studio"></a>Submit a topology using Visual Studio
+## <a name="submit-a-topology-using-visual-studio"></a>Przesyłanie topologii przy użyciu programu Visual Studio
 
-You can use the Data Lake Tools for Visual Studio to submit C# or hybrid topologies to your Storm cluster. The following steps use a sample application. For information about topology creation using the Data Lake Tools, see [Apache Storm topologies with Visual Studio and C#](apache-storm-develop-csharp-visual-studio-topology.md).
+Za pomocą narzędzi Data Lake Tools for Visual Studio można przesyłać C# lub używać topologii hybrydowej do klastra burzy. W poniższych krokach użyto przykładowej aplikacji. Aby uzyskać informacje na temat tworzenia topologii za pomocą narzędzi Data Lake, zobacz [Apache Storm topologii C#z programem Visual Studio i ](apache-storm-develop-csharp-visual-studio-topology.md).
 
-1. If you haven't already installed the latest version of the Data Lake tools for Visual Studio, see [Use Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+1. Jeśli nie zainstalowano jeszcze najnowszej wersji narzędzi Data Lake Tools for Visual Studio, zobacz [Korzystanie z narzędzi Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     > [!NOTE]  
-    > The Data Lake Tools for Visual Studio were formerly called the HDInsight Tools for Visual Studio.
+    > Narzędzia Data Lake Tools for Visual Studio były wcześniej nazywane narzędziami HDInsight Tools for Visual Studio.
     >
-    > Data Lake Tools for Visual Studio are included in the **Azure Workload** for Visual Studio 2019.
+    > Narzędzia Data Lake Tools for Visual Studio są zawarte w **obciążeniu platformy Azure** dla programu visual Studio 2019.
 
 2. Otwórz program Visual Studio.
 
-3. In the **Start** window, select **Create a new project**.
+3. W oknie **uruchamiania** wybierz pozycję **Utwórz nowy projekt**.
 
-4. In the **Create a new project** window, select the search box, and enter *Storm*. Then choose **Storm Sample** from the result list and select **Next**.
+4. W oknie **Tworzenie nowego projektu** wybierz pole wyszukiwania, a następnie wprowadź wartość *burzy*. Następnie wybierz z listy wyników pozycję **przykład burzy** , a następnie wybierz pozycję **dalej**.
 
-5. In the **Configure your new project** window, enter a **Project name**, and go to or create a **Location** to save the new project in. Następnie wybierz przycisk **Utwórz**.
+5. W oknie **Konfigurowanie nowego projektu** wprowadź **nazwę projektu**, a następnie przejdź do lub Utwórz **lokalizację** , w której ma zostać zapisany nowy projekt. Następnie wybierz przycisk **Utwórz**.
 
-    ![Configure your new project window, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
+    ![Konfigurowanie okna nowego projektu, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. In **Solution Explorer**, right-click the project, and choose **Submit to Storm on HDInsight**.
+6. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt, a następnie wybierz polecenie **Prześlij do burzy w usłudze HDInsight**.
 
     > [!NOTE]  
-    > If prompted, enter the login credentials for your Azure subscription. If you have more than one subscription, sign in to the one that contains your Storm on HDInsight cluster.
+    > Jeśli zostanie wyświetlony monit, wprowadź poświadczenia logowania dla subskrypcji platformy Azure. Jeśli masz więcej niż jedną subskrypcję, zaloguj się do niej, która zawiera swoją burzę w klastrze usługi HDInsight.
 
-7. In the **Submit Topology** dialog box, under the **Storm Cluster** drop-down list, choose your Storm on HDInsight cluster, and then select **Submit**. You can monitor whether the submission is successful by viewing the **Output** pane.
+7. W oknie dialogowym **przesyłanie topologii** na liście rozwijanej **klaster burzy** wybierz swoją burzę w klastrze usługi HDInsight, a następnie wybierz pozycję **Prześlij**. Możesz monitorować, czy przesyłanie zakończy się pomyślnie, wyświetlając okienko **dane wyjściowe** .
 
-## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>Submit a topology using SSH and the Storm command
+## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>Przesyłanie topologii przy użyciu protokołu SSH i polecenia burzy
 
-To submit a topology to Storm using SSH:
+Aby przesłać topologię do burzy przy użyciu protokołu SSH:
 
-1. Use SSH to connect to the HDInsight cluster. Replace `USERNAME` with the name of your SSH user name (such as *sshuser*). Replace `CLUSTERNAME` with your HDInsight cluster name.
+1. Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. Zastąp `USERNAME` nazwą użytkownika SSH (na przykład *sshuser*). Zastąp `CLUSTERNAME` nazwą klastra usługi HDInsight.
 
     ```shell
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    For more information on using SSH to connect to your HDInsight cluster, see [Connect to HDInsight (Apache Hadoop) using SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Aby uzyskać więcej informacji na temat łączenia się z klastrem usługi HDInsight przy użyciu protokołu SSH, zobacz [nawiązywanie połączenia z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Use the following command to start the *WordCount* example topology:
+2. Użyj następującego polecenia, aby uruchomić topologię przykładu *WORDCOUNT* :
 
     ```ssh
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
-    To polecenie uruchamia w klastrze przykładową topologię WordCount. This topology randomly generates sentences, and then counts the occurrence of each word in the sentences.
+    To polecenie uruchamia w klastrze przykładową topologię WordCount. Ta topologia losowo generuje zdania, a następnie zlicza wystąpienia każdego wyrazu w zdaniach.
 
     > [!NOTE]  
-    > When submitting topology to the cluster, you must first copy the .jar file containing the cluster before using the `storm` command. To copy the file to the cluster, you can use the `scp` command. Na przykład wprowadź wartość `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
+    > Podczas przesyłania topologii do klastra należy najpierw skopiować plik JAR zawierający klaster przed użyciem polecenia `storm`. Aby skopiować plik do klastra, można użyć polecenia `scp`. Na przykład wprowadź wartość `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
     >
-    > The *WordCount* example, and other storm starter examples, are already included on your cluster at `/usr/hdp/current/storm-client/contrib/storm-starter/`.
+    > Przykład *WORDCOUNT* i inne przykładowe przykłady burzy są już zawarte w klastrze w `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
-## <a name="submit-a-topology-programmatically"></a>Submit a topology programmatically
+## <a name="submit-a-topology-programmatically"></a>Programistyczne przesyłanie topologii
 
-You can programmatically deploy a topology using the Nimbus service. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) provides an example Java application that demonstrates how to deploy and start a topology through the Nimbus service.
+Można programowo wdrożyć topologię przy użyciu usługi Nimbus. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) zawiera przykładową aplikację Java, która demonstruje sposób wdrażania i uruchamiania topologii za pomocą usługi Nimbus.
 
-## <a name="monitor-and-manage-a-topology-in-visual-studio"></a>Monitor and manage a topology in Visual Studio
+## <a name="monitor-and-manage-a-topology-in-visual-studio"></a>Monitorowanie i zarządzanie topologią w programie Visual Studio
 
-When you submit a topology using Visual Studio, the **Storm Topologies View** window appears. Select the topology from the list to view information about the running topology.
+W przypadku przesyłania topologii przy użyciu programu Visual Studio zostanie wyświetlone okno **Widok topologia burza** . Wybierz topologię z listy, aby wyświetlić informacje o uruchomionej topologii.
 
-![Monitor topology, Storm Topologies View window, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
+![Topologia monitora, okno widoku topologii burzy, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> You can also view **Storm Topologies** from **Server Explorer**. Expand **Azure** > **HDInsight**, right-click a Storm on HDInsight cluster, and then select **View Storm Topologies**.
+> Można również wyświetlić **topologie burzy** w **Eksplorator serwera**. Rozwiń węzeł Azure > **HDInsight**, kliknij prawym przyciskiem myszy burzę w klastrze **usługi** HDInsight, a następnie wybierz pozycję **Wyświetl topologie burzy**.
 
-Select the shape for the spouts or bolts to view information about these components. A tooltip with component information appears for the item selected.
+Wybierz kształt elementy Spout lub piorunów, aby wyświetlić informacje o tych składnikach. Zostanie wyświetlona etykietka narzędzia zawierająca informacje o składniku dla wybranego elementu.
 
-### <a name="deactivate-and-reactivate-a-topology"></a>Deactivate and reactivate a topology
+### <a name="deactivate-and-reactivate-a-topology"></a>Dezaktywowanie i ponowne uaktywnianie topologii
 
-Deactivating a topology pauses it until the topology is killed or reactivated. To do these operations, use the **Deactivate** and **Reactivate** buttons in the **Actions** area at the top of the **Storm Topologies View** window.
+Dezaktywacja topologii wstrzymuje ją do momentu zabicia lub ponownej aktywacji topologii. Aby wykonać te operacje, użyj przycisków **Dezaktywuj** i **Uaktywnij ponownie** w obszarze **działania** w górnej części okna **Widok topologii burza** .
 
-### <a name="rebalance-a-topology"></a>Rebalance a topology
+### <a name="rebalance-a-topology"></a>Ponowne równoważenie topologii
 
-Rebalancing a topology allows the system to revise the parallelism of the topology. For example, if you've resized the cluster to add more notes, rebalancing allows a topology to see the new nodes.
+Ponowne równoważenie topologii umożliwia systemowi skorygowanie równoległości topologii. Na przykład jeśli Zmieniono rozmiar klastra w celu dodania kolejnych notatek, ponowne zrównoważenie umożliwia topologii wyświetlanie nowych węzłów.
 
-To rebalance a topology, use the **Rebalance** button in the **Actions** area of the **Storm Topologies View** window.
+Aby ponownie zrównoważyć topologię, użyj przycisku **Zrównoważ** w obszarze **działania** okna **Widok topologii burza** .
 
 > [!WARNING]  
-> Rebalancing a topology deactivates the topology, redistributes workers evenly across the cluster, and then returns the topology to the state it was in before rebalancing occurred. If the topology was active, it becomes active again. If the topology was deactivated, it remains deactivated.
+> Ponowne równoważenie topologii powoduje dezaktywację topologii, ponowną dystrybucję procesów roboczych w klastrze, a następnie zwraca topologię do stanu, w którym znajdowała się przed ponownym zrównoważeniem. Jeśli topologia była aktywna, zostanie ponownie uaktywniona. Jeśli topologia została zdezaktywowana, pozostanie zdezaktywowana.
 
-### <a name="kill-a-running-topology"></a>Kill a running topology
+### <a name="kill-a-running-topology"></a>Kasuj uruchomioną topologię
 
-Storm topologies continue running until they're stopped or the cluster is deleted. To stop a topology, use the **Kill** button in the **Actions** area.
+Topologie burzy są nadal uruchomione, dopóki nie zostaną zatrzymane lub klaster zostanie usunięty. Aby zatrzymać topologię, użyj przycisku **Kill** w obszarze **Akcje** .
 
-## <a name="monitor-and-manage-a-topology-using-ssh-and-the-storm-command"></a>Monitor and manage a topology using SSH and the Storm command
+## <a name="monitor-and-manage-a-topology-using-ssh-and-the-storm-command"></a>Monitorowanie topologii i zarządzanie nią przy użyciu protokołu SSH oraz polecenia burza
 
-The `storm` utility allows you to work with running topologies from the command line. Use `storm -h` for a full list of commands.
+Narzędzie `storm` pozwala pracować z uruchamianiem topologii z poziomu wiersza polecenia. Użyj `storm -h`, aby uzyskać pełną listę poleceń.
 
-### <a name="list-topologies"></a>List topologies
+### <a name="list-topologies"></a>Wyświetl topologie
 
-Use the following command to list all running topologies:
+Użyj następującego polecenia, aby wyświetlić listę wszystkich uruchomionych topologii:
 
 ```shell
 storm list
@@ -132,9 +132,9 @@ Topology_name        Status     Num_tasks  Num_workers  Uptime_secs
 WordCount            ACTIVE     29         2            263
 ```
 
-### <a name="deactivate-and-reactivate-a-topology"></a>Deactivate and reactivate a topology
+### <a name="deactivate-and-reactivate-a-topology"></a>Dezaktywowanie i ponowne uaktywnianie topologii
 
-Deactivating a topology pauses it until the topology is killed or reactivated. Use the following commands to deactivate or reactivate:
+Dezaktywacja topologii wstrzymuje ją do momentu zabicia lub ponownej aktywacji topologii. Użyj następujących poleceń, aby dezaktywować lub ponownie uaktywnić:
 
 ```shell
 storm Deactivate TOPOLOGYNAME
@@ -144,132 +144,132 @@ storm Deactivate TOPOLOGYNAME
 storm Activate TOPOLOGYNAME
 ```
 
-### <a name="kill-a-running-topology"></a>Kill a running topology
+### <a name="kill-a-running-topology"></a>Kasuj uruchomioną topologię
 
-Storm topologies, once started, continue running until stopped. To stop a topology, use the following command:
+Topologie burzy, po uruchomieniu, kontynuują działanie do momentu zatrzymania. Aby zatrzymać topologię, użyj następującego polecenia:
 
 ```shell
 storm kill TOPOLOGYNAME
 ```
 
-### <a name="rebalance-a-topology"></a>Rebalance a topology
+### <a name="rebalance-a-topology"></a>Ponowne równoważenie topologii
 
-Rebalancing a topology allows the system to revise the parallelism of the topology. For example, if you've resized the cluster to add more notes, rebalancing allows a topology to see the new nodes.
+Ponowne równoważenie topologii umożliwia systemowi skorygowanie równoległości topologii. Na przykład jeśli Zmieniono rozmiar klastra w celu dodania kolejnych notatek, ponowne zrównoważenie umożliwia topologii wyświetlanie nowych węzłów.
 
 > [!WARNING]  
-> Rebalancing a topology deactivates the topology, redistributes workers evenly across the cluster, and then returns the topology to the state it was in before rebalancing occurred. If the topology was active, it becomes active again. If it was deactivated, it remains deactivated.
+> Ponowne równoważenie topologii powoduje dezaktywację topologii, ponowną dystrybucję procesów roboczych w klastrze, a następnie zwraca topologię do stanu, w którym znajdowała się przed ponownym zrównoważeniem. Jeśli topologia była aktywna, zostanie ponownie uaktywniona. Jeśli została zdezaktywowana, pozostanie zdezaktywowana.
 
 ```shell
 storm rebalance TOPOLOGYNAME
 ```
 
-## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>Monitor and manage a topology using the Storm UI
+## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>Monitorowanie topologii i zarządzanie nią przy użyciu interfejsu użytkownika burzy
 
-The Storm UI provides a web interface for working with running topologies, and it's included on your HDInsight cluster. To view the Storm UI, use a web browser to open `https://CLUSTERNAME.azurehdinsight.net/stormui`, where *CLUSTERNAME* is the name of your cluster.
+Interfejs użytkownika burzy udostępnia interfejs sieci Web służący do pracy z uruchomionymi topologiami i znajduje się w klastrze usługi HDInsight. Aby wyświetlić interfejs użytkownika burzy, użyj przeglądarki sieci Web, aby otworzyć `https://CLUSTERNAME.azurehdinsight.net/stormui`, gdzie *ClusterName* jest nazwą klastra.
 
 > [!NOTE]  
-> If you're asked to provide a user name and password, enter the cluster administrator username and password that you used when creating the cluster.
+> Jeśli zostanie wyświetlony monit o podanie nazwy użytkownika i hasła, wprowadź nazwę i hasło administratora klastra, które zostały użyte podczas tworzenia klastra.
 
-### <a name="storm-ui-main-page"></a>Storm UI main page
+### <a name="storm-ui-main-page"></a>Strona główna interfejsu użytkownika burzy
 
-The main page of the Storm UI provides the following information:
-
-| Sekcja | Opis |
-| --- | --- |
-| **Cluster summary** | Basic information about the Storm cluster. |
-| **Nimbus summary** | A list of basic Nimbus information. |
-| **Topology summary** | A list of running topologies. To view more information about a specific topology, select its link in the **Name** column. |
-| **Supervisor summary** | Information about the Storm supervisor. To see the worker resources associated with a specific supervisor, select its link in the **Host** or **Id** column. |
-| **Nimbus configuration** | Nimbus configuration for the cluster. |
-
-The Storm UI main page looks similar to this web page:
-
-![Main page, Storm UI, Apache Storm topologies, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
-
-#### <a name="topology-summary"></a>Topology summary
-
-Selecting a link from the **Topology summary** section displays the following information about the topology:
+Na stronie głównej interfejsu użytkownika burzy są dostępne następujące informacje:
 
 | Sekcja | Opis |
 | --- | --- |
-| **Topology summary** | Basic information about the topology. |
-| **Topology actions** | Management actions that you can do for the topology. The available actions are described later in this section. |
-| **Topology stats** | Statistics about the topology. To set the time frame for an entry in this section, select its link in the **Window** column. |
-| **Spouts** *(time frame)* | The spouts used by the topology. To view more information about a specific spout, select its link in the **Id** column. |
-| **Bolts** *(time frame)* | The bolts used by the topology. To view more information about a specific bolt, select its link in the **Id** column. |
-| **Worker resources** | A list of worker resources. To view more information about a specific worker resource, select its link in the **Host** column. |
-| **Topology visualization** | A **Show Visualization** button that displays a visualization of the topology. |
-| **Topology configuration** | The configuration of the selected topology. |
+| **Podsumowanie klastra** | Podstawowe informacje o klastrze burzowym. |
+| **Podsumowanie Nimbus** | Lista podstawowych informacji Nimbus. |
+| **Podsumowanie topologii** | Lista uruchomionych topologii. Aby wyświetlić więcej informacji na temat określonej topologii, wybierz jej łącze w kolumnie **Nazwa** . |
+| **Podsumowanie opiekuna** | Informacje o Inspektorze burzy. Aby wyświetlić zasoby procesów roboczych skojarzonych z określonym nadzorem, wybierz jego łącze w kolumnie **host** lub **ID** . |
+| **Konfiguracja Nimbus** | Nimbus konfigurację klastra. |
 
-The Storm topology summary page looks similar to this web page:
+Strona główna interfejsu użytkownika burzy wygląda podobnie do tej strony sieci Web:
 
-![Topology summary page, Storm UI, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+![Strona główna, interfejs użytkownika burzy, topologie Apache Storm, usługa Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
-In the **Topology actions** section, you can select the following buttons to do an action:
+#### <a name="topology-summary"></a>Podsumowanie topologii
+
+Wybranie linku z sekcji **Podsumowanie topologii** zawiera następujące informacje o topologii:
+
+| Sekcja | Opis |
+| --- | --- |
+| **Podsumowanie topologii** | Podstawowe informacje o topologii. |
+| **Akcje topologii** | Akcje zarządzania, które można wykonać dla topologii. Dostępne akcje zostały opisane w dalszej części tej sekcji. |
+| **Statystyka topologii** | Statystyka topologii. Aby ustawić przedział czasu dla wpisu w tej sekcji, wybierz jego łącze w kolumnie **okno** . |
+| **Elementy Spout** *(przedział czasu)* | Elementy Spout używany przez topologię. Aby wyświetlić więcej informacji na temat określonego elementu Spout, wybierz jego łącze w kolumnie **ID** . |
+| **Pioruny** *(ramy czasowe)* | Pioruny używane przez topologię. Aby wyświetlić więcej informacji na temat określonego pioruna, wybierz jego łącze w kolumnie **ID** . |
+| **Zasoby procesu roboczego** | Lista zasobów procesów roboczych. Aby wyświetlić więcej informacji na temat określonego zasobu procesu roboczego, wybierz jego łącze w kolumnie **hosta** . |
+| **Wizualizacja topologii** | Przycisk **Pokaż wizualizację** , który wyświetla wizualizację topologii. |
+| **Konfiguracja topologii** | Konfiguracja wybranej topologii. |
+
+Strona podsumowania topologii burzy wygląda podobnie do tej strony sieci Web:
+
+![Strona podsumowania topologii, interfejs użytkownika burzy, Apache Storm, usługa Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+
+W sekcji **Akcje topologii** można wybrać następujące przyciski, aby wykonać akcję:
 
 | Button | Opis |
 | --- | --- |
-| **Uaktywnij** | Resumes processing of a deactivated topology. |
-| **Deactivate** | Pauses a running topology. |
-| **Rebalance** | Adjusts the parallelism of the topology. You should rebalance running topologies after you've changed the number of nodes in the cluster. This operation allows the topology to adjust parallelism to compensate for the additional or reduced number of nodes in the cluster.<br/><br/>For more information, see <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Understanding the parallelism of an Apache Storm topology</a>.
-| **Kill** | Terminates a Storm topology after the specified timeout. |
-| **Debugowanie** | Begins a debugging session for the running topology. |
-| **Stop Debug** | Ends the debugging session for the running topology. |
-| **Change Log Level** | Modifies the debugging log level. |
+| **Uaktywnij** | Wznawia przetwarzanie zdezaktywowanej topologii. |
+| **Szablony** | Wstrzymuje uruchomioną topologię. |
+| **Ponownego równoważenia** | Dostosowuje równoległość topologii. Należy ponownie zrównoważyć uruchomione topologie po zmianie liczby węzłów w klastrze. Ta operacja pozwala topologii dostosować równoległość, aby skompensować dodatkową lub ograniczoną liczbę węzłów w klastrze.<br/><br/>Aby uzyskać więcej informacji, zobacz <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Omówienie równoległości topologii Apache Storm</a>.
+| **Killbit** | Kończy topologię burzy po określonym limicie czasu. |
+| **Debugowanie** | Rozpoczyna sesję debugowania dla działającej topologii. |
+| **Zatrzymaj debugowanie** | Kończy sesję debugowania dla działającej topologii. |
+| **Zmień poziom dziennika** | Modyfikuje poziom dziennika debugowania. |
 
-##### <a name="spout-and-bolt-summary"></a>Spout and bolt summary
+##### <a name="spout-and-bolt-summary"></a>Elementu Spout i piorun — podsumowanie
 
-Selecting a spout from the **Spouts** or **Bolts** sections displays the following information about the selected item:
+Wybranie elementu Spout z sekcji **elementy Spout** lub **pioruns** wyświetla następujące informacje dotyczące wybranego elementu:
 
 | Sekcja | Opis |
 | --- | --- |
-| **Component summary** | Basic information about the spout or bolt. |
-| **Component actions** | **Debug** and **Stop Debug** buttons. |
-| **Spout stats** or **Bolt stats** | Statistics about the spout or bolt. To set the time frame for an entry in this section, select its link in the **Window** column. |
-| (Bolt-only)<br/>**Input stats** *(time frame)* | Information about the input streams consumed by the bolt. |
-| **Output stats** *(time frame)* | Information about the streams emitted by the spout or bolt. |
-| **Profiling and debugging** | Controls for profiling and debugging the components on this page. You can set the **Status / Timeout (Minutes)** value, and you can select buttons for **JStack**, **Restart Worker**, and **Heap**. |
-| **Executors** *(time frame)* | Information about the instances of the spout or bolt. To view a log of diagnostic information produced for this instance, select the **Port** entry for a specific executor. You can also see the worker resources associated with a specific executor by selecting its link in the **Host** column. |
-| **Errors** | Any error information for the spout or bolt. |
+| **Podsumowanie składników** | Podstawowe informacje na temat elementu Spout lub pioruna. |
+| **Akcje składnika** | **Debuguj** i **Zatrzymaj debugowanie** przycisków. |
+| **Elementu Spout Statystyka** lub **pioruna** | Statystyka elementu Spout lub pioruna. Aby ustawić przedział czasu dla wpisu w tej sekcji, wybierz jego łącze w kolumnie **okno** . |
+| (Tylko dla piorunów)<br/>**Statystyki wejściowe** *(ramy czasowe)* | Informacje o strumieniach wejściowych używanych przez pioruna. |
+| **Statystyki wyjściowe** *(przedział czasu)* | Informacje o strumieniach emitowanych przez elementu Spout lub piorun. |
+| **Profilowanie i debugowanie** | Kontroluje profilowanie i debugowanie składników na tej stronie. Można ustawić wartość **stan/limit czasu (minuty)** i można wybrać przyciski dla **JStack**, **Uruchom ponownie proces roboczy**i **stertę**. |
+| **Wykonawcy** *(ramy czasowe)* | Informacje o wystąpieniach elementu Spout lub piorunów. Aby wyświetlić dziennik informacji diagnostycznych generowanych dla tego wystąpienia, wybierz wpis **portu** dla określonego wykonawcy. Możesz również wyświetlić zasoby procesu roboczego skojarzone z określonym wykonawcą, wybierając jego łącze w kolumnie **hosta** . |
+| **Błędy** | Wszystkie informacje o błędzie dla elementu Spout lub pioruna. |
 
-The Storm bolt summary page looks similar to this web page:
+Strona Podsumowanie pioruna burzy wygląda podobnie do tej strony sieci Web:
 
-![Bolt summary page, Storm UI, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+![Strona podsumowania błyskawicy, interfejs użytkownika burzy, Apache Storm, usługa Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
 
-## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>Monitor and manage the topology using the REST API
+## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>Monitorowanie topologii i zarządzanie nią przy użyciu interfejsu API REST
 
-The Storm UI is built on top of the REST API, so you can do similar management and monitoring tasks by using the REST API. You can use the REST API to create custom tools for managing and monitoring Storm topologies.
+Interfejs użytkownika burzy jest oparty na interfejsie API REST, dzięki czemu można wykonywać podobne zadania związane z zarządzaniem i monitorowaniem za pomocą interfejsu API REST. Interfejsu API REST można użyć do tworzenia niestandardowych narzędzi do zarządzania i monitorowania topologii burzy.
 
-For more information, see [Apache Storm UI REST API](https://storm.apache.org/releases/current/STORM-UI-REST-API.html). The following information is specific to using the REST API with Apache Storm on HDInsight.
+Aby uzyskać więcej informacji, zobacz Interfejs [API REST interfejsu użytkownika Apache Storm](https://storm.apache.org/releases/current/STORM-UI-REST-API.html). Poniższe informacje dotyczą korzystania z interfejsu API REST z usługą Apache Storm w usłudze HDInsight.
 
 > [!IMPORTANT]  
-> The Storm REST API is not publicly available over the internet. It must be accessed using an SSH tunnel to the HDInsight cluster head node. For information on creating and using an SSH tunnel, see [Use SSH tunneling to access Azure HDInsight](../hdinsight-linux-ambari-ssh-tunnel.md).
+> Interfejs API REST burzy nie jest publicznie dostępny za pośrednictwem Internetu. Dostęp do niego należy uzyskać przy użyciu tunelu SSH do węzła głównego klastra usługi HDInsight. Aby uzyskać informacje na temat tworzenia i używania tunelu SSH, zobacz [Używanie tunelowania SSH do uzyskiwania dostępu do usługi Azure HDInsight](../hdinsight-linux-ambari-ssh-tunnel.md).
 
-### <a name="base-uri"></a>Base URI
+### <a name="base-uri"></a>Podstawowy identyfikator URI
 
-The base URI for the REST API on Linux-based HDInsight clusters is available at URL address `https://HEADNODEFQDN:8744/api/v1/`, where you replace *HEADNODEFQDN* with the head node. The domain name of the head node is generated during cluster creation and isn't static.
+Podstawowy identyfikator URI interfejsu API REST w klastrach usługi HDInsight opartych na systemie Linux jest dostępny pod adresem URL `https://HEADNODEFQDN:8744/api/v1/`, w którym zastąpisz *HEADNODEFQDN* z węzłem głównym. Nazwa domeny węzła głównego jest generowana podczas tworzenia klastra i nie jest statyczna.
 
-You can find the fully qualified domain name (FQDN) for the cluster head node in several ways:
+W pełni kwalifikowaną nazwę domeny (FQDN) węzła głównego klastra można znaleźć na kilka sposobów:
 
-| FQDN discovery method | Opis |
+| Metoda odnajdywania nazwy FQDN | Opis |
 | --- | --- |
-| SSH session | Use the command `headnode -f` from an SSH session to the cluster. |
-| Ambari Web | On the Ambari cluster web page (`https://CLUSTERNAME.azurehdinsight.net`), select **Services** from the top of the page, then select **Storm**. From the **Summary** tab, select **Storm UI Server**. The FQDN of the node that hosts the Storm UI and REST API is displayed at the top of the page. |
-| Ambari REST API | Use the command `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` to retrieve information about the node that the Storm UI and REST API are running on. Replace the two instances of *CLUSTERNAME* with the cluster name. When you're prompted, enter the password for the user (admin) account. In the response, the "host_name" entry of the JSON output contains the FQDN of the node. |
+| Sesja SSH | Użyj polecenia `headnode -f` z sesji SSH do klastra. |
+| Sieć Web Ambari | Na stronie sieci Web klastra Ambari (`https://CLUSTERNAME.azurehdinsight.net`) wybierz pozycję **usługi** w górnej części strony, a następnie wybierz pozycję **burza**. Na karcie **Podsumowanie** wybierz pozycję **serwer interfejsu użytkownika burzy**. W górnej części strony jest wyświetlana nazwa FQDN węzła, który hostuje interfejs użytkownika burzy i interfejs API REST. |
+| Interfejs API REST usługi Ambari | Użyj `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` polecenia, aby pobrać informacje o węźle, w którym działają interfejs użytkownika burzy i interfejs API REST. Zastąp dwa wystąpienia elementu *ClusterName* nazwą klastra. Po wyświetleniu monitu wprowadź hasło dla konta użytkownika (administratora). W odpowiedzi wpis "host_name" danych wyjściowych JSON zawiera nazwę FQDN węzła. |
 
-### <a name="authentication"></a>Uwierzytelnianie
+### <a name="authentication"></a>Authentication
 
-Requests to the REST API must use *basic authentication*, so you have to use the administrator name and password for the HDInsight cluster.
+Żądania kierowane do interfejsu API REST muszą używać *uwierzytelniania podstawowego*, dlatego należy użyć nazwy administratora i hasła dla klastra usługi HDInsight.
 
 > [!NOTE]  
-> Because basic authentication is sent by using clear text, you should *always* use HTTPS to secure communications with the cluster.
+> Ponieważ uwierzytelnianie podstawowe jest wysyłane przy użyciu czystego tekstu, należy *zawsze* używać protokołu HTTPS do zabezpieczania komunikacji z klastrem.
 
-### <a name="return-values"></a>Return values
+### <a name="return-values"></a>Zwracane wartości
 
-Information that is returned from the REST API may only be usable from within the cluster. For example, the fully qualified domain name (FQDN) returned for [Apache ZooKeeper](https://zookeeper.apache.org/) servers isn't accessible from the internet.
+Informacje zwracane z interfejsu API REST mogą być używane tylko w ramach klastra. Na przykład w pełni kwalifikowana nazwa domeny (FQDN) zwracana dla serwerów [Apache ZooKeeper](https://zookeeper.apache.org/) nie jest dostępna z Internetu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Learn how to [Develop Java-based topologies using Apache Maven](apache-storm-develop-java-topology.md).
+Dowiedz się, jak [opracowywać topologie oparte na języku Java za pomocą platformy Apache Maven](apache-storm-develop-java-topology.md).
 
-For a list of more example topologies, see [Example Apache Storm topologies in Azure HDInsight](apache-storm-example-topology.md).
+Aby uzyskać listę więcej przykładowych topologii, zobacz [przykładowe topologie Apache Storm w usłudze Azure HDInsight](apache-storm-example-topology.md).

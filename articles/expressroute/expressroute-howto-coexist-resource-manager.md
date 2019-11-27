@@ -1,6 +1,6 @@
 ---
-title: 'Configure ExpressRoute and S2S VPN coexisting connections: Azure PowerShell'
-description: Configure ExpressRoute and a Site-to-Site VPN connection that can coexist for the Resource Manager model using PowerShell.
+title: 'Konfigurowanie współistniejących połączeń ExpressRoute i sieci VPN S2S: Azure PowerShell'
+description: Konfigurowanie usługi ExpressRoute i połączeń sieci VPN typu lokacja-lokacja, które mogą współistnieć, dla modelu usługi Resource Manager przy użyciu programu PowerShell.
 services: expressroute
 author: charwen
 ms.service: expressroute
@@ -15,7 +15,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423587"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Configure ExpressRoute and Site-to-Site coexisting connections using PowerShell
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurowanie połączeń usługi ExpressRoute i lokacja-lokacja współistniejących przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
 > * [Program PowerShell — model usługi Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell — model klasyczny](expressroute-howto-coexist-classic.md)
@@ -29,7 +29,7 @@ Konfigurowanie sieci VPN typu lokacja-lokacja i współistniejących połączeń
 * Możesz skonfigurować sieć VPN typu lokacja-lokacja jako ścieżkę pracy w trybie failover dla usługi ExpressRoute. 
 * Alternatywnie możesz użyć sieci VPN typu lokacja-lokacja w celu nawiązania połączenia z lokacjami, które nie zostały połączone za pośrednictwem usługi ExpressRoute. 
 
-Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma zastosowanie w modelu wdrażania przy użyciu usługi Resource Manager i używa programu PowerShell. You can also configure these scenarios using the Azure portal, although documentation is not yet available. You can configure either gateway first. Typically, you will incur no downtime when adding a new gateway or gateway connection.
+Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma zastosowanie w modelu wdrażania przy użyciu usługi Resource Manager i używa programu PowerShell. Te scenariusze, w witrynie Azure portal, można również skonfigurować, mimo że dokumentacja nie jest jeszcze dostępna. Najpierw można skonfigurować albo bramy. Zazwyczaj podczas dodawania nowej bramy lub połączenia bramy będzie powodować Naliczanie bez przestojów.
 
 >[!NOTE]
 >Jeśli chcesz utworzyć sieć VPN typu lokacja-lokacja za pośrednictwem obwodu usługi ExpressRoute, zobacz [ten artykuł](site-to-site-vpn-over-microsoft-peering.md).
@@ -38,9 +38,9 @@ Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma za
 ## <a name="limits-and-limitations"></a>Limity i ograniczenia
 * **Routing tranzytowy nie jest obsługiwany.** Nie można skierować połączenia (przez platformę Azure) między lokalną siecią połączoną za pośrednictwem sieci VPN typu lokacja-lokacja i lokalną siecią połączoną za pośrednictwem usługi ExpressRoute.
 * **Podstawowa brama jednostki SKU nie jest obsługiwana.** Należy użyć innej niż podstawowa bramy jednostki SKU zarówno dla [bramy usługi ExpressRoute](expressroute-about-virtual-network-gateways.md), jak i [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
-* **Obsługiwana jest tylko brama sieci VPN oparta na trasach.** You must use a route-based [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md). You also can use a route-based VPN gateway with a VPN connection configured for 'policy-based traffic selectors' as described in [Connect to multiple policy-based VPN devices](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+* **Obsługiwana jest tylko brama sieci VPN oparta na trasach.** Należy użyć [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)opartej na trasach. Można również użyć bramy sieci VPN opartej na trasach z połączeniem sieci VPN skonfigurowanym dla selektorów ruchu opartego na zasadach, zgodnie z opisem w temacie [łączenie z wieloma urządzeniami sieci VPN opartymi na zasadach](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 * **Dla bramy sieci VPN należy skonfigurować trasę statyczną.** Jeśli sieć lokalna jest połączona z usługą ExpressRoute oraz siecią VPN typu lokacja-lokacja, aby skierować połączenie sieci VPN typu lokacja-lokacja do publicznego Internetu, trzeba mieć skonfigurowaną trasę statyczną w sieci lokalnej.
-* **VPN Gateway defaults to ASN 65515 if not specified.** Azure VPN Gateway supports the BGP routing protocol. You can specify ASN (AS Number) for a virtual network by adding the -Asn switch. If you don't specify this parameter, the default AS number is 65515. You can use any ASN for the configuration, but if you select something other than 65515, you must reset the gateway for the setting to take effect.
+* **Jeśli nie zostanie określony, VPN Gateway domyślnie przyjmuje numer ASN 65515.** Usługa Azure VPN Gateway obsługuje protokół routingu BGP. Możesz określić ASN (numer AS) dla sieci wirtualnej, dodając przełącznik-ASN. Jeśli ten parametr nie zostanie określony, wartością domyślną jest 65515. Dla konfiguracji można użyć dowolnego numeru ASN, ale w przypadku wybrania czegoś innego niż 65515 należy zresetować bramę, aby ustawienie zaczęło obowiązywać.
 
 ## <a name="configuration-designs"></a>Projekty konfiguracji
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurowanie sieci VPN typu lokacja-lokacja jako ścieżki pracy awaryjnej dla usługi ExpressRoute
@@ -85,10 +85,10 @@ Istnieją dwa różne zestawy procedur do wyboru. Wybór procedury konfiguracji 
 ## <a name="new"></a>Aby utworzyć nową sieć wirtualną i współistniejące połączenia
 Ta procedura zawiera instrukcje tworzenia sieci wirtualnej i połączeń typu lokacja-lokacja oraz usługi ExpressRoute, które będą współistnieć. Polecenia cmdlet, których użyjesz do tej konfiguracji, mogą trochę różnić się od tych, które znasz. Koniecznie użyj poleceń cmdlet podanych w tych instrukcjach.
 
-1. Sign in and select your subscription.
+1. Zaloguj się i wybierz swoją subskrypcję.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Set variables.
+2. Ustaw zmienne.
 
    ```azurepowershell-interactive
    $location = "Central US"
@@ -216,7 +216,7 @@ Polecenia cmdlet, których użyjesz do tej konfiguracji, mogą trochę różnić
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-4. Na tym etapie masz sieć wirtualną bez bram. To create new gateways and set up the connections, use the following examples:
+4. Na tym etapie masz sieć wirtualną bez bram. Aby utworzyć nowe bramy i skonfigurować połączenia, użyj następujących przykładów:
 
    Ustaw zmienne.
 
@@ -226,7 +226,7 @@ Polecenia cmdlet, których użyjesz do tej konfiguracji, mogą trochę różnić
    $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
    ```
 
-   Create the gateway.
+   Utwórz bramę.
 
    ```azurepowershell-interactive
    $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation) -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
@@ -241,7 +241,7 @@ Polecenia cmdlet, których użyjesz do tej konfiguracji, mogą trochę różnić
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Aby dodać konfigurację typu punkt-lokacja do bramy sieci VPN
 
-You can follow the steps below to add Point-to-Site configuration to your VPN gateway in a coexistence setup. To upload the VPN root certificate, you must either install PowerShell locally to your computer, or use the Azure portal.
+Aby wykonać poniższe kroki, aby dodać konfigurację punkt-lokacja do bramy sieci VPN w konfiguracji współistnienia. Aby przekazać certyfikat główny sieci VPN, należy zainstalować program PowerShell lokalnie na komputerze lub użyć Azure Portal.
 
 1. Dodaj pulę adresów klienta sieci VPN.
 
@@ -249,7 +249,7 @@ You can follow the steps below to add Point-to-Site configuration to your VPN ga
    $azureVpn = Get-AzVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
    Set-AzVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
    ```
-2. Przekaż certyfikat główny sieci VPN do platformy Azure dla bramy sieci VPN. In this example, it's assumed that the root certificate is stored in the local machine where the following PowerShell cmdlets are run and that you are running PowerShell locally. You can also upload the certificate using the Azure portal.
+2. Przekaż certyfikat główny sieci VPN do platformy Azure dla bramy sieci VPN. W tym przykładzie zakłada się, że certyfikat główny jest przechowywany na komputerze lokalnym, na którym są uruchamiane następujące polecenia cmdlet programu PowerShell oraz że program PowerShell jest uruchamiany lokalnie. Certyfikat można także przekazać przy użyciu Azure Portal.
 
    ```powershell
    $p2sCertFullName = "RootErVpnCoexP2S.cer" 

@@ -15,59 +15,59 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451456"
 ---
-1. To view the tags for a resource or a resource group, looks for existing tags in the overview. Jeśli wcześniej nie zastosowano tagów, lista będzie pusta.
+1. Aby wyświetlić Tagi dla zasobu lub grupy zasobów, Wyszukaj istniejące Tagi w przeglądzie. Jeśli wcześniej nie zastosowano tagów, lista będzie pusta.
    
-     ![View tags for resource or resource group](./media/resource-manager-tag-resources/view-tags.png)
-1. To add a tag, select **Click here to add tags**.
+     ![Wyświetl Tagi dla zasobu lub grupy zasobów](./media/resource-manager-tag-resources/view-tags.png)
+1. Aby dodać tag, wybierz **pozycję kliknij tutaj, aby dodać tagi**.
 
-1. Provide a name and value. Select **+** to add the tag.
+1. Podaj nazwę i wartość. Wybierz **+** , aby dodać tag.
    
-     ![Add tag](./media/resource-manager-tag-resources/add-tag.png)
-1. Continue adding tags as needed. Po zakończeniu wybierz pozycję **Zapisz**.
+     ![Dodaj tag](./media/resource-manager-tag-resources/add-tag.png)
+1. Kontynuuj dodawanie tagów zgodnie z wymaganiami. Po zakończeniu wybierz pozycję **Zapisz**.
    
-     ![Save tags](./media/resource-manager-tag-resources/save-tags.png)
-1. The tags are now displayed in the overview.
+     ![Zapisz Tagi](./media/resource-manager-tag-resources/save-tags.png)
+1. Tagi są teraz wyświetlane w przeglądzie.
    
-     ![Show tags](./media/resource-manager-tag-resources/view-new-tags.png)
-1. To add or delete a tag, select **change**.
+     ![Pokaż Tagi](./media/resource-manager-tag-resources/view-new-tags.png)
+1. Aby dodać lub usunąć tag, wybierz pozycję **Zmień**.
    
-1. To delete a tag, select the trash icon. Następnie wybierz pozycję **Zapisz**.
+1. Aby usunąć tag, wybierz ikonę kosza. Następnie wybierz pozycję **Zapisz**.
 
-     ![Delete tag](./media/resource-manager-tag-resources/delete-tag.png)
+     ![Usuń tag](./media/resource-manager-tag-resources/delete-tag.png)
 
 
-To bulk assign tags to multiple resources:
+Aby zbiorczo przypisać Tagi do wielu zasobów:
 
-1. From any list of resources, select the checkbox for the resources you want to assign the tag.
+1. Z dowolnej listy zasobów zaznacz pole wyboru dla zasobów, dla których chcesz przypisać tag.
 
-     ![Select multiple resources](./media/resource-manager-tag-resources/select-multiple-resources.png)
+     ![Wybierz wiele zasobów](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Select **Assign tags**
+1. Wybierz pozycję **Przypisz Tagi**
 
-     ![Assign tags](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Przypisywanie tagów](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. After each name and value, select **+** . When done, select **Assign**.
+1. Po każdej nazwie i wartości wybierz pozycję **+** . Po zakończeniu wybierz pozycję **Przypisz**.
 
-     ![Select assign](./media/resource-manager-tag-resources/select-assign.png)
+     ![Wybierz pozycję Przypisz](./media/resource-manager-tag-resources/select-assign.png)
 
-To view all resources with a tag:
+Aby wyświetlić wszystkie zasoby ze znacznikiem:
 
-1. On the Azure portal menu, select **All services**. Select **General**, then **Tags**.
+1. W menu Azure Portal wybierz pozycję **wszystkie usługi**. Wybierz opcję **Ogólne**, a następnie **Tagi**.
 
-     ![Find by tag](./media/resource-manager-tag-resources/find-tags-general.png)
+     ![Znajdź przez tag](./media/resource-manager-tag-resources/find-tags-general.png)
 
-1. Select the tag for viewing resources.
+1. Wybierz tag do wyświetlania zasobów.
 
-     ![Select tag](./media/resource-manager-tag-resources/select-tag.png)
+     ![Wybierz tag](./media/resource-manager-tag-resources/select-tag.png)
 
-1. All resources with that tag are displayed.
+1. Wyświetlane są wszystkie zasoby z tym tagiem.
 
-     ![View resources by tag](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+     ![Wyświetl zasoby według tagu](./media/resource-manager-tag-resources/view-resources-by-tag.png)
 
-1. For quick access, pin the view to the dashboard.
+1. Aby uzyskać szybki dostęp, Przypnij widok do pulpitu nawigacyjnego.
 
      ![Przypnij do pulpitu nawigacyjnego](./media/resource-manager-tag-resources/pin-to-dashboard.png)
 
-1. The view is available from the dashboard.
+1. Widok jest dostępny z poziomu pulpitu nawigacyjnego.
 
      ![Pulpit nawigacyjny](./media/resource-manager-tag-resources/dashboard-with-view.png)

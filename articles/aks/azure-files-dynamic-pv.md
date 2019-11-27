@@ -1,6 +1,6 @@
 ---
-title: Dynamically create a Files volume for multiple pods in Azure Kubernetes Service (AKS)
-description: Learn how to dynamically create a persistent volume with Azure Files for use with multiple concurrent pods in Azure Kubernetes Service (AKS)
+title: Dynamiczne tworzenie woluminu plików dla wielu zasobników w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak dynamicznie tworzyć wolumin trwały z Azure Files do użycia z wieloma współbieżnymi zasobnikami w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,33 +14,33 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231753"
 ---
-# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamically create and use a persistent volume with Azure Files in Azure Kubernetes Service (AKS)
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i używanie woluminu trwałego z Azure Files w usłudze Azure Kubernetes Service (AKS)
 
-A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or many pods, and can be dynamically or statically provisioned. If multiple pods need concurrent access to the same storage volume, you can use Azure Files to connect using the [Server Message Block (SMB) protocol][smb-overview]. This article shows you how to dynamically create an Azure Files share for use by multiple pods in an Azure Kubernetes Service (AKS) cluster.
+Wolumin trwały reprezentuje część magazynu, która została zainicjowana do użycia z Kubernetes. Wolumin trwały może być używany przez jeden lub wiele zasobników i może być dynamicznie lub statycznie inicjowany. Jeśli wiele z nich potrzebuje współbieżnego dostępu do tego samego woluminu magazynu, można użyć Azure Files, aby nawiązać połączenie przy użyciu [protokołu SMB (Server Message Block)][smb-overview]. W tym artykule pokazano, jak dynamicznie utworzyć udział Azure Files do użytku przez wiele zasobników w klastrze usługi Azure Kubernetes Service (AKS).
 
-For more information on Kubernetes volumes, see [Storage options for applications in AKS][concepts-storage].
+Aby uzyskać więcej informacji na temat woluminów Kubernetes, zobacz [Opcje magazynu dla aplikacji w AKS][concepts-storage].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see the AKS quickstart [using the Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z przewodnikiem Szybki Start AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub [przy użyciu Azure Portal][aks-quickstart-portal].
 
-You also need the Azure CLI version 2.0.59 or later installed and configured. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. If you need to install or upgrade, see [Install Azure CLI][install-azure-cli].
+Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-## <a name="create-a-storage-class"></a>Create a storage class
+## <a name="create-a-storage-class"></a>Tworzenie klasy magazynu
 
-A storage class is used to define how an Azure file share is created. A storage account is automatically created in the [node resource group][node-resource-group] for use with the storage class to hold the Azure file shares. Choose of the following [Azure storage redundancy][storage-skus] for *skuName*:
+Klasa magazynu służy do definiowania sposobu tworzenia udziału plików platformy Azure. Konto magazynu jest tworzone automatycznie w [grupie zasobów węzła][node-resource-group] do użytku z klasą magazynu w celu przechowywania udziałów plików platformy Azure. Wybierz następującą [nadmiarowość usługi Azure Storage][storage-skus] dla *skuName*:
 
-* *Standard_LRS* - standard locally redundant storage (LRS)
-* *Standard_GRS* - standard geo-redundant storage (GRS)
-* *Standard_RAGRS* - standard read-access geo-redundant storage (RA-GRS)
-* *Premium_LRS* - premium locally redundant storage (LRS)
+* Magazyn lokalnie nadmiarowy *Standard_LRS* (LRS)
+* Magazyn Geograficznie nadmiarowy *Standard_GRS* (GRS)
+* *Standard_RAGRS* — standardowy magazyn Geograficznie nadmiarowy do odczytu (RA-GRS)
+* Magazyn lokalnie nadmiarowy *Premium_LRS* w warstwie Premium (LRS)
 
 > [!NOTE]
-> Azure Files support premium storage in AKS clusters that run Kubernetes 1.13 or higher.
+> Azure Files obsługiwać usługę Premium Storage w klastrach AKS z systemem Kubernetes 1,13 lub nowszym.
 
-For more information on Kubernetes storage classes for Azure Files, see [Kubernetes Storage Classes][kubernetes-storage-classes].
+Aby uzyskać więcej informacji na temat klas magazynu Kubernetes dla Azure Files, zobacz [Kubernetes Storage Classes][kubernetes-storage-classes].
 
-Create a file named `azure-file-sc.yaml` and copy in the following example manifest. For more information on *mountOptions*, see the [Mount options][mount-options] section.
+Utwórz plik o nazwie `azure-file-sc.yaml` i skopiuj go w poniższym przykładowym manifeście. Aby uzyskać więcej informacji na temat *mountOptions*, zobacz sekcję [Opcje instalacji][mount-options] .
 
 ```yaml
 kind: StorageClass
@@ -60,17 +60,17 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Create the storage class with the [kubectl apply][kubectl-apply] command:
+Utwórz klasę magazynu za pomocą polecenia [polecenia kubectl Apply][kubectl-apply] :
 
 ```console
 kubectl apply -f azure-file-sc.yaml
 ```
 
-## <a name="create-a-persistent-volume-claim"></a>Create a persistent volume claim
+## <a name="create-a-persistent-volume-claim"></a>Tworzenie trwałego żądania woluminu
 
-A persistent volume claim (PVC) uses the storage class object to dynamically provision an Azure file share. The following YAML can be used to create a persistent volume claim *5 GB* in size with *ReadWriteMany* access. For more information on access modes, see the [Kubernetes persistent volume][access-modes] documentation.
+Trwałego żądania woluminu (PVC) używa obiektu klasy Storage do dynamicznego inicjowania obsługi udziału plików platformy Azure. Poniższe YAML można użyć do utworzenia trwałego zastrzeżenia woluminu o rozmiarze *5 GB* z dostępem do *ReadWriteMany* . Aby uzyskać więcej informacji o trybach dostępu, zobacz dokumentację [Kubernetes trwałych woluminów][access-modes] .
 
-Now create a file named `azure-file-pvc.yaml` and copy in the following YAML. Make sure that the *storageClassName* matches the storage class created in the last step:
+Teraz Utwórz plik o nazwie `azure-file-pvc.yaml` i skopiuj go do następującego YAML. Upewnij się, że *storageClassName* jest zgodna z klasą magazynu utworzoną w ostatnim kroku:
 
 ```yaml
 apiVersion: v1
@@ -87,15 +87,15 @@ spec:
 ```
 
 > [!NOTE]
-> If using the *Premium_LRS* sku for your storage class, the minimum value for *storage* must be *100Gi*.
+> W przypadku używania *Premium_LRS* jednostki SKU dla klasy magazynu minimalna wartość *magazynu* musi być *100Gi*.
 
-Create the persistent volume claim with the [kubectl apply][kubectl-apply] command:
+Utwórz wartość trwałego zastrzeżenia przy użyciu polecenia [polecenia kubectl Apply][kubectl-apply] :
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
 ```
 
-Once completed, the file share will be created. A Kubernetes secret is also created that includes connection information and credentials. You can use the [kubectl get][kubectl-get] command to view the status of the PVC:
+Po zakończeniu zostanie utworzony udział plików. Tworzony jest również wpis tajny Kubernetes, który zawiera informacje o połączeniu i poświadczenia. Aby wyświetlić stan obwodu PVC, można użyć polecenia [polecenia kubectl Get][kubectl-get] :
 
 ```console
 $ kubectl get pvc azurefile
@@ -104,11 +104,11 @@ NAME        STATUS    VOLUME                                     CAPACITY   ACCE
 azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            azurefile      5m
 ```
 
-## <a name="use-the-persistent-volume"></a>Use the persistent volume
+## <a name="use-the-persistent-volume"></a>Użyj woluminu trwałego
 
-The following YAML creates a pod that uses the persistent volume claim *azurefile* to mount the Azure file share at the */mnt/azure* path. For Windows Server containers (currently in preview in AKS), specify a *mountPath* using the Windows path convention, such as *'D:'* .
+Poniższy YAML tworzy element, który używa trwałego zastrzeżenia woluminu *azurefile* do zainstalowania udziału plików platformy Azure w ścieżce */mnt/Azure* . W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
 
-Create a file named `azure-pvc-files.yaml`, and copy in the following YAML. Make sure that the *claimName* matches the PVC created in the last step.
+Utwórz plik o nazwie `azure-pvc-files.yaml`i skopiuj go do następującego YAML. Upewnij się, że wartość *claimname* pasuje do obwodu PVC utworzonego w ostatnim kroku.
 
 ```yaml
 kind: Pod
@@ -135,13 +135,13 @@ spec:
         claimName: azurefile
 ```
 
-Create the pod with the [kubectl apply][kubectl-apply] command.
+Utwórz pod za pomocą polecenia [polecenia kubectl Apply][kubectl-apply] .
 
 ```console
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-You now have a running pod with your Azure Files share mounted in the */mnt/azure* directory. This configuration can be seen when inspecting your pod via `kubectl describe pod mypod`. The following condensed example output shows the volume mounted in the container:
+Masz teraz działający udział w udziale Azure Files zainstalowanym w katalogu */mnt/Azure* . Ta konfiguracja może być widoczna podczas przeprowadzania inspekcji pod kątem za pośrednictwem `kubectl describe pod mypod`. Następujące wąskie przykładowe dane wyjściowe pokazują wolumin zainstalowany w kontenerze:
 
 ```
 Containers:
@@ -164,9 +164,9 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>Mount options
+## <a name="mount-options"></a>Opcje instalacji
 
-The default value for *fileMode* and *dirMode* is *0755* for Kubernetes version 1.9.1 and above. If using a cluster with Kuberetes version 1.8.5 or greater and dynamically creating the persistent volume with a storage class, mount options can be specified on the storage class object. The following example sets *0777*:
+Domyślna wartość *parametru FileMode* i *dirMode* to *0755* dla Kubernetes w wersji 1.9.1 lub nowszej. W przypadku używania klastra z Kuberetes w wersji 1.8.5 lub nowszej i dynamicznego tworzenia woluminu trwałego za pomocą klasy magazynu opcje instalacji można określić w obiekcie klasy magazynu. W poniższym przykładzie są ustawiane *0777*:
 
 ```yaml
 kind: StorageClass
@@ -186,16 +186,16 @@ parameters:
   skuName: Standard_LRS
 ```
 
-If using a cluster of version 1.8.0 - 1.8.4, a security context can be specified with the *runAsUser* value set to *0*. For more information on Pod security context, see [Configure a Security Context][kubernetes-security-context].
+W przypadku korzystania z klastra w wersji 1.8.0-1.8.4 kontekstu zabezpieczeń można określić z wartością *runAsUser* ustawioną na *0*. Aby uzyskać więcej informacji na temat kontekstu zabezpieczeń pod, zobacz [Konfigurowanie kontekstu zabezpieczeń][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Następne kroki
 
-For associated best practices, see [Best practices for storage and backups in AKS][operator-best-practices-storage].
+W przypadku skojarzonych najlepszych rozwiązań zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w AKS][operator-best-practices-storage].
 
-Learn more about Kubernetes persistent volumes using Azure Files.
+Dowiedz się więcej na temat Kubernetes woluminów trwałych przy użyciu Azure Files.
 
 > [!div class="nextstepaction"]
-> [Kubernetes plugin for Azure Files][kubernetes-files]
+> [Wtyczka Kubernetes dla Azure Files][kubernetes-files]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes

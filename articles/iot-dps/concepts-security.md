@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service - Security concepts
-description: Describes security provisioning concepts specific to devices with Device Provisioning Service and IoT Hub
+title: Azure IoT Hub Device Provisioning Service — pojęcia dotyczące zabezpieczeń
+description: Opisuje koncepcje dotyczące aprowizacji zabezpieczeń dotyczące urządzeń z usługą Device Provisioning i IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -14,93 +14,93 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228821"
 ---
-# <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service security concepts 
+# <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service pojęcia dotyczące zabezpieczeń 
 
-IoT Hub Device Provisioning Service is a helper service for IoT Hub that you use to configure zero-touch device provisioning to a specified IoT hub. With the Device Provisioning Service, you can [auto-provision](concepts-auto-provisioning.md) millions of devices in a secure and scalable manner. This article gives an overview of the *security* concepts involved in device provisioning. This article is relevant to all personas involved in getting a device ready for deployment.
+IoT Hub Device Provisioning Service to usługa pomocnika dla IoT Hub, która służy do konfigurowania aprowizacji urządzeń bez dotyku do określonego Centrum IoT Hub. Usługa Device Provisioning umożliwia [samoobsługowe inicjowanie](concepts-auto-provisioning.md) milionów urządzeń w bezpieczny i skalowalny sposób. Ten artykuł zawiera omówienie koncepcji *zabezpieczeń* związanych z obsługą administracyjną urządzeń. Ten artykuł dotyczy wszystkich osób związanych z przygotowaniem urządzenia do wdrożenia.
 
-## <a name="attestation-mechanism"></a>Attestation mechanism
+## <a name="attestation-mechanism"></a>Mechanizm zaświadczania
 
-The attestation mechanism is the method used for confirming a device's identity. The attestation mechanism is also relevant to the enrollment list, which tells the provisioning service which method of attestation to use with a given device.
+Mechanizm zaświadczania jest metodą służącą do potwierdzania tożsamości urządzenia. Mechanizm zaświadczania ma również zastosowanie do listy rejestracji, która informuje usługę aprowizacji o metodzie zaświadczania, która ma być używana z danym urządzeniem.
 
 > [!NOTE]
-> IoT Hub uses "authentication scheme" for a similar concept in that service.
+> IoT Hub używa "schematu uwierzytelniania" dla podobnej koncepcji w tej usłudze.
 
-Device Provisioning Service supports the following forms of attestation:
-* **X.509 certificates** based on the standard X.509 certificate authentication flow.
-* **Trusted Platform Module (TPM)** based on a nonce challenge, using the TPM standard for keys to present a signed Shared Access Signature (SAS) token. This form of attestation does not require a physical TPM on the device, but the service expects to attest using the endorsement key per the [TPM spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
-* **Symmetric Key**  based on shared access signature (SAS) [Security tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens), which include a hashed signature and an embedded expiration. For more information, see [Symmetric key attestation](concepts-symmetric-key-attestation.md).
+Usługa Device Provisioning obsługuje następujące formy zaświadczania:
+* **Certyfikaty x. 509** oparte na standardowym przepływie uwierzytelniania certyfikatu x. 509.
+* **Moduł TPM (TPM)** na podstawie wyzwania nonce przy użyciu standardu TPM dla kluczy do prezentowania podpisanego tokenu sygnatury dostępu współdzielonego (SAS). Ta forma zaświadczania nie wymaga fizycznego modułu TPM na urządzeniu, ale usługa oczekuje na zaświadczenie przy użyciu klucza poręczenia zgodnie z [specyfikacją modułu TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Klucz symetryczny** oparty na [tokenach zabezpieczających](../iot-hub/iot-hub-devguide-security.md#security-tokens)sygnatury dostępu współdzielonego (SAS), które obejmują sygnaturę skrótu i osadzoną datę wygaśnięcia. Aby uzyskać więcej informacji, zobacz [zaświadczenie klucza symetrycznego](concepts-symmetric-key-attestation.md).
 
 
-## <a name="hardware-security-module"></a>Hardware security module
+## <a name="hardware-security-module"></a>Sprzętowy moduł zabezpieczeń
 
-The hardware security module, or HSM, is used for secure, hardware-based storage of device secrets, and is the most secure form of secret storage. Both X.509 certificates and SAS tokens can be stored in the HSM. HSMs can be used with both attestation mechanisms the provisioning supports.
+Sprzętowy moduł zabezpieczeń (HSM) służy do bezpiecznego, opartego na sprzęcie magazynu wpisów tajnych urządzeń i stanowi najbezpieczniejsza postać magazynu tajnego. Oba certyfikaty X. 509 i tokeny SAS mogą być przechowywane w module HSM. Sprzętowych modułów zabezpieczeń można używać w przypadku obu mechanizmów zaświadczania obsługiwanych przez funkcję aprowizacji.
 
 > [!TIP]
-> We strongly recommend using an HSM with devices to securely store secrets on your devices.
+> Zdecydowanie zalecamy używanie modułu HSM z urządzeniami do bezpiecznego przechowywania wpisów tajnych na urządzeniach.
 
-Device secrets may also be stored in software (memory), but it is a less secure form of storage than an HSM.
+Wpisy tajne urządzenia mogą być również przechowywane w oprogramowaniu (pamięci), ale jest mniej bezpieczną postacią magazynu niż moduł HSM.
 
-## <a name="trusted-platform-module"></a>Trusted Platform Module
+## <a name="trusted-platform-module"></a>moduł TPM
 
-TPM can refer to a standard for securely storing keys used to authenticate the platform, or it can refer to the I/O interface used to interact with the modules implementing the standard. TPMs can exist as discrete hardware, integrated hardware, firmware-based, or software-based. Learn more about [TPMs and TPM attestation](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Device Provisioning Service only supports TPM 2.0.
+Moduł TPM może odwoływać się do standardu w celu bezpiecznego przechowywania kluczy używanych do uwierzytelniania platformy lub może odwoływać się do interfejsu we/wy używanego do współpracy z modułami implementującymi standard. Moduły TPM może istnieć jako sprzęt dyskretny, zintegrowany sprzęt, oprogramowanie układowe lub oprogramowanie. Dowiedz się więcej o [zaświadczeniu moduły TPM i modułu TPM](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Usługa Device Provisioning obsługuje tylko moduł TPM 2,0.
 
-TPM attestation is based on a nonce challenge, which uses the endorsement and storage root keys to present a signed Shared Access Signature (SAS) token.
+Zaświadczanie modułu TPM jest oparte na wyzwaniem nonce, które używa kluczy głównych potwierdzeń i magazynów w celu zaprezentowania podpisanego tokenu sygnatury dostępu współdzielonego (SAS).
 
-### <a name="endorsement-key"></a>Endorsement key
+### <a name="endorsement-key"></a>Klucz poręczenia
 
-The endorsement key is an asymmetric key contained inside the TPM, which was internally generated or injected at manufacturing time and is unique for every TPM. The endorsement key cannot be changed or removed. The private portion of the endorsement key is never released outside of the TPM, while the public portion of the endorsement key is used to recognize a genuine TPM. Learn more about the [endorsement key](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
+Klucz poręczenia jest kluczem asymetrycznym zawartym wewnątrz modułu TPM, który został wewnętrznie wygenerowany lub wprowadzony w czasie produkcji i jest unikatowy dla każdego modułu TPM. Nie można zmienić ani usunąć klucza poręczenia. Prywatna część klucza poręczenia nigdy nie jest wydawana poza modułem TPM, podczas gdy publiczna część klucza poręczenia jest używana do rozpoznawania oryginalnego modułu TPM. Dowiedz się więcej na temat [klucza poręczenia](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
 
-### <a name="storage-root-key"></a>Storage root key
+### <a name="storage-root-key"></a>Klucz główny magazynu
 
-The storage root key is stored in the TPM and is used to protect TPM keys created by applications, so that these keys cannot be used without the TPM. The storage root key is generated when you take ownership of the TPM; when you clear the TPM so a new user can take ownership, a new storage root key is generated. Learn more about the [storage root key](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
+Klucz główny magazynu jest przechowywany w module TPM i służy do ochrony kluczy modułu TPM utworzonych przez aplikacje, dzięki czemu klucze te nie mogą być używane bez modułu TPM. Klucz główny magazynu jest generowany podczas przejmowania własności modułu TPM; Po wyczyszczeniu modułu TPM, aby nowy użytkownik mógł przejąć własność, generowany jest nowy klucz główny magazynu. Dowiedz się więcej o [kluczu głównym magazynu](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
 
-## <a name="x509-certificates"></a>X.509 certificates
+## <a name="x509-certificates"></a>Certyfikaty X. 509
 
-Using X.509 certificates as an attestation mechanism is an excellent way to scale production and simplify device provisioning. X.509 certificates are typically arranged in a certificate chain of trust in which each certificate in the chain is signed by the private key of the next higher certificate, and so on, terminating in a self-signed root certificate. This arrangement establishes a delegated chain of trust from the root certificate generated by a trusted root certificate authority (CA) down through each intermediate CA to the end-entity "leaf" certificate installed on a device. To learn more, see [Device Authentication using X.509 CA Certificates](/azure/iot-hub/iot-hub-x509ca-overview). 
+Używanie certyfikatów X. 509 jako mechanizmu zaświadczania jest doskonałym sposobem na skalowanie produkcji i uproszczenie aprowizacji urządzeń. Certyfikaty X. 509 są zwykle uporządkowane w łańcuchu certyfikatów zaufania, w którym każdy certyfikat w łańcuchu jest podpisany przez klucz prywatny następnego wyższego certyfikatu itd., kończy się w certyfikacie głównym z podpisem własnym. To rozmieszczenie nawiązuje delegowany łańcuch zaufania z certyfikatu głównego wygenerowanego przez zaufany główny urząd certyfikacji (CA) przez każdy pośredni urząd certyfikacji do certyfikatu typu "liść" jednostki końcowej zainstalowanego na urządzeniu. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie urządzeń za pomocą certyfikatów X. 509 urzędu certyfikacji](/azure/iot-hub/iot-hub-x509ca-overview). 
 
-Often the certificate chain represents some logical or physical hierarchy associated with devices. For example, a manufacturer may:
-- issue a self-signed root CA certificate
-- use the root certificate to generate a unique intermediate CA certificate for each factory
-- use each factory's certificate to generate a unique intermediate CA certificate for each production line in the plant
-- and finally use the production line certificate, to generate a unique device (end-entity) certificate for each device manufactured on the line. 
+Często łańcuch certyfikatów reprezentuje niepewną logiczną lub fizyczną hierarchię skojarzoną z urządzeniami. Na przykład producent może:
+- wystawianie certyfikatu głównego urzędu certyfikacji z podpisem własnym
+- Użyj certyfikatu głównego, aby wygenerować unikatowy certyfikat pośredniego urzędu certyfikacji dla każdej fabryki
+- Użyj certyfikatu każdej fabryki, aby wygenerować unikatowy certyfikat pośredniego urzędu certyfikacji dla każdej linii produkcyjnej w zakładzie
+- i na koniec Użyj certyfikatu wiersza produkcji, aby wygenerować unikatowy certyfikat urządzenia (klasy końcowej) dla każdego urządzenia wygenerowanego w wierszu. 
 
-To learn more, see [Conceptual understanding of X.509 CA certificates in the IoT industry](/azure/iot-hub/iot-hub-x509ca-concept). 
+Aby dowiedzieć się więcej, zobacz temat [pojęcia dotyczące pojęć związanych z certyfikatami urzędu certyfikacji X. 509 w branży IoT](/azure/iot-hub/iot-hub-x509ca-concept). 
 
-### <a name="root-certificate"></a>Root certificate
+### <a name="root-certificate"></a>Certyfikat główny
 
-A root certificate is a self-signed X.509 certificate representing a certificate authority (CA). It is the terminus, or trust anchor, of the certificate chain. Root certificates can be self-issued by an organization or purchased from a root certificate authority. To learn more, see [Get X.509 CA certificates](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). The root certificate can also be referred to as a root CA certificate.
+Certyfikat główny to certyfikat X. 509 z podpisem własnym reprezentujący urząd certyfikacji (CA). Jest to Terminus lub zakotwiczenie zaufania w łańcuchu certyfikatów. Certyfikaty główne mogą być wystawiane przez organizację lub zakupione z głównego urzędu certyfikacji. Aby dowiedzieć się więcej, zobacz [pobieranie certyfikatów urzędu certyfikacji X. 509](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). Certyfikat główny może być również określony jako certyfikat głównego urzędu certyfikacji.
 
-### <a name="intermediate-certificate"></a>Intermediate certificate
+### <a name="intermediate-certificate"></a>Certyfikat pośredni
 
-An intermediate certificate is an X.509 certificate, which has been signed by the root certificate (or by another intermediate certificate with the root certificate in its chain). The last intermediate certificate in a chain is used to sign the leaf certificate. An intermediate certificate can also be referred to as an intermediate CA certificate.
+Certyfikat pośredni to certyfikat X. 509, który został podpisany przez certyfikat główny (lub inny certyfikat pośredni z certyfikatem głównym w łańcuchu). Ostatni certyfikat pośredni w łańcuchu jest używany do podpisywania certyfikatu liścia. Certyfikat pośredni może być również określany jako certyfikat pośredniego urzędu certyfikacji.
 
-### <a name="end-entity-leaf-certificate"></a>End-entity "leaf" certificate
+### <a name="end-entity-leaf-certificate"></a>Certyfikat typu "liść" jednostki końcowej
 
-The leaf certificate, or end-entity certificate, identifies the certificate holder. It has the root certificate in its certificate chain as well as zero or more intermediate certificates. The leaf certificate is not used to sign any other certificates. It uniquely identifies the device to the provisioning service and is sometimes referred to as the device certificate. During authentication, the device uses the private key associated with this certificate to respond to a proof of possession challenge from the service.
+Certyfikat liścia lub certyfikat jednostki końcowej identyfikuje właściciela certyfikatu. Ma certyfikat główny w łańcuchu certyfikatów, a także zero lub więcej certyfikatów pośrednich. Certyfikat liścia nie jest używany do podpisywania innych certyfikatów. Jednoznacznie identyfikuje urządzenie w usłudze aprowizacji i jest czasami określane jako certyfikat urządzenia. Podczas uwierzytelniania urządzenie używa klucza prywatnego skojarzonego z tym certyfikatem, aby odpowiedzieć na potwierdzenie istnienia usługi.
 
-Leaf certificates used with an [Individual enrollment](./concepts-service.md#individual-enrollment) entry have a requirement that the **Subject Name** must be set to the registration ID of the Individual Enrollment entry. Leaf certificates used with an [Enrollment group](./concepts-service.md#enrollment-group) entry should have the **Subject Name** set to the desired device ID which will be shown in the **Registration Records** for the authenticated device in the enrollment group.
+Certyfikaty liści używane z [indywidualnym](./concepts-service.md#individual-enrollment) wpisem rejestracji mają wymaganie, aby **nazwa podmiotu** była ustawiona na identyfikator rejestracji indywidualnego wpisu rejestracji. Certyfikaty liści używane z wpisem [grupy rejestracji](./concepts-service.md#enrollment-group) powinny mieć ustawioną **nazwę podmiotu** na żądany identyfikator urządzenia, który będzie wyświetlany w **rekordach rejestracji** dla uwierzytelnionego urządzenia w grupie rejestracji.
 
-To learn more, see [Authenticating devices signed with X.509 CA certificates](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+Aby dowiedzieć się więcej, zobacz [uwierzytelnianie urządzeń podpisanych za pomocą certyfikatów X. 509 urzędu certyfikacji](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
 
-## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Controlling device access to the provisioning service with X.509 certificates
+## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Kontrolowanie dostępu urządzenia do usługi aprowizacji za pomocą certyfikatów X. 509
 
-The provisioning service exposes two types of enrollment entry that you can use to control access for devices that use the X.509 attestation mechanism:  
+Usługa aprowizacji ujawnia dwa typy wpisów rejestracji, za pomocą których można kontrolować dostęp do urządzeń korzystających z mechanizmu zaświadczania X. 509:  
 
-- [Individual enrollment](./concepts-service.md#individual-enrollment) entries are configured with the device certificate associated with a specific device. These entries control enrollments for specific devices.
-- [Enrollment group](./concepts-service.md#enrollment-group) entries are associated with a specific intermediate or root CA certificate. These entries control enrollments for all devices that have that intermediate or root certificate in their certificate chain. 
+- [Poszczególne wpisy rejestracji](./concepts-service.md#individual-enrollment) są konfigurowane przy użyciu certyfikatu urządzenia skojarzonego z określonym urządzeniem. Te wpisy kontrolują rejestracje dla konkretnych urządzeń.
+- Wpisy [grupy rejestracji](./concepts-service.md#enrollment-group) są skojarzone z określonym pośrednim lub głównym certyfikatem urzędu certyfikacji. Te wpisy kontrolują rejestracje dla wszystkich urządzeń, które mają ten certyfikat pośredni lub główny w łańcuchu certyfikatów. 
 
-When a device connects to the provisioning service, the service prioritizes more specific enrollment entries over less specific enrollment entries. That is, if an individual enrollment for the device exists, the provisioning service applies that entry. If there is no individual enrollment for the device and an enrollment group for the first intermediate certificate in the device's certificate chain exists, the service applies that entry, and so on, up the chain to the root. The service applies the first applicable entry that it finds, such that:
+Gdy urządzenie nawiązuje połączenie z usługą aprowizacji, usługa ustala priorytet bardziej szczegółowych wpisów rejestracji przy użyciu mniej szczegółowych wpisów rejestracji. Oznacza to, że jeśli istnieje indywidualna Rejestracja urządzenia, usługa aprowizacji stosuje ten wpis. Jeśli nie istnieje indywidualna Rejestracja dla danego urządzenia, a grupa rejestracji pierwszego certyfikatu pośredniego w łańcuchu certyfikatów urządzenia istnieje, usługa zastosuje ten wpis i tak dalej, łańcuch do katalogu głównego. Usługa stosuje pierwszy stosowny wpis, który znajdzie, tak że:
 
-- If the first enrollment entry found is enabled, the service provisions the device.
-- If the first enrollment entry found is disabled, the service does not provision the device.  
-- If no enrollment entry is found for any of the certificates in the device's certificate chain, the service does not provision the device. 
+- W przypadku włączenia pierwszego wpisu rejestracji usługa Inicjuje obsługę administracyjną urządzenia.
+- Jeśli pierwszy znaleziony wpis rejestracji jest wyłączony, usługa nie udostępnia tego urządzenia.  
+- Jeśli wpis rejestracji nie zostanie znaleziony dla żadnego z certyfikatów w łańcuchu certyfikatów urządzenia, usługa nie udostępnia tego urządzenia. 
 
-This mechanism and the hierarchical structure of certificate chains provides powerful flexibility in how you can control access for individual devices as well as for groups of devices. For example, imagine five devices with the following certificate chains: 
+Ten mechanizm i hierarchiczna struktura łańcuchów certyfikatów zapewniają zaawansowaną elastyczność w zakresie kontrolowania dostępu do poszczególnych urządzeń oraz grup urządzeń. Załóżmy na przykład, że można przystąpić do pięciu urządzeń przy użyciu następujących łańcuchów certyfikatów: 
 
-- *Device 1*: root certificate -> certificate A -> device 1 certificate
-- *Device 2*: root certificate -> certificate A -> device 2 certificate
-- *Device 3*: root certificate -> certificate A -> device 3 certificate
-- *Device 4*: root certificate -> certificate B -> device 4 certificate
-- *Device 5*: root certificate -> certificate B -> device 5 certificate
+- *Urządzenie 1*: certyfikat główny — certyfikat > certyfikat A > urządzenie 1
+- *Urządzenie 2*: certyfikat główny — certyfikat > certyfikat A > urządzenie 2
+- *Urządzenie 3*: certyfikat główny — certyfikat > certyfikat A > urządzenie 3
+- *Urządzenie 4*: certyfikat główny — certyfikat > B — > certyfikat urządzenia 4
+- *Urządzenie 5*: certyfikat główny — certyfikat > B-> certyfikat urządzenia 5
 
-Initially, you can create a single enabled group enrollment entry for the root certificate to enable access for all five devices. If certificate B later becomes compromised, you can create a disabled enrollment group entry for certificate B to prevent *Device 4* and *Device 5* from enrolling. If still later *Device 3* becomes compromised, you can create a disabled individual enrollment entry for its certificate. This revokes access for *Device 3*, but still allows *Device 1* and *Device 2* to enroll.
+Początkowo można utworzyć pojedynczy wpis rejestracji grupy z włączonym certyfikatem głównym, aby umożliwić dostęp do wszystkich pięciu urządzeń. Jeśli certyfikat B później zostanie naruszony, można utworzyć wyłączony wpis grupy rejestracji dla certyfikatu B w celu uniemożliwienia rejestracji *urządzeń 4* i *5 na urządzeniu* . Jeśli nadal później zostanie naruszone bezpieczeństwo *urządzenia 3* , można utworzyć wyłączony indywidualny wpis rejestracji dla swojego certyfikatu. Spowoduje to odwołanie dostępu do *urządzenia 3*, ale nadal umożliwia zarejestrowanie *urządzenia 1* i *2* .

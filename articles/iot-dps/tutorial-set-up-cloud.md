@@ -1,6 +1,6 @@
 ---
-title: Set up cloud for Azure IoT Hub Device Provisioning Service in portal
-description: Tutorial - Set up the cloud resources for device provisioning in the [Azure portal](https://portal.azure.com) using the IoT Hub Device Provisioning Service
+title: Konfigurowanie chmury dla usługi Azure IoT Hub Device Provisioning Service w portalu
+description: Samouczek — Konfigurowanie zasobów w chmurze na potrzeby aprowizacji urządzeń w [Azure Portal](https://portal.azure.com) przy użyciu IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,7 +15,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228310"
 ---
-# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Tutorial: Configure cloud resources for device provisioning with the IoT Hub Device Provisioning Service
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Samouczek: Konfigurowanie zasobów w chmurze na potrzeby aprowizacji urządzeń przy użyciu IoT Hub Device Provisioning Service
 
 Ten samouczek przedstawia konfigurowanie chmury pod kątem automatycznego aprowizowania urządzeń za pomocą usługi IoT Hub Device Provisioning. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -29,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Utworzenie wystąpienia usługi Device Provisioning i uzyskanie zakresu identyfikatorów
 
@@ -52,7 +52,7 @@ Wykonaj następujące kroki, aby utworzyć nowe wystąpienie usługi Device Prov
 
    ![Wprowadzanie podstawowych informacji o usłudze Device Provisioning Service w portalu](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Kliknij przycisk **Utwórz**. Po kilku chwilach wystąpienie usługi Device Provisioning zostaje utworzone i wyświetlana jest strona **Przegląd**.
+5. Kliknij pozycję **Utwórz**. Po kilku chwilach wystąpienie usługi Device Provisioning zostaje utworzone i wyświetlana jest strona **Przegląd**.
 
 6. Na stronie **Przegląd** nowego wystąpienia usługi skopiuj wartość **Zakres identyfikatorów** do późniejszego użycia. Ta wartość służy do określania identyfikatorów rejestracji i daje gwarancję, że identyfikator rejestracji jest unikatowy.
 
@@ -90,7 +90,7 @@ Następnym krokiem jest połączenie usługi Device Provisioning z centrum IoT w
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Ustawienie zasad alokacji w usłudze Device Provisioning
 
-The allocation policy is an IoT Hub Device Provisioning Service setting that determines how devices are assigned to an IoT hub. Są obsługiwane trzy zasady alokacji: 
+Zasada alokacji jest ustawieniem IoT Hub Device Provisioning Service, które określa sposób przypisywania urządzeń do centrum IoT Hub. Są obsługiwane trzy zasady alokacji: 
 
 1. **Najmniejsze opóźnienie**: urządzenia są aprowizowane do centrum IoT z uwzględnieniem centrum z najmniejszym opóźnieniem do urządzenia.
 

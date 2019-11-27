@@ -1,5 +1,5 @@
 ---
-title: Provision simulated X.509 device to Azure IoT Hub using Java
+title: Inicjowanie obsługi symulowanego urządzenia X. 509 na platformie Azure IoT Hub przy użyciu języka Java
 description: 'Przewodnik Szybki start platformy Azure: tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK urządzenia języka Java dla usługi IoT Hub Device Provisioning. W tym przewodniku Szybki start używane są rejestracje indywidualne.'
 author: wesmc7777
 ms.author: wesmc
@@ -16,7 +16,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229569"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision a simulated X.509 device using Java device SDK for IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Szybki Start: Tworzenie i Inicjowanie obsługi symulowanego urządzenia X. 509 za pomocą zestawu SDK urządzenia Java dla IoT Hub Device Provisioning Service
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Te kroki pokazują, jak zasymulować urządzenie X.509 na maszynie deweloperskiej z systemem operacyjnym Windows OS i użyć przykładowego kodu do połączenia tego symulowanego urządzenia z usługą Device Provisioning Service i Twoim centrum IoT Hub. 
@@ -162,7 +162,7 @@ Przykładowy kod z [zestawu Azure IoT SDK dla środowiska Java](https://github.c
 Jeśli planujesz dalszą pracę z przykładem klienta urządzenia i eksplorowanie go, nie czyść zasobów utworzonych w ramach tego przewodnika Szybki start. Jeśli nie planujesz kontynuować pracy, wykonaj poniższe kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki start.
 
 1. Zamknij okno danych wyjściowych przykładu klienta urządzenia na swojej maszynie.
-2. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoją usługę Device Provisioning Service. Open the **Manage Enrollments** blade for your service, and then click the **Individual Enrollments** tab. Select the *REGISTRATION ID* of the device you enrolled in this Quickstart, and click the **Delete** button at the top. 
+2. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoją usługę Device Provisioning Service. Otwórz blok **Zarządzanie rejestracjami** dla usługi, a następnie kliknij kartę **rejestracje indywidualne** . Wybierz *Identyfikator rejestracji* urządzenia zarejestrowanego w tym przewodniku Szybki Start, a następnie kliknij przycisk **Usuń** u góry. 
 3. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoje centrum IoT. Otwórz blok **Urządzenia IoT** Twojego centrum, wybierz *IDENTYFIKATOR URZĄDZENIA* zarejestrowanego w ramach tego przewodnika Szybki start, a następnie kliknij przycisk **Usuń** u góry.
 
 

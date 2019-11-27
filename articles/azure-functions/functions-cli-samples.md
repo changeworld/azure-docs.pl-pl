@@ -8,7 +8,7 @@ ms.date: 01/09/2018
 ms.custom: mvc
 ms.openlocfilehash: b875d2a478ccbd2fa99f43e584e02018866fc5cd
 ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230912"
@@ -32,7 +32,7 @@ Poniższa tabela zawiera linki do skryptów powłoki Bash dla usługi Azure Func
 | Ciągłe wdrażanie | Opis|
 |---|---|
 | [Wdrażanie z repozytorium GitHub](scripts/functions-cli-create-function-app-github-continuous.md) | Utwórz aplikację funkcji, która wdraża z repozytorium GitHub.  |
-| [Wdrażanie z usługi Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Create a function app that deploys from an Azure DevOps repository.  |
+| [Wdrażanie z usługi Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Utwórz aplikację funkcji, która wdraża z repozytorium usługi Azure DevOps.  |
 
 | Konfigurowanie aplikacji | Opis |
 |---|---|

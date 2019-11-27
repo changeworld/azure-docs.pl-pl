@@ -1,6 +1,6 @@
 ---
-title: Service tiers and SKUs
-description: Learn about the features and limits in the Basic, Standard, and Premium service tiers (SKUs) of Azure Container Registry.
+title: Warstwy usług i jednostki SKU
+description: Dowiedz się więcej o funkcjach i ograniczeniach w warstwach usług podstawowa, standardowa i Premium (SKU) Azure Container Registry.
 ms.topic: article
 ms.date: 11/05/2019
 ms.openlocfilehash: 1ebe5339b7523a4463dee45b126244d7ec5b2e4b
@@ -10,31 +10,31 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456274"
 ---
-# <a name="azure-container-registry-skus"></a>Azure Container Registry SKUs
+# <a name="azure-container-registry-skus"></a>Jednostki SKU Azure Container Registry
 
-Azure Container Registry (ACR) is available in multiple service tiers, known as SKUs. These SKUs provide predictable pricing and several options for aligning to the capacity and usage patterns of your private Docker registry in Azure.
+Azure Container Registry (ACR) jest dostępny w wielu warstwach usług, znanych jako jednostki SKU. Te jednostki SKU zapewniają przewidywalną cenę i kilka opcji dopasowania do wzorców pojemności i użycia prywatnego rejestru platformy Docker na platformie Azure.
 
-| JSZ | Opis |
+| SKU | Opis |
 | --- | ----------- |
-| **Podstawowa** | Zoptymalizowany pod kątem kosztów punkt wejścia dla deweloperów poznających usługę Azure Container Registry. Basic registries have the same programmatic capabilities as Standard and Premium (such as Azure Active Directory [authentication integration](container-registry-authentication.md#individual-login-with-azure-ad), [image deletion][container-registry-delete], and [webhooks][container-registry-webhook]). However, the included storage and image throughput are most appropriate for lower usage scenarios. |
-| **Standard** | Standard registries offer the same capabilities as Basic, with increased included storage and image throughput. Rejestry w warstwie Standardowa powinny spełniać wymagania większości scenariuszy produkcyjnych. |
-| **Premium** | Premium registries provide the highest amount of included storage and concurrent operations, enabling high-volume scenarios. In addition to higher image throughput, Premium adds features such as [geo-replication][container-registry-geo-replication] for managing a single registry across multiple regions, [content trust](container-registry-content-trust.md) for image tag signing, [firewalls and virtual networks (preview)](container-registry-vnet.md) to restrict access to the registry. |
+| **Podstawowa** | Zoptymalizowany pod kątem kosztów punkt wejścia dla deweloperów poznających usługę Azure Container Registry. Podstawowe rejestry mają takie same funkcje programistyczne jak standard i Premium (takie jak Azure Active Directory [integracja z uwierzytelnianiem](container-registry-authentication.md#individual-login-with-azure-ad), [Usuwanie obrazu][container-registry-delete]i elementy [webhook][container-registry-webhook]). Jednak przepływność dołączonego magazynu i obrazu jest najbardziej odpowiednia w przypadku małych scenariuszy użycia. |
+| **Standardowa** | Standardowe rejestry oferują te same możliwości co podstawowa, dzięki czemu można zwiększyć pojemność magazynu i przepływność obrazu. Rejestry w warstwie Standardowa powinny spełniać wymagania większości scenariuszy produkcyjnych. |
+| **Premium** | Rejestry Premium zapewniają największą ilość dołączonego magazynu i współbieżnych operacji, co umożliwia wykonywanie scenariuszy o dużej pojemności. Oprócz wyższej przepływności obrazów funkcja Premium dodaje funkcje, takie jak [replikacja geograficzna][container-registry-geo-replication] do zarządzania pojedynczym rejestrem w wielu regionach, [zaufanie zawartości](container-registry-content-trust.md) dla podpisywania tagów obrazu, [zapory i sieci wirtualne (wersja zapoznawcza)](container-registry-vnet.md) Ogranicz dostęp do rejestru. |
 
-The Basic, Standard, and Premium SKUs all provide the same programmatic capabilities. They also all benefit from [image storage][container-registry-storage] managed entirely by Azure. Choosing a higher-level SKU provides more performance and scale. With multiple service tiers, you can get started with Basic, then convert to Standard and Premium as your registry usage increases.
+Jednostki SKU w warstwach Podstawowa, standardowa i Premium zapewniają te same funkcje programistyczne. Wszystkie korzyści z [magazynu obrazów][container-registry-storage] są również zarządzane całkowicie przez platformę Azure. Wybranie jednostki SKU wyższego poziomu zapewnia większą wydajność i skalowalność. W przypadku wielu warstw usług możesz rozpocząć pracę z usługą Basic, a następnie przekonwertować ją na Standard i Premium w miarę wzrostu użycia rejestru.
 
-## <a name="sku-features-and-limits"></a>SKU features and limits
+## <a name="sku-features-and-limits"></a>Funkcje i limity jednostki SKU
 
-The following table details the features and limits of the Basic, Standard, and Premium service tiers.
+W poniższej tabeli przedstawiono funkcje i limity warstw usług podstawowa, standardowa i Premium.
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
-## <a name="changing-skus"></a>Changing SKUs
+## <a name="changing-skus"></a>Zmienianie jednostek SKU
 
-You can change a registry's SKU with the Azure CLI or in the Azure portal. You can move freely between SKUs as long as the SKU you're switching to has the required maximum storage capacity. 
+Jednostkę SKU rejestru można zmienić za pomocą interfejsu wiersza polecenia platformy Azure lub w Azure Portal. Można swobodnie poruszać się między JEDNOSTKAmi SKU, o ile wymagana jest maksymalna pojemność magazynu. 
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-To move between SKUs in the Azure CLI, use the [az acr update][az-acr-update] command. For example, to switch to Premium:
+Aby poruszać się między jednostkami SKU w interfejsie wiersza polecenia platformy Azure, użyj polecenia [AZ ACR Update][az-acr-update] . Na przykład, aby przełączyć się do warstwy Premium:
 
 ```azurecli
 az acr update --name myregistry --sku Premium
@@ -42,25 +42,25 @@ az acr update --name myregistry --sku Premium
 
 ### <a name="azure-portal"></a>Azure Portal
 
-In the container registry **Overview** in the Azure portal, select **Update**, then select a new **SKU** from the SKU drop-down.
+W obszarze **Przegląd** rejestru kontenerów w Azure Portal wybierz pozycję **Aktualizuj**, a następnie wybierz nową **jednostkę SKU** z listy rozwijanej jednostka SKU.
 
-![Update container registry SKU in Azure portal][update-registry-sku]
+![Aktualizowanie jednostki SKU rejestru kontenerów w Azure Portal][update-registry-sku]
 
 ## <a name="pricing"></a>Cennik
 
-For pricing information on each of the Azure Container Registry SKUs, see [Container Registry pricing][container-registry-pricing].
+Aby uzyskać informacje o cenach dla każdej jednostki SKU Azure Container Registry, zobacz [Cennik usługi Container Registry][container-registry-pricing].
 
-For details about pricing for data transfers, see [Bandwidth Pricing Details](https://azure.microsoft.com/pricing/details/bandwidth/). 
+Aby uzyskać szczegółowe informacje o cenach transferów danych, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/bandwidth/)dotyczącego przepustowości. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-**Azure Container Registry Roadmap**
+**Azure Container Registry plan**
 
-Visit the [ACR Roadmap][acr-roadmap] on GitHub to find information about upcoming features in the service.
+Odwiedź [Plan ACR][acr-roadmap] w witrynie GitHub, aby uzyskać informacje o nadchodzących funkcjach usługi.
 
 **Azure Container Registry UserVoice**
 
-Submit and vote on new feature suggestions in [ACR UserVoice][container-registry-uservoice].
+Prześlij i zagłosuj na nowe sugestie dotyczące funkcji w witrynie [ACR UserVoice][container-registry-uservoice].
 
 <!-- IMAGES -->
 [update-registry-sku]: ./media/container-registry-skus/update-registry-sku.png

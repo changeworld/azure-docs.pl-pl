@@ -1,5 +1,5 @@
 ---
-title: Push & pull Docker image
+title: Wypychanie & ściągania obrazu platformy Docker
 description: Wypychanie i ściąganie obrazów platformy Docker do prywatnego rejestru kontenerów na platformie Azure za pomocą interfejsu wiersza polecenia platformy Docker
 ms.topic: article
 ms.date: 01/23/2019
@@ -13,37 +13,37 @@ ms.locfileid: "74456357"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Wypchnij swój pierwszy obraz do prywatnego rejestru kontenerów platformy Docker za pomocą interfejsu wiersza polecenia platformy Docker
 
-Rejestr kontenera platformy Azure przechowuje prywatne obrazy kontenerów platformy [Docker](https://hub.docker.com) i zarządza nimi podobnie, jak [koncentrator platformy Docker](https://hub.docker.com/) przechowuje publiczne obrazy platformy Docker. You can use the [Docker command-line interface](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) for [login](https://docs.docker.com/engine/reference/commandline/login/), [push](https://docs.docker.com/engine/reference/commandline/push/), [pull](https://docs.docker.com/engine/reference/commandline/pull/), and other operations on your container registry.
+Rejestr kontenera platformy Azure przechowuje prywatne obrazy kontenerów platformy [Docker](https://hub.docker.com) i zarządza nimi podobnie, jak [koncentrator platformy Docker](https://hub.docker.com/) przechowuje publiczne obrazy platformy Docker. Do [logowania](https://docs.docker.com/engine/reference/commandline/login/), [wypychania](https://docs.docker.com/engine/reference/commandline/push/), [ściągania](https://docs.docker.com/engine/reference/commandline/pull/)i innych operacji w rejestrze kontenerów można użyć [interfejsu wiersza polecenia platformy Docker](https://docs.docker.com/engine/reference/commandline/cli/) (CLI).
 
-In the following steps, you download an official [Nginx image](https://store.docker.com/images/nginx) from the public Docker Hub registry, tag it for your private Azure container registry, push it to your registry, and then pull it from the registry.
+W poniższych krokach pobierasz oficjalny [obraz Nginx](https://store.docker.com/images/nginx) z publicznego rejestru centrum Docker, oznacz go jako prywatny rejestr kontenerów platformy Azure, wypchnij do rejestru, a następnie pobierz go z rejestru.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Usługa Azure Container Registry** — Tworzy rejestr kontenera w subskrypcji platformy Azure. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md).
-* **Docker CLI** - You must also have Docker installed locally. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
+* **Usługa Azure Container Registry** — Tworzy rejestr kontenera w subskrypcji platformy Azure. Na przykład użyj [Azure Portal](container-registry-get-started-portal.md) lub [interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md).
+* **Interfejs wiersza polecenia platformy Docker** — należy również zainstalować lokalnie platformę Docker. Platforma Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [macOS][docker-mac], [Windows][docker-windows]lub [Linux][docker-linux] .
 
 ## <a name="log-in-to-a-registry"></a>Zaloguj się do rejestru
 
-There are [several ways to authenticate](container-registry-authentication.md) to your private container registry. The recommended method when working in a command line is with the Azure CLI command [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). For example, to log in to a registry named *myregistry*:
+Istnieje [kilka sposobów uwierzytelniania](container-registry-authentication.md) do prywatnego rejestru kontenerów. Zalecaną metodą podczas pracy z wierszem polecenia jest polecenie [AZ ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Na przykład, aby zalogować się do rejestru o nazwie Moje *Rejestr*:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-You can also log in with [docker login](https://docs.docker.com/engine/reference/commandline/login/). For example, you might have [assigned a service principal](container-registry-authentication.md#service-principal) to your registry for an automation scenario. When you run the following command, interactively provide the service principal appID (username) and password when prompted. For best practices to manage login credentials, see the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command reference:
+Możesz też zalogować się przy użyciu [logowania Docker](https://docs.docker.com/engine/reference/commandline/login/). Można na przykład [przypisać jednostkę usługi](container-registry-authentication.md#service-principal) do rejestru w scenariuszu automatyzacji. Po uruchomieniu poniższego polecenia, interaktywnie Podaj nazwę (username) jednostki usługi i hasło po wyświetleniu monitu. Aby zapoznać się z najlepszymi rozwiązaniami dotyczącymi zarządzania poświadczeniami logowania, zobacz informacje dotyczące poleceń [logowania Docker](https://docs.docker.com/engine/reference/commandline/login/) :
 
 ```
 docker login myregistry.azurecr.io
 ```
 
-Both commands return `Login Succeeded` once completed.
+Oba polecenia zwracają `Login Succeeded` po zakończeniu.
 
 > [!TIP]
-> Always specify the fully qualified registry name (all lowercase) when you use `docker login` and when you tag images for pushing to your registry. In the examples in this article, the fully qualified name is *myregistry.azurecr.io*.
+> Zawsze określaj w pełni kwalifikowaną nazwę rejestru (wszystkie małe litery), gdy używasz `docker login` i po oznaczeniu obrazów do wypychania do rejestru. W przykładach w tym artykule, w pełni kwalifikowana nazwa to *myregistry.azurecr.IO*.
 
-## <a name="pull-the-official-nginx-image"></a>Pull the official Nginx image
+## <a name="pull-the-official-nginx-image"></a>Ściąganie oficjalnego obrazu Nginx
 
-First, pull the public Nginx image to your local computer.
+Najpierw Pobierz publiczny obraz Nginx do komputera lokalnego.
 
 ```
 docker pull nginx
@@ -51,67 +51,67 @@ docker pull nginx
 
 ## <a name="run-the-container-locally"></a>Uruchamianie kontenera w środowisku lokalnym
 
-Execute following [docker run](https://docs.docker.com/engine/reference/run/) command to start a local instance of the Nginx container interactively (`-it`) on port 8080. The `--rm` argument specifies that the container should be removed when you stop it.
+Wykonaj następujące polecenie [Docker Run](https://docs.docker.com/engine/reference/run/) , aby uruchomić lokalne wystąpienie kontenera Nginx w sposób interaktywny (`-it`) na porcie 8080. Argument `--rm` określa, że kontener powinien zostać usunięty po jego zatrzymaniu.
 
 ```
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Browse to `http://localhost:8080` to view the default web page served by Nginx in the running container. You should see a page similar to the following:
+Przejdź do `http://localhost:8080`, aby wyświetlić domyślną stronę sieci Web, która jest obsługiwana przez Nginx w działającym kontenerze. Powinna zostać wyświetlona strona podobna do następującej:
 
 ![Kontener Nginx na komputerze lokalnym](./media/container-registry-get-started-docker-cli/nginx.png)
 
-Because you started the container interactively with `-it`, you can see the Nginx server's output on the command line after navigating to it in your browser.
+Ze względu na to, że interaktywnie uruchomiono kontener przy użyciu `-it`, można zobaczyć dane wyjściowe serwera Nginx w wierszu polecenia po przejściu do niego w przeglądarce.
 
-To stop and remove the container, press `Control`+`C`.
+Aby zatrzymać i usunąć kontener, naciśnij `Control`+`C`.
 
-## <a name="create-an-alias-of-the-image"></a>Create an alias of the image
+## <a name="create-an-alias-of-the-image"></a>Tworzenie aliasu obrazu
 
-Use [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) to create an alias of the image with the fully qualified path to your registry. W tym przykładzie jest określana przestrzeń nazw `samples`, aby uniknąć zaśmiecania katalogu głównego rejestru.
+Użyj [tagu Docker](https://docs.docker.com/engine/reference/commandline/tag/) , aby utworzyć alias obrazu z w pełni kwalifikowaną ścieżką do rejestru. W tym przykładzie jest określana przestrzeń nazw `samples`, aby uniknąć zaśmiecania katalogu głównego rejestru.
 
 ```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
-For more information about tagging with namespaces, see the [Repository namespaces](container-registry-best-practices.md#repository-namespaces) section of [Best practices for Azure Container Registry](container-registry-best-practices.md).
+Aby uzyskać więcej informacji o znakowaniu z przestrzeniami nazw, zobacz sekcję [przestrzenie nazw repozytoriów](container-registry-best-practices.md#repository-namespaces) z [najlepszymi rozwiązaniami dotyczącymi Azure Container Registry](container-registry-best-practices.md).
 
-## <a name="push-the-image-to-your-registry"></a>Push the image to your registry
+## <a name="push-the-image-to-your-registry"></a>Wypchnij obraz do rejestru
 
-Now that you've tagged the image with the fully qualified path to your private registry, you can push it to the registry with [docker push](https://docs.docker.com/engine/reference/commandline/push/):
+Teraz, po oznakowaniu obrazu za pomocą w pełni kwalifikowanej ścieżki do rejestru prywatnego, można wypchnąć go do rejestru przy użyciu [wypychania Docker](https://docs.docker.com/engine/reference/commandline/push/):
 
 ```
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
-## <a name="pull-the-image-from-your-registry"></a>Pull the image from your registry
+## <a name="pull-the-image-from-your-registry"></a>Ściąganie obrazu z rejestru
 
-Use the [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) command to pull the image from your registry:
+Użyj [Docker pull](https://docs.docker.com/engine/reference/commandline/pull/) polecenia, aby ściągnąć obraz z rejestru:
 
 ```
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
-## <a name="start-the-nginx-container"></a>Start the Nginx container
+## <a name="start-the-nginx-container"></a>Uruchamianie kontenera Nginx
 
-Use the [docker run](https://docs.docker.com/engine/reference/run/) command to run the image you've pulled from your registry:
+Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/run/) , aby uruchomić pobrany obraz z rejestru:
 
 ```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Browse to `http://localhost:8080` to view the running container.
+Przejdź do `http://localhost:8080`, aby wyświetlić uruchomiony kontener.
 
-To stop and remove the container, press `Control`+`C`.
+Aby zatrzymać i usunąć kontener, naciśnij `Control`+`C`.
 
-## <a name="remove-the-image-optional"></a>Remove the image (optional)
+## <a name="remove-the-image-optional"></a>Usuń obraz (opcjonalnie)
 
-If you no longer need the Nginx image, you can delete it locally with the [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) command.
+Jeśli obraz Nginx nie jest już potrzebny, możesz go usunąć lokalnie przy użyciu polecenia [Docker RMI](https://docs.docker.com/engine/reference/commandline/rmi/) .
 
 ```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-To remove images from your Azure container registry, you can use the Azure CLI command [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete). For example, the following command deletes the manifest referenced by the `samples/nginx:latest` tag, any unique layer data, and all other tags referencing the manifest.
+Aby usunąć obrazy z usługi Azure Container Registry, można użyć polecenia ACR [repozytorium Delete](/cli/azure/acr/repository#az-acr-repository-delete). Na przykład następujące polecenie usuwa manifest, do którego odwołuje się tag `samples/nginx:latest`, wszystkie unikatowe dane warstwy i wszystkie inne Tagi odwołujące się do manifestu.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest
@@ -119,13 +119,13 @@ az acr repository delete --name myregistry --image samples/nginx:latest
 
 ## <a name="next-steps"></a>Następne kroki
 
-Now that you know the basics, you're ready to start using your registry! For example, deploy container images from your registry to:
+Teraz, gdy znasz już podstawowe elementy, możesz zacząć korzystać z rejestru. Na przykład Wdróż obrazy kontenerów z rejestru w celu:
 
 * [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)
 
-Optionally install the [Docker Extension for Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) and the [Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) extension to work with your Azure container registries. Pull and push images to an Azure container registry, or run ACR Tasks, all within Visual Studio Code.
+Opcjonalnie zainstaluj [rozszerzenie Docker dla Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) i rozszerzenie [konta platformy Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) , aby współpracowało z rejestrami kontenerów platformy Azure. Ściągaj i wypychanie obrazów do usługi Azure Container Registry lub uruchamiaj zadania ACR, w Visual Studio Code.
 
 
 <!-- LINKS - external -->

@@ -1,6 +1,6 @@
 ---
-title: Supported languages in Azure Functions
-description: Learn which languages are supported (GA) and which are experimental or in preview.
+title: Obsługiwane języki w Azure Functions
+description: Dowiedz się, które języki są obsługiwane (GA) i które są eksperymentalne lub dostępne w wersji zapoznawczej.
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.openlocfilehash: 3b61dd83e481d42dd15f089247d016c6b71ff0de
@@ -10,44 +10,44 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230284"
 ---
-# <a name="supported-languages-in-azure-functions"></a>Supported languages in Azure Functions
+# <a name="supported-languages-in-azure-functions"></a>Obsługiwane języki w Azure Functions
 
-This article explains the levels of support offered for languages that you can use with Azure Functions.
+W tym artykule opisano poziomy pomocy technicznej oferowane w przypadku języków, których można używać z programem Azure Functions.
 
-## <a name="levels-of-support"></a>Levels of support
+## <a name="levels-of-support"></a>Poziomy pomocy technicznej
 
-There are three levels of support:
+Istnieją trzy poziomy pomocy technicznej:
 
-* **Generally available (GA)** - Fully supported and approved for production use.
-* **Preview** - Not yet supported but is expected to reach GA status in the future.
-* **Experimental** - Not supported and might be abandoned in the future; no guarantee of eventual preview or GA status.
+* **Ogólnie dostępna (ga)** — w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
+* **Wersja zapoznawcza** — nie jest jeszcze obsługiwana, ale oczekuje się, że w przyszłości zostanie osiągnięty stan ga.
+* **Eksperymentalny** — nieobsługiwany i może zostać porzucony w przyszłości; Brak gwarancji dotyczącej wersji zapoznawczej lub stanu GA.
 
-## <a name="languages-by-runtime-version"></a>Languages by runtime version 
+## <a name="languages-by-runtime-version"></a>Języki według wersji środowiska uruchomieniowego 
 
-[Two versions of the Azure Functions runtime](functions-versions.md) are available. The following table shows which languages are supported in each runtime version.
+Dostępne są [dwie wersje środowiska uruchomieniowego Azure Functions](functions-versions.md) . W poniższej tabeli przedstawiono języki obsługiwane w poszczególnych wersjach środowiska uruchomieniowego.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Experimental languages
+### <a name="experimental-languages"></a>Języki eksperymentalne
 
-The experimental languages in version 1.x don't scale well and don't support all bindings.
+Języki eksperymentalne w wersji 1. x nie są dobrze skalowane i nie obsługują wszystkich powiązań.
 
-Don't use experimental features for anything that you rely on, as there is no official support for them. Support cases should not be opened for problems with experimental languages. 
+Nie używaj eksperymentalnych funkcji dla wszystkich elementów, na których polegasz, ponieważ nie ma oficjalnego wsparcia dla nich. Nie należy otwierać przypadków pomocy technicznej w przypadku problemów z językiem eksperymentalnym. 
 
-The version 2.x runtime doesn't support experimental languages. Support for new languages is added only when the language can be supported in production. 
+Środowisko uruchomieniowe w wersji 2. x nie obsługuje języków eksperymentalnych. Obsługa nowych języków jest dodawana tylko wtedy, gdy język może być obsługiwany w środowisku produkcyjnym. 
 
-### <a name="language-extensibility"></a>Language extensibility
+### <a name="language-extensibility"></a>Rozszerzalność języka
 
-Starting with version 2.x, the runtime is designed to offer [language extensibility](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). The JavaScript and Java languages in the 2.x runtime are built with this extensibility.
+Począwszy od wersji 2. x, środowisko uruchomieniowe zostało zaprojektowane, aby oferować [rozszerzalność języka](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Języki JavaScript i Java w środowisku uruchomieniowym 2. x zostały skompilowane przy użyciu tej rozszerzalności.
 
 ## <a name="next-steps"></a>Następne kroki
 
-To learn more about how to develop functions in the supported languages, see the following resources:
+Aby dowiedzieć się więcej o sposobach tworzenia funkcji w obsługiwanych językach, zobacz następujące zasoby:
 
-+ [C# class library developer reference](functions-dotnet-class-library.md)
-+ [C# script developer reference](functions-reference-csharp.md)
-+ [Java developer reference](functions-reference-java.md)
-+ [JavaScript developer reference](functions-reference-node.md)
-+ [PowerShell developer reference](functions-reference-powershell.md)
-+ [Python developer reference](functions-reference-python.md)
-+ [TypeScript developer reference](functions-reference-node.md#typescript)
++ [C#Dokumentacja dla deweloperów biblioteki klas](functions-dotnet-class-library.md)
++ [C#Dokumentacja dewelopera skryptów](functions-reference-csharp.md)
++ [Dokumentacja dewelopera języka Java](functions-reference-java.md)
++ [Dokumentacja dewelopera języka JavaScript](functions-reference-node.md)
++ [Dokumentacja dewelopera programu PowerShell](functions-reference-powershell.md)
++ [Dokumentacja dla deweloperów języka Python](functions-reference-python.md)
++ [Dokumentacja dewelopera języka TypeScript](functions-reference-node.md#typescript)

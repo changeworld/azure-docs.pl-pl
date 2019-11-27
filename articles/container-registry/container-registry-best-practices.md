@@ -42,11 +42,11 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="dedicated-resource-group"></a>Dedykowana grupa zasobów
 
-Because container registries are resources that are used across multiple container hosts, a registry should reside in its own resource group.
+Ponieważ rejestry kontenerów to zasoby, które są używane na wielu hostach kontenerów, Rejestr powinien znajdować się w własnej grupie zasobów.
 
 Choć możesz eksperymentować z określonym typem hosta, na przykład z usługą Azure Container Instances, prawdopodobnie zechcesz usunąć wystąpienie kontenera po zakończeniu pracy z nim. Można jednak również zachować kolekcję obrazów, które zostały wypchnięte do usługi Azure Container Registry. Dzięki umieszczeniu rejestru w jego własnej grupie zasobów można zminimalizować ryzyko przypadkowego usunięcia kolekcji obrazów w rejestrze podczas usuwania grupy zasobów wystąpienia kontenera.
 
-## <a name="authentication"></a>Uwierzytelnianie
+## <a name="authentication"></a>Authentication
 
 Istnieją dwa podstawowe scenariusze uwierzytelniania w usłudze Azure Container Registry: uwierzytelnianie indywidualne i uwierzytelnianie usługi („bezobsługowe”). Poniższa tabela zawiera krótkie omówienie tych scenariuszy i wskazuje zalecaną metodę uwierzytelniania w przypadku każdego z nich.
 
@@ -59,9 +59,9 @@ Aby uzyskać szczegółowe informacje o uwierzytelnianiu w usłudze Azure Contai
 
 ## <a name="manage-registry-size"></a>Zarządzanie rozmiarem rejestru
 
-The storage constraints of each [container registry SKU][container-registry-skus] are intended to align with a typical scenario: **Basic** for getting started, **Standard** for the majority of production applications, and **Premium** for hyper-scale performance and [geo-replication][container-registry-geo-replication]. W ciągu cyklu życia rejestru należy zarządzać jego rozmiarem, okresowo usuwając nieużywaną zawartość.
+Ograniczenia magazynu dla każdej [jednostki SKU rejestru kontenerów][container-registry-skus] są przeznaczone do dopasowania w typowym scenariuszu: **podstawowa** dla rozpoczynania, **standardowego** dla większości aplikacji produkcyjnych i **Premium** w przypadku wydajności i [replikacji geograficznej][container-registry-geo-replication]funkcji Hyper-Skala. W ciągu cyklu życia rejestru należy zarządzać jego rozmiarem, okresowo usuwając nieużywaną zawartość.
 
-Use the Azure CLI command [az acr show-usage][az-acr-show-usage] to display the current size of your registry:
+Użyj interfejsu wiersza polecenia platformy Azure [AZ ACR show-Usage][az-acr-show-usage] , aby wyświetlić bieżący rozmiar rejestru:
 
 ```console
 $ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -71,15 +71,15 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-You can also find the current storage used in the **Overview** of your registry in the Azure portal:
+Bieżący magazyn używany w **przeglądzie** rejestru można również znaleźć w Azure Portal:
 
 ![Informacje o użyciu rejestru w witrynie Azure Portal][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Delete image data
+### <a name="delete-image-data"></a>Usuń dane obrazu
 
-Azure Container Registry supports several methods for deleting image data from your container registry. You can delete images by tag or manifest digest, or delete a whole repository.
+Azure Container Registry obsługuje kilka metod usuwania danych obrazu z rejestru kontenerów. Można usuwać obrazy według tagów lub skrótu manifestu albo usuwać całe repozytorium.
 
-For details on deleting image data from your registry, including untagged (sometimes called "dangling" or "orphaned") images, see [Delete container images in Azure Container Registry](container-registry-delete.md).
+Aby uzyskać szczegółowe informacje na temat usuwania danych obrazu z rejestru, w tym nieoznakowany (czasami nazywany "zawieszonego" lub "oddzielony"), zobacz [usuwanie kontenerów obrazów w Azure Container Registry](container-registry-delete.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

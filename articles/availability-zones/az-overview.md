@@ -99,5 +99,5 @@ Nie ma dodatkowych opłat za maszyny wirtualne wdrożone w strefie dostępności
 - [Tworzenie wystąpienia Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md)
 - [Utwórz klaster usługi Azure Kubernetes Service (AKS), który używa Strefy dostępności](../aks/availability-zones.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Quickstart templates (Szablony szybkiego startu)](https://aka.ms/azqs)

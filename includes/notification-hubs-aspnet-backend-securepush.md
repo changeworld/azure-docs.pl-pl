@@ -11,10 +11,10 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260828"
 ---
-## <a name="webapi-project"></a>WebAPI Project
+## <a name="webapi-project"></a>Projekt WebAPI
 
-1. In Visual Studio, open the **AppBackend** project that you created in the **Notify Users** tutorial.
-2. In Notifications.cs, replace the whole **Notifications** class with the following code. Be sure to replace the placeholders with your connection string (with full access) for your notification hub, and the hub name. You can obtain these values from the [Azure portal](https://portal.azure.com). This module now represents the different secure notifications that will be sent. In a complete implementation, the notifications will be stored in a database; for simplicity, in this case we store them in memory.
+1. W programie Visual Studio Otwórz projekt **AppBackend** , który został utworzony w samouczku **Powiadamianie użytkowników** .
+2. W Notifications.cs Zastąp całą klasę **powiadomień** następującym kodem. Pamiętaj, aby zastąpić symbole zastępcze parametrami połączenia (z pełnymi dostępem) dla centrum powiadomień i nazwą centrum. Te wartości można uzyskać z [Azure Portal](https://portal.azure.com). Ten moduł reprezentuje teraz inne bezpieczne powiadomienia, które będą wysyłane. W przypadku pełnej implementacji powiadomienia będą przechowywane w bazie danych programu. dla uproszczenia w tym przypadku przechowujemy je w pamięci.
    
    ```csharp
     public class Notification
@@ -56,7 +56,7 @@ ms.locfileid: "74260828"
     }
     ```
 
-1. In NotificationsController.cs, replace the code inside the **NotificationsController** class definition with the following code. This component implements a way for the device to retrieve the notification securely, and also provides a way (for the purposes of this tutorial) to trigger a secure push to your devices. Note that when sending the notification to the notification hub, we only send a raw notification with the ID of the notification (and no actual message):
+1. W NotificationsController.cs Zastąp kod wewnątrz definicji klasy **NotificationsController** następującym kodem. Ten składnik implementuje sposób, w jaki urządzenie może bezpiecznie pobrać powiadomienie, a także zapewnia metodę (na potrzeby tego samouczka), aby wyzwolić bezpieczną wypychanie do urządzeń. Należy pamiętać, że podczas wysyłania powiadomienia do centrum powiadomień wysyłamy tylko nieprzetworzone powiadomienie z IDENTYFIKATORem powiadomienia (i nie jest to rzeczywisty komunikat):
    
    ```csharp
     public NotificationsController()
@@ -92,7 +92,7 @@ ms.locfileid: "74260828"
     }
     ```
 
-Note that the `Post` method now does not send a toast notification. It sends a raw notification that contains only the notification ID, and not any sensitive content. Also, make sure to comment the send operation for the platforms for which you do not have credentials configured on your notification hub, as they will result in errors.
+Należy pamiętać, że metoda `Post` teraz nie wysyła wyskakujących powiadomień. Wysyła ono pierwotne powiadomienie, które zawiera tylko identyfikator powiadomienia, a nie poufną zawartość. Pamiętaj również, aby dodać komentarz do operacji wysyłania dla platform, dla których nie skonfigurowano poświadczeń w centrum powiadomień, ponieważ spowodują one błędy.
 
-1. Now we will re-deploy this app to an Azure Website in order to make it accessible from all devices. Kliknij prawym przyciskiem myszy projekt **AppBackend** i wybierz polecenie **Publikuj**.
-2. Select Azure Website as your publish target. Sign in with your Azure account and select an existing or new Website, and make a note of the **destination URL** property in the **Connection** tab. We will refer to this URL as your *backend endpoint* later in this tutorial. Kliknij przycisk **Opublikuj**.
+1. Teraz będziemy ponownie wdrażać tę aplikację w witrynie sieci Web platformy Azure w celu udostępnienia jej ze wszystkich urządzeń. Kliknij prawym przyciskiem myszy projekt **AppBackend** i wybierz polecenie **Publikuj**.
+2. Wybierz witrynę sieci Web platformy Azure jako element docelowy publikowania. Zaloguj się przy użyciu konta platformy Azure i wybierz istniejącą lub nową witrynę sieci Web i zanotuj Właściwość **docelowa adresu URL** na karcie **połączenie** . W dalszej części tego samouczka będziemy odwoływać się do tego adresu URL jako *punktu końcowego zaplecza* . Kliknij przycisk **Opublikuj**.

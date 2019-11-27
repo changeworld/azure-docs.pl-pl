@@ -23,7 +23,7 @@ ms.locfileid: "74228800"
     * [**Moduł TPM (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
         * Rejestracja indywidualna: Identyfikator rejestracji i klucz poręczenia modułu TPM z urządzenia fizycznego lub symulatora modułu TPM.
         * Grupa rejestracji nie ma zastosowania do zaświadczania modułu TPM.
-    * [**X.509**](/azure/iot-dps/concepts-security):
+    * [**X. 509**](/azure/iot-dps/concepts-security):
         * Rejestracja indywidualna: [certyfikat liścia](/azure/iot-dps/concepts-security) z urządzenia fizycznego lub z emulatora [indeksu](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) zestawu SDK.
         * Grupa rejestracji: [urząd certyfikacji/certyfikat główny](/azure/iot-dps/concepts-security#root-certificate) lub [certyfikat pośredni](/azure/iot-dps/concepts-security#intermediate-certificate)używany do tworzenia certyfikatu urządzenia na urządzeniu fizycznym.  Można go również generować z emulatora indeksu zestawu SDK.
 * Dokładne wywołania interfejsu API mogą być różne z powodu różnic w języku. Zapoznaj się z przykładami w witrynie GitHub, aby uzyskać szczegółowe informacje:

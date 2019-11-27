@@ -42,7 +42,7 @@ Aby uzyskać więcej informacji, zobacz [stronę umów SLA Azure DNS](https://az
 
 Domena jest unikatową nazwą w systemie nazw domen. Przykładowa domena to contoso.com.
 
-Strefa DNS służy do hostowania rekordów systemu DNS dla określonej domeny. Na przykład domena contoso.com może zawierać kilka rekordów DNS. Rekordy mogą zawierać mail.contoso.com dla serwera poczty i www\.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
+Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Na przykład domena contoso.com może zawierać kilka rekordów DNS. Rekordy mogą zawierać mail.contoso.com dla serwera poczty i www\.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
 
 Nazwa domeny jest *tylko nazwą*. Strefa DNS jest zasobem danych zawierającym rekordy DNS dla nazwy domeny. Usługa Azure DNS umożliwia hostowanie strefy DNS i zarządzanie rekordami DNS dla domeny na platformie Azure. Zapewnia również serwerom nazw DNS odpowiedzi na zapytania DNS z Internetu.
 

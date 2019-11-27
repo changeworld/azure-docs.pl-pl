@@ -11,18 +11,18 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224358"
 ---
-| Warstwa | Bezpłatnie | Basic | Standardowa (Standard) |
+| Warstwa | Bezpłatna | Podstawowa | Standardowa (Standard) |
 | --- | --- | --- | --- |
-| Wywołania interfejsu API |500,000 |1.5 million per unit |15 million per unit |
-| Active devices |500 |Bez ograniczeń |Bez ograniczeń |
-| Skalowanie |ND |Do 6 jednostek |Bez ograniczeń jednostek |
-| Powiadomienia wypychane |Azure Notification Hubs Free tier included, up to 1 million pushes |Notification Hubs Basic tier included, up to 10 million pushes |Notification Hubs Standard tier included, up to 10 million pushes |
-| Real-time messaging/<br/>Gniazda sieci Web |Ograniczone |350 per mobile service |Bez ograniczeń |
-| Synchronizacje w trybie offline |Ograniczone |Zawarte |Zawarte |
-| Zaplanowane zadania |Ograniczone |Zawarte |Zawarte |
-| Azure SQL Database (required) <br/>Standard rates apply for additional capacity |20 MB included |20 MB included |20 MB included |
-| Możliwości obliczeniowe CPU |60 minutes per day |Bez ograniczeń |Bez ograniczeń |
-| Wychodzący transfer danych |165 MB per day (daily rollover) |Zawarte |Zawarte |
+| Wywołania interfejsu API |500,000 |1 500 000 na jednostkę |15 000 000 na jednostkę |
+| Aktywne urządzenia |500 |Nieograniczona liczba |Nieograniczona liczba |
+| Skalowanie |Nie dotyczy |Do 6 jednostek |Bez ograniczeń jednostek |
+| Powiadomienia push |Dostępna bezpłatna warstwa platformy Azure Notification Hubs, do 1 000 000 wypychania |Dołączona warstwa podstawowa Notification Hubs, do 10 000 000 wypychania |Dołączona Notification Hubs warstwy Standardowa, do 10 000 000 wypychania |
+| Obsługa komunikatów w czasie rzeczywistym/<br/>Gniazda sieci Web |Ograniczone |350 za usługę mobilną |Nieograniczona liczba |
+| Synchronizacje w trybie offline |Ograniczone |Dołączono |Dołączono |
+| Zaplanowane zadania |Ograniczone |Dołączono |Dołączono |
+| Azure SQL Database (wymagane) <br/>Stawki standardowe mają zastosowanie do dodatkowej pojemności |uwzględniono 20 MB |uwzględniono 20 MB |uwzględniono 20 MB |
+| Możliwości obliczeniowe CPU |60 minut dziennie |Nieograniczona liczba |Nieograniczona liczba |
+| Wychodzący transfer danych |165 MB dziennie (dzienne Przerzucanie) |Dołączono |Dołączono |
 
-For more information on limits and pricing, see [Azure Mobile Services pricing](https://azure.microsoft.com/pricing/details/mobile-services/). 
+Aby uzyskać więcej informacji o limitach i cenach, zobacz [Cennik usługi Azure Mobile Services](https://azure.microsoft.com/pricing/details/mobile-services/). 
 

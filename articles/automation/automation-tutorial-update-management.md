@@ -39,7 +39,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 * [Konto usługi Azure Automation](automation-offering-get-started.md) do przechowywania obserwatora i elementów runbook akcji oraz zadania obserwatora.
 * [Maszyna wirtualna](../virtual-machines/windows/quick-create-portal.md) do dołączenia.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 

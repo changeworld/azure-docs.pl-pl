@@ -53,11 +53,11 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
 
 1. W polu wyszukiwania wpisz `cosmos`, a następnie wybierz szablon **Wyzwalacz usługi Azure Cosmos DB**.
 
-1. If prompted, select **Install** to install the Azure Cosmos DB extension in the function app. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
+1. Jeśli zostanie wyświetlony monit, wybierz pozycję **Zainstaluj** , aby zainstalować rozszerzenie Azure Cosmos DB w aplikacji funkcji. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
 
     ![Instalowanie rozszerzeń powiązania](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
-1. Skonfiguruj nowy wyzwalacz, wprowadzając ustawienia określone w tabeli znajdującej się poniżej obrazu.
+1. Skonfiguruj nowy wyzwalacz, wprowadzając ustawienia wymienione w tabeli pod ilustracją.
 
     ![Tworzenie funkcji wyzwalanej przez usługę Azure Cosmos DB](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
 

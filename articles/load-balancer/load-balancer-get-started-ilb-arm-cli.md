@@ -1,7 +1,7 @@
 ---
-title: Create an internal Basic Load Balancer - Azure CLI
+title: Tworzenie wewnętrznego podstawowego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure
 titleSuffix: Azure Load Balancer
-description: In this article, learn how to create an internal load balancer using Azure CLI
+description: W tym artykule dowiesz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -28,7 +28,7 @@ W tym artykule przedstawiono sposób tworzenia wewnętrznego modułu równoważe
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -60,7 +60,7 @@ W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następ
 
 ### <a name="create-the-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Create an internal Load Balancer with [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) named **myLoadBalancer** that includes a frontend IP configuration named **myFrontEnd**, a back-end pool named **myBackEndPool** that is associated with a private IP address **10.0.0.7.
+Utwórz wewnętrzną Load Balancer za pomocą [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) o nazwie **myLoadBalancer** , która zawiera konfigurację adresu IP frontonu o nazwie Moja **fronton**, pulę zaplecza o nazwie **myBackEndPool** , która jest skojarzona z prywatnym adresem IP * * 10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \

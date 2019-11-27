@@ -28,7 +28,7 @@ ms.locfileid: "74277827"
 > - [Portal](diagnose-communication-problem-between-networks.md)
 > - [Program PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-troubleshoot-manage-cli.md)
-> - [REST API](network-watcher-troubleshoot-manage-rest.md)
+> - [Interfejs API REST](network-watcher-troubleshoot-manage-rest.md)
 
 Network Watcher udostępnia wiele funkcji, które odnoszą się do poznania zasobów sieciowych na platformie Azure. Jedną z tych możliwości jest rozwiązywanie problemów z zasobami. Rozwiązywanie problemów z zasobami można wywołać za pomocą portalu, programu PowerShell, interfejsu wiersza polecenia lub API REST. Gdy jest wywoływana, Network Watcher sprawdza kondycję Virtual Network bramy lub połączenia i zwraca swoje wyniki.
 

@@ -1,6 +1,6 @@
 ---
-title: Configure security to grant data access - Azure Time Series Insights Preview | Microsoft Docs
-description: Learn how to configure security, permissions, and manage data access policies in your Azure Time Series Insights Preview environment.
+title: Konfigurowanie zabezpieczeń w celu udzielenia dostępu do danych — wersja zapoznawcza Azure Time Series Insights | Microsoft Docs
+description: Dowiedz się, jak skonfigurować zabezpieczenia, uprawnienia i zarządzać zasadami dostępu do danych w środowisku Azure Time Series Insights w wersji zapoznawczej.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -18,116 +18,116 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74328263"
 ---
-# <a name="grant-data-access-to-an-environment"></a>Grant data access to an environment
+# <a name="grant-data-access-to-an-environment"></a>Przyznawanie dostępu do danych w środowisku
 
-This article discusses the two types of Azure Time Series Insights Preview access policies.
+W tym artykule omówiono dwa typy zasad dostępu w wersji zapoznawczej Azure Time Series Insights.
 
 > [!TIP]
-> Read [Authentication and Authorization](time-series-insights-authentication-and-authorization.md) for Azure Active Directory app registration steps.
+> Odczytaj [uwierzytelnianie i autoryzację](time-series-insights-authentication-and-authorization.md) dla Azure Active Directory kroków rejestracji aplikacji.
 
-## <a name="sign-in-to-time-series-insights"></a>Sign in to Time Series Insights
+## <a name="sign-in-to-time-series-insights"></a>Zaloguj się do Time Series Insights
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
-1. Locate your Time Series Insights environment. Enter `Time Series` in the **Search** box. Select **Time Series Environment** in the search results.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Znajdź środowisko Time Series Insights. Wprowadź `Time Series` w polu **wyszukiwania** . Wybierz pozycję **środowisko szeregów czasowych** w wynikach wyszukiwania.
 1. Wybierz środowisko usługi Time Series Insights z listy.
 
 ## <a name="grant-data-access"></a>Przyznawanie dostępu do danych
 
-Follow these steps to grant data access for a user principal.
+Wykonaj następujące kroki, aby udzielić dostępu do danych dla podmiotu zabezpieczeń.
 
-1. Select **Data Access Policies**, and then select **+ Add**.
+1. Wybierz pozycję **zasady dostępu do danych**, a następnie wybierz pozycję **+ Dodaj**.
 
-    [![Select and add a Data Access Policy](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
+    [![Wybieranie i Dodawanie zasad dostępu do danych](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
 
-1. Choose **Select user**. Search for the user name or email address to locate the user you want to add. Select **Select** to confirm the selection.
+1. Wybierz **pozycję Wybierz użytkownika**. Wyszukaj nazwę użytkownika lub adres e-mail, aby zlokalizować użytkownika, który chcesz dodać. Wybierz pozycję **Wybierz** , aby potwierdzić wybór.
 
-    [![Select a user to add](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
+    [![wybrać użytkownika do dodania](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
 
-1. Choose **Select role**. Choose the appropriate access role for the user:
+1. Wybierz **pozycję Wybierz rolę**. Wybierz odpowiednią rolę dostępu dla użytkownika:
 
-    * Select **Contributor** if you want to allow the user to change reference data and share saved queries and perspectives with other users of the environment.
+    * Wybierz opcję **współautor** , jeśli chcesz zezwolić użytkownikowi na zmianę danych referencyjnych i udostępnianie zapisanych zapytań i perspektyw innym użytkownikom środowiska.
 
-    * Otherwise, select **Reader** to allow the user to query data in the environment and save personal, not shared, queries in the environment.
+    * W przeciwnym razie wybierz opcję **czytelnik** , aby zezwolić użytkownikowi na wykonywanie zapytań dotyczących danych w środowisku i zapisywanie osobistych, nieudostępnianych zapytań w środowisku.
 
-   Select **OK** to confirm the role choice.
+   Wybierz **przycisk OK** , aby potwierdzić wybór roli.
 
-    [![Confirm the selected role](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
+    [![potwierdzić wybraną rolę](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
 
-1. Select **OK** on the **Select User Role** page.
+1. Na stronie **Wybieranie roli użytkownika** wybierz **przycisk OK** .
 
-    [![Select OK on the Select User Role page](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
+    [![wybierz przycisk OK na stronie Wybieranie roli użytkownika](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
 
-1. Confirm that the **Data Access Policies** page lists the users and the roles for each user.
+1. Upewnij się, że na stronie **zasady dostępu do danych** są wyświetlane Użytkownicy i role dla każdego użytkownika.
 
-    [![Verify the correct users and roles](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
+    [![zweryfikować prawidłowych użytkowników i ról](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
 
-## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Provide guest access from another Azure AD tenant
+## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Zapewnianie dostępu gościa z innej dzierżawy usługi Azure AD
 
-The `Guest` role isn’t a management role. It’s a term used for an account that’s invited from one tenant to another. After the guest account is invited into the tenant’s directory, it can have the same access control applied to it like any other account. You can grant management access to a Time Series Insights Environment by using the Access Control (IAM) blade. Or you can grant access to the data in the environment through the Data Access Policies blade. For more information on Azure Active Directory (Azure AD) tenant guest access, read [Add Azure Active Directory B2B collaboration users in the Azure portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+Rola `Guest` nie jest rolą zarządzania. Jest to termin używany w przypadku konta zaproszonego z jednej dzierżawy do innej. Po zaproszeniu konta gościa do katalogu dzierżawy może on mieć taką samą kontrolę dostępu, jak dowolne inne konto. Można udzielić dostępu do środowiska Time Series Insights za pomocą bloku Access Control (IAM). Można też udzielić dostępu do danych w środowisku za pomocą bloku zasady dostępu do danych. Aby uzyskać więcej informacji na temat dostępu gościa dzierżawy Azure Active Directory (Azure AD), przeczytaj temat [dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
 
-Follow these steps to grant guest access to a Time Series Insights environment to an Azure AD user from another tenant.
+Wykonaj następujące kroki, aby przyznać dostęp gościa do środowiska Time Series Insights do użytkownika usługi Azure AD z innej dzierżawy.
 
-1. Select **Data Access Policies**, and then select **+ Invite**.
+1. Wybierz pozycję **zasady dostępu do danych**, a następnie wybierz pozycję **+ Zaproś**.
 
-    [![Select Data Access Polices, then + Invite](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
+    [![wybierz zasady dostępu do danych, a następnie + Zaproś](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
-1. Enter the email address for the user you want to invite. This email address must be associated with Azure AD. You can optionally include a personal message with the invitation.
+1. Wprowadź adres e-mail użytkownika, który chcesz zaprosić. Ten adres e-mail musi być skojarzony z usługą Azure AD. Opcjonalnie możesz dołączyć osobistą wiadomość z zaproszeniem.
 
-    [![Enter the email address to find the selected user](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
+    [![wprowadź adres e-mail, aby znaleźć wybranego użytkownika](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
 
-1. Look for the confirmation bubble that appears on the screen.
+1. Wyszukaj dymek potwierdzenia, który pojawia się na ekranie.
 
-    [![Look for the confirmation bubble to appear](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
+    [![Wyszukaj dymek potwierdzenia do wyświetlenia](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
 
-1. Choose **Select user**. Search for the email address of the guest user you invited to locate the user you want to add. Then, **Select** to confirm the selection.
+1. Wybierz **pozycję Wybierz użytkownika**. Wyszukaj adres e-mail zaproszonego użytkownika-gościa, aby zlokalizować użytkownika, który chcesz dodać. Następnie **Wybierz pozycję** , aby potwierdzić wybór.
 
-    [![Select the user and confirm the selection](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
+    [![wybrać użytkownika i potwierdzić wybór](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
-1. Choose **Select role**. Choose the appropriate access role for the guest user:
+1. Wybierz **pozycję Wybierz rolę**. Wybierz odpowiednią rolę dostępu dla użytkownika-gościa:
 
-    * Select **Contributor** if you want to allow the user to change reference data and share saved queries and perspectives with other users of the environment.
+    * Wybierz opcję **współautor** , jeśli chcesz zezwolić użytkownikowi na zmianę danych referencyjnych i udostępnianie zapisanych zapytań i perspektyw innym użytkownikom środowiska.
 
-    * Otherwise, select **Reader** to allow the user to query data in the environment and save personal, not shared, queries in the environment.
+    * W przeciwnym razie wybierz opcję **czytelnik** , aby zezwolić użytkownikowi na wykonywanie zapytań dotyczących danych w środowisku i zapisywanie osobistych, nieudostępnianych zapytań w środowisku.
 
-   Select **OK** to confirm the role choice.
+   Wybierz **przycisk OK** , aby potwierdzić wybór roli.
 
-    [![Confirm the role choice](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
+    [![potwierdzić wybór roli](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
 
-1. Select **OK** on the **Select User Role** page.
+1. Na stronie **Wybieranie roli użytkownika** wybierz **przycisk OK** .
 
-1. Confirm that the **Data Access Policies** page lists the guest user and the roles for each guest user.
+1. Upewnij się, że na stronie **zasady dostępu do danych** jest wyświetlana lista użytkowników-Gości i role poszczególnych użytkowników-Gości.
 
-    [![Verify that users and roles are correctly assigned](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
+    [![sprawdzić, czy użytkownicy i role są prawidłowo przypisani](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
 
-1. Now, the guest user will receive an invitation email at the email address specified above. The guest user will select **Get Started** to confirm their acceptance and connect to Azure Cloud.
+1. Teraz użytkownik-gość otrzyma wiadomość e-mail z zaproszeniem na podany powyżej adres e-mail. Użytkownik-Gość wybierze opcję **Rozpocznij** , aby potwierdzić akceptację i nawiązać połączenie z chmurą platformy Azure.
 
-    [![Guest selects Get Started to accept](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
+    [![gość wybierz opcję Rozpocznij, aby zaakceptować](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
 
-1. After selecting **Get Started** the guest user will be presented with a permissions box associated with the administrator's organization. Upon granting permission by selecting **Accept**, they will be signed in.
+1. Po wybraniu pozycji **Rozpocznij** użytkownikowi gość zostanie wyświetlony pole uprawnień skojarzone z organizacją administratora. Po udzieleniu uprawnień przez wybranie pozycji **Akceptuj**, zostaną one zalogowane.
 
-    [![Guest reviews permissions and accepts](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
+    [![e przegląd uprawnień Gości i akceptuje](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 
-1. The administrator [shares the environment URL](time-series-insights-parameterized-urls.md) with their guest.
+1. Administrator [współużytkuje adres URL środowiska](time-series-insights-parameterized-urls.md) z gościem.
 
-1. After the guest user is signed in to the email address you used to invite them, and they accept the invitation, they will be directed to Azure portal. 
+1. Gdy użytkownik-Gość zostanie zalogowany na adres e-mail, który został użyty do jego zaproszenia i zaakceptuje zaproszenie, zostanie skierowany do Azure Portal. 
 
-1. The guest can now access the shared environment using the environment URL provided by the administrator. They can enter that URL into their web browser for immediate access.
+1. Gość może teraz uzyskiwać dostęp do udostępnionego środowiska przy użyciu adresu URL środowiska udostępnionego przez administratora. Mogą oni wprowadzić ten adres URL w przeglądarce sieci Web, aby uzyskać natychmiastowy dostęp.
 
-1. The guest user will see the administrator's tenant by selecting their profile icon in the upper-right corner of the Time Series explorer.
+1. Użytkownik-Gość zobaczy dzierżawę administratora, wybierając ikonę profilu w prawym górnym rogu Eksploratora szeregów czasowych.
 
-    [![Avatar selection on insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
+    [![wybór awatara w insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
 
-    After the guest user selects the administrator's tenant, they will have the ability to select the shared Time Series Insights environment. 
+    Po wybraniu dzierżawy przez użytkownika-gościa będzie można wybrać środowisko udostępnione Time Series Insights. 
     
-    They now have all the capabilities associated with the role that you provided them with in **step 5**.
+    Mają teraz wszystkie możliwości skojarzone z rolą podaną w **kroku 5**.
 
-    [![Guest user selects your Azure tenant from drop-down](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
+    [![użytkownik-Gość wybiera dzierżawę platformy Azure z listy rozwijanej](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Learn [how to add an Azure Event Hubs event source](./time-series-insights-how-to-add-an-event-source-eventhub.md) to your Time Series Insights environment.
+* Dowiedz się, [jak dodać źródło zdarzeń Event Hubs platformy Azure](./time-series-insights-how-to-add-an-event-source-eventhub.md) do środowiska Time Series Insights.
 
-* Send [events to the event source](./time-series-insights-send-events.md).
+* Wyślij [zdarzenia do źródła zdarzeń](./time-series-insights-send-events.md).
 
-* View [your environment in the Time Series Insights Preview explorer](./time-series-insights-update-explorer.md).
+* Wyświetl [swoje środowisko w eksploratorze Time Series Insights w wersji zapoznawczej](./time-series-insights-update-explorer.md).

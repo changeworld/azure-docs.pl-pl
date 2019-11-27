@@ -34,7 +34,7 @@ Brak poleceń cmdlet programu PowerShell dla płaszczyzny danych dla kolejek. Ab
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 

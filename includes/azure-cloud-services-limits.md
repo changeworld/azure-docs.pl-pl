@@ -13,11 +13,11 @@ ms.locfileid: "74224519"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| [Web or worker roles per deployment](../articles/cloud-services/cloud-services-choose-me.md)<sup>1</sup> |25 |25 |
-| [Instance input endpoints](/previous-versions/azure/reference/gg557552(v=azure.100)#instanceinputendpoint) per deployment |25 |25 |
-| [Input endpoints](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) per deployment |25 |25 |
-| [Internal endpoints](/previous-versions/azure/reference/gg557552(v=azure.100)#internalendpoint) per deployment |25 |25 |
-| [Hosted service certificates](../articles/cloud-services/cloud-services-certs-create.md#what-are-service-certificates) per deployment |199 |199 |
+| [Role sieci Web i procesu roboczego na wdrożenie](../articles/cloud-services/cloud-services-choose-me.md)<sup>1</sup> |25 |25 |
+| [Wejściowe punkty końcowe wystąpienia](/previous-versions/azure/reference/gg557552(v=azure.100)#instanceinputendpoint) dla wdrożenia |25 |25 |
+| [Wejściowe punkty końcowe](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) na wdrożenie |25 |25 |
+| [Wewnętrzne punkty końcowe](/previous-versions/azure/reference/gg557552(v=azure.100)#internalendpoint) na wdrożenie |25 |25 |
+| [Certyfikaty usługi hostowanej](../articles/cloud-services/cloud-services-certs-create.md#what-are-service-certificates) na wdrożenie |199 |199 |
 
-<sup>1</sup>Each Azure Cloud Service with web or worker roles can have two deployments, one for production and one for staging. This limit refers to the number of distinct roles, that is, configuration. This limit doesn't refer to the number of instances per role, that is, scaling.
+<sup>1</sup> Każda usługa w chmurze platformy Azure z rolami sieci Web lub procesu roboczego może mieć dwa wdrożenia — jeden dla środowiska produkcyjnego i jeden do przemieszczania. Ten limit odnosi się do liczby różnych ról, czyli konfiguracji. Ten limit nie odnosi się do liczby wystąpień na rolę, czyli skalowania.
 

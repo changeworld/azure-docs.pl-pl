@@ -11,20 +11,20 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210981"
 ---
-**Public DNS zones**
+**Publiczne strefy DNS**
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Public DNS Zones per subscription |250 <sup>1</sup> |
-| Record sets per public DNS zone |10,000 <sup>1</sup> |
-| Records per record set in public DNS zone |20 |
-| Number of Alias records for a single Azure resource |20|
-| Private DNS zones per subscription |1000|
-| Record sets per private DNS zone |25000|
-| Records per record set for private DNS zones |20|
-| Virtual Network Links per private DNS zone |1000|
-| Virtual Networks Links per private DNS zones with auto-registration enabled |100|
-| Number of private DNS zones a virtual network can get linked to with auto-registration enabled |1|
-| Number of private DNS zones a virtual network can get linked |1000|
+| Strefy DNS publiczny na subskrypcję |250 <sup>1</sup> |
+| Zestawy rekordów na publiczną strefę DNS |10 000 <sup>1</sup> |
+| Rekordy na zestaw rekordów w publicznej strefie DNS |20 |
+| Liczba rekordów aliasów dla pojedynczego zasobu platformy Azure |20|
+| Strefy Prywatna strefa DNS na subskrypcję |1000|
+| Zestawy rekordów na prywatną strefę DNS |25000|
+| Rekordy na zestaw rekordów dla prywatnych stref DNS |20|
+| Linki Virtual Network na prywatną strefę DNS |1000|
+| Linki sieci wirtualnych na prywatne strefy DNS z włączoną rejestracją autorejestrowania |100|
+| Liczba prywatnych stref DNS, z którymi można połączyć sieć wirtualną z włączoną funkcją autorejestracji |1|
+| Liczba prywatnych stref DNS, do których można połączyć sieć wirtualną |1000|
 
-<sup>1</sup>If you need to increase these limits, contact Azure Support.
+<sup>1</sup> Jeśli musisz zwiększyć te limity, skontaktuj się z pomocą techniczną platformy Azure.

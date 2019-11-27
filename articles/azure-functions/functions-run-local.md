@@ -50,7 +50,7 @@ W wersji 2. x narzędzi jest używane środowisko uruchomieniowe Azure Functions
 > [!IMPORTANT]
 > Istnieje możliwość obejścia wymagania dotyczącego instalowania zestawu SDK platformy .NET Core 2. x przy użyciu [Pakiety rozszerzeń].
 
-#### <a name="windows-npm"></a>Windows
+#### <a name="windows-npm"></a>Systemy
 
 Poniższe kroki służą do instalowania podstawowych narzędzi w systemie Windows przy użyciu programu npm. Możesz również użyć [czekolady](https://chocolatey.org/). Aby uzyskać więcej informacji, zobacz [plik Readme podstawowych narzędzi](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
@@ -199,7 +199,7 @@ Domyślnie te ustawienia nie są migrowane automatycznie, gdy projekt jest publi
 Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji, zobacz sekcję zmienne środowiskowe w następujących tematach referencyjnych dotyczących języka:
 
 * [C#prekompilowanego](functions-dotnet-class-library.md#environment-variables)
-* [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
+* [C#skrypt (. CSX)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -526,5 +526,5 @@ Aby zgłosić błąd lub żądanie funkcji, [Otwórz problem z usługą GitHub](
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
 [Pakiety rozszerzeń]: functions-bindings-register.md#extension-bundles

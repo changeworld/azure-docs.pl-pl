@@ -1,6 +1,6 @@
 ---
-title: Provision devices across load balanced hubs using Azure IoT Hub Device Provisioning Service
-description: Tutorial - Device Provisioning Service automatic device provisioning across load balanced IoT hubs in Azure Portal
+title: Udostępnianie urządzeń w centrach równoważenia obciążenia przy użyciu usługi Azure IoT Hub Device Provisioning Service
+description: Samouczek — usługa aprowizacji urządzeń automatyczne Inicjowanie obsługi urządzeń w centrach IoT o zrównoważonym obciążeniu w witrynie Azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,7 +15,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229447"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Provision devices across load-balanced IoT hubs
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Samouczek: Udostępnianie urządzeń w centrach IoT o zrównoważonym obciążeniu
 
 W tym samouczku przedstawiono sposób aprowizacji urządzeń w wielu centrach IoT Hub z równoważeniem obciążenia przy użyciu usługi Device Provisioning Service. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -55,7 +55,7 @@ Wykonaj następujące czynności, aby skonfigurować zasady alokacji:
 
 1. Aby ustawić zasady alokacji, na stronie Usługa Device Provisioning kliknij pozycję **Zarządzanie zasadami alokacji**.
 2. Wybierz zasady alokacji **Dystrybucja z równymi wagami**.
-3. Kliknij przycisk **Save** (Zapisz).
+3. Kliknij pozycję **Zapisz**.
 
 ## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Łączenie nowego centrum IoT z usługą Device Provisioning Service
 
@@ -65,7 +65,7 @@ Wykonaj następujące czynności, aby skonfigurować zasady alokacji:
 2. Na stronie Usługa Device Provisioning kliknij pozycję **Połączone centra IoT Hub**.
 3. Kliknij pozycję **Add** (Dodaj).
 4. Na stronie **Dodawanie linku do centrum IoT Hub** użyj przycisków opcji, aby określić, czy połączone centrum IoT znajduje się w bieżącej subskrypcji, czy w innej subskrypcji. Następnie wybierz nazwę centrum IoT w polu **Centrum IoT**.
-5. Kliknij przycisk **Save** (Zapisz).
+5. Kliknij pozycję **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

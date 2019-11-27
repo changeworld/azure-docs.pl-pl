@@ -1,6 +1,6 @@
 ---
-title: Enroll TPM device to Azure Device Provisioning Service using Java
-description: Quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service using Java service SDK. W tym przewodniku Szybki start używane są rejestracje indywidualne.
+title: Rejestrowanie urządzenia TPM w usłudze Azure Device Provisioning przy użyciu języka Java
+description: Szybki Start — rejestrowanie urządzenia TPM w usłudze Azure IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi Java. W tym przewodniku Szybki start używane są rejestracje indywidualne.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -16,7 +16,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422934"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Quickstart: Enroll TPM device to IoT Hub Device Provisioning Service using Java service SDK
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Szybki Start: rejestrowanie urządzenia TPM w IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi Java
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -135,19 +135,19 @@ W tej sekcji przedstawiono sposób dodawania szczegółów aprowizacji urządzen
 
 4. Sprawdź poprawność rejestracji w oknie danych wyjściowych. 
 
-5. Przejdź do usługi aprowizacji w witrynie Azure Portal. Select **Manage enrollments**, and select the **Individual Enrollments** tab. Notice that the *Registration ID* of your simulated TPM device is now listed. 
+5. Przejdź do usługi aprowizacji w witrynie Azure Portal. Wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz kartę **rejestracje indywidualne** . Zauważ, że na liście znajduje się teraz *Identyfikator rejestracji* symulowanego urządzenia TPM. 
 
     ![Potwierdzanie poprawności rejestracji urządzenia TPM w portalu](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-If you plan to explore the Java service sample, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all resources created by this quickstart.
+Jeśli planujesz Eksplorowanie przykładu usługi Java, nie czyść zasobów utworzonych w tym przewodniku Szybki Start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki Start.
 
 1. Zamknij okno danych wyjściowych przykładowej usługi Java na swojej maszynie.
 1. Zamknij okno symulatora modułu TPM, które mogło zostać utworzone do symulacji urządzenia TPM.
-1. Navigate to your Device Provisioning service in the Azure portal, select **Manage enrollments**, and then select the **Individual Enrollments** tab. Select the check box next to the *Registration ID* for the enrollment entry you created using this quickstart, and press the **Delete** button at the top of the pane.
+1. Przejdź do usługi Device Provisioning w Azure Portal, wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz kartę **indywidualne rejestracje** . Zaznacz pole wyboru obok *identyfikatora rejestracji* wpisu rejestracji utworzonego w ramach tego przewodnika Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka.
 
 ## <a name="next-steps"></a>Następne kroki
-In this quickstart, you enrolled a simulated TPM device to your Device Provisioning service. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
+W tym przewodniku szybki start zarejestrowano symulowane urządzenie TPM w usłudze Device Provisioning. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
 
 > [!div class="nextstepaction"]
 > [Samouczki dla usługi Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

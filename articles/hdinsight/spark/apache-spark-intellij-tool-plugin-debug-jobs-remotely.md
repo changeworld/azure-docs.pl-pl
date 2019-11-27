@@ -32,7 +32,7 @@ Ten artykuł zawiera wskazówki krok po kroku dotyczące sposobu korzystania z n
 * **Subskrypcja platformy Azure**. Aby uzyskać więcej informacji, zobacz artykuł [Uzyskaj bezpłatną wersję próbną platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Klaster Apache Spark w usłudze HDInsight**. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 * **Zestaw Oracle Java Development Kit**. Można go zainstalować z [witryny sieci Web Oracle](https://aka.ms/azure-jdks).
-* **IntelliJ IDEA**. W tym artykule jest używane wersja 2017,1. Można go zainstalować z [witryny sieci Web JetBrains](https://www.jetbrains.com/idea/download/).
+* **INTELLIJ pomysł**. W tym artykule jest używane wersja 2017,1. Można go zainstalować z [witryny sieci Web JetBrains](https://www.jetbrains.com/idea/download/).
 * **Narzędzia usługi HDInsight w Azure Toolkit for IntelliJ**. Narzędzia HDInsight Tools for IntelliJ są dostępne w ramach Azure Toolkit for IntelliJ. Aby uzyskać instrukcje dotyczące sposobu instalowania zestawu narzędzi platformy Azure, zobacz [install Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
 * **Zaloguj się do subskrypcji platformy Azure z pomysłu IntelliJ**. Postępuj zgodnie z instrukcjami w temacie [Use Azure Toolkit for IntelliJ, aby utworzyć aplikacje Apache Spark dla klastra usługi HDInsight](apache-spark-intellij-tool-plugin.md).
 * **Obejście wyjątku**. Podczas uruchamiania aplikacji Spark Scala na potrzeby zdalnego debugowania na komputerze z systemem Windows może wystąpić wyjątek. Ten wyjątek jest wyjaśniony w platformie [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) i występuje z powodu braku pliku WinUtils. exe w systemie Windows. Aby obejść ten błąd, należy [pobrać plik wykonywalny](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do lokalizacji takiej jak **C:\WinUtils\bin**. Dodaj zmienną środowiskową **HADOOP_HOME** , a następnie ustaw wartość zmiennej na **C\WinUtils**.
@@ -59,7 +59,7 @@ Zalecamy również utworzenie klastra Apache Spark w usłudze Azure HDInsight, k
 
     ![Wybieranie hostów w programie Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. Zostanie wyświetlona lista węzłów głównych, węzłów procesu roboczego i węzłów dozorcy. Węzły główne mają prefiks **HN**\*. Wybierz pierwszy węzeł główny.
+1. Zostanie wyświetlona lista węzłów głównych, węzłów procesu roboczego i węzłów dozorcy. Węzły główne mają prefiks **HN***. Wybierz pierwszy węzeł główny.
 
     ![Znajdowanie węzła głównego w programie Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
@@ -127,7 +127,7 @@ Zalecamy również utworzenie klastra Apache Spark w usłudze Azure HDInsight, k
 
     ![Biblioteka pobierania POMYSŁu IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
-    c. W oknie dialogowym **pobieranie biblioteki z repozytorium Maven** Wyszukaj i Dodaj następujące biblioteki:
+    d. W oknie dialogowym **pobieranie biblioteki z repozytorium Maven** Wyszukaj i Dodaj następujące biblioteki:
 
    * `org.scalatest:scalatest_2.10:2.2.1`
    * `org.apache.hadoop:hadoop-azure:2.7.1`
@@ -177,7 +177,7 @@ Zalecamy również utworzenie klastra Apache Spark w usłudze Azure HDInsight, k
     </property>
     ```
 
-   c. Zapisz plik.
+   d. Zapisz plik.
 
 1. Dodaj klasę główną dla aplikacji. W **Eksploratorze projektów**kliknij prawym przyciskiem myszy **pozycję src**, wskaż polecenie **Nowy**, a następnie wybierz pozycję **Klasa Scala**.
 

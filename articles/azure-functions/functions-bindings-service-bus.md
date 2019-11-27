@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus bindings for Azure Functions
-description: Understand how to use Azure Service Bus triggers and bindings in Azure Functions.
+title: Usługa Azure powiązania usługi Service Bus dla usługi Azure Functions
+description: Dowiedz się, jak używać usługi Azure Service Bus wyzwalaczy i powiązań w usłudze Azure Functions.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
@@ -13,45 +13,45 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231061"
 ---
-# <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus bindings for Azure Functions
+# <a name="azure-service-bus-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Service Bus dla usługi Azure Functions
 
-This article explains how to work with Azure Service Bus bindings in Azure Functions. Azure Functions supports trigger and output bindings for Service Bus queues and topics.
+W tym artykule wyjaśniono, jak pracować z usługą Azure Service Bus powiązań w usłudze Azure Functions. Usługi Azure Functions obsługuje wyzwalanie i danych wyjściowych powiązania z tematów i kolejek usługi Service Bus.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Packages - Functions 1.x
+## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-The Service Bus bindings are provided in the [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet package, version 2.x. 
+Powiązania Service Bus są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) w wersji 2. x. 
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
 
-The Service Bus bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet package, version 3.x. Source code for the package is in the [azure-functions-servicebus-extension](https://github.com/Azure/azure-functions-servicebus-extension) GitHub repository.
+Powiązania Service Bus są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-Functions-ServiceBus-Extension](https://github.com/Azure/azure-functions-servicebus-extension) GitHub.
 
 > [!NOTE]
-> Version 2.x does not create the topic or subscription configured in the `ServiceBusTrigger` instance. Version 2.x is based on [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) and does not handle queue management.
+> Wersja 2. x nie tworzy tematu ani subskrypcji skonfigurowanej w wystąpieniu `ServiceBusTrigger`. Wersja 2. x jest oparta na [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) i nie obsługuje zarządzania kolejki.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>Wyzwalacz
 
-Use the Service Bus trigger to respond to messages from a Service Bus queue or topic. 
+Użyj wyzwalacza usługi Service Bus, aby odpowiadać na komunikaty z kolejki usługi Service Bus lub temat. 
 
-## <a name="trigger---example"></a>Trigger - example
+## <a name="trigger---example"></a>Wyzwalacz — przykład
 
-See the language-specific example:
+Zobacz przykład specyficzny dla języka:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#skrypt (. CSX)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-### <a name="trigger---c-example"></a>Trigger - C# example
+### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that reads [message metadata](#trigger---message-metadata) and logs a Service Bus queue message:
+Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która odczytuje [metadane komunikatów](#trigger---message-metadata) i rejestruje komunikat Service Bus kolejki:
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -70,11 +70,11 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger - C# script example
+### <a name="trigger---c-script-example"></a>Wyzwalacz — przykładowy skrypt w języku C#
 
-The following example shows a Service Bus trigger binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function reads [message metadata](#trigger---message-metadata) and logs a Service Bus queue message.
+Poniższy przykład przedstawia powiązanie wyzwalacza Service Bus w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja odczytuje [metadane komunikatów](#trigger---message-metadata) i rejestruje komunikat Service Bus kolejki.
 
-Here's the binding data in the *function.json* file:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -91,7 +91,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's the C# script code:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```cs
 using System;
@@ -110,11 +110,11 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Trigger - F# example
+### <a name="trigger---f-example"></a>Wyzwalacz - F# przykład
 
-The following example shows a Service Bus trigger binding in a *function.json* file and an [F# function](functions-reference-fsharp.md) that uses the binding. The function logs a Service Bus queue message. 
+Poniższy przykład przedstawia powiązanie wyzwalacza Service Bus w pliku *Function. JSON* i [ F# funkcję](functions-reference-fsharp.md) , która używa powiązania. Funkcja rejestruje komunikatu w kolejce usługi Service Bus. 
 
-Here's the binding data in the *function.json* file:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -131,16 +131,16 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's the F# script code:
+Oto F# kod skryptu:
 
 ```fsharp
 let Run(myQueueItem: string, log: ILogger) =
     log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
 ```
 
-### <a name="trigger---java-example"></a>Trigger - Java example
+### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
 
-The following Java function uses the `@ServiceBusQueueTrigger` annotation from the [Java functions runtime library](/java/api/overview/azure/functions/runtime) to describe the configuration for a Service Bus queue trigger. The  function grabs the message placed on the queue and adds it to the logs.
+Następująca funkcja języka Java używa adnotacji `@ServiceBusQueueTrigger` z [biblioteki środowiska uruchomieniowego usługi Java Functions](/java/api/overview/azure/functions/runtime) do opisywania konfiguracji dla wyzwalacza Service Bus kolejki. Funkcja poniesie komunikat umieszczony w kolejce i dodaje ją do dzienników.
 
 ```java
 @FunctionName("sbprocessor")
@@ -154,7 +154,7 @@ The following Java function uses the `@ServiceBusQueueTrigger` annotation from t
  }
 ```
 
-Java functions can also be triggered when a message is added to a Service Bus topic. The following example uses the `@ServiceBusTopicTrigger` annotation to describe the trigger configuration.
+Funkcje języka Java mogą być również wyzwalane, gdy komunikat zostanie dodany do tematu Service Bus. Poniższy przykład używa adnotacji `@ServiceBusTopicTrigger`, aby opisać konfigurację wyzwalacza.
 
 ```java
 @FunctionName("sbtopicprocessor")
@@ -171,11 +171,11 @@ Java functions can also be triggered when a message is added to a Service Bus to
     }
 ```
 
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript example
+### <a name="trigger---javascript-example"></a>Wyzwalacz — przykład JavaScript
 
-The following example shows a Service Bus trigger binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function reads [message metadata](#trigger---message-metadata) and logs a Service Bus queue message. 
+W poniższym przykładzie pokazano powiązanie wyzwalacza Service Bus w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja odczytuje [metadane komunikatów](#trigger---message-metadata) i rejestruje komunikat Service Bus kolejki. 
 
-Here's the binding data in the *function.json* file:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -192,7 +192,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's the JavaScript script code:
+Poniżej przedstawiono kod skryptu języka JavaScript:
 
 ```javascript
 module.exports = function(context, myQueueItem) {
@@ -204,11 +204,11 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Trigger - Python example
+### <a name="trigger---python-example"></a>Wyzwalacz — przykład w języku Python
 
-The following example demonstrates how to read a ServiceBus queue message via a trigger.
+Poniższy przykład ilustruje sposób odczytywania komunikatu kolejki ServiceBus za pośrednictwem wyzwalacza.
 
-A ServiceBus binding is defined in *function.json* where *type* is set to `serviceBusTrigger`.
+Powiązanie ServiceBus jest zdefiniowane w *funkcji Function. JSON* , w której *typ* ma wartość `serviceBusTrigger`.
 
 ```json
 {
@@ -225,7 +225,7 @@ A ServiceBus binding is defined in *function.json* where *type* is set to `servi
 }
 ```
 
-The code in *_\_init_\_.py* declares a parameter as `func.ServiceBusMessage` which allows you to read the queue message in your function.
+Kod w  *_\_init_\_. PR* deklaruje parametr jako `func.ServiceBusMessage`, który umożliwia odczytywanie komunikatu w kolejce w funkcji.
 
 ```python
 import azure.functions as func
@@ -255,15 +255,15 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger - attributes
+## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
 
-In [C# class libraries](functions-dotnet-class-library.md), use the following attributes to configure a Service Bus trigger:
+W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj następujących atrybutów, aby skonfigurować wyzwalacz Service Bus:
 
 * [ServiceBusTriggerAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusTriggerAttribute.cs)
 
-  The attribute's constructor takes the name of the queue or the topic and subscription. In Azure Functions version 1.x, you can also specify the connection's access rights. If you don't specify access rights, the default is `Manage`. For more information, see the [Trigger - configuration](#trigger---configuration) section.
+  Konstruktor atrybutu ma nazwę kolejki lub tematu i subskrypcji. W usłudze Azure Functions w wersji 1.x, można również określić, że prawa dostępu do tego połączenia. Jeśli nie określisz praw dostępu, wartość domyślna to `Manage`. Aby uzyskać więcej informacji, zobacz sekcję [wyzwalacz-konfiguracja](#trigger---configuration) .
 
-  Here's an example that shows the attribute used with a string parameter:
+  Oto przykład pokazujący atrybut używany z parametrem ciągu:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -274,7 +274,7 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  You can set the `Connection` property to specify the Service Bus account to use, as shown in the following example:
+  Można ustawić właściwość `Connection`, aby określić konto Service Bus, które ma być używane, jak pokazano w następującym przykładzie:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -286,11 +286,11 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-  For a complete example, see [Trigger - C# example](#trigger---c-example).
+  Aby zapoznać się z kompletnym przykładem, zobacz [wyzwalacz- C# example](#trigger---c-example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
-  Provides another way to specify the Service Bus account to use. The constructor takes the name of an app setting that contains a Service Bus connection string. The attribute can be applied at the parameter, method, or class level. The following example shows class level and method level:
+  Udostępnia inny sposób, aby określić konto usługi Service Bus do użycia. Konstruktor przyjmuje nazwę ustawienia aplikacji zawierającego parametry połączenia usługi Service Bus. Ten atrybut można zastosować na parametrów, metody lub poziomie klasy. Poniższy przykład pokazuje poziom klasy i metody:
 
   ```csharp
   [ServiceBusAccount("ClassLevelServiceBusAppSetting")]
@@ -306,95 +306,95 @@ In [C# class libraries](functions-dotnet-class-library.md), use the following at
   }
   ```
 
-The Service Bus account to use is determined in the following order:
+Konto usługi Service Bus do użycia, jest określana w następującej kolejności:
 
-* The `ServiceBusTrigger` attribute's `Connection` property.
-* The `ServiceBusAccount` attribute applied to the same parameter as the `ServiceBusTrigger` attribute.
-* The `ServiceBusAccount` attribute applied to the function.
-* The `ServiceBusAccount` attribute applied to the class.
-* The "AzureWebJobsServiceBus" app setting.
+* Właściwość `Connection` atrybutu `ServiceBusTrigger`.
+* Atrybut `ServiceBusAccount` stosowany do tego samego parametru, który jest atrybutem `ServiceBusTrigger`.
+* Atrybut `ServiceBusAccount` stosowany do funkcji.
+* Atrybut `ServiceBusAccount` stosowany do klasy.
+* Ustawienie aplikacji "AzureWebJobsServiceBus".
 
-## <a name="trigger---configuration"></a>Trigger - configuration
+## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `ServiceBusTrigger` attribute.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `ServiceBusTrigger` atrybutu.
 
-|function.json property | Attribute property |Opis|
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | nd. | Must be set to "serviceBusTrigger". This property is set automatically when you create the trigger in the Azure portal.|
-|**direction** | nd. | Must be set to "in". This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | nd. | The name of the variable that represents the queue or topic message in function code. Set to "$return" to reference the function return value. |
-|**queueName**|**QueueName**|Name of the queue to monitor.  Set only if monitoring a queue, not for a topic.
-|**topicName**|**TopicName**|Name of the topic to monitor. Set only if monitoring a topic, not for a queue.|
-|**subscriptionName**|**SubscriptionName**|Name of the subscription to monitor. Set only if monitoring a topic, not for a queue.|
-|**connection**|**Połączenie**|The name of an app setting that contains the Service Bus connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name. For example, if you set `connection` to "MyServiceBus", the Functions runtime looks for an app setting that is named "AzureWebJobsMyServiceBus." If you leave `connection` empty, the Functions runtime uses the default Service Bus connection string in the app setting that is named "AzureWebJobsServiceBus".<br><br>To obtain a connection string, follow the steps shown at [Get the management credentials](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). The connection string must be for a Service Bus namespace, not limited to a specific queue or topic. |
-|**accessRights**|**Dostęp**|Access rights for the connection string. Available values are `manage` and `listen`. The default is `manage`, which indicates that the `connection` has the **Manage** permission. If you use a connection string that does not have the **Manage** permission, set `accessRights` to "listen". Otherwise, the Functions runtime might fail trying to do operations that require manage rights. In Azure Functions version 2.x, this property is not available because the latest version of the Storage SDK doesn't support manage operations.|
+|**type** | Nie dotyczy | Musi być równa "serviceBusTrigger". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | Nie dotyczy | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje komunikat kolejki lub tematu w kodzie funkcji. Należy ustawić "$return", aby odwoływać się do wartości zwracanej funkcji. |
+|**Zmienną QueueName**|**Zmienną QueueName**|Nazwa kolejki do monitorowania.  Ustaw tylko wtedy, gdy kolejki, tematu dla monitorowania.
+|**temat**|**Temat**|Nazwa tematu do monitorowania. Ustaw tylko wtedy, gdy monitorowanie tematu, nie dla kolejki.|
+|**subscriptionName**|**SubscriptionName**|Nazwa subskrypcji do monitorowania. Ustaw tylko wtedy, gdy monitorowanie tematu, nie dla kolejki.|
+|**połączenia**|**Połączenie**|Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Service Bus do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko w pozostałej części nazwy. Na przykład jeśli ustawisz `connection` na "MyServiceBus", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyServiceBus". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia Service Bus w ustawieniu aplikacji o nazwie "AzureWebJobsServiceBus".<br><br>Aby uzyskać parametry połączenia, wykonaj kroki opisane w sekcji [pobieranie poświadczeń zarządzania](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Parametry połączenia muszą mieć dla przestrzeni nazw usługi Service Bus, nie są ograniczone do określonej kolejki lub tematu. |
+|**accessRights**|**Dostęp**|Prawa dostępu parametrów połączenia. Dostępne wartości to `manage` i `listen`. Wartość domyślna to `manage`, co oznacza, że `connection` ma uprawnienie do **zarządzania** . W przypadku używania parametrów połączenia, które nie mają uprawnienia do **zarządzania** , ustaw `accessRights` na "nasłuchuj". W przeciwnym razie funkcje środowiska uruchomieniowego może zakończyć się niepowodzeniem próby wykonania operacji wymagających zarządzania prawami. W usłudze Azure Functions w wersji 2.x, ta właściwość nie jest dostępna, ponieważ najnowszą wersję zestawu SDK usługi Storage nie obsługuje zarządzania operacjami.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Trigger - usage
+## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
-In C# and C# script, you can use the following parameter types for the queue or topic message:
+W języku C# i skrypt języka C# można użyć następujących typów parametrów dla kolejki lub tematu wiadomości:
 
-* `string` - If the message is text.
-* `byte[]` - Useful for binary data.
-* A custom type - If the message contains JSON, Azure Functions tries to deserialize the JSON data.
-* `BrokeredMessage` - Gives you the deserialized message with the [BrokeredMessage.GetBody\<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) method.
+* `string` — Jeśli komunikat jest tekstem.
+* `byte[]` — przydatne w przypadku danych binarnych.
+* Niestandardowy typ — Jeśli wiadomość zawiera JSON, usługi Azure Functions próbuje deserializowanie danych JSON.
+* `BrokeredMessage` — zawiera deserializowany komunikat z metodą [BrokeredMessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
 
-These parameters are for Azure Functions version 1.x; for 2.x, use [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) instead of `BrokeredMessage`.
+Te parametry dotyczą Azure Functions wersji 1. x; dla 2. x Użyj [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) zamiast `BrokeredMessage`.
 
-In JavaScript, access the queue or topic message by using `context.bindings.<name from function.json>`. The Service Bus message is passed into the function as either a string or JSON object.
+W języku JavaScript dostęp do kolejki lub komunikatu tematu za pomocą `context.bindings.<name from function.json>`. Komunikat usługi Service Bus jest przekazywany do funkcji jako ciąg lub obiekt JSON.
 
-## <a name="trigger---poison-messages"></a>Trigger - poison messages
+## <a name="trigger---poison-messages"></a>Wyzwalacz - skażone wiadomości
 
-Poison message handling can't be controlled or configured in Azure Functions. Service Bus handles poison messages itself.
+Obsługa skażonych komunikatów nie kontrolowany lub skonfigurowane w usłudze Azure Functions. Usługa Service Bus obsługuje komunikaty zanieczyszczone sam.
 
-## <a name="trigger---peeklock-behavior"></a>Trigger - PeekLock behavior
+## <a name="trigger---peeklock-behavior"></a>Wyzwalacz - PeekLock zachowanie
 
-The Functions runtime receives a message in [PeekLock mode](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). It calls `Complete` on the message if the function finishes successfully, or calls `Abandon` if the function fails. If the function runs longer than the `PeekLock` timeout, the lock is automatically renewed as long as the function is running. 
+Środowisko uruchomieniowe funkcji odbiera komunikat w [trybie PeekLock](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Wywołuje `Complete` w komunikacie, jeśli funkcja zakończy się pomyślnie, lub wywołuje `Abandon`, jeśli funkcja się nie powiedzie. Jeśli funkcja działa dłużej niż limit czasu `PeekLock`, blokada zostanie automatycznie odnowiona, o ile funkcja jest uruchomiona. 
 
-The `maxAutoRenewDuration` is configurable in *host.json*, which maps to [OnMessageOptions.MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). The maximum allowed for this setting is 5 minutes according to the Service Bus documentation, whereas you can increase the Functions time limit from the default of 5 minutes to 10 minutes. For Service Bus functions you wouldn’t want to do that then, because you’d exceed the Service Bus renewal limit.
+`maxAutoRenewDuration` można skonfigurować w pliku *host. JSON*, który jest mapowany na [OnMessageOptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). Maksymalny dozwolony dla tego ustawienia jest 5 minut zgodnie z dokumentacją usługi Service Bus, podczas gdy można zwiększyć limit czasu funkcji z domyślnej wartości 5 minut do 10 minut. Dla funkcji usługi Service Bus w takich sytuacjach przydałaby chcesz to zrobić w efekcie ponieważ przekroczyłby limit odnawiania usługi Service Bus.
 
-## <a name="trigger---message-metadata"></a>Trigger - message metadata
+## <a name="trigger---message-metadata"></a>Wyzwalacz — komunikat metadanych
 
-The Service Bus trigger provides several [metadata properties](./functions-bindings-expressions-patterns.md#trigger-metadata). These properties can be used as part of binding expressions in other bindings or as parameters in your code. These are properties of the [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) class.
+Wyzwalacz Service Bus zawiera kilka [właściwości metadanych](./functions-bindings-expressions-patterns.md#trigger-metadata). Te właściwości może służyć jako część wyrażenia wiązania w pozostałych powiązaniach lub jako parametry w kodzie. Są to właściwości klasy [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) .
 
 |Właściwość|Typ|Opis|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|The number of deliveries.|
-|`DeadLetterSource`|`string`|The dead letter source.|
-|`ExpiresAtUtc`|`DateTime`|The expiration time in UTC.|
-|`EnqueuedTimeUtc`|`DateTime`|The enqueued time in UTC.|
-|`MessageId`|`string`|A user-defined value that Service Bus can use to identify duplicate messages, if enabled.|
-|`ContentType`|`string`|A content type identifier utilized by the sender and receiver for application specific logic.|
-|`ReplyTo`|`string`|The reply to queue address.|
-|`SequenceNumber`|`Int64`|The unique number assigned to a message by the Service Bus.|
-|`To`|`string`|The send to address.|
-|`Label`|`string`|The application specific label.|
-|`CorrelationId`|`string`|The correlation ID.|
+|`DeliveryCount`|`Int32`|Liczba dostarczeń.|
+|`DeadLetterSource`|`string`|Źródło utraconych wiadomości.|
+|`ExpiresAtUtc`|`DateTime`|Czas wygaśnięcia w formacie UTC.|
+|`EnqueuedTimeUtc`|`DateTime`|Godzina umieszczonych w kolejce w formacie UTC.|
+|`MessageId`|`string`|Wartość zdefiniowana przez użytkownika magistrala usług może używać do identyfikowania zduplikowanych komunikatów, jeśli włączona.|
+|`ContentType`|`string`|Identyfikator typu zawartości, wykorzystywany przez nadawcę i odbiorcę dla logikę specyficzną dla aplikacji.|
+|`ReplyTo`|`string`|Odpowiedzi na adres kolejki.|
+|`SequenceNumber`|`Int64`|Unikatowy numer przypisany do komunikatu przez magistralę usług.|
+|`To`|`string`|Wyślij adres.|
+|`Label`|`string`|Etykieta specyficzna dla aplikacji.|
+|`CorrelationId`|`string`|Identyfikator korelacji.|
 
 > [!NOTE]
-> Currently, Service bus trigger that works with session enabled queues and subscriptions is in preview. Please track [this item](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) for any further updates regarding this. 
+> Obecnie wyzwalacz usługi Service Bus działający z kolejkami i subskrypcjami z włączoną obsługą sesji jest dostępny w wersji zapoznawczej. Śledź [ten element](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) , aby znaleźć wszelkie dalsze aktualizacje dotyczące tego elementu. 
 
-See [code examples](#trigger---example) that use these properties earlier in this article.
+Zobacz [przykłady kodu](#trigger---example) , które używają tych właściwości wcześniej w tym artykule.
 
 ## <a name="output"></a>Dane wyjściowe
 
-Use Azure Service Bus output binding to send queue or topic messages.
+Użyj powiązania danych wyjściowych usługi Azure Service Bus, aby wysyłać komunikaty do kolejki lub tematu.
 
-## <a name="output---example"></a>Output - example
+## <a name="output---example"></a>Dane wyjściowe — przykład
 
-See the language-specific example:
+Zobacz przykład specyficzny dla języka:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#skrypt (. CSX)](#output---c-script-example)
 * [F#](#output---f-example)
 * [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
 
-### <a name="output---c-example"></a>Output - C# example
+### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that sends a Service Bus queue message:
+Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która wysyła komunikat Service Bus kolejki:
 
 ```cs
 [FunctionName("ServiceBusOutput")]
@@ -406,11 +406,11 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>Output - C# script example
+### <a name="output---c-script-example"></a>Dane wyjściowe — przykładowy skrypt w języku C#
 
-The following example shows a Service Bus output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function uses a timer trigger to send a queue message every 15 seconds.
+Poniższy przykład przedstawia Service Bus powiązanie danych wyjściowych w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja korzysta z wyzwalacza czasomierza, aby wysłać komunikatu w kolejce, co 15 sekund.
 
-Here's the binding data in the *function.json* file:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -434,7 +434,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's C# script code that creates a single message:
+Oto C# script kod, który tworzy pojedynczy komunikat:
 
 ```cs
 public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
@@ -445,7 +445,7 @@ public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
 }
 ```
 
-Here's C# script code that creates multiple messages:
+W tym C# script kod, który tworzy wiele wiadomości:
 
 ```cs
 public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<string> outputSbQueue)
@@ -457,11 +457,11 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>Output - F# example
+### <a name="output---f-example"></a>Dane wyjściowe — F# przykład
 
-The following example shows a Service Bus output binding in a *function.json* file and an [F# script function](functions-reference-fsharp.md) that uses the binding. The function uses a timer trigger to send a queue message every 15 seconds.
+Poniższy przykład przedstawia Service Bus powiązanie danych wyjściowych w pliku *Function. JSON* i [ F# funkcji skryptu](functions-reference-fsharp.md) , która używa powiązania. Funkcja korzysta z wyzwalacza czasomierza, aby wysłać komunikatu w kolejce, co 15 sekund.
 
-Here's the binding data in the *function.json* file:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -485,7 +485,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's F# script code that creates a single message:
+Oto F# kod, który tworzy jeden komunikat o skryptu:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
@@ -494,9 +494,9 @@ let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
     outputSbQueue = message
 ```
 
-### <a name="output---java-example"></a>Output - Java example
+### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
 
-The following example shows a Java function that sends a message to a Service Bus queue `myqueue` when triggered by a HTTP request.
+Poniższy przykład pokazuje funkcję języka Java, która wysyła komunikat do kolejki Service Bus, `myqueue` wyzwalane przez żądanie HTTP.
 
 ```java
 @FunctionName("httpToServiceBusQueue")
@@ -510,9 +510,9 @@ public String pushToQueue(
  }
 ```
 
- In the [Java functions runtime library](/java/api/overview/azure/functions/runtime), use the `@QueueOutput` annotation on function parameters whose value would be written to a Service Bus queue.  The parameter type should be `OutputBinding<T>`, where T is any native Java type of a POJO.
+ W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@QueueOutput` w przypadku parametrów funkcji, których wartość zostałaby zapisywana w kolejce Service Bus.  Typ parametru powinien być `OutputBinding<T>`, gdzie T jest dowolnym natywnym typem języka Java POJO.
 
-Java functions can also write to a Service Bus topic. The following example uses the `@ServiceBusTopicOutput` annotation to describe the configuration for the output binding. 
+Funkcje języka Java mogą również zapisywać w temacie Service Bus. Poniższy przykład używa adnotacji `@ServiceBusTopicOutput`, aby opisać konfigurację dla powiązania danych wyjściowych. 
 
 ```java
 @FunctionName("sbtopicsend")
@@ -529,11 +529,11 @@ Java functions can also write to a Service Bus topic. The following example uses
     }
 ```
 
-### <a name="output---javascript-example"></a>Output - JavaScript example
+### <a name="output---javascript-example"></a>Dane wyjściowe — przykład JavaScript
 
-The following example shows a Service Bus output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding. The function uses a timer trigger to send a queue message every 15 seconds.
+Poniższy przykład przedstawia Service Bus powiązanie danych wyjściowych w pliku *Function. JSON* i [funkcję języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja korzysta z wyzwalacza czasomierza, aby wysłać komunikatu w kolejce, co 15 sekund.
 
-Here's the binding data in the *function.json* file:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -557,7 +557,7 @@ Here's the binding data in the *function.json* file:
 }
 ```
 
-Here's JavaScript script code that creates a single message:
+Poniżej przedstawiono kod skryptu języka JavaScript, który tworzy pojedynczy komunikat:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -568,7 +568,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Here's JavaScript script code that creates multiple messages:
+Poniżej przedstawiono kod skryptu języka JavaScript, który tworzy wiele wiadomości:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -581,11 +581,11 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>Output - Python example
+### <a name="output---python-example"></a>Dane wyjściowe — przykład w języku Python
 
-The following example demonstrates how to write out to a ServiceBus queue in Python.
+Poniższy przykład ilustruje sposób zapisywania do kolejki ServiceBus w języku Python.
 
-A ServiceBue binding definition is defined in *function.json* where *type* is set to `serviceBus`.
+Definicja powiązania ServiceBue jest zdefiniowana w *funkcji Function. JSON* , w której *typ* ma wartość `serviceBus`.
 
 ```json
 {
@@ -617,7 +617,7 @@ A ServiceBue binding definition is defined in *function.json* where *type* is se
 }
 ```
 
-In *_\_init_\_.py*, you can write out a message to the queue by passing a value to the `set` method.
+W  *_\_init_\_. PR*można napisać komunikat do kolejki, przekazując wartość do metody `set`.
 
 ```python
 import azure.functions as func
@@ -631,11 +631,11 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Output - attributes
+## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
 
-In [C# class libraries](functions-dotnet-class-library.md), use the [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
+W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
-The attribute's constructor takes the name of the queue or the topic and subscription. You can also specify the connection's access rights. How to choose the access rights setting is explained in the [Output - configuration](#output---configuration) section. Here's an example that shows the attribute applied to the return value of the function:
+Konstruktor atrybutu ma nazwę kolejki lub tematu i subskrypcji. Można również określić prawa dostępu do tego połączenia. Sposób wybierania ustawienia praw dostępu jest objaśniony w sekcji [Konfiguracja wyjściowa](#output---configuration) . Oto przykład pokazujący zastosowany na wartość zwracaną funkcji:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -646,7 +646,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-You can set the `Connection` property to specify the Service Bus account to use, as shown in the following example:
+Można ustawić właściwość `Connection`, aby określić konto Service Bus, które ma być używane, jak pokazano w następującym przykładzie:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -657,64 +657,64 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-For a complete example, see [Output - C# example](#output---c-example).
+Aby uzyskać pełny przykład, zobacz [Output- C# example](#output---c-example).
 
-You can use the `ServiceBusAccount` attribute to specify the Service Bus account to use at class, method, or parameter level.  For more information, see [Trigger - attributes](#trigger---attributes).
+Można użyć atrybutu `ServiceBusAccount`, aby określić konto Service Bus do użycia na poziomie klasy, metody lub parametru.  Aby uzyskać więcej informacji, zobacz [wyzwalacz-atrybuty](#trigger---attributes).
 
-## <a name="output---configuration"></a>Output - configuration
+## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `ServiceBus` attribute.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `ServiceBus` atrybutu.
 
-|function.json property | Attribute property |Opis|
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | nd. | Must be set to "serviceBus". This property is set automatically when you create the trigger in the Azure portal.|
-|**direction** | nd. | Must be set to "out". This property is set automatically when you create the trigger in the Azure portal. |
-|**name** | nd. | The name of the variable that represents the queue or topic in function code. Set to "$return" to reference the function return value. |
-|**queueName**|**QueueName**|Name of the queue.  Set only if sending queue messages, not for a topic.
-|**topicName**|**TopicName**|Name of the topic to monitor. Set only if sending topic messages, not for a queue.|
-|**connection**|**Połączenie**|The name of an app setting that contains the Service Bus connection string to use for this binding. If the app setting name begins with "AzureWebJobs", you can specify only the remainder of the name. For example, if you set `connection` to "MyServiceBus", the Functions runtime looks for an app setting that is named "AzureWebJobsMyServiceBus." If you leave `connection` empty, the Functions runtime uses the default Service Bus connection string in the app setting that is named "AzureWebJobsServiceBus".<br><br>To obtain a connection string, follow the steps shown at [Get the management credentials](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). The connection string must be for a Service Bus namespace, not limited to a specific queue or topic.|
-|**accessRights**|**Dostęp**|Access rights for the connection string. Available values are `manage` and `listen`. The default is `manage`, which indicates that the `connection` has the **Manage** permission. If you use a connection string that does not have the **Manage** permission, set `accessRights` to "listen". Otherwise, the Functions runtime might fail trying to do operations that require manage rights. In Azure Functions version 2.x, this property is not available because the latest version of the Storage SDK doesn't support manage operations.|
+|**type** | Nie dotyczy | Musi być równa "magistrali usług". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | Nie dotyczy | Musi być równa "out". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje kolejki lub tematu w kodzie funkcji. Należy ustawić "$return", aby odwoływać się do wartości zwracanej funkcji. |
+|**Zmienną QueueName**|**Zmienną QueueName**|Nazwa kolejki.  Ustaw tylko wtedy, gdy wysyłanie komunikatów z kolejki, tematu dla.
+|**temat**|**Temat**|Nazwa tematu do monitorowania. Ustaw tylko wtedy, gdy wysyłanie komunikatów z tematów, nie dla kolejki.|
+|**połączenia**|**Połączenie**|Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Service Bus do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko w pozostałej części nazwy. Na przykład jeśli ustawisz `connection` na "MyServiceBus", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyServiceBus". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia Service Bus w ustawieniu aplikacji o nazwie "AzureWebJobsServiceBus".<br><br>Aby uzyskać parametry połączenia, wykonaj kroki opisane w sekcji [pobieranie poświadczeń zarządzania](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Parametry połączenia muszą mieć dla przestrzeni nazw usługi Service Bus, nie są ograniczone do określonej kolejki lub tematu.|
+|**accessRights**|**Dostęp**|Prawa dostępu parametrów połączenia. Dostępne wartości to `manage` i `listen`. Wartość domyślna to `manage`, co oznacza, że `connection` ma uprawnienie do **zarządzania** . W przypadku używania parametrów połączenia, które nie mają uprawnienia do **zarządzania** , ustaw `accessRights` na "nasłuchuj". W przeciwnym razie funkcje środowiska uruchomieniowego może zakończyć się niepowodzeniem próby wykonania operacji wymagających zarządzania prawami. W usłudze Azure Functions w wersji 2.x, ta właściwość nie jest dostępna, ponieważ najnowszą wersję zestawu SDK usługi Storage nie obsługuje zarządzania operacjami.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Output - usage
+## <a name="output---usage"></a>Dane wyjściowe — użycie
 
-In Azure Functions 1.x, the runtime creates the queue if it doesn't exist and you have set `accessRights` to `manage`. In Functions version 2.x, the queue or topic must already exist; if you specify a queue or topic that doesn't exist, the function will fail. 
+W Azure Functions 1. x środowisko uruchomieniowe tworzy kolejkę, jeśli nie istnieje, i ustawiono `accessRights` do `manage`. W funkcji w wersji 2.x, kolejki lub tematu musi już istnieć; Jeśli określisz, kolejki lub tematu, który nie istnieje, funkcja zakończy się niepowodzeniem. 
 
-In C# and C# script, you can use the following parameter types for the output binding:
+W języku C# i skrypt języka C# można użyć następujących typów parametrów dla powiązania danych wyjściowych:
 
-* `out T paramName` - `T` can be any JSON-serializable type. If the parameter value is null when the function exits, Functions creates the message with a null object.
-* `out string` - If the parameter value is null when the function exits, Functions does not create a message.
-* `out byte[]` - If the parameter value is null when the function exits, Functions does not create a message.
-* `out BrokeredMessage` - If the parameter value is null when the function exits, Functions does not create a message (for Functions 1.x)
-* `out Message` - If the parameter value is null when the function exits, Functions does not create a message (for Functions 2.x)
-* `ICollector<T>` or `IAsyncCollector<T>` - For creating multiple messages. A message is created when you call the `Add` method.
+* `out T paramName` - `T` może być dowolnym typem możliwym do serializacji JSON. Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje tworzy komunikat z obiektem o wartości null.
+* `out string` — Jeśli wartość parametru ma wartość null, gdy funkcja zostanie zakończona, funkcja nie tworzy komunikatu.
+* `out byte[]` — Jeśli wartość parametru ma wartość null, gdy funkcja zostanie zakończona, funkcja nie tworzy komunikatu.
+* `out BrokeredMessage` — Jeśli wartość parametru ma wartość null, gdy funkcja zostanie zakończona, funkcja nie tworzy komunikatu (dla funkcji 1. x)
+* `out Message` — Jeśli wartość parametru ma wartość null, gdy funkcja zostanie zakończona, funkcja nie tworzy komunikatu (dla funkcji 2. x)
+* `ICollector<T>` lub `IAsyncCollector<T>` — do tworzenia wielu komunikatów. Tworzony jest komunikat podczas wywoływania metody `Add`.
 
-When working with C# functions:
+Podczas pracy z C# funkcjami:
 
-* Async functions need a return value or `IAsyncCollector` instead of an `out` parameter.
+* Funkcje asynchroniczne wymagają wartości zwracanej lub `IAsyncCollector` zamiast parametru `out`.
 
-* To access the session ID, bind to a [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) type and use the `sessionId` property.
+* Aby uzyskać dostęp do identyfikatora sesji, powiąż z typem [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) i użyj właściwości `sessionId`.
 
-In JavaScript, access the queue or topic by using `context.bindings.<name from function.json>`. You can assign a string, a byte array, or a JavaScript object (deserialized into JSON) to `context.binding.<name>`.
+W języku JavaScript dostęp do kolejki lub tematu można uzyskać przy użyciu `context.bindings.<name from function.json>`. Do `context.binding.<name>`można przypisać ciąg, tablicę bajtową lub obiekt JavaScript (deserializowany w formacie JSON).
 
-To send a message to a session-enabled queue in non-C# languages, use the [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) rather than the built-in output binding.
+Aby wysłać komunikat do kolejki z obsługą sesji wC# języku innym niż język, użyj [zestawu SDK Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging) , a nie wbudowanego powiązania danych wyjściowych.
 
-## <a name="exceptions-and-return-codes"></a>Exceptions and return codes
+## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
-| Binding | Informacje ogólne |
+| Powiązanie | Dokumentacja |
 |---|---|
-| Service Bus | [Service Bus Error Codes](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
-| Service Bus | [Service Bus Limits](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+| Service Bus | [Service Bus kody błędów](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
+| Service Bus | [Limity Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>host.json settings
+## <a name="hostjson-settings"></a>Ustawienia host.JSON
 
-This section describes the global configuration settings available for this binding in version 2.x. The example host.json file below contains only the version 2.x settings for this binding. For more information about global configuration settings in version 2.x, see [host.json reference for Azure Functions version 2.x](functions-host-json.md).
+W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2.x. Przykład pliku host.json poniżej zawiera tylko ustawienia 2.x wersji dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersji 2. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions wersji 2. x](functions-host-json.md).
 
 > [!NOTE]
-> For a reference of host.json in Functions 1.x, see [host.json reference for Azure Functions 1.x](functions-host-json-v1.md).
+> Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -734,13 +734,13 @@ This section describes the global configuration settings available for this bind
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|maxAutoRenewDuration|00:05:00|The maximum duration within which the message lock will be renewed automatically.|
-|autoComplete|true|Whether the trigger should immediately mark as complete (autocomplete) or wait for processing to call complete.|
-|maxConcurrentCalls|16|The maximum number of concurrent calls to the callback that the message pump should initiate. By default, the Functions runtime processes multiple messages concurrently. To direct the runtime to process only a single queue or topic message at a time, set `maxConcurrentCalls` to 1. |
-|prefetchCount|nd.|The default PrefetchCount that will be used by the underlying MessageReceiver.|
+|maxAutoRenewDuration|00:05:00|Maksymalny czas trwania, w którym blokadę komunikatu zostanie odnowiony automatycznie.|
+|Autouzupełnianie|true|Czy wyzwalacz powinien natychmiast Oznacz jako ukończone (automatycznego uzupełniania) lub poczekaj przetwarzania rozmowę.|
+|maxConcurrentCalls|16|Maksymalna liczba równoczesnych wywołań wywołanie zwrotne, które powinno zainicjować "pompy komunikatów". Domyślnie środowisko uruchomieniowe usługi Functions przetwarza wiele wiadomości jednocześnie. Aby skierować środowisko uruchomieniowe do przetwarzania tylko pojedynczej kolejki lub komunikatu tematu, ustaw `maxConcurrentCalls` na 1. |
+|prefetchCount|Nie dotyczy|Domyślnie PrefetchCount używanej przez MessageReceiver bazowego.|
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)

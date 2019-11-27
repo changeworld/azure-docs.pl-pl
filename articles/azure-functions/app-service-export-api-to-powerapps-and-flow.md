@@ -1,6 +1,6 @@
 ---
-title: Exporting an Azure-hosted API to PowerApps and Microsoft Flow
-description: Overview of how to expose an API hosted in App Service to PowerApps and Microsoft Flow
+title: Eksportowanie interfejsu API hostowanego na platformie Azure do usługi PowerApps i Microsoft Flow
+description: Omówienie sposobu uwidaczniania interfejsu API hostowanego w App Service w usłudze PowerApps i Microsoft Flow
 ms.topic: conceptual
 ms.date: 12/15/2017
 ms.reviewer: sunayv
@@ -11,122 +11,122 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233070"
 ---
-# <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exporting an Azure-hosted API to PowerApps and Microsoft Flow
+# <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Eksportowanie interfejsu API hostowanego na platformie Azure do usługi PowerApps i Microsoft Flow
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) is a service for building and using custom business apps that connect to your data and work across platforms. [Microsoft Flow](/learn/modules/get-started-with-flow/index) makes it easy to automate workflows and business processes between your favorite apps and services. Both PowerApps and Microsoft Flow come with a variety of built-in connectors to data sources such as Office 365, Dynamics 365, Salesforce, and more. In some cases, app and flow builders also want to connect to data sources and APIs built by their organization.
+[Powerapps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) to usługa służąca do kompilowania i używania niestandardowych aplikacji firmowych, które łączą się z danymi i pracują na różnych platformach. [Microsoft Flow](/learn/modules/get-started-with-flow/index) ułatwia Automatyzowanie przepływów pracy i procesów biznesowych między ulubionymi aplikacjami i usługami. W przypadku usług PowerApps i Microsoft Flow są dostępne różne wbudowane łączniki ze źródłami danych, takimi jak Office 365, Dynamics 365, Salesforce i nie tylko. W niektórych przypadkach konstruktory aplikacji i przepływu chcą również łączyć się ze źródłami danych i interfejsami API utworzonymi przez ich organizację.
 
-Similarly, developers that want to expose their APIs more broadly within an organization can make their APIs available to app and flow builders. This topic shows you how to export an API built with [Azure Functions](../azure-functions/functions-overview.md) or [Azure App Service](../app-service/overview.md). The exported API becomes a *custom connector*, which is used in PowerApps and Microsoft Flow just like a built-in connector.
+Podobnie deweloperzy, którzy chcą uwidocznić interfejsy API w organizacji, mogą udostępnić interfejsy API aplikacji i konstruktorów przepływów. W tym temacie przedstawiono sposób eksportowania interfejsu API skompilowanego za pomocą [Azure Functions](../azure-functions/functions-overview.md) lub [Azure App Service](../app-service/overview.md). Wyeksportowany interfejs API jest *łącznikiem niestandardowym*, który jest używany w usłudze PowerApps i Microsoft Flow podobnie jak wbudowany łącznik.
 
 > [!IMPORTANT]
-> The API definition functionality shown in this article is only supported for [version 1.x of the Azure Functions runtime](functions-versions.md#creating-1x-apps) and App Services apps. Version 2.x of Functions integrates with API Management to create and maintain OpenAPI definitions. To learn more, see [Create an OpenAPI definition for a function with Azure API Management](functions-openapi-definition.md). 
+> Funkcja definicji interfejsu API wyświetlana w tym artykule jest obsługiwana tylko w przypadku [wersji 1. x środowiska uruchomieniowego Azure Functions](functions-versions.md#creating-1x-apps) i aplikacji App Services. Wersja 2. x funkcji integruje się z API Management, aby tworzyć i obsługiwać definicje OpenAPI. Aby dowiedzieć się więcej, zobacz [Tworzenie definicji openapi dla funkcji za pomocą usługi Azure API Management](functions-openapi-definition.md). 
 
-## <a name="create-and-export-an-api-definition"></a>Create and export an API definition
-Before exporting an API, you must describe the API using an OpenAPI definition (formerly known as a [Swagger](https://swagger.io/) file). Ta definicja zawiera informacje o operacjach dostępnych w interfejsie API i wymaganej strukturze danych żądań i odpowiedzi dla interfejsu API. PowerApps and Microsoft Flow can create custom connectors for any OpenAPI 2.0 definition. Azure Functions and Azure App Service have built-in support for creating, hosting, and managing OpenAPI definitions. For more information, see [Host a RESTful API with CORS in Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
-
-> [!NOTE]
-> You can also build custom connectors in the PowerApps and Microsoft Flow UI, without using an OpenAPI definition. For more information, see [Register and use a custom connector (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) and [Register and use a custom connector (Microsoft  Flow)](/power-automate/developer/register-custom-api).
-
-To export the API definition, follow these steps:
-
-1. In the [Azure portal](https://portal.azure.com), navigate to your Azure Functions or another App Service application.
-
-    If using Azure Functions, select your function app, choose **Platform features**, and then **API definition**.
-
-    ![Azure Functions API definition](media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png)
-
-    If using Azure App Service, select **API definition** from the settings list.
-
-    ![App Service API definition](media/app-service-export-api-to-powerapps-and-flow/api-definition-app.png)
-
-2. The **Export to PowerApps + Microsoft Flow** button should be available (if not, you must first create an OpenAPI definition). Click this button to begin the export process.
-
-    ![Export to PowerApps + Microsoft Flow button](media/app-service-export-api-to-powerapps-and-flow/export-apps-flow.png)
-
-3. Select the **Export Mode**:
-
-    **Express** lets you create the custom connector from within the Azure portal. It requires that you are signed into PowerApps or Microsoft Flow and have permission to create connectors in the target environment. This is the recommended approach if these two requirements can be met. If using this mode, follow the [Use express export](#express) instructions below.
-
-    **Manual** lets you export the API definition, which you then import using the PowerApps or Microsoft Flow portals. This is the recommended approach if the Azure user and the user with permission to create connectors are different people or if the connector needs to be created in another Azure tenant. If using this mode, follow the [Use manual export](#manual) instructions below.
-
-    ![Export mode](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
+## <a name="create-and-export-an-api-definition"></a>Tworzenie i eksportowanie definicji interfejsu API
+Przed wyeksportowaniem interfejsu API należy opisać interfejs API przy użyciu definicji OpenAPI (wcześniej znanej jako plik [struktury Swagger](https://swagger.io/) ). Ta definicja zawiera informacje o operacjach dostępnych w interfejsie API i wymaganej strukturze danych żądań i odpowiedzi dla interfejsu API. Usługi PowerApps i Microsoft Flow mogą tworzyć łączniki niestandardowe dla dowolnej definicji OpenAPI 2,0. Azure Functions i Azure App Service mają wbudowaną obsługę tworzenia i obsługiwania definicji OpenAPI oraz zarządzania nimi. Aby uzyskać więcej informacji, zobacz [hostowanie interfejsu API RESTful z mechanizmem CORS w Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
-> The custom connector uses a *copy* of the API definition, so PowerApps and Microsoft Flow will not immediately know if you make changes to the application and its API definition. If you do make changes, repeat the export steps for the new version.
+> Można również tworzyć łączniki niestandardowe w interfejsie użytkownika usługi PowerApps i Microsoft Flow bez użycia definicji OpenAPI. Aby uzyskać więcej informacji, zobacz [Rejestrowanie i używanie łącznika niestandardowego (powerapps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) oraz [Rejestrowanie i używanie łącznika niestandardowego (Microsoft Flow)](/power-automate/developer/register-custom-api).
+
+Aby wyeksportować definicję interfejsu API, wykonaj następujące kroki:
+
+1. W [Azure Portal](https://portal.azure.com)przejdź do Azure Functions lub innej aplikacji App Service.
+
+    Jeśli używasz Azure Functions, wybierz aplikację funkcji, wybierz pozycję **funkcje platformy**, a następnie pozycję **definicja interfejsu API**.
+
+    ![Definicja interfejsu API Azure Functions](media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png)
+
+    W przypadku używania Azure App Service wybierz pozycję **definicja interfejsu API** z listy ustawień.
+
+    ![Definicja interfejsu API App Service](media/app-service-export-api-to-powerapps-and-flow/api-definition-app.png)
+
+2. Przycisk **Eksportuj do usługi powerapps i Microsoft Flow** powinien być dostępny (jeśli nie, musisz najpierw utworzyć definicję openapi). Kliknij ten przycisk, aby rozpocząć proces eksportowania.
+
+    ![Przycisk Eksportuj do usługi PowerApps i Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-apps-flow.png)
+
+3. Wybierz **tryb eksportu**:
+
+    Program **Express** umożliwia utworzenie łącznika niestandardowego na podstawie Azure Portal. Wymaga zalogowania się w usłudze PowerApps lub Microsoft Flow i ma uprawnienia do tworzenia łączników w środowisku docelowym. Jest to zalecane rozwiązanie, jeśli można spełnić te dwa wymagania. W przypadku korzystania z tego trybu postępuj zgodnie z poniższymi instrukcjami dotyczącymi [eksportu](#express) .
+
+    Opcja **Ręczna** umożliwia wyeksportowanie definicji interfejsu API, która zostanie następnie zaimportowana przy użyciu portali usługi PowerApps lub Microsoft Flow. Jest to zalecane rozwiązanie, jeśli użytkownik platformy Azure i użytkownik z uprawnieniami do tworzenia łączników są różnymi osobami lub jeśli łącznik musi zostać utworzony w innej dzierżawie platformy Azure. W przypadku korzystania z tego trybu postępuj zgodnie z poniższymi instrukcjami dotyczącymi [eksportowania ręcznego](#manual) .
+
+    ![Tryb eksportu](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
+
+> [!NOTE]
+> Łącznik niestandardowy używa *kopii* definicji interfejsu API, dzięki czemu usługa PowerApps i Microsoft Flow nie będą od razu wiedzieć, czy wprowadzisz zmiany w aplikacji i jej definicji interfejsu API. Jeśli wprowadzisz zmiany, powtórz kroki eksportowania dla nowej wersji.
 
 <a name="express"></a>
-## <a name="use-express-export"></a>Use express export
+## <a name="use-express-export"></a>Użyj eksportu ekspresowego
 
-To complete the export in **Express** mode, follow these steps:
+Aby zakończyć eksport w trybie **Express** , wykonaj następujące kroki:
 
-1. Make sure you're signed in to the PowerApps or Microsoft Flow tenant to which you want to export. 
+1. Upewnij się, że zalogowano się do dzierżawy usługi PowerApps lub Microsoft Flow, do której chcesz wyeksportować. 
 
-2. Use the settings as specified in the table.
+2. Użyj ustawień określonych w tabeli.
 
     |Ustawienie|Opis|
     |--------|------------|
-    |**Środowisko**|Select the environment that the custom connector should be saved to. For more information, see [Environments overview](https://powerapps.microsoft.com/tutorials/environments-overview/).|
-    |**Custom API Name**|Enter a name, which PowerApps and Microsoft Flow builders will see in their connector list.|
-    |**Prepare security configuration**|If required, provide the security configuration details needed to grant users access to your API. This example shows an API key. For more information, see [Specify authentication type](#auth) below.|
+    |**Środowisko**|Wybierz środowisko, w którym ma zostać zapisany łącznik niestandardowy. Aby uzyskać więcej informacji, zobacz [Omówienie środowisk](https://powerapps.microsoft.com/tutorials/environments-overview/).|
+    |**Nazwa niestandardowego interfejsu API**|Wprowadź nazwę, która będzie widoczna dla aplikacji PowerApps i Microsoft Flow builds na liście łączników.|
+    |**Przygotuj konfigurację zabezpieczeń**|W razie potrzeby podaj szczegóły konfiguracji zabezpieczeń potrzebne do udzielenia użytkownikom dostępu do interfejsu API. Ten przykład przedstawia klucz interfejsu API. Aby uzyskać więcej informacji, zobacz [Określ typ uwierzytelniania](#auth) poniżej.|
  
-    ![Express export to PowerApps and Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
+    ![Eksportowanie do usługi PowerApps i Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. Kliknij przycisk **OK**. The custom connector is now built and added to the environment you specified.
+3. Kliknij przycisk **OK**. Łącznik niestandardowy został utworzony i dodany do określonego środowiska.
 
 <a name="manual"></a>
-## <a name="use-manual-export"></a>Use manual export
+## <a name="use-manual-export"></a>Użyj eksportu ręcznego
 
-To complete the export in **Manual** mode, follow these steps:
+Aby zakończyć eksport w trybie **ręcznym** , wykonaj następujące kroki:
 
-1. Click **Download** and save the file, or click the copy button and save the URL. You will use the download file or the URL during import.
+1. Kliknij pozycję **Pobierz** i Zapisz plik lub kliknij przycisk Kopiuj, a następnie Zapisz adres URL. Podczas importowania zostanie użyty plik do pobrania lub adres URL.
  
-    ![Manual export to PowerApps and Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-manual.png)
+    ![Ręczne eksportowanie do usługi PowerApps i Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-manual.png)
  
-2. If your API definition includes any security definitions, these are called out in step #2. During import, PowerApps and Microsoft Flow detects these and prompts for security information. Gather the credentials related to each definition for use in the next section. For more information, see [Specify authentication type](#auth) below.
+2. Jeśli definicja interfejsu API zawiera wszystkie definicje zabezpieczeń, są one wywoływane w kroku #2. Podczas importowania usługi PowerApps i Microsoft Flow wykrywają te i monitują o informacje o zabezpieczeniach. Zbierz poświadczenia związane z każdą definicją do użycia w następnej sekcji. Aby uzyskać więcej informacji, zobacz [Określ typ uwierzytelniania](#auth) poniżej.
 
-    ![Security for manual export](media/app-service-export-api-to-powerapps-and-flow/export-manual-security.png)
+    ![Zabezpieczenia eksportu ręcznego](media/app-service-export-api-to-powerapps-and-flow/export-manual-security.png)
 
-    This example shows the API key security definition that was included in the OpenAPI definition.
+    Ten przykład przedstawia definicję zabezpieczeń klucza interfejsu API, która została uwzględniona w definicji OpenAPI.
 
-Now that you've exported the API definition, you import it to create a custom connector in PowerApps and Microsoft Flow. Custom connectors are shared between the two services, so you only need to import the definition once.
+Teraz, po wyeksportowaniu definicji interfejsu API, należy zaimportować ją do tworzenia łącznika niestandardowego w usłudze PowerApps i Microsoft Flow. Łączniki niestandardowe są współużytkowane przez te dwie usługi, więc wystarczy zaimportować definicję tylko raz.
 
-To import the API definition into PowerApps and Microsoft Flow, follow these steps:
+Aby zaimportować definicję interfejsu API do usługi PowerApps i Microsoft Flow, wykonaj następujące kroki:
 
 1. Przejdź do strony [powerapps.com](https://web.powerapps.com) lub [flow.microsoft.com](https://flow.microsoft.com).
 
-2. In the upper right corner, click the gear icon, then click **Custom connectors**.
+2. W prawym górnym rogu kliknij ikonę koła zębatego, a następnie kliknij pozycję **Łączniki niestandardowe**.
 
    ![Ikona koła zębatego w usłudze](media/app-service-export-api-to-powerapps-and-flow/icon-gear.png)
 
-3. Click **Create custom connector**, then click **Import an OpenAPI definition**.
+3. Kliknij pozycję **Utwórz łącznik niestandardowy**, a następnie kliknij pozycję **Importuj definicję openapi**.
 
    ![Tworzenie łącznika niestandardowego](media/app-service-export-api-to-powerapps-and-flow/flow-apps-create-connector.png)
 
-4. Enter a name for the custom connector, then navigate to the OpenAPI definition that you exported, and click **Continue**.
+4. Wprowadź nazwę łącznika niestandardowego, a następnie przejdź do wyeksportowanej definicji OpenAPI, a następnie kliknij przycisk **Kontynuuj**.
 
-   ![Upload OpenAPI definition](media/app-service-export-api-to-powerapps-and-flow/flow-apps-upload-definition.png)
+   ![Przekaż definicję OpenAPI](media/app-service-export-api-to-powerapps-and-flow/flow-apps-upload-definition.png)
 
-4. On the **General** tab, review the information that comes from the OpenAPI definition.
+4. Na karcie **Ogólne** Przejrzyj informacje, które pochodzą z definicji openapi.
 
-5. On the **Security** tab, if you are prompted to provide authentication details, enter the values appropriate for the authentication type. Kliknij pozycję **Kontynuuj**.
+5. Jeśli zostanie wyświetlony monit o podanie szczegółów uwierzytelniania, na karcie **zabezpieczenia** wprowadź odpowiednie wartości w polu Typ uwierzytelniania. Kliknij pozycję **Kontynuuj**.
 
-    ![Security tab](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
+    ![Karta Zabezpieczenia](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 
-    This example shows the required fields for API key authentication. The fields differ depending on the authentication type.
+    W tym przykładzie przedstawiono pola wymagane do uwierzytelniania za pomocą klucza interfejsu API. Pola różnią się w zależności od typu uwierzytelniania.
 
-6. On the **Definitions** tab, all the operations defined in your OpenAPI file are auto-populated. If all your required operations are defined, you can go to the next step. If not, you can add and modify operations here.
+6. Na karcie **definicje** wszystkie operacje zdefiniowane w pliku openapi są wypełniane automatycznie. Jeśli wszystkie wymagane operacje są zdefiniowane, możesz przejść do następnego kroku. W przeciwnym razie można dodawać i modyfikować operacje w tym miejscu.
 
-    ![Definitions tab](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
+    ![Karta definicje](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
 
-    This example has one operation, named `CalculateCosts`. The metadata, like **Description**, all comes from the OpenAPI file.
+    Ten przykład ma jedną operację o nazwie `CalculateCosts`. Metadane, takie jak **Opis**, pochodzą z pliku openapi.
 
-7. Click **Create connector** at the top of the page.
+7. Kliknij pozycję **Utwórz łącznik** w górnej części strony.
 
-You can now connect to the custom connector in PowerApps and Microsoft Flow. For more information on creating connectors in the PowerApps and Microsoft Flow portals, see [Register your custom connector (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) and [Register your custom connector (Microsoft  Flow)](/power-automate/get-started-flow-dev#create-a-custom-connector).
+Teraz możesz nawiązać połączenie z łącznikiem niestandardowym w usłudze PowerApps i Microsoft Flow. Aby uzyskać więcej informacji na temat tworzenia łączników w portalach usługi PowerApps i Microsoft Flow, zobacz [Rejestrowanie niestandardowego łącznika (powerapps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) i [Rejestrowanie łącznika niestandardowego (Microsoft Flow)](/power-automate/get-started-flow-dev#create-a-custom-connector).
 
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>Określanie typu uwierzytelniania
 
-PowerApps and Microsoft Flow support a collection of identity providers that provide authentication for custom connectors. If your API requires authentication, ensure that it is captured as a _security definition_ in your OpenAPI document, like the following example:
+Usługa PowerApps i Microsoft Flow obsługują kolekcję dostawców tożsamości, które zapewniają uwierzytelnianie łączników niestandardowych. Jeśli interfejs API wymaga uwierzytelniania, upewnij się, że jest przechwytywany jako _Definicja zabezpieczeń_ w dokumencie openapi, jak w poniższym przykładzie:
 
 ```json
 "securityDefinitions": {
@@ -138,40 +138,40 @@ PowerApps and Microsoft Flow support a collection of identity providers that pro
     }
 }
 ``` 
-During export, you provide configuration values that allow PowerApps and Microsoft Flow to authenticate users.
+Podczas eksportowania dostarcza się wartości konfiguracyjne zezwalające usłudze PowerApps i Microsoft Flow na uwierzytelnianie użytkowników.
 
-This section covers the authentication types that are supported in **Express** mode: API key, Azure Active Directory, and Generic OAuth 2.0. PowerApps and Microsoft Flow also support Basic Authentication, and OAuth 2.0 for specific services like Dropbox, Facebook, and SalesForce.
+W tej sekcji omówiono typy uwierzytelniania, które są obsługiwane w trybie **Express** : klucz interfejsu API, Azure Active Directory i ogólne uwierzytelnianie OAuth 2,0. Usługa PowerApps i usługa Microsoft Flow obsługują również uwierzytelnianie podstawowe i protokół OAuth 2,0 dla określonych usług, takich jak Dropbox, Facebook i SalesForce.
 
-### <a name="api-key"></a>API key
-When using an API key, the users of your connector are prompted to provide the key when they create a connection. You specify an API key name to help them understand which key is needed. In the earlier example, we use the name `API Key (contact meganb@contoso.com)` so people know where to get information about the API key. For Azure Functions, the key is typically one of the host keys, covering several functions within the function app.
+### <a name="api-key"></a>Klucz interfejsu API
+Przy użyciu klucza interfejsu API Użytkownicy Twojego łącznika są monitowani o podanie klucza podczas tworzenia połączenia. Należy określić nazwę klucza interfejsu API, aby pomóc im zrozumieć, który klucz jest wymagany. W poprzednim przykładzie używamy nazwy `API Key (contact meganb@contoso.com)`, aby użytkownicy wiedzieli, gdzie uzyskać informacje o kluczu interfejsu API. W przypadku Azure Functions klucz jest zazwyczaj jednym z kluczy hosta, obejmujących kilka funkcji w aplikacji funkcji.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
-When using Azure AD, you need two Azure AD application registrations: one for the API itself, and one for the custom connector:
+W przypadku korzystania z usługi Azure AD wymagane są dwie rejestracje aplikacji usługi Azure AD: jeden dla samego interfejsu API i jeden dla łącznika niestandardowego:
 
-- To configure registration for the API, use the [App Service Authentication/Authorization](../app-service/configure-authentication-provider-aad.md) feature.
+- Aby skonfigurować rejestrację dla interfejsu API, użyj funkcji [uwierzytelniania App Service/autoryzacji](../app-service/configure-authentication-provider-aad.md) .
 
-- To configure registration for the connector, follow the steps in [Adding an Azure AD application](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). The registration must have delegated access to your API and a reply URL of `https://msmanaged-na.consent.azure-apim.net/redirect`. 
+- Aby skonfigurować rejestrację łącznika, wykonaj kroki opisane w temacie [Dodawanie aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Rejestracja musi mieć delegowany dostęp do Twojego interfejsu API i adres URL odpowiedzi `https://msmanaged-na.consent.azure-apim.net/redirect`. 
 
-For more information, see the Azure AD registration examples for [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) and [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). These examples use Azure Resource Manager as the API; substitute your API if you follow the steps.
+Aby uzyskać więcej informacji, zobacz przykłady rejestracji usługi Azure AD dla usług [powerapps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) i [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). Te przykłady używają Azure Resource Manager jako interfejsu API; Zastąp interfejs API, jeśli wykonano kroki.
 
-The following configuration values are required:
-- **Client ID** - the client ID of your connector Azure AD registration
-- **Client secret** - the client secret of your connector Azure AD registration
-- **Login URL** - the base URL for Azure AD. In Azure, this is typically `https://login.windows.net`.
-- **Tenant ID** - the ID of the tenant to be used for the login. This should be "common" or the ID of the tenant in which the connector is created.
-- **Resource URL** - the resource URL of the Azure AD registration for your API
+Wymagane są następujące wartości konfiguracji:
+- **Identyfikator klienta** — identyfikator klienta rejestracji usługi Azure AD łącznika
+- **Klucz tajny klienta** — klucz tajny klienta dla rejestracji usługi Azure AD na łączniku
+- **Adres URL logowania** — podstawowy adres URL usługi Azure AD. Na platformie Azure jest to zwykle `https://login.windows.net`.
+- **Identyfikator dzierżawy** — identyfikator dzierżawy, który ma być używany podczas logowania. Powinna to być "Common" lub identyfikator dzierżawy, w której utworzono łącznik.
+- **Adres URL zasobu** — adres URL zasobu rejestracji usługi Azure AD dla interfejsu API
 
 > [!IMPORTANT]
-> If someone else will import the API definition into PowerApps and Microsoft Flow as part of the manual flow, you must provide them with the client ID and client secret of the *connector registration*, as well as the resource URL of your API. Make sure that these secrets are managed securely. **Do not share the security credentials of the API itself.**
+> Jeśli ktoś inny zaimportuje definicję interfejsu API do usługi PowerApps i Microsoft Flow w ramach przepływu ręcznego, należy podać je identyfikator klienta i klucz tajny klienta *rejestracji łącznika*, a także adres URL zasobu interfejsu API. Upewnij się, że te klucze tajne są bezpiecznie zarządzane. **Nie udostępniaj poświadczeń zabezpieczeń samego interfejsu API.**
 
-### <a name="generic-oauth-20"></a>Generic OAuth 2.0
-When using generic OAuth 2.0, you can integrate with any OAuth 2.0 provider. This allows you to work with custom providers that are not natively supported.
+### <a name="generic-oauth-20"></a>Ogólne uwierzytelnianie OAuth 2,0
+W przypadku korzystania z ogólnego uwierzytelniania OAuth 2,0 można zintegrować z dowolnym dostawcą protokołu OAuth 2,0. Pozwala to na współpracę z dostawcami niestandardowymi, które nie są natywnie obsługiwane.
 
-The following configuration values are required:
-- **Client ID** - the OAuth 2.0 client ID
-- **Client secret** - the OAuth 2.0 client secret
-- **Authorization URL** - the OAuth 2.0 authorization URL
-- **Token URL** - the OAuth 2.0 token URL
-- **Refresh URL** - the OAuth 2.0 refresh URL
+Wymagane są następujące wartości konfiguracji:
+- **Identyfikator klienta** — identyfikator klienta OAuth 2,0
+- **Klucz tajny klienta** — wpis tajny klienta OAuth 2,0
+- **Adres URL autoryzacji** — adres URL autoryzacji OAuth 2,0
+- **Adres URL tokenu** — adres URL tokenu OAuth 2,0
+- **Odśwież adres URL** — adres URL odświeżania protokołu OAuth 2,0
 
 

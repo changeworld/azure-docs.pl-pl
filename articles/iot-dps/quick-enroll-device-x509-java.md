@@ -1,5 +1,5 @@
 ---
-title: Enroll X.509 devices to Azure Device Provisioning Service using Java
+title: Rejestrowanie urządzeń X. 509 w usłudze Azure Device Provisioning przy użyciu języka Java
 description: W tym przewodniku Szybki start używane są zarówno rejestracje grupowe, jak i indywidualne. W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu języka Java.
 author: wesmc7777
 ms.author: wesmc
@@ -37,7 +37,7 @@ Mimo że zestaw SDK usługi Java działa zarówno na komputerach z systemami Win
     mvn --version
     ```
 
-* [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
+* Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
 
 
 <a id="javasample"></a>
@@ -202,14 +202,14 @@ Aby zarejestrować pojedyncze urządzenie X.509, zmodyfikuj kod przykładowy *re
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-If you plan to explore the Java service sample, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all resources created by this quickstart.
+Jeśli planujesz Eksplorowanie przykładu usługi Java, nie czyść zasobów utworzonych w tym przewodniku Szybki Start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki Start.
 
 1. Zamknij okno danych wyjściowych przykładowej usługi Java na swojej maszynie.
 1. Zamknij okno _Generator certyfikatów X509_ na swojej maszynie.
-1. Navigate to your Device Provisioning service in the Azure portal, select **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the check box next to the *GROUP NAME* for the X.509 devices you enrolled using this quickstart, and press the **Delete** button at the top of the pane.  
+1. Przejdź do usługi Device Provisioning w Azure Portal wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz kartę **grupy rejestracji** . Zaznacz pole wyboru obok *nazwy grupy* dla urządzeń X. 509 zarejestrowanych w ramach tego przewodnika Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka.  
 
 ## <a name="next-steps"></a>Następne kroki
-In this quickstart, you enrolled a simulated group of X.509 devices to your Device Provisioning service. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
+W tym przewodniku szybki start zarejestrowano symulowaną grupę urządzeń X. 509 w usłudze Device Provisioning. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
 
 > [!div class="nextstepaction"]
 > [Samouczki dla usługi Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

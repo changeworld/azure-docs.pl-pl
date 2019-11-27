@@ -220,7 +220,7 @@ Aby uzyskać więcej informacji, zobacz [tworzenie alertów SQL Database w Azure
 
    Daxko/CSI korzysta z elastycznych pul z Azure SQL Database, aby przyspieszyć cykl programowania i zwiększyć wydajność usług i klientów.   
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby skalować pule elastyczne, zobacz [skalowanie pul elastycznych](sql-database-elastic-pool-scale.md) i [skalowanie elastycznej puli — przykładowego kodu](scripts/sql-database-monitor-and-scale-pool-powershell.md)
 - Film wideo zawiera temat kurs wideo dotyczący usługi [Microsoft Virtual Academy na Azure SQL Database elastycznych możliwościach](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
