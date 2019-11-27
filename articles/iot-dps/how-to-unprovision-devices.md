@@ -1,6 +1,6 @@
 ---
-title: Deprovision devices that were provisioned with Azure IoT Hub Device Provisioning Service
-description: How to deprovision devices that have been provisioned with Azure IoT Hub Device Provisioning Service
+title: Cofanie aprowizacji urządzeń, które zostały udostępnione za pomocą usługi Azure IoT Hub Device Provisioning Service
+description: Jak anulować obsługę administracyjną urządzeń, które zostały udostępnione za pomocą usługi Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
@@ -14,56 +14,56 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229696"
 ---
-# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>How to deprovision devices that were previously auto-provisioned 
+# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Jak anulować obsługę administracyjną urządzeń, które były wcześniej inicjowane samoobsługowo 
 
-You may find it necessary to deprovision devices that were previously auto-provisioned through the Device Provisioning Service. For example, a device may be sold or moved to a different IoT hub, or it may be lost, stolen, or otherwise compromised. 
+Może się okazać, że konieczne jest cofnięcie aprowizacji urządzeń, które wcześniej były obsługiwane przez usługę Device Provisioning. Na przykład urządzenie może być sprzedawane lub przenoszone do innego Centrum IoT lub mogło zostać utracone, skradzione lub naruszone w inny sposób. 
 
-In general, deprovisioning a device involves two steps:
+Ogólnie rzecz biorąc, cofanie aprowizacji urządzenia obejmuje dwie czynności:
 
-1. Disenroll the device from your provisioning service, to prevent future auto-provisioning. Depending on whether you want to revoke access temporarily or permanently, you may want to either disable or delete an enrollment entry. For devices that use X.509 attestation, you may want to disable/delete an entry in the hierarchy of your existing enrollment groups.  
+1. Wyrejestruj urządzenie z usługi aprowizacji, aby zapobiec przyszłej aprowizacji. W zależności od tego, czy chcesz odwołać dostęp tymczasowo czy trwale, możesz wyłączyć lub usunąć wpis rejestracji. W przypadku urządzeń korzystających z zaświadczania X. 509 warto wyłączyć/usunąć wpis w hierarchii istniejących grup rejestracji.  
  
-   - To learn how to disenroll a device, see [How to disenroll a device from Azure IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
-   - To learn how to disenroll a device programmatically using one of the provisioning service SDKs, see [Manage device enrollments with service SDKs](how-to-manage-enrollments-sdks.md).
+   - Aby dowiedzieć się, jak wyrejestrować urządzenie, zobacz [Jak wyrejestrować urządzenie z usługi Azure IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
+   - Aby dowiedzieć się, jak wyrejestrować urządzenie programowo przy użyciu jednego z zestawów SDK usługi aprowizacji, zobacz [Zarządzanie rejestracjami urządzeń za pomocą zestawów SDK usług](how-to-manage-enrollments-sdks.md).
 
-2. Deregister the device from your IoT Hub, to prevent future communications and data transfer. Again, you can temporarily disable or permanently delete the device's entry in the identity registry for the IoT Hub where it was provisioned. See [Disable devices](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) to learn more about disablement. See "Device Management / IoT Devices" for your IoT Hub resource, in the [Azure portal](https://portal.azure.com).
+2. Wyrejestruj urządzenie z IoT Hub, aby uniemożliwić komunikację w przyszłości i transfer danych. Ponownie można tymczasowo wyłączyć lub trwale usunąć wpis urządzenia w rejestrze tożsamości dla IoT Hub, w którym Zainicjowano obsługę administracyjną. Aby dowiedzieć się więcej o wyłączaniu, zobacz temat [wyłączanie urządzeń](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) . Zapoznaj się z tematem "Zarządzanie urządzeniami/urządzenia IoT" dla zasobu IoT Hub w [Azure Portal](https://portal.azure.com).
 
-The exact steps you take to deprovision a device depend on its attestation mechanism and its applicable enrollment entry with your provisioning service. The following sections provide an overview of the process, based on the enrollment and attestation type.
+Dokładne kroki wykonywane w celu anulowania aprowizacji urządzenia zależą od jego mechanizmu zaświadczania i odpowiedniego wpisu rejestracji w usłudze aprowizacji. Poniższe sekcje zawierają omówienie procesu na podstawie typu rejestracji i zaświadczania.
 
-## <a name="individual-enrollments"></a>Individual enrollments
-Devices that use TPM attestation or X.509 attestation with a leaf certificate are provisioned through an individual enrollment entry. 
+## <a name="individual-enrollments"></a>Rejestracje indywidualne
+Urządzenia korzystające z zaświadczania modułu TPM lub zaświadczania X. 509 z certyfikatem liścia są inicjowane za pomocą indywidualnego wpisu rejestracji. 
 
-To deprovision a device that has an individual enrollment: 
+Aby anulować obsługę administracyjną urządzenia, które ma rejestrację indywidualną: 
 
-1. Disenroll the device from your provisioning service:
+1. Wyrejestruj urządzenie z usługi aprowizacji:
 
-   - For devices that use TPM attestation, delete the individual enrollment entry to permanently revoke the device's access to the provisioning service, or disable the entry to temporarily revoke its access. 
-   - For devices that use X.509 attestation, you can either delete or disable the entry. Be aware, though, if you delete an individual enrollment for a device that uses X.509 and an enabled enrollment group exists for a signing certificate in that device's certificate chain, the device can re-enroll. For such devices, it may be safer to disable the enrollment entry. Doing so prevents the device from re-enrolling, regardless of whether an enabled enrollment group exists for one of its signing certificates.
+   - W przypadku urządzeń korzystających z zaświadczania modułu TPM Usuń wpis rejestracji indywidualnej, aby trwale odwołać dostęp urządzenia do usługi aprowizacji, lub Wyłącz ten wpis, aby tymczasowo odwołać dostęp do niego. 
+   - W przypadku urządzeń korzystających z zaświadczania X. 509 można usunąć lub wyłączyć tę pozycję. Należy pamiętać, że jeśli usuniesz rejestrację indywidualną dla urządzenia używającego X. 509, a dla certyfikatu podpisywania w łańcuchu certyfikatów tego urządzenia istnieje już włączona Grupa rejestracji, urządzenie może je ponownie zarejestrować. W przypadku takich urządzeń może być bezpieczniejsze wyłączenie wpisu rejestracji. Uniemożliwi to ponowne zarejestrowanie urządzenia, niezależnie od tego, czy dla jednego z jego certyfikatów podpisywania istnieje włączona Grupa rejestracji.
 
-2. Disable or delete the device in the identity registry of the IoT hub that it was provisioned to. 
+2. Wyłączenie lub usunięcie urządzenia w rejestrze tożsamości Centrum IoT Hub, do którego została zainicjowana obsługa administracyjna. 
 
 
-## <a name="enrollment-groups"></a>Enrollment groups
-With X.509 attestation, devices can also be provisioned through an enrollment group. Enrollment groups are configured with a signing certificate, either an intermediate or root CA certificate, and control access to the provisioning service for devices with that certificate in their certificate chain. To learn more about enrollment groups and X.509 certificates with the provisioning service, see [X.509 certificates](concepts-security.md#x509-certificates). 
+## <a name="enrollment-groups"></a>Grupy rejestracji
+Za pomocą zaświadczania X. 509 urządzenia mogą być również obsługiwane za pomocą grupy rejestracji. Grupy rejestracji są konfigurowane przy użyciu certyfikatu podpisywania, certyfikatu pośredniego lub głównego urzędu certyfikacji i kontroli dostępu do usługi aprowizacji dla urządzeń z tym certyfikatem w łańcuchu certyfikatów. Aby dowiedzieć się więcej o grupach rejestracji i certyfikatach X. 509 z usługą aprowizacji, zobacz [certyfikaty x. 509](concepts-security.md#x509-certificates). 
 
-To see a list of devices that have been provisioned through an enrollment group, you can view the enrollment group's details. This is an easy way to understand which IoT hub each device has been provisioned to. To view the device list: 
+Aby wyświetlić listę urządzeń, które zostały zainicjowane za pomocą grupy rejestracji, można wyświetlić szczegóły grupy rejestracji. Jest to prosty sposób na zrozumienie, które Centrum IoT Hub zostało zainicjowane dla każdego urządzenia. Aby wyświetlić listę urządzeń: 
 
-1. Log in to the Azure portal and click **All resources** on the left-hand menu.
-2. Click your provisioning service in the list of resources.
-3. In your provisioning service, click **Manage enrollments**, then select **Enrollment Groups** tab.
-4. Click the enrollment group to open it.
+1. Zaloguj się do Azure Portal i kliknij pozycję **wszystkie zasoby** w menu po lewej stronie.
+2. Kliknij usługę aprowizacji na liście zasobów.
+3. W usłudze aprowizacji kliknij pozycję **Zarządzaj rejestracjami**, a następnie wybierz kartę **grupy rejestracji** .
+4. Kliknij grupę rejestracji, aby ją otworzyć.
 
-   ![View enrollment group entry in the portal](./media/how-to-unprovision-devices/view-enrollment-group.png)
+   ![Wyświetlanie wpisu grupy rejestracji w portalu](./media/how-to-unprovision-devices/view-enrollment-group.png)
 
-With enrollment groups, there are two scenarios to consider:
+W przypadku grup rejestracji istnieją dwa scenariusze, które należy wziąć pod uwagę:
 
-- To deprovision all of the devices that have been provisioned through an enrollment group:
-  1. Disable the enrollment group to blacklist its signing certificate. 
-  2. Use the list of provisioned devices for that enrollment group to disable or delete each device from the identity registry of its respective IoT hub. 
-  3. After disabling or deleting all devices from their respective IoT hubs, you can optionally delete the enrollment group. Be aware, though, that, if you delete the enrollment group and there is an enabled enrollment group for a signing certificate higher up in the certificate chain of one or more of the devices, those devices can re-enroll. 
+- Aby anulować obsługę administracyjną wszystkich urządzeń, które zostały zainicjowane za pomocą grupy rejestracji:
+  1. Wyłącz grupę rejestracji, aby uniemożliwić jej certyfikat podpisywania. 
+  2. Aby wyłączyć lub usunąć każde urządzenie z rejestru tożsamości odpowiedniego centrum IoT Hub, należy użyć listy urządzeń z zainicjowaną obsługą tej grupy rejestracji. 
+  3. Po wyłączeniu lub usunięciu wszystkich urządzeń z odpowiednich centrów IoT można opcjonalnie usunąć grupę rejestracji. Należy jednak pamiętać, że w przypadku usunięcia grupy rejestracji, gdy istnieje grupa rejestracji z włączoną obsługą certyfikatu podpisywania w łańcuchu certyfikatów co najmniej jednego z tych urządzeń, te urządzenia mogą być ponownie rejestrowane. 
 
-- To deprovision a single device from an enrollment group:
-  1. Create a disabled individual enrollment for its leaf (device) certificate. This revokes access to the provisioning service for that device while still permitting access for other devices that have the enrollment group's signing certificate in their chain. Do not delete the disabled individual enrollment for the device. Doing so will allow the device to re-enroll through the enrollment group. 
-  2. Use the list of provisioned devices for that enrollment group to find the IoT hub that the device was provisioned to and disable or delete it from that hub's identity registry. 
+- Aby anulować obsługę administracyjną pojedynczego urządzenia z grupy rejestracji:
+  1. Utwórz wyłączoną rejestrację indywidualną dla swojego certyfikatu liścia (urządzenia). Spowoduje to odwołanie dostępu do usługi aprowizacji dla tego urządzenia, pozostawiając jednocześnie dostęp do innych urządzeń, które mają certyfikat podpisywania grupy rejestracji w łańcuchu. Nie usuwaj wyłączonej rejestracji indywidualnej dla urządzenia. Pozwoli to na ponowne zarejestrowanie urządzenia za pomocą grupy rejestracji. 
+  2. Aby znaleźć centrum IoT, do którego zainicjowano urządzenie i wyłączyć lub usunąć je z rejestru tożsamości centrum, należy użyć listy urządzeń, które zostały zainicjowane dla tej grupy rejestracji. 
   
   
 

@@ -37,7 +37,7 @@ Można łatwo usunąć użytkownika lub grupę z przypisanego dostępu do jednej
 1. Na stronie **Azure Active Directory- *DirectoryName***  (czyli stronie usługi Azure AD dla katalogu, którym zarządzasz) wybierz pozycję **aplikacje dla przedsiębiorstw**.
 1. Na stronie **aplikacje dla przedsiębiorstw — wszystkie aplikacje** zostanie wyświetlona lista aplikacji, którymi można zarządzać. Wybierz aplikację.
 1. ***Na stronie Przegląd aplikacji*** (czyli stronie z nazwą wybranej aplikacji w tytule) wybierz pozycję **Użytkownicy & grupy**.
-1. Na stronie ***nazwa*** **użytkownika & przypisanie grupy** wybierz jednego z kilku użytkowników lub grup, a następnie wybierz polecenie **Usuń** . Potwierdź swoją decyzję w wierszu polecenia.
+1. ***Na stronie*** nazwa **użytkownika & przypisanie grupy** wybierz jednego z kilku użytkowników lub grup, a następnie wybierz polecenie **Usuń** . Potwierdź swoją decyzję w wierszu polecenia.
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>Jak mogę usunąć przypisanie użytkownika lub grupy do aplikacji przedsiębiorstwa przy użyciu programu PowerShell?
 

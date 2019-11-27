@@ -106,7 +106,7 @@ Opcjonalnie można włączyć obsługę administracyjną obiektów grup z usług
 
 Spowoduje to, że wszystkie obiekty grupy przypisane do zapasu czasu w sekcji **Użytkownicy i grupy** są w pełni synchronizowane z usługą Azure AD do zapasu czasu. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji zapasowej.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 

@@ -47,7 +47,7 @@ Aby uzyskać szczegółowe informacje na temat implementacji, zobacz [udzielanie
  
 ## <a name="next-steps"></a>Następne kroki
 
-- [Użytkowników B2B przydział w usłudze Azure AD dostęp do aplikacji w środowisku lokalnym](hybrid-cloud-to-on-premises.md)
+- [Przyznaj użytkownikom B2B dostęp do aplikacji lokalnych w usłudze Azure AD](hybrid-cloud-to-on-premises.md)
 - [Przyznaj lokalnym zarządzanym kontom partnerskim dostęp do zasobów w chmurze przy użyciu funkcji współpracy B2B usługi Azure AD](hybrid-on-premises-to-cloud.md)
 
 

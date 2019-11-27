@@ -1,7 +1,7 @@
 ---
-title: Publishing regions & endpoints - LUIS
+title: Publikowanie regionów & punkty końcowe — LUIS
 titleSuffix: Azure Cognitive Services
-description: The region specified in the Azure portal is the same where you will publish the LUIS app and an endpoint URL is generated for this same region.
+description: Region określony w Azure Portal jest taki sam, gdzie zostanie opublikowana aplikacja LUIS, a dla tego samego regionu zostanie wygenerowany adres URL punktu końcowego.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,69 +18,69 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225490"
 ---
-# <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Authoring and publishing regions and the associated keys
+# <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Tworzenie i publikowanie regionów oraz skojarzonych kluczy
 
-Three authoring regions are supported by corresponding LUIS portals. To publish a LUIS app to more than one region, you need at least one key per region. 
+Trzy regiony tworzenia są obsługiwane przez odpowiednie portale LUIS. Aby opublikować więcej niż jeden region z aplikacją usługi LUIS, potrzebujesz co najmniej jeden klucz dla regionu. 
 
 <a name="luis-website"></a>
 
-## <a name="luis-authoring-regions"></a>LUIS Authoring regions
-There are three LUIS authoring portals, based on region. You must author and publish in the same region. 
+## <a name="luis-authoring-regions"></a>LUISe regiony tworzenia
+Istnieją trzy portale tworzenia LUIS na podstawie regionu. Należy tworzyć i publikować w tym samym regionie. 
 
-|LUIS|Authoring region|Azure region name|
+|LUIS|Tworzenie regionu|Nazwa regionu platformy Azure|
 |--|--|--|
-|[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|Odległe Mniejsze<br>not Europe<br>not Australia| `westus`|
+|[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|Federalna<br>nie Europa<br>nie Australia| `westus`|
 |[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|Australia| `australiaeast`|
 |[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|Europa|`westeurope`|
 
-Authoring regions have [paired fail-over regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+Regiony tworzenia mają [sparowane regiony trybu failover](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 <a name="regions-and-azure-resources"></a>
 
-## <a name="publishing-regions-and-azure-resources"></a>Publishing regions and Azure resources
-The app is published to all regions associated with the LUIS resources added in the LUIS portal. For example, for an app created on [www.luis.ai][www.luis.ai], if you create a LUIS or Cognitive Service resource in **westus** and [add it to the app as a resource](luis-how-to-azure-subscription.md), the app is published in that region. 
+## <a name="publishing-regions-and-azure-resources"></a>Publikowanie regionów i zasobów platformy Azure
+Aplikacja została opublikowana do wszystkich regionów skojarzonych z zasobami usługi LUIS dodane w portalu usługi LUIS. Na przykład w przypadku aplikacji utworzonej w witrynie [www.Luis.AI][www.luis.ai], jeśli utworzysz zasób usługi Luis lub poznawczej w formie **zachodniej** i [dodasz go do aplikacji jako zasób](luis-how-to-azure-subscription.md), aplikacja zostanie opublikowana w tym regionie. 
 
-## <a name="public-apps"></a>Public apps
-A public app is published in all regions so that a user with a region-based LUIS resource key can access the app in whichever region is associated with their resource key.
+## <a name="public-apps"></a>Publicznych aplikacji
+Opublikowaniu publicznych aplikacji we wszystkich regionach, aby użytkownik z kluczem zależności od regionu zasobu usługi LUIS dostęp do aplikacji w niezależnie od regionu jest skojarzony z kluczem ich zasobów.
 
 <a name="publishing-regions"></a>
 
-## <a name="publishing-regions-are-tied-to-authoring-regions"></a>Publishing regions are tied to authoring regions
+## <a name="publishing-regions-are-tied-to-authoring-regions"></a>Regiony publikowania są powiązane z regionami tworzenia
 
-The authoring region app can only be published to a corresponding publish region. If your app is currently in the wrong authoring region, export the app, and import it into the correct authoring region for your publishing region. 
+Tworzenia aplikacji w regionie mogą być publikowane tylko dla odpowiedni region publikowania. Jeśli Twoja aplikacja jest obecnie w niewłaściwym regionie tworzenia pakietów administracyjnych, należy wyeksportować aplikację i zaimportuj go do poprawny region tworzenia pakietów administracyjnych w Twoim regionie publikowania. 
 
-LUIS apps created on https://www.luis.ai can be published to all endpoints except the [European](#publishing-to-europe) and [Australian](#publishing-to-australia) regions. 
+Aplikacje LUIS utworzone w https://www.luis.ai mogą być publikowane we wszystkich punktach końcowych z wyjątkiem regionów [Europy](#publishing-to-europe) i [Australii](#publishing-to-australia) . 
 
-## <a name="publishing-to-europe"></a>Publishing to Europe
+## <a name="publishing-to-europe"></a>Publikowanie w Europie
 
-To publish to the European regions, you create LUIS apps at https://eu.luis.ai only. If you attempt to publish anywhere else using a key in the Europe region, LUIS displays a warning message. Instead, use https://eu.luis.ai. LUIS apps created at [https://eu.luis.ai][eu.luis.ai] don't automatically migrate to other regions. Export and then import the LUIS app in order to migrate it.
+Aby opublikować w regionach europejskich, możesz tworzyć aplikacje LUIS tylko w https://eu.luis.ai. Jeśli spróbujesz opublikować gdziekolwiek w przeciwnym razie użycie klucza w regionie Europa, LUIS wyświetla komunikat ostrzegawczy. Zamiast tego należy użyć https://eu.luis.ai. Aplikacje LUIS utworzone w [https://eu.luis.ai][eu.luis.ai] nie są automatycznie migrowane do innych regionów. Wyeksportować, a następnie zaimportować aplikacji usługi LUIS, aby można było przeprowadzić jej migrację.
 
-## <a name="europe-publishing-regions"></a>Europe publishing regions
+## <a name="europe-publishing-regions"></a>Regiony publikowania w Europie
 
- Global region | Authoring API region & authoring website| Publishing & querying region<br>`API region name`   |  Endpoint URL format   |
+ Globalne regionu | Tworzenie regionu interfejsu API & tworzenia witryny sieci Web| Publikowanie i wykonywania zapytań regionu<br>`API region name`   |  Format adresu URL punktu końcowego   |
 |-----|------|------|------|
 | [Europa](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Francja Środkowa<br>`francecentral`     | https://francecentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | [Europa](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Europa Północna<br>`northeurope`     | https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | [Europa](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Europa Zachodnia<br>`westeurope`    |  https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | [Europa](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Południowe Zjednoczone Królestwo<br>`uksouth`    |  https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
-## <a name="publishing-to-australia"></a>Publishing to Australia
+## <a name="publishing-to-australia"></a>Publikowanie w Australii
 
-To publish to the Australian regions, you create LUIS apps at https://au.luis.ai only. If you attempt to publish anywhere else using a key in the Australian region, LUIS displays a warning message. Instead, use https://au.luis.ai. LUIS apps created at [https://au.luis.ai][au.luis.ai] don't automatically migrate to other regions. Export and then import the LUIS app in order to migrate it.
+Aby publikować w regionach australijskich, możesz tworzyć aplikacje LUIS tylko w https://au.luis.ai. Jeśli spróbujesz opublikować gdziekolwiek w przeciwnym razie użycie klucza w regionie Australii LUIS wyświetla komunikat ostrzegawczy. Zamiast tego należy użyć https://au.luis.ai. Aplikacje LUIS utworzone w [https://au.luis.ai][au.luis.ai] nie są automatycznie migrowane do innych regionów. Wyeksportować, a następnie zaimportować aplikacji usługi LUIS, aby można było przeprowadzić jej migrację.
 
-## <a name="australia-publishing-regions"></a>Australia publishing regions
+## <a name="australia-publishing-regions"></a>Regiony publikacji Australii
 
- Global region | Authoring API region & authoring website| Publishing & querying region<br>`API region name`   |  Endpoint URL format   |
+ Globalne regionu | Tworzenie regionu interfejsu API & tworzenia witryny sieci Web| Publikowanie i wykonywania zapytań regionu<br>`API region name`   |  Format adresu URL punktu końcowego   |
 |-----|------|------|------|
 | [Australia](#publishing-to-australia) | `australiaeast`<br>[au.luis.ai][au.luis.ai]| Australia Wschodnia<br>`australiaeast`     |  https://australiaeast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
-## <a name="publishing-to-other-regions"></a>Publishing to other regions
+## <a name="publishing-to-other-regions"></a>Publikowanie w innych regionach
 
-To publish to the other regions, you create LUIS apps at [https://www.luis.ai](https://www.luis.ai) only. 
+Aby publikować w innych regionach, możesz tworzyć aplikacje LUIS tylko w [https://www.luis.ai](https://www.luis.ai) . 
 
-## <a name="other-publishing-regions"></a>Other publishing regions
+## <a name="other-publishing-regions"></a>Inne regiony publikowania
 
- Global region | Authoring API region & authoring website| Publishing & querying region<br>`API region name`   |  Endpoint URL format   |
+ Globalne regionu | Tworzenie regionu interfejsu API & tworzenia witryny sieci Web| Publikowanie i wykonywania zapytań regionu<br>`API region name`   |  Format adresu URL punktu końcowego   |
 |-----|------|------|------|
 | Afryka | `westus`<br>[www.luis.ai][www.luis.ai]| Północna Republika Południowej Afryki<br>`southafricanorth` |  https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Azja | `westus`<br>[www.luis.ai][www.luis.ai]| Indie Środkowe<br>`centralindia` |  https://centralindia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
@@ -93,8 +93,8 @@ To publish to the other regions, you create LUIS apps at [https://www.luis.ai](h
 | Ameryka Północna |`westus`<br>[www.luis.ai][www.luis.ai] | Środkowe stany USA<br>`centralus`     |   https://centralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Ameryka Północna |`westus`<br>[www.luis.ai][www.luis.ai] | Wschodnie stany USA<br>`eastus`      |  https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Ameryka Północna | `westus`<br>[www.luis.ai][www.luis.ai] | Wschodnie stany USA 2<br>`eastus2`     |  https://eastus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| Ameryka Północna | `westus`<br>[www.luis.ai][www.luis.ai] | Północno-środkowe stany USA<br>`northcentralus`  |  https://northcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
-| Ameryka Północna | `westus`<br>[www.luis.ai][www.luis.ai] | Południowo-środkowe stany USA<br>`southcentralus`  |  https://southcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
+| Ameryka Północna | `westus`<br>[www.luis.ai][www.luis.ai] | Środkowo-północne stany USA<br>`northcentralus`  |  https://northcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
+| Ameryka Północna | `westus`<br>[www.luis.ai][www.luis.ai] | Środkowo-południowe stany USA<br>`southcentralus`  |  https://southcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | Ameryka Północna |`westus`<br>[www.luis.ai][www.luis.ai] | Zachodnio-środkowe stany USA<br>`westcentralus`    |  https://westcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Ameryka Północna | `westus`<br>[www.luis.ai][www.luis.ai] | Zachodnie stany USA<br>`westus`  |   https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
 | Ameryka Północna |`westus`<br>[www.luis.ai][www.luis.ai] | Zachodnie stany USA 2<br>`westus2`    |  https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
@@ -102,31 +102,31 @@ To publish to the other regions, you create LUIS apps at [https://www.luis.ai](h
 
 ## <a name="endpoints"></a>Punkty końcowe
 
-LUIS currently has 2 endpoints: one for authoring and one for query prediction analysis.
+LUIS ma obecnie 2 punkty końcowe: jeden dla tworzenia i jeden na potrzeby analizy prognozowania zapytań.
 
 |Przeznaczenie|Adres URL|
 |--|--|
 |Tworzenie|`https://{region}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
-|Text analysis (query prediction)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|Analiza tekstu (prognozowane zapytania)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
 
-The following table explains the parameters, denoted with curly braces `{}`, in the previous table.
+W poniższej tabeli objaśniono parametry oznaczone nawiasami klamrowymi `{}`w poprzedniej tabeli.
 
 |Parametr|Przeznaczenie|
 |--|--|
-|region|Azure region - authoring and publishing have different regions|
-|appID|LUIS app ID used in URL route and found on app dashboard|
-|q|utterance text sent from client application such as chat bot|
+|region|Region platformy Azure — tworzenie i publikowanie mają różnych regionach|
+|appID|Identyfikator aplikacji usługi LUIS używane w trasy adresu URL i znalezione na pulpit nawigacyjny aplikacji|
+|q|tekstowe wypowiedź wysyłane z aplikacji klienckiej, takich jak czatbot|
 
-## <a name="failover-regions"></a>Failover regions
+## <a name="failover-regions"></a>Regiony trybu failover
 
-Each region has a secondary region to fail over to. Europe fails over inside Europe and Australia fails over inside Australia.
+Każdy region ma region pomocniczy do przełączenia w tryb failover. Europa działa w trybie failover w Europie i Australia przechodzi w tryb failover w Australii.
 
-Authoring regions have [paired fail-over regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+Regiony tworzenia mają [sparowane regiony trybu failover](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Prebuilt entities reference](./luis-reference-prebuilt-entities.md)
+> [Odwołania do wstępnie utworzonych jednostek](./luis-reference-prebuilt-entities.md)
 
  [www.luis.ai]: https://www.luis.ai
  [au.luis.ai]: https://au.luis.ai

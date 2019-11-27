@@ -24,11 +24,11 @@ Wynik przewidywania wskazuje, że stopień zaufania LUIS jest przeznaczony do pr
 
 Wynik prognoz jest między zero (0) i jeden (1). Przykład wysoce pewność oceny usługi LUIS wynosi 0,99. Przykładem wynik niskim poziomem pewności, że jest 0,01. 
 
-|Wartość|Ufność|
+|Wartość|Confidence|
 |--|--|
 |1|określony dopasowania|
 |0,99.|o dużej pewności|
-|0.01|niski ufności|
+|0,01|niski ufności|
 |0|określony błąd dopasowania|
 
 ## <a name="top-scoring-intent"></a>Ocenianie górnej intencji
@@ -68,7 +68,7 @@ Możesz wyłączyć **niedeterministyczne szkolenie** , [przekształcenie ze wsz
 
 ## <a name="e-exponent-notation"></a>Notacja E (wykładnik)
 
-Wyniki prognozowania można używać notacji wykładnika _pojawiające się_ powyżej 0 – 1 do zakresu, takich jak `9.910309E-07`. Ten wynik jest wskazaniem bardzo **małych** numer.
+Wyniki przewidywania mogą korzystać z notacji wykładniczej, która znajduje _się powyżej zakresu_ 0-1, takiego jak `9.910309E-07`. Ten wynik wskazuje bardzo **małą** liczbę.
 
 |Wynik notacji E |Rzeczywisty wynik|
 |--|--|
@@ -80,4 +80,4 @@ Wyniki prognozowania można używać notacji wykładnika _pojawiające się_ pow
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania jednostki z aplikacją usługi LUIS.
+Zobacz [Dodawanie jednostek](luis-how-to-add-entities.md) , aby dowiedzieć się więcej na temat dodawania jednostek do aplikacji Luis.

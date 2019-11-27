@@ -52,6 +52,6 @@ Samouczki aplikacji można znaleźć na [liście samouczków dotyczących integr
 
 Ważną kwestią do uwzględnienia podczas konfigurowania aprowizacji jest przejrzenie i skonfigurowanie mapowań atrybutów i przepływów pracy, które definiują, które właściwości użytkownika (lub grupy) będą przepływać z usługi Azure AD do aplikacji. Obejmuje to ustawienie "dopasowania właściwości" służącego do unikatowego identyfikowania i dopasowywania użytkowników/grup między tymi dwoma systemami. Aby uzyskać więcej informacji na temat mapowań atrybutów, zobacz link w *sekcji Następne kroki* .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Dostosowywanie mapowań atrybutów aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Greenhouse | Microsoft Docs'
+title: 'Samouczek: integracja Azure Active Directory z szklarnią | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Greenhouse.
 services: active-directory
 documentationCenter: na
@@ -22,7 +22,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227540"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Tutorial: Azure Active Directory integration with Greenhouse
+# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Samouczek: integracja Azure Active Directory z szklarnią
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Greenhouse z usługą Azure Active Directory (Azure AD).
 Integracja aplikacji Greenhouse z usługą Azure AD zapewnia następujące korzyści:
@@ -69,7 +69,7 @@ Aby skonfigurować integrację aplikacji Greenhouse z usługą Azure AD, należy
 
      ![Aplikacja Greenhouse na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Greenhouse, korzystając z danych użytkownika testowego **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Greenhouse.
@@ -91,7 +91,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z usługą Greenhouse,
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Greenhouse** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -107,14 +107,14 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z usługą Greenhouse,
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname>.greenhouse.io`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<companyname>.greenhouse.io`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.greenhouse.io`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Greenhouse](https://www.greenhouse.io/contact) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając rzeczywistego adresu URL logowania i identyfikatora. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Greenhouse](https://www.greenhouse.io/contact) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
 6. W sekcji **Konfigurowanie aplikacji Greenhouse** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -124,7 +124,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z usługą Greenhouse,
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-greenhouse-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Greenhouse
 
@@ -136,24 +136,24 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
 2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -186,7 +186,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Greenhouse, należy ich aprowizować w aplikacji Greenhouse. W przypadku aplikacji Greenhouse aprowizacja jest zadaniem ręcznym.
 
 >[!NOTE]
->You can use any other Greenhouse user account creation tools or APIs provided by Greenhouse to provision Azure AD user accounts. 
+>Do udostępniania kont użytkowników usługi Azure AD można używać innych narzędzi do tworzenia kont użytkowników i interfejsów API dostarczonych przez dane szklarni. 
 
 **Aby aprowizować konta użytkowników, wykonaj następujące kroki:**
 
@@ -198,30 +198,30 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Green
 
 3. Kliknij pozycję **New Users** (Nowi użytkownicy).
    
-    ![New User](./media/greenhouse-tutorial/ic790792.png "New User")
+    ![Nowy użytkownik](./media/greenhouse-tutorial/ic790792.png "Nowy użytkownik")
 
 4. W sekcji **Add New User (Dodaj nowego użytkownika)** wykonaj następujące kroki:
    
-    ![Add New User](./media/greenhouse-tutorial/ic790793.png "Add New User")
+    ![Dodaj nowego użytkownika](./media/greenhouse-tutorial/ic790793.png "Dodaj nowego użytkownika")
 
     a. W polu tekstowym **Enter user emails** (Wprowadź adresy e-mail użytkowników) wpisz adres e-mail prawidłowego konta usługi Azure Active Directory, które chcesz aprowizować.
 
-    b. Kliknij przycisk **Save** (Zapisz).    
+    b. Kliknij pozycję **Zapisz**.    
    
       >[!NOTE]
       >Właściciele kont usługi Azure Active Directory otrzymają wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Greenhouse w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Greenhouse, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

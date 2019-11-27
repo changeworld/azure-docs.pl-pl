@@ -1,6 +1,6 @@
 ---
-title: How to troubleshoot Azure Functions Runtime is unreachable.
-description: Learn how to troubleshoot an invalid storage account.
+title: Jak rozwiązywać problemy środowisko uruchomieniowe usługi Azure Functions jest nieosiągalny.
+description: Dowiedz się, jak rozwiązywać problemy z nieprawidłowym kontem magazynu.
 author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
@@ -12,78 +12,78 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226759"
 ---
-# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>How to troubleshoot "functions runtime is unreachable"
+# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Jak rozwiązywać problemy ze środowiskiem uruchomieniowym funkcji jest nieosiągalny "
 
 
-## <a name="error-text"></a>Error text
-This doc is intended to troubleshoot the following error when displayed in the Functions portal.
+## <a name="error-text"></a>Tekst błędu
+Ten dokument jest przeznaczony do rozwiązywania problemów z następującym błędem, gdy jest wyświetlany w portalu funkcji.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
 ### <a name="summary"></a>Podsumowanie
-This issue occurs when the Azure Functions Runtime cannot start. The most common reason for this error to occur is the function app losing access to its storage account. [Read more about the storage account requirements here](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+Ten problem występuje, gdy nie można uruchomić środowisko uruchomieniowe usługi Azure Functions. Najbardziej typową przyczyną wystąpienia tego błędu jest aplikacja funkcji, która utraci dostęp do konta magazynu. [Przeczytaj więcej na temat wymagań dotyczących konta magazynu tutaj](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
-We'll walk through the four most common error cases, how to identify, and how to resolve each case.
+Przeprowadzimy cztery najczęstsze przypadki błędów, sposób identyfikowania i rozwiązywania każdego przypadku.
 
-1. Storage Account deleted
-1. Storage Account application settings deleted
-1. Storage Account credentials invalid
-1. Storage Account Inaccessible
-1. Daily Execution Quota Full
+1. Usunięto konto magazynu
+1. Usunięto ustawienia aplikacji konta magazynu
+1. Nieprawidłowe poświadczenia konta magazynu
+1. Konto magazynu jest niedostępne
+1. Pełny limit przydziału dziennego wykonania
 
-## <a name="storage-account-deleted"></a>Storage account deleted
+## <a name="storage-account-deleted"></a>Usunięto konto magazynu
 
-Every function app requires a storage account to operate. If that account is deleted your Function will not work.
+Każda aplikacja funkcji wymaga konta magazynu do działania. Jeśli to konto zostanie usunięte, funkcja nie będzie działać.
 
-### <a name="how-to-find-your-storage-account"></a>How to find your storage account
+### <a name="how-to-find-your-storage-account"></a>Jak znaleźć konto magazynu
 
-Start by looking up your storage account name in your Application Settings. Either `AzureWebJobsStorage` or `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` will contain the name of your storage account wrapped up in a connection string. Read more specifics at the [application setting reference here](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+Zacznij od przejrzenia nazwy konta magazynu w ustawieniach aplikacji. `AzureWebJobsStorage` lub `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` będzie zawierać nazwę konta magazynu opakowaną w ciągu połączenia. Więcej szczegółowych informacji znajduje się w [dokumentacji dotyczącej ustawień aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 
-Search for your storage account in the Azure portal to see if it still exists. If it has been deleted, you will need to recreate a storage account and replace your storage connection strings. Your function code is lost and you will need to redeploy it again.
+Wyszukaj swoje konto magazynu w Azure Portal, aby sprawdzić, czy jeszcze nie istnieje. Jeśli został usunięty, należy ponownie utworzyć konto magazynu i zastąpić parametry połączenia magazynu. Kod funkcji zostanie utracony i konieczne będzie ponowne wdrożenie ponownie.
 
-## <a name="storage-account-application-settings-deleted"></a>Storage account application settings deleted
+## <a name="storage-account-application-settings-deleted"></a>Usunięto ustawienia aplikacji konta magazynu
 
-In the previous step, if you did not have a storage account connection string they were likely deleted or overwritten. Deleting app settings is most commonly done when using deployment slots or Azure Resource Manager scripts to set application settings.
+W poprzednim kroku, jeśli nie masz parametrów połączenia konta magazynu, które zostały już usunięte lub nadpisane. Usuwanie ustawień aplikacji jest najczęściej wykonywane w przypadku używania miejsc wdrożenia lub skryptów Azure Resource Manager do ustawiania ustawień aplikacji.
 
-### <a name="required-application-settings"></a>Required application settings
+### <a name="required-application-settings"></a>Wymagane ustawienia aplikacji
 
 * Wymagane
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
-* Required for Consumption Plan Functions
+* Wymagane dla funkcji planu zużycia
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Read about these application settings here](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+[Tutaj Przeczytaj informacje o tych ustawieniach aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-### <a name="guidance"></a>Wskazówka
+### <a name="guidance"></a>Wskazówki
 
-* Do not check "slot setting" for any of these settings. When you swap deployment slots the Function will break.
-* Do not modify these settings as part of automated deployments.
-* These settings must be provided and valid at creation time. An automated deployment that does not contain these settings will result in a non-functional App, even if the settings are added after the fact.
+* Nie sprawdzaj ustawień gniazda dla żadnego z tych ustawień. Podczas wymiany miejsc wdrożenia funkcja zostanie przerwana.
+* Nie należy modyfikować tych ustawień w ramach zautomatyzowanych wdrożeń.
+* Te ustawienia muszą być podane i ważne podczas tworzenia. Automatyczne wdrożenie, które nie zawiera tych ustawień, spowoduje, że aplikacja nie będzie funkcjonalna, nawet jeśli ustawienia zostaną dodane po tym fakcie.
 
-## <a name="storage-account-credentials-invalid"></a>Storage account credentials invalid
+## <a name="storage-account-credentials-invalid"></a>Nieprawidłowe poświadczenia konta magazynu
 
-The above Storage Account connection strings must be updated if you regenerate storage keys. [Read more about storage key management here](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+Jeśli klucze magazynu zostaną ponownie wygenerowane, należy zaktualizować powyższe parametry połączenia konta magazynu. [Przeczytaj więcej na temat zarządzania kluczami magazynu tutaj](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
-## <a name="storage-account-inaccessible"></a>Storage account inaccessible
+## <a name="storage-account-inaccessible"></a>Konto magazynu jest niedostępne
 
-Your Function App must be able to access the storage account. Common issues that block a Functions access to a storage account are:
+Aplikacja funkcji musi mieć możliwość uzyskania dostępu do konta magazynu. Typowe problemy z zablokowaniem dostępu do funkcji do konta magazynu są następujące:
 
-* Function Apps deployed to App Service Environments without the correct network rules to allow traffic to and from the storage account
-* The storage account firewall is enabled and not configured to allow traffic to and from Functions. [Read more about storage account firewall configuration here](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* Aplikacje funkcji wdrożone w środowiskach App Service bez poprawnych reguł sieciowych w celu zezwolenia na ruch do i z konta magazynu
+* Zapora konta magazynu jest włączona i nie jest skonfigurowana w taki sposób, aby zezwalała na ruch do i z funkcji. [Przeczytaj więcej na temat konfiguracji zapory konta magazynu tutaj](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
-## <a name="daily-execution-quota-full"></a>Daily Execution Quota Full
+## <a name="daily-execution-quota-full"></a>Pełny limit przydziału dziennego wykonania
 
-If you have a Daily Execution Quota configured, your Function App will be temporarily disabled and many of the portal controls will become unavailable. 
+W przypadku skonfigurowania dziennego przydziału wykonywania aplikacja funkcji zostanie tymczasowo wyłączona i wiele kontrolek portalu stanie się niedostępne. 
 
-* To verify, check open Platform Features > Function App Settings in the portal. You will see the following message if you are over quota
+* Aby sprawdzić, zaznacz pozycję Otwórz funkcje platformy > aplikacja funkcji ustawienia w portalu. Jeśli limit przydziału zostanie przekroczony, zobaczysz następujący komunikat
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* Remove the quota and restart your app to resolve the issue.
+* Usuń przydział i ponownie uruchom aplikację, aby rozwiązać ten problem.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Now that your Function App is back and operational take a look at our quickstarts and developer references to get up and running again!
+Teraz, gdy aplikacja funkcji jest z powrotem i działa, zapoznaj się z naszymi przewodnikami Szybki Start i deweloperami, aby zacząć ponownie.
 
 * [Tworzenie pierwszej funkcji platformy Azure](functions-create-first-azure-function.md)  
   Od razu utwórz swoją pierwszą funkcję przy użyciu opcji szybkiego startu usługi Azure Functions. 

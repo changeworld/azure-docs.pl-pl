@@ -22,7 +22,7 @@ Obejmuje ona obsługę monitorowania wydajności i zależności aplikacji dla ma
 
 - **Wstępnie zdefiniowane wykresy wydajności trendu**: Wyświetl Podstawowe metryki wydajności z systemu operacyjnego gościa.
 
-- **Mapa zależności**: Wyświetla powiązanych elementów z maszyną Wirtualną z różnych subskrypcji i grupy zasobów.  
+- **Mapa zależności**: zawiera składniki połączone z maszyną wirtualną z różnych grup zasobów i subskrypcji.  
 
 >[!NOTE]
 >Niedawno [ogłoszono zmiany wprowadzane](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
@@ -38,7 +38,7 @@ Azure Monitor dla maszyn wirtualnych może zapewnić przewidywalną wydajność 
 
 ## <a name="data-usage"></a>Użycie danych
 
-Podczas wdrażania usługi Azure Monitor dla maszyn wirtualnych, danych, które są zbierane przez maszyny wirtualne jest pozyskiwane i przechowywane w usłudze Azure Monitor. Zebrane dane dotyczące wydajności i zależności są przechowywane w obszarze roboczym Log Analytics. Oparte na temat cen, które opublikowano na [usługi Azure Monitor stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/), usługi Azure Monitor dla maszyn wirtualnych jest naliczana za:
+Podczas wdrażania usługi Azure Monitor dla maszyn wirtualnych, danych, które są zbierane przez maszyny wirtualne jest pozyskiwane i przechowywane w usłudze Azure Monitor. Zebrane dane dotyczące wydajności i zależności są przechowywane w obszarze roboczym Log Analytics. W oparciu o Cennik opublikowany na [stronie cennika Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)Azure monitor dla maszyn wirtualnych opłaty są naliczane za:
 
 - Dane pozyskiwane i przechowywane.
 - Reguły alertów, które są tworzone.
@@ -48,4 +48,4 @@ Rozmiar dziennika zmienia się w zależności od długości ciągu liczników wy
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby poznać wymagania i metod, które pomagają monitorować maszyny wirtualne, zobacz [wdrożenia usługi Azure Monitor dla maszyn wirtualnych](vminsights-enable-overview.md).
+Aby poznać wymagania i metody, które ułatwiają monitorowanie maszyn wirtualnych, zobacz [wdrażanie Azure monitor dla maszyn wirtualnych](vminsights-enable-overview.md).

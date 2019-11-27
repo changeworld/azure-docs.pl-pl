@@ -58,8 +58,8 @@ Jeśli nie masz jeszcze nazwy domeny, Kup ją w *rejestratorze nazw domen*. Proc
 
 Istnieje wiele sposobów uzyskiwania certyfikatu SSL (certyfikatu cyfrowego). Najbardziej powszechnym celem jest zakupienie jednego z *urzędów* certyfikacji (CA). Bez względu na to, gdzie otrzymujesz certyfikat, potrzebne są następujące pliki:
 
-* A **certyfikatu**. Certyfikat musi zawierać pełny łańcuch certyfikatów i musi być "zakodowany przez PEM".
-* A **klucz**. Klucz musi być również zakodowany przez PEM.
+* **Certyfikat**. Certyfikat musi zawierać pełny łańcuch certyfikatów i musi być "zakodowany przez PEM".
+* **Klucz**. Klucz musi być również zakodowany przez PEM.
 
 W przypadku żądania certyfikatu należy podać nazwę FQDN adresu, który ma być używany przez usługę sieci Web (na przykład www\.contoso.com). Adres, który jest umieszczony w certyfikacie i adres używany przez klientów, jest porównywany w celu zweryfikowania tożsamości usługi sieci Web. Jeśli te adresy nie są zgodne, klient otrzymuje komunikat o błędzie.
 
@@ -256,6 +256,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Omawiane kwestie:
+Instrukcje:
 + [Korzystanie z modelu uczenia maszynowego wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
 + [Bezpieczne uruchamianie eksperymentów i wnioskowania wewnątrz sieci wirtualnej platformy Azure](how-to-enable-virtual-network.md)

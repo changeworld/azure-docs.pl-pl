@@ -1,5 +1,5 @@
 ---
-title: Deploy VM extensions with template
+title: Wdróż rozszerzenia maszyn wirtualnych z szablonem
 description: Dowiedz się, jak wdrożyć rozszerzenia maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager
 author: mumian
 ms.date: 11/13/2018
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio Code z rozszerzeniem Menedżer zasobów Tools. [Aby utworzyć szablony Azure Resource Manager, zobacz temat używanie Visual Studio Code](./resource-manager-tools-vs-code.md).
 * Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora maszyny wirtualnej. Poniżej przedstawiono przykład służący do generowania hasła:
 
     ```azurecli-interactive
@@ -42,7 +42,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 ## <a name="prepare-a-powershell-script"></a>Przygotowywanie skryptu programu PowerShell
 
-A PowerShell script with the following content is shared from [Github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
+Skrypt programu PowerShell z następującą zawartością jest udostępniany w witrynie [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -100,19 +100,19 @@ Dodaj zasób rozszerzenia maszyny wirtualnej do istniejącego szablonu o następ
 
 Zobacz [informacje szczegółowe o rozszerzeniu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions), jeśli potrzebujesz więcej informacji na temat tej definicji zasobu. Poniżej przedstawiono niektóre ważne elementy:
 
-* **name**: ponieważ zasób rozszerzenia jest zasobem podrzędnym obiektu maszyny wirtualnej, nazwa musi mieć prefiks nazwy maszyny wirtualnej. See [Set name and type for child resources](child-resource-name-type.md).
-* **dependsOn**: Create the extension resource after you've created the virtual machine.
-* **fileUris**: The locations where the script files are stored. Jeśli nie chcesz używać podanej lokalizacji, musisz zaktualizować wartości.
-* **commandToExecute**: This command invokes the script.
+* **name**: ponieważ zasób rozszerzenia jest zasobem podrzędnym obiektu maszyny wirtualnej, nazwa musi mieć prefiks nazwy maszyny wirtualnej. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md).
+* **dependsOn**: Utwórz zasób rozszerzenia po utworzeniu maszyny wirtualnej.
+* **fileUris**: lokalizacje, w których są przechowywane pliki skryptów. Jeśli nie chcesz używać podanej lokalizacji, musisz zaktualizować wartości.
+* **sekcji commandtoexecute**: to polecenie wywołuje skrypt.
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-For the deployment procedure, see the "Deploy the template" section of [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Zalecamy użycie wygenerowanego hasła dla konta administratora maszyny wirtualnej. Zobacz sekcję [Wymagania wstępne](#prerequisites) tego artykułu.
+Procedurę wdrażania można znaleźć w sekcji "Wdrażanie szablonu" w [samouczku: Tworzenie szablonów Azure Resource Manager z zasobami zależnymi](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Zalecamy użycie wygenerowanego hasła dla konta administratora maszyny wirtualnej. Zobacz sekcję [Wymagania wstępne](#prerequisites) tego artykułu.
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
 1. W witrynie Azure Portal wybierz maszynę wirtualną.
-1. In the VM overview, copy the IP address by selecting **Click to copy**, and then paste it in a browser tab. The default Internet Information Services (IIS) welcome page opens:
+1. Na stronie Przegląd maszyny wirtualnej Skopiuj adres IP, wybierając **pozycję kliknij, aby skopiować**, a następnie wkleić ją na karcie przeglądarki. Zostanie otwarta strona powitalna domyślna Internet Information Services (IIS):
 
 ![Strona powitalna usług Internet Information Services](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

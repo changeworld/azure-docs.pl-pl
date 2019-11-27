@@ -86,7 +86,7 @@ Można umożliwić użytkownikom uwierzytelnianie w polu gościa za pomocą kont
 
    b. W polu **Identyfikator użytkownika** wprowadź wartość **User. mail** (w przypadku logowania jednokrotnego dla kont Gości).
 
-   d. W obszarze **certyfikat podpisywania SAML**kliknij pozycję **Utwórz nowy certyfikat**.
+   c. W obszarze **certyfikat podpisywania SAML**kliknij pozycję **Utwórz nowy certyfikat**.
 
    d. Aby rozpocząć konfigurowanie dzierżawy Box.com do korzystania z usługi Azure AD jako dostawcy tożsamości, Pobierz plik metadanych, a następnie zapisz go na dysku lokalnym.
 

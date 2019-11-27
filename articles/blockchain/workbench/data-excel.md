@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z danych usługi Azure Blockchain Workbench w programie Microsoft Excel
-description: Learn how to load and view Azure Blockchain Workbench Preview SQL DB data in Microsoft Excel.
+description: Dowiedz się, jak ładować i wyświetlać dane SQL usługi Azure łańcucha bloków Workbench w wersji zapoznawczej w programie Microsoft Excel.
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri

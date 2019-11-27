@@ -120,7 +120,7 @@ Element zawartości, do której jest archiwizowany na żywo danych wyjściowych,
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Samouczek przesyłania strumieniowego na żywo](stream-live-tutorial-with-api.md)
 * [Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3](migrate-from-v2-to-v3.md)

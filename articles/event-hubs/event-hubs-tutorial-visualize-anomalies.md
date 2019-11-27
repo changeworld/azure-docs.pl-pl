@@ -320,7 +320,7 @@ W ramach zadania usługi Stream Analytics kliknij pozycje **Uruchom**, następni
 
    Kliknij przycisk **Dalej**.
 
-10. Ustaw tytuł **Oszukańcze użycia** i podtytuł **Suma w ciągu kilku ostatnich minut**. Kliknij przycisk **zastosować**. Kafelek zostanie zapisany na pulpicie nawigacyjnym.
+10. Ustaw tytuł **Oszukańcze użycia** i podtytuł **Suma w ciągu kilku ostatnich minut**. Kliknij przycisk **Zastosuj**. Kafelek zostanie zapisany na pulpicie nawigacyjnym.
 
     ![Zrzut ekranu przedstawiający określanie tytułu i podtytułu dla kafelka pulpitu nawigacyjnego.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 

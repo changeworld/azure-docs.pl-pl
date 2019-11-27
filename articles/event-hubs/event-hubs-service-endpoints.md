@@ -43,7 +43,7 @@ Wynik jest prywatne i izolowany relacji między obciążeniami usług związanyc
 > - Azure Functions
 
 > [!IMPORTANT]
-> Sieci wirtualne są obsługiwane w **standardowa** i **dedykowanych** warstw usługi Event Hubs. Nie jest obsługiwana w warstwie podstawowa.
+> Sieci wirtualne są obsługiwane w warstwach **Standardowa** i **Dedykowana** usługi Event Hubs. Nie jest obsługiwana w warstwie podstawowa.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Scenariusze zaawansowane zabezpieczenia obsługiwane przez Integracja sieci wirtualnej 
 
@@ -55,9 +55,9 @@ Oznacza to, że compartments bezpieczeństwa poufnych rozwiązań w chmurze nie 
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Powiązania usługi Event Hubs z sieciami wirtualnymi
 
-*Reguły sieci wirtualnej* to funkcja zabezpieczeń zapory, która kontroluje, czy przestrzeń nazw usługi Azure Event Hubs akceptuje połączenia z podsieci określonej sieci wirtualnej.
+*Reguły sieci wirtualnej* to funkcja zabezpieczeń zapory, która kontroluje, czy przestrzeń nazw usługi Azure Event Hubs akceptuje połączenia z określonej podsieci sieci wirtualnej.
 
-Powiązania przestrzeni nazw usługi Event Hubs do sieci wirtualnej jest procesem dwuetapowym. Najpierw należy utworzyć **punkt końcowy usługi Virtual Network** w podsieci Virtual Network i włączyć go dla elementu "Microsoft. EventHub" zgodnie z opisem w temacie [Omówienie punktu końcowego usługi][vnet-sep]. Po dodaniu punktu końcowego usługi, możesz powiązać przestrzeni nazw usługi Event Hubs za pomocą *reguły sieci wirtualnej*.
+Powiązania przestrzeni nazw usługi Event Hubs do sieci wirtualnej jest procesem dwuetapowym. Najpierw należy utworzyć **punkt końcowy usługi Virtual Network** w podsieci Virtual Network i włączyć go dla elementu "Microsoft. EventHub" zgodnie z opisem w temacie [Omówienie punktu końcowego usługi][vnet-sep]. Po dodaniu punktu końcowego usługi należy powiązać z nim przestrzeń nazw Event Hubs z *regułą sieci wirtualnej*.
 
 Reguła sieci wirtualnej jest skojarzeniem przestrzeni nazw Event Hubs z podsiecią sieci wirtualnej. Gdy istnieje reguła, wszystkie obciążenia związane z podsiecią uzyskują dostęp do przestrzeni nazw usługi Event Hubs. Usługa Event Hubs sam nigdy nie ustanawia wychodzące połączenia, nie trzeba uzyskać dostęp i w związku z tym nigdy nie uzyskuje dostęp do podsieci przez włączenie tej reguły.
 
@@ -67,9 +67,9 @@ Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci 
 
 Parametry szablonu:
 
-* **namespaceName**: przestrzeń nazw usługi Event Hubs.
-* **vnetRuleName**: nazwę reguły sieci wirtualnej ma zostać utworzony.
-* **virtualNetworkingSubnetId**: pełną ścieżkę Menedżera zasobów w podsieci sieci wirtualnej; na przykład `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` domyślne podsieci sieci wirtualnej.
+* **przestrzeń nazw**: Event Hubs przestrzeń nazw.
+* **vnetRuleName**: nazwa reguły Virtual Network, która ma zostać utworzona.
+* **virtualNetworkingSubnetId**: w pełni kwalifikowana ścieżka Menedżer zasobów dla podsieci sieci wirtualnej; na przykład `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` dla domyślnej podsieci sieci wirtualnej.
 
 > [!NOTE]
 > Chociaż nie ma możliwych reguł Odmów, szablon Azure Resource Manager ma ustawioną akcję domyślną **"Zezwalaj"** , która nie ogranicza połączeń.
@@ -79,7 +79,7 @@ Parametry szablonu:
 > ```json
 > "defaultAction": "Allow"
 > ```
-> to
+> na
 > ```json
 > "defaultAction": "Deny"
 > ```

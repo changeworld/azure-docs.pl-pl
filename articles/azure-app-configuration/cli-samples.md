@@ -27,7 +27,7 @@ Poniższa tabela zawiera linki do skryptów bash dla konfiguracji aplikacji plat
 
 | | |
 |-|-|
-|**Utwórz**||
+|**Tworzenie**||
 | [Tworzenie magazynu konfiguracji aplikacji](./scripts/cli-create-service.md) | Tworzy grupę zasobów i wystąpienie magazynu konfiguracji aplikacji.  |
 |**Korzystanie**||
 | [Pracuj z wartościami klucza](./scripts/cli-work-with-keys.md) | Tworzy, przegląda, aktualizuje i usuwa wartości klucza. |

@@ -25,7 +25,7 @@ ms.locfileid: "74275049"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikacje z symbolami wieloznacznymi serwera proxy aplikacji usługi Azure Active Directory
 
-W usłudze Active Directory (Azure AD), konfigurowanie dużej liczby lokalnych aplikacji może szybko stać się bezproblemowego zarządzania i wprowadza niepotrzebne ryzyko błędów konfiguracji, jeśli wiele z nich wymaga tych samych ustawień. Za pomocą [serwera Proxy aplikacji usługi Azure AD](application-proxy.md), możesz rozwiązać ten problem przy użyciu funkcji publikowania aplikacji symbolu wieloznacznego do publikowania i zarządzanie wielu aplikacji jednocześnie. Jest to rozwiązanie, która pozwala na:
+W usłudze Active Directory (Azure AD), konfigurowanie dużej liczby lokalnych aplikacji może szybko stać się bezproblemowego zarządzania i wprowadza niepotrzebne ryzyko błędów konfiguracji, jeśli wiele z nich wymaga tych samych ustawień. Za pomocą [usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy.md)można rozwiązać ten problem, używając wieloznacznego publikowania aplikacji w celu publikowania wielu aplikacji jednocześnie i zarządzania nimi. Jest to rozwiązanie, która pozwala na:
 
 - Upraszcza czynności administracyjnych
 - Zmniejsz liczbę potencjalnych błędów konfiguracji
@@ -43,7 +43,7 @@ Aby utworzyć aplikację symbolu wieloznacznego (*), jeśli masz grupę aplikacj
 
 Można opublikować aplikacji z symbolami wieloznacznymi, w przypadku zarówno wewnętrzne i zewnętrzne adresy URL w następującym formacie:
 
-> http (s) :/ / *. \<domeny\>
+> http (s)://*.\> domeny\<
 
 Na przykład: `http(s)://*.adventure-works.com`.
 
@@ -51,7 +51,7 @@ Gdy wewnętrzne i zewnętrzne adresy URL można użyć różnych domenach, najle
 
 Jeśli masz dodatkowe aplikacje za pomocą różnych ustawień konfiguracji, należy opublikować te wyjątki, jako osobne aplikacje zastąpić wartości domyślne ustawione dla symbolu wieloznacznego. Aplikacje bez symboli wieloznacznych zawsze pierwszeństwo aplikacje z symbolami wieloznacznymi. Z perspektywy konfiguracji są "tak" zwykłych aplikacji.
 
-Tworzenie aplikacji z symbolami wieloznacznymi opiera się na tym samym [przepływ publikowania aplikacji](application-proxy-add-on-premises-application.md) dostępnej dla wszystkich innych aplikacji. Jedyna różnica polega na zawierać symbol wieloznaczny w adresy URL i potencjalnie konfiguracji logowania jednokrotnego.
+Tworzenie aplikacji wieloznacznej bazuje na tym samym [przepływie publikowania aplikacji](application-proxy-add-on-premises-application.md) , który jest dostępny dla wszystkich innych aplikacji. Jedyna różnica polega na zawierać symbol wieloznaczny w adresy URL i potencjalnie konfiguracji logowania jednokrotnego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -59,7 +59,7 @@ Aby rozpocząć, upewnij się, że zostały spełnione te wymagania.
 
 ### <a name="custom-domains"></a>Domeny niestandardowe
 
-Gdy [domen niestandardowych](application-proxy-configure-custom-domain.md) są opcjonalne dla innych aplikacji, są one wymagane w przypadku aplikacje z symbolami wieloznacznymi. Tworzenie domen niestandardowych wymaga:
+Chociaż [domeny niestandardowe](application-proxy-configure-custom-domain.md) są opcjonalne dla wszystkich innych aplikacji, są one wymagane w przypadku aplikacji wieloznacznych. Tworzenie domen niestandardowych wymaga:
 
 1. Utwórz zweryfikowaną domenę na platformie Azure.
 1. Przekaż certyfikat SSL w formacie PFX do usługi serwera proxy aplikacji.
@@ -70,11 +70,11 @@ Ze względów bezpieczeństwa jest to bezwględnie wymagane, i symboli wieloznac
 
 ### <a name="dns-updates"></a>Aktualizacje rekordów DNS
 
-Korzystając z domenami niestandardowymi, musisz utworzyć wpis DNS przy użyciu rekordu CNAME jako zewnętrzny adres URL (na przykład `*.adventure-works.com`) wskazuje zewnętrzny adres URL punktu końcowego serwera proxy aplikacji. W przypadku aplikacji symboli wieloznacznych rekord CNAME musi wskazywać odpowiednie zewnętrzne adresy URL:
+W przypadku korzystania z domen niestandardowych należy utworzyć wpis DNS z rekordem CNAME dla zewnętrznego adresu URL (na przykład `*.adventure-works.com`) wskazującego zewnętrzny adres URL punktu końcowego serwera proxy aplikacji. W przypadku aplikacji z symbolami wieloznacznymi rekord CNAME musi wskazywać odpowiednie zewnętrzne adresy URL:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-Aby upewnić się, że Twoje CNAME zostały skonfigurowane poprawnie, można użyć [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) na jednym z docelowymi punktami końcowymi, na przykład `expenses.adventure-works.com`.  Twoja odpowiedź powinna zawierać już wspomniano aliasu (`<yourAADTenantId>.tenant.runtime.msappproxy.net`).
+Aby upewnić się, że rekord CNAME został prawidłowo skonfigurowany, można użyć [polecenia nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) na jednym z docelowych punktów końcowych, na przykład `expenses.adventure-works.com`.  Odpowiedź powinna zawierać już wymieniony alias (`<yourAADTenantId>.tenant.runtime.msappproxy.net`).
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
@@ -82,11 +82,11 @@ Poniżej przedstawiono kilka kwestii, które należy wziąć pod uwagę w przypa
 
 ### <a name="accepted-formats"></a>Akceptowane formaty
 
-W przypadku aplikacji symboli wieloznacznych **wewnętrzny adres URL** muszą być sformatowane jako `http(s)://*.<domain>`.
+W przypadku aplikacji z symbolami wieloznacznymi **wewnętrzny adres URL** musi być sformatowany jako `http(s)://*.<domain>`.
 
 ![W przypadku wewnętrznego adresu URL Użyj formatu http (s)://*. > domeny\<](./media/application-proxy-wildcard/22.png)
 
-Po skonfigurowaniu **zewnętrzny adres URL**, należy użyć następującego formatu: `https://*.<custom domain>`
+W przypadku konfigurowania **zewnętrznego adresu URL**należy użyć następującego formatu: `https://*.<custom domain>`
 
 ![W przypadku zewnętrznego adresu URL Użyj formatu https://*.\<> domeny niestandardowej](./media/application-proxy-wildcard/21.png)
 
@@ -99,24 +99,24 @@ Można wykluczyć aplikację z aplikacji symboli wieloznacznych
 - Publikowanie aplikacji wyjątek jako regularne aplikacji
 - Włączanie symboli wieloznacznych tylko dla określonych aplikacji za pomocą ustawienia DNS
 
-Publikowanie aplikacji jako aplikacji regularne jest preferowaną metodą, aby wykluczyć aplikację z symbolem wieloznacznym. Należy opublikować wykluczonych aplikacji przed aplikacji symboli wieloznacznych, aby upewnić się, że listy wyjątków są wymuszane na początku wybrać odpowiedni. Najbardziej konkretnej aplikacji będzie zawsze mają pierwszeństwo — do aplikacji opublikowanych jako `budgets.finance.adventure-works.com` pierwszeństwo aplikacji `*.finance.adventure-works.com`, który z kolei pierwszeństwo aplikacji `*.adventure-works.com`.
+Publikowanie aplikacji jako aplikacji regularne jest preferowaną metodą, aby wykluczyć aplikację z symbolem wieloznacznym. Należy opublikować wykluczonych aplikacji przed aplikacji symboli wieloznacznych, aby upewnić się, że listy wyjątków są wymuszane na początku wybrać odpowiedni. Najbardziej konkretna aplikacja zawsze będzie mieć pierwszeństwo — aplikacja opublikowana jako `budgets.finance.adventure-works.com` ma pierwszeństwo przed `*.finance.adventure-works.com`aplikacji, która z kolei ma pierwszeństwo przed `*.adventure-works.com`aplikacji.
 
-Można również ograniczyć symboli wieloznacznych, aby działał tylko dla określonych aplikacji za pomocą usługi zarządzania usługą DNS. Najlepszym rozwiązaniem należy utworzyć wpis CNAME, który zawiera symbol wieloznaczny i nieprawidłowy format zewnętrzny adres URL, które zostały skonfigurowane. Jednakże możesz zamiast tego wskazać adresów URL określonych aplikacji symbole wieloznaczne. Na przykład, zamiast z `*.adventure-works.com`, punkt `hr.adventure-works.com`, `expenses.adventure-works.com` i `travel.adventure-works.com individually` do `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`.
+Można również ograniczyć symboli wieloznacznych, aby działał tylko dla określonych aplikacji za pomocą usługi zarządzania usługą DNS. Najlepszym rozwiązaniem należy utworzyć wpis CNAME, który zawiera symbol wieloznaczny i nieprawidłowy format zewnętrzny adres URL, które zostały skonfigurowane. Jednakże możesz zamiast tego wskazać adresów URL określonych aplikacji symbole wieloznaczne. Na przykład zamiast `*.adventure-works.com`, wskaż `hr.adventure-works.com`, `expenses.adventure-works.com` i `travel.adventure-works.com individually` do `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`.
 
-Jeśli używasz tej opcji, należy również inny wpis CNAME dla wartości `AppId.domain`, na przykład `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`, również wskazując w tej samej lokalizacji. Możesz znaleźć **AppId** na stronie właściwości aplikacji zastosowań symboli wieloznacznych:
+Jeśli użyjesz tej opcji, potrzebujesz również innego wpisu CNAME dla wartości `AppId.domain`, na przykład `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`, wskazujący tę samą lokalizację. **Identyfikator appid** można znaleźć na stronie właściwości aplikacji symboli wieloznacznych:
 
 ![Znajdź identyfikator aplikacji na stronie właściwości aplikacji](./media/application-proxy-wildcard/01.png)
 
 ### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>Adres URL strony głównej panelu MyApps ustawienie
 
-Zastosowań symboli wieloznacznych jest reprezentowane przez tylko jednego kafelka [panelu MyApps](https://myapps.microsoft.com). Domyślnie ten Kafelek jest ukryty. Pokaż Kafelek i ziemi użytkowników na określonej stronie:
+Aplikacja z symbolami wieloznacznymi jest reprezentowana przy użyciu tylko jednego kafelka w [panelu Moje aplikacje](https://myapps.microsoft.com). Domyślnie ten Kafelek jest ukryty. Pokaż Kafelek i ziemi użytkowników na określonej stronie:
 
-1. Postępuj zgodnie z wytycznymi dla [ustawienie adresu URL strony głównej](application-proxy-configure-custom-home-page.md).
-1. Ustaw **Pokaż aplikacji** do **true** na stronie właściwości aplikacji.
+1. Postępuj zgodnie z wytycznymi dotyczącymi [ustawiania adresu URL strony głównej](application-proxy-configure-custom-home-page.md).
+1. Na stronie właściwości aplikacji ustaw dla opcji **Pokaż aplikację** **wartość true** .
 
 ### <a name="kerberos-constrained-delegation"></a>Ograniczone delegowanie protokołu Kerberos
 
-Dla aplikacji za pomocą [kerberos ograniczone delegowanie (KCD) jako metodę logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md), nazwę SPN podane dla metody logowania jednokrotnego może być również konieczne symbol wieloznaczny. Główna nazwa usługi może być na przykład: `HTTP/*.adventure-works.com`. Nadal musisz poszczególne nazwy SPN skonfigurowany na serwerach wewnętrznej bazy danych (na przykład `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
+W przypadku aplikacji korzystających z [ograniczonego delegowania protokołu Kerberos (KCD) jako metody logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)Nazwa SPN określona dla metody SSO może również wymagać symbolu wieloznacznego. Na przykład nazwa SPN może: `HTTP/*.adventure-works.com`. Nadal musisz mieć skonfigurowane indywidualne nazwy SPN na serwerach zaplecza (na przykład `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
 
 ## <a name="scenario-1-general-wildcard-application"></a>Scenariusz 1: Zastosowań symboli wieloznacznych ogólne
 
@@ -129,16 +129,16 @@ W tym scenariuszu masz trzech różnych aplikacji, którą chcesz opublikować:
 Wszystkie trzy aplikacje:
 
 - Są używane przez wszystkich użytkowników
-- Użyj *zintegrowane uwierzytelnianie Windows*
+- Użyj *zintegrowanego uwierzytelniania systemu Windows*
 - Ma te same właściwości
 
-Możesz opublikować aplikację symboli wieloznacznych wykonując kroki opisane w [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md). W tym scenariuszu przyjmuje:
+Można opublikować wieloznaczną aplikację, wykonując czynności opisane w temacie [publikowanie aplikacji przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md). W tym scenariuszu przyjmuje:
 
-- Dzierżawy z następującym Identyfikatorem: `000aa000-11b1-2ccc-d333-4444eee4444e`
-- Zweryfikowanej domeny o nazwie `adventure-works.com` został skonfigurowany.
-- A **CNAME** wpis, który wskazuje `*.adventure-works.com` do `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` została utworzona.
+- Dzierżawca z następującym IDENTYFIKATORem: `000aa000-11b1-2ccc-d333-4444eee4444e`
+- Została skonfigurowana zweryfikowana domena o nazwie `adventure-works.com`.
+- Wpis **CNAME** , który wskazuje `*.adventure-works.com` do `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` został utworzony.
 
-Następujące [opisane kroki](application-proxy-add-on-premises-application.md), Utwórz nową aplikację serwera proxy aplikacji w dzierżawie. W tym przykładzie symbol wieloznaczny znajduje się w następujących pól:
+Postępując zgodnie z [opisanymi krokami](application-proxy-add-on-premises-application.md), utworzysz nową aplikację serwera proxy aplikacji w dzierżawie. W tym przykładzie symbol wieloznaczny znajduje się w następujących pól:
 
 - Wewnętrzny adres URL:
 
@@ -152,7 +152,7 @@ Następujące [opisane kroki](application-proxy-add-on-premises-application.md),
 
     ![Przykład: symbol wieloznaczny w konfiguracji nazwy SPN](./media/application-proxy-wildcard/44.png)
 
-Przez opublikowanie aplikacji symboli wieloznacznych, możesz teraz uzyskiwać dostęp trzech aplikacji, przechodząc do adresów URL jest używany do (na przykład `travel.adventure-works.com`).
+Publikując wieloznaczną aplikację, możesz teraz uzyskać dostęp do swoich trzech aplikacji, przechodząc do adresów URL, które są używane do (na przykład `travel.adventure-works.com`).
 
 Konfiguracja implementuje następującą strukturę:
 
@@ -165,21 +165,21 @@ Konfiguracja implementuje następującą strukturę:
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scenariusz 2: Symbol wieloznaczny ogólne aplikacji, z wyjątkiem
 
-W tym scenariuszu należy ponadto trzy aplikacje ogólne innej aplikacji, `finance.adventure-works.com`, która powinna być dostępna tylko przez zespół Finanse. Za pomocą bieżącej struktury aplikacji Twoja aplikacja finansowa będzie dostępny za pośrednictwem aplikacji symboli wieloznacznych i wszyscy pracownicy. Aby to zmienić, wykluczasz aplikacji z Twojego symboli wieloznacznych, konfigurując Finanse jako oddzielną aplikację przy użyciu bardziej restrykcyjne uprawnienia.
+W tym scenariuszu oprócz trzech ogólnych aplikacji jest inna aplikacja, `finance.adventure-works.com`, która powinna być dostępna tylko przez dział finansów. Za pomocą bieżącej struktury aplikacji Twoja aplikacja finansowa będzie dostępny za pośrednictwem aplikacji symboli wieloznacznych i wszyscy pracownicy. Aby to zmienić, wykluczasz aplikacji z Twojego symboli wieloznacznych, konfigurując Finanse jako oddzielną aplikację przy użyciu bardziej restrykcyjne uprawnienia.
 
-Należy upewnić się, że rekordy CNAME istnieje, na którą wskazuje `finance.adventure-works.com` aplikacji określonego punktu końcowego, określonej na stronie serwer Proxy aplikacji dla aplikacji. W tym scenariuszu `finance.adventure-works.com` wskazuje `https://finance-awcycles.msappproxy.net/`.
+Należy upewnić się, że rekordy CNAME istnieją, które wskazują, że `finance.adventure-works.com` do punktu końcowego określonego dla aplikacji, określonego na stronie serwer proxy aplikacji. W tym scenariuszu `finance.adventure-works.com` punkty `https://finance-awcycles.msappproxy.net/`.
 
-Następujące [opisane kroki](application-proxy-add-on-premises-application.md), ten scenariusz wymaga następujących ustawień:
+Zgodnie z [opisanymi krokami](application-proxy-add-on-premises-application.md)ten scenariusz wymaga następujących ustawień:
 
-- W **wewnętrzny adres URL**, możesz ustawić **finance** zamiast symbolu wieloznacznego.
+- W **wewnętrznym adresie URL**ustawiasz opcję **finanse** zamiast symbolu wieloznacznego.
 
     ![Przykład: Ustaw wartość finanse zamiast symbolu wieloznacznego w wewnętrznym adresie URL](./media/application-proxy-wildcard/52.png)
 
-- W **zewnętrzny adres URL**, możesz ustawić **finance** zamiast symbolu wieloznacznego.
+- W **zewnętrznym adresie URL**ustawiasz opcję **finanse** zamiast symbolu wieloznacznego.
 
     ![Przykład: Ustaw finanse zamiast symbolu wieloznacznego w zewnętrznym adresie URL](./media/application-proxy-wildcard/53.png)
 
-- Wewnętrzny główna nazwa usługi aplikacji można ustawić **finance** zamiast symbolu wieloznacznego.
+- Wewnętrzna Nazwa SPN aplikacji wewnętrznej ustawiana jako **finanse** zamiast symbolu wieloznacznego.
 
     ![Przykład: Ustaw finanse zamiast symbolu wieloznacznego w konfiguracji nazwy SPN](./media/application-proxy-wildcard/54.png)
 
@@ -187,9 +187,9 @@ Ta konfiguracja implementuje następujący scenariusz:
 
 ![Pokazuje konfigurację zaimplementowaną w przykładowym scenariuszu](./media/application-proxy-wildcard/09.png)
 
-Ponieważ `finance.adventure-works.com` jest adresem URL bardziej szczegółowe niż `*.adventure-works.com`, ma pierwszeństwo przed. Użytkownicy, przechodząc do `finance.adventure-works.com` się w taki sposób, określona w aplikacji, finansów, zasobów. W takim przypadku tylko finansowymi wyłącznie pracownikom zajmującym mogą uzyskiwać dostęp do `finance.adventure-works.com`.
+Ponieważ `finance.adventure-works.com` jest bardziej szczegółowym adresem URL niż `*.adventure-works.com`, ma pierwszeństwo. Użytkownicy przechodzenia do `finance.adventure-works.com` mają środowisko określone w aplikacji finanse. W takim przypadku tylko pracownicy finanse mogą uzyskać dostęp do `finance.adventure-works.com`.
 
-Jeśli masz wiele aplikacji opublikowana na potrzeby Finanse i masz `finance.adventure-works.com` jako zweryfikowanej domeny, można opublikować innej aplikacji z symbolami wieloznacznymi `*.finance.adventure-works.com`. Ponieważ jest to bardziej szczegółowe niż ogólnego `*.adventure-works.com`, ma pierwszeństwo, jeśli użytkownik uzyskuje dostęp do aplikacji w domenie finansowych.
+Jeśli masz wiele aplikacji opublikowanych na potrzeby finansów i masz `finance.adventure-works.com` jako zweryfikowaną domenę, możesz opublikować kolejną wieloznaczną aplikację `*.finance.adventure-works.com`. Ponieważ jest to bardziej szczegółowe niż ogólne `*.adventure-works.com`, ma pierwszeństwo w przypadku, gdy użytkownik uzyskuje dostęp do aplikacji w domenie finansów.
 
 ## <a name="next-steps"></a>Następne kroki
 

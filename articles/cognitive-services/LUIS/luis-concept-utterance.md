@@ -140,14 +140,14 @@ Zapoznaj się z [najlepszymi rozwiązaniami](luis-concept-best-practices.md) i z
 
 Jeśli wybór programu word lub rozmieszczeniu word jest taka sama, ale nie oznaczają to samo, nie przypisuj jej etykiety bez jednostki. 
 
-Następujące wypowiedzi, wyraz `fair` jest Homogram. Została wpisana takie same, ale ma inne znaczenie:
+Następujący wyrażenia długości, słowo `fair` to homograph. Została wpisana takie same, ale ma inne znaczenie:
 
 |Wypowiedź|
 |--|
 |Jakiego rodzaju targach hrabstwa występują na terenie Seattle tego lata?|
 |Jest bieżąca ocena do przeglądu Seattle uczciwe?|
 
-Jeśli chce się jednostkę zdarzeń, aby znaleźć wszystkie dane zdarzeń, etykieta wyraz `fair` w pierwszym wypowiedź, ale nie w ciągu sekundy.
+Jeśli chcesz, aby jednostka zdarzenia znalazła wszystkie dane zdarzeń, Oznacz słowo `fair` w pierwszej wypowiedź, ale nie w drugim.
 
 
 ## <a name="next-steps"></a>Następne kroki

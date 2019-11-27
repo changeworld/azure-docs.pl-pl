@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for images REST API and Python - Bing Image Search'
+title: 'Szybki Start: Wyszukiwanie obrazów API REST i Python-wyszukiwanie obrazów Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania wyszukiwania obrazów do interfejsu API wyszukiwania obrazów Bing przy użyciu języka Python i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -18,7 +18,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74323814"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Quickstart: Search for images using the Bing Image Search REST API and Python
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Szybki Start: Wyszukiwanie obrazów przy użyciu interfejsu API REST wyszukiwanie obrazów Bing i języka Python
 
 Użyj tego przewodnika Szybki start, aby rozpocząć wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania obrazów Bing. Ta aplikacja języka Python wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
@@ -67,7 +67,7 @@ Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://g
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Użyj biblioteki `requests` w celu wywołania interfejsu API wyszukiwania obrazów Bing. Dodaj nagłówek i parametry do żądania, a następnie zwróć odpowiedź jako obiekt JSON. Get The URLs to several thumbnail images from the response's `thumbnailUrl` field.
+2. Użyj biblioteki `requests` w celu wywołania interfejsu API wyszukiwania obrazów Bing. Dodaj nagłówek i parametry do żądania, a następnie zwróć odpowiedź jako obiekt JSON. Pobierz adresy URL do kilku obrazów miniatur z pola `thumbnailUrl` odpowiedzi.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)

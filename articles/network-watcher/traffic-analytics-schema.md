@@ -116,7 +116,7 @@ Poniżej wymieniono pola w schemacie i znaczenie
 | L7Protocol_s  | Nazwa protokołu | Pochodny od portu docelowego |
 | FlowDirection_s | * I = przychodzące<br> * O = wychodzące | Kierunek przepływu do/z sieciowej grupy zabezpieczeń jako dziennik dla przepływu |
 | FlowStatus_s  | * A = dozwolone przez regułę sieciowej grupy zabezpieczeń <br> * D = odmowa przez regułę sieciowej grupy zabezpieczeń  | Stan przepływu dozwolony/nblocked przez sieciowej grupy zabezpieczeń zgodnie z dziennikiem przepływu |
-| NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń) skojarzona z przepływem |
+| NSGList_s | \<subskrypcji >\/< RESOURCEGROUP_NAME >\/< NSG_NAME > | Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń) skojarzona z przepływem |
 | NSGRules_s | \<wartość indeksu 0) >\|\<NSG_RULENAME >\|\<kierunek przepływu >\|\<stan przepływu >\|\<FlowCount ProcessedByRule > |  Reguła sieciowej grupy zabezpieczeń, która zezwala lub nie odrzuciła tego przepływu |
 | NSGRule_s | NSG_RULENAME |  Reguła sieciowej grupy zabezpieczeń, która zezwala lub nie odrzuciła tego przepływu |
 | NSGRuleType_s | * Zdefiniowane przez użytkownika * domyślne |   Typ reguły sieciowej grupy zabezpieczeń używanej przez przepływ |
@@ -133,17 +133,17 @@ Poniżej wymieniono pola w schemacie i znaczenie
 | VM_s | < resourcegroup_Name >\/\<NetworkInterfaceName > | Maszyna wirtualna skojarzona z interfejsem sieciowym NIC_s |
 | VM1_s | < resourcegroup_Name >/\<VirtualMachineName > | Maszyna wirtualna skojarzona ze źródłowym adresem IP w przepływie |
 | VM2_s | < resourcegroup_Name >/\<VirtualMachineName > | Maszyna wirtualna skojarzona z docelowym adresem IP w przepływie |
-| Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Podsieć skojarzona z NIC_s |
-| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Podsieć skojarzona ze źródłowym adresem IP w przepływie |
-| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName>    | Podsieć skojarzona z docelowym adresem IP w przepływie |
-| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Brama aplikacji skojarzona ze źródłowym adresem IP w przepływie |
-| ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Brama aplikacji skojarzona z docelowym adresem IP w przepływie |
-| LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Moduł równoważenia obciążenia skojarzony ze źródłowym adresem IP w przepływie |
-| LoadBalancer2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Moduł równoważenia obciążenia skojarzony z docelowym adresem IP w przepływie |
-| LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Brama sieci lokalnej skojarzona ze źródłowym adresem IP w przepływie |
-| LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Brama sieci lokalnej skojarzona z docelowym adresem IP w przepływie |
+| Subnet_s | < ResourceGroup_Name >/< VNET_Name >/\<podsiećname > | Podsieć skojarzona z NIC_s |
+| Subnet1_s | < ResourceGroup_Name >/< VNET_Name >/\<podsiećname > | Podsieć skojarzona ze źródłowym adresem IP w przepływie |
+| Subnet2_s | < ResourceGroup_Name >/< VNET_Name >/\<podsiećname >    | Podsieć skojarzona z docelowym adresem IP w przepływie |
+| ApplicationGateway1_s | \<subskrypcji >/\<ResourceGroupName >/\<'Applicationgatewayname > | Brama aplikacji skojarzona ze źródłowym adresem IP w przepływie |
+| ApplicationGateway2_s | \<subskrypcji >/\<ResourceGroupName >/\<'Applicationgatewayname > | Brama aplikacji skojarzona z docelowym adresem IP w przepływie |
+| LoadBalancer1_s | \<subskrypcji >/\<ResourceGroupName >/\<LoadBalancerName > | Moduł równoważenia obciążenia skojarzony ze źródłowym adresem IP w przepływie |
+| LoadBalancer2_s | \<subskrypcji >/\<ResourceGroupName >/\<LoadBalancerName > | Moduł równoważenia obciążenia skojarzony z docelowym adresem IP w przepływie |
+| LocalNetworkGateway1_s | \<subskrypcji >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Brama sieci lokalnej skojarzona ze źródłowym adresem IP w przepływie |
+| LocalNetworkGateway2_s | \<subskrypcji >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Brama sieci lokalnej skojarzona z docelowym adresem IP w przepływie |
 | ConnectionType_s | Możliwe wartości to VNetPeering, bramy vpngateway i ExpressRoute |    Typ połączenia |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | Nazwa połączenia |
+| ConnectionName_s | \<subskrypcji >/\<ResourceGroupName >/\<ConnectionName > | Nazwa połączenia |
 | ConnectingVNets_s | Rozdzielana spacjami lista nazw sieci wirtualnych | W przypadku topologii gwiazdy i koncentratora sieci wirtualne będą umieszczane w tym miejscu |
 | Country_s | Dwuliterowy kod kraju (ISO 3166-1 Alpha-2) | Wypełniono dla typu przepływu ExternalPublic. Wszystkie adresy IP w polu PublicIPs_s będą współużytkować ten sam kod kraju |
 | AzureRegion_s | Lokalizacje regionów platformy Azure | Wypełniono dla typu przepływu AzurePublic. Wszystkie adresy IP w polu PublicIPs_s będą współużytkować region platformy Azure |
@@ -157,7 +157,7 @@ Poniżej wymieniono pola w schemacie i znaczenie
 | InboundBytes_d |  Bajty odebrane jako przechwycone w interfejsie sieciowym, gdzie została zastosowana reguła sieciowej grupy zabezpieczeń | Jest to wypełniane tylko w wersji 2 schematu dziennika przepływu sieciowej grupy zabezpieczeń |
 | OutboundBytes_d | Bajty wysłane jako przechwycone w interfejsie sieciowym, gdzie została zastosowana reguła sieciowej grupy zabezpieczeń | Jest to wypełniane tylko w wersji 2 schematu dziennika przepływu sieciowej grupy zabezpieczeń |
 | CompletedFlows_d  |  | Ta wartość jest wypełniana wartością różną od zera tylko dla schematu dziennika przepływu sieciowej grupy zabezpieczeń w wersji 2 |
-| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Wpisy rozdzielone słupkami |
+| PublicIPs_s | < PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Wpisy rozdzielone słupkami |
 | SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Wpisy rozdzielone słupkami |
 | DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Wpisy rozdzielone słupkami |
 

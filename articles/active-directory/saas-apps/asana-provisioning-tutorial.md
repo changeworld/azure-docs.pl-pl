@@ -75,7 +75,7 @@ Ta sekcja przeprowadzi Cię przez proces łączenia usługi Azure AD z interfejs
 
     b. Wybierz zdjęcie profilu z górnego paska, a następnie wybierz bieżące ustawienia nazwy organizacji.
 
-    d. Przejdź do karty **konta usług** .
+    c. Przejdź do karty **konta usług** .
 
     d. Wybierz pozycję **Dodaj konto usługi**.
 

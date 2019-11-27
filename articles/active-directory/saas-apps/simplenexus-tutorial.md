@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with SimpleNexus | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and SimpleNexus.
+title: 'Samouczek: integracja Azure Active Directory z usługą SimpleNexus | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i SimpleNexus.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,13 +22,13 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233419"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Tutorial: Azure Active Directory integration with SimpleNexus
+# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Samouczek: integracja Azure Active Directory z usługą SimpleNexus
 
-In this tutorial, you learn how to integrate SimpleNexus with Azure Active Directory (Azure AD).
-Integrating SimpleNexus with Azure AD provides you with the following benefits:
+W tym samouczku dowiesz się, jak zintegrować usługę SimpleNexus z usługą Azure Active Directory (Azure AD).
+Integracja SimpleNexus z usługą Azure AD zapewnia następujące korzyści:
 
-* You can control in Azure AD who has access to SimpleNexus.
-* You can enable your users to be automatically signed-in to SimpleNexus (Single Sign-On) with their Azure AD accounts.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi SimpleNexus.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do SimpleNexus (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,22 +36,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To configure Azure AD integration with SimpleNexus, you need the following items:
+Aby skonfigurować integrację usługi Azure AD z usługą SimpleNexus, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* SimpleNexus single sign-on enabled subscription
+* Subskrypcja z włączonym logowaniem jednokrotnym w SimpleNexus
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* SimpleNexus supports **SP** initiated SSO
+* SimpleNexus obsługuje logowanie jednokrotne w usłudze **SP**
 
-## <a name="adding-simplenexus-from-the-gallery"></a>Adding SimpleNexus from the gallery
+## <a name="adding-simplenexus-from-the-gallery"></a>Dodawanie SimpleNexus z galerii
 
-To configure the integration of SimpleNexus into Azure AD, you need to add SimpleNexus from the gallery to your list of managed SaaS apps.
+Aby skonfigurować integrację programu SimpleNexus z usługą Azure AD, musisz dodać SimpleNexus z galerii do listy zarządzanych aplikacji SaaS.
 
-**To add SimpleNexus from the gallery, perform the following steps:**
+**Aby dodać SimpleNexus z galerii, wykonaj następujące czynności:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
@@ -65,33 +65,33 @@ To configure the integration of SimpleNexus into Azure AD, you need to add Simpl
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. In the search box, type **SimpleNexus**, select **SimpleNexus** from result panel then click **Add** button to add the application.
+4. W polu wyszukiwania wpisz **SimpleNexus**, wybierz pozycję **SimpleNexus** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-     ![SimpleNexus in the results list](common/search-new-app.png)
+     ![SimpleNexus na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-In this section, you configure and test Azure AD single sign-on with SimpleNexus based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in SimpleNexus needs to be established.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą SimpleNexus na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w SimpleNexus.
 
-To configure and test Azure AD single sign-on with SimpleNexus, you need to complete the following building blocks:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi SimpleNexus, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Configure SimpleNexus Single Sign-On](#configure-simplenexus-single-sign-on)** - to configure the Single Sign-On settings on application side.
+2. **[Skonfiguruj logowanie](#configure-simplenexus-single-sign-on)** jednokrotne w usłudze SimpleNexus, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Create SimpleNexus test user](#create-simplenexus-test-user)** - to have a counterpart of Britta Simon in SimpleNexus that is linked to the Azure AD representation of user.
+5. **[Utwórz użytkownika testowego SimpleNexus](#create-simplenexus-test-user)** , aby uzyskać odpowiednik Britta Simon w SimpleNexus, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-To configure Azure AD single sign-on with SimpleNexus, perform the following steps:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą SimpleNexus, wykonaj następujące czynności:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **SimpleNexus** application integration page, select **Single sign-on**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **SimpleNexus** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,20 +103,20 @@ To configure Azure AD single sign-on with SimpleNexus, perform the following ste
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![SimpleNexus Domain and URLs single sign-on information](common/sp-identifier.png)
+    ![SimpleNexus domenę i adresy URL Logowanie jednokrotne](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://simplenexus.com/<companyname>_login`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://simplenexus.com/<companyname>`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://simplenexus.com/<companyname>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Contact [SimpleNexus Client support team](https://simplenexus.com/sn/contact-us/) to get these values. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając rzeczywistego adresu URL logowania i identyfikatora. Skontaktuj się z [zespołem obsługi klienta SimpleNexus](https://simplenexus.com/sn/contact-us/) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
-6. On the **Set up SimpleNexus** section, copy the appropriate URL(s) as per your requirement.
+6. W sekcji **Konfigurowanie SimpleNexus** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -124,11 +124,11 @@ To configure Azure AD single sign-on with SimpleNexus, perform the following ste
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
-### <a name="configure-simplenexus-single-sign-on"></a>Configure SimpleNexus Single Sign-On
+### <a name="configure-simplenexus-single-sign-on"></a>Konfigurowanie logowania jednokrotnego SimpleNexus
 
-To configure single sign-on on **SimpleNexus** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [SimpleNexus support team](https://simplenexus.com/sn/contact-us/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować Logowanie jednokrotne na stronie **SimpleNexus** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej SimpleNexus](https://simplenexus.com/sn/contact-us/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -136,36 +136,36 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
 2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
     b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to SimpleNexus.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi SimpleNexus.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SimpleNexus**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **SimpleNexus**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. In the applications list, select **SimpleNexus**.
+2. Na liście Aplikacje wybierz pozycję **SimpleNexus**.
 
-    ![The SimpleNexus link in the Applications list](common/all-applications.png)
+    ![Link SimpleNexus na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -181,23 +181,23 @@ In this section, you enable Britta Simon to use Azure single sign-on by granting
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-simplenexus-test-user"></a>Create SimpleNexus test user
+### <a name="create-simplenexus-test-user"></a>Utwórz użytkownika testowego SimpleNexus
 
-In order to enable Azure AD users to log in to SimpleNexus, they must be provisioned into SimpleNexus. In the case of SimpleNexus, provisioning is a manual task performed by the tenant administrator.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze SimpleNexus, muszą one być obsługiwane w usłudze SimpleNexus. W przypadku SimpleNexus jest to zadanie ręczne wykonywane przez administratora dzierżawy.
 
 > [!NOTE]
-> You can use any other SimpleNexus user account creation tools or APIs provided by SimpleNexus to provision Azure AD user accounts.
+> Do aprowizacji kont użytkowników usługi Azure AD można używać innych narzędzi do tworzenia kont użytkowników SimpleNexus i interfejsów API udostępnionych przez usługę SimpleNexus.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-When you click the SimpleNexus tile in the Access Panel, you should be automatically signed in to the SimpleNexus for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka SimpleNexus w panelu dostępu należy automatycznie zalogować się do SimpleNexus, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

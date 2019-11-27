@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Kudos | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Kudos.
+title: 'Samouczek: integracja Azure Active Directory z usługą pochwałę | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i pochwałę.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,13 +22,13 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227480"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Tutorial: Azure Active Directory integration with Kudos
+# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Samouczek: integracja Azure Active Directory z usługą pochwałę
 
-In this tutorial, you learn how to integrate Kudos with Azure Active Directory (Azure AD).
-Integrating Kudos with Azure AD provides you with the following benefits:
+W tym samouczku dowiesz się, jak zintegrować usługę pochwałę z usługą Azure Active Directory (Azure AD).
+Integracja pochwałę z usługą Azure AD zapewnia następujące korzyści:
 
-* You can control in Azure AD who has access to Kudos.
-* You can enable your users to be automatically signed-in to Kudos (Single Sign-On) with their Azure AD accounts.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi pochwałę.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do pochwałę (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,22 +36,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To configure Azure AD integration with Kudos, you need the following items:
+Aby skonfigurować integrację usługi Azure AD z usługą pochwałę, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
-* Kudos single sign-on enabled subscription
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z włączonym logowaniem jednokrotnym w pochwałę
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Kudos supports **SP** initiated SSO
+* Pochwałę obsługuje logowanie jednokrotne w usłudze **SP**
 
-## <a name="adding-kudos-from-the-gallery"></a>Adding Kudos from the gallery
+## <a name="adding-kudos-from-the-gallery"></a>Dodawanie pochwałę z galerii
 
-To configure the integration of Kudos into Azure AD, you need to add Kudos from the gallery to your list of managed SaaS apps.
+Aby skonfigurować integrację programu pochwałę z usługą Azure AD, musisz dodać pochwałę z galerii do listy zarządzanych aplikacji SaaS.
 
-**To add Kudos from the gallery, perform the following steps:**
+**Aby dodać pochwałę z galerii, wykonaj następujące czynności:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
@@ -65,33 +65,33 @@ To configure the integration of Kudos into Azure AD, you need to add Kudos from 
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. In the search box, type **Kudos**, select **Kudos** from result panel then click **Add** button to add the application.
+4. W polu wyszukiwania wpisz **pochwałę**, wybierz pozycję **pochwałę** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-     ![Kudos in the results list](common/search-new-app.png)
+     ![Pochwałę na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-In this section, you configure and test Azure AD single sign-on with Kudos based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Kudos needs to be established.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą pochwałę na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w pochwałę.
 
-To configure and test Azure AD single sign-on with Kudos, you need to complete the following building blocks:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi pochwałę, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Configure Kudos Single Sign-On](#configure-kudos-single-sign-on)** - to configure the Single Sign-On settings on application side.
+2. **[Skonfiguruj logowanie](#configure-kudos-single-sign-on)** jednokrotne w usłudze pochwałę, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Create Kudos test user](#create-kudos-test-user)** - to have a counterpart of Britta Simon in Kudos that is linked to the Azure AD representation of user.
+5. **[Utwórz użytkownika testowego pochwałę](#create-kudos-test-user)** , aby uzyskać odpowiednik Britta Simon w pochwałę, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-To configure Azure AD single sign-on with Kudos, perform the following steps:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą pochwałę, wykonaj następujące czynności:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Kudos** application integration page, select **Single sign-on**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **pochwałę** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,18 +103,18 @@ To configure Azure AD single sign-on with Kudos, perform the following steps:
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Kudos Domain and URLs single sign-on information](common/sp-signonurl.png)
+    ![Pochwałę domenę i adresy URL Logowanie jednokrotne](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<company>.kudosnow.com`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Contact [Kudos Client support team](http://success.kudosnow.com/home) to get the value. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj wartość przy użyciu rzeczywistego adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta pochwałę](http://success.kudosnow.com/home) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-6. On the **Set up Kudos** section, copy the appropriate URL(s) as per your requirement.
+6. W sekcji **Konfigurowanie pochwałę** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -122,29 +122,29 @@ To configure Azure AD single sign-on with Kudos, perform the following steps:
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
-### <a name="configure-kudos-single-sign-on"></a>Configure Kudos Single Sign-On
+### <a name="configure-kudos-single-sign-on"></a>Konfigurowanie logowania jednokrotnego pochwałę
 
-1. In a different web browser window, sign into your Kudos company site as an administrator.
+1. W innym oknie przeglądarki sieci Web Zaloguj się do firmowej witryny pochwałę jako administrator.
 
-1. In the menu on the top, click **Settings icon**.
+1. W menu u góry kliknij **ikonę Ustawienia**.
 
     ![Ustawienia](./media/kudos-tutorial/ic787806.png "Ustawienia")
 
-1. Click **Integrations > SSO** and perform the following steps:
+1. Kliknij pozycję **integrations > Logowanie jednokrotne** i wykonaj następujące czynności:
 
-    ![SSO](./media/kudos-tutorial/ic787807.png "SSO")
+    ![ZWRÓCIŁ](./media/kudos-tutorial/ic787807.png "SSO")
 
-    a. In **Sign on URL** textbox, paste the value of  **Login URL** which you have copied from Azure portal.
+    a. W polu tekstowym **adres URL logowania** wklej wartość **adresu URL logowania** skopiowanego z Azure Portal.
 
-    b. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **X.509 certificate** textbox
+    b. Otwórz certyfikat zakodowany w formacie Base-64 w Notatniku, skopiuj zawartość tego pliku do schowka, a następnie wklej go do pola tekstowego **certyfikatu X. 509** .
 
-    d. In **Logout To URL** textbox, paste the value of  **Logout URL** which you have copied from Azure portal.
+    c. W polu tekstowym **Wyloguj do adresu URL** wklej wartość **adresu URL wylogowania** skopiowanego z Azure Portal.
 
-    d. In the **Your Kudos URL** textbox, type your company name.
+    d. W polu tekstowym **adres URL pochwałę** wpisz nazwę swojej firmy.
 
-    e. Kliknij przycisk **Save** (Zapisz).
+    e. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -152,36 +152,36 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
 2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`  
+    b. W polu **Nazwa użytkownika** wpisz `brittasimon@yourcompanydomain.extension`  
     Na przykład: BrittaSimon@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Kudos.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi pochwałę.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Kudos**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **pochwałę**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. In the applications list, select **Kudos**.
+2. Na liście Aplikacje wybierz pozycję **pochwałę**.
 
-    ![The Kudos link in the Applications list](common/all-applications.png)
+    ![Link pochwałę na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -197,45 +197,45 @@ In this section, you enable Britta Simon to use Azure single sign-on by granting
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-kudos-test-user"></a>Create Kudos test user
+### <a name="create-kudos-test-user"></a>Utwórz użytkownika testowego pochwałę
 
-In order to enable Azure AD users to sign in to Kudos, they must be provisioned into Kudos. In the case of Kudos, provisioning is a manual task.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze pochwałę, muszą one być obsługiwane w pochwałę. W przypadku pochwałę, Inicjowanie obsługi administracyjnej jest zadaniem ręcznym.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Sign in to your **Kudos** company site as administrator.
+1. Zaloguj się do witryny firmy **pochwałę** jako administrator.
 
-1. In the menu on the top, click **Settings icon**.
+1. W menu u góry kliknij **ikonę Ustawienia**.
 
    ![Ustawienia](./media/kudos-tutorial/ic787806.png "Ustawienia")
 
-1. Click **User Admin**.
+1. Kliknij pozycję **administrator użytkownika**.
 
-1. Click the **Users** tab, and then click **Add a User**.
+1. Kliknij kartę **Użytkownicy** , a następnie kliknij pozycję **Dodaj użytkownika**.
 
-   ![User Admin](./media/kudos-tutorial/ic787809.png "User Admin")
+   ![Administrator użytkownika](./media/kudos-tutorial/ic787809.png "Administrator użytkownika")
 
-1. In the **Add a User** section, perform the following steps:
+1. W sekcji **Dodawanie użytkownika** wykonaj następujące czynności:
 
-    ![Add a User](./media/kudos-tutorial/ic787810.png "Add a User")
+    ![Dodawanie użytkownika](./media/kudos-tutorial/ic787810.png "Dodawanie użytkownika")
 
-    a. Type the **First Name**, **Last Name**, **Email** and other details of a valid Azure Active Directory account you want to provision into the related textboxes.
+    a. Wpisz **imię**, nazwisko, **adres e-mail** i inne szczegóły dotyczące prawidłowego konta **Azure Active Directory, które**chcesz udostępnić do powiązanych pól tekstowych.
 
     b. Kliknij pozycję **Create User** (Utwórz użytkownika).
 
 > [!NOTE]
-> You can use any other Kudos user account creation tools or APIs provided by Kudos to provision Azure AD user accounts.
+> Do aprowizacji kont użytkowników usługi Azure AD można używać innych narzędzi do tworzenia kont użytkowników pochwałę i interfejsów API udostępnionych przez usługę pochwałę.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-When you click the Kudos tile in the Access Panel, you should be automatically signed in to the Kudos for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka pochwałę w panelu dostępu należy automatycznie zalogować się do pochwałę, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

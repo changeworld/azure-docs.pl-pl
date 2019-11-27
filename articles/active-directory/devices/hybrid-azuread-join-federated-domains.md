@@ -106,7 +106,7 @@ Aby skonfigurować hybrydowe dołączanie do usługi Azure AD przy użyciu Azure
 
 1. Uruchom Azure AD Connect, a następnie wybierz pozycję **Konfiguruj**.
 
-   ![Witaj](./media/hybrid-azuread-join-federated-domains/11.png)
+   ![Powitanie](./media/hybrid-azuread-join-federated-domains/11.png)
 
 1. Na stronie **dodatkowe zadania** wybierz pozycję **Konfiguruj opcje urządzenia**, a następnie wybierz przycisk **dalej**.
 

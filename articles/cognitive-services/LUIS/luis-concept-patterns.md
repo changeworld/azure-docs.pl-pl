@@ -50,7 +50,7 @@ Wzorzec jest głównie przeznaczony do przewidywania intencji i ról. _Wzorzec. 
 Nie oczekuje się, że w przypadku zwinięcia wielu wyrażenia długości do jednego wzorca nie widzisz ulepszonej przewidywania jednostek. Aby proste jednostki były wyzwalane, należy dodać wyrażenia długości lub użyć jednostek listy, ponieważ wzorzec nie zostanie uruchomiony.
 
 ## <a name="patterns-use-entity-roles"></a>Wzorce użycia ról jednostki
-Jeśli dwa lub więcej jednostek w wzorzec kontekstowe są powiązane, wzorców użycia jednostki [role](luis-concept-roles.md) można wyodrębnić informacje kontekstowe dotyczące jednostek.  
+Jeśli co najmniej dwie jednostki we wzorcu są powiązane z kontekstem, wzorce używają [ról](luis-concept-roles.md) jednostki do wyodrębniania informacji kontekstowych dotyczących jednostek.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Wyniki prognozowania z i bez wzorców
 Mając wystarczająco dużo wypowiedzi przykładu, LUIS będą mogli zwiększyć ufności prognoz bez wzorców. Wzorce zwiększyć współczynnik ufności bez konieczności podawania tyle wypowiedzi.  
@@ -62,7 +62,7 @@ Wzorzec jest takie samo zależnie od wykrywania jednostek w wzorzec najpierw, a 
 Możesz utworzyć aplikację z intencjami, które nie mają przykładowej wyrażenia długości, o ile istnieje wzorzec dla każdego zamiaru. W przypadku aplikacji tylko dla wzorców wzorzec nie powinien zawierać jednostek maszynowych, ponieważ wymagają one przykładowej wyrażenia długości. 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
-Dowiedz się, [najlepsze praktyki](luis-concept-best-practices.md).
+Poznaj [najlepsze rozwiązania](luis-concept-best-practices.md).
 
 ## <a name="pattern-syntax"></a>Składnia wzorca
 
@@ -77,4 +77,4 @@ Dowiedz się więcej o wzorcach:
 * [Składnia wzorców](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak Implementowanie wzorców w ramach tego samouczka](luis-tutorial-pattern.md)
+> [Dowiedz się, jak zaimplementować wzorce w tym samouczku](luis-tutorial-pattern.md)

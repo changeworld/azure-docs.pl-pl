@@ -91,7 +91,7 @@ Następnym krokiem jest skonfigurowanie aplikacji w taki sposób, aby korzystał
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-Otwórz `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
+Otwórz plik `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
 Znajdź pole `spatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
 
@@ -99,7 +99,7 @@ Znajdź pole `spatialAnchorsAccountId` i zastąp wartość `Set me` identyfikato
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-Otwórz `iOS/Objective-C/SampleObjC/BaseViewController.m`.
+Otwórz plik `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
 Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
 

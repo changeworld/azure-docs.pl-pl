@@ -99,5 +99,5 @@ Po zakończeniu wszystkie te kroki aplikacji powinna być uruchomiona. Aby przet
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [W jaki sposób serwer Proxy aplikacji usługi Azure AD zapewnia logowanie jednokrotne](application-proxy-single-sign-on.md)
-- [Rozwiązywanie problemów z serwera Proxy aplikacji](application-proxy-troubleshoot.md)
+- [Jak usługa Azure serwer proxy aplikacji usługi Azure AD zapewnia Logowanie jednokrotne?](application-proxy-single-sign-on.md)
+- [Rozwiązywanie problemów z serwerem proxy aplikacji](application-proxy-troubleshoot.md)

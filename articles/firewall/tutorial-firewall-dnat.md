@@ -152,9 +152,9 @@ Po zakończeniu wdrożenia zanotuj prywatny adres IP maszyny wirtualnej. Posłu�
    |Ustawienie  |Wartość  |
    |---------|---------|
    |Nazwa     |FW-DNAT-test|
-   |Subskrypcja     |\<Twoja subskrypcja\>|
+   |Subscription     |\<Twoja subskrypcja\>|
    |Grupa zasobów     |**Użyj istniejącej**: RG-DNAT-Test |
-   |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
+   |Location     |Wybierz tę samą lokalizację, której użyto poprzednio|
    |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: VN-Hub|
    |Publiczny adres IP     |**Utwórz nową**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
 
@@ -216,7 +216,7 @@ Na potrzeby podsieci **SN-Workload** skonfiguruj trasę domyślną ruchu wychodz
 
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **RG-DNAT-Test**, aby usunąć wszystkie zasoby związane z zaporą.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

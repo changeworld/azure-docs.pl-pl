@@ -88,7 +88,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Portugalski|    `pt`    |Neuronowych dostępne|  Neuronowa|
 |Queretaro Otomi|   `otq`   |Tylko statystyczne|  Statystyczn|
 |Rumuński|  `ro`    |Neuronowych dostępne|  Neuronowa|
-|Rosyjski|   `ru`    |Neuronowych dostępne|  Neuronowa|
+|rosyjski|   `ru`    |Neuronowych dostępne|  Neuronowa|
 |(Samoa)|    `sm`    |Tylko statystyczne|  Statystyczn|
 |Serbski (Cyrylica)|    `sr-Cyrl`   |Tylko statystyczne|  Statystyczn|
 |Serbski (łaciński)|   `sr-Latn`   |Tylko statystyczne   |Statystyczn|
@@ -101,7 +101,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Telugu|    `te`    |Tylko neuronowych|   Neuronowa|
 |Tajlandzki|  `th`    |Neuronowych dostępne|  Neuronowa|
 |Pa'anga|    `to`    |Tylko statystyczne|  Statystyczn|
-|turecki|   `tr`    |Neuronowych dostępne   |Neuronowa|
+|Turecki|   `tr`    |Neuronowych dostępne   |Neuronowa|
 |Ukraiński| `uk`    |Neuronowych dostępne|  Neuronowa|
 |Urdu|  `ur`    |Tylko statystyczne|  Statystyczn|
 |Wietnamski|    `vi`    |Neuronowych dostępne|  Neuronowa|
@@ -178,7 +178,7 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 | Polski      | `pl`          |
 | Portugalski      | `pt`          |
 | Rumuński      | `ro`          |
-| Rosyjski      | `ru`          |
+| rosyjski      | `ru`          |
 | Serbski (łaciński)      | `sr-Latn`          |
 | Słowacki     | `sk`          |
 | Słoweński      | `sl`          |
@@ -186,13 +186,13 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 | Szwedzki      | `sv`          |
 | Tamilski      | `ta`          |
 | Tajlandzki      | `th`          |
-| turecki      | `tr`          |
+| Turecki      | `tr`          |
 | Ukraiński      | `uk`          |
 | Urdu      | `ur`          |
 | Wietnamski      | `vi`          |
 | Walijski      | `cy`          |
 
-## <a name="detect"></a>Detect
+## <a name="detect"></a>Wykrywanie
 
 Interfejs API tłumaczenia tekstu w usłudze Translator wykrywa wszystkie języki dostępne do tłumaczenia i przekształcenie.
 
@@ -244,7 +244,7 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Polski      | `pl`          |
 | Portugalski      | `pt`          |
 | Rumuński      | `ro`          |
-| Rosyjski      | `ru`          |
+| rosyjski      | `ru`          |
 |(Samoa)|    `sm`    |
 | Serbski (łaciński)      | `sr-Latn`          |
 | Słowacki     | `sk`          |
@@ -252,7 +252,7 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Hiszpański      | `es`          |
 | Szwedzki      | `sv`          |
 | Tajlandzki      | `th`          |
-| turecki      | `tr`          |
+| Turecki      | `tr`          |
 | Ukraiński      | `uk`          |
 | Wietnamski      | `vi`          |
 | Walijski | `cy` |

@@ -134,7 +134,7 @@ Teraz Dodaj rekord aliasu dla wierzchołka strefy.
 
    |Nazwa  |Typ  |Zestaw rekordów aliasu  |Typ aliasu  |Zasób platformy Azure|
    |---------|---------|---------|---------|-----|
-   |@     |A|Tak|Zasób platformy Azure|Traffic Manager — Twój profil|
+   |@     |A|Yes|Zasób platformy Azure|Traffic Manager — Twój profil|
 
 
 ## <a name="test-your-web-apps"></a>Testowanie aplikacji sieci Web

@@ -1,6 +1,6 @@
 ---
-title: Custom orchestration status in Durable Functions - Azure
-description: Learn how to configure and use custom orchestration status for Durable Functions.
+title: Stan aranżacji niestandardowej w Durable Functions — Azure
+description: Informacje na temat konfigurowania i używania niestandardowego stanu aranżacji dla Durable Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
@@ -11,18 +11,18 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232965"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Custom orchestration status in Durable Functions (Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stan aranżacji niestandardowej w Durable Functions (Azure Functions)
 
-Custom orchestration status lets you set a custom status value for your orchestrator function. This status is provided via the HTTP GetStatus API or the `DurableOrchestrationClient.GetStatusAsync` API.
+Stan aranżacji niestandardowej pozwala ustawić niestandardową wartość stanu dla funkcji programu Orchestrator. Ten stan jest dostarczany za pośrednictwem interfejsu API HTTP GetStatus lub interfejsu API `DurableOrchestrationClient.GetStatusAsync`.
 
-## <a name="sample-use-cases"></a>Sample use cases
+## <a name="sample-use-cases"></a>Przykładowe przypadki użycia
 
 > [!NOTE]
-> The following samples show how to use custom status feature in C# and JavaScript. The C# examples are written for Durable Functions 2.x and are not compatible with Durable Functions 1.x. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> W poniższych przykładach pokazano, jak używać funkcji stanu niestandardowego C# w programie i języka JavaScript. C# Przykłady są zapisywane dla Durable Functions 2. x i nie są zgodne z Durable Functions 1. x. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-### <a name="visualize-progress"></a>Visualize progress
+### <a name="visualize-progress"></a>Wizualizowanie postępu
 
-Clients can poll the status end point and display a progress UI that visualizes the current execution stage. The following sample demonstrates progress sharing:
+Klienci mogą sondować punkt końcowy stanu i wyświetlać interfejs użytkownika postępu, który wizualizuje bieżący etap wykonania. W poniższym przykładzie przedstawiono udostępnianie postępu:
 
 #### <a name="c"></a>C#
 
@@ -51,7 +51,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -77,7 +77,7 @@ module.exports = async function(context, name) {
 };
 ```
 
-And then the client will receive the output of the orchestration only when `CustomStatus` field is set to "London":
+A następnie klient otrzyma dane wyjściowe aranżacji tylko wtedy, gdy pole `CustomStatus` jest ustawione na wartość "Londyn":
 
 #### <a name="c"></a>C#
 
@@ -112,7 +112,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -142,11 +142,11 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> In JavaScript, the `customStatus` field will be set when the next `yield` or `return` action is scheduled.
+> W języku JavaScript pole `customStatus` zostanie ustawione po zaplanowaniu kolejnej akcji `yield` lub `return`.
 
-### <a name="output-customization"></a>Output customization
+### <a name="output-customization"></a>Dostosowanie danych wyjściowych
 
-Another interesting scenario is segmenting users by returning customized output based on unique characteristics or interactions. With the help of custom orchestration status, the client-side code will stay generic. All main modifications will happen on the server side as shown in the following sample:
+Innym interesującym scenariuszem jest segmentacja użytkowników, zwracając dostosowane dane wyjściowe na podstawie unikatowych właściwości lub interakcji. Dzięki pomocy dotyczącej niestandardowego stanu aranżacji kod po stronie klienta pozostanie ogólny. Wszystkie podstawowe modyfikacje zostaną wykonane po stronie serwera, jak pokazano w następującym przykładzie:
 
 #### <a name="c"></a>C#
 
@@ -186,7 +186,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -219,9 +219,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-### <a name="instruction-specification"></a>Instruction specification
+### <a name="instruction-specification"></a>Specyfikacja instrukcji
 
-The orchestrator can provide unique instructions to the clients via the custom state. The custom status instructions will be mapped to the steps in the orchestration code:
+Koordynator może zapewnić klientom unikatowe instrukcje za pośrednictwem stanu niestandardowego. Niestandardowe instrukcje stanu zostaną zamapowane na kroki w kodzie aranżacji:
 
 #### <a name="c"></a>C#
 
@@ -251,7 +251,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -278,9 +278,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="sample"></a>Przykład
+## <a name="sample"></a>Sample
 
-In the following sample, the custom status is set first;
+W poniższym przykładzie stan niestandardowy jest ustawiony jako pierwszy;
 
 ### <a name="c"></a>C#
 
@@ -297,7 +297,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (tylko funkcje 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -313,13 +313,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-While the orchestration is running, external clients can fetch this custom status:
+Po uruchomieniu aranżacji klienci zewnętrzni mogą pobrać ten stan niestandardowy:
 
 ```http
 GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
-Clients will get the following response:
+Klienci otrzymają następujące odpowiedzi:
 
 ```json
 {
@@ -333,9 +333,9 @@ Clients will get the following response:
 ```
 
 > [!WARNING]
-> The custom status payload is limited to 16 KB of UTF-16 JSON text because it needs to be able to fit in an Azure Table Storage column. We recommend you use external storage if you need a larger payload.
+> Niestandardowy ładunek stanu jest ograniczony do 16 KB tekstu JSON w formacie UTF-16, ponieważ musi być w stanie zmieścić się w kolumnie Table Storage platformy Azure. Zalecamy używanie magazynu zewnętrznego, jeśli potrzebny jest większy ładunek.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Learn about durable timers](durable-functions-timers.md)
+> [Więcej informacji na temat trwałych czasomierzy](durable-functions-timers.md)

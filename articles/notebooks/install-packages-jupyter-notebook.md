@@ -12,7 +12,7 @@ ms.locfileid: "74277547"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Instalowanie pakietów z w ramach notesu
 
-Wprawdzie możliwe jest skonfigurowanie [środowisko notesu na poziomie projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), warto zainstalować pakiety bezpośrednio z poziomu pojedynczych notesu.
+Mimo że można skonfigurować [środowisko dla notesu na poziomie projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), można zainstalować pakiety bezpośrednio w ramach danego notesu.
 
 Zainstalowane pakiety z notesu dotyczą tylko bieżącej sesji serwera. Instalacji pakietów nie są utrwalane, gdy serwer jest zamykany.
 
@@ -26,7 +26,7 @@ Pakiety języka Python można zainstalować przy użyciu narzędzia pip lub cond
 !conda install <package_name> -y
 ```
 
-Jeśli dane wyjściowe polecenia wskazuje, że wymaganie już jest spełniony, a następnie notesów usługi Azure może obejmować pakiet domyślnie. Można także zainstalować pakiet za pośrednictwem [kroku konfiguracji środowiska projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
+Jeśli dane wyjściowe polecenia wskazuje, że wymaganie już jest spełniony, a następnie notesów usługi Azure może obejmować pakiet domyślnie. Pakiet może być również instalowany za pomocą [kroku konfiguracji środowiska projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
 
 ## <a name="r"></a>R
 
@@ -46,7 +46,7 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-Pakiety w F# mogą być instalowane z [nuget.org](https://www.nuget.org) przez wywołanie zależności Paket menedżera z w komórkach kodu. Najpierw załadować Menedżera Paket:
+Pakiety w F# programie można instalować z [NuGet.org](https://www.nuget.org) przez wywołanie Menedżera zależności Paket z poziomu komórek kodu. Najpierw załadować Menedżera Paket:
 
 ```fsharp
 #load "Paket.fsx"
@@ -73,5 +73,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Porady: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
-- [Porady: obecne pokaz slajdów](present-jupyter-notebooks-slideshow.md)
+- [Instrukcje: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
+- [Instrukcje: prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)

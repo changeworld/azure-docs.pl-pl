@@ -133,7 +133,7 @@ Tylko wtedy, gdy istnieje narzędzie niestandardowe, które pozyskuje te pliki d
 
 Narzędzia niestandardowe należy zaktualizować w taki sposób, aby obsługiwały zarówno bieżący format, jak i format linii JSON opisany powyżej. Zapewni to, że gdy dane zaczynają pojawiać się w nowym formacie, narzędzia nie są przerywane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Informacje o [archiwizowaniu dzienników diagnostycznych zasobów na koncie magazynu](./../../azure-monitor/platform/archive-diagnostic-logs.md)
 * Informacje [na temat archiwizowania danych dziennika aktywności na koncie magazynu](./../../azure-monitor/platform/archive-activity-log.md)
