@@ -60,7 +60,7 @@ Najbardziej aktualne wersje składników lokalnych zapewniają klientom wszystki
 
 Te składniki obejmują:
 
-- Azure AD Connect
+- Program Azure AD Connect
 - Łączniki serwer proxy aplikacji usługi Azure AD platformy Azure
 - Agenci uwierzytelniania przekazującego usługi Azure AD
 - Azure AD Connect Health agenci
@@ -134,7 +134,7 @@ Istnieją dwa adresy "od" używane przez usługę Azure AD: <o365mc@email2.micro
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Powiadomienie o wygaśnięciu certyfikatu aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
-- Powiadomienia usługi inicjowania obsługi administracyjnej aplikacji przedsiębiorstwa
+- Powiadomienia usługi aprowizacji aplikacji dla przedsiębiorstw
 
 Zapoznaj się z poniższą tabelą, aby uzyskać informacje o typie wysyłanych powiadomień i o tym, gdzie je sprawdzić:
 

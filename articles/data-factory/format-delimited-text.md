@@ -20,16 +20,16 @@ ms.locfileid: "74548282"
 
 Postępuj zgodnie z tym artykułem, jeśli chcesz **przeanalizować rozdzielane pliki tekstowe lub zapisać dane w formacie tekstu rozdzielanego**. 
 
-Format tekstu rozdzielanego jest obsługiwany dla następujących łączników: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [system plików](connector-file-system.md), [FTP](connector-ftp.md) [ Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)i [SFTP](connector-sftp.md).
+Format tekstu rozdzielanego jest obsługiwany dla następujących łączników: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [system plików](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)i [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
 Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez rozdzielany zestaw danych tekstowych.
 
-| Właściwość         | Opis                                                  | Wymagany |
+| Właściwość         | Opis                                                  | Wymagane |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Właściwość Type zestawu danych musi być ustawiona na wartość **DelimitedText**. | Yes      |
-| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`.  | Yes      |
+| type             | Właściwość Type zestawu danych musi być ustawiona na wartość **DelimitedText**. | Tak      |
+| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`.  | Tak      |
 | columnDelimiter  | Znaki używane do oddzielania kolumn w pliku. Obecnie ogranicznik wieloznakowy jest obsługiwany tylko na potrzeby mapowania przepływu danych, ale bez działania kopiowania. <br>Wartość domyślna to **przecinek `,`** , gdy ogranicznik kolumny jest zdefiniowany jako pusty ciąg, co oznacza brak ogranicznika, cały wiersz jest traktowany jako jedna kolumna. | Nie       |
 | rowDelimiter     | Pojedynczy znak lub "\r\n" używany do oddzielania wierszy w pliku.<br>Wartość domyślna to dowolna z następujących wartości **podczas odczytu: ["\r\n", "\r", "\n"]** , **"\n" lub "\r\n" przy zapisie** odpowiednio mapując przepływ danych i działanie kopiowania. <br>Gdy `rowDelimiter` jest ustawiony na brak ogranicznika (pusty ciąg), `columnDelimiter` musi być ustawiony jako brak ogranicznika (pusty ciąg), co oznacza, że cała zawartość jest traktowana jako pojedyncza wartość. | Nie       |
 | quoteChar        | Pojedynczy znak do wartości kolumny QUOTE, jeśli zawiera ogranicznik kolumny. <br>Wartość domyślna to **podwójny cudzysłów** `"`. <br>W przypadku mapowania przepływu danych `quoteChar` nie może być pustym ciągiem. <br>W przypadku działania kopiowania, gdy `quoteChar` jest zdefiniowany jako pusty ciąg, oznacza to, że nie istnieje znak cudzysłowu i wartość kolumny nie jest ujęta w cudzysłów, a `escapeChar` jest używany do ucieczki ogranicznika kolumny i samego siebie. | Nie       |
@@ -75,34 +75,34 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*źródło\**** .
 
-| Właściwość       | Opis                                                  | Wymagany |
+| Właściwość       | Opis                                                  | Wymagane |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | Właściwość Type źródła działania Copy musi być ustawiona na wartość **DelimitedTextSource**. | Yes      |
+| type           | Właściwość Type źródła działania Copy musi być ustawiona na wartość **DelimitedTextSource**. | Tak      |
 | formatSettings | Grupa właściwości. Zapoznaj się z rozdzieloną tabelą **Ustawienia odczytu tekstu** poniżej. | Nie       |
 | storeSettings  | Grupa właściwości do odczytywania danych z magazynu danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia odczytu w obszarze `storeSettings`. | Nie       |
 
 Obsługiwane **rozdzielane tekstem ustawienia odczytu** w obszarze `formatSettings`:
 
-| Właściwość      | Opis                                                  | Wymagany |
+| Właściwość      | Opis                                                  | Wymagane |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Typ formatSettings musi być ustawiony na **DelimitedTextReadSetting**. | Yes      |
+| type          | Typ formatSettings musi być ustawiony na **DelimitedTextReadSetting**. | Tak      |
 | skipLineCount | Wskazuje liczbę **niepustych** wierszy do pominięcia podczas odczytywania danych z plików wejściowych. <br>Jeśli określono zarówno właściwość skipLineCount, jak i firstRowAsHeader, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego. | Nie       |
 
 ### <a name="delimited-text-as-sink"></a>Tekst rozdzielony jako ujścia
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*ujścia\**** .
 
-| Właściwość       | Opis                                                  | Wymagany |
+| Właściwość       | Opis                                                  | Wymagane |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | Właściwość Type źródła działania Copy musi być ustawiona na wartość **DelimitedTextSink**. | Yes      |
+| type           | Właściwość Type źródła działania Copy musi być ustawiona na wartość **DelimitedTextSink**. | Tak      |
 | formatSettings | Grupa właściwości. Zapoznaj się z rozdzieloną tabelą **ustawień zapisu tekstu** poniżej. |          |
 | storeSettings  | Grupa właściwości do zapisywania danych w magazynie danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia zapisu w obszarze `storeSettings`.  | Nie       |
 
 Obsługiwane **rozdzielone ustawienia zapisu tekstu** w `formatSettings`:
 
-| Właściwość      | Opis                                                  | Wymagany                                              |
+| Właściwość      | Opis                                                  | Wymagane                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | Typ formatSettings musi być ustawiony na **DelimitedTextWriteSetting**. | Yes                                                   |
+| type          | Typ formatSettings musi być ustawiony na **DelimitedTextWriteSetting**. | Tak                                                   |
 | fileExtension | Rozszerzenie pliku używane do nazwy plików wyjściowych, np. `.csv`, `.txt`. Należy określić, kiedy `fileName` nie jest określony w wyjściowym zestawie danych DelimitedText. | Tak, jeśli nazwa pliku nie jest określona w wyjściowym zestawie danych |
 
 ## <a name="mapping-data-flow-properties"></a>Mapowanie właściwości przepływu danych

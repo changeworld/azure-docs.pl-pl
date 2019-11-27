@@ -296,7 +296,7 @@ Ten przykład przedstawia wszystkie metadane zdefiniowane przez użytkownika dla
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Przykład](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
 * [Mapowanie Gen1 do Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 376a0778e581b17462fb632d7e49f4762f54b83e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
-ms.translationtype: HT
+ms.openlocfilehash: 6555e61bab4ee668578b50cd27860fde1909c4dd
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456756"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546895"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Szybki Start: Azure Key Vaulta Biblioteka kliencka dla środowiska Node. js (v4)
 
@@ -64,7 +64,7 @@ az group create --name "myResourceGroup" -l "EastUS"
 az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ```
 
-### <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
 Najprostszym sposobem uwierzytelniania aplikacji opartej na chmurze jest tożsamość zarządzana; Aby uzyskać szczegółowe informacje [, zobacz używanie Azure Key Vault tożsamości zarządzanej App Service](managed-identity.md) . W celu uproszczenia tego przewodnika Szybki Start tworzy aplikację konsolową. Uwierzytelnianie aplikacji klasycznej przy użyciu platformy Azure wymaga użycia nazwy głównej usługi i zasad kontroli dostępu.
 
@@ -257,9 +257,7 @@ main()
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono Magazyn kluczy, Zapisano wpis tajny i pobrano ten klucz tajny. 
-
-Aby dowiedzieć się więcej na temat Key Vault i sposobu integrowania go z aplikacjami, przejdź do artykułu poniżej.
+W tym przewodniku szybki start utworzono Magazyn kluczy, Zapisano wpis tajny i pobrano ten klucz tajny. Aby dowiedzieć się więcej na temat Key Vault i sposobu integrowania go z aplikacjami, przejdź do artykułu poniżej.
 
 - Zapoznaj się [z omówieniem Azure Key Vault](key-vault-overview.md)
 - Zobacz [przewodnik dewelopera Azure Key Vault](key-vault-developers-guide.md)

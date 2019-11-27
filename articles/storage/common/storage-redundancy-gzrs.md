@@ -29,7 +29,7 @@ Tylko konta magazynu ogólnego przeznaczenia w wersji 2 obsługują GZRS i RA-GZ
 
 GZRS i RA-GZRS są obecnie dostępne w wersji zapoznawczej w następujących regionach:
 
-- Azja Południowo-Wschodnia
+- Azja Południowo-wschodnia
 - Europa Północna
 - Europa Zachodnia
 - Południowe Zjednoczone Królestwo
@@ -155,7 +155,7 @@ Aby zażądać migracji na żywo, użyj [Azure Portal](https://ms.portal.azure.c
 
 Przedstawiciel działu pomocy technicznej skontaktuje się z Tobą, aby zapewnić pomoc.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)

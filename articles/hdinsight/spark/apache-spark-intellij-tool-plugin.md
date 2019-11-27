@@ -35,7 +35,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * [Zestaw Oracle Java Development](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  W tym samouczku jest używany język Java w wersji 8.0.202.
 
-* IntelliJ IDEA. W tym artykule [jest stosowany pomysł IntelliJ Community Ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
+* IntelliJ pomysł. W tym artykule [jest stosowany pomysł IntelliJ Community Ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure Toolkit for IntelliJ.  Zobacz [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable) (Instalowanie zestawu Azure Toolkit for IntelliJ).
 
@@ -455,7 +455,7 @@ Istniejące aplikacje Spark Scala, które zostały utworzone w programie Intelli
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster, który został utworzony, wykonując następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. W polu **Wyszukaj** w górnej części wpisz **HDInsight**.
 
@@ -469,7 +469,7 @@ Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster, który zosta�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W ramach tego samouczka nauczysz się używać wtyczki Azure Toolkit for IntelliJ do tworzenia aplikacji Apache Spark utworzonych w [Scala](https://www.scala-lang.org/), a następnie przesyłać je do klastra usługi HDInsight Spark bezpośrednio z poziomu zintegrowanego środowiska projektowego IntelliJ ( IDE). Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
+W ramach tego samouczka nauczysz się używać wtyczki Azure Toolkit for IntelliJ do tworzenia aplikacji Apache Spark utworzonych w [Scala](https://www.scala-lang.org/), a następnie przesyłać je do klastra usługi HDInsight Spark bezpośrednio z poziomu zintegrowanego środowiska projektowego INTELLIJ (IDE). Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
 
 > [!div class="nextstepaction"]
 > [Analyze data using BI tools (Analizowanie danych przy użyciu narzędzi do analizy biznesowej)](apache-spark-use-bi-tools.md)

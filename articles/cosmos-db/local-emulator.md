@@ -109,7 +109,7 @@ Aby włączyć dostęp do sieci po raz pierwszy, użytkownik powinien zamknąć 
 
 ## <a name="developing-with-the-emulator"></a>Programowanie za pomocą emulatora
 
-### <a name="sql-api"></a>Interfejs API SQL
+### <a name="sql-api"></a>Interfejs SQL API
 
 Po uruchomieniu emulatora usługi Azure Cosmos na pulpicie możesz użyć dowolnego obsługiwanego [zestawu SDK Azure Cosmos DB](sql-api-sdk-dotnet.md) lub [interfejsu API REST Azure Cosmos DB](/rest/api/cosmos-db/) , aby móc korzystać z emulatora. Emulator usługi Azure Cosmos obejmuje również wbudowaną Eksplorator danych, która umożliwia tworzenie kontenerów dla interfejsu API SQL lub Cosmos DB dla interfejsu API usługi Mongo DB, a także wyświetlanie i edytowanie elementów bez konieczności pisania kodu.
 
@@ -257,7 +257,7 @@ Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu 
 | ResetDataPath | Rekursywnie usuwa wszystkie pliki z określonej ścieżki. Jeśli ścieżka nie zostanie określona, domyślnie%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB. emulator. exe/ResetDataPath =\<Path > | ścieżka \<\>: ścieżka pliku  |
 | StartTraces  |  Rozpocznij zbieranie dzienników śledzenia debugowania. | CosmosDB. emulator. exe/StartTraces | |
 | StopTraces     | Zatrzymaj zbieranie dzienników śledzenia debugowania. | CosmosDB. emulator. exe/StopTraces  | |
-|FailOnSslCertificateNameMismatch | Domyślnie emulator ponownie generuje swój certyfikat SSL z podpisem własnym, jeśli sieć SAN certyfikatu nie zawiera nazwy domeny hosta emulatora, lokalnego adresu IPv4, "localhost" i "127.0.0.1". W przypadku tej opcji emulator zakończy się niepowodzeniem przy uruchamianiu. Następnie należy użyć opcji/GenCert, aby utworzyć i zainstalować nowy certyfikat SSL z podpisem własnym. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+|FailOnSslCertificateNameMismatch | Domyślnie emulator ponownie generuje swój certyfikat SSL z podpisem własnym, jeśli sieć SAN certyfikatu nie zawiera nazwy domeny hosta emulatora, lokalnego adresu IPv4, "localhost" i "127.0.0.1". W przypadku tej opcji emulator zakończy się niepowodzeniem przy uruchamianiu. Następnie należy użyć opcji/GenCert, aby utworzyć i zainstalować nowy certyfikat SSL z podpisem własnym. | CosmosDB. emulator. exe/FailOnSslCertificateNameMismatch  | |
 | GenCert | Wygeneruj i zainstaluj nowy certyfikat SSL z podpisem własnym. Opcjonalnie, w tym rozdzieloną przecinkami listę dodatkowych nazw DNS w celu uzyskania dostępu do emulatora za pośrednictwem sieci. | CosmosDB. emulator. exe/GenCert =\<nazw DNS\> |\<nazw DNS\>: opcjonalna rozdzielana przecinkami lista dodatkowych nazw DNS  |
 | DirectPorts |Określa porty używane przez połączenia bezpośrednie. Wartość domyślna to 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<porty_bezpośrednie\> | \<porty_bezpośrednie\>: lista rozdzielana przecinkami zawierająca cztery porty |
 | Klucz |Klucz autoryzacji dla emulatora. Klucz musi być 64-bajtowym wektorem szyfrowanym algorytmem Base-64. | CosmosDB.Emulator.exe /Key:\<klucz\> | \<klucz\>: klucz musi być 64-bajtowym wektorem szyfrowanym algorytmem Base-64|

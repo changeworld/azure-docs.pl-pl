@@ -28,7 +28,7 @@ Na poziomie ogólnym ten samouczek obejmuje następujące kroki:
 > * Tworzenie połączonych usług Azure SQL Database, Azure SQL Data Warehouse i Azure Storage.
 > * Tworzenie zestawów danych Azure SQL Database i Azure SQL Data Warehouse.
 > * Tworzenie potoku w celu wyszukania tabel do skopiowania i innego potoku w celu wykonania samej operacji kopiowania. 
-> * Uruchamianie przebiegu potoku.
+> * Uruchom potok.
 > * Monitorowanie uruchomień potoku i działań.
 
 W tym samouczku jest używany program Azure PowerShell. Aby dowiedzieć się więcej o zastosowaniu innych narzędzi/zestawów SDK do tworzenia fabryki danych, zapoznaj się z przewodnikami [Szybki start](quickstart-create-data-factory-dot-net.md). 
@@ -91,7 +91,7 @@ Zarówno dla bazy SQL Database, jak i dla magazynu SQL Data Warehouse, zezwól u
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. Uruchom polecenie cmdlet **Set-AzDataFactoryV2** , aby utworzyć fabrykę danych. Przed uruchomieniem polecenia zastąp symbol zastępczy własnymi wartościami. 
+2. Uruchom polecenie cmdlet **Set-AzDataFactoryV2** , aby utworzyć fabrykę danych. Przed uruchomieniem polecenia zastąp symbole zastępcze własnymi wartościami. 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
@@ -229,7 +229,7 @@ W tym samouczku magazyn obiektów blob platformy Azure służy jako obszar przej
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
     ```
 
-## <a name="create-datasets"></a>Tworzenie zestawów danych
+## <a name="create-datasets"></a>Utwórz zestawy danych
 
 W tym samouczku utworzysz zestawy danych źródła i ujścia, określające lokalizację przechowywania danych:
 
@@ -313,7 +313,7 @@ W tym samouczku utworzysz zestawy danych źródła i ujścia, określające loka
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDwTableDataset
     ```
 
-## <a name="create-pipelines"></a>Tworzenie potoków
+## <a name="create-pipelines"></a>Utwórz potoki
 
 W tym samouczku utworzysz dwa potoki:
 
@@ -513,7 +513,7 @@ Ten potok wykonuje dwie czynności:
     $result
     ```
 
-    Oto dane wyjściowe przykładowego przebiegu:
+    Oto dane wyjściowe przykładowego uruchomienia:
 
     ```json
     Pipeline run details:
@@ -566,7 +566,7 @@ Ten potok wykonuje dwie czynności:
     ($result | Where-Object {$_.ActivityName -eq "TriggerCopy"}).Output.ToString()
     ```
 
-    Oto dane wyjściowe przykładowego przebiegu:
+    Oto dane wyjściowe przykładowego uruchomienia:
 
     ```json
     {
@@ -589,7 +589,7 @@ W ramach tego samouczka wykonano następujące procedury:
 > * Tworzenie połączonych usług Azure SQL Database, Azure SQL Data Warehouse i Azure Storage.
 > * Tworzenie zestawów danych Azure SQL Database i Azure SQL Data Warehouse.
 > * Tworzenie potoku w celu wyszukania tabel do skopiowania i innego potoku w celu wykonania samej operacji kopiowania. 
-> * Uruchamianie przebiegu potoku.
+> * Uruchom potok.
 > * Monitorowanie uruchomień potoku i działań.
 
 Przejdź do poniższego samouczka, aby dowiedzieć się, jak przyrostowo kopiować dane z lokalizacji źródłowej do docelowej:

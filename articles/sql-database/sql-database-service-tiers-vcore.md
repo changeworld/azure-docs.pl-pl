@@ -25,18 +25,18 @@ Model Virtual Core (rdzeń wirtualny) zapewnia kilka korzyści:
 - Rabaty cenowe dla [korzyść użycia hybrydowego platformy Azure (AHB)](sql-database-azure-hybrid-benefit.md) i [wystąpienia zarezerwowanego (ri)](sql-database-reserved-capacity.md).
 - Większa przejrzystość szczegółów sprzętowych, które zwiększają moc obliczeniową; ułatwia planowanie migracji z wdrożeń lokalnych.
 
-## <a name="service-tiers"></a>Warstwy usług
+## <a name="service-tiers"></a>Warstwy usługi
 
 Opcje warstwy usług w modelu rdzeń wirtualny obejmują Ogólnego przeznaczenia, Krytyczne dla działania firmy i skalowanie. Warstwa usługi zwykle definiuje architekturę magazynu, limity przestrzeni i operacji we/wy oraz opcje ciągłości działania związane z dostępnością i odzyskiwaniem po awarii.
 
 ||**Zastosowania ogólne**|**Krytyczne dla działania firmy**|**Hiperskali**|
 |---|---|---|---|
 |Najlepsze dla|Większość obciążeń firmowych. Oferuje zorientowane na budżety, zrównoważone i skalowalne Opcje obliczeniowe i magazynowe. |Oferuje aplikacjom biznesowym największą odporność na błędy przy użyciu kilku izolowanych replik i zapewnia największą wydajność operacji we/wy na replikę bazy danych.|Większość obciążeń firmowych z wysoce skalowalnym magazynem i wymaganiami dotyczącymi skali odczytu.  Zapewnia wyższą odporność na błędy, umożliwiając konfigurację wielu izolowanych replik baz danych. |
-|Magazyn|Używa magazynu zdalnego.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe**:<br/>5 GB — 3 TB<br/>**Wystąpienie zarządzane**: 32 GB – 8 TB |Używa lokalnego magazynu SSD.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
+|Usługa Storage|Używa magazynu zdalnego.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe**:<br/>5 GB — 3 TB<br/>**Wystąpienie zarządzane**: 32 GB – 8 TB |Używa lokalnego magazynu SSD.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
 |Przepływność we/wy (przybliżona)|**Pojedyncza baza danych i Pula elastyczna**: 500 operacji we/wy na sekundę rdzeń wirtualny do 40000 maksymalnej liczby IOPS.<br/>**Wystąpienie zarządzane**: zależy od [rozmiaru pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji we/wy na sekundę na 320 000 rdzeń wirtualny Maksymalna liczba IOPS|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia.|
 |Dostępność|1 replika, brak replik w skali odczytu|3 repliki, 1 [replika w skali odczytu](sql-database-read-scale-out.md),<br/>Strefa — nadmiarowa wysoka dostępność (HA)|1 replika odczytu i zapisu oraz 0-4 [replik w skali odczytu](sql-database-read-scale-out.md)|
 |Tworzenie kopii zapasowych|[Magazyn Geograficznie nadmiarowy do odczytu (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|Tworzenie kopii zapasowych opartych na migawce w magazynie zdalnym platformy Azure. Przywraca używanie tych migawek do szybkiego odzyskiwania. Kopie zapasowe są natychmiast i nie wpływają na wydajność obliczeń we/wy. Przywracanie odbywa się szybko i nie jest operacją o rozmiarze danych (w minutach, a nie w godzinach lub dniach).|
-|W pamięci|Nieobsługiwane|Obsługiwane|Nieobsługiwane|
+|W pamięci|Brak obsługi|Obsługiwane|Brak obsługi|
 |||
 
 
@@ -95,7 +95,7 @@ Aby włączyć sprzęt serii M dla subskrypcji i regionu, żądanie obsługi mus
 ### <a name="compute-and-memory-specifications"></a>Specyfikacje obliczeniowe i pamięci
 
 
-|Generowanie sprzętu  |Compute  |Memory (Pamięć)  |
+|Generowanie sprzętu  |Wystąpienia obliczeniowe  |Pamięć  |
 |:---------|:---------|:---------|
 |Obliczenia     |-Procesory Intel E5-2673 v3 (Haswell) 2,4 GHz<br>— Zapewnij do 24 rdzeni wirtualnych (1 rdzeń wirtualny = 1 rdzeń fizyczny)  |-7 GB na rdzeń wirtualny<br>— Zapewnij do 168 GB|
 |5\. generacji     |**Zainicjowane obliczenie**<br>— Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz i Intel SP-8160 (Skylake)<br>— Inicjowanie obsługi administracyjnej do 80 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)<br><br>**Obliczenia bezserwerowe**<br>— Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz i Intel SP-8160 (Skylake)<br>-Automatyczne skalowanie do 16 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)|**Zainicjowane obliczenie**<br>-5,1 GB na rdzeń wirtualny<br>— Zapewnij do 408 GB<br><br>**Obliczenia bezserwerowe**<br>-Automatyczne skalowanie do 24 GB na rdzeń wirtualny<br>— Automatyczne skalowanie do maksymalnie 48 GB|

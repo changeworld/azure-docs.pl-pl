@@ -97,7 +97,7 @@ Jeśli w organizacji nie ma żadnej strategii odzyskiwania po awarii i trybu fai
 
 ![Zrzut ekranu przedstawiający konfigurację trybu przejściowego Azure AD Connect](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
-#### <a name="stay-current"></a>Dbanie o aktualność
+#### <a name="stay-current"></a>Bądź na bieżąco
 
 Aktualizacje firmy Microsoft są regularnie Azure AD Connect. Bądź na bieżąco, aby wykorzystać ulepszenia wydajności, poprawki błędów i nowe funkcje udostępniane przez każdą nową wersję.
 

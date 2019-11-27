@@ -42,11 +42,11 @@ Wersje składników skojarzone z wersjami klastra usługi HDInsight są wymienio
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
 | Apache dozorcy       | 3.4.6         | 3.4.6                       |
 | Apache Storm           | -             | 1.1.0                       |
-| Apache Mahout          | -             | 0.9.0+                      |
+| Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
 | Apache usługi Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 1.1.1, 2.1    | 1,1, 1,0 * (patrz Uwaga poniżej) |
+| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (patrz Uwaga poniżej) |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.0                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
@@ -70,10 +70,10 @@ W poniższych tabelach przedstawiono wersje usługi HDInsight. Są również udo
 
 W poniższej tabeli wymieniono wersje usługi HDInsight, które są dostępne w Azure Portal oraz inne metody wdrażania, takie jak PowerShell i .NET SDK.
 
-| Wersja usługi HDInsight | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wycofania | Wysoka dostępność |  Dostępność w Azure Portal |
+| Wersja usługi HDInsight | SYSTEM OPERACYJNY MASZYNY WIRTUALNEJ | Data wydania | Data wygaśnięcia pomocy technicznej | Data wycofania | Wysoka dostępność |  Dostępność w Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Yes |Yes |
-| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 | 31 grudnia 2020 |31 grudnia 2020 |Yes |Yes |
+| HDInsight 4.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Tak |Tak |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 | 31 grudnia 2020 |31 grudnia 2020 |Tak |Tak |
 
 Platforma Spark 2,1, 2,2 & Kafka 1,0 wygaśnie 30 czerwca, 2020.
 
@@ -84,17 +84,17 @@ Platforma Spark 2,1, 2,2 & Kafka 1,0 wygaśnie 30 czerwca, 2020.
 
 W poniższej tabeli wymieniono wersje usługi HDInsight, które **nie** są dostępne w Azure Portal.
 
-| Wersja usługi HDInsight | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wycofania | Wysoka dostępność |  Dostępność Azure Portal |
+| Wersja usługi HDInsight | Wersja HDP | SYSTEM OPERACYJNY MASZYNY WIRTUALNEJ | Data wydania | Data wygaśnięcia pomocy technicznej | Data wycofania | Wysoka dostępność |  Dostępność Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 |5 września 2017 |28 czerwca 2018 r. |Yes |Nie |
-| HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 |9 stycznia 2018 r. |Yes |Nie |
-| HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2018 r. |Yes |Nie |
-| HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2017 |Yes |Nie |
-| HDInsight 3,2 |HDP 2.2 |Ubuntu 12,04 LTS lub Windows Server 2012 R2 |18 lutego 2015 |1 marca 2016 |1 kwietnia 2017 |Yes |Nie |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 |18 maja 2015 |30 czerwca 2016 r. |Yes |Nie |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 |17 września 2014 |30 czerwca 2015 |Yes |Nie |
-| HDInsight 2.1 |HDP 1,3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 |31 maja 2015 |Yes |Nie |
-| HDInsight 1,6 |HDP 1.1 | |28 października 2013 |26 kwietnia 2014 |31 maja 2015 |Nie |Nie |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 września 2016 |5 września 2017 |28 czerwca 2018 r. |Tak |Nie |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 marca 2016 |29 grudnia 2016 |9 stycznia 2018 |Tak |Nie |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2018 r. |Tak |Nie |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2017 |Tak |Nie |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS lub Windows Server 2012 R2 |18 lutego 2015 |1 marca 2016 |1 kwietnia 2017 |Tak |Nie |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 czerwca 2014 |18 maja 2015 |30 czerwca 2016 |Tak |Nie |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 lutego 2014 |17 września 2014 |30 czerwca 2015 |Tak |Nie |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 |31 maja 2015 |Tak |Nie |
+| HDInsight 1,6 |HDP 1,1 | |28 października 2013 |26 kwietnia 2014 |31 maja 2015 |Nie |Nie |
 
 > [!NOTE]  
 > Klastry o wysokiej dostępności z dwoma węzłami głównymi są wdrażane domyślnie dla usługi HDInsight w wersji 2,1 lub nowszej. Nie są one dostępne w klastrach usługi HDInsight w wersji 1,6.
@@ -130,8 +130,8 @@ Zabezpieczenia przedsiębiorstwa to opcjonalny pakiet, który można dodać do k
 Obecnie tylko następujące typy klastrów obsługują pakiet Enterprise Security:
 
 - Hadoop (tylko Usługa HDInsight 3,6)
-- platforma Spark
-- Zapytanie interakcyjne
+- Spark
+- Zapytanie interaktywne
 
 ### <a name="support-for-azure-data-lake-storage"></a>Obsługa usługi Azure Data Lake Storage
 

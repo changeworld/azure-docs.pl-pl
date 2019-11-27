@@ -147,7 +147,7 @@ Chociaż rzadko, zadanie może być ponawiane wewnętrznie ze względu na błęd
 - **Zbierz dzienniki agenta wsadowego, jeśli wystąpił problem**  
     Jeśli zauważysz problem związany z zachowaniem węzła lub zadań uruchomionych w węźle, zaleca się zebranie dzienników agenta zadań wsadowych przed cofnięciem przydziału danego węzła. Dzienniki agenta usługi Batch można zbierać przy użyciu interfejsu API przekazywania dzienników usług Batch. Te dzienniki mogą być dostarczane do firmy Microsoft jako część biletu pomocy technicznej i mogą pomóc w rozwiązywaniu problemów z rozwiązaniem.
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="security-isolation"></a>Izolacja zabezpieczeń
 

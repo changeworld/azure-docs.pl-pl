@@ -32,7 +32,7 @@ Na poziomie ogólnym ten samouczek obejmuje następujące kroki:
 > * Tworzenie połączonych usług Azure SQL Database, Azure SQL Data Warehouse i Azure Storage.
 > * Tworzenie zestawów danych Azure SQL Database i Azure SQL Data Warehouse.
 > * Tworzenie potoku w celu wyszukania tabel do skopiowania i innego potoku w celu wykonania samej operacji kopiowania. 
-> * Uruchamianie przebiegu potoku.
+> * Uruchom potok.
 > * Monitorowanie uruchomień potoku i działań.
 
 W tym samouczku jest używana witryna Azure Portal. Aby dowiedzieć się więcej o zastosowaniu innych narzędzi/zestawów SDK do tworzenia fabryki danych, zapoznaj się z przewodnikami [Szybki start](quickstart-create-data-factory-dot-net.md). 
@@ -88,7 +88,7 @@ Aby sprawdzić i włączyć to ustawienie, przejdź do usługi Azure SQL Server 
      Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 1. Wybierz opcję **V2** w obszarze **Wersja**.
 1. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 1. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**.
    
 1. Kliknij kafelek **Tworzenie i monitorowanie**, aby w osobnej karcie uruchomić aplikację interfejsu użytkownika usługi Data Factory.
@@ -159,7 +159,7 @@ W tym samouczku magazyn obiektów blob platformy Azure służy jako obszar przej
     d. Kliknij pozycję **Kontynuuj**.
 
 
-## <a name="create-datasets"></a>Tworzenie zestawów danych
+## <a name="create-datasets"></a>Utwórz zestawy danych
 W tym samouczku utworzysz zestawy danych będące źródłem i ujściem, określające lokalizację przechowywania danych. 
 
 Wejściowy zestaw danych **AzureSqlDatabaseDataset** odwołuje się do elementu **AzureSqlDatabaseLinkedService**. Połączona usługa określa parametry połączenia w celu nawiązania połączenia z bazą danych. Zestaw danych określa nazwę bazy danych i tabelę, która zawiera dane źródłowe. 
@@ -193,7 +193,7 @@ W tym samouczku źródłowe i docelowe tabele SQL nie są ustalone w definicjach
 
     ![Konstruktor parametrów zestawu danych](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
  
-## <a name="create-pipelines"></a>Tworzenie potoków
+## <a name="create-pipelines"></a>Utwórz potoki
 W tym samouczku tworzysz dwa potoki: **IterateAndCopySQLTables** i **GetTableListAndTriggerCopyData**. 
 
 Potok **GetTableListAndTriggerCopyData** wykonuje dwie czynności:
@@ -387,7 +387,7 @@ W ramach tego samouczka wykonano następujące procedury:
 > * Tworzenie połączonych usług Azure SQL Database, Azure SQL Data Warehouse i Azure Storage.
 > * Tworzenie zestawów danych Azure SQL Database i Azure SQL Data Warehouse.
 > * Tworzenie potoku w celu wyszukania tabel do skopiowania i innego potoku w celu wykonania samej operacji kopiowania. 
-> * Uruchamianie przebiegu potoku.
+> * Uruchom potok.
 > * Monitorowanie uruchomień potoku i działań.
 
 Przejdź do poniższego samouczka, aby dowiedzieć się, jak przyrostowo kopiować dane z lokalizacji źródłowej do docelowej:

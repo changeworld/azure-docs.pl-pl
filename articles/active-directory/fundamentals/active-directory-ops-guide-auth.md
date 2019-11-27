@@ -302,7 +302,7 @@ Poniżej znajdują się uprawnienia, które mogą chcieć Scrutinize dla usług 
 
 | Zasób | Uprawnienie |
 | -------------------------- | -------------------- |
-| Office 365 Exchange Online | Posiada. AccessAsUser. All |
+| Pakiet Office 365 Exchange Online | Posiada. AccessAsUser. All |
 | | Interfejs. AccessAsUser. All |
 | | Poczta. Przeczytaj |
 | Microsoft Graph | Poczta. Przeczytaj |

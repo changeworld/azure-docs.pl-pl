@@ -32,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 > [!Note]
 > Tego samouczka nie można przeprowadzić za pomocą **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
@@ -93,7 +93,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
    |Właściwość|Wartość|
    |--------|-----------|
-   |Opcje przekazywania|Ręcznie|
+   |Opcje przekazywania|Ręczna|
    |Nazwa|Przyjazna nazwa klucza konta magazynu.|
    |Wartość|Klucz1 z konta magazynu.|
 

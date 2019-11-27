@@ -80,7 +80,7 @@ Poniższy wyodrębnienie w ekstrakcie JSON pokazuje przykładowe dane wyjściowe
 
 Funkcja danych osobowych wykrywa potencjalną obecność tych informacji:
 
-- Adres e-mail
+- Email address (Adres e-mail)
 - Adres wysyłkowy nas
 - Adres IP
 - Numer telefonu USA

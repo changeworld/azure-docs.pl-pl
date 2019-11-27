@@ -268,7 +268,7 @@ def list_directory_contents():
      print(e) 
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Dokumentacja interfejsu API](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
 * [Pakiet (indeks pakietu języka Python)](https://pypi.org/project/azure-storage-file-datalake/)

@@ -18,11 +18,11 @@ W obszarze Zaawansowane, współpracy notesów usługi Azure profilu użytkownik
 
 Identyfikator użytkownika jest częścią adresów URL umożliwia udostępnianie projektów i notesy. Poniższa lista zawiera opis różnych wzorców adresów URL:
 
-- `https://notebooks.azure.com/<user_id>`: Stronę profilu.
-- `https://notebooks.azure.com/<user_id>/projects`: Twoich projektów. Zobacz wszystkie projekty; inni użytkownicy widzą tylko projekty publiczne.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Pliki projektu.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klony określonych projektów.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: HTML podglądu pliku lub określonym notesu.
+- `https://notebooks.azure.com/<user_id>`: Twoja strona Twojego profilu.
+- `https://notebooks.azure.com/<user_id>/projects`: Twoje projekty. Zobacz wszystkie projekty; inni użytkownicy widzą tylko projekty publiczne.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: pliki projektu.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: klony określonych projektów.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Podgląd HTML określonego notesu lub pliku.
 
 ## <a name="your-user-id"></a>Identyfikator użytkownika
 
@@ -30,7 +30,7 @@ Podczas logowania się do notesów usługi Azure po raz pierwszy, Twoje konto je
 
 ![Monit o utworzenie Identyfikatora użytkownika podczas logowania się do notesów usługi Azure](media/accounts/create-user-id.png)
 
-A **skonfigurować identyfikator użytkownika** polecenie również pojawia się obok nazwy tymczasowych użytkowników:
+W polu Nazwa użytkownika tymczasowego pojawia się również polecenie **Konfiguruj identyfikator użytkownika** :
 
 ![Konfigurowanie polecenia identyfikator użytkownika, który jest wyświetlany, gdy używasz tymczasowy identyfikator](media/accounts/configure-user-id-command.png)
 
@@ -43,20 +43,20 @@ Identyfikator użytkownika musi składać się z czterech i szesnastu liter, cyf
 
 ## <a name="your-profile"></a>Twój profil
 
-Twój profil składa się z dostępne publicznie informacji pod adresem URL, `https://notebooks.azure.com/<user_id>`. Strony swojego profilu pokazuje również niedawno używanych projektów i wszelkie projekty gwiazdkami.
+Profil składa się z publicznie dodanych informacji w adresie URL, `https://notebooks.azure.com/<user_id>`. Strony swojego profilu pokazuje również niedawno używanych projektów i wszelkie projekty gwiazdkami.
 
-Aby edytować swój profil, należy użyć **edytować informacje o profilu** polecenia na stronie profilu. Części Twojego profilu są następujące:
+Aby edytować profil, użyj polecenia **Edytuj informacje o profilu** na stronie Twojego profilu. Części Twojego profilu są następujące:
 
 | Sekcja | Zawartość |
 | --- | --- |
 | Zdjęcie profilowe | Obraz, który jest wyświetlany na stronie profilu. |
-| Informacje o koncie | Nazwa wyświetlana, identyfikator użytkownika i konto e-mail publicznych. Na konto poczty e-mail zawiera mean skontaktowania się z innym użytkownikom i może różnić się od [konta](azure-notebooks-user-account.md) używasz do logowania się do notesów usługi Azure, sam. |
+| Informacje o koncie | Nazwa wyświetlana, identyfikator użytkownika i konto e-mail publicznych. Konto e-mail w tym miejscu daje innym użytkownikom średnią skontaktowanie się z Tobą i może się różnić od [konta](azure-notebooks-user-account.md) , którego używasz do logowania się do Azure Notebooks samego siebie. |
 | Informacje o profilu | Twoja lokalizacja, firmy, stanowisko, witryny sieci web i krótki opis samodzielnie. |
 | Profile społecznościowych | GItHub, Twitter i Facebook identyfikatory, jeśli chcesz udostępnić je. |
-| Ustawienia prywatności | Udostępnia dwa polecenia:<ul><li>**Eksportuj Mój profil**: powoduje utworzenie i pobranie *zip* plik zawierający wszystkie informacje, które notesy platformy Azure są zapisywane w profilu, w tym Twoje zdjęcie, informacje o profilu i dzienniki zabezpieczeń.</li><li>**Usuń Moje konto**: trwale usuwa wszystkie informacje osobiste przechowywane w notesach platformy Azure.</li></ul> |
-| Włącz funkcje lokacji | Umożliwia kontrolowanie aspektów zachowania notesy platformy Azure:<ul><li>**Ujednoliconego frontonu dla notesów**: umożliwia szybsze uruchamianie notesu i lepszego stanu trwałego.</li><li>**Domyślnie uruchamiane w JupyterLab**: domyślnie notesy platformy Azure udostępnia prosty interfejs użytkownika, który jest odpowiedni dla większości użytkowników. JupyterLab zapewnia bardziej rozbudowane, ale bardziej skomplikowanych interfejs dla doświadczonych użytkowników.</li><li>**Witryny sieci Web VNext**: włącza układ zmodernizowane sieci web, pokazana w tej dokumentacji.</li></ul> |
+| Ustawienia prywatności | Udostępnia dwa polecenia:<ul><li>**Eksportuj mój profil**: tworzy i pobiera plik *. zip* zawierający wszystkie informacje, które Azure Notebooks zapisywane w Twoim profilu, w tym zdjęcie, informacje o profilu i dzienniki zabezpieczeń.</li><li>**Usuń moje konto**: trwale usuwa wszystkie dane osobowe przechowywane w Azure Notebooks.</li></ul> |
+| Włącz funkcje lokacji | Umożliwia kontrolowanie aspektów zachowania notesy platformy Azure:<ul><li>**Ujednolicone frontony dla notesów**: umożliwiają szybsze uruchamianie notesu i lepszą trwałość.</li><li>**Domyślnie Uruchom program w JupyterLab**: domyślnie Azure Notebooks udostępnia prosty interfejs użytkownika, który jest odpowiedni dla większości użytkowników. JupyterLab zapewnia bardziej rozbudowane, ale bardziej skomplikowanych interfejs dla doświadczonych użytkowników.</li><li>**Witryna sieci Web vNext**: umożliwia korzystanie z nowoczesnego układu internetowego pokazanego w tej dokumentacji.</li></ul> |
 
 ## <a name="next-steps"></a>Następne kroki  
 
 > [!div class="nextstepaction"]
-> [Samouczek: tworzenie uruchomienia notesu programu Jupyter w celu regresji liniowej](tutorial-create-run-jupyter-notebook.md)
+> [Samouczek: Tworzenie notesu Jupyter w celu wykonania regresji liniowej](tutorial-create-run-jupyter-notebook.md)

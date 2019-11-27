@@ -59,6 +59,8 @@
       href: linux-recovery-cannot-start-file-system-errors.md
     - name: Rozwiązywanie problemów z rozruchem związanych z jądrem
       href: 'https://support.microsoft.com/help/4091524'
+    - name: Odzyskiwanie maszyn wirtualnych ze skonfigurowanym menedżerem LVM bez rozruchu
+      href: chroot-logical-volume-manager.md
     - name: Rozwiązywanie problemów z błędami tabeli fstab
       href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: Szczegółowe rozwiązywanie problemów z protokołem RDP

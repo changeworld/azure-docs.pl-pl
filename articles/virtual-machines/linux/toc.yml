@@ -126,7 +126,7 @@
     - name: Dedykowane hosty
       href: dedicated-hosts.md
     - name: Konserwacja i aktualizacje
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Przechowywanie na dysku
       items:
         - name: Wprowadzenie do dysków zarządzanych
@@ -298,16 +298,30 @@
               href: ../extensions/agent-linux.md
             - name: Aktualizacja agenta
               href: update-agent.md
-        - name: Planowana konserwacja
-          href: maintenance-notifications.md
         - name: Ograniczanie ryzyka związanego z wykonywaniem spekulatywnym
           href: mitigate-se.md
-        - name: Zaplanowane zdarzenia
-          href: scheduled-events.md
         - name: Monitorowanie metadanych
           href: instance-metadata-service.md
         - name: Pobieranie metryk użycia za pomocą interfejsu REST
           href: metrics-vm-usage-rest.md
+    - name: Obsługa platformy
+      items:
+        - name: Powiadomienia dotyczące konserwacji
+          items:
+            - name: Omówienie
+              href: maintenance-notifications.md
+            - name: Interfejs wiersza polecenia
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Portal
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Sterowanie konserwacją
+          items:
+            - name: Interfejs wiersza polecenia
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Zaplanowane zdarzenia
+          href: scheduled-events.md
     - name: Monitorowanie maszyn wirtualnych
       items:
         - name: Usługa Azure Monitor dla maszyn wirtualnych
