@@ -1,6 +1,6 @@
 ---
-title: 'Azure HDInsight: Python samples'
-description: Find Python examples on GitHub for common tasks using the HDInsight SDK for Python.
+title: 'Azure HDInsight: przykłady dla języka Python'
+description: Przykłady języka Python w witrynie GitHub na potrzeby typowych zadań przy użyciu zestawu HDInsight SDK dla języka Python.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -14,7 +14,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215740"
 ---
-# <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python samples
+# <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: przykłady dla języka Python
 
 > [!div class="op_single_selector"]
 > * [Przykłady kodu Python](hdinsight-sdk-python-samples.md)
@@ -23,28 +23,28 @@ ms.locfileid: "74215740"
 <!-- * [Go Examples](hdinsight-sdk-go-samples.md)-->
 
 > [!Important]
-> Python 2.7 will be deprecated on January 1st 2020. If you are still using Python 2.7, upgrade to 3.7 in order to use the HDInsight Python SDK.  
+> Środowisko Python 2,7 będzie przestarzałe w dniu 1 stycznia 2020. Jeśli nadal używasz języka Python 2,7, Uaktualnij do wersji 3,7, aby użyć zestawu SDK języka Python dla usługi HDInsight.  
 
 Ten artykuł zawiera:
 
-* Links to samples for cluster creation tasks.
-* Links to reference content for other management tasks.
+* Linki do przykładów dla zadań tworzenia klastra.
+* Linki do zawartości referencyjnej dla innych zadań zarządzania.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Azure HDInsight SDK for Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight#sdk-installation)
+[Zestaw SDK usługi Azure HDInsight dla języka Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight#sdk-installation)
 
-## <a name="cluster-management---creation"></a>Cluster management - creation
+## <a name="cluster-management---creation"></a>Zarządzanie klastrem — tworzenie
 
-* [Create an Apache Kafka cluster](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_kafka_cluster_sample.py)
-* [Create an Apache Spark cluster](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_spark_cluster_sample.py)
-* [Create an Apache Spark cluster with Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_hadoop_cluster_with_adls_gen2_sample.py)
-* [Create an Apache Spark cluster with Enterprise Security Package (ESP)](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_esp_cluster_sample.py)
+* [Tworzenie klastra Apache Kafka](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_kafka_cluster_sample.py)
+* [Tworzenie klastra Apache Spark](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_spark_cluster_sample.py)
+* [Tworzenie klastra Apache Spark z Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_hadoop_cluster_with_adls_gen2_sample.py)
+* [Tworzenie klastra Apache Spark z pakiet Enterprise Security (ESP)](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_esp_cluster_sample.py)
 
-You can get these samples for Python by cloning the [hdinsight-python-sdk-samples](https://github.com/Azure-Samples/hdinsight-python-sdk-samples) GitHub repository.
+Te przykłady dla języka Python można uzyskać, klonowanie repozytorium usługi [HDInsight-Python-SDK-Samples](https://github.com/Azure-Samples/hdinsight-python-sdk-samples) w witrynie GitHub.
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Code snippets for this additional SDK functionality can be found in the [HDInsight SDK for Python reference documentation](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python).
+Fragmenty kodu dla tej dodatkowej funkcji zestawu SDK można znaleźć w dokumentacji usługi [HDINSIGHT SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python).

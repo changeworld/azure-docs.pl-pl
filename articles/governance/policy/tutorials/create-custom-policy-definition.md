@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Create a custom policy definition'
-description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
+title: 'Samouczek: Tworzenie definicji zasad niestandardowych'
+description: W tym samouczku utworzysz niestandardową definicję zasad Azure Policy, aby wymusić niestandardowe reguły biznesowe dla zasobów platformy Azure.
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
@@ -10,7 +10,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483975"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
+# <a name="tutorial-create-a-custom-policy-definition"></a>Samouczek: Tworzenie definicji zasad niestandardowych
 
 Niestandardowa definicja zasad umożliwia klientom definiowanie własnych reguł dotyczących korzystania z platformy Azure. Te reguły często wymuszają:
 
@@ -44,36 +44,36 @@ Ważne jest, aby przed utworzeniem definicji zasad poznać przeznaczenie zasad. 
 
 Wymagania powinny wyraźnie definiować zarówno „poprawne”, jak i „zakazane” stany zasobów.
 
-Chociaż zdefiniowaliśmy oczekiwany stan zasobu, nie zdefiniowaliśmy jeszcze, co chcemy zrobić z niezgodnymi zasobami. Azure Policy supports a number of [effects](../concepts/effects.md). W tym samouczku zdefiniujemy wymaganie biznesowe, które zakazuje tworzenia zasobów, jeśli nie są one zgodne z regułami firmy. Aby osiągnąć ten cel, użyjemy efektu [Deny](../concepts/effects.md#deny) (Odmów). Chcemy również mieć możliwość wstrzymania zasad dla określonych przypisań. Dlatego użyjemy efektu [Disabled](../concepts/effects.md#disabled) (Wyłączone) i określimy go jako [parametr](../concepts/definition-structure.md#parameters) w definicji zasad.
+Chociaż zdefiniowaliśmy oczekiwany stan zasobu, nie zdefiniowaliśmy jeszcze, co chcemy zrobić z niezgodnymi zasobami. Azure Policy obsługuje wiele [efektów](../concepts/effects.md). W tym samouczku zdefiniujemy wymaganie biznesowe, które zakazuje tworzenia zasobów, jeśli nie są one zgodne z regułami firmy. Aby osiągnąć ten cel, użyjemy efektu [Deny](../concepts/effects.md#deny) (Odmów). Chcemy również mieć możliwość wstrzymania zasad dla określonych przypisań. Dlatego użyjemy efektu [Disabled](../concepts/effects.md#disabled) (Wyłączone) i określimy go jako [parametr](../concepts/definition-structure.md#parameters) w definicji zasad.
 
 ## <a name="determine-resource-properties"></a>Określanie właściwości zasobów
 
-Based on the business requirement, the Azure resource to audit with Azure Policy is a storage account. Jednak nie znamy właściwości do użycia w definicji zasad. Azure Policy evaluates against the JSON representation of the resource, so we'll need to understand the properties available on that resource.
+Zgodnie z wymaganiami biznesowymi zasób platformy Azure do inspekcji przy użyciu Azure Policy jest kontem magazynu. Jednak nie znamy właściwości do użycia w definicji zasad. Azure Policy oblicza względem reprezentacji JSON zasobu, dlatego musimy zrozumieć właściwości dostępne dla tego zasobu.
 
 Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omówimy każdy z nich na potrzeby tego samouczka:
 
 - Rozszerzenie usługi Azure Policy dla programu VS Code
-- Szablony Menedżera zasobów
+- Szablony usługi Resource Manager
   - Eksportowanie istniejącego zasobu
   - Środowisko tworzenia
   - Szablony Szybki start (GitHub)
   - Dokumentacja szablonu
 - Eksplorator zasobów Azure
 
-### <a name="view-resources-in-vs-code-extension"></a>View resources in VS Code extension
+### <a name="view-resources-in-vs-code-extension"></a>Wyświetl zasoby w VS Code rozszerzeniu
 
-The [VS Code extension](../how-to/extension-for-vscode.md#search-for-and-view-resources) can be used to browse resources in your environment and see the Resource Manager properties on each resource.
+[Rozszerzenia vs Code](../how-to/extension-for-vscode.md#search-for-and-view-resources) można użyć do przeglądania zasobów w środowisku i wyświetlania właściwości Menedżer zasobów poszczególnych zasobów.
 
-### <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
+### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
 [Szablon usługi Resource Manager](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) zawierający szukaną właściwość w celu zarządzania nią można sprawdzić na kilka sposobów.
 
 #### <a name="existing-resource-in-the-portal"></a>Istniejący zasób w portalu
 
 Najprostszym sposobem na znalezienie właściwości jest przyjrzenie się istniejącemu zasobowi tego samego typu. Zasoby już skonfigurowane za pomocą ustawienia, które ma być wymuszane, służą także do porównywania wartości.
-Look at the **Export template** page (under **Settings**) in the Azure portal for that specific resource.
+Przyjrzyj się stronie **Eksportuj szablon** (w obszarze **ustawienia**) w Azure Portal dla tego konkretnego zasobu.
 
-![Export template page on existing resource](../media/create-custom-policy-definition/export-template.png)
+![Eksportuj stronę szablonu do istniejącego zasobu](../media/create-custom-policy-definition/export-template.png)
 
 Wykonanie tego działania dla konta magazynu spowoduje wyświetlenie szablonu podobnego do następującego przykładu:
 
@@ -165,12 +165,12 @@ Istnieje kilka sposobów określenia aliasów dla zasobu platformy Azure. Omówi
 
 - Rozszerzenie usługi Azure Policy dla programu VS Code
 - Interfejs wiersza polecenia platformy Azure
-- Program Azure PowerShell
-- Graf zasobów platformy Azure
+- Azure PowerShell
+- Azure Resource Graph
 
-### <a name="get-aliases-in-vs-code-extension"></a>Get aliases in VS Code extension
+### <a name="get-aliases-in-vs-code-extension"></a>Pobierz aliasy w VS Code rozszerzeniu
 
-The Azure Policy extension for VS Code extension makes it easy to browse your resources and [discover aliases](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
+Rozszerzenie Azure Policy dla rozszerzenia VS Code ułatwia przeglądanie zasobów i [odnajdywanie aliasów](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -185,7 +185,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 W wynikach jest widoczny alias o nazwie **supportsHttpsTrafficOnly** obsługiwany przez konta magazynu. Istnienie tego aliasu oznacza, że możemy zapisać zasady, aby wymuszać nasze wymagania biznesowe!
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 W programie Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wyszukiwania aliasów zasobu. Przefiltrujemy przestrzeń nazw **Microsoft.Storage** za pomocą uzyskanych wcześniej szczegółów dotyczących zasobu platformy Azure.
 
@@ -198,9 +198,9 @@ W programie Azure PowerShell polecenie cmdlet `Get-AzPolicyAlias` służy do wys
 
 Podobnie jak w przypadku interfejsu wiersza polecenia platformy Azure, w wynikach jest widoczny alias o nazwie **supportsHttpsTrafficOnly** obsługiwany przez konta magazynu.
 
-### <a name="azure-resource-graph"></a>Graf zasobów platformy Azure
+### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure Resource Graph](../../resource-graph/overview.md) is a new service. Oferuje ona kolejną metodę znajdowania właściwości zasobów platformy Azure. Tutaj przedstawiono przykładowe zapytanie umożliwiające przejrzenie pojedynczego konta magazynu przy użyciu usługi Resource Graph:
+[Azure Resource Graph](../../resource-graph/overview.md) to nowa usługa. Oferuje ona kolejną metodę znajdowania właściwości zasobów platformy Azure. Tutaj przedstawiono przykładowe zapytanie umożliwiające przejrzenie pojedynczego konta magazynu przy użyciu usługi Resource Graph:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -215,7 +215,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Wyniki są podobne do wyników uzyskanych za pomocą szablonów usługi Resource Manager i usługi Azure Resource Explorer. However, Azure Resource Graph results can also include [alias](../concepts/definition-structure.md#aliases) details by _projecting_ the _aliases_ array:
+Wyniki są podobne do wyników uzyskanych za pomocą szablonów usługi Resource Manager i usługi Azure Resource Explorer. Jednak wyniki wykresu zasobów platformy Azure mogą również zawierać szczegóły [aliasu](../concepts/definition-structure.md#aliases) przez _projekcję_ tablicy _aliasów_ :
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -313,7 +313,7 @@ Tutaj przedstawiono przykładowe dane wyjściowe dla konta magazynu dotyczące a
 }
 ```
 
-Azure Resource Graph can be used through [Cloud Shell](https://shell.azure.com), making it a fast and easy way to explore the properties of your resources.
+Wykres zasobów platformy Azure może być używany w [Cloud Shell](https://shell.azure.com), co umożliwia szybkie i łatwe Eksplorowanie właściwości zasobów.
 
 ## <a name="determine-the-effect-to-use"></a>Określanie efektu do użycia
 

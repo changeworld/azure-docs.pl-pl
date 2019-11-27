@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57eec1293867a6596eb93f20ba27d468498e4e61
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 143a05944799ff04f9c21384f85a4b00cc65b750
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278696"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545728"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla Azure Functions 
 
@@ -54,7 +54,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 Poniższy przykład przedstawia powiązanie wyzwalacza czasomierza w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja zapisuje dziennik wskazujący, czy to wywołanie funkcji jest spowodowane pominiętym wystąpieniem harmonogramu. Obiekt [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) jest przekazaniem do funkcji.
 
-Oto powiązanie danych w *function.json* pliku:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -82,7 +82,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza czasomierza w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja zapisuje dziennik wskazujący, czy to wywołanie funkcji jest spowodowane pominiętym wystąpieniem harmonogramu. [Obiekt Timer](#usage) jest przenoszona do funkcji.
 
-Oto powiązanie danych w *function.json* pliku:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -113,7 +113,7 @@ module.exports = function (context, myTimer) {
 
 Poniższy przykład używa powiązania wyzwalacza czasomierza, którego konfiguracja została opisana w pliku *Function. JSON* . Rzeczywista [funkcja języka Python](functions-reference-python.md) , która używa powiązania, jest opisana w pliku  *__init__. PR* . Obiekt przesłany do funkcji jest [obiektem typu Azure. Functions. TimerRequest](/python/api/azure-functions/azure.functions.timerrequest). Logika funkcji zapisuje w dziennikach wskazujący, czy bieżące wywołanie jest spowodowane pominiętym wystąpieniem harmonogramu. 
 
-Oto powiązanie danych w *function.json* pliku:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -209,15 +209,15 @@ public void keepAlive(
 
 ---
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `TimerTrigger` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `TimerTrigger` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być ustawiona na wartość "timerTrigger". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**name** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt timer w kodzie funkcji. | 
+|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt timer w kodzie funkcji. | 
 |**schedule**|**ScheduleExpression**|[Wyrażenie CRONUS](#ncrontab-expressions) lub wartość [TimeSpan](#timespan) . `TimeSpan` może być używana tylko dla aplikacji funkcji uruchamianej w planie App Service. Możesz umieścić wyrażenie harmonogramu w ustawieniu aplikacji i ustawić tę właściwość na nazwę ustawienia aplikacji zawiniętej w **%** znaki, jak w tym przykładzie: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Jeśli `true`, funkcja jest wywoływana po uruchomieniu środowiska uruchomieniowego. Na przykład środowisko uruchomieniowe jest uruchamiane, gdy aplikacja funkcji zostanie wznowiona po przejściu w stan bezczynności z powodu braku aktywności. gdy aplikacja funkcji zostanie ponownie uruchomiona z powodu zmiany funkcji i gdy aplikacja funkcji jest skalowana w dół. Tak więc **runOnStartup** powinna być rzadko ustawiona na `true`, szczególnie w środowisku produkcyjnym. |
 |**useMonitor**|**UseMonitor**|Ustaw wartość `true` lub `false`, aby wskazać, czy harmonogram ma być monitorowany. Harmonogram monitorowania utrzymuje harmonogramy, aby pomóc w zapewnieniu, że harmonogram jest prawidłowo obsługiwany nawet po ponownym uruchomieniu wystąpień aplikacji funkcji. Jeśli nie ustawiono jawnie, wartość domyślna to `true` dla harmonogramów z interwałem cyklu większym lub równym 1 minucie. W przypadku harmonogramów, które wyzwalają więcej niż raz na minutę, wartość domyślna to `false`.
@@ -283,7 +283,10 @@ Poniżej przedstawiono kilka przykładów wyrażeń NCRONTAB, których można u�
 
 Liczby w wyrażeniu firmy CRONUS odwołują się do daty i godziny, a nie przedziału czasu. Na przykład 5 w polu `hour` odnosi się do 5:00 AM, nie co 5 godzin.
 
-Domyślna strefa czasowa używana z wyrażeniami firmy CRONUS jest uniwersalnym czasem koordynowanym (UTC). Aby wyszukać wyrażenie firmy CRONUS na podstawie innej strefy czasowej, należy utworzyć ustawienie aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZONE`. Ustaw wartość na nazwę żądanej strefy czasowej, jak pokazano w [indeksie strefy czasowej firmy Microsoft](https://technet.microsoft.com/library/cc749073). 
+Domyślna strefa czasowa używana z wyrażeniami firmy CRONUS jest uniwersalnym czasem koordynowanym (UTC). Aby wyszukać wyrażenie firmy CRONUS na podstawie innej strefy czasowej, należy utworzyć ustawienie aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZONE`. Ustaw wartość na nazwę żądanej strefy czasowej, jak pokazano w [indeksie strefy czasowej firmy Microsoft](https://technet.microsoft.com/library/cc749073).
+
+  > [!NOTE]
+  > `WEBSITE_TIME_ZONE` nie jest obecnie obsługiwana w planie zużycia systemu Linux.
 
 Na przykład *Wschodni czas standardowy* to UTC-05:00. Aby wyzwalacz czasomierza był wyzwalany codziennie o godzinie 10:00, należy użyć następującego wyrażenia NCRONTAB, które jest kontem dla strefy czasowej UTC:
 
@@ -345,4 +348,4 @@ Aby uzyskać informacje o tym, co zrobić, gdy wyzwalacz czasomierza nie działa
 > [Przejdź do przewodnika Szybki Start korzystającego z wyzwalacza czasomierza](functions-create-scheduled-function.md)
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
+> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)

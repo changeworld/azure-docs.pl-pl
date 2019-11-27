@@ -88,17 +88,17 @@ Systemy operacyjne muszą być 64 bitowe i powinny mieć zainstalowane najnowsze
 
 **System operacyjny** | **Pliki/foldery** | **Stan systemu** | **Wymagania dotyczące oprogramowania/modułu**
 --- | --- | --- | ---
-Windows 10 (Enterprise, Pro, Home) | Tak | Nie |  Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
-Windows 8.1 (Enterprise, Pro)| Tak |Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
-Windows 8 (Enterprise, Pro) | Tak | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Tak | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
-Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Tak | Tak | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
-Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Tak | Tak | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
-Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Tak | Tak |— .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
-Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Tak | Tak | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
-Windows Server 2008 z dodatkiem SP2 (wersje Standard, Datacenter, Foundation) | Tak | Nie | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe) <br> -Virtual Server 2005 Base + KB KB948515
-Windows Storage Server 2016/2012 R2/2012 (standard, Grupa robocza) | Tak | Nie | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
-Windows Server 2019 (wersje Standard, Datacenter, Essentials) | Tak | Tak | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows 10 (Enterprise, Pro, Home) | Yes | Nie |  Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows 8.1 (Enterprise, Pro)| Yes |Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows 8 (Enterprise, Pro) | Yes | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Yes | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Yes | Yes | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Yes | Yes | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Yes | Yes |— .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
+Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Yes | Yes | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
+Windows Server 2008 z dodatkiem SP2 (wersje Standard, Datacenter, Foundation) | Yes | Nie | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe) <br> -Virtual Server 2005 Base + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (standard, Grupa robocza) | Yes | Nie | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows Server 2019 (wersje Standard, Datacenter, Essentials) | Yes | Yes | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
 
 Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne serwera usługi MAB i DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
@@ -156,7 +156,7 @@ Za pomocą funkcji [natychmiastowego przywracania](backup-instant-restore-capabi
 
 Kopie zapasowe nie mogą zostać przywrócone na komputerze docelowym, na którym działa Starsza wersja systemu operacyjnego. Na przykład kopie zapasowe wykonane z komputera z systemem Windows 7 można przywrócić w systemie Windows 8 lub nowszym. Ale nie można przywrócić kopii zapasowej wykonanej z komputera z systemem Windows 8 na komputerze z systemem Windows 7.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [architekturze tworzenia kopii zapasowych korzystającej z agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Dowiedz się, co jest obsługiwane podczas [uruchamiania agenta Mars na serwera usługi MAB lub serwerze DPM](backup-support-matrix-mabs-dpm.md).

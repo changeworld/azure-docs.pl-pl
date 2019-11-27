@@ -1,5 +1,5 @@
 ---
-title: Quickstart:Create a profile for HA of applications - Azure portal - Azure Traffic Manager
+title: 'Szybki Start: Tworzenie profilu dla HA aplikacji — Azure Portal platformy Azure Traffic Manager'
 description: W tym artykule Szybki start opisano, jak utworzyć profil usługi Traffic Manager w celu tworzenia aplikacji internetowych o wysokiej dostępności.
 services: traffic-manager
 author: asudbring
@@ -19,7 +19,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483677"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Quickstart: Create a Traffic Manager profile using the Azure portal
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Szybki Start: Tworzenie profilu Traffic Manager przy użyciu Azure Portal
 
 W tym przewodniku Szybki start opisano tworzenie profilu usługi Traffic Manager, który zapewni wysoką dostępność aplikacji internetowej.
 
@@ -27,9 +27,9 @@ W tym przewodniku Szybki start przeczytasz o dwóch wystąpieniach aplikacji int
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,24 +37,24 @@ W tym przewodniku Szybki start będą potrzebne dwa wystąpienia aplikacji inter
 
 1. W lewej górnej części ekranu wybierz pozycję **Utwórz zasób** > **Sieć Web** > **Aplikacja internetowa**.
 
-1. In **Create a Web App**, type or select the following values in the **Basics** tab:
+1. W obszarze **Tworzenie aplikacji sieci Web**wpisz lub wybierz następujące wartości z karty **podstawowe** :
 
-   - **Subscription** > **Resource Group**: Select **Create new** and then type **myResourceGroupTM1**.
-   - **Instance Details** > **Name**: Type *myWebAppEastUS*.
-   - **Instance Details** > **Publish**: Select **Code**.
-   - **Instance Details** > **Runtime stack**: Select **ASP.NET V4.7**
-   - **Instance Details** > **Operating System**: Select **Windows**.
-   - **Instance Details** > **Region**:  Select **East US**.
-   - **App Service Plan** > **Windows Plan (East US)** : Select **Create new** and then type **myAppServicePlanEastUS**
-   - **App Service Plan** > **Sku and size**: Select **Standard S1**.
+   - **Subskrypcja** > **grupy zasobów**: wybierz pozycję **Utwórz nową** , a następnie wpisz **myResourceGroupTM1**.
+   - **Szczegóły wystąpienia** > **Nazwa**: wpisz *myWebAppEastUS*.
+   - **Szczegóły wystąpienia** > **Publikowanie**: Wybierz **kod**.
+   - **Szczegóły wystąpienia** > **stos środowiska uruchomieniowego**: Wybierz **ASP.NET v 4.7**
+   - **Szczegóły wystąpienia** > **system operacyjny**: wybierz pozycję **Windows**.
+   - **Szczegóły wystąpienia** > **regionu**: Wybierz **Wschodnie stany USA**.
+   - **Plan App Service** > **Windows plan (Wschodnie stany USA)** : wybierz pozycję **Utwórz nowy** , a następnie wpisz **myAppServicePlanEastUS**
+   - **Plan App Service** > **jednostka SKU i rozmiar**: wybierz pozycję **standardowa S1**.
    
-3. Select the **Monitoring** tab, or select **Next:Monitoring**.  Under **Monitoring**, set **Application Insights** > **Enable Application Insights** to **No**.
+3. Wybierz kartę **monitorowanie** lub wybierz pozycję **Dalej: monitorowanie**.  W obszarze **monitorowanie**ustaw ustawienie **Application Insights** > **Włącz Application Insights** na wartość **nie**.
 
-4. Select **Review and create**
+4. Wybierz pozycję **Przejrzyj i Utwórz**
 
-5. Review the settings, and then click **Create**.  Po pomyślnym wdrożeniu aplikacji internetowej zostanie utworzona domyślna witryna internetowa.
+5. Przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz**.  Po pomyślnym wdrożeniu aplikacji internetowej zostanie utworzona domyślna witryna internetowa.
 
-6. Follow the steps to create a second Web App named *myWebAppWestEurope*, with a **Resource Group** name of *myResourceGroupTM2*, a **Region** of *West Europe*, a **App Service Plan** name of **myAppServicePlanWestEurope**, and all the other settings the same as *myWebAppEastUS*.
+6. Postępuj zgodnie z instrukcjami, aby utworzyć drugą aplikację sieci Web o nazwie *myWebAppWestEurope*, z nazwą **grupy zasobów** *MyResourceGroupTM2*, **regionem** *Europa Zachodnia*, **App Service nazwą planu** **myAppServicePlanWestEurope**oraz wszystkie inne ustawienia tak samo jak w przypadku *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Tworzenie profilu usługi Traffic Manager
 
@@ -67,9 +67,9 @@ Utwórz profil usługi Traffic Manager kierujący ruch użytkowników na podstaw
     | --------| ----- |
     | Nazwa | Wprowadź unikatową nazwę profilu usługi Traffic Manager.|
     | Metoda routingu | Wybierz pozycję **Priorytet**.|
-    | Subskrypcja | Wybierz subskrypcję, do której ma należeć profil usługi Traffic Manager. |
+    | Subscription | Wybierz subskrypcję, do której ma należeć profil usługi Traffic Manager. |
     | Grupa zasobów | Wybierz pozycję *myResourceGroupTM1*.|
-    | Lokalizacja |To ustawienie dotyczy lokalizacji grupy zasobów. Nie ma ono wpływu na profil usługi Traffic Manager, który zostanie wdrożony globalnie.|
+    | Location |To ustawienie dotyczy lokalizacji grupy zasobów. Nie ma ono wpływu na profil usługi Traffic Manager, który zostanie wdrożony globalnie.|
 
 3. Wybierz pozycję **Utwórz**.
 

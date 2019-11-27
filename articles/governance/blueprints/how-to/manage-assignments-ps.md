@@ -1,6 +1,6 @@
 ---
-title: How to manage assignments with PowerShell
-description: Learn how to manage blueprint assignments with the official Azure Blueprints PowerShell module, Az.Blueprint.
+title: Zarządzanie przypisaniami przy użyciu programu PowerShell
+description: Dowiedz się, jak zarządzać przypisaniami planów przy użyciu oficjalnego modułu programu PowerShell platformy Azure, AZ. plan.
 ms.date: 09/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 00824ceed2e86683a86b172e529ba88704dbb050
@@ -10,24 +10,24 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210314"
 ---
-# <a name="how-to-manage-assignments-with-powershell"></a>How to manage assignments with PowerShell
+# <a name="how-to-manage-assignments-with-powershell"></a>Zarządzanie przypisaniami przy użyciu programu PowerShell
 
-A blueprint assignment can be managed using the **Az.Blueprint** Azure PowerShell module. The module supports fetching, creating, updating, and removing assignments. The module can also fetch details on existing blueprint definitions. This article covers how to install the module and start using it.
+Przypisanie planu można zarządzać przy użyciu modułu **AZ. plan** Azure PowerShell. Moduł obsługuje pobieranie, tworzenie, aktualizowanie i usuwanie przypisań. Moduł może również pobrać szczegóły istniejących definicji planu. W tym artykule opisano sposób instalowania modułu i rozpoczynania korzystania z niego.
 
-## <a name="add-the-azblueprint-module"></a>Add the Az.Blueprint module
+## <a name="add-the-azblueprint-module"></a>Dodaj moduł AZ. plan
 
-To enable Azure PowerShell to manage blueprint assignments, the module must be added. Ten moduł może być używany z lokalnie zainstalowanym programem PowerShell, [programem Azure Cloud Shell](https://shell.azure.com) lub [obrazem Docker programu Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Aby umożliwić Azure PowerShell zarządzania przypisaniami planu, należy dodać moduł. Ten moduł może być używany z lokalnie zainstalowanym programem PowerShell, [programem Azure Cloud Shell](https://shell.azure.com) lub [obrazem Docker programu Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
 
 ### <a name="base-requirements"></a>Wymagania podstawowe
 
-The Azure Blueprints module requires the following software:
+Moduł plany platformy Azure wymaga następującego oprogramowania:
 
-- Azure PowerShell 1.5.0 or higher. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/azure/install-az-ps).
+- Azure PowerShell 1.5.0 lub wyższy. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/azure/install-az-ps).
 - Modułu PowerShellGet w wersji 2.0.1 lub nowszej. Jeśli jeszcze nie został on zainstalowany lub zaktualizowany, postępuj zgodnie z [tymi instrukcjami](/powershell/scripting/gallery/installing-psget).
 
 ### <a name="install-the-module"></a>Instalowanie modułu
 
-The Blueprints module for PowerShell is **Az.Blueprint**.
+Moduł planów dla programu PowerShell to **AZ. plan**.
 
 1. Za pomocą monitu **administracyjnego** programu PowerShell uruchom następujące polecenie:
 
@@ -37,21 +37,21 @@ The Blueprints module for PowerShell is **Az.Blueprint**.
    ```
 
    > [!NOTE]
-   > If **Az.Accounts** is already installed, it may be necessary to use `-AllowClobber` to force the installation.
+   > Jeśli **AZ. Accounts** jest już zainstalowana, może być konieczne użycie `-AllowClobber` w celu wymuszenia instalacji.
 
-1. Validate that the module has been imported and is the correct version (0.2.6):
+1. Sprawdź, czy moduł został zaimportowany i czy jest to poprawna wersja (0.2.6):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
    Get-Command -Module 'Az.Blueprint' -CommandType 'Cmdlet'
    ```
 
-## <a name="get-blueprint-definitions"></a>Get blueprint definitions
+## <a name="get-blueprint-definitions"></a>Pobierz definicje planów
 
-The first step to working with an assignment is often getting a reference to a blueprint definition.
-The `Get-AzBlueprint` cmdlet gets one or more blueprint definitions. The cmdlet can get blueprint definitions from a management group with `-ManagementGroupId {mgId}` or a subscription with `-SubscriptionId {subId}`. The **Name** parameter gets a blueprint definition, but must be used with **ManagementGroupId** or **SubscriptionId**. **Version** can be used with **Name** to be more explicit about which blueprint definition is returned. Instead of **Version**, the switch `-LatestPublished` grabs the most recently published version.
+Pierwszym krokiem do pracy z przypisaniem jest często pobranie odwołania do definicji planu.
+`Get-AzBlueprint` polecenie cmdlet pobiera co najmniej jedną definicję planu. Polecenie cmdlet może pobrać definicje planów z grupy zarządzania z `-ManagementGroupId {mgId}` lub subskrypcją z `-SubscriptionId {subId}`. Parametr **name** pobiera definicję planu, ale musi być używany z **ManagementGroupId** lub identyfikatorem **subskrypcji**. **Wersja** może być używana z **nazwą** , aby być bardziej jawna, na której jest zwracana definicja planu. Zamiast **wersji**, przełącznik `-LatestPublished` korzysta z ostatnio opublikowanej wersji.
 
-The following example uses `Get-AzBlueprint` to get all versions of a blueprint definition named '101-blueprints-definition-subscription' from a specific subscription represented as `{subId}`:
+Poniższy przykład używa `Get-AzBlueprint`, aby pobrać wszystkie wersje definicji planu o nazwie "101-Plans-Definition-Subscription" z określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -63,7 +63,7 @@ $blueprints = Get-AzBlueprint -SubscriptionId '{subId}' -Name '101-blueprints-de
 $blueprints
 ```
 
-The example output for a blueprint definition with multiple versions looks like this:
+Przykładowe dane wyjściowe dla definicji planu z wieloma wersjami wyglądają następująco:
 
 ```output
 Name                 : 101-blueprints-definition-subscription
@@ -78,7 +78,7 @@ Parameters           : {storageAccount_storageAccountType, storageAccount_locati
 ResourceGroups       : ResourceGroup
 ```
 
-The [blueprint parameters](../concepts/parameters.md#blueprint-parameters) on the blueprint definition can be expanded to provide more information.
+[Parametry](../concepts/parameters.md#blueprint-parameters) strategii w definicji strategii mogą być rozwinięte, aby uzyskać więcej informacji.
 
 ```azurepowershell-interactive
 $blueprints.Parameters
@@ -93,11 +93,11 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 [Usergrouporapplicationname]:Reader_RoleAssignmentName Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition
 ```
 
-## <a name="get-blueprint-assignments"></a>Get blueprint assignments
+## <a name="get-blueprint-assignments"></a>Pobieranie przypisań planów
 
-If the blueprint assignment already exists, you can get a reference to it with the `Get-AzBlueprintAssignment` cmdlet. The cmdlet takes **SubscriptionId** and **Name** as optional parameters. If **SubscriptionId** isn't specified, the current subscription context is used.
+Jeśli przypisanie planu już istnieje, możesz uzyskać odwołanie do niego za pomocą polecenia cmdlet `Get-AzBlueprintAssignment`. Polecenie cmdlet przyjmuje identyfikator **subskrypcji** i **nazwę** jako parametry opcjonalne. Jeśli nie określono identyfikatora **subskrypcji** , używany jest bieżący kontekst subskrypcji.
 
-The following example uses `Get-AzBlueprintAssignment` to get a single blueprint assignment named 'Assignment-lock-resource-groups' from a specific subscription represented as `{subId}`:
+Poniższy przykład używa `Get-AzBlueprintAssignment`, aby uzyskać jedno przypisanie planu o nazwie "przypisanie do blokady-Resource-Groups" z określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -109,7 +109,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -SubscriptionId '{subId}' -Name
 $blueprintAssignment
 ```
 
-The example output for a blueprint assignment looks like this:
+Przykładowe dane wyjściowe dla przypisania planu wyglądają następująco:
 
 ```output
 Name              : Assignment-lock-resource-groups
@@ -123,52 +123,52 @@ Parameters        :
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="create-blueprint-assignments"></a>Create blueprint assignments
+## <a name="create-blueprint-assignments"></a>Tworzenie przypisań strategii
 
-If the blueprint assignment doesn't exist yet, you can create it with the `New-AzBlueprintAssignment` cmdlet. This cmdlet uses the following parameters:
+Jeśli przypisanie planu nie istnieje jeszcze, można je utworzyć za pomocą polecenia cmdlet `New-AzBlueprintAssignment`. To polecenie cmdlet używa następujących parametrów:
 
-- **Name** [required]
-  - Specifies the name of the blueprint assignment
-  - Must be unique and not already exist in **SubscriptionId**
-- **Blueprint** [required]
-  - Specifies the blueprint definition to assign
-  - Use `Get-AzBlueprint` to get the reference object
-- **Location** [required]
-  - Specifies the region for the system-assigned managed identity and subscription deployment object to be created in
-- **Subscription** (optional)
-  - Specifies the subscription the assignment is deployed to
-  - If not provided, defaults to the current subscription context
-- **Lock** (optional)
-  - Defines the [blueprint resource locking](../concepts/resource-locking.md) to use for deployed resources
-  - Supported options: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-  - If not provided, defaults to _None_
-- **SystemAssignedIdentity** (optional)
-  - Select to create a system-assigned managed identity for the assignment and to deploy the resources
-  - Default for the "identity" parameter set
-  - Can't be used with **UserAssignedIdentity**
-- **UserAssignedIdentity** (optional)
-  - Specifies the user-assigned managed identity to use for the assignment and to deploy the resources
-  - Part of the "identity" parameter set
-  - Can't be used with **SystemAssignedIdentity**
-- **Parameter** (optional)
-  - A [hash table](/powershell/module/microsoft.powershell.core/about/about_hash_tables) of key/value pairs for setting [dynamic parameters](../concepts/parameters.md#dynamic-parameters) on the blueprint assignment
-  - Default for a dynamic parameter is the **defaultValue** in the definition
-  - If a parameter isn't provided and has no **defaultValue**, the parameter isn't optional
+- **Nazwa** [wymagane]
+  - Określa nazwę przypisania strategii
+  - Musi być unikatowa i jeszcze nie istnieć w identyfikatorze **subskrypcji**
+- **Plan** [wymagany]
+  - Określa definicję planu do przypisania
+  - Użyj `Get-AzBlueprint`, aby pobrać obiekt Reference
+- **Lokalizacja** [wymagana]
+  - Określa region dla tożsamości zarządzanej przypisanej do systemu i obiektu wdrożenia subskrypcji
+- **Subskrypcja** (opcjonalnie)
+  - Określa subskrypcję, do której jest wdrażane przypisanie
+  - Jeśli nie zostanie podany, wartością domyślną jest bieżący kontekst subskrypcji
+- **Blokada** (opcjonalnie)
+  - Definiuje [blokadę zasobów](../concepts/resource-locking.md) planu do użycia dla wdrożonych zasobów
+  - Obsługiwane opcje: _none_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
+  - Jeśli nie zostanie podany, wartość domyślna to _Brak_ .
+- **SystemAssignedIdentity** (opcjonalnie)
+  - Wybierz, aby utworzyć zarządzaną przez system tożsamość skojarzoną z przypisaniem i wdrożyć zasoby
+  - Wartość domyślna dla zestawu parametrów "Identity"
+  - Nie można używać z **UserAssignedIdentity**
+- **UserAssignedIdentity** (opcjonalnie)
+  - Określa tożsamość zarządzaną przypisaną przez użytkownika do użycia podczas przypisywania i wdrażania zasobów
+  - Część zestawu parametrów "Identity"
+  - Nie można używać z **SystemAssignedIdentity**
+- **Parametr** (opcjonalnie)
+  - [Tabela skrótów](/powershell/module/microsoft.powershell.core/about/about_hash_tables) par klucz/wartość służąca do ustawiania [parametrów dynamicznych](../concepts/parameters.md#dynamic-parameters) w przypisaniu planu
+  - Wartością domyślną dla parametru dynamicznego jest wartość **DefaultValue** w definicji
+  - Jeśli parametr nie jest podany i nie ma **atrybutu DefaultValue**, parametr nie jest opcjonalny
 
     > [!NOTE]
-    > **Parameter** doesn't support secureStrings.
+    > **Parametr** nie obsługuje SecureString.
 
-- **ResourceGroupParameter** (optional)
-  - A [hash table](/powershell/module/microsoft.powershell.core/about/about_hash_tables) of resource group artifacts
-  - Each resource group artifact placeholder has key/value pairs for dynamically setting **Name** and **Location** on that resource group artifact
-  - If a resource group parameter isn't provided and has no **defaultValue**, the resource group parameter isn't optional
-- **AssignmentFile** (optional)
-  - The path to a JSON file representation of a blueprint assignment
-  - This parameter is part of a PowerShell parameter set that only includes **Name**, **Blueprint**, and **SubscriptionId**, plus the common parameters.
+- **ResourceGroupParameter** (opcjonalnie)
+  - [Tablica skrótów](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktów grupy zasobów
+  - Każdy symbol zastępczy artefaktu grupy zasobów ma pary klucz/wartość do dynamicznego ustawienia **nazwy** i **lokalizacji** w tym artefaktie grupy zasobów
+  - Jeśli nie podano parametru grupy zasobów i nie ma on wartości **DefaultValue**, parametr grupy zasobów nie jest opcjonalny
+- **AssignmentFile** (opcjonalnie)
+  - Ścieżka do reprezentacji pliku JSON przypisania planu
+  - Ten parametr jest częścią zestawu parametrów programu PowerShell, który zawiera tylko **nazwę**, **Plan**i identyfikator **subskrypcji**oraz wspólne parametry.
 
-### <a name="example-1-provide-parameters"></a>Example 1: Provide parameters
+### <a name="example-1-provide-parameters"></a>Przykład 1: podaj parametry
 
-The following example creates a new assignment of version '1.1' of the 'my-blueprint' blueprint definition fetched with `Get-AzBlueprint`, sets the managed identity and assignment object location to 'westus2', locks the resources with _AllResourcesReadOnly_, and sets the hash tables for both **Parameter** and **ResourceGroupParameter** on specific subscription represented as `{subId}`:
+Poniższy przykład tworzy nowe przypisanie wersji "1,1" definicji planu "My-plan" pobranej z `Get-AzBlueprint`, ustawia lokalizację zarządzaną tożsamości i obiektu przypisania na "westus2", blokuje zasoby z _AllResourcesReadOnly_i ustawia tabele skrótów dla **parametrów** i **ResourceGroupParameter** dla określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -189,7 +189,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 ```
 
-The example output for creating a blueprint assignment looks like this:
+Przykładowe dane wyjściowe tworzenia przypisania strategii wyglądają następująco:
 
 ```output
 Name              : my-blueprint-assignment
@@ -203,10 +203,10 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-### <a name="example-2-use-a-json-assignment-definition-file"></a>Example 2: Use a JSON assignment definition file
+### <a name="example-2-use-a-json-assignment-definition-file"></a>Przykład 2: użycie pliku definicji przypisania JSON
 
-The following example creates nearly the same assignment as [Example 1](#example-1-provide-parameters).
-Instead of passing parameters to the cmdlet, the example shows use of a JSON assignment definition file and the **AssignmentFile** parameter. Additionally, the **excludedPrincipals** property is configured as part of **locks**. There isn't a PowerShell parameter for **excludedPrincipals** and the property can only be configured by setting it through the JSON assignment definition file.
+Poniższy przykład tworzy niemal to samo przypisanie jak [przykład 1](#example-1-provide-parameters).
+Zamiast przekazywania parametrów do polecenia cmdlet, w przykładzie pokazano użycie pliku definicji przypisania JSON i parametru **AssignmentFile** . Ponadto Właściwość **excludedPrincipals** jest konfigurowana jako część **blokad**. Nie istnieje parametr programu PowerShell dla usługi **excludedPrincipals** , a właściwość można skonfigurować tylko przez ustawienie jej przy użyciu pliku definicji przypisania JSON.
 
 ```json
 {
@@ -247,50 +247,50 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
     -AssignmentFile '.\assignment.json'
 ```
 
-## <a name="update-blueprint-assignments"></a>Update blueprint assignments
+## <a name="update-blueprint-assignments"></a>Aktualizowanie przypisań planów
 
-Sometimes it's necessary to update a blueprint assignment that has already been created. The `Set-AzBlueprintAssignment` cmdlet handles this action. The cmdlet takes most of the same parameters that the `New-AzBlueprintAssignment` cmdlet does, allowing anything that was set on the assignment to be updated. The exceptions are the _Name_, _Blueprint_, and _SubscriptionId_. Only the values provided are updated.
+Czasami trzeba zaktualizować przypisanie planu, które zostało już utworzone. `Set-AzBlueprintAssignment` polecenie cmdlet obsługuje tę akcję. Polecenie cmdlet pobiera większość z tych samych parametrów, które są używane przez polecenie cmdlet `New-AzBlueprintAssignment`, co umożliwia zaktualizowanie wszystkich elementów ustawionych w przypisaniu. Wyjątkami są _nazwy_, _plany_i identyfikator _subskrypcji_. Tylko podane wartości są aktualizowane.
 
-To understand what happens when updating a blueprint assignment, see [rules for updating assignments](./update-existing-assignments.md#rules-for-updating-assignments).
+Aby zrozumieć, co się dzieje w przypadku aktualizowania przypisania planu, zobacz [reguły dotyczące aktualizowania przypisań](./update-existing-assignments.md#rules-for-updating-assignments).
 
-- **Name** [required]
-  - Specifies the name of the blueprint assignment to update
-  - Used to locate the assignment to update, not to change the assignment
-- **Blueprint** [required]
-  - Specifies the blueprint definition of the blueprint assignment
-  - Use `Get-AzBlueprint` to get the reference object
-  - Used to locate the assignment to update, not to change the assignment
-- **Location** (optional)
-  - Specifies the region for the system-assigned managed identity and subscription deployment object to be created in
-- **Subscription** (optional)
-  - Specifies the subscription the assignment is deployed to
-  - If not provided, defaults to the current subscription context
-  - Used to locate the assignment to update, not to change the assignment
-- **Lock** (optional)
-  - Defines the [blueprint resource locking](../concepts/resource-locking.md) to use for deployed resources
-  - Supported options: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-- **SystemAssignedIdentity** (optional)
-  - Select to create a system-assigned managed identity for the assignment and to deploy the resources
-  - Default for the "identity" parameter set
-  - Can't be used with **UserAssignedIdentity**
-- **UserAssignedIdentity** (optional)
-  - Specifies the user-assigned managed identity to use for the assignment and to deploy the resources
-  - Part of the "identity" parameter set
-  - Can't be used with **SystemAssignedIdentity**
-- **Parameter** (optional)
-  - A [hash table](/powershell/module/microsoft.powershell.core/about/about_hash_tables) of key/value pairs for setting [dynamic parameters](../concepts/parameters.md#dynamic-parameters) on the blueprint assignment
-  - Default for a dynamic parameter is the **defaultValue** in the definition
-  - If a parameter isn't provided and has no **defaultValue**, the parameter isn't optional
+- **Nazwa** [wymagane]
+  - Określa nazwę przypisania strategii do zaktualizowania
+  - Służy do lokalizowania przypisania do aktualizacji, a nie do zmiany przypisania
+- **Plan** [wymagany]
+  - Określa definicję planu przypisania planu
+  - Użyj `Get-AzBlueprint`, aby pobrać obiekt Reference
+  - Służy do lokalizowania przypisania do aktualizacji, a nie do zmiany przypisania
+- **Lokalizacja** (opcjonalnie)
+  - Określa region dla tożsamości zarządzanej przypisanej do systemu i obiektu wdrożenia subskrypcji
+- **Subskrypcja** (opcjonalnie)
+  - Określa subskrypcję, do której jest wdrażane przypisanie
+  - Jeśli nie zostanie podany, wartością domyślną jest bieżący kontekst subskrypcji
+  - Służy do lokalizowania przypisania do aktualizacji, a nie do zmiany przypisania
+- **Blokada** (opcjonalnie)
+  - Definiuje [blokadę zasobów](../concepts/resource-locking.md) planu do użycia dla wdrożonych zasobów
+  - Obsługiwane opcje: _none_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
+- **SystemAssignedIdentity** (opcjonalnie)
+  - Wybierz, aby utworzyć zarządzaną przez system tożsamość skojarzoną z przypisaniem i wdrożyć zasoby
+  - Wartość domyślna dla zestawu parametrów "Identity"
+  - Nie można używać z **UserAssignedIdentity**
+- **UserAssignedIdentity** (opcjonalnie)
+  - Określa tożsamość zarządzaną przypisaną przez użytkownika do użycia podczas przypisywania i wdrażania zasobów
+  - Część zestawu parametrów "Identity"
+  - Nie można używać z **SystemAssignedIdentity**
+- **Parametr** (opcjonalnie)
+  - [Tabela skrótów](/powershell/module/microsoft.powershell.core/about/about_hash_tables) par klucz/wartość służąca do ustawiania [parametrów dynamicznych](../concepts/parameters.md#dynamic-parameters) w przypisaniu planu
+  - Wartością domyślną dla parametru dynamicznego jest wartość **DefaultValue** w definicji
+  - Jeśli parametr nie jest podany i nie ma **atrybutu DefaultValue**, parametr nie jest opcjonalny
 
     > [!NOTE]
-    > **Parameter** doesn't support secureStrings.
+    > **Parametr** nie obsługuje SecureString.
 
-- **ResourceGroupParameter** (optional)
-  - A [hash table](/powershell/module/microsoft.powershell.core/about/about_hash_tables) of resource group artifacts
-  - Each resource group artifact placeholder has key/value pairs for dynamically setting **Name** and **Location** on that resource group artifact
-  - If a resource group parameter isn't provided and has no **defaultValue**, the resource group parameter isn't optional
+- **ResourceGroupParameter** (opcjonalnie)
+  - [Tablica skrótów](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktów grupy zasobów
+  - Każdy symbol zastępczy artefaktu grupy zasobów ma pary klucz/wartość do dynamicznego ustawienia **nazwy** i **lokalizacji** w tym artefaktie grupy zasobów
+  - Jeśli nie podano parametru grupy zasobów i nie ma on wartości **DefaultValue**, parametr grupy zasobów nie jest opcjonalny
 
-The following example updates the assignment of version '1.1' of the 'my-blueprint' blueprint definition fetched with `Get-AzBlueprint` by changing the lock mode:
+Poniższy przykład aktualizuje przypisanie wersji "1,1" definicji planu "My-plan" pobranej z `Get-AzBlueprint` przez zmianę trybu blokowania:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -303,7 +303,7 @@ $bpAssignment = Set-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -SubscriptionId '{subId}' -Lock AllResourcesDoNotDelete
 ```
 
-The example output for creating a blueprint assignment looks like this:
+Przykładowe dane wyjściowe tworzenia przypisania strategii wyglądają następująco:
 
 ```output
 Name              : my-blueprint-assignment
@@ -317,11 +317,11 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="remove-blueprint-assignments"></a>Remove blueprint assignments
+## <a name="remove-blueprint-assignments"></a>Usuwanie przypisań strategii
 
-When it's time for a blueprint assignment to be removed, the `Remove-AzBlueprintAssignment` cmdlet handles this action. The cmdlet takes either **Name** or **InputObject** to specify which blueprint assignment to remove. **SubscriptionId** is _required_ and must be provided in all cases.
+Gdy jest czas, aby przypisanie planu zostało usunięte, `Remove-AzBlueprintAssignment` polecenie cmdlet obsługuje tę akcję. Polecenie cmdlet przyjmuje **nazwę** lub parametr **inputobject** , aby określić, które przypisanie planu ma zostać usunięte. Identyfikator **subskrypcji** jest _wymagany_ i musi być podany we wszystkich przypadkach.
 
-The following example fetches an existing blueprint assignment with `Get-AzBlueprintAssignment` and then removes it from the specific subscription represented as `{subId}`:
+Poniższy przykład pobiera istniejące przypisanie strategii z `Get-AzBlueprintAssignment`, a następnie usuwa je z określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -333,9 +333,9 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>End-to-end code example
+## <a name="end-to-end-code-example"></a>Przykład kodu kompleksowego
 
-Bringing all the steps together, the following example gets the blueprint definition, then creates, updates, and removes a blueprint assignment in the specific subscription represented as `{subId}`:
+Wykonanie wszystkich kroków razem powoduje pobranie definicji planu, a następnie utworzenie, zaktualizowanie i usunięcie przypisania planu w ramach określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

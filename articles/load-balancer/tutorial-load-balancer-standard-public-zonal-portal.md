@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Load Balancer VMs within a zone--Azure portal'
+title: 'Samouczek: Load Balancer maszyn wirtualnych w strefie — Azure Portal'
 titleSuffix: Azure Load Balancer
 description: Ten samouczek przedstawia sposób tworzenia wystąpienia usługi Load Balancer w warstwie Standardowa przy użyciu frontonu strefowego w celu zrównoważenia obciążenia maszyn wirtualnych w strefie dostępności przy użyciu witryny Azure Portal.
 services: load-balancer
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji na temat obsługi stref dostępności przy użyc
 
 Jeśli wolisz, możesz również wykonać czynności przedstawione w tym samouczku przy użyciu [interfejsu wiersza polecenia platformy Azure](load-balancer-standard-public-zonal-cli.md).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -52,12 +52,12 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko standardowy public
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Subscription               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupZLB* w polu tekstowym.|
     | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Typ          | Wybierz pozycję **Publiczna**.                                        |
-    | JSZ           | Select **Standard**.                          |
+    | SKU           | Wybierz opcję **Standardowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
     |Strefa dostępności| Wybierz pozycję **1**.    |

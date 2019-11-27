@@ -124,7 +124,7 @@ Ukończenie zadania trwa jakiś czas. Gdy tak jest, chcesz otrzymywać powiadomi
 
 Sondowanie nie jest zalecanym najlepszym rozwiązaniem w przypadku aplikacji produkcyjnych ze względu na potencjalne opóźnienia. Jeśli sondowanie będzie nadużywane w ramach konta, może zostać ograniczone. Deweloperzy zamiast niego powinni używać usługi Event Grid.
 
-Usługę Event Grid zaprojektowano pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń. Aby uzyskać więcej informacji, zobacz temat [kierowanie zdarzeń do niestandardowego punktu końcowego sieci Web](job-state-events-cli-how-to.md).
+Usługę Event Grid zaprojektowano pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń i reagować na zdarzenia w praktycznie wszystkich usługach platformy Azure, a także źródłach niestandardowych. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń. Aby uzyskać więcej informacji, zobacz temat [kierowanie zdarzeń do niestandardowego punktu końcowego sieci Web](job-state-events-cli-how-to.md).
 
 **Zadanie** zwykle przechodzi przez następujące stany: **Scheduled (Zaplanowane)** , **Queued (W kolejce)** , **Processing (Przetwarzane)** , **Finished (Zakończone)** (stan końcowy). Jeśli w zadaniu wystąpi błąd, zostanie wyświetlony stan **błędu** . Jeśli zadanie jest w trakcie anulowania, otrzymujesz **Anulowanie** , a następnie **anulowane** po jego zakończeniu.
 
@@ -174,7 +174,7 @@ Zestawy SDK Azure Media Services V3 nie są bezpieczne wątkowo. Podczas pracy z
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe plików](stream-files-tutorial-with-api.md)

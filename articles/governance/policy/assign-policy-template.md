@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: New policy assignment with templates'
-description: In this quickstart, you use a Resource Manager template to create a policy assignment to identify non-compliant resources.
+title: 'Szybki Start: nowe przypisanie zasad z szablonami'
+description: W tym przewodniku szybki start utworzysz przypisanie zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu szablonu Menedżer zasobów.
 ms.date: 11/25/2019
 ms.topic: quickstart
 ms.openlocfilehash: 61bffcdeb5d562fe18df98fda091d5d6aa4b4051
@@ -10,7 +10,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482333"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Quickstart: Create a policy assignment to identify non-compliant resources by using a Resource Manager template
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Szybki Start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu szablonu Menedżer zasobów
 
 Pierwszym krokiem do zrozumienia pojęcia zgodności na platformie Azure jest określenie obecnej sytuacji dotyczącej Twoich zasobów.
 Ten przewodnik Szybki start przeprowadzi Cię przez proces tworzenia przypisania zasad w celu zidentyfikowania maszyn wirtualnych, które nie korzystają z dysków zarządzanych.
@@ -23,50 +23,50 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-a-policy-assignment"></a>Tworzenie przypisania zasad
 
-In this quickstart, you create a policy assignment and assign a built-in policy definition called _Audit VMs that do not use managed disks_. For a partial list of available built-in policies, see [Azure Policy samples](./samples/index.md).
+W tym przewodniku szybki start utworzysz przypisanie zasad i przypiszesz wbudowaną definicję zasad o nazwie _Inspekcja maszyn wirtualnych, które nie korzystają z dysków zarządzanych_. Aby zapoznać się z częściową listą dostępnych wbudowanych zasad, zobacz [Azure Policy Samples](./samples/index.md).
 
-There are several methods for creating policy assignments. In this quickstart, you use a [quickstart template](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
-Here is a copy of the template:
+Istnieje kilka metod tworzenia przypisań zasad. W tym przewodniku Szybki Start zostanie użyty [szablon szybkiego startu](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
+Oto kopia szablonu:
 
 [!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
 
 > [!NOTE]
-> Azure Policy service is free. For more information, see [Overview of Azure Policy](./overview.md).
+> Usługa Azure Policy jest bezpłatna. Aby uzyskać więcej informacji, zobacz [omówienie Azure Policy](./overview.md).
 
-1. Select the following image to sign in to the Azure portal and open the template:
+1. Wybierz następujący obraz, aby zalogować się do Azure Portal i otworzyć szablon:
 
-   [![Deploy the Policy template to Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![wdrożyć szablon zasad na platformie Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
-1. Select or enter the following values:
+1. Wybierz lub wprowadź następujące wartości:
 
    | Nazwa | Wartość |
    |------|-------|
    | Subskrypcja | Wybierz swoją subskrypcję platformy Azure. |
-   | Grupa zasobów | Select **Create new**, specify a name, and then select **OK**. In the screenshot, the resource group name is _mypolicyquickstart\<Date in MMDD\>rg_. |
+   | Grupa zasobów | Wybierz pozycję **Utwórz nowy**, określ nazwę, a następnie wybierz przycisk **OK**. Na zrzucie ekranu nazwa grupy zasobów to _mypolicyquickstart\<Data w MMDD\>RG_. |
    | Lokalizacja | Wybierz region. Na przykład **Środkowe stany USA**. |
-   | Policy Assignment Name | Specify a policy assignment name. You can use the policy definition display if you want. For example, **Audit VMs that do not use managed disks**. |
-   | Rg Name | Specify a resource group name where you want to assign the policy to. In this quickstart, use the default value **[resourceGroup().name]** . **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** is a template function that retrieves the resource group. |
-   | Policy Definition ID | Specify **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**. |
-   | I agree to the terms and conditions stated above | (Select) |
+   | Nazwa przypisania zasad | Określ nazwę przydziału zasad. Jeśli chcesz, możesz użyć wyświetlania definicji zasad. Na przykład **Przeprowadź inspekcję maszyn wirtualnych, które nie korzystają z dysków zarządzanych**. |
+   | Nazwa RG | Określ nazwę grupy zasobów, do której chcesz przypisać zasady. W tym przewodniku szybki start Użyj wartości domyślnej **[resourceName (). Name]** . **[resourceing ()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** to funkcja szablonu, która pobiera grupę zasobów. |
+   | Identyfikator definicji zasad | Określ **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4C19-B460-a2d36003525a**. |
+   | Wyrażam zgodę na powyższe warunki i postanowienia | Zaznaczenia |
 
 1. Wybierz pozycję **Kup**.
 
-Some additional resources:
+Dodatkowe zasoby:
 
-- To find more samples templates, see [Azure Quickstart template](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
-- To see the template reference, go to [Azure template reference](/azure/templates/microsoft.authorization/allversions).
-- To learn how to develop Resource Manager templates, see [Azure Resource Manager documentation](../../azure-resource-manager/resource-group-overview.md).
-- To learn subscription-level deployment, see [Create resource groups and resources at the subscription level](../../azure-resource-manager/deploy-to-subscription.md).
+- Aby znaleźć więcej przykładów szablonów, zobacz [szablon szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
+- Aby wyświetlić odwołanie do szablonu, przejdź do pozycji [Dokumentacja szablonu platformy Azure](/azure/templates/microsoft.authorization/allversions).
+- Aby dowiedzieć się, jak opracowywać szablony Menedżer zasobów, zobacz [dokumentację dotyczącą Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+- Aby uzyskać informacje na temat wdrażania na poziomie subskrypcji, zobacz [Tworzenie grup zasobów i zasobów na poziomie subskrypcji](../../azure-resource-manager/deploy-to-subscription.md).
 
 ## <a name="identify-non-compliant-resources"></a>Identyfikowanie niezgodnych zasobów
 
 Wybierz pozycję **Zgodność** w lewej części strony. Znajdź utworzone przypisanie zasad **Audit VMs that do not use managed disks** (Przeprowadź inspekcję maszyn wirtualnych, które nie używają dysków zarządzanych).
 
-![Policy compliance overview page](./media/assign-policy-template/policy-compliance.png)
+![Strona przeglądu zgodności zasad](./media/assign-policy-template/policy-compliance.png)
 
 Jeśli istnieją jakiekolwiek zasoby niezgodne z nowym przypisaniem, zostaną one wyświetlone w obszarze **Niezgodne zasoby**.
 
-For more information, see [How compliance works](./how-to/get-compliance-data.md#how-compliance-works).
+Aby uzyskać więcej informacji, zobacz [jak działa zgodność](./how-to/get-compliance-data.md#how-compliance-works).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -74,13 +74,13 @@ Aby usunąć utworzone przypisanie, wykonaj następujące kroki:
 
 1. Wybierz pozycję **Zgodność** (lub **Przypisania**) w lewej części strony usługi Azure Policy i znajdź utworzone przypisanie zasad **Audit VMs that do not use managed disks** (Przeprowadź inspekcję maszyn wirtualnych, które nie używają dysków zarządzanych).
 
-1. Right-click the **Audit VMs that do not use managed disks** policy assignment and select **Delete assignment**.
+1. Kliknij prawym przyciskiem myszy **maszyny wirtualne inspekcji, które nie używają przypisania zasad dysków zarządzanych** , i wybierz pozycję **Usuń przypisanie**.
 
-   ![Delete an assignment from the compliance overview page](./media/assign-policy-template/delete-assignment.png)
+   ![Usuwanie przypisania ze strony przeglądu zgodności](./media/assign-policy-template/delete-assignment.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this quickstart, you assigned a built-in policy definition to a scope and evaluated its compliance report. Definicja zasady zawiera sprawdzenie, czy wszystkie zasoby w ramach zakresu są zgodne, oraz określenie niezgodnych zasobów.
+W tym przewodniku szybki start przypisano wbudowaną definicję zasad do zakresu i ocenił swój raport zgodności. Definicja zasady zawiera sprawdzenie, czy wszystkie zasoby w ramach zakresu są zgodne, oraz określenie niezgodnych zasobów.
 
 Aby dowiedzieć się więcej na temat przypisywania zasad w celu sprawdzenia zgodności nowych zasobów, przejdź do samouczka:
 

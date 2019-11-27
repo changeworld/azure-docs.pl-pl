@@ -1,5 +1,5 @@
 ---
-title: Authenticating and securing users - Azure Active Directory
+title: Uwierzytelnianie i zabezpieczanie użytkowników — Azure Active Directory
 description: Jak mogę chronić uwierzytelnianie użytkowników jako administrator usługi Azure AD przy jednoczesnym zmniejszeniu wpływu na użytkowników końcowych?
 services: active-directory
 ms.service: active-directory

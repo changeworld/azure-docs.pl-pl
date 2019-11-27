@@ -1,6 +1,6 @@
 ---
-title: Create a support request for Cloudyn in Azure | Microsoft Docs
-description: This article walks you through the steps needed to create a support request for Cloudyn.
+title: Utwórz żądanie obsługi na platformie Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono kroki niezbędne do utworzenia żądania obsługi na platformie Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,35 +17,35 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229900"
 ---
-# <a name="create-a-support-request-for-cloudyn"></a>Create a support request for Cloudyn
+# <a name="create-a-support-request-for-cloudyn"></a>Utwórz żądanie pomocy technicznej dla platformy Cloudyn
 
-You can open a support request if you can't find the information you're looking for. Or, if you suspect a problem is a service disruption or bug. When you open a support ticket, make sure that open it for a single problem. Do so helps to quickly route the reported issue.
+Jeśli nie możesz znaleźć informacje, których szukasz, możesz otworzyć żądania pomocy technicznej. Lub, jeśli istnieje podejrzenie, że problem jest przerw w działaniu usługi lub błędem. Po otwarciu biletu pomocy technicznej, upewnij się, który otworzyć ją do pojedynczego problemu. Należy tak pomaga szybko kierować zgłoszonego problemu.
 
 ## <a name="open-a-support-ticket"></a>Otwieranie biletu pomocy technicznej
 
-1. Sign in to the Azure portal (https://portal.azure.com).
-2. On the top navigation bar, click **Help**.
-3. In the **Help** menu, click **Help + support**.
-4. In the Help + support menu under Support, click **New support request**.
-5. In the Basics area under Issue type, select **Billing**.
-6. Under Subscription, choose any listed subscription. The subscription that you choose isn't used for issue routing.
-7. Under Support plan, select your Azure Support Plan and then click **Next**.  
-8. In the Problem area, select a **Severity** level to help determine response time.
-9. In **Problem type** select **Cloudyn Legacy**, and then select a **Category**.
-10. In the **Title** box, enter a title that describes your request.
-11. In the **Details** box, type additional information.
-12. For **When did the problem start?** , select an approximate date and time for and then click **Next**.  
-14. In the **Contact information** area, select your preferred contact method and provide your contact information, then click **Create**.  
+1. Zaloguj się do Azure Portal (https://portal.azure.com).
+2. Na górnym pasku nawigacyjnym kliknij przycisk **Pomoc**.
+3. W menu **Pomoc** kliknij pozycję **Pomoc i obsługa techniczna**.
+4. W menu Pomoc i obsługa techniczna w obszarze Pomoc techniczna kliknij pozycję **nowe żądanie obsługi**.
+5. W obszarze podstawy w obszarze Typ problemu wybierz pozycję **rozliczenia**.
+6. W ramach subskrypcji wybierz żadnej z wymienionych subskrypcji. Subskrypcję, możesz wybrać nie jest używany do routingu problem.
+7. W obszarze plan pomocy technicznej wybierz plan pomocy technicznej systemu Azure, a następnie kliknij przycisk **dalej**.  
+8. W obszarze problem wybierz poziom **ważności** , aby pomóc określić czas odpowiedzi.
+9. W polu **typ problemu** wybierz pozycję **Cloudyn starsze**, a następnie wybierz **kategorię**.
+10. W polu **tytuł** wprowadź tytuł opisujący Twoje żądanie.
+11. W polu **szczegóły** wpisz dodatkowe informacje.
+12. W przypadku **gdy pojawił się problem?** , wybierz przybliżoną datę i godzinę dla, a następnie kliknij przycisk **dalej**.  
+14. W obszarze **informacje kontaktowe** wybierz preferowaną metodę kontaktu i podaj swoje informacje kontaktowe, a następnie kliknij przycisk **Utwórz**.  
 
-When the support ticket is created, it is added to the support queue. Response time varies, based on the Support Plan and Severity (business impact) of the issue. For more information, see [Support scope and responsiveness](https://azure.microsoft.com/support/plans/response/).
+Po utworzeniu biletu pomocy technicznej jest to dodane do kolejki pomocy technicznej. Czas odpowiedzi różni się w oparciu o Plan pomocy technicznej i ważności (wpływ na działalność) problem. Aby uzyskać więcej informacji, zobacz [zakres pomocy technicznej i czas odpowiedzi](https://azure.microsoft.com/support/plans/response/).
 
-If you want to create a billing support ticket for Cost Management, under **Problem type**, select **Azure Cost Management**.
+Jeśli chcesz utworzyć bilet pomocy technicznej dotyczącej rozliczeń dla Cost Management, w obszarze **typ problemu**wybierz pozycję **Azure Cost Management**.
 
-To check the status of an incident that you've filed, see [All support requests](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
+Aby sprawdzić stan zgłoszenia, zobacz [wszystkie żądania pomocy technicznej](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
 
-If you're a legacy Cloudyn user without an Azure account, you can open a support request at https://support.microsoft.com/oas/default.aspx?prid=16451.
+Jeśli jesteś starszym użytkownikiem programu Cloudyn bez konta platformy Azure, możesz otworzyć żądanie pomocy technicznej w https://support.microsoft.com/oas/default.aspx?prid=16451.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- To learn more about Cloudyn, continue to the [Review usage and costs](tutorial-review-usage.md) tutorial for Cloudyn.
+- Aby dowiedzieć się więcej na temat Cloudyn, przejdź do samouczka [Przegląd użycia i kosztów](tutorial-review-usage.md) dla Cloudyn.

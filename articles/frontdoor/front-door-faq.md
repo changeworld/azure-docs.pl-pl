@@ -124,7 +124,7 @@ Nowe tworzenie do przodu lub wszelkie aktualizacje istniejących przednich drzwi
 
 Uwaga — Aktualizacje niestandardowego certyfikatu protokołu SSL trwają około 30 minut, aby można je było wdrożyć globalnie.
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Czy można zrównoważyć ruch z przodu platformy Azure lub kierowaniu ruchu w sieci wirtualnej?
 
@@ -211,7 +211,7 @@ Dzienniki inspekcji są dostępne dla usługi Azure front-drzwi. W portalu klikn
 
 Tak, usługa frontonu platformy Azure obsługuje alerty. Alerty są konfigurowane na metrykach. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

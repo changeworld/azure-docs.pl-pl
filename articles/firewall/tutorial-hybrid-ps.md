@@ -493,7 +493,7 @@ Teraz ponownie uruchom testy. Tym razem wszystkie powinny zakończyć się niepo
 
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **FW-Hybrid-Test**, aby usunąć wszystkie zasoby związane z zaporą.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następnie możesz monitorować dzienniki usługi Azure Firewall.
 

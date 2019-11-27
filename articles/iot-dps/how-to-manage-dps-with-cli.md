@@ -1,6 +1,6 @@
 ---
-title: Manage IoT Hub Device Provisioning Service using Azure CLI & IoT extension
-description: Learn how to use Azure CLI and the IoT extension to manage the IoT Hub Device Provisioning Service
+title: Zarządzanie IoT Hub Device Provisioning Service przy użyciu interfejsu wiersza polecenia platformy Azure & usługi IoT
+description: Dowiedz się, jak zarządzać IoT Hub Device Provisioning Service przy użyciu interfejsu wiersza polecenia platformy Azure i rozszerzenia IoT
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
@@ -14,13 +14,13 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229738"
 ---
-# <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>How to use Azure CLI and the IoT extension to manage the IoT Hub Device Provisioning Service
+# <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Jak zarządzać IoT Hub Device Provisioning Service przy użyciu interfejsu wiersza polecenia platformy Azure i rozszerzenia IoT
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is an open-source cross platform command-line tool for managing Azure resources such as IoT Edge. Azure CLI is available on Windows, Linux, and MacOS. Azure CLI enables you to manage Azure IoT Hub resources, Device Provisioning service instances, and linked-hubs out of the box.
+[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) to narzędzie wielodostępnej do obsługi wielu platform i zarządzania zasobami platformy Azure, takimi jak IoT Edge. Interfejs wiersza polecenia platformy Azure jest dostępny w systemach Windows, Linux i MacOS. Interfejs wiersza polecenia platformy Azure umożliwia zarządzanie zasobami IoT Hub platformy Azure, wystąpieniami usługi Device Provisioning i połączonymi centrami poza urządzeniem.
 
-The IoT extension enriches Azure CLI with features such as device management and full IoT Edge capability.
+Rozszerzenie IoT wzbogaca interfejs wiersza polecenia platformy Azure z funkcjami takimi jak zarządzanie urządzeniami i pełna IoT Edge.
 
-In this tutorial, you first complete the steps to setup Azure CLI and the IoT extension. Then you learn how to run CLI commands to perform basic Device Provisioning Service operations. 
+W tym samouczku należy najpierw wykonać kroki konfigurowania interfejsu wiersza polecenia platformy Azure i rozszerzenia IoT. Następnie nauczysz się, jak uruchamiać polecenia interfejsu CLI w celu wykonywania podstawowych operacji usługi Device Provisioning. 
 
 ## <a name="installation"></a>Instalacja 
 
@@ -28,60 +28,60 @@ In this tutorial, you first complete the steps to setup Azure CLI and the IoT ex
 
 Wymagany jest język [Python 2.7x lub Python 3.x](https://www.python.org/downloads/).
 
-### <a name="step-2---install-the-azure-cli"></a>Step 2 - Install the Azure CLI
+### <a name="step-2---install-the-azure-cli"></a>Krok 2. Instalowanie interfejsu wiersza polecenia platformy Azure
 
-Follow the [installation instruction](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) to setup Azure CLI in your environment. At a minimum, your Azure CLI version must be 2.0.24 or above. Użyj polecenia `az –version` w celu przeprowadzenia weryfikacji. Ta wersja obsługuje polecenia rozszerzenia az i wprowadza platformę poleceń Knack. Prostym sposobem instalowania w systemie Windows jest pobranie i zainstalowanie instalatora [MSI](https://aka.ms/InstallAzureCliWindows).
+Postępuj zgodnie z [instrukcjami instalacji](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , aby skonfigurować interfejs wiersza polecenia platformy Azure w Twoim środowisku. Co najmniej z wiersza polecenia platformy Azure musi być w wersji 2.0.24 lub nowszej. Użyj polecenia `az –version` w celu przeprowadzenia weryfikacji. Ta wersja obsługuje polecenia rozszerzenia az i wprowadza platformę poleceń Knack. Prostym sposobem instalowania w systemie Windows jest pobranie i zainstalowanie instalatora [MSI](https://aka.ms/InstallAzureCliWindows).
 
 ### <a name="step-3---install-iot-extension"></a>Krok 3 — instalowanie rozszerzenia IoT
 
 [Plik readme rozszerzenia IoT](https://github.com/Azure/azure-iot-cli-extension) opisuje kilka sposobów instalowania rozszerzenia. Najprostszym sposobem jest uruchomienie polecenia `az extension add --name azure-cli-iot-ext`. Po zakończeniu instalacji można użyć polecenia `az extension list` w celu zweryfikowania aktualnie zainstalowanych rozszerzeń lub polecenia `az extension show --name azure-cli-iot-ext` w celu wyświetlenia szczegółów rozszerzenia IoT. Aby usunąć rozszerzenie, można użyć polecenia `az extension remove --name azure-cli-iot-ext`.
 
 
-## <a name="basic-device-provisioning-service-operations"></a>Basic Device Provisioning Service operations
-The example shows you how to log in to your Azure account, create an Azure Resource Group (a container that holds related resources for an Azure solution), create an IoT Hub, create a Device Provisioning service, list the existing Device Provisioning services and create a linked IoT hub with CLI commands. 
+## <a name="basic-device-provisioning-service-operations"></a>Podstawowe operacje usługi Device Provisioning
+W przykładzie pokazano, jak zalogować się do konta platformy Azure, utworzyć grupę zasobów platformy Azure (kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure), utworzyć IoT Hub, utworzyć usługę Device Provisioning, wyświetlić listę istniejących usług aprowizacji urządzeń i Utwórz połączone centrum IoT Hub za pomocą poleceń interfejsu wiersza polecenia. 
 
 Przed rozpoczęciem wykonaj opisane wcześniej kroki instalacji. Jeśli nie masz jeszcze konta platformy Azure, możesz dzisiaj [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?v=17.39a). 
 
 
-### <a name="1-log-in-to-the-azure-account"></a>1. Log in to the Azure account
+### <a name="1-log-in-to-the-azure-account"></a>1. Zaloguj się do konta platformy Azure
   
     az login
 
 ![logowanie][1]
 
-### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. Create a resource group IoTHubBlogDemo in eastus
+### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. Utwórz grupę zasobów IoTHubBlogDemo na wschodnim Wschodzie
 
     az group create -l eastus -n IoTHubBlogDemo
 
 ![Tworzenie grupy zasobów][2]
 
 
-### <a name="3-create-two-device-provisioning-services"></a>3. Create two Device Provisioning services
+### <a name="3-create-two-device-provisioning-services"></a>3. Utwórz dwie usługi Device Provisioning
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps
 
-![Create Device Provisioning Service][3]
+![Tworzenie usługi Device Provisioning][3]
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps2
 
-### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4. List all the existing Device Provisioning services under this resource group
+### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4. Utwórz listę wszystkich istniejących usług Device Provisioning w ramach tej grupy zasobów
 
     az iot dps list --resource-group IoTHubBlogDemo
 
-![List Device Provisioning Services][4]
+![Wyświetlanie listy usług aprowizacji urządzeń][4]
 
 
-### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5. Create an IoT Hub blogDemoHub under the newly created resource group
+### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5. Utwórz IoT Hub blogDemoHub w ramach nowo utworzonej grupy zasobów
 
     az iot hub create --name blogDemoHub --resource-group IoTHubBlogDemo
 
 ![Tworzenie centrum IoT Hub][5]
 
-### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. Link one existing IoT Hub to a Device Provisioning service
+### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. Połącz jeden istniejący IoT Hub z usługą Device Provisioning
 
     az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l westus
 
-![Łączenie centrum Hub][5]
+![Link Hub][5]
 
 <!-- Images -->
 [1]: ./media/how-to-manage-dps-with-cli/login.jpg

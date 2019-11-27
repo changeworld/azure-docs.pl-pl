@@ -1,7 +1,7 @@
 ---
-title: Create a Load Balancer with a zonal frontend - Azure portal
+title: Tworzenie Load Balancer przy użyciu stref frontonu — Azure Portal
 titleSuffix: Azure Load Balancer
-description: Learn how to create a Standard Load Balancer with zonal frontend with the Azure portal
+description: Dowiedz się, jak utworzyć usługa Load Balancer w warstwie Standardowa z strefą frontonu z Azure Portal
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -21,39 +21,39 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225340"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Create a Standard Load Balancer with zonal frontend using Azure portal
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Tworzenie usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu Azure Portal
 
-This article steps through creating a public [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) with a zonal frontend IP configuration. To understand how availability zones work with Standard Load Balancer, see [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md). 
+W tym artykule opisano sposób tworzenia [Usługa Load Balancer w warstwie Standardowa](https://aka.ms/azureloadbalancerstandard) publicznego z konfiguracją adresów IP frontonu. Aby zrozumieć, jak strefy dostępności współpracują z usługa Load Balancer w warstwie Standardowa, zobacz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](load-balancer-standard-availability-zones.md). 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Support for Availability Zones is available for select Azure resources and regions, and VM size families. For more information on how to get started, and which Azure resources, regions, and VM size families you can try availability zones with, see [Overview of Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview). Aby uzyskać pomoc techniczną, możesz skorzystać z witryny [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) lub [otworzyć bilet pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
+> Obsługa strefy dostępności jest dostępna dla wybieranych zasobów platformy Azure i regionami i rodzinami rozmiarów maszyn wirtualnych. Aby uzyskać więcej informacji na temat rozpoczynania pracy oraz zasobów platformy Azure, regionów i rodzin rozmiarów maszyn wirtualnych, można wypróbować strefy dostępności za pomocą programu, zobacz [omówienie strefy dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview). Aby uzyskać pomoc techniczną, możesz skorzystać z witryny [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) lub [otworzyć bilet pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure. 
 
 Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
-## <a name="create-a-load-balancer-with-zonal-frontend-ip-address"></a>Create a load balancer with zonal frontend IP address
+## <a name="create-a-load-balancer-with-zonal-frontend-ip-address"></a>Tworzenie modułu równoważenia obciążenia przy użyciu adresu IP frontonu strefowej
 
-1. From a browser navigate to the Azure portal: [https://portal.azure.com](https://portal.azure.com) and login with your Azure account.
-2. On the top left-hand side of the screen, select **Create a resource** > **Networking** > **Load Balancer.**
-3. In the **Create load balancer** page, under **Name** type **myLoadBalancer**.
+1. W przeglądarce przejdź do Azure Portal: [https://portal.azure.com](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
+2. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **sieci** > **Load Balancer.**
+3. Na stronie **Tworzenie modułu równoważenia obciążenia** w obszarze **Nazwa** wpisz **myLoadBalancer**.
 4. W obszarze **Typ** wybierz opcję **Publiczny**.
-5. Under SKU, select **Standard**.
-6. Click **Choose a Public IP address**, click **Create new**, and in **Create public IP address** page, under name, type **myPublicIPZonal**, for SKU, select **Standard**, for Availability zone, select **1**.
+5. W obszarze jednostka SKU wybierz pozycję **standardowa**.
+6. Kliknij pozycję **Wybierz publiczny adres IP**, kliknij **pozycję Utwórz nowy**, a następnie w obszarze **Utwórz publiczny adres IP** w obszarze Nazwa wpisz **myPublicIPZonal**, w polu jednostka SKU wybierz pozycję **standardowa**, w obszarze strefa dostępności wybierz pozycję **1**.
     
 >[!NOTE] 
-> The public IP created in this step is of Standard SKU by default.
+> Publicznego adresu IP, utworzone w tym kroku jest standardowej jednostki SKU domyślnie.
 
-1. For **Resource group**, click **Create new**, and then type **myResourceGroupZLB** as the name of the resource group.
-1. For **Location**, select **West Europe**, and then click **OK**. Rozpocznie się wdrażanie modułu równoważenia obciążenia. Potrwa to kilka minut.
+1. W obszarze **Grupa zasobów**kliknij pozycję **Utwórz nową**, a następnie wpisz **myResourceGroupZLB** jako nazwę grupy zasobów.
+1. W obszarze **Lokalizacja**wybierz pozycję **Europa Zachodnia**, a następnie kliknij przycisk **OK**. Rozpocznie się wdrażanie modułu równoważenia obciążenia. Potrwa to kilka minut.
 
-    ![create zone-redundant Standard Load Balancer with the Azure portal](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
+    ![Utwórz strefowo nadmiarowe usługa Load Balancer w warstwie Standardowa z Azure Portal](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
 
 
 ## <a name="next-steps"></a>Następne kroki
-- Learn more about [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md).
+- Dowiedz się więcej na temat [stref usługa Load Balancer w warstwie Standardowa i dostępności](load-balancer-standard-availability-zones.md).
 
 
 

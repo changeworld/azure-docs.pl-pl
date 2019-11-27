@@ -135,6 +135,6 @@ Wykonaj te same czynności co w przypadku [weryfikacji zdarzenia](#pass-through-
 
 Na koniec Wyślij zapisane ustawienia i parametry Archiwum na żywo, aby Azure Media Services w amshelp@microsoft.com jako powiadomienie, że wszystkie testy samoweryfikacji zostały zakończone pomyślnie. Podaj również informacje kontaktowe dla każdej z nich. Możesz skontaktować się z zespołem Azure Media Services, podając wszelkie pytania dotyczące tego procesu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Przesyłanie strumieniowe na żywo z Media Services v3](live-streaming-overview.md)

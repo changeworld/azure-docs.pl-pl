@@ -25,7 +25,7 @@ Aby uzyskać dostęp do zasobów platformy Azure, w tym udziałów plików Premi
 
 ## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Tworzenie udziału plików w warstwie Premium przy użyciu Azure Portal
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 

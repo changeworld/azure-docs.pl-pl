@@ -48,6 +48,6 @@ W dolnej części każdego artykułu zawartości istnieje możliwość otwarcia 
 
 Aby przekazać Opinie, Podziel się pomysłem lub sugestią dla usługi zakotwiczenia w ramach platformy Azure lub zagłosować na pomysły, które zostały przesłane przez inne osoby, odwiedź [forum opinii o kotwicach przestrzennych platformy Azure](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Często zadawane pytania dotyczące zakotwiczeń przestrzennych platformy Azure można znaleźć na stronie [często zadawanych](spatial-anchor-faq.md) pytań.

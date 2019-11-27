@@ -112,7 +112,7 @@ Klucz zawartości zapewnia bezpieczny dostęp do elementów zawartości. Należy
 
 Należy ustawić wymagania (ograniczenia) dotyczące **zasad kluczy zawartości** , które muszą zostać spełnione, aby dostarczyć klucze z określoną konfiguracją. W tym przykładzie ustawimy następujące konfiguracje i wymagania:
 
-* Konfiguracja
+* Konfigurowanie
 
     Licencje [PlayReady](playready-license-template-overview.md) i [Widevine](widevine-license-template-overview.md) są skonfigurowane tak, aby można było dostarczać je przy użyciu usługi dostarczania licencji w usłudze Media Services. Mimo że ta Przykładowa aplikacja nie konfiguruje licencji [FairPlay](fairplay-license-overview.md) , zawiera metodę, której można użyć do skonfigurowania FairPlay. Konfigurację FairPlay można dodać jako inną opcję.
 
@@ -180,7 +180,7 @@ az group delete --name amsResourceGroup
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Sprawdź
 

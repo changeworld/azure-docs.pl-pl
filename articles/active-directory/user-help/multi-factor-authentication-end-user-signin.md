@@ -1,6 +1,6 @@
 ---
-title: Sign-in using authentication with a work or school account - Azure AD
-description: Learn how to sign in to your work or school account using the various two-factor verification methods.
+title: Logowanie przy użyciu uwierzytelniania za pomocą konta służbowego — Azure AD
+description: Dowiedz się, jak zalogować się do konta służbowego przy użyciu różnych metod weryfikacji dwuskładnikowej.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -21,71 +21,71 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233229"
 ---
-# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Sign in to your work or school account using your two-factor verification method
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Logowanie się do konta służbowego przy użyciu metody weryfikacji dwuskładnikowej
 
 > [!NOTE]
-> The purpose of this article is to walk through a typical sign-in experience. For help with signing in, or to troubleshoot problems, see [Having trouble with Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+> Celem tego artykułu jest przeprowadzenie typowych czynności związanych z logowaniem. Aby uzyskać pomoc przy rejestrowaniu lub rozwiązywaniu problemów, zobacz problem [z usługą Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
-## <a name="what-will-your-sign-in-experience-be"></a>What will your sign-in experience be?
-Your sign-in experience differs depending on what you choose to use as your second factor: a phone call, an authentication app, or texts. Choose the option that best describes what you are doing:
+## <a name="what-will-your-sign-in-experience-be"></a>Jakie będzie środowisko logowania?
+Środowisko logowania różni się w zależności od tego, co jest używane jako drugi czynnik: połączenie telefoniczne, aplikacja uwierzytelniania lub teksty. Wybierz opcję, która najlepiej opisuje to, co robisz:
 
-| How do you sign in? |
+| Jak się zalogować? |
 | --- |
-| [With a phone call to my mobile or office phone](#signing-in-with-a-phone-call) |
-| [With a text to my mobile phone](#signing-in-with-a-text-message)
-| [With notifications from the Microsoft Authenticator app](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
-| With verification codes from the Microsoft Authenticator app |
-| [With an alternate method, because I can't use my preferred method right now](#signing-in-with-an-alternate-method) |
+| [Połączenie telefoniczne z moim telefonem komórkowym lub biurem](#signing-in-with-a-phone-call) |
+| [Z tekstem na moim telefonie komórkowym](#signing-in-with-a-text-message)
+| [Z powiadomieniami z aplikacji Microsoft Authenticator](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
+| Z kodem weryfikacyjnym z aplikacji Microsoft Authenticator |
+| [Za pomocą alternatywnej metody, ponieważ nie można teraz używać metody my preferowanej](#signing-in-with-an-alternate-method) |
 
-## <a name="signing-in-with-a-phone-call"></a>Signing in with a phone call
-The following information describes the two-step verification experience with a call to your mobile or office phone.
+## <a name="signing-in-with-a-phone-call"></a>Logowanie za pomocą połączenia telefonicznego
+Poniższe informacje opisują proces weryfikacji dwuetapowej z wywołaniem telefonu komórkowego lub biurowego.
 
-1. Sign in to an application or service such as Office 365 using your username and password.  
-2. Microsoft calls you.  
-3. Answer the phone and hit the # key.  
+1. Zaloguj się do aplikacji lub usługi, takiej jak Office 365 przy użyciu nazwy użytkownika i hasła.  
+2. Firma Microsoft dzwoni do Ciebie.  
+3. Odpowiedz na telefon i naciśnij klawisz #.  
 
-## <a name="signing-in-with-a-text-message"></a>Signing in with a text message
-The following information describes the two-step verification experience with a text message to your mobile phone:
+## <a name="signing-in-with-a-text-message"></a>Logowanie za pomocą wiadomości SMS
+Poniższe informacje opisują proces weryfikacji dwuetapowej przy użyciu wiadomości tekstowej na telefonie komórkowym:
 
-1. Sign in to an application or service such as Office 365 using your username and password.
-2. Microsoft sends you a text message that contains a number code.
-3. Enter the code in the box provided on the sign-in page.
+1. Zaloguj się do aplikacji lub usługi, takiej jak Office 365 przy użyciu nazwy użytkownika i hasła.
+2. Firma Microsoft wysyła do Ciebie wiadomość tekstową zawierającą kod liczbowy.
+3. Wprowadź kod w polu udostępnionym na stronie logowania.
 
-## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Signing in with the Microsoft Authenticator app
-The following information describes the experience of using the Microsoft Authenticator app for two-step verifications. There are two different ways to use the app. You can receive push notifications on your device, or you can open the app to get a verification code.
+## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Logowanie za pomocą aplikacji Microsoft Authenticator
+Poniższe informacje opisują środowisko korzystania z aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuetapowej. Istnieją dwa różne sposoby używania aplikacji. Można odbierać powiadomienia wypychane na urządzeniu lub można otworzyć aplikację w celu uzyskania kodu weryfikacyjnego.
 
-### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>To sign in with a notification from the Microsoft Authenticator app
-1. Sign in to an application or service such as Office 365 using your username and password.
-2. Microsoft sends a notification to the Microsoft Authenticator app on your device.
+### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Aby zalogować się przy użyciu powiadomienia z aplikacji Microsoft Authenticator
+1. Zaloguj się do aplikacji lub usługi, takiej jak Office 365 przy użyciu nazwy użytkownika i hasła.
+2. Firma Microsoft wysyła powiadomienie do aplikacji Microsoft Authenticator na urządzeniu.
 
-   ![Microsoft sends notification](./media/multi-factor-authentication-end-user-signin/notify.png)
+   ![Firma Microsoft wysyła powiadomienie](./media/multi-factor-authentication-end-user-signin/notify.png)
 
-3. Open the notification on your phone and select the **Verify** key. If your company requires a PIN, enter it here.
-4. You should now be signed in.
+3. Otwórz powiadomienie na telefonie i wybierz polecenie **Weryfikuj** klucz. Jeśli firma wymaga numeru PIN, wprowadź ją w tym miejscu.
+4. Teraz należy się zalogować.
 
-### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>To sign in using a verification code with the Microsoft Authenticator app
+### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Aby zalogować się przy użyciu kodu weryfikacyjnego za pomocą aplikacji Microsoft Authenticator
 
-If you use the Microsoft Authenticator app to get verification codes, then when you open the app you see a number under your account name. This number changes every 30 seconds so that you don't use the same number twice. When you're asked for a verification code, open the app and use whatever number is currently displayed.
+Jeśli używasz aplikacji Microsoft Authenticator do uzyskiwania kodów weryfikacyjnych, po otwarciu aplikacji zobaczysz numer w polu Nazwa konta. Ta liczba zmienia się co 30 sekund, aby nie używała tego samego numeru dwa razy. Gdy zostanie wyświetlony monit o podanie kodu weryfikacyjnego, Otwórz aplikację i użyj dowolnego numeru, który jest aktualnie wyświetlany.
 
-1. Sign in to an application or service such as Office 365 using your username and password.
-2. Microsoft prompts you for a verification code.
+1. Zaloguj się do aplikacji lub usługi, takiej jak Office 365 przy użyciu nazwy użytkownika i hasła.
+2. Firma Microsoft pyta o kod weryfikacyjny.
 
-   ![Enter verification code](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![Wprowadź kod weryfikacyjny](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
-3. Open the Microsoft Authenticator app on your phone and enter the code in the box where you are signing in.
+3. Otwórz aplikację Microsoft Authenticator na telefonie i wprowadź kod w polu, w którym się logujesz.
 
-## <a name="signing-in-with-an-alternate-method"></a>Signing in with an alternate method
-Sometimes you don't have the phone or device that you set up as your preferred verification method. This situation is why we recommend that you set up backup methods for your account. The following section shows you how to sign in with an alternate method when your primary method may not be available.
+## <a name="signing-in-with-an-alternate-method"></a>Logowanie za pomocą alternatywnej metody
+Czasami nie masz telefonu ani urządzenia skonfigurowanego jako preferowana metoda weryfikacji. Dlatego zalecamy skonfigurowanie metod tworzenia kopii zapasowych dla Twojego konta. W poniższej sekcji pokazano, jak zalogować się przy użyciu alternatywnej metody, jeśli podstawowa metoda może być niedostępna.
 
-1. Sign in to an application or service such as Office 365 using your username and password.
-2. Select **Use a different verification option**. You see different verification options based on how many you have setup.
-3. Choose an alternate method and sign in.
+1. Zaloguj się do aplikacji lub usługi, takiej jak Office 365 przy użyciu nazwy użytkownika i hasła.
+2. Wybierz opcję **Użyj innej opcji weryfikacji**. Zobaczysz różne opcje weryfikacji w zależności od tego, ile masz konfiguracji.
+3. Wybierz alternatywną metodę i zaloguj się.
 
-   ![Use alternate method](./media/multi-factor-authentication-end-user-signin/alt.png)
+   ![Użyj alternatywnej metody](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Następne kroki
-- If you have problems signing in with two-step verification, get more information at [Having trouble with Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+- Jeśli masz problemy z zalogowaniem się przy użyciu weryfikacji dwuetapowej, uzyskaj więcej informacji na temat problemów [z usługą Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
-- Learn how to [Manage your two-step verification settings](multi-factor-authentication-end-user-manage-settings.md).
+- Dowiedz się, jak [zarządzać ustawieniami weryfikacji dwuetapowej](multi-factor-authentication-end-user-manage-settings.md).
 
-- Find out how to [Get started with the Microsoft Authenticator app](user-help-auth-app-download-install.md) so that you can use notifications to sign in, instead of texts and phone calls.
+- Dowiedz się, jak rozpocząć [pracę z aplikacją Microsoft Authenticator](user-help-auth-app-download-install.md) , aby można było zalogować się przy użyciu powiadomień zamiast tekstów i połączeń telefonicznych.

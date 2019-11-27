@@ -1,6 +1,6 @@
 ---
-title: Customize self-service password reset - Azure Active Directory
-description: Customization options for Azure AD self-service password reset
+title: Dostosuj funkcję samoobsługowego resetowania haseł — Azure Active Directory
+description: Opcje dostosowywania dla funkcji samoobsługowego resetowania haseł w usłudze Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,75 +18,75 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381936"
 ---
-# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Customize the Azure AD functionality for self-service password reset
+# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Dostosowywanie funkcji usługi Azure AD do samoobsługowego resetowania hasła
 
-IT professionals who want to deploy self-service password reset (SSPR) in Azure Active directory (Azure AD) can customize the experience to match their users' needs.
+Specjaliści IT, którzy chcą wdrożyć funkcję samoobsługowego resetowania hasła (SSPR) w usłudze Azure Active Directory (Azure AD), mogą dostosować środowisko w celu dopasowania ich do potrzeb użytkowników.
 
-## <a name="customize-the-contact-your-administrator-link"></a>Customize the "Contact your administrator" link
+## <a name="customize-the-contact-your-administrator-link"></a>Dostosuj link "Skontaktuj się z administratorem"
 
-Self-service password reset users have a "Contact your administrator" link available to them in the password reset portal. If a user selects this link, it will do one of two things:
+Użytkownicy samoobsługowego resetowania hasła mają dostępne dla nich link "Skontaktuj się z administratorem" w portalu resetowania haseł. Jeśli użytkownik wybierze ten link, wykona jedną z dwóch czynności:
 
-* If left in the default state:
-   * Email is sent to your administrators and asks them to provide assistance in changing the user's password. See the [sample email](#sample-email) below.
-* If customized:
-   * Sends your user to a webpage or email address specified by the administrator for assistance.
+* Jeśli został pozostawiony w stanie domyślnym:
+   * Wiadomość e-mail jest wysyłana do administratorów i prosi o zapewnienie pomocy przy zmianie hasła użytkownika. Zapoznaj się z [przykładową pocztą e-mail](#sample-email) poniżej.
+* Jeśli są dostosowane:
+   * Wysyła użytkownika do strony sieci Web lub adresu e-mail określonego przez administratora w celu uzyskania pomocy.
 
 > [!TIP]
-> If you customize this, we recommend setting this to something users are already familiar with for support
+> W przypadku dostosowania tego ustawienia zalecamy ustawienie tej opcji dla użytkowników, którzy już znają obsługę
 
 > [!WARNING]
-> If you customize this setting with an email address and account that needs a password reset the user may be unable to ask for assistance.
+> Jeśli to ustawienie zostanie dostosowane przy użyciu adresu e-mail i konta wymagającego zresetowania hasła, użytkownik może nie być w stanie uzyskać pomocy.
 
-### <a name="sample-email"></a>Sample email
+### <a name="sample-email"></a>Przykładowa wiadomość e-mail
 
-![Sample request to reset email sent to Administrator][Contact]
+![Przykładowe żądanie zresetowania wiadomości e-mail wysłanej do administratora][Contact]
 
-The contact email is sent to the following recipients in the following order:
+Kontaktowy adres e-mail jest wysyłany do następujących adresatów w następującej kolejności:
 
-1. If the **password administrator** role is assigned, administrators with this role are notified.
-2. If no password administrators are assigned, then administrators with the **user administrator** role are notified.
-3. If neither of the previous roles are assigned, then the **global administrators** are notified.
+1. Jeśli przypisano rolę **administratora hasła** , Administratorzy z tą rolą są powiadamiani.
+2. Jeśli nie przypisano żadnych administratorów haseł, zostaną powiadomieni Administratorzy z rolą **administratora użytkownika** .
+3. Jeśli żadna z poprzednich ról nie zostanie przypisana, **administratorzy globalni** są powiadamiani.
 
-In all cases, a maximum of 100 recipients are notified.
+We wszystkich przypadkach powiadamia się maksymalnie 100 adresatów.
 
-To find out more about the different administrator roles and how to assign them, see [Assigning administrator roles in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Aby dowiedzieć się więcej o różnych rolach administratorów i sposobach ich przypisywania, zobacz [Przypisywanie ról administratorów w Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
-### <a name="disable-contact-your-administrator-emails"></a>Disable "Contact your administrator" emails
+### <a name="disable-contact-your-administrator-emails"></a>Wyłącz wiadomości e-mail "Skontaktuj się z administratorem"
 
-If your organization does not want to notify administrators about password reset requests, you can enable the following configuration:
+Jeśli organizacja nie chce powiadamiać administratorów o żądaniach resetowania haseł, można włączyć następującą konfigurację:
 
-* Enable self-service password reset for all end users. This option is under **Password Reset** > **Properties**. If you don't want users to reset their own passwords, you can scope access to an empty group. *We don't recommend this option.*
-* Customize the helpdesk link to provide a web URL or mailto: address that users can use to get assistance. This option is under **Password Reset** > **Customization** > **Custom helpdesk email or URL**.
+* Włącz Samoobsługowe resetowanie haseł dla wszystkich użytkowników końcowych. Ta opcja służy do **resetowania hasła** > **Właściwości**. Jeśli nie chcesz, aby użytkownicy zresetują swoje hasła, możesz ograniczyć dostęp do pustej grupy. *Nie zalecamy tej opcji.*
+* Dostosuj link do pomocy technicznej, aby podać internetowy adres URL lub mailto: adres, za pomocą którego użytkownicy mogą uzyskać pomoc. Ta opcja służy do **resetowania hasła** > **dostosowania** > **e-mail lub adres URL niestandardowego działu pomocy technicznej**.
 
-## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Customize the AD FS sign-in page for SSPR
+## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Dostosowywanie strony logowania AD FS SSPR
 
-Active Directory Federation Services (AD FS) administrators can add a link to their sign-in page by using the guidance found in the [Add sign-in page description](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) article.
+Administratorzy Active Directory Federation Services (AD FS) mogą dodać łącze do strony logowania, korzystając ze wskazówek dostępnych w artykule [Dodawanie opisu strony logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) .
 
-To add a link to the AD FS sign-in page, use the following command on your AD FS server. Users can use this page to enter the SSPR workflow.
+Aby dodać łącze do strony logowania AD FS, użyj następującego polecenia na serwerze AD FS. Użytkownicy mogą korzystać z tej strony, aby wprowadzić przepływ pracy SSPR.
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
 ```
 
-## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Customize the sign-in page and access panel look and feel
+## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Dostosowywanie strony logowania i wyglądu i działania panelu dostępu
 
-You can customize the sign-in page. You can add a logo that appears along with the image that fits your company branding.
+Możesz dostosować stronę logowania. Możesz dodać logo, które pojawia się wraz z obrazem, który pasuje do marki firmy.
 
-The graphics you choose are shown in the following circumstances:
+Wybrane grafiki są wyświetlane w następujących okolicznościach:
 
-* After a user enters their username
-* If the user accesses the customized URL:
-   * By passing the `whr` parameter to the password reset page, like `https://login.microsoftonline.com/?whr=contoso.com`
-   * By passing the `username` parameter to the password reset page, like `https://login.microsoftonline.com/?username=admin@contoso.com`
+* Gdy użytkownik wprowadzi swoją nazwę użytkownika
+* Jeśli użytkownik uzyskuje dostęp do dostosowanego adresu URL:
+   * Przekazując parametr `whr` do strony resetowania hasła, na przykład `https://login.microsoftonline.com/?whr=contoso.com`
+   * Przekazując parametr `username` do strony resetowania hasła, na przykład `https://login.microsoftonline.com/?username=admin@contoso.com`
 
-Find details on how to configure company branding in the article [Add company branding to your sign-in page in Azure AD](../fundamentals/customize-branding.md).
+Szczegółowe informacje na temat konfigurowania znakowania firmowego w artykule [Dodawanie znakowania firmowego do strony logowania w usłudze Azure AD](../fundamentals/customize-branding.md).
 
-### <a name="directory-name"></a>Directory name
+### <a name="directory-name"></a>Nazwa katalogu
 
-You can change the directory name attribute under **Azure Active Directory** > **Properties**. You can show a friendly organization name that is seen in the portal and in the automated communications. This option is the most visible in automated emails in the forms that follow:
+Można zmienić atrybut nazwy katalogu w obszarze **Azure Active Directory** **Właściwości** > . Można wyświetlić przyjazną nazwę organizacji, która jest widoczna w portalu i w zautomatyzowanym komunikacie. Ta opcja jest najbardziej widoczna w zautomatyzowanych wiadomościach e-mail w następujących formularzach:
 
-* The friendly name in the email, for example “Microsoft on behalf of CONTOSO demo”
-* The subject line in the email, for example “CONTOSO demo account email verification code”
+* Przyjazna nazwa w wiadomości e-mail, na przykład "Firma Microsoft w imieniu firmy CONTOSO demonstracyjna"
+* Wiersz tematu w wiadomości e-mail, na przykład "kod weryfikacyjny e-mail konta demonstracji CONTOSO"
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -100,7 +100,7 @@ You can change the directory name attribute under **Azure Active Directory** > *
 * [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego jest ona tak ważna?](howto-sspr-writeback.md)
 * [Jak zgłosić działanie funkcji samoobsługowego resetowania haseł?](howto-sspr-reporting.md)
 * [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one służą?](concept-sspr-howitworks.md)
-* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
+* [Myślę, że coś jest zerwane. Jak mogę Rozwiązywanie problemów z SSPR?](active-directory-passwords-troubleshoot.md)
 * [Mam pytanie, na które nie mogę znaleźć odpowiedzi](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Contact your administrator for help with resetting your password email example"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Skontaktuj się z administratorem, aby uzyskać pomoc dotyczącą resetowania przykładu wiadomości e-mail z hasłem"

@@ -95,7 +95,7 @@ Aby zainicjować obsługę rozszerzenia zestawu skalowania maszyn wirtualnych z 
 
 Inicjowanie obsługi rozszerzenia maszyny wirtualnej może zakończyć się niepowodzeniem z powodu błędów wyszukiwania DNS. Jeśli tak się stanie, uruchom ponownie maszynę wirtualną, a następnie spróbuj ponownie. 
 
-### <a name="remove-the-extension"></a>Usuń rozszerzenie 
+### <a name="remove-the-extension"></a>Usuwanie rozszerzenia 
 Aby usunąć rozszerzenie, należy użyć przełącznika `-n ManagedIdentityExtensionForWindows` lub `-n ManagedIdentityExtensionForLinux` (w zależności od typu maszyny wirtualnej) za pomocą polecenia [AZ VM Extension Delete](https://docs.microsoft.com/cli/azure/vm/)lub [AZ VMSS Extension Delete](https://docs.microsoft.com/cli/azure/vmss) dla zestawów skalowania maszyn wirtualnych przy użyciu interfejsu CLI platformy Azure lub `Remove-AzVMExtension` dla programu PowerShell:
 
 ```azurecli-interactive

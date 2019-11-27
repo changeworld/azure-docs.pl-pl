@@ -128,7 +128,7 @@ Jeśli chcesz wymagać zatwierdzenia w celu aktywowania roli, wykonaj następuj�
 
 1. Po określeniu wszystkich ustawień roli wybierz pozycję **Aktualizuj** , aby zapisać zmiany.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Przypisywanie ról zasobów platformy Azure w Privileged Identity Management](pim-resource-roles-assign-roles.md)
 - [Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w Privileged Identity Management](pim-resource-roles-configure-alerts.md)

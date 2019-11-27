@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b5f839cc6216eb12bfd0a86009ec49e987279d6e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 922a2eb910a99a899bdb9f2b3e2392559ec9b0f3
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889833"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548402"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasyfikacja & Azure SQL Database i SQL Data Warehouse odnajdywania danych
 
@@ -128,8 +128,9 @@ Ważnym aspektem modelu ochrony informacji jest możliwość monitorowania dost�
 
 ![Dziennik inspekcji](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>Zarządzanie klasyfikacją danych przy użyciu języka T-SQL
+### <a name="manage-classifications"></a>Zarządzaj klasyfikacjami
 
+# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
 Przy użyciu języka T-SQL można dodawać/usuwać klasyfikacje kolumn, a także pobierać wszystkie klasyfikacje dla całej bazy danych.
 
 > [!NOTE]
@@ -139,8 +140,7 @@ Przy użyciu języka T-SQL można dodawać/usuwać klasyfikacje kolumn, a także
 - Usuń klasyfikację z jednej lub kilku kolumn: [Klasyfikacja czułości](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Wyświetl wszystkie klasyfikacje w bazie danych: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="manage-classifications-using-rest-apis"></a>Zarządzanie klasyfikacjami przy użyciu interfejsów API REST
-
+# <a name="rest-apistabazure-rest-api"></a>[Interfejsy API REST](#tab/azure-rest-api)
 Za pomocą interfejsów API REST można także programowo zarządzać klasyfikacjami. Opublikowane interfejsy API REST obsługują następujące operacje:
 
 - [Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) — tworzy lub aktualizuje etykietę czułości danej kolumny.
@@ -152,12 +152,8 @@ Za pomocą interfejsów API REST można także programowo zarządzać klasyfikac
 
 - [Lista zalecana przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) — pobiera zalecane etykiety czułości danej bazy danych.
 
-## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Zarządzanie odnajdywaniem i klasyfikacją danych przy użyciu Azure PowerShell
-
-Program PowerShell umożliwia pobieranie wszystkich zalecanych kolumn w bazie danych SQL Azure i wystąpienia zarządzanego.
-
-### <a name="powershell-cmdlets-for-azure-sql-database"></a>Polecenia cmdlet programu PowerShell dla usługi Azure SQL Database
-
+# <a name="powershell-cmdlet-for-azure-sqltabazure-portal-sqldb"></a>[Polecenie cmdlet programu PowerShell dla usługi Azure SQL](#tab/azure-portal-sqldb)
+Program PowerShell umożliwia pobieranie wszystkich zalecanych kolumn w bazie danych SQL Azure.
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -165,8 +161,8 @@ Program PowerShell umożliwia pobieranie wszystkich zalecanych kolumn w bazie da
 - [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-### <a name="powershell-cmdlets-for-managed-instance"></a>Polecenia cmdlet programu PowerShell dla wystąpienia zarządzanego
-
+# <a name="powershell-cmdlets-for-managed-instancetabazure-powershell-mi"></a>[Polecenia cmdlet programu PowerShell dla wystąpienia zarządzanego](#tab/azure-powershell-mi)
+Możesz użyć programu PowerShell, aby pobrać wszystkie zalecane kolumny w zarządzanym wystąpieniu.
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)

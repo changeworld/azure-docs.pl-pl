@@ -174,7 +174,7 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób tworzenia przypisanej przez system tożsamości zarządzanej w celu uzyskania dostępu do usługi Azure Storage przy użyciu klucza dostępu.  Aby dowiedzieć się więcej o kluczach dostępu usługi Azure Storage, zobacz:
 

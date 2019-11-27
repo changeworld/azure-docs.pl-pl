@@ -1,7 +1,7 @@
 ---
-title: Add entities - LUIS
+title: Dodawanie jednostek — LUIS
 titleSuffix: Azure Cognitive Services
-description: Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by the client application to fullfil customer requests.
+description: Utwórz jednostki, aby wyodrębnić dane z wyrażenia długości użytkownika w aplikacjach Language Understanding (LUIS). Wyodrębnione dane jednostki są używane przez aplikację kliencką do fullfil żądań klientów.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,179 +18,179 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383677"
 ---
-# <a name="add-entities-to-extract-data"></a>Add entities to extract data 
+# <a name="add-entities-to-extract-data"></a>Dodawanie jednostek do wyodrębniania danych 
 
-Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by your client application to fullfil customer requests.
+Utwórz jednostki, aby wyodrębnić dane z wyrażenia długości użytkownika w aplikacjach Language Understanding (LUIS). Wyodrębnione dane jednostki są używane przez aplikację kliencką do fullfil żądań klientów.
 
-The entity represents a word or phrase inside the utterance that you want extracted. Entities describe information relevant to the intent, and sometimes they are essential for your app to perform its task. You can create entities when you add an example utterance to an intent or apart from (before or after) adding an example utterance to an intent.
+Jednostka reprezentuje wyraz lub frazę w polu wypowiedź, który ma zostać wyodrębniony. Jednostki opisują informacje istotne dla intencji i czasami są istotne dla aplikacji w celu wykonania swojego zadania. Można utworzyć jednostki po dodaniu przykładu wypowiedź do zamiaru lub od (przed lub po) dodania przykładu wypowiedź do zamiaru.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="plan-entities-then-create-and-label"></a>Plan entities, then create and label
+## <a name="plan-entities-then-create-and-label"></a>Planowanie jednostek, a następnie Tworzenie i etykietowanie
 
-Machine-learned entities can be created from the example utterances or created from the **Entities** page. 
+Jednostki z możliwością uczenia maszynowego można utworzyć na podstawie przykładu wyrażenia długości lub utworzyć na stronie **jednostki** . 
 
-In general, a best practice is to spend time planning the entities before creating a machine-learned entity in the portal. Then create the machine-learned entity from the example utterance with as much detail in the subcomponents and descriptors and constraints as you know at the time. The [decomposable entity tutorial](tutorial-machine-learned-entity.md) demonstrates how to use this method. 
+Ogólnie rzecz biorąc, najlepszym rozwiązaniem jest poświęcanie czasu na planowanie jednostek przed utworzeniem jednostki, która jest wyszukiwana przez maszynę w portalu. Następnie utwórz jednostkę uczenia maszynowego na podstawie przykładu wypowiedź z jak najwięcej szczegółów w podskładnikach i deskryptorach i ograniczeniach, jak wiadomo w czasie. [Samouczek dotyczący tworzenia jednostki](tutorial-machine-learned-entity.md) pokazuje, jak używać tej metody. 
 
-As part of planning the entities, you may know you need text-matching entities (such as prebuilt entities, regular expression entities, or list entities). You can create these from the **Entities** page before they are labeled in example utterances. 
+W ramach planowania jednostek, możesz mieć pewność, że potrzebujesz obiektów pasujących do tekstu (takich jak wstępnie skompilowane jednostki, jednostki wyrażeń regularnych lub jednostki listy). Można je utworzyć na podstawie strony **jednostki** , zanim zostaną one oznaczone jako przykładowe wyrażenia długości. 
 
-When labeling, you can either label individual entities then build up to a parent machine-learned entity. Or you can start with a parent machine-learned entity and decompose into child entities. 
+Podczas etykietowania można oznaczyć poszczególne jednostki, a następnie skompilować do jednostki nadrzędnej. Można też rozpocząć od nadrzędnej maszyny i rozłożyć na jednostki podrzędne. 
 
 > [!TIP] 
->Label all words that may indicate an entity, even if the words are not used when extracted in the client application. 
+>Oznacz wszystkie słowa, które mogą wskazywać na jednostkę, nawet jeśli wyrazy nie są używane podczas wyodrębniania w aplikacji klienckiej. 
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>Creating an entity before or with labeling
+## <a name="creating-an-entity-before-or-with-labeling"></a>Tworzenie jednostki przed lub z etykietami
 
-Use the following table to understand which entities where to create or add each entity to the app. 
+W poniższej tabeli przedstawiono jednostki, w których można utworzyć lub dodać każdą jednostkę do aplikacji. 
 
-|Entity type|Where to create entity in the LUIS portal|
+|Typ jednostki|Gdzie można utworzyć jednostkę w portalu LUIS|
 |--|--|
-|Jednostka nauczona maszynowo|Entities or Intent detail|
-|Jednostka listy|Entities or Intent detail|
+|Jednostka nauczona maszynowo|Szczegóły jednostek lub zamiaru|
+|Jednostka listy|Szczegóły jednostek lub zamiaru|
 |Jednostka wyrażenia regularnego|Jednostki|
 |Jednostka Pattern.any|Jednostki|
-|Prebuilt entity|Jednostki|
-|Prebuilt domain entity|Jednostki|
+|Wstępnie utworzone jednostki|Jednostki|
+|Prebudowana jednostka domeny|Jednostki|
 
-You can create all the entities from the **Entities** page, or you can create a couple of the entities as part of labeling the entity in the example utterance on the **Intent detail** page. You can only _label_ an entity in an example utterance from the **Intent detail** page. 
+Wszystkie jednostki można utworzyć ze strony **jednostki** lub można utworzyć kilka jednostek w ramach etykietowania jednostki w przykładowym wypowiedź na stronie **szczegółów** elementu. Można _oznaczyć_ tylko jednostkę w przykładowym wypowiedź na stronie **szczegółów zamierzenia** . 
 
-## <a name="create-a-machine-learned-entity"></a>Create a machine-learned entity
+## <a name="create-a-machine-learned-entity"></a>Tworzenie jednostki o Poznaniu maszynowym
 
 [!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>Create a text-matching entity
+## <a name="create-a-text-matching-entity"></a>Tworzenie jednostki dopasowania tekstu
 
-Use text-matching entities provide several ways to extract data:
+Użycie jednostek dopasowania tekstu zapewnia kilka sposobów wyodrębnienia danych:
 
-|Text-matching entities|Przeznaczenie|
+|Jednostki pasujące do tekstu|Przeznaczenie|
 |--|--|
-|[List entity](#add-list-entities-for-exact-matches)|list of canonical names along with synonyms as alternative forms|
-|Jednostka wyrażenia regularnego|match text using a regular expression entity|
-|[Prebuilt entity](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|match common data types such as number, email, date|
-|Prebuilt domain entity|match using selected subject domains|
-|[Pattern.any](#add-a-patternany-entity)| to match entities that may be easily confused with the surrounding text|  
+|[Jednostka listy](#add-list-entities-for-exact-matches)|Lista nazw kanonicznych wraz z synonimami jako alternatywnymi formularzami|
+|Jednostka wyrażenia regularnego|dopasowanie tekstu przy użyciu jednostki wyrażenia regularnego|
+|[Wstępnie utworzona jednostka](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|dopasowuje typowe typy danych, takie jak Number, email, Date|
+|Prebudowana jednostka domeny|Dopasuj przy użyciu wybranych domen podmiotu|
+|[Wzorzec. any](#add-a-patternany-entity)| Aby dopasować jednostki, które można łatwo pomylić z otaczającym tekstem|  
 
-Prebuilt entities work without providing any custom training data. The other entities need you to provide either customer training data (such as List entity's items) or an expression (such as a regular expression or pattern.any).
+Wstępnie utworzone jednostki działają bez udostępniania niestandardowych danych szkoleniowych. Inne jednostki muszą podawać dane szkolenia klienta (takie jak elementy jednostki listy) lub wyrażenie (takie jak wyrażenie regularne lub wzorzec. any).
 
 <a name="add-list-entities"></a>
 
-### <a name="how-to-create-a-new-custom-entity"></a>How to create a new custom entity
+### <a name="how-to-create-a-new-custom-entity"></a>Jak utworzyć nową jednostkę niestandardową
 
-1. In the LUIS portal, goto the **Manage** section, then the **Entities** page. 
-1. Select **+ Create**, then select the entity type. 
-1. Continue configuring the entity then select **Create** when you are done. 
+1. W portalu LUIS przejdź do sekcji **Zarządzanie** , a następnie strony **jednostki** . 
+1. Wybierz pozycję **+ Utwórz**, a następnie wybierz typ jednostki. 
+1. Kontynuuj Konfigurowanie jednostki, a następnie wybierz pozycję **Utwórz** po zakończeniu. 
 
-### <a name="add-list-entities-for-exact-matches"></a>Add list entities for exact matches
+### <a name="add-list-entities-for-exact-matches"></a>Dodaj jednostki listy dla dokładnych dopasowań
 
-List entities represent a fixed, closed set of related words. While you, as the author, can change the list, LUIS won't grow or shrink the list. You can also import to an existing list entity using a [list entity .json format(reference-entity-list.md#example-json-to-import-into-list-entity). 
+Lista jednostek reprezentują stały, zamknięte zbiór powiązanych słów. Chociaż autor może zmienić listę, LUIS nie zostanie powiększony ani zmniejszony. Można również zaimportować do istniejącej jednostki listy przy użyciu formatu [list Entity. JSON (odwołanie-Entity-List. MD # example-JSON-to-list-Entity-on 
 
-The following list demonstrates the canonical name and the synonyms. 
+Na poniższej liście pokazano kanoniczną nazwę i synonimy. 
 
-|Color - list item name|Color - synonyms|
+|Nazwa elementu listy kolorów|Kolory — synonimy|
 |--|--|
-|Czerwony|crimson, blood, apple, fire-engine|
-|Niebieski|sky, azure, cobalt|
-|Zielony|kelly, lime|
+|Czerwony|Użycie Crismon, krew, Apple, ogień|
+|Niebieski|, platforma Azure, kobalt|
+|Zielony|Kelly, limonowa|
 
-Use the procedure to create a list entity. Once the list entity is created, you don't need to label example utterances in an intent. List items and synonyms are matched using exact text. 
+Użyj procedury, aby utworzyć jednostkę listy. Po utworzeniu jednostki listy nie musisz oznaczać przykładu wyrażenia długości w zamiarze. Elementy listy i synonimy są dopasowywane przy użyciu dokładnego tekstu. 
 
-1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
+1. W sekcji **kompilacja** wybierz pozycję **jednostki** w lewym panelu, a następnie wybierz pozycję **+ Utwórz**.
 
-1. In the **Create an entity type** dialog box, enter the name of the entity, such as `Colors` and select **List**.
-1. In the **Create a list entity** dialog box, in the **Add new sublist....** , enter the list item name, such as `Green`, then add synonyms.
+1. W oknie dialogowym **Tworzenie typu jednostki** wprowadź nazwę jednostki, np. `Colors` i wybierz pozycję **Lista**.
+1. W oknie dialogowym **Tworzenie jednostki listy** , w polu **Dodaj nową podlistę.** ....., wprowadź nazwę elementu listy, taką jak `Green`, a następnie Dodaj synonimy.
 
     > [!div class="mx-imgBorder"]
-    > ![Create a list of colors as a list entity in the Entity detail page.](media/how-to-add-entities/create-list-entity-of-colors.png) 
+    > ![utworzyć listę kolorów jako jednostkę listy na stronie szczegółów jednostki.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-1. When you are finished adding list items and synonyms, select **Create**.
+1. Po zakończeniu dodawania elementów listy i synonimów wybierz pozycję **Utwórz**.
 
-    When you are done with a group of changes to the app, remember to **Train** the app. Do not train the app after a single change. 
+    Po zakończeniu pracy z grupą zmian w aplikacji Pamiętaj, aby **nauczyć** aplikację. Nie szkol aplikacji po pojedynczej zmianie. 
 
     > [!NOTE]
-    > This procedure demonstrates creating and labeling a list entity from an example utterance in the **Intent detail** page. You can also create the same entity from the **Entities** page.
+    > Ta procedura ilustruje tworzenie i etykietowanie jednostki listy na podstawie przykładowej wypowiedź na stronie **szczegółów intencji** . Możesz również utworzyć tę samą jednostkę na stronie **jednostki** .
 
-## <a name="add-a-role-for-an-entity"></a>Add a role for an entity
+## <a name="add-a-role-for-an-entity"></a>Dodawanie roli dla jednostki
 
-A role is a named subtype of an entity, based on context. 
+Rola jest nazwanym podtypem jednostki na podstawie kontekstu. 
 
-### <a name="add-a-role-to-distinguish-different-contexts"></a>Add a role to distinguish different contexts
+### <a name="add-a-role-to-distinguish-different-contexts"></a>Dodawanie roli w celu rozróżnienia różnych kontekstów
 
-In the following utterance, there are two locations, and each is specified semantically by the words around it such as `to` and `from`: 
+W poniższym wypowiedź istnieją dwie lokalizacje, a każda z nich jest określona semantycznie przez wyrazy, takie jak `to` i `from`: 
 
 `Pick up the package from Seattle and deliver to New York City.`
 
-In this procedure, add `origin` and `destination` roles to a prebuilt geographyV2 entity.
+W tej procedurze Dodaj role `origin` i `destination` do wstępnie skompilowanej jednostki geographyV2.
 
-1. From the **Build** section, select **Entities** in the left panel.
+1. W sekcji **kompilacja** wybierz pozycję **jednostki** w lewym panelu.
 
-1. Select **+ Add prebuilt entity**. Select **geographyV2** then select **Done**. This adds a prebuilt entity to the app.
+1. Wybierz pozycję **+ Dodaj wstępnie utworzoną jednostkę**. Wybierz pozycję **geographyV2** , a następnie wybierz pozycję **gotowe**. Spowoduje to dodanie wstępnie skompilowanej jednostki do aplikacji.
     
     Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepoprawnie wyodrębnia jednostki, użyj elementu [explicit list](reference-pattern-syntax.md#explicit-lists) (listy jawnej), aby rozwiązać ten problem. 
 
-1. Select the newly added prebuilt geographyV2 entity from the **Entities** page list of entities. 
-1. To add a new role, select **+** next to **No roles added**.
-1. In the **Type role...** textbox, enter the name of the role `Origin` then enter. Add a second role name of `Destination` then enter. 
+1. Wybierz nowo dodaną wbudowaną jednostkę geographyV2 z listy **jednostki** jednostki. 
+1. Aby dodać nową rolę, zaznacz opcję **+** obok pozycji **nie dodano żadnych ról**.
+1. W polu tekstowym **Typ roli..** . Wprowadź nazwę roli, `Origin` następnie wprowadź wartość. Dodaj drugą nazwę roli `Destination` następnie wprowadź. 
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot of adding Origin role to Location entity](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+    > ![zrzut ekranu przedstawiający Dodawanie roli pochodzenia do jednostki lokalizacji](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
 
-    The role is added to the prebuilt entity but isn't added to any utterances using that entity. 
+    Rola jest dodawana do wstępnie skompilowanej jednostki, ale nie jest dodawana do żadnych wyrażenia długości przy użyciu tej jednostki. 
 
-### <a name="label-text-with-a-role-in-an-example-utterance"></a>Label text with a role in an example utterance
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Etykieta tekstu z rolą w przykładzie wypowiedź
 
-1. Go to the Intent details page, which has example utterances that use the role. 
-1. To label with the role, select the entity label (solid line under text) in the example utterance, then select **View in entity palette** from the drop-down list. 
-
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
-
-    The entity palette opens to the right. 
-
-1. Select the entity, then go to the bottom of the palette and select the role. 
+1. Przejdź do strony szczegółów intencji, która ma przykład wyrażenia długości, który korzysta z roli. 
+1. Aby oznaczyć rolę, wybierz etykietę jednostki (linię ciągłą w obszarze tekst) w przykładzie wypowiedź, a następnie wybierz pozycję **Wyświetl w palecie jednostek** z listy rozwijanej. 
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![zrzut ekranu przedstawiający wybór widoku w palecie jednostek](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
+
+    Paleta jednostek zostanie otwarta po prawej stronie. 
+
+1. Wybierz jednostkę, a następnie przejdź do dolnej części palety i wybierz rolę. 
+
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu przedstawiający wybór widoku w palecie jednostek](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-a-patternany-entity"></a>Add a pattern.any entity
+## <a name="add-a-patternany-entity"></a>Dodaj wzorzec. dowolna jednostka
 
-[Pattern.any](luis-concept-entity-types.md) entities are only valid in [patterns](luis-how-to-model-intent-pattern.md), not intents' example utterances. This type of entity helps LUIS find the end of entities of varying length and word choice. Because this entity is used in a pattern, LUIS knows where the end of the entity is in the utterance template.
+[Wzorzec. wszystkie](luis-concept-entity-types.md) jednostki są prawidłowe tylko w [wzorcach](luis-how-to-model-intent-pattern.md), a nie na przykład wyrażenia długości. Ten typ jednostki pomaga LUIS Znajdź koniec jednostki o różnej długości i wybór programu word. Ponieważ tej jednostki są używane we wzorcu, LUIS wie, gdzie jest koniec jednostki w szablonie wypowiedź.
 
-### <a name="steps-to-create-a-patternany-entity"></a>Steps to create a pattern.any entity
+### <a name="steps-to-create-a-patternany-entity"></a>Procedura tworzenia wzorca. dowolna jednostka
 
-1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
+1. W sekcji **kompilacja** wybierz pozycję **jednostki** w lewym panelu, a następnie wybierz pozycję **+ Utwórz**.
 
-1. In the **Choose an entity type** dialog box, enter the entity name in the **Name** box, and select **Pattern.Any** as the **Type** then select **Create**.
+1. W oknie dialogowym **Wybierz typ jednostki** wprowadź nazwę jednostki w polu **Nazwa** , a następnie wybierz pozycję **wzorzec. dowolny** **Typ** , a następnie wybierz pozycję **Utwórz**.
 
-    Once you [create a pattern utterance](luis-how-to-model-intent-pattern.md) using this entity, the entity is extracted with a combined machine-learned and text-matching algorithm. 
+    Po [utworzeniu wypowiedź wzorca](luis-how-to-model-intent-pattern.md) przy użyciu tej jednostki jednostka jest wyodrębniana z połączonym algorytmem zgodnym z maszyną i tekstem. 
 
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Create a pattern template utterance to use pattern.any entity
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Utwórz szablon wzorca wypowiedź, aby użyć wzorca. dowolna jednostka
 
-To use the pattern.any entity, add a pattern on the **Patterns** page, in the **Improve app performance** section, with the correct curly brace syntax, such as `Where is **{HumanResourcesFormTitle}** on the server?`.
+Aby użyć wzorca. dowolna jednostka, Dodaj wzorzec na stronie **wzorców** , w sekcji **Poprawianie wydajności aplikacji** z poprawną składnią nawiasów klamrowych, taką jak `Where is **{HumanResourcesFormTitle}** on the server?`.
 
 Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepoprawnie wyodrębnia jednostki, użyj elementu [explicit list](reference-pattern-syntax.md#explicit-lists) (listy jawnej), aby rozwiązać ten problem. 
 
-## <a name="do-not-change-entity-type"></a>Do not change entity type
+## <a name="do-not-change-entity-type"></a>Nie zmieniaj typu jednostki
 
-LUIS does not allow you to change the type of the entity because it doesn't know what to add or remove to construct that entity. In order to change the type, it is better to create a new entity of the correct type with a slightly different name. Once the entity is created, in each utterance, remove the old labeled entity name and add the new entity name. Once all the utterances have been relabeled, delete the old entity. 
+Usługa LUIS nie pozwala zmienić typ jednostki, ponieważ nie ma informacji, co należy dodać lub usunąć do skonstruowania tej jednostki. Aby zmienić typ, lepiej jest utworzyć nową jednostkę poprawnego typu o nazwie nieco inne. Po utworzeniu jednostki w każdym wypowiedź usuń starą nazwę jednostki oznaczone i dodać nową nazwę jednostki. Gdy ma zostać relabeled wszystkich wypowiedzi, należy usunąć stare jednostki. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Use prebuilt models](howto-add-prebuilt-models.md) 
+> [Korzystanie z wbudowanych modeli](howto-add-prebuilt-models.md) 
 
 Dowiedz się więcej o usługach:
-* How to [train](luis-how-to-train.md)
-* How to [test](luis-interactive-test.md)
-* How to [publish](luis-how-to-publish-app.md)
-* Patterns:
+* Jak [nauczyć](luis-how-to-train.md) się
+* [Testowanie](luis-interactive-test.md)
+* Jak [opublikować](luis-how-to-publish-app.md)
+* Modele
     * [Pojęcia](luis-concept-patterns.md)
-    * [Syntax](reference-pattern-syntax.md)
-* [Prebuilt entities GitHub repository](https://github.com/Microsoft/Recognizers-Text)
-* [Data Extraction concepts](luis-concept-data-extraction.md)
+    * [Obowiązuje](reference-pattern-syntax.md)
+* [Repozytorium GitHub dla wstępnie utworzonych jednostek](https://github.com/Microsoft/Recognizers-Text)
+* [Pojęcia dotyczące wyodrębniania danych](luis-concept-data-extraction.md)
 
 
  

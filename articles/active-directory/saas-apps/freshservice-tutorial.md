@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory single sign-on (SSO) integration with Freshservice | Microsoft Docs'
+title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Freshservice | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Freshservice.
 services: active-directory
 documentationCenter: na
@@ -23,26 +23,26 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227537"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with Freshservice
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą Freshservice
 
-In this tutorial, you'll learn how to integrate Freshservice with Azure Active Directory (Azure AD). When you integrate Freshservice with Azure AD, you can:
+W tym samouczku dowiesz się, jak zintegrować usługę Freshservice z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi Freshservice z usługą Azure AD można:
 
-* Control in Azure AD who has access to Freshservice.
-* Enable your users to be automatically signed-in to Freshservice with their Azure AD accounts.
-* Manage your accounts in one central location - the Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do Freshservice.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi Freshservice przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To get started, you need the following items:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
-* Freshservice single sign-on (SSO) enabled subscription.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) Freshservice.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-In this tutorial, you configure and test Azure AD SSO in a test environment.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
 * Aplikacja Freshservice obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
 
@@ -51,115 +51,115 @@ In this tutorial, you configure and test Azure AD SSO in a test environment.
 Aby skonfigurować integrację aplikacji Freshservice z usługą Azure AD, musisz dodać aplikację Freshservice z galerii do swojej listy zarządzanych aplikacji SaaS.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. On the left navigation pane, select the **Azure Active Directory** service.
-1. Navigate to **Enterprise Applications** and then select **All Applications**.
-1. To add new application, select **New application**.
-1. In the **Add from the gallery** section, type **Freshservice** in the search box.
-1. Select **Freshservice** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Freshservice** w polu wyszukiwania.
+1. Wybierz pozycję **Freshservice** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshservice"></a>Configure and test Azure AD single sign-on for Freshservice
+## <a name="configure-and-test-azure-ad-single-sign-on-for-freshservice"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla Freshservice
 
-Configure and test Azure AD SSO with Freshservice using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Freshservice.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Freshservice przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Freshservice.
 
-To configure and test Azure AD SSO with Freshservice, complete the following building blocks:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Freshservice, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
-    1. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
-    1. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
-1. **[Configure Freshservice SSO](#configure-freshservice-sso)** - to configure the single sign-on settings on application side.
-    1. **[Create Freshservice test user](#create-freshservice-test-user)** - to have a counterpart of B.Simon in Freshservice that is linked to the Azure AD representation of user.
-1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne](#configure-freshservice-sso)** w usłudze Freshservice, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    1. **[Utwórz użytkownika testowego Freshservice](#create-freshservice-test-user)** , aby dysponować odpowiednikiem B. Simon w Freshservice, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-Follow these steps to enable Azure AD SSO in the Azure portal.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Freshservice** application integration page, find the **Manage** section and select **single sign-on**.
-1. On the **Select a single sign-on method** page, select **SAML**.
-1. On the **Set up single sign-on with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Freshservice** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. On the **Basic SAML Configuration** section, enter the values for the following fields:
+1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<democompany>.freshservice.com`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<democompany>.freshservice.com`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<democompany>.freshservice.com`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Freshservice](https://support.freshservice.com/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając rzeczywistego adresu URL logowania i identyfikatora. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Freshservice](https://support.freshservice.com/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-1. Freshservice requires SHA-256 fingerprint to get SSO working. To get SHA-256 fingerprint, perform the following steps :
+1. Freshservice wymaga odcisku palca SHA-256 do uzyskania pracy z logowaniem jednokrotnym. Aby uzyskać odcisk palca SHA-256, wykonaj następujące czynności:
 
-    ![FingerPrint](./media/freshservice-tutorial/ic790821.png "FingerPrint")
+    ![Linii](./media/freshservice-tutorial/ic790821.png "Linii")
 
-    1. Open the [link](https://www.samltool.com/fingerprint.php) in different web browser.
+    1. Otwórz [link](https://www.samltool.com/fingerprint.php) w innej przeglądarce sieci Web.
 
-    1. Open downloaded certificate (Base64) file in the Notepad and paste content in the **X.509 cert** textbox.
+    1. Otwórz plik pobrany certyfikat (base64) w Notatniku i wklej zawartość w polu tekstowym **certyfikat X. 509** .
 
-    1. For the Algorithm, select **sha256** from the dropdown.
+    1. Dla algorytmu wybierz pozycję **SHA256** z listy rozwijanej.
 
-    1. Click **CALCULATE FINGERPRINT**.
+    1. Kliknij pozycję **Oblicz odcisk palca**.
 
-    1. Click on the copy icon to copy the generated **FingerPrint** and save it on your computer.
+    1. Kliknij ikonę kopiowania, aby skopiować wygenerowany **odcisk palca** i zapisać go na komputerze.
 
-1. On the **Set up Freshservice** section on the **Azure portal**, copy the appropriate URL(s) based on your requirement.
+1. W sekcji **Konfigurowanie Freshservice** na **Azure Portal**skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-1. In the **User** properties, follow these steps:
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. In the **User name** field, enter the username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Freshservice.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Freshservice.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Na liście aplikacji wybierz pozycję **Freshservice**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![The Add User link](common/add-assign-user.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-## <a name="configure-freshservice-sso"></a>Configure Freshservice SSO
+## <a name="configure-freshservice-sso"></a>Konfigurowanie logowania jednokrotnego Freshservice
 
-1. To automate the configuration within Freshservice, you need to install **My Apps Secure Sign-in browser extension** by clicking **Install the extension**.
+1. Aby zautomatyzować konfigurację w programie Freshservice, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
 
-    ![My apps extension](common/install-myappssecure-extension.png)
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
 
-2. After adding extension to the browser, click on **Setup Freshservice** will direct you to the Freshservice application. From there, provide the admin credentials to sign into Freshservice. The browser extension will automatically configure the application for you and automate steps 3-6.
+2. Po dodaniu rozszerzenia do przeglądarki kliknij pozycję **Setup Freshservice** , aby skierować do aplikacji Freshservice. Z tego miejsca podaj poświadczenia administratora, aby zalogować się do usługi Freshservice. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-6.
 
-    ![Setup configuration](common/setup-sso.png)
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
 
-3. If you want to setup Freshservice manually, open a new web browser window and sign into your Freshservice company site as an administrator and perform the following steps:
+3. Jeśli chcesz ręcznie skonfigurować Freshservice, Otwórz nowe okno przeglądarki sieci Web i zaloguj się w witrynie firmy Freshservice jako administrator i wykonaj następujące czynności:
 
 4. W menu u góry kliknij pozycję **Admin** (Administrator).
 
-    ![Admin](./media/freshservice-tutorial/ic790814.png "Admin")
+    ![Administratora](./media/freshservice-tutorial/ic790814.png "Administrator")
 
 5. W obszarze **Customer Portal** (Portal klienta) kliknij pozycję **Security** (Zabezpieczenia).
 
-    ![Bezpieczeństwo](./media/freshservice-tutorial/ic790815.png "Zabezpieczenia")
+    ![Bezpieczeństwo](./media/freshservice-tutorial/ic790815.png "Bezpieczeństwo")
 
 6. W sekcji **Security** (Zabezpieczenia) wykonaj następujące kroki:
 
@@ -169,56 +169,56 @@ In this section, you'll enable B.Simon to use Azure single sign-on by granting a
 
     b. Wybierz pozycję **SAML SSO** (Logowanie jednokrotne SAML).
 
-    d. W polu tekstowym **SAML Login URL** (Adres URL logowania SAML) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **SAML Login URL** (Adres URL logowania SAML) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
     d. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
-    e. In **Security Certificate Fingerprint** textbox, paste the **FingerPrint** value, which you have generated earlier.
+    e. W polu tekstowym **odcisk palca certyfikatu zabezpieczeń** wklej wartość **odcisku palca** , która została wygenerowana wcześniej.
 
     f. Kliknij pozycję **Zapisz**
 
 ### <a name="create-freshservice-test-user"></a>Tworzenie użytkownika testowego aplikacji Freshservice
 
-To enable Azure AD users to sign in to FreshService, they must be provisioned into FreshService. W przypadku aplikacji FreshService jest to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze FreshService, muszą one być obsługiwane w usłudze FreshService. W przypadku aplikacji FreshService jest to zadanie ręczne.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Sign in to your **FreshService** company site as an administrator.
+1. Zaloguj się do firmowej witryny **FreshService** jako administrator.
 
 2. W menu u góry kliknij pozycję **Admin** (Administrator).
 
-    ![Admin](./media/freshservice-tutorial/ic790814.png "Admin")
+    ![Administratora](./media/freshservice-tutorial/ic790814.png "Administrator")
 
 3. W sekcji **User Management** (Zarządzanie użytkownikami) kliknij pozycję **Requesters** (Inicjatorzy żądania).
 
-    ![Requesters](./media/freshservice-tutorial/ic790818.png "Requesters")
+    ![Jednostek żądających](./media/freshservice-tutorial/ic790818.png "Jednostek żądających")
 
 4. Kliknij przycisk **New Requester** (Nowy inicjator żądania).
 
-    ![New Requesters](./media/freshservice-tutorial/ic790819.png "New Requesters")
+    ![Nowi osoby żądające](./media/freshservice-tutorial/ic790819.png "Nowi osoby żądające")
 
 5. W sekcji **New Requester** (Nowy inicjator żądania) wykonaj następujące kroki:
 
-    ![New Requester](./media/freshservice-tutorial/ic790820.png "New Requester")  
+    ![Nowy obiekt żądający](./media/freshservice-tutorial/ic790820.png "Nowy obiekt żądający")  
 
     a. W polach tekstowych **First Name** (Imię) i **Email** (Adres e-mail) wprowadź atrybuty imienia i adresu e-mail prawidłowego konta usługi Azure Active Directory, które chcesz aprowizować.
 
-    b. Kliknij przycisk **Save** (Zapisz).
+    b. Kliknij pozycję **Zapisz**.
 
     > [!NOTE]
     > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
     >  
 
 > [!NOTE]
-> You can use any other FreshService user account creation tools or APIs provided by FreshService to provision Azure AD user accounts.
+> Do aprowizacji kont użytkowników usługi Azure AD można używać innych narzędzi do tworzenia kont użytkowników FreshService i interfejsów API udostępnionych przez usługę FreshService.
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka FreshService w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji FreshService, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -226,4 +226,4 @@ Po kliknięciu kafelka FreshService w panelu dostępu powinno nastąpić automat
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Try Freshservice with Azure AD](https://aad.portal.azure.com/)
+- [Wypróbuj Freshservice z usługą Azure AD](https://aad.portal.azure.com/)

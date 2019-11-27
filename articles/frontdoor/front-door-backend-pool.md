@@ -1,6 +1,6 @@
 ---
-title: Backends and backend pools in Azure Front Door Service | Microsoft Docs
-description: This article describes what backends and backend pools are in Front Door configuration.
+title: Frontony i pule zaplecza w usłudze Azure predrzwiczk | Microsoft Docs
+description: W tym artykule opisano, jakie zaplecze i pule zaplecza są zgodne z konfiguracją drzwi.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -18,78 +18,78 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229031"
 ---
-# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Backends and backend pools in Azure Front Door Service
-This article describes concepts about how to map your app deployment with Azure Front Door Service. It also explains the different terms in Front Door configuration around app backends.
+# <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Frontony i pule zaplecza w usłudze Azure front-drzwi
+W tym artykule opisano koncepcje dotyczące mapowania wdrożenia aplikacji za pomocą usługi Azure front-drzwi. Objaśniono w nim również różne terminy związane z konfiguracją drzwi przed końcami aplikacji.
 
 ## <a name="backends"></a>Zaplecza
-A backend is equal to an app's deployment instance in a region. Front Door Service supports both Azure and non-Azure backends, so the region isn't only restricted to Azure regions. Also, it can be your on-premises datacenter or an app instance in another cloud.
+Zaplecze jest równe wystąpieniu wdrożenia aplikacji w regionie. Usługa front-drzwi obsługuje zarówno platformę Azure, jak i frontony spoza platformy Azure, więc region nie jest ograniczony do regionów świadczenia usługi Azure. Ponadto może to być lokalne centrum danych lub wystąpienie aplikacji w innej chmurze.
 
-Front Door Service backends refer to the host name or public IP of your app, which can serve client requests. Backends shouldn't be confused with your database tier, storage tier, and so on. Backends should be viewed as the public endpoint of your app backend. When you add a backend in a Front Door backend pool, you must also add the following:
+Punkty końcowe usługi frontu drzwi odnoszą się do nazwy hosta lub publicznego adresu IP aplikacji, która może obsługiwać żądania klientów. Zastąp nie należy mylić z warstwą bazy danych, warstwą magazynowania i tak dalej. Zaplecze należy wyświetlić jako publiczny punkt końcowy zaplecza aplikacji. Po dodaniu zaplecza w puli zaplecza z drzwiami przednimi, należy również dodać następujące elementy:
 
-- **Backend host type**. The type of resource you want to add. Front Door Service supports autodiscovery of your app backends from app service, cloud service, or storage. If you want a different resource in Azure or even a non-Azure backend, select **Custom host**.
+- **Typ hosta zaplecza**. Typ zasobu, który ma zostać dodany. Usługa front-drzwi obsługuje Autowykrywanie Twoich zasobie aplikacji z usługi App Service, usługi w chmurze lub magazynu. Jeśli chcesz użyć innego zasobu na platformie Azure lub nawet z zapleczem innym niż Azure, wybierz opcję **host niestandardowy**.
 
     >[!IMPORTANT]
-    >During configuration, APIs don't validate if the backend is inaccessible from Front Door environments. Make sure that Front Door can reach your backend.
+    >Podczas konfiguracji interfejsy API nie sprawdzają, czy zaplecze nie są dostępne w środowiskach z przodu. Upewnij się, że tylne drzwi mogą dotrzeć do zaplecza.
 
-- **Subscription and Backend host name**. If you haven't selected **Custom host** for backend host type, select your backend by choosing the appropriate subscription and the corresponding backend host name in the UI.
+- **Nazwa subskrypcji i hosta zaplecza**. Jeśli nie wybrano **niestandardowego hosta** dla typu hosta zaplecza, wybierz zaplecze, wybierając odpowiednią subskrypcję i odpowiednią nazwę hosta zaplecza w interfejsie użytkownika.
 
-- **Backend host header**. The host header value sent to the backend for each request. For more information, see [Backend host header](#hostheader).
+- **Nagłówek hosta zaplecza**. Wartość nagłówka hosta wysyłana do zaplecza dla każdego żądania. Aby uzyskać więcej informacji, zobacz [nagłówek hosta zaplecza](#hostheader).
 
-- **Priority**. Assign priorities to your different backends when you want to use a primary service backend for all traffic. Also, provide backups if the primary or the backup backends are unavailable. For more information, see [Priority](front-door-routing-methods.md#priority).
+- **Priorytet**. Przypisywanie priorytetów do różnych zaplecza, gdy chcesz użyć podstawowego zaplecze usługi dla całego ruchu. Ponadto należy podać kopie zapasowe, jeśli podstawowy lub zapasowy frontonu są niedostępne. Aby uzyskać więcej informacji, zobacz [priorytet](front-door-routing-methods.md#priority).
 
-- **Weight**. Assign weights to your different backends to distribute traffic across a set of backends, either evenly or according to weight coefficients. For more information, see [Weights](front-door-routing-methods.md#weighted).
+- **Waga**. Przypisz wagi do różnych założonych punktów końcowych, aby dystrybuować ruch między zestawami założonymi (nawet lub zgodnie z współczynnikim wagi). Aby uzyskać więcej informacji, zobacz [wagi](front-door-routing-methods.md#weighted).
 
-### <a name = "hostheader"></a>Backend host header
+### <a name = "hostheader"></a>Nagłówek hosta zaplecza
 
-Requests forwarded by Front Door to a backend include a host header field that the backend uses to retrieve the targeted resource. The value for this field typically comes from the backend URI and has the host and port.
+Żądania przekazywane przez tylne drzwi do zaplecza zawierają pole nagłówka hosta używane przez zaplecze do pobrania zasobu dostosowanego. Wartość tego pola zazwyczaj pochodzi z identyfikatora URI zaplecza i ma hosta i port.
 
-For example, a request made for www\.contoso.com will have the host header www\.contoso.com. If you use Azure portal to configure your backend, the default value for this field is the host name of the backend. If your backend is contoso-westus.azurewebsites.net, in the Azure portal, the autopopulated value for the backend host header will be contoso-westus.azurewebsites.net. However, if you use Azure Resource Manager templates or another method without explicitly setting this field, Front Door Service will send the incoming host name as the value for the host header. If the request was made for www\.contoso.com, and your backend is contoso-westus.azurewebsites.net that has an empty header field, Front Door Service will set the host header as www\.contoso.com.
+Na przykład żądanie wysłane dla sieci Web\.contoso.com będzie miało nagłówek hosta www\.contoso.com. Jeśli do skonfigurowania zaplecza używasz Azure Portal, wartością domyślną tego pola jest nazwa hosta zaplecza. Jeśli zaplecze to contoso-westus.azurewebsites.net, w Azure Portal wartość autowypełniana dla nagłówka hosta zaplecza będzie contoso-westus.azurewebsites.net. Jeśli jednak używasz szablonów Azure Resource Manager lub innej metody bez jawnego ustawienia tego pola, usługa front-drzwi wyśle nazwę hosta przychodzącego jako wartość dla nagłówka hosta. Jeśli żądanie zostało wykonane dla sieci Web\.contoso.com, a zaplecze to contoso-westus.azurewebsites.net z pustym polem nagłówka, usługa front-drzwi ustawi nagłówek hosta jako www\.contoso.com.
 
-Most app backends (Azure Web Apps, Blob storage, and Cloud Services) require the host header to match the domain of the backend. However, the frontend host that routes to your backend will use a different hostname such as www\.contoso.azurefd.net.
+Większość zapleców aplikacji (Azure Web Apps, BLOB Storage i Cloud Services) wymaga, aby nagłówek hosta był zgodny z domeną zaplecza. Jednak Host frontonu, który jest przesyłany do zaplecza, będzie używać innej nazwy hosta, takiej jak www\.contoso.azurefd.net.
 
-If your backend requires the host header to match the backend host name, make sure that the backend host header includes the host name backend.
+Jeśli zaplecze wymaga, aby nagłówek hosta był zgodny z nazwą hosta zaplecza, upewnij się, że nagłówek hosta zaplecza zawiera zaplecze nazwy hosta.
 
-#### <a name="configuring-the-backend-host-header-for-the-backend"></a>Configuring the backend host header for the backend
+#### <a name="configuring-the-backend-host-header-for-the-backend"></a>Konfigurowanie nagłówka hosta zaplecza dla zaplecza
 
-To configure the **backend host header** field for a backend in the backend pool section:
+Aby skonfigurować pole **nagłówka hosta zaplecza** dla zaplecza w sekcji Pula zaplecza:
 
-1. Open your Front Door resource and select the backend pool with the backend to configure.
+1. Otwórz zasób z drzwiami wstępnymi i wybierz pulę zaplecza z zapleczem do skonfigurowania.
 
-2. Add a backend if you haven't done so, or edit an existing one.
+2. Dodaj zaplecze, jeśli nie zostało to zrobione, lub Edytuj istniejący.
 
-3. Set the backend host header field to a custom value or leave it blank. The hostname for the incoming request will be used as the host header value.
+3. W polu Nagłówek hosta wewnętrznej bazy danych ustaw wartość niestandardową lub pozostaw to pole puste. Nazwa hosta dla żądania przychodzącego będzie używana jako wartość nagłówka hosta.
 
-## <a name="backend-pools"></a>Backend pools
-A backend pool in Front Door Service refers to the set of backends that receive similar traffic for their app. In other words, it's a logical grouping of your app instances across the world that receive the same traffic and respond with expected behavior. These backends are deployed across different regions or within the same region. All backends can be in Active/Active deployment mode or what is defined as Active/Passive configuration.
+## <a name="backend-pools"></a>Pule zaplecza
+Pula zaplecza w usłudze front-drzwi odwołuje się do zestawu punktów końcowych, które odbierają podobny ruch dla swojej aplikacji. Innymi słowy, jest to logiczna Grupa wystąpień aplikacji na świecie, która odbiera ten sam ruch i reaguje z oczekiwanym zachowaniem. Te punkty końcowe są wdrażane w różnych regionach lub w tym samym regionie. Wszystkie aukcje załączone mogą być w trybie wdrożenia aktywny/aktywny lub co jest zdefiniowane jako Konfiguracja aktywna/pasywna.
 
-A backend pool defines how the different backends should be evaluated via health probes. It also defines how load balancing occurs between them.
+Pula zaplecza definiuje, w jaki sposób różne zaplecza powinny być oceniane przez sondy kondycji. Definiuje także sposób równoważenia obciążenia między nimi.
 
 ### <a name="health-probes"></a>Sondy kondycji
-Front Door Service sends periodic HTTP/HTTPS probe requests to each of your configured backends. Probe requests determine the proximity and health of each backend to load balance your end-user requests. Health probe settings for a backend pool define how we poll the health status of app backends. The following settings are available for load-balancing configuration:
+Usługa front-drzwi wysyła okresowe żądania sondowania HTTP/HTTPS do każdego ze skonfigurowanych frontonów. Żądania sondowania określają bliskość i kondycję każdego zaplecza do równoważenia obciążenia żądaniami użytkowników końcowych. Ustawienia sondowania kondycji dla puli zaplecza definiują, w jaki sposób sondować stan kondycji zapleczy aplikacji. Dla konfiguracji równoważenia obciążenia dostępne są następujące ustawienia:
 
-- **Path**. The URL used for probe requests for all the backends in the backend pool. For example, if one of your backends is contoso-westus.azurewebsites.net and the path is set to /probe/test.aspx, then Front Door Service environments, assuming the protocol is set to HTTP, will send health probe requests to http\://contoso-westus.azurewebsites.net/probe/test.aspx.
+- **Ścieżka**. Adres URL służący do żądania sondowania dla wszystkich zapleczy w puli zaplecza. Na przykład jeśli jeden z zacontoso-westus.azurewebsites.netów jest ustawiony na wartość/Probe/test.aspx, a następnie w środowiskach usługi front-drzwi, przy założeniu, że protokół jest ustawiony na HTTP, wyśle żądania sondowania kondycji do\:http//contoso-westus.azurewebsites.net/probe/test.aspx.
 
-- **Protocol**. Defines whether to send the health probe requests from Front Door Service to your backends with HTTP or HTTPS protocol.
+- **Protokół**. Określa, czy wysyłać żądania sondowania kondycji z usługi front-drzwi do frontonu przy użyciu protokołu HTTP lub HTTPS.
 
-- **Interval (seconds)** . Defines the frequency of health probes to your backends, or the intervals in which each of the Front Door environments sends a probe.
+- **Interwał (w sekundach)** . Definiuje częstotliwość sond kondycji do zakończenia lub interwałów, w których każde ze środowisk przed drzwiami wysyła sondę.
 
     >[!NOTE]
-    >For faster failovers, set the interval to a lower value. The lower the value, the higher the health probe volume your backends receive. For example, if the interval is set to 30 seconds with 90 Front Door environments or POPs globally, each backend will receive about 3-5 probe requests per second.
+    >Aby przyspieszyć przełączanie w tryb failover, ustaw wartość interwał na niższą. Im niższa wartość, tym wyższego natężenia głośności sondy kondycji. Na przykład jeśli interwał jest ustawiony na 30 sekund z 90 środowiskami z przodu lub punktów obecności na całym świecie, każde zaplecze otrzyma około 3-5 żądań sondy na sekundę.
 
-For more information, see [Health probes](front-door-health-probes.md).
+Aby uzyskać więcej informacji, zobacz [sondy kondycji](front-door-health-probes.md).
 
-### <a name="load-balancing-settings"></a>Load-balancing settings
-Load-balancing settings for the backend pool define how we evaluate health probes. These settings determine if the backend is healthy or unhealthy. They also check how to load-balance traffic between different backends in the backend pool. The following settings are available for load-balancing configuration:
+### <a name="load-balancing-settings"></a>Ustawienia równoważenia obciążenia
+Ustawienia równoważenia obciążenia dla puli zaplecza definiują, jak oceniane są sondy kondycji. Te ustawienia określają, czy zaplecze jest w dobrej kondycji. Sprawdzają także, jak równoważyć obciążenie ruchu między różnymi zadziałami w puli zaplecza. Dla konfiguracji równoważenia obciążenia dostępne są następujące ustawienia:
 
-- **Sample size**. Identifies how many samples of health probes we need to consider for backend health evaluation.
+- **Rozmiar próbki**. Identyfikuje liczbę próbek sond kondycji, które należy wziąć pod uwagę w przypadku oceny kondycji zaplecza.
 
-- **Successful sample size**. Defines the sample size as previously mentioned, the number of successful samples needed to call the backend healthy. For example, assume a Front Door health probe interval is 30 seconds, sample size is 5, and successful sample size is 3. Each time we evaluate the health probes for your backend, we look at the last five samples over 150 seconds (5 x 30). At least three successful probes are required to declare the backend as healthy.
+- **Pomyślny rozmiar próbki**. Definiuje rozmiar próbki, jak wspomniano powyżej, liczbę pomyślnych próbek wymaganych do wywołania zaplecza w dobrej kondycji. Załóżmy na przykład, że interwał sondy kondycji z przodu wynosi 30 sekund, rozmiar próbki wynosi 5, a rozmiar próbki powiódł się 3. Za każdym razem, gdy analizujemy sondy kondycji dla zaplecza, analizujemy pięć ostatnich próbek powyżej 150 sekund (5 x 30). Co najmniej trzy pomyślne sondy są wymagane do zadeklarować zaplecze jako dobra kondycja.
 
-- **Latency sensitivity (additional latency)** . Defines whether you want Front Door to send the request to backends within the latency measurement sensitivity range or forward the request to the closest backend.
+- **Czułość opóźnienia (dodatkowe opóźnienie)** . Określa, czy chcesz, aby drzwi frontonu wysyłali żądanie do zaplecza w ramach zakresu czułości pomiaru opóźnienia, czy też przesłać żądanie do najbliższej wewnętrznej bazy danych.
 
-For more information, see [Least latency based routing method](front-door-routing-methods.md#latency).
+Aby uzyskać więcej informacji, zobacz [najmniej metody routingu opartego na opóźnieniu](front-door-routing-methods.md#latency).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Create a Front Door profile](quickstart-create-front-door.md)
-- [How Front Door works](front-door-routing-architecture.md)
+- [Tworzenie profilu frontu drzwi](quickstart-create-front-door.md)
+- [Jak działają tylne drzwi](front-door-routing-architecture.md)

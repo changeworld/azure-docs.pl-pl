@@ -36,7 +36,7 @@ Poniższa tabela zawiera linki do szablonów modeli wdrażania usługi Azure Res
 | [Konfigurowanie ograniczania szybkości usługi Front Door](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-rate-limiting)| Konfiguruje usługę Front Door tak, aby ograniczała szybkość ruchu przychodzącego dla danego hosta frontonu. |
 | | |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

@@ -62,7 +62,7 @@ Aby utworzyć rekord CNAME z poziomu domeny podrzędnej afdverify:
 
 3. Utwórz wpis rekordu CNAME dla domeny niestandardowej, a następnie wypełnij pola, tak jak pokazano w poniższej tabeli (nazwy pól mogą być inne):
 
-    | Element źródłowy                    | Typ  | Element docelowy                     |
+    | Element źródłowy                    | Typ  | Destination                     |
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
@@ -139,7 +139,7 @@ Aby utworzyć rekord CNAME dla domeny niestandardowej:
 
 3. Utwórz wpis rekordu CNAME dla domeny niestandardowej, a następnie wypełnij pola, tak jak pokazano w poniższej tabeli (nazwy pól mogą być inne):
 
-    | Element źródłowy          | Typ  | Element docelowy           |
+    | Element źródłowy          | Typ  | Destination           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -195,7 +195,7 @@ W poprzednich krokach dodano domenę niestandardową do usługi Front Door. Jeś
    Skojarzenie domeny niestandardowej z punktem końcowym zostanie usunięte.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

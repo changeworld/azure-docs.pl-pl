@@ -28,7 +28,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
+- [Program Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
@@ -110,7 +110,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i używał go z aplikacją konsolową .NET Framework. Wartość `AppSettings` `ConfiguratoinManager` nie zmieni się po uruchomieniu aplikacji. Biblioteka dostawcy konfiguracji .NET Standard konfiguracji aplikacji, ale również może być używana w aplikacji .NET Framework. Aby dowiedzieć się, jak włączyć dynamiczne Odświeżanie ustawień konfiguracji aplikacji .NET Framework, przejdź do następnego samouczka.
 

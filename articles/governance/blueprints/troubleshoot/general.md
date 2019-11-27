@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie typowych problemów
-description: Learn how to troubleshoot issues creating, assigning, and removing blueprints such as policy violations and blueprint parameter functions.
+description: Dowiedz się, jak rozwiązywać problemy z tworzeniem, przypisywaniem i usuwaniem planów, takich jak naruszenia zasad i funkcje parametrów planu.
 ms.date: 11/22/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 4e7ea1760e000a167c4329d6f12f3acc18d18f7c
@@ -10,61 +10,61 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406609"
 ---
-# <a name="troubleshoot-errors-using-azure-blueprints"></a>Troubleshoot errors using Azure Blueprints
+# <a name="troubleshoot-errors-using-azure-blueprints"></a>Rozwiązywanie problemów z błędami przy użyciu planów platformy Azure
 
-You may run into errors when creating or assigning blueprints. This article describes various errors that may occur and how to resolve them.
+Podczas tworzenia lub przypisywania planów mogą wystąpić błędy. W tym artykule opisano różne błędy, które mogą wystąpić i sposoby ich rozwiązywania.
 
-## <a name="finding-error-details"></a>Finding error details
+## <a name="finding-error-details"></a>Znajdowanie szczegółów błędu
 
-Many errors will be the result of assigning a blueprint to a scope. When an assignment fails, the blueprint provides details about the failed deployment. This information indicates the issue so that it can be fixed and the next deployment succeeds.
+Wiele błędów będzie wynikiem przypisywania strategii do zakresu. Jeśli przypisanie nie powiedzie się, plan zawiera szczegółowe informacje dotyczące niepowodzenia wdrożenia. Te informacje wskazują, że problem może zostać naprawiony, a następne wdrożenie powiodło się.
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Select **Assigned blueprints** from the page on the left and use the search box to filter the blueprint assignments to find the failed assignment. You can also sort the table of assignments by the **Provisioning State** column to see all failed assignments grouped together.
+1. Wybierz pozycję **przypisane plany** na stronie z lewej strony i użyj pola wyszukiwania, aby odfiltrować przypisania strategii w celu znalezienia nieudanego przypisania. Możesz również posortować tabelę przypisań według kolumny **stan aprowizacji** , aby zobaczyć wszystkie niezakończone przydziały zgrupowane razem.
 
-1. Left-click on the blueprint with the _Failed_ status or right-click and select **View assignment details**.
+1. Kliknij prawym przyciskiem myszy plan o stanie _Niepowodzenie_ lub kliknij, a następnie wybierz pozycję **Wyświetl szczegóły przydziału**.
 
-1. A red banner warning that the assignment has failed is at the top of the blueprint assignment page. Click anywhere on the banner to get more details.
+1. Ostrzeżenie o czerwoniu baneru, którego przypisanie nie powiodło się, znajduje się w górnej części strony przypisanie strategii. Kliknij gdziekolwiek na banerze, aby uzyskać więcej szczegółów.
 
-It's common for the error to be caused by an artifact and not the blueprint as a whole. If an artifact creates a Key Vault and Azure Policy prevents Key Vault creation, the entire assignment will fail.
+Często przyczyną błędu może być artefakt, a nie plan jako całość. Jeśli artefakt tworzy Key Vault i Azure Policy zapobiega tworzeniu Key Vault, całe przypisanie zakończy się niepowodzeniem.
 
-## <a name="general-errors"></a>General errors
+## <a name="general-errors"></a>Błędy ogólne
 
-### <a name="policy-violation"></a>Scenario: Policy Violation
-
-#### <a name="issue"></a>Problem
-
-The template deployment failed because of policy violation.
-
-#### <a name="cause"></a>Przyczyna
-
-A policy may conflict with the deployment for a number of reasons:
-
-- The resource being created is restricted by policy (commonly SKU or location restrictions)
-- The deployment is setting fields that are configured by policy (common with tags)
-
-#### <a name="resolution"></a>Rozdzielczość
-
-Change the blueprint so it doesn't conflict with the policies in the error details. If this change isn't possible, an alternative option is to have the scope of the policy assignment changed so the blueprint is no longer in conflict with the policy.
-
-### <a name="escape-function-parameter"></a>Scenario: Blueprint parameter is a function
+### <a name="policy-violation"></a>Scenariusz: naruszenie zasad
 
 #### <a name="issue"></a>Problem
 
-Blueprint parameters that are functions are processed before being passed to artifacts.
+Wdrożenie szablonu nie powiodło się z powodu naruszenia zasad.
 
 #### <a name="cause"></a>Przyczyna
 
-Passing a blueprint parameter that uses a function, such as `[resourceGroup().tags.myTag]`, to an artifact results in the processed outcome of the function being set on the artifact instead of the dynamic function.
+Zasady mogą powodować konflikt z wdrożeniem z kilku powodów:
 
-#### <a name="resolution"></a>Rozdzielczość
+- Tworzony zasób jest ograniczony przez zasady (zazwyczaj ograniczenia jednostki SKU lub lokalizacji)
+- Wdrożenie jest ustawieniem pól skonfigurowanych za pomocą zasad (wspólne ze znacznikami)
 
-To pass a function through as a parameter, escape the entire string with `[` such that the blueprint parameter looks like `[[resourceGroup().tags.myTag]`. The escape character causes Blueprints to treat the value as a string when processing the blueprint. Blueprints then places the function on the artifact allowing it to be dynamic as expected. For more information, see [Syntax and expressions in Azure Resource Manager templates](../../../azure-resource-manager/template-expressions.md).
+#### <a name="resolution"></a>Rozwiązanie
+
+Zmień plan, aby nie powodował konfliktu z zasadami w szczegółach błędu. Jeśli ta zmiana nie jest możliwa, alternatywna opcja polega na tym, że zakres przypisania zasad został zmieniony, w związku z czym plan nie jest już w konflikcie z zasadami.
+
+### <a name="escape-function-parameter"></a>Scenariusz: parametr strategii jest funkcją
+
+#### <a name="issue"></a>Problem
+
+Parametry planu, które są funkcjami są przetwarzane przed przekazaniem do artefaktów.
+
+#### <a name="cause"></a>Przyczyna
+
+Przekazywanie parametru planu, który używa funkcji, takiej jak `[resourceGroup().tags.myTag]`, do artefaktu skutkuje przetworzonym wynikiem funkcji ustawionej dla artefaktu zamiast funkcji dynamicznej.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Aby przekazać funkcję przez parametr, należy wypróbować cały ciąg z `[` w taki sposób, aby parametr strategii wyglądał jak `[[resourceGroup().tags.myTag]`. Znak ucieczki powoduje, że plany traktują wartość jako ciąg podczas przetwarzania planu. Plany następnie umieszczają funkcję na artefaktie, umożliwiając jej dynamiczne działanie zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [składnia i wyrażenia w szablonach Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
+Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 
-- Get answers from Azure experts through [Azure Forums](https://azure.microsoft.com/support/forums/).
+- Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [forów platformy Azure](https://azure.microsoft.com/support/forums/).
 - Połącz się z kontem [@AzureSupport](https://twitter.com/azuresupport) — oficjalnym kontem platformy Microsoft Azure utworzonym w celu podniesienia jakości obsługi klientów przez połączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
-- If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.
+- Jeśli potrzebujesz więcej pomocy, możesz obsłużyć zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.

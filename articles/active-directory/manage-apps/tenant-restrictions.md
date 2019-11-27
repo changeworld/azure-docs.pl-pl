@@ -30,7 +30,7 @@ Rozwiązanie Azure Active Directory (Azure AD) do tego wezwania jest funkcją z 
 
 W przypadku ograniczeń dzierżawy organizacje mogą określić listę dzierżawców, do których użytkownicy mają prawo dostępu. Następnie usługa Azure AD tylko udziela dostępu do tych dozwolonych dzierżaw.
 
-Ten artykuł koncentruje się na ograniczeniach dzierżawy dla pakietu Office 365, ale ta funkcja powinna współpracować z dowolną aplikacją SaaS w chmurze, która korzysta z nowoczesnego protokołu uwierzytelniania z usługą Azure AD w celu logowania jednokrotnego. Jeśli używasz modelu SaaS aplikacji z różnymi usługami Azure AD dzierżawy w dzierżawie, używane przez usługi Office 365, upewnij się, czy wszystkie wymagane dzierżawców są dozwolone. Aby uzyskać więcej informacji na temat aplikacji SaaS w chmurze, zobacz [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
+Ten artykuł koncentruje się na ograniczeniach dzierżawy dla pakietu Office 365, ale ta funkcja powinna współpracować z dowolną aplikacją SaaS w chmurze, która korzysta z nowoczesnego protokołu uwierzytelniania z usługą Azure AD w celu logowania jednokrotnego. Jeśli używasz modelu SaaS aplikacji z różnymi usługami Azure AD dzierżawy w dzierżawie, używane przez usługi Office 365, upewnij się, czy wszystkie wymagane dzierżawców są dozwolone. Aby uzyskać więcej informacji na temat aplikacji w chmurze SaaS, zobacz Portal [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
 
 ## <a name="how-it-works"></a>Jak to działa
 
@@ -42,7 +42,7 @@ Ogólne rozwiązanie obejmuje następujące składniki:
 
 3. **Oprogramowanie klienckie**: aby obsługiwać ograniczenia dzierżawy, oprogramowanie klienckie musi żądać tokenów bezpośrednio z usługi Azure AD, dzięki czemu infrastruktura serwera proxy może przechwytywać ruch. Aplikacje pakietu Office 365 oparte na przeglądarce obsługują obecnie ograniczenia dzierżawy, ponieważ klienci pakietu Office korzystający z nowoczesnego uwierzytelniania (na przykład OAuth 2,0).
 
-4. **Nowoczesne uwierzytelnianie**: usługi w chmurze muszą używać nowoczesnego uwierzytelniania, aby używać ograniczeń dzierżawy i blokować dostęp do wszystkich niedozwolonych dzierżawców. Aby domyślnie używać nowoczesnych protokołów uwierzytelniania, należy skonfigurować usługi w chmurze pakietu Office 365. Aby uzyskać najnowsze informacje na temat obsługi usługi Office 365 nowoczesnego uwierzytelniania, przeczytaj [nowoczesne uwierzytelnianie usługi Office 365 zaktualizowane](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Nowoczesne uwierzytelnianie**: usługi w chmurze muszą używać nowoczesnego uwierzytelniania, aby używać ograniczeń dzierżawy i blokować dostęp do wszystkich niedozwolonych dzierżawców. Aby domyślnie używać nowoczesnych protokołów uwierzytelniania, należy skonfigurować usługi w chmurze pakietu Office 365. Aby uzyskać najnowsze informacje na temat obsługi nowoczesnego uwierzytelniania w pakiecie Office 365, Przeczytaj [zaktualizowany nowoczesne uwierzytelnianie pakietu Office 365](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 Na poniższym diagramie przedstawiono przepływ ruchu wysokiego poziomu. Ograniczenia dzierżawców wymagają inspekcji SSL tylko dla ruchu do usługi Azure AD, a nie do usług w chmurze pakietu Office 365. Ta różnica jest ważna, ponieważ ilość ruchu sieciowego do uwierzytelniania w usłudze Azure AD jest zwykle znacznie mniejsza niż ilość ruchu sieciowego do SaaS aplikacji, takich jak Exchange Online i SharePoint Online.
 
@@ -68,18 +68,18 @@ Aby włączyć ograniczenia dzierżawy za pomocą infrastruktury serwera proxy, 
 
 - Ta funkcja jest uwzględniona w subskrypcjach pakietu Office 365, ale jeśli chcesz użyć ograniczeń dzierżawy do kontrolowania dostępu do innych aplikacji SaaS, wówczas wymagane są Azure AD — wersja Premium 1 licencji.
 
-#### <a name="configuration"></a>Konfiguracja
+#### <a name="configuration"></a>Konfigurowanie
 
-Dla każdego żądania przychodzącego login.microsoftonline.com login.microsoft.com i login.windows.net Wstaw dwa nagłówki HTTP: *ograniczanie dostępu do dzierżawy* i *ograniczanie dostępu do kontekstu*.
+Dla każdego żądania przychodzącego do login.microsoftonline.com, login.microsoft.com i login.windows.net, Wstaw dwa nagłówki HTTP: *ograniczanie dostępu do dzierżawców* i *ograniczanie dostępu do kontekstu*.
 
 Nagłówki powinien zawierać następujące elementy:
 
-- W przypadku *ograniczania dostępu do dzierżawców*użyj wartości \<dozwolonej listy dzierżawców\>, która jest rozdzielaną przecinkami listą dzierżawców, dla których chcesz zezwolić użytkownikom na dostęp. Dowolnej domeny, która jest zarejestrowana w dzierżawie może służyć do identyfikowania dzierżawy na tej liście. Na przykład aby zezwolić na dostęp do dzierżawy firmy Contoso i Fabrikam, pary nazwa/wartość wygląda następująco: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- W przypadku *ograniczania dostępu do dzierżawców*użyj wartości \<dozwolonej listy dzierżawców\>, która jest rozdzielaną przecinkami listą dzierżawców, dla których chcesz zezwolić użytkownikom na dostęp. Dowolnej domeny, która jest zarejestrowana w dzierżawie może służyć do identyfikowania dzierżawy na tej liście. Na przykład, aby zezwolić na dostęp zarówno do dzierżaw contoso, jak i Fabrikam, para nazwa/wartość wygląda następująco: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - Aby *ograniczyć dostęp do kontekstu*, użyj wartości identyfikatora pojedynczego katalogu, deklarując, który dzierżawca ustawia ograniczenia dzierżawy. Na przykład, aby zadeklarować contoso jako dzierżawcę, który ustawił zasady ograniczeń dzierżawy, para nazwa/wartość wygląda następująco: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
-> Identyfikator katalogu można znaleźć w [portalu Azure Active Directory](https://aad.portal.azure.com/). Zaloguj się jako administrator, wybierz opcję **usługi Azure Active Directory**, a następnie wybierz **właściwości**.
+> Identyfikator katalogu można znaleźć w [portalu Azure Active Directory](https://aad.portal.azure.com/). Zaloguj się jako administrator, wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **Właściwości**.
 
 Aby uniemożliwić użytkownikom wstawianie własnego nagłówka HTTP z niezatwierdzonymi dzierżawcami, serwer proxy musi zastąpić nagłówek *ograniczenia dostępu do dzierżawców* , jeśli jest już obecny w żądaniu przychodzącym.
 
@@ -110,7 +110,7 @@ Podobnie jak inne raporty w witrynie Azure portal można użyć filtrów, aby ok
 - **Użytkownicy**
 - **Aplikacja**
 - **Stan**
-- **Data**
+- **Dniu**
 - **Data (UTC)** (gdzie UTC jest uniwersalnym czasem koordynowanym)
 - **Metoda auth uwierzytelniania MFA (metoda uwierzytelniania wieloskładnikowego** )
 - **Szczegóły uwierzytelniania MFA (szczegóły uwierzytelniania wieloskładnikowego** )
@@ -128,13 +128,13 @@ Aplikacje pakietu Office 365 muszą spełniać dwa kryteria, aby w pełni obsłu
 1. Używany klient obsługuje nowoczesne uwierzytelnianie.
 2. Nowoczesne uwierzytelnianie jest włączony w domyślnym protokołem uwierzytelniania dla usługi w chmurze.
 
-Zapoznaj się [nowoczesne uwierzytelnianie usługi Office 365 zaktualizowane](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) najnowsze informacje na Office klienci obecnie obsługują nowoczesnego uwierzytelniania. Ta strona zawiera także łącza do instrukcje dotyczące włączania nowoczesnego uwierzytelniania na określonych usług Exchange Online i Skype dla firm Online dzierżaw. Usługi SharePoint online już domyślnie umożliwiają nowoczesne uwierzytelnianie.
+Zapoznaj się z [zaktualizowanym nowoczesnego uwierzytelniania pakietu office 365](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) , aby uzyskać najnowsze informacje na temat tego, którzy klienci pakietu Office obecnie obsługują nowoczesne uwierzytelnianie. Ta strona zawiera także łącza do instrukcje dotyczące włączania nowoczesnego uwierzytelniania na określonych usług Exchange Online i Skype dla firm Online dzierżaw. Usługi SharePoint online już domyślnie umożliwiają nowoczesne uwierzytelnianie.
 
 Aplikacje oparte na przeglądarce pakietu Office 365 (Portal Office, Yammer, witryny programu SharePoint, program Outlook w sieci Web i inne) obsługują obecnie ograniczenia dzierżawy. Klienci o szerokim zakresie (Outlook, Skype dla firm, Word, Excel, PowerPoint i innych) mogą wymuszać ograniczenia dzierżawy tylko w przypadku korzystania z nowoczesnego uwierzytelniania.  
 
 Klienci programu Outlook i Skype dla firm obsługujący nowoczesne uwierzytelnianie mogą nadal używać starszych protokołów wobec dzierżawców, w których nowoczesne uwierzytelnianie nie jest włączone, co skutecznie pomija ograniczenia dzierżawy. Ograniczenia dzierżawy mogą blokować aplikacje korzystające ze starszych protokołów, jeśli kontaktuje się z login.microsoftonline.com, login.microsoft.com lub login.windows.net podczas uwierzytelniania.
 
-Dla programu Outlook, Windows klientów może zadecydować o stosowaniu ograniczenia uniemożliwia użytkownikom dodawanie kont pocztowych niezatwierdzonych do ich profile. Na przykład zobacz [Zapobiegaj dodawanie kont innych niż domyślne Exchange konta](https://gpsearch.azurewebsites.net/default.aspx?ref=1) ustawienie zasad grupy.
+Dla programu Outlook, Windows klientów może zadecydować o stosowaniu ograniczenia uniemożliwia użytkownikom dodawanie kont pocztowych niezatwierdzonych do ich profile. Na przykład zapoznaj się z ustawieniem [zapobiegaj dodawaniu zasad grupy innych niż domyślne](https://gpsearch.azurewebsites.net/default.aspx?ref=1) .
 
 ## <a name="testing"></a>Testowanie
 
@@ -144,15 +144,15 @@ Jeśli chcesz wypróbować ograniczenia dzierżawy przed wdrożeniem jej w całe
 
 Jest to bezpłatny internetowy serwer proxy, który może służyć do przechwytywania i zmodyfikować ruch HTTP/HTTPS, w tym Wstawianie nagłówków HTTP debugowania. Aby skonfigurować programu Fiddler do testowania ograniczeń dzierżawy, wykonaj następujące czynności:
 
-1. [Pobierz i zainstaluj program Fiddler](https://www.telerik.com/fiddler).
+1. [Pobierz i zainstaluj programu Fiddler](https://www.telerik.com/fiddler).
 
-2. Konfigurowanie narzędzia Fiddler do odszyfrowywania ruchu HTTPS na [dokumentacji pomocy w narzędziu Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
+2. Skonfiguruj programu Fiddler do odszyfrowywania ruchu HTTPS na [programu Fiddler dokumentacji pomocy](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
 
-3. Konfigurowanie programu Fiddler, aby wstawić *ograniczanie dostępu do dzierżawy* i *ograniczanie dostępu do kontekstu* nagłówki za pomocą reguł niestandardowych:
+3. Skonfiguruj programu Fiddler, aby wstawić nagłówki *ograniczania dostępu do dzierżawców* i *ograniczenia dostępu do kontekstu* przy użyciu reguł niestandardowych:
 
-   1. W narzędziu Fiddler debuger sieci Web wybierz **reguły** menu, a następnie wybierz **Dostosuj reguły...** Aby otworzyć plik element CustomRules.
+   1. W narzędziu Web Debugger programu Fiddler wybierz menu **reguły** i wybierz polecenie **Dostosuj reguły...** Aby otworzyć plik element CustomRules.
 
-   2. Dodaj następujące wiersze na początku funkcji `OnBeforeRequest`. Zastąp \<domenę dzierżawcy\> domeną zarejestrowaną w dzierżawie (na przykład `contoso.onmicrosoft.com`). Zastąp \<identyfikator katalogu\> z dzierżawy usługi Azure AD GUID identyfikatora.
+   2. Dodaj następujące wiersze na początku funkcji `OnBeforeRequest`. Zastąp \<domenę dzierżawcy\> domeną zarejestrowaną w dzierżawie (na przykład `contoso.onmicrosoft.com`). Zastąp \<identyfikator katalogu\> identyfikatorem GUID usługi Azure AD Twojej dzierżawy.
 
       ```JScript.NET
       if (
@@ -172,7 +172,7 @@ Jest to bezpłatny internetowy serwer proxy, który może służyć do przechwyt
 
 4. Zapisz i zamknij plik element CustomRules.
 
-Po skonfigurowaniu programu Fiddler, można przechwytywać ruch, przechodząc do **pliku** menu i wybierając polecenie **Przechwytywanie ruchu**.
+Po skonfigurowaniu programu Fiddler można przechwytywać ruch, przechodząc do menu **plik** i wybierając pozycję **Przechwyć ruch**.
 
 ### <a name="staged-rollout-of-proxy-settings"></a>Etapowe Wdrażanie ustawień serwera proxy
 
@@ -185,5 +185,5 @@ Aby uzyskać szczegółowe informacje, zapoznaj się z dokumentacją serwera pro
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj o [aktualizacji usługi Office 365 nowoczesnego uwierzytelniania](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
-- Przegląd [URL usługi Office 365 i zakresy adresów IP](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
+- Przeczytaj o [zaktualizowanym nowoczesnej uwierzytelnianiu pakietu Office 365](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
+- Przejrzyj [adresy URL i zakresy adresów IP pakietu Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)

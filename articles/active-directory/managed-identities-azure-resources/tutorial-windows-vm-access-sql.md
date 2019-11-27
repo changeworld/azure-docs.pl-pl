@@ -193,7 +193,7 @@ Alternatywną metodą szybkiego przetestowania kompleksowej konfiguracji bez pot
 
 Sprawdź wartość `$DataSet.Tables[0]`, aby wyświetlić wyniki zapytania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób używania przypisanej przez system tożsamości zarządzanej w celu uzyskania dostępu do serwera usługi Azure SQL. Aby dowiedzieć się więcej o usłudze Azure SQL Server, zobacz:
 

@@ -48,7 +48,7 @@ Otwórz plik `HoloLens\DirectX\SampleHoloLens.sln` w programie Visual Studio.
 
 Następnym krokiem jest skonfigurowanie aplikacji w taki sposób, aby korzystała z identyfikatora konta i klucza konta. Skopiowano je do edytora tekstu podczas [konfigurowania zasobów kotwic przestrzennych](#create-a-spatial-anchors-resource).
 
-Otwórz `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
+Otwórz plik `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
 
 Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
 

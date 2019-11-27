@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846746"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546346"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -96,7 +96,7 @@ Aby wyświetlić wyniki w formacie CSV:
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
-### <a name="system-requirements"></a>Wymagania systemu
+### <a name="system-requirements"></a>Wymagania systemowe
 - Serwer z jedną z następujących wersji systemu operacyjnego:
 
     | Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
@@ -143,9 +143,9 @@ Aby wyświetlić wyniki w formacie CSV:
 |-|-|
 | Desktop.ini | Plik specyficzny dla systemu |
 | ethumbs.db$ | Plik tymczasowy dla miniatur |
-| ~$\*.\* | Plik tymczasowy pakietu Office |
-| \*.tmp | Plik tymczasowy |
-| \*.laccdb | Plik blokowania dostępu do bazy danych|
+| \*~$.\* | Plik tymczasowy pakietu Office |
+| \*. tmp | Plik tymczasowy |
+| \*. LACCDB | Plik blokowania dostępu do bazy danych|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Plik synchronizacji wewnętrznej|
 | Informacje o woluminie systemowym \\ | Folder określony dla woluminu |
 | $RECYCLE. OKREŚLONEJ| Folder |
@@ -168,7 +168,7 @@ Zwróć uwagę, że oszczędności woluminu dotyczą tylko serwera programu; Two
 > [!Note]  
 > Deduplikacja danych i Obsługa warstw w chmurze nie są obecnie obsługiwane na tym samym woluminie na serwerze 2019 z powodu błędu, który zostanie rozwiązany w przyszłej aktualizacji.
 
-**Windows Server 2012 R2**  
+**System Windows Server 2012 R2**  
 Azure File Sync nie obsługuje deduplikacji danych i warstw w chmurze na tym samym woluminie w systemie Windows Server 2012 R2. Jeśli Deduplikacja danych jest włączona w woluminie, Obsługa warstw w chmurze musi być wyłączona. 
 
 **Uwagi**
@@ -227,7 +227,7 @@ Jeśli używasz lokalnego rozwiązania do tworzenia kopii zapasowych, kopie zapa
 > Przywracanie bez systemu operacyjnego (BMR) może spowodować nieoczekiwane wyniki i nie jest obecnie obsługiwane.
 
 > [!Note]  
-> Migawki usługi VSS (w tym poprzednie wersje) nie są obecnie obsługiwane na woluminach, na których włączono obsługę warstw w chmurze. Jeśli włączono obsługę warstw w chmurze, użyj migawek udziałów plików platformy Azure, aby przywrócić plik z kopii zapasowej.
+> W wersji 9 agenta usługi Azure File SYnc migawki VSS (w tym poprzednie wersje karty) są teraz obsługiwane na woluminach, na których włączono obsługę warstw w chmurze. Należy jednak włączyć zgodność poprzedniej wersji za poorednictwem programu PowerShell. [Dowiedz się, jak to zrobić](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Rozwiązania do szyfrowania
 Obsługa rozwiązań szyfrowania zależy od sposobu ich implementacji. Azure File Sync jest znana z:

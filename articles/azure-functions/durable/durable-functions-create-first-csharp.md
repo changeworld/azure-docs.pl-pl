@@ -18,7 +18,7 @@ ms.locfileid: "74231507"
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
-In this article, you learn how to use the Visual Studio 2019 to locally create and test a "hello world" durable function.  Ta funkcja aranżuje i łączy w łańcuchy wywołania do innych funkcji. Kod funkcji zostanie następnie opublikowany na platformie Azure. These tools are available as part of the Azure development workload in Visual Studio 2019.
+W tym artykule dowiesz się, jak używać programu Visual Studio 2019 do lokalnego tworzenia i testowania trwałej funkcji "Hello World".  Ta funkcja aranżuje i łączy w łańcuchy wywołania do innych funkcji. Kod funkcji zostanie następnie opublikowany na platformie Azure. Te narzędzia są dostępne w ramach obciążeń programistycznych platformy Azure w programie Visual Studio 2019.
 
 ![Uruchamianie funkcji trwałej na platformie Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
@@ -26,7 +26,7 @@ In this article, you learn how to use the Visual Studio 2019 to locally create a
 
 W celu ukończenia tego samouczka:
 
-* Install [Visual Studio 2019](https://visualstudio.microsoft.com/vs/). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane. Visual Studio 2017 also supports Durable Functions development, but the UI and steps differ.
+* Zainstaluj [program Visual Studio 2019](https://visualstudio.microsoft.com/vs/). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane. Program Visual Studio 2017 obsługuje także programowanie Durable Functions, ale interfejs użytkownika i kroki różnią się.
 
 * Sprawdź, czy zainstalowano i uruchomiono [emulator magazynu Azure](../../storage/common/storage-use-emulator.md).
 
@@ -38,23 +38,23 @@ Szablon projektu usługi Azure Functions umożliwia utworzenie projektu, który 
 
 1. W programie Visual Studio wybierz pozycję **Nowy** > **Projekt** z menu **Plik**.
 
-1. In the **Add a new project** dialog, search for `functions`, choose the **Azure Functions** template, and select **Next**. 
+1. W oknie dialogowym **Dodawanie nowego projektu** Wyszukaj `functions`, wybierz szablon **Azure Functions** i wybierz przycisk **dalej**. 
 
     ![Okno dialogowe Nowy projekt umożliwiające utworzenie funkcji w programie Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-1. Type a **Project name** for your project, and select **OK**. The project name must be valid as a C# namespace, so don't use underscores, hyphens, or any other nonalphanumeric characters.
+1. Wpisz **nazwę projektu** , a następnie wybierz **przycisk OK**. Nazwa projektu musi być prawidłowa jako C# przestrzeń nazw, dlatego nie należy używać podkreśleń, łączników ani żadnych innych znaków niealfanumerycznych.
 
-1. In **Create a new Azure Functions Application**, use the settings specified in the table that follows the image.
+1. W obszarze **Utwórz nową aplikację Azure Functions**Użyj ustawień określonych w tabeli, która następuje po obrazie.
 
-    ![Create a new Azure Functions Application dialog in Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
+    ![Utwórz nowe okno dialogowe aplikacji Azure Functions w programie Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
     | Ustawienie      | Sugerowana wartość  | Opis                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Wersja** | Azure Functions 2.0 <br />(.NET Core) | Creates a function project that uses the version 2.0 runtime of Azure Functions, which supports .NET Core. Azure Functions 1.0 supports the .NET Framework. Aby uzyskać więcej informacji, zobacz [How to target Azure Functions runtime version (Wybieranie wersji środowiska uruchomieniowego usługi Azure Functions)](../functions-versions.md).   |
+    | **Wersja** | Azure Functions 2,0 <br />(.NET Core) | Tworzy projekt funkcji, który używa środowiska uruchomieniowego w wersji 2,0 dla Azure Functions, który obsługuje program .NET Core. Azure Functions 1,0 obsługuje .NET Framework. Aby uzyskać więcej informacji, zobacz [How to target Azure Functions runtime version (Wybieranie wersji środowiska uruchomieniowego usługi Azure Functions)](../functions-versions.md).   |
     | **Szablon** | Pusty | Tworzy pustą aplikację funkcji. |
     | **Konto magazynu**  | Emulator magazynu | Konto magazynu jest wymagane do zarządzania stanem funkcji trwałej. |
 
-4. Select **Create** to create an empty function project. Ten projekt zawiera pliki konfiguracji podstawowej wymagane do uruchomienia Twoich funkcji.
+4. Wybierz pozycję **Utwórz** , aby utworzyć pusty projekt funkcji. Ten projekt zawiera pliki konfiguracji podstawowej wymagane do uruchomienia Twoich funkcji.
 
 ## <a name="add-functions-to-the-app"></a>Dodawanie funkcji do aplikacji
 
@@ -64,21 +64,21 @@ Poniższe kroki używają szablonu do tworzenia trwałego kodu funkcji w projekc
 
     ![Dodawanie nowej funkcji](./media/durable-functions-create-first-csharp/functions-vs-add-new-function.png)
 
-1. Verify **Azure Function** is selected from the add menu, type a name for your C# file, and then select **Add**.
+1. Sprawdź, czy **Funkcja platformy Azure** została wybrana z menu Dodaj, wpisz nazwę C# pliku, a następnie wybierz pozycję **Dodaj**.
 
-1. Select the **Durable Functions Orchestration** template and then select **Ok**
+1. Wybierz szablon **Durable Functions aranżacji** , a następnie wybierz przycisk **OK** .
 
     ![Wybór szablonu trwałego](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
 > [!NOTE]
-> This template currently creates a durable function using an older 1.x version of the extension. See the [Durable Functions Versions](durable-functions-versions.md) article for information about how to upgrade to the newer 2.x versions of Durable Functions.
+> Ten szablon obecnie tworzy funkcję trwałą przy użyciu starszej wersji 1. x rozszerzenia. Zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) , aby uzyskać informacje na temat uaktualniania do nowszej wersji programu Durable Functions. x.
 
 Nowa trwała funkcja jest dodawana do aplikacji.  Otwórz nowy plik cs, aby wyświetlić jego zawartość. Ta trwała funkcja jest prostym przykładem łączenia funkcji w łańcuch przy użyciu następujących metod:  
 
 | Metoda | FunctionName | Opis |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Zarządza trwałą aranżacją. W tym przypadku aranżacja się rozpoczyna, tworzy listę i dodaje wynik trzech wywołań funkcji do listy.  Po ukończeniu trzech wywołań funkcji zwraca listę. |
-| **`SayHello`** | `<file-name>_Hello` | Funkcja zwraca hello. It is the function that contains the business logic that is being orchestrated. |
+| **`SayHello`** | `<file-name>_Hello` | Funkcja zwraca hello. Jest to funkcja, która zawiera logikę biznesową, która jest poddana aranżacji. |
 | **`HttpStart`** | `<file-name>_HttpStart` | [Funkcja wyzwalana przez protokół HTTP](../functions-bindings-http-webhook.md), która uruchamia wystąpienie aranżacji i zwraca odpowiedź stanu kontroli. |
 
 Po utworzeniu projektu funkcji i funkcji trwałej można ją przetestować na komputerze lokalnym.
@@ -101,7 +101,7 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 
 4. Skopiuj wartość adresu URL z właściwości `statusQueryGetUri`, wklej ją w pasku adresu przeglądarki i wykonaj żądanie.
 
-    Żądanie wykona zapytanie o stan wystąpienia aranżacji. W końcu powinna zostać zwrócona odpowiedź podobna do następującej.  This output shows us the instance has completed, and includes the outputs or results of the durable function.
+    Żądanie wykona zapytanie o stan wystąpienia aranżacji. W końcu powinna zostać zwrócona odpowiedź podobna do następującej.  Dane wyjściowe pokazują, że wystąpienie zostało zakończone i zawiera dane wyjściowe lub wyniki funkcji trwałej.
 
     ```json
     {

@@ -77,7 +77,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 |[New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|Tworzy nową regułę aplikacji usługi Azure Firewall.|
 |[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|Zatwierdza zmiany w obiekcie usługi Azure Firewall.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

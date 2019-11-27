@@ -109,7 +109,7 @@ Niektóre elementy, które można przeanalizować za pomocą dzienników diagnos
 
 Zobacz [monitorowanie dzienników diagnostycznych usługi Media Service](media-services-diagnostic-logs-howto.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Jak zbierać i zużywać dane dzienników z zasobów platformy Azure](../../azure-monitor/platform/resource-logs-overview.md)
 * [Tworzenie i wyświetlanie alertów metryk oraz zarządzanie nimi w usłudze Azure Monitor](../../azure-monitor/platform/alerts-metric.md)

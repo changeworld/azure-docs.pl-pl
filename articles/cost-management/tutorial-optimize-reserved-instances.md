@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Cloudyn.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję rozwiązania Cloudyn.
 - Musisz mieć wystąpienia zarezerwowane kupione na platformie Azure lub AWS.
 
 ## <a name="understand-azure-ri-costs"></a>Poznanie kosztów wystąpień zarezerwowanych na platformie Azure

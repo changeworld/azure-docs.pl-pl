@@ -60,7 +60,7 @@ Dodając konto lub aktualizując subskrypcję przyznajesz platformie Cloudyn dos
 1. Jeśli chcesz zaktualizować _nieaktywowaną_ subskrypcję, która już istnieje na platformie Cloudyn w rozwiązaniu do zarządzania kontami, kliknij symbol ołówka (edycja) z prawej strony nadrzędnego _identyfikatora GUID dzierżawy_. Subskrypcje są grupowane w ramach dzierżawy nadrzędnej, należy więc unikać ich indywidualnego aktywowania.
     ![Wybieranie swojego identyfikatora dzierżawy w oknie Ponowne odnajdowanie subskrypcji](./media/activate-subs-accounts/existing-sub.png)
 2. W razie potrzeby wprowadź identyfikator dzierżawy. Jeśli nie znasz identyfikatora dzierżawy, wykonaj następujące czynności, aby go znaleźć:
-    1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+    1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
     2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
     3. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
     4. Skopiuj identyfikator GUID katalogu. Ta wartość jest Twoim identyfikatorem dzierżawy.
@@ -87,7 +87,7 @@ Przy pierwszym użyciu portalu Cloudyn możesz zobaczyć poniższe komunikaty, j
 
 - Komunikat *Wybrany klucz interfejsu API nie jest kluczem rejestracji najwyższego poziomu rejestrowania* wyświetlany w kreatorze **Konfigurowanie platformy Cloudyn**.
 - Komunikat *Bezpośrednia rejestracja — nie* wyświetlany w portalu umowy Enterprise Agreement.
-- *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* displayed in the Cloudyn portal.
+- *Nie znaleziono danych użycia w ciągu ostatnich 30 dni. Skontaktuj się z dystrybutorem, aby upewnić się, że w portalu Cloudyn włączono znaczniki dla Twojego konta platformy Azure* .
 
 Poprzednie komunikaty oznaczają, że umowa Azure Enterprise Agreement została zakupiona od odsprzedawcy lub dostawcy rozwiązań w chmurze. Odsprzedawca lub dostawca rozwiązań w chmurze musi włączyć _znaczniki_ dla konta platformy Azure, aby można było wyświetlać dane na platformie Cloudyn.
 

@@ -171,7 +171,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Po wywołaniu funkcji żądanie HTTP jest przekazywane do tej funkcji jako `req`. Wpis zostanie pobrany z usługi Azure Blob Storage w oparciu o _Identyfikator_ w adresie URL trasy i udostępniony jako `obj` w treści funkcji.  W tym miejscu określone konto magazynu to parametry połączenia Znalezione w programie, które jest tym samym kontem magazynu, które jest używane przez aplikację funkcji.
+Gdy funkcja jest wywoływana, żądanie HTTP jest przesyłane do funkcji jako `req`. Wpis zostanie pobrany z usługi Azure Blob Storage w oparciu o _Identyfikator_ w adresie URL trasy i udostępniony jako `obj` w treści funkcji.  W tym miejscu określone konto magazynu to parametry połączenia Znalezione w programie, które jest tym samym kontem magazynu, które jest używane przez aplikację funkcji.
 
 
 ## <a name="outputs"></a>Dane wyjściowe

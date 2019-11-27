@@ -1,6 +1,6 @@
 ---
-title: Hunting capabilities using notebooks in Azure Sentinel| Microsoft Docs
-description: This article describes how to use notebooks with the Azure Sentinel hunting capabilities.
+title: Możliwości łowiectwa przy użyciu notesów na platformie Azure — wskaźnikowa | Microsoft Docs
+description: W tym artykule opisano, jak używać notesów z możliwościami polowania na platformie Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -23,127 +23,127 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483264"
 ---
-# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Use Jupyter notebooks to hunt for security threats
+# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Korzystanie z notesów Jupyter do wyszukiwania zagrożeń bezpieczeństwa
 
-The foundation of Azure Sentinel is the data store; it combines high performance querying, dynamic schema, and scales to massive data volumes. The Azure portal and all Azure Sentinel tools use a common API to access this data store. The same API is also available for external tools such as [Jupyter](https://jupyter.org/) notebooks and Python. While many common tasks can be carried out in the portal, Jupyter extends the scope of what you can do with this data. It combines full programmability with a huge collection of libraries for machine learning, visualization, and data analysis. These attributes make Jupyter a compelling tool for security investigation and hunting.
+Podstawą platformy Azure jest magazyn danych; łączy ona wysoką wydajność zapytań, schematu dynamicznego i skaluje się do dużych ilości danych. Aby uzyskać dostęp do tego magazynu danych, Azure Portal i wszystkie narzędzia wskaźnikowe platformy Azure używają wspólnego interfejsu API. Ten sam interfejs API jest również dostępny dla narzędzi zewnętrznych, takich jak notesy [Jupyter](https://jupyter.org/) i Python. Chociaż wiele typowych zadań można wykonać w portalu, Jupyter rozszerza zakres tego, co można zrobić za pomocą tych danych. Łączy ona pełen programowalność z ogromną kolekcją bibliotek na potrzeby uczenia maszynowego, wizualizacji i analizy danych. Te atrybuty sprawiają, że Jupyter narzędzi do dochodzenia do zabezpieczeń i polowania.
 
-![example notebook](./media/notebooks/sentinel-notebooks-map.png)
+![Przykładowy Notes](./media/notebooks/sentinel-notebooks-map.png)
 
-We've integrated the Jupyter experience into the Azure portal, making it easy for you to create and run notebooks to analyze your data. The *Kqlmagic* library provides the glue that lets you take queries from Azure Sentinel and run them directly inside a notebook. Queries use the [Kusto Query Language](https://kusto.azurewebsites.net/docs/query/index.html). Several notebooks, developed by some of Microsoft's security analysts, are packaged with Azure Sentinel. Some of these notebooks are built for a specific scenario and can be used as-is. Others are intended as samples to illustrate techniques and features that you can copy or adapt for use in your own notebooks. Other notebooks may also be imported from the Azure Sentinel community GitHub.
+Środowisko Jupyter zostało zintegrowane z Azure Portal, co ułatwia tworzenie i uruchamianie notesów w celu analizowania danych. Biblioteka *Kqlmagic* zapewnia klej, który umożliwia wykonywanie zapytań z platformy Azure, i uruchamianie ich bezpośrednio w notesie. Zapytania używają [języka zapytań Kusto](https://kusto.azurewebsites.net/docs/query/index.html). Kilka notesów opracowanych przez niektórych analityków zabezpieczeń firmy Microsoft jest pakowanych z platformą Azure — wskaźnikiem. Niektóre z tych notesów zostały skompilowane w konkretnym scenariuszu i mogą być używane w taki sam sposób. Inne zawarto jako przykłady ilustrujące techniki i funkcje, które można skopiować lub dostosować do użycia we własnych notesach. Inne notesy mogą być również importowane z witryny Azure
 
-The integrated Jupyter experience uses [Azure Notebooks](https://notebooks.azure.com/) to store, share, and execute notebooks. You can also run these notebooks locally if you have a Python environment and Jupyter on your computer, or in other JupterHub environments such as Azure Databricks.
+Zintegrowane środowisko Jupyter korzysta z [Azure Notebooks](https://notebooks.azure.com/) do przechowywania, udostępniania i wykonywania notesów. Te notesy można również uruchomić lokalnie, jeśli masz środowisko Python i Jupyter na komputerze, lub w innych środowiskach JupterHub, takich jak Azure Databricks.
 
-Notebooks have two components:
+Notesy mają dwa składniki:
 
-- The browser-based interface where you enter and run queries and code, and where the results of the execution are displayed.
-- A *kernel* that is responsible for parsing and executing the code itself. 
+- Interfejs oparty na przeglądarce, w którym można wprowadzać i uruchamiać zapytania i kod oraz miejsce wyświetlania wyników wykonania.
+- *Jądro* odpowiedzialne za analizowanie i wykonywanie kodu. 
 
-In Azure Notebooks, by default, this kernel runs on Azure *Free Cloud Compute and Storage*. If your notebooks include complex machine learning models or visualizations, consider using more powerful, dedicated compute resources such as [Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM). Notebooks in your account are kept private unless you choose to share them.
+W Azure Notebooks domyślnie to jądro działa na platformie Azure *i w bezpłatnej przestrzeni dyskowej w chmurze*. Jeśli notesy zawierają złożone modele uczenia maszynowego lub wizualizacje, warto rozważyć użycie bardziej wydajnych, dedykowanych zasobów obliczeniowych, takich jak [Virtual Machines analizy danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM). Notesy na Twoim koncie są przechowywane jako prywatne, chyba że zdecydujesz się je udostępnić.
 
-The Azure Sentinel notebooks use many popular Python libraries such as pandas, matplotlib, bokeh, and others. There are a great many other Python packages for you to choose from, covering areas such as:
+W notesach usługi Azure Pandas są używane wiele popularnych bibliotek języka Python, takich jak, matplotlib, bokeh i inne. Istnieje doskonały wiele innych pakietów języka Python, które można wybrać, obejmujących obszary takie jak:
 
-- Visualizations and graphics
-- Data processing and analysis
-- Statistics and numerical computing
-- Machine learning and deep learning
+- Wizualizacje i grafika
+- Przetwarzanie i analiza danych
+- Statystyka i obliczenia liczbowe
+- Uczenie maszynowe i uczenie głębokie
 
-We've also released some open-source Jupyter security tools in a package named [msticpy](https://github.com/Microsoft/msticpy/). This package is used in many of the included notebooks. Msticpy tools are designed specifically to help with creating notebooks for hunting and investigation and we're actively working on new features and improvements.
+Wydano również niektóre narzędzia zabezpieczeń Jupyter typu open source w pakiecie o nazwie [msticpy](https://github.com/Microsoft/msticpy/). Ten pakiet jest używany w wielu z dołączonych notesów. Narzędzia Msticpy zostały zaprojektowane specjalnie w celu ułatwienia tworzenia notesów dla łowiectwa i badania, a my pracujemy nad nowymi funkcjami i ulepszeniami.
 
-The initial notebooks include:
+Notesy początkowe obejmują:
 
-- **Guided investigation - Process Alerts**: Allows you to quickly triage alerts by analyzing activity on the affected host or hosts.
-- **Guided hunting - Windows host explorer**: Allows you to explore account activity, process executions, network activity, and other events on a host.
-- **Guided hunting - Office365-Exploring**: Hunt for suspicious Office 365 activity in multiple Office 365 data sets.
+- **Badanie z przewodnikiem — alerty procesów**: umożliwiają szybkie Klasyfikacja alertów przez analizowanie aktywności na uszkodzonym hoście lub hostach.
+- **Łowiectwo z przewodnikiem — Eksplorator hosta systemu Windows**: umożliwia Eksplorowanie aktywności konta, wykonywania procesów, aktywności sieci i innych zdarzeń na hoście.
+- **Łowiectwo z przewodnikiem — Office 365**: w przypadku podejrzanych działań związanych z pakietem Office 365 w wielu zestawach danych z pakietu Office 365.
 
-The [Azure Sentinel Community GitHub repository](https://github.com/Azure/Azure-Sentinel) is the location for any future Azure Sentinel notebooks built by Microsoft or contributed from the community.
+[Repozytorium Azure wskaźnikowego społeczności GitHub](https://github.com/Azure/Azure-Sentinel) jest lokalizacją dla każdego przyszłego notesu usługi Azure wskaźnikowego, utworzonego przez firmę Microsoft lub pochodzącego od społeczności.
 
-To use the notebooks, you must have an Azure Notebooks account. For more information, see [Quickstart: Sign in and set a user ID](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks) from the Azure Notebooks documentation. To create this account, you can use the **Sign up for Azure Notebooks** option from the command bar in **Azure Sentinel - Notebooks**:
+Aby móc korzystać z notesów, musisz mieć konto Azure Notebooks. Aby uzyskać więcej informacji, zobacz [Szybki Start: Logowanie i Ustawianie identyfikatora użytkownika](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks) z dokumentacji Azure Notebooks. Aby utworzyć to konto, możesz użyć opcji **Utwórz konto do Azure Notebooks** na pasku poleceń na **platformie Azure — notesy**:
 
 > [!div class="mx-imgBorder"]
->![Sign up for Azure Notebooks option](./media/notebooks/sentinel-azure-sign-up-azure-notebooks.png)
+>![opcję Rejestracja w usłudze Azure Notebooks](./media/notebooks/sentinel-azure-sign-up-azure-notebooks.png)
 
-You can run a notebook direct from Azure Sentinel, or clone all the Azure Sentinel notebooks to a new Azure Notebooks project.
+Możesz uruchomić Notes bezpośrednio z usługi Azure wskaźnikowej lub sklonować wszystkie notesy usługi Azure wskaźnikowego do nowego projektu Azure Notebooks.
 
-## <a name="run-a-notebook-from-azure-sentinel"></a>Run a notebook from Azure Sentinel
+## <a name="run-a-notebook-from-azure-sentinel"></a>Uruchamianie notesu z poziomu platformy Azure — wskaźnik
  
-1. From the Azure portal, navigate to **Azure Sentinel** > **Threat management** > **Notebooks**, where you can see notebooks that Azure Sentinel provides. 
+1. W Azure Portal przejdź do **notesu** **azure — wskaźnik** >  > **zarządzania zagrożeniami** , w którym można zobaczyć notesy udostępniane przez platformę Azure. 
 
-2. Select individual notebooks to read their descriptions, required data types, and data sources. Na przykład:
+2. Wybierz poszczególne notesy, aby odczytać ich opisy, wymagane typy danych i źródła danych. Na przykład:
     
     > [!div class="mx-imgBorder"]
-    > ![launch notebook](./media/notebooks/sentinel-azure-notebooks-launch.png)
+    > ](./media/notebooks/sentinel-azure-notebooks-launch.png) ![uruchamiania notesu
 
-3. Select the notebook you want to use, and then select **Launch Notebook (Preview)** to clone and configure the notebook into a new Azure Notebooks project that connects to your Azure Sentinel workspace. When the process is complete, the notebook opens within Azure Notebooks for you to run.
+3. Wybierz Notes, którego chcesz użyć, a następnie wybierz pozycję **Uruchom Notes (wersja zapoznawcza)** , aby sklonować i skonfigurować Notes w nowym projekcie Azure Notebooks, który łączy się z obszarem roboczym wskaźnikowego platformy Azure. Po zakończeniu procesu Notes zostanie otwarty w Azure Notebooks, aby można było go uruchomić.
 
-## <a name="clone-azure-sentinel-notebooks-to-a-new-azure-notebooks-project"></a>Clone Azure Sentinel notebooks to a new Azure Notebooks project
+## <a name="clone-azure-sentinel-notebooks-to-a-new-azure-notebooks-project"></a>Klonowanie notesów wskaźnikowych platformy Azure do nowego projektu Azure Notebooks
 
-This procedure creates an Azure Notebooks project for you, which contains the Azure Sentinel notebooks. You can then run the notebooks as-is, or make changes to them and then run them.
+Ta procedura powoduje utworzenie projektu Azure Notebooks dla Ciebie, który zawiera notesy usługi Azure wskaźnikowej. Następnie można uruchamiać notesy w stanie takim, w jakim się znajdują, lub wprowadzać w nich zmiany, a następnie uruchamiać je.
 
-1. From the Azure portal, navigate to **Azure Sentinel** > **Threat management** > **Notebooks** and then select **Clone Notebooks** from the command bar:
+1. W Azure Portal przejdź do opcji **Azure wskaźnik** > **zarządzania zagrożeniami** > **notesy** , a następnie wybierz pozycję **Klonuj notesy** na pasku poleceń:
   
     > [!div class="mx-imgBorder"]
-    >![Clone Notebooks option](./media/notebooks/sentinel-azure-clone-notebooks.png)
+    >Opcja ![klonowania notesów](./media/notebooks/sentinel-azure-clone-notebooks.png)
 
-2. When the following dialog appears, select **Import** to clone the GitHub repo into your Azure Notebooks project. If you don't have an existing Azure Notebooks account, you'll be prompted to create one and sign in.
+2. Gdy zostanie wyświetlone następujące okno dialogowe, wybierz pozycję **Importuj** , aby sklonować repozytorium GitHub do projektu Azure Notebooks. Jeśli nie masz istniejącego konta Azure Notebooks, zostanie wyświetlony monit o utworzenie i zalogowanie się.
 
-   ![Import notebook](./media/notebooks/sentinel-notebooks-clone.png)
+   ![Importuj Notes](./media/notebooks/sentinel-notebooks-clone.png)
 
-3. On the **Upload GitHub Repository** dialog box, don't select **Clone recursively** because this option refers to linked GitHub repos. For the project name, use the default name or type in a new one. Then click **Import** to start cloning the GitHub content, which can take a few minutes to complete.
+3. W oknie dialogowym **przekazywanie repozytorium GitHub** nie wybieraj **rekurencyjnie klonowania** , ponieważ ta opcja odnosi się do połączonych repozytoriów GitHub. W polu Nazwa projektu Użyj nazwy domyślnej lub wpisz nową nazwę. Następnie kliknij przycisk **Importuj** , aby rozpocząć klonowanie zawartości usługi GitHub, co może potrwać kilka minut.
 
-   ![Import notebook](./media/notebooks/sentinel-create-project.png)
+   ![Importuj Notes](./media/notebooks/sentinel-create-project.png)
 
-4. Open the project you just created, and then open the **Notebooks** folder to see the notebooks. Na przykład:
+4. Otwórz właśnie utworzony projekt, a następnie otwórz folder **notesy** , aby wyświetlić notesy. Na przykład:
 
-   ![Import repo](./media/notebooks/sentinel-open-notebook1.png)
+   ![Importuj repozytorium](./media/notebooks/sentinel-open-notebook1.png)
 
-You can then run the notebooks from Azure Notebooks. To return to these notebooks from Azure Sentinel, select **Go to your Notebooks** from the command bar in **Azure Sentinel - Notebooks**:
+Następnie można uruchomić notesy z Azure Notebooks. Aby wrócić do tych notesów z obszaru wskaźnikowego platformy Azure, wybierz pozycję **Przejdź do notesu** na pasku poleceń w witrynie **Azure — notesy**:
 
 > [!div class="mx-imgBorder"]
->![Go to your Notebooks option](./media/notebooks/sentinel-azure-to-go-notebooks.png)
+>![przejdź do opcji notesy](./media/notebooks/sentinel-azure-to-go-notebooks.png)
 
 
-## <a name="using-notebooks-to-hunt"></a>Using notebooks to hunt
+## <a name="using-notebooks-to-hunt"></a>Korzystanie z notesów do wyszukiwania
 
-Each notebook walks you through the steps for carrying out a hunt or investigation. Libraries and other dependencies needed by the notebook can be installed from the notebook itself or via a simple configuration procedure. Configuration that ties your notebook project back to your Azure Sentinel subscription is automatically provisioned in the preceding steps.
+Każdy Notes przeprowadzi Cię przez kroki w celu przeprowadzenia wyszukiwania lub badania. Biblioteki i inne zależności wymagające tego notesu można zainstalować z notesu lub za pomocą prostej procedury konfiguracji. Konfiguracja, która wiąże Twój projekt notesu z powrotem z subskrypcją usługi Azure wskaźnikowego, jest automatycznie obsługiwana w poprzednich krokach.
 
-1. If you're not already in Azure Notebooks, you can use the **Go to your Notebooks** option from the command bar in **Azure Sentinel - Notebooks**:
+1. Jeśli nie jesteś jeszcze w Azure Notebooks, możesz użyć opcji **Przejdź do notesu** na pasku poleceń w obszarze **Azure — notesy**:
     
     > [!div class="mx-imgBorder"]
-    >![Go to your Notebooks option](./media/notebooks/sentinel-azure-to-go-notebooks.png)
+    >![przejdź do opcji notesy](./media/notebooks/sentinel-azure-to-go-notebooks.png)
     
-    In Azure Notebooks, select **My Projects**, then the project that contains the Azure Sentinel notebooks, and finally the **Notebooks** folder.
+    W Azure Notebooks wybierz pozycję **Moje projekty**, projekt zawierający notesy usługi Azure wskaźnikowej, a następnie folder **notesy** .
     
-2. Before you open a notebook, be aware that by default, Free Compute is selected to run the notebooks:
+2. Przed otwarciem notesu należy pamiętać, że domyślnie do uruchamiania notesów jest wybrane bezpłatne obliczenie:
     
-   ![select notebook](./media/notebooks/sentinel-open-notebook2.png)
+   ![Wybieranie notesu](./media/notebooks/sentinel-open-notebook2.png)
     
-    If you've configured a Data Science Virtual Machines (DSVM) to use as explained in the introduction, select the DSVM and authenticate before you open the first notebook. 
+    Jeśli skonfigurowano Virtual Machines analizy danych (DSVM) do użycia zgodnie z opisem we wprowadzeniu, wybierz DSVM i Uwierzytelnij przed otwarciem pierwszego notesu. 
 
-3. Select a notebook to open it.
+3. Wybierz Notes, aby go otworzyć.
     
-    The first time you open a notebook, you might be prompted to select a kernel version. If you're not prompted, you can select the kernel version from **Kernel** >  **Change kernel**, and then select a version that's at least 3.6. The selected kernel version is displayed in the top right of the notebook window:
+    Przy pierwszym otwarciu notesu może zostać wyświetlony monit o wybranie wersji jądra. Jeśli nie zostanie wyświetlony monit, możesz wybrać **wersję jądra z >  ** **zmienić jądro**, a następnie wybrać wersję, która ma co najmniej 3,6. Wybrana wersja jądra zostanie wyświetlona w prawym górnym rogu okna notesu:
     
-   ![select notebook](./media/notebooks/sentinel-select-kernel.png)
+   ![Wybieranie notesu](./media/notebooks/sentinel-select-kernel.png)
 
-4. Before you make any changes to notebook that you've downloaded, it's a good idea to make a copy of the original notebook and work on the copy. To do that, select **File** > **Make a Copy**. Working on copies lets you safely update to future versions of notebooks without overwriting any of your data.
+4. Przed wprowadzeniem jakichkolwiek zmian do pobranego notesu dobrym pomysłem jest wykonanie kopii oryginalnego notesu i rozpoczęcie pracy z kopią. W tym celu wybierz pozycję **plik** > **utworzyć kopię**. Praca nad kopiami pozwala bezpiecznie aktualizować do przyszłych wersji notesów bez zastępowania żadnych danych.
     
-    You're now ready to run or edit the selected notebook.
+    Teraz można przystąpić do uruchamiania lub edytowania wybranego notesu.
 
-Recommendations:
+Mając
 
-- For a quick introduction to querying data in Azure Sentinel, look at the [GetStarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) notebook in the main **Notebooks** folder. 
+- Aby zapoznać się z szybkim wprowadzeniem do wykonywania zapytań dotyczących danych na platformie Azure, zapoznaj się z notesem [getstarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) w folderze głównym **notesów** . 
 
-- You'll find additional sample notebooks in the **Sample-Notebooks** subfolder. These sample notebooks have been saved with data, so that it's easier to see the intended output. We recommend viewing these notebooks in [nbviewer](https://nbviewer.jupyter.org/). 
+- Dodatkowe przykładowe notesy znajdują się w podfolderze **Samples-Notess** . Te przykładowe notesy zostały zapisane w danych, dzięki czemu można łatwiej zobaczyć zamierzone dane wyjściowe. Zalecamy wyświetlanie tych notesów w [nbviewer](https://nbviewer.jupyter.org/). 
 
-- The **HowTos** folder contains notebooks describing, for example: Setting you default Python version, configuring a DSVM, creating Azure Sentinel bookmarks from a notebook, and other subjects.
+- Folder **HOWTOs** zawiera notesy opisujące, na przykład: ustawienie domyślnej wersji języka Python, skonfigurowanie DSVM, tworzenie zakładek wskaźnikowych platformy Azure z notesu i innych tematów.
 
-The notebooks provided are intended as both useful tools and as illustrations and code samples that you can use in the development of your own notebooks.
+Udostępniane notesy są przeznaczone zarówno jako przydatne narzędzia, jak i przykłady kodu, których można używać do tworzenia własnych notesów.
 
-We welcome feedback, whether suggestions, requests for features, contributed Notebooks, bug reports or improvements and additions to existing notebooks. Go to the [Azure Sentinel Community GitHub](https://github.com/Azure/Azure-Sentinel) to create an issue or fork and upload a contribution.
+Zapraszamy do przekazywania opinii, sugestii, żądań dotyczących funkcji, notesów programu, raportów błędów lub ulepszeń oraz dodatków do istniejących notesów. Przejdź do witryny [Azure wskaźnikowej społeczności GitHub](https://github.com/Azure/Azure-Sentinel) , aby utworzyć problem lub rozwidlenie i przekazać wkład.
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this article, you learned how to get started using Jupyter notebooks in Azure Sentinel. To learn more about Azure Sentinel, see the following articles:
+W tym artykule przedstawiono sposób rozpoczynania pracy z notesami Jupyter na platformie Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 
-- [Proactively hunt for threats](hunting.md)
-- [Use bookmarks to save interesting information while hunting](bookmarks.md)
+- [Proaktywne wyszukiwanie zagrożeń](hunting.md)
+- [Korzystanie z zakładek do zapisywania interesujących informacji podczas polowania](bookmarks.md)

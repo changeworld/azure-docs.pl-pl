@@ -108,5 +108,5 @@ Możesz również pobrać rozszerzenie dla przeglądarki Chrome i Firefox z link
 -   [Rozszerzenie panelu dostępu Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
 ## <a name="next-steps"></a>Następne kroki
-[Udostępnij logowanie jednokrotne do aplikacji serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md)
+[Zapewnianie logowania jednokrotnego do aplikacji za pomocą serwera proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md)
 

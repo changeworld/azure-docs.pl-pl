@@ -17,13 +17,13 @@ ms.locfileid: "74485492"
 ---
 | Zasób | Limit domyślny |
 | --- | :--- |
-| Maximum clusters per subscription | 100 |
-| Maximum nodes per cluster with Virtual Machine Availability Sets and Basic Load Balancer SKU  | 100 |
-| Maximum nodes per cluster with Virtual Machine Scale Sets and [Standard Load Balancer SKU][standard-load-balancer] | 800 (100 nodes per [node pool][node-pool]) |
-| Maximum pods per node: [Basic networking][basic-networking] with Kubenet | 110 |
-| Maximum pods per node: [Advanced networking][advanced-networking] with Azure Container Networking Interface | Wdrożenie za pomocą interfejsu wiersza polecenia platformy Azure: 30<sup>1</sup><br />Azure Resource Manager template: 30<sup>1</sup><br />Wdrożenie za pomocą portalu: 30 |
+| Maksymalna liczba klastrów na subskrypcję | 100 |
+| Maksymalna liczba węzłów na klaster z zestawami dostępności maszyn wirtualnych i podstawową jednostką SKU Load Balancer  | 100 |
+| Maksymalna liczba węzłów na klaster z jednostką SKU Virtual Machine Scale Sets i [Usługa Load Balancer w warstwie Standardowa][standard-load-balancer] | 800 (100 węzłów na [pulę węzłów][node-pool]) |
+| Maksymalna liczba zasobników na węzeł: [podstawowa sieć][basic-networking] z korzystającą wtyczki kubenet | 110 |
+| Maksymalna liczba zasobników na węzeł: [Zaawansowane sieci][advanced-networking] przy użyciu interfejsu sieciowego kontenera platformy Azure | Wdrożenie za pomocą interfejsu wiersza polecenia platformy Azure: 30<sup>1</sup><br />Szablon Azure Resource Manager: 30<sup>1</sup><br />Wdrożenie za pomocą portalu: 30 |
 
-<sup>1</sup>When you deploy an Azure Kubernetes Service (AKS) cluster with the Azure CLI or a Resource Manager template, this value is configurable up to 250 pods per node. You can't configure maximum pods per node after you've already deployed an AKS cluster, or if you deploy a cluster by using the Azure portal.<br />
+<sup>1</sup> W przypadku wdrażania klastra usługi Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure lub szablonu Menedżer zasobów tę wartość można skonfigurować do 250 zasobników na węzeł. Nie można skonfigurować maksymalnej liczby zasobników na węzeł po wdrożeniu klastra AKS lub wdrożeniu klastra przy użyciu Azure Portal.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

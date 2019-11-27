@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Create a Basic Load Balancer - Azure CLI'
+title: 'Szybki Start: Tworzenie podstawowego Load Balancer — interfejs wiersza polecenia platformy Azure'
 titleSuffix: Azure Load Balancer
 description: W tym samouczku przedstawiono sposób tworzenia publicznego modułu równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
@@ -23,7 +23,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214840"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a load balancer to load balance VMs using Azure CLI
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Szybki Start: Tworzenie modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Azure Load Balancer w celu równoważenia obciążenia ruchem internetowym między maszynami wirtualnymi na platformie Azure. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Ubuntu Server i zrównoważysz obciążenie aplikacji internetowej między nimi.
 
@@ -31,7 +31,7 @@ W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Azure Loa
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -146,7 +146,7 @@ Utwórz regułę sieciowej grupy zabezpieczeń, aby zezwalać na połączenia pr
 ```
 ### <a name="create-nics"></a>Tworzenie kart sieciowych
 
-Create two network interfaces with [az network nic create](/cli/azure/network/nic#az-network-nic-create) and associate them with the Public IP address and the network security group. 
+Utwórz dwa interfejsy sieciowe za pomocą [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create) i skojarz je z publicznym adresem IP i grupą zabezpieczeń sieci. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do

@@ -53,7 +53,7 @@ Każda aplikacja wymaga innych atrybutów do utworzenia użytkownika lub grupy. 
 
 Zasoby użytkownika są identyfikowane przez identyfikator schematu, `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, który jest zawarty w specyfikacji protokołu: https://tools.ietf.org/html/rfc7643.  Domyślne mapowanie atrybutów użytkowników w usłudze Azure AD do atrybutów zasobów użytkowników znajduje się w tabeli 1.  
 
-Grupy zasobów są identyfikowane przez identyfikator schematu `urn:ietf:params:scim:schemas:core:2.0:Group`. Tabela 2 zawiera domyślne mapowanie atrybutów grup w usłudze Azure AD do atrybutów zasobów grupy.
+Zasoby grupy są identyfikowane przez identyfikator schematu, `urn:ietf:params:scim:schemas:core:2.0:Group`. Tabela 2 zawiera domyślne mapowanie atrybutów grup w usłudze Azure AD do atrybutów zasobów grupy.
 
 Należy pamiętać, że nie musisz obsługiwać użytkowników i grup ani wszystkich atrybutów przedstawionych poniżej. Są one odwołaniem do sposobu, w jaki atrybuty w usłudze Azure AD często są zamapowane na właściwości w protokole Standard scim.  
 
@@ -65,17 +65,17 @@ Należy pamiętać, że nie musisz obsługiwać użytkowników i grup ani wszyst
 | displayName |displayName |
 | Facsimile-TelephoneNumber |wartość phoneNumbers [typ eq "faksu"] |
 | givenName |name.givenName |
-| Stanowisko |tytuł |
+| Stanowisko |title |
 | mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |externalId |
-| menedżer |menedżer |
+| Menedżer |Menedżer |
 | Telefon komórkowy |wartość phoneNumbers [eq wpisz "wyraz mobile"] |
 | Identyfikator obiektu |ID |
 | postalCode |.postalCode adresy [typ eq "Praca"] |
 | proxy-Addresses |wiadomości e-mail [Wpisz eq "other"]. Wartość |
 | physical-Delivery-OfficeName |adresy [Wpisz eq "other"]. Sformatowany |
 | Adres |.streetAddress adresy [typ eq "Praca"] |
-| nazwisko |name.familyName |
+| surname |name.familyName |
 | Numer telefonu |wartość phoneNumbers [typ eq "Praca"] |
 | user-PrincipalName |userName |
 
@@ -632,7 +632,7 @@ Aby ułatwić ten proces, należy podać [przykłady kodu](https://github.com/Az
 * Visual Studio 2013 lub nowszy
 * [Zestaw Azure SDK dla platformy .NET](https://azure.microsoft.com/downloads/)
 * Windows maszyny, która obsługuje struktury programu ASP.NET 4.5 ma być używany jako punkt końcowy Standard SCIM. Ta maszyna musi być dostępna w chmurze.
-* [Subskrypcja platformy Azure w wersji próbnej lub licencjonowanej wersji programu Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
+* [Subskrypcja platformy Azure z wersją próbną lub licencjonowaną Azure AD — wersja Premium](https://azure.microsoft.com/services/active-directory/)
 
 ### <a name="getting-started"></a>Wprowadzenie
 
@@ -640,7 +640,7 @@ Najłatwiejszym sposobem realizowania Standard SCIM punktu końcowego, który mo
 
 #### <a name="to-create-a-sample-scim-endpoint"></a>Aby utworzyć przykładowy punkt końcowy Standard scim
 
-1. Pobierz pakiet przykładowy kod w [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
+1. Pobierz pakiet przykładowego kodu w [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 1. Rozpakuj pakiet i umieść go na komputerze Windows w lokalizacji takiej jak C:\AzureAD-BYOA-Provisioning-Samples\.
 1. W tym folderze Uruchom projekt FileProvisioning\Host\FileProvisioningService.csproj w programie Visual Studio.
 1. Wybierz kolejno pozycje **narzędzia** > **menedżer pakietów NuGet** > **konsola Menedżera pakietów**i wykonaj następujące polecenia dla projektu FileProvisioningService, aby rozpoznać odwołania do rozwiązania:
@@ -650,7 +650,7 @@ Najłatwiejszym sposobem realizowania Standard SCIM punktu końcowego, który mo
    ```
 
 1. Skompiluj projekt FileProvisioningService.
-1. Uruchamianie aplikacji wiersza polecenia w Windows (jako Administrator) i używanie **cd** polecenia Zmień katalog na Twoje **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug**folderu.
+1. Uruchom aplikację wiersza polecenia w systemie Windows (jako administrator), a następnie użyj polecenia **CD** , aby zmienić katalog na folder **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug** .
 1. Uruchom następujące polecenie, zastępując `<ip-address>` adresem IP lub nazwą domeny komputera z systemem Windows:
 
    ```
@@ -667,23 +667,23 @@ Najłatwiejszym sposobem realizowania Standard SCIM punktu końcowego, który mo
 1. Wybierz pozycję **+ Nowa aplikacja** > **wszystkie** > **aplikacji spoza galerii**.
 1. Wprowadź nazwę aplikacji, a następnie wybierz pozycję **Dodaj** , aby utworzyć obiekt aplikacji. Utworzony obiekt aplikacji jest przeznaczony do reprezentowania aplikacji docelowej, można będzie aprowizacji i implementowanie logowania jednokrotnego dla i nie tylko punkt końcowy Standard SCIM.
 1. Na ekranie Zarządzanie aplikacjami wybierz opcję **Inicjowanie obsługi** w lewym panelu.
-1. W **inicjowania obsługi trybu** menu, wybierz opcję **automatyczne**.    
-1. W **adres URL dzierżawy** wprowadź adres URL punktu końcowego Standard SCIM aplikacji. Przykład: https://api.contoso.com/scim/
+1. W menu **tryb aprowizacji** wybierz pozycję **automatycznie**.    
+1. W polu **adres URL dzierżawy** wprowadź adres URL punktu końcowego Standard scim aplikacji. Przykład: https://api.contoso.com/scim/
 
-1. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługa Azure AD zawiera token okaziciela OAuth wystawiony przez usługę Azure AD za pomocą każdego żądania. Aplikacje korzystające z usługi Azure AD jako dostawca tożsamości mogą sprawdzić poprawność tego tokenu wystawionego przez usługę Azure AD.
+1. Jeśli punkt końcowy Standard scim wymaga tokenu okaziciela OAuth od wystawcy innego niż usługa Azure AD, a następnie skopiuj wymagany token okaziciela OAuth do pola opcjonalnego **tokenu tajnego** . Jeśli to pole pozostanie puste, usługa Azure AD zawiera token okaziciela OAuth wystawiony przez usługę Azure AD za pomocą każdego żądania. Aplikacje korzystające z usługi Azure AD jako dostawca tożsamości mogą sprawdzić poprawność tego tokenu wystawionego przez usługę Azure AD.
 1. Wybierz pozycję **Testuj połączenie** , aby uzyskać Azure Active Directory próbę nawiązania połączenia z punktem końcowym Standard scim. Jeśli próba nie powiedzie się, zostanie wyświetlony komunikat o błędzie.  
 
     > [!NOTE]
     > **Test connection** wysyła zapytanie do punktu końcowego Standard scim dla użytkownika, który nie istnieje, przy użyciu losowego identyfikatora GUID jako pasującej właściwości wybranej w konfiguracji usługi Azure AD. Oczekiwana prawidłowa odpowiedź to HTTP 200 OK z pustym komunikatem Standard scim ListResponse
 
 1. Jeśli próba nawiązania połączenia z aplikacją zakończyła się pomyślnie, wybierz pozycję **Zapisz** , aby zapisać poświadczenia administratora.
-1. W **mapowania** sekcji, istnieją dwa zestawy można wybierać mapowań atrybutów: jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania użytkowników i grup w Twojej aplikacji dla operacji aktualizowania. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany.
-1. W obszarze **ustawienia**, **zakres** pole definiuje, które użytkownicy i grupy są synchronizowane. Wybierz opcję **"Synchronizuj tylko przypisanych użytkowników i grupy** (zalecane) tylko do synchronizacji użytkowników i grup przypisanych na karcie **Użytkownicy i grupy** .
+1. W sekcji **mapowania** istnieją dwa możliwe do wyboru zestawy mapowań atrybutów: jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowywania do użytkowników i grup w aplikacji w celu wykonywania operacji aktualizacji. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany.
+1. W obszarze **Ustawienia**pole **zakres** określa, którzy użytkownicy i grupy są synchronizowane. Wybierz opcję **"Synchronizuj tylko przypisanych użytkowników i grupy** (zalecane) tylko do synchronizacji użytkowników i grup przypisanych na karcie **Użytkownicy i grupy** .
 1. Po zakończeniu konfiguracji Ustaw **stan aprowizacji** na **włączone**.
 1. Wybierz pozycję **Zapisz** , aby uruchomić usługę Azure AD Provisioning.
 1. W przypadku synchronizacji tylko przypisanych użytkowników i grup (zalecane) należy wybrać kartę **Użytkownicy i grupy** i przypisać użytkowników lub grupy, które mają zostać zsynchronizowane.
 
-Po rozpoczęciu pierwszego cyklu możesz wybrać opcję **dzienniki inspekcji** w lewym panelu, aby monitorować postęp, który pokazuje wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
+Po rozpoczęciu pierwszego cyklu możesz wybrać opcję **dzienniki inspekcji** w lewym panelu, aby monitorować postęp, który pokazuje wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](check-status-user-account-provisioning.md).
 
 W ostatnim kroku weryfikacji próbki jest można otworzyć pliku TargetFile.csv w folderze \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug na komputerze Windows. Po jego uruchomieniu procesu aprowizacji ten plik zawiera szczegółowe informacje o wszystkich przypisane i aprowizacji użytkowników i grup.
 
@@ -695,11 +695,11 @@ Aby opracować własne usługi sieci web, który jest zgodny ze specyfikacją St
   
    ![Podział: żądanie przetłumaczone na wywołania metod dostawcy][3]
   
-* [Express route obsługi](https://expressjs.com/guide/routing.html) zostały wprowadzone dostępne do przetwarzania node.js żądania obiektów reprezentująca wywołania (zgodnie z definicją w specyfikacji Standard SCIM), usługą sieci web środowiska node.js.
+* [Procedury obsługi tras ekspresowych](https://expressjs.com/guide/routing.html) są dostępne do analizowania obiektów żądań Node. js reprezentujących wywołania (zgodnie z definicją Standard scim), które zostały wprowadzone do usługi sieci Web Node. js.
 
 ### <a name="building-a-custom-scim-endpoint"></a>Kompilowanie niestandardowego punktu końcowego Standard scim
 
-Deweloperzy korzystający z bibliotek interfejsu wiersza polecenia mogą hostować swoje usługi w ramach dowolnego wykonywalnego zestawu interfejsu wiersza polecenia lub w ramach Internet Information Services. Poniżej przedstawiono przykładowy kod dla innej usługi w ramach zestawu pliku wykonywalnego, pod adresem hostingu http://localhost:9000: 
+Deweloperzy korzystający z bibliotek interfejsu wiersza polecenia mogą hostować swoje usługi w ramach dowolnego wykonywalnego zestawu interfejsu wiersza polecenia lub w ramach Internet Information Services. Poniżej znajduje się przykładowy kod służący do hostowania usługi w ramach zestawu wykonywalnego, pod adresem http://localhost:9000: 
 
 ```csharp
  private static void Main(string[] arguments)
@@ -1262,7 +1262,7 @@ Skontaktuj się z dostawcą aplikacji lub dokumentacji dostawcy aplikacji dla in
 
 Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może być połączona z usługą Azure Active Directory przy użyciu funkcji "aplikacji spoza galerii" w galerii aplikacji usługi Azure AD. Po nawiązaniu połączenia usługi Azure AD działa proces synchronizacji co 40 minut, gdzie go zapytania aplikacji Standard SCIM z punktu końcowego dla przypisanych użytkowników i grup i tworzy lub modyfikuje je zgodnie ze szczegółami przypisania.
 
-**Łączenie aplikacji, która obsługuje standard SCIM:**
+**Aby połączyć aplikację, która obsługuje standard scim:**
 
 1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com). Należy pamiętać, że możesz uzyskać dostęp do bezpłatnej wersji próbnej Azure Active Directory z licencjami P2, rejestrując się w [programie dla deweloperów](https://developer.microsoft.com/office/dev-program)
 2. W okienku po lewej stronie wybierz pozycję **aplikacje dla przedsiębiorstw** . Zostanie wyświetlona lista wszystkich skonfigurowanych aplikacji, w tym aplikacji, które zostały dodane z galerii.
@@ -1273,13 +1273,13 @@ Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może
    *Rysunek 2. Galeria aplikacji usługi Azure AD*
 
 5. Na ekranie Zarządzanie aplikacjami wybierz opcję **Inicjowanie obsługi** w lewym panelu.
-6. W **inicjowania obsługi trybu** menu, wybierz opcję **automatyczne**.
+6. W menu **tryb aprowizacji** wybierz pozycję **automatycznie**.
 
    ![przykład: Strona aprowizacji aplikacji w Azure Portal][2]<br/>
    *Rysunek 3. Konfigurowanie aprowizacji w Azure Portal*
 
-7. W **adres URL dzierżawy** wprowadź adres URL punktu końcowego Standard SCIM aplikacji. Przykład: https://api.contoso.com/scim/
-8. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługa Azure AD zawiera token okaziciela OAuth wystawiony przez usługę Azure AD za pomocą każdego żądania. Aplikacje korzystające z usługi Azure AD jako dostawca tożsamości mogą sprawdzić poprawność tego tokenu wystawionego przez usługę Azure AD. 
+7. W polu **adres URL dzierżawy** wprowadź adres URL punktu końcowego Standard scim aplikacji. Przykład: https://api.contoso.com/scim/
+8. Jeśli punkt końcowy Standard scim wymaga tokenu okaziciela OAuth od wystawcy innego niż usługa Azure AD, a następnie skopiuj wymagany token okaziciela OAuth do pola opcjonalnego **tokenu tajnego** . Jeśli to pole pozostanie puste, usługa Azure AD zawiera token okaziciela OAuth wystawiony przez usługę Azure AD za pomocą każdego żądania. Aplikacje korzystające z usługi Azure AD jako dostawca tożsamości mogą sprawdzić poprawność tego tokenu wystawionego przez usługę Azure AD. 
    > [!NOTE]
    > ***Nie*** zaleca się pozostawienia tego pola pustego i polegania na tokenie wygenerowanym przez usługę Azure AD. Ta opcja jest dostępna głównie do celów testowych.
 9. Wybierz pozycję **Testuj połączenie** , aby uzyskać Azure Active Directory próbę nawiązania połączenia z punktem końcowym Standard scim. Jeśli próba nie powiedzie się, zostanie wyświetlony komunikat o błędzie.  
@@ -1288,7 +1288,7 @@ Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może
     > **Test connection** wysyła zapytanie do punktu końcowego Standard scim dla użytkownika, który nie istnieje, przy użyciu losowego identyfikatora GUID jako pasującej właściwości wybranej w konfiguracji usługi Azure AD. Oczekiwana prawidłowa odpowiedź to HTTP 200 OK z pustym komunikatem Standard scim ListResponse.
 
 10. Jeśli próba nawiązania połączenia z aplikacją zakończyła się pomyślnie, wybierz pozycję **Zapisz** , aby zapisać poświadczenia administratora.
-11. W sekcji **mapowania** istnieją dwa możliwe do wyboru zestawy [mapowań atrybutów](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes): jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania użytkowników i grup w Twojej aplikacji dla operacji aktualizowania. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany.
+11. W sekcji **mapowania** istnieją dwa możliwe do wyboru zestawy [mapowań atrybutów](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes): jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowywania do użytkowników i grup w aplikacji w celu wykonywania operacji aktualizacji. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany.
 
     > [!NOTE]
     > Opcjonalnie można wyłączyć synchronizację grupy obiektów, wyłączając mapowania "groups".
@@ -1298,7 +1298,7 @@ Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może
 14. Wybierz pozycję **Zapisz** , aby uruchomić usługę Azure AD Provisioning.
 15. W przypadku synchronizacji tylko przypisanych użytkowników i grup (zalecane) należy wybrać kartę **Użytkownicy i grupy** i przypisać użytkowników lub grupy, które mają zostać zsynchronizowane.
 
-Po rozpoczęciu pierwszego cyklu możesz wybrać opcję **dzienniki aprowizacji** w lewym panelu, aby monitorować postęp, który pokazuje wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
+Po rozpoczęciu pierwszego cyklu możesz wybrać opcję **dzienniki aprowizacji** w lewym panelu, aby monitorować postęp, który pokazuje wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](check-status-user-account-provisioning.md).
 
 > [!NOTE]
 > Cykl początkowy trwa dłużej niż w przypadku późniejszej synchronizacji, który występuje około co 40 minut, o ile usługa jest uruchomiona.
@@ -1329,13 +1329,13 @@ Aby uzyskać dodatkowe metody uwierzytelniania i autoryzacji, daj nam znać w wi
 
 Niektóre aplikacje zezwalają na ruch przychodzący do swojej aplikacji. Aby usługa Azure AD Provisioning działała zgodnie z oczekiwaniami, używane adresy IP muszą być dozwolone. Aby uzyskać listę adresów IP dla każdego tagu usługi/regionu, zobacz plik JSON — [zakresy adresów IP platformy Azure i Tagi usług — chmura publiczna](https://www.microsoft.com/download/details.aspx?id=56519). W razie konieczności można pobrać i obsłużyć te adresy IP w zaporze. Zakresy zarezerwowanych adresów IP dla aprowizacji usługi Azure AD można znaleźć w obszarze "AzureActiveDirectoryDomainServices".
 
-## <a name="related-articles"></a>Pokrewne artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
-* [Automatyzowanie użytkownika aprowizacji/Deprovisioning do aplikacji SaaS](user-provisioning.md)
-* [Dostosowywanie mapowań atrybutów dla aprowizacji użytkowników](customize-application-attributes.md)
+* [Automatyzacja aprowizacji użytkowników/anulowania obsługi administracyjnej w aplikacjach SaaS](user-provisioning.md)
+* [Dostosowywanie mapowań atrybutów na potrzeby aprowizacji użytkowników](customize-application-attributes.md)
 * [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)
-* [Filtrów określania zakresu na potrzeby aprowizacji użytkownika](define-conditional-rules-for-provisioning-user-accounts.md)
-* [Powiadomienia z Aprowizacją kont](user-provisioning.md)
+* [Filtry zakresu dla aprowizacji użytkowników](define-conditional-rules-for-provisioning-user-accounts.md)
+* [Powiadomienia o aprowizacji konta](user-provisioning.md)
 * [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
 
 <!--Image references-->

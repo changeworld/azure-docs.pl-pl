@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji, zobacz:
 > [!NOTE]
 > Po usunięciu danych wyjściowych na żywo nie jest usuwany podstawowy element zawartości i zawartość w elemencie zawartości.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Przytnij klipy wideo](subclip-video-rest-howto.md).
 * [Zdefiniuj filtry dla zasobów](filters-dynamic-manifest-rest-howto.md).

@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Data Lake Store - Linux - Azure AD
+title: Samouczek`:` korzystania z tożsamości zarządzanej w celu uzyskania dostępu do Azure Data Lake Store-Linux — Azure AD
 description: Samouczek przedstawiający sposób uzyskiwania dostępu do usługi Azure Data Lake Store za pomocą przypisanej przez system tożsamości zarządzanej na maszynie wirtualnej z systemem Linux.
 services: active-directory
 documentationcenter: ''
@@ -26,7 +26,7 @@ ms.locfileid: "74224283"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-This tutorial shows you how to use a system-assigned managed identity for a Linux virtual machine (VM) to access Azure Data Lake Store. Omawiane kwestie: 
+W tym samouczku pokazano, jak za pomocą tożsamości zarządzanej przypisanej przez system do maszyny wirtualnej z systemem Linux (VM) uzyskać dostęp do Azure Data Lake Store. Omawiane kwestie: 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -71,7 +71,7 @@ Aby wykonać te kroki, potrzebujesz klienta SSH. Jeśli używasz systemu Windows
 
 1. W portalu przejdź do maszyny wirtualnej z systemem Linux. W obszarze **Omówienie** wybierz pozycję **Połącz**.  
 2. Połącz się z maszyną wirtualną przy użyciu wybranego klienta protokołu SSH. 
-3. W oknie terminalu, używając programu cURL, wyślij żądanie do lokalnego punktu końcowego tożsamości zarządzanych dla platformy Azure, aby uzyskać token dostępu do systemu plików Data Lake Store. The resource identifier for Data Lake Store is `https://datalake.azure.net/`.  Ważne jest, aby na końcu identyfikatora zasobu uwzględnić kreskę ukośną.
+3. W oknie terminalu, używając programu cURL, wyślij żądanie do lokalnego punktu końcowego tożsamości zarządzanych dla platformy Azure, aby uzyskać token dostępu do systemu plików Data Lake Store. Identyfikator zasobu dla Data Lake Store jest `https://datalake.azure.net/`.  Ważne jest, aby na końcu identyfikatora zasobu uwzględnić kreskę ukośną.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   

@@ -82,7 +82,7 @@ W scenariuszu docelowym Zdjęcia mogą pomóc. W przypadku pokazywania użytkown
 
 ![Ilustracja zakotwiczenia przedstawiająca zdjęcie elementu docelowego na urządzeniu przenośnym użytkownika](./media/start-here-edit.png)
 
-### <a name="rooms"></a>natrysk
+### <a name="rooms"></a>Natrysk
 
 W scenariuszu pokojowym użytkownicy wprowadzają miejsce w dowolnym miejscu. Użytkownicy skanują miejsce na swoje urządzenie i szybko lokalizują kotwicę.
 

@@ -102,9 +102,9 @@ Opóźnienie nie są zagrożone, ponieważ ruch będą przepływać przez dedyko
 
 Chociaż ten artykuł koncentruje się umieszczania łącznika, można również zmienić umieszczania aplikacji w celu uzyskania lepsze charakterystyki opóźnienia.
 
-Coraz częściej organizacje są przenoszone ich sieci w środowiskach hostowanych. Umożliwia to umieścić swoje aplikacje w środowisku hostowanej, która jest również częścią sieci firmowej, a w dalszym ciągu w domenie. W tym przypadku wzorców omówione w poprzednich sekcjach można zastosować do nowej lokalizacji aplikacji. Jeśli rozważasz tej opcji, zobacz [usług domenowych Azure AD](../../active-directory-domain-services/overview.md).
+Coraz częściej organizacje są przenoszone ich sieci w środowiskach hostowanych. Umożliwia to umieścić swoje aplikacje w środowisku hostowanej, która jest również częścią sieci firmowej, a w dalszym ciągu w domenie. W tym przypadku wzorców omówione w poprzednich sekcjach można zastosować do nowej lokalizacji aplikacji. Jeśli rozważasz tę opcję, zobacz [Azure AD Domain Services](../../active-directory-domain-services/overview.md).
 
-Ponadto należy wziąć pod uwagę organizowanie za pomocą łączników [grupy łączników](application-proxy-connector-groups.md) do aplikacji docelowej, które znajdują się w różnych lokalizacjach i sieci.
+Ponadto należy rozważyć zorganizowanie łączników przy użyciu [grup łączników](application-proxy-connector-groups.md) do aplikacji docelowych, które znajdują się w różnych lokalizacjach i sieciach.
 
 ## <a name="common-use-cases"></a>Typowe przypadki użycia
 
@@ -112,15 +112,15 @@ W tej sekcji części omówimy kilka typowych scenariuszy. Przyjęto założenie
 
 Dla tych scenariuszy możemy wywołać każde połączenie "przeskok" i liczbę je łatwiej omówienie:
 
-- **Przeskoku 1**: użytkownika dla usługi serwera Proxy aplikacji
-- **Przeskoku 2**: serwer Proxy aplikacji usługi łącznika serwera Proxy aplikacji
-- **Przeskoku 3**: łącznik serwera Proxy aplikacji do aplikacji docelowej 
+- **Przeskok 1**: użytkownik do usługi serwera proxy aplikacji
+- **Przeskok 2**: usługa serwera proxy aplikacji do łącznika serwera proxy aplikacji
+- **Przeskok 3**: łącznik serwera proxy aplikacji do aplikacji docelowej 
 
 ### <a name="use-case-1"></a>Przypadek użycia 1
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych, z użytkownikami, w tym samym regionie. Nie usługi ExpressRoute lub sieci VPN istnieje między centrum danych platformy Azure i siecią firmową.
+**Scenariusz:** Aplikacja znajduje się w sieci organizacji w Stanach Zjednoczonych, z użytkownikami w tym samym regionie. Nie usługi ExpressRoute lub sieci VPN istnieje między centrum danych platformy Azure i siecią firmową.
 
-**Zalecenie:** wzorzec postępuj zgodnie z 1, opisane w poprzedniej sekcji. Ulepszone opóźnienia należy wziąć pod uwagę przy użyciu usługi ExpressRoute, jeśli to konieczne.
+**Zalecenie:** Obserwuj wzorzec 1, wyjaśniono w poprzedniej sekcji. Ulepszone opóźnienia należy wziąć pod uwagę przy użyciu usługi ExpressRoute, jeśli to konieczne.
 
 Jest to prosty wzorzec. Optymalizuj się przeskoku 3, umieszczając łącznika obok aplikacji. Jest to również naturalny wybór, ponieważ łącznik jest zazwyczaj instalowany z linii wzroku do aplikacji i centrum danych do wykonywania operacji ograniczonego delegowania protokołu Kerberos.
 
@@ -128,9 +128,9 @@ Jest to prosty wzorzec. Optymalizuj się przeskoku 3, umieszczając łącznika o
 
 ### <a name="use-case-2"></a>Przypadek użycia 2
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych, użytkownikom rozłożyć globalnie. Nie usługi ExpressRoute lub sieci VPN istnieje między centrum danych platformy Azure i siecią firmową.
+**Scenariusz:** Aplikacja znajduje się w sieci organizacji w Stanach Zjednoczonych, a użytkownicy są rozproszeni globalnie. Nie usługi ExpressRoute lub sieci VPN istnieje między centrum danych platformy Azure i siecią firmową.
 
-**Zalecenie:** wzorzec postępuj zgodnie z 1, opisane w poprzedniej sekcji.
+**Zalecenie:** Obserwuj wzorzec 1, wyjaśniono w poprzedniej sekcji.
 
 Ponownie wspólny wzorzec do optymalizacji przeskoku 3, umieszcza się łącznika obok aplikacji. Przeskoku 3 nie jest zazwyczaj kosztowne, a jeśli w tym samym regionie. Jednak przeskok 1 może być bardziej kosztowne w zależności od tego, gdzie użytkownik jest, ponieważ użytkownicy na całym świecie muszą uzyskiwać dostęp do wystąpienia serwera Proxy aplikacji w Stanach Zjednoczonych. Warto zauważyć, że żadne rozwiązanie do serwera proxy ma podobne charakterystyki dotyczące użytkowników, które są rozmieszczone globalnie.
 
@@ -138,9 +138,9 @@ Ponownie wspólny wzorzec do optymalizacji przeskoku 3, umieszcza się łącznik
 
 ### <a name="use-case-3"></a>Przypadek użycia 3
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych. Usługi ExpressRoute za pomocą komunikacji równorzędnej firmy Microsoft istnieje między platformą Azure i siecią firmową.
+**Scenariusz:** Aplikacja znajduje się w sieci organizacji w Stanach Zjednoczonych. Usługi ExpressRoute za pomocą komunikacji równorzędnej firmy Microsoft istnieje między platformą Azure i siecią firmową.
 
-**Zalecenie:** postępuj zgodnie z wzorców 1 i 2, opisane w poprzedniej sekcji.
+**Zalecenie:** Obserwuj wzorce 1 i 2, wyjaśniono w poprzedniej sekcji.
 
 Po pierwsze umieść łącznika możliwie blisko aplikacji. Następnie system automatycznie korzysta z usługi ExpressRoute dla przeskoku 2.
 
@@ -150,9 +150,9 @@ Jeśli link usługi ExpressRoute używa komunikacji równorzędnej firmy Microso
 
 ### <a name="use-case-4"></a>Przypadek użycia 4
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych. Istnieje usługi ExpressRoute za pomocą prywatnej komunikacji równorzędnej między platformą Azure i siecią firmową.
+**Scenariusz:** Aplikacja znajduje się w sieci organizacji w Stanach Zjednoczonych. Istnieje usługi ExpressRoute za pomocą prywatnej komunikacji równorzędnej między platformą Azure i siecią firmową.
 
-**Zalecenie:** wzorzec wykonaj 3, opisane w poprzedniej sekcji.
+**Zalecenie:** Obserwuj wzorzec 3, wyjaśniono w poprzedniej sekcji.
 
 Łącznik należy umieścić w centrum danych platformy Azure, która jest połączona z siecią firmową za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute.
 
@@ -162,9 +162,9 @@ Jeśli link usługi ExpressRoute używa komunikacji równorzędnej firmy Microso
 
 ### <a name="use-case-5"></a>Przypadek użycia 5
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Unii Europejskiej, z wystąpieniem serwera Proxy aplikacji, a większość użytkowników w Stanach Zjednoczonych.
+**Scenariusz:** Aplikacja znajduje się w sieci organizacji w Unii Europejskiej, z wystąpieniem serwera proxy aplikacji i większością użytkowników w Stanach Zjednoczonych.
 
-**Zalecenie:** umieść łącznika obok aplikacji. Ponieważ użytkownicy w Stanach Zjednoczonych, uzyskujesz dostęp do wystąpienia serwera Proxy aplikacji, który ma miejsce w tym samym regionie, przeskok 1 nie jest za drogi. Przeskoku 3 jest zoptymalizowany. Należy wziąć pod uwagę przy użyciu usługi ExpressRoute w celu zoptymalizowania przeskoku 2.
+**Zalecenie:** Umieść łącznik blisko aplikacji. Ponieważ użytkownicy w Stanach Zjednoczonych, uzyskujesz dostęp do wystąpienia serwera Proxy aplikacji, który ma miejsce w tym samym regionie, przeskok 1 nie jest za drogi. Przeskoku 3 jest zoptymalizowany. Należy wziąć pod uwagę przy użyciu usługi ExpressRoute w celu zoptymalizowania przeskoku 2.
 
 ![Diagram przedstawia użytkowników i serwer proxy w Stanach Zjednoczonych, łączniku i aplikacji w Unii Europejskiej](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
@@ -174,7 +174,7 @@ Można również rozważyć użycie jednego innych wariant w takiej sytuacji. W 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Włącz serwer Proxy aplikacji](application-proxy-add-on-premises-application.md)
+- [Włącz serwer proxy aplikacji](application-proxy-add-on-premises-application.md)
 - [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md)
-- [Rozwiązywanie problemów z serwerem Proxy aplikacji](application-proxy-troubleshoot.md)
+- [Rozwiązywanie problemów z serwerem proxy aplikacji](application-proxy-troubleshoot.md)

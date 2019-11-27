@@ -1,6 +1,6 @@
 ---
-title: Delegate a subdomain - Azure DNS
-description: With this learning path, get started delegating an Azure DNS subdomain.
+title: Delegowanie poddomeny — Azure DNS
+description: Za pomocą tej ścieżki szkoleniowej Rozpocznij delegowanie poddomeny Azure DNS.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,60 +14,60 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74212389"
 ---
-# <a name="delegate-an-azure-dns-subdomain"></a>Delegate an Azure DNS subdomain
+# <a name="delegate-an-azure-dns-subdomain"></a>Delegowanie poddomeny Azure DNS
 
-You can use the Azure portal to delegate a DNS subdomain. For example, if you own the contoso.com domain, you can delegate a subdomain called *engineering* to another, separate zone that you can administer separately from the contoso.com zone.
+Azure Portal można użyć do delegowania poddomeny DNS. Na przykład jeśli jesteś członkiem domeny contoso.com, możesz delegować poddomenę o nazwie *Inżynieria* na inną, osobną strefę, którą można administrować niezależnie od strefy contoso.com.
 
-If you prefer, you can delegate a subdomain using [Azure PowerShell](delegate-subdomain-ps.md).
+Jeśli wolisz, możesz delegować poddomenę przy użyciu [Azure PowerShell](delegate-subdomain-ps.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To delegate an Azure DNS subdomain, you must first delegate your public domain to Azure DNS. See [Delegate a domain to Azure DNS](./dns-delegate-domain-azure-dns.md) for instructions on how to configure your name servers for delegation. Once your domain is delegated to your Azure DNS zone, you can delegate your subdomain.
+Aby delegować poddomenę Azure DNS, należy najpierw delegować domenę publiczną do Azure DNS. Zobacz [delegowanie domeny do Azure DNS,](./dns-delegate-domain-azure-dns.md) Aby uzyskać instrukcje dotyczące konfigurowania serwerów nazw na potrzeby delegowania. Po przeprowadzeniu delegowania domeny do strefy Azure DNS można delegować poddomenę.
 
 > [!NOTE]
-> Contoso.com is used as an example throughout this article. Zastąp contoso.com swoją nazwą domeny.
+> Contoso.com jest używany jako przykład w tym artykule. Zastąp contoso.com swoją nazwą domeny.
 
-## <a name="create-a-zone-for-your-subdomain"></a>Create a zone for your subdomain
+## <a name="create-a-zone-for-your-subdomain"></a>Tworzenie strefy dla domeny podrzędnej
 
-First, create the zone for the **engineering** subdomain.
+Najpierw Utwórz strefę dla poddomeny **inżynierów** .
 
-1. From the Azure portal, select **Create a resource**.
-2. In the search box, type **DNS**, and select **DNS zone**.
+1. W Azure Portal wybierz pozycję **Utwórz zasób**.
+2. W polu wyszukiwania wpisz **DNS**, a następnie wybierz pozycję **strefa DNS**.
 3. Wybierz pozycję **Utwórz**.
-4. In the **Create DNS zone** pane, type **engineering.contoso.com** in the **Name** text box.
-5. Select the resource group for your zone. You might want to use the same resource group as the parent zone to keep similar resources together.
-6. Kliknij przycisk **Utwórz**.
-7. After the deployment succeeds, go to the new zone.
+4. W okienku **Tworzenie strefy DNS** wpisz **Engineering.contoso.com** w polu tekstowym **Nazwa** .
+5. Wybierz grupę zasobów dla swojej strefy. Możesz chcieć używać tej samej grupy zasobów co strefa nadrzędna, aby zapewnić sobie podobne zasoby.
+6. Kliknij pozycję **Utwórz**.
+7. Po pomyślnym wdrożeniu przejdź do nowej strefy.
 
-## <a name="note-the-name-servers"></a>Note the name servers
+## <a name="note-the-name-servers"></a>Zanotuj serwery nazw
 
-Next, note the four name servers for the engineering subdomain.
+Następnie należy zwrócić uwagę na cztery serwery nazw dla poddomeny inżynierów.
 
-On the **engineering** zone pane, note the four name servers for the zone. You will use these name servers later.
+W okienku strefa **inżynierii** Zanotuj cztery serwery nazw dla strefy. Te serwery nazw będą używane później.
 
-## <a name="create-a-test-record"></a>Create a test record
+## <a name="create-a-test-record"></a>Tworzenie rekordu testowego
 
-Create an **A** record to use for testing. For example, create a **www** A record and configure it with a **10.10.10.10** IP address.
+Utwórz rekord **A,** który ma być używany do testowania. Na przykład Utwórz rekord **www** a i skonfiguruj go przy użyciu adresu IP **10.10.10.10** .
 
-## <a name="create-an-ns-record"></a>Create an NS record
+## <a name="create-an-ns-record"></a>Tworzenie rekordu NS
 
-Next, create a name server (NS) record  for the **engineering** zone.
+Następnie Utwórz rekord serwera nazw (NS) dla strefy **inżynierów** .
 
-1. Navigate to the zone for the parent domain.
+1. Przejdź do strefy dla domeny nadrzędnej.
 2. Wybierz pozycję **+ Zestaw rekordów**.
-3. On the **Add record set** pane, type **engineering** in the **Name** text box.
-4. For **Type**, select **NS**.
-5. Under **Name server**, enter the four name servers that you recorded previously from the **engineering** zone.
+3. W okienku **Dodawanie zestawu rekordów** wpisz **inżynieryjny** w polu tekstowym **Nazwa** .
+4. W obszarze **Typ**wybierz pozycję **NS**.
+5. W obszarze **Nazwa serwera**wprowadź cztery serwery nazw, które zostały zarejestrowane wcześniej ze strefy **Inżynieria** .
 6. Kliknij przycisk **OK**.
 
-## <a name="test-the-delegation"></a>Test the delegation
+## <a name="test-the-delegation"></a>Testowanie delegowania
 
-Use nslookup to test the delegation.
+Aby przetestować delegowanie, użyj polecenia nslookup.
 
-1. Open a PowerShell window.
-2. At command prompt, type `nslookup www.engineering.contoso.com.`
-3. You should receive a non-authoritative answer showing the address **10.10.10.10**.
+1. Otwórz okno programu PowerShell.
+2. W wierszu polecenia wpisz `nslookup www.engineering.contoso.com.`
+3. Odpowiedź Nieautorytatywna powinna być wyświetlana z adresem **10.10.10.10**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Learn how to [configure reverse DNS for services hosted in Azure](dns-reverse-dns-for-azure-services.md).
+Dowiedz się, jak [skonfigurować odwrotny serwer DNS dla usług hostowanych na platformie Azure](dns-reverse-dns-for-azure-services.md).

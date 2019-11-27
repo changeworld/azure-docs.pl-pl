@@ -12,7 +12,7 @@ ms.locfileid: "74484023"
 ---
 # <a name="what-is-azure-policy"></a>Co to jest Azure Policy?
 
-Governance validates that your organization can achieve its goals through effective and efficient use of IT. W tym celu jest tworzone jasne połączenie między celami biznesowymi i projektami IT.
+Administrator sprawdza, czy organizacja może osiągnąć swoje cele dzięki skutecznym i wydajnym potrzebom. W tym celu jest tworzone jasne połączenie między celami biznesowymi i projektami IT.
 
 Czy w firmie występuje znacząca liczba problemów związanych z IT, które wydają się nie do rozwiązania? Dobre zarządzanie IT obejmuje planowanie inicjatyw i określanie priorytetów na poziomie strategicznym w celu ułatwienia zarządzania i rozwiązywania problemów. Ta strategiczna potrzeba jest realizowana przy użyciu usługi Azure Policy.
 
@@ -25,7 +25,7 @@ Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisyw
 
 ## <a name="how-is-it-different-from-rbac"></a>Czym się to różni od RBAC?
 
-There are a few key differences between Azure Policy and role-based access control (RBAC). RBAC koncentruje się na działaniach użytkownika w różnych zakresach. Użytkownik może zostać dodany do roli współautora dla grupy zasobów, aby mógł wprowadzać zmiany w tej grupie zasobów. Azure Policy focuses on resource properties during deployment and for already existing resources. Azure Policy controls properties such as the types or locations of resources. Unlike RBAC, Azure Policy is a default allow and explicit deny system.
+Istnieje kilka najważniejszych różnic między Azure Policy i kontroli dostępu opartej na rolach (RBAC). RBAC koncentruje się na działaniach użytkownika w różnych zakresach. Użytkownik może zostać dodany do roli współautora dla grupy zasobów, aby mógł wprowadzać zmiany w tej grupie zasobów. Azure Policy koncentruje się na właściwościach zasobów podczas wdrażania i dla już istniejących zasobów. Azure Policy kontrolki właściwości, takie jak typy lub lokalizacje zasobów. W przeciwieństwie do RBAC, Azure Policy jest domyślnym dozwolonym i jawnym systemem Odmów.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Uprawnienia RBAC w usłudze Azure Policy
 
@@ -34,7 +34,7 @@ Usługa Azure Policy ma kilka uprawnień, znanych jako operacje, w ramach dwóch
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Wiele wbudowanych ról udziela uprawnień zasobom usługi Azure Policy. The **Resource Policy Contributor** role includes most Azure Policy operations. **Właściciel** ma pełne uprawnienia. Both **Contributor** and **Reader** can use all read Azure Policy operations, but **Contributor** can also trigger remediation.
+Wiele wbudowanych ról udziela uprawnień zasobom usługi Azure Policy. Rola **współautor zasad zasobów** obejmuje większość operacji Azure Policy. **Właściciel** ma pełne uprawnienia. Zarówno **współautor** , jak i **czytelnik** mogą używać wszystkich operacji odczytu Azure Policy, ale **współautor** może również wyzwolić korygowanie.
 
 Jeśli żadna z wbudowanych ról nie ma wymaganych uprawnień, należy utworzyć [rolę niestandardową](../../role-based-access-control/custom-roles.md).
 
@@ -44,13 +44,13 @@ Proces tworzenia i implementowania zasad w usłudze Azure Policy rozpoczyna się
 
 Usługa Azure Policy oferuje kilka wbudowanych zasad, które są domyślnie dostępne. Na przykład:
 
-- **Allowed Storage Account SKUs**: Determines if a storage account being deployed is within a set of SKU sizes. Jej efektem jest odrzucanie wszystkich kont magazynu, które nie są zgodne z zestawem zdefiniowanych rozmiarów SKU.
-- **Allowed Resource Type**: Defines the resource types that you can deploy. Jej efektem jest odrzucanie wszystkich zasobów, które nie należą do tej zdefiniowanej listy.
-- **Allowed Locations**: Restricts the available locations for new resources. Jej efekt jest używany do wymuszania wymagań dotyczących zgodności obszarów geograficznych.
-- **Allowed Virtual Machine SKUs**: Specifies a set of virtual machine SKUs that you can deploy.
-- **Add a tag to resources**: Applies a required tag and its default value if it's not specified by the deploy request.
-- **Enforce tag and its value**: Enforces a required tag and its value to a resource.
-- **Not allowed resource types**: Prevents a list of resource types from being deployed.
+- **Dozwolone jednostki SKU konta magazynu**: określa, czy wdrożone konto magazynu znajduje się w zestawie rozmiarów jednostki SKU. Jej efektem jest odrzucanie wszystkich kont magazynu, które nie są zgodne z zestawem zdefiniowanych rozmiarów SKU.
+- **Dozwolony typ zasobu**: określa typy zasobów, które można wdrożyć. Jej efektem jest odrzucanie wszystkich zasobów, które nie należą do tej zdefiniowanej listy.
+- **Dozwolone lokalizacje**: ogranicza dostępne lokalizacje dla nowych zasobów. Jej efekt jest używany do wymuszania wymagań dotyczących zgodności obszarów geograficznych.
+- **Dozwolone jednostki SKU maszyny wirtualnej**: określa zestaw jednostek SKU maszyn wirtualnych, które można wdrożyć.
+- **Dodaj tag do zasobów**: stosuje wymagany tag i jego wartość domyślną, jeśli nie jest określony przez żądanie wdrożenia.
+- **Wymuś tag i jego wartość**: wymusza wymagany tag i jego wartość do zasobu.
+- **Niedozwolone typy zasobów**: uniemożliwiają wdrożenie listy typów zasobów.
 
 Aby móc zaimplementować te definicje zasad (wbudowane i niestandardowe), musisz je przypisać. Dowolną z tych zasad można przypisać za pośrednictwem witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
@@ -64,7 +64,7 @@ Przypisywanie zasad to definicja zasad, która została przypisana do określone
 
 Na przykład przy zakresie subskrypcji można określić zasady, które zapobiegają tworzeniu zasobów sieciowych. Można wyłączyć grupę zasobów w ramach subskrypcji, która jest przeznaczona dla infrastruktury sieciowej. Następnie dostęp do tej grupy zasobów sieciowych można przyznać użytkownikom, którym powierzono tworzenie zasobów sieciowych.
 
-In another example, you might want to assign a resource type allow list policy at the management group level. Następnie można przypisać mniej ograniczające zasady (zezwalające na większą liczbę typów zasobów) w podrzędnej grupie zarządzania lub nawet bezpośrednio w subskrypcji. Jednak ten przykład nie działa, ponieważ zasady to system z wyraźnym zabranianiem. Zamiast tego należy wykluczyć podrzędną grupę zarządzania lub subskrypcję z przypisania zasad na poziomie grupy zarządzania. Następnie można przypisać mniej ograniczające zasady na poziomie podrzędnej grupy zarządzania lub subskrypcji. Jeśli w wyniku zasad następuje odmowa zasobu, jedynym sposobem na zezwolenie na zasób jest zmodyfikowanie zasad odmowy.
+W innym przykładzie możesz chcieć przypisać zasady listy dozwolonych na poziomie grupy zarządzania. Następnie można przypisać mniej ograniczające zasady (zezwalające na większą liczbę typów zasobów) w podrzędnej grupie zarządzania lub nawet bezpośrednio w subskrypcji. Jednak ten przykład nie działa, ponieważ zasady to system z wyraźnym zabranianiem. Zamiast tego należy wykluczyć podrzędną grupę zarządzania lub subskrypcję z przypisania zasad na poziomie grupy zarządzania. Następnie można przypisać mniej ograniczające zasady na poziomie podrzędnej grupy zarządzania lub subskrypcji. Jeśli w wyniku zasad następuje odmowa zasobu, jedynym sposobem na zezwolenie na zasób jest zmodyfikowanie zasad odmowy.
 
 Dodatkowe informacje na temat ustawiania definicji zasad i przypisań za pomocą portalu zamieszczono w artykule [Tworzenie przypisania zasad w celu identyfikowania niezgodnych zasobów w środowisku platformy Azure](assign-policy-portal.md). Dostępne są również instrukcje dotyczące korzystania z programu [PowerShell](assign-policy-powershell.md) i [interfejsu wiersza polecenia platformy Azure](assign-policy-azurecli.md).
 
@@ -81,7 +81,7 @@ Dodatkowe informacje na temat parametrów zasad zamieszczono w artykule [Struktu
 Definicja inicjatywy to kolekcja definicji zasad dostosowanych w celu osiągnięcia jednego ogólnego celu. Definicje inicjatyw upraszczają przypisywanie definicji zasad i zarządzanie nimi. Upraszczają działania przez grupowanie zestawu zasad w ramach pojedynczego elementu. Można na przykład utworzyć inicjatywę o nazwie **Włączanie monitorowania w Azure Security Center**, której celem jest monitorowanie wszystkich dostępnych zaleceń dotyczących zabezpieczeń w Azure Security Center.
 
 > [!NOTE]
-> The SDK, such as Azure CLI and Azure PowerShell, use properties and parameters named **PolicySet** to refer to initiatives.
+> Zestaw SDK, taki jak interfejs wiersza polecenia platformy Azure i Azure PowerShell, używają właściwości i parametrów o nazwie **PolicySet** , aby odwołać się do inicjatyw.
 
 W ramach tej inicjatywy mogą występować definicje zasad, takie jak:
 
@@ -104,17 +104,17 @@ Na przykład masz definicję inicjatywy **initiativeC** oraz definicje zasad **p
 | Zasady | Nazwa parametru |Typ parametru  |Uwaga |
 |---|---|---|---|
 | policyA | allowedLocations | tablica  |Ten parametr oczekuje listy ciągów dla wartości, ponieważ typ parametru został zdefiniowany jako tablica |
-| policyB | allowedSingleLocation |string |Ten parametr oczekuje jednego słowa dla wartości, ponieważ typ parametru został zdefiniowany jako ciąg |
+| policyB | allowedSingleLocation |ciąg |Ten parametr oczekuje jednego słowa dla wartości, ponieważ typ parametru został zdefiniowany jako ciąg |
 
 W tym scenariuszu podczas definiowania parametrów inicjatywy **initiativeC** dostępne są trzy opcje:
 
 - Użycie parametrów definicji zasad w ramach tej inicjatywy: w tym przykładzie *allowedLocations* i *allowedSingleLocation* stają się parametrami inicjatywy dla **initiativeC**.
-- Przekaż wartości parametrom definicji zasad w ramach tej definicji inicjatywy. In this example, you can provide a list of locations to **policyA's parameter – allowedLocations** and **policyB's parameter – allowedSingleLocation**. Wartości można przekazać również podczas przypisywania tej inicjatywy.
+- Przekaż wartości parametrom definicji zasad w ramach tej definicji inicjatywy. W tym przykładzie można podać listę lokalizacji **parametru Policy-allowedLocations** i **policyB-allowedSingleLocation**. Wartości można przekazać również podczas przypisywania tej inicjatywy.
 - Podaj listę opcji *value*, które mogą być używane podczas przypisywania tej inicjatywy. Podczas przypisywania tej inicjatywy odziedziczone parametry z definicji zasad w ramach tej inicjatywy mogą zawierać jedynie wartości z tej dostarczonej listy.
 
 W przypadku tworzenia opcji wartości w definicji inicjatywy nie można wprowadzić innej wartości w trakcie przypisywania inicjatywy, ponieważ nie jest ona częścią listy.
 
-## <a name="maximum-count-of-azure-policy-objects"></a>Maximum count of Azure Policy objects
+## <a name="maximum-count-of-azure-policy-objects"></a>Maksymalna liczba obiektów Azure Policy
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
@@ -144,6 +144,6 @@ Poniższe omówienie usługi Azure Policy dotyczy kompilacji 2018. Aby pobrać s
 
 Teraz, gdy masz już podstawowe informacje na temat usługi Azure Policy i kluczowych pojęć, oto zalecane kolejne kroki:
 
-- [Assign a policy definition using the portal](./assign-policy-portal.md).
-- [Assign a policy definition using the Azure CLI](./assign-policy-azurecli.md).
-- [Assign a policy definition using PowerShell](./assign-policy-powershell.md).
+- [Przypisywanie definicji zasad przy użyciu portalu](./assign-policy-portal.md).
+- [Przypisywanie definicji zasad przy użyciu interfejsu wiersza polecenia platformy Azure](./assign-policy-azurecli.md).
+- [Przypisywanie definicji zasad przy użyciu programu PowerShell](./assign-policy-powershell.md).

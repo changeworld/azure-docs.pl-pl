@@ -82,7 +82,7 @@ Najpierw utwórz nowy projekt w konsoli firmy Google Developers w celu uzyskania
 
    ![Zrzut ekranu przedstawiający sekcję autoryzowane identyfikatory URI przekierowania](media/google-federation/google-create-oauth-client-id.png)
 
-9. Wybierz **tworzenie**. Skopiuj identyfikator klienta i klucz tajny klienta, który będzie używany podczas dodawania dostawcy tożsamości w portalu usługi Azure AD.
+9. Wybierz pozycję **Utwórz**. Skopiuj identyfikator klienta i klucz tajny klienta, który będzie używany podczas dodawania dostawcy tożsamości w portalu usługi Azure AD.
 
    ![Zrzut ekranu przedstawiający identyfikator klienta OAuth i klucz tajny klienta](media/google-federation/google-auth-client-id-secret.png)
 

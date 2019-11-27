@@ -1,6 +1,6 @@
 ---
-title: Use Microsoft identity platform to sign in users using resource owner password credential (ROPC) grant | Azure
-description: Support browser-less authentication flows using the resource owner password credential grant.
+title: Korzystanie z platformy tożsamości firmy Microsoft do logowania użytkowników przy użyciu poświadczeń hasła właściciela zasobu (ROPC) | Azure
+description: Obsługa przepływów uwierzytelniania bez przeglądarki przy użyciu hasła właściciela zasobu.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -24,34 +24,34 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74207782"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Microsoft identity platform and the OAuth 2.0 Resource Owner Password Credentials
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform oraz poświadczenia hasła właściciela zasobu OAuth 2,0
 
-Microsoft identity platform supports the [OAuth 2.0 Resource Owner Password Credentials (ROPC) grant](https://tools.ietf.org/html/rfc6749#section-4.3), which allows an application to sign in the user by directly handling their password.  This article describes how to program directly against the protocol in your application.  When possible, we recommend you use the supported Microsoft Authentication Libraries (MSAL) instead to [acquire tokens and call secured web APIs](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Also take a look at the [sample apps that use MSAL](sample-v2-code.md).
+Platforma tożsamości firmy Microsoft obsługuje [przyznanie poświadczeń hasła właściciela zasobu OAuth 2,0 (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), które umożliwia aplikacji Logowanie użytkownika przez bezpośrednią obsługę hasła.  W tym artykule opisano, jak programować bezpośrednio w odniesieniu do protokołu w aplikacji.  Jeśli to możliwe, zalecamy korzystanie z obsługiwanych bibliotek uwierzytelniania firmy Microsoft (MSAL) zamiast [uzyskiwać tokeny i wywoływać zabezpieczone interfejsy API sieci Web](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Zapoznaj się również z [przykładowymi aplikacjami korzystającymi z MSAL](sample-v2-code.md).
 
 > [!WARNING]
-> Microsoft recommends you do _not_ use the ROPC flow. In most scenarios, more secure alternatives are available and recommended. This flow requires a very high degree of trust in the application, and carries risks which are not present in other flows. You should only use this flow when other more secure flows can't be used.
+> Firma Microsoft zaleca, aby _nie_ używać przepływu ROPC. W większości scenariuszy są dostępne i zalecane bardziej bezpieczne alternatywy. Ten przepływ wymaga bardzo wysokiego stopnia zaufania w aplikacji i przenosi ryzyko, które nie występują w innych przepływach. Tego przepływu należy używać tylko wtedy, gdy nie można użyć innych bardziej bezpiecznych przepływów.
 
 > [!IMPORTANT]
 >
-> * The Microsoft identity platform endpoint only supports ROPC for Azure AD tenants, not personal accounts. This means that you must use a tenant-specific endpoint (`https://login.microsoftonline.com/{TenantId_or_Name}`) or the `organizations` endpoint.
-> * Personal accounts that are invited to an Azure AD tenant can't use ROPC.
-> * Accounts that don't have passwords can't sign in through ROPC. For this scenario, we recommend that you use a different flow for your app instead.
-> * If users need to use multi-factor authentication (MFA) to log in to the application, they will be blocked instead.
-> * ROPC is not supported in [hybrid identity federation](/azure/active-directory/hybrid/whatis-fed) scenarios (for example, Azure AD and ADFS used to authenticate on-premises accounts). If users are full-page redirected to an on-premises identity providers, Azure AD is not able to test the username and password against that identity provider. [Pass-through authentication](/azure/active-directory/hybrid/how-to-connect-pta) is supported with ROPC, however.
+> * Punkt końcowy platformy tożsamości firmy Microsoft obsługuje tylko ROPC dla dzierżawców usługi Azure AD, a nie konta osobiste. Oznacza to, że należy użyć punktu końcowego określonego dla dzierżawy (`https://login.microsoftonline.com/{TenantId_or_Name}`) lub punktu końcowego `organizations`.
+> * Konta osobiste, które są zapraszane do dzierżawy usługi Azure AD, nie mogą używać ROPC.
+> * Konta, które nie mają haseł, nie mogą się zalogować za poorednictwem ROPC. W tym scenariuszu zalecamy użycie w zamian innego przepływu dla aplikacji.
+> * Jeśli użytkownicy muszą korzystać z uwierzytelniania wieloskładnikowego (MFA) do logowania się do aplikacji, zostaną one zablokowane.
+> * ROPC nie jest obsługiwane w scenariuszach [federacji tożsamości hybrydowej](/azure/active-directory/hybrid/whatis-fed) (na przykład usługi Azure AD i AD FS używane do uwierzytelniania kont lokalnych). Jeśli użytkownicy są przekierowani do lokalnych dostawców tożsamości, usługa Azure AD nie będzie w stanie testować nazwy użytkownika i hasła względem tego dostawcy tożsamości. [Uwierzytelnianie przekazywane](/azure/active-directory/hybrid/how-to-connect-pta) jest jednak obsługiwane w przypadku ROPC.
 
-## <a name="protocol-diagram"></a>Protocol diagram
+## <a name="protocol-diagram"></a>Diagram protokołu
 
-The following diagram shows the ROPC flow.
+Na poniższym diagramie przedstawiono przepływ ROPC.
 
-![Diagram showing the resource owner password credential flow](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![Diagram przedstawiający przepływ poświadczeń hasła właściciela zasobu](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
-## <a name="authorization-request"></a>Authorization request
+## <a name="authorization-request"></a>Żądanie autoryzacji
 
-The ROPC flow is a single request: it sends the client identification and user's credentials to the IDP, and then receives tokens in return. The client must request the user's email address (UPN) and password before doing so. Immediately after a successful request, the client should securely release the user's credentials from memory. It must never save them.
+Przepływ ROPC jest pojedynczym żądaniem: wysyła identyfikator klienta i poświadczenia użytkownika do dostawcy tożsamości, a następnie odbiera tokeny zwracane przez program. Przed wykonaniem tych czynności klient musi zażądać adresu e-mail użytkownika (UPN) i hasła. Natychmiast po pomyślnym żądaniu klient powinien bezpiecznie zwolnić poświadczenia użytkownika z pamięci. Nigdy nie należy ich zapisywać.
 
 > [!TIP]
-> Try executing this request in Postman!
-> [![Try running this request in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Spróbuj wykonać to żądanie w programie Poster!
+> [![spróbuj uruchomić to żądanie w programie Poster](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
@@ -70,18 +70,18 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagane | The directory tenant that you want to log the user into. This can be in GUID or friendly name format. This parameter can't be set to `common` or `consumers`, but may be set to `organizations`. |
-| `client_id` | Wymagane | The Application (client) ID that the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page assigned to your app. | 
-| `grant_type` | Wymagane | Must be set to `password`. |
-| `username` | Wymagane | The user's email address. |
-| `password` | Wymagane | The user's password. |
-| `scope` | Zalecane | A space-separated list of [scopes](v2-permissions-and-consent.md), or permissions, that the app requires. In an interactive flow, the admin or the user must consent to these scopes ahead of time. |
-| `client_secret`| Sometimes required | If your app is a public client, then the `client_secret` or `client_assertion` cannot be included.  If the app is a confidential client, then it must be included. | 
-| `client_assertion` | Sometimes required | A different form of `client_secret`, generated using a certificate.  See [certificate credentials](active-directory-certificate-credentials.md) for more details. | 
+| `tenant` | Wymagany | Dzierżawa katalogu, w której ma być zalogowany użytkownik. Może to być w formacie identyfikatora GUID lub przyjaznej nazwy. Ten parametr nie może być ustawiony na `common` lub `consumers`, ale może być ustawiony na `organizations`. |
+| `client_id` | Wymagany | Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala](https://go.microsoft.com/fwlink/?linkid=2083908) została przypisana do aplikacji. | 
+| `grant_type` | Wymagany | Musi być ustawiony na `password`. |
+| `username` | Wymagany | Adres e-mail użytkownika. |
+| `password` | Wymagany | Hasło użytkownika. |
+| `scope` | Zalecane | Rozdzielana spacjami lista [zakresów](v2-permissions-and-consent.md)lub uprawnień wymaganych przez aplikację. W przepływie interaktywnym administrator lub użytkownik musi wyrazić zgodę na te zakresy przed czasem. |
+| `client_secret`| Czasami wymagane | Jeśli aplikacja jest klientem publicznym, nie można uwzględnić `client_secret` lub `client_assertion`.  Jeśli aplikacja jest klientem poufnym, należy ją uwzględnić. | 
+| `client_assertion` | Czasami wymagane | Inna forma `client_secret`wygenerowana przy użyciu certyfikatu.  Aby uzyskać więcej informacji, zobacz [poświadczenia certyfikatu](active-directory-certificate-credentials.md) . | 
 
-### <a name="successful-authentication-response"></a>Successful authentication response
+### <a name="successful-authentication-response"></a>Pomyślna odpowiedź uwierzytelniania
 
-The following example shows a successful token response:
+W poniższym przykładzie przedstawiono Pomyślne odpowiedzi tokenu:
 
 ```json
 {
@@ -96,25 +96,25 @@ The following example shows a successful token response:
 
 | Parametr | Format | Opis |
 | --------- | ------ | ----------- |
-| `token_type` | Ciąg | Always set to `Bearer`. |
-| `scope` | Space separated strings | If an access token was returned, this parameter lists the scopes the access token is valid for. |
-| `expires_in`| int | Number of seconds that the included access token is valid for. |
-| `access_token`| Opaque string | Issued for the [scopes](v2-permissions-and-consent.md) that were requested. |
-| `id_token` | JWT | Issued if the original `scope` parameter included the `openid` scope. |
-| `refresh_token` | Opaque string | Issued if the original `scope` parameter included `offline_access`. |
+| `token_type` | Ciąg | Zawsze ustawiaj na `Bearer`. |
+| `scope` | Ciągi rozdzielone spacją | Jeśli został zwrócony token dostępu, ten parametr wyświetla listę zakresów, dla których token dostępu jest prawidłowy. |
+| `expires_in`| int | Liczba sekund, przez jaką jest ważny włączony token dostępu. |
+| `access_token`| Ciąg nieprzezroczysty | Wystawiony dla żądanych [zakresów](v2-permissions-and-consent.md) . |
+| `id_token` | JWT | Wystawiony, jeśli oryginalny parametr `scope` uwzględniony w zakresie `openid`. |
+| `refresh_token` | Ciąg nieprzezroczysty | Wystawiony, jeśli oryginalny parametr `scope` uwzględniony `offline_access`. |
 
-You can use the refresh token to acquire new access tokens and refresh tokens using the same flow described in the [OAuth Code flow documentation](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
+Możesz użyć tokenu odświeżania, aby uzyskać nowe tokeny dostępu i odświeżać tokeny przy użyciu tego samego przepływu opisanego w [dokumentacji przepływu kodu OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
 
-### <a name="error-response"></a>Error response
+### <a name="error-response"></a>Odpowiedź na błąd
 
-If the user hasn't provided the correct username or password, or the client hasn't received the requested consent, authentication will fail.
+Jeśli użytkownik nie podał prawidłowej nazwy użytkownika lub hasła lub klient nie otrzyma żądanej zgody, uwierzytelnienie zakończy się niepowodzeniem.
 
-| Błąd | Opis | Client action |
+| Błąd | Opis | Akcja klienta |
 |------ | ----------- | -------------|
-| `invalid_grant` | The authentication failed | The credentials were incorrect or the client doesn't have consent for the requested scopes. If the scopes aren't granted, a `consent_required` error will be returned. If this occurs, the client should send the user to an interactive prompt using a webview or browser. |
-| `invalid_request` | The request was improperly constructed | The grant type isn't supported on the `/common` or `/consumers` authentication contexts.  Use `/organizations` or a tenant ID instead. |
+| `invalid_grant` | Uwierzytelnianie nie powiodło się | Poświadczenia były nieprawidłowe lub klient nie ma zgody na żądane zakresy. Jeśli zakresy nie zostaną przyznane, zostanie zwrócony błąd `consent_required`. W takim przypadku klient powinien wysłać użytkownika do interakcyjnego monitu przy użyciu widoku WebView lub przeglądarki. |
+| `invalid_request` | Żądanie zostało nieprawidłowo skonstruowane | Typ grantu nie jest obsługiwany w kontekstach uwierzytelniania `/common` ani `/consumers`.  Zamiast tego użyj `/organizations` lub identyfikatora dzierżawy. |
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-* Try out ROPC for yourself using the [sample console application](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* To determine whether you should use the v2.0 endpoint, read about [Microsoft identity platform limitations](active-directory-v2-limitations.md).
+* Wypróbuj usługę ROPC za pomocą [przykładowej aplikacji konsolowej](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
+* Aby określić, czy należy używać punktu końcowego v 2.0, przeczytaj temat [ograniczenia dotyczące platformy tożsamości firmy Microsoft](active-directory-v2-limitations.md).

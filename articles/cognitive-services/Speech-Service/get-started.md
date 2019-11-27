@@ -46,7 +46,7 @@ Chociaż zalecamy podjęcie próby skorzystania z usługi mowy przy użyciu inst
 > Okres próbny rozpocznie się natychmiast po zakończeniu następujących kroków.
 
 1. Przejdź do pozycji [Wypróbuj usługę poznawczej](https://azure.microsoft.com/try/cognitive-services/).
-1. Wybierz **interfejsy API rozpoznawania mowy** kartę.
+1. Wybierz kartę **interfejsy API rozpoznawania mowy** .
 1. Wybierz pozycję **Pobierz klucz interfejsu API**.
 
 Zostaną wyświetlone opcje rozliczeń. Wybierz opcję bezpłatna, a następnie przeczytaj i zatwierdź umowę użytkownika. Zostaną wyświetlone klucze, których można użyć w celu wypróbowania usługi mowy przez ograniczony czas.
@@ -64,15 +64,15 @@ Gdy masz konto Microsoft, przejdź do [strony tworzenia konta platformy Azure](h
 
 Aby dodać zasób usługi mowy (w warstwie bezpłatna lub płatna) do konta platformy Azure:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta Microsoft.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konto Microsoft.
 
-1. Wybierz **Utwórz zasób** w lewym górnym rogu portalu. Jeśli nie widzisz opcji **Utwórz zasób**, zawsze możesz ją znaleźć, wybierając menu zwinięte w lewym górnym rogu:
+1. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu portalu. Jeśli nie widzisz opcji **Utwórz zasób**, zawsze możesz ją znaleźć, wybierając menu zwinięte w lewym górnym rogu:
 
    ![zwinięty przycisk nawigacji](media/index/collapsed-nav.png)
 
 1. W **nowym** oknie wpisz "mowę" w polu wyszukiwania, a następnie naciśnij klawisz ENTER.
 
-1. W wynikach wyszukiwania wybierz **mowy**.
+1. W wynikach wyszukiwania wybierz pozycję **Speech**.
 
    ![Wyniki wyszukiwania mowy](media/index/speech-search.png)
 
@@ -83,7 +83,7 @@ Aby dodać zasób usługi mowy (w warstwie bezpłatna lub płatna) do konta plat
    - Wybierz [region](regions.md) , w którym będzie używany zasób.
    - Wybierz opcję bezpłatna (F0) lub płatna (S0). Aby uzyskać pełne informacje na temat cen i przydziałów użycia dla każdej warstwy, wybierz pozycję **Wyświetl pełne szczegóły cennika**.
    - Utwórz nową grupę zasobów dla tej subskrypcji mowy lub Przypisz subskrypcję przechodząc do istniejącej grupy zasobów. Pomoc, której możesz przechowywać różne subskrypcje platformy Azure uporządkowane grupy zasobów.
-   - Wybierz **tworzenie**. Spowoduje to przejście do omówienia wdrażania i wyświetlenie komunikatów o postępie wdrażania.
+   - Wybierz pozycję **Utwórz**. Spowoduje to przejście do omówienia wdrażania i wyświetlenie komunikatów o postępie wdrażania.
 
 Wdrożenie nowego zasobu mowy trwa kilka minut. Po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu** , a następnie w okienku nawigacji po lewej stronie wybierz pozycję **klucze** , aby wyświetlić klucze subskrypcji usługi mowy. Każda subskrypcja ma dwa klucze; Możesz użyć dowolnego klucza w aplikacji. Aby szybko skopiować/wkleić klucz do edytora kodu lub innej lokalizacji, wybierz przycisk Kopiuj obok każdego klucza, Przełącz system Windows, aby wkleić zawartość schowka do żądanej lokalizacji.
 
@@ -96,8 +96,8 @@ Aby przełączyć się z jednej subskrypcji, na przykład kiedy Twoja bezpłatna
 
 ## <a name="about-regions"></a>Regiony — informacje
 
-- Jeśli aplikacja używa [zestaw SDK rozpoznawania mowy](speech-sdk.md), takich jak Podaj kod regionu `westus`, podczas tworzenia konfiguracji mowy.
-- Jeśli aplikacja używa jednej z usług mowy [interfejsów API REST](rest-apis.md), region jest częścią punktu końcowego identyfikatora URI, można użyć podczas wysyłania żądań.
+- Jeśli aplikacja korzysta z [zestawu Speech SDK](speech-sdk.md), podczas tworzenia konfiguracji mowy należy podać kod regionu, taki jak `westus`.
+- Jeśli aplikacja używa jednego z [interfejsów API REST](rest-apis.md)usługi mowy, region jest częścią identyfikatora URI punktu końcowego, który jest używany podczas tworzenia żądań.
 - Kluczy utworzonych dla regionu są prawidłowe tylko w tym regionie. Podjęto próbę użycia je z innymi regionami będą powodować błędy uwierzytelniania.
 
 ## <a name="next-steps"></a>Następne kroki
@@ -105,5 +105,5 @@ Aby przełączyć się z jednej subskrypcji, na przykład kiedy Twoja bezpłatna
 Wykonaj jedną z naszych 10-minutowe Przewodniki Szybki Start, lub Sprawdź nasze przykłady zestawu SDK:
 
 > [!div class="nextstepaction"]
-> [Szybki Start: Rozpoznawanie mowy w języku C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [przykładowych zestawach SDK rozpoznawania mowy](speech-sdk.md#get-the-samples)
+> [Szybki Start: Rozpoznawanie mowy C# w](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+> [przykłady zestawu Speech SDK](speech-sdk.md#get-the-samples)

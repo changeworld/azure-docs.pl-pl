@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the SDK for Python - Bing Video Search'
+title: 'Szybki Start: wyszukiwanie filmów wideo przy użyciu zestawu SDK dla języka Python — wyszukiwanie wideo Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki start, aby wysyłać żądania wyszukiwania wideo za pomocą zestawu SDK wyszukiwania wideo Bing dla języka Python.
 services: cognitive-services
@@ -17,9 +17,9 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378751"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Python
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Szybki Start: wykonywanie wyszukiwania wideo przy użyciu zestawu SDK wyszukiwanie wideo Bing dla języka Python
 
-Użyj tego przewodnika Szybki start, aby rozpocząć wyszukiwanie wiadomości za pomocą zestawu SDK wyszukiwania wiadomości Bing dla języka Python. Chociaż wyszukiwanie wideo Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) with additional annotations, and features.
+Użyj tego przewodnika Szybki start, aby rozpocząć wyszukiwanie wiadomości za pomocą zestawu SDK wyszukiwania wiadomości Bing dla języka Python. Chociaż wyszukiwanie wideo Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. Kod źródłowy dla tego przykładu można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) z dodatkowymi adnotacjami i funkcjami.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -91,7 +91,7 @@ client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
 > [!div class="nextstepaction"]
 > [Tworzenie internetowej aplikacji jednostronicowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
 - [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)
 - [Cognitive services .NET SDK samples (Przykłady zestawów SKD .NET usług Cognitive Services)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

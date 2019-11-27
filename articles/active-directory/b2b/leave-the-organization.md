@@ -60,7 +60,7 @@ W przypadku trwałego usunięcia użytkownika Ta akcja jest nieodwołalna.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby zapoznać się z omówieniem usługi Azure AD B2B, zobacz [co to jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 

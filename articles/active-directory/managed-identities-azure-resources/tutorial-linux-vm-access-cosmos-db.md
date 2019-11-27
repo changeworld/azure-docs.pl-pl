@@ -223,7 +223,7 @@ To polecenie interfejsu wiersza polecenia zwraca szczegółowe informacje o kole
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób użycia przypisanej przez system tożsamości zarządzanej na maszynie wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Cosmos DB.  Aby dowiedzieć się więcej o usłudze Cosmos DB, zobacz:
 

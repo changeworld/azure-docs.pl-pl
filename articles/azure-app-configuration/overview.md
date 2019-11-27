@@ -67,7 +67,7 @@ Najprostszym sposobem dodawania magazynu konfiguracji aplikacji do aplikacji jes
 | Java Spring | Klient konfiguracji aplikacji dla chmury wiosennej |
 | Inne | Interfejs API REST konfiguracji aplikacji |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [ASP.NET Core — Szybki Start](./quickstart-aspnet-core-app.md)
 * [.NET Core — Szybki Start](./quickstart-dotnet-core-app.md)

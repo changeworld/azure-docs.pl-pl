@@ -118,7 +118,7 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 > [!NOTE]
 > Zestawy SDK Azure Media Services V3 nie mają gwarancji, że są bezpieczne wątkowo. Podczas tworzenia aplikacji wielowątkowej należy dodać własną logikę synchronizacji wątków, aby chronić klienta lub użyć nowego obiektu AzureMediaServicesClient na wątek. Należy również zachować ostrożność w przypadku problemów z wielowątkowością wprowadzanych przez obiekty opcjonalne dostarczone przez kod klientowi (na przykład wystąpienie HttpClient w programie .NET).
 
-|SDK|Informacje ogólne|
+|SDK|Dokumentacja|
 |---|---|
 |[Zestaw SDK platformy .NET](https://aka.ms/ams-v3-dotnet-sdk)|[Dokumentacja platformy .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Zestaw SDK Java](https://aka.ms/ams-v3-java-sdk)|[Dokumentacja języka Java](https://aka.ms/ams-v3-java-ref)|
@@ -127,7 +127,7 @@ Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na ży
 |[Zestaw SDK dla języka Go](https://aka.ms/ams-v3-go-sdk) |[Dokumentacja języka Go](https://aka.ms/ams-v3-go-ref)|
 |[Zestaw SDK dla języka Ruby](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>Zobacz także
+### <a name="see-also"></a>Zobacz też
 
 - [EventGrid .NET SDK zawierający zdarzenia usługi Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definicje zdarzeń Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
@@ -146,11 +146,11 @@ Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Azure Media Service
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Nawiązywanie połączenia z Media Services przy użyciu języka Java](configure-connect-java-howto.md)
 * [Nawiązywanie połączenia z usługą Media Services przy użyciu platformy .NET](configure-connect-dotnet-howto.md)

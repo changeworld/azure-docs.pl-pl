@@ -1,5 +1,5 @@
 ---
-title: Use remote tools to troubleshoot Azure VM issues | Microsoft Docs
+title: Rozwiązywanie problemów z MASZYNami wirtualnymi platformy Azure za pomocą narzędzi zdalnych Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -21,45 +21,45 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483702"
 ---
-# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Use remote tools to troubleshoot Azure VM issues
+# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Rozwiązywanie problemów z MASZYNami wirtualnymi platformy Azure za pomocą narzędzi zdalnych
 
-When you troubleshoot issues on an Azure virtual machine (VM), you can connect to the VM by using the remote tools that are discussed in this article instead of using the Remote Desktop Protocol (RDP).
+W przypadku rozwiązywania problemów dotyczących maszyn wirtualnych platformy Azure można nawiązać połączenie z MASZYNą wirtualną za pomocą narzędzi zdalnych, które zostały omówione w tym artykule, zamiast korzystać z Remote Desktop Protocol (RDP).
 
 ## <a name="serial-console"></a>Konsola szeregowa
 
-Use a [serial console for Azure Virtual Machines](serial-console-windows.md) to run commands on the remote Azure VM.
+Użyj [konsoli szeregowej dla Virtual Machines platformy Azure](serial-console-windows.md) , aby uruchomić polecenia na zdalnej maszynie wirtualnej platformy Azure.
 
-## <a name="remote-cmd"></a>Remote CMD
+## <a name="remote-cmd"></a>Zdalne polecenie CMD
 
-Download [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Connect to the VM by running the following command:
+Pobierz [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Połącz się z maszyną wirtualną, uruchamiając następujące polecenie:
 
 ```cmd
 psexec \\<computer>-u user -s cmd
 ```
 
 >[!NOTE]
->* The command must be run on a computer that's in the same virtual network.
->* DIP or HostName can be used to replace \<computer>.
->* The -s parameter makes sure that the command is invoked by using System Account (administrator permission).
->* PsExec uses TCP ports 135 and 445. As a result, the two ports have to be open on the firewall.
+>* Polecenie musi być uruchamiane na komputerze znajdującym się w tej samej sieci wirtualnej.
+>* Aby zastąpić \<komputera >, można użyć adresu DIP lub nazwy hosta.
+>* Parametr-s sprawdza, czy polecenie jest wywoływane przy użyciu konta systemowego (uprawnienia administratora).
+>* PsExec używa portów TCP 135 i 445. W związku z tym dwa porty muszą być otwarte na zaporze.
 
-## <a name="run-command"></a>Run command
+## <a name="run-command"></a>Uruchom polecenie
 
-For more information about how to use the run command feature to run scripts on the VM, see [Run PowerShell scripts in your Windows VM with run command](../windows/run-command.md).
+Aby uzyskać więcej informacji na temat używania funkcji run polecenia do uruchamiania skryptów na maszynie wirtualnej, zobacz [Uruchamianie skryptów programu PowerShell na maszynie wirtualnej z systemem Windows za pomocą polecenia Uruchom](../windows/run-command.md).
 
 ## <a name="custom-script-extension"></a>Rozszerzenie niestandardowego skryptu
 
-You can use the Custom Script Extension feature to run a custom script on the target VM. To use this feature, the following conditions must be met:
+Możesz użyć funkcji niestandardowego rozszerzenia skryptu do uruchomienia skryptu niestandardowego na docelowej maszynie wirtualnej. Aby skorzystać z tej funkcji, muszą zostać spełnione następujące warunki:
 
-* The VM has connectivity.
-* Azure Virtual Machine Agent is installed and is working as expected on the VM.
-* The extension wasn't previously installed on the VM.
+* Maszyna wirtualna ma łączność.
+* Agent maszyny wirtualnej platformy Azure jest zainstalowany i działa zgodnie z oczekiwaniami na maszynie wirtualnej.
+* Rozszerzenie nie zostało wcześniej zainstalowane na maszynie wirtualnej.
  
-  The extension injects the script only the first time that it's used. If you use this feature later, the extension recognizes that it was already used and doesn't upload the new script.
+  Rozszerzenie Wstawia skrypt tylko podczas pierwszego użycia. Jeśli użyjesz tej funkcji później, rozszerzenie rozpoznaje, że było już używane i nie przekazuje nowego skryptu.
 
-Upload your script to a storage account, and generate its own container. Then, run the following script in Azure PowerShell on a computer that has connectivity to the VM.
+Przekaż skrypt na konto magazynu i Wygeneruj własny kontener. Następnie uruchom następujący skrypt w Azure PowerShell na komputerze, który ma łączność z maszyną wirtualną.
 
-### <a name="for-classic-deployment-model-vms"></a>For classic deployment model VMs
+### <a name="for-classic-deployment-model-vms"></a>Dla maszyn wirtualnych z klasycznym modelem wdrażania
 
 ```powershell
 #Set up the basic variables.
@@ -87,7 +87,7 @@ $vm = Get-AzureVM -ServiceName $vmCloudService -Name $vmName
 Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName | Update-AzureVM
 ```
 
-### <a name="for-azure-resource-manager-vms"></a>For Azure Resource Manager VMs
+### <a name="for-azure-resource-manager-vms"></a>Dla maszyn wirtualnych Azure Resource Manager
 
  
 
@@ -117,40 +117,40 @@ Set-AzureStorageBlobContent -File $localScript -Container $container -Blob $blob
 Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $vmResourceGroup -VMName $vmName -Location $vmLocation -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName
 ```
 
-## <a name="remote-powershell"></a>Remote PowerShell
+## <a name="remote-powershell"></a>Zdalne środowisko PowerShell
 
 >[!NOTE]
->TCP Port 5986 (HTTPS) must be open so that you can use this option.
+>Port TCP 5986 (HTTPS) musi być otwarty, aby można było użyć tej opcji.
 >
->For Azure Resource Manager VMs, you must open port 5986 on the network security group (NSG). For more information, see Security groups. 
+>W przypadku maszyn wirtualnych Azure Resource Manager należy otworzyć port 5986 w sieciowej grupie zabezpieczeń (sieciowej grupy zabezpieczeń). Aby uzyskać więcej informacji, zobacz grupy zabezpieczeń. 
 >
->For RDFE VMs, you must have an endpoint that has a private port (5986) and a public port. Then, you also have to open that public-facing port on the NSG.
+>W przypadku maszyn wirtualnych frontonu reddog trzeba mieć punkt końcowy z portem prywatnym (5986) i portem publicznym. Następnie trzeba również otworzyć ten port publiczny na sieciowej grupy zabezpieczeń.
 
-### <a name="set-up-the-client-computer"></a>Set up the client computer
+### <a name="set-up-the-client-computer"></a>Konfigurowanie komputera klienckiego
 
-To use PowerShell to connect to the VM remotely, you first have to set up the client computer to allow the connection. To do this, add the VM to the PowerShell trusted hosts list by running the following command, as appropriate.
+Aby użyć programu PowerShell do zdalnego nawiązywania połączenia z maszyną wirtualną, należy najpierw skonfigurować komputer kliencki w taki sposób, aby zezwalał na połączenie. W tym celu należy dodać maszynę wirtualną do listy zaufanych hostów programu PowerShell, uruchamiając następujące polecenie zgodnie z potrzebami.
 
-To add one VM to the trusted hosts list:
+Aby dodać jedną maszynę wirtualną do listy zaufanych hostów:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName>
 ```
 
-To add multiple VMs to the trusted hosts list:
+Aby dodać wiele maszyn wirtualnych do listy zaufanych hostów:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName1>,<ComputerName2>
 ```
 
-To add all computers to the trusted hosts list:
+Aby dodać wszystkie komputery do listy zaufanych hostów:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value *
 ```
 
-### <a name="enable-remoteps-on-the-vm"></a>Enable RemotePS on the VM
+### <a name="enable-remoteps-on-the-vm"></a>Włącz RemotePS na maszynie wirtualnej
 
-For VMs created using the classic deployment model, use the Custom Script Extension to run the following script:
+W przypadku maszyn wirtualnych utworzonych przy użyciu klasycznego modelu wdrażania Użyj niestandardowego rozszerzenia skryptu, aby uruchomić następujący skrypt:
 
 ```powershell
 Enable-PSRemoting -Force
@@ -160,31 +160,31 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-For Azure Resource Manager VMs, use run commands from the portal to run the EnableRemotePS script:
+W przypadku maszyn wirtualnych Azure Resource Manager Użyj poleceń Uruchom z portalu, aby uruchomić skrypt EnableRemotePS:
 
-![Run command](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
+![Uruchom polecenie](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
 ### <a name="connect-to-the-vm"></a>Łączenie z maszyną wirtualną
 
-Run the following command based on the client computer location:
+Uruchom następujące polecenie w oparciu o lokalizację komputera klienckiego:
 
-* Outside the virtual network or deployment
+* Poza siecią wirtualną lub wdrożeniem
 
-  * For a VM created using the classic deployment model, run the following command:
+  * W przypadku maszyny wirtualnej utworzonej przy użyciu klasycznego modelu wdrażania Uruchom następujące polecenie:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * For an Azure Resource Manager VM, first add a DNS name to the public IP address. For detailed steps, see [Create a fully qualified domain name in the Azure portal for a Windows VM](../windows/portal-create-fqdn.md). Następnie uruchom poniższe polecenie:
+  * W przypadku maszyny wirtualnej Azure Resource Manager należy najpierw dodać nazwę DNS do publicznego adresu IP. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie w pełni kwalifikowanej nazwy domeny w Azure Portal dla maszyny wirtualnej z systemem Windows](../windows/portal-create-fqdn.md). Następnie uruchom poniższe polecenie:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName "<<DNSname.DataCenter.cloudapp.azure.com>>" -port "5986" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-* Inside the virtual network or deployment, run the following command:
+* W obrębie sieci wirtualnej lub wdrożenia Uruchom następujące polecenie:
   
   ```powershell
   $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -192,65 +192,65 @@ Run the following command based on the client computer location:
   ```
 
 >[!NOTE] 
->Setting the SkipCaCheck flag bypasses the requirement to import a certificate to the VM when you start the session.
+>Ustawienie flagi SkipCaCheck pomija wymagania dotyczące importowania certyfikatu do maszyny wirtualnej podczas uruchamiania sesji.
 
-You can also use the Invoke-Command cmdlet to run a script on the VM remotely.
+Można również użyć polecenia cmdlet Invoke-Command do zdalnego uruchomienia skryptu na maszynie wirtualnej.
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 ```
 
-## <a name="remote-registry"></a>Remote Registry
+## <a name="remote-registry"></a>Rejestr zdalny
 
 >[!NOTE]
->TCP port 135 or 445 must be open in order to use this option.
+>Aby można było użyć tej opcji, port TCP 135 lub 445 musi być otwarty.
 >
->For Azure Resource Manager VMs, you have to open port 5986 on the NSG. For more information, see Security groups. 
+>W przypadku maszyn wirtualnych Azure Resource Manager należy otworzyć port 5986 w sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz grupy zabezpieczeń. 
 >
->For RDFE VMs, you must have an endpoint that has a private port 5986 and a public port. You also have to open that public-facing port on the NSG.
+>W przypadku maszyn wirtualnych frontonu reddog trzeba mieć punkt końcowy z portem prywatnym 5986 i portem publicznym. Należy również otworzyć ten port publiczny na sieciowej grupy zabezpieczeń.
 
-1. From another VM on the same virtual network, open the registry editor (regedit.exe).
+1. Z poziomu innej maszyny wirtualnej w tej samej sieci wirtualnej, Otwórz Edytor rejestru (regedit. exe).
 
-2. Select **File** > **Connect Network Registry**.
+2. Wybierz kolejno pozycje **plik** > **Połącz rejestr sieciowy**.
 
-   ![Registry editor](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
+   ![Edytor rejestru](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. Locate the target VM by **host name** or **dynamic IP** (preferable) by entering it in the **Enter the object name to select** box.
+3. Znajdź docelową maszynę wirtualną według **nazwy hosta** lub **dynamicznego adresu IP** (preferowany), wprowadzając ją w polu **Wprowadź nazwę obiektu do wybrania** .
 
-   ![Enter the object name to select box](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
+   ![Wprowadź nazwę obiektu, aby zaznaczyć pole](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
-4. Enter the credentials for the target VM.
+4. Wprowadź poświadczenia dla docelowej maszyny wirtualnej.
 
-5. Make any necessary registry changes.
+5. Wprowadź wszelkie niezbędne zmiany w rejestrze.
 
-## <a name="remote-services-console"></a>Remote services console
+## <a name="remote-services-console"></a>Konsola usług zdalnych
 
 >[!NOTE]
->TCP ports 135 or 445 must be open in order to use this option.
+>Aby można było użyć tej opcji, porty TCP 135 lub 445 muszą być otwarte.
 >
->For Azure Resource Manager VMs, you have to open port 5986 on the NSG. For more information, see Security groups. 
+>W przypadku maszyn wirtualnych Azure Resource Manager należy otworzyć port 5986 w sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz grupy zabezpieczeń. 
 >
->For RDFE VMs, you must have an endpoint that has a private port 5986 and a public port. You also have to open that public-facing port on the NSG.
+>W przypadku maszyn wirtualnych frontonu reddog trzeba mieć punkt końcowy z portem prywatnym 5986 i portem publicznym. Należy również otworzyć ten port publiczny na sieciowej grupy zabezpieczeń.
 
-1. From another VM on the same virtual network, open an instance of **Services.msc**.
+1. Z poziomu innej maszyny wirtualnej w tej samej sieci wirtualnej, Otwórz wystąpienie programu **Services. msc**.
 
-2. Right-click **Services (Local)** .
+2. Kliknij prawym przyciskiem myszy pozycję **usługi (lokalne)** .
 
-3. Select **Connect to another computer**.
+3. Wybierz pozycję **Połącz z innym komputerem**.
 
-   ![Remote service](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
+   ![Usługa zdalna](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 
-4. Enter the dynamic IP of the target VM.
+4. Wprowadź dynamiczny adres IP docelowej maszyny wirtualnej.
 
-   ![Input dynamic IP](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
+   ![Wejściowy dynamiczny adres IP](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
 
-5. Make any necessary changes to the services.
+5. Wprowadź wszelkie niezbędne zmiany w usługach.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- For more information about the Enter-PSSession cmdlet, see [Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
-- For more information about the Custom Script Extension for Windows using the classic deployment model, see [Custom Script Extension for Windows](../extensions/custom-script-classic.md).
-- PsExec is part of the [PSTools Suite](https://download.sysinternals.com/files/PSTools.zip).
-- For more information about the PSTools Suite, see [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+- Aby uzyskać więcej informacji na temat polecenia cmdlet Enter-PSSession, zobacz [Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
+- Aby uzyskać więcej informacji o rozszerzeniu niestandardowego skryptu dla systemu Windows przy użyciu klasycznego modelu wdrażania, zobacz [rozszerzenie niestandardowego skryptu dla systemu Windows](../extensions/custom-script-classic.md).
+- PsExec jest częścią [pakietu program PsTools](https://download.sysinternals.com/files/PSTools.zip).
+- Aby uzyskać więcej informacji na temat pakietu program PsTools, zobacz [program PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
 

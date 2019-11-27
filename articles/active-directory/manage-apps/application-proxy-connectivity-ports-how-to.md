@@ -25,7 +25,7 @@ ms.locfileid: "74275550"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Jak otworzyć porty zapory wymagane dla aplikacji serwera Proxy aplikacji
 
-Aby wyświetlić pełną listę wymagane porty i funkcję każdego portu, zobacz sekcję wymagania wstępne [dokumentacji serwera Proxy aplikacji](application-proxy-add-on-premises-application.md). należy pamiętać, że serwer Proxy aplikacji używa tylko portów wychodzących.
+Aby zapoznać się z pełną listą wymaganych portów i funkcji poszczególnych portów, zobacz sekcję wymagania wstępne w [dokumentacji serwera proxy aplikacji](application-proxy-add-on-premises-application.md). należy pamiętać, że serwer Proxy aplikacji używa tylko portów wychodzących.
 
 Możesz również sprawdzić, czy masz otwarte wszystkie wymagane porty, otwierając [Narzędzie Test Ports łącznika](https://aadap-portcheck.connectorporttest.msappproxy.net/) z sieci lokalnej. Więcej zielone znaczniki wyboru oznacza większą odporność. 
 
@@ -40,4 +40,4 @@ Aby upewnić się, że narzędzie zapewnia odpowiednich wyników, należy koniec
 -   Upewnij się, czy wszystkie serwery proxy lub zapory mające zastosowanie do łącznika są również stosowane do tej strony. Można to zrobić w programie Internet Explorer, przechodząc do **ustawień** -&gt; **opcje internetowe** -&gt; **połączenia** -&gt; **Ustawienia sieci LAN**. Na tej stronie zobaczysz pola "Użyj serwera Proxy serwera dla Twojej sieci LAN". Zaznacz to pole, a następnie umieścić adres serwera proxy w polu "Address".
 
 ## <a name="next-steps"></a>Następne kroki
-[Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)
+[Omówienie łączników serwer proxy aplikacji usługi Azure AD platformy Azure](application-proxy-connectors.md)

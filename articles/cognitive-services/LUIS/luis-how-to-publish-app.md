@@ -1,7 +1,7 @@
 ---
-title: Publish app - LUIS
+title: Publikowanie aplikacji — LUIS
 titleSuffix: Azure Cognitive Services
-description: When you finish building and testing your active LUIS app, make it available to your client application by publishing it to the endpoint.
+description: Po zakończeniu tworzenia i testowania aplikacją usługi LUIS active był dostępny do aplikacji klienckiej, publikując je do punktu końcowego.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,81 +18,81 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221718"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publish your active, trained app to a staging or production endpoint
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikowanie aktywnej, przeszkolonej aplikacji do tymczasowego lub produkcyjnego punktu końcowego
 
-When you finish building, training, and testing your active LUIS app, make it available to your client application by publishing it to the endpoint. 
+Po zakończeniu kompilowania, uczenia i testowania aktywnej aplikacji LUIS Udostępnij ją aplikacji klienckiej, publikując ją w punkcie końcowym. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="publishing"></a>Publikowanie
 
-1. To publish to the endpoint, select **Publish** in the top, right panel. 
+1. Aby opublikować w punkcie końcowym, wybierz pozycję **Publikuj** w prawym górnym panelu. 
 
-    ![Publish button in top, right nav bar](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![Przycisk Publikuj na górze, prawy pasek nawigacyjny](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. Select your settings for the published prediction endpoint, then select **Publish**.
+1. Wybierz ustawienia dla opublikowanego punktu końcowego przewidywania, a następnie wybierz pozycję **Publikuj**.
 
-    ![Select publish settings then select Publish button](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![Wybierz pozycję Publikuj ustawienia, a następnie wybierz przycisk Publikuj.](./media/luis-how-to-publish-app/publish-pop-up.png)
 
-### <a name="publishing-slots"></a>Publishing slots
+### <a name="publishing-slots"></a>Publikowanie miejsc
 
-Select the correct slot when the pop-up window displays: 
+Zaznacz odpowiednie miejsce po wyświetleniu okna podręcznego: 
 
-* Przejściowe
+* Przygotowanie
 * Produkcja 
 
-By using both publishing slots, this allows you to have two different versions of your app available at the published endpoints or the same version on two different endpoints. 
+Korzystając z obu miejsc publikowania, można w ten sposób mieć dwie różne wersje aplikacji dostępnych w opublikowanych punktach końcowych lub w tej samej wersji w dwóch różnych punktach końcowych. 
 
-### <a name="publishing-regions"></a>Publishing regions
+### <a name="publishing-regions"></a>Publikowanie regionów
 
-The app is published to all regions associated with the LUIS prediction endpoint resources added in the LUIS portal from the **Manage** ->  **[Azure Resources](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** page. 
+Aplikacja zostanie opublikowana we wszystkich regionach skojarzonych z zasobami punktu końcowego przewidywania LUIS dodanych w portalu LUIS na stronie **zarządzaj** ->  **[zasobów platformy Azure](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** . 
 
-For example, for an app created on [www.luis.ai](https://www.luis.ai), if you create a LUIS resource in two regions, **westus** and **eastus**, and add these to the app as resources, the app is published in both regions. For more information about LUIS regions, see [Regions](luis-reference-regions.md).
+Na przykład dla aplikacji utworzonej w usłudze [www.Luis.AI](https://www.luis.ai), jeśli UTWORZYSZ zasób Luis w dwóch regionach, **zachodnim** i **wschodnim**, a następnie dodasz je do aplikacji jako zasoby, aplikacja zostanie opublikowana w obu regionach. Aby uzyskać więcej informacji na temat regionów LUIS, zobacz [regiony](luis-reference-regions.md).
 
 > [!TIP]
-> There are 3 authoring regions. You must author in the region you intend to publish to. If you need to publish to all regions, you need to manage your authoring process and the resulting trained model in all 3 authoring regions. 
+> Istnieją 3 regiony tworzenia. Należy utworzyć w regionie, w którym ma zostać opublikowana. Jeśli zachodzi potrzeba opublikowania we wszystkich regionach, należy zarządzać procesem tworzenia i modelem, który został przeszkolony, we wszystkich 3 regionach tworzenia. 
 
 
-## <a name="configuring-publish-settings"></a>Configuring publish settings
+## <a name="configuring-publish-settings"></a>Konfigurowanie ustawień publikowania
 
-After you select the slot, configure the publish settings for:
+Po wybraniu miejsca Skonfiguruj ustawienia publikowania dla:
 
-* Analiza opinii
-* Spelling correction - v2 prediction endpoint only
-* Speech priming 
+* Analiza tonacji
+* Korekcja pisowni — tylko punkt końcowy przewidywania w wersji 2
+* Napełnianiu mowy 
 
-After you publish, these settings are available for review from the **Manage** section's **Publish settings** page. You can change the settings with every publish. If you cancel a publish, any changes you made during the publish are also canceled. 
+Po opublikowaniu te ustawienia są dostępne do przeglądu na stronie **ustawień publikowania** sekcji **Zarządzanie** . Można zmienić ustawienia za pomocą każdej publikacji. Jeśli anulujesz publikowanie, wszelkie zmiany wprowadzone podczas publikowania również zostaną anulowane. 
 
-### <a name="when-your-app-is-published"></a>When your app is published
+### <a name="when-your-app-is-published"></a>Po opublikowaniu aplikacji
 
-When your app is successfully published, a success notification appears at the top of the browser. The notification also includes a link to the endpoints. 
+Po pomyślnym opublikowaniu aplikacji w górnej części przeglądarki pojawia się powiadomienie o powodzeniu. Powiadomienie zawiera również link do punktów końcowych. 
 
-If you need the endpoint URL, select the link. You can also get to the endpoint URLs by selecting **Manage** in the top menu, then select **Azure Resources** in the left menu. 
+Jeśli potrzebujesz adresu URL punktu końcowego, wybierz łącze. Możesz również przejść do adresów URL punktów końcowych, wybierając pozycję **Zarządzaj** w górnym menu, a następnie wybierając pozycję **zasoby platformy Azure** w menu po lewej stronie. 
 
-## <a name="sentiment-analysis"></a>Analiza opinii
+## <a name="sentiment-analysis"></a>Analiza tonacji
 
 <a name="enable-sentiment-analysis"></a>
 
-Sentiment analysis allows LUIS to integrate with [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) to provide sentiment and key phrase analysis. 
+Analiza tonacji umożliwia integrację LUIS z [Analiza tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) w celu zapewnienia analizy tonacji i kluczowych fraz. 
 
-You do not have to provide a Text Analytics key and there is no billing charge for this service to your Azure account. 
+Nie trzeba podać klucz analizy tekstu, a nie są pobierane opłaty rozliczeń dla tej usługi do konta platformy Azure. 
 
-Sentiment data is a score between 1 and 0 indicating the positive (closer to 1) or negative (closer to 0) sentiment of the data. The sentiment label of `positive`, `neutral`, and `negative` is per supported culture. Currently, only English supports sentiment labels. 
+Dane opinii jest wynik w zakresie od 1 i 0, wskazując pozytywny (bliżej 1) lub ujemną (bliżej 0) tonacji danych. Etykieta tonacji `positive`, `neutral`i `negative` jest na obsługiwaną kulturę. Obecnie tylko język angielski obsługuje etykiety tonacji. 
 
-For more information about the JSON endpoint response with sentiment analysis, see [Sentiment analysis](luis-concept-data-extraction.md#sentiment-analysis)
+Aby uzyskać więcej informacji na temat odpowiedzi punktu końcowego JSON z analizą tonacji, zobacz [tonacji Analysis](luis-concept-data-extraction.md#sentiment-analysis)
 
-## <a name="spelling-correction"></a>Spelling correction
+## <a name="spelling-correction"></a>Poprawianie pisowni
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-Corrections to spelling are made before the LUIS user utterance prediction. You can see any changes to the original utterance, including spelling, in the response.
+Poprawki pisowni są wprowadzane przed przewidywaniem LUIS użytkownika wypowiedź. W odpowiedzi można zobaczyć zmiany w oryginalnym wypowiedź, w tym pisownię.
 
-## <a name="speech-priming"></a>Speech priming
+## <a name="speech-priming"></a>Napełnianiu mowy
 
-Speech priming is the process of using sending the LUIS model to Speech services prior to conversion of text to speech. This allows the speech service to provide speech conversion more accurately for your model. This allows bot Speech and LUIS requests and responses in one call by making one speech call and getting back a LUIS response. It provides less latency overall.
+Speech napełnianiu to proces polegający na wysyłaniu modelu LUIS do usługi mowy przed konwersją tekstu na mowę. Dzięki temu usługa mowy może dokładniej zapewnić konwersję mowy dla modelu. Umożliwia to bot LUIS i reagowanie żądań i odpowiedzi w jednym wywołaniu przez jedno wywołanie mowy i przejęcie odpowiedzi na LUIS. Zapewnia ona mniej czasu na ogół.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* See [Manage keys](./luis-how-to-azure-subscription.md) to add keys to Azure subscription key to LUIS and how to set the Bing Spell Check key and include all intents in results.
-* See [Train and test your app](luis-interactive-test.md) for instructions on how to test your published app in the test console.
+* Zobacz [Zarządzanie](./luis-how-to-azure-subscription.md) kluczami, aby dodać klucze do klucza subskrypcji platformy Azure do Luis i jak ustawić klucz sprawdzanie pisowni Bing i uwzględnić wszystkie intencje w wynikach.
+* Aby uzyskać instrukcje dotyczące testowania opublikowanej aplikacji w konsoli testowej, zobacz temat [uczenie i testowanie aplikacji](luis-interactive-test.md) .
 

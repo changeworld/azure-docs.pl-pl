@@ -1,6 +1,6 @@
 ---
-title: Azure Functions error handling guidance
-description: Learn to handle errors in Azure Functions with links to specific binding errors.
+title: Wskazówki dotyczące obsługi błędów Azure Functions
+description: Dowiedz się, jak obsłużyć błędy w Azure Functions z łączami do określonych błędów powiązań.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
@@ -12,19 +12,19 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227324"
 ---
-# <a name="azure-functions-error-handling"></a>Azure Functions error handling
+# <a name="azure-functions-error-handling"></a>Obsługa błędów Azure Functions
 
-Handling errors in Azure Functions is important to avoid lost data, missed events, and to monitor the health of your application.
+Obsługa błędów w Azure Functions ma na celu uniknięcie utraty danych, nieodebranych zdarzeń i monitorowania kondycji aplikacji.
 
-This article describes general strategies for error handling along with links to binding-specific errors.
+W tym artykule opisano ogólne strategie obsługi błędów oraz linki do błędów specyficznych dla powiązania.
 
-## <a name="handling-errors"></a>Handling errors
+## <a name="handling-errors"></a>Obsługa błędów
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-## <a name="binding-error-codes"></a>Binding error codes
+## <a name="binding-error-codes"></a>Kody błędów powiązania
 
-When integrating with Azure services, errors may originate from the APIs of the underlying services. Information relating to binding-specific errors is available in the **Exceptions and return codes** section of the following articles:
+W przypadku integracji z usługami platformy Azure błędy mogą pochodzić z interfejsów API podstawowych usług. Informacje dotyczące błędów związanych z powiązaniem są dostępne w sekcji **wyjątki i kody powrotu** w następujących artykułach:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 

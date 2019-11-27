@@ -154,7 +154,7 @@ Przykład:
 |knownPersonId|Wewnętrzny identyfikator (jeśli jest znaną osobą).|
 |ReferenceId|Identyfikator Bing (jeśli jest to osobistości Bing).|
 |referenceType|Obecnie tylko Bing.|
-|tytuł|Tytuł (jeśli jest to osobistości — na przykład "dyrektor naczelny firmy Microsoft").|
+|title|Tytuł (jeśli jest to osobistości — na przykład "dyrektor naczelny firmy Microsoft").|
 |imageUrl|Adres URL obrazu, jeśli jest to osobistości.|
 |wystąpienia|Wystąpienia, w których pojawiła się Strona w danym przedziale czasu. Każde wystąpienie ma również thumbnailsId. |
 
@@ -436,6 +436,6 @@ Filmy wideo, które mają zawierać zawartość dla dorosłych lub erotycznej, m
 }
 ] 
 ```
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Samouczek: analizowanie wideo za pomocą Azure Media Services](analyze-videos-tutorial-with-api.md)

@@ -1,6 +1,6 @@
 ---
 title: Co to jest Windows Virtual Desktop? — Azure
-description: An overview of Windows Virtual Desktop.
+description: Omówienie pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -16,79 +16,79 @@ ms.locfileid: "74227698"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
-Windows Virtual Desktop is a desktop and app virtualization service that runs on the cloud.
+Windows Virtual Desktop to usługa wirtualizacji pulpitu i aplikacji działająca w chmurze.
 
-Here’s what you can do when you run Windows Virtual Desktop on Azure:
+Oto co można zrobić w przypadku uruchamiania pulpitu wirtualnego systemu Windows na platformie Azure:
 
-* Set up a multi-session Windows 10 deployment that delivers a full Windows 10 with scalability
-* Virtualize Office 365 ProPlus and optimize it to run in multi-user virtual scenarios
-* Provide Windows 7 virtual desktops with free Extended Security Updates
-* Bring your existing Remote Desktop Services (RDS) and Windows Server desktops and apps to any computer
-* Virtualize both desktops and apps
-* Manage Windows 10, Windows Server, and Windows 7 desktops and apps with a unified management experience
+* Konfigurowanie wdrożenia obejmującego wiele sesji systemu Windows 10, które zapewnia pełną skalowalność systemu Windows 10
+* Wirtualizacja pakietu Office 365 ProPlus i optymalizacja do działania w scenariuszach wirtualnych obejmujących wiele użytkowników
+* Udostępnianie pulpitów wirtualnych systemu Windows 7 z bezpłatnymi rozszerzonymi aktualizacjami zabezpieczeń
+* Przenoszenie istniejących Usługi pulpitu zdalnego (RDS) i komputerów stacjonarnych i aplikacji z systemem Windows Server do dowolnego komputera
+* Wirtualizacja zarówno komputerów stacjonarnych, jak i aplikacji
+* Zarządzanie komputerami stacjonarnymi i aplikacjami z systemem Windows 10, Windows Server i Windows 7 za pomocą ujednoliconego środowiska zarządzania
 
-## <a name="introductory-video"></a>Introductory video
+## <a name="introductory-video"></a>Wstępne wideo
 
-Learn about Windows Virtual Desktop, why it’s unique, and what’s new in this video:
+Dowiedz się więcej o usłudze Windows Virtual Desktop, dlaczego jest ona unikatowa i co nowego w tym filmie wideo:
 
 <br></br><iframe src="https://www.youtube.com/embed/NQFtI3JLtaU" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
-For more videos about Windows Virtual Desktop, see [our playlist](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
+Aby uzyskać więcej filmów wideo dotyczących pulpitu wirtualnego systemu Windows, zobacz [nasze listy odtwarzania](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
 
-With Windows Virtual Desktop, you can set up a scalable and flexible environment:
+Za pomocą pulpitu wirtualnego systemu Windows można skonfigurować skalowalne i elastyczne środowisko:
 
-* Create a full desktop virtualization environment in your Azure subscription without having to run any additional gateway servers.
-* Publish as many host pools as you need to accommodate your diverse workloads.
-* Bring your own image for production workloads or test from the Azure Gallery.
-* Reduce costs with pooled, multi-session resources. With the new Windows 10 Enterprise multi-session capability exclusive to Windows Virtual Desktop and Remote Desktop Session Host (RDSH) role on Windows Server, you can greatly reduce the number of virtual machines and operating system (OS) overhead while still providing the same resources to your users.
-* Provide individual ownership through personal (persistent) desktops.
+* Utwórz pełne środowisko wirtualizacji pulpitu w ramach subskrypcji platformy Azure bez konieczności uruchamiania dodatkowych serwerów bramy.
+* Publikuj tyle pul hostów, ile potrzebujesz do obsługi różnych obciążeń.
+* Korzystaj z własnego obrazu dla obciążeń produkcyjnych lub testów z galerii platformy Azure.
+* Obniż koszty dzięki zasobom w puli, wielu sesjach. Dzięki nowej funkcji wielosesyjnej systemu Windows 10 Enterprise na wyłączność dla pulpitu wirtualnego systemu Windows i roli hosta sesji Pulpit zdalny w systemie Windows Server można znacznie zmniejszyć liczbę maszyn wirtualnych i nakładów pracy systemu operacyjnego, jednocześnie udostępnianie tych samych zasobów użytkownikom.
+* Udostępnianie poszczególnych własności za poorednictwem osobistych (trwałych) komputerów stacjonarnych.
 
-You can deploy and manage virtual desktops:
+Pulpity wirtualne można wdrażać i zarządzać nimi:
 
-* Use the Windows Virtual Desktop PowerShell and REST interfaces to configure the host pools, create app groups, assign users, and publish resources.
-* Publish full desktop or individual remote apps from a single host pool, create individual app groups for different sets of users, or even assign users to multiple app groups to reduce the number of images.
-* As you manage your environment, use built-in delegated access to assign roles and collect diagnostics to understand various configuration or user errors.
-* Use the new Diagnostics service to troubleshoot errors.
-* Only manage the image and virtual machines, not the infrastructure. You don't need to personally manage the Remote Desktop roles like you do with Remote Desktop Services, just the virtual machines in your Azure subscription.
+* Za pomocą programu PowerShell i interfejsów REST systemu Windows można skonfigurować pule hostów, tworzyć grupy aplikacji, przypisywać użytkowników i publikować zasoby.
+* Publikowanie pełnych pulpitów lub pojedynczych aplikacji zdalnych z jednej puli hostów, tworzenie pojedynczych grup aplikacji dla różnych zestawów użytkowników, a nawet przypisywanie użytkowników do wielu grup aplikacji w celu zmniejszenia liczby obrazów.
+* Podczas zarządzania środowiskiem użyj wbudowanego delegowanego dostępu, aby przypisać role i zbierać diagnostykę, aby poznać różne konfiguracje lub błędy użytkowników.
+* Użyj nowej usługi diagnostycznej do rozwiązywania problemów z błędami.
+* Zarządzaj obrazami i maszynami wirtualnymi, a nie z infrastrukturą. Nie musisz zarządzać rolami Pulpit zdalny, takimi jak w przypadku Usługi pulpitu zdalnego, tylko maszyn wirtualnych w ramach subskrypcji platformy Azure.
 
-You can also assign and connect users to your virtual desktops:
+Możesz również przypisywać użytkowników i łączyć ich z pulpitami wirtualnymi:
 
-* Once assigned, users can launch any Windows Virtual Desktop client to connect users to their published Windows desktops and applications. Connect from any device through either a native application on your device or the Windows Virtual Desktop HTML5 web client.
-* Securely establish users through reverse connections to the service, so you never have to leave any inbound ports open.
+* Po przypisaniu użytkownicy mogą uruchomić dowolnego klienta pulpitu wirtualnego systemu Windows, aby połączyć użytkowników z opublikowanymi pulpitami i aplikacjami systemu Windows. Połącz się z dowolnego urządzenia za pośrednictwem aplikacji natywnej na urządzeniu lub klienta sieci Web HTML5 programu Windows Virtual Desktop.
+* Bezpiecznie ustanawiaj użytkowników przez połączenia odwrotne do usługi, dzięki czemu nie musisz opuszczać żadnych otwartych portów przychodzących.
 
 ## <a name="requirements"></a>Wymagania
 
-There are a few things you need to set up Windows Virtual Desktop and successfully connect your users to their Windows desktops and applications.
+Istnieje kilka rzeczy potrzebnych do skonfigurowania pulpitu wirtualnego systemu Windows i pomyślnego połączenia użytkowników z komputerami stacjonarnymi i aplikacjami z systemem Windows.
 
-We plan to add support for the following OSes, so make sure you have the [appropriate licenses](https://azure.microsoft.com/pricing/details/virtual-desktop/) for your users based on the desktop and apps you plan to deploy:
+Planujemy dodanie obsługi następujących systemów operacyjnych, więc upewnij się, że masz [odpowiednie licencje](https://azure.microsoft.com/pricing/details/virtual-desktop/) dla użytkowników na podstawie pulpitu i aplikacji, które planujesz wdrożyć:
 
-|System operacyjny|Required license|
+|System operacyjny|Wymagana licencja|
 |---|---|
-|Windows 10 Enterprise multi-session or Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Wiele sesji systemu Windows 10 Enterprise lub Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
-|Windows Server 2012 R2, 2016, 2019|RDS Client Access License (CAL) with Software Assurance|
+|Windows Server 2012 R2, 2016, 2019|Licencja dostępu klienta usług pulpitu zdalnego z programem Software Assurance|
 
-Your infrastructure needs the following things to support Windows Virtual Desktop:
+Aby zapewnić obsługę pulpitu wirtualnego systemu Windows, Twoja infrastruktura wymaga następujących czynności:
 
-* An [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* A Windows Server Active Directory in sync with Azure Active Directory. You can configure this with one of the following:
-  * Azure AD Connect (for hybrid organizations)
-  * Azure AD Domain Services (for hybrid or cloud organizations)
-* An Azure subscription that contains a virtual network that either contains or is connected to the Windows Server Active Directory
+* [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* Active Directory systemu Windows Server synchronizacja z Azure Active Directory. Można to skonfigurować przy użyciu jednego z następujących elementów:
+  * Azure AD Connect (dla organizacji hybrydowych)
+  * Azure AD Domain Services (dla organizacji hybrydowych lub w chmurze)
+* Subskrypcja platformy Azure zawierająca sieć wirtualną, która zawiera lub jest połączona z systemem Windows Server Active Directory
   
-The Azure virtual machines you create for Windows Virtual Desktop must be:
+Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windows muszą być:
 
-* [Standard domain-joined](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) or [Hybrid AD-joined](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtual machines can't be Azure AD-joined.
-* Running one of the following [supported OS images](#supported-virtual-machine-os-images).
+* [Standardowe przyłączone do domeny](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) lub [hybrydowe usługi AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Maszyny wirtualne nie mogą być przyłączone do usługi Azure AD.
+* Uruchamianie jednego z następujących [obsługiwanych obrazów systemu operacyjnego](#supported-virtual-machine-os-images).
 
 >[!NOTE]
->If you need an Azure subscription, you can [sign up for a one-month free trial](https://azure.microsoft.com/free/). If you're using the free trial version of Azure, you should use Azure AD Domain Services to keep your Windows Server Active Directory in sync with Azure Active Directory.
+>Jeśli potrzebujesz subskrypcji platformy Azure, możesz [zarejestrować się w celu korzystania z miesięcznej bezpłatnej wersji próbnej](https://azure.microsoft.com/free/). W przypadku korzystania z bezpłatnej wersji próbnej platformy Azure należy używać Azure AD Domain Services, aby zapewnić synchronizację Active Directory systemu Windows Server z Azure Active Directory.
 
-The Azure virtual machines you create for Windows Virtual Desktop must have outbound TCP 443 access to the following URLs:
+Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windows muszą mieć dostęp do następujących adresów URL wychodzącego protokołu TCP 443:
 
-* *.wvd.microsoft.com
+* *. wvd.microsoft.com
 * *.blob.core.windows.net
 * *.core.windows.net
 * *.servicebus.windows.net
@@ -96,52 +96,52 @@ The Azure virtual machines you create for Windows Virtual Desktop must have outb
 * catalogartifact.azureedge.net
 
 >[!NOTE]
->Opening these URLs is essential for a reliable Windows Virtual Desktop deployment. Blocking access to these URLs is unsupported and will affect service functionality. These URLs only correspond to Windows Virtual Desktop sites and resources, and do not include URLS for other services like Azure AD.
+>Otwieranie tych adresów URL jest niezbędne dla niezawodnego wdrożenia pulpitu wirtualnego systemu Windows. Blokowanie dostępu do tych adresów URL nie jest obsługiwane i wpłynie na funkcjonalność usługi. Te adresy URL odnoszą się tylko do witryn i zasobów pulpitu wirtualnego systemu Windows, a nie obejmują adresów URL dla innych usług, takich jak Azure AD.
 
-Windows Virtual Desktop comprises the Windows desktops and apps you deliver to users and the management solution, which is hosted as a service on Azure by Microsoft. Desktops and apps can be deployed on virtual machines (VMs) in any Azure region, and the management solution and data for these VMs will reside in the United States. This may result in data transfer to the United States.
+Pulpit wirtualny systemu Windows składa się z komputerów stacjonarnych i aplikacji z systemem Windows dostarczanych użytkownikom i rozwiązanie do zarządzania, które jest hostowane jako usługa na platformie Azure przez firmę Microsoft. Komputery stacjonarne i aplikacje można wdrażać na maszynach wirtualnych w dowolnym regionie świadczenia usługi Azure, a rozwiązanie do zarządzania i dane dla tych maszyn wirtualnych będą znajdować się w Stany Zjednoczone. Może to spowodować transfer danych do Stany Zjednoczone.
 
-For optimal performance, make sure your network meets the following requirements:
+W celu uzyskania optymalnej wydajności upewnij się, że sieć spełnia następujące wymagania:
 
-* Round-trip (RTT) latency from the client's network to the Azure region where host pools have been deployed should be less than 150 ms.
-* Network traffic may flow outside country/region borders when VMs that host desktops and apps connect to the management service.
-* To optimize for network performance, we recommend that the session host's VMs are collocated in the same Azure region as the management service.
+* Opóźnienie rundy (RTT) od sieci klienta do regionu platformy Azure, w którym wdrożono pule hostów, powinno być mniejsze niż 150 MS.
+* Ruch sieciowy może przepływać poza granicami kraju/regionu, gdy maszyny wirtualne, które obsługują komputery stacjonarne i aplikacje, łączą się z usługą zarządzania.
+* Aby zoptymalizować pod kątem wydajności sieci, zalecamy zapoznanie się z maszynami wirtualnymi hosta sesji w tym samym regionie platformy Azure co usługa zarządzania.
 
-## <a name="supported-remote-desktop-clients"></a>Supported Remote Desktop clients
+## <a name="supported-remote-desktop-clients"></a>Obsługiwani klienci Pulpit zdalny
 
-The following Remote Desktop clients support Windows Virtual Desktop:
+Następujący klienci Pulpit zdalny obsługują pulpit wirtualny systemu Windows:
 
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-## <a name="supported-virtual-machine-os-images"></a>Supported virtual machine OS images
+## <a name="supported-virtual-machine-os-images"></a>Obsługiwane obrazy systemu operacyjnego maszyny wirtualnej
 
-Windows Virtual Desktop supports the following x64 operating system images:
+Pulpit wirtualny systemu Windows obsługuje następujące obrazy systemu operacyjnego x64:
 
-* Windows 10 Enterprise multi-session, version 1809 or later
-* Windows 10 Enterprise, version 1809 or later
+* Wiele sesji systemu Windows 10 Enterprise, wersja 1809 lub nowsza
+* Windows 10 Enterprise, wersja 1809 lub nowsza
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows Virtual Desktop does not support x86 (32-bit), Windows 10 Enterprise N, or Windows 10 Enterprise KN operating system images.
+Pulpit wirtualny systemu Windows nie obsługuje obrazów systemu operacyjnego x86 (32-bitowych), Windows 10 Enterprise N lub Windows 10 Enterprise KN.
 
-Available automation and deployment options depend on which OS and version you choose, as shown in the following table: 
+Dostępne opcje automatyzacji i wdrażania zależą od wybranego systemu operacyjnego i wersji, jak pokazano w poniższej tabeli: 
 
-|System operacyjny|Azure Image Gallery|Manual VM deployment|Azure Resource Manager template integration|Provision host pools on Azure Marketplace|Windows Virtual Desktop Agent updates|
+|System operacyjny|Galeria obrazów platformy Azure|Ręczne wdrożenie maszyny wirtualnej|Integracja z szablonem Azure Resource Manager|Inicjowanie obsługi pul hostów w witrynie Azure Marketplace|Aktualizacje agenta pulpitu wirtualnego systemu Windows|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 multi-session, version 1903|Tak|Tak|Tak|Tak|Automatyczny|
-|Windows 10 multi-session, version 1809|Tak|Tak|Nie|Nie|Automatyczny|
-|Windows 10 Enterprise, version 1903|Tak|Tak|Tak|Tak|Automatyczny|
-|Windows 10 Enterprise, version 1809|Tak|Tak|Nie|Nie|Automatyczny|
-|Windows 7 Enterprise|Tak|Tak|Nie|Nie|Ręczna|
-|Windows Server 2019|Tak|Tak|Nie|Nie|Automatyczny|
-|Windows Server 2016|Tak|Tak|Tak|Tak|Automatyczny|
-|Windows Server 2012 R2|Tak|Tak|Nie|Nie|Automatyczny|
+|Wiele sesji systemu Windows 10, wersja 1903|Yes|Yes|Yes|Yes|Automatyczny|
+|Wiele sesji systemu Windows 10, wersja 1809|Yes|Yes|Nie|Nie|Automatyczny|
+|Windows 10 Enterprise, wersja 1903|Yes|Yes|Yes|Yes|Automatyczny|
+|Windows 10 Enterprise, wersja 1809|Yes|Yes|Nie|Nie|Automatyczny|
+|Windows 7 Enterprise|Yes|Yes|Nie|Nie|Ręcznie|
+|Windows Server 2019|Yes|Yes|Nie|Nie|Automatyczny|
+|Windows Server 2016|Yes|Yes|Yes|Yes|Automatyczny|
+|Windows Server 2012 R2|Yes|Yes|Nie|Nie|Automatyczny|
 
 ## <a name="next-steps"></a>Następne kroki
 
-To get started, you'll need to create a tenant. To learn more about how to create a tenant, continue to the tenant creation tutorial.
+Aby rozpocząć, musisz utworzyć dzierżawę. Aby dowiedzieć się więcej na temat tworzenia dzierżawy, przejdź do samouczka dotyczącego tworzenia dzierżawy.
 
 > [!div class="nextstepaction"]
 > [Tworzenie dzierżawy w usłudze Windows Virtual Desktop](tenant-setup-azure-active-directory.md)

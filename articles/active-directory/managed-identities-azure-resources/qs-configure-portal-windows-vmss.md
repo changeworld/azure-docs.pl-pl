@@ -30,7 +30,7 @@ Zarządzane tożsamości dla zasobów platformy Azure zapewniają usługi platfo
 
 W tym artykule, korzystając z programu PowerShell, dowiesz się, jak wykonywać następujące tożsamości zarządzane dla operacji zasobów platformy Azure na zestawie skalowania maszyn wirtualnych:
 
-- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md).
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md).
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 - Aby wykonać operacje zarządzania w tym artykule, Twoje konto musi mieć następujące przypisania kontroli dostępu oparte na rolach na platformie Azure:
 
@@ -102,7 +102,7 @@ Obecnie Azure Portal nie obsługuje przypisywania tożsamości zarządzanej przy
    ![Usuwanie tożsamości przypisanej przez użytkownika z VMSS](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vmss-screenshot.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Korzystając z Azure Portal, nadaj zestawowi skalowania maszyn wirtualnych platformy Azure [dostęp do tożsamości zarządzanej do innego zasobu platformy Azure](howto-assign-access-portal.md).
 

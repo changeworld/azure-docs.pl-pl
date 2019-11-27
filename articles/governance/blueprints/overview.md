@@ -1,6 +1,6 @@
 ---
 title: Omówienie usługi Azure Blueprints
-description: Understand how the Azure Blueprints service enables you to create, define, and deploy artifacts in your Azure environment.
+description: Dowiedz się, w jaki sposób usługa Azure Plans umożliwia tworzenie, Definiowanie i wdrażanie artefaktów w środowisku platformy Azure.
 ms.date: 11/21/2019
 ms.topic: overview
 ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
@@ -50,8 +50,8 @@ Strategia składa się z _artefaktów_. Usługa Blueprints obsługuje obecnie na
 
 |Zasób  | Opcje hierarchii| Opis  |
 |---------|---------|---------|
-|Grupy zasobów | Subskrypcja | Umożliwia utworzenie nowej grupy zasobów do użytku przez inne artefakty w ramach strategii.  Te zastępcze grupy zasobów umożliwiają organizowanie zasobów dokładnie w taką strukturę, jaka jest pożądana. Udostępniają one ogranicznik zakresu na potrzeby uwzględnionych zasad i artefakty przypisania roli oraz szablony usługi Azure Resource Manager. |
-|Szablon usługi Azure Resource Manager | Subskrypcja, grupa zasobów | Templates, including nested and linked templates, are used to compose complex environments. Przykładowe środowiska: farma programu SharePoint, konfiguracja stanu usługi Azure Automation lub obszar roboczy usługi Log Analytics. |
+|Grupy zasobów | Subscription | Umożliwia utworzenie nowej grupy zasobów do użytku przez inne artefakty w ramach strategii.  Te zastępcze grupy zasobów umożliwiają organizowanie zasobów dokładnie w taką strukturę, jaka jest pożądana. Udostępniają one ogranicznik zakresu na potrzeby uwzględnionych zasad i artefakty przypisania roli oraz szablony usługi Azure Resource Manager. |
+|Szablon usługi Azure Resource Manager | Subskrypcja, grupa zasobów | Szablony, w tym zagnieżdżone i połączone szablony, służą do tworzenia złożonych środowisk. Przykładowe środowiska: farma programu SharePoint, konfiguracja stanu usługi Azure Automation lub obszar roboczy usługi Log Analytics. |
 |Przypisanie zasad | Subskrypcja, grupa zasobów | Umożliwia przypisanie zasad lub inicjatywy do subskrypcji, do której przypisano strategię. Zasady lub inicjatywa muszą znajdować się w zakresie lokalizacji definicji strategii. Jeśli zasady lub inicjatywa mają parametry, są one przypisywane podczas tworzenia strategii bądź podczas jej przypisywania. |
 |Przypisanie roli | Subskrypcja, grupa zasobów | Dodawanie istniejącego użytkownika lub grupy do wbudowanej roli w celu zagwarantowania, że odpowiednie osoby zawsze będą mieć odpowiedni dostęp do zasobów. Przypisania ról mogą być definiowane dla całej subskrypcji lub mogą być zagnieżdżone w konkretnej grupie zasobów uwzględnionej w strategii. |
 
@@ -72,12 +72,12 @@ Aby uzyskać więcej informacji, zobacz [parametry strategii](./concepts/paramet
 
 ### <a name="blueprint-publishing"></a>Publikowanie strategii
 
-Kiedy strategia jest tworzona po raz pierwszy, przyjmuje się, że jest w trybie **wersji roboczej**. Kiedy jest gotowa do przypisania, należy ją **opublikować**. Publikowanie wymaga zdefiniowania ciągu **wersji** (liter, cyfr i łączników o maksymalnej długości 20 znaków) wraz z opcjonalnymi **uwagami dotyczącymi zmian**. Dzięki zastosowaniu **wersji** przyszłe zmiany wprowadzone w strategii mogą być traktowane jako osobne wersje z możliwością ich przypisania. Obsługa wersji oznacza również, że różne **wersje** tej samej strategii można przypisać do jednej subskrypcji. When additional changes are made to the blueprint, the **Published**
-**Version** still exists, as do the **Unpublished changes**. Po zakończeniu wprowadzania zmian zaktualizowana strategia jest **publikowana** jako nowa unikatowa **wersja**, którą teraz również można przypisać.
+Kiedy strategia jest tworzona po raz pierwszy, przyjmuje się, że jest w trybie **wersji roboczej**. Kiedy jest gotowa do przypisania, należy ją **opublikować**. Publikowanie wymaga zdefiniowania ciągu **wersji** (liter, cyfr i łączników o maksymalnej długości 20 znaków) wraz z opcjonalnymi **uwagami dotyczącymi zmian**. Dzięki zastosowaniu **wersji** przyszłe zmiany wprowadzone w strategii mogą być traktowane jako osobne wersje z możliwością ich przypisania. Obsługa wersji oznacza również, że różne **wersje** tej samej strategii można przypisać do jednej subskrypcji. Po wprowadzeniu dodatkowych zmian do planu **opublikowana** **wersja**
+nadal istnieje, ponieważ nie **opublikowano zmian**. Po zakończeniu wprowadzania zmian zaktualizowana strategia jest **publikowana** jako nowa unikatowa **wersja**, którą teraz również można przypisać.
 
 ## <a name="blueprint-assignment"></a>Przypisywanie strategii
 
-Each **Published** **Version** of a blueprint can be assigned (with a max name length of 90 characters) to an existing subscription. W portalu domyślną **wersją** strategii jest ta, która została **opublikowana** jako ostatnia. Jeśli istnieją parametry artefaktów (lub parametry strategii), są one definiowane w procesie przypisania.
+Do istniejącej subskrypcji można przypisać każdą **opublikowaną** **wersję** planu (z maksymalną długością nazwy wynoszącą 90 znaków). W portalu domyślną **wersją** strategii jest ta, która została **opublikowana** jako ostatnia. Jeśli istnieją parametry artefaktów (lub parametry strategii), są one definiowane w procesie przypisania.
 
 ## <a name="permissions-in-azure-blueprints"></a>Uprawnienia w usłudze Azure Blueprints
 
@@ -104,30 +104,30 @@ Aby użytkownik mógł przypisywać strategie lub anulować ich przypisanie, jeg
 > [!NOTE]
 > Przypisania strategii są tworzone w ramach subskrypcji, dlatego uprawnienia przypisywania strategii lub anulowania takiego przypisania muszą zostać przyznane w zakresie subskrypcji bądź muszą być dziedziczone w zakresie subskrypcji.
 
-The following built-in roles are available:
+Dostępne są następujące wbudowane role:
 
-|RBAC Role | Opis |
+|Rola RBAC | Opis |
 |-|-|
-|[Właściciel](../../role-based-access-control/built-in-roles.md#owner) | In addition to other permissions, includes all Azure Blueprint related permissions. |
-|[Współautor](../../role-based-access-control/built-in-roles.md#contributor) | In addition to other permissions, can create and delete blueprint definitions, but doesn't have blueprint assignment permissions. |
-|[Blueprint Contributor](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Can manage blueprint definitions, but not assign them. |
-|[Blueprint Operator](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Can assign existing published blueprints, but can't create new blueprint definitions. Blueprint assignment only works if the assignment is done with a user-assigned managed identity. |
+|[Właściciel](../../role-based-access-control/built-in-roles.md#owner) | Oprócz innych uprawnień program zawiera wszystkie Azure Blueprint powiązane uprawnienia. |
+|[Współautor](../../role-based-access-control/built-in-roles.md#contributor) | Oprócz innych uprawnień program może tworzyć i usuwać definicje planów, ale nie ma uprawnień do przypisywania strategii. |
+|[Współautor planu](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Może zarządzać definicjami planu, ale nie należy ich przypisywać. |
+|[Operator planu](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Może przypisywać istniejące opublikowane plany, ale nie może tworzyć nowych definicji planu. Przypisanie strategii działa tylko wtedy, gdy przypisanie zostało wykonane przy użyciu tożsamości zarządzanej przypisanej przez użytkownika. |
 
 Jeśli te wbudowane role nie spełniają wymagań dotyczących zabezpieczeń, należy rozważyć utworzenie [roli niestandardowej](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> If using a system-assigned managed identity, the service principal for Azure Blueprints requires the **Owner** role on the assigned subscription in order to enable deployment. W przypadku korzystania z portalu ta rola jest automatycznie przyznawana i odwoływana dla wdrożenia. W przypadku korzystania z interfejsu API REST ta rola musi zostać ręcznie przyznana, ale jest automatycznie odwoływana po zakończeniu wdrożenia. If using a user-assigned managed identity, only the user creating the blueprint assignment needs the `Microsoft.Blueprint/blueprintAssignments/write` permission, which is included in both the **Owner** and **Blueprint Operator** built-in roles.
+> W przypadku korzystania z tożsamości zarządzanej przypisanej do systemu jednostka usługi dla planów platformy Azure wymaga roli **właściciela** w przypisanej subskrypcji, aby można było włączyć wdrożenie. W przypadku korzystania z portalu ta rola jest automatycznie przyznawana i odwoływana dla wdrożenia. W przypadku korzystania z interfejsu API REST ta rola musi zostać ręcznie przyznana, ale jest automatycznie odwoływana po zakończeniu wdrożenia. Jeśli jest używana tożsamość zarządzana przypisana przez użytkownika, tylko użytkownik tworzący przypisanie planu potrzebuje uprawnienia `Microsoft.Blueprint/blueprintAssignments/write`, które jest zawarte w rolach role **właściciela** i **operatora** planu.
 
-## <a name="naming-limits"></a>Naming limits
+## <a name="naming-limits"></a>Limity nazewnictwa
 
-The following limitations exist for certain fields:
+Dla niektórych pól istnieją następujące ograniczenia:
 
-|Obiekt|Pole|Allowed Characters|Maksymalnie z Długość|
+|Obiekt|Pole|Dozwolone znaki|Maksymalnie z Długość|
 |-|-|-|-|
-|Blueprint|Nazwa|letters, numbers, hyphens, and periods|48|
-|Blueprint|Wersja|letters, numbers, hyphens, and periods|20|
-|Przypisywanie strategii|Nazwa|letters, numbers, hyphens, and periods|90|
-|Blueprint artifact|Nazwa|letters, numbers, hyphens, and periods|48|
+|Potrzeby|Nazwa|litery, cyfry, łączniki i kropki|48|
+|Potrzeby|Wersja|litery, cyfry, łączniki i kropki|20|
+|Przypisywanie strategii|Nazwa|litery, cyfry, łączniki i kropki|90|
+|Artefakt planu|Nazwa|litery, cyfry, łączniki i kropki|48|
 
 ## <a name="video-overview"></a>Omówienie wideo
 
@@ -137,6 +137,6 @@ Poniższy omówienie usługi Azure Blueprints pochodzi z witryny Azure Fridays. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Create a blueprint - Portal](./create-blueprint-portal.md).
-- [Create a blueprint - PowerShell](./create-blueprint-powershell.md).
-- [Create a blueprint - REST API](./create-blueprint-rest-api.md).
+- [Utwórz plan — Portal](./create-blueprint-portal.md).
+- [Utwórz plan — PowerShell](./create-blueprint-powershell.md).
+- [Tworzenie interfejsu API REST](./create-blueprint-rest-api.md).

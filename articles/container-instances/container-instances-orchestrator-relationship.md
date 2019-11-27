@@ -1,24 +1,19 @@
 ---
-title: Azure Container Instances i aranżacja kontenera
+title: Wystąpienia kontenerów i aranżacja kontenerów
 description: Dowiedz się, jak usługa Azure Container Instances współdziała z koordynatorami kontenerów.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 044b74e1a8683c6beb0220c1cf9fb97403286a95
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972246"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533659"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances i koordynatorów kontenerów
 
-Ze względu na ich mały rozmiar i orientację aplikacji, kontenery są dobrze dopasowane do środowisk dostarczania Agile i architektury opartych na mikrousługach. Zadanie automatyzacji i zarządzania dużą liczbą kontenerów oraz ich współdziałaniem jest znane jako aranżacja. Popularne Koordynatory kontenerów obejmują Kubernetes, DC/OS i Docker Swarm.
+Ze względu na ich mały rozmiar i orientację aplikacji, kontenery są dobrze dopasowane do środowisk dostarczania Agile i architektury opartych na mikrousługach. Zadanie automatyzacji i zarządzania dużą liczbą kontenerów oraz ich współdziałaniem jest znane jako *aranżacja*. Popularne Koordynatory kontenerów obejmują Kubernetes, DC/OS i Docker Swarm.
 
 Azure Container Instances oferuje podstawowe możliwości planowania platform aranżacji. Chociaż nie obejmują one usług wyższego poziomu, które udostępniają te platformy, Azure Container Instances mogą być uzupełniane do nich. W tym artykule opisano zakres dojścia Azure Container Instances i sposób, w jaki pełne Koordynatory kontenerów mogą z nimi korzystać.
 
@@ -26,16 +21,16 @@ Azure Container Instances oferuje podstawowe możliwości planowania platform ar
 
 Standardowa definicja aranżacji obejmuje następujące zadania:
 
-- **Planowanie**: Mając obraz kontenera i żądanie zasobu, Znajdź odpowiednią maszynę, na której ma zostać uruchomiony kontener.
-- **Koligacja/** koligacja: Określ, że zestaw kontenerów powinien działać w pobliżu siebie (dla wydajności) lub wystarczająco daleko (na potrzeby dostępności).
-- **Monitorowanie kondycji**: Obejrzyj błędy kontenera i automatycznie Zaplanuj je ponownie.
-- **Tryb failover**: Śledź działania wykonywane na poszczególnych maszynach i ponownie Zaplanuj kontenery z uszkodzonych maszyn do węzłów w dobrej kondycji.
-- **Skalowanie**: Dodaj lub usuń wystąpienia kontenerów w celu dopasowania do żądania ręcznie lub automatycznie.
-- **Sieć**: Zapewnianie sieci nakładki do koordynowania kontenerów w celu komunikacji między wieloma maszynami hosta.
-- **Odnajdowanie usługi**: Włącz automatyczne lokalizowanie kontenerów, nawet w przypadku przechodzenia między maszynami hosta i zmiany adresów IP.
+- **Planowanie**: przy użyciu obrazu kontenera i żądania zasobu Znajdź odpowiednią maszynę, na której ma zostać uruchomiony kontener.
+- **Koligacja/ochrona przed koligacją**: Określ, że zestaw kontenerów powinien działać w pobliżu siebie (dla wydajności) lub wystarczająco daleko (na potrzeby dostępności).
+- **Monitorowanie kondycji**: śledzenie błędów kontenera i automatyczne ich zaplanowanie.
+- **Tryb failover**: śledzenie działania wykonywanego na poszczególnych maszynach i ponowne planowanie kontenerów z maszyn zakończonych niepowodzeniem na węzły w dobrej kondycji.
+- **Skalowanie**: Dodawanie lub usuwanie wystąpień kontenerów w celu dopasowania ich do zapotrzebowania ręcznie lub automatycznie.
+- **Sieć**: zapewnianie sieci nakładki do koordynowania kontenerów do komunikacji między wieloma maszynami hosta.
+- **Odnajdowanie usługi**: umożliwia automatyczne lokalizowanie kontenerów, nawet w przypadku przechodzenia między maszynami hosta i zmiany adresów IP.
 - **Skoordynowane uaktualnienia aplikacji**: Zarządzaj uaktualnieniami kontenerów, aby uniknąć przestojów aplikacji, i Włącz wycofywanie, jeśli coś się nie stało.
 
-## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Aranżacja z Azure Container Instances: Podejście warstwowe
+## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Aranżacja z Azure Container Instances: podejście warstwowe
 
 Azure Container Instances włącza podejście warstwowe do aranżacji, dostarczając wszystkie możliwości planowania i zarządzania wymagane do uruchomienia jednego kontenera, jednocześnie umożliwiając platformom Orchestrator zarządzanie zadaniami wielokontenerowymi na tym komputerze.
 
@@ -61,7 +56,7 @@ Aby szybko skalować obciążenia aplikacji w klastrze [usługi Azure Kubernetes
 
 Węzły wirtualne obecnie obsługują wystąpienia kontenera systemu Linux. Rozpocznij pracę z węzłami wirtualnymi za pomocą [interfejsu wiersza polecenia platformy Azure](https://go.microsoft.com/fwlink/?linkid=2047538) lub [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545).
 
-Węzły wirtualne używają [Kubelet wirtualnej][aci-connector-k8s] typu open source do naśladowania Kubernetes [Kubelet][kubelet-doc] przez zarejestrowanie jako węzeł z nieograniczoną pojemnością. Wirtualna Kubelet wysyła do grupy kontenerów tworzenie w [][pod-doc] Azure Container Instances.
+Węzły wirtualne używają [Kubelet wirtualnej][aci-connector-k8s] typu open source do naśladowania Kubernetes [Kubelet][kubelet-doc] przez zarejestrowanie jako węzeł z nieograniczoną pojemnością. Wirtualna Kubelet wysyła do grupy kontenerów [Tworzenie w Azure Container Instances][pod-doc] .
 
 Zobacz [wirtualny projekt Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) , aby uzyskać dodatkowe przykłady rozszerzania interfejsu API Kubernetes na platformy kontenerów bezserwerowych.
 

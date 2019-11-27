@@ -140,9 +140,9 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
     b. Wybierz usługę **AzureDatabricks\_LinkedService** (utworzoną w ramach poprzedniej procedury).
 
-    d. Przejdź do karty **Ustawienia**.
+    c. Przejdź do karty **Ustawienia**.
 
-    d. Użyj polecenia Przeglądaj, aby wybrać wartość dla pozycji **Ścieżka notesu** usługi Databricks. W tym miejscu utworzymy notes i określimy ścieżkę. Ścieżkę notesu można uzyskać, wykonując kilka następnych kroków.
+    c. Użyj polecenia Przeglądaj, aby wybrać wartość dla pozycji **Ścieżka notesu** usługi Databricks. W tym miejscu utworzymy notes i określimy ścieżkę. Ścieżkę notesu można uzyskać, wykonując kilka następnych kroków.
 
        1. Uruchom obszar roboczy usługi Azure Databricks.
 

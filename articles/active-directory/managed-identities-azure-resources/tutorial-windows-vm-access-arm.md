@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use managed identity to access Azure Resource Manager - Windows - Azure AD
+title: Samouczek`:` korzystania z tożsamości zarządzanej w celu uzyskania dostępu do Azure Resource Manager-Windows-Azure AD
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''

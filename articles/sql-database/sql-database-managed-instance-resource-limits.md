@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 10/02/2019
-ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823339"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548366"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -31,7 +31,7 @@ Wystąpienie zarządzane ma cechy i limity zasobów, które są zależne od pods
 
 |   | **Obliczenia** | **5 rdzeń** |
 | --- | --- | --- |
-| Sprzęt | Procesor Intel E5-2673 v3 (Haswell) 2,4 GHz, dołączony dysk SSD rdzeń wirtualny = 1 PP (rdzeń fizyczny) | Intel E5-2673 v4 (Broadwell) procesory 2,3 GHz, Fast NVMe SSD, rdzeń wirtualny = 1 LP (Hyper-Thread) |
+| Sprzęt | Procesor Intel E5-2673 v3 (Haswell) 2,4 GHz, dołączony dysk SSD rdzeń wirtualny = 1 PP (rdzeń fizyczny) | Procesor Intel E5-2673 v4 (Broadwell) 2,3-GHz i Intel SP-8160 (Skylake), Fast NVMe SSD, rdzeń wirtualny = 1 LP (Hyper-Thread) |
 | Liczba rdzeni wirtualnych | 8, 16, 24 rdzeni wirtualnych | 4, 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalna ilość pamięci (stosunek pamięci/rdzeni) | 7 GB na rdzeń wirtualny<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. | 5,1 GB na rdzeń wirtualny<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. |
 | Maksymalna pamięć OLTP w pamięci | Limit wystąpień: 1 – 1,5 GB na rdzeń wirtualny| Limit wystąpień: 0,8 – 1,65 GB na rdzeń wirtualny |
@@ -78,7 +78,7 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 | Limit przepływności zapisu dziennika (na wystąpienie) | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s |
 | Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększyć rozmiar pliku, aby uzyskać lepszą wydajność operacji we/wy](#file-io-characteristics-in-general-purpose-tier) | Nieograniczone. |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
-| Przetwarzanie OLTP w pamięci | Nieobsługiwane | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
+| Przetwarzanie OLTP danych w pamięci | Nieobsługiwane | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
 | Maksymalna liczba sesji | 30000 | 30000 |
 | [Repliki tylko do odczytu](sql-database-read-scale-out.md) | 0 | 1 (wliczone w cenę) |
 

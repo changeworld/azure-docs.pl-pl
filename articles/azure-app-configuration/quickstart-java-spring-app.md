@@ -144,7 +144,7 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i użył go w aplikacji ze sprężyną Java. Aby uzyskać więcej informacji, zobacz [Sprężyna na platformie Azure](https://docs.microsoft.com/java/azure/spring-framework/). Aby dowiedzieć się, jak za pomocą tożsamości zarządzanej platformy Azure usprawnić dostęp do konfiguracji aplikacji, przejdź do następnego samouczka.
 

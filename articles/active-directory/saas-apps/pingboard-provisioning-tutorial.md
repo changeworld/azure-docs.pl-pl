@@ -74,7 +74,7 @@ Ta sekcja przeprowadzi Cię przez proces łączenia usługi Azure AD z interfejs
 
     b. Zaloguj się do usługi [Pingboard](https://pingboard.com/) przy użyciu konta administratora.
 
-    d. Wybierz pozycję **dodatki** > **integracje** > **Azure Active Directory**.
+    c. Wybierz pozycję **dodatki** > **integracje** > **Azure Active Directory**.
 
     d. Przejdź na kartę **Konfiguracja** i wybierz pozycję **Włącz Inicjowanie obsługi użytkowników na platformie Azure**.
 

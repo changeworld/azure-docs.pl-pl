@@ -60,7 +60,7 @@ Dwie różne _intencje_ dotyczące aplikacji są wyrównane do następujących i
 
 Aby utworzyć intencje, wykonaj następujące czynności:
 
-1. Po utworzeniu aplikacji znajduje się na stronie **intencje** w sekcji **kompilacja** . Wybierz **tworzenie**.
+1. Po utworzeniu aplikacji znajduje się na stronie **intencje** w sekcji **kompilacja** . Wybierz pozycję **Utwórz**.
 
    [![wybierz pozycję Utwórz, aby utworzyć nowy cel](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 

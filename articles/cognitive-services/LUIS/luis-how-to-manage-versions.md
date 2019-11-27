@@ -20,9 +20,9 @@ ms.locfileid: "74221938"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Używanie wersji do edytowania i testowania bez wpływu na aplikacje tymczasowe i produkcyjne
 
-Wersje umożliwiają tworzenie i publikowanie różnych modeli. Dobrym rozwiązaniem jest klonowanie bieżącego aktywnego modelu z innym [wersji](luis-concept-version.md) aplikacji przed wprowadzeniem zmian w modelu. 
+Wersje umożliwiają tworzenie i publikowanie różnych modeli. Dobrym sposobem jest klonowanie bieżącego aktywnego modelu do innej [wersji](luis-concept-version.md) aplikacji przed wprowadzeniem zmian w modelu. 
 
-Aby pracować z wersjami, Otwórz aplikację, wybierając jego nazwę na **Moje aplikacje** strony, a następnie wybierz pozycję **Zarządzaj** w górnym pasku, a następnie zaznacz **wersji** w nawigacji po lewej stronie. 
+Aby współpracować z wersjami, Otwórz aplikację, wybierając jej nazwę na stronie **Moje aplikacje** , a następnie wybierz pozycję **Zarządzaj** na górnym pasku, a następnie wybierz pozycję **wersje** w lewym okienku nawigacji. 
 
 Lista wersji pokazuje, które wersje są publikowane, gdzie są publikowane i która wersja jest obecnie aktywna. 
 
@@ -31,9 +31,9 @@ Lista wersji pokazuje, które wersje są publikowane, gdzie są publikowane i kt
 
 ## <a name="clone-a-version"></a>Klonowanie wersji
 
-1. Wybierz wersję chcesz sklonować wybierz **klonowania** na pasku narzędzi. 
+1. Wybierz wersję, którą chcesz sklonować, a następnie wybierz pozycję **Klonuj** z paska narzędzi. 
 
-2. W **wersji klonowania** okno dialogowe, wpisz nazwę dla nowej wersji, takich jak "0,2".
+2. W oknie dialogowym **klonowanie wersji** wpisz nazwę nowej wersji, na przykład "0,2".
 
    ![Okno dialogowe wersji klonowania](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
  
@@ -55,7 +55,7 @@ Możesz zaimportować `.json` lub `.lu` wersję aplikacji.
 
 1. Wybierz pozycję **Importuj** z paska narzędzi, a następnie wybierz format. 
 
-2. W **importowania nowej wersji** oknie podręcznym, wprowadź nową nazwę w wersji 10 znaków. Należy ustawić identyfikator wersji tylko wtedy, gdy wersja w pliku już istnieje w aplikacji.
+2. W oknie podręcznym **Importuj nową wersję** wprowadź nazwę nowej wersji 10 znaków. Należy ustawić identyfikator wersji tylko wtedy, gdy wersja w pliku już istnieje w aplikacji.
 
     ![Sekcja zarządzania, Strona wersji, importowanie nowej wersji](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
@@ -69,7 +69,7 @@ Możesz zaimportować `.json` lub `.lu` wersję aplikacji.
 
 ## <a name="other-actions"></a>Inne akcje
 
-* Aby **Usuń** wersji, wybierz wersję z listy, a następnie wybierz **Usuń** na pasku narzędzi. Wybierz przycisk **OK**. 
-* Aby **Zmień nazwę** wersji, wybierz wersję z listy, a następnie wybierz **Zmień nazwę** na pasku narzędzi. Wprowadź nową nazwę, a następnie wybierz pozycję **gotowe**. 
-* Aby **wyeksportować** wersji, wybierz wersję z listy, a następnie wybierz **eksportowania aplikacji** na pasku narzędzi. Wybierz pozycję JSON do wyeksportowania dla kopii zapasowej, a następnie wybierz pozycję **Eksportuj dla kontenera** , aby [użyć tej aplikacji w kontenerze Luis](luis-container-howto.md).  
+* Aby **usunąć** wersję, wybierz wersję z listy, a następnie wybierz pozycję **Usuń** z paska narzędzi. Wybierz przycisk **OK**. 
+* Aby **zmienić nazwę** wersji, wybierz wersję z listy, a następnie wybierz pozycję **Zmień nazwę** z paska narzędzi. Wprowadź nową nazwę i wybierz pozycję **gotowe**. 
+* Aby **wyeksportować** wersję, wybierz wersję z listy, a następnie wybierz pozycję **Eksportuj aplikację** z paska narzędzi. Wybierz pozycję JSON do wyeksportowania dla kopii zapasowej, a następnie wybierz pozycję **Eksportuj dla kontenera** , aby [użyć tej aplikacji w kontenerze Luis](luis-container-howto.md).  
 

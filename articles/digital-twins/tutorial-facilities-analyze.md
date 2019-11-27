@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Analyze events in Time Series Insights - Azure Digital Twins| Microsoft Docs'
+title: 'Samouczek: analizowanie zdarzeń w Time Series Insights — usługa Azure Digital bliźniaczych reprezentacji | Microsoft Docs'
 description: Dowiedz się, w jaki sposób wizualizować i analizować zdarzenia z przestrzeni usługi Azure Digital Twins przy użyciu usługi Azure Time Series Insights, korzystając z kroków opisanych w tym samouczku.
 services: digital-twins
 ms.author: alinast
@@ -16,7 +16,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383058"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Tutorial: Visualize and analyze events from Azure Digital Twins by using Time Series Insights
+# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Samouczek: wizualizacja i analiza zdarzeń z usługi Azure Digital bliźniaczych reprezentacji przy użyciu Time Series Insights
 
 Po wdrożeniu wystąpienia usługi Azure Digital Twins, aprowizowaniu przestrzeni i wdrożeniu funkcji niestandardowej do monitorowania konkretnych warunków, możesz wizualizować zdarzenia i dane przychodzące z tych przestrzeni, aby wyszukiwać trendy i anomalie.
 
@@ -40,7 +40,7 @@ W tym samouczku przyjęto założenie, że [skonfigurowano](tutorial-facilities-
 - [Zestaw SDK .NET Core w wersji 2.1.403 lub nowszej](https://www.microsoft.com/net/download) na komputerze deweloperskim w celu uruchomienia przykładu. Uruchom polecenie `dotnet --version`, aby sprawdzić, czy zainstalowano prawidłową wersję.
 
 > [!TIP]
-> Use a unique Digital Twins instance name if you're provisioning a new instance.
+> Jeśli zainicjowano nowe wystąpienie, użyj unikatowej nazwy wystąpienia bliźniaczych reprezentacji Digital.
 
 ## <a name="stream-data-by-using-event-hubs"></a>Przesyłanie strumieniowe danych za pomocą usługi Event Hubs
 
@@ -48,22 +48,22 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
 
 ### <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 
 1. Wyszukaj i wybierz pozycję **Event Hubs**. Wybierz pozycję **Utwórz**.
 
-    [![Create an Event Hubs Namespace](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+    [![utworzyć Event Hubs przestrzeni nazw](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
 
 1. Wprowadź **nazwę** dla przestrzeni nazw usługi Event Hubs. Wybierz **warstwę cenową** **Standardowa**, **subskrypcję**, **grupę zasobów** użytą dla wystąpienia usługi Azure Digital Twins oraz **lokalizację**. Wybierz pozycję **Utwórz**.
 
-1. In the Event Hubs namespace deployment, select the **Overview** pane, then select **Go to resource**.
+1. W obszarze wdrażanie przestrzeni nazw Event Hubs Wybierz okienko **Przegląd** , a następnie wybierz pozycję **Przejdź do zasobu**.
 
-    [![Event Hubs namespace after deployment](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
+    [![Event Hubs przestrzeni nazw po wdrożeniu](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
 1. W okienku **Omówienie** przestrzeni nazw usługi Event Hubs wybierz przycisk **Centrum zdarzeń** znajdujący się u góry strony.
-    [![Event Hub button](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
+    [przycisk ![centrum zdarzeń](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
 1. Wprowadź **nazwę** dla centrum zdarzeń, a następnie wybierz pozycję **Utwórz**.
 
@@ -71,16 +71,16 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
 
 1. Wybierz przycisk **Grupa konsumentów** znajdujący się u góry strony, a następnie wprowadź nazwę grupy konsumentów, na przykład **tsievents**. Wybierz pozycję **Utwórz**.
 
-    [![Event Hub consumer group](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
+    [![grupy użytkowników centrum zdarzeń](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    Po utworzeniu grupa konsumentów jest wyświetlana na liście u dołu okienka **Omówienie** centrum zdarzeń.
 
 1. Otwórz okienko **Zasady dostępu współużytkowanego** dla centrum zdarzeń i wybierz przycisk **Dodaj**. Jako nazwę zasad wprowadź **ManageSend**, upewnij się, wszystkie pola wyboru są zaznaczone, a następnie wybierz pozycję **Utwórz**.
 
-    [![Event Hub connection strings](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
+    [![parametry połączenia centrum zdarzeń](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
     > [!TIP]
-    > Verify that you are creating an SAS Policy for your event hub instance rather than your namespace.
+    > Upewnij się, że tworzysz zasady sygnatury dostępu współdzielonego dla wystąpienia centrum zdarzeń, a nie przestrzeń nazw.
 
 1. Otwórz utworzoną zasadę **ManageSend** i skopiuj wartości **Parametry połączenia — klucz podstawowy** i **Parametry połączenia — klucz pomocniczy** do pliku tymczasowego. Te wartości będą potrzebne do utworzenia punktu końcowego centrum zdarzeń w kolejnej sekcji.
 
@@ -133,39 +133,39 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
 
    Utworzone zostaną dwa punkty końcowe centrum zdarzeń.
 
-   [![Endpoints for Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
+   [![punkty końcowe dla Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Analizowanie za pomocą usługi Time Series Insights
 
 1. W okienku po lewej stronie witryny [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób**. 
 
-1. Search for and select a **Time Series Insights** General Availability (GA) resource. Wybierz pozycję **Utwórz**.
+1. Wyszukaj i wybierz zasób **Time Series Insights** ogólnej dostępności (ga). Wybierz pozycję **Utwórz**.
 
-1. Wprowadź **nazwę** wystąpienia usługi Time Series Insights, a następnie wybierz swoją **subskrypcję**. Wybierz **grupę zasobów** używaną dla wystąpienia usługi Digital Twins i **lokalizację**. Select **Next: Event Source** button or the **Event Source** tab.
+1. Wprowadź **nazwę** wystąpienia usługi Time Series Insights, a następnie wybierz swoją **subskrypcję**. Wybierz **grupę zasobów** używaną dla wystąpienia usługi Digital Twins i **lokalizację**. Wybierz pozycję **Dalej: przycisk Źródło zdarzenia** lub kartę **Źródło zdarzenia** .
 
-    [![Selections for creating a Time Series Insights instance](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
+    [![wybór dla tworzenia wystąpienia Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. In the **Event Source** tab, enter a **Name**, select **Event Hub** as the **Source type**, and make sure the other values are selected correctly. Select **ManageSend** for **Event Hub access policy name**, and then select the consumer group that you created in the previous section for **Event Hub consumer group**. Wybierz pozycję **Przegląd + utwórz**.
+1. Na karcie **Źródło zdarzenia** wprowadź **nazwę**, wybierz pozycję **centrum zdarzeń** jako **Typ źródła**i upewnij się, że pozostałe wartości są wybrane prawidłowo. W polu **Nazwa zasad dostępu do centrum zdarzeń**wybierz pozycję **ManageSend** , a następnie wybierz grupę odbiorców utworzoną w poprzedniej sekcji dla **grupy użytkowników centrum zdarzeń**. Wybierz pozycję **Przegląd + utwórz**.
 
-    [![Selections for creating an event source](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
+    [![wybór dla tworzenia źródła zdarzeń](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
-1. In the **Review + Create** pane, review the information you entered, and select **Create**.
+1. W okienku **Recenzja + tworzenie** Przejrzyj wprowadzone informacje i wybierz pozycję **Utwórz**.
 
-1. In the deployment pane, select the Time Series Insights resource you just created. It opens the **Overview** pane for your Time Series Insights environment.
+1. W okienku wdrożenie wybierz właśnie utworzony zasób Time Series Insights. Zostanie otwarte okienko **Przegląd** środowiska Time Series Insightsowego.
 
-1. Select the **Go to Environment** button at the top. Jeśli otrzymasz ostrzeżenie dotyczące dostępu do danych, otwórz okienko **Zasady dostępu do danych** dla swojego wystąpienia usługi Time Series Insights, wybierz pozycję **Dodaj**, wybierz rolę **Współautor**, a następnie wybierz odpowiedniego użytkownika.
+1. Wybierz przycisk **Przejdź do środowiska** w górnej części strony. Jeśli otrzymasz ostrzeżenie dotyczące dostępu do danych, otwórz okienko **Zasady dostępu do danych** dla swojego wystąpienia usługi Time Series Insights, wybierz pozycję **Dodaj**, wybierz rolę **Współautor**, a następnie wybierz odpowiedniego użytkownika.
 
 1. Wybranie przycisku **Przejdź do środowiska** powoduje otwarcie [eksploratora usługi Time Series Insights](../time-series-insights/time-series-insights-explorer.md). Jeśli nie zostaną wyświetlone żadne zdarzenia, zasymuluj zdarzenia urządzenia, przechodząc do projektu **device-connectivity** przykładu usługi Digital Twins i uruchamiając polecenie `dotnet run`.
 
 1. Po wygenerowaniu kilku symulowanych zdarzeń wróć do eksploratora usługi Time Series Insights i wybierz przycisk Odśwież u góry strony. Powinny być widoczne wykresy analityczne tworzone dla symulowanych danych czujnika. 
 
-    [![Chart in the Time Series Insights explorer](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
+    [![wykresu w Eksploratorze Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
 1. W eksploratorze usługi Time Series Insights można wygenerować wykresy oraz mapy cieplne dla różnych zdarzeń i danych pobranych z pomieszczeń, czujników i innych zasobów. Po lewej stronie użyj list rozwijanych **MIARA** oraz **PODZIAŁ WEDŁUG**, aby utworzyć własne wizualizacje. 
 
    Możesz na przykład wybrać pozycję **Zdarzenia** w obszarze **MIARA** oraz pozycję **DigitalTwins-SensorHardwareId** w obszarze **PODZIAŁ WEDŁUG**, aby wygenerować mapę cieplną dla każdego czujnika. Mapa cieplna będzie wyglądać podobnie jak na poniższej ilustracji:
 
-   [![Heatmap in the Time Series Insights explorer](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
+   [![mapę cieplną w Eksploratorze Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

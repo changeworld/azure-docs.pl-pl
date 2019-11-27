@@ -174,7 +174,7 @@ W tym samouczku uwierzytelniasz się w interfejsie REST API dla systemu plików 
 
 Za pomocą innych interfejsów API systemu plików usługi Data Lake Store można dołączać dane do plików, pobierać pliki i wykonywać inne operacje.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób użycia przypisanej przez system tożsamości zarządzanej na maszynie wirtualnej z systemem Windows w celu uzyskania dostępu do usługi Azure Data Lake Store. Aby dowiedzieć się więcej o usłudze Azure Data Lake Store, zobacz:
 

@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 84275be5c85570a44d968dca8887b448fce09979
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473784"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546842"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Instrukcje: Dodawanie ról aplikacji do aplikacji i odbieranie ich w tokenie
 
@@ -43,12 +43,8 @@ Te role aplikacji są zdefiniowane w [Azure Portal](https://portal.azure.com) w 
 1. Na górnym pasku wybierz swoje konto, a następnie **Przełącz katalog**.
 1. Po otwarciu okienka **katalog i subskrypcja** wybierz dzierżawę Active Directory, w której chcesz zarejestrować aplikację, na liście **Ulubione** lub **wszystkie katalogi** .
 1. Wybierz pozycję **wszystkie usługi** w lewym okienku nawigacji, a następnie wybierz pozycję **Azure Active Directory**.
-1. W okienku **Azure Active Directory** wybierz pozycję **rejestracje aplikacji (starsza wersja)** , aby wyświetlić listę wszystkich aplikacji.
-
-     Jeśli nie widzisz aplikacji, która ma być wyświetlana w tym miejscu, Użyj różnych filtrów w górnej części listy **rejestracje aplikacji (starsza wersja)** , aby ograniczyć listę lub przewinąć listę, aby zlokalizować aplikację.
-
-1. Wybierz aplikację, w której chcesz zdefiniować role aplikacji.
-1. W bloku aplikacji wybierz pozycję **manifest**.
+1. W okienku **Azure Active Directory** wybierz pozycję **rejestracje aplikacji** , aby wyświetlić listę wszystkich aplikacji.
+1. Wybierz aplikację, w której chcesz zdefiniować role aplikacji. Następnie wybierz pozycję **manifest**.
 1. Edytuj manifest aplikacji, lokalizowanie ustawienia `appRoles` i Dodawanie wszystkich ról aplikacji.
 
      > [!NOTE]

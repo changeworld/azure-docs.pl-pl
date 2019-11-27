@@ -32,7 +32,7 @@ W tym artykule dowiesz się, jak skompilować model przy użyciu zautomatyzowane
 
 Samouczek "[uczenie modelu klasyfikacji przy użyciu automatycznego uczenia maszynowego](tutorial-auto-train-models.md)" uczy się, w jaki sposób używać komputera lokalnego do uczenia modelu o zautomatyzowanej ml. Przepływ pracy podczas szkolenia lokalnie ma zastosowanie również do celów zdalnego, a także. Jednak za pomocą zdalnego mocy obliczeniowej, zautomatyzowane iteracjami eksperymentów uczenia Maszynowego są wykonywane asynchronicznie. Ta funkcja umożliwia anulowanie konkretnej iteracji, obejrzyj stan wykonania lub kontynuować pracę na innych komórek w notesie Jupyter. Aby przeprowadzić uczenie zdalne, należy najpierw utworzyć zdalne miejsce docelowe obliczeń, takie jak AmlCompute. Następnie skonfiguruj zasób zdalny i przesyłać tam kod.
 
-W tym artykule przedstawiono dodatkowe kroki niezbędne do uruchomienia zautomatyzowanego eksperymentu ML na zdalnym miejscu docelowym AmlCompute. Obiekt workspace `ws`, w tym samouczku jest używana w całym kodzie, w tym miejscu.
+W tym artykule przedstawiono dodatkowe kroki niezbędne do uruchomienia zautomatyzowanego eksperymentu ML na zdalnym miejscu docelowym AmlCompute. Obiekt obszaru roboczego, `ws`, z samouczka jest używany w całym kodzie tutaj.
 
 ```python
 ws = Workspace.from_config()
@@ -62,11 +62,11 @@ compute_target.wait_for_completion(
     show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-Teraz możesz używać `compute_target` obiektu jako zdalnego obliczeniowego elementu docelowego.
+Teraz można użyć obiektu `compute_target` jako elementu docelowego obliczeń zdalnych.
 
 Ograniczenia nazw klastrów obejmują:
 + Musi zawierać mniej niż 64 znaki.
-+ Nie może zawierać żadnego z następujących znaków: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
++ Nie może zawierać żadnego z następujących znaków: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\", < >/?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Dostęp do danych za pomocą funkcji TabularDataset
 
@@ -126,7 +126,7 @@ run_config.environment.python.conda_dependencies = dependencies
 Zapoznaj się z tym [przykładowym notesem](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) , aby uzyskać dodatkowy przykład tego wzorca projektowego.
 
 ## <a name="configure-experiment"></a>Konfigurowanie eksperymentu
-Określ ustawienia `AutoMLConfig`.  (Zobacz [pełną listę parametrów](how-to-configure-auto-train.md#configure-experiment) i ich możliwe wartości.)
+Określ ustawienia dla `AutoMLConfig`.  (Zobacz [pełną listę parametrów](how-to-configure-auto-train.md#configure-experiment) i ich wartości).
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -229,5 +229,5 @@ W poniższym [notesie](https://github.com/Azure/MachineLearningNotebooks/blob/ma
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, [jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).
+* Dowiedz się [, jak skonfigurować ustawienia automatycznego szkolenia](how-to-configure-auto-train.md).
 * Zapoznaj się z artykułem [jak](how-to-machine-learning-interpretability-automl.md) włączyć funkcję interpretacji modelu w zautomatyzowanych eksperymentach ml.

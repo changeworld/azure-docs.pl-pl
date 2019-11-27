@@ -1,6 +1,6 @@
 ---
-title: Understand security best practices - Azure Digital Twins | Microsoft Docs
-description: Learn about security best practices for Azure Digital Twins and the Internet of Things.
+title: Informacje o najlepszych rozwiązaniach dotyczących zabezpieczeń — Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Poznaj najlepsze rozwiązania w zakresie zabezpieczeń dotyczące usługi Azure Digital bliźniaczych reprezentacji i Internet rzeczy.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -15,69 +15,69 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229039"
 ---
-# <a name="azure-digital-twins-security-best-practices"></a>Azure Digital Twins security best practices
+# <a name="azure-digital-twins-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń usługi Azure Digital bliźniaczych reprezentacji
 
-Azure Digital Twins security enables precise access to specific resources and actions in your IoT graph. It does so through granular role and permission management called [role-based access control](./security-role-based-access-control.md).
+Usługa Azure Digital bliźniaczych reprezentacji Security umożliwia precyzyjne dostęp do określonych zasobów i akcji w grafie IoT. Odbywa się to za pośrednictwem szczegółowego zarządzania rolami i uprawnieniami o nazwie [Kontrola dostępu oparta na rolach](./security-role-based-access-control.md).
 
-Azure Digital Twins also uses other security features that are present in Azure IoT, including Azure Active Directory (Azure AD). For that reason, configuring and securing applications built on Azure Digital Twins involves using many of the same [Azure IoT security practices](../iot-fundamentals/iot-security-best-practices.md) currently recommended.
+Usługa Azure Digital bliźniaczych reprezentacji korzysta również z innych funkcji zabezpieczeń, które są obecne w usłudze Azure IoT, w tym Azure Active Directory (Azure AD). Z tego powodu Konfigurowanie i Zabezpieczanie aplikacji opartych na usłudze Azure Digital bliźniaczych reprezentacji obejmuje użycie wielu z tych samych obecnie zalecanych praktyk w zakresie [zabezpieczeń Azure IoT](../iot-fundamentals/iot-security-best-practices.md) .
 
-This article summarizes key best practices to follow.
+W tym artykule przedstawiono podsumowanie najważniejszych wskazówek dotyczących najważniejszych rozwiązań.
 
 > [!IMPORTANT]
-> To ensure maximal security for your IoT space, review additional security resources. Make sure to include your device vendors.
+> Aby zapewnić maksymalne zabezpieczenia obszaru IoT, zapoznaj się z dodatkowymi zasobami zabezpieczeń. Upewnij się, że dołączasz dostawców urządzeń.
 
 > [!TIP]
-> Use [Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/) to help detect IoT security threats and vulnerabilities.
+> Użyj [Azure Security Center dla IoT](https://docs.microsoft.com/azure/asc-for-iot/) , aby pomóc wykryć zagrożenia i luki w zabezpieczeniach IoT.
 
 ## <a name="iot-security-best-practices"></a>Najlepsze rozwiązania z zakresu zabezpieczeń IoT
 
-Some key practices to safely secure your IoT devices include:
+Niektóre kluczowe metody bezpiecznego zabezpieczania urządzeń IoT obejmują:
 
 > [!div class="checklist"]
-> * Secure each device that's connected to your IoT space in a tamper-proof way.
-> * Limit the role of each device, sensor, and person within your IoT space. If compromised, the effect is minimized.
-> * Consider the potential use of device IP address filtering and port restriction.
-> * Limit I/O and device bandwidth to improve performance. Rate-limiting can improve security by preventing denial-of-service attacks.
-> * Keep device firmware, operating system, and software up to date.
-> * Periodically audit and review device, software, network, and gateway security best practices as they continue to improve and evolve.
+> * Zabezpiecz każde urządzenie, które jest połączone z obszarem IoT w sposób zapewniający możliwość manipulacji.
+> * Ogranicz rolę każdego urządzenia, czujnika i osoby w obszarze IoT. W przypadku naruszenia zabezpieczeń efekt jest zminimalizowany.
+> * Należy wziąć pod uwagę potencjalne użycie filtrowania adresów IP urządzeń i ograniczeń portów.
+> * Ogranicz przepustowość operacji we/wy i urządzenia, aby zwiększyć wydajność. Ograniczanie szybkości może zwiększyć bezpieczeństwo, zapobiegając atakom typu "odmowa usługi".
+> * Dbaj o aktualizowanie oprogramowania układowego urządzenia, systemu operacyjnego i oprogramowania.
+> * Okresowe inspekcje i przeglądanie najlepszych rozwiązań w zakresie zabezpieczeń urządzeń, oprogramowania, sieci i bramy w miarę ich dalszego ulepszania i rozwijania.
 
-Some key practices to safely secure an IoT space include:
+Oto kilka najważniejszych metod bezpiecznego zabezpieczania przestrzeni IoT:
 
 > [!div class="checklist"]
-> * Encrypt saved, stored, or persistent data.
-> * Require passwords or keys to be periodically changed or refreshed.
-> * Carefully restrict access and permissions by role. See the section [Role-based access control best practices](#role-based-access-control-best-practices) below.
-> * Consider a divided network topology so that devices on each network are isolated from the others.
-> * Use powerful encryption. Require long passwords, use secure protocols, and [multi-factor authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
+> * Szyfruj zapisane, przechowywane lub trwałe dane.
+> * Wymagaj, aby hasła lub klucze były okresowo zmieniane lub odświeżane.
+> * Należy uważnie ograniczyć dostęp i uprawnienia według roli. Zobacz sekcję dotyczącą [kontroli dostępu opartej na rolach](#role-based-access-control-best-practices) poniżej.
+> * Rozważ podzieloną topologię sieci, dzięki czemu urządzenia w każdej sieci są odizolowane od innych.
+> * Użyj zaawansowanego szyfrowania. Wymagaj długich haseł, używaj protokołów Secure Protocol i [uwierzytelniania wieloskładnikowego](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
-[Monitor](./how-to-configure-monitoring.md) IoT resources to watch for outliers, threats, or resource parameters that fall outside the range of usual operation. Use Azure Analytics for monitoring management.
+[Monitoruj](./how-to-configure-monitoring.md) Zasoby IoT do śledzenia wartości odstających, zagrożeń lub parametrów zasobów, które wykraczają poza zakres zwykłych operacji. Zarządzanie monitorowaniem za pomocą usługi Azure Analytics.
 
 > [!IMPORTANT]
-> Read Azure [IoT security best practices](../iot-fundamentals/iot-security-best-practices.md) to begin a comprehensive IoT security strategy.
+> Przeczytaj temat [najlepsze rozwiązania](../iot-fundamentals/iot-security-best-practices.md) dotyczące usługi Azure IoT Security, aby rozpocząć kompleksową strategię zabezpieczeń IoT.
 
 > [!NOTE]
-> For more information on event processing and monitoring, see [Route events and messages with Azure Digital Twins](./concepts-events-routing.md).
+> Aby uzyskać więcej informacji o przetwarzaniu i monitorowaniu zdarzeń, zobacz temat [kierowanie zdarzeń i komunikatów za pomocą usługi Azure Digital bliźniaczych reprezentacji](./concepts-events-routing.md).
 
-## <a name="azure-active-directory-best-practices"></a>Azure Active Directory best practices
+## <a name="azure-active-directory-best-practices"></a>Azure Active Directory najlepszych praktyk
 
-Azure Digital Twins uses [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/) to authenticate users and protect applications. Azure Active Directory supports authentication for a variety of modern architectures. They're all based on industry-standard protocols such as OAuth 2.0 or OpenID Connect. A few key practices to secure your IoT space for Azure Active Directory include:
+Usługa Azure Digital bliźniaczych reprezentacji używa [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/) do uwierzytelniania użytkowników i ochrony aplikacji. Azure Active Directory obsługuje uwierzytelnianie w różnych nowoczesnych architekturach. Są one oparte na standardach branżowych, takich jak OAuth 2,0 lub OpenID Connect Connect. Oto kilka najważniejszych metod zabezpieczania przestrzeni IoT dla Azure Active Directory obejmuje:
 
 > [!div class="checklist"]
-> * Store Azure Active Directory app secrets and keys in a secure location, such as [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
-> * Use a certificate issued by a trusted [certificate authority](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) rather than app secrets to authenticate.
-> * Limit OAuth 2.0 scope of access for a token.
-> * Verify the length of time a token is valid and whether a token remains valid.
-> * Set appropriate lengths of time that tokens are valid for.
-> * Refresh expired tokens.
+> * Przechowuj Azure Active Directory wpisy tajne i klucze w bezpiecznej lokalizacji, takie jak [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+> * Użyj certyfikatu wystawionego przez zaufany [urząd certyfikacji](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) zamiast kluczy tajnych aplikacji do uwierzytelnienia.
+> * Ogranicz zakres dostępu OAuth 2,0 dla tokenu.
+> * Sprawdź, jak długo token jest prawidłowy i czy token pozostaje ważny.
+> * Ustaw odpowiednie długości ważności tokenów.
+> * Odśwież wygasłe tokeny.
 
-## <a name="role-based-access-control-best-practices"></a>Role-based access control best practices
+## <a name="role-based-access-control-best-practices"></a>Najlepsze rozwiązania dotyczące kontroli dostępu opartej na rolach
 
 [!INCLUDE [digital-twins-rbac-best-practices](../../includes/digital-twins-rbac-best-practices.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-* To learn more about Azure IoT best practices, read [IoT security best practices](../iot-fundamentals/iot-security-best-practices.md).
+* Aby dowiedzieć się więcej o najlepszych rozwiązaniach dotyczących usługi Azure IoT, zobacz [najlepsze rozwiązania dotyczące zabezpieczeń IoT](../iot-fundamentals/iot-security-best-practices.md).
 
-* To learn about role-based access control, read [Role-based access control](./security-role-based-access-control.md).
+* Aby dowiedzieć się więcej na temat kontroli dostępu opartej na rolach, należy przeczytać temat [Kontrola dostępu oparta na rolach](./security-role-based-access-control.md).
 
-* To learn about authentication, read [Authenticate with APIs](./security-authenticating-apis.md).
+* Aby dowiedzieć się więcej na temat uwierzytelniania, przeczytaj artykuł [uwierzytelnianie za pomocą interfejsów API](./security-authenticating-apis.md).

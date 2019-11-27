@@ -72,7 +72,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | [Operator kopii zapasowych](#backup-operator) | Umożliwia zarządzanie usługami kopii zapasowych, z wyjątkiem usuwania kopii zapasowych, tworzenia magazynu i udzielania dostępu innym osobom | 00c29273-979b-4161-815c-10b084fb9324 |
 > | [Czytnik kopii zapasowych](#backup-reader) | Może wyświetlać usługi kopii zapasowej, ale nie może wprowadzać zmian | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | [Czytnik rozliczeń](#billing-reader) | Zezwala na dostęp do odczytu do danych rozliczeniowych | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
-> | [BizTalk Contributor](#biztalk-contributor) | Umożliwia zarządzanie usługami BizTalk Services, ale nie umożliwia uzyskiwania do nich dostępu. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | [Współautor BizTalk](#biztalk-contributor) | Umożliwia zarządzanie usługami BizTalk Services, ale nie umożliwia uzyskiwania do nich dostępu. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | [Dostęp do węzła elementu członkowskiego łańcucha bloków (wersja zapoznawcza)](#blockchain-member-node-access-preview) | Zezwala na dostęp do węzłów składowych łańcucha bloków | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | [Współautor planu](#blueprint-contributor) | Może zarządzać definicjami planu, ale nie należy ich przypisywać. | 41077137-e803-4205-871c-5a86e6a753b4 |
 > | [Operator planu](#blueprint-operator) | Może przypisywać istniejące opublikowane plany, ale nie może tworzyć nowych planów. Uwaga: to działanie działa tylko wtedy, gdy przypisanie zostało wykonane przy użyciu tożsamości zarządzanej przypisanej przez użytkownika. | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
@@ -139,7 +139,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | [Czytnik konta zakotwiczeń przestrzennych](#spatial-anchors-account-reader) | Umożliwia lokalizowanie i odczytywanie właściwości kotwic przestrzennych na Twoim koncie | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
 > | [Współautor bazy danych SQL](#sql-db-contributor) | Umożliwia zarządzanie bazami danych SQL, ale nie umożliwia uzyskiwania do nich dostępu. Nie można również zarządzać zasadami związanymi z zabezpieczeniami ani ich nadrzędnymi serwerami SQL. | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 > | [Współautor wystąpienia zarządzanego SQL](#sql-managed-instance-contributor) | Umożliwia zarządzanie wystąpieniami zarządzanymi SQL i wymaganą konfiguracją sieci, ale nie zapewnia dostępu innym osobom. | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
-> | [SQL Security Manager](#sql-security-manager) | Umożliwia zarządzanie zasadami związanymi z zabezpieczeniami serwerów SQL i baz danych, ale nie umożliwia uzyskiwania do nich dostępu. | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
+> | [Menedżer zabezpieczeń SQL](#sql-security-manager) | Umożliwia zarządzanie zasadami związanymi z zabezpieczeniami serwerów SQL i baz danych, ale nie umożliwia uzyskiwania do nich dostępu. | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | [Współautor SQL Server](#sql-server-contributor) | Umożliwia zarządzanie serwerami i bazami danych SQL, ale nie umożliwia uzyskiwania do nich dostępu ani zasad związanych z zabezpieczeniami. | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu. Zapewnia dostęp do klucza konta, który może służyć do uzyskiwania dostępu do danych za pośrednictwem autoryzacji klucza współużytkowanego. | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [Rola usługi operatora kluczy konta magazynu](#storage-account-key-operator-service-role) | Zezwala na wyświetlanie i ponowne generowanie kluczy dostępu do konta magazynu. | 81a9662b-bebf-436f-a333-f67b29880f12 |
@@ -3126,7 +3126,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dopasuj dostawcę zasobów do usługi](../azure-resource-manager/azure-services-resource-providers.md)
 - [Niestandardowe role dla zasobów platformy Azure](custom-roles.md)

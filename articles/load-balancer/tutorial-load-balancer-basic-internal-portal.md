@@ -91,7 +91,7 @@ Utwórz podstawowy wewnętrzny moduł równoważenia obciążenia przy użyciu p
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Subscription               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
     | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
@@ -131,7 +131,7 @@ Aby dystrybuować ruch do maszyn wirtualnych, moduł równoważenia obciążenia
    >[!NOTE]
    >Nie dodawaj maszyny wirtualnej **MyTestVM** do puli. 
    
-1. Wybierz **OK**.
+1. Kliknij przycisk **OK**.
    
    ![Dodawanie puli adresów zaplecza](./media/tutorial-load-balancer-basic-internal-portal/3-load-balancer-backend-02.png)
    
@@ -156,7 +156,7 @@ Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie st
    - **Interwał**: wpisz *15*. Interwał to liczba sekund między próbami sondy.
    - **Próg złej kondycji**: wpisz *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
    
-1. Wybierz **OK**.
+1. Kliknij przycisk **OK**.
    
    ![Dodawanie sondy](./media/tutorial-load-balancer-basic-internal-portal/4-load-balancer-probes.png)
 
@@ -182,7 +182,7 @@ Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nas�
    - **Pula zaplecza**: wybierz pozycję **MyBackendPool**.
    - **Sonda kondycji**: wybierz pozycję **MyHealthProbe**. 
    
-1. Wybierz **OK**.
+1. Kliknij przycisk **OK**.
    
    ![Dodawanie reguły modułu równoważenia obciążenia](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
 

@@ -24,7 +24,7 @@ Kontener Language Understanding (LUIS) ładuje swój przeszkolony lub opublikowa
 
 Poniższy film wideo demonstruje użycie tego kontenera.
 
-[![Pokaz kontener dla usług Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[Demonstracja ![kontenera dla Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -32,9 +32,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby uruchomić kontener LUIS, należy zwrócić uwagę na następujące wymagania wstępne:
 
-|Wymagane|Przeznaczenie|
+|Wymagany|Przeznaczenie|
 |--|--|
-|Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
+|Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość podstawowych poleceń `docker`.| 
 |Zasób platformy Azure `Cognitive Services` i plik [spakowanej aplikacji](luis-how-to-start-new-app.md) Luis |Aby można było używać kontenera, musisz mieć:<br><br>* Zasób platformy Azure _Cognitive Services_ i skojarzony klucz rozliczeniowy identyfikator URI punktu końcowego rozliczenia. Obie wartości są dostępne na stronach przeglądów i kluczy dla zasobu i są wymagane do uruchomienia kontenera. <br>* Przeszkolone lub opublikowana aplikacja spakowana jako zainstalowano dane wejściowe do kontenera ze skojarzonym IDENTYFIKATORem aplikacji. Spakowany plik można pobrać z portalu LUIS lub interfejsów API tworzenia. Jeśli otrzymujesz spakowaną aplikację LUIS z [interfejsów API tworzenia](#authoring-apis-for-package-file), będziesz również potrzebować _klucza tworzenia_.<br><br>Te wymagania są używane do przekazywania argumentów wiersza polecenia do następujących zmiennych:<br><br>**{AUTHORING_KEY}** : ten klucz służy do uzyskiwania spakowanej aplikacji z usługi Luis w chmurze i przekazywania dzienników zapytań z powrotem do chmury. Format jest `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{App_id}** : ten identyfikator jest używany do wybierania aplikacji. Format jest `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : ten klucz jest używany do uruchamiania kontenera. Klucz punktu końcowego można znaleźć w dwóch miejscach. Pierwszy to Azure Portal na liście kluczy zasobu _Cognitive Services_ . Klucz punktu końcowego jest również dostępny w portalu LUIS na stronie ustawień klucze i punkt końcowy. Nie używaj klucza początkowego.<br><br>**{ENDPOINT_URI}** : punkt końcowy określony na stronie Przegląd.<br><br>[Klucz tworzenia i klucz punktu końcowego](luis-boundaries.md#key-limits) mają różne cele. Nie należy ich używać zamiennie. |
 
@@ -198,7 +198,7 @@ Aby pobrać pakiet z wersjami, zapoznaj się z [dokumentacją interfejsu API w t
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) , aby uzyskać szczegółowe informacje na temat pobierania wartości `{ENDPOINT_URI}` i `{API_KEY}`.
 
-[Przykłady](luis-container-configuration.md#example-docker-run-commands) polecenia są dostępne. `docker run`
+[Przykłady](luis-container-configuration.md#example-docker-run-commands) polecenia `docker run` są dostępne.
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -228,7 +228,7 @@ To polecenie:
 Więcej [przykładów](luis-container-configuration.md#example-docker-run-commands) polecenia `docker run` są dostępne. 
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing).
+> Aby można było uruchomić kontener, należy określić opcje `Eula`, `Billing`i `ApiKey`. w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [rozliczenia](#billing).
 > Wartość ApiKey jest **kluczem** ze strony **zasobów platformy Azure** w portalu Luis i jest również dostępna na stronie klucze zasobów usługi Azure `Cognitive Services`.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
@@ -367,7 +367,7 @@ Kontener LUIS wysyła informacje o rozliczeniach do platformy Azure przy użyciu
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](luis-container-configuration.md).
+Aby uzyskać więcej informacji na temat tych opcji, zobacz [Konfigurowanie kontenerów](luis-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
@@ -385,7 +385,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy służące do pobierani
 > [!IMPORTANT]
 > Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery Cognitive Services nie wysyłają danych klienta (na przykład obrazu lub tekstu, który jest analizowany) do firmy Microsoft.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Zapoznaj się z tematem [Konfigurowanie kontenerów](luis-container-configuration.md) dla ustawień konfiguracji.
 * Zobacz [ograniczenia dotyczące Luis kontenerów](luis-container-limitations.md) dla znanych ograniczeń możliwości.

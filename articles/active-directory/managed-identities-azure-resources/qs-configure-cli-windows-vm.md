@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca02505ba9b7d93cac4216916909a8c6df7fdd05
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 200ba1e227c0e2e116e368a65ce7f2c4d42661f2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184046"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547317"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -35,10 +35,10 @@ W tym artykule, korzystając z interfejsu wiersza polecenia platformy Azure, dow
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-it-work)** .
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 - Aby uruchomić przykłady skryptów interfejsu wiersza polecenia, masz trzy opcje:
-    - Użyj [usługi Azure Cloud Shell](../../cloud-shell/overview.md) w witrynie Azure portal (patrz następny rozdział).
+    - Użyj [Azure Cloud Shell](../../cloud-shell/overview.md) z Azure Portal (zobacz następną sekcję).
     - Użyj osadzonego usługi Azure Cloud Shell za pomocą "Try It" przycisk znajdujący się w prawym górnym rogu każdego bloku kodu.
     - [Zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure,](https://docs.microsoft.com/cli/azure/install-azure-cli) Jeśli wolisz korzystać z lokalnej konsoli interfejsu wiersza polecenia. 
       
@@ -213,8 +213,8 @@ Jeśli maszyna wirtualna ma zarówno tożsamość przypisaną do systemu, jak i 
 az vm update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' identity.userAssignedIdentities=null 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Zarządzanych tożsamości dla zasobów platformy Azure — omówienie](overview.md)
+## <a name="next-steps"></a>Następne kroki
+- [Zarządzanie tożsamościami dla zasobów platformy Azure — omówienie](overview.md)
 - Aby zapoznać się z pełnymi przewodnikami szybki start tworzenia maszyn wirtualnych platformy Azure, zobacz: 
   - [Tworzenie maszyny wirtualnej z systemem Windows przy użyciu interfejsu wiersza polecenia](../../virtual-machines/windows/quick-create-cli.md)  
   - [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia](../../virtual-machines/linux/quick-create-cli.md) 

@@ -168,7 +168,7 @@ Aby wykonać te kroki, będziesz potrzebować klienta SSH. Jeśli używasz syste
    Content : {"odata.metadata":"https://graph.windows.net/myorganization/$metadata#Collection(Edm.String)","value":["<ObjectID of VM's group membership>"]}
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób używania przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do funkcji Azure AD Graph.  Aby dowiedzieć się więcej o funkcji Azure AD Graph, zobacz:
 

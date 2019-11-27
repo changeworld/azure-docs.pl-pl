@@ -118,18 +118,18 @@ Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomo
 |Opcja szyfrowania|Opis|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Szyfrowanie magazynu usługi Media Services|Szyfrowanie AES-256, klucz zarządzany przez Media Services.|Obsługiwane<sup>(1)</sup>|Nieobsługiwane<sup>(2)</sup>|
-|[Szyfrowanie usługi Storage dla danych magazynowanych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Szyfrowanie po stronie serwera oferowane przez usługę Azure Storage, klucz zarządzany przez platformę Azure lub przez klienta.|Obsługiwane|Obsługiwane|
+|[szyfrowanie usługi Storage danych magazynowanych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Szyfrowanie po stronie serwera oferowane przez usługę Azure Storage, klucz zarządzany przez platformę Azure lub przez klienta.|Obsługiwane|Obsługiwane|
 |[Szyfrowanie po stronie klienta magazynu](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Szyfrowanie po stronie klienta oferowane przez usługę Azure Storage, klucz zarządzany przez klienta w Key Vault.|Nieobsługiwane|Nieobsługiwane|
 
 <sup>1</sup> , gdy Media Services obsługuje obsługę zawartości w trybie Wyczyść/bez żadnej formy szyfrowania, nie jest to zalecane.
 
-<sup>2</sup> Media Services v3, szyfrowanie magazynu (szyfrowanie AES-256) jest tylko obsługiwane dla zapewnienia zgodności gdy Twoje zasoby zostały utworzone za pomocą usługi Media Services v2. Oznacza to, że wersja v3 współpracuje z istniejącymi zasobami zaszyfrowanymi magazynu, ale nie umożliwia tworzenia nowych.
+<sup>2</sup> w Media Services v3, szyfrowanie magazynu (szyfrowanie AES-256) jest obsługiwane tylko w przypadku zgodności z poprzednimi wersjami, gdy zasoby zostały utworzone przy użyciu Media Services V2. Oznacza to, że wersja v3 współpracuje z istniejącymi zasobami zaszyfrowanymi magazynu, ale nie umożliwia tworzenia nowych.
 
 ## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
 
 Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Media Services](entities-overview.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
 * [Korzystanie z funkcji DVR w chmurze](live-event-cloud-dvr.md)

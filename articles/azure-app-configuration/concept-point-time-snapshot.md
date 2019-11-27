@@ -32,7 +32,7 @@ Aby pobrać poprzednie wartości klucza, określ godzinę, o której kluczowe wa
 
 Obecnie konfiguracja aplikacji przechowuje siedem dni historii zmian.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji sieci Web ASP.NET Core](./quickstart-aspnet-core-app.md)  

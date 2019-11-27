@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Cosmos DB - Windows - Azure AD
+title: Samouczek`:` korzystania z tożsamości zarządzanej w celu uzyskania dostępu do Azure Cosmos DB-Windows-Azure AD
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -49,7 +49,7 @@ Jeśli jeszcze nie masz konta usługi Cosmos DB, utwórz je. Możesz pominąć t
 3. Wprowadź **identyfikator** konta usługi Cosmos DB do późniejszego użycia.  
 4. **Interfejs API** należy ustawić na „SQL”. Podejście opisane w tym samouczku można stosować w przypadku innych dostępnych typów interfejsu API, ale kroki opisane w tym samouczku dotyczą interfejsu API SQL.
 5. Upewnij się, że **Subskrypcja** i **Grupa zasobów** pasują do wartości określonych podczas tworzenia maszyny wirtualnej w poprzednim kroku.  Wybierz **lokalizację**, w której jest dostępna usługa Cosmos DB.
-6. Kliknij przycisk **Utwórz**.
+6. Kliknij pozycję **Utwórz**.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Tworzenie kolekcji w ramach konta usługi Cosmos DB
 

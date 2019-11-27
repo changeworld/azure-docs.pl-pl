@@ -1,6 +1,6 @@
 ---
-title: Provision device using Azure IoT Hub Device Provisioning Service (.NET)
-description: Tutorial - Provision your device to a single IoT hub using the Azure IoT Hub Device Provisioning Service (.NET)
+title: Udostępnianie urządzenia przy użyciu usługi Azure IoT Hub Device Provisioning Service (.NET)
+description: Samouczek — Inicjowanie obsługi urządzenia w jednym centrum IoT Hub przy użyciu usługi Azure IoT Hub Device Provisioning Service (.NET)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -16,7 +16,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229480"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Tutorial: Enroll the device to an IoT hub using the Azure IoT Hub Provisioning Service Client (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Samouczek: rejestrowanie urządzenia w usłudze IoT Hub przy użyciu klienta usługi Azure IoT Hub Provisioning Service (.NET)
 
 W poprzednim samouczku omówiono sposób konfigurowania urządzenia do nawiązywania połączenia z usługą Device Provisioning. W tym samouczku dowiesz się, jak używać tej usługi do aprowizacji urządzenia w jednym centrum IoT za pomocą zarówno **_rejestracji indywidualnej_** , jak i **_grup rejestracji_** . Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -129,7 +129,7 @@ Istnieją dwa sposoby rejestrowania urządzenia w usłudze Device Provisioning:
     Console.ReadLine();
     ```
         
-1. In the Visual Studio Solution Explorer, right-click your solution, and then click **Set StartUp Projects...** . Select **Single startup project**, and then select the **DeviceProvisioning** project in the dropdown menu.  
+1. W Eksplorator rozwiązań programu Visual Studio kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij pozycję **Ustaw projekty startowe..** .. Wybierz pozycję **pojedynczy projekt startowy**, a następnie wybierz projekt **DeviceProvisioning** z menu rozwijanego.  
 
 1. Uruchom aplikację urządzenia platformy .NET **DeviceProvisioning**. Powinno to spowodować skonfigurowanie aprowizacji dla urządzenia: 
 

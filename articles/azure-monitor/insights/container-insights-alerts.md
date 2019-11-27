@@ -305,7 +305,7 @@ Wykonaj następujące kroki, aby utworzyć alert dziennika w Azure Monitor przy 
 12. Wybierz istniejącą **grupę akcji** lub Utwórz nową grupę. Ten krok zapewnia, że te same akcje są wykonywane za każdym razem, gdy zostanie wyzwolony alert. Skonfiguruj w zależności od tego, jak zespół IT lub DevOps Operations zarządza incydentami.
 13. Wybierz pozycję **Utwórz regułę alertu** , aby zakończyć regułę alertu. Rozpoczyna ona działanie od razu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Wyświetl [przykłady zapytań dotyczących dzienników](container-insights-log-search.md#search-logs-to-analyze-data) , aby zobaczyć wstępnie zdefiniowane zapytania i przykłady do oszacowania lub dostosowania do tworzenia alertów, wizualizacji lub analizowania klastrów.
 - Aby dowiedzieć się więcej na temat Azure Monitor i sposobu monitorowania innych aspektów klastra Kubernetes, zobacz [Wyświetlanie Kubernetes klastra Performance](container-insights-analyze.md) and [View Kubernetes Cluster Health](container-insights-health.md).

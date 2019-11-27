@@ -78,7 +78,7 @@ Ograniczenia:
 
 Aby uzyskać informacje o kopiach zapasowych przy użyciu języka T-SQL, zobacz [kopia zapasowa](/sql/t-sql/statements/backup-transact-sql).
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 ### <a name="auditing"></a>Inspekcja
 
@@ -184,7 +184,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do plików, więc nie możn
 - [Tworzenie kopii zapasowej klucza głównego usługi](/sql/t-sql/statements/backup-service-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database).
 - [Przywracanie klucza głównego usługi](/sql/t-sql/statements/restore-service-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database).
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
 ### <a name="buffer-pool-extension"></a>Rozszerzenie puli buforów
 
@@ -280,7 +280,7 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](/sql/t-sql/statements/a
   - Obsługiwane są czynności zadania T-SQL.
   - Obsługiwane są następujące zadania replikacji:
     - Dziennik transakcji
-    - Migawka
+    - Snapshot
     - Dystrybutor
   - Obsługiwane są etapy zadania SSIS.
   - Inne typy kroków zadań nie są obecnie obsługiwane:
@@ -519,7 +519,7 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ## <a name="Environment"></a>Ograniczenia środowiska
 
-### <a name="subnet"></a>Subnet
+### <a name="subnet"></a>Podsieć
 -  Nie można umieścić żadnych innych zasobów (np. maszyn wirtualnych) w podsieci, w której wdrożono wystąpienie zarządzane. Wdróż te zasoby przy użyciu innej podsieci.
 - Podsieć musi mieć wystarczającą liczbę dostępnych [adresów IP](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Wartość minimalna to 16, podczas gdy zalecenie ma mieć co najmniej 32 adresów IP w podsieci.
 - [Punktów końcowych usługi nie można kojarzyć z podsiecią wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Upewnij się, że opcja punkty końcowe usługi jest wyłączona podczas tworzenia sieci wirtualnej.

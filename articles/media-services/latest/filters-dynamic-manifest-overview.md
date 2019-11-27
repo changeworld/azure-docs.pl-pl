@@ -148,7 +148,7 @@ Aby uzyskać więcej informacji, zobacz [ten wpis w blogu](https://azure.microso
     - Aby określić właściwości ścieżek w elemencie zawartości, [Pobierz i sprawdź plik manifestu](#get-and-examine-manifest-files).
     - Formuła do ustawiania właściwości sygnatury czasowej filtru zasobów: <br/>startTimestamp = &lt;czas rozpoczęcia w manifeście&gt; +  &lt;oczekiwany czas rozpoczęcia filtru w sekundach&gt; * Skala czasu
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W poniższych artykułach pokazano, jak programowo utworzyć filtry:  
 

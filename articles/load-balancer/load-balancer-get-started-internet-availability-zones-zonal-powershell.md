@@ -1,7 +1,7 @@
 ---
-title: Create a Load Balancer with zonal frontend - Azure PowerShell
+title: Tworzenie Load Balancer przy użyciu stref frontonu — Azure PowerShell
 titleSuffix: Azure Load Balancer
-description: Learn how to create Standard Load Balancer with a zonal frontend using Azure PowerShell
+description: Dowiedz się, jak utworzyć usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -21,14 +21,14 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215118"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Create a Standard Load Balancer with zonal frontend using Azure PowerShell
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Tworzenie usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu Azure PowerShell
 
-This article steps through creating a public [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) with a zonal frontend using a Public IP Standard address. To understand how availability zones work with Standard Load Balancer, see [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md). 
+W tym artykule opisano tworzenie publicznej [Usługa Load Balancer w warstwie Standardowa](https://aka.ms/azureloadbalancerstandard) z strefą frontonu przy użyciu publicznego adresu IP. Aby zrozumieć, jak strefy dostępności współpracują z usługa Load Balancer w warstwie Standardowa, zobacz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](load-balancer-standard-availability-zones.md). 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Support for Availability Zones is available for select Azure resources and regions, and VM size families. For more information on how to get started, and which Azure resources, regions, and VM size families you can try availability zones with, see [Overview of Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview). Aby uzyskać pomoc techniczną, możesz skorzystać z witryny [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) lub [otworzyć bilet pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+> Obsługa strefy dostępności jest dostępna dla wybieranych zasobów platformy Azure i regionami i rodzinami rozmiarów maszyn wirtualnych. Aby uzyskać więcej informacji na temat rozpoczynania pracy oraz zasobów platformy Azure, regionów i rodzin rozmiarów maszyn wirtualnych, można wypróbować strefy dostępności za pomocą programu, zobacz [omówienie strefy dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview). Aby uzyskać pomoc techniczną, możesz skorzystać z witryny [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) lub [otworzyć bilet pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,39 +42,39 @@ Connect-AzAccount
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
-Create a Resource Group using the following command:
+Utwórz grupę zasobów za pomocą następującego polecenia:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupZLB -Location westeurope
 ```
 
-## <a name="create-a-public-ip-standard"></a>Create a public IP Standard 
-Create a Public IP Standard using the following command:
+## <a name="create-a-public-ip-standard"></a>Tworzenie publicznego adresu IP standardowych 
+Tworzenie publicznego adresu IP standardowa przy użyciu następującego polecenia:
 
 ```azurepowershell-interactive
 $publicIp = New-AzPublicIpAddress -ResourceGroupName myResourceGroupZLB -Name 'myPublicIPZonal' `
   -Location westeurope -AllocationMethod Static -Sku Standard -zone 1
 ```
 
-## <a name="create-a-front-end-ip-configuration-for-the-website"></a>Create a front-end IP configuration for the website
+## <a name="create-a-front-end-ip-configuration-for-the-website"></a>Utwórz konfigurację adresu IP frontonu dla witryny sieci Web
 
-Create a frontend IP configuration using the following command:
+Utwórz konfigurację adresu IP frontonu, używając następującego polecenia:
 
 ```azurepowershell-interactive
 $feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEnd' -PublicIpAddress $publicIp
 ```
 
-## <a name="create-the-back-end-address-pool"></a>Create the back-end address pool
+## <a name="create-the-back-end-address-pool"></a>Tworzenie puli adresów zaplecza
 
-Create a backend address pool using the following command:
+Utwórz pulę adresów zaplecza za pomocą następującego polecenia:
 
 ```azurepowershell-interactive
 $bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 ```
 
-## <a name="create-a-load-balancer-probe-on-port-80"></a>Create a load balancer probe on port 80
+## <a name="create-a-load-balancer-probe-on-port-80"></a>Tworzenie sondy modułu równoważenia obciążenia na porcie 80
 
-Create a health probe on port 80 for the load balancer using the following command:
+Utwórz sondę kondycji na porcie 80 dla modułu równoważenia obciążenia, używając następującego polecenia:
 
 ```azurepowershell-interactive
 $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
@@ -82,14 +82,14 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 ```
 
 ## <a name="create-a-load-balancer-rule"></a>Tworzenie reguły modułu równoważenia obciążenia
- Create a load balancer rule using the following command:
+ Utwórz regułę modułu równoważenia obciążenia, używając następującego polecenia:
 
 ```azurepowershell-interactive
    $rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
-## <a name="create-a-load-balancer"></a>Utwórz moduł równoważenia obciążenia
-Create a Standard Load Balancer using the following command:
+## <a name="create-a-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
+Utwórz usługa Load Balancer w warstwie Standardowa przy użyciu następującego polecenia:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `
@@ -98,4 +98,4 @@ $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBala
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-- Learn more about [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md).
+- Dowiedz się więcej na temat [stref usługa Load Balancer w warstwie Standardowa i dostępności](load-balancer-standard-availability-zones.md).

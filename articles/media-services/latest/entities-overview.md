@@ -162,25 +162,25 @@ W poniższej tabeli przedstawiono sposób stosowania opcji filtrowania i porząd
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
 ||Properties.created| `eq`, `gt`, `lt`| `asc` i `desc`|
-|[Zasady kluczy zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-||Properties.Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
+|[Zasady kluczy zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` i `desc`|
+||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` i `desc`|
+||Properties.Description    |`eq`, `ne`, `ge`, `le`, `gt``lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` i `desc`|
 ||properties.policyId|`eq`, `ne`||
 |[Zadania](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` i `desc`|
 ||Properties. State        | `eq`, `ne`        |                         |
-||Properties.created      | `gt`, `ge`, `lt`, `le`| `asc` i `desc`|
-||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` i `desc`| 
-|[Lokalizatory przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
+||Properties.created      | `gt`, `ge`, `lt``le`| `asc` i `desc`|
+||properties.lastModified | `gt`, `ge`, `lt``le` | `asc` i `desc`| 
+|[Lokalizatory przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` i `desc`|
 ||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` i `desc`|
-||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-|[Zasady przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
-||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` i `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` i `desc`|
+|[Zasady przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` i `desc`|
+||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` i `desc`|
 |[Przekształca](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` i `desc`|
-|| Properties.created      | `gt`, `ge`, `lt`, `le`| `asc` i `desc`|
-|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` i `desc`|
+|| Properties.created      | `gt`, `ge`, `lt``le`| `asc` i `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt``le`| `asc` i `desc`|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wyświetl listę zasobów](https://docs.microsoft.com/rest/api/media/assets/list)
 * [Wyświetl listę zasad dotyczących kluczy zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)

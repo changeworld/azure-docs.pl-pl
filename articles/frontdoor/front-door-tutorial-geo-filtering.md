@@ -107,6 +107,6 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > [!NOTE] 
 > Musisz ustawić tylko raz Właściwość WebApplicationFirewallPolicyLink, aby połączyć zasady WAF z hostem frontonu w przód. Kolejne aktualizacje zasad są automatycznie stosowane do hosta frontonu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [zaporze aplikacji sieci Web platformy Azure](waf-overview.md).
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).

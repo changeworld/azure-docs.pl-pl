@@ -54,7 +54,7 @@ Ten skrypt używa następujących poleceń do zaimportowania do magazynu konfigu
 |---|---|
 | [zaimportu AZ AppConfig KV](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | Importuje do zasobu magazynu konfiguracji aplikacji. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

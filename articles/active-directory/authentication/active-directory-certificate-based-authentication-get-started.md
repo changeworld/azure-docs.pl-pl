@@ -1,6 +1,6 @@
 ---
-title: Certificate-based authentication - Azure Active Directory
-description: Learn how to configure certificate-based authentication in your environment
+title: Uwierzytelnianie oparte na certyfikatach — Azure Active Directory
+description: Dowiedz się, jak skonfigurować uwierzytelnianie oparte na certyfikatach w danym środowisku
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,52 +18,52 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382021"
 ---
-# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Get started with certificate-based authentication in Azure Active Directory
+# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Wprowadzenie do uwierzytelniania opartego na certyfikatach w Azure Active Directory
 
-Certificate-based authentication enables you to be authenticated by Azure Active Directory with a client certificate on a Windows, Android, or iOS device when connecting your Exchange online account to:
+Uwierzytelnianie oparte na certyfikatach umożliwia uwierzytelnienie za pomocą Azure Active Directory z certyfikatem klienta na urządzeniu z systemem Windows, Android lub iOS podczas łączenia konta usługi Exchange Online z:
 
-- Microsoft mobile applications such as Microsoft Outlook and Microsoft Word
-- Exchange ActiveSync (EAS) clients
+- Aplikacje mobilne firmy Microsoft, takie jak Microsoft Outlook i Microsoft Word
+- Klienci programu Exchange ActiveSync (EAS)
 
-Configuring this feature eliminates the need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.
+Skonfigurowanie tej funkcji eliminuje konieczność wprowadzenia kombinacji nazwy użytkownika i hasła do określonych aplikacji poczty i Microsoft Office na urządzeniu przenośnym.
 
-This topic:
+Ten temat:
 
-- Provides you with the steps to configure and utilize certificate-based authentication for users of tenants in Office 365 Enterprise, Business, Education, and US Government plans. This feature is available in preview in Office 365 China, US Government Defense, and US Government Federal plans.
-- Assumes that you already have a [public key infrastructure (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) and [AD FS](../hybrid/how-to-connect-fed-whatis.md) configured.
+- Zawiera instrukcje dotyczące konfigurowania i używania uwierzytelniania opartego na certyfikatach dla użytkowników dzierżaw w planach Office 365 Enterprise, Business, Education i USA. Ta funkcja jest dostępna w wersji zapoznawczej w pakiecie Office 365 Chiny, obrony rządowe USA i plany federalne dla instytucji rządowych USA.
+- Przyjęto założenie, że masz już skonfigurowaną [infrastrukturę kluczy publicznych (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) i [AD FS](../hybrid/how-to-connect-fed-whatis.md) .
 
 ## <a name="requirements"></a>Wymagania
 
-To configure certificate-based authentication, the following statements must be true:
+Aby skonfigurować uwierzytelnianie oparte na certyfikatach, należy wykonać następujące instrukcje:
 
-- Certificate-based authentication (CBA) is only supported for Federated environments for browser applications or native clients using modern authentication (ADAL). The one exception is Exchange Active Sync (EAS) for Exchange Online (EXO), which can be used for  federated and managed accounts.
-- The root certificate authority and any intermediate certificate authorities must be configured in Azure Active Directory.
-- Each certificate authority must have a certificate revocation list (CRL) that can be referenced via an internet-facing URL.
-- You must have at least one certificate authority configured in Azure Active Directory. You can find related steps in the [Configure the certificate authorities](#step-2-configure-the-certificate-authorities) section.
-- For Exchange ActiveSync clients, the client certificate must have the user’s routable email address in Exchange online in either the Principal Name or the RFC822 Name value of the Subject Alternative Name field. Azure Active Directory maps the RFC822 value to the Proxy Address attribute in the directory.
-- Your client device must have access to at least one certificate authority that issues client certificates.
-- A client certificate for client authentication must have been issued to your client.
+- Uwierzytelnianie oparte na certyfikatach (OBSŁUGIWANIE) jest obsługiwane tylko w środowiskach federacyjnych dla aplikacji przeglądarki lub natywnych klientów korzystających z nowoczesnego uwierzytelniania (ADAL). Jedynym wyjątkiem jest Exchange Active Sync (EAS) dla usługi Exchange Online (EXO), który może być używany w przypadku kont federacyjnych i zarządzanych.
+- Główny urząd certyfikacji i wszystkie pośrednie urzędy certyfikacji muszą być skonfigurowane w Azure Active Directory.
+- Każdy urząd certyfikacji musi mieć listę odwołania certyfikatów (CRL), do której można odwoływać się za pośrednictwem internetowego adresu URL.
+- Musisz mieć co najmniej jeden skonfigurowany urząd certyfikacji w Azure Active Directory. Powiązane kroki można znaleźć w sekcji [Konfigurowanie urzędów certyfikacji](#step-2-configure-the-certificate-authorities) .
+- W przypadku klientów programu Exchange ActiveSync certyfikat klienta musi mieć adres e-mail z obsługą routingu użytkownika w usłudze Exchange Online w nazwie głównej lub RFC822 wartość pola Alternatywna nazwa podmiotu. Azure Active Directory mapuje wartość RFC822 na atrybut adresu serwera proxy w katalogu.
+- Urządzenie klienckie musi mieć dostęp do co najmniej jednego urzędu certyfikacji, który wystawia certyfikaty klienta.
+- Certyfikat klienta na potrzeby uwierzytelniania klienta musi zostać wystawiony dla klienta.
 
-## <a name="step-1-select-your-device-platform"></a>Step 1: Select your device platform
+## <a name="step-1-select-your-device-platform"></a>Krok 1. Wybieranie platformy urządzenia
 
-As a first step, for the device platform you care about, you need to review the following:
+Najpierw należy zapoznać się z następującymi krokami, aby poznać platformę urządzenia:
 
-- The Office mobile applications support
-- The specific implementation requirements
+- Obsługa aplikacji mobilnych pakietu Office
+- Określone wymagania dotyczące implementacji
 
-The related information exists for the following device platforms:
+Powiązane informacje istnieją dla następujących platform urządzeń:
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>Step 2: Configure the certificate authorities
+## <a name="step-2-configure-the-certificate-authorities"></a>Krok 2. Konfigurowanie urzędów certyfikacji
 
-To configure your certificate authorities in Azure Active Directory, for each certificate authority, upload the following:
+Aby skonfigurować urzędy certyfikacji w Azure Active Directory, dla każdego urzędu certyfikacji należy przekazać następujące elementy:
 
-* The public portion of the certificate, in *.cer* format
-* The internet-facing URLs where the Certificate Revocation Lists (CRLs) reside
+* Publiczna część certyfikatu w formacie *CER*
+* Adresy URL dostępne z Internetu, w których znajdują się listy odwołania certyfikatów (CRL)
 
-The schema for a certificate authority looks as follows:
+Schemat urzędu certyfikacji wygląda następująco:
 
     class TrustedCAsForPasswordlessAuth
     {
@@ -87,30 +87,30 @@ The schema for a certificate authority looks as follows:
         IntermediateAuthority = 1
     }
 
-For the configuration, you can use the [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0):
+Konfiguracja programu umożliwia korzystanie z programu [Azure Active Directory PowerShell w wersji 2](/powershell/azure/install-adv2?view=azureadps-2.0):
 
-1. Start Windows PowerShell with administrator privileges.
-2. Install the Azure AD module version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) or higher.
+1. Uruchom program Windows PowerShell z uprawnieniami administratora.
+2. Zainstaluj moduł usługi Azure AD w wersji [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) lub nowszej.
 
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
 
-As a first configuration step, you need to establish a connection with your tenant. As soon as a connection to your tenant exists, you can review, add, delete, and modify the trusted certificate authorities that are defined in your directory.
+Jako pierwszy krok konfiguracji należy nawiązać połączenie z dzierżawcą. Gdy tylko połączenie z dzierżawcą istnieje, możesz przejrzeć, dodać, usunąć i zmodyfikować zaufane urzędy certyfikacji, które są zdefiniowane w Twoim katalogu.
 
-### <a name="connect"></a>Łączenie
+### <a name="connect"></a>Połączenie
 
-To establish a connection with your tenant, use the [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet:
+Aby nawiązać połączenie z dzierżawcą, użyj polecenia cmdlet [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) :
 
     Connect-AzureAD
 
-### <a name="retrieve"></a>Retrieve
+### <a name="retrieve"></a>Odczytać
 
-To retrieve the trusted certificate authorities that are defined in your directory, use the [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet.
+Aby pobrać zaufane urzędy certyfikacji zdefiniowane w katalogu, należy użyć polecenia cmdlet [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) .
 
     Get-AzureADTrustedCertificateAuthority
 
-### <a name="add"></a>Dodawanie
+### <a name="add"></a>Dodaj
 
-To create a trusted certificate authority, use the [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet and set the **crlDistributionPoint** attribute to a correct value:
+Aby utworzyć zaufany urząd certyfikacji, użyj polecenia cmdlet [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) i ustaw poprawną wartość atrybutu **crlDistributionPoint** :
 
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
@@ -121,89 +121,89 @@ To create a trusted certificate authority, use the [New-AzureADTrustedCertificat
 
 ### <a name="remove"></a>Usuń
 
-To remove a trusted certificate authority, use the [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
+Aby usunąć zaufany urząd certyfikacji, użyj polecenia cmdlet [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) :
 
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
 
 ### <a name="modify"></a>Modyfikuj
 
-To modify a trusted certificate authority, use the [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
+Aby zmodyfikować zaufany urząd certyfikacji, użyj polecenia cmdlet [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) :
 
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
 
-## <a name="step-3-configure-revocation"></a>Step 3: Configure revocation
+## <a name="step-3-configure-revocation"></a>Krok 3. Konfigurowanie odwołania
 
-To revoke a client certificate, Azure Active Directory fetches the certificate revocation list (CRL) from the URLs uploaded as part of certificate authority information and caches it. The last publish timestamp (**Effective Date** property) in the CRL is used to ensure the CRL is still valid. The CRL is periodically referenced to revoke access to certificates that are a part of the list.
+Aby odwołać certyfikat klienta, program Azure Active Directory pobiera listę odwołania certyfikatów (CRL) z adresów URL przekazanych w ramach informacji o urzędzie certyfikacji i buforuje ją. Ostatnia sygnatura czasowa publikacji (Właściwość**Data wprowadzenia** ) w liście CRL jest używana, aby upewnić się, że lista CRL jest nadal ważna. Lista CRL jest okresowo przywoływana, aby odwołać dostęp do certyfikatów, które są częścią listy.
 
-If a more instant revocation is required (for example, if a user loses a device), the authorization token of the user can be invalidated. To invalidate the authorization token, set the **StsRefreshTokenValidFrom** field for this particular user using Windows PowerShell. You must update the **StsRefreshTokenValidFrom** field for each user you want to revoke access for.
+Jeśli jest wymagane bardziej natychmiastowe odwołanie (na przykład jeśli użytkownik utraci urządzenie), token autoryzacji użytkownika może być unieważniony. Aby unieważnić Token autoryzacji, należy ustawić pole **StsRefreshTokenValidFrom** dla tego określonego użytkownika przy użyciu programu Windows PowerShell. Należy zaktualizować pole **StsRefreshTokenValidFrom** dla każdego użytkownika, dla którego ma zostać odwołany dostęp.
 
-To ensure that the revocation persists, you must set the **Effective Date** of the CRL to a date after the value set by **StsRefreshTokenValidFrom** and ensure the certificate in question is in the CRL.
+Aby upewnić się, że odwołanie będzie nadal występować, należy ustawić datę **obowiązywania** listy CRL na datę późniejszą od wartości ustawionej przez **StsRefreshTokenValidFrom** i upewnić się, że dany certyfikat znajduje się na liście CRL.
 
-The following steps outline the process for updating and invalidating the authorization token by setting the **StsRefreshTokenValidFrom** field.
+Poniższe kroki przedstawiają proces aktualizowania i unieważniania tokenu autoryzacji przez ustawienie pola **StsRefreshTokenValidFrom** .
 
-**To configure revocation:**
+**Aby skonfigurować odwołanie:**
 
-1. Connect with admin credentials to the MSOL service:
+1. Połącz się z poświadczeniami administratora usługi MSOL:
 
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
 
-2. Retrieve the current StsRefreshTokensValidFrom value for a user:
+2. Pobierz bieżącą wartość StsRefreshTokensValidFrom dla użytkownika:
 
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
 
-3. Configure a new StsRefreshTokensValidFrom value for the user equal to the current timestamp:
+3. Skonfiguruj nową wartość StsRefreshTokensValidFrom dla użytkownika równą bieżącej sygnatury czasowej:
 
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 
-The date you set must be in the future. If the date is not in the future, the **StsRefreshTokensValidFrom** property is not set. If the date is in the future, **StsRefreshTokensValidFrom** is set to the current time (not the date indicated by Set-MsolUser command).
+Ustawiona data musi przypadać w przyszłości. Jeśli Data nie przypada w przyszłości, właściwość **StsRefreshTokensValidFrom** nie jest ustawiona. Jeśli data przypada w przyszłości, **StsRefreshTokensValidFrom** jest ustawiona na bieżącą godzinę (nie datę wskazywaną przez polecenie Set-MsolUser).
 
-## <a name="step-4-test-your-configuration"></a>Step 4: Test your configuration
+## <a name="step-4-test-your-configuration"></a>Krok 4. Testowanie konfiguracji
 
-### <a name="testing-your-certificate"></a>Testing your certificate
+### <a name="testing-your-certificate"></a>Testowanie certyfikatu
 
-As a first configuration test, you should try to sign in to [Outlook Web Access](https://outlook.office365.com) or [SharePoint Online](https://microsoft.sharepoint.com) using your **on-device browser**.
+Jako pierwszy test konfiguracji należy podjąć próbę zalogowania się do usługi [Outlook dostęp w sieci Web](https://outlook.office365.com) lub [SharePoint Online](https://microsoft.sharepoint.com) przy użyciu **przeglądarki na urządzeniu**.
 
-If your sign-in is successful, then you know that:
+Jeśli logowanie powiedzie się, wiadomo, że:
 
-- The user certificate has been provisioned to your test device
-- AD FS is configured correctly
+- Certyfikat użytkownika został zainicjowany na urządzeniu testowym
+- AD FS jest prawidłowo skonfigurowany
 
-### <a name="testing-office-mobile-applications"></a>Testing Office mobile applications
+### <a name="testing-office-mobile-applications"></a>Testowanie aplikacji mobilnych pakietu Office
 
-**To test certificate-based authentication on your mobile Office application:**
+**Aby przetestować uwierzytelnianie oparte na certyfikacie w aplikacji pakietu Office dla urządzeń przenośnych:**
 
-1. On your test device, install an Office mobile application (for example, OneDrive).
-3. Launch the application.
-4. Enter your username, and then select the user certificate you want to use.
+1. Na urządzeniu testowym Zainstaluj aplikację mobilną pakietu Office (na przykład OneDrive).
+3. Uruchom aplikację.
+4. Wprowadź nazwę użytkownika, a następnie wybierz certyfikat użytkownika, którego chcesz użyć.
 
-You should be successfully signed in.
+Należy pomyślnie zalogować się.
 
-### <a name="testing-exchange-activesync-client-applications"></a>Testing Exchange ActiveSync client applications
+### <a name="testing-exchange-activesync-client-applications"></a>Testowanie aplikacji klienckich programu Exchange ActiveSync
 
-To access Exchange ActiveSync (EAS) via certificate-based authentication, an EAS profile containing the client certificate must be available to the application.
+Aby uzyskać dostęp do programu Exchange ActiveSync (EAS) za pośrednictwem uwierzytelniania opartego na certyfikatach, dla aplikacji musi być dostępny profil EAS zawierający certyfikat klienta.
 
-The EAS profile must contain the following information:
+Profil EAS musi zawierać następujące informacje:
 
-- The user certificate to be used for authentication
+- Certyfikat użytkownika, który ma być używany do uwierzytelniania
 
-- The EAS endpoint (for example, outlook.office365.com)
+- Punkt końcowy EAS (na przykład outlook.office365.com)
 
-An EAS profile can be configured and placed on the device through the utilization of Mobile device management (MDM) such as Intune or by manually placing the certificate in the EAS profile on the device.
+Profil EAS można skonfigurować i umieścić na urządzeniu za pomocą zarządzania urządzeniami przenośnymi (MDM), takiego jak usługa Intune, lub ręcznie umieszczając certyfikat w profilu EAS na urządzeniu.
 
-### <a name="testing-eas-client-applications-on-android"></a>Testing EAS client applications on Android
+### <a name="testing-eas-client-applications-on-android"></a>Testowanie aplikacji klienckich EAS w systemie Android
 
-**To test certificate authentication:**
+**Aby przetestować uwierzytelnianie certyfikatu:**
 
-1. Configure an EAS profile in the application that satisfies the requirements in the prior section.
-2. Open the application, and verify that mail is synchronizing.
+1. Skonfiguruj w aplikacji profil EAS, który spełnia wymagania zawarte w poprzedniej sekcji.
+2. Otwórz aplikację i sprawdź, czy poczta jest synchronizowana.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Additional information about certificate-based authentication on Android devices.](active-directory-certificate-based-authentication-android.md)
+[Dodatkowe informacje na temat uwierzytelniania opartego na certyfikatach na urządzeniach z systemem Android.](active-directory-certificate-based-authentication-android.md)
 
-[Additional information about certificate-based authentication on iOS devices.](active-directory-certificate-based-authentication-ios.md)
+[Dodatkowe informacje na temat uwierzytelniania opartego na certyfikatach na urządzeniach z systemem iOS.](active-directory-certificate-based-authentication-ios.md)

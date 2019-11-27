@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Check spelling with the REST API and PHP - Bing Spell Check'
+title: 'Szybki Start: sprawdzanie pisowni za pomocą interfejsu API REST i PHP-sprawdzanie pisowni Bing'
 titleSuffix: Azure Cognitive Services
-description: This simple PHP application sends a request to the Bing Spell Check API and returns a list of suggested corrections.
+description: Ta prosta aplikacja PHP wysyła żądanie do interfejsu API sprawdzanie pisowni Bing i zwraca listę sugerowanych poprawek.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,9 +17,9 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383861"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Quickstart: Check spelling with the Bing Spell Check REST API and PHP
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Szybki Start: sprawdzanie pisowni przy użyciu interfejsu API REST sprawdzanie pisowni Bing i języka PHP
 
-Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu API REST sprawdzania pisowni Bing. This simple PHP application sends a request to the API and returns a list of suggested corrections. Chociaż ta aplikacja jest napisana w języku PHP, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu API REST sprawdzania pisowni Bing. Ta prosta aplikacja PHP wysyła żądanie do interfejsu API i zwraca listę sugerowanych poprawek. Chociaż ta aplikacja jest napisana w języku PHP, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

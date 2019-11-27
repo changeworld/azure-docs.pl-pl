@@ -53,12 +53,12 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
    |----|----|
    |Nazwa| myVirtualNetwork |
    |Przestrzeń adresowa| 10.0.0.0/16|
-   |Subskrypcja| Wybierz swoją subskrypcję|
+   |Subscription| Wybierz swoją subskrypcję|
    |Grupa zasobów | Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.|
-   |Lokalizacja| Wybierz pozycję **Wschodnie stany USA** |
+   |Location| Wybierz pozycję **Wschodnie stany USA** |
    |Nazwa podsieci| Public|
    |Zakres adresów podsieci| 10.0.0.0/24|
-   |Ochrona przed atakami DDOS| Podstawowa|
+   |Ochrona przed atakami DDoS| Podstawowa|
    |Punkty końcowe usługi| Disabled (Wyłączony)|
    |Zapora| Disabled (Wyłączony)|
 
@@ -77,7 +77,7 @@ Punkty końcowe usługi są włączane dla poszczególnych usług i podsieci. Ut
 
     |Ustawienie|Wartość|
     |----|----|
-    |Nazwa| Private |
+    |Nazwa| Prywatne |
     |Zakres adresów| 10.0.1.0/24|
     |Punkty końcowe usługi| Wybierz pozycję **Microsoft.Storage** w obszarze **Usługi**|
 
@@ -95,9 +95,9 @@ Domyślnie wszystkie maszyny wirtualne w podsieci mogą komunikować się ze wsz
     |Ustawienie|Wartość|
     |----|----|
     |Nazwa| myNsgPrivate |
-    |Subskrypcja| Wybierz swoją subskrypcję|
+    |Subscription| Wybierz swoją subskrypcję|
     |Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę *myResourceGroup*.|
-    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA** |
+    |Location| Wybierz pozycję **Wschodnie stany USA** |
 
 4. Po utworzeniu sieciowej grupy zabezpieczeń wprowadź ciąg *myNsgPrivate* w polu **Szukaj zasobów, usług i dokumentów** w górnej części portalu. Gdy pozycja **myNsgPrivate** pojawi się w wynikach wyszukiwania, wybierz ją.
 5. W obszarze **USTAWIENIA** wybierz pozycję **Reguły zabezpieczeń dla ruchu wychodzącego**.
@@ -107,12 +107,12 @@ Domyślnie wszystkie maszyny wirtualne w podsieci mogą komunikować się ze wsz
     |Ustawienie|Wartość|
     |----|----|
     |Element źródłowy| Wybierz pozycję **VirtualNetwork** |
-    |Zakresy portów źródłowych| * |
-    |Element docelowy | Wybierz pozycję **Tag usługi**|
+    |Source port ranges| * |
+    |Destination | Wybierz pozycję **Tag usługi**|
     |Docelowy tag usługi | Wybierz pozycję **Magazyn**|
     |Zakresy portów docelowych| * |
     |Protokół|Dowolne|
-    |Akcja|Zezwalaj|
+    |Akcja|Allow|
     |Priorytet|100|
     |Nazwa|Allow-Storage-All|
 
@@ -121,8 +121,8 @@ Domyślnie wszystkie maszyny wirtualne w podsieci mogą komunikować się ze wsz
     |Ustawienie|Wartość|
     |----|----|
     |Element źródłowy| Wybierz pozycję **VirtualNetwork** |
-    |Zakresy portów źródłowych| * |
-    |Element docelowy | Wybierz pozycję **Tag usługi**|
+    |Source port ranges| * |
+    |Destination | Wybierz pozycję **Tag usługi**|
     |Docelowy tag usługi| Wybierz pozycję **Internet**|
     |Zakresy portów docelowych| * |
     |Protokół|Dowolne|
@@ -137,11 +137,11 @@ Domyślnie wszystkie maszyny wirtualne w podsieci mogą komunikować się ze wsz
     |Ustawienie|Wartość|
     |----|----|
     |Element źródłowy| Dowolne |
-    |Zakresy portów źródłowych| * |
-    |Element docelowy | Wybierz pozycję **VirtualNetwork**|
+    |Source port ranges| * |
+    |Destination | Wybierz pozycję **VirtualNetwork**|
     |Zakresy portów docelowych| 3389 |
     |Protokół|Dowolne|
-    |Akcja|Zezwalaj|
+    |Akcja|Allow|
     |Priorytet|120|
     |Nazwa|Allow-RDP-All|
 
@@ -164,9 +164,9 @@ Kroki niezbędne do ograniczenia dostępu sieciowego do zasobów utworzonych za 
     |----|----|
     |Nazwa| Wprowadź nazwę, która jest unikatowa dla wszystkich lokalizacji platformy Azure, ma długość od 3 do 24 znaków oraz zawiera tylko cyfry i małe litery.|
     |Rodzaj konta|StorageV2 (ogólnego przeznaczenia wersja 2)|
-    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA** |
+    |Location| Wybierz pozycję **Wschodnie stany USA** |
     |Replikacja| Magazyn lokalnie nadmiarowy (LRS)|
-    |Subskrypcja| Wybierz swoją subskrypcję|
+    |Subscription| Wybierz swoją subskrypcję|
     |Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę *myResourceGroup*.|
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Tworzenie udziału plików w ramach konta magazynu
@@ -191,7 +191,7 @@ Domyślnie konta magazynu akceptują połączenia sieciowe od klientów znajduj�
 
     |Ustawienie|Wartość|
     |----|----|
-    |Subskrypcja| Wybierz subskrypcję.|
+    |Subscription| Wybierz subskrypcję.|
     |Sieci wirtualne|Wybierz pozycję **myVirtualNetwork** w obszarze **Sieci wirtualne**|
     |Podsieci| Wybierz pozycję **Private** w obszarze **Podsieci**|
 
@@ -220,9 +220,9 @@ Aby przetestować dostęp sieciowy do konta magazynu, należy wdrożyć maszynę
    |Nazwa| myVmPublic|
    |Nazwa użytkownika|Wprowadź wybraną nazwę użytkownika.|
    |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-   |Subskrypcja| Wybierz subskrypcję.|
+   |Subscription| Wybierz subskrypcję.|
    |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
-   |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
+   |Location| Wybierz pozycję **Wschodnie stany USA**.|
 
    ![Wprowadzanie podstawowych informacji o maszynie wirtualnej](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
@@ -247,7 +247,7 @@ Wdrożenie maszyny wirtualnej potrwa kilka minut. Nie należy przechodzić do na
 
 2. Po wybraniu przycisku **Połącz** zostanie utworzony i pobrany na komputer plik Remote Desktop Protocol (rdp).  
 3. Otwórz pobrany plik rdp. Po wyświetleniu monitu wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może okazać się konieczne wybranie pozycji **Więcej opcji**, a następnie pozycji **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej. 
-4. Wybierz **OK**.
+4. Kliknij przycisk **OK**.
 5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
 6. Na maszynie wirtualnej *myVmPrivate* mapuj udział plików platformy Azure na dysk Z przy użyciu programu PowerShell. Przed uruchomieniem poniższych poleceń zastąp zmienne `<storage-account-key>` i `<storage-account-name>` wartościami podanymi i pobranymi w sekcji [Tworzenie konta magazynu](#create-a-storage-account).
 
@@ -304,7 +304,7 @@ Gdy grupa zasobów nie będzie już potrzebna, usuń ją wraz ze wszystkimi zaso
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku został włączony punkt końcowy usługi dla podsieci sieci wirtualnej. Wiesz teraz, że punkty końcowe usługi można włączyć dla zasobów wdrożonych w wielu usługach platformy Azure. Zostało utworzone konto usługi Azure Storage i dostęp sieciowy do konta magazynu został ograniczony tylko do zasobów w podsieci sieci wirtualnej. Aby dowiedzieć się więcej na temat punktów końcowych usług, zobacz [Service endpoints overview (Omówienie punktów końcowych usługi)](virtual-network-service-endpoints-overview.md) i [Manage subnets (Zarządzanie podsieciami)](virtual-network-manage-subnet.md).
 

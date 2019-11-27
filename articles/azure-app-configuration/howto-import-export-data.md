@@ -67,7 +67,7 @@ Eksportuj dane przy użyciu [Azure Portal](https://portal.azure.com) lub [interf
 
     ![Zakończono eksportowanie pliku](./media/export-file-complete.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji sieci Web ASP.NET Core](./quickstart-aspnet-core-app.md)  

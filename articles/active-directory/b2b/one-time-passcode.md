@@ -73,7 +73,7 @@ Wykonanie akcji zgody może potrwać kilka minut. Po tym czasie tylko nowo zapro
 1.  Zaloguj się do [Azure Portal](https://portal.azure.com/) jako Administrator globalny usługi Azure AD.
 2.  W okienku nawigacji wybierz pozycję **Azure Active Directory**.
 3.  W obszarze **Zarządzaj**wybierz pozycję **relacje organizacyjne**.
-4.  Wybierz **ustawienia**.
+4.  Wybierz pozycję **Ustawienia**.
 5.  W obszarze **Włączanie wiadomości E-mail jednorazowy kod dostępu dla Gości (wersja zapoznawcza)** wybierz pozycję **tak**.
  
 ### <a name="to-opt-in-using-powershell"></a>Aby wyrazić zgodę na korzystanie z programu PowerShell
@@ -140,7 +140,7 @@ Wykonanie akcji rezygnacji może potrwać kilka minut. Jeśli wyłączysz Podgl�
 1.  Zaloguj się do [Azure Portal](https://portal.azure.com/) jako Administrator globalny usługi Azure AD.
 2.  W okienku nawigacji wybierz pozycję **Azure Active Directory**.
 3.  W obszarze **Zarządzaj**wybierz pozycję **relacje organizacyjne**.
-4.  Wybierz **ustawienia**.
+4.  Wybierz pozycję **Ustawienia**.
 5.  W obszarze **Włączanie wiadomości E-mail jednorazowy kod dostępu dla Gości (wersja zapoznawcza)** wybierz pozycję **nie**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Aby wyłączyć podgląd przy użyciu programu PowerShell

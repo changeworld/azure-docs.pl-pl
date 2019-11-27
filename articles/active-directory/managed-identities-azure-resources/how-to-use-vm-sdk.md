@@ -44,7 +44,7 @@ Ten artykuł zawiera listę przykładów zestawu SDK, które demonstrują korzys
 | Python          | [Uwierzytelnianie za pomocą zarządzanych tożsamości zasobów platformy Azure po prostu z poziomu maszyny wirtualnej](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
 | Ruby            | [Zarządzanie zasobami z maszyny wirtualnej z tożsamościami zarządzanymi dla zasobów platformy Azure](https://github.com/Azure-Samples/resources-ruby-manage-resources-with-msi/) |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zobacz zestaw [Azure](https://azure.microsoft.com/downloads/) SDK, aby uzyskać pełną listę zasobów zestawu Azure SDK, w tym pliki do pobrania biblioteki, dokumentację i inne.
 - Aby włączyć zarządzane tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej przy użyciu Azure Portal](qs-configure-portal-windows-vm.md).

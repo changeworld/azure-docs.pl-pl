@@ -1,6 +1,6 @@
 ---
-title: Manage access to Azure resources using RBAC and Azure CLI | Microsoft Docs
-description: Learn how to manage access to Azure resources for users, groups, and applications using role-based access control (RBAC) and Azure CLI. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
+title: Zarządzanie dostępem do zasobów platformy Azure przy użyciu funkcji RBAC i interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) i interfejsu wiersza polecenia platformy Azure. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -21,26 +21,26 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384099"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Manage access to Azure resources using RBAC and Azure CLI
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu wiersza polecenia platformy Azure
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. This article describes how you manage access for users, groups, and applications using RBAC and Azure CLI.
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. W tym artykule opisano sposób zarządzania dostępem użytkowników, grup i aplikacji przy użyciu funkcji RBAC i interfejsu wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To manage access, you need one of the following:
+Aby zarządzać dostępem, należy wykonać jedną z następujących czynności:
 
-* [Bash in Azure Cloud Shell](/azure/cloud-shell/overview)
+* [Bash w Azure Cloud Shell](/azure/cloud-shell/overview)
 * [Interfejs wiersza polecenia platformy Azure](/cli/azure)
 
 ## <a name="list-roles"></a>Tworzenie listy ról
 
-To list all available role definitions, use [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+Aby wyświetlić listę wszystkich dostępnych definicji ról, użyj [AZ role Definition list](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list
 ```
 
-The following example lists the name and description of all available role definitions:
+Poniższy przykład zawiera listę nazw i opis wszystkich dostępnych definicji ról:
 
 ```azurecli
 az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
@@ -63,7 +63,7 @@ az role definition list --output json | jq '.[] | {"roleName":.roleName, "descri
 ...
 ```
 
-The following example lists all of the built-in role definitions:
+W poniższym przykładzie wymieniono wszystkie wbudowane definicje ról:
 
 ```azurecli
 az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
@@ -89,15 +89,15 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-## <a name="list-a-role-definition"></a>List a role definition
+## <a name="list-a-role-definition"></a>Lista definicji roli
 
-To list a role definition, use [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+Aby wyświetlić listę definicji roli, użyj [AZ role Definition list](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-The following example lists the *Contributor* role definition:
+Poniższy przykład zawiera listę definicji roli *współautor* :
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -135,9 +135,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-### <a name="list-actions-of-a-role"></a>List actions of a role
+### <a name="list-actions-of-a-role"></a>Wyświetlanie listy akcji roli
 
-The following example lists just the *actions* and *notActions* of the *Contributor* role:
+W poniższym przykładzie wymieniono tylko *Akcje* i *nienaruszone* roli *współautor* :
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -156,7 +156,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-The following example lists just the actions of the *Virtual Machine Contributor* role:
+Poniższy przykład zawiera listę tylko działań roli *współautor maszyny wirtualnej* :
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -182,19 +182,19 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
 ## <a name="list-access"></a>Tworzenie listy dostępu
 
-In RBAC, to list access, you list the role assignments.
+W polu RBAC, aby wyświetlić listę uprawnień dostępu, należy wyświetlić listę przypisań ról.
 
 ### <a name="list-role-assignments-for-a-user"></a>Tworzenie listy przypisań ról dla użytkownika
 
-To list the role assignments for a specific user, use [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list):
+Aby wyświetlić listę przypisań ról dla określonego użytkownika, użyj [AZ role przypisanie list](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --assignee <assignee>
 ```
 
-By default, only direct assignments scoped to subscription will be displayed. To view assignments scoped by resource or group, use `--all` and to view inherited assignments, use `--include-inherited`.
+Domyślnie będą wyświetlane tylko przypisania bezpośrednie mające zakres do subskrypcji. Aby wyświetlić przydziały należące do zakresu zasobów lub grup, użyj `--all` i aby wyświetlić dziedziczone przydziały, użyj `--include-inherited`.
 
-The following example lists the role assignments that are assigned directly to the *patlong\@contoso.com* user:
+Poniższy przykład zawiera listę przypisań ról przypisanych bezpośrednio do *patlong\@contoso.com* użytkownika:
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -213,15 +213,15 @@ az role assignment list --all --assignee patlong@contoso.com --output json | jq 
 }
 ```
 
-### <a name="list-role-assignments-at-a-resource-group-scope"></a>List role assignments at a resource group scope
+### <a name="list-role-assignments-at-a-resource-group-scope"></a>Wyświetlanie listy przypisań ról w zakresie grupy zasobów
 
-To list the role assignments that exist at a resource group scope, use [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list):
+Aby wyświetlić listę przypisań ról istniejących w zakresie grupy zasobów, użyj [AZ role przypisanie list](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --resource-group <resource_group>
 ```
 
-The following example lists the role assignments for the *pharma-sales* resource group:
+Poniższy przykład zawiera listę przypisań ról dla grupy zasobów *Pharma-Sales* :
 
 ```azurecli
 az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -242,9 +242,9 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 ...
 ```
 
-### <a name="list-role-assignments-at-a-subscription-scope"></a>List role assignments at a subscription scope
+### <a name="list-role-assignments-at-a-subscription-scope"></a>Wyświetlanie listy przypisań ról w zakresie subskrypcji
 
-To list all role assignments at a subscription scope, use [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list). To get the subscription ID, you can find it on the **Subscriptions** blade in the Azure portal or you can use [az account list](/cli/azure/account#az-account-list).
+Aby wyświetlić listę wszystkich przypisań ról w zakresie subskrypcji, użyj [AZ role przypisanie list](/cli/azure/role/assignment#az-role-assignment-list). Aby uzyskać identyfikator subskrypcji, możesz go znaleźć w bloku **subskrypcje** w Azure Portal lub użyć [AZ Account List](/cli/azure/account#az-account-list).
 
 ```azurecli
 az role assignment list --subscription <subscription_name_or_id>
@@ -254,9 +254,9 @@ az role assignment list --subscription <subscription_name_or_id>
 az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-### <a name="list-role-assignments-at-a-management-group-scope"></a>List role assignments at a management group scope
+### <a name="list-role-assignments-at-a-management-group-scope"></a>Wyświetlanie listy przypisań ról w zakresie grupy zarządzania
 
-To list all role assignments at a management group scope, use [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list). To get the management group ID, you can find it on the **Management groups** blade in the Azure portal or you can use [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+Aby wyświetlić listę wszystkich przypisań ról w zakresie grupy zarządzania, użyj [AZ role przypisanie list](/cli/azure/role/assignment#az-role-assignment-list). Aby uzyskać identyfikator grupy zarządzania, można go znaleźć w bloku **grupy zarządzania** w Azure Portal lub użyć [AZ Account Management-Group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
 
 ```azurecli
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -266,13 +266,13 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-## <a name="get-object-ids"></a>Get object IDs
+## <a name="get-object-ids"></a>Pobierz identyfikatory obiektów
 
-To list, add, or remove role assignments, you might need to specify the unique ID of an object. The ID has the format: `11111111-1111-1111-1111-111111111111`. You can get the ID using the Azure portal or Azure CLI.
+Aby wyświetlić, dodać lub usunąć przypisania ról, może być konieczne określenie unikatowego identyfikatora obiektu. Identyfikator ma format: `11111111-1111-1111-1111-111111111111`. Identyfikator można uzyskać przy użyciu Azure Portal lub interfejsu wiersza polecenia platformy Azure.
 
 ### <a name="user"></a>Użytkownik
 
-To get the object ID for an Azure AD user, you can use [az ad user show](/cli/azure/ad/user#az-ad-user-show).
+Aby uzyskać identyfikator obiektu dla użytkownika usługi Azure AD, możesz użyć [AZ AD User show](/cli/azure/ad/user#az-ad-user-show).
 
 ```azurecli
 az ad user show --id "{email}" --query objectId --output tsv
@@ -280,7 +280,7 @@ az ad user show --id "{email}" --query objectId --output tsv
 
 ### <a name="group"></a>Grupa
 
-To get the object ID for an Azure AD group, you can use [az ad group show](/cli/azure/ad/group#az-ad-group-show) or [az ad group list](/cli/azure/ad/group#az-ad-group-list).
+Aby uzyskać identyfikator obiektu dla grupy usługi Azure AD, możesz użyć [AZ AD Group Show](/cli/azure/ad/group#az-ad-group-show) lub [AZ AD Group list](/cli/azure/ad/group#az-ad-group-list).
 
 ```azurecli
 az ad group show --group "{name}" --query objectId --output tsv
@@ -288,7 +288,7 @@ az ad group show --group "{name}" --query objectId --output tsv
 
 ### <a name="application"></a>Aplikacja
 
-To get the object ID for an Azure AD service principal (identity used by an application), you can use [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list). For a service principal, use the object ID and **not** the application ID.
+Aby uzyskać identyfikator obiektu dla jednostki usługi Azure AD (tożsamość używana przez aplikację), możesz użyć [AZ AD Sp list](/cli/azure/ad/sp#az-ad-sp-list). Dla jednostki usługi Użyj identyfikatora obiektu, a **nie** identyfikatora aplikacji.
 
 ```azurecli
 az ad sp list --display-name "{name}" --query [].objectId --output tsv
@@ -298,118 +298,118 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 
 Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli.
 
-### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Create a role assignment for a user at a resource group scope
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Tworzenie przypisania roli dla użytkownika w zakresie grupy zasobów
 
-To grant access to a user at a resource group scope, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create).
+Aby udzielić dostępu użytkownikowi w zakresie grupy zasobów, użyj [AZ role przypisanie Create](/cli/azure/role/assignment#az-role-assignment-create).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-The following example assigns the *Virtual Machine Contributor* role to *patlong\@contoso.com* user at the *pharma-sales* resource group scope:
+Poniższy przykład przypisuje rolę *współautor maszyny wirtualnej* do *patlong\@contoso.com* użytkownika w zakresie grupy zasobów *Pharma-Sales* :
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
 ```
 
-### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Create a role assignment using the unique role ID
+### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Tworzenie przypisania roli przy użyciu unikatowego identyfikatora roli
 
-There are a couple of times when a role name might change, for example:
+Istnieje kilka razy więcej czasu, gdy nazwa roli może ulec zmianie, na przykład:
 
-- You are using your own custom role and you decide to change the name.
-- You are using a preview role that has **(Preview)** in the name. When the role is released, the role is renamed.
+- Używasz własnej roli niestandardowej i zdecydujesz się zmienić nazwę.
+- W nazwie jest używana rola w wersji zapoznawczej mająca **(wersja zapoznawcza)** . Po wydaniu roli zostanie zmieniona nazwa roli.
 
 > [!IMPORTANT]
-> A preview version is provided without a service level agreement, and it's not recommended for production workloads. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Even if a role is renamed, the role ID does not change. If you are using scripts or automation to create your role assignments, it's a best practice to use the unique role ID instead of the role name. Therefore, if a role is renamed, your scripts are more likely to work.
+Nawet w przypadku zmiany nazwy roli identyfikator roli nie zmienia się. Jeśli używasz skryptów lub automatyzacji do tworzenia przypisań ról, najlepszym rozwiązaniem jest użycie unikatowego identyfikatora roli zamiast nazwy roli. W związku z tym, jeśli zostanie zmieniona nazwa roli, skrypty mogą pracować.
 
-To create a role assignment using the unique role ID instead of the role name, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create).
+Aby utworzyć przypisanie roli przy użyciu unikatowego identyfikatora roli zamiast nazwy roli, użyj polecenia [AZ role przypisanie Create](/cli/azure/role/assignment#az-role-assignment-create).
 
 ```azurecli
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-The following example assigns the [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor) role to the *patlong\@contoso.com* user at the *pharma-sales* resource group scope. To get the unique role ID, you can use [az role definition list](/cli/azure/role/definition#az-role-definition-list) or see [Built-in roles for Azure resources](built-in-roles.md).
+Poniższy przykład przypisuje rolę [współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) do użytkownika *patlong\@contoso.com* w zakresie grupy zasobów *Pharma-Sales* . Aby uzyskać unikatowy identyfikator roli, można użyć polecenie [AZ role Definition list](/cli/azure/role/definition#az-role-definition-list) lub zobaczyć [wbudowane role dla zasobów platformy Azure](built-in-roles.md).
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
 ```
 
-### <a name="create-a-role-assignment-for-a-group"></a>Create a role assignment for a group
+### <a name="create-a-role-assignment-for-a-group"></a>Tworzenie przypisania roli dla grupy
 
-To grant access to a group, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). For information about how to get the object ID of the group, see [Get object IDs](#get-object-ids).
+Aby udzielić dostępu do grupy, użyj [AZ role przypisanie Create](/cli/azure/role/assignment#az-role-assignment-create). Aby uzyskać informacje na temat pobierania identyfikatora obiektu grupy, zobacz [pobieranie identyfikatorów obiektów](#get-object-ids).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-The following example assigns the *Reader* role to the *Ann Mack Team* group with ID 22222222-2222-2222-2222-222222222222 at a subscription scope.
+Poniższy przykład przypisuje rolę *czytnika* do grupy *zespołu Ann Mack* o identyfikatorze 22222222-2222-2222-2222-222222222222 w zakresie subskrypcji.
 
 ```azurecli
 az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-The following example assigns the *Virtual Machine Contributor* role to the *Ann Mack Team* group with ID 22222222-2222-2222-2222-222222222222 at a resource scope for a virtual network named *pharma-sales-project-network*.
+Poniższy przykład przypisuje rolę *współautor maszyny wirtualnej* do grupy *zespołu Ann Mack* o identyfikatorze 22222222-2222-2222-2222-222222222222 w zakresie zasobów dla sieci wirtualnej o nazwie *Pharma-Sales-Project-Network*.
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
 ```
 
-### <a name="create-a-role-assignment-for-an-application-at-a-resource-group-scope"></a>Create a role assignment for an application at a resource group scope
+### <a name="create-a-role-assignment-for-an-application-at-a-resource-group-scope"></a>Tworzenie przypisania roli dla aplikacji w zakresie grupy zasobów
 
-To grant access to an application, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). For information about how to get the object ID of the application, see [Get object IDs](#get-object-ids).
+Aby udzielić dostępu do aplikacji, użyj [AZ role przypisanie Create](/cli/azure/role/assignment#az-role-assignment-create). Aby uzyskać informacje na temat pobierania identyfikatora obiektu aplikacji, zobacz [pobieranie identyfikatorów obiektów](#get-object-ids).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
 ```
 
-The following example assigns the *Virtual Machine Contributor* role to an application with object ID 44444444-4444-4444-4444-444444444444 at the *pharma-sales* resource group scope.
+Poniższy przykład przypisuje rolę *współautor maszyny wirtualnej* do aplikacji z identyfikatorem obiektu 44444444-4444-4444-4444-444444444444 w zakresie grupy zasobów *Pharma-Sales* .
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales
 ```
 
-### <a name="create-a-role-assignment-for-a-user-at-a-subscription-scope"></a>Create a role assignment for a user at a subscription scope
+### <a name="create-a-role-assignment-for-a-user-at-a-subscription-scope"></a>Utwórz przypisanie roli dla użytkownika w zakresie subskrypcji
 
-To grant access to a user at a subscription scope, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). To get the subscription ID, you can find it on the **Subscriptions** blade in the Azure portal or you can use [az account list](/cli/azure/account#az-account-list).
+Aby udzielić dostępu użytkownikowi z zakresem subskrypcji, użyj [AZ role przypisanie Create](/cli/azure/role/assignment#az-role-assignment-create). Aby uzyskać identyfikator subskrypcji, możesz go znaleźć w bloku **subskrypcje** w Azure Portal lub użyć [AZ Account List](/cli/azure/account#az-account-list).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
 ```
 
-The following example assigns the *Reader* role to the *annm\@example.com* user at a subscription scope.
+Poniższy przykład przypisuje rolę *czytnika* do użytkownika *annm\@example.com* w zakresie subskrypcji.
 
 ```azurecli
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Create a role assignment for a user at a management group scope
+### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Tworzenie przypisania roli dla użytkownika w zakresie grupy zarządzania
 
-To grant access to a user at a management group scope, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). To get the management group ID, you can find it on the **Management groups** blade in the Azure portal or you can use [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+Aby udzielić dostępu użytkownikowi w zakresie grupy zarządzania, użyj [AZ role przypisanie Create](/cli/azure/role/assignment#az-role-assignment-create). Aby uzyskać identyfikator grupy zarządzania, można go znaleźć w bloku **grupy zarządzania** w Azure Portal lub użyć [AZ Account Management-Group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-The following example assigns the *Billing Reader* role to the *alain\@example.com* user at a management group scope.
+Poniższy przykład przypisuje rolę *czytnika rozliczeń* do użytkownika *Alain\@example.com* w zakresie grupy zarządzania.
 
 ```azurecli
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
-### <a name="create-a-role-assignment-for-a-new-service-principal"></a>Create a role assignment for a new service principal
+### <a name="create-a-role-assignment-for-a-new-service-principal"></a>Tworzenie przypisania roli dla nowej nazwy głównej usługi
 
-If you create a new service principal and immediately try to assign a role to that service principal, that role assignment can fail in some cases. For example, if you use a script to create a new managed identity and then try to assign a role to that service principal, the role assignment might fail. The reason for this failure is likely a replication delay. The service principal is created in one region; however, the role assignment might occur in a different region that hasn't replicated the service principal yet. To address this scenario, you should specify the principal type when creating the role assignment.
+Jeśli utworzysz nową nazwę główną usługi i natychmiast spróbujesz przypisać rolę do tej jednostki usługi, w niektórych przypadkach przypisanie roli może zakończyć się niepowodzeniem. Na przykład, jeśli używasz skryptu do utworzenia nowej tożsamości zarządzanej, a następnie spróbujesz przypisać rolę do tej jednostki usługi, przypisanie roli może zakończyć się niepowodzeniem. Przyczyną tego błędu jest prawdopodobnie opóźnienie replikacji. Nazwa główna usługi jest tworzona w jednym regionie; jednak przypisanie roli może wystąpić w innym regionie, który jeszcze nie replikuje jednostki usługi. Aby rozwiązać ten scenariusz, należy określić typ podmiotu podczas tworzenia przypisania roli.
 
-To create a role assignment, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), specify a value for `--assignee-object-id`, and then set `--assignee-principal-type` to `ServicePrincipal`.
+Aby utworzyć przypisanie roli, użyj [AZ role przypisanie Create](/cli/azure/role/assignment#az-role-assignment-create), określ wartość `--assignee-object-id`, a następnie ustaw `--assignee-principal-type` na `ServicePrincipal`.
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-The following example assigns the *Virtual Machine Contributor* role to the *msi-test* managed identity at the *pharma-sales* resource group scope:
+Poniższy przykład przypisuje rolę *współautor maszyny wirtualnej* do tożsamości zarządzanej przez *test MSI* w zakresie grupy zasobów *Pharma-Sales* :
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 33333333-3333-3333-3333-333333333333 --assignee-principal-type ServicePrincipal --resource-group pharma-sales
@@ -417,25 +417,25 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ## <a name="remove-access"></a>Usuwanie dostępu
 
-In RBAC, to remove access, you remove a role assignment by using [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete):
+Aby usunąć dostęp w ramach RBAC, usuń przypisanie roli za pomocą polecenia [AZ role przypisanie Delete](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
 ```
 
-The following example removes the *Virtual Machine Contributor* role assignment from the *patlong\@contoso.com* user on the *pharma-sales* resource group:
+Poniższy przykład usuwa przypisanie roli *współautor maszyny wirtualnej* z *patlong\@contoso.com* użytkownika w grupie zasobów *Pharma-Sales* :
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
 ```
 
-The following example removes the *Reader* role from the *Ann Mack Team* group with ID 22222222-2222-2222-2222-222222222222 at a subscription scope. For information about how to get the object ID of the group, see [Get object IDs](#get-object-ids).
+Poniższy przykład usuwa rolę *czytnika* z grupy *zespołu Ann Mack* o identyfikatorze 22222222-2222-2222-2222-222222222222 w zakresie subskrypcji. Aby uzyskać informacje na temat pobierania identyfikatora obiektu grupy, zobacz [pobieranie identyfikatorów obiektów](#get-object-ids).
 
 ```azurecli
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-The following example removes the *Billing Reader* role from the *alain\@example.com* user at the management group scope. To get the ID of the management group, you can use [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+Poniższy przykład usuwa rolę *czytnika rozliczeń* z *Alain\@example.com* użytkownika w zakresie grupy zarządzania. Aby uzyskać identyfikator grupy zarządzania, można użyć [AZ Account Management-Group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -443,5 +443,5 @@ az role assignment delete --assignee alain@example.com --role "Billing Reader" -
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Tutorial: Create a custom role for Azure resources using Azure CLI](tutorial-custom-role-cli.md)
-- [Use the Azure CLI to manage Azure resources and resource groups](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Samouczek: tworzenie roli niestandardowej dla zasobów platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md)
+- [Zarządzanie zasobami i grupami zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/cli-azure-resource-manager.md)

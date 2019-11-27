@@ -80,7 +80,7 @@ Następnym krokiem jest skonfigurowanie aplikacji w taki sposób, aby korzystał
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Otwórz `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
+Otwórz plik `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
 Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
 
@@ -88,7 +88,7 @@ Znajdź pole `SpatialAnchorsAccountId` i zastąp wartość `Set me` identyfikato
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-Otwórz `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
+Otwórz plik `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
 Znajdź pole `SpatialAnchorsAccountKey` i zastąp wartość `Set me` kluczem konta.
 

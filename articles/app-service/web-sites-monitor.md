@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7edff127bb981db985bebb41740744f325306bc8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470122"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546191"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorowanie aplikacji w Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) zapewnia wbudowaną funkcję monitorowania dla aplikacji sieci Web, zaplecza mobilnego i aplikacji interfejsu API w [Azure Portal](https://portal.azure.com).
 
-W Azure Portal można sprawdzić *przydziały* i *metryki* dla aplikacji, przejrzeć plan App Service i automatycznie skonfigurować *alerty* i *skalowanie* , które są oparte na metrykach.
+W Azure Portal można sprawdzić *przydziały* i *metryki* dla aplikacji oraz plan App Service i skonfigurować *alerty* oraz *Automatyczne skalowanie* oparte na metrykach.
 
 ## <a name="understand-quotas"></a>Informacje o przydziałach
 
@@ -46,7 +46,7 @@ Przydziały dla aplikacji bezpłatnych lub udostępnionych:
 | **Przepustowość** | Całkowita ilość wychodzącej przepustowości dozwolonej dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
 | **Wymagany** | Łączna ilość dozwolonego miejsca w magazynie. |
 
-Jedynym przydziałem stosowanym dla aplikacji hostowanych w planach *Basic*, *Standard*i *Premium* jest system plików.
+Jedynym przydziałem stosowanym dla aplikacji hostowanych w warstwach *podstawowa*, *standardowa*i *Premium* jest system plików.
 
 Aby uzyskać więcej informacji o określonych limitach przydziału, limitach i funkcjach dostępnych dla różnych jednostek SKU App Service, zobacz [limity usługi subskrypcji platformy Azure](../azure-subscription-service-limits.md#app-service-limits).
 
@@ -64,6 +64,10 @@ Można zwiększyć lub usunąć przydziały z aplikacji, uaktualniając plan App
 
 ## <a name="understand-metrics"></a>Informacje o metrykach
 
+> [!NOTE]
+> **Użycie systemu plików** to nowa Metryka, która jest wdrażana globalnie, nie jest oczekiwane żadne dane, chyba że listy dozwolonych się do prywatnej wersji zapoznawczej.
+> 
+
 Metryki zawierają informacje dotyczące aplikacji lub zachowania planu App Service.
 
 W przypadku aplikacji dostępne są następujące metryki:
@@ -77,6 +81,7 @@ W przypadku aplikacji dostępne są następujące metryki:
 | **Bieżące zestawy** | Bieżąca liczba zestawów załadowanych we wszystkich domenach aplikacji. |
 | **Dane w** | Ilość przychodzącej przepustowości zużywanej przez aplikację w usłudze MiB. |
 | **Dane wychodzące** | Ilość wychodzącej przepustowości zużywanej przez aplikację w usłudze MiB. |
+| **Użycie systemu plików** | Procent przydziału systemu plików zużywany przez aplikację. |
 | **Zbieranie elementów bezużytecznych generacji 0** | Liczba obiektów generacji 0, które są zbierane jako elementy bezużyteczne od momentu rozpoczęcia procesu aplikacji. Wyższa generacja operacje odzyskiwania pamięci obejmuje wszystkie niższe operacje odzyskiwania pamięci generacji.|
 | **Wyrzucanie elementów bezużytecznych generacji 1** | Liczba obiektów generacji 1, które są zbierane jako elementy bezużyteczne od momentu rozpoczęcia procesu aplikacji. Wyższa generacja operacje odzyskiwania pamięci obejmuje wszystkie niższe operacje odzyskiwania pamięci generacji.|
 | **Zbieranie elementów bezużytecznych generacji 2** | Liczba obiektów generacji 2, które są zbierane jako elementy bezużyteczne od momentu rozpoczęcia procesu aplikacji.|
@@ -90,7 +95,7 @@ W przypadku aplikacji dostępne są następujące metryki:
 | **Http 4xx** | Liczba żądań, które wynikają z kodu stanu HTTP ≥ 400, ale < 500. |
 | **Błędy serwera http** | Liczba żądań, które wynikają z kodu stanu HTTP ≥ 500, ale < 600. |
 | **Inne bajty we/wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła bajty do operacji we/wy, które nie obejmują danych, takich jak operacje sterowania.|
-| **Inne operacje we/wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła operacje we/wy, które nie są operacją odczytu ani zapisu.|
+| **Inne operacje we/wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła operacje we/wy, które nie odczytują ani nie zapisują operacji.|
 | **Bajty odczytu we/wy na sekundę** | Szybkość, z jaką proces aplikacji odczytuje bajty z operacji we/wy.|
 | **Operacje odczytu we/wy na sekundę** | Szybkość, z jaką proces aplikacji wystawia operacje we/wy odczytu.|
 | **Bajty zapisu we/wy na sekundę** | Szybkość, z jaką proces aplikacji zapisuje bajty w operacjach we/wy.|

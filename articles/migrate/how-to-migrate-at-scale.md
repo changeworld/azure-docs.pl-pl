@@ -67,6 +67,6 @@ Gdy wolumin CSV jest gotowy, możesz wykonać następujące kroki, aby przeprowa
 ## <a name="how-to-migrate-to-managed-disks"></a>Jak przeprowadzić migrację do dysków zarządzanych?
 Skrypt domyślnie migruje maszyny wirtualne do dysków zarządzanych na platformie Azure. Jeśli podane konto magazynu jest kontem magazynu w warstwie Premium, dyski zarządzane w warstwie Premium są tworzone po migracji. Konto magazynu pamięci podręcznej nadal może być kontem standardowym. Jeśli docelowe konto magazynu jest kontem magazynu w warstwie Standardowa, dyski standardowe są tworzone po migracji. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) na temat migrowania serwerów na platformę Azure przy użyciu Azure Site Recovery

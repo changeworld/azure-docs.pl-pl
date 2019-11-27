@@ -1,6 +1,6 @@
 ---
-title: Backup and restore in Azure Database for PostgreSQL - Single Server
-description: Learn about automatic backups and restoring your Azure Database for PostgreSQL server - Single Server.
+title: Tworzenie kopii zapasowych i przywracanie w Azure Database for PostgreSQL-pojedynczym serwerze
+description: Dowiedz się więcej o automatycznych kopiach zapasowych i przywracaniu serwera Azure Database for PostgreSQL — jeden serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -13,72 +13,72 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74209639"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Backup and restore in Azure Database for PostgreSQL - Single Server
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Tworzenie kopii zapasowych i przywracanie w Azure Database for PostgreSQL-pojedynczym serwerze
 
-Azure Database for PostgreSQL automatically creates server backups and stores them in user configured locally redundant or geo-redundant storage. Kopie zapasowe mogą być używane do przywracania serwera do punktu w czasie. Backup and restore are an essential part of any business continuity strategy because they protect your data from accidental corruption or deletion.
+Azure Database for PostgreSQL automatycznie tworzy kopie zapasowe serwera i przechowuje je w ramach użytkownika skonfigurowanego lokalnie nadmiarowy lub geograficznie nadmiarowy. Kopie zapasowe mogą być używane do przywracania serwera do punktu w czasie. Tworzenie kopii zapasowych i przywracanie jest istotną częścią strategii ciągłości działania, ponieważ chronią dane przed przypadkowym uszkodzeniem lub usunięciem.
 
 ## <a name="backups"></a>Tworzenie kopii zapasowych
 
-Azure Database for PostgreSQL takes backups of the data files and the transaction log. Depending on the supported maximum storage size, we either take full and differential backups (4 TB max storage servers) or snapshot backups (up to 16 TB max storage servers). These backups allow you to restore a server to any point-in-time within your configured backup retention period. The default backup retention period is seven days. You can optionally configure it up to 35 days. All backups are encrypted using AES 256-bit encryption.
+Azure Database for PostgreSQL wykonuje kopie zapasowe plików danych i dziennika transakcji. W zależności od obsługiwanego maksymalnego rozmiaru magazynu należy wykonać pełne i różnicowe kopie zapasowe (maksymalnie 4 TB serwerów magazynu) lub migawek kopii zapasowych (maksymalnie 16 TB serwerów magazynu). Te kopie zapasowe umożliwiają przywrócenie serwera do dowolnego punktu w czasie w ramach skonfigurowanego okresu przechowywania kopii zapasowych. Domyślny okres przechowywania kopii zapasowych wynosi siedem dni. Opcjonalnie można skonfigurować ją do 35 dni. Wszystkie kopie zapasowe są szyfrowane przy użyciu szyfrowania AES 256-bitowego.
 
 ### <a name="backup-frequency"></a>Częstotliwość wykonywania kopii zapasowych
 
-Generally, full backups occur weekly, differential backups occur twice a day for servers with a max supported storage of 4 TB. Snapshot backups happen at least once a day for servers that support up to 16 TB of storage. Transaction log backups in both cases occur every five minutes. The first snapshot of full backup is scheduled immediately after a server is created. The initial full backup can take longer on a large restored server. The earliest point in time that a new server can be restored to is the time at which the initial full backup is complete. As snapshots are instantanious, servers with support up to 16 TB of storage can be restored all the way back to the create time.
+Ogólnie rzecz biorąc, pełne kopie zapasowe są wykonywane co tydzień, różnicowe kopie zapasowe są wykonywane dwa razy dziennie dla serwerów z maksymalną obsługiwaną ilością pamięci 4 TB. Kopie zapasowe migawek odbywają się co najmniej raz dziennie dla serwerów, które obsługują do 16 TB pamięci masowej. Kopie zapasowe dziennika transakcji w obu przypadkach są wykonywane co pięć minut. Pierwsza migawka pełnej kopii zapasowej jest zaplanowana natychmiast po utworzeniu serwera. Początkowa pełna kopia zapasowa może trwać dłużej na dużym przywracanym serwerze. Najwcześniejszym punktem w czasie, w którym można przywrócić nowy serwer, jest czas, w którym zostanie ukończona początkowa pełna kopia zapasowa. Ponieważ migawki są instantanious, serwery z obsługą do 16 TB pamięci masowej mogą być przywracane z powrotem do czasu utworzenia.
 
-### <a name="backup-redundancy-options"></a>Backup redundancy options
+### <a name="backup-redundancy-options"></a>Opcje nadmiarowości kopii zapasowej
 
-Azure Database for PostgreSQL provides the flexibility to choose between locally redundant or geo-redundant backup storage in the General Purpose and Memory Optimized tiers. When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a [paired data center](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). This provides better protection and ability to restore your server in a different region in the event of a disaster. The Basic tier only offers locally redundant backup storage.
+Azure Database for PostgreSQL zapewnia elastyczność wyboru między lokalnie nadmiarowym lub geograficznie nadmiarowym magazynem kopii zapasowych w warstwach Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci. Gdy kopie zapasowe są przechowywane w magazynie geograficznie nadmiarowym, nie są przechowywane tylko w regionie, w którym znajduje się serwer, ale są również replikowane do [sparowanego centrum danych](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Zapewnia to lepszą ochronę i możliwość przywracania serwera w innym regionie w przypadku awarii. Warstwa Podstawowa oferuje tylko lokalnie nadmiarowy magazyn kopii zapasowych.
 
 > [!IMPORTANT]
-> Configuring locally redundant or geo-redundant storage for backup is only allowed during server create. Once the server is provisioned, you cannot change the backup storage redundancy option.
+> Konfiguracja lokalnie nadmiarowego lub geograficznie nadmiarowego magazynu dla kopii zapasowej jest dozwolona tylko podczas tworzenia serwera. Po aprowizacji serwera nie można zmienić opcji nadmiarowości magazynu kopii zapasowej.
 
-### <a name="backup-storage-cost"></a>Backup storage cost
+### <a name="backup-storage-cost"></a>Koszt magazynu kopii zapasowych
 
-Azure Database for PostgreSQL provides up to 100% of your provisioned server storage as backup storage at no additional cost. Typically, this is suitable for a backup retention of seven days. Any additional backup storage used is charged in GB-month.
+Azure Database for PostgreSQL zapewnia do 100% magazynu z zainicjowaną obsługą kopii zapasowych bez dodatkowych kosztów. Zwykle jest to odpowiednie do przechowywania kopii zapasowych przez siedem dni. Każdy dodatkowy magazyn kopii zapasowych jest naliczany w GB miesiąca.
 
-For example, if you have provisioned a server with 250 GB, you have 250 GB of backup storage at no additional charge. Storage in excess of 250 GB is charged.
+Jeśli na przykład masz zainicjowany serwer z 250 GB, masz 250 GB miejsca w magazynie kopii zapasowych bez dodatkowych opłat. Magazyn o wielkości przekraczającej 250 GB jest naliczany.
 
 ## <a name="restore"></a>Przywracanie
 
-In Azure Database for PostgreSQL, performing a restore creates a new server from the original server's backups.
+W Azure Database for PostgreSQL wykonanie przywracania powoduje utworzenie nowego serwera na podstawie kopii zapasowych oryginalnego serwera.
 
-There are two types of restore available:
+Dostępne są dwa typy przywracania:
 
-- **Point-in-time restore** is available with either backup redundancy option and creates a new server in the same region as your original server.
-- **Geo-restore** is available only if you configured your server for geo-redundant storage and it allows you to restore your server to a different region.
+- **Przywracanie do punktu w czasie** jest dostępne z opcją nadmiarowości kopii zapasowych i tworzy nowy serwer w tym samym regionie, w którym znajduje się oryginalny serwer.
+- **Przywracanie geograficzne** jest dostępne tylko wtedy, gdy skonfigurowano serwer dla magazynu geograficznie nadmiarowego i umożliwia przywrócenie serwera do innego regionu.
 
-The estimated time of recovery depends on several factors including the database sizes, the transaction log size, the network bandwidth, and the total number of databases recovering in the same region at the same time. The recovery time is usually less than 12 hours.
+Szacowany czas odzyskiwania zależy od kilku czynników, takich jak rozmiary bazy danych, rozmiar dziennika transakcji, przepustowość sieci i łączna liczba baz danych, które są odzyskiwane w tym samym regionie w tym samym czasie. Czas odzyskiwania jest zwykle krótszy niż 12 godzin.
 
 > [!IMPORTANT]
-> Deleted servers **cannot** be restored. If you delete the server, all databases that belong to the server are also deleted and cannot be recovered. To protect server resources, post deployment, from accidental deletion or unexpected changes, administrators can leverage [management locks](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
+> **Nie** można przywrócić usuniętych serwerów. Usunięcie serwera spowoduje również usunięcie wszystkich baz danych należących do serwera, których nie można odzyskać. Aby chronić zasoby serwera, po wdrożeniu przed przypadkowym usunięciem lub nieoczekiwanymi zmianami, Administratorzy mogą korzystać z [blokad zarządzania](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
 ### <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
-Independent of your backup redundancy option, you can perform a restore to any point in time within your backup retention period. A new server is created in the same Azure region as the original server. It is created with the original server's configuration for the pricing tier, compute generation, number of vCores, storage size, backup retention period, and backup redundancy option.
+Niezależnie od opcji nadmiarowości kopii zapasowej można wykonać przywracanie do dowolnego punktu w czasie w ramach okresu przechowywania kopii zapasowej. Nowy serwer jest tworzony w tym samym regionie świadczenia usługi Azure, w którym znajduje się oryginalny serwer. Jest on tworzony z konfiguracją pierwotnego serwera dla warstwy cenowej, generowania obliczeń, liczby rdzeni wirtualnych, rozmiaru magazynu, okresu przechowywania kopii zapasowych i opcji nadmiarowości kopii zapasowych.
 
-Point-in-time restore is useful in multiple scenarios. For example, when a user accidentally deletes data, drops an important table or database, or if an application accidentally overwrites good data with bad data due to an application defect.
+Przywracanie do punktu w czasie jest przydatne w wielu scenariuszach. Na przykład, gdy użytkownik przypadkowo usunie dane, porzuca istotną tabelę lub bazę danych lub jeśli przypadkowo zastąpi dobre dane przy użyciu nieprawidłowych danych z powodu wady aplikacji.
 
-You may need to wait for the next transaction log backup to be taken before you can restore to a point in time within the last five minutes.
+Może być konieczne poczekanie na wykonanie następnej kopii zapasowej dziennika transakcji, aby można było przywrócić do punktu w czasie w ciągu ostatnich pięciu minut.
 
 ### <a name="geo-restore"></a>Przywracanie geograficzne
 
-You can restore a server to another Azure region where the service is available if you have configured your server for geo-redundant backups. Servers that support up to 4 TB of storage can be restored to the geo-paired region, or to any region that supports up to 16 TB of storage. For servers that support up to 16 TB of storage, geo-backups can be restored in any region that support 16 TB servers as well. Review [Azure Database for PostgeSQL pricing tiers](concepts-pricing-tiers.md) for the list of supported regions.
+Serwer można przywrócić w innym regionie świadczenia usługi Azure, w którym usługa jest dostępna, jeśli skonfigurowano serwer pod kątem geograficznie nadmiarowych kopii zapasowych. Serwery obsługujące do 4 TB pamięci masowej można przywrócić do regionu z parą geograficzną lub do dowolnego regionu, który obsługuje maksymalnie 16 TB pamięci masowej. W przypadku serwerów, które obsługują do 16 TB pamięci masowej, można przywrócić kopie zapasowe w dowolnym regionie, w którym są również obsługiwane serwery 16 TB. Przejrzyj [warstwy cenowe usługi Azure Database for PostgeSQL](concepts-pricing-tiers.md) , aby wyświetlić listę obsługiwanych regionów.
 
-Geo-restore is the default recovery option when your server is unavailable because of an incident in the region where the server is hosted. If a large-scale incident in a region results in unavailability of your database application, you can restore a server from the geo-redundant backups to a server in any other region. There is a delay between when a backup is taken and when it is replicated to different region. This delay can be up to an hour, so, if a disaster occurs, there can be up to one hour data loss.
+Przywracanie geograficzne jest domyślną opcją odzyskiwania, gdy serwer jest niedostępny z powodu zdarzenia w regionie, w którym znajduje się serwer. Jeśli zdarzenie w dużej skali w regionie powoduje niedostępność aplikacji bazy danych, można przywrócić serwer z kopii zapasowych nadmiarowych geograficznie do serwera w dowolnym innym regionie. Istnieje opóźnienie między wykonaniem kopii zapasowej a replikacją do innego regionu. To opóźnienie może wynosić do godziny, więc jeśli wystąpi awaria, może to oznaczać, że istnieje maksymalnie jedna godzina utraty danych.
 
-During geo-restore, the server configurations that can be changed include compute generation, vCore, backup retention period, and backup redundancy options. Changing pricing tier (Basic, General Purpose, or Memory Optimized) or storage size is not supported.
+Podczas przywracania geograficznego konfiguracje serwera, które można zmienić, obejmują generowanie obliczeń, rdzeń wirtualny, okres przechowywania kopii zapasowych i opcje nadmiarowości kopii zapasowych. Zmiana warstwy cenowej (podstawowa, Ogólnego przeznaczenia lub zoptymalizowana pod kątem pamięci) lub rozmiaru magazynu nie jest obsługiwana.
 
-### <a name="perform-post-restore-tasks"></a>Perform post-restore tasks
+### <a name="perform-post-restore-tasks"></a>Wykonywanie zadań po przywróceniu
 
-After a restore from either recovery mechanism, you should perform the following tasks to get your users and applications back up and running:
+Po przywróceniu z dowolnego mechanizmu odzyskiwania należy wykonać następujące zadania, aby uzyskać kopie zapasowe użytkowników i aplikacji:
 
-- If the new server is meant to replace the original server, redirect clients and client applications to the new server
-- Ensure appropriate server-level firewall rules are in place for users to connect
-- Ensure appropriate logins and database level permissions are in place
+- Jeśli nowy serwer ma zastąpić oryginalny serwer, przekierować klientów i aplikacje klienckie na nowy serwer
+- Upewnij się, że istnieją odpowiednie reguły zapory na poziomie serwera dla użytkowników, którzy mają się łączyć
+- Upewnij się, że istnieją odpowiednie identyfikatory logowania i uprawnienia na poziomie bazy danych
 - W razie potrzeby skonfiguruj alerty
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Learn how to restore using [the Azure portal](howto-restore-server-portal.md).
-- Learn how to restore using [the Azure CLI](howto-restore-server-cli.md).
-- To learn more about business continuity, see the [business continuity overview](concepts-business-continuity.md).
+- Dowiedz się, jak przywrócić przy użyciu [Azure Portal](howto-restore-server-portal.md).
+- Dowiedz się, jak przywrócić za pomocą [interfejsu wiersza polecenia platformy Azure](howto-restore-server-cli.md).
+- Aby dowiedzieć się więcej o ciągłości działania, zobacz [Omówienie ciągłości działania firmy](concepts-business-continuity.md).

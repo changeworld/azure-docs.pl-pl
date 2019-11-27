@@ -64,6 +64,6 @@ Aby można było użyć niestandardowego słowa kluczowego, należy utworzyć s�
 
 1. Zapisz plik zip na komputer. Ten plik będzie potrzebny do wdrożenia niestandardowego słowa kluczowego na urządzeniu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przetestuj niestandardowe słowo kluczowe przy użyciu [zestawu Speech Devices SDK szybkiego startu](https://aka.ms/sdsdk-quickstart).

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Load balance VMs across availability zones - Azure portal'
+title: 'Samouczek: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności — Azure Portal'
 titleSuffix: Azure Load Balancer
 description: Ten samouczek przedstawia sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu frontonu strefowo nadmiarowego w celu zrównoważenia obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu witryny Azure Portal
 services: load-balancer
@@ -41,7 +41,7 @@ Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza p
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -54,12 +54,12 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subskrypcja               | Wybierz subskrypcję.    |    
+    | Subscription               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLBAZ* w polu tekstowym.|
     | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Typ          | Wybierz pozycję **Publiczna**.                                        |
-    | JSZ           | Select **Standard**.                          |
+    | SKU           | Wybierz opcję **Standardowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
     |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |

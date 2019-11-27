@@ -1,7 +1,7 @@
 ---
-title: Confidence Score - QnA Maker
+title: Wynik pewności — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: The confidence score indicates the confidence that the answer is the right match for the given user query.
+description: Współczynnik ufności wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,94 +18,94 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229116"
 ---
-# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Confidence score of a QnA Maker knowledge base
-When a user query is matched against a knowledge base, QnA Maker returns relevant answers, along with a confidence score. This score indicates the confidence that the answer is the right match for the given user query. 
+# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Współczynnik ufności z bazy wiedzy usługi QnA Maker
+Jeśli kwerenda użytkownika są dopasowywane do wiedzy, narzędzie QnA Maker zwraca odpowiednich odpowiedzi, wraz z współczynnik ufności. Ten wynik wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika. 
 
-The confidence score is a number between 0 and 100. A score of 100 is likely an exact match, while a score of 0 means, that no matching answer was found. The higher the score- the greater the confidence in the answer. For a given query, there could be multiple answers returned. In that case, the answers are returned in order of decreasing confidence score.
+Współczynnik ufności jest liczbą z zakresu od 0 do 100. Wynikiem 100 prawdopodobnie jest dokładne dopasowanie, podczas gdy wynik 0 oznacza, że, które można odnaleźć pasującego odpowiedzi. Im większy wynik - większą pewnością w odpowiedzi na pytanie. Dla danego zapytania może istnieć wiele odpowiedzi zwrócony. W takim przypadku odpowiedzi są zwracane w kolejności malejących współczynnik ufności.
 
-In the example below, you can see one QnA entity, with 2 questions. 
-
-
-![Sample QnA pair](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
-
-For the above example- you can expect scores like the sample score range below- for different types of user queries:
+W poniższym przykładzie widać jedną jednostkę pytań i odpowiedzi, przy użyciu 2 pytania. 
 
 
-![Ranker score range](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
+![Przykładowy pary pytań i odpowiedzi](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
+
+Powyższe przykładowe-mogą spodziewać się wyniki, takie jak zakres wynik przykładowe poniżej — dla różnych typów kwerend użytkowników:
 
 
-The following table indicates typical confidence associated for a given score.
+![Oceniania zakresu wynik](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
 
-|Score Value|Score Meaning|Example Query|
+
+Poniższa tabela wskazuje typowe ufności skojarzone dla danego wynik.
+
+|Wartość|Co oznacza wynik|Przykładowe zapytanie|
 |--|--|--|
-|90 - 100|A near exact match of user query and a KB question|"My changes aren't updated in KB after publish"|
-|> 70|High confidence - typically a good answer that completely answers the user's query|"I published my KB but it's not updated"|
-|50 - 70|Medium confidence - typically a fairly good answer that should answer the main intent of the user query|"Should I save my updates before I publish my KB?"|
-|30 - 50|Low confidence - typically a related answer, that partially answers the user's intent|" What does the save and train do?"|
-|< 30|Very low confidence - typically does not answer the user's query, but has some matching words or phrases |" Where can I add synonyms to my KB"|
-|0|No match, so the answer is not returned.|"How much does the service cost"|
+|90 - 100|A niemal dokładne dopasowanie użytkownika zapytania i zapytania KB|"Moje zmiany nie są aktualizowane w KB po opublikowaniu"|
+|> 70|O dużej pewności — zwykle prawidłowej odpowiedzi, który całkowicie odpowiada na zapytania użytkownika|"Opublikowany bazę wiedzy, ale nie jest aktualizowany."|
+|50 - 70|Średnie obaw — zwykle stosunkowo dobrej odpowiedź, którą należy odpowiedzieć na głównym celem kwerenda użytkownika|"Należy zapisywać Moje aktualizacje przed mogę opublikować moje bazy wiedzy?"|
+|30 – 50|Niski obaw — zazwyczaj powiązane odpowiedzi, który częściowo odpowiedzi użytkownika intencji|"Czego zapisywanie i pociągu?"|
+|< 30|Bardzo małe obaw — zwykle nie odpowiada na kwerendy użytkownika, ale ma pewne dopasowania słów i fraz |"Gdzie można dodać synonimy do bazę wiedzy"|
+|0|Brak dopasowania, więc nie zostanie zwrócona odpowiedź.|"Ile usługa kosztuje"|
 
-## <a name="choose-a-score-threshold"></a>Choose a score threshold
-The table above shows the scores that are expected on most KBs. However, since every KB is different, and has different types of words, intents, and goals- we recommend you test and choose the threshold that best works for you. By default the threshold is set to 0, so that all possible answers are returned. The recommended threshold that should work for most KBs, is **50**.
+## <a name="choose-a-score-threshold"></a>Wybierz ocenę wartości progowej
+Powyższej tabeli przedstawiono wyniki, które oczekują na większości artykułów bazy wiedzy. Jednak ponieważ każda baza wiedzy różni się od siebie i ma różne typy słów, intencje i cele — zalecamy przetestowanie i wybranie progu, który najlepiej działa. Domyślnie próg jest ustawiany na 0, tak aby wszystkie możliwe odpowiedzi są zwracane. Zalecany próg, który powinien być dla większości artykułów bazy wiedzy, wynosi **50**.
 
-When choosing your threshold, keep in mind the balance between Accuracy and Coverage, and tweak your threshold based on your requirements.
+Wybierając próg, należy pamiętać, równowagę między dokładności i pokrycia i dostosować próg zgodnie z wymaganiami.
 
-- If **Accuracy** (or precision) is more important for your scenario, then increase your threshold. This way, every time you return an answer, it will be a much more CONFIDENT case, and much more likely to be the answer users are looking for. In this case, you might end up leaving more questions unanswered. *For example:* if you make the threshold **70**, you might miss some ambiguous examples likes "what is save and train?".
+- Jeśli **dokładność** (lub precyzja) jest ważniejsze dla danego scenariusza, zwiększ wartość progową. Dzięki temu za każdym razem, aby zwrócić odpowiedź, będzie znacznie więcej CONFIDENT, wielkości i znacznie większe szanse na czy szukasz użytkowników odpowiedzi. W takim przypadku może się to zakończyć opuszczania więcej pytań, bez odpowiedzi. *Na przykład:* Jeśli wprowadzisz próg **70**, możesz pominąć niektóre niejednoznaczne przykłady polubimy "co to jest zapisywanie i uczenie?".
 
-- If **Coverage** (or recall) is more important- and you want to answer as many questions as possible, even if there is only a partial relation to the user's question- then LOWER the threshold. This means there could be more cases where the answer does not answer the user's actual query, but gives some other somewhat related answer. *For example:* if you make the threshold **30**, you might give answers for queries like "Where can I edit my KB?"
+- Jeśli **pokrycie** (lub odwołanie) jest ważniejsze i chcesz odpowiedzieć na tyle, na ile to możliwe, nawet jeśli istnieje tylko część relacji z pytaniem użytkownika, Obniż wartość progu. Oznacza to, że może być więcej przypadków, gdy odpowiedź nie odpowiada na kwerendy rzeczywistego użytkownika, ale zapewnia nieco powiązane odpowiedzi. *Na przykład:* w przypadku progu **30**można udzielić odpowiedzi na zapytania, takie jak "gdzie mogę edytować moją KB?".
 
 > [!NOTE]
-> Newer versions of QnA Maker include improvements to scoring logic, and could affect your threshold. Any time you update the service, make sure to test and tweak the threshold if necessary. You can check your QnA Service version [here](https://www.qnamaker.ai/UserSettings), and see how to get the latest updates [here](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
+> Nowsze wersje usługi QnA Maker obejmują udoskonalenia w zakresie logiki oceniania i mogą mieć wpływ na próg. Ilekroć, zaktualizuj usługę, upewnij się, testowanie i dostosować wartość progową, jeśli to konieczne. W [tym miejscu](https://www.qnamaker.ai/UserSettings)możesz sprawdzić wersję usługi QNA, a także zapoznać się z artykułem jak uzyskać najnowsze aktualizacje w [tym miejscu](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
 
-## <a name="set-threshold"></a>Set threshold 
+## <a name="set-threshold"></a>Ustaw próg 
 
-Set the threshold score as a property of the [GenerateAnswer API JSON body](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). This means you set it for each call to GenerateAnswer. 
+Ustaw ocenę wartości progowej jako właściwość [treści JSON interfejsu API GenerateAnswer](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). Oznacza to, że ustawisz go dla każdego wywołania do GenerateAnswer. 
 
-From the bot framework, set the score as part of the options object with [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) or [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
+W środowisku bot należy ustawić wynik jako część obiektu options z [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) lub [Node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
-## <a name="improve-confidence-scores"></a>Improve confidence scores
-To improve the confidence score of a particular response to a user query, you can add the user query to the knowledge base as an alternate question on that response. You can also use case-insensitive [word alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) to add synonyms to keywords in your KB.
-
-
-## <a name="similar-confidence-scores"></a>Similar confidence scores
-When multiple responses have a similar confidence score, it is likely that the query was too generic and therefore matched with equal likelihood with multiple answers. Try to structure your QnAs better so that every QnA entity has a distinct intent.
+## <a name="improve-confidence-scores"></a>Poprawić wyniki ufności
+Aby poprawić współczynnik ufności z określonej odpowiedzi na zapytanie użytkownika, można dodać zapytania użytkownika do bazy wiedzy knowledge base, jako alternatywnej pytanie na odpowiedź. Można również użyć [zmian wyrazów](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) bez uwzględniania wielkości liter, aby dodać synonimy do słów kluczowych w KB.
 
 
-## <a name="confidence-score-differences-between-test-and-production"></a>Confidence score differences between test and production
-The confidence score of an answer may change negligibly between the test and published version of the knowledge base even if the content is the same. This is because the content of the test and the published knowledge base are located in different Azure Cognitive Search indexes. 
-
-The test index holds all the QnA pairs of your knowledge bases. When querying the test index, the query applies to the entire index then results are restricted to the partition for that specific knowledge base. If the test query results are negatively impacting your ability to validate the knowledge base, you can:
-* organize your knowledge base using one of the following:
-    * 1 resource restricted to 1 KB: restrict your single QnA resource (and the resulting Azure Cognitive Search test index) to a single knowledge base. 
-    * 2 resources - 1 for test, 1 for production: have two QnA Maker resources, using one for testing (with its own test and  production indexes) and one for product (also having its own test and production indexes)
-* and, always use the same parameters, such as **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** when querying both your test and production knowledge base
-
-When you publish a knowledge base, the question and answer contents of your knowledge base moves from the test index to a production index in Azure search. See how the [publish](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) operation works.
-
-If you have a knowledge base in different regions, each region uses its own Azure Cognitive Search index. Because different indexes are used, the scores will not be exactly the same. 
+## <a name="similar-confidence-scores"></a>Podobne wyniki ufności
+Wiele odpowiedzi mają podobne współczynnik ufności, jest prawdopodobne, że zapytanie było zbyt ogólne i w związku z tym dopasowane z równym prawdopodobieństwem przy użyciu wielu odpowiedzi. Spróbuj struktury usługi znacznie lepiej, tak, aby każda jednostka pytań i odpowiedzi ma różne opcje.
 
 
-## <a name="no-match-found"></a>No match found
-When no good match is found by the ranker, the confidence score of 0.0 or "None" is returned and the default response is "No good match found in the KB". You can override this [default response](#change-default-answer) in the bot or application code calling the endpoint. Alternately, you can also set the override response in Azure and this changes the default for all knowledge bases deployed in a particular QnA Maker service.
+## <a name="confidence-score-differences-between-test-and-production"></a>Różnice oceny ufności między testem a produkcją
+Współczynnik ufności odpowiedzi mogą ulec zmianie w nieznaczny między testu i opublikowanej wersji w bazie wiedzy knowledge base, nawet jeśli zawartość jest taka sama. Wynika to z faktu, że zawartość testu i opublikowanej bazy wiedzy znajdują się w różnych indeksach Wyszukiwanie poznawcze platformy Azure. 
 
-## <a name="change-default-answer"></a>Change Default Answer
+Indeks testu zawiera wszystkie pary QnA baz wiedzy. Podczas wykonywania zapytania względem indeksu testowego zapytanie dotyczy całego indeksu, a wyniki są ograniczone do partycji dla tej konkretnej bazy wiedzy. Jeśli wyniki zapytania testowego mają negatywny wpływ na możliwość zweryfikowania bazy wiedzy, możesz:
+* Organizuj bazę wiedzy przy użyciu jednego z następujących elementów:
+    * 1 zasób ograniczono do 1 KB: Ogranicz pojedynczy zasób QnA (oraz otrzymany indeks testu Wyszukiwanie poznawcze platformy Azure) do jednej bazy wiedzy. 
+    * 2 zasoby — 1 dla testu, 1 dla produkcji: mają dwa QnA Maker zasoby, przy użyciu jednej do testowania (z własnymi indeksami testowymi i produkcyjnymi) oraz jeden dla produktu (również ma własne indeksy testowe i produkcyjne)
+* i, zawsze używaj tych samych parametrów, takich jak **[Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** , podczas wysyłania zapytań do bazy wiedzy dotyczącej testów i produkcji
 
-1. Go to the [Azure portal](https://portal.azure.com) and navigate to the resource group that represents the QnA Maker service you created.
+Po opublikowaniu bazy wiedzy zawartość pytania i odpowiedzi bazy wiedzy przechodzi z indeksu testu do indeksu produkcyjnego w usłudze Azure Search. Zobacz, jak działa operacja [publikowania](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) .
 
-2. Click to open the **App Service**.
+Jeśli masz bazę wiedzy w różnych regionach, każdy region używa własnego indeksu Wyszukiwanie poznawcze platformy Azure. Ponieważ są używane różne indeksy, wyniki nie będą dokładnie takie same. 
 
-    ![In the Azure portal, access App service for QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. Click on **Application Settings** and edit the **DefaultAnswer** field to the desired default response. Kliknij przycisk **Save** (Zapisz).
+## <a name="no-match-found"></a>Nie znaleziono dopasowań
+Po znalezieniu niezgodności dobre, oceniania współczynnik ufności 0.0, lub "None" jest zwracany, a odpowiedź domyślną jest "Dobrą niezgodności w w bazie wiedzy". Można zastąpić tę [domyślną odpowiedź](#change-default-answer) w bot lub kod aplikacji wywołujący punkt końcowy. Alternatywnie można również ustawić odpowiedzi zastąpienie na platformie Azure i spowoduje to zmianę domyślnego dla wszystkich baz wiedzy wdrożone w określonej usługi QnA Maker.
 
-    ![Select Application Settings and then edit DefaultAnswer for QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+## <a name="change-default-answer"></a>Zmień domyślny odpowiedzi
 
-4. Restart your App service
+1. Przejdź do [Azure Portal](https://portal.azure.com) i przejdź do grupy zasobów, która reprezentuje utworzoną usługę QNA Maker.
 
-    ![After you change the DefaultAnswer, restart the QnA Maker appservice](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+2. Kliknij, aby otworzyć **App Service**.
+
+    ![W witrynie Azure portal dostęp do usługi App service dotyczące usługi QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+
+3. Kliknij pozycję **Ustawienia aplikacji** i Zmień pole **DefaultAnswer** na żądaną domyślną odpowiedź. Kliknij pozycję **Zapisz**.
+
+    ![Wybierz ustawienia aplikacji, a następnie edytuj DefaultAnswer dotyczące usługi QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+
+4. Uruchom ponownie usługi App service
+
+    ![Po zmianie DefaultAnswer, uruchom ponownie usługi QnA Maker usługi App Service](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Data sources supported](./data-sources-supported.md)
+> [Obsługiwane źródła danych](./data-sources-supported.md)
 

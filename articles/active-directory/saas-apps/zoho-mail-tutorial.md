@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Zoho | Microsoft Docs'
+title: 'Samouczek: integracja Azure Active Directory z usługą Zoho | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Zoho.
 services: active-directory
 documentationCenter: na
@@ -23,7 +23,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231936"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Tutorial: Azure Active Directory integration with Zoho
+# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Samouczek: integracja Azure Active Directory z usługą Zoho
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Zoho z usługą Azure Active Directory (Azure AD).
 Integracja aplikacji Zoho z usługą Azure AD oferuje następujące korzyści:
@@ -70,7 +70,7 @@ Aby skonfigurować integrację aplikacji Zoho z usługą Azure AD, musisz dodać
 
      ![Aplikacja Zoho na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Zoho, korzystając z danych testowego użytkownika **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Zoho.
@@ -92,7 +92,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Zoho, wyko
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Zoho** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -109,11 +109,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Zoho, wyko
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<company name>.zohomail.com`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Zoho](https://www.zoho.com/mail/contact.html), aby uzyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj wartość przy użyciu rzeczywistego adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Zoho](https://www.zoho.com/mail/contact.html), aby uzyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
 6. W sekcji **Skonfiguruj aplikację Zoho** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -123,7 +123,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Zoho, wyko
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-zoho-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Zoho
 
@@ -131,21 +131,21 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Zoho, wyko
 
 2. Przejdź do obszaru **Control panel** (Panel sterowania).
    
-    ![Control Panel](./media/zoho-mail-tutorial/ic789607.png "Control Panel")
+    ![Panel sterowania](./media/zoho-mail-tutorial/ic789607.png "Panel sterowania")
 
 3. Kliknij kartę **SAML Authentication** (Uwierzytelnianie SAML).
    
-    ![SAML Authentication](./media/zoho-mail-tutorial/ic789608.png "SAML Authentication")
+    ![Uwierzytelnianie SAML](./media/zoho-mail-tutorial/ic789608.png "Uwierzytelnianie SAML")
 
 4. W sekcji **SAML Authentication Details** (Szczegóły uwierzytelniania SAML) wykonaj następujące kroki:
    
-    ![SAML Authentication Details](./media/zoho-mail-tutorial/ic789609.png "SAML Authentication Details")
+    ![Szczegóły uwierzytelniania SAML](./media/zoho-mail-tutorial/ic789609.png "Szczegóły uwierzytelniania SAML")
    
     a. W polu tekstowym **Login URL** (Adres URL logowania) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
    
     b. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
    
-    d. W polu tekstowym **Change Password URL** (Adres URL zmiany hasła) wklej wartość **adresu URL zmiany hasła** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **Change Password URL** (Adres URL zmiany hasła) wklej wartość **adresu URL zmiany hasła** skopiowaną z witryny Azure Portal.
        
     d. Otwórz w Notatniku certyfikat zakodowany w formacie Base-64 pobrany z witryny Azure Portal, skopiuj zawartość do Schowka, a następnie wklej ją w polu tekstowym **PublicKey** (Klucz publiczny).
    
@@ -159,24 +159,24 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
 2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -209,9 +209,9 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoho Mail, należy ich aprowizować w aplikacji Zoho Mail. W przypadku aplikacji Zoho Mail aprowizację wykonuje się ręcznie.
 
 > [!NOTE]
-> You can use any other Zoho Mail user account creation tools or APIs provided by Zoho Mail to provision Azure AD user accounts.
+> Do udostępniania kont użytkowników usługi Azure AD można używać innych narzędzi do tworzenia kont użytkowników poczty Zoho lub interfejsów API dostarczonych przez pocztę Zoho.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Aby aprowizować konto użytkownika, wykonaj następujące czynności:
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Aby aprowizować konto użytkownika, wykonaj następujące kroki:
 
 1. Zaloguj się do firmowej witryny usługi **Zoho Mail** jako administrator.
 
@@ -219,17 +219,17 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoho 
 
 1. Przejdź do pozycji **User Details \> Add User** (Szczegóły użytkownika > Dodaj użytkownika).
    
-    ![Add User](./media/zoho-mail-tutorial/ic789611.png "Dodaj użytkownika")
+    ![Dodaj użytkownika](./media/zoho-mail-tutorial/ic789611.png "Dodaj użytkownika")
 
 1. W oknie dialogowym **Add users** (Dodawanie użytkowników) wykonaj następujące kroki:
    
-    ![Add User](./media/zoho-mail-tutorial/ic789612.png "Dodaj użytkownika")
+    ![Dodaj użytkownika](./media/zoho-mail-tutorial/ic789612.png "Dodaj użytkownika")
    
     a. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, takie jak **Britta**.
 
     b. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak **Simon**.
 
-    d. In the **Email ID** textbox, type the email id of user like **brittasimon\@contoso.com**.
+    c. W polu tekstowym **Identyfikator wiadomości e-mail** wpisz identyfikator poczty e-mail użytkownika, np. **brittasimon\@contoso.com**.
 
     d. W polu tekstowym **Password** (Hasło) wprowadź hasło użytkownika.
    
@@ -240,15 +240,15 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoho 
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Zoho w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Zoho, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

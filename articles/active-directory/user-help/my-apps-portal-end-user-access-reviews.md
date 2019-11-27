@@ -1,6 +1,6 @@
 ---
-title: Manage your organization's access to apps & groups - Azure AD
-description: Learn how to perform an access review to manage security access for your organization's apps and groups from the My Apps portal.
+title: Zarządzanie dostępem w organizacji do aplikacji & grup — Azure AD
+description: Dowiedz się, jak przeprowadzić przegląd dostępu w celu zarządzania dostępem do zabezpieczeń dla aplikacji i grup organizacji z poziomu portalu Moje aplikacje.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -20,62 +20,62 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231837"
 ---
-# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Perform an access review from the My Apps portal
+# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Przeprowadzanie przeglądu dostępu z poziomu portalu Moje aplikacje
 
-You can use your work or school account with the web-based **My Apps** portal, to view and start many of your organization’s cloud-based apps, to update some of your profile and account information, to see your **Groups** information, and to perform **access reviews** for your apps and groups. If you don’t have access to the **My Apps** portal, you must contact your Helpdesk for permission.
+Możesz użyć swojego konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby wyświetlać i uruchamiać wiele aplikacji opartych na chmurze w organizacji, aktualizować niektóre informacje o profilu i koncie, wyświetlać informacje o **grupach** i wykonywać  **przeglądy dostępu** do aplikacji i grup. Jeśli nie masz dostępu do portalu **Moje aplikacje** , musisz skontaktować się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. If you're an administrator, you can find more information about how to set up and manage your cloud-based apps in the [Application Management Documentation](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania aplikacjami opartymi na chmurze w [dokumentacji zarządzania aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
-## <a name="manage-access-reviews"></a>Manage access reviews
+## <a name="manage-access-reviews"></a>Zarządzanie recenzjami dostępu
 
-If your administrator has given you permission to perform your own access reviews, you can manage your groups or apps access from the **Access reviews** tile on the **My Apps** portal page.
+Jeśli administrator udzielił Ci uprawnień do wykonywania własnych przeglądów dostępu, możesz zarządzać grupami lub aplikacjami dostępnymi na kafelku **przeglądy dostępu** na stronie portalu **Moje aplikacje** .
 
 >[!Note]
->If you don't see the **Access reviews** tile it either means that you don't have permission to perform access reviews, or that you don't have any pending reviews waiting for your approval. If you think you should have access to the tile, contact your Help desk for assistance.
+>Jeśli nie widzisz kafelka **przeglądy dostępu** , oznacza to, że nie masz uprawnienia do przeprowadzania przeglądów dostępu lub nie masz żadnych oczekujących przeglądów oczekujących na zatwierdzenie. Jeśli uważasz, że masz dostęp do kafelka, skontaktuj się z działem pomocy technicznej w celu uzyskania pomocy.
 
-### <a name="to-perform-your-access-reviews"></a>To perform your access reviews
+### <a name="to-perform-your-access-reviews"></a>Aby przeprowadzić przeglądy dostępu
 
-1. Sign in to your work or school account.
+1. Zaloguj się do konta służbowego.
 
-2. Open your web browser and go to https://myapps.microsoft.com, or use the link provided by your organization. For example, you might be directed to a customized page for your organization, such as https://myapps.microsoft.com/contoso.com.
+2. Otwórz przeglądarkę internetową i przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
 
-    The **Apps** page appears, showing all the cloud-based apps owned by your organization and available for you to use.
+    Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
-    ![Apps page in the My Apps portal](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Strona aplikacje w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
 
-3. Select the **Access reviews** tile to see a list of access reviews waiting for your approval.
+3. Wybierz kafelek **przeglądy dostępu** , aby wyświetlić listę przeglądów dostępu oczekujących na zatwierdzenie.
 
-    ![Access reviews page with pending access reviews for the organization](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
+    ![Strona przeglądy dostępu z oczekującymi przeglądami dostępu dla organizacji](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. Select **Begin review** to start your access review.
+4. Wybierz pozycję **Rozpocznij przegląd** , aby rozpocząć przegląd dostępu.
 
-5. Review your access and determine whether it's still necessary.
+5. Przejrzyj swój dostęp i ustal, czy nadal jest to konieczne.
 
-    ![Access review page, showing the review details](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
+    ![Strona przeglądu dostępu zawierająca szczegóły przeglądu](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >If you're an administrator, and allowed to review your organization's access to groups and apps, you'll see a different page. For more information about reviewing groups or apps for your organization, see [Review access to groups or applications in Azure AD Access Reviews](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Jeśli jesteś administratorem i masz uprawnienia do przeglądania dostępu do grup i aplikacji w organizacji, zobaczysz inną stronę. Aby uzyskać więcej informacji na temat przeglądania grup lub aplikacji w organizacji, zobacz [Przegląd dostępu do grup lub aplikacji w przeglądach dostępu do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
 
-6. Select **Yes** to keep your access or **No** to remove your access.
+6. Wybierz pozycję **tak** , aby zachować dostęp, lub przycisk **nie** , aby usunąć swój dostęp.
 
-    If you select **Yes**, you might need to specify a justification in the **Reason** box.
+    Jeśli wybierzesz opcję **tak**, w polu **Przyczyna** może być konieczne określenie uzasadnienia.
 
-    ![Access review page, showing the Reason box with sample text](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
+    ![Strona przeglądu dostępu pokazująca pole przyczyna z przykładowym tekstem](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
 7. Wybierz pozycję **Prześlij**.
 
-    Your access review is complete and you return to the **My Apps** portal.
+    Przegląd dostępu zostanie zakończony i wrócisz do portalu **My Apps** .
 
     >[!Note]
-    >You can change your access at any time until your access review period ends. If you remove your access to an app or group, it's not removed immediately. The removal happens when the access review period ends or when an administrator closes the review.
+    >Dostęp można zmienić w dowolnym momencie do momentu zakończenia okresu przeglądu dostępu. Jeśli usuniesz swój dostęp do aplikacji lub grupy, nie zostanie on natychmiast usunięty. Usunięcie odbywa się po zakończeniu okresu przeglądu dostępu lub gdy administrator zamknie przegląd.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Access and use apps on the My Apps portal](my-apps-portal-end-user-access.md).
+- [Dostęp do aplikacji i korzystanie z nich w portalu My Apps](my-apps-portal-end-user-access.md).
 
-- [Change your profile information](my-apps-portal-end-user-update-profile.md).
+- [Zmień informacje o profilu](my-apps-portal-end-user-update-profile.md).
 
-- [View and update your groups-related information](my-apps-portal-end-user-groups.md).
+- [Wyświetlanie i aktualizowanie informacji dotyczących grup](my-apps-portal-end-user-groups.md).

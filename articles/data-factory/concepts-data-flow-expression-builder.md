@@ -112,6 +112,6 @@ Jeśli masz nazwy kolumn, które zawierają znaki specjalne lub spacje, umieść
 
 ```{[dbo].this_is my complex name$$$}```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Rozpocznij tworzenie wyrażeń transformacji danych](data-flow-expression-functions.md)

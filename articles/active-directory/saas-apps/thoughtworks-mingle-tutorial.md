@@ -29,7 +29,7 @@ Integracja usługi Thoughtworks Mingle z usługą Azure AD zapewnia następując
 
 * Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Thoughtworks mingle.
 * Możesz umożliwić użytkownikom automatyczne logowanie do Thoughtworks Mingle (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -55,15 +55,15 @@ Aby skonfigurować integrację usługi Thoughtworks Mingle w usłudze Azure AD, 
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Thoughtworks Mingle**, wybierz pozycję **Thoughtworks Mingle** from a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
@@ -76,12 +76,12 @@ Aby logowanie jednokrotne działało, należy ustanowić relację linku między 
 
 Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi Thoughtworks Mingle, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Skonfiguruj logowanie](#configure-thoughtworks-mingle-single-sign-on)** jednokrotne w usłudze Thoughtworks Mingle — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 5. **[Utwórz użytkownika testowego Thoughtworks Mingle](#create-thoughtworks-mingle-test-user)** , aby uzyskać odpowiednik Simon Britta w Thoughtworks Mingle, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -122,7 +122,7 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Thoughtwork
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-thoughtworks-mingle-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze Thoughtworks Mingle
 
@@ -138,29 +138,29 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Thoughtwork
     
     a. Aby przekazać plik metadanych, kliknij pozycję **Wybierz plik**. 
 
-    b. Kliknij przycisk **Zapisz zmiany**.
+    b. Kliknij przycisk **Save Changes** (Zapisz zmiany).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
-2. Wybierz **nowego użytkownika** w górnej części ekranu.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
 3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
     b. W polu **Nazwa użytkownika** wpisz brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
@@ -184,7 +184,7 @@ W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
@@ -218,7 +218,7 @@ Aby użytkownicy usługi Azure AD mogli się zalogować, muszą być obsługiwan
 
     b. W obszarze **Typ użytkownika**wybierz pozycję **pełny użytkownik**.
 
-    d. Kliknij pozycję **Utwórz ten profil**.
+    c. Kliknij pozycję **Utwórz ten profil**.
 
 >[!NOTE]
 >Do aprowizacji kont użytkowników usługi Azure AD można używać innych narzędzi do tworzenia kont użytkowników Thoughtworks Mingle i interfejsów API dostarczonych przez Thoughtworks mingle.
@@ -232,7 +232,7 @@ Po kliknięciu kafelka Thoughtworks Mingle w panelu dostępu należy automatyczn
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

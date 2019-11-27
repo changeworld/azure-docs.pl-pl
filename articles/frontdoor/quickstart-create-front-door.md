@@ -42,10 +42,10 @@ Ten przewodnik Szybki Start wymaga wdrożenia dwóch wystąpień aplikacji inter
      | Nazwa           | Wprowadź unikatową nazwę aplikacji internetowej  |
      | Grupa zasobów          | Wybierz pozycję **Nowa**, a następnie wpisz ciąg *myResourceGroupFD1* |
      | Plan usługi App Service/lokalizacja         | Wybierz pozycję **Nowy**.  W obszarze Plan usługi App Service wprowadź *myAppServicePlanEastUS*, a następnie wybierz pozycję **OK**. 
-     |      Lokalizacja  |   Wschodnie stany USA        |
+     |      Location  |   Wschodnie stany USA        |
     |||
 
-3. Wybierz **tworzenie**.
+3. Wybierz pozycję **Utwórz**.
 4. Po pomyślnym wdrożeniu aplikacji internetowej zostanie utworzona domyślna witryna internetowa.
 5. Powtórz kroki 1–3, aby utworzyć drugą witrynę internetową w innym regionie platformy Azure z następującymi ustawieniami:
 
@@ -54,7 +54,7 @@ Ten przewodnik Szybki Start wymaga wdrożenia dwóch wystąpień aplikacji inter
      | Nazwa           | Wprowadź unikatową nazwę aplikacji internetowej  |
      | Grupa zasobów          | Wybierz pozycję **Nowa**, a następnie wpisz ciąg*myResourceGroupFD2* |
      | Plan usługi App Service/lokalizacja         | Wybierz pozycję **Nowy**.  W obszarze Plan usługi App Service wprowadź *myAppServicePlanWestEurope*, a następnie wybierz pozycję **OK**. 
-     |      Lokalizacja  |   Europa Zachodnia      |
+     |      Location  |   Europa Zachodnia      |
     |||
 
 
@@ -93,5 +93,5 @@ Jeśli chcesz przetestować natychmiastowe globalne działanie trybu failover us
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Gdy grupy zasobów, aplikacje internetowe i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym przewodniku Szybki Start została utworzona usługa Front Door, która pozwala kierować ruch użytkowników do aplikacji internetowych wymagających wysokiej dostępności i maksymalnej wydajności. Aby dowiedzieć się więcej na temat kierowania ruchu, zapoznaj się z [metodami rozsyłania](front-door-routing-methods.md) używanymi przez usługę Front Door.

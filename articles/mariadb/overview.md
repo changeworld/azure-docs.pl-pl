@@ -1,6 +1,6 @@
 ---
 title: Omówienie usługi relacyjnej bazy danych Azure Database for MariaDB
-description: Learn about the Azure Database for MariaDB service, a relational database service in the Microsoft cloud based on the MySQL community edition.
+description: Dowiedz się więcej na temat usługi Azure Database for MariaDB, usługi relacyjnej bazy danych w chmurze firmy Microsoft w oparciu o wersję MySQL Community Edition.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -16,7 +16,7 @@ ms.locfileid: "74484148"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Czym jest usługa Azure Database for MariaDB?
 
-Azure Database for MariaDB to usługa relacyjnej bazy danych w chmurze firmy Microsoft. Azure Database for MariaDB is based on the [MariaDB community edition](https://mariadb.org/download/) (available under the GPLv2 license) database engine, version 10.2 and 10.3.
+Azure Database for MariaDB to usługa relacyjnej bazy danych w chmurze firmy Microsoft. Azure Database for MariaDB jest oparta na [MariaDB Community Edition](https://mariadb.org/download/) (dostępnej w ramach licencji GPLv2), wersja 10,2 i 10,3.
 
 Usługa Azure Database for MariaDB udostępnia następujące funkcje:
 
@@ -53,7 +53,7 @@ Umowa SLA o czołowej w branży dostępności 99,99% dla platformy Azure jest ob
 
 ## <a name="secure-your-data"></a>Zabezpieczanie danych
 
-Usługi baz danych platformy Azure mają tradycje zabezpieczeń danych, które usługa Azure Database for MariaDB podtrzymuje. Usługa Azure Database for MariaDB udostępnia funkcje ograniczania dostępu, ochrony przesyłanych i magazynowanych danych oraz monitorowania aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/trustcenter/security), aby uzyskać informacje o zabezpieczeniach platformy Azure. For more information about Azure Database for MySQL security features, see the [security overview](concepts-security.md).
+Usługi baz danych platformy Azure mają tradycje zabezpieczeń danych, które usługa Azure Database for MariaDB podtrzymuje. Usługa Azure Database for MariaDB udostępnia funkcje ograniczania dostępu, ochrony przesyłanych i magazynowanych danych oraz monitorowania aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/trustcenter/security), aby uzyskać informacje o zabezpieczeniach platformy Azure. Aby uzyskać więcej informacji na temat funkcji zabezpieczeń Azure Database for MySQL, zobacz [Omówienie zabezpieczeń](concepts-security.md).
 
 ## <a name="contacts"></a>Kontakty
 

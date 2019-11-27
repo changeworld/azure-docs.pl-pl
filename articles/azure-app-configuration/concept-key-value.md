@@ -102,7 +102,7 @@ Wartości przypisane do kluczy są również ciągami Unicode. W przypadku warto
 
 Dane konfiguracyjne przechowywane w magazynie konfiguracji aplikacji, w tym wszystkie klucze i wartości, są szyfrowane w czasie spoczynku i podczas przesyłania. Konfiguracja aplikacji nie jest rozwiązaniem zastępczym dla Azure Key Vault. Nie przechowuj w niej wpisów tajnych aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Migawka do punktu w czasie](./concept-point-time-snapshot.md)  
 * [Zarządzanie funkcjami](./concept-feature-management.md)  

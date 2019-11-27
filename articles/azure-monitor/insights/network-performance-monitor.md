@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 943f6cee70367d8a1ff0dc003d06e46b487e3a48
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e194b7070d338e9a5c56e9f0cc913f6e8b20bb52
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898808"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545693"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -38,11 +38,14 @@ Więcej informacji na temat różnych możliwości obsługiwanych przez [Network
 ## <a name="supported-regions"></a>Obsługiwane regiony
 NPM może monitorować łączność między sieciami i aplikacjami w dowolnej części świata, z obszaru roboczego, który jest hostowany w jednym z następujących regionów:
 * Europa Zachodnia
-* Zachodnio-środkowe stany USA
+* Środkowo-zachodnie stany USA
+* Środkowo-północne stany USA
 * Wschodnie stany USA
 * Japonia Wschodnia
-* Azja Południowo-wschodnia
+* Azja Południowo-Wschodnia
 * Australia Południowo-Wschodnia
+* Australia Środkowa
+* Australia Wschodnia
 * Południowe Zjednoczone Królestwo
 * Indie Środkowe
 * Wirginia instytucji rządowych USA
@@ -74,7 +77,7 @@ Network Performance Monitor używa transakcji syntetycznych do monitorowania wyd
 
 * **Protokół TCP**: w przypadku wybrania na potrzeby monitorowania protokołu TCP jako protokołu należy otworzyć port zapory na agentach używanych do Network Performance Monitor i monitor ExpressRoute, aby upewnić się, że agenci mogą się ze sobą łączyć. Aby otworzyć port, uruchom skrypt programu PowerShell [skrypt enablerules. ps1](https://aka.ms/npmpowershellscript) bez żadnych parametrów w oknie programu PowerShell z uprawnieniami administracyjnymi.
 
-    Skrypt tworzy klucze rejestru wymagane przez rozwiązanie. Tworzy także reguły zapory systemu Windows, aby umożliwić agentom tworzenie połączeń TCP ze sobą. Klucze rejestru utworzone przez skrypt określają, czy Dzienniki debugowania i ścieżka pliku dzienników mają być rejestrowane. Skrypt definiuje również port TCP agenta używany do komunikacji. Wartości tych kluczy są automatycznie ustawiane przez skrypt. Nie zmieniaj ręcznie tych kluczy. Port otwarty domyślnie to 8084. Możesz użyć portu niestandardowego, dostarczając parametr numer_portu do skryptu. Użyj tego samego portu na wszystkich komputerach, na których jest uruchomiony skrypt. 
+    Skrypt tworzy klucze rejestru wymagane przez rozwiązanie. Tworzy także reguły zapory systemu Windows, aby umożliwić agentom tworzenie połączeń TCP ze sobą. Klucze rejestru utworzone przez skrypt określają, czy Dzienniki debugowania i ścieżka pliku dzienników mają być rejestrowane. Skrypt definiuje również port TCP agenta używany do komunikacji. Wartości te klucze są automatycznie ustawiane przy użyciu skryptu. Nie zmieniaj ręcznie tych kluczy. Port otwarty domyślnie to 8084. Możesz użyć portu niestandardowego, dostarczając parametr numer_portu do skryptu. Użyj tego samego portu na wszystkich komputerach, na których jest uruchomiony skrypt. 
 
     >[!NOTE]
     > Skrypt konfiguruje tylko zaporę systemu Windows lokalnie. Jeśli masz zaporę sieciową, upewnij się, że zezwala ona na ruch przeznaczony dla portu TCP używanego przez Network Performance Monitor.
@@ -154,7 +157,7 @@ Skonfiguruj odpowiednie możliwości:
 
  
 
-## <a name="data-collection-details"></a>Szczegóły zbierania danych
+## <a name="data-collection-details"></a>Szczegóły dotyczące zbierania danych
 Aby zbierać informacje o utracie i opóźnieniu, Network Performance Monitor używa pakietów uzgadniania TCP SYN-SYNACK-ACK, gdy wybierzesz opcję TCP jako protokół. Network Performance Monitor korzysta z protokołu ICMP ECHO odpowiedzi echa ICMP w przypadku wybrania jako protokołu protokołu ICMP. Marszruta śledzenia jest również używana do uzyskiwania informacji o topologii.
 
 W poniższej tabeli przedstawiono metody zbierania danych oraz inne szczegóły dotyczące sposobu zbierania danych dla Network Performance Monitor.
@@ -172,7 +175,7 @@ Rozwiązanie używa transakcji syntetycznych do oceny kondycji sieci. Log Analyt
 >[!NOTE]
 > Chociaż agenci komunikują się ze sobą często, nie generują znaczącego ruchu sieciowego podczas przeprowadzania testów. Agenci mogą korzystać tylko z pakietów TCP SYN-SYNACK-ACK, aby określić utratę i opóźnienie. Żadne pakiety danych nie są wymieniane. W trakcie tego procesu agenci komunikują się ze sobą tylko w razie konieczności. Topologia komunikacji agentów jest zoptymalizowana pod kątem zmniejszenia ruchu sieciowego.
 
-## <a name="use-the-solution"></a>Korzystanie z rozwiązania 
+## <a name="use-the-solution"></a>Korzystanie z odpowiedniego rozwiązania 
 
 ### <a name="network-performance-monitor-overview-tile"></a>Kafelek przeglądu Network Performance Monitor 
 
@@ -268,7 +271,7 @@ Opłaty za powiadomienia są naliczone osobno zgodnie z [cennikiem za powiadomie
 
 Informacje o cenach są dostępne w [trybie online](network-performance-monitor-pricing-faq.md).
 
-## <a name="provide-feedback"></a>Prześlij opinię 
+## <a name="provide-feedback"></a>Przekazywanie opinii 
 
 * **UserVoice:** Możesz publikować swoje pomysły dotyczące Network Performance Monitor funkcji, nad którymi chcesz, nad którymi pracujemy. Odwiedź [stronę usługi UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 

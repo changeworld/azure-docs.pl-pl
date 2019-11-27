@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the REST API and Python - Bing Video Search'
+title: 'Szybki Start: wyszukiwanie filmów wideo przy użyciu interfejsu API REST i języka Python — wyszukiwanie wideo Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki start, aby wysyłać żądania wyszukiwania wideo do interfejsu API REST wyszukiwania wideo Bing przy użyciu języka Python.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383775"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Quickstart: Search for videos using the Bing Video Search REST API and Python
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Szybki Start: wyszukiwanie filmów wideo przy użyciu interfejsu API REST wyszukiwanie wideo Bing i języka Python
 
 Ten przewodnik Szybki start umożliwia wykonanie pierwszego wywołania interfejsu API wyszukiwania wideo Bing i wyświetlenie wyników wyszukiwania na podstawie odpowiedzi JSON. Ta prosta aplikacja w języku Python wysyła zapytanie HTTP wyszukiwania wideo do interfejsu API i wyświetla odpowiedź. Chociaż ta aplikacja jest napisana w języku Python, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) wraz z dodatkową obsługą błędów i adnotacjami kodu.
 
@@ -193,6 +193,6 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
  [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)

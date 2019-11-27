@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5721879ee78a694c90e607d15f30f99394e49fc
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f757819e16db9908e80c5e7350c082dbf1573677
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183609"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547229"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na zestawie skalowania maszyn wirtualnych przy użyciu wywołań interfejsu API REST
 
@@ -35,7 +35,7 @@ W tym artykule przy użyciu zapełniania w celu wykonywania wywołań do punktu 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-it-work)** .
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 - Aby wykonać operacje zarządzania w tym artykule, Twoje konto musi mieć następujące przypisania kontroli dostępu oparte na rolach na platformie Azure:
 
@@ -92,7 +92,7 @@ Aby utworzyć zestaw skalowania maszyn wirtualnych z włączoną tożsamością 
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -187,7 +187,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system w istniejącym
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -220,7 +220,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system w istniejącym
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. |
  
    **Treść żądania**
@@ -254,7 +254,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system w istniejącym
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -298,7 +298,7 @@ Aby wyłączyć tożsamość przypisaną przez system w istniejącym zestawie sk
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -355,7 +355,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -442,7 +442,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. |
  
    **Treść żądania**
@@ -558,7 +558,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -590,7 +590,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -626,7 +626,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -665,7 +665,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -726,7 +726,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -758,7 +758,7 @@ W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+   |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
    **Treść żądania**
@@ -788,7 +788,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Nagłówek żądania  |Opis  |
 |---------|---------|
-|*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+|*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
 |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
 **Treść żądania**
@@ -815,7 +815,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Nagłówek żądania  |Opis  |
 |---------|---------|
-|*Content-Type*     | Wymagany. Ustaw wartość `application/json`.        |
+|*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
 |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
 
 **Treść żądania**
@@ -828,7 +828,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać informacje na temat tworzenia, wyświetlania lub usuwania tożsamości zarządzanych przez użytkownika przy użyciu usługi REST, zobacz:
 

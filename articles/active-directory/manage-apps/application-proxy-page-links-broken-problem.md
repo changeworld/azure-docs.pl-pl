@@ -47,5 +47,5 @@ Istnieją trzy sposoby rozwiązania tego problemu. Poniższe opcje są wymienion
 3.  Jeśli żadna z tych opcji nie jest osiągalna, istnieje wiele opcji włączania tłumaczenia linków wbudowanych. Te opcje obejmują korzystanie z rozszerzenia Intune Managed Browser, moje aplikacje lub z użyciem ustawienia tłumaczenia linku w aplikacji. Aby dowiedzieć się więcej o każdej z tych opcji i sposobach ich włączania, zobacz [redirect stałe links for Apps opublikowanych za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="next-steps"></a>Następne kroki
-[Praca z istniejących serwerów proxy w środowisku lokalnym](application-proxy-configure-connectors-with-proxy-servers.md)
+[Współdziałanie z istniejącymi lokalnymi serwerami proxy](application-proxy-configure-connectors-with-proxy-servers.md)
 

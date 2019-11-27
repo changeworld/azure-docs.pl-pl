@@ -26,9 +26,9 @@ Aby uruchomić funkcję niewyzwalaną przez protokół HTTP, potrzebujesz sposob
 
 ![Definiowanie lokalizacji żądania: nazwa hosta + ścieżka folderu + nazwa funkcji](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **Host name:** The function app's public location that is made up from the function app's name plus *azurewebsites.net* or your custom domain.
-- **Folder path:** To access non HTTP-triggered functions via an HTTP request, you have to send the request through the folders *admin/functions*.
-- **Function name:** The name of the function you want to run.
+- **Nazwa hosta:** Publiczna lokalizacja aplikacji funkcji, która składa się z nazwy aplikacji funkcji i *azurewebsites.NET* lub domeny niestandardowej.
+- **Ścieżka folderu:** Aby uzyskać dostęp do funkcji wyzwalanych przez protokół HTTP za pośrednictwem żądania HTTP, należy wysłać żądanie za pośrednictwem folderu *admin/Functions*.
+- **Nazwa funkcji:** Nazwa funkcji, która ma zostać uruchomiona.
 
 Ta lokalizacja żądania w narzędziu Postman wraz z kluczem głównym funkcji w żądaniu do platformy Azure służą do uruchamiania funkcji.
 
@@ -41,7 +41,7 @@ Przejdź do funkcji w witrynie Azure Portal, kliknij pozycję **Zarządzaj** i z
 
 ![Kopiowanie klucza głównego z ekranu Zarządzanie funkcjami](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-Po skopiowaniu klucza głównego kliknij nazwę funkcji, aby wrócić do okna pliku kodu. Next, click on the **Logs** tab. You'll see messages from the function logged here when you manually run the function from Postman.
+Po skopiowaniu klucza głównego kliknij nazwę funkcji, aby wrócić do okna pliku kodu. Następnie kliknij kartę **dzienniki** . W przypadku ręcznego uruchomienia funkcji z poziomu programu post zostaną wyświetlone komunikaty z funkcji zarejestrowanej w tym miejscu.
 
 > [!CAUTION]  
 > Ze względu na podwyższony poziom uprawnień w aplikacji funkcji przyznany przez klucz główny nie należy udostępniać tego klucza osobom trzecim ani rozpowszechniać go w aplikacji.

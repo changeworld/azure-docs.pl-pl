@@ -1,6 +1,6 @@
 ---
-title: Create, list & delete user-assigned managed identity using Azure PowerShell - Azure AD
-description: Step by step instructions on how to create, list and delete user-assigned managed identity using Azure PowerShell.
+title: Tworzenie, lista & Usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu usługi Azure PowerShell — Azure AD
+description: Instrukcje krok po kroku dotyczące tworzenia, wyświetlania i usuwania tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,70 +15,70 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3c4005643de55720864da1e87d8bea82b21749c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c512a867685b4480c7b31ac582e2cee069ee2447
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232252"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547402"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Create, list or delete a user-assigned managed identity using Azure PowerShell
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Tworzenie, wyświetlanie i usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Managed identities for Azure resources provides Azure services with a managed identity in Azure Active Directory. You can use this identity to authenticate to services that support Azure AD authentication, without needing credentials in your code. 
+Zarządzane tożsamości dla zasobów platformy Azure zapewniają usługi platformy Azure z zarządzaną tożsamością w Azure Active Directory. Ta tożsamość służy do uwierzytelniania w usługach, które obsługują uwierzytelnianie usługi Azure AD, bez konieczności podania poświadczeń w kodzie. 
 
-In this article, you learn how to create, list and delete a user-assigned managed identity using Azure PowerShell.
+Ten artykuł zawiera informacje na temat tworzenia, wyświetlania i usuwania tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
-- Install [the latest version of Azure PowerShell](/powershell/azure/install-az-ps) if you haven't already.
+- Zainstaluj [najnowszą wersję programu Azure PowerShell](/powershell/azure/install-az-ps) , jeśli jeszcze tego nie zrobiono.
 - Jeśli używasz programu PowerShell lokalnie, wykonaj również te czynności: 
     - Uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenia z platformą Azure.
     - Zainstaluj [najnowszą wersję modułu PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
     - Uruchom polecenie `Install-Module -Name PowerShellGet -AllowPrerelease`, aby pobrać wersję wstępną modułu `PowerShellGet` (po uruchomieniu tego polecenia może być konieczne uruchomienie polecenia `Exit` umożliwiającego zakończenie bieżącej sesji programu PowerShell w celu zainstalowania modułu `Az.ManagedServiceIdentity`).
-    - Run `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` to install the prerelease version of the `Az.ManagedServiceIdentity` module to perform the user-assigned managed identity operations in this article.
+    - Uruchom `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease`, aby zainstalować wersję wstępną modułu `Az.ManagedServiceIdentity` w celu wykonania operacji zarządzanych tożsamości przypisanych przez użytkownika w tym artykule.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Tworzenie tożsamości zarządzanej przypisanej przez użytkownika
 
-To create a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Do utworzenia tożsamości zarządzanej przypisanej przez użytkownika konto wymaga przypisania roli [współautor zarządzanej tożsamości](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-To create a user-assigned managed identity, use the `New-AzUserAssignedIdentity` command. The `ResourceGroupName` parameter specifies the resource group where to create the user-assigned managed identity, and the `-Name` parameter specifies its name. Replace the `<RESOURCE GROUP>` and `<USER ASSIGNED IDENTITY NAME>` parameter values with your own values:
+Aby utworzyć tożsamość zarządzaną przypisaną przez użytkownika, użyj polecenia `New-AzUserAssignedIdentity`. `ResourceGroupName` parametr określa grupę zasobów, w której ma zostać utworzona tożsamość zarządzana przypisana przez użytkownika, a parametr `-Name` określa jego nazwę. Zastąp wartości parametrów `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` własnymi wartościami:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurepowershell-interactive
 New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
-## <a name="list-user-assigned-managed-identities"></a>List user-assigned managed identities
+## <a name="list-user-assigned-managed-identities"></a>Wyświetlanie tożsamości zarządzanych przypisanych przez użytkownika
 
-To list/read a user-assigned managed identity, your account needs the [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) or [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Aby wyświetlić/odczytać tożsamość zarządzaną przypisaną przez użytkownika, Twoje konto wymaga [operatora zarządzanej tożsamości](/azure/role-based-access-control/built-in-roles#managed-identity-operator) lub przypisania roli [współautor zarządzanej tożsamości](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-To list user-assigned managed identities, use the [Get-AzUserAssigned] command.  The `-ResourceGroupName` parameter specifies the resource group where the user-assigned managed identity was created. Replace the `<RESOURCE GROUP>` with your own value:
+Aby wyświetlić tożsamości zarządzane przypisane przez użytkownika, użyj polecenia [Get-AzUserAssigned].  `-ResourceGroupName` parametr określa grupę zasobów, w której utworzono tożsamość zarządzaną przez użytkownika. Zastąp `<RESOURCE GROUP>` własną wartością:
 
 ```azurepowershell-interactive
 Get-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
 ```
-In the response, user-assigned managed identities have `"Microsoft.ManagedIdentity/userAssignedIdentities"` value returned for key, `Type`.
+W odpowiedzi tożsamość zarządzana przypisana przez użytkownika ma `"Microsoft.ManagedIdentity/userAssignedIdentities"` wartość zwracana dla klucza, `Type`.
 
 `Type :Microsoft.ManagedIdentity/userAssignedIdentities`
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Delete a user-assigned managed identity
+## <a name="delete-a-user-assigned-managed-identity"></a>Usuwanie tożsamości zarządzanej przypisanej przez użytkownika
 
-To delete a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Aby usunąć tożsamość zarządzaną przypisaną przez użytkownika, Twoje konto wymaga przypisania roli [współautor zarządzanej tożsamości](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-To delete a user-assigned managed identity, use the `Remove-AzUserAssignedIdentity` command.  The `-ResourceGroupName` parameter specifies the resource group where the user-assigned identity was created and the `-Name` parameter specifies its name. Replace the `<RESOURCE GROUP>` and the `<USER ASSIGNED IDENTITY NAME>` parameters values with your own values:
+Aby usunąć tożsamość zarządzaną przypisaną przez użytkownika, użyj polecenia `Remove-AzUserAssignedIdentity`.  `-ResourceGroupName` parametr określa grupę zasobów, w której utworzono tożsamość przypisaną przez użytkownika, a parametr `-Name` określa jego nazwę. Zastąp wartości `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` parametrów własnymi wartościami:
 
  ```azurepowershell-interactive
 Remove-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
 > [!NOTE]
-> Deleting a user-assigned managed identity will not remove the reference, from any resource it was assigned to. Identity assignments need to be removed separately.
+> Usunięcie tożsamości zarządzanej przypisanej przez użytkownika nie spowoduje usunięcia odwołania z dowolnego zasobu, do którego została przypisana. Przypisania tożsamości muszą zostać usunięte osobno.
 
 ## <a name="next-steps"></a>Następne kroki
 
-For a full list and more details of the Azure PowerShell managed identities for Azure resources commands, see [Az.ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity).
+Aby uzyskać pełną listę i więcej szczegółów Azure PowerShell zarządzanych tożsamości dla zasobów platformy Azure, zobacz [AZ. ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity).

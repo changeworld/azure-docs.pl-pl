@@ -122,6 +122,6 @@ Aby można było zainstalować maszynę wirtualną problemu, maszyna wirtualna m
 3.  [Zastąp dysk systemu operacyjnego używany przez maszynę wirtualną za pomocą naprawionego dysku systemu operacyjnego](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
 ).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli masz problemy z nawiązywaniem połączenia z maszyną wirtualną, zobacz [Rozwiązywanie problemów z połączeniami RDP z maszyną wirtualną platformy Azure](troubleshoot-rdp-connection.md). Problemy dotyczące uzyskiwania dostępu do aplikacji uruchomionych na maszynie wirtualnej można znaleźć [w temacie Rozwiązywanie problemów z łącznością aplikacji na maszynie wirtualnej z systemem Windows](troubleshoot-app-connection.md).

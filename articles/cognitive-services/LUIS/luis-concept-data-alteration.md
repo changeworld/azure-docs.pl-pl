@@ -1,7 +1,7 @@
 ---
-title: Data alteration - LUIS
+title: Zmiana danych — LUIS
 titleSuffix: Azure Cognitive Services
-description: Learn how data can be changed before predictions in Language Understanding (LUIS)
+description: Dowiedz się, jak można zmienić danych przed prognozy w Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,15 +18,15 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74222020"
 ---
-# <a name="alter-utterance-data-before-or-during-prediction"></a>Alter utterance data before or during prediction
-LUIS provides ways to manipulate the utterance before or during the prediction. These include [fixing spelling](luis-tutorial-bing-spellcheck.md), and fixing timezone issues for prebuilt [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
+# <a name="alter-utterance-data-before-or-during-prediction"></a>Instrukcja ALTER wypowiedź danych przed lub w trakcie prognoz
+Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. Obejmują one [naprawianie błędów](luis-tutorial-bing-spellcheck.md)i rozwiązywanie problemów ze strefą czasową dla prekompilowanego [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
 
-## <a name="correct-spelling-errors-in-utterance"></a>Correct spelling errors in utterance
+## <a name="correct-spelling-errors-in-utterance"></a>W poprawianiu błędów pisowni w polu wypowiedź
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 
-LUIS uses [Bing Spell Check API V7](../Bing-Spell-Check/overview.md) to correct spelling errors in the utterance. LUIS needs the key associated with that service. Create the key, then add the key as a querystring parameter at the [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356). 
+LUIS [Sprawdzanie pisowni Bing używa interfejsu API wersji 7](../Bing-Spell-Check/overview.md) do poprawiania błędów pisowni w wypowiedź. Usługa LUIS musi mieć klucz skojarzony z tą usługą. Utwórz klucz, a następnie Dodaj klucz jako parametr QueryString w [punkcie końcowym](https://go.microsoft.com/fwlink/?linkid=2092356). 
 
 <!--
 You can also correct spelling errors in the **Test** panel by [entering the key](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key is kept as a session variable in the browser for the Test panel. Add the key to the Test panel in each browser session you want spelling corrected. 
@@ -35,16 +35,16 @@ Usage of the key in the test panel and at the endpoint count toward the [key usa
 
 -->
 
-The endpoint requires two params for spelling corrections to work:
+Punkt końcowy wymaga dwóch parametrów dla korekty pisowni pracę:
 
 |Param|Wartość|
 |--|--|
 |`spellCheck`|wartość logiczna|
-|`bing-spell-check-subscription-key`|[Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) endpoint key|
+|`bing-spell-check-subscription-key`|Klucz punktu końcowego [wersji 7 interfejsu API sprawdzanie pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/)|
 
-When [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) detects an error, the original utterance, and the corrected utterance are returned along with predictions from the endpoint.
+Gdy [Sprawdzanie pisowni Bing API wersji 7](https://azure.microsoft.com/services/cognitive-services/spell-check/) wykrywa błąd, oryginalny wypowiedź i poprawione wypowiedź są zwracane wraz z przewidywaniami z punktu końcowego.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 prediction endpoint response](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
 ```JSON
 {
@@ -58,7 +58,7 @@ When [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-se
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 prediction endpoint response](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
  
 ```JSON
 {
@@ -78,48 +78,48 @@ When [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-se
 
 * * * 
 
-### <a name="list-of-allowed-words"></a>List of allowed words
-The Bing spell check API used in LUIS does not support a list of words to ignore during the spell check alterations. If you need to allow a list of words or acronyms, process the utterance in the client application before sending the utterance to LUIS for intent prediction.
+### <a name="list-of-allowed-words"></a>Lista dozwolonych wyrazów
+Interfejs API sprawdzania pisowni Bing używany w programie LUIS nie obsługuje listy wyrazów ignorowanych podczas sprawdzania pisowni. Jeśli musisz zezwolić na listę wyrazów lub akronimów, przetwórz wypowiedź w aplikacji klienckiej przed wysłaniem wypowiedź do LUIS w celu przewidywania założeń.
 
-## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Change time zone of prebuilt datetimeV2 entity
-When a LUIS app uses the prebuilt [datetimeV2](luis-reference-prebuilt-datetimev2.md) entity, a datetime value can be returned in the prediction response. The timezone of the request is used to determine the correct datetime to return. If the request is coming from a bot or another centralized application before getting to LUIS, correct the timezone LUIS uses. 
+## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Zmień strefę czasową datetimeV2 wstępnie utworzone jednostki
+Gdy aplikacja LUIS używa wstępnie skompilowanej jednostki [datetimeV2](luis-reference-prebuilt-datetimev2.md) , w odpowiedzi predykcyjnej można zwrócić wartość typu DateTime. Strefa czasowa żądania jest używany do określenia poprawną datę i godzinę do zwrócenia. Jeśli żądanie pochodzi z robota lub innej aplikacji scentralizowane przed przejściem do usługi LUIS, popraw strefy czasowej, których używa usługi LUIS. 
 
-### <a name="endpoint-querystring-parameter"></a>Endpoint querystring parameter
-The timezone is corrected by adding the user's timezone to the [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) using the `timezoneOffset` param. The value of `timezoneOffset` should be the positive or negative number, in minutes, to alter the time.  
+### <a name="endpoint-querystring-parameter"></a>Parametr querystring punktu końcowego
+Strefa czasowa jest korygowana przez dodanie strefy czasowej użytkownika do [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) przy użyciu `timezoneOffset` PARAM. Wartość `timezoneOffset` powinna być liczbą dodatnią lub ujemną w minutach, aby zmienić czas.  
 
 |Param|Wartość|
 |--|--|
-|`timezoneOffset`|positive or negative number, in minutes|
+|`timezoneOffset`|liczba dodatnia lub ujemna, w ciągu kilku minut|
 
-### <a name="daylight-savings-example"></a>Daylight savings example
-If you need the returned prebuilt datetimeV2 to adjust for daylight savings time, you should use the `timezoneOffset` querystring parameter with a +/- value in minutes for the [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) query.
+### <a name="daylight-savings-example"></a>Przykład oszczędność czasu letniego
+Jeśli potrzebujesz dostosowanej wstępnie skompilowanej datetimeV2 w celu dostosowania do czasu letniego, należy użyć parametru `timezoneOffset` QueryString z wartością +/-w minutach dla kwerendy [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) .
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 prediction endpoint request](#tab/V2)
+#### <a name="v2-prediction-endpoint-requesttabv2"></a>[Żądanie punktu końcowego przewidywania wersji 2](#tab/V2)
 
-Add 60 minutes: 
+Dodaj 60 minut: 
 
-https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+https://{region}. API. poznawcze. Microsoft. com/Luis/v 2.0/Apps/{appId}? q = włączaj światła? **timezoneOffset = 60**& verbose = {boolean} & sprawdzania pisowni = {boolean} & przejściowe = {boolean} & Bing-pisownia-Check-Subscription-Key = {string} & log = {Boolean}
 
-Remove 60 minutes: 
+Usuń 60 minut: 
 
-https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+https://{region}. API. poznawcze. Microsoft. com/Luis/v 2.0/Apps/{appId}? q = włączaj światła? **timezoneOffset =-60**& verbose = {boolean} & sprawdzanie = {boolean} & przejściowe = {boolean} & Bing-pisownia-Check-Subscription-Key = {string} & log = {Boolean}
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 prediction endpoint request](#tab/V3)
+#### <a name="v3-prediction-endpoint-requesttabv3"></a>[Żądanie punktu końcowego przewidywania v3](#tab/V3)
 
-Add 60 minutes:
+Dodaj 60 minut:
 
-https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+https://{region}. API. poznawcze. Microsoft. com/Luis/v 3.0 — wersja zapoznawcza/aplikacje/{appId}/gniazda/produkcja/przewidywanie? zapytanie = Włącz kontrolki? **timezoneOffset = 60**& sprawdzania pisowni = {boolean} & Bing-pisownia-Check-Subscription-Key = {string} & log = {Boolean}
 
-Remove 60 minutes: 
+Usuń 60 minut: 
 
-https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+https://{region}. API. poznawcze. Microsoft. com/Luis/v 3.0 — wersja zapoznawcza/aplikacje/{appId}/gniazda/produkcja/przewidywanie? zapytanie = Włącz kontrolki? **timezoneOffset =-60**& sprawdzania pisowni = {boolean} & Bing-pisownia-Check-Subscription-Key = {string} & log = {Boolean}
 
-Learn more about the [V3 prediction endpoint](luis-migration-api-v3.md).
+Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
 
 * * * 
 
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C# code determines correct value of timezoneOffset
-The following C# code uses the [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) class's [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) method to determine the correct `timezoneOffset` based on system time:
+## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>Kod C# określa poprawnej wartości timezoneOffset
+Poniższy C# kod używa metody [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) klasy [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) w celu określenia poprawnej `timezoneOffset` w oparciu o czas systemowy:
 
 ```CSharp
 // Get CST zone id
@@ -138,4 +138,4 @@ int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Correct spelling mistakes with this tutorial](luis-tutorial-bing-spellcheck.md)
+> [Popraw błędy pisowni w tym samouczku](luis-tutorial-bing-spellcheck.md)

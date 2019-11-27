@@ -116,7 +116,7 @@ Aby wykonać poniższe kroki, musisz pracować na utworzonej wcześniej maszynie
    Hello world! :)
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób włączania przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Azure Storage.  Aby dowiedzieć się więcej o usłudze Azure Storage, zobacz:
 

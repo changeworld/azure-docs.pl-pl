@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8660d5539d9cfc218667bc7bb077f9f6d1191eec
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e24c97909870c4d76b07ec837e5f624a509bd1f2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184135"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547288"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Przypisać z tożsamości zarządzanej dostępu do tego zasobu za pomocą witryny Azure portal
 
@@ -30,25 +30,25 @@ Po skonfigurowaniu zasobu platformy Azure za pomocą tożsamości zarządzanej, 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-it-work)** .
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Przypisywanie dostępu tożsamości zarządzanej do innego zasobu przy użyciu kontroli RBAC
 
-Po włączeniu tożsamości zarządzanej w obrębie zasobu platformy Azure, takich jak [maszyny Wirtualnej platformy Azure](qs-configure-portal-windows-vm.md) lub [Azure VMSS](qs-configure-portal-windows-vmss.md):
+Po włączeniu tożsamości zarządzanej w zasobie platformy Azure, na przykład na [maszynie wirtualnej platformy Azure](qs-configure-portal-windows-vm.md) lub w [usłudze Azure VMSS](qs-configure-portal-windows-vmss.md):
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, w którym skonfigurowano tożsamość zarządzaną.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, w ramach której skonfigurowano tożsamość zarządzaną.
 
 2. Przejdź do żądanego zasobu, na którym chcesz zmodyfikować kontroli dostępu. W tym przykładzie udostępniamy możliwość dostępu do maszyny wirtualnej platformy Azure na koncie magazynu, dzięki czemu możemy przejdź do konta magazynu.
 
-3. Wybierz **kontrola dostępu (IAM)** strony zasobu i wybierz **+ Dodaj przypisanie roli**. Następnie określ **roli**, **Przypisz dostęp do**, a następnie określ odpowiedni **subskrypcji**. W obszarze kryteria wyszukiwania powinna być widoczna zasobu. Wybierz zasób, a następnie wybierz pozycję **Zapisz**. 
+3. Wybierz stronę **Kontrola dostępu (IAM)** zasobu, a następnie wybierz pozycję **+ Dodaj przypisanie roli**. Następnie określ **rolę**, **Przypisz dostęp do**i określ odpowiednią **subskrypcję**. W obszarze kryteria wyszukiwania powinna być widoczna zasobu. Wybierz zasób, a następnie wybierz pozycję **Zapisz**. 
 
    ![Zrzut ekranu (IAM) kontroli dostępu](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Tożsamość zarządzaną dla zasobów platformy Azure — omówienie](overview.md)
-- Aby włączyć tożsamość zarządzana na maszynie wirtualnej platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md).
-- Aby włączyć tożsamość zarządzaną w zestawie skalowania maszyn wirtualnych platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej zestawu skalowania przy użyciu witryny Azure portal](qs-configure-portal-windows-vmss.md).
+- [Tożsamość zarządzana dla zasobów platformy Azure — omówienie](overview.md)
+- Aby włączyć zarządzaną tożsamość na maszynie wirtualnej platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej przy użyciu Azure Portal](qs-configure-portal-windows-vm.md).
+- Aby włączyć zarządzaną tożsamość w zestawie skalowania maszyn wirtualnych platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure w zestawie skalowania maszyn wirtualnych przy użyciu Azure Portal](qs-configure-portal-windows-vmss.md).
 
 

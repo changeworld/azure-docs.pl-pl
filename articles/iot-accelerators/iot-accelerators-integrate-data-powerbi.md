@@ -98,7 +98,7 @@ Po pomyślnym utworzeniu pulpitów nawigacyjnych zalecamy [opublikowanie pulpit�
 
 Należy również [odświeżyć dane](https://docs.microsoft.com/power-bi/refresh-data) na opublikowanym pulpicie nawigacyjnym, aby upewnić się, że masz najnowszy zestaw danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób wizualizacji danych monitorowania zdalnego przy użyciu Power BI
 

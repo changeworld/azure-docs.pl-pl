@@ -1,6 +1,6 @@
 ---
-title: Locking down App Service Environment outbound traffic - Azure
-description: Describes how to integrate with Azure Firewall to secure outbound traffic
+title: Blokowanie ruchu wychodzącego App Service Environment na platformie Azure
+description: Opisuje sposób integrowania z zaporą platformy Azure w celu zabezpieczenia ruchu wychodzącego
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -20,120 +20,120 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405657"
 ---
-# <a name="locking-down-an-app-service-environment"></a>Locking down an App Service Environment
+# <a name="locking-down-an-app-service-environment"></a>Blokowanie App Service Environment
 
-The App Service Environment (ASE) has a number of external dependencies that it requires access to in order to function properly. The ASE lives in the customer Azure Virtual Network (VNet). Customers must allow the ASE dependency traffic, which is a problem for customers that want to lock down all egress from their VNet.
+App Service Environment (ASE) ma wiele zależności zewnętrznych wymaganych do poprawnego działania programu. Środowisko ASE działa w usłudze Azure Virtual Network (VNet). Klienci muszą zezwolić na ruch zależności środowiska ASE, który jest problemem dla klientów, którzy chcą zablokować wszystkie dane wyjściowe z sieci wirtualnej.
 
-There are a number of inbound dependencies that an ASE has. The inbound management traffic cannot be sent through a firewall device. The source addresses for this traffic are known and are published in the [App Service Environment management addresses](https://docs.microsoft.com/azure/app-service/environment/management-addresses) document. You can create Network Security Group rules with that information to secure inbound traffic.
+Istnieje wiele zależności przychodzących, które ma środowisko ASE. Ruch przychodzący zarządzania nie może być wysyłany przez urządzenie zapory. Adresy źródłowe dla tego ruchu są znane i są publikowane w dokumencie [App Service Environment Management addresss](https://docs.microsoft.com/azure/app-service/environment/management-addresses) . Można utworzyć reguły sieciowej grupy zabezpieczeń z tymi informacjami, aby zabezpieczyć ruch przychodzący.
 
-The ASE outbound dependencies are almost entirely defined with FQDNs, which do not have static addresses behind them. The lack of static addresses means that Network Security Groups (NSGs) cannot be used to lock down the outbound traffic from an ASE. The addresses change often enough that one cannot set up rules based on the current resolution and use that to create NSGs. 
+Zależności wychodzące środowiska ASE są prawie całkowicie zdefiniowane przy użyciu nazw FQDN, które nie zawierają adresów statycznych. Brak adresów statycznych oznacza, że sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) nie mogą być używane do blokowania ruchu wychodzącego z środowiska ASE. Adresy zmieniają się często, ponieważ nie można skonfigurować reguł na podstawie bieżącej rozdzielczości i użyć jej do utworzenia sieciowych grup zabezpieczeń. 
 
-The solution to securing outbound addresses lies in use of a firewall device that can control outbound traffic based on domain names. Azure Firewall can restrict outbound HTTP and HTTPS traffic based on the FQDN of the destination.  
+Rozwiązanie służące do zabezpieczania adresów wychodzących polega na użyciu urządzenia zapory, które może kontrolować ruch wychodzący na podstawie nazw domen. Zapora platformy Azure może ograniczyć wychodzący ruch HTTP i HTTPS na podstawie nazwy FQDN lokalizacji docelowej.  
 
 > [!NOTE]
-> At this moment, we can't fully lockdown the outbound connection currently.
+> Obecnie nie można w pełni zablokadć połączenia wychodzącego.
 
-## <a name="system-architecture"></a>System architecture
+## <a name="system-architecture"></a>Architektura systemu
 
-Deploying an ASE with outbound traffic going through a firewall device requires changing routes on the ASE subnet. Routes operate at an IP level. If you are not careful in defining your routes, you can force TCP reply traffic to source from another address. When your reply address is different from the address traffic was sent to, the problem is called asymmetric routing and it will break TCP.
+Wdrożenie środowiska ASE z ruchem wychodzącym przez urządzenie zapory wymaga zmiany tras w podsieci środowiska ASE. Trasy działają na poziomie IP. Jeśli nie masz ostrożnej definiowania tras, możesz wymusić ruch odpowiedzi protokołu TCP do źródła z innego adresu. Jeśli adres odpowiedzi różni się od adresu, do którego został wysłany ruch, problem jest nazywany routingiem asymetrycznym i spowoduje przerwanie protokołu TCP.
 
-There must be routes defined so that inbound traffic to the ASE can reply back the same way the traffic came in. Routes must be defined for inbound management requests and for inbound application requests.
+Muszą istnieć trasy zdefiniowane, aby ruch przychodzący do środowiska ASE mógł oddzwonić tak samo jak w przypadku ruchu. Trasy muszą być zdefiniowane dla przychodzących żądań zarządzania i żądań aplikacji przychodzących.
 
-The traffic to and from an ASE must abide by the following conventions
+Ruch do i ze środowiska ASE musi przestrzegać następujących konwencji
 
-* The traffic to Azure SQL, Storage, and Event Hub are not supported with use of a firewall device. This traffic must be sent directly to those services. The way to make that happen is to configure service endpoints for those three services. 
-* Route table rules must be defined that send inbound management traffic back from where it came.
-* Route table rules must be defined that send inbound application traffic back from where it came. 
-* All other traffic leaving the ASE can be sent to your firewall device with a route table rule.
+* Ruch do usługi Azure SQL, magazynu i centrum zdarzeń nie jest obsługiwany przy użyciu urządzenia zapory. Ten ruch musi być bezpośrednio skierowany do tych usług. W takim przypadku należy skonfigurować punkty końcowe usługi dla tych trzech usług. 
+* Należy zdefiniować reguły tabeli tras, które wysyłają ruch przychodzący zarządzania z powrotem z miejsca, w którym został on odebrany.
+* Należy zdefiniować reguły tabeli tras, które wysyłają ruch przychodzący aplikacji z powrotem z lokalizacji, w której został on odebrany. 
+* Cały ruch wychodzący ze środowiska ASE można wysłać do urządzenia zapory za pomocą reguły tabeli tras.
 
-![ASE with Azure Firewall connection flow][5]
+![Przepływ połączenia środowiska ASE z zaporą platformy Azure][5]
 
-## <a name="configuring-azure-firewall-with-your-ase"></a>Configuring Azure Firewall with your ASE 
+## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurowanie zapory platformy Azure przy użyciu środowiska ASE 
 
-The steps to lock down egress from your existing ASE with Azure Firewall are:
+Kroki umożliwiające zablokowanie ruchu wychodzącego z istniejącego środowiska ASE przy użyciu zapory platformy Azure są następujące:
 
-1. Enable service endpoints to SQL, Storage, and Event Hub on your ASE subnet. To enable service endpoints, go into the networking portal > subnets and select Microsoft.EventHub, Microsoft.SQL and Microsoft.Storage from the Service endpoints dropdown. When you have service endpoints enabled to Azure SQL, any Azure SQL dependencies that your apps have must be configured with service endpoints as well. 
+1. Włącz punkty końcowe usługi do serwera SQL, magazynu i centrum zdarzeń w podsieci środowiska ASE. Aby włączyć punkty końcowe usługi, przejdź do portalu sieci > podsieci i wybierz pozycję Microsoft. EventHub, Microsoft. SQL i Microsoft. Storage z listy rozwijanej punkty końcowe usługi. Jeśli punkty końcowe usługi są włączone w usłudze Azure SQL, wszelkie zależności usługi Azure SQL, które są używane przez aplikacje, muszą być również skonfigurowane za pomocą punktów końcowych usługi. 
 
-   ![select service endpoints][2]
+   ![Wybierz punkty końcowe usługi][2]
   
-1. Create a subnet named AzureFirewallSubnet in the VNet where your ASE exists. Follow the directions in the [Azure Firewall documentation](https://docs.microsoft.com/azure/firewall/) to create your Azure Firewall.
-1. From the Azure Firewall UI > Rules > Application rule collection, select Add application rule collection. Provide a name, priority, and set Allow. In the FQDN tags section, provide a name, set the source addresses to * and select the App Service Environment FQDN Tag and the Windows Update. 
+1. Utwórz podsieć o nazwie AzureFirewallSubnet w sieci wirtualnej, w której znajduje się środowisko ASE. Postępuj zgodnie z instrukcjami w [dokumentacji zapory platformy Azure](https://docs.microsoft.com/azure/firewall/) , aby utworzyć zaporę platformy Azure.
+1. Z poziomu interfejsu użytkownika zapory platformy Azure > reguł > Kolekcja reguł aplikacji wybierz pozycję Dodaj kolekcję reguł aplikacji. Podaj nazwę, priorytet i ustaw wartość Zezwalaj. W sekcji Tagi FQDN Podaj nazwę, ustaw adresy źródłowe na * i wybierz tag App Service Environment FQDN i Windows Update. 
    
-   ![Add application rule][1]
+   ![Dodawanie reguły aplikacji][1]
    
-1. From the Azure Firewall UI > Rules > Network rule collection, select Add network rule collection. Provide a name, priority, and set Allow. In the Rules section, provide a name, select **Any**, set * to Source and Destination addresses, and set the ports to 123. This rule allows the system to perform clock sync using NTP. Create another rule the same way to port 12000 to help triage any system issues.
+1. Z poziomu interfejsu użytkownika zapory platformy Azure > reguł > kolekcji reguł sieciowych wybierz pozycję Dodaj kolekcję reguł sieci. Podaj nazwę, priorytet i ustaw wartość Zezwalaj. W sekcji reguły Podaj nazwę, wybierz opcję **wszystkie**, ustaw * na adres źródłowy i docelowy, a następnie ustaw porty na 123. Ta reguła umożliwia systemowi wykonywanie synchronizacji zegara przy użyciu protokołu NTP. Utwórz inną regułę w taki sam sposób, jak w przypadku portu 12000, aby pomóc w Klasyfikacja wszelkich problemów z systemem.
 
-   ![Add NTP network rule][3]
+   ![Dodaj regułę sieci NTP][3]
 
-1. Create a route table with the management addresses from [App Service Environment management addresses]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) with a next hop of Internet. The route table entries are required to avoid asymmetric routing problems. Add routes for the IP address dependencies noted below in the IP address dependencies with a next hop of Internet. Add a Virtual Appliance route to your route table for 0.0.0.0/0 with the next hop being your Azure Firewall private IP address. 
+1. Utwórz tabelę tras z adresami zarządzania [App Service Environment adresami zarządzania]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) z następnym przeskokiem Internetu. Wpisy tabeli tras są wymagane do uniknięcia problemów z routingiem asymetrycznym. Dodaj trasy dla zależności adresów IP zanotowanych poniżej w zależności od adresu IP z następnym przeskokiem Internetu. Dodaj trasę urządzenia wirtualnego do tabeli tras dla 0.0.0.0/0 przy następnym przeskoku do prywatnego adresu IP zapory platformy Azure. 
 
-   ![Creating a route table][4]
+   ![Tworzenie tabeli tras][4]
    
-1. Assign the route table you created to your ASE subnet.
+1. Przypisz utworzoną tabelę tras do podsieci środowiska ASE.
 
-#### <a name="deploying-your-ase-behind-a-firewall"></a>Deploying your ASE behind a firewall
+#### <a name="deploying-your-ase-behind-a-firewall"></a>Wdrażanie środowiska ASE za zaporą
 
-The steps to deploy your ASE behind a firewall are the same as configuring your existing ASE with an Azure Firewall except you will need to create your ASE subnet and then follow the previous steps. To create your ASE in a pre-existing subnet, you need to use a Resource Manager template as described in the document on [Creating your ASE with a Resource Manager template](https://docs.microsoft.com/azure/app-service/environment/create-from-template).
+Kroki umożliwiające wdrożenie środowiska ASE za zaporą są takie same jak w przypadku konfigurowania istniejącego środowiska ASE przy użyciu zapory platformy Azure, z wyjątkiem sytuacji, w której konieczne będzie utworzenie podsieci środowiska ASE, a następnie wykonanie powyższych kroków. Aby utworzyć środowisko ASE w istniejącej podsieci, należy użyć szablonu Menedżer zasobów, zgodnie z opisem w dokumencie dotyczącym [tworzenia środowiska ASE z szablonem Menedżer zasobów](https://docs.microsoft.com/azure/app-service/environment/create-from-template).
 
-## <a name="application-traffic"></a>Application traffic 
+## <a name="application-traffic"></a>Ruch aplikacji 
 
-The above steps will allow your ASE to operate without problems. You still need to configure things to accommodate your application needs. There are two problems for applications in an ASE that is configured with Azure Firewall.  
+Powyższe kroki pozwolą, aby środowisko ASE mogło działać bez problemów. Nadal musisz skonfigurować elementy, aby sprostać wymaganiom Twojej aplikacji. Istnieją dwa problemy dla aplikacji w środowisku ASE skonfigurowanym za pomocą zapory platformy Azure.  
 
-- Application dependencies must be added to the Azure Firewall or the route table. 
-- Routes must be created for the application traffic to avoid asymmetric routing issues
+- Zależności aplikacji należy dodać do zapory platformy Azure lub tabeli tras. 
+- Trasy muszą zostać utworzone dla ruchu aplikacji, aby uniknąć problemów z routingiem asymetrycznym
 
-If your applications have dependencies, they need to be added to your Azure Firewall. Create Application rules to allow HTTP/HTTPS traffic and Network rules for everything else. 
+Jeśli aplikacje mają zależności, należy je dodać do zapory platformy Azure. Utwórz reguły aplikacji, aby umożliwić ruch HTTP/HTTPS i reguły sieciowe dla wszystkich innych elementów. 
 
-If you know the address range that your application request traffic will come from, you can add that to the route table that is assigned to your ASE subnet. If the address range is large or unspecified, then you can use a network appliance like the Application Gateway to give you one address to add to your route table. For details on configuring an Application Gateway with your ILB ASE, read [Integrating your ILB ASE with an Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
+Jeśli wiesz, z jakim zakresem adresów będzie pochodzą ruch żądania aplikacji, możesz dodać go do tabeli tras przypisanej do podsieci środowiska ASE. Jeśli zakres adresów jest duży lub nieokreślony, możesz użyć urządzenia sieciowego, takiego jak Application Gateway, aby podać jeden adres do dodania do tabeli tras. Aby uzyskać szczegółowe informacje na temat konfigurowania Application Gateway przy użyciu środowiska ILB ASE, przeczytaj artykuł [integrowanie ILB ASE z Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
 
-This use of the Application Gateway is just one example of how to configure your system. If you did follow this path, then you would need to add a route to the ASE subnet route table so the reply traffic sent to the Application Gateway would go there directly. 
+To użycie Application Gateway to tylko jeden przykład konfiguracji systemu. Jeśli ta ścieżka była zgodna, należy dodać trasę do tabeli tras podsieci ASE, aby ruch odpowiedzi wysłany do Application Gateway mógł bezpośrednio przejść do sieci. 
 
 ## <a name="logging"></a>Rejestrowanie 
 
-Azure Firewall can send logs to Azure Storage, Event Hub, or Azure Monitor logs. To integrate your app with any supported destination, go to the Azure Firewall portal > Diagnostic Logs and enable the logs for your desired destination. If you integrate with Azure Monitor logs, then you can see logging for any traffic sent to Azure Firewall. To see the traffic that is being denied, open your Log Analytics workspace portal > Logs and enter a query like 
+Zapora platformy Azure może wysyłać dzienniki do usługi Azure Storage, centrum zdarzeń lub dzienników Azure Monitor. Aby zintegrować aplikację z dowolnym obsługiwanym miejscem docelowym, przejdź do portalu zapory platformy Azure > dzienników diagnostycznych i Włącz dzienniki dla żądanego miejsca docelowego. W przypadku integracji z dziennikami Azure Monitor można zobaczyć rejestrowanie dowolnego ruchu wysyłanego do zapory platformy Azure. Aby zobaczyć, że ruch jest zabroniony, Otwórz Log Analytics Portal obszaru roboczego > Dzienniki i wprowadź zapytanie, takie jak 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Integrating your Azure Firewall with Azure Monitor logs is useful when first getting an application working when you are not aware of all of the application dependencies. You can learn more about Azure Monitor logs from [Analyze log data in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Integrowanie zapory platformy Azure z dziennikami Azure Monitor jest przydatne podczas pierwszego uruchamiania aplikacji, gdy nie są znane wszystkie zależności aplikacji. Więcej informacji na temat dzienników Azure Monitor można znaleźć [w temacie Analizowanie danych dzienników w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
  
 ## <a name="dependencies"></a>Zależności
 
-The following information is only required if you wish to configure a firewall appliance other than Azure Firewall. 
+Poniższe informacje są wymagane tylko wtedy, gdy chcesz skonfigurować urządzenie zapory inne niż Zapora platformy Azure. 
 
-- Service Endpoint capable services should be configured with service endpoints.
-- IP Address dependencies are for non-HTTP/S traffic (both TCP and UDP traffic)
-- FQDN HTTP/HTTPS endpoints can be placed in your firewall device.
-- Wildcard HTTP/HTTPS endpoints are dependencies that can vary with your ASE based on a number of qualifiers. 
-- Linux dependencies are only a concern if you are deploying Linux apps into your ASE. If you are not deploying Linux apps into your ASE, then these addresses do not need to be added to your firewall. 
+- Usługi obsługujące punkt końcowy usługi należy skonfigurować za pomocą punktów końcowych usługi.
+- Zależności adresów IP są związane z ruchem innym niż HTTP/S (ruch TCP i UDP)
+- Punkty końcowe HTTP/HTTPS w nazwie FQDN można umieścić na urządzeniu zapory.
+- Symbole wieloznaczne protokołu HTTP/HTTPS są zależnościami, które mogą być różne dla środowiska ASE w oparciu o wiele kwalifikatorów. 
+- Zależności systemu Linux są uwzględniane tylko w sytuacji, gdy wdrażasz aplikacje Linux w środowisku ASE. Jeśli nie wdrażasz aplikacji systemu Linux w środowisku ASE, te adresy nie muszą być dodawane do zapory. 
 
-#### <a name="service-endpoint-capable-dependencies"></a>Service Endpoint capable dependencies 
+#### <a name="service-endpoint-capable-dependencies"></a>Zależności obsługujące punkt końcowy usługi 
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
 | Azure SQL |
 | Azure Storage |
 | Azure Event Hub |
 
-#### <a name="ip-address-dependencies"></a>IP Address dependencies
+#### <a name="ip-address-dependencies"></a>Zależności adresów IP
 
-| Punkt końcowy | Szczegóły |
+| Endpoint | Szczegóły |
 |----------| ----- |
-| \*:123 | NTP clock check. Traffic is checked at multiple endpoints on port 123 |
-| \*:12000 | This port is used for some system monitoring. If blocked, then some issues will be harder to triage but your ASE will continue to operate |
-| 40.77.24.27:80 | Needed to monitor and alert on ASE problems |
-| 40.77.24.27:443 | Needed to monitor and alert on ASE problems |
-| 13.90.249.229:80 | Needed to monitor and alert on ASE problems |
-| 13.90.249.229:443 | Needed to monitor and alert on ASE problems |
-| 104.45.230.69:80 | Needed to monitor and alert on ASE problems |
-| 104.45.230.69:443 | Needed to monitor and alert on ASE problems |
-| 13.82.184.151:80 | Needed to monitor and alert on ASE problems |
-| 13.82.184.151:443 | Needed to monitor and alert on ASE problems |
+| \*: 123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na porcie 123 |
+| \*: 12000 | Ten port jest używany w przypadku niektórych monitorowania systemu. W przypadku zablokowania niektóre problemy będą trudniejsze do klasyfikacja, ale środowisko ASE będzie nadal działać |
+| 40.77.24.27:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 40.77.24.27:443 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 13.90.249.229:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 13.90.249.229:443 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 104.45.230.69:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 104.45.230.69:443 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 13.82.184.151:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 13.82.184.151:443 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
 
-With an Azure Firewall, you automatically get everything below configured with the FQDN tags. 
+Za pomocą zapory platformy Azure automatycznie otrzymujesz wszystko skonfigurowane przy użyciu tagów FQDN. 
 
-#### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS dependencies 
+#### <a name="fqdn-httphttps-dependencies"></a>Zależności HTTP/HTTPS w nazwie FQDN 
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
 |graph.windows.net:443 |
 |login.live.com:443 |
@@ -212,19 +212,19 @@ With an Azure Firewall, you automatically get everything below configured with t
 |gmstorageprodsn1.table.core.windows.net:443 |
 |rteventservice.trafficmanager.net:443 |
 
-#### <a name="wildcard-httphttps-dependencies"></a>Wildcard HTTP/HTTPS dependencies 
+#### <a name="wildcard-httphttps-dependencies"></a>Wieloznaczne zależności HTTP/HTTPS 
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
-|gr-Prod-\*.cloudapp.net:443 |
-| \*.management.azure.com:443 |
-| \*.update.microsoft.com:443 |
-| \*.windowsupdate.microsoft.com:443 |
-| \*.identity.azure.net:443 |
+|gr-prod-\*. cloudapp.net:443 |
+| \*. management.azure.com:443 |
+| \*. update.microsoft.com:443 |
+| \*. windowsupdate.microsoft.com:443 |
+| \*. identity.azure.net:443 |
 
-#### <a name="linux-dependencies"></a>Linux dependencies 
+#### <a name="linux-dependencies"></a>Zależności systemu Linux 
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
@@ -235,7 +235,7 @@ With an Azure Firewall, you automatically get everything below configured with t
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
-| \*.cdn.mscr.io:443 |
+| \*. cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
@@ -252,15 +252,15 @@ With an Azure Firewall, you automatically get everything below configured with t
 |40.76.35.62:11371 |
 |104.215.95.108:11371 |
 
-## <a name="us-gov-dependencies"></a>US Gov dependencies
+## <a name="us-gov-dependencies"></a>US Gov zależności
 
-For US Gov you still need to set service endpoints for Storage, SQL and Event Hub.  You can also use Azure Firewall with the instructions earlier in this document. If you need to use your own egress firewall device, the endpoints are listed below.
+W przypadku US Gov nadal trzeba ustawić punkty końcowe usługi dla magazynu, SQL i centrum zdarzeń.  Możesz również użyć zapory platformy Azure z instrukcjami znajdującymi się we wcześniejszej części tego dokumentu. Jeśli musisz użyć własnego urządzenia zapory dla ruchu wychodzącego, punkty końcowe są wymienione poniżej.
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
-| \*.ctldl.windowsupdate.com:80 |
-| \*.management.usgovcloudapi.net:80 |
-| \*.update.microsoft.com:80 |
+| \*. ctldl.windowsupdate.com:80 |
+| \*. management.usgovcloudapi.net:80 |
+| \*. update.microsoft.com:80 |
 |admin.core.usgovcloudapi.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
@@ -303,9 +303,9 @@ For US Gov you still need to set service endpoints for Storage, SQL and Event Hu
 |management.usgovcloudapi.net:80 |
 |maupdateaccountff.blob.core.usgovcloudapi.net:80 |
 |mscrl.microsoft.com
-|ocsp.digicert.0 |
+|OCSP. DigiCert. 0 |
 |ocsp.msocsp.co|
-|ocsp.verisign.0 |
+|OCSP. VeriSign. 0 |
 |rteventse.trafficmanager.net:80 |
 |settings-n.data.microsoft.com:80 |
 |shavamafestcdnprod1.azureedge.net:80 |
@@ -317,8 +317,8 @@ For US Gov you still need to set service endpoints for Storage, SQL and Event Hu
 |www.msftconnecttest.com:80 |
 |www.thawte.com:80 |
 |\*ctldl.windowsupdate.com:443 |
-|\*.management.usgovcloudapi.net:443 |
-|\*.update.microsoft.com:443 |
+|\*. management.usgovcloudapi.net:443 |
+|\*. update.microsoft.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
 |azperfmerges.blob.core.windows.net:443 |

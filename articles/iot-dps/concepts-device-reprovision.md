@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service - Device concepts
-description: Describes device reprovisioning concepts for the Azure IoT Hub Device Provisioning Service
+title: Azure IoT Hub Device Provisioning Service — koncepcje dotyczące urządzeń
+description: Opis pojęć dotyczących ponownego inicjowania obsługi administracyjnej urządzeń dla IoT Hub Device Provisioning Service platformy Azure
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -14,79 +14,79 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228841"
 ---
-# <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device reprovisioning concepts
+# <a name="iot-hub-device-reprovisioning-concepts"></a>Pojęcia dotyczące ponownego inicjowania obsługi administracyjnej urządzenia IoT Hub
 
-During the lifecycle of an IoT solution, it's common to move devices between IoT hubs. The reasons for this move may include the following scenarios:
+W trakcie cyklu życia rozwiązania IoT typowe jest przenoszenie urządzeń między centrami IoT. Przyczyny tego przeniesienia mogą obejmować następujące scenariusze:
 
-* **Geolocation / GeoLatency**: As a device moves between locations, network latency is improved by having the device migrated to a closer IoT hub.
+* **Geolokalizacja/geoopóźnienie**: w miarę przemieszczania się urządzenia między lokalizacjami opóźnienie sieci jest zwiększane, ponieważ urządzenie jest migrowane do bliższego Centrum IoT Hub.
 
-* **Multi-tenancy**: A device may be used within the same IoT solution and reassigned to a new customer, or customer site. This new customer may be serviced using a different IoT hub.
+* **Wielodostępność**: urządzenie może być używane w ramach tego samego rozwiązania IoT i ponownie przypisane do nowego klienta lub do lokacji klienta. Ten nowy klient może być serwisowany przy użyciu innego Centrum IoT Hub.
 
-* **Solution change**: A device could be moved into a new or updated IoT solution. This reassignment may require the device to communicate with a new IoT hub that's connected to other back-end components.
+* **Zmiana rozwiązania**: urządzenie można przenieść do nowego lub zaktualizowanego rozwiązania IoT. To ponowne przypisanie może wymagać, aby urządzenie komunikuje się z nowym centrum IoT, które jest połączone z innymi składnikami zaplecza.
 
-* **Quarantine**: Similar to a solution change. A device that's malfunctioning, compromised, or out-of-date may be reassigned to an IoT hub that can only update and get back in compliance. Once the device is functioning properly, it's then migrated back to its main hub.
+* **Kwarantanna**: podobnie jak w przypadku zmiany rozwiązania. Urządzenie, które jest nieprawidłowo, naruszone lub nieaktualne, może zostać ponownie przypisane do centrum IoT Hub, które może być aktualizowane i przywracane tylko w celu zapewnienia zgodności. Po poprawnym działaniu urządzenie zostanie zmigrowane z powrotem do głównego centrum.
 
-Reprovisioning support within the Device Provisioning Service addresses these needs. Devices can be automatically reassigned to new IoT hubs based on the reprovisioning policy that's configured on the device's enrollment entry.
+Ponowne Inicjowanie obsługi administracyjnej w ramach usługi Device Provisioning rozwiązuje te wymagania. Urządzenia można automatycznie przypisywać do nowych centrów IoT na podstawie zasad ponownego aprowizacji skonfigurowanych we wpisie rejestracji urządzenia.
 
-## <a name="device-state-data"></a>Device state data
+## <a name="device-state-data"></a>Dane stanu urządzenia
 
-Device state data is composed of the [device twin](../iot-hub/iot-hub-devguide-device-twins.md) and device capabilities. This data is stored in the Device Provisioning Service instance and the IoT hub that a device is assigned to.
+Dane stanu urządzenia [składają się z urządzeń i urządzeń](../iot-hub/iot-hub-devguide-device-twins.md) . Te dane są przechowywane w wystąpieniu usługi Device Provisioning i centrum IoT, do którego urządzenie jest przypisane.
 
-![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Inicjowanie obsługi administracyjnej przy użyciu usługi Device Provisioning](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
-When a device is initially provisioned with a Device Provisioning Service instance, the following steps are done:
+Po wstępnym aprowizacji urządzenia za pomocą wystąpienia usługi Device Provisioning należy wykonać następujące czynności:
 
-1. The device sends a provisioning request to a Device Provisioning Service instance. The service instance authenticates the device identity based on an enrollment entry, and creates the initial configuration of the device state data. The service instance assigns the device to an IoT hub based on the enrollment configuration and returns that IoT hub assignment to the device.
+1. Urządzenie wysyła żądanie aprowizacji do wystąpienia usługi Device Provisioning. Wystąpienie usługi uwierzytelnia tożsamość urządzenia na podstawie wpisu rejestracji i tworzy początkową konfigurację danych stanu urządzenia. Wystąpienie usługi przypisuje urządzenie do centrum IoT Hub na podstawie konfiguracji rejestracji i zwraca przypisanie usługi IoT Hub do urządzenia.
 
-2. The provisioning service instance gives a copy of any initial device state data to the assigned IoT hub. The device connects to the assigned IoT hub and begins operations.
+2. Wystąpienie usługi aprowizacji zawiera kopię wszystkich początkowych danych stanu urządzenia do przypisanego Centrum IoT. Urządzenie nawiązuje połączenie z przypisanym Centrum IoT Hub i rozpoczyna operacje.
 
-Over time, the device state data on the IoT hub may be updated by [device operations](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) and [back-end operations](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). The initial device state information stored in the Device Provisioning Service instance stays untouched. This untouched device state data is the initial configuration.
+W miarę upływu czasu dane stanu urządzenia w usłudze IoT Hub mogą być aktualizowane przez [operacje urządzenia](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) i [operacje zaplecza](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). Początkowe informacje o stanie urządzenia przechowywane w wystąpieniu usługi Device Provisioning nie zostały naruszone. To nienaruszone dane stanu urządzenia to początkowa konfiguracja.
 
-![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
+![Inicjowanie obsługi administracyjnej przy użyciu usługi Device Provisioning](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
 
-Depending on the scenario, as a device moves between IoT hubs, it may also be necessary to migrate device state updated on the previous IoT hub over to the new IoT hub. This migration is supported by reprovisioning policies in the Device Provisioning Service.
+W zależności od tego, jak urządzenie przechodzi między centrami IoT, może być również konieczne przeprowadzenie migracji stanu urządzenia z poprzedniego Centrum IoT Hub do nowego centrum IoT Hub. Ta migracja jest obsługiwana przez ponowne inicjowanie zasad w usłudze Device Provisioning.
 
-## <a name="reprovisioning-policies"></a>Reprovisioning policies
+## <a name="reprovisioning-policies"></a>Zasady ponownego inicjowania obsługi administracyjnej
 
-Depending on the scenario, a device usually sends a request to a provisioning service instance on reboot. It also supports a method to manually trigger provisioning on demand. The reprovisioning policy on an enrollment entry determines how the device provisioning service instance handles these provisioning requests. The policy also determines whether device state data should be migrated during reprovisioning. The same policies are available for individual enrollments and enrollment groups:
+W zależności od scenariusza urządzenie zazwyczaj wysyła żądanie do wystąpienia usługi aprowizacji przy ponownym uruchomieniu. Obsługuje ona również metodę ręcznego wyzwalania aprowizacji na żądanie. Zasady ponownego inicjowania obsługi wpisu rejestracji określają, jak wystąpienie usługi Device Provisioning Service obsługuje te żądania aprowizacji. Zasady określają również, czy dane stanu urządzenia mają być migrowane podczas ponownego inicjowania obsługi administracyjnej. Te same zasady są dostępne dla poszczególnych rejestracji i grup rejestracji:
 
-* **Re-provision and migrate data**: This policy is the default for new enrollment entries. This policy takes action when devices associated with the enrollment entry submit a new request (1). Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. The updated device state information from that initial IoT hub will be migrated over to the new IoT hub (2). During migration, the device's status will be reported as **Assigning**.
+* **Ponowne Inicjowanie obsługi administracyjnej i Migrowanie danych**: te zasady są domyślne dla nowych wpisów rejestracji. Te zasady podejmują akcję, gdy urządzenia skojarzone z wpisem rejestracji przesyłają nowe żądanie (1). W zależności od konfiguracji wpisu rejestracji urządzenie może zostać ponownie przypisane do innego Centrum IoT Hub. Jeśli urządzenie zmienia centra IoT, Rejestracja urządzenia z początkowym Centrum IoT Hub zostanie usunięta. Zaktualizowane informacje o stanie urządzenia z tego początkowej usługi IoT Hub zostaną zmigrowane do nowego centrum IoT Hub (2). Podczas migracji stan urządzenia będzie raportowany jako **przypisanie**.
 
-    ![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Inicjowanie obsługi administracyjnej przy użyciu usługi Device Provisioning](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **Re-provision and reset to initial config**: This policy takes action when devices associated with the enrollment entry submit a new provisioning request (1). Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. The initial configuration data that the provisioning service instance received when the device was provisioned is provided to the new IoT hub (2). During migration, the device's status will be reported as **Assigning**.
+* **Ponownie Zainicjuj obsługę administracyjną i Zresetuj do konfiguracji początkowej**: te zasady podejmują akcję, gdy urządzenia skojarzone z wpisem rejestracji prześlą nowe żądanie aprowizacji (1). W zależności od konfiguracji wpisu rejestracji urządzenie może zostać ponownie przypisane do innego Centrum IoT Hub. Jeśli urządzenie zmienia centra IoT, Rejestracja urządzenia z początkowym Centrum IoT Hub zostanie usunięta. Początkowe dane konfiguracji, które otrzymały wystąpienie usługi aprowizacji po przyłączeniu urządzenia do nowego centrum IoT Hub (2). Podczas migracji stan urządzenia będzie raportowany jako **przypisanie**.
 
-    This policy is often used for a factory reset without changing IoT hubs.
+    Te zasady są często używane do resetowania do ustawień fabrycznych bez zmiany centrów IoT.
 
-    ![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Inicjowanie obsługi administracyjnej przy użyciu usługi Device Provisioning](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Never re-provision**: The device is never reassigned to a different hub. This policy is provided for managing backwards compatibility.
+* **Nigdy nie należy ponownie**udostępniać: urządzenie nigdy nie jest przypisywane do innego centrum. Te zasady zapewniają zarządzanie zgodnością z poprzednimi wersjami.
 
-### <a name="managing-backwards-compatibility"></a>Managing backwards compatibility
+### <a name="managing-backwards-compatibility"></a>Zarządzanie zgodnością z poprzednimi wersjami
 
-Before September 2018, device assignments to IoT hubs had a sticky behavior. When a device went back through the provisioning process, it would only be assigned back to the same IoT hub.
+Przed 2018 września, przydziały urządzeń do centrów IoT mają zachowanie podczas działania. Gdy urządzenie przeszedł z powrotem przez proces aprowizacji, zostanie ono przypisane z powrotem do tego samego centrum IoT.
 
-For solutions that have taken a dependency on this behavior, the provisioning service includes backwards compatibility. This behavior is presently maintained for devices according to the following criteria:
+W przypadku rozwiązań, które miały zależność od tego zachowania, usługa aprowizacji obejmuje zgodność z poprzednimi wersjami. To zachowanie jest obecnie obsługiwane w przypadku urządzeń zgodnie z następującymi kryteriami:
 
-1. The devices connect with an API version before the availability of native reprovisioning support in the Device Provisioning Service. Refer to the API table below.
+1. Urządzenia łączą się z wersją interfejsu API przed udostępnieniem natywnej obsługi administracyjnej w usłudze Device Provisioning. Zapoznaj się z poniższą tabelą interfejsu API.
 
-2. The enrollment entry for the devices doesn't have a reprovisioning policy set on them.
+2. Wpis rejestracji dla urządzeń nie ma ustawionych zasad ponownego inicjowania obsługi administracyjnej.
 
-This compatibility makes sure that previously deployed devices experience the same behavior that's present during initial testing. To preserve the previous behavior, don't save a reprovisioning policy to these enrollments. If a reprovisioning policy is set, the reprovisioning policy takes precedence over the behavior. By allowing the reprovisioning policy to take precedence, customers can update device behavior without having to reimage the device.
+Ta zgodność gwarantuje, że wcześniej wdrożone urządzenia mają takie samo zachowanie, jakie jest obecne podczas wstępnego testowania. Aby zachować poprzednie zachowanie, nie należy zapisywać zasad ponownego aprowizacji dla tych rejestracji. W przypadku ustawienia zasad ponownego inicjowania obsługi administracyjnej zasady ponownego aprowizacji mają pierwszeństwo przed zachowaniem. Dzięki umożliwieniu zasad ponownego inicjowania obsługi administracyjnej klienci mogą aktualizować zachowanie urządzeń bez konieczności ponownego obrazu urządzenia.
 
-The following flow chart helps to show when the behavior is present:
+Poniższy wykres przepływu ułatwia pokazanie, kiedy zachowanie jest obecne:
 
-![backwards compatibility flow chart](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
+![Wykres przepływu zgodności z poprzednimi wersjami](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
 
-The following table shows the API versions before the availability of native reprovisioning support in the Device Provisioning Service:
+W poniższej tabeli przedstawiono wersje interfejsu API przed udostępnieniem natywnej obsługi ponownego aprowizacji w usłudze Device Provisioning:
 
-| Interfejs API REST | C SDK | Zestaw SDK dla języka Python |  Zestaw SDK dla języka Node | Zestaw Java SDK | Zestaw SDK dla platformy .NET |
+| Interfejs API REST | ZESTAW SDK JĘZYKA C | Zestaw SDK dla języka Python |  Zestaw SDK dla języka Node | Zestaw SDK Java | Zestaw SDK .NET |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
-| [2018-04-01 and earlier](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 and earlier](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 and earlier](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 or earlier](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 or earlier](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 or earlier](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
+| [2018-04-01 i starsze](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 i starsze](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 i starsze](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 lub wcześniejszy](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 lub starszy](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 lub starszy](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 
 > [!NOTE]
-> These values and links are likely to change. This is only a placeholder attempt to determine where the versions can be determined by a customer and what the expected versions will be.
+> Te wartości i linki mogą ulec zmianie. Jest to tylko symbol zastępczy próbujący określić, gdzie wersje mogą być określone przez klienta i jakie są oczekiwane wersje.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [How to reprovision devices](how-to-reprovision.md)
+* [Jak ponownie zainicjować obsługę urządzeń](how-to-reprovision.md)

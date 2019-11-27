@@ -1,6 +1,6 @@
 ---
-title: Use Azure Storage Explorer with Azure Data Lake Storage Gen2
-description: Learn how to use Azure Storage Explorer to create a file system in an Azure Data Lake Storage Gen2 account, as well as a directory and a file. Następnie dowiesz się, jak pobrać plik na komputer lokalny i jak wyświetlać widok wszystkich plików w katalogu.
+title: Użyj Eksplorator usługi Azure Storage z Azure Data Lake Storage Gen2
+description: Dowiedz się, jak za pomocą Eksplorator usługi Azure Storage utworzyć system plików na koncie Azure Data Lake Storage Gen2, a także katalogu i pliku. Następnie dowiesz się, jak pobrać plik na komputer lokalny i jak wyświetlać widok wszystkich plików w katalogu.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,9 +15,9 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484469"
 ---
-# <a name="use-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Use Azure Storage Explorer with Azure Data Lake Storage Gen2
+# <a name="use-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Użyj Eksplorator usługi Azure Storage z Azure Data Lake Storage Gen2
 
-In this article, you'll learn how to use [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) to create a directory and a blob. Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać wszystkie obiekty blob w katalogu. Dowiesz się również, jak utworzyć migawkę obiektu blob, zarządzać zasadami dostępu do katalogu i utworzyć sygnaturę dostępu współdzielonego.
+W tym artykule dowiesz się, jak za pomocą [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) utworzyć katalog i obiekt BLOB. Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać wszystkie obiekty blob w katalogu. Dowiesz się również, jak utworzyć migawkę obiektu blob, zarządzać zasadami dostępu do katalogu i utworzyć sygnaturę dostępu współdzielonego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,7 +25,7 @@ In this article, you'll learn how to use [Azure Storage Explorer](https://azure.
 
 W przypadku tego przewodnika Szybki start wymagane jest zainstalowanie Eksploratora usługi Azure Storage. Aby zainstalować Eksplorator usługi Azure Storage dla systemu Windows, Macintosh lub Linux, zobacz [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="sign-in-to-storage-explorer"></a>Sign in to Storage Explorer
+## <a name="sign-in-to-storage-explorer"></a>Zaloguj się do Eksplorator usługi Storage
 
 Podczas pierwszego uruchomienia wyświetlane jest okno **Eksplorator usługi Microsoft Azure Storage — nawiązywanie połączenia**. Chociaż Eksplorator usługi Storage oferuje kilka sposobów łączenia się z kontem magazynu, tylko jeden ze sposobów jest obecnie obsługiwany na potrzeby zarządzania listami kontroli dostępu.
 
@@ -33,7 +33,7 @@ Podczas pierwszego uruchomienia wyświetlane jest okno **Eksplorator usługi Mic
 |---|---|
 |Dodawanie konta platformy Azure | Przekierowuje Cię do strony logowania organizacji w celu uwierzytelniania na platformie Azure. Obecnie jest to jedyna obsługiwana metoda uwierzytelniania, jeśli chcesz ustawić listy kontroli dostępu i zarządzać nimi. |
 
-Select **Add an Azure Account** and click **Sign in..** . Follow the on-screen prompts to sign into your Azure account.
+Wybierz pozycję **Dodaj konto platformy Azure** , a następnie kliknij pozycję **Zaloguj się.** .. Postępuj zgodnie z monitami wyświetlanymi na ekranie, aby zalogować się do konta platformy Azure.
 
 ![Okno Eksplorator usługi Microsoft Azure Storage — nawiązywanie połączenia](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -45,9 +45,9 @@ Po nawiązaniu połączenia Eksplorator usługi Azure Storage zostanie załadowa
 
 Obiekty blob są zawsze przekazywane do katalogu. Umożliwia to organizowanie grup obiektów blob w sposób podobny do organizowania plików w folderach na komputerze.
 
-Aby utworzyć katalog, rozwiń konto magazynu utworzone w poprzednim kroku. Wybierz pozycję **Kontener obiektów blob**, kliknij ją prawym przyciskiem myszy, a następnie wybierz pozycję **Utwórz kontener obiektów blob**. Enter the name for your container. When complete, press **Enter** to create the container. Po pomyślnym utworzeniu katalog obiektów blob zostanie wyświetlony w folderze **Kontener obiektów blob** dla wybranego konta magazynu.
+Aby utworzyć katalog, rozwiń konto magazynu utworzone w poprzednim kroku. Wybierz pozycję **Kontener obiektów blob**, kliknij ją prawym przyciskiem myszy, a następnie wybierz pozycję **Utwórz kontener obiektów blob**. Wprowadź nazwę kontenera. Po zakończeniu naciśnij klawisz **Enter** , aby utworzyć kontener. Po pomyślnym utworzeniu katalog obiektów blob zostanie wyświetlony w folderze **Kontener obiektów blob** dla wybranego konta magazynu.
 
-![Microsoft Azure Storage Explorer - Creating a container](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+![Eksplorator usługi Microsoft Azure Storage — Tworzenie kontenera](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
 
 ## <a name="upload-blobs-to-the-directory"></a>Przekazywanie obiektów blob do katalogu
 

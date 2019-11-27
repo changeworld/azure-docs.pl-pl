@@ -1,5 +1,5 @@
 ---
-title: How it works Azure MFA - Azure Active Directory
+title: Jak działa usługa Azure MFA — Azure Active Directory
 description: Usługa Azure Multi-Factor Authentication zabezpiecza dostęp do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostoty procesu logowania.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -18,42 +18,42 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381974"
 ---
-# <a name="how-it-works-azure-multi-factor-authentication"></a>How it works: Azure Multi-Factor Authentication
+# <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Azure Multi-Factor Authentication
 
-The security of two-step verification lies in its layered approach. Compromising multiple authentication factors presents a significant challenge for attackers. Even if an attacker manages to learn the user's password, it is useless without also having possession of the additional authentication method. It works by requiring two or more of the following authentication methods:
+Bezpieczeństwo dwuetapowej weryfikacji polega na podejściu warstwowym. Naruszenie wielu czynników uwierzytelniania stanowi znaczące wyzwanie dla osób atakujących. Nawet jeśli osoba atakująca zarządza, aby poznać hasło użytkownika, jest bezużyteczne bez również posiadania dodatkowej metody uwierzytelniania. Działa przez wymaganie co najmniej dwóch następujących metod uwierzytelniania:
 
-* Something you know (typically a password)
-* Something you have (a trusted device that is not easily duplicated, like a phone)
-* Something you are (biometrics)
+* Coś, co wiesz (zazwyczaj hasło)
+* Coś, co masz (zaufane urządzenie, które nie jest łatwo duplikowane, takie jak telefon)
+* Coś, co masz (biometria)
 
 <center>
 
-![Conceptual authentication methods image](./media/concept-mfa-howitworks/methods.png)</center>
+![obrazu metod uwierzytelniania koncepcyjnego](./media/concept-mfa-howitworks/methods.png)</center>
 
-Azure Multi-Factor Authentication (MFA) helps safeguard access to data and applications while maintaining simplicity for users. It provides additional security by requiring a second form of authentication and delivers strong authentication via a range of easy to use [authentication methods](concept-authentication-methods.md). Users may or may not be challenged for MFA based on configuration decisions that an administrator makes.
+Usługa Azure Multi-Factor Authentication (MFA) pomaga w zabezpieczeniu dostępu do danych i aplikacji przy jednoczesnym zachowaniu prostoty dla użytkowników. Zapewnia dodatkowe zabezpieczenia, wymagając drugiej formy uwierzytelniania i zapewnia silne uwierzytelnianie za pośrednictwem różnych [metod uwierzytelniania](concept-authentication-methods.md). Użytkownicy mogą lub nie mogą zakwestionować usługi MFA w oparciu o decyzje konfiguracyjne wykonywane przez administratora.
 
-## <a name="how-to-get-multi-factor-authentication"></a>How to get Multi-Factor Authentication?
+## <a name="how-to-get-multi-factor-authentication"></a>Jak uzyskać Multi-Factor Authentication?
 
-Multi-Factor Authentication comes as part of the following offerings:
+Multi-Factor Authentication jest częścią następujących ofert:
 
-* **Azure Active Directory Premium** or **Microsoft 365 Business** - Full featured use of Azure Multi-Factor Authentication using Conditional Access policies to require multi-factor authentication.
+* **Azure Active Directory — wersja Premium** lub **Microsoft 365 Business** — w pełni funkcjonalne korzystanie z platformy Azure Multi-Factor Authentication przy użyciu zasad dostępu warunkowego, aby wymagać uwierzytelniania wieloskładnikowego.
 
-* **Azure AD Free** or standalone **Office 365** licenses - Use pre-created [Conditional Access baseline protection policies](../conditional-access/concept-baseline-protection.md) to require multi-factor authentication for your users and administrators.
+* **Azure AD — wersja bezpłatna** lub autonomiczne licencje **pakietu Office 365** — Użyj wstępnie utworzonych [zasad ochrony punktu odniesienia dostępu warunkowego](../conditional-access/concept-baseline-protection.md) , aby wymagać uwierzytelniania wieloskładnikowego dla użytkowników i administratorów.
 
-* **Azure Active Directory Global Administrators** - A subset of Azure Multi-Factor Authentication capabilities are available as a means to protect global administrator accounts.
+* **Azure Active Directory Administratorzy globalni** — podzbiór funkcji Multi-Factor Authentication platformy Azure jest dostępny jako środek do ochrony kont administratorów globalnych.
 
 > [!NOTE]
-> New customers may no longer purchase Azure Multi-Factor Authentication as a standalone offering effective September 1st, 2018. Multi-factor authentication will continue to be an available feature in Azure AD Premium licenses.
+> Nowi klienci nie mogą już kupować Multi-Factor Authentication platformy Azure jako autonomicznej oferty obowiązującej 1 września, 2018. Uwierzytelnianie wieloskładnikowe będzie nadal mieć dostępną funkcję w Azure AD — wersja Premium licencji.
 
 ## <a name="supportability"></a>Możliwości obsługi
 
-Since most users are accustomed to using only passwords to authenticate, it is important that your organization communicates to all users regarding this process. Awareness can reduce the likelihood that users call your help desk for minor issues related to MFA. However, there are some scenarios where temporarily disabling MFA is necessary. Use the following guidelines to understand how to handle those scenarios:
+Ponieważ większość użytkowników jest przyzwyczajonych do korzystania tylko z haseł do uwierzytelniania, ważne jest, aby Twoja organizacja komunikuje się ze wszystkimi użytkownikami dotyczącymi tego procesu. Świadomość może zmniejszyć prawdopodobieństwo, że użytkownicy wywołują pomoc techniczną w przypadku drobnych problemów związanych z usługą MFA. Istnieją jednak sytuacje, w których konieczne jest tymczasowe wyłączenie usługi MFA. Skorzystaj z poniższych wskazówek, aby zrozumieć, jak obsługiwać te scenariusze:
 
-* Train your support staff to handle scenarios where the user can't sign in because they do not have access to their authentication methods or they are not working correctly.
-   * Using Conditional Access policies for Azure MFA Service, your support staff can add a user to a group that is excluded from a policy requiring MFA.
-* Consider using Conditional Access named locations as a way to minimize two-step verification prompts. With this functionality, administrators can bypass two-step verification for users that are signing in from a secure trusted network location such as a network segment used for new user onboarding.
-* Deploy [Azure AD Identity Protection](../active-directory-identityprotection.md) and trigger two-step verification based on risk detections.
+* Przeszkol personel pomocy technicznej, aby obsługiwał scenariusze, w których użytkownik nie może się zalogować, ponieważ nie ma dostępu do ich metod uwierzytelniania lub nie działa prawidłowo.
+   * Korzystając z zasad dostępu warunkowego dla usługi Azure MFA, pracownicy pomocy technicznej mogą dodać użytkownika do grupy, która jest wykluczona z zasad wymagających uwierzytelniania wieloskładnikowego.
+* Rozważ użycie dostępu warunkowego o nazwie Locations jako metody minimalizowania dwuetapowych wierszy weryfikacyjnych. Dzięki tej funkcji Administratorzy mogą ominąć weryfikację dwuetapową dla użytkowników, którzy logują się z bezpiecznej zaufanej lokalizacji sieciowej, takiej jak segment sieci używany na potrzeby dołączania do nowego użytkownika.
+* Wdróż [Azure AD Identity Protection](../active-directory-identityprotection.md) i Wyzwól weryfikację dwuetapową opartą na wykryciu ryzyka.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Step-by-step Azure Multi-Factor Authentication deployment](howto-mfa-getstarted.md)
+- [Wdrożenie krok po kroku na platformie Azure Multi-Factor Authentication](howto-mfa-getstarted.md)

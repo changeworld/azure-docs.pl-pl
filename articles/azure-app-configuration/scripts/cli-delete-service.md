@@ -54,7 +54,7 @@ Ten skrypt zawiera następujące polecenia służące do usuwania magazynu konfi
 |---|---|
 | [az appconfig delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | Usuwa zasób magazynu konfiguracji aplikacji. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

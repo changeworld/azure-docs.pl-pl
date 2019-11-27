@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: New policy assignment with Azure CLI'
-description: In this quickstart, you use Azure CLI to create an Azure Policy assignment to identify non-compliant resources.
+title: 'Szybki Start: nowe przypisanie zasad przy użyciu interfejsu wiersza polecenia platformy Azure'
+description: W tym przewodniku szybki start utworzysz przypisanie Azure Policy w celu zidentyfikowania niezgodnych zasobów przy użyciu interfejsu wiersza polecenia platformy Azure.
 ms.date: 11/25/2019
 ms.topic: quickstart
 ms.openlocfilehash: 80dbccdb728da94d9f9fdd0aeb506ade40fd7394
@@ -10,7 +10,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482636"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Quickstart: Create a policy assignment to identify non-compliant resources with Azure CLI
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Szybki Start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Pierwszym krokiem do zrozumienia pojęcia zgodności na platformie Azure jest określenie obecnej sytuacji dotyczącej Twoich zasobów.
 Ten przewodnik Szybki start przeprowadzi Cię przez proces tworzenia przypisania zasad w celu zidentyfikowania maszyn wirtualnych, które nie korzystają z dysków zarządzanych.
@@ -23,9 +23,9 @@ Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure 
 
 - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-- This quickstart requires that you run Azure CLI version 2.0.76 or later to install and use the CLI locally. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+- Ten przewodnik Szybki Start wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.76 lub nowszej, aby zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
-- Register the Azure Policy Insights resource provider using Azure CLI. Dzięki zarejestrowaniu dostawcy zasobów masz pewność, że subskrypcja będzie z nim współpracować. Aby zarejestrować dostawcę zasobów, należy mieć uprawnienia do wykonywania operacji rejestrowania dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Uruchom następujące polecenie, aby zarejestrować dostawcę zasobów:
+- Zarejestruj dostawcę zasobów usługi Azure Policy Insights przy użyciu interfejsu wiersza polecenia platformy Azure. Dzięki zarejestrowaniu dostawcy zasobów masz pewność, że subskrypcja będzie z nim współpracować. Aby zarejestrować dostawcę zasobów, należy mieć uprawnienia do wykonywania operacji rejestrowania dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Uruchom następujące polecenie, aby zarejestrować dostawcę zasobów:
 
   ```azurecli-interactive
   az provider register --namespace 'Microsoft.PolicyInsights'

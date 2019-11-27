@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 039176f2c546aa933d3a87ded8b6ded94e485d74
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c62a7de1f16a3d7d286f48500117c256804c0f24
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280644"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546928"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Działanie pobierania metadanych w Azure Data Factory
 
@@ -46,17 +46,18 @@ Działanie Get Metadata Pobiera zestaw danych jako dane wejściowe i zwraca info
 | Łącznik/metadane | itemName<br>(plik/folder) | itemType<br>(plik/folder) | size<br>rozszerzeniem | utworzony<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>system32\drivers\etc |contentMD5<br>rozszerzeniem | structure<br/>rozszerzeniem | Kolumn<br>rozszerzeniem | istniejący<br>(plik/folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
-| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Magazyn w chmurze Google](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
 | [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
 | [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [System plików](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
 - W przypadku usługi Amazon S3 i Google Cloud Storage `lastModified` ma zastosowanie do zasobnika i klucza, ale nie do folderu wirtualnego, a `exists` ma zastosowanie do zasobnika i klucza, ale nie do folderu wirtualnego.
 - W przypadku usługi Azure Blob Storage `lastModified` ma zastosowanie do kontenera i obiektu BLOB, ale nie do folderu wirtualnego.
+- Filtr `lastModified` jest obecnie stosowany do filtrowania elementów podrzędnych, ale nie do samego folderu lub samego pliku.
 - Filtr symboli wieloznacznych dla folderów/plików nie jest obsługiwany w przypadku działania pobierania metadanych.
 
 **Relacyjna baza danych**
@@ -135,10 +136,10 @@ Aby pobrać odpowiednie informacje, możesz określić następujące typy metada
 
 Obecnie działanie Get Metadata może zwracać następujące typy informacji o metadanych:
 
-Właściwość | Opis | Wymagane
+Właściwość | Opis | Wymagany
 -------- | ----------- | --------
-fieldList | Typy wymaganych informacji metadanych. Aby uzyskać szczegółowe informacje na temat obsługiwanych metadanych, zobacz sekcję [Opcje metadanych](#metadata-options) w tym artykule. | Tak 
-zestawu | Zestaw danych referencyjnych, którego metadane mają być pobierane przez działanie pobierania metadanych. Zapoznaj się z sekcją [możliwości](#capabilities) , aby uzyskać informacje na temat obsługiwanych łączników. Zapoznaj się z tematami dotyczącymi szczegółowych informacji o składni zestawu danych. | Tak
+fieldList | Typy wymaganych informacji metadanych. Aby uzyskać szczegółowe informacje na temat obsługiwanych metadanych, zobacz sekcję [Opcje metadanych](#metadata-options) w tym artykule. | Yes 
+zestawu | Zestaw danych referencyjnych, którego metadane mają być pobierane przez działanie pobierania metadanych. Zapoznaj się z sekcją [możliwości](#capabilities) , aby uzyskać informacje na temat obsługiwanych łączników. Zapoznaj się z tematami dotyczącymi szczegółowych informacji o składni zestawu danych. | Yes
 formatSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
 storeSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
 

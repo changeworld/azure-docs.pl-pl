@@ -42,7 +42,7 @@ Serwer Azure SQL Database obsługuje tworzenie bazy danych za pomocą użytkowni
 
 Możesz użyć istniejącej grupy usługi Azure AD lub utworzyć nową grupę przy użyciu programu Azure AD PowerShell.
 
-1.  Zainstaluj [usługi Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modułu.
+1.  Zainstaluj moduł [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) .
 
 2.  Zaloguj się przy użyciu `Connect-AzureAD`, uruchom następujące polecenie cmdlet, aby utworzyć grupę, i Zapisz ją w zmiennej:
 

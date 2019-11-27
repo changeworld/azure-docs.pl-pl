@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the REST API and PHP - Bing Video Search'
+title: 'Szybki Start: wyszukiwanie filmów wideo przy użyciu interfejsu API REST i PHP-wyszukiwanie wideo Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki start, aby wysyłać żądania wyszukiwania wideo do interfejsu API REST wyszukiwania wideo Bing przy użyciu języka PHP.
 services: cognitive-services
@@ -17,12 +17,12 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378609"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Quickstart: Search for videos using the Bing Video Search REST API and PHP
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Szybki Start: wyszukiwanie filmów wideo przy użyciu interfejsu API REST wyszukiwanie wideo Bing i języka PHP
 
 Ten przewodnik Szybki start umożliwia wykonanie pierwszego wywołania interfejsu API wyszukiwania wideo Bing i wyświetlenie wyników wyszukiwania na podstawie odpowiedzi JSON. Ta prosta aplikacja w języku JavaScript wysyła zapytanie HTTP wyszukiwania wideo do interfejsu API i wyświetla odpowiedź. Ta aplikacja jest napisana w języku JavaScript i używa środowiska Node.js, a interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 Przykładowy kod jest zgodny z wersją PHP 5.6.
 
-Zapoznaj się z [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
+Zapoznaj się [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -215,6 +215,6 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
  [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)

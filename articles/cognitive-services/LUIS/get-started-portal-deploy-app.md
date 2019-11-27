@@ -69,7 +69,7 @@ Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do
 
     ![Aby dodać zasób przewidywania LUIS, wybierz pozycję Dodaj zasób predykcyjny](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz **przypisany zasób**.
+1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz pozycję **Przypisz zasób**.
 
    ![Przydziel zasób do aplikacji](./media/get-started-portal-deploy-app/assign-resource.png)
 
@@ -143,7 +143,7 @@ Aby wyświetlić ten sam poziom informacji w okienku testów, należy opublikowa
 
 Po zakończeniu pracy z tym przewodnikiem Szybki Start wybierz pozycję **Moje aplikacje** w górnym menu nawigacji. Zaznacz pole wyboru aplikacji z listy, a następnie wybierz pozycję **Usuń** z paska narzędzi kontekstowego nad listą.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Identyfikowanie typowych intencji i jednostek](luis-tutorial-prebuilt-intents-entities.md)

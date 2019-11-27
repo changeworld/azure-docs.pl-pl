@@ -79,7 +79,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia nowej grupy z
 | [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Tworzy zasób magazynu konfiguracji aplikacji. |
 | [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Wyświetl listę kluczy przechowywanych w magazynie konfiguracji aplikacji. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

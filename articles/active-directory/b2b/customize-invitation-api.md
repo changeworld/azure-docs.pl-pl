@@ -115,7 +115,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > Upewnij się, że masz najnowszą wersję modułu AzureAD PowerShell lub moduł AzureADPreview PowerShell. 
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 Zapoznaj się z informacjami w temacie Informacje o interfejsie API zaproszenia w [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
 

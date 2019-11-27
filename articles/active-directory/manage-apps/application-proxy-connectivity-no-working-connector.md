@@ -69,6 +69,6 @@ Jeśli jedyne łączniki w grupie są nieaktywne, jest to możliwe na komputerze
 zobacz dokument Rozwiązywanie problemów z portami, aby uzyskać szczegółowe informacje na temat badania tego problemu.
 
 ## <a name="next-steps"></a>Następne kroki
-[Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)
+[Omówienie łączników serwer proxy aplikacji usługi Azure AD platformy Azure](application-proxy-connectors.md)
 
 

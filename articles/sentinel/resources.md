@@ -1,6 +1,6 @@
 ---
-title: Useful resources when working with Azure Sentinel| Microsoft Docs
-description: This document provides you with a list of useful resources when working with Azure Sentinel.
+title: Przydatne zasoby podczas pracy z platformą Azure — wskaźnikiem Microsoft Docs
+description: Ten dokument zawiera listę przydatnych zasobów podczas pracy z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -22,66 +22,66 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484083"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel"></a>Useful resources for working with Azure Sentinel
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>Przydatne zasoby do pracy z platformą Azure — wskaźnikiem
 
 
 
-This article lists resources that can help you get more information about working with Azure Sentinel.
+W tym artykule wymieniono zasoby, które mogą pomóc uzyskać więcej informacji na temat pracy z platformą Azure — wskaźnikiem.
 
-Azure Logic Apps connectors: <https://docs.microsoft.com/connectors/>
+Łączniki Azure Logic Apps: <https://docs.microsoft.com/connectors/>
 
 
-## <a name="auditing-and-reporting"></a>Auditing and reporting
-Audit logs of Azure Sentinel are maintained in [Azure Activity Logs](../azure-monitor/platform/activity-logs-overview.md).
+## <a name="auditing-and-reporting"></a>Inspekcja i raportowanie
+Dzienniki inspekcji platformy Azure są przechowywane w [dziennikach aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md).
 
-The following supported operations can be audited.
+Możliwe jest przeprowadzenie inspekcji następujących obsługiwanych operacji.
 
-|Operation name|    Typ zasobu|
+|Nazwa operacji|    Typ zasobu|
 |----|----|
-|Create or update workbook  |Microsoft.Insights/workbooks|
-|Delete Workbook    |Microsoft.Insights/workbooks|
-|Set Workflow   |Microsoft.Logic/workflows|
-|Delete Workflow    |Microsoft.Logic/workflows|
-|Create Saved Search    |Microsoft.OperationalInsights/workspaces/savedSearches|
-|Delete Saved Search    |Microsoft.OperationalInsights/workspaces/savedSearches|
-|Set Dashboard  |Microsoft.Portal/dashboards|
-|Delete Dashboard   |Microsoft.Portal/dashboards|
-|Update Alert Rules |Microsoft.SecurityInsights/alertRules|
-|Delete Alert Rules |Microsoft.SecurityInsights/alertRules|
-|Update Alert Rule Response Actions |Microsoft.SecurityInsights/alertRules|
-|Delete Alert Rule Response Actions |Microsoft.SecurityInsights/alertRules|
-|Update Bookmarks   |Microsoft.SecurityInsights/bookmarks|
-|Delete Bookmarks   |Microsoft.SecurityInsights/bookmarks|
-|Update Cases   |Microsoft.SecurityInsights/Cases|
-|Update Case Investigation  |Microsoft.SecurityInsights/Cases|
-|Create Case Comments   |Microsoft.SecurityInsights/Cases|
-|Update Data Connectors |Microsoft.SecurityInsights/dataConnectors|
-|Delete Data Connectors |Microsoft.SecurityInsights/dataConnectors|
-|Update Settings    |Microsoft.SecurityInsights/settings|
+|Utwórz lub zaktualizuj skoroszyt  |Microsoft. Insights/skoroszyty|
+|Usuń skoroszyt    |Microsoft. Insights/skoroszyty|
+|Ustaw przepływ pracy   |Microsoft.Logic/workflows|
+|Usuń przepływ pracy    |Microsoft.Logic/workflows|
+|Utwórz zapisane wyszukiwanie    |Microsoft. OperationalInsights/Workspaces/savedSearches|
+|Usuń zapisane wyszukiwanie    |Microsoft. OperationalInsights/Workspaces/savedSearches|
+|Ustawianie pulpitu nawigacyjnego  |Microsoft. Portal/pulpity nawigacyjne|
+|Usuń pulpit nawigacyjny   |Microsoft. Portal/pulpity nawigacyjne|
+|Aktualizowanie reguł alertów |Microsoft. SecurityInsights/alertRules|
+|Usuń reguły alertów |Microsoft. SecurityInsights/alertRules|
+|Aktualizuj akcje odpowiedzi reguły alertu |Microsoft. SecurityInsights/alertRules|
+|Usuń akcje odpowiedzi reguły alertu |Microsoft. SecurityInsights/alertRules|
+|Aktualizuj zakładki   |Microsoft. SecurityInsights/zakładki|
+|Usuń zakładki   |Microsoft. SecurityInsights/zakładki|
+|Przypadki aktualizacji   |Microsoft. SecurityInsights/sprawy|
+|Aktualizacja badania przypadku  |Microsoft. SecurityInsights/sprawy|
+|Utwórz Komentarze do wielkości liter   |Microsoft. SecurityInsights/sprawy|
+|Aktualizuj łączniki danych |Microsoft. SecurityInsights/dataconnecters|
+|Usuń łączniki danych |Microsoft. SecurityInsights/dataconnecters|
+|Aktualizuj ustawienia    |Microsoft. SecurityInsights/ustawienia|
 
-### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>View audit and reporting data in Azure Sentinel
+### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Wyświetlanie danych inspekcji i raportowania na platformie Azure — wskaźnik
 
-You can view this data by streaming it from the Azure Activity log into Azure Sentinel where you can then perform research and analytics on it.
+Te dane można wyświetlić, przesyłając je strumieniowo z dziennika aktywności platformy Azure do platformy Azure
 
-1. Connect the [Azure Activity](connect-azure-activity.md) data source. After doing this, audit events are streamed into a new table in the **Logs** screen called AzureActivity.
-2. Then, query the data using KQL, like you would any other table.
+1. Połącz źródło danych [aktywności platformy Azure](connect-azure-activity.md) . Po wykonaniu tej czynności zdarzenia inspekcji są przesyłane strumieniowo do nowej tabeli na ekranie **dzienników** o nazwie Azure.
+2. Następnie wykonaj zapytanie o dane przy użyciu KQL, tak jak w przypadku każdej innej tabeli.
 
 
 
-## <a name="vendor-documentation"></a>Vendor documentation
+## <a name="vendor-documentation"></a>Dokumentacja dostawcy
 
-| **Dostawca**  | **Use incident in Azure Sentinel** | **Link**|
+| **Dostawca**  | **Korzystanie z zdarzeń na platformie Azure — wskaźnik** | **Link**|
 |----|----|----|
-| Witryna GitHub| Used to access Community page| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| Configure CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
-| PluralSight | Kusto Query Language course| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
+| GitHub| Służy do uzyskiwania dostępu do strony społeczności| <https://github.com/Azure/Azure-Sentinel> |
+| PaloAlto| Konfigurowanie CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
+| PluralSight | Kurs językowy zapytania Kusto| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
-## <a name="blogs-and-forums"></a>Blogs and forums
+## <a name="blogs-and-forums"></a>Blogi i fora
 
-Post your questions on the [TechCommunity space](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) for Azure Sentinel.
+Opublikuj swoje pytania w [obszarze TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) na potrzeby platformy Azure.
 
-View Azure Sentinel blog posts from the [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) and [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
+Wyświetl wpisy w blogu dotyczące platformy Azure wskaźnikowego z [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) i [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
 
 
 ## <a name="next-steps"></a>Następne kroki
-In this document, you got a list of resources that are useful when you're working with Azure Sentinel. You'll find additional information about Azure security and compliance on the [Microsoft Azure Security and Compliance blog](https://blogs.msdn.com/b/azuresecurity/).
+W tym dokumencie przedstawiono listę zasobów, które są przydatne podczas pracy z platformą Azure — wskaźnikiem. Dodatkowe informacje na temat zabezpieczeń i zgodności platformy Azure można znaleźć na [blogu Microsoft Azure zabezpieczenia i zgodność](https://blogs.msdn.com/b/azuresecurity/).

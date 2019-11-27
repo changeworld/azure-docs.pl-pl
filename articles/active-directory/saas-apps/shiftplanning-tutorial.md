@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Humanity | Microsoft Docs'
+title: 'Samouczek: integracja Azure Active Directory z ludzkości | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Humanity.
 services: active-directory
 documentationCenter: na
@@ -23,7 +23,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233434"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Tutorial: Azure Active Directory integration with Humanity
+# <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Samouczek: integracja Azure Active Directory z ludzkości
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Humanity z usługą Azure Active Directory (Azure AD).
 Integrowanie aplikacji Humanity z usługą Azure AD zapewnia następujące korzyści:
@@ -70,7 +70,7 @@ Aby skonfigurować integrację aplikacji Humanity z usługą Azure AD, należy z
 
      ![Aplikacja Humanity na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Humanity, korzystając z danych użytkownika testowego **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD a powiązanym użytkownikiem aplikacji Humanity.
@@ -92,7 +92,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Humanity,
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Humanity** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -108,14 +108,14 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Humanity,
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://company.humanity.com/includes/saml/`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://company.humanity.com/app/`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://company.humanity.com/app/`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta aplikacji Humanity](https://www.humanity.com/support/), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając rzeczywistego adresu URL logowania i identyfikatora. Skontaktuj się z [zespołem obsługi klienta aplikacji Humanity](https://www.humanity.com/support/), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
 6. W sekcji **Konfigurowanie aplikacji Humanity** skopiuj odpowiednie adresy URL zgodnie ze swoimi wymaganiami.
 
@@ -125,7 +125,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Humanity,
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-humanity-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Humanity
 
@@ -133,20 +133,20 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Humanity,
 
 2. W menu u góry kliknij pozycję **Admin** (Administrator).
 
-    ![Admin](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![Administratora](./media/shiftplanning-tutorial/iC786619.png "Administrator")
 3. W obszarze **Integration** (Integracja), kliknij pozycję **Single Sign-On** (Logowanie jednokrotne).
 
-    ![Single Sign-On](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
+    ![Logowanie jednokrotne](./media/shiftplanning-tutorial/iC786620.png "Logowanie jednokrotne")
 
 4. W sekcji **Single Sign-On** (Logowanie jednokrotne) wykonaj następujące kroki:
 
-    ![Single Sign-On](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
+    ![Logowanie jednokrotne](./media/shiftplanning-tutorial/iC786905.png "Logowanie jednokrotne")
 
     a. Wybierz pozycję **SAML Enabled** (SAML włączone).
 
     b. Wybierz pozycję **Allow Password Login** (Zezwalaj na logowanie za pomocą hasła).
 
-    d. W polu tekstowym **SAML Issuer URL** (Adres URL wystawcy protokołu SAML) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **SAML Issuer URL** (Adres URL wystawcy protokołu SAML) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
     d. W polu tekstowym **Remote Logout URL** (Adres URL wylogowywania zdalnego) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
@@ -160,24 +160,24 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
 2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -215,37 +215,37 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Human
 
 2. Kliknij przycisk **Administrator**.
 
-    ![Admin](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![Administratora](./media/shiftplanning-tutorial/iC786619.png "Administrator")
 
 3. Kliknij pozycję **Staff** (Personel).
 
-    ![Staff](./media/shiftplanning-tutorial/ic786623.png "Staff")
+    ![Kadr](./media/shiftplanning-tutorial/ic786623.png "Kadr")
 
 4. W obszarze **Actions** (Akcje) kliknij pozycję **Add Employees** (Dodaj pracowników).
 
-    ![Add Employees](./media/shiftplanning-tutorial/iC786624.png "Add Employees")
+    ![Dodaj pracowników](./media/shiftplanning-tutorial/iC786624.png "Dodaj pracowników")
 
 5. W sekcji **Add Employees** (Dodaj pracowników) wykonaj następujące czynności:
 
-    ![Save Employees](./media/shiftplanning-tutorial/iC786625.png "Save Employees")
+    ![Zapisz pracowników](./media/shiftplanning-tutorial/iC786625.png "Zapisz pracowników")
 
-    a. Type the **First Name**, **Last Name**, and **Email** of a valid Azure AD account you want to provision into the related textboxes.
+    a. Wpisz **imię**, nazwisko i **adres e-mail** prawidłowego konta usługi Azure **AD, które**chcesz udostępnić do powiązanych pól tekstowych.
 
     b. Kliknij pozycję **Save Employees** (Zapisz pracowników).
 
 > [!NOTE]
-> You can use any other Humanity user account creation tools or APIs provided by Humanity to provision Azure AD user accounts.
+> Za pomocą innych narzędzi do tworzenia kont użytkowników lub interfejsów API dostarczonych przez ludzkości można udostępniać konta użytkowników usługi Azure AD.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Humanity w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Humanity, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

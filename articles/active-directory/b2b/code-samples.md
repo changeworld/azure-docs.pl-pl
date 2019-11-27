@@ -229,7 +229,7 @@ namespace SampleInviteApp
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 

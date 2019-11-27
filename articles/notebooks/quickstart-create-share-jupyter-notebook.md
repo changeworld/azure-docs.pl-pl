@@ -12,34 +12,34 @@ ms.locfileid: "74277499"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Szybki Start: Tworzenie i udostępnianie notesu
 
-1. Przejdź do [notesów usługi Azure](https://notebooks.azure.com) i zaloguj się. (Aby uzyskać więcej informacji, zobacz [Szybki Start — Zaloguj się do platformy Azure, notesy](quickstart-sign-in-azure-notebooks.md)).
+1. Przejdź do [Azure Notebooks](https://notebooks.azure.com) i zaloguj się. (Aby uzyskać szczegółowe informacje, zobacz [Szybki Start — logowanie do Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
-1. Na stronie profilu publicznego, wybierz **Moje projekty** w górnej części strony:
+1. Na stronie Twój profil publiczny wybierz pozycję **Moje projekty** w górnej części strony:
 
     ![Moje łącza projektów u góry okna przeglądarki](media/quickstarts/my-projects-link.png)
 
-1. Na **Moje projekty** wybierz opcję **+ nowy projekt** (skrót klawiaturowy: n); przycisku może występować tylko jako **+** Jeśli okno przeglądarki jest wąskie:
+1. Na stronie **Moje projekty** wybierz pozycję **+ Nowy projekt** (skrót klawiaturowy: n). przycisk może być wyświetlany tylko jako **+** , jeśli okno przeglądarki jest wąskie:
 
     ![Nowe polecenie projektu na stronie Moje projekty](media/quickstarts/new-project-command.png)
 
-1. W **Utwórz nowy projekt** okna podręcznego, który pojawia się, wprowadź lub ustaw następujące szczegóły, a następnie wybierz **Utwórz**:
+1. W wyświetlonym oknie podręcznym **Utwórz nowy projekt** wprowadź lub ustaw następujące szczegóły, a następnie wybierz pozycję **Utwórz**:
 
    - **Nazwa projektu**: Hello World w języku Python
-   - **Identyfikator projektu**: hello world python
-   - **Projekt publicznych**: (usunięty)
-   - **Utwórz plik README.md**: (usunięty)
+   - **Identyfikator projektu**: Hello-World-Python
+   - **Projekt publiczny**: (wyczyszczone)
+   - **Utwórz element Readme.MD**: (wyczyszczony)
 
      ![Nowe popup projektu ze szczegółami wypełnione](media/quickstarts/new-project-popup.png)
 
-1. Po kilku chwilach notesy platformy Azure przechodzi należy do nowego projektu. Dodaj Notes do projektu, wybierając **+ nowy** listy rozwijanej (może wystąpić tylko jako **+** ), a następnie wybierając pozycję **notesu**:
+1. Po kilku chwilach notesy platformy Azure przechodzi należy do nowego projektu. Dodaj Notes do projektu, wybierając listę rozwijaną **+ Nowy** (która może być wyświetlana tylko jako **+** ), a następnie wybierając opcję **Notes**:
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
-1. W **Utwórz nowy notes** okna podręcznego, który pojawia się, wprowadź nazwę notesu, takich jak *HelloWorldInPython.ipynb* ( *.ipynb* oznacza notesu IronPython (Jupyter) ) i wybierz **środowiska Python 3.6** języka (nazywane także *jądra*):
+1. W wyświetlonym oknie podręcznym **Utwórz nowy Notes** wprowadź nazwę pliku dla notesu, na przykład *HelloWorldInPython. ipynb* ( *. ipynb* oznacza Notes IronPython (Jupyter)), a następnie wybierz opcję **Python 3,6** dla języka (nazywanego również *jądrem*):
 
     ![Okno podręczne Tworzenie nowego notesu](media/quickstarts/new-notebook-popup.png)
 
-1. Wybierz **New** aby zakończyć tworzenie notesu, który pojawi się na liście plików projektu:
+1. Wybierz pozycję **Nowy** , aby zakończyć tworzenie notesu, który zostanie wyświetlony na liście plików projektu:
 
     ![Nowy notes pojawiające się na liście plików projektu](media/quickstarts/new-notebook-created.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "74277499"
 
     ![Wyświetl nowy notes w notesach platformy Azure](media/quickstarts/create-notebook-first-open.png)
 
-1. Domyślnie Notes ma jeden pustej komórce kodu. Aby zmienić typ komórki do **Markdown**, użyj komórki typu listy rozwijanej, aby wybrać **Markdown**:
+1. Domyślnie Notes ma jeden pustej komórce kodu. **Aby zmienić**typ komórki na rozbiciu, Użyj listy rozwijanej Typ komórki, **Aby wybrać opcję**przestawka:
 
     ![Zmiana typu komórki w nowego notesu](media/quickstarts/create-notebook-cell-type.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "74277499"
     # Hello World in Python
     ```
 
-1. Ponieważ edytowania kodu Markdown, tekst jest wyświetlany jako nagłówek znakiem "#". Aby renderować języku znaczników Markdown w kodzie HTML, wybierz **Uruchom** przycisku. Notesy platformy Azure automatycznie utworzy nową komórkę kodu później:
+1. Ponieważ edytowania kodu Markdown, tekst jest wyświetlany jako nagłówek znakiem "#". Aby renderować tę wartość w formacie HTML, wybierz przycisk **Uruchom** . Notesy platformy Azure automatycznie utworzy nową komórkę kodu później:
 
     ![Przycisk uruchamiania dla komórki i renderowane znaczniki Markdown](media/quickstarts/run-cell-markdown-render.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "74277499"
     print(msg)
     ```
 
-1. Wybierz **Uruchom** (skrót klawiaturowy: Shift + Enter) do uruchomienia kodu. Poniżej komórki pomyślne dane wyjściowe powinny być podobne do następującego tekstu:
+1. Wybierz polecenie **Uruchom** (skrót klawiaturowy: SHIFT + ENTER), aby uruchomić kod. Poniżej komórki pomyślne dane wyjściowe powinny być podobne do następującego tekstu:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -87,13 +87,13 @@ ms.locfileid: "74277499"
 
 ## <a name="share-the-notebook"></a>Udostępnianie notesu
 
-Aby udostępnić notesu, przejdź z powrotem do strony projektu w razie potrzeby, kliknij prawym przyciskiem myszy plik Notes, wybierz **Kopiuj Link** (skrót klawiaturowy: y) i wkleić ten link do odpowiedni komunikat (wiadomość e-mail, wiadomości Błyskawicznych itp.).
+Aby udostępnić Notes, w razie potrzeby przełącz się z powrotem do strony projektu, kliknij prawym przyciskiem myszy plik notesu, wybierz polecenie **Kopiuj link** (skrót klawiaturowy: t), a następnie wklej ten link do odpowiedniego komunikatu (wiadomości e-mail, wiadomości błyskawicznych itp.).
 
-Na stronie projektu można również użyć **udziału** kod osadzania, menu, aby uzyskać link, Utwórz wiadomość e-mail z linkiem lub uzyskać HTML i języka Markdown:
+Na stronie projekt można również użyć menu **Udostępnij** , aby uzyskać link, utworzyć wiadomość e-mail z linkiem lub uzyskać kod osadzania HTML i promocji:
 
 ![Udostępnij projekt — polecenie](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: tworzenie uruchomienia notesu programu Jupyter w celu regresji liniowej](tutorial-create-run-jupyter-notebook.md)
+> [Samouczek: Tworzenie notesu Jupyter w celu wykonania regresji liniowej](tutorial-create-run-jupyter-notebook.md)

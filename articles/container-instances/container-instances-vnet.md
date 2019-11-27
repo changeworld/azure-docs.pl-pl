@@ -1,19 +1,14 @@
 ---
-title: Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
+title: Wdrażanie grupy kontenerów w usłudze Azure Virtual Network
 description: Dowiedz się, jak wdrażać grupy kontenerów w nowej lub istniejącej sieci wirtualnej platformy Azure.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 07/11/2019
-ms.author: danlep
-ms.openlocfilehash: 05f1bcd5e80d7c06fbaca1abe89c84f6743a5979
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034973"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533265"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -68,7 +63,7 @@ Sieć wirtualna definiuje przestrzeń adresową, w której można utworzyć co n
 
 ### <a name="subnet-delegated"></a>Podsieć (delegowana)
 
-Podsieci umożliwiają segmentację sieci wirtualnej na oddzielne przestrzenie adresowe, które są używane przez zasoby platformy Azure, które znajdują się w nich. Należy utworzyć co najmniej jedną podsieć w ramach sieci wirtualnej.
+Podsieci sieci wirtualnej na segmenty na oddzielne przestrzenie adresowe można używać przez zasoby platformy Azure, które można umieścić w nich. Należy utworzyć co najmniej jedną podsieć w ramach sieci wirtualnej.
 
 Podsieć używana dla grup kontenerów może zawierać tylko grupy kontenerów. Podczas pierwszego wdrażania grupy kontenerów w podsieci usługa Azure deleguje tę podsieć do Azure Container Instances. Po delegowaniu ta podsieć może być używana tylko dla grup kontenerów. Jeśli podjęto próbę wdrożenia zasobów innych niż grupy kontenerów w delegowanej podsieci, operacja zakończy się niepowodzeniem.
 
@@ -151,7 +146,7 @@ $ az container show --resource-group myResourceGroup --name appcontainer --query
 10.0.0.4
 ```
 
-Teraz ustaw wartość `CONTAINER_GROUP_IP` na pobrany adres IP przy użyciu polecenia `az container show` i wykonaj następujące polecenie `az container create`. Ten drugi kontener, *commchecker*, uruchamia obraz oparty na systemie Linux i wykonuje `wget` względem adresu IP pierwszej grupy kontenerów.
+Teraz ustaw `CONTAINER_GROUP_IP` na adres IP pobrany przy użyciu polecenia `az container show` i wykonaj następujące polecenie `az container create`. Ten drugi kontener, *commchecker*, uruchamia obraz oparty na systemie Linux i jest wykonywany `wget` z adresem IP podsieci prywatnej pierwszej grupy kontenerów.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-here>
@@ -166,7 +161,7 @@ az container create \
     --subnet aci-subnet
 ```
 
-Po zakończeniu tego wdrożenia drugiego kontenera należy ściągnąć jego dzienniki, aby wyświetlić dane wyjściowe polecenia `wget`, które zostało wykonane:
+Po zakończeniu tego wdrożenia drugiego kontenera Pobierz jego dzienniki, aby wyświetlić dane wyjściowe polecenia `wget`, które zostało wykonane:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name commchecker
@@ -180,7 +175,7 @@ Connecting to 10.0.0.4 (10.0.0.4:80)
 index.html           100% |*******************************|  1663   0:00:00 ETA
 ```
 
-Dane wyjściowe dziennika powinny wskazywać, że `wget` było w stanie połączyć i pobrać plik indeksu z pierwszego kontenera przy użyciu jego prywatnego adresu IP w podsieci lokalnej. Ruch sieciowy między dwiema grupami kontenerów pozostał w sieci wirtualnej.
+Dane wyjściowe dziennika powinny wskazywać, że `wget` był w stanie połączyć i pobrać plik indeksu z pierwszego kontenera przy użyciu jego prywatnego adresu IP w podsieci lokalnej. Ruch sieciowy między dwiema grupami kontenerów pozostał w sieci wirtualnej.
 
 ### <a name="deploy-to-existing-virtual-network---yaml"></a>Wdróż w istniejącej sieci wirtualnej — YAML
 
@@ -205,7 +200,7 @@ $ az network profile list --resource-group myResourceGroup --query [0].id --outp
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Gdy masz identyfikator profilu sieciowego, Skopiuj następujący YAML do nowego pliku o nazwie *VNET-Deploy-ACI. YAML*. W obszarze `networkProfile` Zastąp wartość `id` IDENTYFIKATORem, który właśnie został pobrany, a następnie Zapisz plik. Ta YAML tworzy grupę kontenerów o nazwie *appcontaineryaml* w sieci wirtualnej.
+Gdy masz identyfikator profilu sieciowego, Skopiuj następujący YAML do nowego pliku o nazwie *VNET-Deploy-ACI. YAML*. W obszarze `networkProfile`Zastąp wartość `id` z właśnie pobranym IDENTYFIKATORem, a następnie Zapisz plik. Ta YAML tworzy grupę kontenerów o nazwie *appcontaineryaml* w sieci wirtualnej.
 
 ```YAML
 apiVersion: '2018-09-01'

@@ -1,6 +1,6 @@
 ---
-title: Using return value from an Azure Function
-description: Learn to manage return values for Azure Functions
+title: Używanie wartości zwracanej z funkcji platformy Azure
+description: Dowiedz się, jak zarządzać zwracanymi wartościami dla Azure Functions
 author: craigshoemaker
 ms.topic: reference
 ms.date: 01/14/2019
@@ -12,23 +12,23 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480576"
 ---
-# <a name="using-the-azure-function-return-value"></a>Using the Azure Function return value
+# <a name="using-the-azure-function-return-value"></a>Korzystanie z wartości zwracanej przez funkcję platformy Azure
 
-This article explains how return values work inside a function.
+W tym artykule opisano sposób działania zwracanych wartości wewnątrz funkcji.
 
-In languages that have a return value, you can bind a function [output binding](./functions-triggers-bindings.md#binding-direction) to the return value:
+W językach, które mają wartość zwracaną, można powiązać [powiązanie danych wyjściowych](./functions-triggers-bindings.md#binding-direction) funkcji z wartością zwracaną:
 
-* In a C# class library, apply the output binding attribute to the method return value.
-* In Java, apply the output binding annotation to the function method.
-* In other languages, set the `name` property in *function.json* to `$return`.
+* W bibliotece C# klas zastosuj atrybut wynik powiązania do wartości zwracanej przez metodę.
+* W języku Java Zastosuj adnotację powiązania danych wyjściowych do metody Function.
+* W innych językach ustaw właściwość `name` w *Function. JSON* na `$return`.
 
-If there are multiple output bindings, use the return value for only one of them.
+Jeśli istnieje wiele powiązań wyjściowych, użyj wartości zwracanej tylko dla jednego z nich.
 
-In C# and C# script, alternative ways to send data to an output binding are `out` parameters and [collector objects](functions-reference-csharp.md#writing-multiple-output-values).
+W C# skryptach i C# alternatywnym sposobem wysyłania danych do powiązania wyjściowego są `out` parametry i [obiekty modułów zbierających](functions-reference-csharp.md#writing-multiple-output-values).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Here's C# code that uses the return value for an output binding, followed by an async example:
+Tutaj można C# znaleźć kod, który używa wartości zwracanej dla powiązania danych wyjściowych, po którym następuje asynchroniczny przykład:
 
 ```cs
 [FunctionName("QueueTrigger")]
@@ -52,9 +52,9 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
-Here's the output binding in the *function.json* file:
+Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
 ```json
 {
@@ -65,7 +65,7 @@ Here's the output binding in the *function.json* file:
 }
 ```
 
-Here's the C# script code, followed by an async example:
+Oto kod C# skryptu, po którym następuje asynchroniczny przykład:
 
 ```cs
 public static string Run(WorkItem input, ILogger log)
@@ -87,7 +87,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 
 # <a name="ftabfsharp"></a>[F#](#tab/fsharp)
 
-Here's the output binding in the *function.json* file:
+Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
 ```json
 {
@@ -98,7 +98,7 @@ Here's the output binding in the *function.json* file:
 }
 ```
 
-Here's the F# code:
+Oto F# kodu:
 
 ```fsharp
 let Run(input: WorkItem, log: ILogger) =
@@ -109,7 +109,7 @@ let Run(input: WorkItem, log: ILogger) =
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Here's the output binding in the *function.json* file:
+Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
 ```json
 {
@@ -120,7 +120,7 @@ Here's the output binding in the *function.json* file:
 }
 ```
 
-In JavaScript, the return value goes in the second parameter for `context.done`:
+W języku JavaScript wartość zwracana jest w drugim parametrze dla `context.done`:
 
 ```javascript
 module.exports = function (context, input) {
@@ -132,7 +132,7 @@ module.exports = function (context, input) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Here's the output binding in the *function.json* file:
+Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
 ```json
 {
@@ -142,7 +142,7 @@ Here's the output binding in the *function.json* file:
     "path": "output-container/{id}"
 }
 ```
-Here's the Python code:
+Oto kod języka Python:
 
 ```python
 def main(input: azure.functions.InputStream) -> str:
@@ -155,7 +155,7 @@ def main(input: azure.functions.InputStream) -> str:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Here's Java code that uses the return value for an output binding:
+Tutaj znajduje się kod Java, który używa wartości zwracanej dla powiązania danych wyjściowych:
 
 ```java
 @FunctionName("QueueTrigger")
@@ -176,4 +176,4 @@ public static String run(
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Handle Azure Functions binding errors](./functions-bindings-errors.md)
+> [Obsługa błędów powiązań Azure Functions](./functions-bindings-errors.md)

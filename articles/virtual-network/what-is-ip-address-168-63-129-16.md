@@ -41,7 +41,7 @@ Należy otworzyć co najmniej następujące porty, aby umożliwić komunikację 
 
 W scenariuszu sieci niewirtualnej (klasyczny) sonda kondycji pochodzi z prywatnego adresu IP, a 168.63.129.16 nie jest używana.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Grupy zabezpieczeń](security-overview.md)
 - [Tworzenie, zmienianie i usuwanie sieciowej grupy zabezpieczeń](manage-network-security-group.md)

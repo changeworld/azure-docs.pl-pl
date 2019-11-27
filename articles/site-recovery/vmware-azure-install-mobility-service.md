@@ -64,7 +64,7 @@ Na każdym komputerze z systemem Linux, który ma zostać objęty ochroną, wyko
 
 Jeśli na maszynach, które mają być replikowane, działa aktywne oprogramowanie chroniące przed wirusami, upewnij się, że folder instalacji usługi mobilności został wykluczony z operacji programu antywirusowego (*C:\ProgramData\ASR\agent*). Dzięki temu replikacja działa zgodnie z oczekiwaniami.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po zainstalowaniu usługi mobilności w Azure Portal wybierz pozycję **+ Replikuj** , aby rozpocząć ochronę tych maszyn wirtualnych. Dowiedz się więcej na temat włączania replikacji dla [maszyn wirtualnych VMware](vmware-azure-enable-replication.md) i [serwerów fizycznych](physical-azure-disaster-recovery.md#enable-replication).
 

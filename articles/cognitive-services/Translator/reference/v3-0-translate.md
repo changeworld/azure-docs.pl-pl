@@ -43,7 +43,7 @@ Parametry żądania przesłane na ciągu zapytania są następujące:
     <td><em>Wymagany parametr</em>.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być <code>3.0</code>.</td>
   </tr>
   <tr>
-    <td>to</td>
+    <td>na</td>
     <td><em>Wymagany parametr</em>.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z <a href="./v3-0-languages.md">obsługiwanych języków</a> uwzględnionych w zakresie <code>translation</code>. Na przykład użyj <code>to=de</code>, aby przetłumaczyć na język niemiecki.<br/>Możliwe jest przetłumaczenie na wiele języków jednocześnie przez powtarzanie parametru w ciągu zapytania. Na przykład użyj <code>to=de&to=it</code> do tłumaczenia na język niemiecki i włoski.</td>
   </tr>
 </table>

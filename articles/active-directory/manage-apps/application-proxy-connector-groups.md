@@ -34,15 +34,15 @@ Wszystkie aplikacje są przypisane do grupy łączników. Jeśli nie utworzysz g
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do grupy łączników, należy upewnić się, że [zainstalowano wiele łączników](application-proxy-add-on-premises-application.md). Po zainstalowaniu nowego łącznika, automatycznie dołączeniu **domyślne** grupy łączników.
+Aby zgrupować łączniki, należy upewnić się, że [zainstalowano wiele łączników](application-proxy-add-on-premises-application.md). Po zainstalowaniu nowego łącznika automatycznie przyłączana jest **Domyślna** Grupa łączników.
 
 ## <a name="create-connector-groups"></a>Tworzenie grupy łączników
 
 Użyj tych kroków można utworzyć dowolną liczbę grup łącznika.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wybierz **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **serwera proxy aplikacji**.
-1. Wybierz **Nowa grupa łączników**. Zostanie wyświetlony blok Nowa grupa łączników.
+1. Wybierz pozycję **Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **serwerze proxy aplikacji**.
+1. Wybierz pozycję **Nowa grupa łączników**. Zostanie wyświetlony blok Nowa grupa łączników.
 
    ![Wyświetla ekran, aby wybrać nową grupę łączników](./media/application-proxy-connector-groups/new-group.png)
 
@@ -53,9 +53,9 @@ Użyj tych kroków można utworzyć dowolną liczbę grup łącznika.
 
 Wykonaj następujące czynności dla każdej aplikacji, które zostały opublikowane za pomocą serwera Proxy aplikacji. Można przypisać aplikacji do grupy łączników, gdy najpierw opublikować lub można użyć następujące kroki, aby zmienić przypisanie zawsze wtedy, gdy chcesz.
 
-1. Na pulpicie nawigacyjnym zarządzania katalogiem, wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > aplikacji, którą chcesz przypisać do grupy łączników > **Serwera Proxy aplikacji**.
-1. Użyj **grupy łączników** menu rozwijane, aby wybrać grupę, która będzie używać aplikacja.
-1. Wybierz **Zapisz** do zastosowania zmiany.
+1. Na pulpicie nawigacyjnym Zarządzanie katalogiem wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > aplikację, którą chcesz przypisać do grupy łączników > **serwerze proxy aplikacji**.
+1. Użyj menu rozwijanego **Grupa łączników** , aby wybrać grupę, która ma być używana przez aplikację.
+1. Wybierz pozycję **Zapisz** , aby zastosować zmianę.
 
 ## <a name="use-cases-for-connector-groups"></a>Zastosowań grupy łączników
 
@@ -128,5 +128,5 @@ W poniższym przykładzie firma ma dwoma centrami danych, A i B, za pomocą dwa 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)
+* [Omówienie łączników serwer proxy aplikacji usługi Azure AD platformy Azure](application-proxy-connectors.md)
 * [Włączanie logowania jednokrotnego](what-is-single-sign-on.md)

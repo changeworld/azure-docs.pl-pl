@@ -24,7 +24,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214795"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a Standard Load Balancer to load balance VMs using Azure CLI
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Szybki Start: Tworzenie usługa Load Balancer w warstwie Standardowa równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Ubuntu Server i zrównoważysz obciążenie aplikacji internetowej między dwiema maszynami wirtualnymi.
 
@@ -32,7 +32,7 @@ W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Bala
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -197,7 +197,7 @@ Utwórz zestaw dostępności za pomocą polecenia [az vm availabilityset create]
     --name myAvailabilitySet
 ```
 
-### <a name="create-three-virtual-machines"></a>Create three virtual machines
+### <a name="create-three-virtual-machines"></a>Tworzenie trzech maszyn wirtualnych
 
 Aby zainstalować serwer NGINX i uruchomić aplikację Node.js „Hello World” na maszynie wirtualnej z systemem Linux, możesz użyć pliku konfiguracji cloud-init. W bieżącej powłoce utwórz plik o nazwie cloud-init.txt, a następnie skopiuj i wklej poniższą konfigurację do powłoki. Upewnij się, że kopiujesz cały plik cloud-init, a szczególnie pierwszy wiersz:
 

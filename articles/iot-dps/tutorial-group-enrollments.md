@@ -52,7 +52,7 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
 
         1. Wybierz nowo utworzony certyfikat:
             - Kliknij pozycję **Generuj kod weryfikacyjny**. Skopiuj wygenerowany kod.
-            - Uruchom krok weryfikacji. Wprowadź _kod weryfikacyjny_ lub kliknij prawym przyciskiem myszy, aby wkleić go w uruchomionym oknie programu PowerShell.  Naciśnij klawisz **wprowadź**.
+            - Uruchom krok weryfikacji. Wprowadź _kod weryfikacyjny_ lub kliknij prawym przyciskiem myszy, aby wkleić go w uruchomionym oknie programu PowerShell.  Naciśnij klawisz **Enter**.
             - Wybierz nowo utworzony plik **_verifyCert4.pem_** w witrynie Azure Portal. Kliknij pozycję **Zweryfikuj**.
 
               ![Sprawdzanie poprawności certyfikatu](./media/tutorial-group-enrollments/validate-certificate.png)

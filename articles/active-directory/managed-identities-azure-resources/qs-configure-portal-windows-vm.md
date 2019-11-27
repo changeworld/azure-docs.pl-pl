@@ -32,7 +32,7 @@ W tym artykule dowiesz się, jak włączyć i wyłączyć zarządzane tożsamoś
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md).
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md).
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 
 ## <a name="system-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez system
@@ -114,7 +114,7 @@ Aby usunąć tożsamość przypisaną przez użytkownika z maszyny wirtualnej, T
 
    ![Usuwanie tożsamości zarządzanej przypisanej przez użytkownika z maszyny wirtualnej](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vm-screenshot.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Korzystając z Azure Portal, udziel zarządzanej tożsamości maszyny wirtualnej platformy Azure [do innego zasobu platformy Azure](howto-assign-access-portal.md).
 
