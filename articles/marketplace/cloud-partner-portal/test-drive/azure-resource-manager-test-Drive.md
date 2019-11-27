@@ -1,25 +1,26 @@
 ---
-title: Usługa Azure Resource Manager testowej | Portal Azure Marketplace
-description: Tworzenie wersję testową w portalu Marketplace przy użyciu usługi Azure Resource Manager
+title: Azure Resource Manager dysk testowy | Portal Azure Marketplace
+description: Tworzenie dysku testowego Marketplace przy użyciu Azure Resource Manager
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Patrick .Butler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606438"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838074"
 ---
-# <a name="azure-resource-manager-test-drive"></a>Usługa Azure Resource Manager testowej
+# <a name="azure-resource-manager-test-drive"></a>Wersja testowa usługi Azure Resource Manager
 
 Ten artykuł jest dla wydawców, którzy mają swoją ofertę w portalu Azure Marketplace lub korzystający z usługi AppSource, ale chcesz tworzyć ich wersji testowej przy użyciu tylko zasobów platformy Azure.
 
-Szablon usługi Azure Resource Manager (Resource Manager) jest kontenerem kodowane zasobów platformy Azure, projektować do reprezentują najlepsze rozwiązania. Jeśli nie jesteś zaznajomiony z szablonu usługi Resource Manager, zapoznaj się [zrozumienie szablonów usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) i [Tworzenie szablonów usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) aby upewnić się, gdy wiesz, jak do tworzenia i testowania własnych szablonów.
+Szablon Azure Resource Manager (Menedżer zasobów) jest zakodowanym kontenerem zasobów platformy Azure, które są projektowane w celu najlepszego reprezentowania rozwiązania. Jeśli nie znasz Menedżer zasobów szablonu, zapoznaj się z informacjami na temat [Menedżer zasobów szablonów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) i szablonów [Menedżer zasobów tworzenia](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) , aby upewnić się, jak tworzyć i testować własne szablony.
 
 Co to jest wersja testowa jest przyjmuje podany szablon usługi Resource Manager i sprawia, że wdrożenie programu wszystkie zasoby, które są wymagane z tego szablonu usługi Resource Manager w grupie zasobów.
 
@@ -31,25 +32,25 @@ W przypadku tworzenia dysku z systemem Azure Resource Manager Test wymagań jest
 
 ## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Jak utworzyć testowej usługi Azure Resource Manager
 
-Poniżej przedstawiono proces tworzenia wersji testowej usługi Resource Manager platformy Azure:
+Oto proces tworzenia Azure Resource Manager dysku testowego:
 
-1. Projektuj, co chcesz, aby klienci w diagramu przepływu.
-1. Zdefiniuj, jakiego środowiska, którą chcesz klientów do tworzenia.
-1. Oparte na powyższych definicjach, zdecyduj, jakie elementy i zasoby, które są wymagane dla klientów osiągnąć takie środowisko: na przykład wystąpienie D365 lub witryny sieci Web z bazą danych.
-1. Kompilowanie projektu lokalnie i testowanie doświadczenia.
-1. Pakiet środowiska we wdrożeniu szablonu ARM i z tego miejsca:
-    1. Określają, jakie części zasobów są parametrami wejściowymi;
-    1. Co to są zmienne;
-    1. Jakie dane wyjściowe są przydzielone na obsługę klientów.
-1. Publikowanie, test i przejdź na żywo.
+1. Projektuj elementy, które mają być wykonywane przez klientów na diagramie przepływu.
+1. Zdefiniuj środowiska, które mają być kompilowane przez klientów.
+1. Zgodnie z powyższymi definicjami Zdecyduj, jakie elementy i zasoby są potrzebne klientom do osiągnięcia takich czynności: na przykład wystąpienie D365 lub witryna sieci Web z bazą danych.
+1. Utwórz projekt lokalnie i przetestuj środowisko pracy.
+1. Pakowanie środowiska we wdrożeniu szablonu ARM i z tego miejsca:
+    1. Zdefiniuj, jakie części zasobów są parametrami wejściowymi;
+    1. Jakie zmienne są;
+    1. Jakie dane wyjściowe są przekazywane do środowiska klienta.
+1. Publikuj, Testuj i przejdź na żywo.
 
 To najważniejszy element o tworzeniu usługi Azure Resource Manager testowej do zdefiniowania, jakie scenario(s) użytkownicy powinni się. Czy program zapory i chcesz pokaz, jak obsługiwać ataki przez iniekcję kodu skryptu? Czy można produktu magazynu i chcesz pokaz, jak szybko i łatwo, rozwiązania kompresuje pliki?
 
-Upewnij się, które możesz wydać wystarczająca ilość czasu, ocenianie, jakie są najlepsze sposoby stażysta produktu. Specjalnie wokół wszystkich wymaganych zasobów może być konieczne, ponieważ ułatwia pakowanie wystarczająco łatwiejsze szablonu usługi Resource Manager.
+Upewnij się, że poświęcasz wystarczającą ilość czasu na ocenę najlepszego sposobu wyświetlania produktu. W odniesieniu do wszystkich wymaganych zasobów, które są potrzebne, ponieważ sprawia, że pakowanie szablonu Menedżer zasobów jest wystarczająco prostsze.
 
 Aby kontynuować z naszego przykładu zapory, architektury może być konieczne publiczny adres IP URL usługi i inny publiczny adres IP URL dla witryny sieci Web, która chroni zapora. Każdego adresu IP jest wdrożone na maszynie wirtualnej i połączone razem z grupy zabezpieczeń sieci i interfejsu sieciowego.
 
-Po zaprojektowaniu żądanego pakietu zasobów zawiera teraz zapisywania i tworzenia szablonu Menedżera zasobów testowych z dysku.
+Po zaprojektowaniu żądanego pakietu zasobów program będzie teraz mógł pisać i kompilować szablon Menedżer zasobów na dysku testowym.
 
 ## <a name="writing-test-drive-resource-manager-templates"></a>Pisanie testów dysków szablonów usługi Resource Manager
 
@@ -84,7 +85,7 @@ Jest również pamiętać, że **wszystkie parametry są opcjonalne**, więc je�
 
 | Typ metadanych   | Typ parametru  | Opis     | Przykładowa wartość    |
 |---|---|---|---|
-| **BaseUri**     | ciąg          | Podstawowy identyfikator URI pakietu wdrażania| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
+| **BaseUri**     | ciąg          | Podstawowy identyfikator URI pakietu wdrażania| https:\//\<\..\>. blob.core.windows.net/\<\..\> |
 | **Nazwa użytkownika**    | ciąg          | Nowa nazwa użytkownika losowych.| admin68876      |
 | **Hasło**    | bezpieczny ciąg    | Losowe hasło. | LP! ACS\^2kh     |
 | **Identyfikator sesji**   | ciąg          | Unikatowe sesji testowej identyfikator (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
@@ -207,7 +208,7 @@ Upewnij się, ciągów z parametrem/zmiennej (\'contosovm\') z danymi wyjściowy
 
 Na przykład większość nazwy zasobów nie może zaczynać się od cyfry, ale funkcję unikatowego ciągu może zwrócić ciąg, który rozpoczyna się od cyfry. Tak Jeśli używasz pierwotne unikatowy ciąg w danych wyjściowych, wdrożenia zakończy się niepowodzeniem. 
 
-Można znaleźć dodatkowe informacje na temat reguł nazewnictwa zasobów i ograniczenia w [w tym artykule](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
+Można znaleźć dodatkowe informacje na temat reguł nazewnictwa zasobów i ograniczenia w [w tym artykule](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="deployment-location"></a>Lokalizacja wdrożenia
 
@@ -300,9 +301,9 @@ Podczas publikowania certyfikacji wersji testowej unzips pakietu wdrożenia i um
 
 | Package.zip                       | Kontener obiektów blob dysku testu         |
 |---|---|
-| main-template.json                | https:\//\<\...\>.blob.core.windows.net/\<\...\>/main-template.json  |
-| Templates/Solution.JSON           | https:\//\<\...\>.blob.core.windows.net/\<\...\>/templates/solution.json |
-| scripts/warmup.ps1                | protokół https:\//\<\.... \>.blob.core.windows.net/\<\.... \>/scripts/warmup.ps1  |
+| main-template.json                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Main-Template.JSON  |
+| Templates/Solution.JSON           | https:\//\<\..\>. blob.core.windows.net/\<\..\>/templates/Solution.JSON |
+| scripts/warmup.ps1                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/scripts/warmup.ps1  |
 
 
 Nazywamy identyfikatora Uri ten kontener obiektów blob podstawowy identyfikator Uri. Każdej wersji środowiska laboratoryjnego ma swój własny kontener obiektów blob, a w związku z tym, co wersja środowiska laboratoryjnego ma własny podstawowy identyfikator Uri. Wersja testowa można przekazać podstawowy identyfikator Uri zestawu pakietu wdrażania rozpakowany do szablonu za pomocą parametrów szablonu.
@@ -317,7 +318,7 @@ Teraz, gdy masz utworzone wersji testowej, w tej sekcji przedstawiono wszystkie 
 
 ![Włączanie wersji testowej w interfejsie użytkownika](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-Pole pierwszy i najważniejszy jest do wyświetlania i ukrywania ma wersję testową włączony oferty, czy nie. Po wybraniu **tak,** pozostałej części formularza wszystkie wymagane pola są prezentowane służących do wypełniania. Po wybraniu **nie** formularza zostanie wyłączona, a Jeśli publikujesz za pomocą wersji testowej wyłączone wersji testowej zostanie usunięta ze środowiska produkcyjnego.
+Pole pierwszy i najważniejszy jest do wyświetlania i ukrywania ma wersję testową włączony oferty, czy nie. Po wybraniu **opcji tak** pozostała część formularza ze wszystkimi wymaganymi polami zostanie wypełniona. Po wybraniu opcji **nie** formularz zostanie wyłączony, a w przypadku ponownego opublikowania z wyłączonym dyskiem testowym dysk testowy zostanie usunięty z produkcji.
 
 Uwaga: Jeśli istnieją, wszystkie testy dyski są aktywnie używane przez użytkowników, tych wersji testowych będzie kontynuował działanie aż do wygaśnięcia ich sesji.
 
@@ -382,7 +383,7 @@ W przeciwnym razie należy utworzyć nową dzierżawę usługi Azure Active Dire
 
 ![Wykaz usługi Azure Active Directory dzierżawy](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Zdefiniuj organizacji, domeny i kraj/region dla dzierżawy usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Zdefiniuj organizację, domenę i kraj/region dla dzierżawy usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![Potwierdź wybór](./media/azure-resource-manager-test-drive/subdetails6.png)
 
@@ -404,7 +405,7 @@ Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy doda�
 
 1. Przejdź do bloku subskrypcje i wybierz odpowiednią subskrypcję, którego używasz do testowej.
 1. Kliknij przycisk **kontrola dostępu (IAM)** .
-1. Kliknij przycisk **przypisań ról** kartę.  ![Dodaj nową jednostkę kontroli dostępu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Kliknij kartę **przypisania ról** .  ![dodać nowego Access Control głównej](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Kliknij przycisk **Dodaj przypisanie roli**.
 1. Ustaw rolę **Współautor**.
 1. Wpisz nazwę aplikacji usługi Azure AD, a następnie wybierz aplikację, aby przypisać rolę.
@@ -415,7 +416,7 @@ Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy doda�
 
 ![Pokazuje kluczy dla aplikacji usługi Azure AD](./media/azure-resource-manager-test-drive/subdetails8.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy wszystkich pól wersji testowej wypełnione przejść i **ponownie opublikować** oferty. Po upływie wersji testowej certyfikacji powinien przeprowadzić dokładnie przetestować środowiska klienta w **(wersja zapoznawcza)** oferty. Uruchom wersję testową w interfejsie użytkownika, a następnie otwórz Twojej subskrypcji platformy Azure w witrynie Azure portal i sprawdź, czy wersji testowych są w pełni wdrażany prawidłowo.
 

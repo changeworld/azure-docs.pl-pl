@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677574"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887536"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights dla usług Azure Cloud Services
 [Application Insights][start] mogą monitorować [aplikacje usługi w chmurze platformy Azure](https://azure.microsoft.com/services/cloud-services/) pod kątem dostępności, wydajności, błędów i użycia przez połączenie danych z zestawów sdk Application Insights z danymi [Diagnostyka Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -26,7 +26,7 @@ Przed rozpoczęciem należy:
 * Microsoft Azure Tools 2,9 lub nowszy.
 * Developer Analytics Tools 7,10 lub nowszy.
 
-## <a name="get-started-quickly"></a>Szybkie rozpoczęcie efektywnej pracy
+## <a name="get-started-quickly"></a>Szybkie rozpoczynanie pracy
 Najszybszym i najłatwiejszym sposobem monitorowania usługi w chmurze za pomocą usługi Application Insights jest wybranie tej opcji podczas publikowania usługi na platformie Azure.
 
 ![Przykładowa strona ustawień diagnostyki](./media/cloudservices/azure-cloud-application-insights.png)
@@ -57,7 +57,7 @@ Każdy zasób należy do grupy zasobów. Grupy zasobów służą do zarządzania
 ### <a name="resources-for-components"></a>Zasoby dla składników
 Zalecamy utworzenie osobnego zasobu dla każdego składnika aplikacji. Oznacza to, że tworzysz zasób dla każdej roli sieci Web i roli procesu roboczego. Każdy składnik można analizować oddzielnie, ale utworzysz [pulpit nawigacyjny](../../azure-monitor/app/overview-dashboard.md) , który łączy kluczowe wykresy ze wszystkich składników, dzięki czemu można je porównywać i monitorować razem w jednym widoku. 
 
-Alternatywnym podejściem jest wysyłanie danych telemetrycznych z więcej niż jednej roli do tego samego zasobu, ale [dodanie właściwości wymiaru do każdego elementu telemetrii](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) , który identyfikuje jego rolę źródłową. W tym podejściu wykresy metryk, takie jak wyjątki, zwykle pokazują agregację liczników z różnych ról, ale w razie potrzeby można podzielić wykres na segmenty. Możesz również filtrować wyszukiwania według tego samego wymiaru. Alternatywą jest łatwiejsze wyświetlanie wszystkiego w tym samym czasie, ale może to również prowadzić do pomyłek między rolami.
+Alternatywnym podejściem jest wysyłanie danych telemetrycznych z więcej niż jednej roli do tego samego zasobu, ale [dodanie właściwości wymiaru do każdego elementu telemetrii](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) , który identyfikuje jego rolę źródłową. W tym podejściu wykresy metryk, takie jak wyjątki, zwykle pokazują agregację liczników z różnych ról, ale w razie potrzeby można podzielić wykres na segmenty. Możesz również filtrować wyszukiwania według tego samego wymiaru. Alternatywą jest łatwiejsze wyświetlanie wszystkiego w tym samym czasie, ale może to również prowadzić do pomyłek między rolami.
 
 Telemetria przeglądarki zwykle jest zawarta w tym samym zasobie, co jej rola sieci Web po stronie serwera.
 
@@ -74,7 +74,7 @@ Aby wysłać dane telemetryczne do odpowiednich zasobów, można skonfigurować 
 
 Jeśli postanowisz utworzyć oddzielny zasób dla każdej roli i być może jest to osobny zestaw dla każdej konfiguracji kompilacji, najłatwiej ją utworzyć w portalu Application Insights. W przypadku tworzenia zasobów o dużej ilości można [zautomatyzować proces](../../azure-monitor/app/powershell.md).
 
-1. W [Azure Portal][portal]wybierz kolejno pozycje **Nowy**  > **usługi deweloperskie**  > **Application Insights**.  
+1. W [Azure Portal][portal]wybierz kolejno pozycje **Nowy** > **usługi deweloperskie** > **Application Insights**.  
 
     ![Okienko Application Insights](./media/cloudservices/01-new.png)
 
@@ -86,7 +86,7 @@ Każdy zasób jest identyfikowany przez klucz Instrumentacji. Ten klucz może by
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Konfigurowanie diagnostyki platformy Azure dla każdej roli
 Ustaw tę opcję, aby monitorować aplikację za pomocą usługi Application Insights. W przypadku ról sieci Web Ta opcja zapewnia monitorowanie wydajności, alerty, diagnostykę i analizę użycia. W przypadku innych ról można wyszukiwać i monitorować Diagnostyka Azure, takie jak ponowne uruchamianie, liczniki wydajności i wywołania do System. Diagnostics. Trace. 
 
-1. W programie Visual Studio Eksplorator rozwiązań w obszarze **\<YourCloudService >** **role** >  Otwórz właściwości każdej roli.
+1. W programie Visual Studio Eksplorator rozwiązań w obszarze **\<YourCloudService >** **role** > Otwórz właściwości każdej roli.
 
 1. W obszarze **Konfiguracja**zaznacz pole wyboru **Wyślij dane diagnostyczne do Application Insights** , a następnie wybierz utworzony wcześniej zasób Application Insights.
 
@@ -94,7 +94,7 @@ Jeśli zamierzasz używać osobnego zasobu usługi Application Insights dla każ
 
 ![Konfigurowanie Application Insights](./media/cloudservices/configure-azure-diagnostics.png)
 
-Ma to wpływ na wstawianie kluczy Instrumentacji Application Insights do plików o nazwie *ServiceConfiguration. \*. cscfg*. Oto [przykładowy kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+Ma to wpływ na wstawianie kluczy Instrumentacji Application Insights do plików o nazwie *ServiceConfiguration.\*. cscfg*. Oto [przykładowy kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Jeśli chcesz zmienić poziom informacji diagnostycznych wysyłanych do Application Insights, możesz to zrobić, [edytując pliki *. cscfg* bezpośrednio](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
@@ -224,7 +224,7 @@ W przypadku ról procesów roboczych można śledzić wyjątki na dwa sposoby:
 ## <a name="performance-counters"></a>Liczniki wydajności
 Domyślnie są zbierane następujące liczniki:
 
-* \Process (?? APP_WIN32_PROC??) Czas procesora \%
+* \Process (?? APP_WIN32_PROC??) Czas procesora\%
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -271,7 +271,7 @@ Jeśli masz klienta aplikacji mobilnej, użyj pakietu [App Center](../../azure-m
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Wyjątek "nie znaleziono metody" w działaniu w usługach Azure Cloud Services
 Czy to kompilacja dla .NET 4.6? Platforma .NET 4,6 nie jest automatycznie obsługiwana w rolach usług Azure Cloud Services. [Zainstaluj program .net 4,6 na każdej roli](../../cloud-services/cloud-services-dotnet-install-dotnet.md) przed uruchomieniem aplikacji.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 

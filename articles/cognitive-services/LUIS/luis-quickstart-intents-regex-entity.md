@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Wyrażenie regularne-LUIS'
+title: 'Samouczek: wyrażenie regularne — LUIS'
 titleSuffix: Azure Cognitive Services
 description: Wyodrębnij spójnie sformatowane dane z wypowiedzi przy użyciu jednostki Regular Expression (Wyrażenie regularne).
 services: cognitive-services
@@ -9,17 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0f24721272c85d658a46ab1319e6f4af79b29364
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307601"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465147"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Samouczek: uzyskiwanie prawidłowo sformatowanych danych z wypowiedzi
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Samouczek: pobieranie dobrze sformatowanych danych z wypowiedź
 W tym samouczku utworzysz aplikację, która wyodrębnia spójnie sformatowane dane z wypowiedzi przy użyciu jednostki **Regular Expression** (Wyrażenie regularne).
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -61,7 +63,7 @@ Wyrażenie regularne jest dobrym rozwiązaniem w przypadku tego typu danych, je�
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
+1. Wybierz pozycję**Create new intent** (Utwórz nową intencję). 
 
 1. Wprowadź ciąg `FindForm` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe). 
 
@@ -99,7 +101,7 @@ W poniższych krokach utwórz jednostkę wyrażenia regularnego, aby określić 
 
 1. Wybierz przycisk **Create new entity** (Utwórz nową jednostkę) na stronie Jednostki. 
 
-1. W podręcznym oknie dialogowym wprowadź nazwę nowej jednostki `HRF-number`, wybierz typ jednostki **RegEx**, wprowadź ciąg `hrf-[0-9]{6}` jako wartość **wyrażenia regularnego**, a następnie wybierz pozycję **Done** (Gotowe).
+1. W podręcznym oknie dialogowym wprowadź nazwę nowej jednostki `HRF-number`, wybierz typ jednostki **RegEx**, wprowadź ciąg `hrf-[0-9]** ` jako wartość **wyrażenia regularnego**, a następnie wybierz pozycję **Done** (Gotowe).
 
     ![Zrzut ekranu przedstawiający podręczne okno dialogowe z ustawieniami właściwości nowej jednostki](./media/luis-quickstart-intents-regex-entity/create-regex-entity.png)
 
