@@ -72,8 +72,6 @@
           href: how-to-enable-remote-desktop-linux.md
         - name: Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu
           href: how-to-enable-nested-virtualization-template-vm.md
-        - name: Tworzenie środowiska z wieloma maszynami wirtualnymi w maszynie wirtualnej szablonu
-          href: how-to-enable-multi-vm-environment.md
     - name: Łączenie się z maszynami wirtualnymi w laboratoriach na potrzeby zajęć (uczeń)
       items:
         - name: Dostęp do laboratoriów na potrzeby zajęć
