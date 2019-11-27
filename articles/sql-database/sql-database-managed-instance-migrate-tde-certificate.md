@@ -1,6 +1,6 @@
 ---
-title: Migrate TDE certificate - managed instance
-description: Migrate certificate protecting Database Encryption Key of a database with transparent Data Encryption to Azure SQL Database Managed Instance
+title: Migrowanie wystąpienia zarządzanego przez certyfikat TDE
+description: Migruj certyfikat ochrony klucza szyfrowania bazy danych z użyciem przezroczystego szyfrowania danych do Azure SQL Database wystąpienia zarządzanego
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -18,9 +18,9 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420747"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrate certificate of TDE protected database to Azure SQL Database Managed Instance
+# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migruj certyfikat TDE chronionej bazy danych Azure SQL Database do wystąpienia zarządzanego
 
-When migrating a database protected by [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) to Azure SQL Database Managed Instance using native restore option, the corresponding certificate from the on-premises or IaaS SQL Server needs to be migrated before database restore. Ten artykuł przeprowadzi Cię przez proces ręcznej migracji certyfikatu do wystąpienia zarządzanego usługi Azure SQL Database:
+Podczas migrowania bazy danych chronionej przez [transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) do Azure SQL Database wystąpienia zarządzanego przy użyciu opcji przywracania natywnego należy zmigrować odpowiedni certyfikat z SQL Server lokalnego lub IaaS przed przywróceniem bazy danych. Ten artykuł przeprowadzi Cię przez proces ręcznej migracji certyfikatu do wystąpienia zarządzanego usługi Azure SQL Database:
 
 > [!div class="checklist"]
 > * Eksportowanie certyfikatu do pliku wymiany informacji osobistych (pfx)
@@ -30,7 +30,7 @@ When migrating a database protected by [Transparent Data Encryption](https://doc
 Alternatywną możliwość bezproblemowej migracji zarówno bazy danych chronionej przez funkcję TDE, jak i odpowiedniego certyfikatu, korzystającą z w pełni zarządzanej usługi opisano w artykule [Jak przeprowadzić migrację lokalnej bazy danych do wystąpienia zarządzanego przy użyciu usługi Azure Database Migration Service](../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> Migrowany certyfikat jest używany tylko do przywracania bazy danych chronionej przez funkcję TDE. Soon after restore is done, the migrated certificate gets replaced by a different protector, either service-managed certificate or asymmetric key from the key vault, depending on the type of the transparent data encryption you set on the instance.
+> Migrowany certyfikat jest używany tylko do przywracania bazy danych chronionej przez funkcję TDE. Wkrótce po zakończeniu przywracania migrowany certyfikat zostanie zastąpiony przez inną funkcję ochrony, certyfikat zarządzany przez usługę lub klucz asymetryczny z magazynu kluczy, w zależności od typu przezroczystego szyfrowania danych ustawionego w wystąpieniu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,15 +43,15 @@ Do wykonania kroków opisanych w tym artykule potrzebne jest spełnienie następ
 
 Upewnij się, że masz:
 
-- Azure PowerShell module [installed and updated](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- [Az.Sql module](https://www.powershellgallery.com/packages/Az.Sql).
+- Moduł Azure PowerShell [zainstalowany i zaktualizowany](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- [AZ. SQL module](https://www.powershellgallery.com/packages/Az.Sql).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
-Run the following commands in PowerShell to install/update the module:
+Uruchom następujące polecenia w programie PowerShell, aby zainstalować/zaktualizować moduł:
 
 ```azurepowershell
 Install-Module -Name Az.Sql
@@ -127,7 +127,7 @@ Jeśli certyfikat jest przechowywany w magazynie certyfikatów komputera lokalne
 
 4. Postępuj zgodnie z poleceniami kreatora, aby wyeksportować certyfikat i klucz prywatny do formatu wymiany informacji osobistych
 
-## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Upload certificate to Azure SQL Database Managed Instance using Azure PowerShell cmdlet
+## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Przekaż certyfikat do Azure SQL Database wystąpienia zarządzanego przy użyciu polecenia cmdlet Azure PowerShell
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -158,7 +158,7 @@ Jeśli certyfikat jest przechowywany w magazynie certyfikatów komputera lokalne
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-You need to first [setup an Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) with your *.pfx* file.
+Musisz najpierw [skonfigurować Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) przy użyciu pliku *PFX* .
 
 1. Rozpocznij od kroków przygotowawczych w programie PowerShell:
 
@@ -186,6 +186,6 @@ Certyfikat jest teraz dostępny dla określonego wystąpienia zarządzanego i mo
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this article, you learned how to migrate certificate protecting encryption key of database with Transparent Data Encryption, from the on-premises or IaaS SQL Server to Azure SQL Database Managed Instance.
+W tym artykule przedstawiono sposób migrowania klucza szyfrowania ochrony certyfikatu bazy danych Transparent Data Encryption z SQL Server lokalnego lub IaaS do Azure SQL Database wystąpienia zarządzanego.
 
 Zobacz [Przywracanie kopii zapasowej bazy danych do wystąpienia zarządzanego usługi Azure SQL Database](sql-database-managed-instance-get-started-restore.md), aby dowiedzieć się, jak przywrócić kopię zapasową bazy danych do wystąpienia zarządzanego usługi Azure SQL Database.

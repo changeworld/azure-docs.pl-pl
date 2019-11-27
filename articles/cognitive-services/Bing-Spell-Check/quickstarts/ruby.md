@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Check spelling with the REST API and Ruby - Bing Spell Check'
+title: 'Szybki Start: sprawdzanie pisowni za pomocą interfejsu API REST i języka Ruby-sprawdzanie pisowni Bing'
 titleSuffix: Azure Cognitive Services
 description: Rozpocznij korzystanie z interfejsu API REST sprawdzania pisowni Bing, aby sprawdzać pisownię i poprawność gramatyczną.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383837"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Quickstart: Check spelling with the Bing Spell Check REST API and Ruby
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Szybki Start: sprawdzanie pisowni przy użyciu interfejsu API REST sprawdzanie pisowni Bing i języka Ruby
 
 Użyj tego przewodnika Szybki start, aby wykonać swoje pierwsze wywołanie interfejsu API REST sprawdzania pisowni Bing przy użyciu języka Ruby. Ta prosta aplikacja wysyła żądanie do interfejsu API i zwraca listę nierozpoznanych słów oraz sugerowane poprawki. Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy tej aplikacji jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
 
@@ -49,7 +49,7 @@ Użyj tego przewodnika Szybki start, aby wykonać swoje pierwsze wywołanie inte
 
 ## <a name="send-a-spell-check-request"></a>Wysyłanie żądania sprawdzania pisowni
 
-1. Utwórz identyfikator URI na podstawie identyfikatora URI hosta, ścieżki oraz ciągu parametrów. Set its query to contain the text you want to spell check.
+1. Utwórz identyfikator URI na podstawie identyfikatora URI hosta, ścieżki oraz ciągu parametrów. Ustaw, aby zapytanie zawierało tekst, który ma być sprawdzany.
 
    ```ruby
    uri = URI(uri + path + params)

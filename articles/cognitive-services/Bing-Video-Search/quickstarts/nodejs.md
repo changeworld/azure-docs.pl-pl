@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Search for videos using the REST API and Node.js - Bing Video Search'
+title: 'Szybki Start: wyszukiwanie filmów wideo przy użyciu interfejsu API REST i środowiska Node. js — wyszukiwanie wideo Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki start, aby wysyłać żądania wyszukiwania wideo do interfejsu API REST wyszukiwania wideo Bing przy użyciu języka JavaScript.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383811"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Quickstart: Search for videos using the Bing Video Search REST API and Node.js
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Szybki Start: wyszukiwanie filmów wideo przy użyciu interfejsu API REST wyszukiwanie wideo Bing i środowiska Node. js
 
 Ten przewodnik Szybki start umożliwia wykonanie pierwszego wywołania interfejsu API wyszukiwania wideo Bing i wyświetlenie wyników wyszukiwania na podstawie odpowiedzi JSON. Ta prosta aplikacja w języku JavaScript wysyła zapytanie HTTP wyszukiwania wideo do interfejsu API i wyświetla odpowiedź. Ta aplikacja jest napisana w języku JavaScript i używa środowiska Node.js, a interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) wraz z dodatkową obsługą błędów i adnotacjami kodu.
 
@@ -210,6 +210,6 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz też 
 
  [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)

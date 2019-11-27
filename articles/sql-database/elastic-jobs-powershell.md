@@ -22,7 +22,7 @@ ms.locfileid: "74420359"
 
 [Zadania elastyczne](sql-database-job-automation-overview.md#elastic-database-jobs-preview) umożliwiają uruchamianie jednego lub większej liczby skryptów języka Transact-SQL (T-SQL) równolegle w wielu bazach danych.
 
-In this tutorial, you learn the steps required to run a query across multiple databases:
+W tym samouczku przedstawiono kroki wymagane do uruchomienia zapytania w wielu bazach danych:
 
 > [!div class="checklist"]
 > * Tworzenie agenta zadań elastycznych
@@ -36,13 +36,13 @@ In this tutorial, you learn the steps required to run a query across multiple da
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-The upgraded version of Elastic Database jobs has a new set of PowerShell cmdlets for use during migration. These new cmdlets transfer all of your existing job credentials, targets (including databases, servers, custom collections), job triggers, job schedules, job contents, and jobs over to a new Elastic Job agent.
+Uaktualniona wersja zadania Elastic Database ma nowy zestaw poleceń cmdlet programu PowerShell do użycia podczas migracji. Te nowe polecenia cmdlet przenoszą wszystkie istniejące poświadczenia zadania, cele (w tym bazy danych, serwery, kolekcje niestandardowe), Wyzwalacze zadań, harmonogramy zadań, zawartość zadania i zadania do nowego agenta zadań elastycznych.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Install the latest Elastic Jobs cmdlets
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Zainstaluj najnowsze polecenia cmdlet zadań elastycznych
 
 Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Install the **Az.Sql** module to get the latest Elastic Job cmdlets. Uruchom następujące polecenia w programie PowerShell z dostępem administracyjnym.
+Zainstaluj moduł **AZ. SQL** , aby uzyskać najnowsze polecenia cmdlet Elastic Job. Uruchom następujące polecenia w programie PowerShell z dostępem administracyjnym.
 
 ```powershell
 # installs the latest PackageManagement and PowerShellGet packages
@@ -58,13 +58,13 @@ Import-Module Az.Sql
 Get-Module Az.Sql
 ```
 
-In addition to the **Az.Sql** module, this tutorial also requires the *SqlServer* PowerShell module. Aby uzyskać szczegółowe informacje, zobacz [Install SQL Server PowerShell module (Instalowanie modułu usługi SQL Server dla programu PowerShell)](/sql/powershell/download-sql-server-ps-module).
+Oprócz modułu **AZ. SQL** , ten samouczek wymaga również modułu *SqlServer* PowerShell. Aby uzyskać szczegółowe informacje, zobacz [Install SQL Server PowerShell module (Instalowanie modułu usługi SQL Server dla programu PowerShell)](/sql/powershell/download-sql-server-ps-module).
 
 ## <a name="create-required-resources"></a>Tworzenie wymaganych zasobów
 
 Do utworzenia agenta zadań elastycznych wymagana jest baza danych (S0 lub wyższego poziomu) używana jako [baza danych zadań](sql-database-job-automation-overview.md#job-database).
 
-The script below creates a new resource group, server, and database for use as the Job database. The second script creates a second server with two blank databases to execute jobs against.
+Poniższy skrypt tworzy nową grupę zasobów, serwer i bazę danych do użycia jako baza danych zadań. Drugi skrypt tworzy drugi serwer z dwiema pustymi bazami danych, względem których wykonywane są zadania.
 
 Dla zadań elastycznych nie ma określonych wymagań dotyczących nazewnictwa, można więc zastosować dowolne, o ile są one zgodne z [wymaganiami platformy Azure](/azure/architecture/best-practices/resource-naming).
 
@@ -122,9 +122,9 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Use Elastic Jobs
+## <a name="use-elastic-jobs"></a>Korzystanie z zadań elastycznych
 
-To use Elastic Jobs, register the feature in your Azure subscription by running the following command. Run this command once for the subscription in which you intend to provision the Elastic Job agent. Subscriptions that only contain databases that are job targets don't need to be registered.
+Aby korzystać z zadań elastycznych, zarejestruj funkcję w subskrypcji platformy Azure, uruchamiając następujące polecenie. Uruchom to polecenie raz dla subskrypcji, w ramach której zamierzasz udostępnić Agent zadań elastycznych. Subskrypcje, które zawierają tylko bazy danych, które są obiektami docelowymi, nie muszą być rejestrowane.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
@@ -134,7 +134,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 Agent zadań elastycznych jest zasobem platformy Azure służącym do tworzenia i uruchamiania zadań oraz do zarządzania nimi. Agent wykonuje zadania na podstawie harmonogramu lub jako zadania jednorazowe.
 
-The **New-AzSqlElasticJobAgent** cmdlet requires an Azure SQL database to already exist, so the *resourceGroupName*, *serverName*, and *databaseName* parameters must all point to existing resources.
+Polecenie cmdlet **New-AzSqlElasticJobAgent** wymaga, aby baza danych Azure SQL Database już istnieje, dlatego parametry *resourceGroupName*, *servername*i *DatabaseName* muszą wskazywać istniejące zasoby.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -143,15 +143,15 @@ $jobAgent = $jobDatabase | New-AzSqlElasticJobAgent -Name $agentName
 $jobAgent
 ```
 
-### <a name="create-the-job-credentials"></a>Create the job credentials
+### <a name="create-the-job-credentials"></a>Utwórz poświadczenia zadania
 
-Jobs use database scoped credentials to connect to the target databases specified by the target group upon execution and execute scripts. Te poświadczenia o zakresie bazy danych są również używane do łączenia się z bazą danych master w celu wyliczenia wszystkich baz danych na serwerze lub w puli elastycznej, gdy któryś z tych elementów jest używany jako typ elementu członkowskiego grupy docelowej.
+Zadania używają poświadczeń o zakresie bazy danych do łączenia się z docelowymi bazami danych określonymi przez grupę docelową po wykonaniu i wykonaniu skryptów. Te poświadczenia o zakresie bazy danych są również używane do łączenia się z bazą danych master w celu wyliczenia wszystkich baz danych na serwerze lub w puli elastycznej, gdy któryś z tych elementów jest używany jako typ elementu członkowskiego grupy docelowej.
 
 Poświadczenia o zakresie bazy danych należy utworzyć w bazie danych zadań. Dla wszystkich docelowych baz danych muszą istnieć poświadczenia o uprawnieniach wystarczających do pomyślnego wykonania zadania.
 
 ![Poświadczenia zadań elastycznych](media/elastic-jobs-overview/job-credentials.png)
 
-Oprócz poświadczeń w obrazie zwróć uwagę na dodanie poleceń **GRANT** w poniższym skrypcie. Te uprawnienia są wymagane dla skryptu, który wybrano dla tego przykładowego zadania. Because the example creates a new table in the targeted databases, each target db needs the proper permissions to successfully run.
+Oprócz poświadczeń w obrazie zwróć uwagę na dodanie poleceń **GRANT** w poniższym skrypcie. Te uprawnienia są wymagane dla skryptu, który wybrano dla tego przykładowego zadania. Ponieważ przykład tworzy nową tabelę w docelowych bazach danych, każda docelowa baza danych musi mieć odpowiednie uprawnienia, aby pomyślnie uruchomić.
 
 Aby utworzyć wymagane poświadczenia zadania (w bazie danych zadań), uruchom następujący skrypt:
 
@@ -200,11 +200,11 @@ $jobCred = New-Object -TypeName "System.Management.Automation.PSCredential" -Arg
 $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential $jobCred
 ```
 
-### <a name="define-the-target-databases-to-run-the-job-against"></a>Define the target databases to run the job against
+### <a name="define-the-target-databases-to-run-the-job-against"></a>Zdefiniuj docelowe bazy danych, względem których ma zostać uruchomione zadanie
 
 [Grupa docelowa](sql-database-job-automation-overview.md#target-group) definiuje zestaw zawierający co najmniej jedną bazę danych, względem której będzie wykonywane zadanie.
 
-The following snippet creates two target groups: *serverGroup*, and *serverGroupExcludingDb2*. *serverGroup* targets all databases that exist on the server at the time of execution, and *serverGroupExcludingDb2* targets all databases on the server, except *targetDb2*:
+Poniższy fragment kodu tworzy dwie grupy docelowe: Grupa *serwerów*i *serverGroupExcludingDb2*. *obiekt klasy* jest przeznaczony dla wszystkich baz danych, które istnieją na serwerze w czasie wykonywania, i *serverGroupExcludingDb2* są przeznaczone dla wszystkich baz danych na serwerze, z wyjątkiem *targetDb2*:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -218,9 +218,9 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerName -Database $db2.DatabaseName -Exclude
 ```
 
-### <a name="create-a-job-and-steps"></a>Create a job and steps
+### <a name="create-a-job-and-steps"></a>Tworzenie zadania i kroków
 
-This example defines a job and two job steps for the job to run. W pierwszym kroku zadania (*step1*) zostaje utworzona nowa tabela (*Step1Table*) w każdej bazie danych w grupie docelowej *ServerGroup*. The second job step (*step2*) creates a new table (*Step2Table*) in every database except for *TargetDb2*, because the target group defined previously specified to exclude it.
+Ten przykład definiuje zadanie i dwa etapy zadania, aby zadanie zostało uruchomione. W pierwszym kroku zadania (*step1*) zostaje utworzona nowa tabela (*Step1Table*) w każdej bazie danych w grupie docelowej *ServerGroup*. Drugi krok zadania (*step2*) tworzy nową tabelę (*Step2Table*) w każdej bazie danych (z wyjątkiem *TargetDb2*), ponieważ Grupa docelowa zdefiniowana wcześniej do wykluczenia.
 
 ```powershell
 Write-Output "Creating a new job..."
@@ -250,7 +250,7 @@ Po pomyślnym ukończeniu powinny być widoczne dwie nowe tabele w bazie danych 
 
    ![weryfikacja nowych tabel w programie SSMS](media/elastic-jobs-overview/job-execution-verification.png)
 
-You can also schedule the job to run later. Aby zaplanować uruchomienie zadania w określonym czasie, uruchom następujące polecenie:
+Możesz również zaplanować uruchomienie zadania później. Aby zaplanować uruchomienie zadania w określonym czasie, uruchom następujące polecenie:
 
 ```powershell
 # run every hour starting from now
@@ -272,27 +272,27 @@ $jobExecution | Get-AzSqlElasticJobStepExecution
 $jobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
 
-The following table lists the possible job execution states:
+W poniższej tabeli wymieniono możliwe Stany wykonania zadania:
 
-|Stan|Opis|
+|State|Opis|
 |:---|:---|
-|**Created** | The job execution was just created and is not yet in progress.|
-|**InProgress** | The job execution is currently in progress.|
-|**WaitingForRetry** | The job execution wasn’t able to complete its action and is waiting to retry.|
-|**Powodzenie** | The job execution has completed successfully.|
-|**SucceededWithSkipped** | The job execution has completed successfully, but some of its children were skipped.|
-|**Niepowodzenie** | The job execution has failed and exhausted its retries.|
-|**TimedOut** | The job execution has timed out.|
-|**Anulowano** | The job execution was canceled.|
-|**Pominięto** | The job execution was skipped because another execution of the same job step was already running on the same target.|
-|**WaitingForChildJobExecutions** | The job execution is waiting for its child executions to complete.|
+|**Utworzony** | Wykonywanie zadania zostało właśnie utworzone i nie jest jeszcze w toku.|
+|**Toku** | Wykonywanie zadania jest obecnie w toku.|
+|**WaitingForRetry** | Wykonanie zadania nie mogło wykonać akcji i oczekuje na ponowienie próby.|
+|**Powodzenie** | Wykonywanie zadania zakończyło się pomyślnie.|
+|**SucceededWithSkipped** | Wykonywanie zadania zakończyło się pomyślnie, ale niektóre z jego elementów podrzędnych zostały pominięte.|
+|**Niepowodzenie** | Wykonanie zadania nie powiodło się i wystąpiła ponowna próba.|
+|**TimedOut** | Przekroczono limit czasu wykonywania zadania.|
+|**Anulowano** | Wykonywanie zadania zostało anulowane.|
+|**Pominięto** | Wykonywanie zadania zostało pominięte, ponieważ inne wykonanie tego samego kroku zadania zostało już uruchomione na tym samym elemencie docelowym.|
+|**WaitingForChildJobExecutions** | Wykonywanie zadania oczekuje na ukończenie wykonania elementu podrzędnego.|
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Usuń zasoby platformy Azure utworzone w tym samouczku, usuwając grupę zasobów.
 
 > [!TIP]
-> If you plan to continue to work with these jobs, you do not clean up the resources created in this article.
+> Jeśli planujesz kontynuować pracę z tymi zadaniami, nie czyść zasobów utworzonych w tym artykule.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName

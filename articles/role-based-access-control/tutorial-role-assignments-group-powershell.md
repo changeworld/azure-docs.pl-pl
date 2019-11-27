@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Grant a group access to Azure resources using RBAC and Azure PowerShell
-description: Learn how to grant a group access to Azure resources using role-based access control (RBAC) and Azure PowerShell in this tutorial.
+title: Samouczek — udzielanie grupie dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell
+description: Dowiedz się, jak przyznać grupie dostęp do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach (RBAC) i Azure PowerShell w tym samouczku.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -20,7 +20,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74418595"
 ---
-# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Tutorial: Grant a group access to Azure resources using RBAC and Azure PowerShell
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Samouczek: udzielanie grupie dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell
 
 [Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. W tym samouczku przyznasz grupie dostęp z możliwością wyświetlania wszystkiego w ramach subskrypcji i zarządzania wszystkim w grupie zasobów przy użyciu programu Azure PowerShell.
 
@@ -46,9 +46,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli. Przypisanie roli składa się z trzech elementów: podmiotu zabezpieczeń, definicji roli i zakresu. W tym samouczku utworzysz dwa przypisania ról:
 
-| Podmiot zabezpieczeń | Definicja roli | Zakres |
+| Podmiot zabezpieczeń | Definicja roli | Scope |
 | --- | --- | --- |
-| Grupa<br>(Grupa samouczka kontroli dostępu opartej na rolach) | [Czytelnik](built-in-roles.md#reader) | Subskrypcja |
+| Grupa<br>(Grupa samouczka kontroli dostępu opartej na rolach) | [Czytelnik](built-in-roles.md#reader) | Subscription |
 | Grupa<br>(Grupa samouczka kontroli dostępu opartej na rolach)| [Współautor](built-in-roles.md#contributor) | Grupa zasobów<br>(rbac-tutorial-resource-group) |
 
    ![Przypisania ról dla grupy](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
@@ -70,9 +70,9 @@ Do przypisania roli potrzebny jest użytkownik, grupa lub jednostka usługi. Je�
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-If you don't have permissions to create groups, you can try the [Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-user-powershell.md) instead.
+Jeśli nie masz uprawnień do tworzenia grup, możesz spróbować skorzystać z [samouczka: Udziel użytkownikom dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell](tutorial-role-assignments-user-powershell.md) zamiast tego.
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Za pomocą grupy zasobów można zademonstrować przypisywanie roli w zakresie grupy zasobów.
 
@@ -281,7 +281,7 @@ Aby wyczyścić zasoby utworzone w tym samouczku, usuń grupę zasobów i grupę
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. When asked to confirm, type **Y**. It will take a few seconds to delete.
+1. Gdy zostanie wyświetlony monit o potwierdzenie, wpisz **Y**. Usunięcie może potrwać kilka sekund.
 
 1. Usuń grupę za pomocą polecenia [Remove-AzureADGroup](/powershell/module/azuread/remove-azureadgroup).
 

@@ -1,102 +1,102 @@
 ---
 title: Plan Premium usługi Azure Functions
-description: Details and configuration options (VNet, no cold start, unlimited execution duration) for the Azure Functions Premium plan.
+description: Szczegóły i opcje konfiguracji (Sieć wirtualna, brak nieograniczonego czasu wykonywania) dla planu Azure Functions Premium.
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 99589a4f11f91afa7d3c9f93d844654ccc69aab1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322960"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532897"
 ---
 # <a name="azure-functions-premium-plan"></a>Plan Premium usługi Azure Functions
 
-The Azure Functions Premium plan is a hosting option for function apps. The Premium plan provides features like VNet connectivity, no cold start, and premium hardware.  Multiple function apps can be deployed to the same Premium plan, and the plan allows you to configure compute instance size, base plan size, and maximum plan size.  For a comparison of the Premium plan and other plan and hosting types, see [function scale and hosting options](functions-scale.md).
+Plan Azure Functions Premium to opcja hostingu dla aplikacji funkcji. Plan Premium oferuje funkcje, takie jak łączność sieci wirtualnej, sprzęt zimnego startu i Premium.  Wiele aplikacji funkcji można wdrożyć w tym samym planie Premium, a plan umożliwia skonfigurowanie rozmiaru wystąpienia obliczeniowego, rozmiaru planu bazowego i maksymalnego rozmiaru planu.  Aby zapoznać się z porównaniem planu Premium i innych typów planów i hostingu, zobacz [Funkcja skalowanie i opcje hostingu](functions-scale.md).
 
-## <a name="create-a-premium-plan"></a>Create a Premium plan
+## <a name="create-a-premium-plan"></a>Tworzenie planu Premium
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-You can also create a Premium plan using [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) in the Azure CLI. The following example creates an _Elastic Premium 1_ tier plan:
+Plan Premium można również utworzyć za pomocą polecenia [AZ functionapp plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) w interfejsie wiersza polecenia platformy Azure. W poniższym przykładzie jest tworzony plan warstwy _Premium 1_ :
 
 ```azurecli-interactive
 az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
 --location <REGION> --sku EP1
 ```
 
-In this example, replace `<RESOURCE_GROUP>` with your resource group and `<PLAN_NAME>` with a name for your plan that is unique in the resource group. Specify a [supported `<REGION>`](#regions). To create a Premium plan that supports Linux, include the `--is-linux` option.
+W tym przykładzie Zastąp `<RESOURCE_GROUP>` w grupie zasobów i `<PLAN_NAME>` nazwą planu, który jest unikatowy w grupie zasobów. Określ [obsługiwaną `<REGION>`](#regions). Aby utworzyć plan Premium, który obsługuje system Linux, należy uwzględnić opcję `--is-linux`.
 
-With the plan created, you can use [az functionapp create](/cli/azure/functionapp#az-functionapp-create) to create your function app. In the portal, both the plan and the app are created at the same time. 
+Po utworzeniu planu możesz użyć [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) , aby utworzyć aplikację funkcji. W portalu zarówno plan, jak i aplikacja są tworzone w tym samym czasie. Aby zapoznać się z przykładem kompletnego skryptu interfejsu wiersza polecenia platformy Azure, zobacz [Tworzenie aplikacji funkcji w planie Premium](scripts/functions-cli-create-premium-plan.md).
 
 ## <a name="features"></a>Funkcje
 
-The following features are available to function apps deployed to a Premium plan.
+Następujące funkcje są dostępne dla aplikacji funkcjonalnych wdrożonych w planie Premium.
 
-### <a name="pre-warmed-instances"></a>Pre-warmed instances
+### <a name="pre-warmed-instances"></a>Wystąpienia przed wystąpieniem
 
-If no events and executions occur today in the Consumption plan, your app may scale down to zero instances. When new events come in, a new instance needs to be specialized with your app running on it.  Specializing new instances may take some time depending on the app.  This additional latency on the first call is often called app cold start.
+Jeśli w planie zużycia nie wystąpiły żadne zdarzenia i wykonania, aplikacja może skalować w dół do wartości zero. Gdy pojawią się nowe zdarzenia, nowe wystąpienie musi być wyspecjalizowane dla działającej aplikacji.  Specjalizacja nowych wystąpień może zająć trochę czasu w zależności od aplikacji.  To dodatkowe opóźnienie pierwszego wywołania jest często nazywane aplikacją zimnego startu.
 
-In the Premium plan, you can have your app pre-warmed on a specified number of instances, up to your minimum plan size.  Pre-warmed instances also let you pre-scale an app before high load. As the app scales out, it first scales into the pre-warmed instances. Additional instances continue to buffer out and warm immediately in preparation for the next scale operation. By having a buffer of pre-warmed instances, you can effectively avoid cold start latencies.  Pre-warmed instances is a feature of the Premium plan, and you need to keep at least one instance running and available at all times the plan is active.
+W planie Premium aplikacja została wstępnie przegrzana na określoną liczbę wystąpień do minimalnej wielkości planu.  Wystąpienia przed obciążeniem umożliwiają również wstępne skalowanie aplikacji. Gdy aplikacja jest skalowana w poziomie, najpierw skaluje się do wygrzanych wystąpień. Dodatkowe wystąpienia kontynuują buforowanie i podgrzewanie natychmiast po przygotowaniu dla następnej operacji skalowania. Dzięki buforowi wstępnie wygrzanych wystąpień można skutecznie uniknąć opóźnień zimnego uruchamiania.  Wystąpienia wstępnie działające to funkcja planu Premium, która wymaga, aby co najmniej jedno wystąpienie było uruchomione i dostępne we wszystkich przypadkach, gdy plan jest aktywny.
 
-You can configure the number of pre-warmed instances in the Azure portal by selected your **Function App**, going to the **Platform Features** tab, and selecting the **Scale Out** options. In the function app edit window, pre-warmed instances is specific to that app, but the minimum and maximum instances apply to your entire plan.
+Liczbę wstępnie rozgrzanych wystąpień można skonfigurować w Azure Portal przez wybranie **aplikacja funkcji**, przejście na kartę **funkcje platformy** i wybranie opcji **skalowania w poziomie** . W oknie Edycja aplikacji funkcji, wstępnie rozgrzane wystąpienia są specyficzne dla tej aplikacji, ale minimalne i maksymalne wystąpienia są stosowane do całego planu.
 
-![Elastic Scale Settings](./media/functions-premium-plan/scale-out.png)
+![Ustawienia skalowania elastycznego](./media/functions-premium-plan/scale-out.png)
 
-You can also configure pre-warmed instances for an app with the Azure CLI
+Możesz również skonfigurować wystąpienia wstępnie zagrzane dla aplikacji za pomocą interfejsu wiersza polecenia platformy Azure
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
-### <a name="private-network-connectivity"></a>Private network connectivity
+### <a name="private-network-connectivity"></a>Łączność sieci prywatnej
 
-Azure Functions deployed to a Premium plan takes advantage of [new VNet integration for web apps](../app-service/web-sites-integrate-with-vnet.md).  When configured, your app can communicate with resources within your VNet or secured via service endpoints.  IP restrictions are also available on the app to restrict incoming traffic.
+Azure Functions wdrożone w planie Premium wykorzystuje [nową integrację sieci wirtualnej dla usługi Web Apps](../app-service/web-sites-integrate-with-vnet.md).  Po skonfigurowaniu aplikacja może komunikować się z zasobami w sieci wirtualnej lub zabezpieczonymi za pośrednictwem punktów końcowych usługi.  Ograniczenia adresów IP są również dostępne w aplikacji w celu ograniczenia ruchu przychodzącego.
 
-When assigning a subnet to your function app in a Premium plan, you need a subnet with enough IP addresses for each potential instance. We require an IP block with at least 100 available addresses.
+Podczas przypisywania podsieci do aplikacji funkcji w planie Premium potrzebna jest podsieć z wystarczającą liczbą adresów IP dla każdego potencjalnego wystąpienia. Wymagamy bloku IP z co najmniej 100 dostępnych adresów.
 
-Fore more information, see [integrate your function app with a VNet](functions-create-vnet.md).
+Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji funkcji z siecią wirtualną](functions-create-vnet.md).
 
-### <a name="rapid-elastic-scale"></a>Rapid elastic scale
+### <a name="rapid-elastic-scale"></a>Szybka Skala elastycznych
 
-Additional compute instances are automatically added for your app using the same rapid scaling logic as the Consumption plan.  To learn more about how scaling works, see [Function scale and hosting](./functions-scale.md#how-the-consumption-and-premium-plans-work).
+Dodatkowe wystąpienia obliczeniowe są automatycznie dodawane do aplikacji przy użyciu tej samej logiki szybkiego skalowania jako planu zużycia.  Aby dowiedzieć się więcej o tym, jak działa skalowanie, zobacz [Funkcja skalowanie i hosting](./functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-### <a name="longer-run-duration"></a>Longer run duration
+### <a name="longer-run-duration"></a>Dłuższy czas trwania
 
-Azure Functions in a Consumption plan are limited to 10 minutes for a single execution.  In the Premium plan, the run duration defaults to 30 minutes to prevent runaway executions. However, you can [modify the host.json configuration](./functions-host-json.md#functiontimeout) to make this 60 minutes for Premium plan apps.
+Azure Functions w planie zużycia są ograniczone do 10 minut w przypadku pojedynczego wykonania.  W planie Premium wartość czasu trwania przebiegu jest domyślnie równa 30 minut, aby uniemożliwić przemijające wykonania. Można jednak [zmodyfikować konfigurację pliku host. JSON](./functions-host-json.md#functiontimeout) w taki sposób, aby 60 minuty dla aplikacji planu Premium.
 
-## <a name="plan-and-sku-settings"></a>Plan and SKU settings
+## <a name="plan-and-sku-settings"></a>Ustawienia planu i jednostki SKU
 
-When you create the plan, you configure two settings: the minimum number of instances (or plan size) and the maximum burst limit.  Minimum instances are reserved and always running.
+Podczas tworzenia planu można skonfigurować dwa ustawienia: minimalną liczbę wystąpień (lub rozmiar planu) i maksymalny limit.  Minimalna liczba wystąpień jest zarezerwowana i zawsze uruchomiona.
 
 > [!IMPORTANT]
-> You are charged for each instance allocated in the minimum instance count regardless if functions are executing or not.
+> Opłaty są naliczane za każde wystąpienie przydzieloną w minimalnej liczbie wystąpień niezależnie od tego, czy funkcje są wykonywane, czy nie.
 
-If your app requires instances beyond your plan size, it can continue to scale out until the number of instances hits the maximum burst limit.  You are billed for instances beyond your plan size only while they are running and rented to you.  We will make a best effort at scaling your app out to its defined maximum limit, whereas the minimum plan instances are guaranteed for your app.
+Jeśli aplikacja wymaga wystąpień poza rozmiarem planu, można nadal skalować w poziomie, dopóki liczba wystąpień osiągnie maksymalny limit.  Opłaty są naliczane za wystąpienia poza rozmiarem planu, gdy są one uruchomione i dzierżawione.  W celu skalowania aplikacji do zdefiniowanego maksymalnego limitu zostanie osiągnięty najlepszy nakład pracy, podczas gdy minimalne wystąpienia planu są gwarantowane dla aplikacji.
 
-You can configure the plan size and maximums in the Azure portal by selected the **Scale Out** options in the plan or a function app deployed to that plan (under **Platform Features**).
+Rozmiar planu i maksymalne wartości można skonfigurować w Azure Portal przez wybranie opcji **skalowania w poziomie** w ramach planu lub aplikacji funkcji wdrożonej w ramach tego planu (w obszarze **funkcje platformy**).
 
-You can also increase the maximum burst limit from the Azure CLI:
+Możesz również zwiększyć maksymalny limit obciążeń z poziomu interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
 ```
 
-### <a name="available-instance-skus"></a>Available instance SKUs
+### <a name="available-instance-skus"></a>Dostępne jednostki SKU wystąpienia
 
-When creating or scaling your plan, you can choose between three instance sizes.  You will be billed for the total number of cores and memory consumed per second.  Your app can automatically scale out to multiple instances as needed.  
+Podczas tworzenia lub skalowania planu można wybrać jeden z trzech rozmiarów wystąpień.  Opłaty zostaną naliczone za łączną liczbę rdzeni i zużywaną pamięć na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień stosownie do potrzeb.  
 
-|JSZ|Rdzenie|Pamięć|Usługa Storage|
+|SKU|Rdzenie|Memory (Pamięć)|Magazyn|
 |--|--|--|--|
-|EP1|1|3.5GB|250 GB|
+|EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
-|EP3|4|14GB|250 GB|
+|EP3|4|14 GB|250 GB|
 
 ## <a name="regions"></a>Regiony
 
-Below are the currently supported regions for each OS.
+Poniżej znajdują się obecnie obsługiwane regiony dla każdego systemu operacyjnego.
 
 |Region| Windows | Linux |
 |--| -- | -- |
@@ -114,9 +114,9 @@ Below are the currently supported regions for each OS.
 |Japonia Wschodnia| ✔ | ✔ |
 |Japonia Zachodnia| ✔ | |
 |Korea Środkowa| ✔ |  |
-|Północno-środkowe stany USA| ✔ |  |
+|Środkowo-północne stany USA| ✔ |  |
 |Europa Północna| ✔ | ✔ |
-|Południowo-środkowe stany USA| ✔ |  |
+|Środkowo-południowe stany USA| ✔ |  |
 |Indie Południowe | ✔ | |
 |Azja Południowo-Wschodnia| ✔ | ✔ |
 |Południowe Zjednoczone Królestwo| ✔ | |
@@ -126,11 +126,11 @@ Below are the currently supported regions for each OS.
 |Zachodnie stany USA| ✔ | ✔ |
 |Zachodnie stany USA 2| ✔ |  |
 
-<sup>1</sup>Maximum scale out limited to 20 instances.  
-<sup>2</sup>Maximum scale out limited to 60 instances.
+<sup>1</sup> Maksymalna skalowanie w poziomie jest ograniczone do 20 wystąpień.  
+<sup>2</sup> Maksymalna wartość skalowania w poziomie ograniczona do 60 wystąpień.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Understand Azure Functions scale and hosting options](functions-scale.md)
+> [Informacje na temat Azure Functions skalowanie i opcje hostingu](functions-scale.md)

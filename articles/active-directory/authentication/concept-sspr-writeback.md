@@ -1,6 +1,6 @@
 ---
-title: On-premises password writeback integration with Azure AD SSPR - Azure Active Directory
-description: Get cloud passwords written back to on-premises AD infrastructure
+title: Integracja lokalnego zapisywania zwrotnego haseł z usługą Azure AD SSPR — Azure Active Directory
+description: Uzyskiwanie haseł w chmurze z powrotem do lokalnej infrastruktury usługi AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,154 +18,154 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420662"
 ---
-# <a name="what-is-password-writeback"></a>What is password writeback?
+# <a name="what-is-password-writeback"></a>Co to jest zapisywanie zwrotne haseł?
 
-Having a cloud-based password reset utility is great but most companies still have an on-premises directory where their users exist. How does Microsoft support keeping traditional on-premises Active Directory (AD) in sync with password changes in the cloud? Password writeback is a feature enabled with [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) that allows password changes in the cloud to be written back to an existing on-premises directory in real time.
+Posiadanie narzędzia do resetowania haseł opartego na chmurze jest doskonałe, ale większość firm nadal ma katalog lokalny, w którym istnieją użytkownicy. W jaki sposób firma Microsoft obsługuje tradycyjne Active Directory lokalnych (AD) w synchronizacji ze zmianami haseł w chmurze? Funkcja zapisywania zwrotnego haseł jest funkcją włączoną [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , która umożliwia zapisywanie zmian haseł w chmurze z powrotem do istniejącego katalogu lokalnego w czasie rzeczywistym.
 
-Password writeback is supported in environments that use:
+Zapisywanie zwrotne haseł jest obsługiwane w środowiskach, w których są używane:
 
 * [Usługi Active Directory Federation Services](../hybrid/how-to-connect-fed-management.md)
 * [Synchronizacja skrótów haseł](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [Uwierzytelnianie przekazywane](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> Password writeback will stop working for customers who are using Azure AD Connect versions 1.0.8641.0 and older when the [Azure Access Control service (ACS) is retired on November 7th, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect versions 1.0.8641.0 and older will no longer allow password writeback at that time because they depend on ACS for that functionality.
+> Zapisywanie zwrotne haseł przestanie działać dla klientów korzystających z Azure AD Connect wersji 1.0.8641.0 i starszych, gdy [usługa Azure Access Control Service (ACS) zostanie wycofana w dniu 7 listopada, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect wersje 1.0.8641.0 i starsze nie będą już zezwalały na zapisywanie zwrotne haseł, ponieważ zależą one od usług ACS dla tej funkcji.
 >
-> To avoid a disruption in service, upgrade from a previous version of Azure AD Connect to a newer version, see the article [Azure AD Connect: Upgrade from a previous version to the latest](../hybrid/how-to-upgrade-previous-version.md)
+> Aby uniknąć przerw w działaniu usługi, należy uaktualnić poprzednią wersję Azure AD Connect do nowszej wersji, zapoznaj się z artykułem [Azure AD Connect: uaktualnienie z poprzedniej wersji do najnowszej](../hybrid/how-to-upgrade-previous-version.md)
 >
 
-Password writeback provides:
+Zapisywanie zwrotne haseł zapewnia następujące informacje:
 
-* **Enforcement of on-premises Active Directory password policies**: When a user resets their password, it is checked to ensure it meets your on-premises Active Directory policy before committing it to that directory. This review includes checking the history, complexity, age, password filters, and any other password restrictions that you have defined in local Active Directory.
-* **Zero-delay feedback**: Password writeback is a synchronous operation. Your users are notified immediately if their password did not meet the policy or could not be reset or changed for any reason.
-* **Supports password changes from the access panel and Office 365**: When federated or password hash synchronized users come to change their expired or non-expired passwords, those passwords are written back to your local Active Directory environment.
-* **Supports password writeback when an admin resets them from the Azure portal**: Whenever an admin resets a user’s password in the [Azure portal](https://portal.azure.com), if that user is federated or password hash synchronized, the password is written back to on-premises. This functionality is currently not supported in the Office admin portal.
-* **Doesn’t require any inbound firewall rules**: Password writeback uses an Azure Service Bus relay as an underlying communication channel. All communication is outbound over port 443.
+* **Wymuszanie lokalnych zasad haseł Active Directory**: gdy użytkownik resetuje swoje hasło, jest sprawdzane pod kątem zgodności lokalnych zasad Active Directory przed przekazaniem go do tego katalogu. Ten przegląd obejmuje Sprawdzanie historii, złożoności, wieku, filtrów haseł i innych ograniczeń haseł zdefiniowanych w lokalnej Active Directory.
+* **Opinia o zerowej opóźnieniu**: zapisywanie zwrotne haseł jest operacją synchroniczną. Użytkownicy są powiadamiani natychmiast, jeśli ich hasło nie spełnia zasad lub nie można go zresetować ani zmienić z jakiegokolwiek powodu.
+* **Obsługuje zmiany haseł z poziomu panelu dostępu i pakietu Office 365**: w przypadku, gdy użytkownicy z synchronizacją federacyjnym lub skrótem hasła mogą zmieniać wygasłe lub niewygasłe hasła, te hasła są zapisywane z powrotem do lokalnego środowiska Active Directory.
+* **Obsługuje funkcję zapisywania zwrotnego haseł, gdy administrator resetuje je z Azure Portal**: za każdym razem, gdy administrator resetuje hasło użytkownika w [Azure Portal](https://portal.azure.com), jeśli ten użytkownik jest zsynchronizowany z wartością federacyjną lub skrótem hasła, hasło zostanie zapisane z powrotem do lokalnego. Ta funkcja nie jest obecnie obsługiwana w portalu administracyjnym pakietu Office.
+* **Nie wymaga żadnych reguł zapory dla ruchu przychodzącego**: funkcja zapisywania zwrotnego haseł używa przekaźnika Azure Service Bus jako podstawowego kanału komunikacyjnego. Cała komunikacja jest wychodząca przez port 443.
 
 > [!NOTE]
-> Administrator accounts that exist within protected groups in on-premises AD can be used with password writeback. Administrators can change their password in the cloud but cannot use password reset to reset a forgotten password. For more information about protected groups, see [Protected accounts and groups in Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> Konta administratorów istniejące w grupach chronionych w lokalnej usłudze AD mogą być używane z funkcją zapisywania zwrotnego haseł. Administratorzy mogą zmienić swoje hasło w chmurze, ale nie mogą zresetować zapomnianego hasła przy użyciu resetowania hasła. Aby uzyskać więcej informacji na temat grup chronionych, zobacz [chronione konta i grupy w Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
 
-## <a name="licensing-requirements-for-password-writeback"></a>Licensing requirements for password writeback
+## <a name="licensing-requirements-for-password-writeback"></a>Wymagania dotyczące licencjonowania dla zapisywania zwrotnego haseł
 
-**Self-Service Password Reset/Change/Unlock with on-premises writeback is a premium feature of Azure AD**. For more information about licensing, see the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
+**Samoobsługowe resetowanie/zmiana/odblokowanie hasła przy użyciu lokalnego zapisywania zwrotnego to funkcja Premium usługi Azure AD**. Aby uzyskać więcej informacji o licencjonowaniu, zobacz [witrynę Azure Active Directory cenowej](https://azure.microsoft.com/pricing/details/active-directory/).
 
-To use password writeback, you must have one of the following licenses assigned on your tenant:
+Aby korzystać z funkcji zapisywania zwrotnego haseł, musisz mieć jedną z następujących licencji przypisanych do dzierżawy:
 
 * Usługa Azure AD — warstwa Premium P1
 * Usługa Azure AD — warstwa Premium P2
-* Enterprise Mobility + Security E3 or A3
-* Enterprise Mobility + Security E5 or A5
-* Microsoft 365 E3 or A3
-* Microsoft 365 E5 or A5
+* Enterprise Mobility + Security E3 lub A3
+* Enterprise Mobility + Security E5 lub A5
+* Microsoft 365 E3 lub A3
+* Microsoft 365 E5 lub A5
 * Microsoft 365 F1
 * Microsoft 365 Business
 
 > [!WARNING]
-> Standalone Office 365 licensing plans *don't support "Self-Service Password Reset/Change/Unlock with on-premises writeback"* and require that you have one of the preceding plans for this functionality to work.
+> Autonomiczne plany licencjonowania pakietu Office 365 *nie obsługują funkcji samoobsługowego resetowania hasła/zmiany/odblokowywania przy użyciu lokalnego zapisywania zwrotnego* i wymagają posiadania jednego z powyższych planów, aby ta funkcja działała.
 
-## <a name="how-password-writeback-works"></a>How password writeback works
+## <a name="how-password-writeback-works"></a>Jak działa zapisywanie zwrotne haseł
 
-When a federated or password hash synchronized user attempts to reset or change their password in the cloud, the following actions occur:
+Gdy użytkownik z synchronizacją federacyjnego lub skrótem hasła próbuje zresetować lub zmienić hasło w chmurze, wystąpią następujące akcje:
 
-1. A check is performed to see what type of password the user has. If the password is managed on-premises:
-   * A check is performed to see if the writeback service is up and running. If it is, the user can proceed.
-   * If the writeback service is down, the user is informed that their password can't be reset right now.
-1. Next, the user passes the appropriate authentication gates and reaches the **Reset password** page.
-1. The user selects a new password and confirms it.
-1. When the user selects **Submit**, the plaintext password is encrypted with a symmetric key created during the writeback setup process.
-1. The encrypted password is included in a payload that gets sent over an HTTPS channel to your tenant-specific service bus relay (that is set up for you during the writeback setup process). This relay is protected by a randomly generated password that only your on-premises installation knows.
-1. After the message reaches the service bus, the password-reset endpoint automatically wakes up and sees that it has a reset request pending.
-1. The service then looks for the user by using the cloud anchor attribute. For this lookup to succeed:
+1. Sprawdzanie jest wykonywane, aby zobaczyć, jakiego typu hasła dotyczy użytkownik. Jeśli hasło jest zarządzane lokalnie:
+   * Sprawdzanie jest przeprowadzane w celu sprawdzenia, czy usługa zapisywania zwrotnego jest uruchomiona. W takim przypadku użytkownik może wykonać operację.
+   * Jeśli usługa zapisywania zwrotnego nie działa, użytkownik zostanie poinformowany o tym, że nie można teraz zresetować hasła.
+1. Następnie użytkownik przekazuje odpowiednie bramy uwierzytelniania i osiągnie stronę **resetowania hasła** .
+1. Użytkownik wybierze nowe hasło i potwierdzi je.
+1. Gdy użytkownik wybierze opcję **Prześlij**, hasło w postaci zwykłego tekstu jest szyfrowane przy użyciu klucza symetrycznego utworzonego podczas procesu konfiguracji zapisywania zwrotnego.
+1. Zaszyfrowane hasło jest dołączane do ładunku, który jest wysyłany przez kanał HTTPS do przekaźnika usługi Service Bus określonego dla dzierżawy (który jest skonfigurowany dla Ciebie w procesie konfiguracji zapisywania zwrotnego). Ten przekaźnik jest chroniony przez losowo generowane hasło, które zna tylko instalacji lokalnej.
+1. Gdy komunikat dociera do usługi Service Bus, punkt końcowy resetowania hasła zostanie automatycznie wznowiony i zobaczy, że ma oczekujące żądanie resetowania.
+1. Następnie usługa szuka użytkownika przy użyciu atrybutu zakotwiczenia chmury. Aby to wyszukiwanie powiodło się:
 
-   * The user object must exist in the Active Directory connector space.
-   * The user object must be linked to the corresponding metaverse (MV) object.
-   * The user object must be linked to the corresponding Azure Active Directory connector object.
-   * The link from the Active Directory connector object to the MV must have the synchronization rule `Microsoft.InfromADUserAccountEnabled.xxx` on the link.
+   * Obiekt User musi znajdować się w przestrzeni łącznika Active Directory.
+   * Obiekt użytkownika musi być połączony z odpowiednim obiektem Metaverse (MV).
+   * Obiekt użytkownika musi być połączony z odpowiednim obiektem łącznika Azure Active Directory.
+   * Łącze z obiektu łącznika Active Directory do MV musi mieć regułę synchronizacji `Microsoft.InfromADUserAccountEnabled.xxx` na łączu.
    
-   When the call comes in from the cloud, the synchronization engine uses the **cloudAnchor** attribute to look up the Azure Active Directory connector space object. It then follows the link back to the MV object, and then follows the link back to the Active Directory object. Because there can be multiple Active Directory objects (multi-forest) for the same user, the sync engine relies on the `Microsoft.InfromADUserAccountEnabled.xxx` link to pick the correct one.
+   Gdy wywołanie pochodzi z chmury, aparat synchronizacji używa atrybutu **cloudAnchor** , aby wyszukać obiekt przestrzeni łącznika Azure Active Directory. Następnie następuje po łączu z powrotem do obiektu MV, a następnie następuje po linku z powrotem do obiektu Active Directory. Ponieważ może istnieć wiele obiektów Active Directory (wiele lasów) dla tego samego użytkownika, aparat synchronizacji korzysta z linku `Microsoft.InfromADUserAccountEnabled.xxx`, aby wybrać odpowiedni.
 
-1. After the user account is found, an attempt to reset the password directly in the appropriate Active Directory forest is made.
-1. If the password set operation is successful, the user is told their password has been changed.
+1. Po znalezieniu konta użytkownika następuje próba zresetowania hasła bezpośrednio w odpowiednim lesie Active Directory.
+1. Jeśli operacja ustawiania hasła zakończyła się pomyślnie, użytkownik otrzyma informację, że hasło zostało zmienione.
    > [!NOTE]
-   > If the user's password hash is synchronized to Azure AD by using password hash synchronization, there is a chance that the on-premises password policy is weaker than the cloud password policy. In this case, the on-premises policy is enforced. This policy ensures that your on-premises policy is enforced in the cloud, no matter if you use password hash synchronization or federation to provide single sign-on.
+   > Jeśli skrót hasła użytkownika jest synchronizowany z usługą Azure AD przy użyciu funkcji synchronizacji skrótów haseł, istnieje możliwość, że lokalne zasady haseł są słabsze niż zasady haseł w chmurze. W takim przypadku zasady lokalne są wymuszane. Te zasady zapewniają, że zasady lokalne są wymuszane w chmurze, niezależnie od tego, czy w celu zapewnienia logowania jednokrotnego używasz synchronizacji skrótów haseł lub Federacji.
 
-1. If the password set operation fails, an error prompts the user to try again. The operation might fail because:
-    * The service was down.
-    * The password they selected did not meet the organization's policies.
-    * Unable to find the user in local Active Directory.
+1. Jeśli operacja ustawiania hasła nie powiedzie się, zostanie wyświetlony komunikat o błędzie, aby spróbować ponownie. Operacja może zakończyć się niepowodzeniem, ponieważ:
+    * Usługa nie działa.
+    * Wybrane hasło nie spełnia zasad organizacji.
+    * Nie można znaleźć użytkownika w lokalnej Active Directory.
 
-      The error messages provide guidance to users so they can attempt to resolve without administrator intervention.
+      Komunikaty o błędach zawierają wskazówki dla użytkowników, dzięki czemu mogą próbować rozwiązać problem bez interwencji administratora.
 
-## <a name="password-writeback-security"></a>Password writeback security
+## <a name="password-writeback-security"></a>Zabezpieczenia zapisywania zwrotnego haseł
 
-Password writeback is a highly secure service. To ensure your information is protected, a four-tiered security model is enabled as the following describes:
+Zapisywanie zwrotne haseł jest wysoce bezpieczną usługą. Aby zapewnić ochronę informacji, model zabezpieczeń z czterema warstwami jest włączony w następujący sposób:
 
-* **Tenant-specific service-bus relay**
-   * When you set up the service, a tenant-specific service bus relay is set up that's protected by a randomly generated strong password that Microsoft never has access to.
-* **Locked down, cryptographically strong, password encryption key**
-   * After the service bus relay is created, a strong symmetric key is created that is used to encrypt the password as it comes over the wire. This key only lives in your company's secret store in the cloud, which is heavily locked down and audited, just like any other password in the directory.
-* **Industry standard Transport Layer Security (TLS)**
-   1. When a password reset or change operation occurs in the cloud, the plaintext password is encrypted with your public key.
-   1. The encrypted password is placed into an HTTPS message that is sent over an encrypted channel by using Microsoft SSL certs to your service bus relay.
-   1. After the message arrives in the service bus, your on-premises agent wakes up and authenticates to the service bus by using the strong password that was previously generated.
-   1. The on-premises agent picks up the encrypted message and decrypts it by using the private key.
-   1. The on-premises agent attempts to set the password through the AD DS SetPassword API. This step is what allows enforcement of your Active Directory on-premises password policy (such as the complexity, age, history, and filters) in the cloud.
-* **Message expiration policies**
-   * If the message sits in service bus because your on-premises service is down, it times out and is removed after several minutes. The time-out and removal of the message increases security even further.
+* **Usługa magistrali usług specyficznych dla dzierżawy**
+   * Po skonfigurowaniu usługi przekaźnik usługi Service Bus specyficzny dla dzierżawy jest skonfigurowany do ochrony za pomocą losowo wygenerowanego silnego hasła, do którego firma Microsoft nigdy nie ma dostępu.
+* **Zablokowany, kryptograficznie silnie, klucz szyfrowania hasła**
+   * Po utworzeniu przekaźnika usługi Service Bus zostaje utworzony silny klucz symetryczny, który jest używany do szyfrowania hasła w postaci, w jakiej się znajduje w sieci. Ten klucz znajduje się tylko w magazynie wpisów tajnych firmy w chmurze, który jest silnie zablokowany i objęty inspekcją, podobnie jak każde inne hasło w katalogu.
+* **Standard branżowy Transport Layer Security (TLS)**
+   1. Gdy w chmurze jest wykonywana operacja resetowania lub zmiany hasła, hasło w postaci zwykłego tekstu jest szyfrowane przy użyciu klucza publicznego.
+   1. Szyfrowane hasło jest umieszczane w wiadomości HTTPS wysyłanej przez szyfrowany kanał przy użyciu certyfikatów SSL firmy Microsoft do przekaźnika usługi Service Bus.
+   1. Po nadejściu wiadomości w usłudze Service Bus Agent lokalny wznawia działanie i uwierzytelnia się do usługi Service Bus przy użyciu silnego hasła, które zostało wcześniej wygenerowane.
+   1. Agent lokalny odbiera zaszyfrowany komunikat i odszyfrowuje go przy użyciu klucza prywatnego.
+   1. Agent lokalny próbuje ustawić hasło za pomocą interfejsu API AD DS SetPassword. Ten krok umożliwia wymuszanie Active Directory lokalnych zasad haseł (takich jak złożoność, wiek, historia i filtry) w chmurze.
+* **Zasady wygasania komunikatów**
+   * Jeśli komunikat znajduje się w usłudze Service Bus, ponieważ Usługa lokalna nie działa, przetrwa limit czasu i jest usuwany po kilku minutach. Limit czasu i usunięcie wiadomości zwiększają jeszcze więcej zabezpieczeń.
 
-### <a name="password-writeback-encryption-details"></a>Password writeback encryption details
+### <a name="password-writeback-encryption-details"></a>Szczegóły szyfrowania zapisywania zwrotnego haseł
 
-After a user submits a password reset, the reset request goes through several encryption steps before it arrives in your on-premises environment. These encryption steps ensure maximum service reliability and security. They are described as follows:
+Po przesłaniu przez użytkownika resetowania hasła żądanie resetowania przechodzi przez kilka kroków szyfrowania przed ich nadejściem do środowiska lokalnego. Te kroki szyfrowania zapewniają maksymalną niezawodność i bezpieczeństwo usługi. Są one opisane w następujący sposób:
 
-* **Step 1: Password encryption with 2048-bit RSA Key**: After a user submits a password to be written back to on-premises, the submitted password itself is encrypted with a 2048-bit RSA key.
-* **Step 2: Package-level encryption with AES-GCM**: The entire package, the password plus the required metadata, is encrypted by using AES-GCM. This encryption prevents anyone with direct access to the underlying ServiceBus channel from viewing or tampering with the contents.
-* **Step 3: All communication occurs over TLS/SSL**: All the communication with ServiceBus happens in an SSL/TLS channel. This encryption secures the contents from unauthorized third parties.
-* **Automatic key roll over every six months**: All keys roll over every six months, or every time password writeback is disabled and then re-enabled on Azure AD Connect, to ensure maximum service security and safety.
+* **Krok 1: szyfrowanie hasła przy użyciu 2048-bitowego klucza RSA**: po przesłaniu przez użytkownika hasła do zapisu z powrotem do lokalnego, przesłane hasło jest szyfrowane przy użyciu klucza RSA o 2048-bitowym.
+* **Krok 2: szyfrowanie na poziomie pakietu przy użyciu algorytmu AES-GCM**: cały pakiet, hasło i wymagane metadane są szyfrowane przy użyciu algorytmu AES-GCM. To szyfrowanie uniemożliwia osobie mającej bezpośredni dostęp do bazowego kanału ServiceBus z wyświetlania lub manipulowania zawartością.
+* **Krok 3. cała komunikacja odbywa się za pośrednictwem protokołu TLS/SSL**: cała komunikacja z usługą ServiceBus odbywa się w kanale SSL/TLS. To Szyfrowanie zabezpiecza zawartość przed nieautoryzowanymi stronami trzecimi.
+* **Automatyczne przewinięcie kluczy co sześć miesięcy**: wszystkie klucze są wycofywane co sześć miesięcy, lub za każdym razem, gdy funkcja zapisywania zwrotnego haseł jest wyłączona, a następnie ponownie włączona w Azure AD Connect, aby zapewnić maksymalne bezpieczeństwo i bezpieczeństwo usług.
 
-### <a name="password-writeback-bandwidth-usage"></a>Password writeback bandwidth usage
+### <a name="password-writeback-bandwidth-usage"></a>Użycie przepustowości zapisywania zwrotnego haseł
 
-Password writeback is a low-bandwidth service that only sends requests back to the on-premises agent under the following circumstances:
+Zapisywanie zwrotne haseł to usługa o niskiej przepustowości, która wysyła żądania z powrotem do lokalnego agenta w następujących okolicznościach:
 
-* Two messages are sent when the feature is enabled or disabled through Azure AD Connect.
-* One message is sent once every five minutes as a service heartbeat for as long as the service is running.
-* Two messages are sent each time a new password is submitted:
-   * The first message is a request to perform the operation.
-   * The second message contains the result of the operation, and is sent in the following circumstances:
-      * Each time a new password is submitted during a user self-service password reset.
-      * Each time a new password is submitted during a user password change operation.
-      * Each time a new password is submitted during an admin-initiated user password reset (only from the Azure admin portals).
+* Po włączeniu lub wyłączeniu tej funkcji za pomocą Azure AD Connect są wysyłane dwa komunikaty.
+* Jeden komunikat jest wysyłany co pięć minut jako puls usługi przez czas, gdy usługa jest uruchomiona.
+* Za każdym razem, gdy zostanie przesłane nowe hasło, wysyłane są dwa komunikaty:
+   * Pierwszy komunikat to żądanie wykonania operacji.
+   * Drugi komunikat zawiera wynik operacji i jest wysyłany w następujących okolicznościach:
+      * Za każdym razem, gdy w trakcie samoobsługowego resetowania hasła użytkownika zostanie przesłane nowe hasło.
+      * Za każdym razem, gdy w trakcie operacji zmiany hasła użytkownika zostanie przesłane nowe hasło.
+      * Za każdym razem, gdy nowe hasło zostanie przesłane podczas resetowania hasła użytkownika zainicjowanego przez administratora (tylko z portali administratora platformy Azure).
 
-#### <a name="message-size-and-bandwidth-considerations"></a>Message size and bandwidth considerations
+#### <a name="message-size-and-bandwidth-considerations"></a>Zagadnienia dotyczące rozmiaru i przepustowości wiadomości
 
-The size of each of the message described previously is typically under 1 KB. Even under extreme loads, the password writeback service itself is consuming a few kilobits per second of bandwidth. Because each message is sent in real time, only when required by a password update operation, and because the message size is so small, the bandwidth usage of the writeback capability is too small to have a measurable impact.
+Każdy opisany wcześniej komunikat ma zwykle mniej niż 1 KB. Nawet w przypadku skrajnych obciążeń sama usługa zapisywania zwrotnego haseł zużywa kilka kilobitów na sekundę przepustowości. Ponieważ każdy komunikat jest wysyłany w czasie rzeczywistym, tylko wtedy, gdy jest to wymagane przez operację aktualizacji hasła, a ponieważ rozmiar komunikatu jest mały, użycie przepustowości przez funkcję zapisywania zwrotnego jest zbyt małe i ma wymierny wpływ.
 
-## <a name="supported-writeback-operations"></a>Supported writeback operations
+## <a name="supported-writeback-operations"></a>Obsługiwane operacje zapisywania zwrotnego
 
-Passwords are written back in all the following situations:
+Hasła są zapisywane z powrotem we wszystkich następujących sytuacjach:
 
-* **Supported end-user operations**
-   * Any end-user self-service voluntary change password operation
-   * Any end-user self-service force change password operation, for example, password expiration
-   * Any end-user self-service password reset that originates from the [password reset portal](https://passwordreset.microsoftonline.com)
-* **Supported administrator operations**
-   * Any administrator self-service voluntary change password operation
-   * Any administrator self-service force change password operation, for example, password expiration
-   * Any administrator self-service password reset that originates from the [password reset portal](https://passwordreset.microsoftonline.com)
-   * Any administrator-initiated end-user password reset from the [Azure portal](https://portal.azure.com)
+* **Obsługiwane operacje wykonywane przez użytkowników końcowych**
+   * Każda operacja dobrowolnej zmiany hasła samoobsługowego użytkownika końcowego
+   * Każda operacja zmiany hasła przez użytkownika końcowego, na przykład wygaśnięcie hasła
+   * Wszelkie Samoobsługowe resetowanie haseł użytkowników końcowych, które pochodzą z [portalu resetowania haseł](https://passwordreset.microsoftonline.com)
+* **Obsługiwane operacje administratora**
+   * Każda operacja automatycznej zmiany hasła samoobsługowego administratora
+   * Każda operacja zmiany hasła przez samoobsługowy administrator, na przykład wygaśnięcie hasła
+   * Wszystkie Samoobsługowe resetowanie haseł administratora, które pochodzą z [portalu resetowania haseł](https://passwordreset.microsoftonline.com)
+   * Wszystkie zainicjowane przez administratora Resetowanie hasła użytkownika końcowego z [Azure Portal](https://portal.azure.com)
 
-## <a name="unsupported-writeback-operations"></a>Unsupported writeback operations
+## <a name="unsupported-writeback-operations"></a>Nieobsługiwane operacje zapisywania zwrotnego
 
-Passwords are *not* written back in any of the following situations:
+Hasła *nie* są zapisywane z powrotem w żadnej z następujących sytuacji:
 
-* **Unsupported end-user operations**
-   * Any end user resetting their own password by using PowerShell version 1, version 2, or the Azure AD Graph API
-* **Unsupported administrator operations**
-   * Any administrator-initiated end-user password reset from PowerShell version 1, version 2, or the Azure AD Graph API
-   * Any administrator-initiated end-user password reset from the [Microsoft 365 admin center](https://admin.microsoft.com)
+* **Nieobsługiwane operacje użytkownika końcowego**
+   * Każdy użytkownik końcowy resetuje własne hasło przy użyciu programu PowerShell w wersji 1, wersji 2 lub interfejs API programu Graph usługi Azure AD
+* **Nieobsługiwane operacje administratora**
+   * Wszelkie zainicjowane przez administratora hasło użytkownika końcowego z programu PowerShell w wersji 1, wersji 2 lub interfejs API programu Graph usługi Azure AD
+   * Wszystkie zainicjowane przez administratora Resetowanie hasła użytkownika końcowego w [centrum administracyjnym Microsoft 365](https://admin.microsoft.com)
 
 > [!WARNING]
-> Use of the checkbox "User must change password at next logon" in on-premises Active Directory administrative tools like Active Directory Users and Computers or the Active Directory Administrative Center is supported as a preview feature of Azure AD Connect. For more information, see the article, [Implement password hash synchronization with Azure AD Connect sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon).
+> Użycie pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w lokalnych Active Directory narzędziach administracyjnych, takich jak Active Directory Użytkownicy i komputery, lub Centrum administracyjne usługi Active Directory jest obsługiwana jako funkcja w wersji zapoznawczej programu Azure AD Connect. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Enable password writeback using the Tutorial: [Enabling password writeback](tutorial-enable-writeback.md)
+Włączanie zapisywania zwrotnego haseł przy użyciu samouczka: [Włączanie zapisywania zwrotnego haseł](tutorial-enable-writeback.md)

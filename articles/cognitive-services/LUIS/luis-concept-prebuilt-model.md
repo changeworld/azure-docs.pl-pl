@@ -40,13 +40,13 @@ Ze wstępnie utworzonych domen są przeszkolony i chcesz dodać do aplikacji us�
 
 > [!TIP]
 > Intencje i podmioty, w domenie wbudowanych najlepiej działają razem. Zaleca się połączyć intencje i podmioty w tej samej domenie, jeśli jest to możliwe.
-> Domena wstępnie utworzone narzędzia ma intencji, które można dostosować do użytku w każdej domenie. Na przykład można dodać `Utilities.Repeat` do swojej aplikacji i szkolenie go rozpoznać, niezależnie od działań użytkownika może być ma zostać powtórzony w aplikacji. 
+> Domena wstępnie utworzone narzędzia ma intencji, które można dostosować do użytku w każdej domenie. Na przykład możesz dodać `Utilities.Repeat` do aplikacji i wyszkolić rozpoznawanie dowolnego działania, które użytkownik może chcieć powtórzyć w aplikacji. 
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Zmiana zachowania intencji ze wstępnie utworzonych domen
 
 Może się okazać, że wbudowanych domena zawiera cel, który jest podobny do intencji, które chcesz mieć w swojej aplikacji usługi LUIS, ale chcesz, aby zachowywać się inaczej. **Na przykład** prebudowana domena zawiera `MakeReservation` zamiarem do tworzenia rezerwacji w restauracji, ale chcesz, aby Twoja aplikacja korzystała z tego celu do tworzenia rezerwacji hotelowych. W takim przypadku można zmodyfikować zachowanie tego celu przez dodanie przykładu wyrażenia długości do zamiaru dotyczącego tworzenia rezerwacji hotelowych, a następnie ponownego uczenia aplikacji. 
 
-Znajduje się pełna lista ze wstępnie utworzonych domen w [odwołania ze wstępnie utworzonych domen](./luis-reference-prebuilt-domains.md).
+Pełną listę wstępnie skompilowanych domen można znaleźć w [dokumentacji prekompilowanych domen](./luis-reference-prebuilt-domains.md).
 
 ## <a name="prebuilt-intents"></a>Wstępnie utworzone intencji
 
@@ -54,13 +54,13 @@ LUIS zapewnia prebudowane intencje i ich wyrażenia długości dla każdej z wst
 
 ## <a name="prebuilt-entities"></a>Wstępnie utworzone jednostki
 
-Usługa LUIS zawiera zestaw wstępnie utworzonych jednostek rozpoznawania typowe rodzaje informacji, takich jak daty, godziny, numery, pomiarów i waluty. Obsługa wstępnie utworzone jednostki jest zależna od kultury aplikacją usługi LUIS. Aby uzyskać pełną listę wstępnie utworzone jednostki, które obsługuje usługi LUIS, w tym pomoc od kultury, zobacz [odwołania do wstępnie utworzone jednostki](./luis-reference-prebuilt-entities.md).
+Usługa LUIS zawiera zestaw wstępnie utworzonych jednostek rozpoznawania typowe rodzaje informacji, takich jak daty, godziny, numery, pomiarów i waluty. Obsługa wstępnie utworzone jednostki jest zależna od kultury aplikacją usługi LUIS. Aby uzyskać pełną listę wstępnie utworzonych jednostek, które obsługuje LUIS, w tym obsługę według kultury, zobacz [prekompilowane odwołanie do jednostki](./luis-reference-prebuilt-entities.md).
 
-Gdy wstępnie utworzone jednostki znajduje się w aplikacji, jej prognozy są uwzględnione w opublikowanej aplikacji. Działanie wstępnie utworzonych jednostek jest wstępnie przeszkolonych i **nie** można modyfikować. 
+Gdy wstępnie utworzone jednostki znajduje się w aplikacji, jej prognozy są uwzględnione w opublikowanej aplikacji. Zachowanie wbudowanych jednostek jest wstępnie nauczone i **nie można** go modyfikować. 
 
 > [!NOTE]
-> **BUILTIN.DateTime** jest przestarzała. Zastępuje się wyrazami [ **builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md), która umożliwia rozpoznawanie daty i zakresy czasu, a także Rozpoznawanie niejednoznacznych daty i godziny.
+> **element wbudowany. DateTime** jest przestarzały. Jest on zastępowany przez element [**wbudowany. datetimeV2**](luis-reference-prebuilt-datetimev2.md), który zapewnia rozpoznawanie zakresów dat i godzin, a także ulepszone rozpoznawanie niejednoznacznych dat i godzin.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [Dodaj ze wstępnie utworzonych jednostek](luis-prebuilt-entities.md) do swojej aplikacji.
+Dowiedz się, jak [dodać wstępnie utworzone jednostki](luis-prebuilt-entities.md) do aplikacji.

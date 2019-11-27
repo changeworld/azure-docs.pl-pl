@@ -1,19 +1,14 @@
 ---
-title: Dostępność zasobów Azure Container Instances
+title: Dostępność zasobów według regionów
 description: Dostępność zasobów obliczeniowych i pamięci dla usługi Azure Container Instances w różnych regionach świadczenia usługi Azure.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 05/14/2019
-ms.author: danlep
-ms.openlocfilehash: 24edce511c2d07050db1e77edeae4e587fcd79b0
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172392"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533472"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostępność zasobów dla Azure Container Instances w regionach świadczenia usługi Azure
 
@@ -28,9 +23,9 @@ Aby uzyskać informacje na temat przydziałów i innych limitów wdrożenia, zob
 
 ## <a name="availability---general"></a>Dostępność — ogólne
 
-Następujące regiony i zasoby są dostępne dla grup kontenerów z systemem Linux [](container-instances-faq.md#what-windows-base-os-images-are-supported) i obsługiwanymi kontenerami systemu Windows Server 2016.
+Następujące regiony i zasoby są dostępne dla grup kontenerów z systemem Linux i [obsługiwanymi](container-instances-faq.md#what-windows-base-os-images-are-supported) kontenerami systemu Windows Server 2016.
 
-| Location | OS | Procesor CPU | Pamięć (GB) |
+| Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
 | -------- | -- | :---: | :-----------: |
 | Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, zachodnie stany USA | Linux | 4 | 16 |
 | Europa Zachodnia, zachodnie stany USA 2 | Linux | 4 | 14 |
@@ -44,7 +39,7 @@ Następujące regiony i zasoby są dostępne dla grup kontenerów z systemem Lin
 
 Następujące regiony i zasoby są dostępne dla grup kontenerów z kontenerami opartymi na systemie Windows Server 2019 (wersja zapoznawcza).
 
-| Location | OS | Procesor CPU | Pamięć (GB) |
+| Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
 | -------- | -- | :---: | :-----------: |
 | Azja Południowo-Wschodnia, Europa Północna, Europa Zachodnia, środkowe stany USA, Wschodnie stany USA, zachodnie stany USA, zachodnie stany USA 2 | Windows | 4 | 16 |
 | Wschodnie stany USA 2 | Windows | 2 | 3,5 |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/25/2019
 ms.author: swmachan
-ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671968"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533721"
 ---
 # <a name="request-limits-for-translator-text"></a>Limity żądań dla tłumaczenie tekstu w usłudze Translator
 
@@ -29,12 +29,12 @@ W poniższej tabeli wymieniono limity elementów tablicy i znaków dla każdej o
 
 | Operacja | Maksymalny rozmiar elementu tablicy |   Maksymalna liczba elementów tablicy |  Maksymalny rozmiar żądania (znaki) |
 |:----|:----|:----|:----|
-| Translate | 5,000 | 100   | 5,000 |
-| Transliterate | 5,000 | 10    | 5,000 |
-| Detect | 10 000 | 100 |   50,000 |
-| BreakSentence | 10 000    | 100 | 50,000 |
+| Tłumaczenie | 5000 | 100   | 5000 |
+| Transliteracja | 5000 | 10    | 5000 |
+| Wykrywanie | 10 000 | 100 |   50 000 |
+| BreakSentence | 10 000    | 100 | 50 000 |
 | Wyszukiwanie w słowniku| 100 |  10  | 1000 |
-| Przykłady słowników | 100 dla tekstu i 100 dla tłumaczenia (łącznie 200)| 10|   2000 |
+| Przykłady słowników | 100 dla tekstu i 100 dla tłumaczenia (łącznie 200)| 10|   2,000 |
 
 ## <a name="character-limits-per-hour"></a>Limity znaków na godzinę
 
@@ -56,9 +56,9 @@ Limity dla [subskrypcji dla kilku usług](https://docs.microsoft.com/azure/cogni
 
 Limity te są ograniczone do standardowych modeli tłumaczenia firmy Microsoft. Niestandardowe modele tłumaczenia korzystające z translatora niestandardowego są ograniczone do 1 800 znaków na sekundę.
 
-## <a name="latency"></a>Czas oczekiwania
+## <a name="latency"></a>Opóźnienie
 
-Interfejs API tłumaczenia tekstu w usłudze Translator ma maksymalne opóźnienie wynoszące 15 sekund przy użyciu standardowych modeli. Tłumaczenie przy użyciu modeli niestandardowych ma maksymalne opóźnienie wynoszące 25 sekund. W tym momencie otrzymasz wynik lub odpowiedź na przekroczenie limitu czasu. Zwykle odpowiedzi są zwracane w 150 milisekund do 300 milisekund. Czasy odpowiedzi będą się różnić w zależności od rozmiaru pary żądań i języków. Jeśli nie otrzymasz tłumaczenia lub odpowiedź na [błąd](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) w tym okresie, sprawdź połączenie sieciowe i spróbuj ponownie.
+Interfejs API tłumaczenia tekstu w usłudze Translator ma maksymalne opóźnienie wynoszące 15 sekund przy użyciu modeli standardowych i 120 sekund podczas korzystania z modeli niestandardowych. Zazwyczaj odpowiedzi *na tekst w ciągu 100 znaków* są zwracane w 150 ms do 300 milisekund. Modele translatorów niestandardowych mają podobne charakterystyki opóźnienia dotyczące długotrwałego żądania i mogą mieć wyższy czas opóźnienia, gdy częstotliwość żądań jest nieprzerwana. Czasy odpowiedzi będą się różnić w zależności od rozmiaru pary żądań i języków. Jeśli nie otrzymasz tłumaczenia lub odpowiedź na [błąd](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) w tym okresie, sprawdź kod, połączenie sieciowe i ponów próbę. 
 
 ## <a name="sentence-length-limits"></a>Limity długości zdania
 

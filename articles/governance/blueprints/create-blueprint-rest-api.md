@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Create a blueprint with REST API'
-description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the REST API.
+title: 'Szybki Start: Tworzenie strategii przy użyciu interfejsu API REST'
+description: W tym przewodniku szybki start używasz planów platformy Azure do tworzenia, definiowania i wdrażania artefaktów przy użyciu interfejsu API REST.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
@@ -10,7 +10,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74322151"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Define and Assign an Azure Blueprint with REST API
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Szybki Start: Definiowanie i przypisywanie Azure Blueprint przy użyciu interfejsu API REST
 
 Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie typowych wzorców tworzenia konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
 
@@ -62,7 +62,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
 - `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
 > [!NOTE]
-> Blueprints may also be created at the subscription level. To see an example, see [create blueprint at subscription example](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
+> Plany mogą być również tworzone na poziomie subskrypcji. Aby zapoznać się z przykładem, zobacz [Tworzenie strategii na przykład subskrypcji](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
 
 1. Utwórz obiekt _strategii_ początkowej. **Treść żądania** zawiera właściwości strategii, wszystkie grupy zasobów, które mają zostać utworzone, oraz wszystkie parametry poziomu strategii. Parametry są określane podczas przypisywania i używane przez artefakty dodane w kolejnych krokach.
 
@@ -328,7 +328,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
 - `{YourMG}` — zastąp identyfikatorem swojej grupy zarządzania
 - `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
-1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. The AppId is static (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), but the service principal ID varies by tenant. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
+1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. Identyfikator AppId jest statyczny (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale nazwa główna usługi różni się w zależności od dzierżawy. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
 
    - Identyfikator URI interfejsu API REST
 
@@ -429,7 +429,7 @@ Aby usunąć samą strategię, wykonaj następującą operację interfejsu API R
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this quickstart, you've created, assigned, and removed a blueprint with REST API. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+W tym przewodniku szybki start utworzono, przypisano i usunięto plan z interfejsem API REST. Aby dowiedzieć się więcej na temat planów platformy Azure, przejdź do artykułu dotyczącego cyklu życia planu.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)
+> [Dowiedz się więcej o cyklu życia planu](./concepts/lifecycle.md)

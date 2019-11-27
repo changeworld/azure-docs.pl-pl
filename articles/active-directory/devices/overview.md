@@ -1,6 +1,6 @@
 ---
-title: What is device identity in Azure Active Directory?
-description: Learn how device identity management can help you to manage the devices that are accessing resources in your environment.
+title: Co to jest tożsamość urządzenia w Azure Active Directory?
+description: Dowiedz się, jak zarządzanie tożsamościami urządzeń może ułatwić zarządzanie urządzeniami, które uzyskują dostęp do zasobów w danym środowisku.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -20,68 +20,68 @@ ms.locfileid: "74420520"
 ---
 # <a name="what-is-a-device-identity"></a>Co to jest tożsamość urządzenia?
 
-With the proliferation of devices of all shapes and sizes and the Bring Your Own Device (BYOD) concept, IT professionals are faced with two somewhat opposing goals:
+Dzięki rozłącznym urządzeniom wszystkich kształtów i rozmiarów oraz koncepcji "Dobierz własne urządzenie" (BYOD), specjaliści IT są podłączeni do dwóch zamierzonych celów:
 
-- Allow end users to be productive wherever and whenever
-- Protect the organization's assets
+- Zezwalaj użytkownikom końcowym na produktywność wszędzie tam, gdzie i za każdym razem
+- Ochrona zasobów organizacji
 
-To protect these assets, IT staff need to first manage the device identities. IT staff can build on the device identity with tools like Microsoft Intune to ensure standards for security and compliance are met. Azure Active Directory (Azure AD) enables single sign-on to devices, apps, and services from anywhere through these devices.
+Aby chronić te zasoby, pracownicy działu IT muszą najpierw zarządzać tożsamościami urządzeń. Pracownicy IT mogą kompilować tożsamość urządzenia przy użyciu narzędzi, takich jak Microsoft Intune, aby zapewnić zgodność ze standardami bezpieczeństwa i zgodności. Usługa Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne do urządzeń, aplikacji i usług z dowolnego miejsca za pośrednictwem tych urządzeń.
 
-- Your users get access to your organization's assets they need. 
-- Your IT staff get the controls they need to secure your organization.
+- Użytkownicy uzyskują dostęp do potrzebnych zasobów organizacji. 
+- Pracownicy działu IT uzyskują kontrolki potrzebne do zabezpieczenia organizacji.
 
-Device identity management is the foundation for [device-based Conditional Access](../conditional-access/require-managed-devices.md). With device-based Conditional Access policies, you can ensure that access to resources in your environment is only possible with managed devices.
+Zarządzanie tożsamościami urządzeń jest podstawą dla [dostępu warunkowego opartego na urządzeniach](../conditional-access/require-managed-devices.md). Za pomocą zasad dostępu warunkowego opartego na urządzeniach można zapewnić, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu zarządzanych urządzeń.
 
-## <a name="getting-devices-in-azure-ad"></a>Getting devices in Azure AD
+## <a name="getting-devices-in-azure-ad"></a>Pobieranie urządzeń w usłudze Azure AD
 
-To get a device in Azure AD, you have multiple options:
+Aby uzyskać urządzenie w usłudze Azure AD, masz wiele opcji:
 
-- **Azure AD registered**
-   - Devices that are Azure AD registered are typically personally owned or mobile devices, and are signed into with a personal Microsoft account or another local account.
+- **Zarejestrowane usługi Azure AD**
+   - Urządzenia, które są zarejestrowane w usłudze Azure AD, są zazwyczaj urządzeniami prywatnymi lub przenośnymi i są zalogowane przy użyciu osobistego konto Microsoft lub innego konta lokalnego.
       - Windows 10
       - iOS
       - Android
       - MacOS
-- **Azure AD joined**
-   - Devices that are Azure AD joined are owned by an organization, and are signed in to with an Azure AD account belonging to that organization. They exist only in the cloud.
+- **Przyłączone do usługi Azure AD**
+   - Urządzenia, które są przyłączone do usługi Azure AD, należą do organizacji i są zalogowani do programu przy użyciu konta usługi Azure AD należącego do tej organizacji. Istnieją one tylko w chmurze.
       - Windows 10 
 - **hybrydowym dołączonym do usługi Azure AD**.
-   - Devices that are hybrid Azure AD joined are owned by an organization, and are signed in to with an Azure AD account belonging to that organization. They exist in the cloud and on-premises.
-      - Windows 7, 8.1, or 10
-      - Windows Server 2008 or newer
+   - Urządzenia, które są dołączone do hybrydowej usługi Azure AD, są własnością organizacji i są zalogowane do programu przy użyciu konta usługi Azure AD należącego do tej organizacji. Istnieją one w chmurze i lokalnie.
+      - Windows 7, 8,1 lub 10
+      - System Windows Server 2008 lub nowszy
 
-![Devices displayed in Azure AD Devices blade](./media/overview/azure-active-directory-devices-all-devices.png)
+![Urządzenia wyświetlane w bloku urządzenia usługi Azure AD](./media/overview/azure-active-directory-devices-all-devices.png)
 
 ## <a name="device-management"></a>Zarządzanie urządzeniami
 
-Devices in Azure AD can be managed using Mobile Device Management (MDM) tools like Microsoft Intune, System Center Configuration Manager, Group Policy (hybrid Azure AD join), Mobile Application Management (MAM) tools, or other third-party tools.
+Urządzeniami w usłudze Azure AD można zarządzać przy użyciu narzędzi do zarządzania urządzeniami przenośnymi (MDM), takich jak Microsoft Intune, System Center Configuration Manager, zasady grupy (sprzężenie hybrydowe usługi Azure AD), narzędzi do zarządzania aplikacjami mobilnymi (MAM) lub innych narzędzi innych firm.
 
-## <a name="resource-access"></a>Resource access
+## <a name="resource-access"></a>Dostęp do zasobów
 
-Registering and joining give your users Seamless Sign-on (SSO) to cloud resources and administrators the ability to apply Conditional Access policies to those resources. 
+Zarejestrowanie i dołączanie umożliwia użytkownikom bezproblemowe logowanie się do zasobów w chmurze i administratorów możliwość stosowania zasad dostępu warunkowego do tych zasobów. 
 
-Devices that are Azure AD joined or hybrid Azure AD joined benefit from SSO to your organization's on-premises resources as well as cloud resources. More information can be found in the article, [How SSO to on-premises resources works on Azure AD joined devices](azuread-join-sso.md).
+Urządzenia, które są przyłączone do usługi Azure AD lub korzystają z hybrydowej usługi Azure AD z logowaniem jednokrotnym do zasobów lokalnych organizacji, a także zasobów w chmurze. Więcej informacji można znaleźć w artykule, w [jaki sposób logowanie JEDNOkrotne do zasobów lokalnych działa na urządzeniach przyłączonych do usługi Azure AD](azuread-join-sso.md).
 
 ## <a name="device-security"></a>Bezpieczeństwo urządzeń
 
-- **Azure AD registered devices** utilize an account managed by the end user, this account is either a Microsoft account or another locally managed credential secured with one or more of the following.
+- **Zarejestrowane urządzenia usługi Azure AD** wykorzystują konto zarządzane przez użytkownika końcowego, to konto jest konto Microsoft lub innym lokalnym zarządzanym poświadczeniami zabezpieczonymi przy użyciu co najmniej jednej z poniższych opcji.
    - Hasło
-   - PIN
+   - WEJŚCIE
    - Wzorce
    - Windows Hello
-- **Azure AD joined or hybrid Azure AD joined devices** utilize an organizational account in Azure AD secured with one or more of the following.
+- **Przyłączone do usługi Azure AD lub hybrydowe urządzenia z usługą Azure AD** wykorzystują konto organizacyjne w usłudze Azure AD zabezpieczone przy użyciu co najmniej jednego z następujących elementów.
    - Hasło
    - Windows Hello dla firm
 
-## <a name="provisioning"></a>Inicjowanie obsługi administracyjnej
+## <a name="provisioning"></a>Inicjowanie obsługi
 
-Getting devices in to Azure AD can be done in a self-service manner or a controlled provisioning process by administrators.
+Uzyskiwanie urządzeń w usłudze Azure AD może odbywać się w sposób samoobsługowy lub kontrolowany proces aprowizacji przez administratorów.
 
 ## <a name="summary"></a>Podsumowanie
 
-With device identity management in Azure AD, you can:
+Za pomocą zarządzania tożsamościami urządzeń w usłudze Azure AD można:
 
-- Simplify the process of bringing and managing devices in Azure AD
+- Uproszczenie procesu przenoszenia urządzeń i zarządzania nimi w usłudze Azure AD
 - Zapewnienie użytkownikom łatwego dostępu do zasobów organizacji opartych na chmurze
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
@@ -90,8 +90,8 @@ With device identity management in Azure AD, you can:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Learn more about [Azure AD registered devices](concept-azure-ad-register.md)
-- Learn more about [Azure AD joined devices](concept-azure-ad-join.md)
-- Learn more about [hybrid Azure AD joined devices](concept-azure-ad-join-hybrid.md)
-- To get an overview of how to manage device identities in the Azure portal, see [Managing device identities using the Azure portal](device-management-azure-portal.md).
-- To learn more about device-based Conditional Access, see [Configure Azure Active Directory device-based Conditional Access policies](../conditional-access/require-managed-devices.md).
+- Dowiedz się więcej o [zarejestrowanych urządzeniach usługi Azure AD](concept-azure-ad-register.md)
+- Dowiedz się więcej o [urządzeniach przyłączonych do usługi Azure AD](concept-azure-ad-join.md)
+- Dowiedz się więcej o [urządzeniach przyłączonych do hybrydowej usługi Azure AD](concept-azure-ad-join-hybrid.md)
+- Aby dowiedzieć się, jak zarządzać tożsamościami urządzeń w Azure Portal, zobacz [Zarządzanie tożsamościami urządzeń przy użyciu Azure Portal](device-management-azure-portal.md).
+- Aby dowiedzieć się więcej o dostępie warunkowym opartym na urządzeniach, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzeniach Azure Active Directory](../conditional-access/require-managed-devices.md).

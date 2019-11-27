@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: bc53ed3e3a7fd988464b9100df654920d5589596
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036660"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534197"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurowanie macierzy RAID oprogramowania w systemie Linux
 Typowym scenariuszem jest używanie oprogramowania RAID na maszynach wirtualnych z systemem Linux na platformie Azure, aby przedstawić wiele dołączonych dysków danych jako pojedyncze urządzenie RAID. Zwykle może to służyć do zwiększenia wydajności i zapewnienia lepszej przepływności w porównaniu z użyciem jednego dysku.
 
 ## <a name="attaching-data-disks"></a>Dołączanie dysków danych
 Do skonfigurowania urządzenia RAID potrzeba co najmniej dwóch pustych dysków danych.  Podstawową przyczyną tworzenia urządzenia RAID jest poprawa wydajności operacji we/wy dysku.  W zależności od potrzeb we/wy można dołączać dyski, które są przechowywane w magazynie w warstwie Standardowa, z maksymalnie 500 operacji we/wy na dysk lub w naszym magazynie w warstwie Premium przy użyciu maksymalnie 5000 operacji we/wy na dysk. W tym artykule opisano sposób aprowizacji i dołączania dysków danych do maszyny wirtualnej z systemem Linux.  Zapoznaj się z artykułem Microsoft Azure. [Dołącz dysk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , aby uzyskać szczegółowe instrukcje dotyczące dołączania pustego dysku danych do maszyny wirtualnej z systemem Linux na platformie Azure.
+
+> [!IMPORTANT]
+>Nie mieszaj dysków o różnych rozmiarach, dlatego wydajność raidset będzie ograniczona do rozmiaru najwolniejszego dysku. 
 
 ## <a name="install-the-mdadm-utility"></a>Instalowanie narzędzia mdadm
 * **Ubuntu**

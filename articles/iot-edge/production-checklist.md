@@ -1,6 +1,6 @@
 ---
-title: Prepare devices and deployments for production - Azure IoT Edge | Microsoft Docs
-description: Learn how to take your Azure IoT Edge solution from development to production, including setting up your devices with the appropriate certificates and making a deployment plan for future code updates.
+title: Przygotowywanie urządzenia i wdrożenia w środowisku produkcyjnym — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć rozwiązanie Azure IoT Edge od projektowania w środowisku produkcyjnym, w tym konfigurowania urządzeń przy użyciu odpowiednich certyfikatów i sporządzania planu wdrożenia w przyszłości.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,202 +15,202 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457309"
 ---
-# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Prepare to deploy your IoT Edge solution in production
+# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania usługi IoT Edge w środowisku produkcyjnym
 
-When you're ready to take your IoT Edge solution from development into production, make sure that it's configured for ongoing performance.
+Gdy wszystko będzie gotowe móc rozwiązania usługi IoT Edge, od projektowania do produkcji, upewnij się, że została ona skonfigurowana do wydajność.
 
-The information provided in this article isn't all equal. To help you prioritize, each section starts with lists that divide the work into two sections: **important** to complete before going to production, or **helpful** for you to know.
+Informacje zawarte w tym artykule nie są równe. Aby ułatwić określanie priorytetów, Każda sekcja rozpoczyna się od listy dzielącej pracę na dwie sekcje: **Ważne** do ukończenia przed przejściem do środowiska produkcyjnego lub **pomocne** dla użytkownika.
 
-## <a name="device-configuration"></a>Device configuration
+## <a name="device-configuration"></a>Konfiguracja urządzenia
 
-IoT Edge devices can be anything from a Raspberry Pi to a laptop to a virtual machine running on a server. You may have access to the device either physically or through a virtual connection, or it may be isolated for extended periods of time. Either way, you want to make sure that it's configured to work appropriately. 
+Urządzenia usługi IoT Edge mogą być cokolwiek — od urządzeń Raspberry Pi laptopa do maszyny wirtualnej na serwerze. Masz dostęp do urządzenia fizycznie lub za pośrednictwem połączeń wirtualnych lub mogą być izolowane dłuższy czas. W obu przypadkach trzeba upewnić się, że jest odpowiednio skonfigurowany do pracy. 
 
 * **Ważne**
-    * Install production certificates
-    * Have a device management plan
-    * Use Moby as the container engine
+    * Instalowanie certyfikatów w środowisku produkcyjnym
+    * Plan zarządzania urządzeniami
+    * Użyj Moby jako aparat kontenera
 
-* **Helpful**
-    * Choose upstream protocol
+* **Pomaga**
+    * Wybierz protokół nadrzędnego
 
-### <a name="install-production-certificates"></a>Install production certificates
+### <a name="install-production-certificates"></a>Instalowanie certyfikatów w środowisku produkcyjnym
 
-Every IoT Edge device in production needs a device certificate authority (CA) certificate installed on it. That CA certificate is then declared to the IoT Edge runtime in the config.yaml file. To make development and testing easier, the IoT Edge runtime creates temporary certificates if no certificates are declared in the config.yaml file. However, these temporary certificates expire after three months and aren't secure for production scenarios. 
+Każde urządzenie usługi IoT Edge w środowisku produkcyjnym, musi na nim zainstalowany certyfikat urzędu certyfikacji certyfikatu urządzenia. Następnie zadeklarowano ten certyfikat urzędu certyfikacji do środowiska uruchomieniowego usługi IoT Edge w pliku config.yaml. Programowanie i testowanie, IoT Edge środowisko uruchomieniowe tworzy certyfikatów tymczasowych, jeśli żadne certyfikaty nie został zadeklarowany w pliku config.yaml. Jednak te certyfikaty tymczasowe wygasają po upływie trzech miesięcy, a nie są bezpieczne dla scenariuszy produkcyjnych. 
 
-To understand the role of the device CA certificate, see [How Azure IoT Edge uses certificates](iot-edge-certs.md).
+Aby zrozumieć rolę certyfikatu urzędu certyfikacji, zobacz [jak Azure IoT Edge używa certyfikatów](iot-edge-certs.md).
 
-For more information about how to install certificates on an IoT Edge device and reference them from the config.yaml file, see [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). The steps for configuring the certificates are the same whether the device is going to be used as a gateway or not. That article provides scripts to generate sample certificates for testing only. Don't use those sample certificates in production. 
+Aby uzyskać więcej informacji na temat sposobu instalowania certyfikatów na urządzeniu IoT Edge i odwoływania się do nich z pliku config. YAML, zobacz [Konfigurowanie urządzenia IoT Edge do działania jako nieprzezroczyste bramy](how-to-create-transparent-gateway.md). Procedura konfigurowania certyfikatów są takie same, czy urządzenie ma być używany jako brama lub nie. Ten artykuł zawiera skrypty w celu wygenerowania certyfikatów przykładowe tylko do celów testowych. Nie używaj tych certyfikatów próbki w środowisku produkcyjnym. 
 
-### <a name="have-a-device-management-plan"></a>Have a device management plan
+### <a name="have-a-device-management-plan"></a>Plan zarządzania urządzeniami
 
-Before you put any device in production you should know how you're going to manage future updates. For an IoT Edge device, the list of components to update may include:
+Przed wprowadzeniem dowolnego urządzenia w środowisku produkcyjnym należy wiedzieć, jak zamierzasz zarządzać przyszłych aktualizacji. Urządzenia usługi IoT Edge, aby uzyskać listę składników do aktualizacji może obejmować:
 
-* Device firmware
-* Operating system libraries
-* Container engine, like Moby
-* IoT Edge daemon
-* CA certificates
+* Oprogramowania układowego urządzenia
+* Biblioteki systemu operacyjnego
+* Aparat kontenera, takich jak Moby
+* Demon usługi IoT Edge
+* Certyfikaty urzędu certyfikacji
 
-For more information, see [Update the IoT Edge runtime](how-to-update-iot-edge.md). The current methods for updating the IoT Edge daemon require physical or SSH access to the IoT Edge device. If you have many devices to update, consider adding the update steps to a script or use an automation tool like Ansible.
+Aby uzyskać więcej informacji, zobacz [aktualizacja środowiska uruchomieniowego IoT Edge](how-to-update-iot-edge.md). Aktualizowanie demon usługi IoT Edge bieżącej metody wymagają fizycznej lub dostępu SSH na urządzeniu usługi IoT Edge. Jeśli masz wiele urządzeń do zaktualizowania, rozważ dodanie kroków aktualizacji do skryptu lub użyj narzędzia automatyzacji, takiego jak rozwiązania ansible.
 
-### <a name="use-moby-as-the-container-engine"></a>Use Moby as the container engine
+### <a name="use-moby-as-the-container-engine"></a>Użyj Moby jako aparat kontenera
 
-A container engine is a prerequisite for any IoT Edge device. Only moby-engine is supported in production. Other container engines, like Docker, do work with IoT Edge and it's ok to use these engines for development. The moby-engine can be redistributed when used with Azure IoT Edge, and Microsoft provides servicing for this engine.
+Aparat kontenerów jest wymaganiem wstępnym dla dowolnego IoT Edge urządzenia. Tylko moby aparat jest obsługiwana w środowisku produkcyjnym. Jest ok, aby użyć tych aparatów do tworzenia aplikacji i innych silników kontenera, takich jak Docker, pracy z usługą IoT Edge. Aparat moby mogą być rozpowszechniane w przypadku korzystania z usługi Azure IoT Edge, a firma Microsoft zapewnia obsługę dla tego aparatu.
 
-### <a name="choose-upstream-protocol"></a>Choose upstream protocol
+### <a name="choose-upstream-protocol"></a>Wybierz protokół nadrzędnego
 
-The protocol (and therefore the port used) for upstream communication to IoT Hub can be configured for both the IoT Edge agent and the IoT Edge hub. The default protocol is AMQP, but you may want to change that depending on your network setup. 
+Protokół (i w związku z tym port używany) dla komunikacji między strumieniami IoT Hub można skonfigurować zarówno dla agenta IoT Edge, jak i do centrum IoT Edge. Protokół domyślny to AMQP, ale możesz chcieć zmienić w zależności od konfiguracji sieci. 
 
-The two runtime modules both have an **UpstreamProtocol** environment variable. The valid values for the variable are: 
+Dwa moduły środowiska uruchomieniowego mają zmienną środowiskową **UpstreamProtocol** . Prawidłowe wartości dla zmiennej to: 
 
 * MQTT
 * AMQP
 * MQTTWS
 * AMQPWS
 
-Configure the UpstreamProtocol variable for the IoT Edge agent in the config.yaml file on the device itself. For example, if your IoT Edge device is behind a proxy server that blocks AMQP ports, you may need to configure the IoT Edge agent to use AMQP over WebSocket (AMQPWS) to establish the initial connection to IoT Hub. 
+Skonfiguruj zmienną UpstreamProtocol dla agenta IoT Edge w pliku config. YAML na samym urządzeniu. Na przykład jeśli urządzenie IoT Edge znajduje się za serwerem proxy, który blokuje porty AMQP, może być konieczne skonfigurowanie agenta IoT Edge do używania AMQP przez protokół WebSocket (AMQPWS) w celu nawiązania początkowego połączenia z IoT Hub. 
 
-Once your IoT Edge device connects, be sure to continue configuring the UpstreamProtocol variable for both runtime modules in future deployments. An example of this process is provided in [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
+Po łączy urządzenia usługi IoT Edge, pamiętaj kontynuować konfigurowanie zmiennej UpstreamProtocol dla obu modułów środowiska uruchomieniowego w przyszłych wdrożeniach. Przykład tego procesu znajduje się w temacie [Konfigurowanie urządzenia IoT Edge do komunikowania się za pomocą serwera proxy](how-to-configure-proxy-support.md).
 
-## <a name="deployment"></a>Wdrażanie
+## <a name="deployment"></a>Wdrożenie
 
-* **Helpful**
-    * Be consistent with upstream protocol
-    * Set up host storage for system modules
-    * Reduce memory space used by the IoT Edge hub
-    * Do not use debug versions of module images
+* **Pomaga**
+    * Być zgodne z protokołem nadrzędnego
+    * Konfigurowanie magazynu hosta dla modułów systemowych
+    * Zmniejszanie ilości miejsca w pamięci używanej przez Centrum IoT Edge
+    * Nie należy używać wersji debugowania obrazów modułu
 
-### <a name="be-consistent-with-upstream-protocol"></a>Be consistent with upstream protocol
+### <a name="be-consistent-with-upstream-protocol"></a>Być zgodne z protokołem nadrzędnego
 
-If you configured the IoT Edge agent on your IoT Edge device to use a different protocol than the default AMQP, then you should declare the same protocol in all future deployments. For example, if your IoT Edge device is behind a proxy server that blocks AMQP ports, you probably configured the device to connect over AMQP over WebSocket (AMQPWS). When you deploy modules to the device, configure the same AMQPWS protocol for the IoT Edge agent and IoT Edge hub, or else the default AMQP will override the settings and prevent you from connecting again. 
+W przypadku skonfigurowania agenta IoT Edge na urządzeniu IoT Edge w celu użycia innego protokołu niż domyślny AMQP należy zadeklarować ten sam protokół we wszystkich przyszłych wdrożeniach. Na przykład w przypadku urządzenia usługi IoT Edge za serwerem proxy, która blokuje porty protokołu AMQP, prawdopodobnie skonfigurowano urządzenia, aby połączyć za pośrednictwem protokołu AMQP przez WebSocket (AMQPWS). Podczas wdrażania modułów na urządzeniu Skonfiguruj ten sam protokół AMQPWS dla agenta IoT Edge i IoT Edge Hub, a w przeciwnym razie domyślne AMQP przesłonią ustawienia i uniemożliwią ponowne nawiązanie połączenia. 
 
-You only have to configure the UpstreamProtocol environment variable for the IoT Edge agent and IoT Edge hub modules. Any additional modules adopt whatever protocol is set in the runtime modules. 
+Należy tylko skonfigurować zmienną środowiskową UpstreamProtocol dla agentów IoT Edge i IoT Edge modułów centrum. Wszelkie dodatkowe moduły przyjąć, niezależnie od protokołu jest ustawiana w moduły środowiska uruchomieniowego. 
 
-An example of this process is provided in [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
+Przykład tego procesu znajduje się w temacie [Konfigurowanie urządzenia IoT Edge do komunikowania się za pomocą serwera proxy](how-to-configure-proxy-support.md).
 
-### <a name="set-up-host-storage-for-system-modules"></a>Set up host storage for system modules
+### <a name="set-up-host-storage-for-system-modules"></a>Konfigurowanie magazynu hosta dla modułów systemowych
 
-The IoT Edge hub and agent modules use local storage to maintain state and enable messaging between modules, devices, and the cloud. For better reliability and performance, configure the system modules to use storage on the host filesystem.
+Moduły IoT Edge Hub i Agent używają magazynu lokalnego do utrzymania stanu i włączania obsługi komunikatów między modułami, urządzeniami i chmurą. Aby zapewnić lepszą niezawodność i wydajność, należy skonfigurować moduły systemowe do korzystania z magazynu w systemie plików hosta.
 
-For more information, see [Host storage for system modules](how-to-access-host-storage-from-module.md).
+Aby uzyskać więcej informacji, zobacz [host Storage for System modules](how-to-access-host-storage-from-module.md).
 
-### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Reduce memory space used by IoT Edge hub
+### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Zmniejszanie ilości miejsca w pamięci używanej przez Centrum IoT Edge
 
-If you're deploying constrained devices with limited memory available, you can configure IoT Edge hub to run in a more streamlined capacity and use less disk space. These configurations do limit the performance of the IoT Edge hub, however, so find the right balance that works for your solution. 
+W przypadku wdrażania urządzeń z ograniczeniami z ograniczoną ilością dostępnej pamięci można skonfigurować IoT Edge Hub do uruchamiania w bardziej usprawnionej pojemności i zmniejszyć ilość miejsca na dysku. Te konfiguracje ograniczają wydajność centrum IoT Edge, jednak można znaleźć odpowiednie saldo, które działa dla danego rozwiązania. 
 
-#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Don't optimize for performance on constrained devices
+#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Nie Optymalizuj wydajność na urządzeniach z ograniczeniami
 
-The IoT Edge hub is optimized for performance by default, so it attempts to allocate large chunks of memory. This configuration can cause stability problems on smaller devices like the Raspberry Pi. If you're deploying devices with constrained resources, you may want to set the **OptimizeForPerformance** environment variable to **false** on the IoT Edge hub. 
+Centrum IoT Edge jest zoptymalizowane pod kątem wydajności domyślnie, dlatego próbuje przydzielić duże fragmenty pamięci. Ta konfiguracja może spowodować problemów ze stabilnością w mniejszych urządzeniach, takich jak Raspberry Pi. Jeśli wdrażasz urządzenia z ograniczonymi zasobami, możesz chcieć ustawić dla zmiennej środowiskowej **OptimizeForPerformance** **wartość false** w centrum IoT Edge. 
 
-When **OptimizeForPerformance** is set to **true**, the MQTT protocol head uses the PooledByteBufferAllocator which has better performance but allocates more memory. The allocator does not work well on 32 bit operating systems or on devices with low memory. Additionally, when optimized for performance, RocksDb allocates more memory for its role as the local storage provider. 
+Gdy **OptimizeForPerformance** ma **wartość true**, kierownik protokołu MQTT używa PooledByteBufferAllocator, które ma lepszą wydajność, ale przydziela więcej pamięci. Program przydzielający nie działa prawidłowo w systemach operacyjnych 32 bitowych lub na urządzeniach z małą ilością pamięci. Ponadto w przypadku optymalizacji pod kątem wydajności program RocksDb przydziela więcej pamięci dla roli jako dostawcy magazynu lokalnego. 
 
-For more information, see [Stability issues on resource constrained devices](troubleshoot.md#stability-issues-on-resource-constrained-devices).
+Aby uzyskać więcej informacji, zobacz [problemy ze stabilnością urządzeń z ograniczoną](troubleshoot.md#stability-issues-on-resource-constrained-devices)ilością zasobów.
 
-#### <a name="disable-unused-protocols"></a>Disable unused protocols
+#### <a name="disable-unused-protocols"></a>Wyłącz protokoły nieużywane
 
-Another way to optimize the performance of the IoT Edge hub and reduce its memory usage is to turn off the protocol heads for any protocols that you're not using in your solution. 
+Innym sposobem na zoptymalizowanie wydajności Centrum IoT Edge i zmniejszenie użycia pamięci jest wyłączenie głowic protokołu dla protokołów, które nie są używane w rozwiązaniu. 
 
-Protocol heads are configured by setting boolean environment variables for the IoT Edge hub module in your deployment manifests. The three variables are:
+Głowice protokołów są konfigurowane przez ustawienie logicznych zmiennych środowiskowych dla modułu IoT Edge Hub w manifestach wdrożenia. Dostępne są następujące trzy zmienne:
 
 * **amqpSettings__enabled**
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-All three variables have *two underscores* and can be set to either true or false. 
+Wszystkie trzy zmienne mają *dwie podkreślenia* i mogą być ustawione na wartość true lub false. 
 
-#### <a name="reduce-storage-time-for-messages"></a>Reduce storage time for messages
+#### <a name="reduce-storage-time-for-messages"></a>Zmniejsz czas przechowywania wiadomości
 
-The IoT Edge hub module stores messages temporarily if they cannot be delivered to IoT Hub for any reason. You can configure how long the IoT Edge hub holds on to undelivered messages before letting them expire. If you have memory concerns on your device, you can lower the **timeToLiveSecs** value in the IoT Edge hub module twin. 
+Moduł IoT Edge Hub przechowuje komunikaty tymczasowo, jeśli nie można ich dostarczyć do IoT Hub z dowolnego powodu. Można skonfigurować, jak długo Centrum IoT Edge będzie przechowywane do niedostarczonych komunikatów przed ich wygaśnięciem. Jeśli masz problemy z pamięcią na urządzeniu, możesz obniżyć wartość **timeToLiveSecs** w postaci sznurka modułu IoT Edge Hub. 
 
-The default value of the timeToLiveSecs parameter is 7200 seconds, which is two hours. 
+Wartość domyślna parametru timeToLiveSecs jest 7200 sekund, czyli dwie godziny. 
 
-### <a name="do-not-use-debug-versions-of-module-images"></a>Do not use debug versions of module images
+### <a name="do-not-use-debug-versions-of-module-images"></a>Nie należy używać wersji debugowania obrazów modułu
 
-When moving from test scenarios to production scenarios, remember to remove debug configurations from deployment manifests. Check that none of the module images in the deployment manifests have the **\.debug** suffix. If you added create options to expose ports in the modules for debugging, remove those create options as well. 
+Podczas przenoszenia ze scenariuszy testowania scenariuszy produkcyjnych, pamiętaj, aby usunąć konfiguracje debugowania z manifesty wdrożenia. Sprawdź, czy żaden z obrazów modułu w manifestach wdrożenia ma sufiks **debugowania\.** . Jeśli dodano tworzenie opcji, aby udostępniać porty modułów do debugowania, Usuń tworzenia tych opcji oraz. 
 
 ## <a name="container-management"></a>Zarządzanie kontenerami
 
 * **Ważne**
-    * Manage access to your container registry
-    * Use tags to manage versions
+    * Zarządzanie dostępem do rejestru kontenerów
+    * Zarządzanie wersjami za pomocą tagów
 
-### <a name="manage-access-to-your-container-registry"></a>Manage access to your container registry
+### <a name="manage-access-to-your-container-registry"></a>Zarządzanie dostępem do rejestru kontenerów
 
-Before you deploy modules to production IoT Edge devices, ensure that you control access to your container registry so that outsiders can't access or make changes to your container images. Use a private, not public, container registry to manage container images. 
+Przed wdrożeniem modułów do urządzenia usługi IoT Edge w środowisku produkcyjnym, upewnij się, kontrolowania dostępu do rejestru kontenerów, tak aby nieszablonowo nie może uzyskać dostęp lub zmieniania obrazów kontenerów. Za pomocą rejestru nie jest publiczny, prywatny kontenerów do zarządzania obrazami kontenerów. 
 
-In the tutorials and other documentation, we instruct you to use the same container registry credentials on your IoT Edge device as you use on your development machine. These instructions are only intended to help you set up testing and development environments more easily, and should not be followed in a production scenario. Azure Container Registry recommends [authenticating with service principals](../container-registry/container-registry-auth-service-principal.md) when applications or services pull container images in an automated or otherwise unattended manner, as IoT Edge devices do. Create a service principal with read-only access to your container registry, and provide that username and password in the deployment manifest.
+W samouczkach i innej dokumentacji firma Microsoft poinstruować przy użyciu tych samych poświadczeń rejestru kontenerów na urządzeniu usługi IoT Edge, jak używasz na komputerze deweloperskim. Te instrukcje są przeznaczone wyłącznie do ułatwia konfigurowanie środowisk testowania i programowania łatwiej i nie powinien być używany w scenariuszu produkcyjnym. Azure Container Registry zaleca [się uwierzytelnianie przy użyciu jednostek usługi](../container-registry/container-registry-auth-service-principal.md) , gdy aplikacje lub usługi pobierają obrazy kontenerów w zautomatyzowanym lub nienadzorowanym sposób, jako IoT Edge urządzenia. Tworzenie jednostki usługi z dostępem tylko do odczytu do usługi container registry, a następnie podaj nazwę tego użytkownika i hasło w pliku manifestu wdrożenia.
 
-### <a name="use-tags-to-manage-versions"></a>Use tags to manage versions
+### <a name="use-tags-to-manage-versions"></a>Zarządzanie wersjami za pomocą tagów
 
-A tag is a docker concept that you can use to distinguish between versions of docker containers. Tags are suffixes like **1.0** that go on the end of a container repository. For example, **mcr.microsoft.com/azureiotedge-agent:1.0**. Tags are mutable and can be changed to point to another container at any time, so your team should agree on a convention to follow as you update your module images moving forward. 
+Tag to koncepcja platformy Docker, której można użyć do rozróżnienia między wersjami kontenerów platformy Docker. Tagi to sufiksy podobne do **1,0** , które znajdują się na końcu repozytorium kontenera. Na przykład **MCR.Microsoft.com/azureiotedge-Agent:1.0**. Tagi są modyfikowalne i można ją zmienić na punkt do innego kontenera w dowolnym momencie, aby Twój zespół powinien zgody na Konwencji do wykonania podczas aktualizowania obrazów modułu przenoszenie do przodu. 
 
-Tags also help you to enforce updates on your IoT Edge devices. When you push an updated version of a module to your container registry, increment the tag. Then, push a new deployment to your devices with the tag incremented. The container engine will recognize the incremented tag as a new version and will pull the latest module version down to your device. 
+Tagi ułatwiają też wymusić aktualizacje na urządzeniach usługi IoT Edge. Po wypchnięciu zaktualizowaną wersję modułu do rejestru kontenerów, jego wartość tagu. Następnie wypchnąć nowe wdrożenie na urządzeniach z systemem z tagiem zwiększany. Aparat kontenera rozpozna zwiększona tag jako nową wersję i będzie pobierać najnowszą wersję modułu swoje urządzenie. 
 
-For an example of a tag convention, see [Update the IoT Edge runtime](how-to-update-iot-edge.md#understand-iot-edge-tags) to learn how IoT Edge uses rolling tags and specific tags to track versions. 
+Aby zapoznać się z przykładem Konwencji znacznika, zobacz [aktualizacja środowiska uruchomieniowego IoT Edge](how-to-update-iot-edge.md#understand-iot-edge-tags) , aby dowiedzieć się, jak IoT Edge używa znaczników stopniowanych i określonych tagów do śledzenia wersji. 
 
 ## <a name="networking"></a>Networking
 
-* **Helpful**
-    * Review outbound/inbound configuration
-    * Allow connections from IoT Edge devices
-    * Configure communication through a proxy
+* **Pomaga**
+    * Przejrzyj konfigurację wychodzące/przychodzące
+    * Zezwalaj na połączenia z urządzeń IoT Edge
+    * Konfigurowanie komunikacji za pośrednictwem serwera proxy
 
-### <a name="review-outboundinbound-configuration"></a>Review outbound/inbound configuration
+### <a name="review-outboundinbound-configuration"></a>Przejrzyj konfigurację wychodzące/przychodzące
 
-Communication channels between Azure IoT Hub and IoT Edge are always configured to be outbound. For most IoT Edge scenarios, only three connections are necessary. The container engine needs to connect with the container registry (or registries) that holds the module images. The IoT Edge runtime needs to connect with IoT Hub to retrieve device configuration information, and to send messages and telemetry. And if you use automatic provisioning, the IoT Edge daemon needs to connect to the Device Provisioning Service. For more information, see [Firewall and port configuration rules](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
+Kanałów komunikacji między Azure IoT Hub i IoT Edge zawsze są skonfigurowane jako ruchu wychodzącego. W przypadku większości scenariuszy IoT Edge tylko dla trzech połączenia są niezbędne. Aparat kontenera musi połączyć się z rejestru kontenerów (lub rejestrów), które zawiera obrazy modułu. Środowisko uruchomieniowe usługi IoT Edge musi połączyć się z usługą IoT Hub można pobrać informacji o konfiguracji urządzenia, a także do wysyłania wiadomości i danych telemetrycznych. I korzystając z automatyczną aprowizację, demon usługi IoT Edge należy nawiązać połączenie z usługą Device Provisioning. Aby uzyskać więcej informacji, zobacz [reguły konfiguracji zapory i portów](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
 
-### <a name="allow-connections-from-iot-edge-devices"></a>Allow connections from IoT Edge devices
+### <a name="allow-connections-from-iot-edge-devices"></a>Zezwalaj na połączenia z urządzeń IoT Edge
 
-If your networking setup requires that you explicitly permit connections made from IoT Edge devices, review the following list of IoT Edge components:
+Jeśli konfiguracja sieci wymaga jawnie zezwolenia na połączenia wykonane z urządzeń IoT Edge, Przejrzyj następującą listę składników IoT Edge:
 
-* **IoT Edge agent** opens a persistent AMQP/MQTT connection to IoT Hub, possibly over WebSockets. 
-* **IoT Edge hub** opens a single persistent AMQP connection or multiple MQTT connections to IoT Hub, possibly over WebSockets. 
-* **IoT Edge daemon** makes intermittent HTTPS calls to IoT Hub. 
+* **Agent IoT Edge** otwiera trwałe połączenie AMQP/MQTT z IoT Hub, prawdopodobnie za pośrednictwem usługi WebSockets. 
+* **IoT Edge Hub** otwiera pojedyncze trwałe połączenie AMQP lub wiele połączeń MQTT do IoT Hub, które prawdopodobnie przekraczają usługi WebSockets. 
+* **Demon IoT Edge** powoduje sporadyczne wywołania HTTPS do IoT Hub. 
 
-In all three cases, the DNS name would match the pattern \*.azure-devices.net. 
+We wszystkich trzech przypadkach nazwa DNS byłaby zgodna ze wzorcem \*. azure-devices.net. 
 
-Additionally, the **Container engine** makes calls to container registries over HTTPS. To retrieve the IoT Edge runtime container images, the DNS name is mcr.microsoft.com. The container engine connects to other registries as configured in the deployment. 
+Dodatkowo **aparat kontenerów** wykonuje wywołania rejestrów kontenerów za pośrednictwem protokołu HTTPS. Aby pobrać obrazy kontenera środowisko uruchomieniowe usługi IoT Edge, nazwa DNS jest mcr.microsoft.com. Aparat container łączy do innych rejestrów, zgodnie z konfiguracją we wdrożeniu. 
 
-This checklist is a starting point for firewall rules:
+Ta lista kontrolna jest punktem początkowym dla reguł zapory:
 
-   | URL (\* = wildcard) | Outbound TCP Ports | Użycie |
+   | Adres URL (\* = symbol wieloznaczny) | Wychodzące porty TCP | Sposób użycia |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Microsoft container registry |
-   | global.azure-devices-provisioning.net  | 443 | DPS access (optional) |
-   | \*.azurecr.io | 443 | Personal and third-party container registries |
-   | \*.blob.core.windows.net | 443 | Download Azure Container Registry image deltas from blob storage  | 
-   | \*.azure-devices.net | 5671, 8883, 443 | IoT Hub access |
-   | \*.docker.io  | 443 | Docker Hub access (optional) |
+   | mcr.microsoft.com  | 443 | Rejestr kontenerów firmy Microsoft |
+   | global.azure-devices-provisioning.net  | 443 | Dostęp do punktu dystrybucji (opcjonalnie) |
+   | \*. azurecr.io | 443 | Rejestry kontenerów osobistych i innych firm |
+   | \*.blob.core.windows.net | 443 | Pobieranie Azure Container Registry różnic obrazu z magazynu obiektów BLOB  | 
+   | \*. azure-devices.net | 5671, 8883, 443 | Dostęp IoT Hub |
+   | \*. docker.io  | 443 | Dostęp do centrum platformy Docker (opcjonalnie) |
 
-Some of these firewall rules are inherited from Azure Container Registry. For more information, see [Configure rules to access an Azure container registry behind a firewall](../container-registry/container-registry-firewall-access-rules.md).
+Niektóre z tych reguł zapory są dziedziczone z Azure Container Registry. Aby uzyskać więcej informacji, zobacz [Konfigurowanie reguł dostępu do usługi Azure Container Registry za zaporą](../container-registry/container-registry-firewall-access-rules.md).
 
-### <a name="configure-communication-through-a-proxy"></a>Configure communication through a proxy
+### <a name="configure-communication-through-a-proxy"></a>Konfigurowanie komunikacji za pośrednictwem serwera proxy
 
-If your devices are going to be deployed on a network that uses a proxy server, they need to be able to communicate through the proxy to reach IoT Hub and container registries. For more information, see [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
+Urządzenia mają zostać wdrożone w sieci, która korzysta z serwera proxy, muszą mieć możliwość komunikacji za pośrednictwem serwera proxy, aby dotrzeć do Centrum IoT i rejestry kontenerów. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia IoT Edge do komunikowania się za pomocą serwera proxy](how-to-configure-proxy-support.md).
 
-## <a name="solution-management"></a>Solution management
+## <a name="solution-management"></a>Rozwiązanie Zarządzanie
 
-* **Helpful**
-    * Set up logs and diagnostics
-    * Consider tests and CI/CD pipelines
+* **Pomaga**
+    * Konfigurowanie dzienników i Diagnostyka
+    * Należy wziąć pod uwagę testy i potoków ciągłej integracji/ciągłego Dostarczania
 
-### <a name="set-up-logs-and-diagnostics"></a>Set up logs and diagnostics
+### <a name="set-up-logs-and-diagnostics"></a>Konfigurowanie dzienników i Diagnostyka
 
-On Linux, the IoT Edge daemon uses journals as the default logging driver. You can use the command-line tool `journalctl` to query the daemon logs. On Windows, the IoT Edge daemon uses PowerShell diagnostics. Use `Get-IoTEdgeLog` to query logs from the daemon. IoT Edge modules use the JSON driver for logging, which is the  default.  
+W systemie Linux demon IoT Edge używa dzienników jako domyślnego sterownika rejestrowania. Za pomocą narzędzia wiersza polecenia `journalctl` można wykonywać zapytania dotyczące dzienników demona. Demon usługi IoT Edge na Windows, korzysta z diagnostyki programu PowerShell. Użyj `Get-IoTEdgeLog`, aby wykonywać zapytania dotyczące dzienników z demona. Moduły IoT Edge używają sterownika JSON do rejestrowania, co jest ustawieniem domyślnym.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-When you're testing an IoT Edge deployment, you can usually access your devices to retrieve logs and troubleshoot. In a deployment scenario, you may not have that option. Consider how you're going to gather information about your devices in production. One option is to use a logging module that collects information from the other modules and sends it to the cloud. One example of a logging module is [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), or you can design your own. 
+Podczas testowania wdrożenia usługi IoT Edge, zwykle dostęp urządzenia do pobierania dzienników i rozwiązywanie problemów. W scenariuszu wdrażania możesz nie mieć tej opcji. Należy wziąć pod uwagę, jak możesz zacząć zbierać informacje dotyczące urządzeń w środowisku produkcyjnym. Jedną z opcji jest używać moduł rejestrowania, który zbiera informacje z innymi modułami i wysyła je do chmury. Jednym z przykładów modułu rejestrowania jest [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), lub możesz zaprojektować własny. 
 
-### <a name="place-limits-on-log-size"></a>Place limits on log size
+### <a name="place-limits-on-log-size"></a>Limity umieszczenia rozmiaru dziennika
 
-By default the Moby container engine does not set container log size limits. Over time this can lead to the device filling up with logs and running out of disk space. Consider the following options to prevent this:
+Domyślnie aparat kontenera Moby nie ustawia limitów rozmiaru dziennika kontenera. W miarę upływu czasu może to prowadzić do wypełniania urządzenia przy użyciu dzienników i uruchamiania miejsca na dysku. Aby tego uniknąć, należy wziąć pod uwagę następujące opcje:
 
-**Option: Set global limits that apply to all container modules**
+**Opcja: Ustaw limity globalne, które mają zastosowanie do wszystkich modułów kontenera**
 
-You can limit the size of all container logfiles in the container engine log options. The following example sets the log driver to `json-file` (recommended) with limits on size and number of files:
+Można ograniczyć rozmiar wszystkich plików dziennika kontenerów w opcjach dziennika aparatu kontenera. Poniższy przykład ustawia sterownik dziennika do `json-file` (zalecane) z limitami rozmiaru i liczby plików:
 
 ```JSON
 {
@@ -222,18 +222,18 @@ You can limit the size of all container logfiles in the container engine log opt
 }
 ```
 
-Add (or append) this information to a file named `daemon.json` and place it the right location for your device platform.
+Dodaj (lub Dołącz) te informacje do pliku o nazwie `daemon.json` i umieść go w odpowiedniej lokalizacji dla platformy urządzeń.
 
 | Platforma | Lokalizacja |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
 
-The container engine must be restarted for the changes to take effect.
+Aby zmiany zaczęły obowiązywać, należy ponownie uruchomić silnik kontenera.
 
-**Option: Adjust log settings for each container module**
+**Opcja: Dopasuj ustawienia dziennika dla każdego modułu kontenera**
 
-You can do so in the **createOptions** of each module. Na przykład:
+Można to zrobić w **opcjach** dla każdego modułu. Na przykład:
 
 ```yml
 "createOptions": {
@@ -249,11 +249,11 @@ You can do so in the **createOptions** of each module. Na przykład:
 }
 ```
 
-**Additional options on Linux systems**
+**Dodatkowe opcje w systemach Linux**
 
-* Configure the container engine to send logs to `systemd` [journal](https://docs.docker.com/config/containers/logging/journald/) by setting `journald` as the default logging driver. 
+* Skonfiguruj aparat kontenera do wysyłania dzienników do `systemd` [dziennika](https://docs.docker.com/config/containers/logging/journald/) przez ustawienie `journald` jako domyślnego sterownika rejestrowania. 
 
-* Periodically remove old logs from your device by installing a logrotate tool. Use the following file specification: 
+* Okresowo Usuwaj stare dzienniki z urządzenia, instalując narzędzie logrotate. Użyj następujących specyfikacji pliku: 
 
    ```
    /var/lib/docker/containers/*/*-json.log{
@@ -267,11 +267,11 @@ You can do so in the **createOptions** of each module. Na przykład:
    }
    ```
 
-### <a name="consider-tests-and-cicd-pipelines"></a>Consider tests and CI/CD pipelines
+### <a name="consider-tests-and-cicd-pipelines"></a>Należy wziąć pod uwagę testy i potoków ciągłej integracji/ciągłego Dostarczania
 
-For the most efficient IoT Edge deployment scenario, consider integrating your production deployment into your testing and CI/CD pipelines. Azure IoT Edge supports multiple CI/CD platforms, including Azure DevOps. For more information, see [Continuous integration and continuous deployment to Azure IoT Edge](how-to-ci-cd.md).
+Najbardziej efektywny sposób scenariusza wdrożenia usługi IoT Edge należy rozważyć włączenie wdrożeniu produkcyjnym do testowania i potoków ciągłej integracji/ciągłego Dostarczania. Usługa Azure IoT Edge obsługuje wiele platform ciągłej integracji/ciągłego wdrażania, w tym DevOps platformy Azure. Aby uzyskać więcej informacji, zobacz [ciągła integracja i ciągłe wdrażanie do Azure IoT Edge](how-to-ci-cd.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Learn more about [IoT Edge automatic deployment](module-deployment-monitoring.md).
-* See how IoT Edge supports [Continuous integration and continuous deployment](how-to-ci-cd.md).
+* Dowiedz się więcej o [IoT Edge wdrożeniu automatycznym](module-deployment-monitoring.md).
+* Zobacz, jak IoT Edge obsługuje [ciągłą integrację i ciągłe wdrażanie](how-to-ci-cd.md).

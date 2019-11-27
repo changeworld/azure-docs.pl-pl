@@ -1,7 +1,7 @@
 ---
-title: Tutorial - Diagnose communication problem between networks using the Azure portal
+title: Samouczek — diagnozowanie problemów z komunikacją między sieciami przy użyciu Azure Portal
 titleSuffix: Azure Network Watcher
-description: In this tutorial, learn how to diagnose a communication problem between an Azure virtual network connected to an on-premises, or other virtual network, through an Azure virtual network gateway, using Network Watcher's VPN diagnostics capability.
+description: W tym samouczku dowiesz się, jak zdiagnozować problem z komunikacją między siecią wirtualną platformy Azure połączoną z lokalną lub inną siecią wirtualną za pośrednictwem bramy sieci wirtualnej platformy Azure, korzystając z funkcji diagnostyki Network Watcher sieci VPN.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -40,14 +40,14 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby móc używać diagnostyki sieci VPN, musisz mieć istniejącą i działającą bramę sieci VPN. Jeśli nie masz istniejącej bramy sieci VPN do diagnozowania, możesz ją wdrożyć przy użyciu [skryptu programu PowerShell](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Skrypt programu PowerShell możesz uruchomić z następujących lokalizacji:
-- **A local PowerShell installation**: The script requires the Azure PowerShell `Az` module. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+- **Lokalna instalacja programu PowerShell**: skrypt wymaga modułu `Az` Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 - **Usługa Azure Cloud Shell**: usługa [Azure Cloud Shell](https://shell.azure.com/powershell) ma zainstalowaną i skonfigurowaną najnowszą wersję programu PowerShell i powoduje zalogowanie na platformie Azure.
 
 Utworzenie bramy sieci VPN za pomocą tego skryptu trwa około godziny. W pozostałych krokach przyjęto założenie, że diagnozowana brama została wdrożona przy użyciu tego skryptu. Jeśli zamiast tego diagnozujesz własną istniejącą bramę, wyniki będą się różnić.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher
 
@@ -80,7 +80,7 @@ Jeśli masz już włączoną usługę Network Watcher w regionie Wschodnie stany
     W kolumnie **STAN ROZWIĄZYWANIA PROBLEMÓW** jest wyświetlana wartość **W złej kondycji**. Widać też **Podsumowanie** i **Szczegóły** problemu na karcie **Stan**.
 10. Po wybraniu karty **Akcja** diagnostyka sieci VPN udostępnia dodatkowe informacje. W przykładzie pokazanym na poniższej ilustracji diagnostyka sieci VPN informuje o tym, że należy sprawdzić kondycję każdego połączenia:
 
-    ![Działanie](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Akcja](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Diagnozowanie połączenia bramy
 
@@ -109,7 +109,7 @@ Jeśli bramę sieci VPN utworzono przy użyciu skryptu z sekcji [Wymagania wstę
 
 1. Wprowadź *TestRG1* w polu **Wyszukiwanie** w górnej części portalu. Po wyświetleniu nazwy **TestRG1** w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *TestRG1*, a następnie wybierz pozycję **Usuń**.
+3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **TestRG1**, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

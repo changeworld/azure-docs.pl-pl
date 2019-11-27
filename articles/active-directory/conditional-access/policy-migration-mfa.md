@@ -1,6 +1,6 @@
 ---
-title: Migrate Conditional Access policies - Azure Active Directory
-description: This article shows how to migrate a classic policy that requires multi-factor authentication in the Azure portal.
+title: Migrowanie zasad dostępu warunkowego — Azure Active Directory
+description: W tym artykule przedstawiono sposób migracji zasad klasycznych, które wymagają uwierzytelniania wieloskładnikowego w Azure Portal.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,102 +18,102 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380330"
 ---
-# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrate a classic policy that requires multi-factor authentication in the Azure portal
+# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrowanie zasad klasycznych, które wymagają uwierzytelniania wieloskładnikowego w Azure Portal
 
-This tutorial shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app. Although it is not a prerequisite, we recommend that you read [Migrate classic policies in the Azure portal](policy-migration.md) before you start migrating your classic policies.
+Ten samouczek pokazuje, jak przeprowadzić migrację klasycznych zasad, które wymagają **uwierzytelniania wieloskładnikowego** dla aplikacji w chmurze. Chociaż nie jest to wymaganie wstępne, przed rozpoczęciem migrowania klasycznych zasad zaleca się odczytanie [zasad migracji klasycznych w Azure Portal](policy-migration.md) .
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-The scenario in this article shows how to migrate a classic policy that requires **multi-factor authentication** for a cloud app.
+W scenariuszu w tym artykule przedstawiono sposób migrowania zasad klasycznych, które wymagają **uwierzytelniania wieloskładnikowego** w przypadku aplikacji w chmurze.
 
-![Usługa Active Directory systemu Azure](./media/policy-migration/33.png)
+![Usługa Azure Active Directory](./media/policy-migration/33.png)
 
-The migration process consists of the following steps:
+Proces migracji obejmuje następujące kroki:
 
-1. [Open the classic policy](#open-a-classic-policy) to get the configuration settings.
-1. Create a new Azure AD Conditional Access policy to replace your classic policy. 
-1. Disable the classic policy.
+1. Aby uzyskać ustawienia konfiguracji, [Otwórz zasady klasyczne](#open-a-classic-policy) .
+1. Utwórz nowe zasady dostępu warunkowego usługi Azure AD, aby zastąpić zasady klasyczne. 
+1. Wyłącz zasady klasyczne.
 
-## <a name="open-a-classic-policy"></a>Open a classic policy
+## <a name="open-a-classic-policy"></a>Otwieranie zasad klasycznych
 
-1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
+1. W [Azure Portal](https://portal.azure.com)na lewym pasku nawigacyjnym kliknij pozycję **Azure Active Directory**.
 
-   ![Usługa Active Directory systemu Azure](./media/policy-migration-mfa/01.png)
+   ![Usługa Azure Active Directory](./media/policy-migration-mfa/01.png)
 
-1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
+1. Na stronie **Azure Active Directory** w sekcji **Zarządzanie** kliknij pozycję **dostęp warunkowy**.
 
    ![Dostęp warunkowy](./media/policy-migration-mfa/02.png)
 
-1. In the **Manage** section, click **Classic policies (preview)** .
+1. W sekcji **Zarządzanie** kliknij pozycję **zasady klasyczne (wersja zapoznawcza)** .
 
-   ![Classic policies](./media/policy-migration-mfa/12.png)
+   ![Zasady klasyczne](./media/policy-migration-mfa/12.png)
 
-1. In the list of classic policies, click the policy that requires **multi-factor authentication** for a cloud app.
+1. Na liście zasad klasycznych kliknij zasady, które wymagają **uwierzytelniania wieloskładnikowego** dla aplikacji w chmurze.
 
-   ![Classic policies](./media/policy-migration-mfa/13.png)
+   ![Zasady klasyczne](./media/policy-migration-mfa/13.png)
 
-## <a name="create-a-new-conditional-access-policy"></a>Create a new Conditional Access policy
+## <a name="create-a-new-conditional-access-policy"></a>Tworzenie nowych zasad dostępu warunkowego
 
-1. In the [Azure portal](https://portal.azure.com), on the left navbar, click **Azure Active Directory**.
+1. W [Azure Portal](https://portal.azure.com)na lewym pasku nawigacyjnym kliknij pozycję **Azure Active Directory**.
 
-   ![Usługa Active Directory systemu Azure](./media/policy-migration/01.png)
+   ![Usługa Azure Active Directory](./media/policy-migration/01.png)
 
-1. On the **Azure Active Directory** page, in the **Manage** section, click **Conditional Access**.
+1. Na stronie **Azure Active Directory** w sekcji **Zarządzanie** kliknij pozycję **dostęp warunkowy**.
 
    ![Dostęp warunkowy](./media/policy-migration/02.png)
 
-1. On the **Conditional Access** page, to open the **New** page, in the toolbar on the top, click **Add**.
+1. Na stronie **dostęp warunkowy** , aby otworzyć **nową** stronę, na pasku narzędzi u góry kliknij przycisk **Dodaj**.
 
    ![Dostęp warunkowy](./media/policy-migration/03.png)
 
-1. On the **New** page, in the **Name** textbox, type a name for your policy.
+1. Na **nowej** stronie, w polu tekstowym **Nazwa** wpisz nazwę zasady.
 
    ![Dostęp warunkowy](./media/policy-migration/29.png)
 
-1. In the **Assignments** section, click **Users and groups**.
+1. W sekcji **przypisania** kliknij pozycję **Użytkownicy i grupy**.
 
    ![Dostęp warunkowy](./media/policy-migration/05.png)
 
-   1. If you have all users selected in your classic policy, click **All users**. 
+   1. Jeśli masz wszystkich użytkowników wybranych w ramach zasad klasycznych, kliknij pozycję **Wszyscy użytkownicy**. 
 
       ![Dostęp warunkowy](./media/policy-migration/35.png)
 
-   1. If you have groups selected in your classic policy, click **Select users and groups**, and then select the required users and groups.
+   1. Jeśli w zasadach klasycznych zostały wybrane grupy, kliknij pozycję **Wybierz użytkowników i grupy**, a następnie wybierz wymaganych użytkowników i grupy.
 
       ![Dostęp warunkowy](./media/policy-migration/36.png)
 
-   1. If you have the excluded groups, click the **Exclude** tab, and then select the required users and groups. 
+   1. Jeśli masz wykluczone grupy, kliknij kartę **Wyklucz** , a następnie wybierz wymaganych użytkowników i grupy. 
 
       ![Dostęp warunkowy](./media/policy-migration/37.png)
 
-1. On the **New** page, to open the **Cloud apps** page, in the **Assignment** section, click **Cloud apps**.
-1. On the **Cloud apps** page, perform the following steps:
-   1. Click **Select apps**.
+1. Na stronie **Nowy** , aby otworzyć stronę **aplikacje w chmurze** , w sekcji **przypisanie** kliknij pozycję aplikacje w **chmurze**.
+1. Na stronie **aplikacje w chmurze** wykonaj następujące czynności:
+   1. Kliknij pozycję **Wybierz aplikacje**.
    1. Kliknij pozycję **Wybierz**.
-   1. On the **Select** page, select your cloud app, and then click **Select**.
-   1. On the **Cloud apps** page, click **Done**.
-1. If you have **Require multi-factor authentication** selected:
+   1. Na stronie **Wybierz** wybierz aplikację w chmurze, a następnie kliknij przycisk **Wybierz**.
+   1. Na stronie **aplikacje w chmurze** kliknij pozycję **gotowe**.
+1. Jeśli wybrano **wymaganie uwierzytelniania wieloskładnikowego** :
 
    ![Dostęp warunkowy](./media/policy-migration/26.png)
 
-   1. In the **Access controls** section, click **Grant**.
+   1. W sekcji **kontrole dostępu** kliknij pozycję **Udziel**.
 
       ![Dostęp warunkowy](./media/policy-migration/27.png)
 
-   1. On the **Grant** page, click **Grant access**, and then click **Require multi-factor authentication**.
+   1. Na stronie **Grant** kliknij pozycję **Udziel dostępu**, a następnie kliknij pozycję **Wymagaj uwierzytelniania wieloskładnikowego**.
    1. Kliknij pozycję **Wybierz**.
-1. Click **On** to enable your policy.
+1. Kliknij **pozycję Włącz,** aby włączyć zasady.
 
    ![Dostęp warunkowy](./media/policy-migration/30.png)
 
-## <a name="disable-the-classic-policy"></a>Disable the classic policy
+## <a name="disable-the-classic-policy"></a>Wyłącz zasady klasyczne
 
-To disable your classic policy, click **Disable** in the **Details** view.
+Aby wyłączyć zasady klasyczne, kliknij przycisk **Wyłącz** w widoku **szczegółów** .
 
-![Classic policies](./media/policy-migration-mfa/14.png)
+![Zasady klasyczne](./media/policy-migration-mfa/14.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- For more information about the classic policy migration, see [Migrate classic policies in the Azure portal](policy-migration.md).
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+- Aby uzyskać więcej informacji na temat klasycznej migracji zasad, zobacz [Migrowanie zasad klasycznych w Azure Portal](policy-migration.md).
+- Jeśli chcesz dowiedzieć się, jak skonfigurować zasady dostępu warunkowego, zobacz [Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji, Azure Active Directory dostępu warunkowego](app-based-mfa.md).
+- Aby skonfigurować zasady dostępu warunkowego dla środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory](best-practices.md).

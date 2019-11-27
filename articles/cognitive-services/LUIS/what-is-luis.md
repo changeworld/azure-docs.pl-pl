@@ -19,9 +19,9 @@ ms.locfileid: "74456566"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co to jest usługa Language Understanding (LUIS)?
 
-Language Understanding (LUIS) is a cloud-based API service that applies custom machine-learning intelligence to natural language text to predict overall meaning, and pull out relevant, detailed information. 
+Language Understanding (LUIS) to oparta na chmurze usługa interfejsu API, która umożliwia stosowanie niestandardowych analiz uczenia maszynowego do tekstu w języku naturalnym w celu przewidywania ogólnego znaczenia i ściągania odpowiednich szczegółowych informacji. 
 
-For example, when a client application sends the text, `find me a wireless keyboard for $30`, LUIS responds with the following JSON object. 
+Na przykład, gdy aplikacja kliencka wysyła tekst, `find me a wireless keyboard for $30`LUIS reaguje na następujący obiekt JSON. 
 
 ```JSON
 {
@@ -48,26 +48,26 @@ For example, when a client application sends the text, `find me a wireless keybo
     }
 }
 ```
-In the example above, the _**intent**_ , or overall meaning of the phrase is that the user is trying to find an item. The detailed pieces of information that LUIS extracts are called _**entities**_ . In this case, the entities are the name of the item the user is looking for and the amount of money they want to spend.
+W powyższym przykładzie _**zamierzenie**_ lub ogólne znaczenie frazy polega na tym, że użytkownik próbuje znaleźć element. Szczegółowe fragmenty informacji, które LUIS wyodrębnia są nazywane _**jednostkami**_ . W takim przypadku jednostki są nazwą elementu, którego szuka użytkownik, i ilością pieniędzy, które chcą wydać.
 
-Client applications use LUIS's returned JSON, the _intent_ (category), and _entities_ (extracted detailed information), to drive actions in the client application. A client application for LUIS is often a conversational application that communicates with a user in natural language to complete a task. Przykładami aplikacji klienckich są aplikacje mediów społecznościowych, czatboty i aplikacje klasyczne z funkcją rozpoznawania mowy. 
+Aplikacje klienckie używają LUIS zwracanego kodu JSON, _zamiaru_ (kategorii) i _jednostek_ (wyodrębnione informacje szczegółowe) do wykonywania akcji w aplikacji klienckiej. Aplikacja kliencka dla LUIS jest często aplikacją do konwersacji, która komunikuje się z użytkownikiem w języku naturalnym w celu ukończenia zadania. Przykładami aplikacji klienckich są aplikacje mediów społecznościowych, czatboty i aplikacje klasyczne z funkcją rozpoznawania mowy. 
 
-![Conceptual image of 3 client applications working with Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Conceptual image of 3 client applications working with Cognitive Services Language Understanding (LUIS)")
+![Obraz przedstawiający koncepcję 3 aplikacji klienckich pracujących z Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Obraz przedstawiający koncepcję 3 aplikacji klienckich pracujących z Cognitive Services Language Understanding (LUIS)")
 
-## <a name="example-use-luis-in-a-chat-bot"></a>Example use LUIS in a chat bot
+## <a name="example-use-luis-in-a-chat-bot"></a>Przykład użycia LUIS w rozmowie bot
 
 <a name="Accessing-LUIS"></a>
 
-A client application sends utterances (text) to the published LUIS natural language processing endpoint [API][endpoint-apis] and receives the results as JSON responses. Typową aplikacją kliencką dla usługi LUIS jest czatbot.
+Aplikacja kliencka wysyła wyrażenia długości (tekst) do opublikowanego [interfejsu API][endpoint-apis] programu Endpoint Processing języka naturalnego Luis i odbiera wyniki jako odpowiedzi JSON. Typową aplikacją kliencką dla usługi LUIS jest czatbot.
 
 
-![Conceptual imagery of LUIS working with Chat bot to predict user text with natural language understanding (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Conceptual imagery of LUIS working with Chat bot to predict user text with natural language understanding (NLP")
+![Obraz przedstawiający koncepcje LUIS pracy z usługą Chat bot w celu przewidywania tekstu użytkownika za pomocą interpretacji języka naturalnego (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Obraz przedstawiający koncepcje LUIS pracy z usługą Chat bot w celu przewidywania tekstu użytkownika przy użyciu funkcji interpretacji języka naturalnego (NLP")
 
-|Czynność|Działanie|
+|Krok|Akcja|
 |:--|:--|
 |1|Aplikacja kliencka wysyła _wypowiedź_ użytkownika (tekst wypowiadany własnymi słowami): „I want to call my HR rep” („Chcę zadzwonić do mojego przedstawiciela działu kadr”) do punktu końcowego usługi LUIS jako żądanie HTTP.|
-|2|LUIS applies machine learned language models to the user's unstructured input text and returns a JSON-formatted response, with a top intent, `HRContact`. Minimalna odpowiedź punktu końcowego w formacie JSON zawiera wypowiedź zapytania oraz najwyżej ocenioną intencję. It can also extract data such as the _Contact Type_ entity.|
-|3|Aplikacja kliencka używa odpowiedzi w formacie JSON do podejmowania decyzji dotyczących sposobu realizacji żądania użytkownika. These decisions can include a decision tree in the bot and calls to other services. |
+|2|LUIS stosuje modele języka z obsługą maszyn, do tekstu wejściowego bez struktury użytkownika i zwraca odpowiedź sformatowaną w formacie JSON z zamiarem najwyższego poziomu `HRContact`. Minimalna odpowiedź punktu końcowego w formacie JSON zawiera wypowiedź zapytania oraz najwyżej ocenioną intencję. Może również wyodrębnić dane, takie jak jednostka _typu kontaktu_ .|
+|3|Aplikacja kliencka używa odpowiedzi w formacie JSON do podejmowania decyzji dotyczących sposobu realizacji żądania użytkownika. Decyzje te mogą obejmować drzewo decyzyjne w bot i wywołania do innych usług. |
 
 Aplikacja usługi LUIS przeprowadza analizy, dzięki którym aplikacja kliencka może dokonać inteligentnego wyboru. Sama usługa LUIS nie dokonuje tych wyborów. 
 
@@ -76,18 +76,18 @@ Aplikacja usługi LUIS przeprowadza analizy, dzięki którym aplikacja kliencka 
 
 ## <a name="natural-language-processing"></a>Przetwarzanie języka naturalnego
 
-Your LUIS app contains domain-specific natural language models, which work together. You can start the LUIS app with one or more prebuilt models, build your own model, or blend prebuilt models with your own custom information.
+Twoja aplikacja LUIS zawiera modele języka naturalnego specyficzne dla domeny, które współpracują ze sobą. Możesz uruchomić aplikację LUIS z jednym lub wieloma wstępnie skompilowanymi modelami, utworzyć własny model lub zmieszać wbudowane modele ze swoimi niestandardowymi informacjami.
 
-* **Prebuilt model** LUIS has many prebuilt domains that include intent and entity models that work together to complete common usage scenarios. These domains include labeled utterances that can be inspected and edited, allowing you to customize them. [Wstępnie utworzone modele domeny](luis-how-to-use-prebuilt-domains.md) zawierają kompletny projekt i są świetnym sposobem, aby szybko rozpocząć korzystanie z usługi LUIS. In addition, there are prebuilt entities such as currency and number that you can use independently from the prebuilt domains.
+* **Prekompilowany model** LUIS ma wiele wbudowanych domen, które obejmują modele założeń i jednostek, które współpracują ze sobą w celu wykonania typowych scenariuszy użycia. Domeny te zawierają etykiety wyrażenia długości, które mogą być kontrolowane i edytowane, co pozwala na ich dostosowanie. [Wstępnie utworzone modele domeny](luis-how-to-use-prebuilt-domains.md) zawierają kompletny projekt i są świetnym sposobem, aby szybko rozpocząć korzystanie z usługi LUIS. Ponadto istnieją wstępnie skompilowane jednostki, takie jak waluta i numer, których można użyć niezależnie od wstępnie skompilowanych domen.
 
-* **Custom model** LUIS gives you several ways to build your own custom models including intents, and entities. Entities include machine-learned entities, pattern matching entities, and a combination of machine-learned and pattern matching.
+* **Model niestandardowy** LUIS oferuje kilka sposobów tworzenia własnych modeli niestandardowych, w tym intencje i jednostki. Jednostki obejmują jednostki, które są związane z maszyną, jednostki zgodne ze wzorcem i kombinację dopasowywania maszyn i wzorców.
 
-## <a name="build-the-luis-app"></a>Build the LUIS app
-Build the app with the [authoring](https://go.microsoft.com/fwlink/?linkid=2092087) APIs or with the [LUIS portal](https://www.luis.ai).
+## <a name="build-the-luis-app"></a>Kompilowanie aplikacji LUIS
+Utwórz aplikację za pomocą interfejsów API [tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087) lub [portalu Luis](https://www.luis.ai).
 
-The LUIS app begins with categories of input text called **[intents](luis-concept-intent.md)** . Każda intencja musi zawierać przykłady **[wypowiedzi](luis-concept-utterance.md)** użytkownika. Each utterance can provide data that needs to be extracted. 
+Aplikacja LUIS rozpoczyna się od kategorii tekstu wejściowego o nazwie **[intencje](luis-concept-intent.md)** . Każda intencja musi zawierać przykłady **[wypowiedzi](luis-concept-utterance.md)** użytkownika. Każdy wypowiedź może dostarczyć dane, które muszą zostać wyodrębnione. 
 
-|Przykładowa wypowiedź użytkownika|Intencja|Extracted data|
+|Przykładowa wypowiedź użytkownika|Intencja|Wyodrębnione dane|
 |-----------|-----------|-----------|
 |`Book a flight to __Seattle__?`|BookFlight|Seattle|
 |`When does your store __open__?`|StoreHoursAndLocation|open|
@@ -95,9 +95,9 @@ The LUIS app begins with categories of input text called **[intents](luis-concep
 
 ## <a name="query-prediction-endpoint"></a>Punkt końcowy przewidywania zapytania
 
-After your app is trained and published to the endpoint, the client application sends utterances to the prediction [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) API. The API applies the app to the utterance for analysis and responds with the prediction results in a JSON format.  
+Gdy aplikacja zostanie przeszkolone i opublikowana w punkcie końcowym, aplikacja kliencka wysyła wyrażenia długości do [interfejsu API](https://go.microsoft.com/fwlink/?linkid=2092356) usługi przewidywania. Interfejs API stosuje aplikację do wypowiedź na potrzeby analizy i reaguje na wyniki prognozowania w formacie JSON.  
 
-Minimalna odpowiedź punktu końcowego w formacie JSON zawiera wypowiedź zapytania oraz najwyżej ocenioną intencję. It can also extract data such as the following **Contact Type** entity and overall sentiment. 
+Minimalna odpowiedź punktu końcowego w formacie JSON zawiera wypowiedź zapytania oraz najwyżej ocenioną intencję. Może również wyodrębnić dane, takie jak następująca jednostka **typu kontaktu** i ogólna tonacji. 
 
 ```JSON
 {
@@ -125,41 +125,41 @@ Minimalna odpowiedź punktu końcowego w formacie JSON zawiera wypowiedź zapyta
 
 ## <a name="improve-model-prediction"></a>Doskonalenie przewidywania z użyciem modelu
 
-After your LUIS app is published and receives real user utterances, LUIS provides [active learning](luis-concept-review-endpoint-utterances.md) of endpoint utterances to improve prediction accuracy. 
+Po opublikowaniu aplikacji LUIS i otrzymaniu rzeczywistej wyrażenia długości użytkownika, LUIS zapewnia [aktywną naukę](luis-concept-review-endpoint-utterances.md) punktu końcowego wyrażenia długości, aby poprawić dokładność przewidywania. 
 
 <a name="using-luis"></a>
 
-## <a name="iterative-development-lifecycle"></a>Iterative development lifecycle
-LUIS provides tools, versioning, and collaboration with other LUIS authors to integrate into the full iterative [development life cycle](luis-concept-app-iteration.md). 
+## <a name="iterative-development-lifecycle"></a>Cykl życia programowania iteracyjnego
+LUIS oferuje narzędzia, przechowywanie wersji i współpracę z innymi autorami LUIS w celu zintegrowania z pełnym [cyklem życia](luis-concept-app-iteration.md). 
 
 ## <a name="implementing-luis"></a>Wdrażanie usługi LUIS
-Language Understanding (LUIS), as a REST API, can be used with any product, service, or framework with an HTTP request. Poniższa lista zawiera główne produkty i usługi firmy Microsoft, których można używać z usługą LUIS.
+Language Understanding (LUIS) jako interfejs API REST może być używany z dowolnym produktem, usługą lub platformą z żądaniem HTTP. Poniższa lista zawiera główne produkty i usługi firmy Microsoft, których można używać z usługą LUIS.
 
 Najważniejszą aplikacją kliencką dla usługi LUIS jest:
-* [Bot usługi Web Apps](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) szybko tworzy czatbota obsługującego usługę LUIS, który rozmawia z użytkownikiem za pośrednictwem tekstowych danych wejściowych. Uses [Bot Framework][bot-framework] version [4.x](https://github.com/Microsoft/botbuilder-dotnet) for a complete bot experience.
+* [Bot usługi Web Apps](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) szybko tworzy czatbota obsługującego usługę LUIS, który rozmawia z użytkownikiem za pośrednictwem tekstowych danych wejściowych. Używa programu [bot Framework][bot-framework] w wersji [4. x](https://github.com/Microsoft/botbuilder-dotnet) , aby uzyskać pełny bot środowisko.
 
 Narzędzia do szybkiego i łatwego korzystania z usługi LUIS z botem:
-* [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) The NPM package provides authoring and prediction with as either a stand-alone command line tool or as import. 
+* [interfejs wiersza polecenia Luis](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) Pakiet NPM zapewnia tworzenie i prognozowanie za pomocą autonomicznego narzędzia wiersza polecenia lub jako importu. 
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) — to narzędzie do generowania silnie typizowanego języka C# i kodu źródłowego języka Typescript z wyeksportowanego modelu usługi LUIS.
 * [Dispatch](https://aka.ms/dispatch-tool) — umożliwia używanie kilku aplikacji LUIS lub QnA Maker z poziomu aplikacji nadrzędnej za pomocą modelu dyspozytora.
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) — to narzędzie wiersza polecenia, które pomaga zarządzać modelami językowymi bota.
-* [Bot framework - Composer](https://github.com/microsoft/BotFramework-Composer) - an integrated development tool for developers and multi-disciplinary teams to build bots and conversational experiences with the Microsoft Bot Framework
+* [Bot Framework — układacz](https://github.com/microsoft/BotFramework-Composer) — zintegrowane narzędzie programistyczne dla deweloperów i zespołów z wielodyscyplinarnymi kompilacjami botów i konwersacjami w środowisku Microsoft bot Framework
 
 Inne usługi Cognitive Services używane z usługą LUIS:
-* [QnA Maker][qnamaker] allows several types of text to combine into a question and answer knowledge base.
+* [QNA Maker][qnamaker] umożliwia łączenie kilku typów tekstu z bazą wiedzy pytań i odpowiedzi.
 * [Usługa rozpoznawania mowy](../Speech-Service/overview.md) konwertuje żądania w języku mówionym na tekst. 
 * [Uczeń konwersacji](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview) umożliwia stworzenie rozmów z botem szybciej niż w usłudze LUIS.
 
 Przykłady korzystające z usługi LUIS:
 * Repozytorium GitHub [Conversational AI](https://github.com/Microsoft/AI)
-* [Bot framework - Bot samples](https://github.com/microsoft/BotBuilder-Samples)
+* [Bot Framework — przykłady bot](https://github.com/microsoft/BotBuilder-Samples)
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Co nowego](whats-new.md)
-* Author a new LUIS app with a [prebuilt](luis-get-started-create-app.md) or [custom](luis-quickstart-intents-only.md) domain
+* Tworzenie nowej aplikacji LUIS przy użyciu [wstępnie skompilowanej](luis-get-started-create-app.md) lub [niestandardowej](luis-quickstart-intents-only.md) domeny
 * [Wyślij zapytanie do punktu końcowego przewidywania](luis-get-started-get-intent-from-browser.md) publicznej aplikacji IoT. 
-* [Developer resources](developer-reference-resource.md) for LUIS. 
+* [Zasoby dla deweloperów](developer-reference-resource.md) dla Luis. 
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/

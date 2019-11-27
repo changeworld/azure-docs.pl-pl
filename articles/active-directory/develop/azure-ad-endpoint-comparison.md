@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 975c7f18da9797305b0af3f81b00acca1ba14a1a
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e5a000d08afb3afba06d82aae4414e87b61e502f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200319"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533055"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Dlaczego warto aktualizować oprogramowanie Microsoft Identity platform (v 2.0)?
 
@@ -62,9 +62,9 @@ Zgoda administratora w imieniu organizacji nadal wymaga uprawnień statycznych z
 
 ## <a name="scopes-not-resources"></a>Zakresy, a nie zasoby
 
-W przypadku aplikacji korzystających z punktu końcowego v 1.0 Aplikacja może zachowywać się jako **zasób**lub odbiorca tokenów. Zasób może definiować wiele **zakresów** lub **oAuth2Permissions** , które rozumie, dzięki czemu aplikacje klienckie mogą żądać tokenów z tego zasobu dla określonego zestawu zakresów. Rozważmy interfejs API programu Graph usługi Azure AD jako przykładu zasobu:
+W przypadku aplikacji korzystających z punktu końcowego v 1.0 Aplikacja może zachowywać się jako **zasób**lub odbiorca tokenów. Zasób może definiować wiele **zakresów** lub **oAuth2Permissions** , które rozumie, dzięki czemu aplikacje klienckie mogą żądać tokenów z tego zasobu dla określonego zestawu zakresów. Rozważmy Microsoft Graph API jako przykładu zasobu:
 
-* Identyfikator zasobu lub `AppID URI`: `https://graph.windows.net/`
+* Identyfikator zasobu lub `AppID URI`: `https://graph.microsoft.com/`
 * Zakresy lub `oAuth2Permissions`: `Directory.Read`, `Directory.Write`i tak dalej.
 
 Ta wartość dotyczy punktu końcowego platformy tożsamości firmy Microsoft. Aplikacja może nadal działać jako zasób, definiować zakresy i być identyfikowane za pomocą identyfikatora URI. Aplikacje klienckie nadal mogą żądać dostępu do tych zakresów. Jednak sposób, w jaki klient żąda tych uprawnień, został zmieniony.
@@ -95,7 +95,7 @@ W tym miejscu parametr **SCOPE** wskazuje, który zasób i uprawnienia aplikacja
 
 ### <a name="offline-access"></a>Dostęp w trybie offline
 
-Aplikacje korzystające z punktu końcowego platformy tożsamości firmy Microsoft mogą wymagać użycia nowego dobrze znanego uprawnienia dla aplikacji — zakresu `offline_access`. Wszystkie aplikacje będą musieli zażądać tego uprawnienia, jeśli potrzebują dostępu do zasobów w imieniu użytkownika przez długi czas, nawet jeśli użytkownik nie może aktywnie korzystać z aplikacji. Zakres `offline_access` będzie widoczny dla użytkownika w oknach dialogowych wyrażania zgody na **dostęp do danych w dowolnym czasie**, który użytkownik musi wyrazić zgodę. Żądanie uprawnień `offline_access` umożliwi aplikacji sieci Web odbieranie protokołu OAuth 2,0 refresh_tokens z punktu końcowego platformy tożsamości firmy Microsoft. Tokeny odświeżania są długotrwałe i mogą być wymieniane z nowymi tokenami dostępu OAuth 2,0 dla rozszerzonych okresów dostępu.
+Aplikacje korzystające z punktu końcowego platformy tożsamości firmy Microsoft mogą wymagać użycia nowego dobrze znanego uprawnienia dla aplikacji — zakresu `offline_access`. Wszystkie aplikacje będą musieli zażądać tego uprawnienia, jeśli potrzebują dostępu do zasobów w imieniu użytkownika przez długi czas, nawet jeśli użytkownik nie może aktywnie korzystać z aplikacji. Zakres `offline_access` będzie widoczny dla użytkownika w oknach dialogowych wyrażania zgody na **dostęp do danych w dowolnym czasie**, który użytkownik musi wyrazić zgodę. Żądanie uprawnień `offline_access` umożliwi aplikacji sieci Web otrzymywanie refresh_tokens OAuth 2,0 z punktu końcowego platformy tożsamości firmy Microsoft. Tokeny odświeżania są długotrwałe i mogą być wymieniane z nowymi tokenami dostępu OAuth 2,0 dla rozszerzonych okresów dostępu.
 
 Jeśli aplikacja nie zażąda zakresu `offline_access`, nie otrzyma tokenów odświeżania. Oznacza to, że po zrealizowaniu kodu autoryzacji w przepływie kodu autoryzacji OAuth 2,0 otrzymasz tylko token dostępu z punktu końcowego `/token`. Ten token dostępu pozostaje ważny przez krótki czas (zwykle godzinę), ale wkrótce wygaśnie. W tym momencie aplikacja będzie musiała przekierować użytkownika z powrotem do punktu końcowego `/authorize`, aby pobrać nowy kod autoryzacji. W trakcie tego przekierowania użytkownik może lub nie musi wprowadzać ponownie poświadczeń lub zgodzić się na uprawnienia, w zależności od typu aplikacji.
 
@@ -103,11 +103,11 @@ Aby dowiedzieć się więcej na temat uwierzytelniania OAuth 2,0, `refresh_token
 
 ### <a name="openid-profile-and-email"></a>OpenID Connect, profile i wiadomości e-mail
 
-Historycznie, najbardziej podstawowy przepływ logowania za pomocą programu OpenID Connect z platformą tożsamości firmy Microsoft zapewnia wiele informacji o użytkowniku w wynikającym *id_token*. Oświadczenia w id_token mogą zawierać nazwę użytkownika, preferowaną nazwę użytkownika, adres e-mail, identyfikator obiektu i wiele innych.
+Historycznie, najbardziej podstawowy przepływ logowania za pomocą programu OpenID Connect z platformą tożsamości firmy Microsoft zapewnia wiele informacji o użytkowniku w wyniku *id_token*. Oświadczenia w id_token mogą zawierać nazwę użytkownika, preferowaną nazwę użytkownika, adres e-mail, identyfikator obiektu i wiele innych.
 
 Informacje, do których ten zakres `openid` zapewnia dostęp do aplikacji, są teraz ograniczone. Zakres `openid` będzie zezwalać aplikacji na logowanie użytkownika i odbieranie identyfikatora specyficznego dla aplikacji dla użytkownika. Jeśli chcesz uzyskać dane osobowe dotyczące użytkownika w aplikacji, aplikacja musi zażądać dodatkowych uprawnień od użytkownika. Dwa nowe zakresy, `email` i `profile`, umożliwią zażądanie dodatkowych uprawnień.
 
-* Zakres `email` umożliwia aplikacji dostęp do podstawowego adresu e-mail użytkownika za pośrednictwem żądania `email` w id_token, przy założeniu, że użytkownik ma adres e-mail z adresami.
+* Zakres `email` umożliwia aplikacji dostęp do podstawowego adresu e-mail użytkownika za pośrednictwem `email`ego żądania w id_token, przy założeniu, że użytkownik ma adres e-mail z adresami.
 * Zakres `profile` zapewnia aplikacji dostęp do wszystkich innych podstawowych informacji o użytkowniku, takich jak ich nazwy, preferowana nazwa użytkownika, identyfikator obiektu itd., w id_token.
 
 Te zakresy umożliwiają zakodowanie aplikacji w sposób minimalny, dzięki czemu użytkownik może uzyskać dostęp tylko do zestawu informacji wymaganych przez aplikację. Aby uzyskać więcej informacji na temat tych zakresów, zobacz [Dokumentacja zakresu platformy tożsamości firmy Microsoft](v2-permissions-and-consent.md).
@@ -117,7 +117,7 @@ Te zakresy umożliwiają zakodowanie aplikacji w sposób minimalny, dzięki czem
 Punkt końcowy platformy tożsamości firmy Microsoft domyślnie wystawia mniejszą liczbę oświadczeń w tokenach, aby zachować małe ładunki. Jeśli masz aplikacje i usługi, które mają zależność od konkretnego oświadczenia w tokenie w wersji 1.0, która nie jest już świadczona domyślnie w tokenie platformy tożsamości firmy Microsoft, rozważ użycie funkcji [oświadczeń opcjonalnych](active-directory-optional-claims.md) w celu uwzględnienia tego oświadczenia.
 
 > [!IMPORTANT]
-> tokeny v 1.0 i v 2.0 mogą być wystawiane przez punkty końcowe w wersji 1.0 i 2.0. id_tokens *zawsze* pasuje do punktu końcowego, z którego żądają, a tokeny dostępu są *zawsze* zgodne z formatem OCZEKIWANYM przez internetowy interfejs API, który klient będzie wywoływał przy użyciu tego tokenu.  Dlatego jeśli aplikacja używa punktu końcowego v 2.0 do uzyskania tokenu wywołującego Microsoft Graph, który oczekuje tokenów dostępu do formatu v 1.0, aplikacja otrzyma token w formacie v 1.0.  
+> tokeny v 1.0 i v 2.0 mogą być wystawiane przez punkty końcowe w wersji 1.0 i 2.0. id_tokens *zawsze* pasować do punktu końcowego, z którego żądają, a tokeny dostępu są *zawsze* zgodne z formatem OCZEKIWANYM przez internetowy interfejs API, którego klient będzie wywoływał przy użyciu tego tokenu.  Dlatego jeśli aplikacja używa punktu końcowego v 2.0 do uzyskania tokenu wywołującego Microsoft Graph, który oczekuje tokenów dostępu do formatu v 1.0, aplikacja otrzyma token w formacie v 1.0.  
 
 ## <a name="limitations"></a>Ograniczenia
 

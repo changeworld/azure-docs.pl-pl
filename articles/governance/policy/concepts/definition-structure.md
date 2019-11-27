@@ -69,14 +69,14 @@ Wszystkie przykłady Azure Policy znajdują się na [Azure Policy próbkach](../
 
 ### <a name="resource-manager-modes"></a>Tryby Menedżer zasobów
 
-**Tryb** określa typów zasobów, które zostanie obliczone dla zasad. Obsługiwane metody to:
+**Tryb** określa, które typy zasobów będą oceniane dla zasad. Obsługiwane metody to:
 
-- `all`: oceny grupy zasobów i wszystkie typy zasobów
-- `indexed`: tylko ocenić typy zasobów, które obsługuje tagi i lokalizacji
+- `all`: Oceń grupy zasobów i wszystkie typy zasobów
+- `indexed`: Oceń tylko typy zasobów obsługujące Tagi i lokalizację
 
-Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasad, została utworzona za pośrednictwem portalu użycia `all` trybu. Jeśli używasz programu PowerShell lub wiersza polecenia platformy Azure, możesz określić **tryb** parametru ręcznie. Jeśli nie zawiera definicji zasad **tryb** wartości, jego wartość domyślna to `all` w programie Azure PowerShell i do `null` w interfejsie wiersza polecenia platformy Azure. A `null` tryb jest taki sam, jak przy użyciu `indexed` do zapewnienia obsługi zgodności.
+Zalecamy skonfigurowanie **trybu** do `all` w większości przypadków. Wszystkie definicje zasad utworzone za pomocą portalu używają trybu `all`. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia platformy Azure, możesz określić parametr **mode** ręcznie. Jeśli definicja zasad nie zawiera wartości **trybu** , domyślnie `all` w Azure PowerShell i `null` w interfejsie wiersza polecenia platformy Azure. Tryb `null` jest taki sam jak w przypadku używania `indexed` w celu zapewnienia zgodności z poprzednimi wersjami.
 
-`indexed` należy używać podczas tworzenia zasad, które wymuszają tagów lub lokalizacji. Chociaż nie jest to wymagane, uniemożliwiają one nie obsługujące tagów i lokalizacji, ponieważ nie są one zgodne z wynikami sprawdzania zgodności. Wyjątek stanowi **grup zasobów**. Należy ustawić zasady, które wymuszają lokalizacji lub tagów w grupie zasobów **tryb** do `all` i docelowy specjalnie `Microsoft.Resources/subscriptions/resourceGroups` typu. Aby uzyskać przykład, zobacz [wymusić tagi z grupy zasobów](../samples/enforce-tag-rg.md). Aby uzyskać listę zasobów, które obsługują Tagi, zobacz [obsługa tagów dla zasobów platformy Azure](../../../azure-resource-manager/tag-support.md).
+`indexed` należy używać podczas tworzenia zasad, które wymuszają Tagi lub lokalizacje. Chociaż nie jest to wymagane, uniemożliwiają one nie obsługujące tagów i lokalizacji, ponieważ nie są one zgodne z wynikami sprawdzania zgodności. Wyjątkiem są **grupy zasobów**. Zasady, które wymuszają lokalizację lub Tagi w grupie zasobów, powinny ustawiać **tryb** , aby `all`, a w odniesieniu do typu `Microsoft.Resources/subscriptions/resourceGroups`. Aby zapoznać się z przykładem, zobacz [Wymuszaj Tagi grupy zasobów](../samples/enforce-tag-rg.md). Aby uzyskać listę zasobów, które obsługują Tagi, zobacz [obsługa tagów dla zasobów platformy Azure](../../../azure-resource-manager/tag-support.md).
 
 ### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a>tryby dostawcy zasobów <a name="resource-provider-modes" />(wersja zapoznawcza)
 
@@ -92,7 +92,7 @@ Następujące tryby dostawcy zasobów są obecnie obsługiwane w wersji zapoznaw
 
 ## <a name="parameters"></a>Parametry
 
-Parametry ułatwiają zarządzanie zasadami dzięki zmniejszeniu liczby definicji zasad. Reakcji parametrów, takich jak pola w formularzu — `name`, `address`, `city`, `state`. Te parametry pozostają niezmienione, jednak ich wartości zmieniają poszczególnych wypełniania formularza.
+Parametry ułatwiają zarządzanie zasadami dzięki zmniejszeniu liczby definicji zasad. Należy traktować parametry, takie jak pola w formularzu — `name`, `address`, `city``state`. Te parametry pozostają niezmienione, jednak ich wartości zmieniają poszczególnych wypełniania formularza.
 Parametry działają tak samo, podczas tworzenia zasad. Jeśli dołączysz parametrów w definicji zasad, można ponownie użyć tej zasady dla różnych scenariuszy przy użyciu innej wartości.
 
 > [!NOTE]
@@ -149,7 +149,7 @@ Ten przykład odwołuje się do parametru **allowedLocations** , który został 
 
 ### <a name="strongtype"></a>strongtype
 
-We właściwości `metadata` można użyć **silnego** elementu, aby udostępnić listę opcji dostępnych w ramach Azure Portal. Dozwolone wartości **strongType** obejmują:
+We właściwości `metadata` można użyć **silnego** elementu, aby udostępnić listę opcji dostępnych w ramach Azure Portal. Dozwolone wartości dla **silnego elementu strongtype** są obecnie:
 
 - `location`
 - `resourceTypes`
@@ -169,18 +169,18 @@ Podczas tworzenia inicjatywy lub zasad, należy określić lokalizację definicj
 
 Jeśli lokalizacja definicji to:
 
-- **Subskrypcja** — tylko do zasobów w ramach tej subskrypcji można przypisać zasady.
-- **Grupa zarządzania** — tylko do zasobów w ramach subskrypcji podrzędnych i podrzędne grupy zarządzania można przypisać zasady. Jeśli planowane jest zastosowanie definicję zasad do wielu subskrypcji, lokalizacji musi być grupą zarządzania, który zawiera te subskrypcje.
+- Tylko zasoby z **subskrypcją** w ramach tej subskrypcji mogą być przypisane do zasad.
+- Zasady mogą być przypisywane tylko zasobom należącym do **grupy** zarządzania w ramach podrzędnych grup administracyjnych i subskrypcji podrzędnych. Jeśli planowane jest zastosowanie definicję zasad do wielu subskrypcji, lokalizacji musi być grupą zarządzania, który zawiera te subskrypcje.
 
 ## <a name="display-name-and-description"></a>Nazwę wyświetlaną i opis
 
-Możesz użyć **displayName** i **opis** do identyfikowania definicji zasad i dostarczanie kontekstu, gdy jest używany. **Nazwa wyświetlana** ma maksymalną długość _128_ znaków i **Opis** ma maksymalną długość _512_ znaków.
+Użyj **DisplayName** i **Description** , aby zidentyfikować definicję zasad i podać kontekst, który ma być używany. **Nazwa wyświetlana** ma maksymalną długość _128_ znaków i **Opis** ma maksymalną długość _512_ znaków.
 
 ## <a name="policy-rule"></a>Reguła zasad
 
-Reguła zasad składa się z **Jeśli** i **następnie** bloków. W **Jeśli** bloku, należy zdefiniować co najmniej jeden warunek, które określają, kiedy zasady są wymuszane. Operatory logiczne można zastosować do tych warunków, aby precyzyjnie zdefiniować scenariusz dla zasad.
+Reguła zasad składa się z elementów **if** i **then** . W bloku **if** definiuje się jeden lub więcej warunków, które określają, kiedy zasady są wymuszane. Operatory logiczne można zastosować do tych warunków, aby precyzyjnie zdefiniować scenariusz dla zasad.
 
-W **następnie** bloku, należy zdefiniować wpływ, jaki się stanie, gdy **Jeśli** warunki są spełnione.
+W bloku **then** definiujesz efekt, **który ma miejsce, gdy warunki są** spełnione.
 
 ```json
 {
@@ -201,9 +201,9 @@ Obsługiwane operatory logiczne to:
 - `"allOf": [{condition or operator},{condition or operator}]`
 - `"anyOf": [{condition or operator},{condition or operator}]`
 
-**Nie** składni odwraca wynik warunku. **Nieobsługiwanymi** składni (podobne do logicznego **i** operacji) wymaga wszystkie warunki muszą być spełnione. **AnyOf** składni (podobne do logicznego **lub** operacji) wymaga co najmniej jeden warunek to true.
+**Nie** składnia odwraca wynik warunku. Składnia **allOf** (podobna do operacji logicznej **and** ) wymaga, aby wszystkie warunki były prawdziwe. Składnia **anyOf** (podobna do operacji logicznej **or** ) wymaga co najmniej jednego warunku.
 
-Można zagnieżdżać operatorów logicznych. W poniższym przykładzie przedstawiono **nie** operacji, która jest zagnieżdżony w **nieobsługiwanymi** operacji.
+Można zagnieżdżać operatorów logicznych. W poniższym przykładzie przedstawiono operację **not** , która jest zagnieżdżona w ramach operacji **allOf** .
 
 ```json
 "if": {
@@ -245,11 +245,11 @@ Warunek oblicza, czy **pole** lub metoda dostępu do **wartości** spełniają o
 - `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
-Korzystając z **takich jak** i **notLike** warunki, należy podać symbol wieloznaczny `*` wartości.
-Wartość nie powinna zawierać więcej niż jeden symbol wieloznaczny `*`.
+W przypadku używania warunków **like** i **notLike** , w wartości należy podać symbol wieloznaczny `*`.
+Wartość nie może mieć więcej niż jednego `*`symbolu wieloznacznego.
 
 W przypadku używania warunków **Match** i **notMatch** Podaj `#` w celu dopasowania do cyfry, `?` dla litery, `.` aby dopasować dowolny znak i dowolny inny znak, aby dopasować go do rzeczywistego znaku.
-**dopasowanie** i **notMatch** uwzględnia wielkość liter. Alternatywy bez uwzględniania wielkości liter są dostępne w **matchInsensitively** i **notMatchInsensitively**. Aby uzyskać przykłady, zobacz [Zezwalaj na kilka wzorców nazwy](../samples/allow-multiple-name-patterns.md).
+**dopasowanie** i **notMatch** uwzględnia wielkość liter. Alternatywy bez uwzględniania wielkości liter są dostępne w **matchInsensitively** i **notMatchInsensitively**. Aby zapoznać się z przykładami, zobacz [Zezwalanie na kilka wzorców nazw](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pola
 
@@ -269,7 +269,7 @@ Obsługiwane są następujące pola:
 - `tags`
 - `tags['<tagName>']`
   - Ta składnia nawiasów umożliwia obsługę nazw tagów, które mają znaki interpunkcyjne, takie jak łącznik, kropka lub spacja.
-  - Gdzie **\<tagName\>** jest nazwa tagu do sprawdzania warunku.
+  - Gdzie **\<tagName\>** jest nazwą tagu, aby zweryfikować warunek.
   - Przykłady: `tags['Acct.CostCenter']`, gdzie **ACCT. CostCenter** jest nazwą tagu.
 - `tags['''<tagName>''']`
   - Ta składnia nawiasów umożliwia obsługę nazw tagów, które zawierają apostrofy przez ucieczki z podwójnym apostrofem.
@@ -398,12 +398,12 @@ Po zmodyfikowaniu reguły zasad, `if()` sprawdza długość **nazwy** przed pró
 
 Azure Policy obsługuje następujące typy efektów:
 
-- **Dołącz**: dodaje zestaw zdefiniowanych pól do żądania
-- **Inspekcja**: generuje to zdarzenie ostrzegawcze w dzienniku aktywności, ale nie zakończy się niepowodzeniem żądania
+- **Append**: Dodaje zdefiniowany zestaw pól do żądania
+- **Inspekcja**: generuje zdarzenie ostrzegawcze w dzienniku aktywności, ale nie kończy się niepowodzeniem żądania
 - **AuditIfNotExists**: generuje zdarzenie ostrzegawcze w dzienniku aktywności, jeśli powiązany zasób nie istnieje
 - **Odmów**: generuje zdarzenie w dzienniku aktywności i kończy się niepowodzeniem żądania
 - **DeployIfNotExists**: wdraża powiązane zasoby, jeśli jeszcze nie istnieją
-- **Wyłączone**: nie szacuje zasoby pod kątem zgodności z regułą zasad
+- **Wyłączone**: nie oblicza zasobów pod kątem zgodności z regułą zasad
 - **EnforceOPAConstraint** (wersja zapoznawcza): konfiguruje kontroler "Open Policy Agent Admission Control" z strażnikiem v3 dla samozarządzanej klastrów Kubernetes na platformie Azure (wersja zapoznawcza)
 - **EnforceRegoPolicy** (wersja zapoznawcza): konfiguruje kontroler "Open Policy Agent Admission Control" z strażnikiem v2 w usłudze Azure Kubernetes Service
 - **Modyfikowanie**: dodaje, aktualizuje lub usuwa zdefiniowane znaczniki z zasobu
@@ -432,11 +432,11 @@ Następujące funkcje są dostępne do użycia w regule zasad, ale różnią si�
 - utcNow () — w przeciwieństwie do szablonu Menedżer zasobów, można go użyć poza elementem DefaultValue.
   - Zwraca ciąg, który jest ustawiony na bieżącą datę i godzinę w formacie uniwersalnego ISO 8601 DateTime-MM-DDTgg: mm: SS. fffffffZ
 
-Ponadto `field` funkcja jest dostępna z regułami zasad. `field` jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do pola odniesienia dla zasobu, które są oceniane. Przykładem użycia tego można zobaczyć w [przykład DeployIfNotExists](effects.md#deployifnotexists-example).
+Ponadto funkcja `field` jest dostępna dla reguł zasad. `field` jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do pól referencyjnych na analizowanym zasobie. Przykład tego zastosowania można zobaczyć w [przykładzie DeployIfNotExists](effects.md#deployifnotexists-example).
 
 #### <a name="policy-function-example"></a>Przykład funkcji zasad
 
-Używa w tym przykładzie reguły zasad `resourceGroup` funkcję zasobów w celu uzyskania **nazwa** właściwość w połączeniu z `concat` tablicy i obiektu funkcji do tworzenia `like` warunek, który wymusza Nazwa zasobu, aby rozpocząć nazwą grupy zasobów.
+Ten przykład reguły używa funkcji zasobów `resourceGroup` w celu uzyskania właściwości **name** połączonej z `concat` tablicą i funkcją obiektu w celu skompilowania `like` warunku, który wymusza nazwę zasobu, aby rozpoczynać się od nazwy grupy zasobów.
 
 ```json
 {
@@ -458,7 +458,7 @@ Aliasy właściwości umożliwia dostęp do właściwości specyficzne dla typu 
 
 Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie obsługiwane przez usługę Azure Policy, użyj jednej z następujących metod:
 
-- Program Azure PowerShell
+- Azure PowerShell
 
   ```azurepowershell-interactive
   # Login first with Connect-AzAccount if not using Cloud Shell
@@ -490,7 +490,7 @@ Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie o
 
 ### <a name="understanding-the--alias"></a>Opis alias [*]
 
-Mieć wiele aliasów, które są dostępne wersji, która jest wyświetlana jako nazwa "normal", a drugi zawierający **[\*]** podłączone do niego. Na przykład:
+Kilka dostępnych aliasów ma wersję, która jest wyświetlana jako nazwa "normal" (normalna) i jest do niej dołączona inna, która ma **[\*]** . Na przykład:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
@@ -525,7 +525,7 @@ Aby uzyskać więcej informacji, zobacz [ocenianie aliasu [\*]](../how-to/author
 
 Inicjatywy pozwalają grupować kilka definicji zasad powiązane w celu uproszczenia przypisań i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować powiązane definicje zasad tagowania w jednym inicjatywy. Zamiast przypisywać każdej z zasad indywidualnie, mają zastosowanie tej inicjatywy.
 
-Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwa tagi: `costCenter` i `productName`. Używa dwóch wbudowane zasady do zastosowania domyślną wartość tagu.
+Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwóch tagów: `costCenter` i `productName`. Używa dwóch wbudowane zasady do zastosowania domyślną wartość tagu.
 
 ```json
 {

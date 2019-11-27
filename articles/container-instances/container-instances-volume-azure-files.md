@@ -1,20 +1,15 @@
 ---
-title: Zainstaluj wolumin Azure Files w Azure Container Instances
+title: Zainstaluj wolumin Azure Files do grupy kontenerów
 description: Dowiedz się, jak zainstalować wolumin Azure Files, aby zachować stan utrwalania z Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 07/08/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 686c20aeb22c16298967aa6f73ee829472f4ea0c
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: a258a96f5fbc0d54b6a85a780288fb9317cb1a1b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72175934"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533259"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Instalowanie udziału plików platformy Azure w Azure Container Instances
 
@@ -273,8 +268,8 @@ Następnie dla każdego kontenera w grupie kontenerów, w której chcesz zainsta
 
 Dowiedz się, jak zainstalować inne typy woluminów w Azure Container Instances:
 
-* [Zainstalować emptyDir woluminu w wystąpień kontenera platformy Azure](container-instances-volume-emptydir.md)
-* [Zainstalować wolumin gitRepo w wystąpień kontenera platformy Azure](container-instances-volume-gitrepo.md)
+* [Zainstaluj wolumin emptyDir w Azure Container Instances](container-instances-volume-emptydir.md)
+* [Zainstaluj wolumin gitRepo w Azure Container Instances](container-instances-volume-gitrepo.md)
 * [Zainstaluj wolumin tajny w Azure Container Instances](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->

@@ -1,6 +1,6 @@
 ---
-title: Enroll TPM device to Azure Device Provisioning Service using C#
-description: Quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service using C# service SDK. W tym przewodniku Szybki start używane są rejestracje indywidualne.
+title: Rejestrowanie urządzenia TPM w usłudze Azure Device Provisioning przy użyciuC#
+description: Szybki Start — rejestrowanie urządzenia TPM w usłudze Azure C# IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi. W tym przewodniku Szybki start używane są rejestracje indywidualne.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -16,61 +16,61 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423010"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Quickstart: Enroll TPM device to IoT Hub Device Provisioning Service using C# service SDK
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Szybki Start: rejestrowanie urządzenia TPM w celu C# IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-This article shows how to programmatically create an individual enrollment for a TPM device in the Azure IoT Hub Device Provisioning Service by using the [C# Service SDK](https://github.com/Azure/azure-iot-sdk-csharp) and a sample C# .NET Core application. You can optionally enroll a simulated TPM device to the provisioning service by using this individual enrollment entry. Although these steps work on both Windows and Linux computers, this article uses a Windows development computer.
+W tym artykule pokazano, jak programowo utworzyć rejestrację indywidualną dla urządzenia TPM w usłudze Azure IoT Hub Device Provisioning Service przy użyciu [ C# zestawu SDK usługi](https://github.com/Azure/azure-iot-sdk-csharp) i przykładowej C# aplikacji platformy .NET Core. Opcjonalnie można zarejestrować symulowane urządzenie TPM w usłudze aprowizacji przy użyciu tego wpisu rejestracji indywidualnej. Chociaż te kroki działają na komputerach z systemem Windows i Linux, w tym artykule jest wykorzystywany komputer deweloperski systemu Windows.
 
 ## <a name="prepare-the-development-environment"></a>Przygotowywanie środowiska deweloperskiego
 
-1. Verify you have [Visual Studio 2019](https://www.visualstudio.com/vs/) installed on your computer.
+1. Upewnij się, że na komputerze jest zainstalowany [program Visual Studio 2019](https://www.visualstudio.com/vs/) .
 
-1. Verify you have the [.NET Core SDK](https://www.microsoft.com/net/download/windows) installed on your computer.
+1. Upewnij się, że na komputerze zainstalowano [zestaw .NET Core SDK](https://www.microsoft.com/net/download/windows) .
 
-1. Complete the steps in [Set up the IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) before you continue.
+1. Przed kontynuowaniem wykonaj kroki opisane w temacie [konfigurowanie IoT Hub Device Provisioning Service przy użyciu Azure Portal](./quick-setup-auto-provision.md) .
 
-1. (Optional) If you want to enroll a simulated device at the end of this quickstart, follow the procedure in [Create and provision a simulated TPM device using C# device SDK](quick-create-simulated-device-tpm-csharp.md) up to the step where you get an endorsement key for the device. Save the endorsement key, registration ID, and, optionally, the device ID, because you need to use them later in this quickstart.
+1. Obowiązkowe Jeśli chcesz zarejestrować symulowane urządzenie na końcu tego przewodnika Szybki Start, postępuj zgodnie z procedurą opisaną w temacie [Tworzenie i udostępnianie symulowanego urządzenia TPM C# za pomocą zestawu SDK urządzenia](quick-create-simulated-device-tpm-csharp.md) do kroku, w którym uzyskujesz Klucz poręczenia dla urządzenia. Zapisz klucz poręczenia, Identyfikator rejestracji i, opcjonalnie, identyfikator urządzenia, ponieważ musisz użyć ich w dalszej części tego przewodnika Szybki Start.
 
    > [!NOTE]
-   > Don't follow the steps to create an individual enrollment by using the Azure portal.
+   > Nie wykonuj kroków, aby utworzyć rejestrację indywidualną przy użyciu Azure Portal.
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>Uzyskiwanie parametrów połączenia usługi aprowizacji
 
 Na potrzeby przykładu w tym przewodniku Szybki start będą potrzebne parametry połączenia usługi aprowizacji.
 
-1. Sign in to the Azure portal, select **All resources**, and then your Device Provisioning Service.
+1. Zaloguj się do Azure Portal, wybierz pozycję **wszystkie zasoby**, a następnie usługę Device Provisioning.
 
-1. Choose **Shared access policies**, then select the access policy you want to use to open its properties. In **Access Policy**, copy and save the primary key connection string.
+1. Wybierz pozycję **zasady dostępu współdzielonego**, a następnie wybierz zasady dostępu, których chcesz użyć, aby otworzyć jego właściwości. W obszarze **zasady dostępu**skopiuj i Zapisz parametry połączenia klucza podstawowego.
 
     ![Pobieranie parametrów połączenia usługi aprowizacji z portalu](media/quick-enroll-device-tpm-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-individual-enrollment-sample"></a>Tworzenie przykładowej rejestracji indywidualnej
 
-This section shows how to create a .NET Core console app that adds an individual enrollment for a TPM device to your provisioning service. Wprowadzając pewne modyfikacje, za pomocą tych kroków można również utworzyć aplikację konsolową [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) służącą do dodawania rejestracji indywidualnej. To learn more about developing with IoT Core, see [Windows IoT Core developer documentation](https://docs.microsoft.com/windows/iot-core/).
+W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, która dodaje rejestrację indywidualną dla urządzenia TPM do usługi aprowizacji. Wprowadzając pewne modyfikacje, za pomocą tych kroków można również utworzyć aplikację konsolową [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) służącą do dodawania rejestracji indywidualnej. Aby dowiedzieć się więcej na temat programowania przy użyciu programu IoT Core, zobacz [dokumentację dla deweloperów w systemie Windows IoT Core](https://docs.microsoft.com/windows/iot-core/).
 
-1. Open Visual Studio and select **Create a new project**. In **Create a new project**, choose the **Console App (.NET Core)** project template for C# and select **Next**.
+1. Otwórz program Visual Studio i wybierz pozycję **Utwórz nowy projekt**. W obszarze **Utwórz nowy projekt**wybierz szablon projektu **aplikacja konsoli (.NET Core)** dla C# i wybierz pozycję **dalej**.
 
-1. Name the project *CreateTpmEnrollment*, and press **Create**.
+1. Nazwij projekt *CreateTpmEnrollment*, a następnie naciśnij pozycję **Create (Utwórz**).
 
-    ![Configure Visual C# Windows Classic Desktop project](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
+    ![Konfigurowanie klasycznego projektu programu Visual C# Windows Desktop](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
 
-1. When the solution opens in Visual Studio, in the **Solution Explorer** pane, right-click the **CreateTpmEnrollment** project. Select **Manage NuGet Packages**.
+1. Gdy rozwiązanie zostanie otwarte w programie Visual Studio, w okienku **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy projekt **CreateTpmEnrollment** . Wybierz pozycję **Zarządzaj pakietami NuGet**.
 
-1. In **NuGet Package Manager**, select **Browse**, search for and choose **Microsoft.Azure.Devices.Provisioning.Service**, and then press **Install**.
+1. W **Menedżerze pakietów NuGet**wybierz pozycję **Przeglądaj**, Wyszukaj i wybierz pozycję **Microsoft. Azure. Devices. Provisioning. Service**, a następnie naciśnij klawisz **Install**.
 
    ![Okno Menedżera pakietów NuGet](media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
-   This step downloads, installs, and adds a reference to the [Azure IoT Provisioning Service Client SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet package and its dependencies.
+   Ten krok spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet [zestawu SDK klienta usługi Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) i jego zależności.
 
-1. Add the following `using` statements after the other `using` statements at the top of `Program.cs`:
+1. Dodaj następujące instrukcje `using` po innych instrukcjach `using` w górnej części `Program.cs`:
   
    ```csharp
    using System.Threading.Tasks;
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Add the following fields to the `Program` class, making the changes listed below.
+1. Dodaj następujące pola do klasy `Program`, wprowadzając zmiany wymienione poniżej.
 
    ```csharp
    private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
@@ -87,13 +87,13 @@ This section shows how to create a .NET Core console app that adds an individual
    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
    ```
 
-   * Replace the `ProvisioningServiceConnectionString` placeholder value with the connection string of the provisioning service that you want to create the enrollment for.
+   * Zastąp `ProvisioningServiceConnectionString` wartość symbolu zastępczego parametrami połączenia usługi aprowizacji, dla której chcesz utworzyć rejestrację.
 
    * Opcjonalnie możesz zmienić identyfikator rejestracji, klucz poręczenia, identyfikator urządzenia i stan aprowizowania.
 
-   * If you're using this quickstart together with the [Create and provision a simulated TPM device using C# device SDK](quick-create-simulated-device-tpm-csharp.md) quickstart to provision a simulated device, replace the endorsement key and registration ID with the values that you noted in that quickstart. You can replace the device ID with the value suggested in that quickstart, use your own value, or use the default value in this sample.
+   * Jeśli korzystasz z tego przewodnika Szybki Start wraz z opcją [Utwórz i Udostępnij symulowane urządzenie C# TPM przy użyciu zestawu SDK urządzenia](quick-create-simulated-device-tpm-csharp.md) w celu aprowizacji symulowanego urządzenia, Zastąp Klucz poręczenia i Identyfikator rejestracji wartościami zanotowanymi w tym przewodniku Szybki Start. Identyfikator urządzenia można zastąpić wartością sugerowaną w tym przewodniku Szybki Start, użyć własnej wartości lub użyć wartości domyślnej w tym przykładzie.
 
-1. Add the following method to the `Program` class.  This code creates individual enrollment entry and then calls the `CreateOrUpdateIndividualEnrollmentAsync` method on the `ProvisioningServiceClient` to add the individual enrollment to the provisioning service.
+1. Dodaj następującą metodę do klasy `Program`.  Ten kod tworzy poszczególne wpisy rejestracji, a następnie wywołuje metodę `CreateOrUpdateIndividualEnrollmentAsync` na `ProvisioningServiceClient` w celu dodania rejestracji indywidualnej do usługi aprowizacji.
 
    ```csharp
    public static async Task RunSample()
@@ -128,7 +128,7 @@ This section shows how to create a .NET Core console app that adds an individual
    }
    ```
 
-1. Finally, replace the body of the `Main` method with the following lines:
+1. Na koniec Zastąp treść metody `Main` następującymi wierszami:
 
    ```csharp
    RunSample().GetAwaiter().GetResult();
@@ -142,33 +142,33 @@ This section shows how to create a .NET Core console app that adds an individual
   
 Uruchom przykład w programie Visual Studio, aby utworzyć rejestrację indywidualną dla urządzenia TPM.
 
-A Command Prompt window will appear and start showing confirmation messages. On successful creation, the Command Prompt window displays the properties of the new individual enrollment.
+Zostanie wyświetlone okno wiersza polecenia i rozpocznie się wyświetlanie komunikatów potwierdzających. Po pomyślnym utworzeniu w oknie wiersza polecenia zostaną wyświetlone właściwości nowej rejestracji indywidualnej.
 
-You can verify that the individual enrollment has been created. Go to the Device Provisioning Service summary, and select **Manage enrollments**, then select **Individual Enrollments**. Powinien zostać wyświetlony nowy wpis rejestracji odpowiadający identyfikatorowi rejestracji użytemu w przykładzie.
+Możesz sprawdzić, czy Rejestracja indywidualna została utworzona. Przejdź do podsumowania usługi Device Provisioning, a następnie wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz pozycję **rejestracje indywidualne**. Powinien zostać wyświetlony nowy wpis rejestracji odpowiadający identyfikatorowi rejestracji użytemu w przykładzie.
 
 ![Właściwości rejestracji w portalu](media/quick-enroll-device-tpm-csharp/verify-enrollment-portal-vs2019.png)
 
-Select the entry to verify the endorsement key and other properties for the entry.
+Wybierz wpis, aby zweryfikować Klucz poręczenia i inne właściwości wpisu.
 
-If you've been following the steps in the [Create and provision a simulated TPM device using C# device SDK](quick-create-simulated-device-tpm-csharp.md) quickstart, you can continue with the remaining steps in that quickstart to enroll your simulated device. Pomiń kroki tworzenia rejestracji indywidualnej przy użyciu witryny Azure Portal.
+Jeśli wykonano kroki opisane w temacie [Tworzenie i udostępnianie symulowanego urządzenia TPM za pomocą C# zestawu SDK urządzenia](quick-create-simulated-device-tpm-csharp.md) , możesz kontynuować pracę z pozostałymi krokami w tym przewodniku Szybki Start, aby zarejestrować symulowane urządzenie. Pomiń kroki tworzenia rejestracji indywidualnej przy użyciu witryny Azure Portal.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-If you plan to explore the C# service sample, don't clean up the resources created in this quickstart. Otherwise, use the following steps to delete all resources created by this quickstart.
+Jeśli planujesz Eksplorowanie przykładu C# usługi, nie czyść zasobów utworzonych w tym przewodniku Szybki Start. W przeciwnym razie wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki Start.
 
-1. Close the C# sample output window on your computer.
+1. Zamknij okno C# przykładowe dane wyjściowe na komputerze.
 
-1. Navigate to your Device Provisioning service in the Azure portal, select **Manage enrollments**, and then select the **Individual Enrollments** tab. Select the check box next to the *Registration ID* for the enrollment entry you created using this quickstart, and press the **Delete** button at the top of the pane.
+1. Przejdź do usługi Device Provisioning w Azure Portal, wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz kartę **indywidualne rejestracje** . Zaznacz pole wyboru obok *identyfikatora rejestracji* wpisu rejestracji utworzonego w ramach tego przewodnika Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka.
 
-1. If you followed the steps in [Create and provision a simulated TPM device using C# device SDK](quick-create-simulated-device-tpm-csharp.md) to create a simulated TPM device, do the following steps:
+1. Jeśli wykonano kroki opisane w temacie [Tworzenie i udostępnianie symulowanego urządzenia TPM za C# pomocą zestawu SDK urządzenia](quick-create-simulated-device-tpm-csharp.md) w celu utworzenia symulowanego urządzenia TPM, wykonaj następujące czynności:
 
     1. Zamknij okno symulatora modułu TPM i przykładowe okno danych wyjściowych urządzenia symulowanego.
 
-    1. W witrynie Azure Portal przejdź do usługi IoT Hub, w której zaaprowizowano urządzenie. In the menu under **Explorers**, select **IoT devices**, select the check box next to the *DEVICE ID* of the device you registered in this quickstart, and then press the **Delete** button at the top of the pane.
+    1. W witrynie Azure Portal przejdź do usługi IoT Hub, w której zaaprowizowano urządzenie. W menu w obszarze **Explorer**wybierz pozycję **urządzenia IoT**, zaznacz pole wyboru obok *identyfikatora urządzenia* urządzenia zarejestrowanego w tym przewodniku Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka.
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this quickstart, you’ve programmatically created an individual enrollment entry for a TPM device. Optionally, you created a TPM simulated device on your computer and provisioned it to your IoT hub using the Azure IoT Hub Device Provisioning Service. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal.
+W tym przewodniku szybki start utworzysz indywidualny wpis rejestracji dla urządzenia TPM. Opcjonalnie utworzono symulowane urządzenie TPM na komputerze i zainicjowano je do centrum IoT Hub przy użyciu IoT Hub Device Provisioning Service platformy Azure. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal.
 
 > [!div class="nextstepaction"]
 > [Samouczki dla usługi Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

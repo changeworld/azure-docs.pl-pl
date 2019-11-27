@@ -1,31 +1,24 @@
 ---
-title: Tworzenie funkcji wdrażanej z usługi Azure DevOps na platformie Azure | Microsoft Docs
+title: Tworzenie aplikacji funkcji przy użyciu wdrożenia DevOps — interfejs wiersza polecenia platformy Azure
 description: Tworzenie aplikacji funkcji i wdrażanie kodu funkcji z usługi Azure DevOps
-services: functions
-keywords: ''
-author: ggailey777
-ms.author: glenga
 ms.date: 07/03/2018
 ms.topic: sample
-ms.service: azure-functions
 ms.custom: mvc
-ms.openlocfilehash: 7fe68090773902248dbcdd63fbbdbbdb06b307cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3fa11d5cd81d93b89b6e8ae63fd491842be78633
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325562"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532801"
 ---
-# <a name="create-a-function-app-and-deploy-function-code-from-azure-devops"></a>Tworzenie aplikacji funkcji i wdrażanie kodu funkcji z usługi Azure DevOps
+# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Tworzenie funkcji na platformie Azure wdrożonej z usługi Azure DevOps
 
-W tym temacie przedstawiono instrukcje tworzenia [bezserwerowej](https://azure.microsoft.com/solutions/serverless/) aplikacji funkcji korzystającej z [planu Zużycie](../functions-scale.md#consumption-plan) w usłudze Azure Functions. Aplikacja funkcji, która jest kontenerem dla funkcji, jest wdrażana w sposób ciągły z repozytorium DevOps platformy Azure. 
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
+W tym temacie przedstawiono instrukcje tworzenia [bezserwerowej](https://azure.microsoft.com/solutions/serverless/) aplikacji funkcji korzystającej z [planu Zużycie](../functions-scale.md#consumption-plan) w usłudze Azure Functions. Aplikacja funkcji, która jest kontenerem dla funkcji, jest ciągle wdrażana z repozytorium usługi Azure DevOps. 
 
 Do wykonania instrukcji w tym temacie potrzebne są:
 
 * Repozytorium usługi Azure DevOps zawierające projekt aplikacji funkcji, w którym masz uprawnienia administracyjne.
-* [Osobisty token dostępu](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) do repozytorium usługi Azure DevOps.
+* [Osobisty token dostępu](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) do repozytorium usługi Azure DevOps.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,13 +40,13 @@ Ten skrypt zawiera następujące polecenia, służące do utworzenia grupy zasob
 
 | Polecenie | Uwagi |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Tworzy konto magazynu wymagane przez aplikację funkcji. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Tworzy aplikację funkcji w bezserwerowym [planie Zużycie](../functions-scale.md#consumption-plan). |
-| [az functionapp deployment source config](https://docs.microsoft.com/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Kojarzy aplikację funkcji z repozytorium Git lub Mercurial. |
+| [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Tworzy konto magazynu wymagane przez aplikację funkcji. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Tworzy aplikację funkcji w bezserwerowym [planie Zużycie](../functions-scale.md#consumption-plan). |
+| [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Kojarzy aplikację funkcji z repozytorium Git lub Mercurial. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
 Więcej przykładowych skryptów interfejsu wiersza polecenia dla usługi Azure Functions można znaleźć w [dokumentacji usługi Azure Functions](../functions-cli-samples.md).

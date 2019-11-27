@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 102cfa81c6093ff1aeefdd8d1937143a25cf76f5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1750267b5780dcfbb227ffcd6bb98e2f77ff1511
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028492"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539286"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -35,7 +35,7 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
@@ -51,7 +51,7 @@ W tym artykule opisano generowanie przykładowych danych i wysyłanie ich do cen
 
 1. Wybierz subskrypcję, w której chcesz utworzyć centrum zdarzeń, i utwórz grupę zasobów o nazwie *test-hub-rg*.
 
-    ![Utwórz grupę zasobów](media/ingest-data-event-hub/create-resource-group.png)
+    ![Tworzenie grupy zasobów](media/ingest-data-event-hub/create-resource-group.png)
 
 1. Wypełnij formularz, używając poniższych informacji.
 
@@ -137,6 +137,8 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
     > [!NOTE]
     > * Wybierz pozycję **moje dane zawiera informacje o routingu** , aby użyć routingu dynamicznego, gdzie dane zawierają niezbędne informacje dotyczące routingu, jak pokazano w komentarzach [przykładowych aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Jeśli są ustawione właściwości static i Dynamic, właściwości dynamiczne zastępują statyczne. 
     > * Zostaną pozyskane tylko zdarzenia znajdujące się w kolejce po utworzeniu połączenia danych.
+    > * Włącz kompresję GZip dla routingu statycznego, otwierając [żądanie pomocy technicznej w Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Włącz kompresję GZip dla routingu dynamicznego, jak pokazano w [przykładowej aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest). 
+    > * Avro format i właściwości systemu zdarzeń nie są obsługiwane w ładunku kompresji.
 
 ## <a name="copy-the-connection-string"></a>Kopiowanie parametrów połączenia
 

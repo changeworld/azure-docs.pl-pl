@@ -1,6 +1,6 @@
 ---
 title: Przykład — stosowanie tagu i jego wartości domyślnej
-description: This sample policy definition appends a specified tag name and value defined in a parameter, if that tag is not provided.
+description: Ta przykładowa definicja zasad dołącza określoną nazwę tagu i wartość zdefiniowaną w parametrze, jeśli ten tag nie jest podany.
 ms.date: 01/26/2019
 ms.topic: sample
 ms.openlocfilehash: 33d0580d2f6c231c4cd7e73abdaab6cb14c363d9
@@ -48,8 +48,8 @@ Kod JSON definiujący parametry zasad używany przez interfejs wiersza polecenia
 
 |Nazwa |Typ |Pole |Opis |
 |---|---|---|---|
-|tagName |Ciąg |tags |Nazwa tagu, na przykład costCenter|
-|tagValue |Ciąg |tags |Wartość tagu, na przykład headquarter|
+|tagName |Ciąg |tagów |Nazwa tagu, na przykład costCenter|
+|tagValue |Ciąg |tagów |Wartość tagu, na przykład headquarter|
 
 Podczas tworzenia przypisania za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów można przekazać jako kod JSON w ramach ciągu lub pliku przy użyciu opcji `-PolicyParameter` (program PowerShell) lub opcji `--params` (interfejs wiersza polecenia platformy Azure).
 Program PowerShell obsługuje także opcję `-PolicyParameterObject`, która wymaga przekazania do polecenia cmdlet tabeli skrótów Name/Value (Nazwa/Wartość), gdzie parametr **Name** oznacza nazwę parametru, a parametr **Value** oznacza pojedynczą wartość lub tablicę wartości przekazywaną podczas przypisywania.
@@ -69,10 +69,10 @@ W tym przykładowym parametrze jest zdefiniowany tag _tagName_ o wartości **cos
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![Deploy the Policy sample to Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
-[![Deploy the Policy sample to Azure Gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[![wdrożyć przykład zasad na platformie azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[![wdrożyć przykład zasad na platformie Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
 
-## <a name="azure-powershell"></a>Program Azure PowerShell
+## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 

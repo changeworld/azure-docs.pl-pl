@@ -1,19 +1,14 @@
 ---
-title: Przykłady szablonów Azure Resource Manager — Azure Container Instances
+title: Przykłady szablonów usługi Azure Resource Manager
 description: Znajdź przykłady szablonów Azure Resource Manager do wdrożenia Azure Container Instances w różnych konfiguracjach
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 03/07/2019
-ms.author: danlep
-ms.openlocfilehash: 7dead5cc83717a011120ef6c17b9268bd78ed171
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ddea823525002662363d61a795f34d6094c897d0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150156"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533438"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Szablony Azure Resource Manager dla Azure Container Instances
 

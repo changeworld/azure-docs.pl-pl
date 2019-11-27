@@ -1,6 +1,6 @@
 ---
-title: Access from Container Instances
-description: Learn how to provide access to images in your private container registry from Azure Container Instances by using an Azure Active Directory service principal.
+title: Dostęp z Container Instances
+description: Dowiedz się, jak zapewnić dostęp do obrazów w rejestrze kontenerów prywatnych z Azure Container Instances przy użyciu jednostki usługi Azure Active Directory.
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
@@ -10,25 +10,25 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456506"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Authenticate with Azure Container Registry from Azure Container Instances
+# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Uwierzytelnianie za pomocą Azure Container Registry z Azure Container Instances
 
-You can use an Azure Active Directory (Azure AD) service principal to provide access to your private container registries in Azure Container Registry.
+Za pomocą nazwy głównej usługi Azure Active Directory (Azure AD) można zapewnić dostęp do prywatnych rejestrów kontenerów w Azure Container Registry.
 
-In this article, you learn to create and configure an Azure AD service principal with *pull* permissions to your registry. Then, you start a container in Azure Container Instances (ACI) that pulls its image from your private registry, using the service principal for authentication.
+Ten artykuł zawiera informacje na temat tworzenia i konfigurowania jednostki usługi Azure AD z uprawnieniami *ściągania* do rejestru. Następnie należy uruchomić kontener w Azure Container Instances (ACI), który pobiera obraz z prywatnego rejestru przy użyciu nazwy głównej usługi do uwierzytelniania.
 
-## <a name="when-to-use-a-service-principal"></a>When to use a service principal
+## <a name="when-to-use-a-service-principal"></a>Kiedy używać nazwy głównej usługi
 
-You should use a service principal for authentication from ACI in **headless scenarios**, such as in applications or services that create container instances in an automated or otherwise unattended manner.
+Należy używać nazwy głównej usługi do uwierzytelniania z ACI w **scenariuszach bezobsługowych**, takich jak aplikacje lub usługi, które tworzą wystąpienia kontenerów w sposób zautomatyzowany lub w inny sposób nienadzorowany.
 
-For example, if you have an automated script that runs nightly and creates a [task-based container instance](../container-instances/container-instances-restart-policy.md) to process some data, it can use a service principal with pull-only permissions to authenticate to the registry. You can then rotate the service principal's credentials or revoke its access completely without affecting other services and applications.
+Na przykład jeśli masz zautomatyzowany skrypt, który działa nocnie i tworzy [wystąpienie kontenera opartego na zadaniach](../container-instances/container-instances-restart-policy.md) , aby przetworzyć niektóre dane, można użyć jednostki usługi z uprawnieniami tylko do ściągania w celu uwierzytelnienia w rejestrze. Następnie można obrócić poświadczenia jednostki usługi lub całkowicie odwołać swój dostęp bez wpływu na inne usługi i aplikacje.
 
-Service principals should also be used when the registry [admin user](container-registry-authentication.md#admin-account) is disabled.
+Nazwy główne usług należy również stosować, gdy [użytkownik administrator](container-registry-authentication.md#admin-account) rejestru jest wyłączony.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-## <a name="authenticate-using-the-service-principal"></a>Authenticate using the service principal
+## <a name="authenticate-using-the-service-principal"></a>Uwierzytelnianie przy użyciu nazwy głównej usługi
 
-To launch a container in Azure Container Instances using a service principal, specify its ID for `--registry-username`, and its password for `--registry-password`.
+Aby uruchomić kontener w Azure Container Instances przy użyciu nazwy głównej usługi, określ jej identyfikator dla `--registry-username`i jego hasło dla `--registry-password`.
 
 ```azurecli-interactive
 az container create \
@@ -42,17 +42,17 @@ az container create \
 
 ## <a name="sample-scripts"></a>Przykładowe skrypty
 
-You can find the preceding sample scripts for Azure CLI on GitHub, as well versions for Azure PowerShell:
+Powyższe przykładowe skrypty dla interfejsu wiersza polecenia platformy Azure można znaleźć w witrynie GitHub, jak również wersje Azure PowerShell:
 
 * [Interfejs wiersza polecenia platformy Azure][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Następne kroki
 
-The following articles contain additional details on working with service principals and ACR:
+Poniższe artykuły zawierają dodatkowe informacje na temat pracy z jednostkami usługi i ACR:
 
-* [Azure Container Registry authentication with service principals](container-registry-auth-service-principal.md)
-* [Authenticate with Azure Container Registry from Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)
+* [Uwierzytelnianie Azure Container Registry przy użyciu jednostek usługi](container-registry-auth-service-principal.md)
+* [Uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

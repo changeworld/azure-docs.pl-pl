@@ -1,5 +1,5 @@
 ---
-title: Szybki Start — wdrażanie kontenera platformy Docker w Azure Container Instances — Portal
+title: Szybki Start — wdrażanie kontenera platformy Docker do wystąpienia kontenera — Portal
 description: W tym przewodniku szybki start użyjesz Azure Portal, aby szybko wdrożyć aplikację sieci Web, która działa w izolowanym wystąpieniu kontenera platformy Azure
 services: container-instances
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bf3bea07fa2fcb67a467d4087ea9e2ccbfd95206
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325797"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533527"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Szybki start: Wdróż wystąpienie kontenera na platformie Azure przy użyciu Azure Portal
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Szybki Start: Wdrażanie wystąpienia kontenera na platformie Azure przy użyciu Azure Portal
 
 Używanie Azure Container Instances do uruchamiania kontenerów platformy Docker bez serwera na platformie Azure z prostotą i szybkością. Wdróż aplikację w wystąpieniu kontenera na żądanie, gdy nie potrzebujesz pełnej platformy aranżacji kontenerów, takiej jak usługa Azure Kubernetes.
 
@@ -38,13 +38,13 @@ Wybierz kolejno pozycje **Utwórz zasób** > **Kontenery** > **Container Instanc
 
 Na stronie **podstawowe** wprowadź następujące wartości w polach tekstowych **Grupa zasobów**, **nazwa kontenera**i **obraz kontenera** . Pozostaw domyślne wartości w pozostałych polach i kliknij przycisk **OK**.
 
-* Grupa zasobów: **Utwórz nowy element** > `myresourcegroup`
+* Grupa zasobów: **Utwórz nową** > `myresourcegroup`
 * Nazwa kontenera: `mycontainer`
 * Obraz kontenera: `mcr.microsoft.com/azuredocs/aci-helloworld`
 
 ![Konfigurowanie podstawowych ustawień nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-03]
 
-W tym przewodniku szybki start użyjesz domyślnego ustawienia **typu obrazu** **Public** do wdrożenia publicznego obrazu firmy `aci-helloworld` Microsoft. W tym obrazie systemu Linux jest to mała aplikacja internetowa zapisywana w języku Node. js, która obsługuje statyczną stronę HTML.
+W tym przewodniku szybki start użyjesz domyślnego ustawienia **typu obrazu** **Public** do wdrożenia publicznego obrazu `aci-helloworld` firmy Microsoft. W tym obrazie systemu Linux jest to mała aplikacja internetowa zapisywana w języku Node. js, która obsługuje statyczną stronę HTML.
 
 Na stronie **Sieć** Określ **etykietę nazwy DNS** dla kontenera. Nazwa musi być unikatowa w regionie świadczenia usługi Azure, w którym tworzysz wystąpienie kontenera. Twój kontener będzie dostępny publicznie pod adresem `<dns-name-label>.<region>.azurecontainer.io`. Jeśli zostanie wyświetlony komunikat o błędzie „Etykieta nazwy DNS nie jest dostępna”, spróbuj użyć innej etykiety nazwy DNS.
 
@@ -58,7 +58,7 @@ Po zakończeniu weryfikacji zostanie wyświetlone podsumowanie ustawień kontene
 
 Po rozpoczęciu wdrażania zostanie wyświetlone powiadomienie wskazujące postęp wdrażania. Kolejne powiadomienie zostanie wyświetlone, gdy grupa kontenerów zostanie wdrożona.
 
-Otwórz przegląd dla grupy kontenerów, przechodząc do sekcji **grupy** > zasobów moje**zasoby** >  **.** Zwróć uwagę na wartość **FQDN** (w pełni kwalifikowana nazwa domeny) wystąpienia kontenera, a także na jego **Stan**.
+Otwórz przegląd dla grupy kontenerów, przechodząc do **grup zasobów** ** > zasobu** ** > .** Zwróć uwagę na wartość **FQDN** (w pełni kwalifikowana nazwa domeny) wystąpienia kontenera, a także na jego **Stan**.
 
 ![Przegląd grupy kontenerów w witrynie Azure Portal][aci-portal-06]
 

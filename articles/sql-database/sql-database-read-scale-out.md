@@ -1,6 +1,6 @@
 ---
-title: Read queries on replicas
-description: The Azure SQL Database provides the ability to load-balance read-only workloads using the capacity of read-only replicas - called Read Scale-Out.
+title: Odczytaj zapytania w replikach
+description: Azure SQL Database zapewnia możliwość równoważenia obciążenia obciążeń tylko do odczytu przy użyciu pojemności replik tylko do odczytu — o nazwie odczyt skalowalny w poziomie.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -18,43 +18,43 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420732"
 ---
-# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Use read-only replicas to load-balance read-only query workloads
+# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Korzystanie z replik tylko do odczytu w celu równoważenia obciążenia obciążeń zapytań tylko do odczytu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-As part of the [High Availability architecture](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability), each database in the Premium and Business Critical service tier is automatically provisioned with a primary replica and several secondary replicas. The secondary replicas are provisioned with the same compute size as the primary replica. The **Read Scale-Out** feature allows you to load-balance SQL Database read-only workloads using the capacity of one of the read-only replicas instead of sharing the read-write replica. Dzięki temu obciążenie tylko do odczytu zostanie odizolowane od głównego obciążenia do odczytu i zapisu i nie będzie wpływać na jego wydajność. The feature is intended for the applications that include logically separated read-only workloads, such as analytics. In the Premium and Business Critical service tiers, applications could gain performance benefits using this additional capacity at no extra cost.
+W ramach [architektury wysokiej dostępności](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)każda baza danych w warstwie usług Premium i krytyczne dla działania firmy jest automatycznie obsługiwana przy użyciu repliki podstawowej i kilku replik pomocniczych. Pomocnicze repliki są obsługiwane z tym samym rozmiarem obliczeniowym co replika podstawowa. Funkcja **Odczyt skalowalny** w poziomie umożliwia równoważenie obciążenia SQL Database obciążeniami tylko do odczytu przy użyciu pojemności jednej z replik tylko do odczytu, a nie udostępnianie repliki do odczytu i zapisu. Dzięki temu obciążenie tylko do odczytu zostanie odizolowane od głównego obciążenia do odczytu i zapisu i nie będzie wpływać na jego wydajność. Ta funkcja jest przeznaczona dla aplikacji, które zawierają logicznie oddzielone, tylko do odczytu obciążenia, takie jak analiza. W warstwach usług premium i Krytyczne dla działania firmy aplikacje mogą uzyskać korzyści z wydajności przy użyciu tej dodatkowej pojemności bez dodatkowych kosztów.
 
-The **Read Scale-Out** feature is also available in the Hyperscale service tier when at least one secondary replica is created. Multiple secondary replicas can be used if read-only workloads require more resources than available on one secondary replica. The High Availability architecture of Basic, Standard, and General Purpose service tiers does not include any replicas. The **Read Scale-Out** feature is not available in these service tiers.
+Funkcja **Odczytaj skalowalny** w poziomie jest również dostępna w warstwie usługi w ramach skalowania po utworzeniu co najmniej jednej repliki pomocniczej. Jeśli obciążenia tylko do odczytu wymagają więcej zasobów niż dostępne w jednej replice pomocniczej, można użyć wielu replik pomocniczych. Architektura usługi Basic, standard i Ogólnego przeznaczenia o wysokiej dostępności nie obejmuje żadnych replik. Funkcja **odczytu skalowalnego** w poziomie nie jest dostępna w tych warstwach usług.
 
-The following diagram illustrates it using a Business Critical database.
+Poniższy diagram ilustruje go przy użyciu bazy danych Krytyczne dla działania firmy.
 
-![Readonly replicas](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
+![Repliki tylko do odczytu](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-The Read Scale-Out feature is enabled by default on new Premium,  Business Critical, and Hyperscale databases. For Hyperscale, one secondary replica is created by default for new databases. If your SQL connection string is configured with `ApplicationIntent=ReadOnly`, the application will be redirected by the gateway to a read-only replica of that database. For information on how to use the `ApplicationIntent` property, see [Specifying Application Intent](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+Funkcja odczyt skalowalny w poziomie jest domyślnie włączona w nowych bazach danych Premium, Krytyczne dla działania firmy i w skali. W przypadku tworzenia i skalowania jedna replika pomocnicza jest tworzona domyślnie dla nowych baz danych. Jeśli parametry połączenia SQL są skonfigurowane z `ApplicationIntent=ReadOnly`, aplikacja zostanie przekierowana przez bramę do repliki tylko do odczytu tej bazy danych. Aby uzyskać informacje na temat używania właściwości `ApplicationIntent`, zobacz [Określanie zamiaru aplikacji](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
-If you wish to ensure that the application connects to the primary replica regardless of the `ApplicationIntent` setting in the SQL connection string, you must explicitly disable read scale-out when creating the database or when altering its configuration. For example, if you upgrade your database from Standard or General Purpose tier to Premium, Business Critical or Hyperscale tier and want to make sure all your connections continue to go to the primary replica, disable Read Scale-out. For details on how to disable it, see [Enable and disable Read Scale-Out](#enable-and-disable-read-scale-out).
-
-> [!NOTE]
-> Query Data Store, Extended Events, SQL Profiler and Audit features are not supported on the read-only replicas.
-
-## <a name="data-consistency"></a>Data consistency
-
-One of the benefits of replicas is that the replicas are always in the transactionally consistent state, but at different points in time there may be some small latency between different replicas. Read Scale-Out supports session-level consistency. It means, if the read-only session reconnects after a connection error caused by replica unavailability, it may be redirected to a replica that is not 100% up-to-date with the read-write replica. Likewise, if an application writes data using a read-write session and immediately reads it using a read-only session, it is possible that the latest updates are not immediately visible on the replica. The latency is caused by an asynchronous transaction log redo operation.
+Jeśli chcesz upewnić się, że aplikacja nawiązuje połączenie z repliką podstawową, niezależnie od ustawienia `ApplicationIntent` w parametrach połączenia SQL, należy jawnie wyłączyć skalowanie w poziomie podczas tworzenia bazy danych lub zmiany konfiguracji. Jeśli na przykład baza danych jest uaktualniana z warstwy Standardowa lub Ogólnego przeznaczenia do warstwy Premium, Krytyczne dla działania firmy lub do skalowania i chcesz upewnić się, że wszystkie połączenia nadal przechodzą do repliki podstawowej, wyłącz opcję Odczytaj w poziomie. Aby uzyskać szczegółowe informacje na temat sposobu jego wyłączania, zobacz [Włączanie i wyłączanie skalowania](#enable-and-disable-read-scale-out)w poziomie.
 
 > [!NOTE]
-> Replication latencies within the region are low and this situation is rare.
+> Tworzenie zapytań dotyczących magazynu danych, zdarzeń rozszerzonych, programu SQL Profiler i funkcji inspekcji nie są obsługiwane w przypadku replik tylko do odczytu.
 
-## <a name="connect-to-a-read-only-replica"></a>Connect to a read-only replica
+## <a name="data-consistency"></a>Spójność danych
 
-When you enable Read Scale-Out for a database, the `ApplicationIntent` option in the connection string provided by the client dictates whether the connection is routed to the write replica or to a read-only replica. Specifically, if the `ApplicationIntent` value is `ReadWrite` (the default value), the connection will be directed to the database’s read-write replica. This is identical to existing behavior. If the `ApplicationIntent` value is `ReadOnly`, the connection is routed to a read-only replica.
+Jedną z korzyści wynikających z replik jest to, że repliki są zawsze w stanie spójnym w transakcjach, ale w różnych momentach mogą występować niewielkie opóźnienia między różnymi replikami. Skalowanie w poziomie nie obsługuje spójności poziomu sesji. Oznacza to, że jeśli sesja tylko do odczytu zostanie nawiązane ponownie po błędzie połączenia spowodowanym przez niedostępną replikę, może zostać przekierowana do repliki, która nie jest zgodna z 100% z repliką odczytu i zapisu. Podobnie, jeśli aplikacja zapisuje dane przy użyciu sesji odczytu i zapisu, a natychmiast odczytuje je przy użyciu sesji tylko do odczytu, możliwe jest, że najnowsze aktualizacje nie są natychmiast widoczne w replice. Opóźnienie jest spowodowane przez asynchroniczną operację wykonywania operacji w dzienniku transakcji.
 
-For example, the following connection string connects the client to a read-only replica (replacing the items in the angle brackets with the correct values for your environment and dropping the angle brackets):
+> [!NOTE]
+> Opóźnienia replikacji w regionie są niskie i ta sytuacja jest rzadkich.
+
+## <a name="connect-to-a-read-only-replica"></a>Nawiązywanie połączenia z repliką tylko do odczytu
+
+Po włączeniu skalowania w poziomie do bazy danych opcja `ApplicationIntent` w parametrach połączenia dostarczonych przez klienta wskazuje, czy połączenie jest kierowane do repliki zapisu, czy do repliki tylko do odczytu. Jeśli wartość `ApplicationIntent` jest `ReadWrite` (wartość domyślna), połączenie zostanie przekazane do repliki do odczytu i zapisu bazy danych. Jest to identyczne z istniejącym zachowaniem. Jeśli wartość `ApplicationIntent` jest `ReadOnly`, połączenie jest kierowane do repliki tylko do odczytu.
+
+Na przykład następujące parametry połączenia łączą klienta z repliką tylko do odczytu (zastępując elementy w nawiasach kątowych prawidłowymi wartościami dla środowiska i upuszczając nawiasy kątowe):
 
 ```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
-Either of the following connection strings connects the client to a read-write replica (replacing the items in the angle brackets with the correct values for your environment and dropping the angle brackets):
+Jeden z następujących parametrów połączenia łączy klienta z repliką odczytu i zapisu (zastępując elementy w nawiasach kątowych prawidłowymi wartościami dla danego środowiska i upuszczając nawiasy kątowe):
 
 ```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadWrite;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
@@ -62,59 +62,59 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
-## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Verify that a connection is to a read-only replica
+## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Weryfikowanie połączenia z repliką tylko do odczytu
 
-You can verify whether you are connected to a read-only replica by running the following query. It will return READ_ONLY when connected to a read-only replica.
+Można sprawdzić, czy nawiązano połączenie z repliką tylko do odczytu, uruchamiając następujące zapytanie. Po nawiązaniu połączenia z repliką tylko do odczytu zwróci READ_ONLY.
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
 > [!NOTE]
-> At any given time only one of the AlwaysON replicas is accessible by the ReadOnly sessions.
+> W danym momencie tylko jedna z replik AlwaysON jest dostępna dla sesji tylko do odczytu.
 
-## <a name="monitoring-and-troubleshooting-read-only-replica"></a>Monitoring and troubleshooting read-only replica
+## <a name="monitoring-and-troubleshooting-read-only-replica"></a>Monitorowanie i rozwiązywanie problemów z repliką tylko do odczytu
 
-When connected to a read-only replica, you can access the performance metrics using the `sys.dm_db_resource_stats` DMV. To access query plan statistics, use the `sys.dm_exec_query_stats`, `sys.dm_exec_query_plan` and `sys.dm_exec_sql_text` DMVs.
-
-> [!NOTE]
-> The DMV `sys.resource_stats` in the logical master database returns CPU usage and storage data of the primary replica.
-
-## <a name="enable-and-disable-read-scale-out"></a>Enable and disable Read Scale-Out
-
-Read Scale-Out is enabled by default on Premium, Business Critical and Hyperscale service tiers. Read Scale-Out cannot be enabled in Basic, Standard, or General Purpose service tiers. Read Scale-Out is automatically disabled on Hyperscale databases configured with 0 replicas.
-
-You can disable and re-enable Read Scale-Out on single databases and elastic pool databases in Premium or Business Critical service tier using the following methods.
+Po połączeniu z repliką tylko do odczytu można uzyskać dostęp do metryk wydajności przy użyciu `sys.dm_db_resource_stats` DMV. Aby uzyskać dostęp do statystyk planu zapytania, użyj `sys.dm_exec_query_stats`, `sys.dm_exec_query_plan` i `sys.dm_exec_sql_text` widoków DMV.
 
 > [!NOTE]
-> The ability to disable Read Scale-Out is provided for backward compatibility.
+> DMV `sys.resource_stats` w logicznej głównej bazie danych zwraca użycie procesora i dane magazynu repliki podstawowej.
+
+## <a name="enable-and-disable-read-scale-out"></a>Włączanie i wyłączanie skalowania w poziomie odczytu
+
+Skalowanie w poziomie do odczytu jest domyślnie włączone w warstwach usług premium, Krytyczne dla działania firmy i. Skalowanie w poziomie do odczytu nie może być włączone w warstwach usług podstawowa, standardowa lub Ogólnego przeznaczenia. Skalowanie w poziomie do odczytu jest automatycznie wyłączane w bazach danych w ramach skalowania skonfigurowanych przy użyciu 0 replik.
+
+Można wyłączyć i ponownie włączyć funkcję odczytywania skalowania w poziomie dla pojedynczych baz danych i baz danych puli elastycznej w warstwie Premium lub Krytyczne dla działania firmyj przy użyciu poniższych metod.
+
+> [!NOTE]
+> Możliwość wyłączenia odczytywania skalowalnego w poziomie jest zapewniana na potrzeby zgodności z poprzednimi wersjami.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-You can manage the Read Scale-out setting on the **Configure** database blade.
+Ustawienie skalowanie odczyt w poziomie można zarządzać w bloku **Konfiguruj** bazę danych.
 
 ### <a name="powershell"></a>PowerShell
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Moduł programu PowerShell Azure Resource Manager (RM) jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. Moduł AzureRM będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020.  Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne. Aby uzyskać więcej informacji o zgodności, zobacz [wprowadzenie do nowego Azure PowerShell AZ module](/powershell/azure/new-azureps-module-az).
 
-Managing Read Scale-Out in Azure PowerShell requires the December 2016 Azure PowerShell release or newer. For the newest PowerShell release, see [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Zarządzanie skalowaniem do odczytu w Azure PowerShell wymaga wydania z grudnia 2016 Azure PowerShell lub nowszego. Aby uzyskać najnowszą wersję programu PowerShell, zobacz [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-You can disable or re-enable Read Scale-Out in Azure PowerShell by invoking the [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) cmdlet and passing in the desired value – `Enabled` or `Disabled` -- for the `-ReadScale` parameter.
+Można wyłączyć lub ponownie włączyć funkcję odczytywania skalowania w Azure PowerShell przez wywołanie polecenia cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) i przekazanie w pożądanej wartości — `Enabled` lub `Disabled`--dla parametru `-ReadScale`.
 
-To disable read scale-out on an existing database (replacing the items in the angle brackets with the correct values for your environment and dropping the angle brackets):
+Aby wyłączyć odczyt skalowalny w poziomie dla istniejącej bazy danych (zastępując elementy w nawiasach kątowych prawidłowymi wartościami dla danego środowiska i upuszczając nawiasy kątowe):
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled
 ```
 
-To disable read scale-out on a new database (replacing the items in the angle brackets with the correct values for your environment and dropping the angle brackets):
+Aby wyłączyć odczyt skalowalny w poziomie dla nowej bazy danych (zastępując elementy w nawiasach kątowych prawidłowymi wartościami dla środowiska i upuszczając nawiasy kątowe):
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled -Edition Premium
 ```
 
-To re-enable read scale-out on an existing database (replacing the items in the angle brackets with the correct values for your environment and dropping the angle brackets):
+Aby ponownie włączyć funkcję odczytywania skalowalnego w poziomie w istniejącej bazie danych (zastępując elementy w nawiasach kątowych wartościami prawidłowymi dla danego środowiska i porzuceniem nawiasów ostrych):
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
@@ -122,7 +122,7 @@ Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName
 
 ### <a name="rest-api"></a>Interfejs API REST
 
-To create a database with read scale-out disabled, or to change the setting for an existing database, use the following method with the `readScale` property set to `Enabled` or `Disabled` as in the below sample request.
+Aby utworzyć bazę danych z wyłączonym skalowaniem do odczytu lub zmienić ustawienia dla istniejącej bazy danych, należy użyć następującej metody z właściwością `readScale` ustawioną na `Enabled` lub `Disabled` jak w poniższym przykładowym żądaniu.
 
 ```rest
 Method: PUT
@@ -134,19 +134,19 @@ Body: {
 }
 ```
 
-For more information, see [Databases - Create or Update](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+Aby uzyskać więcej informacji, zobacz [bazy danych — Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
 
-## <a name="using-tempdb-on-read-only-replica"></a>Using TempDB on read-only replica
+## <a name="using-tempdb-on-read-only-replica"></a>Używanie bazy danych TempDB w replice tylko do odczytu
 
-The TempDB database is not replicated to the read-only replicas. Each replica has its own version of TempDB database that is created when the replica is created. It ensures that TempDB is updateable and can be modified during your query execution. If your read-only workload depends on using TempDB objects, you should create these objects as part of your query script.
+Baza danych TempDB nie jest replikowana do replik tylko do odczytu. Każda replika ma własną wersję bazy danych TempDB, która jest tworzona podczas tworzenia repliki. Gwarantuje to, że baza danych TempDB jest aktualizowana i można ją modyfikować podczas wykonywania zapytania. Jeśli obciążenie tylko do odczytu zależy od używania obiektów TempDB, należy utworzyć te obiekty jako część skryptu zapytania.
 
-## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Using Read Scale-Out with geo-replicated databases
+## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Używanie skalowania w poziomie z bazami danych z replikacją geograficzną
 
-If you are using Read Scale-Out to load-balance read-only workloads on a database that is geo-replicated (for example, as a member of a failover group), make sure that read scale-out is enabled on both the primary and the geo-replicated secondary databases. This configuration will ensure that the same load-balancing experience continues when your application connects to the new primary after failover. If you are connecting to the geo-replicated secondary database with read-scale enabled, your sessions with `ApplicationIntent=ReadOnly` will be routed to one of the  replicas the same way we route connections on the primary database.  The sessions without `ApplicationIntent=ReadOnly` will be routed to the primary replica of the geo-replicated secondary, which is also read-only. Because geo-replicated secondary database has a different endpoint than the primary database, historically to access the secondary it wasn't required to set `ApplicationIntent=ReadOnly`. To ensure backward compatibility, `sys.geo_replication_links` DMV shows `secondary_allow_connections=2` (any client connection is allowed).
+W przypadku korzystania z funkcji odczytu skalowalnego w poziomie do równoważenia obciążenia obciążeń przeznaczonych tylko do odczytu w bazie danych, która jest replikowana geograficznie (na przykład jako członek grupy trybu failover), należy się upewnić, że funkcja odczytywania skalowalnego w poziomie jest włączona zarówno w podstawowej, jak i w przypadku pomocniczych baz danych replikowanych geograficznie. Ta konfiguracja zapewnia, że to samo środowisko równoważenia obciążenia będzie kontynuowane, gdy aplikacja nawiąże połączenie z nowym serwerem podstawowym po przejściu w tryb failover. W przypadku nawiązywania połączenia z pomocniczą bazą danych z replikacją geograficzną z włączonym skalowaniem odczytu sesje z `ApplicationIntent=ReadOnly` będą kierowane do jednej z replik w taki sam sposób, w jaki kierujemy połączenia w podstawowej bazie danych.  Sesje bez `ApplicationIntent=ReadOnly` będą kierowane do podstawowej repliki pomocniczej replikacji geograficznej, która jest również tylko do odczytu. Ponieważ pomocnicza baza danych z replikacją geograficzną ma inny punkt końcowy niż podstawowa baza danych, historycznie uzyskuje dostęp do pomocniczego, niewymaganego do ustawienia `ApplicationIntent=ReadOnly`. Aby zapewnić zgodność z poprzednimi wersjami, `sys.geo_replication_links` DMV pokazuje `secondary_allow_connections=2` (dowolne połączenie z klientem jest dozwolone).
 
 > [!NOTE]
-> Round-robin or any other load-balanced routing between the local replicas of the secondary database is not supported.
+> Operacje okrężne lub inne Routing z równoważeniem obciążenia między replikami lokalnymi pomocniczej bazy danych nie są obsługiwane.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- For information about SQL Database Hyperscale offering, see [Hyperscale service tier](./sql-database-service-tier-hyperscale.md).
+- Aby uzyskać informacje na temat SQL Database funkcji tworzenia i skalowania, zobacz temat [skalowanie warstwy usług](./sql-database-service-tier-hyperscale.md).

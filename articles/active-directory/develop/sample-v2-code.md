@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c94675ac5c69055cd2811df206f81af55d3c1e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8f4d081d9a52188ee4c4b6b2a854cb9e48c02f16
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927191"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533024"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Przykłady kodu platformy tożsamości firmy Microsoft (punkt końcowy v 2.0)
 
@@ -59,9 +59,9 @@ W poniższych przykładach przedstawiono aplikacje sieci Web, które logują uż
 
 | Platforma | Tylko oznaki użytkowników | Logowanie użytkowników i wywołań Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![Ten obraz zawiera logo ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | [Samouczek dotyczący ASP.NET Core logowania użytkowników](https://aka.ms/aspnetcore-webapp-sign-in) | Ten sam przykład w [Microsoft Graph fazie ASP.NET Core aplikacji sieci Web](https://aka.ms/aspnetcore-webapp-call-msgraph) |
+| ![Ten obraz zawiera logo ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | [Samouczek dotyczący ASP.NET Core logowania użytkowników](https://aka.ms/aspnetcore-webapp-sign-in) | Ten sam przykład w [Microsoft Graph fazie ASP.NET Core aplikacji sieci Web](https://aka.ms/aspnetcore-webapp-call-msgraph) |
 | ![Ten obraz pokazuje logo ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET — szybki start](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-z ograniczeniami-Scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[MSGraph — szkolenia — aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
-| ![Ten obraz pokazuje logo języka Java](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp): aplikacja sieci Web MSAL4J wywołująca program Microsoft Graph |
+| ![Ten obraz pokazuje logo języka Java](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp): MSAL4J aplikacja internetowa wywołująca Microsoft Graph |
 | ![Ten obraz pokazuje logo środowiska Node. js](media/sample-v2-code/logo_nodejs.png)  |                   | [Node. js — Szybki Start](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs) |
 | ![Ten obraz pokazuje logo języka Ruby](media/sample-v2-code/logo_ruby.png) |                   | [MSGraph — szkolenia — rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 
@@ -103,7 +103,7 @@ W poniższych przykładach pokazano, jak chronić internetowy interfejs API za p
 
 | Platforma | Sample |
 | -------- | ------------------- |
-| ![Ten obraz zawiera logo ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core Web API (usługa) elementu [dotnet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
+| ![Ten obraz zawiera logo ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | ASP.NET Core Web API (usługa) elementu [dotnet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![Ten obraz pokazuje logo ASP.NET](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | Internetowy interfejs API (usługa) [MS-Identity-ASPNET-WebAPI-OnBehalfOf](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) |
 
 ## <a name="azure-functions-as-web-apis"></a>Azure Functions jako interfejsy API sieci Web
@@ -112,11 +112,10 @@ W poniższych przykładach pokazano, jak chronić funkcję platformy Azure przy 
 
 | Platforma | Sample |
 | -------- | ------------------- |
-| ![Ten obraz zawiera logo ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core Web API (usługa) Azure Function of [dotnet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
+| ![Ten obraz zawiera logo ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | ASP.NET Core Web API (usługa) Azure Function of [dotnet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
 | ![Ten obraz pokazuje logo środowiska Node. js](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | Web API (Service) of [NodeJS i Passport-Azure-AD](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
 | ![Ten obraz pokazuje logo języka Python](media/sample-v2-code/logo_python.png)</p>Python | Internetowy interfejs API (usługa) języka [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) |
 | ![Ten obraz pokazuje logo środowiska Node. js](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | Internetowy interfejs API (usługa) [NodeJS i paszport-Azure-AD przy użyciu w imieniu](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
-
 
 ## <a name="other-microsoft-graph-samples"></a>Inne przykłady Microsoft Graph
 

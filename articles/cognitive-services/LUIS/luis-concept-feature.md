@@ -87,8 +87,8 @@ Jednostkę (A) należy dodać jako funkcję do innej jednostki (B), gdy wykrycie
 Na przykład jeśli wykryto jednostkę ulica (A), a następnie znalezienie adresu ulicy (A) powoduje dodanie wagi do prognozowania jednostki adres wysyłkowy (B). 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
-Dowiedz się, [najlepsze praktyki](luis-concept-best-practices.md).
+Poznaj [najlepsze rozwiązania](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz [Dodaj funkcje](luis-how-to-add-features.md) Aby dowiedzieć się więcej na temat sposobu dodawania funkcji do aplikacji usługi LUIS.
+Zobacz [Dodawanie funkcji](luis-how-to-add-features.md) , aby dowiedzieć się więcej na temat dodawania funkcji do aplikacji Luis.
