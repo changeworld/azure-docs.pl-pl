@@ -1,6 +1,6 @@
 ---
-title: Conditional Access baseline policies - Azure Active Directory
-description: Baseline Conditional Access policies to protect organizations from common attacks
+title: Zasady dostępu warunkowego do punktu odniesienia — Azure Active Directory
+description: Podstawowe zasady dostępu warunkowego do ochrony organizacji przed typowymi atakami
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,75 +18,75 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420559"
 ---
-# <a name="what-are-baseline-policies"></a>What are baseline policies?
+# <a name="what-are-baseline-policies"></a>Co to są zasady podstawowe?
 
-Baseline policies are a set of predefined policies that help protect organizations against many common attacks. These common attacks can include password spray, replay, and phishing. Baseline policies are available in all editions of Azure AD. Microsoft is making these baseline protection policies available to everyone because identity-based attacks have been on the rise over the last few years. The goal of these four policies is to ensure that all organizations have a baseline level of security enabled at no extra cost.  
+Zasady linii bazowej to zestaw wstępnie zdefiniowanych zasad, które pomagają w ochronie organizacji przed wieloma typowymi atakami. Te typowe ataki mogą obejmować rozpylanie, odtwarzanie i wyłudzanie informacji. Zasady linii bazowej są dostępne we wszystkich wersjach usługi Azure AD. Firma Microsoft udostępnia te zasady ochrony linii bazowej wszystkim, ponieważ ataki oparte na tożsamościach zostały spowodowane wzrostem w ciągu kilku ostatnich lat. Celem tych czterech zasad jest upewnienie się, że wszystkie organizacje mają włączony poziom zabezpieczeń na poziomie linii bazowej bez dodatkowych kosztów.  
 
-Managing customized Conditional Access policies requires an Azure AD Premium license.
+Zarządzanie dostosowanymi zasadami dostępu warunkowego wymaga licencji Azure AD — wersja Premium.
 
 ## <a name="baseline-policies"></a>Zasady punktu odniesienia
 
-![Conditional Access baseline policies in the Azure portal](./media/concept-baseline-protection/conditional-access-policies.png)
+![Zasady dostępu warunkowego do punktu odniesienia w Azure Portal](./media/concept-baseline-protection/conditional-access-policies.png)
 
-There are four baseline policies:
+Istnieją cztery zasady linii bazowej:
 
-* Require MFA for admins (preview)
-* End user protection (preview)
-* Block legacy authentication (preview)
-* Require MFA for service management (preview)
+* Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)
+* Ochrona użytkowników końcowych (wersja zapoznawcza)
+* Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
+* Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami (wersja zapoznawcza)
 
-All four of these policies will impact legacy authentication flows like POP, IMAP, and older Office desktop clients.
+Wszystkie cztery z tych zasad będą miały wpływ na starsze przepływy uwierzytelniania, takie jak POP, IMAP i starsze klienckie aplikacje biurowe.
 
-### <a name="require-mfa-for-admins-preview"></a>Require MFA for admins (preview)
+### <a name="require-mfa-for-admins-preview"></a>Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)
 
-Due to the power and access that administrator accounts have, you should treat them with special care. One common method to improve the protection of privileged accounts is to require a stronger form of account verification when they are used to sign in. In Azure Active Directory, you can get a stronger account verification by requiring administrators to register for and use Azure Multi-Factor Authentication.
+Ze względu na moc i dostęp do kont administratorów należy je traktować z uwzględnieniem specjalnych zaopieki. Jedną z typowych metod ulepszania ochrony uprzywilejowanych kont jest wymaganie, aby w przypadku logowania się do nich była wymagana silniejsza weryfikacja konta. W Azure Active Directory można uzyskać silniejszą weryfikację konta, wymagając od administratorów rejestracji w usłudze i korzystania z usługi Azure Multi-Factor Authentication.
 
-Require MFA for admins (preview) is a baseline policy that requires multi-factor authentication (MFA) for the following directory roles, considered to be the most privileged Azure AD roles:
+Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza) to zasady linii bazowej, które wymagają usługi uwierzytelnianie wieloskładnikowe (MFA) dla następujących ról katalogu, które są traktowane jako największe role usługi Azure AD:
 
 * Administrator globalny
 * Administrator programu SharePoint
-* Exchange administrator
-* Conditional Access administrator
+* Administrator programu Exchange
+* Administrator dostępu warunkowego
 * Administrator zabezpieczeń
-* Helpdesk administrator / Password administrator
+* Administrator pomocy technicznej/administrator haseł
 * Administrator rozliczeń
-* User administrator
+* Administrator użytkowników
 
-If your organization has these accounts in use in scripts or code, consider replacing them with [managed identities](../managed-identities-azure-resources/overview.md).
+Jeśli w organizacji są używane te konta w skryptach lub kodzie, należy rozważyć zastępowanie ich [tożsamościami zarządzanymi](../managed-identities-azure-resources/overview.md).
 
-### <a name="end-user-protection-preview"></a>End user protection (preview)
+### <a name="end-user-protection-preview"></a>Ochrona użytkowników końcowych (wersja zapoznawcza)
 
-High privileged administrators aren’t the only ones targeted in attacks. Bad actors tend to target normal users. After gaining access, these bad actors can request access to privileged information on behalf of the original account holder or download the entire directory and perform a phishing attack on your whole organization. One common method to improve the protection for all users is to require a stronger form of account verification when a risky sign-in is detected.
+Administratorzy o wysokim poziomie uprawnień nie są jedynymi odpowiednimi atakami. Niewłaściwe podmioty mogą kierować do zwykłych użytkowników. Po uzyskaniu dostępu te niewłaściwe osoby mogą zażądać dostępu do informacji uprzywilejowanych w imieniu oryginalnego właściciela konta lub pobrać cały katalog i przeprowadzić atak na wyłudzanie informacji w całej organizacji. Jedną z typowych metod ulepszania ochrony dla wszystkich użytkowników jest wymaganie silniejszej weryfikacji konta w przypadku wykrycia ryzykownego logowania.
 
-**End user protection (preview)** is a baseline policy that protects all users in a directory. Enabling this policy requires all users to register for Azure Multi-Factor Authentication within 14 days. Once registered, users will be prompted for MFA only during risky sign-in attempts. Compromised user accounts are blocked until password reset and risk dismissal. 
+**Ochrona użytkowników końcowych (wersja zapoznawcza)** to zasady linii bazowej chroniące wszystkich użytkowników w katalogu. Włączenie tych zasad wymaga, aby wszyscy użytkownicy rejestrowali się w usłudze Azure Multi-Factor Authentication w ciągu 14 dni. Po zarejestrowaniu użytkownicy będą monitowani o uwierzytelnianie MFA tylko w trakcie ryzykownych prób logowania. Naruszone konta użytkowników są blokowane do momentu zresetowania hasła i odrzucenia ryzyka. 
 
 [!NOTE]
-Any users previously flagged for risk are blocked until password reset and risk dismissal upon policy activation.
+Wszyscy użytkownicy, którzy wcześniej oflagowani w związku z ryzykiem, są Zablokowani do momentu zresetowania hasła i odrzucenia ryzyka podczas aktywacji zasad.
 
-### <a name="block-legacy-authentication-preview"></a>Block legacy authentication (preview)
+### <a name="block-legacy-authentication-preview"></a>Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
-Legacy authentication protocols (ex: IMAP, SMTP, POP3) are protocols normally used by older mail clients to authenticate. Legacy protocols do not support multi-factor authentication. Even if you have a policy requiring multi-factor authentication for your directory, a bad actor can authenticate using one of these legacy protocols and bypass multi-factor authentication.
+Starsze protokoły uwierzytelniania (np. IMAP, SMTP, POP3) to protokoły zwykle używane przez starszych klientów poczty do uwierzytelniania. Starsze protokoły nie obsługują uwierzytelniania wieloskładnikowego. Nawet jeśli masz zasady wymagające uwierzytelniania wieloskładnikowego dla katalogu, niewłaściwy aktor może się uwierzytelnić przy użyciu jednego z tych starszych protokołów i pominąć uwierzytelnianie wieloskładnikowe.
 
-The best way to protect your account from malicious authentication requests made by legacy protocols is to block them.
+Najlepszym sposobem na ochronę Twojego konta przed złośliwymi żądaniami uwierzytelniania podejmowanymi przez starsze protokoły jest ich zablokowanie.
 
-The **Block legacy authentication (preview)** baseline policy blocks authentication requests that are made using legacy protocols. Modern authentication must be used to successfully sign in for all users. Used in conjunction with the other baseline policies, requests coming from legacy protocols will be blocked. In addition, all users will be required to MFA whenever required. This policy does not block Exchange ActiveSync.
+Zasady linii bazowej **blokowania starszego uwierzytelniania (wersja zapoznawcza)** blokują żądania uwierzytelniania, które są tworzone przy użyciu starszych protokołów. Nowoczesnego uwierzytelniania należy użyć, aby pomyślnie zalogować się dla wszystkich użytkowników. W połączeniu z innymi zasadami odniesienia żądania pochodzące ze starszych protokołów zostaną zablokowane. Dodatkowo wszyscy użytkownicy będą zobowiązani do uwierzytelniania wieloskładnikowego w razie potrzeby. Te zasady nie blokują programu Exchange ActiveSync.
 
-### <a name="require-mfa-for-service-management-preview"></a>Require MFA for service management (preview)
+### <a name="require-mfa-for-service-management-preview"></a>Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami (wersja zapoznawcza)
 
-Organizations use a variety of Azure services and manage them from Azure Resource Manager based tools like:
+Organizacje korzystają z różnych usług platformy Azure i zarządzają nimi za pomocą narzędzi opartych na Azure Resource Manager, takich jak:
 
 * Azure Portal
-* Program Azure PowerShell
+* Azure PowerShell
 * Interfejs wiersza polecenia platformy Azure
 
-Using any of these tools to perform resource management is a highly privileged action. These tools can alter subscription-wide configurations, such as service settings and subscription billing.
+Zarządzanie zasobami odbywa się przy użyciu dowolnego z tych narzędzi, co jest wysoce uprzywilejowane. Narzędzia te mogą zmieniać konfiguracje dla całej subskrypcji, takie jak ustawienia usługi i rozliczenia subskrypcji.
 
-To protect privileged actions, this **Require MFA for service management (preview)** policy will require multi-factor authentication for any user accessing Azure portal, Azure PowerShell, or Azure CLI.
+Aby chronić uprzywilejowane akcje, ta funkcja wymaga uwierzytelniania wieloskładnikowego **dla** wszystkich użytkowników uzyskujących dostęp do Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 
-* [Common Conditional Access policies](concept-conditional-access-policy-common.md)
-* [Five steps to securing your identity infrastructure](../../security/fundamentals/steps-secure-identity.md)
-* [What is Conditional Access in Azure Active Directory?](overview.md)
+* [Typowe zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
+* [Pięć kroków do zabezpieczania infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md)
+* [Co to jest dostęp warunkowy w Azure Active Directory?](overview.md)

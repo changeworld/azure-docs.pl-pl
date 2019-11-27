@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Go
+title: Pobierz zamierzenia z wywołaniem REST w usłudze go
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -19,7 +19,7 @@ ms.locfileid: "74414462"
 
 * Język programowania [Go](https://golang.org/)  
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Identyfikator aplikacji publicznej: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>Pobieranie klucza usługi LUIS
 
@@ -27,7 +27,7 @@ ms.locfileid: "74414462"
 
 ## <a name="get-intent-programmatically"></a>Pobieranie intencji w sposób programistyczny
 
-Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+Użyj języka go, aby wykonać zapytanie dotyczące [punktu końcowego przewidywania](https://aka.ms/luis-apim-v3-prediction) i uzyskać wynik przewidywania.
 
 1. Utwórz nowy plik o nazwie `predict.go`. Dodaj następujący kod:
     
@@ -83,12 +83,12 @@ Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction
     }
     ```
 
-1. Replace the following values:
+1. Zastąp następujące wartości:
 
-    * `YOUR-KEY` with your starter key.
-    * `YOUR-ENDPOINT` with your endpoint. Na przykład `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` z kluczem początkowym.
+    * `YOUR-ENDPOINT` z punktem końcowym. Na przykład `westus2.api.cognitive.microsoft.com`.
 
-1. With a command prompt in the same directory as where you created the file, enter the following command to compile the Go file:
+1. Za pomocą wiersza polecenia w tym samym katalogu, w którym został utworzony plik, wprowadź następujące polecenie, aby skompilować plik go:
 
     ```console
     go build predict.go
@@ -111,7 +111,7 @@ Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    JSON formatted for readability:
+    Formatowanie JSON dla czytelności:
 
     ```json
     {
@@ -161,9 +161,9 @@ Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-When you are finished with this quickstart, delete the file from the file system. 
+Po zakończeniu pracy z tym przewodnikiem Szybki Start Usuń plik z systemu plików. 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Dodawanie wyrażenia długości i uczenie](../get-started-get-model-rest-apis.md)

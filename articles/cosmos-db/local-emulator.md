@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 773e55bd1908c04e1c73d998348d36b685524715
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: df662353f7c9c788158ce2dfe05385f022289466
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075660"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539098"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Korzystanie z emulatora usługi Azure Cosmos na potrzeby lokalnego tworzenia i testowania
 
@@ -27,7 +27,7 @@ Chociaż emulator dokładnie odzwierciedla działanie usługi Azure Cosmos DB, r
 
 Dane można migrować między emulatorem usługi Azure Cosmos i usługą Azure Cosmos DB przy użyciu narzędzia do [migracji danych Azure Cosmos DB](https://github.com/azure/azure-documentdb-datamigrationtool).
 
-Emulator Azure Cosmos można uruchomić w kontenerze platformy Docker systemu Windows, zapoznaj się z [centrum Docker](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) dla polecenia Docker pull i usługi [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) dla kodu źródłowego emulatora.
+Możesz uruchomić emulator Azure Cosmos w kontenerze Docker systemu Windows, zapoznaj się z [centrum Docker](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) dla Docker pull polecenia i [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) , aby uzyskać `Dockerfile` i uzyskać więcej informacji.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Różnice między emulatorem a usługą
 
@@ -236,7 +236,7 @@ W lokalizacji instalacji można użyć wiersza polecenia do uruchamiania i zatrz
 
 Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu polecenia.
 
-|**Option** | **Opis** | **Polecenie**| **Argumenty**|
+|**Opcja** | **Opis** | **Polecenie**| **Argumenty**|
 |---|---|---|---|
 |[Bez argumentów] | Uruchamia emulator Azure Cosmos z ustawieniami domyślnymi. |CosmosDB.Emulator.exe| |
 |[Help] |Wyświetla listę obsługiwanych argumentów wiersza polecenia.|CosmosDB.Emulator.exe /? | |
@@ -250,9 +250,9 @@ Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu 
 | EnableCassandraEndpoint | Włącza interfejs API Cassandra | CosmosDB. emulator. exe/EnableCassandraEndpoint | |
 | CassandraPort | Określa numer portu, który ma być używany dla punktu końcowego Cassandra. Wartość domyślna to 10350. | CosmosDB. emulator. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: numer pojedynczego portu |
 | EnableGremlinEndpoint | Włącza interfejs API Gremlin | CosmosDB. emulator. exe/EnableGremlinEndpoint | |
-| GremlinPort | Numer portu do użycia w punkcie końcowym Gremlin. Wartość domyślna to 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>: numer pojedynczego portu |
+| GremlinPort | Numer portu do użycia w punkcie końcowym Gremlin. Wartość domyślna to 8901. | CosmosDB. emulator. exe/GremlinPort =\<port\> | \<port\>: numer pojedynczego portu |
 |EnableTableEndpoint | Włącza interfejs API tabel platformy Azure | CosmosDB. emulator. exe/EnableTableEndpoint | |
-|TablePort | Numer portu do użycia w punkcie końcowym tabeli platformy Azure. Wartość domyślna to 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>: numer pojedynczego portu|
+|TablePort | Numer portu do użycia w punkcie końcowym tabeli platformy Azure. Wartość domyślna to 8902. | CosmosDB. emulator. exe/TablePort =\<port\> | \<port\>: numer pojedynczego portu|
 | KeyFile | Odczytaj klucz autoryzacji z określonego pliku. Użyj opcji/GenKeyFile, aby wygenerować KeyFile | CosmosDB. emulator. exe/KeyFile =\<file_name\> | \<file_name\>: ścieżka do pliku |
 | ResetDataPath | Rekursywnie usuwa wszystkie pliki z określonej ścieżki. Jeśli ścieżka nie zostanie określona, domyślnie%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB. emulator. exe/ResetDataPath =\<Path > | ścieżka \<\>: ścieżka pliku  |
 | StartTraces  |  Rozpocznij zbieranie dzienników śledzenia debugowania. | CosmosDB. emulator. exe/StartTraces | |
@@ -310,7 +310,7 @@ Poniżej przedstawiono podsumowanie poleceń umożliwiających sterowanie emulat
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Składnia**
+**Obowiązuje**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -320,7 +320,7 @@ Zwraca jedną z następujących wartości ServiceControllerStatus: ServiceContro
 
 ### `Start-CosmosDbEmulator`
 
-**Składnia**
+**Obowiązuje**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -330,7 +330,7 @@ Uruchamia emulator. Domyślnie to polecenie czeka, aż emulator zgłosi gotowoś
 
 ### `Stop-CosmosDbEmulator`
 
-**Składnia**
+**Obowiązuje**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -340,7 +340,7 @@ Zatrzymuje emulator. Domyślnie to polecenie czeka, aż emulator zostanie w peł
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Składnia**
+**Obowiązuje**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 

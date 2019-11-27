@@ -1,5 +1,5 @@
 ---
-title: Get intent with REST call in Node.js
+title: Pobierz zamierzenia z wywołaniem REST w programie Node. js
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -19,7 +19,7 @@ ms.locfileid: "74414560"
 
 * Język programowania [Node.js](https://nodejs.org/) 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Identyfikator aplikacji publicznej: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>Pobieranie klucza usługi LUIS
 
@@ -27,9 +27,9 @@ ms.locfileid: "74414560"
 
 ## <a name="get-intent-programmatically"></a>Pobieranie intencji w sposób programistyczny
 
-Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+Użyj środowiska Node. js, aby wykonać zapytanie dotyczące [punktu końcowego przewidywania](https://aka.ms/luis-apim-v3-prediction) i uzyskać wynik przewidywania.
 
-1. Copy the following code snippet to a file named `predict.js`:
+1. Skopiuj następujący fragment kodu do pliku o nazwie `predict.js`:
 
     ```javascript
     var request = require('request');
@@ -76,30 +76,30 @@ Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predi
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. Replace the following values:
+1. Zastąp następujące wartości:
 
-    * `YOUR-KEY` to your starter key.
-    * `YOUR-ENDPOINT` to your endpoint URL. Na przykład `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` z kluczem początkowym.
+    * `YOUR-ENDPOINT` adres URL punktu końcowego. Na przykład `westus2.api.cognitive.microsoft.com`.
 
-1. Install the `request`, `request-promise`, and `querystring` dependencies with this command: 
+1. Zainstaluj zależności `request`, `request-promise`i `querystring` za pomocą tego polecenia: 
 
     ```console
     npm install request request-promise querystring
     ```
 
-1. Run your app with this command:
+1. Uruchom aplikację za pomocą tego polecenia:
 
     ```console
     node predict.js
     ```
 
- 1. Review the prediction response, which is returned as JSON:   
+ 1. Przejrzyj odpowiedź przewidywania zwracaną jako kod JSON:   
     
     ```console
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    The JSON response formatted for readability: 
+    Odpowiedź JSON sformatowana pod kątem czytelności: 
 
     ```JSON
     {
@@ -148,9 +148,9 @@ Use Node.js to query the [prediction endpoint](https://aka.ms/luis-apim-v3-predi
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-When you are finished with this quickstart, delete the file from the file system. 
+Po zakończeniu pracy z tym przewodnikiem Szybki Start Usuń plik z systemu plików. 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Dodawanie wyrażenia długości i uczenie](../get-started-get-model-rest-apis.md)

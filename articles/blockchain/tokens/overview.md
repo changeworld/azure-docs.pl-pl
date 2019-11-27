@@ -1,6 +1,6 @@
 ---
-title: What is Azure Blockchain Tokens
-description: Azure Blockchain Tokens is a platform as a service (PaaS) for token issuance and management.
+title: Co to są tokeny usługi Azure łańcucha bloków
+description: Tokeny łańcucha bloków platformy Azure to platforma jako usługa (PaaS) do wystawiania tokenów i zarządzania nimi.
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
@@ -15,32 +15,32 @@ ms.locfileid: "74326083"
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Azure Blockchain Tokens is a platform as a service (PaaS) for standardized token issuance and management across blockchain ledgers in Azure.
+Tokeny łańcucha bloków platformy Azure to platforma jako usługa (PaaS) służąca do standaryzacji wystawiania tokenów i zarządzania nimi w różnych księgach łańcucha bloków na platformie Azure.
 
-Using Azure Blockchain Tokens you can create standardized tokens for your blockchain solution using a pre-built token template. You can also compose your own token template using the service. Once created, use Azure Blockchain Tokens to connect and issue the tokens on a blockchain. Once issued, you can then manage the tokens across multiple blockchain networks.
+Za pomocą tokenów łańcucha bloków platformy Azure można tworzyć standardowe tokeny dla rozwiązania łańcucha bloków przy użyciu wstępnie skompilowanego szablonu tokenu. Możesz również utworzyć własny szablon tokenu za pomocą usługi. Po utworzeniu Użyj tokenów usługi Azure łańcucha bloków, aby nawiązać połączenie i wydać tokeny w łańcucha bloków. Po wydaniu można następnie zarządzać tokenami w wielu sieciach łańcucha bloków.
 
 ## <a name="templates"></a>Szablony
 
-Use Azure Blockchain Tokens to select a pre-built token template or create your own token template. Azure Blockchain Tokens supports token template composability that allows you to create your own token template based on supported behaviors. Token templates can be used for most blockchain solutions since they map to the most commonly utilized tokens. You can start with a template, personalize it, and deploy the tokens for your solution.
+Użyj tokenów usługi Azure łańcucha bloków, aby wybrać szablon wstępnie skompilowanego tokenu lub utworzyć własny szablon tokenu. Tokeny usługi Azure łańcucha bloków obsługuje możliwość tworzenia szablonów tokenów, które umożliwiają tworzenie własnego szablonu tokenu na podstawie obsługiwanych zachowań. Szablonów tokenów można używać w przypadku większości rozwiązań łańcucha bloków, ponieważ są one mapowane na najczęściej używane tokeny. Możesz zacząć od szablonu, personalizować go i wdrażać tokeny dla rozwiązania.
 
-For more information on Azure Blockchain Tokens templates, see [Azure Blockchain Tokens templates](templates.md).
+Aby uzyskać więcej informacji na temat szablonów tokenów usługi Azure łańcucha bloków, zobacz [Szablony tokenów usługi Azure łańcucha bloków](templates.md).
 
 ## <a name="management"></a>Zarządzanie
 
-Azure Blockchain Tokens provides Azure portal management and APIs to connect to an existing blockchain network. Currently, you can connect to [Azure Blockchain Service](../service/overview.md) or another Ethereum family blockchain.
+Tokeny usługi Azure łańcucha bloków zapewniają zarządzanie Azure Portal i interfejsy API w celu nawiązania połączenia z istniejącą siecią łańcucha bloków. Obecnie można nawiązać połączenie z [usługą Azure łańcucha bloków](../service/overview.md) lub z inną rodziną Ethereum łańcucha bloków.
 
-Once connected to one or multiple blockchain networks, you can use Azure Blockchain Tokens APIs to issue and manage tokens for use in your blockchain solution. Using APIs, you can integrate token management in your business applications and logic. For example, you can use the REST API to  manage tokens instead of managing tokens directly on the blockchain.
+Po nawiązaniu połączenia z jedną lub wieloma sieciami łańcucha bloków można używać interfejsów API tokenów usługi Azure łańcucha bloków do wystawiania tokenów i zarządzania nimi do użycia w rozwiązaniu łańcucha bloków. Korzystając z interfejsów API, można zintegrować zarządzanie tokenami w aplikacjach i logice biznesowej. Można na przykład użyć interfejsu API REST do zarządzania tokenami zamiast zarządzać tokenami bezpośrednio w łańcucha bloków.
 
-## <a name="blockchains-and-accounts"></a>Blockchains and accounts
+## <a name="blockchains-and-accounts"></a>Blockchains i konta
 
-Azure Blockchain Tokens provides Azure portal management and APIs to create new groups and new blockchain accounts on connected blockchain networks. You can create new accounts directly on your connected networks, and Azure Blockchain Tokens manages your account private keys on your behalf. Using groups, you can group together different blockchain accounts from multiple networks and manage access control via the groups.
+Tokeny usługi Azure łańcucha bloków zapewniają zarządzanie Azure Portal i interfejsy API w celu tworzenia nowych grup i nowych kont łańcucha bloków w połączonych sieciach łańcucha bloków. Nowe konta można utworzyć bezpośrednio w połączonych sieciach, a tokeny usługi Azure łańcucha bloków zarządza kluczami prywatnymi konta w Twoim imieniu. Korzystając z grup, można grupować różne konta łańcucha bloków z wielu sieci i zarządzać kontrolą dostępu za pośrednictwem grup.
 
-For more information on Azure Blockchain Tokens account management, see [Azure Blockchain Tokens account management](account-management.md).
+Aby uzyskać więcej informacji na temat zarządzania kontami usługi Azure łańcucha bloków, zobacz [Zarządzanie kontami tokenów usługi Azure łańcucha bloków](account-management.md).
 
-## <a name="token-taxonomy-framework"></a>Token Taxonomy Framework
+## <a name="token-taxonomy-framework"></a>Struktura taksonomii tokenów
 
-Azure Blockchain Tokens is built on a standards-based foundation named the Token Taxonomy Framework (TTF). TTF is a set of deliverables created from the [Token Taxonomy Initiative](https://entethalliance.org/participate/token-taxonomy-initiative/) (TTI) token working group. The TTI working group defines a business taxonomy for tokens and their behaviors that can be applied across all major ledgers including Ethereum, Quorum, Corda, and Hyperledger Fabric. The working group's goal is to create a framework that standardizes the use of tokens from a business perspective to drive simplification and democratize token based development. By letting the industry define these tokens and their behavior at the business level, the detailed implementation of the tokens are abstracted away from the business logic that manipulates the tokens.
+Tokeny łańcucha bloków platformy Azure są oparte na opartych na standardach podstawach o nazwie platforma taksonomii tokenów (TTF). TTF to zestaw elementów dostarczanych utworzonych na podstawie grupy roboczej tokenu [taksonomii TTI (tokeny](https://entethalliance.org/participate/token-taxonomy-initiative/) ). Grupa robocza TTI definiuje taksonomię biznesową dla tokenów i ich zachowań, które mogą być stosowane do wszystkich głównych ksiąg, w tym Ethereum, kworum, przewodów i sieci szkieletowej. Celem grupy roboczej jest utworzenie struktury, która ma na celu ujednolicenie użycia tokenów z perspektywy biznesowej w celu utworzenia rozwiązań opartych na programie upraszczanie i zdemokratyzuj proces. Dzięki temu, że branża definiuje te tokeny i ich zachowanie na poziomie firmy, szczegółowa implementacja tokenów jest oddzielna od logiki biznesowej, która operuje na tokenach.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Learn more about available [Azure Blockchain Tokens templates](templates.md).
+Dowiedz się więcej o dostępnych [szablonach tokenów usługi Azure łańcucha bloków](templates.md).

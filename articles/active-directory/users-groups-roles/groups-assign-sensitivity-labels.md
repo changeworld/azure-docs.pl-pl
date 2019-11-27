@@ -1,6 +1,6 @@
 ---
-title: Assign sensitivity labels to groups - Azure AD | Microsoft Docs
-description: How to create membership rules to automatically populate groups, and a rule reference.
+title: Przypisywanie etykiet czułości do grup — Azure AD | Microsoft Docs
+description: Sposób tworzenia reguł członkostwa w celu automatycznego wypełniania grup i odwołania do reguły.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -21,25 +21,25 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404806"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Assign sensitivity labels to Office 365 groups in Azure Active Directory (preview)
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Przypisywanie etykiet czułości do grup pakietu Office 365 w Azure Active Directory (wersja zapoznawcza)
 
-Azure Active Directory (Azure AD) supports applying sensitivity labels published by the [Microsoft 365 compliance center](https://sip.protection.office.com/homepage) to Office 365 groups. Sensitivity labels apply to group across services like Outlook, Microsoft Teams, and SharePoint. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
+Azure Active Directory (Azure AD) obsługuje stosowanie etykiet liter opublikowanych przez [Centrum zgodności Microsoft 365](https://sip.protection.office.com/homepage) do grup usługi Office 365. Etykiety czułości dotyczą grup różnych usług, takich jak Outlook, Microsoft Teams i SharePoint. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
 
 > [!IMPORTANT]
-> Using Azure AD sensitivity labels for Office 365 groups requires an Azure Active Directory Premium P1 license.
+> Używanie etykiet czułości usługi Azure AD dla grup Office 365 wymaga licencji na Azure Active Directory — wersja Premium P1.
 
-## <a name="group-settings-controlled-by-labels"></a>Group settings controlled by labels
+## <a name="group-settings-controlled-by-labels"></a>Ustawienia grupy kontrolowane przez etykiety
 
-There are two settings that can be associated with a label:
+Istnieją dwa ustawienia, które można skojarzyć z etykietą:
 
-- **Privacy**: Admins can associate a privacy setting with the label to control whether a group is public or private.
-- **Guest access**: Admins can enforce the guest policy for all groups that have the label assigned. This policy specifies whether guests can be added as members or not. If the guest policy is configured for a label, any groups that you assign the label to won't allow the AllowToAddGuests setting to be changed.
+- **Prywatność**: Administratorzy mogą skojarzyć ustawienie prywatności z etykietą, aby kontrolować, czy grupa jest publiczna, czy prywatna.
+- **Dostęp gościa**: Administratorzy mogą wymusić zasady gościa dla wszystkich grup, do których przypisano etykietę. To ustawienie określa, czy Goście mogą być dodawane jako członkowie, czy nie. Jeśli zasady gościa są skonfigurowane dla etykiety, wszystkie grupy, do których przypisano etykietę, nie będą zezwalać na zmianę ustawienia AllowToAddGuests.
 
-## <a name="enable-sensitivity-label-support-in-powershell"></a>Enable sensitivity label support in PowerShell
+## <a name="enable-sensitivity-label-support-in-powershell"></a>Włącz obsługę etykiet czułości w programie PowerShell
 
-To apply published labels to groups, you must first enable the feature. These steps enable the feature in Azure AD.
+Aby zastosować opublikowane etykiety do grup, należy najpierw włączyć tę funkcję. Te kroki umożliwiają włączenie funkcji w usłudze Azure AD.
 
-1. Open a Windows PowerShell window on your computer. You can open it without elevated privileges.
+1. Otwórz okno programu Windows PowerShell na komputerze. Można go otworzyć bez podwyższonego poziomu uprawnień.
 1. Uruchom następujące polecenia, aby przygotować się do uruchomienia poleceń cmdlet.
 
     ```PowerShell
@@ -47,127 +47,127 @@ To apply published labels to groups, you must first enable the feature. These st
     Connect-AzureAD
     ```
 
-    In the **Sign in to your account** page, enter your admin account and password to connect you to your service, and select **Sign in**.
-1. Fetch the current group settings for the Azure AD organization.
+    Na stronie **Zaloguj się do konta** Wprowadź konto administratora i hasło, aby połączyć się z usługą, a następnie wybierz pozycję **Zaloguj**.
+1. Pobierz bieżące ustawienia grupy dla organizacji usługi Azure AD.
 
     ```PowerShell
     $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
     ```
 
     > [!NOTE]
-    > If no group settings have been created for this Azure AD organization, you must first create the settings. Follow the steps in [Azure Active Directory cmdlets for configuring group settings](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) to create group settings for this Azure AD organization.
+    > Jeśli nie utworzono żadnych ustawień grupy dla tej organizacji usługi Azure AD, musisz najpierw utworzyć ustawienia. Wykonaj kroki opisane w temacie [polecenia cmdlet Azure Active Directory, aby skonfigurować ustawienia grupy](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) w celu utworzenia ustawień grupy dla tej organizacji usługi Azure AD.
 
-1. Next, display the current group settings.
+1. Następnie Wyświetl bieżące ustawienia grupy.
 
     ```PowerShell
     $Setting.Values
     ```
 
-1. Then enable the feature:
+1. Następnie Włącz funkcję:
 
     ```PowerShell
     $Setting["EnableMIPLabels"] = "True"
     ```
 
-1. Then save the changes and apply the settings:
+1. Następnie Zapisz zmiany i Zastosuj ustawienia:
 
     ```PowerShell
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-To już wszystko. You've enabled the feature and you can apply published labels to groups.
+Gotowe. Włączono funkcję i można zastosować opublikowane etykiety do grup.
 
-## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Assign a label to a new group in Azure portal
+## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Przypisywanie etykiety do nowej grupy w Azure Portal
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com).
-1. Select **Groups**, and then select **New group**.
-1. On the **New Group** page, select **Office 365**, and then fill out the required information for the new group and select a sensitivity label from the list.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com).
+1. Wybierz pozycję **grupy**, a następnie wybierz pozycję **Nowa grupa**.
+1. Na stronie **Nowa grupa** wybierz pozycję **Office 365**, a następnie Wypełnij wymagane informacje dla nowej grupy i wybierz z listy etykietę czułości.
 
-   ![Assign a sensitivity label in the New groups page](./media/groups-assign-sensitivity-labels/new-group-page.png)
+   ![Przypisywanie etykiety czułości na stronie nowych grup](./media/groups-assign-sensitivity-labels/new-group-page.png)
 
-1. Save your changes and select **Create**.
+1. Zapisz zmiany i wybierz pozycję **Utwórz**.
 
-Your group is created and the policies associated with the selected label are then automatically enforced.
+Zostanie utworzona grupa, a następnie zostaną automatycznie wymuszone zasady skojarzone z wybraną etykietą.
 
-## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Assign a label to an existing group in Azure portal
+## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Przypisywanie etykiety do istniejącej grupy w Azure Portal
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a sensitivity label from the list.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora globalnego lub grupy Administratorzy lub jako właściciela grupy.
+1. Wybierz pozycję **grupy**.
+1. Na stronie **wszystkie grupy** wybierz grupę, którą chcesz oznaczyć etykietą.
+1. Na stronie wybranej grupy wybierz pozycję **Właściwości** , a następnie wybierz etykietę czułości z listy.
 
-   ![Assign a sensitivity label on the overview page for a group](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
+   ![Przypisywanie etykiety czułości na stronie przeglądu dla grupy](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
 
-1. Select **Save** to save your changes.
+1. Wybierz pozycję **Zapisz** , aby zapisać zmiany.
 
-## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Remove a label from an existing group in Azure portal
+## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Usuń etykietę z istniejącej grupy w Azure Portal
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to remove the label from.
-1. On the **Group** page, select **Properties**.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora globalnego lub grupy Administratorzy lub jako właściciela grupy.
+1. Wybierz pozycję **grupy**.
+1. Na stronie **wszystkie grupy** wybierz grupę, z której chcesz usunąć etykietę.
+1. Na stronie **Grupa** wybierz pozycję **Właściwości**.
 1. Wybierz pozycję **Usuń**.
-1. Select **Save** to apply your changes.
+1. Wybierz pozycję **Zapisz** , aby zastosować zmiany.
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365 app support for sensitivity labels
+## <a name="office-365-app-support-for-sensitivity-labels"></a>Obsługa aplikacji pakietu Office 365 dla etykiet czułości
 
-The following Office 365 apps and services support the sensitivity labels in this preview:
+Następujące aplikacje i usługi pakietu Office 365 obsługują etykiety czułości w tej wersji zapoznawczej:
 
-- Azure AD admin center
-- Microsoft 365 compliance center
+- Centrum administracyjne usługi Azure AD
+- Microsoft 365 Centrum zgodności
 - Sharepoint
-- Outlook on the web
-- Teams
-- SharePoint admin center
+- Program Outlook w sieci Web
+- Drużyny
+- Centrum administracyjne programu SharePoint
 
-For more information about Office 365 apps support, see [Office 365 support for sensitivity labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
+Aby uzyskać więcej informacji o obsłudze aplikacji pakietu Office 365, zobacz temat [Obsługa etykiet o czułości przez pakiet office 365](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
 
-## <a name="using-classic-azure-ad-classifications"></a>Using classic Azure AD classifications
+## <a name="using-classic-azure-ad-classifications"></a>Używanie klasycznych klasyfikacji usługi Azure AD
 
-After you enable this feature, Office 365 no longer supports the “classic” classifications for new groups. Classic classifications are the old classifications you set up by defining values for the `ClassificationList` setting in Azure AD PowerShell. When this feature is enabled, those classifications will not be applied to groups.
+Po włączeniu tej funkcji pakiet Office 365 nie będzie już obsługiwał klasyfikacji klasycznych dla nowych grup. Klasyfikacje klasyczne są starymi klasyfikacjami skonfigurowanymi przez definiowanie wartości dla ustawienia `ClassificationList` w programie Azure AD PowerShell. Gdy ta funkcja jest włączona, te klasyfikacje nie zostaną zastosowane do grup.
 
-## <a name="troubleshooting-issues"></a>Troubleshooting issues
+## <a name="troubleshooting-issues"></a>Rozwiązywanie problemów
 
-### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Sensitivity labels are not available for assignment on a group
+### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Etykiety czułości nie są dostępne do przypisania w grupie
 
-The sensitivity label option is only displayed for groups when all the following conditions are met:
+Opcja etykiety czułości jest wyświetlana tylko dla grup, gdy spełnione są wszystkie następujące warunki:
 
-1. Labels are published in the Microsoft 365 Compliance Center for this tenant.
-1. The feature is enabled, EnableMIPLabels is set to True in PowerShell.
-1. The group is an Office 365 group.
-1. The tenant has an active Azure Active Directory Premium P1 license.
-1. The current signed-in user has access to published labels.
-1. The current signed-in user has sufficient privileges to assign labels. The user must be either a Global Administrator, Group Administrator, or the group owner.
-1. The current signed-in user has an Office 365 license assigned. For more information about license requirements, see [Sensitivity labels in Office apps](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
+1. Etykiety są publikowane w centrum zgodności Microsoft 365 dla tej dzierżawy.
+1. Funkcja jest włączona, EnableMIPLabels jest ustawiona na true w programie PowerShell.
+1. Grupa jest grupą pakietu Office 365.
+1. Dzierżawa ma aktywną licencję na Azure Active Directory — wersja Premium P1.
+1. Bieżący zalogowany użytkownik ma dostęp do opublikowanych etykiet.
+1. Bieżący zalogowany użytkownik ma wystarczające uprawnienia do przypisywania etykiet. Użytkownik musi być administratorem globalnym, administratorem grupy lub właścicielem grupy.
+1. Bieżący zalogowany użytkownik ma przypisaną licencję pakietu Office 365. Aby uzyskać więcej informacji o wymaganiach licencyjnych, zobacz [etykiety czułości w aplikacjach pakietu Office](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
 
-Please make sure all the conditions are met in order to assign labels to a group.
+Upewnij się, że wszystkie warunki są spełnione, aby przypisać etykiety do grupy.
 
-### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>The label I want to assign is not in the list
+### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>Etykieta, którą chcesz przypisać, nie znajduje się na liście
 
-If the label you are looking for is not in the list, this could be the case for one of the following reasons:
+Jeśli etykieta, której szukasz, nie znajduje się na liście, może to być spowodowane jedną z następujących przyczyn:
 
-- The label might not be published in the Microsoft 365 Compliance Center. This could also apply to labels that are no longer published. Please check with your administrator for more information.
-- The label may be published, however, it is not available to the user that is signed-in. Please check with your administrator for more information on how to get access to the label.
+- Etykieta nie może zostać opublikowana w centrum zgodności Microsoft 365. Może to również dotyczyć etykiet, które nie są już publikowane. Skontaktuj się z administratorem, aby uzyskać więcej informacji.
+- Etykieta może być opublikowana, ale nie jest dostępna dla użytkownika, który jest zalogowany. Skontaktuj się z administratorem, aby uzyskać więcej informacji na temat uzyskiwania dostępu do etykiety.
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>How can I change the label on a group?
+### <a name="how-can-i-change-the-label-on-a-group"></a>Jak mogę zmienić etykietę w grupie?
 
-Labels can be swapped at any time using the same steps as assigning a label to an existing group, as follows:
+Etykiety można wymieniać w dowolnym momencie przy użyciu tych samych kroków co przypisanie etykiety do istniejącej grupy w następujący sposób:
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global or Group administrator account or as group owner.
-1. Select **Groups**.
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a new sensitivity label from the list.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta globalnego lub administratora grupy lub jako właściciela grupy.
+1. Wybierz pozycję **grupy**.
+1. Na stronie **wszystkie grupy** wybierz grupę, którą chcesz oznaczyć etykietą.
+1. Na stronie wybranej grupy wybierz pozycję **Właściwości** i wybierz nową etykietę czułości z listy.
 1. Wybierz pozycję **Zapisz**.
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Group setting changes to published labels are not updated on the groups
+### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Zmiany ustawień grupy dla opublikowanych etykiet nie są aktualizowane w grupach
 
-As a best practice, we don't recommend that you change group settings for a label after the label is applied to groups. When you make changes to group settings associated with published labels in [Microsoft 365 compliance center](https://sip.protection.office.com/homepage), those policy changes aren't automatically applied on the impacted groups.
+Najlepszym rozwiązaniem jest, że nie zalecamy zmiany ustawień grupy dla etykiety, gdy etykieta zostanie zastosowana do grup. Po wprowadzeniu zmian w ustawieniach grupy skojarzonych z opublikowanymi etykietami w [Microsoft 365 Centrum zgodności](https://sip.protection.office.com/homepage)te zmiany zasad nie są automatycznie stosowane w grupach, których to dotyczy.
 
-If you must make a change, use an [Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) to manually apply updates to the impacted groups. This method makes sure that all existing groups enforce the new setting.
+Jeśli musisz wprowadzić zmianę, użyj [skryptu programu PowerShell usługi Azure AD](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) , aby ręcznie zastosować aktualizacje do grup, których dotyczy problem. Ta metoda zapewnia, że wszystkie istniejące grupy wymuszają nowe ustawienie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Use sensitivity labels with Microsoft Teams, Office 365 groups, and SharePoint sites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
-- [Update groups after label policy change manually with Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
+- [Używanie etykiet czułości z usługami Microsoft Teams, Office 365 i witryn programu SharePoint](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [Ręcznie Aktualizuj grupy po zmianie zasad etykiet przy użyciu skryptu programu PowerShell usługi Azure AD](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
 - [Edytowanie ustawień grupy](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
 - [Zarządzanie grupami przy użyciu poleceń programu PowerShell](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)

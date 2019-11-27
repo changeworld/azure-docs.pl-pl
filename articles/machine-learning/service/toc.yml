@@ -280,6 +280,9 @@
         - name: Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
+        - name: Azure Functions
+          displayName: functions app
+          href: how-to-deploy-functions.md
         - name: Maszyny wirtualne notesu
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Używanie niestandardowego obrazu platformy Docker

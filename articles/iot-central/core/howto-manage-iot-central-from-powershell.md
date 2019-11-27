@@ -1,6 +1,6 @@
 ---
-title: Manage IoT Central from Azure PowerShell | Microsoft Docs
-description: This article describes how to create and manage your IoT Central applications from Azure PowerShell.
+title: Zarządzaj IoT Central z Azure PowerShell | Microsoft Docs
+description: W tym artykule opisano sposób tworzenia aplikacji IoT Central z Azure PowerShell i zarządzania nimi.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -19,7 +19,7 @@ ms.locfileid: "74480293"
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-Instead of creating and managing IoT Central applications on the [Azure IoT Central application manager](https://aka.ms/iotcentral) website, you can use [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) to manage your applications.
+Zamiast tworzyć aplikacje IoT Central i zarządzać nimi w witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) , możesz użyć [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) do zarządzania aplikacjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -27,17 +27,17 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you prefer to run Azure PowerShell on your local machine, see [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps). When you run Azure PowerShell locally, use the **Connect-AzAccount** cmdlet to sign in to Azure before you try the cmdlets in this article.
+Jeśli wolisz uruchamiać Azure PowerShell na komputerze lokalnym, zobacz Install the [Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps). Po uruchomieniu Azure PowerShell lokalnie Użyj polecenia cmdlet **Connect-AzAccount** , aby zalogować się do platformy Azure przed podjęciem próby wykonania poleceń cmdlet w tym artykule.
 
-## <a name="install-the-iot-central-module"></a>Install the IoT Central module
+## <a name="install-the-iot-central-module"></a>Instalowanie modułu IoT Central
 
-Run the following command to check the [IoT Central module](https://docs.microsoft.com/powershell/module/az.iotcentral/) is installed in your PowerShell environment:
+Uruchom następujące polecenie, aby sprawdzić, czy [moduł IoT Central](https://docs.microsoft.com/powershell/module/az.iotcentral/) jest zainstalowany w środowisku programu PowerShell:
 
 ```powershell
 Get-InstalledModule -name Az.I*
 ```
 
-If the list of installed modules doesn't include **Az.IotCentral**, run the following command:
+Jeśli lista zainstalowanych modułów nie zawiera polecenia **AZ. IotCentral**, uruchom następujące polecenie:
 
 ```powershell
 Install-Module Az.IotCentral
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 
-Use the [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) cmdlet to create an IoT Central application in your Azure subscription. Na przykład:
+Użyj polecenia cmdlet [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) , aby utworzyć aplikację IoT Central w ramach subskrypcji platformy Azure. Na przykład:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -61,54 +61,54 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-The script first creates a resource group in the east US location for the application. The following table describes the parameters used with the **New-AzIotCentralApp** command:
+Skrypt najpierw tworzy grupę zasobów w lokalizacji Wschodnie stany USA dla aplikacji. W poniższej tabeli opisano parametry używane z poleceniem **New-AzIotCentralApp** :
 
 |Parametr         |Opis |
 |------------------|------------|
-|ResourceGroupName |The resource group that contains the application. This resource group must already exist in your subscription. |
-|Lokalizacja |By default, this cmdlet uses the location from the resource group. Currently, you can create an IoT Central application in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations.  |
-|Nazwa              |The name of the application in the Azure portal. |
-|Subdomain         |The subdomain in the URL of the application. In the example, the application URL is https://mysubdomain.azureiotcentral.com. |
-|Jednostka SKU               |Currently, the only value is **S1** (standard tier). See [Azure IoT Central pricing](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Szablon          | The application template to use. For more information, see the following table: |
-|DisplayName       |The name of the application as displayed in the UI. |
+|ResourceGroupName |Grupa zasobów zawierająca aplikację. Ta grupa zasobów musi już istnieć w Twojej subskrypcji. |
+|Lokalizacja |Domyślnie to polecenie cmdlet używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w **Stany Zjednoczone**, **Australii**, **Azja i Pacyfik**lub w lokalizacjach **Europy** .  |
+|Nazwa              |Nazwa aplikacji w Azure Portal. |
+|poddomeny         |Poddomena w adresie URL aplikacji. W tym przykładzie adres URL aplikacji jest https://mysubdomain.azureiotcentral.com. |
+|SKU               |Obecnie jedyną wartością jest **S1** (warstwa standardowa). Zobacz [Cennik usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+|Szablon          | Szablon aplikacji do użycia. Aby uzyskać więcej informacji, zobacz następującą tabelę: |
+|DisplayName       |Nazwa aplikacji wyświetlana w interfejsie użytkownika. |
 
-**Application templates with generally available features**
+**Szablony aplikacji z ogólnie dostępnymi funkcjami**
 
 | Nazwa szablonu            | Opis |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń. |
 | iotc-demo@1.0.0          | Tworzy aplikację, która zawiera już utworzony szablon urządzenia typu Automat do sprzedaży z chłodziarką. Użyj tego szablonu, aby rozpocząć eksplorowanie usługi Azure IoT Central. |
-| iotc-devkit-sample@1.0.0 | Tworzy aplikację z gotowymi szablonami urządzeń, które umożliwiają łączenie z urządzeniem MXChip lub Raspberry Pi. Use this template if you're a device developer experimenting with any of these devices. |
+| iotc-devkit-sample@1.0.0 | Tworzy aplikację z gotowymi szablonami urządzeń, które umożliwiają łączenie z urządzeniem MXChip lub Raspberry Pi. Użyj tego szablonu, jeśli jesteś programistą dla deweloperów urządzeń przy użyciu dowolnego z tych urządzeń. |
 
 
-**Application templates with public preview features**
+**Szablony aplikacji z funkcjami publicznej wersji zapoznawczej**
 
 | Nazwa szablonu            | Opis |
 | ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | Creates an empty plug and play preview application for you to populate with your own device templates and devices. |
-| iotc-condition@1.0.0     | Creates an application with a in-store analytics – condition monitoring template. Use this template to connect and monitor store environment. |
-| iotc-consumption@1.0.0   | Creates an application with water consumption monitoring template. Use this template to monitor and control water flow. |
-| iotc-distribution@1.0.0  | Creates an application with a Digital distribution template. Use this template to improve warehouse output efficiency by digitalizing key assets and actions. |
-| iotc-inventory@1.0.0     | Creates an application with a smart inventory management template. Use this template to automate receiving, product movement, cycle counting, and tracking of sensors. |
-| iotc-logistics@1.0.0     | Creates an application with a Connected logistics template. Use this template to track your shipment in real-time across air, water and land with location and condition monitoring. |
-| iotc-meter@1.0.0         | Creates an application with smart meter monitoring template. Use this template to monitor energy consumption, network status, and identify trends to improve customer support and smart meter management.  |
-| iotc-patient@1.0.0       | Creates an application with continuous patient monitoring template. Use this template to extend patient care, re-admissions, and manage diseases. |
-| iotc-power@1.0.0         | Creates an application with solar panel monitoring template. Use this template to monitor solar panel status, energy generation trends. |
-| iotc-quality@1.0.0       | Creates an application with water quality monitoring template. Use this template to digitally monitor water quality.|
-| iotc-store@1.0.0         | Creates an application with a in-store analytics – checkout template. Use this template to monitor and manage the checkout flow inside your store. |
-| iotc-waste@1.0.0         | Creates an application with a Connected waste management template. Use this template to monitor waste bins and dispatch field operators. |
+| iotc-pnp-preview@1.0.0   | Tworzy pustą aplikację typu Plug and Play w wersji zapoznawczej, która umożliwia wypełnienie własnymi szablonami urządzeń i urządzeniami. |
+| iotc-condition@1.0.0     | Tworzy aplikację z szablonem monitorowania stanu w sklepie. Ten szablon służy do łączenia i monitorowania środowiska magazynu. |
+| iotc-consumption@1.0.0   | Tworzy aplikację z szablonem monitorowania zużycia wody. Ten szablon służy do monitorowania i kontrolowania przepływu wody. |
+| iotc-distribution@1.0.0  | Tworzy aplikację z szablonem dystrybucji cyfrowej. Ten szablon umożliwia zwiększenie wydajności produkcji magazynu przez zasoby i akcje kluczy digitalizing. |
+| iotc-inventory@1.0.0     | Tworzy aplikację z szablonem zarządzania magazynem inteligentnym. Ten szablon służy do automatyzowania otrzymywania, przenoszenia produktów, zliczania cykli i śledzenia czujników. |
+| iotc-logistics@1.0.0     | Tworzy aplikację z połączonym szablonem logistyki. Ten szablon służy do śledzenia wysyłki w czasie rzeczywistym między powietrzem, wodą i ziemią oraz monitorowaniem lokalizacji i warunków. |
+| iotc-meter@1.0.0         | Tworzy aplikację z szablonem monitorowania z użyciem miernika inteligentnego. Ten szablon służy do monitorowania zużycia energii, stanu sieci i identyfikowania trendów pozwalających ulepszyć obsługę klienta i inteligentne zarządzanie pomiarami.  |
+| iotc-patient@1.0.0       | Tworzy aplikację z szablonem monitorowania ciągłego pacjenta. Użyj tego szablonu, aby zwiększyć opiekę pacjenta, ponowne przyjmowanie i zarządzanie chorobami. |
+| iotc-power@1.0.0         | Tworzy aplikację z szablonem monitorowania panelu słonecznym. Ten szablon służy do monitorowania stanu panelu słonecznego i trendów generowania energii. |
+| iotc-quality@1.0.0       | Tworzy aplikację z szablonem monitorowania jakości wody. Ten szablon służy do cyfrowego monitorowania jakości wody.|
+| iotc-store@1.0.0         | Tworzy aplikację z szablonem analizy w sklepie — wyewidencjonowywanie. Ten szablon służy do monitorowania i zarządzania przepływem wyewidencjonowania w sklepie. |
+| iotc-waste@1.0.0         | Tworzy aplikację z połączonym szablonem zarządzania odpadami. Ten szablon służy do monitorowania pojemników odpadów i operatorów pól wysyłania. |
 
 > [!NOTE]
-> The preview application templates are currently only available in the **Europe** and **United States** locations.
+> Szablony aplikacji w wersji zapoznawczej są obecnie dostępne tylko w lokalizacjach **Europy** i **Stany Zjednoczone** .
 
-## <a name="view-your-iot-central-applications"></a>View your IoT Central applications
+## <a name="view-your-iot-central-applications"></a>Wyświetlanie aplikacji IoT Central
 
-Use the [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) cmdlet to list your IoT Central applications and view metadata.
+Użyj polecenia cmdlet [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) , aby wyświetlić listę aplikacji IoT Central i wyświetlić metadane.
 
-## <a name="modify-an-application"></a>Modify an application
+## <a name="modify-an-application"></a>Modyfikowanie aplikacji
 
-Use the [Set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) cmdlet to update the metadata of an IoT Central application. For example, to change the display name of your application:
+Użyj polecenia cmdlet [Set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) , aby zaktualizować metadane aplikacji IoT Central. Na przykład, aby zmienić nazwę wyświetlaną aplikacji:
 
 ```powershell
 Set-AzIotCentralApp -Name "myiotcentralapp" `
@@ -118,7 +118,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Usuwanie aplikacji
 
-Use the [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) cmdlet to delete an IoT Central application. Na przykład:
+Użyj polecenia cmdlet [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) , aby usunąć aplikację IoT Central. Na przykład:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
@@ -127,7 +127,7 @@ Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 ## <a name="next-steps"></a>Następne kroki
 
-Now that you've learned how to manage Azure IoT Central applications from Azure PowerShell, here is the suggested next step:
+Teraz, gdy wiesz już, jak zarządzać aplikacjami IoT Central platformy Azure z poziomu Azure PowerShell, poniżej przedstawiono sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Administer your application](howto-administer.md)
+> [Administruj swoją aplikacją](howto-administer.md)

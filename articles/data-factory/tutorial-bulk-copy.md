@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d695c7a74945fd68591360864e107aadc826240
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ebcf7b3a8dfa4103c0b2773ace76797e5b8f899
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683682"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546407"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory
 W tym samouczku przedstawiono **kopiowanie wielu tabel z bazy danych Azure SQL Database do usługi Azure SQL Data Warehouse**. Tego samego wzorca można użyć także w innych scenariuszach kopiowania. Na przykład kopiowanie tabel z programu SQL Server/Oracle do usługi Azure SQL Database/Data Warehouse/Azure Blob, kopiowanie różnych ścieżek z obiektów blob do tabeli bazy danych Azure SQL Database.
@@ -62,7 +62,7 @@ Utwórz bazę Azure SQL Database z przykładowymi danymi Adventure Works LT zgod
 
 1. Jeśli nie masz magazynu Azure SQL Data Warehouse, utwórz go, wykonując czynności przedstawione w artykule [Create an Azure SQL Warehouse (Tworzenie magazynu Azure SQL Data Warehouse)](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 
-2. Tworzenie odpowiednich schematów tabel w magazynie SQL Data Warehouse. Można użyć [narzędzia migracji](https://www.microsoft.com/download/details.aspx?id=49100) do **migracji schematów** z bazy danych Azure SQL Database do magazynu Azure SQL Data Warehouse. Usługa Azure Data Factory służy do migrowania/kopiowania danych na późniejszym etapie.
+2. Tworzenie odpowiednich schematów tabel w magazynie SQL Data Warehouse. Usługa Azure Data Factory służy do migrowania/kopiowania danych na późniejszym etapie.
 
 ## <a name="azure-services-to-access-sql-server"></a>Usługi platformy Azure umożliwiające dostęp do serwera SQL
 
@@ -229,7 +229,7 @@ W tym samouczku magazyn obiektów blob platformy Azure służy jako obszar przej
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
     ```
 
-## <a name="create-datasets"></a>Utwórz zestawy danych
+## <a name="create-datasets"></a>Tworzenie zestawów danych
 
 W tym samouczku utworzysz zestawy danych źródła i ujścia, określające lokalizację przechowywania danych:
 
@@ -513,7 +513,7 @@ Ten potok wykonuje dwie czynności:
     $result
     ```
 
-    Oto dane wyjściowe przykładowego uruchomienia:
+    Oto dane wyjściowe przykładowego przebiegu:
 
     ```json
     Pipeline run details:
@@ -566,7 +566,7 @@ Ten potok wykonuje dwie czynności:
     ($result | Where-Object {$_.ActivityName -eq "TriggerCopy"}).Output.ToString()
     ```
 
-    Oto dane wyjściowe przykładowego uruchomienia:
+    Oto dane wyjściowe przykładowego przebiegu:
 
     ```json
     {

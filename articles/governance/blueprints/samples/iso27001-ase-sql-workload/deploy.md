@@ -1,14 +1,14 @@
 ---
-title: Przykładowy plan obciążeń ISO 27001 ASE/SQL — wdrażanie kroków
+title: Przykład wdrażania planu obciążeń ISO 27001 ASE/SQL
 description: Wdróż kroki przykładowego planu obciążeń ISO 27001 App Service Environment/SQL Database, w tym szczegóły parametru artefaktu.
 ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 6d01de8788a7fdd37edf10d13651d846cb8af0ca
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3cf3c062b1e8b69a6a0b9eb585b30ce2d5c4acfb
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184449"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546762"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Wdróż przykład planu obciążenia ISO 27001 App Service Environment/SQL Database
 

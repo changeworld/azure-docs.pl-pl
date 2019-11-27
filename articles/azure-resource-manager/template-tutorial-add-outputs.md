@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add outputs to template
-description: Add outputs to your Azure Resource Manager template to simplify the syntax.
+title: Samouczek — Dodawanie danych wyjściowych do szablonu
+description: Dodaj dane wyjściowe do szablonu Azure Resource Manager, aby uprościć składnię.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,45 +12,45 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405999"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Tutorial: Add outputs to your Resource Manager template
+# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Samouczek: Dodawanie danych wyjściowych do szablonu Menedżer zasobów
 
-In this tutorial, you learn how to return a value from your template. You use outputs when you need a value from a deployed resource. This tutorial takes **7 minutes** to complete.
+W tym samouczku dowiesz się, jak zwrócić wartość z szablonu. Dane wyjściowe są używane, gdy potrzebna jest wartość ze wdrożonego zasobu. Ukończenie tego samouczka trwa **7 minut** .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-We recommend that you complete the [tutorial about variables](template-tutorial-add-variables.md), but it's not required.
+Zalecamy ukończenie [samouczka dotyczącego zmiennych](template-tutorial-add-variables.md), ale nie jest to wymagane.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Przejrzyj szablon
 
-At the end of the previous tutorial, your template had the following JSON:
+Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
 
-It deploys a storage account, but it doesn't return any information about the storage account. You might need to capture properties from a new resource so they're available later for reference.
+Wdraża konto magazynu, ale nie zwraca żadnych informacji o koncie magazynu. Może być konieczne przechwycenie właściwości z nowego zasobu, aby były one później dostępne do odwołania.
 
-## <a name="add-outputs"></a>Add outputs
+## <a name="add-outputs"></a>Dodawanie danych wyjściowych
 
-You can use outputs to return values from the template. For example, it might be helpful to get the endpoints for your new storage account.
+Możesz użyć danych wyjściowych, aby zwrócić wartości z szablonu. Może być na przykład przydatne, aby uzyskać punkty końcowe dla nowego konta magazynu.
 
-The following example highlights the change to your template to add an output value. Copy the whole file and replace your template with its contents.
+Poniższy przykład podświetla zmianę szablonu, aby dodać wartość wyjściową. Skopiuj cały plik i Zastąp jego zawartość.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json?range=1-53&highlight=47-52)]
 
-There are some important items to note about the output value you added.
+Istnieją pewne ważne elementy, na które należy pamiętać o dodanej wartości wyjściowej.
 
-The type of returned value is set to **object**, which means it returns a JSON object.
+Typ zwracanej wartości jest ustawiony na **Object**, co oznacza, że zwraca obiekt JSON.
 
-It uses the [reference](resource-group-template-functions-resource.md#reference) function to get the runtime state of the storage account. To get the runtime state of a resource, you pass in the name or ID of a resource. In this case, you use the same variable you used to create the name of the storage account.
+Używa funkcji [Reference](resource-group-template-functions-resource.md#reference) do uzyskiwania stanu środowiska uruchomieniowego konta magazynu. Aby uzyskać stan środowiska uruchomieniowego zasobu, należy przekazać nazwę lub identyfikator zasobu. W takim przypadku należy użyć tej samej zmiennej, która została użyta do utworzenia nazwy konta magazynu.
 
-Finally, it returns the **primaryEndpoints** property from the storage account
+Na koniec zwraca właściwość **obiektu** z konta magazynu
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-You're ready to deploy the template and look at the returned value.
+Wszystko jest gotowe do wdrożenia szablonu i przeszukania zwracanej wartości.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -75,7 +75,7 @@ az group deployment create \
 
 ---
 
-In the output for the deployment command, you'll see an object similar to:
+W danych wyjściowych polecenia Deployment zobaczysz obiekt podobny do:
 
 ```json
 {
@@ -88,41 +88,41 @@ In the output for the deployment command, you'll see an object similar to:
 }
 ```
 
-## <a name="review-your-work"></a>Review your work
+## <a name="review-your-work"></a>Przejrzyj swoją służbę
 
-You've done a lot in the last six tutorials. Let's take a moment to review what you have done. You created a template with parameters that are easy to provide. The template is reusable in different environments because it allows for customization and dynamically creates needed values. It also returns information about the storage account that you could use in your script.
+Wykonano wiele ostatnich sześciu samouczków. Poświęć chwilę na zapoznanie się z tym, co zostało zrobione. Utworzono szablon z parametrami, które są łatwe do dostarczenia. Szablon jest wielokrotnego użytku w różnych środowiskach, ponieważ umożliwia dostosowanie i dynamiczne tworzenie wymaganych wartości. Zwraca również informacje o koncie magazynu, których można użyć w skrypcie.
 
-Now, let's look at the resource group and deployment history.
+Teraz przyjrzyjmy się grupie zasobów i historii wdrażania.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. Depending on the steps you did, you should have at least one and perhaps several storage accounts in the resource group.
-1. You should also have several successful deployments listed in the history. Select that link.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. Wybierz grupę zasobów, do której została wdrożona.
+1. W zależności od wykonywanych czynności należy mieć co najmniej jedno konto magazynu w grupie zasobów.
+1. W historii należy również znaleźć kilka pomyślnych wdrożeń. Wybierz ten link.
 
-   ![Select deployments](./media/template-tutorial-add-outputs/select-deployments.png)
+   ![Wybierz wdrożenia](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. You see all of your deployments in the history. Select the deployment called **addoutputs**.
+1. Wszystkie wdrożenia są widoczne w historii. Wybierz wdrożenie o nazwie **addoutputs**.
 
-   ![Show deployment history](./media/template-tutorial-add-outputs/show-history.png)
+   ![Pokaż historię wdrożenia](./media/template-tutorial-add-outputs/show-history.png)
 
-1. You can review the inputs.
+1. Możesz przejrzeć dane wejściowe.
 
-   ![Show inputs](./media/template-tutorial-add-outputs/show-inputs.png)
+   ![Pokaż dane wejściowe](./media/template-tutorial-add-outputs/show-inputs.png)
 
-1. You can review the outputs.
+1. Możesz przejrzeć dane wyjściowe.
 
-   ![Show outputs](./media/template-tutorial-add-outputs/show-outputs.png)
+   ![Pokaż dane wyjściowe](./media/template-tutorial-add-outputs/show-outputs.png)
 
-1. You can review the template.
+1. Możesz przejrzeć szablon.
 
-   ![Show template](./media/template-tutorial-add-outputs/show-template.png)
+   ![Pokaż szablon](./media/template-tutorial-add-outputs/show-template.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
 
 1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
@@ -131,7 +131,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this tutorial, you added a return value to the template. In the next tutorial, you'll learn how to export a template and use parts of that exported template in your template.
+W tym samouczku dodano wartość zwracaną do szablonu. W następnym samouczku dowiesz się, jak wyeksportować szablon i użyć części tego wyeksportowanego szablonu w szablonie.
 
 > [!div class="nextstepaction"]
-> [Use exported template](template-tutorial-export-template.md)
+> [Korzystanie z wyeksportowanego szablonu](template-tutorial-export-template.md)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8261723f145c7b8ba01e27108e7a309f9f483d2c
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cd0e77d1534bf540376fd397ee3e6d45bf8c424a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993132"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546255"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Skonfiguruj powiadomienia e-mail pod kątem problemów w Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ Następujące przykładowe powiadomienie e-mail wskazuje krytyczne ostrzeżenie 
 ![Przykładowe powiadomienie e-mail](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> Zawsze upewnij się, że wiadomość e-mail pochodzi od zweryfikowanego nadawcy firmy Microsoft przed kliknięciem linków w komunikacie. Powiadomienia e-mail zawsze pochodzą z `azure-noreply@microsoft.com` adresu.
+> Zawsze upewnij się, że wiadomość e-mail pochodzi od zweryfikowanego nadawcy firmy Microsoft przed kliknięciem linków w komunikacie. Powiadomienia e-mail zawsze pochodzą z adresu `azure-noreply@microsoft.com`.
 
 ### <a name="why-would-i-receive-email-notifications"></a>Dlaczego otrzymuję powiadomienia e-mail?
 
@@ -78,7 +78,7 @@ Jeśli nie możesz uzyskać dostępu do strony ustawień powiadomień w Azure Po
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Nie otrzymuję powiadomień e-mail, mimo że podałem mój adres e-mail. Dlaczego?
 
-Sprawdź spam lub folder wiadomości-śmieci w wiadomości e-mail dotyczącej powiadomienia i upewnij się, że nadawca `azure-noreply@microsoft.com`programu ma zezwalać.
+Sprawdź spam lub folder wiadomości-śmieci w wiadomości e-mail dla powiadomienia i upewnij się, że nadawca `azure-noreply@microsoft.com`.
 
 ## <a name="next-steps"></a>Następne kroki
 

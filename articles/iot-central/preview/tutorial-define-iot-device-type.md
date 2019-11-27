@@ -1,6 +1,6 @@
 ---
-title: Define a new IoT device type in Azure IoT Central | Microsoft Docs
-description: This tutorial shows you, as a builder, how to create a new Azure IoT device template in your Azure IoT Central application. You define the telemetry, state, properties, and commands for your type.
+title: Definiowanie nowego typu urządzenia IoT na platformie Azure IoT Central | Microsoft Docs
+description: W tym samouczku pokazano, jak utworzyć nowy szablon urządzenia usługi Azure IoT w aplikacji IoT Central platformy Azure. Zdefiniuj dane telemetryczne, stan, właściwości i polecenia dla danego typu.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -16,427 +16,427 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74407024"
 ---
-# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Define a new IoT device type in your Azure IoT Central application (preview features)
+# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Samouczek: Definiowanie nowego typu urządzenia IoT w aplikacji IoT Central platformy Azure (funkcje w wersji zapoznawczej)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-A device template is a blueprint that defines the characteristics and behaviors of a type of device that connects to an Azure IoT Central application.
+Szablon urządzenia jest planem, który definiuje cechy i zachowania typu urządzenia, które nawiązuje połączenie z aplikacją IoT Central platformy Azure.
 
-For example, a builder can create a device template for a connected fan that has the following characteristics:
+Na przykład Konstruktor może utworzyć szablon urządzenia dla połączonego wentylatora o następujących cechach:
 
-- Sends temperature telemetry
-- Sends location property
-- Sends fan motor error events
-- Sends fan operating state
-- Provides a writeable fan speed property
-- Provides a command to restart the device
-- Gives you an overall view of the device via a dashboard
+- Wysyła dane telemetryczne dotyczące temperatury
+- Wysyła Właściwość Location
+- Wysyła zdarzenia błędów silnika wentylatorowego
+- Wysyła stan operacyjny wentylatora
+- Zapewnia Właściwość szybkość wentylatorów zapisywalnych
+- Udostępnia polecenie ponownego uruchomienia urządzenia
+- Udostępnia ogólny widok urządzenia za pośrednictwem pulpitu nawigacyjnego
 
-From this device template, an operator can create and connect real fan devices. All these fans have measurements, properties, and commands that operators use to monitor and manage them. Operators use the device dashboards and forms to interact with the fan devices.
+Z tego szablonu urządzenia operator może tworzyć i łączyć urządzenia wentylatorów w rzeczywistości. Wszystkie te wentylatory mają pomiary, właściwości i polecenia używane przez operatorów do monitorowania ich i zarządzania nimi. Operatory korzystają z pulpitów nawigacyjnych i formularzy urządzeń w celu współdziałania z urządzeniami wentylatorów.
 
 > [!NOTE]
-> Only builders and administrators can create, edit, and delete device templates. Any user can create devices on the **Devices** page from existing device templates.
+> Tylko konstruktory i Administratorzy mogą tworzyć, edytować i usuwać szablony urządzeń. Każdy użytkownik może tworzyć urządzenia na stronie **urządzenia** z istniejących szablonów urządzeń.
 
-[IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) enables IoT Central to integrate devices, without you writing any embedded device code. At the core of IoT Plug and Play is a device capability model schema that describes device capabilities. In an IoT Central Preview application, device templates use these IoT Plug and Play device capability models.
+[Plug and Play IoT](../../iot-pnp/overview-iot-plug-and-play.md) umożliwia IoT Central integrację urządzeń bez konieczności pisania kodu urządzenia osadzonego. Podstawą Plug and Play IoT jest schemat modelu możliwości urządzenia, który opisuje możliwości urządzeń. W aplikacji IoT Central w wersji zapoznawczej szablony urządzeń używają tych modeli możliwości urządzeń Plug and Play IoT.
 
-As a builder, you have several options for creating device templates:
+Jako Konstruktor można utworzyć szablony urządzeń za pomocą kilku opcji:
 
-- Design the device template in IoT Central, and then implement its device capability model in your device code.
-- Import a device capability model from the [Azure Certified for IoT device catalog](https://aka.ms/iotdevcat). Then add any cloud properties, customizations, and dashboards your IoT Central application needs.
-- Create a device capability model by using Visual Studio Code. Implement your device code from the model. Manually import the device capability model into your IoT Central application, and then add any cloud properties, customizations, and dashboards your IoT Central application needs.
-- Create a device capability model by using Visual Studio Code. Implement your device code from the model, and connect your real device to your IoT Central application by using a device-first connection. IoT Central finds and imports the device capability model from the public repository for you. You can then add any cloud properties, customizations, and dashboards your IoT Central application needs to the device template.
+- Zaprojektuj szablon urządzenia w IoT Central, a następnie Zaimplementuj jego model możliwości urządzenia w kodzie urządzenia.
+- Zaimportuj model możliwości urządzenia z [wykazu urządzeń z certyfikatem platformy Azure dla IoT](https://aka.ms/iotdevcat). Następnie Dodaj wszystkie właściwości i dostosowania chmury oraz pulpity nawigacyjne, których potrzebujesz IoT Central aplikacji.
+- Utwórz model możliwości urządzenia przy użyciu Visual Studio Code. Zaimplementuj swój kod urządzenia z modelu. Ręcznie zaimportuj model możliwości urządzenia do aplikacji IoT Central, a następnie Dodaj wszystkie właściwości, dostosowania i pulpity nawigacyjne, których potrzebuje aplikacja IoT Central.
+- Utwórz model możliwości urządzenia przy użyciu Visual Studio Code. Zaimplementuj swój kod urządzenia z modelu, a następnie połącz rzeczywiste urządzenie z aplikacją IoT Central przy użyciu połączenia urządzenia po raz pierwszy. IoT Central odnajduje i importuje model możliwości urządzenia z repozytorium publicznego. Następnie można dodać wszystkie właściwości, dostosowania i pulpity nawigacyjne, których aplikacja IoT Central musi być szablonem urządzenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To complete this tutorial, you need to [create an Azure IoT Central application](quick-deploy-iot-central.md).
+Aby ukończyć ten samouczek, musisz [utworzyć aplikację usługi Azure IoT Central](quick-deploy-iot-central.md).
 
-## <a name="create-a-device-template-from-the-device-catalog"></a>Create a device template from the device catalog
+## <a name="create-a-device-template-from-the-device-catalog"></a>Tworzenie szablonu urządzenia z poziomu katalogu urządzeń
 
-As a builder, you can quickly start building out your solution by using an IoT Plug and Play certified device. See the list in the [Azure IoT Device Catalog](https://catalog.azureiotsolutions.com/alldevices). IoT Central integrates with the device catalog so you can import a device capability model from any of these IoT Plug and Play certified devices. To create a device template from one of these devices in IoT Central:
+Jako Konstruktor możesz szybko rozpocząć tworzenie rozwiązania przy użyciu urządzenia z certyfikatem usługi IoT Plug and Play. Zapoznaj się z listą w [wykazie urządzeń Azure IoT](https://catalog.azureiotsolutions.com/alldevices). IoT Central integruje się z wykazem urządzeń, aby można było zaimportować model możliwości urządzenia z dowolnego z tych urządzeń z certyfikatem usługi IoT Plug and Play. Aby utworzyć szablon urządzenia na podstawie jednego z tych urządzeń w IoT Central:
 
-1. Go to the **Device Templates** page in your IoT Central application.
-1. Select **+ New**, and then select any of the IoT Plug and Play certified devices from the catalog. IoT Central creates a device template based on this device capability model.
-1. Add any cloud properties, customizations, or views to your device template.
-1. Select **Publish** to make the template available for operators to view and connect devices.
+1. Przejdź do strony **Szablony urządzeń** w aplikacji IoT Central.
+1. Wybierz pozycję **+ Nowy**, a następnie wybierz dowolne z certyfikowanych urządzeń Plug and Play IoT z wykazu. IoT Central tworzy szablon urządzenia w oparciu o ten model możliwości urządzenia.
+1. Dodaj do szablonu urządzenia wszystkie właściwości, dostosowania lub widoki w chmurze.
+1. Wybierz pozycję **Publikuj** , aby udostępnić szablon dla operatorów do wyświetlania i łączenia urządzeń.
 
-## <a name="create-a-device-template-from-scratch"></a>Create a device template from scratch
+## <a name="create-a-device-template-from-scratch"></a>Tworzenie szablonu urządzenia od podstaw
 
-A device template contains:
+Szablon urządzenia zawiera:
 
-- A _device capability model_ that specifies the telemetry, properties, and commands that the device implements. These capabilities are organized into one or more interfaces.
-- _Cloud properties_ that define information that your IoT Central application stores about your devices. For example, a cloud property might record the date a device was last serviced. This information is never shared with the device.
-- _Customizations_ let the builder override some of the definitions in the device capability model. For example, the builder can override the name of a device property. Property names appear in IoT Central dashboards and forms.
-- _Dashboards and forms_ let the builder create a UI that lets operators monitor and manage the devices connected to your application.
+- _Model możliwości urządzenia_ określający dane telemetryczne, właściwości i polecenia implementowane przez urządzenie. Te możliwości są zorganizowane w jeden lub więcej interfejsów.
+- _Właściwości chmury_ definiujące informacje o urządzeniach, które IoT Central aplikacji. Na przykład właściwość chmury może rejestrować datę ostatniej obsługi urządzenia. Te informacje nigdy nie są udostępniane na urządzeniu.
+- _Dostosowania_ pozwalają konstruktorowi zastępować niektóre definicje w modelu możliwości urządzenia. Na przykład Konstruktor może zastąpić nazwę właściwości urządzenia. Nazwy właściwości są wyświetlane na IoT Central pulpitów nawigacyjnych i formularzach.
+- _Pulpity nawigacyjne i formularze_ umożliwiają konstruktorowi Tworzenie interfejsu użytkownika, który umożliwia operatorom monitorowanie i zarządzanie urządzeniami podłączonymi do aplikacji.
 
-To create a device template in IoT Central:
+Aby utworzyć szablon urządzenia w IoT Central:
 
-1. Go to the **Device Templates** page in your IoT Central application.
-1. Select **+ New** > **Custom**.
-1. Enter a name for your template, such as **Environmental Sensor**.
-1. Naciśnij klawisz **Enter**. IoT Central creates an empty device template.
+1. Przejdź do strony **Szablony urządzeń** w aplikacji IoT Central.
+1. Wybierz pozycję **+ nowy** > **niestandardowe**.
+1. Wprowadź nazwę szablonu, na przykład **czujnik środowiska**.
+1. Naciśnij klawisz **Enter**. IoT Central tworzy pusty szablon urządzenia.
 
-## <a name="manage-a-device-template"></a>Manage a device template
+## <a name="manage-a-device-template"></a>Zarządzanie szablonem urządzenia
 
-You can rename or delete a template from the template's home page.
+Można zmienić nazwę szablonu lub usunąć go ze strony głównej szablonu.
 
-After you've added a device capability model to your template, you can publish it. Until you've published the template, you can't connect a device based on this template for your operators to see in the **Devices** page.
+Po dodaniu modelu możliwości urządzenia do szablonu można go opublikować. Dopóki szablon nie zostanie opublikowany, nie można połączyć urządzenia na podstawie tego szablonu, aby operatory były widoczne na stronie **urządzenia** .
 
-## <a name="create-a-capability-model"></a>Create a capability model
+## <a name="create-a-capability-model"></a>Tworzenie modelu możliwości
 
-To create a device capability model, you can:
+Aby utworzyć model możliwości urządzenia, możesz:
 
-- Use IoT Central to create a custom model from scratch.
-- Import a model from a JSON file. A device builder might have used Visual Studio Code to author a device capability model for your application.
-- Select one of the devices from the Device Catalog. This option imports the device capability model that the manufacturer has published for this device. A device capability model imported like this is automatically published.
+- Użyj IoT Central, aby utworzyć niestandardowy model od podstaw.
+- Importuj model z pliku JSON. Konstruktor urządzeń mógł używać Visual Studio Code do tworzenia modelu możliwości urządzenia dla aplikacji.
+- Wybierz jedno z urządzeń z katalogu urządzeń. Ta opcja Importuje model możliwości urządzenia Opublikowany przez producenta dla tego urządzenia. Model możliwości urządzenia zaimportowany jak ten jest automatycznie publikowany.
 
-## <a name="manage-a-capability-model"></a>Manage a capability model
+## <a name="manage-a-capability-model"></a>Zarządzanie modelem możliwości
 
-After you create a device capability model, you can:
+Po utworzeniu modelu możliwości urządzenia można:
 
-- Add interfaces to the model. A model must have at least one interface.
-- Edit model metadata, such as its ID, namespace, and name.
-- Delete the model.
+- Dodaj interfejsy do modelu. Model musi mieć co najmniej jeden interfejs.
+- Edytuj metadane modelu, takie jak jego identyfikator, przestrzeń nazw i nazwa.
+- Usuń model.
 
-## <a name="create-an-interface"></a>Create an interface
+## <a name="create-an-interface"></a>Tworzenie interfejsu
 
-A device capability must have at least one interface. An interface is a reusable collection of capabilities.
+Możliwość urządzenia musi mieć co najmniej jeden interfejs. Interfejs jest kolekcją możliwości wielokrotnego użytku.
 
-To create an interface:
+Aby utworzyć interfejs:
 
-1. Go to your device capability model, and choose **+ Add Interface**.
+1. Przejdź do modelu możliwości urządzenia i wybierz pozycję **+ Dodaj interfejs**.
 
-1. On the **Select an Interface** page, you can:
+1. Na stronie **Wybieranie interfejsu** można:
 
-    - Create a custom interface from scratch.
-    - Import an existing interface from a file. A device builder might have used Visual Studio Code to author an interface for your device.
-    - Choose one of the standard interfaces, such as the **Device Information** interface. Standard interfaces specify the capabilities common to many devices. These standard interfaces are published by Azure IoT, and can't be versioned or edited.
+    - Utwórz niestandardowy interfejs od podstaw.
+    - Importuj istniejący interfejs z pliku. Konstruktor urządzeń mógł używać Visual Studio Code do tworzenia interfejsu dla urządzenia.
+    - Wybierz jeden z standardowych interfejsów, takich jak interfejs **informacji o urządzeniu** . Interfejsy standardowe określają możliwości typowe dla wielu urządzeń. Te standardowe interfejsy są publikowane przez usługę Azure IoT i nie mogą być w wersji ani edytowane.
 
-1. After you create an interface, choose **Edit Identity** to change the display name of the interface.
+1. Po utworzeniu interfejsu wybierz opcję **Edytuj tożsamość** , aby zmienić nazwę wyświetlaną interfejsu.
 
-1. If you choose to create a custom interface from scratch, you can add your device's capabilities. Device capabilities are telemetry, properties, and commands.
+1. Jeśli zdecydujesz się utworzyć interfejs niestandardowy od podstaw, możesz dodać możliwości urządzenia. Możliwości urządzenia to dane telemetryczne, właściwości i polecenia.
 
 ### <a name="telemetry"></a>Telemetria
 
-Telemetry is a stream of values sent from the device, typically from a sensor. For example, a sensor might report the ambient temperature.
+Telemetrię jest strumieniem wartości wysyłanych z urządzenia, zazwyczaj z czujnika. Na przykład czujnik może zgłosić temperaturę otoczenia.
 
-The following table shows the configuration settings for a telemetry capability:
+W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji telemetrii:
 
 | Pole | Opis |
 | ----- | ----------- |
-| Nazwa wyświetlana | The display name for the telemetry value used on dashboards and forms. |
-| Nazwa | The name of the field in the telemetry message. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Capability Type | Telemetry. |
-| Semantic Type | The semantic type of the telemetry, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
-| Schemat | The telemetry data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
-| Ważność | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
-| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
-| Jednostka | A unit for the telemetry value, such as **mph**, **%** , or **&deg;C**. |
-| Display Unit | A display unit for use on dashboards and forms. |
-| Komentarz | Any comments about the telemetry capability. |
-| Opis | A description of the telemetry capability. |
+| Nazwa wyświetlana | Nazwa wyświetlana wartości telemetrii używanej na pulpitach nawigacyjnych i formularzach. |
+| Nazwa | Nazwa pola w komunikacie telemetrii. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
+| Typ możliwości | Telemetrii. |
+| Typ semantyczny | Typ semantyczny telemetrii, taki jak temperatura, stan lub zdarzenie. Wybór typu semantycznego określa, które z poniższych pól są dostępne. |
+| Schemat | Typ danych telemetrii, taki jak Double, String lub Vector. Dostępne opcje są określane przez typ semantyczny. Schemat nie jest dostępny dla typów semantyki zdarzenia i stanu. |
+| Ważność | Dostępne tylko dla typu semantycznego zdarzenia. Te informacje dotyczą **błędu**, **informacji**lub **ostrzeżenia**. |
+| Wartości stanu | Dostępne tylko dla typu semantyki stanu. Zdefiniuj możliwe wartości stanu, z których każdy ma nazwę wyświetlaną, nazwę, typ wyliczenia i wartość. |
+| Jednostka | Jednostka wartości telemetrii, taka jak **mph**, **%** lub **&deg;C**. |
+| Jednostka wyświetlania | Jednostka wyświetlania do użycia na pulpitach nawigacyjnych i formularzach. |
+| Komentarz | Wszelkie komentarze dotyczące funkcji telemetrii. |
+| Opis | Opis możliwości telemetrii. |
 
 ### <a name="properties"></a>Właściwości
 
-Properties represent point-in-time values. For example, a device can use a property to report the target temperature it's trying to reach. You can set writeable properties from IoT Central.
+Właściwości reprezentują wartości punktu w czasie. Na przykład urządzenie może użyć właściwości do raportowania temperatury docelowej, do której próbujesz uzyskać dostęp. Można ustawić właściwości do zapisu z IoT Central.
 
-The following table shows the configuration settings for a property capability:
+W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji właściwości:
 
 | Pole | Opis |
 | ----- | ----------- |
-| Nazwa wyświetlana | The display name for the property value used on dashboards and forms. |
-| Nazwa | The name of the property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Capability Type | Property. |
-| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
-| Schemat | The property data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
-| Writeable | If the property isn't writeable, the device can report property values to IoT Central. If the property is writeable, the device can report property values to IoT Central and IoT Central can send property updates to the device.
-| Ważność | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
-| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
-| Jednostka | A unit for the property value, such as **mph**, **%** , or **&deg;C**. |
-| Display Unit | A display unit for use on dashboards and forms. |
-| Komentarz | Any comments about the property capability. |
-| Opis | A description of the property capability. |
+| Nazwa wyświetlana | Nazwa wyświetlana wartości właściwości używanej na pulpitach nawigacyjnych i formularzach. |
+| Nazwa | Nazwa właściwości. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
+| Typ możliwości | Wartość. |
+| Typ semantyczny | Typ semantyczny właściwości, taki jak temperatura, stan lub zdarzenie. Wybór typu semantycznego określa, które z poniższych pól są dostępne. |
+| Schemat | Typ danych właściwości, taki jak Double, String lub Vector. Dostępne opcje są określane przez typ semantyczny. Schemat nie jest dostępny dla typów semantyki zdarzenia i stanu. |
+| Zapisywalny | Jeśli właściwość nie jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central. Jeśli właściwość jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central i IoT Central może wysyłać do urządzenia aktualizacje właściwości.
+| Ważność | Dostępne tylko dla typu semantycznego zdarzenia. Te informacje dotyczą **błędu**, **informacji**lub **ostrzeżenia**. |
+| Wartości stanu | Dostępne tylko dla typu semantyki stanu. Zdefiniuj możliwe wartości stanu, z których każdy ma nazwę wyświetlaną, nazwę, typ wyliczenia i wartość. |
+| Jednostka | Jednostka wartości właściwości, takiej jak **mph**, **%** lub **&deg;C**. |
+| Jednostka wyświetlania | Jednostka wyświetlania do użycia na pulpitach nawigacyjnych i formularzach. |
+| Komentarz | Wszelkie komentarze dotyczące możliwości właściwości. |
+| Opis | Opis możliwości właściwości. |
 
 ### <a name="commands"></a>Polecenia
 
-You can call device commands from IoT Central. Commands optionally pass parameters to the device and receive a response from the device. For example, you can call a command to reboot a device in 10 seconds.
+Polecenia urządzenia można wywołać z IoT Central. Polecenia opcjonalne umożliwiają przekazywanie parametrów do urządzenia i odbieranie odpowiedzi z urządzenia. Na przykład można wywołać polecenie, aby ponownie uruchomić urządzenie w ciągu 10 sekund.
 
-The following table shows the configuration settings for a command capability:
+W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji polecenia:
 
 | Pole | Opis |
 | ----- | ----------- |
-| Nazwa wyświetlana | The display name for the command used on dashboards and forms. |
-| Nazwa | The name of the command. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Capability Type | Command. |
+| Nazwa wyświetlana | Nazwa wyświetlana polecenia użyta na pulpitach nawigacyjnych i formularzach. |
+| Nazwa | Nazwa polecenia. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
+| Typ możliwości | Dotyczące. |
 | Polecenie | `SynchronousExecutionType`. |
-| Komentarz | Any comments about the command capability. |
-| Opis | A description of the command capability. |
-| Prośba | If enabled, a definition of the request parameter, including: name, display name, schema, unit, and display unit. |
-| Odpowiedź | If enabled, a definition of the command response, including: name, display name, schema, unit, and display unit. |
+| Komentarz | Wszelkie komentarze dotyczące funkcji polecenia. |
+| Opis | Opis możliwości polecenia. |
+| Żądanie | Jeśli ta funkcja jest włączona, definicja parametru żądania, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
+| Odpowiedź | Jeśli ta funkcja jest włączona, definicja odpowiedzi polecenia, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
 
-## <a name="manage-an-interface"></a>Manage an interface
+## <a name="manage-an-interface"></a>Zarządzanie interfejsem
 
-If you haven't published the interface, you can edit the capabilities defined by the interface. After you publish the interface, if you want to make any changes, you'll need to create a new version of the device template and version the interface. You can make changes that don't require versioning, such as display names or units, in the **Customize** section.
+Jeśli interfejs nie został opublikowany, można edytować możliwości zdefiniowane przez interfejs. Po opublikowaniu interfejsu, jeśli chcesz wprowadzić zmiany, musisz utworzyć nową wersję szablonu urządzenia i wersję interfejsu. W sekcji **Dostosowywanie** można wprowadzać zmiany, które nie wymagają przechowywania wersji, takie jak nazwy wyświetlane lub jednostki.
 
-You can also export the interface as a JSON file if you want to reuse it in another capability model.
+Możesz również wyeksportować interfejs jako plik JSON, jeśli chcesz użyć go ponownie w innym modelu możliwości.
 
-## <a name="add-cloud-properties"></a>Add cloud properties
+## <a name="add-cloud-properties"></a>Dodawanie właściwości chmury
 
-Use cloud properties to store information about devices in IoT Central. Cloud properties are never sent to a device. For example, you can use cloud properties to store the name of the customer who has installed the device, or the device's last service date.
+Właściwości chmury służą do przechowywania informacji o urządzeniach w IoT Central. Właściwości chmury nigdy nie są wysyłane do urządzenia. Na przykład można użyć właściwości chmury do przechowywania nazwy klienta, który zainstalował urządzenie, lub daty jego ostatniej usługi.
 
-The following table shows the configuration settings for a cloud property:
+W poniższej tabeli przedstawiono ustawienia konfiguracji dla właściwości chmury:
 
 | Pole | Opis |
 | ----- | ----------- |
-| Nazwa wyświetlana | The display name for the cloud property value used on dashboards and forms. |
-| Nazwa | The name of the cloud property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
-| Schemat | The cloud property data type, such as double, string, or vector. The available choices are determined by the semantic type. |
+| Nazwa wyświetlana | Nazwa wyświetlana wartości właściwości chmury używanej na pulpitach nawigacyjnych i formularzach. |
+| Nazwa | Nazwa właściwości chmury. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
+| Typ semantyczny | Typ semantyczny właściwości, taki jak temperatura, stan lub zdarzenie. Wybór typu semantycznego określa, które z poniższych pól są dostępne. |
+| Schemat | Typ danych właściwości chmury, taki jak Double, String lub Vector. Dostępne opcje są określane przez typ semantyczny. |
 
-## <a name="add-customizations"></a>Add customizations
+## <a name="add-customizations"></a>Dodawanie dostosowań
 
-Use customizations when you need to modify an imported interface or add IoT Central-specific features to a capability. You can only customize fields that don't break interface compatibility. Możesz na przykład:
+Dostosowań należy używać w przypadku konieczności modyfikacji zaimportowanego interfejsu lub dodania funkcji specyficznych dla IoT Central do funkcji. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Można na przykład:
 
-- Customize the display name and units of a capability.
-- Add a default color to use when the value appears on a chart.
-- Specify initial, minimum, and maximum values for a property.
+- Dostosuj nazwę wyświetlaną i jednostki możliwości.
+- Dodaj domyślny kolor, który ma być używany, gdy wartość pojawia się na wykresie.
+- Określ początkową, minimalną i maksymalną wartość właściwości.
 
-You can't customize the capability name or capability type. If there are changes you can't make in the **Customize** section, you'll need to version your device template and interface to modify the capability.
+Nie można dostosować nazwy możliwości ani typu możliwości. Jeśli istnieją zmiany, których nie można wprowadzić w sekcji **Dostosowywanie** , musisz zmienić wersję szablonu i interfejsu urządzenia, aby zmodyfikować tę możliwość.
 
-### <a name="generate-default-views"></a>Generate default views
+### <a name="generate-default-views"></a>Generuj widoki domyślne
 
-Generating default views is a quick way to visualize your important device information. You have up to three default views generated for your device template:
+Generowanie widoków domyślnych to szybki sposób wizualizacji ważnych informacji o urządzeniu. Istnieje maksymalnie trzy widoki domyślne wygenerowane dla szablonu urządzenia:
 
-- **Commands** provides a view with device commands, and allows your operator to dispatch them to your device.
-- **Overview** provides a view with device telemetry, displaying charts and metrics.
-- **About** provides a view with device information, displaying device properties.
+- **Polecenia** udostępniają widok z poleceniami urządzenia i umożliwiają operatorowi wysyłanie ich do urządzenia.
+- **Przegląd** zawiera widok z danymi telemetrycznymi urządzeń, wyświetlanie wykresów i metryk.
+- Informacje **o** programie zawierają informacje o urządzeniu, wyświetlając właściwości urządzenia.
 
-After you've selected **Generate default views**, you see that they have been automatically added under the **Views** section of your device template.
+Po wybraniu opcji **Generuj domyślne widoki**zobaczysz, że zostały one automatycznie dodane w sekcji **widoki** szablonu urządzenia.
 
-## <a name="add-dashboards"></a>Add dashboards
+## <a name="add-dashboards"></a>Dodaj pulpity nawigacyjne
 
-Add dashboards to a device template to enable operators to visualize a device by using charts and metrics. You can have multiple dashboards for a device template.
+Dodaj pulpity nawigacyjne do szablonu urządzenia, aby umożliwić operatorom wizualizację urządzenia za pomocą wykresów i metryk. Dla szablonu urządzenia można mieć wiele pulpitów nawigacyjnych.
 
-To add a dashboard to a device template:
+Aby dodać pulpit nawigacyjny do szablonu urządzenia:
 
-1. Go to your device template, and select **Views**.
-1. Choose **Visualizing the Device**.
-1. Enter a name for your dashboard in **Dashboard Name**.
-1. Add tiles to your dashboard from the list of static, property, cloud property, telemetry, and command tiles. Drag and drop the tiles you want to add to your dashboard.
-1. To plot multiple telemetry values on a single chart tile, select the telemetry values, and then select **Combine**.
-1. Configure each tile you add to customize how it displays data. You can do this by selecting the gear icon, or by selecting **Change configuration** on your chart tile.
-1. Arrange and resize the tiles on your dashboard.
+1. Przejdź do szablonu urządzenia i wybierz pozycję **widoki**.
+1. Wybierz **wizualizację urządzenia**.
+1. Wprowadź nazwę pulpitu nawigacyjnego w polu **Nazwa pulpitu nawigacyjnego**.
+1. Dodaj kafelki do pulpitu nawigacyjnego z listy kafelków statycznej, właściwości, chmury, telemetrii i poleceń. Przeciągnij i upuść kafelki, które chcesz dodać do pulpitu nawigacyjnego.
+1. Aby wykreolić wiele wartości telemetrii na pojedynczym kafelku wykresu, wybierz wartości telemetryczne, a następnie wybierz pozycję **Połącz**.
+1. Skonfiguruj wszystkie dodawane kafelki, aby dostosować sposób wyświetlania danych. Możesz to zrobić, wybierając ikonę koła zębatego lub wybierając pozycję **Zmień konfigurację** na kafelku wykresu.
+1. Rozmieść kafelki na pulpicie nawigacyjnym i zmień ich rozmiar.
 1. Zapisz zmiany.
 
-### <a name="configure-preview-device-to-view-dashboard"></a>Configure preview device to view dashboard
+### <a name="configure-preview-device-to-view-dashboard"></a>Konfigurowanie urządzenia w wersji zapoznawczej do wyświetlania pulpitu nawigacyjnego
 
-To view and test your dashboard, select **Configure preview device**. This enables you to see the dashboard as your operator sees it after it's published. Use this option to validate that your views show the correct data. You can choose from the following:
+Aby wyświetlić i przetestować pulpit nawigacyjny, wybierz pozycję **Konfiguruj urządzenie w wersji zapoznawczej**. Dzięki temu pulpit nawigacyjny będzie widoczny po opublikowaniu. Użyj tej opcji, aby sprawdzić, czy w widokach są wyświetlane poprawne dane. Można wybrać jedną z następujących opcji:
 
-- No preview device.
-- The real test device you've configured for your device template.
-- An existing device in your application, by using the device ID.
+- Brak urządzenia w wersji zapoznawczej.
+- Rzeczywiste urządzenie testowe skonfigurowane dla szablonu urządzenia.
+- Istniejące urządzenie w aplikacji, używając identyfikatora urządzenia.
 
-## <a name="add-forms"></a>Add forms
+## <a name="add-forms"></a>Dodawanie formularzy
 
-Add forms to a device template to enable operators to manage a device by viewing and setting properties. Operators can only edit cloud properties and writeable device properties. You can have multiple forms for a device template.
+Dodaj formularze do szablonu urządzenia, aby umożliwić operatorom zarządzanie urządzeniem przez wyświetlanie i Ustawianie właściwości. Operatory mogą edytować tylko właściwości chmury i zapisywalne właściwości urządzeń. Dla szablonu urządzenia można mieć wiele formularzy.
 
-To add a form to a device template:
+Aby dodać formularz do szablonu urządzenia:
 
-1. Go to your device template, and select **Views**.
-1. Choose **Editing Device and Cloud data**.
-1. Enter a name for your form in **Form Name**.
-1. Select the number of columns to use to lay out your form.
-1. Add properties to an existing section on your form, or select properties and choose **Add Section**. Use sections to group properties on your form. You can add a title to a section.
-1. Configure each property on the form to customize its behavior.
-1. Arrange the properties on your form.
+1. Przejdź do szablonu urządzenia i wybierz pozycję **widoki**.
+1. Wybierz pozycję **Edytowanie urządzenia i dane w chmurze**.
+1. Wprowadź nazwę formularza w polu **nazwa formularza**.
+1. Wybierz liczbę kolumn, które mają być używane do układania formularza.
+1. Dodaj właściwości do istniejącej sekcji w formularzu lub wybierz pozycję Właściwości, a następnie wybierz pozycję **Dodaj sekcję**. Użyj sekcji, aby grupować właściwości w formularzu. Możesz dodać tytuł do sekcji.
+1. Skonfiguruj każdą właściwość w formularzu, aby dostosować jej zachowanie.
+1. Rozmieść właściwości w formularzu.
 1. Zapisz zmiany.
 
-## <a name="publish-a-device-template"></a>Publish a device template
+## <a name="publish-a-device-template"></a>Publikowanie szablonu urządzenia
 
-Before you can connect a device that implements your device capability model, you must publish your device template.
+Aby można było połączyć urządzenie, które implementuje model możliwości urządzenia, należy opublikować szablon urządzenia.
 
-After you publish a device template, you can only make limited changes to the device capability model. To modify an interface, you need to [create and publish a new version](./howto-version-device-template.md).
+Po opublikowaniu szablonu urządzenia można wprowadzać tylko ograniczone zmiany w modelu możliwości urządzenia. Aby zmodyfikować interfejs, należy [utworzyć i opublikować nową wersję](./howto-version-device-template.md).
 
-To publish a device template, go to you your device template, and select **Publish**.
+Aby opublikować szablon urządzenia, przejdź do szablonu urządzenia i wybierz pozycję **Publikuj**.
 
-After you publish a device template, an operator can go to the **Devices** page, and add either real or simulated devices that use your device template. You can continue to modify and save your device template as you're making changes. When you want to push these changes out to the operator to view under the **Devices** page, you must select **Publish** each time.
+Po opublikowaniu szablonu urządzenia operator może przejść do strony **urządzenia** i dodać rzeczywiste lub symulowane urządzenia, które używają szablonu urządzenia. Możesz nadal modyfikować i zapisywać szablon urządzenia w miarę wprowadzania zmian. Aby wypchnąć te zmiany do operatora w celu wyświetlenia na stronie **urządzenia** , należy wybrać opcję **Publikuj** za każdym razem.
 
-## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Define a new IoT gateway device type (preview features)
+## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Definiowanie nowego typu urządzenia bramy IoT (funkcje w wersji zapoznawczej)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-This tutorial shows you, as a builder, how to use a gateway device template to define a new type of IoT device in your IoT Central application. 
+W tym samouczku przedstawiono jako konstruktora, jak używać szablonu urządzenia bramy do definiowania nowego typu urządzenia IoT w aplikacji IoT Central. 
 
-In this section, you create a **Smart Building** device template. A Smart Building gateway device:
+W tej sekcji utworzysz szablon **inteligentnego kompilowania** urządzenia. Inteligentne urządzenie bramy do kompilowania:
 
-* Sends telemetry, such as temperature and occupancy.
-* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
-* Responds to commands, such as resetting temperature.
-* Allows relationships to other device capability models.
+* Wysyła dane telemetryczne, takie jak temperatury i zajętości.
+* Reaguje na właściwości zapisywalne w chmurze, takie jak interwał wysyłania danych telemetrycznych.
+* Reaguje na polecenia, takie jak resetowanie temperatury.
+* Umożliwia relacje z innymi modelami możliwości urządzeń.
 
-### <a name="create-iot-device-templates"></a>Create IoT device templates
+### <a name="create-iot-device-templates"></a>Tworzenie szablonów urządzeń IoT
 
-Here's how to create IoT device templates: 
+Poniżej przedstawiono sposób tworzenia szablonów urządzeń IoT: 
 
-1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and occupancy sensor tile. Select **Next: Customize**.
+1. W lewym okienku nawigacji wybierz pozycję **Szablony urządzeń**. Następnie wybierz pozycję **+ Nowy**i wybierz kafelek **urządzenia IoT** i czujnik zajętości. Wybierz pozycję **Dalej: Dostosuj**.
 
-   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
+   ![Zrzut ekranu przedstawiający stronę i opcje szablonów urządzeń](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
 
-1. On the **Review** page, select **Create**. 
+1. Na stronie **Przegląd** wybierz pozycję **Utwórz**. 
 
-   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
+   ![Zrzut ekranu przedstawiający stronę przegląd](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
 
-1. A new device template is created. 
+1. Tworzony jest nowy szablon urządzenia. 
 
-   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
+   ![Zrzut ekranu przedstawiający nowy szablon urządzenia](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
 
-Here's how to create a device template for S1 Sensor:
+Poniżej przedstawiono sposób tworzenia szablonu urządzenia czujnika S1:
 
-1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and select occupancy sensor tile. Select **Next: Customize**.
+1. W lewym okienku nawigacji wybierz pozycję **Szablony urządzeń**. Następnie wybierz pozycję **+ Nowy**i wybierz kafelek **urządzenie IoT** i wybierz kafelek Czujnik zajętości. Wybierz pozycję **Dalej: Dostosuj**.
 
-   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/s1-sensor.png)
+   ![Zrzut ekranu przedstawiający stronę i opcje szablonów urządzeń](./media/tutorial-define-iot-device-type/s1-sensor.png)
 
-1. On the **Review** page, select **Create**. 
+1. Na stronie **Przegląd** wybierz pozycję **Utwórz**. 
 
-   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/s1-review.png)
+   ![Zrzut ekranu przedstawiający stronę przegląd](./media/tutorial-define-iot-device-type/s1-review.png)
 
-1. A new device template is created. 
+1. Tworzony jest nowy szablon urządzenia. 
 
-   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/s1-template.png)
+   ![Zrzut ekranu przedstawiający nowy szablon urządzenia](./media/tutorial-define-iot-device-type/s1-template.png)
 
-## <a name="create-an-iot-gateway-device-template"></a>Create an IoT gateway device template
+## <a name="create-an-iot-gateway-device-template"></a>Tworzenie szablonu urządzenia bramy IoT
 
-You can choose to create an IoT gateway device template. The gateway device has relationships with downstream devices that connect into IoT Central through the gateway device. 
+Można utworzyć szablon urządzenia bramy IoT. Urządzenie bramy ma relacje z urządzeniami podrzędnymi, które łączą się z IoT Central za pomocą urządzenia bramy. 
 
-### <a name="downstream-device-relationships-with-gateway-device"></a>Downstream device relationships with gateway device
+### <a name="downstream-device-relationships-with-gateway-device"></a>Relacje urządzeń podrzędnych z urządzeniem bramy
 
-IoT devices can connect to an IoT gateway device.
+Urządzenia IoT mogą łączyć się z urządzeniem bramy IoT.
 
-![Diagram of relationship between gateway device and downstream devices](./media/tutorial-define-iot-device-type/gatewaypattern.png)
+![Diagram relacji między urządzeniem bramy a urządzeniami podrzędnymi](./media/tutorial-define-iot-device-type/gatewaypattern.png)
 
-As a builder, you can create and edit IoT gateway device templates in your application. After you publish a device template, you can connect real devices that implement the device template.
+Jako Konstruktor można tworzyć i edytować szablony urządzeń bramy IoT w aplikacji. Po opublikowaniu szablonu urządzenia można nawiązać połączenie z rzeczywistymi urządzeniami, które implementują szablon urządzenia.
 
-### <a name="select-a-device-template-type"></a>Select a device template type 
+### <a name="select-a-device-template-type"></a>Wybierz typ szablonu urządzenia 
 
-To add a new device template to your application:
+Aby dodać nowy szablon urządzenia do aplikacji:
 
-1. From the left pane, select the **Device Templates** tab.
+1. W okienku po lewej stronie wybierz kartę **Szablony urządzeń** .
 
-   ![Screenshot of Device templates page](./media/tutorial-define-iot-device-type/devicetemplate.png)
+   ![Zrzut ekranu strony szablonów urządzeń](./media/tutorial-define-iot-device-type/devicetemplate.png)
 
-1. Select **+ New** to start creating a new device template.
+1. Wybierz pozycję **+ Nowy** , aby rozpocząć tworzenie nowego szablonu urządzenia.
 
-   ![Screenshot of Device templates page, with New highlighted](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
+   ![Zrzut ekranu przedstawiający stronę szablony urządzeń z nowymi wyróżnionymi](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
 
-   ![Screenshot of Customize device page](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Zrzut ekranu przedstawiający stronę Dostosowywanie urządzenia](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-1. On the **Select template type** page, select **Azure IoT**, and then select **Next: Customize**.
+1. Na stronie **Wybieranie typu szablonu** wybierz pozycję **Azure IoT**, a następnie wybierz pozycję **Dalej: Dostosuj**.
 
-   ![Screenshot of Select template type page](./media/tutorial-define-iot-device-type/gateway-customize.png)
+   ![Zrzut ekranu przedstawiający stronę Wybieranie typu szablonu](./media/tutorial-define-iot-device-type/gateway-customize.png)
 
-1. Select the gateway check box, and select **Create**.
+1. Zaznacz pole wyboru Brama, a następnie wybierz pozycję **Utwórz**.
 
-   ![Screenshot of Customize device page, with gateway highlighted](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Zrzut ekranu przedstawiający stronę Dostosowywanie urządzenia z wyróżnioną bramą](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-1. On the review page, select **Create**. 
+1. Na stronie Przegląd wybierz pozycję **Utwórz**. 
 
-1. Enter the gateway template name, **Smart Building Gateway Template**. Select the **Custom** tile.
+1. Wprowadź nazwę szablonu bramy, **szablon inteligentnego kompilowania bramy**. Wybierz kafelek **niestandardowy** .
 
-1. Add a standard interface **Device Information**.
+1. Dodaj standardowe **Informacje o urządzeniu**interfejsu.
 
-### <a name="add-relationships"></a>Add relationships
+### <a name="add-relationships"></a>Dodaj relacje
 
-You can add downstream relationships to device capability models for devices you connect to a gateway device.
+Można dodać relacje podrzędne do modeli możliwości urządzeń dla urządzeń, które są połączone z urządzeniem bramy.
 
-Create relationships to downstream device capability models. Wybierz pozycję **Zapisz**.
+Utwórz relacje z modelami możliwości urządzeń podrzędnych. Wybierz pozycję **Zapisz**.
 
-![Screenshot of Smart Building Gateway Template, with various options highlighted](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
+![Zrzut ekranu szablonu inteligentnego kompilowania bramy z wyróżnionymi różnymi opcjami](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
 
-### <a name="add-cloud-properties"></a>Add cloud properties
+### <a name="add-cloud-properties"></a>Dodawanie właściwości chmury
 
-A device template can include cloud properties. Cloud properties only exist in the IoT Central application, and are never sent to, or received from, a device.
+Szablon urządzenia może zawierać właściwości chmury. Właściwości chmury istnieją tylko w aplikacji IoT Central i nigdy nie są wysyłane do ani odbierane z urządzenia.
 
-1. Select **Cloud Properties** >  **+ Add Cloud Property**. Use the information in the following table to add a cloud property to your device template.
+1. Wybierz pozycję **właściwości chmury** >  **+ Dodaj właściwość chmury**. Skorzystaj z informacji podanych w poniższej tabeli, aby dodać właściwość chmury do szablonu urządzenia.
 
-    | Nazwa wyświetlana      | Semantic type | Schemat |
+    | Nazwa wyświetlana      | Typ semantyczny | Schemat |
     | ----------------- | ------------- | ------ |
-    | Data ostatniego serwisowania | Brak          | Data   |
-    | Customer name     | Brak          | Ciąg |
+    | Data ostatniego serwisowania | Brak          | Date   |
+    | Nazwa klienta     | Brak          | Ciąg |
 
 2. Wybierz pozycję **Zapisz**.
 
-### <a name="add-customizations"></a>Add customizations
+### <a name="add-customizations"></a>Dodawanie dostosowań
 
-Use customizations to modify an interface, or to add IoT Central-specific features to a capability that doesn't require you to version your device capability model. You can customize fields when the capability model is in a draft or published state. You can only customize fields that don't break interface compatibility. Możesz na przykład:
+Użyj opcji dostosowania, aby zmodyfikować interfejs lub dodać funkcje specyficzne dla IoT Central do możliwości, która nie wymaga użycia modelu możliwości urządzenia. Można dostosować pola, gdy model możliwości jest w stanie roboczym lub opublikowanym. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Można na przykład:
 
-- Customize the display name and units of a capability.
-- Add a default color to use when the value appears on a chart.
-- Specify initial, minimum, and maximum values for a property.
+- Dostosuj nazwę wyświetlaną i jednostki możliwości.
+- Dodaj domyślny kolor, który ma być używany, gdy wartość pojawia się na wykresie.
+- Określ początkową, minimalną i maksymalną wartość właściwości.
 
-You can't customize the capability name or capability type.
+Nie można dostosować nazwy możliwości ani typu możliwości.
 
-When you're finished customizing, select **Save**.
+Po zakończeniu dostosowywania wybierz pozycję **Zapisz**.
 
-### <a name="create-views"></a>Create views
+### <a name="create-views"></a>Tworzenie widoków
 
-As a builder, you can customize the application to display relevant information about the environmental sensor device to an operator. Your customizations enable the operator to manage the environmental sensor devices connected to the application. You can create two types of views for an operator to use to interact with devices:
+Jako Konstruktor można dostosować aplikację tak, aby wyświetlała odpowiednie informacje o urządzeniu czujnika środowiska z operatorem. Twoje dostosowania umożliwiają operatorowi zarządzanie urządzeniami czujnika środowiskowego podłączonymi do aplikacji. Można utworzyć dwa typy widoków dla operatora, który ma być używany do współpracy z urządzeniami:
 
-* Forms to view and edit device and cloud properties.
-* Dashboards to visualize devices.
+* Formularze do wyświetlania i edytowania właściwości urządzenia i chmury.
+* Pulpity nawigacyjne do wizualizacji urządzeń.
 
-### <a name="generate-default-views"></a>Generate default views
+### <a name="generate-default-views"></a>Generuj widoki domyślne
 
-If you select **Generate default views**, you can generate the **Overview** and **About** dashboards. 
+W przypadku wybrania opcji **Generuj widoki domyślne**można generować **przeglądy** i **Informacje o** pulpitach nawigacyjnych. 
 
-## <a name="publish-a-device-template"></a>Publish a device template
+## <a name="publish-a-device-template"></a>Publikowanie szablonu urządzenia
 
-Before you can create a simulated environmental sensor, or connect a real environmental sensor, you need to publish your device template.
+Aby można było utworzyć symulowany czujnik środowiska lub połączyć prawdziwy czujnik środowiska, należy opublikować szablon urządzenia.
 
-To publish a device template:
+Aby opublikować szablon urządzenia:
 
-1. Go to your device template from the **Device Templates** page.
+1. Przejdź do szablonu urządzenia ze strony **Szablony urządzeń** .
 
 2. Wybierz pozycję **Publikuj**.
 
-3. In the **Publish a Device Template** dialog box, choose **Publish**.
+3. W oknie dialogowym **Publikowanie szablonu urządzenia** wybierz pozycję **Publikuj**.
 
-After a device template is published, it's visible on the **Devices** page and to the operator. In a published device template, you can't edit a device capability model without creating a new version. However, you can make updates to cloud properties, customizations, and views, in a published device template. These updates don't cause a new version to be created. After making any changes, select **Publish**  to push those changes out to your operator.
+Po opublikowaniu szablonu urządzenia jest on widoczny na stronie **urządzenia** i do operatora. W opublikowanym szablonie urządzenia nie można edytować modelu możliwości urządzenia bez tworzenia nowej wersji. Można jednak wykonywać aktualizacje właściwości, dostosowań i widoków w chmurze w opublikowanym szablonie urządzenia. Te aktualizacje nie powodują utworzenia nowej wersji. Po wprowadzeniu zmian wybierz pozycję **Publikuj** , aby wypchnąć te zmiany do operatora.
 
-## <a name="create-a-gateway-simulated-device"></a>Create a gateway simulated device
+## <a name="create-a-gateway-simulated-device"></a>Tworzenie symulowanego urządzenia bramy
 
-From the device explorer, create a simulated smart building gateway. 
+W Eksploratorze urządzeń Utwórz symulowaną inteligentną bramę do kompilowania. 
 
-![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
+![Zrzut ekranu przedstawiający okno dialogowe Tworzenie nowego urządzenia](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
 
-## <a name="create-downstream-simulated-devices"></a>Create downstream simulated devices
+## <a name="create-downstream-simulated-devices"></a>Tworzenie symulowanych urządzeń podrzędnych
 
-From the device explorer, create a simulated occupancy sensor. 
+Z poziomu Eksploratora urządzeń Utwórz symulowany czujnik zajętości. 
 
-![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/occupancydevice.png)
+![Zrzut ekranu przedstawiający okno dialogowe Tworzenie nowego urządzenia](./media/tutorial-define-iot-device-type/occupancydevice.png)
 
-From the device explorer, create a simulated S1 sensor. 
+W Eksploratorze urządzeń Utwórz symulowany czujnik S1. 
 
-![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/s1device.png)
+![Zrzut ekranu przedstawiający okno dialogowe Tworzenie nowego urządzenia](./media/tutorial-define-iot-device-type/s1device.png)
 
-## <a name="add-downstream-devices-relationships-to-a-gateway-device"></a>Add downstream devices relationships to a gateway device
+## <a name="add-downstream-devices-relationships-to-a-gateway-device"></a>Dodawanie relacji urządzeń podrzędnych do urządzenia bramy
 
-Select S1 Sensor and Occupancy Sensor, and select **Connect to gateway**. 
+Wybierz czujnik S1 i czujnik zajętości, a następnie wybierz pozycję **Połącz z bramą**. 
 
-![Screenshot of Occupancy Sensor, with Connect to gateway highlighted](./media/tutorial-define-iot-device-type/connecttogateway.png)
+![Zrzut ekranu czujnika zajętości z wyróżnioną pozycją Połącz z bramą](./media/tutorial-define-iot-device-type/connecttogateway.png)
 
-Select a gateway device template and gateway device instance, and select **Join**.
+Wybierz szablon urządzenia bramy i wystąpienie urządzenia bramy, a następnie wybierz pozycję **Dołącz**.
 
 ## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
-* Create a new IoT gateway as a device template.
-* Create cloud properties.
-* Create customizations.
-* Define a visualization for the device telemetry.
-* Add relationships.
-* Publish your device template.
+* Utwórz nową bramę IoT jako szablon urządzenia.
+* Utwórz właściwości chmury.
+* Utwórz dostosowania.
+* Zdefiniuj wizualizację dla danych telemetrycznych urządzenia.
+* Dodaj relacje.
+* Opublikuj szablon urządzenia.
 
-Next, you can:
+Następnie możesz:
 
 > [!div class="nextstepaction"]
-> [Connect a device](tutorial-connect-pnp-device.md)
+> [Łączenie urządzenia](tutorial-connect-pnp-device.md)

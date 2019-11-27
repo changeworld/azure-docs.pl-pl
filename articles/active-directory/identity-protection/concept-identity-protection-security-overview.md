@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection security overview
-description: Learn how the Security overview gives you an insight into your organization’s security posture.
+title: Omówienie zabezpieczeń Azure Active Directory Identity Protection
+description: Dowiedz się, jak Omówienie zabezpieczeń zapewnia wgląd w stan zabezpieczeń organizacji.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,52 +18,52 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382198"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - Security overview
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection — Omówienie zabezpieczeń
 
-The [Security overview](https://aka.ms/IdentityProtectionRefresh) in the Azure portal gives you an insight into your organization’s security posture. It helps identify potential attacks and understand the effectiveness of your policies.
+[Omówienie zabezpieczeń](https://aka.ms/IdentityProtectionRefresh) w Azure Portal zapewnia wgląd w stan zabezpieczeń organizacji. Pomaga identyfikować potencjalne ataki i zrozumieć skuteczność zasad.
 
-The ‘Security overview’ is broadly divided into two sections:
+"Przegląd zabezpieczeń" jest szeroko podzielony na dwie sekcje:
 
-- Trends, on the left, provide a timeline of risk in your organization.
-- Tiles, on the right, highlight the key ongoing issues in your organization and suggest how to quickly take action.
+- Trendy po lewej stronie zapewniają oś czasu ryzyka w organizacji.
+- Kafelki, po prawej stronie, wyróżnianie kluczowych problemów występujących w organizacji i sugerowanie, jak szybko podejmować działania.
 
 ![Omówienie zabezpieczeń](./media/concept-identity-protection-security-overview/01.png)
   
-## <a name="trends"></a>Trendy
+## <a name="trends"></a>Trends
 
-### <a name="new-risky-users-detected"></a>New risky users detected
+### <a name="new-risky-users-detected"></a>Wykryto nowych ryzykownych użytkowników
 
-This chart shows the number of new risky users that were detected over the chosen time period. You can filter the view of this chart by user risk level (low, medium, high). Hover over the UTC date increments to see the number of risky users detected for that day. A click on this chart will bring you to the ‘Risky users’ report. To remediate users that are at risk, consider changing their password.
+Ten wykres pokazuje liczbę nowych użytkowników, których wykryto w wybranym okresie. Widok tego wykresu można filtrować według poziomu ryzyka użytkownika (niski, średni, wysoki). Umieść kursor na początku daty UTC, aby zobaczyć liczbę wykrytych zagrożeń użytkowników w danym dniu. Kliknięcie tego wykresu spowoduje przełączenie do raportu "ryzykowne użytkownicy". Aby skorygować użytkowników, którzy są zagrożeni, należy rozważyć zmianę hasła.
 
-### <a name="new-risky-sign-ins-detected"></a>New risky sign-ins detected
+### <a name="new-risky-sign-ins-detected"></a>Wykryto nowe ryzykowne logowania
 
-This chart shows the number of risky sign-ins detected over the chosen time period. You can filter the view of this chart by the sign-in risk type (real-time or aggregate) and the sign-in risk level (low, medium, high). Unprotected sign-ins are successful real-time risk sign-ins that were not MFA challenged. (Note: Sign-ins that are risky because of offline detections cannot be protected in real-time by sign-in risk policies). Hover over the UTC date increments to see the number of sign-ins detected at risk for that day. A click on this chart will bring you to the ‘Risky sign-ins’ report.
+Ten wykres pokazuje liczbę ryzykownych logowań wykrytych w wybranym okresie. Widok tego wykresu można filtrować według typu ryzyka logowania (w czasie rzeczywistym lub agregacji) oraz poziomu ryzyka logowania (niski, średni, wysoki). Niechronione logowania mają pomyślne logowania w czasie rzeczywistym, które nie wymagały uwierzytelniania wieloskładnikowego. (Uwaga: logowania, które są ryzykowne ze względu na wykrywanie w trybie offline, nie mogą być chronione w czasie rzeczywistym za pomocą zasad ryzyka logowania). Umieść kursor nad przyrostami dat UTC, aby zobaczyć liczbę logowań wykrytych w danym dniu. Kliknięcie tego wykresu spowoduje przełączenie do raportu "ryzykowne logowania".
 
-## <a name="tiles"></a>Tiles
+## <a name="tiles"></a>Okładzin
  
-### <a name="high-risk-users"></a>High risk users
+### <a name="high-risk-users"></a>Użytkownicy o wysokim ryzyku
 
-The ‘High risk users’ tile shows the latest count of users with high probability of identity compromise. These should be a top priority for investigation. A click on the ‘High risk users’ tile will redirect to a filtered view of the ‘Risky users’ report showing only users with a risk level of high. Using this report, you can learn more and remediate these users with a password reset.
+Kafelek "Użytkownicy o wysokim ryzyku" pokazuje najnowszą liczbę użytkowników z wysokim prawdopodobieństwem naruszenia tożsamości. Powinien to być najwyższy priorytet badania. Kliknięcie kafelka "Użytkownicy o wysokim ryzyku" spowoduje przekierowanie do widoku filtrowanego raportu "ryzykownych użytkowników" pokazującego tylko użytkowników z poziomem ryzyka wysoki. Korzystając z tego raportu, można dowiedzieć się więcej i skorygować tych użytkowników przy użyciu resetowania hasła.
 
 ![Omówienie zabezpieczeń](./media/concept-identity-protection-security-overview/02.png)
 
-### <a name="medium-risk-users"></a>Medium risk users
-The ‘Medium risk users’ tile shows the latest count of users with medium probability of identity compromise. A click on ‘Medium risk users’ tile will redirect to a filtered view of the ‘Risky users’ report showing only users with a risk level of medium. Using this report, you can further investigate and remediate these users.
+### <a name="medium-risk-users"></a>Użytkownicy średniego ryzyka
+Kafelek "średnio narażony użytkownicy" pokazuje najnowszą liczbę użytkowników z średnim prawdopodobieństwem naruszenia tożsamości. Kliknięcie kafelka "Użytkownicy średniego ryzyka" spowoduje przekierowanie do widoku filtrowanego raportu "ryzykowne użytkownicy" pokazującego tylko użytkowników z poziomem ryzyka średniego. Korzystając z tego raportu, można dokładniej zbadać i skorygować tych użytkowników.
 
-### <a name="unprotected-risky-sign-ins"></a>Unprotected risky sign-ins
+### <a name="unprotected-risky-sign-ins"></a>Niechronione ryzykowne logowania
 
-The ‘Unprotected risky sign-ins' tile shows the last week’s count of successful, real-time risky sign-ins that were not blocked or MFA challenged by a Conditional Access policy, Identity Protection risk policy, or per-user MFA. These are potentially compromised logins that were successful and not MFA challenged. To protect such sign-ins in future, apply a sign-in risk policy. A click on ‘Unprotected risky sign-ins' tile will redirect to the sign-in risk policy configuration blade where you can configure the sign-in risk policy to require MFA on a sign-in with a specified risk level.
+Na kafelku "niechronione ryzykowne logowania" jest wyświetlana liczba udanych i niechronionych logowań w czasie rzeczywistym, które nie zostały zablokowane lub uwierzytelnianie wieloskładnikowe zakończyło się za pomocą zasad dostępu warunkowego, zasad dotyczących ryzyka ochrony tożsamości lub MFA dla poszczególnych użytkowników. Są to potencjalnie zagrożone logowania, które zakończyły się powodzeniem, a nie z wyzwaniami uwierzytelniania wieloskładnikowego. Aby chronić takie logowania w przyszłości, Zastosuj zasady dotyczące ryzyka związanego z logowaniem. Kliknięcie kafelka "niechronione ryzykowne logowania" spowoduje przekierowanie do bloku konfiguracja zasad ryzyka logowania, w którym można skonfigurować zasady ryzyka logowania, aby wymagać uwierzytelniania wieloskładnikowego podczas logowania z określonym poziomem ryzyka.
 
-### <a name="legacy-authentication"></a>Legacy authentication
+### <a name="legacy-authentication"></a>Starsza wersja uwierzytelniania
 
-The ‘Legacy authentication’ tile shows the last week’s count of legacy authentications in your organization. Legacy authentication protocols do not support modern security methods such as an MFA. To prevent legacy authentication, you can apply a Conditional Access policy. A click on ‘Legacy authentication’ tile will redirect you to the ‘Identity Secure Score’.
+Kafelek "starsze uwierzytelnianie" pokazuje liczbę starszych uwierzytelnień w organizacji w ostatnim tygodniu. Starsze protokoły uwierzytelniania nie obsługują nowoczesnych metod zabezpieczeń, takich jak MFA. Aby uniemożliwić starsze uwierzytelnianie, można zastosować zasady dostępu warunkowego. Kliknięcie kafelka "Starsza wersja" spowoduje przekierowanie do "" bezpiecznej oceny tożsamości ".
 
-### <a name="identity-secure-score"></a>Identity Secure Score
+### <a name="identity-secure-score"></a>Ocena bezpiecznego tożsamości
 
-The Identity Secure Score measures and compares your security posture to industry patterns. If you click on ‘Identity Secure Score (Preview)’ tile, it will redirect to the ‘Identity Secure Score’ blade where you can learn more about improving your security posture.
+Metryka z oceną zabezpieczeń i porównuje stan bezpieczeństwa z wzorcem branżowym. Kliknięcie kafelka "tożsamość Secure Score (wersja zapoznawcza)" spowoduje przekierowanie do bloku "tożsamość Secure Score", w którym można dowiedzieć się więcej o ulepszaniu stan zabezpieczeń.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [What is risk](concept-identity-protection-risks.md)
+- [Co to jest ryzyko](concept-identity-protection-risks.md)
 
-- [Policies available to mitigate risks](concept-identity-protection-policies.md)
+- [Zasady dostępne w celu ograniczenia ryzyka](concept-identity-protection-policies.md)

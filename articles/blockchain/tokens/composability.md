@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Tokens composability
-description: Azure Blockchain Tokens composability provides flexibility to create tokens for advanced scenarios.
+title: Możliwości tworzenia tokenów łańcucha bloków platformy Azure
+description: Możliwość tworzenia tokenów łańcucha bloków na platformie Azure zapewnia elastyczność w tworzeniu tokenów dla zaawansowanych scenariuszy.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
@@ -11,74 +11,74 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325120"
 ---
-# <a name="azure-blockchain-tokens-composability"></a>Azure Blockchain Tokens composability
+# <a name="azure-blockchain-tokens-composability"></a>Możliwości tworzenia tokenów łańcucha bloków platformy Azure
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Token composability provides flexibility to create tokens for advanced scenarios. You may have a complex scenario that cannot be implemented using the [four pre-built token templates](templates.md#base-token-types). Token composability allows you to design your own token templates by adding or removing defined behaviors to build your own token template. When creating a new token template, Azure Blockchain Tokens verifies all token grammar rules. Composed templates are saved in Azure Blockchain Tokens service for issuing on connected blockchain networks.
+Możliwość tworzenia tokenów jest elastyczna, aby tworzyć tokeny dla zaawansowanych scenariuszy. Może istnieć złożony scenariusz, którego nie można zaimplementować przy użyciu [czterech wstępnie skompilowanych szablonów tokenów](templates.md#base-token-types). Możliwość tworzenia tokenów umożliwia projektowanie własnych szablonów tokenów przez dodanie lub usunięcie określonych zachowań w celu utworzenia własnego szablonu tokenu. Podczas tworzenia nowego szablonu tokenu tokeny usługi Azure łańcucha bloków sprawdza wszystkie reguły gramatyki tokenu. Szablony złożone są zapisywane w usłudze tokenów łańcucha bloków Azure w celu wystawiania w połączonych sieciach łańcucha bloków.
 
-You can use the [token behaviors](templates.md#token-behaviors) in the following sections to design your token template.
+Możesz użyć [zachowań tokenu](templates.md#token-behaviors) w poniższych sekcjach, aby zaprojektować szablon tokenu.
 
-## <a name="burnable-b"></a>Burnable (b)
+## <a name="burnable-b"></a>Wypalanie (b)
 
-Ability to remove the tokens from supply.
+Możliwość usuwania tokenów z dostawy.
 
-For example, when you redeem online credit card points for a gift card, the credit card points are burned.
+Na przykład po zrealizowaniu punktów karty kredytowej w trybie online dla karty upominkowej punkty karty kredytowej są nagrane.
 
-## <a name="delegable-g"></a>Delegable (g)
+## <a name="delegable-g"></a>Delegowalne (g)
 
-Ability to delegate the actions taken on the token that you own.
+Możliwość delegowania akcji podjętych na własnym tokenie.
 
-The delegate can perform actions as the owner of the token. For example, you could use a delegable token to implement a vote. A delegable token allows the vote token owner to have someone else vote on their behalf.
+Delegat może wykonywać akcje jako właściciel tokenu. Na przykład można użyć tokenu delegowalne do zaimplementowania głosu. Token delegowalne umożliwia właścicielowi tokenu głosu, aby ktoś inny zagłosować w ich imieniu.
 
 ## <a name="logable-l"></a>Logable (l)
 
-Ability to log.
+Możliwość rejestrowania.
 
-For example, you can issue a logable token for a movie distribution to each theater showing a specific movie. For the movie to be played, the showing must log a transaction for each showing because royalty payouts are per showing during the movie's release run. The actors build can use the movie tokens to validate payouts per movie showing per theater in the distribution.
+Na przykład można wydać token logable dla dystrybucji filmów do każdego kina pokazującego konkretny film. W przypadku filmu, który ma być odtwarzany, Pokazywanie musi rejestrować transakcję dla każdego z nich, ponieważ wypłaty za tantiemy są pokazywane podczas uruchamiania filmu. Kompilacje aktorów mogą używać tokenów filmów do sprawdzania, czy wypłaty na film są widoczne dla każdego kina w dystrybucji.
 
-## <a name="mint-able-m"></a>Mint-able (m)
+## <a name="mint-able-m"></a>Mennic — możliwość (m)
 
-Ability to mint additional tokens for the token class. The minter role includes the mintable behavior.
+Możliwość mennic dodatkowych tokenów dla klasy tokenów. Rola Minter obejmuje zachowanie mintable.
 
-For example, a retail company, which wants to implement a loyalty program can use mintable tokens for their loyalty program. They can mint additional loyalty points for their customers as their customer base grows.  
+Na przykład firma detaliczna, która chce zaimplementować program lojalnościowy, może używać tokenów mintable dla programu lojalnościowego. Mogą oni mennic dodatkowe punkty lojalnościowe dla swoich klientów w miarę wzrostu ich bazy klientów.  
 
-## <a name="non-subdividable-or-whole-d"></a>Non-subdividable or whole (~d)
+## <a name="non-subdividable-or-whole-d"></a>Bez podziału lub całości (~ d)
 
-Restriction to prevent a token from being divided into smaller parts.
+Ograniczenie, aby zapobiec poddzieleniu tokenu na mniejsze części.
 
-For example, a single art painting cannot be subdivided into multiple smaller parts. 
+Na przykład nie można podzielić pojedynczego elementu ozdobnego na kilka mniejszych części. 
 
-## <a name="non-transferable-t"></a>Non-transferable (~t)
+## <a name="non-transferable-t"></a>Niezbywalne (~ t)
 
-Restriction to prevent a change of ownership from the initial token owner.
+Ograniczenie, aby uniemożliwić zmianę własności od początkowego właściciela tokenu.
 
-For example, a university diploma is a non-transferable token. Once a diploma is given to a graduate, it cannot be transferred from the graduate to another person.
+Na przykład, dyplom University jest tokenem nieprzekazującym. Po nadaniu dyplomu do szkoły nie można jej przenieść z szkoły do innej osoby.
 
-## <a name="roles-r"></a>Roles (r)
+## <a name="roles-r"></a>Role (r)
 
-Ability to define roles within the token template class for specific behaviors.
+Możliwość definiowania ról w klasie szablonu tokenu dla określonych zachowań.
 
-You can provide a list of role names that a token supports at the token creation time. When roles are specified, the user can assign roles to these behaviors. Currently, only the minter role is supported.
+Możesz podać listę nazw ról, które token obsługuje w czasie tworzenia tokenu. Po określeniu ról użytkownik może przypisać role do tych zachowań. Obecnie obsługiwana jest tylko rola Minter.
 
-## <a name="singleton-s"></a>Singleton (s)
+## <a name="singleton-s"></a>Pojedyncze (s)
 
-Restriction to allow a supply of one token.
+Ograniczenie zezwalające na dostarczenie jednego tokenu.
 
-For example, a museum artifact is a singleton token. Museum artifacts are unique. A token representing an artifact only has a single item in the supply.
+Na przykład artefakt muzeów jest pojedynczym tokenem. Artefakty muzeów są unikatowe. Token reprezentujący artefakt ma tylko jeden element w dostawie.
 
-## <a name="subdividable-d"></a>Subdividable (d)
+## <a name="subdividable-d"></a>Poddzielenie (d)
 
-Ability to divide a token into smaller parts.
+Możliwość dzielenia tokenu na mniejsze części.
 
-For example, a dollar can be subdivided into cents.
+Na przykład Dolar może być podzielony na centy.
 
-## <a name="transferable-t"></a>Transferable (t)
+## <a name="transferable-t"></a>Przetransferowane (t)
 
-Ability to transfer ownership of the token.
+Możliwość przeniesienia własności tokenu.
 
-For example, a property title is a transferable token, which can be transferred from one person to another when the property is sold.
+Na przykład tytuł właściwości jest tokenem możliwym do przeniesienia, który może zostać przesłany od jednej osoby do innej podczas sprzedaży właściwości.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Learn about [Azure Blockchain Tokens account management](account-management.md).
+Dowiedz się więcej na temat [zarządzania kontami usługi Azure łańcucha bloków Tokens](account-management.md).

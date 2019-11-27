@@ -1,22 +1,17 @@
 ---
-title: Samouczek — przygotowywanie obrazu kontenera dla usługi Azure Container Instances
+title: Samouczek — przygotowanie obrazu kontenera do wdrożenia
 description: Samouczek usługi Azure Container Instances, część 1 z 3 — przygotowywanie aplikacji w obrazie kontenera do wdrożenia w usłudze Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 719237f63d387cf56ab7947f8f168e0aa4351376
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325585"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533341"
 ---
-# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Samouczek: Tworzenie obrazu kontenera do wdrożenia w usłudze Azure Container Instances
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Samouczek: Tworzenie obrazu kontenera na potrzeby wdrożenia Azure Container Instances
 
 Usługa Azure Container Instances umożliwia wdrażanie kontenerów Docker w infrastrukturze platformy Azure bez aprowizowania maszyn wirtualnych ani adaptowania usług wyższego poziomu. Podczas pracy z tym samouczkiem spakujesz małą aplikację internetową środowiska Node.js do obrazu kontenera, który można uruchomić za pomocą usługi Azure Container Instances.
 
@@ -104,7 +99,7 @@ aci-tutorial-app    latest    5c745774dfa9    39 seconds ago    68.1 MB
 
 ## <a name="run-the-container-locally"></a>Uruchamianie kontenera w środowisku lokalnym
 
-Przed wdrożeniem kontenera do Azure Container Instances należy uruchomić go [][docker-run] lokalnie i upewnić się, że działa. Przełącznik `-d` umożliwia uruchamianie kontenera w tle, a element `-p` — mapowanie dowolnego portu komputera do portu 80 w kontenerze.
+Przed wdrożeniem kontenera do Azure Container Instances [należy uruchomić go][docker-run] lokalnie i upewnić się, że działa. Przełącznik `-d` umożliwia uruchamianie kontenera w tle, a element `-p` — mapowanie dowolnego portu komputera do portu 80 w kontenerze.
 
 ```bash
 docker run -d -p 8080:80 aci-tutorial-app

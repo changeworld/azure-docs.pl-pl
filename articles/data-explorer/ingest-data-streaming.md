@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090629"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548342"
 ---
 # <a name="streaming-ingestion-preview"></a>Pozyskiwanie strumieniowe (wersja zapoznawcza)
 
@@ -73,8 +73,7 @@ Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Skalowanie wydajności i pojemności pozyskiwania strumieniowego przy użyciu zwiększonych rozmiarów maszyn wirtualnych i klastrów. W przypadku jednego węzła D14 zalecanym obciążeniem jest maksymalnie 150 żądań na sekundę.
-* Obecnie pomoc techniczna jest dostępna tylko dla 8 i 16 podstawowych jednostek SKU (D13, D14, P8 i L16).
+* Skalowanie wydajności i pojemności pozyskiwania strumieniowego przy użyciu zwiększonych rozmiarów maszyn wirtualnych i klastrów. Współbieżne pozyskiwania są ograniczone do 6 operacji pozyskiwania na rdzeń. Na przykład dla 16 podstawowych jednostek SKU, takich jak D14 i L16, Maksymalne obsługiwane obciążenie to 96 współbieżności. W przypadku 2 podstawowych jednostek SKU, takich jak D11, Maksymalne obsługiwane obciążenie to 12 współbieżnych operacji pozyskiwania.
 * Limit rozmiaru danych na żądanie pozyskiwania wynosi 4 MB.
 * Aktualizacje schematu, takie jak tworzenie i modyfikowanie tabel i mapowania pozyskiwania, mogą potrwać do 5 minut w przypadku usługi pozyskiwania strumieniowego.
 * Włączenie pozyskiwania przesyłania strumieniowego w klastrze, nawet w przypadku, gdy dane nie są pozyskiwane za pośrednictwem przesyłania strumieniowego, program używa części lokalnego dysku SSD maszyn klastra do przesyłania strumieniowego danych pozyskiwania i zmniejsza ilość miejsca dostępnego na gorącą pamięć podręczną.

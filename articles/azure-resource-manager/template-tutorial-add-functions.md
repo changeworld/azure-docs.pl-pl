@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add template functions
-description: Add template functions to your Azure Resource Manager template to construct values.
+title: Samouczek — Dodawanie funkcji szablonu
+description: Dodaj funkcje szablonu do szablonu Azure Resource Manager, aby skonstruować wartości.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,41 +12,41 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405958"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Tutorial: Add template functions to your Resource Manager template
+# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Samouczek: Dodawanie funkcji szablonu do szablonu Menedżer zasobów
 
-In this tutorial, you learn how to add [template functions](resource-group-template-functions.md) to your template. You use functions to dynamically construct values. In addition to these system-provided template functions, you can also create [user-defined functions](./template-user-defined-functions.md). This tutorial takes **7 minutes** to complete.
+W tym samouczku dowiesz się, jak dodać [funkcje szablonu](resource-group-template-functions.md) do szablonu. Funkcje służą do dynamicznego konstruowania wartości. Oprócz tych funkcji szablonu udostępnianych przez system można także tworzyć [funkcje zdefiniowane przez użytkownika](./template-user-defined-functions.md). Ukończenie tego samouczka trwa **7 minut** .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-We recommend that you complete the [tutorial about parameters](template-tutorial-add-parameters.md), but it's not required.
+Zalecamy ukończenie [samouczka dotyczącego parametrów](template-tutorial-add-parameters.md), ale nie jest to wymagane.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Narzędzia szablonu](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Przejrzyj szablon
 
-At the end of the previous tutorial, your template had the following JSON:
+Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
 
-The location of the storage account is hard-coded to **East US**. However, you may need to deploy the storage account to other regions. You're again facing an issue of your template lacking flexibility. You could add a parameter for location, but it would be great if its default value made more sense than just a hard-coded value.
+Lokalizacja konta magazynu jest trwale kodowana dla **regionu Wschodnie stany USA**. Jednak może być konieczne wdrożenie konta magazynu w innych regionach. Nastąpi ponowne wystawienie problemu związanego z brakiem możliwości elastyczności szablonu. Można dodać parametr do lokalizacji, ale byłoby to doskonałe, jeśli jego wartość domyślna była większa niż tylko zakodowana wartość.
 
-## <a name="use-function"></a>Use function
+## <a name="use-function"></a>Use — funkcja
 
-If you've completed the previous tutorial in this series, you've already used a function. When you added **"[parameters('storageName')]"** , you used the [parameters](resource-group-template-functions-deployment.md#parameters) function. The brackets indicate that the syntax inside the brackets is a [template expression](template-expressions.md). Resource Manager resolves the syntax rather than treating it as a literal value.
+Po ukończeniu poprzedniego samouczka w tej serii funkcja została już użyta. Po dodaniu **"[Parameters (" storagename ")]"** użyto funkcji [Parameters](resource-group-template-functions-deployment.md#parameters) . Nawiasy wskazują, że składnia wewnątrz nawiasów jest [wyrażeniem szablonu](template-expressions.md). Menedżer zasobów rozpoznaje składnię zamiast traktować ją jako wartość literału.
 
-Functions add flexibility to your template by dynamically getting values during deployment. In this tutorial, you use a function to get the location of the resource group you're using for deployment.
+Funkcje zwiększają elastyczność szablonu przez dynamiczne pobieranie wartości podczas wdrażania. W tym samouczku użyjesz funkcji, aby pobrać lokalizację grupy zasobów używanej do wdrożenia.
 
-The following example highlights the changes to add a parameter called **location**.  The parameter default value calls the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. This function returns an object with information about the resource group being used for deployment. One of the properties on the object is a location property. When you use the default value, the storage account location has the same location as the resource group. The resources inside a resource group don't have to share the same location. You can also provide a different location when needed.
+Poniższy przykład wyróżnia zmiany w celu dodania parametru o nazwie **Location**.  Wartość domyślna parametru wywołuje funkcję [ResourceManager](resource-group-template-functions-resource.md#resourcegroup) . Ta funkcja zwraca obiekt z informacjami o grupie zasobów używanej do wdrożenia. Jedną z właściwości obiektu jest właściwość Location. W przypadku użycia wartości domyślnej Lokalizacja konta magazynu ma tę samą lokalizację co grupa zasobów. Zasoby w grupie zasobów nie muszą udostępniać tej samej lokalizacji. W razie konieczności można także podać inną lokalizację.
 
-Copy the whole file and replace your template with its contents.
+Skopiuj cały plik i Zastąp jego zawartość.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
 
 ## <a name="deploy-template"></a>Wdrażanie szablonu
 
-In the previous tutorials, you created a storage account in East US, but your resource group was created in Central US. For this tutorial, your storage account is created in the same region as the resource group. Use the default value for location, so you don't need to provide that parameter value. You must provide a new name for the storage account because you're creating a storage account in a different location. For example, use **store2** as the prefix instead of **store1**.
+W poprzednich samouczkach utworzono konto magazynu w regionie Wschodnie stany USA, ale Grupa zasobów została utworzona w środkowych stanach USA. W tym samouczku konto magazynu zostanie utworzone w tym samym regionie, w którym znajduje się grupa zasobów. Użyj wartości domyślnej dla lokalizacji, więc nie musisz podawać tej wartości parametru. Musisz podać nową nazwę konta magazynu, ponieważ tworzysz konto magazynu w innej lokalizacji. Na przykład użyj **Store2** jako prefiksu zamiast **store1**.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -72,18 +72,18 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Weryfikowanie wdrożenia
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. You see that a storage account resource has been deployed and has the same location as the resource group.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. Wybierz grupę zasobów, do której została wdrożona.
+1. Zobaczysz, że zasób konta magazynu został wdrożony i ma tę samą lokalizację co grupa zasobów.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Jeśli przeniesiesz się do następnego samouczka, nie musisz usuwać grupy zasobów.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Jeśli zatrzymasz się teraz, możesz chcieć wyczyścić wdrożone zasoby, usuwając grupę zasobów.
 
 1. W witrynie Azure Portal wybierz pozycję **Grupa zasobów** z menu po lewej stronie.
 2. Wprowadź nazwę grupy zasobów w polu **Filtruj według nazwy**.
@@ -92,7 +92,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this tutorial, you used a function when defining the default value for a parameter. In this tutorial series, you'll continue using functions. By the end of the series, you'll add functions to every section of the template.
+W tym samouczku użyto funkcji podczas definiowania wartości domyślnej dla parametru. W tej serii samouczków będziesz używać funkcji. Na końcu serii dodasz funkcje do każdej sekcji szablonu.
 
 > [!div class="nextstepaction"]
-> [Add variables](template-tutorial-add-variables.md)
+> [Dodaj zmienne](template-tutorial-add-variables.md)

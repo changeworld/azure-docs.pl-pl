@@ -9,20 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898230"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546308"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Tworzenie konta usługi zarządzanego przez grupę (gMSA) w Azure AD Domain Services
 
-Aplikacje i usługi często wymagają tożsamości do samodzielnego uwierzytelnienia z innymi zasobami. Na przykład może być konieczne uwierzytelnienie usługi sieci Web za pomocą usługi bazy danych. Jeśli aplikacja lub usługa ma wiele wystąpień, takich jak farma serwerów sieci Web, ręczne tworzenie i Konfigurowanie tożsamości dla tych zasobów jest czasochłonne. Zamiast tego można utworzyć konto usługi zarządzane przez grupę (gMSA) w domenie zarządzanej Azure Active Directory Domain Services (Azure AD DS). System operacyjny Windows automatycznie zarządza poświadczeniami dla gMSA, co upraszcza zarządzanie dużymi grupami zasobów.
+Aplikacje i usługi często wymagają tożsamości do samodzielnego uwierzytelnienia z innymi zasobami. Na przykład może być konieczne uwierzytelnienie usługi sieci Web za pomocą usługi bazy danych. Jeśli aplikacja lub usługa ma wiele wystąpień, takich jak farma serwerów sieci Web, ręczne tworzenie i Konfigurowanie tożsamości dla tych zasobów jest czasochłonne.
 
-W tym artykule opisano sposób tworzenia gMSA w domenie zarządzanej AD DS platformy Azure.
+Zamiast tego można utworzyć konto usługi zarządzane przez grupę (gMSA) w domenie zarządzanej Azure Active Directory Domain Services (Azure AD DS). System operacyjny Windows automatycznie zarządza poświadczeniami dla gMSA, co upraszcza zarządzanie dużymi grupami zasobów.
+
+W tym artykule opisano sposób tworzenia gMSA w domenie zarządzanej AD DS platformy Azure przy użyciu Azure PowerShell.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -59,6 +61,9 @@ Ponieważ domeny zarządzane w usłudze Azure AD DS są blokowane i zarządzane 
 ## <a name="create-a-gmsa"></a>Utwórz gMSA
 
 Najpierw utwórz niestandardową jednostkę organizacyjną przy użyciu polecenia cmdlet [New-ADOrganizationalUnit][New-AdOrganizationalUnit] . Aby uzyskać więcej informacji na temat tworzenia niestandardowych jednostek organizacyjnych i zarządzania nimi, zobacz [niestandardowe jednostki organizacyjne w usłudze Azure AD DS][create-custom-ou].
+
+> [!TIP]
+> Aby wykonać te kroki w celu utworzenia gMSA, [Użyj maszyny wirtualnej zarządzania][tutorial-create-management-vm]. Ta maszyna wirtualna zarządzania powinna mieć już wymagane polecenia cmdlet programu PowerShell usługi AD i połączenie z domeną zarządzaną.
 
 Poniższy przykład tworzy niestandardową jednostkę organizacyjną o nazwie *myNewOU* w domenie zarządzanej AD DS platformy Azure o nazwie *contoso.com*. Użyj własnej jednostki organizacyjnej i nazwy domeny zarządzanej:
 

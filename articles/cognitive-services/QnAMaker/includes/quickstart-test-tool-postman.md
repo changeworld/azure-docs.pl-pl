@@ -69,4 +69,4 @@ Aby wygenerować odpowiedź za pomocą narzędzia Postman, wykonaj następujące
 
 ## <a name="use-staging-endpoint"></a>Korzystanie z przejściowego punktu końcowego
 
-If you want to get an answer from the staging endpoint, append the URL with the `isTest` body property.
+Jeśli chcesz uzyskać odpowiedź z punktu końcowego przemieszczania, Dołącz adres URL z właściwością treści `isTest`.

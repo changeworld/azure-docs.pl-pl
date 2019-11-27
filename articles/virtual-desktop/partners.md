@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop partner integrations - Azure
-description: Learn about Windows Virtual Desktop's partners and access documentation about how to integrate with them.
+title: Integracja z partnerem pulpitu wirtualnego systemu Windows — Azure
+description: Dowiedz się więcej na temat partnerów i dostępu do dokumentacji pulpitu wirtualnego systemu Windows na temat sposobu integrowania z nimi.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,218 +14,218 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384295"
 ---
-# <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop partner integrations
+# <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
-This article lists partners of Windows Virtual Desktop.
+W tym artykule wymieniono partnerów pulpitu wirtualnego systemu Windows.
 
 ## <a name="citrix"></a>Citrix
 
-![Citrix logo](./media/partners/citrix.png)
+![Logo Citrix](./media/partners/citrix.png)
 
-Citrix is an approved provider that offers enterprises centralized hybrid management of virtual apps and desktops workloads in Azure, side by side with on-premises deployments. Citrix Workspace with the Virtual Apps and Desktops service allows users to access apps and desktops from any device, leveraging the advanced Citrix HDX protocol to deliver a high definition experience from anywhere.
+Citrix to zatwierdzony dostawca, który oferuje firmowe scentralizowane zarządzanie hybrydowymi aplikacjami wirtualnymi i pulpitami na platformie Azure, obok wdrożeń lokalnych. Obszar roboczy Citrix z usługą Virtual Apps i komputery stacjonarne umożliwia użytkownikom dostęp do aplikacji i komputerów stacjonarnych z dowolnego urządzenia, wykorzystując zaawansowany protokół Citrix HDX w celu zapewnienia wysokiej jakości doświadczenia z dowolnego miejsca.
 
-Citrix extends the value of Windows Virtual Desktop with robust enterprise tools to improve user density and performance, provision workloads on demand, and simplify image and application management. IT can optimize costs with intelligent scaling tools, while delivering an incredible user experience that's field-tested against the toughest applications across industries. Additionally, Citrix Managed Desktops is a Windows Virtual Desktop-enabled desktops-as-a-service program that provides a simple, cloud-based management solution for delivering virtual apps and desktops to any device.
+Firma Citrix rozszerza wartość pulpitu wirtualnego systemu Windows z niezawodnymi narzędziami korporacyjnymi, aby zwiększyć gęstość i wydajność użytkowników, obsługiwać obciążenia na żądanie oraz uprościć zarządzanie obrazami i aplikacjami. Pozwala zoptymalizować koszty dzięki inteligentnym narzędziom do skalowania, jednocześnie dostarczając niezawodne środowisko użytkownika, które jest przetestowane w oparciu o trudniejsze aplikacje w branży. Ponadto pulpity zarządzane Citrix to program obsługujący komputery stacjonarne jako usługa, który udostępnia proste, oparte na chmurze rozwiązanie do dostarczania aplikacji wirtualnych i pulpitów do dowolnego urządzenia.
 
-- [Go to the partner website](https://more.citrix.com/wvd).
+- [Przejdź do witryny sieci Web partnera](https://more.citrix.com/wvd).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
-![Cloudhouse logo](./media/partners/cloudhouse.png)
+![Logo Cloudhouse](./media/partners/cloudhouse.png)
 
-Cloudhouse is a Windows Virtual Desktop value-added services provider that offers customers a turnkey application migration service that can move all applications, including ones that are incompatible with modern Windows operating systems, to the Windows Virtual Desktop environment, allowing customers to truly leverage multi-session Windows 10. 
+Cloudhouse to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który oferuje klientom usługę migracji aplikacji gotowe, która może przenosić wszystkie aplikacje, w tym te, które są niezgodne z nowoczesnymi systemami operacyjnymi Windows, do systemu Windows Środowisko pulpitu wirtualnego, dzięki czemu klienci mogą wykorzystać wiele sesji systemu Windows 10. 
 
-By leveraging proven Cloudhouse containerization technology, the Cloudhouse service takes all applications, including ones designed for Windows XP, Windows 7, or Windows 8, and deploys them to a modern Windows Virtual Desktop without needing to change code or impact user experience. Cloudhouse further adds to the value of Windows Virtual Desktop by isolating applications from the underlying operating system, allowing Windows Servicing updates to be rolled out without affecting the containerized application. 
+Korzystając z sprawdzonej technologii Cloudhouse kontenerach, usługa Cloudhouse przyjmuje wszystkie aplikacje, w tym programy przeznaczone dla systemu Windows XP, Windows 7 lub Windows 8, i wdraża je na nowoczesnych pulpitach wirtualnych systemu Windows bez konieczności zmiany kodu lub wpływ na środowisko użytkownika. Cloudhouse dalsze Dodawanie do wartości pulpitu wirtualnego systemu Windows przez izolowanie aplikacji z bazowego systemu operacyjnego, co umożliwia wdrażanie aktualizacji systemu Windows bez wpływu na aplikacje kontenera. 
 
-- [Go to the partner website](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
+- [Przejdź do witryny sieci Web partnera](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="vmware"></a>VMware
 
-![VMware Logo](./media/partners/vmware.png)
+![Logo VMware](./media/partners/vmware.png)
 
-VMware Horizon Cloud on Microsoft Azure gives organizations the ability to connect their own instance of Microsoft Azure to the simple, intuitive Horizon Cloud control plane, creating a secure, comprehensive, cloud-hosted solution for delivering virtualized Windows applications and desktops. With the release of Windows Virtual Desktop, VMware has partnered with Microsoft to extend the functionality of Windows Virtual Desktop to customers using Horizon Cloud on Microsoft Azure. This functionality will be available in Tech Preview by the end of 2019.
+Usługa VMware Horizon Cloud w Microsoft Azure zapewnia organizacjom możliwość łączenia własnych wystąpień Microsoft Azure z prostą, intuicyjną płaszczyzną kontroli w chmurze, tworząc bezpieczną, kompleksową, hostowaną w chmurze rozwiązanie do dostarczania zwirtualizowanych Aplikacje i pulpity systemu Windows. Wraz z wydaniem pulpitu wirtualnego systemu Windows program VMware współpracujący z firmą Microsoft w celu zwiększenia funkcjonalności pulpitu wirtualnego systemu Windows do klientów korzystających z usługi Horizon w chmurze w Microsoft Azure. Ta funkcja będzie dostępna w wersji zapoznawczej Tech Preview do końca 2019.
  
-As an approved provider, the benefits of Windows Virtual Desktop will be extended to VMware Horizon Cloud on Microsoft Azure customers, including Windows 10 Enterprise for multi-session, Windows 7 with free Extended Security Updates for up to three years, and FSLogix. Additionally, customers will receive the enterprise-class features of Horizon Cloud, such as broad endpoint support; global, cloud-optimized brokering; flexible desktop options and configurations; user-environment management; and support for hybrid environments.
+Jako zatwierdzony dostawca korzyści z pulpitu wirtualnego systemu Windows zostaną rozszerzone na chmurę programu VMware Horizon na Microsoft Azure klientach, w tym Windows 10 Enterprise dla wielu sesji, system Windows 7 z bezpłatnymi rozszerzonymi aktualizacjami zabezpieczeń na maksymalnie trzy lata. FSLogix. Ponadto klienci otrzymają funkcje klasy korporacyjnej w chmurze horyzontu, takie jak Obsługa szerokiego punktu końcowego. globalne, zoptymalizowane w chmurze brokering; elastyczne opcje i konfiguracje pulpitu; Zarządzanie środowiskiem użytkownika; i Obsługa środowisk hybrydowych.
 
-- [Register for the Tech Preview of Horizon Cloud on Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
-- [Go to the partner website](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+- [Zarejestruj się w celu uzyskania wersji zapoznawczej chmury horyzontowej w Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+- [Przejdź do witryny sieci Web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
 
 ## <a name="cloudjumper"></a>CloudJumper
 
-![CloudJumper Logo](./media/partners/cloudjumper.png)
+![Logo CloudJumper](./media/partners/cloudjumper.png)
 
-CloudJumper is a Windows Virtual Desktop value-added services provider that equips solution providers and enterprise IT with software to  provision and manage Windows Virtual Desktop environments holistically. With CloudJumper software, IT can manage every layer of a Windows Virtual Desktop deployment. Delivery of workloads and applications is automated, ensuring that users can quickly access their desktop anywhere on any device.
+CloudJumper to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który udostępnia dostawców rozwiązań i Enterprise IT z oprogramowaniem w celu całościowego udostępniania środowisk pulpitu wirtualnego systemu Windows i zarządzania nimi. Dzięki oprogramowaniu CloudJumper można zarządzać każdą warstwą wdrożenia pulpitu wirtualnego systemu Windows. Dostarczanie obciążeń i aplikacji jest zautomatyzowane, dzięki czemu użytkownicy mogą szybko uzyskiwać dostęp do swoich pulpitów w dowolnym miejscu na dowolnym urządzeniu.
 
-CloudJumper’s software, Cloud Workspace Management Suite extends the value of Windows Virtual Desktop by simplifying deployment and ongoing administration tasks in Azure. From a single pane of glass, IT can provision, manage, and optimize infrastructure for user workspaces. CloudJumper’s Simple Script Triggering Engine integrates with IT service platforms to automate tasks involved in provisioning Windows Virtual Desktop. Additionally, CloudJumper APIs allow further extensibility and integration with other enterprise systems like ServiceNow and BMC Ready.
+Oprogramowanie CloudJumper, pakiet zarządzania obszarem roboczym w chmurze rozszerza wartość pulpitu wirtualnego systemu Windows, upraszczając wdrażanie i bieżące zadania administracyjne na platformie Azure. W jednym z okien szklanych można udostępniać i optymalizować infrastrukturę dla obszarów roboczych użytkowników oraz zarządzać nią. Aparat wyzwalania skryptu prostego CloudJumper integruje się z platformami usługi IT w celu zautomatyzowania zadań związanych z aprowizacji pulpitu wirtualnego systemu Windows. Ponadto interfejsy API CloudJumper umożliwiają dalsze rozszerzanie i integrację z innymi systemami przedsiębiorstwa, takimi jak usługi ServiceNow i BMC Ready.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
-- [Go to the partner website](https://cloudjumper.com/wvd/).
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
+- [Przejdź do witryny sieci Web partnera](https://cloudjumper.com/wvd/).
 
 ## <a name="controlup"></a>ControlUp
 
-![ControlUp Logo](./media/partners/controlup.png)
+![Logo ControlUp](./media/partners/controlup.png)
 
-ControlUp is a Windows Virtual Desktop value-added services provider that enables IT teams to monitor, troubleshoot, analyze, and directly remediate problems in their on-premises, hybrid cloud, and cloud infrastructure in real time from a single console. ControlUp’s analytics and management platform also allows IT to proactively automate fixes for a rapidly growing set of use cases.
+ControlUp to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który umożliwia zespołom IT monitorowanie, rozwiązywanie problemów, analizowanie i bezpośrednie Korygowanie problemów w lokalnej, hybrydowej chmurze i infrastrukturze chmurowej w czasie rzeczywistym z poziomu pojedynczej konsoli. Platforma analizy i zarządzania w ControlUp umożliwia również proaktywne Automatyzowanie poprawek w celu szybkiego coraz większego zestawu przypadków użycia.
 
-When used with Windows Virtual Desktop, ControlUp provides additional capabilities to optimize Windows Virtual Desktop environments and the end-user experience. From the ControlUp console, IT gets end-user environment visibility to effectively monitor and troubleshoot performance issues. An intuitive dashboard provides insights and analytics for virtual desktop deployments, as well as options for automated reporting enriched with community benchmarks. ControlUp can manage multiple data sources and types, organizing them in high-performance data sets aggregated across compute, storage, and Windows Virtual Desktop infrastructure, allowing granular visibility from a single pane of glass.
+Gdy jest używany z pulpitem wirtualnym systemu Windows, ControlUp zapewnia dodatkowe możliwości optymalizacji środowisk pulpitu wirtualnego systemu Windows i środowiska użytkownika końcowego. W konsoli programu ControlUp są pobierane środowiska użytkownika końcowego w celu efektywnego monitorowania i rozwiązywania problemów z wydajnością. Intuicyjny pulpit nawigacyjny zawiera szczegółowe informacje i analizy dla wdrożeń pulpitów wirtualnych, a także opcje zautomatyzowanego raportowania wzbogacone o testy porównawcze społeczności. ControlUp może zarządzać wieloma źródłami danych i typami, organizując je w zestawach danych o wysokiej wydajności zagregowanych w infrastrukturze pulpitów wirtualnych w ramach obliczeń, magazynu i systemu Windows, co zapewnia szczegółową widoczność z poziomu pojedynczego okienka szkła.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
-- [Go to the partner website](https://www.controlup.com/solutions/ms_wvd/).
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Przejdź do witryny sieci Web partnera](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="devicetrust"></a>deviceTRUST
 
-![deviceTRUST Logo](./media/partners/devicetrust.png)
+![Logo deviceTRUST](./media/partners/devicetrust.png)
 
-deviceTRUST is a Windows Virtual Desktop value-added services provider that contextualizes the corporate enterprise. It allows users the freedom to access their Windows Virtual Desktop from any location, on any device, over any network, while giving IT departments the information and control they need to meet their governance requirements. 
+deviceTRUST to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który contextualizes przedsiębiorstwo korporacyjne. Dzięki temu użytkownicy mogą uzyskać dostęp do pulpitu wirtualnego systemu Windows z dowolnego miejsca, na dowolnym urządzeniu, za pośrednictwem dowolnej sieci, jednocześnie dostarczając dział IT informacji i kontroli potrzebnych do spełnienia wymagań związanych z zarządzaniem. 
 
-deviceTRUST extends the value of Windows Virtual Desktop with their contextual security technology. deviceTRUST enables conditional access for a secure Windows Virtual Desktop access, conditional application access within Windows Virtual Desktop and to apply conditional Windows Virtual Desktop policies without any additional infrastructure. Using deviceTRUST enables a mobile, flexible workspace that meets all security, compliance, and regulatory requirements. 
+deviceTRUST rozszerza wartość pulpitu wirtualnego systemu Windows z ich kontekstową technologią zabezpieczeń. deviceTRUST umożliwia dostęp warunkowy do bezpiecznego dostępu do pulpitu wirtualnego systemu Windows, warunkowego dostępu do aplikacji w ramach pulpitu wirtualnego systemu Windows i stosowania zasad pulpitu wirtualnego systemu Windows bez żadnej dodatkowej infrastruktury. Korzystanie z usługi deviceTRUST umożliwia mobilny, elastyczny obszar roboczy, który spełnia wszystkie wymagania dotyczące zabezpieczeń, zgodności i przepisów prawnych. 
 
-- [Go to the partner website](https://devicetrust.com/wvd).
+- [Przejdź do witryny sieci Web partnera](https://devicetrust.com/wvd).
 
 ## <a name="igel"></a>IGEL
 
-![IGEL logo](./media/partners/igel.png)
+![Logo IGEL](./media/partners/igel.png)
 
-IGEL is an approved and verified partner of Microsoft Azure and Windows Virtual Desktop services. IGEL offers IGEL OS, the next-gen edge OS for cloud workspaces designed to access virtual apps, desktops, and cloud workspaces from one or more user devices with a lightweight, simple, and secure Linux-based endpoint. A platform-independent software solution, IGEL OS and its server-based management and control software, IGEL Universal Management Suite (UMS), comprise an endpoint management and control solution that frees enterprises to take full advantage of Azure-based cloud instances and Windows Virtual Desktop desktops, including economical multi-session Windows Virtual Desktop, while reducing endpoint hardware and endpoint device management and operations costs.
+IGEL jest zatwierdzonym i zweryfikowanym partnerem Microsoft Azure i usług pulpitu wirtualnego systemu Windows. Usługa IGEL oferuje system operacyjny IGEL, kolejny generacji systemu operacyjnego Edge dla obszarów roboczych w chmurze, zaprojektowany w celu uzyskiwania dostępu do wirtualnych aplikacji, pulpitów i obszarów roboczych w chmurze z jednego lub większej liczby urządzeń użytkowników z lekkim, prostym i bezpiecznym punktem końcowym opartym na systemie Linux. Rozwiązanie programowe niezależne od platformy, IGEL system operacyjny oraz oprogramowanie do zarządzania i kontroli oparte na serwerze, IGEL Universal Management Suite (UMS), składa się z rozwiązania do zarządzania punktami końcowymi i kontroli, które zwalnia przedsiębiorstwa, aby w pełni korzystać z platformy Azure wystąpienia chmury i pulpity pulpitów wirtualnych systemu Windows, w tym ekonomiczny pulpity wirtualne systemu Windows z obsługą wielu sesji, przy jednoczesnym ograniczeniu kosztów związanych z zarządzaniem sprzętem i urządzeniami końcowymi
  
-IGEL OS supports all popular virtual apps, desktops, and cloud workspace client protocols from Citrix, Microsoft, and VMware. It includes integrated technologies from 85 peripheral, interface, and protocol partners to help organizations quickly adopt Windows Virtual Desktop services into their own unique user environments. IGEL OS is a read-only, modular endpoint OS, which helps protect it from tampering. It now also includes a complete “chain of trust” that verifies the integrity of all key major processes running on the endpoint, from the endpoint hardware (some selected models) or UEFI process all the way to the Azure cloud and Windows Virtual Desktop services. With IGEL OS, enterprises can subscribe to Windows Virtual Desktop from the Azure cloud with full confidence in the integrity, security, and manageability of their users’ endpoint devices.
+System operacyjny IGEL obsługuje wszystkie popularne aplikacje wirtualne, komputery stacjonarne i protokoły klienckie w chmurze z firmy Citrix, Microsoft i VMware. Obejmuje ona zintegrowane technologie od 85 urządzeń peryferyjnych, interfejsów i protokołów, które ułatwiają organizacjom szybkie wdrażanie usług pulpitu wirtualnego systemu Windows we własnych unikatowych środowiskach użytkownika. System operacyjny IGEL jest tylko do odczytu i modularnym punktem końcowym, który pomaga chronić go przed manipulacją. Teraz zawiera również kompletny "łańcuch zaufania", który weryfikuje integralność wszystkich najważniejszych procesów wykonywanych w punkcie końcowym, od sprzętu punktu końcowego (niektóre z wybranych modeli) lub procesu UEFI, aż do chmury platformy Azure i usług pulpitu wirtualnego systemu Windows. Dzięki IGEL systemu operacyjnego przedsiębiorstwa mogą subskrybować pulpity wirtualne systemu Windows z chmury platformy Azure z pełnym zaufaniem do integralności, zabezpieczeń i możliwości zarządzania urządzeniami końcowymi użytkowników.
 
-- [Go to the partner website.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [Przejdź do witryny sieci Web partnera.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
 
 ## <a name="ivanti"></a>Ivanti
 
-![Ivanti Logo](./media/partners/ivanti.png)
+![Logo Ivanti](./media/partners/ivanti.png)
 
-Ivanti User Workspace Manager is a Windows Virtual Desktop value-added service that eases desktop deployment and management by separating user data from the desktop for seamless portability. With Ivanti, users can deliver complex projects like migrating to Windows 10, adopting Office 365, or moving services to the cloud faster. 
+Ivanti User Workspace Manager to usługa, która jest dołączana do usług pulpitu wirtualnego systemu Windows, która ułatwia wdrażanie komputerów i zarządzanie nimi, oddzielając dane użytkowników z pulpitu w celu zapewnienia bezproblemowej przenośności. Dzięki programowi Ivanti użytkownicy mogą dostarczać złożone projekty, takie jak migracja do systemu Windows 10, przyjmowanie pakietu Office 365 lub przenoszenie usług do chmury szybciej. 
 
-When used with Windows Virtual Desktop, Ivanti User Workspace Manager provides simple contextual management of the user desktop experience, eliminating long sign-in times and eradicating group policy nightmares. Ivanti User Workspace Manager out-of-the-box templates simplify installation for users through agents and the existing console. Ivanti User Workspace Manager delivers responsive, secure desktops that users love, saving money on servers, managing users more effectively, and reducing endpoint security risk. 
+Gdy jest używany z pulpitem wirtualnym systemu Windows, Menedżer obszaru roboczego użytkownika Ivanti zapewnia proste, kontekstowe zarządzanie środowiska pulpitu użytkownika, eliminując długotrwałe czasy logowania i likwidowanie zasad grupy Nightmares. Ivanti szablony z menedżerem obszarów roboczych użytkowników upraszczają instalację dla użytkowników za pomocą agentów i istniejącej konsoli programu. Menedżer obszarów roboczych użytkowników Ivanti zapewnia wydajność, bezpieczne pulpity, które użytkownicy odkochają, oszczędzają pieniądze na serwerach, skuteczniej zarządzają użytkownikami i obniżają ryzyko bezpieczeństwa punktów końcowych. 
 
-- [Go to the partner website](https://www.ivanti.com/products/user-workspace-manager).
+- [Przejdź do witryny sieci Web partnera](https://www.ivanti.com/products/user-workspace-manager).
 
-## <a name="lakeside-software"></a>Lakeside Software
+## <a name="lakeside-software"></a>Lakeside oprogramowanie
 
-![Lakeside Software Logo](./media/partners/lakeside.png)
+![Logo oprogramowania Lakeside](./media/partners/lakeside.png)
 
-Lakeside Software is a Windows Virtual Desktop value-added services provider that equips IT teams with software for monitoring performance and assessing Azure migration readiness of user workloads. With this software, IT gains clearer visibility into application usage and resource consumption to streamline the migration process. Lakeside Software collects data at every workspace to create a comprehensive report on user environments, enabling quick troubleshooting and optimization of assets.
+Lakeside Software to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który służy do wyposażania zespołów IT w oprogramowanie do monitorowania wydajności i oceniania gotowości do migracji na platformę Azure. Dzięki temu oprogramowaniu można wyraźniejszy wgląd w użycie aplikacji i zużycie zasobów w celu usprawnienia procesu migracji. Lakeside oprogramowanie zbiera dane w każdym obszarze roboczym w celu utworzenia kompleksowego raportu dotyczącego środowisk użytkowników, umożliwiając szybkie rozwiązywanie problemów i optymalizację zasobów.
 
-Lakeside Software’s digital experience monitoring solution, SysTrack, can help provide a great user experience by tracking performance and identifying ideal workloads for migration. SysTrack works to extend the value of Windows Virtual Desktop through right-sizing assessments and continuous monitoring of user environments.
+Rozwiązanie do monitorowania rozwiązań cyfrowych Lakeside oprogramowania, SysTrack, może pomóc zapewnić doskonałe środowisko użytkownika, śledząc wydajność i identyfikując idealne obciążenia do migracji. SysTrack działa, aby zwiększyć wartość pulpitu wirtualnego systemu Windows za pomocą ocen właściwych rozmiarów i ciągłego monitorowania środowisk użytkowników.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
-- [Go to the partner website](https://www.lakesidesoftware.com/assessments/wvd).
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
+- [Przejdź do witryny sieci Web partnera](https://www.lakesidesoftware.com/assessments/wvd).
 
-## <a name="liquidware"></a>Liquidware
+## <a name="liquidware"></a>Cieczer
 
-![Liquidware Logo](./media/partners/liquidware.png)
+![Logo oprogramowania Liquid](./media/partners/liquidware.png)
 
-Liquidware is a Windows Virtual Desktop value-added services provider that delivers software that manages and optimizes Windows Virtual Desktop deployment. The Liquidware Essentials suite provides application delivery through layering, user environment management, and key user experience visibility and diagnostics. With solutions for assessing migration readiness and analyzing usage metrics, Liquidware provides a seamless virtual desktop experience for end users.
+Liquider to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który dostarcza oprogramowanie, które zarządza i optymalizuje wdrożenie pulpitu wirtualnego systemu Windows. Pakiet programu liquider Essentials zapewnia dostarczanie aplikacji za pomocą warstw, zarządzania środowiskiem użytkownika i kluczowych funkcji diagnostyki. Dzięki rozwiązaniom do oceny gotowości do migracji i analizie metryk użycia, środowisko płynne zapewnia bezproblemową obsługę pulpitu wirtualnego dla użytkowników końcowych.
 
-Liquidware Essentials extends the value of Windows Virtual Desktop by efficiently harvesting user profiles and gathering key user data to streamline migration of user environments to Azure. Additionally, Liquidware Essentials simplifies image management by unifying user profiles and layering apps based on configurable rights management settings.
+Program liquider Essentials rozszerza wartość pulpitu wirtualnego systemu Windows przez wydajne Zbieranie profilów użytkowników i gromadzenie kluczowych danych użytkownika w celu usprawnienia migracji środowisk użytkownika na platformę Azure. Dodatkowo program liquider upraszcza zarządzanie obrazami przez ujednolicenie profilów użytkowników i aplikacji warstwowych na podstawie konfigurowalnych ustawień zarządzania prawami.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
-- [Go to the partner website](https://www.liquidware.com/solutions/solutions-platform/microsoft).
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
+- [Przejdź do witryny sieci Web partnera](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
-## <a name="login-vsi"></a>Login VSI
+## <a name="login-vsi"></a>VSI logowania
 
-![Login VSI Logo](./media/partners/loginvsi.png)
+![Logo logowania VSI](./media/partners/loginvsi.png)
 
-Login VSI is a Windows Virtual Desktop value-added services provider and Microsoft partner delivering software for application performance testing in Windows Virtual Desktop environments. Customers moving their on-premises business services to Windows Virtual Desktop use Login VSI Enterprise Edition to evaluate and maintain optimal performance, scalability, and availability of Windows 10  Enterprise multi-session, Windows 10 Enterprise, and Windows 7 enabled with their business critical applications.
+VSI logowania to dostawca usług dodanego pulpitu wirtualnego systemu Windows i partner firmy Microsoft dostarczający oprogramowanie do testowania wydajności aplikacji w środowiskach pulpitu wirtualnego systemu Windows. Klienci przenoszący lokalne usługi biznesowe na pulpit wirtualny systemu Windows używają logowania VSI Enterprise Edition, aby oszacować i zapewnić optymalną wydajność, skalowalność i dostępność systemu Windows 10 Enterprise wielosesyjnego, Windows 10 Enterprise i System Windows 7 włączony z aplikacjami o znaczeniu krytycznym dla firmy.
 
-- [Go to the partner website](https://www.loginvsi.com).
+- [Przejdź do witryny sieci Web partnera](https://www.loginvsi.com).
 
 ## <a name="nerdio"></a>Nerdio
 
-![Nerdio Logo](./media/partners/nerdio.png)
+![Logo Nerdio](./media/partners/nerdio.png)
 
-Nerdio is an Azure IT automation platform that makes it easy to deploy and manage Windows Virtual Desktop. Nerdio provides the knowledge and technology to deploy, price, package, manage, and optimize customers’ Azure deployments—with Windows Virtual Desktop front-and-center.
+Nerdio to platforma automatyzacji IT platformy Azure, która ułatwia wdrażanie pulpitu wirtualnego systemu Windows i zarządzanie nim. Usługa Nerdio udostępnia wiedzę i technologie służące do wdrażania, cenowego, pakowania, zarządzania i optymalizowania wdrożeń platformy Azure dla klientów — z przodu i do centrum usług pulpitu wirtualnego systemu Windows.
 
-Nerdio extends the value of Windows Virtual Desktop by making it easy to provision Azure resources and streamline deployment. With Nerdio for Azure, IT can automatically deploy and manage a complete Azure environment, including Windows Virtual Desktop, in under two hours.
+Nerdio rozszerza wartość pulpitu wirtualnego systemu Windows, co ułatwia Inicjowanie obsługi zasobów platformy Azure i usprawnienie wdrażania. Program Nerdio for Azure umożliwia automatyczne wdrażanie i zarządzanie kompletnym środowiskiem platformy Azure, w tym pulpitem wirtualnym systemu Windows, w ciągu dwóch godzin.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [Go to the partner website](https://getnerdio.com/windows-virtual-desktop/).
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
+- [Przejdź do witryny sieci Web partnera](https://getnerdio.com/windows-virtual-desktop/).
 
 ## <a name="numecent"></a>Numecent
 
-![Numecent Logo](./media/partners/numecent.png)
+![Logo Numecent](./media/partners/numecent.png)
 
-Numecent is a Windows Virtual Desktop value-added services provider that significantly reduces the total operating costs through rapid onboarding and migration of complicated or incompatible Windows apps in Windows Virtual Desktop environments. Numecent also minimizes the amount of configuration that users need to do, reduces application updates, and simplifies complex processes. Because Numecent Cloudpaging supports more applications seamlessly than any other application delivery tool, it reduces time and IT workloads in environments with a diverse set of applications. 
+Numecent to dostawca usług dodanej przez pulpit wirtualny systemu Windows, który znacząco zmniejsza łączną liczbę kosztów operacyjnych dzięki szybkiemu dołączeniu i migracji skomplikowanych lub niezgodnych aplikacji systemu Windows w środowiskach klasycznych systemu Windows. Numecent minimalizuje także ilość konfiguracji wymaganej przez użytkowników, redukuje aktualizacje aplikacji i upraszcza procesy złożone. Ponieważ Numecent Cloudpaging obsługuje więcej aplikacji bezproblemowo niż inne narzędzia dostarczania aplikacji, skraca czas i obciążenia IT w środowiskach z różnorodnym zestawem aplikacji. 
 
-When used with Windows Virtual Desktop, Cloudpaging further reduces costs by completing software asset lifecycle from deployment to upgrading, metering, and removing applications. Cloudpaging simplifies image management by dynamically provisioning apps as needed in real time to the Windows Virtual Desktop deployments. Cloudpaging helps applications run without administration or intervention through the periodic Windows 10 updates. Cloudpaging also reduces the licensing cost of expensive applications by enabling more efficient deployment and usage of these applications. 
+W przypadku użycia z pulpitem wirtualnym systemu Windows Cloudpaging bardziej obniża koszty, wykonując cykl życia zasobów oprogramowania z wdrożenia w celu uaktualniania, mierzenia i usuwania aplikacji. Cloudpaging upraszcza zarządzanie obrazami przez dynamiczne Inicjowanie obsługi aplikacji zgodnie z potrzebami w czasie rzeczywistym do wdrożeń pulpitów wirtualnych systemu Windows. Cloudpaging pomaga aplikacjom uruchamiać się bez administracji ani interwencji w okresowych aktualizacjach systemu Windows 10. Cloudpaging również zmniejsza koszt licencjonowania kosztownych aplikacji przez umożliwienie wydajniejszego wdrażania i użycia tych aplikacji. 
 
-- [Go to the partner website](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+- [Przejdź do witryny sieci Web partnera](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 
 ## <a name="policypak"></a>PolicyPak
 
-![PolicyPak Logo](./media/partners/policypak.png)
+![Logo PolicyPak](./media/partners/policypak.png)
 
-PolicyPak Software is a Windows Virtual Desktop partner that performs total settings management for applications, desktop, browsers, Java, and security settings. PolicyPak keeps your desktop, system, and security settings in compliance. PolicyPak enhances the value of Windows Virtual Desktop by adding a suite of components to enhance Windows’ built-in administration. Use your existing Active Directory Group Policy and/or Windows Intune to deliver PolicyPak’s settings and increase administrators’ ability to manage their Windows 10 machines. 
+PolicyPak Software to partner pulpitu wirtualnego systemu Windows, który wykonuje całkowite zarządzanie ustawieniami dla aplikacji, pulpitu, przeglądarek, języka Java i ustawień zabezpieczeń. PolicyPak utrzymuje Zgodność ustawień pulpitu, systemu i zabezpieczeń. PolicyPak zwiększa wartość pulpitu wirtualnego systemu Windows, dodając pakiet składników w celu wzmocnienia wbudowanej administracji systemu Windows. Użyj istniejących zasady grupy Active Directory i/lub usługi Windows Intune, aby dostarczyć ustawienia PolicyPak i zwiększyć możliwości administratorów zarządzania swoimi maszynami z systemem Windows 10. 
 
-The top use cases for PolicyPak are to remove local admin rights and overcome UAC prompts, block Ransomware, manage multiple browsers, manage Internet Explorer’s Enterprise and Compatibility modes, reduce the number of GPOs, manage Windows 10 File Associations, manage Windows 10 Start Menu and Taskbar, and manage Windows 10 Features and Optional features.  
+Najczęstsze przypadki użycia PolicyPak mają na celu usunięcie lokalnych praw administratora i przezwyciężenie monitów kontroli konta użytkownika, zablokowanie oprogramowania wymuszającego okup, zarządzanie wieloma przeglądarkami, Zarządzanie trybami Enterprise i zgodność programu Internet Explorer, Zmniejszanie liczby obiektów zasad grupy, zarządzanie skojarzeniami plików systemu Windows 10, Zarządzaj menu Start systemu Windows 10 i paskiem zadań oraz Zarządzaj funkcjami systemu Windows 10 i opcjonalnymi funkcjami.  
 
-- [Go to partner website](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
+- [Przejdź do witryny sieci Web partnera](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
 
 ## <a name="printerlogic"></a>PrinterLogic
 
-![PrinterLogic Logo](./media/partners/printerlogic.png)
+![Logo PrinterLogic](./media/partners/printerlogic.png)
 
-PrinterLogic is a Windows Virtual Desktop value-added service provider platform that empowers IT professionals to eliminate all print servers and deliver a highly available serverless printing infrastructure. PrinterLogic extends the value of Windows Virtual Desktop and Azure by making it easy to manage centrally and deploy printer objects to any printer or endpoint OS. 
+PrinterLogic to platforma dostawcy usług z systemem Windows Virtual Desktop, która umożliwia informatykom eliminowanie wszystkich serwerów wydruku i dostarczanie wysokiej dostępności bezserwerowej infrastruktury drukowania. PrinterLogic rozszerza wartość pulpitu wirtualnego systemu Windows i platformy Azure, dzięki czemu można łatwo zarządzać centralnie i wdrażać obiekty drukarki na dowolnej drukarce lub w systemie operacyjnym punktu końcowego. 
 
-Available as SaaS or as a web stack in your own private cloud, the PrinterLogic platform ensures users always have the right printers they need in their virtual sessions based on user ID, device name, or location. This functionality is complemented by a full suite of enterprise print management features such as print tracking and reporting, mobile printing, and secure badge release printing. 
+Dostępna jako SaaS lub jako stos sieci Web w prywatnej chmurze, platforma PrinterLogic zapewnia, że użytkownicy zawsze mają odpowiednie drukarki, których potrzebują w swoich sesjach wirtualnych na podstawie identyfikatora użytkownika, nazwy urządzenia lub lokalizacji. Ta funkcja jest uzupełniana przez pełny zestaw funkcji zarządzania drukowaniem w przedsiębiorstwie, takich jak śledzenie wydruków i raportowanie, Drukowanie mobilne oraz drukowanie w wersji o bezpiecznym wskaźniku. 
 
-- [Go to partner website](https://www.printerlogic.com).
+- [Przejdź do witryny sieci Web partnera](https://www.printerlogic.com).
 
 ## <a name="printix"></a>Printix
 
-![Printix Logo](./media/partners/printix.png)
+![Logo Printix](./media/partners/printix.png)
 
-Printix is a Windows Virtual Desktop value-added service provider that automates user connection to office printing resources. As the missing piece in your customer Azure migration, Printix is the most cost-effective service available to remove infrastructure and IT tasks associated with supporting and optimizing print workflow for every user, regardless of location.
+Printix to dostawca usług usług pulpitu wirtualnego systemu Windows, który automatyzuje połączenie użytkownika z zasobami drukowania pakietu Office. Jako brakujący element w ramach migracji na platformę Azure, Printix to najbardziej ekonomiczna usługa dostępna do usuwania infrastruktury i zadań IT skojarzonych z obsługą i optymalizacją przepływu pracy drukowania dla każdego użytkownika, niezależnie od lokalizacji.
 
-Printing is a fundamental task in just about every office and small business environment. In order to take full advantage of Windows Virtual Desktop and provide a great user experience, it's essential to ensure your users can connect to printers with minimum effort and maximum reliability. With Printix, you can get the most out of Windows Virtual Desktop through single sign-on (SSO), silent configuration, regular updates, and continuous monitoring of your print environment.
+Drukowanie to podstawowe zadanie w zaledwie na każdym biurze i w małym środowisku biznesowym. Aby w pełni wykorzystać możliwości pulpitu wirtualnego systemu Windows i zapewnić doskonałe środowisko użytkownika, należy upewnić się, że użytkownicy mogą łączyć się z drukarkami przy minimalnym wysiłku i maksymalnej niezawodności. Dzięki programowi Printix można maksymalnie wykorzystać możliwości pulpitu wirtualnego systemu Windows za pomocą logowania jednokrotnego (SSO), konfiguracji dyskretnej, zwykłych aktualizacji i ciągłego monitorowania środowiska wydruku.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [Go to the partner website](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
+- [Przejdź do witryny sieci Web partnera](https://www.printix.net/printix-for-windows-virtual-desktop)
 
 ## <a name="rdpsoft"></a>RDPSoft
 
-![RDPSoft logo](./media/partners/rdpsoft.png)
+![Logo RDPSoft](./media/partners/rdpsoft.png)
 
-RDPSoft is a Windows Virtual Desktop partner that provides powerful and inexpensive monitoring, management, and reporting solutions. Their Remote Desktop Commander offerings allow IT professionals to gain insight into the health, performance, user activity, licensing, and security of their Windows Virtual Desktop deployments. 
+RDPSoft to partner pulpitu wirtualnego systemu Windows, który zapewnia zaawansowane i niedrogie rozwiązania do monitorowania, zarządzania i raportowania. Oferty dowódców Pulpit zdalny umożliwiają specjalistom IT uzyskanie wglądu w kondycję, wydajność, aktywność użytkowników, Licencjonowanie i bezpieczeństwo wdrożeń pulpitów wirtualnych systemu Windows. 
  
-RDPSoft's Remote Desktop Commander solutions enhance Windows Virtual Desktop administration. Premium Management features simplify delegation of Windows Virtual Desktop management tasks to support desk staff by providing remote assistance, user session, and process management. At the same time, the Remote Desktop Commander Suite collects rich metrics about per-user performance and load, user activity and auditing, Windows Virtual Desktop connection quality (latency and bandwidth), licensing, and security into a central Azure SQL database instance for review. With RDPSoft, rich historic reporting and comprehensive dashboards are just a click away.
+Rozwiązania dowódców Pulpit zdalny RDPSoft ulepszają administrację pulpitów wirtualnych systemu Windows. Funkcje zarządzania w warstwie Premium upraszczają delegowanie zadań związanych z zarządzaniem pulpitem wirtualnym systemu Windows do pomocy technicznej personelowi, zapewniając pomoc zdalną, sesję użytkownika i zarządzanie procesami. W tym samym czasie pakiet dowódców Pulpit zdalny zbiera bogate metryki dotyczące wydajności i obciążenia użytkownika, aktywności użytkowników i inspekcji, jakości połączenia pulpitu wirtualnego systemu Windows (opóźnienia i przepustowości), Licencjonowanie i zabezpieczenia w centralną usługę Azure SQL wystąpienie bazy danych do przeglądu. Dzięki RDPSoft bogate raporty historyczne i kompleksowe pulpity nawigacyjne są po prostu kliknięciami.
 
-- [Go to the partner website](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [Przejdź do witryny sieci Web partnera](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
 
 ## <a name="thinprint"></a>ThinPrint
 
-![ThinPrint Logo](./media/partners/thinprint.png)
+![Logo ThinPrint](./media/partners/thinprint.png)
 
-ThinPrint is a Windows Virtual Desktop value-added services provider that delivers simple and secure cloud printing from Windows Virtual Desktop. With its services and software, existing print infrastructure can be utilized to print documents from the cloud. ThinPrint enables connection to both local and network printers, making it easy for users to print while at the office or working remotely.
+ThinPrint to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który zapewnia proste i bezpieczne drukowanie w chmurze z pulpitu wirtualnego systemu Windows. Dzięki usługom i oprogramowaniu istniejąca infrastruktura drukowania może być używana do drukowania dokumentów z chmury. Usługa ThinPrint umożliwia nawiązywanie połączeń zarówno z drukarkami lokalnymi, jak i sieciowymi, dzięki czemu użytkownicy mogą drukować w biurze lub zdalnie pracować.
 
-ThinPrint’s ezeep solution extends the value of Windows Virtual Desktop by enabling the connection to existing enterprise print infrastructure. ezeep gives users control over printing in the enterprise no matter where they are. Using ezeep, users can bridge the gap between Windows Virtual Desktop and printing hardware.
+Rozwiązanie ezeep ThinPrint rozszerza wartość pulpitu wirtualnego systemu Windows, umożliwiając połączenie z istniejącą infrastrukturą drukowania w przedsiębiorstwie. ezeep zapewnia użytkownikom kontrolę nad drukowaniem w przedsiębiorstwie niezależnie od tego, gdzie się znajdują. Korzystając z ezeep, użytkownicy mogą mostkować przerwy między pulpitem wirtualnym i sprzętem drukowania systemu Windows.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
-- [Go to partner website](https://www.ezeep.com/wvd-printing).
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
+- [Przejdź do witryny sieci Web partnera](https://www.ezeep.com/wvd-printing).
 
 ## <a name="tricerat"></a>Tricerat
 
-![Tricerat Logo](./media/partners/tricerat.png)
+![Logo Tricerat](./media/partners/tricerat.png)
 
-Tricerat offers a superior print management solution for Windows Virtual Desktop and other desktop platforms. Tricerat software has robust functionality, offering a better experience for both users and administrators. Administrators gain efficiencies through complete driver management, simplified deployment of print queues, and consistent management across hybrid platforms. User experience improves with shorter sign-in times, intelligent print queues based on user, device, and network location, and self-service options for quick printer selection. 
+Tricerat oferuje znakomite rozwiązanie do zarządzania drukowaniem dla pulpitów wirtualnych systemu Windows i innych platform stacjonarnych. Oprogramowanie Tricerat ma niezawodne funkcje, oferując lepsze środowisko dla użytkowników i administratorów. Administratorzy mogą uzyskać wydajność dzięki zakończeniu zarządzania sterownikami, uproszczonym wdrażaniu kolejek wydruku i spójnym zarządzaniem na różnych platformach hybrydowych. Środowisko użytkownika usprawnia pracę przy krótszym czasie logowania, inteligentne kolejki wydruku na podstawie użytkownika, urządzenia i lokalizacji sieciowej oraz opcje samoobsługowego wybierania szybkiej drukarki. 
 
-With Tricerat, printing is seamless in Windows Virtual Desktop and beyond. Tricerat software allows administrators to easily connect on-premises printers to the cloud, extending enterprise print management from traditional environments to new, modern workspaces.
+Dzięki Tricerat drukowanie jest płynne w klasycznym pulpicie systemu Windows. Tricerat oprogramowanie umożliwia administratorom łatwe łączenie drukarek lokalnych z chmurą, rozszerzając Zarządzanie drukowaniem w przedsiębiorstwie z tradycyjnych środowisk na nowe, nowoczesne obszary robocze.
 
-- [Go to the partner website](https://www.tricerat.com/solutions/wvd-microsoft/).
+- [Przejdź do witryny sieci Web partnera](https://www.tricerat.com/solutions/wvd-microsoft/).
 
 ## <a name="workspot"></a>Workspot
 
-![Workspot Logo](./media/partners/workspot.png)
+![Logo Workspot](./media/partners/workspot.png)
 
-Workspot is a Windows Virtual Desktop value-added services provider that equips enterprises with high-performance desktops and workstations in Azure. With Workspot, infrastructure provisioning is automated, which means users can access their Windows Virtual Desktop environment from anywhere around the world with high availability.
+Workspot to dostawca usług dodanej przez pulpit wirtualny systemu Windows, który służy do wyposażania przedsiębiorstw na komputery stacjonarne i stacje robocze o wysokiej wydajności na platformie Azure. W przypadku usługi Workspot obsługa infrastruktury jest zautomatyzowana, co oznacza, że użytkownicy mogą uzyskiwać dostęp do środowiska pulpitu wirtualnego systemu Windows z dowolnego miejsca na całym świecie i wysoką dostępność.
 
-Workspot extends the value of Windows Virtual Desktop by simplifying the provisioning process of cloud desktop infrastructure. With Workspot, resources can be easily scaled up and down to meet the needs of different users and uses cases. Workspot can optimize deployments for high-performance GPU workstations necessary for CAD and engineering users, as well as Windows applications and Windows 10 desktops for all business users.
+Workspot rozszerza wartość pulpitu wirtualnego systemu Windows przez uproszczenie procesu aprowizacji infrastruktury pulpitu chmurowego. Dzięki Workspot zasoby można łatwo skalować w górę i w dół, aby zaspokoić potrzeby różnych użytkowników i przypadków użycia. Workspot może zoptymalizować wdrożenia dla stacji roboczych GPU o wysokiej wydajności niezbędnej dla programów CAD i inżynierów, a także aplikacji systemu Windows i komputerów stacjonarnych z systemem Windows 10 dla wszystkich użytkowników firmowych.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
-- [Go to partner website](https://www.workspot.com/wvd).
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
+- [Przejdź do witryny sieci Web partnera](https://www.workspot.com/wvd).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Learn more about Windows Virtual Desktop](overview.md).
-- [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- [Dowiedz się więcej na temat pulpitu wirtualnego systemu Windows](overview.md).
+- [Utwórz dzierżawcę na pulpicie wirtualnym systemu Windows](tenant-setup-azure-active-directory.md).

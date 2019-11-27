@@ -271,7 +271,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 Dzięki modelowi można przewidzieć niebezpieczeństwo zgonu z kolizji. Użyj platformy Azure ML do wdrożenia modelu jako usługi predykcyjnej. W tym samouczku zostanie wdrożona usługa sieci Web w [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI).
 
-### <a name="register-the-model"></a>Zarejestruj model
+### <a name="register-the-model"></a>Rejestrowanie modelu
 
 Najpierw Zarejestruj pobrany model w obszarze roboczym, korzystając z [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html). Zarejestrowanym modelem może być dowolna Kolekcja plików, ale w tym przypadku obiekt modelu R jest wystarczający. Platforma Azure ML będzie używać zarejestrowanego modelu do wdrożenia.
 
