@@ -20,7 +20,7 @@ W tym artykule przedstawiono podstawowe kroki tworzenia i używania udziału us�
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -73,7 +73,7 @@ Na razie na platformie Azure utworzono konto magazynu i udział plików zawieraj
 1. W obszarze **Konto administratora** dodaj wartość *VMadmin* w polu **Nazwa użytkownika** i wprowadź **hasło** dla maszyny wirtualnej.
 1. W obszarze **Reguły portów wejściowych** wybierz opcję **Zezwalaj na wybrane porty**, a następnie wybierz **RDP (3389)** i **HTTP** z listy rozwijanej.
 1. Wybierz pozycję **Przegląd + utwórz**.
-1. Wybierz **tworzenie**. Tworzenie nowej maszyny wirtualnej potrwa kilka minut.
+1. Wybierz pozycję **Utwórz**. Tworzenie nowej maszyny wirtualnej potrwa kilka minut.
 
 1. Po zakończeniu wdrażania maszyny wirtualnej wybierz pozycję **Przejdź do zasobu**.
 
@@ -149,7 +149,7 @@ Teraz, gdy dysk został zamapowany, możesz utworzyć migawkę.
 1. W udziale plików wybierz pozycję **Wyświetl migawki**.
 1. W okienku **Migawki udziału plików** wybierz ostatnią migawkę na liście i kliknij przycisk **Usuń**.
 
-   ![Usuwanie przycisku](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
+   ![Przycisk Usuń](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>Używanie migawki udziału w systemie Windows
 

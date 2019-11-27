@@ -76,7 +76,7 @@ W katalogu wartość **zaakceptowana przez zaproszenie** gościa zmieni się na 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
-- [Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal](add-users-administrator.md)
+- [Dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal](add-users-administrator.md)
 - [Jak Pracownicy przetwarzający informacje mogą dodawać do Azure Active Directory użytkowników współpracy B2B?](add-users-information-worker.md)
 - [Dodawanie Azure Active Directory użytkowników współpracy B2B przy użyciu programu PowerShell](customize-invitation-api.md#powershell)
 - [Opuść organizację jako użytkownika-gościa](leave-the-organization.md)

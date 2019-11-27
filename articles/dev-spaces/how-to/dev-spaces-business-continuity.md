@@ -1,12 +1,12 @@
 ---
-title: Ciągłość biznesowa i odzyskiwanie po awarii
+title: Ciągłość działania i odzyskiwanie po awarii
 services: azure-dev-spaces
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s '
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: c7594059a5627c3967aba52144ed3dc99cb510e3
 ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
@@ -15,86 +15,86 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327292"
 ---
-# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Business continuity and disaster recovery in Azure Dev Spaces
+# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Ciągłość działania i odzyskiwanie po awarii w Azure Dev Spaces
 
-## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Review disaster recovery guidance for Azure Kubernetes Service (AKS)
+## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Przejrzyj wskazówki dotyczące odzyskiwania po awarii dla usługi Azure Kubernetes Service (AKS)
 
-Azure Dev Spaces is a feature of Azure Kubernetes Service (AKS). You should be aware of guidelines for disaster recovery in AKS and consider whether they apply to the AKS clusters that you use for Dev Spaces. For more information, please reference [Best practices for business continuity and disaster recovery in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)
+Azure Dev Spaces jest funkcją usługi Azure Kubernetes Service (AKS). Należy zapoznać się z wytycznymi dotyczącymi odzyskiwania po awarii w programie AKS i zastanowić się, czy mają one zastosowanie do klastrów AKS używanych na potrzeby funkcji Spaces dev. Aby uzyskać więcej informacji, zapoznaj się z [najlepszymi rozwiązaniami dotyczącymi ciągłości działania i odzyskiwania po awarii w usłudze Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)
 
-## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Enable Dev Spaces on AKS clusters in different regions
+## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Włącz miejsca deweloperskie w klastrach AKS w różnych regionach
 
-Enabling Dev Spaces on AKS clusters in different regions allows you to resume using Dev Spaces immediately after an Azure region failure.
+Włączenie funkcji miejsca deweloperskie w klastrach AKS w różnych regionach pozwala na wznowienie pracy przy użyciu spacji deweloperskich bezpośrednio po awarii regionu platformy Azure.
 
-For general information about multi-region deployments of AKS, see [Plan for multi-region deployment](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
+Aby uzyskać ogólne informacje na temat wdrożeń wieloregionowych AKS, zobacz [Planowanie wdrożenia wieloregionowego](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-For information about deploying an AKS cluster that is compatible with Azure Dev Spaces, see [Create a Kubernetes cluster using Azure Cloud Shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
+Aby uzyskać informacje o wdrażaniu klastra AKS, który jest zgodny z Azure Dev Spaces, zobacz [Tworzenie klastra Kubernetes przy użyciu Azure Cloud Shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
 
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Enable Dev Spaces via the Azure portal
+### <a name="enable-dev-spaces-via-the-azure-portal"></a>Włącz przestrzenie deweloperskie za pomocą Azure Portal
 
-Click the **Dev Spaces** navigation item under the properties of each cluster in the Azure portal. Then choose the option to enable Dev Spaces.
+Kliknij element nawigacyjny **Spaces dev** w obszarze właściwości każdego klastra w Azure Portal. Następnie wybierz opcję, aby włączyć funkcję Spaces dev.
 
-![Enabling Dev Spaces via Azure portal](../media/common/enable-dev-spaces.jpg)
+![Włączanie funkcji Spaces dev za pośrednictwem Azure Portal](../media/common/enable-dev-spaces.jpg)
 
-Repeat this process for each cluster.
+Powtórz ten proces dla każdego klastra.
 
-### <a name="enable-dev-spaces-via-the-azure-cli"></a>Enable Dev Spaces via the Azure CLI
+### <a name="enable-dev-spaces-via-the-azure-cli"></a>Włączanie funkcji Spaces dev za pośrednictwem interfejsu wiersza polecenia platformy Azure
 
-You can also enable Dev Spaces at the command line:
+Możesz również włączyć funkcję miejsca deweloperskie w wierszu polecenia:
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Deploy your team's baseline to each cluster
+## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Wdróż linię bazową zespołu w każdym klastrze
 
-When working with Dev Spaces, you typically deploy the entire application to a parent dev space on your Kubernetes cluster. By default, the `default` space is used. The initial deployment includes all services as well as the external resources that those services depend on, such as databases or queues. This is known as the *baseline*. Once you set up a baseline in the parent dev space, you iterate on and debug individual services inside child dev spaces.
+Podczas pracy z miejscami programistycznymi zwykle wdrażana jest cała aplikacja w nadrzędnym obszarze deweloperskim w klastrze Kubernetes. Domyślnie używane jest miejsce `default`. Początkowe wdrożenie obejmuje wszystkie usługi, a także zasoby zewnętrzne, od których zależą te usługi, takie jak bazy danych lub kolejki. Ta wartość jest określana jako *linia bazowa*. Po skonfigurowaniu linii bazowej w nadrzędnym obszarze deweloperskim można przechodzić i debugować poszczególne usługi w podrzędnych miejscach deweloperskich.
 
-You should deploy the most recent versions of your baseline set of services to clusters in multiple regions. Updating your baseline services in this manner ensures that you can continue to use Dev Spaces if there is an Azure region failure. For example, if you deploy your baseline via a CI/CD pipeline, modify the pipeline so that it deploys to multiple clusters in different regions.
+Najnowsze wersje zestawu bazowych usług należy wdrożyć do klastrów w wielu regionach. Aktualizowanie usług bazowych w ten sposób zapewnia, że w przypadku awarii regionu platformy Azure można nadal korzystać z funkcji miejsca do tworzenia. Na przykład, jeśli plan bazowy zostanie wdrożony za pośrednictwem potoku ciągłej integracji/ciągłego wdrażania, należy zmodyfikować potok, tak aby został wdrożony w wielu klastrach w różnych regionach.
 
-## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Select the correct AKS cluster to use for Dev Spaces
+## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Wybierz poprawny klaster AKS, który ma być używany przez funkcję Spaces dev
 
-Once you've properly configured a backup cluster running your team's baseline, you can quickly switch over to the backup cluster at any time. Then you can rerun the individual services that you are working on in Dev Spaces.
+Po poprawnym skonfigurowaniu klastra kopii zapasowej z uruchomioną linią bazową zespołu można szybko przełączać się do klastra kopii zapasowej w dowolnym momencie. Następnie można ponownie uruchomić poszczególne usługi, nad którymi pracujesz w miejscach deweloperskich.
 
-Select a different cluster with the following CLI command:
+Wybierz inny klaster z następującym poleceniem interfejsu wiersza polecenia:
 
 ```cmd
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 
-You can list the available dev spaces on the new cluster with the following command:
+Można wyświetlić listę dostępnych miejsc dev w nowym klastrze przy użyciu następującego polecenia:
 
 ```cmd
 azds space list
 ```
 
-You can create a new dev space to work in, or select an existing dev space, with the following command:
+Można utworzyć nowe miejsce deweloperskie do pracy lub wybrać istniejące miejsce deweloperskie za pomocą następującego polecenia:
 
 ```cmd
 azds space select -n <space name>
 ```
 
-After running these commands, the selected cluster and dev space will be used for subsequent CLI operations, and for debugging projects using the Visual Studio Code extension for Azure Dev Spaces.
+Po uruchomieniu tych poleceń wybrany klaster i przestrzeń dev będą używane do kolejnych operacji interfejsu wiersza polecenia oraz do debugowania projektów przy użyciu rozszerzenia Visual Studio Code Azure Dev Spaces.
 
-If you are using Visual Studio, you can switch the cluster used by an existing project through the following steps:
+Jeśli używasz programu Visual Studio, możesz przełączyć klaster używany przez istniejący projekt, wykonując następujące czynności:
 
-1. Open your project in Visual Studio.
-1. Right click the project name in Solution Explorer and click **Properties**
-1. In the left pane, click **Debug**
-1. On the Debug properties page, click the **Profile** drop-down list and choose **Azure Dev Spaces**.
-1. Click the **Change** button.
-1. In the dialog that appears, select the AKS cluster that you wish to use. If desired, choose a different dev space to work in, or create a new dev space, by selecting the appropriate option from the **Space** drop-down list.
+1. Otwórz projekt w programie Visual Studio.
+1. Kliknij prawym przyciskiem myszy nazwę projektu w Eksplorator rozwiązań a następnie kliknij pozycję **Właściwości** .
+1. W okienku po lewej stronie kliknij pozycję **Debuguj** .
+1. Na stronie właściwości debugowania kliknij listę rozwijaną **profil** i wybierz pozycję **Azure dev Spaces**.
+1. Kliknij przycisk **Zmień** .
+1. W wyświetlonym oknie dialogowym Wybierz klaster AKS, którego chcesz użyć. W razie potrzeby wybierz inną przestrzeń programistyczną, w której będziesz korzystać, lub Utwórz nowe miejsce dev, wybierając odpowiednią opcję z listy rozwijanej **miejsce** .
 
-Once you have selected the correct cluster and space, you can press F5 to run the service in Dev Spaces.
+Po wybraniu odpowiedniego klastra i miejsca możesz nacisnąć klawisz F5, aby uruchomić usługę w obszarze dev Spaces.
 
-Repeat these steps for any other projects configured to use the original cluster.
+Powtórz te kroki dla wszystkich innych projektów skonfigurowanych do używania oryginalnego klastra.
 
-## <a name="access-a-service-on-a-backup-cluster"></a>Access a service on a backup cluster
+## <a name="access-a-service-on-a-backup-cluster"></a>Dostęp do usługi w klastrze kopii zapasowej
 
-If you have configured your service to use a public DNS name, then the service will have a different URL if you run it on a backup cluster. Public DNS names are always in the format `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. If you switch to a different cluster, the cluster GUID and possibly the region will change.
+Jeśli usługa została skonfigurowana pod kątem używania publicznej nazwy DNS, usługa będzie mieć inny adres URL, jeśli zostanie uruchomiony w klastrze kopii zapasowej. Nazwy publiczne DNS są zawsze w formacie `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Jeśli przełączysz się do innego klastra, identyfikator GUID klastra i prawdopodobnie region zmienią się.
 
-Dev Spaces always shows the correct URL for the service when running `azds up`, or in the Output window in Visual Studio under **Azure Dev Spaces**.
+Funkcja miejsca do magazynowania zawsze wyświetla prawidłowy adres URL usługi podczas uruchamiania `azds up`lub w oknie danych wyjściowych w programie Visual Studio w obszarze **Azure dev Spaces**.
 
-You can also find the URL by running the `azds list-uris` command:
+Możesz również znaleźć adres URL, uruchamiając `azds list-uris` polecenie:
 ```
 $ azds list-uris
 Uri                                                     Status
@@ -102,4 +102,4 @@ Uri                                                     Status
 http://default.mywebapi.d05afe7e006a4fddb73c.eus.azds.io/  Available
 ```
 
-Use this URL when accessing the service.
+Użyj tego adresu URL podczas uzyskiwania dostępu do usługi.

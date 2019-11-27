@@ -34,7 +34,7 @@ Wszystkie próby połączenia z adresu IP, które nie pasują do dozwolonej regu
 
 ## <a name="default-setting"></a>Ustawienie domyślne
 
-Domyślnie **filtru IP** siatki w portalu usługi Event Hubs jest pusty. To ustawienie domyślne oznacza, że Centrum zdarzeń akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest odpowiednikiem regułę, która akceptuje zakres adresów IP 0.0.0.0/0.
+Domyślnie siatka **filtrów IP** w portalu dla Event Hubs jest pusta. To ustawienie domyślne oznacza, że Centrum zdarzeń akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest odpowiednikiem regułę, która akceptuje zakres adresów IP 0.0.0.0/0.
 
 ## <a name="ip-filter-rule-evaluation"></a>Ocenę reguł filtrowania adresów IP
 
@@ -64,7 +64,7 @@ Następujący szablon usługi Resource Manager umożliwia dodawanie reguły filt
 
 Parametry szablonu:
 
-- **ipMask** jest pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
+- **ipMask** to pojedynczy adres IPv4 lub blok adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
 
 > [!NOTE]
 > Chociaż nie ma możliwych reguł Odmów, szablon Azure Resource Manager ma ustawioną akcję domyślną **"Zezwalaj"** , która nie ogranicza połączeń.
@@ -74,7 +74,7 @@ Parametry szablonu:
 > ```json
 > "defaultAction": "Allow"
 > ```
-> to
+> na
 > ```json
 > "defaultAction": "Deny"
 > ```

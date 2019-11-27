@@ -1,6 +1,6 @@
 ---
-title: Create a blockchain application - Azure Blockchain Workbench
-description: Tutorial on how to create a blockchain application for Azure Blockchain Workbench Preview.
+title: Tworzenie aplikacji łańcucha bloków — Azure łańcucha bloków Workbench
+description: Samouczek dotyczący sposobu tworzenia aplikacji łańcucha bloków dla usługi Azure łańcucha bloków Workbench Preview.
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
@@ -11,7 +11,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74324809"
 ---
-# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Tutorial: Create a blockchain application for Azure Blockchain Workbench
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Samouczek: Tworzenie aplikacji łańcucha bloków dla usługi Azure łańcucha bloków Workbench
 
 Usługa Azure Blockchain Workbench umożliwia tworzenie aplikacji łańcucha bloków reprezentujących przepływy pracy dla wielu podmiotów zdefiniowane za pomocą konfiguracji i kodu kontraktu inteligentnego.
 
@@ -281,7 +281,7 @@ Dodaj funkcję konstruktora do Twojego kontraktu w pliku kodu kontraktu intelige
     }
 ```
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkcje
 
 Funkcje to wykonywalne jednostki logiki biznesowej w ramach kontraktu. Wymagane parametry funkcji są definiowane jako parametry funkcji w pliku konfiguracji. Liczba, kolejność i typ parametrów muszą być takie same w obu plikach. Funkcje są skojarzone z przejściami w przepływie pracy usługi Blockchain Workbench w pliku konfiguracji. Przejście jest akcją wykonywaną, aby przejść do kolejnego etapu przepływu pracy aplikacji, jak określono w kontrakcie.
 

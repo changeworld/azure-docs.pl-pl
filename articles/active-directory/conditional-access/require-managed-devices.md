@@ -1,6 +1,6 @@
 ---
-title: Conditional Access require managed device - Azure Active Directory
-description: Learn how to configure Azure Active Directory (Azure AD) device-based Conditional Access policies that require managed devices for cloud app access.
+title: Dostęp warunkowy wymaga urządzenia zarządzanego — Azure Active Directory
+description: Dowiedz się, jak skonfigurować zasady dostępu warunkowego oparte na urządzeniach Azure Active Directory (Azure AD), które wymagają zarządzanych urządzeń w celu uzyskania dostępu do aplikacji w chmurze.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,82 +18,82 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452401"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>How To: Require managed devices for cloud app access with Conditional Access
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: wymaganie zarządzanych urządzeń dla dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 
-In a mobile-first, cloud-first world, Azure Active Directory (Azure AD) enables single sign-on to apps, and services from anywhere. Authorized users can access your cloud apps from a broad range of devices including mobile and also personal devices. However, many environments have at least a few apps that should only be accessed by devices that meet your standards for security and compliance. These devices are also known as managed devices. 
+W świecie w chmurze na urządzeniach przenośnych Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne do aplikacji i usług z dowolnego miejsca. Autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze z szeroką gamę urządzeń, w tym urządzeń przenośnych i osobistych. Jednak wiele środowisk ma co najmniej kilka aplikacji, do których mają dostęp tylko urządzenia spełniające standardy dotyczące zabezpieczeń i zgodności. Te urządzenia są również znane jako urządzenia zarządzane. 
 
-This article explains how you can configure Conditional Access policies that require managed devices to access certain cloud apps in your environment. 
+W tym artykule wyjaśniono, jak można skonfigurować zasady dostępu warunkowego, które wymagają, aby zarządzane urządzenia mogły uzyskiwać dostęp do niektórych aplikacji w chmurze w danym środowisku. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Requiring managed devices for cloud app access ties **Azure AD Conditional Access** and **Azure AD device management** together. If you are not familiar with one of these areas yet, you should read the following topics, first:
+Wymaganie, aby zarządzane urządzenia dla dostępu do aplikacji w chmurze były połączone z **dostępem warunkowym usługi Azure AD** i **zarządzaniem urządzeniami usługi Azure AD** . Jeśli nie znasz jeszcze jednego z tych obszarów, najpierw Przeczytaj następujące tematy:
 
-- **[Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** - This article provides you with a conceptual overview of Conditional Access and the related terminology.
-- **[Introduction to device management in Azure Active Directory](../devices/overview.md)** - This article gives you an overview of the various options you have to get devices under organizational control. 
+- **[Dostęp warunkowy w Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** — ten artykuł zawiera omówienie pojęć dotyczących dostępu warunkowego i powiązanej terminologii.
+- **[Wprowadzenie do zarządzania urządzeniami w Azure Active Directory](../devices/overview.md)** — ten artykuł zawiera omówienie różnych opcji, które należy wykonać, aby uzyskać dostęp do urządzeń objętych kontrolą organizacyjną. 
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-Mastering the balance between security and productivity is a challenge. The proliferation of supported devices to access your cloud resources helps to improve the productivity of your users. On the flip side, you probably don't want certain resources in your environment to be accessed by devices with an unknown protection level. For the affected resources, you should require that users can only access them using a managed device. 
+Głównym kompromisem jest równowaga między bezpieczeństwem a produktywnością. Rozprzestrzenianie się obsługiwanych urządzeń w celu uzyskania dostępu do zasobów w chmurze ułatwia zwiększenie produktywności użytkowników. Na stronie odwracania prawdopodobnie nie chcesz, aby niektóre zasoby w danym środowisku były dostępne na urządzeniach z nieznanym poziomem ochrony. W przypadku zasobów, których to dotyczy, należy wymagać, aby użytkownicy mieli do nich dostęp tylko przy użyciu urządzenia zarządzanego. 
 
-With Azure AD Conditional Access, you can address this requirement with a single policy that grants access:
+Za pomocą dostępu warunkowego usługi Azure AD można rozwiązać ten wymóg przy użyciu jednej zasady, która udziela dostępu:
 
-- To selected cloud apps
-- For selected users and groups
-- Requiring a managed device
+- Do wybranych aplikacji w chmurze
+- Dla wybranych użytkowników i grup
+- Wymaganie urządzenia zarządzanego
 
-## <a name="managed-devices"></a>Managed devices  
+## <a name="managed-devices"></a>Zarządzane urządzenia  
 
-In simple terms, managed devices are devices that are under *some sort* of organizational control. In Azure AD, the prerequisite for a managed device is that it has been registered with Azure AD. Registering a device creates an identity for the device in form of a device object. This object is used by Azure to track status information about a device. As an Azure AD administrator, you can already use this object to toggle (enable/disable) the state of a device.
+W przypadku prostych warunków zarządzanymi urządzeniami są urządzenia, które podlegają *pewnemu sortowaniu* kontroli organizacyjnej. W usłudze Azure AD wymaganie wstępne dla zarządzanego urządzenia polega na tym, że zostało ono zarejestrowane w usłudze Azure AD. Zarejestrowanie urządzenia tworzy tożsamość urządzenia w postaci obiektu urządzenia. Ten obiekt jest używany przez platformę Azure do śledzenia informacji o stanie urządzenia. Jako administrator usługi Azure AD można już używać tego obiektu do przełączania (włączania/wyłączania) stanu urządzenia.
   
-![Device-based conditions](./media/require-managed-devices/32.png)
+![Warunki oparte na urządzeniach](./media/require-managed-devices/32.png)
 
-To get a device registered with Azure AD, you have three options: 
+Aby uzyskać urządzenie zarejestrowane w usłudze Azure AD, masz trzy opcje: 
 
-- **Azure AD registered devices** - to get a personal device registered with Azure AD
-- **Azure AD joined devices** - to get an organizational Windows 10 device that is not joined to an on-premises AD registered with Azure AD. 
-- **Hybrid Azure AD joined devices** - to get a Windows 10 or supported down-level device that is joined to an on-premises AD registered with Azure AD.
+- **Zarejestrowane urządzenia usługi Azure AD** — Aby uzyskać osobiste urządzenie zarejestrowane w usłudze Azure AD
+- **Urządzenia przyłączone do usługi Azure AD** — Aby uzyskać organizacyjne urządzenie z systemem Windows 10, które nie jest przyłączone do lokalnej usługi AD zarejestrowanej w usłudze Azure AD. 
+- **Hybrydowe urządzenia dołączone do usługi Azure AD** — Aby uzyskać system Windows 10 lub obsługiwane urządzenie niskiego poziomu, które jest przyłączone do lokalnej usługi AD zarejestrowanej w usłudze Azure AD.
 
-These three options are discussed in the article [What is a device identity?](../devices/overview.md)
+Te trzy opcje zostały omówione w artykule [co to jest tożsamość urządzenia?](../devices/overview.md)
 
-To become a managed device, a registered device must be either a **Hybrid Azure AD joined device** or a **device that has been marked as compliant**.  
+Aby zostać urządzeniem zarządzanym, zarejestrowane urządzenie musi być **urządzeniem przyłączonym do hybrydowej usługi Azure AD** lub **urządzeniem, które zostało oznaczone jako zgodne**.  
 
-![Device-based conditions](./media/require-managed-devices/47.png)
+![Warunki oparte na urządzeniach](./media/require-managed-devices/47.png)
  
-## <a name="require-hybrid-azure-ad-joined-devices"></a>Require Hybrid Azure AD joined devices
+## <a name="require-hybrid-azure-ad-joined-devices"></a>Wymagaj hybrydowych urządzeń przyłączonych do usługi Azure AD
 
-In your Conditional Access policy, you can select **Require Hybrid Azure AD joined device** to state that the selected cloud apps can only be accessed using a managed device. 
+W zasadach dostępu warunkowego można wybrać opcję **Wymagaj urządzenia dołączonego do hybrydowej usługi Azure AD** , aby można było uzyskać dostęp do wybranych aplikacji w chmurze tylko przy użyciu urządzenia zarządzanego. 
 
-![Device-based conditions](./media/require-managed-devices/10.png)
+![Warunki oparte na urządzeniach](./media/require-managed-devices/10.png)
 
-This setting only applies to Windows 10 or down-level devices such as Windows 7 or Windows 8 that are joined to an on-premises AD. You can only register these devices with Azure AD using a Hybrid Azure AD join, which is an [automated process](../devices/hybrid-azuread-join-plan.md) to get a Windows 10 device registered. 
+To ustawienie dotyczy tylko urządzeń z systemem Windows 10 lub niższego poziomu, takich jak Windows 7 lub Windows 8, które są przyłączone do lokalnej usługi AD. Te urządzenia można zarejestrować tylko w usłudze Azure AD przy użyciu hybrydowego sprzężenia usługi Azure AD, które jest [zautomatyzowanym procesem](../devices/hybrid-azuread-join-plan.md) uzyskiwania zarejestrowanego urządzenia z systemem Windows 10. 
 
-![Device-based conditions](./media/require-managed-devices/45.png)
+![Warunki oparte na urządzeniach](./media/require-managed-devices/45.png)
 
-What makes a Hybrid Azure AD joined device a managed device?  For devices that are joined to an on-premises AD, it is assumed that the control over these devices is enforced using management solutions such as **System Center Configuration Manager (SCCM)** or **group policy (GP)** to manage them. Because there is no method for Azure AD to determine whether any of these methods has been applied to a device, requiring a hybrid Azure AD joined device is a relatively weak mechanism to require a managed device. It is up to you as an administrator to judge whether the methods that are applied to your on-premises domain-joined devices are strong enough to constitute a managed device if such a device is also a Hybrid Azure AD joined device.
+Co sprawia, że urządzenie dołączone do hybrydowej usługi Azure AD jest urządzeniem zarządzanym?  W przypadku urządzeń, które są przyłączone do lokalnej usługi AD, zakłada się, że kontrola nad tymi urządzeniami jest wymuszana przy użyciu rozwiązań do zarządzania, takich jak **System Center Configuration Manager (SCCM)** lub **zasady grupy (GP)** w celu zarządzania nimi. Ponieważ nie ma metody usługi Azure AD w celu ustalenia, czy którakolwiek z tych metod została zastosowana do urządzenia, wymaganie hybrydowego urządzenia dołączonego do usługi Azure AD jest stosunkowo słabym mechanizmem wymaganym przez urządzenie zarządzane. Administratorzy mogą ocenić, czy metody, które są stosowane do lokalnych urządzeń przyłączonych do domeny, są wystarczająco duże, aby stanowiły urządzenie zarządzane, jeśli takie urządzenie jest również urządzeniem przyłączonym do hybrydowej usługi Azure AD.
 
-## <a name="require-device-to-be-marked-as-compliant"></a>Require device to be marked as compliant
+## <a name="require-device-to-be-marked-as-compliant"></a>Wymagaj, aby urządzenie było oznaczone jako zgodne
 
-The option to *require a device to be marked as compliant* is the strongest form to request a managed device.
+Opcja wymagania, aby *urządzenie było oznaczone jako zgodne* , jest najmocniejszą formą żądania urządzenia zarządzanego.
 
-![Device-based conditions](./media/require-managed-devices/11.png)
+![Warunki oparte na urządzeniach](./media/require-managed-devices/11.png)
 
-This option requires a device to be registered with Azure AD, and also to be marked as compliant by:
+Ta opcja wymaga, aby urządzenie było zarejestrowane w usłudze Azure AD, a także oznaczone jako zgodne przez:
          
 - Intune
-- A third-party mobile device management (MDM) system that manages Windows 10 devices via Azure AD integration. Third-party MDM systems for device OS types other than Windows 10 are not supported.
+- System zarządzania urządzeniami przenośnymi (MDM, Mobile Device Management) służący jako urządzenie z systemem Windows 10 w ramach integracji z usługą Azure AD. Systemy zarządzania urządzeniami przenośnymi innych firm dla typów systemów operacyjnych innych niż Windows 10 nie są obsługiwane.
  
-![Device-based conditions](./media/require-managed-devices/46.png)
+![Warunki oparte na urządzeniach](./media/require-managed-devices/46.png)
 
-For a device that is marked as compliant, you can assume that: 
+W przypadku urządzenia oznaczonego jako zgodnego można założyć, że: 
 
-- The mobile devices your workforce uses to access company data are managed
-- Mobile apps your workforce uses are managed
-- Your company information is protected by helping to control the way your workforce accesses and shares it
-- The device and its apps are compliant with company security requirements
+- Urządzenia przenośne używane przez pracowników do uzyskiwania dostępu do danych firmowych są zarządzane
+- Zarządzanie aplikacjami mobilnymi używanymi przez pracowników
+- Informacje o firmie są chronione przez pomoc w kontroli sposobu, w jaki pracownicy uzyskują do nich dostęp i udostępniają ją
+- Urządzenie i jego aplikacje są zgodne z wymaganiami firmy dotyczącymi zabezpieczeń
 
 > [!NOTE]
-> If you configure a policy to require compliant devices users may be prompted on Mac, iOS, and Android to select a device certificate during policy evaluation. This is a known behavior.
+> Jeśli skonfigurujesz zasady wymagające, aby użytkownicy urządzeń zgodnych z systemami Mac, iOS i Android mogli wybrać certyfikat urządzenia podczas oceny zasad. Jest to znane zachowanie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Before configuring a device-based Conditional Access policy in your environment, you should take a look at the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+Przed skonfigurowaniem zasad dostępu warunkowego opartego na urządzeniach w środowisku należy zapoznać się z [najlepszymi rozwiązaniami dotyczącymi dostępu warunkowego w Azure Active Directory](best-practices.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Get image insights using the SDK for C# - Bing Visual Search'
+title: 'Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy C# użyciu zestawu SDK dla programu-Wyszukiwanie wizualne Bing'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przekazać obraz przy użyciu zestawu SDK wyszukiwania wizualnego Bing oraz uzyskać szczegółowe informacje na jego temat.
 services: cognitive-services
@@ -17,13 +17,13 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383593"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Quickstart: Get image insights using the Bing Visual Search SDK for C#
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu zestawu SDK wyszukiwanie wizualne Bing dlaC#
 
 Użyj tego przewodnika Szybki start, aby rozpocząć uzyskiwanie szczegółowych danych o obrazie w usłudze wyszukiwania wizualnego Bing przy użyciu zestawu SDK dla języka C#. Chociaż wyszukiwanie wizualne Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe integrowanie usługi z Twoimi aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
+* [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](https://www.mono-project.com/).
 * Pakiet NuGet wyszukiwania wizualnego. 
     - W Eksploratorze rozwiązań w programie Visual Studio kliknij prawym przyciskiem myszy swój projekt i wybierz polecenie `Manage NuGet Packages` z menu. Zainstaluj pakiet `Microsoft.Azure.CognitiveServices.Search.VisualSearch`. Zainstalowanie pakietu NuGet powoduje także zainstalowanie następujących elementów:

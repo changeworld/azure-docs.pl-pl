@@ -37,7 +37,7 @@ Poniżej przedstawiono scenariusz, w którym wyjaśniono, dlaczego firma ustawi 
 - Zamiast tego chcesz ustawić `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` jako adres URL strony głównej, dlatego użytkownik zewnętrzny zobaczy najpierw stronę logowania.
 
 > [!NOTE]
-> Po zapewnieniu użytkownikom dostępu do opublikowanych aplikacji, aplikacje są wyświetlane w [panelu dostępu usługi Azure AD](../user-help/my-apps-portal-end-user-access.md) i [uruchamianie aplikacji usługi Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
+> Po udzieleniu użytkownikom dostępu do opublikowanych aplikacji aplikacje są wyświetlane w [panelu dostępu usługi Azure AD](../user-help/my-apps-portal-end-user-access.md) i [uruchamiania aplikacji pakietu Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -85,7 +85,7 @@ Aby zainstalować pakiet, wykonaj następujące kroki:
    Install-Module -Name AzureAD
    ```
 
-    Jeśli używasz polecenia jako użytkownik inny niż administrator, należy użyć `-scope currentuser` opcji.
+    Jeśli uruchamiasz polecenie jako niebędące administratorami, użyj opcji `-scope currentuser`.
 
 1. Podczas instalacji wybierz pozycję **Y** , aby zainstalować dwa pakiety z NuGet.org. Oba pakiety są wymagane.
 
@@ -147,7 +147,7 @@ Utwórz adres URL strony głównej i zaktualizuj aplikację przy użyciu tej war
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-1. Ustaw adres URL strony głównej na żądaną wartość. Wartość musi być ścieżką poddomeny opublikowanej aplikacji. Na przykład, jeśli zmienisz adres URL strony głównej z `https://sharepoint-iddemo.msappproxy.net/` do `https://sharepoint-iddemo.msappproxy.net/hybrid/`, użytkownicy aplikacji przejść bezpośrednio do niestandardowej strony głównej.
+1. Ustaw adres URL strony głównej na żądaną wartość. Wartość musi być ścieżką poddomeny opublikowanej aplikacji. Jeśli na przykład zmienisz adres URL strony głównej z `https://sharepoint-iddemo.msappproxy.net/` na `https://sharepoint-iddemo.msappproxy.net/hybrid/`, użytkownicy aplikacji będą przechodzić bezpośrednio do niestandardowej strony głównej.
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
@@ -180,5 +180,5 @@ Utwórz adres URL strony głównej i zaktualizuj aplikację przy użyciu tej war
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Zdalny dostęp do programu SharePoint przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-integrate-with-sharepoint-server.md)
+- [Włączanie dostępu zdalnego do programu SharePoint przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy-integrate-with-sharepoint-server.md)
 - [Samouczek: Dodawanie aplikacji lokalnej dla dostępu zdalnego przy użyciu serwera proxy aplikacji w Azure Active Directory](application-proxy-add-on-premises-application.md)

@@ -99,7 +99,7 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
     | Adres URL uwierzytelniania | Użyj **adresu URL autoryzacji** z **kroku 2** |
     | Identyfikator klienta | Użyj **identyfikatora aplikacji** dla aplikacji Azure Active Directory, która została utworzona lub ponownie użyta w poprzedniej sekcji |
     | Zakres | Pozostaw puste |
-    | Stan | Pozostaw puste |
+    | State | Pozostaw puste |
     | Uwierzytelnianie klienta | `Send as Basic Auth header` |
 
 1. Klient powinien teraz wyglądać następująco:
@@ -132,7 +132,7 @@ Po wykonaniu powyższych kroków Skonfiguruj program do ogłaszania w celu wypr�
 
 1. Na koniec wybierz pozycję **Wyślij** , aby przesłać wieloczęściowe żądanie HTTP POST. Kod stanu `200` lub `201` wskazuje pomyślne żądanie. Zobaczysz również odpowiedni komunikat odpowiedzi.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się więcej o interfejsach API usługi Digital bliźniaczych reprezentacji Management i sposobach ich użycia, przeczytaj artykuł [jak korzystać z interfejsów API zarządzania usługą Azure Digital bliźniaczych reprezentacji](how-to-navigate-apis.md).
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Overdrive | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Overdrive.
+title: 'Samouczek: integracja Azure Active Directory z przełożeniem | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i na dysku.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,13 +22,13 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233467"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Tutorial: Azure Active Directory integration with Overdrive
+# <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Samouczek: integracja Azure Active Directory z przełożeniem
 
-In this tutorial, you learn how to integrate Overdrive with Azure Active Directory (Azure AD).
-Integrating Overdrive with Azure AD provides you with the following benefits:
+W tym samouczku dowiesz się, jak zintegrować przepełnienie przy użyciu Azure Active Directory (Azure AD).
+Integracja z usługą Azure AD zapewnia następujące korzyści:
 
-* You can control in Azure AD who has access to Overdrive.
-* You can enable your users to be automatically signed-in to Overdrive (Single Sign-On) with their Azure AD accounts.
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do przepełnienia.
+* Możesz pozwolić użytkownikom na automatyczne logowanie się w celu przepełnienia (logowania jednokrotnego) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,24 +36,24 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To configure Azure AD integration with Overdrive, you need the following items:
+Aby skonfigurować integrację usługi Azure AD z przełożeniem, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Overdrive single sign-on enabled subscription
+* Subskrypcja z włączoną obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Overdrive supports **SP** initiated SSO
+* Przełożenie obsługiwane przez usługę **SP** zainicjowano Logowanie jednokrotne
 
-* Overdrive supports **Just In Time** user provisioning
+* Przepełnienie obsługuje funkcję aprowizacji użytkowników **just in Time**
 
-## <a name="adding-overdrive-from-the-gallery"></a>Adding Overdrive from the gallery
+## <a name="adding-overdrive-from-the-gallery"></a>Dodawanie przełączania z galerii
 
-To configure the integration of Overdrive into Azure AD, you need to add Overdrive from the gallery to your list of managed SaaS apps.
+Aby skonfigurować integrację przekierowania z usługą Azure AD, należy dodać przełożenie z galerii do listy zarządzanych aplikacji SaaS.
 
-**To add Overdrive from the gallery, perform the following steps:**
+**Aby dodać naddyski z galerii, wykonaj następujące czynności:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
@@ -67,33 +67,33 @@ To configure the integration of Overdrive into Azure AD, you need to add Overdri
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. In the search box, type **Overdrive**, select **Overdrive** from result panel then click **Add** button to add the application.
+4. W polu **wyszukiwania wpisz wartość**przełączenia, wybierz pozycję przełączenie **z panelu** wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-     ![Overdrive in the results list](common/search-new-app.png)
+     ![Przepełnienie na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-In this section, you configure and test Azure AD single sign-on with Overdrive based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Overdrive needs to be established.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego w usłudze Azure AD za pomocą przepełnienia na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w przypadku przepełnienia.
 
-To configure and test Azure AD single sign-on with Overdrive, you need to complete the following building blocks:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD przy użyciu przepełnienia, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Configure Overdrive Single Sign-On](#configure-overdrive-single-sign-on)** - to configure the Single Sign-On settings on application side.
+2. **[Skonfiguruj](#configure-overdrive-single-sign-on)** przełączenie jednokrotne w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Create Overdrive test user](#create-overdrive-test-user)** - to have a counterpart of Britta Simon in Overdrive that is linked to the Azure AD representation of user.
+5. **[Utwórz użytkownika testowego](#create-overdrive-test-user)** z przepełnieniem dysku, aby uzyskać odpowiednik Britta Simon w przypadku przepełnienia, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-To configure Azure AD single sign-on with Overdrive, perform the following steps:
+Aby skonfigurować Logowanie jednokrotne w usłudze Azure AD przy użyciu przepełnienia, wykonaj następujące czynności:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Overdrive** application integration page, select **Single sign-on**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji o przeniesieniu na **dysk** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -105,18 +105,18 @@ To configure Azure AD single sign-on with Overdrive, perform the following steps
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Overdrive Domain and URLs single sign-on information](common/sp-signonurl.png)
+    ![Zadbaj informacje o rejestracji jednokrotnej domen i adresów URL](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `http://<subdomain>.libraryreserve.com`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Contact [Overdrive Client support team](https://help.overdrive.com/) to get the value. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj wartość przy użyciu rzeczywistego adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta](https://help.overdrive.com/) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
-6. On the **Set up Overdrive** section, copy the appropriate URL(s) as per your requirement.
+6. W sekcji **Konfiguracja przepełnienia** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -124,11 +124,11 @@ To configure Azure AD single sign-on with Overdrive, perform the following steps
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
-### <a name="configure-overdrive-single-sign-on"></a>Configure Overdrive Single Sign-On
+### <a name="configure-overdrive-single-sign-on"></a>Konfigurowanie logowania jednokrotnego na dysku
 
-To configure single sign-on on **Overdrive** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [Overdrive support team](https://help.overdrive.com/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby **skonfigurować logowanie** jednokrotne, należy wysłać pobrany **kod XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal, aby przełączać się do [zespołu pomocy technicznej](https://help.overdrive.com/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -136,36 +136,36 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
 2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
     b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Overdrive.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do przepełnienia.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Overdrive**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję przepełnienie **.**
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. In the applications list, select **Overdrive**.
+2. Na liście **aplikacje wybierz pozycję**przepełnienie.
 
-    ![The Overdrive link in the Applications list](common/all-applications.png)
+    ![Link przełączenia na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -181,25 +181,25 @@ In this section, you enable Britta Simon to use Azure single sign-on by granting
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-overdrive-test-user"></a>Create Overdrive test user
+### <a name="create-overdrive-test-user"></a>Utwórz użytkownika testowego z przełożeniem
 
-In this section, a user called Britta Simon is created in Overdrive. Overdrive supports just-in-time user provisioning, which is enabled by default. W tej sekcji nie musisz niczego robić. If a user doesn't already exist in Overdrive, a new one is created after authentication.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w przepełnieniu. Przepełnienie obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje na przejściu, zostanie utworzony nowy po uwierzytelnieniu.
 
 >[!NOTE]
->You can use any other OverDrive user account creation tools or APIs provided by OverDrive to provision Azure AD user accounts.
+>Za pomocą innych narzędzi do tworzenia kont użytkowników lub interfejsów API dostarczanych przez przełożenie można inicjować konta użytkowników usługi Azure AD.
 >
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-When you click the Overdrive tile in the Access Panel, you should be automatically signed in to the Overdrive for which you set up SSO. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka przepełnienie w panelu dostępu należy automatycznie zalogować się na dysku, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

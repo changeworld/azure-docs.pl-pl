@@ -37,7 +37,7 @@ Wynikiem jest relacja między obciążeniami powiązanymi z podsiecią i odpowia
 > - Device Explorer usługi Azure IoT
 >
 > Poniższe usługi firmy Microsoft muszą znajdować się w sieci wirtualnej
-> - Azure App Service
+> - Usługa Azure App Service
 > - Azure Functions
 
 > [!IMPORTANT]
@@ -70,7 +70,7 @@ Poniższy szablon Menedżer zasobów umożliwia dodanie reguły sieci wirtualnej
 Parametry szablonu:
 
 * **przestrzeń nazw**: Service Bus przestrzeń nazw.
-* **virtualNetworkingSubnetId**: pełną ścieżkę Menedżera zasobów w podsieci sieci wirtualnej; na przykład `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` domyślne podsieci sieci wirtualnej.
+* **virtualNetworkingSubnetId**: w pełni kwalifikowana ścieżka Menedżer zasobów dla podsieci sieci wirtualnej; na przykład `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` dla domyślnej podsieci sieci wirtualnej.
 
 > [!NOTE]
 > Chociaż nie ma możliwych reguł Odmów, szablon Azure Resource Manager ma ustawioną akcję domyślną **"Zezwalaj"** , która nie ogranicza połączeń.
@@ -80,7 +80,7 @@ Parametry szablonu:
 > ```json
 > "defaultAction": "Allow"
 > ```
-> to
+> na
 > ```json
 > "defaultAction": "Deny"
 > ```

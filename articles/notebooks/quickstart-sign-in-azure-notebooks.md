@@ -16,11 +16,11 @@ Mimo że można zawsze wyświetlić notesy platformy Azure, bez logowania, musis
 
 ## <a name="sign-in"></a>Logowanie
 
-1. Wybierz **Zaloguj** u góry po prawej stronie [notebooks.azure.com](https://notebooks.azure.com/).
+1. Wybierz pozycję **Zaloguj się** w prawym górnym rogu [Notebooks.Azure.com](https://notebooks.azure.com/).
 
     ![Lokalizacja polecenia Zaloguj się na notesy platformy Azure](media/accounts/sign-in-command.png)
 
-1. Po wyświetleniu monitu wprowadź adres e-mail Account Microsoft pracy lub służbowe konto i wybierz **dalej**. Typy kont zostały opisane na [Twoje konto użytkownika dla usługi Azure notesów](azure-notebooks-user-account.md). Jeśli nie masz Account Microsoft lub chcesz wprowadzić jeden do użycia z notesów usługi Azure, wybierz opcję **utworzyć**:
+1. Po wyświetleniu monitu wprowadź adres e-mail konta Microsoft lub konta służbowego, a następnie wybierz pozycję **dalej**. Typy kont są opisane na [koncie użytkownika na potrzeby Azure Notebooks](azure-notebooks-user-account.md). Jeśli nie masz konta Microsoft lub chcesz, aby było ono używane w odniesieniu do Azure Notebooks, wybierz pozycję **Utwórz jeden**:
 
     ![Utwórz nowe polecenie konta Microsoft w monit logowania](media/accounts/create-new-microsoft-account.png)
 
@@ -29,7 +29,7 @@ Mimo że można zawsze wyświetlić notesy platformy Azure, bez logowania, musis
 
 1. Wprowadź hasło po wyświetleniu monitu.
 
-1. Jeśli logujesz się po raz pierwszy, notesów usługi Azure z pytaniem o zezwolenie na dostęp do tego konta. Wybierz **tak** aby kontynuować:
+1. Jeśli logujesz się po raz pierwszy, notesów usługi Azure z pytaniem o zezwolenie na dostęp do tego konta. Wybierz pozycję **tak** , aby kontynuować:
 
     ![Wiersz uprawnień konta](media/accounts/account-permission-prompt.png)
 
@@ -39,9 +39,9 @@ Mimo że można zawsze wyświetlić notesy platformy Azure, bez logowania, musis
 
     ![Monit o podanie Identyfikatora użytkownika dla notesów usługi Azure](media/accounts/create-user-id.png)
 
-    Jeśli wybierzesz **nie, dziękuję**, notesy platformy Azure w dalszym ciągu wyświetlenie monitu o nazwę użytkownika każdym zalogowaniu. W dowolnym momencie można również ustawić identyfikator użytkownika usługi [profilu użytkownika](azure-notebooks-user-profile.md).
+    Jeśli wybierzesz pozycję **nie dziękuję**, Azure Notebooks nadal monitować o podanie identyfikatora użytkownika przy każdym logowaniu. Identyfikator użytkownika można również ustawić w dowolnym momencie w [profilu użytkownika](azure-notebooks-user-profile.md).
 
-1. Po pomyślnym zalogowaniu notesy platformy Azure przechodzi do strony swojego profilu publicznego, w którym można wybrać **edytować informacje o profilu** Wypełnij pozostałe informacje (Aby uzyskać więcej informacji, zobacz [swój profil i identyfikator użytkownika](azure-notebooks-user-profile.md)):
+1. Po pomyślnym zalogowaniu Azure Notebooks przechodzi do strony profilu publicznego, na której można wybrać opcję **Edytuj informacje o profilu** , aby wypełnić pozostałe informacje (Aby uzyskać więcej informacji, zobacz [profil i identyfikator użytkownika](azure-notebooks-user-profile.md)):
 
     ![Widok początkowy strony profilu notesy platformy Azure](media/accounts/profile-page-new.png)
 
@@ -50,7 +50,7 @@ Mimo że można zawsze wyświetlić notesy platformy Azure, bez logowania, musis
 
 ## <a name="sign-out"></a>Wyloguj
 
-Aby się wylogować, wybierz swoją nazwę użytkownika w prawym górnym rogu strony, a następnie wybierz **Wyloguj**:
+Aby się wylogować, wybierz swoją nazwę użytkownika w prawym górnym rogu strony, a następnie wybierz pozycję **Wyloguj się**:
 
 ![Lokalizacja polecenia wylogowania w notesy platformy Azure](media/accounts/sign-out-command.png)
 

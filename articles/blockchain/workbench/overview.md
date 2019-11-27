@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Workbench Preview overview
-description: Overview of Azure Blockchain Workbench Preview and its capabilities.
+title: Omówienie usługi Azure łańcucha bloków Workbench w wersji zapoznawczej
+description: Omówienie usługi Azure łańcucha bloków Workbench w wersji zapoznawczej i jej możliwości.
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
@@ -13,7 +13,7 @@ ms.locfileid: "74324562"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Czym jest usługa Azure Blockchain Workbench?
 
-Azure Blockchain Workbench Preview is a collection of Azure services and capabilities designed to help you create and deploy blockchain applications to share business processes and data with other organizations. Usługa Azure Blockchain Workbench udostępnia szkielet infrastruktury do tworzenia aplikacji łańcucha bloków, umożliwiając deweloperom skoncentrowanie się na tworzeniu logiki biznesowej i kontraktów inteligentnych. Ułatwia również tworzenie aplikacji łańcucha bloków dzięki integracji kilku usług i funkcji platformy Azure w celu zautomatyzowania typowych zadań projektowych.
+Usługa Azure łańcucha bloków Workbench w wersji zapoznawczej to zbiór usług i funkcji platformy Azure, które ułatwiają tworzenie i wdrażanie aplikacji łańcucha bloków w celu udostępniania procesów i danych firmowych innym organizacjom. Usługa Azure Blockchain Workbench udostępnia szkielet infrastruktury do tworzenia aplikacji łańcucha bloków, umożliwiając deweloperom skoncentrowanie się na tworzeniu logiki biznesowej i kontraktów inteligentnych. Ułatwia również tworzenie aplikacji łańcucha bloków dzięki integracji kilku usług i funkcji platformy Azure w celu zautomatyzowania typowych zadań projektowych.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
@@ -43,7 +43,7 @@ W przypadku istniejących protokołów łańcucha bloków tożsamości łańcuch
 
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Synchronizowanie danych łańcucha z magazynem poza łańcuchem
 
-Usługa Azure Blockchain Workbench ułatwia analizowanie zdarzeń i danych łańcucha bloków dzięki automatycznemu synchronizowaniu danych łańcucha bloków z magazynem poza łańcuchem. Zamiast wyodrębniać dane bezpośrednio z łańcucha bloków, można wysyłać zapytania do systemów baz danych poza łańcuchem, takich jak SQL Server. Blockchain expertise is not required for end users who are doing data analysis tasks.
+Usługa Azure Blockchain Workbench ułatwia analizowanie zdarzeń i danych łańcucha bloków dzięki automatycznemu synchronizowaniu danych łańcucha bloków z magazynem poza łańcuchem. Zamiast wyodrębniać dane bezpośrednio z łańcucha bloków, można wysyłać zapytania do systemów baz danych poza łańcuchem, takich jak SQL Server. Znajomość łańcucha bloków nie jest wymagana dla użytkowników końcowych, którzy wykonują zadania analizy danych.
 
 ## <a name="next-steps"></a>Następne kroki
 

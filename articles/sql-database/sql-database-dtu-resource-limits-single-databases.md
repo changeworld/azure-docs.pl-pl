@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 75611dd36196c722254d694e9753deb982e2570d
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811286"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539338"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu jednostek DTU
 
@@ -43,7 +43,13 @@ W poniższych tabelach przedstawiono zasoby dostępne dla pojedynczej bazy danyc
 | Maksymalna liczba współbieżnych sesji | 300 |
 |||
 
-### <a name="standard-service-tier"></a>Standardowa warstwa usługi
+> [!IMPORTANT]
+> Podstawowa warstwa usług zapewnia mniej niż jeden rdzeń wirtualny (CPU).  W przypadku obciążeń intensywnie korzystających z procesora CPU zaleca się użycie warstwy usług S3 lub wyższej. 
+>
+>W przypadku magazynu danych podstawowa warstwa usług jest umieszczana na stronach standardowych obiektów BLOB. Standardowe obiekty blob stronicowe korzystają z nośników magazynowania opartych na dyskach twardych i najlepiej nadają się do tworzenia, testowania i innych rzadko używanych obciążeń, które są mniej wrażliwe na zmienności wydajności.
+>
+
+### <a name="standard-service-tier"></a>Warstwa usługi Standardowa
 
 | **Rozmiar obliczeń** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
@@ -54,6 +60,12 @@ W poniższych tabelach przedstawiono zasoby dostępne dla pojedynczej bazy danyc
 | Maksymalna liczba współbieżnych procesów roboczych (żądań)| 60 | 90 | 120 | 200 |
 | Maksymalna liczba współbieżnych sesji |600 | 900 | 1200 | 2400 |
 ||||||
+
+> [!IMPORTANT]
+> Warstwy Standardowa S0, S1 i S2 zapewniają mniej niż jeden rdzeń wirtualny (CPU).  W przypadku obciążeń intensywnie korzystających z procesora CPU zaleca się użycie warstwy usług S3 lub wyższej. 
+>
+>W przypadku magazynu danych standardowe warstwy usług S0 i S1 są umieszczane na stronach standardowych obiektów BLOB. Standardowe obiekty blob stronicowe korzystają z nośników magazynowania opartych na dyskach twardych i najlepiej nadają się do tworzenia, testowania i innych rzadko używanych obciążeń, które są mniej wrażliwe na zmienności wydajności.
+>
 
 ### <a name="standard-service-tier-continued"></a>Standardowa warstwa usług (ciąg dalszy)
 
@@ -72,8 +84,8 @@ W poniższych tabelach przedstawiono zasoby dostępne dla pojedynczej bazy danyc
 | **Rozmiar obliczeń** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maksymalna liczba jednostek DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Uwzględniony magazyn (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
-| Maksymalna liczba opcji magazynu (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
+| Uwzględniony magazyn (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
+| Maksymalna liczba opcji magazynu (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
 | Maksymalna pojemność magazynu OLTP w pamięci (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maksymalna liczba współbieżnych sesji | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |

@@ -1,6 +1,6 @@
 ---
-title: Enroll X.509 device to Azure Device Provisioning Service using C#
-description: W tym przewodniku Szybki start używane są rejestracje grupowe. In this quickstart, enroll X.509 devices to the Azure IoT Hub Device Provisioning Service using C#.
+title: Rejestrowanie urządzenia X. 509 w usłudze Azure Device Provisioning przy użyciuC#
+description: W tym przewodniku Szybki start używane są rejestracje grupowe. W tym przewodniku szybki start Zarejestruj urządzenia X. 509 na platformie Azure C#IoT Hub Device Provisioning Service przy użyciu programu.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -20,36 +20,36 @@ ms.locfileid: "74423323"
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Ten przewodnik szybki Start przedstawia sposób użycia języka C# w celu programowego utworzenia [grupy rejestracji](concepts-service.md#enrollment-group), która będzie używać certyfikatów X.509 pośredniego lub głównego urzędu certyfikacji. The enrollment group is created by using the [Microsoft Azure IoT SDK for .NET](https://github.com/Azure/azure-iot-sdk-csharp) and a sample C# .NET Core application. Grupa rejestracji steruje dostępem do usługi aprowizacji dla urządzeń, które mają wspólny certyfikat podpisywania w swoim łańcuchu certyfikatów. Aby dowiedzieć się więcej, zobacz [Sterowanie dostępem urządzenia do usługi aprowizacji za pomocą certyfikatów X.509](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Aby uzyskać więcej informacji na temat używania infrastruktury kluczy publicznych opartej na certyfikatach X.509 z usługą Azure IoT Hub i Device Provisioning, zobacz [Omówienie zabezpieczeń certyfikatu X.509 urzędu certyfikacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
+Ten przewodnik szybki Start przedstawia sposób użycia języka C# w celu programowego utworzenia [grupy rejestracji](concepts-service.md#enrollment-group), która będzie używać certyfikatów X.509 pośredniego lub głównego urzędu certyfikacji. Grupa rejestracji jest tworzona przy użyciu [zestawu SDK usługi Microsoft Azure IoT dla platformy .NET](https://github.com/Azure/azure-iot-sdk-csharp) i przykładowej C# aplikacji platformy .NET Core. Grupa rejestracji steruje dostępem do usługi aprowizacji dla urządzeń, które mają wspólny certyfikat podpisywania w swoim łańcuchu certyfikatów. Aby dowiedzieć się więcej, zobacz [Sterowanie dostępem urządzenia do usługi aprowizacji za pomocą certyfikatów X.509](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Aby uzyskać więcej informacji na temat używania infrastruktury kluczy publicznych opartej na certyfikatach X.509 z usługą Azure IoT Hub i Device Provisioning, zobacz [Omówienie zabezpieczeń certyfikatu X.509 urzędu certyfikacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
 
-This quickstart expects you've already created an IoT hub and Device Provisioning Service instance. If you haven't already created these resources, complete the [Set up IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) quickstart before you continue with this article.
+Ten przewodnik Szybki Start oczekuje, że utworzono już wystąpienie usługi IoT Hub i Device Provisioning. Jeśli te zasoby nie zostały jeszcze utworzone, przed kontynuowaniem pracy z tym artykułem Ukończ [konfigurację IoT Hub Device Provisioning Service za pomocą](./quick-setup-auto-provision.md) przewodnika Azure Portal.
 
-Although the steps in this article work on both Windows and Linux computers, this article uses a Windows development computer.
+Chociaż kroki opisane w tym artykule działają na komputerach z systemem Windows i Linux, w tym artykule jest wykorzystywany komputer deweloperski systemu Windows.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Install [Visual Studio 2019](https://www.visualstudio.com/vs/).
-* Install [.NET Core SDK](https://www.microsoft.com/net/download/windows).
-* [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
+* Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/vs/).
+* Zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/windows).
+* Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
 
 ## <a name="prepare-test-certificates"></a>Przygotowywanie certyfikatów testowych
 
 Na potrzeby tego przewodnika Szybki start musisz mieć plik pem lub cer, który zawiera publiczną część certyfikatu X.509 pośredniego lub głównego urzędu certyfikacji. Ten certyfikat musi zostać przekazany do usługi aprowizacji i zweryfikowany przez usługę.
 
-The [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) contains test tooling that can help you create an X.509 certificate chain, upload a root or intermediate certificate from that chain, and do proof-of-possession with the service to verify the certificate.
+[Zestaw SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c) zawiera narzędzia testowe, które mogą ułatwić tworzenie łańcucha certyfikatów X. 509, przekazywanie certyfikatu głównego lub pośredniego z tego łańcucha oraz wykonywanie dowodu posiadania w usłudze w celu zweryfikowania certyfikatu.
 
 > [!CAUTION]
-> Use certificates created with the SDK tooling for development testing only.
-> Do not use these certificates in production.
-> They contain hard-coded passwords, such as *1234*, that expire after 30 days.
+> Używaj certyfikatów utworzonych przy użyciu narzędzi zestawu SDK wyłącznie do testowania deweloperskiego.
+> Nie należy używać tych certyfikatów w środowisku produkcyjnym.
+> Zawierają one stałe hasła, na przykład *1234*, które wygasają po upływie 30 dni.
 > Informacje na temat uzyskiwania certyfikatów odpowiednich do użycia w produkcji znajdują się w artykule [Jak uzyskać certyfikat X.509 urzędu certyfikacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) w dokumentacji usługi Azure IoT Hub.
 >
 
-To use this test tooling to generate certificates, do the following steps:
+Aby użyć tego narzędzia testowego do wygenerowania certyfikatów, wykonaj następujące czynności:
 
-1. Open a Command Prompt window or Git Bash shell, and change to a working folder on your computer. Run the following command to clone the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub repository:
+1. Otwórz okno wiersza polecenia lub powłokę usługi git bash i przejdź do folderu roboczego na komputerze. Uruchom następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) :
 
    ```cmd/sh
    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
@@ -61,37 +61,37 @@ To use this test tooling to generate certificates, do the following steps:
 
 1. Postępuj zgodnie z instrukcjami opisanymi w artykule [Zarządzanie certyfikatami testowymi urzędu certyfikacji na potrzeby przykładów i samouczków](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
-In addition to the tooling in the C SDK, the [Group certificate verification sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) in the *Microsoft Azure IoT SDK for .NET* shows how to do proof-of-possession in C# with an existing X.509 intermediate or root CA certificate.
+Oprócz narzędzi w zestawie C SDK, [przykład weryfikacji certyfikatu grupy](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) w *zestawie Microsoft Azure IoT SDK dla platformy .NET* pokazuje, jak przeprowadzić potwierdzenie posiadania w programie C# przy użyciu istniejącego certyfikatu X. 509 pośredniego lub głównego urzędu certyfikacji.
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>Uzyskiwanie parametrów połączenia usługi aprowizacji
 
 Na potrzeby przykładu w tym przewodniku Szybki start będą potrzebne parametry połączenia usługi aprowizacji.
 
-1. Sign in to the Azure portal, select **All resources**, and then your Device Provisioning Service.
+1. Zaloguj się do Azure Portal, wybierz pozycję **wszystkie zasoby**, a następnie usługę Device Provisioning.
 
-1. Select **Shared access policies**, then choose the access policy you want to use to open its properties. In **Access Policy**, copy and save the primary key connection string.
+1. Wybierz pozycję **zasady dostępu współdzielonego**, a następnie wybierz zasady dostępu, których chcesz użyć, aby otworzyć jego właściwości. W obszarze **zasady dostępu**skopiuj i Zapisz parametry połączenia klucza podstawowego.
 
     ![Pobieranie parametrów połączenia usługi aprowizacji z portalu](media/quick-enroll-device-x509-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-enrollment-group-sample"></a>Tworzenie przykładowej grupy rejestracji 
 
-This section shows how to create a .NET Core console app that adds an enrollment group to your provisioning service. Wprowadzając pewne modyfikacje, za pomocą tych kroków można również utworzyć aplikację konsolową [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) służącą do dodawania grupy rejestracji. Aby dowiedzieć się więcej na temat programowania w systemie IoT Core, zobacz [dokumentację dla deweloperów systemu Windows IoT Core](https://docs.microsoft.com/windows/iot-core/).
+W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, która dodaje grupę rejestracji do usługi aprowizacji. Wprowadzając pewne modyfikacje, za pomocą tych kroków można również utworzyć aplikację konsolową [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) służącą do dodawania grupy rejestracji. Aby dowiedzieć się więcej na temat programowania w systemie IoT Core, zobacz [dokumentację dla deweloperów systemu Windows IoT Core](https://docs.microsoft.com/windows/iot-core/).
 
-1. Open Visual Studio and select **Create a new project**. In **Create a new project**, choose the **Console App (.NET Core)** for C# project template and select **Next**.
+1. Otwórz program Visual Studio i wybierz pozycję **Utwórz nowy projekt**. W obszarze **Utwórz nowy projekt**wybierz szablon **aplikacja konsoli (.NET Core)** dla C# projektu i wybierz pozycję **dalej**.
 
-1. Name the project *CreateEnrollmentGroup*, and then press **Create**.
+1. Nazwij projekt moja *rejestracja*, a następnie naciśnij pozycję **Utwórz**.
 
-    ![Configure Visual C# Windows Classic Desktop project](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
+    ![Konfigurowanie klasycznego projektu programu Visual C# Windows Desktop](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
 
-1. When the solution opens in Visual Studio, in the **Solution Explorer** pane, right-click the **CreateEnrollmentGroup** project, and then select **Manage NuGet Packages**.
+1. Gdy w programie Visual Studio zostanie otwarte rozwiązanie, w okienku **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy **projekt a** następnie wybierz pozycję **Zarządzaj pakietami NuGet**.
 
-1. In **NuGet Package Manager**, select **Browse**, search for and choose **Microsoft.Azure.Devices.Provisioning.Service**, and then press **Install**.
+1. W **Menedżerze pakietów NuGet**wybierz pozycję **Przeglądaj**, Wyszukaj i wybierz pozycję **Microsoft. Azure. Devices. Provisioning. Service**, a następnie naciśnij klawisz **Install**.
 
     ![Okno Menedżera pakietów NuGet](media//quick-enroll-device-x509-csharp/add-nuget.png)
 
-   This step downloads, installs, and adds a reference to the [Azure IoT Provisioning Service Client SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet package and its dependencies.
+   Ten krok spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet [zestawu SDK klienta usługi Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) i jego zależności.
 
-1. Add the following `using` statements after the other `using` statements at the top of `Program.cs`:
+1. Dodaj następujące instrukcje `using` po innych instrukcjach `using` w górnej części `Program.cs`:
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -99,7 +99,7 @@ This section shows how to create a .NET Core console app that adds an enrollment
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Add the following fields to the `Program` class, and make the listed changes.  
+1. Dodaj następujące pola do klasy `Program` i wprowadź zmiany na liście.  
 
    ```csharp
    private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
@@ -107,11 +107,11 @@ This section shows how to create a .NET Core console app that adds an enrollment
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * Replace the `ProvisioningServiceConnectionString` placeholder value with the connection string of the provisioning service that you want to create the enrollment for.
+   * Zastąp `ProvisioningServiceConnectionString` wartość symbolu zastępczego parametrami połączenia usługi aprowizacji, dla której chcesz utworzyć rejestrację.
 
-   * Replace the `X509RootCertPath` placeholder value with the path to a .pem or .cer file. This file represents the public part of an intermediate or root CA X.509 certificate that has been previously uploaded and verified with your provisioning service.
+   * Zastąp wartość symbolu zastępczego `X509RootCertPath` ścieżką do pliku PEM lub CER. Ten plik reprezentuje publiczną część pośredniego lub głównego certyfikatu X. 509 urzędu certyfikacji, który został wcześniej przekazany i zweryfikowany przy użyciu usługi aprowizacji.
 
-   * You may optionally change the `EnrollmentGroupId` value. Ciąg może zawierać tylko małe litery i łączniki.
+   * Opcjonalnie możesz zmienić wartość `EnrollmentGroupId`. Ciąg może zawierać tylko małe litery i łączniki.
 
    > [!IMPORTANT]
    > W kodzie produkcyjnym pamiętaj o następujących kwestiach dotyczących zabezpieczeń:
@@ -119,7 +119,7 @@ This section shows how to create a .NET Core console app that adds an enrollment
    > * Trwałe kodowanie parametrów połączenia administratora usługi aprowizacji jest niezgodne z najlepszymi rozwiązaniami dotyczącymi zabezpieczeń. Zamiast tego parametry połączenia powinny być przechowywane w sposób bezpieczny, np. w zabezpieczonym pliku konfiguracji lub rejestrze.
    > * Pamiętaj, aby przekazać tylko publiczną część certyfikatu podpisywania. Nigdy nie przekazuj plików pfx (PKCS12) ani plików pem zawierających klucze prywatne do usługi aprowizacji.
 
-1. Add the following method to the `Program` class. This code creates an enrollment group entry and then calls the `CreateOrUpdateEnrollmentGroupAsync` method on `ProvisioningServiceClient` to add the enrollment group to the provisioning service.
+1. Dodaj następującą metodę do klasy `Program`. Ten kod tworzy wpis grupy rejestracji, a następnie wywołuje metodę `CreateOrUpdateEnrollmentGroupAsync` na `ProvisioningServiceClient` w celu dodania grupy rejestracji do usługi aprowizacji.
 
    ```csharp
    public static async Task RunSample()
@@ -155,7 +155,7 @@ This section shows how to create a .NET Core console app that adds an enrollment
    }
    ```
 
-1. Finally, replace the body of the `Main` method with the following lines:
+1. Na koniec Zastąp treść metody `Main` następującymi wierszami:
 
    ```csharp
    RunSample().GetAwaiter().GetResult();
@@ -167,27 +167,27 @@ This section shows how to create a .NET Core console app that adds an enrollment
 
 ## <a name="run-the-enrollment-group-sample"></a>Uruchamianie przykładowej grupy rejestracji
   
-Uruchom przykład w programie Visual Studio, aby utworzyć grupę rejestracji. A Command Prompt window will appear and start showing confirmation messages. On successful creation, the Command Prompt window displays the properties of the new enrollment group.
+Uruchom przykład w programie Visual Studio, aby utworzyć grupę rejestracji. Zostanie wyświetlone okno wiersza polecenia i rozpocznie się wyświetlanie komunikatów potwierdzających. Po pomyślnym utworzeniu okna wiersza polecenia zostaną wyświetlone właściwości nowej grupy rejestracji.
 
-You can verify that the enrollment group has been created. Go to the Device Provisioning Service summary, and select **Manage enrollments**, then select **Enrollment Groups**. Powinien zostać wyświetlony nowy wpis rejestracji odpowiadający identyfikatorowi rejestracji użytemu w przykładzie.
+Można sprawdzić, czy grupa rejestracji została utworzona. Przejdź do podsumowania usługi Device Provisioning, a następnie wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz pozycję **grupy rejestracji**. Powinien zostać wyświetlony nowy wpis rejestracji odpowiadający identyfikatorowi rejestracji użytemu w przykładzie.
 
 ![Właściwości rejestracji w portalu](media/quick-enroll-device-x509-csharp/verify-enrollment-portal-vs2019.png)
 
-Select the entry to verify the certificate thumbprint and other properties for the entry.
+Wybierz wpis, aby zweryfikować odcisk palca certyfikatu i inne właściwości wpisu.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-If you plan to explore the C# service sample, don't clean up the resources created in this quickstart. Otherwise, use the following steps to delete all resources created by this quickstart.
+Jeśli planujesz Eksplorowanie przykładu C# usługi, nie czyść zasobów utworzonych w tym przewodniku Szybki Start. W przeciwnym razie wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki Start.
 
-1. Close the C# sample output window on your computer.
+1. Zamknij okno C# przykładowe dane wyjściowe na komputerze.
 
-1. Navigate to your Device Provisioning service in the Azure portal, select **Manage enrollments**, and then select **Enrollment Groups**. Select the *Registration ID* for the enrollment entry you created using this quickstart and press **Delete**.
+1. Przejdź do usługi Device Provisioning w Azure Portal wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz pozycję **grupy rejestracji**. Wybierz *Identyfikator rejestracji* wpisu rejestracji utworzonego w ramach tego przewodnika Szybki Start i naciśnij klawisz **delete**.
 
-1. From your Device Provisioning service in the Azure portal, select **Certificates**, choose the certificate you uploaded for this quickstart, and press **Delete** at the top of **Certificate Details**.  
+1. Z poziomu usługi Device Provisioning w Azure Portal wybierz pozycję **Certyfikaty**, wybierz certyfikat, który został przekazany do tego przewodnika Szybki Start, a następnie naciśnij klawisz **delete** w górnej części strony **Szczegóły certyfikatu**.  
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this quickstart, you created an enrollment group for an X.509 intermediate or root CA certificate using the Azure IoT Hub Device Provisioning Service. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal.
+W tym przewodniku szybki start utworzono grupę rejestracji dla certyfikatu pośredniego lub głównego urzędu certyfikacji X. 509 przy użyciu IoT Hub Device Provisioning Service platformy Azure. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal.
 
 > [!div class="nextstepaction"]
 > [Samouczki dla usługi Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

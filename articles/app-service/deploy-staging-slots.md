@@ -1,6 +1,6 @@
 ---
-title: Set up staging environments for web apps in Azure App Service | Microsoft Docs
-description: Learn how to use staged publishing for web apps in Azure App Service.
+title: Konfigurowanie środowisk przejściowych dla aplikacji sieci Web w Azure App Service | Microsoft Docs
+description: Dowiedz się, jak używać publikowania etapowego dla aplikacji sieci Web w programie Azure App Service.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -22,188 +22,188 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382282"
 ---
-# <a name="set-up-staging-environments-in-azure-app-service"></a>Set up staging environments in Azure App Service
+# <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w Azure App Service
 <a name="Overview"></a>
 
-When you deploy your web app, web app on Linux, mobile back end, or API app to [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), you can use a separate deployment slot instead of the default production slot when you're running in the **Standard**, **Premium**, or **Isolated** App Service plan tier. Deployment slots are live apps with their own host names. App content and configurations elements can be swapped between two deployment slots, including the production slot. 
+W przypadku wdrażania aplikacji sieci Web, aplikacji sieci Web w systemie Linux, zaplecza mobilnego lub aplikacji interfejsu API do [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)można użyć oddzielnego miejsca wdrożenia zamiast domyślnego miejsca produkcyjnego, gdy jest uruchomiony program w warstwie **standardowa**, **Premium**lub **izolowany** Warstwa planu App Service. Miejsca wdrożenia to aplikacje na żywo z własnymi nazwami hostów. Elementy zawartości i konfiguracji aplikacji można wymieniać między dwoma miejscami wdrożenia, w tym z miejscem produkcyjnym. 
 
-Deploying your application to a non-production slot has the following benefits:
+Wdrażanie aplikacji w gnieździe nieprodukcyjnym ma następujące zalety:
 
-* You can validate app changes in a staging deployment slot before swapping it with the production slot.
-* Deploying an app to a slot first and swapping it into production makes sure that all instances of the slot are warmed up before being swapped into production. This eliminates downtime when you deploy your app. The traffic redirection is seamless, and no requests are dropped because of swap operations. You can automate this entire workflow by configuring [auto swap](#Auto-Swap) when pre-swap validation isn't needed.
-* After a swap, the slot with previously staged app now has the previous production app. If the changes swapped into the production slot aren't as you expect, you can perform the same swap immediately to get your "last known good site" back.
+* Można sprawdzić poprawność zmian aplikacji w miejscu wdrożenia przejściowego przed jego zainstalowaniem z miejscem produkcyjnym.
+* Najpierw Wdrażaj aplikację w gnieździe i wymieniaj ją w środowisku produkcyjnym, aby upewnić się, że wszystkie wystąpienia gniazda są rozgrzane przed zamianą na środowisko produkcyjne. Eliminuje to przestoje podczas wdrażania aplikacji. Przekierowywanie ruchu jest płynne i żadne żądania nie są porzucane z powodu operacji zamiany. Możesz zautomatyzować ten cały przepływ pracy, konfigurując [Automatyczne zamienianie](#Auto-Swap) , gdy nie jest wymagana Walidacja sprzed wymiany.
+* Po wymianie miejsce z wcześniej przemieszczoną aplikacją ma teraz poprzednią aplikację produkcyjną. Jeśli zmiany wprowadzone w gnieździe produkcyjnym nie są oczekiwane, można wykonać te same zamiany w celu przywrócenia "ostatniej znanej dobrej lokacji".
 
-Each App Service plan tier supports a different number of deployment slots. There's no additional charge for using deployment slots. To find out the number of slots your app's tier supports, see [App Service limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
+Każda App Service warstwy planu obsługuje inną liczbę miejsc wdrożenia. Nie ma dodatkowych opłat za korzystanie z miejsc wdrożenia. Aby sprawdzić liczbę gniazd obsługiwanych przez warstwę aplikacji, zobacz [limity App Service](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
 
-To scale your app to a different tier, make sure that the target tier supports the number of slots your app already uses. For example, if your app has more than five slots, you can't scale it down to the **Standard** tier, because the **Standard** tier supports only five deployment slots. 
+Aby skalować aplikację do innej warstwy, upewnij się, że warstwa docelowa obsługuje liczbę gniazd używanych przez aplikację. Na przykład jeśli aplikacja ma więcej niż pięć gniazd, nie można skalować jej w dół do warstwy **standardowa** , ponieważ warstwa **standardowa** obsługuje tylko pięć miejsc wdrożenia. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Add a slot
-The app must be running in the **Standard**, **Premium**, or **Isolated** tier in order for you to enable multiple deployment slots.
+## <a name="add-a-slot"></a>Dodaj gniazdo
+Aplikacja musi być uruchomiona w warstwie **standardowa**, **Premium**lub **izolowanej** , aby można było włączyć wiele miejsc wdrożenia.
 
-1. In the [Azure portal](https://portal.azure.com/), open your app's [resource page](../azure-resource-manager/manage-resources-portal.md#manage-resources).
+1. W [Azure Portal](https://portal.azure.com/)Otwórz [stronę zasobów](../azure-resource-manager/manage-resources-portal.md#manage-resources)aplikacji.
 
-2. In the left pane, select **Deployment slots** > **Add Slot**.
+2. W lewym okienku wybierz pozycję miejsca **wdrożenia** > **Dodaj miejsce**.
    
-    ![Add a new deployment slot](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Dodaj nowe miejsce wdrożenia](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > If the app isn't already in the **Standard**, **Premium**, or **Isolated** tier, you receive a message that indicates the supported tiers for enabling staged publishing. At this point, you have the option to select **Upgrade** and go to the **Scale** tab of your app before continuing.
+   > Jeśli aplikacja nie jest jeszcze w warstwie **standardowa**, **Premium**lub **izolowana** , zostanie wyświetlony komunikat z informacją o obsługiwanych warstwach umożliwiających publikowanie etapowe. W tym momencie możesz wybrać opcję **Uaktualnij** i przejść do karty **Skala** aplikacji przed kontynuowaniem.
    > 
 
-3. In the **Add a slot** dialog box, give the slot a name, and select whether to clone an app configuration from another deployment slot. Select **Add** to continue.
+3. W oknie dialogowym **Dodaj gniazdo** Nadaj nazwę gnieździe i wybierz, czy chcesz sklonować konfigurację aplikacji z innego miejsca wdrożenia. Wybierz pozycję **Dodaj** , aby kontynuować.
    
-    ![Configuration source](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Źródło konfiguracji](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
-    You can clone a configuration from any existing slot. Settings that can be cloned include app settings, connection strings, language framework versions, web sockets, HTTP version, and platform bitness.
+    Konfigurację można sklonować z dowolnego istniejącego miejsca. Ustawienia, które można klonować, obejmują ustawienia aplikacji, parametry połączeń, wersje języka Framework, gniazda sieci Web, wersje protokołu HTTP i bitową platformę.
 
-4. After the slot is added, select **Close** to close the dialog box. The new slot is now shown on the **Deployment slots** page. By default, **Traffic %** is set to 0 for the new slot, with all customer traffic routed to the production slot.
+4. Po dodaniu miejsca wybierz pozycję **Zamknij** , aby zamknąć okno dialogowe. Nowe miejsce jest teraz wyświetlane na stronie **miejsc wdrożenia** . Domyślnie **ruch%** ma wartość 0 dla nowego gniazda, a cały ruch klienta jest kierowany do miejsca produkcyjnego.
 
-5. Select the new deployment slot to open that slot's resource page.
+5. Wybierz nowe miejsce wdrożenia, aby otworzyć stronę zasobów tego gniazda.
    
-    ![Deployment slot title](./media/web-sites-staged-publishing/StagingTitle.png)
+    ![Tytuł miejsca wdrożenia](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    The staging slot has a management page just like any other App Service app. You can change the slot's configuration. The name of the slot is shown at the top of the page to remind you that you're viewing the deployment slot.
+    Miejsce przejściowe ma stronę zarządzania, podobnie jak każda inna aplikacja App Service. Można zmienić konfigurację gniazda. Nazwa gniazda jest wyświetlana u góry strony, aby przypominać, że oglądasz miejsce wdrożenia.
 
-6. Select the app URL on the slot's resource page. The deployment slot has its own host name and is also a live app. To limit public access to the deployment slot, see [Azure App Service IP restrictions](app-service-ip-restrictions.md).
+6. Wybierz adres URL aplikacji na stronie zasobów gniazda. Miejsce wdrożenia ma własną nazwę hosta i jest również działającą aplikacją. Aby ograniczyć dostęp publiczny do miejsca wdrożenia, zobacz [Azure App Service ograniczenia adresów IP](app-service-ip-restrictions.md).
 
-The new deployment slot has no content, even if you clone the settings from a different slot. For example, you can [publish to this slot with Git](app-service-deploy-local-git.md). You can deploy to the slot from a different repository branch or a different repository. 
+Nowe miejsce wdrożenia nie ma zawartości, nawet w przypadku klonowania ustawień z innego gniazda. Na przykład możesz [publikować w tym gnieździe przy użyciu narzędzia Git](app-service-deploy-local-git.md). Można wdrożyć w gnieździe z innej gałęzi repozytorium lub innego repozytorium. 
 
 <a name="AboutConfiguration"></a>
 
-## <a name="what-happens-during-a-swap"></a>What happens during a swap
+## <a name="what-happens-during-a-swap"></a>Co się stanie w trakcie wymiany
 
-### <a name="swap-operation-steps"></a>Swap operation steps
+### <a name="swap-operation-steps"></a>Etapy operacji zamiany
 
-When you swap two slots (usually from a staging slot into the production slot), App Service does the following to ensure that the target slot doesn't experience downtime:
+W przypadku wymiany dwóch gniazd (zwykle z miejsca przejściowego w gnieździe produkcyjnym) App Service wykonuje następujące czynności, aby upewnić się, że w gnieździe docelowym nie występują przestoje:
 
-1. Apply the following settings from the target slot (for example, the production slot) to all instances of the source slot: 
-    - [Slot-specific](#which-settings-are-swapped) app settings and connection strings, if applicable.
-    - [Continuous deployment](deploy-continuous-deployment.md) settings, if enabled.
-    - [App Service authentication](overview-authentication-authorization.md) settings, if enabled.
+1. Zastosuj następujące ustawienia z miejsca docelowego (na przykład gniazdo produkcyjne) do wszystkich wystąpień miejsca źródłowego: 
+    - Ustawienia aplikacji [specyficzne dla gniazda](#which-settings-are-swapped) i parametry połączenia, jeśli ma zastosowanie.
+    - Ustawienia [ciągłego wdrażania](deploy-continuous-deployment.md) , jeśli są włączone.
+    - [App Service ustawienia uwierzytelniania](overview-authentication-authorization.md) , jeśli są włączone.
     
-    Any of these cases trigger all instances in the source slot to restart. During [swap with preview](#Multi-Phase), this marks the end of the first phase. The swap operation is paused, and you can validate that the source slot works correctly with the target slot's settings.
+    Każdy z tych przypadków wyzwala ponowne uruchomienie wszystkich wystąpień w gnieździe źródłowym. Podczas [wymiany z podglądem](#Multi-Phase)oznacza koniec pierwszej fazy. Operacja wymiany jest wstrzymana i można sprawdzić, czy gniazdo źródłowe działa prawidłowo z ustawieniami miejsca docelowego.
 
-1. Wait for every instance in the source slot to complete its restart. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation.
+1. Zaczekaj na każde wystąpienie w gnieździe źródłowym, aby zakończyć jego ponowne uruchomienie. Jeśli jakiekolwiek wystąpienie nie powiedzie się ponownie, operacja wymiany przywraca wszystkie zmiany w gnieździe źródłowym i zatrzymuje operację.
 
-1. If [local cache](overview-local-cache.md) is enabled, trigger local cache initialization by making an HTTP request to the application root ("/") on each instance of the source slot. Wait until each instance returns any HTTP response. Local cache initialization causes another restart on each instance.
+1. Jeśli [lokalna pamięć podręczna](overview-local-cache.md) jest włączona, Wyzwalaj inicjalizację lokalnej pamięci podręcznej, wysyłając żądanie HTTP do głównego katalogu aplikacji ("/") w każdym wystąpieniu miejsca źródłowego. Poczekaj, aż każde wystąpienie zwróci odpowiedź HTTP. Inicjalizacja lokalnej pamięci podręcznej powoduje inne ponowne uruchomienie każdego wystąpienia.
 
-1. If [auto swap](#Auto-Swap) is enabled with [custom warm-up](#Warm-up), trigger [Application Initiation](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) by making an HTTP request to the application root ("/") on each instance of the source slot.
+1. Jeśli [Funkcja autoswap](#Auto-Swap) jest włączona z [niestandardowym rozruchem](#Warm-up), wyzwól [INICJOWANIE aplikacji](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) , wysyłając żądanie HTTP do głównego katalogu aplikacji ("/") w każdym wystąpieniu miejsca źródłowego.
 
-    If `applicationInitialization` isn't specified, trigger an HTTP request to the application root of the source slot on each instance. 
+    Jeśli nie określono `applicationInitialization`, wyzwól żądanie HTTP do katalogu głównego aplikacji miejsca źródłowego w każdym wystąpieniu. 
     
-    If an instance returns any HTTP response, it's considered to be warmed up.
+    Jeśli wystąpienie zwróci dowolną odpowiedź HTTP, jest uznawana za rozgrzaną.
 
-1. If all instances on the source slot are warmed up successfully, swap the two slots by switching the routing rules for the two slots. After this step, the target slot (for example, the production slot) has the app that's previously warmed up in the source slot.
+1. Jeśli wszystkie wystąpienia w gnieździe źródłowym zostaną rozgrzane pomyślnie, Zastąp dwa gniazda, przełączając reguły routingu dla dwóch miejsc. Po wykonaniu tego kroku miejsce docelowe (na przykład miejsce produkcyjne) zawiera aplikację, która została wcześniej poddana w gnieździe źródłowym.
 
-1. Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying all settings and restarting the instances.
+1. Teraz, gdy gniazdo źródłowe zawiera wcześniej aplikację do wstępnego zamiany w gnieździe docelowym, wykonaj tę samą operację, stosując wszystkie ustawienia i ponownie uruchamiając wystąpienia.
 
-At any point of the swap operation, all work of initializing the swapped apps happens on the source slot. The target slot remains online while the source slot is being prepared and warmed up, regardless of where the swap succeeds or fails. To swap a staging slot with the production slot, make sure that the production slot is always the target slot. This way, the swap operation doesn't affect your production app.
+W dowolnym momencie operacji wymiany wszystkie prace inicjujące zamienione aplikacje odbywają się w miejscu źródłowym. Gniazdo docelowe pozostaje w trybie online, gdy gniazdo źródłowe jest przygotowywane i przerywane, bez względu na to, gdzie swap zakończy się powodzeniem, czy niepowodzeniem. Aby wymienić miejsce przejściowe z miejscem produkcyjnym, upewnij się, że miejsce produkcyjne jest zawsze miejscem docelowym. W ten sposób operacja zamiany nie ma wpływu na aplikację produkcyjną.
 
-### <a name="which-settings-are-swapped"></a>Which settings are swapped?
+### <a name="which-settings-are-swapped"></a>Które ustawienia są zamieniane?
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-To configure an app setting or connection string to stick to a specific slot (not swapped), go to the **Configuration** page for that slot. Add or edit a setting, and then select **deployment slot setting**. Selecting this check box tells App Service that the setting is not swappable. 
+Aby skonfigurować ustawienie aplikacji lub parametry połączenia w celu przejścia do określonego gniazda (nie zamieniono), przejdź do strony **konfiguracji** dla tego gniazda. Dodaj lub Edytuj ustawienie, a następnie wybierz pozycję **ustawienie miejsca wdrożenia**. Zaznaczenie tego pola wyboru instruuje App Service, że ustawienie nie jest wymieniane. 
 
-![Slot setting](./media/web-sites-staged-publishing/SlotSetting.png)
+![Ustawienie miejsca](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
-## <a name="swap-two-slots"></a>Swap two slots 
-You can swap deployment slots on your app's **Deployment slots** page and the **Overview** page. For technical details on the slot swap, see [What happens during swap](#AboutConfiguration).
+## <a name="swap-two-slots"></a>Wymiana dwóch gniazd 
+Możesz wymienić miejsca wdrożenia na stronie **miejsc wdrożenia** aplikacji i stronie **Przegląd** . Aby uzyskać szczegółowe informacje techniczne na temat wymiany gniazda, zobacz [co się dzieje podczas wymiany](#AboutConfiguration).
 
 > [!IMPORTANT]
-> Before you swap an app from a deployment slot into production, make sure that production is your target slot and that all settings in the source slot are configured exactly as you want to have them in production.
+> Przed zamianą aplikacji z miejsca wdrożenia na produkcyjną upewnij się, że produkcja jest miejscem docelowym i że wszystkie ustawienia w gnieździe źródłowym są skonfigurowane dokładnie tak, jak chcesz je w środowisku produkcyjnym.
 > 
 > 
 
-To swap deployment slots:
+Aby wymienić miejsca wdrożenia:
 
-1. Go to your app's **Deployment slots** page and select **Swap**.
+1. Przejdź do strony miejsca **wdrożenia** aplikacji i wybierz pozycję **Zamień**.
    
-    ![Swap button](./media/web-sites-staged-publishing/SwapButtonBar.png)
+    ![Przycisk zamiany](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-    The **Swap** dialog box shows settings in the selected source and target slots that will be changed.
+    Okno dialogowe **Zamiana** zawiera ustawienia w wybranych źródłowej i docelowej gnieździe, które zostaną zmienione.
 
-2. Select the desired **Source** and **Target** slots. Usually, the target is the production slot. Also, select the **Source Changes** and **Target Changes** tabs and verify that the configuration changes are expected. When you're finished, you can swap the slots immediately by selecting **Swap**.
+2. Wybierz żądane miejsce **źródłowe** i **docelowe** . Zwykle miejscem docelowym jest miejsce produkcyjne. Zaznacz również karty **zmiany źródła** i **docelowe zmiany** , a następnie sprawdź, czy zmiany konfiguracji są oczekiwane. Po zakończeniu możesz zamienić miejsca bezpośrednio, wybierając pozycję **Zamień**.
 
     ![Kończenie zamiany](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    To see how your target slot would run with the new settings before the swap actually happens, don't select **Swap**, but follow the instructions in [Swap with preview](#Multi-Phase).
+    Aby sprawdzić, jak miejsce docelowe będzie uruchamiane z nowymi ustawieniami przed faktycznym zastąpieniem, nie zaznaczaj opcji **Zamień**, ale postępuj zgodnie z instrukcjami w artykule [wymiana z podglądem](#Multi-Phase).
 
-3. When you're finished, close the dialog box by selecting **Close**.
+3. Po zakończeniu zamknij okno dialogowe, wybierając pozycję **Zamknij**.
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#troubleshoot-swaps).
 
 <a name="Multi-Phase"></a>
 
-### <a name="swap-with-preview-multi-phase-swap"></a>Swap with preview (multi-phase swap)
+### <a name="swap-with-preview-multi-phase-swap"></a>Zamień na wersję zapoznawczą (wymiana wielofazowy)
 
-Before you swap into production as the target slot, validate that the app runs with the swapped settings. The source slot is also warmed up before the swap completion, which is desirable for mission-critical applications.
+Przed przejściem do środowiska produkcyjnego jako miejsca docelowego Sprawdź, czy aplikacja jest uruchamiana z zamienionymi ustawieniami. Gniazdo źródłowe jest również rozgrzane przed ukończeniem wymiany, które jest odpowiednie dla aplikacji o znaczeniu strategicznym.
 
-When you perform a swap with preview, App Service performs the same [swap operation](#AboutConfiguration) but pauses after the first step. You can then verify the result on the staging slot before completing the swap. 
+Podczas przeprowadzania wymiany w wersji zapoznawczej App Service wykonuje tę samą [operację zamiany](#AboutConfiguration) , ale wstrzymuje się po pierwszym kroku. Następnie można sprawdzić wynik w miejscu przejściowym przed ukończeniem zamiany. 
 
-If you cancel the swap, App Service reapplies configuration elements to the source slot.
+W przypadku anulowania zamiany App Service ponowne stosowanie elementów konfiguracji do miejsca źródłowego.
 
-To swap with preview:
+Aby zamienić z podglądem:
 
-1. Follow the steps in [Swap deployment slots](#Swap) but select **Perform swap with preview**.
+1. Postępuj zgodnie z instrukcjami w [miejsc wdrożenia wymiany](#Swap) , ale wybierz pozycję **Przeprowadź wymianę z podglądem**.
 
-    ![Swap with preview](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    ![Zamień na wersję zapoznawczą](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
-    The dialog box shows you how the configuration in the source slot changes in phase 1, and how the source and target slot change in phase 2.
+    W oknie dialogowym pokazano, w jaki sposób konfiguracja w gnieździe źródłowym zmienia się w fazie 1 oraz jak zmienia się miejsce źródłowe i docelowe w fazie 2.
 
-2. When you're ready to start the swap, select **Start Swap**.
+2. Gdy wszystko będzie gotowe do rozpoczęcia wymiany, wybierz pozycję **Rozpocznij zamianę**.
 
-    When phase 1 finishes, you're notified in the dialog box. Preview the swap in the source slot by going to `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
+    Po zakończeniu fazy 1 powiadomienie zostanie wyświetlone w oknie dialogowym. Wyświetl podgląd wymiany w gnieździe źródłowym, przechodząc do `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
 
-3. When you're ready to complete the pending swap, select **Complete Swap** in **Swap action** and select **Complete Swap**.
+3. Gdy wszystko będzie gotowe do ukończenia oczekującej zamiany, wybierz pozycję **Zakończ zamianę** w ramach **akcji zamiany** i wybierz pozycję **Zakończ zamianę**.
 
-    To cancel a pending swap, select **Cancel Swap** instead.
+    Aby anulować oczekujące zamiany, wybierz pozycję **Anuluj zamianę** .
 
-4. When you're finished, close the dialog box by selecting **Close**.
+4. Po zakończeniu zamknij okno dialogowe, wybierając pozycję **Zamknij**.
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#troubleshoot-swaps).
 
-To automate a multi-phase swap, see [Automate with PowerShell](#automate-with-powershell).
+Aby zautomatyzować wielofazowy etap wymiany, zobacz [Automatyzacja przy użyciu programu PowerShell](#automate-with-powershell).
 
 <a name="Rollback"></a>
 
-## <a name="roll-back-a-swap"></a>Roll back a swap
-If any errors occur in the target slot (for example, the production slot) after a slot swap, restore the slots to their pre-swap states by swapping the same two slots immediately.
+## <a name="roll-back-a-swap"></a>Wycofywanie wymiany
+Jeśli jakiekolwiek błędy wystąpią w gnieździe docelowym (na przykład w gnieździe produkcyjnym) po wymianie gniazd, Przywróć gniazda do swoich stanów sprzed zamiany, zamieniając te same dwa gniazda natychmiast.
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Configure auto swap
+## <a name="configure-auto-swap"></a>Skonfiguruj funkcję autoswap
 
 > [!NOTE]
-> Auto swap isn't supported in web apps on Linux.
+> Funkcja autoswap nie jest obsługiwana w aplikacjach sieci Web w systemie Linux.
 
-Auto swap streamlines Azure DevOps scenarios where you want to deploy your app continuously with zero cold starts and zero downtime for customers of the app. When auto swap is enabled from a slot into production, every time you push your code changes to that slot, App Service automatically [swaps the app into production](#swap-operation-steps) after it's warmed up in the source slot.
+Funkcja autoswap usprawnia scenariusze usługi Azure DevOps, w której aplikacja ma być ciągle wdrażana z zerowym zimnym rozpoczęciem i bez przestojów dla klientów aplikacji. Gdy funkcja automatycznej wymiany jest włączona z gniazda do środowiska produkcyjnego, przy każdym wypchnięciu zmian w kodzie w tym miejscu App Service automatycznie [zamienia aplikację na produkcję](#swap-operation-steps) , gdy zostanie ona rozgrzana w miejscu źródłowym.
 
    > [!NOTE]
-   > Before you configure auto swap for the production slot, consider testing auto swap on a non-production target slot.
+   > Przed skonfigurowaniem autowymiany dla miejsca produkcyjnego Rozważ przetestowanie autowymiany w nieprodukcyjnym gnieździe docelowym.
    > 
 
-To configure auto swap:
+Aby skonfigurować funkcję autoswap:
 
-1. Go to your app's resource page. Select **Deployment slots** >  *\<desired source slot>*  > **Configuration** > **General settings**.
+1. Przejdź do strony zasobów aplikacji. Wybierz miejsca **wdrożenia** >  *\<żądanych miejsc źródłowych >*  > **Konfiguracja** > **Ustawienia ogólne**.
    
-2. For **Auto swap enabled**, select **On**. Then select the desired target slot for **Auto swap deployment slot**, and select **Save** on the command bar. 
+2. W przypadku opcji **autoswap włączone**wybierz pozycję **włączone**. Następnie wybierz żądane miejsce docelowe dla **miejsca wdrożenia autoswap**, a następnie wybierz pozycję **Zapisz** na pasku poleceń. 
    
-    ![Selections for configuring auto swap](./media/web-sites-staged-publishing/AutoSwap02.png)
+    ![Opcje konfigurowania opcji autoswap](./media/web-sites-staged-publishing/AutoSwap02.png)
 
-3. Execute a code push to the source slot. Auto swap happens after a short time, and the update is reflected at your target slot's URL.
+3. Wykonaj wypychanie kodu do miejsca źródłowego. Funkcja autoswap następuje po krótkim czasie, a aktualizacja zostanie odzwierciedlona w adresie URL miejsca docelowego.
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#troubleshoot-swaps).
 
 <a name="Warm-up"></a>
 
-## <a name="specify-custom-warm-up"></a>Specify custom warm-up
+## <a name="specify-custom-warm-up"></a>Określ niestandardową rozgrzewanie
 
-Some apps might require custom warm-up actions before the swap. The `applicationInitialization` configuration element in web.config lets you specify custom initialization actions. The [swap operation](#AboutConfiguration) waits for this custom warm-up to finish before swapping with the target slot. Here's a sample web.config fragment.
+Niektóre aplikacje mogą wymagać niestandardowych akcji rozgrzewania przed wymianą. Element konfiguracji `applicationInitialization` w pliku Web. config pozwala określić niestandardowe akcje inicjacji. [Operacja wymiany](#AboutConfiguration) czeka na zakończenie tej niestandardowej rozgrzanej wartości przed zamianą na miejsce docelowe. Oto przykładowy fragment pliku Web. config.
 
     <system.webServer>
         <applicationInitialization>
@@ -212,75 +212,75 @@ Some apps might require custom warm-up actions before the swap. The `application
         </applicationInitialization>
     </system.webServer>
 
-For more information on customizing the `applicationInitialization` element, see [Most common deployment slot swap failures and how to fix them](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+Aby uzyskać więcej informacji na temat dostosowywania elementu `applicationInitialization`, zobacz [większość typowych błędów wymiany miejsca wdrożenia i sposoby ich naprawiania](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
-You can also customize the warm-up behavior with one or both of the following [app settings](configure-common.md):
+Możesz również dostosować zachowanie rozgrzewania, korzystając z jednego lub obu następujących [ustawień aplikacji](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: The path to ping to warm up your site. Add this app setting by specifying a custom path that begins with a slash as the value. Może to być na przykład `/statuscheck`. The default value is `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Valid HTTP response codes for the warm-up operation. Add this app setting with a comma-separated list of HTTP codes. An example is `200,202` . If the returned status code isn't in the list, the warmup and swap operations are stopped. By default, all response codes are valid.
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: ścieżka do polecenia ping do rozgrzewania lokacji. Dodaj to ustawienie aplikacji, określając ścieżkę niestandardową rozpoczynającą się od ukośnika jako wartość. Może to być na przykład `/statuscheck`. Wartość domyślna to `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: prawidłowe kody odpowiedzi HTTP dla operacji rozgrzewania. Dodaj to ustawienie aplikacji z rozdzieloną przecinkami listą kodów HTTP. Przykładem jest `200,202`. Jeśli zwrócony kod stanu nie znajduje się na liście, operacje rozgrzewania i swap są zatrzymane. Domyślnie wszystkie kody odpowiedzi są prawidłowe.
 
 > [!NOTE]
-> The `<applicationInitialization>` configuration element is part of each app start-up, whereas the two warm-up behavior app settings apply only to slot swaps.
+> Element konfiguracji `<applicationInitialization>` jest częścią każdego uruchomienia aplikacji, podczas gdy dwa ustawienia aplikacji do rozgrzanych zachowań stosują się tylko do zamian w gnieździe.
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#troubleshoot-swaps).
 
-## <a name="monitor-a-swap"></a>Monitor a swap
+## <a name="monitor-a-swap"></a>Monitorowanie wymiany
 
-If the [swap operation](#AboutConfiguration) takes a long time to complete, you can get information on the swap operation in the [activity log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Jeśli [operacja wymiany](#AboutConfiguration) trwa długo, możesz uzyskać informacje o operacji wymiany w [dzienniku aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
-On your app's resource page in the portal, in the left pane, select **Activity log**.
+Na stronie zasobów aplikacji w portalu w lewym okienku wybierz pozycję **Dziennik aktywności**.
 
-A swap operation appears in the log query as `Swap Web App Slots`. You can expand it and select one of the suboperations or errors to see the details.
+Operacja zamiany zostanie wyświetlona w zapytaniu dziennika jako `Swap Web App Slots`. Można ją rozwinąć i wybrać jedną z podoperacji lub błędów, aby wyświetlić szczegóły.
 
-## <a name="route-traffic"></a>Route traffic
+## <a name="route-traffic"></a>Ruch tras
 
-By default, all client requests to the app's production URL (`http://<app_name>.azurewebsites.net`) are routed to the production slot. You can route a portion of the traffic to another slot. This feature is useful if you need user feedback for a new update, but you're not ready to release it to production.
+Domyślnie wszystkie żądania klientów do produkcyjnego adresu URL aplikacji (`http://<app_name>.azurewebsites.net`) są kierowane do miejsca produkcyjnego. Część ruchu można skierować do innego gniazda. Ta funkcja jest przydatna, jeśli potrzebujesz opinii użytkowników o nowej aktualizacji, ale nie możesz jej zwolnić do środowiska produkcyjnego.
 
-### <a name="route-production-traffic-automatically"></a>Route production traffic automatically
+### <a name="route-production-traffic-automatically"></a>Automatyczne kierowanie ruchu produkcyjnego
 
-To route production traffic automatically:
+Aby automatycznie kierować ruch produkcyjny:
 
-1. Go to your app's resource page and select **Deployment slots**.
+1. Przejdź do strony zasobów aplikacji i wybierz pozycję miejsca **wdrożenia**.
 
-2. In the **Traffic %** column of the slot you want to route to, specify a percentage (between 0 and 100) to represent the amount of total traffic you want to route. Wybierz pozycję **Zapisz**.
+2. W kolumnie **ruch%** gniazda, do którego chcesz kierować dane, określ wartość procentową (od 0 do 100) reprezentującą łączny ruch, który ma być kierowany. Wybierz pozycję **Zapisz**.
 
-    ![Setting a traffic percentage](./media/web-sites-staged-publishing/RouteTraffic.png)
+    ![Ustawianie wartości procentowej ruchu](./media/web-sites-staged-publishing/RouteTraffic.png)
 
-After the setting is saved, the specified percentage of clients is randomly routed to the non-production slot. 
+Po zapisaniu tego ustawienia określony procent klientów jest losowo kierowany do gniazda nieprodukcyjnego. 
 
-After a client is automatically routed to a specific slot, it's "pinned" to that slot for the life of that client session. On the client browser, you can see which slot your session is pinned to by looking at the `x-ms-routing-name` cookie in your HTTP headers. A request that's routed to the "staging" slot has the cookie `x-ms-routing-name=staging`. A request that's routed to the production slot has the cookie `x-ms-routing-name=self`.
+Po automatycznym przekierowaniu klienta do określonego gniazda zostanie on przypięty do tego gniazda w okresie istnienia sesji klienta. W przeglądarce klienta możesz sprawdzić, do którego gniazda sesja jest przypięta, przeglądając plik cookie `x-ms-routing-name` w nagłówkach HTTP. Żądanie kierowane do gniazda "przemieszczania" ma `x-ms-routing-name=staging`plików cookie. Żądanie przesyłane do miejsca produkcyjnego ma `x-ms-routing-name=self`plików cookie.
 
    > [!NOTE]
-   > Next to the Azure Portal, you can also use the [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) command in the Azure CLI to set the routing percentages from CI/CD tools like DevOps pipelines or other automation systems.
+   > W witrynie Azure Portal możesz również użyć [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) polecenie w interfejsie wiersza polecenia platformy Azure, aby ustawić wartości procentowe routingu z narzędzi Ci/CD, takich jak potoki DevOps lub inne systemy automatyzacji.
    > 
 
-### <a name="route-production-traffic-manually"></a>Route production traffic manually
+### <a name="route-production-traffic-manually"></a>Ręczne kierowanie ruchu produkcyjnego
 
-In addition to automatic traffic routing, App Service can route requests to a specific slot. This is useful when you want your users to be able to opt in to or opt out of your beta app. To route production traffic manually, you use the `x-ms-routing-name` query parameter.
+Oprócz automatycznego routingu ruchu App Service mogą kierować żądania do określonego gniazda. Jest to przydatne, jeśli chcesz, aby użytkownicy mogli wyrazić zgodę na lub zrezygnować z aplikacji w wersji beta. Aby ręcznie skierować ruch produkcyjny, należy użyć `x-ms-routing-name` parametru zapytania.
 
-To let users opt out of your beta app, for example, you can put this link on your webpage:
+Aby umożliwić użytkownikom zrezygnowanie z aplikacji w wersji beta, można na przykład umieścić ten link na stronie sieci Web:
 
 ```HTML
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-The string `x-ms-routing-name=self` specifies the production slot. After the client browser accesses the link, it's redirected to the production slot. Every subsequent request has the `x-ms-routing-name=self` cookie that pins the session to the production slot.
+Ciąg `x-ms-routing-name=self` określa miejsce produkcyjne. Po uzyskaniu dostępu do linku przez przeglądarkę klienta zostanie on przekierowany do miejsca produkcyjnego. Każde kolejne żądanie ma `x-ms-routing-name=self` plik cookie, który przypina sesję do miejsca produkcyjnego.
 
-To let users opt in to your beta app, set the same query parameter to the name of the non-production slot. Oto przykład:
+Aby umożliwić użytkownikom dołączanie do aplikacji w wersji beta, należy ustawić ten sam parametr zapytania na nazwę gniazda nieprodukcyjnego. Oto przykład:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-By default, new slots are given a routing rule of `0%`, shown in grey. When you explicitly set this value to `0%` (shown in black text), your users can access the staging slot manually by using the `x-ms-routing-name` query parameter. But they won't be routed to the slot automatically because the routing percentage is set to 0. This is an advanced scenario where you can "hide" your staging slot from the public while allowing internal teams to test changes on the slot.
+Domyślnie nowe gniazda otrzymują regułę routingu `0%`, która jest wyświetlana w kolorze szarym. Gdy jawnie ustawisz tę wartość na `0%` (pokazana w kolorze czarnym), użytkownicy mogą uzyskać dostęp do miejsca przejściowego ręcznie przy użyciu parametru zapytania `x-ms-routing-name`. Ale nie są one automatycznie kierowane do gniazda, ponieważ wartość procentowa routingu jest ustawiona na 0. Jest to zaawansowany scenariusz, w którym można "ukryć" miejsce przejściowe z publicznego, jednocześnie umożliwiając zespołom wewnętrznym testowanie zmian w gnieździe.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-slot"></a>Delete a slot
+## <a name="delete-a-slot"></a>Usuń gniazdo
 
-Go to your app's resource page. Select **Deployment slots** >  *\<slot to delete>*  > **Overview**. Select **Delete** on the command bar.  
+Przejdź do strony zasobów aplikacji. Wybierz pozycję miejsca **wdrożenia** > *miejsce\<do usunięcia >*  > **Przegląd**. Na pasku poleceń wybierz pozycję **Usuń** .  
 
-![Delete a deployment slot](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
+![Usuń miejsce wdrożenia](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
@@ -290,9 +290,9 @@ Go to your app's resource page. Select **Deployment slots** >  *\<slot to delete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure PowerShell is a module that provides cmdlets to manage Azure through Windows PowerShell, including support for managing deployment slots in Azure App Service.
+Azure PowerShell to moduł, który udostępnia polecenia cmdlet do zarządzania platformą Azure za pomocą programu Windows PowerShell, w tym obsługę zarządzania miejscami wdrożenia w programie Azure App Service.
 
-For information on installing and configuring Azure PowerShell, and on authenticating Azure PowerShell with your Azure subscription, see [How to install and configure Microsoft Azure PowerShell](/powershell/azure/overview).  
+Informacje o instalowaniu i konfigurowaniu Azure PowerShell oraz o uwierzytelnianiu Azure PowerShell z subskrypcją platformy Azure znajdują się w temacie [How to Install and configure Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 ---
 ### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
@@ -301,52 +301,52 @@ New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location
 ```
 
 ---
-### <a name="create-a-slot"></a>Create a slot
+### <a name="create-a-slot"></a>Utwórz miejsce
 ```powershell
 New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 ---
-### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Initiate a swap with a preview (multi-phase swap), and apply destination slot configuration to the source slot
+### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Inicjowanie wymiany przy użyciu wersji zapoznawczej (wymiana wielofazowy) i zastosowanie konfiguracji miejsca docelowego w gnieździe źródłowym
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Cancel a pending swap (swap with review) and restore the source slot configuration
+### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Anuluj oczekującą zamianę (Zamień z przeglądem) i Przywróć konfigurację miejsca źródłowego
 ```powershell
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Swap deployment slots
+### <a name="swap-deployment-slots"></a>Wymiana miejsc wdrożenia
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
-### <a name="monitor-swap-events-in-the-activity-log"></a>Monitor swap events in the activity log
+### <a name="monitor-swap-events-in-the-activity-log"></a>Monitorowanie zdarzeń wymiany w dzienniku aktywności
 ```powershell
 Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 ---
-### <a name="delete-a-slot"></a>Delete a slot
+### <a name="delete-a-slot"></a>Usuń gniazdo
 ```powershell
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automate with ARM templates
+## <a name="automate-with-arm-templates"></a>Automatyzowanie przy użyciu szablonów ARM
 
-[ARM Templates](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) are declarative JSON files used to automate the deployment and configuration of Azure resources. To swap slots using ARM templates, you will set two properties on the *Microsoft.Web/sites/slots* and *Microsoft.Web/sites* resources:
+[Szablony ARM](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) to DEKLARACYJNE pliki JSON używane do automatyzowania wdrażania i konfigurowania zasobów platformy Azure. Aby zamienić miejsca przy użyciu szablonów ARM, należy ustawić dwie właściwości dla zasobów *Microsoft. Web/Sites/Slots* i *Microsoft. Web/Sites* :
 
-- `buildVersion`: this is a string property which represents the current version of the app deployed in the slot. For example: "v1", "1.0.0.1", or "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: this is a string property that specifies what `buildVersion` the slot should have. If the targetBuildVersion does not equal the current `buildVersion`, then this will trigger the swap operation by finding the slot which has the specified `buildVersion`.
+- `buildVersion`: jest to właściwość ciągu reprezentująca bieżącą wersję aplikacji wdrożonej w gnieździe. Na przykład: "v1", "1.0.0.1" lub "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: jest to właściwość ciągu określająca, co `buildVersion` powinno mieć miejsce. Jeśli targetBuildVersion nie jest taka sama jak bieżąca `buildVersion`, spowoduje to wyzwolenie operacji zamiany przez znalezienie miejsca, w którym określono `buildVersion`.
 
-### <a name="example-arm-template"></a>Example ARM Template
+### <a name="example-arm-template"></a>Przykładowy szablon ARM
 
-The following ARM template will update the `buildVersion` of the staging slot and set the `targetBuildVersion` on the production slot. This will swap the two slots. The template assumes you already have a webapp created with a slot named "staging".
+Następujący szablon ARM zaktualizuje `buildVersion` miejsca przejściowego i ustawi `targetBuildVersion` w miejscu produkcyjnym. Spowoduje to zamianę dwóch miejsc. Szablon zakłada, że masz już webapp utworzony z miejscem o nazwie "przemieszczanie".
 
 ```json
 {
@@ -390,27 +390,27 @@ The following ARM template will update the `buildVersion` of the staging slot an
 }
 ```
 
-This ARM template is idempotent, meaning that it can be executed repeatedly and produce the same state of the slots. After the first execution, `targetBuildVersion` will match the current `buildVersion`, so a swap will not be triggered.
+Ten szablon ARM jest idempotentne, co oznacza, że może być wykonywany wielokrotnie i generować ten sam stan miejsc. Po pierwszym wykonaniu `targetBuildVersion` będzie zgodna z bieżącą `buildVersion`, więc nie zostanie wyzwolone zamiana.
 
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
 
-## <a name="automate-with-the-cli"></a>Automate with the CLI
+## <a name="automate-with-the-cli"></a>Automatyzowanie przy użyciu interfejsu wiersza polecenia
 
-For [Azure CLI](https://github.com/Azure/azure-cli) commands for deployment slots, see [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
+Dla poleceń [interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-cli) dla miejsc wdrożenia zobacz [AZ webapp Deployment slot](/cli/azure/webapp/deployment/slot).
 
-## <a name="troubleshoot-swaps"></a>Troubleshoot swaps
+## <a name="troubleshoot-swaps"></a>Rozwiązywanie problemów z wymianami
 
-If any error occurs during a [slot swap](#AboutConfiguration), it's logged in *D:\home\LogFiles\eventlog.xml*. It's also logged in the application-specific error log.
+Jeśli wystąpi błąd podczas [wymiany gniazda](#AboutConfiguration), zostanie on zarejestrowany w *D:\home\LogFiles\eventlog.XML*. Jest on również rejestrowany w dzienniku błędów specyficznym dla aplikacji.
 
-Here are some common swap errors:
+Poniżej przedstawiono niektóre typowe błędy wymiany:
 
-- An HTTP request to the application root is timed. The swap operation waits for 90 seconds for each HTTP request, and retries up to 5 times. If all retries are timed out, the swap operation is stopped.
+- Upłynął limit czasu żądania HTTP do katalogu głównego aplikacji. Operacja zamiany czeka przez 90 sekund dla każdego żądania HTTP i ponawia próbę do 5 razy. Jeśli zostanie przekroczony limit czasu dla wszystkich ponownych prób, operacja wymiany zostanie zatrzymana.
 
-- Local cache initialization might fail when the app content exceeds the local disk quota specified for the local cache. For more information, see [Local cache overview](overview-local-cache.md).
+- Inicjowanie lokalnej pamięci podręcznej może zakończyć się niepowodzeniem, gdy zawartość aplikacji przekracza limit przydziału dysku lokalnego określonego dla lokalnej pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [lokalna pamięć podręczna — Omówienie](overview-local-cache.md).
 
-- During [custom warm-up](#Warm-up), the HTTP requests are made internally (without going through the external URL). They can fail with certain URL rewrite rules in *Web.config*. For example, rules for redirecting domain names or enforcing HTTPS can prevent warm-up requests from reaching the app code. To work around this issue, modify your rewrite rules by adding the following two conditions:
+- Podczas [niestandardowej rozgrzewania](#Warm-up)żądania HTTP są wykonywane wewnętrznie (bez przechodzenia przez zewnętrzny adres URL). Mogą oni zakończyć się niepowodzeniem z określonymi regułami ponownego zapisywania adresów URL w *pliku Web. config*. Na przykład reguły przekierowania nazw domen lub wymuszania protokołu HTTPS mogą uniemożliwiać rozgrzane żądania docierające do kodu aplikacji. Aby obejść ten problem, zmodyfikuj reguły ponownego zapisu, dodając następujące dwa warunki:
 
     ```xml
     <conditions>
@@ -419,7 +419,7 @@ Here are some common swap errors:
       ...
     </conditions>
     ```
-- Without a custom warm-up, the URL rewrite rules can still block HTTP requests. To work around this issue, modify your rewrite rules by adding the following condition:
+- Bez niestandardowej rozgrzewania reguły ponownego zapisywania adresów URL nadal mogą blokować żądania HTTP. Aby obejść ten problem, zmodyfikuj reguły ponownego zapisu, dodając następujący warunek:
 
     ```xml
     <conditions>
@@ -427,9 +427,9 @@ Here are some common swap errors:
       ...
     </conditions>
     ```
-- Some [IP restriction rules](app-service-ip-restrictions.md) might prevent the swap operation from sending HTTP requests to your app. IPv4 address ranges that start with `10.` and `100.` are internal to your deployment. You should allow them to connect to your app.
+- Niektóre [reguły ograniczeń adresów IP](app-service-ip-restrictions.md) mogą uniemożliwiać operacji zamiany wysyłanie żądań HTTP do aplikacji. Zakresy adresów IPv4, które zaczynają się od `10.` i `100.` są wewnętrzne dla Twojego wdrożenia. Należy zezwolić im na łączenie się z Twoją aplikacją.
 
-- After slot swaps, the app may experience unexpected restarts. This is because after a swap, the hostname binding configuration goes out of sync, which by itself doesn't cause restarts. However, certain underlying storage events (such as storage volume failovers) may detect these discrepancies and force all worker processes to restart. To minimize these types of restarts, set the [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app setting](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) on *all slots*. However, this app setting does *not* work with Windows Communication Foundation (WCF) apps.
+- Po wymianie gniazd może wystąpić nieoczekiwane ponowne uruchomienie aplikacji. Jest to spowodowane tym, że po wymianie Konfiguracja powiązania nazwy hosta nie jest zsynchronizowana, co nie powoduje ponownego uruchomienia. Jednak niektóre bazowe zdarzenia magazynu (takie jak przełączanie awaryjne woluminu magazynu) mogą wykryć te rozbieżności i wymusić ponowne uruchomienie wszystkich procesów roboczych. Aby zminimalizować te typy ponownych uruchomień, należy ustawić [ustawienie aplikacji`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) na *wszystkie gniazda*. To ustawienie aplikacji *nie działa jednak* z aplikacjami Windows Communication Foundation (WCF).
 
 ## <a name="next-steps"></a>Następne kroki
-[Block access to non-production slots](app-service-ip-restrictions.md)
+[Blokuj dostęp do gniazd nieprodukcyjnych](app-service-ip-restrictions.md)

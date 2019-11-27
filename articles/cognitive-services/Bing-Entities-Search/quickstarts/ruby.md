@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Send a search request to the REST API using Ruby - Bing Entity Search'
+title: 'Szybki Start: wysyłanie żądania wyszukiwania do interfejsu API REST przy użyciu języka Ruby-wyszukiwanie jednostek Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania jednostek Bing przy użyciu języka Ruby i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -65,7 +65,7 @@ Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą 
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. Send the request, and print the response
+3. Wyślij żądanie i wydrukuj odpowiedź
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|

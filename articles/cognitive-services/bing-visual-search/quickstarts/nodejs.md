@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Node.js - Bing Visual Search'
+title: 'Szybki Start: uzyskiwanie szczegółowych informacji z obrazu przy użyciu interfejsu API REST i środowiska Node. js — wyszukiwanie wizualne Bing'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przekazać obraz do interfejsu API wyszukiwania wizualnego Bing i uzyskać szczegółowe informacje na jego temat.
 services: cognitive-services
@@ -17,11 +17,11 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383189"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Node.js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu interfejsu API REST wyszukiwanie wizualne Bing i środowiska Node. js
 
 Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania interfejsu API wyszukiwania wizualnego Bing i wyświetlenie wyników wyszukiwania. Ta prosta aplikacja JavaScript przekazuje obraz do interfejsu API i wyświetla zwrócone informacje na jego temat. Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-When uploading a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and the `filename` parameter can be set to any string. The contents of the form include the binary data of the image. Maksymalny rozmiar obrazu, który można przekazać, wynosi 1 MB.
+Podczas przekazywania obrazu lokalnego dane formularza muszą zawierać nagłówek `Content-Disposition`. Należy ustawić jego parametr `name` na "Image", a parametr `filename` można ustawić na dowolny ciąg. Zawartość formularza zawiera dane binarne obrazu. Maksymalny rozmiar obrazu, który można przekazać, wynosi 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -35,14 +35,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Node.js](https://nodejs.org/en/download/)
-* The Request module for JavaScript. You can use `npm install request` command to install the module.
-* The form-data module. You can use the `npm install form-data` command to install the module. 
+* Moduł żądania dla języka JavaScript. Do zainstalowania modułu można użyć polecenia `npm install request`.
+* Moduł danych formularza. Aby zainstalować moduł, można użyć polecenia `npm install form-data`. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Inicjowanie aplikacji
 
-1. Create a JavaScript file in your favorite IDE or editor, and set the following requirements:
+1. Utwórz plik JavaScript w ulubionym środowisku IDE lub edytorze i ustaw następujące wymagania:
 
     ```javascript
     var request = require('request');
@@ -50,7 +50,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var fs = require('fs');
     ```
 
-2. Create variables for your API endpoint, subscription key, and the path to your image:
+2. Utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i ścieżki do obrazu:
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -58,7 +58,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var imagePath = "path-to-your-image";
     ```
 
-3. Create a function named `requestCallback()` to print the response from the API:
+3. Utwórz funkcję o nazwie `requestCallback()`, aby wydrukować odpowiedź z interfejsu API:
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -68,14 +68,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="construct-and-send-the-search-request"></a>Tworzenie i wysyłanie żądania wyszukiwania
 
-1. Create a new **FormData** object using `FormData()`, and append your image path to it, using `fs.createReadStream()`:
+1. Utwórz nowy obiekt **formData** przy użyciu `FormData()`i Dołącz do niego ścieżkę obrazu, używając `fs.createReadStream()`:
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. Use the request library to upload the image, and call `requestCallback()` to print the response. Be sure to add your subscription key to the request header:
+2. Użyj biblioteki żądań, aby przekazać obraz, a następnie Wywołaj `requestCallback()`, aby wydrukować odpowiedź. Pamiętaj, aby dodać klucz subskrypcji do nagłówka żądania:
 
     ```javascript
     form.getLength(function(err, length){
@@ -91,4 +91,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Tworzenie wyszukiwanie wizualne jednostronicowej aplikacji sieci Web](../tutorial-bing-visual-search-single-page-app.md)

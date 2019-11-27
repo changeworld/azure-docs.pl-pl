@@ -1,20 +1,14 @@
 ---
-title: Używanie tożsamości zarządzanej z Azure Container Instances
-description: Dowiedz się, jak za pomocą tożsamości zarządzanej uwierzytelniać się przy użyciu innych Azure Container Instances usług platformy Azure.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Włącz zarządzaną tożsamość w grupie kontenerów
+description: Dowiedz się, jak włączyć zarządzaną tożsamość w Azure Container Instances, która może być uwierzytelniana za pomocą innych usług platformy Azure
 ms.topic: article
 ms.date: 10/22/2018
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 773650e5e5e85d4a5fca0b3755f3730921cc5f2e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325938"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533680"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Jak używać tożsamości zarządzanych z Azure Container Instances
 
@@ -46,9 +40,9 @@ Użyj zarządzanej tożsamości w działającym kontenerze do uwierzytelniania w
 
 Azure Container Instances obsługuje oba typy zarządzanych tożsamości platformy Azure: przypisane przez użytkownika i przypisane do systemu. W grupie kontenerów można włączyć tożsamość przypisaną do systemu, jedną lub więcej tożsamości przypisanych do użytkownika lub oba typy tożsamości. 
 
-* Tożsamość zarządzana przypisana przez **użytkownika** jest tworzona jako autonomiczny zasób platformy Azure w dzierżawie usługi Azure AD, która jest zaufana przez używaną subskrypcję. Po utworzeniu tożsamości można przypisać ją do jednego lub większej liczby zasobów platformy Azure (w Azure Container Instances lub innych usługach platformy Azure). Cykl życia tożsamości przypisanej przez użytkownika jest zarządzany osobno od cyklu życia grup kontenerów lub innych zasobów usług, do których jest przypisany. To zachowanie jest szczególnie przydatne w Azure Container Instances. Ze względu na to, że tożsamość wykracza poza okres istnienia grupy kontenerów, można użyć jej ponownie wraz z innymi ustawieniami standardowymi, aby zapewnić wysoką powtarzalność wdrożeń grup kontenerów.
+* Tożsamość zarządzana **przypisana przez użytkownika** jest tworzona jako autonomiczny zasób platformy Azure w dzierżawie usługi Azure AD, która jest zaufana przez używaną subskrypcję. Po utworzeniu tożsamości można przypisać ją do jednego lub większej liczby zasobów platformy Azure (w Azure Container Instances lub innych usługach platformy Azure). Cykl życia tożsamości przypisanej przez użytkownika jest zarządzany osobno od cyklu życia grup kontenerów lub innych zasobów usług, do których jest przypisany. To zachowanie jest szczególnie przydatne w Azure Container Instances. Ze względu na to, że tożsamość wykracza poza okres istnienia grupy kontenerów, można użyć jej ponownie wraz z innymi ustawieniami standardowymi, aby zapewnić wysoką powtarzalność wdrożeń grup kontenerów.
 
-* Tożsamość zarządzana przypisana przez **system** jest włączona bezpośrednio w grupie kontenerów w Azure Container Instances. Gdy ta funkcja jest włączona, platforma Azure tworzy tożsamość grupy w dzierżawie usługi Azure AD, która jest zaufana przez subskrypcję wystąpienia. Po utworzeniu tożsamości poświadczenia są inicjowane dla każdego kontenera w grupie kontenerów. Cykl życia tożsamości przypisanej do systemu jest bezpośrednio powiązany z grupą kontenerów, w której jest włączona. Po usunięciu grupy platforma Azure automatycznie czyści poświadczenia i tożsamość w usłudze Azure AD.
+* Tożsamość zarządzana **przypisana przez system** jest włączona bezpośrednio w grupie kontenerów w Azure Container Instances. Gdy ta funkcja jest włączona, platforma Azure tworzy tożsamość grupy w dzierżawie usługi Azure AD, która jest zaufana przez subskrypcję wystąpienia. Po utworzeniu tożsamości poświadczenia są inicjowane dla każdego kontenera w grupie kontenerów. Cykl życia tożsamości przypisanej do systemu jest bezpośrednio powiązany z grupą kontenerów, w której jest włączona. Po usunięciu grupy platforma Azure automatycznie czyści poświadczenia i tożsamość w usłudze Azure AD.
 
 ### <a name="use-a-managed-identity"></a>Korzystanie z tożsamości zarządzanej
 
@@ -70,7 +64,7 @@ Najpierw utwórz grupę zasobów o nazwie Moja *zasobów* w lokalizacji *Wschodn
 az group create --name myResourceGroup --location eastus
 ```
 
-Aby utworzyć Key Vault, użyj polecenia [AZ Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) webmagazynion. Pamiętaj, aby określić unikatową nazwę Key Vault. 
+Aby utworzyć Key Vault, użyj polecenia [AZ Create webmagazynion](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) . Pamiętaj, aby określić unikatową nazwę Key Vault. 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
@@ -84,7 +78,7 @@ az keyvault secret set --name SampleSecret --value "Hello Container Instances!" 
 
 Aby uzyskać dostęp do Key Vault przy użyciu tożsamości zarządzanej przypisanej przez użytkownika lub przypisanej do systemu w programie Azure Container Instances, wykonaj następujące przykłady.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Przykład 1: Dostęp do Azure Key Vault przy użyciu tożsamości przypisanej do użytkownika
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Przykład 1: Użyj tożsamości przypisanej do użytkownika, aby uzyskać dostęp do Azure Key Vault
 
 ### <a name="create-an-identity"></a>Tworzenie tożsamości
 
@@ -106,7 +100,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myACIId --
 
 ### <a name="enable-a-user-assigned-identity-on-a-container-group"></a>Włączanie tożsamości przypisanej przez użytkownika w grupie kontenerów
 
-Uruchom następujące polecenie [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) , aby utworzyć wystąpienie kontenera na podstawie serwera Ubuntu. Ten przykład zawiera grupę z pojedynczym kontenerem, za pomocą której można interaktywnie uzyskiwać dostęp do innych usług platformy Azure. `--assign-identity` Parametr przekazuje do grupy zarządzaną tożsamość przypisaną przez użytkownika. Długotrwałe polecenie utrzymuje uruchomiony kontener. W tym przykładzie użyto tej samej grupy zasobów, która została użyta do utworzenia Key Vault, ale można określić inną.
+Uruchom następujące polecenie [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) , aby utworzyć wystąpienie kontenera na podstawie serwera Ubuntu. Ten przykład zawiera grupę z pojedynczym kontenerem, za pomocą której można interaktywnie uzyskiwać dostęp do innych usług platformy Azure. Parametr `--assign-identity` przekazuje do grupy zarządzaną tożsamość przypisaną przez użytkownika. Długotrwałe polecenie utrzymuje uruchomiony kontener. W tym przykładzie użyto tej samej grupy zasobów, która została użyta do utworzenia Key Vault, ale można określić inną.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image microsoft/azure-cli --assign-identity $resourceID --command-line "tail -f /dev/null"
@@ -118,7 +112,7 @@ W ciągu kilku sekund powinna pojawić się odpowiedź z interfejsu wiersza pole
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-`identity` Sekcja w danych wyjściowych wygląda podobnie do poniższego, pokazując tożsamość jest ustawiona w grupie kontenerów. `principalID` Poniżej`userAssignedIdentities` znajduje się nazwa główna usługi tożsamości utworzonej w Azure Active Directory:
+Sekcja `identity` w danych wyjściowych wygląda podobnie do poniższego, pokazując tożsamość jest ustawiona w grupie kontenerów. `principalID` w obszarze `userAssignedIdentities` to nazwa główna usługi tożsamości utworzonej w Azure Active Directory:
 
 ```console
 ...
@@ -183,11 +177,11 @@ Odpowiedź wygląda podobnie do poniższego, pokazując wpis tajny. W kodzie mo�
 {"value":"Hello Container Instances!","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Przykład 2: Dostęp do Azure Key Vault za pomocą tożsamości przypisanej do systemu
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Przykład 2: Aby uzyskać dostęp do Azure Key Vault, Użyj tożsamości przypisanej do systemu
 
 ### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>Włączanie tożsamości przypisanej do systemu w grupie kontenerów
 
-Uruchom następujące polecenie [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) , aby utworzyć wystąpienie kontenera na podstawie serwera Ubuntu. Ten przykład zawiera grupę z pojedynczym kontenerem, za pomocą której można interaktywnie uzyskiwać dostęp do innych usług platformy Azure. `--assign-identity` Parametr bez dodatkowych wartości włącza do grupy tożsamość zarządzaną przez system. Długotrwałe polecenie utrzymuje uruchomiony kontener. W tym przykładzie użyto tej samej grupy zasobów, która została użyta do utworzenia Key Vault, ale można określić inną.
+Uruchom następujące polecenie [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) , aby utworzyć wystąpienie kontenera na podstawie serwera Ubuntu. Ten przykład zawiera grupę z pojedynczym kontenerem, za pomocą której można interaktywnie uzyskiwać dostęp do innych usług platformy Azure. `--assign-identity` parametr bez dodatkowych wartości włącza do grupy tożsamość zarządzaną przez system. Długotrwałe polecenie utrzymuje uruchomiony kontener. W tym przykładzie użyto tej samej grupy zasobów, która została użyta do utworzenia Key Vault, ale można określić inną.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image microsoft/azure-cli --assign-identity --command-line "tail -f /dev/null"
@@ -199,7 +193,7 @@ W ciągu kilku sekund powinna pojawić się odpowiedź z interfejsu wiersza pole
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-`identity` Sekcja w danych wyjściowych wygląda podobnie do poniższego, pokazując, że tożsamość przypisana przez system jest tworzona w Azure Active Directory:
+Sekcja `identity` w danych wyjściowych wygląda podobnie do poniższego, pokazując, że tożsamość przypisana przez system jest tworzona w Azure Active Directory:
 
 ```console
 ...
@@ -253,7 +247,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Teraz Użyj tokenu dostępu do uwierzytelniania, aby Key Vault i odczytać wpis tajny. Pamiętaj, aby zastąpić nazwę magazynu kluczy adresem URL (*https:\//mykeyvault.Vault.Azure.NET/...* ):
+Teraz Użyj tokenu dostępu do uwierzytelniania, aby Key Vault i odczytać wpis tajny. Pamiętaj, aby zastąpić nazwę magazynu kluczy w adresie URL (*https:\//mykeyvault.Vault.Azure.NET/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -267,7 +261,7 @@ Odpowiedź wygląda podobnie do poniższego, pokazując wpis tajny. W kodzie mo�
 
 ## <a name="enable-managed-identity-using-resource-manager-template"></a>Włączanie tożsamości zarządzanej przy użyciu szablonu Menedżer zasobów
 
-Aby włączyć zarządzaną tożsamość w grupie kontenerów przy użyciu [szablonu Menedżer zasobów](container-instances-multi-container-group.md), ustaw `identity` Właściwość `Microsoft.ContainerInstance/containerGroups` obiektu `ContainerGroupIdentity` na obiekt. Poniższe fragmenty kodu pokazują `identity` Właściwość skonfigurowaną dla różnych scenariuszy. Zobacz [odwołanie do szablonu Menedżer zasobów](/azure/templates/microsoft.containerinstance/containergroups). `apiVersion` Określ .`2018-10-01`
+Aby włączyć zarządzaną tożsamość w grupie kontenerów przy użyciu [szablonu Menedżer zasobów](container-instances-multi-container-group.md), ustaw właściwość `identity` obiektu `Microsoft.ContainerInstance/containerGroups` z obiektem `ContainerGroupIdentity`. Poniższe fragmenty kodu zawierają Właściwość `identity` skonfigurowaną dla różnych scenariuszy. Zobacz [odwołanie do szablonu Menedżer zasobów](/azure/templates/microsoft.containerinstance/containergroups). Określ `apiVersion` `2018-10-01`.
 
 ### <a name="user-assigned-identity"></a>Tożsamość przypisana przez użytkownika
 
@@ -315,7 +309,7 @@ W grupie kontenerów można włączyć zarówno tożsamość przypisana do syste
 ## <a name="enable-managed-identity-using-yaml-file"></a>Włącz zarządzaną tożsamość przy użyciu pliku YAML
 
 Aby włączyć zarządzaną tożsamość w grupie kontenerów wdrożonej przy użyciu [pliku YAML](container-instances-multi-container-yaml.md), należy uwzględnić następujące YAML.
-`apiVersion` Określ .`2018-10-01`
+Określ `apiVersion` `2018-10-01`.
 
 ### <a name="user-assigned-identity"></a>Tożsamość przypisana przez użytkownika
 

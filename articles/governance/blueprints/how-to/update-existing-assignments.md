@@ -1,6 +1,6 @@
 ---
-title: Update an existing assignment from the portal
-description: Learn about the mechanism for updating an existing blueprint assignment from the portal in Azure Blueprints.
+title: Aktualizowanie istniejącego przypisania z portalu
+description: Dowiedz się więcej o mechanizmie aktualizowania istniejącego przypisania strategii z portalu w planach platformy Azure.
 ms.date: 11/21/2019
 ms.topic: conceptual
 ms.openlocfilehash: b4cf03d88103b85bc00dbd815816ead2740f2093
@@ -10,58 +10,58 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406393"
 ---
-# <a name="how-to-update-an-existing-blueprint-assignment"></a>How to update an existing blueprint assignment
+# <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak zaktualizować istniejące przypisanie strategii
 
-When a blueprint is assigned, the assignment can be updated. There are several reasons for updating an existing assignment, including:
+Po przypisaniu planu można zaktualizować przypisanie. Istnieje kilka powodów, dla których należy zaktualizować istniejące przypisanie, w tym:
 
-- Add or remove [resource locking](../concepts/resource-locking.md)
-- Change the value of [dynamic parameters](../concepts/parameters.md#dynamic-parameters)
-- Upgrade the assignment to a newer **Published** version of the blueprint
+- Dodawanie lub usuwanie [blokowania zasobów](../concepts/resource-locking.md)
+- Zmień wartość [parametrów dynamicznych](../concepts/parameters.md#dynamic-parameters)
+- Uaktualnij przypisanie do nowszej **opublikowanej** wersji planu
 
-## <a name="updating-assignments"></a>Updating assignments
+## <a name="updating-assignments"></a>Aktualizowanie przypisań
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz pozycję **Przypisane strategie** w lewej części strony.
 
-1. In the list of blueprints, left-click the blueprint assignment. Then click the **Update assignment** button OR right-click the blueprint assignment and select **Update assignment**.
+1. Na liście planów kliknij lewym przyciskiem myszy przypisanie planu. Następnie kliknij przycisk **Aktualizuj przypisanie** lub kliknij prawym przyciskiem myszy przypisanie planu i wybierz pozycję **Aktualizuj przypisanie**.
 
-   ![Update an existing blueprint assignment](../media/update-existing-assignments/update-assignment.png)
+   ![Aktualizowanie istniejącego przypisania strategii](../media/update-existing-assignments/update-assignment.png)
 
-1. The **Assign blueprint** page will load pre-filled with all values from the original assignment.
-   You can change the **blueprint definition version**, the **Lock Assignment** state, and any of the dynamic parameters that exist on the blueprint definition. Click **Assign** when done making changes.
+1. Strona **Przypisz plan** spowoduje załadowanie wstępnie wypełnionych wszystkich wartości z oryginalnego przypisania.
+   Można zmienić **wersję definicji**planu, stan **przypisania blokady** i wszystkie parametry dynamiczne, które istnieją w definicji strategii. Po wprowadzeniu zmian kliknij przycisk **Przypisz** .
 
-1. On the updated assignment details page, see the new status. In this example, we added **Locking** to the assignment.
+1. Na stronie zaktualizowane informacje o przypisaniu Zobacz nowy stan. W tym przykładzie dodaliśmy **blokadę** do przypisania.
 
-   ![Updated an existing blueprint assignment - lock mode changed](../media/update-existing-assignments/updated-assignment.png)
+   ![Zaktualizowano istniejący tryb blokowania przypisania](../media/update-existing-assignments/updated-assignment.png)
 
-1. Explore details about other **Assignment operations** using the drop-down. The table of **Managed resources** updates by selected assignment operation.
+1. Poznaj szczegółowe informacje o innych **operacjach przypisywania** przy użyciu listy rozwijanej. Tabela aktualizacji **zarządzanych zasobów** według wybranej operacji przypisania.
 
-   ![Assignment operations of a blueprint assignment](../media/update-existing-assignments/assignment-operations.png)
+   ![Operacje przypisania planu](../media/update-existing-assignments/assignment-operations.png)
 
-## <a name="rules-for-updating-assignments"></a>Rules for updating assignments
+## <a name="rules-for-updating-assignments"></a>Reguły dotyczące aktualizowania przypisań
 
-The deployment of the updated assignments follows a few important rules. These rules determine what happens to already deployed resources. The requested change and the type of artifact resource being deployed or updated determine which actions are taken.
+Wdrożenie zaktualizowanych przypisań następuje po kilku ważnych regułach. Te reguły określają, co się dzieje z już wdrożonymi zasobami. Żądana zmiana i typ zasobu artefaktu, który jest wdrażany lub aktualizowany, decyduje o tym, które akcje są wykonywane.
 
 - Przypisania ról
-  - If the role or the role assignee (user, group, or app) changes, a new role assignment is created. Role assignments previously deployed are left in place.
+  - W przypadku zmiany roli lub osoby przydzielonej roli (użytkownika, grupy lub aplikacji) zostanie utworzone nowe przypisanie roli. Wcześniej wdrożone przypisania ról są pozostawione w miejscu.
 - Przypisania zasad
-  - If the parameters of the policy assignment are changed, the existing assignment is updated.
-  - If the definition of the policy assignment is changed, a new policy assignment is created.
-    Policy assignments previously deployed are left in place.
-  - If the policy assignment artifact is removed from the blueprint, deployed policy assignments are left in place.
+  - W przypadku zmiany parametrów przypisania zasad istniejące przypisanie zostanie zaktualizowane.
+  - Jeśli definicja przypisania zasad zostanie zmieniona, zostanie utworzone nowe przypisanie zasad.
+    Wcześniej wdrożone przypisania zasad są pozostawione w miejscu.
+  - Jeśli artefakt przypisania zasad zostanie usunięty z planu, wdrożone przypisania zasad są pozostawiane w miejscu.
 - Szablony usługi Azure Resource Manager
-  - The template is processed through Resource Manager as a **PUT**. As each resource type handles this action differently, review the documentation for each included resource to determine the impact of this action when run by Blueprints.
+  - Szablon jest przetwarzany przez Menedżer zasobów jako **Put**. Ponieważ każdy typ zasobu obsługuje tę akcję inaczej, zapoznaj się z dokumentacją każdego dołączonego zasobu, aby określić wpływ tej akcji w przypadku uruchamiania przez plany.
 
-## <a name="possible-errors-on-updating-assignments"></a>Possible errors on updating assignments
+## <a name="possible-errors-on-updating-assignments"></a>Możliwe błędy podczas aktualizowania przypisań
 
-When updating assignments, it's possible to make changes that break when executed. An example is changing the location of a resource group after it has already been deployed. Any change that are supported by [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) can be made, but any change that would result in an error through Azure Resource Manager will also result in the failure of the assignment.
+Podczas aktualizowania przypisań można wprowadzać zmiany, które są przerywane po wykonaniu. Przykładem jest zmiana lokalizacji grupy zasobów, która została już wdrożona. Można wprowadzić wszelkie zmiany, które są obsługiwane przez [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) , ale wszelkie zmiany, które spowodują wystąpienie błędu za pomocą Azure Resource Manager, spowodują również niepowodzenie przypisania.
 
-There's no limit on how many times an assignment can be updated. If an error occurs, determine the error and make another update to the assignment.  Example error scenarios:
+Nie ma żadnego limitu, ile razy można zaktualizować przypisanie. W przypadku wystąpienia błędu należy określić błąd i wprowadzić kolejną aktualizację do przypisania.  Przykładowe scenariusze błędów:
 
-- A bad parameter
-- An already existing object
-- A change not supported by Azure Resource Manager
+- Nieprawidłowy parametr
+- Już istniejący obiekt
+- Zmiana nie jest obsługiwana przez Azure Resource Manager
 
 ## <a name="next-steps"></a>Następne kroki
 

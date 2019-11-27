@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for entities with the SDK for Python - Bing Entity Search'
+title: 'Szybki Start: wyszukiwanie jednostek przy użyciu zestawu SDK dla języka Python — wyszukiwanie jednostek Bing'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for entities with the Bing Entity Search SDK for Python.
+description: Skorzystaj z tego przewodnika Szybki Start, aby wyszukać jednostki z zestawem SDK wyszukiwanie jednostek Bing dla języka Python.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -27,7 +27,7 @@ Użyj tego poradnika Szybki start, aby zacząć wyszukiwać jednostki za pomocą
 
 * [Zestaw SDK wyszukiwania jednostek Bing dla języka Python](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
 
-Zalecane jest użycie środowiska wirtualnego języka Python. Środowisko wirtualne możesz zainstalować i zainicjować przy użyciu modułu venv. You can install virtualenv with:
+Zalecane jest użycie środowiska wirtualnego języka Python. Środowisko wirtualne możesz zainstalować i zainicjować przy użyciu modułu venv. Możesz zainstalować virtualenv z:
 
 ```Console
 python -m venv mytestenv

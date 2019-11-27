@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Send a search request with the SDK for Node.js - Bing Entity Search'
+title: 'Szybki Start: wysyłanie żądania wyszukiwania za pomocą zestawu SDK dla środowiska Node. js-wyszukiwanie jednostek Bing'
 titleSuffix: Azure Cognitive Services
 description: Użyj tego poradnika Szybki start, aby wyszukiwać jednostki za pomocą zestawu SDK wyszukiwania jednostek Bing dla języka Node.js
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74323847"
 ---
-# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Quickstart: Send a search request with the Bing Entity Search SDK for Node.js
+# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Szybki Start: wysyłanie żądania wyszukiwania za pomocą zestawu SDK wyszukiwanie jednostek Bing dla środowiska Node. js
 
 Użyj tego poradnika Szybki start, aby zacząć wyszukiwać jednostki za pomocą zestawu SDK wyszukiwania jednostek Bing dla języka Node.js. Mimo że wyszukiwanie jednostek Bing ma interfejs API REST zgodny z większością języków programowania, zestaw SDK umożliwia łatwe zintegrowanie tej usługi z aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
 

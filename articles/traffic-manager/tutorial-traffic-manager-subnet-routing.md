@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Configure subnet traffic routing with Azure Traffic Manager
-description: This tutorial explains how to configure Traffic Manager to route traffic from user subnets to specific endpoints.
+title: Samouczek — Konfigurowanie routingu ruchu podsieci za pomocą usługi Azure Traffic Manager
+description: W tym samouczku wyjaśniono, jak skonfigurować Traffic Manager do kierowania ruchu z podsieci użytkowników do określonych punktów końcowych.
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -18,7 +18,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420259"
 ---
-# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Tutorial: Direct traffic to specific endpoints based on user subnet using Traffic Manager
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Samouczek: kierowanie ruchu do określonych punktów końcowych na podstawie podsieci użytkownika przy użyciu Traffic Manager
 
 W tym artykule opisano, jak skonfigurować metodę routingu ruchu dla podsieci. Metoda routingu ruchu **Podsieć** pozwala na mapowanie zestawu zakresów adresów IP do określonych punktów końcowych. Po odebraniu żądania usługa Traffic Manager sprawdza źródłowy adres IP żądania i zwraca skojarzony z nim punkt końcowy.
 
@@ -45,7 +45,7 @@ Aby w tym samouczku zobaczyć usługi Traffic Manager w działaniu, trzeba wdro�
 
 Testowe maszyny wirtualne służą do zilustrowania sposobu, w jaki usługa Traffic Manager kieruje ruch użytkowników do wewnętrznej witryny internetowej lub produkcyjnej witryny internetowej na podstawie podsieci, z której pochodzi zapytanie użytkownika.
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -58,28 +58,28 @@ W tej sekcji opisano tworzenie dwóch wystąpień witryny internetowej, które z
 
 #### <a name="create-vms-for-running-websites"></a>Tworzenie maszyn wirtualnych do uruchamiania witryn internetowych
 
-In this section, you create two VMs *myIISVMEastUS* and *myIISVMWestEurope* in the **East US** and **West Europe** Azure regions.
+W tej sekcji utworzysz dwie maszyny wirtualne *myIISVMEastUS* i *MyIISVMWestEurope* w regionach **Wschodnie stany USA** i **Europa Zachodnia** .
 
-1. On the upper, left corner of the Azure portal, select **Create a resource** > **Compute** > **Windows Server 2019 Datacenter**.
+1. W lewym górnym rogu Azure Portal wybierz pozycję **Utwórz zasób** > **COMPUTE** > **systemie Windows Server 2019 Datacenter**.
 2. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
 
-   - **Subscription** > **Resource Group**: Select **Create new** and then type **myResourceGroupTM1**.
-   - **Instance Details** > **Virtual machine name**: Type *myIISVMEastUS*.
-   - **Instance Details** > **Region**:  Select **East US**.
-   - **Administrator Account** > **Username**:  Enter a user name of your choosing.
-   - **Administrator Account** > **Password**:  Enter a password of your choosing. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
-   - **Inbound Port Rules** > **Public inbound ports**: Select **Allow selected ports**.
-   - **Inbound Port Rules** > **Select inbound ports**: Select **RDP** and **HTTP** in the pull down box.
+   - **Subskrypcja** > **grupy zasobów**: wybierz pozycję **Utwórz nową** , a następnie wpisz **myResourceGroupTM1**.
+   - **Szczegóły wystąpienia** > **Nazwa maszyny wirtualnej**: wpisz *myIISVMEastUS*.
+   - **Szczegóły wystąpienia** > **regionu**: Wybierz **Wschodnie stany USA**.
+   - **Konto administratora** > **Nazwa użytkownika**: Wprowadź wybraną nazwę użytkownika.
+   - **Konto administratora** > **hasło**: Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Reguły portów przychodzących** > **publicznych portów przychodzących**: wybierz opcję **Zezwalaj na wybrane porty**.
+   - **Reguły portów ruchu przychodzącego** > **Wybieranie portów ruchu przychodzącego**: wybierz pozycję **RDP** i **http** w polu ściąganie.
 
-3. Select the **Management** tab, or select **Next: Disks**, then **Next: Networking**, then **Next: Management**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
+3. Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej: dyski**, a następnie kliknij kolejno pozycje **Sieć**i **Dalej: Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
 4. Wybierz pozycję **Przegląd + utwórz**.
-5. Review the settings, and then click **Create**.  
-6. Follow the steps to create a second VM named *myIISVMWestEurope*, with a **Resource group** name of *myResourceGroupTM2*, a **location** of *West Europe*, and all the other settings the same as *myIISVMEastUS*.
+5. Przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz**.  
+6. Postępuj zgodnie z instrukcjami, aby utworzyć drugą maszynę wirtualną o nazwie *myIISVMWestEurope*, z nazwą **grupy zasobów** *MyResourceGroupTM2*, **lokalizacją** *Europa Zachodnia*i wszystkimi innymi ustawieniami takimi jak *myIISVMEastUS*.
 7. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>Instalowanie usług IIS i dostosowywanie domyślnej strony internetowej
 
-In this section, you install the IIS server on the two VMs - *myIISVMEastUS* & *myIISVMWestEurope*, and then update the default website page. Niestandardowa strona witryny internetowej przedstawia nazwę maszyny wirtualnej, z którą jest nawiązywane połączenie podczas odwiedzania witryny internetowej z przeglądarki sieci Web.
+W tej części należy zainstalować serwer IIS na dwóch maszynach wirtualnych — *myIISVMEastUS* & *myIISVMWestEurope*, a następnie zaktualizować domyślną stronę witryny sieci Web. Niestandardowa strona witryny internetowej przedstawia nazwę maszyny wirtualnej, z którą jest nawiązywane połączenie podczas odwiedzania witryny internetowej z przeglądarki sieci Web.
 
 1. Wybierz opcję **Wszystkie zasoby** w menu po lewej stronie, a następnie na liście zasobów kliknij zasób *myIISVMEastUS*, który znajduje się w grupie zasobów *myResourceGroupTM1*.
 2. Na stronie **Przegląd** kliknij opcję **Połącz**, a następnie w polu **Połącz z maszyną wirtualną**, wybierz opcję **Pobierz plik RDP**.
@@ -87,7 +87,7 @@ In this section, you install the IIS server on the two VMs - *myIISVMEastUS* & *
 4. Kliknij przycisk **OK**.
 5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
 6. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows**>**Menedżer serwera**.
-7. Launch Windows PowerShell on VM *myIISVMEastUS*, and using the following commands to install IIS server and update the default htm file.
+7. Uruchom program Windows PowerShell na maszynie wirtualnej *myIISVMEastUS*i użyj następujących poleceń, aby zainstalować serwer IIS i zaktualizować domyślny plik htm.
 
     ```powershell-interactive
     # Install IIS
@@ -100,9 +100,9 @@ In this section, you install the IIS server on the two VMs - *myIISVMEastUS* & *
     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from my " + $env:computername)
     ```
 
-8. Close the RDP connection with *myIISVMEastUS* VM.
-9. Repeat steps 1-6 with by creating an RDP connection with the VM *myIISVMWestEurope* within the *myResourceGroupTM2* resource group to install IIS and customize its default web page.
-10. Launch Windows PowerShell on *myIISVMWestEurope* VM, and using the following commands to install IIS server and update the default htm file.
+8. Zamknij połączenie RDP z maszyną wirtualną *myIISVMEastUS* .
+9. Powtórz kroki od 1-6 do, tworząc połączenie RDP z *myIISVMWestEurope* maszyny wirtualnej w grupie zasobów *myResourceGroupTM2* , aby zainstalować usługi IIS i dostosować jej domyślną stronę sieci Web.
+10. Uruchom program Windows PowerShell na maszynie wirtualnej *myIISVMWestEurope* i użyj następujących poleceń, aby zainstalować serwer IIS i zaktualizować domyślny plik htm.
 
     ```powershell-interactive
     # Install IIS
@@ -117,32 +117,32 @@ In this section, you install the IIS server on the two VMs - *myIISVMEastUS* & *
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>Konfigurowanie nazw DNS dla maszyn wirtualnych z uruchomionymi usługami IIS
 
-Usługa Traffic Manager kieruje ruch użytkowników na podstawie nazwy DNS punktów końcowych usługi. In this section, you configure the DNS names for the IIS servers - *myIISVMEastUS* and *myIISVMWestEurope*.
+Usługa Traffic Manager kieruje ruch użytkowników na podstawie nazwy DNS punktów końcowych usługi. W tej sekcji skonfigurujesz nazwy DNS serwerów usług IIS — *myIISVMEastUS* i *myIISVMWestEurope*.
 
 1. Kliknij opcję **Wszystkie zasoby** w menu po lewej stronie, a następnie na liście zasobów wybierz zasób *myIISVMEastUS*, który znajduje się w grupie zasobów *myResourceGroupTM1*.
 2. Na stronie **Przegląd**, w obszarze **Nazwa DNS**, wybierz opcję **Konfiguruj**.
 3. Na stronie **Konfiguracja**, w obszarze etykieta nazwy DNS, dodaj unikatową nazwę, a następnie wybierz opcję **Zapisz**.
-4. Repeat steps 1-3, for the VM named *myIISVMWestEurope* that is located in the *myResourceGroupTM2* resource group.
+4. Powtórz kroki 1-3 dla maszyny wirtualnej o nazwie *myIISVMWestEurope* , która znajduje się w grupie zasobów *myResourceGroupTM2* .
 
 ### <a name="create-test-vms"></a>Tworzenie testowych maszyn wirtualnych
 
-In this section, you create a VM (*myVMEastUS* and *myVMWestEurope*) in each Azure region (**East US** and **West Europe**). You will use these VMs to test how Traffic Manager routes user traffic based on the subnet of the user's query.
+W tej sekcji utworzysz maszynę wirtualną (*myVMEastUS* i *myVMWestEurope*) w każdym regionie świadczenia usługi Azure (**Wschodnie stany USA** i **Europa Zachodnia**). Te maszyny wirtualne będą używane do testowania, w jaki sposób Traffic Manager kieruje ruchem użytkowników na podstawie podsieci zapytania użytkownika.
 
-1. On the upper, left corner of the Azure portal, select **Create a resource** > **Compute** > **Windows Server 2019 Datacenter**.
+1. W lewym górnym rogu Azure Portal wybierz pozycję **Utwórz zasób** > **COMPUTE** > **systemie Windows Server 2019 Datacenter**.
 2. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
 
-   - **Subscription** > **Resource Group**: Select **myResourceGroupTM1**.
-   - **Instance Details** > **Virtual machine name**: Type *myVMEastUS*.
-   - **Instance Details** > **Region**:  Select **East US**.
-   - **Administrator Account** > **Username**:  Enter a user name of your choosing.
-   - **Administrator Account** > **Password**:  Enter a password of your choosing. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
-   - **Inbound Port Rules** > **Public inbound ports**: Select **Allow selected ports**.
-   - **Inbound Port Rules** > **Select inbound ports**: Select **RDP** in the pull down box.
+   - **Grupa zasobów** > **subskrypcji** : wybierz pozycję **myResourceGroupTM1**.
+   - **Szczegóły wystąpienia** > **Nazwa maszyny wirtualnej**: wpisz *myVMEastUS*.
+   - **Szczegóły wystąpienia** > **regionu**: Wybierz **Wschodnie stany USA**.
+   - **Konto administratora** > **Nazwa użytkownika**: Wprowadź wybraną nazwę użytkownika.
+   - **Konto administratora** > **hasło**: Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Reguły portów przychodzących** > **publicznych portów przychodzących**: wybierz opcję **Zezwalaj na wybrane porty**.
+   - **Reguły portów ruchu przychodzącego** > **Wybieranie portów przychodzących**: wybierz pozycję **RDP** w polu ściągania.
 
-3. Select the **Management** tab, or select **Next: Disks**, then **Next: Networking**, then **Next: Management**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
+3. Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej: dyski**, a następnie kliknij kolejno pozycje **Sieć**i **Dalej: Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**.
 4. Wybierz pozycję **Przegląd + utwórz**.
-5. Review the settings, and then click **Create**.  
-6. Follow the steps to create a second VM named *myVMWestEurope*, with a **Resource group** name of *myResourceGroupTM2*, a **location** of *West Europe*, and all the other settings the same as *myVMEastUS*.
+5. Przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz**.  
+6. Postępuj zgodnie z instrukcjami, aby utworzyć drugą maszynę wirtualną o nazwie *myVMWestEurope*, z nazwą **grupy zasobów** *MyResourceGroupTM2*, **lokalizacją** *Europa Zachodnia*i wszystkimi innymi ustawieniami takimi jak *myVMEastUS*.
 7. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
 
 ## <a name="create-a-traffic-manager-profile"></a>Tworzenie profilu usługi Traffic Manager
@@ -156,7 +156,7 @@ Utwórz profil usługi Traffic Manager, który umożliwia zwracanie określonych
     | ---                     | ---                                                |
     | Nazwa                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net. Na jej podstawie zostanie utworzona nazwa DNS trafficmanager.net służąca do uzyskiwania dostępu do profilu usługi Traffic Manager.                                   |
     | Metoda routingu          | Wybierz metodę routingu**Podsieć**.                                       |
-    | Subskrypcja            | Wybierz subskrypcję.                          |
+    | Subscription            | Wybierz subskrypcję.                          |
     | Grupa zasobów          | Wybierz pozycję **Istniejąca** i wprowadź *myResourceGroupTM1*. |
     | |                              |
     |
@@ -165,7 +165,7 @@ Utwórz profil usługi Traffic Manager, który umożliwia zwracanie określonych
 
 ## <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 
-Add the two VMs running the IIS servers - *myIISVMEastUS* & *myIISVMWestEurope* to route user traffic based on the subnet of the user's query.
+Dodaj dwie maszyny wirtualne, na których działają serwery IIS — *myIISVMEastUS* & *myIISVMWestEurope* , aby kierować ruchem użytkowników na podstawie podsieci zapytania użytkownika.
 
 1. Na pasku wyszukiwania portalu wyszukaj nazwę profilu usługi Traffic Manager, który został utworzony w poprzedniej sekcji, a następnie wybierz ten profil w wyświetlonych wynikach.
 2. W obszarze **Profil usługi Traffic Manager** w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**, a następnie kliknij pozycję **Dodaj**.
@@ -177,9 +177,9 @@ Add the two VMs running the IIS servers - *myIISVMEastUS* & *myIISVMWestEurope* 
     | Nazwa           | myInternalWebSiteEndpoint                                        |
     | Typ zasobu docelowego           | Publiczny adres IP                          |
     | Zasób docelowy          | **Wybierz publiczny adres IP**, aby wyświetlić listę zasobów z publicznymi adresami IP w ramach tej samej subskrypcji. W obszarze **Zasób** wybierz publiczny adres IP o nazwie *myIISVMEastUS-ip*. Jest to publiczny adres IP serwera usług IIS maszyny wirtualnej w regionie Wschodnie stany USA.|
-    |  Ustawienia routingu dla podsieci    |   Add the IP address of *myVMEastUS* test VM. Any user query originating from this VM will be directed to the *myInternalWebSiteEndpoint*.    |
+    |  Ustawienia routingu dla podsieci    |   Dodaj adres IP testowej maszyny wirtualnej *myVMEastUS* . Wszystkie zapytania użytkownika pochodzące z tej maszyny wirtualnej będą kierowane do *myInternalWebSiteEndpoint*.    |
 
-4. Repeat steps 2 and 3 to add another endpoint named *myProdWebsiteEndpoint* for the public IP address *myIISVMWestEurope-ip* that is associated with the IIS server VM named *myIISVMWestEurope*. For **Subnet routing settings**, add the IP address of the test VM - *myVMWestEurope*. Każde zapytanie użytkownika z tej testowej maszyny wirtualnej będzie kierowane do punktu końcowego *myProdWebsiteEndpoint*.
+4. Powtórz kroki 2 i 3, aby dodać kolejny punkt końcowy o nazwie *myProdWebsiteEndpoint* dla publicznego adresu IP *myIISVMWestEurope-IP* skojarzony z maszyną wirtualną serwera IIS o nazwie *myIISVMWestEurope*. Aby uzyskać **ustawienia routingu podsieci**, Dodaj adres IP testowej maszyny wirtualnej — *myVMWestEurope*. Każde zapytanie użytkownika z tej testowej maszyny wirtualnej będzie kierowane do punktu końcowego *myProdWebsiteEndpoint*.
 5. Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w obszarze **Profil usługi Traffic Manager** ze stanem monitorowania **Online**.
 
 ## <a name="test-traffic-manager-profile"></a>Testowanie profilu usługi Traffic Manager
@@ -188,8 +188,8 @@ W tej sekcji przetestujesz kierowanie ruchu użytkowników z danej podsieci do o
 
 1. Określ nazwę DNS profilu usługi Traffic Manager.
 2. Wyświetl informacje o działaniu usługi Traffic Manager w następujący sposób:
-    - From the test VM (*myVMEastUS*) that is located in the **East US** region, in a web browser, browse to the DNS name of your Traffic Manager profile.
-    - From the test VM (*myVMWestEurope*) that is located in the **West Europe** region, in a web browser, browse to the DNS name of your Traffic Manager profile.
+    - Z poziomu testowej maszyny wirtualnej (*myVMEastUS*), która znajduje się w regionie **Wschodnie stany USA** , w przeglądarce internetowej przejdź do nazwy DNS profilu Traffic Manager.
+    - Z testową maszyną wirtualną (*myVMWestEurope*), która znajduje się w regionie **Europa Zachodnia** , w przeglądarce internetowej przejdź do nazwy DNS profilu Traffic Manager.
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Określanie nazwy DNS profilu usługi Traffic Manager
 
@@ -210,9 +210,9 @@ W tej sekcji zobaczysz działanie usługi Traffic Manager.
 3. Otwórz pobrany plik rdp. Po wyświetleniu monitu wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może okazać się konieczne wybranie pozycji **Więcej opcji**, a następnie pozycji **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
 4. Kliknij przycisk **OK**.
 5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
-6. W przeglądarce internetowej na maszynie wirtualnej *myVMEastUS* wpisz nazwę DNS profilu usługi Traffic Manager, aby wyświetlić witrynę internetową. Since the VM *myVMEastUS* IP address is associated with the endpoint *myInternalWebsiteEndpoint*, the web browser launches the Test website server - *myIISVMEastUS*.
+6. W przeglądarce internetowej na maszynie wirtualnej *myVMEastUS* wpisz nazwę DNS profilu usługi Traffic Manager, aby wyświetlić witrynę internetową. Ponieważ adres IP *myVMEastUS* maszyny wirtualnej jest skojarzony z punktem końcowym *myInternalWebsiteEndpoint*, przeglądarka sieci Web uruchamia testową serwer witryny sieci Web — *myIISVMEastUS*.
 
-7. Next, connect to the VM *myVMWestEurope* located in **West Europe** using steps 1-5 and browse to the Traffic Manager profile domain name from this VM. Since the VM *myVMWestEurope* IP address is associated with the endpoint *myProductionWebsiteEndpoint*, the web browser launches the Test website server - *myIISVMWestEurope*.
+7. Następnie połącz się z maszyną wirtualną *myVMWestEurope* znajdującą się w **Europie zachodniej** , korzystając z kroków 1-5 i przejdź do nazwy domeny profilu Traffic Manager z tej maszyny wirtualnej. Ponieważ adres IP *myVMWestEurope* maszyny wirtualnej jest skojarzony z punktem końcowym *myProductionWebsiteEndpoint*, przeglądarka sieci Web uruchamia testową serwer witryny sieci Web — *myIISVMWestEurope*.
 
 ## <a name="delete-the-traffic-manager-profile"></a>Usuwanie profilu usługi Traffic Manager
 

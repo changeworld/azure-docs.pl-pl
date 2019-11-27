@@ -36,10 +36,10 @@ Serwer proxy aplikacji to funkcja usługi Azure AD, która umożliwia użytkowni
 
 Serwer proxy aplikacji współpracuje z:
 
-* Aplikacje, które używają sieci Web [zintegrowane uwierzytelnianie Windows](application-proxy-configure-single-sign-on-with-kcd.md) uwierzytelniania  
-* Aplikacje korzystające z opartego na formularzach sieci Web lub [opartej na nagłówkach](application-proxy-configure-single-sign-on-with-ping-access.md) dostępu  
+* Aplikacje sieci Web, które używają [zintegrowanego uwierzytelniania systemu Windows](application-proxy-configure-single-sign-on-with-kcd.md) na potrzeby uwierzytelniania  
+* Aplikacje sieci Web korzystające z dostępu opartego na formularzach lub [nagłówkach](application-proxy-configure-single-sign-on-with-ping-access.md)  
 * Interfejsy API, który chcesz udostępnić rozbudowane aplikacje na różnych urządzeniach w sieci Web  
-* Aplikacji hostowanych za [bramy usług pulpitu zdalnego](application-proxy-integrate-with-remote-desktop-services.md)  
+* Aplikacje hostowane za [bramą pulpit zdalny](application-proxy-integrate-with-remote-desktop-services.md)  
 * Rozbudowane aplikacje klienckie, które są zintegrowane z Active Directory Authentication Library (ADAL)
 
 Serwer proxy aplikacji obsługuje logowanie jednokrotne. Aby uzyskać więcej informacji na temat obsługiwanych metod, zobacz [Wybieranie metody logowania](what-is-single-sign-on.md#choosing-a-single-sign-on-method)jednokrotnego.
@@ -64,7 +64,7 @@ Na poniższym diagramie pokazano, w jaki sposób usługa Azure AD i serwer proxy
 | Endpoint  | Punkt końcowy jest adresem URL lub [portalem użytkowników końcowych](end-user-experiences.md). Użytkownicy mogą korzystać z aplikacji znajduje się poza siecią, uzyskując dostęp do zewnętrznego adresu URL. Użytkownicy w Twojej sieci dostęp do aplikacji za pomocą adresu URL lub portalu użytkownika końcowego. Użytkownicy, przejdź do jednego z tych punktów końcowych, uwierzytelniania w usłudze Azure AD i następnie są kierowane za pośrednictwem łącznika do aplikacji w środowisku lokalnym.|
 | Azure AD | Usługa Azure AD wykonuje uwierzytelnianie przy użyciu katalogu dzierżawy przechowywanego w chmurze. |
 | Usługa serwera proxy aplikacji | Ta usługa serwera proxy aplikacji działa w chmurze w ramach usługi Azure AD. Przekazuje on token logowania od użytkownika do łącznika serwera proxy aplikacji. Serwer proxy aplikacji przekazuje wszystkie dostępne nagłówki w żądaniu i ustawia nagłówki zgodnie z protokołem na adres IP klienta. Jeśli żądanie przychodzące do serwera proxy ma już ten nagłówek, adres IP klienta zostanie dodany na końcu listy rozdzielanej przecinkami, która jest wartością nagłówka.|
-| Łącznik serwera proxy aplikacji | Łącznik jest lekkim agentem działającym na serwerze z systemem Windows w sieci. Łącznik zarządza komunikacją między usługą serwera proxy aplikacji w chmurze a aplikacją lokalną. Łącznik używa tylko połączeń wychodzących, więc nie trzeba otwierać żadnych portów przychodzących ani umieszczać żadnych elementów w strefie DMZ. Łączniki są bezstanowe i pobierania informacji z chmury, zgodnie z potrzebami. Aby uzyskać więcej informacji na temat łączników, takich jak jak one Równoważenie obciążenia i uwierzytelniania, zobacz [łączników serwera Proxy aplikacji usługi AD Azure zrozumienie](application-proxy-connectors.md).|
+| Łącznik serwera proxy aplikacji | Łącznik jest lekkim agentem działającym na serwerze z systemem Windows w sieci. Łącznik zarządza komunikacją między usługą serwera proxy aplikacji w chmurze a aplikacją lokalną. Łącznik używa tylko połączeń wychodzących, więc nie trzeba otwierać żadnych portów przychodzących ani umieszczać żadnych elementów w strefie DMZ. Łączniki są bezstanowe i pobierania informacji z chmury, zgodnie z potrzebami. Aby uzyskać więcej informacji na temat łączników, takich jak równoważenie obciążenia i uwierzytelnianie, zobacz [Omówienie łączników usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy-connectors.md).|
 | Active Directory (AD) | Active Directory działa lokalnie, aby przeprowadzić uwierzytelnianie dla kont domeny. Po skonfigurowaniu logowania jednokrotnego łącznik komunikuje się z usługą AD, aby wykonać wymagane dodatkowe uwierzytelnianie.
 | Aplikacja lokalna | Na koniec użytkownik może uzyskać dostęp do aplikacji lokalnej. 
 

@@ -1,5 +1,5 @@
 ---
-title: Quickstart`:` Use a managed identity to access Azure Resource Manager - Azure AD
+title: '`:` szybkiego startu korzystanie z tożsamości zarządzanej w celu uzyskania dostępu do usługi Azure Resource Manager — Azure AD'
 description: Szybki start przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -65,7 +65,7 @@ Aby wykonać te kroki, będziesz potrzebować klienta SSH. Jeśli używasz syste
     ```
     
     > [!NOTE]
-    > Wartość parametru „resource” musi być dokładnie dopasowana do tego, czego oczekujemy od usługi Azure AD.  In the case of the Resource Manager resource ID, you must include the trailing slash on the URI. 
+    > Wartość parametru „resource” musi być dokładnie dopasowana do tego, czego oczekujemy od usługi Azure AD.  W przypadku Menedżer zasobów identyfikatora zasobu należy uwzględnić końcowy ukośnik w identyfikatorze URI. 
     
     Odpowiedź zawiera token dostępu wymagany do uzyskania dostępu do usługi Azure Resource Manager. 
     
@@ -81,7 +81,7 @@ Aby wykonać te kroki, będziesz potrzebować klienta SSH. Jeśli używasz syste
     "token_type":"Bearer"} 
     ```
     
-    Możesz użyć tego tokenu dostępu w celu uzyskania dostępu do usługi Azure Resource Manager, np. aby odczytać właściwości grupy zasobów, do której wcześniej udzielono dostępu tej maszynie wirtualnej. Replace the values of \<SUBSCRIPTION ID\>, \<RESOURCE GROUP\>, and \<ACCESS TOKEN\> with the ones you created earlier. 
+    Możesz użyć tego tokenu dostępu w celu uzyskania dostępu do usługi Azure Resource Manager, np. aby odczytać właściwości grupy zasobów, do której wcześniej udzielono dostępu tej maszynie wirtualnej. Zastąp wartości \<identyfikatora subskrypcji\>, \<grupy zasobów\>i \<TOKEN dostępu\> z utworzonymi wcześniej. 
     
     > [!NOTE]
     > W adresie URL rozróżniana jest wielkość liter, więc upewnij się, że użyto takich samych wartości jak wcześniej, podczas nazywania grupy zasobów — z wielką literą „G” w nazwie „resourceGroup”.  
@@ -101,4 +101,4 @@ W tym przewodniku Szybki start przedstawiono sposób używania tożsamości zarz
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
->[Create, list or delete a user-assigned managed identity using Azure PowerShell](how-to-manage-ua-identity-powershell.md)
+>[tworzenia, wyświetlania lub usuwania tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell](how-to-manage-ua-identity-powershell.md)

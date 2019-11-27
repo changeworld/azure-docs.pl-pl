@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z wdrożeniami
-description: Learn how to monitor and troubleshoot Azure Resource Manager template deployments. Shows activity logs and deployment history.
+description: Dowiedz się, jak monitorować wdrożenia szablonów Azure Resource Manager i rozwiązywać problemy. Pokazuje dzienniki aktywności i historię wdrożenia.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
@@ -12,7 +12,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325355"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Tutorial: Troubleshoot Resource Manager template deployments
+# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Samouczek: Rozwiązywanie problemów z wdrożeniami szablonów Menedżer zasobów
 
 Dowiedz się, jak rozwiązywać problemy z błędami wdrażania szablonów usługi Resource Manager. W tym samouczku skonfigurujesz dwa błędy w szablonie i dowiesz się, jak korzystać z dzienników aktywności i historii wdrażania, aby rozwiązać problemy.
 
@@ -39,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio Code z rozszerzeniem Menedżer zasobów Tools. [Aby utworzyć szablony Azure Resource Manager, zobacz temat używanie Visual Studio Code](./resource-manager-tools-vs-code.md).
 
 ## <a name="create-a-problematic-template"></a>Tworzenie problematycznego szablonu
 
@@ -93,7 +93,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Błąd wdrażania można odnaleźć w witrynie Azure Portal, korzystając z następującej procedury:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Otwórz grupę zasobów, wybierając pozycję **Grupa zasobów**, a następnie wybierz nazwę grupy zasobów. Zostanie wyświetlony komunikat **1 niepowodzenie** w obszarze **Wdrożenia**.
 
     ![Samouczek dotyczący rozwiązywania problemów w usłudze Resource Manager](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -107,7 +107,7 @@ Błąd wdrażania można odnaleźć w witrynie Azure Portal, korzystając z nast
 
 Ten błąd można również znaleźć w dzienniku aktywności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Monitorowanie** > **Dziennik aktywności**.
 3. Użyj filtrów, aby znaleźć dziennik.
 

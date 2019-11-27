@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Create ExpressRoute connections using Azure Virtual WAN
+title: Samouczek — Tworzenie połączeń ExpressRoute przy użyciu wirtualnej sieci WAN platformy Azure
 description: W tym samouczku pokazano, jak używać usługi Azure Virtual WAN do tworzenia połączeń usługi ExpressRoute z platformą Azure i środowiskami lokalnymi.
 services: virtual-wan
 author: cherylmc
@@ -15,82 +15,82 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422865"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Tutorial: Create an ExpressRoute association using Azure Virtual WAN
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Samouczek: Tworzenie skojarzenia ExpressRoute przy użyciu wirtualnej sieci WAN platformy Azure
 
-This tutorial shows you how to use Virtual WAN to connect to your resources in Azure over an ExpressRoute circuit. For more information about Virtual WAN and Virtual WAN resources, see the [Virtual WAN Overview](virtual-wan-about.md).
+W tym samouczku pokazano, jak używać wirtualnej sieci WAN do łączenia się z zasobami na platformie Azure za pośrednictwem obwodu usługi ExpressRoute. Aby uzyskać więcej informacji na temat wirtualnych sieci WAN i wirtualnych zasobów sieci WAN, zobacz [Omówienie wirtualnej sieci WAN](virtual-wan-about.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie wirtualnej sieci WAN
-> * Create a hub and a gateway
+> * Tworzenie centrum i bramy
 > * Łączenie sieci wirtualnej z koncentratorem
-> * Connect a circuit to a hub gateway
+> * Łączenie obwodu z bramą centrum
 > * Testowanie łączności
-> * Change a gateway size
-> * Advertise a default route
+> * Zmiana rozmiaru bramy
+> * Anonsowanie trasy domyślnej
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryteria:
 
-* You have a virtual network that you want to connect to. Verify that none of the subnets of your on-premises networks overlap with the virtual networks that you want to connect to. To create a virtual network in the Azure portal, see the [Quickstart](../virtual-network/quick-create-portal.md).
+* Masz sieć wirtualną, z którą chcesz nawiązać połączenie. Sprawdź, czy żadna z podsieci sieci lokalnych nie nakłada się na sieci wirtualne, z którymi chcesz nawiązać połączenie. Aby utworzyć sieć wirtualną w Azure Portal, zobacz [Przewodnik Szybki Start](../virtual-network/quick-create-portal.md).
 
-* Your virtual network does not have any virtual network gateways. If your virtual network has a gateway (either VPN or ExpressRoute), you must remove all gateways. This configuration requires that virtual networks are connected instead, to the Virtual WAN hub gateway.
+* Twoja sieć wirtualna nie ma żadnych bram sieci wirtualnej. Jeśli sieć wirtualna ma bramę (VPN lub ExpressRoute), należy usunąć wszystkie bramy. Ta konfiguracja wymaga, aby w zamian były połączone sieci wirtualne z bramą wirtualnego centrum sieci WAN.
 
-* Uzyskaj zakres adresów IP w regionie koncentratora. The hub is a virtual network that is created and used by Virtual WAN. The address range that you specify for the hub cannot overlap with any of your existing virtual networks that you connect to. Nie może również pokrywać się z zakresami adresów, z którymi łączysz się lokalnie. If you are unfamiliar with the IP address ranges located in your on-premises network configuration, coordinate with someone who can provide those details for you.
+* Uzyskaj zakres adresów IP w regionie koncentratora. Centrum jest siecią wirtualną, która jest tworzona i używana przez wirtualną sieć WAN. Zakres adresów określony dla centrum nie może pokrywać się z żadną z istniejących sieci wirtualnych, z którymi się łączysz. Nie może również pokrywać się z zakresami adresów, z którymi łączysz się lokalnie. Jeśli nie znasz zakresów adresów IP znajdujących się w konfiguracji sieci lokalnej, koordynuj się z osobą, która może podać te szczegóły.
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="openvwan"></a>Create a virtual WAN
+## <a name="openvwan"></a>Tworzenie wirtualnej sieci WAN
 
 Przejdź w przeglądarce do witryny [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 
-1. Navigate to the Virtual WAN page. W portalu kliknij pozycję **+Utwórz zasób**. Type **Virtual WAN** into the search box and select Enter.
-2. Select **Virtual WAN** from the results. On the Virtual WAN page, click **Create** to open the Create WAN page.
-3. On the **Create WAN** page, on the **Basics** tab, fill in the following fields:
+1. Przejdź do strony wirtualna sieć WAN. W portalu kliknij pozycję **+Utwórz zasób**. W polu wyszukiwania wpisz **wirtualną sieć WAN** i wybierz pozycję Wprowadź.
+2. Z wyników wybierz pozycję **wirtualna sieć WAN** . Na stronie wirtualna sieć WAN kliknij przycisk **Utwórz** , aby otworzyć stronę tworzenie sieci WAN.
+3. Na stronie **Tworzenie sieci WAN** na karcie **podstawowe** wypełnij następujące pola:
 
    ![Tworzenie sieci WAN](./media/virtual-wan-expressroute-portal/createwan.png)
 
    * **Subskrypcja** — wybierz subskrypcję, która ma być używana.
    * **Grupa zasobów**— utwórz nową lub użyj istniejącej.
-   * **Resource group location** - Choose a resource location from the dropdown. Sieć WAN to zasób globalny i nie znajduje się w konkretnym regionie. Konieczne jest jednak wybranie regionu, aby łatwiej zarządzać utworzonym zasobem sieci WAN i go lokalizować.
-   * **Name** - Type the name that you want to call your WAN.
-   * **Type** - Select **Standard**. You can't create an ExpressRoute gateway using the Basic SKU.
-4. After you finish filling out the fields, select **Review +Create**.
-5. Once validation passes, select **Create** to create the virtual WAN.
+   * **Lokalizacja grupy zasobów** — wybierz lokalizację zasobu z listy rozwijanej. Sieć WAN to zasób globalny i nie znajduje się w konkretnym regionie. Konieczne jest jednak wybranie regionu, aby łatwiej zarządzać utworzonym zasobem sieci WAN i go lokalizować.
+   * **Nazwa** — wpisz nazwę, która ma zostać wywołana w sieci WAN.
+   * **Typ** — wybierz pozycję **Standardowy**. Nie można utworzyć bramy ExpressRoute przy użyciu podstawowej jednostki SKU.
+4. Po zakończeniu wypełniania pól wybierz pozycję **Przegląd + Utwórz**.
+5. Po zakończeniu walidacji wybierz pozycję **Utwórz** , aby utworzyć wirtualną sieć WAN.
 
-## <a name="hub"></a>Create a virtual hub and gateway
+## <a name="hub"></a>Tworzenie koncentratora wirtualnego i bramy
 
-A virtual hub is a virtual network that is created and used by Virtual WAN. It can contain various gateways, such as VPN and ExpressRoute. In this section, you will create an ExpressRoute gateway for your virtual hub. You can either create the gateway when you [create a new virtual hub](#newhub), or you can create the gateway in an [existing hub](#existinghub) by editing it. 
+Koncentrator wirtualny jest siecią wirtualną, która jest tworzona i używana przez wirtualną sieć WAN. Może zawierać różne bramy, takie jak sieci VPN i ExpressRoute. W tej sekcji utworzysz bramę ExpressRoute dla koncentratora wirtualnego. Bramę można utworzyć podczas [tworzenia nowego koncentratora wirtualnego](#newhub)lub można utworzyć bramę w [istniejącym centrum](#existinghub) , edytując ją. 
 
-ExpressRoute gateways are provisioned in units of 2 Gbps. 1 scale unit = 2 Gbps with support up to 10 scale units = 20 Gbps. It takes about 30 minutes for a virtual hub and gateway to fully create.
+Bramy ExpressRoute są inicjowane w jednostkach 2 GB/s. 1 jednostka skalowania = 2 GB/s z obsługą do 10 jednostek skalowania = 20 GB/s. Aby można było w pełni utworzyć koncentrator wirtualny i Brama, zajmie około 30 minut.
 
-### <a name="newhub"></a>To create a new virtual hub and a gateway
+### <a name="newhub"></a>Aby utworzyć nowe centrum wirtualne i bramę
 
-Create a new virtual hub. Once a hub is created, you'll be charged for the hub, even if you don't attach any sites.
+Utwórz nowe centrum wirtualne. Po utworzeniu centrum zostanie naliczona opłata za centrum, nawet jeśli nie dołączysz żadnych witryn.
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-### <a name="existinghub"></a>To create a gateway in an existing hub
+### <a name="existinghub"></a>Aby utworzyć bramę w istniejącym centrum
 
-You can also create a gateway in an existing hub by editing it.
+Możesz również utworzyć bramę w istniejącym centrum, edytując ją.
 
-1. Navigate to the virtual hub that you want to edit and select it.
-2. On the **Edit virtual hub** page, select the checkbox **Include ExpressRoute gateway**.
-3. Select **Confirm** to confirm your changes. It takes about 30 minutes for the hub and hub resources to fully create.
+1. Przejdź do koncentratora wirtualnego, który chcesz edytować, i zaznacz go.
+2. Na stronie **Edytuj koncentrator wirtualny** zaznacz pole wyboru **Uwzględnij bramę ExpressRoute**.
+3. Wybierz pozycję **Potwierdź** , aby potwierdzić zmiany. Do pełnego utworzenia zasobów centrum i koncentratora trwa około 30 minut.
 
-   ![existing hub](./media/virtual-wan-expressroute-portal/edithub.png "edit a hub")
+   ![istniejące centrum](./media/virtual-wan-expressroute-portal/edithub.png "Edytowanie centrum")
 
-### <a name="to-view-a-gateway"></a>To view a gateway
+### <a name="to-view-a-gateway"></a>Aby wyświetlić bramę
 
-Once you have created an ExpressRoute gateway, you can view gateway details. Navigate to the hub, select **ExpressRoute**, and view the gateway.
+Po utworzeniu bramy ExpressRoute można wyświetlić szczegóły bramy. Przejdź do centrum, wybierz pozycję **ExpressRoute**, a następnie sprawdź bramę.
 
-![View gateway](./media/virtual-wan-expressroute-portal/viewgw.png "view gateway")
+![Wyświetl bramę](./media/virtual-wan-expressroute-portal/viewgw.png "Wyświetl bramę")
 
-## <a name="connectvnet"></a>Connect your VNet to the hub
+## <a name="connectvnet"></a>Łączenie sieci wirtualnej z centrum
 
-In this section, you create the peering connection between your hub and a VNet. Powtórz te czynności dla każdej sieci wirtualnej, z którą chcesz się połączyć.
+W tej sekcji utworzysz połączenie komunikacji równorzędnej między centrum i siecią wirtualną. Powtórz te czynności dla każdej sieci wirtualnej, z którą chcesz się połączyć.
 
 1. Na stronie usługi Virtual WAN kliknij pozycję **Połączenie sieci wirtualnej**.
 2. Na stronie połączenia sieci wirtualnej kliknij polecenie **+ Dodaj połączenie**.
@@ -99,57 +99,57 @@ In this section, you create the peering connection between your hub and a VNet. 
     * **Nazwa połączenia** — nazwij połączenie.
     * **Koncentratory** — wybierz koncentrator, z którym chcesz skojarzyć to połączenie.
     * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
-    * **Sieć wirtualna** — wybierz sieć wirtualną, którą chcesz połączyć z tym koncentratorem. The virtual network cannot have an already existing virtual network gateway (neither VPN, nor ExpressRoute).
+    * **Sieć wirtualna** — wybierz sieć wirtualną, którą chcesz połączyć z tym koncentratorem. Sieć wirtualna nie może mieć już istniejącej bramy sieci wirtualnej (ani sieci VPN ani ExpressRoute).
 
-## <a name="connectcircuit"></a>Connect your circuit to the hub gateway
+## <a name="connectcircuit"></a>Łączenie obwodu z bramą centrum
 
-Once the gateway is created, you can connect an [ExpressRoute circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) to it. Note that ExpressRoute Premium circuits that are in ExpressRoute Global Reach-supported locations can connect to a Virtual WAN ExpressRoute gateway.
+Po utworzeniu bramy można podłączyć do niej [obwód ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . Należy zauważyć, że obwody usługi ExpressRoute w warstwie Premium, które znajdują się w lokalizacji obsługiwanej przez usługi ExpressRoute Global Reach, mogą łączyć się z wirtualną bramą ExpressRoute
 
-### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>To connect the circuit to the hub gateway
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Aby połączyć obwód z bramą centrum
 
-In the portal, go to the **Virtual hub -> Connectivity -> ExpressRoute** page. If you have access in your subscription to an ExpressRoute circuit, you will see the circuit you want to use in the list of circuits. If you don’t see any circuits, but have been provided with an authorization key and peer circuit URI, you can redeem and connect a circuit. See [To connect by redeeming an authorization key](#authkey).
+W portalu przejdź do strony **Virtual Hub-> łączności > ExpressRoute** . Jeśli masz dostęp do obwodu usługi ExpressRoute, na liście obwodów zostanie wyświetlony obwód, którego chcesz użyć. Jeśli nie widzisz żadnych obwodów, ale zostały one dostarczone z kluczem autoryzacji i identyfikatorem URI obwodu równorzędnego, możesz zrealizować obwód i połączyć go. Zapoznaj się z tematem [, aby nawiązać połączenie przez zrealizowanie klucza autoryzacji](#authkey).
 
-1. Select the circuit.
-2. Select **Connect circuit(s)** .
+1. Wybierz obwód.
+2. Wybierz pozycję **Połącz obwody**.
 
-   ![connect circuits](./media/virtual-wan-expressroute-portal/cktconnect.png "connect circuits")
+   ![Połącz obwody](./media/virtual-wan-expressroute-portal/cktconnect.png "Połącz obwody")
 
-### <a name="authkey"></a>To connect by redeeming an authorization key
+### <a name="authkey"></a>Aby nawiązać połączenie przez zrealizowanie klucza autoryzacji
 
-Use the authorization key and circuit URI you were provided in order to connect.
+Użyj klucza autoryzacji i identyfikatora URI obwodu, który podano w celu nawiązania połączenia.
 
-1. On the ExpressRoute page, click **+Redeem authorization key**
+1. Na stronie ExpressRoute kliknij pozycję **+ Zrealizuj klucz autoryzacji**
 
-   ![redeem](./media/virtual-wan-expressroute-portal/redeem.png "redeem")
-2. On the Redeem authorization key page, fill in the values.
+   ![Zrealizuj](./media/virtual-wan-expressroute-portal/redeem.png "Zrealizuj")
+2. Na stronie klucz autoryzacji Zrealizuj wprowadź wartości.
 
-   ![redeem key values](./media/virtual-wan-expressroute-portal/redeemkey2.png "redeem key values")
-3. Select **Add** to add the key.
-4. View the circuit. A redeemed circuit only shows the name (without the type, provider and other information) because it is in a different subscription than that of the user.
+   ![wartości klucza wykupu](./media/virtual-wan-expressroute-portal/redeemkey2.png "wartości klucza wykupu")
+3. Wybierz pozycję **Dodaj** , aby dodać klucz.
+4. Wyświetl obwód. Obwód zrealizowany wyświetla tylko nazwę (bez typu, dostawcy i innych informacji), ponieważ znajduje się w innej subskrypcji niż użytkownik.
 
-## <a name="to-test-connectivity"></a>To test connectivity
+## <a name="to-test-connectivity"></a>Aby przetestować łączność
 
-After the circuit connection is established, the hub connection status will indicate 'this hub', implying the connection is established to the hub ExpressRoute gateway. Wait approximately 5 minutes before you test connectivity from a client behind your ExpressRoute circuit, for example, a VM in the VNet that you created earlier.
+Po nawiązaniu połączenia z obwodem stan połączenia centrum będzie wskazywał "to centrum", co oznacza, że połączenie jest nawiązywane z bramą ExpressRoute Hub. Zaczekaj około 5 minut, zanim przetestujesz łączność z klienta w ramach obwodu usługi ExpressRoute, na przykład maszynę wirtualną w sieci wirtualnej, która została utworzona wcześniej.
 
-If you have sites connected to a Virtual WAN VPN gateway in the same hub as the ExpressRoute gateway, you can have bidirectional connectivity between VPN and ExpressRoute end points. Dynamic routing (BGP) is supported. The ASN of the gateways in the hub is fixed and cannot be edited at this time.
+Jeśli lokacje są połączone z bramą sieci VPN wirtualnej sieci WAN w tym samym centrum co Brama ExpressRoute, można mieć połączenie dwukierunkowe między sieciami VPN i ExpressRoute punkt końcowy. Routing dynamiczny (BGP) jest obsługiwany. Numer ASN bram w centrum jest stały i nie można go edytować w tym momencie.
 
-## <a name="to-change-the-size-of-a-gateway"></a>To change the size of a gateway
+## <a name="to-change-the-size-of-a-gateway"></a>Aby zmienić rozmiar bramy
 
-If you want to change the size of your ExpressRoute gateway, locate the ExpressRoute gateway inside the hub, and select the scale units from the dropdown. Save your change. It will take approximately 30 minutes to update the hub gateway.
+Jeśli chcesz zmienić rozmiar bramy usługi ExpressRoute, Znajdź bramę ExpressRoute w centrum i wybierz jednostki skalowania z listy rozwijanej. Zapisz zmiany. Aktualizacja bramy centrum będzie trwać około 30 minut.
 
-![change gateway size](./media/virtual-wan-expressroute-portal/changescale.png "change gateway size")
+![Zmień rozmiar bramy](./media/virtual-wan-expressroute-portal/changescale.png "Zmień rozmiar bramy")
 
-## <a name="to-advertise-default-route-00000-to-endpoints"></a>To advertise default route 0.0.0.0/0 to endpoints
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>Anonsowanie domyślnej trasy 0.0.0.0/0 do punktów końcowych
 
-If you would like the Azure virtual hub to advertise the default route 0.0.0.0/0 to your ExpressRoute end points, you will need to enable 'Propagate default route'.
+Jeśli chcesz, aby usługa Azure Virtual Hub anonsuje domyślną trasę 0.0.0.0/0 do punktów końcowych ExpressRoute, musisz włączyć opcję "Propaguj trasę domyślną".
 
-1. Select your **Circuit ->…-> Edit connection**.
+1. Wybierz **obwód >...-> Edytuj połączenie**.
 
-   ![Edit connection](./media/virtual-wan-expressroute-portal/defaultroute1.png "Edit connection")
+   ![Edytuj połączenie](./media/virtual-wan-expressroute-portal/defaultroute1.png "Edytuj połączenie")
 
-2. Select **Enable** to propagate the default route.
+2. Wybierz pozycję **Włącz** , aby propagować trasę domyślną.
 
-   ![Propagate default route](./media/virtual-wan-expressroute-portal/defaultroute2.png "Propagate default route")
+   ![Propaguj trasę domyślną](./media/virtual-wan-expressroute-portal/defaultroute2.png "Propaguj trasę domyślną")
 
 ## <a name="next-steps"></a>Następne kroki
 

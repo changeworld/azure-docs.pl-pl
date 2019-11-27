@@ -18,7 +18,7 @@ Na poniższej ilustracji przedstawiono widok notesu standardowego, w którym mo�
 
 ![Notes w standardowy widok](media/slideshow/slideshow-notebook-view.png)
 
-Po uruchomieniu pokaz slajdów, pierwszej komórki powiększenia do wypełniania w przeglądarce, gdzie **X** w lewym górnym rogu zamyka pokaz slajdów, **?** w dolnym lewym wyświetla skróty klawiaturowe i strzałki w prawym dolnym rogu przechodzić między slajdami:
+Po rozpoczęciu pokazu slajdów pierwsza komórka zostanie powiększona, aby wypełnić przeglądarkę, gdzie **X** w górnym rogu opuszcza pokaz slajdów **?** w dolnym lewym wyświetla skróty klawiaturowe i strzałki w prawym dolnym rogu przechodzić między slajdami:
 
 ![Notes w trybie pokaz slajdów](media/slideshow/slideshow-slide-view.png)
 
@@ -32,11 +32,11 @@ Przygotowywanie notebook pokazu slajdów obejmuje dwa podstawowe zadania:
 
 Czy wykonać notesu losowych i używać go w ramach pokazu slajdów, zwykle znajdziesz czy wszystkie komórki są mieszane ze sobą, a większość zawartości jest ukryty u dołu okna przeglądarki. Aby ułatwić skuteczne prezentacji, należy następnie przypisać typu Pokaz slajdów do każdej komórki za pomocą narzędzi komórki pokaz slajdów:
 
-1. Na **widoku** menu, wybierz opcję **narzędzi komórki** > **pokaz slajdów**:
+1. W menu **Widok** wybierz **pasek narzędzi komórki** > **Pokaz slajdów**:
 
     ![Włączanie na pasku narzędzi Pokaz slajdów komórki](media/slideshow/slideshow-view-cell-toolbar.png)
 
-1. A **typu slajdu** listy rozwijanej pojawia się w prawym górnym rogu każdej komórce w notesie:
+1. Lista rozwijana **Typ slajdu** pojawia się w prawym górnym rogu każdej komórki w notesie:
 
     ![Pasek narzędzi Pokaz slajdów komórki](media/slideshow/slideshow-cell-toolbar.png)
 
@@ -53,11 +53,11 @@ Czy wykonać notesu losowych i używać go w ramach pokazu slajdów, zwykle znaj
     | Pomiń | Komórki nie jest wyświetlany w pokaz slajdów. |
     | Uwagi | W komórce jako notatki prelegenta, które nie są wyświetlane w pokaz slajdów. |
 
-1. Początkowo jest przydatne wybrać **slajd** dla każdej komórki. Następnie można uruchomić pokaz slajdów i wprowadź odpowiednie zmiany.
+1. Początkowo warto wybrać opcję **slajdu** dla każdej komórki. Następnie można uruchomić pokaz slajdów i wprowadź odpowiednie zmiany.
 
 ### <a name="example-fragment-cells-for-bullet-items"></a>Przykład: fragmentu komórek elementów punktora
 
-Zapewnienie punktory na slajdzie występować o jedno, miejsce nagłówka slajdów w komórce kodu Markdown z **slajdów** typu, a następnie umieść każdy punktor w oddzielnej komórki języka znaczników Markdown za pomocą **fragmentu** typu:
+Aby punktory dla slajdu pojawiły się po jednym, umieść nagłówek slajdu w komórce o promocji z typem **slajdu** , a następnie umieść każdy punktor w oddzielnej komórce o promocji z typem **fragmentu** :
 
 ![Przykład tworzenia wielu komórek języka znaczników Markdown dla elementów punktora](media/slideshow/slideshow-fragments.png)
 
@@ -65,13 +65,13 @@ Ponieważ pokaz slajdów renderuje fragmenty z więcej pionowe odstępy niż gdy
 
 ## <a name="run-the-slideshow"></a>Uruchom pokaz slajdów
 
-1. Jeśli edytowane komórki dowolnego języka znaczników Markdown, upewnij się uruchomić je do renderowania ich HTML, w przeciwnym razie pojawiają się *jako* języka Markdown na platformie pokaz slajdów.
+1. Jeśli edytujesz wszystkie komórki z promocji, upewnij się, że są one uruchamiane w celu renderowania kodu HTML. w przeciwnym razie pojawiają się one w *postaci* promocji w pokazie slajdów.
 
-1. Po skonfigurowaniu **typu slajdu** dla każdej komórki, zaznacz komórkę za pomocą którego można rozpocząć pokaz slajdów, a następnie wybierz **Enter/zakończenia ROSNĄĆ w pokaz slajdów** na listwie narzędziowej główne:
+1. Po skonfigurowaniu **typu slajdu** dla każdej komórki wybierz komórkę, w której ma zostać uruchomiony pokaz slajdów, a następnie wybierz przycisk **pokazu naciśnij i wyjdź** na głównym pasku narzędzi:
 
     ![Przycisk włączany/wyłączany ROSNĄĆ w pokazu slajdów na głównym pasku narzędzi](media/slideshow/slideshow-start.png)
 
-1. Aby poruszać się między slajdy, a także fragmenty, należy użyć strzałek w lewo i w prawo w formancie nawigacji. Tekst w kontrolce pokazuje liczbę reprezentującą *slajdów slide.sub*.
+1. Aby poruszać się między slajdy, a także fragmenty, należy użyć strzałek w lewo i w prawo w formancie nawigacji. Tekst w kontrolce pokazuje liczbę reprezentującą *slajd. Sub-slajdu*.
 
     ![Kontrola nawigacji pokaz slajdów](media/slideshow/slideshow-navigation-control.png)
 
@@ -86,13 +86,13 @@ Ponieważ pokaz slajdów renderuje fragmenty z więcej pionowe odstępy niż gdy
     ![Wyjście komórki kodu, który pojawia się w pokaz slajdów](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Dane wyjściowe komórki jest uważany za część komórki w pokaz slajdów. Jeśli uruchamiasz komórce w notesie lub pokaz slajdów, dane wyjściowe pojawia się w innych widokach także. Aby wyczyścić dane wyjściowe, należy użyć **komórki** > **bieżące dane wyjściowe** > **wyczyść** polecenia (w przypadku bieżącej komórki) lub **komórki**  >  **Wszystkie dane wyjściowe** > **wyczyść** (dla wszystkich komórek).
+    > Dane wyjściowe komórki jest uważany za część komórki w pokaz slajdów. Jeśli uruchamiasz komórce w notesie lub pokaz slajdów, dane wyjściowe pojawia się w innych widokach także. Aby wyczyścić dane wyjściowe, użyj **komórki** > **bieżące wyjście** > **Wyczyść** polecenie (dla bieżącej komórki) lub **komórkę** > wszystkie dane **wyjściowe** > **Wyczyść** (dla wszystkich komórek).
 
-1. Po zakończeniu korzystania z pokazu slajdów, użyj **X** aby powrócić do widoku notesu.
+1. Gdy skończysz korzystać z pokazu slajdów, użyj **X** , aby powrócić do widoku notesu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Porady: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
-- [Porady: Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
-- [Porady: Praca z plikami danych](work-with-project-data-files.md)
-- [Porady: dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Instrukcje: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
+- [Instrukcje: Instalowanie pakietów z poziomu notesu](install-packages-jupyter-notebook.md)
+- [Instrukcje: korzystanie z plików danych](work-with-project-data-files.md)
+- [Instrukcje: dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)

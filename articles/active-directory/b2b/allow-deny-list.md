@@ -49,7 +49,7 @@ Aby dodać listę Odmów:
 
    ![Wyświetla opcję Odmów z dodanymi domenami](./media/allow-deny-list/DenyListSettings.png)
  
-6. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
+6. Gdy skończysz, kliknij przycisk **Zapisz**.
 
 Po ustawieniu zasad, jeśli spróbujesz zaprosić użytkownika z zablokowanej domeny, zostanie wyświetlony komunikat z informacją, że domena użytkownika jest obecnie zablokowana przez zasady dotyczące zaproszenia.
  
@@ -70,7 +70,7 @@ Aby dodać listę dozwolonych:
 
    ![Wyświetla opcję Zezwalaj z dodanymi domenami](./media/allow-deny-list/AllowListSettings.png)
  
-6. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
+6. Gdy skończysz, kliknij przycisk **Zapisz**.
 
 Po ustawieniu zasad, jeśli spróbujesz zaprosić użytkownika z domeny, która nie znajduje się na liście dozwolonych, zostanie wyświetlony komunikat z informacją, że domena użytkownika jest obecnie zablokowana przez zasady dotyczące zaproszenia.
 

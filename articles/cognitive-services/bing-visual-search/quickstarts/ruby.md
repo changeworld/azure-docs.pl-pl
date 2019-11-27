@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Ruby - Bing Visual Search'
+title: 'Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu interfejsu API REST i języka Ruby-wyszukiwanie wizualne Bing'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przekazać obraz do interfejsu API wyszukiwania wizualnego Bing i uzyskać szczegółowe informacje na jego temat.
 services: cognitive-services
@@ -17,22 +17,22 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383132"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Ruby
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu interfejsu API REST wyszukiwanie wizualne Bing i języka Ruby
 
-This quickstart uses the Ruby programming language to call Bing Visual Search and display results. A POST request uploads an image to the API endpoint. The results include URLs and descriptive information about images similar to the uploaded image.
+Ten przewodnik Szybki Start używa języka programowania Ruby do wywoływania wyszukiwanie wizualne Bing i wyświetlania wyników. Żądanie POST przekazuje obraz do punktu końcowego interfejsu API. Wyniki obejmują adresy URL i opisowe informacje o obrazach podobnych do przekazanego obrazu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-To run this quickstart:
+Aby uruchomić ten przewodnik Szybki Start:
 
-* Install [Ruby 2.4 or later](https://www.ruby-lang.org/en/downloads/)
-* Get a subscription key:
+* Zainstaluj język [Ruby 2,4 lub nowszy](https://www.ruby-lang.org/en/downloads/)
+* Pobierz klucz subskrypcji:
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="project-and-required-modules"></a>Project and required modules
+## <a name="project-and-required-modules"></a>Projekty i moduły wymagane
 
-Create a new Ruby project in your IDE or editor. Import `net/http`, `uri` , and `json` to handle the JSON text of results. The `base64` library is used to encode the file name string: 
+Utwórz nowy projekt Ruby w środowisku IDE lub edytorze. Zaimportuj `net/http`, `uri` i `json`, aby obsłużyć tekst JSON wyników. Biblioteka `base64` jest używana do kodowania ciągu nazwy pliku: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Definiowanie zmiennych
 
-The following code assigns required variables. Confirm that the endpoint is correct and replace the `accessKey` value with a subscription key from your Azure account.  The `batchNumber` is a GUID required for leading and trailing boundaries of the POST data.  The `fileName` variable identifies the image file for the POST.  The `if` block tests for a valid subscription key.
+Poniższy kod przypisuje wymagane zmienne. Upewnij się, że punkt końcowy jest poprawny, i Zastąp wartość `accessKey` kluczem subskrypcji na koncie platformy Azure.  `batchNumber` to identyfikator GUID wymagany do wiodących i końcowych granic danych POST.  Zmienna `fileName` identyfikuje plik obrazu dla wpisu.  `if` blokuje testy dla prawidłowego klucza subskrypcji.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>Form data for POST request
+## <a name="form-data-for-post-request"></a>Dane formularza dla żądania POST
 
-The image data to POST is enclosed by leading and trailing boundaries. The following functions set the boundaries:
+Dane obrazu do OPUBLIKOWANia są ujęte na wiodące i końcowe granice. Następujące funkcje ustawiają granice:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -76,7 +76,7 @@ def BuildFormDataEnd(batNum)
 end
 ```
 
-Next, construct the endpoint URI and an array to contain the POST body.  Use the previous function to load the start boundary into the array. Read the image file into the array. Then, read the end boundary into the array:
+Następnie należy skonstruować identyfikator URI punktu końcowego i tablicę, aby zawierała treść wpisu.  Użyj funkcji Previous, aby załadować granicę początkową do tablicy. Odczytaj plik obrazu do tablicy. Następnie przeczytaj końcową granicę do tablicy:
 
 ```
 uri = URI(uri + path)
@@ -92,9 +92,9 @@ post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 post_body << BuildFormDataEnd(batchNumber)
 ```
 
-## <a name="create-the-http-request"></a>Create the HTTP request
+## <a name="create-the-http-request"></a>Utwórz żądanie HTTP
 
-Set the `Ocp-Apim-Subscription-Key` header.  Utwórz żądanie. Then, assign the header and content type. Join the POST body created previously to the request:
+Ustaw nagłówek `Ocp-Apim-Subscription-Key`.  Utwórz żądanie. Następnie przypisz nagłówek i typ zawartości. Dołącz do żądania wcześniej utworzoną treść wpisu:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -106,9 +106,9 @@ request.body = post_body.join
 
 ```
 
-## <a name="request-and-response"></a>Request and response
+## <a name="request-and-response"></a>Żądanie i odpowiedź
 
-Ruby sends the request and gets the response with the following line of code:
+Kod języka Ruby wysyła żądanie i pobiera odpowiedź z następującym wierszem kodu:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -117,9 +117,9 @@ end
 
 ```
 
-## <a name="print-the-results"></a>Print the results
+## <a name="print-the-results"></a>Drukuj wyniki
 
-Print the headers of the response, and use the JSON library to format output:
+Wydrukowanie nagłówków odpowiedzi i użycie biblioteki JSON do sformatowania danych wyjściowych:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -136,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>Wyniki
 
-The following JSON is a segment of the output:
+Poniższy kod JSON jest segmentem danych wyjściowych:
 
 ```
 Relevant Headers:
@@ -284,5 +284,5 @@ JSON Response:
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Bing Visual Search overview](../overview.md)
-> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Wyszukiwanie wizualne Bing omówienie](../overview.md)
+> [tworzenia Wyszukiwanie wizualne jednostronicowej aplikacji sieci Web](../tutorial-bing-visual-search-single-page-app.md)

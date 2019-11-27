@@ -1,19 +1,14 @@
 ---
-title: Używanie zasad ponownego uruchamiania z zadaniami kontenera w Azure Container Instances
+title: Zasady ponownego uruchamiania dla zadań uruchamianych jednokrotnie
 description: Dowiedz się, w jaki sposób używać Azure Container Instances do wykonywania zadań, które są wykonywane do ukończenia, na przykład w ramach zadań kompilowania, testowania lub renderowania obrazu.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 4fe5d9a20249a17030e0ccfa34f6a4f183be0d82
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f814b1c99827c07f8dadfb0cfd80c87a93377cdc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325678"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533456"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Uruchamianie zadań kontenera z zasadami ponownego uruchamiania
 
@@ -35,7 +30,7 @@ Podczas tworzenia [grupy kontenerów](container-instances-container-groups.md) w
 
 ## <a name="specify-a-restart-policy"></a>Określ zasady ponownego uruchamiania
 
-Sposób określania zasad ponownego uruchamiania zależy od sposobu tworzenia wystąpień kontenera, takich jak w przypadku interfejsu wiersza polecenia platformy Azure, poleceń cmdlet Azure PowerShell lub Azure Portal. W interfejsie wiersza polecenia platformy Azure `--restart-policy` określ parametr podczas wywoływania polecenia [AZ Container Create][az-container-create].
+Sposób określania zasad ponownego uruchamiania zależy od sposobu tworzenia wystąpień kontenera, takich jak w przypadku interfejsu wiersza polecenia platformy Azure, poleceń cmdlet Azure PowerShell lub Azure Portal. W interfejsie wiersza polecenia platformy Azure określ parametr `--restart-policy` po wywołaniu polecenia [AZ Container Create][az-container-create].
 
 ```azurecli-interactive
 az container create \
@@ -47,7 +42,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Przykład przebiegu do ukończenia
 
-Aby wyświetlić zasady ponownego uruchamiania w działaniu, Utwórz wystąpienie kontenera z obrazu Microsoft [ACI-WORDCOUNT][aci-wordcount-image] i określ `OnFailure` zasady ponownego uruchamiania. Ten przykładowy kontener uruchamia skrypt języka Python, który domyślnie analizuje tekst [Hamlet](http://shakespeare.mit.edu/hamlet/full.html)Szekspira, zapisuje 10 najpopularniejszych słów do stdout, a następnie kończy pracę.
+Aby wyświetlić zasady ponownego uruchamiania w działaniu, Utwórz wystąpienie kontenera na podstawie obrazu Microsoft [ACI-WORDCOUNT][aci-wordcount-image] i określ zasady ponownego uruchamiania `OnFailure`. Ten przykładowy kontener uruchamia skrypt języka Python, który domyślnie analizuje tekst [Hamlet](http://shakespeare.mit.edu/hamlet/full.html)Szekspira, zapisuje 10 najpopularniejszych słów do stdout, a następnie kończy pracę.
 
 Uruchom przykładowy kontener za pomocą następującego polecenia [AZ Container Create][az-container-create] :
 
@@ -59,7 +54,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances uruchamia kontener, a następnie go zatrzyma, gdy jego aplikacja (lub skrypt, w tym przypadku) zakończy działanie. Gdy Azure Container Instances zatrzyma kontener, którego zasady ponownego `Never` uruchamiania `OnFailure`to lub, stan kontenera to **zakończony**. Stan kontenera można sprawdzić za pomocą polecenia [AZ Container show][az-container-show] :
+Azure Container Instances uruchamia kontener, a następnie go zatrzyma, gdy jego aplikacja (lub skrypt, w tym przypadku) zakończy działanie. Gdy Azure Container Instances zatrzyma kontener, którego zasady ponownego uruchamiania są `Never` lub `OnFailure`, stan kontenera to **zakończony**. Stan kontenera można sprawdzić za pomocą polecenia [AZ Container show][az-container-show] :
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state
@@ -71,7 +66,7 @@ Przykładowe dane wyjściowe:
 "Terminated"
 ```
 
-Po zakończeniu wyświetlania przykładowego stanu kontenera można zobaczyć dane wyjściowe zadania, wyświetlając dzienniki kontenerów. Uruchom polecenie [AZ Container Logs][az-container-logs] , aby wyświetlić dane wyjściowe skryptu:
+Po zakończeniu wyświetlania przykładowego stanu kontenera można zobaczyć dane wyjściowe *zadania, wyświetlając*dzienniki kontenerów. Uruchom polecenie [AZ Container Logs][az-container-logs] , aby wyświetlić dane wyjściowe skryptu:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer

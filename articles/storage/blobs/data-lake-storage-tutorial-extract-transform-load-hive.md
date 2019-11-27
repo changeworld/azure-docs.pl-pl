@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Extract, transform, and load data by using Azure HDInsight'
+title: 'Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure HDInsight'
 description: W ramach tego samouczka dowiesz się, jak wyodrębnić dane z zestawu danych pierwotnych w postaci pliku CSV, przekształcić je za pomocą technologii Apache Hive w usłudze Azure HDInsight, a następnie załadować przekształcone dane do bazy danych Azure SQL Database za pomocą narzędzia Sqoop.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -15,7 +15,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327574"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Tutorial: Extract, transform, and load data by using Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure HDInsight
 
 W ramach tego samouczka wykonasz operację ETL: wyodrębnianie, przekształcanie i ładowanie danych. Pobierzesz plik danych pierwotnych w formacie CSV, zaimportujesz te dane do klastra usługi Azure HDInsight, przekształcisz je przy użyciu technologii Apache Hive i załadujesz do bazy danych Azure SQL Database za pomocą narzędzia Apache Sqoop.
 
@@ -36,13 +36,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 * **Klaster Hadoop oparty na systemie Linux w usłudze HDInsight**
 
-    See [Quickstart: Get started with Apache Hadoop and Apache Hive in Azure HDInsight using the Azure portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
+    Zobacz [Szybki Start: wprowadzenie do Apache Hadoop i Apache Hive w usłudze Azure HDInsight przy użyciu Azure Portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL Database**: You use an Azure SQL database as a destination data store. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych Azure SQL Database w witrynie Azure Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**: usługa Azure SQL Database jest używana jako docelowy magazyn danych. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych Azure SQL Database w witrynie Azure Portal](../../sql-database/sql-database-get-started.md).
 
-* **Azure CLI**: If you haven't installed the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Interfejs wiersza polecenia platformy Azure**: Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* **A Secure Shell (SSH) client**: For more information, see [Connect to HDInsight (Hadoop) by using SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient Secure Shell (SSH)** : Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z usługą HDInsight (Hadoop) przy użyciu protokołu SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>Pobieranie danych lotów
 
@@ -53,7 +53,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
    | Nazwa | Wartość |
    | --- | --- |
    | Rok filtrowania |2013 |
-   | Filter Period (Okres filtrowania) |Styczeń |
+   | Okres filtrowania |January (Styczeń) |
    | Pola |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
    
    Wyczyść wszystkie pozostałe pola.
@@ -92,13 +92,13 @@ W tej sekcji przekażesz dane do klastra usługi HDInsight, a następnie skopiuj
 
    To polecenie umożliwia wyodrębnienie pliku **csv**.
 
-4. Use the following command to create the Data Lake Storage Gen2 container.
+4. Użyj następującego polecenia, aby utworzyć kontener Data Lake Storage Gen2.
 
    ```bash
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Replace the `<container-name>` placeholder with the name that you want to give your container.
+   Zastąp symbol zastępczy `<container-name>` nazwą, która ma zostać przydzielić do kontenera.
 
    Zastąp symbol zastępczy `<storage-account-name>` nazwą konta magazynu.
 
@@ -128,7 +128,7 @@ W ramach zadania Apache Hive zaimportujesz dane z pliku csv do tabeli Apache Hiv
    nano flightdelays.hql
    ```
 
-2. Modify the following text by replace the `<container-name>` and `<storage-account-name>` placeholders with your container and storage account name. Następnie skopiuj i wklej tekst do konsoli programu nano, klikając prawym przyciskiem myszy przy naciśniętym klawiszu SHIFT.
+2. Zmodyfikuj następujący tekst, zastępując symbole zastępcze `<container-name>` i `<storage-account-name>` identyfikatorem kontenera i nazwą konta magazynu. Następnie skopiuj i wklej tekst do konsoli programu nano, klikając prawym przyciskiem myszy przy naciśniętym klawiszu SHIFT.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -234,7 +234,7 @@ Aby wykonać tę operację, musisz dysponować nazwą serwera bazy danych SQL Da
 
 4. Filtruj listę według nazwy bazy danych, której chcesz użyć. Nazwa serwera jest wyświetlana w kolumnie **Nazwa serwera**.
 
-    ![Get Azure SQL server details](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Get Azure SQL server details")
+    ![Pobierz szczegóły programu Azure SQL Server](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Pobierz szczegóły programu Azure SQL Server")
 
     Istnieje wiele sposobów nawiązywania połączenia z bazą danych SQL i tworzenia tabeli. W poniższej procedurze użyto rozwiązania [FreeTDS](https://www.freetds.org/) z klastra usługi HDInsight.
 

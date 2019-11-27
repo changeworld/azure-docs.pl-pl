@@ -14,9 +14,9 @@ ms.locfileid: "74277700"
 
 Wykonując interesującej pracy w notesie Jupyter wymaga danych. Dane, są w rzeczywistości lifeblood notesów.
 
-Możesz bez obaw [importowanie plików danych do projektu](work-with-project-data-files.md), nawet przy użyciu poleceń, takich jak `curl` z w ramach Notes, aby bezpośrednio pobrać plik. Istnieje prawdopodobieństwo, jednak, że musisz pracować z danymi znacznie bardziej rozległe, który jest dostępny z innego niż plik źródeł, takich jak interfejsy API REST, relacyjne bazy danych i Magazyn, takie jak tabele platformy Azure w chmurze.
+Można na pewno [zaimportować pliki danych do projektu](work-with-project-data-files.md), nawet używając poleceń takich jak `curl` z poziomu notesu, aby pobrać plik bezpośrednio. Istnieje prawdopodobieństwo, jednak, że musisz pracować z danymi znacznie bardziej rozległe, który jest dostępny z innego niż plik źródeł, takich jak interfejsy API REST, relacyjne bazy danych i Magazyn, takie jak tabele platformy Azure w chmurze.
 
-W tym artykule krótko opisano te różne opcje. Ponieważ dostęp do danych, najlepiej jest widoczny w działaniu, kod możesz znaleźć możliwy do uruchomienia w [przykłady notesy platformy Azure — dostęp do danych](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
+W tym artykule krótko opisano te różne opcje. Ze względu na to, że dostęp do danych jest najlepiej widoczny w akcji, można znaleźć kod możliwy do uruchomienia w [Azure Notebooks próbkach — dostęp do danych](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
 
 ## <a name="rest-apis"></a>Interfejsy API REST
 
@@ -43,7 +43,7 @@ if response.status_code == 200:
 
 Można uzyskać dostęp do baz danych programu SQL Server przy pomocy moduł pyodbc lub pymssql bibliotek.
 
-[Zapytanie usługi Azure SQL database przy użyciu języka Python](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) zawiera instrukcje dotyczące tworzenia bazy danych AdventureWorks danymi i pokazuje, jak wykonywać zapytania dla tych danych. Ten sam kod jest wyświetlany w notesie próbki na potrzeby tego artykułu.
+[Używanie języka Python do wykonywania zapytań w bazie danych Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) zawiera instrukcje dotyczące tworzenia bazy danych zawierającej dane AdventureWorks i pokazujące, jak wykonywać zapytania dotyczące tych danych. Ten sam kod jest wyświetlany w notesie próbki na potrzeby tego artykułu.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -58,24 +58,24 @@ Przykładowy notes przedstawia pracę z tabel i obiektów blob, takich jak używ
 
 Usługi Azure Cosmos DB udostępnia pełni indeksowanych magazyn danych NoSQL dla dokumentów JSON). Poniższe artykuły zawierają szereg różne sposoby pracy z usługą Cosmos DB za pomocą języka Python:
 
-- [Aplikacja kompilacji przez interfejs API SQL za pomocą języka Python](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
+- [Tworzenie aplikacji interfejsu API SQL przy użyciu języka Python](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
 - [Tworzenie aplikacji do kolby z interfejsem API Azure Cosmos DB dla MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
-- [Utwórz bazę danych grafów przy użyciu języka Python i interfejsu API języka Gremlin](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [Tworzenie aplikacji bazy danych Cassandra z językiem Python i usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [Tworzenie aplikacji interfejsu API za pomocą języka Python i usługi Azure Cosmos DB tabeli](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [Tworzenie bazy danych grafu przy użyciu języka Python i interfejsu API Gremlin](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
+- [Tworzenie aplikacji Cassandra za pomocą języka Python i Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [Tworzenie aplikacji interfejs API tabel przy użyciu języka Python i Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
-Podczas pracy z usługą Cosmos DB, możesz użyć [azure-cosmos DB table](https://pypi.org/project/azure-cosmosdb-table/) biblioteki.
+Podczas pracy z Cosmos DB można użyć biblioteki [Azure-cosmosdb-Table](https://pypi.org/project/azure-cosmosdb-table/) .
 
 ## <a name="other-azure-databases"></a>Innych baz danych platformy Azure
 
 System Azure oferuje wiele innych typów baz danych, które są dostępne. Poniższe artykuły zawierają wskazówki dotyczące uzyskiwania dostępu do tych baz danych za pomocą języka Python:
 
-- [Usługa Azure Database for PostgreSQL: za pomocą języka Python do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [Szybki Start: Użyj usługi Azure Redis Cache za pomocą języka Python](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Usługa Azure Database for MySQL: za pomocą języka Python do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for PostgreSQL: używanie języka Python do łączenia i wykonywania zapytań dotyczących danych](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Szybki Start: korzystanie z Azure Redis Cache w języku Python](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [Azure Database for MySQL: używanie języka Python do łączenia i wykonywania zapytań dotyczących danych](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
-  - [Kreator kopiowania usługi fabryka danych Azure](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
+  - [Kreator kopiowania dla Azure Data Factory](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Porady: Praca z plikami danych projektu](work-with-project-data-files.md)
+- [Instrukcje: współdziałanie z plikami danych projektu](work-with-project-data-files.md)

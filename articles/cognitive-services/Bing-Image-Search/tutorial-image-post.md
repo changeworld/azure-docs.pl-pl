@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Extract image details with the REST API and C# - Bing Image Search'
+title: 'Samouczek: Wyodrębnienie szczegółów obrazu za pomocą interfejsu API C# REST i-wyszukiwanie obrazów Bing'
 titleSuffix: Azure Cognitive Services
 description: Przy użyciu tego artykułu możesz utworzyć aplikację w języku C#, która wyodrębnia szczegóły obrazu za pomocą interfejsu API wyszukiwania obrazów Bing.
 services: cognitive-services
@@ -36,7 +36,7 @@ Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://githu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Any edition of [Visual studio 2017 or later](https://visualstudio.microsoft.com/downloads/).
+* Dowolna wersja programu [Visual studio 2017 lub nowszego](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -77,7 +77,7 @@ client.Headers["ContentType"] = "multipart/form-data";
 
 ## <a name="upload-the-image-and-display-the-results"></a>Przekazywanie obrazu i wyświetlanie wyników
 
-Metoda `UpLoadFile()` klasy `WebClient` formatuje dane dla żądania `POST` z uwzględnieniem formatowania `RequestStream` i wywoływania `HttpWebRequest`.
+Metoda `WebClient` klasy `UpLoadFile()` formatuje dane dla żądania `POST` z uwzględnieniem formatowania `RequestStream` i wywoływania `HttpWebRequest`.
 
 Wywołaj funkcję `WebClient.UpLoadFile()` z punktem końcowym `/details` i plikiem obrazu do przekazania. Użyj odpowiedzi w formacie JSON, aby zainicjować wystąpienie struktury `SearchResult` i zachować odpowiedź.
 
@@ -111,6 +111,6 @@ Jeśli na obrazie znajdują się osoby lub miejsca, które można zidentyfikowa�
 > [!div class="nextstepaction"]
 > [Wyświetlanie obrazów i opcji wyszukiwania w jednostronicowej aplikacji internetowej](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

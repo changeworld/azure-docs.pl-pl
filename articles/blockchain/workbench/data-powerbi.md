@@ -19,9 +19,9 @@ Ten artykuł zawiera przewodnik krok po kroku, w którym przedstawiono instrukcj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Download [Power BI Desktop](https://aka.ms/pbidesktopstore).
+* Pobierz [Power BI Desktop](https://aka.ms/pbidesktopstore).
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Connecting Power BI to data in Azure Blockchain Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Łączenie Power BI z danymi w usłudze Azure łańcucha bloków Workbench
 
 1.  Otwórz program Power BI Desktop.
 2.  Wybierz pozycję **Pobieranie danych**.
@@ -43,7 +43,7 @@ Ten artykuł zawiera przewodnik krok po kroku, w którym przedstawiono instrukcj
 
     ![Nawigator](./media/data-powerbi/navigator.png)
 
-7.  Wybierz widoki, które mają zostać uwzględnione. For demonstration purposes, we include **vwContractAction**, which provides details on the actions that have taken place on a contract.
+7.  Wybierz widoki, które mają zostać uwzględnione. W celach demonstracyjnych zawieramy **vwContractAction**, który zawiera szczegółowe informacje o akcjach, które zostały wykonane w ramach kontraktu.
 
     ![Wybieranie widoków](./media/data-powerbi/select-views.png)
 

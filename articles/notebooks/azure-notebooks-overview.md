@@ -87,7 +87,7 @@ Aby przekazać nam pytania dotyczące usługi Azure Notebooks, prześlij zgłosz
 
 ## <a name="next-steps"></a>Następne kroki  
 
-- [Eksploruj przykładowe notesów](azure-notebooks-samples.md)
+- [Explore sample notebooks (Eksplorowanie przykładowych notesów)](azure-notebooks-samples.md)
 
 - Przewodniki Szybki start:
 

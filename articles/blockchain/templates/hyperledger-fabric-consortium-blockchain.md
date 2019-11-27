@@ -1,6 +1,6 @@
 ---
-title: Deploy Hyperledger Fabric Consortium solution template on Azure
-description: How to deploy and configure the Hyperledger Fabric consortium network solution template on Azure
+title: Wdróż szablon rozwiązania dla konsorcjum Fabric w sieci szkieletowej na platformie Azure
+description: Jak wdrożyć i skonfigurować szablon rozwiązania sieciowego konsorcjum sieci szkieletowej w systemie Azure
 ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: caleteet
@@ -11,132 +11,132 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325133"
 ---
-# <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric consortium network
+# <a name="hyperledger-fabric-consortium-network"></a>Sieć szkieletowa
 
-You can use the Hyperledger Fabric consortium solution template to deploy and configure a Hyperledger Fabric consortium network on Azure.
+Za pomocą szablonu rozwiązania do tworzenia i konfigurowania sieci szkieletowej w ramach usługi sieci szkieletowej w systemie Azure można wdrożyć i skonfigurować sieć konsorcjum Fabric.
 
 Zapoznanie się z tym artykułem umożliwi:
 
-- Obtain working knowledge of blockchain, Hyperledger Fabric, and more complicated consortium network architectures
-- Learn how to deploy and configure a Hyperledger Fabric consortium network from within the Azure portal
+- Uzyskaj praktyczną wiedzę na temat łańcucha bloków, sieci szkieletowej i bardziej skomplikowanych architektur sieci konsorcjum
+- Dowiedz się, jak wdrażać i konfigurować sieć konsorcjum sieci szkieletowej z poziomu Azure Portal
 
-## <a name="about-blockchain"></a>About blockchain
+## <a name="about-blockchain"></a>Informacje o łańcucha bloków
 
-If you are new to the blockchain community, this solution template is a great opportunity to learn about the technology in an easy and configurable manner on Azure. Blockchain is the underlying technology behind Bitcoin; however, it is much more than just an enabler for a virtual currency. It is a composite of existing database, distributed system, and cryptographic technologies that enables secure multi-party computation with guarantees around immutability, verifiability, auditability, and resiliency to attack. Different protocols employ different mechanisms to provide these attributes. [Hyperledger Fabric](https://github.com/hyperledger/fabric) is one such protocol.
+Jeśli jesteś nowym członkiem społeczności łańcucha bloków, ten szablon rozwiązania jest doskonałym rozwiązaniem, aby dowiedzieć się więcej o technologii w sposób łatwy i konfigurowalny na platformie Azure. Łańcucha bloków jest podstawową technologią za Bitcoin; jest to jednak znacznie więcej niż tylko czynnik dla waluty wirtualnej. Jest to złożona usługa bazy danych, systemu rozproszonego i technologii kryptograficznych, która umożliwia bezpieczne Obliczanie wielostronne z gwarancjami dotyczącymi niezmienności, możliwości weryfikacji, kontroli i odporności na ataki. Różne protokoły korzystają z różnych mechanizmów, aby zapewnić te atrybuty. [Sieć szkieletowa z księgą](https://github.com/hyperledger/fabric) jest jednym z tych protokołów.
 
-## <a name="consortium-architecture-on-azure"></a>Consortium architecture on Azure
+## <a name="consortium-architecture-on-azure"></a>Architektura konsorcjum na platformie Azure
 
-To enable Hyperledger Fabric in Azure, there are two primary deployment types that are supported. These deployments are designed to accommodate different topologies, based on desired target.
+Aby włączyć sieć szkieletową tworzenia księgi na platformie Azure, obsługiwane są dwa podstawowe typy wdrożeń. Te wdrożenia zostały zaprojektowane z uwzględnieniem różnych topologii w oparciu o żądany element docelowy.
 
-- **Single virtual machine, developer server** - This deployment type is designed as a development environment used to build and test solutions built on Hyperledger Fabric.
-- **Multiple virtual machines, scale out deployment** - This deployment type is designed for environments that model a consortium of different participants leveraging a shared environment.
+- **Pojedyncza maszyna wirtualna, serwer dewelopera** — ten typ wdrożenia jest zaprojektowany jako środowisko programistyczne służące do kompilowania i testowania rozwiązań opartych na sieci szkieletowej.
+- **Wiele maszyn wirtualnych, skalowanie w poziomie** — ten typ wdrożenia jest przeznaczony dla środowisk, które modelują konsorcjum różnych uczestników korzystających ze współużytkowanego środowiska.
 
-In either deployment, the building blocks that are make the core of Hyperledger Fabric are the same.  The differences in the deployments are how these components are scaled out.
+W obu wdrożeniach bloki konstrukcyjne, które tworzą rdzeń sieci szkieletowej w arkuszu, są takie same.  Różnice między wdrożeniami to sposób skalowania tych składników.
 
-- **CA nodes**: A node running Certificate Authority that is used to generate certificates that are used for identities in the network.
-- **Orderer nodes**: A node running the communication service implementing a delivery guarantee, such as total order broadcast or atomic transactions.
-- **Peer nodes**: A node that commits transactions and maintains the state and a copy of the distributed ledger.
-- **CouchDB nodes**: A node that can run the CouchDB service that can hold the state database and provide rich querying of chaincode data, expanding from simple key/value to JSON type storage.
+- **Węzły urzędu certyfikacji**: węzeł z uruchomionym urzędem certyfikacji, który jest używany do generowania certyfikatów używanych dla tożsamości w sieci.
+- **Węzły programu orderer**: węzeł z uruchomioną usługą komunikacji implementującą gwarancję dostarczania, na przykład łączną emisję lub transakcję niepodzielną.
+- **Węzły równorzędne**: węzeł, który zatwierdza transakcje i utrzymuje stan i kopię księgi rozproszonej.
+- **Węzły CouchDB**: węzeł, w którym można uruchomić usługę CouchDB, która może przechowywać bazę danych stanu i zapewniać zaawansowane zapytania o dane chaincode, rozszerzając z prostego klucza/wartości na magazyn typu JSON.
 
-### <a name="single-virtual-machine-architecture"></a>Single virtual machine architecture
+### <a name="single-virtual-machine-architecture"></a>Architektura pojedynczej maszyny wirtualnej
 
-As mentioned previously the single virtual machine architecture is built for developers to have a low footprint server that is used to develop applications. All containers shown are running in a single virtual machine. The ordering service is using [SOLO](https://github.com/hyperledger/fabric/tree/master/orderer) for this configuration. This configuration is *not* a fault tolerant ordering service, but is designed to be lightweight for development purposes.
+Jak wspomniano wcześniej, architektura pojedynczej maszyny wirtualnej jest tworzona dla deweloperów, którzy mają niewielki serwer, który jest używany do opracowywania aplikacji. Wszystkie wyświetlone kontenery są uruchomione na jednej maszynie wirtualnej. Usługa określania kolejności używa opcji " [Solo](https://github.com/hyperledger/fabric/tree/master/orderer) " dla tej konfiguracji. Ta konfiguracja *nie* jest usługą do odporności na uszkodzenia, ale jest przeznaczona do celów deweloperskich.
 
-![Single Virtual Machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
+![Architektura pojedynczej maszyny wirtualnej](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
 
-### <a name="multiple-virtual-machine-architecture"></a>Multiple virtual machine architecture
+### <a name="multiple-virtual-machine-architecture"></a>Wiele architektur maszyn wirtualnych
 
-The multiple virtual machine, scale-out architecture, is built with high availability and scaling of each component at the core. This architecture is much more suitable for production grade deployments.
+Architektura wielu maszyn wirtualnych, skalowanie w poziomie jest zbudowana z wysoką dostępnością i skalowaniem każdego składnika na rdzeń. Ta architektura jest znacznie bardziej odpowiednia dla wdrożeń klasy produkcyjnej.
 
-![Multiple virtual machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
+![Wiele architektur maszyn wirtualnych](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-To begin, you need an Azure subscription that can support deploying several virtual machines and standard storage accounts. If you do not have an Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/).
+Aby rozpocząć, musisz mieć subskrypcję platformy Azure, która może obsługiwać wdrażanie kilku maszyn wirtualnych i kont magazynu w warstwie Standardowa. Jeśli nie masz subskrypcji platformy Azure, możesz [utworzyć bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
-Once you have a subscription, go to the [Azure portal](https://portal.azure.com). Select **Create a resource > Blockchain > Hyperledger Fabric Consortium**.
+Po utworzeniu subskrypcji przejdź do [Azure Portal](https://portal.azure.com). Wybierz pozycję **Utwórz zasób > łańcucha bloków >** .
 
-![Hyperledger Fabric Single Member Blockchain Marketplace template](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
+![Szablon witryny Marketplace z jednym członkiem sieci szkieletowej łańcucha bloków](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
-## <a name="deployment"></a>Wdrażanie
+## <a name="deployment"></a>Wdrożenie
 
-In the **Hyperledger Fabric Consortium** template, select **Create**.
+W szablonie **konsorcjum sieci szkieletowej w ramach księgi głównej** wybierz pozycję **Utwórz**.
 
-The template deployment will walk you through configuring the multi-node [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) network. The deployment flow is divided into four steps: Basics, Consortium Network Settings, Fabric configuration, and Optional components.
+Wdrożenie szablonu przeprowadzi Cię przez proces konfigurowania sieci [1,3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) wielowęzłowego. Przepływ wdrożenia jest podzielony na cztery kroki: podstawowe, ustawienia sieci konsorcjum, konfiguracja sieci szkieletowej i składniki opcjonalne.
 
 ### <a name="basics"></a>Podstawy
 
-In **Basics**, specify values for standard parameters for any deployment. Such as, subscription, resource group, and basic virtual machine properties.
+W obszarze **podstawowe**Określ wartości parametrów standardowych dla każdego wdrożenia. Takie jak, subskrypcja, Grupa zasobów i podstawowe właściwości maszyny wirtualnej.
 
 ![Podstawy](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
 | Nazwa parametru | Opis | Dozwolone wartości |
 |---|---|---|
-**Resource prefix** | Name prefix for resources provisioned as part of the deployment |6 characters or less |
-**Nazwa użytkownika** | The user name of the administrator for each of the virtual machines deployed for this member |1 - 64 characters |
-**Authentication type** | The method to authenticate to the virtual machine |Password or SSH public key|
-**Password (Authentication type = Password)** |The password for the administrator account for each of the virtual machines deployed. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character<br /><br />While all VMs initially have the same password, you can change the password after provisioning|12 - 72 characters|
-**SSH key (Authentication type = SSH public key)** |The secure shell key used for remote login ||
-**Subskrypcja** |The subscription to which to deploy ||
-**Grupa zasobów** |The resource group to which to deploy the consortium network ||
-**Lokalizacja** |The Azure region to which to deploy the first member in ||
+**Prefiks zasobu** | Prefiks nazwy dla zasobów zainicjowanych jako część wdrożenia |co najmniej 6 znaków |
+**Nazwa użytkownika** | Nazwa użytkownika administratora dla każdej z maszyn wirtualnych wdrożonych dla tego elementu członkowskiego |1-64 znaków |
+**Typ uwierzytelniania** | Metoda do uwierzytelnienia na maszynie wirtualnej |Hasło lub klucz publiczny SSH|
+**Hasło (typ uwierzytelniania = hasło)** |Hasło dla konta administratora dla każdej wdrożonej maszyny wirtualnej. Hasło musi zawierać trzy z następujących typów znaków: 1 wielkie litery, 1 małe litery, 1 cyfra i 1 znak specjalny<br /><br />Gdy wszystkie maszyny wirtualne mają początkowo to samo hasło, można zmienić hasło po zainicjowaniu obsługi administracyjnej|12-72 znaków|
+**Klucz SSH (typ uwierzytelniania = publiczny klucz SSH)** |Bezpieczny klucz powłoki używany do zdalnego logowania ||
+**Subskrypcja** |Subskrypcja do wdrożenia ||
+**Grupa zasobów** |Grupa zasobów, w której ma zostać wdrożona sieć konsorcjum ||
+**Lokalizacja** |Region świadczenia usługi Azure, do którego ma zostać wdrożony pierwszy element członkowski ||
 
 Kliknij przycisk **OK**.
 
-### <a name="consortium-network-settings"></a>Consortium Network Settings
+### <a name="consortium-network-settings"></a>Ustawienia sieci konsorcjum
 
-In **Network settings**, specify inputs for creating or joining an existing consortium network and configure your organization settings.
+W obszarze **Ustawienia sieci**Określ dane wejściowe do utworzenia lub przyłączenia istniejącej sieci konsorcjum i skonfiguruj ustawienia organizacji.
 
-![Consortium Network Settings](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
+![Ustawienia sieci konsorcjum](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
 | Nazwa parametru | Opis | Dozwolone wartości |
 |---|---|---|
-**Konfiguracja sieci** |You can choose to create a new network or join an existing one. If you choose *Join existing*, you need to provide additional values. |New network <br/> Join existing |
-**HLF CA password** |A password used for the certificates generated by the certificate authorities that are created as part of the deployment. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character.<br /><br />While all virtual machines initially have the same password, you can change the password after provisioning.|1 - 25 characters |
-**Organization setup** |You can customize your Organization's name and certificate or have default values to be used.|Domyślne <br/> Advanced |
-**VPN network settings** | Provision a VPN tunnel gateway for accessing the VMs | Tak <br/> Nie |
+**Konfiguracja sieci** |Można utworzyć nową sieć lub dołączyć do istniejącej sieci. W przypadku wybrania opcji *Dołącz do istniejących*należy podać dodatkowe wartości. |Nowa sieć <br/> Dołącz do istniejącej |
+**HLF — hasło urzędu certyfikacji** |Hasło używane dla certyfikatów generowanych przez urzędy certyfikacji, które są tworzone w ramach wdrożenia. Hasło musi zawierać trzy z następujących typów znaków: 1 wielkie litery, 1 małe litery, 1 cyfra i 1 znak specjalny.<br /><br />Mimo że wszystkie maszyny wirtualne mają początkowo to samo hasło, można zmienić hasło po zainicjowaniu obsługi administracyjnej.|1-25 znaków |
+**Konfiguracja organizacji** |Można dostosować nazwę i certyfikat organizacji lub użyć wartości domyślnych.|Domyślny <br/> Zaawansowane |
+**Ustawienia sieci VPN** | Inicjowanie obsługi administracyjnej bramy tunelu sieci VPN w celu uzyskania dostępu do maszyn wirtualnych | Yes <br/> Nie |
 
 Kliknij przycisk **OK**.
 
-### <a name="fabric-specific-settings"></a>Fabric-specific settings
+### <a name="fabric-specific-settings"></a>Ustawienia specyficzne dla sieci szkieletowej
 
-In **Fabric configuration**, you configure network size and performance, and specify inputs for the availability of the network. Such as, number orderer and peer nodes, persistence engine used by each node, and the VM size.
+W obszarze **Konfiguracja sieci szkieletowej**można skonfigurować rozmiar i wydajność sieci oraz określić dane wejściowe dotyczące dostępności sieci. Taki jak numer programu porządkowania i węzłów równorzędnych, aparat trwałości używany przez każdy węzeł i rozmiar maszyny wirtualnej.
 
-![Fabric settings](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
-
-| Nazwa parametru | Opis | Dozwolone wartości |
-|---|---|---|
-**Scale type** |The deployment type of either a single virtual machine with multiple containers or multiple virtual machines in a scale-out model.|Single VM or Multi VM |
-**VM Disk type** |The type of storage backing each of the deployed nodes. <br/> To learn more about the available disk types, visit [select a disk type](../../virtual-machines/windows/disks-types.md).|Standardowa, SSD <br/> Premium, SSD |
-
-### <a name="multiple-vm-deployment-additional-settings"></a>Multiple VM deployment (additional settings)
-
-![Fabric settings for multiple vm deployments](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
+![Ustawienia sieci szkieletowej](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
 | Nazwa parametru | Opis | Dozwolone wartości |
 |---|---|---|
-**Number of orderer nodes** |The number of nodes that order (organize) transactions into a block. <br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1-4 |
-**Orderer node virtual machine size** |The virtual machine size used for orderer nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
-**Number of peer nodes** | Nodes that are owned by consortium members that execute transactions and maintain the state and a copy of the ledger.<br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1-4 |
-**Node state persistence** |The persistence engine used by the peer nodes. You can configure this engine per peer node. See details below for multiple peer nodes.|CouchDB <br />LevelDB |
-**Peer node virtual machine size** |The virtual machine size used for all nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
+**Typ skalowania** |Typ wdrożenia pojedynczej maszyny wirtualnej z wieloma kontenerami lub wieloma maszynami wirtualnymi w modelu skalowalnym w poziomie.|Pojedyncza maszyna wirtualna lub wiele maszyn wirtualnych |
+**Typ dysku maszyny wirtualnej** |Typ magazynu wykonującego kopie zapasowe wszystkich wdrożonych węzłów. <br/> Aby dowiedzieć się więcej na temat dostępnych typów dysków, odwiedź stronę [Wybierz typ dysku](../../virtual-machines/windows/disks-types.md).|Standardowa, SSD <br/> Premium, SSD |
 
-### <a name="multiple-peer-node-configuration"></a>Multiple peer node configuration
+### <a name="multiple-vm-deployment-additional-settings"></a>Wdrożenie wielu maszyn wirtualnych (Ustawienia dodatkowe)
 
-This template allows you to pick your persistence engine per peer node. For example, if you have three peer nodes you can use CouchDB on one and LevelDB on the other two.
+![Ustawienia sieci szkieletowej dla wielu wdrożeń maszyn wirtualnych](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-![Multiple peer node configuration](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
+| Nazwa parametru | Opis | Dozwolone wartości |
+|---|---|---|
+**Liczba węzłów programu orderer** |Liczba węzłów, które porządkują (organizują) transakcje w bloku. <br />Dodatkowe szczegóły dotyczące usługi porządkowania można znaleźć w [dokumentacji](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) dotyczącej księgi |1 – 4 |
+**Rozmiar maszyny wirtualnej węzła w programie orderer** |Rozmiar maszyny wirtualnej używany dla węzłów programu orderer w sieci|Saldo standardowe,<br />Standard DS,<br />Standard FS |
+**Liczba węzłów równorzędnych** | Węzły należące do członków konsorcjum, które wykonują transakcje i utrzymują stan oraz kopię księgi.<br />Dodatkowe szczegóły dotyczące usługi porządkowania można znaleźć w [dokumentacji](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html)dotyczącej księgi.|1 – 4 |
+**Trwałość stanu węzła** |Aparat trwałości używany przez węzły równorzędne. Można skonfigurować ten aparat dla węzła równorzędnego. Poniżej znajdują się szczegółowe informacje dotyczące wielu węzłów równorzędnych.|CouchDB <br />LevelDB |
+**Rozmiar maszyny wirtualnej węzła równorzędnego** |Rozmiar maszyny wirtualnej używany dla wszystkich węzłów w sieci|Saldo standardowe,<br />Standard DS,<br />Standard FS |
+
+### <a name="multiple-peer-node-configuration"></a>Konfiguracja wielu węzłów równorzędnych
+
+Ten szablon umożliwia wybranie aparatu trwałości dla węzła równorzędnego. Na przykład jeśli masz trzy węzły równorzędne, możesz użyć CouchDB na jeden i LevelDB na drugi.
+
+![Konfiguracja wielu węzłów równorzędnych](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
 
 Kliknij przycisk **OK**.
 
-### <a name="deploy"></a>Implementacja
+### <a name="deploy"></a>Wdrażanie
 
-In **Summary**, review the inputs specified and to run basic pre-deployment validation.
+W obszarze **Podsumowanie**Przejrzyj określone dane wejściowe i uruchom podstawową weryfikację przed wdrożeniem.
 
 ![Podsumowanie](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
-Review legal and privacy terms and select **Purchase** to deploy. Depending on the number of VMs being provisioned, deployment time can vary from a few minutes to tens of minutes.
+Przejrzyj warunki prawne i zachowania poufności informacji, a następnie wybierz pozycję **Kup** do wdrożenia. W zależności od liczby maszyn wirtualnych, czas wdrożenia może się różnić od kilku minut do dziesiątek minut.
 
 ## <a name="next-steps"></a>Następne kroki
 
-You are now ready to focus on application and chaincode development against your Hyperledger consortium blockchain network.
+Teraz można przystąpić do skoncentrowania się na programowaniu aplikacji i chaincode w sieci łańcucha bloków.

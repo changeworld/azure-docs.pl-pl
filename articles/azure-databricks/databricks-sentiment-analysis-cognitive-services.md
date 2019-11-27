@@ -178,7 +178,7 @@ W tym samouczku użyjemy [interfejsów API usługi Azure Cognitive Services anal
    - Wybierz warstwę cenową usługi. Więcej informacji na temat cen usług Cognitive Services zawiera [strona z cennikiem](https://azure.microsoft.com/pricing/details/cognitive-services/?WT.mc_id=sparkeventhubs-docs-alehall).
    - Określ, czy chcesz utworzyć nową grupę zasobów, czy wybrać istniejącą grupę.
 
-     Wybierz **tworzenie**.
+     Wybierz pozycję **Utwórz**.
 
 5. Po utworzeniu konta na karcie **Przegląd** wybierz pozycję **Pokaż klucze dostępu**.
 
@@ -207,7 +207,7 @@ W tej sekcji w obszarze roboczym usługi Databricks zostaną utworzone dwa notes
 
     ![Tworzenie notesu w kostkach](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Tworzenie notesu w kostkach")
 
-    Wybierz **tworzenie**.
+    Wybierz pozycję **Utwórz**.
 
 3. Powtórz te kroki, aby utworzyć notes **AnalyzeTweetsFromEventHub**.
 
@@ -614,7 +614,7 @@ Powinny pojawić się dane wyjściowe podobne do następującego fragmentu kodu:
 
 Wartość bliższa **1** w kolumnie **Opinia** sugeruje zadowolenie z korzystania z platformy Azure. Wartość bliższa **0** sugeruje, że użytkownicy napotkali problemy podczas pracy z platformą Microsoft Azure.
 
-Gotowe. Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs, pobrać go przy użyciu łącznika usługi Event Hubs, a następnie przeprowadzić analizę tonacji na tym strumieniu w czasie niemal rzeczywistym.
+To wszystko! Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs, pobrać go przy użyciu łącznika usługi Event Hubs, a następnie przeprowadzić analizę tonacji na tym strumieniu w czasie niemal rzeczywistym.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

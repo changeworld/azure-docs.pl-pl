@@ -25,7 +25,7 @@ Azure Maps obsługuje różne języki i widoki na podstawie kraju/regionu. W tym
 Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poniższej tabeli przedstawiono obsługiwane kody języka dla każdej usługi.  
   
 
-| ID         | Nazwa                   |  Maps | Wyszukiwanie | Routing | Pogoda | Zdarzenia dotyczące ruchu | Formant mapy JS |
+| ID         | Nazwa                   |  Maps | Wyszukaj | Routing | Pogoda | Zdarzenia dotyczące ruchu | Formant mapy JS |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabski                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -91,7 +91,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | Ta w      | Tamilski (Indie)                 |       |       |         |     ✓    |                   |                |
 | Twórz w      | Telugu (Indie)                 |       |       |         |     ✓    |                   |                |
 | th TH      | Tajlandzki                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| tr-TR      | turecki                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| tr-TR      | Turecki                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | uk-UA      | Ukraiński               |       |    ✓   |         |     ✓    |                   |                |
 | Twoje — klucz podstawowy      | Urdu                 |       |       |         |     ✓    |                   |                |
 | uz-Latn-UZ | Uzbek                 |       |       |         |     ✓    |                   |                |
@@ -148,7 +148,7 @@ Domyślnie parametr widoku jest ustawiony na **ujednolicony**, nawet jeśli nie 
 
 W poniższej tabeli przedstawiono obsługiwane widoki.
 
-| Widok         | Opis                            |  Maps | Wyszukiwanie | kontrolka mapy JS |
+| Widok         | Opis                            |  Maps | Wyszukaj | kontrolka mapy JS |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Zjednoczone Emiraty Arabskie (widok arabski)    |   ✓   |        |     ✓          |
 | AR           | Argentyna (widok argentyński)           |   ✓   |    ✓   |     ✓          |

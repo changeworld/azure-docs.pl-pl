@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5643f1df6cefa9ca6c60453939be533b2c00eaf4
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066148"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533078"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
@@ -64,8 +64,8 @@ W aplikacji sieci Web każde wykonanie [zasad](active-directory-b2c-reference-po
 2. Aplikacja sieci Web przekierowuje użytkownika do Azure AD B2C wskazującą, że zasady zostały wykonane.
 3. Użytkownik ukończy zasady.
 4. Azure AD B2C zwraca `id_token` do przeglądarki.
-5. `id_token` Jest on ogłaszany w identyfikatorze URI przekierowania.
-6. `id_token` Została sprawdzona weryfikacja i ustawiono plik cookie sesji.
+5. `id_token` jest ogłaszana w identyfikatorze URI przekierowania.
+6. `id_token` jest zweryfikowana i ustawiono plik cookie sesji.
 7. Do użytkownika zostanie zwrócona bezpieczna strona.
 
 Sprawdzenie tokenu `id_token` przy użyciu publicznego klucza podpisywania otrzymanego z usługi Azure AD jest wystarczające do zweryfikowania tożsamości użytkownika. Ten proces ustawia również plik cookie sesji, który może służyć do identyfikowania użytkownika na kolejnych żądaniach strony.
@@ -91,12 +91,12 @@ Interfejs API sieci Web może następnie użyć tego tokenu do zweryfikowania to
 Internetowy interfejs API może odbierać tokeny z wielu typów klientów, takich jak aplikacje sieci Web, aplikacje klasyczne i mobilne, aplikacje jednostronicowe, demony po stronie serwera i inne interfejsy API sieci Web. Oto przykład kompletnego przepływu dla aplikacji sieci Web, która wywołuje interfejs API sieci Web:
 
 1. Aplikacja sieci Web wykonuje zasady, a użytkownik kończy pracę użytkownika.
-2. Azure AD B2C zwraca (OpenID Connect Connect) `id_token` i kod autoryzacji do przeglądarki.
-3. Przeglądarka publikuje `id_token` kod autoryzacji i w identyfikatorze URI przekierowania.
+2. Azure AD B2C zwraca `id_token` (OpenID Connect Connect) i kod autoryzacji do przeglądarki.
+3. Przeglądarka księguje `id_token` i kod autoryzacji w identyfikatorze URI przekierowania.
 4. Serwer sieci Web sprawdza poprawność `id_token` i ustawia plik cookie sesji.
-5. Serwer sieci Web prosi Azure AD B2C `access_token` o podanie kodu autoryzacji, identyfikatora klienta aplikacji i poświadczeń klienta.
-6. `access_token` I`refresh_token` są zwracane do serwera sieci Web.
-7. Interfejs API sieci Web jest wywoływany `access_token` przy użyciu w nagłówku autoryzacji.
+5. Serwer sieci Web prosi Azure AD B2C o `access_token`, podając kod autoryzacji, identyfikator klienta aplikacji i poświadczenia klienta.
+6. `access_token` i `refresh_token` są zwracane do serwera sieci Web.
+7. Internetowy interfejs API jest wywoływany z `access_token` w nagłówku autoryzacji.
 8. Internetowy interfejs API sprawdza poprawność tokenu.
 9. Zabezpieczone dane są zwracane do aplikacji sieci Web.
 
@@ -108,7 +108,7 @@ Aby dowiedzieć się, jak zabezpieczyć interfejs API sieci Web przy użyciu us�
 
 Aplikacje, które są zainstalowane na urządzeniach, takich jak aplikacje mobilne i klasyczne, często muszą uzyskiwać dostęp do usług zaplecza lub interfejsów API sieci Web w imieniu użytkowników. Możesz dodać dostosowane środowiska zarządzania tożsamościami do natywnych aplikacji i bezpiecznie wywoływać usługi zaplecza, używając Azure AD B2C i [przepływu kodu autoryzacji OAuth 2,0](active-directory-b2c-reference-oauth-code.md).
 
-W tym przepływie aplikacja wykonuje [zasady](active-directory-b2c-reference-policies.md) i odbiera `authorization_code` z usługi Azure AD po zakończeniu zasad przez użytkownika. `authorization_code` Reprezentuje uprawnienie aplikacji do wywoływania usług zaplecza w imieniu użytkownika, który jest aktualnie zalogowany. Aplikacja może następnie wymienić `authorization_code` w tle `access_token` dla i `refresh_token`.  Aplikacja może używać `access_token` usługi do uwierzytelniania w interfejsie API sieci Web zaplecza w żądaniach HTTP. Może również użyć tokenu `refresh_token` do pobrania nowego tokenu `access_token`, gdy wygaśnie stary.
+W tym przepływie aplikacja wykonuje [zasady](active-directory-b2c-reference-policies.md) i odbiera `authorization_code` z usługi Azure AD po zakończeniu zasad przez użytkownika. `authorization_code` reprezentuje uprawnienie aplikacji do wywoływania usług zaplecza w imieniu użytkownika, który jest aktualnie zalogowany. Następnie aplikacja może wymienić `authorization_code` w tle dla `access_token` i `refresh_token`.  Aplikacja może używać `access_token` do uwierzytelniania w interfejsie API sieci Web zaplecza w żądaniach HTTP. Może również użyć tokenu `refresh_token` do pobrania nowego tokenu `access_token`, gdy wygaśnie stary.
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
@@ -124,7 +124,7 @@ Aby skonfigurować przepływ poświadczeń klienta, zobacz [Azure Active Directo
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Łańcuchy interfejsu API sieci Web (przepływ „w imieniu”)
 
-Wiele architektur obejmuje interfejs API sieci Web, który musi wywołać inny podrzędny interfejs API sieci Web, przy czym oba interfejsy są zabezpieczane przez usługę Azure AD B2C. Ten scenariusz jest typowy w natywnych klientach z zapleczem interfejsu API sieci Web i wywołuje usługi online firmy Microsoft, takiej jak usługa Azure AD interfejs API programu Graph.
+Wiele architektur obejmuje interfejs API sieci Web, który musi wywołać inny podrzędny interfejs API sieci Web, przy czym oba interfejsy są zabezpieczane przez usługę Azure AD B2C. Ten scenariusz jest typowy w natywnych klientach z zapleczem interfejsu API sieci Web i wywołuje usługę online firmy Microsoft, taką jak interfejs API Microsoft Graph lub interfejs API programu Graph usługi Azure AD.
 
 Ten scenariusz obejmujący łańcuch interfejsów API sieci Web może być obsługiwany przy użyciu przyznania poświadczeń elementu nośnego OAuth 2.0 JWT, określanego również jako przepływ „w imieniu”.  Jednak przepływ „w imieniu” nie jest obecnie wdrażany w usłudze Azure AD B2C.
 

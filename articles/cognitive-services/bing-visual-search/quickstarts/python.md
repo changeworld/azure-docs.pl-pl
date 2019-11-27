@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Python - Bing Visual Search'
+title: 'Szybki Start: uzyskiwanie wglądu w dane przy użyciu interfejsu API REST i języka Python — wyszukiwanie wizualne Bing'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak przekazać obraz do interfejsu API wyszukiwania wizualnego Bing i uzyskać szczegółowe informacje na jego temat.
 services: cognitive-services
@@ -17,11 +17,11 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383177"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Python
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Szybki Start: uzyskiwanie informacji o obrazach przy użyciu interfejsu API REST wyszukiwanie wizualne Bing i języka Python
 
-Use this quickstart to make your first call to the Bing Visual Search API and view the results. This Python application uploads an image to the API and displays the information it returns. Though this application is written in Python, the API is a RESTful Web service compatible with most programming languages.
+Użyj tego przewodnika Szybki Start, aby wykonać pierwsze wywołanie do interfejs API wyszukiwania wizualnego Bing i wyświetlić wyniki. Ta aplikacja w języku Python przekazuje obraz do interfejsu API i wyświetla informacje, które zwraca. Chociaż ta aplikacja jest zapisywana w języku Python, interfejs API jest usługą sieci Web RESTful zgodną z większością języków programowania.
 
-When you upload a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and you can set the `filename` parameter to any string. The contents of the form include the binary data of the image. The maximum image size you can upload is 1 MB.
+Po przekazaniu obrazu lokalnego dane formularza muszą zawierać nagłówek `Content-Disposition`. Należy ustawić jego parametr `name` na "Image", a parametr `filename` można ustawić na dowolny ciąg. Zawartość formularza zawiera dane binarne obrazu. Maksymalny rozmiar obrazu, który można przekazać, to 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -40,13 +40,13 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="initialize-the-application"></a>Inicjowanie aplikacji
 
-1. Create a new Python file in your favorite IDE or editor, and add the following `import` statement:
+1. Utwórz nowy plik w języku Python w ulubionym środowisku IDE lub edytorze i Dodaj następującą instrukcję `import`:
 
     ```python
     import requests, json
     ```
 
-2. Create variables for your subscription key, endpoint, and the path to the image you're uploading:
+2. Utwórz zmienne dla klucza subskrypcji, punktu końcowego i ścieżki do przekazywanego obrazu:
 
     ```python
 
@@ -55,13 +55,13 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     imagePath = 'your-image-path'
     ```
 
-3. Create a dictionary object to hold your request's header information. Bind your subscription key to the string `Ocp-Apim-Subscription-Key`, as shown below:
+3. Utwórz obiekt słownika, aby przechowywać informacje nagłówka żądania. Powiąż klucz subskrypcji z ciągiem `Ocp-Apim-Subscription-Key`, jak pokazano poniżej:
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Create another dictionary to contain your image, which is opened and uploaded when you send the request:
+4. Utwórz kolejny słownik zawierający obraz, który jest otwierany i przekazywany po wysłaniu żądania:
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,7 +69,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="parse-the-json-response"></a>Analizowanie odpowiedzi w formacie JSON
 
-1. Create a method called `print_json()` to take in the API response, and print the JSON:
+1. Utwórz metodę o nazwie `print_json()`, aby wykonać odpowiedź interfejsu API i wydrukować kod JSON:
 
     ```python
     def print_json(obj):
@@ -79,7 +79,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="send-the-request"></a>Wysyłanie żądania
 
-1. Użyj polecenia `requests.post()`, aby wysłać żądanie do interfejsu API wyszukiwania wizualnego Bing. Dołącz ciąg do punktu końcowego, nagłówka i informacji o pliku. Print `response.json()` with `print_json()`:
+1. Użyj polecenia `requests.post()`, aby wysłać żądanie do interfejsu API wyszukiwania wizualnego Bing. Dołącz ciąg do punktu końcowego, nagłówka i informacji o pliku. Drukuj `response.json()` z `print_json()`:
 
     ```python
     try:
@@ -94,4 +94,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Create a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Tworzenie wyszukiwanie wizualne jednostronicowej aplikacji sieci Web](../tutorial-bing-visual-search-single-page-app.md)

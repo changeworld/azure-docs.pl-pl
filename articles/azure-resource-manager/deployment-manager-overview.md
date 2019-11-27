@@ -13,9 +13,9 @@ ms.locfileid: "74307037"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Włączanie bezpiecznych praktyk wdrażania przy użyciu usługi Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 
-Aby wdrożyć usługę w wielu regionach i upewnij się, że działa on zgodnie z oczekiwaniami w każdym regionie, Azure Deployment Manager służy do koordynowania etapowe wdrażanie usługi. Tak jak w przypadku wszystkich wdrożeń platformy Azure dla usługi w określają zasoby [szablonów usługi Resource Manager](resource-group-authoring-templates.md). Po utworzeniu szablonów umożliwia Deployment Manager opisano topologii dla Twojej usługi i jak ona powinny być udostępniona.
+Aby wdrożyć usługę w wielu regionach i upewnij się, że działa on zgodnie z oczekiwaniami w każdym regionie, Azure Deployment Manager służy do koordynowania etapowe wdrażanie usługi. Podobnie jak w przypadku dowolnego wdrożenia platformy Azure, można zdefiniować zasoby dla usługi w [szablonach Menedżer zasobów](resource-group-authoring-templates.md). Po utworzeniu szablonów umożliwia Deployment Manager opisano topologii dla Twojej usługi i jak ona powinny być udostępniona.
 
-Program Deployment Manager to funkcja usługi Resource Manager. Rozszerza możliwości podczas wdrażania. Użyj programu Deployment Manager w przypadku złożonych usługa, która ma zostać wdrożone w wielu regionach. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie potrzebujesz dodatkowych środków ostrożności przygotowanych wdrożenia, należy zastosować standard [opcje wdrażania](resource-group-template-deploy-portal.md) dla usługi Resource Manager. Program Deployment Manager bezproblemowo integrują się ze wszystkich istniejących narzędzi innych firm, które obsługują wdrożeń usługi Resource Manager, takie jak ciągła integracja i ciągłe dostarczanie (CI/CD) ofert.
+Program Deployment Manager to funkcja usługi Resource Manager. Rozszerza możliwości podczas wdrażania. Użyj programu Deployment Manager w przypadku złożonych usługa, która ma zostać wdrożone w wielu regionach. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie są potrzebne dodatkowe środki ostrożności w przypadku wdrożenia przemieszczanego, użyj standardowych [opcji wdrażania](resource-group-template-deploy-portal.md) dla Menedżer zasobów. Program Deployment Manager bezproblemowo integrują się ze wszystkich istniejących narzędzi innych firm, które obsługują wdrożeń usługi Resource Manager, takie jak ciągła integracja i ciągłe dostarczanie (CI/CD) ofert.
 
 Usługa Azure Menedżer wdrażania jest w wersji zapoznawczej. Pomóż nam ulepszyć funkcję, przekazując [Opinie](https://aka.ms/admfeedback).
 
@@ -37,7 +37,7 @@ Zasoby dodatkowe:
 
 ## <a name="identity-and-access"></a>Tożsamość i dostęp
 
-Za pomocą programu Deployment Manager [przypisanych przez użytkownika z tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) wykonuje operacje wdrażania. Ta tożsamość jest utworzyć przed rozpoczęciem wdrażania. Musi mieć dostęp do subskrypcji, które wdrażasz usługi i wystarczających uprawnień do ukończenia wdrażania. Aby uzyskać informacje o akcjach udzielone za pośrednictwem ról, zobacz [wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md).
+W przypadku Menedżer wdrażania [tożsamość zarządzana przypisana przez użytkownika](../active-directory/managed-identities-azure-resources/overview.md) wykonuje akcje wdrożenia. Ta tożsamość jest utworzyć przed rozpoczęciem wdrażania. Musi mieć dostęp do subskrypcji, które wdrażasz usługi i wystarczających uprawnień do ukończenia wdrażania. Informacje o akcjach przyznanych za pomocą ról można znaleźć [w temacie Role wbudowane dla zasobów platformy Azure](../role-based-access-control/built-in-roles.md).
 
 Tożsamość musi znajdować się w tej samej lokalizacji co wdrożenie.
 
@@ -83,7 +83,7 @@ Poniższy kod przedstawia ogólny format źródła artefaktu.
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [odwołanie do szablonu artifactSources](/azure/templates/Microsoft.DeploymentManager/artifactSources).
+Aby uzyskać więcej informacji, zobacz [artifactSources Template Reference](/azure/templates/Microsoft.DeploymentManager/artifactSources).
 
 ### <a name="service-topology"></a>Topologia usługi
 
@@ -110,7 +110,7 @@ Poniższy kod przedstawia ogólny format zasób topologii usługi. Należy poda�
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [odwołanie do szablonu serviceTopologies](/azure/templates/Microsoft.DeploymentManager/serviceTopologies).
+Aby uzyskać więcej informacji, zobacz [Dokumentacja szablonu Servicetopologie](/azure/templates/Microsoft.DeploymentManager/serviceTopologies).
 
 ### <a name="services"></a>Usługi
 
@@ -138,11 +138,11 @@ Poniższy kod przedstawia ogólny format zasobów usług. Każda usługa służy
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [odwołanie do szablonu usługi](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services).
+Aby uzyskać więcej informacji, zobacz [Dokumentacja szablonu usług](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services).
 
 ### <a name="service-units"></a>Jednostki usług
 
-Poniższy kod przedstawia ogólny format zasobu jednostki usługi. W każdej jednostce usługi, określ grupę zasobów, [tryb wdrożenia](deployment-modes.md) służące do wdrożenia i ścieżka do pliku szablonu oraz parametrów. Jeśli określisz ścieżki względnej, aby uzyskać szablon i parametry, pełna ścieżka jest tworzona z folderu głównego źródła artefaktów. Można określić ścieżkę bezwzględną szablon i parametry, ale utracisz możliwość do wersji łatwe tworzenie wersji. Jednostki usługi, zależy od usługi.
+Poniższy kod przedstawia ogólny format zasobu jednostki usługi. W każdej jednostce usługi należy określić grupę zasobów, [Tryb wdrożenia](deployment-modes.md) , który ma zostać użyty do wdrożenia, oraz ścieżkę do pliku szablonu i parametru. Jeśli określisz ścieżki względnej, aby uzyskać szablon i parametry, pełna ścieżka jest tworzona z folderu głównego źródła artefaktów. Można określić ścieżkę bezwzględną szablon i parametry, ale utracisz możliwość do wersji łatwe tworzenie wersji. Jednostki usługi, zależy od usługi.
 
 ```json
 {
@@ -169,7 +169,7 @@ Poniższy kod przedstawia ogólny format zasobu jednostki usługi. W każdej jed
 
 Każdy szablon powinien zawierać powiązane zasoby, które mają zostać wdrożone w jednym kroku. Na przykład jednostka usługi może mieć szablon, który służy do wdrażania wszystkich zasobów dla usługi frontonu.
 
-Aby uzyskać więcej informacji, zobacz [odwołanie do szablonu serviceUnits](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits).
+Aby uzyskać więcej informacji, zobacz [Dokumentacja szablonu Serviceunits](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits).
 
 ## <a name="rollout-template"></a>Szablon wprowadzania
 
@@ -189,7 +189,7 @@ Każdego wdrożenia może mieć wiele grupy kroków. Każda grupa kroku ma jedn�
 
 ### <a name="artifact-source-for-binaries"></a>Źródło artefaktu dla danych binarnych
 
-W szablonie wdrożenia tworzenia źródła artefaktu dla danych binarnych, czego potrzebujesz do wdrożenia usługi. To źródło artefaktu jest podobne do [źródła artefaktu dla szablonów](#artifact-source-for-templates), z tą różnicą, że zawiera on skrypty, stron sieci web, skompilowany kod lub inne pliki wymagane przez usługę.
+W szablonie wdrożenia tworzenia źródła artefaktu dla danych binarnych, czego potrzebujesz do wdrożenia usługi. To źródło artefaktu jest podobne do [źródła artefaktu dla szablonów](#artifact-source-for-templates), z tą różnicą, że zawiera skrypty, strony sieci Web, skompilowany kod lub inne pliki, które są niezbędne przez usługę.
 
 ### <a name="steps"></a>Kroki
 
@@ -212,17 +212,17 @@ Krok oczekiwania wstrzymuje wdrożenia przed kontynuowaniem. Umożliwia zweryfik
 },
 ```
 
-Właściwość czasu trwania używa [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). Poprzedni przykład określa oczekiwania jednej minuty.
+Właściwość Duration używa [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). Poprzedni przykład określa oczekiwania jednej minuty.
 
 Aby uzyskać więcej informacji o kroku sprawdzania kondycji, zobacz [wprowadzenie do wdrożenia integracji kondycji na platformie azure Menedżer wdrażania](./deployment-manager-health-check.md) i [Samouczek: Używanie kontroli kondycji w usłudze Azure Menedżer wdrażania](./deployment-manager-tutorial-health-check.md).
 
-Aby uzyskać więcej informacji, zobacz [kroki odwołanie do szablonu](/azure/templates/Microsoft.DeploymentManager/steps).
+Aby uzyskać więcej informacji, zobacz [Dokumentacja szablonu kroków](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Wprowadzanie
 
 Aby upewnić się, że źródła artefaktu jest dostępna, wdrożenia zależy od niego. Wdrożenia definiuje grupy kroków dla każdej jednostki usługi, które zostało wdrożone. Można zdefiniować akcje do wykonania przed lub po wdrożeniu. Na przykład można określić, że wdrożenie oczekiwać po wdrożeniu jednostki usługi. Można zdefiniować kolejność grupy kroków.
 
-Określa obiekt tożsamości [przypisanych przez użytkownika z tożsamości zarządzanej](#identity-and-access) która wykonuje operacje wdrażania.
+Obiekt Identity określa [tożsamość zarządzaną przypisaną przez użytkownika](#identity-and-access) , która wykonuje akcje wdrożenia.
 
 Poniższy kod przedstawia ogólny format wdrożenia.
 
@@ -260,7 +260,7 @@ Poniższy kod przedstawia ogólny format wdrożenia.
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [odwołanie do szablonu wprowadzanie](/azure/templates/Microsoft.DeploymentManager/rollouts).
+Aby uzyskać więcej informacji, zobacz temat [Wdrażanie szablonu dokumentacja](/azure/templates/Microsoft.DeploymentManager/rollouts).
 
 ## <a name="parameter-file"></a>Plik parametrów
 
@@ -268,9 +268,9 @@ Należy utworzyć dwa pliki parametrów. Jeden plik parametrów jest używana po
 
 ## <a name="containerroot-variable"></a>Zmienna containerRoot
 
-W przypadku wdrożeń numerów wersji ścieżkę do artefaktów zmienia się z każdym wydaniu nowej wersji. Przy pierwszym uruchomieniu wdrożenia ścieżki mogą być `https://<base-uri-blob-container>/binaries/1.0.0.0`. Może być po raz drugi `https://<base-uri-blob-container>/binaries/1.0.0.1`. Program Deployment Manager ułatwia uzyskiwanie ścieżki katalogu poprawny głównego dla bieżącego wdrożenia przy użyciu `$containerRoot` zmiennej. Ta wartość zmienia się z każdą wersją i nie jest znana przed przystąpieniem do wdrożenia.
+W przypadku wdrożeń numerów wersji ścieżkę do artefaktów zmienia się z każdym wydaniu nowej wersji. Przy pierwszym uruchomieniu wdrożenia ścieżka może być `https://<base-uri-blob-container>/binaries/1.0.0.0`. Druga Godzina, w której może być `https://<base-uri-blob-container>/binaries/1.0.0.1`. Menedżer wdrażania upraszcza pobieranie prawidłowej ścieżki głównej dla bieżącego wdrożenia przy użyciu zmiennej `$containerRoot`. Ta wartość zmienia się z każdą wersją i nie jest znana przed przystąpieniem do wdrożenia.
 
-Użyj `$containerRoot` zmiennej w pliku parametrów szablonu do wdrażania zasobów platformy Azure. W czasie wdrażania ta zmienna jest zastępowana rzeczywistymi wartościami z wdrożenia.
+Użyj zmiennej `$containerRoot` w pliku parametrów dla szablonu do wdrożenia zasobów platformy Azure. W czasie wdrażania ta zmienna jest zastępowana rzeczywistymi wartościami z wdrożenia.
 
 Na przykład podczas wprowadzania utworzyć źródła artefaktu dla binarnego artefaktów.
 
@@ -294,9 +294,9 @@ Na przykład podczas wprowadzania utworzyć źródła artefaktu dla binarnego ar
 },
 ```
 
-Zwróć uwagę `artifactRoot` i `sasUri` właściwości. Główny artefaktu może być ustawiony na wartość taką jak `binaries/1.0.0.0`. Identyfikator URI sygnatury dostępu Współdzielonego to identyfikator URI do kontenera magazynu przy użyciu tokenu sygnatury dostępu Współdzielonego dla dostępu. Program Deployment Manager automatycznie tworzy wartość `$containerRoot` zmiennej. Łączy ona te wartości w formacie `<container>/<artifactRoot>`.
+Zwróć uwagę na właściwości `artifactRoot` i `sasUri`. Element główny artefaktu może być ustawiony na wartość taką jak `binaries/1.0.0.0`. Identyfikator URI sygnatury dostępu Współdzielonego to identyfikator URI do kontenera magazynu przy użyciu tokenu sygnatury dostępu Współdzielonego dla dostępu. Menedżer wdrażania automatycznie konstruuje wartość zmiennej `$containerRoot`. Łączy te wartości w formacie `<container>/<artifactRoot>`.
 
-Plik szablonu oraz parametrów muszą znasz poprawnej ścieżki w celu uzyskania wersji plików binarnych. Na przykład aby wdrożyć pliki dla aplikacji sieci web, utwórz następujący plik parametrów za pomocą zmiennej $containerRoot. Należy użyć dwa ukośniki odwrotne (`\\`) dla ścieżki, ponieważ pierwszy jest znakiem ucieczki.
+Plik szablonu oraz parametrów muszą znasz poprawnej ścieżki w celu uzyskania wersji plików binarnych. Na przykład aby wdrożyć pliki dla aplikacji sieci web, utwórz następujący plik parametrów za pomocą zmiennej $containerRoot. Musisz użyć dwóch ukośników odwrotnych (`\\`) dla ścieżki, ponieważ pierwszy jest znakiem ucieczki.
 
 ```json
 {
@@ -337,6 +337,6 @@ Wersjonowany wdrożeń, tworząc nowe foldery i przekazywania w tej domenie gł�
 W tym artykule przedstawiono Deployment Manager. Przejdź do następnego artykułu, aby dowiedzieć się, jak wdrożyć za pomocą programu Deployment Manager.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Użyj Azure Deployment Manager przy użyciu szablonów usługi Resource Manager](./deployment-manager-tutorial.md)
+> [Samouczek: korzystanie z usługi Azure Menedżer wdrażania z szablonami Menedżer zasobów](./deployment-manager-tutorial.md)
 >
 > [Szybki Start: Wypróbuj usługę Azure Menedżer wdrażania w ciągu zaledwie kilku minut](https://github.com/Azure-Samples/adm-quickstart)

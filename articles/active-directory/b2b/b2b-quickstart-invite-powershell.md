@@ -73,7 +73,7 @@ Na przykład `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
 
 Po wyświetleniu monitu wprowadź poświadczenia.
 
-## <a name="send-an-invitation"></a>Wysyłanie zaproszenia
+## <a name="send-an-invitation"></a>Wyślij zaproszenie
 
 1. Aby wysłać zaproszenie do konta testowego e-mail, uruchom następujące polecenie programu PowerShell (Zastąp ciągi **"Sanda"** i **Sanda\@fabrikam.com** nazwą konta testowego i adresem e-mail): 
 

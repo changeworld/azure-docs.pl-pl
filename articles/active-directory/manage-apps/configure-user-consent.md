@@ -55,7 +55,7 @@ Aby udzielić zgody administratora podczas rejestrowania aplikacji:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) jako administrator globalny.
 2. Przejdź do bloku **rejestracje aplikacji** .
 3. Wybierz aplikację, aby wyrazić zgodę.
-4. Wybierz **uprawnienia do interfejsu API**.
+4. Wybierz pozycję **uprawnienia interfejsu API**.
 5. Kliknij pozycję **Udziel zgody administratora**.
 
 

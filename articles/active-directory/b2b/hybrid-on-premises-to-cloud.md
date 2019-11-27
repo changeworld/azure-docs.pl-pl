@@ -45,6 +45,6 @@ Aby uzyskać instrukcje dotyczące implementacji, zobacz [Włączanie synchroniz
 ## <a name="next-steps"></a>Następne kroki
 
 - [Azure Active Directory współpracy B2B z organizacjami hybrydowymi](hybrid-organizations.md)
-- [Użytkowników B2B przydział w usłudze Azure AD dostęp do aplikacji w środowisku lokalnym](hybrid-cloud-to-on-premises.md)
+- [Przyznaj użytkownikom B2B dostęp do aplikacji lokalnych w usłudze Azure AD](hybrid-cloud-to-on-premises.md)
 - Aby zapoznać się z omówieniem Azure AD Connect, zobacz [integrowanie katalogów lokalnych z Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 

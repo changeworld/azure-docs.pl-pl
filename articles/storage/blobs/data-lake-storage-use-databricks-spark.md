@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs'
-description: This tutorial shows how to run Spark queries on an Azure Databricks cluster to access data in an Azure Data Lake Storage Gen2 storage account.
+title: 'Samouczek: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs'
+description: W tym samouczku pokazano, jak uruchamiać zapytania Spark w klastrze Azure Databricks, aby uzyskać dostęp do danych na koncie magazynu Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,7 +15,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327538"
 ---
-# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Tutorial: Azure Data Lake Storage Gen2, Azure Databricks & Spark
+# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Samouczek: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
 W tym samouczku pokazano, jak połączyć klaster usługi Azure Databricks z danymi przechowywanymi na koncie magazynu platformy Azure z włączoną usługą Azure Data Lake Storage Gen2. Takie połączenie umożliwia natywne wykonywanie w klastrze zapytań i analiz dotyczących tych danych.
 
@@ -32,22 +32,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 * Utwórz konto usługi Azure Data Lake Storage Gen2.
 
-  See [Create an Azure Data Lake Storage Gen2 account](data-lake-storage-quickstart-create-account.md).
+  Zobacz [Tworzenie konta Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
 
 * Upewnij się, że Twoje konto użytkownika ma przypisaną [rolę Współautor danych obiektu blob magazynu](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac).
 
 * Zainstaluj narzędzie AzCopy w wersji 10. Zobacz [Transferowanie danych za pomocą narzędzia AzCopy w wersji 10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Tworzenie jednostki usługi. See [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Tworzenie jednostki usługi. Zobacz [jak: korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
   Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
 
-  :heavy_check_mark: When performing the steps in the [Assign the application to a role](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) section of the article, make sure to assign the **Storage Blob Data Contributor** role to the service principal.
+  : heavy_check_mark: podczas wykonywania kroków opisanych w sekcji [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) w artykule, należy się upewnić, że rola **współautor danych obiektów blob magazynu** jest przypisana do jednostki usługi.
 
   > [!IMPORTANT]
   > Upewnij się, że przypisano rolę w zakresie konta magazynu usługi Data Lake Storage Gen2. Możesz przypisać rolę do nadrzędnej grupy zasobów lub subskrypcji, ale będzie zgłaszany błąd dotyczący uprawnień do momentu rozpropagowania przypisań roli do konta magazynu.
 
-  :heavy_check_mark: When performing the steps in the [Get values for signing in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) section of the article, paste the tenant ID, app ID, and password values into a text file. Wkrótce będą potrzebne.
+  : heavy_check_mark: podczas wykonywania kroków z sekcji [pobieranie wartości dla logowania w](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) artykule wklej identyfikator dzierżawy, identyfikator aplikacji i hasło do pliku tekstowego. Wkrótce będą potrzebne.
 
 ### <a name="download-the-flight-data"></a>Pobieranie danych lotów
 
@@ -67,7 +67,7 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
 
 1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Analiza** > **Azure Databricks**.
 
-    ![Databricks on Azure portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Databricks on Azure portal")
+    ![Datakostki na Azure Portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Datakostki na Azure Portal")
 
 2. W obszarze **Usługa Azure Databricks** podaj następujące wartości, aby utworzyć usługę Databricks:
 
@@ -77,9 +77,9 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
     |**Subskrypcja**     | Z listy rozwijanej wybierz subskrypcję platformy Azure.        |
     |**Grupa zasobów**     | Określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej grupy. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). |
     |**Lokalizacja**     | Wybierz pozycję **Zachodnie stany USA 2**. Inne dostępne regiony podano na stronie [dostępności usług platformy Azure według regionów](https://azure.microsoft.com/regions/services/).       |
-    |**Warstwa cenowa**     |  Select **Standard**.     |
+    |**Warstwa cenowa**     |  Wybierz opcję **Standardowa**.     |
 
-    ![Create an Azure Databricks workspace](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Tworzenie usługi Azure Databricks")
+    ![Tworzenie obszaru roboczego Azure Databricks](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Tworzenie usługi Azure Databricks")
 
 3. Tworzenie konta potrwa kilka minut. Stan operacji można monitorować za pomocą paska postępu znajdującego się u góry.
 
@@ -91,11 +91,11 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
 
 2. Nastąpi przekierowanie do portalu usługi Azure Databricks. W portalu wybierz pozycję **Klaster**.
 
-    ![Databricks on Azure](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Databricks on Azure")
+    ![Datakostki na platformie Azure](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Datakostki na platformie Azure")
 
 3. Na stronie **Nowy klaster** podaj wartości, aby utworzyć klaster.
 
-    ![Create Databricks Spark cluster on Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Create Databricks Spark cluster on Azure")
+    ![Tworzenie klastra usługi datakosteks Spark na platformie Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Tworzenie klastra usługi datakosteks Spark na platformie Azure")
 
     Uzupełnij wartości następujących pól i zaakceptuj wartości domyślne w pozostałych polach:
 
@@ -105,7 +105,7 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
 
 4. Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączać do niego notesy i uruchamiać zadania Spark.
 
-## <a name="ingest-data"></a>Pobieranie danych
+## <a name="ingest-data"></a>Pozyskiwanie danych
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Kopiowanie danych źródłowych na konto magazynu
 
@@ -117,7 +117,7 @@ Korzystanie z narzędzia AzCopy do kopiowania danych z pliku *csv* na konto usł
    azcopy login
    ```
 
-   Follow the instructions that appear in the command prompt window to authenticate your user account.
+   Postępuj zgodnie z instrukcjami, które pojawiają się w oknie wiersza polecenia w celu uwierzytelnienia konta użytkownika.
 
 2. Aby skopiować dane z pliku *csv*, wprowadź następujące polecenie.
 
@@ -125,21 +125,21 @@ Korzystanie z narzędzia AzCopy do kopiowania danych z pliku *csv* na konto usł
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Replace the `<csv-folder-path>` placeholder value with the path to the *.csv* file.
+   * Zastąp wartość symbolu zastępczego `<csv-folder-path>` ścieżką do pliku *CSV* .
 
    * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
-   * Replace the `<container-name>` placeholder with any name that you want to give your container.
+   * Zastąp `<container-name>` symbol zastępczy dowolną nazwą, która ma zostać przydana do kontenera.
 
-## <a name="create-a-container-and-mount-it"></a>Create a container and mount it
+## <a name="create-a-container-and-mount-it"></a>Utwórz kontener i zainstaluj go
 
-In this section, you'll create a container and a folder in your storage account.
+W tej sekcji utworzysz kontener i folder na koncie magazynu.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do utworzonej usługi Azure Databricks i wybierz pozycję **Uruchom obszar roboczy**.
 
 2. Po lewej stronie wybierz pozycję **Obszar roboczy**. Z listy rozwijanej **Obszar roboczy** wybierz pozycję **Utwórz** > **Notes**.
 
-    ![Create a notebook in Databricks](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Create notebook in Databricks")
+    ![Tworzenie notesu w kostkach](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Tworzenie notesu w kostkach")
 
 3. W oknie dialogowym**Tworzenie notesu** wprowadź nazwę notesu. Jako język wybierz pozycję **Python**, a następnie wybierz utworzony wcześniej klaster Spark.
 
@@ -161,9 +161,9 @@ In this section, you'll create a container and a folder in your storage account.
     extra_configs = configs)
     ```
 
-18. W tym bloku kodu zamień symbole zastępcze `appId`, `password`, `tenant` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Replace the `container-name` placeholder value with the name that you gave to the container on the previous step.
+18. W tym bloku kodu zamień symbole zastępcze `appId`, `password`, `tenant` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp wartość symbolu zastępczego `container-name` nazwą przedaną do kontenera w poprzednim kroku.
 
-Use these values to replace the mentioned placeholders.
+Użyj tych wartości, aby zastąpić wymienione symbole zastępcze.
 
    * Parametry `appId` i `password` pochodzą z aplikacji zarejestrowanej w usłudze Active Directory podczas tworzenia jednostki usługi.
 
@@ -171,10 +171,10 @@ Use these values to replace the mentioned placeholders.
 
    * Parametr `storage-account-name` to nazwa konta magazynu usługi Azure Data Lake Storage Gen2.
 
-   * Replace the `container-name` placeholder with any name that you want to give your container.
+   * Zastąp `container-name` symbol zastępczy dowolną nazwą, która ma zostać przydana do kontenera.
 
    > [!NOTE]
-   > In a production setting, consider storing your password in Azure Databricks. Then, add a look up key to your code block instead of the password. Po zakończeniu tego samouczka Szybki start zobacz artykuł na temat usługi [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej usługi Azure Databricks, aby zapoznać się z przykładami tego podejścia.
+   > W ustawieniach produkcyjnych Rozważ przechowywanie hasła w Azure Databricks. Następnie Dodaj klucz wyszukiwania do bloku kodu zamiast hasła. Po zakończeniu tego samouczka Szybki start zobacz artykuł na temat usługi [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej usługi Azure Databricks, aby zapoznać się z przykładami tego podejścia.
 
 19. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 
@@ -222,7 +222,7 @@ Następnie możesz rozpocząć wykonywanie zapytań dotyczących danych przekaza
 
 Aby utworzyć ramki danych dla źródeł danych, uruchom następujący skrypt:
 
-* Replace the `<csv-folder-path>` placeholder value with the path to the *.csv* file.
+* Zastąp wartość symbolu zastępczego `<csv-folder-path>` ścieżką do pliku *CSV* .
 
 ```python
 # Copy this into a Cmd cell in your notebook.

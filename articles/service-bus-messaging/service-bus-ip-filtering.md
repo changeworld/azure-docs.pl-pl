@@ -52,7 +52,7 @@ Reguły filtrowania adresów IP są stosowane w kolejności, a pierwsza reguła 
 > - Device Explorer usługi Azure IoT
 >
 > Poniższe usługi firmy Microsoft muszą znajdować się w sieci wirtualnej
-> - Azure App Service
+> - Usługa Azure App Service
 > - Azure Functions
 
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie sieci wirtualnej i reguły zapory za pomocą szablonów Azure Resource Manager
@@ -64,7 +64,7 @@ Poniższy szablon Menedżer zasobów umożliwia dodanie reguły sieci wirtualnej
 
 Parametry szablonu:
 
-- **ipMask** jest pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
+- **ipMask** to pojedynczy adres IPv4 lub blok adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
 
 > [!NOTE]
 > Chociaż nie ma możliwych reguł Odmów, szablon Azure Resource Manager ma ustawioną akcję domyślną **"Zezwalaj"** , która nie ogranicza połączeń.
@@ -74,7 +74,7 @@ Parametry szablonu:
 > ```json
 > "defaultAction": "Allow"
 > ```
-> to
+> na
 > ```json
 > "defaultAction": "Deny"
 > ```

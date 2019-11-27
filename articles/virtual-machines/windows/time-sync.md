@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 58824b13cfac264c051de6bea45d2dab3aae8fae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: dd2ae2159c43da6a049d67cae739f111eba682c9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068116"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534467"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Synchronizacja czasu dla maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -38,7 +38,7 @@ Dokładność zegara komputerowego jest określana na tym, jak zamyka się zegar
 
 Hosty platformy Azure są synchronizowane z wewnętrznymi serwerami Microsoft Time, które pobierają czas od urządzeń z warstwy 1 należącej do firmy Microsoft przy użyciu anten GPS. Maszyny wirtualne na platformie Azure mogą być zależne od ich hosta w celu przekazania dokładnego czasu (*czasu hosta*) do maszyny wirtualnej lub maszyny wirtualnej mogą bezpośrednio uzyskać czas z serwera czasu lub kombinację obu tych metod. 
 
-Interakcje maszyny wirtualnej z hostem mogą również mieć wpływ na zegar. Podczas [zachowywania konserwacji pamięci](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)maszyny wirtualne są wstrzymywane przez maksymalnie 30 sekund. Na przykład przed rozpoczęciem obsługi zegar maszyny wirtualnej pokazuje 10:00:00 AM i trwa 28 sekund. Po wznowieniu działania maszyny wirtualnej zegar na maszynie wirtualnej nadal będzie wyświetlał 10:00:00 AM, co spowodowałoby 28 sekund. Aby rozwiązać ten problem, usługa VMICTimeSync monitoruje co dzieje się na hoście i pojawia się w celu wyrównania zmian w maszynach wirtualnych.
+Interakcje maszyny wirtualnej z hostem mogą również mieć wpływ na zegar. Podczas [zachowywania konserwacji pamięci](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)maszyny wirtualne są wstrzymywane przez maksymalnie 30 sekund. Na przykład przed rozpoczęciem obsługi zegar maszyny wirtualnej pokazuje 10:00:00 AM i trwa 28 sekund. Po wznowieniu działania maszyny wirtualnej zegar na maszynie wirtualnej nadal będzie wyświetlał 10:00:00 AM, co spowodowałoby 28 sekund. Aby rozwiązać ten problem, usługa VMICTimeSync monitoruje co dzieje się na hoście i pojawia się w celu wyrównania zmian w maszynach wirtualnych.
 
 Usługa VMICTimeSync działa w trybie próbkowania lub synchronizacji i ma wpływ tylko na zegar do przodu. W trybie próbkowania, który wymaga uruchomienia usługi W32Time, usługa VMICTimeSync sonduje hosta co 5 sekund i udostępnia przykłady czasu do W32time. Co około 30 sekund usługa W32Time pobiera najnowszy czas i używa go w celu wywierania wpływu na zegar gościa. Tryb synchronizacji jest uaktywniany w przypadku wznowienia działania gościa lub przekroczenia zegara przez Gościa więcej niż 5 sekund za zegarem hosta. W przypadkach, gdy usługa W32Time jest prawidłowo uruchomiona, ten ostatni przypadek nigdy nie powinien wystąpić.
 

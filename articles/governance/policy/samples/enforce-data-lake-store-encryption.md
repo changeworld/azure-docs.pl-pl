@@ -1,6 +1,6 @@
 ---
 title: Przykład — wymuszanie szyfrowania dla usługi Data Lake Store
-description: This sample policy definition requires the encryption state on Data Lake Store accounts to be enabled.
+description: Ta przykładowa definicja zasad wymaga włączenia stanu szyfrowania na kontach Data Lake Store.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 5b29caa7fa8b9169b8c2164975f9cdb2663c5cef
@@ -80,4 +80,4 @@ az policy assignment delete --name "Data Lake Store encryption" --resource-group
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)

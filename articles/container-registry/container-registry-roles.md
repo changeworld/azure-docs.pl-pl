@@ -1,6 +1,6 @@
 ---
-title: RBAC roles and permissions
-description: Use Azure role-based access control (RBAC) and identity and access management (IAM) to provide fine-grained permissions to resources in an Azure container registry.
+title: Role i uprawnienia RBAC
+description: Użyj kontroli dostępu opartej na rolach (RBAC) na platformie Azure, a w celu zapewnienia szczegółowych uprawnień do zasobów w usłudze Azure Container Registry.
 ms.topic: article
 ms.date: 03/20/2019
 ms.openlocfilehash: 8ef4f26dfd59c7b3b177ef58fa23e08f7e66d328
@@ -10,11 +10,11 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456241"
 ---
-# <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roles and permissions
+# <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry ról i uprawnień
 
-The Azure Container Registry service supports a set of Azure roles that provide different levels of permissions to an Azure container registry. Use Azure [role-based access control](../role-based-access-control/index.yml) (RBAC) to assign specific permissions to users or service principals that need to interact with a registry.
+Usługa Azure Container Registry obsługuje zestaw ról platformy Azure, które zapewniają różne poziomy uprawnień do usługi Azure Container Registry. Za pomocą [kontroli dostępu opartej na rolach](../role-based-access-control/index.yml) (RBAC) na platformie Azure można przypisywać określone uprawnienia użytkownikom lub podmiotom usługi, które muszą korzystać z rejestru.
 
-| Role/Permission       | [Access Resource Manager](#access-resource-manager) | [Create/delete registry](#create-and-delete-registry) | [Push image](#push-image) | [Pull image](#pull-image) | [Delete image data](#delete-image-data) | [Change policies](#change-policies) |   [Sign images](#sign-images)  |
+| Rola/uprawnienie       | [Menedżer zasobów dostępu](#access-resource-manager) | [Utwórz/usuń rejestr](#create-and-delete-registry) | [Obraz wypychany](#push-image) | [Obraz ściągania](#pull-image) | [Usuń dane obrazu](#delete-image-data) | [Zmień zasady](#change-policies) |   [Podpisz obrazy](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Właściciel | X | X | X | X | X | X |  |  
 | Współautor | X | X | X |  X | X | X |  |  
@@ -24,52 +24,52 @@ The Azure Container Registry service supports a set of Azure roles that provide 
 | AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
-## <a name="differentiate-users-and-services"></a>Differentiate users and services
+## <a name="differentiate-users-and-services"></a>Odróżnianie użytkowników i usług
 
-Any time permissions are applied, a best practice is to provide the most limited set of permissions for a person, or service, to accomplish a task. The following permission sets represent a set of capabilities that may be used by humans and headless services.
+Wszystkie uprawnienia są stosowane, najlepszym rozwiązaniem jest zapewnienie najbardziej ograniczonego zestawu uprawnień dla osoby lub usługi, w celu wykonania zadania. Następujące zbiory uprawnień reprezentują zestaw możliwości, które mogą być używane przez ludzi i usługi bezobsługowe.
 
-### <a name="cicd-solutions"></a>CI/CD solutions
+### <a name="cicd-solutions"></a>Rozwiązania CI/CD
 
-When automating `docker build` commands from CI/CD solutions, you need `docker push` capabilities. For these headless service scenarios, we suggest assigning the **AcrPush** role. This role, unlike the broader **Contributor** role, prevents the account from performing other registry operations or accessing Azure Resource Manager.
+W przypadku automatyzowania `docker build` poleceń z rozwiązań ciągłej integracji/ciągłego wdrażania wymagane są `docker push` możliwości. W przypadku tych scenariuszy usługi bezobsługowe sugerujemy przypisanie roli **AcrPush** . Ta rola, w przeciwieństwie do szerszej roli **współautor** , uniemożliwia kontu wykonywanie innych operacji rejestru lub uzyskiwanie dostępu do Azure Resource Manager.
 
-### <a name="container-host-nodes"></a>Container host nodes
+### <a name="container-host-nodes"></a>Węzły hosta kontenera
 
-Likewise, nodes running your containers need the **AcrPull** role, but shouldn't require **Reader** capabilities.
+Podobnie węzły korzystające z kontenerów wymagają roli **AcrPull** , ale nie wymagają możliwości **czytnika** .
 
-### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker extension
+### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code rozszerzenie platformy Docker
 
-For tools like the Visual Studio Code [Docker extension](https://code.visualstudio.com/docs/azure/docker), additional resource provider access is required to list the available Azure container registries. In this case, provide your users access to the **Reader** or **Contributor** role. These roles allow `docker pull`, `docker push`, `az acr list`, `az acr build`, and other capabilities. 
+Dla narzędzi, takich jak Visual Studio Code [Docker Extension](https://code.visualstudio.com/docs/azure/docker), wymagany jest dodatkowy dostęp dostawcy zasobów, aby wyświetlić listę dostępnych rejestrów kontenerów platformy Azure. W takim przypadku należy zapewnić użytkownikom dostęp do roli **czytelnik** lub **współautor** . Role te zezwalają na `docker pull`, `docker push`, `az acr list`, `az acr build`i inne możliwości. 
 
-## <a name="access-resource-manager"></a>Access Resource Manager
+## <a name="access-resource-manager"></a>Menedżer zasobów dostępu
 
-Azure Resource Manager access is required for the Azure portal and registry management with the [Azure CLI](/cli/azure/). For example, to get a list of registries by using the `az acr list` command, you need this permission set. 
+Do zarządzania Azure Portal i rejestrem za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/)jest wymagany dostęp Azure Resource Manager. Na przykład aby uzyskać listę rejestrów przy użyciu polecenia `az acr list`, musisz mieć ten zestaw uprawnień. 
 
-## <a name="create-and-delete-registry"></a>Create and delete registry
+## <a name="create-and-delete-registry"></a>Tworzenie i usuwanie rejestru
 
-The ability to create and delete Azure container registries.
+Możliwość tworzenia i usuwania rejestrów kontenerów platformy Azure.
 
-## <a name="push-image"></a>Push image
+## <a name="push-image"></a>Obraz wypychany
 
-The ability to `docker push` an image, or push another [supported artifact](container-registry-image-formats.md) such as a Helm chart, to a registry. Requires [authentication](container-registry-authentication.md) with the registry using the authorized identity. 
+Możliwość `docker push` obrazu lub wypchnięcia innego [obsługiwanego artefaktu](container-registry-image-formats.md) , takiego jak wykres Helm, do rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) z rejestrem przy użyciu autoryzowanej tożsamości. 
 
-## <a name="pull-image"></a>Pull image
+## <a name="pull-image"></a>Obraz ściągania
 
-The ability to `docker pull` a non-quarantined image, or pull another [supported artifact](container-registry-image-formats.md) such as a Helm chart, from a registry. Requires [authentication](container-registry-authentication.md) with the registry using the authorized identity.
+Możliwość `docker pull` obrazu nieobjętego kwarantanną lub ściągnięcia innego [obsługiwanego artefaktu](container-registry-image-formats.md) , takiego jak wykres Helm, z rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) z rejestrem przy użyciu autoryzowanej tożsamości.
 
-## <a name="delete-image-data"></a>Delete image data
+## <a name="delete-image-data"></a>Usuń dane obrazu
 
-The ability to [delete container images](container-registry-delete.md), or delete other [supported artifacts](container-registry-image-formats.md) such as Helm charts, from a registry.
+Możliwość [usuwania obrazów kontenera](container-registry-delete.md)lub usuwania innych [obsługiwanych artefaktów](container-registry-image-formats.md) , takich jak wykresy Helm, z rejestru.
 
-## <a name="change-policies"></a>Change policies
+## <a name="change-policies"></a>Zmień zasady
 
-The ability to configure policies on a registry. Policies include image purging, enabling quarantine, and image signing.
+Możliwość konfigurowania zasad w rejestrze. Zasady obejmują przeczyszczanie obrazu, Włączanie kwarantanny i podpisywanie obrazu.
 
-## <a name="sign-images"></a>Sign images
+## <a name="sign-images"></a>Podpisz obrazy
 
-The ability to sign images, usually assigned to an automated process, which would use a service principal. This permission is typically combined with [push image](#push-image) to allow pushing a trusted image to a registry. For details, see [Content trust in Azure Container Registry](container-registry-content-trust.md).
+Możliwość podpisywania obrazów, zwykle przypisywanych do zautomatyzowanego procesu, który mógłby korzystać z nazwy głównej usługi. To uprawnienie jest zwykle połączone z [obrazem push](#push-image) , aby umożliwić wypychanie zaufanego obrazu do rejestru. Aby uzyskać szczegółowe informacje, zobacz [zaufanie zawartości w Azure Container Registry](container-registry-content-trust.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Learn more about assigning RBAC roles to an Azure identity by using the [Azure portal](../role-based-access-control/role-assignments-portal.md), the [Azure CLI](../role-based-access-control/role-assignments-cli.md), or other Azure tools.
+* Dowiedz się więcej na temat przypisywania ról RBAC do tożsamości platformy Azure przy użyciu [Azure Portal](../role-based-access-control/role-assignments-portal.md), [interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)lub innych narzędzi platformy Azure.
 
-* Learn about [authentication options](container-registry-authentication.md) for Azure Container Registry.
+* Dowiedz się więcej na temat [opcji uwierzytelniania](container-registry-authentication.md) dla Azure Container Registry.

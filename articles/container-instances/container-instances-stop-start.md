@@ -1,19 +1,14 @@
 ---
-title: Ręcznie Zatrzymaj lub Uruchom kontenery w Azure Container Instances
+title: Ręcznie Zatrzymaj lub Uruchom grupę kontenerów
 description: Dowiedz się, jak ręcznie zatrzymać lub uruchomić grupę kontenerów w Azure Container Instances.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: c7d46ad8d935e28b5a24e48c85ac2464b55b2669
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325639"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533421"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ręcznie Zatrzymaj lub Uruchom kontenery w Azure Container Instances
 
@@ -29,7 +24,7 @@ Po ponownym przetworzeniu kontenerów [zasoby](container-instances-container-gro
 
 Akcja zatrzymania nie ma żadnego wpływu, jeśli grupa kontenerów została już zakończona (jest w stanie sukces lub niepowodzenie). Na przykład grupa kontenerów z zadaniami kontenera uruchamiania, które zostały pomyślnie zakończone w stanie sukces. Próby zatrzymania grupy w tym stanie nie zmieniają stanu. 
 
-## <a name="start"></a>Start
+## <a name="start"></a>Uruchamianie
 
 Po zatrzymaniu grupy kontenerów — ponieważ kontenery zostały zakończone lub ręcznie zatrzymana przez grupę — można uruchomić kontenery. Na przykład użyj polecenia [AZ Container Start][az-container-start] lub Azure Portal, aby ręcznie uruchomić kontenery w grupie. Jeśli obraz kontenera dla dowolnego kontenera zostanie zaktualizowany, zostanie pobrany nowy obraz. 
 

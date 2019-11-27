@@ -1,5 +1,5 @@
 ---
-title: Restore a deleted Office 365 group - Azure AD | Microsoft Docs
+title: Przywracanie usuniętej grupy Office 365 — Azure AD | Microsoft Docs
 description: Jak przywrócić usuniętą grupę, wyświetlić grupy możliwe do przywrócenia i trwale usunąć grupę w usłudze Azure Active Directory
 services: active-directory
 author: curtand
@@ -22,7 +22,7 @@ ms.locfileid: "74422380"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory
 
-Po usunięciu grupy usługi Office 365 w usłudze Azure Active Directory (Azure AD) usunięta grupa jest zachowywana, ale nie jest widoczna przez 30 dni od daty usunięcia. Przyczyną takiego zachowania jest to, że grupy i ich zawartość można przywrócić w razie potrzeby. Ta funkcja jest ograniczona wyłącznie do grup usługi Office 365 w usłudze Azure AD. Nie jest dostępna dla grup zabezpieczeń i grup dystrybucji. Please note that the 30-day group restoration period is not customizable.
+Po usunięciu grupy usługi Office 365 w usłudze Azure Active Directory (Azure AD) usunięta grupa jest zachowywana, ale nie jest widoczna przez 30 dni od daty usunięcia. Przyczyną takiego zachowania jest to, że grupy i ich zawartość można przywrócić w razie potrzeby. Ta funkcja jest ograniczona wyłącznie do grup usługi Office 365 w usłudze Azure AD. Nie jest dostępna dla grup zabezpieczeń i grup dystrybucji. Należy pamiętać, że 30-dniowy okres przywracania grupy nie jest dostosowywany.
 
 > [!NOTE]
 > Nie używaj opcji `Remove-MsolGroup`, ponieważ powoduje trwale wyczyszczenie grup. W celu usunięcia grupy usługi Office 365 zawsze używaj opcji `Remove-AzureADMSGroup`.
@@ -31,17 +31,17 @@ Uprawnienia wymagane do przywrócenia grupy mogą być dowolnymi z następujący
 
 Rola | Uprawnienia
 --------- | ---------
-Global administrator, Group administrator, Partner Tier2 support, and Intune administrator | Może przywrócić dowolne usunięte grupy usługi Office 365
-User administrator and Partner Tier1 support | Może przywrócić wszystkie usunięte grupy usługi Office 365, z wyjątkiem tych przypisanych do roli Administrator firmy
-Użytkownik | Can restore any deleted Office 365 group that they own
+Administrator globalny, administrator grupy, obsługa SVR partnera i administrator usługi Intune | Może przywrócić dowolne usunięte grupy usługi Office 365
+Pomoc techniczna dla administratorów i pomoc partnerów | Może przywrócić wszystkie usunięte grupy usługi Office 365, z wyjątkiem tych przypisanych do roli Administrator firmy
+Użytkownik | Może przywrócić wszystkie usunięte grupy pakietu Office 365
 
 ## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>Wyświetl usunięte grupy usługi Office 365, które są dostępne do przywrócenia, i zarządzaj nimi
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a User administrator account.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora użytkownika.
 
 2. Wybierz opcję **Grupy**, a następnie **Usunięte grupy**, aby wyświetlić usunięte grupy, które są dostępne do przywrócenia.
 
-    ![view groups that are available to restore](media/groups-lifecycle/deleted-groups3.png)
+    ![wyświetlanie grup, które są dostępne do przywrócenia](media/groups-lifecycle/deleted-groups3.png)
 
 3. W bloku **Usunięte grupy** możesz:
 

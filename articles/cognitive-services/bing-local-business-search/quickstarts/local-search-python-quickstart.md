@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Send a query to the API in Python - Bing Local Business Search
+title: Szybki Start — wysyłanie zapytania do interfejsu API w języku Python — wyszukiwanie lokalne firmy Bing
 titleSuffix: Azure Cognitive Services
-description: Use this article to start using the Bing Local Business Search API in Python.
+description: Skorzystaj z tego artykułu, aby rozpocząć korzystanie z interfejsu API wyszukiwania w usłudze Bing Local Business Search w języku Python.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,26 +17,26 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326667"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Quickstart: Send a query to the Bing Local Business Search API in Python
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Szybki Start: wysyłanie zapytania do lokalnego interfejsu API wyszukiwania biznesowego Bing w języku Python
 
-Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in Python, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań do lokalnego interfejsu API wyszukiwania biznesowego Bing, który jest usługą poznawczej platformy Azure. Chociaż ta prosta aplikacja jest zapisywana w języku Python, interfejs API jest usługą sieci Web RESTful zgodną z dowolnym językiem programowania, który umożliwia wykonywanie żądań HTTP i analizowanie kodu JSON.
 
-This example application gets local response data from the API for the search query `hotel in Bellevue`.
+Ta przykładowa aplikacja pobiera dane lokalnego odpowiedzi z interfejsu API dla zapytania wyszukiwania `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Środowisko [Python](https://www.python.org/) 2.x lub 3.x
  
-You must have a [Cognitive Services API account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) with Bing APIs. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Use the access key provided by the free trial.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musisz mieć [konto interfejsu API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z interfejsami API Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Użyj klucza dostępu dostarczonego w ramach bezpłatnej wersji próbnej.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-## <a name="run-the-complete-application"></a>Run the complete application
+## <a name="run-the-complete-application"></a>Uruchom kompletną aplikację
 
-The following code gets localized results. W celu zaimplementowania kodu wykonaj następujące kroki:
+Poniższy kod pobiera zlokalizowane wyniki. W celu zaimplementowania kodu wykonaj następujące kroki:
 1. Zadeklaruj zmienne, aby określić punkt końcowy na podstawie hosta i ścieżki.
-2. Specify the query parameter. 
-3. Define the Search function that creates the request and adds the Ocp-Apim-Subscription-Key header.
-4. Set the Ocp-Apim-Subscription-Key header. 
-5. Make the connection and send the request.
+2. Określ parametr zapytania. 
+3. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje nagłówek OCP-APIM-Subscription-Key.
+4. Ustaw dla nagłówka OCP-APIM-Subscription-Key. 
+5. Utwórz połączenie i Wyślij żądanie.
 6. Wydrukuj wyniki w formacie JSON.
 
 Pełny kod tej wersji demonstracyjnej wygląda następująco:
@@ -68,6 +68,6 @@ print (json.dumps(json.loads(result), indent=4))
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-- [Local Business Search Java Quickstart](local-search-java-quickstart.md)
-- [Local Business Search C# Quickstart](local-quickstart.md)
-- [Local Business Search Node Quickstart](local-search-node-quickstart.md)
+- [Lokalne wyszukiwanie biznesowe w języku Java — Szybki Start](local-search-java-quickstart.md)
+- [Lokalne wyszukiwanie C# biznesowe — Szybki Start](local-quickstart.md)
+- [Lokalny węzeł wyszukiwania biznesowego — Szybki Start](local-search-node-quickstart.md)

@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Quick container image build
+title: Samouczek — szybka kompilacja obrazu kontenera
 description: Z tego samouczka dowiesz się, jak utworzyć obraz kontenera platformy Docker na platformie Azure przy użyciu usługi Azure Container Registry Tasks (ACR Tasks), a następnie wdrożyć go w usłudze Azure Container Instances.
 ms.topic: tutorial
 ms.date: 09/24/2018
@@ -11,7 +11,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456048"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Build and deploy container images in the cloud with Azure Container Registry Tasks
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Samouczek: kompilowanie i wdrażanie obrazów kontenerów w chmurze za pomocą zadań Azure Container Registry
 
 Usługa **ACR Tasks** to pakiet funkcji usługi Azure Container Registry, który udostępnia udoskonalone i wydajne kompilacje obrazów kontenerów platformy Docker na platformie Azure. Z tego artykułu dowiesz się, jak używać funkcji *szybkiego zadania* usługi ACR Tasks.
 
@@ -26,11 +26,11 @@ W tym samouczku, będącym pierwszą częścią serii, zostaną wykonane następ
 > * Kompilowanie obrazu kontenera na platformie Azure
 > * Wdrażanie kontenera w usłudze Azure Container Instances
 
-Z kolejnych samouczków dowiesz się, jak używać zadań usługi ACR Tasks na potrzeby automatycznych kompilacji obrazu kontenera podczas zatwierdzania kodu i aktualizacji obrazu podstawowego. ACR Tasks can also run [multi-step tasks](container-registry-tasks-multi-step.md), using a YAML file to define steps to build, push, and optionally test multiple containers.
+Z kolejnych samouczków dowiesz się, jak używać zadań usługi ACR Tasks na potrzeby automatycznych kompilacji obrazu kontenera podczas zatwierdzania kodu i aktualizacji obrazu podstawowego. Zadania ACR mogą również uruchamiać [zadania wieloetapowe](container-registry-tasks-multi-step.md), używając pliku YAML do definiowania kroków do kompilowania, wypychania i opcjonalnego testowania wielu kontenerów.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-If you'd like to use the Azure CLI locally, you must have Azure CLI version **2.0.46** or later installed and logged in with [az login][az-login]. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. If you need to install or upgrade the CLI, see [Install Azure CLI][azure-cli].
+Jeśli chcesz korzystać z interfejsu wiersza polecenia platformy Azure lokalnie, musisz mieć zainstalowany interfejs wiersza polecenia platformy Azure w wersji **2.0.46** lub nowszej i zalogować się przy użyciu [AZ login][az-login]. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -70,7 +70,7 @@ Polecenia w tym samouczku zostały sformatowane pod kątem powłoki programu Bas
 
 Teraz, gdy kod źródłowy został pobrany do komputera, wykonaj następujące kroki, aby utworzyć rejestr kontenerów i skompilować obraz kontenera przy użyciu usługi ACR Tasks.
 
-Aby wykonywanie przykładowych poleceń było łatwiejsze, w tej serii samouczków używaj zmiennych środowiskowych powłoki. Uruchom następujące polecenie, aby ustawić zmienną `ACR_NAME`. Zastąp element **\<registry-name\>** unikatową nazwą nowego rejestru kontenerów. The registry name must be unique within Azure, contain only lower case letters, and contain 5-50 alphanumeric characters. Inne zasoby tworzone w tym samouczku opierają się na tej nazwie, dlatego konieczne powinno być zmodyfikowanie tylko tej pierwszej zmiennej.
+Aby wykonywanie przykładowych poleceń było łatwiejsze, w tej serii samouczków używaj zmiennych środowiskowych powłoki. Uruchom następujące polecenie, aby ustawić zmienną `ACR_NAME`. Zastąp element **\<registry-name\>** unikatową nazwą nowego rejestru kontenerów. Nazwa rejestru musi być unikatowa na platformie Azure, zawierać tylko małe litery i zawierać 5-50 znaków alfanumerycznych. Inne zasoby tworzone w tym samouczku opierają się na tej nazwie, dlatego konieczne powinno być zmodyfikowanie tylko tej pierwszej zmiennej.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>
@@ -85,13 +85,13 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-Teraz, gdy masz rejestr, użyj usługi ACR Tasks do skompilowania obrazu kontenera na podstawie kodu przykładowego. Execute the [az acr build][az-acr-build] command to perform a *quick task*:
+Teraz, gdy masz rejestr, użyj usługi ACR Tasks do skompilowania obrazu kontenera na podstawie kodu przykładowego. Wykonaj polecenie [AZ ACR Build][az-acr-build] , aby wykonać *szybkie zadanie*:
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
-Output from the [az acr build][az-acr-build] command is similar to the following. Możesz wyświetlić przekazany kod źródłowy („kontekst”) na platformie Azure i szczegóły operacji `docker build`, którą usługa ACR Tasks uruchamia w chmurze. Ponieważ usługa ACR Tasks używa polecenia `docker build` do kompilowania obrazów, do natychmiastowego rozpoczęcia pracy z usługą ACR Tasks nie są wymagane żadne zmiany plików Dockerfile.
+Dane wyjściowe polecenia [AZ ACR Build][az-acr-build] są podobne do poniższych. Możesz wyświetlić przekazany kod źródłowy („kontekst”) na platformie Azure i szczegóły operacji `docker build`, którą usługa ACR Tasks uruchamia w chmurze. Ponieważ usługa ACR Tasks używa polecenia `docker build` do kompilowania obrazów, do natychmiastowego rozpoczęcia pracy z usługą ACR Tasks nie są wymagane żadne zmiany plików Dockerfile.
 
 ```console
 $ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -171,7 +171,7 @@ W tej sekcji utworzysz magazyn Azure Key Vault i jednostkę usługi, a następni
 
 ### <a name="configure-registry-authentication"></a>Konfigurowanie uwierzytelniania rejestru
 
-All production scenarios should use [service principals][service-principal-auth] to access an Azure container registry. Jednostki usługi umożliwiają sprawowanie kontroli dostępu opartej na rolach nad obrazami kontenera. Na przykład można skonfigurować jednostkę usługi z dostępem tylko do ściągania do rejestru.
+Wszystkie scenariusze produkcyjne powinny używać jednostek [usługi][service-principal-auth] do uzyskiwania dostępu do usługi Azure Container Registry. Jednostki usługi umożliwiają sprawowanie kontroli dostępu opartej na rolach nad obrazami kontenera. Na przykład można skonfigurować jednostkę usługi z dostępem tylko do ściągania do rejestru.
 
 #### <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
 
@@ -187,7 +187,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 Musisz teraz utworzyć jednostkę usługi i przechowywać jej poświadczenia w magazynie kluczy.
 
-Use the [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] to store the service principal's **password** in the vault:
+Użyj polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create-for-rbac] , aby utworzyć jednostkę usługi, i [AZ klucza tajnego magazynu kluczy][az-keyvault-secret-set] do przechowywania **hasła** jednostki usługi w magazynie:
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -225,7 +225,7 @@ Teraz możesz odwoływać się do tych wpisów tajnych według nazwy, gdy Ty lub
 
 Teraz, gdy poświadczenia główne są przechowywane jako wpisy tajne usługi Azure Key Vault, aplikacje i usługi mogą używać ich do uzyskiwania dostępu do rejestru prywatnego.
 
-Execute the following [az container create][az-container-create] command to deploy a container instance. Polecenie używa poświadczeń jednostki usługi przechowywanych w usłudze Azure Key Vault do uwierzytelniania rejestru kontenerów.
+Wykonaj następujące polecenie [AZ Container Create][az-container-create] , aby wdrożyć wystąpienie kontenera. Polecenie używa poświadczeń jednostki usługi przechowywanych w usłudze Azure Key Vault do uwierzytelniania rejestru kontenerów.
 
 ```azurecli-interactive
 az container create \
@@ -262,7 +262,7 @@ Zanotuj nazwę FQDN kontenera. Będzie ona używana w następnej sekcji.
 
 ### <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
-To watch the startup process of the container, use the [az container attach][az-container-attach] command:
+Aby obejrzeć proces uruchamiania kontenera, użyj polecenia [AZ Container Attach][az-container-attach] :
 
 ```azurecli-interactive
 az container attach --resource-group $RES_GROUP --name acr-tasks
@@ -290,7 +290,7 @@ Aby odłączyć konsolę od kontenera, wybierz pozycję `Control+C`.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Stop the container instance with the [az container delete][az-container-delete] command:
+Zatrzymaj wystąpienie kontenera za pomocą polecenia [AZ Container Delete][az-container-delete] :
 
 ```azurecli-interactive
 az container delete --resource-group $RES_GROUP --name acr-tasks

@@ -1,6 +1,6 @@
 ---
-title: Connect CEF data to Azure Sentinel Preview| Microsoft Docs
-description: Learn how to connect CEF data to Azure Sentinel.
+title: Połącz dane CEF z podglądem platformy Azure — Wersja zapoznawcza | Microsoft Docs
+description: Dowiedz się, jak połączyć dane CEF z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -21,110 +21,110 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463980"
 ---
-# <a name="connect-your-external-solution-using-common-event-format"></a>Connect your external solution using Common Event Format
+# <a name="connect-your-external-solution-using-common-event-format"></a>Łączenie rozwiązania zewnętrznego przy użyciu typowego formatu zdarzeń
 
 
 
-This article explains how to connect Azure Sentinel with your external security solutions that send Common Event Format (CEF) messages on top of Syslog. 
+W tym artykule wyjaśniono, jak połączyć platformę Azure z zewnętrznymi rozwiązaniami dotyczącymi zabezpieczeń, które wysyłają komunikaty w formacie Common Event format (CEF) na podstawie dziennika systemowego. 
 
 > [!NOTE] 
-> Data is stored in the geographic location of the workspace on which you are running Azure Sentinel.
+> Dane są przechowywane w lokalizacji geograficznej obszaru roboczego, w którym jest uruchamiany wskaźnik platformy Azure.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
-You need to deploy an agent on a dedicated Linux machine (VM or on premises) to support the communication between the appliance and Azure Sentinel. The following diagram describes the setup in the event of a Linux VM in Azure.
+Należy wdrożyć agenta na dedykowanym komputerze z systemem Linux (maszynie wirtualnej lub lokalnie) do obsługi komunikacji między urządzeniem a platformą Azure. Na poniższym diagramie opisano konfigurację w przypadku maszyny wirtualnej z systemem Linux na platformie Azure.
 
- ![CEF in Azure](./media/connect-cef/cef-syslog-azure.png)
+ ![CEF na platformie Azure](./media/connect-cef/cef-syslog-azure.png)
 
-Alternatively, this setup will exist if you use a VM in another cloud, or an on-premises machine. 
+Ta konfiguracja będzie również dostępna w przypadku korzystania z maszyny wirtualnej w innej chmurze lub na maszynie lokalnej. 
 
- ![CEF on premises](./media/connect-cef/cef-syslog-onprem.png)
+ ![CEF lokalnie](./media/connect-cef/cef-syslog-onprem.png)
 
 
 ## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 
-Make sure to configure the machine's security according to your organization's security policy. For example, you can configure your network to align with your corporate network security policy and change the ports and protocols in the daemon to align with your requirements. You can use the following instructions to improve your machine security configuration:  [Secure VM in Azure](../virtual-machines/linux/security-policy.md), [Best practices for Network security](../security/fundamentals/network-best-practices.md).
+Upewnij się, że skonfigurowano zabezpieczenia maszyny zgodnie z zasadami zabezpieczeń organizacji. Można na przykład skonfigurować sieć do dopasowania do zasad zabezpieczeń sieci firmowej i zmienić porty i protokoły w demoum, aby dostosować je do swoich wymagań. Aby ulepszyć konfigurację zabezpieczeń komputera, można użyć następujących instrukcji:  [bezpieczna maszyna wirtualna na platformie Azure](../virtual-machines/linux/security-policy.md), [najlepsze rozwiązania dotyczące zabezpieczeń sieci](../security/fundamentals/network-best-practices.md).
 
-To use TLS communication between the security solution and the Syslog machine, you will need to configure the Syslog daemon (rsyslog or syslog-ng) to communicate in TLS: [Encrypting Syslog Traffic with TLS -rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [Encrypting log messages with TLS –syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
+Aby można było korzystać z komunikacji TLS między rozwiązaniem zabezpieczeń a maszyną dziennika systemowego, należy skonfigurować demona dziennika systemu (rsyslog lub Dziennik systemowy) do komunikacji w protokole TLS: [szyfrowanie ruchu dziennika systemu przy użyciu protokołu TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [szyfrowanie komunikatów dzienników przy użyciu protokołu TLS — Dziennik systemowy — ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
 ## <a name="prerequisites"></a>Wymagania wstępne
-Make sure the Linux machine you use as a proxy is running one of the following operating systems:
+Upewnij się, że maszyna z systemem Linux używaną jako serwer proxy ma jeden z następujących systemów operacyjnych:
 
-- 64-bit
-  - CentOS 6 and 7
-  - Amazon Linux 2017.09
-  - Oracle Linux 6 and 7
-  - Red Hat Enterprise Linux Server 6 and 7
-  - Debian GNU/Linux 8 and 9
-  - Ubuntu Linux 14.04 LTS, 16.04 LTS and 18.04 LTS
+- 64 — bit
+  - CentOS 6 i 7
+  - Amazon Linux 2017,09
+  - Oracle Linux 6 i 7
+  - Red Hat Enterprise Linux Server 6 i 7
+  - Debian GNU/Linux 8 i 9
+  - Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
   - SUSE Linux Enterprise Server 12
-- 32-bit
+- 32 — bit
    - CentOS 6
    - Oracle Linux 6
    - Red Hat Enterprise Linux Server 6
-   - Debian GNU/Linux 8 and 9
-   - Ubuntu Linux 14.04 LTS and 16.04 LTS
+   - Debian GNU/Linux 8 i 9
+   - Ubuntu Linux 14,04 LTS i 16,04 LTS
  
- - Daemon versions
-   - Syslog-ng: 2.1 - 3.22.1
-   - Rsyslog: v8
+ - Wersje demona
+   - Dziennik systemu — NG: 2,1-3.22.1
+   - Rsyslog: V8
   
- - Syslog RFCs supported
-   - Syslog RFC 3164
-   - Syslog RFC 5424
+ - Obsługiwane są specyfikacje RFC dziennika systemowego
+   - Dziennik systemowy RFC 3164
+   - Dziennik systemowy RFC 5424
  
-Make sure your machine also meets the following requirements: 
+Upewnij się, że komputer spełnia również następujące wymagania: 
 - Uprawnienia
-    - You must have elevated permissions (sudo) on your machine. 
+    - Musisz mieć podwyższony poziom uprawnień (sudo) na swojej maszynie. 
 - Wymagania dotyczące oprogramowania
-    - Make sure you have Python running on your machine
-## <a name="step-1-deploy-the-agent"></a>STEP 1: Deploy the agent
+    - Upewnij się, że na maszynie jest uruchomiony Język Python
+## <a name="step-1-deploy-the-agent"></a>Krok 1. wdrażanie agenta
 
-In this step, you need to select the Linux machine that will act as a proxy between Azure Sentinel and your security solution. You will have to run a script on the proxy machine that:
-- Installs the Log Analytics agent and configures it as needed to listen for Syslog messages.
-- Configures the Syslog daemon to listen to Syslog messages using TCP port 514 and then forwards only the CEF messages to the Log Analytics agent using TCP port 25226.
-- Sets the Syslog agent to collect the data and send it securely to Azure Sentinel, where it is parsed and enriched.
+W tym kroku należy wybrać maszynę z systemem Linux, która będzie pełnić rolę serwera proxy między wskaźnikiem danych platformy Azure a rozwiązaniem zabezpieczeń. Na komputerze proxy należy uruchomić skrypt, który:
+- Instaluje agenta Log Analytics i konfiguruje go w razie potrzeby w celu nasłuchiwania komunikatów dziennika systemowego.
+- Konfiguruje demona dziennika systemowego do nasłuchiwania komunikatów dziennika systemu przy użyciu portu TCP 514, a następnie przekazuje tylko komunikaty CEF do agenta Log Analytics przy użyciu portu TCP 25226.
+- Ustawia agenta dziennika systemowego do zbierania danych i bezpiecznego wysyłania go do usługi Azure wskaźnikowej, w której jest analizowany i wzbogacony.
  
  
-1. In the Azure Sentinel portal, click **Data connectors** and select **Common Event Format (CEF)** and then **Open connector page**. 
+1. W portalu Azure wskaźnikowym kliknij pozycję **Łączniki danych** i wybierz pozycję **Common Event format (CEF)** , a następnie **Otwórz stronę łącznik**. 
 
-1. Under **Install and configure the Syslog agent**, select your machine type, either Azure, other cloud, or on-premises. 
+1. W obszarze **Instalowanie i Konfigurowanie agenta dziennika**systemu wybierz typ maszyny, platformę Azure, inną chmurę lub lokalnie. 
    > [!NOTE]
-   > Because the script in the next step installs the Log Analytics agent and connects the machine to your Azure Sentinel workspace, make sure this machine is not connected to any other workspace.
-1. You must have elevated permissions (sudo) on your machine. Make sure that you have Python on your machine using the following command: `python –version`
+   > Ponieważ skrypt w następnym kroku instaluje agenta Log Analytics i łączy maszynę z obszarem roboczym wskaźnikowego platformy Azure, upewnij się, że ta maszyna nie jest połączona z żadnym innym obszarem roboczym.
+1. Musisz mieć podwyższony poziom uprawnień (sudo) na swojej maszynie. Upewnij się, że na maszynie jest zainstalowany program Python, przy użyciu następującego polecenia: `python –version`
 
-1. Run the following script on your proxy machine.
+1. Uruchom na komputerze proxy następujący skrypt.
    `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
-1. While the script is running, check to make sure you don't get any error or warning messages.
+1. Gdy skrypt jest uruchomiony, upewnij się, że nie są wyświetlane żadne komunikaty o błędach lub ostrzeżeniach.
 
 
-## <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>STEP 2: Configure your security solution to send CEF messages
+## <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>Krok 2. Konfigurowanie rozwiązania zabezpieczeń do wysyłania komunikatów CEF
 
-1. On the appliance you need to set these values so that the appliance sends the necessary logs in the necessary format to the Azure Sentinel Syslog agent, based on the Log Analytics agent. You can modify these parameters in your appliance, as long as you also modify them in the Syslog daemon on the Azure Sentinel agent.
-    - Protocol = TCP
+1. Na urządzeniu należy ustawić te wartości tak, aby urządzenie wysyła niezbędne dzienniki w niezbędnym formacie do agenta dziennika systemu Azure wskaźnikowego, na podstawie Log Analytics agenta. Te parametry można modyfikować w urządzeniu, o ile są one również modyfikowane w demona dziennika systemowego w ramach agenta wskaźnikowego platformy Azure.
+    - Protokół = TCP
     - Port = 514
     - Format = CEF
-    - IP address - make sure to send the CEF messages to the IP address of the virtual machine you dedicated for this purpose.
+    - Adres IP — upewnij się, że wysłano komunikaty CEF na adres IP maszyny wirtualnej dedykowanej do tego celu.
 
    > [!NOTE]
-   > This solution supports Syslog RFC 3164 or RFC 5424.
+   > To rozwiązanie obsługuje dziennik systemowy RFC 3164 lub RFC 5424.
 
 
-1. To use the relevant schema in Log Analytics for the CEF events, search for `CommonSecurityLog`.
+1. Aby użyć odpowiedniego schematu w Log Analytics dla zdarzeń CEF, Wyszukaj `CommonSecurityLog`.
 
-## <a name="step-3-validate-connectivity"></a>STEP 3: Validate connectivity
+## <a name="step-3-validate-connectivity"></a>Krok 3. Weryfikowanie łączności
 
-1. Open Log Analytics to make sure that logs are received using the CommonSecurityLog schema.<br> It may take upwards of 20 minutes until your logs start to appear in Log Analytics. 
+1. Otwórz Log Analytics, aby upewnić się, że dzienniki są odbierane przy użyciu schematu CommonSecurityLog.<br> Rozpoczęcie wyświetlania dzienników w Log Analytics może zająć więcej niż 20 minut. 
 
-1. Before you run the script, we recommend that you send messages from your security solution to make sure they are being forwarded to the Syslog proxy machine you configured. 
-1. You must have elevated permissions (sudo) on your machine. Make sure that you have Python on your machine using the following command: `python –version`
-1. Run the following script to check connectivity between the agent, Azure Sentinel, and your security solution. It checks that the daemon forwarding is properly configured, listens on the correct ports, and that nothing is blocking communication between the daemon and the Log Analytics agent. The script also sends mock messages 'TestCommonEventFormat' to check end-to-end connectivity. <br>
+1. Przed uruchomieniem skryptu zalecamy wysłanie komunikatów z rozwiązania zabezpieczeń, aby upewnić się, że są one przekazywane do skonfigurowanego komputera proxy dziennika systemu. 
+1. Musisz mieć podwyższony poziom uprawnień (sudo) na swojej maszynie. Upewnij się, że na maszynie jest zainstalowany program Python, przy użyciu następującego polecenia: `python –version`
+1. Uruchom następujący skrypt, aby sprawdzić łączność między agentem, wskaźnikiem kontroli platformy Azure i rozwiązaniem zabezpieczeń. Sprawdza, czy przekazanie demona została prawidłowo skonfigurowana, nasłuchuje na prawidłowych portach i nie blokuje komunikacji między demonem a agentem Log Analytics. Skrypt wysyła również komunikat "TestCommonEventFormat" służący do przetestowania kompleksowej łączności. <br>
  `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 
 ## <a name="next-steps"></a>Następne kroki
-In this document, you learned how to connect CEF appliances to Azure Sentinel. To learn more about Azure Sentinel, see the following articles:
-- Learn how to [get visibility into your data, and potential threats](quickstart-get-visibility.md).
-- Get started [detecting threats with Azure Sentinel](tutorial-detect-threats.md).
+W tym dokumencie przedstawiono sposób łączenia urządzeń CEF z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).
 

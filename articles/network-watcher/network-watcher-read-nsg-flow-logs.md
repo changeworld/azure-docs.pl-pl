@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: kumud
-ms.openlocfilehash: edc4cc32cd358bd37fdab46e323c59ec207b2d5a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cdfcf6b379feb5cc71c173275601ce9c55d57d12
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293486"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539258"
 ---
 # <a name="read-nsg-flow-logs"></a>Odczytywanie dzienników przepływu sieciowych grup zabezpieczeń
 
@@ -33,7 +33,7 @@ Dzienniki przepływu sieciowej grupy zabezpieczeń są przechowywane na koncie m
 
 W poniższym scenariuszu przedstawiono przykładowy dziennik przepływu, który jest przechowywany na koncie magazynu. Dowiesz się, jak wybiórczo odczytywać najnowsze zdarzenia w dziennikach przepływu sieciowej grupy zabezpieczeń. W tym artykule użyto programu PowerShell, jednak koncepcje omówione w artykule nie są ograniczone do języka programowania i są stosowane do wszystkich języków obsługiwanych przez interfejsy API usługi Azure Storage.
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 Przed rozpoczęciem należy włączyć rejestrowanie przepływu sieciowych grup zabezpieczeń dla jednej lub wielu sieciowych grup zabezpieczeń na Twoim koncie. Instrukcje dotyczące włączania dzienników przepływu zabezpieczeń sieci można znaleźć w następującym artykule: [wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 
@@ -85,7 +85,7 @@ function Get-NSGFlowLogBlockList  {
     )
     process {
         # Stores the block list in a variable from the block blob.
-        $blockList = $CloudBlockBlob.DownloadBlockList()
+        $blockList = $CloudBlockBlob.DownloadBlockListAsync()
 
         # Return the Block List
         $blockList
@@ -98,7 +98,7 @@ $CloudBlockBlob = Get-NSGFlowLogCloudBlockBlob -subscriptionId "yourSubscription
 $blockList = Get-NSGFlowLogBlockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Zmienna `$blockList` zwraca listę bloków w obiekcie blob. Każdy blokowy obiekt BLOB zawiera co najmniej dwa bloki.  Pierwszy blok ma długość wynoszącą `12` bajtów, ten blok zawiera nawiasy otwierające dziennika JSON. Drugi blok jest nawiasem zamykającym i ma długość wynoszącą `2` bajtów.  Jak widać w poniższym przykładzie dziennik zawiera siedem wpisów, każdy z nich jest pojedynczym wpisem. Wszystkie nowe wpisy w dzienniku są dodawane do końca bezpośrednio przed końcowym blokiem.
+Zmienna `$blockList` zwraca listę bloków w obiekcie blob. Każdy blokowy obiekt BLOB zawiera co najmniej dwa bloki.  Pierwszy blok ma długość `12` bajtów, ten blok zawiera nawiasy otwierające dziennika JSON. Drugi blok jest nawiasem zamykającym i ma długość `2` bajtów.  Jak widać w poniższym przykładzie dziennik zawiera siedem wpisów, każdy z nich jest pojedynczym wpisem. Wszystkie nowe wpisy w dzienniku są dodawane do końca bezpośrednio przed końcowym blokiem.
 
 ```
 Name                                         Length Committed
@@ -142,7 +142,7 @@ function Get-NSGFlowLogReadBlock  {
         $downloadArray = New-Object -TypeName byte[] -ArgumentList $maxvalue
 
         # Download the data into the ByteArray, starting with the current index, for the number of bytes in the current block. Index is increased by 3 when reading to remove preceding comma.
-        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length-1)) | Out-Null
+        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length)) | Out-Null
 
         # Increment the index by adding the current block length to the previous index
         $index = $index + $blockList[$i].Length

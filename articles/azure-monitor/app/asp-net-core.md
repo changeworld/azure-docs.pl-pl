@@ -195,7 +195,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Pełna lista ustawień w `ApplicationInsightsServiceOptions`
 
-|Ustawienie | Opis | Domyślne
+|Ustawienie | Opis | Domyślny
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | Włącz/Wyłącz funkcję LiveMetrics | true
 |EnableAdaptiveSampling | Włącz/Wyłącz próbkowanie adaptacyjne | true

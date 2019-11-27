@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: b2705f209b2acf1198ea555a5de2f79987a4d0e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b417823d0ec7ed838186d53c1bb25400a148e0e9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494244"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533924"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Samouczek: Tworzenie aplikacji Apache Spark dla klastra usługi HDInsight za pomocą Azure Toolkit for IntelliJ
 
@@ -35,7 +35,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * [Zestaw Oracle Java Development](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  W tym samouczku jest używany język Java w wersji 8.0.202.
 
-* IntelliJ pomysł. W tym artykule [jest stosowany pomysł IntelliJ Community Ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
+* IntelliJ IDEA. W tym artykule [jest stosowany pomysł IntelliJ Community Ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure Toolkit for IntelliJ.  Zobacz [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable) (Instalowanie zestawu Azure Toolkit for IntelliJ).
 
@@ -315,7 +315,7 @@ Upewnij się, że WINUTILS. EXE — wymaganie wstępne.
     |Właściwość |Wartość |
     |----|----|
     |Klasa główna zadania|Wartością domyślną jest główna Klasa z wybranego pliku. Możesz zmienić klasę, wybierając wielokropek ( **...** )  i wybierając inną klasę.|
-    |Zmienne środowiskowe|Upewnij się, że wartość parametru HADOOP_HOME jest poprawna.|
+    |Zmienne środowiskowe|Upewnij się, że wartość HADOOP_HOME jest poprawna.|
     |WINUTILS. exe — lokalizacja|Upewnij się, że ścieżka jest poprawna.|
 
     ![Lokalna konfiguracja zestawu konsoli](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
@@ -335,8 +335,6 @@ Upewnij się, że WINUTILS. EXE — wymaganie wstępne.
     ![Wynik z lokalnej konsoli POMYSŁu IntelliJ](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Konsola sesji interaktywnej Spark usługi Livy (Scala)
-
-Jest on obsługiwany tylko w systemach IntelliJ 2018,2 i 2018,3.
 
 1. Na pasku menu Przejdź do opcji **uruchom** > **Edytuj konfiguracje...** .
 
@@ -366,6 +364,25 @@ Jest on obsługiwany tylko w systemach IntelliJ 2018,2 i 2018,3.
 Jest to wygodne, aby przewidzieć wynik skryptu, wysyłając jakiś kod do konsoli lokalnej lub konsoli sesji interakcyjnej usługi Livy (Scala). Można wyróżnić kod w pliku Scala, a następnie kliknąć prawym przyciskiem myszy pozycję **Wyślij zaznaczenie do konsoli platformy Spark**. Wybrany kod zostanie wysłany do konsoli i zostanie wykonany. Wynik zostanie wyświetlony po kodzie w konsoli programu. Konsola sprawdzi błędy, jeśli istnieją.  
 
    ![Wyślij zaznaczenie do konsoli platformy Spark](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integracja z usługą HDInsight Identity Broker (HIB) 
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Nawiązywanie połączenia z klastrem usługi HDInsight ESP z brokerem identyfikatorów (HIB)
+Aby zalogować się do subskrypcji platformy Azure w celu nawiązania połączenia z klastrem usługi HDInsight ESP z brokerem identyfikatorów (HIB), wykonaj kroki opisane w temacie. Po zalogowaniu zostanie wyświetlona lista klastrów w Eksploratorze Azure. Aby uzyskać więcej instrukcji, zobacz [nawiązywanie połączenia z klastrem usługi HDInsight](#connect-to-your-hdinsight-cluster).
+
+### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Uruchamianie aplikacji Spark Scala w klastrze usługi HDInsight ESP z identyfikatorem brokera (HIB)
+Aby przesłać zadanie do klastra usługi HDInsight ESP z identyfikatorem brokera (HIB), wykonaj kroki opisane w sekcji normalne. Aby uzyskać więcej instrukcji, zobacz [Uruchamianie aplikacji platformy Spark Scala w klastrze usługi HDInsight Spark](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster) .
+
+Pliki wymagane są przekazywane do folderu o nazwie przy użyciu konta logowania. w pliku konfiguracji można zobaczyć ścieżkę przekazywania.
+
+   ![Przekaż ścieżkę w konfiguracji](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
+
+### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Konsola platformy Spark w klastrze usługi HDInsight ESP z identyfikatorem brokera (HIB)
+Można uruchomić konsolę usługi Spark (Scala) lub uruchomić konsolę sesji programu Spark usługi Livy Interactive (Scala) w klastrze usługi HDInsight ESP z identyfikatorem Broker (HIB). Więcej instrukcji można znaleźć w [konsoli platformy Spark](#spark-console) .
+
+   > [!NOTE]  
+   > W przypadku klastra usługi HDInsight ESP z identyfikatorem brokera (HIB) [Połącz klaster](#link-a-cluster) i [Debuguj Apache Spark aplikacje zdalnie](#debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster) nie są obecnie obsługiwane.
+
 
 ## <a name="reader-only-role"></a>Rola tylko do odczytu
 

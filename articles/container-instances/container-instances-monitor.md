@@ -1,19 +1,14 @@
 ---
-title: Monitorowanie kontenerów w usłudze Azure Container Instances
+title: Monitorowanie wystąpień kontenerów
 description: Jak monitorować użycie zasobów obliczeniowych, takich jak procesor CPU i pamięć, w Azure Container Instances.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/24/2019
-ms.author: danlep
-ms.openlocfilehash: a26789bb41fb3fb1e7dec376b7e187f45745ea65
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: bd86161bc7840be599eb5ee9a20f6dbf143f5f22
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172253"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533648"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Monitorowanie zasobów kontenerów w usłudze Azure Container Instances
 
@@ -36,7 +31,7 @@ Azure Monitor udostępnia następujące [metryki dla Azure Container Instances][
 
 * **Użycie pamięci** — zagregowane jako **Średnia liczba bajtów**.
 
-* **Odebrane bajty sieciowe na sekundę** i bajty w **sieci przesłane na sekundę** , zagregowane jako **średnie bajty na sekundę**. 
+* **Odebrane bajty sieciowe na sekundę** i **bajty w sieci przesłane na sekundę** , zagregowane jako **średnie bajty na sekundę**. 
 
 ## <a name="get-metrics---azure-portal"></a>Pobieranie metryk — Azure Portal
 
@@ -81,7 +76,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-Zmień wartość `--metric` parametru w poleceniu, aby uzyskać inne [obsługiwane metryki][supported-metrics]. Na przykład użyj poniższego polecenia, aby uzyskać metryki użycia **pamięci** . 
+Zmień wartość parametru `--metric` w poleceniu, aby uzyskać inne [obsługiwane metryki][supported-metrics]. Na przykład użyj poniższego polecenia, aby uzyskać metryki użycia **pamięci** . 
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
@@ -102,7 +97,7 @@ Timestamp            Name          Average
 2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-Dla grupy `containerName` wielokontenera można dodać wymiar do metryk zwracanych dla kontenera.
+W przypadku grupy wielokontenerowej wymiar `containerName` można dodać do metryk zwracanych dla kontenera.
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table

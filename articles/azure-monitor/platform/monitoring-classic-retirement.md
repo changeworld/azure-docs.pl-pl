@@ -87,7 +87,7 @@ Poniżej znajdują się przykłady przypadków, w których zostanie naliczona op
 - Wszystkie zmigrowane reguły alertów, które są edytowane w celu używania nowszych funkcji alertu metryki, takich jak częstotliwość, wiele zasobów/wymiary, [dynamiczne progi](alerts-dynamic-thresholds.md), zmiana zasobu/sygnał i tak dalej.
 - Wszystkie zmigrowane grupy akcji, które są edytowane w celu korzystania z nowszych powiadomień lub typy akcji, takich jak wiadomości SMS, połączenia głosowe i/lub integracja narzędzia ITSM.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Poznaj [nowe ujednolicone Azure monitor](../../azure-monitor/overview.md).
 * Dowiedz się więcej o nowych [alertach platformy Azure](../../azure-monitor/platform/alerts-overview.md).

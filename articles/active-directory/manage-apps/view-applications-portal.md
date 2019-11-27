@@ -1,6 +1,6 @@
 ---
-title: Quickstart - View tenant applications using Azure Active Directory
-description: In this Quickstart, use the Azure portal to view the applications in your Azure Active Directory (Azure AD) tenant.
+title: Szybki Start — wyświetlanie aplikacji dzierżawców przy użyciu Azure Active Directory
+description: W tym przewodniku szybki start Użyj Azure Portal, aby wyświetlić aplikacje w dzierżawie Azure Active Directory (Azure AD).
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -23,7 +23,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421823"
 ---
-# <a name="quickstart-view-your-azure-active-directory-tenant-applications"></a>Quickstart: View your Azure Active Directory tenant applications
+# <a name="quickstart-view-your-azure-active-directory-tenant-applications"></a>Szybki Start: wyświetlanie Azure Active Directory aplikacji dzierżawców
 
 W tym przewodniku Szybki start opisano wyświetlanie aplikacji w dzierżawie usługi Azure Active Directory (Azure AD) przy użyciu witryny Azure Portal.
 
@@ -39,16 +39,16 @@ Aplikacje dzierżawy usługi Azure AD można wyświetlić w sekcji **Aplikacje d
 
 Aby znaleźć swoje aplikacje dzierżawy, wykonaj następujące czynności:
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, select **Azure Active Directory**.
-1. In the **Azure Active Directory** pane, select **Enterprise applications**.
-1. From the **Application Type** drop-down menu, select **All Applications**, and choose **Apply**. Zostanie wyświetlona losowa próbka aplikacji dzierżawy.
-1. To view more applications, select **Load more** at the bottom of the list. W zależności od liczby aplikacji w dzierżawie może być łatwiej [wyszukać konkretną aplikację](#search-for-a-tenant-application) zamiast przewijać listę.
+1. W **[Azure Portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
+1. W okienku **Azure Active Directory** wybierz pozycję **aplikacje dla przedsiębiorstw**.
+1. Z menu rozwijanego **Typ aplikacji** wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Zastosuj**. Zostanie wyświetlona losowa próbka aplikacji dzierżawy.
+1. Aby wyświetlić więcej aplikacji, wybierz pozycję **Załaduj więcej** w dolnej części listy. W zależności od liczby aplikacji w dzierżawie może być łatwiej [wyszukać konkretną aplikację](#search-for-a-tenant-application) zamiast przewijać listę.
 
 ## <a name="select-viewing-options"></a>Wybieranie opcje wyświetlania
 
-Select options according to what you're looking for.
+Wybierz opcje według tego, czego szukasz.
 
-1. You can view the applications by **Application Type**, **Application Status**, and **Application visibility**.
+1. Możesz wyświetlić aplikacje według **typu aplikacji**, **stanu aplikacji**i **widoczności aplikacji**.
 1. W obszarze **Typ aplikacji** wybierz jedną z następujących opcji:
 
     - Opcja **Aplikacje dla przedsiębiorstw** wyświetla aplikacje firm innych niż Microsoft.
@@ -56,27 +56,27 @@ Select options according to what you're looking for.
     - Opcja **Wszystkie aplikacje** wyświetla zarówno aplikacje firm innych niż Microsoft, jak i aplikacje firmy Microsoft.
 
 1. W obszarze **Stan aplikacji** wybierz pozycję **Dowolne**, **Wyłączono** lub **Włączono**. Opcja **Dowolne** obejmuje zarówno aplikacje wyłączone, jak i włączone.
-1. W obszarze **Widoczność aplikacji** wybierz pozycję **Dowolne** lub **Ukryte**. The **Hidden** option shows applications that are in the tenant, but aren't visible to users.
-1. After choosing the options you want, select **Apply**.
+1. W obszarze **Widoczność aplikacji** wybierz pozycję **Dowolne** lub **Ukryte**. Opcja **Hidden** wyświetla aplikacje, które znajdują się w dzierżawie, ale nie są widoczne dla użytkowników.
+1. Po wybraniu opcji wybierz pozycję **Zastosuj**.
 
 ## <a name="search-for-a-tenant-application"></a>Wyszukiwanie aplikacji dzierżawy
 
-To search for a particular application:
+Aby wyszukać określoną aplikację:
 
-1. In the **Application Type** menu, select **All applications**, and choose **Apply**.
-1. Wprowadź nazwę aplikacji, którą chcesz znaleźć. If the application has been added to your Azure AD tenant, it appears in the search results. This example shows that GitHub hasn't been added to the tenant applications.
+1. W menu **Typ aplikacji** wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Zastosuj**.
+1. Wprowadź nazwę aplikacji, którą chcesz znaleźć. Jeśli aplikacja została dodana do dzierżawy usługi Azure AD, zostanie wyświetlona w wynikach wyszukiwania. Ten przykład pokazuje, że GitHub nie został dodany do aplikacji dzierżawców.
 
-    ![Example shows an app hasn't been added to the tenant](media/view-applications-portal/search-for-tenant-application.png)
+    ![Przykład pokazuje, że aplikacja nie została dodana do dzierżawy](media/view-applications-portal/search-for-tenant-application.png)
 
 1. Spróbuj wprowadzić kilka pierwszych liter nazwy aplikacji. W tym przykładzie pokazano wszystkie aplikacje, których nazwy zaczynają się od **Sales**.
 
-    ![Example shows all apps that start with Sales](media/view-applications-portal/search-by-prefix.png)
+    ![Przykład pokazuje wszystkie aplikacje, które zaczynają się od sprzedaży](media/view-applications-portal/search-by-prefix.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-In this quickstart, you learned how to view the applications in your Azure AD tenant. You learned how to filter the list of applications by application type, status, and visibility. Przedstawiono również sposób wyszukiwania określonej aplikacji.
+W tym przewodniku szybki start przedstawiono sposób wyświetlania aplikacji w dzierżawie usługi Azure AD. Dowiesz się, jak filtrować listę aplikacji według typu aplikacji, stanu i widoczności. Przedstawiono również sposób wyszukiwania określonej aplikacji.
 
-Now that you've found the application you were looking for, you can continue to [Add more applications to your tenant](add-application-portal.md). Or, you can select the application to view or edit properties and configuration options. Możesz na przykład skonfigurować logowanie jednokrotne.
+Teraz, po znalezieniu szukanej aplikacji, możesz nadal [dodawać do niej więcej aplikacji](add-application-portal.md). Można też wybrać aplikację do wyświetlania lub edytowania właściwości i opcji konfiguracji. Możesz na przykład skonfigurować logowanie jednokrotne.
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie logowania jednokrotnego](configure-single-sign-on-non-gallery-applications.md)
+> [Skonfiguruj logowanie jednokrotne](configure-single-sign-on-non-gallery-applications.md)

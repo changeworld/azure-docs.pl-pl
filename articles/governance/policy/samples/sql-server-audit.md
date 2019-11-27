@@ -1,6 +1,6 @@
 ---
 title: Przykład — Przeprowadzanie inspekcji ustawień inspekcji programu SQL Server
-description: This sample policy definition audits the SQL server audit settings defined in a parameter with auditIfNotExists.
+description: Ta przykładowa definicja zasad przeprowadza inspekcję ustawień inspekcji programu SQL Server zdefiniowanych w parametrze z auditIfNotExists.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 7eba24c0916297dba0649024874aed7ba0fac2f6
@@ -92,4 +92,4 @@ az policy assignment delete --name "SQL Audit audit" --resource-group myResource
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Przejrzyj więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
