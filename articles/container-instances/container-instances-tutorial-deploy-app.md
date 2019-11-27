@@ -1,20 +1,15 @@
 ---
-title: 'Samouczek: wdrażanie aplikacji kontenerowej w usłudze Azure Container Instances'
+title: Samouczek — wdrażanie aplikacji kontenera do wystąpienia kontenera
 description: Samouczek usługi Azure Container Instances, część 3 z 3 — wdrażanie aplikacji kontenerowej w usłudze Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: d3cbf16feea299e320cf7e24092d00e93cb7cf5b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846597"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533362"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Samouczek: wdrażanie aplikacji kontenera do Azure Container Instances
 

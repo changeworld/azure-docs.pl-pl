@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: ca3126c983d62cb28c543215b86ab9709a4736d8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 29b3e4af33702c75e92b5e36c5521d9af12b1013
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083787"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533853"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowego wdrożenia aplikacji SAP NetWeaver
 
@@ -74,9 +74,9 @@ Aby zaimplementować rozwiązanie wysokiej dostępności, można użyć udostęp
  > [!NOTE]
  > Azure Site Recovery nie replikuje monitora chmury, dlatego zaleca się wdrożenie monitora chmury w regionie odzyskiwania po awarii.
 
-Do obsługi środowiska klastra trybu failover, [oprogramowanie SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) wykonuje funkcję woluminu udostępnionego klastra, replikując niezależne dyski należące do węzłów klastra. Azure nie obsługuje natywnie udostępnionych dysków i dlatego wymaga udostępniane przez oprogramowanie SIOS rozwiązania. 
+Aby można było obsługiwać środowisko klastra trybu failover, [oprogramowanie SIOS DataKeeper klastra](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) wykonuje funkcję udostępnionego woluminu klastra przez replikowanie niezależnych dysków należących do węzłów klastra. Azure nie obsługuje natywnie udostępnionych dysków i dlatego wymaga udostępniane przez oprogramowanie SIOS rozwiązania. 
 
-Innym sposobem obsługi klastrowania jest zaimplementowanie klastra udziałów plików. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) ostatnio zmodyfikowane wzorca wdrażania centralnego usługi dostęp do katalogów globalnych /sapmnt za pośrednictwem ścieżki UNC. Jednak nadal zaleca się upewnienie się, że udział UNC/sapmnt ma wysoką dostępność. Można to zrobić na wystąpieniu usług centralnych przy użyciu klastra trybu failover systemu Windows Server z serwerem plików skalowalnym w poziomie (SOFS) i funkcją Bezpośrednie miejsca do magazynowania (S2D) w systemie Windows Server 2016. 
+Innym sposobem obsługi klastrowania jest zaimplementowanie klastra udziałów plików. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) ostatnio zmodyfikowano wzorzec wdrażania usług centralnych, aby uzyskać dostęp do katalogów globalnych/sapmnt za pośrednictwem ścieżki UNC. Jednak nadal zaleca się upewnienie się, że udział UNC/sapmnt ma wysoką dostępność. Można to zrobić na wystąpieniu usług centralnych przy użyciu klastra trybu failover systemu Windows Server z serwerem plików skalowalnym w poziomie (SOFS) i funkcją Bezpośrednie miejsca do magazynowania (S2D) w systemie Windows Server 2016. 
  > [!NOTE]
  > Obecnie Azure Site Recovery obsługuje tylko replikację punktu w poziomie awarii na maszynach wirtualnych przy użyciu funkcji bezpośrednie miejsca do magazynowania i pasywnego węzła oprogramowanie SIOS DataKeeper
 
@@ -95,7 +95,7 @@ Poniżej przedstawiono procedurę konfigurowania odzyskiwania po awarii
 
 Poniżej znajduje się zalecenie dotyczące odzyskiwania po awarii dla każdej warstwy używanej w tym przykładzie. 
 
- **Warstwy SAP** | **Zalecenie**
+ **Warstwy SAP** | **Zaleca**
  --- | ---
 **Pula dyspozytorów sieci Web SAP** |  Replikacja przy użyciu usługi Site Recovery 
 **Pula serwerów aplikacji SAP** |  Replikacja przy użyciu usługi Site Recovery 
@@ -110,7 +110,7 @@ Aby rozpocząć replikowanie wszystkich maszyn wirtualnych aplikacji SAP do cent
 
 * Aby uzyskać wskazówki dotyczące ochrony Active Directory i systemu DNS, zobacz [ochrona Active Directory i dokumentu DNS](site-recovery-active-directory.md) .
 
-* Wskazówki dotyczące ochrony warstwy bazy danych działającej w programie SQL Server można znaleźć w temacie [ochrona SQL Server](site-recovery-active-directory.md) dokumentu.
+* Wskazówki dotyczące ochrony warstwy bazy danych działającej w programie SQL Server można znaleźć w temacie [ochrona SQL Server](site-recovery-sql.md) dokumentu.
 
 ## <a name="networking-configuration"></a>Konfiguracja sieci
 

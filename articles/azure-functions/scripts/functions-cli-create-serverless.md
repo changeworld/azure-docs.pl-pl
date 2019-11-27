@@ -1,29 +1,21 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie aplikacji funkcji do wykonywania bezserwerowego | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie aplikacji funkcji do wykonywania bezserwerowego
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
+title: Tworzenie aplikacji funkcji bezserwerowej przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Tworzenie aplikacji funkcji do wykonywania bezserwerowego na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 265c4fa3c28783f0d9e5d789348c3cd2e249eb29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bf0e43132662f6f5322485a59f356f872559092
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325725"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532501"
 ---
-# <a name="create-a-function-app-for-serverless-code-execution"></a>Tworzenie aplikacji funkcji do bezserwerowego wykonywania kodu
+# <a name="create-a-function-app-for-serverless-code-execution"></a>Tworzenie aplikacji funkcji do bezserwerowego wykonywania kodu 
 
 Ten przykładowy skrypt usługi Azure Functions tworzy aplikację funkcji, która jest kontenerem dla funkcji. Aplikacja funkcji korzysta z [planu Zużycie](../functions-scale.md#consumption-plan), odpowiedniego do obciążeń bezserwerowych sterowanych zdarzeniami.
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,8 +41,8 @@ Każde polecenie w tabeli stanowi link do dokumentacji polecenia. W tym skrypcie
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Tworzy konto usługi Azure Storage. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Tworzy aplikację funkcji. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
 Więcej przykładowych skryptów interfejsu wiersza polecenia dla usługi Azure Functions można znaleźć w [dokumentacji usługi Azure Functions](../functions-cli-samples.md).
