@@ -1,6 +1,6 @@
 ---
-title: Automatic deployment for device groups - Azure IoT Edge | Microsoft Docs
-description: Use automatic deployments in Azure IoT Edge to manage groups of devices based on shared tags
+title: Automatyczne wdrażanie do grupy urządzeń — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Umożliwia automatyczne wdrożenia w usłudze Azure IoT Edge Zarządzanie grupami urządzeń na podstawie udostępnionych tagów
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -15,119 +15,119 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456729"
 ---
-# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Understand IoT Edge automatic deployments for single devices or at scale
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Omówienie automatycznego wdrożenia usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali
 
-Azure IoT Edge devices follow a [device lifecycle](../iot-hub/iot-hub-device-management-overview.md) that is similar to other types of IoT devices:
+Urządzenia Azure IoT Edge są zgodne z [cyklem życia urządzenia](../iot-hub/iot-hub-device-management-overview.md) podobnym do innych typów urządzeń IoT:
 
-1. Provision new IoT Edge devices by imaging a device with an OS and installing the [IoT Edge runtime](iot-edge-runtime.md).
-2. Configure the devices to run [IoT Edge modules](iot-edge-modules.md), and then monitor their health. 
-3. Finally, retire devices when they are replaced or become obsolete.  
+1. Zainicjuj obsługę nowych urządzeń IoT Edge, tworząc obraz urządzenia w systemie operacyjnym i instalując [środowisko uruchomieniowe IoT Edge](iot-edge-runtime.md).
+2. Skonfiguruj urządzenia do uruchamiania [modułów IoT Edge](iot-edge-modules.md), a następnie Monitoruj ich kondycję. 
+3. Ponadto wycofywanie urządzeń, gdy są one zastąpione lub stają się przestarzałe.  
 
-Azure IoT Edge provides two ways to configure the modules to run on IoT Edge devices: one for development and fast iterations on a single device (you used this method in the Azure IoT Edge [tutorials](tutorial-deploy-function.md)), and one for managing large fleets of IoT Edge devices. Both of these approaches are available in the Azure portal and programmatically. For targeting groups or a large number of devices, you can specify which devices you'd like to deploy your modules to using [tags](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) in the device twin. The following steps talk about a deployment to a Washington State device group identified through the tags property. 
+Azure IoT Edge oferuje dwa sposoby konfigurowania modułów do uruchamiania na urządzeniach IoT Edge: jeden do projektowania i szybkiej iteracji na jednym urządzeniu (użyto tej metody w [samouczkach](tutorial-deploy-function.md)Azure IoT Edge), a drugi do zarządzania dużymi flotami IoT Edge urządzeń. Obie te metody są dostępne, w witrynie Azure portal lub programowo. W przypadku grup docelowych lub dużej liczby urządzeń można określić, które urządzenia mają być wdrażane przy użyciu [tagów](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) w bliźniaczych urządzeniach. Poniższe kroki porozmawiać na temat wdrożenia w grupie urządzeń stanu Waszyngton identyfikowane za pomocą właściwości tagów. 
 
-This article focuses on the configuration and monitoring stages for fleets of devices, collectively referred to as IoT Edge automatic deployments. The overall deployment steps are as follows: 
+Ten artykuł koncentruje się na konfiguracji i monitorowania etapów do floty urządzeń, zbiorczo określany jako automatycznego wdrożenia usługi IoT Edge. Poniżej przedstawiono ogólne kroki wdrażania: 
 
-1. An operator defines a deployment that describes a set of modules as well as the target devices. Each deployment has a deployment manifest that reflects this information. 
-2. The IoT Hub service communicates with all targeted devices to configure them with the desired modules. 
-3. The IoT Hub service retrieves status from the IoT Edge devices and makes them available to the operator.  For example, an operator can see when an Edge device is not configured successfully or if a module fails during runtime. 
-4. At any time, new IoT Edge devices that meet the targeting conditions are configured for the deployment. For example, a deployment that targets all IoT Edge devices in Washington State automatically configures a new IoT Edge device once it is provisioned and added to the Washington State device group. 
+1. Operator definiuje wdrożenia, które opisuje zestaw modułów, a także urządzeń docelowych. Każde wdrożenie zawiera manifest wdrożenia, który odzwierciedla te informacje. 
+2. Usługa IoT Hub komunikuje się z wszystkie objęte nimi urządzenia, aby je skonfigurować przy użyciu żądanych modułów. 
+3. Usługa IoT Hub pobiera stan z urządzenia usługi IoT Edge i udostępnienie ich dla operatora.  Na przykład operator może zobaczyć, kiedy urządzenie brzegowe nie zostało prawidłowo skonfigurowane lub jeśli wystąpi błąd modułu w czasie wykonywania. 
+4. W dowolnym momencie nowego urządzenia usługi IoT Edge, które spełniają warunki określania wartości docelowej są skonfigurowane dla wdrożenia. Na przykład wdrożenie, które jest przeznaczone dla wszystkich urządzeń IoT Edge w stanie Waszyngton, automatycznie konfiguruje nowe urządzenie IoT Edge, gdy zostanie ono wdrożone i dodane do grupy urządzeń stanu Waszyngton. 
  
-This article describes each component involved in configuring and monitoring a deployment. For a walkthrough of creating and updating a deployment, see [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md).
+W tym artykule opisano poszczególne składniki zaangażowane w konfigurowania i monitorowania wdrożenia. Aby zapoznać się z przewodnikiem dotyczącym tworzenia i aktualizowania wdrożenia, zobacz [wdrażanie i monitorowanie modułów IoT Edge w odpowiedniej skali](how-to-deploy-monitor.md).
 
-## <a name="deployment"></a>Wdrażanie
+## <a name="deployment"></a>Wdrożenie
 
-An IoT Edge automatic deployment assigns IoT Edge module images to run as instances on a targeted set of IoT Edge devices. It works by configuring an IoT Edge deployment manifest to include a list of modules with the corresponding initialization parameters. A deployment can be assigned to a single device (based on Device ID) or to a group of devices (based on tags). Once an IoT Edge device receives a deployment manifest, it downloads and installs the container images from the respective container repositories, and configures them accordingly. Once a deployment is created, an operator can monitor the deployment status to see whether targeted devices are correctly configured.
+Automatyczne wdrożenie usługi IoT Edge przypisuje usługi IoT Edge obrazy modułu do uruchamiania jako wystąpień w zestawie docelowym urządzenia usługi IoT Edge. To działa, konfigurując manifest wdrożenia usługi IoT Edge zawiera listę modułów za pomocą odpowiednich parametrów inicjowania. Wdrożenie może być przypisane do jednego urządzenia (w oparciu o identyfikator urządzenia) lub do grupy urządzeń (w oparciu o Tagi). Gdy urządzenie IoT Edge odbiera manifest wdrożenia, pobiera i instaluje obrazy kontenerów z odpowiednich repozytoriów kontenerów i odpowiednio konfiguruje je. Po utworzeniu wdrożenia operator może monitorować stan wdrożenia, aby sprawdzić, czy urządzenia są poprawnie skonfigurowane.
 
-Only IoT Edge devices can be configured with a deployment. The following prerequisites must be on the device before it can receive the deployment:
+Można skonfigurować tylko na urządzeniach usługi IoT Edge z wdrożeniem. Następujące wymagania wstępne muszą być na urządzeniu, zanim może ona odbierać wdrożenia:
 
-* The base operating system
-* A container management system, like Moby or Docker
-* Provisioning of the IoT Edge runtime 
+* Podstawowego systemu operacyjnego
+* System zarządzania kontenera, takich jak Moby lub rozwiązania Docker
+* Inicjowanie obsługi środowiska uruchomieniowego usługi IoT Edge 
 
 ### <a name="deployment-manifest"></a>Manifest wdrożenia
 
-A deployment manifest is a JSON document that describes the modules to be configured on the targeted IoT Edge devices. It contains the configuration metadata for all the modules, including the required system modules (specifically the IoT Edge agent and IoT Edge hub).  
+Manifest wdrożenia jest to dokument JSON, który opisuje modułów, które mają być skonfigurowane na docelowe urządzenia usługi IoT Edge. Zawiera ona metadanych konfiguracji dla wszystkich modułów, w tym moduły wymagany system (w szczególności agenta usługi IoT Edge i Centrum usługi IoT Edge).  
 
-The configuration metadata for each module includes: 
+Metadane konfiguracji dla każdego modułu, obejmują: 
 
 * Wersja 
 * Typ 
-* Status (for example, running or stopped) 
-* Restart policy 
-* Image and container registry
-* Routes for data input and output 
+* Stan (na przykład uruchomiona lub zatrzymana) 
+* Zasady ponownego uruchamiania 
+* Rejestr obrazów oraz kontenerów
+* Trasy dla danych wejściowych i wyjściowych 
 
-If the module image is stored in a private container registry, the IoT Edge agent holds the registry credentials. 
+Jeśli obraz modułu jest przechowywany w prywatnym rejestrze kontenerów, agent usługi IoT Edge przechowuje poświadczenia rejestru. 
 
-### <a name="target-condition"></a>Target condition
+### <a name="target-condition"></a>Warunek docelowy
 
-The target condition is continuously evaluated throughout the lifetime of the deployment. Any new devices that meet the requirements are included, and any existing devices that no longer do are removed. The deployment is reactivated if the service detects any target condition change. 
+Warunek docelowy jest stale oceniany przez cały okres istnienia wdrożenia. Uwzględniono nowych urządzeń, które spełniają wymagania, a wszystkie istniejące urządzenia, które nie są usuwane. Wdrażanie jest możliwe, jeśli usługa wykrywa wszelkie zmiany stanu docelowego. 
 
-For instance, you have a deployment A with a target condition tags.environment = 'prod'. When you kick off the deployment, there are 10 production devices. The modules are successfully installed in these 10 devices. The IoT Edge Agent Status is shown as 10 total devices, 10 successful responses, 0 failure responses, and 0 pending responses. Now you add five more devices with tags.environment = 'prod'. The service detects the change and the IoT Edge Agent Status becomes 15 total devices, 10 successful responses, 0 failure responses, and 5 pending responses when it tries to deploy to the five new devices.
+Na przykład masz wdrożenie obejmuje A tags.environment warunek docelowy = "prod". Gdy wdrożenie jest rozpoczynane, istnieją 10 urządzeń w środowisku produkcyjnym. Moduły zostali pomyślnie zainstalowani na tych urządzeniach 10. Stan agenta IoT Edge jest wyświetlany jako 10 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, odpowiedzi 0 i 0 oczekujące odpowiedzi. Teraz możesz dodać pięć więcej urządzeń za pomocą tags.environment = "prod". Usługa wykrywa zmianę i stan agenta IoT Edge staje się 15 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, 0 odpowiedzi i 5 oczekujące odpowiedzi podczas próby wdrożenia do pięciu nowych urządzeń.
 
-Use any Boolean condition on device twins tags or deviceId to select the target devices. If you want to use condition with tags, you need to add "tags":{} section in the device twin under the same level as properties. [Learn more about tags in device twin](../iot-hub/iot-hub-devguide-device-twins.md)
+Użyj dowolnego warunku typu Boolean na tagów bliźniaczych reprezentacji urządzenia lub identyfikator urządzenia, aby wybrać urządzenia docelowe. Jeśli chcesz użyć warunku ze znacznikami, musisz dodać "Tagi":{} sekcji na sznurze urządzenia pod tym samym poziomie co właściwości. [Dowiedz się więcej o tagach w bliźniaczych urządzeniach](../iot-hub/iot-hub-devguide-device-twins.md)
 
-Target condition examples:
+Przykłady warunków docelowej:
 
-* deviceId ='linuxprod1'
-* tags.environment ='prod'
-* tags.environment = 'prod' AND tags.location = 'westus'
-* tags.environment = 'prod' OR tags.location = 'westus'
-* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+* deviceId = "linuxprod1"
+* Tags.Environment = "prod"
+* Tags.Environment = 'prod' AND tags.location = 'westus'
+* Tags.Environment = 'prod' OR tags.location = 'westus'
+* Tags.operator = "Jan" i tags.environment = 'prod' nie deviceId = "linuxprod1"
 
-Here are some constrains when you construct a target condition:
+Poniżej przedstawiono niektóre ogranicza podczas konstruowania warunek docelowy:
 
-* In device twin, you can only build a target condition using tags or deviceId.
-* Double quotes aren't allowed in any portion of the target condition. Use single quotes.
-* Single quotes represent the values of the target condition. Therefore, you must escape the single quote with another single quote if it's part of the device name. For example, to target a device called `operator'sDevice`, write `deviceId='operator''sDevice'`.
-* Numbers, letters, and the following characters are allowed in target condition values: `-:.+%_#*?!(),=@;$`.
+* W bliźniaczej reprezentacji urządzenia można utworzyć tylko za pomocą znaczników lub deviceId warunek docelowy.
+* Podwójny cudzysłów nie jest dozwolone w dowolnej części warunek docelowy. Należy używać cudzysłowów.
+* Apostrofy reprezentują wartości warunek docelowy. W związku z tym jeśli jest ona częścią nazwy urządzenia musi znak ucieczki pojedynczy cudzysłów za pomocą innego pojedynczy cudzysłów. Na przykład aby określić miejsce docelowe urządzenia o nazwie `operator'sDevice`, `deviceId='operator''sDevice'`zapisywania.
+* W wartościach warunku docelowego są dozwolone liczby, litery i następujące znaki: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Priorytet
 
-A priority defines whether a deployment should be applied to a targeted device relative to other deployments. A deployment priority is a positive integer, with larger numbers denoting higher priority. If an IoT Edge device is targeted by more than one deployment, the deployment with the highest priority applies.  Deployments with lower priorities are not applied, nor are they merged.  If a device is targeted with two or more deployments with equal priority, the most recently created deployment (determined by the creation timestamp) applies.
+Priorytet określa, czy wdrożenie powinny być stosowane do urządzenia docelowego względem innych wdrożeń. Priorytet wdrożenia jest dodatnią liczbą całkowitą z większą liczbą oznaczający wyższy priorytet. Jeśli urządzenia usługi IoT Edge jest objęty przez więcej niż jedno wdrożenie, dotyczą wdrożenia o najwyższym priorytecie.  Wdrożenia z niższymi priorytetami nie są stosowane ani nie są scalane.  Jeśli urządzenie jest przeznaczone dla co najmniej dwóch wdrożeń o równym priorytecie, stosuje się ostatnio utworzone wdrożenie (określone przez sygnaturę czasową tworzenia).
 
 ### <a name="labels"></a>Etykiety 
 
-Labels are string key/value pairs that you can use to filter and group of deployments. A deployment may have multiple labels. Labels are optional and do no impact the actual configuration of IoT Edge devices. 
+Etykiety są pary klucz/wartość ciągu, które można użyć do filtrowania i grupy wdrożenia. Wdrożenie może mieć wiele etykiet. Etykiety są opcjonalne i wykonaj bez wpływu na rzeczywistą konfigurację urządzenia usługi IoT Edge. 
 
 ### <a name="deployment-status"></a>Stan wdrożenia
 
-A deployment can be monitored to determine whether it applied successfully for any targeted IoT Edge device.  A targeted Edge device will appear in one or more of the following status categories: 
+Wdrożenia można monitorować w taki sposób, aby określić, czy pomyślnie zastosowane dla wszystkich docelowych urządzeń usługi IoT Edge.  Odpowiednie urządzenie brzegowe zostanie wyświetlone w co najmniej jednej z następujących kategorii stanu: 
 
-* **Target** shows the IoT Edge devices that match the Deployment targeting condition.
-* **Actual** shows the targeted IoT Edge devices that are not targeted by another deployment of higher priority.
-* **Healthy** shows the IoT Edge devices that have reported back to the service that the modules have been deployed successfully. 
-* **Unhealthy** shows the IoT Edge devices have reported back to the service that one or modules have not been deployed successfully. To further investigate the error, connect remotely to those devices and view the log files.
-* **Unknown** shows the IoT Edge devices that did not report any status pertaining this deployment. To further investigate, view service info and log files.
+* **Element docelowy** przedstawia urządzenia IoT Edge, które pasują do warunku określania wartości docelowej wdrożenia.
+* Wartość **rzeczywiste** przedstawia IoT Edge urządzeń, które nie są objęte innym wdrożeniem o wyższym priorytecie.
+* W **dobrej kondycji** przedstawiono IoT Edge urządzeń, które zostały zgłoszone z powrotem do usługi, pomyślnie wdrożono moduły. 
+* W **złej kondycji** przedstawiono, IoT Edge urządzenia zostały zgłoszone z powrotem do usługi, która nie została pomyślnie wdrożona. Aby dokładniej zbadać błąd, łączyć się zdalnie z tych urządzeń i wyświetlić pliki dziennika.
+* **Nieznany** pokazuje IoT Edge urządzeń, które nie zgłosiły żadnych Stanów związanych z tym wdrożeniem. Aby badać, Wyświetl usługi informacji i plików dziennika.
 
-## <a name="phased-rollout"></a>Phased rollout 
+## <a name="phased-rollout"></a>Etapowego wdrażania 
 
-A phased rollout is an overall process whereby an operator deploys changes to a broadening set of IoT Edge devices. The goal is to make changes gradually to reduce the risk of making wide scale breaking changes.  
+Etapowego wdrażania jest cały proces, według której operator wdraża zmiany rozszerzanie zbiór urządzeń usługi IoT Edge. Celem jest, aby wprowadzić zmiany, stopniowo w celu zmniejszenia ryzyka dokonywania szerokiej skali istotne zmiany w.  
 
-A phased rollout is executed in the following phases and steps: 
+Etapowe wdrażanie jest wykonywane w następujących faz i kroki: 
 
-1. Establish a test environment of IoT Edge devices by provisioning them and setting a device twin tag like `tag.environment='test'`. The test environment should mirror the production environment that the deployment will eventually target. 
-2. Create a deployment including the desired modules and configurations. The targeting condition should target the test IoT Edge device environment.   
-3. Validate the new module configuration in the test environment.
-4. Update the deployment to include a subset of production IoT Edge devices by adding a new tag to the targeting condition. Also, ensure that the priority for the deployment is higher than other deployments currently targeted to those devices 
-5. Verify that the deployment succeeded on the targeted IoT Devices by viewing the deployment status.
-6. Update the deployment to target all remaining production IoT Edge devices.
+1. Ustanów środowisko testowe IoT Edge urządzeń przez zainicjowanie ich i ustawienie znacznika sznurka urządzenia, takiego jak `tag.environment='test'`. Środowisko testowe powinno dublować środowisko produkcyjne, w którym wdrożenie będzie ostatecznie docelowe. 
+2. Utwórz wdrożenie w tym żądanych modułów i konfiguracji. Warunek docelowy powinien dotyczyć testu środowisko urządzenia usługi IoT Edge.   
+3. Sprawdź poprawność nowej konfiguracji modułu w środowisku testowym.
+4. Aktualizowanie wdrożenia obejmujący podzbiór urządzenia usługi IoT Edge w środowisku produkcyjnym, dodając nowy tag do stanu, określania wartości docelowej. Upewnij się również, że priorytet dla wdrożenia jest wyższy niż inne wdrożenia mają obecnie zastosowania żadne do tych urządzeń 
+5. Sprawdź, czy wdrożenie zakończyło się pomyślnie na docelowych urządzeniach IoT, wyświetlając stan wdrożenia.
+6. Aktualizowanie wdrożenia i nakieruj wszystkie pozostałe urządzenia usługi IoT Edge w środowisku produkcyjnym.
 
-## <a name="rollback"></a>Wycofuj
+## <a name="rollback"></a>Wycofywanie
 
-Deployments can be rolled back if you receive errors or misconfigurations.  Because a deployment defines the absolute module configuration for an IoT Edge device, an additional deployment must also be targeted to the same device at a lower priority even if the goal is to remove all modules.  
+Wdrożeń można wycofać, jeśli otrzymujesz błędy lub błędy konfiguracji.  Ze względu na to, że wdrożenie definiuje bezwzględną konfigurację modułu dla urządzenia IoT Edge, dodatkowe wdrożenie musi być również celem tego samego urządzenia o niższym priorytecie, nawet jeśli celem jest usunięcie wszystkich modułów.  
 
-Perform rollbacks in the following sequence: 
+Wycofywanie zmian należy wykonać w następującej kolejności: 
 
-1. Confirm that a second deployment is also targeted at the same device set. If the goal of the rollback is to remove all modules, the second deployment should not include any modules. 
-2. Modify or remove the target condition expression of the deployment you wish to roll back so that the devices no longer meet the targeting condition.
-3. Verify that the rollback succeeded by viewing the deployment status.
-   * The rolled-back deployment should no longer show status for the devices that were rolled back.
-   * The second deployment should now include deployment status for the devices that were rolled back.
+1. Upewnij się, że drugie wdrożenie jest wskazywane na tym samym zestawie urządzeń. Jeśli celem wycofywanie jest aby usunąć wszystkie moduły, drugie wdrożenie nie może zawierać żadnych modułów. 
+2. Modyfikowanie lub usuwanie wyrażenie warunku docelowego wdrożenia, którą chcesz wdrożyć tak, aby urządzenia nie spełniają warunek określania wartości docelowej.
+3. Sprawdź, czy wycofywanie zakończyło się pomyślnie, wyświetlając stan wdrożenia.
+   * Wdrożenie zwrotnego wycofana już nie powinien być wyświetlony stan urządzeń, które zostały wycofane.
+   * Drugie wdrożenie powinny znajdować się teraz stan wdrożenia dla urządzeń, które zostały wycofane.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Walk through the steps to create, update, or delete a deployment in [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md).
-* Learn more about other IoT Edge concepts like the [IoT Edge runtime](iot-edge-runtime.md) and [IoT Edge modules](iot-edge-modules.md).
+* Zapoznaj się z instrukcjami tworzenia, aktualizowania lub usuwania wdrożenia w sekcji [wdrażanie i monitorowanie modułów IoT Edge](how-to-deploy-monitor.md)w odpowiedniej skali.
+* Dowiedz się więcej na temat innych IoT Edge pojęć, takich jak [środowisko uruchomieniowe IoT Edge](iot-edge-runtime.md) i [moduły IoT Edge](iot-edge-modules.md).
 
