@@ -20,7 +20,7 @@ Sygnatura dostępu współdzielonego (SAS) zapewnia szczegółową kontrolę nad
 
 - Interwał, w jakim sygnatura dostępu współdzielonego jest prawidłowa, włącznie z czasem rozpoczęcia i czasem wygaśnięcia.
 - Uprawnienia przyznane przez sygnaturę dostępu współdzielonego. Na przykład sygnatura dostępu współdzielonego dla Event Hubs przestrzeni nazw może udzielić uprawnienia do nasłuchiwania, ale nie do uprawnienia do wysyłania.
-- Tylko klientów, które są dostępne prawidłowe poświadczenia mogą wysyłać dane do Centrum zdarzeń.
+- Tylko klienci, którzy zaprezentowania prawidłowych poświadczeń, mogą wysyłać dane do centrum zdarzeń.
 - Klient nie może personifikować innego klienta.
 - Klient Rouge można zablokować wysyłanie danych do centrum zdarzeń.
 
@@ -95,7 +95,7 @@ function createSharedAccessToken(uri, saName, saKey) {
         encodeURIComponent(hash) + '&se=' + ttl + '&skn=' + saName; 
 ```
 
-#### <a name="java"></a>JAVA
+#### <a name="java"></a>OPROGRAMOWANIA
 
 ```java
 private static String GetSASToken(String resourceUri, String keyName, String key)
@@ -179,13 +179,13 @@ private static string createToken(string resourceUri, string keyName, string key
 ```
 
 ## <a name="authenticating-event-hubs-publishers-with-sas"></a>Uwierzytelnianie Event Hubs wydawców przy użyciu sygnatury dostępu współdzielonego 
-Wydawca zdarzeń definiuje wirtualnego punktu końcowego dla Centrum zdarzeń. Wydawca może być używany tylko do wysyłania komunikatów do centrum zdarzeń i nie odbierania komunikatów.
+Wydawca zdarzeń definiuje wirtualny punkt końcowy centrum zdarzeń. Wydawca może być używany tylko do wysyłania komunikatów do centrum zdarzeń i nie odbierania komunikatów.
 
-Zazwyczaj Centrum zdarzeń, wykorzystuje jedną wydawcą na klienta. Wszystkie komunikaty, które są wysyłane do wszystkich wydawców Centrum zdarzeń są dodawane do kolejki w tym Centrum zdarzeń. Wydawcy włączają precyzyjną kontrolę dostępu.
+Zwykle centrum zdarzeń wykorzystuje jednego wydawcę na każdego klienta. Wszystkie komunikaty wysyłane do dowolnego wydawcy centrum zdarzeń znajdują się w kolejce w tym centrum zdarzeń. Wydawcy włączają precyzyjną kontrolę dostępu.
 
-Każdy klient usługi Event Hubs jest przypisany unikatowy token, który zostanie przekazany do klienta. Tokeny są tworzone w taki sposób, że każdy unikatowy token przyznaje dostęp do innego unikatowego wydawcy. Klient, który przechowuje token, może wysyłać tylko jednego wydawcę, a nie innego wydawcy. Jeśli wielu klientów współużytkują ten sam token, każdy z nich udostępnia wydawcę.
+Każdy klient Event Hubs ma przypisany unikatowy token, który jest przekazywany do klienta programu. Tokeny są tworzone w taki sposób, że każdy unikatowy token przyznaje dostęp do innego unikatowego wydawcy. Klient, który przechowuje token, może wysyłać tylko jednego wydawcę, a nie innego wydawcy. Jeśli wielu klientów współużytkują ten sam token, każdy z nich udostępnia wydawcę.
 
-Wszystkie tokeny są przypisywane przy użyciu kluczy SAS. Zazwyczaj wszystkie tokeny są podpisane za pomocą tego samego klucza. Klienci nie mają informacji o kluczu, co uniemożliwia klientom użycie tokenów produkcyjnych. Klienci działają na tych samych tokenach do momentu ich wygaśnięcia.
+Wszystkie tokeny są przypisywane przy użyciu kluczy SAS. Zwykle wszystkie tokeny są podpisane przy użyciu tego samego klucza. Klienci nie mają informacji o kluczu, co uniemożliwia klientom użycie tokenów produkcyjnych. Klienci działają na tych samych tokenach do momentu ich wygaśnięcia.
 
 Na przykład w celu zdefiniowania reguł autoryzacji objętych zakresem do wysyłania/publikowania do Event Hubs należy zdefiniować regułę autoryzacji wysyłania. Można to zrobić na poziomie przestrzeni nazw lub nadać bardziej szczegółowy zakres określonej jednostce (wystąpienie Centra zdarzeń lub temat). Jest wywoływany klient lub aplikacja objęta zakresem takich szczegółowych praw dostępu, Event Hubs wydawcy. Aby to zrobić, wykonaj następujące kroki:
 
@@ -207,16 +207,16 @@ Na przykład w celu zdefiniowania reguł autoryzacji objętych zakresem do wysy�
 
 
 > [!NOTE]
-> Chociaż nie jest to zalecane, istnieje możliwość wyposażenia urządzeń z tokenami, które udzielają dostępu do centrum zdarzeń lub przestrzeni nazw. Każde urządzenie, które przechowuje ten token, może wysyłać wiadomości bezpośrednio do tego centrum zdarzeń. Ponadto urządzenie nie jest na czarnej liście wysyłaniu do tego Centrum zdarzeń.
+> Chociaż nie jest to zalecane, istnieje możliwość wyposażenia urządzeń z tokenami, które udzielają dostępu do centrum zdarzeń lub przestrzeni nazw. Każde urządzenie, które przechowuje ten token, może wysyłać wiadomości bezpośrednio do tego centrum zdarzeń. Ponadto urządzenie nie może być zabronione wysyłanie do tego centrum zdarzeń.
 > 
 > Zawsze zaleca się przyznanie określonych i szczegółowych zakresów.
 
 > [!IMPORTANT]
-> Po utworzeniu tokeny własny unikatowy token był zaopatrzony każdego klienta.
+> Po utworzeniu tokenów każdy klient zostanie zainicjowany z własnym unikatowym tokenem.
 >
-> Gdy klient wysyła dane do centrum zdarzeń, oznacza jego żądanie z tokenem. Aby zapobiec atakujący korzystający z podsłuchiwaniu i kradzież tokenu, komunikacja między klientem i Centrum zdarzeń musi wystąpić za pośrednictwem szyfrowanego kanału.
+> Gdy klient wysyła dane do centrum zdarzeń, oznacza jego żądanie z tokenem. Aby zapobiec podsłuchiwaniu i kradzieży tokenu przez atakującego, komunikacja między klientem a centrum zdarzeń musi odbywać się za pośrednictwem zaszyfrowanego kanału.
 > 
-> Jeśli token zostanie ukradzione przez osobę atakującą, osoba atakująca może personifikować klienta, którego token zostały skradzione. W przypadku odczekania wydawcy program renderuje tego klienta, dopóki nie odbierze nowego tokenu korzystającego z innego wydawcy.
+> W przypadku kradzieży tokenu przez atakującego, osoba atakująca może personifikować klienta, którego token został skradziony. W przypadku odczekania wydawcy program renderuje tego klienta, dopóki nie odbierze nowego tokenu korzystającego z innego wydawcy.
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Uwierzytelnianie Event Hubs użytkowników przy użyciu sygnatury dostępu współdzielonego 

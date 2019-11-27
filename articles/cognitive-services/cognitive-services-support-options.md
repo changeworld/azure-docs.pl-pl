@@ -71,16 +71,16 @@ Aby zażądać nowych funkcji, Opublikuj je w usłudze UserVoice. Podziel się s
 | Usługi Bing                 | https://cognitive.uservoice.com/forums/555907-bing-search |
 | Przetwarzanie obrazów               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
-| Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
+| Niestandardowe przetwarzanie obrazów                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Rozpoznawanie twarzy                          | https://cognitive.uservoice.com/forums/430315-face |
 | Seryjn                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Wciągające                     | https://feedback.azure.com/forums/34192--general-feedback |
-| Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
+| Usługa interpretacji języka (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizacja                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Usługi mowy               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Analiza tekstu                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Tekst usługi Translator               | https://cognitive.uservoice.com/forums/558796-translator |
+| Tłumaczenie tekstu w usłudze Translator               | https://cognitive.uservoice.com/forums/558796-translator |
 | Indeksator wideo                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="release-notes"></a>Informacje o wersji
@@ -106,7 +106,7 @@ Informacje o wersji są aktualizowane w miarę udostępnienia nowych wersji. Not
 
 Wiadomości dotyczące Cognitive Services są udostępniane w [blogu platformy Azure](https://azure.microsoft.com/blog/topics/cognitive-services/).
 
-## <a name="search"></a>Wyszukiwanie
+## <a name="search"></a>Search
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>

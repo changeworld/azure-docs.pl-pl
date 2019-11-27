@@ -59,22 +59,22 @@ W tej architekturze referencyjnej przedstawiono Uruchamianie programu SAP NetWea
 
 ## <a name="disaster-recovery-considerations"></a>Zagadnienia dotyczące odzyskiwania po awarii
 
-Do odzyskiwania po awarii (DR) musi być możliwe do trybu failover do regionu pomocniczego. Każda warstwa używa innej strategii w celu zapewnienia ochrony odzyskiwania po awarii (DR, disaster recovery).
+W przypadku odzyskiwania po awarii (DR) musi być możliwe przełączenie w tryb failover do regionu pomocniczego. Każda warstwa używa innej strategii w celu zapewnienia ochrony odzyskiwania po awarii (DR, disaster recovery).
 
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>Maszyny wirtualne z uruchomioną pulą dyspozytorów sieci Web SAP 
-Składnik Web Dispatcher służy jako moduł równoważenia obciążenia dla ruchu SAP na serwery aplikacji SAP. Aby zapewnić wysoką dostępność składnika dyspozytora sieci Web, Azure Load Balancer jest używany do implementowania konfiguracji równoległego dyspozytora sieci Web w konfiguracji okrężnej dla dystrybucji ruchu HTTP (S) wśród dostępnych elementów docelowych w puli modułu równoważenia obciążenia. Zostanie ona zreplikowana przy użyciu Azure Site Recovery (ASR), a skrypty automatyzacji zostaną użyte do skonfigurowania modułu równoważenia obciążenia w regionie odzyskiwania po awarii. 
+Składnik dyspozytora sieci Web jest używany jako moduł równoważenia obciążenia dla ruchu SAP między serwerami aplikacji SAP. Aby zapewnić wysoką dostępność składnika dyspozytora sieci Web, Azure Load Balancer jest używany do implementowania konfiguracji równoległego dyspozytora sieci Web w konfiguracji okrężnej dla dystrybucji ruchu HTTP (S) wśród dostępnych elementów docelowych w puli modułu równoważenia obciążenia. Zostanie ona zreplikowana przy użyciu Azure Site Recovery (ASR), a skrypty automatyzacji zostaną użyte do skonfigurowania modułu równoważenia obciążenia w regionie odzyskiwania po awarii. 
 
 #### <a name="vms-running-application-servers-pool"></a>Maszyny wirtualne z uruchomioną pulą serwerów aplikacji
-Aby zarządzać grupami logowania dla serwerów aplikacji ABAP, transakcji SMLG jest używany. Używa ona funkcji w ramach serwera wiadomości centralnej usług równoważenia obciążenia do dystrybucji obciążeń między puli serwerów aplikacji SAP SAPGUIs i RFC ruchu. Ta replikacja zostanie zreplikowana przy użyciu Azure Site Recovery 
+Aby zarządzać grupami logowania dla serwerów aplikacji ABAP, używana jest transakcja SMLG. Używa funkcji równoważenia obciążenia na serwerze komunikatów usług centralnych do dystrybucji obciążenia między pulami serwerów aplikacji SAP dla ruchu SAPGUIs i RFC. Ta replikacja zostanie zreplikowana przy użyciu Azure Site Recovery 
 
 #### <a name="vms-running-sap-central-services-cluster"></a>Maszyny wirtualne z systemem SAP Central Services — klaster
-Ta architektura referencyjna uruchamia centralnej usług na maszynach wirtualnych w warstwie aplikacji. Central Services jest potencjalnym pojedynczym punktem awarii (SPOF), po wdrożeniu na jednej maszynie Wirtualnej — typowe wdrożenie w przypadku wysokiej dostępności nie jest wymagane.<br>
+Ta architektura referencyjna uruchamia usługi centralne na maszynach wirtualnych w warstwie aplikacji. Usługi centralne to potencjalne single point of failure (SPOF), które są wdrażane na jednej maszynie wirtualnej — typowym wdrożeniem, gdy wysoka dostępność nie jest wymagana.<br>
 
 Aby zaimplementować rozwiązanie wysokiej dostępności, można użyć udostępnionego klastra dysków lub klastra udziałów plików. Aby skonfigurować maszyny wirtualne dla udostępnionego klastra dysków, należy użyć klastra trybu failover systemu Windows Server. Monitor chmury jest zalecany jako monitor kworum. 
  > [!NOTE]
  > Azure Site Recovery nie replikuje monitora chmury, dlatego zaleca się wdrożenie monitora chmury w regionie odzyskiwania po awarii.
 
-Aby można było obsługiwać środowisko klastra trybu failover, [oprogramowanie SIOS DataKeeper klastra](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) wykonuje funkcję udostępnionego woluminu klastra przez replikowanie niezależnych dysków należących do węzłów klastra. Azure nie obsługuje natywnie udostępnionych dysków i dlatego wymaga udostępniane przez oprogramowanie SIOS rozwiązania. 
+Aby można było obsługiwać środowisko klastra trybu failover, [oprogramowanie SIOS DataKeeper klastra](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) wykonuje funkcję udostępnionego woluminu klastra przez replikowanie niezależnych dysków należących do węzłów klastra. Platforma Azure nie obsługuje natywnie dysków udostępnionych i w związku z tym wymaga rozwiązań zapewnianych przez oprogramowanie SIOS. 
 
 Innym sposobem obsługi klastrowania jest zaimplementowanie klastra udziałów plików. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) ostatnio zmodyfikowano wzorzec wdrażania usług centralnych, aby uzyskać dostęp do katalogów globalnych/sapmnt za pośrednictwem ścieżki UNC. Jednak nadal zaleca się upewnienie się, że udział UNC/sapmnt ma wysoką dostępność. Można to zrobić na wystąpieniu usług centralnych przy użyciu klastra trybu failover systemu Windows Server z serwerem plików skalowalnym w poziomie (SOFS) i funkcją Bezpośrednie miejsca do magazynowania (S2D) w systemie Windows Server 2016. 
  > [!NOTE]

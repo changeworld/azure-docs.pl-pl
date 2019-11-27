@@ -424,7 +424,7 @@ Można również odwoływać się do poszczególnych elementów tablicy przy uż
 >
 >
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 + [Indeksatory w usłudze Azure Wyszukiwanie poznawcze](search-indexer-overview.md)
 + [Indeksowanie Blob Storage platformy Azure przy użyciu usługi Azure Wyszukiwanie poznawcze](search-howto-index-json-blobs.md)

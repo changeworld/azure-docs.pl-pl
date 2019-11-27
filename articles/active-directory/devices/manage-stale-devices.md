@@ -75,7 +75,7 @@ Aby zaktualizować urządzenie w usłudze Azure AD, potrzebne jest konto, które
 
 W zasadach oczyszczania wybierz konta, które mają przypisane wymagane role. 
 
-### <a name="timeframe"></a>Przedział czasu
+### <a name="timeframe"></a>Ramy czasowe
 
 Zdefiniuj przedział czasu, który jest wskaźnikiem służącym do wykrywania nieaktywnego urządzenia. Podczas definiowania przedziału czasu należy wziąć pod uwagę okno w celu zaktualizowania sygnatury czasowej działania do wartości. Na przykład nie należy uwzględniać sygnatury czasowej starszej niż 21 dni (łącznie z wariancją) jako wskaźnika dla nieodświeżonego urządzenia. Istnieją sytuacje, w których urządzenie może wyglądać na nieaktywne, chociaż tak nie jest. Na przykład gdy właściciel urządzenia jest na urlopie lub na zwolnieniu lekarskim  przekraczającym przedział czasu zdefiniowany dla nieaktywnych urządzeń.
 

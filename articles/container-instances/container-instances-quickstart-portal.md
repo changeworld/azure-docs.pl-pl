@@ -24,7 +24,7 @@ W tym przewodniku szybki start użyjesz Azure Portal do wdrożenia izolowanego k
 
 ![Aplikacja wdrożona w usłudze Azure Container Instances widziana w przeglądarce][aci-portal-07]
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 

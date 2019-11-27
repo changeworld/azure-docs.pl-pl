@@ -65,7 +65,7 @@ Te właściwości wymagają usunięcia grupy kontenerów przed ponownem wdrożen
 
 * Typ systemu operacyjnego
 * Procesor CPU
-* Memory (Pamięć)
+* Pamięć
 * Zasady ponownego uruchamiania
 * Porty
 

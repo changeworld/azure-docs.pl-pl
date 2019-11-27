@@ -31,7 +31,7 @@ Platforma Azure jest obsługiwana przez infrastrukturę z systemem Windows Serve
 >
 > Aby uzyskać więcej informacji, zobacz [dokładny czas dla systemu Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Dokładność zegara komputerowego jest określana na tym, jak zamyka się zegar komputera do standardowego czasu koordynowanego (UTC). Czas UTC jest definiowany przez wielonarodowy przykład precyzyjne zegara niepodzielne, które mogą być wyłączone tylko przez jedną sekundę w latach 300. Jednak odczytywanie czasu UTC bezpośrednio wymaga specjalnego sprzętu. Zamiast tego serwery czasu są synchronizowane z czasem UTC i są dostępne z innych komputerów w celu zapewnienia skalowalności i niezawodności. Każdy komputer ma uruchomioną usługę synchronizacji czasu, która wie, jakie serwery czasu użyć i okresowo sprawdzają, czy zegar komputera musi zostać skorygowany i w razie potrzeby dostosowuje czas. 
 
@@ -156,7 +156,7 @@ systemctl restart chronyd
 ```
 
 
-### <a name="systemd"></a>systemd 
+### <a name="systemd"></a>usługę systemd 
 
 W przypadku synchronizacji czasu Ubuntu i SUSE jest konfigurowana przy użyciu [systemu](https://www.freedesktop.org/wiki/Software/systemd/). Aby uzyskać więcej informacji na temat Ubuntu, zobacz [synchronizacja czasu](https://help.ubuntu.com/lts/serverguide/NTP.html). Aby uzyskać więcej informacji na temat SUSE, zobacz sekcję 4.5.8 ( [Informacje o wersji programu SUSE Linux Enterprise Server 12 SP3](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)).
 

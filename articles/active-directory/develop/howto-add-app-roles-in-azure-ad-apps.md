@@ -39,7 +39,7 @@ Te role aplikacji są zdefiniowane w [Azure Portal](https://portal.azure.com) w 
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarowanie ról aplikacji przy użyciu Azure Portal
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Na górnym pasku wybierz swoje konto, a następnie **Przełącz katalog**.
 1. Po otwarciu okienka **katalog i subskrypcja** wybierz dzierżawę Active Directory, w której chcesz zarejestrować aplikację, na liście **Ulubione** lub **wszystkie katalogi** .
 1. Wybierz pozycję **wszystkie usługi** w lewym okienku nawigacji, a następnie wybierz pozycję **Azure Active Directory**.

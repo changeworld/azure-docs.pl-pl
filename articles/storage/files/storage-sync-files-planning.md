@@ -73,7 +73,7 @@ Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem
 
 Polecenie cmdlet do oceny można zainstalować, instalując moduł AZ PowerShell module, który można zainstalować, postępując zgodnie z instrukcjami tutaj: [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-#### <a name="usage"></a>Sposób użycia  
+#### <a name="usage"></a>Użycie  
 Narzędzie do oceny można wywołać na kilka różnych sposobów: można wykonać testy systemowe, zestawy danych lub oba te elementy. Aby przeprowadzić testy systemu i zestawu danych: 
 
 ```powershell
@@ -96,7 +96,7 @@ Aby wyświetlić wyniki w formacie CSV:
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
-### <a name="system-requirements"></a>Wymagania systemowe
+### <a name="system-requirements"></a>Wymagania systemu
 - Serwer z jedną z następujących wersji systemu operacyjnego:
 
     | Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
@@ -141,8 +141,8 @@ Aby wyświetlić wyniki w formacie CSV:
 
 | Plik/folder | Uwaga |
 |-|-|
-| Desktop.ini | Plik specyficzny dla systemu |
-| ethumbs.db$ | Plik tymczasowy dla miniatur |
+| Plik Desktop. ini | Plik specyficzny dla systemu |
+| ethumbs. DB $ | Plik tymczasowy dla miniatur |
 | \*~$.\* | Plik tymczasowy pakietu Office |
 | \*. tmp | Plik tymczasowy |
 | \*. LACCDB | Plik blokowania dostępu do bazy danych|
@@ -244,7 +244,7 @@ Ogólnie rzecz biorąc Azure File Sync powinien obsługiwać współdziałanie z
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania do zarządzania magazynem hierarchicznym (HSM)
 W przypadku Azure File Sync nie należy używać innych rozwiązań modułu HSM.
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność w poszczególnych regionach
 Azure File Sync jest dostępna tylko w następujących regionach:
 
 | Region | Lokalizacja centrum danych |
@@ -253,10 +253,10 @@ Azure File Sync jest dostępna tylko w następujących regionach:
 | Australia Południowo-Wschodnia | Stan Wiktoria |
 | Brazylia Południowa | Sao Paulo (stan) |
 | Kanada Środkowa | Toronto |
-| Kanada Wschodnia | Miasto Quebec |
+| Kanada Wschodnia | Quebec |
 | Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
-| Azja Wschodnia | SRA Hongkong |
+| Azja Wschodnia | Hongkong SAR |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Francja Środkowa | Paryż |
@@ -265,22 +265,22 @@ Azure File Sync jest dostępna tylko w następujących regionach:
 | Korea Południowa | Pusan |
 | Japonia Wschodnia | Tokyo, Saitama |
 | Japonia Zachodnia | Osaka |
-| Środkowo-północne stany USA | Illinois |
+| Północno-środkowe stany USA | Illinois |
 | Europa Północna | Irlandia |
 | Północna Republika Południowej Afryki | Johannesburg |
 | Zachodnia Republika Południowej Afryki * | Kapsztad |
-| Środkowo-południowe stany USA | Teksas |
+| Południowo-środkowe stany USA | Teksas |
 | Indie Południowe | Chennai |
 | Azja Południowo-Wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
 | Zachodnie Zjednoczone Królestwo | Cardiff |
-| Administracja USA — Arizona | Arizona |
-| Administracja USA — Teksas | Teksas |
-| Administracja USA — Wirginia | Wirginia |
+| US Gov Arizona | Arizona |
+| US Gov Teksas | Teksas |
+| US Gov Wirginia | Wirginia |
 | Północne Zjednoczone Emiraty Arabskie | Dubaj |
 | Środkowe Zjednoczone Emiraty Arabskie * | Abu Zabi |
 | Europa Zachodnia | Holandia |
-| Środkowo-zachodnie stany USA | Wyoming |
+| Zachodnio-środkowe stany USA | Wyoming |
 | Zachodnie stany USA | Kalifornia |
 | Zachodnie stany USA 2 | Waszyngton |
 
@@ -300,7 +300,7 @@ Aby zapewnić obsługę integracji trybu failover między magazynem geograficzni
 |---------------------|--------------------|
 | Australia Wschodnia      | Australia Południowo-Wschodnia|
 | Australia Południowo-Wschodnia | Australia Wschodnia     |
-| Brazylia Południowa        | Środkowo-południowe stany USA   |
+| Brazylia Południowa        | Południowo-środkowe stany USA   |
 | Kanada Środkowa      | Kanada Wschodnia        |
 | Kanada Wschodnia         | Kanada Środkowa     |
 | Indie Środkowe       | Indie Południowe        |
@@ -315,21 +315,21 @@ Aby zapewnić obsługę integracji trybu failover między magazynem geograficzni
 | Korea Środkowa       | Korea Południowa        |
 | Korea Południowa         | Korea Środkowa      |
 | Europa Północna        | Europa Zachodnia        |
-| Środkowo-północne stany USA    | Środkowo-południowe stany USA   |
+| Północno-środkowe stany USA    | Południowo-środkowe stany USA   |
 | Północna Republika Południowej Afryki  | Północna Republika Południowej Afryki  |
 | Północna Republika Południowej Afryki   | Północna Republika Południowej Afryki |
-| Środkowo-południowe stany USA    | Środkowo-północne stany USA   |
+| Południowo-środkowe stany USA    | Północno-środkowe stany USA   |
 | Indie Południowe         | Indie Środkowe      |
 | Azja Południowo-Wschodnia      | Azja Wschodnia          |
 | Południowe Zjednoczone Królestwo            | Zachodnie Zjednoczone Królestwo            |
 | Zachodnie Zjednoczone Królestwo             | Południowe Zjednoczone Królestwo           |
-| Administracja USA — Arizona      | Administracja USA — Teksas       |
-| US Gov Iowa         | Administracja USA — Wirginia    |
-| Administracja USA — Wirginia      | Administracja USA — Teksas       |
+| US Gov Arizona      | US Gov Teksas       |
+| US Gov Iowa         | US Gov Wirginia    |
+| US Gov Wirginia      | US Gov Teksas       |
 | Europa Zachodnia         | Europa Północna       |
-| Środkowo-zachodnie stany USA     | Zachodnie stany USA 2          |
+| Zachodnio-środkowe stany USA     | Zachodnie stany USA 2          |
 | Zachodnie stany USA             | Wschodnie stany USA            |
-| Zachodnie stany USA 2           | Środkowo-zachodnie stany USA    |
+| Zachodnie stany USA 2           | Zachodnio-środkowe stany USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

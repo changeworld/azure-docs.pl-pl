@@ -46,7 +46,7 @@ Wdrożenie usługi Azure FarmBeats powoduje utworzenie wymienionych poniżej zas
 |9  |       Konto magazynu     |  Centrum danych/akcelerator        |
 |10  |    Aplikacja logiki        |     Centrum danych      |
 |11  |    Połączenie interfejsu API        |     Centrum danych      |
-|12|      App Service      |  Centrum danych/akcelerator       |
+|12|      Usługa App Service      |  Centrum danych/akcelerator       |
 |13 |    plan usługi App Service        |     Centrum danych/akcelerator      |
 |14 |Konto Azure Maps     |Skrót    |
 |15 |       Time Series Insights      |  Centrum danych     |

@@ -117,7 +117,7 @@ W przykładach w tym artykule użyto również najnowszej wersji [biblioteki kli
 Install-Package Azure.Identity
 ```
 
-## <a name="net-code-example-create-a-block-blob"></a>Przykładowy kod platformy .NET: Utwórz blokowy obiekt blob
+## <a name="net-code-example-create-a-block-blob"></a>Przykład kodu platformy .NET: Tworzenie blokowego obiektu BLOB
 
 Dodaj do kodu następujące dyrektywy `using`, aby użyć tożsamości platformy Azure i bibliotek klienckich usługi Azure Storage.
 

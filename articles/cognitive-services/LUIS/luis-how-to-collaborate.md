@@ -20,7 +20,7 @@ ms.locfileid: "74533801"
 ---
 # <a name="add-contributors-to-your-app"></a>Dodawanie współautorów do aplikacji
 
-Właściciel aplikacji może dodawać współautorów do aplikacji. Współpracownicy te można modyfikować modelu, uczenie i publikowanie aplikacji. 
+Właściciel aplikacji może dodawać współautorów do aplikacji. Ci współpracownicy mogą modyfikować model, uczenie i publikowanie aplikacji. 
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -49,15 +49,15 @@ Poniższa procedura dotyczy wszystkich użytkowników, którzy **nie zostali zmi
 
 Nie przeprowadzono migracji, jeśli środowisko tworzenia LUIS nie jest powiązane z zasobem tworzenia na stronie **Zarządzanie zasobami usługi Azure >** w portalu Luis.
 
-Aplikacji ma jednego autora, jego właściciela, ale może mieć wiele współpracowników. Aby umożliwić współpracownikom edytować aplikacją usługi LUIS, należy dodać adres e-mail, używane do dostępu do portalu usługi LUIS do listy współpracowników. Po dodaniu ich wyświetlany przez aplikację w portalu usługi LUIS.
+Aplikacja ma jednego autora, właściciela, ale może mieć wielu współpracowników. Aby umożliwić współpracownikom edytowanie aplikacji LUIS, należy dodać do niej wiadomość e-mail, z której korzystają użytkownicy, aby uzyskać dostęp do portalu LUIS na liście współpracowników. Po ich dodaniu aplikacja zostanie wyświetlona w portalu LUIS.
 
 1. Wybierz pozycję **Zarządzaj** w prawym górnym menu, a następnie wybierz pozycję **współpracownicy** w menu po lewej stronie.
 
 1. Wybierz pozycję **Dodaj współpracownika** z paska narzędzi.
 
-1. Wprowadź adres e-mail, którego używa współpracownika, aby zalogować się do portalu usługi LUIS.
+1. Wprowadź adres e-mail, który jest wykorzystywany przez współpracownika do logowania się do portalu LUIS.
 
-    ![Dodaj adres e-mail współpracownika firmy](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
+    ![Dodaj adres e-mail współpracownika](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
 ### <a name="users-with-multiple-emails"></a>Użytkownicy z wieloma wiadomościami e-mail 
@@ -66,26 +66,26 @@ Jeśli dodasz współautorów/współpracowników do aplikacji LUIS, określisz 
 
 <a name="owner-and-collaborators"></a>
 
-### <a name="azure-active-directory-resources"></a>Zasoby platformy Azure Active Directory
+### <a name="azure-active-directory-resources"></a>Zasoby Azure Active Directory
 
-Jeśli używasz usługi [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) w organizacji, language UNDERSTANDING (Luis) potrzebuje uprawnień do informacji o dostępie użytkowników, gdy chcą korzystać z Luis. Zasoby, które wymaga usługi LUIS są minimalne. 
+Jeśli używasz usługi [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) w organizacji, language UNDERSTANDING (Luis) potrzebuje uprawnień do informacji o dostępie użytkowników, gdy chcą korzystać z Luis. Zasoby, które LUIS wymagają, są minimalne. 
 
-Szczegółowy opis zostanie wyświetlony, gdy spróbujesz zarejestrować się przy użyciu konta, które ma zgody administratora, lub nie wymagają zgody administratora, takich jak zgody administratora:
+Szczegółowy opis jest wyświetlany podczas próby zarejestrowania się przy użyciu konta, które ma zgodę administratora lub nie wymaga zgody administratora, na przykład zgody administratora:
 
-* Umożliwia logowanie do aplikacji za pomocą konta organizacyjnego i umożliwia aplikacji odczytanie profilu. Umożliwia również aplikacji na odczytywanie podstawowych informacji o firmie. Daje to LUIS uprawnienia do odczytu podstawowych danych profilowych, takich jak identyfikator użytkownika, adres e-mail, nazwa
-* Zezwala aplikacji na wyświetlanie i aktualizowanie danych, nawet wtedy, gdy nie używasz obecnie aplikacji. Uprawnienie jest wymagane do odświeżenia tokenu dostępu użytkownika.
+* Umożliwia zalogowanie się do aplikacji przy użyciu konta organizacji i umożliwienie aplikacji odczytania Twojego profilu. Umożliwia również aplikacji odczytywanie podstawowych informacji o firmie. Daje to LUIS uprawnienia do odczytu podstawowych danych profilowych, takich jak identyfikator użytkownika, adres e-mail, nazwa
+* Zezwala aplikacji na wyświetlanie i aktualizowanie danych, nawet jeśli nie są aktualnie używane. Uprawnienie jest wymagane do odświeżenia tokenu dostępu użytkownika.
 
 
-### <a name="azure-active-directory-tenant-user"></a>Użytkownik dzierżawy usługi Azure Active Directory
+### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory użytkownika dzierżawy
 
-Usługa LUIS używa standardowych przepływu wyrażania zgody usługi Azure Active Directory (Azure AD). 
+LUIS używa przepływu zgody standardowego Azure Active Directory (Azure AD). 
 
-Administrator dzierżawy powinny współpracować bezpośrednio z użytkownikiem, który musi mieć dostęp udzielony do korzystania z usługi LUIS w usłudze Azure AD. 
+Administrator dzierżawy powinien współpracować bezpośrednio z użytkownikiem, który wymaga dostępu do LUIS w usłudze Azure AD. 
 
-* Po pierwsze użytkownik zaloguje się do usługi LUIS i widzi wyskakującego okna dialogowego, wymagające zatwierdzenia administratora. Użytkownik skontaktuje się z administratorem dzierżawy przed kontynuowaniem. 
-* Po drugie Administrator dzierżawy zaloguje się do usługi LUIS i widzi zgody przepływu wyskakującego okna dialogowego. To okno dialogowe, administrator musi udzielić uprawnień dla użytkownika. Gdy administrator zaakceptuje uprawnień, użytkownik będzie mógł kontynuować z użyciem usługi LUIS. Jeśli administrator dzierżawy nie zaloguje się do usługi LUIS, administrator będzie mógł uzyskać [zgodę](https://account.activedirectory.windowsazure.com/r#/applications) na Luis, jak pokazano na poniższym zrzucie ekranu. Zwróć uwagę na to, że lista jest filtrowana do elementów, które zawierają nazwę `LUIS`.
+* Najpierw użytkownik loguje się do LUIS i widzi okno podręczne, które wymaga zatwierdzenia przez administratora. Użytkownik kontaktuje się z administratorem dzierżawy przed kontynuowaniem. 
+* Następnie Administrator dzierżawy loguje się do LUIS i widzi wyskakujące okno dialogowe przepływu zgody. To okno dialogowe, w którym administrator musi udzielić uprawnienia użytkownikowi. Po zaakceptowaniu przez administratora uprawnienia użytkownik może kontynuować LUIS. Jeśli administrator dzierżawy nie zaloguje się do usługi LUIS, administrator będzie mógł uzyskać [zgodę](https://account.activedirectory.windowsazure.com/r#/applications) na Luis, jak pokazano na poniższym zrzucie ekranu. Zwróć uwagę na to, że lista jest filtrowana do elementów, które zawierają nazwę `LUIS`.
 
-![Uprawnienia usługi Azure active directory, witryna sieci Web aplikacji](./media/luis-how-to-collaborate/tenant-permissions.png)
+![Uprawnienia usługi Azure Active Directory według witryny sieci Web aplikacji](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 Jeśli administrator dzierżawy chce, aby niektórzy użytkownicy korzystali z LUIS, istnieje kilka możliwych rozwiązań:
 * Podawanie "zgody administratora" (wyrażanie zgody wszystkim użytkownikom usługi Azure AD), a następnie ustawienie opcji "tak" jako "wymagane przypisanie użytkownika" we właściwościach aplikacji dla przedsiębiorstw i przypisanie/dodanie tylko odpowiednich użytkowników do aplikacji. W przypadku tej metody administrator nadal zapewnia dostęp do aplikacji "Zgoda na administrowanie", jednak można kontrolować użytkowników, którzy mają do nich dostępu.

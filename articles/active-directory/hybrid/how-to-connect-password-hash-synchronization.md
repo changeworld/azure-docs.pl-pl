@@ -1,6 +1,6 @@
 ---
-title: Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync | Dokumentacja firmy Microsoft
-description: Zawiera informacje o sposobie działania synchronizacji skrótów haseł i sposób konfigurowania.
+title: Implementowanie synchronizacji skrótów haseł z synchronizacją Azure AD Connect | Microsoft Docs
+description: Zawiera informacje o sposobie działania synchronizacji skrótów haseł i konfiguracji.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -22,76 +22,76 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74539021"
 ---
-# <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
-Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
+# <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z synchronizacją Azure AD Connect
+Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z wystąpienia lokalnego Active Directory do wystąpienia Azure Active Directory opartego na chmurze (Azure AD).
 
 ## <a name="how-password-hash-synchronization-works"></a>Jak działa synchronizacja skrótów haseł
-Domeny usługi Active Directory są przechowywane hasła w postaci reprezentację wartości skrótu hasła rzeczywisty użytkownik. Wartość skrótu jest wynikiem jednokierunkowej funkcji matematycznej ( *algorytmem wyznaczania wartości skrótu*). Nie ma możliwości przywrócenia wyniku tej jednokierunkowej funkcji z powrotem do hasła w postaci zwykłego tekstu. 
+Usługa domeny Active Directory przechowuje hasła w postaci reprezentacji wartości skrótu rzeczywiste hasło użytkownika. Wartość skrótu jest wynikiem jednokierunkowej funkcji matematycznej ( *algorytmem wyznaczania wartości skrótu*). Nie ma możliwości przywrócenia wyniku tej jednokierunkowej funkcji z powrotem do hasła w postaci zwykłego tekstu. 
 
-Aby zsynchronizować hasła, synchronizacja programu Azure AD Connect wyodrębnia usługi skrótów haseł z lokalnym wystąpieniem usługi Active Directory. Przetwarzanie zapewnienia dodatkowego bezpieczeństwa jest stosowany do skrótu hasła, zanim jest zsynchronizowany z usługą uwierzytelniania usługi Azure Active Directory. Hasła są synchronizowane na poszczególnych użytkowników, a także w porządku chronologicznym.
+Aby zsynchronizować hasło, Azure AD Connect Sync wyodrębnia skrót hasła z lokalnego wystąpienia Active Directory. Dodatkowe przetwarzanie zabezpieczeń jest stosowane do skrótu hasła przed jego zsynchronizowaniem z usługą uwierzytelniania Azure Active Directory. Hasła są synchronizowane osobno dla poszczególnych użytkowników i w kolejności chronologicznej.
 
-Przepływ danych rzeczywisty proces synchronizacji skrótów haseł jest podobny do synchronizacji danych użytkownika. Jednak synchronizowanych haseł częściej niż w oknie Synchronizacja katalogu standard innych atrybutów. Proces synchronizacji skrótów haseł jest uruchamiany co 2 minuty. Nie można zmodyfikować częstotliwości tego procesu. Podczas synchronizowania hasła zastępuje istniejące hasło w chmurze.
+Rzeczywisty przepływ danych procesu synchronizacji skrótów haseł jest podobny do synchronizacji danych użytkownika. Hasła są jednak synchronizowane częściej niż okno synchronizacja katalogu standardowego dla innych atrybutów. Proces synchronizacji skrótów haseł jest uruchamiany co 2 minuty. Nie można zmodyfikować częstotliwości tego procesu. Synchronizacja hasła powoduje zastąpienie istniejącego hasła w chmurze.
 
-Przy pierwszym włączeniu funkcji synchronizacji skrótów haseł, wykonuje synchronizację początkową haseł wszystkich użytkowników w zakresie. Nie można jawnie zdefiniować podzbiór haseł użytkowników, które mają być synchronizowane. Jeśli jednak istnieje wiele łączników, można wyłączyć synchronizację skrótów haseł dla niektórych łączników, ale nie inne za pomocą polecenia cmdlet [Set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
+Po pierwszym włączeniu funkcji synchronizacji skrótów haseł wykonywana jest początkowa synchronizacja haseł wszystkich użytkowników należących do zakresu. Nie można jawnie zdefiniować podzbioru haseł użytkowników, które mają zostać zsynchronizowane. Jeśli jednak istnieje wiele łączników, można wyłączyć synchronizację skrótów haseł dla niektórych łączników, ale nie inne za pomocą polecenia cmdlet [Set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
 
-Jeśli zmienisz hasło lokalne, zaktualizowanie hasła jest zsynchronizowana, w większości przypadków w ciągu kilku minut.
-Funkcji synchronizacji skrótów haseł automatycznie ponawia próby synchronizacji nie powiodło się. Jeśli wystąpi błąd podczas próby synchronizacji haseł, błąd jest rejestrowany w podglądu zdarzeń.
+Po zmianie hasła lokalnego zaktualizowane hasło jest synchronizowane najczęściej, w ciągu kilku minut.
+Funkcja synchronizacji skrótów haseł automatycznie ponawia próbę synchronizacji nie powiodła się. Jeśli wystąpi błąd podczas próby zsynchronizowania hasła, w Podglądzie zdarzeń zostanie zarejestrowany błąd.
 
-Synchronizacja haseł nie ma wpływu na użytkownika, który jest aktualnie zalogowany.
-Zmiany hasła zsynchronizowane, który występuje, gdy użytkownik jest zalogowany, usługi w chmurze nie występuje natychmiast w bieżącej sesji usługi chmury. Jednak gdy usługę w chmurze, należy uwierzytelnić się ponownie, należy podać nowe hasło.
+Synchronizacja hasła nie ma wpływu na użytkownika, który jest aktualnie zalogowany.
+Bieżąca sesja usługi w chmurze nie ma natychmiastowego wpływania na zsynchronizowaną zmianę hasła, która występuje, podczas gdy użytkownik jest zalogowany, do usługi w chmurze. Jeśli jednak usługa w chmurze wymaga ponownego uwierzytelnienia, należy podać nowe hasło.
 
-Użytkownik musi wprowadzić swoje poświadczenia firmy po raz drugi do uwierzytelniania w usłudze Azure AD, niezależnie od tego, czy ich zalogowany do sieci firmowej. Ten wzorzec można zminimalizować, jednak jeśli użytkownik wybierze Zachowaj mnie (KMSI) pole wyboru przy logowaniu. Zaznacz to pole wyboru, ustawia plik cookie sesji, który pomija uwierzytelnianie przez 180 dni. Zachowanie KMSI może być włączona lub wyłączona przez administratora usługi Azure AD. Ponadto można zmniejszyć monity o hasło, włączając [bezproblemową rejestrację jednokrotną](how-to-connect-sso.md), która automatycznie podpisuje użytkowników w przypadku, gdy znajdują się one na urządzeniach firmowych podłączonych do sieci firmowej.
+Użytkownik musi po raz drugi wprowadzić poświadczenia firmowe w celu uwierzytelnienia w usłudze Azure AD, niezależnie od tego, czy są zalogowani do sieci firmowej. Ten wzorzec można jednak zminimalizować, jeśli użytkownik wybierze pole wyboru nie wylogowuj mnie (KMSI) przy logowaniu. Ten wybór ustawia plik cookie sesji, który pomija uwierzytelnianie przez 180 dni. Zachowanie KMSI może być włączane lub wyłączane przez administratora usługi Azure AD. Ponadto można zmniejszyć monity o hasło, włączając [bezproblemową rejestrację jednokrotną](how-to-connect-sso.md), która automatycznie podpisuje użytkowników w przypadku, gdy znajdują się one na urządzeniach firmowych podłączonych do sieci firmowej.
 
 > [!NOTE]
-> Synchronizacja haseł jest obsługiwana tylko dla użytkownika typu obiektu w usłudze Active Directory. Nie jest obsługiwana dla typu obiektu iNetOrgPerson.
+> Synchronizacja haseł jest obsługiwana tylko dla użytkownika typu Object w Active Directory. Nie jest obsługiwany dla typu obiektu iNetOrgPerson.
 
-### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>Szczegółowy opis działania synchronizacji skrótów haseł
+### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>Szczegółowy opis sposobu działania synchronizacji skrótów haseł
 
-W poniższej sekcji opisano, szczegółowe, jak działa synchronizacja skrótów haseł między usługi Active Directory i Azure AD.
+W poniższej sekcji opisano szczegółowo, jak działa synchronizacja skrótów haseł między Active Directory i usługą Azure AD.
 
-![Przepływ szczegółowe hasła](./media/how-to-connect-password-hash-synchronization/arch3b.png)
+![Szczegółowy przepływ hasła](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
-1. Co dwie minuty agenta synchronizacji skrótów haseł dla żądań serwera AD Connect przechowywane wartości skrótów haseł (atrybutu unicodePwd) z kontrolera domeny.  To żądanie jest realizowane za pośrednictwem standardowego protokołu replikacji [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) służącego do synchronizowania danych między kontrolerami domeny. Konto usługi musi mieć Replikacja zmian katalogów i Replikuj wszystkie zmiany katalogu AD uprawnienia (domyślnie na instalację), do uzyskania wartości skrótu hasła.
-2. Przed wysłaniem kontroler domeny szyfruje skrót hasła algorytmu MD4 przy użyciu klucza, który jest skrótem [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) klucza sesji RPC i soli. Następnie wysyła wyniki do agenta synchronizacji skrótu hasła za pośrednictwem wywołania RPC. Kontroler domeny również przekazuje ziarna do agenta synchronizacji przy użyciu protokołu replikacji kontrolera domeny, aby agent będzie można odszyfrować koperty.
-3. Gdy Agent synchronizacji skrótów haseł ma zaszyfrowaną kopertę, używa [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) i soli do wygenerowania klucza w celu odszyfrowania odebranych danych z powrotem do oryginalnego formatu MD4. Agent synchronizacji skrótów haseł nigdy nie ma dostępu do hasła w postaci zwykłego tekstu. Użycie agenta synchronizacji skrótów haseł MD5 jest wyłącznie dla zgodności protokołu replikacji z kontrolerem domeny i jest używana tylko w środowisku lokalnym między kontrolerem domeny i agenta synchronizacji skrótów haseł.
-4. Agent synchronizacji skrótów haseł rozwija skrót hasła binarne 16-bajtowy 64 bajtów konwertując pierwszy wyznaczania wartości skrótu do 32 bajtów ciąg szesnastkowy, następnie konwertując ten ciąg z powrotem do pliku binarnego z kodowaniem UTF-16.
-5. Dodaje agenta synchronizacji skrótów haseł na ziarna użytkowników, składające się soli długości 10 bajtów do pliku binarnego 64 bajtów, aby jeszcze lepiej chronić oryginalnego wyznaczania wartości skrótu.
+1. Co dwie minuty Agent synchronizacji skrótów haseł na serwerze programu AD Connect żąda zapisanych skrótów haseł (atrybut unicodePwd) z kontrolera domeny.  To żądanie jest realizowane za pośrednictwem standardowego protokołu replikacji [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) służącego do synchronizowania danych między kontrolerami domeny. Konto usługi musi mieć zmiany w katalogu replikacji i replikowanie katalogu zmienia wszystkie uprawnienia usługi AD (przyznane domyślnie podczas instalacji), aby uzyskać skróty haseł.
+2. Przed wysłaniem kontroler domeny szyfruje skrót hasła algorytmu MD4 przy użyciu klucza, który jest skrótem [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) klucza sesji RPC i soli. Następnie wysyła wynik do agenta synchronizacji skrótów haseł za pośrednictwem usługi RPC. Kontroler domeny przekazuje także sól do agenta synchronizacji przy użyciu protokołu replikacji kontrolera domeny, dzięki czemu agent będzie mógł odszyfrować kopertę.
+3. Gdy Agent synchronizacji skrótów haseł ma zaszyfrowaną kopertę, używa [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) i soli do wygenerowania klucza w celu odszyfrowania odebranych danych z powrotem do oryginalnego formatu MD4. Agent synchronizacji skrótów haseł nigdy nie ma dostępu do hasła w postaci zwykłego tekstu. Użycie algorytmu MD5 przez agenta synchronizacji skrótów haseł jest przeznaczone wyłącznie do zapewnienia zgodności protokołu z kontrolerem domeny i jest używane tylko lokalnie między kontrolerem domeny i agentem synchronizacji skrótów haseł.
+4. Agent synchronizacji skrótów haseł rozszerza wartość 16-bajtowego skrótu hasła binarnego na 64 bajtów przez konwertowanie skrótu do 32-bajtowego ciągu szesnastkowego, a następnie przekonwertowanie tego ciągu z powrotem na dane binarne przy użyciu kodowania UTF-16.
+5. Agent synchronizacji skrótów haseł dodaje sól dla użytkownika, składającą się z 10-bajtowej soli długości, do 64-bajtowego pliku binarnego w celu dalszej ochrony oryginalnego skrótu.
 6. Agent synchronizacji skrótów haseł łączy skrót MD4 ze znakiem poszczególnych użytkowników i wprowadza je do funkcji [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) . 1000 iteracji algorytmem wyznaczania wartości skrótu [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) . 
-7. Agent synchronizacji skrótów haseł ma wynikowy skrót 32 bajtów, łączy się zarówno na ziarna użytkownika i liczba SHA256 iteracji do niego (do użytku przez usługę Azure AD), przesyła ciąg z usługi Azure AD Connect do usługi Azure AD za pośrednictwem protokołu SSL.</br> 
-8. Gdy użytkownik spróbuje się zalogować do usługi Azure AD i wprowadza swoje hasło, hasło jest uruchamiane za pomocą tego samego MD4 + ziarna + PBKDF2 + HMAC SHA256 procesu. Jeśli wynikowy skrót pasuje do wyznaczania wartości skrótu, przechowywane w usłudze Azure AD, użytkownik wprowadził prawidłowe hasło i jest uwierzytelniony.
+7. Agent synchronizacji skrótów haseł pobiera wynikowy 32-bajtowy, łączy zarówno sól dla użytkownika, jak i liczbę iteracji SHA256 (na użytek usługi Azure AD), a następnie przesyła ciąg z Azure AD Connect do usługi Azure AD za pośrednictwem protokołu SSL.</br> 
+8. Gdy użytkownik próbuje zalogować się do usługi Azure AD i wprowadzi swoje hasło, jest ono uruchamiane za pomocą tego samego procesu MD4 + sól + PBKDF2 + HMAC-SHA256. Jeśli wynikowy skrót jest zgodny z wartością skrótu przechowywaną w usłudze Azure AD, użytkownik wprowadził poprawne hasło i zostanie uwierzytelniony.
 
 > [!NOTE]
-> Oryginalny skrót MD4 nie są przesyłane do usługi Azure AD. Zamiast tego są przesyłane skrót SHA256 obiektu oryginalnego wyznaczania wartości skrótu MD4. W rezultacie w przypadku wyznaczania wartości skrótu, przechowywane w usłudze Azure AD, nie można użyć w przypadku ataków typu pass--hash w środowisku lokalnym.
+> Oryginalny skrót MD4 nie jest przesyłany do usługi Azure AD. Zamiast tego jest przesyłany Skrót SHA256 oryginalnego skrótu MD4. W związku z tym, jeśli zostanie uzyskany skrót przechowywany w usłudze Azure AD, nie można go używać w przypadku ataku typu "nastąpi lokalne".
 
 ### <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 
-Podczas synchronizacji haseł wersji tekstowego hasła nie jest uwidaczniany w funkcji synchronizacji skrótów haseł, do usługi Azure AD lub dowolnej z usług jest skojarzony.
+Podczas synchronizowania haseł wersja zwykłego tekstu hasła nie jest udostępniona funkcji synchronizacji skrótów haseł w usłudze Azure AD ani żadnej z skojarzonych usług.
 
-Uwierzytelnianie użytkownika ma miejsce, w usłudze Azure AD, a nie względem wystąpienia usługi Active Directory w organizacji. Dane haseł SHA256, które są przechowywane w usłudze Azure AD — skrót oryginalnego wyznaczania wartości skrótu MD4 — jest bezpieczniejszy niż co to jest przechowywany w usłudze Active Directory. Co więcej ponieważ nie można odszyfrować ten skrót SHA256, uniemożliwiający sprowadzony z powrotem do środowiska usługi Active Directory w firmie i przedstawiane jako prawidłowego użytkownika hasła w ataku typu pass--hash.
+Uwierzytelnianie użytkowników odbywa się w odniesieniu do usługi Azure AD, a nie w odniesieniu do własnego wystąpienia Active Directory organizacji. Dane hasła SHA256 przechowywane w usłudze Azure AD — skrót oryginalnego skrótu algorytmu MD4 — jest bezpieczniejszy niż to, co jest przechowywane w Active Directory. Ponadto, ponieważ nie można odszyfrować tego skrótu SHA256, nie może zostać przywrócony do środowiska Active Directory organizacji i przedstawiony jako prawidłowe hasło użytkownika w ataku typu Pass-the-hash.
 
 ### <a name="password-policy-considerations"></a>Zagadnienia dotyczące zasad haseł
 
-Istnieją dwa typy zasad haseł, których dotyczy Włączanie synchronizacji skrótów haseł:
+Istnieją dwa typy zasad haseł, na które mają wpływ włączenie synchronizacji skrótów haseł:
 
 * Zasady złożoności haseł
 * Zasady wygasania haseł
 
 #### <a name="password-complexity-policy"></a>Zasady złożoności haseł
 
-Po włączeniu synchronizacji skrótów haseł, zasady złożoności haseł w Twoim wystąpieniu usługi Active Directory w środowisku lokalnym zastępują zasady złożoności w chmurze na potrzeby zsynchronizowani użytkownicy. Wszystkie prawidłowe haseł z lokalnego wystąpienia usługi Active Directory można użyć na dostęp do usług Azure AD.
+Gdy synchronizacja skrótów haseł jest włączona, zasady złożoności haseł w wystąpieniu Active Directory lokalnego przesłaniają zasady złożoności w chmurze dla synchronizowanych użytkowników. Aby uzyskać dostęp do usług Azure AD, możesz użyć wszystkich prawidłowych haseł z lokalnego wystąpienia Active Directory.
 
 > [!NOTE]
-> Hasła użytkowników, które są tworzone bezpośrednio w chmurze są nadal podlega procesowi zasady dotyczące haseł, zgodnie z definicją w chmurze.
+> Hasła użytkowników utworzonych bezpośrednio w chmurze są nadal objęte zasadami haseł zdefiniowanymi w chmurze.
 
 #### <a name="password-expiration-policy"></a>Zasady wygasania haseł
 
 Jeśli użytkownik należy do zakresu synchronizacji skrótów haseł, domyślnie hasło konta w chmurze jest ustawione na *nigdy nie wygasa*.
 
-Można nadal logować się do usługi w chmurze przy użyciu hasła zsynchronizowane, który wygasł w środowisku w środowisku lokalnym. Hasło do chmury jest aktualizowana przy następnym zmienić hasło w środowisku lokalnym.
+Możesz nadal logować się do usług w chmurze, używając zsynchronizowanego hasła, które wygasło w środowisku lokalnym. Hasło w chmurze zostanie zaktualizowane przy następnym zmianie hasła w środowisku lokalnym.
 
 ##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>Publiczna wersja zapoznawcza funkcji *EnforceCloudPasswordPolicyForPasswordSyncedUsers*
 
-W przypadku synchronizacji użytkowników, którzy współpracują z usługami zintegrowanymi z usługą Azure AD i muszą być zgodni z zasadami wygasania haseł, można wymusić zgodność z zasadami wygasania haseł usługi Azure AD, włączając  *Funkcja EnforceCloudPasswordPolicyForPasswordSyncedUsers* .
+W przypadku synchronizacji użytkowników, którzy współpracują z usługami zintegrowanymi z usługą Azure AD i muszą być zgodni z zasadami wygasania haseł, można wymusić ich zgodność z zasadami wygasania haseł usługi Azure AD, włączając funkcję *EnforceCloudPasswordPolicyForPasswordSyncedUsers* .
 
 Gdy *EnforceCloudPasswordPolicyForPasswordSyncedUsers* jest wyłączone (jest to ustawienie domyślne), Azure AD Connect ustawia atrybut PasswordPolicies synchronizowanych użytkowników na "DisablePasswordExpiration". Jest to wykonywane za każdym razem, gdy hasło użytkownika jest synchronizowane i powoduje, że usługa Azure AD zignoruje zasady wygaśnięcia hasła w chmurze dla tego użytkownika. Wartość atrybutu można sprawdzić przy użyciu modułu Azure AD PowerShell za pomocą następującego polecenia:
 
@@ -123,7 +123,7 @@ Typowo, aby wymusić zmianę hasła przez użytkownika podczas pierwszego logowa
   
 Funkcja hasła tymczasowego pomaga zapewnić, że przeniesienie własności poświadczenia odbywa się przy pierwszym użyciu, aby zminimalizować czas, w którym więcej niż jedna osoba ma wiedzę na temat tego poświadczenia.
 
-Aby obsługiwać tymczasowe hasła w usłudze Azure AD dla synchronizowanych użytkowników, można włączyć funkcję *ForcePasswordResetOnLogonFeature* , uruchamiając następujące polecenie na serwerze Azure AD Connect, zastępując <AAD Connector Name> nazwą łącznika specyficzną dla Twoje środowisko:
+Aby obsługiwać tymczasowe hasła w usłudze Azure AD dla synchronizowanych użytkowników, można włączyć funkcję *ForcePasswordResetOnLogonFeature* , uruchamiając następujące polecenie na serwerze Azure AD Connect, zastępując <AAD Connector Name> nazwą łącznika specyficzną dla danego środowiska:
 
 `Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
 
@@ -139,24 +139,24 @@ Zastrzeżenie: wymuszanie użytkownikowi zmiany hasła przy następnym logowaniu
 > [!NOTE]
 > Ta funkcja jest teraz dostępna w publicznej wersji zapoznawczej.
 
-#### <a name="account-expiration"></a>Termin wygaśnięcia konta
+#### <a name="account-expiration"></a>Wygaśnięcie konta
 
-Jeśli Twoja organizacja używa atrybutu accountExpires jako część zarządzania kontami użytkowników, ten atrybut nie jest zsynchronizowany z usługą Azure AD. Co w efekcie Wygasłe konta usługi Active Directory w środowisku, który został skonfigurowany do synchronizacji skrótów haseł nadal jest aktywny w usłudze Azure AD. Zalecamy, aby Jeśli konto wygasło, Akcja przepływu pracy powinna wyzwolić skrypt programu PowerShell, który wyłącza konto usługi Azure AD użytkownika (Użyj polecenia cmdlet [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) ). Z drugiej strony gdy konto jest włączone, wystąpienia usługi Azure AD powinien zostać włączony.
+Jeśli organizacja używa atrybutu accountExpires jako części zarządzania kontami użytkowników, ten atrybut nie jest synchronizowany z usługą Azure AD. W związku z tym wygasłe konto Active Directory w środowisku skonfigurowanym do synchronizacji skrótów haseł będzie nadal aktywne w usłudze Azure AD. Zalecamy, aby Jeśli konto wygasło, Akcja przepływu pracy powinna wyzwolić skrypt programu PowerShell, który wyłącza konto usługi Azure AD użytkownika (Użyj polecenia cmdlet [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) ). Po włączeniu konta należy włączyć wystąpienie usługi Azure AD.
 
-### <a name="overwrite-synchronized-passwords"></a>Zastąp synchronizowanych haseł
+### <a name="overwrite-synchronized-passwords"></a>Zastąp zsynchronizowane hasła
 
-Administrator może ręcznie zresetować hasło za pomocą programu Windows PowerShell.
+Administrator może ręcznie zresetować hasło przy użyciu programu Windows PowerShell.
 
-W tym przypadku nowe hasło zastępuje zsynchronizowane hasło, a wszystkie zasady haseł, zdefiniowane w chmurze są stosowane do nowego hasła.
+W takim przypadku nowe hasło zastępuje zsynchronizowane hasło, a wszystkie zasady haseł zdefiniowane w chmurze zostaną zastosowane do nowego hasła.
 
-Jeśli zmienisz hasło lokalne ponownie nowe hasło jest zsynchronizowany z chmurą i zastępuje ona ręczne zaktualizowanie hasła.
+Jeśli zmienisz hasło lokalne ponownie, nowe hasło zostanie zsynchronizowane z chmurą i zastąpi je ręcznie zaktualizowane hasło.
 
-Synchronizacja haseł nie ma wpływu na użytkownika platformy Azure, który jest zalogowany. Zmiany hasła zsynchronizowane, który występuje, gdy zalogowany do usługi w chmurze nie występuje natychmiast w bieżącej sesji usługi chmury. KMSI rozszerza czas trwania tej różnicy. Gdy usługa w chmurze, należy uwierzytelnić się ponownie, musisz podać nowe hasło.
+Synchronizacja hasła nie ma wpływu na użytkownika platformy Azure, który jest zalogowany. Bieżąca sesja usługi w chmurze nie ma natychmiastowego wpływania na zsynchronizowaną zmianę hasła, która występuje, gdy użytkownik jest zalogowany do usługi w chmurze. KMSI wydłuża czas trwania tej różnicy. Gdy usługa w chmurze wymaga ponownego uwierzytelnienia, należy podać nowe hasło.
 
 ### <a name="additional-advantages"></a>Dodatkowe korzyści
 
-- Ogólnie rzecz biorąc synchronizacji skrótów haseł jest prostsza do zaimplementowania niż usługi federacyjnej. Nie wymaga żadnych dodatkowych serwerów i eliminuje zależność od usługi federacyjnej o wysokiej dostępności do uwierzytelniania użytkowników.
-- Można również włączyć synchronizację skrótów haseł oprócz federacji. Może być używany jako rezerwowe, jeśli usługi federacyjnej ulegnie awarii.
+- Zwykle synchronizacja skrótów haseł jest prostsza do zaimplementowania niż usługa federacyjna. Nie wymaga żadnych dodatkowych serwerów i eliminuje zależność od usługi federacyjnej o wysokiej dostępności do uwierzytelniania użytkowników.
+- Oprócz Federacji można również włączyć synchronizację skrótów haseł. Mogą być używane jako rezerwowe, jeśli usługa federacyjna napotyka awarię.
 
 ## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Proces synchronizacji skrótów haseł dla Azure AD Domain Services
 
@@ -200,22 +200,22 @@ Jeśli używasz Azure AD Domain Services w celu zapewnienia starszego uwierzytel
 
 W przypadku instalowania Azure AD Connect przy użyciu opcji **Ustawienia ekspresowe** synchronizacja skrótów haseł jest włączana automatycznie. Aby uzyskać więcej informacji, zobacz [wprowadzenie do Azure AD Connect przy użyciu ustawień ekspresowych](how-to-connect-install-express.md).
 
-Jeśli używasz ustawienia niestandardowe, podczas instalowania programu Azure AD Connect, synchronizacji skrótów haseł jest dostępna na stronie logowania użytkownika. Aby uzyskać więcej informacji, zobacz [Instalacja Niestandardowa Azure AD Connect](how-to-connect-install-custom.md).
+W przypadku korzystania z ustawień niestandardowych podczas instalowania Azure AD Connect na stronie logowania użytkownika jest dostępna synchronizacja skrótów haseł. Aby uzyskać więcej informacji, zobacz [Instalacja Niestandardowa Azure AD Connect](how-to-connect-install-custom.md).
 
 ![Włączanie synchronizacji skrótów haseł](./media/how-to-connect-password-hash-synchronization/usersignin2.png)
 
-### <a name="password-hash-synchronization-and-fips"></a>Synchronizacja skrótów haseł i ze standardem FIPS
-Jeśli serwer został zablokowany zgodnie z informacji przetwarzania Standard FIPS (Federal), MD5 jest wyłączone.
+### <a name="password-hash-synchronization-and-fips"></a>Synchronizacja skrótów haseł i FIPS
+Jeśli serwer został zablokowany zgodnie z normą FIPS (Federal Information Processing Standard), wówczas MD5 jest wyłączony.
 
 **Aby włączyć MD5 dla synchronizacji skrótów haseł, wykonaj następujące czynności:**
 
-1. Przejdź do Sync\Bin %programfiles%\Azure AD.
-2. Otwórz miiserver.exe.config.
-3. Przejdź do węzła Konfiguracja/środowiska uruchomieniowego na końcu pliku.
+1. Przejdź do%programfiles%\Azure usługi AD Sync\Bin.
+2. Otwórz plik MIIServer. exe. config.
+3. Przejdź do węzła Konfiguracja/środowisko uruchomieniowe na końcu pliku.
 4. Dodaj następujący węzeł: `<enforceFIPSPolicy enabled="false"/>`
 5. Zapisz zmiany.
 
-Odwołanie ten fragment kodu jest, co powinno to wyglądać:
+Aby uzyskać odwołanie, ten fragment kodu powinien wyglądać następująco:
 
 ```
     <configuration>

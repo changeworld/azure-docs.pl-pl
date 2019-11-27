@@ -23,9 +23,9 @@ Wolumin *gitRepo* instaluje katalog i klonuje określone repozytorium git przy u
 
 Podczas instalowania woluminu *gitRepo* można ustawić trzy właściwości, aby skonfigurować wolumin:
 
-| Właściwość | Wymagany | Opis |
+| Właściwość | Wymagane | Opis |
 | -------- | -------- | ----------- |
-| `repository` | Yes | Pełny adres URL, w tym `http://` lub `https://`, w repozytorium git, który ma zostać sklonowany.|
+| `repository` | Tak | Pełny adres URL, w tym `http://` lub `https://`, w repozytorium git, który ma zostać sklonowany.|
 | `directory` | Nie | Katalog, do którego ma zostać Sklonowane repozytorium. Ścieżka nie może zawierać znaków "`..`" ani zaczynać się od niej.  W przypadku określenia "`.`" repozytorium jest sklonowane do katalogu woluminu. W przeciwnym razie repozytorium git zostanie sklonowane do podkatalogu o podaną nazwę w katalogu woluminów. |
 | `revision` | Nie | Skrót zatwierdzenia poprawki do klonowania. Jeśli nie zostanie określony, `HEAD` jest klona. |
 

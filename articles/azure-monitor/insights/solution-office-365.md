@@ -534,10 +534,10 @@ Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. 
 
 | Kolumna | Opis |
 |:--|:--|
-| Operacje | Zawiera informacje o aktywnych użytkownikach ze wszystkich monitorowanych subskrypcji pakietu Office 365. Zobaczysz również liczbę działań, które wystąpiły w czasie.
-| Exchange | Pokazuje podział działań programu Exchange Server, takich jak uprawnienie Dodawanie-Skrzynka pocztowa, lub ustawienie-Skrzynka pocztowa. |
+| Operations | Zawiera informacje o aktywnych użytkownikach ze wszystkich monitorowanych subskrypcji pakietu Office 365. Zobaczysz również liczbę działań, które wystąpiły w czasie.
+| Wymiana | Pokazuje podział działań programu Exchange Server, takich jak uprawnienie Dodawanie-Skrzynka pocztowa, lub ustawienie-Skrzynka pocztowa. |
 | Sharepoint | Przedstawia najważniejsze działania wykonywane przez użytkowników w dokumentach programu SharePoint. Podczas przechodzenia do szczegółów z tego kafelka na stronie wyszukiwania są wyświetlane szczegółowe informacje o tych działaniach, takie jak dokument docelowy i lokalizacja tego działania. Na przykład dla zdarzenia, do którego jest uzyskiwany dostęp do pliku, będzie można wyświetlić dokument, do którego jest uzyskiwany dostęp, jego nazwę skojarzonego konta i adres IP. |
-| Usługa Azure Active Directory | Obejmuje działania najważniejszych użytkowników, takie jak resetowanie hasła użytkownika i logowania. Po przejściu do szczegółów będzie można zobaczyć szczegóły tych działań, jak w przypadku stanu wyniku. Jest to szczególnie przydatne, jeśli chcesz monitorować podejrzane działania na Azure Active Directory. |
+| Usługa Active Directory systemu Azure | Obejmuje działania najważniejszych użytkowników, takie jak resetowanie hasła użytkownika i logowania. Po przejściu do szczegółów będzie można zobaczyć szczegóły tych działań, jak w przypadku stanu wyniku. Jest to szczególnie przydatne, jeśli chcesz monitorować podejrzane działania na Azure Active Directory. |
 
 
 
@@ -554,14 +554,14 @@ Następujące właściwości są wspólne dla wszystkich rekordów pakietu Offic
 |:--- |:--- |
 | Typ | *Pakiet Office* |
 | ClientIP | Adres IP urządzenia, który został użyty podczas rejestrowania działania. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
-| OfficeWorkload | Usługa Office 365, do której odwołuje się rekord.<br><br>AzureActiveDirectory<br>Exchange<br>Sharepoint|
+| OfficeWorkload | Usługa Office 365, do której odwołuje się rekord.<br><br>Usługi azureactivedirectory<br>Wymiana<br>Sharepoint|
 | Operacja | Nazwa działania użytkownika lub administratora.  |
 | Identyfikatorem organizationid | Identyfikator GUID dzierżawy pakietu Office 365 w organizacji. Ta wartość będzie zawsze taka sama dla organizacji, niezależnie od usługi Office 365, w której występuje. |
 | RecordType | Typ wykonywanej operacji. |
 | ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem, czy nie. Możliwe wartości to sukces, PartiallySucceeded lub niepowodzenie. W przypadku działania administracyjnego programu Exchange wartością jest true lub false. |
-| UserId | Nazwa UPN użytkownika, który wykonał akcję, która spowodowała zarejestrowanie rekordu; na przykład my_name@my_domain_name. Należy pamiętać, że rekordy dla działania wykonywanego przez konta systemu (takie jak SHAREPOINT\system lub systemowe NTAUTHORITY\SYSTEM) również są uwzględnione. | 
+| Nazwa | Nazwa UPN użytkownika, który wykonał akcję, która spowodowała zarejestrowanie rekordu; na przykład my_name@my_domain_name. Należy pamiętać, że rekordy dla działania wykonywanego przez konta systemu (takie jak SHAREPOINT\system lub systemowe NTAUTHORITY\SYSTEM) również są uwzględnione. | 
 | UserKey | Alternatywny identyfikator użytkownika zidentyfikowany we właściwości UserId.  Na przykład ta właściwość jest wypełniana unikatowym IDENTYFIKATORem (PUID) usługi Passport dla zdarzeń wykonywanych przez użytkowników w usługach SharePoint, OneDrive dla firm i Exchange. Ta właściwość może również określać taką samą wartość jak Właściwość UserID dla zdarzeń występujących w innych usługach i zdarzeń wykonywanych przez konta systemowe|
-| userType | Typ użytkownika, który wykonał operację.<br><br>Administrator<br>Aplikacja<br>DcAdmin<br>Ustalon<br>Zarezerwowany<br>ServicePrincipal<br>System |
+| userType | Typ użytkownika, który wykonał operację.<br><br>administratora<br>Aplikacja<br>DcAdmin<br>Ustalon<br>Zarezerwowane<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Baza Azure Active Directory
@@ -570,8 +570,8 @@ Następujące właściwości są wspólne dla wszystkich Azure Active Directory 
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| OfficeWorkload | Usługi azureactivedirectory |
+| RecordType     | Usługi azureactivedirectory |
 | AzureActiveDirectory_EventType | Typ zdarzenia usługi Azure AD. |
 | Właściwości ExtendedProperties | Właściwości rozszerzone zdarzenia usługi Azure AD. |
 
@@ -582,7 +582,7 @@ Te rekordy są tworzone, gdy użytkownik Active Directory próbuje się zalogowa
 
 | Właściwość | Opis |
 |:--- |:--- |
-| `OfficeWorkload` | AzureActiveDirectory |
+| `OfficeWorkload` | Usługi azureactivedirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
 | `Application` | Aplikacja, która wyzwala zdarzenie logowania do konta, takie jak Office 15. |
 | `Client` | Szczegóły dotyczące urządzenia klienckiego, systemu operacyjnego urządzenia i przeglądarki, która była używana na potrzeby zdarzenia logowania do konta. |
@@ -590,14 +590,14 @@ Te rekordy są tworzone, gdy użytkownik Active Directory próbuje się zalogowa
 | `UserDomain` | Informacje o tożsamości dzierżawy (TII). | 
 
 
-### <a name="azure-active-directory"></a>Usługa Azure Active Directory
+### <a name="azure-active-directory"></a>Usługa Active Directory systemu Azure
 
 Te rekordy są tworzone w przypadku wprowadzenia zmian lub uzupełnień do Azure Active Directory obiektów.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| OfficeWorkload | Usługi azureactivedirectory |
+| RecordType     | Usługi azureactivedirectory |
 | AADTarget | Użytkownik wykonał akcję (identyfikowaną przez właściwość operacji). |
 | Zewnętrzny | Nazwa główna użytkownika lub usługi, która wykonał akcję. |
 | ActorContextId | Identyfikator GUID organizacji, do której należy aktor. |
@@ -630,11 +630,11 @@ Te rekordy są tworzone po wprowadzeniu zmian w konfiguracji programu Exchange.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | Wymiana |
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Określa, czy polecenie cmdlet zostało uruchomione przez użytkownika w organizacji, przez personel centrum danych firmy Microsoft lub konto usługi centrum danych, czy przez administratora delegowanego. Wartość false wskazuje, że polecenie cmdlet zostało uruchomione przez kogoś w organizacji. Wartość true wskazuje, że polecenie cmdlet zostało uruchomione przez personel centrum danych, konto usługi centrum danych lub administratora delegowanego. |
 | ModifiedObjectResolvedName |  Jest to przyjazna dla użytkownika nazwa obiektu, który został zmodyfikowany przez polecenie cmdlet. Jest to rejestrowane tylko wtedy, gdy polecenie cmdlet modyfikuje obiekt. |
-| Nazwa_organizacji | Nazwa dzierżawy. |
+| OrganizationName | Nazwa dzierżawy. |
 | OriginatingServer | Nazwa serwera, z którego zostało wykonane polecenie cmdlet. |
 | Parametry | Nazwa i wartość dla wszystkich parametrów, które były używane z poleceniem cmdlet, które zostały zidentyfikowane we właściwości Operations. |
 
@@ -645,7 +645,7 @@ Te rekordy są tworzone po wprowadzeniu zmian lub uzupełnień do skrzynek poczt
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | Wymiana |
 | RecordType     | ExchangeItem |
 | ClientInfoString | Informacje dotyczące klienta poczty e-mail użytego do wykonania tej operacji, takie jak wersja przeglądarki, wersja programu Outlook i informacje o urządzeniu przenośnym. |
 | Client_IPAddress | Adres IP urządzenia, który został użyty podczas rejestrowania operacji. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
@@ -668,7 +668,7 @@ Te rekordy są tworzone podczas tworzenia wpisu inspekcji skrzynki pocztowej.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | Wymiana |
 | RecordType     | ExchangeItem |
 | Element | Reprezentuje element, na którym wykonano operację | 
 | SendAsUserMailboxGuid | Identyfikator GUID programu Exchange skrzynki pocztowej, do której uzyskano dostęp do wysyłania wiadomości e-mail. |
@@ -683,7 +683,7 @@ Te rekordy są tworzone po wprowadzeniu zmian lub uzupełnień do grup programu 
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | Wymiana |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | Informacje o każdym elemencie w grupie. |
 | CrossMailboxOperations | Wskazuje, czy operacja dotyczyła więcej niż jednej skrzynki pocztowej. |

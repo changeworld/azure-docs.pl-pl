@@ -33,7 +33,7 @@ Dzienniki przepływu sieciowej grupy zabezpieczeń są przechowywane na koncie m
 
 W poniższym scenariuszu przedstawiono przykładowy dziennik przepływu, który jest przechowywany na koncie magazynu. Dowiesz się, jak wybiórczo odczytywać najnowsze zdarzenia w dziennikach przepływu sieciowej grupy zabezpieczeń. W tym artykule użyto programu PowerShell, jednak koncepcje omówione w artykule nie są ograniczone do języka programowania i są stosowane do wszystkich języków obsługiwanych przez interfejsy API usługi Azure Storage.
 
-## <a name="setup"></a>Konfigurowanie
+## <a name="setup"></a>Konfiguracja
 
 Przed rozpoczęciem należy włączyć rejestrowanie przepływu sieciowych grup zabezpieczeń dla jednej lub wielu sieciowych grup zabezpieczeń na Twoim koncie. Instrukcje dotyczące włączania dzienników przepływu zabezpieczeń sieci można znaleźć w następującym artykule: [wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 

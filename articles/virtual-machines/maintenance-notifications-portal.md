@@ -24,7 +24,7 @@ Po zaplanowaniu [planowanej fazy konserwacji](maintenance-notifications.md) moż
 
 Możesz użyć Azure Portal i wyszukać maszyny wirtualne zaplanowane do konserwacji.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 2. W lewym okienku nawigacji kliknij pozycję **Virtual Machines**.
 

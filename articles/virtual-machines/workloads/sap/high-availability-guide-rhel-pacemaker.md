@@ -124,13 +124,13 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
 
 1. **[A]** rozpoznawanie nazw hostów
 
-   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
-   Zastąp adres IP i nazwy hosta w poniższych poleceniach. Zaletą używania/etc/hosts będzie niezależnie od systemu DNS, co może być zbyt pojedynczy punkt awarii klastra.
+   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
+   Zastąp adres IP i nazwę hosta w następujących poleceniach. Zaletą korzystania z/etc/hosts jest to, że klaster będzie niezależny od systemu DNS, co może być tylko pojedynczym punktem awarii.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
+   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
 
    <pre><code># IP address of the first cluster node
    <b>10.0.0.6 prod-cl1-0</b>
@@ -198,26 +198,26 @@ Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]
 
 ## <a name="create-stonith-device"></a>Utwórz urządzenie STONITH
 
-Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacji dla Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi.
+Urządzenie STONITH używa nazwy głównej usługi do autoryzacji przed Microsoft Azure. Wykonaj następujące kroki, aby utworzyć nazwę główną usługi.
 
-1. Przejdź do strony <https://portal.azure.com>
-1. Otwórz blok usługi Azure Active Directory  
-   Przejdź do właściwości i zanotuj nazwę katalogu. To jest **Identyfikator dzierżawy**.
-1. Kliknij przycisk rejestracje aplikacji
+1. Przejdź do usługi <https://portal.azure.com>
+1. Otwórz blok Azure Active Directory  
+   Przejdź do pozycji właściwości i Zapisz identyfikator katalogu. To jest **Identyfikator dzierżawy**.
+1. Kliknij Rejestracje aplikacji
 1. Kliknij pozycję Nowa rejestracja
 1. Wprowadź nazwę, wybierz pozycję "konta tylko w tym katalogu organizacji". 
 2. Wybierz pozycję typ aplikacji "sieć Web", wprowadź adres URL logowania (na przykład http:\//localhost), a następnie kliknij przycisk Dodaj.  
-   Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
+   Adres URL logowania nie jest używany i może być dowolnym prawidłowym adresem URL
 1. Wybierz pozycję Certyfikaty i wpisy tajne, a następnie kliknij pozycję Nowy wpis tajny klienta.
 1. Wprowadź opis nowego klucza, wybierz pozycję "nigdy nie wygasa" i kliknij przycisk Dodaj.
-1. Zanotuj wartość. Służy jako **hasło** dla nazwy głównej usługi
-1. Wybierz pozycję przegląd. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikator logowania** w poniższych krokach) nazwy głównej usługi
+1. Zapisz wartość. Służy jako **hasło** dla nazwy głównej usługi
+1. Wybierz pozycję przegląd. Zapisz identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikator logowania** w poniższych krokach) nazwy głównej usługi
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** Utwórz rolę niestandardową dla agenta ogranicznika
 
-Nazwa główna usługi nie ma uprawnień do dostępu do zasobów platformy Azure, domyślnie. Należy nadać uprawnienia główne usługi, aby uruchomić i zatrzymać (wyłączyć) wszystkie maszyny wirtualne w klastrze. Jeśli rola niestandardowa nie została jeszcze utworzona, możesz ją utworzyć przy użyciu [programu PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Jednostka usługi nie ma uprawnień dostępu do zasobów platformy Azure domyślnie. Należy nadać uprawnienia główne usługi, aby uruchomić i zatrzymać (wyłączyć) wszystkie maszyny wirtualne w klastrze. Jeśli rola niestandardowa nie została jeszcze utworzona, możesz ją utworzyć przy użyciu [programu PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 
-Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Twojej subskrypcji, Zastąp c276fc76-9cd4-44c9-99a7-4fd71546436e i e91d47c4-76f3-4271-a796-21b4ecfe3624 identyfikatory subskrypcji. Jeśli masz tylko jedną subskrypcję, należy usunąć drugi wpis w AssignableScopes.
+Użyj następującej zawartości dla pliku wejściowego. Musisz dostosować zawartość do swoich subskrypcji, zastępując c276fc76-9cd4-44c9-99a7-4fd71546436e i e91d47c4-76f3-4271-a796-21b4ecfe3624 identyfikatorami subskrypcji. Jeśli masz tylko jedną subskrypcję, Usuń drugą pozycję w AssignableScopes.
 
 ```json
 {
@@ -241,22 +241,22 @@ Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Tw
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** Przypisz rolę niestandardową do jednostki usługi
 
-Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdziale ostatniego jednostki usługi. Nie używaj roli właściciel już!
+Przypisz rolę niestandardową "rola agenta ogranicznika systemu Linux" utworzoną w ostatnim rozdziale do jednostki usługi. Nie używaj już roli właściciela!
 
-1. Przejdź do strony https://portal.azure.com
-1. Otwieranie bloku wszystkie zasoby
-1. Wybierz maszynę wirtualną, w pierwszym węźle klastra
-1. Kliknij przycisk kontroli dostępu (IAM)
-1. Kliknij przycisk Dodaj przypisanie roli
-1. Wybierz rolę "Rolę agenta Odgradzania Linux"
-1. Wprowadź nazwę aplikacji, które zostały utworzone powyżej
+1. Przejdź do usługi https://portal.azure.com
+1. Otwórz blok wszystkie zasoby
+1. Wybierz maszynę wirtualną pierwszego węzła klastra
+1. Kliknij pozycję Kontrola dostępu (IAM)
+1. Kliknij pozycję Dodaj przypisanie roli
+1. Wybierz rolę "rola agenta ogranicznika systemu Linux"
+1. Wprowadź nazwę utworzonej aplikacji
 1. Klikanie pozycji Zapisz.
 
 Powtórz powyższe kroki dla drugiego węzła klastra.
 
 ### <a name="1-create-the-stonith-devices"></a>**[1]** tworzenie urządzeń STONITH
 
-Po edycji uprawnień dla maszyn wirtualnych można skonfigurować urządzenia pomocą metody STONITH w klastrze.
+Po edytowaniu uprawnień dla maszyn wirtualnych można skonfigurować urządzenia STONITH w klastrze.
 
 <pre><code>
 sudo pcs property set stonith-timeout=900

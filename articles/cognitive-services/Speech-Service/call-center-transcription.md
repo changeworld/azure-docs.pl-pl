@@ -70,7 +70,7 @@ Nasze opóźnienia kompleksowe są znacznie niskie dla różnych technologii, ta
 
 Nasze nowe głosy są również odróżniane od głosów ludzkich. Możesz użyć naszych głosów, aby bot swój unikatowy charakter.
 
-### <a name="search"></a>Wyszukiwanie
+### <a name="search"></a>Search
 
 Kolejną zszywaniem funkcji analitycznych jest zidentyfikowanie interakcji w przypadku wystąpienia konkretnego zdarzenia lub doświadczenia. Zwykle jest to wykonywane z jednym z dwóch metod; Wyszukiwanie ad hoc, w którym użytkownik po prostu wpisuje frazę i system odpowiada, lub bardziej strukturalne zapytanie, gdzie analityk może utworzyć zestaw instrukcji logicznych, które identyfikują scenariusz w wywołaniu, a następnie każde wywołanie może być indeksowane względem tego zestawu zapytań. Dobrym przykładem wyszukiwania jest Powszechna Deklaracja zgodności "to wywołanie jest rejestrowane w celach jakościowych... ". W wielu firmach chcemy upewnić się, że ich agenci dostarczą tej odpowiedzialności klientom przed faktycznym zarejestrowaniem połączenia. Większość systemów analitycznych ma możliwość trendu zachowań znalezionych przez algorytmy zapytań i wyszukiwania, a to raportowanie trendów jest ostatecznie jedną z najważniejszych funkcji systemu analitycznego. Za pomocą [katalogu usług poznawczych](https://azure.microsoft.com/services/cognitive-services/directory/search/) kompleksowe rozwiązanie można znacznie rozszerzyć za pomocą funkcji indeksowania i wyszukiwania.
 
@@ -121,11 +121,11 @@ Innym scenariuszem jest bezpośrednia integracja z protokołem inicjowania sesji
 
  Usługa Speech działa dobrze z wbudowanymi modelami. Można jednak dodatkowo dostosowywać i dostrajać środowisko dla danego produktu lub środowiska. Opcje dostosowania przestają być od modelu akustycznego na unikatowe czcionki głosowe dla marki. Po skompilowaniu modelu niestandardowego można używać go z dowolnym funkcją usługi mowy w trybie w czasie rzeczywistym lub wsadowym.
 
-| Usługa mowy | Modelowanie | Opis |
+| Usługa mowy | Model | Opis |
 | -------------- | ----- | ----------- |
 | Zamiana mowy na tekst | [Model akustyczny](how-to-customize-acoustic-models.md) | Utwórz niestandardowy model akustyczny dla aplikacji, narzędzi lub urządzeń używanych w określonych środowiskach, takich jak samochód lub piętro fabryki, z których każdy ma określone warunki rejestrowania. Przykłady obejmują akcentowanie mowy, konkretne zakłócenia w tle lub użycie określonego mikrofonu do nagrywania. |
 |                | [Model językowy](how-to-customize-language-model.md) | Utwórz niestandardowy model języka w celu usprawnienia transkrypcji słownictwa i gramatyki właściwych dla branży, takich jak Terminologia medyczna lub żargon IT. |
-|                | [Model wymowy](how-to-customize-pronunciation.md) | Przy użyciu niestandardowego modelu wymowy można zdefiniować formularz fonetyczny i wyświetlić wyraz lub termin. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, co musisz zrobić, to plik wymowy, który jest prostym plikiem `.txt`. |
+|                | [Model wymowy](how-to-customize-pronunciation.md) | Przy użyciu niestandardowego modelu wymowy można zdefiniować formularz fonetyczny i wyświetlić wyraz lub termin. Jest to przydatne do obsługi niestandardowych warunków, takich jak nazwy produktów lub akronimy. Wszystko, co musisz zrobić, to plik wymowy, który jest prostym plikiem `.txt`. |
 | Zamiana tekstu na mowę | [Czcionka głosowa](how-to-customize-voice-font.md) | Niestandardowe czcionki głosowe umożliwiają utworzenie rozpoznawalnego, jednoczęściowego głosu dla marki. Rozpoczęcie pracy wymaga jedynie niewielkiej ilości danych. Im więcej danych zapewniasz, tym bardziej naturalna i przypominająca Twoja czcionka głosu będzie dźwiękowa. |
 
 ## <a name="sample-code"></a>Przykładowy kod

@@ -40,7 +40,7 @@ W poniższej tabeli opisano sposób używania synchronizacji w zakresie:
 
 Użyj Azure Portal lub PowerShell, aby skonfigurować ustawienia synchronizacji z zakresem:
 
-| Akcja | | |
+| Działanie | | |
 |--|--|--|
 | Utwórz domenę zarządzaną platformy Azure AD DS i skonfiguruj synchronizację z zakresem | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [Program PowerShell](#enable-scoped-synchronization-using-powershell) |
 | Modyfikuj synchronizację w zakresie | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [Program PowerShell](#modify-scoped-synchronization-using-powershell) |

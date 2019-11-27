@@ -43,7 +43,7 @@ Jeśli planujesz użyć przykładów Azure PowerShell w tym artykule, pamiętaj,
 > [!IMPORTANT]
 > - Granica zabezpieczeń zarządzanych tożsamości dla zasobów platformy Azure jest zasobem używanym przez program. Wszystkie kod/skrypty uruchomione na maszynie wirtualnej mogą żądać i pobierać tokeny dla wszystkich zarządzanych tożsamości. 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aplikacja kliencka może zażądać tożsamości zarządzanych dla [tokenu dostępu tylko do aplikacji](../develop/developer-glossary.md#access-token) platformy Azure w celu uzyskania dostępu do danego zasobu. Token jest [oparty na tożsamościach zarządzanych dla jednostki usługi Azure Resources](overview.md#how-does-the-managed-identities-for-azure-resources-work). W związku z tym klient nie musi rejestrować się w celu uzyskania tokenu dostępu w ramach własnej nazwy głównej usługi. Token jest odpowiedni do użycia jako token okaziciela w [wywołaniach między usługami wymagającymi poświadczeń klienta](../develop/v1-oauth2-client-creds-grant-flow.md).
 

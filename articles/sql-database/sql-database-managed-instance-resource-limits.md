@@ -78,7 +78,7 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 | Limit przepływności zapisu dziennika (na wystąpienie) | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s |
 | Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększyć rozmiar pliku, aby uzyskać lepszą wydajność operacji we/wy](#file-io-characteristics-in-general-purpose-tier) | Nieograniczone. |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
-| Przetwarzanie OLTP danych w pamięci | Nieobsługiwane | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
+| Przetwarzanie OLTP w pamięci | Brak obsługi | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
 | Maksymalna liczba sesji | 30000 | 30000 |
 | [Repliki tylko do odczytu](sql-database-read-scale-out.md) | 0 | 1 (wliczone w cenę) |
 
@@ -137,7 +137,7 @@ W poniższej tabeli przedstawiono **domyślne limity** dla obsługiwanych typów
 |Płatność zgodnie z rzeczywistym użyciem|3|320|
 |CSP |8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie|3|320|
-|Enterprise — tworzenie i testowanie|3|320|
+|Tworzenie i testowanie (przedsiębiorstwo)|3|320|
 |EA|8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional i Platformy MSDN|2|32|
@@ -178,7 +178,7 @@ Aby zainicjować proces uzyskiwania większego przydziału:
 
 5. Kliknij przycisk **Dalej**.
 6. Na karcie Informacje kontaktowe dla nowego żądania obsługi wprowadź preferowaną metodę kontaktu (adres e-mail lub telefon) i szczegóły kontaktu.
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

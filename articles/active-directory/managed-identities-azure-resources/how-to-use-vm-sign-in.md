@@ -39,7 +39,7 @@ Jeśli planujesz Azure PowerShell używanie przykładów interfejsu wiersza pole
 > - We wszystkich przykładowych skryptach w tym artykule przyjęto założenie, że klient wiersza polecenia działa na maszynie wirtualnej z włączonymi tożsamościami zarządzanymi dla zasobów platformy Azure. Użyj funkcji "Połącz" maszyny wirtualnej w Azure Portal, aby zdalnie nawiązać połączenie z maszyną wirtualną. Aby uzyskać szczegółowe informacje na temat włączania tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej przy użyciu Azure Portal](qs-configure-portal-windows-vm.md)lub jednego z artykułów wariantów (przy użyciu programu PowerShell, interfejsu wiersza polecenia, szablonu lub zestawu Azure SDK). 
 > - Aby zapobiec wystąpieniu błędów podczas uzyskiwania dostępu do zasobów, zarządzana tożsamość maszyny wirtualnej musi mieć co najmniej dostęp do czytnika w odpowiednim zakresie (maszynie wirtualnej lub wyższej), aby umożliwić Azure Resource Manager operacji na maszynie wirtualnej. Aby uzyskać szczegółowe informacje [, zobacz Przypisywanie zarządzanych tożsamości dla zasobów platformy Azure do zasobu przy użyciu Azure Portal](howto-assign-access-portal.md) .
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Zarządzane tożsamości dla zasobów platformy Azure udostępniają [obiekt jednostki usługi](../develop/developer-glossary.md#service-principal-object) , który jest [tworzony po włączeniu zarządzanych tożsamości dla zasobów platformy Azure](overview.md#how-does-the-managed-identities-for-azure-resources-work) na maszynie wirtualnej. Jednostka usługi może uzyskać dostęp do zasobów platformy Azure i służyć jako tożsamość przez klientów z wierszem polecenia w celu logowania się i dostępu do zasobów. Tradycyjnie, aby uzyskać dostęp do zabezpieczonych zasobów w ramach własnej tożsamości, klient skryptów powinien:  
 
@@ -62,7 +62,7 @@ Poniższy skrypt pokazuje, jak:
    echo The managed identity for Azure resources service principal ID is $spID
    ```
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Program Azure PowerShell
 
 Poniższy skrypt pokazuje, jak:
 

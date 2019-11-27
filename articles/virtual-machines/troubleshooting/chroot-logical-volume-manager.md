@@ -190,7 +190,7 @@ Uruchom polecenie **LVS** , aby sprawdzić, które **LVS** są dostępne do zain
 
 Wyjdź z środowiska **chroot** Zainstaluj wymagane **LV**
 
-![Zaawansowane](./media/chroot-logical-volume-manager/advanced.png)
+![Advanced](./media/chroot-logical-volume-manager/advanced.png)
 
 Teraz ponownie Uzyskuj dostęp do środowiska **chroot** , uruchamiając
 
@@ -198,11 +198,11 @@ Teraz ponownie Uzyskuj dostęp do środowiska **chroot** , uruchamiając
 
 Wszystkie LVs powinny być widoczne jako zainstalowane partycje
 
-![Zaawansowane](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Advanced](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 Wykonywanie zapytania dotyczącego zainstalowanego **jądra**
 
-![Zaawansowane](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Advanced](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 W razie konieczności Uaktualnij **jądro**
 ![Advanced](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)

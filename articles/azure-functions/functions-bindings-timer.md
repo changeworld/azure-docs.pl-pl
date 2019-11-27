@@ -20,13 +20,13 @@ W tym artykule opisano sposób pracy z wyzwalaczami czasomierza w Azure Function
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
+## <a name="packages---functions-1x"></a>Pakiety — funkcje 1. x
 
 Wyzwalacz czasomierza jest dostępny w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) w wersji 2. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK-Extensions — rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+## <a name="packages---functions-2x"></a>Pakiety — funkcje 2. x
 
 Wyzwalacz czasomierza jest dostępny w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK-Extensions — rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub.
 
@@ -65,7 +65,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-Poniżej przedstawiono kod skryptu języka C#:
+Oto kod C# skryptu:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -93,7 +93,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-Poniżej przedstawiono kod JavaScript:
+Oto kod JavaScript:
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -213,11 +213,11 @@ public void keepAlive(
 
 W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `TimerTrigger` atrybutu.
 
-|Właściwość Function.JSON | Właściwość atrybutu |Opis|
+|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Musi być ustawiona na wartość "timerTrigger". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
-|**direction** | Nie dotyczy | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt timer w kodzie funkcji. | 
+|**type** | nd. | Musi być ustawiona na wartość "timerTrigger". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal.|
+|**direction** | nd. | Musi być ustawiona na wartość "in". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal. |
+|**Nazwij** | nd. | Nazwa zmiennej, która reprezentuje obiekt timer w kodzie funkcji. | 
 |**schedule**|**ScheduleExpression**|[Wyrażenie CRONUS](#ncrontab-expressions) lub wartość [TimeSpan](#timespan) . `TimeSpan` może być używana tylko dla aplikacji funkcji uruchamianej w planie App Service. Możesz umieścić wyrażenie harmonogramu w ustawieniu aplikacji i ustawić tę właściwość na nazwę ustawienia aplikacji zawiniętej w **%** znaki, jak w tym przykładzie: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Jeśli `true`, funkcja jest wywoływana po uruchomieniu środowiska uruchomieniowego. Na przykład środowisko uruchomieniowe jest uruchamiane, gdy aplikacja funkcji zostanie wznowiona po przejściu w stan bezczynności z powodu braku aktywności. gdy aplikacja funkcji zostanie ponownie uruchomiona z powodu zmiany funkcji i gdy aplikacja funkcji jest skalowana w dół. Tak więc **runOnStartup** powinna być rzadko ustawiona na `true`, szczególnie w środowisku produkcyjnym. |
 |**useMonitor**|**UseMonitor**|Ustaw wartość `true` lub `false`, aby wskazać, czy harmonogram ma być monitorowany. Harmonogram monitorowania utrzymuje harmonogramy, aby pomóc w zapewnieniu, że harmonogram jest prawidłowo obsługiwany nawet po ponownym uruchomieniu wystąpień aplikacji funkcji. Jeśli nie ustawiono jawnie, wartość domyślna to `true` dla harmonogramów z interwałem cyklu większym lub równym 1 minucie. W przypadku harmonogramów, które wyzwalają więcej niż raz na minutę, wartość domyślna to `false`.
@@ -227,7 +227,7 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 > [!CAUTION]
 > Zalecamy ustawienie **runOnStartup** na `true` w środowisku produkcyjnym. Użycie tego ustawienia sprawia, że kod jest wykonywany w bardzo nieprzewidywalnym czasie. W niektórych ustawieniach produkcyjnych te dodatkowe wykonania mogą spowodować znacznie wyższe koszty dla aplikacji hostowanych w planach zużycia. Na przykład po włączeniu **runOnStartup** wyzwalacz jest wywoływany za każdym razem, gdy aplikacja funkcji jest skalowana. Upewnij się, że w pełni zrozumiesz zachowanie środowiska produkcyjnego przed włączeniem **runOnStartup** w środowisku produkcyjnym.   
 
-## <a name="usage"></a>Sposób użycia
+## <a name="usage"></a>Użycie
 
 Po wywołaniu funkcji wyzwalacza czasomierza obiekt Timer jest przenoszona do funkcji. Poniższy kod JSON to przykładowa reprezentacja obiektu Timer.
 
@@ -302,7 +302,7 @@ Lub Utwórz ustawienia aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZO
 
 W przypadku korzystania z `WEBSITE_TIME_ZONE`czas jest dostosowywany do zmian czasu w określonej strefie czasowej, na przykład czasu letniego. 
 
-## <a name="timespan"></a>TimeSpan
+## <a name="timespan"></a>Czasu
 
  `TimeSpan` może być używana tylko dla aplikacji funkcji uruchamianej w planie App Service.
 

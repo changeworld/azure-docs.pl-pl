@@ -34,7 +34,7 @@ W poniższej tabeli wymieniono limity elementów tablicy i znaków dla każdej o
 | Wykrywanie | 10 000 | 100 |   50 000 |
 | BreakSentence | 10 000    | 100 | 50 000 |
 | Wyszukiwanie w słowniku| 100 |  10  | 1000 |
-| Przykłady słowników | 100 dla tekstu i 100 dla tłumaczenia (łącznie 200)| 10|   2,000 |
+| Przykłady słowników | 100 dla tekstu i 100 dla tłumaczenia (łącznie 200)| 10|   2 000 |
 
 ## <a name="character-limits-per-hour"></a>Limity znaków na godzinę
 
@@ -48,9 +48,9 @@ W przypadku osiągnięcia lub przekroczenia tych limitów lub wysłania zbyt du�
 |------|-----------------|
 | F0 | 2 000 000 znaków na godzinę |
 | S1 | 40 000 000 znaków na godzinę |
-| S2 / C2 | 40 000 000 znaków na godzinę |
+| S2/C2 | 40 000 000 znaków na godzinę |
 | S3/C3 | 120 000 000 znaków na godzinę |
-| S4 / C4 | 200 000 000 znaków na godzinę |
+| S4/C4 | 200 000 000 znaków na godzinę |
 
 Limity dla [subskrypcji dla kilku usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) są takie same jak w przypadku warstwy S1.
 
@@ -73,7 +73,7 @@ W przypadku korzystania z funkcji [BreakSentence](https://docs.microsoft.com/azu
 | Portugalski | zmiennoprzecinkow | 290 |
 | Hiszpański | es | 280 |
 | Włoski | it | 280 |
-| Tajlandzki | th | 258 |
+| Tajski | th | 258 |
 
 > [!NOTE]
 > Ten limit nie dotyczy tłumaczeń.

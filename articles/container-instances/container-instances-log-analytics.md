@@ -111,7 +111,7 @@ Należy zobaczyć kilka wyników wyświetlanych przez zapytanie. Jeśli pierwsze
 
 ![Wyniki przeszukiwania dzienników w witrynie Azure Portal][log-search-01]
 
-## <a name="view-events"></a>Wyświetlanie zdarzeń
+## <a name="view-events"></a>Wyświetl wydarzenia
 
 Możesz również wyświetlać zdarzenia dla wystąpień kontenera w Azure Portal. Zdarzenia obejmują godzinę utworzenia wystąpienia i momentu jego uruchomienia. Aby wyświetlić dane zdarzenia w tabeli `ContainerEvent_CL`:
 

@@ -31,14 +31,14 @@ W poniższych tabelach przedstawiono zasoby dostępne dla pojedynczej bazy danyc
 > [!IMPORTANT]
 > Aby uzyskać wskazówki dotyczące skalowania i zagadnienia, zobacz [skalowanie pojedynczej bazy danych](sql-database-single-database-scale.md)
 
-### <a name="basic-service-tier"></a>Warstwa usługi Podstawowa
+### <a name="basic-service-tier"></a>Podstawowa warstwa usługi
 
 | **Rozmiar obliczeń** | **Podstawowa** |
 | :--- | --: |
 | Maksymalna liczba jednostek DTU | 5 |
 | Uwzględniony magazyn (GB) | 2 |
 | Maksymalna liczba opcji magazynu (GB) | 2 |
-| Maksymalna pojemność magazynu OLTP w pamięci (GB) |Nie dotyczy |
+| Maksymalna pojemność magazynu OLTP w pamięci (GB) |ND |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) | 30 |
 | Maksymalna liczba współbieżnych sesji | 300 |
 |||
@@ -49,14 +49,14 @@ W poniższych tabelach przedstawiono zasoby dostępne dla pojedynczej bazy danyc
 >W przypadku magazynu danych podstawowa warstwa usług jest umieszczana na stronach standardowych obiektów BLOB. Standardowe obiekty blob stronicowe korzystają z nośników magazynowania opartych na dyskach twardych i najlepiej nadają się do tworzenia, testowania i innych rzadko używanych obciążeń, które są mniej wrażliwe na zmienności wydajności.
 >
 
-### <a name="standard-service-tier"></a>Warstwa usługi Standardowa
+### <a name="standard-service-tier"></a>Standardowa warstwa usługi
 
 | **Rozmiar obliczeń** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | Maksymalna liczba jednostek DTU | 10 | 20 | 50 | 100 |
 | Uwzględniony magazyn (GB) | 250 | 250 | 250 | 250 |
 | Maksymalna liczba opcji magazynu (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Maksymalna pojemność magazynu OLTP w pamięci (GB) | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy |
+| Maksymalna pojemność magazynu OLTP w pamięci (GB) | ND | ND | ND | ND |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań)| 60 | 90 | 120 | 200 |
 | Maksymalna liczba współbieżnych sesji |600 | 900 | 1200 | 2400 |
 ||||||
@@ -74,18 +74,18 @@ W poniższych tabelach przedstawiono zasoby dostępne dla pojedynczej bazy danyc
 | Maksymalna liczba jednostek DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Uwzględniony magazyn (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maksymalna liczba opcji magazynu (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Maksymalna pojemność magazynu OLTP w pamięci (GB) | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy |Nie dotyczy |
+| Maksymalna pojemność magazynu OLTP w pamięci (GB) | ND | ND | ND | ND |ND |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań)| 400 | 800 | 1600 | 3200 |6000 |
 | Maksymalna liczba współbieżnych sesji |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
-### <a name="premium-service-tier"></a>Warstwa usługi Premium
+### <a name="premium-service-tier"></a>Warstwa Premium usługi
 
 | **Rozmiar obliczeń** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maksymalna liczba jednostek DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Uwzględniony magazyn (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
-| Maksymalna liczba opcji magazynu (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
+| Uwzględniony magazyn (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
+| Maksymalna liczba opcji magazynu (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
 | Maksymalna pojemność magazynu OLTP w pamięci (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maksymalna liczba współbieżnych sesji | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |

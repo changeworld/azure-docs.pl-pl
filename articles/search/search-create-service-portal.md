@@ -33,7 +33,7 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 
 ## <a name="find-azure-cognitive-search"></a>Znajdź Wyszukiwanie poznawcze platformy Azure
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Kliknij znak plus („+ Utwórz zasób”) w lewym górnym rogu.
 3. Użyj paska wyszukiwania, aby znaleźć "Wyszukiwanie poznawcze platformy Azure" lub przejdź do zasobu za pomocą Wyszukiwanie poznawcze **sieci Web** > **Azure**.
 

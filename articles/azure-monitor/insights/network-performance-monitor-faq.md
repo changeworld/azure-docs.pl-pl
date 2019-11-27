@@ -258,7 +258,7 @@ Może się tak zdarzyć, jeśli co najmniej jeden ma wartość PRAWDA:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>W funkcji Monitor łączności usług czas odpowiedzi usługi to, ale utrata połączenia sieciowego, a także opóźnienia są prawidłowe
 Taka sytuacja może wystąpić, jeśli usługa docelowa nie jest aplikacją internetową, ale test jest skonfigurowany jako test sieci Web. Edytuj konfigurację testu i wybierz typ testowy jako sieć zamiast sieci Web.
 
-## <a name="miscellaneous"></a>Różne
+## <a name="miscellaneous"></a>Różne postanowienia
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Czy istnieje wpływ na wydajność w węźle używanym do monitorowania?
 Proces NPM jest skonfigurowany do zatrzymania, jeśli wykorzystuje ponad 5% zasobów procesora CPU hosta. Ma to na celu zapewnienie, że można nadal korzystać z węzłów dla ich zwykłych obciążeń bez wpływu na wydajność.

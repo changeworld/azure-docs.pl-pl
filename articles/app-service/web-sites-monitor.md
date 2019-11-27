@@ -43,7 +43,7 @@ Przydziały dla aplikacji bezpłatnych lub udostępnionych:
 | **PROCESOR (krótki)** | Ilość procesora CPU dozwolona dla tej aplikacji w interwale 5-minutowym. Ten przydział resetuje co pięć minut. |
 | **PROCESOR (dzień)** | Całkowita ilość procesora CPU dozwolona dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
 | **Rozmiar** | Całkowita ilość pamięci dozwolonej dla tej aplikacji. |
-| **Przepustowość** | Całkowita ilość wychodzącej przepustowości dozwolonej dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
+| **Zużywa** | Całkowita ilość wychodzącej przepustowości dozwolonej dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
 | **Wymagany** | Łączna ilość dozwolonego miejsca w magazynie. |
 
 Jedynym przydziałem stosowanym dla aplikacji hostowanych w warstwach *podstawowa*, *standardowa*i *Premium* jest system plików.

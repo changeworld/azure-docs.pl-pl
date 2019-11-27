@@ -135,8 +135,8 @@ Ta tabela zawiera podstawowe ustawienia używane do monitorowania zestawu danych
 | Bazowy zestaw danych | Tabelaryczny zestaw danych, który będzie używany jako linia bazowa do porównania docelowego zestawu danych w czasie. | Zestaw danych bazowych musi mieć wspólne funkcje z docelowym zestawem danych. Ogólnie rzecz biorąc, linia bazowa powinna być ustawiona na zestaw danych szkoleniowych modelu lub do wycinka docelowego zestawu danych. | Nie |
 | Docelowy zestaw danych | Zestaw danych tabelarycznych z określoną kolumną sygnatur czasowych, który zostanie przeanalizowany pod kątem dryfowania danych. | Docelowy zestaw danych musi mieć wspólne funkcje z zestawem danych bazowych i powinien być `timeseries` zestawem danych, do którego dodawane są nowe dane. Dane historyczne w docelowym zestawie danych mogą być analizowane lub można monitorować nowe dane. | Nie | 
 | Częstotliwość | Częstotliwość, która zostanie użyta do zaplanowania zadania potoku i przeanalizowania danych historycznych w przypadku uruchamiania wypełniania. Dostępne opcje to codziennie, co tydzień lub co miesiąc. | Dostosuj to ustawienie, aby uwzględnić w linii bazowej porównywalny rozmiar danych. | Nie | 
-| Funkcje | Lista funkcji, które będą analizowane pod kątem dryfowania danych w czasie. | Ustaw na funkcje wyjściowe modelu, aby zmierzyć dryf koncepcji. Nie należy dołączać funkcji, które naturalnie dryfuje w czasie (miesiąc, rok, indeks itp.). Po dostosowaniu listy funkcji można wypełniać i śledzić istniejący monitor dryfowania danych. | Yes | 
-| Docelowy zasób obliczeniowy | Azure Machine Learning miejsce docelowe obliczeń, aby uruchomić zadania monitorowania zestawu danych. | | Yes | 
+| Funkcje | Lista funkcji, które będą analizowane pod kątem dryfowania danych w czasie. | Ustaw na funkcje wyjściowe modelu, aby zmierzyć dryf koncepcji. Nie należy dołączać funkcji, które naturalnie dryfuje w czasie (miesiąc, rok, indeks itp.). Po dostosowaniu listy funkcji można wypełniać i śledzić istniejący monitor dryfowania danych. | Tak | 
+| Docelowy zasób obliczeniowy | Azure Machine Learning miejsce docelowe obliczeń, aby uruchomić zadania monitorowania zestawu danych. | | Tak | 
 
 ### <a name="monitor-settings"></a>Ustawienia monitora
 
@@ -144,10 +144,10 @@ Te ustawienia dotyczą potoku monitora harmonogramu zestawu danych, który zosta
 
 | Ustawienie | Opis | Porady | Modyfikowalny | 
 | ------- | ----------- | ---- | ------- |
-| Włączanie | Włączanie lub wyłączanie harmonogramu dla potoku monitora zestawu danych | Wyłącz harmonogram, aby analizować dane historyczne przy użyciu ustawienia wypełniania. Można ją włączyć po utworzeniu monitora zestawu danych. | Yes | 
+| Włączenie | Włączanie lub wyłączanie harmonogramu dla potoku monitora zestawu danych | Wyłącz harmonogram, aby analizować dane historyczne przy użyciu ustawienia wypełniania. Można ją włączyć po utworzeniu monitora zestawu danych. | Tak | 
 | Opóźnienie | Czas, w godzinach, pobiera dane do zestawu danych. Na przykład jeśli dane mają być dostarczone przez trzy dni w bazie danych bazy danych SQL, należy ustawić opóźnienie na 72. | Nie można zmienić po utworzeniu monitora zestawu danych | Nie | 
-| Adresy e-mail | Adresy e-mail dla alertów na podstawie naruszenia progu procentu dryfu danych. | Wiadomości e-mail są wysyłane za poorednictwem Azure Monitor. | Yes | 
-| Próg | Próg procentowy dryfu danych dla alertów e-mail. | Więcej alertów i zdarzeń można ustawić dla wielu innych metryk w skojarzonym zasobie Application Insightsm obszaru roboczego. | Yes | 
+| Adresy e-mail | Adresy e-mail dla alertów na podstawie naruszenia progu procentu dryfu danych. | Wiadomości e-mail są wysyłane za poorednictwem Azure Monitor. | Tak | 
+| Próg | Próg procentowy dryfu danych dla alertów e-mail. | Więcej alertów i zdarzeń można ustawić dla wielu innych metryk w skojarzonym zasobie Application Insightsm obszaru roboczego. | Tak | 
 
 ### <a name="backfill-settings"></a>Ustawienia wypełniania
 
@@ -173,7 +173,7 @@ Po potwierdzeniu funkcjonalności obszaru roboczego przejdź do strony głównej
 
 Kliknij przycisk **+ Utwórz monitor** i Kontynuuj pracę kreatora, klikając przycisk **dalej**.
 
-![Kreator](media/how-to-monitor-datasets/wizard.png)
+![Kreatora](media/how-to-monitor-datasets/wizard.png)
 
 Ten monitor zestawu danych zostanie wyświetlony na liście. Wybierz go, aby przejść do strony szczegółów tego monitora.
 
@@ -321,7 +321,7 @@ Kolumny lub funkcje w zestawie danych są klasyfikowane jako kategorii lub liczb
 | Typ funkcji | Typ danych | Warunek | Ograniczenia | 
 | ------------ | --------- | --------- | ----------- |
 | Podzielone na kategorie | String, bool, int, float | Liczba unikatowych wartości w funkcji jest mniejsza niż 100 i mniejsza niż 5% liczby wierszy. | Wartość null jest traktowana jako jej własna Kategoria. | 
-| Wartości liczbowych | int, float | Wartości w funkcji mają typ danych liczbowych i nie spełniają warunku funkcji kategorii. | Funkcja została porzucona, jeśli > 15% wartości ma wartość null. | 
+| Porządkow | int, float | Wartości w funkcji mają typ danych liczbowych i nie spełniają warunku funkcji kategorii. | Funkcja została porzucona, jeśli > 15% wartości ma wartość null. | 
 
 ## <a name="next-steps"></a>Następne kroki
 

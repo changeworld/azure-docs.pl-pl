@@ -1,6 +1,6 @@
 ---
 title: Przypisywanie zarządzanej tożsamości dostępu do zasobu przy użyciu Azure Portal — Azure AD
-description: Szczegółowe instrukcje dotyczące przypisywania tożsamości zarządzanej na jednym dostępu do zasobów do innego zasobu za pomocą witryny Azure portal.
+description: Instrukcje krok po kroku dotyczące przypisywania tożsamości zarządzanej w jednym zasobie dostępu do innego zasobu przy użyciu Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -22,28 +22,28 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74547288"
 ---
-# <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Przypisać z tożsamości zarządzanej dostępu do tego zasobu za pomocą witryny Azure portal
+# <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Przypisywanie zarządzanej tożsamości dostępu do zasobu za pomocą Azure Portal
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Po skonfigurowaniu zasobu platformy Azure za pomocą tożsamości zarządzanej, można zapewnić dostęp tożsamość zarządzaną, do innego zasobu, podobnie jak podmiot zabezpieczeń. W tym artykule pokazano, jak przyznać maszynie wirtualnej platformy Azure lub dostęp tożsamości zarządzanej zestaw skalowania maszyn wirtualnych do konta usługi Azure storage przy użyciu witryny Azure portal.
+Po skonfigurowaniu zasobu platformy Azure przy użyciu tożsamości zarządzanej można przyznać zarządzanej tożsamości dostęp do innego zasobu, podobnie jak w przypadku każdego podmiotu zabezpieczeń. W tym artykule pokazano, jak udostępnić maszynę wirtualną platformy Azure lub zarządzaną tożsamość zestawu skalowania maszyn wirtualnych do konta usługi Azure Storage przy użyciu Azure Portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Przypisywanie dostępu tożsamości zarządzanej do innego zasobu przy użyciu kontroli RBAC
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Przypisywanie dostępu do tożsamości zarządzanej do innego zasobu za pomocą RBAC
 
 Po włączeniu tożsamości zarządzanej w zasobie platformy Azure, na przykład na [maszynie wirtualnej platformy Azure](qs-configure-portal-windows-vm.md) lub w [usłudze Azure VMSS](qs-configure-portal-windows-vmss.md):
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, w ramach której skonfigurowano tożsamość zarządzaną.
 
-2. Przejdź do żądanego zasobu, na którym chcesz zmodyfikować kontroli dostępu. W tym przykładzie udostępniamy możliwość dostępu do maszyny wirtualnej platformy Azure na koncie magazynu, dzięki czemu możemy przejdź do konta magazynu.
+2. Przejdź do żądanego zasobu, w którym chcesz zmodyfikować kontrolę dostępu. W tym przykładzie przydajemy maszynom wirtualnym platformy Azure dostęp do konta magazynu, więc przejdźmy do konta magazynu.
 
-3. Wybierz stronę **Kontrola dostępu (IAM)** zasobu, a następnie wybierz pozycję **+ Dodaj przypisanie roli**. Następnie określ **rolę**, **Przypisz dostęp do**i określ odpowiednią **subskrypcję**. W obszarze kryteria wyszukiwania powinna być widoczna zasobu. Wybierz zasób, a następnie wybierz pozycję **Zapisz**. 
+3. Wybierz stronę **Kontrola dostępu (IAM)** zasobu, a następnie wybierz pozycję **+ Dodaj przypisanie roli**. Następnie określ **rolę**, **Przypisz dostęp do**i określ odpowiednią **subskrypcję**. W obszarze kryteria wyszukiwania powinien zostać wyświetlony zasób. Wybierz zasób, a następnie wybierz pozycję **Zapisz**. 
 
-   ![Zrzut ekranu (IAM) kontroli dostępu](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+   ![Zrzut ekranu kontroli dostępu (IAM)](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
 ## <a name="next-steps"></a>Następne kroki
 

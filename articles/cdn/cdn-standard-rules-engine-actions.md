@@ -40,7 +40,7 @@ Ustaw, jeśli brakuje | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, je�
 
 Dni | Godziny | Minuty | Sekundy
 -----|-------|---------|--------
-Int | Int | Int | Int 
+ZAOKR | ZAOKR | ZAOKR | ZAOKR 
 
 ### <a name="cache-key-query-string"></a>Ciąg zapytania klucza pamięci podręcznej
 
@@ -61,11 +61,11 @@ Użyj tej akcji, aby zmodyfikować nagłówki, które są obecne w żądaniach w
 
 #### <a name="required-fields"></a>Pola wymagane
 
-Akcja | Nazwa nagłówka HTTP | Wartość
+Działanie | Nazwa nagłówka HTTP | Wartość
 -------|------------------|------
 Append | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do żądania o określonej wartości. Jeśli nagłówek już istnieje, wartość jest dołączana do istniejącej wartości. | Ciąg
-Zastąp | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do żądania o określonej wartości. Jeśli nagłówek już istnieje, określona wartość zastępuje istniejącą wartość. | Ciąg
-Usuwanie | Gdy ta opcja jest zaznaczona, reguła jest zgodna, a nagłówek określony w regule jest obecny, nagłówek zostanie usunięty z żądania. | Ciąg
+Pisz | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do żądania o określonej wartości. Jeśli nagłówek już istnieje, określona wartość zastępuje istniejącą wartość. | Ciąg
+Usuń | Gdy ta opcja jest zaznaczona, reguła jest zgodna, a nagłówek określony w regule jest obecny, nagłówek zostanie usunięty z żądania. | Ciąg
 
 ### <a name="modify-response-header"></a>Modyfikuj nagłówek odpowiedzi
 
@@ -73,11 +73,11 @@ Użyj tej akcji, aby zmodyfikować nagłówki, które są obecne w odpowiedziach
 
 #### <a name="required-fields"></a>Pola wymagane
 
-Akcja | Nazwa nagłówka HTTP | Wartość
+Działanie | Nazwa nagłówka HTTP | Wartość
 -------|------------------|------
 Append | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do odpowiedzi przy użyciu określonej **wartości**. Jeśli nagłówek jest już obecny, **wartość** jest dołączana do istniejącej wartości. | Ciąg
-Zastąp | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do odpowiedzi przy użyciu określonej **wartości**. Jeśli nagłówek już istnieje, **wartość** zastępuje istniejącą wartość. | Ciąg
-Usuwanie | Gdy ta opcja jest zaznaczona, reguła jest zgodna, a nagłówek określony w regule jest obecny, nagłówek zostanie usunięty z odpowiedzi. | Ciąg
+Pisz | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do odpowiedzi przy użyciu określonej **wartości**. Jeśli nagłówek już istnieje, **wartość** zastępuje istniejącą wartość. | Ciąg
+Usuń | Gdy ta opcja jest zaznaczona, reguła jest zgodna, a nagłówek określony w regule jest obecny, nagłówek zostanie usunięty z odpowiedzi. | Ciąg
 
 ### <a name="url-redirect"></a>Przekierowywanie adresów URL
 
@@ -88,11 +88,11 @@ Użyj tej akcji, aby przekierować klientów do nowego adresu URL.
 Pole | Opis 
 ------|------------
 Typ | Wybierz typ odpowiedzi, aby powrócić do obiektu żądającego: znaleziono (302), przeniesione (301), tymczasowe przekierowanie (307) i trwałe przekierowanie (308).
-Protokół | Żądanie dopasowania, HTTP i HTTPS.
+Protocol (Protokół) | Żądanie dopasowania, HTTP i HTTPS.
 Nazwa hosta | Wybierz nazwę hosta, do którego chcesz przekierować żądanie. Pozostaw to pole puste, aby zachować hosta przychodzącego.
 Ścieżka | Zdefiniuj ścieżkę do użycia w przekierowaniu. Pozostaw to pole puste, aby zachować ścieżkę przychodzącą.  
 Ciąg zapytania | Zdefiniuj ciąg zapytania używany w przekierowaniu. Pozostaw to pole puste, aby zachować ciąg zapytania przychodzącego. 
-Fragment | Zdefiniuj fragment do użycia w przekierowaniu. Pozostaw to pole puste, aby zachować fragment przychodzący. 
+Trwania | Zdefiniuj fragment do użycia w przekierowaniu. Pozostaw to pole puste, aby zachować fragment przychodzący. 
 
 Zdecydowanie zalecamy używanie bezwzględnego adresu URL. Użycie względnego adresu URL może przekierować adresy URL Azure CDN do nieprawidłowej ścieżki. 
 
@@ -105,7 +105,7 @@ Użyj tej akcji, aby ponownie napisać ścieżkę żądania, które jest trasy d
 Pole | Opis 
 ------|------------
 Wzorzec źródła | Zdefiniuj wzorzec źródłowy w ścieżce URL, który ma zostać zamieniony. Obecnie wzorzec źródłowy używa dopasowania opartego na prefiksie. Aby dopasować wszystkie ścieżki URL, użyj ukośnika ( **/** ) jako wartości wzorca źródła.
-Element docelowy | Zdefiniuj ścieżkę docelową do użycia podczas ponownego zapisywania. Ścieżka docelowa zastępuje wzorzec źródłowy.
+Cel | Zdefiniuj ścieżkę docelową do użycia podczas ponownego zapisywania. Ścieżka docelowa zastępuje wzorzec źródłowy.
 Zachowaj niedopasowaną ścieżkę | W przypadku ustawienia wartości **tak**pozostała ścieżka po wzorcu źródłowym zostanie dołączona do nowej ścieżki docelowej. 
 
 ## <a name="next-steps"></a>Następne kroki

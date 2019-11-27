@@ -82,9 +82,9 @@ Funkcja rozwiązywania problemów z usługą Azure Network Watcher umożliwia di
 
 ### <a name="gateway"></a>Brama
 
-| Typ błędu | Przyczyna | Log|
+| Typ błędu | Przyczyna | Dziennik|
 |---|---|---|
-| NoFault | Gdy błąd nie zostanie wykryty. |Yes|
+| Nofault | Gdy błąd nie zostanie wykryty. |Tak|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie jest obsługiwana. |Nie|
 | PlannedMaintenance |  Wystąpienie bramy jest w trakcie konserwacji.  |Nie|
 | UserDrivenUpdate | Gdy aktualizacja użytkownika jest w toku. Może to być operacja zmiany rozmiaru. | Nie |
@@ -92,26 +92,26 @@ Funkcja rozwiązywania problemów z usługą Azure Network Watcher umożliwia di
 | PlatformInActive | Wystąpił problem z platformą. | Nie|
 | ServiceNotRunning | Podstawowa usługa nie jest uruchomiona. | Nie|
 | NoConnectionsFoundForGateway | Brak połączeń w bramie. Jest to tylko ostrzeżenie.| Nie|
-| ConnectionsNotConnected | Żadne z połączeń nie są połączone. Jest to tylko ostrzeżenie.| Yes|
-| GatewayCPUUsageExceeded | Bieżące użycie procesora CPU przez bramę to > 95%. | Yes |
+| ConnectionsNotConnected | Żadne z połączeń nie są połączone. Jest to tylko ostrzeżenie.| Tak|
+| GatewayCPUUsageExceeded | Bieżące użycie procesora CPU przez bramę to > 95%. | Tak |
 
 ### <a name="connection"></a>Połączenie
 
-| Typ błędu | Przyczyna | Log|
+| Typ błędu | Przyczyna | Dziennik|
 |---|---|---|
-| NoFault | Gdy błąd nie zostanie wykryty. |Yes|
+| Nofault | Gdy błąd nie zostanie wykryty. |Tak|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie jest obsługiwana. |Nie|
 | PlannedMaintenance | Wystąpienie bramy jest w trakcie konserwacji.  |Nie|
 | UserDrivenUpdate | Gdy aktualizacja użytkownika jest w toku. Może to być operacja zmiany rozmiaru.  | Nie |
 | VipUnResponsive | Nie można nawiązać połączenia z podstawowym wystąpieniem bramy. Występuje po niepowodzeniu sondy kondycji. | Nie |
 | ConnectionEntityNotFound | Brak konfiguracji połączenia. | Nie |
 | ConnectionIsMarkedDisconnected | Połączenie jest oznaczone jako "odłączone". |Nie|
-| ConnectionNotConfiguredOnGateway | Usługa bazowa nie ma skonfigurowanego połączenia. | Yes |
-| ConnectionMarkedStandby | Podstawowa usługa jest oznaczona jako w stanie wstrzymania.| Yes|
-| Authentication | Niezgodność klucza wstępnego. | Yes|
-| PeerReachability | Brama równorzędna jest nieosiągalna. | Yes|
-| IkePolicyMismatch | Brama równorzędna ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Yes|
-| Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika WFP. |Yes|
+| ConnectionNotConfiguredOnGateway | Usługa bazowa nie ma skonfigurowanego połączenia. | Tak |
+| ConnectionMarkedStandby | Podstawowa usługa jest oznaczona jako w stanie wstrzymania.| Tak|
+| Uwierzytelnianie | Niezgodność klucza wstępnego. | Tak|
+| PeerReachability | Brama równorzędna jest nieosiągalna. | Tak|
+| IkePolicyMismatch | Brama równorzędna ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Tak|
+| Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika WFP. |Tak|
 
 ## <a name="next-steps"></a>Następne kroki
 

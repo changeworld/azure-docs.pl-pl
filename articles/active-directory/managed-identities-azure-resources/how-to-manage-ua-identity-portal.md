@@ -46,7 +46,7 @@ Do utworzenia tożsamości zarządzanej przypisanej przez użytkownika konto wym
    - **Subskrypcja**: wybierz subskrypcję, aby utworzyć tożsamość zarządzaną przypisaną przez użytkownika w obszarze
    - **Grupa zasobów**: Utwórz nową grupę zasobów, aby zawierała tożsamość zarządzaną przez użytkownika, lub wybierz pozycję **Użyj istniejącej** do utworzenia tożsamości zarządzanej przypisanej przez użytkownika w istniejącej grupie zasobów.
    - **Lokalizacja**: Wybierz lokalizację do wdrożenia tożsamości zarządzanej przypisanej przez użytkownika, na przykład **zachodnie stany USA**.
-4. Kliknij pozycję **Utwórz**.
+4. Kliknij przycisk **Utwórz**.
 
 ![Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 

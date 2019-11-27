@@ -58,7 +58,7 @@ Upewnij się, że baza danych Cosmos DB zawiera dane. [Kreator importu danych](s
 
 ### <a name="2---start-import-data-wizard"></a>2 — Uruchom Kreatora importu danych
 
-Kreatora można [uruchomić](search-import-data-portal.md) z poziomu paska poleceń na stronie usługi Azure wyszukiwanie poznawcze lub w przypadku nawiązywania połączenia z Cosmos DB interfejsem API SQL można kliknąć pozycję **Dodaj wyszukiwanie poznawcze platformy Azure** w sekcji **Ustawienia** w pozostałej części konta Cosmos DB okienko nawigacji.
+Kreatora można [uruchomić](search-import-data-portal.md) na pasku poleceń na stronie usługi Azure wyszukiwanie poznawcze lub w przypadku nawiązywania połączenia z Cosmos DB interfejsem API SQL można kliknąć pozycję **Dodaj wyszukiwanie poznawcze platformy Azure** w sekcji **Ustawienia** w lewym okienku nawigacji konta Cosmos DB.
 
    ![Importuj dane — polecenie w portalu](./media/search-import-data-portal/import-data-cmd2.png "Uruchamianie kreatora importu danych")
 
@@ -251,14 +251,14 @@ Upewnij się, że schemat indeksu docelowego jest zgodny ze schematem źródłow
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>Mapowanie między typami danych JSON i typami danych Wyszukiwanie poznawcze platformy Azure
 | Typ danych JSON | Zgodne typy pól indeksu docelowego |
 | --- | --- |
-| Bool |Edm.Boolean, Edm.String |
-| Liczby, które wyglądają jak liczby całkowite |Edm.Int32, Edm.Int64, Edm.String |
-| Liczby, które wyglądają jak zmiennoprzecinkowe |Edm.Double, Edm.String |
+| Logiczna |EDM. Boolean, EDM. String |
+| Liczby, które wyglądają jak liczby całkowite |EDM. Int32, EDM. Int64, EDM. String |
+| Liczby, które wyglądają jak zmiennoprzecinkowe |EDM. Double, EDM. String |
 | Ciąg |Edm.String |
 | Tablice typów pierwotnych, na przykład ["a", "b", "c"] |Collection(Edm.String) |
-| Ciągi, które wyglądają jak daty |Edm.DateTimeOffset, Edm.String |
+| Ciągi, które wyglądają jak daty |EDM. DateTimeOffset, EDM. String |
 | Obiekty GEOJSON, na przykład {"Type": "Point", "współrzędne": [Long, lat]} |Edm.GeographyPoint |
-| Inne obiekty JSON |Nie dotyczy |
+| Inne obiekty JSON |ND |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 — Konfigurowanie i uruchamianie indeksatora
 

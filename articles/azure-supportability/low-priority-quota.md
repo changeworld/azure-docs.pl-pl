@@ -35,7 +35,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy tec
 Możesz także **zażądać przydziału dla wielu regionów** za pomocą jednego przypadku pomocy technicznej. Aby uzyskać szczegółowe informacje, zobacz krok 10 poniżej. 
 
 
-1. W obszarze https://portal.azure.comwybierz pozycję **Pomoc i obsługa techniczna**.
+1. W obszarze https://portal.azure.com wybierz pozycję **Pomoc i obsługa techniczna**.
 
    ![Pomoc i obsługa techniczna](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -83,13 +83,13 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy tec
 
 Możesz także **zażądać przydziału dla wielu regionów** za pomocą jednego przypadku pomocy technicznej. Aby uzyskać szczegółowe informacje, zobacz krok 9 poniżej. 
 
-1.  W obszarze https://portal.azure.comwybierz pozycję **subskrypcje**.
+1.  W obszarze https://portal.azure.com wybierz pozycję **subskrypcje**.
 
  ![Subskrypcje](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2.  Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
 
- ![Wybieranie subskrypcji](./media/resource-manager-core-quotas-request/select-subscription.png)
+ ![Wybierz subskrypcję](./media/resource-manager-core-quotas-request/select-subscription.png)
 
 3.  Wybierz pozycję **użycie i przydziały**.
 

@@ -24,7 +24,7 @@ Po ponownym przetworzeniu kontenerów [zasoby](container-instances-container-gro
 
 Akcja zatrzymania nie ma żadnego wpływu, jeśli grupa kontenerów została już zakończona (jest w stanie sukces lub niepowodzenie). Na przykład grupa kontenerów z zadaniami kontenera uruchamiania, które zostały pomyślnie zakończone w stanie sukces. Próby zatrzymania grupy w tym stanie nie zmieniają stanu. 
 
-## <a name="start"></a>Uruchamianie
+## <a name="start"></a>Rozpocznij
 
 Po zatrzymaniu grupy kontenerów — ponieważ kontenery zostały zakończone lub ręcznie zatrzymana przez grupę — można uruchomić kontenery. Na przykład użyj polecenia [AZ Container Start][az-container-start] lub Azure Portal, aby ręcznie uruchomić kontenery w grupie. Jeśli obraz kontenera dla dowolnego kontenera zostanie zaktualizowany, zostanie pobrany nowy obraz. 
 

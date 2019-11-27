@@ -34,7 +34,7 @@ Aby zapoznać się z opcjami wdrażania, zobacz sekcję [wdrażanie](#deployment
 | **Zasoby platformy Azure** ||
 | [Utwórz udział plików i konta usługi Azure Storage][az-files] | Używa interfejsu wiersza polecenia platformy Azure w wystąpieniu kontenera, aby utworzyć konto magazynu i udział Azure Files.
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="deployment"></a>Wdrażanie
 
 Istnieje kilka opcji wdrażania zasobów przy użyciu szablonów Menedżer zasobów:
 

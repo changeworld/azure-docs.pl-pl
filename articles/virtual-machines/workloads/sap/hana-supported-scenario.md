@@ -39,7 +39,7 @@ Zapoznaj się z postanowieniami i definicjami używanymi w dokumencie.
 - Wiele identyfikatorów SID: system z wieloma skonfigurowanymi wystąpieniami. Nazywana również środowiskiem MCOS.
 - HSR: replikacja systemu SAP HANA.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Duże wystąpienia HANA obsługują różne architektury w celu spełnienia wymagań firmy. Poniższa lista obejmuje scenariusze i ich szczegóły konfiguracji. 
 
 Projekt architektury pochodnej jest całkowicie z perspektywy infrastruktury i należy skontaktować się z producentem SAP lub partnerami implementacji w celu wdrożenia platformy HANA. Jeśli Twoje scenariusze nie są wyświetlane na liście, skontaktuj się z zespołem konto Microsoft, aby zapoznać się z architekturą i uzyskać dla Ciebie rozwiązanie.
@@ -49,7 +49,7 @@ Projekt architektury pochodnej jest całkowicie z perspektywy infrastruktury i n
 W tym dokumencie opisano szczegółowe informacje o dwóch składnikach w poszczególnych obsługiwanych architekturach:
 
 - Obciążony
-- Magazyn
+- Usługa Storage
 
 ### <a name="ethernet"></a>Obciążony
 
@@ -96,7 +96,7 @@ W przypadku wdrożeń w przypadku wystąpienia replikacji systemu HANA lub skalo
 - Sieć Ethernet "D" powinna być używana wyłącznie na potrzeby dostępu do urządzenia STONITH na potrzeby usługi Pacemaker. Ten interfejs jest wymagany podczas konfigurowania replikacji systemu HANA (HSR) i chcą uzyskać tryb failover w systemie operacyjnym przy użyciu urządzenia z systemem SBD.
 
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Magazyn jest wstępnie skonfigurowany na podstawie żądanej topologii. Rozmiary i mountpoint woluminów są różne w zależności od liczby skonfigurowanych serwerów, jednostek SKU i topologii. Przejrzyj wymagane scenariusze (w dalszej części tego dokumentu), aby uzyskać więcej informacji. Jeśli jest wymagany dodatkowy magazyn, można go zakupić w jednym TB.
 
 >[!NOTE]
@@ -130,7 +130,7 @@ Ta topologia obsługuje jeden węzeł w konfiguracji skalowania z jednym identyf
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![Single-node-with-one-SID.png](media/hana-supported-scenario/Single-node-with-one-SID.png)
+![Single-node-with-one-SID. png](media/hana-supported-scenario/Single-node-with-one-SID.png)
 
 ### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
@@ -146,7 +146,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -165,7 +165,7 @@ Ta topologia obsługuje jeden węzeł w konfiguracji skalowania z wieloma identy
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![single-node-mcos.png](media/hana-supported-scenario/single-node-mcos.png)
+![Single-Node-MCOs. png](media/hana-supported-scenario/single-node-mcos.png)
 
 ### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
@@ -181,7 +181,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -221,7 +221,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -262,7 +262,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -298,7 +298,7 @@ Ta topologia obsługuje dwa węzły dla konfiguracji replikacji systemu HANA (HS
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![HSR-with-STONITH.png](media/hana-supported-scenario/HSR-with-STONITH.png)
+![HSR-with-STONITH. png](media/hana-supported-scenario/HSR-with-STONITH.png)
 
 
 
@@ -316,7 +316,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Używane na potrzeby STONITH |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -364,7 +364,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Używane na potrzeby STONITH |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -423,7 +423,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -464,7 +464,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -483,7 +483,7 @@ Ta topologia obsługuje wiele węzłów w konfiguracji skalowania w poziomie. Is
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![scaleout-nm.png](media/hana-supported-scenario/scaleout-nm.png)
+![ScaleOut-nm. png](media/hana-supported-scenario/scaleout-nm.png)
 
 
 ### <a name="ethernet"></a>Obciążony
@@ -500,7 +500,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -522,7 +522,7 @@ Ta topologia obsługuje wiele węzłów w skalowaniu w poziomie przy użyciu fun
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![scaleout-with-dr.png](media/hana-supported-scenario/scaleout-with-dr.png)
+![ScaleOut-with-Dr. png](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
 ### <a name="ethernet"></a>Obciążony
@@ -539,7 +539,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -584,7 +584,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane na jednostkach/wartości (podstawowa i DR):
 
 | Mountpoint | Przypadek użycia | 
@@ -625,7 +625,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -675,7 +675,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -720,7 +720,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 
@@ -771,7 +771,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł do magazynu |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Następujące mountpoints są wstępnie skonfigurowane:
 
 | Mountpoint | Przypadek użycia | 

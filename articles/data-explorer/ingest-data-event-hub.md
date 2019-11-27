@@ -35,7 +35,7 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
@@ -51,7 +51,7 @@ W tym artykule opisano generowanie przykładowych danych i wysyłanie ich do cen
 
 1. Wybierz subskrypcję, w której chcesz utworzyć centrum zdarzeń, i utwórz grupę zasobów o nazwie *test-hub-rg*.
 
-    ![Tworzenie grupy zasobów](media/ingest-data-event-hub/create-resource-group.png)
+    ![Utwórz grupę zasobów](media/ingest-data-event-hub/create-resource-group.png)
 
 1. Wypełnij formularz, używając poniższych informacji.
 

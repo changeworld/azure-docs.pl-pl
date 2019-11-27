@@ -43,7 +43,7 @@ Działanie Get Metadata Pobiera zestaw danych jako dane wejściowe i zwraca info
 
 **Magazyn plików**
 
-| Łącznik/metadane | itemName<br>(plik/folder) | itemType<br>(plik/folder) | size<br>rozszerzeniem | utworzony<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>system32\drivers\etc |contentMD5<br>rozszerzeniem | structure<br/>rozszerzeniem | Kolumn<br>rozszerzeniem | istniejący<br>(plik/folder) |
+| Łącznik/metadane | ItemName<br>(plik/folder) | itemType<br>(plik/folder) | zmienia<br>rozszerzeniem | utworzony<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>system32\drivers\etc |contentMD5<br>rozszerzeniem | XML<br/>rozszerzeniem | Kolumn<br>rozszerzeniem | istniejący<br>(plik/folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
 | [Magazyn w chmurze Google](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
@@ -62,7 +62,7 @@ Działanie Get Metadata Pobiera zestaw danych jako dane wejściowe i zwraca info
 
 **Relacyjna baza danych**
 
-| Łącznik/metadane | structure | Kolumn | istniejący |
+| Łącznik/metadane | XML | Kolumn | istniejący |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Wystąpienie zarządzane usługi Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -75,14 +75,14 @@ Aby pobrać odpowiednie informacje, możesz określić następujące typy metada
 
 | Typ metadanych | Opis |
 |:--- |:--- |
-| itemName | Nazwa pliku lub folderu. |
+| ItemName | Nazwa pliku lub folderu. |
 | itemType | Typ pliku lub folderu. Zwrócona wartość to `File` lub `Folder`. |
-| size | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
+| zmienia | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
 | utworzony | Utworzono datę i godzinę dla pliku lub folderu. |
 | lastModified | Data i godzina ostatniej modyfikacji pliku lub folderu. |
 | childItems | Lista podfolderów i plików w danym folderze. Dotyczy tylko folderów. Zwracana wartość to lista nazw i typów każdego elementu podrzędnego. |
 | contentMD5 | MD5 pliku. Dotyczy tylko plików. |
-| structure | Struktura danych w tabeli pliku lub relacyjnej bazy danych. Zwracana wartość to lista nazw kolumn i typów kolumn. |
+| XML | Struktura danych w tabeli pliku lub relacyjnej bazy danych. Zwracana wartość to lista nazw kolumn i typów kolumn. |
 | Kolumn | Liczba kolumn w pliku lub tabeli relacyjnej. |
 | istniejący| Czy istnieje plik, folder lub tabela. Należy pamiętać, że jeśli `exists` określono na liście pól Pobierz metadane, działanie nie powiedzie się, nawet jeśli plik, folder lub tabela nie istnieją. Zamiast tego `exists: false` jest zwracany w danych wyjściowych. |
 
@@ -136,10 +136,10 @@ Aby pobrać odpowiednie informacje, możesz określić następujące typy metada
 
 Obecnie działanie Get Metadata może zwracać następujące typy informacji o metadanych:
 
-Właściwość | Opis | Wymagany
+Właściwość | Opis | Wymagane
 -------- | ----------- | --------
-fieldList | Typy wymaganych informacji metadanych. Aby uzyskać szczegółowe informacje na temat obsługiwanych metadanych, zobacz sekcję [Opcje metadanych](#metadata-options) w tym artykule. | Yes 
-zestawu | Zestaw danych referencyjnych, którego metadane mają być pobierane przez działanie pobierania metadanych. Zapoznaj się z sekcją [możliwości](#capabilities) , aby uzyskać informacje na temat obsługiwanych łączników. Zapoznaj się z tematami dotyczącymi szczegółowych informacji o składni zestawu danych. | Yes
+fieldList | Typy wymaganych informacji metadanych. Aby uzyskać szczegółowe informacje na temat obsługiwanych metadanych, zobacz sekcję [Opcje metadanych](#metadata-options) w tym artykule. | Tak 
+zestawu | Zestaw danych referencyjnych, którego metadane mają być pobierane przez działanie pobierania metadanych. Zapoznaj się z sekcją [możliwości](#capabilities) , aby uzyskać informacje na temat obsługiwanych łączników. Zapoznaj się z tematami dotyczącymi szczegółowych informacji o składni zestawu danych. | Tak
 formatSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
 storeSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
 

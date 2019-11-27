@@ -1,20 +1,15 @@
 ---
-title: Co to jest usługa Azure Container Instances?
+title: Kontenery bezserwerowe na platformie Azure
 description: Usługa Azure Container Instances to najszybszy i najprostszy sposób uruchamiania wyizolowanych kontenerów na platformie Azure, bez konieczności zarządzania jakimikolwiek maszynami wirtualnymi ani korzystania z orkiestratora wyższego poziomu.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: overview
 ms.date: 04/25/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325743"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533543"
 ---
 # <a name="what-is-azure-container-instances"></a>Co to jest usługa Azure Container Instances?
 
@@ -53,8 +48,8 @@ Niektóre funkcje są obecnie ograniczone do kontenerów systemu Linux:
 * Wiele kontenerów na grupę kontenerów
 * Instalowanie woluminu ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [Secret](container-instances-volume-secret.md))
 * [Metryki użycia zasobów](container-instances-monitor.md) z Azure monitor
-* [Wdrażanie sieci wirtualnej](container-instances-vnet.md) przeglądania
-* [Zasoby procesora GPU](container-instances-gpu.md) przeglądania
+* [Wdrażanie sieci wirtualnej](container-instances-vnet.md) (wersja zapoznawcza)
+* [Zasoby procesora GPU](container-instances-gpu.md) (wersja zapoznawcza)
 
 W przypadku wdrożeń kontenerów systemu Windows należy używać obrazów opartych na typowych [obrazach podstawowych systemu Windows](container-instances-faq.md#what-windows-base-os-images-are-supported).
 

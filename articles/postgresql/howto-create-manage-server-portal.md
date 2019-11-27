@@ -16,8 +16,8 @@ ms.locfileid: "74535693"
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Zarządzanie serwerem Azure Database for PostgreSQL przy użyciu Azure Portal
 W tym artykule pokazano, jak zarządzać serwerami Azure Database for PostgreSQL. Zadania zarządzania obejmują skalowanie obliczeniowe i magazynowe, Resetowanie hasła administratora oraz wyświetlanie szczegółów serwera.
 
-## <a name="sign-in"></a>Logowanie
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+## <a name="sign-in"></a>Zaloguj
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Tworzenie serwera
 Przejdź do [przewodnika Szybki Start](quickstart-create-server-database-portal.md) , aby dowiedzieć się, jak utworzyć serwer Azure Database for PostgreSQL i rozpocząć pracę z nim.
@@ -94,7 +94,7 @@ Serwer można usunąć, jeśli nie jest już potrzebny.
 
 2. Wpisz nazwę serwera w polu wejściowym, aby upewnić się, że jest to serwer, który chcesz usunąć.
 
-    ![confirm-delete](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![potwierdzenie usunięcia](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > Usuwanie serwera jest nieodwracalne.

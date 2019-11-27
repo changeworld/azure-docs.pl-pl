@@ -1,6 +1,6 @@
 ---
-title: Modelowanie etap cyklu życia zespołowego danych dla celów naukowych
-description: Cele, zadania i elementy dostarczane dla etapu modelowania projektów do nauki o danych
+title: Modelowanie etapów cyklu życia zespołowego procesu nauki danych
+description: Cele, zadania i elementy dostarczane dla etapu modelowania projektów analizy danych
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -18,9 +18,9 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74538221"
 ---
-# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modelowanie etap cyklu życia zespołowego danych dla celów naukowych
+# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modelowanie etapów cyklu życia zespołowego procesu nauki danych
 
-W tym artykule opisano cele, zadania i cele do zrealizowania skojarzone z etapem modelowania procesów do nauki o danych zespołu (TDSP). Ten proces obejmuje zalecane cyklu życia, który umożliwia tworzenie struktury projektów do nauki o danych. Cykl życia przedstawia główne etapy, które projekty zazwyczaj są wykonywane, często iteracyjne:
+W tym artykule opisano cele, zadania i elementy dostarczane powiązane z etapem modelowania procesu nauki o danych zespołowych (przetwarzania TDSP). Ten proces zapewnia Zalecany cykl życia, którego można użyć do struktury projektów analizy danych. Cykl życia przedstawia główne etapy, które są zwykle wykonywane przez projekty, często iteracyjnie:
 
    1. **Zrozumienie biznesowe**
    2. **Pozyskiwanie i zrozumienie danych**
@@ -28,34 +28,34 @@ W tym artykule opisano cele, zadania i cele do zrealizowania skojarzone z etapem
    4. **Wdrożenie**
    5. **Akceptacja klienta**
 
-Oto wizualnej reprezentacji cyklu przetwarzania TDSP:
+Oto wizualna reprezentacja cyklu życia przetwarzania TDSP:
 
 ![Cykl życia przetwarzania TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-## <a name="goals"></a>Cele
-* Określ funkcji optymalne danych dla modelu uczenia maszynowego.
-* Utwórz i model uczenia maszynowego, który prognozuje najdokładniej element docelowy.
-* Utwórz model uczenia maszynowego, która jest odpowiednia w środowisku produkcyjnym.
+## <a name="goals"></a>Wyniki
+* Określ optymalne funkcje danych dla modelu uczenia maszynowego.
+* Utwórz model uczenia maszynowego z największą dokładnością.
+* Utwórz model uczenia maszynowego, który jest odpowiedni dla środowiska produkcyjnego.
 
 ## <a name="how-to-do-it"></a>Jak to zrobić
-Istnieją trzy główne zadania, które zostały omówione w tym etapie:
+W tym etapie istnieją trzy główne zadania:
 
   * **Inżynieria funkcji**: Tworzenie funkcji danych z danych pierwotnych w celu ułatwienia szkolenia modeli.
   * **Uczenie modeli**: Znajdź model, który odbierze najbardziej dokładne wyniki, porównując ich metryki sukcesu.
   * Ustal, czy model jest **odpowiedni dla środowiska produkcyjnego.**
 
 ### <a name="feature-engineering"></a>Inżynieria funkcji
-Inżynieria funkcji obejmuje dołączania, agregacji i przekształcanie pierwotnych zmienne, aby tworzyć funkcje używane do analizy. Jeśli mają wgląd w co umożliwiające obsługę modelu, należy zrozumieć jak powiązane są ze sobą funkcje i sposobu używania tych funkcji algorytmów uczenia maszynowego. 
+Inżynieria funkcji obejmuje dołączenie, agregację i transformację zmiennych nieprzetworzonych w celu utworzenia funkcji używanych w analizie. Jeśli chcesz uzyskać wgląd w to, co ma wpływ na model, musisz zrozumieć, w jaki sposób funkcje są ze sobą powiązane, i jak algorytmy uczenia maszynowego mają korzystać z tych funkcji. 
 
-Ten krok wymaga kombinację creative wiedzy na temat domeny i szczegółowe dane uzyskane w kroku eksploracji danych. Inżynieria funkcji jest działanie znajdowania i tym informacyjne zmiennych, ale w tym samym czasie próby Unikaj zbyt wielu zmiennych niepowiązanych. Zmienne i poprawy wyników; zmienne niepowiązanych wprowadzić niepotrzebny szum do modelu. Należy również generować nowe dane uzyskane podczas oceniania przez te funkcje. W rezultacie generowania tych funkcji tylko może zależeć od danych, która jest dostępna podczas oceniania. 
+Ten krok wymaga twórczej kombinacji wiedzy o domenie i szczegółowych informacji uzyskanych z kroku eksploracji danych. Inżynieria funkcji to funkcja równoważenia obciążenia, która umożliwia znajdowanie i uwzględnianie zmiennych, ale jednocześnie próbuje uniknąć zbyt wielu niepowiązanych zmiennych. Zmienne informacyjne ulepszają wynik; zmienne niepowiązane wprowadzają niepotrzebny szum do modelu. Należy również generować te funkcje dla nowych danych uzyskanych podczas oceniania. W związku z tym generowanie tych funkcji może być zależne tylko od danych, które są dostępne w momencie oceniania. 
 
 Aby uzyskać wskazówki techniczne dotyczące inżynierii funkcjonalnej w przypadku korzystania z różnych technologii danych platformy Azure, zobacz [Inżynieria funkcji w procesie analizy danych](create-features.md). 
 
 ### <a name="model-training"></a>Trenowanie modelu
-W zależności od typu zapytania, które próbujesz odpowiedzieć dostępnych wiele algorytmów modelowania. Aby uzyskać wskazówki dotyczące wybierania algorytmów, zobacz [jak wybrać algorytmy dla Microsoft Azure Machine Learning](../studio/algorithm-choice.md). Chociaż w tym artykule korzysta z usługi Azure Machine Learning, wskazówek zawartych w nim jest przydatne dla wszystkich projektów uczenia maszynowego. 
+W zależności od typu pytania, które próbujesz odpowiedzieć, dostępnych jest wiele algorytmów modelowania. Aby uzyskać wskazówki dotyczące wybierania algorytmów, zobacz [jak wybrać algorytmy dla Microsoft Azure Machine Learning](../studio/algorithm-choice.md). Chociaż w tym artykule są używane Azure Machine Learning, wskazówki, które zapewnia, są przydatne w przypadku wszystkich projektów uczenia maszynowego. 
 
-Proces do trenowania modelu obejmuje następujące kroki: 
+Proces szkolenia modelu obejmuje następujące kroki: 
 
    * **Dziel losowo dane wejściowe** do modelowania na zestaw danych szkoleniowych i zestaw danych testowych.
    * **Kompiluj modele** przy użyciu zestawu danych szkoleniowych.
@@ -63,24 +63,24 @@ Proces do trenowania modelu obejmuje następujące kroki:
    * **Określ najlepsze rozwiązanie** , aby odpowiedzieć na pytanie, porównując metryki sukcesu między metodami alternatywnymi.
 
 > [!NOTE]
-> **Unikaj wycieku**: można spowodować wyciek danych, jeśli dołączysz dane spoza zestawu danych szkoleniowych, które umożliwiają modelowi lub algorytmowi uczenia maszynowego wykonywanie nierealistycznie dobrych prognoz. Wyciek jest typową przyczyną, dlaczego dane, które analityków otrzymaj nerwowe w przypadku, gdy uzyskują predykcyjne wyniki wydawać się zbyt dobrze. Te zależności, może być trudny do wykrycia. W celu uniknięcia wycieku często wymaga iteracja między tworzenia zestawu analiz danych, tworzenie modelu i oceny dokładności wyników. 
+> **Unikaj wycieku**: można spowodować wyciek danych, jeśli dołączysz dane spoza zestawu danych szkoleniowych, które umożliwiają modelowi lub algorytmowi uczenia maszynowego wykonywanie nierealistycznie dobrych prognoz. Wyciek jest typowym powodem, dlaczego analityki danych uzyskują nerwy, gdy uzyskują wyniki predykcyjne, które wydaje się zbyt dobre. Wykrywanie tych zależności może być trudne. Aby uniknąć wycieków często wymaga iteracji między kompilowaniem zestawu danych analizy, tworzeniem modelu i ocenianiem dokładności wyników. 
 > 
 > 
 
-Udostępniamy [zautomatyzowane narzędzie do modelowania i raportowania](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) z przetwarzania TDSP, które jest możliwe do uruchomienia przez wiele algorytmów i odchylenia parametrów w celu utworzenia modelu linii bazowej. Tworzy linię bazową modelowania raport podsumowujący wydajność każdego modelu wraz z kombinacją parametrów zmiennych znaczenie w tym. Ten proces jest również iteracyjna, jako jego dysku dalsze technicznego opracowywania funkcji. 
+Udostępniamy [zautomatyzowane narzędzie do modelowania i raportowania](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) z przetwarzania TDSP, które jest możliwe do uruchomienia przez wiele algorytmów i odchylenia parametrów w celu utworzenia modelu linii bazowej. Tworzy również podstawowy raport modelowania, który podsumowuje wydajność poszczególnych modeli i kombinacji parametrów, w tym znaczenie zmienne. Ten proces jest również iteracyjny, ponieważ może to ułatwić inżynierowanie funkcji. 
 
-## <a name="artifacts"></a>Artefakty
-Artefakty utworzone podczas tego etapu obejmują:
+## <a name="artifacts"></a>Artifacts
+Artefakty utworzone w tym etapie obejmują:
 
-   * [Zestawy funkcji](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): funkcje opracowane dla modelowania są opisane w sekcji **zestawy funkcji** w raporcie **definicji danych** . Zawiera wskaźniki kod służący do generowania funkcji i opis jak funkcja został wygenerowany.
+   * [Zestawy funkcji](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): funkcje opracowane dla modelowania są opisane w sekcji **zestawy funkcji** w raporcie **definicji danych** . Zawiera wskaźniki do kodu w celu wygenerowania funkcji oraz opis sposobu generowania funkcji.
    * [Raport dotyczący modelu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): dla każdego z modeli, który został wypróbowany, standardowy, oparty na szablonach raport, który zawiera szczegółowe informacje dotyczące każdego eksperymentu.
-   * **Decyzja dotycząca punktów kontrolnych**: Oceń, czy model wykonuje wystarczająco dużo, aby wdrożyć go w systemie produkcyjnym. Niektóre kluczowe pytania są następujące:
-     * Model odpowiedzi na pytanie, bez obaw wystarczające, biorąc pod uwagę dane testowe 
-     * Należy spróbować żadnych alternatywnych metod? Należy zbierać dodatkowe dane, nie więcej technicznego opracowywania funkcji lub eksperymentować z innych algorytmów?
+   * **Decyzja dotycząca punktów kontrolnych**: Oceń, czy model wykonuje wystarczająco dużo, aby wdrożyć go w systemie produkcyjnym. Oto kluczowe pytania, które należy zadać:
+     * Czy model odpowiada na pytanie z wystarczającym zaufaniem do danych testowych? 
+     * Czy chcesz próbować dowolnych alternatywnych metod? Czy należy zbierać dodatkowe dane, wykonywać więcej funkcji, czy eksperymentować z innymi algorytmami?
 
 ## <a name="next-steps"></a>Następne kroki
 
-Poniżej podano linki do każdego kroku w cyklu życia przetwarzania TDSP:
+Poniżej przedstawiono linki do poszczególnych etapów cyklu życia przetwarzania TDSP:
 
    1. [Zrozumienie biznesowe](lifecycle-business-understanding.md)
    2. [Pozyskiwanie i zrozumienie danych](lifecycle-data.md)
@@ -88,6 +88,6 @@ Poniżej podano linki do każdego kroku w cyklu życia przetwarzania TDSP:
    4. [Wdrożenie](lifecycle-deployment.md)
    5. [Akceptacja klienta](lifecycle-acceptance.md)
 
-Firma Microsoft oferuje instruktaży pełnej end-to-end, które przedstawiają wszystkie kroki w procesie dla konkretnych scenariuszy. [Przykładowy artykuł instruktażowy](walkthroughs.md) zawiera listę scenariuszy z linkami i opisami miniatur. Przewodniki pokazują, jak połączyć chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
+Zapewniamy kompleksowe przewodniki przedstawiające wszystkie kroki procesu dla konkretnych scenariuszy. [Przykładowy artykuł instruktażowy](walkthroughs.md) zawiera listę scenariuszy z linkami i opisami miniatur. Instruktaże ilustrują sposób łączenia chmur, narzędzi lokalnych i usług do przepływu pracy lub potoku w celu utworzenia inteligentnej aplikacji. 
 
 Aby zapoznać się z przykładami wykonywania kroków w TDSPs, które używają Azure Machine Learning Studio, zobacz [Korzystanie z przetwarzania TDSP z Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 

@@ -42,7 +42,7 @@ Za pomocą Azure Machine Learning można tworzyć obrazy platformy Docker z prze
     >
     > Aby uzyskać więcej informacji na temat ustawiania tych zmiennych, zobacz [Deploying Models with Azure Machine Learning](how-to-deploy-and-where.md).
 
-## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
+## <a name="prepare-for-deployment"></a>Przygotowywanie do wdrażania
 
 Przed wdrożeniem należy zdefiniować, co jest potrzebne do uruchomienia modelu jako usługi sieci Web. Na poniższej liście opisano podstawowe elementy, które są związane z wdrożeniem:
 

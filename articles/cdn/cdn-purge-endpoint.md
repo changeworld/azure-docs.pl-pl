@@ -22,7 +22,7 @@ ms.lasthandoff: 11/26/2019
 ms.locfileid: "74546213"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Przeczyszczanie punktu końcowego Azure CDN
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Azure CDN węzły brzegowe będą buforować zasoby do momentu wygaśnięcia czasu wygaśnięcia elementu zawartości.  Po upływie czasu wygaśnięcia zasobu, gdy klient zażąda zasobu z węzła brzegowego, węzeł brzegowy pobierze nową zaktualizowaną kopię elementu zawartości, aby obsłużyć żądanie klienta i zapisać Odświeżanie pamięci podręcznej.
 
 Najlepszym rozwiązaniem, aby upewnić się, że użytkownicy zawsze uzyskują najnowszą kopię zasobów, są w wersji zasobów dla każdej aktualizacji i publikują je jako nowe adresy URL.  Usługa CDN natychmiast pobierze nowe zasoby dla kolejnych żądań klientów.  Czasami możesz chcieć przeczyścić zawartość pamięci podręcznej ze wszystkich węzłów brzegowych i wymusić, aby wszystkie nowe zasoby były pobierane.  Może to być spowodowane aktualizacjami aplikacji sieci Web lub szybkiej aktualizacji zasobów zawierających nieprawidłowe informacje.
@@ -73,7 +73,7 @@ Ten samouczek przeprowadzi Cię przez przeczyszczanie zasobów ze wszystkich wę
 > 
 > 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Wstępne ładowanie zasobów w punkcie końcowym usługi Azure CDN](cdn-preload-endpoint.md)
 * [Azure CDN dokumentacja interfejsu API REST — przeczyszczanie lub wstępne ładowanie punktu końcowego](/rest/api/cdn/endpoints)
 

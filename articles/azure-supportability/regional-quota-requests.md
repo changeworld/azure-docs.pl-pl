@@ -34,7 +34,7 @@ Możesz poprosić o zwiększenie **standardowego limitu regionalnej maszyny wirt
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "pomoc i obsługa techniczna platformy Azure" dostępnego w Azure Portal. 
 
-1. W obszarze https://portal.azure.comwybierz pozycję **Pomoc i obsługa techniczna**.
+1. W obszarze https://portal.azure.com wybierz pozycję **Pomoc i obsługa techniczna**.
 
 ![Pomoc i obsługa techniczna](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -65,13 +65,13 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy tec
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "użycie i limit przydziału" platformy Azure dostępnego w Azure Portal. 
 
-1. W obszarze https://portal.azure.comwybierz pozycję **subskrypcje**.
+1. W obszarze https://portal.azure.com wybierz pozycję **subskrypcje**.
 
 ![Subskrypcje](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2. Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
 
-![Wybieranie subskrypcji](./media/resource-manager-core-quotas-request/select-subscription.png)
+![Wybierz subskrypcję](./media/resource-manager-core-quotas-request/select-subscription.png)
 
 3. Wybierz **użycie i przydziały**
 

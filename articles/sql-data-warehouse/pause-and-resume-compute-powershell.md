@@ -56,7 +56,7 @@ Znajdź nazwę bazy danych, nazwę serwera oraz grupę zasobów magazynu danych,
 
 Wykonaj następujące kroki, aby znaleźć informacje o lokalizacji dla magazynu danych.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Kliknij opcję **Bazy danych SQL** po lewej stronie witryny Azure Portal.
 3. Wybierz opcję **mySampleDataWarehouse** ze strony **Bazy danych SQL**. Zostanie otwarty magazyn danych.
 

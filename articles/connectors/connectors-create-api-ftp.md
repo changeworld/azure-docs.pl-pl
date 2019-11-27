@@ -45,9 +45,9 @@ Można użyć wyzwalaczy, które odbierają odpowiedzi z serwera FTP i udostępn
 
 Wyzwalacze FTP działają przez sondowanie systemu plików FTP i wyszukiwanie wszelkich plików, które zostały zmienione od czasu ostatniego sondowania. Niektóre narzędzia pozwalają zachować sygnaturę czasową, gdy pliki zmienią się. W takich przypadkach należy wyłączyć tę funkcję, aby wyzwalacz mógł funkcjonować. Poniżej przedstawiono niektóre typowe ustawienia:
 
-| Klient SFTP | Akcja |
+| Klient SFTP | Działanie |
 |-------------|--------|
-| Winscp | Przejdź do **opcji opcje** > **preferencje** > **transfer** > **edycja** > **Zachowaj sygnaturę czasową** > **Wyłącz** |
+| WinSCP | Przejdź do **opcji opcje** > **preferencje** > **transfer** > **edycja** > **Zachowaj sygnaturę czasową** > **Wyłącz** |
 | FileZilla | Przejdź do obszaru **Transfer** > **zachować sygnatury czasowe transferowanych plików** > **wyłączyć** |
 |||
 
@@ -73,7 +73,7 @@ Gdy wyzwalacz odnajdzie nowy plik, wyzwalacz sprawdza, czy nowy plik jest zakoń
 
 1. W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź ciąg "FTP" jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz.
 
-   —lub—
+   — lub —
 
    W przypadku istniejących aplikacji logiki w ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**, a następnie wybierz pozycję **Dodaj akcję**. W polu wyszukiwania wprowadź ciąg "FTP" jako filtr. Na liście Akcje wybierz żądaną akcję.
 
