@@ -8,19 +8,19 @@ manager: mumami
 editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: f5d549006961f3108bf7155610dfb3a9ea78422a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 513dac3a1cdcefa7a49116ea02af5410265af3ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719774"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226248"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Przegląd interfejsów API raportowania dla klientów korporacyjnych
 Interfejsy API raportowania umożliwiają klientom korporacyjnym platformy Azure programowe ściąganie danych użycia i rozliczeń do preferowanych narzędzi do analizy danych. Klienci korporacyjni podpisali umowę [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) na platformie Azure, na podstawie której mają wynegocjowane zobowiązania pieniężne i dostęp do niestandardowych cen zasobów platformy Azure.
@@ -31,20 +31,20 @@ Interfejsy API raportowania umożliwiają klientom korporacyjnym platformy Azure
 
 |Klucz nagłówka żądania | Wartość|
 |-|-|
-|Autoryzacja| Określ wartość w tym formacie: **bearer {API_KEY}** <br/> Przykład: bearer eyr....09| 
+|Autoryzacja| Określ wartość w tym formacie: **bearer {API_KEY}** <br/> Przykład: bearer eyr....09|
 
 ## <a name="consumption-apis"></a>Interfejsy API użycia
-Punkt końcowy struktury Swagger dla opisanych poniżej interfejsów API jest dostępny [tutaj](https://consumption.azure.com/swagger/ui/index). Powinien on umożliwić łatwą introspekcję interfejsu API i dać możliwość wygenerowania zestawów SDK klienta przy użyciu funkcji [AutoRest](https://github.com/Azure/AutoRest) lub narzędzia [Swagger CodeGen](https://swagger.io/swagger-codegen/). Dane są dostępne za pośrednictwem tego interfejsu API od 1 maja 2014 r. 
+Punkt końcowy struktury Swagger dla opisanych poniżej interfejsów API jest dostępny [tutaj](https://consumption.azure.com/swagger/ui/index). Powinien on umożliwić łatwą introspekcję interfejsu API i dać możliwość wygenerowania zestawów SDK klienta przy użyciu funkcji [AutoRest](https://github.com/Azure/AutoRest) lub narzędzia [Swagger CodeGen](https://swagger.io/swagger-codegen/). Dane są dostępne za pośrednictwem tego interfejsu API od 1 maja 2014 r.
 
 * **Saldo i podsumowanie** — [interfejs API salda i podsumowania](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) oferuje comiesięczne podsumowanie informacji dotyczących sald, nowych zakupów, opłat za usługę Azure Marketplace, korekt i opłat za użycie nadwyżkowe.
 
-* **Szczegółowe zestawienie użycia** — [interfejs API szczegółowego zestawienia użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) oferuje dzienny podział ilości wykorzystanych zasobów i szacowane opłaty według rejestracji. Wynik zawiera również informacje na temat wystąpień, liczników i działów. Do tego interfejsu API można wysyłać zapytania według okresu rozliczeniowego lub określonej daty rozpoczęcia i zakończenia. 
+* **Szczegółowe zestawienie użycia** — [interfejs API szczegółowego zestawienia użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) oferuje dzienny podział ilości wykorzystanych zasobów i szacowane opłaty według rejestracji. Wynik zawiera również informacje na temat wystąpień, liczników i działów. Do tego interfejsu API można wysyłać zapytania według okresu rozliczeniowego lub określonej daty rozpoczęcia i zakończenia.
 
 * **Opłaty za sklep Marketplace** — [interfejs API opłat za sklep Marketplace](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) zwraca opłaty za witrynę Marketplace obliczone na podstawie użycia według dnia dla określonego okresu rozliczeniowego lub dat rozpoczęcia i zakończenia (jednorazowe opłaty nie są uwzględniane).
 
 * **Arkusz cen** — [interfejs API arkusza cen](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) udostępnia odpowiednią stawkę za każdy miernik dla danej rejestracji i okresu rozliczeniowego.
 
-* **Szczegóły wystąpienia zarezerwowanego** — [interfejs API użycia wystąpienia zarezerwowanego](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) zwraca użycie zakupów wystąpienia zarezerwowanego. [Interfejs API opłat za wystąpienia zarezerwowane](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) pokazuje dokonane transakcje rozliczeniowe. 
+* **Szczegóły wystąpienia zarezerwowanego** — [interfejs API użycia wystąpienia zarezerwowanego](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) zwraca użycie zakupów wystąpienia zarezerwowanego. [Interfejs API opłat za wystąpienia zarezerwowane](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) pokazuje dokonane transakcje rozliczeniowe.
 
 ## <a name="data-freshness"></a>Aktualność danych
 W odpowiedzi na wywołania wszystkich powyższych interfejsów API zostaną zwrócone elementy ETag. Zmiana elementu ETag wskazuje, że dane zostały odświeżone.  W kolejnych wywołaniach tego samego interfejsu API z użyciem tych samych parametrów przekaż przechwycony element ETag z kluczem „If-None-Match” w nagłówku żądania HTTP. Jeśli dane nie zostały odświeżone, zostanie zwrócony kod stanu odpowiedzi „NotModified” i nie zostaną zwrócone żadne dane. Jeśli element ETag zostanie zmieniony, interfejs API zwróci pełen zestaw danych dla wymaganego okresu.
@@ -60,13 +60,4 @@ W odpowiedzi na wywołania wszystkich powyższych interfejsów API zostaną zwr�
 |401| Brak autoryzacji| Nie znaleziono klucza interfejsu API, jest on nieprawidłowy, wygasł itd.|
 |404| Niedostępny| Nie znaleziono punktu końcowego raportu|
 |400| Nieprawidłowe żądanie| Nieprawidłowe parametry — zakresy dat, numery EA itd.|
-|500| Błąd serwera| Nieoczekiwany błąd podczas przetwarzania żądania| 
-
-
-
-
-
-
-
-
-
+|500| Błąd serwera| Nieoczekiwany błąd podczas przetwarzania żądania|

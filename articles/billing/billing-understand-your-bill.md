@@ -4,19 +4,19 @@ description: Dowiedz się, jak czytać i zrozumieć dane użycia oraz rachunek d
 author: bandersmsft
 manager: dougeby
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ceeacf216b1d3258aa73d86c613d28e00e9480bb
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 9486d56a723bb311c05ab7aa776060dfa9561aae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718612"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223028"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Informacje o rachunku Microsoft Azure
 Aby zrozumieć zawartość rachunku za korzystanie z platformy Azure, porównaj fakturę z zawartością pliku szczegółowego dziennego użycia i raportami zarządzania kosztami w witrynie Azure Portal.

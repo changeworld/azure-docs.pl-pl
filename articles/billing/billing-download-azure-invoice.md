@@ -5,19 +5,19 @@ keywords: faktura rozliczeniowa, pobieranie faktury, faktura platformy azure, da
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 80ec40a7411a370460d663084f9f7034b28e1a2e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7d52a589ee7fcb8891f5ea839b2baeb5e4b30733
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375760"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224021"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
 
@@ -32,7 +32,7 @@ Jeśli masz umowę klienta firmy Microsoft, musisz mieć jedną z następującyc
 - Czytelnik
 - Menedżer faktur
 
-Jeśli masz umowę partnerską firmy Microsoft, musisz być administratorem globalnym lub agentem administracyjnym w organizacji partnerskiej, aby wyświetlać i pobierać faktury platformy Azure. Zobacz temat [Sprawdzanie typu konta rozliczeniowego](#check-your-billing-account-type), aby dowiedzieć się, jakich uprawnień potrzebujesz. 
+Jeśli masz umowę partnerską firmy Microsoft, musisz być administratorem globalnym lub agentem administracyjnym w organizacji partnerskiej, aby wyświetlać i pobierać faktury platformy Azure. Zobacz temat [Sprawdzanie typu konta rozliczeniowego](#check-your-billing-account-type), aby dowiedzieć się, jakich uprawnień potrzebujesz.
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](billing-understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
@@ -46,7 +46,7 @@ Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
 
 - Nie masz uprawnień do wyświetlania faktur. Jeśli masz umowę klienta firmy Microsoft lub umowę partnerską firmy Microsoft, musisz być właścicielem, współautorem, czytelnikiem lub menedżerem faktur w profilu rozliczeniowym. W przypadku innych subskrypcji stare faktury mogą nie być widoczne, jeśli nie jesteś administratorem konta. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [Manage access to Azure billing using roles (Zarządzanie dostępem do rozliczeń platformy Azure przy użyciu ról)](billing-manage-access.md).
 
-- Jeśli masz bezpłatną wersję próbną lub miesięczną kwotę środków w ramach subskrypcji, otrzymasz fakturę tylko w przypadku przekroczenia kwoty miesięcznych środków. Użytkownicy z umową klienta firmy Microsoft lub umową partnerską firmy Microsoft zawsze otrzymują fakturę. 
+- Jeśli masz bezpłatną wersję próbną lub miesięczną kwotę środków w ramach subskrypcji, otrzymasz fakturę tylko w przypadku przekroczenia kwoty miesięcznych środków. Użytkownicy z umową klienta firmy Microsoft lub umową partnerską firmy Microsoft zawsze otrzymują fakturę.
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Pobieranie faktur w witrynie Azure Portal
 

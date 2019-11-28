@@ -2,25 +2,22 @@
 title: Opłacanie rachunku za korzystanie z platformy Microsoft Azure | Microsoft Docs
 description: W tym artykule opisano, jak opłacić fakturę w witrynie Azure Portal
 keywords: rozliczenie, zaległe, saldo, zapłać teraz,
-services: billing
-documentationcenter: ''
 author: jureid
 manager: jureid
-editor: ''
 tags: billing, past due, pay now, bill, invoice, pay
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 4df0939137a529dd35f8f61ff90ee6da43ec5d61
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 68c9838fc374bd3bd8a4d25f3d6f1c4bdace8e95
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709663"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226184"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Jak zapłacić rachunek za korzystanie z platformy Microsoft Azure
 
@@ -50,7 +47,7 @@ Aby opłacać faktury w witrynie Azure Portal, musisz być właścicielem, wspó
 1. W nowym bloku kliknij pozycję **Wybierz metodę płatności**, aby wybrać istniejącą kartę kredytową lub dodać nową.<!-- screenshot of select payment method link -->
 1. Po wybraniu metody płatności kliknij pozycję **Zapłać teraz**.
 
-W bloku faktur stan faktury zostanie zmieniony na opłacony. 
+W bloku faktur stan faktury zostanie zmieniony na opłacony.
 
 <!-- pay now from invoice blade -->
 

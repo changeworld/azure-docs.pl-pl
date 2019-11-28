@@ -5,19 +5,19 @@ author: v-miegge
 manager: na
 editor: v-jesits
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 95358d7171db14ea44f5baee211d26e8f00492ad
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70242432"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223539"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Rozwiązywanie problemów z tworzeniem konta na platformie Azure
 
@@ -127,7 +127,7 @@ Aby rozwiązać ten problem, utwórz konto platformy Azure przy użyciu innego k
 Inne artykuły dotyczące rozwiązywania problemów z rozliczeniami i subskrypcjami platformy Azure
 
 - [Odrzucona karta](billing-troubleshoot-declined-card.md)
-- [Problemy z logowaniem do subskrypcji](billing-troubleshoot-sign-in-issue.md)
+- [Subscription sign-in issues (Problemy z logowaniem do subskrypcji)](billing-troubleshoot-sign-in-issue.md)
 - [No subscriptions found (Nie odnaleziono żadnych subskrypcji)](billing-no-subscriptions-found.md)
 - [Wyłączony widok kosztów przedsiębiorstwa](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
@@ -137,4 +137,4 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dokumentacja rozliczeń platformy Azure](index.md)
+- [Dokumentacja dotycząca rozliczeń platformy Azure](index.md)

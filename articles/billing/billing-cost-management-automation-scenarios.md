@@ -5,22 +5,20 @@ services: billing
 documentationcenter: ''
 author: bandersmsft
 manager: dougeby
-editor: ''
 tags: billing
-ms.assetid: 204b15b2-6667-4b6c-8ea4-f32c06f287fd
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 54c4426fb8bdb1476b33defb5351b3fb0e6a0663
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 6a2cb3df5bf8a67c7b79a24fd8328267bf6c4dd0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718833"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224061"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scenariusze automatyzacji dotyczące rozliczeń i zarządzania kosztami
 
@@ -70,7 +68,7 @@ Klienci korzystający z subskrypcji Web Direct i Enterprise mogą używać nast�
 
 -   [Interfejs API opłat za korzystanie z witryny Marketplace](https://docs.microsoft.com/rest/api/consumption/marketplaces): umożliwia uzyskanie danych opłat i danych użycia dla wszystkich zasobów witryny Azure Marketplace (oferty partnerów platformy Azure). Danych tych można użyć do sumowania kosztów wszystkich zasobów witryny Marketplace lub analizowania kosztów/użycia określonych zasobów.
 
--   [Interfejs API arkusza cen](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*tylko klienci korporacyjni*): umożliwia pobieranie niestandardowego cennika dla wszystkich mierników. Przedsiębiorstwa mogą łączyć te dane z danymi użycia oraz informacjami o użyciu witryny Marketplace w celu obliczania kosztów. 
+-   [Interfejs API arkusza cen](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*tylko klienci korporacyjni*): umożliwia pobieranie niestandardowego cennika dla wszystkich mierników. Przedsiębiorstwa mogą łączyć te dane z danymi użycia oraz informacjami o użyciu witryny Marketplace w celu obliczania kosztów.
 
 -   [Interfejs API zaleceń dotyczących rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): umożliwia uzyskanie zaleceń dotyczących zakupu wystąpień usługi Reserved VM Instances. Zalecenia ułatwiają analizowanie przewidywanych oszczędności i kwot zakupów. Aby uzyskać więcej informacji, zobacz [Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure](billing-reservation-apis.md).
 
@@ -80,14 +78,14 @@ Klienci korzystający z subskrypcji Web Direct i Enterprise mogą używać nast�
 
 -   [Interfejs API szczegółów użycia](https://docs.microsoft.com/rest/api/consumption/usagedetails): umożliwia uzyskanie informacji o opłatach i użyciu dla wszystkich zasobów platformy Azure udostępnianych przez firmę Microsoft. Informacje te mają postać szczegółowych rekordów i aktualnie są udostępniane raz dziennie dla jednego miernika. Informacji tych można użyć do sumowania kosztów wszystkich zasobów lub analizowania kosztów/użycia określonych zasobów.
 
--   [Interfejs API usługi RateCard](/previous-versions/azure/reference/mt219005(v=azure.100)): klienci korzystający z subskrypcji Web Direct mogą uzyskiwać stawki mierników. Zwrócone informacje można połączyć z informacjami o użyciu zasobów w celu ręcznego obliczenia kwoty rachunku. 
+-   [Interfejs API usługi RateCard](/previous-versions/azure/reference/mt219005(v=azure.100)): klienci korzystający z subskrypcji Web Direct mogą uzyskiwać stawki mierników. Zwrócone informacje można połączyć z informacjami o użyciu zasobów w celu ręcznego obliczenia kwoty rachunku.
 
 -   [Interfejs API nieklasyfikowanego użycia](/previous-versions/azure/reference/mt219003(v=azure.100)): umożliwia pobieranie nieprzetworzonych informacji o użyciu przed rozpoczęciem pomiarów/naliczeniem opłat przez platformę Azure.
 
 ### <a name="billing"></a>Rozliczenia
 -   [Interfejs API okresów rozliczeniowych](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): umożliwia określanie okresu rozliczeniowego do analizy i uzyskanie identyfikatorów faktur dla tego okresu. Identyfikatorów faktur można używać razem z interfejsem API faktur.
 
--   [Interfejs API faktur](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): umożliwia uzyskanie adresu URL, za pomocą którego można pobrać fakturę w postaci pliku PDF za dany okres rozliczeniowy.
+-   [Interfejs API faktur](/rest/api/billing/2019-10-01-preview/invoices): umożliwia uzyskanie adresu URL, za pomocą którego można pobrać fakturę w postaci pliku PDF za dany okres rozliczeniowy.
 
 ### <a name="enterprise-consumption"></a>Użycie w ramach subskrypcji Enterprise
 Następujące interfejsy API są dostępne tylko w przypadku korzystania z subskrypcji Enterprise:
@@ -107,11 +105,11 @@ Następujące interfejsy API są dostępne tylko w przypadku korzystania z subsk
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Czym różnią się interfejsy API raportowania korporacyjnego od interfejsów API użycia? Kiedy używa się tych interfejsów?
-Te interfejsy API mają podobny zestaw funkcji i umożliwiają odpowiadanie na wiele tych samych pytań w obszarze rozliczeń i zarządzania kosztami. Są one jednak przeznaczone dla różnych użytkowników: 
+Te interfejsy API mają podobny zestaw funkcji i umożliwiają odpowiadanie na wiele tych samych pytań w obszarze rozliczeń i zarządzania kosztami. Są one jednak przeznaczone dla różnych użytkowników:
 
 - Interfejsy API raportowania korporacyjnego są dostępne dla klientów, którzy podpisali umowę Enterprise Agreement z firmą Microsoft i mogą korzystać z negocjowanych zobowiązań pieniężnych i niestandardowych cen. Interfejsy API wymagają klucza, który można uzyskać w witrynie [Enterprise Portal](https://ea.azure.com). Opis tych interfejsów API można znaleźć w temacie [Przegląd interfejsów API raportowania dla klientów korporacyjnych](billing-enterprise-api.md).
 
-- Interfejsy API użycia są dostępne dla wszystkich klientów z kilkoma wyjątkami. Aby uzyskać więcej informacji, zobacz [Przegląd interfejsu API użycia platformy Azure](billing-consumption-api-overview.md) i [Dokumentacja interfejsu API użycia platformy Azure](https://docs.microsoft.com/rest/api/consumption/). W najnowszych scenariuszach programistycznych zalecamy używanie udostępnionych interfejsów API. 
+- Interfejsy API użycia są dostępne dla wszystkich klientów z kilkoma wyjątkami. Aby uzyskać więcej informacji, zobacz [Przegląd interfejsu API użycia platformy Azure](billing-consumption-api-overview.md) i [Dokumentacja interfejsu API użycia platformy Azure](https://docs.microsoft.com/rest/api/consumption/). W najnowszych scenariuszach programistycznych zalecamy używanie udostępnionych interfejsów API.
 
 ### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Czym różni się interfejs API szczegółów użycia od interfejsu API użycia?
 Te interfejsy API udostępniają zasadniczo różne dane:
@@ -126,7 +124,7 @@ Te interfejsy API udostępniają zasadniczo różne dane:
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Czym różni się interfejs API faktur od interfejsu API szczegółów użycia?
 Te interfejsy API udostępniają różne widoki tych samych danych:
 
-- [Interfejs API faktur](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) jest przeznaczony tylko dla klientów z subskrypcją Web Direct. Udostępnia on comiesięczne zestawienie na rachunku oparte na zagregowanych opłatach dla każdego typu miernika. 
+- [Interfejs API faktur](/rest/api/billing/2019-10-01-preview/invoices) jest przeznaczony tylko dla klientów z subskrypcją Web Direct. Udostępnia on comiesięczne zestawienie na rachunku oparte na zagregowanych opłatach dla każdego typu miernika.
 
 - [Interfejs API szczegółów użycia](https://docs.microsoft.com/rest/api/consumption/usagedetails) udostępnia szczegółowy widok rejestru użycia/kosztów dla każdego dnia. Mogą z niego korzystać zarówno klienci z subskrypcją Enterprise, jak i subskrypcją Web Direct.
 

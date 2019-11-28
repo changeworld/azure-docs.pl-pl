@@ -8,7 +8,7 @@ manager: amberb
 editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 035d2e567b6aad23801ff043652ea143e3f6105b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c1f9ef78431b6b293972d4adbc0f64dc49d5c4b7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709617"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223820"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Zarządzanie dostępem do informacji rozliczeniowych dla platformy Azure
 
 Możesz zapewnić innym użytkownikom dostęp do informacji rozliczeniowych dla Twojego konta w witrynie Azure Portal. Typ ról rozliczeniowych oraz instrukcje zapewniające dostęp do informacji rozliczeniowych różnią się w zależności od typu konta rozliczeniowego. Aby określić typ swojego konta rozliczeniowego, zobacz [Sprawdzanie typu konta rozliczeniowego](#check-the-type-of-your-billing-account).
 
-Artykuł dotyczy klientów z kontami usługi online firmy Microsoft. Jeśli jesteś klientem platformy Azure z umową Enterprise Agreement (EA) i jesteś administratorem przedsiębiorstwa, możesz udzielić uprawnień administratorom działu i właścicielom konta w witrynie Enterprise Portal. Aby uzyskać więcej informacji, zobacz [Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure](billing-understand-ea-roles.md). Jeśli jesteś klientem z umową klienta firmy Microsoft, zobacz [Omówienie ról administracyjnych dla umowy klienta firmy Microsoft na platformie Azure](billing-understand-mca-roles.md). 
+Artykuł dotyczy klientów z kontami usługi online firmy Microsoft. Jeśli jesteś klientem platformy Azure z umową Enterprise Agreement (EA) i jesteś administratorem przedsiębiorstwa, możesz udzielić uprawnień administratorom działu i właścicielom konta w witrynie Enterprise Portal. Aby uzyskać więcej informacji, zobacz [Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure](billing-understand-ea-roles.md). Jeśli jesteś klientem z umową klienta firmy Microsoft, zobacz [Omówienie ról administracyjnych dla umowy klienta firmy Microsoft na platformie Azure](billing-understand-mca-roles.md).
 
 ## <a name="account-administrators-for-microsoft-online-service-program-accounts"></a>Administratorzy konta dla kont usługi online firmy Microsoft
 
@@ -60,9 +60,9 @@ Po przypisaniu przez administratora konta odpowiednich ról innym użytkownikom 
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
     ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/billing-manage-access/billing-search-cost-management-billing.png)
- 
+
 1. Wybierz pozycję **Subskrypcje** w okienku po lewej stronie. W zależności od dostępu może być konieczne wybranie zakresu rozliczeniowego, a następnie wybranie pozycji **Subskrypcje**.
- 
+
     ![Zrzut ekranu pokazujący wybieranie subskrypcji](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. Wybierz pozycję **Faktury**, a następnie pozycję **Dostęp do faktury**.
@@ -88,7 +88,7 @@ Funkcja czytelnika rozliczeń jest dostępna w wersji zapoznawczej i nie obsług
     ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/billing-manage-access/billing-search-cost-management-billing.png)
 
 1. Wybierz pozycję **Subskrypcje** w okienku po lewej stronie. W zależności od dostępu może być konieczne wybranie zakresu rozliczeniowego, a następnie wybranie pozycji **Subskrypcje**.
- 
+
     ![Zrzut ekranu pokazujący wybieranie subskrypcji](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. Wybierz pozycję **Kontrola dostępu (IAM)** .

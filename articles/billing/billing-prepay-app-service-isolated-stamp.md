@@ -4,16 +4,16 @@ description: Dowiedz się, jak możesz zaoszczędzić koszty w przypadku podatku
 services: billing
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 5161f18499c082b7064eec2be612557ba09eec97
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5aafc2288b9e6b7ef217ec386211af7c3739c08b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806358"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223651"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Oszczędzanie kosztów w przypadku podatku od czynności cywilnoprawnych za korzystanie z usługi Azure App Service w izolowanym środowisku za pomocą wydajności rezerwowej
 
@@ -74,7 +74,7 @@ Aby uzyskać więcej informacji na temat tego, jak jest wyświetlany rabat rezer
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat rezerwacji na platformie Azure, zobacz następujące artykuły:
+- Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
   - [Czym są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
   - [Omówienie sposobu stosowania rabatu rezerwacji izolowanej sygnatury usługi Azure App Service](billing-reservation-discount-app-service-isolated-stamp.md)
   - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)

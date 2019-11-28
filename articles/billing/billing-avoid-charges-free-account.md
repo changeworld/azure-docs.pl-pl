@@ -4,23 +4,23 @@ description: Dowiedz się, dlaczego widzisz opłaty za bezpłatne konto platform
 author: amberbhargava
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ca685e70fea8d02a16485b135d82575069889bfa
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 9f75b630dd26e2cdef009771ad5e09cc3d230449
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375894"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226436"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Unikanie naliczania opłat za korzystanie z bezpłatnego konta platformy Azure
 
-[Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) zapewnia środki na korzystanie z platformy Azure w wysokości 200 USD przez pierwsze 30 dni i ograniczoną ilość bezpłatnych usług przez 12 miesięcy. Aby dowiedzieć się więcej na temat limitów bezpłatnych usług, zobacz [Często zadawane pytania dotyczące bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/free-account-faq/). Dopóki użytkownik ma niewygasłe środki lub używa tylko bezpłatnych usług w ramach limitów, nie są naliczane opłaty. 
+[Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) zapewnia środki na korzystanie z platformy Azure w wysokości 200 USD przez pierwsze 30 dni i ograniczoną ilość bezpłatnych usług przez 12 miesięcy. Aby dowiedzieć się więcej na temat limitów bezpłatnych usług, zobacz [Często zadawane pytania dotyczące bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/free-account-faq/). Dopóki użytkownik ma niewygasłe środki lub używa tylko bezpłatnych usług w ramach limitów, nie są naliczane opłaty.
 
 Przyjrzyjmy się niektórym z powodów, dla których możesz ponosić opłaty za bezpłatne konto platformy Azure.
 

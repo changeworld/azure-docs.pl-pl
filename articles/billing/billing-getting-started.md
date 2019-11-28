@@ -4,19 +4,19 @@ description: Dowiedz się, jak unikać nieoczekiwanych opłat na rachunku za kor
 author: bandersmsft
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e5cdd7181e680dbc7406118afeb4aeb837d3aaf2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375643"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223908"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zapobieganie nieoczekiwanym opłatom w rozliczeniach platformy Azure i zarządzanie kosztami
 
@@ -68,11 +68,11 @@ Koszty można monitorować przy użyciu następujących narzędzi:
 
 ### <a name="track-costs-with-budgets-and-cost-alerts"></a>Śledzenie kosztów za pomocą alertów dotyczących budżetów i kosztów
 
-W celu zarządzania kosztami można utworzyć [budżety](../cost-management/tutorial-acm-create-budgets.md) oraz [alerty](../cost-management/cost-mgt-alerts-monitor-usage-spending.md), które automatycznie powiadamiają Ciebie oraz Twoich interesariuszy o anomaliach w wydatkach i nadmiernych wydatkach. 
+W celu zarządzania kosztami można utworzyć [budżety](../cost-management/tutorial-acm-create-budgets.md) oraz [alerty](../cost-management/cost-mgt-alerts-monitor-usage-spending.md), które automatycznie powiadamiają Ciebie oraz Twoich interesariuszy o anomaliach w wydatkach i nadmiernych wydatkach.
 
 ### <a name="costs"></a> Poznawanie i analizowanie kosztów za pomocą analizy kosztów
 
-Po uruchomieniu usług platformy Azure regularnie sprawdzaj koszty, aby śledzić wydatki na platformę Azure. Analizy kosztów możesz używać, aby zrozumieć, skąd biorą się koszty związane z użyciem platformy Azure. 
+Po uruchomieniu usług platformy Azure regularnie sprawdzaj koszty, aby śledzić wydatki na platformę Azure. Analizy kosztów możesz używać, aby zrozumieć, skąd biorą się koszty związane z użyciem platformy Azure.
 
 1. Przejdź na stronę [Zarządzanie kosztami i rozliczenia w witrynie Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade).
 
@@ -166,7 +166,7 @@ W umowie dotyczącej poziomu usług (SLA) opisano zobowiązania firmy Microsoft 
 
 Aby zażądać środków:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). Jeśli masz wiele kont, upewnij się, że korzystasz z tego, na które miał wpływ przestój na platformie Azure. 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). Jeśli masz wiele kont, upewnij się, że korzystasz z tego, na które miał wpływ przestój na platformie Azure.
 2. Utwórz nowy wniosek o pomoc techniczną.
 3. W kategorii **Typ problemu** wybierz pozycję **Rozliczenia**.
 4. W obszarze **Typ problemu** wybierz pozycję **Żądanie zwrotu pieniędzy**.
