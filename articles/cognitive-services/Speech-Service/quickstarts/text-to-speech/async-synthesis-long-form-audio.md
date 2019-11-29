@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6cf6cfb005155b85278935af6f266dfebcbb44c6
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930578"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554957"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Szybki Start: synteza asynchroniczna dla długich form audio w języku Python (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 * Python 2.7. x lub 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)lub ulubiony Edytor tekstu.
-* Subskrypcja platformy Azure i klucz subskrypcji usługi rozpoznawania mowy. [Utwórz konto platformy Azure](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) i [Utwórz zasób mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) , aby uzyskać klucz. Podczas tworzenia zasobu mowy upewnij się, że warstwa cenowa jest ustawiona na **S0**, a lokalizacja jest ustawiona na [obsługiwany region](../../regions.md#standard-and-neural-voices).
+* Subskrypcja platformy Azure i klucz subskrypcji usługi rozpoznawania mowy. [Utwórz konto platformy Azure](../../get-started.md#try-the-speech-service-using-a-new-azure-account) i [Utwórz zasób mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) , aby uzyskać klucz. Podczas tworzenia zasobu mowy upewnij się, że warstwa cenowa jest ustawiona na **S0**, a lokalizacja jest ustawiona na [obsługiwany region](../../regions.md#standard-and-neural-voices).
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 

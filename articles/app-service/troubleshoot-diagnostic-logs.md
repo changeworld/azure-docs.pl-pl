@@ -12,15 +12,15 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bf25967133901aca911c0ad3a69d43c75bb816a0
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958046"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558566"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w Azure App Service
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Platforma Azure udostępnia wbudowaną diagnostykę, która pomaga w debugowaniu [aplikacji App Service](overview.md). W tym artykule dowiesz się, jak włączyć rejestrowanie diagnostyczne i dodać instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez platformę Azure.
 
 W tym artykule są wykorzystywane [Azure Portal](https://portal.azure.com) i interfejs wiersza polecenia platformy Azure do pracy z dziennikami diagnostycznymi. Aby uzyskać informacje dotyczące pracy z dziennikami diagnostycznymi przy użyciu programu Visual Studio, zobacz [Rozwiązywanie problemów z platformą Azure w programie Visual Studio](troubleshoot-dotnet-visual-studio.md)
@@ -67,9 +67,9 @@ Wybierz **poziom**lub poziom szczegółów do zarejestrowania. W poniższej tabe
 | Poziom | Uwzględnione kategorie |
 |-|-|
 |**Disabled (Wyłączone)** | Brak |
-|**Error** | Błąd, krytyczny |
-|**Ostrzeżenie** | Ostrzeżenie, błąd, krytyczny|
-|**Informacje o** | Informacje, ostrzeżenie, błąd, krytyczne|
+|**Porn** | Błąd, krytyczny |
+|**Wyświetlania** | Ostrzeżenie, błąd, krytyczny|
+|**Zawartych** | Informacje, ostrzeżenie, błąd, krytyczne|
 |**Pełne** | Trace, Debug, info, Warning, Error, krytyczny (wszystkie kategorie) |
 
 Po zakończeniu wybierz pozycję **Zapisz**.
@@ -189,7 +189,7 @@ Przy użyciu nowej [integracji Azure monitor](https://aka.ms/appsvcblog-azmon)mo
 
 W poniższej tabeli przedstawiono obsługiwane typy i opisy dzienników: 
 
-| Typ dziennika | Obsługa systemu Windows | Obsługa systemu Linux | Opis |
+| Typ dziennika | Obsługa systemu Windows | Obsługa systemu Linux (Docker) | Opis |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | Tak | Standardowe wyjście i standardowy błąd |
 | AppServiceHTTPLogs | Tak | Tak | Dzienniki serwera sieci Web |

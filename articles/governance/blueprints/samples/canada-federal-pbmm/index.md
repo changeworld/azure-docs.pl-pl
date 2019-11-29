@@ -1,14 +1,14 @@
 ---
-title: Przykład strategii Canada Federal PBMM — omówienie
+title: Omówienie przykładu strategii Canada Federal PBMM
 description: Omówienie przykładu strategii Federal PBMM Canada. Ten przykład strategii pomaga klientom ocenić określone mechanizmy kontroli Canada Federal PBMM.
 ms.date: 09/04/2019
 ms.topic: sample
-ms.openlocfilehash: 2640ba05be69cdb9432307b89027c30a27b4ad1c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: c1c5f9c6ec8dc49db4c93d0fbf9caa379a4ab160
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406307"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544507"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>Omówienie przykładu strategii Federal PBMM Canada
 

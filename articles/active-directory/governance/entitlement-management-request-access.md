@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173705"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554081"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania
 
@@ -35,7 +35,7 @@ Pierwszym krokiem jest zalogowanie się w portalu do mojego dostępu, w którym 
 
 **Rola wymagana wstępnie:** Obiektu żądającego
 
-1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Link rozpoczyna się od `myaccess`, zawiera wskazówkę katalogu i kończą się IDENTYFIKATORem pakietu dostępu.
+1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Łącze rozpoczyna się od `myaccess`, zawiera wskazówkę katalogu i kończą się IDENTYFIKATORem pakietu dostępu.
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -80,6 +80,30 @@ Po znalezieniu pakietu dostępu w portalu dostępu można przesłać żądanie.
 Jeśli zażądano dostępu do pakietu dostępu z wieloma zasadami, które mają zastosowanie, może zostać wyświetlony monit o wybranie zasad. Na przykład Menedżer pakietów dostępu może skonfigurować pakiet dostępu z dwiema zasadami dla dwóch grup pracowników wewnętrznych. Pierwsze zasady mogą zezwalać na dostęp przez 60 dni i wymagać zatwierdzenia. Drugie zasady mogą zezwalać na dostęp przez 2 dni i nie wymagać zatwierdzania. Jeśli wystąpi ten scenariusz, należy wybrać zasady, które mają być używane.
 
 ![Portal dostępu — dostęp do żądania — wiele zasad](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+## <a name="resubmit-a-request"></a>Prześlij ponownie żądanie
+
+Żądanie dostępu do pakietu dostępu może być odrzucone lub żądanie może wygasnąć, jeśli osoby zatwierdzające nie odpowiadają na czas. Jeśli potrzebujesz dostępu, możesz ponowić próbę i ponownie przesłać żądanie. Poniższa procedura wyjaśnia, jak ponownie przesłać żądanie dostępu:
+
+**Rola wymagana wstępnie:** Obiektu żądającego
+
+1. Zaloguj się do portalu **My Access** .
+
+1. Kliknij pozycję **historia żądań** w menu nawigacji po lewej stronie.
+
+1. Znajdź pakiet dostępu, dla którego chcesz ponownie przesłać żądanie.
+
+1. Kliknij znacznik wyboru, aby wybrać pakiet dostępu.
+
+1. Kliknij link Blue **View** z prawej strony wybranego pakietu dostępu.
+    
+    ![Wybierz pakiet dostępu i link do widoku](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+
+    Zostanie otwarte okienko po prawej stronie z historią żądań dla pakietu dostępu.
+    
+    ![Wybierz przycisk Prześlij ponownie](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+
+1. Kliknij przycisk **Prześlij ponownie** w dolnej części okienka.
 
 ## <a name="cancel-a-request"></a>Anuluj żądanie
 

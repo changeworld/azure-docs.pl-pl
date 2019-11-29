@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie infrastrukturą usługi Azure DevTest Labs
-description: Ten artykuł zawiera wskazówki dotyczące ładu infrastruktury usługi Azure DevTest Labs.
+title: Zarządzanie infrastrukturą Azure DevTest Labs — zasób
+description: Ten artykuł dotyczy wyrównania i zarządzania zasobami dla Azure DevTest Labs w organizacji.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,81 +10,81 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60561665"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561650"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zarządzanie infrastrukturą usługi Azure DevTest Labs — zasoby
-W tym artykule opisano, wyrównanie i zarządzanie zasobami dla laboratorium w Twojej organizacji. 
+# <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zarządzanie infrastrukturą Azure DevTest Labs — zasoby
+Ten artykuł dotyczy wyrównania i zarządzania zasobami dla DevTest Labs w organizacji. 
 
 ## <a name="align-within-an-azure-subscription"></a>Wyrównywanie w ramach subskrypcji platformy Azure 
 
 ### <a name="question"></a>Pytanie
-Jak dopasować DevTest Labs zasobów w ramach subskrypcji platformy Azure?
+Jak mogę wyrównać zasoby DevTest Labs w ramach subskrypcji platformy Azure?
 
 ### <a name="answer"></a>Odpowiedź
-Przed rozpoczęciem organizacji za pomocą platformy Azure do tworzenia aplikacji głównej, oceniający IT powinny najpierw Dowiedz się, jak wprowadzenie możliwości w ramach ich ogólną portfolio usług. Obszary do przeglądu należy zająć się następujące kwestie:
+Zanim organizacja zacznie używać platformy Azure do ogólnego opracowywania aplikacji, planisty IT powinny najpierw zapoznać się z wprowadzeniem możliwości jako części ogólnego portfela usług. Obszary do przeglądu powinny dotyczyć następujących kwestii:
 
-- Jak zmierzyć ponoszenia kosztów związanych z cyklem życia tworzenia aplikacji?
-- Jak organizacja dopasować usługę proponowane oferty z zasadami zabezpieczeń firmy? 
-- Jest wymagany do oddzielnych środowisk deweloperskich i produkcyjnych segmentacji? 
-- Formanty, które zostały wprowadzone dla długoterminowego łatwość zarządzania, stabilności i wzrostu?
+- Jak zmierzyć koszt związany z cyklem tworzenia aplikacji?
+- Jak organizacja dopasowuje proponowaną ofertę usługi przy użyciu firmowych zasad zabezpieczeń? 
+- Czy segmentacja jest wymagana do oddzielenia środowisk deweloperskich i produkcyjnych? 
+- Jakie kontrolki są wprowadzane do długoterminowej łatwości zarządzania, stabilności i wzrostu?
 
-**Najpierw zalecana praktyka** jest Przegląd taksonomii platformy Azure organizacji gdzie omówiono podziałów między środowiskami produkcyjnym i tworzenia subskrypcji. Na poniższym diagramie sugerowane taksonomii umożliwia separacji logicznej środowisk projektowania i testowania i produkcji. W przypadku tej metody organizacja może wprowadzić kody rozliczeń śledzenie kosztów skojarzonych z każdym środowisku oddzielnie. Aby uzyskać więcej informacji, zobacz [narzucony nadzór subskrypcji](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Ponadto można użyć [Azure tagi](../azure-resource-manager/resource-group-using-tags.md) porządkowanie zasobów na potrzeby śledzenia i rozliczania.
+**Pierwszym zalecanym** celem jest przejrzenie taksonomii platformy Azure w organizacji, w której znajdują się podziały między subskrypcjami produkcyjnymi i programistycznymi. Na poniższym diagramie Sugerowana Taksonomia umożliwia logiczne rozdzielenie środowiska deweloperskiego/testowego i produkcyjnego. W ramach tego podejścia organizacja może wprowadzić kody rozliczeń, aby śledzić koszty związane z każdym środowiskiem osobno. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące zarządzania subskrypcjami](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Ponadto można używać [tagów platformy Azure](../azure-resource-manager/resource-group-using-tags.md) do organizowania zasobów na potrzeby śledzenia i rozliczania.
 
-**Drugi zalecana praktyka** jest umożliwienie DevTest subskrypcji w portalu Azure Enterprise. Umożliwia ona organizacjom systemami operacyjnymi klienta, które nie są zwykle dostępne w ramach subskrypcji platformy Azure w przedsiębiorstwach. Następnie należy użyć oprogramowania korporacyjnego, w którym płacisz tylko za zasoby obliczeniowe i nie nie martw się o licencjonowaniu. Zapewnia, że opłata wyznaczonym usług, w tym galerii obrazów w modelu IaaS, takich jak Microsoft SQL Server, opiera się na użycie tylko. Można znaleźć szczegółowe informacje o subskrypcji usługi Azure DevTest [tutaj](https://azure.microsoft.com/offers/ms-azr-0148p/) dla klientów z umową Enterprise Agreement (EA) i [tutaj](https://azure.microsoft.com/offers/ms-azr-0023p/) dla klientów, płatność zgodnie z rzeczywistym użyciem.
+**Drugim zalecanym sposobem** jest włączenie subskrypcji DevTest w portalu Azure Enterprise. Dzięki temu organizacja może uruchamiać systemy operacyjne klienta, które nie są zwykle dostępne w ramach subskrypcji platformy Azure Enterprise. Następnie użyj oprogramowania w przedsiębiorstwie, w przypadku którego płacisz wyłącznie za obliczenia, i nie obawiaj się o Licencjonowanie. Gwarantuje to, że opłaty za wyznaczone usługi, w tym obrazy z galerii w IaaS, takie jak Microsoft SQL Server, opierają się wyłącznie na zużyciu. Szczegółowe informacje o subskrypcji usługi Azure DevTest można znaleźć [tutaj](https://azure.microsoft.com/offers/ms-azr-0148p/) dla klientów z Umowa Enterprise (EA) i w [tym miejscu](https://azure.microsoft.com/offers/ms-azr-0023p/) dla klientów z opcją płatność zgodnie z rzeczywistym użyciem.
 
-![Wyrównanie zasobów z subskrypcji](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
+![Wyrównanie zasobów przy użyciu subskrypcji](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
 
-Ten model zawiera organizacji elastyczność umożliwiającą wdrażanie usługi Azure DevTest Labs na dużą skalę. Organizacja może obsługiwać setki labs różnych jednostek biznesowych przy użyciu 100 do 1000 maszyn wirtualnych uruchamianych równolegle. Jego promuje pojęcie to rozwiązanie laboratorium scentralizowane przedsiębiorstwa, które mogą udostępniać te same zasady zarządzania konfiguracją i opcji zabezpieczeń.
+Ten model zapewnia organizacjom elastyczność umożliwiającą wdrażanie Azure DevTest Labs w odpowiedniej skali. Organizacja może obsługiwać setki laboratoriów dla różnych jednostek gospodarczych z 100 do 1000 maszyn wirtualnych działających równolegle. Promuje pojęcie scentralizowanego rozwiązania Enterprise Lab, które może korzystać z tych samych zasad zarządzania konfiguracją i kontroli zabezpieczeń.
 
-Ten model gwarantuje również, że organizacja nie wyczerpują swoje limity zasobów skojarzonych z subskrypcją platformy Azure. Aby uzyskać szczegółowe informacje o limity usług i subskrypcji, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md). DevTest Labs, proces tworzenia może zużywać dużą liczbę grup zasobów. Możesz poprosić limity można zwiększyć za pośrednictwem żądania pomocy technicznej w ramach subskrypcji usługi Azure DevTest. Zasoby w ramach subskrypcji w środowisku produkcyjnym nie dotyczy wzrostem subskrypcji rozwoju w użyciu. Aby uzyskać więcej informacji na temat skalowania usługi DevTest Labs, zobacz [skalowanie limity przydziału i ograniczenia w usłudze DevTest Labs](devtest-lab-scale-lab.md).
+Ten model gwarantuje również, że organizacja nie wyczerpuje limitów zasobów skojarzonych z ich subskrypcją platformy Azure. Aby uzyskać szczegółowe informacje o limitach subskrypcji i usług, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../azure-subscription-service-limits.md). Proces aprowizacji DevTest Labs może zużywać dużą liczbę grup zasobów. Możesz poprosić o zwiększenie limitów przez żądanie pomocy technicznej w ramach subskrypcji usługi Azure DevTest. Nie ma to żadnego oddziaływania na zasoby w ramach subskrypcji produkcyjnej, ponieważ zwiększa się użycie subskrypcji deweloperskiej. Aby uzyskać więcej informacji na temat skalowania DevTest Labs, zobacz [skalowanie przydziałów i limitów w laboratoriach DevTest](devtest-lab-scale-lab.md).
 
-Typowe poziomu limit subskrypcji, która musi zostać uwzględnione jest jak przypisań zakresu adresów IP sieci są przydzielane do obsługi środowiska produkcyjnego i tworzenia subskrypcji. Te przypisania należy uwzględnić na rozwój wraz z upływem czasu (w przypadku połączeń lokalnych lub innej sieci topologię, która wymaga zarządzanie ich stosu sieciowego, zamiast używać domyślnej implementacji platformy Azure w przedsiębiorstwie). Zalecaną praktyką jest, a mają kilka sieci wirtualne, które mają duże prefiksu adresu IP przypisane i podzielona przez wiele podsieci dużych nie mają wiele sieci wirtualnych o małych podsieci. Na przykład 10 subskrypcji można zdefiniować 10 sieciami wirtualnymi (po jednym dla każdej subskrypcji). Wszystkie warsztaty, które nie wymagają izolacji można udostępnić tej samej podsieci w sieci wirtualnej dla subskrypcji.
+Wspólny limit na poziomie subskrypcji, dla którego należy uwzględnić, to sposób przydzielania przypisań zakresu adresów IP sieci do obsługi zarówno subskrypcji produkcyjnych, jak i deweloperskich. Te przydziały powinny uwzględniać wzrost czasu (przy założeniu, że lokalna lub inna topologia sieci wymaga od przedsiębiorstwa zarządzania stosem sieciowym zamiast domyślnego wdrożenia platformy Azure). Zalecanym sposobem jest posiadanie kilku sieci wirtualnych, które mają duże prefiksy adresów IP i są dzielone z wieloma dużymi podsieciami, a nie z wieloma sieciami wirtualnymi z małymi podsieciami. Na przykład w przypadku 10 subskrypcji można zdefiniować 10 sieci wirtualnych (jednej dla każdej subskrypcji). Wszystkie laboratoria, które nie wymagają izolacji, mogą współużytkować tę samą podsieć w sieci wirtualnej subskrypcji.
 
 ## <a name="maintain-naming-conventions"></a>Obsługa konwencji nazewnictwa
 
 ### <a name="question"></a>Pytanie
-Jak zachować konwencję nazewnictwa w całej mojego środowiska DevTest Labs?
+Jak mogę zachować konwencję nazewnictwa w środowisku DevTest Labs?
 
 ### <a name="answer"></a>Odpowiedź
-Możesz chcieć rozszerzanie bieżących konwencjach nazewnictwa przedsiębiorstwa do operacji na platformie Azure, dzięki czemu będą zgodne w środowisku laboratorium.
+Możesz chcieć przyciągnąć bieżące konwencje nazewnictwa przedsiębiorstwa do operacji platformy Azure i zapewnić ich spójność w środowisku DevTest Labs.
 
-Podczas wdrażania usługi DevTest Labs, zaleca się, że masz określone zasady począwszy od. Możesz wdrożyć te zasady przez centralną skryptów i szablonów JSON, aby wymusić spójność. Nadawanie zasadom nazw może być implementowany przez zasady usługi Azure stosowane na poziomie subskrypcji. Aby uzyskać przykłady kodu JSON usługi Azure Policy, zobacz [przykładów usługi Azure Policy](../governance/policy/samples/index.md).
+Zalecamy, aby podczas wdrażania DevTest Labs były określone zasady uruchamiania. Te zasady są wdrażane za pomocą centralnego skryptu i szablonów JSON w celu wymuszenia spójności. Zasady nazewnictwa można zaimplementować za pomocą zasad platformy Azure, które są stosowane na poziomie subskrypcji. Aby uzyskać przykłady JSON dla Azure Policy, zobacz [Azure Policy Samples](../governance/policy/samples/index.md).
 
-## <a name="number-of-users-per-lab-and-labs-per-organization"></a>Liczba użytkowników na laboratorium i laboratoriów w ramach organizacji
+## <a name="number-of-users-per-lab-and-labs-per-organization"></a>Liczba użytkowników na laboratoria i laboratoria na organizację
 
 ### <a name="question"></a>Pytanie 
-Jak określić współczynnik użytkowników na laboratorium oraz ogólną liczbę labs potrzebnych w organizacji?
+Jak mogę określić stosunek użytkowników na laboratorium i ogólną liczbę laboratoriów wymaganych przez organizację?
 
 ### <a name="answer"></a>Odpowiedź
-Zaleca się, że jednostek biznesowych i grupy deweloperów, które są skojarzone z tym samym projekcie rozwoju są skojarzone z tym samym środowisku laboratoryjnym. Umożliwia ona te same typy zasad, obrazy i zamykania zasad mają być stosowane do obu grup. 
+Zalecamy, aby jednostki biznesowe i grupy programistyczne skojarzone z tym samym projektem programistycznym były skojarzone z tym samym laboratorium. Umożliwia zastosowanie tych samych typów zasad, obrazów i zasad zamykania do obu grup. 
 
-Również może być konieczne należy rozważyć granicach geograficznych. Na przykład deweloperzy we wschodnim regionie Północ Stanów Zjednoczonych (US) mogą używać laboratorium aprowizowane w wschodnie stany USA 2. Ponadto deweloperzy w Dallas, Teksas i Warszawie mogą być kierowani do użycia zasobu w południowo-środkowych stanów USA. W przypadku wspólnego nakładu pracy z firm zewnętrznych, można można przypisać do laboratorium, który nie jest używany przez deweloperów wewnętrznego. 
+Może być również konieczne rozważenie granic geograficznych. Na przykład deweloperzy w regionie Północno-środkowe Stany Zjednoczone (USA) mogą używać laboratorium zainicjowanego w regionie Wschodnie stany USA 2. Deweloperzy w Dallas, Texas i Denver mogą być kierowani do używania zasobów w Południowo-środkowe stany USA. W przypadku współpracy z zewnętrznymi osobami trzecimi mogą zostać przypisane do laboratorium, które nie jest używane przez wewnętrznych deweloperów. 
 
-Możesz także użyć laboratorium dla określonego projektu w obrębie projektów DevOps platformy Azure. Następnie możesz zastosować zabezpieczeń przy użyciu określonej grupy usługi Azure Active Directory, która zezwala na dostęp do obu zestawów zasobów. Sieci wirtualnej przypisany do laboratorium może być inny granic skonsolidować użytkowników.
+Możesz również użyć laboratorium dla określonego projektu w ramach projektów DevOps platformy Azure. Następnie należy zastosować zabezpieczenia za pomocą określonej grupy Azure Active Directory, co umożliwia dostęp do obu zestawów zasobów. Sieć wirtualna przypisana do laboratorium może być kolejną granicą, aby skonsolidować użytkowników.
 
 ## <a name="deletion-of-resources"></a>Usuwanie zasobów
 
 ### <a name="question"></a>Pytanie
-Jak można zapobiec usuwania zasobów w ramach laboratorium?
+Jak zapobiegamy usunięciu zasobów w ramach laboratorium?
 
 ### <a name="answer"></a>Odpowiedź
-Firma Microsoft zaleca, ustawić odpowiednie uprawnienia na poziomie laboratorium, tak aby tylko autoryzowani użytkownicy mogą usunąć zasoby lub zmienić zasady laboratorium. Deweloperzy powinny zostać umieszczone w ramach **DevTest Labs użytkowników** grupy. Developer potencjalny klient lub kierownik infrastruktury powinny być **DevTest Labs właściciela**. Zaleca się, że masz tylko dwóch właścicieli laboratorium. Ta zasada rozszerza kierunku repozytorium kodu, aby uniknąć uszkodzenia. Zastosowań laboratorium ma prawa do korzystania z zasobów, ale nie można zaktualizować zasad laboratorium. Zobacz następujący artykuł, który wyświetla listę ról i uprawnień, które każda grupa wbudowana ma w ramach laboratorium: [Dodawanie właścicieli i użytkowników w usłudze Azure DevTest Labs](devtest-lab-add-devtest-user.md).
+Zaleca się, aby ustawić odpowiednie uprawnienia na poziomie laboratorium, tak aby tylko autoryzowani użytkownicy mogli usuwać zasoby lub zmieniać zasady laboratorium. Deweloperzy powinni być umieszczani w grupie **użytkowników DevTest Labs** . Deweloperem potencjalnego klienta lub liderem infrastruktury powinien być **właściciel DevTest Labs**. Zalecamy posiadanie tylko dwóch właścicieli laboratorium. Te zasady rozszerzają się do repozytorium kodu w celu uniknięcia uszkodzenia. Program Lab stosuje prawa do używania zasobów, ale nie może aktualizować zasad laboratorium. Zapoznaj się z poniższym artykułem zawierającym listę ról i praw, które każda wbudowana grupa ma w laboratorium: [Dodawanie właścicieli i użytkowników w Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ## <a name="move-lab-to-another-resource-group"></a>Przenieś laboratorium do innej grupy zasobów 
 
 ### <a name="question"></a>Pytanie
-Przenieś laboratorium do innej grupy zasobów jest obsługiwana?
+Czy jest obsługiwane przenoszenie laboratorium do innej grupy zasobów?
 
 ### <a name="answer"></a>Odpowiedź
-Tak. Przejdź do strony grupy zasobów, z poziomu strony głównej dla swojego laboratorium. Następnie wybierz **przenieść** na pasku narzędzi i wybierz laboratorium, którą chcesz przenieść do innej grupy zasobów. Po utworzeniu laboratorium, grupa zasobów jest tworzone automatycznie dla Ciebie. Jednak można przenieść laboratorium do innej grupy zasobów, która jest zgodna z konwencjami nazewnictwa przedsiębiorstwa. 
+Tak. Przejdź do strony grupy zasobów ze strony głównej dla laboratorium. Następnie wybierz pozycję **Przenieś** na pasku narzędzi i wybierz laboratorium, które chcesz przenieść do innej grupy zasobów. Po utworzeniu laboratorium zostanie automatycznie utworzona grupa zasobów. Można jednak przenieść laboratorium do innej grupy zasobów, która jest zgodna z konwencjami nazewnictwa przedsiębiorstwa. 
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz [Zarządzanie kosztami i własność](devtest-lab-guidance-governance-cost-ownership.md).
+## <a name="next-steps"></a>Następne kroki
+Zobacz [Zarządzanie kosztami i własnością](devtest-lab-guidance-governance-cost-ownership.md).

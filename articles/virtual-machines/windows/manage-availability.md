@@ -12,15 +12,15 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 11/27/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44db2b0b42175f7968852ad9a0f7769b05e2c008
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1f9914b84b63f271c7dd7d1b8f7dbc3b69511605
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038181"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561185"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Zarządzanie dostępnością maszyn wirtualnych z systemem Windows na platformie Azure 
 
@@ -33,3 +33,7 @@ Aby uzyskać instrukcje dotyczące tworzenia i używania zestawów dostępności
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat równoważenia obciążenia maszyn wirtualnych, zobacz [równoważenie obciążenia maszyn wirtualnych](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
+Wyświetlanie architektur referencyjnych na potrzeby uruchamiania aplikacji N-warstwowych na SQL Server w IaaS
+
+* [Aplikacja N-warstwowa systemu Windows na platformie Azure z SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Uruchamianie aplikacji N-warstwowej w wielu regionach platformy Azure w celu zapewnienia wysokiej dostępności](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

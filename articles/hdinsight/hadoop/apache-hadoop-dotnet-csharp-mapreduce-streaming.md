@@ -2,31 +2,28 @@
 title: Używanie C# z usługą MapReduce na platformie Hadoop w usłudze HDInsight — Azure
 description: Dowiedz się, C# jak używać programu do tworzenia rozwiązań MapReduce z Apache Hadoop w usłudze Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1cdf029d296bd6ff11b6531cd47dc6a7fd3163c3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930262"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561800"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Używanie C# z usługą MapReduce streaming na Apache Hadoop w usłudze HDInsight
 
 Dowiedz się, C# jak za pomocą programu utworzyć rozwiązanie MapReduce w usłudze HDInsight.
 
-> [!IMPORTANT]
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [Apache Hadoop Components w usłudze HDInsight](../hdinsight-component-versioning.md).
-
 Apache Hadoop Streaming to narzędzie, które umożliwia uruchamianie zadań MapReduce przy użyciu skryptu lub pliku wykonywalnego. W tym przykładzie platforma .NET służy do implementowania mapowania i redukcji dla rozwiązania zliczania wyrazów.
 
 ## <a name="net-on-hdinsight"></a>Platforma .NET w usłudze HDInsight
 
-Klastry usługi *HDInsight oparte na systemie Linux* używają systemu [mono (https://mono-project.com)](https://mono-project.com) do uruchamiania aplikacji .NET. W usłudze HDInsight w wersji 3,6 jest dołączony system mono w wersji. Aby uzyskać więcej informacji na temat wersji programu mono zawartej w usłudze HDInsight, zobacz [składniki Apache Hadoop dostępne dla różnych wersji usługi HDInsight](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions). 
+Klastry usługi HDInsight używają systemu [mono (https://mono-project.com)](https://mono-project.com) do uruchamiania aplikacji .NET. W usłudze HDInsight w wersji 3,6 jest dołączony system mono w wersji. Aby uzyskać więcej informacji na temat wersji programu mono zawartej w usłudze HDInsight, zobacz [składniki Apache Hadoop dostępne dla różnych wersji usługi HDInsight](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).
 
 Aby uzyskać więcej informacji na temat zgodności z programem mono z wersjami .NET Framework, zobacz Zgodność z usługą [mono](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -50,9 +47,14 @@ Aby uzyskać więcej informacji na temat przesyłania strumieniowego, zobacz Us�
 
 * Sposób przekazywania plików exe do klastra. Kroki opisane w tym dokumencie wykorzystują Data Lake Tools for Visual Studio do przekazywania plików do magazynu podstawowego klastra.
 
-* Azure PowerShell lub Secure Shell (SSH) klienta.
+* W przypadku korzystania z programu PowerShell należy użyć polecenia [AZ module](https://docs.microsoft.com/powershell/azure/overview).
 
-* Usługa Hadoop w klastrze usługi HDInsight. Aby uzyskać więcej informacji na temat tworzenia klastra, zobacz [Tworzenie klastra usługi HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+* Klient SSH (opcjonalnie). Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+
+* Klaster Apache Hadoop w usłudze HDInsight. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
+
+* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. `wasb://` w usłudze Azure Storage `abfs://` dla Azure Data Lake Storage Gen2 lub `adl://` dla Azure Data Lake Storage Gen1. Jeśli na potrzeby usługi Azure Storage lub Data Lake Storage Gen2 jest włączony bezpieczny transfer, identyfikator URI zostałby `wasbs://` lub `abfss://`odpowiednio zapoznaj się również z [bezpiecznym transferem](../../storage/common/storage-require-secure-transfer.md).
+
 
 ## <a name="create-the-mapper"></a>Tworzenie mapowania
 
@@ -150,11 +152,9 @@ Następnie musisz przekazać do magazynu usługi HDInsight aplikacje do *odnajdy
 
 1. W programie Visual Studio wybierz pozycję **wyświetl** > **Eksplorator serwera**.
 
-2. Rozwiń węzeł **Azure**, a następnie rozwiń węzeł **HDInsight**.
+1. Kliknij prawym przyciskiem myszy pozycję **Azure**, wybierz pozycję **Połącz z subskrypcją Microsoft Azure...** i Ukończ proces logowania.
 
-3. Jeśli zostanie wyświetlony monit, wprowadź swoje poświadczenia subskrypcji platformy Azure, a następnie wybierz pozycję **Zaloguj się**.
-
-4. Rozwiń klaster usługi HDInsight, do którego chcesz wdrożyć tę aplikację. Zostanie wyświetlona pozycja z tekstem **(domyślne konto magazynu)** .
+1. Rozwiń klaster usługi HDInsight, do którego chcesz wdrożyć tę aplikację. Zostanie wyświetlona pozycja z tekstem **(domyślne konto magazynu)** .
 
    ![Konto magazynu, klaster usługi HDInsight, Eksplorator serwera, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
@@ -162,13 +162,13 @@ Następnie musisz przekazać do magazynu usługi HDInsight aplikacje do *odnajdy
 
    * Jeśli nie można rozszerzyć wpisu **(domyślnego konta magazynu)** , używasz **Azure Data Lake Storage** jako domyślnego magazynu dla klastra. Aby wyświetlić pliki w domyślnym magazynie klastra, kliknij dwukrotnie wpis **(domyślne konto magazynu)** .
 
-5. Aby przekazać pliki. exe, należy użyć jednej z następujących metod:
+1. Aby przekazać pliki. exe, należy użyć jednej z następujących metod:
 
-    * Jeśli używasz **konta usługi Azure Storage**, wybierz ikonę **Przekaż obiekt BLOB** . 
+    * Jeśli używasz **konta usługi Azure Storage**, wybierz ikonę **Przekaż obiekt BLOB** .
 
         ![Ikona przekazywania do usługi HDInsight dla programu mapowania, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        W oknie dialogowym **Przekaż nowy plik** w obszarze **Nazwa pliku**wybierz pozycję **Przeglądaj**. W oknie dialogowym **przekazywanie obiektu BLOB** przejdź do folderu *bin\Debug* dla projektu *mapowania* , a następnie wybierz plik *mapera. exe* . Na koniec wybierz pozycję **Otwórz** , a następnie kliknij **przycisk OK** , aby ukończyć przekazywanie. 
+        W oknie dialogowym **Przekaż nowy plik** w obszarze **Nazwa pliku**wybierz pozycję **Przeglądaj**. W oknie dialogowym **przekazywanie obiektu BLOB** przejdź do folderu *bin\Debug* dla projektu *mapowania* , a następnie wybierz plik *mapera. exe* . Na koniec wybierz pozycję **Otwórz** , a następnie kliknij **przycisk OK** , aby ukończyć przekazywanie.
 
     * W przypadku **Azure Data Lake Storage**kliknij prawym przyciskiem myszy pusty obszar na liście plików, a następnie wybierz polecenie **Przekaż**. Na koniec wybierz plik *Maper. exe* , a następnie wybierz pozycję **Otwórz**.
 
@@ -178,15 +178,19 @@ Następnie musisz przekazać do magazynu usługi HDInsight aplikacje do *odnajdy
 
 Poniższa procedura opisuje sposób uruchamiania zadania MapReduce przy użyciu sesji SSH:
 
-1. Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. (Na przykład uruchom polecenie `ssh sshuser@<clustername>-ssh.azurehdinsight.net`.) Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Użyj [polecenia SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) do nawiązania połączenia z klastrem. Edytuj poniższe polecenie, zastępując wartość CLUSTERname nazwą klastra, a następnie wprowadź polecenie:
 
-2. Użyj jednego z następujących poleceń, aby uruchomić zadanie MapReduce:
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. Użyj jednego z następujących poleceń, aby uruchomić zadanie MapReduce:
 
    * Jeśli domyślnym magazynem jest **usługa Azure Storage**:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
-            -files wasb:///mapper.exe,wasb:///reducer.exe \
+            -files wasbs:///mapper.exe,wasbs:///reducer.exe \
             -mapper mapper.exe \
             -reducer reducer.exe \
             -input /example/data/gutenberg/davinci.txt \
@@ -218,7 +222,7 @@ Poniższa procedura opisuje sposób uruchamiania zadania MapReduce przy użyciu 
    Na poniższej liście opisano, co każdy parametr i opcja reprezentuje:
 
    * *Hadoop-Streaming. jar*: Określa plik JAR, który zawiera funkcje MapReduce przesyłania strumieniowego.
-   * `-files`: Określa pliki *mapera. exe* i *redukuje. exe* dla tego zadania. Deklaracja protokołu `wasb:///`, `adl:///`lub `abfs:///` przed każdym plikiem jest ścieżką do katalogu głównego domyślnego magazynu klastra.
+   * `-files`: Określa pliki *mapera. exe* i *redukuje. exe* dla tego zadania. Deklaracja protokołu `wasbs:///`, `adl:///`lub `abfs:///` przed każdym plikiem jest ścieżką do katalogu głównego domyślnego magazynu klastra.
    * `-mapper`: Określa plik, który implementuje mapowanie.
    * `-reducer`: Określa plik, który implementuje zmniejszenie.
    * `-input`: określa dane wejściowe.

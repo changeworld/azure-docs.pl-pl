@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 472c4a75f5a4253220383ae79d88d5b90cec4795
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286994"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555047"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Rozwiązywanie problemów z typowymi błędami indeksatora i ostrzeżeniami w usłudze Azure Wyszukiwanie poznawcze
 
@@ -34,10 +34,10 @@ Począwszy od wersji interfejsu API `2019-05-06`, błędy indeksatora na poziomi
 
 | Właściwość | Opis | Przykład |
 | --- | --- | --- |
-| key | Identyfikator dokumentu dokumentu, którego dotyczy błąd lub ostrzeżenie. | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| key | Identyfikator dokumentu dokumentu, którego dotyczy błąd lub ostrzeżenie. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Nazwa operacji opisująca miejsce wystąpienia błędu lub ostrzeżenia. Ta wartość jest generowana przez następującą strukturę: [Kategoria]. [Podkategoria]. [ResourceType]. Source | DocumentExtraction. azureblob. myBlobContainerName wzbogacanie. WebApiSkill. Moja umiejętność projekcji. SearchIndex. OutputFieldMapping. myOutputFieldName projekcji. SearchIndex. MergeOrUpload. Indeksname Projekcja. KnowledgeStore. Table. webtablename |
 | message | Ogólny opis błędu lub ostrzeżenia. | Nie można wykonać umiejętności, ponieważ żądanie interfejsu API sieci Web nie powiodło się. |
-| details informacje | Wszelkie dodatkowe szczegóły, które mogą być pomocne w diagnozowaniu problemu, takie jak odpowiedź WebApi w przypadku niepowodzenia wykonywania niestandardowej umiejętności. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 Źródło, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... Pozostałe ślady stosu... |
+| Uzyskać | Wszelkie dodatkowe szczegóły, które mogą być pomocne w diagnozowaniu problemu, takie jak odpowiedź WebApi w przypadku niepowodzenia wykonywania niestandardowej umiejętności. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 Źródło, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... Pozostałe ślady stosu... |
 | documentationLink | Link do odpowiedniej dokumentacji ze szczegółowymi informacjami na temat debugowania i rozwiązywania problemu. Ten link będzie często wskazywał jedną z poniższych sekcji na tej stronie. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -46,7 +46,7 @@ Począwszy od wersji interfejsu API `2019-05-06`, błędy indeksatora na poziomi
 
 Indeksator nie mógł odczytać dokumentu ze źródła danych. Przyczyną może być:
 
-| Przyczyna | Szczegóły/przykład | Rozwiązanie |
+| Przyczyna | Szczegóły/przykład | Rozdzielczość |
 | --- | --- | --- |
 | niespójne typy pól w różnych dokumentach | Typ wartości jest niezgodny z typem kolumny. Nie można zapisać `'{47.6,-122.1}'` w kolumnie autorów.  Oczekiwany typ to JArray. | Upewnij się, że typ każdego pola jest taki sam w różnych dokumentach. Na przykład jeśli pierwszy dokument `'startTime'` pole jest datą i w drugim dokumencie jest ciągiem, ten błąd zostanie trafiony. |
 | błędy usługi źródłowej źródła danych | (z Cosmos DB) `{"Errors":["Request rate is large"]}` | Sprawdź wystąpienie magazynu, aby upewnić się, że jest w dobrej kondycji. Może być konieczne dostosowanie skalowania/partycjonowania. |
@@ -57,7 +57,7 @@ Indeksator nie mógł odczytać dokumentu ze źródła danych. Przyczyną może 
 ## <a name="error-could-not-extract-document-content"></a>Błąd: nie można wyodrębnić zawartości dokumentu
 Indeksator ze źródłem danych obiektu BLOB nie mógł wyodrębnić zawartości z dokumentu (na przykład pliku PDF). Przyczyną może być:
 
-| Przyczyna | Szczegóły/przykład | Rozwiązanie |
+| Przyczyna | Szczegóły/przykład | Rozdzielczość |
 | --- | --- | --- |
 | rozmiar obiektu BLOB przekracza limit. | Dokument ma `'150441598'` bajtów, który przekracza maksymalny rozmiar `'134217728'` bajtów na potrzeby wyodrębniania dokumentu dla bieżącej warstwy usług. | [Błędy indeksowania obiektów BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | Obiekt BLOB ma nieobsługiwany typ zawartości | Dokument zawiera nieobsługiwany typ zawartości `'image/png'` | [Błędy indeksowania obiektów BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ Indeksator ze źródłem danych obiektu BLOB nie mógł wyodrębnić zawartości
 ## <a name="error-could-not-parse-document"></a>Błąd: nie można przeanalizować dokumentu
 Indeksator odczytuje dokument ze źródła danych, ale wystąpił problem podczas konwertowania zawartości dokumentu do określonego schematu mapowania pól. Przyczyną może być:
 
-| Przyczyna | Szczegóły/przykład | Rozwiązanie |
+| Przyczyna | Szczegóły/przykład | Rozdzielczość |
 | --- | --- | --- |
 | Brak klucza dokumentu | Brak klucza dokumentu lub jest on pusty | Upewnij się, że wszystkie dokumenty mają prawidłowe klucze dokumentu |
 | Klucz dokumentu jest nieprawidłowy | Klucz dokumentu nie może mieć więcej niż 1024 znaków | Zmodyfikuj klucz dokumentu, aby spełniał wymagania dotyczące weryfikacji. |
@@ -81,7 +81,7 @@ Indeksator odczytuje dokument ze źródła danych, ale wystąpił problem podcza
 ## <a name="error-could-not-execute-skill"></a>Błąd: nie można wykonać umiejętności
 Indeksator nie mógł uruchomić umiejętności w zestawu umiejętności.
 
-| Przyczyna | Szczegóły/przykład | Rozwiązanie |
+| Przyczyna | Szczegóły/przykład | Rozdzielczość |
 | --- | --- | --- |
 | Przejściowe problemy z łącznością | Wystąpił błąd przejściowy. Spróbuj ponownie później. | Sporadycznie występują nieoczekiwane problemy z łącznością. Spróbuj ponownie uruchomić dokument za pomocą indeksatora później. |
 | Potencjalna usterka produktu | Wystąpił nieoczekiwany błąd. | Oznacza to nieznaną klasę błędu i może oznaczać, że występuje usterka produktu. Zapoznaj się z [biletem pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby uzyskać pomoc. |
@@ -140,7 +140,7 @@ Maksymalna wartość, którą można ustawić dla parametru `timeout` to 230 sek
 
 Dokument został odczytany i przetworzony, ale indeksator nie mógł go dodać do indeksu wyszukiwania. Przyczyną może być:
 
-| Przyczyna | Szczegóły/przykład | Rozwiązanie |
+| Przyczyna | Szczegóły/przykład | Rozdzielczość |
 | --- | --- | --- |
 | Pole zawiera termin, który jest zbyt duży | Termin w dokumencie jest większy niż [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Można uniknąć tego ograniczenia, upewniając się, że pole nie jest skonfigurowane jako możliwe do filtrowania, tworzenia i sortowania.
 | Dokument jest zbyt duży, aby można go było zindeksować | Dokument jest większy niż [Maksymalny rozmiar żądania interfejsu API](search-limits-quotas-capacity.md#api-request-limits) | [Jak indeksować duże zestawy danych](search-howto-large-index.md)
@@ -195,7 +195,7 @@ Jeśli chcesz podać wartość domyślną w przypadku braku danych wejściowych,
 }
 ```
 
-| Przyczyna | Szczegóły/przykład | Rozwiązanie |
+| Przyczyna | Szczegóły/przykład | Rozdzielczość |
 | --- | --- | --- |
 | Dane wejściowe umiejętności są niewłaściwego typu | Wymagane `X` danych wejściowych kwalifikacji nie ma oczekiwanego typu `String`. Wymagane `X` danych wejściowych kwalifikacji nie ma oczekiwanego formatu. | Pewne umiejętności oczekują danych wejściowych określonych typów, na przykład [umiejętność tonacji](cognitive-search-skill-sentiment.md) oczekuje, że `text` być ciągiem. Jeśli dane wejściowe określają wartość różną od ciągu, wówczas umiejętność nie zostanie wykonana i nie wygeneruje żadnych danych wyjściowych. Upewnij się, że zestaw danych zawiera wartości wejściowe, które są jednorodne w typie, lub Użyj [niestandardowej umiejętności interfejsu API sieci Web](cognitive-search-custom-skill-web-api.md) , aby wstępnie przetworzyć dane wejściowe. Jeśli Iteracja jest przeprowadzana przez tablicę, sprawdź kontekst umiejętności i wprowadź `*` w poprawnych pozycjach. Zwykle zarówno kontekst, jak i źródło danych wejściowych powinny kończyć się `*` dla tablic. |
 | Brak danych wejściowych kwalifikacji | Brak wymaganego `X` wejściowego umiejętności. | Jeśli wszystkie dokumenty otrzymają to ostrzeżenie, prawdopodobnie występuje literówka w ścieżkach wejściowych i należy dokładnie sprawdzić wielkość liter nazwy właściwości, dodatkowe lub brakujące `*` w ścieżce, a dokumenty ze źródła danych definiują wymagane dane wejściowe. |
@@ -208,7 +208,7 @@ Co najmniej jedna z wartości przeniesiona do opcjonalnego `languageCode` danych
 
 Jeśli wiesz, że zestaw danych znajduje się w jednym języku, należy usunąć [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) `languageCode` i dane wejściowe dotyczące umiejętności, a zamiast tego użyć parametru umiejętności `defaultLanguageCode` dla tej umiejętności, przy założeniu, że język jest obsługiwany dla tej umiejętności.
 
-Jeśli wiesz, że zestaw danych zawiera wiele języków, a więc potrzebujesz [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) i `languageCode` dane wejściowe, rozważ dodanie [ConditionalSkill](cognitive-search-skill-conditional.md) w celu odfiltrowania tekstu w językach, które nie są obsługiwane przed przekazaniem w tekst na kwalifikacje podrzędne.  Oto przykład tego, co może wyglądać jak w przypadku EntityRecognitionSkill:
+Jeśli wiesz, że zestaw danych zawiera wiele języków i dlatego potrzebujesz [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) i `languageCode` dane wejściowe, rozważ dodanie [ConditionalSkill](cognitive-search-skill-conditional.md) do odfiltrowania tekstu z nieobsługiwanymi językami przed przekazaniem tekstu do poziomu umiejętności podrzędnej.  Oto przykład tego, co może wyglądać jak w przypadku EntityRecognitionSkill:
 
 ```json
 {
@@ -298,7 +298,7 @@ Mapowania pól wyjściowych, które odwołują się do nieistniejących/niepusty
 
 [Tryby analizowania indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) muszą wiedzieć, jak kodowanie tekstu przed jego przeanalizą. Dwa najczęstsze sposoby kodowania tekstu to UTF-16 i UTF-8. UTF-8 to kodowanie o zmiennej długości, gdzie każdy znak ma długość od 1 do 4 bajtów. UTF-16 to kodowanie o stałej długości, gdzie każdy znak ma długość 2 bajtów. UTF-16 ma dwa różne warianty, "big endian" i "little endian". Kodowanie tekstu jest określane na podstawie "znacznika kolejności bajtów", serii bajtów przed tekstem.
 
-| Kodowanie | Znacznik kolejności bajtów |
+| Encoding | Znacznik kolejności bajtów |
 | --- | --- |
 | Big endian UTF-16 | 0xFE 0xFF |
 | Little endian UTF-16 | 0xFF 0xFE |

@@ -1,33 +1,33 @@
 ---
 title: Szczegóły struktury definicji zasad
 description: Opisuje, w jaki sposób definicje zasad są używane do ustanawiania Konwencji dla zasobów platformy Azure w organizacji.
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: afb06771422b2f8117383b0bde711dc3e1a4d238
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 93b03622f03c095a61291f4a6d25284e5052c35a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279455"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555176"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
-Definicje zasad zasobów są używane przez usługę Azure Policy można ustanowić konwencje dla zasobów. Każda definicja opisano zgodność zasobów i jakie efektu do podjęcia, gdy zasób jest niezgodna.
-Definiowanie Konwencji, pozwalają na nadzorowanie kosztów i zarządzania zasobami. Na przykład można określić, że dozwolone są tylko niektóre typy maszyn wirtualnych. Alternatywnie można wymagać, że wszystkie zasoby mają określony tag. Zasady są dziedziczone przez wszystkie zasoby podrzędne. Jeśli zasady są stosowane do grupy zasobów, ma zastosowanie do wszystkich zasobów w tej grupie zasobów.
+Definicje zasad zasobów są używane przez Azure Policy do ustanawiania konwencji dotyczących zasobów. Każda definicja zawiera opis zgodności zasobów i działania, które należy wykonać, gdy zasób nie jest zgodny.
+Dzięki zdefiniowaniu Konwencji można kontrolować koszty i łatwiej zarządzać zasobami. Można na przykład określić, że dozwolone są tylko niektóre typy maszyn wirtualnych. Lub można wymagać, aby wszystkie zasoby miały określony tag. Zasady są dziedziczone przez wszystkie zasoby podrzędne. Jeśli zasady są stosowane do grupy zasobów, mają zastosowanie do wszystkich zasobów w tej grupie zasobów.
 
 Schemat definicji zasad znajduje się tutaj: [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
 
-Użyjesz JSON do tworzenia definicji zasad. Definicja zasad zawiera elementy dla:
+Aby utworzyć definicję zasad, należy użyć formatu JSON. Definicja zasad zawiera elementy dla:
 
-- mode
+- wyst
 - parameters
 - Nazwa wyświetlana
 - description
 - Reguła zasad
-  - Ocena logiczne
-  - Efekt
+  - Ocena logiczna
+  - skuteczność
 
-Na przykład następujący kod JSON przedstawiono zasady, które ogranicza, gdzie są wdrożone zasoby:
+Na przykład poniższy kod JSON przedstawia zasady, które ograniczają miejsce wdrożenia zasobów:
 
 ```json
 {
@@ -69,7 +69,7 @@ Wszystkie przykłady Azure Policy znajdują się na [Azure Policy próbkach](../
 
 ### <a name="resource-manager-modes"></a>Tryby Menedżer zasobów
 
-**Tryb** określa, które typy zasobów będą oceniane dla zasad. Obsługiwane metody to:
+**Tryb** określa, które typy zasobów będą oceniane dla zasad. Obsługiwane są następujące tryby:
 
 - `all`: Oceń grupy zasobów i wszystkie typy zasobów
 - `indexed`: Oceń tylko typy zasobów obsługujące Tagi i lokalizację
@@ -92,11 +92,11 @@ Następujące tryby dostawcy zasobów są obecnie obsługiwane w wersji zapoznaw
 
 ## <a name="parameters"></a>Parametry
 
-Parametry ułatwiają zarządzanie zasadami dzięki zmniejszeniu liczby definicji zasad. Należy traktować parametry, takie jak pola w formularzu — `name`, `address`, `city``state`. Te parametry pozostają niezmienione, jednak ich wartości zmieniają poszczególnych wypełniania formularza.
-Parametry działają tak samo, podczas tworzenia zasad. Jeśli dołączysz parametrów w definicji zasad, można ponownie użyć tej zasady dla różnych scenariuszy przy użyciu innej wartości.
+Parametry pomagają uprościć zarządzanie zasadami przez zmniejszenie liczby definicji zasad. Należy traktować parametry, takie jak pola w formularzu — `name`, `address`, `city``state`. Te parametry zawsze pozostają takie same, ale ich wartości zmieniają się w zależności od poszczególnych wypełniania formularza.
+Parametry działają w ten sam sposób podczas kompilowania zasad. Dzięki dołączeniu parametrów w definicji zasad można ponownie użyć tych zasad dla różnych scenariuszy przy użyciu różnych wartości.
 
 > [!NOTE]
-> Parametry można dodawać do istniejącej i przypisanej definicji. Nowy parametr musi zawierać właściwość **DefaultValue** . Zapobiega to pośrednio odbywa się nieprawidłowe istniejące przypisania zasad lub inicjatywy.
+> Parametry można dodawać do istniejącej i przypisanej definicji. Nowy parametr musi zawierać właściwość **DefaultValue** . Zapobiega to poprawnej nieprawidłowemu przypisywaniu zasad lub inicjatywy.
 
 ### <a name="parameter-properties"></a>Właściwości parametru
 
@@ -165,20 +165,20 @@ We właściwości `metadata` można użyć **silnego** elementu, aby udostępni�
 
 ## <a name="definition-location"></a>Lokalizacja definicji
 
-Podczas tworzenia inicjatywy lub zasad, należy określić lokalizację definicji. Lokalizacja definicji musi być grupą zarządzania lub subskrypcji. Ta lokalizacja określa zakres, do której można przypisać inicjatywy lub zasad. Zasoby muszą być bezpośredni członkowie lub elementy podrzędne w hierarchii Lokalizacja definicji docelową przypisania.
+Podczas tworzenia inicjatywy lub zasad należy określić lokalizację definicji. Lokalizacja definicji musi być grupą zarządzania lub subskrypcją. Ta lokalizacja określa zakres, do którego można przypisać inicjatywę lub zasady. Zasoby muszą być bezpośrednimi elementami członkowskimi lub elementami podrzędnymi w hierarchii lokalizacji definicji do przypisywania.
 
-Jeśli lokalizacja definicji to:
+Jeśli lokalizacja definicji jest:
 
 - Tylko zasoby z **subskrypcją** w ramach tej subskrypcji mogą być przypisane do zasad.
-- Zasady mogą być przypisywane tylko zasobom należącym do **grupy** zarządzania w ramach podrzędnych grup administracyjnych i subskrypcji podrzędnych. Jeśli planowane jest zastosowanie definicję zasad do wielu subskrypcji, lokalizacji musi być grupą zarządzania, który zawiera te subskrypcje.
+- Zasady mogą być przypisywane tylko zasobom należącym do **grupy** zarządzania w ramach podrzędnych grup administracyjnych i subskrypcji podrzędnych. Jeśli planujesz zastosowanie definicji zasad do kilku subskrypcji, lokalizacja musi być grupą zarządzania, która zawiera te subskrypcje.
 
-## <a name="display-name-and-description"></a>Nazwę wyświetlaną i opis
+## <a name="display-name-and-description"></a>Nazwa wyświetlana i opis
 
 Użyj **DisplayName** i **Description** , aby zidentyfikować definicję zasad i podać kontekst, który ma być używany. **Nazwa wyświetlana** ma maksymalną długość _128_ znaków i **Opis** ma maksymalną długość _512_ znaków.
 
 ## <a name="policy-rule"></a>Reguła zasad
 
-Reguła zasad składa się z elementów **if** i **then** . W bloku **if** definiuje się jeden lub więcej warunków, które określają, kiedy zasady są wymuszane. Operatory logiczne można zastosować do tych warunków, aby precyzyjnie zdefiniować scenariusz dla zasad.
+Reguła zasad składa się z elementów **if** i **then** . W bloku **if** definiuje się jeden lub więcej warunków, które określają, kiedy zasady są wymuszane. Operatory logiczne można stosować do tych warunków, aby precyzyjnie zdefiniować scenariusz dla zasad.
 
 W bloku **then** definiujesz efekt, **który ma miejsce, gdy warunki są** spełnione.
 
@@ -203,7 +203,7 @@ Obsługiwane operatory logiczne to:
 
 **Nie** składnia odwraca wynik warunku. Składnia **allOf** (podobna do operacji logicznej **and** ) wymaga, aby wszystkie warunki były prawdziwe. Składnia **anyOf** (podobna do operacji logicznej **or** ) wymaga co najmniej jednego warunku.
 
-Można zagnieżdżać operatorów logicznych. W poniższym przykładzie przedstawiono operację **not** , która jest zagnieżdżona w ramach operacji **allOf** .
+Operatory logiczne można zagnieżdżać. W poniższym przykładzie przedstawiono operację **not** , która jest zagnieżdżona w ramach operacji **allOf** .
 
 ```json
 "if": {
@@ -223,7 +223,7 @@ Można zagnieżdżać operatorów logicznych. W poniższym przykładzie przedsta
 
 ### <a name="conditions"></a>Warunki
 
-Warunek oblicza, czy **pole** lub metoda dostępu do **wartości** spełniają określone kryteria. Obsługiwane warunki to:
+Warunek oblicza, czy **pole** lub metoda dostępu do **wartości** spełniają określone kryteria. Obsługiwane są następujące warunki:
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -253,13 +253,13 @@ W przypadku używania warunków **Match** i **notMatch** Podaj `#` w celu dopaso
 
 ### <a name="fields"></a>Pola
 
-Warunki są tworzone przy użyciu pól. Pole jest zgodna właściwości w ładunku żądania zasobów i opisuje stan zasobu.
+Warunki są tworzone za pomocą pól. Pole jest zgodne z właściwościami w ładunku żądania zasobu i opisuje stan zasobu.
 
 Obsługiwane są następujące pola:
 
 - `name`
 - `fullName`
-  - Zwraca pełną nazwę zasobu. Pełna nazwa zasobu jest nazwa zasobu, dołączony przez wszystkie nazwy zasobu nadrzędnego (na przykład "myServer/Moja_baza_danych").
+  - Zwraca pełną nazwę zasobu. Pełna nazwa zasobu to nazwa zasobu poprzedzona przez wszystkie nadrzędne nazwy zasobów (na przykład "nie dotyczy".
 - `kind`
 - `type`
 - `location`
@@ -394,6 +394,146 @@ Zamiast tego należy użyć funkcji [if ()](../../../azure-resource-manager/reso
 
 Po zmodyfikowaniu reguły zasad, `if()` sprawdza długość **nazwy** przed próbą uzyskania `substring()` na wartości mniejszej niż trzy znaki. Jeśli **Nazwa** jest za krótka, zamiast tego jest zwracana wartość "nie zaczyna się od ABC" i porównana z opcją **ABC**. Zasób z krótką nazwą, która nie zaczyna się od **ABC** , nadal kończy się niepowodzeniem reguły zasad, ale nie powoduje już błędu podczas obliczania.
 
+### <a name="count"></a>Liczba
+
+Warunki określające, ile elementów członkowskich tablicy w ładunku zasobów spełnia wyrażenie warunku, można utworzyć za pomocą wyrażenia **Count** . Typowe scenariusze sprawdzają, czy "co najmniej jeden z", "dokładnie jeden z", "All" lub "none" elementów członkowskich tablicy spełnia warunek. **Count** oblicza każdy element członkowski tablicy dla wyrażenia warunku i sumuje _prawdziwe_ wyniki, które są porównywane z operatorem wyrażenia.
+
+Struktura wyrażenia **Count** jest:
+
+```json
+{
+    "count": {
+        "field": "<[*] alias>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+Następujące właściwości są używane z funkcją **Count**:
+
+- **Count. pole** (wymagane): zawiera ścieżkę do tablicy i musi być aliasem tablicy. Jeśli brakuje tablicy, wyrażenie jest oceniane na _wartość false_ bez uwzględniania wyrażenia warunku.
+- **Count. WHERE** (opcjonalnie): wyrażenie warunku do poszczególnych ocen [\[\*\]](#understanding-the--alias) składowej tablicy aliasu **Count. Field**. Jeśli ta właściwość nie jest określona, wszystkie elementy członkowskie tablicy ze ścieżką "pole" są oceniane na _wartość true_. Dowolny [warunek](../concepts/definition-structure.md#conditions) może być używany wewnątrz tej właściwości.
+  [Operatory logiczne](#logical-operators) mogą być używane wewnątrz tej właściwości, aby utworzyć złożone wymagania dotyczące oceny.
+- **\>warunku\<** (wymagane): wartość jest porównywana z liczbą elementów, które osiągnęły liczbę. wyrażenie warunku **WHERE** . Należy użyć [warunku](../concepts/definition-structure.md#conditions) liczbowego.
+
+#### <a name="count-examples"></a>Liczba przykładów
+
+Przykład 1: sprawdzenie, czy tablica jest pusta
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]"
+    },
+    "equals": 0
+}
+```
+
+Przykład 2: Sprawdź tylko jeden element członkowski tablicy, aby spełnić wyrażenie warunku
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My unique description"
+        }
+    },
+    "equals": 1
+}
+```
+
+Przykład 3: Sprawdź co najmniej jeden element członkowski tablicy, aby spełnić wyrażenie warunku
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My common description"
+        }
+    },
+    "greaterOrEquals": 1
+}
+```
+
+Przykład 4: Sprawdź, czy wszystkie elementy członkowskie tablicy obiektów spełniają wyrażenie warunku
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "description"
+        }
+    },
+    "equals": "[length(field(Microsoft.Network/networkSecurityGroups/securityRules[*]))]"
+}
+```
+
+Przykład 5: Sprawdź, czy wszystkie elementy członkowskie tablicy ciągów spełniają wyrażenie warunku
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+            "like": "*@contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+Przykład 6: Użyj **pola** wewnątrz **wartości** , aby sprawdzić, czy wszystkie elementy członkowskie tablicy spełniają wyrażenie warunku
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "value": "[last(split(first(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]')), '@'))]",
+            "equals": "contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+Przykład 7: Sprawdź, czy co najmniej jeden element członkowski tablicy jest zgodny z wieloma właściwościami w wyrażeniu warunku
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "allOf": [
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                    "equals": "Inbound"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                    "equals": "Allow"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                    "equals": "3389"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
 ### <a name="effect"></a>Efekt
 
 Azure Policy obsługuje następujące typy efektów:
@@ -421,7 +561,7 @@ Wszystkie [funkcje szablonu Menedżer zasobów](../../../azure-resource-manager/
 - pickZones()
 - dostawcy ()
 - Reference ()
-- resourceId()
+- resourceId ()
 - zmienne ()
 
 Następujące funkcje są dostępne do użycia w regule zasad, ale różnią się od użycia w szablonie Azure Resource Manager:
@@ -454,11 +594,11 @@ Ten przykład reguły używa funkcji zasobów `resourceGroup` w celu uzyskania w
 
 ## <a name="aliases"></a>Aliasy
 
-Aliasy właściwości umożliwia dostęp do właściwości specyficzne dla typu zasobu. Aliasy pozwalają ograniczyć, jakie wartości lub warunków, które są dozwolone dla właściwości zasobu. Każdy alias mapuje do ścieżki w różnych wersjach interfejsu API dla danego typu zasobu. Podczas oceny zasad aparatu zasad pobiera ścieżkę właściwości dla danej wersji interfejsu API.
+Aliasy właściwości są używane do uzyskiwania dostępu do określonych właściwości dla typu zasobu. Aliasy umożliwiają ograniczenie wartości lub warunków dozwolonych dla właściwości zasobu. Każdy alias mapuje do ścieżek w różnych wersjach interfejsu API dla danego typu zasobu. Podczas obliczania zasad aparat zasad Pobiera ścieżkę właściwości dla tej wersji interfejsu API.
 
-Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie obsługiwane przez usługę Azure Policy, użyj jednej z następujących metod:
+Lista aliasów zawsze rośnie. Aby dowiedzieć się, jakie aliasy są obecnie obsługiwane przez Azure Policy, należy użyć jednej z następujących metod:
 
-- Azure PowerShell
+- Program Azure PowerShell
 
   ```azurepowershell-interactive
   # Login first with Connect-AzAccount if not using Cloud Shell
@@ -482,22 +622,23 @@ Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie o
   az provider show --namespace Microsoft.Compute --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 
-- Interfejs API REST / ARMClient
+- Interfejs API REST/ARMClient
 
   ```http
   GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
   ```
 
-### <a name="understanding-the--alias"></a>Opis alias [*]
+### <a name="understanding-the--alias"></a>Informacje o aliasie [*]
 
-Kilka dostępnych aliasów ma wersję, która jest wyświetlana jako nazwa "normal" (normalna) i jest do niej dołączona inna, która ma **[\*]** . Na przykład:
+Kilka dostępnych aliasów ma wersję, która jest wyświetlana jako nazwa "normal" i inną, która ma **\[\*\]** do niej dołączony. Na przykład:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Alias "normal" reprezentuje pole jako pojedynczą wartość. To pole jest przeznaczone do dokładnego dopasowania scenariuszy porównywania, gdy cały zestaw wartości musi być dokładnie zdefiniowany, nie więcej i nie rzadziej.
 
-Alias **[\*]** umożliwia porównanie wartości poszczególnych elementów w tablicy i określonych właściwościach każdego elementu. Takie podejście umożliwia porównanie właściwości elementów dla elementu "If None of", "if any" lub "If all of". Przy użyciu **ipRules [\*]** , przykładem będzie sprawdzanie, czy każda _Akcja_ jest _odrzucana_, ale nie martw się o liczbę istniejących reguł lub _wartość_ IP. Ta przykładowa reguła sprawdza dowolnych dopasowań **ipRules [\*]. Value** do **10.0.4.1** i stosuje element **effecttype** tylko wtedy, gdy nie znajdzie co najmniej jednego dopasowania:
+Alias **\]\[\*** umożliwia porównanie wartości poszczególnych elementów w tablicy i konkretnych właściwości każdego elementu. Takie podejście umożliwia porównanie właściwości elementów dla elementu "If None of", "if any" lub "If all of". W przypadku bardziej złożonych scenariuszy Użyj wyrażenia warunku [Count](#count) . Korzystając z **ipRules\[\*\]** , przykładem będzie sprawdzanie, czy każda _Akcja_ jest _odrzucana_, ale nie martw się o liczbę istniejących reguł lub _wartość_ IP.
+Ta przykładowa reguła sprawdza, czy istnieją dopasowania **ipRules\[\*\]. Value** do **10.0.4.1** i stosuje wartość **effecttype** tylko wtedy, gdy nie znaleziono co najmniej jednego dopasowania:
 
 ```json
 "policyRule": {
@@ -519,13 +660,15 @@ Alias **[\*]** umożliwia porównanie wartości poszczególnych elementów w tab
 }
 ```
 
+
+
 Aby uzyskać więcej informacji, zobacz [ocenianie aliasu [\*]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Inicjatyw
 
-Inicjatywy pozwalają grupować kilka definicji zasad powiązane w celu uproszczenia przypisań i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować powiązane definicje zasad tagowania w jednym inicjatywy. Zamiast przypisywać każdej z zasad indywidualnie, mają zastosowanie tej inicjatywy.
+Inicjatywy umożliwiają grupowanie kilku powiązanych definicji zasad w celu uproszczenia przypisań i zarządzania, ponieważ pracujesz z grupą jako pojedynczy element. Na przykład można pogrupować powiązane definicje zasad oznakowania do jednej inicjatywy. Zamiast przypisywać poszczególne zasady indywidualnie, należy zastosować inicjatywę.
 
-Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwóch tagów: `costCenter` i `productName`. Używa dwóch wbudowane zasady do zastosowania domyślną wartość tagu.
+Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwóch tagów: `costCenter` i `productName`. Używa dwóch wbudowanych zasad, aby zastosować domyślną wartość tagu.
 
 ```json
 {

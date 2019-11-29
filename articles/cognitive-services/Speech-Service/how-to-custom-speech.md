@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f3b7826fdcc16d3094785507ec8263da39d6284
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881513"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554983"
 ---
 # <a name="what-is-custom-speech"></a>Co to jest Custom Speech?
 
@@ -43,7 +43,7 @@ Ten diagram przedstawia elementy wchodzące w skład [portalu Custom Speech](htt
 
 ## <a name="set-up-your-azure-account"></a>Skonfiguruj swoje konto platformy Azure
 
-Przed rozpoczęciem korzystania z [portalu Custom Speech](https://speech.microsoft.com/customspeech) w celu utworzenia modelu niestandardowego należy skorzystać z subskrypcji usługi Speech Services. Postępuj zgodnie z tymi instrukcjami, aby utworzyć standardową subskrypcję usługi Speech Services: [Utwórz subskrypcję mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account).
+Przed rozpoczęciem korzystania z [portalu Custom Speech](https://speech.microsoft.com/customspeech) w celu utworzenia modelu niestandardowego należy skorzystać z subskrypcji usługi Speech Services. Postępuj zgodnie z tymi instrukcjami, aby utworzyć standardową subskrypcję usługi Speech Services: [Utwórz subskrypcję mowy](get-started.md#try-the-speech-service-using-a-new-azure-account).
 
 > [!NOTE]
 > Pamiętaj, aby utworzyć standardowe subskrypcje (S0) i subskrypcje bezpłatnej wersji próbnej (F0) nie są obsługiwane.
@@ -59,7 +59,7 @@ Po utworzeniu konta platformy Azure i subskrypcji usługi Speech Services należ
 
 Zawartość, taka jak dane, modele, testy i punkty końcowe, są zorganizowane w **projekty** w [portalu Custom Speech](https://speech.microsoft.com/customspeech). Każdy projekt jest specyficzny dla domeny i kraju/języka. Na przykład możesz utworzyć projekt dla centrów wywołań, które używają języka angielskiego w Stany Zjednoczone.
 
-Aby utworzyć swój pierwszy projekt, wybierz **mowę zamiany mowy na tekst/niestandardową**, a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu powinny zostać wyświetlone cztery karty: **Dane**, **testowanie**, **uczenie**i **wdrażanie**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
+Aby utworzyć swój pierwszy projekt, wybierz **mowę zamiany mowy na tekst/niestandardową**, a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu powinny zostać wyświetlone cztery karty: **dane**, **testowanie**, **szkolenia**i **wdrożenia**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
 
 ## <a name="next-steps"></a>Następne kroki
 

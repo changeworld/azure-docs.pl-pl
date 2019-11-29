@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Stream Analytics danych wyjściowych Cosmos DB
-description: W tym artykule opisano sposób użycia usługi Azure Stream Analytics można zapisać danych wyjściowych do usługi Azure Cosmos DB dla danych wyjściowych JSON, archiwizowania danych i zapytań o małych opóźnieniach na danych JSON bez struktury.
+title: Azure Stream Analytics dane wyjściowe do Cosmos DB
+description: W tym artykule opisano, jak używać Azure Stream Analytics do zapisywania danych wyjściowych do Azure Cosmos DB na potrzeby danych wyjściowych JSON, do archiwizacji danych i zapytań o małym opóźnieniu dla danych JSON bez struktury.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,23 +9,23 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 52bbb52b13a3606e3ddc8deca2da8505233c9352
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: aa4ac011a7b6258958ac1ac176fd63b18a4ef856
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062013"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560184"
 ---
-# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure Cosmos DB  
-Stream Analytics można wskazać [usługi Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) dla danych wyjściowych JSON, włączanie danych archiwizowanie i małe opóźnienia zapytań na danych JSON bez struktury. W tym dokumencie opisano najlepsze rozwiązania dotyczące wdrażania tej konfiguracji.
+# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics dane wyjściowe do Azure Cosmos DB  
+Stream Analytics może kierować [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) do danych wyjściowych JSON, co umożliwia archiwizowanie danych i uruchamianie zapytań o małym opóźnieniu na dane JSON bez struktury. W tym dokumencie opisano najlepsze rozwiązania dotyczące wdrażania tej konfiguracji.
 
-Dla osób, które są Ci znane z usługą Cosmos DB, Przyjrzyj się [ścieżka szkoleniowa usługi Azure Cosmos DB](https://azure.microsoft.com/documentation/learning-paths/documentdb/) na rozpoczęcie pracy. 
+W przypadku osób, które nie znają Cosmos DB, zapoznaj się ze [ścieżką uczenia Azure Cosmos DB](https://azure.microsoft.com/documentation/learning-paths/documentdb/) , aby rozpocząć pracę. 
 
 > [!Note]
-> W tej chwili usługi Azure Stream Analytics obsługuje tylko połączenie do usługi Azure Cosmos DB przy użyciu **interfejsu API SQL**.
-> Innych interfejsów API usługi Azure Cosmos DB nie są jeszcze obsługiwane. Jeśli punkt Azure Stream Analytics do kont usługi Azure Cosmos DB utworzone z innymi interfejsami API, dane mogą nie być prawidłowo przechowywane. 
+> W tej chwili Azure Stream Analytics obsługuje tylko połączenie z Azure Cosmos DB przy użyciu **interfejsu API SQL**.
+> Inne interfejsy API Azure Cosmos DB nie są jeszcze obsługiwane. Jeśli użytkownik wskaże Azure Stream Analytics kont Azure Cosmos DB utworzonych z innymi interfejsami API, dane mogą nie być prawidłowo przechowywane. 
 
-## <a name="basics-of-cosmos-db-as-an-output-target"></a>Podstawy usługi Cosmos DB jako obiekt docelowy danych wyjściowych
+## <a name="basics-of-cosmos-db-as-an-output-target"></a>Podstawy Cosmos DB jako miejsce docelowe danych wyjściowych
 Azure Cosmos DB dane wyjściowe w Stream Analytics umożliwiają zapisywanie wyników przetwarzania strumienia jako danych wyjściowych JSON w kontenerach Cosmos DB. Stream Analytics nie tworzy kontenerów w bazie danych, ale wymaga utworzenia ich z góry. Jest to tak, aby koszty rozliczania kontenerów Cosmos DB są kontrolowane przez użytkownika i aby można było dostosować wydajność, spójność i pojemność kontenerów bezpośrednio przy użyciu [Cosmos DB interfejsów API](https://msdn.microsoft.com/library/azure/dn781481.aspx).
 
 > [!Note]
@@ -33,22 +33,22 @@ Azure Cosmos DB dane wyjściowe w Stream Analytics umożliwiają zapisywanie wyn
 
 Poniżej przedstawiono niektóre opcje kontenera Cosmos DB.
 
-## <a name="tune-consistency-availability-and-latency"></a>Dostosowywanie spójnością, dostępnością i opóźnieniem
-Aby dopasować wymagania dotyczące aplikacji, Azure Cosmos DB umożliwia precyzyjne dostosowanie bazy danych i kontenerów oraz wprowadzenie kompromisu między spójnością, dostępnością, opóźnieniami i przepływności. Zależności od tego, jakie poziomy spójności odczytu wymagań scenariusza dla zapisu i odczytu czas oczekiwania, możesz wybrać poziom spójności na Twoje konto bazy danych. Przepustowość można ulepszyć przez skalowanie jednostek żądań (jednostek ru) w kontenerze. Domyślnie Azure Cosmos DB umożliwia indeksowanie synchroniczne dla każdej operacji CRUD w kontenerze. Jest to przydatne zablokowałoby do kontrolowania wydajności zapisu/odczytu w usłudze Azure Cosmos DB. Aby uzyskać więcej informacji, zobacz [Zmienianie poziomów spójności bazy danych i zapytania](../cosmos-db/consistency-levels.md) artykułu.
+## <a name="tune-consistency-availability-and-latency"></a>Dostrajanie spójności, dostępności i opóźnień
+Aby dopasować wymagania dotyczące aplikacji, Azure Cosmos DB umożliwia precyzyjne dostosowanie bazy danych i kontenerów oraz wprowadzenie kompromisu między spójnością, dostępnością, opóźnieniami i przepływności. W zależności od poziomów spójności odczytu potrzebnych do odczytu i zapisu można wybrać poziom spójności na koncie bazy danych. Przepustowość można ulepszyć przez skalowanie jednostek żądań (jednostek ru) w kontenerze. Domyślnie Azure Cosmos DB umożliwia indeksowanie synchroniczne dla każdej operacji CRUD w kontenerze. Jest to kolejna przydatna opcja kontrolująca wydajność zapisu/odczytu w Azure Cosmos DB. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Zmienianie poziomów spójności bazy danych i zapytań](../cosmos-db/consistency-levels.md) .
 
-## <a name="upserts-from-stream-analytics"></a>Wykonuje operację UPSERT z usługi Stream Analytics
-Integracja Stream Analytics z Azure Cosmos DB umożliwia wstawianie lub aktualizowanie rekordów w kontenerze na podstawie danej kolumny identyfikatora dokumentu. To jest również nazywany *Upsert*.
+## <a name="upserts-from-stream-analytics"></a>Upserts z Stream Analytics
+Integracja Stream Analytics z Azure Cosmos DB umożliwia wstawianie lub aktualizowanie rekordów w kontenerze na podstawie danej kolumny identyfikatora dokumentu. Jest to również nazywane *upsert*.
 
-Stream Analytics korzysta z metody optymistycznej upsert których aktualizacje są wykonywane tylko podczas wstawiania zakończy się niepowodzeniem z konfliktem identyfikator dokumentu. W przypadku poziomu zgodności 1,0 Ta aktualizacja jest wykonywana jako poprawka, dzięki czemu umożliwia częściową aktualizację dokumentu, czyli dodanie nowych właściwości lub zastąpienie istniejącej właściwości jest wykonywane przyrostowo. Jednak zmiany wartości właściwości tablicy w wyniku dokumentu JSON, korzystając z całej tablicy wprowadzenie zastąpione, czyli tablicy nie jest połączony. W przypadku 1,2 upsert zachowanie jest modyfikowane w celu wstawienia lub zamiany dokumentu. Opisano to dokładniej w poniższej sekcji poziom zgodności 1,2.
+Stream Analytics używa podejścia optymistycznego Upsert, w którym aktualizacje są wykonywane tylko wtedy, gdy operacja INSERT kończy się niepowodzeniem z powodu konfliktu identyfikatorów dokumentów. W przypadku poziomu zgodności 1,0 Ta aktualizacja jest wykonywana jako poprawka, dzięki czemu umożliwia częściową aktualizację dokumentu, czyli dodanie nowych właściwości lub zastąpienie istniejącej właściwości jest wykonywane przyrostowo. Jednak zmiany wartości właściwości tablicy w dokumencie JSON powodują przesłonięcie całej tablicy, czyli nie są scalone. W przypadku 1,2 upsert zachowanie jest modyfikowane w celu wstawienia lub zamiany dokumentu. Opisano to dokładniej w poniższej sekcji poziom zgodności 1,2.
 
-Jeśli przychodzący dokument JSON zawiera istniejące pole ID, że pole jest automatycznie używane jako kolumna Identyfikatora dokumentu w usłudze Cosmos DB, a wszystkie kolejne operacje zapisu są obsługiwane jako takie, co prowadzi do jednej z tych sytuacji:
-- unikatowe identyfikatory prowadzić do wstawienia
-- Zduplikowane identyfikatory i "Identyfikator dokumentu" wartość "ID" prowadzi do wykonania operacji upsert
-- nie zduplikowane identyfikatory i 'Identyfikator dokumentu' zestawu prowadzi do błędu, po pierwszym dokumentu
+Jeśli dokument przychodzącego JSON ma istniejące pole identyfikatora, to pole jest automatycznie używane jako kolumna Identyfikator dokumentu w Cosmos DB i wszystkie kolejne operacje zapisu są obsługiwane w taki sposób, co może prowadzić do jednej z następujących sytuacji:
+- unikatowe identyfikatory prowadzące do wstawienia
+- zduplikowane identyfikatory i "Identyfikator dokumentu" są dla liderów upsert
+- zduplikowane identyfikatory i "Identyfikator dokumentu" nie zostały ustawione na błąd, po pierwszym dokumencie
 
-Jeśli chcesz zapisać <i>wszystkich</i> dokumenty w tym te o zduplikowanym identyfikatorze, Zmień nazwę pola Identyfikator w zapytaniu (za pomocą słowa kluczowego AS) i pozwól Cosmos DB, tworzenia pole Identyfikatora lub Zastąp identyfikator o wartości innej kolumny (przy użyciu słowa kluczowego AS lub za pomocą ustawienia "Dokumentu ID").
+Jeśli chcesz zapisać <i>wszystkie</i> dokumenty, w tym te z powielonym identyfikatorem, Zmień nazwę pola ID w zapytaniu (za pomocą słowa kluczowego AS) i pozwól Cosmos DB utworzyć pole ID lub ZAmienić identyfikator na wartość innej kolumny (za pomocą słowa kluczowego AS lub przy użyciu ustawienia "Identyfikator dokumentu").
 
-## <a name="data-partitioning-in-cosmos-db"></a>Partycjonowanie danych w usłudze Cosmos DB
+## <a name="data-partitioning-in-cosmos-db"></a>Partycjonowanie danych w Cosmos DB
 Azure Cosmos DB [nieograniczone](../cosmos-db/partition-data.md) kontenery to zalecane podejście do partycjonowania danych, ponieważ Azure Cosmos DB automatycznie skaluje partycje na podstawie obciążenia. Podczas zapisywania do nieograniczonych kontenerów Stream Analytics używa jako wielu modułów zapisujących równoległych jako poprzedni krok zapytania lub schemat partycjonowania danych wejściowych.
 > [!NOTE]
 > W tej chwili Azure Stream Analytics obsługuje tylko nieograniczone kontenery z kluczami partycji na najwyższym poziomie. Na przykład `/region` jest obsługiwana. Zagnieżdżone klucze partycji (np. `/region/name`) nie są obsługiwane. 
@@ -59,9 +59,9 @@ W zależności od wybranego klucza partycji mogą pojawić się następujące _O
 
 Ważne jest, aby wybrać właściwość klucza partycji, która ma różne wartości, i umożliwia równomierne dystrybuowanie obciążeń między tymi wartościami. Naturalnym artefaktem partycjonowania żądania związane z tym samym kluczem partycji są ograniczone przez maksymalną przepływność pojedynczej partycji. Ponadto rozmiar magazynu dla dokumentów należących do tego samego klucza partycji jest ograniczony do 10 GB. Idealnym kluczem partycji jest ten, który pojawia się często jako filtr w zapytaniach i ma wystarczającą Kardynalność, aby zapewnić skalowalność rozwiązania.
 
-Klucz partycji jest również granicą dla transakcji w procedurach i wyzwalaczach przechowywanych w programie DocumentDB. Należy wybrać klucz partycji, aby dokumenty, które występują razem w transakcjach miały tę samą wartość klucza partycji. Partycjonowanie artykułu [w Cosmos DB](../cosmos-db/partitioning-overview.md) zawiera więcej szczegółów na temat wybierania klucza partycji.
+Klucz partycji jest również granicą dla transakcji w procedurach i wyzwalaczach przechowywanych w programie DocumentDB. Należy wybrać klucz partycji, aby dokumenty, które występują razem w transakcjach miały tę samą wartość klucza partycji. [Partycjonowanie artykułu w Cosmos DB](../cosmos-db/partitioning-overview.md) zawiera więcej szczegółów na temat wybierania klucza partycji.
 
-W przypadku kontenerów o stałym Azure Cosmos DB Stream Analytics nie pozwala na skalowanie w górę i w dół po ich zapełnieniu. Mają górnego limitu 10 GB i 10 000 jednostek RU/s przepływności.  Aby przeprowadzić migrację danych z kontener stały do nieograniczonego kontenera (na przykład jeden z co najmniej 1000 jednostek RU/s i klucz partycji), należy użyć [narzędzia migracji danych](../cosmos-db/import-data.md) lub [biblioteki kanału informacyjnego zmian](../cosmos-db/change-feed.md).
+W przypadku kontenerów o stałym Azure Cosmos DB Stream Analytics nie pozwala na skalowanie w górę i w dół po ich zapełnieniu. Mają górny limit wynoszący 10 GB i 10 000 RU/s.  Aby przeprowadzić migrację danych ze stałego kontenera do nieograniczonego kontenera (na przykład jeden z co najmniej 1 000 RU/s i kluczem partycji), należy użyć [Narzędzia do migracji danych](../cosmos-db/import-data.md) lub [biblioteki źródła zmian](../cosmos-db/change-feed.md).
 
 Możliwość zapisu w wielu stałych kontenerach jest przestarzała i nie jest zalecana do skalowania zadania Stream Analytics.
 
@@ -83,21 +83,31 @@ Należy pamiętać, że przepływność wyjściowa Cosmos DB jest taka sama jak 
 
 
 
-## <a name="cosmos-db-settings-for-json-output"></a>Ustawienia usługi cosmos DB dla danych wyjściowych JSON
+## <a name="cosmos-db-settings-for-json-output"></a>Ustawienia Cosmos DB dla danych wyjściowych JSON
 
-Tworzenie usługi Cosmos DB jako dane wyjściowe w usłudze Stream Analytics generuje monit o podanie informacji, jak pokazano poniżej. Ta sekcja zawiera wyjaśnienie definicji właściwości.
+Tworzenie Cosmos DB jako danych wyjściowych w Stream Analytics generuje monit o podanie informacji, jak pokazano poniżej. Ta sekcja zawiera wyjaśnienie definicji właściwości.
 
-![ekranu danych wyjściowych analizy strumienia bazy danych documentdb](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
+![ekran danych wyjściowych usługi Stream Analytics DocumentDB](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
 |Pole           | Opis|
 |-------------   | -------------|
 |Alias danych wyjściowych    | Alias do odwoływania danych wyjściowych w zapytaniu ASA.|
-|Subscription    | Wybierz subskrypcję platformy Azure.|
+|Subskrypcja    | Wybierz subskrypcję platformy Azure.|
 |Identyfikator konta      | Nazwa lub identyfikator URI punktu końcowego konta Azure Cosmos DB.|
 |Klucz konta     | Współużytkowany klucz dostępu dla konta Azure Cosmos DB.|
 |Database (Baza danych)        | Nazwa bazy danych Azure Cosmos DB.|
-|Nazwa kontenera | Nazwa kontenera do użycia. `MyContainer`to przykład prawidłowe dane wejściowe — jeden kontener o `MyContainer` nazwie musi istnieć.  |
-|Identyfikator dokumentu     | Opcjonalny. Nazwa kolumny w zdarzeniach wyjściowych służąca jako unikatowego klucza, na które insert nebo update operacji musi być oparta. Jeśli pole pozostanie puste, wszystkie zdarzenia zostaną wstawione, nie dając aktualizacji.|
+|Nazwa kontenera | Nazwa kontenera do użycia. `MyContainer` to przykładowa prawidłowa wartość wejściowa — jeden kontener o nazwie `MyContainer` musi istnieć.  |
+|Identyfikator dokumentu     | Opcjonalny. Nazwa kolumny w zdarzeniach wyjściowych używanych jako unikatowy klucz, na którym muszą być oparte operacje INSERT lub Update. Jeśli pole pozostanie puste, zostaną wstawione wszystkie zdarzenia bez opcji aktualizacji.|
+
+Po skonfigurowaniu danych wyjściowych Cosmos DB może być używany w zapytaniu jako element docelowy [instrukcji into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). W przypadku korzystania z Cosmos DB danych wyjściowych jako takich należy [jawnie ustawić klucz partycji](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). Rekord wyjściowy musi zawierać kolumnę z uwzględnieniem wielkości liter o nazwie po kluczu partycji w Cosmos DB. Aby osiągnąć większą przetwarzanie równoległe, instrukcja może wymagać użycia [klauzuli Partition by](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) w tej samej kolumnie.
+
+**Przykładowe zapytanie**:
+
+```SQL
+    SELECT TollBoothId, PartitionId
+    INTO CosmosDBOutput
+    FROM Input1 PARTITION BY PartitionId
+``` 
 
 ## <a name="error-handling-and-retries"></a>Obsługa błędów i ponawianie prób
 

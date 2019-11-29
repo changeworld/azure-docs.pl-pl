@@ -4,12 +4,12 @@ description: Monitoruj Azure Backup obciążenia i twórz niestandardowe alerty 
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 66417071190fa45a746ce0b80a9de12968198bda
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278267"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554874"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu Azure Monitor
 
@@ -37,7 +37,7 @@ W sekcji monitorowanie wybierz pozycję **Ustawienia diagnostyczne** i określ c
 
 ![Ustawienie diagnostyczne Recovery Services magazynu, określanie wartości docelowej Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
 
-Możesz wskazać obszar roboczy Log Analytics z innej subskrypcji. Aby monitorować magazyny między subskrypcjami w jednym miejscu, wybierz ten sam obszar roboczy Log Analytics dla wielu magazynów Recovery Services. Aby obkanałować wszystkie informacje dotyczące Azure Backup do obszaru roboczego Log Analytics, wybierz pozycję **zasób specyficzny** w wyświetlonym przełączniku i wybierz następujące zdarzenia — **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Zapoznaj się z [tym artykułem](https://aka.ms/AA6jkus) , aby uzyskać więcej informacji na temat konfigurowania ustawień diagnostyki La.
+Możesz wskazać obszar roboczy Log Analytics z innej subskrypcji. Aby monitorować magazyny między subskrypcjami w jednym miejscu, wybierz ten sam obszar roboczy Log Analytics dla wielu magazynów Recovery Services. Aby obkanałować wszystkie informacje dotyczące Azure Backup do obszaru roboczego Log Analytics, wybierz pozycję **zasób specyficzny** w wyświetlonym przełączniku i wybierz następujące zdarzenia — **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Zapoznaj się z [tym artykułem](backup-azure-diagnostic-events.md) , aby uzyskać więcej informacji na temat konfigurowania ustawień diagnostyki La.
 
 > [!IMPORTANT]
 > Po zakończeniu konfiguracji należy odczekać 24 godziny na zakończenie wypychania danych. Po pomyślnym wypchnięciu danych wszystkie zdarzenia są wypychane zgodnie z opisem w dalszej części tego artykułu, w [sekcji częstotliwość](#diagnostic-data-update-frequency).

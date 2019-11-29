@@ -7,13 +7,13 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.openlocfilehash: 71631cd2394efd6743bc0e80a458fed2678d4be0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/22/2019
+ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076244"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561770"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Użyj Apache Hive jako narzędzia wyodrębniania, przekształcania i ładowania (ETL)
 
@@ -21,11 +21,11 @@ Zazwyczaj należy oczyścić i przekształcić przychodzące dane przed załadow
 
 ## <a name="use-case-and-model-overview"></a>Przegląd przypadków użycia i modelu
 
-Na poniższej ilustracji przedstawiono przegląd przypadku użycia i modelu dla automatyzacji ETL. Dane wejściowe są przekształcane w celu wygenerowania odpowiednich danych wyjściowych.  Podczas tej transformacji dane mogą zmieniać kształt, typ danych i język nawet.  Procesy ETL umożliwiają konwersję z układu brytyjskiego na metrykę, zmienianie stref czasowych i poprawianie dokładności odpowiednio wyrównane z istniejącymi danymi w miejscu docelowym.  Procesy ETL mogą również łączyć nowe dane z istniejącymi danymi, aby zachować aktualność raportowania lub uzyskać dokładniejsze informacje o istniejących danych.  Aplikacje, takie jak narzędzia i usługi raportowania, mogą następnie korzystać z tych danych w żądanym formacie.
+Na poniższej ilustracji przedstawiono przegląd przypadku użycia i modelu dla automatyzacji ETL. Dane wejściowe są przekształcane w celu wygenerowania odpowiednich danych wyjściowych.  Podczas tej transformacji dane mogą zmieniać kształt, typ danych i język nawet.  Procesy ETL umożliwiają konwersję z układu brytyjskiego na metrykę, zmienianie stref czasowych i poprawianie dokładności odpowiednio wyrównane z istniejącymi danymi w miejscu docelowym.  Procesy ETL mogą również łączyć nowe dane z istniejącymi danymi, aby aktualizować raporty lub uzyskiwać dokładniejsze informacje o istniejących danych.  Aplikacje, takie jak narzędzia i usługi raportowania, mogą następnie korzystać z tych danych w żądanym formacie.
 
 ![Apache Hive jako architektura ETL](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Usługa Hadoop jest zwykle używana w procesach ETL, które zaimportują ogromną liczbę plików tekstowych (takich jak CSV) lub mniejszą, ale często zmieniają liczbę plików tekstowych.  Hive jest doskonałym narzędziem służącym do przygotowywania danych przed załadowaniem ich do miejsca docelowego danych.  Program Hive umożliwia utworzenie schematu w formacie CSV i użycie języka przypominającego SQL w celu wygenerowania programów MapReduce, które współdziałają z danymi. 
+Usługa Hadoop jest zwykle używana w procesach ETL, które zaimportują ogromną liczbę plików tekstowych (takich jak CSV) lub mniejszą, ale często zmieniają liczbę plików tekstowych.  Hive jest doskonałym narzędziem służącym do przygotowywania danych przed załadowaniem ich do miejsca docelowego danych.  Program Hive umożliwia utworzenie schematu w formacie CSV i użycie języka przypominającego SQL w celu wygenerowania programów MapReduce, które współdziałają z danymi.
 
 Typowymi krokami korzystania z programu Hive w celu wykonania ETL są następujące:
 
@@ -38,14 +38,14 @@ Typowymi krokami korzystania z programu Hive w celu wykonania ETL są następuj�
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
-    
+
     CREATE EXTERNAL TABLE hvac(`date` STRING, time STRING, targettemp BIGINT,
-        actualtemp BIGINT, 
-        system BIGINT, 
-        systemage BIGINT, 
+        actualtemp BIGINT,
+        system BIGINT,
+        systemage BIGINT,
         buildingid BIGINT)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
-    STORED AS TEXTFILE LOCATION 'wasb://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    STORED AS TEXTFILE LOCATION 'wasbs://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
     ```
 
 5. Przekształć dane i załaduj je do miejsca docelowego.  Istnieje kilka sposobów na korzystanie z gałęzi podczas transformacji i ładowania:
@@ -73,7 +73,7 @@ Można użyć programu Hive do wyprowadzania danych do różnych elementów doce
 * Excel.
 * Azure Table i BLOB Storage.
 * Aplikacje lub usługi, które wymagają, aby dane były przetwarzane do określonych formatów lub jako pliki, które zawierają określone typy struktury informacji.
-* Magazyn dokumentów JSON, taki jak <a href="https://azure.microsoft.com/services/cosmos-db/">CosmosDB</a>.
+* Magazyn dokumentów JSON, taki jak [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 

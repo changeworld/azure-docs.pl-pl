@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 629ba904d055977fe70f749a46fbbec71be71b79
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b71d3b4824d8c1c73f40c8c6d87db315aabd423b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083649"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555486"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 W tym artykule opisano sposób korzystania z dynamicznych widoków zarządzania (widoków DMV) do monitorowania obciążenia. Obejmuje to badanie wykonywania zapytań w Azure SQL Data Warehouse.
@@ -63,7 +63,7 @@ ORDER BY total_elapsed_time DESC;
 
 Z poprzednich wyników zapytania należy **zwrócić uwagę na identyfikator żądania** zapytania, które chcesz zbadać.
 
-Zapytania w stanie **wstrzymania** można umieścić w kolejce ze względu na dużą liczbę aktywnych uruchomionych zapytań. Te zapytania są również wyświetlane w pliku [sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) czeka na zapytanie z typem UserConcurrencyResourceType. Aby uzyskać informacje o ograniczeniach współbieżności, zobacz [warstwy wydajności](/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu#performance-tiers-and-data-warehouse-units) lub [klasy zasobów do zarządzania obciążeniami](resource-classes-for-workload-management.md). Zapytania mogą również poczekać z innych powodów, takich jak w przypadku blokad obiektów.  Jeśli zapytanie oczekuje na zasób, zobacz [Badanie zapytań oczekujących na zasoby][Investigating queries waiting for resources] w dalszej sekcji tego artykułu.
+Zapytania w stanie **wstrzymania** można umieścić w kolejce ze względu na dużą liczbę aktywnych uruchomionych zapytań. Te zapytania są również wyświetlane w pliku [sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) czeka na zapytanie z typem UserConcurrencyResourceType. Aby uzyskać informacje na temat limitów współbieżności, zobacz [limity pamięci i współbieżności dla Azure SQL Data Warehouse](memory-concurrency-limits.md) lub [klas zasobów na potrzeby zarządzania obciążeniami](resource-classes-for-workload-management.md). Zapytania mogą również poczekać z innych powodów, takich jak w przypadku blokad obiektów.  Jeśli zapytanie oczekuje na zasób, zobacz [Badanie zapytań oczekujących na zasoby][Investigating queries waiting for resources] w dalszej sekcji tego artykułu.
 
 Aby uprościć wyszukiwanie zapytania w tabeli [sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , należy użyć [etykiety][LABEL] do przypisania komentarza do zapytania, które można wyszukać w widoku sys. dm_pdw_exec_requests.
 
@@ -206,7 +206,7 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Jeśli masz zapytanie korzystające z dużej ilości pamięci lub otrzymasz komunikat o błędzie związany z przydzieleniem bazy danych tempdb, może to być spowodowane bardzo dużym [CREATE TABLE jak SELECT (CTAs)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) lub [Wstawianie instrukcji SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) , która kończy się niepowodzeniem w końcowa Operacja przenoszenia danych. Może to być zwykle identyfikowane jako operacja ShuffleMove w planie zapytania rozproszonego bezpośrednio przed ostatnim WSTAWIANIEm.  Użyj wykazu [sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) , aby monitorować operacje ShuffleMove. 
+Jeśli masz zapytanie, które zużywa dużą ilość pamięci lub otrzymasz komunikat o błędzie związany z przydzieleniem bazy danych tempdb, może to być spowodowane bardzo dużym [CREATE TABLE jak SELECT (CTAs)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) lub [Wstawianie instrukcji SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) , która kończy się niepowodzeniem w końcowej operacji przenoszenia danych. Może to być zwykle identyfikowane jako operacja ShuffleMove w planie zapytania rozproszonego bezpośrednio przed ostatnim WSTAWIANIEm.  Użyj wykazu [sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) , aby monitorować operacje ShuffleMove. 
 
 Najbardziej typowym środkiem ograniczającym jest przerwanie CTAS lub wstawianie instrukcji SELECT do wielu instrukcji obciążenia, tak aby wolumin danych nie przekroczy limitu 1 TB na węzeł w ramach platformy tempdb. Możesz również skalować klaster do większego rozmiaru, co spowoduje rozłożenie rozmiaru bazy danych tempdb na więcej węzłów, zmniejszając bazę danych tempdb w każdym węźle.
 

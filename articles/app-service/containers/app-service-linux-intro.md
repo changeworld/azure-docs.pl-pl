@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819685"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559022"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
@@ -67,7 +67,12 @@ W oparciu o bieżące ograniczenie dla tej samej grupy zasobów nie można miesz
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli nie można uruchomić aplikacji lub chcesz sprawdzić rejestrowanie z aplikacji, sprawdź dzienniki platformy Docker w katalogu LogFiles. Dostęp do tego katalogu można uzyskać za pomocą witryny funkcji SCM lub za pośrednictwem protokołu FTP. Aby rejestrować `stdout` i `stderr` z kontenera, należy włączyć **Rejestrowanie kontenerów platformy Docker** w obszarze **dzienniki App Service**. To ustawienie jest stosowane od razu. App Service wykrywa zmianę i automatycznie ponownie uruchamia kontener.
+> [!NOTE]
+> Dostępna jest nowa funkcja rejestrowania zintegrowanego z usługą [Azure Monitoring (wersja zapoznawcza)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) . 
+>
+>
+
+Jeśli nie można uruchomić aplikacji lub chcesz sprawdzić rejestrowanie z aplikacji, sprawdź dzienniki platformy Docker w katalogu LogFiles. Dostęp do tego katalogu można uzyskać za pomocą witryny funkcji SCM lub za pośrednictwem protokołu FTP. Aby rejestrować `stdout` i `stderr` z kontenera, należy włączyć **Rejestrowanie aplikacji** w obszarze **dzienniki App Service**. To ustawienie jest stosowane od razu. App Service wykrywa zmianę i automatycznie ponownie uruchamia kontener.
 
 Dostęp do witryny SCM można uzyskać za pomocą opcji **Narzędzia zaawansowane** w menu **Narzędzia programistyczne**.
 

@@ -3,12 +3,12 @@ title: Macierz obsługi dla kopii zapasowej maszyny wirtualnej platformy Azure
 description: Zawiera podsumowanie ustawień i ograniczeń pomocy technicznej podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8f84d7fefd2affc3a3c47227ab6f2a2d0b325f4e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85a32dd9ea875bdfc73d7e4a9515e5cfe0e2da42
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172086"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559047"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi dla kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -156,9 +156,9 @@ Maszyny wirtualne Gen2 | Obsługiwane <br> Azure Backup obsługuje tworzenie kop
 --- | ---
 Dyski z danymi maszyn wirtualnych platformy Azure | Utwórz kopię zapasową maszyny wirtualnej z 16 lub mniej dyskami danych.
 Rozmiar dysku danych | Rozmiar poszczególnych dysków może należeć do 32 TB i maksymalnie 256 TB łączny dla wszystkich dysków w maszynie wirtualnej.
-Typ magazynu | HDD w warstwie Standardowa, SSD w warstwie Standardowa, SSD w warstwie Premium.
+Typ usługi Storage | HDD w warstwie Standardowa, SSD w warstwie Standardowa, SSD w warstwie Premium.
 Dyski zarządzane | Obsługiwane.
-Zaszyfrowane dyski | Obsługiwane.<br/><br/> Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure z włączonym Azure Disk Encryption (z aplikacją usługi Azure AD lub bez niej).<br/><br/> Zaszyfrowane maszyny wirtualne nie mogą zostać odzyskane na poziomie plików/folderów. Należy odzyskać całą maszynę wirtualną.<br/><br/> Możesz włączyć szyfrowanie na maszynach wirtualnych, które są już chronione przez Azure Backup.
+Zaszyfrowane dyski | Obsługiwane (do 4 TB).<br/><br/> Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure z włączonym Azure Disk Encryption (z aplikacją usługi Azure AD lub bez niej).<br/><br/> Zaszyfrowane maszyny wirtualne nie mogą zostać odzyskane na poziomie plików/folderów. Należy odzyskać całą maszynę wirtualną.<br/><br/> Możesz włączyć szyfrowanie na maszynach wirtualnych, które są już chronione przez Azure Backup.
 Dyski z włączonym akcelerator zapisu | Nieobsługiwane.<br/><br/> Usługa Azure Backup automatycznie wyklucza dyski z akcelerator zapisu włączony podczas tworzenia kopii zapasowej. Ponieważ nie są one tworzone w ramach kopii zapasowej, nie będzie można przywrócić tych dysków z punktów odzyskiwania maszyny wirtualnej.
 Tworzenie kopii zapasowej & Przywracanie deduplikowanych maszyn wirtualnych/dysków | Azure Backup nie obsługuje deduplikacji. Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) <br/> <br/>  -Azure Backup nie deduplikowania między maszynami wirtualnymi w magazynie Recovery Services <br/> <br/>  — Jeśli podczas przywracania istnieją maszyny wirtualne w stanie deduplikacji, nie można przywrócić plików, ponieważ magazyn nie rozpoznaje formatu
 Dodawanie dysku do chronionej maszyny wirtualnej | Obsługiwane.
@@ -178,7 +178,7 @@ Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń) na karcie sieciowej
 Statyczny adres IP | Nieobsługiwane.<br/><br/> Nowa maszyna wirtualna utworzona na podstawie punktu przywracania ma przypisany dynamiczny adres IP.<br/><br/> W przypadku klasycznych maszyn wirtualnych nie można utworzyć kopii zapasowej maszyny wirtualnej z zastrzeżonym adresem IP i bez zdefiniowanego punktu końcowego.
 Dynamiczny adres IP |Obsługiwane.<br/><br/> Jeśli karta sieciowa na źródłowej maszynie wirtualnej używa dynamicznego adresowania IP, domyślnie karta sieciowa na przywróconej maszynie wirtualnej będzie używać tego programu.
 Azure Traffic Manager| Obsługiwane.<br/><br/>Jeśli kopia zapasowa maszyny wirtualnej znajduje się w Traffic Manager, ręcznie Dodaj przywróconą maszynę wirtualną do tego samego wystąpienia Traffic Manager.
-System DNS platformy Azure |Obsługiwane.
+System DNS Azure |Obsługiwane.
 Niestandardowe DNS |Obsługiwane.
 Łączność wychodząca za pośrednictwem serwera proxy HTTP | Obsługiwane.<br/><br/> Uwierzytelniony serwer proxy nie jest obsługiwany.
 Punkty końcowe usługi dla sieci wirtualnej| Obsługiwane.<br/><br/> Ustawienia zapory i konta magazynu sieci wirtualnej powinny zezwalać na dostęp ze wszystkich sieci.

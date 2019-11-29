@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie między dzierżawcami w Azure Security Center | Microsoft Docs
-description: " Dowiedz się, jak włączyć zbieranie danych w Azure Security Center. "
+description: Dowiedz się, jak skonfigurować zarządzanie pośrednictwem wielu dzierżawców w celu zarządzania stanami w ramach usług w Security Center z użyciem delegowanego zarządzania zasobami platformy Azure.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: f7aa75601639bc0c5652010fb44b01dec0d2622b
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 5c654610df8c00e1e80382687bd30dca0c02b69f
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996943"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558957"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Zarządzanie między dzierżawcami w Security Center
 
@@ -53,7 +53,7 @@ Widoki i akcje są zasadniczo takie same. Oto kilka przykładów:
 - **Zarządzaj zaawansowanymi funkcjami obrony przed chmurą i nie tylko**: Zarządzaj różnymi usługami wykrywania zagrożeń i ochrony, takimi jak [dostęp do maszyn wirtualnych just-in-Time (JIT)](security-center-just-in-time.md), [adaptacyjne Zabezpieczanie sieci](security-center-adaptive-network-hardening.md), [adaptacyjne kontrolki aplikacji](security-center-adaptive-application.md)i nie tylko.
  
 ## <a name="next-steps"></a>Następne kroki
-W tym artykule wyjaśniono, jak zarządzanie przez wiele dzierżawców działa w Security Center. Aby dowiedzieć się więcej na temat Security Center, zobacz następujące tematy:
+W tym artykule wyjaśniono, jak zarządzanie przez wiele dzierżawców działa w Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Wzmocnij stan zabezpieczeń dzięki Azure Security Center](security-center-monitoring.md) — Dowiedz się, jak monitorować kondycję zasobów platformy Azure.
 * [Azure Security Center często zadawane](security-center-faq.md) pytania — Znajdź często zadawane pytania dotyczące korzystania z usługi.

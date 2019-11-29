@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 514f4b26a708a6fec30a1f54cfe6da6d1b58b79d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000438"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555515"
 ---
 # <a name="get-started-with-device-management-python"></a>Wprowadzenie do zarządzania urządzeniami (Python)
 
@@ -31,7 +31,7 @@ Na końcu tego samouczka masz dwie aplikacje konsolowe języka Python:
 
 * **dmpatterns_getstarted_device. PR**, który łączy się z Centrum IoT Hub przy użyciu utworzonej wcześniej tożsamości urządzenia, odbiera metodę bezpośredniego ponownego uruchomienia, symuluje rozruch fizyczny i raportuje godzinę ostatniego ponownego uruchomienia.
 
-* **dmpatterns_getstarted_service. PR**, który wywołuje metodę bezpośrednią w aplikacji symulowanego urządzenia, wyświetla odpowiedź i wyświetla zaktualizowane raportowane właściwości.
+* **dmpatterns_getstarted_service. PR**, która wywołuje metodę bezpośrednią w aplikacji symulowanego urządzenia, wyświetla odpowiedź i wyświetla zaktualizowane raportowane właściwości.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -63,13 +63,9 @@ W tej sekcji omówiono następujące zagadnienia:
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > Pakiety PIP dla platformy Azure-iothub-Service-Client są dostępne tylko dla systemu operacyjnego Windows. W przypadku systemu Linux/Mac OS zapoznaj się z sekcjami dotyczącymi systemu Linux i Mac OS w sekcji [przygotowanie środowiska programistycznego dla języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
-   >
-
 2. Za pomocą edytora tekstów Utwórz plik o nazwie **dmpatterns_getstarted_device. PR** w katalogu roboczym.
 
-3. Dodaj następujące `import` instrukcje na początku pliku **dmpatterns_getstarted_device. PR** .
+3. Dodaj następujące instrukcje `import` na początku pliku **dmpatterns_getstarted_device. PR** .
 
     ```python
     import threading
@@ -78,7 +74,7 @@ W tej sekcji omówiono następujące zagadnienia:
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. Dodaj zmienną **CONNECTION_STRING** . Zastąp `{deviceConnectionString}` wartość symbolu zastępczego parametrami połączenia urządzenia. Te parametry połączenia zostały wcześniej skopiowane przez [zarejestrowanie nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).  
+4. Dodaj zmienną **CONNECTION_STRING** . Zastąp wartość symbolu zastępczego `{deviceConnectionString}` parametrami połączenia urządzenia. Te parametry połączenia zostały wcześniej skopiowane przez [zarejestrowanie nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -161,12 +157,12 @@ W tej sekcji utworzysz aplikację konsolową języka Python, która inicjuje zda
     ```
 
    > [!NOTE]
-   > Pakiety PIP dla usług Azure-iothub-Service-Client i Azure-iothub-Device-Client są obecnie dostępne tylko dla systemu operacyjnego Windows. W przypadku systemu Linux/Mac OS zapoznaj się z sekcjami dotyczącymi systemu Linux i Mac OS w sekcji [przygotowanie środowiska programistycznego dla języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   > Pakiet PIP for Azure-iothub-Service-Client jest obecnie dostępny tylko dla systemu operacyjnego Windows. W przypadku systemu Linux/Mac OS zapoznaj się z sekcjami dotyczącymi systemu Linux i Mac OS w sekcji [przygotowanie środowiska programistycznego dla języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) .
    >
 
 2. Za pomocą edytora tekstów Utwórz plik o nazwie **dmpatterns_getstarted_service. PR** w katalogu roboczym.
 
-3. Dodaj następujące `import` instrukcje na początku pliku **dmpatterns_getstarted_service. PR** .
+3. Dodaj następujące instrukcje `import` na początku pliku **dmpatterns_getstarted_service. PR** .
 
     ```python
     import sys, time
@@ -175,7 +171,7 @@ W tej sekcji utworzysz aplikację konsolową języka Python, która inicjuje zda
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-4. Dodaj następujące deklaracje zmiennych. Zastąp wartość [](#get-the-iot-hub-connection-string) symboluzastępczegoparametramipołączeniausługiIoTHubskopiowanymiwcześniejwpoluPobierzparametrypołączeniausługiIoT`{IoTHubConnectionString}` Hub. Zastąp wartość [](#register-a-new-device-in-the-iot-hub) symboluzastępczegoidentyfikatoremurządzeniazarejestrowanymwZarejestrujnoweurządzeniewusłudzeIoT`{deviceId}` Hub.
+4. Dodaj następujące deklaracje zmiennych. Zastąp `{IoTHubConnectionString}` wartość symbolu zastępczego parametrami połączenia usługi IoT Hub skopiowanymi wcześniej w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string). Zastąp wartość symbolu zastępczego `{deviceId}` IDENTYFIKATORem urządzenia zarejestrowanym w zarejestrowaniu [nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77cda523582b513669adcafd3a46b6ac02dd99db
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285623"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558576"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw w Azure Portal
 
@@ -85,4 +85,4 @@ Jeśli Inicjowanie obsługi jest włączane po raz pierwszy dla aplikacji, Włą
 
 Zmień **stan aprowizacji** na **wyłączony** , aby wstrzymać usługę aprowizacji. W tym stanie platforma Azure nie tworzy, nie aktualizuje ani nie usuwa żadnych obiektów użytkowników ani grup w aplikacji. Zmień stan z powrotem na **włączony** , a usługa odbiera w miejscu, w którym została przerwana.
 
-**Wyczyść bieżący stan i ponownie uruchom synchronizację** wyzwala cykl początkowy. Następnie usługa ponownie oceni wszystkich użytkowników w systemie źródłowym i określi, czy znajdują się one w zakresie aprowizacji. Może to być przydatne, gdy aplikacja jest obecnie w kwarantannie lub trzeba wprowadzić zmiany mapowań atrybutów. Nie należy używać tego do wyzwalania żądania usunięcia lub wyłączenia, ponieważ te zdarzenia mogą zostać porzucone podczas wyzwalania stanu czyszczenia i ponownego uruchomienia. Cykl początkowy również trwa dłużej niż typowy przyrostowy cykl ze względu na liczbę obiektów, które należy oszacować. Więcej informacji o wydajności początkowych i przyrostowych cykli można znaleźć [tutaj.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) 
+**Wyczyść bieżący stan i ponownie uruchom synchronizację** wyzwala cykl początkowy. Następnie usługa ponownie oceni wszystkich użytkowników w systemie źródłowym i określi, czy znajdują się one w zakresie aprowizacji. Może to być przydatne, gdy aplikacja jest obecnie w kwarantannie lub trzeba wprowadzić zmiany mapowań atrybutów. Należy zauważyć, że cykl początkowy trwa dłużej niż typowy przyrostowy cykl ze względu na liczbę obiektów, które należy oszacować. Więcej informacji o wydajności początkowych i przyrostowych cykli można znaleźć [tutaj.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) 

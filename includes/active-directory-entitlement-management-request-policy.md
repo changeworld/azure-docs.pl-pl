@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: fb72ed337219f58481c094d68342dbf6f26493c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260817"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566327"
 ---
 ## <a name="for-users-in-your-directory"></a>Dla użytkowników w katalogu
 
@@ -106,6 +106,14 @@ W sekcji zatwierdzenie należy określić, czy zatwierdzenie ma być wymagane, j
 - Zatwierdzenie od każdej wybranej osoby zatwierdzającej nie jest wymagane w przypadku zatwierdzania jednego lub 2-etapowego.
 - Decyzja o zatwierdzeniu zależy od osoby zatwierdzającej, która najpierw przegląda żądanie.
 
+Aby zapoznać się z pokazem dodawania osób zatwierdzających do zasad żądań, Obejrzyj następujące wideo:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
+
+Aby zapoznać się z przykładem dodawania wieloetapowego zatwierdzania do zasad żądania, Obejrzyj następujące wideo:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
+
 Wykonaj następujące kroki, aby określić ustawienia zatwierdzania dla żądań pakietu dostępu:
 
 1. Aby wymagać zatwierdzenia dla żądań od wybranych użytkowników, ustaw przełącznik **Wymagaj zatwierdzenia** na **wartość tak**. Lub, aby żądania były automatycznie zatwierdzane, ustaw przełącznik na wartość **nie**.
@@ -115,7 +123,6 @@ Wykonaj następujące kroki, aby określić ustawienia zatwierdzania dla żąda�
 1. Teraz Ustal, czy żądania będą wymagały zatwierdzenia pojedynczego lub 2-etapowego. Ustaw liczbę przełączeń między **etapami** na **1** w celu zatwierdzenia pojedynczego etapu lub ustaw przełącznik na **2** na potrzeby zatwierdzania dwuetapowego.
 
     ![Dostęp do pakietów — ustawienia zatwierdzenia](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 
 Aby dodać osoby zatwierdzające, należy wykonać następujące czynności: 
 

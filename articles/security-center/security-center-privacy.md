@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie danymi użytkowników w Azure Security Center | Microsoft Docs
-description: " Dowiedz się, jak zarządzać danymi użytkowników w Azure Security Center. "
+description: Dowiedz się, jak zarządzać danymi użytkowników w Azure Security Center. Zarządzanie danymi użytkownika obejmuje możliwość uzyskiwania dostępu do danych, ich usuwania lub eksportowania.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 0d05650ff349cb9e9750b0cefe0de217a986b32a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 20d269c1614c82c8783d0e65149961c118c16a95
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254612"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559234"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Zarządzanie danymi użytkowników w Azure Security Center
 Ten artykuł zawiera informacje o sposobach zarządzania danymi użytkownika w programie Azure Security Center. Zarządzanie danymi użytkownika obejmuje możliwość uzyskiwania dostępu do danych, ich usuwania lub eksportowania.

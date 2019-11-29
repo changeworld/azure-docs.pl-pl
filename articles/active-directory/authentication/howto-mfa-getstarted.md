@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab4b57513f90a5cbe80724d4937f8d0f87b5517
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381779"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558550"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planowanie wdrożenia usługi Azure Multi-Factor Authentication opartej na chmurze
 
@@ -28,7 +28,7 @@ Osoby nawiązują połączenie z zasobami organizacji w coraz bardziej skompliko
 
 Przed rozpoczęciem wdrażania usługi Azure Multi-Factor Authentication istnieją wstępnie wymagane elementy, które należy wziąć pod uwagę.
 
-| Scenariusz | Wymagania wstępne |
+| Scenariusz | Warunek wstępny |
 | --- | --- |
 | Środowisko tożsamości **tylko w chmurze** z nowoczesnego uwierzytelniania | **Brak dodatkowych zadań wymaganych wstępnie** |
 | Scenariusze tożsamości **hybrydowej** | Wdrożono [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) i tożsamości użytkowników są synchronizowane lub federacyjne z Active Directory Domain Services lokalnymi z Azure Active Directory. |
@@ -240,7 +240,7 @@ Ważne jest, aby zapobiec przypadkowemu zablokowaniu dzierżawy usługi Azure AD
     * Kliknij pozycję **Wybierz**.
 1. Pomiń sekcję **sesji** .
 1. Ustaw przełącznik **Włącz zasady** na wartość **włączone**.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Planowanie integracji z systemami lokalnymi
 
@@ -347,7 +347,7 @@ Raporty usługi Azure MFA
 
 Usługa Azure Multi-Factor Authentication udostępnia raporty za pomocą Azure Portal:
 
-| Raport | Location | Opis |
+| Raport | Lokalizacja | Opis |
 | --- | --- | --- |
 | Alerty użycia i oszustw | Logowanie za pomocą usługi Azure AD > | Zawiera informacje dotyczące ogólnego użycia, podsumowania użytkowników i szczegółów użytkownika; a także historia alertów o oszustwie przesłanych w określonym zakresie dat. |
 

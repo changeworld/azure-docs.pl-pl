@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: fff5ad379aa11a0aae14b33f9f82f6da9c794517
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5cc473635543a22fd7e7223f4a5715f78457a897
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643709"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561751"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatyczne skalowanie klastrów usługi Azure HDInsight
 
@@ -26,14 +26,14 @@ Funkcja automatycznego skalowania klastra usługi Azure HDInsight automatycznie 
 
 W poniższej tabeli opisano typy i wersje klastra, które są zgodne z funkcją skalowania automatycznego.
 
-| Wersja | platforma Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Wersja | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez ESP | Tak | Tak | Nie | Nie | Nie | Nie | Nie |
+| HDInsight 3,6 bez ESP | Tylko 2,3| Tak | Nie | Nie | Nie | Nie | Nie |
 | HDInsight 4,0 bez ESP | Tak | Tak | Nie | Nie | Nie | Nie | Nie |
-| HDInsight 3,6 z ESP | Tak | Tak | Nie | Nie | Nie | Nie | Nie |
+| HDInsight 3,6 z ESP | Tylko 2,3 | Tak | Nie | Nie | Nie | Nie | Nie |
 | HDInsight 4,0 z ESP | Tak | Tak | Nie | Nie | Nie | Nie | Nie |
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Można wybrać skalowanie oparte na ładowaniu lub skalowanie dla klastra usługi HDInsight. Skalowanie oparte na obciążeniu zmienia liczbę węzłów w klastrze w określonym zakresie, aby zapewnić optymalne użycie procesora i zminimalizować koszt działania.
 
@@ -70,7 +70,7 @@ Po wykryciu następujących warunków automatyczne skalowanie wystawia żądanie
 
 W oparciu o liczbę kontenerów AM na węzeł i bieżące wymagania dotyczące procesora CPU i pamięci, automatyczne skalowanie wystawia żądanie usunięcia pewnej liczby węzłów. Usługa wykrywa również, które węzły są kandydatami do usunięcia na podstawie bieżącego wykonywania zadania. Operacja skalowania w dół najpierw likwidowanie węzłów, a następnie usunięcie ich z klastra.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Tworzenie klastra z automatycznym skalowaniem na podstawie obciążenia
 

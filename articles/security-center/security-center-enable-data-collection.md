@@ -1,6 +1,6 @@
 ---
 title: Zbieranie danych w Azure Security Center | Microsoft Docs
-description: " Dowiedz się, jak włączyć zbieranie danych w Azure Security Center. "
+description: W tym artykule opisano sposób instalowania agenta Log Analytics i ustawiania obszaru roboczego Log Analytics, w którym będą przechowywane zebrane dane.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8aa0adf03aef2085ed2374bcfc7ea774d002061c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4b67e7a2ee9f2d734d927b3488cc15ca310f4295
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162673"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559057"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w Azure Security Center
 Security Center zbiera dane z maszyn wirtualnych platformy Azure, zestawów skalowania maszyn wirtualnych, kontenerów IaaS oraz innych niż platformy Azure (w tym komputerów lokalnych) do monitorowania luk w zabezpieczeniach i zagrożeń. Dane są zbierane przy użyciu agenta Log Analytics, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z komputera i kopiuje dane do obszaru roboczego w celu przeprowadzenia analizy. Przykładami takich danych są: typ i wersja systemu operacyjnego, Dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, Nazwa maszyny, adresy IP i zalogowany użytkownik. Agent Log Analytics kopiuje także pliki zrzutu awaryjnego do obszaru roboczego.
 
-Zbieranie danych jest wymagane w celu zapewnienia wglądu w brakujące aktualizacje, nieprawidłowej konfiguracji ustawień zabezpieczeń systemu operacyjnego, włączenia programu Endpoint Protection i wykrywania kondycji i zagrożeń. 
+Zbieranie danych jest wymagane w celu zapewnienia wglądu w brakujące aktualizacje, nieprawidłowej konfiguracji ustawień zabezpieczeń systemu operacyjnego, stanu programu Endpoint Protection oraz wykrywania kondycji i zagrożeń. 
 
 W tym artykule opisano sposób instalowania agenta Log Analytics i ustawiania obszaru roboczego Log Analytics, w którym będą przechowywane zebrane dane. Obie operacje są wymagane do włączenia zbierania danych. 
 

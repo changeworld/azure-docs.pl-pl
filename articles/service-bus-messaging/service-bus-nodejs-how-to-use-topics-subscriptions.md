@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: c82edde98242ffe130c2022c428c86de80e3b034
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 80ca9589e7181518874dc26a9a42b57774f60498
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111782"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561571"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Szybki Start: jak używać tematów Service Bus i subskrypcji za pomocą środowiska Node. js i pakietu Azure-SB
 > [!div class="op_multi_selector" title1="Język programowania" title2="Uaktualniający środowiska Node. js"]
@@ -349,7 +349,7 @@ Teraz, gdy znasz już podstawy Service Bus tematów, Skorzystaj z poniższych li
 [Azure portal]: https://portal.azure.com
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
+[SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Tworzenie i wdrażanie aplikacji node. js w witrynie sieci Web systemu Azure]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md

@@ -9,20 +9,20 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8200c2511d4f85705ff56df43f128034d29b0604
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012700"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561300"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Informacje o przechowywaniu danych w Azure Time Series Insights
 
-W tym artykule opisano dwa ustawienia, które mają wpływ na przechowywanie danych w środowisku Azure Time Series Insightsu.
+W tym artykule opisano dwa podstawowe ustawienia, które mają wpływ na przechowywanie danych w środowisku Azure Time Series Insightsu.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Poniższe wideo podsumowuje Time Series Insights przechowywanie danych i sposób ich planowania.</br>
 
@@ -88,7 +88,7 @@ Po wznowieniu transferu danych przychodzących:
 
 W Event Hubs, których dotyczy problem, Rozważ zmianę właściwości **przechowywania wiadomości** , aby zminimalizować utratę danych podczas wstrzymania ruchu przychodzącego w Time Series Insights.
 
-[![przechowywanie komunikatów centrum zdarzeń.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[![przechowywanie komunikatów centrum zdarzeń.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
 Jeśli nie skonfigurowano żadnych właściwości dla źródła zdarzeń (`timeStampPropertyName`), Time Series Insights wartość domyślna sygnatury czasowej przybycia w centrum zdarzeń jako oś X. Jeśli `timeStampPropertyName` jest skonfigurowany jako coś innego, środowisko szuka skonfigurowanych `timeStampPropertyName` w pakiecie danych podczas analizowania zdarzeń.
 

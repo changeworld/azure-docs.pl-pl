@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Service Bus, limity przydziału i limity | Dokumentacja firmy Microsoft
-description: Znajdź limity przydziału i ograniczenia dla usługi Azure Service Bus.
+title: Przydziały i limity Microsoft Azure Service Bus | Microsoft Docs
+description: Znajdź limity i przydziały dla Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/01/2018
+ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: f9c9059a5f66c6ba1c2e9d9dd637c0675fc7e220
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae2c55486e0489006395a1630eba0b1c3f56b5be
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861912"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561534"
 ---
 # <a name="service-bus-quotas"></a>Przydziały usługi Service Bus
-W tej sekcji przedstawiono podstawowe limity przydziału i wartościach progowych ograniczania przepustowości w przypadku komunikatów usługi Azure Service Bus w.
+W tej sekcji przedstawiono podstawowe limity przydziału i progi ograniczania przepustowości w programie Azure Service Bus Messaging.
 
 ## <a name="messaging-quotas"></a>Limity przydziału komunikatów
 [!INCLUDE [service-bus-quotas-table](../../includes/service-bus-quotas-table.md)]

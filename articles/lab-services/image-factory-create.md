@@ -1,6 +1,6 @@
 ---
-title: Tworzenie fabryki danych obrazu w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć fabrykę danych obrazu niestandardowego w usłudze Azure DevTest Labs.
+title: Tworzenie fabryki obrazu w Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak skonfigurować niestandardową fabrykę obrazów przy użyciu przykładowych skryptów dostępnych w repozytorium git.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,24 +10,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7779914d9681d0f80cab9568da6a20b15e3a2eb1
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622645"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560017"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz fabrykę obrazu niestandardowego w usłudze Azure DevTest Labs
-W tym artykule pokazano, jak skonfigurować fabrycznie obrazu niestandardowego przy użyciu dostępnych w przykładowych skryptach [repozytorium Git](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
+# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz niestandardową fabrykę obrazów w Azure DevTest Labs
+W tym artykule pokazano, jak skonfigurować niestandardową fabrykę obrazów przy użyciu przykładowych skryptów dostępnych w [repozytorium git](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
 
-## <a name="whats-an-image-factory"></a>Co to jest fabrykę obrazu?
-Fabryki obrazu jest rozwiązaniem konfiguracji jako kodu, które produkcją i dystrybucją obrazy automatycznie w regularnych odstępach czasu za pomocą odpowiednie konfiguracje. Obrazy w fabryce obrazu są zawsze aktualne, a rutynowej konserwacji jest bliski zeru po całego procesu jest zautomatyzowane. Ponadto wszystkie wymagane konfiguracje znajdują się już w obrazie, dlatego oszczędza czas z ręcznego konfigurowania system po utworzeniu maszyny Wirtualnej przy użyciu podstawowego systemu operacyjnego.
+## <a name="whats-an-image-factory"></a>Co to jest fabryka obrazów?
+Fabryka obrazów to rozwiązanie typu "Konfiguracja jako kod", które regularnie kompiluje i dystrybuuje obrazy wraz ze wszystkimi wymaganymi konfiguracjami. Obrazy w fabryce obrazu są zawsze aktualne, a aktualna konserwacja jest niemal zerowa, gdy cały proces jest zautomatyzowany. I, ponieważ wszystkie wymagane konfiguracje znajdują się już w obrazie, zapisuje czas od ręcznego skonfigurowania systemu po utworzeniu maszyny wirtualnej przy użyciu podstawowego systemu operacyjnego.
 
-Znaczące akceleratora można pobrać pulpitu dla deweloperów, do stanu gotowości w usłudze DevTest Labs korzysta z obrazów niestandardowych. Wadą obrazów niestandardowych jest coś, co jest dodatkowe do zachowania w środowisku laboratoryjnym. Na przykład wersje próbne produktów wygasają wraz z upływem czasu (lub) nie są stosowane nowo wydane aktualizacje zabezpieczeń, które wymusić nam okresowego odświeżania obrazu niestandardowego. Za pomocą fabryki obraz masz definicję obrazu zaewidencjonowany kontrolą kodu źródłowego i zautomatyzowanego procesu w celu utworzenia niestandardowych obrazów na podstawie definicji.
+Znaczący akcelerator, który umożliwia deweloperom uzyskanie stanu gotowości w DevTest Labs. Minusem obrazów niestandardowych polega na tym, że coś dodatkowego do utrzymania w laboratorium. Na przykład wersje próbne produktów tracą ważność z upływem czasu (lub) nie są stosowane nowo wydane aktualizacje zabezpieczeń, które wymuszają okresowe odświeżanie obrazu niestandardowego. Przy użyciu fabryki obrazu masz definicję obrazu, który został zaewidencjonowany do kontroli kodu źródłowego i ma zautomatyzowany proces tworzenia obrazów niestandardowych na podstawie definicji.
 
-To rozwiązanie umożliwia tworzenie maszyn wirtualnych z obrazów niestandardowych eliminuje koszty konserwacji dodatkowe szybkości. Dzięki temu rozwiązaniu można automatycznie Tworzenie niestandardowych obrazów, rozsyłaj je do innych DevTest Labs i wycofać starych obrazów. W poniższym klipie wideo informacje o fabrycznie obrazu i jak jest implementowane za pomocą usługi DevTest Labs.  Wszystkie skrypty programu Azure Powershell są łatwo dostępne i znajduje się tutaj: [ https://aka.ms/dtlimagefactory ](https://aka.ms/dtlimagefactory).
+Rozwiązanie pozwala na szybkie tworzenie maszyn wirtualnych na podstawie obrazów niestandardowych, eliminując jednocześnie dodatkowe bieżące koszty konserwacji. Dzięki temu rozwiązaniu można automatycznie tworzyć obrazy niestandardowe, rozpowszechniać je do innych laboratoriów DevTest i wycofać stare obrazy. W poniższym filmie wideo znajdziesz informacje o fabryce obrazu i sposobie ich implementacji za pomocą DevTest Labs.  Wszystkie skrypty programu Azure PowerShell są dostępne bezpłatnie i znajdują się tutaj: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory).
 
 <br/>
 
@@ -35,27 +35,27 @@ To rozwiązanie umożliwia tworzenie maszyn wirtualnych z obrazów niestandardow
 
 
 ## <a name="high-level-view-of-the-solution"></a>Ogólny widok rozwiązania
-To rozwiązanie umożliwia tworzenie maszyn wirtualnych z obrazów niestandardowych eliminuje koszty konserwacji dodatkowe szybkości. Dzięki temu rozwiązaniu umożliwia automatyczne tworzenie niestandardowych obrazów i przekazać je do innych DevTest Labs. DevOps platformy Azure (dawniej Visual Studio Team Services) są używane jako aparatu aranżacji do automatyzacji wszystkich operacji w usłudze DevTest Labs.
+Rozwiązanie pozwala na szybkie tworzenie maszyn wirtualnych na podstawie obrazów niestandardowych, eliminując jednocześnie dodatkowe bieżące koszty konserwacji. Dzięki temu rozwiązaniu można automatycznie tworzyć obrazy niestandardowe i dystrybuować je do innych laboratoriów DevTest. Używasz usługi Azure DevOps (dawniej Visual Studio Team Services) jako aparatu aranżacji do automatyzowania wszystkich operacji w laboratoriach DevTest.
 
 ![Ogólny widok rozwiązania](./media/create-image-factory/high-level-view-of-solution.png)
 
-Brak [rozszerzenia usługi VSTS na potrzeby usługi DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) to pozwala wykonać te poszczególne kroki:
+Istnieje [rozszerzenie VSTS dla laboratoriów DevTest](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) , które umożliwia wykonywanie tych pojedynczych czynności:
 
-- Tworzenie obrazu niestandardowego
+- Tworzenie niestandardowego obrazu
 - Tworzenie maszyny wirtualnej
-- Usuwanie maszyny Wirtualnej
-- Tworzenie środowiska
-- Usuwanie środowiska
-- Wypełnij środowiska
+- Usuń maszynę wirtualną
+- Utwórz środowisko
+- Usuń środowisko
+- Wypełnij środowisko
 
-Przy użyciu rozszerzenia usługi DevTest Labs to prosty sposób rozpocząć pracę z automatyczne tworzenie niestandardowych obrazów w usłudze DevTest Labs.
+Korzystanie z rozszerzenia DevTest Labs to prosty sposób na rozpoczęcie pracy z automatycznym tworzeniem obrazów niestandardowych w usłudze DevTest Labs.
 
-Brak implementacji alternatywnych przy użyciu skryptu programu PowerShell dla scenariusza bardziej złożone. Przy użyciu programu PowerShell, można w pełni zautomatyzować fabrykę obrazu, oparte na usłudze DevTest Labs, używanym w ciągłej integracji i ciągłego dostarczania (CI/CD) łańcucha narzędzi. Są zasady, a następnie w tym rozwiązaniu alternatywny:
+Istnieje alternatywna implementacja przy użyciu skryptu programu PowerShell dla bardziej złożonego scenariusza. Korzystając z programu PowerShell, można w pełni zautomatyzować fabrykę obrazów na podstawie DevTestych laboratoriów, które mogą być używane w przypadku ciągłej integracji i ciągłego dostarczania (CI/CD) łańcucha narzędzi. Zasady zastosowane w tym alternatywnym rozwiązaniu są następujące:
 
-- Typowe aktualizacje powinny wymagać żadnych zmian do fabryki obrazu. (np. dodanie nowego typu niestandardowego obrazu, automatyczne wycofanie starych obrazów, dodanie nowego "punktu końcowego" DevTest Labs umożliwia otrzymywanie niestandardowych obrazów i tak dalej).
-- Wspólne zmiany są objęte kontrolą kodu źródłowego (infrastruktura jako kod)
-- Odbieranie obrazów niestandardowych w usłudze DevTest Labs może nie być w tej samej subskrypcji platformy Azure (labs span subskrypcje)
-- Skrypty programu PowerShell musi być wielokrotnego użytku, dzięki czemu firma Microsoft może zwiększać dodatkowe fabryki, zgodnie z potrzebami
+- Typowe aktualizacje nie powinny wymagać zmian w fabryce obrazu. (na przykład dodanie nowego typu obrazu niestandardowego, automatyczne wycofanie starych obrazów, dodanie nowego laboratorium DevTest "Endpoint" do odbierania obrazów niestandardowych itd.)
+- Typowe zmiany są obsługiwane przez kontrolę kodu źródłowego (infrastruktura jako kod)
+- DevTest laboratoria otrzymujące obrazy niestandardowe nie mogą znajdować się w tej samej subskrypcji platformy Azure (w ramach subskrypcji obejmujących laboratoria)
+- Skrypty programu PowerShell muszą być wielokrotnego użytku, aby w razie potrzeby można było korzystać z dodatkowych fabryk
 
-## <a name="next-steps"></a>Kolejne kroki
-Przejdź do następnego artykułu, w tej sekcji: [Uruchom fabrykę obrazu z DevOps platformy Azure](image-factory-set-up-devops-lab.md)
+## <a name="next-steps"></a>Następne kroki
+Przejdź do następnego artykułu w tej sekcji: [Uruchamianie fabryki obrazu z usługi Azure DevOps](image-factory-set-up-devops-lab.md)

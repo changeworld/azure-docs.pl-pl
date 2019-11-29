@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: 6ef8d49ba7c9ac2c3c60197c11b9bf5936171f9e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0f6e379287323d9353acd887cf30d5c9c0065959
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420747"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555381"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migruj certyfikat TDE chronionej bazy danych Azure SQL Database do wystąpienia zarządzanego
 
@@ -37,7 +37,7 @@ Alternatywną możliwość bezproblemowej migracji zarówno bazy danych chronion
 Do wykonania kroków opisanych w tym artykule potrzebne jest spełnienie następujących wymagań wstępnych:
 
 - Narzędzie wiersza polecenia [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) zainstalowane na serwerze lokalnym lub innym komputerze z dostępem do certyfikatu wyeksportowanego jako plik. Narzędzie Pvk2Pfx stanowi część [Zestawu sterowników systemu Windows dla przedsiębiorstw](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) — autonomicznego, samodzielnego środowiska wiersza polecenia.
-- Zainstalowany program [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) w wersji 5.0 lub nowszej.
+- Zainstalowany program [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) w wersji 5.0 lub nowszej.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 

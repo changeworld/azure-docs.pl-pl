@@ -2,17 +2,17 @@
 title: Funkcje szablonu — wdrożenie
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pobierania informacji o wdrożeniu.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 67540a78e349285be032f696a9ef4b9ba3c7e242
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230233"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561457"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkcje wdrażania dla Azure Resource Manager szablonów 
 
-Menedżer zasobów udostępnia następujące funkcje do uzyskiwania wartości z sekcji szablonu i wartości związanych ze wdrożeniem:
+Menedżer zasobów udostępnia następujące funkcje do uzyskiwania wartości związanych z bieżącym wdrożeniem:
 
 * [mieszczeniu](#deployment)
 * [naturalne](#environment)
@@ -141,7 +141,7 @@ Zwraca informacje o środowisku platformy Azure używanym do wdrożenia.
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Ta funkcja zwraca właściwości dla bieżącego środowiska platformy Azure.
+Ta funkcja zwraca właściwości dla bieżącego środowiska platformy Azure. W poniższym przykładzie przedstawiono właściwości globalne platformy Azure. Suwerenne chmury mogą zwracać nieco inne właściwości.
 
 ```json
 {
@@ -239,9 +239,9 @@ Zwraca wartość parametru. Określona nazwa parametru musi być zdefiniowana w 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |ciąg |Nazwa parametru do zwrócenia. |
+| parameterName |Tak |string |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -324,12 +324,12 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
 | stringOutput | Ciąg | Opcja 1 |
-| intOutput | Int | 1 |
+| intOutput | ZAOKR | 1 |
 | objectOutput | Obiekt | {"jeden": "a", "dwa": "b"} |
 | arrayOutput | Tablica | [1, 2, 3] |
 | crossOutput | Ciąg | Opcja 1 |
@@ -344,9 +344,9 @@ Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowana w se
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagany | Typ | Opis |
+| Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| variableName |Yes |Ciąg |Nazwa zmiennej do zwrócenia. |
+| variableName |Tak |Ciąg |Nazwa zmiennej do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -416,7 +416,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następujące:
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |

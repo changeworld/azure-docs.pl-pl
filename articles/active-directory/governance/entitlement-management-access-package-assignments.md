@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174910"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74553995"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Wyświetlanie, Dodawanie i usuwanie przypisań pakietu dostępu w usłudze Azure AD uprawnienia zarządzania
 
@@ -76,6 +76,24 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 1. Kliknij przycisk **Dodaj** , aby bezpośrednio przypisać wybranych użytkowników do pakietu dostępu.
 
     Po kilku chwilach kliknij pozycję **Odśwież** , aby wyświetlić użytkowników na liście przydziałów.
+
+## <a name="remove-an-assignment"></a>Usuwanie przypisania
+
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
+
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
+
+1. W menu po lewej stronie kliknij pozycję **przypisania**.
+ 
+1. Kliknij pole wyboru obok użytkownika, którego przypisanie chcesz usunąć z pakietu dostępu. 
+
+1. Kliknij przycisk **Usuń** w górnej części okienka po lewej stronie. 
+ 
+    ![Przypisania — Usuwanie użytkownika z pakietu dostępu](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+
+    Zostanie wyświetlone powiadomienie informujące o tym, że przypisanie zostało usunięte. 
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,16 +8,16 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 5b37ea92869468001581c9299b1633869671886a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 09371cc66b54d822db5ad24679d28f40323eb871
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457065"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561010"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Użyj Visual Studio Code do tworzenia i debugowania modułów dla Azure IoT Edge
 
-Logikę biznesową można przekształcić w moduły, dla usługi Azure IoT Edge. W tym artykule przedstawiono sposób użycia Visual Studio Code jako głównego narzędzia do tworzenia i debugowania modułów.
+Logikę biznesową można przekształcić w moduły Azure IoT Edge. W tym artykule przedstawiono sposób użycia Visual Studio Code jako głównego narzędzia do tworzenia i debugowania modułów.
 
 Istnieją dwa sposoby debugowania modułów pisanych w C#programie, Node. js lub Java w Visual Studio Code: można dołączyć proces do kontenera modułów lub uruchomić kod modułu w trybie debugowania. Aby debugować moduły w języku Python lub C, można dołączyć tylko do procesu w kontenerach z systemem Linux amd64.
 
@@ -59,7 +59,7 @@ Do kompilowania i wdrażania obrazu modułu potrzebna jest platforma Docker umo�
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) lub [centrum Docker](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
-    > Można użyć lokalnego rejestru platformy Docker prototypów i testowania zamiast rejestru chmury.
+    > Możesz użyć lokalnego rejestru platformy Docker dla celów prototypu i testowania zamiast rejestru w chmurze.
 
 Jeśli nie tworzysz modułu w języku C, potrzebujesz także [narzędzia deweloperskiego usługi Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/) opartego na języku Python, aby skonfigurować lokalne środowisko programistyczne do debugowania, uruchamiania i testowania rozwiązania IoT Edge. Jeśli jeszcze tego nie zrobiono, zainstaluj język [Python (2.7/3.6/3.7) i polecenie PIP](https://www.python.org/) , a następnie zainstaluj **iotedgehubdev** , uruchamiając to polecenie w terminalu.
 
@@ -91,7 +91,7 @@ W poniższych krokach pokazano, jak utworzyć moduł IoT Edge w preferowanym ję
 
 1. Wprowadź nazwę modułu. Wybierz nazwę, która jest unikatowa w rejestrze kontenerów.
 
-1. Podaj nazwę repozytorium obrazu modułu. Visual Studio Code automatycznie wypełnia nazwę modułu nazwą **localhost: 5000/< nazwę modułu\>** . Zastąp go własną informacje rejestru. Jeśli do testowania używasz lokalnego rejestru platformy Docker, **hosty localhost** jest w prawidłowym zakresie. Jeśli korzystasz z usługi Azure Container Registry, Użyj serwera logowania z ustawień w rejestrze. Serwer logowania wygląda jak  **_\<nazwa rejestru\>_ . azurecr.IO**. Zastąp tylko wartość **localhost: 5000** części ciągu, aby wynik końcowy wyglądał jak **\<*nazwa rejestru*\>. azurecr.IO/ _\<nazwę modułu\>_** .
+1. Podaj nazwę repozytorium obrazu modułu. Visual Studio Code automatycznie wypełnia nazwę modułu nazwą **localhost: 5000/< nazwę modułu\>** . Zastąp go własnymi informacjami rejestru. Jeśli do testowania używasz lokalnego rejestru platformy Docker, **hosty localhost** jest w prawidłowym zakresie. Jeśli używasz Azure Container Registry, Użyj serwera logowania z ustawień rejestru. Serwer logowania wygląda jak  **_\<nazwa rejestru\>_ . azurecr.IO**. Zastąp tylko wartość **localhost: 5000** części ciągu, aby wynik końcowy wyglądał jak **\<*nazwa rejestru*\>. azurecr.IO/ _\<nazwę modułu\>_** .
 
    ![Udostępnianie repozytorium obrazów platformy Docker](./media/how-to-develop-csharp-module/repository.png)
 
@@ -110,11 +110,13 @@ W rozwiązaniu znajdują się cztery elementy:
 
 - Plik **Deployment. Template. JSON** zawiera listę nowego modułu wraz z przykładowym modułem **SimulatedTemperatureSensor** , który symuluje dane, których można użyć do testowania. Aby uzyskać więcej informacji o działaniu manifestów wdrożenia, zobacz temat [jak używać manifestów wdrożenia do wdrażania modułów i ustanawiania tras](module-composition.md).
 
+Aby zobaczyć, jak działa moduł symulowanej temperatury, Wyświetl [kod źródłowy SimulatedTemperatureSensor. csproj](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor).
+
 ## <a name="add-additional-modules"></a>Dodawanie dodatkowych modułów
 
 Aby dodać dodatkowe moduły do rozwiązania, uruchom polecenie **Azure IoT Edge: Dodaj moduł IoT Edge** z palety poleceń. Można również kliknąć prawym przyciskiem myszy folder **moduły** lub plik `deployment.template.json` w widoku Eksploratora Visual Studio Code, a następnie wybrać polecenie **Dodaj moduł IoT Edge**.
 
-## <a name="develop-your-module"></a>Tworzenie modułu
+## <a name="develop-your-module"></a>Opracowywanie modułu
 
 Domyślny kod modułu dostarczany wraz z rozwiązaniem znajduje się w następującej lokalizacji:
 
@@ -125,7 +127,7 @@ Domyślny kod modułu dostarczany wraz z rozwiązaniem znajduje się w następuj
 - Java: **moduły > *&lt;nazwę modułu&gt;* > src > main > java > com > edgemodulemodules > App. Java**
 - C: **moduły > *&lt;nazwą modułu&gt;* > Main. c**
 
-W module, plik deployment.template.json są konfigurowane tak, aby skompilować rozwiązanie, Wypchnij go do rejestru kontenerów i wdrożyć ją na urządzeniu do rozpoczęcia testowania bez dotykania żadnego kodu. Moduł jest zbudowany, aby po prostu przejąć dane wejściowe ze źródła (w tym przypadku moduł SimulatedTemperatureSensor, który symuluje dane) i potok do IoT Hub.
+Moduł i plik Deployment. Template. JSON są skonfigurowane tak, aby można było skompilować rozwiązanie, wypchnąć je do rejestru kontenerów i wdrożyć je na urządzeniu w celu uruchomienia testowania bez dotykania kodu. Moduł jest zbudowany, aby po prostu przejąć dane wejściowe ze źródła (w tym przypadku moduł SimulatedTemperatureSensor, który symuluje dane) i potok do IoT Hub.
 
 Gdy wszystko jest gotowe do dostosowania szablonu przy użyciu własnego kodu, użyj [zestawów sdk IoT Hub platformy Azure](../iot-hub/iot-hub-devguide-sdks.md) do kompilowania modułów, które zaspokoją kluczowe potrzeby rozwiązań IoT, takich jak zabezpieczenia, zarządzanie urządzeniami i niezawodność.
 

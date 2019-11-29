@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 10/28/2019
+ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 1749fb4c27a1bfa3048ec0e35c8a09556b0e995b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007733"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559091"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -69,7 +69,7 @@ Opłaty za Application Insights są dodawane do rachunku na korzystanie z platfo
 ### <a name="using-data-volume-metrics"></a>Korzystanie z metryk ilości danych
 <a id="understanding-ingested-data-volume"></a>
 
-Aby dowiedzieć się więcej na temat woluminów danych, wybierz **metryki** dla zasobu Application Insights, Dodaj nowy wykres. Dla metryki wykresu w obszarze **metryki oparte na dzienniku**wybierz pozycję **wolumin punktu danych**. Kliknij przycisk **Zastosuj podział**, a następnie wybierz pozycję Grupuj według **typu Telemetryitem**.
+Aby dowiedzieć się więcej na temat woluminów danych, wybierz **metryki** dla zasobu Application Insights, Dodaj nowy wykres. Dla metryki wykresu w obszarze **metryki oparte na dzienniku**wybierz pozycję **wolumin punktu danych**. Kliknij przycisk **Zastosuj podział**i wybierz pozycję grupuj według **`Telemetryitem` typ**.
 
 ![Używanie metryk do przeglądania ilości danych](./media/pricing/10-billing.png)
 
@@ -157,9 +157,9 @@ Możesz użyć dziennego limitu ilości, aby ograniczyć zbierane dane. Jeśli j
 
 Zamiast używać dziennego limitu ilości, użyj [próbkowania](../../azure-monitor/app/sampling.md) , aby dostosować ilość danych do żądanego poziomu. Następnie użyj dziennego limitu tylko jako "ostatniej", jeśli aplikacja nieoczekiwanie zacznie wysyłać znacznie wyższe ilości danych telemetrycznych.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Zidentyfikować jakie dzienny limit danych, aby zdefiniować
+### <a name="identify-what-daily-data-limit-to-define"></a>Określ dzienny limit danych do zdefiniowania
 
-Przejrzyj Application Insights użycie i szacowane koszty, aby zrozumieć trend pozyskiwania danych i co to jest dzienny limit ilości do zdefiniowania. Należy rozważyć ostrożnie, ponieważ nie będzie można monitorować swoje zasoby, po osiągnięciu limitu. 
+Przejrzyj Application Insights użycie i szacowane koszty, aby zrozumieć trend pozyskiwania danych i co to jest dzienny limit ilości do zdefiniowania. Należy wziąć pod uwagę opiekę, ponieważ nie będzie można monitorować zasobów po osiągnięciu limitu. 
 
 ### <a name="set-the-daily-cap"></a>Ustaw limit dzienny
 
@@ -195,7 +195,7 @@ Aby wykryć rzeczywistą częstotliwość próbkowania bez względu na to, gdzie
 
 W każdym zachowanym rekordzie `itemCount` wskazuje liczbę oryginalnych rekordów, które reprezentuje. Jest równa 1 + liczba poprzednich odrzuconych rekordów. 
 
-## <a name="change-the-data-retention-period"></a>Zmienić okres przechowywania danych
+## <a name="change-the-data-retention-period"></a>Zmień okres przechowywania danych
 
 Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu usługi Application Insights można wybrać inny okres przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730. 
 
@@ -203,7 +203,7 @@ Aby zmienić przechowywanie, z zasobu Application Insights przejdź na stronę *
 
 ![Dostosuj dzienny limit ilości danych telemetrycznych](./media/pricing/pricing-005.png)
 
-Przechowywanie można także [ustawić programowo przy użyciu programu PowerShell](powershell.md#set-the-data-retention) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczania jest dostępna tylko za pośrednictwem Azure Resource Manager i powinna być używana z najwyższą starannością. 
+Przechowywanie można także [ustawić programowo przy użyciu programu PowerShell](powershell.md#set-the-data-retention) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczania jest dostępna tylko za pośrednictwem Azure Resource Manager i powinna być używana z najwyższą starannością. Dzienny czas resetowania ilości danych można skonfigurować przy użyciu Azure Resource Manager, aby ustawić parametr `dailyQuotaResetTime`. 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Opłaty za transfer danych przy użyciu Application Insights
 
@@ -259,7 +259,7 @@ Ponieważ ta warstwa ma zastosowanie tylko do klientów z subskrypcją pakietu O
 |:---------------------------------------|:----------------:|
 | 1 aplikacja używająca 3 wystąpień Azure App Service i 1 serwera wirtualnego | 4 |
 | 3 aplikacje działające na 2 maszynach wirtualnych; zasoby Application Insights dla tych aplikacji znajdują się w tej samej subskrypcji i w warstwie na węzeł | 2 | 
-| 4 aplikacje, których zasoby usługi Application Insights znajdują się w tej samej subskrypcji; Każda aplikacja uruchamia 2 wystąpienia w godzinach od 16 godzin szczytu i 4 wystąpienia w ciągu 8 godzin szczytu | 13.33 | 
+| 4 aplikacje, których zasoby usługi Application Insights znajdują się w tej samej subskrypcji; Każda aplikacja uruchamia 2 wystąpienia w godzinach od 16 godzin szczytu i 4 wystąpienia w ciągu 8 godzin szczytu | 13,33 | 
 | Usługi w chmurze z 1 rolą proces roboczy i 1 rolą sieci Web, każdy uruchomiony 2 wystąpienia | 4 | 
 | Klaster programu Azure Service Fabric w systemie 5 z systemem 50 mikrousług; Każda mikrousługa z uruchomioną 3 wystąpieniami | 5|
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 84cb2b465735532ff44e35ab7a2fe4e9bb224e61
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f282fce8070d440bdd3a518b4444eb0e67110961
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150022"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559080"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń
 Azure Monitor zapewnia pełne rozwiązanie do monitorowania stosu dla aplikacji i usług na platformie Azure, w innych chmurach i lokalnie. Oprócz Azure Monitor do analizowania danych i korzystania z nich w różnych scenariuszach monitorowania może być konieczne wysłanie ich do innych narzędzi do monitorowania w środowisku. Najbardziej efektywną metodą przesyłania strumieniowego danych monitorowania do zewnętrznych narzędzi w większości przypadków jest użycie [usługi Azure Event Hubs](/azure/event-hubs/). Ten artykuł zawiera krótki opis sposobu przesyłania strumieniowego danych monitorowania z różnych źródeł do centrum zdarzeń oraz linki do szczegółowych wskazówek.
@@ -57,7 +57,7 @@ Kierowanie danych monitorowania do centrum zdarzeń za pomocą Azure Monitor poz
 | SumoLogic | Instrukcje dotyczące konfigurowania SumoLogic do korzystania z danych z centrum zdarzeń są dostępne w [dziennikach zbierania dla aplikacji inspekcji platformy Azure z centrum zdarzeń](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
 | ArcSight | Łącznik inteligentny ArcSight usługi Azure Event Hub jest dostępny jako część [kolekcji inteligentnych łączników ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
 | Serwer Syslog | Jeśli chcesz przesyłać strumieniowo Azure Monitor dane bezpośrednio do serwera dziennika systemowego, możesz użyć [rozwiązania na podstawie funkcji platformy Azure](https://github.com/miguelangelopereira/azuremonitor2syslog/).
-| LogRhythm | Instrukcje dotyczące ustawien LogRhythm w celu zbierania dzienników z centrum zdarzeń są dostępne [tutaj](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
+| LogRhythm | Instrukcje dotyczące konfigurowania LogRhythm do zbierania dzienników z centrum zdarzeń są dostępne [tutaj](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
 
 
 ## <a name="next-steps"></a>Następne kroki

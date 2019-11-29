@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: helohr
-ms.openlocfilehash: c5d6c671890f5e036d3f4cce6e880230c01048ed
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 54f2c39260ecaf643b0f2add8758ceb866e71afe
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483825"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561112"
 ---
 # <a name="set-up-msix-app-attach"></a>Konfigurowanie dołączania aplikacji MSIX
 
@@ -184,8 +184,8 @@ Jeśli aplikacja używa certyfikatu, który nie jest zaufany lub został podpisa
 
 Dołączenie do aplikacji MSIX ma cztery różne etapy, które należy wykonać w następującej kolejności:
 
-1. Etap
-2. Zarejestruj subskrypcję
+1. Stage
+2. Zarejestruj
 3. Wyrejestrowania
 4. Cofnij przygotowanie
 
@@ -307,8 +307,7 @@ Przed aktualizacją skryptów programu PowerShell upewnij się, że masz identyf
 
     $packageManager = [Windows.Management.Deployment.PackageManager]::new()
 
-    $path = $msixJunction + $parentFolder + $packageName # needed if we do the
-    pbisigned.vhd
+    $path = $msixJunction + $parentFolder + $packageName # needed if we do the pbisigned.vhd
 
     $path = ([System.Uri]$path).AbsoluteUri
 

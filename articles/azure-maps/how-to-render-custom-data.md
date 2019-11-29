@@ -1,6 +1,6 @@
 ---
 title: Jak renderować dane niestandardowe na mapie rastrowej w Azure Maps | Microsoft Docs
-description: Renderowanie niestandardowych danych na mapie rastrowej w Azure Maps.
+description: W tym artykule dowiesz się, jak renderować dane niestandardowe na mapie rastrowej za pomocą usługi statycznego obrazu Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915754"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559979"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Renderowanie niestandardowych danych na mapie rastrowej
 
@@ -35,7 +35,7 @@ Aby wykonać procedury opisane w tym artykule, musisz najpierw utworzyć konto A
 > [!Note]
 > Procedura opisana w tej sekcji wymaga konta Azure Maps w warstwie cenowej S0 lub S1.
 
-Warstwa S0 konta Azure Maps obsługuje tylko jedno wystąpienie `pins` parametru. Umożliwia renderowanie do pięciu pinezki, określonych w żądaniu adresu URL, przy użyciu obrazu niestandardowego.
+Warstwa S0 konta Azure Maps obsługuje tylko jedno wystąpienie parametru `pins`. Umożliwia renderowanie do pięciu pinezki, określonych w żądaniu adresu URL, przy użyciu obrazu niestandardowego.
 
 Aby renderować pinezki z etykietami i obrazem niestandardowym, wykonaj następujące kroki:
 
@@ -48,7 +48,7 @@ Aby renderować pinezki z etykietami i obrazem niestandardowym, wykonaj następu
 3. Wybierz metodę GET HTTP na karcie Konstruktor i wprowadź następujący adres URL, aby utworzyć żądanie GET.
 
     ```HTTP
-    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttp%3A%2F%2Fazuremapscodesamples.azurewebsites.net%2FCommon%2Fimages%2Fpushpins%2Fylw-pushpin.png
+    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttps%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzureMapsCodeSamples%2Fmaster%2FAzureMapsCodeSamples%2FCommon%2Fimages%2Ficons%2Fylw-pushpin.png
     ```
     Oto obraz przedstawiający wyniki:
 
@@ -68,7 +68,7 @@ Możesz również uzyskać informacje o ścieżce i lokalizacji numeru PIN przy 
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. Na karcie **Parametry** wprowadź następujące pary klucz/wartość, które są używane w adresie URL żądania post. Zastąp `subscription-key` wartość kluczem subskrypcji Azure Maps.
+2. Na karcie **Parametry** wprowadź następujące pary klucz/wartość, które są używane w adresie URL żądania post. Zastąp wartość `subscription-key` kluczem subskrypcji Azure Maps.
     
     ![Parametry klucza/wartości w programie Poster](./media/how-to-render-custom-data/postman-key-vals.png)
 
@@ -154,7 +154,7 @@ Możesz również uzyskać informacje o ścieżce i lokalizacji numeru PIN przy 
    }
    ```
 
-7. `udId` Użyj wartości otrzymanej z interfejsu API przekazywania danych do renderowania funkcji na mapie. Aby to zrobić, Otwórz nową kartę w kolekcji utworzonej w poprzedniej sekcji. Wybierz metodę GET HTTP na karcie Konstruktor i wprowadź ten adres URL w celu uzyskania żądania GET:
+7. Użyj wartości `udId` otrzymanej z interfejsu API przekazywania danych w celu renderowania funkcji na mapie. Aby to zrobić, Otwórz nową kartę w kolekcji utworzonej w poprzedniej sekcji. Wybierz metodę GET HTTP na karcie Konstruktor i wprowadź ten adres URL w celu uzyskania żądania GET:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -190,7 +190,7 @@ Możesz zmodyfikować wygląd wielokąta, używając modyfikatorów stylu z [par
 > Procedura opisana w tej sekcji wymaga konta Azure Maps w warstwie cenowej S1.
 
 
-Można sprawić, aby pinezke i ich etykiety były większe lub mniejsze przy `sc` użyciu modyfikatora stylu skali. Ten modyfikator przyjmuje wartość większą od zera. Wartość 1 jest skalą standardową. Wartości większe niż 1 spowodują, że numery PIN będą większe, a wartości mniejsze od 1 staną się mniejsze. Aby uzyskać więcej informacji na temat modyfikatorów stylu, zobacz [Parametry ścieżki usługi obrazu statycznego](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Można sprawić, aby pinezke i ich etykiety były większe lub mniejsze przy użyciu modyfikatora stylu skalowania `sc`. Ten modyfikator przyjmuje wartość większą od zera. Wartość 1 jest skalą standardową. Wartości większe niż 1 spowodują, że numery PIN będą większe, a wartości mniejsze od 1 staną się mniejsze. Aby uzyskać więcej informacji na temat modyfikatorów stylu, zobacz [Parametry ścieżki usługi obrazu statycznego](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 Wykonaj następujące kroki, aby renderować okrąg i pinezki z etykietami niestandardowymi:

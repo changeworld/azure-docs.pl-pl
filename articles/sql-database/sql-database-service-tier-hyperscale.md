@@ -11,18 +11,18 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: c71fb8a7e18439817023874146e22c29a5af3b12
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: cb37bd0c83956b9858639a78d4995e14811498e5
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123685"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559322"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
 Azure SQL Database jest oparta na architekturze SQL Server Database Engine, która jest dostosowywana do środowiska chmury w celu zapewnienia dostępności 99,99% nawet w przypadku awarii infrastruktury. Istnieją trzy modele architektury, które są używane w Azure SQL Database:
 - Ogólnego przeznaczenia/Standard 
--  Hiperskala
+-  Hiperskalowanie
 -  Krytyczne dla działania firmy/Premium
 
 Warstwa usługi do skalowania w Azure SQL Database to najnowsza warstwa usługi w modelu zakupu opartego na rdzeń wirtualny. Ta warstwa usług jest wysoce skalowalną warstwą wydajności magazynu i obliczeń, która wykorzystuje architekturę platformy Azure do skalowania w poziomie magazynu i zasobów obliczeniowych dla Azure SQL Database znacznie przekraczające limity dostępne dla Ogólnego przeznaczenia i firmy Krytyczne warstwy usług.
@@ -86,7 +86,7 @@ Na poniższym diagramie przedstawiono różne typy węzłów w bazie danych w sk
 
 Baza danych wieloskali zawiera następujące różne typy składników:
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Wystąpienia obliczeniowe
 
 Węzeł obliczeniowy to miejsce, w którym działa silnik relacyjny, więc wszystkie elementy języka, przetwarzanie zapytań i tak dalej występują. Wszystkie interakcje użytkownika z bazą danych w ramach skalowania są wykonywane za pomocą tych węzłów obliczeniowych. Węzły obliczeniowe mają pamięć podręczną opartą na dyskach SSD (z etykietami RBPEX-odporny na błędy w powyższym diagramie), aby zminimalizować liczbę podróży w sieci wymaganych do pobrania strony danych. Istnieje jeden podstawowy węzeł obliczeniowy, w którym są przetwarzane wszystkie obciążenia odczytu i zapisu. Istnieje co najmniej jeden pomocniczy węzeł obliczeniowy działający jako węzły rezerwy aktywnej do pracy w trybie failover, a także działający jako węzeł obliczeniowy tylko do odczytu do odciążania obciążeń odczytu (Jeśli ta funkcja jest wymagana).
 
@@ -102,7 +102,7 @@ Usługa log przyjmuje rekordy dziennika z podstawowej repliki obliczeniowej, utr
 
 Usługa Azure Storage zawiera wszystkie pliki danych w bazie danych. Serwery stron zachowują aktualne pliki danych w usłudze Azure Storage. Ten magazyn jest używany na potrzeby tworzenia kopii zapasowych, a także do replikacji między regionami platformy Azure. Kopie zapasowe są implementowane przy użyciu migawek magazynu plików danych. Operacje przywracania przy użyciu migawek są szybkie, niezależnie od rozmiaru danych. Dane można przywrócić do dowolnego punktu w czasie w ramach okresu przechowywania kopii zapasowej bazy danych.
 
-## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
+## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
 
 Kopie zapasowe są tworzone na podstawie migawek plików, a tym samym prawie chwilowo. Rozdzielenie magazynu i obliczeń umożliwia wypychanie operacji tworzenia kopii zapasowej/przywracania do warstwy magazynowania w celu zmniejszenia obciążenia związanego z przetwarzaniem w podstawowej replice obliczeniowej. W związku z tym kopia zapasowa bazy danych nie ma wpływu na wydajność podstawowego węzła obliczeniowego; Analogicznie, przywracanie odbywa się przez przywrócenie migawek plików, co nie jest rozmiarem operacji danych. Przywracanie jest operacją o stałym czasie, a nawet kilka baz danych można przywrócić w ciągu kilku minut, a nie godzin lub dni. Tworzenie nowych baz danych przez przywrócenie istniejącej kopii zapasowej obejmuje również korzystanie z tej funkcji: Tworzenie kopii bazy danych na tym samym serwerze logicznym do celów deweloperskich i testowych, nawet w przypadku baz danych o rozmiarze terabajtów, jest doable w ciągu kilku minut.
 
@@ -181,10 +181,10 @@ Warstwa skalowania Azure SQL Database jest obecnie dostępna w następujących r
 - Japonia Zachodnia
 - Korea Środkowa
 - Korea Południowa
-- Środkowo-północne stany USA
+- Północno-środkowe stany USA
 - Europa Północna
 - Północna Republika Południowej Afryki
-- Środkowo-południowe stany USA
+- Południowo-środkowe stany USA
 - Azja Południowo-Wschodnia
 - Południowe Zjednoczone Królestwo
 - Zachodnie Zjednoczone Królestwo
@@ -251,6 +251,7 @@ Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na p
 | Kopia bazy danych | Nie można jeszcze użyć kopii bazy danych w celu utworzenia nowej bazy danych w funkcji wieloskalowania SQL platformy Azure. |
 | Integracja TDE/AKV | Szyfrowanie przezroczystej bazy danych przy użyciu Azure Key Vault (nazywanego też kluczem "Przenieś jako własne-Key" lub BYOK) nie jest jeszcze obsługiwane dla Azure SQL Database funkcji TDE, ale z kluczami zarządzanymi przez usługę jest w pełni obsługiwane. |
 |Funkcje inteligentnej bazy danych | Z wyjątkiem opcji "Wymuś plan" wszystkie inne opcje dostrajania automatycznego nie są jeszcze obsługiwane w obszarze skalowanie: opcje mogą być dostępne, ale nie zostaną wykonane żadne zalecenia ani działania. |
+| Zmniejsz bazę danych | Polecenia DBCC SHRINKDATABASE lub DBCC SHRINKFILE nie są obecnie obsługiwane w bazach danych Azure SQL Database. |
 
 ## <a name="next-steps"></a>Następne kroki
 

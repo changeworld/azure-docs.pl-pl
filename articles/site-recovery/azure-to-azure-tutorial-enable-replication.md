@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 11/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961493"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561499"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -143,7 +143,7 @@ Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie
     **Lokalizacja docelowa** | Region docelowy używany na potrzeby odzyskiwania po awarii.<br/><br/> Zaleca się, aby lokalizacja docelowa odpowiadała lokalizacji magazynu usługi Site Recovery.
     **Docelowa Grupa zasobów** | Grupa zasobów w regionie docelowym, w której są przechowywane maszyny wirtualne platformy Azure po przejściu w tryb failover.<br/><br/> Domyślnie usługa Site Recovery dodaje sufiks „asr” do grupy zasobów utworzonej w regionie docelowym. Lokalizacją docelowej grupy zasobów może być dowolny region, z wyjątkiem regionu, w którym są hostowane źródłowe maszyny wirtualne.
     **Docelowa sieć wirtualna** | Sieć w regionie docelowym, w której znajdują się maszyny wirtualne po przejściu w tryb failover.<br/><br/> Domyślnie usługa Site Recovery dodaje sufiks „asr” do sieci wirtualnej (i podsieci) utworzonej w regionie docelowym.
-    **Konta magazynu pamięci podręcznej** | Usługa Site Recovery używa konta magazynu w regionie źródłowym. Do tego konta są wysyłane zmiany źródłowych maszyn wirtualnych przed uruchomieniem replikacji do lokalizacji docelowej.<br/><br/> Jeśli używasz konta magazynu pamięci podręcznej z włączoną obsługą zapory, upewnij się, że włączono opcję **Zezwalaj na zaufane usługi firmy Microsoft**. [Dowiedz się więcej.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+    **Konta magazynu pamięci podręcznej** | Usługa Site Recovery używa konta magazynu w regionie źródłowym. Do tego konta są wysyłane zmiany źródłowych maszyn wirtualnych przed uruchomieniem replikacji do lokalizacji docelowej.<br/><br/> Jeśli używasz konta magazynu pamięci podręcznej z włączoną obsługą zapory, upewnij się, że włączono opcję **Zezwalaj na zaufane usługi firmy Microsoft**. [Dowiedz się więcej.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).. Upewnij się również, że zezwolisz na dostęp do co najmniej jednej podsieci źródłowej sieci wirtualnej.
     **Docelowe konta magazynu (źródłowa maszyna wirtualna używa dysków innych niż zarządzane)** | Domyślnie usługa Site Recovery tworzy w regionie docelowym nowe konto magazynu, które jest duplikatem źródłowego konta magazynu maszyn wirtualnych.<br/><br/> Włącz opcję **Zezwalaj na zaufane usługi firmy Microsoft** , jeśli używasz konta magazynu pamięci podręcznej z włączoną obsługą zapory.
     **Dyski zarządzane repliki (jeśli źródłowa maszyna wirtualna korzysta z dysków zarządzanych)** | Domyślnie usługa Site Recovery tworzy dyski zarządzane repliki w regionie docelowym w celu zdublowania dysków zarządzanych źródłowej maszyny wirtualnej przy użyciu tego samego typu magazynu (w warstwie Standardowa lub Premium) co typ magazynu dysku zarządzanego źródłowej maszyny wirtualnej. Można dostosować tylko typ dysku 
     **Docelowe zestawy dostępności** | Domyślnie usługa Azure Site Recovery tworzy w regionie docelowym nowy zestaw dostępności o nazwie z sufiksem „asr” dla części maszyny wirtualnej w zestawie dostępności w regionie źródłowym. Jeśli zestaw dostępności utworzony przez usługę Azure Site Recovery już istnieje, zostanie ponownie użyty.

@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 7ee30962db230417bf3e20a354614a5ebb8f35a0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063056"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561908"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Czym są tożsamości zarządzane dla zasobów platformy Azure?
 
@@ -43,7 +43,7 @@ Poniższe terminy są używane w zestawie dokumentacji dotyczącej tożsamości 
 - **Identyfikator podmiotu zabezpieczeń** — identyfikator obiektu nazwy głównej usługi dla tożsamości zarządzanej, która jest używana w celu udzielenia dostępu opartego na rolach do zasobu platformy Azure.
 - **Usługa Azure Instance Metadata Service (IMDS)** — punkt końcowy REST dostępny dla wszystkich maszyn wirtualnych IaaS utworzonych za pośrednictwem usługi Azure Resource Manager. Punkt końcowy jest dostępny pod dobrze znanym, nierutowalnym adresem IP (169.254.169.254), do którego dostęp można uzyskać tylko z poziomu maszyny wirtualnej.
 
-## Jak działają tożsamości zarządzane dla zasobów platformy Azure?<a name="how-does-it-work"></a>
+## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Jak działa tożsamość zarządzana dla zasobów platformy Azure?
 
 Istnieją dwa typy tożsamości zarządzanych:
 

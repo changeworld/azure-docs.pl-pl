@@ -1,14 +1,14 @@
 ---
-title: Przykład strategii strefy docelowej migracji w przewodniku CAF — omówienie
+title: Omówienie przykładu strategii strefy docelowej migracji w przewodniku CAF
 description: Omówienie i architektura strategii Cloud Adoption Framework (CAF) dla strefy docelowej usługi Azure Migration z przykładem.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: e007c7af4d788016d74f085ba39b63ee218d6de0
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 08171a39c83ea6822243d7239882a19b053f213e
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404748"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545493"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Omówienie przykładowej strategii strefy docelowej w przewodniku Microsoft Cloud Adoption Framework dla migracji na platformę Azure
 

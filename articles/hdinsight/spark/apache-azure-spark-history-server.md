@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 1320764687f3eb2f033ca70703a9bcb16ab616ea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/25/2019
+ms.openlocfilehash: 7e9ab0e41086a4c9478f95c5a56754640feeab4e
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494741"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561836"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Użyj serwera Apache Spark History, aby debugować i diagnozować aplikacje Apache Spark
 
-Ten artykuł zawiera wskazówki dotyczące korzystania z serwera Apache Spark History w celu debugowania i diagnozowania ukończonych i uruchomionych aplikacji platformy Spark. Rozszerzenie zawiera kartę dane, kartę graf i kartę Diagnostyka. Na karcie **dane** użytkownicy mogą sprawdzać dane wejściowe i wyjściowe zadania Spark. Na karcie **Wykres** użytkownicy mogą sprawdzić przepływ danych i ponownie odtworzyć wykres zadania. Na karcie **Diagnostyka** użytkownik może odwoływać się do **pochylenia danych**, **pochylenia czasowego** i **analizy użycia programu wykonującego**.
+Ten artykuł zawiera wskazówki dotyczące korzystania z serwera Apache Spark History w celu debugowania i diagnozowania ukończonych i uruchomionych aplikacji platformy Spark. Rozszerzenie zawiera kartę dane, kartę graf i kartę Diagnostyka. Na karcie **dane** użytkownicy mogą sprawdzać dane wejściowe i wyjściowe zadania Spark. Na karcie **Wykres** użytkownicy mogą sprawdzić przepływ danych i ponownie odtworzyć wykres zadania. Na karcie **Diagnostyka** użytkownik może odwoływać się do **pochylenia danych**, **pochylenia czasu**i **analizy użycia programu wykonującego**.
 
 ## <a name="get-access-to-apache-spark-history-server"></a>Uzyskaj dostęp do serwera historii Apache Spark
 
@@ -26,35 +26,31 @@ Serwer historii Apache Spark jest interfejsem użytkownika sieci Web dla ukończ
 ### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Otwórz interfejs użytkownika sieci Web serwera historii Apache Spark z Azure Portal
 
 1. W [Azure Portal](https://portal.azure.com/)Otwórz klaster Spark. Aby uzyskać więcej informacji, zobacz Wyświetlanie [i wyświetlanie klastrów](../hdinsight-administer-use-portal-linux.md#showClusters).
-2. W obszarze **szybkie linki**kliknij pozycję **pulpit nawigacyjny klastra**, a następnie kliknij pozycję **serwer historii platformy Spark**. Po wyświetleniu monitu wprowadź poświadczenia administratora dla klastra Spark.
+2. W obszarze **pulpity nawigacyjne klastra**wybierz pozycję **serwer historii platformy Spark**. Po wyświetleniu monitu wprowadź poświadczenia administratora dla klastra Spark.
 
-    ![Uruchom Portal serwera historii Spark](./media/apache-azure-spark-history-server/launch-history-server.png "Serwer historii platformy Spark")
+    ![Uruchom Portal serwera historii Spark](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Serwer historii platformy Spark")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Otwórz interfejs użytkownika sieci Web serwera historii platformy Spark według adresu URL
 
-Otwórz serwer historii platformy Spark, przechodząc do następującego adresu URL, zastępując `<ClusterName>` nazwą klastra Spark.
+Otwórz serwer historii platformy Spark, przechodząc do `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` gdzie CLUSTERname jest nazwą klastra Spark.
 
-   ```
-   https://<ClusterName>.azurehdinsight.net/sparkhistory
-   ```
-
-Interfejs użytkownika sieci Web serwera historii platformy Spark wygląda następująco:
+Interfejs użytkownika sieci Web serwera historii platformy Spark może wyglądać podobnie do:
 
 ![Serwer historii usługi HDInsight Spark](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
 
 ## <a name="data-tab-in-spark-history-server"></a>Karta dane na serwerze historii platformy Spark
 
-Wybierz pozycję Identyfikator zadania, a następnie kliknij pozycję **dane** w menu Narzędzia, aby wyświetlić widok danych.
+Wybierz pozycję Identyfikator zadania, a następnie wybierz pozycję **dane** w menu Narzędzia, aby wyświetlić widok danych.
 
-+ Sprawdź **dane wejściowe**, **wyjściowe**i **operacje tabeli** , zaznaczając karty osobno.
++ Przejrzyj operacje **wejścia**, **wyjścia**i **tabeli** , zaznaczając karty osobno.
 
     ![Dane dla kart aplikacji platformy Spark](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
-+ Skopiuj wszystkie wiersze, klikając przycisk **Kopiuj**.
++ Skopiuj wszystkie wiersze, wybierając opcję **Kopiuj**.
 
     ![Dane dla kopiowania aplikacji platformy Spark](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
-+ Zapisz wszystkie dane jako plik CSV, klikając przycisk **CSV**.
++ Zapisz wszystkie dane jako plik CSV, wybierając przycisk **CSV**.
 
     ![Dane dotyczące zapisywania aplikacji Spark](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
@@ -62,11 +58,11 @@ Wybierz pozycję Identyfikator zadania, a następnie kliknij pozycję **dane** w
 
     ![Dane dla wyszukiwania aplikacji platformy Spark](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
-+ Kliknij nagłówek kolumny, aby posortować tabelę, kliknij znak plus, aby rozwinąć wiersz, aby wyświetlić więcej szczegółów, lub kliknij znak minus, aby zwinąć wiersz.
++ Wybierz nagłówek kolumny, aby posortować tabelę, wybierz znak plus, aby rozwinąć wiersz, aby wyświetlić więcej szczegółów, lub wybierz znak minus, aby zwinąć wiersz.
 
     ![Dane dla tabeli aplikacji platformy Spark](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
-+ Pobierz pojedynczy plik, klikając przycisk **częściowe pobieranie** , który znajduje się po prawej stronie, a następnie wybrany plik zostanie pobrany do lokalizacji lokalnej, jeśli plik jeszcze nie istnieje. spowoduje to otwarcie nowej karty w celu wyświetlenia komunikatów o błędach.
++ Pobierz pojedynczy plik, wybierając pozycję **Pobierz częściowy** przycisk po prawej stronie, a następnie wybrany plik zostanie pobrany do lokalizacji lokalnej, jeśli plik już nie istnieje. spowoduje to otwarcie nowej karty w celu wyświetlenia komunikatów o błędach.
 
     ![Dane dla wiersza pobierania aplikacji platformy Spark](./media/apache-azure-spark-history-server/sparkui-data-download-row.png)
 
@@ -74,11 +70,11 @@ Wybierz pozycję Identyfikator zadania, a następnie kliknij pozycję **dane** w
 
     ![Dane dla ścieżki kopii aplikacji Spark](./media/apache-azure-spark-history-server/sparkui-data-copy-path.png)
 
-+ Kliknij liczbę poniżej tabeli, aby nawigować po stronach, gdy zbyt wiele wierszy ma być wyświetlanych na jednej stronie.
++ Wybierz liczbę poniżej tabeli, aby nawigować po stronach, gdy zbyt wiele wierszy ma być wyświetlanych na jednej stronie.
 
     ![Dane dla strony aplikacji platformy Spark](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
-+ Umieść kursor na znaku zapytania obok pozycji dane, aby wyświetlić etykietkę narzędzia, lub kliknij znak zapytania, aby uzyskać więcej informacji.
++ Umieść kursor na znaku zapytania obok pozycji dane, aby wyświetlić etykietkę narzędzia, lub wybierz znak zapytania, aby uzyskać więcej informacji.
 
     ![Dane dotyczące aplikacji platformy Spark więcej informacji](./media/apache-azure-spark-history-server/sparkui-data-more-info.png)
 
@@ -90,7 +86,7 @@ Wybierz pozycję Identyfikator zadania, a następnie kliknij pozycję **dane** w
 
 Wybierz opcję Identyfikator zadania, a następnie kliknij pozycję **Graph** w menu Narzędzia, aby wyświetlić widok wykresu zadań.
 
-+ Zapoznaj się z omówieniem zadania, korzystając z wygenerowanego wykresu zadań.
++ Przejrzyj przegląd zadania według wykresu wygenerowanego zadania.
 
 + Domyślnie zostaną wyświetlone wszystkie zadania i można je filtrować według **identyfikatora zadania**.
 
@@ -104,13 +100,15 @@ Wybierz opcję Identyfikator zadania, a następnie kliknij pozycję **Graph** w 
 
     ![Mapę cieplną wykresu aplikacji i zadania platformy Spark](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
-+ Odtwórz zadanie, klikając przycisk **odtwarzania** i Zatrzymaj w dowolnym momencie, klikając przycisk Zatrzymaj. Zadanie jest wyświetlane w kolorze, aby pokazać inny stan podczas odtwarzania:
++ Odtwórz zadanie, wybierając przycisk **odtwarzania** i Zatrzymaj w dowolnym momencie, wybierając przycisk Zatrzymaj. Zadanie jest wyświetlane w kolorze, aby pokazać inny stan podczas odtwarzania:
 
-  + Zielony dla powiodło się: zadanie zostało ukończone pomyślnie.
-  + Pomarańczowy dla ponownych prób: wystąpienia zadań, które zakończyły się niepowodzeniem, ale nie wpływają na końcowy wynik zadania. Te zadania mają zduplikowane lub ponawiane wystąpienia, które mogą się powieść później.
-  + Niebieski do uruchamiania: zadanie jest uruchomione.
-  + Białe dla oczekiwania lub pominięte: zadanie oczekuje na uruchomienie lub etap został pominięty.
-  + Czerwona dla niepowodzenia: zadanie nie powiodło się.
+    |Kolor |Opis |
+    |---|---|
+    |Zielony|Zadanie zostało ukończone pomyślnie.|
+    |Pomarańczowy|Wystąpienia zadań, które zakończyły się niepowodzeniem, ale nie wpływają na końcowy wynik zadania. Te zadania mają zduplikowane lub ponawiane wystąpienia, które mogą się powieść później.|
+    |Niebieski|Zadanie jest uruchomione.|
+    |Biały|Zadanie oczekuje na uruchomienie lub etap został pominięty.|
+    |Czerwony|Zadanie nie powiodło się.|
 
     ![Przykładowy kolor grafu aplikacji i zadania platformy Spark, uruchomiony](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
@@ -137,7 +135,7 @@ Wybierz opcję Identyfikator zadania, a następnie kliknij pozycję **Graph** w 
     ![Ikona pochylanie aplikacji i wykresu zadań platformy Spark](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + W węźle grafu zadania zostaną wyświetlone następujące informacje dotyczące poszczególnych etapów:
-  + #.
+  + #C1.
   + Nazwa lub opis.
   + Łączny numer zadania.
   + Odczytane dane: suma rozmiaru danych wejściowych i rozmiaru losowego odczytu.
@@ -152,25 +150,25 @@ Wybierz opcję Identyfikator zadania, a następnie kliknij pozycję **Graph** w 
     > [!NOTE]  
     > W przypadku rozmiaru danych odczytu i zapisu używamy 1 MB = 1000 KB = 1000 * 1000 bajtów.
 
-+ Wyślij opinię o problemach, klikając pozycję Prześlij **nam swoją opinię**.
++ Prześlij opinię z problemami, wybierając pozycję Prześlij **nam swoją opinię**.
 
     ![Opinia na temat aplikacji i wykresu zadań platformy Spark](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 ## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Karta Diagnostyka na serwerze historii Apache Spark
 
-Wybierz pozycję Identyfikator zadania, a następnie kliknij pozycję **Diagnostyka** w menu Narzędzia, aby wyświetlić widok Diagnostyka zadań. Karta Diagnostyka obejmuje **przechylenie danych**, **pochylenie czasu**i **analizę użycia programu wykonującego**.
+Wybierz pozycję Identyfikator zadania, a następnie w menu Narzędzia wybierz pozycję **Diagnostyka** , aby wyświetlić widok Diagnostyka zadań. Karta Diagnostyka obejmuje **przechylenie danych**, **pochylenie czasu**i **analizę użycia programu wykonującego**.
 
-+ Sprawdź **pochylenie danych**, **pochylenie czasu**i **analizę użycia wykonawcy** , wybierając odpowiednio karty.
++ Sprawdź **pochylenie danych**, **pochylenie czasu**i **analizę użycia programu wykonującego** , wybierając odpowiednio karty.
 
     ![Karta przechylenie danych diagnostyki SparkUI ponownie](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
 
 ### <a name="data-skew"></a>Pochylenie danych
 
-Kliknij kartę **pochylanie danych** , odpowiednie skośne zadania są wyświetlane na podstawie określonych parametrów.
+Wybierz kartę **pochylanie danych** , odpowiednie skośne zadania są wyświetlane na podstawie określonych parametrów.
 
-+ **Określ parametry** — pierwsza sekcja zawiera parametry, które są używane do wykrywania pochylenia danych. Wbudowana reguła to: odczyt danych zadania jest dłuższy niż 3 razy średniego odczytania danych zadania, a odczyt danych zadania przekracza 10 MB. Jeśli chcesz zdefiniować własną regułę dla pochylonych zadań, możesz wybrać parametry, **etap skośny**i odcinek **skośny** zostaną odpowiednio odświeżone.
++ **Określ parametry** — w pierwszej sekcji są wyświetlane parametry, które są używane do wykrywania pochylenia danych. Wbudowana reguła to: odczyt danych zadania jest dłuższy niż trzy razy średniego odczytania danych zadania, a odczytane dane zadania są większe niż 10 MB. Jeśli chcesz zdefiniować własną regułę dla pochylonych zadań, możesz wybrać parametry, **etap skośny**i odcinek **skośny** zostaną odpowiednio odświeżone.
 
-+ **Etap skośny** — druga sekcja przedstawia etapy, w których zadania skośne spełniają kryteria określone powyżej. Jeśli na etapie występuje więcej niż jedno zadanie skośne, w tabeli etapów skośnych jest wyświetlane tylko zadanie najbardziej skośne (np. największe dane dotyczące pochylenia danych).
++ **Skośny etap** — druga sekcja wyświetla etapy, które mają skośne zadania spełniające określone powyżej kryteria. Jeśli na etapie występuje więcej niż jedno zadanie skośne, w tabeli etapów skośnych jest wyświetlane tylko zadanie najbardziej skośne (np. największe dane dotyczące pochylenia danych).
 
     ![Karta skośność danych diagnostyki sparkui](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
 
@@ -182,9 +180,9 @@ Kliknij kartę **pochylanie danych** , odpowiednie skośne zadania są wyświetl
 
 Karta **przechylenie czasu** przedstawia zadania skośne w oparciu o czas wykonywania zadania.
 
-+ **Określ parametry** — w pierwszej sekcji są wyświetlane parametry, które są używane do wykrywania pochylenia czasu. Domyślne kryteria wykrywania pochylenia czasu to: czas wykonywania zadania jest dłuższy niż 3 razy średniego czasu wykonywania, a czas wykonywania zadania jest większy niż 30 sekund. Można zmienić parametry w zależności od potrzeb. Wykres **skośny** i **skośny** wyświetlają odpowiednie etapy i informacje o zadaniach, podobnie jak powyższa karta **skośność danych** .
++ **Określ parametry** — w pierwszej sekcji są wyświetlane parametry, które są używane do wykrywania pochylenia czasu. Domyślne kryteria wykrywania pochylenia czasu to: czas wykonywania zadania jest dłuższy niż trzy razy średni czas wykonywania, a czas wykonywania zadania jest większy niż 30 sekund. Można zmienić parametry w zależności od potrzeb. Wykres **skośny** i **skośny** wyświetlają odpowiednie etapy i informacje o zadaniach, podobnie jak powyższa karta **skośność danych** .
 
-+ Kliknij przycisk **przechylenie czasu**, a następnie przefiltrowany wynik jest wyświetlany w sekcji **skośne etap** zgodnie z parametrami ustawionymi w sekcji **Określanie parametrów**. Kliknij jeden element w sekcji **skośnego etapu** , a następnie odpowiedni wykres jest przygotowywany w section3, a szczegóły zadania są wyświetlane w prawym dolnym panelu.
++ Wybierz opcję **przechylenie czasu**, a następnie przefiltrowany wynik jest wyświetlany w sekcji **skośne etap** zgodnie z parametrami ustawionymi w sekcji **Określanie parametrów**. Wybierz jeden element w sekcji **skośnego etapu** , a następnie odpowiedni wykres jest przygotowywany w section3, a szczegóły zadania są wyświetlane w prawym dolnym panelu.
 
     ![Sekcja pochylanie czasu diagnostyki sparkui](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
@@ -192,11 +190,11 @@ Karta **przechylenie czasu** przedstawia zadania skośne w oparciu o czas wykony
 
 Wykres użycia programu wykonującego wizualizuje rzeczywistą alokację wykonawców zadania platformy Spark i stan uruchomienia.  
 
-+ Kliknij pozycję **Analiza użycia programu wykonującego**, a następnie wybierz cztery typy krzywe dotyczące użycia programu wykonującego, w tym **przydzieloną wykonawcy**, **uruchomione wykonawcy**,**wykonawcze bezczynne**i **maksymalne wystąpienia wykonawców**. W odniesieniu do przyznanych wykonawców zdarzenie "dodaliśmy" lub "wykonawca usunięty" spowoduje zwiększenie lub zmniejszenie przyznanych wykonawców, można sprawdzić "oś czasu zdarzeń" na karcie "zadania", aby uzyskać więcej informacji.
++ Wybierz pozycję **Analiza użycia programu wykonującego**, a następnie cztery typy krzywe dotyczące użycia programu wykonującego są przygotowane, w tym **przydzieloną wykonawcy**, **uruchomione wykonawcy**, **wykonawcze bezczynne**i **maksymalne wystąpienia wykonawców**. W odniesieniu do przyznanych wykonawców zdarzenie "dodaliśmy" lub "wykonawca usunięty" spowoduje zwiększenie lub zmniejszenie przyznanych wykonawców, można sprawdzić "oś czasu zdarzeń" na karcie "zadania", aby uzyskać więcej informacji.
 
     ![Karta modułów wykonujących diagnostyki sparkui](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
 
-+ Kliknij ikonę koloru, aby wybrać lub usunąć zaznaczenie odpowiedniej zawartości we wszystkich wersjach roboczych.
++ Wybierz ikonę koloru, aby wybrać lub usunąć zaznaczenie odpowiedniej zawartości we wszystkich wersjach roboczych.
 
     ![sparkui — Wybieranie wykresu](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
@@ -206,33 +204,32 @@ Wykres użycia programu wykonującego wizualizuje rzeczywistą alokację wykonaw
 
 Aby powrócić do wersji społeczności, wykonaj następujące czynności:
 
-1. Otwórz klaster w Ambari. Kliknij pozycję **Spark2** w lewym panelu.
-2. Kliknij **kartę** konfiguracje.
-3. Rozwiń grupę **niestandardowe spark2 — domyślne**.
-4. Kliknij pozycję **Dodaj właściwość**, Dodaj pozycję **Spark. UI. ulepszenie. Enabled = false**, Zapisz.
-5. Właściwość ma teraz **wartość false** .
-6. Kliknij przycisk **Zapisz** , aby zapisać konfigurację.
+1. Otwórz klaster w Ambari.
+1. Przejdź do **Spark2** > **konfiguracjami** > **Custom Spark2 — ustawienia domyślne**.
+1. Wybierz pozycję **Dodaj właściwość...** , Dodaj platformę **Spark. UI. ulepszenie. Enabled = false**, Zapisz.
+1. Właściwość ma teraz **wartość false** .
+1. Wybierz pozycję **Zapisz** , aby zapisać konfigurację.
 
     ![Funkcja Apache Ambari wyłącza się](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
-7. Kliknij pozycję **Spark2** w lewym panelu, w obszarze Karta **Podsumowanie** kliknij pozycję **serwer historii Spark2**.
+1. Wybierz pozycję **Spark2** w lewym panelu, w obszarze Karta **Podsumowanie** wybierz pozycję **serwer historii Spark2**.
 
     ![Widok podsumowania Spark2 Apache Ambari](./media/apache-azure-spark-history-server/apache-spark-restart1.png)
 
-8. Uruchom ponownie serwer historii, klikając pozycję **Uruchom ponownie** **serwer historii Spark2**.
+1. Uruchom ponownie serwer historii, wybierając pozycję **Uruchom ponownie** **serwer historii Spark2**.
 
     ![Ponowne uruchamianie historii Apache Ambari Spark2](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
-9. Odśwież interfejs użytkownika sieci Web serwera historii platformy Spark, który zostanie przywrócony do wersji społecznościowej.
+1. Odśwież interfejs użytkownika sieci Web serwera historii platformy Spark, który zostanie przywrócony do wersji społecznościowej.
 
 ### <a name="2-upload-history-server-event"></a>2. Przekaż historię zdarzeń serwera
 
 Jeśli wystąpi błąd serwera historii, postępuj zgodnie z instrukcjami, aby podać zdarzenie:
 
-1. Zdarzenie pobierania przez kliknięcie przycisku **Pobierz** w interfejsie użytkownika sieci Web serwera historii.
+1. Pobierz zdarzenie, wybierając pozycję **Pobierz** w interfejsie użytkownika sieci Web serwera historii.
 
     ![Pobieranie serwera historii Spark2](./media/apache-azure-spark-history-server/sparkui-download-event.png)
 
-2. Kliknij pozycję Prześlij **nam opinię** z karty dane/wykres.
+2. Wybierz pozycję Prześlij **nam opinię** z karty dane/wykres.
 
     ![Program Spark Graph przedstawia nam swoją opinię](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
@@ -302,32 +299,29 @@ Jeśli chcesz przeprowadzić uaktualnienie przy użyciu poprawki, użyj poniższ
 **Aby użyć pliku bash z Azure Portal**
 
 1. Uruchom [Azure Portal](https://ms.portal.azure.com)i wybierz klaster.
-2. Kliknij pozycję **Akcje skryptu**, a następnie **Prześlij nowy**. Wypełnij formularz **Akcja przesyłania skryptu** , a następnie kliknij przycisk **Utwórz** .
+2. Ukończ [akcję skryptu](../hdinsight-hadoop-customize-cluster-linux.md) z następującymi parametrami:
 
-    + **Typ skryptu**: wybierz pozycję **niestandardowy**.
-    + **Nazwa**: Określ nazwę skryptu.
-    + **Identyfikator URI skryptu bash**: Przekaż plik bash do klastra prywatnego, a następnie skopiuj tutaj adres URL. Alternatywnie możesz użyć podanego identyfikatora URI.
-
-   ```upgrade_spark_enhancement
-    https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh
-   ```
-
-   + Sprawdź **kierownika** i **proces roboczy**.
-   + **Parametry**: ustaw parametry zgodnie z bash użycie.
+    |Właściwość |Wartość |
+    |---|---|
+    |Typ skryptu|-Niestandardowe|
+    |Nazwa|UpgradeJar|
+    |Identyfikator URI skryptu bash|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
+    |Typy węzłów|Kierownik, proces roboczy|
+    |Parametry|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|
 
      ![Azure Portal akcji przesyłania skryptu](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 ## <a name="known-issues"></a>Znane problemy
 
-1. Obecnie działa tylko w przypadku klastra Spark 2,3 i 2,4.
++ Obecnie działa tylko w przypadku klastra Spark 2,3 i 2,4.
 
-2. Dane wejściowe/wyjściowe przy użyciu RDD nie będą wyświetlane na karcie dane.
++ Dane wejściowe/wyjściowe przy użyciu RDD nie będą wyświetlane na karcie dane.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zarządzanie zasobami klastra Apache Spark w usłudze HDInsight](apache-spark-resource-manager.md)
-* [Skonfiguruj ustawienia Apache Spark](apache-spark-settings.md)
++ [Zarządzanie zasobami klastra Apache Spark w usłudze HDInsight](apache-spark-resource-manager.md)
++ [Skonfiguruj ustawienia Apache Spark](apache-spark-settings.md)
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
 
-Jeśli masz jakieś opinie lub występują inne problemy podczas korzystania z tego narzędzia, Wyślij wiadomość e-mail na adres ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)).
+Jeśli podczas korzystania z tego narzędzia masz jakieś opinie lub występują problemy, Wyślij wiadomość e-mail na adres ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)).

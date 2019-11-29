@@ -11,15 +11,15 @@ ms.service: virtual-machines-sql
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/12/2018
+ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 855bd64bc8beb86a1bc62c65f71254f43c7a722a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 00b4647815d8330152ca2dd0b5e137e337e80210
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101983"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561101"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co to jest program SQL Server na maszynach wirtualnych platformy Azure? (Windows)
 
@@ -35,7 +35,7 @@ Maszyny wirtualne platformy Azure działają w wielu różnych [regionach geogra
 
 Maszyny wirtualne platformy Azure z programem SQL Server umożliwiają korzystanie z funkcji [Automatyczne stosowanie poprawek](virtual-machines-windows-sql-automated-patching.md) w celu zaplanowania okna obsługi, w którym mają być automatycznie instalowane ważne aktualizacje systemu Windows i programu SQL Server.
 
-## <a name="automated-backups"></a>Automatyczne kopie zapasowe
+## <a name="automated-backups"></a>Zautomatyzowane kopie zapasowe
 
 Maszyny wirtualne Azure z programem SQL Server umożliwiają korzystanie z funkcji [Automatyczne kopie zapasowe](virtual-machines-windows-sql-automated-backup-v2.md), która regularnie tworzy kopie zapasowe bazy danych w usłudze Blob Storage. Tej techniki można również używać ręcznie. Aby uzyskać więcej informacji, zobacz [Use Azure Storage for SQL Server Backup and Restore](virtual-machines-windows-use-storage-sql-server-backup-restore.md) (Używanie usługi Azure Storage do tworzenia kopii zapasowych programu SQL Server i ich przywracania).
 
@@ -57,7 +57,7 @@ Aby rozpocząć, wybierz obraz maszyny wirtualnej z programem SQL Server w wymag
 ### <a id="payasyougo"></a> Płatność zgodnie z rzeczywistym użyciem
 Poniższa tabela zawiera macierz obrazów z programem SQL Server korzystających z modelu płatności zgodnie z rzeczywistym użyciem.
 
-| Version | System operacyjny | Wersja |
+| Wersja | System operacyjny | Edycja |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2StandardWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2WebWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2ExpressWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2DeveloperWindowsServer2016) |
@@ -75,7 +75,7 @@ Możesz również skorzystać z modelu dostarczania własnej licencji (Bring You
 
 Aby dostarczyć własną licencję, możesz przekonwertować istniejącą maszynę wirtualną SQL opłacaną za użycie lub wdrożyć obraz **{BYOL}** poprzedzony prefiksem. Aby uzyskać więcej informacji na temat przełączania modelu licencjonowania między płatnością za użycie i modelem BYOL, zobacz [Jak zmienić model licencjonowania dla maszyny wirtualnej SQL](virtual-machines-windows-sql-ahb.md). 
 
-| Version | System operacyjny | Wersja |
+| Wersja | System operacyjny | Edycja |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
@@ -131,7 +131,7 @@ Program poprawy jakości obsługi klienta jest domyślnie włączony. Wysyła on
 ### <a name="windows-virtual-machines"></a>Windows Virtual Machines
 * [Omówienie maszyn wirtualnych](../overview.md)
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 * [Wprowadzenie do usługi Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>Networking
@@ -152,3 +152,8 @@ Wprowadzenie do programu SQL Server na maszynach wirtualnych platformy Azure:
 Uzyskaj odpowiedzi na często zadawane pytania dotyczące maszyn wirtualnych SQL:
 
 * [Często zadawane pytania dotyczące programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-faq.md)
+
+Wyświetlanie architektur referencyjnych na potrzeby uruchamiania aplikacji N-warstwowych na SQL Server w IaaS
+
+* [Aplikacja N-warstwowa systemu Windows na platformie Azure z SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Uruchamianie aplikacji N-warstwowej w wielu regionach platformy Azure w celu zapewnienia wysokiej dostępności](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

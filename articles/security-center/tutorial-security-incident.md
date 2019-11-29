@@ -1,6 +1,6 @@
 ---
 title: Samouczek odpowiedzi na zdarzenia — Azure Security Center
-description: Samouczek usługi Azure Security Center — Reagowanie na zdarzenia związane z zabezpieczeniami
+description: W tym samouczku dowiesz się, jak Klasyfikacja alerty zabezpieczeń, określić przyczynę główną & zakres zdarzenia i przeszukać dane zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663637"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559197"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Samouczek: Reagowanie na zdarzenia związane z zabezpieczeniami
 Usługa Security Center w sposób ciągły analizuje obciążenia chmury hybrydowej i ostrzega o złośliwych działaniach, używając zaawansowanych funkcji analitycznych oraz funkcji analizy zagrożeń. Ponadto można integrować alerty z innymi produktami i usługami zabezpieczeń w usłudze Security Center oraz tworzyć niestandardowe alerty bazujące na własnych wskaźnikach lub źródłach analiz. Po wygenerowaniu alertu potrzebne jest sprawne działanie w celu zbadania i skorygowania jego przyczyny. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -78,7 +78,7 @@ Usługa Security Center zapewnia spójny widok wszystkich alertów zabezpieczeń
 
    Typy alertów mogą być różne. Aby uzyskać więcej szczegółowych informacji na temat typu alertu i możliwych czynności korygujących, przeczytaj [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). W przypadku alertów, które można bezpiecznie odrzucić, możesz kliknąć alert prawym przyciskiem myszy i wybrać pozycję **Odrzuć**:
 
-   ![Alerty](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+   ![Alert](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 
 4. Jeśli główna przyczyna i zakres złośliwych działań są nieznane, przejdź do następnego kroku, aby zbadać problem dokładniej.
 

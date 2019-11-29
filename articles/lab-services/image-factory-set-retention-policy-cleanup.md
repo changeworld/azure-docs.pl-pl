@@ -1,6 +1,6 @@
 ---
-title: Tworzenie fabryki danych obrazu w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć fabrykę danych obrazu niestandardowego w usłudze Azure DevTest Labs.
+title: Konfigurowanie zasad przechowywania w Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak skonfigurować zasady przechowywania, wyczyścić fabrykę i wycofać stare obrazy z DevTest Labs.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,68 +12,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf1c18fc799014ad862c93076d695f2516c6363d
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622583"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560168"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz fabrykę obrazu niestandardowego w usłudze Azure DevTest Labs
-W tym artykule opisano ustawienia zasad przechowywania, czyszczenie fabryki i wycofywana starych obrazów z wszystkich innych usłudze DevTest Labs w organizacji. 
+# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Utwórz niestandardową fabrykę obrazów w Azure DevTest Labs
+W tym artykule opisano konfigurowanie zasad przechowywania, czyszczenie fabryki oraz wycofywanie starych obrazów ze wszystkich innych laboratoriów DevTest w organizacji. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Upewnij się, że przed kontynuacją zostały wykonane następujące artykuły:
+Przed kontynuowaniem upewnij się, że zostały wykonane następujące artykuły:
 
-- [Utwórz fabrykę obrazu](image-factory-create.md)
-- [Uruchom fabrykę obrazu z DevOps platformy Azure](image-factory-set-up-devops-lab.md)
-- [Zapisywanie niestandardowych obrazów i dystrybucji do wielu labs](image-factory-save-distribute-custom-images.md)
+- [Tworzenie fabryki obrazu](image-factory-create.md)
+- [Uruchamianie fabryki obrazu z usługi Azure DevOps](image-factory-set-up-devops-lab.md)
+- [Zapisywanie obrazów niestandardowych i dystrybucja do wielu laboratoriów](image-factory-save-distribute-custom-images.md)
 
-Następujące elementy już powinny być stosowane:
+Następujące elementy powinny być już na miejscu:
 
-- Laboratorium na potrzeby fabrycznie obrazu w usłudze Azure DevTest Labs
-- Co najmniej jeden docelowy usługi Azure DevTest Labs, gdzie fabryka będziesz dystrybuować złoty obrazów
-- Projekt DevOps platformy Azure używane do automatyzowania fabrycznie obrazu.
-- Lokalizacji kodu źródłowego, zawierający skrypty i konfiguracji (w tym przykładzie w tym samym projekcie DevOps powyżej)
-- Definicję kompilacji do koordynowania zadań programu Azure Powershell
+- Laboratorium dla fabryki obrazów w Azure DevTest Labs
+- Co najmniej jeden Azure DevTest Labs docelowy, w którym fabryka będzie dystrybuować złote obrazy
+- Projekt usługi Azure DevOps używany do automatyzowania fabryki obrazu.
+- Lokalizacja kodu źródłowego zawierającego skrypty i konfigurację (w naszym przykładzie w tym samym projekcie DevOps użytym powyżej)
+- Definicja kompilacji służąca do organizowania zadań programu Azure PowerShell
  
 ## <a name="setting-the-retention-policy"></a>Ustawianie zasad przechowywania
-Przed skonfigurowaniem czynności czyszczenia należy zdefiniować liczbę historycznych obrazy mają być zachowane w usłudze DevTest Labs. Po wykonaniu [Uruchom fabrykę obrazu z DevOps platformy Azure](image-factory-set-up-devops-lab.md) artykułu, możesz skonfigurować różne Tworzenie zmiennych. Jeden z nich był **ImageRetention**. Ta zmienna jest ustawiona `1`, co oznacza, że usługa DevTest Labs nie będzie prowadzić historię obrazów niestandardowych. Tylko najnowsza wersja rozproszonych obrazy będą dostępne. Jeśli zmienisz tej zmiennej `2`, najnowsze rozproszonych obrazu, a także poprzednie zostaną zachowane. Można ustawić tę wartość, aby zdefiniować liczbę historycznych obrazy, które chcesz zachować w Twojej usłudze DevTest Labs.
+Przed skonfigurowaniem kroków oczyszczania Zdefiniuj liczbę obrazów historycznych, które chcesz zachować w laboratorium DevTest Labs. Po wykonaniu artykułu [Uruchom fabrykę obrazu z usługi Azure DevOps](image-factory-set-up-devops-lab.md) , skonfigurowano różne zmienne kompilacji. Jedna z nich została **ImageRetention**. Ta zmienna jest ustawiana na `1`, co oznacza, że laboratoria DevTest nie będą zachować historii obrazów niestandardowych. Dostępne są tylko najnowsze obrazy rozproszone. Jeśli zmienisz tę zmienną na `2`, zostanie zachowany najnowszy obraz rozproszony oraz poprzednie. Możesz ustawić tę wartość, aby zdefiniować liczbę obrazów historycznych, które mają być utrzymywane w DevTest Labs.
 
-## <a name="cleaning-up-the-factory"></a>Czyszczenie fabryka
-Pierwszym krokiem podczas czyszczenia fabryka jest usunięcie złotego obrazu maszyny wirtualne z fabryki obrazu. Brak skrypt, aby wykonać to zadanie, podobnie jak nasze wcześniejsze skrypty. Pierwszym krokiem jest dodanie innej **programu Azure Powershell** zadań do definicji kompilacji, jak pokazano na poniższej ilustracji:
+## <a name="cleaning-up-the-factory"></a>Czyszczenie fabryki
+Pierwszym krokiem w czyszczeniu fabryki jest usunięcie złota maszyn wirtualnych obrazów z fabryki obrazu. Istnieje skrypt służący do wykonywania tego zadania podobnie jak w przypadku poprzednich skryptów. Pierwszym krokiem jest dodanie kolejnego zadania **programu Azure PowerShell** do definicji kompilacji, jak pokazano na poniższej ilustracji:
 
 ![Krok programu PowerShell](./media/set-retention-policy-cleanup/powershell-step.png)
 
-Po utworzeniu nowego zadania na liście, wybierz element, a następnie wypełnij wszystkie szczegóły, jak pokazano na poniższej ilustracji:
+Po utworzeniu nowego zadania na liście Wybierz element i Wypełnij wszystkie szczegóły, jak pokazano na poniższej ilustracji:
 
-![Stare zadania programu PowerShell obrazy oczyszczania](./media/set-retention-policy-cleanup/configure-powershell-task.png)
+![Zadanie programu PowerShell oczyszczania starych obrazów](./media/set-retention-policy-cleanup/configure-powershell-task.png)
 
-Parametry skryptu: `-DevTestLabName $(devTestLabName)`.
+Parametry skryptu są następujące: `-DevTestLabName $(devTestLabName)`.
 
-## <a name="retire-old-images"></a>Wycofywanie starego obrazów 
-To zadanie powoduje usunięcie starych obrazów, w zachowanie tylko historii pasujący **ImageRetention** Tworzenie zmiennej. Dodaj dodatkowy **programu Azure Powershell** kompilacji zadanie, aby nasza definicja kompilacji. Po dodaniu, wybierz zadanie, a następnie wypełnij szczegóły, jak pokazano na poniższej ilustracji: 
+## <a name="retire-old-images"></a>Wycofywanie starych obrazów 
+To zadanie usuwa wszystkie stare obrazy, zachowując tylko historię pasującą do zmiennej kompilacji **ImageRetention** . Dodaj do naszej definicji kompilacji dodatkowe zadanie kompilacji **programu Azure PowerShell** . Po dodaniu wybierz zadanie i wypełnij szczegóły, jak pokazano na poniższej ilustracji: 
 
-![Wycofywanie starego zadań programu PowerShell obrazy](./media/set-retention-policy-cleanup/retire-old-image-task.png)
+![Wycofywanie starych obrazów — zadanie programu PowerShell](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
 Parametry skryptu są następujące: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
-## <a name="queue-the-build"></a>Dodaj kompilację do kolejki
-Teraz, że zostały wykonane definicji kompilacji, Dodaj do kolejki kompilację nowy, aby upewnić się, że wszystko działa. Po zakończeniu kompilacji pomyślnie nowe niestandardowe obrazy będą wyświetlane w laboratorium docelowego, a jeśli sprawdzić laboratorium fabrycznie obrazu, zostanie wyświetlony bez aprowizowanych maszyn wirtualnych. Ponadto jeśli tworząc dodatkowe kompilacje kolejki, zobaczysz zadania oczyszczania, wycofywanie się starych obrazów niestandardowych w usłudze DevTest Labs zgodnie do przechowywania wartości w zmiennych kompilacji.
+## <a name="queue-the-build"></a>Kolejkowanie kompilacji
+Po zakończeniu definiowania kompilacji Utwórz kolejkę nowej kompilacji, aby upewnić się, że wszystko działa. Po pomyślnym zakończeniu kompilacji nowe obrazy niestandardowe są wyświetlane w laboratorium docelowym, a w przypadku zaznaczenia programu Image Factory Lab nie są wyświetlane maszyny wirtualne z obsługą administracyjną. Ponadto w przypadku tworzenia kolejek dalszych kompilacji są wyświetlane zadania oczyszczania, które wycofywanie starych obrazów niestandardowych z laboratoriów DevTest zgodnie z wartością przechowywania ustawioną w zmiennych kompilacji.
 
 > [!NOTE]
-> Jeśli potok kompilacji na końcu ostatniego artykuł został wykonany w tej serii, należy ręcznie usunąć maszyn wirtualnych, które zostały utworzone w laboratorium fabryki obraz przed kolejkowania nowej kompilacji.  Krok ręczne czyszczenie jest potrzebny tylko wtedy, gdy skonfigurujemy wszystko i sprawdź, czy działa.
+> Jeśli potok kompilacji został wykonany na końcu ostatniego artykułu w serii, ręcznie usuń maszyny wirtualne, które zostały utworzone w laboratorium fabryki obrazu przed przystąpieniem do kolejkowania nowej kompilacji.  Krok ręcznego czyszczenia jest wymagany tylko wtedy, gdy ustawimy wszystko i sprawdzimy, czy działa.
 
 
 
 ## <a name="summary"></a>Podsumowanie
-Masz teraz uruchomione fabryki obrazu, która może wygenerować i dystrybuowanie obrazów niestandardowych do laboratoriów na żądanie. Ten punkt, jego kwestia pobierania obrazów prawidłowo skonfigurowane i identyfikowanie labs docelowego. Zgodnie z opisem w poprzednim artykule **Labs.json** plik znajdujący się w Twojej **konfiguracji** folder określa obrazy, które ma zostać udostępniona w każdym z laboratoriów docelowego. W miarę dodawania innych DevTest Labs dla Twojej organizacji, należy po prostu dodaj odpowiedni wpis w Labs.json dla nowego laboratorium.
+Teraz masz działającą fabrykę obrazu, która umożliwia generowanie i dystrybucję obrazów niestandardowych do laboratoriów na żądanie. W tym momencie jest to bardzo ważne, aby zapewnić prawidłowe skonfigurowanie obrazów i zidentyfikowanie laboratoriów docelowych. Jak wspomniano w poprzednim artykule, plik **Labs. JSON** znajdujący się w folderze **konfiguracyjnym** określa, które obrazy należy udostępnić w każdej z laboratoriów docelowych. Po dodaniu innych laboratoriów DevTest do organizacji wystarczy dodać wpis w pliku Labs. JSON dla nowego laboratorium.
 
-Dodawanie nowego obrazu z fabryką również jest proste. Jeśli chcesz dołączyć nowy obraz w fabryce otworzysz [witryny Azure portal](https://portal.azure.com), przejdź do usługi fabryki DevTest Labs, wybierz przycisk aby dodać Maszynę wirtualną, a następnie wybierz obraz z witryny marketplace żądaną i artefaktów. Zamiast zaznaczania **Utwórz** przycisk, aby utworzyć nową maszynę Wirtualną, zaznacz **widok usługi Azure Resource Manager szablon**"i zapisać szablon w formacie JSON gdzieś w ramach **GoldenImages** folderu w repozytorium. Przy następnym uruchomieniu fabryką obrazu zostanie utworzony obraz niestandardowy.
+Dodawanie nowego obrazu do fabryki jest również proste. Jeśli chcesz dołączyć nowy obraz do fabryki, Otwórz [Azure Portal](https://portal.azure.com), przejdź do portalu fabryki DevTest Labs, wybierz przycisk, aby dodać maszynę wirtualną, a następnie wybierz żądany obraz i artefakty witryny Marketplace. Zamiast wybierać przycisk **Utwórz** , aby utworzyć nową maszynę wirtualną, wybierz pozycję **Wyświetl Azure Resource Manager szablon**i Zapisz szablon jako plik JSON w miejscu w folderze **GoldenImages** w repozytorium. Przy następnym uruchomieniu fabryki obrazu zostanie utworzony niestandardowy obraz.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-1. [Planowanie kompilacji/wydania](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) okresowe uruchamianie fabrycznie obrazu. Odświeża jej generowane fabryki obrazów w regularnych odstępach czasu.
-2. Wprowadź więcej obrazów złoty fabryki. Można również rozważyć [tworzenie artefaktów](devtest-lab-artifact-author.md) skryptu dodatkowe fragmenty zadania konfiguracji maszyny Wirtualnej i zawierać artefakty do obrazów fabryki.
-4. Tworzenie [oddzielić kompilacji/wydania](/azure/devops/pipelines/overview?view=azure-devops-2019) do uruchomienia **DistributeImages** skrypt oddzielnie. Ten skrypt można uruchomić, gdy dokonać zmian Labs.json i pobieranie obrazów skopiowane do laboratoriów docelowej bez konieczności ponownego tworzenia wszystkie obrazy ponownie.
+## <a name="next-steps"></a>Następne kroki
+1. [Zaplanuj kompilację/wydanie](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) , aby okresowo uruchamiać fabrykę obrazu. W regularnych odstępach czasu odświeżane są obrazy generowane przez fabrykę.
+2. Utwórz więcej złota obrazów dla fabryki. Możesz również rozważyć [utworzenie artefaktów](devtest-lab-artifact-author.md) , aby dodać do skryptu dodatkowe fragmenty zadań konfiguracyjnych maszyny wirtualnej i uwzględnić artefakty w obrazach fabryki.
+4. Utwórz [oddzielną kompilację/wydanie](/azure/devops/pipelines/overview?view=azure-devops-2019) , aby osobno uruchomić skrypt **DistributeImages** . Ten skrypt można uruchomić, gdy wprowadzisz zmiany w pliku Labs. JSON i pobierzesz obrazy skopiowane do laboratoriów docelowych bez konieczności ponownego tworzenia wszystkich obrazów.
 

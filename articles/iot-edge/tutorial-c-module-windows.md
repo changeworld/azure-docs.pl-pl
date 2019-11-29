@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c098b67ab2782fa3cf29b5b19aa198f899ba69c0
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 332229dbcb35a209721fc9b457ebf1e804eaca5f
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890614"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561037"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Samouczek: opracowywanie modułu IoT Edge C dla urządzeń z systemem Windows
 
@@ -383,10 +383,12 @@ W przeciwnym razie możesz usunąć konfiguracje lokalne i zasoby platformy Azur
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat [opracowywania własnych modułów IoT Edge](module-development.md) lub tworzenia [modułów w programie Visual Studio](how-to-visual-studio-develop-module.md). Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
+W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat [opracowywania własnych modułów IoT Edge](module-development.md) lub tworzenia [modułów w programie Visual Studio](how-to-visual-studio-develop-module.md). Aby zapoznać się z przykładami modułów IoT Edge, z uwzględnieniem modułu symulowanej temperatury, zobacz przykłady [modułów IoT Edge](https://github.com/Azure/iotedge/tree/master/edge-modules) i [przykłady zestawu SDK dla usługi IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples). 
+
+Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
 
 > [!div class="nextstepaction"]
-> [Functions](tutorial-deploy-function.md)
+> [Funkcje](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
 > [Custom Vision Service](tutorial-deploy-custom-vision.md)

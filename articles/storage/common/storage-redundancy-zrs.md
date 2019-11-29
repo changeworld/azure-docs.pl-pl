@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 46975cf7762e2d92e5112911bd491f372cb22a31
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544625"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555466"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS) do tworzenia aplikacji usługi Azure Storage o wysokiej dostępności
 
@@ -22,9 +22,9 @@ ms.locfileid: "74544625"
 
 ## <a name="support-coverage-and-regional-availability"></a>Zakres pomocy technicznej i dostępność regionalna
 
-ZRS obecnie obsługuje typy kont magazynu ogólnego przeznaczenia w wersji 2 i FileStorage. Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Przegląd konta usługi Azure Storage](storage-account-overview.md).
+ZRS obecnie obsługuje typy kont magazynu ogólnego przeznaczenia w wersji 2, FileStorage i BlockBlobStorage. Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Przegląd konta usługi Azure Storage](storage-account-overview.md).
 
-ZRS jest dostępny dla blokowych obiektów blob, niedyskowych obiektów blob, standardowych udziałów plików, tabel i kolejek.
+Konta ZRS ogólnego przeznaczenia v2 obsługują blokowe obiekty blob, niedyskowe obiekty blob, standardowe udziały plików, tabele i kolejki.
 
 W przypadku kont ogólnego przeznaczenia w wersji 2 ZRS jest ogólnie dostępna w następujących regionach:
 

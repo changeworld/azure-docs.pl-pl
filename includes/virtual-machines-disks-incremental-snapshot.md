@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 846fd92bce3056dc119f38ac253a0a937e8c56a4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74309822"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566320"
 ---
 Migawki przyrostowe (wersja zapoznawcza) są kopiami zapasowymi w czasie dla dysków zarządzanych, które w razie potrzeby składają się tylko ze wszystkich zmian od ostatniej migawki. Podczas próby pobrania lub użycia migawki przyrostowej jest używany pełny dysk VHD. Ta nowa możliwość tworzenia migawek dysków zarządzanych może potencjalnie spowodować, że nie są już wymagane do przechowywania całego dysku przy każdej pojedynczej migawce, chyba że zostanie wybrana opcja. Podobnie jak regularne migawki, migawki przyrostowe mogą służyć do tworzenia pełnego dysku zarządzanego lub do regularnej migawki.
 
@@ -25,7 +25,7 @@ Jeśli jeszcze nie zarejestrowano się w wersji zapoznawczej i chcesz zacząć k
 
 ## <a name="restrictions"></a>Ograniczenia
 
-- Migawki przyrostowe są obecnie dostępne tylko w regionach zachodnie stany USA i Europa Północna.
+- Migawki przyrostowe są obecnie dostępne tylko w regionach Wschodnie stany USA, środkowe stany USA, Kanada środkowa, zachodnio-środkowe stany USA i Europa Północna.
 - Nie można obecnie utworzyć migawek przyrostowych po zmianie rozmiaru dysku.
 - Obecnie nie można przenosić migawek przyrostowych między subskrypcjami.
 - Obecnie można generować identyfikatory URI SAS maksymalnie pięć migawek określonej rodziny migawek w danym momencie.
@@ -76,7 +76,7 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-## <a name="cli"></a>Interfejs wiersza polecenia
+## <a name="cli"></a>Interfejs CLI
 
 Można utworzyć przyrostową migawkę przy użyciu interfejsu wiersza polecenia platformy Azure, która będzie potrzebna w najnowszej wersji interfejsu wiersza polecenia platformy Azure. 
 

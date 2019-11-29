@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: c8e0bb50e14467d2950d97da660fc8e6fa176b99
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008893"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566326"
 ---
 Akcelerator zapisu to możliwość dysku dla Virtual Machines serii M (VM) na Premium Storage z platformą Azure Managed Disks. Podobnie jak w przypadku nazw, celem funkcji jest poprawa opóźnienia operacji we/wy na platformie Azure Premium Storage. Akcelerator zapisu doskonale nadaje się do miejsca, w którym są wymagane aktualizacje plików dziennika, aby zachować wysoką dostępność nowoczesnych baz danych.
 
@@ -46,8 +46,9 @@ Istnieją limity wirtualnych dysków twardych Premium Storage platformy Azure dl
 
 | JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Liczba dysków akcelerator zapisu | akcelerator zapisu liczba operacji we/wy dysku na maszynę wirtualną |
 | --- | --- | --- |
+| M416ms_v2, M416s_v2| 16 | 20000 |
 | M208ms_v2, M208s_v2| 8 | 10 000 |
-| M128ms, 128s | 16 | 20000 |
+| M128ms, M128s | 16 | 20000 |
 | M64ms, M64ls, M64s | 8 | 10 000 |
 | M32ms, M32ls, M32ts, M32s | 4 | 5000 |
 | M16ms, M16s | 2 | 2500 |

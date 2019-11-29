@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc178661cf4db8505a444d1f5575bb3d0375979
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
-ms.translationtype: HT
+ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547520"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554133"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -185,7 +185,7 @@ Ta rola jest dostępna do przypisania tylko jako dodatkowy administrator lokalny
 
 Użytkownicy w tej roli mogą odczytywać podstawowe informacje o katalogu. Ta rola powinna być używana na potrzeby:
 * Przyznanie określonego zestawu Gościom dostępu do odczytu zamiast udzielania go wszystkim użytkownikom-Gościom.
-* Przyznanie konkretnego zestawu użytkownikom niebędącym administratorami dostępu do witryny Azure Portal w przypadku wybrania opcji "Ogranicz dostęp do portalu usługi Azure AD tylko do administratorów" ma wartość "tak".
+* Przyznanie konkretnego zestawu użytkownikom niebędącym administratorami dostępu do Azure Portal w przypadku wybrania opcji "Ogranicz dostęp do portalu usługi Azure AD tylko do administratorów" ma wartość "tak".
 * Przyznanie podmiotom usługi dostępu do katalogu, w którym znajduje się katalog. Read. All nie jest opcją.
 
 ### <a name="directory-synchronization-accountsdirectory-synchronization-accounts-permissions"></a>[Konta synchronizacji katalogów](#directory-synchronization-accounts-permissions)
@@ -238,7 +238,7 @@ Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjn
 >- [Portal usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) — globalny czytnik nie może odczytać trybu aprowizacji aplikacji dla przedsiębiorstw.
 >- [Centrum administracyjne M365](https://admin.microsoft.com/Adminportal/Home#/homepage) — globalny czytnik nie może odczytać żądań skrytki klienta. Nie znajdziesz karty **żądania skrytki klienta** w obszarze **Pomoc techniczna** w lewym okienku Centrum administracyjnego M365.
 >- [M365 Security Center](https://security.microsoft.com/homepage) — czytnik globalny nie może odczytać etykiet czułości i przechowywania. W lewym okienku Centrum zabezpieczeń M365 nie znajdziesz **etykiet czułości**, **etykiet przechowywania**oraz kart **analitycznych etykiet** .
->- [Centrum zabezpieczeń i zgodności pakietu Office](https://protection.microsoft.com) — czytnik globalny nie może odczytać dzienników inspekcji SCC ani wyszukiwania zawartości.
+>- [Centrum zabezpieczeń i zgodności pakietu Office](https://sip.protection.office.com/homepage) — czytnik globalny nie może odczytać dzienników inspekcji SCC ani wyszukiwania zawartości.
 >- [Centrum administracyjne zespołów](https://admin.teams.microsoft.com) — globalny czytnik nie może odczytywać **zespołów cykl życia**, **Analiza & raporty**, **Zarządzanie urządzeniami telefonicznymi IP** i **wykaz aplikacji**.
 >- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) nie obsługuje roli czytnika globalnego.
 >- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) — Global Reader jest obsługiwany tylko [w przypadku raportowania centralnego](https://docs.microsoft.com/azure/information-protection/reports-aip) , a organizacja usługi Azure AD nie jest na [ujednoliconej platformie etykietowania](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform).
@@ -248,7 +248,7 @@ Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjn
 
 ### <a name="group-administratorgroup-administrator"></a>[Administrator grupy](#group-administrator)
 
-Użytkownicy w tej roli mogą tworzyć grupy i ich ustawienia, takie jak zasady nazewnictwa i wygasania, oraz zarządzać nimi. Ważne jest, aby zrozumieć, że przypisanie użytkownika do tej roli daje im możliwość zarządzania wszystkimi grupami w dzierżawie w różnych obciążeniach, takimi jak zespoły, SharePoint, Yammer w dodatku do programu Outlook. Ponadto użytkownik będzie mógł zarządzać różnymi ustawieniami grup w różnych portalach administracyjnych, takich jak centrum administracyjne firmy Microsoft, witryna Azure Portal, a także obciążenie specyficzne dla zespołów i centrów administracyjnych programu SharePoint.
+Użytkownicy w tej roli mogą tworzyć grupy i ich ustawienia, takie jak zasady nazewnictwa i wygasania, oraz zarządzać nimi. Ważne jest, aby zrozumieć, że przypisanie użytkownika do tej roli daje im możliwość zarządzania wszystkimi grupami w dzierżawie w różnych obciążeniach, takimi jak zespoły, SharePoint, Yammer w dodatku do programu Outlook. Ponadto użytkownik będzie mógł zarządzać różnymi ustawieniami grup w różnych portalach administracyjnych, takich jak centrum administracyjne firmy Microsoft, Azure Portal, a także obciążenie specyficzne dla zespołów i centrów administracyjnych programu SharePoint.
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Zapraszający gościa](#guest-inviter-permissions)
 

@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: cecd37c16d34c0cd6cf7a4d98732762d16073864
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884120"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561614"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Wprowadzenie do kolejek usługi Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -74,17 +74,11 @@ Uruchom program Visual Studio i Utwórz nowy projekt **Aplikacja konsolowa (.NET
 
     Wprowadź parametry połączenia dla przestrzeni nazw jako zmienną `ServiceBusConnectionString`. Wprowadź nazwę kolejki.
 
-1. Zastąp domyślną zawartość elementu `Main()` następującym wierszem kodu:
+1. Zastąp metodę `Main()` następującą metodą `Main` **asynchronicznej** . Wywołuje metodę SendMessagesAsync, która zostanie dodana w następnym kroku, aby wysyłać komunikaty do kolejki. 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. Bezpośrednio po elemencie `Main()` dodaj następującą metodę asynchroniczną `MainAsync()`, która wywołuje metodę wysyłania komunikatów:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         const int numberOfMessages = 10;
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
@@ -100,7 +94,6 @@ Uruchom program Visual Studio i Utwórz nowy projekt **Aplikacja konsolowa (.NET
         await queueClient.CloseAsync();
     }
     ```
-
 1. Bezpośrednio po metodzie `MainAsync()` Dodaj następującą metodę `SendMessagesAsync()`, która wykonuje zadania wysyłania liczby komunikatów określonych przez `numberOfMessagesToSend` (obecnie jest to 10):
 
     ```csharp
@@ -147,25 +140,20 @@ namespace CoreSenderApp
         const string QueueName = "<your_queue_name>";
         static IQueueClient queueClient;
 
-        static void Main(string[] args)
-        {
-            MainAsync().GetAwaiter().GetResult();
-        }
-
-        static async Task MainAsync()
-        {
+        public static async Task Main(string[] args)
+        {    
             const int numberOfMessages = 10;
             queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
+    
             Console.WriteLine("======================================================");
             Console.WriteLine("Press ENTER key to exit after sending all the messages.");
             Console.WriteLine("======================================================");
-
-            // Send Messages
+    
+            // Send messages.
             await SendMessagesAsync(numberOfMessages);
-
+    
             Console.ReadKey();
-
+    
             await queueClient.CloseAsync();
         }
 
@@ -235,14 +223,8 @@ Aby odebrać wysłane komunikaty, Utwórz kolejną aplikację **konsoli (.NET Co
 1. Zastąp domyślną zawartość elementu `Main()` następującym wierszem kodu:
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. Bezpośrednio po elemencie `Main()` dodaj następującą metodę asynchroniczną `MainAsync()`, która wywołuje metodę `RegisterOnMessageHandlerAndReceiveMessages()`:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");

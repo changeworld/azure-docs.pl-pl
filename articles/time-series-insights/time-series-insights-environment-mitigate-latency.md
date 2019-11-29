@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012654"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561392"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i ograniczanie ograniczania przepustowości w celu zmniejszenia opóźnień w Azure Time Series Insights
 
@@ -32,7 +32,7 @@ Najprawdopodobniej napotkasz opóźnienia i ograniczanie przepustowości, gdy:
 - Wypchnij duże ilości zdarzeń historycznych do źródła zdarzeń, co spowodowało zwłokę (Time Series Insights będzie konieczne przechwycenie).
 - Dołącz dane referencyjne do telemetrii, co skutkuje większym rozmiarem zdarzenia.  Z punktu widzenia ograniczenia przepustowości pakiet danych ingressed o rozmiarze pakietu 32 KB jest traktowany jako zdarzenia 32 o wielkości 1 KB. Maksymalny dozwolony rozmiar zdarzenia to 32 KB; pakiety danych o rozmiarze większym niż 32 KB są obcinane.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Dowiedz się więcej na temat Time Series Insights zachowania związanego z transferem danych przychodzących i sposobu ich planowania.</br>
 
@@ -42,13 +42,13 @@ Najprawdopodobniej napotkasz opóźnienia i ograniczanie przepustowości, gdy:
 
 Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami spowodowanych przez środowisko.
 
-1. W Azure Portal wybierz pozycję **alerty**.
+1. W Azure Portal Wybierz środowisko Time Series Insights. Następnie wybierz pozycję **alerty**.
 
-   [Alerty ![](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![dodać alertu do środowiska Time Series Insights](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. Zostanie wyświetlony panel **Utwórz regułę** . Wybierz pozycję **Dodaj** w obszarze **warunek**.
 
-   [![Dodawanie alertu](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![dodawania okienka alertu](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
 1. Następnie skonfiguruj dokładne warunki logiki sygnału.
 
@@ -70,7 +70,7 @@ Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami s
 
 1. Po skonfigurowaniu żądanej logiki sygnałów Przejrzyj wybraną regułę alertów wizualnie.
 
-   [![ruchu przychodzącego](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [Widok opóźnienia ![i tworzenie wykresów](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png)](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Ograniczanie i zarządzanie ruchem przychodzącym
 

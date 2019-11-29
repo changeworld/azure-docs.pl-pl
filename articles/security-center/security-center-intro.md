@@ -1,6 +1,6 @@
 ---
 title: Co to jest Azure Security Center? | Microsoft Docs
-description: Uzyskaj informacje na temat Centrum zabezpieczeń Azure, jego kluczowych możliwości i sposobu działania.
+description: Na tej stronie opisano Security Center kluczowe korzyści — odnajdywanie stanu zabezpieczeń i ulepszanie go z pokryciem zasobów w chmurze i Premium.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e02fd0de00b8feed15fcd51b657afcc015d816f2
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202108"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558634"
 ---
-# <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
+# <a name="what-is-azure-security-center"></a>Co to jest Azure Security Center?
 
 Usługa Azure Security Center to ujednolicony system zarządzania bezpieczeństwem infrastruktury. Ma on za zadanie zwiększenie poziomu bezpieczeństwa centrów danych i zapewnienie zaawansowanej ochrony przed zagrożeniami w przypadku obciążeń hybrydowych w chmurze (zarówno na platformie Azure, jak i poza nią) oraz w środowisku lokalnym.
 
@@ -37,11 +37,11 @@ Azure Security Center rozwiązuje trzy najbardziej pilne problemy związane z za
 
 Aby sprostać tym wyzwaniom, Security Center oferuje narzędzia umożliwiające:
 
--   **Zwiększanie poziomu bezpieczeństwa**: Security Center ocenia środowisko i umożliwia zrozumienie stanu zasobów oraz tego, czy są one bezpieczne.
+-   **Wzmocnienie stan zabezpieczeń**: Security Center ocenia środowisko i umożliwia zrozumienie stanu zasobów oraz tego, czy są one bezpieczne.
 
--   **Ochronę przed zagrożeniami**: Security Center umożliwia ocenę obciążeń i generuje zalecenia dotyczące zapobiegania zagrożeniom oraz alerty związane z wykryciem zagrożeń.
+-   **Ochrona przed zagrożeniami**: Security Center ocenia obciążenia i wywołuje zalecenia zapobiegania zagrożeniom oraz alerty dotyczące wykrywania zagrożeń.
 
--   **Szybsze osiągnięcie bezpieczeństwa**: w usłudze Security Center wszystko jest wykonywane z szybkością chmury. Dzięki natywnej integracji wdrożenie usługi Security Center jest łatwe i zapewnia automatyczne aprowizowanie i ochronę w ramach usług platformy Azure.
+-   **Szybsza ochrona**: w Security Center wszystko jest wykonywane w szybkości chmury. Dzięki natywnej integracji wdrożenie usługi Security Center jest łatwe i zapewnia automatyczne aprowizowanie i ochronę w ramach usług platformy Azure.
 
 ## <a name="architecture"></a>Architektura
 
@@ -145,5 +145,5 @@ Rozbudowane kolekcje dzienników — dzienniki z systemów Windows i Linux są w
 
 - Do rozpoczęcia pracy z usługą Security Center jest wymagana subskrypcja platformy Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
 - Usługa Security Center w warstwie cenowej Bezpłatna jest włączona w ramach subskrypcji platformy Azure. Aby móc korzystać z zaawansowanych możliwości wykrywania zagrożeń i zarządzania zabezpieczeniami, musisz przeprowadzić uaktualnienie do warstwy cenowej Standardowa. Warstwę Standardowa można wypróbować bezpłatnie. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
-- Jeśli chcesz teraz włączyć usługę Security Center, skorzystaj z artykułu [Szybki start: dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa](security-center-get-started.md), w którym opisano konieczne kroki.
+- Jeśli możesz już włączyć usługę Security Center w warstwie Standardowa, skorzystaj z przewodnika [Szybki start: dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md), który przeprowadzi Cię przez ten proces.
 

@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 16212f7229dc84b9495976bd40b6d48b3f2686bd
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7b723b4a5ef35b17514181b622f68d00c1f3ecee
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457651"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560938"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Samouczek: Tworzenie i wdrażanie modułu IoT Edge Node. js dla urządzeń z systemem Linux
 
@@ -39,7 +39,7 @@ W tym samouczku przedstawiono sposób tworzenia modułu w programie **Node. js**
 
 Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów Node. js: 
 
-| Node.js | Visual Studio Code | Visual Studio 2017/2019 | 
+| Node.js | Visual Studio Code | Program Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Używanie VS Code dla modułów Node. js w systemie Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **ARM32 systemu Linux** | ![Używanie VS Code dla modułów Node. js w systemie Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
@@ -250,7 +250,9 @@ W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Az
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat [opracowywania własnych modułów IoT Edge](module-development.md) lub tworzenia [modułów z Visual Studio Code](how-to-vs-code-develop-module.md). Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
+W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat [opracowywania własnych modułów IoT Edge](module-development.md) lub tworzenia [modułów z Visual Studio Code](how-to-vs-code-develop-module.md). Aby zapoznać się z przykładami modułów IoT Edge, z uwzględnieniem modułu symulowanej temperatury, zapoznaj się z przykładami modułów [IoT Edge](https://github.com/Azure/iotedge/tree/master/edge-modules). 
+
+Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
 
 > [!div class="nextstepaction"]
 > [Funkcje](tutorial-deploy-function.md)

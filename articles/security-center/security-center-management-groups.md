@@ -1,6 +1,6 @@
 ---
 title: Uzyskaj widoczność dla całej dzierżawy dla Azure Security Center | Microsoft Docs
-description: Dowiedz się więcej na temat uzyskiwania widoczności dla całej dzierżawy w Azure Security Center.
+description: W tym artykule wyjaśniono, jak zarządzać stan zabezpieczeń na dużą skalę, stosując zasady do wszystkich subskrypcji połączonych z dzierżawą Azure Active Directory.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 73b99b9ebcd18e1eb5b670d0809d1f0f6cbf8f9a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582906"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559344"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Uzyskaj widoczność dla całej dzierżawy dla Azure Security Center
-Ten artykuł pomoże Ci rozpocząć pracę, wykonując kilka akcji, które maksymalizują korzyści Azure Security Center zapewnia. Wykonanie tych akcji umożliwia uzyskanie wglądu w wszystkie subskrypcje platformy Azure, które są połączone z dzierżawą Azure Active Directory i efektywnie zarządzać stan zabezpieczeń organizacji na dużą skalę, stosując zasady zabezpieczeń dla wielu subskrypcje w sposób agregowany.
-
+W tym artykule wyjaśniono, jak zarządzać stan zabezpieczeń organizacji na dużą skalę, stosując zasady zabezpieczeń do wszystkich subskrypcji platformy Azure połączonych z dzierżawą Azure Active Directory.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -40,7 +39,7 @@ Aby uzyskać szczegółowe omówienie grup zarządzania, zobacz artykuł [organi
 Subskrypcje można organizować w grupy zarządzania i stosować zasady zarządzania do grup zarządzania. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą zasady zastosowane do tej grupy zarządzania. Gdy grupy zarządzania nie są wymagane do dołączania Security Center, zdecydowanie zaleca się utworzenie co najmniej jednej grupy zarządzania w celu utworzenia głównej grupy zarządzania. Po utworzeniu grupy zostaną do niej połączone wszystkie subskrypcje w ramach dzierżawy usługi Azure AD. Aby uzyskać instrukcje dotyczące programu PowerShell i więcej informacji, zobacz [Tworzenie grup zarządzania na potrzeby zarządzania zasobami i organizacjami](../azure-resource-manager/management-groups-create.md).
 
  
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Wybierz pozycję **wszystkie usługi** > **grupy zarządzania**.
 3. Na stronie głównej wybierz pozycję **Nowa grupa zarządzania.** 
 
@@ -49,11 +48,11 @@ Subskrypcje można organizować w grupy zarządzania i stosować zasady zarządz
     - **Identyfikator grupy zarządzania** jest unikatowym identyfikatorem katalogu, który jest używany do przesyłania poleceń z tej grupy zarządzania. Tego identyfikatora nie można edytować po utworzeniu, ponieważ jest on używany w całym systemie Azure do identyfikowania tej grupy. 
     - Pole Nazwa wyświetlana to nazwa wyświetlana w Azure Portal. Oddzielna nazwa wyświetlana jest polem opcjonalnym podczas tworzenia grupy zarządzania i można ją zmienić w dowolnym momencie.  
 
-      ![Tworzenie](./media/security-center-management-groups/create_context_menu.png)  
+      ![Create](./media/security-center-management-groups/create_context_menu.png)  
 5.  Wybierz pozycję **Zapisz**.
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Wyświetlanie grup zarządzania w Azure Portal
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Aby wyświetlić grupy zarządzania, wybierz pozycję **wszystkie usługi** w menu głównym platformy Azure.
 3. W obszarze **Ogólne**wybierz pozycję **grupy zarządzania**.
 
@@ -94,7 +93,7 @@ Aby uzyskać wgląd w wszystkie subskrypcje, Administratorzy dzierżawy muszą p
 
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Przypisywanie ról RBAC użytkownikom za pomocą Azure Portal: 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
 1. Aby wyświetlić grupy zarządzania, wybierz pozycję **wszystkie usługi** w menu głównym platformy Azure, a następnie wybierz pozycję **grupy zarządzania**.
 1.  Wybierz grupę zarządzania i kliknij przycisk **szczegóły**.
 
@@ -141,7 +140,7 @@ Aby uzyskać wgląd w wszystkie subskrypcje, Administratorzy dzierżawy muszą p
 ### <a name="open-or-refresh-security-center"></a>Otwórz lub Odśwież Security Center
 Po uzyskaniu podwyższonego poziomu uprawnień Otwórz lub Odśwież Azure Security Center, aby sprawdzić, czy masz wgląd we wszystkie subskrypcje w ramach dzierżawy usługi Azure AD. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
 2. Upewnij się, że wybrano wszystkie subskrypcje w selektorze subskrypcji, które chcesz wyświetlić w Security Center.
 
     ![Zrzut ekranu selektora subskrypcji](./media/security-center-management-groups/subscription-selector.png)

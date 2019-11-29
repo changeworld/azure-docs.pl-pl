@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie problemami z programem Endpoint Protection w Azure Security Center | Microsoft Docs
-description: Dowiedz się, jak zarządzać problemami programu Endpoint Protection w Azure Security Center.
+description: Informacje o monitorowaniu programu Endpoint Protection Security Center i sposobach rozwiązywania wszelkich powstających problemów.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202075"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558608"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemami z programem Endpoint Protection przy użyciu Azure Security Center
-Azure Security Center monitoruje stan ochrony przed złośliwym kodem i raportuje ją w bloku problemy z programem Endpoint Protection. Security Center wyróżnia problemy, takie jak wykryte zagrożenia i niewystarczająca ochrona, które mogą sprawić, że maszyny wirtualne i komputery są narażone na ataki chroniące przed złośliwym kodem. Korzystając z informacji w obszarze **problemy z programem Endpoint Protection**, można zidentyfikować plan pozwalający rozwiązać wszelkie zidentyfikowane problemy.
+Azure Security Center monitoruje stan ochrony przed złośliwym kodem i raportuje ją na stronie problemów z programem Endpoint Protection. Security Center wyróżnia problemy, takie jak wykryte zagrożenia i niewystarczająca ochrona, które mogą sprawić, że maszyny wirtualne i komputery są narażone na ataki chroniące przed złośliwym kodem. Korzystając z informacji w obszarze **problemy z programem Endpoint Protection**, można zidentyfikować plan pozwalający rozwiązać wszelkie zidentyfikowane problemy.
 
 Security Center zgłasza następujące problemy z programem Endpoint Protection:
 
@@ -30,7 +30,7 @@ Security Center zgłasza następujące problemy z programem Endpoint Protection:
 - Kondycja programu Endpoint Protection:
 
   - Nieaktualny podpis — na tych maszynach wirtualnych i komputerach jest zainstalowane rozwiązanie chroniące przed złośliwym kodem, ale rozwiązanie nie ma najnowszych podpisów chroniących przed złośliwym kodem.
-  - Brak ochrony w czasie rzeczywistym — na tych maszynach wirtualnych i komputerach jest zainstalowane rozwiązanie chroniące przed złośliwym kodem, ale nie jest ono skonfigurowane do ochrony w czasie rzeczywistym.   Usługa może być wyłączona lub Security Center może nie być w stanie uzyskać stanu, ponieważ rozwiązanie nie jest obsługiwane. Listę obsługiwanych rozwiązań można znaleźć w temacie [integracja z partnerem](security-center-services.md#endpoint-supported) .
+  - Brak ochrony w czasie rzeczywistym — na tych maszynach wirtualnych i komputerach jest zainstalowane rozwiązanie chroniące przed złośliwym kodem, ale nie jest ono skonfigurowane do ochrony w czasie rzeczywistym. Usługa może być wyłączona lub Security Center może nie być w stanie uzyskać stanu, ponieważ rozwiązanie nie jest obsługiwane. Listę obsługiwanych rozwiązań można znaleźć w temacie [integracja z partnerem](security-center-services.md#endpoint-supported) .
   - Nieraportowanie — rozwiązanie chroniące przed złośliwym kodem jest instalowane, ale nie zgłasza danych.
   - Nieznane — jest zainstalowane rozwiązanie chroniące przed złośliwym kodem, ale jego stan jest nieznany lub zgłasza nieznany błąd.
 
@@ -40,7 +40,7 @@ Security Center zgłasza następujące problemy z programem Endpoint Protection:
     >
 
 ## <a name="implement-the-recommendation"></a>Implementowanie zalecenia
-Problemy z programem Endpoint Protection są przedstawione jako zalecenie w Security Center.  Jeśli środowisko jest narażone na zagrożenia przed złośliwym kodem, to zalecenie zostanie wyświetlone w obszarze rekomendacje i w obszarze **obliczenia**. Aby wyświetlić **pulpit nawigacyjny problemów z programem Endpoint Protection**, należy postępować zgodnie z przepływem pracy obliczeniowej.
+Problemy z programem Endpoint Protection są przedstawione jako zalecenie w Security Center. Jeśli środowisko jest narażone na zagrożenia przed złośliwym kodem, to zalecenie zostanie wyświetlone w obszarze **rekomendacje** i w obszarze **obliczenia**. Aby wyświetlić **pulpit nawigacyjny problemów z programem Endpoint Protection**, należy postępować zgodnie z przepływem pracy obliczeniowej.
 
 W tym przykładzie będziemy używać **obliczeń**.  Dowiesz się, jak zainstalować oprogramowanie chroniące przed złośliwym kodem na maszynach wirtualnych platformy Azure oraz na komputerach spoza platformy Azure.
 

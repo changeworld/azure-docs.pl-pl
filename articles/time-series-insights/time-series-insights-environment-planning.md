@@ -9,20 +9,20 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f75c84aeb1893008832635cf93cd634d96653dd3
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006953"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561539"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Zaplanuj środowisko Azure Time Series Insights GA
 
 W tym artykule opisano sposób planowania środowiska Azure Time Series Insights ogólnej dostępności (GA) w oparciu o oczekiwany współczynnik ruchu przychodzącego i wymagania dotyczące przechowywania danych.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 **Obejrzyj ten film wideo, aby dowiedzieć się więcej na temat przechowywania danych w Azure Time Series Insights i jak planować go**:<br /><br />
 
@@ -53,7 +53,7 @@ Można zmienić ustawienie **czas przechowywania danych** w środowisku Azure Ti
 Azure Time Series Insights ma dwa tryby:
 
 * Jeden tryb optymalizuje najbardziej aktualne dane. Wymusza zasady umożliwiające **przeczyszczenie starych danych** z ostatnich dostępnych danych z wystąpieniem. Ten tryb jest domyślnie włączony. 
-* Druga optymalizuje dane, aby pozostawały poniżej skonfigurowanych limitów przechowywania. **Wstrzymaj** ruch przychodzący uniemożliwia ingressed nowych danych, gdy zostanie wybrany z **zachowaniem limitu magazynu**. 
+* Druga optymalizuje dane, aby pozostawały poniżej skonfigurowanych limitów przechowywania. **Wstrzymaj** ruch przychodzący uniemożliwia ingressed nowych danych, gdy zostanie ono wybrane jako **zachowanie limitu magazynu**. 
 
 Można dostosować przechowywanie i przełączać się między dwoma trybami na stronie konfiguracji środowiska w Azure Portal.
 
@@ -64,11 +64,11 @@ Można dostosować przechowywanie i przełączać się między dwoma trybami na 
 
 1. W [Azure Portal](https://portal.azure.com)wybierz środowisko Time Series Insights.
 
-1. W okienku **środowisko Time Series Insights** w obszarze **Ustawienia**wybierz pozycję **Konfiguruj**.
+1. W okienku **środowisko Time Series Insights** w obszarze **Ustawienia**wybierz pozycję **Konfiguracja magazynu**.
 
 1. W polu **czas przechowywania danych (w dniach)** wprowadź wartość z zakresu od 1 do 400.
 
-   [![skonfigurować przechowywanie](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [![skonfigurować przechowywanie](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
 > Aby dowiedzieć się więcej na temat implementowania odpowiednich zasad przechowywania danych, zobacz [jak skonfigurować przechowywanie](./time-series-insights-how-to-configure-retention.md).

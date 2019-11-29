@@ -322,6 +322,8 @@
       href: reference-connect-version-history.md
     - name: Historia wersji programu Azure AD Connect Health
       href: reference-connect-health-version-history.md
+    - name: Historia wersji agenta uwierzytelniania przekazywanego usługi Azure AD
+      href: reference-connect-pta-version-history.md
     - name: Historia wersji łącznika
       href: reference-connect-sync-connector-version-history.md
     - name: Konta i uprawnienia

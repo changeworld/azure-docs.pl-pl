@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012596"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561203"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurowanie przechowywania w Time Series Insights
 
@@ -34,11 +34,11 @@ Aby uzyskać szczegółowe informacje dotyczące lepszego zrozumienia tych ustaw
 
 ## <a name="configure-data-retention"></a>Konfigurowanie przechowywania danych
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-1. Znajdź istniejącego środowiska usługi Time Series Insights. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie Azure Portal. Wybierz środowisko usługi Time Series Insights.
+1. Znajdź istniejące środowisko Time Series Insights. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie Azure Portal. Wybierz środowisko usługi Time Series Insights.
 
-1. W obszarze **Ustawienia** wybierz pozycję **Konfiguruj**.
+1. W obszarze **Ustawienia** wybierz pozycję **Konfiguracja magazynu**.
 
     [![wybierz ustawienia, a następnie skonfiguruj](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
@@ -50,7 +50,7 @@ Aby uzyskać szczegółowe informacje dotyczące lepszego zrozumienia tych ustaw
 
     [![przechowywanie danych — zaakceptuj i Zapisz.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
-1. Zaakceptuj pole wyboru informujące o tym, że dokumentacja została sprawdzona, i poznanie potencjalnych zagrożeń związanych z utratą danych. Wybierz pozycję **Zapisz** , aby skonfigurować zmiany.
+1. Zapoznaj się z dokumentacją, aby zrozumieć potencjalne zagrożenia związane z utratą danych. Wybierz pozycję **Zapisz** , aby skonfigurować zmiany.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 2844b48b3d832e8d9ec659ba657879d683016aee
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 762e7d4a7356c11171355b5325e77569e9acb1e2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217676"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555104"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Używanie Azure Data Factory do migrowania danych z lokalnego serwera Netezza na platformę Azure 
 
@@ -156,7 +156,7 @@ Jeśli nie można go załadować do platformy Azure w ciągu dwóch godzin, a po
 
 Monitoruj użycie procesora CPU i pamięci na samoobsługowej maszynie IR i przygotuj się do skalowania maszyny w górę lub w poziomie do wielu maszyn, gdy widzisz, że procesor i pamięć są w pełni używane. 
 
-W przypadku wystąpienia błędów ograniczania, zgodnie z Azure Data Factory działania kopiowania, należy zmniejszyć ustawienie współbieżności lub `parallelCopies` w Azure Data Factory lub rozważyć zwiększenie przepustowości lub limitów operacji we/wy na sekundę (IOPS) sieci i danych przechowywać. 
+W przypadku wystąpienia błędów ograniczania, zgodnie z Azure Data Factory działania kopiowania, należy zmniejszyć ustawienia współbieżności lub `parallelCopies` w Azure Data Factory lub rozważyć zwiększenie przepustowości lub limitów operacji we/wy na sekundę (IOPS) sieci i magazynów danych. 
 
 
 ### <a name="estimate-your-pricing"></a>Oszacowanie cen 
@@ -190,7 +190,7 @@ W oparciu o powyższe założenia jest szacowana cena:
 
 Aby uzyskać więcej informacji, zobacz następujące artykuły i przewodniki:
 
-- [Migrowanie danych z lokalnej bazy danych magazynu danych relacyjnych na platformę Azure przy użyciu Azure Data Factory](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premises-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+- [Migrowanie danych z lokalnej bazy danych magazynu danych relacyjnych na platformę Azure przy użyciu Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
 - [Łącznik Netezza](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [Łącznik ODBC](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Łącznik usługi Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)

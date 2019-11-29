@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 2133819ce7c298e2f73fdc5a68b80b64f9e72ea7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c86df7c50e59309f921c60738870407e74a23219
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480426"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555217"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Zarządzaj IoT Central z Azure Portal
 
@@ -41,7 +41,7 @@ Następnie wybierz pozycję **Utwórz**.
 
 Wypełnij wszystkie pola w formularzu. Ten formularz jest podobny do formularza wypełnianego, aby utworzyć aplikacje w witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) . Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji IoT Central](quick-deploy-iot-central.md) — Szybki Start.
 
-Możesz utworzyć IoT Central aplikację z ogólnymi funkcjami, wybierając **przykład contoso**, **aplikację niestandardową** i **przykładową Devkits** jako szablony aplikacji, wszystkie inne szablony aplikacji korzystają z funkcji publicznej wersji zapoznawczej.
+Możesz utworzyć IoT Central aplikację z ogólnie dostępnymi funkcjami, wybierając **przykład contoso**, **aplikację niestandardową** i **przykładową Devkits** jako szablony aplikacji, a wszystkie inne szablony aplikacji korzystają z funkcji publicznej wersji zapoznawczej.
 
 ![Utwórz formularz IoT Central](media/howto-manage-iot-central-from-portal/image6a.png)
 

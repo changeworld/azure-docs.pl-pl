@@ -1,6 +1,6 @@
 ---
 title: Cennik Azure Security Center warstw
-description: Ten artykuł zawiera informacje na temat cen Azure Security Center.
+description: Azure Security Center jest oferowana w dwóch warstwach — bezpłatnie i w warstwie Standardowa. Na tej stronie przedstawiono, jak przeprowadzić uaktualnienie z wersji bezpłatna do wersji Standard.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0c3fdc48d9b3bc77b629d4d6f1da081d70658c88
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ffb571d13270ced80426aee3575197cf95d3805
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664261"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559246"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Uaktualnij do warstwy Standardowa Security Center na potrzeby zwiększonych zabezpieczeń
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby obciążeń uruchamianych na platformie Azure, lokalnie i w innych chmurach. Zapewnia widoczność i kontrolę nad obciążeniami w chmurze hybrydowej, aktywną obroną, która zmniejsza narażenie na zagrożenia oraz Inteligentne wykrywanie, które ułatwiają szybkie rozwijanie ataków cybernetycznymi.
@@ -42,7 +42,7 @@ Aby uzyskać warstwę standardową:
 2. Wybierz subskrypcję, którą chcesz uaktualnić do wersji Standard.
 3. Wybierz **warstwę cenową**.
 4. Wybierz pozycję **standardowa** , aby przeprowadzić uaktualnienie.
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
 (Ceny w obrazie są udostępniane tylko do celów informacyjnych) [cennik Security Center![](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
 

@@ -1,6 +1,6 @@
 ---
 title: Monitorowanie integralności plików w Azure Security Center | Microsoft Docs
-description: " Dowiedz się, jak włączyć monitorowanie integralności plików w Azure Security Center. "
+description: Dowiedz się, jak skonfigurować monitorowanie integralności plików (FIM) w Azure Security Center przy użyciu tego przewodnika.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: f7f5c257b23cd273a2cda40f874f5edfc62c0dbd
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cfa767a42800ceaf78fe007a8468fe9113a2d412
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202198"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558782"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorowanie integralności plików w Azure Security Center
 Dowiedz się, jak skonfigurować monitorowanie integralności plików (FIM) w Azure Security Center przy użyciu tego przewodnika.
@@ -50,10 +50,10 @@ Security Center zaleca, które pliki należy monitorować jako domyślne, zgodni
 ## <a name="using-file-integrity-monitoring"></a>Korzystanie z monitorowania integralności plików
 1. Otwórz pulpit nawigacyjny usługi **Security Center**.
 2. W lewym okienku w obszarze **Zaawansowana ochrona chmury**wybierz pozycję **monitorowanie integralności plików**.
-![Pulpit nawigacyjny Centrum zabezpieczeń][1]
+![pulpit nawigacyjny Security Center][1]
 
 Zostanie otwarte **monitorowanie integralności plików** .
-  ![Pulpit nawigacyjny Centrum zabezpieczeń][2]
+  ![pulpit nawigacyjny Security Center][2]
 
 Dla każdego obszaru roboczego są dostępne następujące informacje:
 
@@ -65,7 +65,7 @@ Dla każdego obszaru roboczego są dostępne następujące informacje:
 Następujące przyciski mogą być również wyświetlane dla obszaru roboczego:
 
 - ![Ikona włączania][3] Wskazuje, że w obszarze roboczym nie jest włączona funkcja FIM. Wybranie obszaru roboczego umożliwia włączenie programu FIM na wszystkich komputerach w obszarze roboczym.
-- ![Ikona][4] planu uaktualniania wskazuje, że obszar roboczy lub subskrypcja nie jest uruchomiona w ramach warstwy Standardowa Security Center. Aby można było korzystać z funkcji FIM, Twoja subskrypcja musi być uruchomiona w standardzie.  Wybranie obszaru roboczego umożliwia uaktualnienie do warstwy Standardowa. Aby dowiedzieć się więcej na temat warstwy Standardowa i sposobu jej uaktualniania, zobacz [uaktualnianie do Security Center warstwy Standardowa w celu zwiększenia bezpieczeństwa](security-center-pricing.md).
+- ![ikona planu uaktualniania][4] wskazuje, że obszar roboczy lub subskrypcja nie jest uruchomiona w ramach warstwy Standardowa Security Center. Aby można było korzystać z funkcji FIM, Twoja subskrypcja musi być uruchomiona w standardzie.  Wybranie obszaru roboczego umożliwia uaktualnienie do warstwy Standardowa. Aby dowiedzieć się więcej na temat warstwy Standardowa i sposobu jej uaktualniania, zobacz [uaktualnianie do Security Center warstwy Standardowa w celu zwiększenia bezpieczeństwa](security-center-pricing.md).
 - Puste (brak przycisku) oznacza, że FIM jest już włączony w obszarze roboczym.
 
 W obszarze **monitorowanie integralności plików**można wybrać obszar roboczy, aby włączyć program FIM dla tego obszaru roboczego, wyświetlić pulpit nawigacyjny monitorowanie integralności plików dla tego obszaru roboczego lub [uaktualnić](security-center-pricing.md) obszar roboczy do warstwy Standardowa.
@@ -93,7 +93,7 @@ Zostanie wyświetlony pulpit nawigacyjny **monitorowanie integralności plików*
 
 ![Pulpit nawigacyjny monitorowania integralności plików][6]
 
-Pulpit nawigacyjny programu FIM dla obszaru roboczego zawiera następujące elementy:
+Pulpit nawigacyjny programu FIM dla obszaru roboczego zawiera następujące szczegóły:
 
 - Łączna liczba maszyn podłączonych do obszaru roboczego
 - Łączna liczba zmian, które wystąpiły w wybranym okresie
@@ -109,9 +109,9 @@ Na karcie **komputery** (pokazane powyżej) są wyświetlane wszystkie maszyny, 
 - Łączna liczba zmian, które wystąpiły w wybranym okresie
 - Podział łącznej liczby zmian w plikach lub zmianach rejestru
 
-**Wyszukiwanie w dzienniku** jest otwierane po wprowadzeniu nazwy maszyny w polu wyszukiwania lub wybraniu maszyny na liście na karcie komputery. W przeszukiwaniu dzienników są wyświetlane wszystkie zmiany wprowadzone w wybranym okresie dla maszyny. Aby uzyskać więcej informacji, możesz rozwinąć zmianę.
+**Wyszukiwanie w dzienniku** jest otwierane po wprowadzeniu nazwy komputera w polu wyszukiwania lub wybraniu maszyny na liście na karcie komputery. Wyszukiwanie w dzienniku zawiera wszystkie zmiany wprowadzone w wybranym okresie dla maszyny. Aby uzyskać więcej informacji, możesz rozwinąć zmianę.
 
-![Wyszukiwanie w dziennikach][8]
+![Przeszukiwanie dzienników][8]
 
 Na karcie **zmiany** (pokazane poniżej) są wyświetlane wszystkie zmiany w obszarze roboczym w wybranym okresie. Dla każdej jednostki, która została zmieniona, pulpit nawigacyjny wyświetla listę:
 
@@ -149,7 +149,7 @@ W obszarze **Edytuj dla Change Tracking** można:
 
 ## <a name="add-a-new-entity-to-monitor"></a>Dodaj nową jednostkę do monitorowania
 1. Wróć do **pulpitu nawigacyjnego monitorowania integralności plików** i wybierz pozycję **Ustawienia** w górnej części ekranu. Zostanie otwarta **Konfiguracja obszaru roboczego** .
-2. W obszarze **Konfiguracja obszaru roboczego**wybierz kartę dla typu jednostki, którą chcesz dodać: Rejestr systemu Windows, pliki systemu Windows lub pliki Linux. W tym przykładzie wybrano **pliki systemu Linux**.
+2. W obszarze **Konfiguracja obszaru roboczego**wybierz kartę dla typu jednostki, którą chcesz dodać: Rejestr systemu Windows, pliki systemu Windows lub pliki z systemem Linux. W tym przykładzie wybrano **pliki systemu Linux**.
 
    ![Dodaj nowy element do monitorowania][14]
 
@@ -199,7 +199,7 @@ Możesz wyłączyć funkcję FIM. Usługa FIM używa rozwiązania Change Trackin
 4. Wybierz pozycję **Usuń** , aby wyłączyć.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym artykule przedstawiono sposób korzystania z monitorowania integralności plików (FIM) w programie Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
+W tym artykule przedstawiono sposób korzystania z monitorowania integralności plików (FIM) w programie Security Center. Aby dowiedzieć się więcej na temat Security Center, zobacz następujące strony:
 
 * [Ustawianie zasad zabezpieczeń](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów platformy Azure.
 * [Zarządzanie zaleceniami](security-center-recommendations.md) dotyczącymi zabezpieczeń — Dowiedz się, jak zalecenia ułatwiają ochronę zasobów platformy Azure.

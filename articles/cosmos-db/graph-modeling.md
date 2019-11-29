@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 94df90db4a715d2540dfc5ec0aa521d76d22f757
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 2bd8c07b384872f3107b5938380cea4c8eb0abae
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624212"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559125"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelowanie danych programu Graph dla Azure Cosmos DB API Gremlin
 
@@ -21,7 +21,7 @@ Poniższy dokument został zaprojektowany, aby zapewnić zalecenia dotyczące mo
 ## <a name="requirements"></a>Wymagania
 
 Proces przedstawiony w tym przewodniku jest oparty na następujących założeniach:
- * Zidentyfikowano **jednostki** w miejscu problemu. Te jednostki mają być używane w sposób niepodzielny dla każdego żądania. Innymi słowy, system bazy danych nie jest przeznaczony do pobierania danych pojedynczej jednostki w wielu żądaniach zapytań.
+ * Zidentyfikowano **jednostki** w miejscu problemu. Te jednostki mają być używane w sposób _niepodzielny_ dla każdego żądania. Innymi słowy, system bazy danych nie jest przeznaczony do pobierania danych pojedynczej jednostki w wielu żądaniach zapytań.
  * Istnieje zrozumienie **wymagań dotyczących odczytu i zapisu** dla systemu bazy danych. Wymagania te przeprowadzą optymalizację potrzebną dla modelu danych grafu.
  * Zasady [standardu grafu właściwości programu Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) są dobrze zrozumiałe.
 
@@ -41,22 +41,22 @@ Następnym krokiem jest określenie, czy wykres ma być używany do celów anali
 
 ## <a name="how-to-use-graph-objects"></a>Jak używać obiektów grafów
 
-[Standardowy wykres właściwości Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) definiuje dwa typy obiektów wierzchołków i **krawędzi**. 
+[Standardowy wykres właściwości Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) definiuje dwa typy obiektów **wierzchołków** i **krawędzi**. 
 
 Poniżej przedstawiono najlepsze rozwiązania dotyczące właściwości w obiektach grafu:
 
-| Object | Właściwość | Type | Uwagi |
+| Obiekt | Właściwość | Typ | Uwagi |
 | --- | --- | --- |  --- |
-| Wierzchołek | id | String | Unikatowo wymuszane na partycję. Jeśli wartość nie zostanie podana podczas wstawiania, a automatycznie wygenerowany identyfikator GUID zostanie zapisany. |
-| Wierzchołek | label | String | Ta właściwość służy do definiowania typu jednostki reprezentowanej przez wierzchołek. Jeśli wartość nie zostanie podana, zostanie użyta wartość domyślna "wierzchołek". |
-| Wierzchołek | properties | Ciąg, wartość logiczna, numeryczna | Lista oddzielnych właściwości przechowywanych jako pary klucz-wartość w każdym wierzchołku. |
-| Wierzchołek | klucz partycji | Ciąg, wartość logiczna, numeryczna | Ta właściwość określa miejsce, w którym będą przechowywane wierzchołki i jej krawędzie wychodzące. Przeczytaj więcej na [](graph-partitioning.md)temat partycjonowania grafów. |
-| Edge | id | String | Unikatowo wymuszane na partycję. Automatycznie generowana domyślnie. Krawędzie zazwyczaj nie muszą być jednoznacznie pobierane przez identyfikator. |
-| Edge | label | String | Ta właściwość służy do definiowania typu relacji, które mają dwa wierzchołki. |
-| Edge | properties | Ciąg, wartość logiczna, numeryczna | Lista oddzielnych właściwości przechowywanych jako pary klucz-wartość w każdej krawędzi. |
+| Wierzchołka | ID | Ciąg | Unikatowo wymuszane na partycję. Jeśli wartość nie zostanie podana podczas wstawiania, zostanie zapisany automatycznie wygenerowany identyfikator GUID. |
+| Wierzchołka | label | Ciąg | Ta właściwość służy do definiowania typu jednostki reprezentowanej przez wierzchołek. Jeśli wartość nie zostanie podana, zostanie użyta wartość domyślna "wierzchołek". |
+| Wierzchołka | properties | Ciąg, wartość logiczna, numeryczna | Lista oddzielnych właściwości przechowywanych jako pary klucz-wartość w każdym wierzchołku. |
+| Wierzchołka | klucz partycji | Ciąg, wartość logiczna, numeryczna | Ta właściwość określa miejsce, w którym będą przechowywane wierzchołki i jej krawędzie wychodzące. Przeczytaj więcej na temat [partycjonowania grafów](graph-partitioning.md). |
+| Brzeg | ID | Ciąg | Unikatowo wymuszane na partycję. Automatycznie generowana domyślnie. Krawędzie zazwyczaj nie muszą być jednoznacznie pobierane przez identyfikator. |
+| Brzeg | label | Ciąg | Ta właściwość służy do definiowania typu relacji, które mają dwa wierzchołki. |
+| Brzeg | properties | Ciąg, wartość logiczna, numeryczna | Lista oddzielnych właściwości przechowywanych jako pary klucz-wartość w każdej krawędzi. |
 
 > [!NOTE]
-> Krawędzie nie wymagają wartości klucza partycji, ponieważ jej wartość jest przypisywana automatycznie na podstawie wierzchołka źródłowego. Dowiedz się więcej [](graph-partitioning.md) z artykułu partycjonowania grafów.
+> Krawędzie nie wymagają wartości klucza partycji, ponieważ jej wartość jest przypisywana automatycznie na podstawie wierzchołka źródłowego. Dowiedz się więcej z artykułu [partycjonowania grafów](graph-partitioning.md) .
 
 ## <a name="entity-and-relationship-modeling-guidelines"></a>Wytyczne dotyczące modelowania jednostek i relacji
 
@@ -71,11 +71,11 @@ Pierwszym krokiem dla modelu danych wykresu jest zamapowanie każdej identyfikow
 
 Jednym z typowych Pitfall jest mapowanie właściwości pojedynczej jednostki jako oddzielnych wierzchołków. Rozważmy poniższy przykład, w którym ta sama jednostka jest reprezentowana na dwa różne sposoby:
 
-* **Właściwości oparte na wierzchołkach**: W tym podejściu jednostka używa trzech oddzielnych wierzchołków i dwóch krawędzi do opisywania właściwości. Chociaż takie podejście może zmniejszyć nadmiarowość, zwiększa złożoność modelu. Zwiększenie złożoności modelu może skutkować dodaniem opóźnienia, złożonością zapytania i kosztem obliczeniowym. Ten model może również przedstawiać wyzwania na partycjonowanie.
+* **Właściwości oparte na wierzchołku**: w tym podejściu jednostka używa trzech oddzielnych wierzchołków i dwóch krawędzi do opisywania właściwości. Chociaż takie podejście może zmniejszyć nadmiarowość, zwiększa złożoność modelu. Zwiększenie złożoności modelu może skutkować dodaniem opóźnienia, złożonością zapytania i kosztem obliczeniowym. Ten model może również przedstawiać wyzwania na partycjonowanie.
 
 ![Model jednostki z wierzchołkami dla właściwości.](./media/graph-modeling/graph-modeling-1.png)
 
-* **Wierzchołki osadzone właściwości**: Takie podejście wykorzystuje listę par klucz-wartość do reprezentowania wszystkich właściwości jednostki w wierzchołku. Ta metoda zapewnia ograniczoną złożoność modelu, która będzie prowadzić do uproszczenia zapytań i bardziej wydajnego przechodzenia.
+* **Wierzchołki osadzone właściwości**: to podejście wykorzystuje listę par klucz-wartość do reprezentowania wszystkich właściwości jednostki w wierzchołku. Ta metoda zapewnia ograniczoną złożoność modelu, która będzie prowadzić do uproszczenia zapytań i bardziej wydajnego przechodzenia.
 
 ![Model jednostki z wierzchołkami dla właściwości.](./media/graph-modeling/graph-modeling-2.png)
 
@@ -90,11 +90,11 @@ Istnieją jednak scenariusze, w których odwołanie do właściwości może mie�
 
 Po modelowaniu wierzchołków można dodać krawędzie, aby zauważyć relacje między nimi. Pierwszy aspekt, który należy ocenić, to **kierunek relacji**. 
 
-Obiekty brzegowe mają domyślny kierunek przechodzenia przy użyciu `out()` funkcji or. `outE()` Użycie tego naturalnego kierunku skutkuje wydajną operacją, ponieważ wszystkie wierzchołki są przechowywane z wychodzącymi krawędziami. 
+Obiekty brzegowe mają domyślny kierunek przechodzenia przy użyciu funkcji `out()` lub `outE()`. Użycie tego naturalnego kierunku skutkuje wydajną operacją, ponieważ wszystkie wierzchołki są przechowywane z wychodzącymi krawędziami. 
 
-Jednak przechodzenie w odwrotnym kierunku krawędzi brzegowej przy użyciu `in()` funkcji, zawsze spowoduje powstanie zapytania między partycjami. Dowiedz się [](graph-partitioning.md)więcej o partycjonowaniu grafów. Jeśli istnieje potrzeba ciągłego przechodzenia przy użyciu `in()` funkcji, zaleca się dodanie krawędzi w obu kierunkach.
+Jednak przechodzenie w odwrotnym kierunku krawędzi brzegowej przy użyciu funkcji `in()`, zawsze spowoduje powstanie zapytania między partycjami. Dowiedz się więcej o [partycjonowaniu grafów](graph-partitioning.md). Jeśli istnieje potrzeba ciągłego przechodzenia przy użyciu funkcji `in()`, zaleca się dodanie krawędzi w obu kierunkach.
 
-Kierunek krawędzi można określić przy użyciu `.to()` predykatów lub `.from()` do `.addE()` kroku Gremlin. Lub przy użyciu [biblioteki wykonawczy Bulk dla interfejsu API Gremlin](bulk-executor-graph-dotnet.md).
+Kierunek krawędzi można określić przy użyciu predykatów `.to()` lub `.from()` do kroku `.addE()` Gremlin. Lub przy użyciu [biblioteki wykonawczy Bulk dla interfejsu API Gremlin](bulk-executor-graph-dotnet.md).
 
 > [!NOTE]
 > Obiekty brzegowe mają domyślnie kierunek.

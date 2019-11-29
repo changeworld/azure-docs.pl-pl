@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e0cb73f224f53441ad4f23298a035f95d59b9f7c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836996"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559002"
 ---
 # <a name="disclosure-design-patterns"></a>Wzorce projektowania ujawniania
 Teraz,&#39;po ustaleniu właściwego [poziomu ujawniania](concepts-disclosure-guidelines.md#disclosure-assessment) danych na potrzeby obsługi głosu syntetycznego,&#39;warto zapoznać się z potencjalnymi wzorcami projektowymi.
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Istnieje szeroki zakres wzorców projektowych, które można zastosować do Twoich syntetycznych połączeń głosowych. Jeśli wynik oceny ujawnienia był "wysokim ujawnieniem", zalecamy [**jawne ujawnienie**](#explicit-disclosure), co oznacza, że komunikacja z pochodzeniem z syntetycznego głosu jest nieodpowiednia. [**Niejawne ujawnienie**](#implicit-disclosure) obejmuje wskaźniki i wzorce interakcji, które korzystają z głosu, niezależnie od tego, czy wymagane poziomy ujawniania są wysokie czy niskie.
 ![spektrum ujawniania](media/responsible-ai/disclosure-patterns/affordances.png)
 
@@ -38,7 +38,7 @@ Skorzystaj z poniższej tabeli, aby odwołać się bezpośrednio do wzorców, kt
 
 
 
-| Jeśli Twoje środowisko głosu syntetycznego... | Zalecenia | Wzorce projektowe |
+| Jeśli Twoje środowisko głosu syntetycznego... | Polecane elementy | Wzorce projektowe |
 | --- | --- | --- |
 | Wymaga wysokiego ujawnienia  | Użyj co najmniej jednego jawnego wzorca i niejawnych wskazówek na początku, aby ułatwić użytkownikom tworzenie skojarzeń. |[Jawne ujawnienie](#explicit-disclosure)<br>[Niejawne ujawnienie](#implicit-disclosure)  |
 | Wymaga niskiej ilości informacji | Ujawnienie może być minimalne lub niepotrzebne, ale może korzystać z niektórych niejawnych wzorców. | [Ujawnienie możliwości](#capability-disclosure)<br>[Przezroczystość konwersacji](#conversational-transparency)  |
@@ -61,7 +61,7 @@ Przed rozpoczęciem pracy z głosem należy wprowadzić asystenta cyfrowego prze
 ![przejrzyste wprowadzenie podczas pierwszego uruchomienia środowiska](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
 *Głos syntetyczny jest wprowadzany podczas dołączania nowego użytkownika.*
 
-Zalecenia
+Polecane elementy
 - Opisz, że głos jest sztuczny (np. &quot;Digital&quot;)
 - Opisz, do czego służy Agent
 - Jawnie określaj źródła&#39;głosu
@@ -96,7 +96,7 @@ Użyj tego wzorca, jeśli użytkownik będzie pracowali przy użyciu odtwarzacza
 ![Explicit Byline w scenariuszu multimediów wiadomości](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
 *Jawna Byline jest przyznanym miejscu, z którego pochodzi głos.*
 
-Zalecenia
+Polecane elementy
 
 - Punkt wejścia oferty, aby dowiedzieć się więcej o wystawionym głosie
 
@@ -111,7 +111,7 @@ Oferuje opcje, które mają znaczący i zauważalny wpływ na środowisko głosu
 ![preferencje użytkownika](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
 *Preferencje użytkownika umożliwiają użytkownikom dostosowywanie i ulepszanie ich środowiska.*
 
-Zalecenia
+Polecane elementy
 
 - Zezwól użytkownikom na dostosowywanie głosu (np. Wybierz język i typ głosu)
 - Zapewnianie użytkownikom możliwości nauczenia systemu w celu reagowania na jego unikatowy głos (np. Kalibracja głosu, polecenia niestandardowe)
@@ -124,7 +124,7 @@ Oferuje sposoby dostosowywania głosu asystenta&#39;cyfrowego. Jeśli głos jest
 ![dostosowania głosu](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
 *Oferowanie możliwości wyboru z zestawu głosów ułatwia przekazanie sztucznego charakteru.*
 
-Zalecenia
+Polecane elementy
 - Zezwalaj użytkownikom na podgląd dźwięku każdego głosu
 - Użyj oryginalnego wprowadzenia dla każdego głosu
 - Punkty wejścia oferty, aby dowiedzieć się więcej o wystawionym głosie
@@ -136,7 +136,7 @@ Oprócz zgodności z przepisami COPPA należy zapewnić ujawnienie rodzicom, je�
 ![ujawnienie dla elementów nadrzędnych](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
 *Przejrzyste wprowadzenie zoptymalizowane pod kątem rodziców gwarantuje, że osoba dorosła świadomie poznała syntetycznego charakteru głosu przed interakcją z nim.*
 
-Zalecenia
+Polecane elementy
 
 - Kierowanie obiektów docelowych jako głównych odbiorców do ujawnienia
 - Zachęcanie rodziców do przekazywania informacji do ich elementów podrzędnych
@@ -155,7 +155,7 @@ Gdy użytkownik zażąda więcej informacji na temat głosu syntetycznego, głó
 ![zapewnić użytkownikom więcej informacji na temat syntetycznego głosu](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
 *Więcej informacji można uzyskać w witrynie pomocy zewnętrznej witryny.*
 
-Zalecenia
+Polecane elementy
 
 - Uprość złożone koncepcje i Unikaj korzystania z Legalese i technicznych żargon
 - Nie Bury tej zawartości w oświadczeniach o ochronie prywatności i warunkach użytkowania
@@ -167,7 +167,7 @@ Spójność to klucz umożliwiający ujawnienie niejawnie w całej podróży uż
 
 ![Spójność niejawnych wskazówek](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues-amp-feedback"></a>Niejawne wskaźniki &amp; Opinie
+### <a name="implicit-cues--feedback"></a>Niejawne wskaźniki & Opinie
 
 Anthropomorphism może zamanifestować różne sposoby, od rzeczywistej reprezentacji agenta do głosu, dYwięków, wzorców świateł, odbijających się kształtów, a nawet wibracji urządzenia. Podczas definiowania osoby należy wykorzystać niejawne wskaźniki i wzorce opinii zamiast dążyć do bardzo przypominającego awatara. Jest to jeden ze sposobów, aby zminimalizować potrzebę bardziej jawnego ujawniania.
 
@@ -239,7 +239,7 @@ Użyj ujawnienia jako możliwości bezproblemowego niepowodzenia.
 
 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 - [Wytyczne dotyczące bot firmy Microsoft](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
 - [Wskazówki dotyczące projektowania Cortany](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
 - [Wskazówki dotyczące projektowania mowy w systemie Microsoft Windows platformy UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)

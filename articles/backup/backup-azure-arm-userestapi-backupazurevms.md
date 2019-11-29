@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak konfigurować i inicjować operacj
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: c929f820862f5d041b4a63a1ca9c083abf1a1e4c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173440"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554905"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST
 
@@ -162,7 +162,7 @@ W tym przykładzie powyższe wartości przekładają się na:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Włączanie ochrony maszyny wirtualnej platformy Azure
 
-Gdy odpowiednia maszyna wirtualna jest "buforowana" i "zidentyfikowana", wybierz zasady do ochrony. Aby dowiedzieć się więcej na temat istniejących zasad w magazynie, zapoznaj się z tematem [interfejs API zasad listy](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Następnie wybierz [odpowiednie zasady](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get) , odwołując się do nazwy zasad. Aby utworzyć zasady, zobacz [samouczek Tworzenie zasad](backup-azure-arm-userestapi-createorupdatepolicy.md). W poniższym przykładzie wybrano wartość "DefaultPolicy".
+Gdy odpowiednia maszyna wirtualna jest "buforowana" i "zidentyfikowana", wybierz zasady do ochrony. Aby dowiedzieć się więcej na temat istniejących zasad w magazynie, zapoznaj się z tematem [interfejs API zasad listy](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Następnie wybierz [odpowiednie zasady](/rest/api/backup/protectionpolicies/get) , odwołując się do nazwy zasad. Aby utworzyć zasady, zobacz [samouczek Tworzenie zasad](backup-azure-arm-userestapi-createorupdatepolicy.md). W poniższym przykładzie wybrano wartość "DefaultPolicy".
 
 Włączenie ochrony jest asynchroniczną operacją *Put* , która tworzy "chroniony element".
 
@@ -182,7 +182,7 @@ Aby utworzyć chroniony element, poniżej przedstawiono składniki treści żąd
 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|Właściwości     | AzureIaaSVMProtectedItem        |Właściwości zasobów ProtectedItem         |
+|properties     | AzureIaaSVMProtectedItem        |Właściwości zasobów ProtectedItem         |
 
 Aby uzyskać pełną listę definicji treści żądania i innych szczegółów, zobacz [dokument interfejsu API Rest tworzenia chronionego elementu](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body).
 
@@ -296,7 +296,7 @@ Aby wyzwolić kopię zapasową na żądanie, poniżej przedstawiono składniki t
 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|Właściwości     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Właściwości BackupRequestResource         |
+|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Właściwości BackupRequestResource         |
 
 Aby zapoznać się z pełną listą definicji treści żądania i innych szczegółów, zapoznaj się z tematem [wyzwalanie kopii zapasowych dla dokumentów interfejsu API REST elementów chronionych](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
 
@@ -451,4 +451,4 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane), gdy tworzona jest inna operacja, a 
 Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zobacz następujące dokumenty:
 
 - [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
-- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)
+- [Get started with Azure REST API (Rozpoczęcie pracy z interfejsem API REST platformy Azure)](/rest/api/azure/)

@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 66d867d33060aa931dbe42c534166e61ee7692fe
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ea1d286d00564587a9692dac1b04c5bbb04742cc
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534512"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561471"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autoryzuj dostęp do obiektów blob i kolejek przy użyciu tożsamości Azure Active Directory i zarządzanych dla zasobów platformy Azure
 
@@ -122,14 +122,13 @@ Install-Package Azure.Identity
 Dodaj do kodu następujące dyrektywy `using`, aby użyć tożsamości platformy Azure i bibliotek klienckich usługi Azure Storage.
 
 ```csharp
+using Azure;
+using Azure.Identity;
+using Azure.Storage.Blobs;
 using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
-using Azure.Identity;
-using Azure.Storage;
-using Azure.Storage.Sas;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
 ```
 
 Aby uzyskać poświadczenia tokenu, których kod może użyć do autoryzacji żądań do usługi Azure Storage, Utwórz wystąpienie klasy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) . Poniższy przykład kodu pokazuje, jak uzyskać uwierzytelnione poświadczenia tokenu i użyć go do utworzenia obiektu klienta usługi, a następnie użyć klienta usługi do przekazania nowego obiektu BLOB:
@@ -160,7 +159,7 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
             await containerClient.UploadBlobAsync(blobName, stream);
         }
     }
-    catch (StorageRequestFailedException e)
+    catch (RequestFailedException e)
     {
         Console.WriteLine(e.Message);
         Console.ReadLine();

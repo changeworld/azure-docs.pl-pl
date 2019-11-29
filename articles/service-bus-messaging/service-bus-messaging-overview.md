@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: e2460ab760811a3db39058eac74d519ca09046c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12d4bada4f84098f1559ea7b59fbbd35e0801347
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889812"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561597"
 ---
 # <a name="what-is-azure-service-bus"></a>Co to jest Azure Service Bus?
 
-Usługa Microsoft Azure Service Bus jest w pełni zarządzanym brokerem komunikatów do integracji przedsiębiorstw. Service Bus może oddzielić aplikacje i usługi. Service Bus oferuje niezawodną i bezpieczną platformę na potrzeby asynchronicznych danych i transferów Stanów.
+Usługa Microsoft Azure Service Bus jest w pełni zarządzanym brokerem komunikatów do integracji przedsiębiorstw. Service Bus może oddzielić aplikacje i usługi. Service Bus oferuje niezawodną i bezpieczną platformę do asynchronicznego transferu danych i stanu.
 
 Dane są przesyłane między różnymi aplikacjami i usługami przy użyciu *komunikatów*. Komunikat jest w formacie binarnym i może zawierać kod JSON, XML lub tylko tekst. Aby uzyskać więcej informacji, zobacz [Integration Services](https://azure.com/integration).
 
@@ -106,11 +106,11 @@ Usługa Service Bus obsługuje protokoły zabezpieczeń, np. [sygnatury dostępu
 
 Gdy w regionach platformy Azure lub centrach danych wystąpi przestój, proces odzyskiwania po awarii geograficznej umożliwia przetwarzanie danych w celu kontynuowania działania w innym regionie lub w centrum. Aby uzyskać więcej informacji, zobacz [Azure Service Bus geograficznie z odzyskiwaniem po awarii](service-bus-geo-dr.md).
 
-### <a name="security"></a>Bezpieczeństwo
+### <a name="security"></a>Zabezpieczenia
 
 Usługa Service Bus obsługuje standardowe protokoły [AMQP 1.0](service-bus-amqp-overview.md) i [HTTP/REST](/rest/api/servicebus/).
 
-## <a name="client-libraries"></a>Biblioteki klienta
+## <a name="client-libraries"></a>Biblioteki klienckie
 
 Service Bus obsługuje biblioteki klienckie dla [platform .NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Java](https://github.com/Azure/azure-service-bus-java/tree/master)i [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client).
 

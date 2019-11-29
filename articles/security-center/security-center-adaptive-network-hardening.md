@@ -1,6 +1,6 @@
 ---
 title: Adaptacyjne Zabezpieczanie sieci w Azure Security Center | Microsoft Docs
-description: " Dowiedz się, jak włączyć adaptacyjną ochronę sieci w Azure Security Center. "
+description: Dowiedz się, jak zabezpieczyć się na podstawie rzeczywistych wzorców ruchu, zasad sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) i dalszych usprawnień stan zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255242"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559274"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptacyjne Zabezpieczanie sieci w Azure Security Center
 Dowiedz się, jak konfigurować adaptacyjną ochronę sieci w Azure Security Center.
@@ -37,7 +37,7 @@ Załóżmy na przykład, że istniejąca reguła sieciowej grupy zabezpieczeń m
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Wyświetl alerty i reguły ograniczania przepustowości sieci
 
-1. W Security Center wybierz pozycję **sieć** -> **adaptacyjna Funkcja ograniczania przepustowości sieci**. Sieci maszyn wirtualnych są wymienione na trzech oddzielnych kartach:
+1. W Security Center wybierz pozycję **sieć** -> **adaptacyjne Zabezpieczanie sieci**. Sieci maszyn wirtualnych są wymienione na trzech oddzielnych kartach:
    * **Zasoby w złej kondycji**: maszyny wirtualne, które aktualnie mają zalecenia i alerty, które zostały wyzwolone przez uruchomienie adaptacyjnego algorytmu ograniczania przepustowości sieci. 
    * **Dobra kondycja**: maszyny wirtualne bez alertów i zaleceń.
    * **Niezeskanowane zasoby**: maszyny wirtualne, na których algorytm ograniczania funkcjonalności sieci nie może zostać uruchomiony z jednego z następujących powodów:
@@ -83,7 +83,7 @@ Niektóre ważne wskazówki dotyczące modyfikowania reguły ograniczania funkcj
 * Nie można zmienić reguł "Zezwalaj" na "Odmów" reguł. 
 
   > [!NOTE]
-  > Tworzenie i modyfikowanie reguł "Odmów" jest wykonywane bezpośrednio na sieciowej grupy zabezpieczeń Aby uzyskać więcej informacji, zobacz [Tworzenie, zmienianie lub usuwanie sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+  > Tworzenie i modyfikowanie reguł "Odmów" jest wykonywane bezpośrednio w sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [Tworzenie, zmienianie lub usuwanie sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
 * Reguła **Odmów całego ruchu** jest jedynym typem reguły "Odmów", która będzie wyświetlana w tym miejscu, i nie może być modyfikowana. Można jednak go usunąć (zobacz [Usuwanie reguły](#delete-rule)).
   > [!NOTE]

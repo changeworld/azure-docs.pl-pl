@@ -4,16 +4,16 @@ description: W tym artykule przedstawiono sposób tworzenia zasad tworzenia kopi
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: b6e665b5c71dc5f2e8ebc22e00e1a71237f48bfc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173434"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554887"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Tworzenie zasad usługi Kopia zapasowa Azure Recovery Services przy użyciu interfejsu API REST
 
-Kroki tworzenia zasad tworzenia kopii zapasowych dla magazynu usługi Azure Recovery Services są opisane w [dokumencie interfejsu API REST zasad](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate). Poinformuj nas o tym, jak utworzyć zasady dla kopii zapasowej maszyny wirtualnej platformy Azure.
+Kroki tworzenia zasad tworzenia kopii zapasowych dla magazynu usługi Azure Recovery Services są opisane w [dokumencie interfejsu API REST zasad](/rest/api/backup/protectionpolicies/createorupdate). Poinformuj nas o tym, jak utworzyć zasady dla kopii zapasowej maszyny wirtualnej platformy Azure.
 
 ## <a name="backup-policy-essentials"></a>Podstawy zasad tworzenia kopii zapasowych
 
@@ -46,10 +46,10 @@ Na przykład, aby utworzyć zasady kopii zapasowej maszyny wirtualnej platformy 
 
 |Nazwa  |Wymagane  |Typ  |Opis  |
 |---------|---------|---------|---------|
-|Właściwości     |   Prawda      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | Właściwości ProtectionPolicyResource        |
-|tagów     |         | Obiekt        |  Tagi zasobów       |
+|properties     |   Prawda      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Właściwości ProtectionPolicyResource        |
+|tags     |         | Obiekt        |  Tagi zasobów       |
 
-Aby zapoznać się z pełną listą definicji w treści żądania, zapoznaj się z [dokumentem interfejsu API REST zasad tworzenia kopii zapasowych](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate).
+Aby zapoznać się z pełną listą definicji w treści żądania, zapoznaj się z [dokumentem interfejsu API REST zasad tworzenia kopii zapasowych](/rest/api/backup/protectionpolicies/createorupdate).
 
 ### <a name="example-request-body"></a>Przykładowa treść żądania
 
@@ -154,7 +154,7 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane) podczas tworzenia innej operacji, a 
 
 |Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|200 OK     |    [PolicyResource ochrony](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
+|200 OK     |    [PolicyResource ochrony](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 zaakceptowane     |         |     Przyjmować    |
 
 ### <a name="example-responses"></a>Przykładowe odpowiedzi
@@ -282,4 +282,4 @@ Jeśli zasady są już używane do ochrony elementu, każda aktualizacja zasad s
 Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zobacz następujące dokumenty:
 
 - [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
-- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)
+- [Get started with Azure REST API (Rozpoczęcie pracy z interfejsem API REST platformy Azure)](/rest/api/azure/)

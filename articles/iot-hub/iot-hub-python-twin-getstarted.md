@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 729371ede8df3dc21f70bc5742de52f2be874507
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0fc23a63ba9c54896212f0a3f398b33514fbb5f1
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030003"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555359"
 ---
 # <a name="get-started-with-device-twins-python"></a>Rozpoczynanie pracy z usługą Device bliźniaczych reprezentacji (Python)
 
@@ -56,7 +56,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która dodaje met
    ```
 
    > [!NOTE]
-   > Pakiet PIP for Azure-iothub-Service-Client jest obecnie dostępny tylko dla systemu operacyjnego Windows. W przypadku systemu Linux/Mac OS zapoznaj się z sekcjami dotyczącymi systemu Linux i Mac OS w sekcji [przygotowanie środowiska programistycznego dla języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   > Pakiet PIP for Azure-iothub-Service-Client jest obecnie dostępny tylko dla systemu operacyjnego Windows. W przypadku systemu Linux/Mac OS zapoznaj się z sekcjami dotyczącymi systemu Linux i Mac OS w sekcji [przygotowanie środowiska programistycznego dla języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) .
    >
 
 2. Za pomocą edytora tekstów Utwórz nowy plik **AddTagsAndQuery.py** .
@@ -70,7 +70,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która dodaje met
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Dodaj następujący kod. Zastąp `[IoTHub Connection String]` parametrami połączenia usługi IoT Hub skopiowanymi w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string). Zastąp `[Device Id]` IDENTYFIKATORem urządzenia zarejestrowanym w [Zarejestruj nowe urządzenie w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
+4. Dodaj następujący kod. Zastąp `[IoTHub Connection String]` parametrami połączenia usługi IoT Hub skopiowanymi w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string). Zastąp `[Device Id]` IDENTYFIKATORem urządzenia zarejestrowanym w zarejestrowaniu [nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"

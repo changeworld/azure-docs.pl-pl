@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 261816e42c8de670cd7888af726a70e1a6e5b228
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269356"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560128"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z Azure Files w systemie Windows
 
@@ -271,9 +271,9 @@ Aby skopiować plik za pośrednictwem sieci, należy go najpierw odszyfrować. U
 
 - Użyj polecenia **copy/d** . Umożliwia zapisywanie zaszyfrowanych plików jako odszyfrowanych plików w miejscu docelowym.
 - Ustaw następujący klucz rejestru:
-  - Path = HKLM\Software\Policies\Microsoft\Windows\System
+  - Ścieżka = HKLM\Software\Policies\Microsoft\Windows\System
   - Typ wartości = DWORD
-  - Name = CopyFileAllowDecryptedRemoteDestination
+  - Nazwa = CopyFileAllowDecryptedRemoteDestination
   - Wartość = 1
 
 Należy pamiętać, że ustawienie klucza rejestru ma wpływ na wszystkie operacje kopiowania wprowadzone do udziałów sieciowych.
@@ -295,17 +295,29 @@ Aby rozwiązać ten problem, należy dostosować wartość rejestru **DirectoryC
  
 Na przykład można ustawić 0x100000 i sprawdzić, czy wydajność staje się lepsza.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Wystąpił błąd AadDsTenantNotFound podczas włączania uwierzytelniania Azure Active Directory dla Azure Files "nie można zlokalizować aktywnych dzierżawców z identyfikatorem dzierżawy usługi AAD-dzierżawca"
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Błąd AadDsTenantNotFound podczas włączania uwierzytelniania Azure Active Directory Domain Service (AAD DS) dla Azure Files "nie można zlokalizować aktywnych dzierżawców z identyfikatorem dzierżawy AAD-dzierżawca"
 
 ### <a name="cause"></a>Przyczyna
 
-AadDsTenantNotFound Wystąpił błąd podczas próby [włączenia uwierzytelniania Azure Active Directory (AAD) dla Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) na koncie magazynu, w którym [Usługa domeny usługi AAD (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nie jest tworzona w dzierżawie w usłudze AAD skojarzonej subskrypcji.  
+AadDsTenantNotFound Wystąpił błąd podczas próby [włączenia uwierzytelniania Azure Active Directory Domain Service (AAD DS) dla Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) na koncie magazynu, w którym [Usługa domen AAD (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nie została utworzona w dzierżawie usługi AAD skojarzonej subskrypcji.  
 
 ### <a name="solution"></a>Rozwiązanie
 
 Włącz usługi AAD DS w dzierżawie AAD subskrypcji, w której wdrożono konto magazynu. Do utworzenia domeny zarządzanej wymagane są uprawnienia administratora dzierżawy usługi AAD. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie ze wskazówkami krok po kroku, aby [włączyć Azure Active Directory Domain Services przy użyciu Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
+
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Wystąpił błąd "System Error 1359. Wystąpił błąd wewnętrzny "odebrany za pośrednictwem protokołu SMB do udziałów plików z włączonym uwierzytelnianiem Azure Active Directory Domain Service (AAD DS)
+
+### <a name="cause"></a>Przyczyna
+
+Wystąpił błąd "System Error 1359. Błąd wewnętrzny "występuje podczas próby nawiązania połączenia z udziałem plików z włączonym uwierzytelnianiem usługi AAD DS dla usługi AAD DS z nazwą DNS domeny rozpoczynającą się od znaku numerycznego. Jeśli na przykład nazwa DNS domeny usługi AAD DS to "1domain", ten błąd wystąpi podczas próby zainstalowania udziału plików przy użyciu poświadczeń usługi AAD. 
+
+### <a name="solution"></a>Rozwiązanie
+
+Obecnie można rozważyć ponowne wdrożenie usługi AAD DS przy użyciu nowej nazwy DNS domeny, która jest stosowana z poniższymi regułami:
+- Nazwy nie mogą rozpoczynać się od znaku numerycznego.
+- Nazwy muszą mieć długość od 3 do 63 znaków.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać problem.

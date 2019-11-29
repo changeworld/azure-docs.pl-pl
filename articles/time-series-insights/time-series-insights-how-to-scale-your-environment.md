@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: bc6c33762fa572e971fff9dee8988a100e50b07c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006802"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561140"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak skalować środowisko Time Series Insights
 
@@ -34,13 +34,13 @@ Jednak zmiana jednostki SKU warstwy cenowej jest niedozwolona. Na przykład śro
 
 1. W Azure Portal Znajdź i wybierz środowisko Time Series Insights.
 
-1. W menu środowiska Time Series Insights wybierz pozycję **Konfiguruj**.
+1. W menu środowiska Time Series Insights wybierz pozycję **Konfiguracja magazynu**.
 
-   [![Configure. png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![skonfigurować pojemność Time Series Insights](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. Dostosuj suwak **pojemności** , aby wybrać pojemność, która spełnia wymagania dotyczące stawek za transfer danych przychodzących i pojemności magazynu. Zwróć uwagę, że **szybkość**transferu danych przychodzących, **pojemność magazynu**i **Szacowana aktualizacja kosztu** są dynamiczne, aby pokazać wpływ zmiany.
 
-   [Suwak ![](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [![skonfigurować środowisko przy użyciu suwaka pojemności](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
    Alternatywnie można wpisać liczbę mnożnika pojemności do pola tekstowego po prawej stronie suwaka.
 

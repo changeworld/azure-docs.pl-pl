@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 490f2e7bb394d6593e51438c1e484a4677c963a3
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1da1bc330af9d2b652c44114e44dc6d6c9f0d575
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539348"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559168"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń
 
@@ -93,6 +93,7 @@ Poniższy tekst jest przykładem dziennika przepływu. Jak widać, istnieje wiel
 1. Lokalizacja: używane konto magazynu musi znajdować się w tym samym regionie co sieciowej grupy zabezpieczeń.
 2. Brak zapory: dzienniki przepływu sieciowej grupy zabezpieczeń nie zostały dołączone jako [zaufaną usługę firmy Microsoft dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services). Zobacz [Jak mogę Wyłączanie zapory na moim koncie magazynu?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) aby wyłączyć zaporę. 
 3. Brak punktów końcowych usługi: ze względu na bieżące ograniczenie dzienniki mogą być wysyłane bezpośrednio do kont magazynu, a nie za pośrednictwem punktów końcowych usługi. Zobacz [Jak mogę użyć dzienników przepływu sieciowej grupy zabezpieczeń z punktami końcowymi usługi?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) , aby uzyskać pomoc dotyczącą usuwania istniejących punktów końcowych usługi.
+4. Samozarządzanie rotacją kluczy: Jeśli zmienisz/przeniesiesz klucze dostępu do konta magazynu, dzienniki przepływu sieciowej grupy zabezpieczeń przestaną działać. Aby rozwiązać ten problem, należy wyłączyć i ponownie włączyć dzienniki przepływu sieciowej grupy zabezpieczeń.
 
 **Włącz rejestrowanie przepływu sieciowej grupy zabezpieczeń na wszystkich sieciowych grup zabezpieczeńach dołączonych do zasobu**: rejestrowanie przepływu na platformie Azure jest konfigurowane na zasobie sieciowej grupy zabezpieczeń. Przepływ zostanie skojarzony tylko z jedną regułą sieciowej grupy zabezpieczeń. W scenariuszach, w których jest używany wiele sieciowych grup zabezpieczeń, zalecamy włączenie rejestrowania przepływów sieciowej grupy zabezpieczeń na wszystkich sieciowych grup zabezpieczeń zastosowały podsieć lub interfejs sieciowy zasobu, aby upewnić się, że cały ruch jest zarejestrowany. Zobacz, [jak oceniany jest ruch](../virtual-network/security-overview.md#how-traffic-is-evaluated) , aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń. 
 
