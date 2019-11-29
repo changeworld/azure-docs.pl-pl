@@ -5,23 +5,23 @@ author: amberbhargava
 manager: amberb
 editor: banders
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 312808517c80041cb45e2e8ac46566c1f59884e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d68d95619b6aa6e8098c282977866c4bc21a357c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376794"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561049"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Uzyskiwanie własności rozliczeń subskrypcji platformy Azure dla konta umowy partnerskiej firmy Microsoft
 
-Aby zapewnić pojedynczą skonsolidowaną fakturę dla usług zarządzanych i użycia platformy Azure, dostawca rozwiązań w chmurze może przejąć własność rozliczeń subskrypcji platformy Azure od klientów z umową Enterprise Agreement (EA).
+Aby zapewnić pojedynczą skonsolidowaną fakturę dla usług zarządzanych i użycia platformy Azure, dostawca rozwiązań w chmurze może przejąć własność rozliczeń subskrypcji platformy Azure od klientów z bezpośrednią umową Enterprise Agreement (EA).
 
 Ta funkcja jest dostępna tylko dla partnerów rozliczających się bezpośrednio, którzy mają certyfikat [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp). Podlega to ładowi i zasadom firmy Microsoft i może wymagać weryfikacji oraz zatwierdzenia w przypadku niektórych klientów.
 

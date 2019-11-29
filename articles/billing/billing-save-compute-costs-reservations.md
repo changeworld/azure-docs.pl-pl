@@ -3,16 +3,16 @@ title: Co to jest Azure Reservations?
 description: Dowiedz się więcej o rezerwacjach platformy Azure i cenach, które umożliwiają oszczędzanie za kosztach maszyn wirtualnych, baz danych SQL, usługi Azure Cosmos DB i innych zasobów.
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: df15bcc0e4a3ef7629abf7b62f8ff36caf732150
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580091"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420144"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
@@ -36,6 +36,12 @@ Plany usługi:
 - **Zarezerwowany rdzeń wirtualny w usłudze SQL Database** — w rezerwacji są uwzględniane tylko koszty obliczeń. Opłata za licencję jest naliczana oddzielnie.
 - **SQL Data Warehouse** — rezerwacja obejmuje użycie jednostek cDWU. Nie pokrywa kosztów magazynu i sieci wynikających z użycia usługi SQL Data Warehouse.
 - **Podatek od czynności cywilnoprawnych za korzystanie z usługi App Service** — rezerwacja obejmuje użycie sygnatury. Nie dotyczy to procesów roboczych, dlatego opłaty za inne zasoby związane z sygnaturą są naliczane oddzielnie.
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+- Azure Data Explorer
+- Funkcja Dyski zarządzane z dyskami SSD w warstwie Premium
+
 
 W przypadku maszyn wirtualnych z systemem Windows i usługi SQL Database koszty licencji można pokryć za pomocą opcji [Korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 

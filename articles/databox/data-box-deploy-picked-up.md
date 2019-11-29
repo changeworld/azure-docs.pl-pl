@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1c375370ec6bae2775ad758688825b92cbbbca50
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172686"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407041"
 ---
 ::: zone target="docs"
 
@@ -123,28 +123,7 @@ W przypadku centrów danych w Australii obowiązuje dodatkowe zabezpieczenie. Za
 2. Upewnij się, że kopiowanie danych na urządzenie zostało ukończone, a **przygotowanie do wysłania** zakończyło się pomyślnie.
 3. Wyłącz urządzenie i odłącz kable.
 4. Zwiń przewód zasilający dostarczony wraz z urządzeniem i umieść go bezpiecznie z tyłu urządzenia.
-5. Wyślij wiadomość e-mail do firmy Quantium Solutions, aby zlecić odbiór. Odwołaj się do numeru referencyjnego usługi określonego w witrynie Azure Portal. Użyj następującego szablonu wiadomości e-mail:- *Request for reverse shipping label with TAU code* (Żądanie zwrotnej etykiety wysyłkowej zwrotnej z kodem TAU). Upewnij się, że w wiadomości e-mail zostały uwzględnione następujące szczegóły: 
-
-    ```
-    To: Azure@quantiumsolutions.com
-    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
-    Body: 
-    - Company name：
-    - Address:
-    - Contact name:
-    - Contact number:
-    - Requested pickup date: mm/dd
-    ```
-6. Firma Quantium Solutions Australia wyśle Ci wiadomość e-mail ze zwrotną etykietą wysyłkową.
-7. Wydrukuj etykietę zwrotną i przyklej ją na opakowaniu wysyłkowym.
-8. Przekaż paczkę kurierowi.
-
-W razie potrzeby możesz skontaktować się z pomocą techniczną firmy Quantium Solution, wysyłając wiadomość e-mail na adres Azure@quantiumsolutions.com lub telefonicznie.
-
-Aby zgłosić zapytanie dotyczące zamówienia przez telefon:
-
-- Wyślij najpierw wiadomość e-mail dotyczącą odbioru.
-- Podaj nazwę zamówienia za pomocą telefonu.
+5. Zarezerwuj odbiór online na stronie [Link do firmy DHL](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference).
 
 ::: zone target="chromeless"
 
