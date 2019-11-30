@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cfc427b11944cb81d8bc3d12d13668d53be698b7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 44abf23ce632aa1ac630eab3313ffd675eef1a0b
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693096"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559157"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki Start: Tworzenie i wykonywanie zapytań do Azure SQL Data Warehouse za pomocą Azure PowerShell
 
@@ -71,7 +71,7 @@ $endip = "0.0.0.0"
 $databasename = "mySampleDataWarehosue"
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westeurope`.
 
@@ -120,7 +120,7 @@ New-AzSqlDatabase `
 
 Wymagane parametry:
 
-* **RequestedServiceObjectiveName**: ilość żądanych [jednostek magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) . Zwiększenie tej kwoty zwiększa koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i współbieżności] pamięć-współbieżność-limits.md).
+* **RequestedServiceObjectiveName**: ilość żądanych [jednostek magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) . Zwiększenie tej kwoty zwiększa koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i współbieżności](memory-concurrency-limits.md).
 * **DatabaseName**: nazwa tworzonego SQL Data Warehouse.
 * **Servername**: Nazwa serwera, który jest używany do tworzenia.
 * **ResourceGroupName**: Grupa zasobów, której używasz. Aby znaleźć grupy zasobów dostępne w ramach subskrypcji, użyj polecenia cmdlet Get-AzureResource.
