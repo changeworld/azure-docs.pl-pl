@@ -1,69 +1,142 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Backup
+summary: Usługa Azure Backup udostępnia proste, bezpieczne i ekonomiczne rozwiązania do wykonywania kopii zapasowych danych i odzyskiwania ich z chmury platformy Microsoft Azure.
 metadata:
-  title: Dokumentacja usługi Azure Backup — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: 'Usługa Azure Backup umożliwia tworzenie kopii zapasowych danych dla serwerów lokalnych, maszyn wirtualnych, zwirtualizowanych obciążeń, serwera SQL, serwera SharePoint i nie tylko. Dowiedz się, jak tworzyć kopie zapasowe danych i przywracać je, zapoznając się z naszymi przewodnikami Szybki start, samouczkami i przykładami.'
-  services: backup
-  author: dcurwin
-  manager: carmonm
+  title: Dokumentacja usługi Azure Backup
+  description: Usługa Azure Backup udostępnia proste, bezpieczne i ekonomiczne rozwiązania do wykonywania kopii zapasowych danych i odzyskiwania ich z chmury platformy Microsoft Azure.
   ms.service: backup
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 05/22/2018
+  author: dcurwin
   ms.author: dacurwin
-abstract:
-  description: 'Za pomocą usługi Azure Backup możesz chronić dane serwerów lokalnych, maszyn wirtualnych, zwirtualizowanych obciążeń, serwera SQL, serwera SharePoint i nie tylko. Dowiedz się, jak tworzyć kopie zapasowe danych i przywracać je, zapoznając się z naszymi przewodnikami Szybki start, samouczkami i przykładami.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak utworzyć kopię zapasową maszyny wirtualną platformy Azure na platformie Azure.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure Portal
-            href: quick-backup-vm-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: quick-backup-vm-powershell
-          - image:
-              src: 'https://docs.microsoft.com/media/common/cli.svg'
-            text: Interfejs wiersza polecenia platformy Azure
-            href: quick-backup-vm-cli
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak tworzyć kopie zapasowe i odzyskiwać maszyny wirtualne w obrębie platformy Azure lub z systemu Windows Server.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-backup-vm-at-scale">Tworzenie kopii zapasowych wielu maszyn wirtualnych platformy Azure</a>
-          - html: <a href="tutorial-restore-disk">Przywracanie dysku i tworzenie odzyskanej maszyny wirtualnej</a>
-          - html: <a href="tutorial-restore-files">Przywracanie plików do maszyny wirtualnej na platformie Azure</a>
-          - html: <a href="tutorial-backup-windows-server-to-azure">Tworzenie kopii zapasowych serwera z systemem Windows na platformie Azure</a>
-          - html: <a href="tutorial-backup-restore-files-windows-server">Odzyskiwanie plików z platformy Azure do systemu Windows Server</a>
-  - title: Przykłady
-    items:
-      - type: paragraph
-        text: Poniższe przykłady ułatwiają ochronę danych na platformie Azure.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/powershell/module/az.recoveryservices">Azure PowerShell</a></p><p><a href="/cli/azure/backup?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>
-          - title: Języki
-            html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/backup/">Dokumentacja interfejsu API usługi Azure Backup</a></p>
+  ms.date: 12/01/2019
+  ms.openlocfilehash: e352f5aa764795c27dd94ef2750b1265ffcc527d
+  ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 12/02/2019
+  ms.locfileid: "74669079"
+landingContent:
+- title: Dowiedz się więcej o usłudze Azure Backup
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest Azure Backup?
+      url: backup-overview.md
+  - linkListType: concept
+    links:
+    - text: Tabela obsługi usługi Azure Backup
+      url: backup-support-matrix.md
+    - text: Architektura usługi Azure Backup
+      url: backup-architecture.md
+- title: Wprowadzenie do usługi Azure Backup
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie kopii zapasowej maszyny wirtualnej za pomocą witryny Azure Portal
+      url: quick-backup-vm-portal.md
+    - text: Tworzenie kopii zapasowej maszyny wirtualnej za pomocą programu PowerShell
+      url: quick-backup-vm-powershell.md
+    - text: Tworzenie kopii zapasowej maszyny wirtualnej za pomocą interfejsu wiersza polecenia platformy Azure
+      url: quick-backup-vm-cli.md
+    - text: Tworzenie kopii zapasowej maszyny wirtualnej za pomocą szablonu usługi Resource Manager
+      url: quick-backup-vm-template.md
+- title: Wypróbuj te samouczki krok po kroku
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
+      url: tutorial-backup-vm-at-scale.md
+    - text: Tworzenie kopii zapasowej programu SQL Server na maszynie wirtualnej platformy Azure
+      url: tutorial-sql-backup.md
+    - text: Tworzenie kopii zapasowych plików i folderów w systemie Windows Server
+      url: tutorial-backup-windows-server-to-azure.md
+    - text: Tworzenie kopii zapasowej udziałów w usłudze Azure Files
+      url: tutorial-backup-azure-files.md
+- title: Informacje o najnowszych funkcjach w usłudze Azure Backup
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Usuwanie nietrwałe dla danych kopii zapasowej maszyny wirtualnej platformy Azure
+      url: backup-azure-security-feature-cloud.md
+    - text: Przywracanie jako plików programu SQL Server na maszynach wirtualnych platformy Azure
+      url: restore-sql-database-azure-vm.md#restore-as-files
+    - text: Kopia zapasowa bazy danych platformy SAP HANA na maszynach wirtualnych platformy Azure
+      url: backup-azure-sap-hana-database.md
+- title: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
+      url: backup-azure-vms-introduction.md
+    - text: Tabela obsługi dla maszyn wirtualnych platformy Azure
+      url: backup-support-matrix-iaas.md
+    - text: Często zadawane pytania — kopia zapasowa maszyn wirtualnych platformy Azure
+      url: backup-azure-vm-backup-faq.md
+    - text: Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure
+      url: backup-azure-manage-vms.md
+- title: Tworzenie kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
+      url: backup-azure-sql-database.md
+    - text: Często zadawane pytania — kopia zapasowa programu SQL Server na maszynach wirtualnych platformy Azure
+      url: faq-backup-sql-server.md
+    - text: Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
+      url: backup-sql-server-database-azure-vms.md
+    - text: Zarządzanie kopiami zapasowymi baz danych programu SQL Server i ich monitorowanie
+      url: manage-monitor-sql-database-backup.md
+- title: Tworzenie kopii zapasowych platformy SAP HANA na maszynach wirtualnych platformy Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tworzenie kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
+      url: backup-azure-sap-hana-database.md
+    - text: Zarządzanie kopiami zapasowymi baz danych platformy SAP HANA i ich monitorowanie
+      url: sap-hana-db-manage.md
+    - text: Często zadawane pytania — tworzenie kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
+      url: sap-hana-faq-backup-azure-vm.md
+    - text: Macierz obsługi dla kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
+      url: sap-hana-backup-support-matrix.md
+- title: Tworzenie kopii zapasowej udziałów w usłudze Azure Files
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tworzenie kopii zapasowej i przywracanie udziałów plików platformy Azure
+      url: backup-azure-files.md
+    - text: Często zadawane pytania — tworzenie kopii zapasowej plików w usłudze Azure Files
+      url: backup-azure-files-faq.md
+- title: Tworzenie kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tworzenie kopii zapasowych maszyn z systemem Windows za pomocą agenta MARS usługi Azure Backup
+      url: backup-configure-vault.md
+    - text: Zarządzanie kopiami zapasowymi agenta MARS za pomocą usługi Azure Backup
+      url: backup-azure-manage-mars.md
+    - text: Macierz obsługi agenta usługi MARS
+      url: backup-support-matrix-mars-agent.md
+    - text: Często zadawane pytania — agent MARS
+      url: backup-azure-file-folder-backup-faq.md
+- title: Tworzenie kopii zapasowej za pomocą serwera Microsoft Azure Backup Server (MABS) i programu DPM
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tabela ochrony serwera MABS
+      url: backup-mabs-protection-matrix.md
+    - text: Tabela obsługi serweraMABS/programu DPM
+      url: backup-support-matrix-mabs-dpm.md
+    - text: Często zadawane pytania — serwer MABS i program DPM
+      url: backup-azure-dpm-azure-server-faq.md
+    - text: Instalowanie i uaktualnianie serwera MABS
+      url: backup-azure-microsoft-azure-backup.md
+- title: Eksplorowanie zasobów dla usługi Azure Backup
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kalkulator cen usługi Azure Backup
+      url: https://azure.microsoft.com/pricing/details/backup/
+    - text: Aktualizacje usługi Azure Backup
+      url: https://azure.microsoft.com/updates/?product=backup
+    - text: Forum MSDN usługi Azure Backup
+      url: https://social.msdn.microsoft.com/Forums/home?forum=windowsazureonlinebackup
