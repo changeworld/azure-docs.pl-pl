@@ -1,25 +1,17 @@
 ---
-title: Dodawanie powiadomień wypychanych do aplikacji systemu Android za pomocą Mobile Apps | Microsoft Docs
+title: Dodawanie powiadomień wypychanych do aplikacji systemu Android
 description: Dowiedz się, jak wysyłać powiadomienia wypychane do aplikacji systemu Android za pomocą Mobile Apps.
-services: app-service\mobile
-documentationcenter: android
-manager: crdun
-editor: ''
-author: elamalani
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 539859ba73c8a26d6f7e8f25b9e7453d987a52bd
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ce4ebe9e8874e779b8da16e9c30fcfc3ca46754e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389025"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668609"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Dodawanie powiadomień wypychanych do aplikacji systemu Android
 
@@ -30,7 +22,7 @@ ms.locfileid: "72389025"
 >
 > Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do projektu [Android — szybki start] , aby Powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy rekord zostanie wstawiony.
 

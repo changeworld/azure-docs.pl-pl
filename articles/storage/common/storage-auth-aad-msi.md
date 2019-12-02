@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea1d286d00564587a9692dac1b04c5bbb04742cc
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3e24cb2d4b5b82f6878647cdd631bd8ebca16199
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561471"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666169"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autoryzuj dostęp do obiektów blob i kolejek przy użyciu tożsamości Azure Active Directory i zarządzanych dla zasobów platformy Azure
 
@@ -103,19 +103,7 @@ Biblioteka klienta tożsamości platformy Azure odczytuje wartości z trzech zmi
 
 Aby uzyskać więcej informacji, zobacz [Tworzenie tożsamości dla aplikacji platformy Azure w portalu](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="install-client-library-packages"></a>Zainstaluj pakiety biblioteki klienta
-
-W przykładach w tym artykule użyto najnowszej wersji biblioteki klienta usługi Azure Storage dla magazynu obiektów BLOB. Aby zainstalować pakiet, uruchom następujące polecenie w konsoli Menedżera pakietów NuGet:
-
-```powershell
-Install-Package Azure.Storage.Blobs
-```
-
-W przykładach w tym artykule użyto również najnowszej wersji [biblioteki klienta tożsamości platformy Azure dla platformy .NET](https://www.nuget.org/packages/Azure.Identity/) do uwierzytelniania przy użyciu poświadczeń usługi Azure AD. Aby zainstalować pakiet, uruchom następujące polecenie w konsoli Menedżera pakietów NuGet:
-
-```powershell
-Install-Package Azure.Identity
-```
+[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
 ## <a name="net-code-example-create-a-block-blob"></a>Przykład kodu platformy .NET: Tworzenie blokowego obiektu BLOB
 

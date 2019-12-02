@@ -1,25 +1,17 @@
 ---
-title: Wprowadzenie do usługi Azure Mobile Apps dla aplikacji platformy Xamarin.Android
-description: Wykonaj czynności opisane w tym samouczku, aby rozpocząć używanie usługi Azure Mobile Apps do tworzenia aplikacji platformy Xamarin Android.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Wprowadzenie do aplikacji platformy Xamarin. Android
+description: Postępuj zgodnie z tym samouczkiem, aby rozpocząć korzystanie z usługi Azure Mobile Apps na potrzeby projektowania aplikacji dla systemu Android
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 038ca0bd7690ac90470d9a739a47d0f634f1297b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1bac9ac03971765f1afc4f15ff3de6cc4b7d3883
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388473"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668669"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Tworzenie aplikacji platformy Xamarin.Android
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388473"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 W tym samouczku przedstawiono sposób dodawania usługi zaplecza opartej na chmurze do aplikacji platformy Xamarin.Android. Aby uzyskać więcej informacji, zobacz artykuł [Co to jest usługa Mobile Apps](app-service-mobile-value-prop.md).
@@ -57,7 +49,7 @@ W ten sposób zainicjowano obsługę zaplecza Aplikacji mobilnej Azure, które m
 ## <a name="run-the-xamarinandroid-app"></a>Uruchamianie aplikacji platformy Xamarin. Android
 1. Otwórz projekt Xamarin. Android.
 
-2. Przejdź do [Azure Portal](https://portal.azure.com/) i przejdź do utworzonej aplikacji mobilnej. W bloku `Overview` poszukaj adresu URL, który jest publicznym punktem końcowym aplikacji mobilnej. Przykład — nazwa witryny dla mojej aplikacji "test123" będzie https://test123.azurewebsites.net.
+2. Przejdź do [Azure Portal](https://portal.azure.com/) i przejdź do utworzonej aplikacji mobilnej. W bloku `Overview` Wyszukaj adres URL, który jest publicznym punktem końcowym aplikacji mobilnej. Przykład — nazwa sitename dla mojej aplikacji "test123" zostanie https://test123.azurewebsites.net.
 
 3. Otwórz plik `ToDoActivity.cs` w tym folderze — Xamarin. Android/ZUMOAPPNAME/do zrobienia. cs. Nazwa aplikacji jest `ZUMOAPPNAME`.
 

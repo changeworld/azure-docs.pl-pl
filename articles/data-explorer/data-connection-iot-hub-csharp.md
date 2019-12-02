@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: bcc80000be5e061a37601f05a2a245aac031fc15
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0cac03e50bf46910f8430b745803107b60905769
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031658"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667383"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>Tworzenie IoT Hub połączenia danych dla usługi Azure Eksplorator danych przy użyciu C# programu (wersja zapoznawcza)
 
@@ -20,22 +20,18 @@ ms.locfileid: "72031658"
 > * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Szablon usługi Azure Resource Manager](data-connection-iot-hub-resource-manager.md)
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Eksplorator danych oferuje pozyskiwanie (ładowanie danych) z Event Hubs, centrów IoT i obiektów blob, które są zapisywane do kontenerów obiektów BLOB. W tym artykule opisano tworzenie IoT Hub połączenia danych dla usługi Azure Eksplorator danych przy użyciu programu C#.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
-
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-
 * Tworzenie [klastra i bazy danych](create-cluster-database-csharp.md)
-
 * Tworzenie [mapowania tabeli i kolumny](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * Ustawianie [zasad bazy danych i tabeli](database-table-policies-csharp.md) (opcjonalnie)
-
-* Utwórz [Centrum IoT Hub z skonfigurowanymi zasadami dostępu współdzielonego](ingest-data-iot-hub.md#create-an-iot-hub).
+* Utwórz [IoT Hub ze skonfigurowanymi zasadami dostępu współdzielonego](ingest-data-iot-hub.md#create-an-iot-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 

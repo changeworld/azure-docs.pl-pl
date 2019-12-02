@@ -1,25 +1,17 @@
 ---
-title: Dodawanie powiadomień wypychanych do aplikacji Apache Cordova za pomocą funkcji Mobile Apps Azure App Service | Microsoft Docs
+title: Dodawanie powiadomień wypychanych do aplikacji Apache Cordova
 description: Dowiedz się, jak za pomocą Mobile Apps wysyłać powiadomienia wypychane do aplikacji Apache Cordova.
-services: app-service\mobile
-documentationcenter: javascript
-manager: crdun
-editor: ''
-author: elamalani
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 7a7e64b32a084075fe96cbd4ab7a0d28fc0f8e19
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6ec214c0f1a4f8333bf88790de8d2936fce39002
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388865"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668915"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Dodawanie powiadomień wypychanych do aplikacji Apache Cordova
 
@@ -28,7 +20,7 @@ ms.locfileid: "72388865"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 
@@ -87,7 +79,7 @@ Uruchom następujące polecenie:
 
 **Z poziomu programu Visual Studio:**
 
-1. W Eksplorator rozwiązań otwórz plik `config.xml`. Następnie wybierz pozycję **wtyczki** > **Custom**. Następnie wybierz pozycję **git** jako źródło instalacji.
+1. W Eksplorator rozwiązań otwórz plik `config.xml`. Następnie wybierz pozycję **wtyczki** > **niestandardowe**. Następnie wybierz pozycję **git** jako źródło instalacji.
 
 2. Wprowadź `https://github.com/phonegap/phonegap-plugin-push` jako źródło.
 
@@ -95,7 +87,7 @@ Uruchom następujące polecenie:
 
 3. Wybierz strzałkę obok źródła instalacji.
 
-4. W programie **SENDER_ID**, jeśli masz już liczbowy identyfikator projektu dla projektu konsoli programu Google Developer, możesz dodać go tutaj. W przeciwnym razie wprowadź wartość symbolu zastępczego, na przykład 777777. Jeśli chcesz uzyskać system Android, możesz później zaktualizować tę wartość w pliku config. XML.
+4. W **SENDER_ID**, jeśli masz już liczbowy identyfikator projektu dla projektu konsoli dla deweloperów Google Developer, możesz dodać go tutaj. W przeciwnym razie wprowadź wartość symbolu zastępczego, na przykład 777777. Jeśli chcesz uzyskać system Android, możesz później zaktualizować tę wartość w pliku config. XML.
 
     >[!NOTE]
     >W przypadku wersji 2.0.0 należy zainstalować plik Google-Services. JSON w folderze głównym projektu w celu skonfigurowania identyfikatora nadawcy. Aby uzyskać więcej informacji, zobacz [dokumentację instalacji.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
@@ -106,7 +98,7 @@ Wtyczka wypychana jest teraz zainstalowana.
 
 #### <a name="install-the-device-plugin"></a>Instalowanie wtyczki urządzenia
 
-Postępuj zgodnie z tą samą procedurą, która została użyta do zainstalowania wtyczki wypychania. Dodaj wtyczkę urządzenia z listy Core plugins. (Aby go znaleźć, wybierz **wtyczki** > **rdzeń**). Ta wtyczka jest potrzebna do uzyskania nazwy platformy.
+Postępuj zgodnie z tą samą procedurą, która została użyta do zainstalowania wtyczki wypychania. Dodaj wtyczkę urządzenia z listy Core plugins. (Aby go znaleźć, wybierz pozycję **wtyczki** > **rdzeń**). Ta wtyczka jest potrzebna do uzyskania nazwy platformy.
 
 #### <a name="register-your-device-when-the-application-starts"></a>Rejestrowanie urządzenia podczas uruchamiania aplikacji 
 
@@ -182,7 +174,7 @@ Początkowo zawieramy minimalny kod dla systemu Android. Później możesz zmody
     pushRegistration.on('error', handleError);
     }
     ```
-3. Systemów W poprzednim kodzie Zastąp `Your_Project_ID` IDENTYFIKATORem projektu liczbowego dla aplikacji z poziomu [konsoli dewelopera Google][18].
+3. Systemów W powyższym kodzie Zastąp `Your_Project_ID` IDENTYFIKATORem projektu numerycznego aplikacji z poziomu [konsoli dewelopera Google][18].
 
 ## <a name="optional-configure-and-run-the-app-on-android"></a>Obowiązkowe Konfigurowanie i uruchamianie aplikacji w systemie Android
 
@@ -200,7 +192,7 @@ Ponieważ jako pierwszy chcesz korzystać z platformy Google Android, musisz wł
 
 #### <a name="configure-your-cordova-app-for-android"></a>Konfigurowanie aplikacji oprogramowania Cordova dla systemu Android
 
-W aplikacji platformy Cordova Otwórz **plik config. XML**. Następnie zastąp `Your_Project_ID` IDENTYFIKATORem projektu liczbowego dla aplikacji z poziomu [konsoli dewelopera Google][18].
+W aplikacji platformy Cordova Otwórz **plik config. XML**. Następnie zastąp `Your_Project_ID` IDENTYFIKATORem projektu numerycznego aplikacji z poziomu [konsoli dewelopera Google][18].
 
 ```xml
 <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
@@ -223,7 +215,7 @@ pushRegistration = PushNotification.init({
 Aby można było wdrożyć aplikację na urządzeniu z systemem Android, należy włączyć debugowanie USB. Na telefonie z systemem Android wykonaj następujące czynności:
 
 1. Przejdź do pozycji **ustawienia** > **Informacje o telefonie**. Następnie naciśnij **numer kompilacji** , dopóki tryb dewelopera zostanie włączony (około siedem razy).
-2. Wróć do **ustawień** **opcji deweloperskich** > , Włącz **debugowanie USB**. Następnie podłącz telefon z systemem Android do komputera deweloperskiego przy użyciu kabla USB.
+2. Wróć do **ustawień** > **Opcje dewelopera**, Włącz **debugowanie USB**. Następnie podłącz telefon z systemem Android do komputera deweloperskiego przy użyciu kabla USB.
 
 Przetestowano to przy użyciu urządzenia Google Nexus pięciokrotną z systemem Android 6,0 (Marshmallow). Jednak te techniki są wspólne dla każdej nowoczesnej wersji systemu Android.
 

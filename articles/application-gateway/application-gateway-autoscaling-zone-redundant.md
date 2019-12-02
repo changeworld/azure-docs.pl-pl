@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 8f3a732d5d6128ff38f81f715113e87710b11c47
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847268"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668147"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Skalowanie automatyczne i strefowo nadmiarowa brama aplikacji (wersja 2) 
 
@@ -35,7 +35,7 @@ Nowa jednostka SKU w wersji 2 obejmuje następujące udoskonalenia:
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Jednostka SKU Standard_v2 i WAF_v2 jest dostępna w następujących regionach: Północno-środkowe stany USA, Południowo-środkowe stany USA, zachodnie stany USA, zachodnie Stany Zjednoczone 2, Wschodnie stany USA, USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia, Azja Południowo-Wschodnia, Francja Zachodnie Zjednoczone Królestwo środkowa, Stany Zjednoczone, Japonia Wschodnia, Japonia Zachodnia, Australia Wschodnia , Australia Południowo-Wschodnia, Brazylia Południowa, Kanada środkowa, Kanada Wschodnia, Azja Wschodnia, Korea środkowa, Korea Południowa, Indie Południowe, Południowe Zjednoczone Królestwo, Indie Środkowe, Indie Zachodnie, Indie Południowe.
+Jednostka SKU Standard_v2 i WAF_v2 jest dostępna w następujących regionach: Północno-środkowe stany USA, Południowo-środkowe stany USA, zachodnie stany USA, zachodnie Stany Zjednoczone 2, Wschodnie stany USA, USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia, Azja Południowo-Wschodnia, Francja Zachodnie Zjednoczone Królestwo środkowa, Stany Zjednoczone, Japonia Wschodnia, Japonia Zachodnia, Australia Wschodnia , Australia Południowo-Wschodnia, Brazylia Południowa, Kanada środkowa, Kanada Wschodnia, Azja Wschodnia, Korea środkowa, Korea Południowa, Południowe Zjednoczone Królestwo, Indie Środkowe, Indie Zachodnie i Indie Południowe.
 
 ## <a name="pricing"></a>Cennik
 
@@ -150,7 +150,7 @@ Poniższa tabela zawiera porównanie funkcji dostępnych w poszczególnych jedno
 | Routing oparty na adresach URL                                 | &#x2713; | &#x2713; |
 | Hostowanie wielu witryn                             | &#x2713; | &#x2713; |
 | Przekierowywanie ruchu                               | &#x2713; | &#x2713; |
-| Zapora aplikacji internetowej                    | &#x2713; | &#x2713; |
+| Zapora aplikacji internetowej (WAF)                    | &#x2713; | &#x2713; |
 | Reguły niestandardowe zapory aplikacji internetowej                                  |          | &#x2713; |
 | Kończenie żądań protokołu Secure Sockets Layer (SSL)            | &#x2713; | &#x2713; |
 | Kompleksowe szyfrowanie SSL                         | &#x2713; | &#x2713; |
@@ -168,8 +168,8 @@ Poniższa tabela zawiera porównanie funkcji dostępnych w poszczególnych jedno
 |Występują|Szczegóły|
 |--|--|
 |Certyfikat uwierzytelniania|Nieobsługiwane.<br>Aby uzyskać więcej informacji, zobacz [Omówienie kompleksowej usługi SSL z Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Mieszanie Standard_v2 i Application Gateway standardowych w tej samej podsieci|Nieobsługiwane|
-|Trasa zdefiniowana przez użytkownika (UDR) w podsieci Application Gateway|Nieobsługiwane|
+|Mieszanie Standard_v2 i Application Gateway standardowych w tej samej podsieci|Brak obsługi|
+|Trasa zdefiniowana przez użytkownika (UDR) w podsieci Application Gateway|Brak obsługi|
 |SIECIOWEJ grupy zabezpieczeń dla zakresu portów przychodzących| -65200 do 65535 dla Standard_v2 jednostki SKU<br>-65503 do 65534 dla standardowej jednostki SKU.<br>Aby uzyskać więcej informacji, zobacz [często zadawane pytania](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Dzienniki wydajności w usłudze Diagnostyka Azure|Nieobsługiwane.<br>Należy używać metryk platformy Azure.|
 |Rozliczenia|Rozliczenia zaplanowane do rozpoczęcia od 1 lipca 2019.|

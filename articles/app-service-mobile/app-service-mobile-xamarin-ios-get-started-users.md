@@ -1,25 +1,17 @@
 ---
-title: Wprowadzenie do uwierzytelniania Mobile Apps w programie Xamarin iOS
-description: Dowiedz się, jak za pomocą usługi Mobile Apps uwierzytelniać użytkowników aplikacji platformy Xamarin dla systemu iOS za pomocą różnych dostawców tożsamości, takich jak AAD, Google, Facebook, Twitter i Microsoft.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Wprowadzenie do uwierzytelniania w oprogramowaniu Xamarin iOS
+description: Dowiedz się, jak używać Mobile Apps do uwierzytelniania użytkowników aplikacji platformy Xamarin dla systemu iOS przy użyciu dostawców tożsamości, takich jak AAD, Google, Facebook, Twitter i Microsoft.
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 859c2d4cc1c2be7b4e96a955e78dc0339875c96f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f2c78c3d4b18e7c662c4f7345938ddab377229b
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388339"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668261"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388339"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 
@@ -46,7 +38,7 @@ Bezpieczne uwierzytelnianie wymaga zdefiniowania nowego schematu adresu URL dla 
 
 2. Kliknij opcję menu **uwierzytelnianie/autoryzacja** .
 
-3. W polu **dozwolone adresy URL zewnętrznych przekierowań**wprowadź wartość `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu to schemat adresu URL aplikacji mobilnej.  Powinna być zgodna ze specyfikacją normalnych adresów URL dla protokołu (używaj tylko liter i cyfr i zaczynać się od litery).  Należy zanotować ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnej przy użyciu schematu adresu URL w kilku miejscach.
+3. W polu **dozwolone adresy URL zewnętrznych przekierowań**wprowadź `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu jest schematem adresu URL aplikacji mobilnej.  Powinna być zgodna ze specyfikacją normalnych adresów URL dla protokołu (używaj tylko liter i cyfr i zaczynać się od litery).  Należy zanotować ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnej przy użyciu schematu adresu URL w kilku miejscach.
 
 4. Kliknij przycisk **OK**.
 
@@ -138,7 +130,7 @@ W tej sekcji zmodyfikujesz aplikację w celu wyświetlenia ekranu logowania prze
     }
     ```
 
-6. Otwórz plik **info. plist** , przejdź do strony **typy adresów URL** w sekcji **Zaawansowane** . Teraz Skonfiguruj **Identyfikator** i **schematy adresów** URL, a następnie kliknij przycisk **Dodaj typ adresu**URL. **Schematy adresów URL** powinny być takie same jak Twoje {url_scheme_of_your_app}.
+6. Otwórz plik **info. plist** , przejdź do strony **typy adresów URL** w sekcji **Zaawansowane** . Teraz Skonfiguruj **Identyfikator** i **schematy adresów** URL, a następnie kliknij przycisk **Dodaj typ adresu**URL. **Schematy adresów URL** powinny być takie same, jak w przypadku twojego {url_scheme_of_your_app}.
 7. W programie Visual Studio, podłączonym do hosta Mac lub Visual Studio dla komputerów Mac, Uruchom projekt klienta przeznaczony dla urządzenia lub emulatora. Sprawdź, czy aplikacja nie wyświetla żadnych danych.
 
     Wykonaj gest odświeżenia, pobierając listę elementów, co spowoduje wyświetlenie ekranu logowania. Po pomyślnym wprowadzeniu prawidłowych poświadczeń aplikacja wyświetli listę elementów do wykonania i będzie można wprowadzać aktualizacje danych.

@@ -1,25 +1,17 @@
 ---
-title: Dodawanie powiadomień wypychanych do aplikacji platforma uniwersalna systemu Windows (platformy UWP) | Microsoft Docs
+title: Dodawanie powiadomień wypychanych do aplikacji platformy UWP
 description: Dowiedz się, jak używać Mobile Apps Azure App Service i usługi Azure Notification Hubs do wysyłania powiadomień wypychanych do aplikacji platforma uniwersalna systemu Windows (platformy UWP).
-services: app-service\mobile,notification-hubs
-documentationcenter: windows
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 80723bc8e7685c66117e71d87cbf64710ab4507a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e2178322c7006a6ddd2ca6daffca066f04fff68c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388625"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668725"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Dodawanie powiadomień wypychanych do aplikacji systemu Windows
 
@@ -30,7 +22,7 @@ ms.locfileid: "72388625"
 >
 > Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym samouczku dowiesz się, jak dodać powiadomienia wypychane do projektu [szybkiego startu systemu Windows](app-service-mobile-windows-store-dotnet-get-started.md) , aby Powiadomienie wypychane było wysyłane do urządzenia za każdym razem, gdy rekord zostanie wstawiony.
 

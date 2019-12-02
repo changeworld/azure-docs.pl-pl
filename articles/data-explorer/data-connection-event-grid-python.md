@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 11ae18714d1806aac1cc4f55ce6511fc12498440
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 16f944146cf97666fd9866607ff436a49d5fb031
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800440"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667720"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-python"></a>Tworzenie Event Grid połączenia danych dla Eksplorator danych platformy Azure przy użyciu języka Python
 
@@ -20,19 +20,16 @@ ms.locfileid: "72800440"
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
+> * [Szablon usługi Azure Resource Manager](data-connection-event-grid-resource-manager.md)
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Eksplorator danych oferuje pozyskiwanie (ładowanie danych) z Event Hubs, centrów IoT i obiektów blob, które są zapisywane do kontenerów obiektów BLOB. W tym artykule opisano tworzenie Event Grid połączenia danych dla usługi Azure Eksplorator danych przy użyciu języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-
 * Tworzenie [klastra i bazy danych](create-cluster-database-csharp.md)
-
 * Tworzenie [mapowania tabeli i kolumny](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * Ustawianie [zasad bazy danych i tabeli](database-table-policies-csharp.md) (opcjonalnie)
-
 * Utwórz [konto magazynu z subskrypcją Event Grid](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]

@@ -1,25 +1,17 @@
 ---
-title: Dodawanie uwierzytelniania do aplikacji platforma uniwersalna systemu Windows (platformy UWP) | Microsoft Docs
-description: 'Dowiedz się, jak używać Mobile Apps Azure App Service, aby uwierzytelniać użytkowników aplikacji platforma uniwersalna systemu Windows (platformy UWP) za pomocą różnych dostawców tożsamości, w tym: AAD, Google, Facebook, Twitter i Microsoft.'
-services: app-service\mobile
-documentationcenter: windows
-author: elamalani
-manager: panarasi
-editor: ''
+title: Dodawanie uwierzytelniania do aplikacji platformy UWP
+description: Dowiedz się, jak używać Mobile Apps Azure App Service do uwierzytelniania użytkowników aplikacji platforma uniwersalna systemu Windows (platformy UWP) z dostawcami tożsamości, takimi jak AAD, Google, Facebook, Twitter i Microsoft.
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: d5012ccc503e48785e23ff00564bbc9f6735eea8
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 23d3c897f227dd49253abfcc6d3a84d477341c13
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388548"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668385"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Dodawanie uwierzytelniania do aplikacji systemu Windows
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388548"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 W tym temacie opisano sposób dodawania uwierzytelniania opartego na chmurze do aplikacji mobilnej. W tym samouczku dodasz uwierzytelnianie do projektu szybkiego startu platforma uniwersalna systemu Windows (platformy UWP) dla Mobile Apps przy użyciu dostawcy tożsamości obsługiwanego przez Azure App Service. Po pomyślnym uwierzytelnieniu i autoryzacji przez zaplecze aplikacji mobilnej zostanie wyświetlona wartość identyfikatora użytkownika.
@@ -45,7 +37,7 @@ Bezpieczne uwierzytelnianie wymaga zdefiniowania nowego schematu adresu URL dla 
 
 2. Kliknij opcję menu **uwierzytelnianie/autoryzacja** .
 
-3. W polu **dozwolone adresy URL zewnętrznych przekierowań**wprowadź wartość `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu to schemat adresu URL aplikacji mobilnej.  Powinna być zgodna ze specyfikacją normalnych adresów URL dla protokołu (używaj tylko liter i cyfr i zaczynać się od litery).  Należy zanotować ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnej przy użyciu schematu adresu URL w kilku miejscach.
+3. W polu **dozwolone adresy URL zewnętrznych przekierowań**wprowadź `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu jest schematem adresu URL aplikacji mobilnej.  Powinna być zgodna ze specyfikacją normalnych adresów URL dla protokołu (używaj tylko liter i cyfr i zaczynać się od litery).  Należy zanotować ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnej przy użyciu schematu adresu URL w kilku miejscach.
 
 4. Kliknij przycisk **Save** (Zapisz).
 

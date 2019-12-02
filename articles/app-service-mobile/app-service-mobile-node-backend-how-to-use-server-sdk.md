@@ -1,25 +1,17 @@
 ---
-title: Jak korzystać z zestawu SDK serwera zaplecza Node. js dla Mobile Apps | Microsoft Docs
+title: Współpraca z zestawem SDK serwera zaplecza Node. js
 description: Dowiedz się, jak współpracować z zestawem SDK serwera zaplecza Node. js dla Azure App Service Mobile Apps.
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: elamalani
-editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: a3883d233bd621607ec724e0c85734b508195340
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388659"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668760"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu SDK Mobile Apps Node. js
 
@@ -111,7 +103,7 @@ Program Visual Studio 2015 wymaga rozszerzenia do tworzenia aplikacji node. js w
 1. Otwórz okno dialogowe **Nowy projekt** (z **pliku** > **nowym** > **projekcie**).
 1. Rozwiń **szablon** > **JavaScript** > **Node. js**.
 1. Wybierz **podstawową aplikację Azure Node. js Express 4**.
-1. Wypełnij pole Nazwa projektu. Wybierz **OK**.
+1. Wypełnij pole Nazwa projektu. Kliknij przycisk **OK**.
 
    ![Nowy projekt programu Visual Studio 2015][1]
 1. Kliknij prawym przyciskiem myszy węzeł **npm** i wybierz pozycję **Instaluj nowe pakiety npm**.
@@ -303,7 +295,7 @@ Zestaw SDK Mobile Apps Node. js używa [Pakiet MSSQL Node. js] do nawiązywania 
 
       ![Konfigurowanie SQL Server Express protokołu TCP/IP][3]
 
-   g. Wybierz **OK**. W podręcznym oknie dialogowym wybierz pozycję **OK** .
+   g. Kliknij przycisk **OK**. W podręcznym oknie dialogowym wybierz pozycję **OK** .
 
    h. W menu drzewa wybierz pozycję **usługi SQL Server** .
 
@@ -316,19 +308,19 @@ Zestaw SDK Mobile Apps Node. js używa [Pakiet MSSQL Node. js] do nawiązywania 
    1. Kliknij prawym przyciskiem myszy wystąpienie w Eksplorator obiektów i wybierz polecenie **Właściwości**.
    1. Wybierz stronę **zabezpieczenia** .
    1. Upewnij się, że wybrano **SQL Server i tryb uwierzytelniania systemu Windows** .
-   1. Wybierz **OK**.
+   1. Kliknij przycisk **OK**.
 
       ![Konfigurowanie uwierzytelniania SQL Server Express][4]
    1. Rozwiń węzeł **zabezpieczenia** > **nazwy logowania** w Eksplorator obiektów.
    1. Kliknij prawym przyciskiem myszy pozycję **logowania** i wybierz pozycję **Nowa nazwa logowania**.
    1. Wprowadź nazwę logowania. Wybierz pozycję **Uwierzytelnianie programu SQL Server**. Wprowadź hasło, a następnie wprowadź to samo hasło w polu **Potwierdź hasło**. Hasło musi spełniać wymagania dotyczące złożoności systemu Windows.
-   1. Wybierz **OK**.
+   1. Kliknij przycisk **OK**.
 
       ![Dodaj nowego użytkownika do SQL Server Express][5]
    1. Kliknij prawym przyciskiem myszy nową nazwę logowania i wybierz pozycję **Właściwości**.
    1. Wybierz stronę **role serwera** .
    1. Zaznacz pole wyboru dla roli serwera **dbcreator** .
-   1. Wybierz **OK**.
+   1. Kliknij przycisk **OK**.
    1. Zamknij Management Studio SQL Server 2015.
 
 Pamiętaj, aby zapisać wybraną nazwę użytkownika i hasło. W zależności od wymagań bazy danych może być konieczne przypisanie dodatkowych ról lub uprawnień serwera.
@@ -377,17 +369,17 @@ Większość ustawień w pliku azureMobile. js ma odpowiednie ustawienie aplikac
 
 | Ustawienie aplikacji | ustawienie azureMobile. js | Opis | Prawidłowe wartości |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |Nazwa aplikacji |ciąg |
-| **MS_MobileLoggingLevel** |logging.level |Minimalny poziom rejestrowania komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje, pełne, debugowanie, parapet |
-| **MS_DebugMode** |rozpocząć |Włącza lub wyłącza tryb debugowania |wartość true, false |
-| **MS_TableSchema** |data.schema |Domyślna nazwa schematu dla tabel SQL |ciąg (domyślnie: dbo) |
-| **MS_DynamicSchema** |data.dynamicSchema |Włącza lub wyłącza tryb debugowania |wartość true, false |
-| **MS_DisableVersionHeader** |wersja (ustawiona na wartość undefined) |Wyłącza nagłówek X-ZUMO-Server-version |wartość true, false |
-| **MS_SkipVersionCheck** |skipversioncheck |Wyłącza sprawdzanie wersji interfejsu API klienta |wartość true, false |
+| **MS_MobileAppName** |name |Nazwa aplikacji |string |
+| **MS_MobileLoggingLevel** |Rejestrowanie. poziom |Minimalny poziom rejestrowania komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje, pełne, debugowanie, parapet |
+| **MS_DebugMode** |rozpocząć |Włącza lub wyłącza tryb debugowania |prawda, FAŁSZ |
+| **MS_TableSchema** |dane. schemat |Domyślna nazwa schematu dla tabel SQL |ciąg (domyślnie: dbo) |
+| **MS_DynamicSchema** |Data. dynamicSchema |Włącza lub wyłącza tryb debugowania |prawda, FAŁSZ |
+| **MS_DisableVersionHeader** |wersja (ustawiona na wartość undefined) |Wyłącza nagłówek X-ZUMO-Server-version |prawda, FAŁSZ |
+| **MS_SkipVersionCheck** |skipversioncheck |Wyłącza sprawdzanie wersji interfejsu API klienta |prawda, FAŁSZ |
 
 Aby ustawić ustawienie aplikacji:
 
-1. Zaloguj się w witrynie [Azure Portal].
+1. Zaloguj się do [Azure Portal].
 1. Wybierz pozycję **wszystkie zasoby** lub **App Services**a następnie wybierz nazwę aplikacji mobilnej.
 1. Domyślnie zostanie otwarte okienko **ustawień** . Jeśli nie, wybierz pozycję **Ustawienia**.
 1. W menu **Ogólne** wybierz pozycję **Ustawienia aplikacji**.
@@ -404,7 +396,7 @@ Zmiana większości ustawień aplikacji wymaga ponownego uruchomienia usługi.
 
 Używanie Azure SQL Database jako magazynu danych jest identyczne we wszystkich typach aplikacji Azure App Service. Jeśli jeszcze tego nie zrobiono, wykonaj następujące kroki, aby utworzyć Mobile Apps zaplecza:
 
-1. Zaloguj się w witrynie [Azure Portal].
+1. Zaloguj się do [Azure Portal].
 1. W lewym górnym rogu okna wybierz przycisk **+ nowy** > **Sieć Web + aplikacje mobilne** > **aplikacji mobilnej**, a następnie podaj nazwę Mobile Apps zaplecza.
 1. W polu **Grupa zasobów** Wprowadź taką samą nazwę jak aplikacja.
 1. Wybrano domyślny plan App Service. Jeśli chcesz zmienić plan App Service:
@@ -415,7 +407,7 @@ Używanie Azure SQL Database jako magazynu danych jest identyczne we wszystkich 
 
    d. Wybierz odpowiednią warstwę cenową dla usługi. Wybierz pozycję **Wyświetl wszystko** , aby wyświetlić więcej opcji cenowych, takich jak **bezpłatne** i **udostępnione**.
 
-   d. Kliknij przycisk **wybierz** przycisku.
+   d. Kliknij przycisk **Wybierz** .
 
    e. W okienku **App Service plan** wybierz pozycję **OK**.
 1. Wybierz pozycję **Utwórz**.
@@ -429,11 +421,11 @@ Możesz połączyć istniejącą bazę danych SQL z zaplecem Mobile Apps lub utw
 
 1. Na stronie nowy Mobile Apps zaplecza wybierz pozycję **ustawienia** > **aplikacja mobilna** > **dane** >  **+ Dodaj**.
 1. W okienku **Dodawanie połączenia danych** wybierz pozycję **SQL Database — skonfiguruj wymagane ustawienia** , > **utworzyć nową bazę danych**. Wprowadź nazwę nowej bazy danych w polu **Nazwa** .
-1. Wybierz pozycję **serwer**. W okienku **nowy serwer** wprowadź unikatową nazwę serwera w polu **Nazwa serwera** , a następnie podaj odpowiedni identyfikator logowania i hasło administratora serwera. Upewnij się, że wybrano opcję **Zezwalaj usługom platformy Azure na dostęp do serwera** . Wybierz **OK**.
+1. Wybierz pozycję **serwer**. W okienku **nowy serwer** wprowadź unikatową nazwę serwera w polu **Nazwa serwera** , a następnie podaj odpowiedni identyfikator logowania i hasło administratora serwera. Upewnij się, że wybrano opcję **Zezwalaj usługom platformy Azure na dostęp do serwera** . Kliknij przycisk **OK**.
 
    ![Tworzenie bazy danych Azure SQL Database][6]
 1. W okienku **Nowa baza danych** wybierz **przycisk OK**.
-1. Wróć do okienka **Dodawanie połączenia danych** , wybierz pozycję **Parametry połączenia**, a następnie wprowadź nazwę logowania i hasło podane podczas tworzenia bazy danych. W przypadku korzystania z istniejącej bazy danych podaj poświadczenia logowania dla tej bazy danych. Wybierz **OK**.
+1. Wróć do okienka **Dodawanie połączenia danych** , wybierz pozycję **Parametry połączenia**, a następnie wprowadź nazwę logowania i hasło podane podczas tworzenia bazy danych. W przypadku korzystania z istniejącej bazy danych podaj poświadczenia logowania dla tej bazy danych. Kliknij przycisk **OK**.
 1. Ponownie w okienku **Dodaj połączenie danych** wybierz pozycję **OK** , aby utworzyć bazę danych.
 
 <!--- END OF ALTERNATE INCLUDE -->

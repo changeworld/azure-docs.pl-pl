@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: d3f5ef9d2c3359dc61c32d4971100b096b004f2f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881549"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667480"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych przez Subskrybowanie powiadomień Event Grid
 
@@ -20,6 +20,7 @@ ms.locfileid: "72881549"
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
+> * [Szablon usługi Azure Resource Manager](data-connection-event-grid-resource-manager.md)
 
 Azure Eksplorator danych to szybka i skalowalna usługa eksploracji danych dla danych dzienników i telemetrii. Oferuje ciągłe pozyskiwanie (ładowanie danych) z obiektów blob, które są zapisywane do kontenerów obiektów BLOB. 
 
@@ -35,7 +36,7 @@ W tym artykule dowiesz się, jak ustawić subskrypcję [Azure Event Grid](/azure
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>Tworzenie subskrypcji usługi Event Grid na koncie magazynu
 
 1. W Azure Portal Znajdź konto magazynu.
-1. Wybierz pozycję **zdarzenia** > **subskrypcja zdarzeń**.
+1. Wybierz pozycję **zdarzenia** > **subskrypcją zdarzeń**.
 
     ![Link do aplikacji Zapytanie](media/ingest-data-event-grid/create-event-grid-subscription.png)
 

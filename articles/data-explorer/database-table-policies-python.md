@@ -7,23 +7,26 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 2afe3da8b4d4bee31b17320ad976e795e91d410a
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71997243"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667273"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Tworzenie zasad bazy danych i tabel dla usługi Azure Eksplorator danych przy użyciu języka Python
 
-Azure Eksplorator danych to szybka i wysoce skalowalna usługa eksploracji danych dla danych dzienników i telemetrii. W tym artykule opisano tworzenie zasad bazy danych i tabel dla platformy Azure Eksplorator danych przy użyciu języka Python.
+> [!div class="op_single_selector"]
+> * [C#](database-table-policies-csharp.md)
+> * [Python](database-table-policies-python.md)
+>
+
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. W tym artykule opisano tworzenie zasad bazy danych i tabel dla platformy Azure Eksplorator danych przy użyciu języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) .
-
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 * [Klaster testowy i baza danych](create-cluster-database-python.md)
-
 * [Tabela testowa](python-ingest-data.md#create-a-table-on-your-cluster)
 
 ## <a name="install-the-data-libraries"></a>Instalowanie bibliotek danych
@@ -35,7 +38,7 @@ pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
 ## <a name="authentication"></a>Uwierzytelnianie
-Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskać dostęp do zasobów. Możesz użyć tej samej aplikacji usługi Azure AD do uwierzytelniania z [klastra testowego i bazy danych](create-cluster-database-csharp.md#authentication). Jeśli chcesz użyć innej aplikacji usługi Azure AD, zobacz [Tworzenie aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) w celu utworzenia bezpłatnej aplikacji usługi Azure AD i Dodawanie przypisania roli do zakresu subskrypcji. Przedstawiono w nim również, jak uzyskać `Directory (tenant) ID`, `Application ID` i `Client Secret`. Może być konieczne dodanie nowej aplikacji usługi Azure AD jako podmiotu zabezpieczeń w bazie danych, zobacz [Zarządzanie uprawnieniami usługi azure Eksplorator danych Database](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).    
+Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskać dostęp do zasobów. Możesz użyć tej samej aplikacji usługi Azure AD do uwierzytelniania z [klastra testowego i bazy danych](create-cluster-database-csharp.md#authentication). Jeśli chcesz użyć innej aplikacji usługi Azure AD, zobacz [Tworzenie aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) w celu utworzenia bezpłatnej aplikacji usługi Azure AD i Dodawanie przypisania roli do zakresu subskrypcji. Przedstawiono w nim również, jak uzyskać `Directory (tenant) ID`, `Application ID`i `Client Secret`. Może być konieczne dodanie nowej aplikacji usługi Azure AD jako podmiotu zabezpieczeń w bazie danych, zobacz [Zarządzanie uprawnieniami usługi azure Eksplorator danych Database](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).    
 
 ## <a name="alter-database-retention-policy"></a>Zmień zasady przechowywania bazy danych
 Ustawia zasady przechowywania z 10-dniowym okresem usuwania nietrwałego.

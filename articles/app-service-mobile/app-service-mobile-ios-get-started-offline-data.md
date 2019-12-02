@@ -1,25 +1,17 @@
 ---
-title: Włączanie synchronizacji w trybie offline za pomocą aplikacji mobilnych dla systemu iOS | Microsoft Docs
+title: Włącz synchronizację w trybie offline (iOS)
 description: Dowiedz się, jak używać Azure App Service Mobile Apps do buforowania i synchronizowania danych w trybie offline w aplikacjach systemu iOS.
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: f29a28f9a80b64ef0a6890fa8fc7ecd0ca205e66
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388770"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668493"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Włączanie synchronizacji w trybie offline za pomocą aplikacji mobilnych dla systemu iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -29,7 +21,7 @@ ms.locfileid: "72388770"
 >
 > Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Ten samouczek dotyczy synchronizacji w trybie offline z Mobile Apps funkcją Azure App Service dla systemu iOS. Dzięki synchronizacji w trybie offline użytkownicy końcowi mogą korzystać z aplikacji mobilnej w celu wyświetlania, dodawania i modyfikowania danych, nawet jeśli nie mają połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Po powrocie urządzenia do trybu online zmiany są synchronizowane ze zdalnym zapleczem.
 
 Jeśli jest to pierwsze środowisko pracy z Mobile Apps, należy najpierw ukończyć samouczek [Tworzenie aplikacji dla systemu iOS]. Jeśli nie używasz pobranego projektu serwera szybkiego startu, musisz dodać pakiety rozszerzeń dostępu do danych do projektu. Aby uzyskać więcej informacji o pakietach rozszerzeń serwera, zobacz [Work with the .NET zaplecz Server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
@@ -166,11 +158,11 @@ W przypadku korzystania z funkcji synchronizacji w trybie offline Zdefiniuj trzy
 
 | Atrybut | Typ |
 | --- | --- |
-| id | Integer 64 |
+| id | Liczba całkowita 64 |
 | Elementów | Ciąg |
-| Właściwości | Binary Data |
-| table | Ciąg |
-| tableKind | Integer 16 |
+| properties | Dane binarne |
+| tabele | Ciąg |
+| tableKind | Liczba całkowita 16 |
 
 
 **MS_TableOperationErrors**
@@ -180,9 +172,9 @@ W przypadku korzystania z funkcji synchronizacji w trybie offline Zdefiniuj trzy
 | Atrybut | Typ |
 | --- | --- |
 | id |Ciąg |
-| operationId |Integer 64 |
-| Właściwości |Binary Data |
-| tableKind |Integer 16 |
+| operationId |Liczba całkowita 64 |
+| properties |Dane binarne |
+| tableKind |Liczba całkowita 16 |
 
  **MS_TableConfig**
 
@@ -192,8 +184,8 @@ W przypadku korzystania z funkcji synchronizacji w trybie offline Zdefiniuj trzy
 | --- | --- |
 | id |Ciąg |
 | key |Ciąg |
-| KeyType |Integer 64 |
-| table |Ciąg |
+| KeyType |Liczba całkowita 64 |
+| tabele |Ciąg |
 | wartość |Ciąg |
 
 ### <a name="data-table"></a>Tabela danych
@@ -205,8 +197,8 @@ W przypadku korzystania z funkcji synchronizacji w trybie offline Zdefiniuj trzy
 | id | Ciąg, oznaczone jako wymagane |Klucz podstawowy w magazynie zdalnym |
 | wykonanie | Wartość logiczna | Pole elementu do wykonania |
 | tekst |Ciąg |Pole elementu do wykonania |
-| createdAt | Date | obowiązkowe Mapowanie do właściwości systemowej **createdAt** |
-| updatedAt | Date | obowiązkowe Mapowanie do właściwości systemowej **updatedAt** |
+| createdAt | Data | obowiązkowe Mapowanie do właściwości systemowej **createdAt** |
+| updatedAt | Data | obowiązkowe Mapowanie do właściwości systemowej **updatedAt** |
 | version | Ciąg | obowiązkowe Służy do wykrywania konfliktów, mapowania do wersji |
 
 ## <a name="setup-sync"></a>Zmiana zachowania synchronizacji aplikacji
@@ -247,7 +239,7 @@ W tej sekcji połączysz się z nieprawidłowym adresem URL w celu symulowania s
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **Kod SWIFT**. In ToDoTableViewController.swift:
+   **Kod SWIFT**. W ToDoTableViewController. SWIFT:
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
@@ -275,7 +267,7 @@ Normalne operacje tworzenia, odczytu, aktualizacji i usuwania (CRUD) dla aplikac
 
 Po zsynchronizowaniu lokalnego magazynu z serwerem użyto metody **MSSyncTable. pullWithQuery** .
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 * [Synchronizacja danych w trybie offline w Mobile Apps]
 * [Pokrycie w chmurze: synchronizacja w trybie offline na platformie Azure Mobile Services] \(film wideo ma Mobile Services, ale Mobile Apps synchronizacja w trybie offline działa w podobny sposób.\)
 

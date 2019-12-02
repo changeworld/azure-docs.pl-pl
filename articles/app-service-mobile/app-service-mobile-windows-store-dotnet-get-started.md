@@ -1,25 +1,17 @@
 ---
-title: Tworzenie aplikacji platformy uniwersalnej systemu Windows korzystającej z usługi Azure Mobile Apps | Microsoft Docs
+title: Tworzenie aplikacji platformy UWP
 description: Wykonaj kroki opisane w tym samouczku, aby rozpocząć używanie zapleczy aplikacji mobilnych Azure na potrzeby tworzenia aplikacji platformy uniwersalnej systemu Windows w języku C#, Visual Basic lub JavaScript.
-services: app-service\mobile
-documentationcenter: windows
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 47124296-2908-4d92-85e0-05c4aa6db916
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 3ddd5ef197740315add2960971c978addb7fe62a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: a0f78239406567513c1eb94b48bf1090165d9185
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388566"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668697"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Tworzenie aplikacji systemu Windows z zapleczem na platformie Azure
 
@@ -28,7 +20,7 @@ ms.locfileid: "72388566"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 
@@ -60,11 +52,11 @@ Wykonaj te kroki, aby utworzyć zaplecze nowej Aplikacji mobilnej.
 
 1. Otwórz projekt platformy UWP.
 
-2. Przejdź do [Azure Portal](https://portal.azure.com/) i przejdź do utworzonej aplikacji mobilnej. W bloku `Overview` poszukaj adresu URL, który jest publicznym punktem końcowym aplikacji mobilnej. Przykład — nazwa witryny dla mojej aplikacji "test123" będzie https://test123.azurewebsites.net.
+2. Przejdź do [Azure Portal](https://portal.azure.com/) i przejdź do utworzonej aplikacji mobilnej. W bloku `Overview` Wyszukaj adres URL, który jest publicznym punktem końcowym aplikacji mobilnej. Przykład — nazwa sitename dla mojej aplikacji "test123" zostanie https://test123.azurewebsites.net.
 
-3. Otwórz plik `App.xaml.cs` w tym folderze-Windows-platformy UWP-CS/ZUMOAPPNAME/. Nazwa aplikacji jest `ZUMOAPPNAME`.
+3. Otwórz plik `App.xaml.cs` w tym folderze — Windows-platformy UWP-CS/ZUMOAPPNAME/. Nazwa aplikacji jest `ZUMOAPPNAME`.
 
-4. W klasie `App` Zastąp parametr `ZUMOAPPURL` powyższym publicznym punktem końcowym.
+4. W klasie `App` Zastąp parametr `ZUMOAPPURL` z publicznym punktem końcowym powyżej.
 
     `public static MobileServiceClient MobileService = new MobileServiceClient("ZUMOAPPURL");`
 

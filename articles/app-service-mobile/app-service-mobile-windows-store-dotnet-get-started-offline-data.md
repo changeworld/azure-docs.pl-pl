@@ -1,25 +1,17 @@
 ---
-title: Włącz synchronizację w trybie offline dla aplikacji platforma uniwersalna systemu Windows (platformy UWP) z Mobile Apps | Microsoft Docs
+title: Włączanie synchronizacji w trybie offline dla aplikacji platformy UWP
 description: Dowiedz się, jak używać aplikacji mobilnej platformy Azure do buforowania i synchronizowania danych w trybie offline w aplikacji platforma uniwersalna systemu Windows (platformy UWP).
-documentationcenter: windows
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 1f15bd86debd98104a408c00650f5acfab94c526
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66ae11fb0532ae2a138eb8590eb92de15e997dfa
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388569"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668402"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji systemu Windows
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -29,7 +21,7 @@ ms.locfileid: "72388569"
 >
 > Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym samouczku pokazano, jak dodać obsługę offline do aplikacji platforma uniwersalna systemu Windows (platformy UWP) przy użyciu zaplecza aplikacji mobilnej platformy Azure. Synchronizacja w trybie offline umożliwia użytkownikom końcowym korzystanie z aplikacji mobilnej — wyświetlanie, Dodawanie lub modyfikowanie danych — nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie przewróci do trybu online, te zmiany są synchronizowane ze zdalną zapleczem.
 
 W tym samouczku zostanie zaktualizowany projekt aplikacji platformy UWP z samouczka [Tworzenie aplikacji systemu Windows] w celu obsługi funkcji offline usługi Azure Mobile Apps. Jeśli nie używasz pobranego projektu szybkiego startu serwera, musisz dodać pakiety rozszerzenia dostępu do danych do projektu. Aby uzyskać więcej informacji o pakietach rozszerzeń serwera, zobacz [Work with the .NET zaplecz Server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).

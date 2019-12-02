@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b69cdb1ee04e3824bf5fd20a7db2401161fdf6e7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 113c039c9b7f0319bb724bcde1432044c0770672
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031671"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667669"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Tworzenie połączenia danych centrum zdarzeń dla usługi Azure Eksplorator danych przy użyciu języka Python
 
@@ -20,19 +20,16 @@ ms.locfileid: "72031671"
 > * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
+> * [Szablon usługi Azure Resource Manager](data-connection-event-hub-resource-manager.md)
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Eksplorator danych oferuje pozyskiwanie (ładowanie danych) z Event Hubs, centrów IoT i obiektów blob, które są zapisywane do kontenerów obiektów BLOB. W tym artykule opisano tworzenie połączenia danych centrum zdarzeń dla usługi Azure Eksplorator danych przy użyciu języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-
 * Tworzenie [klastra i bazy danych](create-cluster-database-csharp.md)
-
 * Tworzenie [mapowania tabeli i kolumny](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * Ustawianie [zasad bazy danych i tabeli](database-table-policies-csharp.md) (opcjonalnie)
-
 * Utwórz [centrum zdarzeń z danymi do](ingest-data-event-hub.md#create-an-event-hub)pozyskiwania. 
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]

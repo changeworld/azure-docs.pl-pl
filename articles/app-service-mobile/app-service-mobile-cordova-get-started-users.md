@@ -1,25 +1,17 @@
 ---
-title: Dodawanie uwierzytelniania na Apache Cordova z Mobile Apps | Microsoft Docs
-description: Dowiedz się, jak używać Mobile Apps w Azure App Service do uwierzytelniania użytkowników aplikacji Apache Cordova za pomocą różnych dostawców tożsamości, w tym Google, Facebook, Twitter i Microsoft.
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
+title: Dodawanie uwierzytelniania na Apache Cordova
+description: Dowiedz się, w jaki sposób używać Mobile Apps w Azure App Service do uwierzytelniania użytkowników aplikacji Apache Cordova z dostawcami tożsamości, takimi jak Google, Facebook, Twitter i Microsoft.
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: c42cf2c944457b6b738578f738cd338977df8185
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f85c8e4f8eedccf3039038308f2262727fb18197
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388814"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668552"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Dodawanie uwierzytelniania do aplikacji Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388814"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="summary"></a>Podsumowanie
 W tym samouczku dodasz uwierzytelnianie do projektu szybkiego startu todolist na Apache Cordova przy użyciu obsługiwanego dostawcy tożsamości. Ten samouczek jest oparty na samouczku [wprowadzenie do Mobile Apps] , który należy wykonać w pierwszej kolejności.
@@ -50,22 +42,22 @@ Następnie zaktualizuj aplikację, aby uwierzytelnić użytkowników przed zaż�
 
 ## <a name="add-authentication"></a>Dodawanie uwierzytelniania do aplikacji
 1. Otwórz projekt w programie **Visual Studio**, a następnie otwórz plik `www/index.html` do edycji.
-2. Znajdź tag meta `Content-Security-Policy` w sekcji nagłówkowej.  Dodaj hosta OAuth do listy dozwolonych źródeł.
+2. Zlokalizuj tag meta `Content-Security-Policy` w sekcji nagłówkowej.  Dodaj hosta OAuth do listy dozwolonych źródeł.
 
    | Dostawca | Nazwa dostawcy zestawu SDK | Host OAuth |
    |:--- |:--- |:--- |
    | Usługa Active Directory systemu Azure | AAD | https://login.microsoftonline.com |
    | Serwis Facebook | Serwis | https://www.facebook.com |
-   | Google | usłudze | https://accounts.google.com |
+   | Google | Usłudze | https://accounts.google.com |
    | Microsoft | microsoftaccount | https://login.live.com |
-   | Serwis Twitter | Ekran | https://api.twitter.com |
+   | Serwis Twitter | ekran | https://api.twitter.com |
 
     Przykładowa zawartość — zasady zabezpieczeń (zaimplementowane dla Azure Active Directory) są następujące:
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
             data: gap: https://login.microsoftonline.com https://yourapp.azurewebsites.net; style-src 'self'">
 
-    Zastąp `https://login.microsoftonline.com` hostem OAuth z powyższej tabeli.  Aby uzyskać więcej informacji na temat meta Content-Security-Policy tag, zobacz [Zawartość — dokumentacja dotycząca zasad].
+    Zastąp `https://login.microsoftonline.com` z hostem OAuth z powyższej tabeli.  Aby uzyskać więcej informacji na temat meta Content-Security-Policy tag, zobacz [Zawartość — dokumentacja dotycząca zasad].
 
     Niektórzy dostawcy uwierzytelniania nie wymagają zmian zawartości Content-Security-Policy, gdy są używane na odpowiednich urządzeniach przenośnych.  Na przykład w przypadku korzystania z uwierzytelniania Google na urządzeniu z systemem Android nie są wymagane żadne zmiany w zakresie zabezpieczeń zawartości.
 

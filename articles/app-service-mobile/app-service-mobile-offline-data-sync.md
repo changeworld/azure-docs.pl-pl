@@ -1,32 +1,24 @@
 ---
-title: Synchronizacja danych w trybie offline na platformie Azure Mobile Apps | Microsoft Docs
+title: Synchronizacja danych w trybie offline
 description: Dokumentacja koncepcyjna i Omówienie funkcji synchronizacji danych w trybie offline dla usługi Azure Mobile Apps
-documentationcenter: windows
 author: conceptdev
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: dcab966aed125e43fff49299a46a2e8bbb938d66
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9238ebd06a4aa532d20a2a98499963a75780f025
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388593"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668412"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps
 
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="what-is-offline-data-sync"></a>Co to jest synchronizacja danych w trybie offline?
 Synchronizacja danych w trybie offline to funkcja zestawu SDK klienta i serwera systemu Azure Mobile Apps, która ułatwia deweloperom tworzenie aplikacji, które są funkcjonalne bez połączenia sieciowego.
@@ -64,7 +56,7 @@ Aby użyć implementacji opartej na programie SQLite na Windows Phone lub Micros
 Deweloperzy mogą również zaimplementować swój własny magazyn lokalny. Na przykład jeśli chcesz przechowywać dane w szyfrowanym formacie na kliencie mobilnym, możesz zdefiniować magazyn lokalny, który używa elementu SQLCIPHER do szyfrowania.
 
 ## <a name="what-is-a-sync-context"></a>Co to jest kontekst synchronizacji?
-*Kontekst synchronizacji* jest skojarzony z obiektem klienta mobilnego (takim jak `IMobileServiceClient` lub `MSClient`) i śledzi zmiany wprowadzane przy użyciu tabel synchronizacji. Kontekst synchronizacji utrzymuje *kolejkę operacji*, która zachowuje uporządkowaną listę operacji cud (tworzenie, aktualizowanie, usuwanie), które są później wysyłane do serwera.
+*Kontekst synchronizacji* jest skojarzony z obiektem klienta mobilnego (takim jak `IMobileServiceClient` lub `MSClient`) i śledzi zmiany wprowadzone w tabelach synchronizacji. Kontekst synchronizacji utrzymuje *kolejkę operacji*, która zachowuje uporządkowaną listę operacji cud (tworzenie, aktualizowanie, usuwanie), które są później wysyłane do serwera.
 
 Magazyn lokalny jest skojarzony z kontekstem synchronizacji przy użyciu metody inicjacji, takiej jak `IMobileServicesSyncContext.InitializeAsync(localstore)` w [Zestaw SDK klienta platformy .NET].
 
@@ -76,7 +68,7 @@ W przypadku korzystania z tabel synchronizacji kod klienta kontroluje, kiedy lok
 * **Niejawne wypychania**: Jeśli ściąganie jest wykonywane względem tabeli, która ma oczekujące aktualizacje lokalne, ściąganie wykonuje najpierw `push()` w kontekście synchronizacji. Ta wypychanie pomaga zminimalizować konflikty między zmianami, które zostały już dodane do kolejki i nowymi danymi z serwera.
 * **Synchronizacja przyrostowa**: pierwszy parametr operacji ściągania jest *nazwą zapytania* , która jest używana tylko przez klienta. Jeśli używasz nazwy zapytania o wartości innej niż null, zestaw Azure Mobile SDK wykonuje *synchronizację przyrostową*. Za każdym razem, gdy operacja ściągania zwraca zestaw wyników, Najnowsza sygnatura czasowa `updatedAt` z tego zestawu wyników jest przechowywana w lokalnych tabelach systemowych zestawu SDK. Kolejne operacje ściągania pobierają tylko rekordy po tej sygnaturze czasowej.
 
-  Aby można było korzystać z synchronizacji przyrostowej, serwer musi zwrócić znaczące wartości `updatedAt` i musi również obsługiwać sortowanie według tego pola. Ponieważ jednak zestaw SDK dodaje własne sortowanie w polu updatedAt, nie można użyć zapytania ściągania, które ma własną klauzulę `orderBy`.
+  Aby można było użyć synchronizacji przyrostowej, serwer musi zwrócić znaczące wartości `updatedAt` i musi również obsługiwać sortowanie według tego pola. Ponieważ jednak zestaw SDK dodaje własne sortowanie w polu updatedAt, nie można użyć zapytania ściągania, które ma własną klauzulę `orderBy`.
 
   Nazwa zapytania może być dowolnym wybranym ciągiem, ale musi być unikatowa dla każdej kwerendy logicznej w aplikacji.
   W przeciwnym razie różne operacje ściągnięcia mogą zastąpić tę samą sygnaturę czasową synchronizacji przyrostowej, a zapytania mogą zwracać nieprawidłowe wyniki.

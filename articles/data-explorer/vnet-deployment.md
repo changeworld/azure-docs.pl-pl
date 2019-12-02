@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: a7a9efbf6fd9c3dbe6b16d12a54f743d5b0820ba
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838212"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668572"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Wdróż Eksplorator danych platformy Azure w Virtual Network (wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ Nie można zmienić rozmiaru podsieci używanej do hostowania klastra Eksplorato
 
 Łączna liczba adresów IP:
 
-| Użycie | Liczba adresów |
+| Eksploatacja | Liczba adresów |
 | --- | --- |
 | Usługa aparatu | 1 na wystąpienie |
 | Usługa zarządzania danymi | 2 |
@@ -64,6 +64,9 @@ Nie można zmienić rozmiaru podsieci używanej do hostowania klastra Eksplorato
 [Punkty końcowe usługi platformy Azure](/azure/virtual-network/virtual-network-service-endpoints-overview) umożliwiają zabezpieczenie zasobów wielu dzierżawców platformy Azure w sieci wirtualnej.
 Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfigurowanie połączeń danych za pomocą [centrum zdarzeń](/azure/event-hubs/event-hubs-about) lub [Event Grid](/azure/event-grid/overview) podczas ograniczania podstawowych zasobów podsieci Eksplorator danych platformy Azure.
 
+> [!NOTE]
+> W przypadku korzystania z Instalatora usługi EventGrid z [magazynem](/azure/storage/common/storage-introduction) i usługą [Event Hub] konto magazynu używane w ramach subskrypcji może być blokowane z punktami końcowymi usługi do podsieci platformy Azure Eksplorator danych podczas zezwalania na zaufane usługi platformy Azure w [konfiguracji zapory](/azure/storage/common/storage-network-security), ale centrum zdarzeń nie może włączyć punktu końcowego usługi, ponieważ nie obsługuje on zaufanych [usług platformy Azure](/azure/event-hubs/event-hubs-service-endpoints).
+
 ## <a name="dependencies-for-vnet-deployment"></a>Zależności dotyczące wdrożenia sieci wirtualnej
 
 ### <a name="network-security-groups-configuration"></a>Konfiguracja sieciowych grup zabezpieczeń
@@ -76,7 +79,7 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 | --- | --- | --- | --- |
 | Zarządzanie  |[ADX Management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | Podsieć ADX: 443  | TCP  |
 | Monitorowanie kondycji  | [ADX adresy monitorowania kondycji](#health-monitoring-addresses)  | Podsieć ADX: 443  | TCP  |
-| Wewnętrzna komunikacja ADX  | Podsieć ADX: wszystkie porty  | Podsieć ADX: wszystkie porty  | Wszyscy  |
+| Wewnętrzna komunikacja ADX  | Podsieć ADX: wszystkie porty  | Podsieć ADX: wszystkie porty  | Wszystko  |
 | Zezwalaj na ruch przychodzący modułu równoważenia obciążenia platformy Azure (sonda kondycji)  | AzureLoadBalancer  | Podsieć ADX: 80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>Konfiguracja wychodzącej sieciowej grupy zabezpieczeń
@@ -90,7 +93,7 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 | Pobieranie konfiguracji Azure Monitor  | Podsieć ADX  | [Adresy punktów końcowych konfiguracji Azure monitor](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Active Directory (jeśli dotyczy) | Podsieć ADX | Usługi azureactivedirectory: 443 | TCP |
 | Urząd certyfikacji | Podsieć ADX | Internet: 80 | TCP |
-| Komunikacja wewnętrzna  | Podsieć ADX  | Podsieć ADX: wszystkie porty  | Wszyscy  |
+| Komunikacja wewnętrzna  | Podsieć ADX  | Podsieć ADX: wszystkie porty  | Wszystko  |
 | Porty używane na potrzeby wtyczek `sql\_request` i `http\_request`  | Podsieć ADX  | Internet: niestandardowe  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>Odpowiednie adresy IP
@@ -119,16 +122,16 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 | Japonia Zachodnia | 40.81.184.86 |
 | Korea Środkowa | 40.82.156.149 |
 | Korea Południowa | 40.80.234.9 |
-| Środkowo-północne stany USA | 40.81.45.254 |
+| Północno-środkowe stany USA | 40.81.45.254 |
 | Europa Północna | 52.142.91.221 |
 | Północna Republika Południowej Afryki | 102.133.129.138 |
 | Północna Republika Południowej Afryki | 102.133.0.97 |
-| Środkowo-południowe stany USA | 20.45.3.60 |
+| Południowo-środkowe stany USA | 20.45.3.60 |
 | Azja Południowo-Wschodnia | 40.119.203.252 |
 | Indie Południowe | 40.81.72.110 |
 | Południowe Zjednoczone Królestwo | 40.81.154.254 |
 | Zachodnie Zjednoczone Królestwo | 40.81.122.39 |
-| Środkowo-zachodnie stany USA | 52.159.55.120 |
+| Zachodnio-środkowe stany USA | 52.159.55.120 |
 | Europa Zachodnia | 51.145.176.215 |
 | Indie Zachodnie | 40.81.88.112 |
 | Zachodnie stany USA | 13.64.38.225 |
@@ -158,16 +161,16 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 | Japonia Zachodnia | 138.91.19.129 |
 | Korea Środkowa | 138.91.19.129 |
 | Korea Południowa | 138.91.19.129 |
-| Środkowo-północne stany USA | 23.96.212.108 |
+| Północno-środkowe stany USA | 23.96.212.108 |
 | Europa Północna | 191.235.212.69 
 | Północna Republika Południowej Afryki | 104.211.224.189 |
 | Zachodnia Republika Południowej Afryki | 104.211.224.189 |
-| Środkowo-południowe stany USA | 23.98.145.105 |
+| Południowo-środkowe stany USA | 23.98.145.105 |
 | Indie Południowe | 23.99.5.162 |
 | Azja Południowo-Wschodnia | 168.63.173.234 |
 | Południowe Zjednoczone Królestwo | 23.97.212.5 |
 | Zachodnie Zjednoczone Królestwo | 23.97.212.5 |
-| Środkowo-zachodnie stany USA | 168.61.212.201 |
+| Zachodnio-środkowe stany USA | 168.61.212.201 |
 | Europa Zachodnia | 23.97.212.5 |
 | Indie Zachodnie | 23.99.5.162 |
 | Zachodnie stany USA | 23.99.5.162 |
@@ -206,7 +209,7 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 | Azja Południowo-Wschodnia | 52.148.86.165 |
 | Południowe Zjednoczone Królestwo | 52.174.4.112 |
 | Zachodnie Zjednoczone Królestwo | 52.169.237.246 |
-| Środkowo-zachodnie stany USA | 52.161.31.69 |
+| Zachodnio-środkowe stany USA | 52.161.31.69 |
 | Europa Zachodnia | 52.174.4.112 |
 | Indie Zachodnie | 13.71.25.187 |
 | Zachodnie stany USA | 40.78.70.148 |

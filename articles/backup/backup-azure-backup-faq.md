@@ -3,12 +3,12 @@ title: Odpowiedzi na często zadawane pytania
 description: 'Odpowiedzi na typowe pytania dotyczące funkcji usługi Azure Backup, w tym magazynów usług Recovery Services, elementów, których kopie zapasowe można tworzyć, sposobu działania, szyfrowania i ograniczeń. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4005b171ef61fa02821b4a32db3be26cfb94c9ff
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173226"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668074"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup — często zadawane pytania
 
@@ -104,7 +104,7 @@ Limity rozmiarów są następujące:
 System operacyjny/maszyna | Limit rozmiaru źródła danych
 --- | ---
 Windows 8 lub nowszy | 54 400 GB
-Windows 7 |1700 GB
+Windows 7 |1700 GB
 Windows Server 2012 lub nowszy | 54 400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
 Maszyna wirtualna platformy Azure | 16 dysków z danymi<br/><br/> Dysk danych do 4095 GB
@@ -116,9 +116,9 @@ W poniższej tabeli opisano sposób ustalania rozmiaru dla każdego źródła da
 **Źródło danych** | **Szczegóły**
 --- | ---
 Wolumin |Ilość danych, których kopia zapasowa jest tworzona z maszyny wirtualnej z pojedynczym woluminem.
-Baza danych programu SQL Server |Rozmiar pojedynczego rozmiaru bazy danych SQL, którego kopia zapasowa jest tworzona.
+Baza danych SQL Server |Rozmiar pojedynczego rozmiaru bazy danych SQL, którego kopia zapasowa jest tworzona.
 Sharepoint | Suma baz danych zawartości i konfiguracji w obrębie farmy programu SharePoint, których kopia zapasowa jest tworzona.
-Exchange |Suma wszystkich baz danych programu Exchange znajdujących się w kopii zapasowej programu Exchange Server.
+Wymiana |Suma wszystkich baz danych programu Exchange znajdujących się w kopii zapasowej programu Exchange Server.
 BMR/stan systemu |Każda indywidualna kopia BMR lub stanu systemu maszyny, której kopia zapasowa jest tworzona.
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Czy istnieje ograniczenie ilości danych, których kopia zapasowa została utworzona przy użyciu Recovery Services magazynu?
@@ -176,7 +176,7 @@ Architektura magazynu usługi Azure Backup oferuje zalety obu rozwiązań dzięk
 
 Możesz utworzyć maksymalnie 9999 punktów odzyskiwania na każde pojedyncze chronione wystąpienie. Chronione wystąpienie jest komputerem, serwerem (fizycznym lub wirtualnym) lub obciążeniem, które tworzy kopię zapasową na platformie Azure.
 
-- Dowiedz się więcej na temat [tworzenia kopii zapasowych i przechowywania](./backup-overview.md#backup-and-retention).
+- Dowiedz się więcej na temat [tworzenia kopii zapasowych i przechowywania](./backup-support-matrix.md).
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Ile razy można odzyskać dane, których kopia zapasowa jest wykonywana na platformie Azure?
 

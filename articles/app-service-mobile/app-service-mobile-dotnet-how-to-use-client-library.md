@@ -1,25 +1,17 @@
 ---
-title: Praca z zarządzaną biblioteką klienta App Service Mobile Apps | Microsoft Docs
+title: Współpraca z zarządzaną biblioteką klienta
 description: Dowiedz się, jak używać biblioteki klienckiej .NET na potrzeby Azure App Service Mobile Apps z aplikacjami Windows i Xamarin.
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 1a56c6eed8b6a78587ea272c44f01d16e8a2b88d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388714"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668466"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak używać zarządzanego klienta usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -29,7 +21,7 @@ ms.locfileid: "72388714"
 >
 > Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym przewodniku pokazano, jak wykonywać typowe scenariusze przy użyciu zarządzanej biblioteki klienta Azure App Service Mobile Apps dla aplikacji dla systemu Windows i platformy Xamarin. Jeśli dopiero zaczynasz Mobile Apps, należy rozważyć pierwsze zakończenie samouczka [szybkiego startu platformy Azure Mobile Apps][1] . W tym przewodniku koncentrujemy się na zarządzanym przez klienta zestawie SDK. Aby dowiedzieć się więcej na temat zestawów SDK po stronie serwera dla Mobile Apps, zapoznaj się z dokumentacją [zestawu SDK programu .NET Server][2] lub [zestawu SDK serwera Node. js][3].
 
 ## <a name="reference-documentation"></a>Dokumentacja referencyjna
@@ -143,7 +135,7 @@ W tej sekcji opisano, jak wystawiać zapytania do zaplecza aplikacji mobilnej, k
 > Rozmiar strony oparty na serwerze jest wymuszany, aby zapobiec zwracaniu wszystkich wierszy.  Stronicowanie zachowuje domyślne żądania dla dużych zestawów danych, które nie mają negatywnego wpływu na usługę.  Aby zwrócić więcej niż 50 wierszy, użyj metody `Skip` i `Take`, zgodnie z opisem w [zwracanych danych na stronach](#paging).
 
 ### <a name="filtering"></a>Instrukcje: filtrowanie zwróconych danych
-Poniższy kod ilustruje sposób filtrowania danych przez uwzględnienie klauzuli `Where` w zapytaniu. Zwraca wszystkie elementy z `todoTable`, których właściwość `Complete` jest równa `false`. Funkcja [WHERE] stosuje predykat filtrowania wierszy do zapytania względem tabeli.
+Poniższy kod ilustruje sposób filtrowania danych przez uwzględnienie klauzuli `Where` w zapytaniu. Zwraca wszystkie elementy z `todoTable`, których właściwość `Complete` jest równa `false`. Funkcja [Miejscu] stosuje predykat filtrowania wierszy do zapytania względem tabeli.
 
 ```csharp
 // This query filters out completed TodoItems and items without a timestamp.
@@ -223,7 +215,7 @@ List<TodoItem> items = await query.ToListAsync();
 ```
 
 ### <a name="paging"></a>Instrukcje: Zwracanie danych na stronach
-Domyślnie zaplecze zwraca tylko pierwsze 50 wierszy. Można zwiększyć liczbę zwracanych wierszy, wywołując metodę [Take] . Użyj `Take` wraz z metodą [Skip] , aby zażądać określonej "strony" całkowitego zestawu danych zwróconego przez zapytanie. Następujące zapytanie, gdy wykonywane, zwraca trzy pierwsze elementy z tabeli.
+Domyślnie zaplecze zwraca tylko pierwsze 50 wierszy. Można zwiększyć liczbę zwracanych wierszy, wywołując metodę [Czasochłonn] . Użyj `Take` wraz z metodą [Skocz] , aby zażądać określonej "strony" całkowitego zestawu danych zwróconego przez zapytanie. Następujące zapytanie, gdy wykonywane, zwraca trzy pierwsze elementy z tabeli.
 
 ```csharp
 // Define a filtered query that returns the top 3 items.
@@ -636,7 +628,7 @@ Obsługiwane są dwa przepływy uwierzytelniania: przepływ zarządzany *przez k
 > [!NOTE]
 > Zalecamy używanie przepływu zarządzanego przez klienta w aplikacjach produkcyjnych.
 
-Aby skonfigurować uwierzytelnianie, należy zarejestrować aplikację z co najmniej jednym dostawcą tożsamości.  Dostawca tożsamości generuje identyfikator klienta i klucz tajny klienta dla aplikacji.  Te wartości są następnie ustawiane w zapleczu, aby umożliwić Azure App Service uwierzytelnianie/autoryzację.  Aby uzyskać więcej informacji, postępuj zgodnie z instrukcjami szczegółowe samouczka [Dodawanie uwierzytelniania do aplikacji].
+Aby skonfigurować uwierzytelnianie, należy zarejestrować aplikację z co najmniej jednym dostawcą tożsamości.  Dostawca tożsamości generuje identyfikator klienta i klucz tajny klienta dla aplikacji.  Te wartości są następnie ustawiane w zapleczu, aby umożliwić Azure App Service uwierzytelnianie/autoryzację.  Aby uzyskać więcej informacji, postępuj zgodnie ze szczegółowymi instrukcjami w samouczku [Dodawanie uwierzytelniania do aplikacji].
 
 W tej sekcji omówiono następujące tematy:
 
@@ -904,7 +896,7 @@ private async void InitNotificationsAsync()
 }
 ```
 
-W przypadku wypychania do WNS należy [uzyskać Microsoft Store identyfikator SID pakietu](#package-sid).  Aby uzyskać więcej informacji na aplikacje systemu Windows, w tym jak zarejestrować do rejestracji szablonów, zobacz [Dodawanie powiadomień wypychanych do aplikacji].
+W przypadku wypychania do WNS należy [uzyskać Microsoft Store identyfikator SID pakietu](#package-sid).  Aby uzyskać więcej informacji o aplikacjach systemu Windows, w tym o sposobie rejestrowania rejestracji szablonów, zobacz [Dodawanie powiadomień wypychanych do aplikacji].
 
 Żądanie tagów od klienta nie jest obsługiwane.  Żądania tagów zostały dyskretnie usunięte z rejestracji.
 Jeśli chcesz zarejestrować urządzenie ze znacznikami, Utwórz niestandardowy interfejs API, który używa interfejsu API Notification Hubs do przeprowadzenia rejestracji w Twoim imieniu.  Wywołaj niestandardowy interfejs API zamiast metody `RegisterNativeAsync()`.
@@ -917,7 +909,7 @@ Aby uzyskać tę wartość:
 1. W programie Visual Studio Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt aplikacji Microsoft Store, kliknij pozycję **zapisz** > **Skojarz aplikację ze sklepem...** .
 2. W Kreatorze kliknij przycisk **dalej**, zaloguj się przy użyciu konto Microsoft, wpisz nazwę aplikacji w polu **Zarezerwuj nową nazwę aplikacji**, a następnie kliknij pozycję **Zarezerwuj**.
 3. Po pomyślnym utworzeniu rejestracji aplikacji wybierz nazwę aplikacji, kliknij przycisk **dalej**, a następnie kliknij pozycję **Skojarz**.
-4. Zaloguj się do [Centrum deweloperów Windows] przy użyciu konta Microsoft. W obszarze **Moje aplikacje**kliknij utworzoną rejestrację aplikacji.
+4. Zaloguj się do [Centrum deweloperów systemu Windows] przy użyciu konta Microsoft. W obszarze **Moje aplikacje**kliknij utworzoną rejestrację aplikacji.
 5. Kliknij pozycję **Zarządzanie aplikacjami** > **tożsamość aplikacji**, a następnie przewiń w dół, aby znaleźć **Identyfikator SID pakietu**.
 
 Wiele użycia identyfikatora SID pakietu traktuje go jako identyfikator URI, w takim przypadku należy użyć *MS-App://* jako schematu. Zanotuj wersję identyfikatora SID pakietu utworzoną przez połączenie tej wartości jako prefiksu.
@@ -1067,17 +1059,17 @@ public class MyHandler : DelegatingHandler
 [OrderBy]: https://msdn.microsoft.com/library/azure/dn250572(v=azure.10).aspx
 [OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
-[Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
+[Czasochłonn]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
 [Wybierz]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
-[Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[Skocz]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [Nazwa]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[Miejscu]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [GUID. NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
-[Centrum deweloperów Windows]: https://dev.windows.com/overview
+[Centrum deweloperów systemu Windows]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 [PasswordVault]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: https://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
