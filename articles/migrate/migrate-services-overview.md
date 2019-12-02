@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 04e6eddb86d34089db0243ff102d5ebd5ee77e43
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 5843e6a5669cd90cdc0572e7a104c4fdf70ac2b3
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666124"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669130"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -49,7 +49,7 @@ Oprócz natywnych narzędzi platformy Azure Azure Migrate integruje się z innym
 [Technologia najmu](https://www.corenttech.com/AzureMigrate/) | Ocenianie i Migrowanie serwerów
 [Urządzenie 42](https://docs.device42.com/) | Ocenianie serwerów
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Ocena infrastruktury VDI
-[Stojaki](https://www.rackwareinc.com/cloud-migration) | Migrowanie serwerów
+[Stojaki](https://go.microsoft.com/fwlink/?linkid=2102735) | Migrowanie serwerów
 [Platforma turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Ocenianie serwerów
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Ocenianie serwerów i baz danych
 

@@ -1,25 +1,17 @@
 ---
-title: Dodawanie uwierzytelniania w systemie Android przy użyciu Mobile Apps | Microsoft Docs
-description: Dowiedz się, jak używać funkcji Mobile Apps Azure App Service do uwierzytelniania użytkowników aplikacji systemu Android za pomocą różnych dostawców tożsamości, w tym Google, Facebook, Twitter i Microsoft.
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
-editor: ''
+title: Dodawanie uwierzytelniania w systemie Android
+description: Dowiedz się, jak za pomocą usługi Azure App Service uwierzytelniać użytkowników aplikacji systemu Android za pomocą dostawców tożsamości, takich jak Google, Facebook, Twitter i Microsoft.
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: b520f6129e7d7fa1a4800143d5987d3eba625e98
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f68b4f8477d5b21a7107270370af387a7e88756e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388949"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668947"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Dodawanie uwierzytelniania do aplikacji systemu Android
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -47,7 +39,7 @@ Bezpieczne uwierzytelnianie wymaga zdefiniowania nowego schematu adresu URL dla 
 
 4. Kliknij przycisk **OK**.
 
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="permissions"></a>Ograniczanie uprawnień do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]

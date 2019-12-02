@@ -1,25 +1,17 @@
 ---
-title: Jak używać wtyczki Apache Cordova dla platformy Azure Mobile Apps
+title: Jak używać wtyczki Apache Cordova
 description: Jak używać wtyczki Apache Cordova dla platformy Azure Mobile Apps
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 25bff77da6c2bd89916fe40ebb153ff9631e62eb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ecca8f719a01abe68b368987fce4ea883193e844
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388804"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668507"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Jak używać Apache Cordovaej biblioteki klienckiej dla platformy Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388804"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 W tym przewodniku nauczysz się wykonywać typowe scenariusze przy użyciu najnowszej [Apache Cordova wtyczka dla platformy Azure Mobile Apps]. Jeśli dopiero zaczynasz pracę z platformą Azure Mobile Apps, najpierw Ukończ [Szybki start Mobile Apps platformy Azure] , aby utworzyć zaplecze, utworzyć tabelę i pobrać wstępnie utworzony projekt Apache Cordova. W tym przewodniku koncentrujemy się na dodatku Apache Cordova po stronie klienta.
@@ -38,7 +30,7 @@ Ten zestaw SDK obsługuje Apache Cordova v 6.0.0 i nowszych na urządzeniach z s
 * Android API 19-24 (KitKat do Nougat).
 * iOS w wersji 8,0 lub nowszej.
 * Windows Phone 8,1.
-* Platforma uniwersalna systemu Windows.
+* platforma uniwersalna systemu Windows.
 
 ## <a name="Setup"></a>Instalacja i wymagania wstępne
 W tym przewodniku przyjęto założenie, że utworzono zaplecze z tabelą. W tym przewodniku przyjęto założenie, że tabela ma ten sam schemat co tabele w tych samouczkach. W tym przewodniku przyjęto również założenie, że dodano wtyczkę Apache Cordova do kodu.  Jeśli nie zostało to zrobione, możesz dodać wtyczkę Apache Cordova do projektu w wierszu polecenia:
@@ -59,7 +51,7 @@ cd projectName
 ionic plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-Dodaj następujące wiersze do `app.component.ts`, aby utworzyć obiekt klienta:
+Dodaj następujące wiersze, aby `app.component.ts` utworzyć obiekt klienta:
 
 ```typescript
 declare var WindowsAzure: any;
@@ -112,7 +104,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby dodać ustawienia lokalne do k
              "https://localhost:3000"
          ],
 
-    Zastąp adresy URL adresami URL usługi.  Przykładami mogą być `http://localhost:3000` (dla przykładowej usługi Node. js) lub `http://localhost:4400` (w przypadku usługi Ripple).  Jednak te adresy URL to przykłady — Twoja sytuacja, która obejmuje usługi wymienione w przykładach, może się różnić.
+    Zastąp adresy URL adresami URL usługi.  Przykładami mogą być `http://localhost:3000` (dla przykładowej usługi Node. js) lub `http://localhost:4400` (dla usługi Ripple).  Jednak te adresy URL to przykłady — Twoja sytuacja, która obejmuje usługi wymienione w przykładach, może się różnić.
 8. Kliknij przycisk do **odczytu/zapisu** w prawym górnym rogu ekranu.
 9. Kliknij zielony przycisk **Put** .
 
@@ -130,7 +122,7 @@ Należy również dodać te adresy URL sprzężenia zwrotnego do ustawień CORS 
 Nowe ustawienia zaczną obowiązywać przez około 10-15 sekund.
 
 ## <a name="register-for-push"></a>Instrukcje: rejestrowanie w celu otrzymywania powiadomień wypychanych
-Zainstaluj program [PhoneGap — wtyczka — wypychanie] w celu obsługi powiadomień wypychanych.  Tę wtyczkę można łatwo dodać przy użyciu polecenia `cordova plugin add` w wierszu polecenia lub za pośrednictwem Instalatora wtyczki Git w programie Visual Studio.  Poniższy kod w aplikacji Apache Cordova rejestruje Twoje urządzenie na potrzeby powiadomień wypychanych:
+Zainstaluj program [PhoneGap — wtyczka — wypychanie] w celu obsługi powiadomień wypychanych.  Tę wtyczkę można łatwo dodać przy użyciu polecenia `cordova plugin add` w wierszu polecenia lub za pomocą Instalatora wtyczki Git w programie Visual Studio.  Poniższy kod w aplikacji Apache Cordova rejestruje Twoje urządzenie na potrzeby powiadomień wypychanych:
 
 ```javascript
 var pushOptions = {

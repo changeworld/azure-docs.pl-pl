@@ -1,25 +1,17 @@
 ---
-title: Włączanie synchronizacji w trybie offline dla aplikacji mobilnej platformy Azure (Xamarin iOS)
-description: Dowiedz się, jak używać App Service aplikacji mobilnej do buforowania i synchronizowania danych w trybie offline w aplikacji platformy Xamarin iOS
-documentationcenter: xamarin
-author: elamalani
-manager: cfowler
-editor: ''
-services: app-service\mobile
+title: Włącz synchronizację w trybie offline (Xamarin iOS)
+description: Dowiedz się, jak korzystać z aplikacji mobilnej App Service do buforowania i synchronizowania danych w trybie offline w aplikacji platformy Xamarin dla systemu iOS.
 ms.assetid: 828a287c-5d58-4540-9527-1309ebb0f32b
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: fc4fd639f364a0d0852ed066d26eb0e3cf73e68c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 615f8f028182178928d3d755c102daceef402ef4
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388367"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668247"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej platformy Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -29,7 +21,7 @@ ms.locfileid: "72388367"
 >
 > Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym samouczku przedstawiono funkcję synchronizacji offline usługi Azure Mobile Apps dla platformy Xamarin. iOS. Synchronizacja w trybie offline umożliwia użytkownikom końcowym korzystanie z aplikacji mobilnej — wyświetlanie, Dodawanie lub modyfikowanie danych — nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie przewróci do trybu online, te zmiany są synchronizowane z usługą zdalną.
 
 W tym samouczku zaktualizuj projekt aplikacji Xamarin. iOS z [Tworzenie aplikacji platformy Xamarin dla systemu iOS] w celu obsługi funkcji w trybie offline w usłudze Azure Mobile Apps. Jeśli nie używasz pobranego projektu szybkiego startu serwera, musisz dodać pakiety rozszerzenia dostępu do danych do projektu. Aby uzyskać więcej informacji o pakietach rozszerzeń serwera, zobacz [Work with the .NET zaplecz Server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
@@ -109,7 +101,7 @@ Projekt programu Xamarin Client pobrany po ukończeniu samouczka [Tworzenie apli
             }
         }
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 * [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]
 * [Azure Mobile Apps .NET SDK porady][8]
 

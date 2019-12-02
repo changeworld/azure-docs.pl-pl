@@ -1,25 +1,17 @@
 ---
-title: Jak używać zestawu SDK języka JavaScript dla platformy Azure Mobile Apps
+title: Korzystanie z zestawu SDK języka JavaScript
 description: Jak używać programu v dla usługi Azure Mobile Apps
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 8a22de6b3e518bb3c9392d7fd64411969b32f33f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f70523b5b27a4f3db86bacf39469e233e43f807
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388729"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668826"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Jak używać biblioteki klienckiej języka JavaScript dla platformy Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388729"
 > [!NOTE]
 > Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
 >
-> Jeśli chcesz zintegrować usługi w chmurze w swojej aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Przegląd
 W tym przewodniku nauczysz się wykonywać typowe scenariusze przy użyciu najnowszego [Zestaw JavaScript SDK dla platformy Azure Mobile Apps]. Jeśli dopiero zaczynasz pracę z platformą Azure Mobile Apps, najpierw Ukończ [Szybki start Mobile Apps platformy Azure] , aby utworzyć zaplecze i utworzyć tabelę. W tym przewodniku koncentrujemy się na korzystaniu z zaplecza mobilnego w aplikacjach sieci Web w języku HTML/JavaScript.
@@ -83,7 +75,7 @@ Uruchamianie lokalne może spowodować problemy, ponieważ domyślnie uwierzytel
 2. Przejdź do zaplecza aplikacji mobilnej.
 3. Wybierz pozycję **Eksplorator zasobów** w menu **Narzędzia programistyczne** .
 4. Kliknij pozycję **Przejdź** , aby otworzyć Eksploratora zasobów dla zaplecza aplikacji mobilnej na nowej karcie lub w nowym oknie.
-5. Rozwiń węzeł **konfiguracji** > **authsettings** dla aplikacji.
+5. Rozwiń węzeł **config** > **authsettings** dla swojej aplikacji.
 6. Kliknij przycisk **Edytuj** , aby włączyć edytowanie zasobu.
 7. Znajdź element **allowedExternalRedirectUrls** , który powinien mieć wartość null. Dodawanie adresów URL w tablicy:
 
@@ -92,7 +84,7 @@ Uruchamianie lokalne może spowodować problemy, ponieważ domyślnie uwierzytel
              "https://localhost:3000"
          ],
 
-    Zastąp adresy URL w tablicy adresami URL usługi, w tym przykładzie `http://localhost:3000` dla lokalnej usługi przykładowej Node. js. W zależności od konfiguracji aplikacji można również użyć `http://localhost:4400` dla usługi Ripple lub innego adresu URL.
+    Zastąp adresy URL w tablicy adresami URL usługi, które w tym przykładzie są `http://localhost:3000` dla lokalnej usługi przykładowej Node. js. W zależności od konfiguracji aplikacji można również użyć `http://localhost:4400` dla usługi Ripple lub innego adresu URL.
 8. W górnej części strony kliknij pozycję **Odczytaj/Zapisz**, a następnie kliknij pozycję **Umieść** , aby zapisać aktualizacje.
 
 Należy również dodać te same adresy URL sprzężenia zwrotnego do ustawień CORS dozwolonych:
