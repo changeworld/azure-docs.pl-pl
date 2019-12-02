@@ -1,6 +1,6 @@
 ---
 title: Rozpoczęcie korzystania z Azure Security Center dla agentów zabezpieczeń IoT | Microsoft Docs
-description: Rozpocznij pracę z Azure Security Centerami dla agentów zabezpieczeń IoT.
+description: Rozpocznij od poznania, konfigurowania, wdrażania i korzystania z Azure Security Center dla agentów usługi zabezpieczeń IoT na urządzeniach IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 6e790c125c59aea85f1ac34240c5a1d1969544ae
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ed890d9d3602de24e6f85f6f0ae7f59849f3df2
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600594"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664194"
 ---
 # <a name="get-started-with-azure-security-center-for-iot-device-security-agents"></a>Wprowadzenie do Azure Security Center dla agentów zabezpieczeń urządzeń IoT
 
@@ -37,7 +37,7 @@ Użyj poniższego przepływu pracy, aby wdrożyć i przetestować Azure Security
 1. [Utwórz moduł zabezpieczeń azureiotsecurity](quickstart-create-security-twin.md) dla urządzeń.
 1. Aby zainstalować agenta na symulowanym urządzeniu platformy Azure zamiast instalować go na rzeczywistym urządzeniu, uruchom [nową maszynę wirtualną platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) w dostępnej strefie. 
 1. [Wdróż Azure Security Center agenta zabezpieczeń IoT](how-to-deploy-linux-cs.md) na urządzeniu IoT lub nową maszynę wirtualną.
-1. Postępuj zgodnie z instrukcjami dla programu [trigger_events](https://aka.ms/iot-security-github-trigger-events) , aby uruchomić niegroźną symulację ataku.
+1. Postępuj zgodnie z instrukcjami [trigger_events](https://aka.ms/iot-security-github-trigger-events) , aby uruchomić niegroźną symulację ataku.
 1. Sprawdź, czy w poprzednim kroku Azure Security Center alertów IoT w odpowiedzi na ataki symulowane. Rozpocznij weryfikację po pięciu minutach od uruchomienia skryptu.
 1. Poznaj [alerty](concept-security-alerts.md), [zalecenia](concept-recommendations.md)i [głębokie szczegółowe przy użyciu log Analytics](how-to-security-data-access.md) przy użyciu IoT Hub. 
 

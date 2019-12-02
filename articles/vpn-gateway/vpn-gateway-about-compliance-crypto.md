@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: f18e5dbdc257aa1ae647505c323c17f9f197d360
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150985"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666498"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Wymagania kryptograficzne i bramy sieci VPN platformy Azure — informacje
 
@@ -20,7 +20,7 @@ W tym artykule omówiono, jak można skonfigurować bramy sieci VPN platformy Az
 
 ## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Informacje o protokołach IKEv1 i IKEv2 dla połączeń sieci VPN platformy Azure
 
-Tradycyjnie dozwolone są połączenia protokołu IKEv1 tylko dla podstawowych jednostek SKU i dozwolone są połączenia IKEv2 dla wszystkich jednostek SKU bramy sieci VPN innych niż podstawowe jednostki SKU. Podstawowe jednostki SKU zezwalają tylko na 1 połączenie i wraz z innymi ograniczeniami, takimi jak wydajność, klienci korzystający ze starszych urządzeń, które obsługują tylko protokoły IKEv1, mają ograniczoną obsługę. Aby zwiększyć możliwości klientów korzystających z protokołów IKEv1, teraz zezwalamy na połączenia protokołu IKEv1 dla wszystkich jednostek SKU bramy sieci VPN. Aby uzyskać więcej informacji, zobacz [VPN Gateway jednostek SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku).
+Tradycyjnie dozwolone są połączenia protokołu IKEv1 tylko dla podstawowych jednostek SKU i dozwolone są połączenia IKEv2 dla wszystkich jednostek SKU bramy sieci VPN innych niż podstawowe jednostki SKU. Podstawowe jednostki SKU zezwalają tylko na 1 połączenie i wraz z innymi ograniczeniami, takimi jak wydajność, klienci korzystający ze starszych urządzeń, które obsługują tylko protokoły IKEv1, mają ograniczoną obsługę. Aby zwiększyć możliwości klientów korzystających z protokołów IKEv1, teraz zezwalamy na połączenia protokołu IKEv1 dla wszystkich jednostek SKU bramy sieci VPN, z wyjątkiem podstawowej jednostki SKU. Aby uzyskać więcej informacji, zobacz [VPN Gateway jednostek SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku).
 
 ![Azure VPN Gateway połączenia IKEv1 i IKEv2](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 
@@ -42,7 +42,7 @@ Na przykład zasady trybu głównego protokołu IKEv2 dla bram sieci VPN platfor
 
 Bramy sieci VPN platformy Azure obsługują teraz dla połączeń, niestandardowe zasady protokołu IPsec/IKE. W przypadku połączenia typu lokacja-lokacja lub Sieć wirtualna-sieć wirtualna można wybrać konkretną kombinację algorytmów kryptograficznych dla protokołów IPsec i IKE z odpowiednią siłą klucza, jak pokazano w następującym przykładzie:
 
-![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![IPSec — zasady IKE](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
 Można utworzyć zasady protokołu IPsec/IKE i zastosować je do nowego lub istniejącego połączenia.
 

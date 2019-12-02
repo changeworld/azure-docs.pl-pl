@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wysyłanie danych urządzenia za pośrednictwem przezroczystej bramy — Machine Learning na Azure IoT Edge'
+title: 'Samouczek: wysyłanie danych za pośrednictwem bramy Azure IoT Edge & Machine Learning'
 description: 'Samouczek: Użyj maszyny deweloperskiej jako symulowanego urządzenia IoT Edge do wysyłania danych do IoT Hub przez przechodzenie przez urządzenie jako niejawną bramę.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a1974a9d9e635bad4094e38c2c194ff49993611
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: cdd1e1d83b1d184e6a904fc64e9c2395c2896d54
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113943"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665631"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Samouczek: wysyłanie danych za pośrednictwem niewidocznej bramy
 

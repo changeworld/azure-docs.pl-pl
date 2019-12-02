@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279698"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664951"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Przewodnik konfigurowania monitora kondycji kontenerów Azure Monitor
 
@@ -82,7 +82,7 @@ Azure Monitor kontenerów zawiera kilka kluczowych scenariuszy monitorowania, kt
 |Węzły (element nadrzędny puli węzłów) |Jest to zagregowany monitor wszystkich pul węzłów. Jego stan jest oparty na najgorszym stanie jego monitorów podrzędnych (czyli pul węzłów znajdujących się w klastrze). |Najgorszy z |
 |Klaster (element nadrzędny węzłów/<br> Infrastruktura Kubernetes) |Jest to monitor nadrzędny, który jest zgodny ze stanem monitora podrzędnego o najgorszym stanie kondycji, który jest Kubernetes infrastrukturą i węzłami. |Najgorszy z |
 |Infrastruktura Kubernetes |Ten monitor zgłasza łączny stan kondycji składników infrastruktury zarządzanej w klastrze. jego stan jest obliczany jako wartość "najgorszy" Stanów monitora podrzędnego, np. obciążeń systemu polecenia i stanu serwera interfejsu API. |Najgorszy z|
-|Obciążenie systemu |Ten monitor zgłasza stan kondycji obciążenia systemu polecenia. Ten monitor jest zgodny ze stanem monitora podrzędnego o najgorszym stanie kondycji, który jest **zasobnikiem w monitorze stanu gotowego** i kontenerami w obciążeniu. |Najgorszy z |
+|Obciążenie systemu |Ten monitor zgłasza stan kondycji obciążenia systemu polecenia. Ten monitor jest zgodny ze stanem monitora podrzędnego o najgorszym stanie kondycji, czyli **zasobników w stanie gotowe** (monitor i kontenery w obciążeniu). |Najgorszy z |
 |Kontener |Ten monitor zgłasza ogólny stan kondycji kontenera w danym obciążeniu. Ten monitor jest zgodny ze stanem monitora podrzędnego o najgorszym stanie kondycji, który jest monitorem użycia **procesora** i **wykorzystania pamięci** . |Najgorszy z |
 
 ## <a name="next-steps"></a>Następne kroki

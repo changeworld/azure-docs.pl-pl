@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: raynew
-ms.openlocfilehash: e752d52d0f792d39f417031c26d923fce07ccdf8
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 13a4fbb119ae9aceb8731e53f7123375a6e5c106
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747981"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666277"
 ---
 # <a name="azure-migrate-support-matrix"></a>Macierz obsługi Azure Migrate
 
@@ -54,7 +54,7 @@ Migracja serwera Azure Migrate | Nie dotyczy | Migrowanie [maszyn wirtualnych VM
 [DMS](https://docs.microsoft.com/azure/dms/dms-overview) | Nie dotyczy | Migrowanie SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Ocenianie infrastruktury pulpitu wirtualnego (VDI) | Nie dotyczy
 [Przeniesienie](https://go.microsoft.com/fwlink/?linkid=2109528) | Oceniaj maszyny wirtualne VMWare, maszyny wirtualne funkcji Hyper-V, maszyny wirtualne Xen, maszyny fizyczne, stacje robocze (w tym infrastruktury VDI), obciążenia chmury publicznej | Nie dotyczy
-[Stojaki](https://go.microsoft.com/fwlink/?linkid=2102735) | Nie dotyczy | Migrowanie maszyn wirtualnych VMWare, maszyn wirtualnych funkcji Hyper-V, maszyn wirtualnych Xen, maszyn wirtualnych KVM, komputerów fizycznych, obciążeń chmury publicznej 
+[Stojaki](https://www.rackwareinc.com/cloud-migration) | Nie dotyczy | Migrowanie maszyn wirtualnych VMWare, maszyn wirtualnych funkcji Hyper-V, maszyn wirtualnych Xen, maszyn wirtualnych KVM, komputerów fizycznych, obciążeń chmury publicznej 
 [Platforma turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Oceniaj maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V, serwery fizyczne, obciążenia chmury publicznej. | Nie dotyczy
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Oceniaj maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V, serwery fizyczne, obciążenia chmury publicznej i bazy danych SQL Server. | Nie dotyczy
 [Webapp Asystent migracji](https://appmigration.microsoft.com/) | Ocenianie aplikacji sieci Web | Migrowanie aplikacji sieci Web.
@@ -77,7 +77,7 @@ Projekt Azure Migrate można utworzyć w wielu lokalizacje geograficzneach. Choc
 
 **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
 --- | ---
-Azure Government | Administracja USA — Wirginia
+Platforma Azure dla instytucji rządowych | US Gov Wirginia
 Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
 Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
 Brazylia | Brazylia Południowa
@@ -86,8 +86,8 @@ Europa | Europa Północna lub Europa Zachodnia
 Francja | Francja Środkowa
 Indie | Indie Środkowe lub Indie Południowe
 Japonia |  Japonia Wschodnia lub Japonia Zachodnia
-Korea | Korea środkowa lub Korea Południowa
-Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+Korea Południowa | Korea środkowa lub Korea Południowa
+Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
 Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
 

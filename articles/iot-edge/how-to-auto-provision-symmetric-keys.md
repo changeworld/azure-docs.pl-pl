@@ -1,5 +1,5 @@
 ---
-title: Automatyczne Inicjowanie obsługi urządzeń za pomocą usługi DPS przy użyciu zaświadczania klucza symetrycznego — Azure IoT Edge | Microsoft Docs
+title: Udostępnianie urządzenia przy użyciu zaświadczania klucza symetrycznego — Azure IoT Edge
 description: Korzystanie z zaświadczania klucza symetrycznego do testowania automatycznej aprowizacji urządzeń dla Azure IoT Edge przy użyciu usługi Device Provisioning
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53b1abca25119f4168aaf12a66c4347c53ed0a62
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c42d13f4d2e00b67a2ef471a07c80e1ef61e9c07
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828080"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666328"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Tworzenie i Inicjowanie obsługi urządzenia IoT Edge przy użyciu zaświadczania klucza symetrycznego
 
@@ -155,7 +155,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="install-the-iot-edge-runtime"></a>Zainstaluj środowisko uruchomieniowe IoT Edge
 
-Środowisko uruchomieniowe IoT Edge jest wdrażane na wszystkich IoT Edge urządzeniach. Jego składniki działają w kontenerach i umożliwiają wdrożenie dodatkowych kontenerów na urządzeniu, aby można było uruchomić kod na krawędzi.
+Środowisko uruchomieniowe usługi IoT Edge jest wdrażane na wszystkich urządzeniach usługi IoT Edge. Jego składniki działają w kontenerach i umożliwiają wdrożenie dodatkowych kontenerów na urządzeniu, aby można było uruchomić kod na krawędzi.
 
 Podczas aprowizacji urządzenia potrzebne są następujące informacje:
 
@@ -186,7 +186,7 @@ provisioning:
       symmetric_key: "{symmetric_key}"
 ```
 
-Zamień wartości zastępcze dla `{scope_id}`, `{registration_id}` i `{symmetric_key}` na zebrane wcześniej dane.
+Zamień wartości zastępcze dla `{scope_id}`, `{registration_id}`i `{symmetric_key}` na zebrane wcześniej dane.
 
 ### <a name="windows-device"></a>Urządzenie z systemem Windows
 
@@ -205,9 +205,9 @@ Aby uzyskać bardziej szczegółowe informacje na temat instalowania IoT Edge w 
 
 1. W tym momencie urządzenia IoT Core mogą zostać automatycznie uruchomione ponownie. Inne urządzenia z systemem Windows 10 lub Windows Server mogą monitować o ponowne uruchomienie. Jeśli tak, ponownie uruchom urządzenie teraz. Gdy urządzenie jest gotowe, uruchom ponownie program PowerShell jako administrator.
 
-1. Polecenie **Initialize-IoTEdge** konfiguruje środowisko uruchomieniowe IoT Edge na komputerze. Polecenie domyślnie umożliwia ręczne Inicjowanie obsługi przy użyciu kontenerów systemu Windows, chyba że zostanie użyta flaga `-Dps` w celu użycia automatycznej aprowizacji.
+1. Polecenie **Initialize-IoTEdge** konfiguruje środowisko uruchomieniowe IoT Edge na komputerze. Polecenie domyślnie umożliwia ręczne Inicjowanie obsługi przy użyciu kontenerów systemu Windows, chyba że flaga `-Dps` nie zostanie użyta do użycia automatycznej aprowizacji.
 
-   Zamień wartości zastępcze dla `{scope_id}`, `{registration_id}` i `{symmetric_key}` na zebrane wcześniej dane.
+   Zamień wartości zastępcze dla `{scope_id}`, `{registration_id}`i `{symmetric_key}` na zebrane wcześniej dane.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

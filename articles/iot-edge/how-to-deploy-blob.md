@@ -1,6 +1,6 @@
 ---
-title: Wdróż moduł Blob Storage platformy Azure na urządzeniach — Azure IoT Edge | Microsoft Docs
-description: Wdróż moduł usługi Azure Blob Storage do urządzenia usługi IoT Edge do przechowywania danych na urządzeniach brzegowych.
+title: Wdróż magazyn obiektów BLOB w module na urządzeniu — Azure IoT Edge
+description: Wdróż moduł Blob Storage platformy Azure na urządzeniu IoT Edge, aby przechowywać dane na krawędzi.
 author: arduppal
 ms.author: arduppal
 ms.date: 08/07/2019
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: e5241e078cd8d36a9e43b4b55a649c1e24c85345
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b89532038b00e28eb7c43232683349652af6bc3f
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456869"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665869"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Wdrażanie Blob Storage platformy Azure w module IoT Edge na urządzeniu
 
-Istnieje kilka sposobów wdrażania modułów na urządzeniu IoT Edge i wszystkie z nich pracują na platformie Azure Blob Storage w modułach IoT Edge. Te dwie metody najprostszym mają używać witryny Azure portal lub szablonów programu Visual Studio Code.
+Istnieje kilka sposobów wdrażania modułów na urządzeniu IoT Edge i wszystkie z nich pracują na platformie Azure Blob Storage w modułach IoT Edge. Dwie najprostsza metoda polega na użyciu szablonów Azure Portal lub Visual Studio Code.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,12 +33,12 @@ Azure Portal przeprowadzi Cię przez proces tworzenia manifestu wdrażania i wyp
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do centrum IoT Hub.
 1. Wybierz **IoT Edge** z menu.
-1. Kliknij identyfikator urządzenie docelowe z listy urządzeń.
+1. Kliknij identyfikator urządzenia docelowego z listy urządzeń.
 1. Wybierz pozycję **Ustaw moduły**.
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
 
-Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON. Składa się z trzech kroków: **Dodawanie modułów**, **Określanie tras**i **przeglądanie wdrożenia**.
+Manifest wdrożenia to dokument JSON, który opisuje moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości modułu bliźniaczych reprezentacji. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON. Składa się z trzech kroków: **Dodawanie modułów**, **Określanie tras**i **przeglądanie wdrożenia**.
 
 #### <a name="add-modules"></a>Dodaj moduły
 
@@ -77,7 +77,7 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
 
    - Zastąp `<your storage account name>` nazwą, którą można zapamiętać. Nazwy kont powinny składać się z od 3 do 24 znaków, z małymi literami i cyframi. Bez spacji.
 
-   - Zastąp `<your storage account key>` kluczem Base64 o 64-bajcie. Klucz można wygenerować za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów.
+   - Zastąp `<your storage account key>` kluczem Base64 o 64-bajcie. Klucz można wygenerować za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64). Te poświadczenia będą używane do uzyskiwania dostępu do magazynu obiektów blob z innych modułów.
 
    - Zastąp `<storage mount>` zgodnie z systemem operacyjnym kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) lub ścieżkę bezwzględną do katalogu na urządzeniu IoT Edge, w którym moduł obiektów BLOB ma przechowywać swoje dane. Instalacja magazynu mapuje lokalizację na urządzeniu dostarczaną do lokalizacji zestawu w module.
 
@@ -126,13 +126,13 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
 
 1. Wybierz pozycję **dalej** , aby przejść do sekcji trasy.
 
-#### <a name="specify-routes"></a>Określanie tras
+#### <a name="specify-routes"></a>Określ trasy
 
 Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejść do sekcji Przegląd.
 
 #### <a name="review-deployment"></a>Przegląd wdrożenia
 
-Przejrzyj sekcję programy, które możesz wdrożenia JSON manifestu, które utworzono na podstawie dokonanego wyboru w poprzednich sekcjach. Istnieją także dwa moduły zadeklarowane jako niedodane: **$edgeAgent** i **$edgeHub**. Te dwa moduły składają się na [IoT Edge środowisko uruchomieniowe](iot-edge-runtime.md) i są wymagane wartości domyślne w każdym wdrożeniu.
+Sekcja Przegląd przedstawia manifest wdrożenia JSON, który został utworzony na podstawie wybranych opcji w poprzednich dwóch sekcjach. Istnieją także dwa moduły zadeklarowane jako niedodane: **$edgeAgent** i **$edgeHub**. Te dwa moduły składają się na [IoT Edge środowisko uruchomieniowe](iot-edge-runtime.md) i są wymagane wartości domyślne w każdym wdrożeniu.
 
 Przejrzyj informacje o wdrożeniu, a następnie wybierz pozycję **Prześlij**.
 
@@ -147,7 +147,7 @@ Uruchomienie modułu na urządzeniu może potrwać kilka minut, a następnie zg�
 
 ## <a name="deploy-from-visual-studio-code"></a>Wdróż z Visual Studio Code
 
-Usługa Azure IoT Edge zapewnia szablony programu Visual Studio Code, aby pomóc w tworzeniu rozwiązań brzegowych. Wykonaj następujące kroki, aby utworzyć nowe rozwiązanie IoT Edge przy użyciu modułu BLOB Storage i skonfigurować manifest wdrożenia.
+Azure IoT Edge udostępnia szablony Visual Studio Code, które ułatwiają opracowywanie rozwiązań brzegowych. Wykonaj następujące kroki, aby utworzyć nowe rozwiązanie IoT Edge przy użyciu modułu BLOB Storage i skonfigurować manifest wdrożenia.
 
 1. Wybierz pozycję **wyświetl** > **palecie poleceń**.
 
@@ -165,7 +165,7 @@ Usługa Azure IoT Edge zapewnia szablony programu Visual Studio Code, aby pomóc
    | Podaj nazwę modułu | Wprowadź wszystkie małe nazwy dla modułu, takie jak **azureblobstorageoniotedge**.<br /><br />Ważne jest używanie małych nazw dla Blob Storage platformy Azure na IoT Edge module. W IoT Edge jest rozróżniana wielkość liter podczas odwoływania się do modułów, a zestaw SDK magazynu jest domyślnie pisany małymi literami. |
    | Podaj obraz platformy Docker dla modułu | Podaj identyfikator URI obrazu: **MCR.Microsoft.com/Azure-Blob-Storage:Latest** |
 
-   Visual Studio Code pobiera podane informacje, tworzy rozwiązanie IoT Edge, a następnie ładuje je w nowym oknie. Szablon rozwiązania, tworzy szablon manifestu wdrożenia, który zawiera obraz modułu magazynu obiektów blob, ale należy skonfigurować opcje tworzenia modułu.
+   Visual Studio Code pobiera podane informacje, tworzy rozwiązanie IoT Edge, a następnie ładuje je w nowym oknie. Szablon rozwiązania tworzy szablon manifestu wdrożenia, który zawiera obraz modułu magazynu obiektów blob, ale należy skonfigurować opcje tworzenia modułu.
 
 1. Otwórz plik *Deployment. Template. JSON* w nowym obszarze roboczym rozwiązania i Znajdź sekcję **modułów** . Wprowadź następujące zmiany w konfiguracji:
 
@@ -190,7 +190,7 @@ Usługa Azure IoT Edge zapewnia szablony programu Visual Studio Code, aby pomóc
 
 1. Zastąp `<your storage account name>` nazwą, którą można zapamiętać. Nazwy kont powinny składać się z od 3 do 24 znaków, z małymi literami i cyframi. Bez spacji.
 
-1. Zastąp `<your storage account key>` kluczem Base64 o 64-bajcie. Klucz można wygenerować za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów.
+1. Zastąp `<your storage account key>` kluczem Base64 o 64-bajcie. Klucz można wygenerować za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64). Te poświadczenia będą używane do uzyskiwania dostępu do magazynu obiektów blob z innych modułów.
 
 1. Zastąp `<storage mount>` zgodnie z systemem operacyjnym kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) lub ścieżkę bezwzględną do katalogu na urządzeniu IoT Edge, w którym moduł obiektów BLOB ma przechowywać swoje dane. Instalacja magazynu mapuje lokalizację na urządzeniu dostarczaną do lokalizacji zestawu w module.  
 
@@ -243,7 +243,7 @@ Usługa Azure IoT Edge zapewnia szablony programu Visual Studio Code, aby pomóc
 
 ## <a name="deploy-multiple-module-instances"></a>Wdróż wiele wystąpień modułów
 
-Jeśli chcesz wdrożyć wiele wystąpień Blob Storage platformy Azure w module IoT Edge, musisz podać inną ścieżkę magazynu i zmienić wartość `HostPort`, z którą jest powiązany moduł. Moduły magazynu obiektów blob jest zawsze udostępniania portów 11002 w kontenerze, ale można zadeklarować port, który jest powiązany z na hoście.
+Jeśli chcesz wdrożyć wiele wystąpień Blob Storage platformy Azure w module IoT Edge, musisz podać inną ścieżkę magazynu i zmienić wartość `HostPort`, z którą jest powiązany moduł. Moduły magazynu obiektów BLOB zawsze uwidaczniają port 11002 w kontenerze, ale można zadeklarować, który port jest powiązany z hostem.
 
 Edytowanie **opcji tworzenia kontenera** (w Azure Portal) lub w polu " **isoptions** " (w pliku *Deployment. Template. JSON* w Visual Studio Code), aby zmienić wartość `HostPort`:
 
@@ -253,7 +253,7 @@ Edytowanie **opcji tworzenia kontenera** (w Azure Portal) lub w polu " **isoptio
 }
 ```
 
-Po podłączeniu do modułów magazynu obiektów blob dodatkowe Zmiana punktu końcowego portu zaktualizowanego hosta.
+Po nawiązaniu połączenia z dodatkowymi modułami magazynu obiektów BLOB Zmień punkt końcowy tak, aby wskazywał zaktualizowany port hosta.
 
 ## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o [usłudze Azure Blob Storage w systemie IoT Edge](how-to-store-data-blob.md)

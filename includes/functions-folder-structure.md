@@ -9,37 +9,34 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: aad66a91f7de8380ac7e87f0ce8e35ed43cac4a6
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4460d19de1859a8a3c51d91d418b948b5d3532a6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594528"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666715"
 ---
-Kod dla wszystkich funkcji w aplikacji określonych funkcji znajduje się w katalogu głównego folderu projektu, który zawiera plik konfiguracji hosta i jego podfolderach co najmniej jeden. Każdy podfolder zawiera kod to oddzielna funkcja. Struktury folderów przedstawiono w następujących reprezentacji:
+Kod dla wszystkich funkcji w określonej aplikacji funkcji znajduje się w folderze głównym projektu zawierającym plik konfiguracji hosta i jeden lub więcej podfolderów. Każdy podfolder zawiera kod dla oddzielnej funkcji. Struktura folderów jest pokazana w następującej reprezentacji:
 
 ```
 FunctionApp
  | - host.json
- | - Myfirstfunction
+ | - MyFirstFunction
  | | - function.json
  | | - ...  
- | - mysecondfunction
+ | - MySecondFunction
  | | - function.json
  | | - ...  
  | - SharedCode
  | - bin
 ```
 
-W wersji 2.x środowisko uruchomieniowe usługi Functions, wszystkie funkcje w aplikacji funkcji muszą współużytkować ten sam stos języka.  
+W wersji 2. x środowiska uruchomieniowego funkcji wszystkie funkcje w aplikacji funkcji muszą współużytkować ten sam stos języka.  
 
-[Host.json](../articles/azure-functions/functions-host-json.md) plik zawiera konfiguracje specyficzne dla środowiska uruchomieniowego i znajduje się w folderze głównym aplikacji funkcji. A *bin* folder zawiera pakiety i inne pliki biblioteki, których wymaga aplikacja funkcji. Wymagania językowe dla projektu aplikacji funkcji:
+Plik [host. JSON](../articles/azure-functions/functions-host-json.md) zawiera konfiguracje specyficzne dla środowiska uruchomieniowego i znajduje się w folderze głównym aplikacji funkcji. Folder *bin* zawiera pakiety i inne pliki bibliotek wymagane przez aplikację funkcji. Zobacz wymagania specyficzne dla języka dla projektu aplikacji funkcji:
 
-* [Biblioteki klas C# (.csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
-* [Skryptu C# (csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
-* [F#skrypt](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
+* [C#Biblioteka klas (. csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
+* [C#skrypt (. CSX)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
+* [F#napisy](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
 * [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
 * [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
-
-
-

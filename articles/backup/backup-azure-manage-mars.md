@@ -4,12 +4,12 @@ description: Informacje o sposobach zarządzania kopiami zapasowymi agenta Micro
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: edb672f97f467378176bf6cdf04fe8e22cc5e51b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f299bdeebab4f42721255d462101f0065a640fab
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173081"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665597"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Zarządzanie kopiami zapasowymi agentów Microsoft Azure Recovery Services (MARS) za pomocą usługi Azure Backup
 
@@ -124,7 +124,7 @@ Można dodać reguły wykluczeń, aby pominąć pliki i foldery, których kopie 
 
     ![Wybierz elementy](./media/backup-azure-manage-mars/select-items-exclude.png)
 
-4. Domyślnie wszystkie **podfoldery** w wybranych folderach są wykluczone. Możesz to zmienić, wybierając opcję **tak** lub **nie**. Można edytować i konkretne typy plików do wykluczenia, jak pokazano poniżej:
+4. Domyślnie wszystkie **podfoldery** w wybranych folderach są wykluczone. Możesz to zmienić, wybierając opcję **tak** lub **nie**. Można edytować i określić typy plików do wykluczenia, jak pokazano poniżej:
 
     ![Wybierz elementy](./media/backup-azure-manage-mars/subfolders-type.png)
 
@@ -159,12 +159,12 @@ Istnieją dwa sposoby na zatrzymanie ochrony kopii zapasowych plików i folderó
 
 1. Otwórz konsolę zarządzania MARS, przejdź do **okienka Akcje**, a **następnie wybierz pozycję Zaplanuj kopię zapasową**.
     ![zmodyfikować lub zatrzymać zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/mars-actions.png)
-1. Na stronie **Wybierz element zasad** wybierz pozycję **Modyfikuj harmonogram tworzenia kopii zapasowych dla plików i folderów, a** następnie kliknij przycisk **dalej**.
+1. Na stronie **Wybierz element zasad** wybierz pozycję **Modyfikuj harmonogram tworzenia kopii zapasowych plików i folderów** , a następnie kliknij przycisk **dalej**.
     ![zmodyfikować lub zatrzymać zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. Na stronie **Modyfikuj lub Zatrzymaj zaplanowaną kopię zapasową** wybierz pozycję **Zatrzymaj przy użyciu tego harmonogramu tworzenia kopii zapasowych, ale przechowuj przechowywane kopie zapasowe do momentu ponownego aktywowania harmonogramu**. Następnie wybierz opcję **Dalej**.  
     ![zmodyfikować lub zatrzymać zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. W obszarze **Wstrzymaj zaplanowaną kopię zapasową** Przejrzyj informacje kliknij przycisk **Zakończ** ![zmodyfikować lub zatrzymać zaplanowane kopie zapasowe.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. w obszarze **Modyfikuj proces tworzenia kopii zapasowej** Sprawdź, czy zaplanowano stan wstrzymania kopii zapasowej i kliknij przycisk **Zamknij** , aby zakończyć
+1. W obszarze **Wstrzymaj zaplanowaną kopię zapasową** Przejrzyj informacje, a następnie kliknij przycisk **Zakończ** ![zmodyfikować lub zatrzymać zaplanowane kopie zapasowe.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. w obszarze **Modyfikuj proces tworzenia kopii zapasowej** Sprawdź, czy harmonogram wykonywania kopii zapasowej jest w stanie powodzenie i kliknij przycisk **Zamknij** , aby zakończyć.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Zatrzymywanie ochrony i usuwanie danych kopii zapasowej
 
@@ -194,7 +194,7 @@ Po usunięciu lokalnych elementów kopii zapasowej wykonaj kolejne kroki z porta
 Jeśli ochrona zostanie zatrzymana podczas zachowywania danych i podjęta zostanie decyzja o wznowieniu ochrony, można ponownie włączyć harmonogram tworzenia kopii zapasowych przy użyciu opcji Modyfikuj zasady tworzenia kopii zapasowych.
 
 1. W obszarze **Akcje** wybierz pozycję **Zaplanuj kopię zapasową**.
-1. Wybierz pozycję **Włącz ponownie harmonogram tworzenia kopii zapasowych. Możesz również modyfikować elementy kopii zapasowej lub TINES** i klikać przycisk **dalej**.
+1. Wybierz pozycję **Włącz ponownie harmonogram tworzenia kopii zapasowych. Możesz również zmodyfikować elementy lub godziny tworzenia kopii zapasowej** , a następnie kliknąć przycisk **dalej**.
     ![usunąć infrastrukturę tworzenia kopii zapasowych.](./media/backup-azure-manage-mars/re-enable-policy-next.png)
 1. W obszarze **Wybierz elementy do utworzenia kopii zapasowej**kliknij przycisk **dalej**.
     ![usunąć infrastrukturę tworzenia kopii zapasowych.](./media/backup-azure-manage-mars/re-enable-next.png)

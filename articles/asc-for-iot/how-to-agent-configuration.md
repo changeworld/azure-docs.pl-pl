@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie Azure Security Center dla agenta IoT | Microsoft Docs
-description: Dowiedz się, jak skonfigurować agentów do użycia z usługą Azure Security Center dla IoT.
+description: Dowiedz się, jak skonfigurować Azure Security Center dla agentów zabezpieczeń IoT do użycia z Azure Security Center dla usługi IoT Security.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933883"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664852"
 ---
-# <a name="tutorial-configure-security-agents"></a>Samouczek: Konfigurowanie alertów zabezpieczeń
+# <a name="tutorial-configure-security-agents"></a>Samouczek: Konfigurowanie agentów zabezpieczeń
 
 W tym artykule wyjaśniono Azure Security Center dla agentów zabezpieczeń IoT oraz szczegółowo, jak je zmienić i skonfigurować. 
 
@@ -108,7 +108,7 @@ Aby użyć domyślnej wartości właściwości, Usuń właściwość z obiektu k
     }
     ```
 
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="using-a-default-value"></a>Używanie wartości domyślnej
 
@@ -120,33 +120,33 @@ Poniższa tabela zawiera właściwości, które mają być kontrolowane Azure Se
 
 Wartości domyślne są dostępne w odpowiednim schemacie w serwisie [GitHub](https\://aka.ms/iot-security-module-default).
 
-| Name| State | Prawidłowe wartości| Wartości domyślne| Opis |
+| Nazwa| Stan | Prawidłowe wartości| Wartości domyślne| Opis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|highPriorityMessageFrequency|Wymagane: FAŁSZ |Prawidłowe wartości: Czas trwania w formacie ISO 8601 |Wartość domyślna: PT7M |Maksymalny przedział czasu przed wysłaniem komunikatów o wysokim priorytecie.|
-|lowPriorityMessageFrequency |Wymagane: FAŁSZ|Prawidłowe wartości: Czas trwania w formacie ISO 8601 |Wartość domyślna: PT5H |Maksymalny czas przed wysłaniem komunikatów o niskim priorytecie.| 
-|snapshotFrequency |Wymagaj: false|Prawidłowe wartości: Czas trwania w formacie ISO 8601 |Wartość domyślna PT13H |Interwał tworzenia migawek stanu urządzenia.| 
-|maxLocalCacheSizeInBytes |Wymagane: FAŁSZ |Prawidłowe wartości: |Wartość domyślna: 2560000, większe niż 8192 | Maksymalny rozmiar magazynu (w bajtach) dozwolony dla pamięci podręcznej komunikatów agenta. Maksymalna ilość miejsca na przechowywanie komunikatów na urządzeniu przed wysłaniem komunikatów.| 
-|maxMessageSizeInBytes |Wymagane: FAŁSZ |Prawidłowe wartości: Liczba dodatnia większa niż 8192, mniejsza niż 262144 |Wartość domyślna: 204800 |Maksymalny dozwolony rozmiar agenta do komunikatu w chmurze. To ustawienie Steruje ilością maksymalnych danych wysyłanych w poszczególnych wiadomościach. |
-|eventPriority $ {EventName} |Wymagane: FAŁSZ |Prawidłowe wartości: Wysoki, niski, wyłączony |Wartości domyślne: |Priorytet każdego zdarzenia generowanego przez agenta | 
+|highPriorityMessageFrequency|Wymagane: FAŁSZ |Prawidłowe wartości: czas trwania w formacie ISO 8601 |Wartość domyślna: PT7M |Maksymalny przedział czasu przed wysłaniem komunikatów o wysokim priorytecie.|
+|lowPriorityMessageFrequency |Wymagane: FAŁSZ|Prawidłowe wartości: czas trwania w formacie ISO 8601 |Wartość domyślna: PT5H |Maksymalny czas przed wysłaniem komunikatów o niskim priorytecie.| 
+|snapshotFrequency |Wymagaj: false|Prawidłowe wartości: czas trwania w formacie ISO 8601 |Wartość domyślna PT13H |Interwał tworzenia migawek stanu urządzenia.| 
+|maxLocalCacheSizeInBytes |Wymagane: FAŁSZ |Prawidłowe wartości: |Wartość domyślna: 2560000, większa niż 8192 | Maksymalny rozmiar magazynu (w bajtach) dozwolony dla pamięci podręcznej komunikatów agenta. Maksymalna ilość miejsca na przechowywanie komunikatów na urządzeniu przed wysłaniem komunikatów.| 
+|maxMessageSizeInBytes |Wymagane: FAŁSZ |Prawidłowe wartości: liczba dodatnia większa niż 8192, mniejsza niż 262144 |Wartość domyślna: 204800 |Maksymalny dozwolony rozmiar agenta do komunikatu w chmurze. To ustawienie Steruje ilością maksymalnych danych wysyłanych w poszczególnych wiadomościach. |
+|eventPriority $ {EventName} |Wymagane: FAŁSZ |Prawidłowe wartości: wysoka, niska, wyłączona |Wartości domyślne: |Priorytet każdego zdarzenia generowanego przez agenta | 
 
 ### <a name="supported-security-events"></a>Obsługiwane zdarzenia zabezpieczeń
 
-|Nazwa zdarzenia| PropertyName | Default Value| Zdarzenie migawki| Szczegóły stanu  |
+|Nazwa zdarzenia| Funkcja | Wartość domyślna| Zdarzenie migawki| Szczegóły stanu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Zdarzenie diagnostyczne|eventPriorityDiagnostic| Wyłączone| False| Zdarzenia diagnostyczne powiązane z agentem. To zdarzenie służy do pełnego rejestrowania.| 
-|Błąd konfiguracji |eventPriorityConfigurationError |Małe |False |Agent nie może przeanalizować konfiguracji. Sprawdź konfigurację względem schematu.| 
-|Dane statystyczne dotyczące porzuconego zdarzenia |eventPriorityDroppedEventsStatistics |Małe |Prawda|Statystyki zdarzeń związanych z agentem. |
-|Statystyka komunikatów|eventPriorityMessageStatistics |Małe |Prawda |Statystyka komunikatów związanych z agentem. |
-|Podłączony sprzęt|eventPriorityConnectedHardware |Małe |Prawda |Migawka wszystkich urządzeń podłączonych do urządzenia.|
+|Zdarzenie diagnostyczne|eventPriorityDiagnostic| Wyłączone| Fałsz| Zdarzenia diagnostyczne powiązane z agentem. To zdarzenie służy do pełnego rejestrowania.| 
+|Błąd konfiguracji |eventPriorityConfigurationError |Niska |Fałsz |Agent nie może przeanalizować konfiguracji. Sprawdź konfigurację względem schematu.| 
+|Dane statystyczne dotyczące porzuconego zdarzenia |eventPriorityDroppedEventsStatistics |Niska |Prawda|Statystyki zdarzeń związanych z agentem. |
+|Statystyka komunikatów|eventPriorityMessageStatistics |Niska |Prawda |Statystyka komunikatów związanych z agentem. |
+|Podłączony sprzęt|eventPriorityConnectedHardware |Niska |Prawda |Migawka wszystkich urządzeń podłączonych do urządzenia.|
 |Nasłuchiwanie portów|eventPriorityListeningPorts |Wysoka |Prawda |Migawka wszystkich otwartych portów nasłuchiwania na urządzeniu.|
-|Tworzenie procesu |eventPriorityProcessCreate |Małe |False |Przeprowadza inspekcję tworzenia procesu na urządzeniu.|
-|Zakończenie procesu|eventPriorityProcessTerminate |Małe |False |Przeprowadza inspekcję zakończenia procesu na urządzeniu.| 
-|Informacje o systemie |eventPrioritySystemInformation |Małe |Prawda |Migawka informacji o systemie (na przykład: System operacyjny lub CPU).| 
+|Tworzenie procesu |eventPriorityProcessCreate |Niska |Fałsz |Przeprowadza inspekcję tworzenia procesu na urządzeniu.|
+|Zakończenie procesu|eventPriorityProcessTerminate |Niska |Fałsz |Przeprowadza inspekcję zakończenia procesu na urządzeniu.| 
+|Informacje o systemie |eventPrioritySystemInformation |Niska |Prawda |Migawka informacji o systemie (na przykład: system operacyjny lub procesor CPU).| 
 |Użytkownicy lokalni| eventPriorityLocalUsers |Wysoka |Prawda|Migawka zarejestrowanych użytkowników lokalnych w systemie. |
-|Zaloguj|  eventPriorityLogin |Wysoka|False|Przeprowadź inspekcję zdarzeń logowania na urządzeniu (logowanie lokalne i zdalne).|
-|Tworzenie połączenia |eventPriorityConnectionCreate|Małe|False|Przeprowadza inspekcję połączeń TCP utworzonych do i z urządzenia. |
-|Konfiguracja zapory| eventPriorityFirewallConfiguration|Małe|Prawda|Migawka konfiguracji zapory urządzenia (reguły zapory). |
-|Linia bazowa systemu operacyjnego| eventPriorityOSBaseline| Małe|Prawda|Migawka kontroli linii bazowej systemu operacyjnego urządzenia.|
+|Zaloguj się|  eventPriorityLogin |Wysoka|Fałsz|Przeprowadź inspekcję zdarzeń logowania na urządzeniu (logowanie lokalne i zdalne).|
+|Tworzenie połączenia |eventPriorityConnectionCreate|Niska|Fałsz|Przeprowadza inspekcję połączeń TCP utworzonych do i z urządzenia. |
+|Konfiguracja zapory| eventPriorityFirewallConfiguration|Niska|Prawda|Migawka konfiguracji zapory urządzenia (reguły zapory). |
+|Linia bazowa systemu operacyjnego| eventPriorityOSBaseline| Niska|Prawda|Migawka kontroli linii bazowej systemu operacyjnego urządzenia.|
 |
  
 

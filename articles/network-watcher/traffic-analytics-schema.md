@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: a678039b3386c3df290327238d3bf968a803d2c1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229432"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666379"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregacja schematu i danych w Analiza ruchu
 
@@ -125,8 +125,8 @@ Poniżej wymieniono pola w schemacie i znaczenie
 | Subscription1_s | Identyfikator subskrypcji | Identyfikator subskrypcji sieci wirtualnej/interfejsu sieciowego/maszyny wirtualnej, do której należy źródłowy adres IP w przepływie |
 | Subscription2_s | Identyfikator subskrypcji | Identyfikator subskrypcji sieci wirtualnej/interfejsu sieciowego/maszyny wirtualnej, do której należy docelowy adres IP w przepływie |
 | Region_s | Region świadczenia usługi Azure Virtual Network/interfejs sieciowy/maszyna wirtualna, do której należy adres IP w przepływie | Dotyczy tylko typów przepływów typu Flow = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow i UnknownPrivate (typy przepływów, w których jest tylko jedna strona Azure) |
-| Region1_s | Region świadczenia usługi Azure | Region platformy Azure sieci wirtualnej/interfejsu sieciowego/maszyny wirtualnej, do której należy źródłowy adres IP w przepływie |
-| Region2_s | Region świadczenia usługi Azure | Region platformy Azure sieci wirtualnej, do którego należy docelowy adres IP w przepływie |
+| Region1_s | Region Azure | Region platformy Azure sieci wirtualnej/interfejsu sieciowego/maszyny wirtualnej, do której należy źródłowy adres IP w przepływie |
+| Region2_s | Region Azure | Region platformy Azure sieci wirtualnej, do którego należy docelowy adres IP w przepływie |
 | NIC_s | \<resourcegroup_Name >\/\<NetworkInterfaceName > |  Karta sieciowa skojarzona z maszyną wirtualną wysyłająca lub odbierający ruch |
 | NIC1_s | < resourcegroup_Name >/\<NetworkInterfaceName > | Karta sieciowa skojarzona ze źródłowym adresem IP w przepływie |
 | NIC2_s | < resourcegroup_Name >/\<NetworkInterfaceName > | Karta sieciowa skojarzona z docelowym adresem IP w przepływie |
@@ -143,7 +143,7 @@ Poniżej wymieniono pola w schemacie i znaczenie
 | LocalNetworkGateway1_s | \<subskrypcji >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Brama sieci lokalnej skojarzona ze źródłowym adresem IP w przepływie |
 | LocalNetworkGateway2_s | \<subskrypcji >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Brama sieci lokalnej skojarzona z docelowym adresem IP w przepływie |
 | ConnectionType_s | Możliwe wartości to VNetPeering, bramy vpngateway i ExpressRoute |    Typ połączenia |
-| ConnectionName_s | \<subskrypcji >/\<ResourceGroupName >/\<ConnectionName > | Nazwa połączenia |
+| ConnectionName_s | \<subskrypcji >/\<ResourceGroupName >/\<ConnectionName > | Nazwa połączenia. Dla elementu flowtype P2S zostanie on sformatowany jako <gateway name>_<VPN Client IP> |
 | ConnectingVNets_s | Rozdzielana spacjami lista nazw sieci wirtualnych | W przypadku topologii gwiazdy i koncentratora sieci wirtualne będą umieszczane w tym miejscu |
 | Country_s | Dwuliterowy kod kraju (ISO 3166-1 Alpha-2) | Wypełniono dla typu przepływu ExternalPublic. Wszystkie adresy IP w polu PublicIPs_s będą współużytkować ten sam kod kraju |
 | AzureRegion_s | Lokalizacje regionów platformy Azure | Wypełniono dla typu przepływu AzurePublic. Wszystkie adresy IP w polu PublicIPs_s będą współużytkować region platformy Azure |

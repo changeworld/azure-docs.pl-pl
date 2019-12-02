@@ -1,45 +1,45 @@
 ---
-title: Dowiedz się, jak Menedżer zabezpieczeń chroni urządzenia, oprogramowanie — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Zarządza wystąpienie zabezpieczeń urządzenia usługi IoT Edge i integralności usługi zabezpieczeń.
+title: Azure IoT Edge Security Manager — Azure IoT Edge
+description: Zarządza IoT Edge zasobów zakresie zabezpieczeń urządzeń i integralnością usług zabezpieczeń.
 services: iot-edge
-keywords: bezpieczeństwo, element bezpieczny, enklawy, TEE, IoT Edge
+keywords: zabezpieczenia, zabezpieczanie elementu, enklawy, TEE, IoT Edge
 author: eustacea
 manager: philmea
 ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 90cb7cf0a30ea0ebfe00454288de25ddf6e58d52
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 871f2ec029379f37fc02bcd79847fa04091f0507
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457537"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666073"
 ---
-# <a name="azure-iot-edge-security-manager"></a>Menedżer zabezpieczeń w usłudze Azure IoT Edge
+# <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Security Manager
 
-Menedżer zabezpieczeń usługi Azure IoT Edge jest podstawowa dobrze ograniczonych zabezpieczeń na potrzeby ochrony urządzenia usługi IoT Edge i wszystkich jego składników, zapewniając abstrakcyjność sprzętu dolina bezpieczne. Jest to punkt centralny do zabezpieczania zabezpieczeń i zapewnia punkt integracji technologii z producentami oryginalnego sprzętu (OEM).
+Azure IoT Edge Security Manager to dobrze ograniczone podstawowe zabezpieczenia na potrzeby ochrony urządzeń IoT Edge i wszystkich jej składników przez abstrakcję bezpiecznego sprzętu krzemowego. Jest to punkt centralny do zabezpieczania zabezpieczeń i zapewnia punkt integracji technologii z producentami oryginalnego sprzętu (OEM).
 
-![Menedżer zabezpieczeń w usłudze Azure IoT Edge](media/edge-security-manager/iot-edge-security-manager.png)
+![Azure IoT Edge Security Manager](media/edge-security-manager/iot-edge-security-manager.png)
 
-Menedżer zabezpieczeń usługi IoT Edge ma na celu ochrony integralności urządzenia usługi IoT Edge i wszystkie operacje używaniem oprogramowania. Usługa Security Manager przechodzi zaufania z bazowego sprzętu głównego sprzętu zaufania (jeśli jest dostępny) do uruchamiania IoT Edge środowiska uruchomieniowego i monitorowania bieżących operacji.  IoT Edge Security Manager to oprogramowanie działające wraz z bezpiecznym sprzętem krzemu (jeśli jest dostępny) w celu zapewnienia najwyższej możliwej gwarancji zabezpieczeń.  
+IoT Edge Security Manager chce chronić integralność urządzenia IoT Edge i wszystkich nieodłącznych operacji oprogramowania. Usługa Security Manager przechodzi zaufania z bazowego sprzętu głównego sprzętu zaufania (jeśli jest dostępny) do uruchamiania IoT Edge środowiska uruchomieniowego i monitorowania bieżących operacji.  IoT Edge Security Manager to oprogramowanie działające wraz z bezpiecznym sprzętem krzemu (jeśli jest dostępny) w celu zapewnienia najwyższej możliwej gwarancji zabezpieczeń.  
 
 Obowiązki programu IoT Edge Security Manager obejmują, ale nie są ograniczone do:
 
-* Zabezpieczone i mierzone ładowanie początkowe urządzenia usługi Azure IoT Edge.
-* Aprowizacji tożsamości urządzenia i przejścia zaufania, jeśli ma to zastosowanie.
-* Hostowanie i chronić składniki usług cloud Services, takich jak usługi Device Provisioning.
+* Bezpieczne i mierzone uruchamianie urządzenia Azure IoT Edge.
+* Inicjowanie obsługi tożsamości urządzeń i przejście zaufania, jeśli ma to zastosowanie.
+* Hostowanie i ochrona składników urządzeń usług w chmurze, takich jak usługa Device Provisioning.
 * Bezpiecznie Zainicjuj obsługę modułów IoT Edge przy użyciu unikatowych tożsamości.
-* Programu Gatekeeper do urządzeń sprzętowych elementu głównego zaufania za pośrednictwem usług notariusz.
-* Monitoruje integralność operacji usługi IoT Edge w czasie wykonywania.
+* Strażnik do sprzętowego katalogu głównego zaufania za poorednictwem usług notarialnych.
+* Monitoruj integralność operacji IoT Edge w czasie wykonywania.
 
-Menedżer zabezpieczeń usługi IoT Edge obejmuje trzy składniki:
+Program IoT Edge Security Manager zawiera trzy składniki:
 
-* Demon zabezpieczeń usługi IoT Edge.
-* Zabezpieczenia moduł platformy abstrakcją sprzętu warstwy (PAL przez sprzętowy moduł zabezpieczeń).
-* Opcjonalne, ale zdecydowanie zalecany sprzęt dolina katalog główny zaufania lub sprzętowego modułu zabezpieczeń.
+* IoT Edge demona zabezpieczeń.
+* Warstwa abstrakcji platformy sprzętowego modułu zabezpieczeń (HSM PAL).
+* Opcjonalny, ale wysoce zalecany sprzętowy korzeń modelu krzemu zaufania lub modułu HSM.
 
-## <a name="the-iot-edge-security-daemon"></a>Demon zabezpieczeń usługi IoT Edge
+## <a name="the-iot-edge-security-daemon"></a>Demon zabezpieczeń IoT Edge
 
 Demon zabezpieczeń IoT Edge jest odpowiedzialny za operacje logiczne programu IoT Edge Security Manager. Reprezentuje znaczną część zaufanej bazy obliczeniowej na urządzeniu IoT Edge. 
 
@@ -47,14 +47,14 @@ Demon zabezpieczeń IoT Edge jest odpowiedzialny za operacje logiczne programu I
 
 Demon zabezpieczeń IoT Edge jest zgodny z dwoma podstawowymi zasadami: Maksymalizuj integralność operacyjną i Minimalizuj przeładowanie i zmiany.
 
-#### <a name="maximize-operational-integrity"></a>Maksymalizuj integralności operacyjne
+#### <a name="maximize-operational-integrity"></a>Maksymalizuj integralność operacyjną
 
-Demon IoT Edge Security jest w stanie zapewnić najwyższą integralność w ramach funkcji obrony każdego danego elementu głównego sprzętu zaufania. Dzięki integracji z właściwego głównego zaufania sprzętu mierzy i monitoruje demona zabezpieczeń statycznie i w czasie wykonywania, chroniony przed naruszeniem.
+Demon IoT Edge Security jest w stanie zapewnić najwyższą integralność w ramach funkcji obrony każdego danego elementu głównego sprzętu zaufania. Dzięki właściwej integracji certyfikat główny zaufania i monitoruje demona zabezpieczeń statycznie i w czasie wykonywania w celu odporności na manipulacje.
 
 Dostęp fizyczny jest zawsze zagrożeniem dla urządzeń IoT. Katalog główny sprzętu zaufania odgrywa ważną rolę w zabezpieczaniu integralności IoT Edge demona zabezpieczeń.  Katalog główny sprzętu zaufania ma dwie odmiany:
 
-* bezpieczne elementów do ochrony informacji poufnych, takich jak klucze tajne i klucze szyfrowania.
-* bezpieczne eksterytorialne ochrony kluczy tajnych, takich jak klucze i poufnych obciążeń, takich jak pomiarów i rozliczeń.
+* Zabezpieczanie elementów do ochrony poufnych informacji, takich jak wpisy tajne i klucze kryptograficzne.
+* Zabezpiecz enclaves do ochrony kluczy tajnych, takich jak klucze, i wrażliwych obciążeń, takich jak pomiar i rozliczenia.
 
 Istnieją dwa rodzaje środowisk wykonawczych do użycia głównego katalogu sprzętowego zaufania:
 
@@ -63,59 +63,59 @@ Istnieją dwa rodzaje środowisk wykonawczych do użycia głównego katalogu spr
 
 W przypadku urządzeń korzystających z bezpiecznego enclaves jako katalogu głównego sprzętu zaufania poufna logika w ramach IoT Edge Security DAEMON powinna znajdować się wewnątrz enklawy.  Niewrażliwe fragmenty demona zabezpieczeń mogą być poza TEEem.  W każdym przypadku pierwotni producenci projektu (ODM) i producenci oryginalnego sprzętu (OEM) powinni rozciągnąć zaufanie od ich modułu HSM, aby mierzyć i chronić integralność IoT Edge demona zabezpieczeń w przypadku rozruchu i środowiska uruchomieniowego.
 
-#### <a name="minimize-bloat-and-churn"></a>Zminimalizować zasobożerności i współczynnika zmian
+#### <a name="minimize-bloat-and-churn"></a>Minimalizacja przeładowanie i zmian
 
-Inną podstawową zasadą dla demona IoT Edge Security jest zminimalizowanie zmian.  W przypadku najwyższego poziomu zaufania demon IoT Edge Security może ściśle współpracować z głównym katalogiem sprzętowym zaufania i działać jako kod natywny.  Jest to typowy dla tych typów realizacji, aby zaktualizować oprogramowanie demona za pomocą głównej ścieżki do sprzętu zaufanej aktualizacji (w przeciwieństwie do mechanizmów systemu operacyjnego dostarczonych przez system operacyjny), które mogą być trudne w niektórych scenariuszach.  Podczas gdy w przypadku urządzeń IoT zaleca się odnowienie zabezpieczeń, nadmierne wymagania dotyczące aktualizacji lub duże ładunki aktualizacji mogą rozszerzać powierzchnię zagrożeń na wiele sposobów.  Przykłady obejmują pomijanie aktualizacji, aby zmaksymalizować dostępność operacyjną lub głównym zaufania sprzętu zbyt ograniczone do przetwarzania dużej aktualizacji ładunków.  W związku z tym projekt demona IoT Edge Security jest zwięzły, aby zapewnić, że rozmiary i zaufanych obliczeń są niewielkie i zminimalizować wymagania dotyczące aktualizacji.
+Inną podstawową zasadą dla demona IoT Edge Security jest zminimalizowanie zmian.  W przypadku najwyższego poziomu zaufania demon IoT Edge Security może ściśle współpracować z głównym katalogiem sprzętowym zaufania i działać jako kod natywny.  Jest to typowy dla tych typów realizacji, aby zaktualizować oprogramowanie demona za pomocą głównej ścieżki do sprzętu zaufanej aktualizacji (w przeciwieństwie do mechanizmów systemu operacyjnego dostarczonych przez system operacyjny), które mogą być trudne w niektórych scenariuszach.  Podczas gdy w przypadku urządzeń IoT zaleca się odnowienie zabezpieczeń, nadmierne wymagania dotyczące aktualizacji lub duże ładunki aktualizacji mogą rozszerzać powierzchnię zagrożeń na wiele sposobów.  Przykłady obejmują Pomijanie aktualizacji w celu zmaksymalizowania dostępności operacyjnej lub głównego sprzętu zaufania zbyt ograniczonego do przetwarzania dużych ładunków aktualizacji.  W związku z tym projekt demona IoT Edge Security jest zwięzły, aby zapewnić, że rozmiary i zaufanych obliczeń są niewielkie i zminimalizować wymagania dotyczące aktualizacji.
 
-### <a name="architecture-of-iot-edge-security-daemon"></a>Architektura demona zabezpieczeń usługi IoT Edge
+### <a name="architecture-of-iot-edge-security-daemon"></a>Architektura demona IoT Edge Security
 
-![Demon zabezpieczeń w usłudze Azure IoT Edge](media/edge-security-manager/iot-edge-security-daemon.png)
+![Demon zabezpieczeń Azure IoT Edge](media/edge-security-manager/iot-edge-security-daemon.png)
 
 Demon zabezpieczeń IoT Edge korzysta z dowolnego dostępnego głównego sprzętu technologii zaufania na potrzeby zabezpieczania zabezpieczeń.  Umożliwia również dzielenie operacji na całym świecie między standardowym/rozbudowanym środowiskiem wykonywania (REE) a zaufanym środowiskiem wykonywania (TEE), gdy technologie sprzętowe oferują zaufane środowiska wykonawcze. Interfejsy specyficzne dla ról umożliwiają główne składniki IoT Edge, aby zapewnić integralność urządzenia IoT Edge i jego operacji.
 
-#### <a name="cloud-interface"></a>Interfejs chmurowy
+#### <a name="cloud-interface"></a>Interfejs chmury
 
 Interfejs chmury umożliwia demona IoT Edge Security, aby uzyskać dostęp do usług w chmurze, takich jak chmura odniesień do zabezpieczeń urządzeń, takich jak odnowienie zabezpieczeń.  Na przykład demon zabezpieczeń IoT Edge obecnie używa tego interfejsu do uzyskiwania dostępu do usługi Azure IoT Hub [Device Provisioning](https://docs.microsoft.com/azure/iot-dps/) w celu zarządzania cyklem życia tożsamości urządzeń.  
 
 #### <a name="management-api"></a>Interfejs API zarządzania
 
-IoT Edge Security DAEMON oferuje interfejs API zarządzania, który jest wywoływany przez agenta IoT Edge podczas tworzenia/uruchamiania/zatrzymywania/usuwania modułu IoT Edge. Demon zabezpieczeń zapisuje "rejestracje" dla wszystkich aktywnych modułów. Tyto registrace modułu tożsamości są mapowane na niektórych właściwości modułu. Kilka przykładów tych właściwości są identyfikator procesu (pid) procesu uruchomionego w kontenerze lub skrót zawartość kontenerów platformy docker.
+IoT Edge Security DAEMON oferuje interfejs API zarządzania, który jest wywoływany przez agenta IoT Edge podczas tworzenia/uruchamiania/zatrzymywania/usuwania modułu IoT Edge. Demon zabezpieczeń zapisuje "rejestracje" dla wszystkich aktywnych modułów. Te rejestracje mapują tożsamość modułu na niektóre właściwości modułu. Kilka przykładów dla tych właściwości jest identyfikatorem procesu (PID) procesu działającego w kontenerze lub skrótem zawartości kontenera Docker.
 
 Te właściwości są używane przez interfejs API obciążenia (opisany poniżej) w celu sprawdzenia, czy obiekt wywołujący ma autoryzację do wykonania akcji.
 
-Interfejs API zarządzania to uprzywilejowany interfejs API, który można wywołać tylko z agenta IoT Edge.  Ponieważ demona zabezpieczeń usługi IoT Edge używa do ładowania i uruchamia agenta usługi IoT Edge, może utworzyć niejawne rejestracji agenta usługi IoT Edge po została potwierdzona, czy agent usługi IoT Edge nie zostały naruszone. Ten sam proces zaświadczania, którego używa interfejs API obciążenia, ogranicza dostęp do interfejsu API zarządzania tylko do agenta IoT Edge.
+Interfejs API zarządzania to uprzywilejowany interfejs API, który można wywołać tylko z agenta IoT Edge.  Ponieważ IoT Edge Bootstrap demona zabezpieczeń i uruchamia agenta IoT Edge, może utworzyć niejawną rejestrację dla agenta IoT Edge po zaświadczeniu, że Agent IoT Edge nie został naruszony. Ten sam proces zaświadczania, którego używa interfejs API obciążenia, ogranicza dostęp do interfejsu API zarządzania tylko do agenta IoT Edge.
 
-#### <a name="container-api"></a>Kontener interfejsu API
+#### <a name="container-api"></a>Interfejs API kontenera
 
 Interfejs API kontenera współdziała z systemem kontenerów używanym do zarządzania modułami, takimi jak Moby lub Docker.
 
-#### <a name="workload-api"></a>Obciążenie interfejsu API
+#### <a name="workload-api"></a>Interfejs API obciążenia
 
 Interfejs API obciążenia jest dostępny dla wszystkich modułów. Zapewnia potwierdzenie tożsamości, jako certyfikat z podpisem własnym w formacie modułu HSM lub certyfikatu x509 oraz odpowiedni pakiet zaufania do modułu. Pakiet zaufania zawiera certyfikaty urzędu certyfikacji dla wszystkich pozostałych serwerów, które powinny być zaufane w modułach.
 
-Demon zabezpieczeń IoT Edge używa procesu zaświadczania do zabezpieczenia tego interfejsu API. Gdy moduł wywołuje ten interfejs API, Demon zabezpieczeń próbuje znaleźć rejestrację dla tożsamości. Jeśli to się powiedzie, używa właściwości rejestracji do mierzenia modułu. Jeśli wynik procesu pomiaru jest zgodny z rejestracją, zostanie wygenerowana Nowa weryfikacja tożsamości. Odpowiednie certyfikaty urzędu certyfikacji (pakiet zaufania) są zwracane do modułu.  Moduł używa tego certyfikatu do łączenia usługi IoT Hub, inne moduły lub uruchamiania serwera. Gdy podpisany token lub certyfikat zbliża się do wygaśnięcia, odpowiedzialność za moduł żąda nowego certyfikatu. 
+Demon zabezpieczeń IoT Edge używa procesu zaświadczania do zabezpieczenia tego interfejsu API. Gdy moduł wywołuje ten interfejs API, Demon zabezpieczeń próbuje znaleźć rejestrację dla tożsamości. Jeśli to się powiedzie, używa właściwości rejestracji do mierzenia modułu. Jeśli wynik procesu pomiaru jest zgodny z rejestracją, zostanie wygenerowana Nowa weryfikacja tożsamości. Odpowiednie certyfikaty urzędu certyfikacji (pakiet zaufania) są zwracane do modułu.  Moduł używa tego certyfikatu do łączenia się z IoT Hub, innymi modułami lub uruchamianiem serwera. Gdy podpisany token lub certyfikat zbliża się do wygaśnięcia, odpowiedzialność za moduł żąda nowego certyfikatu. 
 
-### <a name="integration-and-maintenance"></a>Integracja i utrzymanie
+### <a name="integration-and-maintenance"></a>Integracja i konserwacja
 
 Firma Microsoft utrzymuje główną bazę kodu dla [demona IoT Edge Security w serwisie GitHub](https://github.com/Azure/iotedge/tree/master/edgelet).
 
-#### <a name="installation-and-updates"></a>Instalacji i aktualizacji
+#### <a name="installation-and-updates"></a>Instalacja i aktualizacje
 
 Instalacja i aktualizacje demona IoT Edge Security DAEMON są zarządzane za pomocą system zarządzania pakietami systemu operacyjnego. Urządzenia IoT Edge z certyfikatem głównym sprzętu zaufania powinny zapewniać dodatkową ochronę przed integralnością demona przez Zarządzanie cyklem życia za pomocą systemów bezpiecznego rozruchu i zarządzania aktualizacjami. Twórcy urządzeń powinni poznać te drogi na podstawie ich możliwości urządzeń.
 
 #### <a name="versioning"></a>Obsługa wersji
 
-Środowisko uruchomieniowe usługi IoT Edge śledzi i zgłasza wersję demona zabezpieczeń usługi IoT Edge. Wersja jest raportowana jako atrybut *Runtime. platform. Version* dla właściwości "module agenta IoT Edge.
+Środowisko uruchomieniowe IoT Edge śledzi i raportuje wersję demona IoT Edge Security. Wersja jest raportowana jako atrybut *Runtime. platform. Version* dla właściwości "module agenta IoT Edge.
 
-### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>Warstwa abstrakcji platformy modułu zabezpieczeń sprzętu (PAL przez sprzętowy moduł zabezpieczeń)
+### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>Warstwa abstrakcji platformy sprzętowego modułu zabezpieczeń (HSM PAL)
 
-HSM PAL przenosi wszystkie głównym zaufania sprzętu do izolowania dewelopera lub użytkownika usługi IoT Edge z ich złożoności.  Obejmuje on kombinację procedur komunikacji między interfejsem programowania aplikacji (API) i międzydomenowych, na przykład komunikację między standardowym środowiskiem wykonywania a bezpieczną enklawy.  Rzeczywiste wdrożenie PAL sprzętowego modułu zabezpieczeń zależy od konkretnego sprzętu bezpieczny w użyciu. Jego istnienie umożliwia korzystanie z praktycznie dowolnego bezpiecznego sprzętu krzemu.
+Moduł HSM PAL dzieli cały rdzeń sprzętu zaufania, aby odizolować dewelopera lub użytkownika IoT Edge z ich złożoności.  Obejmuje on kombinację procedur komunikacji między interfejsem programowania aplikacji (API) i międzydomenowych, na przykład komunikację między standardowym środowiskiem wykonywania a bezpieczną enklawy.  Rzeczywista implementacja modułu HSM PAL zależy od określonego bezpiecznego sprzętu w użyciu. Jego istnienie umożliwia korzystanie z praktycznie dowolnego bezpiecznego sprzętu krzemu.
 
-## <a name="secure-silicon-root-of-trust-hardware"></a>Zabezpieczenia głównego dolina sprzętu zaufania
+## <a name="secure-silicon-root-of-trust-hardware"></a>Bezpieczny katalog główny krzemu sprzętu zaufania
 
-Dolina bezpieczne jest kotwicy zaufania wewnątrz usługi IoT Edge urządzeń sprzętowych.  Dolina bezpiecznego są dostępne w różnych Trusted Platform Module (TPM), osadzonego elementu bezpieczne (eSE), ARM TrustZone, SGX firmy Intel i technologii niestandardowe dolina bezpieczne.  Korzystanie z bezpiecznego modelu krzemu zaufania na urządzeniach jest zalecane z uwzględnieniem zagrożeń związanych z fizycznym dostępnością urządzeń IoT.
+W celu zakotwiczenia zaufania wewnątrz sprzętowego urządzenia IoT Edge należy zabezpieczyć krzem.  Zabezpieczanie krzemu polega na uwzględnieniu moduł TPM (TPM), osadzonego bezpiecznego elementu (eSE), ARM TrustZone, Intel SGX i niestandardowych technologii krzemu.  Korzystanie z bezpiecznego modelu krzemu zaufania na urządzeniach jest zalecane z uwzględnieniem zagrożeń związanych z fizycznym dostępnością urządzeń IoT.
 
-## <a name="iot-edge-security-manager-integration-and-maintenance"></a>Integracja Menedżera zabezpieczeń usługi IoT Edge i konserwacja
+## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge integracja i Konserwacja programu Security Manager
 
 IoT Edge Security Manager chce identyfikować i izolować składniki, które chronią zabezpieczenia i integralność platformy Azure IoT Edge w celu zapewnienia niestandardowej funkcjonalności. Osoby trzecie, takie jak twórcy urządzeń, powinny korzystać z niestandardowych funkcji zabezpieczeń dostępnych na urządzeniach.  Zobacz sekcję następne kroki, aby poznać linki, które pokazują, jak zabezpieczyć usługę Azure IoT Security Manager za pomocą moduł TPM (TPM) na platformach Linux i Windows. Te przykłady używają oprogramowania lub wirtualnej moduły TPM, ale bezpośrednio mają zastosowanie do korzystania z dyskretnych urządzeń TPM.  
 

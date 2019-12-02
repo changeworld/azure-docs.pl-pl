@@ -3,12 +3,12 @@ title: Dokumentacja C# dla deweloperów Azure Functions
 description: Dowiedz się, jak opracowywać C#Azure Functions przy użyciu programu.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 20bbf31bc92e49106a94e7a85d3b1541aaa2a34b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9ecaff438eb30e6a05a7e744e17d2d713eef21cd
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230602"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665580"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Dokumentacja C# dla deweloperów Azure Functions
 
@@ -149,7 +149,7 @@ Wygenerowany plik *Function. JSON* zawiera właściwość `configurationSource`,
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
+## <a name="microsoftnetsdkfunctions"></a>Microsoft. NET. Sdk. Functions
 
 Generowanie pliku *Function. JSON* jest wykonywane przez pakiet NuGet [Microsoft\..net\.SDK\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
@@ -366,7 +366,7 @@ public static class IBinderExample
 }
 ```
 
-[Obiekt blobattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiuje powiązanie danych wejściowych lub wyjściowych [magazynu obiektów BLOB](functions-bindings-storage-blob.md) , a parametr [TextWriter](/dotnet/api/system.io.textwriter) jest obsługiwanym typem powiązania.
+[Obiekt blobattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definiuje powiązanie danych wejściowych lub wyjściowych [magazynu obiektów BLOB](functions-bindings-storage-blob.md) , a parametr [TextWriter](/dotnet/api/system.io.textwriter) jest obsługiwanym typem powiązania.
 
 ### <a name="multiple-attribute-example"></a>Przykład wielu atrybutów
 

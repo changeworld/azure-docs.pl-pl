@@ -4,7 +4,7 @@ description: Korzystając z tej ścieżki szkoleniowej, Rozpocznij pracę z obs�
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, aplikację mobilną, iot
+keywords: IPv6, moduł równoważenia obciążenia platformy Azure, podwójny stos, publiczny adres IP, natywny protokół IPv6, urządzenia przenośne, IoT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4f4baea1c293a1707d87780044a21ff675cb7f98
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077024"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666209"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Omówienie protokołu IPv6 dla Azure Load Balancer
 
 
 >[!NOTE] 
->Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat usługi Load Balancer w warstwie Standardowa, zobacz [Standard Load Balancer overview (Omówienie usługi Load Balancer w warstwie Standardowa)](load-balancer-standard-overview.md).
+>Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat usługa Load Balancer w warstwie Standardowa, zobacz [Usługa Load Balancer w warstwie Standardowa Omówienie](load-balancer-standard-overview.md).
 
 Usługi równoważenia obciążenia z podstawową jednostką SKU można wdrożyć przy użyciu adresu IPv6. Oprócz łączności IPv4, zapewnia to następujące możliwości:
 
@@ -78,7 +78,6 @@ Ograniczenia
 * Zmiana parametru loadDistributionMethod protokołu IPv6 nie jest **obecnie obsługiwana**.
 * Zastrzeżone adresy IP IPv6 (gdzie IPAllocationMethod = static) **nie są obecnie obsługiwane**.
 * Usługa NAT64 (tłumaczenie adresów IPv6 na IPv4) nie jest obsługiwana.
-* Usługi równoważenia obciążenia w warstwie Standardowa nie obsługują obecnie adresów IPv6.
 
 ## <a name="next-steps"></a>Następne kroki
 

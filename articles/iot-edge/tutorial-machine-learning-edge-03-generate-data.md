@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: generowanie danych symulowanego urządzenia — Machine Learning na Azure IoT Edge'
+title: 'Samouczek: symulowanie danych urządzenia — Azure IoT Edge & Machine Learning'
 description: 'Samouczek: tworzenie urządzeń wirtualnych generujących symulowane dane telemetryczne, które mogą być później używane do uczenia modelu uczenia maszynowego.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 51d93e5b83d203f3fa99b69cc5f2877bbfdb6fb1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9b3b36cf5a0f426f2081179d08cf2f093a233fff
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112856"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665937"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Samouczek: generowanie danych symulowanego urządzenia
 

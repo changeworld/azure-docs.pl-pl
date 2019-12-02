@@ -3,12 +3,12 @@ title: Rozwiązywanie problemów z kopiami zapasowymi baz danych SAP HANA
 description: Opisuje sposób rozwiązywania typowych błędów, które mogą wystąpić podczas tworzenia kopii zapasowej SAP HANA baz danych przy użyciu Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: b4c39c631963a358dcdc9d1eafe954a85a9499ad
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554862"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665342"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowych baz danych SAP HANA na platformie Azure
 
@@ -20,61 +20,61 @@ Przed skonfigurowaniem kopii zapasowych zapoznaj się z sekcjami [wymagania wst�
 
 ## <a name="common-user-errors"></a>Typowe błędy użytkowników
 
-###  <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection 
+### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-| Komunikat o błędzie      | Nie można nawiązać połączenia z systemem HANA                             |
+| Komunikat o błędzie      | <span style="font-weight:normal">Nie można nawiązać połączenia z systemem HANA</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| Możliwe przyczyny    | Wystąpienie SAP HANA może nie działać.<br/>Nie są ustawione uprawnienia wymagane dla usługi Azure Backup w celu współdziałania z bazą danych HANA. |
-| Zalecana akcja | Sprawdź, czy baza danych SAP HANA działa. Jeśli baza danych jest uruchomiona i działa, sprawdź, czy są ustawione wszystkie wymagane uprawnienia. Jeśli brakuje któregoś z uprawnień, uruchom [skrypt rejestracyjny](https://aka.ms/scriptforpermsonhana) , aby dodać brakujące uprawnienia. |
+| **Możliwe przyczyny**    | Wystąpienie SAP HANA może nie działać.<br/>Nie są ustawione uprawnienia wymagane dla usługi Azure Backup w celu współdziałania z bazą danych HANA. |
+| **Zalecana akcja** | Sprawdź, czy baza danych SAP HANA działa. Jeśli baza danych jest uruchomiona i działa, sprawdź, czy są ustawione wszystkie wymagane uprawnienia. Jeśli brakuje któregoś z uprawnień, uruchom [skrypt rejestracyjny](https://aka.ms/scriptforpermsonhana) , aby dodać brakujące uprawnienia. |
 
-###  <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid 
+### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
 
-| Komunikat o błędzie      | Określone wystąpienie SAP HANA jest nieprawidłowe lub nie można go znaleźć |
+| Komunikat o błędzie      | <span style="font-weight:normal">Określone wystąpienie SAP HANA jest nieprawidłowe lub nie można go znaleźć</span>  |
 | ------------------ | ------------------------------------------------------------ |
-| Możliwe przyczyny    | Nie można utworzyć kopii zapasowej wielu wystąpień SAP HANA na jednej maszynie wirtualnej platformy Azure. |
-| Zalecana akcja | Uruchom [skrypt rejestracji](https://aka.ms/scriptforpermsonhana) jednokrotnej w wystąpieniu SAP HANA, dla którego chcesz utworzyć kopię zapasową. Jeśli problem nadal występuje, skontaktuj się z pomocą techniczną firmy Microsoft. |
+| **Możliwe przyczyny**    | Nie można utworzyć kopii zapasowej wielu wystąpień SAP HANA na jednej maszynie wirtualnej platformy Azure. |
+| **Zalecana akcja** | Uruchom [skrypt rejestracji](https://aka.ms/scriptforpermsonhana) jednokrotnej w wystąpieniu SAP HANA, dla którego chcesz utworzyć kopię zapasową. Jeśli problem nadal występuje, skontaktuj się z pomocą techniczną firmy Microsoft. |
 
-###  <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation 
+### <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation
 
-| Komunikat o błędzie      | Określona operacja SAP HANA nie jest obsługiwana             |
+| Komunikat o błędzie      | <span style="font-weight:normal">Określona operacja SAP HANA nie jest obsługiwana</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| Możliwe przyczyny    | Usługa Azure Backup dla SAP HANA nie obsługuje przyrostowych kopii zapasowych i akcji wykonywanych na SAP HANA natywnych klientów (Studio/Panel sterowania/DBA) |
-| Zalecana akcja | Więcej informacji można znaleźć [tutaj](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
+| **Możliwe przyczyny**    | Usługa Azure Backup dla SAP HANA nie obsługuje przyrostowych kopii zapasowych i akcji wykonywanych na SAP HANA natywnych klientów (Studio/Panel sterowania/DBA) |
+| **Zalecana akcja** | Więcej informacji można znaleźć [tutaj](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
 
-###  <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType 
+### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
-| Komunikat o błędzie      | Ta SAP HANA baza danych nie obsługuje żądanego typu kopii zapasowej |
+| Komunikat o błędzie      | <span style="font-weight:normal">Ta SAP HANA baza danych nie obsługuje żądanego typu kopii zapasowej</span>  |
 | ------------------ | ------------------------------------------------------------ |
-| Możliwe przyczyny    | Usługa Azure Backup nie obsługuje przyrostowych kopii zapasowych i kopii zapasowych przy użyciu migawek |
-| Zalecana akcja | Więcej informacji można znaleźć [tutaj](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
+| **Możliwe przyczyny**    | Usługa Azure Backup nie obsługuje przyrostowych kopii zapasowych i kopii zapasowych przy użyciu migawek |
+| **Zalecana akcja** | Więcej informacji można znaleźć [tutaj](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
 
-###  <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure 
+### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
-| Komunikat o błędzie      | Łańcuch dzienników kopii zapasowej został przerwany                                   |
+| Komunikat o błędzie      | <span style="font-weight:normal">Łańcuch dzienników kopii zapasowej został przerwany</span>                                    |
 | ------------------ | ------------------------------------------------------------ |
-| Możliwe przyczyny    | Miejsce docelowe kopii zapasowej dziennika mogło zostać zaktualizowane z BACKINT do systemu plików lub plik wykonywalny BACKINT mógł zostać zmieniony |
-| Zalecana akcja | Wyzwól pełną kopię zapasową, aby rozwiązać ten problem                   |
+| **Możliwe przyczyny**    | Miejsce docelowe kopii zapasowej dziennika mogło zostać zaktualizowane z BACKINT do systemu plików lub plik wykonywalny BACKINT mógł zostać zmieniony |
+| **Zalecana akcja** | Wyzwól pełną kopię zapasową, aby rozwiązać ten problem                   |
 
-###  <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore 
+### <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore
 
-| Komunikat o błędzie      | Systemy źródłowe i docelowe na potrzeby przywracania są niezgodne   |
+| Komunikat o błędzie      | <span style="font-weight:normal">Systemy źródłowe i docelowe na potrzeby przywracania są niezgodne</span>    |
 | ------------------ | ------------------------------------------------------------ |
-| Możliwe przyczyny    | System docelowy przywracania jest niezgodny ze źródłem |
-| Zalecana akcja | Zapoznaj się z uwagą do [1642148](https://launchpad.support.sap.com/#/notes/1642148) dla oprogramowania SAP, aby dowiedzieć się więcej na temat typów przywracania obsługiwanych dzisiaj |
+| **Możliwe przyczyny**    | System docelowy przywracania jest niezgodny ze źródłem |
+| **Zalecana akcja** | Zapoznaj się z uwagą do [1642148](https://launchpad.support.sap.com/#/notes/1642148) dla oprogramowania SAP, aby dowiedzieć się więcej na temat typów przywracania obsługiwanych dzisiaj |
 
-###  <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected 
+### <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected
 
-| Komunikat o błędzie      | Wykryto uaktualnienie SDC do MDC                                  |
+| Komunikat o błędzie      | <span style="font-weight:normal">Wykryto uaktualnienie SDC do MDC</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
-| Możliwe przyczyny    | Wystąpienie SAP HANA zostało uaktualnione z SDC do MDC. Kopie zapasowe zakończą się niepowodzeniem po aktualizacji. |
-| Zalecana akcja | Aby rozwiązać ten problem, wykonaj kroki opisane w [sekcji Uaktualnianie z SAP HANA 1,0 do 2,0](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) . |
+| **Możliwe przyczyny**    | Wystąpienie SAP HANA zostało uaktualnione z SDC do MDC. Kopie zapasowe zakończą się niepowodzeniem po aktualizacji. |
+| **Zalecana akcja** | Aby rozwiązać ten problem, wykonaj kroki opisane w [sekcji Uaktualnianie z SAP HANA 1,0 do 2,0](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) . |
 
-###  <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration 
+### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
-| Komunikat o błędzie      | Wykryto nieprawidłową konfigurację BACKINT                       |
+| Komunikat o błędzie      | <span style="font-weight:normal">Wykryto nieprawidłową konfigurację BACKINT</span>                       |
 | ------------------ | ------------------------------------------------------------ |
-| Możliwe przyczyny    | Parametry zapasowe są niepoprawnie określone dla usługi Azure Backup |
-| Zalecana akcja | Sprawdź, czy są ustawione następujące parametry (BACKINT):<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: false]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Jeśli na HOŚCIE znajdują się BACKINT parametry, usuń je. Jeśli parametry nie są dostępne na poziomie hosta, ale zostały ręcznie zmodyfikowane na poziomie bazy danych, przywróć je do odpowiednich wartości zgodnie z wcześniejszym opisem. Możesz też uruchomić polecenie [Zatrzymaj ochronę i zachować dane kopii zapasowej](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) z Azure Portal, a następnie wybrać polecenie **Wznów wykonywanie kopii zapasowej**. |
+| **Możliwe przyczyny**    | Parametry zapasowe są niepoprawnie określone dla usługi Azure Backup |
+| **Zalecana akcja** | Sprawdź, czy są ustawione następujące parametry (BACKINT):<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: false]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Jeśli na HOŚCIE znajdują się BACKINT parametry, usuń je. Jeśli parametry nie są dostępne na poziomie hosta, ale zostały ręcznie zmodyfikowane na poziomie bazy danych, przywróć je do odpowiednich wartości zgodnie z wcześniejszym opisem. Możesz też uruchomić polecenie [Zatrzymaj ochronę i zachować dane kopii zapasowej](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) z Azure Portal, a następnie wybrać polecenie **Wznów wykonywanie kopii zapasowej**. |
 
 ## <a name="restore-checks"></a>Testy przywracania
 

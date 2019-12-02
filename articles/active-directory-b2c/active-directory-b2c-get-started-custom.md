@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 411710280a631d341adeb55bc4b587a613ee3c4c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643617"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664067"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Wprowadzenie do zasad niestandardowych w Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ ms.locfileid: "73643617"
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 1. Użyj filtru **katalogów i subskrypcji** w górnym menu, aby wybrać katalog, który zawiera dzierżawę Azure AD B2C.
 1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
-1. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości**.
+1. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości** z okienka **zasady** .
 
 ### <a name="create-the-signing-key"></a>Utwórz klucz podpisywania
 
@@ -67,7 +67,7 @@ Dodaj [wpis tajny](active-directory-b2c-setup-fb-app.md) aplikacji usługi Faceb
 
 ## <a name="register-identity-experience-framework-applications"></a>Rejestrowanie aplikacji platformy obsługi tożsamości
 
-Azure AD B2C wymaga zarejestrowania dwóch aplikacji używanych do rejestracji i logowania użytkowników przy użyciu kont lokalnych: *IdentityExperienceFramework*, internetowego interfejsu API i *ProxyIdentityExperienceFramework*, natywnej aplikacji z delegowanym uprawnieniem do Aplikacja IdentityExperienceFramework. Użytkownicy mogą zarejestrować się przy użyciu adresu e-mail lub nazwy użytkownika i hasła w celu uzyskania dostępu do aplikacji zarejestrowanych w ramach dzierżawy, co powoduje utworzenie "konta lokalnego". Konta lokalne istnieją tylko w dzierżawie Azure AD B2C.
+Azure AD B2C wymaga zarejestrowania dwóch aplikacji używanych do rejestracji i logowania użytkowników przy użyciu kont lokalnych: *IdentityExperienceFramework*, internetowego interfejsu API i *ProxyIdentityExperienceFramework*, natywnej aplikacji z delegowanym uprawnieniem do aplikacji IdentityExperienceFramework. Użytkownicy mogą zarejestrować się przy użyciu adresu e-mail lub nazwy użytkownika i hasła w celu uzyskania dostępu do aplikacji zarejestrowanych w ramach dzierżawy, co powoduje utworzenie "konta lokalnego". Konta lokalne istnieją tylko w dzierżawie Azure AD B2C.
 
 Musisz zarejestrować te dwie aplikacje w dzierżawie Azure AD B2C tylko raz.
 
@@ -146,7 +146,7 @@ Teraz Udziel uprawnień do zakresu interfejsu API, który został uwidoczniony w
 1. W obszarze **Zarządzaj**wybierz pozycję **uprawnienia interfejsu API**.
 1. W obszarze **skonfigurowane uprawnienia**wybierz pozycję **Dodaj uprawnienie**.
 1. Wybierz kartę **Moje interfejsy API** , a następnie wybierz aplikację **IdentityExperienceFramework** .
-1. W obszarze **uprawnienie**wybierz zdefiniowany wcześniej zakres **user_impersonation** .
+1. W obszarze **uprawnienie**wybierz wcześniej zdefiniowany zakres **user_impersonation** .
 1. Wybierz pozycję **Dodaj uprawnienia**. Poczekaj kilka minut, zanim przejdziesz do kolejnego kroku.
 1. Wybierz pozycję **Udziel zgody administratora (nazwa dzierżawy)** .
 1. Wybierz obecnie zalogowane konto administratora lub Zaloguj się przy użyciu konta w dzierżawie Azure AD B2C, do którego przypisano co najmniej rolę *administratora aplikacji w chmurze* .

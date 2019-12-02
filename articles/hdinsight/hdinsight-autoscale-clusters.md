@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 5cc473635543a22fd7e7223f4a5715f78457a897
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5a8e641c8a1b29d657fe8b0eabf7657ab5973516
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561751"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666039"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatyczne skalowanie klastrów usługi Azure HDInsight
 
 > [!Important]
-> Funkcja skalowania automatycznego działa tylko w przypadku klastrów Spark, Hive i MapReduce utworzonych po 8 maja 2019. 
+> Funkcja skalowania automatycznego działa tylko w przypadku klastrów Spark, Hive, LLAP i HBase utworzonych po 8 maja 2019. 
 
 Funkcja automatycznego skalowania klastra usługi Azure HDInsight automatycznie skaluje liczbę węzłów procesu roboczego w klastrze. Obecnie nie można skalować innych typów węzłów w klastrze.  Podczas tworzenia nowego klastra usługi HDInsight można ustawić minimalną i maksymalną liczbę węzłów procesu roboczego. Funkcja automatycznego skalowania monitoruje następnie wymagania dotyczące zasobów obciążeń analitycznych i skaluje liczbę węzłów procesu roboczego w górę lub w dół. Ta funkcja nie ma dodatkowych opłat.
 

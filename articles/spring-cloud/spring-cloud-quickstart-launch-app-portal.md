@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 8a34dcd31ba15ed949fa0a50ec904da96a048a7d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0d8bc302434ea973dd4d94156c65ee6965dd1dc1
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560066"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666255"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu Azure Portal
 
@@ -72,13 +72,17 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
 
 1. Przejdź do strony **Przegląd** usługi i wybierz pozycję **serwer konfiguracji**.
 
-1. W sekcji **repozytorium domyślne** ustaw wartość **Identyfikator URI** na "https\://GitHub.com/Azure-Samples/piggymetrics", ustaw wartość **etykieta** na "config", a następnie wybierz pozycję **Zastosuj** , aby zapisać zmiany.
+1. W sekcji **repozytorium domyślne** Ustaw **Identyfikator URI** na "https\://GitHub.com/Azure-Samples/piggymetrics".
+
+1. Ustaw **etykietę** na "config".
+
+1. Wybierz pozycję **Zastosuj** , aby zapisać zmiany.
 
     ![Zrzut ekranu przedstawiający Portal ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Kompilowanie i wdrażanie aplikacji mikrousług
 
-1. Otwórz [usługę Azure Cloudshell](https://shell.azure.com) i Sklonuj repozytorium przykładowej aplikacji na komputerze lokalnym.  W tym miejscu najpierw tworzymy tymczasowy katalog o nazwie `source-code` przed sklonowaniem aplikacji.
+1. Otwórz [Azure Cloud Shell](https://shell.azure.com) i Sklonuj repozytorium przykładowej aplikacji na komputerze lokalnym.  W tym miejscu najpierw tworzymy tymczasowy katalog o nazwie `source-code` przed sklonowaniem aplikacji.
 
     ```azurecli
     mkdir source-code

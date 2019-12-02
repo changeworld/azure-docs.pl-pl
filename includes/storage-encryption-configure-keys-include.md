@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
-ms.openlocfilehash: 3076065d23d4701711c0ecb60349e77ee5c9b7c8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f846d75833b3a796e24fd23c5f841ea24a8d1876
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183446"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665914"
 ---
-Usługa Azure Storage obsługuje szyfrowanie danych magazynowanych za pomocą kluczy zarządzanych przez firmę Microsoft lub kluczy zarządzanych przez klienta. Kluczy zarządzanych przez klienta umożliwiają tworzenie, obracanie, wyłącz i odwołać kontroli dostępu.
+Usługa Azure Storage szyfruje wszystkie dane na koncie magazynu w stanie spoczynku. Domyślnie dane są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby uzyskać dodatkową kontrolę nad kluczami szyfrowania, można podać klucze zarządzane przez klienta na poziomie konta magazynu.
 
-Usługa Azure Key Vault umożliwia zarządzanie kluczami i przeprowadzanie inspekcji użycia kluczy. Możesz utworzyć własne klucze i przechowywać je w magazynie kluczy lub interfejsów API usługi Azure Key Vault można użyć do wygenerowania kluczy. Konto magazynu i magazynu kluczy musi być w tym samym regionie, ale można je w różnych subskrypcjach. Aby uzyskać więcej informacji na temat usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](../articles/key-vault/key-vault-overview.md)
+Klucze zarządzane przez klienta muszą być przechowywane w Azure Key Vault. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć Azure Key Vault interfejsów API do wygenerowania kluczy. Konto magazynu i Magazyn kluczy muszą znajdować się w tym samym regionie, ale mogą znajdować się w różnych subskrypcjach. Aby uzyskać więcej informacji na temat szyfrowania i zarządzania kluczami usługi Azure Storage, zobacz [szyfrowanie usługi Azure Storage dla danych przechowywanych w spoczynku](../articles/storage/common/storage-service-encryption.md). Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](../articles/key-vault/key-vault-overview.md)

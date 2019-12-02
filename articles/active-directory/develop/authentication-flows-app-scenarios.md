@@ -17,12 +17,12 @@ ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d6a36d66d6094bbac1b3e39a4ee5cea55737971
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c859c7f2d1b3d7c4cd2e64b2c9a42eb878241856
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473830"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664152"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Przepływy uwierzytelniania i scenariusze aplikacji
 
@@ -36,8 +36,8 @@ W tym artykule opisano różne przepływy uwierzytelniania i scenariusze aplikac
 
 Tokeny można nabyć z kilku typów aplikacji, takich jak:
 
-- Aplikacje internetowe
-- Aplikacji mobilnych
+- Aplikacje sieci Web
+- Aplikacje mobilne
 - Aplikacje klasyczne
 - Interfejsy API sieci Web
 
@@ -77,7 +77,7 @@ Tokeny zabezpieczające można nabyć z wielu typów aplikacji. Te aplikacje są
 
 - **Publiczne aplikacje klienckie**: aplikacje są zawsze zalogowani użytkownicy:
   - Aplikacje klasyczne wywołujące interfejsy API sieci Web w imieniu zalogowanego użytkownika
-  - Aplikacji mobilnych
+  - Aplikacje mobilne
   - Aplikacje działające na urządzeniach, które nie mają przeglądarki, takie jak procesy działające na iOT
 
   Te aplikacje są reprezentowane przez klasę MSAL [PublicClientApplication](msal-client-applications.md) .
@@ -94,9 +94,9 @@ Tokeny zabezpieczające można nabyć z wielu typów aplikacji. Te aplikacje są
 Punkt końcowy platformy tożsamości firmy Microsoft obsługuje uwierzytelnianie różnych rodzajów architektur aplikacji:
 
 - Aplikacje jednostronicowe
-- Aplikacje internetowe
+- Aplikacje sieci Web
 - Interfejsy API sieci Web
-- Aplikacji mobilnych
+- Aplikacje mobilne
 - Natywne aplikacje
 - Aplikacje demona
 - Aplikacje po stronie serwera
@@ -200,7 +200,7 @@ Scenariusze, które obejmują pobieranie tokenów, również są mapowane na prz
 
 <table>
  <thead>
-  <tr><th>Scenariusz</th> <th>Szczegółowy opis scenariusza</th> <th>Przepływ OAuth 2,0 i przyznawanie</th> <th>Grupy odbiorców</th></tr>
+  <tr><th>Scenariusz</th> <th>Szczegółowy opis scenariusza</th> <th>Przepływ OAuth 2,0 i przyznawanie</th> <th>Odbiorcy</th></tr>
  </thead>
  <tbody>
   <tr>
@@ -261,7 +261,7 @@ Scenariusze, które obejmują pobieranie tokenów, również są mapowane na prz
 
   <tr>
    <td><a href="scenario-daemon-overview.md"><img alt="Daemon app that calls web APIs" src="media/scenarios/daemon-app.svg"></a></td>
-   <td><a href=scenario-daemon-overview.md">Aplikacja demona, która wywołuje interfejsy API sieci Web</a></td>
+   <td><a href="scenario-daemon-overview.md">Aplikacja demona, która wywołuje interfejsy API sieci Web</a></td>
    <td><a href="v2-oauth2-client-creds-grant-flow.md">Poświadczenia klienta</a></td>
    <td>Uprawnienia tylko do aplikacji bez użytkownika i używane tylko w organizacjach usługi Azure AD</td>
  </tr>

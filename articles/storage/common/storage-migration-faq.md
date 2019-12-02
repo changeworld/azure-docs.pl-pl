@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090819"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666430"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Często zadawane pytania dotyczące migracji usługi Azure Storage
 
@@ -47,7 +47,7 @@ Nie ma możliwości bezpośredniej kopii zapasowej całego konta magazynu. Możn
 
 1.  Zainstaluj narzędzie wiersza polecenia [AzCopy](storage-use-azcopy.md) . To narzędzie pomaga przenieść plik VHD między kontami magazynu.
 
-2.  Po zainstalowaniu programu AzCopy w systemie Windows za pomocą Instalatora Otwórz okno wiersza polecenia, a następnie przejdź do folderu instalacyjnego AzCopy na komputerze. Domyślnie narzędzie AzCopy jest zainstalowane na **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** lub **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+2.  Po zainstalowaniu programu AzCopy w systemie Windows za pomocą Instalatora Otwórz okno wiersza polecenia, a następnie przejdź do folderu instalacyjnego AzCopy na komputerze. Domyślnie AzCopy jest instalowany w folderze **% ProgramFiles (x86)% \ Microsoft SDKs\Azure\AzCopy** lub **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
 
 3.  Uruchom następujące polecenie, aby przenieść kontener. Należy zastąpić tekst wartościami rzeczywistymi.   
      
@@ -55,8 +55,8 @@ Nie ma możliwości bezpośredniej kopii zapasowej całego konta magazynu. Możn
             /Dest:https://destaccount.blob.core.windows.net/mycontainer2
             /SourceKey:key1 /DestKey:key2 /S
 
-    - `/Source`: Podaj identyfikator URI źródłowego konta magazynu (do kontenera).  
-    - `/Dest`: Podaj identyfikator URI dla docelowego konta magazynu (do kontenera).  
+    - `/Source`: podaj identyfikator URI dla źródłowego konta magazynu (do kontenera).  
+    - `/Dest`: podaj identyfikator URI dla docelowego konta magazynu (do kontenera).  
     - `/SourceKey`: Podaj klucz podstawowy dla konta magazynu źródłowego. Możesz skopiować ten klucz z Azure Portal, wybierając konto magazynu.  
     - `/DestKey`: Podaj klucz podstawowy dla docelowego konta magazynu. Możesz skopiować ten klucz z portalu, wybierając konto magazynu.
 
@@ -65,7 +65,7 @@ Po uruchomieniu tego polecenia pliki kontenera są przenoszone na docelowe konto
 > [!NOTE]
 > Interfejs wiersza polecenia AzCopy nie współpracuje ze specyfikatorem **wzorca** podczas kopiowania z jednego obiektu blob platformy Azure do innego.
 >
-> Można bezpośrednio kopiować i edytować polecenie AzCopy oraz sprawdzać krzyżowo, aby upewnić się, że **wzorzec** jest zgodny ze źródłem. Upewnij się również, że symbole wieloznaczne są włączone. Aby uzyskać więcej informacji, zobacz [Parametry AzCopy](storage-use-azcopy.md).
+> Można bezpośrednio kopiować i edytować polecenie AzCopy oraz sprawdzać krzyżowo, aby upewnić się, że **wzorzec** jest zgodny ze źródłem. Upewnij **się również, że** symbole wieloznaczne są włączone. Aby uzyskać więcej informacji, zobacz [Parametry AzCopy](storage-use-azcopy.md).
 
 **Jak mogę przenieść dane z jednego kontenera magazynu do innego?**
 
@@ -167,7 +167,7 @@ Użyj AzCopy, aby pobrać dane. Aby uzyskać więcej informacji, zobacz [transfe
 
 **Jak mogę zmienić lokalizację dodatkową na Region Europa dla konta magazynu?**
 
-Podczas tworzenia konta magazynu należy wybrać region podstawowy dla konta. Wybór regionu pomocniczego jest oparty na regionie podstawowym i nie można go zmienić. Aby uzyskać więcej informacji, [zobacz Magazyn Geograficznie nadmiarowy (GRS): Replikacja między regionami w ramach usługi](storage-redundancy.md)Azure Storage.
+Podczas tworzenia konta magazynu należy wybrać region podstawowy dla konta. Wybór regionu pomocniczego jest oparty na regionie podstawowym i nie można go zmienić. Aby uzyskać więcej informacji, zobacz [Magazyn Geograficznie nadmiarowy (GRS): replikacja między regionami w ramach usługi Azure Storage](storage-redundancy.md).
 
 **Gdzie można uzyskać więcej informacji na temat platformy Azure szyfrowanie usługi Storage (SSE)?**  
   
@@ -214,7 +214,7 @@ Wykonaj następujące kroki:
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
         /SourceKey:key1 /DestKey:key2 /S 
 
-    Aby skopiować tylko jeden dysk, podaj nazwę dysku we wzorcu:
+    Aby skopiować tylko jeden dysk, podaj nazwę dysku we **wzorcu**:
 
         AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
@@ -237,7 +237,7 @@ Jeśli masz maszyny wirtualne, musisz wykonać dodatkowe czynności przed przepr
 
 **Jak mogę przeniesieniu z klasycznego konta magazynu na konto magazynu Azure Resource Manager?**
 
-Można użyć polecenia cmdlet **Move-AzStorageAccount** . To polecenie cmdlet zawiera wiele kroków (Walidacja, przygotowanie, zatwierdzenie). Możesz sprawdzić poprawność przenoszenia przed jego wprowadzeniem.
+Można użyć polecenia cmdlet **Move-AzureStorageAccount** . To polecenie cmdlet zawiera wiele kroków (Walidacja, przygotowanie, zatwierdzenie). Możesz sprawdzić poprawność przenoszenia przed jego wprowadzeniem.
 
 Jeśli masz maszyny wirtualne, musisz wykonać dodatkowe czynności przed przeprowadzeniem migracji danych konta magazynu. Aby uzyskać więcej informacji, zobacz [Migrowanie zasobów IaaS z wersji klasycznej do Azure Resource Manager przy użyciu Azure PowerShell](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
 
@@ -267,9 +267,9 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
 
 -   Jeśli uzyskujesz dostęp do AzCopy z wiersza polecenia Microsoft Azure Storage, wpisz **AzCopy**. Wiersz polecenia jest instalowany razem z AzCopy.
 
--   Jeśli zainstalowano wersję 32-bitową, znajduje się ona tutaj: **% ProgramFiles (x86)\\% Microsoft\\SDK\\Azure AzCopy**.
+-   Jeśli zainstalowano wersję 32-bitową, znajduje się ona tutaj: **% ProgramFiles (x86)%\\Microsoft sdk\\Azure\\AzCopy**.
 
--   Jeśli zainstalowano wersję 64-bitową, znajduje się ona tutaj: **% ProgramFiles\\% Microsoft\\SDK\\Azure AzCopy**.
+-   Jeśli zainstalowano wersję 64-bitową, znajduje się ona tutaj: **% ProgramFiles%\\Microsoft sdk\\Azure\\AzCopy**.
 
 **W jaki sposób można uzyskać dostęp do danych przechowywanych w regionie pomocniczym dla zreplikowanego konta magazynu (takiego jak magazyn strefowo nadmiarowy, magazyn Geograficznie nadmiarowy lub magazyn Geograficznie nadmiarowy do odczytu).**
 
@@ -277,13 +277,13 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
 
 -   W przypadku korzystania z magazynu geograficznie nadmiarowego dostępnego do odczytu można w dowolnym momencie uzyskać dostęp do danych z regionu pomocniczego. Użyj jednej z następujących metod:  
       
-    - **AzCopy**: Dołącz **-pomocniczy** do nazwy konta magazynu w adresie URL, aby uzyskać dostęp do pomocniczego punktu końcowego. Na przykład:  
+    - **AzCopy**: Dołącz do nazwy konta magazynu w adresie URL **, aby uzyskać** dostęp do pomocniczego punktu końcowego. Na przykład:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **Token sygnatury dostępu współdzielonego**: Użyj tokenu sygnatury dostępu współdzielonego, aby uzyskać dostęp do danych z punktu końcowego. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego](storage-sas-overview.md).
+    - **Token SAS**: Użyj tokenu sygnatury dostępu współdzielonego, aby uzyskać dostęp do danych z punktu końcowego. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego](storage-sas-overview.md).
 
-**Jak mogę użyć domeny niestandardowej protokołu HTTPS z kontem magazynu? Na przykład jak utworzyć "https:\//mystorageaccountname.blob.Core.Windows.net/images/Image.gif" jako "https:\//www.contoso.com/images/Image.gif"?**
+**Jak mogę użyć domeny niestandardowej protokołu HTTPS z kontem magazynu? Na przykład jak utworzyć "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" jako "https:\//www.contoso.com/images/image.gif"?**
 
 Protokół SSL nie jest obecnie obsługiwany na kontach magazynu z domenami niestandardowymi.
 Można jednak używać domen niestandardowych innych niż HTTPS. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego usługi BLOB Storage](../blobs/storage-custom-domain-name.md).
@@ -300,4 +300,4 @@ Jeśli chcesz tylko pobrać dane bez konieczności używania Eksplorator usługi
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
-Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać problem.
+Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), aby szybko rozwiązać problem.

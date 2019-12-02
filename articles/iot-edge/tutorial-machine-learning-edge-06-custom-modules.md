@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Tworzenie i wdrażanie modułów niestandardowych — Machine Learning na Azure IoT Edge'
+title: 'Samouczek: uczenie & Wdrażanie modelu — Azure IoT Edge & Machine Learning'
 description: 'Samouczek: Tworzenie i wdrażanie modułów IoT Edge, które przetwarzają dane z urządzeń liściowych za pośrednictwem modelu uczenia maszynowego, a następnie wysyłają szczegółowe informacje do IoT Hub.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 371c897f0b4858a642322ff35a6008edbe9a651d
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106552"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664220"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Samouczek: Tworzenie i wdrażanie niestandardowych modułów IoT Edge
 
@@ -22,7 +22,7 @@ ms.locfileid: "74106552"
 
 W tym artykule tworzymy trzy moduły IoT Edge, które odbierają komunikaty z urządzeń typu liść, uruchamiają dane za pośrednictwem modelu uczenia maszynowego, a następnie przesyłają szczegółowe informacje do IoT Hub.
 
-IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edge jako brokera komunikatów zachowuje moduły niezależne od siebie. Moduły muszą tylko określić danych wejściowych, które akceptują wiadomości i danych wyjściowych, do których one zapisywania komunikatów.
+IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edge jako brokera komunikatów zachowuje moduły niezależne od siebie. Moduły muszą określać dane wejściowe, na których są akceptowane wiadomości i dane wyjściowe, do których są zapisywane wiadomości.
 
 Chcemy, aby IoT Edge urządzenie miało cztery rzeczy dla nas:
 
@@ -639,7 +639,7 @@ W przypadku routera i klasyfikatora oczekuje się otrzymywania zwykłych komunik
 
 13. Wybierz opcję **trasa testowa**. Jeśli test zakończy się pomyślnie, zobaczysz komunikat pasujący do zapytania.
 
-14. Kliknij pozycję **Zapisz**.
+14. Kliknij przycisk **Save** (Zapisz).
 
 #### <a name="update-turbofandevicetostorage-route"></a>Aktualizowanie trasy turbofanDeviceToStorage
 
@@ -714,7 +714,7 @@ Skonfiguruj funkcję przekazywania plików IoT Hub, aby umożliwić modułowi za
 
 Po wprowadzeniu zmian w konfiguracji wszystko jest gotowe do skompilowania obrazów i opublikowania ich w usłudze Azure Container Registry. Proces kompilacji używa pliku Deployment. Template. JSON do określenia, które moduły muszą zostać skompilowane. Ustawienia dla każdego modułu, w tym wersji, znajdują się w pliku module. JSON w folderze module. Proces kompilacji najpierw uruchamia kompilację platformy Docker na wieloetapowe dockerfile zgodnym z bieżącą konfiguracją znalezioną w pliku module. JSON w celu utworzenia obrazu. Następnie publikuje obraz w rejestrze z pliku module. JSON z tagiem wersji pasującym do tego w pliku module. JSON. Na koniec tworzy manifest wdrożenia specyficzny dla konfiguracji (na przykład Deployment. amd64. JSON), który zostanie wdrożony na urządzeniu IoT Edge. Urządzenie IoT Edge odczytuje informacje z manifestu wdrożenia i zgodnie z instrukcjami pobierze moduły, skonfiguruje trasy i ustawi wszystkie wymagane właściwości. Ta metoda wdrażania ma dwa efekty uboczne, z którymi należy się zapoznać:
 
-* **Opóźnienie wdrożenia:** ponieważ środowisko uruchomieniowe IoT Edge musi rozpoznać zmianę żądanych właściwości przed rozpoczęciem ponownej konfiguracji, może zająć trochę czasu po wdrożeniu modułów do momentu pobrania przez środowisko uruchomieniowe i zaktualizowanie IoT Edge pliku.
+* **Opóźnienie wdrożenia:** ponieważ środowisko uruchomieniowe IoT Edge musi rozpoznać zmianę żądanych właściwości przed rozpoczęciem ponownej konfiguracji, może upłynąć trochę czasu po wdrożeniu modułów do momentu pobrania przez środowisko uruchomieniowe i zaktualizowania urządzenia IoT Edge.
 
 * **Wersje modułów:** w przypadku opublikowania nowej wersji kontenera modułu w rejestrze kontenerów przy użyciu tych samych tagów wersji jak w poprzednim module środowisko uruchomieniowe nie pobierze nowej wersji modułu. Wykonuje ono porównanie znacznika Version obrazu lokalnego i żądanego obrazu z manifestu wdrożenia. Jeśli te wersje są zgodne, środowisko uruchomieniowe nie przyjmuje żadnej akcji. W związku z tym ważne jest, aby zwiększyć wersję modułu za każdym razem, gdy chcesz wdrożyć nowe zmiany. Zwiększ wersję, zmieniając właściwość **Version** we właściwości **tag** w pliku module. JSON dla modułu, który jest zmieniany. Następnie Skompiluj i Opublikuj moduł.
 

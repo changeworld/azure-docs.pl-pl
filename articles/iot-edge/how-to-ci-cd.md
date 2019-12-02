@@ -1,6 +1,6 @@
 ---
-title: Ciągła integracja i ciągłe wdrażanie — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Skonfiguruj ciągłą integrację i ciągłe wdrażanie — usługi Azure IoT Edge przy użyciu infrastruktury DevOps platformy Azure, Azure potoków
+title: Ciągła integracja & ciągłego wdrażania — Azure IoT Edge
+description: Skonfiguruj ciągłą integrację i ciągłe wdrażanie — Azure IoT Edge przy użyciu usługi Azure DevOps, Azure Pipelines
 author: shizn
 manager: philmea
 ms.author: xshi
@@ -8,18 +8,18 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 85f77d1132af63681ee92cfd2bde82a71d8ed999
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 463de1f49ad8fd21c355395bec3a55d9d40474e6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457244"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666362"
 ---
-# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie w usłudze Azure IoT Edge
+# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie do Azure IoT Edge
 
 Możesz łatwo przyjmować DevOps z aplikacjami Azure IoT Edge przy użyciu wbudowanych zadań Azure IoT Edge w Azure Pipelines. W tym artykule pokazano, jak za pomocą funkcji ciągłej integracji i ciągłego wdrażania Azure Pipelines szybko i Azure IoT Edge wydajniej kompilować, testować i wdrażać aplikacje. 
 
-![Diagram — ciągła Integracja i ciągłe dostarczanie gałęzie rozwoju i produkcji](./media/how-to-ci-cd/cd.png)
+![Diagramy — gałęzie CI i CD na potrzeby programowania i produkcji](./media/how-to-ci-cd/cd.png)
 
 W tym artykule dowiesz się, jak za pomocą wbudowanych Azure IoT Edge zadań dla Azure Pipelines utworzyć dwa potoki dla rozwiązania IoT Edge. W Azure IoT Edge zadaniach można używać czterech akcji.
    - **Obrazy modułów Azure IoT Edge-Build** pobierają kod rozwiązania IoT Edge i kompilują obrazy kontenerów.
@@ -67,7 +67,7 @@ W tej sekcji utworzysz nowy potok kompilacji. Skonfiguruj potok do automatyczneg
 
    2. Wybierz **puste zadanie** zamiast szablonu. 
 
-      ![Rozpocznij z pustym procesem](./media/how-to-ci-cd/start-with-empty.png)
+      ![Rozpocznij od pustego procesu](./media/how-to-ci-cd/start-with-empty.png)
 
 4. Po utworzeniu potoku nastąpi przejście do edytora potoku. W opisie potoku Wybierz poprawną pulę agentów na podstawie platformy docelowej: 
     
@@ -119,9 +119,9 @@ W tej sekcji utworzysz nowy potok kompilacji. Skonfiguruj potok do automatyczneg
    * **Lokalizacja publikowania artefaktu**: Azure Pipelines.
 
 
-10. Otwórz kartę **wyzwalacze** i zaznacz pole wyboru **Włącz integrację ciągłą**. Upewnij się, że gałąź z kodem jest dołączony.
+10. Otwórz kartę **wyzwalacze** i zaznacz pole wyboru **Włącz integrację ciągłą**. Upewnij się, że gałąź zawierająca kod jest uwzględniona.
 
-    ![Włącz wyzwalacz ciągłej integracji](./media/how-to-ci-cd/configure-trigger.png)
+    ![Włącz wyzwalacz integracji ciągłej](./media/how-to-ci-cd/configure-trigger.png)
 
 11. Zapisz nowy potok kompilacji przy użyciu przycisku **Zapisz** .
 
@@ -134,11 +134,11 @@ Utwórz nowy potok i Dodaj nowy etap
 
 1. Na karcie **wersje** wybierz pozycję **+ Nowy potok**. Lub, jeśli masz już potoki wersji, wybierz przycisk **+ Nowy** i wybierz pozycję **+ Nowy potok wersji**.  
 
-    ![Dodaj potoku tworzenia wersji](./media/how-to-ci-cd/add-release-pipeline.png)
+    ![Dodaj potok wydania](./media/how-to-ci-cd/add-release-pipeline.png)
 
 2. Po wyświetleniu monitu o wybranie szablonu wybierz pozycję Rozpocznij od **pustego zadania**.
 
-    ![Uruchom zadanie puste](./media/how-to-ci-cd/start-with-empty-job.png)
+    ![Rozpocznij od pustego zadania](./media/how-to-ci-cd/start-with-empty-job.png)
 
 3. Nowy potok wydania jest inicjowany z jednym etapem, zwanym **etapem 1**. Zmień nazwę etapu 1 na **dev** i Traktuj ją jako środowisko testowe. Zwykle potoki ciągłego wdrażania mają wiele etapów, w tym **dev**, **Staging** and **prod**. Możesz tworzyć więcej informacji na podstawie DevOps. Zamknij okno Szczegóły etapu po jego zmianie nazwy. 
 
@@ -190,24 +190,24 @@ Utwórz nowy potok i Dodaj nowy etap
     * **Nazwa IoT Hub**: wybierz Centrum IoT Hub. 
     * **Wybierz jedno/wiele urządzeń**: Wybierz, czy potok wydania ma zostać wdrożony na jednym urządzeniu, czy na wielu urządzeniach. 
       * W przypadku wdrażania na jednym urządzeniu wprowadź **IoT Edge identyfikator urządzenia**. 
-      * W przypadku wdrażania na wielu urządzeniach należy określić **warunek docelowy**urządzenia. Warunek docelowy to filtr zgodny z zestawem IoT Edge urządzeń w IoT Hub. Jeśli chcesz użyć znaczników urządzenia jako warunek, należy zaktualizować urządzenie odpowiednie tagi z bliźniaczej reprezentacji urządzenia usługi IoT Hub. Zaktualizuj **IoT Edge identyfikator wdrożenia** i **IoT Edge priorytet wdrożenia** w obszarze Ustawienia zaawansowane. Aby uzyskać więcej informacji na temat tworzenia wdrożenia dla wielu urządzeń, zobacz [opis IoT Edge wdrożeń automatycznych](module-deployment-monitoring.md).
+      * W przypadku wdrażania na wielu urządzeniach należy określić **warunek docelowy**urządzenia. Warunek docelowy to filtr zgodny z zestawem IoT Edge urządzeń w IoT Hub. Jeśli chcesz używać tagów urządzenia jako warunku, musisz zaktualizować odpowiednie znaczniki urządzeń za pomocą sznurka urządzenia IoT Hub. Zaktualizuj **IoT Edge identyfikator wdrożenia** i **IoT Edge priorytet wdrożenia** w obszarze Ustawienia zaawansowane. Aby uzyskać więcej informacji na temat tworzenia wdrożenia dla wielu urządzeń, zobacz [opis IoT Edge wdrożeń automatycznych](module-deployment-monitoring.md).
     * Rozwiń pozycję Ustawienia zaawansowane, wybierz pozycję **IoT Edge identyfikator wdrożenia**, umieść `$(System.TeamProject)-$(Release.EnvironmentName)`zmiennej. Mapuje projekt i nazwę wydania na identyfikator wdrożenia IoT Edge.
 
 11. Wybierz pozycję **Zapisz** , aby zapisać zmiany w nowym potoku wydania. Wróć do widoku potoku, wybierając pozycję **potok** z menu. 
     
-## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Sprawdź IoT Edge ciągłej integracji/ciągłego wdrażania z kompilacją a potoki wersji
+## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Weryfikuj IoT Edge ciągłej integracji/ciągłego wdrażania przy użyciu potoków kompilacja i wydanie
 
-Aby wyzwolić zadanie kompilacji, możesz wypchnięciu zatwierdzenia do repozytorium kodu źródłowego lub ręcznie wyzwolić ją. W tej sekcji ręcznie wyzwolimy potok ciągłej integracji/ciągłego wdrażania, aby sprawdzić, czy działa. Następnie sprawdź, czy wdrożenie powiodło się.
+Aby wyzwolić zadanie kompilacji, można wypchnąć zatwierdzenie do repozytorium kodu źródłowego lub ręcznie je wyzwolić. W tej sekcji ręcznie wyzwolimy potok ciągłej integracji/ciągłego wdrażania, aby sprawdzić, czy działa. Następnie sprawdź, czy wdrożenie powiodło się.
 
 1. Przejdź do potoku kompilacji utworzonego na początku tego artykułu. 
 
 2. Możesz wyzwolić zadanie kompilacji w potoku kompilacji, wybierając przycisk **kolejki** , jak pokazano na poniższym zrzucie ekranu.
 
-    ![Ręczne wyzwalacza](./media/how-to-ci-cd/manual-trigger.png)
+    ![Wyzwalacz ręczny](./media/how-to-ci-cd/manual-trigger.png)
 
 3. Wybierz zadanie kompilacji, aby obserwować jego postępy. W przypadku pomyślnego ukończenia potoku kompilacji jest wyzwalane wydanie do etapu **dev** . 
 
-    ![Kompilacja dzienników](./media/how-to-ci-cd/build-logs.png)
+    ![Dzienniki kompilacji](./media/how-to-ci-cd/build-logs.png)
 
 4. Pomyślne wydanie **deweloperskie** tworzy IoT Edge wdrożenie IoT Edge urządzeń docelowych.
 

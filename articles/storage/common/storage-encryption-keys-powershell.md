@@ -1,26 +1,26 @@
 ---
-title: Konfigurowanie kluczy zarządzanych przez klienta na potrzeby szyfrowania usługi Azure Storage za pomocą programu PowerShell
+title: Konfigurowanie kluczy zarządzanych przez klienta za pomocą Azure Key Vault przy użyciu programu PowerShell — Azure Storage
 description: Dowiedz się, jak skonfigurować klucze zarządzane przez klienta do szyfrowania za pomocą usługi Azure Storage przy użyciu programu PowerShell. Klucze zarządzane przez klienta umożliwiają tworzenie, obracanie, wyłączanie i odwoływanie kontroli dostępu.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/09/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 30fed5a75e368e9d87da54d4c75e6f69759813e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: bd723787d9cea2d3b9d81ae9db63c70a21190854
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249285"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666226"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Konfigurowanie kluczy zarządzanych przez klienta na potrzeby szyfrowania usługi Azure Storage za pomocą programu PowerShell
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-powershell"></a>Konfigurowanie kluczy zarządzanych przez klienta usługi Azure Storage przy użyciu programu PowerShell
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-W tym artykule pokazano, jak skonfigurować magazyn kluczy z kluczami zarządzanymi przez klienta przy użyciu programu PowerShell.
+W tym artykule opisano sposób konfigurowania Azure Key Vault za pomocą kluczy zarządzanych przez klienta przy użyciu programu PowerShell. Aby dowiedzieć się, jak utworzyć magazyn kluczy przy użyciu interfejsu wiersza polecenia platformy Azure, zobacz [Szybki Start: Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu programu PowerShell](../../key-vault/quick-create-powershell.md).
 
 > [!IMPORTANT]
 > Przy użyciu kluczy zarządzanych przez klienta z szyfrowaniem usługi Azure Storage wymagane są dwie właściwości w magazynie kluczy, **usuwanie nietrwałe** i **nie przeczyszczanie**. Te właściwości nie są domyślnie włączone. Aby włączyć te właściwości, użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
@@ -96,5 +96,5 @@ Podczas tworzenia nowej wersji klucza należy zaktualizować konto magazynu, aby
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md) 
+- [Szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md)
 - [Co to jest Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

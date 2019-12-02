@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: ed297a1005f67a14db1da15aba2c47c98e83df9c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884969"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665361"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Korzystanie z analizy zmian aplikacji (wersja zapoznawcza) w Azure Monitor
 
@@ -23,7 +23,7 @@ W oparciu o możliwości [grafu zasobów platformy Azure](https://docs.microsoft
 > [!IMPORTANT]
 > Analiza zmian jest obecnie w wersji zapoznawczej. Ta wersja zapoznawcza jest dostępna bez umowy dotyczącej poziomu usług. Ta wersja nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane lub mogą mieć ograniczone możliwości. Aby uzyskać więcej informacji, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)zapoznawczych Microsoft Azure.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Analiza zmian wykrywa różne typy zmian z warstwy infrastruktury we wszystkich sposobach wdrażania aplikacji. Jest to dostawca zasobów platformy Azure na poziomie subskrypcji, który sprawdza zmiany zasobów w subskrypcji. Analiza zmian udostępnia dane dla różnych narzędzi diagnostycznych, które pomagają użytkownikom zrozumieć, jakie zmiany mogą powodować problemy.
 
@@ -51,7 +51,7 @@ Analiza zmian przechwytuje stan wdrożenia i konfiguracji aplikacji co 4 godziny
 
 Zmiany zależności zasobów mogą również powodować problemy w aplikacji sieci Web. Na przykład jeśli aplikacja sieci Web wywołuje w pamięci podręcznej Redis, jednostka SKU pamięci podręcznej Redis może mieć wpływ na wydajność aplikacji sieci Web. Aby wykryć zmiany w zależnościach, Analiza zmian sprawdza rekord DNS aplikacji sieci Web. W ten sposób identyfikuje zmiany we wszystkich składnikach aplikacji, które mogą powodować problemy.
 Obecnie obsługiwane są następujące zależności:
-- Web Apps
+- Aplikacje internetowe
 - Azure Storage
 - Azure SQL
 
@@ -73,7 +73,7 @@ Wybierz pozycję Grupa zasobów i zasoby, aby rozpocząć wyświetlanie zmian.
 Możesz wyświetlić informacje o zasobach i powiązanych zależnościach, które obsługują aplikację. Ten widok został zaprojektowany z założeniami, aby deweloperzy mogli rozwiązywać problemy.
 
 Obecnie obsługiwane zasoby obejmują:
-- Maszyny wirtualne
+- Virtual Machines
 - Zestaw skalowania maszyn wirtualnych
 - Zasoby sieci platformy Azure
 - Aplikacja internetowa z funkcją śledzenia plików gościa i zmienne środowiskowe
@@ -102,7 +102,7 @@ W Azure Monitor analizy zmian są również wbudowane w funkcję **diagnozowania
 
    ![Zrzut ekranu opcji "awarie aplikacji"](./media/change-analysis/enable-changeanalysis.png)
 
-1. Włącz **analizę zmian** i wybierz pozycję **Zapisz**. Narzędzie wyświetla wszystkie aplikacje sieci Web w ramach planu App Services. Możesz użyć przełącznika poziomu planu, aby włączyć analizę zmian dla wszystkich aplikacji sieci Web w ramach planu.
+1. Włącz **analizę zmian** i wybierz pozycję **Zapisz**. Narzędzie wyświetla wszystkie aplikacje sieci Web w ramach planu App Service. Możesz użyć przełącznika poziomu planu, aby włączyć analizę zmian dla wszystkich aplikacji sieci Web w ramach planu.
 
     ![Zrzut ekranu przedstawiający interfejs użytkownika "Włącz analizę zmian"](./media/change-analysis/change-analysis-on.png)
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 56283c1e07ec55c753701e86ff8c7c00078cffa2
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172801"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664106"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Konfigurowanie bezpiecznego protokołu LDAP dla domeny zarządzanej Azure Active Directory Domain Services
 
@@ -208,7 +208,7 @@ Utwórz regułę zezwalającą na dostęp przychodzący do bezpiecznego protoko�
 
 1. W Azure Portal wybierz pozycję *grupy zasobów* po lewej stronie nawigacyjnej.
 1. Wybierz grupę zasobów, *na przykład grupa zasobów, a*następnie wybierz grupę zabezpieczeń sieci, na przykład *aaads-sieciowej grupy zabezpieczeń*.
-1. Zostanie wyświetlona lista istniejących reguł zabezpieczeń dla ruchu przychodzącego i wychodzącego. Po lewej stronie okna sieciowych grup zabezpieczeń wybierz pozycję **zabezpieczenia > reguły zabezpieczeń dla ruchu przychodzącego**.
+1. Zostanie wyświetlona lista istniejących reguł zabezpieczeń dla ruchu przychodzącego i wychodzącego. Po lewej stronie okien sieciowych grup zabezpieczeń wybierz pozycję **ustawienia > reguły zabezpieczeń dla ruchu przychodzącego**.
 1. Wybierz pozycję **Dodaj**, a następnie utwórz regułę zezwalającą na port *TCP* *636*. Aby zwiększyć bezpieczeństwo, wybierz źródło jako *adresy IP* , a następnie określ własny prawidłowy adres IP lub zakres dla swojej organizacji.
 
     | Ustawienie                           | Wartość        |
@@ -243,7 +243,7 @@ Poniższy przykładowy wpis DNS, z zewnętrznym dostawcą DNS lub w lokalnym pli
 
 ## <a name="test-queries-to-the-managed-domain"></a>Testowanie zapytań do domeny zarządzanej
 
-Aby nawiązać połączenie i utworzyć powiązanie z domeną zarządzaną platformy Azure AD DS i przeszukiwać przy użyciu protokołu LDAP, należy użyć narzędzia *Ldp. exe* . To narzędzie jest zawarte w pakiecie Narzędzia administracji zdalnej serwera (RSAT). Aby uzyskać więcej informacji, zobacz [install narzędzia administracji zdalnej serwera][rsat].
+Aby nawiązać połączenie i utworzyć powiązanie z domeną zarządzaną platformy Azure AD DS i przeszukiwać przy użyciu protokołu LDAP, użyj narzędzia *Ldp. exe* . To narzędzie jest zawarte w pakiecie Narzędzia administracji zdalnej serwera (RSAT). Aby uzyskać więcej informacji, zobacz [install narzędzia administracji zdalnej serwera][rsat].
 
 1. Otwórz program *Ldp. exe* i Połącz się z domeną zarządzaną. Wybierz pozycję **połączenie**, a następnie wybierz pozycję **Połącz.**
 1. Wprowadź nazwę domeny usługi DNS Secure LDAP, która została utworzona w poprzednim kroku, na przykład *LDAPS.contoso.com*. Aby użyć bezpiecznego protokołu LDAP, ustaw wartość **port** na *636*, a następnie zaznacz pole wyboru **protokołu SSL**.

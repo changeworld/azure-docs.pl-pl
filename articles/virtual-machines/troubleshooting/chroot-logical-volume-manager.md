@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 9c3f054a1bae745e4ee7ce9e3bddca3c9bf31083
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0dd07b3394e385b3931e01867d467af7559b4f8b
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74536005"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664169"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Rozwiązywanie problemów z maszyną wirtualną z systemem Linux w przypadku braku dostępu do konsoli szeregowej platformy Azure, a układ dysku używa LVM (Menedżer woluminów logicznych)
 
@@ -204,8 +204,8 @@ Wykonywanie zapytania dotyczącego zainstalowanego **jądra**
 
 ![Advanced](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-W razie konieczności Uaktualnij **jądro**
-![Advanced](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
+W razie konieczności Usuń lub Uaktualnij
+**jądra** ![zaawansowane](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>Przykład 3 — Włączanie konsoli szeregowej
