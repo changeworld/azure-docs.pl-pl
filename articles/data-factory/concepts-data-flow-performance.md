@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681546"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671587"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
@@ -66,7 +66,7 @@ W obszarze **Opcje źródła** w transformacji źródłowej następujące ustawi
 * Ustawienie zapytania może umożliwić filtrowanie wierszy w źródle przed ich nadejściem do przepływu danych w celu przetworzenia. Może to spowodować szybsze pozyskiwanie danych. Jeśli używasz zapytania, możesz dodać opcjonalne wskazówki dotyczące zapytań dla bazy danych Azure SQL, takie jak Odczyt niezatwierdzony.
 * Odczytanie niezatwierdzone zapewni szybsze wyniki zapytania dotyczące transformacji źródłowej
 
-![Element źródłowy](media/data-flow/source4.png "Element źródłowy")
+![Element źródłowy](media/data-flow/source4.png "Źródło")
 
 ### <a name="sink-batch-size"></a>Rozmiar wsadu ujścia
 
@@ -120,6 +120,14 @@ Na przykład jeśli masz listę plików danych z lipca 2019, które chcesz przet
 ```DateFiles/*_201907*.txt```
 
 Używając symboli wieloznacznych, potok będzie zawierać tylko jedno działanie przepływu danych. Będzie to wykonywane lepiej niż wyszukiwanie w magazynie obiektów blob, który następnie iteruje we wszystkich dopasowanych plikach za pomocą działania ForEach z działaniem przepływu danych wewnątrz.
+
+### <a name="optimizing-for-cosmosdb"></a>Optymalizacja pod kątem CosmosDB
+
+Ustawianie przepływności i właściwości partii w ujściach CosmosDB zacznie obowiązywać tylko podczas wykonywania tego przepływu danych z działania przepływu danych potoku. Oryginalne ustawienia kolekcji zostaną uznane przez CosmosDB po wykonaniu przepływu danych.
+
+* Rozmiar wsadu: Oblicz przybliżony rozmiar wiersza danych i upewnij się, że rozmiar wsadu rowSize * jest mniejszy niż 2 000 000. Jeśli tak, Zwiększ rozmiar partii, aby uzyskać lepszą przepływność
+* Througput: w tym miejscu ustaw wyższą wartość ustawienia przepływności, aby umożliwić dokumentowanie szybszego zapisu do CosmosDB. Pamiętaj o wyższych kosztach RU na podstawie ustawień o wysokiej przepływności.
+*   Zapisz budżet przepływności: Użyj wartości, która jest mniejsza niż łączna liczba jednostek ru na minutę. Jeśli masz przepływ danych o dużej liczbie partitiongs platformy Spark, ustawienie przepływności budżetu spowoduje zwiększenie równowagi między tymi partycjami.
 
 ## <a name="next-steps"></a>Następne kroki
 

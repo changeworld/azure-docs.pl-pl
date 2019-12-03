@@ -1,26 +1,20 @@
 ---
-title: Często zadawane pytania dotyczące technologii open source — Azure App Service | Microsoft Docs
-description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące technologii typu open source w funkcji Web Apps Azure App Service.
-services: app-service\web
-documentationcenter: ''
+title: Technologie open source — często zadawane pytania
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące technologii open source w programie Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169685"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672441"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie open source — często zadawane pytania dotyczące Web Apps na platformie Azure
 
@@ -36,7 +30,7 @@ Aby włączyć rejestrowanie w języku PHP:
 2. W górnym menu wybierz kolejno opcje **Debuguj konsolę** > **cmd**.
 3. Wybierz folder **witryny** .
 4. Wybierz folder **wwwroot** .
-5. Wybierz ikonę **+** , a następnie wybierz pozycję **nowy plik**.
+5. Wybierz ikonę **+** a następnie wybierz pozycję **nowy plik**.
 6. Ustaw nazwę pliku na **. User. ini**.
 7. Wybierz ikonę ołówka obok **pliku. User. ini**.
 8. W pliku Dodaj następujący kod: `log_errors=on`
@@ -61,7 +55,7 @@ Aby zmienić wersję aplikacji node. js, można użyć jednej z następujących 
 * W Azure Portal Użyj **ustawień aplikacji**.
   1. W Azure Portal przejdź do aplikacji sieci Web.
   2. W bloku **Ustawienia** wybierz pozycję **Ustawienia aplikacji**.
-  3. W obszarze **Ustawienia aplikacji**można uwzględnić WEBSITE_NODE_DEFAULT_VERSION jako klucz i wersję środowiska Node. js, która ma być wartością.
+  3. W obszarze **Ustawienia aplikacji**można uwzględnić WEBSITE_NODE_DEFAULT_VERSION jako klucz oraz wersję środowiska Node. js, która ma być wartością.
   4. Przejdź do [konsoli programu kudu](https://*yourwebsitename*.scm.azurewebsites.net).
   5. Aby sprawdzić wersję środowiska Node. js, wprowadź następujące polecenie:  
      ```
@@ -78,7 +72,7 @@ Aby zmienić wersję aplikacji node. js, można użyć jednej z następujących 
   Proces wdrażania kontroli źródła platformy Azure obejmuje następujące kroki:
   1. Przenosi zawartość do aplikacji sieci Web platformy Azure.
   2. Tworzy domyślny skrypt wdrażania, jeśli w folderze głównym aplikacji sieci Web nie ma żadnego pliku (Deploy. cmd,. Deployment Files).
-  3. Uruchamia skrypt wdrażania, w którym tworzy plik programu iisnode. yml w przypadku podawania wersji Node. js w pliku Package. JSON > aparat `"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Uruchamia skrypt wdrażania, w którym tworzy plik programu iisnode. yml w przypadku podawania wersji Node. js w pliku Package. JSON > Engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Plik programu iisnode. yml ma następujący wiersz kodu:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -175,7 +169,7 @@ Innym obejściem jest napisanie Zadania WebJob, które jest uruchamiane zgodnie 
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>Gdzie mogę znaleźć pliki dziennika dla Jetty?
 
-W przypadku wdrożeń w witrynie Marketplace i niestandardowych plik dziennika znajduje się w folderze D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs. Należy pamiętać, że lokalizacja folderu zależy od używanej wersji programu Jetty. Na przykład ścieżka podana w tym miejscu dotyczy Jetty 9.1.2. Wyszukaj jetty_*YYYY_MM_DD*. stderrout. log.
+W przypadku wdrożeń w witrynie Marketplace i niestandardowych plik dziennika znajduje się w folderze D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs. Należy pamiętać, że lokalizacja folderu zależy od używanej wersji programu Jetty. Na przykład ścieżka podana w tym miejscu dotyczy Jetty 9.1.2. Poszukaj jetty_*YYYY_MM_DD*. stderrout. log.
 
 W przypadku wdrożeń ustawień aplikacji portalu plik dziennika znajduje się w D:\home\LogFiles. Wyszukaj jetty_*YYYY_MM_DD*. stderrout. log
 

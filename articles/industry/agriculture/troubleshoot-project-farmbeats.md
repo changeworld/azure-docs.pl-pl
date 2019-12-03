@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131978"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672582"
 ---
 # <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -39,7 +39,17 @@ Aby uzyskać dodatkową pomoc, Zapisz się do nas na farmbeatssupport@microsoft.
 3. W przypadku **braku komunikatów przychodzących**skontaktuj się z partnerem urządzenia.  
 4. Jeśli istnieją **przychodzące komunikaty**, skontaktuj się farmbeatssupport@microsoft.com z centrum danych i dziennikami akceleratora i przechwyconą telemetrię.
 
-Zobacz [sekcję Logs](#collect-logs-manually) dokumentu, aby poznać sposób pobierania dzienników.    
+Zobacz [sekcję Logs](#collect-logs-manually) dokumentu, aby poznać sposób pobierania dzienników.  
+
+### <a name="dont-have-the-eventhub-connection-string"></a>Nie ma parametrów połączenia usługi Eventhub
+
+**Działanie naprawcze**: odwiedź Datahub Swagger i wykonaj następujące kroki:
+1. Przejdź do interfejsu API partnera
+2. Kliknij przycisk GET-> Wypróbuj go — > wykonaj
+3. Zanotuj identyfikator partnera, który Cię interesuje.
+4. Wróć do interfejsu API partnera i kliknij pozycję Pobierz/{ID}
+5. Określ identyfikator z kroku 3, a następnie kliknij przycisk Execute (wykonaj).
+6. Odpowiedź interfejsu API powinna zawierać parametry połączenia usługi EventHub
 
 ### <a name="device-appears-offline"></a>Urządzenie jest w trybie offline
 

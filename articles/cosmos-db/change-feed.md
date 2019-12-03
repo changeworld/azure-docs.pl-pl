@@ -1,19 +1,19 @@
 ---
 title: Praca z obsługą kanału informacyjnego zmian w Azure Cosmos DB
 description: Użyj Azure Cosmos DB obsługi kanału informacyjnego zmiany, aby śledzić zmiany w dokumentach i przeprowadzać przetwarzanie oparte na zdarzeniach, takie jak wyzwalacze i utrzymywanie Aktualności pamięci podręcznych i systemów analitycznych.
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e6bd3dadd636127f212db0ea0c0755a6b52a087
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: eef950c4e8c4a880d331022ed60477bebce65b5d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757020"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689085"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Źródło zmian w Azure Cosmos DB — Omówienie
 
@@ -33,12 +33,12 @@ Azure Cosmos DB doskonale nadaje się w przypadku aplikacji IoT, gier, sprzedaż
 
 Ta funkcja jest obecnie obsługiwana przez następujące Azure Cosmos DB interfejsów API i zestawów SDK klienta.
 
-| **Sterowniki klienta** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **interfejs API Cassandra** | **Interfejs API Azure Cosmos DB dla MongoDB** | **Interfejs API Gremlin**|**Interfejs API tabel** |
+| **Sterowniki klienta** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API Azure Cosmos DB dla Cassandra** | **Interfejs API Azure Cosmos DB dla MongoDB** | **Interfejs API Gremlin**|**Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Nie dotyczy | Tak | Nie | Nie | Tak | Nie |
-|Java|Nie dotyczy|Tak|Nie|Nie|Tak|Nie|
-|Python|Nie dotyczy|Tak|Nie|Nie|Tak|Nie|
-|Node/JS|Nie dotyczy|Tak|Nie|Nie|Tak|Nie|
+| .NET | Nie dotyczy | Tak | Tak | Tak | Tak | Nie |
+|Java|Nie dotyczy|Tak|Tak|Tak|Tak|Nie|
+|Python|Nie dotyczy|Tak|Tak|Tak|Tak|Nie|
+|Node/JS|Nie dotyczy|Tak|Tak|Tak|Tak|Nie|
 
 ## <a name="change-feed-and-different-operations"></a>Zmień źródło danych i różne operacje
 
@@ -58,7 +58,7 @@ Jeśli właściwość czasu wygaśnięcia (Time to Live) jest ustawiona dla elem
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Zmień źródło danych i _etag, _lsn lub _ts
 
-Format _etag jest wewnętrzny i nie powinien być zależny od niego, ponieważ może ulec zmianie w dowolnym momencie. _ts jest modyfikacją lub sygnaturą czasową utworzenia. Można użyć _ts do chronologicznego porównania. _lsn to identyfikator wsadu, który jest dodawany wyłącznie do źródła zmian. reprezentuje identyfikator transakcji. Wiele elementów może mieć ten sam _lsn. Element ETag w FeedResponse różni się od _etag widocznej dla elementu. _etag jest identyfikatorem wewnętrznym i jest używany na potrzeby kontroli współbieżności informuje o wersji elementu, natomiast element ETag jest używany do sekwencjonowania źródła danych.
+Format _etag jest wewnętrzny i nie powinien być zależny od niego, ponieważ może ulec zmianie w dowolnym momencie. _ts jest modyfikacją lub sygnaturą czasową utworzenia. Można użyć _ts do chronologicznego porównania. _lsn to identyfikator wsadu, który jest dodawany wyłącznie dla źródła zmian. reprezentuje identyfikator transakcji. Wiele elementów może mieć ten sam _lsn. Element ETag w FeedResponse różni się od _etag widocznej dla elementu. _etag jest wewnętrznym identyfikatorem i jest używany na potrzeby kontroli współbieżności informującej o wersji elementu, natomiast element ETag jest używany do sekwencjonowania źródła danych.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Zmień przypadki użycia i scenariusze w kanale informacyjnym
 
@@ -84,7 +84,7 @@ Na przykład ze źródłem zmian można wydajnie wykonywać następujące zadani
 
 Poniżej przedstawiono niektóre scenariusze, które można łatwo zaimplementować ze źródłem zmian:
 
-* W aplikacjach sieci Web [bezserwerowych](https://azure.microsoft.com/solutions/serverless/) lub mobilnych można śledzić zdarzenia, takie jak wszystkie zmiany w profilu lub preferencjach klienta, a także wyzwalać pewne działania, na przykład wysyłanie powiadomień wypychanych do urządzeń przy użyciu [platformy Azure Funkcja](change-feed-functions.md).
+* W aplikacjach sieci Web [bezserwerowych](https://azure.microsoft.com/solutions/serverless/) lub mobilnych można śledzić zdarzenia, takie jak wszystkie zmiany w profilu lub preferencjach klienta, a także wyzwalać pewne działania, na przykład wysyłanie powiadomień wypychanych do urządzeń przy użyciu [Azure Functions](change-feed-functions.md).
 
 * Jeśli używasz Azure Cosmos DB do kompilowania gry, możesz na przykład użyć kanału informacyjnego zmiany w celu zaimplementowania rankingi w czasie rzeczywistym na podstawie wyników z ukończonych gier.
 
@@ -119,6 +119,12 @@ Kanał informacyjny zmiany jest dostępny dla każdego klucza partycji logicznej
 * Zmiany są dostępne równolegle dla wszystkich kluczy partycji logicznych kontenera usługi Azure Cosmos. Dzięki tej możliwości zmiany z dużych kontenerów mogą być przetwarzane równolegle przez wielu użytkowników.
 
 * Aplikacje mogą jednocześnie zażądać wielu źródeł zmian w tym samym kontenerze. ChangeFeedOptions. StartTime może służyć do zapewnienia początkowego punktu początkowego. Na przykład, aby znaleźć token kontynuacji odpowiadający podanemu czasowi zegara. ContinuationToken, jeśli jest określony, usługa WINS na wartości StartTime i StartFromBeginning. Precyzja ChangeFeedOptions. StartTime to ~ 5 s. 
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Źródło zmian w interfejsach API dla Cassandra i MongoDB
+
+Funkcja zmiany kanału informacyjnego jest oferowana jako strumień zmiany w interfejsie API MongoDB i zapytanie z predykatem w interfejs API Cassandra. Aby dowiedzieć się więcej na temat szczegółów implementacji interfejsu API MongoDB, zobacz [zmiana strumieni w interfejsie api Azure Cosmos DB dla MongoDB](mongodb-change-streams.md).
+
+Natywny program Apache Cassandra udostępnia funkcję przechwytywania zmian danych (rerzucij), mechanizm do flagi określonych tabel do archiwizacji, a także odrzucanie zapisów w tych tabelach po osiągnięciu konfigurowalnego rozmiaru na dysku dla dziennika przechwytywania zmian. Funkcja zmiany kanału informacyjnego w interfejsie Azure Cosmos DB API for Cassandra zwiększa możliwość wykonywania zapytań o zmiany przy użyciu predykatu za pośrednictwem CQL. Aby dowiedzieć się więcej na temat szczegółów implementacji, zobacz temat [Zmiana kanału informacyjnego w interfejsie API Azure Cosmos DB Cassandra](cassandra-change-feed.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

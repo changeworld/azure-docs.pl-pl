@@ -1,33 +1,25 @@
 ---
-title: Bezpieczne łączenie z zasobami zaplecza ze środowiska App Service — platforma Azure
-description: Dowiedz się, jak bezpiecznie łączyć się z zasobami zaplecza z poziomu App Service Environment.
-services: app-service
-documentationcenter: ''
+title: Łączenie z zapleczem w wersji 1
+description: Dowiedz się, jak bezpiecznie łączyć się z zasobami zaplecza z poziomu App Service Environment. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: adb7c246a9f8c8d202d45b58f4d22eeb8d51a773
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069959"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687307"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Bezpieczne nawiązywanie połączenia z zasobami zaplecza ze środowiska App Service
-## <a name="overview"></a>Omówienie
-Ponieważ App Service Environment jest zawsze tworzona w sieci wirtualnej Azure Resource Manager **lub** w klasycznej [sieci wirtualnej][virtualnetwork]modelu wdrożenia, połączenia wychodzące z App Service Environment do innych zasobów zaplecza może przepływać wyłącznie za pośrednictwem sieci wirtualnej.  W przypadku ostatniej zmiany wprowadzonej w czerwcu 2016 środowisk ASE można także wdrożyć do sieci wirtualnych, które korzystają z zakresów adresów publicznych lub przestrzeni adresów RFC1918 (np. adresów prywatnych).  
+Ponieważ App Service Environment jest zawsze **tworzona w sieci** wirtualnej Azure Resource Manager **lub** w klasycznej [sieci wirtualnej][virtualnetwork]modelu wdrożenia, połączenia wychodzące z App Service Environment do innych zasobów zaplecza mogą przepływać wyłącznie za pośrednictwem sieci wirtualnej.  W przypadku ostatniej zmiany wprowadzonej w czerwcu 2016 środowisk ASE można także wdrożyć do sieci wirtualnych, które korzystają z zakresów adresów publicznych lub przestrzeni adresów RFC1918 (np. adresów prywatnych).  
 
 Na przykład może istnieć SQL Server uruchomiony w klastrze maszyn wirtualnych z zablokowanym portem 1433.  Punkt końcowy może być ACLd, aby zezwalać na dostęp tylko z innych zasobów w tej samej sieci wirtualnej.  
 
-Innym przykładem, poufne punkty końcowe mogą działać lokalnie i być połączone z platformą Azure za [][SiteToSite] pośrednictwem połączeń między lokacjami lub [Azure ExpressRoute][ExpressRoute] .  W związku z tym tylko zasoby w sieciach wirtualnych podłączonych do tuneli typu lokacja-lokacja lub ExpressRoute będą mogły uzyskiwać dostęp do lokalnych punktów końcowych.
+Innym przykładem, poufne punkty końcowe mogą działać lokalnie i być połączone z platformą Azure za pośrednictwem połączeń [między lokacjami lub][SiteToSite] [Azure ExpressRoute][ExpressRoute] .  W związku z tym tylko zasoby w sieciach wirtualnych podłączonych do tuneli typu lokacja-lokacja lub ExpressRoute będą mogły uzyskiwać dostęp do lokalnych punktów końcowych.
 
 We wszystkich tych scenariuszach aplikacje działające na App Service Environment będą mogły bezpiecznie łączyć się z różnymi serwerami i zasobami.  Ruch wychodzący z aplikacji uruchamianych w App Service Environment do prywatnych punktów końcowych w tej samej sieci wirtualnej (lub połączony z tą samą siecią wirtualną) będzie przepływać tylko w sieci wirtualnej.  Ruch wychodzący do prywatnych punktów końcowych nie będzie przepływać przez publiczny Internet.
 
@@ -49,7 +41,7 @@ Wspólna konfiguracja SQL Server ma punkt końcowy nasłuchuje na porcie 1433:
 
 Istnieją dwa podejścia do ograniczania ruchu do tego punktu końcowego:
 
-* [Listy Access Control sieci][NetworkAccessControlLists] (Listy ACL sieci)
+* [Listy Access Control sieci][NetworkAccessControlLists] (listy ACL sieci)
 * [Sieciowe grupy zabezpieczeń][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Ograniczanie dostępu za pomocą listy ACL sieci

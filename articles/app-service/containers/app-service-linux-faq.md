@@ -1,26 +1,18 @@
 ---
-title: App Service w systemie Linux — często zadawane pytania — Azure | Microsoft Docs
-description: Azure App Service w systemie Linux — często zadawane pytania.
+title: Uruchamianie wbudowanych kontenerów — często zadawane pytania
+description: Znajdź odpowiedzi na często zadawane pytania dotyczące wbudowanych kontenerów systemu Linux w Azure App Service.
 keywords: usługa Azure App Service, aplikacja sieci Web, często zadawane pytania, Linux, OSS, Web App for Containers, wiele kontenerów i wielokontenera
-services: app-service
-documentationCenter: ''
 author: msangapu-msft
-manager: stefsch
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fa7b6a02ba287c7f51284a28ce41b2291317f99c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066906"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687592"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service w systemie Linux — często zadawane pytania
 
@@ -38,12 +30,12 @@ Wszystkie pliki platformy Docker można znaleźć w witrynie [GitHub](https://gi
 
 **Jakie są oczekiwane wartości w sekcji pliku startowego podczas konfigurowania stosu środowiska uruchomieniowego?**
 
-| Stos           | Oczekiwana wartość                                                                         |
+| Stosu           | Oczekiwana wartość                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
 | Java SE         | polecenie uruchamiania aplikacji JAR (na przykład `java -jar my-app.jar --server.port=80`) |
 | Tomcat, Wildfly | Lokalizacja skryptu do wykonania wszelkich niezbędnych konfiguracji (na przykład `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | plik konfiguracji PM2 lub plik skryptu                                |
-| .Net Core       | Nazwa skompilowanej biblioteki DLL jako`dotnet <myapp>.dll`                                 |
+| .Net Core       | Nazwa skompilowanej biblioteki DLL jako `dotnet <myapp>.dll`                                 |
 | Ruby            | skrypt Ruby, z którym chcesz zainicjować aplikację                     |
 
 Te polecenia lub skrypty są wykonywane po uruchomieniu wbudowanego kontenera Docker, ale przed uruchomieniem kodu aplikacji.
@@ -78,21 +70,21 @@ Tak.
 
 **Czy mogę użyć narzędzia *webdeploy/MSDeploy* do wdrożenia mojej aplikacji sieci Web?**
 
-Tak, należy ustawić `WEBSITE_WEBDEPLOY_USE_SCM` *wartość false*dla ustawienia aplikacji.
+Tak, musisz ustawić ustawienie aplikacji o nazwie `WEBSITE_WEBDEPLOY_USE_SCM` na *false*.
 
 **Wdrożenie narzędzia Git dla mojej aplikacji kończy się niepowodzeniem w przypadku korzystania z aplikacji sieci Web systemu Linux. Jak można obejść ten problem?**
 
 Jeśli wdrożenie narzędzia Git nie powiedzie się w aplikacji sieci Web systemu Linux, wybierz jedną z następujących opcji, aby wdrożyć kod aplikacji:
 
-- Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): Możesz przechowywać kod źródłowy swojej aplikacji w repozytorium usługi Azure DevOps Git lub repozytorium GitHub, aby korzystać z ciągłego dostarczania platformy Azure. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ciągłego dostarczania dla aplikacji sieci Web systemu Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): możesz przechowywać kod źródłowy swojej aplikacji w repozytorium usługi Azure DevOps Git lub repozytorium GitHub, aby korzystać z ciągłego dostarczania platformy Azure. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ciągłego dostarczania dla aplikacji sieci Web systemu Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Użyj [interfejsu API Deploy narzędzia zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API, Użyj protokołu [SSH do aplikacji sieci Web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) i przejdź do folderu, w którym chcesz wdrożyć swój kod. Uruchom następujący kod:
+- Użyj [interfejsu API Deploy zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API, [SSH do aplikacji sieci Web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) i przejdź do folderu, w którym chcesz wdrożyć swój kod. Uruchom następujący kod:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   Jeśli zostanie wyświetlony komunikat o błędzie, `curl` że nie można znaleźć polecenia, upewnij się, że zainstalowano za pomocą `apt-get install curl` przed uruchomieniem poprzedniego `curl` polecenia.
+   Jeśli wystąpi błąd, że nie można odnaleźć polecenia `curl`, upewnij się, że zainstalowano przy użyciu `apt-get install curl` przed uruchomieniem poprzedniego `curl` polecenia.
 
 ## <a name="language-support"></a>Obsługa języków
 
@@ -116,21 +108,21 @@ Tak, podczas wdrażania usługi git kudu powinien wykryć, czy wdrażasz aplikac
 
 ## <a name="custom-containers"></a>Kontenery niestandardowe
 
-**Używam własnego kontenera niestandardowego. Chcę, aby platforma zainstalowała udział SMB w `/home/` katalogu.**
+**Używam własnego kontenera niestandardowego. Chcę, aby platforma zainstalowała udział SMB w katalogu `/home/`.**
 
-Jeśli `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienie jest **nieokreślone** lub ma *wartość true*, `/home/` katalog **będzie współużytkowany** przez wystąpienia skalowania, a zapisywane pliki **będą się powtarzać** po ponownym uruchomieniu. Jawne ustawienie `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *wartości false* spowoduje wyłączenie instalacji.
+Jeśli ustawienie `WEBSITES_ENABLE_APP_SERVICE_STORAGE` jest **nieokreślone** lub ma *wartość true*, katalog `/home/` **będzie współużytkowany** przez wystąpienia skalowania, a zapisywane pliki **będą zachowywane** po ponownym uruchomieniu. Jawne ustawienie `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na *false* spowoduje wyłączenie instalacji.
 
 **Nie można rozpocząć pracy z kontenerem niestandardowym, a platforma ponownie uruchomi kontener przed jego rozpoczęciem.**
 
-Można skonfigurować czas oczekiwania platformy przed ponownym uruchomieniem kontenera. W tym celu należy określić `WEBSITES_CONTAINER_START_TIME_LIMIT` wartość ustawienia aplikacji. Wartość domyślna to 230 sekund, a maksymalna wartość to 1800 sekund.
+Można skonfigurować czas oczekiwania platformy przed ponownym uruchomieniem kontenera. W tym celu należy określić wartość ustawienia aplikacji `WEBSITES_CONTAINER_START_TIME_LIMIT`. Wartość domyślna to 230 sekund, a maksymalna wartość to 1800 sekund.
 
 **Jaki jest format adresu URL serwera rejestru prywatnego?**
 
-Podaj pełny adres URL rejestru, włącznie `http://` z `https://`lub.
+Podaj pełny adres URL rejestru, w tym `http://` lub `https://`.
 
 **Jaki jest format nazwy obrazu w opcji rejestru prywatnego?**
 
-Dodaj pełną nazwę obrazu, w tym adres URL rejestru prywatnego (na przykład myacr.azurecr.io/dotnet:latest). [W portalu nie można wprowadzać](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)nazw obrazów używających portu niestandardowego. Aby ustawić `docker-custom-image-name`, [ `az` Użyj narzędzia wiersza polecenia](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
+Dodaj pełną nazwę obrazu, w tym adres URL rejestru prywatnego (na przykład myacr.azurecr.io/dotnet:latest). [W portalu nie można wprowadzać](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)nazw obrazów używających portu niestandardowego. Aby ustawić `docker-custom-image-name`, użyj [narzędzia wiersza polecenia`az`](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 **Czy mogę uwidocznić więcej niż jeden port w obrazie niestandardowego kontenera?**
 
@@ -146,7 +138,7 @@ Lokacja SCM działa w osobnym kontenerze. Nie można sprawdzić systemu plików 
 
 **Mój kontener niestandardowy nasłuchuje na porcie innym niż port 80. Jak skonfigurować aplikację do kierowania żądań do tego portu?**
 
-Mamy automatyczne wykrywanie portów. Można również określić ustawienie aplikacji o nazwie *WEBSITES_PORT* i nadać jej wartość oczekiwanego numeru portu. Wcześniej platforma używała ustawienia aplikacji *port* . Planujemy zastąpić to ustawienie aplikacji i korzystać wyłącznie z *WEBSITES_PORT* .
+Mamy automatyczne wykrywanie portów. Można również określić ustawienie aplikacji o nazwie *WEBSITES_PORT* i nadać jej wartość oczekiwanego numeru portu. Wcześniej platforma używała ustawienia aplikacji *port* . Planujemy zaniechanie tego ustawienia aplikacji i użycie wyłącznie *WEBSITES_PORT* .
 
 **Czy muszę zaimplementować protokół HTTPS w moim kontenerze niestandardowym?**
 
@@ -161,7 +153,7 @@ Aby można było używać ACR z obsługą wiele kontenerów, **wszystkie obrazy 
 Utwórz następujące ustawienia aplikacji:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (pełny adres URL, np `https://<server-name>.azurecr.io`.)
+- DOCKER_REGISTRY_SERVER_URL (pełny adres URL, np.: `https://<server-name>.azurecr.io`)
 - DOCKER_REGISTRY_SERVER_PASSWORD (Włącz dostęp administratora w ustawieniach ACR)
 
 W pliku konfiguracji odwołuje się do obrazu ACR, tak jak w poniższym przykładzie:
@@ -177,7 +169,7 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 
 Poniżej przedstawiono reguły określania, który kontener jest dostępny — w kolejności pierwszeństwa:
 
-- Ustawienie `WEBSITES_WEB_CONTAINER_NAME` aplikacji ustawione na nazwę kontenera
+- Ustawienie aplikacji `WEBSITES_WEB_CONTAINER_NAME` ustawione na nazwę kontenera
 - Pierwszy kontener do zdefiniowania portu 80 lub 8080
 - Jeśli żaden z powyższych wartości nie jest spełniony, pierwszy kontener zdefiniowany w pliku będzie dostępny (uwidoczniony)
 

@@ -1,29 +1,22 @@
 ---
-title: Sterowanie ruchem przychodzącym do środowiska App Service — platforma Azure
-description: Dowiedz się więcej na temat konfigurowania reguł zabezpieczeń sieciowych w celu kontrolowania ruchu przychodzącego do App Service Environment.
-services: app-service
-documentationcenter: ''
+title: Sterowanie ruchem przychodzącym w wersji 1
+description: Dowiedz się porady kontrolować ruch przychodzący do App Service Environment. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: ccompy
-manager: erikre
-editor: ''
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: c887ae5568bfd0f72f8d90daecd95547ed7b8b7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070401"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687391"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Jak kontrolować ruch przychodzący do App Service Environment
-## <a name="overview"></a>Omówienie
-App Service Environment można utworzyć w sieci wirtualnej Azure Resource Manager **lub** w sieci [wirtualnej][virtualnetwork]klasycznego modelu wdrażania.  W momencie tworzenia App Service Environment można zdefiniować nową sieć wirtualną i nową podsieć.  Alternatywnie można utworzyć App Service Environment w istniejącej sieci wirtualnej i istniejącej podsieci.  Ze zmianami wprowadzonymi w czerwcu 2016 środowisk ASE można także wdrożyć w sieciach wirtualnych korzystających z zakresów adresów publicznych lub przestrzeni adresów RFC1918 (np. adresów prywatnych).  Więcej informacji na temat tworzenia App Service Environment można znaleźć w temacie [How to Create a App Service Environment][HowToCreateAnAppServiceEnvironment].
+## <a name="overview"></a>Przegląd
+App Service Environment można **utworzyć w sieci** wirtualnej Azure Resource Manager **lub** w sieci [wirtualnej][virtualnetwork]klasycznego modelu wdrażania.  W momencie tworzenia App Service Environment można zdefiniować nową sieć wirtualną i nową podsieć.  Alternatywnie można utworzyć App Service Environment w istniejącej sieci wirtualnej i istniejącej podsieci.  Ze zmianami wprowadzonymi w czerwcu 2016 środowisk ASE można także wdrożyć w sieciach wirtualnych korzystających z zakresów adresów publicznych lub przestrzeni adresów RFC1918 (np. adresów prywatnych).  Więcej informacji na temat tworzenia App Service Environment można znaleźć w temacie [How to Create a App Service Environment][HowToCreateAnAppServiceEnvironment].
 
 W podsieci musi być zawsze tworzony App Service Environment, ponieważ podsieć zapewnia granicę sieci, która może służyć do blokowania ruchu przychodzącego za pośrednictwem urządzeń i usług nadrzędnych, takich jak ruch HTTP i HTTPS są akceptowane tylko z określonego nadrzędnego Adresy IP.
 
@@ -38,16 +31,16 @@ Przed zablokowaniem przychodzącego ruchu sieciowego z grupą zabezpieczeń siec
 
 Poniżej znajduje się lista portów używanych przez App Service Environment. Wszystkie porty są **TCP**, chyba że wyraźnie wskazano inaczej:
 
-* 454:  **Wymagany port** używany przez infrastrukturę platformy Azure do zarządzania środowiskami App Service i ich obsługi za pośrednictwem protokołu SSL.  Nie blokuj ruchu do tego portu.  Ten port jest zawsze powiązany z publicznym adresem VIP środowiska ASE.
-* 455:  **Wymagany port** używany przez infrastrukturę platformy Azure do zarządzania środowiskami App Service i ich obsługi za pośrednictwem protokołu SSL.  Nie blokuj ruchu do tego portu.  Ten port jest zawsze powiązany z publicznym adresem VIP środowiska ASE.
-* 80:  Domyślny port ruchu HTTP dla ruchu przychodzącego do aplikacji uruchamianych w planach App Service w App Service Environment.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
-* 443: Domyślny port dla ruchu przychodzącego SSL do aplikacji uruchamianych w planach App Service w App Service Environment.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
-* 43  Kanał kontrolny dla usługi FTP.  Ten port może być bezpiecznie zablokowany, jeśli nie jest używany protokół FTP.  W środowisku ASE z obsługą ILB ten port może być powiązany z adresem ILB dla środowiska ASE.
-* 990:  Kanał kontrolny dla FTPS.  Ten port może być bezpiecznie zablokowany, jeśli FTPS nie jest używany.  W środowisku ASE z obsługą ILB ten port może być powiązany z adresem ILB dla środowiska ASE.
-* 10001-10020: Kanały danych dla usługi FTP.  Podobnie jak w przypadku kanału kontrolnego, te porty można bezpiecznie zablokować, jeśli usługa FTP nie jest używana.  W środowisku ASE z obsługą ILB ten port może być powiązany z adresem ILB środowiska ASE.
-* 4016: Używane do zdalnego debugowania w programie Visual Studio 2012.  Ten port może być bezpiecznie zablokowany, jeśli funkcja nie jest używana.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
-* 4018: Używane na potrzeby debugowania zdalnego przy użyciu Visual Studio 2013.  Ten port może być bezpiecznie zablokowany, jeśli funkcja nie jest używana.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
-* 4020: Używane do zdalnego debugowania w programie Visual Studio 2015.  Ten port może być bezpiecznie zablokowany, jeśli funkcja nie jest używana.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
+* 454: **wymagany port** używany przez infrastrukturę platformy Azure do zarządzania środowiskami App Service i konserwowania ich za pośrednictwem protokołu SSL.  Nie blokuj ruchu do tego portu.  Ten port jest zawsze powiązany z publicznym adresem VIP środowiska ASE.
+* 455: **wymagany port** używany przez infrastrukturę platformy Azure do zarządzania środowiskami App Service i konserwowania ich za pośrednictwem protokołu SSL.  Nie blokuj ruchu do tego portu.  Ten port jest zawsze powiązany z publicznym adresem VIP środowiska ASE.
+* 80: domyślny port ruchu HTTP dla ruchu przychodzącego do aplikacji uruchamianych w planach App Service w App Service Environment.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
+* 443: domyślny port ruchu SSL dla ruchu przychodzącego w aplikacjach uruchamianych w planach App Service w App Service Environment.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
+* 21: Kanał kontrolny dla usługi FTP.  Ten port może być bezpiecznie zablokowany, jeśli nie jest używany protokół FTP.  W środowisku ASE z obsługą ILB ten port może być powiązany z adresem ILB dla środowiska ASE.
+* 990: Kanał kontrolny dla FTPS.  Ten port może być bezpiecznie zablokowany, jeśli FTPS nie jest używany.  W środowisku ASE z obsługą ILB ten port może być powiązany z adresem ILB dla środowiska ASE.
+* 10001-10020: kanały danych dla FTP.  Podobnie jak w przypadku kanału kontrolnego, te porty można bezpiecznie zablokować, jeśli usługa FTP nie jest używana.  W środowisku ASE z obsługą ILB ten port może być powiązany z adresem ILB środowiska ASE.
+* 4016: służy do zdalnego debugowania w programie Visual Studio 2012.  Ten port może być bezpiecznie zablokowany, jeśli funkcja nie jest używana.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
+* 4018: służy do zdalnego debugowania z Visual Studio 2013.  Ten port może być bezpiecznie zablokowany, jeśli funkcja nie jest używana.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
+* 4020: służy do zdalnego debugowania w programie Visual Studio 2015.  Ten port może być bezpiecznie zablokowany, jeśli funkcja nie jest używana.  W środowisku ASE z obsługą ILB ten port jest powiązany z adresem ILB środowiska ASE.
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>Wymagania dotyczące łączności wychodzącej i systemu DNS
 Aby App Service Environment działała prawidłowo, wymagany jest również dostęp wychodzący do różnych punktów końcowych. Pełna lista zewnętrznych punktów końcowych używanych przez środowisko ASE znajduje się w sekcji "wymagana łączność sieciowa" w artykule [Konfiguracja sieci dla ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) .
@@ -95,7 +88,7 @@ Jeśli jest używane zdalne debugowanie z programem Visual Studio, następujące
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2015" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4020' -Protocol TCP
 
 ## <a name="assigning-a-network-security-group-to-a-subnet"></a>Przypisywanie sieciowej grupy zabezpieczeń do podsieci
-Sieciowa Grupa zabezpieczeń ma domyślną regułę zabezpieczeń, która nie zezwala na dostęp do całego ruchu zewnętrznego.  Wynikiem łączenia reguł zabezpieczeń sieci opisanych powyżej, a domyślną regułą zabezpieczeń blokującą ruch przychodzący, jest to, że tylko ruch z zakresów adresów źródłowych skojarzonych z akcją *Zezwalaj* będzie mógł wysyłać ruch do aplikacji uruchomionych w ramach App Service Environment.
+Sieciowa Grupa zabezpieczeń ma domyślną regułę zabezpieczeń, która nie zezwala na dostęp do całego ruchu zewnętrznego.  Wynikiem łączenia reguł zabezpieczeń sieci opisanych powyżej, a domyślną regułą zabezpieczeń blokującą ruch przychodzący jest tylko ruch z zakresów adresów źródłowych skojarzonych z akcją *Zezwalaj* , będzie mógł wysyłać ruch do aplikacji uruchomionych w App Service Environment.
 
 Po wypełnieniu grupy zabezpieczeń sieci z regułami zabezpieczeń należy przypisać ją do podsieci zawierającej App Service Environment.  Polecenie przypisania odwołuje się zarówno do nazwy sieci wirtualnej, w której znajduje się App Service Environment, jak i nazwy podsieci, w której utworzono App Service Environment.  
 
@@ -110,7 +103,7 @@ W poniższym przykładzie pokazano, jak usunąć i w ten sposób utworzyć grup�
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
 ## <a name="special-considerations-for-explicit-ip-ssl"></a>Specjalne zagadnienia dotyczące jawnego protokołu IP-SSL
-Jeśli aplikacja jest skonfigurowana za pomocą jawnego adresu IP-SSL (dotyczy *tylko* środowisk ASE z publicznym adresem VIP), a nie przy użyciu domyślnego adresu IP App Service Environment, ruch HTTP i HTTPS jest przenoszony do podsieci za pośrednictwem innego zestawu portów. inne niż porty 80 i 443.
+Jeśli aplikacja jest skonfigurowana za pomocą jawnego adresu IP-SSL (dotyczy *tylko* środowisk ASE z publicznym adresem VIP), a nie przy użyciu domyślnego adresu IP App Service Environment, ruch HTTP i HTTPS jest przenoszony do podsieci za pośrednictwem innego zestawu portów innego niż porty 80 i 443.
 
 Poszczególne pary portów używane przez poszczególne adresy IP-SSL można znaleźć w interfejsie użytkownika portalu z bloku szczegóły App Service Environment.  Wybierz pozycję "wszystkie ustawienia" — > "adresy IP".  Blok "adresy IP" przedstawia tabelę wszystkich jawnie skonfigurowanych adresów IP-SSL dla App Service Environment oraz specjalną parę portów, która jest używana do kierowania ruchu HTTP i HTTPS skojarzonego z każdym adresem IP-SSL.  Jest to para portów, która musi być używana dla parametrów DestinationPortRange podczas konfigurowania reguł w sieciowej grupie zabezpieczeń.
 

@@ -1,20 +1,18 @@
 ---
-title: Zalecenia dotyczące zabezpieczeń Azure App Service
-description: Zalecenia dotyczące zabezpieczeń Azure App Service. Wdrożenie tych zaleceń pomoże Ci zrealizować swoje zobowiązania w zakresie zabezpieczeń zgodnie z opisem w naszym wspólnym modelu odpowiedzialności i poprawi ogólne zabezpieczenia rozwiązań aplikacji sieci Web.
-services: app-service
+title: Zalecenia dotyczące zabezpieczeń
+description: Zaimplementuj zalecenia dotyczące zabezpieczeń, aby pomóc w spełnieniu obowiązków bezpieczeństwa określonych w naszym wspólnym modelu odpowiedzialności. Zwiększ bezpieczeństwo aplikacji.
 author: barclayn
 manager: barbkess
-ms.service: app-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 71d564dac43328371e9d34684f2d13a26616a99d
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e3f901fd78436b42729607d38f0ddb533f31cd30
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609774"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684109"
 ---
 # <a name="security-recommendations-for-app-service"></a>Zalecenia dotyczące zabezpieczeń App Service
 
@@ -60,6 +58,6 @@ Ten artykuł zawiera zalecenia dotyczące zabezpieczeń Azure App Service. Wdro�
 |-|-|
 |Użyj Azure Security Center warstwy Standardowa | [Azure Security Center](../security-center/security-center-app-services.md) jest natywnie zintegrowany z Azure App Service. Można uruchamiać oceny i zapewniać zalecenia dotyczące zabezpieczeń. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Skontaktuj się z dostawcą aplikacji, aby sprawdzić, czy istnieją dodatkowe wymagania dotyczące zabezpieczeń. Aby uzyskać więcej informacji na temat tworzenia bezpiecznych aplikacji, zobacz temat [bezpieczna programowanie dokumentacji](../security/fundamentals/abstract-develop-secure-apps.md).

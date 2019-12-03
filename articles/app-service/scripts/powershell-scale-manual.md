@@ -1,26 +1,19 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — ręczne skalowanie aplikacji internetowej | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — ręczne skalowanie aplikacji internetowej
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'PowerShell: ręczne skalowanie aplikacji internetowej'
+description: Dowiedz się, jak używać Azure PowerShell do automatyzowania wdrażania App Service i zarządzania nimi. Ten przykład pokazuje, jak ręcznie skalować aplikację.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d740dbfb1b5d16d84872ef183a52454549be617e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2ee88ef3d125ccc1ec9675437ea99ac11fe65dff
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098215"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684222"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>Ręczne skalowanie aplikacji internetowej przy użyciu programu PowerShell
 

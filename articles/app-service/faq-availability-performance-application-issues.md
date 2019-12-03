@@ -1,26 +1,20 @@
 ---
-title: Często zadawane pytania dotyczące wydajności aplikacji — Azure App Service | Microsoft Docs
-description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące dostępności, wydajności i problemów z aplikacjami w Web Apps funkcji Azure App Service.
-services: app-service\web
-documentationcenter: ''
+title: Często zadawane pytania dotyczące wydajności aplikacji
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące dostępności, wydajności i problemów z aplikacjami w programie Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a5af98aae420193b8316a48aa60550cef70a9c4a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122069"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671706"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące wydajności aplikacji dla Web Apps na platformie Azure
 
@@ -53,10 +47,10 @@ Za pomocą poleceń cmdlet programu PowerShell można zarządzać App Service ap
 Aby wyświetlić dzienniki zdarzeń aplikacji sieci Web:
 
 1. Zaloguj się do [witryny sieci Web kudu](https://*yourwebsitename*.scm.azurewebsites.net).
-2. W menu wybierz kolejno polecenia **Debuguj konsolę** > **cmd**.
+2. W menu wybierz kolejno opcje **Debuguj konsolę** > **cmd**.
 3. Wybierz folder **LogFiles** .
 4. Aby wyświetlić dzienniki zdarzeń, wybierz ikonę ołówka obok pozycji **EventLog. XML**.
-5. Aby pobrać dzienniki, uruchom polecenie cmdlet `Save-AzureWebSiteLog -Name webappname`programu PowerShell.
+5. Aby pobrać dzienniki, uruchom polecenie cmdlet programu PowerShell `Save-AzureWebSiteLog -Name webappname`.
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Jak mogę przechwycić zrzut pamięci w trybie użytkownika aplikacji sieci Web?
 
@@ -65,7 +59,7 @@ Aby przechwycić zrzut pamięci w trybie użytkownika aplikacji sieci Web:
 1. Zaloguj się do [witryny sieci Web kudu](https://*yourwebsitename*.scm.azurewebsites.net).
 2. Wybierz menu **Eksploratora procesów** .
 3. Kliknij prawym przyciskiem myszy proces **w3wp. exe** lub proces WebJob.
-4. Wybierz pozycję **Pobierz zrzut** > pamięci**pełny zrzut**.
+4. Wybierz pozycję **Pobierz zrzut pamięci** > **pełnym zrzucie**.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Jak mogę wyświetlić informacje na poziomie procesu dla mojej aplikacji sieci Web?
 
@@ -87,7 +81,7 @@ W przypadku tego błędu mogą wystąpić trzy warunki:
 * Aplikacja sieci Web została zatrzymana w portalu.
 * Aplikacja sieci Web osiągnęła limit przydziału zasobów, który może być stosowany do planu usług w warstwie Bezpłatna lub współdzielona.
 
-Aby zobaczyć, co jest przyczyną błędu i rozwiązać problem, wykonaj kroki opisane w [Web Apps: "Błąd 403 — ta aplikacja sieci Web została zatrzymana"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
+Aby zobaczyć, co jest przyczyną błędu i rozwiązać ten problem, wykonaj czynności opisane w [Web Apps: "błąd 403 — ta aplikacja sieci Web została zatrzymana"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Gdzie można dowiedzieć się więcej o limitach przydziału i limitów dla różnych planów App Service?
 
@@ -106,7 +100,7 @@ Domyślnie aplikacje sieci Web są zwalniane, jeśli są bezczynne przez określ
 Aby włączyć śledzenie nieudanych żądań:
 
 1. W Azure Portal przejdź do aplikacji sieci Web.
-3. Wybierz kolejno pozycje **wszystkie ustawienia** > **dzienniki diagnostyki**.
+3. Wybierz pozycję **wszystkie ustawienia** > **dzienników diagnostycznych**.
 4. W przypadku **śledzenia nieudanych żądań**wybierz pozycję **włączone**.
 5. Wybierz pozycję **Zapisz**.
 6. W bloku aplikacja sieci Web wybierz pozycję **Narzędzia**.
@@ -147,8 +141,8 @@ Aby włączyć śledzenie nieudanych żądań:
     </tracing>
     ```
 13. Aby pobrać ślady żądań zakończonych niepowodzeniem, w [portalu](https://portal.azure.com)przejdź do witryny sieci Web.
-15. Wybierz pozycję **Narzędzia** > **kudu** > **Przejdź**.
-18. W menu wybierz kolejno polecenia **Debuguj konsolę** > **cmd**.
+15. Wybierz pozycję **narzędzia** > **kudu** > **Przejdź**.
+18. W menu wybierz kolejno opcje **Debuguj konsolę** > **cmd**.
 19. Wybierz folder **LogFiles** , a następnie wybierz folder o nazwie rozpoczynającej się od **W3SVC**.
 20. Aby wyświetlić plik XML, wybierz ikonę ołówka.
 
@@ -170,7 +164,7 @@ Zadania WebJob są przeznaczone do przetwarzania w tle. W ramach zadania WebJob 
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>ASP.NET Core aplikacje hostowane w App Service czasem nie odpowiadają. Jak mogę rozwiązać ten problem?
 
-Znany problem z wcześniejszą [wersją Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) może spowodować, że aplikacja ASP.NET Core 1,0, która jest hostowana w App Service, aby sporadycznie przestać reagować. Ten komunikat może również zostać wyświetlony: "Określona aplikacja CGI napotkała błąd i serwer zakończył proces".
+Znany problem z wcześniejszą [wersją Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) może spowodować, że aplikacja ASP.NET Core 1,0, która jest hostowana w App Service, aby sporadycznie przestać reagować. Ten komunikat może również zostać wyświetlony: "określona aplikacja CGI napotkała błąd i serwer zakończył proces".
 
 Ten problem został rozwiązany w wersji Kestrel 1.0.2. Ta wersja jest uwzględniona w ASP.NET Core aktualizacji 1.0.3. Aby rozwiązać ten problem, upewnij się, że Twoje zależności aplikacji zostały zaktualizowane, tak aby korzystały z Kestrel 1.0.2. Alternatywnie możesz użyć jednego z dwóch obejść, które opisano w wpisie w blogu [ASP.NET Core 1,0 wolnych problemów z wydajności w aplikacjach App Service Web Apps](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites).
 
@@ -179,7 +173,7 @@ Ten problem został rozwiązany w wersji Kestrel 1.0.2. Ta wersja jest uwzględn
 
 W przypadku korzystania z funkcji lokalnej pamięci podręcznej App Service, ma to na przykład strukturę folderu LogFiles i foldery danych dla wystąpienia App Service. Gdy lokalna pamięć podręczna jest używana, podfoldery są tworzone w dziennikach i w folderach danych magazynu. Podfoldery używają wzorca nazewnictwa "unikatowy identyfikator" + sygnatura czasowa. Każdy podfolder odnosi się do wystąpienia maszyny wirtualnej, w którym działa aplikacja sieci Web lub która została uruchomiona.
 
-Aby określić, czy korzystasz z lokalnej pamięci podręcznej, sprawdź kartę **Ustawienia aplikacji** App Service. Jeśli lokalna pamięć podręczna jest używana, ustawienie `WEBSITE_LOCAL_CACHE_OPTION` aplikacji jest ustawione na. `Always`
+Aby określić, czy korzystasz z lokalnej pamięci podręcznej, sprawdź kartę **Ustawienia aplikacji** App Service. Jeśli lokalna pamięć podręczna jest używana, ustawienie aplikacji `WEBSITE_LOCAL_CACHE_OPTION` jest ustawione na `Always`.
 
 Jeśli nie korzystasz z lokalnej pamięci podręcznej i występuje ten problem, Prześlij żądanie pomocy technicznej.
 

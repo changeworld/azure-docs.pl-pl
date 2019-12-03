@@ -1,25 +1,16 @@
 ---
-title: Zabezpieczanie połączenia usługi SQL Database za pomocą tożsamości zarządzanej — Azure App Service | Microsoft Docs
+title: 'Samouczek: uzyskiwanie dostępu do danych za pomocą tożsamości zarządzanej'
 description: Dowiedz się, jak zwiększyć bezpieczeństwo łączności z bazą danych przy użyciu tożsamości zarządzanej, a także jak zastosować ją do innych usług platformy Azure.
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: syntaxc4
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f10d3ee78dffb32db01a48ccf935e5443fae08b6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 53dc6291d699ce08e08d3504bfcd63a525eb9196
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227462"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671193"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
 
@@ -236,7 +227,7 @@ W usłudze Cloud Shell zaloguj się do usługi SQL Database przy użyciu polecen
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-W wierszu polecenia SQL dla bazy danych, uruchom następujące polecenie, aby dodać grupę usługi Azure AD i przyznać uprawnienia wymagane przez aplikację. Na przykład 
+W wierszu polecenia SQL dla bazy danych, uruchom następujące polecenie, aby dodać grupę usługi Azure AD i przyznać uprawnienia wymagane przez aplikację. Na przykład: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;

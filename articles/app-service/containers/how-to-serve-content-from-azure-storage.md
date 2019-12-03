@@ -1,23 +1,20 @@
 ---
-title: Obsługuj zawartość z usługi Azure Storage w systemie Linux — App Service
-description: Jak skonfigurować i zapewnić zawartość z usługi Azure Storage w Azure App Service w systemie Linux.
-author: msangapu
-manager: jeconnoc
-ms.service: app-service
-ms.workload: web
+title: Dołączanie niestandardowego kontenera magazynu w systemie Linux
+description: Dowiedz się, jak dołączyć niestandardowy udział sieciowy do kontenera systemu Linux w Azure App Service. Udostępnianie plików między aplikacjami, zdalne zarządzanie zawartością statyczną oraz uzyskiwanie dostępu lokalnie itp.
+author: msangapu-msft
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 00c60edeefa5fd8d1304aa5fc301a3b0304f5ca3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018277"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671787"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Obsługuj zawartość z usługi Azure Storage w App Service w systemie Linux
+# <a name="attach-azure-storage-containers-to-linux-containers"></a>Dołącz kontenery usługi Azure Storage do kontenerów systemu Linux
 
-W tym przewodniku pokazano, jak obsłużyć zawartość statyczną w App Service w systemie Linux przy użyciu [usługi Azure Storage](/azure/storage/common/storage-introduction). Korzyści obejmują bezpieczną zawartość, przenośność zawartości, magazyn trwały, dostęp do wielu aplikacji i wiele metod transferu.
+W tym przewodniku pokazano, jak dołączyć udziały sieciowe do App Service w systemie Linux przy użyciu [usługi Azure Storage](/azure/storage/common/storage-introduction). Korzyści obejmują bezpieczną zawartość, przenośność zawartości, magazyn trwały, dostęp do wielu aplikacji i wiele metod transferu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,7 +41,7 @@ az storage container create --name <storage_container_name> --account-name <stor
 
 ## <a name="upload-files-to-azure-storage"></a>Przekazywanie plików do usługi Azure Storage
 
-Aby przekazać katalog lokalny do konta magazynu, użyj [`az storage blob upload-batch`](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch) polecenia, takiego jak Poniższy przykład:
+Aby przekazać katalog lokalny do konta magazynu, użyj polecenia [`az storage blob upload-batch`](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch) , jak w poniższym przykładzie:
 
 ```azurecli
 az storage blob upload-batch -d <full_path_to_local_directory> --account-name <storage_account_name> --account-key "<access_key>" -s <source_location_name>
@@ -56,7 +53,7 @@ az storage blob upload-batch -d <full_path_to_local_directory> --account-name <s
 > Połączenie istniejącego katalogu w aplikacji internetowej z kontem magazynu spowoduje usunięcie zawartości katalogu. Jeśli migrujesz pliki dla istniejącej aplikacji, Utwórz kopię zapasową aplikacji i jej zawartość przed rozpoczęciem.
 >
 
-Aby zainstalować konto magazynu w katalogu w aplikacji App Service, użyj [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) polecenia. Typem magazynu może być AzureBlob lub migracji pamięci. Używasz AzureBlob dla tego kontenera.
+Aby zainstalować konto magazynu w katalogu w aplikacji App Service, użyj polecenia [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) . Typem magazynu może być AzureBlob lub migracji pamięci. Używasz AzureBlob dla tego kontenera.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureBlob --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory>
@@ -64,7 +61,7 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 
 Należy to zrobić dla wszystkich innych katalogów, które mają być połączone z kontem magazynu.
 
-## <a name="verify"></a>Sprawdź
+## <a name="verify"></a>Weryfikuj
 
 Po połączeniu kontenera magazynu z aplikacją internetową można to sprawdzić, uruchamiając następujące polecenie:
 
@@ -74,9 +71,9 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="use-custom-storage-in-docker-compose"></a>Używanie magazynu niestandardowego w Docker Compose
 
-Usługę Azure Storage można zainstalować za pomocą aplikacji wielokontenerowych przy użyciu identyfikatora niestandardowego. Aby wyświetlić nazwę niestandardowego ID, uruchom [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)polecenie.
+Usługę Azure Storage można zainstalować za pomocą aplikacji wielokontenerowych przy użyciu identyfikatora niestandardowego. Aby wyświetlić nazwę niestandardowego ID, uruchom [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
 
-W pliku *Docker-Compose. yml* zamapuj `volumes` opcję na `custom-id`. Na przykład:
+W pliku *Docker-Compose. yml* zamapuj opcję `volumes`, aby `custom-id`. Na przykład:
 
 ```yaml
 wordpress:

@@ -1,26 +1,17 @@
 ---
-title: Wdrażanie zawartości przy użyciu protokołu FTP/S-Azure App Service | Microsoft Docs
-description: Dowiedz się, jak wdrożyć aplikację w Azure App Service przy użyciu protokołu FTP lub FTPS.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: Wdrażanie zawartości przy użyciu protokołu FTP/S
+description: Dowiedz się, jak wdrożyć aplikację w Azure App Service przy użyciu protokołu FTP lub FTPS. Zwiększ bezpieczeństwo witryny sieci Web, wyłączając nieszyfrowany protokół FTP.
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/18/2019
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098055"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671720"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji do Azure App Service przy użyciu protokołu FTP/S
 
@@ -32,7 +23,7 @@ Punkt końcowy FTP/S aplikacji jest już aktywny. W celu włączenia wdrożenia 
 
 W [Azure Portal](https://portal.azure.com)Otwórz [stronę zasobów](../azure-resource-manager/manage-resources-portal.md#manage-resources)aplikacji.
 
-Aby otworzyć pulpit nawigacyjny FTP, kliknij pozycję **centrum** > wdrażania**pulpit nawigacyjny** **FTP** > .
+Aby otworzyć pulpit nawigacyjny FTP, kliknij pozycję **centrum wdrażania** > **FTP** > **pulpit nawigacyjny**.
 
 ![Otwórz pulpit nawigacyjny FTP](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -55,7 +46,7 @@ Zalecamy użycie **poświadczeń aplikacji** do wdrożenia aplikacji, ponieważ 
 ## <a name="deploy-files-to-azure"></a>Wdrażanie plików na platformie Azure
 
 1. Korzystając z klienta FTP (na przykład [Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/)lub [WinSCP](https://winscp.net/index.php)), użyj zebranych informacji o połączeniu, aby nawiązać połączenie z Twoją aplikacją.
-2. Skopiuj pliki i ich strukturę katalogów do [katalogu **/site/wwwroot** ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) na platformie Azure (lub katalogu **/site/wwwroot/App_Data/Jobs/** dla zadań WebJob).
+2. Skopiuj pliki i ich strukturę katalogów do [katalogu **/site/wwwroot** ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) na platformie Azure (lub **/site/wwwroot/App_Data/Jobs/** Directory for WebJobs).
 3. Przejdź do adresu URL swojej aplikacji, aby sprawdzić, czy aplikacja działa prawidłowo. 
 
 > [!NOTE] 
@@ -72,7 +63,7 @@ Zalecamy użycie **poświadczeń aplikacji** do wdrożenia aplikacji, ponieważ 
 
 Aby zapewnić większe bezpieczeństwo, należy zezwalać tylko na protokół FTP za pośrednictwem protokołu SSL. Jeśli nie korzystasz z wdrażania FTP, możesz również wyłączyć zarówno protokół FTP, jak i FTPS.
 
-Na stronie zasobów aplikacji w obszarze [Azure Portal](https://portal.azure.com)wybierz pozycję **Konfiguracja** > **Ogólne ustawienia** w lewym okienku nawigacji.
+Na stronie zasobów aplikacji w obszarze [Azure Portal](https://portal.azure.com)wybierz pozycję **Konfiguracja** > **Ustawienia ogólne** z okienka nawigacji po lewej stronie.
 
 Aby wyłączyć nieszyfrowane FTP, wybierz pozycję **FTPS tylko** w polu **stan FTP**. Aby całkowicie wyłączyć protokół FTP i FTPS, wybierz pozycję **wyłączone**. Po skończeniu kliknij przycisk **Zapisz**. W przypadku używania **tylko FTPS**należy wymusić TLS 1,2 lub nowszy, przechodząc do bloku **Ustawienia protokołu TLS/SSL** w aplikacji sieci Web. Protokoły TLS 1,0 i 1,1 nie są obsługiwane **tylko**w przypadku FTPS.
 
@@ -89,7 +80,7 @@ Aby wdrożyć FTP przy użyciu [Azure PowerShell](/cli/azure), zobacz [przekazyw
 ## <a name="troubleshoot-ftp-deployment"></a>Rozwiązywanie problemów z wdrażaniem FTP
 
 - [Jak rozwiązywać problemy z wdrażaniem FTP?](#how-can-i-troubleshoot-ftp-deployment)
-- [I'm not able to FTP and publish my code. Jak mogę rozwiązać ten problem?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [Nie mogę przeprowadzić FTP i opublikować mojego kodu. Jak mogę rozwiązać ten problem?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
 - [Jak połączyć się z FTP w Azure App Service za pośrednictwem trybu pasywnego?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Jak rozwiązywać problemy z wdrażaniem FTP?

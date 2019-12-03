@@ -1,25 +1,18 @@
 ---
-title: Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service — platforma Azure | Microsoft Docs
-description: Tworzenie i używanie środowiska ASE z ILB
-services: app-service
-documentationcenter: ''
+title: Tworzenie ILB ASE v1
+description: Tworzenie i używanie środowiska ASE z ILB. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65d62df954dbbfbdd221adb33eccd82f73588fae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d8ed6b1806e1cbb0ca7419c5892a4a84bc62e541
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069893"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688721"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Używanie wewnętrznego Load Balancer z App Service Environment
 
@@ -29,7 +22,7 @@ ms.locfileid: "70069893"
 
 Funkcja App Service Environment (ASE) to opcja usługi Premium Azure App Service, która zapewnia rozszerzoną funkcję konfiguracji, która nie jest dostępna w sygnaturach z wieloma dzierżawcami. Funkcja ASE zasadniczo wdraża Azure App Service w usłudze Azure Virtual Network (VNet). Aby uzyskać lepsze zrozumienie możliwości oferowanych przez App Service środowiska, przeczytaj artykuł [co to jest App Service Environment][WhatisASE] dokumentacja. Jeśli nie znasz korzyści płynących z używania sieci wirtualnej, zapoznaj się z tematem [często zadawanych pytań dotyczących platformy Azure Virtual Network][virtualnetwork]. 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Środowisko ASE można wdrożyć za pomocą punktu końcowego dostępnego z Internetu lub z adresem IP w sieci wirtualnej. Aby ustawić adres IP na adres sieci wirtualnej, należy wdrożyć środowisko ASE przy użyciu wewnętrznego Load Balancer (ILB). Gdy środowisko ASE jest skonfigurowane z ILB, należy udostępnić:
 
 * Twoja domena lub poddomena. Aby to ułatwić, ten dokument zakłada, że jest poddomeną, ale można go skonfigurować w dowolny sposób. 
@@ -70,7 +63,7 @@ Po wybraniu opcji wewnętrzna możliwość dodawania większej liczby adresów I
 ## <a name="apps-in-an-ilb-ase"></a>Aplikacje w środowisku ILB ASE
 Tworzenie aplikacji w środowisku ILB ASE jest takie samo jak w przypadku normalnego tworzenia aplikacji w środowisku ASE. 
 
-1. W Azure Portal wybierz pozycję **Utwórz zasób > Sieć Web + aplikacje mobilne > aplikacji sieci Web** lub mobilnej lub **interfejsu API**.
+1. W Azure Portal wybierz pozycję **Utwórz zasób > Sieć Web + aplikacje mobilne > aplikacji sieci Web** lub **mobilnej** lub **interfejsu API**.
 2. Wprowadź nazwę aplikacji.
 3. Wybierz subskrypcję.
 4. Wybierz lub utwórz grupę zasobów.
@@ -99,21 +92,21 @@ Jeśli chcesz wypróbować przepływ z własnymi certyfikatami i przetestować d
 3. Pobierz adres ILB dla właściwości środowiska ASE (środowisko ASE **-> — > wirtualny adres IP**).
 4. Utwórz aplikację internetową w środowisku ASE po utworzeniu. 
 5. Utwórz maszynę wirtualną, jeśli nie masz jej w tej sieci wirtualnej (nie w tej samej podsieci co środowisko ASE lub uszkodzenie).
-6. Ustaw serwer DNS dla domeny podrzędnej. Możesz użyć symbolu wieloznacznego z poddomeną w systemie DNS lub jeśli chcesz wykonać kilka prostych testów, edytuj plik Hosts na maszynie wirtualnej, aby ustawić nazwę aplikacji sieci Web na adres IP adresu VIP. Jeśli środowisko ASE miało nazwę poddomeny. ilbase.com i MojaAplikacja aplikację sieci Web, tak aby była ona w mytestapp.ilbase.com, należy ustawić ją w pliku Hosts. (W systemie Windows plik hosts ma wartość C:\Windows\System32\drivers\etc\)
-7. Użyj przeglądarki na tej maszynie wirtualnej i przejdź do https://mytestapp.ilbase.com witryny (lub niezależnie od nazwy aplikacji sieci Web z poddomeną).
+6. Ustaw serwer DNS dla domeny podrzędnej. Możesz użyć symbolu wieloznacznego z poddomeną w systemie DNS lub jeśli chcesz wykonać kilka prostych testów, edytuj plik Hosts na maszynie wirtualnej, aby ustawić nazwę aplikacji sieci Web na adres IP adresu VIP. Jeśli środowisko ASE miało nazwę poddomeny. ilbase.com i MojaAplikacja aplikację sieci Web, tak aby była ona w mytestapp.ilbase.com, należy ustawić ją w pliku Hosts. (W systemie Windows plik hosts ma C:\Windows\System32\drivers\etc\)
+7. Użyj przeglądarki na tej maszynie wirtualnej i przejdź do https://mytestapp.ilbase.com (lub niezależnie od nazwy aplikacji sieci Web z poddomeną).
 8. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę https://mytestapp.ilbase.com. Brak zabezpieczeń należy zaakceptować, jeśli jest używany certyfikat z podpisem własnym. 
 
 Adres IP ILB jest wyświetlany na liście właściwości jako wirtualny adres IP.
 
 ![][4]
 
-## <a name="using-an-ilb-ase"></a>Przy użyciu środowiska ASE wewnętrznego modułu równoważenia obciążenia
-#### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
+## <a name="using-an-ilb-ase"></a>Korzystanie z ILB ASE
+#### <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
 ILB ASE umożliwia izolację sieci dla aplikacji. Aplikacje są niedostępne lub nawet znane przez Internet. Takie podejście jest doskonałe do hostowania witryn intranetowych, takich jak aplikacje biznesowe. W przypadku konieczności jeszcze bardziej ograniczonego dostępu można nadal korzystać z sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń) w celu kontrolowania dostępu na poziomie sieci. 
 
 Aby dodatkowo ograniczyć dostęp do programu sieciowych grup zabezpieczeń, należy się upewnić, że nie przerywasz komunikacji wymaganej do działania środowiska ASE. Chociaż dostęp do protokołu HTTP/HTTPS odbywa się tylko za pośrednictwem ILB używanego przez środowisko ASE, środowisko ASE nadal zależy od zasobów poza siecią wirtualną. Aby sprawdzić, jaki dostęp do sieci jest nadal wymagany, zobacz [kontrolowanie ruchu przychodzącego do App Service Environment][ControlInbound] i [szczegóły konfiguracji sieci dla środowisk App Service z ExpressRoute][ExpressRoute]. 
 
-Aby skonfigurować sieciowych grup zabezpieczeń, musisz znać adres IP używany przez platformę Azure do zarządzania środowiskiem ASE. Ten adres IP jest również wychodzącym adresem IP z środowiska ASE, jeśli wykonuje żądania internetowe. Wychodzący adres IP dla środowiska ASE pozostaje statyczny dla cyklu życia środowiska ASE. Jeśli usuniesz i utworzysz ponownie środowisko ASE, otrzymasz nowy adres IP. Aby znaleźć adres IP, przejdź do pozycji **Ustawienia-> właściwości** i Znajdź wychodzący **adres IP**. 
+Aby skonfigurować sieciowych grup zabezpieczeń, musisz znać adres IP używany przez platformę Azure do zarządzania środowiskiem ASE. Ten adres IP jest również wychodzącym adresem IP z środowiska ASE, jeśli wykonuje żądania internetowe. Wychodzący adres IP dla środowiska ASE pozostaje statyczny dla cyklu życia środowiska ASE. Jeśli usuniesz i utworzysz ponownie środowisko ASE, otrzymasz nowy adres IP. Aby znaleźć adres IP, przejdź do pozycji **Ustawienia-> właściwości** i Znajdź **wychodzący adres IP**. 
 
 ![][5]
 

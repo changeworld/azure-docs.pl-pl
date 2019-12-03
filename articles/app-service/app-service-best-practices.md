@@ -1,27 +1,20 @@
 ---
-title: Najlepsze rozwiązania — Azure App Service
-description: Poznaj najlepsze rozwiązania i rozwiązywanie problemów dotyczących Azure App Service.
-services: app-service
-documentationcenter: ''
+title: Najlepsze rozwiązania
+description: Zapoznaj się z najlepszymi rozwiązaniami i typowymi scenariuszami rozwiązywania problemów dla aplikacji działającej w Azure App Service.
 author: dariagrigoriu
-manager: erikre
-editor: mollybos
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: c40191c8682d6ff93f70e0853e767c89248ae887
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071621"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671497"
 ---
-# <a name="best-practices-for-azure-app-service"></a>Najlepsze rozwiązania dotyczące usługi Azure App Service
+# <a name="best-practices-for-azure-app-service"></a>Najlepsze rozwiązania dla usługi Azure App Service
 W tym artykule opisano najlepsze rozwiązania dotyczące korzystania z [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
 
 ## <a name="colocation"></a>Wspólnej lokalizacji
@@ -38,17 +31,17 @@ Jeśli zauważysz, że aplikacja zużywa więcej pamięci niż oczekiwano, jak t
 ## <a name="CPUresources"></a>Gdy aplikacje zużywają więcej niż oczekiwany procesor CPU
 Jeśli zauważysz, że aplikacja zużywa więcej czasu procesora CPU niż oczekiwano lub w coraz większej liczbie procesorów CPU, jak wskazano w zaleceniach dotyczących monitorowania lub usług, rozważ skalowanie w górę lub skalowanie planu App Service. Jeśli aplikacja jest stanowa, skalowanie w górę jest jedyną opcją, ale jeśli aplikacja jest bezstanowa, skalowanie w poziomie zapewnia większą elastyczność i większą możliwość skalowania. 
 
-Aby uzyskać więcej informacji o aplikacjach "stanowych" vs "bezstanowe", możesz obejrzeć ten film wideo: [Zaplanuj skalowalną kompleksową aplikację wielowarstwową na Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Aby uzyskać więcej informacji na temat App Service skalowania i opcji skalowania automatycznego, zobacz [skalowanie aplikacji sieci Web w Azure App Service](manage-scale-up.md).  
+Aby uzyskać więcej informacji o aplikacjach "stanowych" vs "bezstanowe", możesz obejrzeć ten film wideo: [Planowanie skalowalnej aplikacji wielowarstwowej na Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Aby uzyskać więcej informacji na temat App Service skalowania i opcji skalowania automatycznego, zobacz [skalowanie aplikacji sieci Web w Azure App Service](manage-scale-up.md).  
 
 ## <a name="socketresources"></a>Gdy zasoby gniazda są wyczerpane
 Typowym powodem wyczerpania wychodzących połączeń TCP jest użycie bibliotek klienckich, które nie są zaimplementowane do ponownego użycia połączeń TCP, lub gdy protokół wyższego poziomu, taki jak HTTP-Keep-Alive nie jest używany. Zapoznaj się z dokumentacją dla każdej biblioteki, do której odwołują się aplikacje w planie App Service, aby upewnić się, że są one skonfigurowane lub dostępne w kodzie w celu wydajnego ponownego użycia połączeń wychodzących. Postępuj zgodnie ze wskazówkami dotyczącymi dokumentacji biblioteki, aby zapewnić prawidłowe tworzenie i wydawanie lub czyszczenie, aby uniknąć przecieków połączeń. Chociaż takie badania bibliotek klienta są w toku, wpływ może być skorygowany przez skalowanie do wielu wystąpień.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node. js i wychodzące żądania http
-Podczas pracy z węzłem Node. js i wieloma wychodzącymi żądaniami HTTP, należy wziąć pod uwagę zachowanie protokołu HTTP-Keep-Alive. Możesz użyć pakietu [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` , aby ułatwić jego wykonywanie w kodzie.
+Podczas pracy z węzłem Node. js i wieloma wychodzącymi żądaniami HTTP, należy wziąć pod uwagę zachowanie protokołu HTTP-Keep-Alive. Możesz użyć pakietu `npm` [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) , aby ułatwić jego wykonywanie w kodzie.
 
-Zawsze Obsługuj `http` odpowiedź, nawet jeśli nie wykonujesz żadnej operacji w obsłudze. Jeśli odpowiedź nie jest prawidłowo obsługiwana, aplikacja zostanie zablokowana, ponieważ nie są dostępne żadne dodatkowe gniazda.
+Zawsze Obsługuj odpowiedź `http`, nawet jeśli nie wykonujesz żadnej operacji w obsłudze. Jeśli odpowiedź nie jest prawidłowo obsługiwana, aplikacja zostanie zablokowana, ponieważ nie są dostępne żadne dodatkowe gniazda.
 
-Na przykład podczas pracy z `http` pakietem lub: `https`
+Na przykład podczas pracy z pakietem `http` lub `https`:
 
 ```javascript
 const request = https.request(options, function(response) {

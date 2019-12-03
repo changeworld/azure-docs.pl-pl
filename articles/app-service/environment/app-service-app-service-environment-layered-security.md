@@ -1,28 +1,20 @@
 ---
-title: Architektura zabezpieczeń warstwowych ze środowiskami App Service — platforma Azure
-description: Implementowanie warstwowej architektury zabezpieczeń w środowiskach App Service.
-services: app-service
-documentationcenter: ''
+title: Zabezpieczenia warstwowe v1
+description: Dowiedz się, jak zaimplementować warstwową architekturę zabezpieczeń w środowisku App Service. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8920e97d315dc7bfd0ba22386b8b637afb7c05e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070142"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688797"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementowanie warstwowej architektury zabezpieczeń w środowiskach App Service
-## <a name="overview"></a>Przegląd
 Ponieważ środowiska App Service udostępniają izolowane środowisko uruchomieniowe wdrożone w sieci wirtualnej, deweloperzy mogą tworzyć warstwowe architektury zabezpieczeń zapewniające różne poziomy dostępu do sieci dla każdej warstwy fizycznej aplikacji.
 
 Typowym pragnieniem jest ukrycie zaplecza interfejsu API z ogólnego dostępu do Internetu i Zezwalanie na wywoływanie interfejsów API przez nadrzędne aplikacje sieci Web.  [Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń)][NetworkSecurityGroups] mogą być używane w podsieciach zawierających App Service środowiska w celu ograniczenia publicznego dostępu do aplikacji interfejsu API.
@@ -93,7 +85,7 @@ Po zastosowaniu sieciowej grupy zabezpieczeń do podsieci, tylko trzy środowisk
 ## <a name="additional-links-and-information"></a>Dodatkowe linki i informacje
 Informacje o [sieciowych grupach zabezpieczeń](../../virtual-network/security-overview.md).
 
-Informacje o wychodzących [adresach IP][NetworkArchitecture] i środowiskach App Service.
+Informacje o [wychodzących adresach IP][NetworkArchitecture] i środowiskach App Service.
 
 [Porty sieciowe][InboundTraffic] używane przez środowiska App Service.
 

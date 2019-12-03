@@ -1,25 +1,16 @@
 ---
-title: Omówienie usługi App Service — Azure | Microsoft Docs
+title: Przegląd
 description: Dowiedz się, w jaki sposób usługa Azure App Service ułatwia tworzenie i hostowanie aplikacji internetowych
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/04/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ee80667789e661927f611257b438eb2eecbd0c83
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 849886eb03f46949301d76113109aae8188ff8fc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074091"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687046"
 ---
 # <a name="app-service-overview"></a>Omówienie usługi App Service
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/07/2019
-ms.openlocfilehash: 523fb2d3a3b148afc9219e666c2fbe7fa40d58ad
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 88634777897341f4bd4d8c12b5f9d3b6d9982758
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553802"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671531"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor dla maszyn wirtualnych ogólnie dostępna (GA) często zadawanych pytań
 
@@ -22,11 +22,11 @@ Ostatnio ogłoszono w blogu dotyczącym [usługi Azure Update](https://azure.mic
 
 Firma Microsoft publikuje nową wersję Azure Monitor dla maszyn wirtualnych w listopadzie. Klienci, którzy włączają monitory platformy Azure dla maszyn wirtualnych, gdy ta wersja automatycznie otrzymuje nową wersję, ale istniejący klienci korzystający już z Azure Monitor dla maszyn wirtualnych są monitowani o uaktualnienie.  Te często zadawane pytania i nasze dokumenty oferują wskazówki dotyczące przeprowadzania uaktualnienia zbiorczego, jeśli masz duże wdrożenia w wielu obszarach roboczych.
 
-W przypadku tego uaktualnienia Azure Monitor dla maszyn wirtualnych zestawy danych wydajności są teraz przechowywane w tej samej tabeli `InsightsMetrics` jako [Azure monitor dla kontenerów](container-insights-overview.md)i ułatwiają wykonywanie zapytań do dwóch zestawów. Ponadto można przechowywać bardziej zróżnicowane zestawy danych, które nie mogły być przechowywane w wcześniej używanej tabeli.  Nasze widoki wydajności zostaną również zaktualizowane pod kątem korzystania z tej nowej tabeli.
+W przypadku tego uaktualnienia Azure Monitor dla maszyn wirtualnych zestawy danych wydajności są teraz przechowywane w tej samej tabeli `InsightsMetrics` jako [Azure monitor dla kontenerów](container-insights-overview.md)i ułatwiają wykonywanie zapytań do dwóch zestawów. Ponadto można przechowywać bardziej zróżnicowane zestawy danych, które nie mogły być przechowywane w wcześniej używanej tabeli.  Nasze widoki danych zostaną zaktualizowane, aby korzystały z tej nowej tabeli.
 
 Przenosimy do nowych typów danych dla naszych zestawów danych połączenia. Dane przechowywane w `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, które używają niestandardowych tabel dzienników, przechodzą do typów danych dedykowanych o nazwie `VMComputer` i `VMProcess`.  Przenosząc do typów danych dedykowanych, możemy zapewnić im priorytet pozyskiwania danych, a schemat tabeli zostanie znormalizowany dla wszystkich klientów.
 
-Zdajemy sobie sprawę, że zaproszenie istniejących klientów o uaktualnienie powoduje zakłócenia w przepływie pracy, co oznacza, że wybrano tę czynność teraz w publicznej wersji zapoznawczej, a nie później, gdy docieramy do firmy Microsoft.
+Zdajemy sobie sprawę, że konieczność przeprowadzenia uaktualnienia przez istniejących klientów spowoduje zakłócenia ich przepływu pracy, dlatego zdecydowaliśmy się zrobić to teraz, w trakcie publicznej wersji zapoznawczej, a nie później, po ogólnym udostępnieniu.
 
 ## <a name="what-will-change"></a>Co się zmieni?
 
@@ -40,14 +40,15 @@ Bieżąca metoda włączania Azure Monitor dla maszyn wirtualnych używa licznik
 
 Po zaktualizowaniu naszego interfejsu użytkownika w celu korzystania z danych w programie InsightsMetrics będziemy aktualizować naszą dokumentację i komunikować się z tym ogłoszeniem za pośrednictwem wielu kanałów, w tym do wyświetlania transparentu w Azure Portal. W tym momencie można wyłączyć te [liczniki wydajności](vminsights-enable-overview.md#performance-counters-enabled) w obszarze roboczym, jeśli ich nie chcesz już używać. 
 
-[!NOTE]
+>[!NOTE]
 >Jeśli istnieją reguły alertów odwołujące się do tych liczników w tabeli wydajności, należy je zaktualizować w celu odwoływania się do nowych danych w tabeli `InsightsMetrics`.  Zapoznaj się z naszą dokumentacją dotyczącą przykładowych zapytań dzienników, których można użyć w odniesieniu do tej tabeli.
+>
 
 W przypadku podjęcia decyzji o włączeniu włączonych liczników wydajności opłaty zostaną naliczone za dane pozyskane i zachowane w tabeli wydajności w oparciu o [Log Analytics ceny [(https://azure.microsoft.com/pricing/details/monitor/).
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Jak ta zmiana wpłynie na moje reguły alertów?
 
-Jeśli utworzono [alerty dziennika](../platform/alerts-unified-log.md) , które wysyłają zapytania do tabeli `Perf` docelowej dla liczników wydajności, które zostały włączone w obszarze roboczym, należy zaktualizować te reguły, aby odwoływać się do tabeli `InsightsMetrics`. Te wskazówki dotyczą również wszelkich reguł przeszukiwania dzienników przy użyciu `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, ponieważ te zestawy danych są przenoszone do tabel `VMComputer` i `VMProcess`.
+W przypadku utworzenia [alertów dziennika](../platform/alerts-unified-log.md) , które wysyłają zapytania do tabeli `Perf`, dla liczników wydajności, które zostały włączone w obszarze roboczym, należy zaktualizować te reguły, aby odwoływać się do tabeli `InsightsMetrics`. Te wskazówki dotyczą również wszelkich reguł przeszukiwania dzienników przy użyciu `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, ponieważ te zestawy danych są przenoszone do tabel `VMComputer` i `VMProcess`.
 
 Będziemy aktualizować te często zadawane pytania i naszą dokumentację, aby uwzględnić przykładowe reguły alertów wyszukiwania w dzienniku dla zbieranych danych.
 
@@ -69,17 +70,17 @@ W przypadku wybrania opcji Nie uaktualniaj do rozwiązania **VMInsights** będzi
 
 ## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Czy Service Map zestawy danych będą również przechowywane w InsightsMetrics?
 
-Zestawy danych nie będą duplikowane, jeśli używasz obu rozwiązań. Obie oferty współdzielą zestawy danych, które będą przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection` i `VMBoundPort` tabel do przechowywania zbieranych przez nas zestawów danych.  
+Zestawy danych nie będą duplikowane, jeśli używasz obu rozwiązań. Obie oferty współdzielą zestawy danych, które będą przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection`i `VMBoundPort` tabele do przechowywania zbieranych przez nas zestawów danych mapy.  
 
-Tabela `InsightsMetrics` będzie używana do przechowywania zestawów danych maszyn wirtualnych, procesów i usług zbieranych i zostanie wypełniona tylko w przypadku korzystania z Azure Monitor dla maszyn wirtualnych.
+Tabela `InsightsMetrics` zostanie użyta do przechowywania zestawów danych maszyn wirtualnych, procesów i usług zbieranych i zostanie wypełniona tylko w przypadku korzystania z Azure Monitor dla maszyn wirtualnych.
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-on-my-workspace"></a>Czy przy użyciu rozwiązań Service Map i VMInsights w obszarze mój obszar roboczy zostanie podwojona opłata?
 
-Nie, dwa rozwiązania udostępniają zestawy danych mapy, które przechowujemy w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection` i `VMBoundPort`.  Jeśli w obszarze roboczym znajdują się oba rozwiązania, nie będziesz mieć podwójnej opłaty za te dane.
+Nie, dwa rozwiązania korzystają z zestawów danych mapy, które są przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection`i `VMBoundPort`.  Jeśli w obszarze roboczym znajdują się oba rozwiązania, nie będziesz mieć podwójnej opłaty za te dane.
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data-in-log-analytics"></a>Jeśli usunę rozwiązanie Service Map lub VMInsights, usuniemy moje dane w Log Analytics?
 
-Nie, dwa rozwiązania udostępniają zestawy danych mapy, które przechowujemy w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection` i `VMBoundPort`.  W przypadku usunięcia jednego z tych rozwiązań te zestawy danych będą inejść, że nadal istnieje rozwiązanie, które korzysta z danych i pozostanie w Log Analytics.  Musisz usunąć oba rozwiązania z obszaru roboczego, aby dane zostały usunięte z obszaru roboczego Log Analytics.
+Nie, dwa rozwiązania korzystają z zestawów danych mapy, które są przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection`i `VMBoundPort`.  W przypadku usunięcia jednego z tych rozwiązań te zestawy danych będą inejść, że nadal istnieje rozwiązanie, które korzysta z danych i pozostanie w Log Analytics.  Musisz usunąć oba rozwiązania z obszaru roboczego, aby dane zostały usunięte z obszaru roboczego Log Analytics.
 
 ## <a name="when-will-this-update-be-released"></a>Kiedy ta aktualizacja zostanie wydana?
 
@@ -87,7 +88,7 @@ Oczekujemy opublikowania aktualizacji Azure Monitor dla maszyn wirtualnych w po�
 
 ## <a name="health-feature-to-enter-limited-public-preview"></a>Funkcja kondycji do wprowadzania ograniczonej publicznej wersji zapoznawczej
 
-Otrzymamy wiele doskonałych opinii od klientów dotyczących zestawu funkcji kondycji maszyn wirtualnych.  Istnieje wiele interesów tej funkcji i ekscytację nad jej potencjałem do obsługi przepływów pracy monitorowania. Planujemy wprowadzić serię zmian w celu dodania funkcji i rozwiązania otrzymanej opinii. Aby zminimalizować wpływ tych zmian na nowych klientów, przenosimy tę funkcję do ograniczonej publicznej wersji zapoznawczej.
+Otrzymamy wiele doskonałych opinii od klientów dotyczących zestawu funkcji kondycji maszyn wirtualnych.  Ta funkcja wzbudza duże zainteresowanie, a jej możliwości obsługi monitorowania przepływów pracy są bardzo pożądane. Planujemy wprowadzić serię zmian, aby dodać funkcje i odpowiedzieć na otrzymane opinie. Aby zminimalizować wpływ tych zmian na nowych klientów, przenosimy tę funkcję do ograniczonej publicznej wersji zapoznawczej.
 
 To przejście rozpocznie się na początku października i powinno zostać ukończone do końca miesiąca.
 
@@ -111,7 +112,7 @@ Jako istniejący klient można nadal korzystać z funkcji kondycji na maszynach 
 
 ## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-for-a-new-environment"></a>Teraz korzystam z kondycji maszyny wirtualnej z jednym środowiskiem i chcę ją wdrożyć dla nowego środowiska
 
-Jeśli jesteś istniejącym klientem korzystającym z funkcji kondycji i chcesz go użyć do nowego zestawienia, skontaktuj się z nami pod adresem vminsights@microsoft.com, aby zażądać instrukcji.
+Jeśli jesteś istniejącym klientem korzystającym z funkcji kondycji i chcesz go użyć do nowego wdrożenia, skontaktuj się z nami w vminsights@microsoft.com, aby zażądać instrukcji.
 
 ## <a name="next-steps"></a>Następne kroki
 

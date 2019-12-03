@@ -1,25 +1,16 @@
 ---
-title: Wdróż kod z plikiem ZIP lub WAR — Azure App Service | Microsoft Docs
+title: Wdróż kod z plikiem ZIP lub WAR
 description: Dowiedz się, jak wdrożyć aplikację w celu Azure App Service z plikiem ZIP (lub plikiem WAR dla deweloperów języka Java).
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 83951f6408094b8d1e04d19650a5f2ef596be988
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 3569c6a066b09daa0c24975b9de840a844b6ba2c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801152"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670221"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Wdróż aplikację w celu Azure App Service z plikiem ZIP lub WAR
 
@@ -70,11 +61,11 @@ Powyższy punkt końcowy nie działa w przypadku App Services systemu Linux. Zam
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Wdróż plik ZIP przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Upewnij się, że wersja interfejsu wiersza polecenia platformy Azure to 2.0.21 lub nowsza. Aby sprawdzić, która wersja posiadasz, `az --version` Uruchom polecenie w oknie terminalu.
+Upewnij się, że wersja interfejsu wiersza polecenia platformy Azure to 2.0.21 lub nowsza. Aby sprawdzić, która wersja posiadasz, uruchom polecenie `az --version` w oknie terminalu.
 
 Wdróż przekazany plik ZIP w aplikacji sieci Web za pomocą polecenia [AZ webapp Deployment Source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) .  
 
-W poniższym przykładzie został wdrożony przekazany plik ZIP. W `--src`przypadku korzystania z lokalnej instalacji interfejsu wiersza polecenia platformy Azure należy określić ścieżkę do lokalnego pliku zip.
+W poniższym przykładzie został wdrożony przekazany plik ZIP. W przypadku korzystania z lokalnej instalacji interfejsu wiersza polecenia platformy Azure należy określić ścieżkę do lokalnego pliku ZIP dla `--src`.
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
@@ -82,7 +73,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 To polecenie wdraża pliki i katalogi z pliku ZIP do domyślnego folderu aplikacji App Service (`\home\site\wwwroot`) i ponownie uruchamia aplikację.
 
-Domyślnie Aparat wdrażania zakłada, że plik ZIP jest gotowy do uruchomienia jako-is i nie uruchamia żadnej automatyzacji kompilacji. Aby włączyć tę samą automatyzację kompilacji jak w przypadku [wdrożenia usługi git](deploy-local-git.md), `SCM_DO_BUILD_DURING_DEPLOYMENT` należy ustawić ustawienie aplikacji, uruchamiając następujące polecenie w [Cloud Shell](https://shell.azure.com):
+Domyślnie Aparat wdrażania zakłada, że plik ZIP jest gotowy do uruchomienia jako-is i nie uruchamia żadnej automatyzacji kompilacji. Aby włączyć tę samą automatyzację kompilacji jak w przypadku [wdrożenia usługi git](deploy-local-git.md), należy ustawić ustawienie aplikacji `SCM_DO_BUILD_DURING_DEPLOYMENT`, uruchamiając następujące polecenie w [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
@@ -102,7 +93,7 @@ W przypadku uwierzytelniania podstawowego HTTP wymagane są poświadczenia wdra�
 
 ### <a name="with-curl"></a>Z zwinięciem
 
-W poniższym przykładzie za pomocą narzędzia zwinięcie można wdrożyć plik War. Zastąp symbole `<username>`zastępcze `<war-file-path>`, i `<app-name>`. Po wyświetleniu monitu przez zwinięcie wpisz hasło.
+W poniższym przykładzie za pomocą narzędzia zwinięcie można wdrożyć plik War. Zastąp symbole zastępcze `<username>`, `<war-file-path>`i `<app-name>`. Po wyświetleniu monitu przez zwinięcie wpisz hasło.
 
 ```bash
 curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
@@ -110,7 +101,7 @@ curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app_name>.s
 
 ### <a name="with-powershell"></a>Z programem PowerShell
 
-Poniższy przykład używa [publikowania-AzWebapp](/powershell/module/az.websites/publish-azwebapp) Przekaż plik War. Zastąp symbole `<group-name>`zastępcze `<app-name>`, i `<war-file-path>`.
+Poniższy przykład używa [publikowania-AzWebapp](/powershell/module/az.websites/publish-azwebapp) Przekaż plik War. Zastąp symbole zastępcze `<group-name>`, `<app-name>`i `<war-file-path>`.
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <war-file-path>
@@ -124,5 +115,5 @@ W przypadku bardziej zaawansowanych scenariuszy wdrażania spróbuj [wdrożyć p
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-* [Kudu: Wdrażanie z pliku zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
+* [Kudu: wdrażanie z pliku zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
 * [Poświadczenia wdrażania Azure App Service](deploy-ftp.md)

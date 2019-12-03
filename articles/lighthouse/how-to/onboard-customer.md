@@ -3,12 +3,12 @@ title: Dołączanie klienta do zarządzania zasobami delegowanymi na platformie 
 description: Dowiedz się, jak dołączyć klienta do zarządzania zasobami delegowanymi przez platformę Azure, umożliwiając dostęp do zasobów i zarządzanie nimi za pomocą własnej dzierżawy.
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: fde0e82ff2dcf048643524b5a2d076d66a4f5a50
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 88e75b92ca09f3c6671fe4399c4672240f863f66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463955"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689257"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 
@@ -106,7 +106,7 @@ az role definition list --name "<roleName>" | grep name
 > [!TIP]
 > Zalecamy przypisanie [roli usuwania przypisania rejestracji usług zarządzanych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) podczas dołączania klienta, dzięki czemu użytkownicy w dzierżawie mogą później w razie potrzeby [usunąć dostęp do delegowania](#remove-access-to-a-delegation) . Jeśli ta rola nie jest przypisana, delegowane zasoby mogą zostać usunięte tylko przez użytkownika w dzierżawie klienta.
 
-## <a name="create-an-azure-resource-manager-template"></a>Tworzenie szablonu usługi Azure Resource Manager
+## <a name="create-an-azure-resource-manager-template"></a>Tworzenie szablonu Azure Resource Manager
 
 Aby dołączyć klienta, musisz utworzyć szablon [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) dla oferty z następującymi informacjami. Wartości **mspOfferName** i **mspOfferDescription** są widoczne dla klienta podczas wyświetlania szczegółów oferty na [stronie dostawcy usług](view-manage-service-providers.md) Azure Portal.
 
@@ -115,7 +115,7 @@ Aby dołączyć klienta, musisz utworzyć szablon [Azure Resource Manager](https
 |**mspOfferName**     |Nazwa opisująca tę definicję. Ta wartość jest wyświetlana klientowi jako tytuł oferty.         |
 |**mspOfferDescription**     |Krótki opis oferty (na przykład "Oferta zarządzania maszyną wirtualną firmy Contoso")      |
 |**managedByTenantId**     |Identyfikator dzierżawy         |
-|**autoryzacji**     |**PrincipalId** wartości dla użytkowników/grup/nazw SPN z dzierżawy, z których każdy ma **principalIdDisplayName** , aby pomóc klientowi zrozumieć cel autoryzacji i zamapować na wbudowaną wartość **zduplikowanych** , aby określić poziom dostępu         |
+|**autoryzacji**     |Wartości **principalId** dla użytkowników/grup/nazw SPN z dzierżawy, z których każda jest **principalIdDisplayName** , aby pomóc klientowi zrozumieć cel autoryzacji i zamapować na wbudowaną wartość **zduplikowanych** w celu określenia poziomu dostępu         |
 
 Aby dołączać subskrypcję klienta, należy użyć odpowiedniego szablonu Azure Resource Manager dostarczanego w naszym [repozytorium przykładów](https://github.com/Azure/Azure-Lighthouse-samples/)oraz odpowiedniego pliku parametrów, który można zmodyfikować, aby dopasować konfigurację i zdefiniować autoryzacje. Poszczególne szablony są udostępniane w zależności od tego, czy dołączysz całą subskrypcję, grupę zasobów lub wiele grup zasobów w ramach subskrypcji. Udostępniamy również szablon, który może być używany dla klientów, którzy kupili ofertę usługi zarządzanej opublikowaną w portalu Azure Marketplace, jeśli wolisz dołączyć swoje subskrypcje w ten sposób.
 
@@ -247,7 +247,7 @@ W dzierżawie dostawcy usług:
 3. Upewnij się, że można zobaczyć subskrypcje o nazwie oferty podanej w szablonie Menedżer zasobów.
 
 > [!IMPORTANT]
-> Aby można było wyświetlić delegowaną subskrypcję w [swoich klientach](view-manage-customers.md), użytkownicy w dzierżawie dostawcy usługi muszą mieć przydaną rolę [czytelnika](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (lub inną wbudowaną rolę, która obejmuje dostęp do czytnika), gdy subskrypcja została dołączona na platformę Azure delegowane zarządzanie zasobami.
+> Aby można było wyświetlić delegowaną subskrypcję w [swoich klientach](view-manage-customers.md), użytkownicy w dzierżawie dostawcy usługi muszą mieć przydaną rolę [czytelnika](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (lub inną wbudowaną rolę, która obejmuje dostęp do czytnika), gdy subskrypcja została dołączona na potrzeby zarządzania zasobami delegowanymi przez platformę Azure.
 
 W dzierżawie klienta:
 
@@ -335,7 +335,7 @@ az managedservices assignment list
 
 # Delete the registration assignment
 
-az managedservices assignment delete –assignment <id or full resourceId>
+az managedservices assignment delete --assignment <id or full resourceId>
 ```
 
 ## <a name="next-steps"></a>Następne kroki

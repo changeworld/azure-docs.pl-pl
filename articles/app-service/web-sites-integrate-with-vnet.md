@@ -1,24 +1,18 @@
 ---
-title: Integrowanie aplikacji z usługą Azure Virtual Network — Azure App Service
-description: Pokazuje, jak połączyć aplikację w Azure App Service z nową lub istniejącą siecią wirtualną platformy Azure
-services: app-service
-documentationcenter: ''
+title: Integrowanie aplikacji z usługą Azure Virtual Network
+description: Dowiedz się, jak Azure App Service integrują się z usługą Azure Virtual Network i jak połączyć aplikację z siecią wirtualną.
 author: ccompy
-manager: stefsch
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034727"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688294"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z usługą Azure Virtual Network
 W tym dokumencie opisano funkcję integracji Azure App Service sieci wirtualnej i sposób jej konfigurowania z aplikacjami w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Usługa Azure Virtual Networks][VNETOverview] (sieci wirtualnych) umożliwia umieszczanie wielu zasobów platformy Azure w sieci bez obsługi Internetu.  
@@ -59,7 +53,7 @@ Funkcja integracji sieci wirtualnej:
 Istnieje kilka rzeczy, które nie są obsługiwane przez integrację sieci wirtualnej, w tym:
 
 * Instalowanie dysku
-* Integracja z usługą AD 
+* Integracja usługi AD 
 * NetBios
 
 ## <a name="regional-vnet-integration"></a>Integracja z regionalną siecią wirtualną 

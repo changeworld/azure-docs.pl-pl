@@ -1,25 +1,18 @@
 ---
-title: Jak skonfigurować App Service Environment V1 — Azure
-description: Konfiguracja, zarządzanie i monitorowanie App Service Environment v1
-services: app-service
-documentationcenter: ''
+title: Konfigurowanie środowiska ASE v1
+description: Konfiguracja, zarządzanie i monitorowanie App Service Environment v1. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069949"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687262"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurowanie App Service Environment v1
 
@@ -31,7 +24,7 @@ ms.locfileid: "70069949"
 Na wysokim poziomie Azure App Service Environment składa się z kilku głównych składników:
 
 * Zasoby obliczeniowe, które są uruchomione w App Service Environment hostowanej usłudze
-* Magazyn
+* Usługa Storage
 * Baza danych programu
 * Klasyczny (v1) lub Menedżer zasobów (wersja 2) platformy Virtual Network Azure (Sieć wirtualna) 
 * Podsieć z uruchomioną App Service Environment usługą hostowaną
@@ -44,14 +37,14 @@ Hosty w pulach zasobów (frontony i procesy robocze) nie są bezpośrednio dost�
 Można ustawić ilość i rozmiar puli zasobów. W środowisku ASE są dostępne cztery opcje rozmiaru, które są oznaczone jako P1 przez P4. Aby uzyskać szczegółowe informacje o tych rozmiarach i ich cenach, zobacz [Cennik usługi App Service](https://azure.microsoft.com/pricing/details/app-service/).
 Zmiana ilości lub rozmiaru jest nazywana operacją skalowania.  W danym momencie może istnieć tylko jedna operacja skalowania.
 
-**Frontony**: Frontony są punktami końcowymi protokołu HTTP/HTTPS dla aplikacji, które są przechowywane w środowisku ASE. Nie uruchamiasz obciążeń w frontonie.
+**Frontony**: frontony są punktami końcowymi protokołu HTTP/HTTPS dla aplikacji, które są przechowywane w środowisku ASE. Nie uruchamiasz obciążeń w frontonie.
 
 * Środowisko ASE rozpoczyna się od dwóch P2S, co jest wystarczające do obciążeń deweloperskich i testowych oraz obciążeń produkcyjnych niskiego poziomu. Zdecydowanie zalecamy P3s dla średnich i dużych obciążeń produkcyjnych.
 * W przypadku średnich i dużych obciążeń produkcyjnych zaleca się, aby mieć co najmniej cztery P3s w celu zapewnienia wystarczającej liczby frontonów uruchomionych w przypadku wystąpienia zaplanowanej konserwacji. Zaplanowane działania konserwacyjne spowodują przełączenie jednego frontonu w danym momencie. Zmniejsza to ogólną dostępną pojemność frontonu podczas aktywności konserwacyjnej.
 * Zainicjowanie frontonu może potrwać do godziny. 
 * Aby kontynuować skalowanie w poziomie, należy monitorować wartości procentowe procesora CPU, procentu pamięci i aktywnych żądań dla puli frontonu. Jeśli wartości procentowe procesora CPU lub pamięci są powyżej 70% podczas uruchamiania P3s, Dodaj więcej frontonów. Jeśli wartość aktywnych żądań jest średnia na 15 000 do 20 000 żądań na fronton, należy również dodać więcej frontonów. Ogólnym celem jest utrzymywanie wartości procentowych procesora CPU i pamięci poniżej 70%, a aktywne żądania są uśredniane do poniżej 15 000 żądań na fronton, gdy korzystasz z usługi P3s.  
 
-**Pracownicy**: Pracownicy są miejscem, w którym działają aplikacje. W przypadku skalowania w górę planów App Service, które używają procesów roboczych w puli skojarzonej z nimi.
+**Procesy robocze**: pracownicy są miejscem, w którym działają Twoje aplikacje. W przypadku skalowania w górę planów App Service, które używają procesów roboczych w puli skojarzonej z nimi.
 
 * Nie można natychmiast dodać procesów roboczych. Udostępnienie może potrwać do godziny.
 * Skalowanie rozmiaru zasobów obliczeniowych dla dowolnej puli zajmie < 1 godzinę dla domeny aktualizacji. W środowisku ASE znajdują się 20 domen aktualizacji. W przypadku skalowania rozmiaru obliczeniowego puli procesów roboczych z 10 wystąpieniami ukończenie tego procesu może potrwać do 10 godzin.
@@ -68,11 +61,11 @@ Jeśli aplikacje wymagają większego rozmiaru zasobów obliczeniowych, nie moż
 * Przypisz ponownie plany App Service, które obsługują aplikacje, które mają większy rozmiar, do nowo skonfigurowanej puli procesów roboczych. Jest to szybka operacja, którą należy wykonać krócej niż minutę.  
 * Skalowanie w dół pierwszej puli procesów roboczych, jeśli nie są już potrzebne nieużywane wystąpienia. Wykonanie tej operacji może potrwać kilka minut.
 
-**Skalowanie automatyczne**: Jednym z narzędzi, które mogą ułatwić zarządzanie zużyciem zasobów obliczeniowych, jest skalowanie automatyczne. Skalowanie automatyczne można używać w przypadku pul frontonu lub procesów roboczych. Można wykonywać takie czynności, jak zwiększenie liczby wystąpień dowolnego typu puli rano i zmniejszenie jej w wieczór. Możesz też dodać wystąpienia, gdy liczba procesów roboczych, które są dostępne w puli procesu roboczego, spadnie poniżej określonego progu.
+**Skalowanie**automatyczne: jeden z narzędzi, które ułatwiają zarządzanie użyciem zasobów obliczeniowych, jest skalowaniem automatycznym. Skalowanie automatyczne można używać w przypadku pul frontonu lub procesów roboczych. Można wykonywać takie czynności, jak zwiększenie liczby wystąpień dowolnego typu puli rano i zmniejszenie jej w wieczór. Możesz też dodać wystąpienia, gdy liczba procesów roboczych, które są dostępne w puli procesu roboczego, spadnie poniżej określonego progu.
 
 Jeśli chcesz ustawić reguły skalowania automatycznego wokół metryk puli zasobów obliczeniowych, należy pamiętać o czasie, który jest wymagany. Aby uzyskać więcej informacji na temat automatycznego skalowania środowisk App Service, zobacz [jak skonfigurować Skalowanie automatyczne w App Service Environment][ASEAutoscale].
 
-### <a name="storage"></a>Magazyn
+### <a name="storage"></a>Usługa Storage
 Każde środowisko ASE jest skonfigurowane z 500 GB miejsca w magazynie. To miejsce jest używane we wszystkich aplikacjach w środowisku ASE. To miejsce do magazynowania jest częścią środowiska ASE i obecnie nie można go przełączyć do korzystania z miejsca do magazynowania. W przypadku wprowadzania zmian dotyczących routingu lub zabezpieczeń sieci wirtualnej należy nadal zezwolić na dostęp do usługi Azure Storage — lub środowisko ASE nie może działać.
 
 ### <a name="database"></a>Database (Baza danych)
@@ -132,13 +125,13 @@ W środowisku ASE wszystkie plany App Service są dedykowane App Service plany. 
 ### <a name="settings"></a>Ustawienia
 W bloku ASE istnieje sekcja **ustawień** , która zawiera kilka ważnych funkcji:
 
- > **Właściwości**ustawień: Blok **Ustawienia** zostanie automatycznie otwarty po wyświetleniu bloku środowiska ASE. U góry jest **Właściwości**. W tym miejscu znajduje się wiele elementów, które są nadmiarowe w programie **Essentials**, ale co jest bardzo przydatne w przypadku **wirtualnego adresu IP**, a także wychodzących **adresów IP**.
+**Ustawienia** > **Właściwości**: blok **Ustawienia** zostanie automatycznie otwarty po wyświetleniu bloku środowiska ASE. U góry jest **Właściwości**. W tym miejscu znajduje się wiele elementów, które są nadmiarowe w programie **Essentials**, ale co jest bardzo przydatne w przypadku **wirtualnego adresu IP**, a także **wychodzących adresów IP**.
 
 ![Blok ustawień i właściwości][4]
 
- > **Adresy IP**ustawień: Gdy tworzysz aplikację IP SSL (SSL) w środowisku ASE, potrzebujesz adresu Połączenie SSL z adresu IP. Aby można było uzyskać ten element, środowisko ASE wymaga Połączenie SSL z adresu IP adresów, do których należy przydzielenia. Po utworzeniu środowisko ASE ma jeden adres Połączenie SSL z adresu IP do tego celu, ale możesz dodać więcej. Jest naliczana opłata za dodatkowe adresy Połączenie SSL z adresu IP, jak pokazano w [App Service cenach][AppServicePricing] (w sekcji połączeń SSL). Cena dodatkowa to Połączenie SSL z adresu IP cena.
+**Ustawienia** > **adresów IP**: podczas tworzenia aplikacji SSL IP (SSL) w środowisku ASE potrzebny jest adres połączenie SSL z adresu IP. Aby można było uzyskać ten element, środowisko ASE wymaga Połączenie SSL z adresu IP adresów, do których należy przydzielenia. Po utworzeniu środowisko ASE ma jeden adres Połączenie SSL z adresu IP do tego celu, ale możesz dodać więcej. Jest naliczana opłata za dodatkowe adresy Połączenie SSL z adresu IP, jak pokazano w [App Service cenach][AppServicePricing] (w sekcji połączeń SSL). Cena dodatkowa to Połączenie SSL z adresu IP cena.
 
-**Ustawienia** > **pul procesów roboczych** **puli** / frontonu: Każda z tych bloków puli zasobów umożliwia wyświetlanie informacji tylko dla tej puli zasobów, a także zapewnianie kontroli w celu pełnego skalowania tej puli zasobów.  
+**Ustawienia** > **puli frontonu** / **Pule procesów roboczych**: Każda z tych bloków puli zasobów umożliwia wyświetlanie informacji tylko dla tej puli zasobów, a także zapewnianie kontroli w celu pełnego skalowania tej puli zasobów.  
 
 Blok podstawowy dla każdej puli zasobów zawiera wykres z metrykami dla tej puli zasobów. Podobnie jak w przypadku wykresów z bloku ASE, możesz przejść do wykresu i skonfigurować alerty zgodnie z potrzebami. Ustawienie alertu z bloku ASE dla określonej puli zasobów jest takie samo, jak w przypadku tej samej puli zasobów. W bloku **Ustawienia** puli procesów roboczych masz dostęp do wszystkich aplikacji lub planów App Service, które są uruchomione w tej puli procesów roboczych.
 
@@ -154,14 +147,14 @@ Istnieją trzy operacje skalowania:
 W portalu istnieją trzy sposoby kontrolowania liczby serwerów, które znajdują się w pulach zasobów:
 
 * Operacja skalowania z głównego bloku środowiska ASE w górnej części. Można wprowadzać zmiany konfiguracji wielu skalowania do pul frontonu i procesów roboczych. Są one stosowane w ramach jednej operacji.
-* Operacja skalowania ręcznego z poziomu bloku pojedynczej puli zasobów, która znajduje się w obszarze **Ustawienia**.
+* Operacja skalowania ręcznego z **poziomu bloku** pojedynczej puli zasobów, która znajduje się w obszarze **Ustawienia**.
 * Skalowanie **Automatyczne** , które można skonfigurować z poziomu pojedynczego bloku puli zasobów.
 
 Aby użyć operacji skalowania w bloku ASE, przeciągnij suwak do odpowiedniej ilości i Zapisz. Ten interfejs użytkownika obsługuje również Zmienianie rozmiaru.  
 
 ![Interfejs użytkownika skalowania][6]
 
-Aby użyć funkcji ręcznych lub skalowania automatycznego w określonej puli zasobów, przejdź do pozycji **Ustawienia** > **Pule procesów roboczych** **puli** / frontonu zgodnie z potrzebami. Następnie otwórz pulę, którą chcesz zmienić. Przejdź do **pozycji Ustawienia** > Skaluj w poziomie lub **Ustawienia** > **Skaluj w górę**. Blok **skalowanie w poziomie** pozwala sterować ilością wystąpień. **Skalowanie w górę** umożliwia sterowanie rozmiarem zasobów.  
+Aby użyć funkcji ręcznych lub skalowania automatycznego w określonej puli zasobów, przejdź do pozycji **ustawienia** > **pula frontonu** / **Pule procesów roboczych** stosownie do potrzeb. Następnie otwórz pulę, którą chcesz zmienić. Przejdź do pozycji **ustawienia** > **skalowanie w poziomie** lub **Ustawienia** > **skalowanie w górę**. Blok **skalowanie w poziomie** pozwala sterować ilością wystąpień. **Skalowanie w górę** umożliwia sterowanie rozmiarem zasobów.  
 
 ![Interfejs użytkownika ustawień skalowania][7]
 

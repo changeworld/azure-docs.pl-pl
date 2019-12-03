@@ -1,32 +1,22 @@
 ---
-title: Konfigurowanie aplikacji języka Python — Azure App Service
-description: W tym samouczku opisano opcje tworzenia i konfigurowania aplikacji języka Python dla usługi Azure App Service w systemie Linux.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Konfigurowanie aplikacji systemu Linux Python
+description: Dowiedz się, jak skonfigurować wstępnie skonstruowany kontener języka Python dla aplikacji. W tym artykule przedstawiono najczęstsze zadania konfiguracyjne.
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 8563e0ac060e5cce6853472dfb1c51c6c2c36a4d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071087"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670477"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurowanie aplikacji systemu Linux w języku Python dla Azure App Service
 
 W tym artykule opisano, jak usługa [Azure App Service](app-service-linux-intro.md) uruchamia aplikacje języka Python i jak można dostosować zachowanie usługi App Service w razie potrzeby. Aplikacje języka Python muszą zostać wdrożone ze wszystkimi wymaganymi modułami [PIP](https://pypi.org/project/pip/) .
 
-Aparat wdrażania App Service automatycznie aktywuje środowisko wirtualne i jest uruchamiany `pip install -r requirements.txt` podczas wdrażania [repozytorium git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)lub [pakiet ZIP](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) z procesami kompilacji, które zostały włączone.
+Aparat wdrażania App Service automatycznie aktywuje środowisko wirtualne i uruchamia `pip install -r requirements.txt` podczas wdrażania [repozytorium git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)lub [pakiet ZIP](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) z procesami kompilacji, które zostały włączone.
 
 Ten przewodnik zawiera najważniejsze pojęcia i instrukcje dla deweloperów języka Python, którzy używają wbudowanego kontenera systemu Linux w App Service. Jeśli nie korzystasz z Azure App Service, musisz najpierw wykonać samouczek [przewodnika Szybki Start](quickstart-python.md) i [Python z programem PostgreSQL](tutorial-python-postgresql-app.md) .
 
@@ -119,7 +109,7 @@ Aby kontrolować zachowanie kontenera podczas uruchamiania, możesz podać niest
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Na przykład jeśli masz aplikację z kolbą, której moduł główny to *Hello.py* , a w tym pliku znajduje się obiekt aplikacji do `myapp`kolby o nazwie,  *\<> polecenie niestandardowe* jest następujące:
+Na przykład jeśli masz aplikację z kolbą, której moduł główny to *Hello.py* , a obiekt aplikacji do kolby w tym pliku ma nazwę `myapp`, wówczas *\<> niestandardowe polecenie* jest następujące:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -131,9 +121,9 @@ Jeśli moduł główny znajduje się w podfolderze, takim jak `website`, określ
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Można również dodać wszelkie dodatkowe argumenty dla Gunicorn do  *\<polecenia Custom->* , `--workers=4`na przykład. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
+Możesz również dodać wszelkie dodatkowe argumenty dla Gunicorn, aby *\<> niestandardowego-polecenia*, takich jak `--workers=4`. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
 
-Aby użyć serwera innego niż Gunicorn, takiego jak [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), można zamienić  *\<polecenie niestandardowe >* na podobne do tego:
+Aby użyć serwera innego niż Gunicorn, takiego jak [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), można zamienić *\<niestandardowe-polecenie >* , tak jak to:
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -184,10 +174,10 @@ Popularne platformy internetowe umożliwiają dostęp do informacji `X-Forwarded
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Aplikacja języka Python z PostgreSQL](tutorial-python-postgresql-app.md)
+> [Samouczek: aplikacja w języku Python z PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Samouczek: Wdróż z repozytorium prywatnego kontenera](tutorial-custom-docker-image.md)
+> [Samouczek: wdrażanie z repozytorium kontenera prywatnego](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
 > [App Service Linux — często zadawane pytania](app-service-linux-faq.md)

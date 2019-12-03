@@ -3,12 +3,12 @@ title: Dane wyjściowe w szablonach
 description: Opisuje sposób definiowania wartości wyjściowych w szablonie Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: b4c652d71436202b9b6e551f9c582e5c98508259
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61120b9941a6a20812ea046265ecbe13014d769e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149187"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689142"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Dane wyjściowe w szablonie Azure Resource Manager
 
@@ -16,7 +16,7 @@ W tym artykule opisano sposób definiowania wartości wyjściowych w szablonie A
 
 ## <a name="define-output-values"></a>Definiowanie wartości wyjściowych
 
-Poniższy przykład pokazuje, jak zwraca identyfikator zasobu dla publicznego adresu IP:
+Poniższy przykład pokazuje, jak zwrócić identyfikator zasobu dla publicznego adresu IP:
 
 ```json
 "outputs": {
@@ -51,7 +51,7 @@ Aby pobrać wartość wyjściową z połączonego szablonu, użyj funkcji [Refer
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Podczas pobierania właściwości danych wyjściowych z dołączonego szablonu, nazwy właściwości nie może zawierać kreskę.
+Podczas pobierania właściwości wyjściowej z połączonego szablonu, nazwa właściwości nie może zawierać kreski.
 
 Poniższy przykład pokazuje, jak ustawić adres IP dla modułu równoważenia obciążenia przez pobranie wartości z połączonego szablonu.
 
@@ -61,7 +61,7 @@ Poniższy przykład pokazuje, jak ustawić adres IP dla modułu równoważenia o
 }
 ```
 
-Nie można użyć `reference` funkcji w danych wyjściowych części [zagnieżdżonych szablonów](resource-group-linked-templates.md#nested-template). Aby zwrócić wartości dla zasobów wdrożonych w zagnieżdżonych szablonów, należy przekonwertować zagnieżdżony szablon do dołączonego szablonu.
+Nie można użyć funkcji `reference` w sekcji dane wyjściowe [szablonu zagnieżdżonego](resource-group-linked-templates.md#nested-template). Aby zwrócić wartości wdrożonego zasobu w zagnieżdżonym szablonie, przekonwertuj zagnieżdżony szablon na połączony szablon.
 
 ## <a name="get-output-values"></a>Pobierz wartości wyjściowe
 
@@ -94,11 +94,10 @@ W poniższych przykładach przedstawiono scenariusze używania danych wyjściowy
 
 |Szablon  |Opis  |
 |---------|---------|
-|[Skopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Tworzy zmienne złożone i wysyła te wartości. Nie należy wdrażać żadnych zasobów. |
-|[Publiczny adres IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Tworzy publiczny adres IP, a następnie generuje identyfikator zasobu. |
-|[Moduł równoważenia obciążenia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Zawiera łącza do Powyższy szablon. Używa Identyfikatora zasobu w danych wyjściowych, podczas tworzenia modułu równoważenia obciążenia. |
+|[Kopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Tworzy złożone zmienne i wyprowadza te wartości. Nie wdraża żadnych zasobów. |
+|[Publiczny adres IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Tworzy publiczny adres IP i wyprowadza identyfikator zasobu. |
+|[Moduł równoważenia obciążenia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Linki do poprzedniego szablonu. Używa identyfikatora zasobu w danych wyjściowych podczas tworzenia modułu równoważenia obciążenia. |
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej o dostępnych właściwościach danych wyjściowych, zobacz [Opis struktury i składni szablonów Azure Resource Manager](resource-group-authoring-templates.md).
-* Aby zapoznać się z zaleceniami dotyczącymi tworzenia danych wyjściowych, zobacz [najlepsze rozwiązania — dane wyjściowe](template-best-practices.md#outputs).

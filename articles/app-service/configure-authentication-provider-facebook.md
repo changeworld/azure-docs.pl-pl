@@ -1,25 +1,16 @@
 ---
-title: Konfigurowanie uwierzytelniania w usłudze Facebook — Azure App Service
-description: Dowiedz się, jak skonfigurować uwierzytelnianie w serwisie Facebook dla aplikacji App Service
-services: app-service
-documentationcenter: ''
-author: mattchenderson
-manager: syntaxc4
-editor: ''
+title: Konfigurowanie uwierzytelniania w usłudze Facebook
+description: Dowiedz się, jak skonfigurować uwierzytelnianie w serwisie Facebook jako dostawcę tożsamości dla aplikacji App Service.
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
-ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: fb8497f3b9b887e2fd06b350bcc25ac8faaa7b43
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: cd9c8a1bab3616b9b4eb1fe97ee3a9b2307ba77b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177009"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671936"
 ---
 # <a name="configure-your-app-service-app-to-use-facebook-login"></a>Konfigurowanie aplikacji App Service do korzystania z logowania w serwisie Facebook
 
@@ -62,7 +53,7 @@ Aby wykonać procedurę opisaną w tym artykule, musisz mieć konto w serwisie F
 1. Zaloguj się do [Azure Portal] i przejdź do aplikacji App Service.
 1. Wybierz pozycję **ustawienia** > **uwierzytelnianie/autoryzacja**i upewnij się, że **App Service uwierzytelnianie** jest **włączone**.
 1. Wybierz pozycję **Facebook**, a następnie wklej wartości w polu Identyfikator aplikacji i klucz tajny aplikacji, które zostały uzyskane wcześniej. Włącz wszystkie zakresy wymagane przez aplikację.
-1. Wybierz **OK**.
+1. Kliknij przycisk **OK**.
 
    ![Zrzut ekranu ustawień serwisu Facebook aplikacji mobilnych][0]
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7097faa64319a46b1efc91233e30ea992d064246
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595126"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687654"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
 
@@ -58,14 +58,14 @@ Użyj poniższego polecenia, aby uruchomić test porównawczy wydajności.
 
 To polecenie uruchamia wzorzec wydajności przez przekazywanie danych testowych do określonego miejsca docelowego. Dane testowe są generowane w pamięci, przekazane do miejsca docelowego, a następnie usuwane z lokalizacji docelowej po zakończeniu testu. Można określić, ile plików ma być generowanych i jakie rozmiary mają być używane przez opcjonalne parametry polecenia.
 
-Aby wyświetlić szczegółowe wskazówki dotyczące tego polecenia, wpisz `azcopy bench -h`, a następnie naciśnij klawisz ENTER.
+Aby wyświetlić szczegółowe wskazówki dotyczące pomocy dla tego polecenia, wpisz `azcopy bench -h` a następnie naciśnij klawisz ENTER.
 
 ### <a name="optimize-throughput"></a>Optymalizowanie przepływności
 
-Możesz użyć flagi `cap-mbps`, aby umieścić górny limit szybkości danych przepływności. Na przykład następujące polecenie powoduje wypróbowanie przepustowości dla `10` megabitów (MB) na sekundę.
+Możesz użyć flagi `cap-mbps`, aby umieścić górną granicę współczynnika danych przepływności. Na przykład następujące polecenie powoduje wypróbowanie przepustowości w `10` megabitów (MB) na sekundę.
 
 ```azcopy
-azcopy cap-mbps 10
+azcopy --cap-mbps 10
 ```
 
 Przepływność może ulec zmniejszeniu podczas przesyłania małych plików. Przepustowość można zwiększyć, ustawiając zmienną środowiskową `AZCOPY_CONCURRENCY_VALUE`. Ta zmienna określa liczbę równoczesnych żądań, które mogą wystąpić.  
@@ -80,7 +80,7 @@ Jeśli komputer ma mniej niż 5 procesorów CPU, wartość tej zmiennej jest ust
 
 Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli wartość jest pusta, można odczytać, która wartość jest używana, przeglądając początek dowolnego pliku dziennika AzCopy. W tym miejscu są raportowane wybrane wartości i powód, w którym została wybrana.
 
-Przed ustawieniem tej zmiennej zalecamy uruchomienie testu porównawczego. Proces testu porównawczego zgłosi zalecaną wartość współbieżności. Alternatywnie, jeśli warunki i ładunki sieciowe różnią się, należy ustawić tę zmienną na słowo `AUTO` zamiast do określonej liczby. Spowoduje to, że AzCopy będzie zawsze uruchamiać ten sam proces dostrajania automatycznego, którego używa w testach porównawczych.
+Przed ustawieniem tej zmiennej zalecamy uruchomienie testu porównawczego. Proces testu porównawczego zgłosi zalecaną wartość współbieżności. Alternatywnie, jeśli warunki i ładunki sieciowe różnią się, należy ustawić tę zmienną na słowo `AUTO` zamiast na określoną liczbę. Spowoduje to, że AzCopy będzie zawsze uruchamiać ten sam proces dostrajania automatycznego, którego używa w testach porównawczych.
 
 ### <a name="optimize-memory-use"></a>Optymalizuj użycie pamięci
 
@@ -97,7 +97,7 @@ Ta wartość jest wyrażana w gigabajtach (GB).
 
 AzCopy tworzy dziennik i planowanie plików dla każdego zadania. Możesz użyć dzienników, aby zbadać i rozwiązać ewentualne potencjalne problemy. 
 
-Dzienniki będą zawierać stan niepowodzenia (`UPLOADFAILED`, `COPYFAILED` i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę niepowodzenia.
+Dzienniki będą zawierać stan niepowodzeń (`UPLOADFAILED`, `COPYFAILED`i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę niepowodzenia.
 
 Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE$\.azcopy` w katalogu systemu Windows lub `$HOME$\.azcopy` na komputerach Mac i Linux, ale można je zmienić w razie potrzeby.
 
@@ -106,7 +106,7 @@ Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE$\
 
 ### <a name="review-the-logs-for-errors"></a>Przejrzyj dzienniki pod kątem błędów
 
-Następujące polecenie spowoduje wyświetlenie wszystkich błędów o stanie `UPLOADFAILED` z dziennika `04dc9ca9-158f-7945-5933-564021086c79`:
+Następujące polecenie spowoduje wyświetlenie wszystkich błędów o stanie `UPLOADFAILED` w dzienniku `04dc9ca9-158f-7945-5933-564021086c79`:
 
 **Windows (program PowerShell)**
 
@@ -181,7 +181,7 @@ Użyj `azcopy env`, aby sprawdzić bieżącą wartość tej zmiennej. Jeśli war
 
 Domyślnie poziom dziennika AzCopy jest ustawiony na `INFO`. Jeśli chcesz zmniejszyć szczegółowość dziennika w celu zaoszczędzenia miejsca na dysku, Zastąp to ustawienie przy użyciu opcji ``--log-level``. 
 
-Dostępne poziomy dzienników to: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` i `FATAL`.
+Dostępne poziomy dzienników to: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC`i `FATAL`.
 
 ## <a name="remove-plan-and-log-files"></a>Usuń pliki planu i dziennika
 

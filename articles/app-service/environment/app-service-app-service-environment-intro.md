@@ -1,32 +1,25 @@
 ---
-title: Wprowadzenie do App Service Environment V1 — Azure
-description: Dowiedz się więcej o funkcji App Service Environment V1, która zapewnia bezpieczną, przyłączoną do sieci wirtualnej, dedykowaną jednostkę skalowania do uruchamiania wszystkich aplikacji.
-services: app-service
-documentationcenter: ''
+title: Wprowadzenie do środowiska ASE v1
+description: Dowiedz się więcej o funkcjach App Service Environment w wersji 1. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 32450d0c5fbb5599b286921b9653ae68faf40ecf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070154"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687359"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Wprowadzenie do App Service Environment v1
 
 > [!NOTE]
 > Ten artykuł dotyczy App Service Environment v1.  Istnieje nowsza wersja App Service Environment ułatwiająca korzystanie z bardziej wydajną infrastrukturą. Aby dowiedzieć się więcej o nowej wersji, Zacznij od [wprowadzenia do App Service Environment](intro.md).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 App Service Environment to opcja planu usługi [Premium][PremiumTier] systemu [Azure App Service](../overview.md) , która zapewnia w pełni izolowane i dedykowane środowisko do bezpiecznego uruchamiania aplikacji Azure App Service na dużą skalę, w tym Web Apps, Mobile Apps i API Apps.  
 
@@ -67,13 +60,13 @@ Aby uzyskać szczegółowe informacje o dostępnych rozmiarach zasobów obliczen
 
 ## <a name="virtual-network-support"></a>Obsługa Virtual Network
 
-App Service Environment można utworzyć w sieci wirtualnej Azure Resource Manager **lub** w sieci wirtualnej klasycznego modelu wdrażania ([więcej informacji na temat sieci wirtualnych][MoreInfoOnVirtualNetworks]).  Ponieważ App Service Environment zawsze istnieje w sieci wirtualnej i dokładniej w podsieci sieci wirtualnej, można użyć funkcji zabezpieczeń sieci wirtualnych do kontrolowania komunikacji przychodzącej i wychodzącej.  
+App Service Environment można **utworzyć w sieci** wirtualnej Azure Resource Manager **lub** w sieci wirtualnej klasycznego modelu wdrażania ([więcej informacji na temat sieci wirtualnych][MoreInfoOnVirtualNetworks]).  Ponieważ App Service Environment zawsze istnieje w sieci wirtualnej i dokładniej w podsieci sieci wirtualnej, można użyć funkcji zabezpieczeń sieci wirtualnych do kontrolowania komunikacji przychodzącej i wychodzącej.  
 
 App Service Environment może być połączona z Internetem za pomocą publicznego adresu IP lub wewnętrznego dołączona tylko do wewnętrznego Load Balancer platformy Azure (ILB).
 
 [Grupy zabezpieczeń sieci][NetworkSecurityGroups] mogą służyć do ograniczania przychodzącej komunikacji sieciowej do podsieci, w której znajduje się App Service Environment.  Dzięki temu można uruchamiać aplikacje znajdujące się za nadrzędnymi urządzeniami i usługami, takimi jak zapory aplikacji internetowych i dostawcy usługi Network SaaS.
 
-Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich jak wewnętrzne bazy danych i usługi internetowe.  Typowym podejściem jest udostępnienie tych punktów końcowych tylko do ruchu w sieci wewnętrznej w sieci wirtualnej platformy Azure.  Gdy App Service Environment jest przyłączona do tej samej sieci wirtualnej co wewnętrzne usługi, aplikacje działające w środowisku mogą uzyskiwać do nich dostęp, w tym punkty [][SiteToSite] końcowe dostępne za pośrednictwem połączeń między lokacjami i [usługi Azure ExpressRoute][ExpressRoute] .
+Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich jak wewnętrzne bazy danych i usługi internetowe.  Typowym podejściem jest udostępnienie tych punktów końcowych tylko do ruchu w sieci wewnętrznej w sieci wirtualnej platformy Azure.  Gdy App Service Environment jest przyłączona do tej samej sieci wirtualnej co wewnętrzne usługi, aplikacje działające w środowisku mogą uzyskiwać do nich dostęp, w tym punkty końcowe dostępne za pośrednictwem połączeń [między lokacjami][SiteToSite] i [usługi Azure ExpressRoute][ExpressRoute] .
 
 Aby uzyskać więcej informacji o tym, jak środowiska App Service współpracują z sieciami wirtualnymi i sieciami lokalnymi, zapoznaj się z następującymi artykułami dotyczącymi [architektury sieci][NetworkArchitectureOverview], [kontrolowania ruchu przychodzącego][ControllingInboundTraffic]i [bezpiecznego łączenia się z][SecurelyConnectingToBackends]zadziałami. 
 

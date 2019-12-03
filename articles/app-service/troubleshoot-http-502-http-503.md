@@ -1,27 +1,18 @@
 ---
-title: Poprawka 502 zła brama, 503 brak niedostępności usługi — Azure App Service | Microsoft Docs
+title: Rozwiązywanie błędów HTTP 502 i HTTP 503
 description: Rozwiązywanie 502 problemów z nieprawidłowym błędem usługi bramy i 503 w aplikacji hostowanej w Azure App Service.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 tags: top-support-issue
 keywords: 502 zła brama, usługa 503 jest niedostępna, błąd 503, błąd 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fdbd77db349eed62af2eb8cf539ef749217a187a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066683"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688324"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Rozwiązywanie problemów z błędami HTTP "502 złej Gateway" i "503 Usługa niedostępna" w Azure App Service
 "502 zła brama" i "503 Usługa niedostępna" to typowe błędy w aplikacji hostowanej w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ten artykuł pomaga rozwiązywać te błędy.
@@ -73,14 +64,14 @@ Aby uzyskać więcej informacji, zobacz:
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Zbieranie danych
+### <a name="2-collect-data"></a>2. Zbierz dane
 #### <a name="use-the-diagnostics-tool"></a>Korzystanie z narzędzia diagnostycznego
 App Service zapewnia inteligentne i interaktywne środowisko ułatwiające rozwiązywanie problemów z aplikacją bez konieczności konfigurowania. Gdy wystąpią problemy z aplikacją, narzędzie diagnostyczne wskaże, co się nie stało, aby poprowadzić Cię do właściwych informacji, aby łatwiej i szybko rozwiązywać problemy oraz rozwiązać ten problem.
 
 Aby uzyskać dostęp do diagnostyki App Service, przejdź do aplikacji App Service lub App Service Environment w [Azure Portal](https://portal.azure.com). W lewym okienku nawigacji kliknij pozycję **Diagnozuj i rozwiąż problemy**.
 
 #### <a name="use-the-kudu-debug-console"></a>Korzystanie z konsoli debugowania kudu
-App Service obejmuje konsolę debugowania, której można użyć do debugowania, eksplorowania, przekazywania plików, a także punktów końcowych JSON do uzyskiwania informacji o środowisku. Jest to nazywane *konsolą kudu* lub pulpitem nawigacyjnym usługi *SCM* dla aplikacji.
+App Service obejmuje konsolę debugowania, której można użyć do debugowania, eksplorowania, przekazywania plików, a także punktów końcowych JSON do uzyskiwania informacji o środowisku. Jest to nazywane *konsolą kudu* lub *pulpitem nawigacyjnym usługi SCM* dla aplikacji.
 
 Możesz uzyskać dostęp do tego pulpitu nawigacyjnego, przechodząc do linku **https://&lt;nazwę aplikacji >. SCM. azurewebsites. NET/** .
 
@@ -97,7 +88,7 @@ Aby uzyskać więcej informacji na temat funkcji dostępnych w programie kudu, z
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Eliminowanie problemu
+### <a name="3-mitigate-the-issue"></a>3. Zmniejsz problem
 #### <a name="scale-the-app"></a>Skalowanie aplikacji
 W Azure App Service, aby zwiększyć wydajność i przepływność, można dostosować skalę, w której jest uruchamiana aplikacja. Skalowanie aplikacji w górę obejmuje dwie powiązane akcje: zmiana planu App Service na wyższą warstwę cenową oraz skonfigurowanie niektórych ustawień po przełączeniu do wyższej warstwy cenowej.
 

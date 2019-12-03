@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 4662e5047e981c74d2422830bc5b152dae738337
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: f4eb275d8e1303ba68a23ac4ea0135c81c6a452a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559314"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672293"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i Konfigurowanie własnego środowiska Integration Runtime
 
@@ -105,6 +105,7 @@ Poniżej znajdują się szczegółowe informacje o parametrach i właściwościa
 | Właściwość                                                    | Opis                                                  | Wymagane |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode** "`<AuthenticationKey>`"                     | Zarejestruj własny węzeł Integration Runtime z określonym kluczem uwierzytelniania. | Nie       |
+| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Zarejestruj własny węzeł Integration Runtime z określonym kluczem uwierzytelniania i nazwą węzła. | Nie       |
 | **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | Włącz dostęp zdalny w bieżącym węźle, aby skonfigurować klaster o wysokiej dostępności. Lub Włącz ustawienia poświadczeń bezpośrednio dla samoobsługowego środowiska IR bez przechodzenia przez Azure Data Factory. Można to zrobić za pomocą polecenia cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** z komputera zdalnego w tej samej sieci. | Nie       |
 | **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Włącz dostęp zdalny do bieżącego węzła, gdy węzeł jest uruchomiony w kontenerze. | Nie       |
 | **DisableRemoteAccess**                                         | Wyłącz dostęp zdalny do bieżącego węzła. Dostęp zdalny jest wymagany w przypadku konfiguracji wielowęzłowej. Polecenie cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** programu PowerShell nadal działa nawet wtedy, gdy dostęp zdalny jest wyłączony. To zachowanie jest prawdziwe, o ile polecenie cmdlet jest wykonywane na tym samym komputerze co węzeł samodzielnego środowiska IR. | Nie       |
@@ -119,7 +120,7 @@ Poniżej znajdują się szczegółowe informacje o parametrach i właściwościa
 | **TurnOnAutoUpdate**                                            | Włącz samoobsługową automatyczną aktualizację środowiska Integration Runtime.        | Nie       |
 | **TurnOffAutoUpdate**                                           | Wyłącz samoobsługową automatyczną aktualizację środowiska Integration Runtime.       | Nie       |
 | **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Ustaw DIAHostService do uruchamiania jako nowe konto. Użyj pustego hasła "" dla kont systemowych i kont wirtualnych. | Nie       |
-| `<logLevel>` **LogLevel**                                       | Ustaw poziom dziennika śledzenia zdarzeń systemu Windows (ETW) na **wyłączony**, **Error**, **verbose**lub **All**. Ta właściwość jest używana głównie przez pomoc techniczna firmy Microsoft inżynierów podczas debugowania instalacji. | Nie       |
+
 
 ## <a name="command-flow-and-data-flow"></a>Przepływ poleceń i przepływ danych
 

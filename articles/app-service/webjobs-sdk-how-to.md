@@ -1,24 +1,17 @@
 ---
-title: Jak używać zestawu SDK WebJobs — Azure
-description: Dowiedz się więcej na temat pisania kodu dla zestawu SDK usługi WebJobs. Tworzenie zadań przetwarzania w tle opartych na zdarzeniach, które uzyskują dostęp do danych w usługach platformy Azure i usługach innych firm.
-services: app-service\web, storage
-documentationcenter: .net
+title: Jak używać zestawu SDK zadań WebJob
+description: Dowiedz się więcej na temat pisania kodu dla zestawu SDK usługi WebJobs. Twórz oparte na zdarzeniach zadania przetwarzania w tle, które uzyskują dostęp do danych na platformie Azure i w usługach innych firm.
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67cd7f82597d306c8bf3c463d11457199aec7277
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815742"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684000"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu SDK Azure WebJobs na potrzeby przetwarzania w tle opartego na zdarzeniach
 
@@ -37,7 +30,7 @@ Jeśli to możliwe, przykłady są dostępne dla obu wersji 3. *x* i wersja 2. *
 > [!NOTE]
 > [Azure Functions](../azure-functions/functions-overview.md) jest oparty na zestawie SDK usługi WebJobs, a w tym artykule znajdują się linki do dokumentacji Azure Functions dla niektórych tematów. Należy pamiętać o następujących różnicach między funkcjami i zestawem SDK zadań WebJob:
 > * Azure Functions wersja 2. *x* odpowiada zestawowi SDK zadań WebJob w wersji 3. *x*i Azure Functions 1. *x* odpowiada zestawowi WebJobs SDK 2. *x*. Repozytoria kodu źródłowego używają numeracji zestawu SDK zadań WebJob.
-> * Przykładowy kod dla bibliotek C# klas Azure Functions jest podobny do kodu zestawu SDK usługi WebJobs, z tą różnicą, że nie jest potrzebny atrybut `FunctionName` w projekcie zestawu SDK zadań WebJob.
+> * Przykładowy kod dla bibliotek C# klas Azure Functions jest podobny do kodu zestawu SDK usługi WebJobs, z wyjątkiem tego, że atrybut `FunctionName` nie jest wymagany w projekcie zestawu SDK zadań WebJob.
 > * Niektóre typy powiązań są obsługiwane tylko w funkcjach, takich jak HTTP (webhook) i Event Grid (które są oparte na protokole HTTP).
 >
 > Aby uzyskać więcej informacji, zobacz [porównanie zestawu SDK WebJobs i Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
@@ -52,7 +45,7 @@ Jest to kluczowa różnica między używaniem zestawu SDK usługi WebJobs i bezp
 
 Zestaw SDK zadań WebJob szuka usługi Azure Storage i Azure Service Bus parametry połączenia w pliku Local. Settings. JSON podczas uruchamiania lokalnego lub w środowisku Zadania WebJob podczas uruchamiania na platformie Azure. Domyślnie jest wymagane ustawienie parametrów połączenia magazynu o nazwie `AzureWebJobsStorage`.  
 
-Wersja 2. *x* zestawu SDK umożliwia korzystanie z własnych nazw dla tych parametrów połączenia lub przechowywanie ich w innym miejscu. Nazwy można ustawić w kodzie przy użyciu [`JobHostConfiguration`], jak pokazano poniżej:
+Wersja 2. *x* zestawu SDK umożliwia korzystanie z własnych nazw dla tych parametrów połączenia lub przechowywanie ich w innym miejscu. Możesz ustawić nazwy w kodzie przy użyciu [`JobHostConfiguration`], jak pokazano poniżej:
 
 ```cs
 static void Main(string[] args)
@@ -109,7 +102,7 @@ static void Main()
 
 #### <a name="version-2x"></a>Wersja 2. *x*
 
-Klasa `JobHostConfiguration` ma metodę `UseDevelopmentSettings`, która umożliwia tryb opracowywania.  Poniższy przykład pokazuje, jak używać ustawień deweloperskich. Aby `config.IsDevelopment` zwrócić `true`, gdy działa lokalnie, ustaw lokalną zmienną środowiskową o nazwie `AzureWebJobsEnv` z wartością `Development`.
+Klasa `JobHostConfiguration` ma metodę `UseDevelopmentSettings`, która umożliwia tryb opracowywania.  Poniższy przykład pokazuje, jak używać ustawień deweloperskich. Aby `config.IsDevelopment` zwracać `true` uruchomione lokalnie, należy ustawić zmienną środowiskową Local o nazwie `AzureWebJobsEnv` z wartością `Development`.
 
 ```cs
 static void Main()
@@ -132,11 +125,11 @@ W wersji 3. *x*, połączenie jest ograniczone do nieskończonych połączeń. J
 
 W wersji 2. *x*, można kontrolować liczbę jednoczesnych połączeń z hostem przy użyciu interfejsu API [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) . W 2. *x*, należy zwiększyć tę wartość z wartości domyślnej 2 przed uruchomieniem hosta zadań WebJob.
 
-Wszystkie wychodzące żądania HTTP wprowadzane z funkcji za pomocą przepływu `HttpClient` za pośrednictwem `ServicePointManager`. Po osiągnięciu wartości ustawionej w `DefaultConnectionLimit`, `ServicePointManager` uruchamia kolejkowanie żądań przed ich wysłaniem. Załóżmy, że `DefaultConnectionLimit` jest ustawiona na 2, a kod wykonuje żądania HTTP 1 000. Początkowo do systemu operacyjnego są dozwolone tylko dwa żądania. Pozostałe 998 są umieszczane w kolejce do momentu. Oznacza to, że `HttpClient` może przekroczyć limit czasu, ponieważ wydaje się to żądanie, ale żądanie nigdy nie zostało wysłane przez system operacyjny do serwera docelowego. Może być widoczne zachowanie, które nie ma sensu: lokalny `HttpClient` trwa 10 sekund, aby zakończyć żądanie, ale usługa zwraca każde żądanie w 200 ms. 
+Wszystkie wychodzące żądania HTTP wprowadzane z funkcji za pomocą przepływu `HttpClient` przez `ServicePointManager`. Po osiągnięciu wartości ustawionej w `DefaultConnectionLimit``ServicePointManager` zacznie kolejkować żądania przed ich wysłaniem. Załóżmy, że `DefaultConnectionLimit` jest ustawiona na 2, a kod wykonuje żądania HTTP 1 000. Początkowo do systemu operacyjnego są dozwolone tylko dwa żądania. Pozostałe 998 są umieszczane w kolejce do momentu. Oznacza to, że `HttpClient` może przekroczyć limit czasu, ponieważ wydaje się to żądanie, ale żądanie nigdy nie zostało wysłane przez system operacyjny do serwera docelowego. Może być widoczne zachowanie, które nie ma sensu: lokalny `HttpClient` trwa 10 sekund, aby zakończyć żądanie, ale usługa zwraca każde żądanie w 200 ms. 
 
-Wartość domyślna dla aplikacji ASP.NET to `Int32.MaxValue` i prawdopodobnie dobrze działa w przypadku zadań WebJob uruchomionych w planie App Service w warstwie Podstawowa lub wyższa. Zadania WebJob zazwyczaj potrzebują ustawienia zawsze włączone i są obsługiwane tylko przez plany App Service w warstwach Podstawowa i wyższa.
+Wartość domyślna dla aplikacji ASP.NET jest `Int32.MaxValue`i prawdopodobnie dobrze działa w przypadku zadań WebJob uruchomionych w planie App Service w warstwie Podstawowa lub wyższa. Zadania WebJob zazwyczaj potrzebują ustawienia zawsze włączone i są obsługiwane tylko przez plany App Service w warstwach Podstawowa i wyższa.
 
-Jeśli zadanie WebJob działa w ramach planu App Service bezpłatna lub współdzielona, aplikacja zostanie ograniczona przez piaskownicę App Service, która ma [limit połączeń 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits). W przypadku niepowiązanego limitu połączeń w `ServicePointManager` jest to bardziej możliwe, że próg połączenia piaskownicy zostanie osiągnięty, a lokacja zostanie zamknięta. W takim przypadku ustawienie wartości `DefaultConnectionLimit` na wartość niższą, na przykład 50 lub 100, może uniemożliwić takie działanie i nadal zapewniać wystarczającą przepływność.
+Jeśli zadanie WebJob działa w ramach planu App Service bezpłatna lub współdzielona, aplikacja zostanie ograniczona przez piaskownicę App Service, która ma [limit połączeń 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits). Z niezwiązanym limitem połączeń w `ServicePointManager`jest to bardziej możliwe, że próg połączenia piaskownicy zostanie osiągnięty, a lokacja zostanie zamknięta. W takim przypadku ustawienie `DefaultConnectionLimit` na wartość niższą, na przykład 50 lub 100, może uniemożliwić takie działanie i nadal zapewniać wystarczającą przepływność.
 
 Ustawienie musi być skonfigurowane przed wykonaniem jakichkolwiek żądań HTTP. Z tego powodu Host zadań WebJob nie powinien automatycznie zmieniać ustawienia. Mogą istnieć żądania HTTP, które wystąpiły przed uruchomieniem hosta, co może prowadzić do nieoczekiwanego zachowania. Najlepszym rozwiązaniem jest ustawienie wartości bezpośrednio w metodzie `Main` przed zainicjowaniem `JobHost`, jak pokazano poniżej:
 
@@ -169,13 +162,13 @@ public static void Run(
 }
 ```
 
-Atrybut `QueueTrigger` informuje środowisko uruchomieniowe o wywołaniu funkcji za każdym razem, gdy w kolejce `myqueue-items` zostanie wyświetlony komunikat w kolejce. Atrybut `Blob` instruuje środowisko uruchomieniowe, aby używało komunikatu kolejki do odczytu obiektu BLOB w kontenerze *przykładowych elementów roboczych* . Zawartość komunikatu w kolejce, która została przeniesiona do funkcji w `myQueueItem` parametru, jest nazwą obiektu BLOB.
+Atrybut `QueueTrigger` informuje środowisko uruchomieniowe o wywołaniu funkcji za każdym razem, gdy w kolejce `myqueue-items` zostanie wyświetlony komunikat kolejki. Atrybut `Blob` informuje środowisko uruchomieniowe, aby używało komunikatu kolejki do odczytu obiektu BLOB w kontenerze *przykładowych elementów roboczych* . Zawartość komunikatu w kolejce, która została przeniesiona do funkcji w `myQueueItem` parametr, jest nazwą obiektu BLOB.
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ### <a name="manual-triggers"></a>Wyzwalacze ręczne
 
-Aby ręcznie wyzwolić funkcję, należy użyć atrybutu `NoAutomaticTrigger`, jak pokazano poniżej:
+Aby ręcznie wyzwolić funkcję, Użyj atrybutu `NoAutomaticTrigger`, jak pokazano poniżej:
 
 ```cs
 [NoAutomaticTrigger]
@@ -259,7 +252,7 @@ static void Main()
 }
 ```
 
-Aby użyć innych typów wyzwalacza i powiązania, zainstaluj pakiet NuGet, który go zawiera, i Wywołaj metodę rozszerzenia `Add<binding>` zaimplementowaną w rozszerzeniu. Na przykład jeśli chcesz użyć powiązania Azure Cosmos DB, zainstaluj `Microsoft.Azure.WebJobs.Extensions.CosmosDB` i Wywołaj `AddCosmosDB`, tak jak to:
+Aby użyć innych typów wyzwalacza i powiązania, zainstaluj pakiet NuGet, który go zawiera, i Wywołaj metodę rozszerzenia `Add<binding>` zaimplementowaną w rozszerzeniu. Na przykład jeśli chcesz użyć powiązania Azure Cosmos DB, zainstaluj `Microsoft.Azure.WebJobs.Extensions.CosmosDB` i Wywołaj `AddCosmosDB`w następujący sposób:
 
 ```cs
 static void Main()
@@ -284,11 +277,11 @@ Aby użyć wyzwalacza czasomierza lub powiązania plików, które są częścią
 
 Te wyzwalacze i typy powiązań są zawarte w wersji 2. *x* pakietu `Microsoft.Azure.WebJobs`:
 
-* Blob Storage
+* Magazyn obiektów Blob
 * Queue Storage
 * Table Storage
 
-Aby użyć innych typów wyzwalacza i powiązania, zainstaluj pakiet NuGet, który go zawiera, i Wywołaj metodę `Use<binding>` w obiekcie `JobHostConfiguration`. Na przykład jeśli chcesz użyć wyzwalacza czasomierza, zainstaluj `Microsoft.Azure.WebJobs.Extensions` i Wywołaj `UseTimers` w metodzie `Main`, jak pokazano poniżej:
+Aby użyć innych typów wyzwalacza i powiązania, zainstaluj pakiet NuGet, który go zawiera, i Wywołaj metodę `Use<binding>` na obiekcie `JobHostConfiguration`. Na przykład jeśli chcesz użyć wyzwalacza czasomierza, zainstaluj `Microsoft.Azure.WebJobs.Extensions` i Wywołaj `UseTimers` w metodzie `Main`, jak pokazano poniżej:
 
 ```cs
 static void Main()
@@ -580,7 +573,7 @@ static void Main()
 
 ## <a name="binding-expressions"></a>Wyrażenia powiązań
 
-W parametrach konstruktora atrybutów można używać wyrażeń, które są rozpoznawane jako wartości z różnych źródeł. Na przykład, w poniższym kodzie, ścieżka dla atrybutu `BlobTrigger` tworzy wyrażenie o nazwie `filename`. Gdy jest używany dla powiązania danych wyjściowych, `filename` jest rozpoznawana jako nazwa wyzwalającego obiektu BLOB.
+W parametrach konstruktora atrybutów można używać wyrażeń, które są rozpoznawane jako wartości z różnych źródeł. Na przykład, w poniższym kodzie, ścieżka `BlobTrigger` atrybutu tworzy wyrażenie o nazwie `filename`. Gdy jest używany dla powiązania danych wyjściowych, `filename` jest rozpoznawana jako nazwa wyzwalającego obiektu BLOB.
 
 ```cs
 public static void CreateThumbnail(
@@ -600,7 +593,7 @@ Aby uzyskać więcej informacji na temat powiązań wyrażeń, zobacz temat [pow
 
 Czasami chcesz określić nazwę kolejki, nazwę obiektu BLOB lub kontener albo nazwę tabeli w kodzie, a nie kodowanie twarde. Na przykład możesz chcieć określić nazwę kolejki dla atrybutu `QueueTrigger` w pliku konfiguracyjnym lub zmiennej środowiskowej.
 
-Można to zrobić, przekazując obiekt `NameResolver` do obiektu `JobHostConfiguration`. Należy uwzględnić symbole zastępcze w wyzwalaczu lub parametrach konstruktora atrybutu powiązania, a kod `NameResolver` udostępnia rzeczywiste wartości używane zamiast tych symboli zastępczych. Symbole zastępcze można identyfikować, otaczając je z wartością procentową (%) znaki, jak pokazano poniżej:
+Można to zrobić, przekazując obiekt `NameResolver` w do obiektu `JobHostConfiguration`. Należy uwzględnić symbole zastępcze w wyzwalaczu lub parametrach konstruktora atrybutu powiązania, a kod `NameResolver` udostępnia rzeczywiste wartości, które będą używane zamiast tych symboli zastępczych. Symbole zastępcze można identyfikować, otaczając je z wartością procentową (%) znaki, jak pokazano poniżej:
 
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
@@ -609,11 +602,11 @@ public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 }
 ```
 
-Ten kod umożliwia używanie kolejki o nazwie `logqueuetest` w środowisku testowym i jednego o nazwie `logqueueprod` w produkcji. Zamiast zakodowanej nazwy kolejki należy określić nazwę wpisu w kolekcji `appSettings`.
+Ten kod umożliwia używanie kolejki o nazwie `logqueuetest` w środowisku testowym i jednego o nazwie `logqueueprod` w produkcji. Zamiast kodowanej nazwy kolejki należy określić nazwę wpisu w kolekcji `appSettings`.
 
-Istnieje domyślna `NameResolver`, która obowiązuje, jeśli nie podajesz niestandardowego. Wartość domyślna pobiera wartości z ustawień aplikacji lub zmiennych środowiskowych.
+Istnieje domyślna `NameResolver`, która obowiązuje, jeśli nie podano niestandardowego. Wartość domyślna pobiera wartości z ustawień aplikacji lub zmiennych środowiskowych.
 
-Klasa `NameResolver` pobiera nazwę kolejki z `appSettings`, jak pokazano poniżej:
+Klasa `NameResolver` Pobiera nazwę kolejki z `appSettings`, jak pokazano poniżej:
 
 ```cs
 public class CustomNameResolver : INameResolver
@@ -633,7 +626,7 @@ Program rozpoznawania nazw można skonfigurować przy użyciu iniekcji zależno�
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-Aby dodać program rozpoznawania nazw, należy wywołać metodę rozszerzenia [`ConfigureServices`] na [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder), jak w poniższym przykładzie:
+Aby dodać program rozpoznawania nazw, należy wywołać metodę [`ConfigureServices`] extension na [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder), jak w poniższym przykładzie:
 
 ```cs
 static async Task Main(string[] args)
@@ -655,7 +648,7 @@ static async Task Main(string[] args)
 
 #### <a name="version-2x"></a>Wersja 2. *x*
 
-Przekaż `NameResolver` klasy do obiektu `JobHost`, jak pokazano poniżej:
+Przekaż klasę `NameResolver` do obiektu `JobHost`, jak pokazano poniżej:
 
 ```cs
  static void Main(string[] args)
@@ -667,11 +660,11 @@ Przekaż `NameResolver` klasy do obiektu `JobHost`, jak pokazano poniżej:
 }
 ```
 
-Azure Functions implementuje `INameResolver` w celu uzyskania wartości z ustawień aplikacji, jak pokazano w przykładzie. Korzystając z zestawu SDK usługi WebJobs bezpośrednio, można napisać implementację niestandardową, która pobiera zastępcze wartości zamienne z dowolnego źródła, którego wolisz.
+Azure Functions implementuje `INameResolver`, aby uzyskać wartości z ustawień aplikacji, jak pokazano w przykładzie. Korzystając z zestawu SDK usługi WebJobs bezpośrednio, można napisać implementację niestandardową, która pobiera zastępcze wartości zamienne z dowolnego źródła, którego wolisz.
 
 ## <a name="binding-at-runtime"></a>Powiązanie w czasie wykonywania
 
-Jeśli trzeba wykonać pewne czynności w funkcji przed użyciem atrybutu powiązania, takiego jak `Queue`, `Blob` lub `Table`, można użyć interfejsu `IBinder`.
+Jeśli przed użyciem atrybutu powiązania, takiego jak `Queue`, `Blob`lub `Table`, należy wykonać pewne czynności w funkcji, możesz użyć interfejsu `IBinder`.
 
 Poniższy przykład przyjmuje komunikat w kolejce wejściowej i tworzy nowy komunikat z tą samą zawartością w kolejce wyjściowej. Nazwa kolejki wyjściowej jest ustawiana przez kod w treści funkcji.
 
@@ -721,7 +714,7 @@ Ten atrybut może być zadeklarowany na poziomie parametru, metody lub klasy. Na
 
 ## <a name="timeout-attribute"></a>Atrybut timeout
 
-Atrybut [`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) powoduje, że funkcja zostanie anulowana, jeśli nie zakończy się w określonym czasie. W poniższym przykładzie funkcja będzie uruchamiana przez jeden dzień bez atrybutu timeout. Limit czasu powoduje, że funkcja jest anulowana po 15 sekundach.
+Atrybut [`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) powoduje anulowanie funkcji, jeśli nie zakończy się w określonym czasie. W poniższym przykładzie funkcja będzie uruchamiana przez jeden dzień bez atrybutu timeout. Limit czasu powoduje, że funkcja jest anulowana po 15 sekundach.
 
 ```cs
 [Timeout("00:00:15")]
@@ -756,9 +749,9 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 
 Niektóre wyzwalacze mają wbudowaną obsługę zarządzania współbieżnością:
 
-* **QueueTrigger**. Ustaw wartość `JobHostConfiguration.Queues.BatchSize` na `1`.
-* **ServiceBusTrigger**. Ustaw wartość `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` na `1`.
-* **FileTrigger**. Ustaw wartość `FileProcessor.MaxDegreeOfParallelism` na `1`.
+* **QueueTrigger**. Ustaw `JobHostConfiguration.Queues.BatchSize` na `1`.
+* **ServiceBusTrigger**. Ustaw `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` na `1`.
+* **FileTrigger**. Ustaw `FileProcessor.MaxDegreeOfParallelism` na `1`.
 
 Możesz użyć tych ustawień, aby upewnić się, że funkcja działa jako pojedyncza w jednym wystąpieniu. Aby upewnić się, że tylko jedno wystąpienie funkcji jest uruchomione, gdy aplikacja sieci Web jest skalowana do wielu wystąpień, Zastosuj jednokrotną blokadę na poziomie odbiornika dla funkcji (`[Singleton(Mode = SingletonMode.Listener)]`). Blokady odbiorników są uzyskiwane po rozpoczęciu JobHost. Jeśli trzy wystąpienia skalowania w poziomie są uruchamiane w tym samym czasie, tylko jedno z wystąpień uzyskuje blokadę i rozpocznie się tylko jeden odbiornik.
 
@@ -784,7 +777,7 @@ public class WorkItem
 
 ### <a name="singletonscopehost"></a>SingletonScope. host
 
-Domyślnym zakresem blokady jest `SingletonScope.Function`, co oznacza, że zakres blokady (ścieżka dzierżawy obiektu BLOB) jest powiązany z w pełni kwalifikowaną nazwą funkcji. Aby zablokować funkcje, określ `SingletonScope.Host` i użyj nazwy identyfikatora zakresu, która jest taka sama we wszystkich funkcjach, których nie chcesz uruchamiać jednocześnie. W poniższym przykładzie tylko jedno wystąpienie `AddItem` lub `RemoveItem` uruchamiane jednocześnie:
+Domyślnym zakresem blokady jest `SingletonScope.Function`, co oznacza, że zakres blokady (ścieżka dzierżawy obiektu BLOB) jest powiązany z w pełni kwalifikowaną nazwą funkcji. Aby zablokować funkcje, określ `SingletonScope.Host` i użyj nazwy identyfikatora zakresu, która jest taka sama we wszystkich funkcjach, których nie chcesz uruchamiać jednocześnie. W poniższym przykładzie tylko jedno wystąpienie `AddItem` lub `RemoveItem` jest uruchamiane jednocześnie:
 
 ```csharp
 [Singleton("ItemsLock", SingletonScope.Host)]
@@ -834,21 +827,21 @@ Zalecamy platformę rejestrowania opracowaną dla ASP.NET. W artykule [wprowadze
 
 Każdy dziennik utworzony przez wystąpienie `ILogger` ma skojarzoną `Category` i `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) jest wyliczeniem, a kod liczby całkowitej wskazuje na ważność względną:
 
-|LogLevel    |Kod|
+|logLevel    |Kod|
 |------------|---|
-|Szuka       | 0 |
+|Ślad       | 0 |
 |Debugowanie       | 1 |
 |Informacje | 2 |
 |Ostrzeżenie     | 3 |
 |Błąd       | 4 |
-|Krytyczny    | 5 |
+|Krytyczna    | 5 |
 |Brak        | 6 |
 
-Można niezależnie filtrować każdą kategorię do określonego [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Na przykład możesz chcieć zobaczyć wszystkie dzienniki dla przetwarzania wyzwalacza obiektów blob, ale tylko `Error` i więcej dla wszystkiego innego.
+Można niezależnie filtrować każdą kategorię do określonego [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Na przykład możesz chcieć zobaczyć wszystkie dzienniki przetwarzania wyzwalacza obiektów blob, ale tylko `Error` i nowsze dla wszystkiego innego.
 
 #### <a name="version-3x"></a>Wersja 3. *x*
 
-Wersja 3. *x* zestawu SDK opiera się na filtrowaniu opartym na platformie .NET Core. Klasa `LogCategories` umożliwia definiowanie kategorii dla określonych funkcji, wyzwalaczy lub użytkowników. Definiuje również filtry dla określonych stanów hosta, takich jak `Startup` i `Results`. Dzięki temu można dostosować dane wyjściowe rejestrowania. Jeśli nie odnaleziono dopasowania w określonych kategoriach, filtr powraca do wartości `Default` podczas decydowania o tym, czy ma być filtrowany komunikat.
+Wersja 3. *x* zestawu SDK opiera się na filtrowaniu opartym na platformie .NET Core. Klasa `LogCategories` umożliwia definiowanie kategorii dla określonych funkcji, wyzwalaczy lub użytkowników. Definiuje również filtry dla określonych stanów hosta, takich jak `Startup` i `Results`. Dzięki temu można dostosować dane wyjściowe rejestrowania. Jeśli nie odnaleziono dopasowania w określonych kategoriach, filtr powraca do wartości `Default` podczas decydowania, czy należy filtrować komunikat.
 
 `LogCategories` wymaga następującej instrukcji using:
 
@@ -856,7 +849,7 @@ Wersja 3. *x* zestawu SDK opiera się na filtrowaniu opartym na platformie .NET 
 using Microsoft.Azure.WebJobs.Logging; 
 ```
 
-Poniższy przykład konstruuje filtr, który domyślnie filtruje wszystkie dzienniki na poziomie `Warning`. Kategorie `Function` i `results` (równoważne `Host.Results` w wersji 2. *x*) są filtrowane na poziomie `Error`. Filtr porównuje bieżącą kategorię ze wszystkimi zarejestrowanymi poziomami w wystąpieniu `LogCategories` i wybiera najdłuższe dopasowanie. Oznacza to, że poziom `Debug` zarejestrowano dla `Host.Triggers` dopasowuje `Host.Triggers.Queue` lub `Host.Triggers.Blob`. Dzięki temu można kontrolować szersze kategorie bez konieczności dodawania każdej z nich.
+Poniższy przykład konstruuje filtr, który domyślnie filtruje wszystkie dzienniki na poziomie `Warning`. Kategorie `Function` i `results` (równoważne `Host.Results` w wersji 2. *x*) są filtrowane na poziomie `Error`. Filtr porównuje bieżącą kategorię ze wszystkimi zarejestrowanymi poziomami w wystąpieniu `LogCategories` i wybiera najdłuższe dopasowanie. Oznacza to, że poziom `Debug` zarejestrowany dla `Host.Triggers` pasuje do `Host.Triggers.Queue` lub `Host.Triggers.Blob`. Dzięki temu można kontrolować szersze kategorie bez konieczności dodawania każdej z nich.
 
 ```cs
 static async Task Main(string[] args)
@@ -885,11 +878,11 @@ static async Task Main(string[] args)
 
 #### <a name="version-2x"></a>Wersja 2. *x*
 
-W wersji 2. *x* zestawu SDK, aby kontrolować filtrowanie, należy użyć klasy `LogCategoryFilter`. @No__t-0 ma właściwość `Default` z początkową wartością `Information`, co oznacza, że wszystkie komunikaty na poziomach `Information`, `Warning`, `Error` lub `Critical` są rejestrowane, ale wszystkie komunikaty na poziomach `Debug` lub `Trace` są odfiltrowane.
+W wersji 2. *x* zestawu SDK, użyj klasy `LogCategoryFilter` do kontrolowania filtrowania. `LogCategoryFilter` ma właściwość `Default` z początkową wartością `Information`, co oznacza, że wszystkie komunikaty na poziomach `Information`, `Warning`, `Error`lub `Critical` są rejestrowane, ale wszystkie komunikaty na poziomie `Debug` lub `Trace` są odfiltrowane.
 
-Podobnie jak w przypadku `LogCategories` w wersji 3. *x*, właściwość `CategoryLevels` umożliwia określenie poziomów dzienników dla określonych kategorii, dzięki czemu można dostosować rejestrowanie danych wyjściowych. Jeśli w słowniku `CategoryLevels` nie zostanie znaleziony żaden odpowiednik, filtr powróci do wartości `Default` podczas decydowania o tym, czy ma być filtrowany komunikat.
+Tak jak w przypadku `LogCategories` w wersji 3. *x*, właściwość `CategoryLevels` umożliwia określenie poziomów dzienników dla określonych kategorii, dzięki czemu można dostosować rejestrowanie danych wyjściowych. Jeśli w słowniku `CategoryLevels` nie zostanie znaleziony żaden odpowiednik, filtr powróci do wartości `Default` podczas decydowania o tym, czy ma być filtrowany komunikat.
 
-Poniższy przykład tworzy filtr, który domyślnie filtruje wszystkie dzienniki na poziomie `Warning`. Kategorie `Function` i `Host.Results` są filtrowane na poziomie `Error`. @No__t-0 porównuje bieżącą kategorię ze wszystkimi zarejestrowanymi `CategoryLevels` i wybiera najdłuższe dopasowanie. Tak więc poziom `Debug` zarejestrowano dla `Host.Triggers` będzie zgodny z `Host.Triggers.Queue` lub `Host.Triggers.Blob`. Dzięki temu można kontrolować szersze kategorie bez konieczności dodawania każdej z nich.
+Poniższy przykład tworzy filtr, który domyślnie filtruje wszystkie dzienniki na poziomie `Warning`. Kategorie `Function` i `Host.Results` są filtrowane na poziomie `Error`. `LogCategoryFilter` porównuje bieżącą kategorię ze wszystkimi zarejestrowanymi `CategoryLevels` i wybiera najdłuższe dopasowanie. Tak więc poziom `Debug` zarejestrowany dla `Host.Triggers` będzie pasował do `Host.Triggers.Queue` lub `Host.Triggers.Blob`. Dzięki temu można kontrolować szersze kategorie bez konieczności dodawania każdej z nich.
 
 ```csharp
 var filter = new LogCategoryFilter();
@@ -916,7 +909,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Channel;
 ```
 
-Następująca implementacja niestandardowa [`ITelemetryInitializer`] umożliwia dodanie własnego [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) do domyślnego [`TelemetryConfiguration`].
+Następująca niestandardowa implementacja [`ITelemetryInitializer`] umożliwia dodanie własnych [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) do [`TelemetryConfiguration`]domyślnej.
 
 ```cs
 internal class CustomTelemetryInitializer : ITelemetryInitializer
@@ -964,17 +957,17 @@ static void Main()
 }
 ```
 
-W przypadku skonstruowania [`TelemetryConfiguration`] są uwzględniane wszystkie zarejestrowane typy [`ITelemetryInitializer`] . Aby dowiedzieć się więcej, zobacz [Application INSIGHTS API dla niestandardowych zdarzeń i metryk](../azure-monitor/app/api-custom-events-metrics.md).
+Podczas konstruowania [`TelemetryConfiguration`] są uwzględniane wszystkie zarejestrowane typy [`ITelemetryInitializer`] . Aby dowiedzieć się więcej, zobacz [Application INSIGHTS API dla niestandardowych zdarzeń i metryk](../azure-monitor/app/api-custom-events-metrics.md).
 
-W wersji 3. *x*, nie trzeba już opróżniać [`TelemetryClient`] , gdy host zostanie zatrzymany. System wstrzykiwania zależności platformy .NET Core automatycznie usuwa zarejestrowaną `ApplicationInsightsLoggerProvider`, która opróżnia [`TelemetryClient`].
+W wersji 3. *x*, nie trzeba już opróżniać [`TelemetryClient`] po zatrzymaniu hosta. System wstrzykiwania zależności .NET Core automatycznie usuwa zarejestrowany `ApplicationInsightsLoggerProvider`, który opróżnia [`TelemetryClient`].
 
 #### <a name="version-2x"></a>Wersja 2. *x*
 
-W wersji 2. *x*, [`TelemetryClient`] utworzone wewnętrznie przez dostawcę Application Insights dla zestawu SDK usługi WebJobs używa [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Gdy punkt końcowy Application Insights jest niedostępny lub ogranicza żądania przychodzące, ten kanał [zapisuje żądania w systemie plików aplikacji sieci Web i ponownie przesyła je później](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+W wersji 2. *x* [`TelemetryClient`] utworzone wewnętrznie przez dostawcę Application Insights dla zestawu SDK usługi WebJobs używają [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Gdy punkt końcowy Application Insights jest niedostępny lub ogranicza żądania przychodzące, ten kanał [zapisuje żądania w systemie plików aplikacji sieci Web i ponownie przesyła je później](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-[@No__t-1] jest tworzony przez klasę implementującą `ITelemetryClientFactory`. Domyślnie jest to [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+[`TelemetryClient`] jest tworzony przez klasę implementującą `ITelemetryClientFactory`. Domyślnie jest to [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
 
-Jeśli chcesz zmodyfikować dowolną część potoku Application Insights, możesz podać swój własny `ITelemetryClientFactory`, a host użyje klasy do konstruowania [`TelemetryClient`]. Na przykład ten kod przesłania `DefaultTelemetryClientFactory` w celu zmodyfikowania właściwości `ServerTelemetryChannel`:
+Jeśli chcesz zmodyfikować dowolną część potoku Application Insights, możesz podać swój własny `ITelemetryClientFactory`, a host będzie używać klasy do konstruowania [`TelemetryClient`]. Na przykład ten kod zastępuje `DefaultTelemetryClientFactory`, aby zmodyfikować właściwość `ServerTelemetryChannel`:
 
 ```csharp
 private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory

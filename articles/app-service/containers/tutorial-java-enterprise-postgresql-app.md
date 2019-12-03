@@ -1,24 +1,20 @@
 ---
-title: Tworzenie aplikacji internetowej języka Java Enterprise w systemie Linux — Azure App Service | Microsoft Docs
-description: Dowiedz się, jak uruchomić aplikację języka Java Enterprise na serwerze Wildfly w usłudze Azure App Service w systemie Linux.
+title: 'Samouczek: aplikacja Java Enterprise w systemie Linux'
+description: Dowiedz się, jak uzyskać aplikację Java Enterprise działającą w usłudze Azure App Service Wildfly w systemie Linux przy użyciu połączenia z bazą danych PostgreSQL na platformie Azure.
 author: JasonFreeberg
-manager: routlaw
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2d26d9e145030e5972289c224dc2f76078d67527
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 84f22d52e9a92707a26a4e64f194e82cca87757d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498479"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687437"
 ---
-# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Samouczek: Tworzenie aplikacji internetowej języka Java EE korzystającej z bazy danych Postgres na platformie Azure
+# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka Java EE korzystającej z bazy danych Postgres na platformie Azure
 
 W tym samouczku pokazano, jak utworzyć aplikację sieci Web Java Enterprise Edition (EE) na Azure App Service i połączyć ją z bazą danych Postgres. Po ukończeniu tego samouczka będziesz mieć działającą w usłudze [Azure App Service dla systemu Linux](app-service-linux-intro.md) aplikację [WildFly](https://www.wildfly.org/about/), która umożliwia przechowywanie danych w usłudze [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/).
 
@@ -96,7 +92,7 @@ Po zakończeniu wdrażania przejdź do następnego kroku.
 
 ### <a name="create-a-record"></a>Tworzenie rekordu
 
-Otwórz przeglądarkę i przejdź do `https://<your_app_name>.azurewebsites.net/`. Gratulacje! Udało Ci się wdrożyć aplikację języka Java EE w usłudze Azure App Service.
+Otwórz przeglądarkę i przejdź pod adres `https://<your_app_name>.azurewebsites.net/`. Gratulacje! Udało Ci się wdrożyć aplikację języka Java EE w usłudze Azure App Service.
 
 Aktualnie aplikacja korzysta z bazy danych H2 w pamięci. Aby utworzyć nową kategorię, kliknij pozycję „admin” (Administrator) na pasku nawigacyjnym. Ponowne uruchomienie wystąpienia usługi App Service spowoduje utratę rekordu w bazie danych w pamięci. W poniższych krokach rozwiążemy ten problem, aprowizując bazę danych Postgres na platformie Azure i konfigurując serwer WildFly pod kątem używania tej bazy danych.
 
@@ -169,8 +165,8 @@ Aby skonfigurować serwer, potrzebne będą cztery pliki w *wildfly_config/* kat
 
 - **postgresql-42.2.5.jar**: ten plik JAR jest sterownikiem JDBC dla bazy danych Postgres. Więcej informacji można znaleźć na [oficjalnej witrynie](https://jdbc.postgresql.org/index.html).
 - **postgres-module.xml**: ten plik XML służy do deklarowania nazwy modułu Postgres (org.postgres). Umożliwia on również wskazanie zasobów i zależności niezbędnych do korzystania z tego modułu.
-- **jboss_cli_commands. CLI**: ten plik zawiera polecenia konfiguracji, które zostaną wykonane w interfejsie wiersza polecenia oprogramowania JBoss. Polecenia te pozwalają na przykład dodać moduł Postgres do serwera aplikacji WildFly, podać poświadczenia, zadeklarować nazwę JNDI i ustawić próg limitu czasu. Jeśli nie znasz dobrze interfejsu wiersza polecenia oprogramowania JBoss, zapoznaj się z [oficjalną dokumentacją](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- **startup_script.sh**: ten skrypt powłoki jest wykonywany przy każdym uruchomieniu wystąpienia usługi App Service. Skrypt wykonuje tylko jedną funkcję: przeprzewody poleceń z *jboss_cli_commands. CLI* do interfejsu wiersza polecenia JBoss.
+- **jboss_cli_commands. CLI**: ten plik zawiera polecenia konfiguracyjne, które zostaną wykonane przez interfejs wiersza polecenia JBoss. Polecenia dodają moduł Postgres do serwera aplikacji WildFly, podaj poświadczenia, zadeklaruj nazwę JNDI, ustaw próg limitu czasu itd. Jeśli nie znasz interfejsu wiersza polecenia JBoss, zapoznaj się z [oficjalną dokumentacją](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
+- **startup_script.sh**: ten skrypt powłoki jest wykonywany przy każdym uruchomieniu wystąpienia usługi App Service. Skrypt wykonuje tylko jedną funkcję: potoku poleceń w *jboss_cli_commands. CLI* do interfejsu wiersza polecenia JBoss.
 
 Zdecydowanie zalecamy zapoznanie się z zawartością tych plików, zwłaszcza pliku *jboss_cli_commands.cli*.
 
@@ -182,7 +178,7 @@ Za pomocą wybranego przez siebie narzędzia FTP Przenieś cztery pliki w *wildf
 
 ### <a name="finalize-app-service"></a>Finalizowanie usługi App Service
 
-W bloku usługi App Service przejdź do panelu „Ustawienia aplikacji”. W obszarze "środowisko uruchomieniowe" Ustaw wartość pola "plik startowy" na */Home/site/Deployments/Tools/startup_script.sh*. Gwarantuje to uruchomienie skryptu powłoki po utworzeniu wystąpienia usługi App Service, ale przed uruchomieniem serwera WildFly.
+W bloku usługi App Service przejdź do panelu „Ustawienia aplikacji”. W obszarze "środowisko uruchomieniowe" Ustaw wartość pola "plik startowy" na */home/site/deployments/tools/startup_script. sh*. Dzięki temu skrypt powłoki zostanie uruchomiony po utworzeniu wystąpienia App Service, ale przed uruchomieniem serwera WildFly.
 
 Na koniec uruchom ponownie usługę App Service. Przycisk znajduje się w panelu „Przegląd”.
 
@@ -218,7 +214,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)
+> [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)
 
 Lub zapoznaj się z innymi zasobami:
 

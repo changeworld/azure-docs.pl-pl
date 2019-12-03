@@ -7,16 +7,16 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 98598a28e14dfd8175cbb019ff1b001c65503580
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73644592"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688193"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Użyj pozyskiwania jednego kliknięcia do pozyskiwania danych w usłudze Azure Eksplorator danych
 
-W tym artykule przedstawiono sposób użycia pozyskiwania jednym kliknięciem w celu szybkiego pozyskiwania nowej tabeli w formatach JSON lub CSV z magazynu na platformie Azure Eksplorator danych. Po pobraniu danych możesz edytować tabelę i uruchamiać zapytania przy użyciu interfejsu użytkownika sieci Web.
+W tym artykule przedstawiono sposób użycia pozyskiwania jednym kliknięciem w celu szybkiego pozyskiwania nowej tabeli w formatach JSON lub CSV z magazynu lub lokalnego pliku do istniejącej tabeli lub nowej tabeli w usłudze Azure Eksplorator danych. Za pomocą intuicyjnego kreatora i w ciągu kilku minut dane są pozyskiwane, można edytować tabelę i uruchamiać zapytania przy użyciu interfejsu użytkownika sieci Web.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

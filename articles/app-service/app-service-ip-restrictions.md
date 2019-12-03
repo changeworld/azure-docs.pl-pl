@@ -1,25 +1,18 @@
 ---
-title: Ograniczanie dostępu Azure App Service | Microsoft Docs
-description: Jak używać ograniczeń dostępu za pomocą Azure App Service
+title: Ograniczanie dostępu do adresów IP
+description: Dowiedz się, jak zabezpieczyć aplikację w Azure App Service, jawnie listy dozwolonych adresy IP lub zakresy adresów klientów.
 author: ccompy
-manager: stefsch
-editor: ''
-services: app-service\web
-documentationcenter: ''
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cee6fc9fb5cc10a2b3442e146ef5688ed74290bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 64ce74c84f8f69e72510be76a1309e1a5ea42f2f
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088436"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672183"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Ograniczenia dostępu Azure App Service #
 
@@ -31,13 +24,13 @@ Gdy żądanie zostanie wysłane do aplikacji, adres od jest oceniany pod kątem 
 
 Funkcja ograniczeń dostępu jest implementowana w ramach ról frontonu App Service, które są nadrzędne w stosunku do hostów procesów roboczych, na których działa kod. W związku z tym ograniczenia dostępu są skutecznymi listami ACL sieci.
 
-Możliwość ograniczenia dostępu do aplikacji sieci Web z usługi Azure Virtual Network (VNet) nazywa się punktami [końcowymi usługi][serviceendpoints]. Punkty końcowe usługi umożliwiają ograniczenie dostępu do usługi z obsługą wielu dzierżawców z wybranych podsieci. Musi być włączona zarówno po stronie sieci, jak i w usłudze, w której jest włączona. Nie działa w sposób ograniczający ruch do aplikacji hostowanych w App Service Environment.  Jeśli jesteś w App Service Environment, możesz kontrolować dostęp do aplikacji przy użyciu reguł adresów IP.
+Możliwość ograniczenia dostępu do aplikacji sieci Web z usługi Azure Virtual Network (VNet) nazywa się [punktami końcowymi usługi][serviceendpoints]. Punkty końcowe usługi umożliwiają ograniczenie dostępu do usługi z obsługą wielu dzierżawców z wybranych podsieci. Musi być włączona zarówno po stronie sieci, jak i w usłudze, w której jest włączona. Nie działa w sposób ograniczający ruch do aplikacji hostowanych w App Service Environment.  Jeśli jesteś w App Service Environment, możesz kontrolować dostęp do aplikacji przy użyciu reguł adresów IP.
 
 ![przepływ ograniczeń dostępu](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Dodawanie i edytowanie reguł ograniczeń dostępu w portalu ##
 
-Aby dodać regułę ograniczeń dostępu do aplikacji, użyj menu, aby otworzyć**ograniczenia dostępu** do **sieci**>i kliknij przycisk **Konfiguruj ograniczenia dostępu**
+Aby dodać regułę ograniczeń dostępu do aplikacji, użyj menu, aby otworzyć **ograniczenia dostępu**>**sieci** i kliknij przycisk **Konfiguruj ograniczenia dostępu**
 
 ![Opcje sieci App Service](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -55,7 +48,7 @@ Podczas tworzenia reguły należy wybrać opcję Zezwalaj/Odmów, a także typ r
 
 ![Dodawanie reguły ograniczeń dostępu do adresu IP](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-Aby ustawić regułę opartą na adresie IP, wybierz typ protokołu IPv4 lub IPv6. Należy określić notację adresu IP w notacji CIDR dla adresów IPv4 i IPv6. Aby określić dokładny adres, można użyć czegoś takiego jak 1.2.3.4/32, gdzie pierwsze cztery oktety reprezentują adres IP i/32 jest maską. Notacja CIDR protokołu IPv4 dla wszystkich adresów ma wartość 0.0.0.0/0. Aby dowiedzieć się więcej na temat notacji CIDR, można odczytać bezklasowy [Routing między domenami](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+Aby ustawić regułę opartą na adresie IP, wybierz typ protokołu IPv4 lub IPv6. Należy określić notację adresu IP w notacji CIDR dla adresów IPv4 i IPv6. Aby określić dokładny adres, można użyć czegoś takiego jak 1.2.3.4/32, gdzie pierwsze cztery oktety reprezentują adres IP i/32 jest maską. Notacja CIDR protokołu IPv4 dla wszystkich adresów ma wartość 0.0.0.0/0. Aby dowiedzieć się więcej na temat notacji CIDR, można odczytać [bezklasowy Routing między domenami](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
 
 ## <a name="service-endpoints"></a>Punkty końcowe usługi
 
@@ -83,7 +76,7 @@ Aby usunąć regułę, kliknij pozycję **...** w regule, a następnie kliknij p
 
 ## <a name="blocking-a-single-ip-address"></a>Blokowanie pojedynczego adresu IP ##
 
-Podczas dodawania pierwszej reguły ograniczeń adresów IP usługa doda jawną **odmowę wszystkie** reguły o priorytecie 2147483647. W przypadku jawnej reguły **Odmów cała** reguła zostanie wykonana i zablokują dostęp do dowolnych adresów IP, które nie są jawnie dozwolone przy użyciu reguły zezwalania.
+Podczas dodawania pierwszej reguły ograniczeń adresów IP usługa doda jawną **odmowę wszystkie** reguły o priorytecie 2147483647. W przypadku jawnej reguły **Odmów cała** reguła zostanie wykonana i zablokują dostęp do dowolnych adresów IP, które nie są jawnie dozwolone przy użyciu reguły **zezwalania** .
 
 W przypadku scenariusza, w którym użytkownicy chcą jawnie blokować pojedynczy adres IP lub blok adresów IP, ale zezwalają na dostęp wszystkich innych elementów, należy dodać jawną regułę **Zezwalaj** .
 

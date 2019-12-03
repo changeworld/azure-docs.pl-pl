@@ -1,19 +1,18 @@
 ---
-title: Wdrażanie aplikacji platformy Docker w systemie Linux — Azure App Service
-description: Jak wdrożyć obraz platformy Docker w usłudze Azure App Services dla systemu Linux
-author: msangapu
+title: 'Szybki Start: uruchamianie niestandardowego kontenera systemu Linux'
+description: Rozpocznij pracę z kontenerami systemu Linux na Azure App Service przez wdrożenie pierwszego kontenera niestandardowego przy użyciu rejestrów kontenerów platformy Azure.
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.service: app-service
-ms.openlocfilehash: 2a7dc477b4cd0be0c50569d84e10cfe1d666eac9
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392114"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688962"
 ---
-# <a name="deploy-to-azure-using-docker"></a>Wdrażanie na platformie Azure przy użyciu platformy Docker
+# <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Wdrażanie niestandardowego kontenera systemu Linux w celu Azure App Service
 
 App Service w systemie Linux udostępnia wstępnie zdefiniowane stosy aplikacji w systemie Linux z obsługą języków takich jak .NET, PHP, Node. js i innych. Można także użyć niestandardowego obrazu platformy Docker, aby uruchamiać aplikację internetową na stosie aplikacji, który nie jest zdefiniowany na platformie Azure. W tym przewodniku szybki start przedstawiono sposób wdrażania obrazu z [Azure Container Registry](/azure/container-registry) (ACR) do App Service.
 
@@ -27,12 +26,12 @@ App Service w systemie Linux udostępnia wstępnie zdefiniowane stosy aplikacji 
 
 ## <a name="create-an-image"></a>Tworzenie obrazu
 
-Aby ukończyć ten przewodnik Szybki Start, potrzebny będzie odpowiedni obraz aplikacji sieci Web przechowywany w [Azure Container Registry](/azure/container-registry). Postępuj zgodnie z [instrukcjami w przewodniku szybki start: Utwórz prywatny rejestr kontenerów przy użyciu Azure Portal](/azure/container-registry/container-registry-get-started-portal), ale zamiast `hello-world` obrazu `mcr.microsoft.com/azuredocs/go` Użyj obrazu.
+Aby ukończyć ten przewodnik Szybki Start, potrzebny będzie odpowiedni obraz aplikacji sieci Web przechowywany w [Azure Container Registry](/azure/container-registry). Postępuj zgodnie z instrukcjami podanymi w [przewodniku szybki start: Tworzenie prywatnego rejestru kontenerów przy użyciu Azure Portal](/azure/container-registry/container-registry-get-started-portal), ale użyj obrazu `mcr.microsoft.com/azuredocs/go` zamiast obrazu `hello-world`.
 
 > [!IMPORTANT]
 > Należy pamiętać o ustawieniu opcji **użytkownik administrator** , aby **włączyć** ją podczas tworzenia rejestru kontenerów. Można również ustawić ją z sekcji **klucze dostępu** na stronie rejestru w Azure Portal. To ustawienie jest wymagane do App Service dostępu.
 
-## <a name="sign-in"></a>Logowanie
+## <a name="sign-in"></a>Zaloguj
 
 Następnie uruchom VS Code i zaloguj się do konta platformy Azure przy użyciu rozszerzenia App Service. W tym celu wybierz logo platformy Azure na pasku działania, przejdź do Eksploratora **usługi App Service** , a następnie wybierz pozycję **Zaloguj się do platformy Azure** i postępuj zgodnie z instrukcjami.
 

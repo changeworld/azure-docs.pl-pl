@@ -1,23 +1,18 @@
 ---
-title: Przykłady szablonów usługi Azure Resource Manager — App Service | Microsoft Docs
-description: Przykłady szablonów usługi Azure Resource Manager dla usługi App Service
-services: app-service
-documentationcenter: app-service
+title: Przykłady szablonów usługi Azure Resource Manager
+description: Znajdź przykłady szablonów Azure Resource Manager dla niektórych typowych scenariuszy App Service. Dowiedz się, jak zautomatyzować zadania związane z wdrażaniem App Service lub zarządzaniem.
 author: tfitzmac
 tags: azure-service-management
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: app-service
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 83bb357544d9069da1c86f583eaca5a470953ce8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 58871035eac89931dce0c1cd289cf3fab97c0c3e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066485"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688412"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Szablony usługi Azure Resource Manager dla usługi App Service
 

@@ -1,25 +1,16 @@
 ---
-title: Konfigurowanie nazw DNS dla aplikacji korzystających z Traffic Manager-Azure App Service
-description: Użyj niestandardowej nazwy domeny dla aplikacji sieci Web w Azure App Service, która obejmuje Traffic Manager do równoważenia obciążenia.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: Konfigurowanie nazw DNS przy użyciu Traffic Manager
+description: Dowiedz się, jak skonfigurować domenę niestandardową dla aplikacji Azure App Service, która integruje się z Traffic Manager na potrzeby równoważenia obciążenia.
 ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e6a59d519ae8bb515ab16632bd39509682959f50
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9139b83f1f2920da47b4a0d440f622626d41c938
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074030"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689274"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci Web w Azure App Service przy użyciu Traffic Manager
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -57,7 +48,7 @@ Aby skojarzyć domenę niestandardową z aplikacją sieci Web w Azure App Servic
 Poszczególne dostawcy domen różnią się w zależności *od* nazwy domeny niestandardowej (na przykład **contoso.com**) *do* nazwy domeny Traffic Manager (**contoso.trafficmanager.NET**) zintegrowanej z aplikacją sieci Web.
 
 > [!NOTE]
-> Jeśli rekord jest już używany i musisz zapobiegawczo powiązać z nim aplikacje, możesz utworzyć dodatkowy rekord CNAME. Na przykład, aby zapobiegawczo powiązać **www\.contoso.com** z aplikacją internetową, należy utworzyć rekord CNAME z **awverify. www** w **contoso.trafficmanager.NET**. Następnie możesz dodać "contoso.com www\." do aplikacji sieci Web bez zmiany rekordu CNAME "www". Aby uzyskać więcej informacji, zobacz [tworzenie rekordów DNS dla aplikacji sieci Web w domenie niestandardowej][CREATEDNS].
+> Jeśli rekord jest już używany i musisz zapobiegawczo powiązać z nim aplikacje, możesz utworzyć dodatkowy rekord CNAME. Na przykład, aby zapobiegawczo powiązania **www\.contoso.com** z aplikacją internetową, należy utworzyć rekord CNAME z **awverify. www** w **contoso.trafficmanager.NET**. Następnie możesz dodać "www\.contoso.com" do aplikacji sieci Web bez zmiany rekordu CNAME "www". Aby uzyskać więcej informacji, zobacz [tworzenie rekordów DNS dla aplikacji sieci Web w domenie niestandardowej][CREATEDNS].
 
 Po zakończeniu dodawania lub modyfikowania rekordów DNS u dostawcy domeny Zapisz zmiany.
 

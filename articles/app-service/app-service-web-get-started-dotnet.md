@@ -1,25 +1,16 @@
 ---
-title: Tworzenie aplikacji internetowej platformy .NET Core w języku C# — Azure App Service | Microsoft Docs
-description: Dowiedz się, jak uruchamiać aplikacje internetowe w usłudze Azure App Service, wdrażając przykładową aplikację internetową ASP.NET Core języka C#.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: 'Szybki Start: Tworzenie C# aplikacji ASP.NET Core'
+description: Dowiedz się, jak uruchamiać aplikacje sieci Web w Azure App Service przez C# wdrożenie domyślnego szablonu ASP.NET Core aplikacji sieci Web z poziomu programu Visual Studio.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 919e717811b3b04ca7407772fcf11f293d58508c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471560"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672106"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Tworzenie aplikacji internetowej ASP.NET Core na platformie Azure
 
@@ -96,7 +87,7 @@ Utwórz aplikację sieci Web ASP.NET Core, wykonując następujące czynności:
    |-|-|-|
    |Plan usługi App Service| myAppServicePlan | Nazwa planu usługi App Service. |
    | Lokalizacja | Europa Zachodnia | Centrum danych, w którym hostowana jest aplikacja internetowa. |
-   | Rozmiar | Bezpłatna | [Warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) określa funkcje hostowania. |
+   | Rozmiar | Bezpłatnie | [Warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) określa funkcje hostowania. |
 
    ![Tworzenie planu usługi App Service](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 

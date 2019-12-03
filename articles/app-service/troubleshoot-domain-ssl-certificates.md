@@ -1,25 +1,19 @@
 ---
-title: Rozwiązywanie problemów z domenami i certyfikatami SSL — Azure App Service | Microsoft Docs
-description: Rozwiązywanie problemów z certyfikatami domeny i protokołu SSL w Azure App Service
-services: app-service\web
-documentationcenter: ''
+title: Rozwiązywanie problemów z domenami i certyfikatami SSL
+description: Znajdź rozwiązania typowych problemów, które mogą wystąpić podczas konfigurowania domeny lub certyfikatu SSL w Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470147"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688339"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z certyfikatami domeny i protokołu SSL w Azure App Service
 
@@ -94,7 +88,7 @@ Ten problem może wystąpić z następujących powodów:
 
     **Rozwiązanie**: Jeśli certyfikat jest oznaczony jako oszustwo i nie jest rozpoznawany po 24 godzinach, wykonaj następujące czynności:
 
-    1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+    1. Zaloguj się do [portalu Azure](https://portal.azure.com).
     2. Przejdź do obszaru **App Service Certificates**i wybierz certyfikat.
     3. Wybierz kolejno pozycje **Konfiguracja certyfikatu** > **krok 2: Weryfikuj** > **weryfikację domeny**. Ten krok powoduje wysłanie powiadomienia e-mail do dostawcy certyfikatów platformy Azure w celu rozwiązania problemu.
 
@@ -196,7 +190,7 @@ App Service automatycznie synchronizuje certyfikat w ciągu 48 godzin. Gdy użyt
 
 Można wymusić synchronizację certyfikatu:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **App Service certyfikaty**, a następnie wybierz certyfikat.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Wybierz pozycję **App Service certyfikaty**, a następnie wybierz certyfikat.
 2. Wybierz pozycję Wymień **i zsynchronizuj**, a następnie wybierz pozycję **Synchronizuj**. Synchronizacja zajmuje trochę czasu. 
 3. Po zakończeniu synchronizacji zostanie wyświetlone następujące powiadomienie: "pomyślnie zaktualizowano wszystkie zasoby przy użyciu najnowszego certyfikatu".
 
@@ -235,17 +229,17 @@ Nie można kupić domeny App Service w Azure Portal.
 
 Ten problem występuje z jednego z następujących powodów:
 
-- Nie ma karty kredytowej w subskrypcji platformy Azure lub karta kredytowa jest nieprawidłowa.
+- W subskrypcji platformy Azure nie ma karty kredytowej lub karta kredytowa jest nieprawidłowa.
 
     **Rozwiązanie**: Dodaj prawidłową kartę kredytową do subskrypcji.
 
-- Nie jesteś właścicielem subskrypcji, więc nie masz uprawnień do zakupu domeny.
+- Nie jesteś właścicielem subskrypcji, dlatego nie masz uprawnień do zakupu domeny.
 
     **Rozwiązanie**: [Przypisz rolę właściciela](../role-based-access-control/role-assignments-portal.md) do Twojego konta. Lub skontaktuj się z administratorem subskrypcji, aby uzyskać uprawnienia do zakupu domeny.
 - Osiągnięto limit zakupów domen w ramach subskrypcji. Bieżący limit wynosi 20.
 
     **Rozwiązanie**: Aby zażądać zwiększenia limitu, skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Typ subskrypcji platformy Azure nie obsługuje zakupu domeny App Service.
+- Typ subskrypcji platformy Azure nie obsługuje zakupu domeny usługi App Service.
 
     **Rozwiązanie**: Uaktualnij subskrypcję platformy Azure do innego typu subskrypcji, takiego jak subskrypcja z płatność zgodnie z rzeczywistym użyciem.
 

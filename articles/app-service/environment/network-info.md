@@ -1,28 +1,22 @@
 ---
-title: Zagadnienia dotyczące sieci App Service Environment — Azure
-description: Wyjaśnia ruch sieciowy sieci ASE oraz sposób ustawiania sieciowych grup zabezpieczeń i UDR przy użyciu środowiska ASE
-services: app-service
-documentationcenter: na
+title: Zagadnienia dotyczące pracy w sieci
+description: Dowiedz się więcej o ruchu sieciowym ASE oraz o sposobie ustawiania sieciowych grup zabezpieczeń i tras zdefiniowanych przez użytkownika w środowisku ASE.
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ee7e3cb200a20b52a307dba31682a534e9f7b455
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470647"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687123"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Zagadnienia dotyczące sieci dla App Service Environment #
 
-## <a name="overview"></a>Omówienie ##
+## <a name="overview"></a>Przegląd ##
 
  Usługa Azure [App Service Environment][Intro] to wdrożenie Azure App Service w podsieci w sieci wirtualnej platformy Azure. Istnieją dwa typy wdrożeń dla środowiska App Serviceowego (ASE):
 
@@ -115,12 +109,12 @@ W przypadku zmiany ustawienia DNS sieci wirtualnej, w której znajduje się śro
 Oprócz zależności funkcjonalnych, istnieje kilka dodatkowych elementów związanych z korzystaniem z portalu. Niektóre funkcje w Azure Portal zależą od bezpośredniego dostępu do _witryny SCM_. Dla każdej aplikacji w Azure App Service istnieją dwa adresy URL. Pierwszy adres URL ma na celu uzyskanie dostępu do aplikacji. Drugim adresem URL jest dostęp do witryny SCM, która jest również nazywana _konsolą kudu_. Do funkcji korzystających z witryny SCM należą:
 
 -   Zadania sieci Web
--   Funkcje
+-   Functions
 -   Przesyłanie strumieniowe dzienników
 -   Kudu
 -   Rozszerzenia
 -   Eksplorator procesów
--   Konsola
+-   Console
 
 W przypadku korzystania z ILB ASE witryna SCM nie jest dostępna spoza sieci wirtualnej. Niektóre funkcje nie będą działały w portalu aplikacji, ponieważ wymagają dostępu do witryny SCM aplikacji. Możesz połączyć się bezpośrednio z witryną SCM, zamiast korzystać z portalu. 
 
@@ -148,7 +142,7 @@ Przy użyciu zewnętrznego środowiska ASE można przypisywać adresy IP do posz
 
 Gdy aplikacja ma swój własny adres SSL oparty na protokole IP, środowisko ASE rezerwuje dwa porty do mapowania na ten adres IP. Jeden port jest przeznaczony dla ruchu HTTP, a drugi port jest przeznaczony dla protokołu HTTPS. Porty te są wymienione w interfejsie użytkownika środowiska ASE w sekcji adresy IP. Ruch musi być w stanie połączyć się z tymi portami z adresu VIP lub aplikacje są niedostępne. Ten wymóg należy pamiętać podczas konfigurowania sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń).
 
-## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci ##
+## <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń ##
 
 [Sieciowe grupy zabezpieczeń][NSGs] umożliwiają kontrolowanie dostępu do sieci w ramach połączenia sieciowego. Gdy używasz portalu, istnieje niejawna reguła odmowy o najniższym priorytecie, aby odmówić wszystkiego. To, co tworzysz, są reguły zezwalania.
 

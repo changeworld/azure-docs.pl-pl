@@ -1,24 +1,16 @@
 ---
-title: Konfigurowanie poświadczeń wdrożenia — Azure App Service | Microsoft Docs
-description: Dowiedz się, jak używać poświadczeń wdrażania Azure App Service.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnoc
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Konfigurowanie poświadczeń wdrożenia
+description: Dowiedz się, jakie typy poświadczeń wdrożenia znajdują się w Azure App Service oraz jak je skonfigurować i jak z nich korzystać.
 ms.topic: article
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: fc9445b64baae0e625b62356fee381329b01e8fd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c4e7a66a9535812da505045c26e7b1e6fbc6c661
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098494"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669969"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrażania dla Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalnego wdrożenia git](deploy-local-git.md) i [wdrożenia FTP/S](deploy-ftp.md). Te poświadczenia nie są takie same, jak poświadczenia subskrypcji platformy Azure.
@@ -33,9 +25,9 @@ Poświadczenia na poziomie użytkownika można skonfigurować na [stronie zasob�
 
 ### <a name="in-the-cloud-shell"></a>W Cloud Shell
 
-Aby skonfigurować użytkownika wdrożenia w [Cloud Shell](https://shell.azure.com), uruchom polecenie [AZ webapp Deployment User Set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Zastąp \<> nazwy \<użytkownika i hasła > nazwą użytkownika i hasłom wdrożenia. 
+Aby skonfigurować użytkownika wdrożenia w [Cloud Shell](https://shell.azure.com), uruchom polecenie [AZ webapp Deployment User Set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Zastąp \<nazwy użytkownika > i \<hasło > nazwą użytkownika i hasłom do wdrożenia. 
 
-- Nazwa użytkownika musi być unikatowa w ramach platformy Azure, a w przypadku lokalnych powiadomień wypychanych Git nie może zawierać symbolu ‘@’ 
+- Nazwa użytkownika musi być unikatowa w ramach platformy Azure, a w przypadku lokalnych powiadomień wypychanych Git nie może zawierać symbolu "@". 
 - Hasło musi składać się z co najmniej ośmiu znaków, a dwa z następujących trzech elementów: litery, cyfry i symbole. 
 
 ```azurecli-interactive
@@ -48,11 +40,11 @@ Dane wyjściowe JSON przedstawiają hasło jako `null`. Jeśli wystąpił błąd
 
 W Azure Portal należy mieć co najmniej jedną aplikację, aby można było uzyskać dostęp do strony poświadczeń wdrożenia. Aby skonfigurować poświadczenia na poziomie użytkownika:
 
-1. W [Azure Portal](https://portal.azure.com)z menu po lewej stronie wybierz pozycję **App Services** >  **\<any_app >**  > **pulpit nawigacyjny** **FTP** > **centrum** > wdrażania.
+1. W [Azure Portal](https://portal.azure.com)z menu po lewej stronie wybierz pozycję **App Services** >  **\<any_app >**  > **Deployment Center** > **FTP** > **pulpit nawigacyjny**.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Lub, jeśli wdrożenie usługi git zostało już skonfigurowane, wybierz pozycję **App Services** >  **&lt;any_app >**  > do programu**Deployment Center** > **FTP/poświadczenia**.
+    Jeśli już skonfigurowano wdrożenie narzędzia Git, wybierz **App Services** >  **&lt;any_app >**  > **centrum wdrażania** > **FTP/poświadczenia**.
 
     ![](./media/app-service-deployment-credentials/access-with-git.png)
 
@@ -71,14 +63,14 @@ Jeśli skonfigurowano wdrożenie usługi git, na stronie zostanie wyświetlona *
 
 ## <a name="use-user-level-credentials-with-ftpftps"></a>Korzystanie z poświadczeń na poziomie użytkownika przy użyciu protokołu FTP/FTPS
 
-Uwierzytelnianie do punktu końcowego FTP/FTPS przy użyciu poświadczeń na poziomie użytkownika nazwa użytkownika w następującym formacie:`<app-name>\<user-name>`
+Uwierzytelnianie w punkcie końcowym FTP/FTPS przy użyciu poświadczeń na poziomie użytkownika nazwa użytkownika w następującym formacie: `<app-name>\<user-name>`
 
 Ponieważ poświadczenia na poziomie użytkownika są połączone z użytkownikiem, a nie konkretnym zasobem, nazwa użytkownika musi być w tym formacie, aby skierować akcję logowania do właściwego punktu końcowego aplikacji.
 
 ## <a name="appscope"></a>Pobieranie i resetowanie poświadczeń na poziomie aplikacji
 Aby uzyskać poświadczenia na poziomie aplikacji:
 
-1. W [Azure Portal](https://portal.azure.com)z menu po lewej stronie wybierz pozycję **App Services** >  **&lt;any_app >**  > **Deployment Center** > **FTP/Credentials**.
+1. W [Azure Portal](https://portal.azure.com)z menu po lewej stronie wybierz pozycję **App Services** >  **&lt;any_app >**  > **centrum wdrażania** > **FTP/poświadczenia**.
 
 2. Wybierz pozycję **poświadczenia aplikacji**, a następnie wybierz link **Kopiuj** , aby skopiować nazwę użytkownika lub hasło.
 

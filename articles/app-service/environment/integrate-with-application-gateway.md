@@ -1,24 +1,18 @@
 ---
-title: Integrowanie App Service Environment ILB z usługami Application Gateway — Azure
-description: Wskazówki dotyczące sposobu integrowania aplikacji w ILB App Service Environment z Application Gateway
-services: app-service
-documentationcenter: na
+title: Integracja z usługą Application Gateway
+description: Dowiedz się, jak zintegrować aplikację w ILB App Service Environment z Application Gateway z tego kompleksowego przewodnika.
 author: ccompy
-manager: stefsch
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 090952a065b8c3b2b25ad737992b68b9bc9aa9ec
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069464"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687151"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integracja App Service Environment ILB z platformą Azure Application Gateway #
 
@@ -46,7 +40,7 @@ Aby zintegrować Application Gateway z usługą ILB App Service Environment, pot
 * ILB App Service Environment.
 * Aplikacja działająca w App Service Environment ILB.
 * Nazwa domeny z obsługą Internetu, która będzie używana z aplikacją w App Service Environment ILB.
-* Adres ILB używany przez App Service Environment ILBa. Te informacje są w portalu App Service Environment w obszarze **Ustawienia** > **adresy IP**:
+* Adres ILB używany przez App Service Environment ILBa. Te informacje są w portalu App Service Environment w obszarze **ustawienia** > **adresy IP**:
 
     ![Przykładowa lista adresów IP używanych przez ILB App Service Environment][9]
     
@@ -62,7 +56,7 @@ Nie można również umieścić bramy w podsieci używanej przez ILB App Service
 
 ## <a name="configuration-steps"></a>Kroki konfiguracji ##
 
-1. W Azure Portal przejdź do pozycji **Nowy** > **Application Gateway** **sieci** > .
+1. W Azure Portal przejdź do pozycji **New** > **Network** > **Application Gateway**.
 
 2. W obszarze **podstawy** :
 
@@ -70,7 +64,7 @@ Nie można również umieścić bramy w podsieci używanej przez ILB App Service
 
    b. W obszarze **warstwa**wybierz pozycję **WAF**.
 
-   c. W polu **subskrypcja**wybierz tę samą subskrypcję, której używa App Service Environment Sieć wirtualna.
+   d. W polu **subskrypcja**wybierz tę samą subskrypcję, której używa App Service Environment Sieć wirtualna.
 
    d. W obszarze **Grupa zasobów**Utwórz lub wybierz grupę zasobów.
 
@@ -82,9 +76,9 @@ Nie można również umieścić bramy w podsieci używanej przez ILB App Service
 
    a. W obszarze **Sieć wirtualna**wybierz App Service Environment sieci wirtualnej.
 
-   b. Wobszarze podsieć wybierz podsieć, w której ma zostać wdrożona Application Gateway. Nie należy używać GatewaySubnet, ponieważ uniemożliwi to tworzenie bram sieci VPN.
+   b. W obszarze **podsieć**wybierz podsieć, w której ma zostać wdrożona Application Gateway. Nie należy używać GatewaySubnet, ponieważ uniemożliwi to tworzenie bram sieci VPN.
 
-   c. W obszarze **Typ adresu IP**wybierz pozycję **publiczny**.
+   d. W obszarze **Typ adresu IP**wybierz pozycję **publiczny**.
 
    d. W obszarze **publiczny adres IP**wybierz publiczny adres IP. Jeśli go nie masz, utwórz go teraz.
 
@@ -100,7 +94,7 @@ Nie można również umieścić bramy w podsieci używanej przez ILB App Service
 
    ![Konfigurowanie puli zaplecza][4]
 
-6. Po zakończeniu procesu konfigurowania puli zaplecza wybierz pozycję sondy kondycji. Utwórz sondę kondycji dla nazwy domeny, która ma być używana dla aplikacji. 
+6. Po zakończeniu procesu konfigurowania puli zaplecza wybierz pozycję **sondy kondycji**. Utwórz sondę kondycji dla nazwy domeny, która ma być używana dla aplikacji. 
 
    ![Konfigurowanie sond kondycji][5]
     

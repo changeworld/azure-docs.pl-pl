@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 0dd07b3394e385b3931e01867d467af7559b4f8b
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664169"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684128"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Rozwiązywanie problemów z maszyną wirtualną z systemem Linux w przypadku braku dostępu do konsoli szeregowej platformy Azure, a układ dysku używa LVM (Menedżer woluminów logicznych)
 
@@ -211,6 +211,29 @@ W razie konieczności Usuń lub Uaktualnij
 ### <a name="example-3---enable-serial-console"></a>Przykład 3 — Włączanie konsoli szeregowej
 Jeśli nie można uzyskać dostępu do konsoli szeregowej platformy Azure, sprawdź parametry konfiguracji GRUB dla maszyny wirtualnej z systemem Linux i popraw je. Szczegółowe informacje można znaleźć [w tym dokumencie](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)
 
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Przykład 4 — ładowanie jądra ze problematycznym woluminem wymiany LVM
+
+Maszyna wirtualna może się nie powieść w pełni rozruch i zostanie wyświetlony monit **Dracut** .
+Więcej szczegółów dotyczących awarii można znaleźć w konsoli szeregowej platformy Azure lub przejdź do Azure Portal-> boot Diagnostics-> log
+
+
+Może wystąpić błąd podobny do tego:
+
+```
+[  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
+         Starting Dracut Emergency Shell...
+Warning: /dev/VG/SwapVol does not exist
+```
+
+W tym przykładzie skonfigurowano grub. cfg, aby załadować wartość LV o nazwie **Rd. LVM. lv = VG/SwapVol** , a maszyna wirtualna nie może jej zlokalizować. Ten wiersz przedstawia sposób ładowania jądra odwołującego się do SwapVol LV
+
+```
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
+[    0.000000] e820: BIOS-provided physical RAM map:
+```
+
+ Usuń problemy z problemami z konfiguracją/etc/default/grub i Skompiluj ponownie grub2. cfg
+
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>Wyjdź z chroot i Zamień dysk systemu operacyjnego
 
@@ -247,4 +270,8 @@ Jeśli maszyna wirtualna jest uruchomiona, wymiana dysków zostanie wyłączona,
 
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o [usłudze Azure serial Console]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+Dowiedz się więcej o
+
+ [Konsola szeregowa platformy Azure]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+
+[Tryb pojedynczego użytkownika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)

@@ -1,22 +1,17 @@
 ---
-title: Przegląd zarządzanych tożsamości — Azure App Service | Microsoft Docs
-description: Dokumentacja koncepcyjna i przewodnik konfigurowania tożsamości zarządzanych w Azure App Service i Azure Functions
-services: app-service
+title: Zarządzane tożsamości
+description: Dowiedz się, jak zarządzane tożsamości działają w Azure App Service i Azure Functions, jak skonfigurować tożsamość zarządzaną i wygenerować token dla zasobu zaplecza.
 author: mattchenderson
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a2f6d7f881e404e9e4dbdb8087cabf25f67d561b
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847316"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688629"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać tożsamości zarządzanych do App Service i Azure Functions
 
@@ -43,7 +38,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, musisz najpierw utworzy�
 
 3. Wybierz pozycję **tożsamość**.
 
-4. W ramach karty **przypisanej do systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij pozycję **Zapisz**.
+4. W ramach karty **przypisanej do systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij przycisk **Save** (Zapisz).
 
     ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-system.png)
 
@@ -172,7 +167,7 @@ Najpierw należy utworzyć zasób tożsamości przypisany przez użytkownika.
 
 5. Na karcie **przypisane przez użytkownika** kliknij przycisk **Dodaj**.
 
-6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij pozycję **Dodaj**.
+6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij pozycję **Add** (Dodaj).
 
     ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-user.png)
 

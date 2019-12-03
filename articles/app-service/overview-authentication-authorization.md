@@ -1,26 +1,17 @@
 ---
-title: Uwierzytelnianie i autoryzacja — Azure App Service | Microsoft Docs
-description: Informacje koncepcyjne i Omówienie funkcji uwierzytelniania/autoryzacji dla Azure App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: Uwierzytelnianie i autoryzacja
+description: Dowiedz się więcej o wbudowanej obsłudze uwierzytelniania i autoryzacji w programie Azure App Service oraz sposobie zabezpieczania aplikacji przed nieautoryzowanym dostępem.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2179f4e7d5350cdf9d82413e4f70647c20c3c399
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808755"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672241"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -32,8 +23,10 @@ Azure App Service zapewnia wbudowaną obsługę uwierzytelniania i autoryzacji, 
 
 Bezpieczne uwierzytelnianie i autoryzacja wymagają dokładnego poznania zabezpieczeń, w tym Federacji, szyfrowania, zarządzania [tokenami sieci Web JSON (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) , [typów dotacji](https://oauth.net/2/grant-types/)i tak dalej. App Service udostępnia te narzędzia, dzięki czemu można poświęcać więcej czasu i energii na zapewnienie klientom wartości biznesowej.
 
-> [!NOTE]
-> Nie jest wymagane używanie App Service do uwierzytelniania i autoryzacji. Wiele platform sieci Web jest powiązanych z funkcjami zabezpieczeń i można ich użyć, jeśli chcesz. Jeśli potrzebujesz większej elastyczności niż App Service zapewniasz, możesz również napisać własne narzędzia.  
+> [!IMPORTANT]
+> Nie musisz używać App Service dla AuthN/AuthO. Wiele platform sieci Web jest powiązanych z funkcjami zabezpieczeń i można ich użyć, jeśli chcesz. Jeśli potrzebujesz większej elastyczności niż App Service zapewniasz, możesz również napisać własne narzędzia.  
+>
+> Jeśli jednak korzystasz z dowolnej z opcji innych niż App Service na potrzeby uwierzytelniania zdalnego, pamiętaj, że program [Chrome 80 wprowadza zmiany w implementacji SameSite dla plików cookie](https://www.chromestatus.com/feature/5088147346030592) (Data wydania około marca 2020), a mechanizm uwierzytelniania aplikacji może ulec przerwaniu podczas aktualizowania przeglądarek klienta. Informacje o tym, jak rozwiązać ten problem w aplikacji, można znaleźć na stronie [http: przeglądarka SameSite zmiany mają wpływ na uwierzytelnianie](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). ASP.NET Core Zawiera ona przydatne wskazówki dotyczące testowania dla tej istotnej zmiany w porównaniu z głównymi przeglądarkami niezależnie od tego, czy używasz ASP.NET Core, czy nie.
 >
 
 Aby uzyskać informacje specyficzne dla natywnych aplikacji mobilnych, zobacz [uwierzytelnianie użytkowników i autoryzacja dla aplikacji mobilnych za pomocą Azure App Service](../app-service-mobile/app-service-mobile-auth.md).

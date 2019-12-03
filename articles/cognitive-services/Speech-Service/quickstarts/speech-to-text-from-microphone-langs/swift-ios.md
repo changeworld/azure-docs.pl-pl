@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 661dd94caa2a1998b26ec1270688c0729011c15a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5bc7ce5cee6235125cf65f492d9294af5214a760
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503626"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672603"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w usłudze SWIFT w systemie iOS przy użyciu zestawu Speech SDK
 
@@ -36,7 +36,7 @@ Przed rozpoczęciem należy:
 
 Ten samouczek nie będzie działał z wersją zestawu SDK wcześniejszą niż 1.6.0.
 
-Zestaw SDK mowy Cognitive Services dla systemu iOS jest dystrybuowany jako pakiet platformy. Może być używany w projektach Xcode jako [CocoaPod](https://cocoapods.org/) lub pobierany z https://aka.ms/csspeech/macosbinary i połączony ręcznie. W tym artykule jest stosowany CocoaPod.
+Zestaw SDK mowy Cognitive Services dla systemu iOS jest dystrybuowany jako pakiet platformy. Może być używany w projektach Xcode jako [CocoaPod](https://cocoapods.org/) lub pobierany z https://aka.ms/csspeech/iosbinary i połączony ręcznie. W tym artykule jest stosowany CocoaPod.
 
 ## <a name="create-an-xcode-project"></a>Tworzenie projektu Xcode
 

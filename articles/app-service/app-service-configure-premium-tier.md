@@ -1,26 +1,17 @@
 ---
-title: Konfigurowanie warstwy PremiumV2 Azure App Service | Microsoft Docs
+title: Konfigurowanie warstwy PremiumV2
 description: Dowiedz się, jak ulepszyć wydajność aplikacji sieci Web, mobilnych i interfejsu API w Azure App Service przez skalowanie do nowej warstwy cenowej PremiumV2.
 keywords: app service, azure app service, scale, scalable, app service plan, app service cost
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aa1e522e395f869f73c0b250623665a9b175384e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067229"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672212"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurowanie warstwy PremiumV2 dla Azure App Service
 
@@ -100,7 +91,7 @@ Tworzenie aplikacji można zautomatyzować w warstwie **PremiumV2** za pomocą s
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Następujące polecenie tworzy App Service plan w _P1V2_. Można uruchomić ją w Cloud Shell. Dostępne opcje `--sku` to P1V2, _P2V2_i _P3V2_.
+Następujące polecenie tworzy App Service plan w _P1V2_. Można uruchomić ją w Cloud Shell. Opcje `--sku` to P1V2, _P2V2_i _P3V2_.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -109,11 +100,11 @@ az appservice plan create \
     --sku P1V2
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Następujące polecenie tworzy App Service plan w _P1V2_. `-WorkerSize` Opcje dla są _małe_, _średnie_i _duże_.
+Następujące polecenie tworzy App Service plan w _P1V2_. Opcje `-WorkerSize` są _małe_, _średnie_i _duże_.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

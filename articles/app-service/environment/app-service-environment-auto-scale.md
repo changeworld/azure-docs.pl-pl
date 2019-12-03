@@ -1,25 +1,18 @@
 ---
-title: Skalowanie automatyczne i App Service Environment V1 — Azure
-description: Skalowanie automatyczne i App Service Environment
-services: app-service
-documentationcenter: ''
+title: Skalowanie automatyczne w wersji 1
+description: Skalowanie automatyczne i App Service Environment v1. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: btardif
-manager: erikre
-editor: ''
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f0c49e1835412b61817ff3571dd3ee1eaa29f21f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070083"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687285"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Skalowanie automatyczne i App Service Environment v1
 
@@ -83,29 +76,29 @@ Piotr jest bardzo zaznajomiony z aplikacją. Wiemy, że szczytowe godziny ładow
 | --- | --- |
 | **Nazwa:** Profil dnia tygodnia |**Nazwa:** Profil weekendu |
 | **Skaluj według:** Reguły harmonogramu i wydajności |**Skaluj według:** Reguły harmonogramu i wydajności |
-| **Profilu** Dni robocze |**Profilu** Weekend |
-| **Wprowadź** Cykl |**Wprowadź** Cykl |
+| **Profil:** Dni robocze |**Profil:** Weekend |
+| **Typ:** Wystąpieniu |**Typ:** Wystąpieniu |
 | **Zakres docelowy:** od 5 do 20 wystąpień |**Zakres docelowy:** od 3 do 10 wystąpień |
-| **Dni** Poniedziałek, wtorek, środa, czwartek, piątek |**Dni** Sobota, niedziela |
-| **Godzina rozpoczęcia:** 9:00 AM |**Godzina rozpoczęcia:** 9:00 AM |
-| **Strefa czasowa:** UTC-08 |**Strefa czasowa:** UTC-08 |
+| **Dni:** Poniedziałek, wtorek, środa, czwartek, piątek |**Dni:** Sobota, niedziela |
+| **Godzina rozpoczęcia:** 9:00 am |**Godzina rozpoczęcia:** 9:00 am |
+| **Strefa czasowa:** UTC — 08 |**Strefa czasowa:** UTC — 08 |
 |  | |
 | **Reguła automatycznego skalowania (skalowanie w górę)** |**Reguła automatycznego skalowania (skalowanie w górę)** |
-| **Zasoby** Produkcja (App Service Environment) |**Zasoby** Produkcja (App Service Environment) |
-| **Metryki** TESTY |**Metryki** TESTY |
-| **Operacje** Ponad 60% |**Operacje** Ponad 80% |
-| **Trwania** 5 minut |**Trwania** 10 minut |
-| **Agregacja czasu:** Average |**Agregacja czasu:** Average |
-| **Transakcji** Zwiększ liczbę o 2 |**Transakcji** Zwiększ liczbę o 1 |
+| **Zasób:** Produkcja (App Service Environment) |**Zasób:** Produkcja (App Service Environment) |
+| **Metryka:** TESTY |**Metryka:** TESTY |
+| **Operacja:** Ponad 60% |**Operacja:** Ponad 80% |
+| **Czas trwania:** 5 minut |**Czas trwania:** 10 minut |
+| **Agregacja czasu:** Obliczon |**Agregacja czasu:** Obliczon |
+| **Akcja:** Zwiększ liczbę o 2 |**Akcja:** Zwiększ liczbę o 1 |
 | **Chłodna (minuty):** 15 |**Chłodna (minuty):** 20 |
 |  | |
 | **Reguła automatycznego skalowania (skalowanie w dół)** |**Reguła automatycznego skalowania (skalowanie w dół)** |
-| **Zasoby** Produkcja (App Service Environment) |**Zasoby** Produkcja (App Service Environment) |
-| **Metryki** TESTY |**Metryki** TESTY |
-| **Operacje** Mniej niż 30% |**Operacje** Mniej niż 20% |
-| **Trwania** 10 minut |**Trwania** 15 minut |
-| **Agregacja czasu:** Average |**Agregacja czasu:** Average |
-| **Transakcji** Zmniejsz liczbę o 1 |**Transakcji** Zmniejsz liczbę o 1 |
+| **Zasób:** Produkcja (App Service Environment) |**Zasób:** Produkcja (App Service Environment) |
+| **Metryka:** TESTY |**Metryka:** TESTY |
+| **Operacja:** Mniej niż 30% |**Operacja:** Mniej niż 20% |
+| **Czas trwania:** 10 minut |**Czas trwania:** 15 minut |
+| **Agregacja czasu:** Obliczon |**Agregacja czasu:** Obliczon |
+| **Akcja:** Zmniejsz liczbę o 1 |**Akcja:** Zmniejsz liczbę o 1 |
 | **Chłodna (minuty):** 20 |**Chłodna (minuty):** 10 |
 
 ### <a name="app-service-plan-inflation-rate"></a>Częstotliwość inflacji planu App Service
@@ -137,7 +130,7 @@ W przypadku reguły automatycznego skalowania — skalowanie w dół dla profilu
 
 Plan App Service produkcyjnych może wzrosnąć o maksymalnie osiem wystąpień na godzinę w tygodniu i czterech wystąpieniach na godzinę w weekendie. Może zwolnić wystąpienia z maksymalną częstotliwością czterech wystąpień na godzinę w tygodniu i sześciu wystąpieniami/godz. w weekendy.
 
-Jeśli wiele planów App Service jest obsługiwanych w puli procesów roboczych, należy obliczyć *łączną stawkę* za inflację jako sumę współczynnika inflacji dla wszystkich planów App Service, które są hostowane w tej puli procesów roboczych.
+Jeśli wiele planów App Service jest obsługiwanych w puli procesów roboczych, należy obliczyć *łączną stawkę za inflację* jako sumę współczynnika inflacji dla wszystkich planów App Service, które są hostowane w tej puli procesów roboczych.
 
 ![Łączna liczba obliczeń dla wielu planów App Service hostowanych w puli procesów roboczych.][ASP-Total-Inflation]
 
@@ -154,29 +147,29 @@ Dzięki tym informacjom Piotr może zdefiniować następujący profil i reguły 
 | --- | --- |
 | **Nazwa:** Profil dnia tygodnia |**Nazwa:** Profil weekendu |
 | **Skaluj według:** Reguły harmonogramu i wydajności |**Skaluj według:** Reguły harmonogramu i wydajności |
-| **Profilu** Dni robocze |**Profilu** Weekend |
-| **Wprowadź** Cykl |**Wprowadź** Cykl |
+| **Profil:** Dni robocze |**Profil:** Weekend |
+| **Typ:** Wystąpieniu |**Typ:** Wystąpieniu |
 | **Zakres docelowy:** od 13 do 25 wystąpień |**Zakres docelowy:** od 6 do 15 wystąpień |
-| **Dni** Poniedziałek, wtorek, środa, czwartek, piątek |**Dni** Sobota, niedziela |
-| **Godzina rozpoczęcia:** 7:00 AM |**Godzina rozpoczęcia:** 9:00 AM |
-| **Strefa czasowa:** UTC-08 |**Strefa czasowa:** UTC-08 |
+| **Dni:** Poniedziałek, wtorek, środa, czwartek, piątek |**Dni:** Sobota, niedziela |
+| **Godzina rozpoczęcia:** 7:00 am |**Godzina rozpoczęcia:** 9:00 am |
+| **Strefa czasowa:** UTC — 08 |**Strefa czasowa:** UTC — 08 |
 |  | |
 | **Reguła automatycznego skalowania (skalowanie w górę)** |**Reguła automatycznego skalowania (skalowanie w górę)** |
-| **Zasoby** Pula procesów roboczych 1 |**Zasoby** Pula procesów roboczych 1 |
-| **Metryki** WorkersAvailable |**Metryki** WorkersAvailable |
-| **Operacje** Mniej niż 8 |**Operacje** Mniej niż 3 |
-| **Trwania** 20 minut |**Trwania** 30 minut |
-| **Agregacja czasu:** Average |**Agregacja czasu:** Average |
-| **Transakcji** Zwiększ liczbę o 8 |**Transakcji** Zwiększ liczbę o 3 |
+| **Zasób:** Pula procesów roboczych 1 |**Zasób:** Pula procesów roboczych 1 |
+| **Metryka:** WorkersAvailable |**Metryka:** WorkersAvailable |
+| **Operacja:** Mniej niż 8 |**Operacja:** Mniej niż 3 |
+| **Czas trwania:** 20 minut |**Czas trwania:** 30 minut |
+| **Agregacja czasu:** Obliczon |**Agregacja czasu:** Obliczon |
+| **Akcja:** Zwiększ liczbę o 8 |**Akcja:** Zwiększ liczbę o 3 |
 | **Chłodna (minuty):** 180 |**Chłodna (minuty):** 180 |
 |  | |
 | **Reguła automatycznego skalowania (skalowanie w dół)** |**Reguła automatycznego skalowania (skalowanie w dół)** |
-| **Zasoby** Pula procesów roboczych 1 |**Zasoby** Pula procesów roboczych 1 |
-| **Metryki** WorkersAvailable |**Metryki** WorkersAvailable |
-| **Operacje** Większy niż 8 |**Operacje** Większe niż 3 |
-| **Trwania** 20 minut |**Trwania** 15 minut |
-| **Agregacja czasu:** Average |**Agregacja czasu:** Average |
-| **Transakcji** Zmniejsz liczbę o 2 |**Transakcji** Zmniejsz liczbę o 3 |
+| **Zasób:** Pula procesów roboczych 1 |**Zasób:** Pula procesów roboczych 1 |
+| **Metryka:** WorkersAvailable |**Metryka:** WorkersAvailable |
+| **Operacja:** Większy niż 8 |**Operacja:** Większe niż 3 |
+| **Czas trwania:** 20 minut |**Czas trwania:** 15 minut |
+| **Agregacja czasu:** Obliczon |**Agregacja czasu:** Obliczon |
+| **Akcja:** Zmniejsz liczbę o 2 |**Akcja:** Zmniejsz liczbę o 3 |
 | **Chłodna (minuty):** 120 |**Chłodna (minuty):** 120 |
 
 Zakres docelowy zdefiniowany w profilu jest obliczany przez minimalne wystąpienia zdefiniowane w profilu dla buforu App Service plan +.
@@ -199,29 +192,29 @@ W tym scenariuszu Piotr wie, że współczynnik błędów wzrasta po zakończeni
 | --- |
 | **Nazwa:** Skalowanie automatyczne — frontony |
 | **Skaluj według:** Reguły harmonogramu i wydajności |
-| **Profilu** Codziennie |
-| **Wprowadź** Cykl |
+| **Profil:** Używany |
+| **Typ:** Wystąpieniu |
 | **Zakres docelowy:** od 3 do 10 wystąpień |
-| **Dni** Codziennie |
-| **Godzina rozpoczęcia:** 9:00 AM |
-| **Strefa czasowa:** UTC-08 |
+| **Dni:** Używany |
+| **Godzina rozpoczęcia:** 9:00 am |
+| **Strefa czasowa:** UTC — 08 |
 |  |
 | **Reguła automatycznego skalowania (skalowanie w górę)** |
-| **Zasoby** Pula frontonu |
-| **Metryki** TESTY |
-| **Operacje** Ponad 60% |
-| **Trwania** 20 minut |
-| **Agregacja czasu:** Average |
-| **Transakcji** Zwiększ liczbę o 3 |
+| **Zasób:** Pula frontonu |
+| **Metryka:** TESTY |
+| **Operacja:** Ponad 60% |
+| **Czas trwania:** 20 minut |
+| **Agregacja czasu:** Obliczon |
+| **Akcja:** Zwiększ liczbę o 3 |
 | **Chłodna (minuty):** 120 |
 |  |
 | **Reguła automatycznego skalowania (skalowanie w dół)** |
-| **Zasoby** Pula procesów roboczych 1 |
-| **Metryki** TESTY |
-| **Operacje** Mniej niż 30% |
-| **Trwania** 20 minut |
-| **Agregacja czasu:** Average |
-| **Transakcji** Zmniejsz liczbę o 3 |
+| **Zasób:** Pula procesów roboczych 1 |
+| **Metryka:** TESTY |
+| **Operacja:** Mniej niż 30% |
+| **Czas trwania:** 20 minut |
+| **Agregacja czasu:** Obliczon |
+| **Akcja:** Zmniejsz liczbę o 3 |
 | **Chłodna (minuty):** 120 |
 
 <!-- IMAGES -->

@@ -2,13 +2,13 @@
 title: Używanie programu PowerShell do tworzenia kopii zapasowych systemu Windows Server na platformie Azure
 description: W tym artykule dowiesz się, jak używać programu PowerShell do konfigurowania Azure Backup w systemie Windows Server lub kliencie systemu Windows oraz zarządzania kopiami zapasowymi i odzyskiwaniem.
 ms.topic: conceptual
-ms.date: 08/20/2019
-ms.openlocfilehash: 6285b7fc6493090ab0bead5f00124a6eaa02dc7e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 12/2/2019
+ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172441"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689192"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Wdrażanie kopii zapasowych systemu Windows Server/Windows Client na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 
@@ -113,12 +113,12 @@ Dostępne opcje to:
 
 | Opcja | Szczegóły | Domyślne |
 | --- | --- | --- |
-| /q |Instalacja cicha |- |
+| parametru |Instalacja cicha |- |
 | /p: "Location" |Ścieżka do folderu instalacji agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s: "lokalizacja" |Ścieżka do folderu pamięci podręcznej dla agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |Zezwól na Microsoft Update |- |
+| parametr |Zezwól na Microsoft Update |- |
 | /nu |Nie sprawdzaj, czy są aktualizacje po zakończeniu instalacji |- |
-| /d |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
+| parametr |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
 | /pH Generuj dyrektywę |Adres hosta serwera proxy |- |
 | /po |Numer portu hosta serwera proxy |- |
 | /pu |Nazwa użytkownika hosta serwera proxy |- |
@@ -569,7 +569,7 @@ Ta sekcja przeprowadzi Cię przez procedurę automatyzacji odzyskiwania danych z
 
 1. Wybierz wolumin źródłowy
 2. Wybierz punkt kopii zapasowej do przywrócenia
-3. Wybierz element do przywrócenia
+3. Określ element do przywrócenia
 4. Wyzwól proces przywracania
 
 ### <a name="picking-the-source-volume"></a>Wybieranie woluminu źródłowego
@@ -593,95 +593,61 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>Wybieranie punktu kopii zapasowej, z którego ma zostać przywrócone
 
-Listę punktów kopii zapasowej można pobrać, wykonując polecenie cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) z odpowiednimi parametrami. W naszym przykładzie wybierzemy najnowszy punkt kopii zapasowej woluminu źródłowego *D:* i użyj go do odzyskania określonego pliku.
+Listę punktów kopii zapasowej można pobrać, wykonując polecenie cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) z odpowiednimi parametrami. W naszym przykładzie wybierzemy najnowszy punkt kopii zapasowej woluminu źródłowego *C:* i użyj go do odzyskania określonego pliku.
 
 ```powershell
-$Rps = Get-OBRecoverableItem -Source $Source[1]
+$Rps = Get-OBRecoverableItem $Source[0]
+$Rps
 ```
 
 ```Output
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 17-Jun-15 6:31:31 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/16/2019 7:00:19 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 ```
 
 Obiekt `$Rps` jest tablicą punktów kopii zapasowych. Pierwszy element jest ostatnim punktem, a n element jest najstarszym punktem. W celu wybrania najnowszego punktu będziemy używać `$Rps[0]`.
 
-### <a name="choosing-an-item-to-restore"></a>Wybieranie elementu do przywrócenia
+### <a name="specifying-an-item-to-restore"></a>Określanie elementu do przywrócenia
 
-Aby zidentyfikować dokładny plik lub folder do przywrócenia, należy rekursywnie użyć polecenia cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) . W ten sposób hierarchia folderów może być przeglądana wyłącznie przy użyciu `Get-OBRecoverableItem`.
-
-Jeśli w tym przykładzie chcemy przywrócić plik *finanse* , można odwoływać się do niego przy użyciu `$FilesFolders[1]`obiektu.
+Aby przywrócić określony plik, określ nazwę pliku względem woluminu głównego. Na przykład aby pobrać C:\Test\Cat.job, wykonaj następujące polecenie. 
 
 ```powershell
-$FilesFolders = Get-OBRecoverableItem $Rps[0]
-$FilesFolders
+$Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
+$Item
 ```
 
 ```Output
-IsDir : True
-ItemNameFriendly : D:\MyData\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : MyData
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
-ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
-```
-
-```powershell
-$FilesFolders = Get-OBRecoverableItem $FilesFolders[0]
-$FilesFolders
-```
-
-```Output
-IsDir : False
-ItemNameFriendly : D:\MyData\screenshot.oxps
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : screenshot.oxps
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 228313
-ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
-
-IsDir : False
-ItemNameFriendly : D:\MyData\finances.xls
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : finances.xls
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 96256
+IsDir                : False
+ItemNameFriendly     : C:\Test\cat.jpg
+ItemNameGuid         :
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : cat.jpg
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-```
 
-Możesz również wyszukać elementy do przywrócenia za pomocą polecenia cmdlet ```Get-OBRecoverableItem```. W naszym przykładzie, aby wyszukać *finanse. xls* możemy uzyskać dojście do pliku, uruchamiając następujące polecenie:
-
-```powershell
-$Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### <a name="triggering-the-restore-process"></a>Wyzwalanie procesu przywracania

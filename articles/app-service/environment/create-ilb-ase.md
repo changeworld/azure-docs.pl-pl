@@ -1,24 +1,18 @@
 ---
-title: Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem Azure App Service Environment
-description: Szczegółowe informacje na temat tworzenia i używania środowiska Azure App Service Environment odizolowanego od Internetu
-services: app-service
-documentationcenter: na
+title: Tworzenie ILB ASE przy użyciu platformy ARM
+description: Dowiedz się, jak utworzyć środowisko App Service za pomocą wewnętrznego modułu równoważenia obciążenia (ILB ASE) przy użyciu szablonów Azure Resource Manager. W pełni Izoluj aplikacje z Internetu.
 author: ccompy
-manager: stefsch
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 07b47374484cf954b1fc4279c93dddcc6cec7e61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ae1d04043c740456368b0831bee84490778f0171
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470572"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687214"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Tworzenie i używanie wewnętrznego Load Balancer App Service Environment 
 
@@ -29,7 +23,7 @@ Azure App Service Environment to wdrożenie Azure App Service w podsieci w sieci
 
 W tym artykule przedstawiono sposób tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia. Aby zapoznać się z omówieniem środowiska ASE, zobacz [wprowadzenie do środowisk App Service][Intro]. Aby dowiedzieć się, jak utworzyć zewnętrzny środowisko ASE, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
 
-## <a name="overview"></a>Omówienie 
+## <a name="overview"></a>Przegląd 
 
 Środowisko ASE można wdrożyć za pomocą punktu końcowego dostępnego z Internetu lub adresu IP w sieci wirtualnej. Aby można było ustawić jako adres IP adres sieci wirtualnej, należy wdrożyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku wdrażania środowiska ASE przy użyciu ILB należy podać nazwę środowiska ASE. Nazwa środowiska ASE jest używana w sufiksie domeny dla aplikacji w środowisku ASE.  Sufiks domeny dla środowiska ILB ASE to &lt;ASE Name&gt;. appserviceenvironment.net. Aplikacje utworzone w środowisku ILB ASE nie są umieszczane w publicznym systemie DNS. 
 
@@ -120,7 +114,7 @@ Nazwa witryny SCM umożliwia przejście do konsoli Kudu, nazywanej **portalem za
 
 Internetowe systemy ciągłej integracji, takie jak usługi GitHub i Azure DevOps, będą nadal działać ze środowiskiem ASE z wewnętrznym modułem równoważenia obciążenia, jeśli agent kompilacji jest dostępny w Internecie i w tej samej sieci co to środowisko. Dlatego w przypadku usługi Azure DevOps, jeśli agent kompilacji został utworzony w tej samej sieci wirtualnej co środowisko ASE z wewnętrznym modułem równoważenia obciążenia (być może w innej podsieci), to będzie mógł ściągnąć kod z usługi Git Azure DevOps i wdrożyć go w tym środowisku. Jeśli nie chcesz tworzyć własnego agenta kompilacji, musisz użyć systemu ciągłej integracji wykorzystującego model ściągania, takiego jak Dropbox.
 
-Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Ta domena jest wyświetlana w profilu publikowania aplikacji i w bloku portalu aplikacji (**Przegląd** > **Podstawy** oraz **Właściwości**). Jeśli masz ILB ASE z sufiksem domeny *&lt;ase&gt;. appserviceenvironment.NET*, a aplikacja o nazwie "Moja *test*", użyj *testu.&lt;nazwa środowiska ASE&gt;. appserviceenvironment.NET* dla usługi FTP i  *mytest.scm.contoso.net* do wdrożenia w sieci Web.
+Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Ta domena jest wyświetlana w profilu publikowania aplikacji i w bloku portalu aplikacji (**Przegląd** > **Podstawy** oraz **Właściwości**). Jeśli masz ILB ASE z sufiksem domeny *&lt;ase&gt;. appserviceenvironment.NET*, a aplikacja o nazwie "Moja *test*", użyj *testu.&lt;nazwa środowiska ASE&gt;. appserviceenvironment.net* dla usługi FTP i *mytest.SCM.contoso.NET* do wdrożenia w sieci Web.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Konfigurowanie ILB ASE z urządzeniem WAF ##
 

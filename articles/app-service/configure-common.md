@@ -1,26 +1,17 @@
 ---
-title: Konfigurowanie aplikacji w portalu — Azure App Service
-description: Dowiedz się, jak skonfigurować typowe ustawienia aplikacji App Service w Azure Portal.
+title: Konfigurowanie aplikacji w portalu
+description: Dowiedz się, jak skonfigurować typowe ustawienia aplikacji App Service w Azure Portal. Ustawienia aplikacji, parametry połączeń, platforma, stos języka, kontener itp.
 keywords: Azure App Service, aplikacja sieci Web, ustawienia aplikacji, zmienne środowiskowe
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c22f88487fd8b34d48d3012c706bb0415760b21e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470941"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671959"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Skonfiguruj aplikację App Service w Azure Portal
 
@@ -34,7 +25,7 @@ W [Azure Portal]przejdź do strony zarządzania aplikacji. W menu po lewej stron
 
 ![Ustawienia aplikacji](./media/configure-common/open-ui.png)
 
-W przypadku deweloperów ASP.NET i ASP.NET Core, Ustawianie ustawień aplikacji w App Service przypomina ich ustawianie w `<appSettings>` w *pliku Web. config* lub *appSettings. JSON*, ale wartości w App Service zastępują te pliki w *pliku Web. config* lub *appSettings. JSON* . Ustawienia programistyczne (na przykład lokalne hasło MySQL) można zachować w *pliku Web. config* lub *appSettings. JSON*, ale klucze tajne produkcji (na przykład hasło bazy danych Azure mysql) bezpiecznie w App Service. Ten sam kod używa ustawień programistycznych podczas debugowania lokalnego i korzysta z wpisów tajnych produkcji w przypadku wdrożenia na platformie Azure.
+W przypadku deweloperów ASP.NET i ASP.NET Core, Ustawianie ustawień aplikacji w App Service przypomina ich ustawianie w `<appSettings>` w *pliku Web. config* lub *appSettings. JSON*, ale wartości w App Service zastępują te pliki w *pliku Web. config* lub *appSettings. JSON*. Ustawienia programistyczne (na przykład lokalne hasło MySQL) można zachować w *pliku Web. config* lub *appSettings. JSON*, ale klucze tajne produkcji (na przykład hasło bazy danych Azure mysql) bezpiecznie w App Service. Ten sam kod używa ustawień programistycznych podczas debugowania lokalnego i korzysta z wpisów tajnych produkcji w przypadku wdrożenia na platformie Azure.
 
 Inne stosy języka, podobnie, pobierają ustawienia aplikacji jako zmienne środowiskowe w czasie wykonywania. Aby zapoznać się z procedurami specyficznymi dla stosu, zobacz:
 
@@ -89,7 +80,7 @@ Ustawienia aplikacji mają następujące formatowanie JSON:
 ]
 ```
 
-## <a name="configure-connection-strings"></a>Konfigurowanie parametrów połączenia
+## <a name="configure-connection-strings"></a>Konfigurowanie parametrów połączeń
 
 W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stronie aplikacji kliknij pozycję **konfiguracja** > **Ustawienia aplikacji**.
 
@@ -251,7 +242,7 @@ Zobacz [Konfigurowanie niestandardowego kontenera systemu Linux dla Azure App Se
 
 - [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]
 - [Konfigurowanie środowisk przejściowych w usłudze Azure App Service]
-- [Zabezpiecz niestandardową nazwę DNS z powiązaniem SSL w Azure App Service](configure-ssl-bindings.md)
+- [Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL w usłudze Azure App Service](configure-ssl-bindings.md)
 - [Włączanie dzienników diagnostycznych](troubleshoot-diagnostic-logs.md)
 - [Skalowanie aplikacji w Azure App Service]
 - [Podstawowe informacje o monitorowaniu w Azure App Service]

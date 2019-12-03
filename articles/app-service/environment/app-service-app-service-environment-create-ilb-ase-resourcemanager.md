@@ -1,25 +1,18 @@
 ---
-title: Tworzenie ILB ASE przy użyciu szablonów Azure Resource Manager — App Service | Microsoft Docs
-description: Dowiedz się, jak utworzyć środowisko ASE wewnętrznego modułu równoważenia obciążenia przy użyciu szablonów Azure Resource Manager.
-services: app-service
-documentationcenter: ''
+title: Tworzenie ILB ASE v1
+description: Utwórz środowisko App Service przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB ASE). Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 862887e1e530bfdca4359e914b9a81c9360ac4dd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9cbd8b178bfd2edcf99e3bba9b0d967aebcb5cc2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070423"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688771"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Jak tworzyć środowisko ASE wewnętrznego modułu równoważenia przy użyciu szablonów usługi Azure Resource Manager
 
@@ -43,9 +36,9 @@ Przykładowy szablon Azure Resource Manager i skojarzony z nim plik parametrów 
 
 Większość parametrów w pliku *azuredeploy. Parameters. JSON* jest często używanych do tworzenia zarówno ILB środowisk ASE, jak i środowisk ASE powiązanych z publicznym adresem VIP.  Poniższa lista wywołuje Parametry specjalne uwagi lub są unikatowe, podczas tworzenia ILB ASE:
 
-* *internalLoadBalancingMode*:  W większości przypadków ta wartość to 3, co oznacza, że zarówno ruch HTTP/HTTPS na portach 80/443, jak i porty kontroli/kanału danych nasłuchune przez usługę FTP w środowisku ASE, będą powiązane z adresem wewnętrznym sieci wirtualnej z przydzieloną ILB.  Jeśli ta właściwość jest ustawiona na wartość 2, tylko porty powiązane z usługą FTP (zarówno kanały kontroli i danych) będą powiązane z adresem ILB, podczas gdy ruch HTTP/HTTPS pozostanie w publicznym wirtualnym adresie IP.
-* *dnsSuffix*:  Ten parametr definiuje domyślną domenę główną, która zostanie przypisana do środowiska ASE.  W publicznej odmianie Azure App Service domyślną domeną główną dla wszystkich aplikacji sieci Web jest *azurewebsites.NET*.  Jednak ponieważ środowisko ILB ASE jest wewnętrzne dla sieci wirtualnej klienta, nie ma sensu używania domyślnej domeny głównej usługi publicznej.  Zamiast tego, ILB ASE powinien mieć domyślną domenę główną, która ma Sense w przypadku użycia w wewnętrznej sieci wirtualnej firmy.  Na przykład hipotetyczna firma Contoso Corporation może używać domyślnej domeny głównej *Internal-contoso.com* dla aplikacji, które mają być rozpoznawalne i dostępne w sieci wirtualnej firmy Contoso. 
-* *ipSslAddressCount*:  Ten parametr jest automatycznie domyślną wartością 0 w pliku *azuredeploy. JSON* , ponieważ ILB środowisk ASE ma tylko jeden adres ILB.  Brak jawnych adresów IP-SSL dla środowiska ILB ASE, a w związku z tym Pula adresów IP-SSL dla ILB ASE musi mieć wartość zero, w przeciwnym razie wystąpi błąd aprowizacji. 
+* *internalLoadBalancingMode*: w większości przypadków to 3, co oznacza, że zarówno ruch http/https na portach 80/443, jak i porty kontroli/kanału danych nasłuchune przez usługę FTP w środowisku ASE, będą powiązane z adresem wewnętrznym sieci wirtualnej z przydzielonym ILB.  Jeśli ta właściwość jest ustawiona na wartość 2, tylko porty powiązane z usługą FTP (zarówno kanały kontroli i danych) będą powiązane z adresem ILB, podczas gdy ruch HTTP/HTTPS pozostanie w publicznym wirtualnym adresie IP.
+* *dnsSuffix*: ten parametr definiuje domyślną domenę główną, która zostanie przypisana do środowiska ASE.  W publicznej odmianie Azure App Service domyślną domeną główną dla wszystkich aplikacji sieci Web jest *azurewebsites.NET*.  Jednak ponieważ środowisko ILB ASE jest wewnętrzne dla sieci wirtualnej klienta, nie ma sensu używania domyślnej domeny głównej usługi publicznej.  Zamiast tego, ILB ASE powinien mieć domyślną domenę główną, która ma Sense w przypadku użycia w wewnętrznej sieci wirtualnej firmy.  Na przykład hipotetyczna firma Contoso Corporation może używać domyślnej domeny głównej *Internal-contoso.com* dla aplikacji, które mają być rozpoznawalne i dostępne w sieci wirtualnej firmy Contoso. 
+* *ipSslAddressCount*: ten parametr jest automatycznie domyślną wartością 0 w pliku *azuredeploy. JSON* , ponieważ środowisk ASE ILB ma tylko jeden adres ILB.  Brak jawnych adresów IP-SSL dla środowiska ILB ASE, a w związku z tym Pula adresów IP-SSL dla ILB ASE musi mieć wartość zero, w przeciwnym razie wystąpi błąd aprowizacji. 
 
 Po wypełnieniu pliku *azuredeploy. Parameters. JSON* dla środowiska ILB ASE, ILB ASE można utworzyć przy użyciu następującego fragmentu kodu programu PowerShell.  Zmień ścieżki plików tak, aby pasowały do lokalizacji plików szablonów Azure Resource Manager znajdujących się na komputerze.  Należy również pamiętać, aby podać własne wartości nazwy wdrożenia Azure Resource Manager i nazwy grupy zasobów.
 
@@ -57,12 +50,12 @@ Po wypełnieniu pliku *azuredeploy. Parameters. JSON* dla środowiska ILB ASE, I
 Po przesłaniu szablonu Azure Resource Manager środowisko ASE zostanie utworzone dopiero po kilku godzinach.  Po zakończeniu tworzenia środowisko ILB ASE zostanie wyświetlone w obszarze pracy portalu na liście środowisk App Service dla subskrypcji, która wyzwoliła wdrożenie.
 
 ## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Przekazywanie i Konfigurowanie certyfikatu protokołu SSL "default"
-Po utworzeniu ILB ASE należy skojarzyć certyfikat SSL ze środowiskiem ASE jako "domyślny" certyfikat SSL używany do ustanawiania połączeń SSL z aplikacjami.  W przypadku korzystania z przykładu hipotetycznej firmy Contoso Corporation, jeśli domyślny sufiks DNS środowiska ASE to *Internal-contoso.com*, połączenie *https://some-random-app.internal-contoso.com* z wymaga certyfikatu SSL, który jest prawidłowy dla * *. Internal-contoso.com*. 
+Po utworzeniu ILB ASE należy skojarzyć certyfikat SSL ze środowiskiem ASE jako "domyślny" certyfikat SSL używany do ustanawiania połączeń SSL z aplikacjami.  W przypadku korzystania z przykładu hipotetycznej firmy Contoso Corporation, jeśli domyślny sufiks DNS środowiska ASE to *Internal-contoso.com*, połączenie z *https://some-random-app.internal-contoso.com* wymaga certyfikatu SSL, który jest prawidłowy dla * *. Internal-contoso.com*. 
 
 Istnieje wiele sposobów uzyskania ważnego certyfikatu SSL, w tym wewnętrzne urzędy certyfikacji, zakup certyfikatu od zewnętrznego wystawcy i użycie certyfikatu z podpisem własnym.  Niezależnie od źródła certyfikatu SSL należy poprawnie skonfigurować następujące atrybuty certyfikatu:
 
-* *Podmiot*:  Ten atrybut musi być ustawiony na * *. your-root-Domain-here.com*
-* *Alternatywna nazwa podmiotu*:  Ten atrybut musi zawierać zarówno * *. your-root-Domain-here.com*, jak i * *. SCM.your-root-Domain-here.com*.  Przyczyna drugiego wpisu polega na tym, że połączenia SSL z witryną SCM/kudu skojarzoną z każdą aplikacją zostaną wykonane przy użyciu adresu formularza *Your-App-Name.SCM.your-root-Domain-here.com*.
+* *Podmiot*: ten atrybut musi być ustawiony na * *. your-root-Domain-here.com*
+* *Alternatywna nazwa podmiotu*: ten atrybut musi zawierać zarówno * *. your-root-Domain-here.com*, jak i * *. SCM.your-root-Domain-here.com*.  Przyczyna drugiego wpisu polega na tym, że połączenia SSL z witryną SCM/kudu skojarzoną z każdą aplikacją zostaną wykonane przy użyciu adresu formularza *Your-App-Name.SCM.your-root-Domain-here.com*.
 
 Mając na ręką prawidłowy certyfikat SSL, wymagane są dwa dodatkowe kroki przygotowawcze.  Certyfikat SSL musi zostać przekonwertowany/zapisany jako plik PFX.  Należy pamiętać, że plik PFX musi zawierać wszystkie certyfikaty pośrednie i główne, a także musi być zabezpieczony hasłem.
 
@@ -86,12 +79,12 @@ Po pomyślnym wygenerowaniu i przekonwertowaniu certyfikatu SSL na ciąg zakodow
 
 Poniżej wymieniono parametry w pliku *azuredeploy. Parameters. JSON* :
 
-* *appServiceEnvironmentName*:  Nazwa konfigurowanego ILB środowiska ASE.
-* *existingAseLocation*:  Ciąg tekstowy zawierający region platformy Azure, w którym wdrożono ILB ASE.  Na przykład:  "Południowo-środkowe stany USA".
-* *pfxBlobString*:  Based64 zakodowany ciąg reprezentacji pliku PFX.  Korzystając z podanego wcześniej fragmentu kodu, skopiuj ciąg zawarty w pliku "exportedcert. pfx. B64" i wklej go jako wartość atrybutu *pfxBlobString* .
-* *hasło*:  Hasło użyte do zabezpieczenia pliku PFX.
-* *certificateThumbprint*:  Odcisk palca certyfikatu.  Jeśli ta wartość zostanie pobrana z programu PowerShell (np. *$Certificate. Odcisk palca* ze starszego fragmentu kodu), można użyć wartości jako-is.  Jednakże w przypadku skopiowania wartości z okna dialogowego certyfikat systemu Windows należy pamiętać, aby rozdzielić spacje.  *CertificateThumbprint* powinien wyglądać następująco:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* Identyfikator *certyfikatu*:  Przyjazny identyfikator ciągu używany do wybrania tożsamości certyfikatu.  Nazwa jest używana jako część unikatowego identyfikatora Azure Resource Manager jednostki *Microsoft. Web/Certificates* reprezentującej certyfikat SSL.  Nazwa **musi** kończyć się następującym sufiksem: \_yourASENameHere_InternalLoadBalancingASE.  Ten sufiks jest używany przez portal jako wskaźnik, którego certyfikat jest używany do zabezpieczania środowiska ASE z włączoną obsługą ILB.
+* *appServiceEnvironmentName*: Nazwa KONFIGUROWANEgo ILB środowiska ASE.
+* *existingAseLocation*: ciąg tekstowy zawierający region platformy Azure, w którym WDROŻONO ILB ASE.  Na przykład: "Południowo-środkowe stany USA".
+* *pfxBlobString*: based64 zakodowany ciąg reprezentacji pliku PFX.  Korzystając z podanego wcześniej fragmentu kodu, skopiuj ciąg zawarty w pliku "exportedcert. pfx. B64" i wklej go jako wartość atrybutu *pfxBlobString* .
+* *hasło*: hasło użyte do zabezpieczenia pliku PFX.
+* *certificateThumbprint*: odcisk palca certyfikatu.  Jeśli ta wartość zostanie pobrana z programu PowerShell (np. *$Certificate. Odcisk palca* ze starszego fragmentu kodu), można użyć wartości jako-is.  Jednakże w przypadku skopiowania wartości z okna dialogowego certyfikat systemu Windows należy pamiętać, aby rozdzielić spacje.  *CertificateThumbprint* powinien wyglądać następująco: AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *certificateName*: przyjazny identyfikator ciągu używany do wybrania tożsamości certyfikatu.  Nazwa jest używana jako część unikatowego identyfikatora Azure Resource Manager jednostki *Microsoft. Web/Certificates* reprezentującej certyfikat SSL.  Nazwa **musi** kończyć się następującym sufiksem: \_yourASENameHere_InternalLoadBalancingASE.  Ten sufiks jest używany przez portal jako wskaźnik, którego certyfikat jest używany do zabezpieczania środowiska ASE z włączoną obsługą ILB.
 
 Poniżej przedstawiono skrócony przykład pliku *azuredeploy. Parameters. JSON* :
 
@@ -129,7 +122,7 @@ Po wypełnieniu pliku *azuredeploy. Parameters. JSON* można skonfigurować domy
 
 Po przesłaniu szablonu Azure Resource Manager zajmiemy się około 40 minut na fronton środowiska ASE w celu zastosowania zmiany.  Na przykład w przypadku domyślnego rozmiaru ASE przy użyciu dwóch frontonów szablon zajmie około godziny i dwadzieścia minut.  Gdy szablon jest uruchomiony, środowisko ASE nie będzie w stanie skalować.  
 
-Po zakończeniu szablonu aplikacje w ILB ASE są dostępne za pośrednictwem protokołu HTTPS, a połączenia będą zabezpieczone przy użyciu domyślnego certyfikatu protokołu SSL.  Domyślny certyfikat SSL będzie używany, gdy aplikacje na ILB ASE są rozkierowane przy użyciu kombinacji nazwy aplikacji i domyślnej nazwy hosta.  Na przykład *https://mycustomapp.internal-contoso.com* użyjesz domyślnego certyfikatu SSL dla * *. Internal-contoso.com*.
+Po zakończeniu szablonu aplikacje w ILB ASE są dostępne za pośrednictwem protokołu HTTPS, a połączenia będą zabezpieczone przy użyciu domyślnego certyfikatu protokołu SSL.  Domyślny certyfikat SSL będzie używany, gdy aplikacje na ILB ASE są rozkierowane przy użyciu kombinacji nazwy aplikacji i domyślnej nazwy hosta.  Na przykład *https://mycustomapp.internal-contoso.com* będzie używać domyślnego certyfikatu SSL dla * *. Internal-contoso.com*.
 
 Jednak podobnie jak aplikacje działające w publicznej usłudze wielu dzierżawców, deweloperzy mogą również konfigurować niestandardowe nazwy hostów dla poszczególnych aplikacji, a następnie konfigurować unikatowe SNI SSL powiązania certyfikatów dla poszczególnych aplikacji.  
 

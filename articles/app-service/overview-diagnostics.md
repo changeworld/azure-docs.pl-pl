@@ -1,25 +1,18 @@
 ---
-title: Omówienie diagnostyki Azure App Service | Microsoft Docs
-description: Dowiedz się, jak rozwiązywać problemy z aplikacją za pomocą diagnostyki App Service.
+title: Narzędzie do diagnostyki i rozwiązywania
+description: Dowiedz się, jak rozwiązywać problemy z aplikacją w Azure App Service przy użyciu narzędzia diagnostyki i rozwiązywania w Azure Portal.
 keywords: App Service, Azure App Service, Diagnostyka, pomoc techniczna, aplikacja sieci Web, rozwiązywanie problemów, Samopomocowa
-services: app-service
-documentationcenter: ''
 author: jen7714
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 2919c7a2fa3a8912de0272af5131583988184704
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e06e71d4436ac6c64ff2edc876d7849d084482f8
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755531"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671630"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Omówienie diagnostyki Azure App Service
 

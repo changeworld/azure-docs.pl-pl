@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: bd099b9d76e17eda36be1650ef5081e5aaa7e53a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9338f0e26595c1ab25ab51578880daf8c0c5bbc4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "67303543"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672450"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Szybki start: Opracowywanie w usłudze Azure Kubernetes Service (AKS) przy użyciu wersji roboczej
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Szybki Start: Programowanie w usłudze Azure Kubernetes Service (AKS) przy użyciu wersji roboczej
 
 Wersja robocza to narzędzie typu "open source", które ułatwia pakowanie i uruchamianie kontenerów aplikacji w klastrze Kubernetes. Za pomocą wersji roboczej można szybko ponownie wdrożyć aplikację w celu Kubernetes, gdy nastąpi zmiana kodu, bez konieczności zatwierdzania zmian w systemie kontroli wersji. Aby uzyskać więcej informacji na temat wersji roboczej, zobacz [dokumentację roboczą w witrynie GitHub][draft-documentation].
 
@@ -26,7 +26,7 @@ W tym artykule pokazano, jak używać pakietu Draft i uruchamiać aplikację na 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
 * [Zainstalowany interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Zainstalowano i skonfigurowano platformę Docker. Platforma Docker zawiera pakiety, które konfigurują platformę Docker w systemie [Mac][docker-for-mac], [Windows][docker-for-windows]lub [Linux][docker-for-linux] .
-* [Helm](https://github.com/helm/helm/blob/master/docs/install.md).
+* [Helm](https://github.com/helm/helm#install).
 * [Zainstalowano wersję roboczą][draft-documentation].
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Tworzenie klastra usługi Azure Kubernetes Service
@@ -113,7 +113,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 Przed wdrożeniem Helm w klastrze AKS z włączoną funkcją RBAC należy mieć konto usługi i powiązanie roli dla usługi. Aby uzyskać więcej informacji na temat zabezpieczania Helm/do usługi w klastrze z obsługą RBAC, zobacz odniesień [, przestrzenie nazw i RBAC][tiller-rbac]. Jeśli w klastrze AKS nie włączono kontroli RBAC, Pomiń ten krok.
 
-Utwórz plik o nazwie `helm-rbac.yaml` i skopiuj w następującym YAML:
+Utwórz plik o nazwie `helm-rbac.yaml` i skopiuj go do następującej YAML:
 
 ```yaml
 apiVersion: v1
@@ -136,7 +136,7 @@ subjects:
     namespace: kube-system
 ```
 
-Utwórz konto usługi i powiązanie roli za pomocą `kubectl apply` polecenia:
+Utwórz konto usługi i powiązanie roli za pomocą polecenia `kubectl apply`:
 
 ```console
 kubectl apply -f helm-rbac.yaml
@@ -151,7 +151,7 @@ helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="lin
 
 ## <a name="configure-draft"></a>Konfigurowanie wersji roboczej
 
-Jeśli nie skonfigurowano wersji roboczej na komputerze lokalnym, `draft init`Uruchom polecenie:
+Jeśli nie skonfigurowano wersji roboczej na komputerze lokalnym, uruchom `draft init`:
 
 ```console
 $ draft init
@@ -162,7 +162,7 @@ Installing default pack repositories...
 Happy Sailing!
 ```
 
-Należy również skonfigurować wersję roboczą, aby korzystała z *LOGINSERVER* ACR. Następujące polecenie używa `draft config set` `mydraftacr.azurecr.io` jako rejestru.
+Należy również skonfigurować wersję roboczą, aby korzystała z *LOGINSERVER* ACR. Następujące polecenie używa `draft config set`, aby użyć `mydraftacr.azurecr.io` jako rejestru.
 
 ```console
 draft config set registry mydraftacr.azurecr.io
@@ -172,7 +172,7 @@ Skonfigurowano wersję roboczą do korzystania z ACR, a wersja robocza może wyp
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 
-Ten przewodnik Szybki Start używa [przykładowej aplikacji Java z repozytorium GitHub][example-java]. Sklonuj aplikację z witryny GitHub i przejdź do `draft/examples/example-java/` katalogu.
+Ten przewodnik Szybki Start używa [przykładowej aplikacji Java z repozytorium GitHub][example-java]. Sklonuj aplikację z witryny GitHub i przejdź do katalogu `draft/examples/example-java/`.
 
 ```console
 git clone https://github.com/Azure/draft
@@ -181,7 +181,7 @@ cd draft/examples/example-java/
 
 ## <a name="run-the-sample-application-with-draft"></a>Uruchamianie przykładowej aplikacji z wersją roboczą
 
-Użyj polecenia `draft create` , aby przygotować aplikację.
+Użyj `draft create` polecenie, aby przygotować aplikację.
 
 ```console
 draft create
@@ -196,7 +196,7 @@ $ draft create
 --> Ready to sail
 ```
 
-Aby uruchomić przykładową aplikację w klastrze AKS, użyj `draft up` polecenia.
+Aby uruchomić przykładową aplikację w klastrze AKS, użyj polecenia `draft up`.
 
 ```console
 draft up
@@ -216,7 +216,7 @@ Inspect the logs with `draft logs 01CMZAR1F4T1TJZ8SWJQ70HCNH`
 
 ## <a name="connect-to-the-running-sample-application-from-your-local-machine"></a>Nawiązywanie połączenia z uruchomioną przykładową aplikacją z komputera lokalnego
 
-Aby przetestować aplikację, użyj `draft connect` polecenia.
+Aby przetestować aplikację, użyj polecenia `draft connect`.
 
 ```console
 draft connect
@@ -235,13 +235,13 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-Przejdź do aplikacji w przeglądarce przy użyciu `localhost` adresu URL, aby zobaczyć przykładową aplikację. W powyższym przykładzie adres URL to `http://localhost:49804`. Zatrzymaj połączenie przy użyciu `Ctrl+c`programu.
+Przejdź do aplikacji w przeglądarce przy użyciu adresu URL `localhost`, aby wyświetlić przykładową aplikację. W powyższym przykładzie adres URL jest `http://localhost:49804`. Zatrzymaj połączenie przy użyciu `Ctrl+c`.
 
 ## <a name="access-the-application-on-the-internet"></a>Dostęp do aplikacji w Internecie
 
 W poprzednim kroku utworzono połączenie serwera proxy z aplikacją znajdującą się w klastrze AKS. Podczas tworzenia i testowania aplikacji możesz chcieć udostępnić ją w Internecie. Aby udostępnić aplikację w Internecie, można utworzyć usługę Kubernetes z typem [modułu równoważenia obciążenia][kubernetes-service-loadbalancer].
 
-Aktualizacja `charts/example-java/values.yaml` w celu utworzenia usługi *modułu równoważenia obciążenia* . Zmień wartość parametru *Service. Type* z *ClusterIP* na moduł *równoważenia obciążenia*.
+Aktualizowanie `charts/example-java/values.yaml` w celu utworzenia usługi *modułu równoważenia obciążenia* . Zmień wartość parametru *Service. Type* z *ClusterIP* na moduł *równoważenia obciążenia*.
 
 ```yaml
 ...
@@ -253,7 +253,7 @@ service:
 ...
 ```
 
-Zapisz zmiany, zamknij plik i uruchom `draft up` polecenie, aby ponownie uruchomić aplikację.
+Zapisz zmiany, zamknij plik i uruchom `draft up`, aby ponownie uruchomić aplikację.
 
 ```console
 draft up
@@ -270,7 +270,7 @@ example-java-java   LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 example-java-java   LoadBalancer   10.0.141.72   52.175.224.118  80:32150/TCP   7m
 ```
 
-Przejdź do modułu równoważenia obciążenia aplikacji w przeglądarce przy użyciu *zewnętrznego adresu IP* , aby wyświetlić przykładową aplikację. W powyższym przykładzie adres IP to `52.175.224.118`.
+Przejdź do modułu równoważenia obciążenia aplikacji w przeglądarce przy użyciu *zewnętrznego adresu IP* , aby wyświetlić przykładową aplikację. W powyższym przykładzie adres IP jest `52.175.224.118`.
 
 ## <a name="iterate-on-the-application"></a>Wykonaj iterację aplikacji
 
@@ -284,7 +284,7 @@ Aktualizowanie wiadomości zwróconej w [wierszu 7 src/Main/Java/HelloWorld/Hell
     }
 ```
 
-Uruchom polecenie `draft up` , aby ponownie wdrożyć aplikację:
+Uruchom polecenie `draft up`, aby ponownie wdrożyć aplikację:
 
 ```console
 $ draft up

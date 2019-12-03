@@ -1,19 +1,16 @@
 ---
-title: Konfigurowanie magazynu przy użyciu Azure Files
-description: Jak skonfigurować Azure Files w kontenerze systemu Windows w usłudze App Service i połączyć się z nią.
+title: Dodawanie magazynu niestandardowego (kontener systemu Windows)
+description: Dowiedz się, jak dołączyć niestandardowy udział sieciowy w niestandardowym kontenerze systemu Windows w Azure App Service. Udostępnianie plików między aplikacjami, zdalne zarządzanie zawartością statyczną oraz uzyskiwanie dostępu lokalnie itp.
 author: msangapu-msft
-manager: gwallace
-ms.service: app-service
-ms.workload: web
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: 2c12bf45c033fea185d976f1e9d644183407b5ac
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: ad70bbe36369c03225079d1194043e6ceb109c6f
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297224"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671010"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Konfigurowanie Azure Files w kontenerze systemu Windows na App Service
 
@@ -36,7 +33,7 @@ W tym przewodniku pokazano, jak uzyskać dostęp do usługi Azure Storage w kont
 
 ## <a name="link-storage-to-your-web-app-preview"></a>Łączenie magazynu z aplikacją internetową (wersja zapoznawcza)
 
- Aby zainstalować udział Azure Files w katalogu w aplikacji App Service, użyj [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) polecenia. Typ magazynu musi być migracji pamięci.
+ Aby zainstalować udział Azure Files w katalogu w aplikacji App Service, użyj polecenia [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) . Typ magazynu musi być migracji pamięci.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory of form c:<directory name> >

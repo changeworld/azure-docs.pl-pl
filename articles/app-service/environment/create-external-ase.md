@@ -1,24 +1,18 @@
 ---
-title: Tworzenie zewnętrznego środowiska App Service — platforma Azure
-description: Wyjaśnia, jak utworzyć środowisko App Service podczas tworzenia aplikacji lub autonomicznej
-services: app-service
-documentationcenter: na
+title: Tworzenie zewnętrznego środowiska ASE
+description: Dowiedz się, jak utworzyć środowisko App Service przy użyciu aplikacji lub utworzyć autonomiczną (pustą) ASE.
 author: ccompy
-manager: stefsch
 ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 19d58ed90de4bdbd3cd7606d15c115bb1633770a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5ec9a99f55c2c9a3cb487ad7d69610a512d5b8bd
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069688"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687239"
 ---
 # <a name="create-an-external-app-service-environment"></a>Tworzenie zewnętrznego środowiska App Service
 
@@ -38,9 +32,9 @@ W tym artykule pokazano, jak utworzyć zewnętrzny środowisko ASE. Aby zapozna�
 
 Po utworzeniu środowiska ASE nie można zmienić następujących danych:
 
-- Location
-- Subscription
-- Resource group
+- Lokalizacja
+- Subskrypcja
+- Grupa zasobów
 - Użyta Sieć wirtualna
 - Używana podsieć
 - Rozmiar podsieci
@@ -54,7 +48,7 @@ Po utworzeniu środowiska ASE nie można zmienić następujących danych:
 Istnieją trzy sposoby tworzenia środowiska ASE:
 
 - **Podczas tworzenia planu App Service**. Ta metoda umożliwia utworzenie planu ASE i App Service w jednym kroku.
-- **Jako akcja**samodzielna. Ta metoda tworzy autonomiczne środowisko ASE, które jest środowiskiem ASE bez żadnych elementów. Ta metoda jest bardziej zaawansowanym procesem tworzenia środowiska ASE. Służy do tworzenia środowiska ASE z ILB.
+- **Jako akcja samodzielna**. Ta metoda tworzy autonomiczne środowisko ASE, które jest środowiskiem ASE bez żadnych elementów. Ta metoda jest bardziej zaawansowanym procesem tworzenia środowiska ASE. Służy do tworzenia środowiska ASE z ILB.
 - **Z szablonu Azure Resource Manager**. Ta metoda jest dla zaawansowanych użytkowników. Aby uzyskać więcej informacji, zobacz [Tworzenie środowiska ASE na podstawie szablonu][MakeASEfromTemplate].
 
 Zewnętrzny środowisko ASE ma publiczny adres VIP, co oznacza, że cały ruch HTTP/HTTPS do aplikacji w środowisku ASE trafi do internetowego adresu IP. Środowisko ASE z ILB ma adres IP z podsieci używanej przez środowisko ASE. Aplikacje hostowane w środowisku ILB ASE nie są uwidaczniane bezpośrednio w Internecie.
@@ -65,7 +59,7 @@ Plan App Service jest kontenerem aplikacji. Podczas tworzenia aplikacji w App Se
 
 Aby utworzyć środowisko ASE podczas tworzenia planu App Service:
 
-1. W [Azure Portal](https://portal.azure.com/)wybierz pozycję **Utwórz zasób** > **Sieć Web + aplikacje mobilne** > **aplikacji sieci Web**.
+1. W [Azure Portal](https://portal.azure.com/)wybierz pozycję **utwórz zasób** > **Sieć Web + aplikacje mobilne** > **aplikacji sieci Web**.
 
     ![Tworzenie aplikacji sieci Web][1]
 
@@ -77,11 +71,11 @@ Aby utworzyć środowisko ASE podczas tworzenia planu App Service:
 
 5. Wybierz plan App Service, a następnie wybierz pozycję **Utwórz nowy**. Aplikacje sieci Web w systemie Linux i aplikacje sieci Web systemu Windows nie mogą znajdować się w tym samym planie App Service, ale mogą być w tej samej App Service Environment. 
 
-    ![Nowy plan usługi App Service][2]
+    ![Nowy plan App Service][2]
 
 6. Z listy rozwijanej **Lokalizacja** wybierz region, w którym chcesz utworzyć środowisko ASE. W przypadku wybrania istniejącego środowiska ASE nowe środowisko ASE nie zostanie utworzone. W wybranym środowisku ASE zostanie utworzony plan App Service. 
 
-7. Wybierz pozycję **warstwa cenowa**i wybierz jedną z wyizolowanych jednostek SKU cenowych. W przypadku wybrania karty izolowanej jednostki SKU i lokalizacji, która nie jest ASE, w tej lokalizacji zostanie utworzony nowy środowisko ASE. Aby rozpocząć proces tworzenia środowiska ASE, wybierz pozycję **Wybierz**. **Izolowana** jednostka SKU jest dostępna tylko w połączeniu z środowiskiem ASE. Nie można również używać żadnej innej jednostki SKU cenowej w środowisku ASEinnym niż izolowany. 
+7. Wybierz pozycję **warstwa cenowa**i wybierz jedną z **wyizolowanych** jednostek SKU cenowych. W przypadku wybrania karty **izolowanej** jednostki SKU i lokalizacji, która nie jest ASE, w tej lokalizacji zostanie utworzony nowy środowisko ASE. Aby rozpocząć proces tworzenia środowiska ASE, wybierz pozycję **Wybierz**. **Izolowana** jednostka SKU jest dostępna tylko w połączeniu z środowiskiem ASE. Nie można również używać żadnej innej jednostki SKU cenowej w środowisku ASE innym niż **izolowany**. 
 
     ![Wybór warstwy cenowej][3]
 
@@ -89,13 +83,13 @@ Aby utworzyć środowisko ASE podczas tworzenia planu App Service:
 
     ![Nazwa nowego planu App Service][4]
 
-9. Określ szczegóły sieci wirtualnej platformy Azure. Wybierz opcję **Utwórz nową** lub **Wybierz istniejącą**. Opcja wyboru istniejącej sieci wirtualnej jest dostępna tylko wtedy, gdy w wybranym regionie znajduje się sieć wirtualna. W przypadku wybrania opcji **Utwórz nową**wprowadź nazwę sieci wirtualnej. Zostanie utworzona nowa Menedżer zasobów Sieć wirtualna o tej nazwie. Używa przestrzeni `192.168.250.0/23` adresowej w wybranym regionie. W przypadku wybrania opcji **Wybierz istniejący**należy:
+9. Określ szczegóły sieci wirtualnej platformy Azure. Wybierz opcję **Utwórz nową** lub **Wybierz istniejącą**. Opcja wyboru istniejącej sieci wirtualnej jest dostępna tylko wtedy, gdy w wybranym regionie znajduje się sieć wirtualna. W przypadku wybrania opcji **Utwórz nową**wprowadź nazwę sieci wirtualnej. Zostanie utworzona nowa Menedżer zasobów Sieć wirtualna o tej nazwie. Używa przestrzeni adresowej `192.168.250.0/23` w wybranym regionie. W przypadku wybrania opcji **Wybierz istniejący**należy:
 
     a. Wybierz blok adresów sieci wirtualnej, jeśli masz więcej niż jeden.
 
     b. Wprowadź nową nazwę podsieci.
 
-    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać wystarczająco duży rozmiar, aby uwzględnić przyszły rozwój środowiska ASE.* Zalecane `/24`jest, które mają 128 adresów i obsługujące środowisko ASE o maksymalnym rozmiarze. Nie zalecamy `/28`, na przykład, ponieważ dostępne są tylko 16 adresów. Infrastruktura używa co najmniej siedmiu adresów i sieci platformy Azure używa innej 5. `/28` W podsieci pozostało maksymalne skalowanie wystąpień planu 4 App Service dla zewnętrznego środowiska ASE i tylko 3 App Service wystąpienia planu dla środowiska ILB ASE.
+    d. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać wystarczająco duży rozmiar, aby uwzględnić przyszły rozwój środowiska ASE.* Zalecamy `/24`, które mają 128 adresów i obsługujące środowisko ASE o maksymalnym rozmiarze. Nie zalecamy `/28`, na przykład ponieważ dostępne są tylko 16 adresów. Infrastruktura używa co najmniej siedmiu adresów i sieci platformy Azure używa innej 5. W podsieci `/28` pozostało maksymalne skalowanie do 4 App Service wystąpienia planu dla zewnętrznego środowiska ASE i tylko 3 App Service wystąpienia planu dla środowiska ILB ASE.
 
     d. Wybierz zakres adresów IP podsieci.
 
@@ -103,7 +97,7 @@ Aby utworzyć środowisko ASE podczas tworzenia planu App Service:
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Tworzenie aplikacji sieci Web środowiska ASE i systemu Linux przy użyciu niestandardowego obrazu platformy Docker
 
-1. W [Azure Portal](https://portal.azure.com/) **Utwórz** > sieć Web + aplikacje mobilnezasobów > **Web App for Containers.** 
+1. W [Azure Portal](https://portal.azure.com/) **utwórz zasób** > **Sieć Web + aplikacje mobilne** > **Web App for Containers.** 
 
     ![Tworzenie aplikacji sieci Web][7]
 
@@ -113,11 +107,11 @@ Aby utworzyć środowisko ASE podczas tworzenia planu App Service:
 
 1. Wybierz plan App Service, a następnie wybierz pozycję **Utwórz nowy**. Aplikacje sieci Web w systemie Linux i aplikacje sieci Web systemu Windows nie mogą znajdować się w tym samym planie App Service, ale mogą być w tej samej App Service Environment. 
 
-    ![Nowy plan usługi App Service][8]
+    ![Nowy plan App Service][8]
 
 1. Z listy rozwijanej **Lokalizacja** wybierz region, w którym chcesz utworzyć środowisko ASE. W przypadku wybrania istniejącego środowiska ASE nowe środowisko ASE nie zostanie utworzone. W wybranym środowisku ASE zostanie utworzony plan App Service. 
 
-1. Wybierz pozycję **warstwa cenowa**i wybierz jedną z wyizolowanych jednostek SKU cenowych. W przypadku wybrania karty izolowanej jednostki SKU i lokalizacji, która nie jest ASE, w tej lokalizacji zostanie utworzony nowy środowisko ASE. Aby rozpocząć proces tworzenia środowiska ASE, wybierz pozycję **Wybierz**. **Izolowana** jednostka SKU jest dostępna tylko w połączeniu z środowiskiem ASE. Nie można również używać żadnej innej jednostki SKU cenowej w środowisku ASEinnym niż izolowany. 
+1. Wybierz pozycję **warstwa cenowa**i wybierz jedną z **wyizolowanych** jednostek SKU cenowych. W przypadku wybrania karty **izolowanej** jednostki SKU i lokalizacji, która nie jest ASE, w tej lokalizacji zostanie utworzony nowy środowisko ASE. Aby rozpocząć proces tworzenia środowiska ASE, wybierz pozycję **Wybierz**. **Izolowana** jednostka SKU jest dostępna tylko w połączeniu z środowiskiem ASE. Nie można również używać żadnej innej jednostki SKU cenowej w środowisku ASE innym niż **izolowany**. 
 
     ![Wybór warstwy cenowej][3]
 
@@ -125,13 +119,13 @@ Aby utworzyć środowisko ASE podczas tworzenia planu App Service:
 
     ![Nazwa nowego planu App Service][4]
 
-1. Określ szczegóły sieci wirtualnej platformy Azure. Wybierz opcję **Utwórz nową** lub **Wybierz istniejącą**. Opcja wyboru istniejącej sieci wirtualnej jest dostępna tylko wtedy, gdy w wybranym regionie znajduje się sieć wirtualna. W przypadku wybrania opcji **Utwórz nową**wprowadź nazwę sieci wirtualnej. Zostanie utworzona nowa Menedżer zasobów Sieć wirtualna o tej nazwie. Używa przestrzeni `192.168.250.0/23` adresowej w wybranym regionie. W przypadku wybrania opcji **Wybierz istniejący**należy:
+1. Określ szczegóły sieci wirtualnej platformy Azure. Wybierz opcję **Utwórz nową** lub **Wybierz istniejącą**. Opcja wyboru istniejącej sieci wirtualnej jest dostępna tylko wtedy, gdy w wybranym regionie znajduje się sieć wirtualna. W przypadku wybrania opcji **Utwórz nową**wprowadź nazwę sieci wirtualnej. Zostanie utworzona nowa Menedżer zasobów Sieć wirtualna o tej nazwie. Używa przestrzeni adresowej `192.168.250.0/23` w wybranym regionie. W przypadku wybrania opcji **Wybierz istniejący**należy:
 
     a. Wybierz blok adresów sieci wirtualnej, jeśli masz więcej niż jeden.
 
     b. Wprowadź nową nazwę podsieci.
 
-    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać wystarczająco duży rozmiar, aby uwzględnić przyszły rozwój środowiska ASE.* Zalecane `/24`jest, które mają 128 adresów i obsługujące środowisko ASE o maksymalnym rozmiarze. Nie zalecamy `/28`, na przykład, ponieważ dostępne są tylko 16 adresów. Infrastruktura używa co najmniej siedmiu adresów i sieci platformy Azure używa innej 5. `/28` W podsieci pozostało maksymalne skalowanie wystąpień planu 4 App Service dla zewnętrznego środowiska ASE i tylko 3 App Service wystąpienia planu dla środowiska ILB ASE.
+    d. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać wystarczająco duży rozmiar, aby uwzględnić przyszły rozwój środowiska ASE.* Zalecamy `/24`, które mają 128 adresów i obsługujące środowisko ASE o maksymalnym rozmiarze. Nie zalecamy `/28`, na przykład ponieważ dostępne są tylko 16 adresów. Infrastruktura używa co najmniej siedmiu adresów i sieci platformy Azure używa innej 5. W podsieci `/28` pozostało maksymalne skalowanie do 4 App Service wystąpienia planu dla zewnętrznego środowiska ASE i tylko 3 App Service wystąpienia planu dla środowiska ILB ASE.
 
     d. Wybierz zakres adresów IP podsieci.
 
@@ -147,7 +141,7 @@ Aby utworzyć środowisko ASE podczas tworzenia planu App Service:
 
 Jeśli tworzysz autonomiczną aplikację ASE, nie ma nic w nim. Pusta środowisko ASE nadal jest miesięczną opłatą za infrastrukturę. Wykonaj następujące kroki, aby utworzyć środowisko ASE z ILB lub utworzyć środowisko ASE w jego własnej grupie zasobów. Po utworzeniu środowiska ASE można tworzyć w nim aplikacje przy użyciu normalnego procesu. Wybierz nowy środowisko ASE jako lokalizację.
 
-1. Wyszukaj **App Service Environment**portalu Azure Marketplace, a następnie wybierz pozycję **Utwórz zasób** > **Sieć Web** > **App Service Environment**Mobile. 
+1. Przeszukaj **App Service Environment**portalu Azure Marketplace, a następnie wybierz pozycję **Utwórz zasób** > **sieci Web Mobile** > **App Service Environment**. 
 
 1. Wprowadź nazwę środowiska ASE. Ta nazwa jest używana dla aplikacji utworzonych w środowisku ASE. Jeśli nazwa to *mynewdemoase*, nazwa domeny podrzędnej to *. mynewdemoase.p.azurewebsites.NET*. Jeśli utworzysz aplikację o nazwie *MojaAplikacja*, adresowanie jest możliwe pod adresem mytestapp.mynewdemoase.p.azurewebsites.NET. Nie można użyć odstępu w nazwie. Jeśli używasz wielkich liter, nazwa domeny to łączna mała wersja nazwy. Jeśli używasz ILB, Nazwa środowiska ASE nie jest używana w poddomenie, ale zamiast tego jest jawnie określona podczas tworzenia ASE.
 

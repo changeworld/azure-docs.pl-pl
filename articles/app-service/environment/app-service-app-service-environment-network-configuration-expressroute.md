@@ -1,25 +1,18 @@
 ---
-title: Szczegóły konfiguracji sieci dla usługi Azure ExpressRoute — App Service
-description: Szczegóły konfiguracji sieci dla App Service Environment w usłudze PowerApps w sieciach wirtualnych połączonych z obwodem usługi Azure ExpressRoute.
-services: app-service
-documentationcenter: ''
+title: Konfigurowanie usługi Azure ExpressRoute w wersji 1
+description: Konfiguracja sieci dla App Service Environment aplikacji PowerApps z usługą Azure ExpressRoute. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: b10bd15538ecca7934a397ca63db1150a0bfc32c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070035"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688746"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Szczegóły konfiguracji sieci dla App Service Environment dla usługi PowerApps z usługą Azure ExpressRoute
 
@@ -94,20 +87,20 @@ W tej sekcji przedstawiono przykładową konfigurację UDR dla App Service Envir
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj Azure PowerShell ze [strony plików do pobrania platformy Azure][AzureDownloads]. Wybierz pobieranie z datą 2015 czerwca lub nowszą. W obszarze >  **narzędzia wiersza polecenia** **programu Windows PowerShell**wybierz pozycję **Zainstaluj** , aby zainstalować najnowsze polecenia cmdlet programu PowerShell.
+* Zainstaluj Azure PowerShell ze [strony plików do pobrania platformy Azure][AzureDownloads]. Wybierz pobieranie z datą 2015 czerwca lub nowszą. W obszarze **narzędzia wiersza polecenia** > **Windows PowerShell**wybierz pozycję **Zainstaluj** , aby zainstalować najnowsze polecenia cmdlet programu PowerShell.
 
 * Utwórz unikatową podsieć do wyłącznego użytku przez App Service Environment. Unikatowa podsieć zapewnia, że UDR zastosowana do podsieci otwiera ruch wychodzący tylko dla App Service Environment.
 
 > [!IMPORTANT]
 > Wdrażaj App Service Environment tylko po wykonaniu czynności konfiguracyjnych. Przed podjęciem próby wdrożenia App Service Environment upewnij się, że jest dostępna wychodząca łączność sieciowa.
 
-### <a name="step-1-create-a-route-table"></a>Krok 1: Tworzenie tabeli tras
+### <a name="step-1-create-a-route-table"></a>Krok 1. Tworzenie tabeli tras
 
 Utwórz tabelę tras o nazwie **DirectInternetRouteTable** w regionie platformy Azure zachodnie stany USA, jak pokazano w tym fragmencie kodu:
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>Krok 2: Tworzenie tras w tabeli
+### <a name="step-2-create-routes-in-the-table"></a>Krok 2. Tworzenie tras w tabeli
 
 Dodaj trasy do tabeli tras, aby włączyć wychodzący dostęp do Internetu.  
 
@@ -126,13 +119,13 @@ Alternatywnie można pobrać bieżącą, kompleksową listę zakresów CIDR uży
 > Pojedynczy UDR ma domyślny górny limit 100 tras. Należy "podsumować" zakresy adresów IP platformy Azure, aby mieściły się w limicie 100-trasie. Trasy zdefiniowane przez UDR muszą być bardziej specyficzne niż trasy anonsowane przez połączenie ExpressRoute.
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>Krok 3: Skojarz tabelę z podsiecią
+### <a name="step-3-associate-the-table-to-the-subnet"></a>Krok 3. Kojarzenie tabeli z podsiecią
 
 Skojarz tabelę tras z podsiecią, w której zamierzasz wdrożyć App Service Environment. To polecenie kojarzy tabelę **DirectInternetRouteTable** z podsiecią **ASESubnet** , która będzie zawierać App Service Environment.
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>Krok 4: Testowanie i Potwierdzanie trasy
+### <a name="step-4-test-and-confirm-the-route"></a>Krok 4. testowanie i potwierdzenie trasy
 
 Po powiązaniu tabeli tras z podsiecią Przetestuj i Potwierdź trasę.
 

@@ -1,24 +1,18 @@
 ---
-title: Konfigurowanie wymuszonego tunelowania środowiska App Service Environment — Azure
-description: Umożliwianie działania środowiska App Service Environment w przypadku wymuszonego tunelowania ruchu wychodzącego
-services: app-service
-documentationcenter: na
+title: Konfigurowanie wymuszonego tunelowania
+description: Dowiedz się, jak umożliwić App Service Environment pracy w przypadku wymuszonego tunelowania ruchu wychodzącego w sieci wirtualnej.
 author: ccompy
-manager: stefsch
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e80c0e4e57f8af067c17d0dcfefd26ce7ce8255f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0164ac3903c63632c97c4a089066cf6ad23b31b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069448"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687174"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurowanie wymuszonego tunelowania środowiska App Service Environment
 
@@ -101,13 +95,13 @@ Aby tunelować cały ruch wychodzący ze środowiska ASE, z wyjątkiem tego wych
 
 3. Pobierz adres, który będzie używany dla całego ruchu wychodzącego ze środowiska App Service Environment do Internetu. Jeśli ruch jest przekierowywany lokalnie, te adresy pochodzą z translatora adresów sieciowych (NAT) lub są adresami IP bramy. Jeśli ruch wychodzący środowiska App Service Environment ma być kierowany przez urządzenie NVA, adres ruchu wychodzącego to publiczny adres IP urządzenia NVA.
 
-4. _Aby ustawić adresy ruchu wychodzącego w istniejącym środowisku App Service Environment:_ wejdź na stronę resources.azure.com, a następnie przejdź do obszaru Subscription/\<identyfikator subskrypcji>/resourceGroups/\<grupa zasobów ase>/providers/Microsoft.Web/hostingEnvironments/\<nazwa ase>. Znajdziesz tam informacje w formacie JSON z opisem Twojego środowiska App Service Environment. Upewnij się, że u góry jest wyświetlana informacja **read/write** (odczyt/zapis). Wybierz pozycję **Edit** (Edytuj). Przewiń do samego dołu. Zmień ustawienie pozycji **userWhitelistedIpRanges** z wartości **null** na wartość podobną do następującej. Użyj adresów, które chcesz ustawić jako zakres adresów ruchu wychodzącego. 
+4. _Aby ustawić adresy ruchu wychodzącego w istniejącym środowisku App Service Environment:_ przejdź do strony resources.azure.com, a następnie do obszaru Subscription/\<identyfikator subskrypcji>/resourceGroups/\<grupa zasobów ase>/providers/Microsoft.Web/hostingEnvironments/\<nazwa ase>. Znajdziesz tam informacje w formacie JSON z opisem Twojego środowiska App Service Environment. Upewnij się, że u góry jest wyświetlana informacja **read/write** (odczyt/zapis). Wybierz pozycję **Edit** (Edytuj). Przewiń do samego dołu. Zmień ustawienie pozycji **userWhitelistedIpRanges** z wartości **null** na wartość podobną do następującej. Użyj adresów, które chcesz ustawić jako zakres adresów ruchu wychodzącego. 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
    Wybierz pozycję **PUT** u góry. Ta opcja wyzwala operację skalowania środowiska App Service Environment i dostosowanie zapory.
 
-_Aby utworzyć środowisko ASE z adresami ruchu wychodzącego_: Postępuj zgodnie z instrukcjami w temacie [tworzenie App Service Environment z szablonem][template] i ściąganie odpowiedniego szablonu.  Edytuj sekcję „zasoby” w pliku azuredeploy.json, ale nie w bloku „properties”, i dołącz wiersz dla elementu **userWhitelistedIpRanges** z własnymi wartościami.
+_Aby utworzyć środowisko ASE przy użyciu adresów ruchu_wychodzącego: Postępuj zgodnie z instrukcjami w temacie [Tworzenie App Service Environment z szablonem][template] i ściąganie odpowiedniego szablonu.  Edytuj sekcję „zasoby” w pliku azuredeploy.json, ale nie w bloku „properties”, i dołącz wiersz dla elementu **userWhitelistedIpRanges** z własnymi wartościami.
 
     "resources": [
       {

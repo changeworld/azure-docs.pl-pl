@@ -1,17 +1,17 @@
 ---
 title: Uzyskiwanie dostępu do źródła zmian w Azure Cosmos DB Azure Cosmos DB
 description: W tym artykule opisano różne opcje dostępne do odczytu i dostępu do źródła zmian w Azure Cosmos DB Azure Cosmos DB.
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 3d30c9f946f97f06c1a3ba1cd2e77e1ab151a572
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 11/25/2019
+ms.openlocfilehash: fc7e78a44d03af8952c1e178a3e92b1ee0c6fe66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754884"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688127"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Odczytywanie kanału informacyjnego zmiany Azure Cosmos DB
 
@@ -31,7 +31,13 @@ Biblioteka procesora kanału informacyjnego zmian powoduje ukrycie złożoności
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Korzystanie z zestawu SDK interfejsu API Azure Cosmos DB SQL
 
-Zestaw SDK otrzymuje kontrolę nad źródłem zmian. Punkt kontrolny można zarządzać, uzyskiwać dostęp do określonego klucza partycji logicznej itp. Jeśli masz wielu czytników, możesz użyć `ChangeFeedOptions` do dystrybucji wczytywania odczytu do różnych wątków lub różnych klientów. 
+Zestaw SDK otrzymuje kontrolę nad źródłem zmian. Punkt kontrolny można zarządzać, uzyskiwać dostęp do określonego klucza partycji logicznej itp. Jeśli masz wielu czytników, możesz użyć `ChangeFeedOptions` do dystrybucji wczytywania odczytu do różnych wątków lub różnych klientów.
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Źródło zmian w interfejsach API dla Cassandra i MongoDB
+
+Funkcja zmiany kanału informacyjnego jest oferowana jako strumień zmiany w interfejsie API MongoDB i zapytanie z predykatem w interfejs API Cassandra. Aby dowiedzieć się więcej na temat szczegółów implementacji interfejsu API MongoDB, zobacz [zmiana strumieni w interfejsie api Azure Cosmos DB dla MongoDB](mongodb-change-streams.md).
+
+Natywny program Apache Cassandra udostępnia funkcję przechwytywania zmian danych (rerzucij), mechanizm do flagi określonych tabel do archiwizacji, a także odrzucanie zapisów w tych tabelach po osiągnięciu konfigurowalnego rozmiaru na dysku dla dziennika przechwytywania zmian. Funkcja zmiany kanału informacyjnego w interfejsie Azure Cosmos DB API for Cassandra zwiększa możliwość wykonywania zapytań o zmiany przy użyciu predykatu za pośrednictwem CQL. Aby dowiedzieć się więcej na temat szczegółów implementacji, zobacz temat [Zmiana kanału informacyjnego w interfejsie API Azure Cosmos DB Cassandra](cassandra-change-feed.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

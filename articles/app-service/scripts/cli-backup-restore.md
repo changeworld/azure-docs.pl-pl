@@ -1,25 +1,20 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — przywracanie aplikacji internetowej z kopii zapasowej | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — przywracanie aplikacji internetowej z kopii zapasowej
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Interfejs wiersza polecenia: Przywracanie aplikacji z kopii zapasowej'
+description: Dowiedz się, jak zautomatyzować wdrażanie aplikacji App Service i zarządzanie nią za pomocą interfejsu wiersza polecenia platformy Azure. Ten przykład pokazuje, jak przywrócić aplikację z kopii zapasowej.
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
+ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0ff8527fc7a811ffc77c7807899bf6ee1dac9924
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3c73831d2c094fba62aaea611a0a2b43de89fb12
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098436"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688500"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Przywracanie aplikacji internetowej z kopii zapasowej przy użyciu interfejsu wiersza polecenia
 

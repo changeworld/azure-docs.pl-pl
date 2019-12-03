@@ -1,26 +1,19 @@
 ---
-title: Obsługa protokołu SSH dla App Service w systemie Linux — Azure | Microsoft Docs
-description: Dowiedz się więcej na temat używania protokołu SSH z usługą Azure App Service w systemie Linux.
+title: Dostęp SSH dla kontenerów systemu Linux
+description: Sesję SSH można otworzyć do kontenera systemu Linux w Azure App Service. Niestandardowe kontenery systemu Linux są obsługiwane w przypadku niektórych modyfikacji obrazu niestandardowego.
 keywords: usługa Azure App Service, aplikacja sieci Web, system Linux, usługa OSS
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fef8a17de4539a1427c269cdc512063d07df195c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066879"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687577"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Obsługa protokołu SSH dla Azure App Service w systemie Linux
 
@@ -38,7 +31,7 @@ Możesz również połączyć się z kontenerem bezpośrednio z lokalnej maszyny
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>Używanie obsługi protokołu SSH z niestandardowymi obrazami platformy Docker
 
-Zobacz [Konfigurowanie protokołu SSH w kontenerze](configure-custom-container.md#enable-ssh)niestandardowym.
+Zobacz [Konfigurowanie protokołu SSH w kontenerze niestandardowym](configure-custom-container.md#enable-ssh).
 
 ## <a name="open-ssh-session-from-remote-shell"></a>Otwórz sesję SSH ze zdalnej powłoki
 
@@ -50,14 +43,14 @@ Korzystając z tunelowania TCP, można utworzyć połączenie sieciowe między m
 
 Aby rozpocząć, należy zainstalować [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Aby zobaczyć, jak to działa, bez instalowania interfejsu wiersza polecenia platformy Azure, Otwórz [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Otwórz połączenie zdalne z aplikacją za pomocą polecenia [AZ webapp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) . \_Określ  _\<Identyfikator subskrypcji >_ ,  _\<nazwę grupy >_ i \<nazwę aplikacji > _ dla aplikacji.
+Otwórz połączenie zdalne z aplikacją za pomocą polecenia [AZ webapp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) . Określ _\<> identyfikatora subskrypcji_, _\<nazwy grupy >_ i \_\<.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> `&`na końcu polecenia jest tylko dla wygody, jeśli używasz Cloud Shell. Uruchamia proces w tle, tak aby można było uruchomić następne polecenie w tej samej powłoce.
+> `&` na końcu polecenia jest tylko dla wygody, jeśli używasz Cloud Shell. Uruchamia proces w tle, tak aby można było uruchomić następne polecenie w tej samej powłoce.
 
 Dane wyjściowe polecenia zawiera informacje potrzebne do otwarcia sesji SSH.
 
@@ -73,7 +66,7 @@ Otwórz sesję SSH z wybranym przez siebie kontenerem przy użyciu portu lokalne
 ssh root@127.0.0.1 -p <port>
 ```
 
-Po wyświetleniu monitu `yes` wpisz, aby kontynuować nawiązywanie połączenia. Zostanie wyświetlony monit o podanie hasła. Użyj `Docker!`, która była wcześniej wyświetlana.
+Po wyświetleniu monitu wpisz `yes`, aby kontynuować nawiązywanie połączenia. Zostanie wyświetlony monit o podanie hasła. Użyj `Docker!`, który był wcześniej widoczny.
 
 ```
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.

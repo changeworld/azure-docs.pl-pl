@@ -1,27 +1,17 @@
 ---
-title: 'Szybki Start: Tworzenie aplikacji w języku Python w systemie Linux — Azure App Service'
-description: Wdróż swoją pierwszą aplikację Hello World w języku Python w usłudze Azure App Service w systemie Linux w ciągu kilku minut.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 'Szybki Start: Tworzenie aplikacji w języku Python dla systemu Linux'
+description: Zacznij korzystać z aplikacji systemu Linux na Azure App Service, wdrażając pierwszą aplikację w języku Python w kontenerze systemu Linux w App Service.
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 69e7cfef01005432a99dd10ed5bc7f004562e582
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 67fbffbe96bc32b6ec38fa75c1e754c7f11d38d6
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470826"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687482"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Szybki Start: Tworzenie aplikacji w języku Python w Azure App Service w systemie Linux
 
@@ -33,7 +23,7 @@ Jeśli wolisz wdrażać aplikacje za pośrednictwem środowiska IDE, zobacz [wdr
 
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3,7</a> (obsługiwane jest również środowisko Python 3,6)
-- <a href="https://git-scm.com/downloads" target="_blank">Git</a>
+- <a href="https://git-scm.com/downloads" target="_blank">Usługa Git</a>
 - <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Interfejs wiersza polecenia platformy Azure</a>
 
 ## <a name="download-the-sample"></a>Pobierz przykład
@@ -182,7 +172,7 @@ Po zakończeniu wdrażania Przełącz się z powrotem do okna przeglądarki otwa
 
 Można uzyskać dostęp do dzienników konsoli wygenerowanych z wewnątrz aplikacji i kontenera, w którym działa. Dzienniki zawierają wszystkie dane wyjściowe wygenerowane przy użyciu instrukcji `print`.
 
-Najpierw Włącz rejestrowanie kontenerów, uruchamiając następujące polecenie w terminalu, zastępując `<app-name>` nazwą aplikacji i `<resource-group-name>` nazwą grupy zasobów pokazaną w danych wyjściowych użytego polecenia `az webapp up` (na przykład "appsvc_rg_Linux_centralus" ):
+Najpierw Włącz rejestrowanie kontenerów, uruchamiając następujące polecenie w terminalu, zastępując `<app-name>` nazwą aplikacji i `<resource-group-name>` nazwą grupy zasobów pokazaną w danych wyjściowych użytego polecenia `az webapp up` (na przykład "appsvc_rg_Linux_centralus"):
 
 ```terminal
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
@@ -215,7 +205,7 @@ Wybierz nazwę aplikacji platformy Azure.
 
 ![Przejdź do aplikacji w języku Python w App Services w Azure Portal](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
-Zostanie wyświetlona strona Przegląd aplikacji. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
+Zostanie wyświetlona strona omówienia aplikacji. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
 
 ![Zarządzaj swoją aplikacją w języku Python na stronie Przegląd w Azure Portal](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
@@ -223,7 +213,7 @@ Menu App Service zawiera różne strony służące do konfigurowania aplikacji.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W poprzednich krokach utworzono zasoby platformy Azure w grupie zasobów. Grupa zasobów ma nazwę, taką jak "appsvc_rg_Linux_CentralUS", w zależności od lokalizacji. Jeśli używasz jednostki SKU App Service innej niż bezpłatna warstwa F1, te zasoby spowodują naliczanie bieżących kosztów.
+W poprzednich krokach utworzono zasoby platformy Azure w grupie zasobów. Grupa zasobów ma nazwę "appsvc_rg_Linux_CentralUS" w zależności od lokalizacji. Jeśli używasz jednostki SKU App Service innej niż bezpłatna warstwa F1, te zasoby spowodują naliczanie bieżących kosztów.
 
 Jeśli nie chcesz potrzebować tych zasobów w przyszłości, Usuń grupę zasobów, uruchamiając następujące polecenie, zastępując `<resource-group-name>` w grupie zasobów pokazanej w danych wyjściowych polecenia `az webapp up`, na przykład "appsvc_rg_Linux_centralus". Wykonanie polecenia może potrwać minutę.
 

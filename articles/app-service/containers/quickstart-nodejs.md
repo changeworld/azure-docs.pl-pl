@@ -1,18 +1,17 @@
 ---
-title: Tworzenie aplikacji sieci Web w języku Node. js — Azure App Service
-description: Jak wdrożyć aplikację Node. js w celu Azure App Service
-author: msangapu
+title: 'Szybki Start: Tworzenie aplikacji node. js w systemie Linux'
+description: Zacznij korzystać z aplikacji systemu Linux na Azure App Service, wdrażając pierwszą aplikację Node. js w kontenerze systemu Linux w App Service.
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
-ms.service: app-service
 ms.devlang: javascript
-ms.openlocfilehash: 32e141cae98e3fe34c8207f1565a82d2d76bdd25
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439209"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688969"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Tworzenie aplikacji w języku Node. js na platformie Azure
 
@@ -67,7 +66,7 @@ Następnie Utwórz aplikację Node. js, którą można wdrożyć w chmurze. Ten 
 npx express-generator myExpressApp --view pug --git
 ```
 
-Parametry `--view pug --git` informują generatora, aby korzystał z aparatu szablonu [Pug](https://pugjs.org/api/getting-started.html) (wcześniej znanego jako `jade`) i aby utworzyć plik `.gitignore`.
+`--view pug --git` parametry informują generatora, aby korzystał z aparatu szablonu [Pug](https://pugjs.org/api/getting-started.html) (wcześniej znanego jako `jade`) i aby utworzyć plik `.gitignore`.
 
 Aby zainstalować wszystkie zależności aplikacji, przejdź do nowego folderu i uruchom `npm install`.
 
@@ -84,7 +83,7 @@ Następnie upewnij się, że aplikacja działa. W terminalu uruchom aplikację z
 npm start
 ```
 
-Teraz otwórz przeglądarkę i przejdź do [http://localhost:3000](http://localhost:3000), gdzie powinien wyglądać w następujący sposób:
+Teraz otwórz przeglądarkę i przejdź do [http://localhost:3000](http://localhost:3000), w której powinny zostać wyświetlone następujące elementy:
 
 ![Uruchamianie aplikacji Express](./media/quickstart-nodejs/express.png)
 

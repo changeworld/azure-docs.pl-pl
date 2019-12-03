@@ -1,24 +1,17 @@
 ---
-title: Zabezpiecz niestandardową nazwę DNS z powiązaniem SSL — Azure App Service | Microsoft Docs
-description: Dowiedz się, jak kupić certyfikat App Service i powiązać go z aplikacją App Service
-services: app-service
-author: cephalin
-manager: gwallace
+title: Zabezpieczanie niestandardowego serwera DNS przy użyciu powiązania SSL
+description: Zabezpiecz dostęp HTTPS do domeny niestandardowej przez utworzenie powiązania TLS/SSL z certyfikatem. Popraw zabezpieczenia witryny sieci Web, wymuszając protokół HTTPS lub TLS 1,2.
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 259a4d33ba6e8c072f8df906da4784119b299822
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501218"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670679"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Zabezpiecz niestandardową nazwę DNS z powiązaniem SSL w Azure App Service
 

@@ -1,25 +1,17 @@
 ---
-title: Synchronizuj zawartość z folderu w chmurze — Azure App Service
-description: Dowiedz się, jak wdrożyć aplikację w celu Azure App Service za pośrednictwem synchronizacji zawartości z folderu w chmurze.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
+title: Synchronizuj zawartość z folderu w chmurze
+description: Dowiedz się, jak wdrożyć aplikację do Azure App Service za pośrednictwem synchronizacji zawartości z folderu w chmurze, w tym OneDrive lub Dropbox.
 ms.assetid: 88d3a670-303a-4fa2-9de9-715cc904acec
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/03/2018
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 033a9adfd81dc52858ab58e3170e69af6f56c323
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c55894bff9501d3ffb9aa843a9eaa240a213180e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070627"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671736"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizuj zawartość z folderu w chmurze w celu Azure App Service
 W tym artykule pokazano, jak zsynchronizować zawartość do [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) z usługi Dropbox i OneDrive. 
@@ -30,7 +22,7 @@ Wdrożenie synchronizacji zawartości na żądanie jest obsługiwane przez [Apar
 
 Aby włączyć synchronizację zawartości, przejdź do strony aplikacji App Service w [Azure Portal](https://portal.azure.com).
 
-W menu po lewej stronie kliknij pozycję **Deployment Center** > **OneDrive** lub **Dropbox** > **Autoryzuj**. Postępuj zgodnie z monitami o autoryzację. 
+W menu po lewej stronie kliknij pozycję **centrum wdrażania** > **OneDrive** lub **Dropbox** > **Autoryzuj**. Postępuj zgodnie z monitami o autoryzację. 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
@@ -40,8 +32,8 @@ Wystarczy tylko autoryzować usługę OneDrive lub Dropbox. Jeśli masz już aut
 
 Na stronie **Konfigurowanie** wybierz folder, który chcesz synchronizować. Ten folder zostanie utworzony w usłudze OneDrive lub Dropbox za pomocą następującej wskazanej ścieżki zawartości. 
    
-* **Usługa OneDrive**:`Apps\Azure Web Apps`
-* Usługa **Dropbox**:`Apps\Azure`
+* **OneDrive**: `Apps\Azure Web Apps`
+* **Dropbox**: `Apps\Azure`
 
 Po zakończeniu kliknij przycisk **Kontynuuj**.
 
@@ -62,7 +54,7 @@ Jeśli chcesz synchronizować zawartość w folderze w chmurze za pomocą App Se
 
 Aby wyłączyć synchronizację zawartości, przejdź do strony aplikacji App Service w [Azure Portal](https://portal.azure.com).
 
-W menu po lewej stronie kliknij pozycję **centrum** > wdrażania**Odłącz**.
+W menu po lewej stronie kliknij pozycję **centrum wdrażania** > **Rozłącz**.
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

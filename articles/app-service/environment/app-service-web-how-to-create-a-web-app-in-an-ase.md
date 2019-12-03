@@ -1,25 +1,18 @@
 ---
-title: Tworzenie aplikacji sieci Web w App Service Environment V1 — Azure
-description: Dowiedz się, jak tworzyć aplikacje sieci Web i plany usługi App Service w App Service Environment v1
-services: app-service
-documentationcenter: ''
+title: Tworzenie aplikacji sieci Web w środowisku ASE v1
+description: Dowiedz się, jak tworzyć aplikacje sieci Web w App Service Environment v1. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cc40c2296e583ab93a7c34d709cfbf1334ae3926
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8fb121999176e43f07283e970d7336a7c569eaca
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069848"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688718"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Tworzenie aplikacji sieci Web w App Service Environment v1
 
@@ -27,7 +20,7 @@ ms.locfileid: "70069848"
 > Ten artykuł dotyczy App Service Environment v1.  Istnieje nowsza wersja App Service Environment ułatwiająca korzystanie z bardziej wydajną infrastrukturą. Aby dowiedzieć się więcej o nowej wersji, Zacznij od [wprowadzenia do App Service Environment](intro.md).
 > 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym samouczku przedstawiono sposób tworzenia aplikacji sieci Web i planów App Service w [App Service Environment V1](app-service-app-service-environment-intro.md) (ASE). 
 
 > [!NOTE]
@@ -38,7 +31,7 @@ W tym samouczku przedstawiono sposób tworzenia aplikacji sieci Web i planów Ap
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym samouczku przyjęto założenie, że utworzono App Service Environment. Jeśli jeszcze tego nie zrobiono, zobacz [tworzenie App Service Environment](app-service-web-how-to-create-an-app-service-environment.md). 
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 1. W [witrynie Azure Portal](https://portal.azure.com/)kliknij pozycję **utwórz zasób > sieć Web + aplikacje mobilne > aplikacji sieci Web**. 
    
     ![][1]
@@ -59,7 +52,7 @@ W tym samouczku przyjęto założenie, że utworzono App Service Environment. Je
     Jeśli chcesz użyć planu App Service, który już istnieje w App Service Environment, wybierz ten plan. Jeśli chcesz utworzyć nowy plan App Service, zapoznaj się z sekcją w tym samouczku, aby [utworzyć plan App Service w App Service Environment](#createplan).
 5. Wprowadź nazwę aplikacji sieci Web, a następnie kliknij przycisk **Utwórz**. 
    
-    Jeśli środowisko ASE używa zewnętrznego adresu VIP, adres URL aplikacji w środowisku ASE to: [*sitename*]. [*nazwa App Service Environment*]. p.azurewebsites.NET zamiast [sitename]. azurewebsites.NET
+    Jeśli środowisko ASE używa zewnętrznego adresu VIP, adres URL aplikacji w środowisku ASE to: [*sitename*]. [*nazwa App Service Environment*]. p.azurewebsites.NET zamiast [*sitename*]. azurewebsites.NET
    
     Jeśli środowisko ASE używa wewnętrznego adresu VIP, adres URL aplikacji w tym środowisku ASE to: [*sitename*]. [*poddomena określona podczas tworzenia środowiska ASE*]   
     Po wybraniu programu ASP podczas tworzenia środowiska ASE zostanie wyświetlona **Nazwa** poddomeny aktualizacji poniżej

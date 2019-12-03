@@ -1,26 +1,19 @@
 ---
-title: Wprowadzenie do usługi App Service w systemie Linux — Azure | Microsoft Docs
-description: Dowiedz się więcej o usłudze Azure App Service w systemie Linux.
+title: Uruchamianie kodu w domyślnych kontenerach systemu Linux
+description: Azure App Service można uruchomić kod w wstępnie skompilowanych kontenerach systemu Linux. Dowiedz się, jak uruchamiać aplikacje sieci Web systemu Linux na platformie Azure.
 keywords: azure app service, linux, oss
-services: app-service
-documentationcenter: ''
 author: msangapu-msft
-manager: gwallace
-editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 381f1486f13907aa52558029789e49bc4e5c4961
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559022"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687613"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 

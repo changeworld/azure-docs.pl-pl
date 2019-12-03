@@ -1,36 +1,30 @@
 ---
-title: Wprowadzenie do środowisk App Service Environment — Azure
-description: Krótkie omówienie środowisk Azure App Service Environment
-services: app-service
-documentationcenter: na
+title: Wprowadzenie
+description: Dowiedz się, w jaki sposób środowiska Azure App Service ułatwiają skalowanie, zabezpieczanie i optymalizowanie aplikacji w w pełni izolowanym i dedykowanym środowisku.
 author: ccompy
-manager: stefsch
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5a7374af71b262a72b680ac215f6960f961b3a15
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 35b667056698fdb2563ad9b1be9af19bcc98c1cc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470612"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688608"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Wprowadzenie do środowisk App Service Environment #
  
-## <a name="overview"></a>Omówienie ##
+## <a name="overview"></a>Przegląd ##
 
 Azure App Service Environment to funkcja usługi Azure App Service udostępniająca w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji usługi App Service w dużej skali. Ta funkcja umożliwia hostowanie:
 
 * Aplikacji internetowych systemu Windows
 * Aplikacji internetowych systemu Linux 
 * Kontenerów Docker
-* Aplikacji mobilnych
-* Funkcje
+* Aplikacje mobilne
+* Functions
 
 Środowiska App Service Environment (ASE) są odpowiednie dla obciążeń aplikacji o następujących wymaganiach:
 

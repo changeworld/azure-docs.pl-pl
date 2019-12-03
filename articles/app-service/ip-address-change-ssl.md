@@ -1,55 +1,48 @@
 ---
-title: Przygotowanie do zmiany adresu SSL IP — usłudze Azure App Service
-description: Jeśli Twój adres SSL IP będzie można zmienić, Dowiedz się, co należy zrobić, dzięki czemu aplikacja będzie nadal działać po zmianie.
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
+title: Przygotowywanie do zmiany adresu IP protokołu SSL
+description: Jeśli adres IP protokołu SSL zostanie zmieniony, Dowiedz się, co należy zrobić, aby aplikacja nadal działała po zmianie.
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6c8c86ff6212acc31e961d6ae62836ca2b7b7380
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34f35eb67cada6066e35227fcd6a0eaf425ac007
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61268912"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672401"
 ---
-# <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Jak przygotować się do zmiany adresu SSL IP
+# <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Jak przygotować się do zmiany adresu IP protokołu SSL
 
-Jeśli otrzymasz powiadomienie, że zmiana jest adres SSL IP aplikacji usługi Azure App Service, postępuj zgodnie z instrukcjami w tym artykule, aby zwolnić istniejącego adresu SSL IP i przypisać nowe.
+Jeśli otrzymasz powiadomienie o zmianie adresu IP protokołu SSL aplikacji Azure App Service, postępuj zgodnie z instrukcjami w tym artykule, aby zwolnić istniejący adres IP protokołu SSL i przypisać nowy.
 
-## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>Zwolnienie adresów SSL IP i przypisać nowe
+## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>Zwolnij adresy IP protokołu SSL i przypisz nowe
 
 1.  Otwórz [portal Azure](https://portal.azure.com).
 
-2.  W menu nawigacji po lewej stronie wybierz **App Services**.
+2.  W menu nawigacji po lewej stronie wybierz pozycję **App Services**.
 
-3.  Wybierz aplikację usługi App Service z listy.
+3.  Wybierz z listy aplikację App Service.
 
-4.  W obszarze **ustawienia** nagłówka, kliknij przycisk **ustawienia protokołu SSL** w nawigacji po lewej stronie.
+4.  W obszarze nagłówka **Ustawienia** kliknij pozycję **Ustawienia protokołu SSL** w lewym obszarze nawigacji.
 
-1. W sekcji wiązania SSL zaznacz rekord nazwy hosta. W wyświetlonym edytorze wybierz **SNI SSL** na **typ SSL** menu listy rozwijanej i kliknij przycisk **Dodawanie powiązania**. Gdy pojawi się komunikat o powodzeniu operacji, został wydany istniejącego adresu IP.
+1. W sekcji powiązania SSL wybierz rekord nazwy hosta. W otwartym edytorze wybierz pozycję **SNI SSL** z menu rozwijanego **Typ protokołu SSL** , a następnie kliknij pozycję **Dodaj powiązanie**. Gdy zostanie wyświetlony komunikat o powodzeniu operacji, istniejący adres IP został wystawiony.
 
-6.  W **powiązania SSL** ponownie wybierz ten sam rekord nazwy hosta, za pomocą certyfikatu. W edytorze, która zostanie otwarta, tym razem wybierz **SSL opartych na protokole IP** na **typ SSL** menu listy rozwijanej i kliknij przycisk **Dodawanie powiązania**. Gdy pojawi się komunikat o powodzeniu operacji, nabyciu nowego adresu IP.
+6.  W sekcji **powiązania SSL** ponownie wybierz ten sam rekord nazwy hosta z certyfikatem. W edytorze, który zostanie otwarty, w menu rozwijanym **Typ protokołu SSL** wybierz pozycję **IP oparty na** protokole SSL, a następnie kliknij przycisk **Dodaj powiązanie**. Gdy zostanie wyświetlony komunikat o powodzeniu operacji, uzyskano nowy adres IP.
 
-7.  Jeśli rekord A (wskazuje bezpośrednio na Twój adres IP rekordu DNS) jest skonfigurowany w portalu rejestracji domeny (innych firm w usłudze DNS platformy Azure lub dostawcy DNS), zamienić istniejącego adresu IP na nowo wygenerowane. Nowy adres IP można znaleźć, postępując zgodnie z instrukcjami w następnej sekcji.
+7.  Jeśli rekord A (rekord DNS wskazujący bezpośrednio na adres IP) jest skonfigurowany w portalu rejestracji domeny (dostawca DNS innej firmy lub Azure DNS), Zastąp istniejący adres IP nowo wygenerowanym. Nowy adres IP można znaleźć, postępując zgodnie z instrukcjami w następnej sekcji.
 
-## <a name="find-the-new-ssl-ip-address-in-the-azure-portal"></a>Znajdź nowy adres SSL IP w witrynie Azure Portal
+## <a name="find-the-new-ssl-ip-address-in-the-azure-portal"></a>Znajdowanie nowego adresu IP protokołu SSL w witrynie Azure Portal
 
-1.  Poczekaj kilka minut, a następnie otwórz [witryny Azure portal](https://portal.azure.com).
+1.  Zaczekaj kilka minut, a następnie otwórz [Azure Portal](https://portal.azure.com).
 
-2.  W menu nawigacji po lewej stronie wybierz **App Services**.
+2.  W menu nawigacji po lewej stronie wybierz pozycję **App Services**.
 
-3.  Wybierz aplikację usługi App Service z listy.
+3.  Wybierz z listy aplikację App Service.
 
-4.  W obszarze **ustawienia** nagłówka, kliknij przycisk **właściwości** w nawigacji po lewej stronie, a następnie znajdź sekcja o nazwie **wirtualny adres IP**.
+4.  W obszarze nagłówka **Ustawienia** kliknij pozycję **Właściwości** na lewym pasku nawigacyjnym i Znajdź sekcję zatytułowaną **wirtualny adres IP**.
 
-5. Skopiuj adres IP, a następnie ponownie skonfiguruj swoje rekord domeny lub adresu IP mechanizmu.
+5. Skopiuj adres IP i ponownie skonfiguruj swój rekord domeny lub mechanizm IP.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano sposób przygotowania do zmiany adresu IP, które zostało zainicjowane przez platformę Azure. Aby uzyskać więcej informacji na temat adresów IP w usłudze Azure App Service, zobacz [adresy protokołu SSL i SSL IP w usłudze Azure App Service](overview-inbound-outbound-ips.md).
+W tym artykule wyjaśniono, jak przygotować się do zmiany adresu IP, która została zainicjowana przez platformę Azure. Aby uzyskać więcej informacji na temat adresów IP w Azure App Service, zobacz [adresy IP protokołu SSL i protokołu SSL w Azure App Service](overview-inbound-outbound-ips.md).

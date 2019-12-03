@@ -1,28 +1,20 @@
 ---
-title: Omówienie architektury sieci App Service środowisk — Azure
-description: Omówienie architektury topologii sieci ofApp środowiska usługi.
-services: app-service
-documentationcenter: ''
+title: Architektura sieci v1
+description: Omówienie architektury topologii sieci w środowiskach App Service. Ten dokument jest dostępny tylko dla klientów korzystających ze starszej wersji V1 ASE.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 98eb4d7440126bedb3d2e1de5711141eaac8b07a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070065"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687345"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Omówienie architektury sieciowej środowisk usługi App Service
-## <a name="introduction"></a>Wprowadzenie
 Środowiska App Service są zawsze tworzone w ramach podsieci [sieci wirtualnej][virtualnetwork] — aplikacje działające w App Service Environment mogą komunikować się z prywatnymi punktami końcowymi znajdującymi się w tej samej topologii sieci wirtualnej.  Ponieważ klienci mogą blokować części swojej infrastruktury sieci wirtualnej, ważne jest zrozumienie typów przepływów komunikacji sieciowej występujących w App Service Environment.
 
 ## <a name="general-network-flow"></a>Ogólny przepływ sieci
@@ -72,7 +64,7 @@ Na powyższym diagramie:
 ## <a name="calls-between-app-service-environments"></a>Wywołania między środowiskami App Service
 Bardziej skomplikowany scenariusz może wystąpić w przypadku wdrożenia wielu środowisk App Service w tej samej sieci wirtualnej i wychodzące wywołania z jednego App Service Environment do innego App Service Environment.  Te typy wywołań krzyżowych App Service Environment również będą traktowane jako wywołania "Internet".
 
-Na poniższym diagramie przedstawiono przykład architektury warstwowej z aplikacjami na jednym App Service Environment (np. "Aplikacje sieci Web" z przodu "umożliwiają wywoływanie aplikacji na drugim App Service Environment (np. wewnętrzne aplikacje interfejsu API zaplecza, które nie są przeznaczone do dostępności z Internetu). 
+Na poniższym diagramie przedstawiono przykład architektury warstwowej z aplikacjami na jednym App Service Environment (np. "aplikacje sieci Web" z przodu ") wywoływanie aplikacji na drugim App Service Environment (np. wewnętrzne aplikacje interfejsu API zaplecza, które nie są przeznaczone do dostępności z Internetu). 
 
 ![Wywołania między środowiskami App Service][CallsBetweenAppServiceEnvironments] 
 

@@ -1,66 +1,66 @@
 ---
-title: Opracowywanie akcji skryptu, dostosowywać klastry usługi Azure HDInsight
-description: Dowiedz się, jak dostosowywanie klastrów HDInsight za pomocą skryptów powłoki Bash. Akcje skryptu umożliwiają uruchamianie skryptów w trakcie lub po utworzeniu klastra, aby zmienić ustawienia konfiguracji klastra lub instalowania dodatkowego oprogramowania.
+title: Opracowywanie akcji skryptu w celu dostosowania klastrów usługi Azure HDInsight
+description: Dowiedz się, jak dostosowywać klastry usługi HDInsight przy użyciu skryptów bash. Akcje skryptu umożliwiają uruchamianie skryptów podczas tworzenia klastra lub po nim, aby zmienić ustawienia konfiguracji klastra lub zainstalować dodatkowe oprogramowanie.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/22/2019
-ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2019
+ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687448"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687740"
 ---
-# <a name="script-action-development-with-hdinsight"></a>Opracowywanie akcji skryptu za pomocą HDInsight
+# <a name="script-action-development-with-hdinsight"></a>Tworzenie akcji skryptu za pomocą usługi HDInsight
 
-Dowiedz się, jak dostosować klastra HDInsight przy użyciu skryptów powłoki Bash. Akcje skryptu to sposób dostosować HDInsight podczas lub po utworzeniu klastra.
+Dowiedz się, jak dostosować klaster usługi HDInsight przy użyciu skryptów bash. Akcje skryptu są sposobem na dostosowanie usługi HDInsight podczas tworzenia klastra lub po nim.
 
 ## <a name="what-are-script-actions"></a>Co to są akcje skryptu
 
-Akcje skryptu to skrypty powłoki Bash, które platforma Azure opiera się na węzłach klastra można dokonać zmian konfiguracji lub instalacja oprogramowania. Akcja skryptu jest wykonywane jako użytkownik główny i zapewnia pełne prawa dostępu do węzłów klastra.
+Akcje skryptu to skrypty bash uruchamiane przez platformę Azure w węzłach klastra w celu wprowadzenia zmian konfiguracji lub zainstalowania oprogramowania. Akcja skryptu jest wykonywana jako element główny i zapewnia pełne prawa dostępu do węzłów klastra.
 
-Akcje skryptu można zastosować za pomocą następujących metod:
+Akcje skryptu można stosować przy użyciu następujących metod:
 
-| Użyj tej metody, aby zastosować skrypt... | Podczas tworzenie klastra... | Na działającego klastra... |
+| Użyj tej metody, aby zastosować skrypt... | Podczas tworzenia klastra... | Na uruchomionym klastrze... |
 | --- |:---:|:---:|
 | Azure Portal |✓ |✓ |
-| Azure PowerShell |✓ |✓ |
-| Klasyczny interfejs wiersza polecenia Azure |&nbsp; |✓ |
+| Program Azure PowerShell |✓ |✓ |
+| Klasyczny interfejs wiersza polecenia platformy Azure |&nbsp; |✓ |
 | Zestaw SDK dla platformy .NET usługi HDInsight |✓ |✓ |
 | Szablon usługi Azure Resource Manager |✓ |&nbsp; |
 
-Aby uzyskać więcej informacji na temat korzystania z tych metod do zastosowania akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
+Aby uzyskać więcej informacji o używaniu tych metod do zastosowania akcji skryptu, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="bestPracticeScripting"></a>Najlepsze rozwiązania dotyczące tworzenia skryptów
 
-Podczas tworzenia niestandardowego skryptu dla klastra usługi HDInsight istnieje kilka najlepszych rozwiązań, które należy uwzględnić:
+Podczas tworzenia niestandardowego skryptu dla klastra usługi HDInsight należy pamiętać o kilku najlepszych rozwiązaniach:
 
-* [Docelowa wersja platformy Apache Hadoop](#bPS1)
+* [Docelowa wersja Apache Hadoop](#bPS1)
 * [Docelowa wersja systemu operacyjnego](#bps10)
-* [Podaj stałe linki do zasobów skryptu](#bPS2)
-* [Użyj wstępnie skompilowanym zasobów](#bPS4)
-* [Upewnij się, że skrypt dostosowania klastra idempotentne](#bPS3)
-* [Zapewni to wysoką dostępność architektury klastra](#bPS5)
-* [Konfigurowanie niestandardowych składników, aby korzystać z magazynu obiektów Blob platformy Azure](#bPS6)
-* [Zapisywanie informacji o STDOUT i STDERR](#bPS7)
-* [Zapisz pliki jako plik ASCII przy użyciu LF końce wierszy](#bps8)
-* [Aby odzyskać z błędami przejściowymi, użyj logikę ponawiania próby](#bps9)
+* [Zapewnianie stabilnych linków do zasobów skryptów](#bPS2)
+* [Korzystanie z wstępnie skompilowanych zasobów](#bPS4)
+* [Upewnij się, że skrypt dostosowywania klastra jest idempotentne](#bPS3)
+* [Zapewnienie wysokiej dostępności architektury klastra](#bPS5)
+* [Konfigurowanie niestandardowych składników do korzystania z usługi Azure Blob Storage](#bPS6)
+* [Zapisz informacje w STDOUT i STDERR](#bPS7)
+* [Zapisuj pliki jako ASCII z końcami wierszy LF](#bps8)
+* [Użyj logiki ponawiania, aby odzyskać błędy przejściowe](#bps9)
 
 > [!IMPORTANT]  
-> Akcje skryptu musi zostać zakończone w ciągu 60 minut lub proces ten ulegnie awarii. Podczas inicjowania obsługi węzłów, skrypt jest uruchamiany równolegle innych procesów instalacji i konfiguracji. Konkurencję w odniesieniu do zasobów, takich jak czas lub sieci przepustowości Procesora może powodować skryptu, aby zająć dłużej niż w środowisku programistycznym.
+> Akcje skryptu muszą zakończyć się w ciągu 60 minut lub proces kończy się niepowodzeniem. Podczas aprowizacji węzła skrypt jest uruchamiany równolegle z innymi procesami instalacji i konfiguracji. Konkurs zasobów, takich jak czas procesora CPU lub przepustowość sieci, może spowodować, że wykonanie skryptu trwa dłużej niż w środowisku deweloperskim.
 
-### <a name="bPS1"></a>Docelowa wersja platformy Apache Hadoop
+### <a name="bPS1"></a>Docelowa wersja Apache Hadoop
 
-Różne wersje HDInsight mają różne wersje usług Hadoop i zainstalowanych składników. Jeśli skrypt oczekuje określoną wersję usługi lub składnika, skrypt należy używać tylko z wersją HDInsight, który zawiera wymagane składniki. Można znaleźć informacje na temat wersji składnika dołączone HDInsight przy użyciu [przechowywanie wersji składnika HDInsight](hdinsight-component-versioning.md) dokumentu.
+Różne wersje usługi HDInsight mają zainstalowane różne wersje usług Hadoop i składników. Jeśli skrypt oczekuje określonej wersji usługi lub składnika, należy używać skryptu tylko z wersją programu HDInsight, która zawiera wymagane składniki. Informacje o wersjach składników zawartych w usłudze HDInsight można znaleźć za pomocą dokumentu [wersji składnika usługi HDInsight](hdinsight-component-versioning.md) .
 
 ### <a name="checking-the-operating-system-version"></a>Sprawdzanie wersji systemu operacyjnego
 
-Różne wersje HDInsight opierają się na określonych wersji systemu Ubuntu. Może to być różnice między wersjami systemu operacyjnego, które musisz sprawdzać w skrypcie. Na przykład może być konieczne zainstalowanie plik binarny, który jest powiązany z wersją systemu Ubuntu.
+Różne wersje usługi HDInsight polegają na określonych wersjach programu Ubuntu. W skrypcie mogą występować różnice między wersjami systemu operacyjnego, które należy wyszukać. Na przykład może być konieczne zainstalowanie pliku binarnego, który jest powiązany z wersją programu Ubuntu.
 
-Aby sprawdzić wersję systemu operacyjnego, należy użyć `lsb_release`. Na przykład poniższy skrypt pokazuje, jak odwołać się do pliku tar określonych w zależności od wersji systemu operacyjnego:
+Aby sprawdzić wersję systemu operacyjnego, użyj `lsb_release`. Na przykład poniższy skrypt pokazuje, jak odwoływać się do określonego pliku TAR w zależności od wersji systemu operacyjnego:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -73,11 +73,11 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="bps10"></a> Docelowa wersja systemu operacyjnego
+### <a name="bps10"></a>Docelowa wersja systemu operacyjnego
 
-HDInsight opartych na systemie Linux jest oparta na dystrybucji Ubuntu Linux. Różne wersje HDInsight opierają się w różnych wersjach Ubuntu, który może zmienić sposób działania skryptu. Na przykład HDInsight 3.4 lub starszym zależą od wersji Ubuntu, które używają Upstart. W wersji 3.5 i większa opierają się na Ubuntu 16.04, który używa Systemd. Systemd i Upstart korzystają innego polecenia, dzięki czemu skryptu będą zapisywane w pracy z programem.
+Usługa HDInsight jest oparta na dystrybucji Ubuntu Linux. Różne wersje usługi HDInsight są zależne od różnych wersji programu Ubuntu, co może zmienić sposób działania skryptu. Na przykład Usługa HDInsight 3,4 i wcześniejsza wersja bazują na wersjach Ubuntu korzystających z oprogramowania. Wersje 3,5 i nowsze są oparte na Ubuntu 16,04, który korzysta z systemu. System i początek są zależne od różnych poleceń, dlatego należy napisać skrypt do pracy z obydwoma.
 
-Inna ważna różnica między HDInsight 3.4 i 3.5 jest to, że `JAVA_HOME` wskazuje teraz Java 8. Poniższy kod ilustruje sposób określania, czy skrypt jest uruchomiony na systemie Ubuntu 14 lub 16:
+Kolejną ważną różnicą między usługą HDInsight 3,4 i 3,5 jest to, że `JAVA_HOME` teraz wskazuje Java 8. Poniższy kod ilustruje sposób ustalania, czy skrypt działa w Ubuntu 14 czy 16:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -108,89 +108,89 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-Możesz znaleźć pełny skrypt, który zawiera te fragmenty kodu w https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
+Pełny skrypt zawierający te fragmenty kodu można znaleźć w https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
 
-Wersja systemu Ubuntu, który jest używany przez HDInsight, zobacz [wersja składnika HDInsight](hdinsight-component-versioning.md) dokumentu.
+W przypadku wersji programu Ubuntu używanej przez usługi HDInsight zapoznaj się z dokumentem [wersja składnika usługi HDInsight](hdinsight-component-versioning.md) .
 
-Aby zrozumieć różnice między Systemd i Upstart, zobacz [Systemd dla użytkowników Upstart](https://wiki.ubuntu.com/SystemdForUpstartUsers).
+Aby zrozumieć różnice między systemem i początkiem, zobacz [systemed dla użytkowników przeduruchomieniowych](https://wiki.ubuntu.com/SystemdForUpstartUsers).
 
-### <a name="bPS2"></a>Podaj stałe linki do zasobów skryptu
+### <a name="bPS2"></a>Zapewnianie stabilnych linków do zasobów skryptów
 
-Skrypt i powiązane zasoby muszą pozostać dostępne przez cały czas życia klastra. Te zasoby są wymagane, jeśli zostaną dodane nowe węzły do klastra podczas operacji skalowania.
+Skrypt i powiązane zasoby muszą pozostać dostępne przez cały okres istnienia klastra. Te zasoby są wymagane, jeśli podczas operacji skalowania do klastra dodawane są nowe węzły.
 
-Najlepszym rozwiązaniem jest do pobrania i Archiwizuj wszystko na koncie magazynu platformy Azure w ramach Twojej subskrypcji.
-
-> [!IMPORTANT]  
-> Konto magazynu używane na musi być domyślne konto magazynu dla klastra lub kontener publiczną, tylko do odczytu na inne konto magazynu.
-
-Na przykład, przykłady, obsługiwane przez firmę Microsoft są przechowywane w [ https://hdiconfigactions.blob.core.windows.net/ ](https://hdiconfigactions.blob.core.windows.net/) konta magazynu. Ta lokalizacja jest publiczny, tylko do odczytu kontenera, obsługiwane przez zespół usługi HDInsight.
-
-### <a name="bPS4"></a>Użyj wstępnie skompilowanym zasobów
-
-Aby skrócić czas potrzebny do uruchomienia skryptu, unikać operacji, które kompilują zasobów z kodu źródłowego. Na przykład przeprowadzić prekompilacje zasobów i przechowywać je w obiekt blob konta magazynu Azure, w tym samym centrum danych jako HDInsight.
-
-### <a name="bPS3"></a>Upewnij się, że skrypt dostosowania klastra idempotentne
-
-Skrypty muszą być idempotentne. Jeśli skrypt zostanie uruchomiony wielokrotnie, powinna zwrócić klastra stanu, w każdym razem.
-
-Na przykład skrypt, który modyfikuje pliki konfiguracji nie dodać zduplikowane wpisy, gdy uruchomiono wiele razy.
-
-### <a name="bPS5"></a>Zapewni to wysoką dostępność architektury klastra
-
-Klastry HDInsight opartych na systemie Linux zapewniają dwa węzły główne, które są aktywne w klastrze, a akcji skryptu, uruchom na obu węzłach. Jeśli składniki, które należy zainstalować oczekuje tylko jednego węzła głównego, nie należy instalować na obu węzłów głównych składników.
+Najlepszym rozwiązaniem jest pobranie i zarchiwizowanie wszystkich elementów na koncie usługi Azure Storage w ramach Twojej subskrypcji.
 
 > [!IMPORTANT]  
-> Usługi w ramach HDInsight są przeznaczone do trybu failover między dwa węzły główne, zgodnie z potrzebami. Ta funkcja nie jest rozszerzony do niestandardowe składniki zainstalowane za pomocą akcji skryptu. Jeśli potrzebujesz wysokiej dostępności dla składników niestandardowych, należy zaimplementować własny mechanizm pracy awaryjnej.
+> Używane konto magazynu musi być domyślnym kontem magazynu dla klastra lub publicznym kontenerem tylko do odczytu na dowolnym innym koncie magazynu.
 
-### <a name="bPS6"></a>Konfigurowanie niestandardowych składników, aby korzystać z magazynu obiektów Blob platformy Azure
+Przykładowo przykłady dostarczone przez firmę Microsoft są przechowywane na koncie magazynu [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) . Ta lokalizacja jest publicznym, tylko do odczytu kontenerem obsługiwanym przez zespół usługi HDInsight.
 
-Składniki, które można zainstalować w klastrze może mieć konfigurację domyślną, która korzysta z magazynu Apache Hadoop Distributed pliku System (HDFS). HDInsight korzysta z usługi Azure Storage lub usługi Data Lake Storage jako magazynu domyślnego. Podaj zarówno systemu zgodnego systemem plików HDFS, która utrwala dane, nawet jeśli klaster jest usuwany. Może być konieczne skonfigurowanie składników, które można zainstalować, aby użyć WASB lub ADL zamiast systemu plików HDFS.
+### <a name="bPS4"></a>Korzystanie z wstępnie skompilowanych zasobów
 
-W przypadku większości operacji jest konieczne określanie systemu plików. Na przykład następujące kopiuje plik hadoop common.jar z lokalnego systemu plików do magazynu klastra:
+Aby skrócić czas potrzebny na uruchomienie skryptu, należy unikać operacji, które kompilują zasoby z kodu źródłowego. Na przykład wstępne Kompilowanie zasobów i przechowywanie ich w obiekcie blob konta usługi Azure Storage w tym samym centrum danych co Usługa HDInsight.
+
+### <a name="bPS3"></a>Upewnij się, że skrypt dostosowywania klastra jest idempotentne
+
+Skrypty muszą być idempotentne. Jeśli skrypt zostanie uruchomiony wiele razy, powinien on zwrócić klaster do tego samego stanu za każdym razem.
+
+Na przykład skrypt, który modyfikuje pliki konfiguracyjne, nie powinien dodawać zduplikowanych wpisów, jeśli są uruchamiane wiele razy.
+
+### <a name="bPS5"></a>Zapewnienie wysokiej dostępności architektury klastra
+
+Klastry usługi HDInsight oparte na systemie Linux zapewniają dwa węzły główne, które są aktywne w klastrze, a akcje skryptów są uruchamiane na obu węzłach. Jeśli instalowane składniki oczekują tylko jednego węzła głównego, nie instaluj składników w obu węzłach głównych.
+
+> [!IMPORTANT]  
+> Usługi dostarczane jako część programu HDInsight są przeznaczone do trybu failover między dwoma węzłami głównymi, zgodnie z wymaganiami. Ta funkcja nie jest rozszerzona do składników niestandardowych zainstalowanych za pomocą akcji skryptu. Jeśli potrzebujesz wysokiej dostępności dla składników niestandardowych, musisz zaimplementować własny mechanizm pracy awaryjnej.
+
+### <a name="bPS6"></a>Konfigurowanie niestandardowych składników do korzystania z usługi Azure Blob Storage
+
+Składniki instalowane w klastrze mogą mieć konfigurację domyślną korzystającą z magazynu Apache Hadoop rozproszony system plików (HDFS). Usługa HDInsight używa usługi Azure Storage lub Data Lake Storage jako magazynu domyślnego. Oba zapewniają system plików zgodny z systemem HDFS, który utrzymuje dane nawet w przypadku usunięcia klastra. Może być konieczne skonfigurowanie instalowanych składników do korzystania z WASB lub ADL zamiast systemu plików HDFS.
+
+W przypadku większości operacji nie trzeba określać systemu plików. Na przykład poniższy kod kopiuje plik JAR Hadoop-Common z lokalnego systemu plików do magazynu klastra:
 
 ```bash
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
-W tym przykładzie `hdfs` polecenia w sposób niewidoczny dla użytkownika używa domyślnego magazynu klastra. W przypadku niektórych operacji może być konieczne Określ identyfikator URI. Na przykład `adl:///example/jars` dla usługi Azure Data Lake Storage Gen1 `abfs:///example/jars` for Data Lake Storage Gen2 lub `wasb:///example/jars` dla usługi Azure Storage.
+W tym przykładzie polecenie `hdfs` w sposób przezroczysty używa domyślnego magazynu klastra. W przypadku niektórych operacji może zajść potrzeba określenia identyfikatora URI. Na przykład `adl:///example/jars` dla Azure Data Lake Storage Gen1 `abfs:///example/jars` dla Data Lake Storage Gen2 lub `wasb:///example/jars` dla usługi Azure Storage.
 
-### <a name="bPS7"></a>Zapisywanie informacji o STDOUT i STDERR
+### <a name="bPS7"></a>Zapisz informacje w STDOUT i STDERR
 
-HDInsight rejestruje dane wyjściowe skryptu, który jest zapisywany do strumienia wyjściowego STDOUT i STDERR. Możesz wyświetlić te informacje przy użyciu interfejsu użytkownika sieci web Ambari.
+Usługa HDInsight rejestruje dane wyjściowe skryptu zapisane w strumieniach STDOUT i STDERR. Te informacje można wyświetlić za pomocą interfejsu użytkownika sieci Web Ambari.
 
 > [!NOTE]  
-> Apache Ambari jest dostępna tylko po pomyślnym utworzeniu klastra. Jeśli używasz podczas tworzenia klastra i kończy się niepowodzeniem tworzenia akcji skryptu, zobacz sekcję dotyczącą rozwiązywania problemów [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) dla innych sposobów uzyskiwania dostępu do zarejestrowanych informacji.
+> Apache Ambari jest dostępny tylko wtedy, gdy klaster został utworzony pomyślnie. Jeśli podczas tworzenia klastra używasz akcji skryptu, a tworzenie nie powiedzie się, zobacz sekcję Rozwiązywanie problemów [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) , aby poznać inne sposoby uzyskiwania dostępu do zarejestrowanych informacji.
 
-Większość narzędzi i pakiety instalacyjne już zapisywanie informacji o STDOUT i STDERR, jednak warto dodać dodatkowe rejestrowanie. Aby wysłać tekst stdout, należy użyć `echo`. Na przykład:
+Większość narzędzi i pakietów instalacyjnych już zapisują informacje w strumieniach STDOUT i STDERR, jednak możesz chcieć dodać dodatkowe rejestrowanie. Aby wysłać tekst do STDOUT, użyj `echo`. Na przykład:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Domyślnie `echo` wysyła ciąg znaków do strumienia wyjściowego STDOUT. Aby skierować je do strumienia wyjściowego STDERR, należy dodać `>&2` przed `echo`. Na przykład:
+Domyślnie `echo` wysyła ciąg do STDOUT. Aby skierować go do STDERR, Dodaj `>&2` przed `echo`. Na przykład:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
-To przekierowuje informacje zapisywane do strumienia wyjściowego STDOUT, stderr (2) zamiast tego. Aby uzyskać więcej informacji na temat przekierowania we/wy, zobacz [ https://www.tldp.org/LDP/abs/html/io-redirection.html ](https://www.tldp.org/LDP/abs/html/io-redirection.html).
+Przekierowuje informacje zapisywane w strumieniu STDOUT do STDERR (2). Aby uzyskać więcej informacji na temat przekierowania we/wy, zobacz [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html).
 
-Aby uzyskać więcej informacji o wyświetlaniu informacji rejestrowanych przez akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
+Aby uzyskać więcej informacji na temat wyświetlania informacji rejestrowanych przez akcje skryptu, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
-### <a name="bps8"></a> Zapisz pliki jako plik ASCII przy użyciu LF końce wierszy
+### <a name="bps8"></a>Zapisuj pliki jako ASCII z końcami wierszy LF
 
-Skrypty powłoki bash, powinny być przechowywane w formacie ASCII z liniami został przerwany przez LF. Pliki, które są przechowywane w formacie UTF-8, lub użyj CRLF jako koniec wiersza może zakończyć się niepowodzeniem z powodu następującego błędu:
+Skrypty bash powinny być przechowywane w formacie ASCII, z wierszami zakończonymi znakami LF. Pliki, które są przechowywane jako UTF-8, lub użycie CRLF jako zakończenia wiersza mogą zakończyć się niepowodzeniem z powodu następującego błędu:
 
 ```
 $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="bps9"></a> Aby odzyskać z błędami przejściowymi, użyj logikę ponawiania próby
+### <a name="bps9"></a>Użyj logiki ponawiania, aby odzyskać błędy przejściowe
 
-Pobieranie plików, instalowanie pakietów przy użyciu polecenia apt-get lub innych działań, które przesyłają dane przez internet, akcja może zakończyć się niepowodzeniem z powodu przejściowych błędów sieci. Na przykład zasób zdalny, które komunikują się z może być w trakcie przechodzenia w tryb failover do tworzenia kopii zapasowej węzła.
+Podczas pobierania plików, instalowania pakietów przy użyciu funkcji apt-get lub innych akcji, które przesyłają dane za pośrednictwem Internetu, działanie może zakończyć się niepowodzeniem z powodu przejściowych błędów sieci. Na przykład zasób zdalny, z którym nawiązujesz połączenie, może być w trakcie przełączenia w tryb failover do węzła kopii zapasowej.
 
-Aby skrypt odporne na błędy przejściowe błędy, można zaimplementować logikę ponawiania próby. Poniższa funkcja pokazuje, jak implementować logikę ponawiania próby. Kolejną próbą operacji trzykrotnie zakończy się niepowodzeniem.
+Aby skrypt odporny na błędy przejściowe, można zaimplementować logikę ponawiania. Poniższa funkcja demonstruje sposób implementacji logiki ponawiania. Ponawia próbę wykonania operacji trzy razy przed niepowodzeniem.
 
 ```bash
 #retry
@@ -216,7 +216,7 @@ retry() {
 }
 ```
 
-Poniższe przykłady pokazują, jak użyć tej funkcji.
+W poniższych przykładach pokazano, jak używać tej funkcji.
 
 ```bash
 retry ls -ltr foo
@@ -224,143 +224,143 @@ retry ls -ltr foo
 retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
 ```
 
-## <a name="helpermethods"></a>Metody pomocnicze dla niestandardowych skryptów
+## <a name="helpermethods"></a>Metody pomocnika dla skryptów niestandardowych
 
-Metody pomocnicze akcji skryptu są narzędzia, których można używać podczas pisania skryptów niestandardowych. Te metody są zawarte w [ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skryptu. Aby pobrać i używać ich jako części skryptu, należy użyć następujących:
+Metody pomocnika akcji skryptu to narzędzia, których można używać podczas pisania skryptów niestandardowych. Te metody są zawarte w skrypcie [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) . Użyj poniższego elementu, aby pobrać i użyć ich jako części skryptu:
 
 ```bash
 # Import the helper method module.
 wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
 ```
 
-Następujących pomocników dostępne do użycia w skrypcie:
+Następujące pomocnicy są dostępni do użycia w skrypcie:
 
 | Użycie pomocnika | Opis |
 | --- | --- |
-| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Pobiera plik z identyfikatora URI źródła do określonej ścieżki pliku. Domyślnie go nie zastępuj istniejącego pliku. |
+| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Pobiera plik ze źródłowego identyfikatora URI do określonej ścieżki pliku. Domyślnie nie zastępuje istniejącego pliku. |
 | `untar_file TARFILE DESTDIR` |Wyodrębnia plik tar (przy użyciu `-xf`) do katalogu docelowego. |
-| `test_is_headnode` |Jeżeli uruchomiono na węzła głównego klastra zwracanej 1; w przeciwnym razie 0. |
-| `test_is_datanode` |Jeśli bieżący węzeł jest węzłem danych (proces roboczy), zwraca 1; w przeciwnym razie 0. |
-| `test_is_first_datanode` |Jeśli bieżącego węzła jest pierwsze dane (proces roboczy) węzłów (o nazwie workernode0) zwracają 1; w przeciwnym razie 0. |
-| `get_headnodes` |Zwraca w pełni kwalifikowaną nazwę domeny z węzłów głównych w klastrze. Nazwy są rozdzielane przecinkami. W przypadku błędu, zwracany jest pusty ciąg. |
-| `get_primary_headnode` |Pobiera w pełni kwalifikowaną nazwę domeny z podstawowym węzłem głównym. W przypadku błędu, zwracany jest pusty ciąg. |
-| `get_secondary_headnode` |Pobiera w pełni kwalifikowana nazwa domeny dodatkowy węzeł główny. W przypadku błędu, zwracany jest pusty ciąg. |
-| `get_primary_headnode_number` |Pobiera sufiks numeryczny z podstawowym węzłem głównym. W przypadku błędu, zwracany jest pusty ciąg. |
-| `get_secondary_headnode_number` |Pobiera liczbowych sufiks dodatkowy węzeł główny. W przypadku błędu, zwracany jest pusty ciąg. |
+| `test_is_headnode` |Jeśli uruchomiono w węźle głównym klastra, zwróć 1; w przeciwnym razie 0. |
+| `test_is_datanode` |Jeśli bieżący węzeł jest węzłem danych (Worker), zwróć 1; w przeciwnym razie 0. |
+| `test_is_first_datanode` |Jeśli bieżącym węzłem jest pierwszy węzeł danych (Worker) (o nazwie workernode0), zwróć 1; w przeciwnym razie 0. |
+| `get_headnodes` |Zwróć w pełni kwalifikowaną nazwę domeny węzłów głównych w klastrze. Nazwy są rozdzielane przecinkami. Podczas błędu zwracany jest pusty ciąg. |
+| `get_primary_headnode` |Pobiera w pełni kwalifikowaną nazwę domeny głównej węzła głównego. Podczas błędu zwracany jest pusty ciąg. |
+| `get_secondary_headnode` |Pobiera w pełni kwalifikowaną nazwę domeny pomocniczej węzła głównego. Podczas błędu zwracany jest pusty ciąg. |
+| `get_primary_headnode_number` |Pobiera liczbowy sufiks węzła głównego podstawowego. Podczas błędu zwracany jest pusty ciąg. |
+| `get_secondary_headnode_number` |Pobiera liczbowy sufiks pomocniczej węzła głównego. Podczas błędu zwracany jest pusty ciąg. |
 
 ## <a name="commonusage"></a>Typowe wzorce użycia
 
-Ta sekcja zawiera wskazówki dotyczące implementowania niektóre typowe wzorce użycia, które możesz napotkać podczas zapisywania skryptu niestandardowego.
+Ta sekcja zawiera wskazówki dotyczące wdrażania niektórych typowych wzorców użycia, które można napotkać podczas pisania własnego skryptu niestandardowego.
 
 ### <a name="passing-parameters-to-a-script"></a>Przekazywanie parametrów do skryptu
 
-W niektórych przypadkach skrypt może wymagać parametrów. Na przykład wymagać hasła administratora dla klastra przy użyciu interfejsu API REST Ambari.
+W niektórych przypadkach skrypt może wymagać parametrów. Na przykład może być wymagane hasło administratora dla klastra podczas korzystania z interfejsu API REST Ambari.
 
-Parametry przekazane do skryptu są znane jako *parametry pozycyjne*i zostały przypisane do `$1` jako pierwszy parametr `$2` dla drugiego i dlatego jednokrotnego. `$0` zawiera nazwę sam skrypt.
+Parametry przekazane do skryptu są znane jako *parametry pozycyjne*i są przypisywane do `$1` pierwszego parametru, `$2` dla drugiego, i tak dalej. `$0` zawiera nazwę samego skryptu.
 
-Wartości przekazywane do skryptu, ponieważ parametry powinny być ujęta w cudzysłów pojedynczy ('). Daje to gwarancję, że przekazana wartość jest traktowany jako literał.
+Wartości przesłane do skryptu jako parametry powinny być ujęte w cudzysłów ("). To gwarantuje, że przeniesiona wartość jest traktowana jako literał.
 
 ### <a name="setting-environment-variables"></a>Ustawianie zmiennych środowiskowych
 
-Ustawienie zmiennej środowiskowej odbywa się według następującej instrukcji:
+Ustawienie zmiennej środowiskowej jest wykonywane przez następującą instrukcję:
 
     VARIABLENAME=value
 
-Gdzie NAZWA_ZMIENNEJ to nazwa zmiennej. Aby uzyskać dostęp do zmiennej, należy użyć `$VARIABLENAME`. Na przykład do przypisania wartości dostarczone przez parametr pozycyjne jako zmienną środowiskową o nazwie HASŁA, należy użyć następującej instrukcji:
+Gdzie VARIABLEname jest nazwą zmiennej. Aby uzyskać dostęp do zmiennej, użyj `$VARIABLENAME`. Na przykład, aby przypisać wartość dostarczoną przez parametr pozycyjny jako zmienną środowiskową o nazwie PASSWORD, należy użyć następującej instrukcji:
 
     PASSWORD=$1
 
-Kolejne dostęp do informacji można używać `$PASSWORD`.
+Kolejny dostęp do informacji może następnie użyć `$PASSWORD`.
 
-Zmienne środowiskowe ustawione w skrypcie istnieją tylko w zakresie skryptu. W niektórych przypadkach może być konieczne dodanie zmienne środowiskowe systemowe, które będą zachowywane po zakończeniu działania skryptu. Aby dodać zmienne środowiskowe na poziomie systemu, należy dodać zmienną `/etc/environment`. Na przykład poniższa instrukcja dodaje `HADOOP_CONF_DIR`:
+Zmienne środowiskowe ustawione w skrypcie znajdują się tylko w zakresie skryptu. W niektórych przypadkach może być konieczne dodanie zmiennych środowiskowych dla całego systemu, które będą utrwalane po zakończeniu działania skryptu. Aby dodać zmienne środowiskowe dla całego systemu, Dodaj zmienną do `/etc/environment`. Na przykład następująca instrukcja dodaje `HADOOP_CONF_DIR`:
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 ```
 
-### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Dostęp do lokalizacji, w którym są przechowywane niestandardowe skrypty
+### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Dostęp do lokalizacji, w których są przechowywane skrypty niestandardowe
 
-Skrypty służące do dostosowywania klastra musi być przechowywany w jednym z następujących lokalizacji:
+Skrypty używane do dostosowywania klastra muszą być przechowywane w jednej z następujących lokalizacji:
 
-* __Konta usługi Azure Storage__ skojarzonym z klastrem.
+* __Konto magazynu platformy Azure__ skojarzone z klastrem.
 
-* __Dodatkowe konto magazynu__ skojarzonego z klastrem.
+* __Dodatkowe konto magazynu__ skojarzone z klastrem.
 
-* A __publicznie do odczytu URI__. Na przykład adres URL do danych przechowywanych w usłudze OneDrive, Dropbox lub inny plik innej usługi hostingu.
+* __Publicznie czytelny identyfikator URI__. Na przykład adres URL do danych przechowywanych w usłudze OneDrive, Dropbox lub w innej usłudze hostingu plików.
 
-* __Konta usługi Azure Data Lake Storage__ skojarzonym z klastrem HDInsight. Aby uzyskać więcej informacji dotyczących korzystania z usługi Azure Data Lake Storage z usługą HDInsight, zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* __Konto Azure Data Lake Storage__ skojarzone z klastrem usługi HDInsight. Aby uzyskać więcej informacji na temat używania Azure Data Lake Storage z usługą HDInsight, zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     > [!NOTE]  
-    > Nazwa główna usługi HDInsight używane do dostępu do usługi Data Lake Storage przez musi mieć dostęp do odczytu do skryptu.
+    > Główna Usługa HDInsight używa do uzyskiwania dostępu do Data Lake Storage musi mieć dostęp do odczytu do skryptu.
 
 Zasoby używane przez skrypt również muszą być dostępne publicznie.
 
-Przechowywanie plików w usłudze Azure Storage konta lub usługi Azure Data Lake Storage zapewnia szybki dostęp, oba w ramach sieci platformy Azure.
+Przechowywanie plików na koncie usługi Azure Storage lub Azure Data Lake Storage zapewnia szybki dostęp w sieci platformy Azure.
 
 > [!NOTE]  
-> Format identyfikatora URI używany w celu skrypt różni się w zależności od używanej usługi. W przypadku konta magazynu skojarzonego z klastrem HDInsight, użyj `wasb://` lub `wasbs://`. Identyfikatory URI publicznie do odczytu, użyj `http://` lub `https://`. W przypadku usługi Data Lake Storage, użyj `adl://`.
+> Format identyfikatora URI używany do odwoływania się do skryptu różni się w zależności od używanej usługi. W przypadku kont magazynu skojarzonych z klastrem usługi HDInsight Użyj `wasb://` lub `wasbs://`. W przypadku publicznie czytelnych identyfikatorów URI Użyj `http://` lub `https://`. Aby uzyskać Data Lake Storage, użyj `adl://`.
 
 ## <a name="deployScript"></a>Lista kontrolna wdrażania akcji skryptu
 
-Poniżej przedstawiono podejmij kroki podczas przygotowywania wdrożenia skryptu:
+Poniżej przedstawiono kroki, które należy wykonać podczas przygotowywania do wdrożenia skryptu:
 
-* Umieść pliki, które zawierają niestandardowych skryptów w miejscu, który jest dostępny dla węzłów klastra podczas wdrażania. Na przykład domyślny magazyn dla klastra. Pliki mogą być również przechowywane w publicznie do odczytu usługi hostingu.
-* Sprawdź, czy skrypt jest idempotentny. Dzięki temu skrypt do wykonania wiele razy w innym węźle.
-* Użyj tmp katalogu plików tymczasowych, aby zachować pobrane pliki, które są używane przez skrypty i następnie oczyścić je po wykonaniu skryptów.
-* Jeśli zostaną zmienione ustawienia na poziomie systemu operacyjnego lub plików konfiguracyjnych usługi Hadoop, można ponownie uruchomić usługi HDInsight.
+* Umieść pliki, które zawierają skrypty niestandardowe w miejscu dostępnym dla węzłów klastra podczas wdrażania. Na przykład domyślnym magazynem klastra. Pliki mogą być również przechowywane w publicznie czytelnych usługach hostingu.
+* Sprawdź, czy skrypt jest idempotentne. Dzięki temu skrypt może być wykonywany wiele razy w tym samym węźle.
+* Użyj tymczasowego katalogu plików/tmp, aby zachować pobrane pliki używane przez skrypty, a następnie Oczyść je po wykonaniu skryptów.
+* W przypadku zmiany ustawień na poziomie systemu operacyjnego lub plików konfiguracji usługi Hadoop możesz chcieć ponownie uruchomić usługi HDInsight.
 
-## <a name="runScriptAction"></a>Jak uruchomić akcji skryptu
+## <a name="runScriptAction"></a>Jak uruchomić akcję skryptu
 
-Akcje skryptu umożliwia dostosowywanie klastrów HDInsight za pomocą następujących metod:
+Za pomocą akcji skryptu można dostosować klastry usługi HDInsight przy użyciu następujących metod:
 
 * Azure Portal
-* Azure PowerShell
+* Program Azure PowerShell
 * Szablony usługi Azure Resource Manager
-* Zestaw .NET SDK HDInsight.
+* Zestaw SDK usługi HDInsight dla platformy .NET.
 
-Aby uzyskać więcej informacji na temat korzystania z poszczególnych metod, zobacz [sposób użycia akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
+Aby uzyskać więcej informacji na temat korzystania z każdej z tych metod, zobacz [jak używać akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="sampleScripts"></a>Przykłady skryptów niestandardowych
 
-Firma Microsoft oferuje przykładowe skrypty do instalowania składników w klastrze usługi HDInsight. Skorzystaj z następujących linków, aby uzyskać więcej akcji skryptu w przykładzie.
+Firma Microsoft oferuje przykładowe skrypty do instalowania składników w klastrze usługi HDInsight. Zobacz poniższe linki, aby uzyskać więcej przykładowych akcji skryptu.
 
-* [Instalowanie i korzystanie z rozwiązania Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md)
-* [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md)
+* [Instalowanie i używanie odcienia w klastrach usługi HDInsight](hdinsight-hadoop-hue-linux.md)
+* [Instalowanie i używanie oprogramowania Apache Giraph w klastrach usługi HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Błędy, które mogą wystąpić, gdy za pomocą skryptów, które zostały opracowane są następujące:
+Poniżej przedstawiono błędy, które można napotkać podczas korzystania z utworzonych skryptów:
 
 **Błąd**: `$'\r': command not found`. Czasami następuje `syntax error: unexpected end of file`.
 
-*Przyczyna*: Gdy wierszy w skrypcie kończyć się znakiem CRLF, jest przyczyną tego błędu. Systemy UNIX oczekiwać, że tylko LF jako koniec wiersza.
+*Przyczyna*: ten błąd występuje, gdy wiersze w skrypcie kończą się znakiem CRLF. Systemy UNIX oczekują tylko LF jako zakończenia wiersza.
 
-Ten problem najczęściej występuje, gdy skrypt został utworzony w środowisku Windows CRLF jest linii Kończenie dla wielu edytorów tekstu na Windows.
+Ten problem najczęściej występuje, gdy skrypt jest tworzony w środowisku systemu Windows, ponieważ CRLF jest typowym wierszem kończącym się w przypadku wielu edytorów tekstu w systemie Windows.
 
-*Rozpoznawanie*: Jest to opcja w edytorze tekstu, na koniec wiersza wybierz format systemu Unix lub LF. Aby zmienić CRLF LF można także użyć następujących poleceń w systemie Unix:
+*Rozwiązanie*: Jeśli jest to opcja w edytorze tekstu, wybierz pozycję Format systemu UNIX lub LF dla końca wiersza. Możesz również użyć następujących poleceń w systemie UNIX, aby zmienić wartość CRLF na LF:
 
 > [!NOTE]  
-> Następujące polecenia są mniej więcej odpowiednikami, w tym, że ich należy zmienić CRLF końce wierszy na LF. Wybierz jedną, w oparciu o narzędzi dostępnych w systemie.
+> Następujące polecenia są w przybliżeniu równoważne, które powinny zmienić końce linii CRLF na LF. Wybierz jeden na podstawie narzędzi dostępnych w systemie.
 
 | Polecenie | Uwagi |
 | --- | --- |
-| `unix2dos -b INFILE` |Oryginalny plik Kopia zapasowa jest tworzona przy użyciu. Rozszerzenie BAK |
-| `tr -d '\r' < INFILE > OUTFILE` |PLIKWYJŚCIOWY zawiera wersję przy użyciu tylko LF końce |
+| `unix2dos -b INFILE` |Kopia zapasowa oryginalnego pliku została utworzona za pomocą. Rozszerzenie BAK |
+| `tr -d '\r' < INFILE > OUTFILE` |PLIK jest w wersji zawierającej tylko końce LF |
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Modyfikuje plik bezpośrednio |
-| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |PLIKWYJŚCIOWY zawiera wersję przy użyciu tylko końce LF. |
+| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |PLIK jest w wersji zawierającej tylko końce LF. |
 
 **Błąd**: `line 1: #!/usr/bin/env: No such file or directory`.
 
-*Przyczyna*: Ten błąd występuje, gdy skrypt został zapisany w formacie UTF-8 za pomocą znacznika kolejności bajtów (BOM).
+*Przyczyna*: ten błąd występuje, gdy skrypt został zapisany jako UTF-8 z oznaczeniem kolejności bajtów (BOM).
 
-*Rozpoznawanie*: Zapisz plik w formacie ASCII lub jako UTF-8 bez BOM. Aby utworzyć plik bez BOM można także użyć następującego polecenia w systemie Linux lub Unix:
+*Rozwiązanie*: Zapisz plik jako ASCII lub UTF-8 bez BOM. Możesz również użyć następującego polecenia w systemie Linux lub UNIX, aby utworzyć plik bez BOM:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
-Zastąp `INFILE` za pomocą pliku zawierającego znak BOM. `OUTFILE` powinna być nową nazwę pliku, który zawiera skrypt bez BOM.
+Zastąp `INFILE` plikiem zawierającym BOM. `OUTFILE` powinna być nową nazwą pliku, która zawiera skrypt bez BOM.
 
 ## <a name="seeAlso"></a>Następne kroki
 
-* Dowiedz się, jak [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md)
-* Użyj [dokumentacji zestawu .NET SDK HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) Aby dowiedzieć się więcej na temat tworzenia aplikacji platformy .NET, które zarządzają HDInsight
-* Użyj [interfejsu API REST HDInsight](https://msdn.microsoft.com/library/azure/mt622197.aspx) Aby dowiedzieć się, jak wykonywać operacje zarządzania w klastrach HDInsight przy użyciu architektury REST.
+* Dowiedz się, jak [dostosować klastry usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md)
+* Aby dowiedzieć się więcej o tworzeniu aplikacji platformy .NET, które zarządzają usługą HDInsight, Skorzystaj z [dokumentacji usługi HDINSIGHT SDK dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* Użyj [interfejsu API REST usługi HDInsight](https://msdn.microsoft.com/library/azure/mt622197.aspx) , aby dowiedzieć się, jak używać funkcji REST do wykonywania akcji zarządzania w klastrach usługi HDInsight.

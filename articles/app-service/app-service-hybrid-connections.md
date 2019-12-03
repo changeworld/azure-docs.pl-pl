@@ -1,25 +1,18 @@
 ---
-title: Połączenia hybrydowe — Azure App Service | Microsoft Docs
-description: Jak utworzyć i używać Połączenia hybrydowe do uzyskiwania dostępu do zasobów w różnych sieciach
-services: app-service
-documentationcenter: ''
+title: Hybrydowe
+description: Dowiedz się, jak tworzyć i używać połączeń hybrydowych w programie Azure App Service, aby uzyskiwać dostęp do zasobów w różnych sieciach.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffc5ee32541cfbbda2ae54fd229c1436f133d730
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082397"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671509"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Połączenia hybrydowe #
 
@@ -28,7 +21,7 @@ Połączenia hybrydowe to usługa na platformie Azure i funkcja w Azure App Serv
 W App Service Połączenia hybrydowe może służyć do uzyskiwania dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie umożliwia alternatywnej możliwości uzyskiwania dostępu do aplikacji. Jak w App Service każde połączenie hybrydowe jest skorelowane z pojedynczym hostem TCP i kombinacją portów. Oznacza to, że punkt końcowy połączenia hybrydowego może znajdować się w dowolnym systemie operacyjnym i dowolnej aplikacji, pod warunkiem, że uzyskujesz dostęp do portu nasłuchiwania protokołu TCP. Funkcja Połączenia hybrydowe nie wie ani nie posługuje się z protokołem aplikacji lub dostępem do niego. Zapewnia to po prostu dostęp do sieci.  
 
 
-## <a name="how-it-works"></a>Jak to działa ##
+## <a name="how-it-works"></a>Zasady działania ##
 Funkcja Połączenia hybrydowe obejmuje dwa wywołania wychodzące do przekaźnika Azure Service Bus. Istnieje połączenie z biblioteki na hoście, na którym aplikacja działa w App Service. Istnieje również połączenie z Menedżer połączeń hybrydowych (HCM) do Service Bus Relay. HCM to usługa przekaźnikowa, która jest wdrażana w sieci obsługującej zasób, do którego próbujesz uzyskać dostęp. 
 
 Za pośrednictwem dwóch dołączonych połączeń aplikacja ma tunel TCP do stałego hosta: kombinacja portów po drugiej stronie HCM. W ramach uwierzytelniania i autoryzacji połączenie używa protokołu TLS 1,2 dla zabezpieczeń i kluczy sygnatury dostępu współdzielonego (SAS).    
@@ -106,7 +99,7 @@ App Service Połączenia hybrydowe są dostępne tylko w jednostkach SKU w warst
 
 | Plan cenowy | Liczba Połączenia hybrydowe użytecznych w planie |
 |----|----|
-| Podstawowa | 5 |
+| Basic | 5 |
 | Standardowa (Standard) | 25 |
 | Premium | 200 |
 | Izolowane | 200 |

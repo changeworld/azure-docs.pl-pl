@@ -1,26 +1,18 @@
 ---
-title: Zarządzanie Web App for Containers przy użyciu interfejsu wiersza polecenia platformy Azure — Azure App Service | Microsoft Docs
-description: Zarządzanie Web App for Containers przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: Zarządzanie niestandardowymi kontenerami systemu Linux przy użyciu interfejsu wiersza polecenia
+description: Dowiedz się, jak zarządzać niestandardowymi kontenerami systemu Linux w Azure App Service z poziomu wiersza polecenia. Automatyzowanie aprowizacji lub konserwacji aplikacji.
 keywords: Azure App Service, Web App, CLI, Linux, OSS
-services: app-service
-documentationCenter: ''
 author: ahmedelnably
-manager: cfowler
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 5481e9f28d8fc47936ad62bd8d974beb5ca85fcd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 773c8036a345383162013f9f7103164b0f382f12
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071310"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689056"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Zarządzanie Web App for Containers przy użyciu interfejsu wiersza polecenia platformy Azure
 

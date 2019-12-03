@@ -1,21 +1,19 @@
 ---
-title: Opracowywanie i wdrażanie zadań WebJob przy użyciu programu Visual Studio — Azure
-description: Dowiedz się, jak opracowywać i wdrażać Azure WebJobs, aby Azure App Service przy użyciu programu Visual Studio.
+title: Opracowywanie i wdrażanie zadań WebJob przy użyciu programu VS
+description: Dowiedz się, jak opracowywać Azure WebJobs w programie Visual Studio i wdrażać je w Azure App Service, w tym o tworzeniu zaplanowanego zadania.
 author: ggailey777
-manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
-ms.service: app-service
 ms.topic: conceptual
 ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ac458b01135be8628fbf939e310f8bda02b8d290
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303537"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684168"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Opracowywanie i wdrażanie zadań WebJob za pomocą programu Visual Studio — Azure App Service
 
@@ -164,7 +162,7 @@ Pola w tym oknie dialogowym odpowiadają polom w oknie dialogowym **Dodawanie za
 > 
 > 
 
-### <a id="publishsettings"></a>webjob-publish-settings.json
+### <a id="publishsettings"></a>zadanie WebJob — publikowanie-Settings. JSON
 Po skonfigurowaniu aplikacji konsolowej do wdrożenia usługi WebJobs program Visual Studio instaluje pakiet NuGet [Microsoft. Web. WebJobs. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) i zapisuje informacje o harmonogramie w pliku *WebJob-Publish-Settings. JSON* w folderze *Właściwości* projektu projektu WebJobs. Oto przykład tego pliku:
 
         {
@@ -179,7 +177,7 @@ Po skonfigurowaniu aplikacji konsolowej do wdrożenia usługi WebJobs program Vi
 
 Można edytować ten plik bezpośrednio, a program Visual Studio udostępnia funkcję IntelliSense. Schemat pliku jest przechowywany w [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) i można go tam przeglądać.  
 
-### <a id="webjobslist"></a>webjobs-list.json
+### <a id="webjobslist"></a>WebJobs-list. JSON
 W przypadku łączenia projektu z obsługą zadań WebJob z projektem sieci Web program Visual Studio przechowuje nazwę projektu WebJobs w pliku *WebJobs-list. JSON* w folderze *Właściwości* projektu sieci Web. Lista może zawierać wiele projektów zadań WebJob, jak pokazano w następującym przykładzie:
 
         {
@@ -233,10 +231,10 @@ Następujące ustawienia są obsługiwane przez Zadania WebJob:
 
 | **Ustawienie** | **Typ**  | **Opis** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Wszystkie | Zezwala na uruchamianie zadania bez uprzedniego kopiowania do folderu tymczasowego. Aby dowiedzieć się więcej, zobacz [katalog roboczy usługi WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Wszystko | Zezwala na uruchamianie zadania bez uprzedniego kopiowania do folderu tymczasowego. Aby dowiedzieć się więcej, zobacz [katalog roboczy usługi WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Ciągłe | W przypadku skalowania w poziomie należy uruchamiać tylko zadania WebJob w jednym wystąpieniu. Aby dowiedzieć się więcej, zobacz [Ustawianie ciągłego zadania jako pojedyncze](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
 | `schedule` | Wyzwalane | Uruchom zadanie WebJob na podstawie harmonogramu opartego na języku cronus. Aby dowiedzieć się więcej, zobacz artykuł dotyczący [wyzwalacza czasomierza](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
-| `stopping_wait_time`| Wszystkie | Umożliwia sterowanie zachowaniem zamknięcia. Aby dowiedzieć się więcej, zobacz temat [bezpieczne zamykanie](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Wszystko | Umożliwia sterowanie zachowaniem zamknięcia. Aby dowiedzieć się więcej, zobacz temat [bezpieczne zamykanie](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Następne kroki
 

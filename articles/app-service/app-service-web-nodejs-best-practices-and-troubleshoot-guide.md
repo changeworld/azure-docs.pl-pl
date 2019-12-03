@@ -1,26 +1,19 @@
 ---
-title: Najlepsze rozwiązania i rozwiązywanie problemów dotyczących środowiska Node. js — Azure App Service
-description: Zapoznaj się z najlepszymi rozwiązaniami i procedurami rozwiązywania problemów aplikacji node na Azure App Service.
-services: app-service\web
-documentationcenter: nodejs
+title: Najlepsze rozwiązania dotyczące środowiska Node. js i rozwiązywanie problemów
+description: Poznaj najlepsze rozwiązania i kroki rozwiązywania problemów z aplikacjami Node. js uruchomionymi w programie Azure App Service.
 author: ranjithr
-manager: wadeh
-editor: ''
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: bwren
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cf691ae3a199ea82cb8cfa23c386d30551dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024238"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672048"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Najlepsze rozwiązania i wskazówki dotyczące rozwiązywania problemów z aplikacjami węzłów w systemie Azure App Service Windows
 

@@ -1,27 +1,18 @@
 ---
-title: Rozwiązywanie problemów z obniżeniem wydajności — Azure App Service | Microsoft Docs
-description: Ten artykuł pomaga rozwiązywać problemy związane z wydajnością aplikacji w Azure App Service.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: Rozwiązywanie problemów z obniżeniem wydajności
+description: Dowiedz się, jak rozwiązywać problemy związane z wydajnością aplikacji w Azure App Service, w tym monitorowanie zachowań aplikacji, zbieranie danych i zmniejszanie problemu.
 tags: top-support-issue
 keywords: wydajność aplikacji sieci Web, powolna aplikacja, powolna aplikacja
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066526"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688314"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Rozwiązywanie problemów z wydajnością wolniejszych aplikacji w Azure App Service
 Ten artykuł pomaga rozwiązywać problemy związane z wydajnością aplikacji w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -95,7 +86,7 @@ Każda aplikacja App Service udostępnia rozszerzalny punkt końcowy zarządzani
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Zbieranie danych
+### <a name="2-collect-data"></a>2. Zbierz dane
 App Service udostępnia funkcje diagnostyczne do rejestrowania informacji z serwera sieci Web i aplikacji sieci Web. Informacje są rozdzielone na diagnostykę serwera sieci Web i diagnostykę aplikacji.
 
 #### <a name="enable-web-server-diagnostics"></a>Włącz diagnostykę serwera sieci Web
@@ -123,7 +114,7 @@ Profilowanie zdalne jest przydatne, jeśli użycie procesora CPU przez proces je
 Aby uzyskać więcej informacji, zobacz [Obsługa profilowania zdalnego w Azure App Service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service).
 
 ##### <a name="set-up-diagnostic-traces-manually"></a>Ręczne konfigurowanie śladów diagnostycznych
-Jeśli masz dostęp do kodu źródłowego aplikacji sieci Web, Diagnostyka aplikacji umożliwia przechwytywanie informacji generowanych przez aplikację sieci Web. Aplikacje ASP.NET mogą używać `System.Diagnostics.Trace` klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. Należy jednak zmienić kod i ponownie wdrożyć aplikację. Ta metoda jest zalecana, jeśli aplikacja działa w środowisku testowym.
+Jeśli masz dostęp do kodu źródłowego aplikacji sieci Web, Diagnostyka aplikacji umożliwia przechwytywanie informacji generowanych przez aplikację sieci Web. Aplikacje ASP.NET mogą używać klasy `System.Diagnostics.Trace` do rejestrowania informacji w dzienniku diagnostyki aplikacji. Należy jednak zmienić kod i ponownie wdrożyć aplikację. Ta metoda jest zalecana, jeśli aplikacja działa w środowisku testowym.
 
 Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania aplikacji do rejestrowania, zobacz [Włączanie rejestrowania diagnostycznego dla aplikacji w Azure App Service](troubleshoot-diagnostic-logs.md).
 
@@ -150,7 +141,7 @@ Aby uzyskać więcej informacji na temat funkcji dostępnych w programie kudu, z
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Eliminowanie problemu
+### <a name="3-mitigate-the-issue"></a>3. Zmniejsz problem
 #### <a name="scale-the-app"></a>Skalowanie aplikacji
 W Azure App Service, aby zwiększyć wydajność i przepływność, można dostosować skalę, w której jest uruchamiana aplikacja. Skalowanie aplikacji w górę obejmuje dwie powiązane akcje: zmiana planu App Service na wyższą warstwę cenową oraz skonfigurowanie niektórych ustawień po przełączeniu do wyższej warstwy cenowej.
 

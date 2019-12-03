@@ -1,24 +1,15 @@
 ---
-title: Erze poprawek systemu operacyjnego i środowiska uruchomieniowego — Azure App Service | Microsoft Docs
-description: Opisuje, w jaki sposób Azure App Service aktualizuje system operacyjny i środowiska uruchomieniowe oraz jak można uzyskać powiadomienia o aktualizacjach.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Erze poprawek systemu operacyjnego i środowiska uruchomieniowego
+description: Dowiedz się, jak Azure App Service aktualizować system operacyjny i środowiska uruchomieniowe, jakie środowiska uruchomieniowe i poprawki mają być używane przez aplikacje oraz jak uzyskać powiadomienia o aktualizacjach.
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074134"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688566"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Stosowanie poprawek systemu operacyjnego i środowiska uruchomieniowego w Azure App Service
 
@@ -40,7 +31,7 @@ Aby uzyskać szczegółowe informacje na temat sposobu stosowania aktualizacji, 
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Jak platforma Azure zajmuje się znaczącymi lukami w zabezpieczeniach?
 
-W przypadku poważnych luk w zabezpieczeniach, takich jak [luki](https://wikipedia.org/wiki/Zero-day_(computing))w zabezpieczeniach z zerami, aktualizacje o wysokim priorytecie są obsługiwane na zasadzie wielkości liter.
+W przypadku poważnych luk w zabezpieczeniach, takich jak [luki w zabezpieczeniach z zerami](https://wikipedia.org/wiki/Zero-day_(computing)), aktualizacje o wysokim priorytecie są obsługiwane na zasadzie wielkości liter.
 
 Bądź na bieżąco z krytycznymi powiadomieniami o zabezpieczeniach na platformie Azure, odwiedzając Blog dotyczący [zabezpieczeń platformy Azure](https://azure.microsoft.com/blog/topics/security/). 
 
@@ -64,7 +55,7 @@ Aktualizacje poprawek do wersji .NET, PHP, Java SDK lub Tomcat/Jetty są automat
 
 ### <a name="new-major-and-minor-versions"></a>Nowe wersje główne i pomocnicze
 
-Po dodaniu nowej wersji głównej lub pomocniczej jest ona instalowana równolegle z istniejącymi wersjami. Możesz ręcznie uaktualnić aplikację do nowej wersji. W przypadku skonfigurowania wersji środowiska uruchomieniowego w pliku konfiguracji (na `web.config` przykład `package.json`i) należy przeprowadzić uaktualnienie przy użyciu tej samej metody. Jeśli użyto ustawienia App Service w celu skonfigurowania wersji środowiska uruchomieniowego, można ją zmienić w [Azure Portal](https://portal.azure.com) lub przez uruchomienie polecenia [interfejsu CLI platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) w [Cloud Shell](../cloud-shell/overview.md), jak pokazano w następujących przykładach:
+Po dodaniu nowej wersji głównej lub pomocniczej jest ona instalowana równolegle z istniejącymi wersjami. Możesz ręcznie uaktualnić aplikację do nowej wersji. W przypadku skonfigurowania wersji środowiska uruchomieniowego w pliku konfiguracji (np. `web.config` i `package.json`) należy przeprowadzić uaktualnienie przy użyciu tej samej metody. Jeśli użyto ustawienia App Service w celu skonfigurowania wersji środowiska uruchomieniowego, można ją zmienić w [Azure Portal](https://portal.azure.com) lub przez uruchomienie polecenia [interfejsu CLI platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) w [Cloud Shell](../cloud-shell/overview.md), jak pokazano w następujących przykładach:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -84,17 +75,17 @@ Podczas gdy krytyczne informacje o systemie operacyjnym są blokowane przed dost
 
 W poniższej tabeli przedstawiono, jak wersje systemu Windows i środowisko uruchomieniowe języka, w którym są uruchomione aplikacje:
 
-| Information | Gdzie można go znaleźć | 
+| Informacje | Gdzie można go znaleźć | 
 |-|-|
 | Wersja systemu Windows | Zobacz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (w obszarze informacje o systemie) |
-| Wersja platformy .NET | `https://<appname>.scm.azurewebsites.net/DebugConsole`W wierszu polecenia Uruchom następujące polecenie: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| Wersja platformy .NET Core | `https://<appname>.scm.azurewebsites.net/DebugConsole`W wierszu polecenia Uruchom następujące polecenie: <br> `dotnet --version` |
-| Wersja języka PHP | `https://<appname>.scm.azurewebsites.net/DebugConsole`W wierszu polecenia Uruchom następujące polecenie: <br> `php --version` |
+| Wersja platformy .NET | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| Wersja platformy .NET Core | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `dotnet --version` |
+| Wersja języka PHP | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `php --version` |
 | Domyślna wersja środowiska Node. js | W [Cloud Shell](../cloud-shell/overview.md)Uruchom następujące polecenie: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Wersja języka Python | `https://<appname>.scm.azurewebsites.net/DebugConsole`W wierszu polecenia Uruchom następujące polecenie: <br> `python --version` |  
+| Wersja języka Python | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `python --version` |  
 
 > [!NOTE]  
-> Dostęp do lokalizacji `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`w rejestrze, gdzie są przechowywane informacje o [poprawkach "KB"](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jest zablokowany.
+> Dostęp do lokalizacji rejestru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, gdzie są przechowywane informacje o [poprawkach "KB"](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jest zablokowany.
 >
 >
 

@@ -1,25 +1,16 @@
 ---
-title: Przegląd zabezpieczeń — Azure App Service | Microsoft Docs
+title: Zabezpieczenia
 description: Dowiedz się więcej na temat sposobu, w jaki App Service pomaga w zabezpieczeniu aplikacji oraz jak można dodatkowo blokować aplikacje przed zagrożeniami.
 keywords: Azure App Service, aplikacja sieci Web, aplikacja mobilna, aplikacja interfejsu API, aplikacja funkcji, zabezpieczenia, zabezpieczanie, zabezpieczanie, zgodność, zgodne, certyfikat, certyfikaty, https, FTPS, TLS, zaufanie, szyfrowanie, szyfrowanie, szyfrowanie, ograniczenie adresów IP, uwierzytelnianie, autoryzacja, authn, autho, MSI, tożsamość usługi zarządzanej, tożsamość zarządzana, wpisy tajne, sekret, poprawki, poprawki, poprawki, wersja, izolacja, izolacja sieci, DDoS, MITM
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 28394689048e730aa0c84e3bf807ef3afb898b1e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470086"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688553"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpieczenia w Azure App Service
 
@@ -40,7 +31,7 @@ W poniższych sekcjach pokazano, jak zabezpieczyć aplikację App Service przed 
 
 ## <a name="https-and-certificates"></a>HTTPS i certyfikaty
 
-App Service umożliwia Zabezpieczanie aplikacji przy użyciu [protokołu HTTPS](https://wikipedia.org/wiki/HTTPS). Po utworzeniu aplikacji jej domyślna nazwa domeny (\<APP_NAME >. azurewebsites. NET) jest już dostępna przy użyciu protokołu HTTPS. Jeśli [skonfigurujesz domenę niestandardową dla aplikacji](app-service-web-tutorial-custom-domain.md), należy ją również [zabezpieczyć za pomocą certyfikatu SSL](configure-ssl-bindings.md) , aby przeglądarki klienta mogły nawiązać bezpieczne połączenia HTTPS z domeną niestandardową. Istnieje kilka typów certyfikatów obsługiwanych przez App Service:
+App Service umożliwia Zabezpieczanie aplikacji przy użyciu [protokołu HTTPS](https://wikipedia.org/wiki/HTTPS). Po utworzeniu aplikacji jej domyślna nazwa domeny (\<app_name >. azurewebsites. NET) jest już dostępna przy użyciu protokołu HTTPS. Jeśli [skonfigurujesz domenę niestandardową dla aplikacji](app-service-web-tutorial-custom-domain.md), należy ją również [zabezpieczyć za pomocą certyfikatu SSL](configure-ssl-bindings.md) , aby przeglądarki klienta mogły nawiązać bezpieczne połączenia HTTPS z domeną niestandardową. Istnieje kilka typów certyfikatów obsługiwanych przez App Service:
 
 - App Service w warstwie Bezpłatna certyfikat zarządzany
 - Certyfikat App Service
@@ -86,7 +77,7 @@ Istnieją trzy typy zasobów zdalnych, do których aplikacja może potrzebować 
 
 W każdym z tych przypadków App Service zapewnia sposób nawiązywania bezpiecznych połączeń, ale nadal należy przestrzegać najlepszych rozwiązań w zakresie zabezpieczeń. Na przykład zawsze używaj szyfrowanych połączeń, nawet jeśli zasób zaplecza zezwala na nieszyfrowane połączenia. Ponadto upewnij się, że usługa platformy Azure zaplecza zezwala na minimalny zestaw adresów IP. Wychodzące adresy IP dla aplikacji można znaleźć w przychodzącym [i wychodzącym adresie IP w Azure App Service](overview-inbound-outbound-ips.md).
 
-### <a name="azure-resources"></a>Zasoby platformy Azure
+### <a name="azure-resources"></a>Zasoby Azure
 
 Gdy aplikacja nawiązuje połączenie z zasobami platformy Azure, takimi jak [SQL Database](https://azure.microsoft.com/services/sql-database/) i [Azure Storage](/azure/storage/), połączenie pozostaje na platformie Azure i nie przekracza żadnych granic sieci. Jednak połączenie odbywa się za pomocą sieci udostępnionej na platformie Azure, więc zawsze upewnij się, że połączenie jest zaszyfrowane. 
 

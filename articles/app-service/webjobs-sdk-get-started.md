@@ -1,24 +1,17 @@
 ---
-title: Wprowadzenie do zestawu SDK usługi WebJobs — Azure
+title: Wprowadzenie do zestawu SDK zadań WebJob
 description: Wprowadzenie do zestawu SDK zadań WebJob na potrzeby przetwarzania w tle opartego na zdarzeniach. Dowiedz się, jak uzyskać dostęp do danych w usługach platformy Azure i usługach innych firm.
-services: app-service\web, storage
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2b2b8fe383ff4ee3d4b23c2c6e555b44e0cc088c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390068"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684181"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Wprowadzenie do zestawu SDK Azure WebJobs na potrzeby przetwarzania w tle opartego na zdarzeniach
 
@@ -44,7 +37,7 @@ W tym artykule opisano sposób wdrażania zadań WebJob jako aplikacji konsolowe
 
 ## <a name="webjobs-nuget-packages"></a>Pakiety NuGet zadań WebJob
 
-1. Zainstaluj najnowszą wersję programu dla pakietu NuGet o wartości 3. x `Microsoft.Azure.WebJobs.Extensions`, która obejmuje `Microsoft.Azure.WebJobs`.
+1. Zainstaluj najnowszą wersję systemu o stabilnej wersji 3. x pakietu NuGet `Microsoft.Azure.WebJobs.Extensions`, w tym `Microsoft.Azure.WebJobs`.
 
      Oto polecenie **konsoli Menedżera pakietów** dla wersji 3.0.2:
 
@@ -80,13 +73,13 @@ Host jest kontenerem środowiska uruchomieniowego dla funkcji, które nasłuchuj
     }
     ```
 
-W ASP.NET Core konfiguracje hosta są ustawiane przez wywoływanie metod w wystąpieniu [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) . Aby uzyskać więcej informacji, zobacz [host ogólny programu .NET](/aspnet/core/fundamentals/host/generic-host). Metoda rozszerzenia `ConfigureWebJobs` Inicjuje hosta zadań WebJob. W `ConfigureWebJobs` inicjowanie określonych rozszerzeń zadań WebJob i Ustawianie właściwości tych rozszerzeń.  
+W ASP.NET Core konfiguracje hosta są ustawiane przez wywoływanie metod w wystąpieniu [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) . Aby uzyskać więcej informacji, zobacz [host ogólny programu .NET](/aspnet/core/fundamentals/host/generic-host). Metoda rozszerzenia `ConfigureWebJobs` Inicjuje hosta zadań WebJob. W `ConfigureWebJobs`należy zainicjować określone rozszerzenia zadań WebJob i ustawić właściwości tych rozszerzeń.  
 
 ## <a name="enable-console-logging"></a>Włącz rejestrowanie konsoli
 
 W tej sekcji skonfigurujesz Rejestrowanie konsoli, która używa [struktury rejestrowania ASP.NET Core](/aspnet/core/fundamentals/logging).
 
-1. Zainstaluj najnowszą stabilną wersję pakietu NuGet `Microsoft.Extensions.Logging.Console`, która obejmuje `Microsoft.Extensions.Logging`.
+1. Zainstaluj najnowszą stabilną wersję pakietu NuGet `Microsoft.Extensions.Logging.Console`, w tym `Microsoft.Extensions.Logging`.
 
    Oto polecenie **konsoli Menedżera pakietów** dla wersji 2.2.0:
 
@@ -100,7 +93,7 @@ W tej sekcji skonfigurujesz Rejestrowanie konsoli, która używa [struktury reje
    using Microsoft.Extensions.Logging;
    ```
 
-1. Wywołaj metodę [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) w [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder). Metoda [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) powoduje dodanie rejestrowania konsoli do konfiguracji.
+1. Wywołaj metodę [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) w [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder). Metoda [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) dodaje Rejestrowanie konsoli do konfiguracji.
 
     ```cs
     builder.ConfigureLogging((context, b) =>
@@ -109,7 +102,7 @@ W tej sekcji skonfigurujesz Rejestrowanie konsoli, która używa [struktury reje
     });
     ```
 
-    Metoda `Main` wygląda teraz następująco:
+    Teraz Metoda `Main` wygląda następująco:
 
     ```cs
     static void Main(string[] args)
@@ -150,7 +143,7 @@ Począwszy od wersji 3. x, należy jawnie zainstalować rozszerzenie powiązania
     Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.4
     ```
 
-2. W metodzie rozszerzenia `ConfigureWebJobs` Wywołaj metodę `AddAzureStorage` w wystąpieniu [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) , aby zainicjować rozszerzenie magazynu. W tym momencie Metoda `ConfigureWebJobs` wygląda podobnie do poniższego przykładu:
+2. W metodzie rozszerzenia `ConfigureWebJobs` Wywołaj metodę `AddAzureStorage` w wystąpieniu [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) , aby zainicjować rozszerzenie magazynu. W tym momencie Metoda `ConfigureWebJobs` wygląda następująco:
 
     ```cs
     builder.ConfigureWebJobs(b =>
@@ -218,7 +211,7 @@ Emulator usługi Azure Storage, który działa lokalnie, nie ma wszystkich funkc
 
 Zestaw SDK zadań WebJob szuka parametrów połączenia magazynu w ustawieniach aplikacji na platformie Azure. W przypadku uruchamiania lokalnego program szuka tej wartości w lokalnym pliku konfiguracyjnym lub w zmiennych środowiskowych.
 
-1. Kliknij prawym przyciskiem myszy projekt, wybierz pozycję **dodaj** > **nowy element...** , wybierz **plik konfiguracji JSON języka JavaScript**, nazwij nowy plik *appSettings. JSON* , a następnie wybierz pozycję **Dodaj**. 
+1. Kliknij prawym przyciskiem myszy projekt, wybierz pozycję **dodaj** > **nowy element...** , wybierz **plik konfiguracyjny JavaScript JSON**, nazwij nowy plik *appSettings. JSON* , a następnie wybierz pozycję **Dodaj**. 
 
 1. W nowym pliku Dodaj pole `AzureWebJobsStorage`, jak w poniższym przykładzie:
 
