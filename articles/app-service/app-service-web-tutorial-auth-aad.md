@@ -1,26 +1,17 @@
 ---
-title: Kompleksowe uwierzytelnianie i autoryzacja użytkowników — Azure App Service | Microsoft Docs
+title: 'Samouczek: AuthN/AuthO end-to-end'
 description: Dowiedz się, jak używać uwierzytelniania i autoryzacji usługi App Service w celu zabezpieczenia aplikacji usługi App Service, w tym dostępu do zdalnych interfejsów API.
 keywords: app service, azure app service, authN, authZ, secure, security, multi-tiered, azure active directory, azure ad
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 55ba5a193e15ac4e8bd83ac046deeac1f12d61d0
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6c243839e59038d439e177847df4427d253dbe98
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961952"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672065"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Samouczek: kompleksowe uwierzytelnianie i autoryzacja użytkowników w usłudze Azure App Service
 
@@ -80,7 +71,7 @@ Aby zatrzymać platformę ASP.NET Core w dowolnym momencie, naciśnij kombinacj�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-apps-to-azure"></a>Wdrażanie aplikacji na platformie Azure
+## <a name="deploy-apps-to-azure"></a>Wdrażanie aplikacji w systemie Azure
 
 W tym kroku wdrożysz projekt w dwóch aplikacjach usługi App Service. Jedna aplikacja to aplikacja frontonu, a druga — zaplecza.
 
@@ -281,7 +272,7 @@ Zaloguj się do witryny [Azure Resource Explorer](https://resources.azure.com). 
 
 ![Interfejs API platformy ASP.NET Core uruchomiony w usłudze Azure App Service](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-W przeglądarce po lewej stronie kliknij pozycję **subskrypcje** >  **_\<subskrypcję >_**  > **resourceGroups** > **myAuthResourceGroup** > **dostawcy** > **Microsoft. Web** > **lokacje** >  **_\<frontonu aplikacji >_**  > **konfiguracji** > **authsettings**.
+W przeglądarce po lewej stronie kliknij **pozycję subskrypcje** >  **_\<subskrypcję >_**  > **resourceGroups** > **myAuthResourceGroup** > **dostawcy** > **Microsoft. Web** > **Lokacje** > \< **_frontonu aplikacji_** > > **konfiguracji** > **authsettings**.
 
 W widoku **authsettings** kliknij pozycję **Edytuj**. Ustaw `additionalLoginParams` na następujący ciąg JSON przy użyciu skopiowanego identyfikatora klienta. 
 

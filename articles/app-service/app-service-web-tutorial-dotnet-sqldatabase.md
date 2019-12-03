@@ -1,26 +1,17 @@
 ---
-title: Kompilowanie aplikacji platformy ASP.NET przy użyciu usługi SQL Database — Azure App Service | Microsoft Docs
+title: 'Samouczek: ASP.NET aplikacji z SQL Database'
 description: Dowiedz się, jak wdrożyć aplikację C# ASP.NET z bazą danych programu SQL Server na platformie Azure.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2f815d99c32c2dcaa1fd35d00110b27a90f53ab4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2a0b3994af48372b8ed0a3c6eaecf4289d0980c1
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471198"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671376"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
 
@@ -96,7 +87,7 @@ Wygenerowaną nazwę aplikacji internetowej można zachować lub zmienić na inn
 
 ![Okno dialogowe Tworzenie usługi App Service](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
@@ -120,7 +111,7 @@ W oknie dialogowym **Konfiguruj plan usługi App Service** skonfiguruj nowy plan
 | ----------------- | ------------ | ----|
 |**Plan usługi App Service**| myAppServicePlan | [Plany usługi App Service](../app-service/overview-hosting-plans.md) |
 |**Lokalizacja**| Europa Zachodnia | [Regiony platformy Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
-|**Rozmiar**| Bezpłatna | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
+|**Rozmiar**| Bezpłatnie | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
 ### <a name="create-a-sql-server-instance"></a>Tworzenie wystąpienia programu SQL Server
 
@@ -155,7 +146,7 @@ W oknie dialogowym **Konfigurowanie bazy danych SQL** wykonaj następujące czyn
 
 ![Konfigurowanie bazy danych SQL](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-Skonfigurowane zasoby zostaną wyświetlone w oknie dialogowym **Tworzenie usługi App Service**. Kliknij pozycję **Utwórz**. 
+Skonfigurowane zasoby zostaną wyświetlone w oknie dialogowym **Tworzenie usługi App Service**. Kliknij przycisk **Utwórz**. 
 
 ![Utworzone zasoby](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -364,7 +355,7 @@ W celu zmiany poziomu śledzenia w taki sposób, aby w danych wyjściowych znajd
 
 Kliknij ponownie prawym przyciskiem myszy aplikację platformy Azure i wybierz polecenie **Wyświetl ustawienia**.
 
-Z listy rozwijanej **Rejestrowanie aplikacji (System plików)** wybierz pozycję **Pełne**. Kliknij pozycję **Zapisz**.
+Z listy rozwijanej **Rejestrowanie aplikacji (System plików)** wybierz pozycję **Pełne**. Kliknij przycisk **Save** (Zapisz).
 
 ![Zmienianie poziomu śledzenia na Pełne](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 

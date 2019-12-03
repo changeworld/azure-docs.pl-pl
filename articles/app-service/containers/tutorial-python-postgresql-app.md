@@ -1,26 +1,19 @@
 ---
-title: 'Samouczek: aplikacja sieci Web języka Python (Django) z PostgreSQL w systemie Linux — Azure App Service'
-description: Dowiedz się, jak uruchomić opartą na danych aplikację sieci Web w języku Python (Django) na platformie Azure z połączeniem z bazą danych PostgreSQL.
-services: app-service\web
-documentationcenter: python
-author: cephalin
-manager: gwallace
-ms.service: app-service-web
-ms.workload: web
+title: 'Samouczek: aplikacja systemu Linux Python z Postgre'
+description: Dowiedz się, jak pobrać aplikację dla systemu Linux w Azure App Service z połączeniem z bazą danych PostgreSQL na platformie Azure. Django jest używany w tym samouczku.
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: 34dbce2a6da2395bbc627a30d464a9817dfe76fe
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: d23097c9674d2b7e60e779304a2d08c734bd614d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439433"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688875"
 ---
 # <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Samouczek: Tworzenie aplikacji sieci Web w języku Python (Django) za pomocą PostgreSQL w Azure App Service
 
@@ -161,7 +154,7 @@ W tym kroku utworzysz bazę danych PostgreSQL na platformie Azure. Aplikacja wdr
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -424,7 +417,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Wyświetlanie dzienników diagnostycznych
 > * Zarządzanie aplikacją sieci Web w języku Python w Azure Portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
 > [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)

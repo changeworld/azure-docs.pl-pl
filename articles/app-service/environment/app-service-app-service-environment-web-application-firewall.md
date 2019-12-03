@@ -1,28 +1,21 @@
 ---
-title: Konfigurowanie zapory aplikacji internetowej dla środowiska usługi App Service — Azure
-description: Informacje na temat sposobu konfigurowania zapory aplikacji internetowych przed środowiskiem App Service Environment.
-services: app-service\web
-documentationcenter: ''
-author: naziml
-manager: erikre
-editor: jimbe
+title: Konfigurowanie WAF
+description: Dowiedz się, jak skonfigurować zaporę aplikacji sieci Web (WAF) przed App Service Environment przy użyciu usługi Azure Application Gateway lub WAF innej firmy.
+author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/03/2018
-ms.author: naziml
+ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 01224e4270ba8a7c7df4a311823dd6156038438a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ba53438eb5ae1870cb180b169348ab0f92e5f305
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070046"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688753"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurowanie zapory aplikacji internetowych za pomocą środowiska App Service Environment
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Zapory aplikacji internetowych pomagają w zabezpieczaniu aplikacji internetowych, sprawdzając przychodzący ruch internetowy w celu blokowania wstrzyknięcia kodu SQL, działania skryptów między witrynami, operacji pobierania złośliwego oprogramowania oraz ataków DDoS na aplikacje i innych ataków. Badają one również odpowiedzi z internetowych serwerów zaplecza na potrzeby zapobiegania utracie danych. W połączeniu z izolacją i dodatkowym skalowaniem oferowanym przez środowisko App Service Environment ta funkcja oferuje idealne środowisko hostowania biznesowych aplikacji internetowych o krytycznym znaczeniu, które muszą radzić sobie ze złośliwymi żądaniami i intensywnym ruchem. Platforma Azure oferuje możliwości zapory aplikacji internetowych dzięki usłudze [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).  Aby dowiedzieć się, jak zintegrować środowisko App Service Environment z usługą Application Gateway, zapoznaj się z dokumentem [Integrate your ILB ASE with an Application Gateway (Integrowanie środowiska ASE wewnętrznego modułu równoważenia obciążenia z usługą Application Gateway)](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway).
 

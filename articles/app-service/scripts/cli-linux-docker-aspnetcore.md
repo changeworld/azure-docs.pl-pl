@@ -1,27 +1,20 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie aplikacji ASP.NET Core z usługi Docker Hub | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie aplikacji ASP.NET Core w usłudze App Service z usługi Docker Hub
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Interfejs wiersza polecenia: Tworzenie aplikacji ASP.NET Core z platformy Docker'
+description: Dowiedz się, jak zautomatyzować wdrażanie aplikacji App Service i zarządzanie nią za pomocą interfejsu wiersza polecenia platformy Azure. Ten przykład pokazuje, jak utworzyć aplikację ASP.NET Core z poziomu usługi Docker Hub.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 136d0d6976b046244ee9e6a24e68d5304a5c352b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80190fa767da6c593b99d79a71ebce661d561253
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136716"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685987"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>Tworzenie aplikacji ASP.NET Core w kontenerze platformy Docker z usługi Docker Hub przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -50,7 +43,7 @@ Ten skrypt używa poniższych poleceń do tworzenia grupy zasobów, aplikacji us
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Tworzy aplikację usługi App Service. |
 | [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | Ustawia kontener platformy Docker dla aplikacji usługi App Service. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

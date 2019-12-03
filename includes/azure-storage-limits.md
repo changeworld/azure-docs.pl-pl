@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a48c1352e4628d8e1776a9479aceac7c294a2ea1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 577ecad169c30da77a69e17b247195088949ec66
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72023070"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74700999"
 ---
 W poniższej tabeli opisano domyślne limity kont usługi Azure ogólnego przeznaczenia w wersji 1, v2 i BLOB Storage. Limit *ruchu* przychodzącego odnosi się do wszystkich danych z żądań wysyłanych do konta magazynu. Limit *ruchu* wychodzącego odnosi się do wszystkich danych z odpowiedzi odbieranych z konta magazynu.
 
@@ -28,6 +28,8 @@ W poniższej tabeli opisano domyślne limity kont usługi Azure ogólnego przezn
 | Maksymalna liczba ruchu wychodzącego dla kont ogólnego przeznaczenia w wersji 2 i BLOB Storage (wszystkie regiony) | 50 GB/s |
 | Maksymalna liczba ruchu wychodzącego dla kont magazynu ogólnego przeznaczenia w wersji 1 (regiony USA) | 20 GB/s, jeśli włączono RA-GRS/GRS, 30 GB/s dla LRS/ZRS<sup>2</sup> |
 | Maksymalna liczba ruchu wychodzącego dla kont magazynu ogólnego przeznaczenia w wersji 1 (regiony inne niż Stany USA) | 10 GB/s, jeśli włączono RA-GRS/GRS, 15 GB/s dla LRS/ZRS<sup>2</sup> |
+| Maksymalna liczba reguł sieci wirtualnej na konto magazynu | 200 |
+| Maksymalna liczba reguł adresów IP na konto magazynu | 200 |
 
 <sup>1</sup> Konta usługi Azure Standard Storage obsługują wyższe limity pojemności i wyższe limity dotyczące ruchu przychodzącego przez żądanie. Aby zażądać zwiększenia limitów kont dla ruchu przychodzącego, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/faq/). Aby uzyskać więcej informacji, zobacz temat [ogłaszanie większych kont magazynu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)o większej skali.
 

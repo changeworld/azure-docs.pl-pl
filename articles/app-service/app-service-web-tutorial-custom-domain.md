@@ -1,27 +1,18 @@
 ---
-title: Mapowanie istniejącej niestandardowej nazwy DNS — Azure App Service | Microsoft Docs
+title: 'Samouczek: mapowanie istniejącej niestandardowej nazwy DNS'
 description: Dowiedz się, jak dodać istniejącą niestandardową nazwę domeny DNS (domenę niestandardową) do aplikacji internetowej, zaplecza aplikacji mobilnej lub aplikacji interfejsu API w usłudze Azure App Service.
 keywords: app service, azure app service, mapowanie domeny, nazwa domeny, istniejąca domena, nazwa hosta
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: erikre
-editor: ''
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fa8acbab8179eea752607c4410851d74ae4e9444
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835869"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672075"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Samouczek: mapowanie istniejącej niestandardowej nazwy DNS na Azure App Service
 
@@ -378,4 +369,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do następnego samouczka, aby dowiedzieć się, jak powiązać niestandardowy certyfikat SSL z aplikacją internetową.
 
 > [!div class="nextstepaction"]
-> [Zabezpiecz niestandardową nazwę DNS z powiązaniem SSL w Azure App Service](configure-ssl-bindings.md)
+> [Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL w usłudze Azure App Service](configure-ssl-bindings.md)

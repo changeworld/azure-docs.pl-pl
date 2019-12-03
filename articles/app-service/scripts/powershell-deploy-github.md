@@ -1,25 +1,17 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — tworzenie aplikacji internetowej i wdrażanie kodu z usługi GitHub | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — tworzenie aplikacji internetowej i wdrażanie kodu z usługi GitHub
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 'PowerShell: Wdrażanie kodu z usługi GitHub'
+description: Dowiedz się, jak używać Azure PowerShell do automatyzowania wdrażania App Service i zarządzania nimi. Ten przykład pokazuje, jak wdrożyć kod z usługi GitHub.
 tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9f6785b84d66ac2728c8fcd72b40eaf20b56372f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 22b6a50b76c7d2e29f4705823db904e2c35f2717
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087793"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684846"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-github"></a>Tworzenie aplikacji internetowej i wdrażanie kodu z usługi GitHub
 

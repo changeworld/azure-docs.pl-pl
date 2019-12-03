@@ -1,26 +1,17 @@
 ---
-title: Node. js (średnia js) z MongoDB w systemie Linux — Azure App Service | Microsoft Docs
-description: Dowiedz się, jak uruchomić aplikację środowiska Node.js w usłudze Azure App Service w systemie Linux z użyciem połączenia z bazą danych usługi Cosmos DB i parametrów połączenia usługi MongoDB. W samouczku użyto ŚREDNIka. js.
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Samouczek: aplikacja Node. js w systemie Linux z MongoDB'
+description: Dowiedz się, jak pobrać aplikację Node. js działającą w Azure App Service z połączeniem z bazą danych MongoDB na platformie Azure (Cosmos DB). W samouczku użyto ŚREDNIka. js.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cf145e04ca0e0ddf336521e72f6dc230dc8fc86b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: ca73c7e610b8bd818355f30b9d08bceffeddfc73
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024953"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688889"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji środowiska Node.js i usługi MongoDB w usłudze Azure App Service w systemie Linux
 
@@ -123,7 +114,7 @@ Aby w dowolnym momencie zatrzymać środowisko Node.js, naciśnij w terminalu kl
 
 W tym kroku utworzysz konto bazy danych przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Aplikacja wdrożona na platformie Azure używa tej bazy danych w chmurze.
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -445,7 +436,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-Po ukończeniu operacji `git push` przejdź do aplikacji platformy Azure i wypróbuj nowe funkcje.
+Po zakończeniu operacji `git push` przejdź do aplikacji platformy Azure i wypróbuj nowe funkcje.
 
 ![Zmiany w modelu i bazie danych opublikowane na platformie Azure](media/tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 
@@ -483,7 +474,7 @@ Które czynności umiesz wykonać:
 > * Strumieniowe przesyłanie dzienników z platformy Azure do terminala
 > * Zarządzanie aplikacją w witrynie Azure Portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
 > [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)

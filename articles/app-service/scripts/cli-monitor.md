@@ -1,27 +1,20 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — monitorowanie aplikacji za pomocą dzienników serwera internetowego | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — monitorowanie aplikacji usługi App Service za pomocą dzienników serwera internetowego
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Interfejs wiersza polecenia: monitorowanie aplikacji przy użyciu dzienników serwera sieci Web'
+description: Dowiedz się, jak zautomatyzować wdrażanie aplikacji App Service i zarządzanie nią za pomocą interfejsu wiersza polecenia platformy Azure. Ten przykład pokazuje, jak monitorować aplikację za pomocą dzienników serwera sieci Web.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0887656f-611c-4627-8247-b5cded7cef60
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c0bdf64e7fd9bf7de3ea46f6c08741b61ef0013f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 436cd16f94aae1668689c7333d5e5a2c9a1bbf46
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136694"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685958"
 ---
 # <a name="monitor-an-app-service-appwith-web-server-logs-using-azure-cli"></a>Monitorowanie aplikacji usługi App Service za pomocą dzienników serwera internetowego przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -51,7 +44,7 @@ Ten skrypt używa poniższych poleceń do tworzenia grupy zasobów, aplikacji us
 | [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) | Konfiguruje, które dzienniki aplikacji usługi App Service zostaną utrwalone. |
 | [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-download) | Pobiera dzienniki aplikacji usługi App Service na komputer lokalny. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

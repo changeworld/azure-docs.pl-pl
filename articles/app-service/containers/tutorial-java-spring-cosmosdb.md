@@ -1,20 +1,18 @@
 ---
-title: Kompilowanie aplikacji internetowej Java w systemie Linux — Azure App Service
-description: Kompilowanie, wdrażanie i skalowanie aplikacji internetowych Java na platformie Spring Boot za pomocą usługi Azure App Service w systemie Linux i usłudze Azure Cosmos DB.
+title: 'Samouczek: aplikacja Java dla systemu Linux z MongoDB'
+description: Dowiedz się, jak uzyskać opartą na danych aplikację Java w systemie Linux działającą w Azure App Service, z połączeniem z usługą MongoDB działającą na platformie Azure (Cosmos DB).
 author: rloutlaw
 ms.author: routlaw
-manager: angerobe
-ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 077c9b22dbb629c8408d431de3e2e621b79c9c48
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747676"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688829"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Samouczek: Tworzenie aplikacji sieci Web do rozruchu ze sprężyną Java za pomocą Azure App Service w systemie Linux i Azure Cosmos DB
 
@@ -146,7 +144,7 @@ Uruchom przykład przy użyciu narzędzia Maven.
 mvn package spring-boot:run
 ```
 
-Dane wyjściowe powinny wyglądać następująco.
+Dane wyjściowe powinny wyglądać podobnie do poniższych.
 
 ```bash
 bash-3.2$ mvn package spring-boot:run

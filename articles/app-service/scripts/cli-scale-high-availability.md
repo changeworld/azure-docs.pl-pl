@@ -1,27 +1,20 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — skalowanie aplikacji na całym świecie przy użyciu usługi Traffic Manager | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — skalowanie aplikacji usługi App Service na całym świecie przy użyciu architektury wysokiej dostępności
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Interfejs wiersza polecenia: skalowanie aplikacji za pomocą Traffic Manager'
+description: Dowiedz się, jak zautomatyzować wdrażanie aplikacji App Service i zarządzanie nią za pomocą interfejsu wiersza polecenia platformy Azure. W tym przykładzie przedstawiono sposób skalowania na całym świecie przy użyciu Traffic Manager.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: e4033a50-0e05-4505-8ce8-c876204b2acc
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3165904eb7757b43d35a4fa3051d29d10bce70a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82845977efe3141dda8c0f0f05c1fbcb3f741bd2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136674"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689366"
 ---
 # <a name="scale-an-app-service-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>Skalowanie aplikacji usługi App Service na całym świecie przy użyciu architektury wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -51,7 +44,7 @@ W tym skrypcie użyto następujących poleceń do utworzenia grupy zasobów, apl
 | [`az network traffic-manager profile create`](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) | Tworzy profil usługi Azure Traffic Manager. |
 | [`az network traffic-manager endpoint create`](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) | Dodaje punkt końcowy do profilu usługi Azure Traffic Manager. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

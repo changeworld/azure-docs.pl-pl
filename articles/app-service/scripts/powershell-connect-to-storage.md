@@ -1,26 +1,17 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — łączenie aplikacji z kontem magazynu | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — łączenie aplikacji usługi App Service z kontem magazynu
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: 'PowerShell: Nawiązywanie połączenia z kontem magazynu'
+description: Dowiedz się, jak używać Azure PowerShell do automatyzowania wdrażania App Service i zarządzania nimi. Ten przykład pokazuje, jak połączyć aplikację z kontem magazynu.
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 1eae5c4b94a59b09e73454fdfcea4e9f041652f2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d1c8951445c0be6a3d4b9c4763d719fc7d79d2d5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098357"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685334"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>Łączenie aplikacji usługi App Service z kontem magazynu
 

@@ -1,27 +1,18 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie powiązania niestandardowego certyfikatu SSL z aplikacją | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie powiązania niestandardowego certyfikatu SSL z aplikacją
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Interfejs wiersza polecenia: przekazywanie i powiązywanie certyfikatu SSL z aplikacją'
+description: Dowiedz się, jak zautomatyzować wdrażanie aplikacji App Service i zarządzanie nią za pomocą interfejsu wiersza polecenia platformy Azure. Ten przykład pokazuje, jak powiązać niestandardowy certyfikat SSL z aplikacją.
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 89483c6396ea344a035ec22bf79e2f90dada4c96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ef07cb55af4b9fe9f54d58bbd496789928c1cec
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136912"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74686683"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-an-app-service-app-using-cli"></a>Tworzenie powiązania niestandardowego certyfikatu SSL z aplikacją usługi App Service przy użyciu interfejsu wiersza polecenia
 
@@ -55,7 +46,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Przekazuje certyfikat SSL do aplikacji usługi App Service. |
 | [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Tworzy powiązanie przekazanego certyfikatu SSL z aplikacją usługi App Service. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

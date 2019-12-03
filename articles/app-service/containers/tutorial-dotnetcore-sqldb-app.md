@@ -1,26 +1,17 @@
 ---
-title: ASP.NET Core z SQL Database w systemie Linux — Azure App Service | Microsoft Docs
-description: Dowiedz się, jak uzyskać ASP.NET Core aplikację działającą w Azure App Service w systemie Linux przy użyciu połączenia z SQL Databaseem.
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Samouczek: ASP.NET Core systemu Linux z bazą danych SQL'
+description: Dowiedz się, jak uzyskać dostęp do ASP.NET Core aplikacji systemu Linux opartej na danych w Azure App Service, z połączeniem do SQL Database.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 532c6a45351f872260ea9383adaacacd486b9d9a
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532719"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688917"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji ASP.NET Core i SQL Database w Azure App Service w systemie Linux
 
@@ -100,7 +91,7 @@ W tym samouczku jako baza danych SQL jest używana baza danych [Azure SQL Databa
 
 W usłudze Cloud Shell utwórz serwer logiczny usługi SQL Database za pomocą polecenia [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
 
-Zastąp symbol zastępczy *> \<server nazwą* unikatową nazwą SQL Database. Ta nazwa jest używana jako część punktu końcowego bazy danych SQL Database, `<server-name>.database.windows.net`, więc nazwa musi być unikatowa na wszystkich serwerach logicznych platformy Azure. Nazwa może zawierać tylko małe litery, cyfry oraz znak łącznika (-) i musi się składać z 3–50 znaków. Ponadto Zastąp *\<db-username >* i *\<db-Password >* z wybranym przez Ciebie nazwą użytkownika i hasłem. 
+Zastąp *ciąg\<Server-name >* symbolem zastępczym unikatową nazwą SQL Database. Ta nazwa jest używana jako część punktu końcowego bazy danych SQL Database, `<server-name>.database.windows.net`, więc nazwa musi być unikatowa na wszystkich serwerach logicznych platformy Azure. Nazwa może zawierać tylko małe litery, cyfry oraz znak łącznika (-) i musi się składać z 3–50 znaków. Ponadto Zastąp *\<DB-username >* i *\<db-Password >* przy użyciu wybranej nazwy użytkownika i hasła. 
 
 
 ```azurecli-interactive
@@ -145,7 +136,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Tworzenie parametrów połączenia
 
-Zastąp następujący ciąg *nazwą \<server-name >* , *\<db-username >* i *\<db-Password >* użyty wcześniej.
+Zastąp następujący ciąg *nazwą\<Server-name >* , *\<db-username >* i\<użytym wcześniej *hasłem > DB* .
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -171,7 +162,7 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 ### <a name="configure-connection-string"></a>Konfigurowanie parametrów połączenia
 
-Aby ustawić parametry połączenia dla aplikacji platformy Azure, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell. W poniższym poleceniu Zastąp *\<app-name >* , a także parametr *\<connection-String >* z utworzonymi wcześniej ciągami połączenia.
+Aby ustawić parametry połączenia dla aplikacji platformy Azure, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell. W poniższym poleceniu Zastąp *\<App-name >* , a także parametr *\<Connection-> String* z utworzonymi wcześniej ciągami połączenia.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
@@ -185,7 +176,7 @@ Aby zobaczyć, w jaki sposób w kodzie występuje odwołanie do parametrów poł
 
 Następnie wybierz dla ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` wartość _Produkcja_. To ustawienie pozwala sprawdzić, czy korzystasz z platformy Azure, ponieważ korzystasz z oprogramowania SQLite dla lokalnego środowiska deweloperskiego i SQL Database dla środowiska platformy Azure.
 
-W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` w aplikacji platformy Azure. Zastąp symbol zastępczy *> \<app* .
+W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` w aplikacji platformy Azure. Zastąp symbol zastępczy *\<App-Name* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"

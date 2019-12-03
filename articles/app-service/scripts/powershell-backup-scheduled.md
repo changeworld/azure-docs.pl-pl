@@ -1,25 +1,19 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — tworzenie zaplanowanej kopii zapasowej aplikacji internetowej | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — tworzenie zaplanowanej kopii zapasowej aplikacji internetowej
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'PowerShell: Tworzenie zaplanowanej kopii zapasowej'
+description: Dowiedz się, jak używać Azure PowerShell do automatyzowania wdrażania App Service i zarządzania nimi. Ten przykład pokazuje, jak utworzyć zaplanowaną kopię zapasową dla aplikacji.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b0223d093cc82becf66a903ea80c03c8435ea84c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b20627dbeae722e31b042cf58ba4029ac8225555
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098396"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685789"
 ---
 # <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Tworzenie zaplanowanej kopii zapasowej aplikacji internetowej przy użyciu programu PowerShell
 

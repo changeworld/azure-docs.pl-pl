@@ -1,27 +1,20 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — ręczne skalowanie aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — ręczne skalowanie aplikacji usługi App Service przy użyciu interfejsu wiersza polecenia platformy Azure
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'Interfejs wiersza polecenia: ręczne skalowanie aplikacji'
+description: Dowiedz się, jak zautomatyzować wdrażanie aplikacji App Service i zarządzanie nią za pomocą interfejsu wiersza polecenia platformy Azure. Ten przykład pokazuje, jak ręcznie skalować aplikację.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 251d9074-8fff-4121-ad16-9eca9556ac96
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 5a15a16b05adedf9f7c8738ae26174120a86efd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c05eed7485d0915140bdc95ebeb466fa1efc077d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136656"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685867"
 ---
 # <a name="scale-an-app-service-app-manually-using-azure-cli"></a>Ręczne skalowanie aplikacji usługi App Service przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -50,7 +43,7 @@ Ten skrypt używa poniższych poleceń do tworzenia grupy zasobów, aplikacji us
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Tworzy aplikację usługi App Service. |
 | [`az appservice plan update`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-update) | Aktualizuje właściwości planu usługi App Service. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 
