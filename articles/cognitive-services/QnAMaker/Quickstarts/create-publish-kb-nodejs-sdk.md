@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: QnA Makera Biblioteka kliencka dla środowiska Node. js'
+title: 'Szybki start: QnA Maker Biblioteka kliencka dla środowiska Node. js'
 titleSuffix: Azure Cognitive Services
 description: Rozpocznij pracę z biblioteką klienta QnA Maker dla środowiska Node. js. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.  Usługa QnA Maker umożliwia zasilanie usługi pytań i odpowiedzi za pomocą częściowo ustrukturyzowanej zawartości, takiej jak dokumenty z często zadawanymi pytaniami, adresy URL i podręczniki produktów.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 11/15/2019
 ms.locfileid: "74123090"
 ---
-# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Szybki Start: QnA Makera Biblioteka kliencka dla środowiska Node. js
+# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Szybki start: QnA Maker Biblioteka kliencka dla środowiska Node. js
 
 Rozpocznij pracę z biblioteką klienta QnA Maker dla środowiska Node. js. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.  Usługa QnA Maker umożliwia zasilanie usługi pytań i odpowiedzi za pomocą częściowo ustrukturyzowanej zawartości, takiej jak dokumenty z często zadawanymi pytaniami, adresy URL i podręczniki produktów. 
 
@@ -27,7 +27,7 @@ Użyj QnA Maker biblioteki klienta dla środowiska Node. js, aby:
 * Zarządzanie bazą wiedzy
 * Publikowanie bazy wiedzy
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) [(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [przykładów środowiska Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
+[Dokumentacja referencyjna](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [przykładów środowiska Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -171,10 +171,10 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Interfejs wiersza polecenia platformy Azure](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
->[Samouczek: Tworzenie i odpowiadanie na KB](../tutorials/create-publish-query-in-portal.md)
+>[Samouczek: Utwórz i Odpowiedz na](../tutorials/create-publish-query-in-portal.md) KB
 
 * [Co to jest interfejs API usługi QnA Maker?](../Overview/overview.md)
 * [Edytowanie wiedzy](../how-to/edit-knowledge-base.md)

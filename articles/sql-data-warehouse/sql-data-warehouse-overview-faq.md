@@ -10,22 +10,22 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 9e64d184ef0fd120d1bc64ce274ee882b7938df0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645589"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708647"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (dawniej SQL DW) — często zadawane pytania
 
 ## <a name="general"></a>Ogólne
 
-PYTANIE: Co to jest Azure Synapse?
+PYTANIE: Co to jest usługa Azure Synapse?
 
-A. Azure Synapse to nieograniczona Usługa analityczna, która łączy magazyn danych i analizę danych Big Data. Zapewnia to swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z niezależnych od serwera zasobów na żądanie lub aprowizacji. Usługa Azure Synapse udostępnia te dwa światy wraz z ujednoliconym doświadczeniem do pozyskiwania, przygotowywania, zarządzania i obsługi danych w celu natychmiastowej analizy biznesowej i uczenia maszynowego. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure Synapse to nieograniczona Usługa analityczna, która łączy magazyn danych i analizę danych Big Data. Zapewnia to swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z niezależnych od serwera zasobów na żądanie lub aprowizacji. Usługa Azure Synapse łączy te dwa światy w ujednolicone środowisko umożliwiające pozyskiwanie, przygotowywanie i udostępnianie danych oraz zarządzanie nimi na potrzeby natychmiastowej analizy biznesowej oraz uczenia maszynowego. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
-PYTANIE: Co się stało z Azure SQL Data Warehouse?
+PYTANIE: Co się stało z usługą Azure SQL Data Warehouse?
 
 A. Usługa Azure Synapse jest rozwijająca się Azure SQL Data Warehouse (SQL DW). Ten sam wiodący w branży magazyn danych jest poświęcony na cały nowy poziom wydajności i możliwości. Obecnie możesz nadal uruchamiać istniejące obciążenia magazynu danych w środowisku produkcyjnym za pomocą usługi Azure Synapse i automatycznie korzystać z nowych funkcji dostępnych w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
@@ -39,7 +39,7 @@ A. Aby uzyskać więcej informacji, możesz zacząć korzystać z [bezpłatnego 
 
 PYTANIE: Co to jest usługa Azure Synapse w celu zapewnienia bezpieczeństwa danych?
 
-A. Usługa Azure Synapse oferuje kilka rozwiązań do ochrony danych, takich jak TDE i inspekcja. Aby uzyskać więcej informacji, zobacz [zabezpieczenia].
+A. Usługa Azure Synapse oferuje kilka rozwiązań do ochrony danych, takich jak TDE i inspekcja. Aby uzyskać więcej informacji, zobacz [Bezpieczeństwo].
 
 PYTANIE: Gdzie można dowiedzieć się, jakie standardy prawne i biznesowe są zgodne z usługą Azure Synapse?
 
@@ -47,7 +47,7 @@ A. Odwiedź stronę [Zgodność firmy Microsoft] , aby uzyskać różne oferty z
 
 PYTANIE: Czy mogę połączyć Power BI?
 
-A. Tak! Mimo że Power BI obsługuje bezpośrednie zapytania za pomocą usługi Azure Synapse, nie jest ona przeznaczona dla dużej liczby użytkowników ani danych w czasie rzeczywistym. Aby zwiększyć wydajność Power BI, należy rozważyć użycie Power BI na platformie Azure Analysis Services lub Analysis Service IaaS.
+A. Tak. Mimo że Power BI obsługuje bezpośrednie zapytania za pomocą usługi Azure Synapse, nie jest ona przeznaczona dla dużej liczby użytkowników ani danych w czasie rzeczywistym. Aby zwiększyć wydajność Power BI, należy rozważyć użycie Power BI na platformie Azure Analysis Services lub Analysis Service IaaS.
 
 PYTANIE: Co to są limity pojemności usługi SQL Analytics?
 
@@ -82,10 +82,6 @@ PYTANIE: Jakie funkcje tabel są obsługiwane?
 A. Obsługiwane są wiele funkcji, te, które nie są obsługiwane i są udokumentowane w [Nieobsługiwane funkcje tabeli].
 
 ## <a name="tooling-and-administration"></a>Narzędzia i administracja
-
-PYTANIE: Czy obsługiwane są projekty bazy danych w programie Visual Studio.
-
-A. Obecnie nie obsługujemy projektów bazy danych w programie Visual Studio. Jeśli chcesz uzyskać dostęp do tej funkcji, zapoznaj się z artykułem [Żądanie funkcji projektów bazy danych]w usłudze Voice Database.
 
 PYTANIE: Czy usługa SQL Analytics obsługuje interfejsy API REST?
 
@@ -123,13 +119,13 @@ Aby uzyskać więcej informacji na temat usługi Azure Synapse jako całości, z
 [Parametry połączeń]: ./sql-data-warehouse-connection-strings.md
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Bilety pomocy technicznej]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Zabezpieczenia]: ./sql-data-warehouse-overview-manage-security.md
+[Bezpieczeństwo]: ./sql-data-warehouse-overview-manage-security.md
 [Zgodność firmy Microsoft]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
 [limity pojemności]: ./sql-data-warehouse-service-capacity-limits.md
 [typy danych]: ./sql-data-warehouse-tables-data-types.md
 [Nieobsługiwane funkcje tabeli]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
 [Obiekty blob usługi Azure Storage]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[Żądanie funkcji projektów bazy danych]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
+[Database projects feature request]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [Omówienie]: ./sql-data-warehouse-overview-faq.md
