@@ -5,16 +5,16 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: 32ff7554ca599b7d50a4c815083b97eda8b4e57e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 64d4f7560325429fc2a36be066c6c475d4d60e90
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327318"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708597"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Utwórz przestrzeń Kubernetes dev: Visual Studio Code i Node. js z Azure Dev Spaces
 
-Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 - Tworzenie środowiska Kubernetes na platformie Azure zoptymalizowanego pod kątem programowania — _przestrzeń deweloperów_.
 - Iteracyjne tworzenie kodu w kontenerach przy użyciu programu VS Code i wiersza polecenia.
@@ -40,9 +40,10 @@ az login
 Możesz wyświetlić swoje subskrypcje, uruchamiając polecenie: 
 
 ```cmd
-az account list
+az account list --output table
 ```
-Znajdź subskrypcję, która w danych wyjściowych JSON ma wartość `isDefault: true`.
+
+Znajdź subskrypcję, która ma *wartość true dla właściwości* *IsDefault*.
 Jeśli nie jest to subskrypcja, której chcesz użyć, możesz zmienić subskrypcję domyślną:
 
 ```cmd
@@ -86,7 +87,7 @@ Rozbudowane funkcje, takie jak debugowanie rozwiązania Kubernetes, są dostępn
 
 W tej sekcji utworzysz aplikację internetową Node.js i uruchomisz ją w kontenerze w środowisku Kubernetes.
 
-### <a name="create-a-nodejs-web-app"></a>Tworzenie aplikacji internetowej w technologii Node.js
+### <a name="create-a-nodejs-web-app"></a>Tworzenie aplikacji internetowej Node.js
 Aby pobrać kod, w serwisie GitHub otwórz stronę https://github.com/Azure/dev-spaces i wybierz pozycję **Clone or Download** (Sklonuj lub pobierz). Repozytorium GitHub zostanie pobrane do środowiska lokalnego. Kod używany w tym przewodniku znajduje się w lokalizacji `samples/nodejs/getting-started/webfrontend`.
 
 ## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Przygotowanie kodu do opracowywania dla platform Docker i Kubernetes
@@ -106,7 +107,7 @@ Polecenie `azds prep` interfejsu wiersza polecenia platformy Azure generuje zaso
 
 Na razie nie trzeba rozumieć pełnej zawartości tych plików. Warto jednak wspomnieć, że **te same zasoby konfiguracji jako kodu platformy Kubernetes i Docker mogą być używane od etapu opracowywania po etap produkcyjny, co zapewnia większą spójność w różnych środowiskach.**
  
-Polecenie `./azds.yaml` generuje również plik o nazwie `prep`. Jest to plik konfiguracji usługi Azure Dev Spaces. Uzupełnia on artefakty platformy Docker i Kubernetes o dodatkową konfigurację zapewniającą środowisko programowania przyrostowego na platformie Azure.
+Polecenie `prep` generuje również plik o nazwie `./azds.yaml`. Jest to plik konfiguracji usługi Azure Dev Spaces. Uzupełnia on artefakty platformy Docker i Kubernetes o dodatkową konfigurację zapewniającą środowisko programowania przyrostowego na platformie Azure.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kompilowanie i uruchamianie kodu na platformie Kubernetes
 Teraz uruchomimy nasz kod! W oknie terminalu uruchom to polecenie z **głównego folderu kodu**, WebFrontEnd:
@@ -151,7 +152,7 @@ Usługa Azure Dev Spaces umożliwia nie tylko uruchamianie kodu w środowisku Ku
     ```
 
 1. Zapisz plik. Po chwili w oknie terminalu pojawi się komunikat informujący o tym, że plik w uruchomionym kontenerze został zaktualizowany.
-1. Otwórz przeglądarkę i odśwież stronę. Powinna być widoczna zmiana koloru.
+1. Przejdź do przeglądarki i odśwież stronę. Powinna być widoczna zmiana koloru.
 
 Co się stało? Modyfikacje plików zawartości, takich jak HTML i CSS, nie wymagają ponownego uruchomienia procesu Node.js. Z tego względu aktywne polecenie `azds up` automatycznie synchronizuje wszystkie zmodyfikowane pliki zawartości bezpośrednio z uruchomionym kontenerem na platformie Azure, co umożliwia szybki podgląd zmian zawartości.
 
@@ -193,7 +194,7 @@ Oprócz tego dostępna jest jeszcze *szybsza metoda* opracowywania kodu. Omówim
 
 ## <a name="debug-a-container-in-kubernetes"></a>Debugowanie kontenera w środowisku Kubernetes
 
-W tej sekcji użyjesz programu VS Code do bezpośredniego debugowania naszego kontenera uruchomionego na platformie Azure. Ponadto dowiesz się, jak uzyskać szybszą pętlę do edycji, uruchamiania i testowania.
+W tej sekcji użyjesz programu VS Code do bezpośredniego debugowania naszego kontenera uruchomionego na platformie Azure. Ponadto dowiesz się, jak uzyskać szybszą pętlę edycji, uruchamiania i testowania.
 
 ![](media/common/edit-refresh-see.png)
 
@@ -266,7 +267,7 @@ Spróbuj wykonać następujące kroki:
 1. Zatrzymaj działanie debugera VS Code.
 1. Kliknij ikonę debugowania na **pasku działań** w bocznej części programu VS Code. 
 1. Wybierz pozycję **Attach (AZDS)** (Dołącz [AZDS]) jako aktywną konfigurację debugowania.
-1. Hit F5.
+1. Naciśnij klawisz F5.
 
 W tej konfiguracji kontener uruchamia narzędzie *nodemon*. Po zmianie kodu po stronie serwera narzędzie *nodemon* automatycznie ponownie uruchamia proces Node, tak samo jak podczas programowania w środowisku lokalnym. 
 1. Ponownie zmień komunikat powitalny w pliku `server.js` i zapisz ten plik.

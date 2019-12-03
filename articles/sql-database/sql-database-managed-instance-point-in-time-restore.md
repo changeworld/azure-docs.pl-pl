@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: ad96d0a04b03e070a7108832370749377d723826
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821758"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707664"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Przywracanie bazy danych SQL w wystąpieniu zarządzanym do wcześniejszego punktu w czasie
 
@@ -58,7 +58,7 @@ Przywróć istniejącą bazę danych do tego samego wystąpienia przy użyciu Az
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
 2. Przejdź do wystąpienia zarządzanego i wybierz bazę danych, którą chcesz przywrócić.
 3. Na stronie Baza danych wybierz pozycję **Przywróć** :
 
@@ -230,7 +230,7 @@ az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
 Połącz się bezpośrednio z wystąpieniem zarządzanym i uruchom SQL Server Management Studio. Następnie uruchom następujące zapytanie Transact-SQL (T-SQL). Zapytanie zmieni nazwę przywróconej bazy danych na wartość porzuconej bazy danych, która ma zostać zastąpiona.
 
 ```sql
-ALTER WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
+ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
 Użyj jednej z następujących metod, aby nawiązać połączenie z bazą danych w wystąpieniu zarządzanym:

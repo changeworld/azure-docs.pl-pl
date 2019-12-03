@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893432"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704525"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zasady blokowania haseł i kont w domenach zarządzanych
 
@@ -87,7 +87,7 @@ Aby utworzyć niestandardowe zasady haseł, użyj Active Directory narzędzi adm
 
 1. Na ekranie startowym wybierz pozycję **Narzędzia administracyjne**. Zostanie wyświetlona lista dostępnych narzędzi do zarządzania, które zostały zainstalowane w samouczku, aby [utworzyć maszynę wirtualną zarządzania][tutorial-create-management-vm].
 1. Aby utworzyć jednostki organizacyjne i zarządzać nimi, wybierz **Centrum administracyjne usługi Active Directory** z listy narzędzi administracyjnych.
-1. W lewym okienku wybierz domenę zarządzaną platformy Azure AD DS, na przykład *contoso.com*.
+1. W lewym okienku wybierz domenę zarządzaną platformy Azure AD DS, na przykład *aadds.contoso.com*.
 1. Otwórz kontener **system** , a następnie **Kontener ustawień haseł**.
 
     Zostanie wyświetlona wbudowana zasada haseł dla domeny zarządzanej usługi Azure AD DS. Nie można modyfikować tych wbudowanych zasad. Zamiast tego Utwórz niestandardowe zasady haseł, aby zastąpić zasady domyślne.
@@ -112,7 +112,7 @@ Aby utworzyć niestandardowe zasady haseł, użyj Active Directory narzędzi adm
 
     ![Wybierz użytkowników i grupy, do których mają zostać zastosowane zasady haseł](./media/how-to/fgpp-applies-to.png)
 
-1. Zasady dotyczące haseł mogą być stosowane tylko do grup. W oknie dialogowym **lokalizacje** rozwiń nazwę domeny, na przykład *contoso.com*, a następnie wybierz jednostkę organizacyjną, taką jak **AADDC users**. Jeśli masz niestandardową jednostkę organizacyjną zawierającą grupę użytkowników, których chcesz użyć, wybierz tę jednostkę organizacyjną.
+1. Zasady dotyczące haseł mogą być stosowane tylko do grup. W oknie dialogowym **lokalizacje** rozwiń nazwę domeny, na przykład *aadds.contoso.com*, a następnie wybierz jednostkę organizacyjną, taką jak **AADDC users**. Jeśli masz niestandardową jednostkę organizacyjną zawierającą grupę użytkowników, których chcesz użyć, wybierz tę jednostkę organizacyjną.
 
     ![Wybierz jednostkę organizacyjną, do której należy Grupa](./media/how-to/fgpp-container.png)
 

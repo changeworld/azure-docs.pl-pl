@@ -10,14 +10,14 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f8a83fccefe3310fe1a582ef44d72cfbef7e9469
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1320448b88fa3851196a3dfcb3107921721d364d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133072"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707680"
 ---
-# <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
+# <a name="what-is-automated-machine-learning"></a>Co to jest automatyczne Uczenie maszynowe?
 
 Zautomatyzowana Uczenie maszynowe, nazywana również automatycznym ML, to proces automatyzacji czasochłonnych, iteracyjnych zadań tworzenia modelu uczenia maszynowego. Umożliwia ona analitykom danych, specjalistom i deweloperom tworzenie modeli ML o wysokiej skalowalności, wydajności i produktywności, a jednocześnie zapewnia wysoką jakość modelu. Automatyczna ML jest oparta na przełomie od naszego [działu badawczego firmy Microsoft](https://arxiv.org/abs/1705.05355).
 
@@ -98,7 +98,7 @@ Dostępne są również dodatkowe zaawansowane procesy przetwarzania wstępnego 
 
 + Azure Machine Learning Studio: wybierz opcję **Wyświetl ustawienia cechowania** w sekcji **uruchomienie konfiguracji** , [wykonując następujące kroki](how-to-create-portal-experiments.md).
 
-+ Zestaw SDK języka Python: Określanie `"feauturization": auto' / 'off' / FeaturizationConfig` dla [klasy`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
++ Zestaw SDK języka Python: Określanie `"feauturization": auto' / 'off' / FeaturizationConfig` dla [klasy`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py).
 
 
 ## <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych

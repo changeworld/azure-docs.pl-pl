@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9aeef3a2f6a43346a7637c3e2497979632b04762
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5ef9774e63995e00e2a193f3d97b3bbe181f07c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683283"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703893"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopiowanie danych do lub z usługi Azure Blob Storage przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -31,7 +31,7 @@ ms.locfileid: "73683283"
 
 W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych do i z usługi Azure Blob Storage. Jest on używany w artykule dotyczącym [przenoszenia danych](data-factory-data-movement-activities.md) , który przedstawia ogólne omówienie przenoszenia danych za pomocą działania kopiowania.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Dane można kopiować z dowolnego obsługiwanego źródłowego magazynu danych na platformę Azure Blob Storage lub z usługi Azure Blob Storage do dowolnego obsługiwanego magazynu danych ujścia. Poniższa tabela zawiera listę magazynów danych obsługiwanych jako źródła lub ujścia przez działanie kopiowania. Można na przykład przenieść dane **z** bazy danych SQL Server lub bazy danych Azure SQL Database **do** magazynu obiektów blob platformy Azure. I można skopiować dane **z** usługi Azure Blob storage **do** Azure SQL Data Warehouse lub do kolekcji Azure Cosmos DB.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -48,9 +48,9 @@ Dane z następujących magazynów danych można kopiować **do platformy Azure B
 > [!IMPORTANT]
 > Działanie kopiowania obsługuje kopiowanie danych z/do kont usługi Azure Storage ogólnego przeznaczenia i gorącą/chłodną usługę BLOB Storage. Działanie obsługuje **odczytywanie z bloków, dołączania lub stronicowych obiektów BLOB**, ale obsługuje **Zapisywanie tylko w celu blokowania obiektów BLOB**. Usługa Azure Premium Storage nie jest obsługiwana jako ujścia, ponieważ jest ona wykonywana przez stronicowe obiekty blob.
 >
-> Działanie Copy nie usuwa danych ze źródła, gdy dane zostaną pomyślnie skopiowane do lokalizacji docelowej. Jeśli musisz usunąć dane źródłowe po pomyślnej kopii, Utwórz [niestandardowe działanie](data-factory-use-custom-activities.md) , aby usunąć dane i użyć działania w potoku. Aby zapoznać się z przykładem, zobacz sekcję [usuwanie obiektu BLOB lub folderu w witrynie GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity).
+> Działanie Copy nie usuwa danych ze źródła, gdy dane zostaną pomyślnie skopiowane do lokalizacji docelowej. Jeśli musisz usunąć dane źródłowe po pomyślnej kopii, Utwórz [niestandardowe działanie](data-factory-use-custom-activities.md) , aby usunąć dane i użyć działania w potoku. Aby zapoznać się z przykładem, zobacz sekcję [usuwanie obiektu BLOB lub folderu w witrynie GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity).
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 Można utworzyć potok za pomocą działania kopiowania, które przenosi dane do/z Blob Storage platformy Azure przy użyciu różnych narzędzi/interfejsów API.
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. [W tym](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) artykule opisano tworzenie potoku w celu skopiowania danych z lokalizacji BLOB Storage platformy Azure do innej lokalizacji usługi Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym tworzenia potoku w celu skopiowania danych z usługi Azure Blob Storage do Azure SQL Database, zobacz [Samouczek: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
@@ -82,12 +82,12 @@ Usługa Data Factory obsługuje następujące wartości typu opartego na technol
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje o lokalizacji, formacie itp., danych w magazynie danych. Sekcja typeProperties zestawu danych typu **AzureBlob** z zestawem danych ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | folderPath |Ścieżka do kontenera i folderu w magazynie obiektów BLOB. Przykład: myblobcontainer\myblobfolder\ |Tak |
-| fileName |Nazwa obiektu BLOB. Nazwa pliku jest opcjonalna i uwzględnia wielkość liter.<br/><br/>W przypadku określenia nazwy pliku działanie (łącznie z kopią) działa w określonym obiekcie blob.<br/><br/>Jeśli nazwa pliku nie jest określona, Copy zawiera wszystkie obiekty blob w folderPath dla wejściowego zestawu danych.<br/><br/>Gdy nie określono **nazwy pliku** dla wyjściowego zestawu danych, a **preserveHierarchy** nie jest określona w ujścia aktywności, nazwa wygenerowanego pliku będzie w następującym formacie: `Data.<Guid>.txt` (na przykład:: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt |Nie |
+| fileName |Nazwa obiektu BLOB. Nazwa pliku jest opcjonalna i uwzględnia wielkość liter.<br/><br/>W przypadku określenia nazwy pliku działanie (łącznie z kopią) działa w określonym obiekcie blob.<br/><br/>Jeśli nazwa pliku nie jest określona, Copy zawiera wszystkie obiekty blob w folderPath dla wejściowego zestawu danych.<br/><br/>Jeśli **Nazwa pliku** nie została określona dla wyjściowego zestawu danych, a **preserveHierarchy** nie jest określona w ujścia aktywności, nazwa wygenerowanego pliku będzie w następującym formacie: `Data.<Guid>.txt` (na przykład:: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt |Nie |
 | partitionedBy |partitionedBy jest właściwością opcjonalną. Można jej użyć do określenia dynamicznego folderPath i nazwy pliku dla danych szeregów czasowych. Na przykład folderPath może być sparametryzowany dla każdej godziny danych. Zobacz [sekcję using partitionedBy](#using-partitionedby-property) , aby uzyskać szczegółowe informacje i przykłady. |Nie |
-| Formatowanie | Obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [format tekstowy](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i sekcje [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Jeśli chcesz **skopiować pliki** między magazynami opartymi na plikach (kopia binarna), Pomiń sekcję format w definicjach zestawu danych wejściowych i wyjściowych. |Nie |
+| Formatowanie | Obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw właściwość **Type** w polu Format na jedną z tych wartości. Aby uzyskać więcej informacji, zobacz [format tekstowy](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i sekcje [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Jeśli chcesz **skopiować pliki** między magazynami opartymi na plikach (kopia binarna), Pomiń sekcję format w definicjach zestawu danych wejściowych i wyjściowych. |Nie |
 | skompresowane | Określ typ i poziom kompresji danych. Obsługiwane typy to: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane poziomy to: **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 ### <a name="using-partitionedby-property"></a>Używanie właściwości partitionedBy
@@ -128,13 +128,13 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania dz
 
 **BlobSource** obsługuje następujące właściwości w sekcji **typeProperties** :
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | rozpoznawania |Wskazuje, czy dane są odczytane cyklicznie z podfolderów, czy tylko z określonego folderu. |True (wartość domyślna), FAŁSZ |Nie |
 
 **Wartość blobsink** obsługuje następujące właściwości **typeProperties** sekcja:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | copyBehavior |Definiuje zachowanie kopiowania, gdy źródłem jest BlobSource lub system plików. |<b>PreserveHierarchy</b>: zachowuje hierarchię plików w folderze docelowym. Ścieżka względna pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna pliku docelowego do folderu docelowego.<br/><br/><b>FlattenHierarchy</b>: wszystkie pliki z folderu źródłowego znajdują się na pierwszym poziomie folderu docelowego. Pliki docelowe mają automatycznie wygenerowaną nazwę. <br/><br/><b>MergeFiles</b>: Scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli nazwa pliku/obiektu BLOB jest określona, scaloną nazwą pliku będzie określona nazwa; w przeciwnym razie zostanie automatycznie wygenerowana nazwa pliku. |Nie |
 
@@ -165,11 +165,11 @@ W tej sekcji opisano zachowanie operacji kopiowania dla różnych kombinacji war
 | rozpoznawania | copyBehavior | Zachowanie rezultatowe |
 | --- | --- | --- |
 | true |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z tą samą strukturą co Źródło<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| true |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File5 |
-| true |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 + file3 + File4 + plik 5 są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku |
-| false |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/><br/><br/>Subfolder1 z file3, File4 i File5 nie są odbierane. |
-| false |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/><br/><br/>Subfolder1 z file3, File4 i File5 nie są odbierane. |
-| false |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 zawartości są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku. automatycznie wygenerowana nazwa dla plik1<br/><br/>Subfolder1 z file3, File4 i File5 nie są odbierane. |
+| true |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla File5 |
+| true |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 + file3 + File4 + plik 5 są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku |
+| false |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/><br/><br/>Subfolder1 z file3, File4 i File5 nie są odbierane. |
+| false |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatycznie wygenerowana nazwa dla plik2<br/><br/><br/>Subfolder1 z file3, File4 i File5 nie są odbierane. |
+| false |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;plik1 + plik2 zawartości są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku. automatycznie wygenerowana nazwa dla plik1<br/><br/>Subfolder1 z file3, File4 i File5 nie są odbierane. |
 
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Przewodnik: kopiowanie danych do/z Blob Storage za pomocą Kreatora kopiowania
 Przyjrzyjmy się sposobom szybkiego kopiowania danych do/z usługi Azure Blob Storage. W tym instruktażu źródłowe i docelowe magazyny danych typu: Azure Blob Storage. Potok w tym instruktażu kopiuje dane z folderu do innego folderu w tym samym kontenerze obiektów BLOB. Ten Instruktaż jest celowo prosty, aby pokazać ustawienia lub właściwości przy użyciu Blob Storage jako źródła lub ujścia.
@@ -185,7 +185,7 @@ Przyjrzyjmy się sposobom szybkiego kopiowania danych do/z usługi Azure Blob St
     ```
 
 ### <a name="create-the-data-factory"></a>Tworzenie fabryki danych
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Kliknij pozycję **Utwórz zasób** w lewym górnym rogu, kliknij pozycję **Analiza i analiza**, a następnie kliknij pozycję **Data Factory**.
 3. W okienku **Nowa fabryka danych** :  
     1. Wprowadź **ADFBlobConnectorDF** dla **nazwy**. Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli wystąpi błąd: `*Data factory name “ADFBlobConnectorDF” is not available`, Zmień nazwę fabryki danych (na przykład yournameADFBlobConnectorDF) i spróbuj utworzyć ją ponownie. Artykuł [Data Factory — Naming Rules](data-factory-naming-rules.md) (Fabryka danych — zasady nazewnictwa) zawiera zasady nazewnictwa artefaktów usługi Fabryka danych.
@@ -193,7 +193,7 @@ Przyjrzyjmy się sposobom szybkiego kopiowania danych do/z usługi Azure Blob St
     3. W obszarze Grupa zasobów wybierz pozycję **Użyj istniejącej** , aby wybrać istniejącą grupę zasobów (lub) wybierz pozycję **Utwórz nową** , aby wprowadzić nazwę grupy zasobów.
     4. Wybierz **lokalizację** fabryki danych.
     5. Zaznacz pole wyboru **Przypnij do pulpitu nawigacyjnego** u dołu bloku.
-    6. Kliknij pozycję **Utwórz**.
+    6. Kliknij przycisk **Utwórz**.
 3. Po zakończeniu tworzenia zostanie wyświetlony blok **Data Factory** , jak pokazano na poniższej ilustracji: ![Strona główna fabryki danych](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Kreator kopiowania

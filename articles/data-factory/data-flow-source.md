@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217745"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702052"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcanie źródła na potrzeby mapowania przepływu danych 
 
@@ -156,7 +156,7 @@ Typy danych kolumny można modyfikować w transformacjach kolumn pochodnych w d�
 
 ### <a name="import-schema"></a>Importuj schemat
 
-Zestawy danych, takie jak Avro i CosmosDB, które obsługują złożone struktury, nie wymagają, aby definicje schematu istniały w zestawie danych. W związku z tym będzie można kliknąć przycisk "Importuj schemat" na karcie projekcji dla tych typów źródeł.
+Zestawy danych, takie jak Avro i CosmosDB, które obsługują złożone struktury, nie wymagają, aby definicje schematu istniały w zestawie danych. W związku z tym będzie można kliknąć przycisk **Importuj schemat** na karcie **projekcja** dla tych typów źródeł.
 
 ## <a name="cosmosdb-specific-settings"></a>Ustawienia CosmosDB
 

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z IDC | Microsoft Docs'
+title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu programu IDC | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i IDC.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8dfc72dea9289fc13d648b05b59f6d1bd9b3e0
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 9fc7ccb1d619e36990fbc1b654a2b7be36a287e1
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273593"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705995"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z IDC
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu programu IDC
 
 W tym samouczku dowiesz się, jak zintegrować IDC z Azure Active Directory (Azure AD). Po zintegrowaniu programu IDC z usługą Azure AD można:
 
@@ -68,7 +68,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Konfigurowanie logowania JEDNOkrotnego](#configure-idc-sso)** dla programu IDC — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
     1. **[Utwórz użytkownika testowego IDC](#create-idc-test-user)** , aby dysponować odpowiednikiem B. Simon w IDC, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
@@ -86,18 +86,18 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://cas.idc.com:443/login?client_name=<ClientName>`
 
-    c. W polu tekstowym **Stan przekaźnika** wpisz adres URL: `https://www.idc.com/j_spring_cas_security_check`
+    d. W polu tekstowym **Stan przekaźnika** wpisz adres URL: `https://www.idc.com/j_spring_cas_security_check`
 
 1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej programu IDC](mailto:webchanneldev@idc.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, skontaktuj się z zespołem pomocy technicznej programu IDC. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
 1. W sekcji **Konfigurowanie IDC** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
@@ -108,12 +108,12 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -123,7 +123,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **IDC**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -135,7 +135,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-idc-sso"></a>Konfigurowanie logowania jednokrotnego dla IDC
 
-Aby skonfigurować Logowanie jednokrotne po stronie **IDC** , należy wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej IDC](mailto:webchanneldev@idc.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne po stronie **IDC** , Wyślij pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do zespołu pomocy technicznej IDC. IDC konfiguruje to ustawienie, aby połączenie SSO protokołu SAML zostało prawidłowo ustawione na obu stronach.
 
 ### <a name="create-idc-test-user"></a>Utwórz użytkownika testowego IDC
 
@@ -143,11 +143,11 @@ Użytkownik nie musi być utworzony w programie IDC z wyprzedzeniem. Użytkownik
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka IDC w panelu dostępu należy automatycznie zalogować się do programu IDC, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

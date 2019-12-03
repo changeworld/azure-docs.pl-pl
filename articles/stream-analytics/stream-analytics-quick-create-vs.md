@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zadania Azure Stream Analytics przy użyciu programu Visual Studio
+title: Szybki Start — Tworzenie zadania Azure Stream Analytics przy użyciu programu Visual Studio
 description: W tym przewodniku Szybki start pokazano, jak rozpocząć pracę przez utworzenie zadania usługi Stream Analytics, skonfigurowanie danych wejściowych i wyjściowych oraz zdefiniowanie zapytania za pomocą programu Visual Studio.
 services: stream-analytics
 author: mamccrea
@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 834447d15336fcd6d56f2979113aaef7e22ecb8f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ec3318201fd3fe8f7daf78d05bf316fb88914daf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934313"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707331"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Szybki Start: Tworzenie zadania Azure Stream Analytics przy użyciu programu Visual Studio
 

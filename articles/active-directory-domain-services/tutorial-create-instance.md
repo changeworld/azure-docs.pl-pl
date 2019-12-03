@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 84272336a9f70f663e134e16fe88c7e43bb73548
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208602"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703692"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Tworzenie i Konfigurowanie wystąpienia Azure Active Directory Domain Services
 
@@ -72,7 +72,7 @@ Podczas tworzenia wystąpienia usługi Azure AD DS należy określić nazwę DNS
 >
 > Możesz użyć głównej nazwy DNS dla domeny zarządzanej platformy Azure AD DS, ale może być konieczne utworzenie dodatkowych rekordów DNS dla innych usług w środowisku. Jeśli na przykład uruchomisz serwer sieci Web, który hostuje lokację przy użyciu nazwy głównej DNS, mogą wystąpić konflikty nazw, które wymagają dodatkowych wpisów DNS.
 >
-> W tych samouczkach i artykułach z przewodnikiem jest używana jako krótki przykład domeny niestandardowej *contoso.com* . We wszystkich poleceniach należy określić własną nazwę domeny, która może zawierać unikatowy prefiks.
+> W tych samouczkach i artykułach z przewodnikiem jest używana jako krótki przykład domeny niestandardowej *aadds.contoso.com* . We wszystkich poleceniach należy określić własną nazwę domeny, która może zawierać unikatowy prefiks.
 >
 > Aby uzyskać więcej informacji, zobacz [Wybieranie prefiksu nazewnictwa dla domeny][naming-prefix].
 
@@ -117,7 +117,7 @@ Na stronie **Podsumowanie** kreatora przejrzyj ustawienia konfiguracji dla domen
     ![Powiadomienie w Azure Portal wdrożenia jest w toku](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. Strona zostanie załadowana z aktualizacjami w procesie wdrażania, w tym tworzeniem nowych zasobów w katalogu.
-1. Wybierz grupę zasobów, *na przykład grupa zasobów, a*następnie wybierz wystąpienie AD DS platformy Azure z listy zasobów platformy Azure, takich jak *contoso.com*. Karta **Przegląd** pokazuje, że obecnie trwa *wdrażanie*domeny zarządzanej. Nie można skonfigurować domeny zarządzanej, dopóki nie zostanie ona w pełni zainicjowana.
+1. Wybierz grupę zasobów, *na przykład grupa zasobów, a*następnie wybierz wystąpienie AD DS platformy Azure z listy zasobów platformy Azure, takich jak *aadds.contoso.com*. Karta **Przegląd** pokazuje, że obecnie trwa *wdrażanie*domeny zarządzanej. Nie można skonfigurować domeny zarządzanej, dopóki nie zostanie ona w pełni zainicjowana.
 
     ![Stan usług domenowych w trakcie aprowizacji](./media/tutorial-create-instance/provisioning-in-progress.png)
 

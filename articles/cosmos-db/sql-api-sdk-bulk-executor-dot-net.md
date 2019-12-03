@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2019
+ms.date: 12/02/2019
 ms.author: ramkris
-ms.openlocfilehash: b6685f8524dc1f3ac080abe81389d091c7cf6f1b
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2d573d329ad27a4801c091d0dcfb10c5f530169f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306755"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707268"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka modułu wykonawczego platformy .NET: informacje o pobieraniu 
 
@@ -37,7 +37,7 @@ ms.locfileid: "74306755"
 |**Pobieranie zestawu SDK**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Biblioteka modułu wykonującego zbiorczo w serwisie GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
-|**Rozpoczęcie pracy**|[Wprowadzenie do zestawu .NET SDK biblioteki wykonawczej zbiorczego](bulk-executor-dot-net.md)|
+|**Wprowadzenie**|[Wprowadzenie do zestawu .NET SDK biblioteki wykonawczej zbiorczego](bulk-executor-dot-net.md)|
 | **Bieżąca obsługiwana platforma**| Microsoft .NET Framework 4.5.2, 4.6.1 i .NET Standard 2,0 |
 
 > [!NOTE]
@@ -72,6 +72,10 @@ ms.locfileid: "74306755"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0 — wersja zapoznawcza
 
 * Dodano .NET Standard 2,0 jako jedną z obsługiwanych platform docelowych, aby Biblioteka wykonawców zbiorczych działała z aplikacjami .NET Core.
+
+### <a name="a-name186186"></a><a name="1.8.6"/>1.8.6
+
+* MongoBulkExecutor teraz implementuje interfejs IDisposable i powinien zostać usunięty po użyciu.
 
 ### <a name="a-name185185"></a><a name="1.8.5"/>1.8.5
 

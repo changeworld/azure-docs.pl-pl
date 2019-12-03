@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem do zasobów platformy Azure dla zewnętrznych użytkowników-Gości korzystających z funkcji RBAC | Microsoft Docs
-description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników zewnętrznych w organizacji przy użyciu kontroli dostępu opartej na rolach (RBAC).
+title: Dodawanie lub usuwanie przypisań ról dla zewnętrznych użytkowników-Gości korzystających z usług Azure RBAC i Azure Portal
+description: Dowiedz się, jak udzielić dostępu do zasobów platformy Azure użytkownikom spoza organizacji przy użyciu kontroli dostępu opartej na rolach (RBAC) na platformie Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,20 +12,26 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/12/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555560"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707881"
 ---
-# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Zarządzanie dostępem do zasobów platformy Azure dla zewnętrznych użytkowników-Gości korzystających z funkcji RBAC
+# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Dodawanie lub usuwanie przypisań ról dla zewnętrznych użytkowników-Gości korzystających z usług Azure RBAC i Azure Portal
 
-Kontrola dostępu oparta na rolach (RBAC) umożliwia lepsze zarządzanie zabezpieczeniami w dużych organizacjach i małych i średnich firm pracujących z zewnętrznymi współpracownikami, dostawcami lub osobami niezależnymi, które potrzebują dostępu do określonych zasobów w środowisku, ale nie musi to być cała infrastruktura ani żadne zakresy związane z rozliczeniami. Możesz użyć możliwości w [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) , aby współpracować z zewnętrznymi użytkownikami-gośćmi i można użyć RBAC, aby przyznać tylko uprawnienia wymagane przez użytkowników-Gości w danym środowisku.
+[Kontrola dostępu oparta na rolach (RBAC) na platformie Azure](overview.md) umożliwia lepsze zarządzanie zabezpieczeniami w dużych organizacjach, a także małych i średnich firm pracujących z zewnętrznymi współpracownikami, dostawcami lub osobami niezależnymi, które potrzebują dostępu do określonych zasobów w środowisku, ale niekoniecznie do całej infrastruktury lub wszelkich zakresów związanych z rozliczeniami. Możesz użyć możliwości w [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) , aby współpracować z zewnętrznymi użytkownikami-gośćmi i można użyć RBAC, aby przyznać tylko uprawnienia wymagane przez użytkowników-Gości w danym środowisku.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby dodać lub usunąć przypisania ról, musisz mieć:
+
+- uprawnienia `Microsoft.Authorization/roleAssignments/write` i `Microsoft.Authorization/roleAssignments/delete`, takie jak [administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) lub [właściciel](built-in-roles.md#owner)
 
 ## <a name="when-would-you-invite-guest-users"></a>Kiedy zapraszasz użytkowników-Gości?
 
@@ -61,9 +67,9 @@ Aby użytkownik-gość mógł uzyskać dostęp do katalogu, musi zakończyć pro
 
 Aby uzyskać więcej informacji na temat procesu zaproszenia, zobacz [Azure Active Directory realizacji zaproszeń do współpracy B2B](../active-directory/b2b/redemption-experience.md).
 
-## <a name="grant-access-to-a-guest-user"></a>Udzielanie dostępu użytkownikowi gościa
+## <a name="add-a-role-assignment-for-a-guest-user"></a>Dodawanie przypisania roli dla użytkownika-gościa
 
-Aby udzielić dostępu w ramach RBAC, należy przypisać rolę. Aby udzielić dostępu użytkownikowi gościa, wykonaj [te same czynności](role-assignments-portal.md#add-a-role-assignment) co w przypadku użytkownika, grupy, nazwy głównej usługi lub tożsamości zarządzanej. Wykonaj następujące kroki, aby udzielić dostępu użytkownikowi gościa w różnych zakresach.
+Aby udzielić dostępu w ramach RBAC, należy przypisać rolę. Aby dodać przypisanie roli dla użytkownika-gościa, wykonaj [te same czynności](role-assignments-portal.md#add-a-role-assignment) co w przypadku użytkownika, grupy, nazwy głównej usługi lub tożsamości zarządzanej. Wykonaj następujące kroki, aby dodać przypisanie roli dla użytkownika-gościa w różnych zakresach.
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**.
 
@@ -95,9 +101,9 @@ Aby udzielić dostępu w ramach RBAC, należy przypisać rolę. Aby udzielić do
 
     ![Przypisanie roli dla współautora maszyny wirtualnej](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Udziel dostępu użytkownikowi gościa jeszcze nie w Twoim katalogu
+## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>Dodaj przypisanie roli dla użytkownika-gościa, który nie znajduje się jeszcze w Twoim katalogu
 
-Aby udzielić dostępu w ramach RBAC, należy przypisać rolę. Aby udzielić dostępu użytkownikowi gościa, wykonaj [te same czynności](role-assignments-portal.md#add-a-role-assignment) co w przypadku użytkownika, grupy, nazwy głównej usługi lub tożsamości zarządzanej.
+Aby dodać przypisanie roli dla użytkownika-gościa, wykonaj [te same czynności](role-assignments-portal.md#add-a-role-assignment) co w przypadku użytkownika, grupy, nazwy głównej usługi lub tożsamości zarządzanej.
 
 Jeśli użytkownik-Gość nie znajduje się jeszcze w Twoim katalogu, możesz zaprosić użytkownika bezpośrednio z okienka Dodawanie przypisania roli.
 
@@ -179,7 +185,7 @@ Jeśli użytkownik-Gość potrzebuje dodatkowych uprawnień w katalogu, można p
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Użytkownik-Gość nie może przeglądać użytkowników, grup ani nazw głównych usług w celu przypisania ról
 
-Użytkownicy-Goście mają ograniczone uprawnienia do katalogu. Nawet jeśli użytkownik-Gość jest [właścicielem](built-in-roles.md#owner) w określonym zakresie, próba utworzenia przypisania roli w celu udzielenia innej osobie dostępu nie może przeglądać listy użytkowników, grup ani nazw podmiotów usługi.
+Użytkownicy-Goście mają ograniczone uprawnienia do katalogu. Nawet jeśli użytkownik-Gość jest [właścicielem](built-in-roles.md#owner) zakresu, próba dodania przypisania roli w celu udzielenia innej osobie dostępu nie może przeglądać listy użytkowników, grup ani nazw podmiotów usługi.
 
 ![Użytkownik-Gość nie może przeglądać podmiotów zabezpieczeń w celu przypisania ról](./media/role-assignments-external-users/directory-no-browse.png)
 

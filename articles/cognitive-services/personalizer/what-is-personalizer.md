@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467192"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707947"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
-Personalizacja Azure to oparta na chmurze usługa interfejsu API, która pozwala na wybranie najlepszego środowiska do wyświetlania użytkownikom, uczenie się od ich zbiorczego zachowania w czasie rzeczywistym.
+Personalizacja Azure to oparta na chmurze usługa interfejsu API, która umożliwia aplikacji wybranie najlepszego środowiska do wyświetlania użytkownikom, uczenie się od ich zbiorczego zachowania w czasie rzeczywistym.
 
 * Podaj informacje o użytkownikach i zawartości oraz Odbierz najważniejsze akcje, aby pokazać użytkowników. 
 * Nie ma potrzeby czyszczenia i etykietowania danych przed użyciem narzędzia Personalizacja.
@@ -60,8 +60,8 @@ Program personalizujer nie jest usługą do utrwalania informacji o profilu uży
 
 Usługa personalizacji ma dwa interfejsy API:
 
-* Wysyłaj informacje (_funkcje_) dotyczące użytkowników i zawartość (_Akcje_) do personalizacji. Personalizacja reaguje na górną akcję.
-* Wyślij opinię do programu Personalizowanie o tym, jak dobrze Klasyfikacja działała jako [wynik nagrody](concept-rewards.md). 
+* *Ranga*: Użyj interfejsu API rangi, aby określić, która _Akcja_ ma być wyświetlana w bieżącym _kontekście_. Akcje są wysyłane jako tablica obiektów JSON, z IDENTYFIKATORem i informacjami o każdej znich. kontekst jest wysyłany jako inny obiekt JSON. Interfejs API zwraca identyfikator akcji, że aplikacja powinna być renderowana dla użytkownika.
+* *Wynagrodzenie*: gdy użytkownik współdziała z Twoją aplikacją, mierzę, jak dobrze działa Personalizacja jako liczbę z zakresu od 0 do 1 i wyślij ją jako [wynik nagrody](concept-rewards.md). 
 
 ![Podstawowa sekwencja zdarzeń dla personalizacji](media/what-is-personalizer/personalization-intro.png)
 

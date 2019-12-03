@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/20/2019
+ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052509"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706259"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: często zadawane pytania
 
@@ -90,7 +90,7 @@ Tak. Aby zainstalować dodatkowe składniki lub dostosować konfigurację klastr
 
 Jednak pomoc techniczna firmy Microsoft zespoły mogą oferować pomoc techniczną tylko w następujących sytuacjach:
 
-- Problemy lub błędy występujące podczas ładowania skryptu. Wszelkie błędy występujące podczas wykonywania skryptów niestandardowych są poza zakresem biletu pomocy technicznej.
+- Problemy lub błędy występujące podczas ładowania skryptu. Wszelkie błędy występujące podczas wykonywania skryptów niestandardowych wykraczają poza zakres biletu pomocy technicznej.
 
 - Dodatkowe aplikacje, które są częścią procesu tworzenia klastra. 
 
@@ -180,6 +180,11 @@ Tak, można wdrożyć dodatkową maszynę wirtualną w tej samej podsieci, w kt�
 - Węzły brzegowe: można dodać kolejny węzeł krawędzi do klastra, zgodnie z opisem w temacie [używanie pustych węzłów brzegowych w klastrach Apache Hadoop w usłudze HDInsight](hdinsight-apps-use-edge-node.md).
 
 - Węzły autonomiczne: można dodać autonomiczną maszynę wirtualną do tej samej podsieci i uzyskać dostęp do klastra z tej maszyny wirtualnej za pomocą prywatnego punktu końcowego `https://<CLUSTERNAME>-int.azurehdinsight.net`. Aby uzyskać więcej informacji, zobacz [sterowanie ruchem sieciowym](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>Czy należy przechowywać dane na dysku lokalnym węzła krawędzi?
+
+Nie, przechowywanie danych na dysku lokalnym nie jest dobrym pomysłem. Jeśli węzeł ulegnie awarii, wszystkie dane przechowywane lokalnie zostaną utracone. Zalecamy przechowywanie danych w usłudze Azure Data Lake Storage Gen2 lub Azure Blob Storage albo zainstalowanie udziału Azure Files do przechowywania danych.
+
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Czy mogę dodać istniejący klaster usługi HDInsight do innej sieci wirtualnej?
 

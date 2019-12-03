@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f1e1ae76c44e66c04baaad110b87264279dfdaf1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 33c26ff15095928d6050a77794b74480e364bfb6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531000"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707756"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indeksować Cosmos DB danych przy użyciu indeksatora na platformie Azure Wyszukiwanie poznawcze 
 
@@ -246,7 +246,7 @@ Upewnij się, że schemat indeksu docelowego jest zgodny ze schematem źródłow
 > [!NOTE]
 > W przypadku kolekcji partycjonowanych domyślnym kluczem dokumentu jest Azure Cosmos DB `_rid` właściwości, które usługa Azure Wyszukiwanie poznawcze automatycznie zmienia nazwę na `rid`, ponieważ nazwy pól nie mogą zaczynać się od znaku podkreślenia. Ponadto Azure Cosmos DB `_rid` wartości zawierają znaki, które są nieprawidłowe w usłudze Azure Wyszukiwanie poznawcze Keys. Z tego powodu wartości `_rid` są zakodowane w formacie base64.
 > 
-> W przypadku kolekcji MongoDB platforma Azure Wyszukiwanie poznawcze automatycznie zmienia nazwę właściwości `_id` na `doc_id`.  
+> W przypadku kolekcji MongoDB platforma Azure Wyszukiwanie poznawcze automatycznie zmienia nazwę właściwości `_id` na `id`.  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>Mapowanie między typami danych JSON i typami danych Wyszukiwanie poznawcze platformy Azure
 | Typ danych JSON | Zgodne typy pól indeksu docelowego |

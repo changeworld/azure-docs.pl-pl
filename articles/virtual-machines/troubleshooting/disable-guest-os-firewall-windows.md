@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030606"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705553"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Wyłączanie zapory systemu operacyjnego gościa na maszynie wirtualnej platformy Azure
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera informacje dotyczące sytuacji, w których można podejrzew
 
 ## <a name="solution"></a>Rozwiązanie
 
-Proces opisany w tym artykule jest przeznaczony do użycia jako obejście, aby można było skupić się na rozwiązywaniu rzeczywistego problemu, co umożliwia poprawne skonfigurowanie reguł zapory. It\rquote s najlepszym rozwiązaniem firmy Microsoft do włączenia składnika Zapora systemu Windows. Sposób konfigurowania reguł zapory \cf3 zależy od poziomu dostępu do wymaganego that\rquote maszyny wirtualnej.
+Proces opisany w tym artykule jest przeznaczony do użycia jako obejście, aby można było skupić się na rozwiązywaniu rzeczywistego problemu, co umożliwia poprawne skonfigurowanie reguł zapory. Najlepszym rozwiązaniem firmy Microsoft jest włączenie składnika Zapora systemu Windows. Sposób konfigurowania reguł zapory zależy od poziomu dostępu do wymaganej maszyny wirtualnej.
 
 ### <a name="online-solutions"></a>Rozwiązania online 
 
@@ -90,7 +90,7 @@ Jeśli korzystasz z działającego agenta platformy Azure, możesz użyć [niest
 
 Wykonaj następujące kroki, aby użyć [rejestru zdalnego](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry).
 
-1.  Na maszynie wirtualnej Rozwiązywanie problemów Uruchom Edytor rejestru, a następnie przejdź do **pliku** > **Połącz rejestr sieciowy**.
+1.  Na maszynie wirtualnej Rozwiązywanie problemów Uruchom Edytor rejestru, a następnie przejdź do **pliku** > **Connect Network Registry**.
 
 2.  Otwórz gałąź \System *maszyny docelowej*i określ następujące wartości:
 

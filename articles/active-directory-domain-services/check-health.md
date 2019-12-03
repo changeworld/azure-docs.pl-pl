@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 50b142acb457d16abeb24f22d56b653a38aca76d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898239"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705406"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Sprawdzanie kondycji domeny zarządzanej Azure Active Directory Domain Services
 
@@ -29,7 +29,7 @@ W tym artykule pokazano, jak wyświetlić stan kondycji usługi Azure AD DS i po
 Stan kondycji domeny zarządzanej AD DS platformy Azure jest wyświetlany przy użyciu Azure Portal. Informacje o czasie ostatniej kopii zapasowej i synchronizacji z usługą Azure AD można zobaczyć wraz z alertami, które wskazują na problem z kondycją domeny zarządzanej. Aby wyświetlić stan kondycji domeny zarządzanej AD DS platformy Azure, wykonaj następujące czynności:
 
 1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**.
-1. Wybierz domenę zarządzaną platformy Azure AD DS, na przykład *contoso.com*.
+1. Wybierz domenę zarządzaną platformy Azure AD DS, na przykład *aadds.contoso.com*.
 1. Po lewej stronie okna zasobów AD DS platformy Azure wybierz pozycję **kondycja**. Poniższy przykładowy zrzut ekranu przedstawia dobrą domenę zarządzaną platformy Azure AD DS i stan ostatniej synchronizacji kopii zapasowej i usługi Azure AD:
 
     ![Przegląd strony kondycji w Azure Portal pokazywania stanu Azure Active Directory Domain Services](./media/check-health/health-page.png)
@@ -38,7 +38,7 @@ Stan kondycji domeny zarządzanej AD DS platformy Azure jest wyświetlany przy u
 
 Stan w prawym górnym rogu wskazuje ogólną kondycję domeny zarządzanej AD DS platformy Azure. Stan wszystkich istniejących alertów w domenie. W poniższej tabeli przedstawiono szczegółowe informacje o dostępnych wskaźnikach stanu:
 
-| State | Ikona | Wyjaśnienie |
+| Stan | ikona | Wyjaśnienie |
 | --- | :----: | --- |
 | Działanie | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Domena zarządzana AD DS platformy Azure działa prawidłowo i nie ma alertów krytycznych ani ostrzeżeń. Domena może mieć alerty informacyjne. |
 | Wymaga uwagi (ostrzeżenie) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Brak alertów krytycznych w domenie zarządzanej platformy Azure AD DS, ale istnieje co najmniej jeden Alert ostrzegawczy, który powinien zostać rozkierowany. |
@@ -53,7 +53,7 @@ Stan kondycji domeny zarządzanej AD DS platformy Azure przedstawia dwa typy mon
 
 Monitory to obszary domeny zarządzanej AD DS platformy Azure, które są regularnie sprawdzane. Jeśli istnieją aktywne alerty dla domeny zarządzanej usługi Azure AD DS, może to spowodować zgłoszenie problemu przez jeden z monitorów. Azure AD Domain Services obecnie monitoruje następujące obszary:
 
-* Tworzenie kopii zapasowej
+* Backup
 * Synchronizacja z usługą Azure AD
 
 #### <a name="backup-monitor"></a>Monitor kopii zapasowych

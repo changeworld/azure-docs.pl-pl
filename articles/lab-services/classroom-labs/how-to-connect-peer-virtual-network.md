@@ -1,6 +1,6 @@
 ---
-title: Połączenie z siecią elementu równorzędnego w usłudze Azure Lab Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć sieć laboratorium z inną siecią jako element równorzędny. Na przykład połączyć sieć Szkoła/university lokalnych z siecią wirtualną laboratorium na platformie Azure.
+title: Nawiązywanie połączenia z siecią równorzędną w Azure Lab Services | Microsoft Docs
+description: Dowiedz się, jak połączyć sieć laboratorium z inną siecią jako równorzędną. Na przykład Połącz lokalną sieć szkolną/Uniwersytet z siecią wirtualną laboratorium na platformie Azure.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,51 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: c9b305beae1b385d4714e3a80e6843c7e76a4f60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410994"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701665"
 ---
-# <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Łączenie sieci środowiska laboratoryjnego z równorzędnej sieci wirtualnej w usłudze Azure Lab Services 
-Ten artykuł zawiera informacje dotyczące komunikacji równorzędnej sieci laboratoria z inną siecią. 
+# <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Połącz sieć laboratorium z równorzędną siecią wirtualną w Azure Lab Services 
+Ten artykuł zawiera informacje o komunikacji równorzędnej w sieci z inną siecią. 
 
-## <a name="overview"></a>Omówienie
-Wirtualne sieci równorzędne umożliwiają bezproblemowe łączenie sieci wirtualnych platformy Azure. Po nawiązaniu połączenia równorzędnego sieci wirtualne są traktowane jako jedna sieć. Ruch między maszynami wirtualnymi w wirtualnych sieciach równorzędnych odbywa się za pomocą infrastruktury sieci szkieletowej firmy Microsoft, jak ruch jest kierowany między maszynami wirtualnymi w tej samej sieci wirtualnej przy użyciu prywatnych adresów IP. Aby uzyskać więcej informacji, zobacz [komunikacja równorzędna sieci wirtualnych](../../virtual-network/virtual-network-peering-overview.md).
+## <a name="overview"></a>Przegląd
+Komunikacja równorzędna sieci wirtualnych umożliwia bezproblemowe łączenie sieci wirtualnych platformy Azure. Po nawiązaniu połączenia równorzędnego sieci wirtualne są traktowane jako jedna sieć. Ruch między maszynami wirtualnymi w wirtualnych sieciach równorzędnych odbywa się za pomocą infrastruktury sieci szkieletowej firmy Microsoft, podobnie jak ruch jest kierowany między maszynami wirtualnymi w tej samej sieci wirtualnej tylko za pomocą prywatnych adresów IP. Aby uzyskać więcej informacji, zobacz [wirtualne sieci równorzędne](../../virtual-network/virtual-network-peering-overview.md).
 
-Może być konieczne łączenie sieci środowiska laboratoryjnego z równorzędnej sieci wirtualnej, w niektórych scenariuszach, w tym poniższych:
+Może być konieczne połączenie sieci laboratorium z równorzędną siecią wirtualną w niektórych scenariuszach, takich jak następujące:
 
-- Maszyny wirtualne w laboratorium ma oprogramowania, który nawiązuje połączenie z serwerów licencji w środowisku lokalnym w celu uzyskania licencji
-- Maszyny wirtualne w laboratorium wymagany jest dostęp do zestawów danych (lub innych plików) uniwersyteckim udziałów sieciowych. 
+- Maszyny wirtualne w laboratorium mają oprogramowanie łączące się z lokalnymi serwerami licencji w celu uzyskania licencji
+- Maszyny wirtualne w laboratorium muszą mieć dostęp do zestawów danych (lub innych plików) w udziałach sieciowych University. 
 
-Niektórych sieci lokalnej są połączone z siecią wirtualną platformy Azure albo za pośrednictwem [ExpressRoute](../../expressroute/expressroute-introduction.md) lub [bramy sieci wirtualnej](../../vpn-gateway/vpn-gateway-about-vpngateways.md). Te usługi należy skonfigurować poza usługi Azure Lab Services. Aby dowiedzieć się więcej na temat łączenia sieci lokalnej na platformę Azure przy użyciu usługi ExpressRoute, zobacz [Omówienie usługi ExpressRoute]) (.. /expressroute/expressroute-Introduction.MD). Dla połączeń lokalnych za pomocą bramy sieci wirtualnej, bramę, określonych sieci wirtualnej, a konto laboratorium musi być w tym samym regionie.
+Niektóre sieci lokalne są połączone z platformą Azure Virtual Network przy użyciu bramy [ExpressRoute](../../expressroute/expressroute-introduction.md) lub [Virtual Network](../../vpn-gateway/vpn-gateway-about-vpngateways.md). Te usługi należy skonfigurować poza Azure Lab Services. Aby dowiedzieć się więcej na temat łączenia sieci lokalnej z platformą Azure przy użyciu usługi ExpressRoute, zobacz [Omówienie usługi ExpressRoute](../../expressroute/expressroute-introduction.md). W przypadku połączenia lokalnego przy użyciu bramy Virtual Network brama, określona Sieć wirtualna i konto laboratorium muszą znajdować się w tym samym regionie.
 
-## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurowanie w czasie tworzenia konta laboratorium
-Podczas tworzenia nowego konta laboratorium, możesz wybrać istniejącą sieć wirtualną, który przedstawia w **równorzędna sieć wirtualna** listy rozwijanej. Wybranej sieci wirtualnej jest connected(peered) do laboratoriów utworzonych w ramach konta laboratorium. Wszystkie maszyny wirtualne laboratoria, które są tworzone po udostępnianie tej zmiany, musi dostęp do zasobów w równorzędnej sieci wirtualnej. 
+## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfiguruj podczas tworzenia konta laboratorium
+Podczas tworzenia nowego konta laboratorium można wybrać istniejącą sieć wirtualną, która zostanie wyświetlona na liście rozwijanej **równorzędnej sieci wirtualnej** . Wybrana Sieć wirtualna jest połączona (równorzędna) do laboratoriów utworzonych w ramach konta laboratorium. Wszystkie maszyny wirtualne w laboratoriach, które są tworzone po wprowadzeniu tej zmiany, będą miały dostęp do zasobów w sieci wirtualnej połączonej za pomocą komunikacji równorzędnej. 
 
-![Wybierz sieć wirtualną do komunikacji równorzędnej](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
+![Wybierz sieć wirtualną do elementu równorzędnego](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
 > [!NOTE]
 > Aby uzyskać szczegółowe instrukcje krok po kroku dotyczące tworzenia konta laboratorium, zobacz [Konfigurowanie konta laboratorium](tutorial-setup-lab-account.md)
 
 
-## <a name="configure-after-the-lab-is-created"></a>Skonfigurować po utworzeniu laboratorium
-Tę samą właściwość można włączyć w **konfiguracji Labs** karcie **konta laboratorium** strony, jeśli nie skonfigurowano sieci elementów równorzędnych w czasie tworzenia konta w laboratorium. Zmiany wprowadzone przez to ustawienie dotyczy tylko laboratoria, które są tworzone po zmianie. Jak widać na ilustracji, można włączać lub wyłączać **równorzędna sieć wirtualna** do laboratoriów w ramach konta laboratorium. 
+## <a name="configure-after-the-lab-is-created"></a>Konfiguruj po utworzeniu laboratorium
+Tę samą Właściwość można włączyć na karcie **Konfiguracja laboratoriów** na stronie **konto laboratorium** , jeśli nie skonfigurowano sieci równorzędnej w momencie tworzenia konta laboratorium. Zmiana wprowadzona dla tego ustawienia ma zastosowanie tylko do laboratoriów, które są tworzone po zmianie. Jak widać w obrazie, możesz włączyć lub wyłączyć **równorzędną sieć wirtualną** dla laboratoriów na koncie laboratorium. 
 
-![Włączanie lub wyłączanie wirtualne sieci równorzędne — po utworzeniu laboratorium](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png) 
+![Włącz lub Wyłącz komunikację równorzędną sieci wirtualnej po utworzeniu laboratorium](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png) 
 
-Po wybraniu sieci wirtualnej dla **równorzędna sieć wirtualna** pola **twórca laboratorium Zezwalaj, aby wybrać lokalizację lab** opcja jest wyłączona. Jest to spowodowane laboratoriów w ramach konta laboratorium musi znajdować się w tym samym regionie co konto usługi laboratorium dla nich nawiązywanie połączeń z zasobami w równorzędnej sieci wirtualnej. 
+W przypadku wybrania sieci wirtualnej dla pola **równorzędna Sieć wirtualna** opcja **Zezwól na wybór laboratorium do wyboru lokalizacji laboratorium** jest wyłączona. Wynika to z faktu, że laboratorium na koncie laboratorium musi znajdować się w tym samym regionie co konto laboratorium, aby można było połączyć się z zasobami w równorzędnej sieci wirtualnej. 
 
 > [!IMPORTANT]
-> Zmień to ustawienie dotyczy tylko laboratoria, które są tworzone po wprowadzeniu zmian do istniejących labs. 
+> Ta zmiana ustawienia ma zastosowanie tylko do laboratoriów, które są tworzone po wprowadzeniu zmiany, a nie do istniejących laboratoriów. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
 
 - [As an admin, create and manage lab accounts (Tworzenie kont laboratoriów i zarządzanie nimi jako administrator)](how-to-manage-lab-accounts.md)
 - [As a lab owner, create and manage labs (Tworzenie laboratoriów i zarządzanie nimi jako właściciel laboratorium)](how-to-manage-classroom-labs.md)
 - [As a lab owner, set up and publish templates (Konfigurowanie i tworzenie szablonów jako właściciel laboratorium)](how-to-create-manage-template.md)
-- [Jako użytkownik laboratorium dostęp do laboratoriów na potrzeby zajęć](how-to-use-classroom-lab.md)
+- [Jako użytkownik laboratorium Uzyskuj dostęp do laboratoriów zajęć](how-to-use-classroom-lab.md)
 

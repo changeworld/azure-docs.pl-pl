@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central'
+title: Samouczek — Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central
 description: W tym samouczku pokazano, jak utworzyć aplikację detaliczną analizy w sklepie w IoT Central. Utworzysz go, dołączysz i dodasz urządzenia czujnika.
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 071d432ba2769705213cb98cee644b64e9e81b6e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112902"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702020"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Samouczek: Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central
 
@@ -186,7 +186,7 @@ Dla typu telemetrii `humidity` wprowadź następujące zmiany:
 
 1. Zmień opcję **typu semantycznego** z *Brak* na *wilgotność*.  Opcjonalnie Ustaw wartości schematu dla typu telemetrii wilgotności w widoku rozwiniętych schematów. Ustawienia schematu umożliwiają tworzenie szczegółowych wymagań dotyczących sprawdzania poprawności danych śledzonych przez czujniki. Można na przykład ustawić minimalną i maksymalną wartość zakresu operacyjnego dla danego interfejsu.
 
-1. Wybierz **Zapisz** Aby zapisać zmiany.
+1. Wybierz pozycję **Zapisz** , aby zapisać zmiany.
 
     ![Dostosowywanie szablonu urządzenia usługi Azure IoT Central RuuviTag](./media/tutorial-in-store-analytics-create-app-pnp/ruuvitag-device-template-customize.png)
 

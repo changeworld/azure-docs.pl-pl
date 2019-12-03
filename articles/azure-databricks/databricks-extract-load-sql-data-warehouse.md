@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: wykonywanie operacji ETL za pomocą usługi Azure Databricks'
-description: Dowiedz się, jak wyodrębniać dane z usługi Data Lake Storage Gen2 do usługi Azure Databricks, przekształcać je, a następnie załadować do usługi Azure SQL Data Warehouse.
+title: Samouczek — wykonywanie operacji ETL przy użyciu Azure Databricks
+description: W tym samouczku dowiesz się, jak wyodrębnić dane z Data Lake Storage Gen2 do Azure Databricks, Przekształć dane, a następnie załadować je do Azure SQL Data Warehouse.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8ceb9e940584ae4c41484fe31ce5cb1832bb3400
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 11e5aac559370c478b774f2a503bde590dfeedf4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605695"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707454"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu Azure Databricks
 
@@ -65,7 +65,7 @@ Przed rozpoczęciem tego samouczka wykonaj następujące zadania:
 
    * Podczas wykonywania kroków opisanych w sekcji [pobieranie wartości dla logowania w](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) artykule wklej identyfikator dzierżawy, identyfikator aplikacji i hasło do pliku tekstowego. Wkrótce będą potrzebne.
 
-* Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+* Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Zbieranie potrzebnych informacji
 
@@ -73,9 +73,9 @@ Upewnij się, że zostały spełnione wszystkie wymagania wstępne tego samouczk
 
    Przed rozpoczęciem należy zebrać następujące informacje:
 
-   : heavy_check_mark: Nazwa bazy danych, nazwa serwera bazy danych, nazwa użytkownika i hasło do usługi Azure SQL Data Warehouse.
+   : heavy_check_mark: Nazwa bazy danych, nazwa serwera bazy danych, nazwa użytkownika i hasło usługi Azure SQL Data Warehouse.
 
-   : heavy_check_mark: klucz dostępu do konta magazynu obiektów BLOB.
+   : heavy_check_mark: klucz dostępu konta magazynu obiektów BLOB.
 
    : heavy_check_mark: nazwa konta magazynu Data Lake Storage Gen2.
 
@@ -107,7 +107,7 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
     |**Subskrypcja**     | Z listy rozwijanej wybierz subskrypcję platformy Azure.        |
     |**Grupa zasobów**     | Określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej grupy. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). |
     |**Lokalizacja**     | Wybierz pozycję **Zachodnie stany USA 2**.  Inne dostępne regiony podano na stronie [dostępności usług platformy Azure według regionów](https://azure.microsoft.com/regions/services/).      |
-    |**Warstwa cenowa**     |  Wybierz opcję **Standardowa**.     |
+    |**Warstwa cenowa**     |  Wybierz pozycję **Standardowy**.     |
 
 3. Tworzenie konta potrwa kilka minut. Stan operacji można monitorować za pomocą paska postępu znajdującego się u góry.
 

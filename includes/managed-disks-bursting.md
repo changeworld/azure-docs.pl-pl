@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c2ce39c40ad535b4a66349fcbb4529333218555a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512667"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705528"
 ---
-Dysków SSD w warstwie Premium obsługuje rozbicie na dowolne rozmiary dysków < = 512 GiB (P20 lub poniżej). Te rozmiary dysków umożliwiają szybkie Rozliczanie i używanie systemu kredytowego do zarządzania rozliczeniami. Kredyty są gromadzone w zasobniku obejmującym cały czas, gdy ruch dysku jest niższy od obsługiwanego miejsca docelowego wydajności dla rozmiaru dysku, i zużywa kredyty, gdy ruch przekracza miejsce docelowe. Ruch dyskowy jest śledzony w odniesieniu do operacji we/wy i przepustowości w miejscu docelowym aprowizacji.
+Szeregowanie dysków jest obecnie funkcją w wersji zapoznawczej dla dysków SSD Premium. Rozbicie jest obsługiwane na dowolnym rozmiarze dysków SSD w warstwie Premium < = 512 GiB (P20 lub poniżej). Te rozmiary dysków umożliwiają szybkie Rozliczanie i używanie systemu kredytowego do zarządzania rozliczeniami. Kredyty są gromadzone w zasobniku obejmującym cały czas, gdy ruch dysku jest niższy od obsługiwanego miejsca docelowego wydajności dla rozmiaru dysku, i zużywa kredyty, gdy ruch przekracza miejsce docelowe. Ruch dyskowy jest śledzony w odniesieniu do operacji we/wy i przepustowości w miejscu docelowym aprowizacji.
 
 Funkcja przenoszenia dysków jest domyślnie włączona w nowych wdrożeniach obsługiwanych rozmiarów dysków. Istniejące rozmiary dysków, jeśli obsługują rozbicie dysku, mogą umożliwić Przechodzenie przez jedną z następujących metod:
 

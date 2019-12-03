@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a800336fb6fda8a0ed0af71f243936d29e8079e7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209717"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706846"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używanie bliźniaczych reprezentacji urządzeń w IoT Hub
 
@@ -185,13 +185,13 @@ Zaplecze rozwiązania działa na bliźniaczych urządzeniach przy użyciu nastę
     | Nazwa | Wartość |
     | --- | --- |
     Typ $content | application/json |
-    $iothub-enqueuedtime |  Godzina wysłania powiadomienia |
-    $iothub-message-source | twinChangeEvents |
+    $iothub — enqueuedtime |  Godzina wysłania powiadomienia |
+    $iothub-komunikat-Źródło | twinChangeEvents |
     $content — kodowanie | UTF-8 |
     deviceId | Identyfikator urządzenia |
     hubName | Nazwa IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) sygnatura czasowa operacji |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub — komunikat-schemat | deviceLifecycleNotification |
     opType | "replaceTwin" lub "updateTwin" |
 
     Właściwości systemu komunikatów są poprzedzone symbolem `$`.
@@ -285,7 +285,7 @@ Tagi, żądane właściwości i raportowane właściwości są obiektami JSON z 
 
 ## <a name="device-twin-size"></a>Rozmiar przędzy urządzenia
 
-IoT Hub wymusza ograniczenie rozmiaru rozmiarze 8 KB na każdej z odpowiednich wartości całkowitych `tags`, `properties/desired`i `properties/reported`, z wyłączeniem elementów tylko do odczytu.
+IoT Hub wymusza limit rozmiaru 8 KB dla wartości `tags`, a rozmiar 32 KB zostanie ograniczony dla wartości `properties/desired` i `properties/reported`. Te sumy zawierają wyłącznie elementy tylko do odczytu.
 
 Rozmiar jest obliczany przez liczenie wszystkich znaków, z wyłączeniem znaków kontrolnych UNICODE (segmenty C0 i C1) i spacji, które znajdują się poza stałymi ciągami.
 

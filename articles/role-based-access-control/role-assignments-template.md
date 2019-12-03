@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i Azure Resource Manager | Microsoft Docs
-description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) i szablonów Azure Resource Manager.
+title: Dodawanie przypisań ról przy użyciu usług Azure RBAC i szablonów Azure Resource Manager
+description: Dowiedz się, jak udzielić dostępu do zasobów platformy Azure dla użytkowników, grup, nazw głównych usług lub tożsamości zarządzanych przy użyciu kontroli dostępu opartej na rolach (RBAC) systemu Azure i szablonów Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383994"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707792"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i Azure Resource Manager
+# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Dodawanie przypisań ról przy użyciu usług Azure RBAC i szablonów Azure Resource Manager
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. Oprócz używania Azure PowerShell lub interfejsu wiersza polecenia platformy Azure można zarządzać dostępem do zasobów platformy Azure przy użyciu [szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablony mogą być przydatne, jeśli trzeba spójnie i wielokrotnie wdrażać zasoby. W tym artykule opisano sposób zarządzania dostępem przy użyciu RBAC i szablonów.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] oprócz używania Azure PowerShell lub interfejsu wiersza polecenia platformy Azure można przypisywać role przy użyciu [szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablony mogą być przydatne, jeśli trzeba spójnie i wielokrotnie wdrażać zasoby. W tym artykule opisano sposób przypisywania ról przy użyciu szablonów.
 
 ## <a name="get-object-ids"></a>Pobierz identyfikatory obiektów
 
@@ -64,9 +64,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Utwórz przypisanie roli w zakresie grupy zasobów (bez parametrów)
+## <a name="add-a-role-assignment"></a>Dodawanie przypisania roli
 
-Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli. Poniższy szablon przedstawia podstawowy sposób tworzenia przypisania roli. Niektóre wartości są określone w szablonie. Poniższy szablon demonstruje:
+W celu udzielenia dostępu w ramach RBAC należy dodać przypisanie roli.
+
+### <a name="resource-group-without-parameters"></a>Grupa zasobów (bez parametrów)
+
+Poniższy szablon przedstawia podstawowy sposób dodawania przypisania roli. Niektóre wartości są określone w szablonie. Poniższy szablon demonstruje:
 
 -  Jak przypisać rolę [czytnika](built-in-roles.md#reader) do użytkownika, grupy lub aplikacji w zakresie grupy zasobów
 
@@ -107,7 +111,7 @@ Poniżej przedstawiono przykład przypisania roli czytnika do użytkownika dla g
 
 ![Przypisanie roli w zakresie grupy zasobów](./media/role-assignments-template/role-assignment-template.png)
 
-## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>Tworzenie przypisania roli w ramach grupy zasobów lub zakresu subskrypcji
+### <a name="resource-group-or-subscription"></a>Grupa zasobów lub subskrypcja
 
 Poprzedni szablon nie jest bardzo elastyczny. Następujący szablon używa parametrów i może być używany w różnych zakresach. Poniższy szablon demonstruje:
 
@@ -191,9 +195,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-scope"></a>Tworzenie przypisania roli w zakresie zasobów
+### <a name="resource"></a>Zasób
 
-Jeśli konieczne jest utworzenie przypisania roli na poziomie zasobu, format przypisania roli jest inny. Podaj przestrzeń nazw dostawcy zasobów i typ zasobu zasobu, do którego ma zostać przypisana rola. Należy również podać nazwę zasobu w nazwie przypisania roli.
+Jeśli konieczne jest dodanie przypisania roli na poziomie zasobu, format przypisania roli jest inny. Podaj przestrzeń nazw dostawcy zasobów i typ zasobu zasobu, do którego ma zostać przypisana rola. Należy również podać nazwę zasobu w nazwie przypisania roli.
 
 W polu Typ i nazwa przypisania roli Użyj następującego formatu:
 
@@ -287,7 +291,7 @@ Poniżej przedstawiono przykład przypisania roli współautor do użytkownika d
 
 ![Przypisanie roli w zakresie zasobów](./media/role-assignments-template/role-assignment-template-resource.png)
 
-## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Tworzenie przypisania roli dla nowej nazwy głównej usługi
+### <a name="new-service-principal"></a>Nowa nazwa główna usługi
 
 Jeśli utworzysz nową nazwę główną usługi i natychmiast spróbujesz przypisać rolę do tej jednostki usługi, w niektórych przypadkach przypisanie roli może zakończyć się niepowodzeniem. Jeśli na przykład utworzysz nową tożsamość zarządzaną, a następnie spróbujesz przypisać rolę do tej jednostki usługi w tym samym szablonie Azure Resource Manager, przypisanie roli może zakończyć się niepowodzeniem. Przyczyną tego błędu jest prawdopodobnie opóźnienie replikacji. Nazwa główna usługi jest tworzona w jednym regionie; jednak przypisanie roli może wystąpić w innym regionie, który jeszcze nie replikuje jednostki usługi. Aby rozwiązać ten scenariusz, należy ustawić właściwość `principalType` na `ServicePrincipal` podczas tworzenia przypisania roli.
 

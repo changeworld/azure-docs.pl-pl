@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 888f3b1a53ba2e31195e3b9d577a475df441e972
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49b3b5890fe38f6c635e7ba420a1adf5d778de0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683003"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703933"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Samouczek: Tworzenie fabryki danych za pomocą programu Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
-> * [Program Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Szablon usługi Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
 > * [Interfejs API REST](data-factory-build-your-first-pipeline-using-rest-api.md)
@@ -390,7 +390,7 @@ W tym kroku będziesz monitorować potok przy użyciu widoku diagramu fabryki da
 Zobacz artykuł [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) (Monitorowanie zestawów danych i potoku), aby uzyskać instrukcje dotyczące korzystania z witryny Azure Portal do monitorowania potoku i zestawów danych utworzonych przez siebie w ramach tego samouczka.
 
 #### <a name="monitor-pipeline-using-monitor--manage-app"></a>Monitorowanie potoku przy użyciu aplikacji Monitorowanie i zarządzanie
-Do monitorowania potoków danych możesz też użyć aplikacji Monitorowanie i zarządzanie. Szczegółowe informacje dotyczące korzystania z aplikacji znajdują się w artykule [Monitor and manage Azure Data Factory pipelines using Monitoring and Management App](data-factory-monitor-manage-app.md) (Monitorowanie potoków usługi Azure Data Factory oraz zarządzanie nimi za pomocą aplikacji Monitorowanie i zarządzanie).
+Do monitorowania potoków danych możesz też użyć aplikacji Monitorowanie i zarządzanie. Szczegółowe informacje dotyczące korzystania z aplikacji znajdują się w artykule [Monitor and manage Azure Data Factory pipelines using Monitoring and Management App](data-factory-monitor-manage-app.md) (Monitorowanie potoków usługi Fabryka danych Azure oraz zarządzanie nimi za pomocą aplikacji Monitorowanie i zarządzanie).
 
 1. Kliknij kafelek Monitorowanie i zarządzanie.
 
@@ -543,12 +543,12 @@ Aby opublikować jednostki w projekcie usługi Azure Data Factory przy użyciu p
 Podczas wdrażania wartości z pliku konfiguracji służą do ustawiania wartości właściwości w plikach JSON przed wdrożeniem jednostek w usłudze Azure Data Factory.   
 
 ## <a name="use-azure-key-vault"></a>Korzystanie z rozwiązania Azure Key Vault
-Przekazywanie poufnych danych (na przykład parametrów połączeń) do repozytorium kodu jest niezalecane, a często nawet sprzeczne z zasadami zabezpieczeń. Zobacz przykład [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFSecurePublish) w witrynie GitHub, aby dowiedzieć się więcej o przechowywaniu poufnych informacji w usłudze Azure Key Vault i korzystaniu z nich podczas publikowania jednostek usługi Data Factory. Rozszerzenie Secure Publish dla programu Visual Studio umożliwia przechowywanie kluczy tajnych w usłudze Key Vault, a w połączonych usługach/konfiguracjach wdrażania są określane tylko odwołania do tych kluczy. Te odwołania są rozpoznawane podczas publikowania jednostek usługi Data Factory na platformie Azure. Te pliki można następnie przekazać do repozytorium źródłowego bez ujawniania jakichkolwiek kluczy tajnych.
+Przekazywanie poufnych danych (na przykład parametrów połączeń) do repozytorium kodu jest niezalecane, a często nawet sprzeczne z zasadami zabezpieczeń. Zobacz przykład [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFSecurePublish) w witrynie GitHub, aby dowiedzieć się więcej o przechowywaniu poufnych informacji w usłudze Azure Key Vault i korzystaniu z nich podczas publikowania jednostek usługi Data Factory. Rozszerzenie Secure Publish dla programu Visual Studio umożliwia przechowywanie kluczy tajnych w usłudze Key Vault, a w połączonych usługach/konfiguracjach wdrażania są określane tylko odwołania do tych kluczy. Te odwołania są rozpoznawane podczas publikowania jednostek usługi Data Factory na platformie Azure. Te pliki można następnie przekazać do repozytorium źródłowego bez ujawniania jakichkolwiek kluczy tajnych.
 
 ## <a name="summary"></a>Podsumowanie
 W tym samouczku opisano tworzenie fabryki danych Azure do przetwarzania danych przez uruchomienie skryptu programu Hive w klastrze platformy Hadoop w usłudze HDInsight. Użyto Edytora fabryki danych w witrynie Azure Portal, aby:  
 
-1. Utworzyć **fabrykę danych** Azure.
+1. Tworzenie **fabryki danych** Azure.
 2. Utworzyć dwie **połączone usługi**:
    1. Połączoną usługę **Azure Storage** w celu połączenia magazynu obiektów blob Azure, w którym przechowywane są pliki wejściowe/wyjściowe, z fabryką danych.
    2. Połączoną usługę **Azure HDInsight** na żądanie w celu połączenia klastra platformy Hadoop w usłudze HDInsight na żądanie z fabryką danych. Usługa Fabryka danych Azure tworzy klaster just in time platformy Hadoop w usłudze HDInsight, aby przetwarzać dane wejściowe i generować dane wyjściowe.

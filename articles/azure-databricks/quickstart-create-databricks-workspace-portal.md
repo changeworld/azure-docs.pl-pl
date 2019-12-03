@@ -1,6 +1,6 @@
 ---
-title: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal
-description: W tym przewodniku Szybki start pokazano, jak za pomocą witryny Azure Portal utworzyć obszar roboczy usługi Azure Databricks oraz klaster Apache Spark i uruchomić zadanie Spark.
+title: Szybki Start — uruchamianie zadania Spark na Azure Databricks przy użyciu Azure Portal
+description: W tym przewodniku szybki start pokazano, jak za pomocą Azure Portal utworzyć obszar roboczy Azure Databricks, klaster Apache Spark i uruchomić zadanie Spark.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 004557ab3eb73f3f793b0514913260a414645d40
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 23d04062d5db7c944b7734f5e8339342548062fa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129373"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706192"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal
 
@@ -27,7 +27,7 @@ W tym przewodniku szybki start użyjesz Azure Portal, aby utworzyć obszar roboc
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 > [!Note]
 > Tego samouczka nie można przeprowadzić za pomocą **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
@@ -152,7 +152,7 @@ Wykonaj następujące zadania, aby utworzyć Notes w kostkach danych, skonfiguro
    * W obszarze **Agregacja** ustaw wartość **LICZBA**.
    * Ustaw **Typ wyświetlania** na **Wykres kołowy**.
 
-     Kliknij przycisk **zastosować**.
+     Kliknij przycisk **Zastosuj**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

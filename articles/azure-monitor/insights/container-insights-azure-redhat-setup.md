@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/21/2019
-ms.openlocfilehash: 965ebdb5b6450a0826872ac31d96d8e61b7542f5
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 07d84175325226af755712ec38ab93b901bbd361
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382256"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707524"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurowanie klastrów usługi Azure Red Hat OpenShift za pomocą Azure Monitor dla kontenerów
 
 Azure Monitor dla kontenerów zapewnia rozbudowane środowisko monitorowania dla klastrów usługi Azure Kubernetes Service (AKS) i AKS Engine. W tym artykule opisano sposób włączania monitorowania klastrów Kubernetes hostowanych na [platformie Azure Red Hat OpenShift](../../openshift/intro-openshift.md) w celu osiągnięcia podobnego środowiska monitorowania.
 
 >[!NOTE]
->Obsługa systemu Red Hat OpenShift jest w tej chwili funkcją w publicznej wersji zapoznawczej.
+>Obsługa usługi Azure Red Hat OpenShift jest w tej chwili funkcją w publicznej wersji zapoznawczej.
 >
 
 Azure Monitor dla kontenerów można włączyć dla nowych lub jednego lub kilku istniejących wdrożeń usługi Azure Red Hat OpenShift przy użyciu następujących obsługiwanych metod:
@@ -68,13 +68,13 @@ Ta metoda obejmuje dwa szablony JSON. Jeden szablon określa konfigurację wdro�
 
 - Liczba węzłów infrastruktury w profilu puli agentów. 
 
-Jeśli znasz koncepcji wdrażanie zasobów za pomocą szablonu, zobacz:
+Jeśli nie znasz koncepcji wdrażania zasobów przy użyciu szablonu, zobacz:
 
 - [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/resource-group-template-deploy.md)
 
 - [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się na korzystanie z interfejsu wiersza polecenia platformy Azure, musisz najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 Aby można było włączyć monitorowanie za pomocą Azure PowerShell lub interfejsu wiersza polecenia, należy utworzyć obszar roboczy Log Analytics. Aby utworzyć obszar roboczy, można go skonfigurować za pomocą [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), za pomocą [programu PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)lub [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
 
@@ -84,7 +84,7 @@ Aby można było włączyć monitorowanie za pomocą Azure PowerShell lub interf
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json` 
 
-2. Logowanie do platformy Azure 
+2. Zaloguj się w usłudze Azure 
 
     ```azurecli
     az login    
@@ -129,7 +129,7 @@ Wykonaj następujące kroki, aby włączyć monitorowanie klastra Red Hat OpenSh
 
 ### <a name="from-the-azure-portal"></a>Z Azure Portal
  
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 2. W menu Azure Portal lub na stronie głównej wybierz pozycję **Azure monitor**. W sekcji **szczegółowe informacje** wybierz pozycję **kontenery**. 
 
@@ -145,11 +145,11 @@ Wykonaj następujące kroki, aby włączyć monitorowanie klastra Red Hat OpenSh
     >[!NOTE]
     >Jeśli chcesz utworzyć nowy obszar roboczy Log Analytics do przechowywania danych monitorowania z klastra, postępuj zgodnie z instrukcjami w temacie [tworzenie log Analytics obszaru roboczego](../../azure-monitor/learn/quick-create-workspace.md). Upewnij się, że obszar roboczy jest tworzony w tej samej subskrypcji, w której wdrożono klaster RedHat OpenShift. 
  
-Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić metryki kondycji klastra. 
+Po włączeniu monitorowania może upłynąć około 15 minut, zanim będzie można wyświetlić metryki kondycji klastra. 
 
 ### <a name="enable-using-an-azure-resource-manager-template"></a>Włączanie przy użyciu szablonu Azure Resource Manager
 
-Ta metoda obejmuje dwa szablony JSON. Jeden szablon Określa konfigurację, aby włączyć monitorowanie, a drugi zawiera wartości parametrów, które można skonfigurować w celu określ następujące ustawienia:
+Ta metoda obejmuje dwa szablony JSON. Jeden szablon określa konfigurację umożliwiającą monitorowanie, a druga zawiera wartości parametrów, które można skonfigurować, aby określić następujące elementy:
 
 - Identyfikator zasobu klastra usługi Azure RedHat OpenShift. 
 
@@ -157,13 +157,13 @@ Ta metoda obejmuje dwa szablony JSON. Jeden szablon Określa konfigurację, aby 
 
 - Obszar roboczy usługi Log Analytics.
 
-Jeśli znasz koncepcji wdrażanie zasobów za pomocą szablonu, zobacz:
+Jeśli nie znasz koncepcji wdrażania zasobów przy użyciu szablonu, zobacz:
 
 - [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/resource-group-template-deploy.md)
 
 - [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się na korzystanie z interfejsu wiersza polecenia platformy Azure, musisz najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 Aby można było włączyć monitorowanie za pomocą Azure PowerShell lub interfejsu wiersza polecenia, należy utworzyć obszar roboczy Log Analytics. Aby utworzyć obszar roboczy, można go skonfigurować za pomocą [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), za pomocą [programu PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)lub [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
 
@@ -173,7 +173,7 @@ Aby można było włączyć monitorowanie za pomocą Azure PowerShell lub interf
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json` 
 
-2. Logowanie do platformy Azure 
+2. Zaloguj się w usłudze Azure 
 
     ```azurecli
     az login    

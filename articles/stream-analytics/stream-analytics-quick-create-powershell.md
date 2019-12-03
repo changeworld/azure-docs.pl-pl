@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zadania usługi Stream Analytics przy użyciu programu Azure PowerShell
+title: Szybki Start — Tworzenie zadania Stream Analytics przy użyciu Azure PowerShell
 description: W tym przewodniku Szybki start przedstawiono sposób korzystania z modułu Azure PowerShell w celu wdrożenia i uruchomienia zadania usługi Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: f46f437ffd79ae9d0457606a72719ef13314aa1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44fe16caf6805819b0d942a02f5138fe766ae99c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66116986"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707325"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu programu Azure PowerShell
+# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Szybki Start: Tworzenie zadania Stream Analytics przy użyciu Azure PowerShell
 
 Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą poleceń cmdlet programu PowerShell lub skryptów. W tym przewodniku Szybki start zawarto szczegółowe instrukcje korzystania z modułu Azure PowerShell w celu wdrożenia i uruchomienia zadania usługi Azure Stream Analytics.
 
@@ -32,7 +32,7 @@ Przykładowe zadanie odczytuje dane przesyłane strumieniowo z urządzenia usłu
 * Niektóre działania usługi IoT Hub nie są obsługiwane w programie Azure PowerShell i trzeba je wykonać za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0.24 lub nowszej i rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure. [Zainstaluj interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) i użyj polecenia `az extension add --name azure-cli-iot-ext`, aby zainstalować rozszerzenie IoT.
 
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i wprowadź swoje poświadczenia platformy Azure w podręcznym oknie przeglądarki:
 
@@ -51,7 +51,7 @@ Get-AzSubscription
 Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -330,7 +330,7 @@ Remove-AzResourceGroup `
   -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start proste zadanie usługi Stream Analytics zostało wdrożone przy użyciu programu PowerShell. Możesz też wdrażać zadania usługi Stream Analytics przy użyciu witryny [Azure Portal](stream-analytics-quick-create-portal.md) i programu [Visual Studio](stream-analytics-quick-create-vs.md).
 

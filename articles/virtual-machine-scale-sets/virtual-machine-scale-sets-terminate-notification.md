@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264678"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705918"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Zakończenie powiadomienia o wystąpieniach zestawu skalowania maszyn wirtualnych platformy Azure (wersja zapoznawcza)
 Wystąpienia zestawu skalowania mogą zrezygnować z otrzymywania powiadomień o zakończeniu wystąpienia i ustawiać wstępnie zdefiniowany limit czasu opóźnienia dla operacji przerywania. Powiadomienie o wygaśnięciu jest wysyłane za pomocą usługi Azure Metadata Service — [Scheduled Events](../virtual-machines/windows/scheduled-events.md), która zapewnia powiadomienia i opóźniać wpływ na operacje, takie jak ponowny rozruch i ponowne wdrażanie. Rozwiązanie w wersji zapoznawczej dodaje kolejne zdarzenie — Zakończ — do listy Scheduled Events, a skojarzone opóźnienie zdarzenia zakończenia będzie zależeć od limitu opóźnienia określonego przez użytkowników w konfiguracjach modelu zestawu skalowania.
@@ -67,7 +67,7 @@ Po włączeniu *scheduledEventsProfile* na modelu zestawu skalowania i ustawieni
 >Powiadomienia o przerwaniu dla wystąpień zestawu skalowania można włączyć tylko przy użyciu interfejsu API w wersji 2019-03-01 lub nowszej.
 
 ### <a name="azure-powershell"></a>Program Azure PowerShell
-Podczas tworzenia nowego zestawu skalowania można włączyć powiadomienia o zakończeniu dla zestawu skalowania za pomocą polecenia cmdlet [New-AzVmssVM](/powershell/module/az.compute/new-azvmss) .
+Podczas tworzenia nowego zestawu skalowania można włączyć powiadomienia o zakończeniu dla zestawu skalowania za pomocą polecenia cmdlet [New-AzVmss](/powershell/module/az.compute/new-azvmss) .
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -84,7 +84,7 @@ New-AzVmss `
 
 W powyższym przykładzie tworzony jest nowy zestaw skalowania z włączonymi powiadomieniami o przerwaniu z użyciem domyślnego limitu czasu 5 minut. Podczas tworzenia nowego zestawu skalowania parametr *TerminateScheduledEvents* nie wymaga wartości. Aby zmienić wartość limitu czasu, określ żądany limit czasu za pomocą parametru *TerminateScheduledEventNotBeforeTimeoutInMinutes* .
 
-Użyj polecenia cmdlet [Update-AzVmssVM](/powershell/module/az.compute/update-azvmss) , aby włączyć powiadomienia o zakończeniu dla istniejącego zestawu skalowania.
+Użyj polecenia cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) , aby włączyć powiadomienia o zakończeniu dla istniejącego zestawu skalowania.
 
 ```azurepowershell-interactive
 Update-AzVmss `
@@ -157,8 +157,8 @@ Możesz również zapoznać się z przykładowymi skryptami służącymi do wyko
 -   Brak obowiązkowego oczekiwania na przekroczenie limitu czasu — można uruchomić operację przerwania w dowolnym momencie po odebraniu zdarzenia i upływie czasu *NotBefore* zdarzenia.
 -   Obowiązkowe usuwanie przy limicie czasu — wersja zapoznawcza nie zapewnia możliwości rozszerzenia wartości limitu czasu po wygenerowaniu zdarzenia. Po upływie limitu czasu zdarzenie oczekujące zakończenie zostanie przetworzone, a maszyna wirtualna zostanie usunięta.
 -   Modyfikowalna wartość limitu czasu — można w dowolnym momencie zmodyfikować wartość limitu czasu przed usunięciem wystąpienia, modyfikując właściwość *notBeforeTimeout* w modelu zestawu skalowania i aktualizując wystąpienia maszyn wirtualnych do najnowszego modelu.
--   Zatwierdź wszystkie oczekujące usunięcia — Jeśli istnieje oczekujące usunięcie VM_1, które nie zostało zatwierdzone, i zatwierdzono inne zdarzenie zakończenia na VM_2, VM_2 nie zostanie usunięte, dopóki nie zostanie zatwierdzone zdarzenie zakończenia dla VM_1 lub upłynął limit czasu. Po zatwierdzeniu zdarzenia zakończenia dla elementu VM_1 zostaną usunięte zarówno VM_1, jak i VM_2.
--   Zatwierdź wszystkie jednoczesne operacje usuwania — rozszerzenie powyższego przykładu, jeśli VM_1 i VM_2 mają ten sam czas *NotBefore* , to oba zdarzenia zakończenia muszą być zatwierdzone lub żadna maszyna wirtualna nie zostanie usunięta przed upływem limitu czasu.
+-   Zatwierdź wszystkie oczekujące usunięcia — Jeśli istnieje oczekujące usunięcie VM_1, które nie zostało zatwierdzone, i zatwierdzono inne zdarzenie przerwania w VM_2, VM_2 nie zostanie usunięte, dopóki nie zostanie zatwierdzone zdarzenie zakończenia dla VM_1 lub upłynął limit czasu. Po zatwierdzeniu zdarzenia zakończenia dla VM_1 zostaną usunięte zarówno VM_1, jak i VM_2.
+-   Zatwierdź wszystkie jednoczesne operacje usuwania — rozszerzenie powyższego przykładu, jeśli VM_1 i VM_2 mają taki sam czas *NotBefore* , oba zdarzenia zakończenia muszą być zatwierdzone lub żadna maszyna wirtualna nie zostanie usunięta przed upływem limitu czasu.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 ### <a name="failure-to-enable-scheduledeventsprofile"></a>Nie można włączyć scheduledEventsProfile

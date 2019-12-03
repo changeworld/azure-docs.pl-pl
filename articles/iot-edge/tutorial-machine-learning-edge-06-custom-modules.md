@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: uczenie & Wdrażanie modelu — Azure IoT Edge & Machine Learning'
-description: 'Samouczek: Tworzenie i wdrażanie modułów IoT Edge, które przetwarzają dane z urządzeń liściowych za pośrednictwem modelu uczenia maszynowego, a następnie wysyłają szczegółowe informacje do IoT Hub.'
+title: 'Samouczek: Tworzenie i wdrażanie modułów niestandardowych — Machine Learning na Azure IoT Edge'
+description: W tym samouczku pokazano, jak tworzyć i wdrażać moduły IoT Edge, które przetwarzają dane z urządzeń liściowych za pośrednictwem modelu uczenia maszynowego, a następnie wysyłają szczegółowe informacje do IoT Hub.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 371c897f0b4858a642322ff35a6008edbe9a651d
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664220"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701844"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Samouczek: Tworzenie i wdrażanie niestandardowych modułów IoT Edge
 

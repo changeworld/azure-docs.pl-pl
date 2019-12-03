@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c56961b28750f3ba6450c26c897c1ef6c54b3ed8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667499"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703365"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania usługi Hadoop streaming w Azure Data Factory
 > [!div class="op_single_selector" title1="Działania transformacji"]
@@ -98,7 +98,7 @@ Pamiętaj o następujących kwestiach:
 2. Ustaw typ działania na **HDInsightStreaming**.
 3. Dla właściwości **Mapowanie** Określ nazwę pliku wykonywalnego mapowania. W przykładzie Cat. exe jest plikiem wykonywalnym mapowania.
 4. Dla właściwości **Redukuj** Określ nazwę pliku wykonywalnego. W przykładzie plik. exe jest plikiem wykonywalnym.
-5. Dla właściwości Typ **danych wejściowych** Określ plik wejściowy (łącznie z lokalizacją) dla mapowania. W przykładzie: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample jest kontenerem obiektów blob, przykładem/danymi/Gutenberg jest folder, a DaVinci. txt jest obiektem BLOB.
+5. Dla właściwości Typ **danych wejściowych** Określ plik wejściowy (łącznie z lokalizacją) dla mapowania. W przykładzie: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample jest kontenerem obiektów blob, przykładem/danymi/Gutenberg jest folder, a DaVinci. txt to obiekt BLOB.
 6. Dla właściwości Typ **danych wyjściowych** Określ plik wyjściowy (łącznie z lokalizacją) dla elementu zmniejszającego liczbę. Dane wyjściowe zadania przesyłania strumieniowego Hadoop są zapisywane w lokalizacji określonej dla tej właściwości.
 7. W sekcji **filePaths** Określ ścieżki dla plików wykonywalnych mapowania i redukcji. W przykładzie: "adfsample/example/Apps/w pliku. exe", adfsample jest kontenerem obiektów blob, przykładem/aplikacjami jest folder, a plik. exe jest plikiem wykonywalnym.
 8. Dla właściwości **fileLinkedService** Określ połączoną usługę Azure Storage, która reprezentuje magazyn platformy Azure, który zawiera pliki określone w sekcji filePaths.
@@ -227,5 +227,5 @@ Klaster usługi HDInsight jest automatycznie wypełniany przy użyciu przykłado
 * [Aktywność trzody chlewnej](data-factory-pig-activity.md)
 * [Działanie MapReduce](data-factory-map-reduce.md)
 * [Wywoływanie programów platformy Spark](data-factory-spark.md)
-* [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

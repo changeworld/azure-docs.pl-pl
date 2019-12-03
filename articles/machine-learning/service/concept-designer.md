@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 73facea2b99ee038b16053fd818d93d35da4cbdd
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196169"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707726"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Co to jest Azure Machine Learning Designer (wersja zapoznawcza)? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Projektant umożliwia wizualizację kanwy do kompilowania, testowania i wdrażan
     + Publikuj **potok wnioskowania o partiach** , aby przetworzyć prognozy dotyczące nowych danych przy użyciu wcześniej nauczonego modelu.
 + [Wdróż](#deploy) **potok wnioskowania** w czasie rzeczywistym do punktu końcowego w czasie rzeczywistym, aby przetworzyć prognozy dotyczące nowych danych w czasie rzeczywistym.
 
-![Diagram przepływu pracy na potrzeby szkoleń, wnioskowania partii i wnioskowania w czasie rzeczywistym w projektancie](media/ui-concept-visual-interface/designer-workflow-diagram.png)
+![Diagram przepływu pracy na potrzeby szkoleń, wnioskowania partii i wnioskowania w czasie rzeczywistym w projektancie](media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>Potok
 
@@ -80,22 +80,22 @@ Moduł jest algorytmem, który można wykonać na danych. Projektant ma wiele mo
 
 Moduł może zawierać zestaw parametrów, za pomocą których można konfigurować wewnętrzne algorytmy modułu. Po wybraniu modułu na kanwie Parametry modułu są wyświetlane w okienku właściwości po prawej stronie kanwy. Te parametry można modyfikować w okienku, aby dostosowywać model. Można ustawić zasoby obliczeniowe dla poszczególnych modułów w projektancie. 
 
-![Właściwości modułu](media/ui-concept-visual-interface/properties.png)
+![Właściwości modułu](media/concept-designer/properties.png)
 
 Aby uzyskać pomoc dotyczącą przechodzenia przez bibliotekę dostępnych algorytmów uczenia maszynowego, zobacz [algorytm & — informacje o module](../algorithm-module-reference/module-reference.md)
 
 ## <a name="compute"></a>Zasoby obliczeniowe
 
-Użyj zasobów obliczeniowych z obszaru roboczego, aby uruchomić potok i hostować wdrożone modele jako punkty końcowe w czasie rzeczywistym lub punkty końcowe potoku (na potrzeby wnioskowania wsadowego). Są obsługiwane obliczeniowych elementów docelowych:
+Użyj zasobów obliczeniowych z obszaru roboczego, aby uruchomić potok i hostować wdrożone modele jako punkty końcowe w czasie rzeczywistym lub punkty końcowe potoku (na potrzeby wnioskowania wsadowego). Obsługiwane elementy docelowe obliczeń są następujące:
 
-| Docelowy zasób obliczeniowy | Szkolenia | Wdrożenie |
+| Docelowy zasób obliczeniowy | Szkolenie | Wdrażanie |
 | ---- |:----:|:----:|
-| Obliczeniowe platformy Azure Machine Learning | ✓ | |
+| Azure Machine Learning obliczeń | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 Elementy docelowe obliczeń są dołączone do [obszaru roboczego](concept-workspace.md)Machine Learning. Obiektami docelowymi obliczeń można zarządzać w obszarze roboczym programu [Azure Machine Learning Studio](https://ml.azure.com).
 
-## <a name="deploy"></a>Wdrażanie
+## <a name="deploy"></a>Implementacja
 
 Aby wykonać inferencing w czasie rzeczywistym, należy wdrożyć potok jako **punkt końcowy w czasie rzeczywistym**. Punkt końcowy w czasie rzeczywistym tworzy interfejs między aplikacją zewnętrzną a modelem oceniania. Wywołanie punktu końcowego w czasie rzeczywistym zwraca wyniki prognozowania do aplikacji w czasie rzeczywistym. Aby wykonać wywołanie do punktu końcowego w czasie rzeczywistym, należy przekazać klucz interfejsu API, który został utworzony podczas wdrażania punktu końcowego. Punkt końcowy jest oparty na pozostałej, popularnej architekturze dla projektów programowania w sieci Web.
 
@@ -103,11 +103,11 @@ Punkty końcowe w czasie rzeczywistym muszą zostać wdrożone w klastrze usług
 
 Aby dowiedzieć się, jak wdrożyć model, zobacz [Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą projektanta](tutorial-designer-automobile-price-deploy.md).
 
-## <a name="publish"></a>Publikowanie
+## <a name="publish"></a>Publikuj
 
 Możesz również opublikować potok w **punkcie końcowym potoku**. Podobnie jak w przypadku punktu końcowego w czasie rzeczywistym, punkt końcowy potoku umożliwia przesyłanie nowych uruchomień potoków z aplikacji zewnętrznych przy użyciu wywołań REST. Nie można jednak wysyłać ani odbierać danych w czasie rzeczywistym za pomocą punktu końcowego potoku.
 
-Opublikowane potoki są elastyczne, ale mogą być używane do uczenia lub ponownego uczenia modeli, wykonywania zadań wsadowych inferencing, przetwarzania nowych danych i wiele innych. Można opublikować wiele potoków w jednym punkcie końcowym potoku i określić, która wersja potoku ma zostać uruchomiona.
+Opublikowane potoki są elastyczne, ale mogą być używane do uczenia lub ponownego uczenia modeli, [wykonywania zadań wsadowych inferencing](how-to-run-batch-predictions-designer.md), przetwarzania nowych danych i wiele innych. Można opublikować wiele potoków w jednym punkcie końcowym potoku i określić, która wersja potoku ma zostać uruchomiona.
 
 Opublikowany potok jest uruchamiany na zasobach obliczeniowych zdefiniowanych w wersji roboczej potoku dla każdego modułu.
 
@@ -122,7 +122,7 @@ W wyniku tych aktualizacji niektóre koncepcje i terminy dla interfejsu wizualiz
 
 | Koncepcja projektanta | Wcześniej w interfejsie wizualizacji |
 | ---- |:----:|
-| Wersja robocza potoku | Eksperyment |
+| Wersja robocza potoku | Doświadczenia |
 | Punkt końcowy w czasie rzeczywistym | Usługa sieci Web |
 
 ### <a name="migrating-to-the-designer"></a>Migrowanie do projektanta

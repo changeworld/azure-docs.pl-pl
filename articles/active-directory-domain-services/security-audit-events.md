@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569801"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704287"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Włącz inspekcje zabezpieczeń dla Azure Active Directory Domain Services (wersja zapoznawcza)
 
@@ -82,7 +82,7 @@ Aby włączyć zdarzenia inspekcji usługi Azure AD DS Security przy użyciu Azu
 > Inspekcje zabezpieczeń AD DS platformy Azure nie są wsteczne. Nie jest możliwe pobieranie zdarzeń z przeszłości lub powtarzanie zdarzeń z przeszłości. Usługa Azure AD DS może wysyłać tylko zdarzenia, które wystąpiły po włączeniu.
 
 1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
-1. W górnej części Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz domenę zarządzaną, taką jak *contoso.com*.
+1. W górnej części Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz domenę zarządzaną, taką jak *aadds.contoso.com*.
 1. W oknie AD DS platformy Azure wybierz pozycję **Ustawienia diagnostyczne (wersja zapoznawcza)** po lewej stronie.
 1. Żadna Diagnostyka nie jest domyślnie skonfigurowana. Aby rozpocząć, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 

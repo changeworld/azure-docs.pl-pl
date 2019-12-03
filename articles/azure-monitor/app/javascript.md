@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 6209d899131a91754c200da831b3739833ade22c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 6bb61f419f4c6d277a9b1c666db92595642cb0e6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132229"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706598"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 
@@ -94,7 +94,7 @@ appInsights.trackTrace({message: 'This message will use a telemetry initializer'
 appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this is executed
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 Większość pól konfiguracji ma takie nazwy, że można je domyślnie określić jako FAŁSZ. Wszystkie pola są opcjonalne z wyjątkiem `instrumentationKey`.
 
 | Nazwa | Domyślne | Opis |
@@ -251,7 +251,7 @@ Podczas pobierania skryptu z usługi CDN wszystkie śledzenie strony jest umiesz
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-Najnowsza ✔ | Najnowsza ✔ | 9 + ✔ | Najnowsza ✔ | Najnowsza ✔ |
+Najnowsza ✔ Chrome |  Najnowsza ✔ Firefox | Przeglądarka IE 9 + & Edge ✔ | Najnowsza ✔ | Przeglądarka Safari Najnowsza ✔ |
 
 ## <a name="open-source-sdk"></a>Zestaw SDK open source
 

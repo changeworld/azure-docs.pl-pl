@@ -11,12 +11,12 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 268c1e66010720d1da052183165ce1cea50a1095
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 40157228e3bb2ab7625d703a25dd1e820ca1bc07
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092010"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703600"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Przekształcanie danych w Azure Data Factory
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "74092010"
 > * [Środowiska Python](transform-data-databricks-python.md)
 > * [Niestandardowe środowisko .NET](transform-data-using-dotnet-custom-activity.md)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym artykule opisano działania przekształcania danych w Azure Data Factory, które umożliwiają przekształcanie i przetwarzanie danych pierwotnych w przewidywania i szczegółowe informacje na dużą skalę. Działanie transformacji jest wykonywane w środowisku obliczeniowym, takim jak Azure Databricks lub Azure HDInsight. Zawiera łącza do artykułów ze szczegółowymi informacjami na temat poszczególnych działań transformacji.
 
 Data Factory obsługuje następujące działania przekształcania danych, które można dodać do [potoków](concepts-pipelines-activities.md) pojedynczo lub łączyć z innymi działaniami.
@@ -96,7 +96,7 @@ Działanie języka Python Azure Databricks w potoku Data Factory uruchamia plik 
 ### <a name="custom-activity"></a>Działanie niestandardowe
 Jeśli zachodzi potrzeba przekształcenia danych w sposób, który nie jest obsługiwany przez Data Factory, można utworzyć niestandardowe działanie z własną logiką przetwarzania danych i użyć działania w potoku. Można skonfigurować niestandardowe działanie platformy .NET do uruchamiania przy użyciu usługi Azure Batch lub klastra usługi Azure HDInsight. Aby uzyskać szczegółowe informacje, zobacz artykuł [Używanie działań niestandardowych](transform-data-using-dotnet-custom-activity.md) . 
 
-Możesz utworzyć niestandardowe działanie, aby uruchamiać skrypty w klastrze usługi HDInsight z zainstalowanym językiem R. Zobacz [Uruchamianie skryptów języka R przy użyciu usługi Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). 
+Możesz utworzyć niestandardowe działanie, aby uruchamiać skrypty w klastrze usługi HDInsight z zainstalowanym językiem R. Zobacz [Uruchamianie skryptów języka R przy użyciu usługi Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). 
 
 ### <a name="compute-environments"></a>Środowiska obliczeniowe
 Należy utworzyć połączoną usługę dla środowiska obliczeniowego, a następnie użyć połączonej usługi podczas definiowania działania transformacji. Istnieją dwa typy środowisk obliczeniowych obsługiwanych przez Data Factory. 

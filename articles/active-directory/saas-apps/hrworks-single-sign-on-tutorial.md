@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą HRworks logowanie jednokrotne | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i HRworks logowania jednokrotnego.
+title: 'Samouczek: integracja Azure Active Directory z logowaniem jednokrotnym w usłudze HRworks | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i logowanie jednokrotne w usłudze HRworks.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 790df60f973e6f86bd4424173909159fdd81ee0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a36266c14531f935779266829402392dc4a03411
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100859"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706010"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą HRworks logowania jednokrotnego
+# <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Samouczek: integracja Azure Active Directory z logowaniem jednokrotnym w usłudze HRworks
 
-W tym samouczku dowiesz się, jak zintegrować HRworks logowanie jednokrotne w usłudze Azure Active Directory (Azure AD).
-Integrowanie HRworks logowanie jednokrotne z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować Logowanie jednokrotne w usłudze HRworks przy użyciu usługi Azure Active Directory (Azure AD).
+Integracja logowania jednokrotnego HRworks za pomocą usługi Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do HRworks logowania jednokrotnego.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do HRworks logowania jednokrotnego (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do logowania jednokrotnego HRworks.
+* Możesz umożliwić użytkownikom automatyczne logowanie się, aby HRworks Logowanie jednokrotne (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą HRworks logowanie jednokrotne, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z logowaniem jednokrotnym w usłudze HRworks, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* HRworks logowanie jednokrotne logowanie jednokrotne włączone subskrypcji
+* Subskrypcja z włączonym logowaniem jednokrotnym w HRworks
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* HRworks logowanie jednokrotne obsługuje **SP** jednokrotne logowanie inicjowane przez
+* Logowanie jednokrotne w usłudze **HRworks obsługuje** zainicjowanie rejestracji Jednokrotnej dla
 
-## <a name="adding-hrworks-single-sign-on-from-the-gallery"></a>Dodawanie HRworks logowanie jednokrotne za pomocą galerii
+## <a name="adding-hrworks-single-sign-on-from-the-gallery"></a>Dodawanie logowania jednokrotnego HRworks z galerii
 
-Aby skonfigurować integrację z HRworks logowanie jednokrotne w usłudze Azure AD, musisz dodać HRworks logowanie jednokrotne z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację logowania jednokrotnego HRworks w usłudze Azure AD, musisz dodać Logowanie jednokrotne HRworks z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać HRworks logowanie jednokrotne z galerii, wykonaj następujące czynności:**
+**Aby dodać Logowanie jednokrotne HRworks z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Aby skonfigurować integrację z HRworks logowanie jednokrotne w usłudze Azure 
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **HRworks logowania jednokrotnego**, wybierz opcję **HRworks logowania jednokrotnego** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **HRworks logowanie**jednokrotne, wybierz pozycję **HRworks logowanie** jednokrotne z panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-     ![HRworks logowanie jednokrotne na liście wyników](common/search-new-app.png)
+     ![HRworks Logowanie jednokrotne na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą HRworks logowanie jednokrotne oparte na użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w HRworks logowania jednokrotnego musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD przy użyciu logowania jednokrotnego HRworks na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w usłudze HRworks Logowanie jednokrotne.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą HRworks logowanie jednokrotne, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu logowania jednokrotnego HRworks, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie HRworks pojedynczego logowania jednokrotnego logowania jednokrotnego](#configure-hrworks-single-sign-on-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Utwórz HRworks logowanie jednokrotne użytkownika testowego](#create-hrworks-single-sign-on-test-user)**  — aby odpowiednikiem Britta Simon w HRworks logowanie jednokrotne połączonej z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj](#configure-hrworks-single-sign-on-single-sign-on)** Logowanie jednokrotne w usłudze HRworks, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego logowania](#create-hrworks-single-sign-on-test-user)** jednokrotnego w usłudze HRworks, aby dysponować odpowiednikiem Britta Simon w HRworks logowania jednokrotnego, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługi Azure AD logowania jednokrotnego z użyciem HRworks logowania jednokrotnego, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD przy użyciu logowania jednokrotnego w usłudze HRworks, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **HRworks logowania jednokrotnego** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **logowania** jednokrotnego HRworks wybierz pozycję **Logowanie**jednokrotne.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,18 +103,18 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego z użyciem HRworks l
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![HRworks pojedynczego logowania jednokrotnego domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-signonurl.png)
+    ![HRworks Logowanie jednokrotne do domeny i adresów URL logowania jednokrotnego](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej HRworks pojedynczego logowania klienta](mailto:support@hrworks.de) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem obsługi klienta logowania](https://www.hrworks.de/dienstleistungen/support/) jednokrotnego HRworks, aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **Ustaw się HRworks logowania jednokrotnego** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie logowania** jednokrotnego HRworks skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -122,25 +122,25 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego z użyciem HRworks l
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-hrworks-single-sign-on-single-sign-on"></a>Konfigurowanie HRworks pojedynczego logowania jednokrotnego logowania jednokrotnego
+### <a name="configure-hrworks-single-sign-on-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze HRworks
 
-1. W oknie przeglądarki internetowej innej należy Zaloguj się jako Administrator do HRworks logowania jednokrotnego.
+1. W innym oknie przeglądarki sieci Web Zaloguj się, aby HRworks Logowanie jednokrotne jako administrator.
 
-2. Kliknij pozycję **administratora** > **podstawy** > **zabezpieczeń** > **logowanie jednokrotne** z po lewej stronie menu paska, a następnie wykonaj następujące czynności:
+2. Kliknij pozycję **Administrator** > **podstawowe informacje** > **zabezpieczenia** > **rejestracji jednokrotnej** z lewej strony paska menu i wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
-    a. Sprawdź **Użyj logowania jednokrotnego** pole.
+    a. Zaznacz pole wyboru **Użyj logowania jednokrotnego** .
 
-    b. Wybierz **metadane XML** jako **metody wejściowej metadane**.
+    b. Wybierz pozycję **metadane XML** jako **metodę wejścia**metadanych.
 
-    c. Wybierz **identyfikatora NameID poszczególnych** jako **wartość NameID**.
+    d. Wybierz **indywidualny identyfikator NameID** jako **wartość dla NameID**.
 
-    d. W programie Notatnik, otwórz plik XML metadanych, który został pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **metadanych** pola tekstowego.
+    d. W Notatniku otwórz plik XML metadanych pobrany z Azure Portal, skopiuj jego zawartość, a następnie wklej go do pola tekstowego **metadanych** .
 
-    e. Kliknij pozycję **Zapisz**.
+    e. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -158,25 +158,25 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    a. W **nazwa** wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz nazwę użytkownika, takich jak BrittaSimon@contoso.com.
+    b. W polu **Nazwa użytkownika** wpisz nazwę użytkownika, na przykład BrittaSimon@contoso.com.
 
-    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do HRworks logowanie jednokrotne za pomocą platformy Azure logowania jednokrotnego.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do logowania jednokrotnego w usłudze HRworks.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **HRworks logowania jednokrotnego**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **HRworks Logowanie jednokrotne**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **HRworks logowania jednokrotnego**.
+2. Na liście Aplikacje wybierz pozycję **HRworks Logowanie jednokrotne**.
 
-    ![Link HRworks logowanie jednokrotne na liście aplikacji](common/all-applications.png)
+    ![Link logowania jednokrotnego do HRworks na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -192,37 +192,37 @@ W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do HRworks l
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-hrworks-single-sign-on-test-user"></a>Utwórz HRworks logowanie jednokrotne użytkownika testowego
+### <a name="create-hrworks-single-sign-on-test-user"></a>Utwórz użytkownika testowego logowania jednokrotnego HRworks
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się w celu HRworks logowanie jednokrotne, ich musi być obsługiwana w HRworks logowania jednokrotnego. W HRworks logowanie jednokrotne, inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby włączyć użytkowników usługi Azure AD, zaloguj się, aby korzystać z logowania jednokrotnego w usłudze HRworks, musisz zapewnić obsługę logowania jednokrotnego HRworks. W programie HRworks Logowanie jednokrotne jest zadaniem ręcznym.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do HRworks logowanie jednokrotne z uprawnieniami administratora.
+1. Zaloguj się, aby HRworks Logowanie jednokrotne jako administrator.
 
-2. Kliknij pozycję **administratora** > **osób** > **osób** > **nową osobę** z pasek menu po lewej stronie.
+2. Kliknij pozycję **Administrator** > **osoby** > **osób** > **nową osobą** z lewej strony paska menu.
 
      ![Konfigurowanie logowania jednokrotnego](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
-3. W oknie podręcznym kliknij **dalej**.
+3. W oknie podręcznym kliknij przycisk **dalej**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
-4. Na **Utwórz nowy osoba mająca kraj postanowienia prawne** podręcznym wprowadź odpowiednie szczegóły, takie jak **imię**, **nazwisko** i kliknij przycisk **Utwórz**.
+4. Na wyskakującym okienku **Utwórz nową osobę z krajem dla warunków prawnych** Wypełnij odpowiednie szczegóły, takie jak **imię**i nazwisko **, nazwisko, a następnie** kliknij przycisk **Utwórz**.
     
     ![Konfigurowanie logowania jednokrotnego](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka HRworks logowanie jednokrotne w panelu dostępu, użytkownik powinien automatycznie zalogować się do HRworks logowanie jednokrotne dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka logowania jednokrotnego HRworks w panelu dostępu należy automatycznie zalogować się do logowania jednokrotnego HRworks, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

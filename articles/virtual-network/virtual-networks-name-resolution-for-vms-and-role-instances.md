@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176039"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707570"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw zasobów w sieciach wirtualnych platformy Azure
 
@@ -94,7 +94,7 @@ Dostępnych jest wiele różnych pakietów buforowania DNS (takich jak dnsmasq).
   * Zainstaluj pakiet dnsmasq z `sudo zypper install dnsmasq`.
   * Włącz usługę dnsmasq przy użyciu `systemctl enable dnsmasq.service`. 
   * Uruchom usługę dnsmasq z `systemctl start dnsmasq.service`. 
-  * Edytuj **/etc/sysconfig/Network/config**i Zmień *NETCONFIG_DNS_FORWARDER = ""* na *dnsmasq*.
+  * Edytuj **/etc/sysconfig/Network/config**i zmień wartość *NETCONFIG_DNS_FORWARDER = ""* na *dnsmasq*.
   * Zaktualizuj plik resolv. conf przy użyciu `netconfig update`, aby ustawić pamięć podręczną jako lokalny program rozpoznawania nazw DNS.
 * **CentOS (korzysta z gniazd sieciowych)** :
   * Zainstaluj pakiet dnsmasq z `sudo yum install dnsmasq`.
@@ -149,7 +149,7 @@ Przesyłanie dalej DNS umożliwia również rozpoznawanie nazw DNS między sieci
 > Wystąpienie roli może przeprowadzać rozpoznawanie nazw maszyn wirtualnych w ramach tej samej sieci wirtualnej. Robi to za pomocą nazwy FQDN, która składa się z nazw hosta maszyny wirtualnej i sufiksu DNS **Internal.cloudapp.NET** . Jednak w takim przypadku rozpoznawanie nazw powiedzie się tylko wtedy, gdy wystąpienie roli ma zdefiniowaną nazwę maszyny wirtualnej w [schemacie roli (plik cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx).
 > `<Role name="<role-name>" vmName="<vm-name>">`
 >
-> Wystąpienia roli, które wymagają rozpoznawania nazw maszyn wirtualnych w innej sieci wirtualnej (nazwa FQDN przy użyciu sufiksu **Internal.cloudapp.NET** ), należy wykonać przy użyciu metody opisanej w tej sekcji (przekazujące niestandardowe serwery DNS między dwoma wirtualnymi sieci).
+> Wystąpienia roli, które wymagają rozpoznawania nazw maszyn wirtualnych w innej sieci wirtualnej (nazwa FQDN przy użyciu sufiksu **Internal.cloudapp.NET** ), należy wykonać przy użyciu metody opisanej w tej sekcji (przekazujące niestandardowe serwery DNS między dwiema sieciami wirtualnymi).
 >
 
 ![Diagram systemu DNS między sieciami wirtualnymi](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
@@ -206,7 +206,7 @@ W przypadku korzystania z modelu wdrażania Azure Resource Manager można okreś
 W przypadku korzystania z klasycznego modelu wdrażania można określić serwery DNS dla sieci wirtualnej w Azure Portal lub w [pliku konfiguracji sieci](https://msdn.microsoft.com/library/azure/jj157100). W przypadku usług Cloud Services serwery DNS można określić za pomocą [pliku konfiguracji usługi](https://msdn.microsoft.com/library/azure/ee758710) lub programu PowerShell z poleceniem [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> W przypadku zmiany ustawień DNS dla sieci wirtualnej lub maszyny wirtualnej, która została już wdrożona, należy ponownie uruchomić każdą zainstalowaną MASZYNę wirtualną, aby zmiany zaczęły obowiązywać.
+> W przypadku zmiany ustawień DNS dla sieci wirtualnej lub maszyny wirtualnej, która została już wdrożona, aby nowe ustawienia DNS zaczęły obowiązywać, należy przeprowadzić odnowienie dzierżawy DHCP na wszystkich maszynach wirtualnych, których dotyczy ta sieć wirtualna. W przypadku maszyn wirtualnych z systemem operacyjnym Windows można to zrobić, wpisując `ipconfig /renew` bezpośrednio na maszynie wirtualnej. Kroki różnią się w zależności od systemu operacyjnego. Zapoznaj się z odpowiednią dokumentacją dla danego typu systemu operacyjnego. 
 >
 >
 

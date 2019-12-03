@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546272"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705276"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurowanie ograniczonego delegowania protokołu Kerberos (KCD) w Azure Active Directory Domain Services
 
@@ -56,7 +56,7 @@ KCD oparte na zasobach są konfigurowane przy użyciu programu PowerShell. Używ
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Konfigurowanie KCD opartego na zasobach dla konta komputera
 
-W tym scenariuszu Załóżmy, że masz aplikację sieci Web, która jest uruchamiana na komputerze o nazwie *contoso-WEBAPP.contoso.com*. Aplikacja sieci Web musi uzyskać dostęp do internetowego interfejsu API, który jest uruchamiany na komputerze o nazwie *contoso-API.contoso.com* w kontekście użytkowników domeny. Wykonaj następujące kroki, aby skonfigurować ten scenariusz:
+W tym scenariuszu Załóżmy, że masz aplikację sieci Web, która jest uruchamiana na komputerze o nazwie *contoso-WEBAPP.aadds.contoso.com*. Aplikacja sieci Web musi uzyskać dostęp do internetowego interfejsu API, który jest uruchamiany na komputerze o nazwie *contoso-API.aadds.contoso.com* w kontekście użytkowników domeny. Wykonaj następujące kroki, aby skonfigurować ten scenariusz:
 
 1. [Utwórz niestandardową jednostkę organizacyjną](create-ou.md). Można delegować uprawnienia do zarządzania tą niestandardową jednostką organizacyjną użytkownikom w domenie zarządzanej AD DS platformy Azure.
 1. [Przyłączanie do domeny maszyn wirtualnych][create-join-windows-vm], zarówno tych, na których działa aplikacja sieci Web, jak i tych, na których jest uruchomiony internetowy interfejs API, do domeny zarządzanej platformy Azure AD DS. Utwórz te konta komputerów w niestandardowej jednostce organizacyjnej w poprzednim kroku.
@@ -67,8 +67,8 @@ W tym scenariuszu Załóżmy, że masz aplikację sieci Web, która jest urucham
 1. Na koniec Skonfiguruj KCD oparte na zasobach przy użyciu polecenia cmdlet [Set-ADComputer][Set-ADComputer] programu PowerShell. Z poziomu maszyny wirtualnej zarządzania przyłączonym do domeny i zalogowanego jako konto użytkownika, które jest członkiem grupy *administratorzy kontrolera domeny usługi Azure AD* , uruchom następujące polecenia cmdlet. Podaj własne nazwy komputerów w razie konieczności:
     
     ```powershell
-    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
-    Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aadds.contoso.com
+    Set-ADComputer contoso-api.aadds.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>Konfigurowanie KCD opartego na zasobach dla konta użytkownika

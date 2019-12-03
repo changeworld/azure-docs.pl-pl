@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie danymi referencyjnymi w środowisku GA przy C# użyciu-Azure Time Series Insights | Microsoft Docs
+title: Zarządzanie danymi referencyjnymi w środowiskach GA C# przy użyciu-Azure Time Series Insights | Microsoft Docs
 description: Dowiedz się, jak zarządzać danymi referencyjnymi dla środowiska GA, tworząc aplikację niestandardową C#.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: a32bf00d21311a1a8041a901f70b9b400a49ab76
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ebc616d07c24a02b71010e315f288543dfd92b74
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012564"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705961"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi referencyjnymi GA dla środowiska Azure Time Series Insights za pomocąC#
 

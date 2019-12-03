@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3af01ef76421e95f74a65fe597cafff5fa9ef39e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b3e2db9b9769dee7599a2446b272e04cc0bedf7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682610"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703387"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Przekształcanie danych w Azure Data Factory
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "73682610"
 > * [Język U-SQL usługi Data Lake Analytics](data-factory-usql-activity.md)
 > * [Niestandardowe środowisko .NET](data-factory-use-custom-activities.md)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zapoznaj się z tematem [działania przekształcania danych w programie Data Factory](../transform-data.md).
 
@@ -73,7 +73,7 @@ Data Lake Analytics działanie U-SQL uruchamia skrypt U-SQL w klastrze Azure Dat
 ## <a name="net-custom-activity"></a>Niestandardowe działanie platformy .NET
 Jeśli zachodzi potrzeba przekształcenia danych w sposób, który nie jest obsługiwany przez Data Factory, można utworzyć niestandardowe działanie z własną logiką przetwarzania danych i użyć działania w potoku. Można skonfigurować niestandardowe działanie platformy .NET do uruchamiania przy użyciu usługi Azure Batch lub klastra usługi Azure HDInsight. Aby uzyskać szczegółowe informacje, zobacz artykuł [Używanie działań niestandardowych](data-factory-use-custom-activities.md) . 
 
-Możesz utworzyć niestandardowe działanie, aby uruchamiać skrypty w klastrze usługi HDInsight z zainstalowanym językiem R. Zobacz [Uruchamianie skryptów języka R przy użyciu usługi Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). 
+Możesz utworzyć niestandardowe działanie, aby uruchamiać skrypty w klastrze usługi HDInsight z zainstalowanym językiem R. Zobacz [Uruchamianie skryptów języka R przy użyciu usługi Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). 
 
 ## <a name="compute-environments"></a>Środowiska obliczeniowe
 Należy utworzyć połączoną usługę dla środowiska obliczeniowego, a następnie użyć połączonej usługi podczas definiowania działania transformacji. Istnieją dwa typy środowisk obliczeniowych obsługiwanych przez Data Factory. 

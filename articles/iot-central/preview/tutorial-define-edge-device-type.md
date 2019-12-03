@@ -1,5 +1,5 @@
 ---
-title: Definiowanie nowego typu urządzenia Azure IoT Edge na platformie Azure IoT Central | Microsoft Docs
+title: Samouczek — Definiowanie nowego typu urządzenia Azure IoT Edge na platformie Azure IoT Central
 description: W tym samouczku pokazano, jak utworzyć za pomocą konstruktora nowe urządzenie Azure IoT Edge w aplikacji IoT Central platformy Azure. Zdefiniuj dane telemetryczne, stan, właściwości i polecenia dla danego typu.
 author: rangv
 ms.author: rangv
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0a293d74c9e37a6771c5bb246b74bda38db3b7c3
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 97bfd2b1e8b571f44c0b782459567f5677dd36a7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406477"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702785"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Samouczek: Definiowanie nowego typu urządzenia Azure IoT Edge w aplikacji IoT Central platformy Azure (funkcje w wersji zapoznawczej)
 
@@ -103,7 +103,7 @@ Na stronie **Wybieranie typu szablonu** wybierz pozycję **Azure IoT Edge**, a n
 
 W IoT Edge można wdrożyć logikę biznesową w formie modułów i zarządzać nią. Moduły IoT Edge są najmniejszą jednostką obliczeniową zarządzaną przez IoT Edge i mogą zawierać usługi platformy Azure (takie jak Azure Stream Analytics) lub własny kod specyficzny dla rozwiązania. Aby zrozumieć, jak moduły są opracowywane, wdrażane i utrzymywane, zobacz [IoT Edge modules](../../iot-edge/iot-edge-modules.md).
 
-Na wysokim poziomie manifest wdrażania znajduje się lista bliźniaczych reprezentacjach modułów, które są skonfigurowane przy użyciu ich żądane właściwości. Manifest wdrożenia informuje urządzenie IoT Edge (lub grupę urządzeń), które moduły zainstalować, oraz sposób ich konfiguracji. Manifesty wdrożenia obejmują odpowiednie właściwości dla każdego sznurka modułu. IoT Edge urządzeń raportuje z powrotem raportowane właściwości dla każdego modułu.
+Na wysokim poziomie manifest wdrożenia jest listą bliźniaczych reprezentacji modułów, które są skonfigurowane przy użyciu odpowiednich właściwości. Manifest wdrożenia informuje urządzenie IoT Edge (lub grupę urządzeń), które moduły zainstalować, oraz sposób ich konfiguracji. Manifesty wdrożenia obejmują odpowiednie właściwości dla każdego sznurka modułu. IoT Edge urządzeń raportuje z powrotem raportowane właściwości dla każdego modułu.
 
 Użyj Visual Studio Code, aby utworzyć manifest wdrożenia. Aby dowiedzieć się więcej, zobacz [Azure IoT Edge Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
 
@@ -293,7 +293,7 @@ Szablon urządzenia może zawierać właściwości chmury. Właściwości chmury
 
     | Nazwa wyświetlana      | Typ semantyczny | Schemat |
     | ----------------- | ------------- | ------ |
-    | Data ostatniego serwisowania | Brak          | Date   |
+    | Data ostatniego serwisowania | Brak          | Data   |
     | Nazwa klienta     | Brak          | Ciąg |
 
 2. Wybierz pozycję **Zapisz**.
@@ -303,7 +303,7 @@ Szablon urządzenia może zawierać właściwości chmury. Właściwości chmury
 
 ### <a name="add-customizations"></a>Dodawanie dostosowań
 
-Użyj opcji dostosowania, aby zmodyfikować interfejs lub dodać funkcje specyficzne dla IoT Central do możliwości, która nie wymaga użycia modelu możliwości urządzenia. Można dostosować pola, gdy model możliwości jest w stanie roboczym lub opublikowanym. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Można na przykład:
+Użyj opcji dostosowania, aby zmodyfikować interfejs lub dodać funkcje specyficzne dla IoT Central do możliwości, która nie wymaga użycia modelu możliwości urządzenia. Można dostosować pola, gdy model możliwości jest w stanie roboczym lub opublikowanym. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Możesz na przykład:
 
 - Dostosuj nazwę wyświetlaną i jednostki możliwości.
 - Dodaj domyślny kolor, który ma być używany, gdy wartość pojawia się na wykresie.

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10445aba9c52c5367a8ea03729462d14e2d51085
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467179"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707179"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Zapewnianie uwierzytelniania Key Vault przy użyciu zasad kontroli dostępu
 
@@ -220,6 +220,7 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 
 Na koniec nadaj grupie usługi AD uprawnienia do Twojego magazynu kluczy przy użyciu interfejsu wiersza polecenia platformy Azure AZ Key Directory [Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) lub Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) polecenia cmdlet. Przykłady można znaleźć w sekcji [nadawanie aplikacji, grupie usługi Azure AD lub dostęp użytkownika do magazynu kluczy](#give-the-principal-access-to-your-key-vault) .
 
+Aplikacja wymaga również co najmniej jednej roli zarządzania tożsamościami i dostępem (IAM) przypisanej do magazynu kluczy. W przeciwnym razie nie będzie można zalogować się i nie powiedzie się z powodu niewystarczających praw dostępu do subskrypcji.
 
 ## <a name="next-steps"></a>Następne kroki
 

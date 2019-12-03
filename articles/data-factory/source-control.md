@@ -5,19 +5,19 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: naF
 ms.topic: conceptual
 ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 904165c4a221e1db30f9aa1ce1f2ce7b21cf04ed
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484462"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703832"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Kontrola źródła w Azure Data Factory
 
@@ -140,12 +140,12 @@ W okienku Konfiguracja są wyświetlane następujące ustawienia repozytorium Gi
 
 | **Ustawienie** | **Opis**  | **Wartość**  |
 |:--- |:--- |:--- |
-| **Typ repozytorium** | Typ repozytorium kodu Azure Repos. | GitHub |
+| **Typ repozytorium** | Typ repozytorium kodu Azure Repos. | Witryna GitHub |
 | **Korzystanie z usługi GitHub Enterprise** | Zaznacz pole wyboru usługi GitHub Enterprise | niezaznaczony (domyślnie) |
 | **Adres URL przedsiębiorstwa usługi GitHub** | Główny adres URL dla przedsiębiorstwa usługi GitHub. Na przykład: https://github.mydomain.com. Wymagane tylko wtedy, gdy wybrano korzystanie z usługi **GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Konto usługi GitHub** | Nazwa konta usługi GitHub. Tę nazwę można znaleźć z protokołu https:\//GitHub.com/{account name}/{Repository Name}. Przechodzenie na stronę z prośbą o wprowadzenie poświadczeń OAuth usługi GitHub na Twoje konto w usłudze GitHub. | `<your GitHub account name>` |
 | **Nazwa repozytorium**  | Nazwa repozytorium kodu usługi GitHub. Konta usługi GitHub zawierają repozytoria Git do zarządzania kodem źródłowym. Można utworzyć nowe repozytorium lub użyć istniejącego repozytorium, które już znajduje się na Twoim koncie. | `<your repository name>` |
-| **Rozgałęzienie współpracy** | Gałąź współpracy GitHub, która jest używana do publikowania. Domyślnie jego główna. Zmień to ustawienie, jeśli chcesz opublikować zasoby z innej gałęzi. | `<your collaboration branch>` |
+| **Rozgałęzienie współpracy** | Gałąź współpracy GitHub, która jest używana do publikowania. Domyślnie jest to główna. Zmień to ustawienie, jeśli chcesz opublikować zasoby z innej gałęzi. | `<your collaboration branch>` |
 | **Folder główny** | Twój folder główny w gałęzi współpracy usługi GitHub. |`<your root folder name>` |
 | **Importuj istniejące zasoby Data Factory do repozytorium** | Określa, czy zaimportować istniejące zasoby usługi Fabryka danych z kanwy tworzenia środowiska użytkownika do repozytorium GitHub. Zaznacz pole, aby zaimportować zasoby usługi Fabryka danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja eksportuje poszczególne zasoby pojedynczo (to oznacza, że połączone usługi i zestawy danych są eksportowane do oddzielnych notacji JSON). Gdy to pole nie zostanie zaznaczone, istniejące zasoby nie zostaną zaimportowane. | Wybrane (domyślnie) |
 | **Gałąź, do której ma zostać zaimportowany zasób** | Określa, w którym rozgałęzieniu są importowane zasoby usługi Fabryka danych (potoki, zestawy danych, połączone usługi itp.). Zasoby można importować do jednej z następujących gałęzi: a. Współpraca b. Utwórz nowy c. Użyj istniejącej |  |
@@ -236,7 +236,7 @@ Zaleca się, aby nie zezwalać na bezpośrednie ewidencjonowanie gałęzi wspó�
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Korzystanie z haseł z Azure Key Vault
 
-zalecane jest używanie Azure Key Vault do przechowywania wszelkich parametrów połączenia lub haseł dla Data Factory połączonych usług. Ze względów bezpieczeństwa nie przechowujemy takich informacji tajnych w systemie Git, dlatego wszelkie zmiany w połączonych usługach są publikowane natychmiast w usłudze Azure Data Factory.
+Zalecane jest używanie Azure Key Vault do przechowywania wszelkich parametrów połączenia lub haseł dla Data Factory połączonych usług. Ze względów bezpieczeństwa nie przechowujemy takich informacji tajnych w systemie Git, dlatego wszelkie zmiany w połączonych usługach są publikowane natychmiast w usłudze Azure Data Factory.
 
 Korzystanie z Key Vault powoduje także uproszczenie ciągłej integracji i wdrażania, ponieważ nie trzeba podawać tych kluczy tajnych podczas wdrażania szablonu Menedżer zasobów.
 
@@ -251,7 +251,7 @@ Jeśli gałąź publikowania nie jest zsynchronizowana z gałęzią główną i 
 1. Usuń wszystkie zasoby z gałęzi współpracy
 1. Utwórz żądanie ściągnięcia, aby scalić zmiany w gałęzi współpracy 
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 Wybierz **opinię** , aby skomentować informacje o funkcjach lub powiadomić firmę Microsoft o problemach z narzędziem:
 
 ![Opinia](media/author-visually/provide-feedback.png)

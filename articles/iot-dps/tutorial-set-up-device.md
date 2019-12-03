@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie urządzenia dla IoT Hub Device Provisioning Service platformy Azure'
-description: 'Samouczek: Konfigurowanie urządzenia do inicjowania obsługi administracyjnej za pośrednictwem IoT Hub Device Provisioning Service w procesie produkcyjnym urządzenia'
+title: Samouczek — Konfigurowanie urządzenia dla IoT Hub Device Provisioning Service platformy Azure
+description: W tym samouczku pokazano, jak skonfigurować urządzenie do inicjowania obsługi administracyjnej za pomocą IoT Hub Device Provisioning Service podczas procesu produkcyjnego urządzenia
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bdda46a89fc2bcf8b16b2ce771c6540c9ceaa3e0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112761"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701976"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Samouczek: Konfigurowanie urządzenia do aprowizacji przy użyciu usługi Azure IoT Hub Device Provisioning Service
 
@@ -212,4 +212,3 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak aprowizować urząd
 
 > [!div class="nextstepaction"]
 > [Aprowizacja urządzenia w centrum IoT](tutorial-provision-device-to-hub.md)
-

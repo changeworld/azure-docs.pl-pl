@@ -4,104 +4,109 @@ description: Opisuje źródła danych i łączniki obsługiwane w przypadku tabe
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c92baf5c97597a0161f402cc458e90bb3e637d6c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7616bcdaf2a2ae6f80b0c1e964f311ef5409a64f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170658"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707124"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w Azure Analysis Services
 
-Źródła danych i łączniki wyświetlane w Kreatorze pobieranie danych lub importowanie w programie Visual Studio są wyświetlane dla obu Azure Analysis Services i SQL Server Analysis Services. Nie wszystkie wyświetlane źródła danych i łączniki są jednak obsługiwane w Azure Analysis Services. Typy źródeł danych, z którymi można nawiązać połączenie, są zależne od wielu czynników, takich jak poziom zgodności modelu, dostępne łączniki danych, typ uwierzytelniania, dostawcy i obsługa lokalnej bramy danych. 
+Źródła danych i łączniki wyświetlane w Kreatorze pobieranie danych lub Importowanie tabel w programie Visual Studio z projektami Analysis Services są wyświetlane dla Azure Analysis Services i SQL Server Analysis Services. Nie wszystkie wyświetlane źródła danych i łączniki są jednak obsługiwane w Azure Analysis Services. Typy źródeł danych, z którymi można nawiązać połączenie, są zależne od wielu czynników, takich jak poziom zgodności modelu, dostępne łączniki danych, typ uwierzytelniania i obsługa lokalnej bramy danych. W poniższych tabelach opisano obsługiwane źródła danych dla Azure Analysis Services.
 
 ## <a name="azure-data-sources"></a>Źródła danych na platformie Azure
 
-|Źródło danych  |W pamięci  |Tryb DirectQuery  |
-|---------|---------|---------|
-|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Tak      |    Tak      |
-|Azure SQL Data Warehouse     |   Tak      |   Tak       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Tak       |    Nie      |
-|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Tak       |    Nie      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Tak        |  Nie        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Tak       |    Nie      |
-|Usługa Azure HDInsight w systemie plików HDFS<sup>[1](#tab1400a)</sup>     |     Tak     |   Nie       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Tak       |   Nie       |
+|Źródło danych  |W pamięci  |Tryb DirectQuery  |Uwagi |
+|---------|---------|---------|---------|
+|Azure SQL Database      |   Tak      |    Tak      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure SQL Data Warehouse      |   Tak      |   Tak       |<sup>[dwóch](#azprovider)</sup>|
+|Azure Blob Storage      |   Tak       |    Nie      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Tak       |    Nie      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Tak        |  Nie        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Tak       |    Nie      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   Tak       |    Nie      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Usługa Azure HDInsight w systemie plików HDFS    |     Tak     |   Nie       |<sup>[1](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   Tak       |   Nie       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
-tylko <a name="tab1400a">1</a> -tabelaryczny model 1400 i wyższe.   
-Obsługiwane jest <a name="azsqlmanaged">2</a> Azure SQL Database wystąpienia zarządzanego. Ponieważ wystąpienie zarządzane działa w sieci wirtualnej platformy Azure z prywatnym adresem IP, w tym wystąpieniu musi być włączony publiczny punkt końcowy. Jeśli ta funkcja nie jest włączona, wymagana jest lokalna Brama danych.    
-<a name="databricks">3</a> — Azure Databricks przy użyciu łącznika Spark nie jest obecnie obsługiwany.   
-Łącznik <a name="gen2">4</a> ADLS Gen2 nie jest obecnie obsługiwany, ale łącznik BLOB Storage może być używany ze źródłem danych ADLS Gen2.
-
-
-  **dostawcy**  
-Modele w pamięci i DirectQuery łączące się ze źródłami danych platformy Azure używają .NET Framework Dostawca danych do SQL Server.
+**Uwagi:**    
+tylko <a name="tab1400a">1</a> -tabelaryczny model 1400 i wyższe.  
+<a name="azprovider">2</a> — Jeśli określono jako źródło danych *dostawcy* w tabelarycznym 1200 i wyższych modelach, zarówno modele w pamięci, jak i zapytania bezpośredniego wymagają sterownika OLE DB firmy Microsoft dla SQL Server MSOLEDBSQL (zalecane), SQL Server Native Client 11,0 lub .NET Framework dostawca danych dla SQL Server.    
+<a name="azsqlmanaged">3</a> -Azure SQL Database wystąpienie zarządzane jest obsługiwane. Ponieważ wystąpienie zarządzane działa w sieci wirtualnej platformy Azure z prywatnym adresem IP, w tym wystąpieniu musi być włączony publiczny punkt końcowy. Jeśli ta funkcja nie jest włączona, wymagana jest [lokalna Brama danych](analysis-services-gateway.md) .    
+<a name="databricks">4</a> Azure Databricks używanie łącznika Spark nie jest obecnie obsługiwane.   
+Program <a name="gen2">5</a> ADLS Gen2 łącznik nie jest obecnie obsługiwany, jednak łącznik usługi Azure Blob Storage może być używany ze źródłem danych ADLS Gen2.   
 
 ## <a name="other-data-sources"></a>Inne źródła danych
 
-Połączenie z lokalnymi źródłami danych z serwera Azure Analysis Services wymaga bramy lokalnej. W przypadku korzystania z bramy wymagane są 64-bitowe dostawcy.
-
-### <a name="in-memory-and-directquery"></a>W pamięci i DirectQuery
-
-|Źródło danych | Dostawca w pamięci | Dostawca zapytania bezpośredniego |
-|  --- | --- | --- |
-| Oprogramowanie SQL Server |Sterownik OLE DB firmy Microsoft dla SQL Server MSOLEDBSQL (zalecane), SQL Server Native Client 11,0, .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
-| SQL Server Data Warehouse |Sterownik OLE DB firmy Microsoft dla SQL Server MSOLEDBSQL (zalecane), SQL Server Native Client 11,0, .NET Framework Dostawca danych dla SQL Server | .NET Framework Dostawca danych SQL Server |
-| Oracle | OLE DB Provider for Oracle, Oracle Dostawca danych dla platformy .NET |Oracle Dostawca danych dla platformy .NET |
-| Teradata |Dostawca OLE DB dla programu Teradata, Dostawca danych programu Teradata dla platformy .NET |Dostawca danych programu Teradata dla platformy .NET |
+|Źródło danych | W pamięci | Tryb DirectQuery |Uwagi   |
+|  --- | --- | --- | --- |
+|Baza danych programu Access     |  Tak | Nie |  |
+|Usługa Active Directory     |  Tak | Nie | <sup>[ust](#tab1400b)</sup>  |
+|Usługi analityczne     |  Tak | Nie |  |
+|System platformy analizy     |  Tak | Nie |  |
+|Plik CSV  |Tak | Nie |  |
+|Dynamics 365     |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Skoroszyt programu Excel     |  Tak | Nie |  |
+|Wymiana      |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Folder      |Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|IBM Informix  |Tak | Nie |  |
+|Dokument JSON      |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Wiersze z pliku binarnego      | Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Baza danych MySQL     | Tak | Nie |  |
+|Źródło danych OData      |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Zapytanie ODBC     | Tak | Nie |  |
+|OLE DB     |   Tak | Nie |  |
+|Oracle  | Tak  |Tak  | <sup>[9](#oracle)</sup> |
+|Baza danych PostgreSQL   | Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Obiekty usług Salesforce|  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Raporty usług Salesforce |Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|SAP HANA     |  Tak | Nie |  |
+|SAP Business Warehouse    |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Lista programu SharePoint      |   Tak | Nie | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|Oprogramowanie SQL Server |Tak   | Tak  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
+|Magazyn danych SQL Server |Tak   | Tak  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|Baza danych programu Sybase     |  Tak | Nie |  |
+|Teradata | Tak  | Tak  | <sup>[dziesięć](#teradata)</sup> |
+|Plik TXT  |Tak | Nie |  |
+|Tabela XML    |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
 | | | |
 
-### <a name="in-memory-only"></a>Tylko w pamięci
+**Uwagi:**    
+<a name="tab1400b">6</a> -tabelaryczne 1400 i wyższe modele.  
+<a name="sqlim">7</a> — Jeśli określono jako źródło danych *dostawcy* w tabelarycznym 1200 i wyższych modelach, określ Sterownik OLE DB firmy Microsoft dla SQL Server MSOLEDBSQL (zalecane), SQL Server Native Client 11,0 lub .NET Framework dostawca danych dla SQL Server.  
+<a name="instgw">8</a> — Jeśli określono MSOLEDBSQL jako dostawcę danych, może być konieczne pobranie i zainstalowanie [sterownika OLE DB firmy Microsoft w celu SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) na tym samym komputerze, na którym znajduje się lokalna Brama danych.  
+<a name="oracle">9</a> — w przypadku modeli tabelarycznych 1200 lub jako źródła danych *dostawcy* w tabelarycznych modelach modeli, określ dostawca danych Oracle dla platformy .NET.  
+<a name="teradata">10</a> — w przypadku modeli tabelarycznych 1200 lub jako źródła danych *dostawcy* w tabelarycznych modelach modeli, określ dostawca danych programu Teradata dla platformy .NET.   
+<a name="filesSP">11</a> — pliki w lokalnym programie SharePoint nie są obsługiwane.
 
-|Źródło danych  |  
-|---------|
-|Baza danych programu Access     |  
-|Active Directory<sup>[1](#tab1400b)</sup>     |  
-|Analysis Services     |  
-|System platformy analizy     |  
-|Plik CSV  |
-|Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
-|Skoroszyt programu Excel     |  
-|Exchange<sup>[1](#tab1400b)</sup>     |  
-|Folder<sup>[1](#tab1400b)</sup>     |
-|IBM Informix<sup>[1](#tab1400b)</sup> (beta) |
-|Dokument JSON<sup>[1](#tab1400b)</sup>     |  
-|Wiersze z pliku binarnego<sup>[1](#tab1400b)</sup>     | 
-|Baza danych MySQL     | 
-|Źródło danych OData<sup>[1](#tab1400b)</sup>     |  
-|Zapytanie ODBC     | 
-|OLE DB     |   
-|Baza danych PostgreSQL<sup>[1](#tab1400b)</sup>    | 
-|Obiekty usług Salesforce<sup>[1](#tab1400b)</sup> |  
-|Raporty usług Salesforce<sup>[1](#tab1400b)</sup> |
-|SAP HANA<sup>[1](#tab1400b)</sup>    |  
-|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|Lista programu SharePoint<sup>[1](#tab1400b)</sup>, <sup>[2](#filesSP)</sup>     |   
-|Baza danych programu Sybase     |  
-|Plik TXT  |
-|Tabela XML<sup>[1](#tab1400b)</sup>    |  
-||
- 
-tylko <a name="tab1400b">1</a> -tabelaryczny model 1400 i wyższe.   
-<a name="filesSP">2</a> — pliki w lokalnym programie SharePoint nie są obsługiwane.
+Połączenie z lokalnymi źródłami danych z serwera Azure Analysis Services wymaga [bramy lokalnej](analysis-services-gateway.md). W przypadku korzystania z bramy wymagane są 64-bitowe dostawcy. 
 
-## <a name="specifying-a-different-provider"></a>Określanie innego dostawcy
+## <a name="understanding-providers"></a>Informacje o dostawcach
 
-Modele danych w Azure Analysis Services mogą wymagać różnych dostawców danych podczas łączenia się z pewnymi źródłami danych. W niektórych przypadkach modele tabelaryczne łączące się ze źródłami danych przy użyciu natywnych dostawców, takich jak SQL Server Native Client (SQLNCLI11), mogą zwrócić błąd. W przypadku korzystania z natywnych dostawców innych niż MSOLEDBSQL może zostać wyświetlony komunikat o błędzie: **dostawca "sqlncli 11.1" nie jest zarejestrowany**. Lub, jeśli masz model zapytania bezpośredniego łączący się z lokalnymi źródłami danych i używasz dostawców natywnych, może pojawić się komunikat o błędzie: **błąd podczas tworzenia zestawu wierszy OLE DB. Nieprawidłowa składnia w sąsiedztwie "LIMIT"** .
+Podczas tworzenia tabelarycznych projektów 1400 i wyższych modeli w programie Visual Studio domyślnie nie jest określany dostawca danych podczas nawiązywania połączenia ze źródłem danych przy użyciu polecenia **Pobierz dane**. Tabelaryczne 1400 i wyższe modele używają [Power Query](/power-query/power-query-what-is-power-query.md) łączników do zarządzania połączeniami, kwerendami danych i mashupy między źródłem danych i Analysis Services. Są one czasami określane jako połączenia ze źródłem danych ze *strukturą* w ramach tych ustawień właściwości połączenia. Można jednak włączyć starsze źródła danych. Po włączeniu programu można użyć **Kreatora importu tabeli** do łączenia się z niektórymi źródłami danych tradycyjnie obsługiwanymi w tabelarycznych 1200 i niższych modelach jako *starszych*lub źródeł danych *dostawcy* . W przypadku określenia źródła danych dostawcy można określić określonego dostawcę danych i inne zaawansowane właściwości połączenia. Można na przykład połączyć się z lokalnym magazynem danych SQL Server, a nawet Azure SQL Database jako starszym źródłem danych. Następnie można wybrać sterownik OLE DB dla dostawcy danych programu SQL Server MSOLEDBSQL. W takim przypadku wybranie dostawcy danych OLE DB może zapewnić lepszą wydajność w przypadku łącznika Power Query. 
 
-W przypadku migrowania lokalnego modelu SQL Server Analysis Services tabelarycznego do Azure Analysis Services, może być konieczne zmianę dostawcy.
+W przypadku korzystania z Kreatora importu tabeli w programie Visual Studio połączenia z dowolnym źródłem danych wymagają dostawcy danych. Wybrano domyślnego dostawcę danych. W razie konieczności można zmienić dostawcę danych. Wybrany typ dostawcy może zależeć od wydajności, bez względu na to, czy model używa magazynu w pamięci lub zapytania bezpośredniego, a który Analysis Services platformę, do której zostanie wdrożony model.
 
-**Aby określić dostawcę**
+### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>Określ źródła danych dostawcy w tabelarycznych projektach modeli 1400 i wyższych
 
-1. W programie Visual Studio > **Eksploratorze modeli tabelarycznych** > **źródła danych**, kliknij prawym przyciskiem myszy połączenie ze źródłem danych, a następnie kliknij polecenie **Edytuj źródło danych**.
-2. W obszarze **Edytuj połączenie**kliknij pozycję **Zaawansowane** , aby otworzyć okno właściwości zaawansowana.
-3. W obszarze **Ustaw właściwości zaawansowane** > **dostawców**, a następnie wybierz odpowiedniego dostawcę.
+Aby włączyć źródła danych dostawcy, w programie Visual Studio kliknij pozycję **narzędzia** > **Opcje** > **Analysis Services tabelaryczne** > **Importowanie danych**, wybierz pozycję **Włącz starsze źródła danych**.
 
-## <a name="impersonation"></a>Personifikacja
+![Włącz starsze źródła danych](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
+
+Ze włączonymi starszymi źródłami danych w **Eksploratorze modeli tabelarycznych**kliknij prawym przyciskiem myszy pozycję **źródła danych** > **Importuj ze źródła danych (starsza wersja)** .
+
+![Starsze źródła danych w Eksploratorze modeli tabelarycznych](media/analysis-services-datasource/aas-import-legacy-datasources.png)
+
+Podobnie jak w przypadku tabelarycznych projektów modelu 1200, użyj **Kreatora importu tabeli** , aby nawiązać połączenie ze źródłem danych. Na stronie Połącz kliknij pozycję **Zaawansowane**. Określ dostawcę danych i inne ustawienia połączenia w **ustawieniu zaawansowane właściwości**.
+
+![Właściwości zaawansowane ze starszymi źródłami danych](media/analysis-services-datasource/aas-import-legacy-advanced.png)
+
+
+## <a name="impersonation"></a>Chodzi
 W niektórych przypadkach może być konieczne określenie innego konta personifikacji. Konto personifikacji można określić w programie Visual Studio lub SSMS.
 
 Dla lokalnych źródeł danych:

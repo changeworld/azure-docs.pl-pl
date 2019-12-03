@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: a6861a22f853bb0b48eb7c9832adb251bc3467ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682395"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703206"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania trzody chlewnej w Azure Data Factory
 > [!div class="op_single_selector" title1="Działania transformacji"]
@@ -82,7 +82,7 @@ Działanie świni w [usłudze](data-factory-compute-linked-services.md#azure-hdi
 
 ## <a name="syntax-details"></a>Szczegóły składni
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | name |Nazwa działania |Tak |
 | description |Tekst opisujący działanie używanego działania |Nie |
@@ -90,7 +90,7 @@ Działanie świni w [usłudze](data-factory-compute-linked-services.md#azure-hdi
 | danych wejściowych |Co najmniej jedno wejście używane przez działanie świni |Nie |
 | wydajności |Jedno lub więcej danych wyjściowych wytwarzanych przez działanie trzody chlewnej |Tak |
 | linkedServiceName |Odwołanie do klastra usługi HDInsight zarejestrowanego jako połączona usługa w Data Factory |Tak |
-| napisy |Określ skrypt dla trzody chlewnej |Nie |
+| Napisy |Określ skrypt dla trzody chlewnej |Nie |
 | scriptPath |Zapisz skrypt trzody chlewnej w usłudze Azure Blob Storage i podaj ścieżkę do pliku. Użyj właściwości "Script" lub "scriptPath". Nie można jednocześnie używać obu tych metod. W nazwie pliku rozróżniana jest wielkość liter. |Nie |
 | definiuje |Określ parametry jako pary klucz/wartość do odwołania w skrypcie świni |Nie |
 
@@ -224,4 +224,4 @@ Aby użyć sparametryzowanego skryptu wieprzowego, wykonaj następujące czynno�
 * [Działanie MapReduce](data-factory-map-reduce.md)
 * [Działanie przesyłania strumieniowego Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Wywoływanie programów platformy Spark](data-factory-spark.md)
-* [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

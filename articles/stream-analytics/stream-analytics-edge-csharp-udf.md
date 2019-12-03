@@ -1,6 +1,6 @@
 ---
-title: Pisanie C# funkcji zdefiniowanych przez użytkownika dla zadań Azure Stream Analytics w programie Visual Studio (wersja zapoznawcza)
-description: Dowiedz się, jak pisać funkcje zdefiniowane przez użytkownika w języku c# dla zadań Stream Analytics w programie Visual Studio.
+title: Samouczek — pisanie C# funkcji zdefiniowanych przez użytkownika dla zadań Azure Stream Analytics w programie Visual Studio (wersja zapoznawcza)
+description: W tym samouczku przedstawiono sposób pisania funkcji zdefiniowanych przez użytkownika w języku c# dla zadań Stream Analytics w programie Visual Studio.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d6cf420c8baceb243e8c4d70c8bcbc95ec626c3a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d600c891f35a0719012707bdc2cb45101e14e090
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990240"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707362"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Samouczek: pisanie funkcji C# zdefiniowanej przez użytkownika dla zadania Azure Stream Analytics (wersja zapoznawcza)
 

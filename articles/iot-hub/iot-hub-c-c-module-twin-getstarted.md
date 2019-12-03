@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: e33a7a1360a837df08725b2e592973b465dff38c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4443d1117d0dd08cbe2fe89b8ca8465c0c7083f8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954221"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706936"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Rozpoczynanie pracy z modułem IoT Hub tożsamość modułu i sznurki modułowe (C)
 
@@ -190,7 +190,9 @@ W tej sekcji utworzysz aplikację C na symulowanym urządzeniu, która aktualizu
 
     ![Szczegóły modułu w witrynie Azure Portal](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **Tworzenie aplikacji UpdateModuleTwinReportedProperties** Dodaj następujące instrukcje `using` w górnej części pliku **program.cs** :
+2. **Tworzenie aplikacji UpdateModuleTwinReportedProperties**
+   
+   Dodaj następujący plik do pliku języka C:
 
     ```C
     #include <stdio.h>

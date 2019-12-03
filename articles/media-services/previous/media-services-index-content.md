@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: b72d1483201c9c25a420d3ede0558f10229cf47c
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: dea31e350ddf4b9dbebfa6a9f802edd256adf2ce
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464082"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706416"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indeksowanie plików multimedialnych za pomocą Azure Media Indexer
 
@@ -151,7 +151,7 @@ Jeśli istnieje więcej niż jeden plik nośnika wejściowego, indeksator generu
 | --- | --- |
 | **InputFileName. ttml**<br/>**InputFileName. VTT** |Pliki napisów (DW) w formatach TTML i WebVTT.<br/><br/>Mogą one służyć do udostępniania plików audio i wideo osobom niepełnosprawnym.<br/><br/>Pliki napisów kodowanych zawierają tag o nazwie <b>rozpoznawalny</b> , który ocenia zadanie indeksowania w zależności od tego, jak rozpoznawalna jest mowa w źródłowym wideo.  Można użyć wartości <b>rozpoznawalność</b> do wygenerowania plików wyjściowych na ekranie w celu zapewnienia użyteczności. Niska ocena oznacza niską wyniki indeksowania z powodu jakości audio. |
 | **InputFileName. kW. XML<br/>InputFileName.info** |Pliki słów kluczowych i informacji. <br/><br/>Plik słów kluczowych to plik XML, który zawiera słowa kluczowe wyodrębnione z zawartości mowy i informacje o częstotliwości i przesunięciu. <br/><br/>Plik info to zwykły plik tekstowy, który zawiera szczegółowe informacje dotyczące każdego rozpoznanego terminu. Pierwszy wiersz jest specjalny i zawiera wynik rozpoznania. Każdy kolejny wiersz jest rozdzielaną tabulatorami listą następujących danych: czas rozpoczęcia, czas zakończenia, słowo/fraza, pewność. Czasy są wyrażone w sekundach, a poziom pewności jest podawany jako liczba z przedziału od 0-1. <br/><br/>Przykładowy wiersz: "1,20 1,45 Word 0,67" <br/><br/>Te pliki mogą być używane w wielu celach, na przykład w celu przeprowadzenia analizy mowy lub udostępnienia aparatów wyszukiwania, takich jak Bing, Google lub Microsoft SharePoint, aby pliki multimedialne mogły być bardziej wykrywalne lub nawet wykorzystane do dostarczenia bardziej przydatnych reklam. |
-| **Wynik zadania. txt** |Manifest wyjściowy, obecny tylko podczas indeksowania wielu plików, zawierający następujące informacje:<br/><br/><table border="1"><tr><th>Plik_wejściowy</th><th>Alias</th><th>MediaLength</th><th>Błąd</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c. mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **Wynik zadania. txt** |Manifest wyjściowy, obecny tylko podczas indeksowania wielu plików, zawierający następujące informacje:<br/><br/><table border="1"><tr><th>Plik_wejściowy</th><th>Alias</th><th>MediaLength</th><th>Błąd</th></tr><tr><td>a. mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b. mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c. mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
 Jeśli nie wszystkie pliki multimediów wejściowych są indeksowane pomyślnie, zadanie indeksowania kończy się niepowodzeniem z kodem błędu 4000. Aby uzyskać więcej informacji, zobacz [kody błędów](#error_codes).
 
@@ -247,7 +247,7 @@ Przetwarzanie z Azure Media Indexer może być dostosowane przez udostępnienie 
 | --- | --- | --- |
 | **klawiatur** |false |Pliki zasobów, które mają być indeksowane.</p><p>Azure Media Indexer obsługuje następujące formaty plików multimedialnych: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Można określić nazwy plików w atrybucie **nazwy** lub **listy** elementu **wejściowego** (jak pokazano poniżej). Jeśli nie określisz pliku zasobów do indeksowania, plik podstawowy jest wybierany. Jeśli nie ustawiono podstawowego pliku zasobów, pierwszy plik w wejściowym elemencie zawartości jest indeksowany.</p><p>Aby jawnie określić nazwę pliku zasobu, wykonaj następujące czynności:<br/>`<input name="TestFile.wmv">`<br/><br/>Można również indeksować wiele plików zasobów jednocześnie (do 10 plików). W tym celu:<br/><br/><ol class="ordered"><li><p>Utwórz plik tekstowy (plik manifestu) i nadaj mu rozszerzenie. lst. </p></li><li><p>Dodaj listę wszystkich nazw plików zasobów w danych wejściowych do tego pliku manifestu. </p></li><li><p>Dodaj (Przekaż) plik manifestu do elementu zawartości.  </p></li><li><p>Określ nazwę pliku manifestu w atrybucie listy danych wejściowych.<br/>`<input list="input.lst">`</li></ol><br/><br/>Uwaga: Jeśli dodasz więcej niż 10 plików do pliku manifestu, zadanie indeksowania zakończy się niepowodzeniem z kodem błędu 2006. |
 | **metadane** |false |Metadane dla określonych plików zasobów używanych na potrzeby adaptacji słownika.  Przydatne do przygotowania indeksatora do rozpoznawania niestandardowych słów słownika, takich jak poprawne rzeczowniki.<br/>`<metadata key="..." value="..."/>` <br/><br/>Można podać **wartości** wstępnie zdefiniowanych **kluczy**. Obecnie obsługiwane są następujące klucze:<br/><br/>"title" i "Description" — służy do adaptacji słownictwa w celu dostosowania modelu języka dla zadania i poprawiania dokładności rozpoznawania mowy.  Wartości odnoszą się do wyszukiwania w Internecie, aby znaleźć kontekstowe dokumenty tekstowe, przy użyciu zawartości, aby rozszerzyć wewnętrzny słownik na czas trwania zadania indeksowania.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **oferowanych** <br/><br/> Dodano w wersji 1,2. Obecnie jedyną obsługiwaną funkcją jest rozpoznawanie mowy ("ASR"). |false |Funkcja rozpoznawania mowy ma następujące klucze ustawień:<table><tr><th><p>Klucz</p></th>        <th><p>Opis</p></th><th><p>Przykładowa wartość</p></th></tr><tr><td><p>Język</p></td><td><p>Język naturalny, który ma zostać rozpoznany w pliku multimedialnym.</p></td><td><p>Angielski, hiszpański</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>rozdzielana średnikami lista formatów żądanych napisów wyjściowych (jeśli istnieją)</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Oznacza False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Flaga logiczna określająca, czy plik XML jest wymagany.</p></td><td><p>Oznacza False. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Flaga logiczna określająca, czy wymuszać pełne podpisy (niezależnie od poziomu ufności).  </p><p>Wartość domyślna to false. w takim przypadku wyrazy i frazy, które mają mniej niż 50% poziomu ufności, są pomijane na podstawie końcowych etykiet wyjściowych i zastępowane przez wielokropek ("...").  Elipsy są przydatne do kontroli jakości napisów i inspekcji.</p></td><td><p>Oznacza False. </p></td></tr></table> |
+| **oferowanych** <br/><br/> Dodano w wersji 1,2. Obecnie jedyną obsługiwaną funkcją jest rozpoznawanie mowy ("ASR"). |false |Funkcja rozpoznawania mowy ma następujące klucze ustawień:<table><tr><th><p>Klucz</p></th>        <th><p>Opis</p></th><th><p>Przykładowa wartość</p></th></tr><tr><td><p>Język</p></td><td><p>Język naturalny, który ma zostać rozpoznany w pliku multimedialnym.</p></td><td><p>Angielski, hiszpański</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>rozdzielana średnikami lista formatów żądanych napisów wyjściowych (jeśli istnieją)</p></td><td><p>ttml; WebVTT</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Oznacza False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Flaga logiczna określająca, czy plik XML jest wymagany.</p></td><td><p>Oznacza False. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Flaga logiczna określająca, czy wymuszać pełne podpisy (niezależnie od poziomu ufności).  </p><p>Wartość domyślna to false. w takim przypadku wyrazy i frazy, które mają mniej niż 50% poziomu ufności, są pomijane na podstawie końcowych etykiet wyjściowych i zastępowane przez wielokropek ("...").  Elipsy są przydatne do kontroli jakości napisów i inspekcji.</p></td><td><p>Oznacza False. </p></td></tr></table> |
 
 ### <a id="error_codes"></a>Kody błędów
 W przypadku błędu, Azure Media Indexer powinien zgłosić jeden z następujących kodów błędów:
@@ -263,7 +263,7 @@ W przypadku błędu, Azure Media Indexer powinien zgłosić jeden z następując
 | 2006 |Zbyt wiele plików wejściowych |Manifest wejściowy zawiera więcej niż 10 plików. |
 | 3000 |Dekodowanie pliku nośnika nie powiodło się |Nieobsługiwany koder-dekoder multimediów <br/>lub<br/> Uszkodzony plik multimedialny <br/>lub<br/> Brak strumienia audio w nośniku wejściowym. |
 | 4000 |Indeksowanie wsadowe częściowo powiodło się |Nie można indeksować niektórych plików multimediów wejściowych. Aby uzyskać więcej informacji, zobacz <a href="#output_files">pliki wyjściowe</a>. |
-| inne |Błędy wewnętrzne |Skontaktuj się z zespołem pomocy technicznej. indexer@microsoft.com |
+| other |Błędy wewnętrzne |Skontaktuj się z zespołem pomocy technicznej. indexer@microsoft.com |
 
 ## <a id="supported_languages"></a>Obsługiwane języki
 Obecnie obsługiwane są języki w języku angielskim i hiszpańskim.  
@@ -271,7 +271,7 @@ Obecnie obsługiwane są języki w języku angielskim i hiszpańskim.
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki

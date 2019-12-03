@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: obrazy & Custom Vision Service — Azure IoT Edge'
+title: Samouczek — wdrażanie klasyfikatora Custom Vision na urządzeniu przy użyciu Azure IoT Edge
 description: W tym samouczku dowiesz się, jak sprawić, aby model przetwarzania obrazów był uruchamiany jako kontener, używając usług Custom Vision i IoT Edge.
 services: iot-edge
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2303b4f4b639d015e9322e167ffbd956446c5061
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665954"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701875"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Samouczek: wykonywanie klasyfikacji obrazów na urządzeniach brzegowych za pomocą usługi Custom Vision
 

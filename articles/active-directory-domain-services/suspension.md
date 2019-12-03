@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 31a1c7cd72d57b9c680452d5e84f8fe78f47cebb
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693316"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704277"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Informacje o Stanach kondycji i rozwiązywaniu zawieszonych domen w Azure Active Directory Domain Services
 
@@ -35,7 +35,7 @@ Domena zarządzana AD DS platformy Azure może działać w jednym z następując
 * [Uruchomiono](#running-state)
 * [Wymaga uwagi](#needs-attention-state)
 * [Wieszon](#suspended-state)
-* [Skasowan](#deleted-state)
+* [Usunięta](#deleted-state)
 
 ## <a name="running-state"></a>Stan działania
 
@@ -96,7 +96,7 @@ Na Azure Portal stronie usługi Azure AD DS Health zostanie wyświetlony [alert]
 Aby przywrócić kondycję domeny zarządzanej AD DS platformy Azure, która jest w stanie *wstrzymania* , wykonaj następujące czynności:
 
 1. W Azure Portal Wyszukaj i wybierz pozycję **usługi domenowe**.
-1. Wybierz z listy domenę zarządzaną platformy Azure AD DS, na przykład *contoso.com*, a następnie wybierz pozycję **kondycja**.
+1. Wybierz z listy domenę zarządzaną platformy Azure AD DS, na przykład *aadds.contoso.com*, a następnie wybierz pozycję **kondycja**.
 1. Wybierz Alert, taki jak *AADDS503* lub *AADDS504*, w zależności od przyczyny zawieszenia.
 1. Wybierz łącze rozwiązania, które jest dostępne w alercie, a następnie postępuj zgodnie z instrukcjami, aby rozwiązać ten problem.
 

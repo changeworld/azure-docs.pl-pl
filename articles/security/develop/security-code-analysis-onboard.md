@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 77be6d8518774a1e2656e23024490dd9c1431865
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839348"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707251"
 ---
 # <a name="onboarding-and-installing"></a>Dołączanie i Instalowanie
 
@@ -53,7 +53,8 @@ Wymagania wstępne dotyczące analizy kodu zabezpieczeń firmy Microsoft:
 
 1. Po udostępnieniu rozszerzenia organizacji usługi Azure DevOps przejdź do strony organizacji usługi Azure DevOps. Przykładowy adres URL dla takiej strony jest `https://dev.azure.com/contoso`.
 1. Wybierz ikonę torba do zakupów w prawym górnym rogu obok nazwy, a następnie wybierz pozycję **Zarządzaj rozszerzeniami**.
-1. Wybierz rozszerzenie Microsoft Security code Analysis, a następnie Otwórz Kreatora interfejsu użytkownika usługi Azure DevOps, aby rozpocząć instalację.
+1. Wybierz pozycję **udostępnione**.
+1. Wybierz rozszerzenie Microsoft Security code Analysis, a następnie wybierz **Zainstaluj**.
 1. Z listy rozwijanej wybierz organizację usługi Azure DevOps, w której ma zostać zainstalowane rozszerzenie.
 1. Wybierz pozycję **Zainstaluj**. Po zakończeniu instalacji możesz zacząć korzystać z rozszerzenia.
 

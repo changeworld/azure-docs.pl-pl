@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Dostosowywanie pulpitu nawigacyjnego operatora na platformie Azure IoT Central'
+title: Samouczek — Dostosowywanie pulpitu nawigacyjnego operatora na platformie Azure IoT Central
 description: W tym samouczku pokazano, jak dostosować pulpit nawigacyjny operatora w aplikacji IoT Central i zarządzać urządzeniami.
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 0dcabada522bf8189d163936551ea94cb4dd2657
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112915"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702685"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Samouczek: Dostosowywanie pulpitu nawigacyjnego operatora i zarządzanie urządzeniami w usłudze Azure IoT Central
 

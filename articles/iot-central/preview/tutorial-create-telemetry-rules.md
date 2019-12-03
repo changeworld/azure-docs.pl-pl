@@ -1,6 +1,6 @@
 ---
-title: Tworzenie reguł i zarządzanie nimi w aplikacji IoT Central platformy Azure | Microsoft Docs
-description: Reguły IoT Central platformy Azure umożliwiają monitorowanie urządzeń w czasie niemal rzeczywistym oraz automatyczne wywoływanie akcji, na przykład wysyłania wiadomości e-mail, gdy reguła jest wyzwalana.
+title: Samouczek — Tworzenie reguł i zarządzanie nimi w aplikacji IoT Central platformy Azure
+description: W tym samouczku przedstawiono sposób, w jaki reguły IoT Central platformy Azure umożliwiają monitorowanie urządzeń w czasie niemal rzeczywistym oraz automatyczne wywoływanie akcji, takich jak wysyłanie wiadomości e-mail, gdy reguła jest wyzwalana.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6327ee8a1b0d52c933844670d9b8098c2c3c4f09
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e2ec01e372ebda79272b585ea6f1708029ea7b13
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958143"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702542"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Samouczek: Tworzenie reguły i Konfigurowanie powiadomień w aplikacji Azure IoT Central (funkcje w wersji zapoznawczej)
 

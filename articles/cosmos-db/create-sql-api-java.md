@@ -1,6 +1,6 @@
 ---
-title: Tworzenie bazy danych dokumentów przy użyciu języka Java Azure Cosmos DB
-description: Przykładowy kod Java, którego można używać do nawiązywania połączeń z interfejsem API SQL usługi Azure Cosmos DB i wykonywania względem niego zapytań
+title: Szybki Start — używanie języka Java do tworzenia bazy danych dokumentów przy użyciu Azure Cosmos DB
+description: Ten przewodnik Szybki Start przedstawia przykładowy kod Java, którego można użyć do nawiązania połączenia z interfejsem API SQL Azure Cosmos DB i wykonywania na nich zapytań
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: d5a32780f8598c0843958b99f02cd18aa33bea2e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a4a8990b3da534acb39ff87c9f7665fb3b08ef06
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582844"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708162"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Szybki Start: Tworzenie aplikacji Java do zarządzania Azure Cosmos DB danych interfejsu API SQL
 
@@ -34,13 +34,13 @@ W tym przewodniku szybki start pokazano, jak za pomocą aplikacji języka Java u
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-Ponadto: 
+Dodatkowo: 
 
 * [Zestaw Java Development Kit (JDK) w wersji 8](https://aka.ms/azure-jdks)
     * Upewnij się, że zmienna środowiskowa JAVA_HOME wskazuje folder, w którym zainstalowano zestaw JDK.
 * [Pobierz](https://maven.apache.org/download.cgi) i [zainstaluj](https://maven.apache.org/install.html) archiwum binarne [Maven](https://maven.apache.org/)
     * W systemie Ubuntu możesz uruchomić polecenie `apt-get install maven`, aby zainstalować narzędzie Maven.
-* [Git](https://www.git-scm.com/)
+* [Usługa Git](https://www.git-scm.com/)
     * W systemie Ubuntu możesz uruchomić polecenie `sudo apt-get install git`, aby zainstalować usługę Git.
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych

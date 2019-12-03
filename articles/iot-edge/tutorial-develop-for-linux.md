@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: opracowywanie modułu dla urządzeń z systemem Linux — Azure IoT Edge'
+title: Samouczek — opracowywanie modułu dla urządzeń z systemem Linux przy użyciu Azure IoT Edge
 description: Ten samouczek przeprowadzi Cię przez proces konfigurowania maszyn deweloperskich i zasobów w chmurze w celu opracowywania modułów IoT Edge przy użyciu kontenerów systemu Linux dla urządzeń z systemem Linux
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 01ca118348b3a084c97182338bf656da83d52cb4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4291c5dcea27699de72b72c52a832a7dc86b97b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114056"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701899"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Samouczek: opracowywanie modułów IoT Edge dla urządzeń z systemem Linux
 
@@ -46,12 +46,12 @@ Ten samouczek dotyczy urządzeń z systemem Linux, na których działa IoT Edge.
 
 W poniższej tabeli przedstawiono obsługiwane scenariusze programowania dla **kontenerów systemu Linux** w Visual Studio Code i Visual Studio.
 
-|   | Visual Studio Code | Visual Studio 2017/2019 |
+|   | Visual Studio Code | Program Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Architektura urządzeń z systemem Linux** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
-| **Usługi platformy Azure** | Azure Functions <br> Usługa Azure Stream Analytics <br> Azure Machine Learning |   |
+| **Usługi platformy Azure** | Stan usługi Funkcje Azure <br> Usługa Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Języki** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **Więcej informacji** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
+| **Więcej informacji** | [Azure IoT Edge Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Narzędzia Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Narzędzia Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
 >[!NOTE]
 >Obsługa urządzeń z systemem Linux ARM64 jest dostępna w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Aby uzyskać więcej informacji, zobacz [programowanie i debugowanie modułów IoT Edge arm64 w Visual Studio Code (wersja zapoznawcza)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
@@ -168,7 +168,7 @@ Obecnie Visual Studio Code mogą opracowywać C# moduły dla urządzeń z system
 
 2. W palecie poleceń wybierz architekturę docelową z listy opcji. W tym samouczku używamy maszyny wirtualnej Ubuntu jako urządzenia IoT Edge, co spowoduje zachowanie domyślnego **amd64**. 
 
-### <a name="review-the-sample-code"></a>Przejrzyj przykładowy kod
+### <a name="review-the-sample-code"></a>Zapoznaj się z przykładowym kodem
 
 Utworzony szablon rozwiązania zawiera przykładowy kod dla modułu IoT Edge. Ten przykładowy moduł po prostu odbiera komunikaty, a następnie przekazuje je. Funkcje potoku przedstawiają ważne koncepcje w IoT Edge, które są zgodne z tym, jak moduły komunikują się ze sobą.
 
@@ -330,5 +330,5 @@ W tym samouczku skonfigurujesz Visual Studio Code na swoim komputerze dewelopers
 > [C](tutorial-c-module.md)
 > [C#](tutorial-csharp-module.md)
 > [Java](tutorial-java-module.md)
-> [Node.js](tutorial-node-module.md)
+> [Node. js](tutorial-node-module.md)
 > [Python](tutorial-python-module.md)

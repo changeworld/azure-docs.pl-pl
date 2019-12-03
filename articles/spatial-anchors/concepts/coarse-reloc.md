@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 87179cbce9fa99d4c3422ce88b630312b5080481
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270146"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706237"
 ---
 # <a name="coarse-relocalization"></a>Zgrubna ponowna lokalizacja
 
@@ -129,7 +129,7 @@ Następnie należy zdecydować, które czujniki mają być używane w przypadku 
 |             | Brak drzwi | Na zewnątrz |
 |-------------|---------|----------|
 | GPS         | Wyłączone | Włączone |
-| Sieć Wi-Fi        | Włączone | On (opcjonalnie) |
+| Karta        | Włączone | On (opcjonalnie) |
 | Sygnały nawigacyjne dotyczące beli | On (opcjonalnie z zastrzeżeniami, zobacz poniżej) | Wyłączone |
 
 
@@ -495,7 +495,7 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Kotwice przestrzenne platformy Azure śledzą sygnały nawigacyjne Bluetooth, które znajdują się na liście. Złośliwe sygnały programowe mające listę identyfikatorów UUID o białym wykorzystaniu mogą nadal mieć negatywny wpływ na jakość usługi. Z tego powodu należy używać sygnałów nawigacyjnych tylko w nadzorowanych miejscach, w których można kontrolować ich wdrażanie.
+Kotwice przestrzenne platformy Azure śledzą sygnały nawigacyjne Bluetooth, które znajdują się na liście. Złośliwe sygnały są programowane w taki sposób, aby na liście identyfikatorów UUID mogły mieć negatywny wpływ na jakość usługi. Z tego powodu należy używać sygnałów nawigacyjnych tylko w nadzorowanych miejscach, w których można kontrolować ich wdrażanie.
 
 ## <a name="querying-with-sensor-data"></a>Wykonywanie zapytań przy użyciu danych czujników
 
@@ -655,7 +655,7 @@ W poniższej tabeli szacuje oczekiwany obszar wyszukiwania dla każdego typu czu
 | Czujnik      | Promień obszaru wyszukiwania (w przybliżeniu) | Szczegóły |
 |-------------|:-------:|---------|
 | GPS         | 20 m-30 m | Określana na podstawie niepewności GPS między innymi czynnikami. Raportowane liczby są szacowane dla średniej dokładności GPS telefonów komórkowych z-GPS, czyli 7 metrów. |
-| Sieć Wi-Fi        | 50 m – 100 m | Określany przez zakres punktów dostępu bezprzewodowego. Zależy od częstotliwości, siły nadajnika, przeszkód fizycznych, zakłóceń i tak dalej. |
+| Karta        | 50 m – 100 m | Określany przez zakres punktów dostępu bezprzewodowego. Zależy od częstotliwości, siły nadajnika, przeszkód fizycznych, zakłóceń i tak dalej. |
 | Sygnały nawigacyjne dotyczące beli |  70 m | Określany przez zakres sygnałów nawigacyjnych. Zależy od częstotliwości, siły transmisji, przeszkód fizycznych, zakłóceń i tak dalej. |
 
 ## <a name="per-platform-support"></a>Obsługa poszczególnych platform
@@ -665,8 +665,8 @@ Poniższa tabela zawiera podsumowanie danych czujników zbieranych na każdej z 
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| GPS         | Nie dotyczy | Obsługiwane za poorednictwem interfejsów API [lokalizacji][3] (GPS i Network) | Obsługiwane za poorednictwem interfejsów API [CLLocationManager][4] |
-| Sieć Wi-Fi        | Obsługiwane z szybkością około jednego skanowania co 3 sekundy | Obsługiwane. Począwszy od poziomu interfejsu API 28, skanowania w sieci Wi-Fi są ograniczone do 4 wywołań co 2 minuty. W przypadku systemu Android 10 ograniczenie przepustowości można wyłączyć w menu Ustawienia dewelopera. Aby uzyskać więcej informacji, zobacz [dokumentację systemu Android][5]. | N/A — brak publicznego interfejsu API |
+| GPS         | ND | Obsługiwane za poorednictwem interfejsów API [lokalizacji][3] (GPS i Network) | Obsługiwane za poorednictwem interfejsów API [CLLocationManager][4] |
+| Karta        | Obsługiwane z szybkością około jednego skanowania co 3 sekundy | Obsługiwane. Począwszy od poziomu interfejsu API 28, skanowania w sieci Wi-Fi są ograniczone do 4 wywołań co 2 minuty. W przypadku systemu Android 10 ograniczenie przepustowości można wyłączyć w menu Ustawienia dewelopera. Aby uzyskać więcej informacji, zobacz [dokumentację systemu Android][5]. | N/A — brak publicznego interfejsu API |
 | Sygnały nawigacyjne dotyczące beli | Ograniczone do [Eddystone][1] i [iBeacon][2] | Ograniczone do [Eddystone][1] i [iBeacon][2] | Ograniczone do [Eddystone][1] i [iBeacon][2] |
 
 ## <a name="next-steps"></a>Następne kroki

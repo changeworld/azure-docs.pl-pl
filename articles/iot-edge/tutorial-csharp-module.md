@@ -1,5 +1,5 @@
 ---
-title: Samouczek opracowywania C# modułu dla systemu Linux — Azure IoT Edge | Microsoft Docs
+title: Samouczek — opracowywanie C# modułu dla systemu Linux przy użyciu Azure IoT Edge
 description: W tym samouczku pokazano, jak utworzyć moduł IoT Edge przy C# użyciu kodu i wdrożyć go na urządzeniu z systemem Linux IoT Edge.
 services: iot-edge
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cabe30c08d13f0ebeb8e0ce784ea29a0b5d61bec
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 371500a43bf868a154fb813f2b0bbbd4170b7887
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560965"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707055"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Samouczek: opracowywanie C# modułu IoT Edge dla urządzeń z systemem Linux
 

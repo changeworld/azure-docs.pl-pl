@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 0ac9247f5156eb1b766aec7403b2dc8473114659
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483721"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707979"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -45,13 +45,13 @@ Azure SQL Database obsługuje następujące trzy opcje dla ustawienia zasad poł
 
 - **Serwer proxy:** W tym trybie wszystkie połączenia są nawiązywane za pośrednictwem bram Azure SQL Database, co prowadzi do zwiększonego opóźnienia i zmniejsza się w całym systemie. W przypadku połączeń do korzystania z tego trybu klienci muszą zezwalać na komunikację przychodzącą i wychodzącą z klienta do Azure SQL Database adresów IP bramy na porcie 1433.
 
-- **Wartość domyślna:** Jest to zasada połączenia obowiązująca na wszystkich serwerach po utworzeniu, chyba że jawnie zmienisz zasady połączenia na `Proxy` lub `Redirect`. Zasady domyślne są`Redirect` dla wszystkich połączeń klientów pochodzących z platformy Azure (np. z maszyny wirtualnej platformy Azure) i `Proxy`dla wszystkich połączeń klientów pochodzących z usługi (np. połączeń z lokalnej stacji roboczej).
+- **Wartość domyślna:** Jest to zasada połączenia obowiązująca na wszystkich serwerach po utworzeniu, chyba że jawnie zmienisz zasady połączenia na `Proxy` lub `Redirect`. Zasady domyślne są`Redirect` dla wszystkich połączeń klientów pochodzących z platformy Azure (np. z maszyny wirtualnej platformy Azure) i `Proxy`dla wszystkich połączeń klientów pochodzących z zewnątrz (np. połączeń z lokalnej stacji roboczej).
 
  Zdecydowanie zalecamy stosowanie zasad połączenia `Redirect` w ramach zasad połączenia `Proxy` dla najmniejszego opóźnienia i najwyższej przepływności. Należy jednak spełnić dodatkowe wymagania dotyczące zezwalania na ruch sieciowy opisany powyżej. Jeśli klient jest maszyną wirtualną platformy Azure, możesz to zrobić za pomocą sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) z [tagami usług](../virtual-network/security-overview.md#service-tags). Jeśli klient nawiązuje połączenie z lokalnej stacji roboczej, może być konieczne skontaktowanie się z administratorem sieci w celu zezwolenia na ruch sieciowy za pośrednictwem firmowej zapory.
 
 ## <a name="connectivity-from-within-azure"></a>Łączność z poziomu platformy Azure
 
-W przypadku łączenia się z poziomu platformy Azure połączenia mają domyślnie zasady połączenia `Redirect`. Zasady `Redirect` oznacza, że po nawiązaniu sesji protokołu TCP z usługą Azure SQL Database sesja klienta zostanie przekierowana do odpowiedniego klastra bazy danych z zmianą docelowego wirtualnego adresu IP z bramy Azure SQL Database Gateway do usługi hosta. Następnie wszystkie kolejne pakiety przepływają bezpośrednio do klastra, pomijając Azure SQL Database bramę. Na poniższym diagramie przedstawiono ten przepływ ruchu.
+W przypadku łączenia się z poziomu platformy Azure połączenia mają domyślnie zasady połączenia `Redirect`. Zasady `Redirect` oznacza, że po nawiązaniu sesji protokołu TCP z usługą Azure SQL Database sesja klienta zostanie przekierowana do odpowiedniego klastra bazy danych z zmianą docelowego wirtualnego adresu IP z bramy Azure SQL Database Gateway do klastra. Następnie wszystkie kolejne pakiety przepływają bezpośrednio do klastra, pomijając Azure SQL Database bramę. Na poniższym diagramie przedstawiono ten przepływ ruchu.
 
 ![Przegląd architektury](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
@@ -99,17 +99,17 @@ Szczegóły dotyczące sposobu migrowania ruchu do nowych bram w określonych re
 | Japonia Zachodnia           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea Środkowa        | 52.231.32.42       |
 | Korea Południowa          | 52.231.200.86      |
-| Środkowo-północne stany USA     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
+| Północno-środkowe stany USA     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Europa Północna         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Północna Republika Południowej Afryki   | 102.133.152.0      |
 | Północna Republika Południowej Afryki    | 102.133.24.0       |
-| Środkowo-południowe stany USA     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
-| Azja Południowo-Wschodnia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
+| Południowo-środkowe stany USA     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
+| Azja Południowo-wschodnia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Środkowe Zjednoczone Emiraty Arabskie          | 20.37.72.64        |
 | Północne Zjednoczone Emiraty Arabskie            | 65.52.248.0        |
 | Południowe Zjednoczone Królestwo             | 51.140.184.11      |
 | Zachodnie Zjednoczone Królestwo              | 51.141.8.11        |
-| Środkowo-zachodnie stany USA      | 13.78.145.25       |
+| Zachodnio-środkowe stany USA      | 13.78.145.25       |
 | Europa Zachodnia          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | Zachodnie stany USA              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
 | Zachodnie stany USA 2            | 13.66.226.202      |

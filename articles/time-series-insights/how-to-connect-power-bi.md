@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e218877ee0d29e493a31091ccbce406ed888f8cc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114736"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705978"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Wizualizuj dane z Time Series Insights w Power BI
 
@@ -32,7 +32,10 @@ Pamiętaj o zarejestrowaniu się w celu uzyskania [bezpłatnej subskrypcji platf
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Pobierz i zainstaluj najnowszą wersję programu [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-* Utwórz [wystąpienie Azure Time Series Insights "ga](time-series-insights-get-started.md) " lub " [Azure Time Series Insights" w wersji zapoznawczej](time-series-insights-update-how-to-manage.md)
+* Mieć lub Utwórz [wystąpienie Azure Time Series Insights wersji zapoznawczej](time-series-insights-update-how-to-manage.md)
+
+> [!IMPORTANT]
+> Łącznik Power BI jest obecnie obsługiwany w programie Time Series Insights zapoznaj się z obsługą wersji zapoznawczej dla środowisk *z płatność zgodnie z rzeczywistym* użyciem skonfigurowanych pod kątem **sklepu w sklepie**.
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Połącz dane z Time Series Insights Power BI
 
@@ -65,12 +68,12 @@ Aby rozpocząć:
 
        [![Połącz](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Jeśli nie skonfigurowano wystąpienia usługi Time Series Insights dla magazynu ciepłego, zostanie wyświetlone ostrzeżenie.
+   1. Jeśli nie skonfigurowano wystąpienia usługi Time Series Insights dla **magazynu ciepłego**, zostanie wyświetlone ostrzeżenie.
 
        [![Połącz](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > Istniejące wystąpienie dla magazynu ciepłego można skonfigurować w Azure Portal.
+       > Istniejące wystąpienie dla **magazynu ciepłego** można skonfigurować w Azure Portal.
 
 1. Wybierz pozycję **Kopiuj zapytanie do schowka**.
 1. Teraz uruchom Power BI Desktop.

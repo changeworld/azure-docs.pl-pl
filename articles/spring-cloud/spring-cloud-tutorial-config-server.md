@@ -1,17 +1,17 @@
 ---
-title: Skonfiguruj wystąpienie serwera konfiguracji w chmurze Azure wiosennej | Microsoft Docs
+title: Samouczek — Konfigurowanie wystąpienia serwera konfiguracji w chmurze Azure wiosennej
 description: W tym samouczku dowiesz się, jak skonfigurować wystąpienie serwera konfiguracji chmury sprężynowej dla chmury wiosennej platformy Azure na Azure Portal
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 7589a3a750e2fe04736bb3c8fc072c7a2c0a7358
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147556"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708803"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Samouczek: Konfigurowanie dla usługi wystąpienia serwera konfiguracji w chmurze wiosny
 
@@ -55,7 +55,7 @@ Wszystkie konfigurowalne właściwości, które są używane do konfigurowania p
 
 | Właściwość        | Wymagane | Funkcja                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Yes    | Identyfikator URI repozytorium git, który jest używany jako zaplecze serwera konfiguracji, rozpoczyna się od *http://* , *https://* , *git@* lub *SSH://* . |
+| `uri`           | Tak    | Identyfikator URI repozytorium git, który jest używany jako zaplecze serwera konfiguracji, rozpoczyna się od *http://* , *https://* , *git@* lub *SSH://* . |
 | `default-label` | Nie     | Domyślna etykieta repozytorium git powinna być *nazwą gałęzi*, *nazwą tagu*lub *identyfikatorem zatwierdzenia* repozytorium. |
 | `search-paths`  | Nie     | Tablica ciągów, które są używane do przeszukiwania podkatalogów repozytorium git. |
 
@@ -70,7 +70,7 @@ Wszystkie konfigurowalne właściwości używane do konfigurowania prywatnego re
 
 | Właściwość                   | Wymagane | Funkcja                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | Yes    | Identyfikator URI repozytorium git używany jako zaplecze serwera konfiguracji powinien być uruchamiany z *http://* , *https://* , *git@* lub *SSH://* . |
+| `uri`                      | Tak    | Identyfikator URI repozytorium git używany jako zaplecze serwera konfiguracji powinien być uruchamiany z *http://* , *https://* , *git@* lub *SSH://* . |
 | `default-label`            | Nie     | Domyślna etykieta repozytorium git powinna być *nazwą gałęzi*, *nazwą tagu*lub *identyfikatorem zatwierdzenia* repozytorium. |
 | `search-paths`             | Nie     | Tablica ciągów służąca do przeszukiwania podkatalogów repozytorium git. |
 | `private-key`              | Nie     | Prywatny klucz SSH, aby uzyskać dostęp do repozytorium git, _wymagany_ , gdy identyfikator URI zaczyna się od *git@* lub *SSH://* . |
@@ -89,7 +89,7 @@ Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigur
 
 | Właściwość        | Wymagane | Funkcja                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Yes    | Identyfikator URI repozytorium git używany jako zaplecze serwera konfiguracji powinien być uruchamiany z *http://* , *https://* , *git@* lub *SSH://* . |
+| `uri`           | Tak    | Identyfikator URI repozytorium git używany jako zaplecze serwera konfiguracji powinien być uruchamiany z *http://* , *https://* , *git@* lub *SSH://* . |
 | `default-label` | Nie     | Domyślna etykieta repozytorium git powinna być *nazwą gałęzi*, *nazwą tagu*lub *identyfikatorem zatwierdzenia* repozytorium. |
 | `search-paths`  | Nie     | Tablica ciągów służąca do przeszukiwania podkatalogów repozytorium git. |
 | `username`      | Nie     | Nazwa użytkownika, która jest używana do uzyskiwania dostępu do serwera repozytorium git, _wymagana_ , gdy serwer repozytorium git obsługuje `Http Basic Authentication`. |
@@ -124,7 +124,7 @@ Poniżej znajdują się wszystkie konfigurowalne właściwości używane do konf
 
 Teraz, gdy pliki konfiguracji są zapisywane w repozytorium, należy połączyć z nim chmurę sieciową platformy Azure.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. Przejdź do strony **omówienia** chmury Azure wiosennej.
 

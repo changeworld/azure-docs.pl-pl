@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 3d55e0e7ecbd52b6d96c657e333c5557388f2721
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406507"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706019"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrowanie obciążeń platformy Azure HDInsight 3,6 do usługi HDInsight 4,0
 
@@ -78,7 +78,7 @@ Skorzystaj z wartości w tabeli poniżej. Zastąp `SQLSERVERNAME DATABASENAME US
 |Typ skryptu|-Niestandardowe|
 |Nazwa|Uaktualnienie programu Hive|
 |Identyfikator URI skryptu bash|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|Typy węzłów|Head|
+|Typy węzłów|Główny|
 |Parametry|SQLSERVERNAME DATABASENAME — HASŁO UŻYTKOWNIKA|
 
 > [!Warning]  
@@ -118,7 +118,7 @@ Ta kompaktowanie jest wymagane, ponieważ tabele KWASów HDInsight 3,6 i HDInsig
 
 Po ukończeniu kroków migracji i kompaktowania magazynu metadanych można migrować rzeczywisty magazyn. Po zakończeniu migracji magazynu Hive magazyn usługi HDInsight 4,0 będzie miał następujące właściwości:
 
-|3.6 |4.0 |
+|3,6 |4,0 |
 |---|---|
 |Tabele zewnętrzne|Tabele zewnętrzne|
 |Nietransakcyjne tabele zarządzane|Tabele zewnętrzne|
@@ -174,14 +174,14 @@ Istnieją dwa sposoby wykonywania i debugowania zapytań Hive/LLAP w klastrze us
 
 W usłudze HDInsight 4,0 HiveCLI został zastąpiony Z usługi Beeline. HiveCLI to Thrift Client for Hiveserver 1, a Z usługi Beeline to klient JDBC, który zapewnia dostęp do Hiveserver 2. Z usługi Beeline może również służyć do nawiązywania połączenia z dowolnym innym punktem końcowym bazy danych zgodnym z JDBC. Usługa z usługi Beeline jest dostępna w przypadku usługi HDInsight 4,0 bez konieczności instalacji.
 
-W usłudze HDInsight 3,6 klient z graficznym interfejsem użytkownika służący do współdziałania z serwerem Hive jest widokiem Ambari Hive. Usługa HDInsight 4,0 zastępuje widok programu Hive za pomocą Hortonworks Data Analytics Studio (DAS). Usługa DAS nie jest dostarczana z klastrami usługi HDInsight i nie jest oficjalnie obsługiwanym pakietem. Program DAS można jednak zainstalować w klastrze za pomocą [akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md) w następujący sposób:
+W usłudze HDInsight 3,6 klient z graficznym interfejsem użytkownika służący do współdziałania z serwerem Hive jest widokiem Ambari Hive. Usługa HDInsight 4,0 nie jest dostarczana z widokiem Ambari. Firma Microsoft udostępniła klientom możliwość korzystania z usługi Data Analytics Studio (DAS), która nie jest podstawową usługą HDInsight. DAS nie jest dostarczana z klastrami usługi HDInsight, które są wbudowane i nie jest oficjalnie obsługiwanym pakietem. Program DAS można jednak zainstalować w klastrze za pomocą [akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md) w następujący sposób:
 
 |Właściwość | Wartość |
 |---|---|
 |Typ skryptu|-Niestandardowe|
 |Nazwa|URZĄDZEŃ|
 |Identyfikator URI skryptu bash|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Typy węzłów|Head|
+|Typy węzłów|Główny|
 
 Zaczekaj od 5 do 10 minut, a następnie uruchom program Data Analytics Studio przy użyciu tego adresu URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
 

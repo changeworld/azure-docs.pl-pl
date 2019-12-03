@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: b68bd69c6d00ac177466f8fdaabd89649c910287
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7a2b15ffdcc1a611c2cb165b4f2657ad7276e05b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790285"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706351"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Wybór usługi do obsługi wiadomości na platformie Azure — Event Grid, Event Hubs i Service Bus
 
@@ -98,7 +98,7 @@ W innych przypadkach można je połączyć ze sobą w celu utworzenia potoku zda
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły: 
-
+- [Opcje asynchronicznej obsługi komunikatów na platformie Azure](/azure/architecture/guide/technology-choices/messaging.md)
 - [Zdarzenia, punkty danych i komunikaty — wybieranie usługi platformy Azure do obsługi wiadomości właściwej dla Twoich danych](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
 - [Porównanie kolejek magazynu i kolejek usługi Service Bus](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - Aby rozpocząć pracę z usługą Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).

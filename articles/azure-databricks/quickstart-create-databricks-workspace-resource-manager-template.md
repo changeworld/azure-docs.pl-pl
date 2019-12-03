@@ -1,6 +1,6 @@
 ---
-title: Tworzenie obszaru roboczego Azure Databricks za pomocą usługi Azure Resource Manager
-description: W tym przewodniku Szybki start pokazano, jak za pomocą szablonu usługi Azure Resource Manager utworzyć obszar roboczy usługi Azure Databricks, a następnie utworzyć klaster Apache Spark i uruchomić zadanie Spark.
+title: Szybki Start — Tworzenie obszaru roboczego Azure Databricks za pomocą usługi Azure Resource Manager
+description: W tym przewodniku szybki start pokazano, jak utworzyć obszar roboczy Azure Databricks za pomocą szablonu Azure Resource Manager, a następnie utworzyć klaster Apache Spark i uruchomić zadanie Spark.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 83dc18424bc8606eff9a735b76cdaa09e381d588
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2fbe1e91204df7901b4ac3ccfdcd323304b2ce3c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129356"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706184"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Szybki start: Uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu szablonu usługi Resource Manager
 
@@ -27,7 +27,7 @@ W tym przewodniku szybki start użyjesz szablonu Azure Resource Manager, aby utw
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+Zaloguj się do [portalu Azure](https://portal.azure.com). 
 
 > [!Note]
 > Tego samouczka nie można przeprowadzić za pomocą **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
@@ -101,7 +101,7 @@ Wykonaj poniższe kroki, aby utworzyć notes w usłudze Databricks, skonfigurowa
 
    ![Tworzenie notesu w kostkach](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Tworzenie notesu w kostkach")
 
-   Kliknij pozycję **Utwórz**.
+   Kliknij przycisk **Utwórz**.
 
 3. W tym kroku skojarz konto usługi Azure Storage z klastrem Spark usługi Databricks. Istnieją dwa sposoby osiągnięcia tego: zainstalowanie konta usługi Azure Storage w systemie plików usługi Databricks (DBFS) lub bezpośredni dostęp do konta usługi Azure Storage z utworzonej aplikacji.
 
@@ -170,7 +170,7 @@ Wykonaj poniższe kroki, aby utworzyć notes w usłudze Databricks, skonfigurowa
    * W obszarze **Wartości** ustaw wartość **level** (poziom).
    * W obszarze **Agregacja** ustaw wartość **LICZBA**.
 
-   Kliknij przycisk **zastosować**.
+   Kliknij przycisk **Zastosuj**.
 
 9. Wynikiem będzie reprezentacja wizualna przedstawiona na zrzucie ekranu:
 

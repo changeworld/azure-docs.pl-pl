@@ -1,17 +1,17 @@
 ---
-title: 'Samouczek: używanie rozproszonego śledzenia z chmurą Azure wiosennej | Microsoft Docs'
-description: Dowiedz się, jak używać śledzenia rozproszonego chmury wiosennej za pomocą usługi Azure Application Insights
+title: Samouczek — używanie rozproszonego śledzenia z chmurą Azure wiosennej
+description: W tym samouczku pokazano, jak używać śledzenia rozproszonego chmury wiosennej za pomocą usługi Azure Application Insights
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607548"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708771"
 ---
 # <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Samouczek: używanie rozproszonego śledzenia w chmurze Azure wiosennej
 
@@ -85,7 +85,7 @@ Jeśli masz już skompilowaną i wdrożoną aplikację, możesz zmodyfikować cz
 
 Wróć do strony śledzenie rozproszone i wybierz pozycję **Wyświetl mapę aplikacji**. Przejrzyj wizualną reprezentację ustawień aplikacji i monitorowania. Aby dowiedzieć się, jak używać mapy aplikacji, zobacz [ten artykuł](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="search"></a>Wyszukiwanie
+## <a name="search"></a>Search
 
 Użyj funkcji Search, aby wykonać zapytanie dotyczące innych określonych elementów telemetrii. Na stronie **śledzenie rozproszone** wybierz pozycję **Wyszukaj**. Aby uzyskać więcej informacji na temat korzystania z funkcji wyszukiwania, zobacz [ten artykuł](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
 

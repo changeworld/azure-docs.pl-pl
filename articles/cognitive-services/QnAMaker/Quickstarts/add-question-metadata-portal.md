@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 92735d8982fb1364d5ebfe0494f5ee51f4302469
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: bf88928ca24a1205ec7a1ddd2fd20af0d0e91468
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794009"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422658"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Szybki Start: dodawanie pytań i odpowiedzi za pomocą portalu QnA Maker
 
@@ -28,7 +28,7 @@ Na przykład pytania w poniższej tabeli dotyczą limitów usługi platformy Azu
 <a name="qna-table"></a>
 
 
-|Zestaw|Pytania|Odpowiedź|Metadane|
+|Set|Pytania|Odpowiedź|Metadane|
 |--|--|--|--|
 |1\.|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2\.|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -176,4 +176,4 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Uzyskaj odpowiedź przy użyciu programu Poster](get-answer-from-kb-using-postman.md)
+> [Uzyskiwanie odpowiedzi przy użyciu programu Poster lub zwinięcie](get-answer-from-knowledge-base-using-url-tool.md)

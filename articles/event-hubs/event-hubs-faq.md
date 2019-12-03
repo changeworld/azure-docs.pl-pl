@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera listę często zadawanych pytań (FAQ) dla usługi Azure Event Hubs i odpowiedzi.
+title: Często zadawane pytania — Azure Event Hubs | Microsoft Docs
+description: Ten artykuł zawiera listę często zadawanych pytań dotyczących usługi Azure Event Hubs i ich odpowiedzi.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -8,21 +8,21 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 05/15/2019
+ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 66b11ef8e746222074eadab2348f8a2cf9dab39f
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3b46c574ea47622ec97e70c0d2f2cdc3aa54ec0d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479145"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706378"
 ---
-# <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
+# <a name="event-hubs-frequently-asked-questions"></a>Event Hubs często zadawane pytania
 
 ## <a name="general"></a>Ogólne
 
-### <a name="what-is-an-event-hubs-namespace"></a>Co to jest obszar nazw usługi Event Hubs?
-Przestrzeń nazw jest kontenerem określania zakresu dla zdarzenia koncentratora/tematów platformy Kafka. Pozwala ona unikatową [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Przestrzeń nazw służy jako kontener aplikacji, które mogą znajdować się wiele tematy usługi Event Hub/platformy Kafka. 
+### <a name="what-is-an-event-hubs-namespace"></a>Co to jest Event Hubs przestrzeń nazw?
+Przestrzeń nazw jest kontenerem określania zakresu dla tematów centrum zdarzeń/Kafka. Zapewnia unikatową [nazwę FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Przestrzeń nazw służy jako kontener aplikacji, który może mieć wiele tematów centrów zdarzeń/Kafka. 
 
 ### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Kiedy należy utworzyć nową przestrzeń nazw zamiast używać istniejącej przestrzeni nazw?
 Alokacje wydajności ([jednostki przepływności (TUs)](#throughput-units)) są rozliczane na poziomie przestrzeni nazw. Przestrzeń nazw jest również skojarzona z regionem.
@@ -33,32 +33,34 @@ Możesz chcieć utworzyć nową przestrzeń nazw zamiast używać istniejącej w
 - Potrzebujesz centrum zdarzeń skojarzonego z inną subskrypcją.
 - Potrzebujesz centrum zdarzeń z odrębną alokacją pojemności (to oznacza, że pojemność przestrzeni nazw z dodanym centrum zdarzeń przekroczy próg 40 jednostek PRZEPŁYWNOŚCI i nie chcesz go wyszukać w przypadku dedykowanego klastra)  
 
-### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Jaka jest różnica między warstwami standardowa i Event hubs w warstwie podstawowa?
+### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Jaka jest różnica między warstwami Event Hubs podstawowa i Standardowa?
 
-Warstwy standardowa usługi Azure Event Hubs udostępnia funkcje, które są dostępne w warstwie podstawowa. Dołączone Standard są następujące funkcje:
+Warstwa standardowa platformy Azure Event Hubs udostępnia funkcje wykraczające poza dostępność w warstwie Podstawowa. W standardzie są dostępne następujące funkcje:
 
-* Dłuższy okres przechowywania zdarzeń
-* Dodatkowe połączenia obsługiwane przez brokera z naliczeniem dodatkowych opłat za większa niż liczba uwzględnione
-* Więcej niż jeden [grupy konsumentów](event-hubs-features.md#consumer-groups)
-* [Przechwytywanie](event-hubs-capture-overview.md)
-* [Integracja z platformą Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+* Dłuższe przechowywanie zdarzeń
+* Dodatkowe połączenia obsługiwane przez brokera z opłatą za użycie nadwyżkowe za więcej niż uwzględniona liczba
+* Więcej niż jedna [Grupa odbiorców](event-hubs-features.md#consumer-groups)
+* [Przechwytywania](event-hubs-capture-overview.md)
+* [Integracja Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 
-Aby uzyskać więcej informacji na temat cen warstwy, w tym Event hubs w warstwie dedykowana, zobacz [Event Hubs — cennik szczegóły](https://azure.microsoft.com/pricing/details/event-hubs/).
+Aby uzyskać więcej informacji na temat warstw cenowych, w tym Event Hubs — warstwa Dedykowana, zobacz [szczegóły cennika Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="where-is-azure-event-hubs-available"></a>Gdzie jest usługi Azure Event Hubs?
+### <a name="where-is-azure-event-hubs-available"></a>Gdzie jest dostępna usługa Azure Event Hubs?
 
-Usługa Azure Event Hubs jest dostępna we wszystkich obsługiwanych regionach platformy Azure. Aby uzyskać listę, odwiedź stronę [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/) strony.  
+Usługa Azure Event Hubs jest dostępna we wszystkich obsługiwanych regionach platformy Azure. Listę można znaleźć na stronie [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/) .  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Wysyłanie i odbieranie z wielu usługi event hubs można używać przez pojedyncze połączenie AMQP?
+### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Czy można używać jednego połączenia AMQP do wysyłania i odbierania z wielu centrów zdarzeń?
 
-Tak, o ile wszystkie centra zdarzeń znajdują się w tej samej przestrzeni nazw.
+Tak, o ile wszystkie Centra zdarzeń znajdują się w tej samej przestrzeni nazw.
 
-### <a name="what-is-the-maximum-retention-period-for-events"></a>Co to jest maksymalny okres przechowywania dla zdarzeń?
+### <a name="what-is-the-maximum-retention-period-for-events"></a>Jaki jest maksymalny okres przechowywania zdarzeń?
 
-Event Hubs w warstwie standardowa warstwa obsługuje obecnie maksymalny okres przechowywania siedmiu dni. Usługa Event hubs nie jest przeznaczona do stałego przechowywania danych. Okresy przechowywania powyżej 24 godzin są przeznaczone dla scenariuszy, w których jest wygodne jest ponowne odtworzenie strumienia zdarzeń w tych samych systemach; na przykład w celu wytrenowania lub sprawdzenia nowego modelu uczenia maszynowego na istniejących danych. Potrzebujesz komunikat przechowywanie danych powyżej siedem dni, umożliwiając [przechwytywania usługi Event Hubs](event-hubs-capture-overview.md) zdarzenia Centrum ściąga dane z Centrum zdarzeń w na wybrane konto magazynu lub usługą Azure Data Lake wybrane. Włączenie funkcji Capture spowoduje naliczenie opłaty oparte na Twoje zakupionych jednostek przepływności.
+Warstwa standardowa Event Hubs obecnie obsługuje maksymalny okres przechowywania wynoszący siedem dni. Centra zdarzeń nie są przeznaczone do stałego magazynu danych. Okresy przechowywania powyżej 24 godzin są przeznaczone dla scenariuszy, w których wygodne jest ponowne odtworzenie strumienia zdarzeń w tych samych systemach; na przykład, aby przeprowadzić uczenie lub zweryfikować nowy model uczenia maszynowego na istniejących danych. Jeśli potrzebujesz przechowywania komunikatów przez siedem dni, włączenie [funkcji przechwytywania Event Hubs](event-hubs-capture-overview.md) w centrum zdarzeń powoduje pobranie danych z centrum zdarzeń do konta magazynu lub konta usługi Azure Data Lake. Włączenie funkcji przechwytywania spowoduje naliczenie opłaty na podstawie zakupionych jednostek przepływności.
 
-### <a name="how-do-i-monitor-my-event-hubs"></a>Jak monitorować mojej usługi Event Hubs?
-Usługa Event Hubs emituje wyczerpujący metryki, które zapewniają stan zasobów w celu [usługi Azure Monitor](../azure-monitor/overview.md). Pozwalają one również ocenić ogólną kondycję usługi Event Hubs, nie tylko na poziomie przestrzeni nazw, ale także na poziomie jednostki. Dowiedz się więcej o funkcji monitorowania, które jest oferowana w przypadku [usługi Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
+Możesz skonfigurować okres przechowywania danych przechwyconych na koncie magazynu. Funkcja **zarządzania cyklem życia** usługi Azure Storage oferuje rozbudowane zasady oparte na regułach dla kont ogólnego przeznaczenia w wersji 2 i BLOB Storage. Użyj zasad, aby przenieść dane do odpowiednich warstw dostępu lub wygasnąć po zakończeniu cyklu życia danych. Aby uzyskać więcej informacji, zobacz [Zarządzanie cyklem życia usługi Azure Blob Storage](../storage/blobs/storage-lifecycle-management-concepts.md). 
+
+### <a name="how-do-i-monitor-my-event-hubs"></a>Jak mogę monitorować moje Event Hubs?
+Event Hubs emituje wyczerpujące metryki, które zapewniają stan zasobów do [Azure monitor](../azure-monitor/overview.md). Pozwalają również ocenić ogólną kondycję usługi Event Hubs nie tylko na poziomie przestrzeni nazw, ale również na poziomie jednostki. Dowiedz się więcej na temat monitorowania oferowanego w [usłudze Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jakie porty muszę otworzyć na zaporze? 
 Za pomocą następujących protokołów można Azure Service Bus wysyłać i odbierać komunikaty:
@@ -69,7 +71,7 @@ Za pomocą następujących protokołów można Azure Service Bus wysyłać i odb
 
 Zapoznaj się z poniższą tabelą dla portów wychodzących, które należy otworzyć, aby używać tych protokołów do komunikowania się z usługą Azure Event Hubs. 
 
-| Protocol | Porty | Szczegóły | 
+| Protocol (Protokół) | Porty | Szczegóły | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 i 5672 | Zobacz [Przewodnik po protokole AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP, HTTPS | 80, 443 |  |
@@ -83,7 +85,7 @@ Aby znaleźć listę prawidłowych adresów IP dla połączeń, wykonaj następu
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Zanotuj adres IP zwrócony w `Non-authoritative answer`. Jedyną momentem, gdy będzie ona zmieniana, jest przywrócenie przestrzeni nazw w innym klastrze.
+2. Zanotuj adres IP zwrócony w `Non-authoritative answer`. Jedyną zmianą jest to, że w przypadku przywracania przestrzeni nazw w innym klastrze.
 
 Jeśli używasz nadmiarowości strefy dla przestrzeni nazw, musisz wykonać kilka dodatkowych czynności: 
 
@@ -92,7 +94,7 @@ Jeśli używasz nadmiarowości strefy dla przestrzeni nazw, musisz wykonać kilk
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. Zanotuj nazwę w sekcji Nieautorytatywna **odpowiedź** , która znajduje się w jednym z następujących formatów: 
+2. Zanotuj nazwę w sekcji **Nieautorytatywna odpowiedź** , która znajduje się w jednym z następujących formatów: 
 
     ```
     <name>-s1.servicebus.windows.net
@@ -101,159 +103,159 @@ Jeśli używasz nadmiarowości strefy dla przestrzeni nazw, musisz wykonać kilk
     ```
 3. Uruchom polecenie nslookup dla każdego z sufiksów S1, S2 i S3, aby uzyskać adresy IP wszystkich trzech wystąpień uruchomionych w trzech strefach dostępności, 
 
-## <a name="apache-kafka-integration"></a>Integracja platformy Apache Kafka
+## <a name="apache-kafka-integration"></a>Integracja Apache Kafka
 
-### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Jak zintegrować mojej istniejącej aplikacji platformy Kafka z usługą Event Hubs?
-Usługa Event Hubs udostępnia punkt końcowy platformy Kafka, używany przy użyciu aplikacji platformy Apache Kafka, na podstawie istniejących. Zmiana konfiguracji jest wszystko, co jest wymagane do środowisko PaaS platformy Kafka. Zapewnia zamiast uruchamiania klastra Kafka. Usługa Event Hubs obsługuje Apache Kafka w wersji 1.0 i nowszych wersji klienta i współdziała z istniejącej aplikacji platformy Kafka, narzędzi i struktur. Aby uzyskać więcej informacji, zobacz [usługi Event Hubs dla platformy Kafka repozytorium](https://github.com/Azure/azure-event-hubs-for-kafka).
+### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Jak mogę zintegrować istniejącą aplikację Kafka z usługą Event Hubs?
+Event Hubs udostępnia punkt końcowy Kafka, który może być używany przez istniejące aplikacje Apache Kafka na podstawie. Konieczna jest zmiana konfiguracji, która jest wymagana do korzystania z programu PaaS Kafka. Stanowi alternatywę dla uruchamiania własnego klastra Kafka. Event Hubs obsługuje Apache Kafka 1,0 i nowszych wersji klienta i współpracuje z istniejącymi aplikacjami Kafka, narzędziami i strukturami. Aby uzyskać więcej informacji, zobacz [Event Hubs dla repozytorium Kafka](https://github.com/Azure/azure-event-hubs-for-kafka).
 
-### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Zmiany w konfiguracji potrzebnych do wykonania dla mojej istniejącej aplikacji, aby komunikować się z usługi Event Hubs?
-Aby połączyć się wraz z Centrum zdarzeń z obsługą platformy Kafka, należy zaktualizować konfiguracje klienta platformy Kafka. Odbywa się przez utworzenie przestrzeni nazw usługi Event Hubs i uzyskania [parametry połączenia](event-hubs-get-connection-string.md). Zmień bootstrap.servers, aby wskazywał 9093 FQDN centra zdarzeń i numer portu. Aktualizacja sasl.jaas.config można kierować platformy Kafka klienta do punktu końcowego dla komputerów z obsługą platformy Kafka z usługi Event Hubs (czyli uzyskano parametry połączenia), z odpowiednimi uwierzytelniania, jak pokazano poniżej:
+### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Jakie zmiany konfiguracji należy wykonać, aby moja istniejąca aplikacja mogła komunikować się z Event Hubs?
+Aby nawiązać połączenie z centrum zdarzeń z obsługą Kafka, należy zaktualizować konfiguracje klienta Kafka. Jest to realizowane przez utworzenie przestrzeni nazw Event Hubs i uzyskanie [parametrów połączenia](event-hubs-get-connection-string.md). Zmień wartość Bootstrap. Servers, aby wskazywała Event Hubs FQDN i port do 9093. Zaktualizuj plik SASL. jaas. config, aby skierować klienta Kafka do punktu końcowego Event Hubs z włączonym systemem Kafka (czyli uzyskanych parametrów połączenia) z prawidłowym uwierzytelnianiem, jak pokazano poniżej:
 
-bootstrap.Servers={your. EVENTHUBS. Nazwa FQDN}: 9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule wymagana nazwa użytkownika = hasło "$ConnectionString" = "{YOUR. EVENTHUBS. POŁĄCZENIE. CIĄG} ";
+Bootstrap. servers = {Twoje. EVENTHUBS. FQDN}: 9093 Request. Timeout. ms = 60 000 Security. Protocol = SASL_SSL SASL. mechanizm = zwykła SASL. jaas. config = org. Apache. Kafka. Common. Security. sys. PlainLoginModule wymagana nazwa użytkownika = "$ConnectionString" Password = "{Twoje. EVENTHUBS. Połączenia. CIĄG} ";
 
 Przykład:
 
-bootstrap.Servers=dummynamespace.servicebus.Windows.NET:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule wymagane username = "$ Password="Endpoint=sb://dummynamespace.servicebus.windows.net/ ConnectionString"; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+Bootstrap. servers = dummynamespace. ServiceBus. Windows. NET: 9093 Request. Timeout. ms = 60 000 Security. Protocol = SASL_SSL SASL. mechanizm = zwykła SASL. jaas. config = org. Apache. Kafka. Common. Security. Plains. PlainLoginModule wymagana nazwa użytkownika = "$ConnectionString" Password = "Endpoint = SB://dummynamespace.ServiceBus.Windows.NET/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Uwaga: Jeśli SASL. jaas. config nie jest obsługiwaną konfiguracją w Twojej strukturze, Znajdź konfiguracje, które są używane do ustawiania nazwy użytkownika i hasła SASL, i Użyj zamiast nich. Ustaw nazwę użytkownika $ConnectionString i hasło, aby parametry połączenia usługi Event Hubs.
+Uwaga: Jeśli SASL. jaas. config nie jest obsługiwaną konfiguracją w Twojej strukturze, Znajdź konfiguracje, które są używane do ustawiania nazwy użytkownika i hasła SASL, i Użyj zamiast nich. Ustaw nazwę użytkownika na $ConnectionString i hasło do parametrów połączenia Event Hubs.
 
-### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Jaki jest rozmiar komunikatu lub zdarzenia dla komputerów z obsługą platformy Kafka z usługi Event Hubs?
-Maksymalny rozmiar komunikatu dozwolony dla komputerów z obsługą platformy Kafka z usługi Event Hubs to 1MB.
+### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Jaki jest rozmiar komunikatu/zdarzenia dla Event Hubs z włączoną obsługą Kafka?
+Maksymalny rozmiar komunikatu dozwolony dla Event Hubs z włączoną obsługą Kafka wynosi 1 MB.
 
 ## <a name="throughput-units"></a>Jednostki przepływności
 
-### <a name="what-are-event-hubs-throughput-units"></a>Co to są jednostki przepływności usługi Event Hubs?
-Przepływności usługi Event hubs definiuje ilości danych w megabajty lub liczba zdarzeń 1 KB (w tysiącach), że przychodzący i wychodzący za pośrednictwem usługi Event Hubs. To przepływność jest mierzona w jednostkach przepływności (jednostek przepływności). Zakup jednostek przepływności, zanim rozpoczniesz korzystanie z usługi Event Hubs. Możesz jawnie wybrać jednostek przepływności centra zdarzeń przy użyciu portalu lub szablonów usługi Event Hubs Resource Manager. 
+### <a name="what-are-event-hubs-throughput-units"></a>Co to są jednostki przepływności Event Hubs?
+Przepływność w Event Hubs definiuje ilość danych w bajtach lub liczbę (w tysiącach) zdarzeń 1-KB, które przechodzą i wychodzące przez Event Hubs. Ta przepływność jest mierzona w jednostkach przepływności (TUs). Kup TUs przed rozpoczęciem korzystania z usługi Event Hubs. Można jawnie wybrać Event Hubs TUs za pomocą szablonów Menedżer zasobów lub Event Hubs. 
 
 
 ### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>Czy jednostki przepływności dotyczą wszystkich centrów zdarzeń w przestrzeni nazw?
-Tak, jednostek przepływności (jednostek przepływności) mają zastosowanie do wszystkich centrów zdarzeń w przestrzeni nazw usługi Event Hubs. Oznacza, że zakupu jednostek przepływności na poziomie przestrzeni nazw i są współużytkowane przez centra zdarzeń w ramach tej przestrzeni nazw. Każdy jednostek Przepływności uprawnia przestrzeń nazw do następujących funkcji:
+Tak, jednostki przepływności (TUs) stosują się do wszystkich centrów zdarzeń w przestrzeni nazw Event Hubs. Oznacza to, że użytkownik kupuje TUs na poziomie przestrzeni nazw i jest udostępniany między centrami zdarzeń w tej przestrzeni nazw. Każdy jednostek PRZEPŁYWNOŚCI uprawnia przestrzeń nazw do następujących możliwości:
 
-- Do 1 MB na sekundę transferu danych przychodzących zdarzenia (zdarzenia wysyłane do Centrum zdarzeń), ale nie więcej niż 1000 przyjętych zdarzeń, operacji zarządzania lub formantu API wywołań na sekundę.
-- Do 2 MB na sekundę zdarzeń (zdarzenia używane z Centrum zdarzeń), ale nie więcej niż 4096 zdarzeń.
-- Do 84 GB magazynu zdarzeń, (wystarczająca dla domyślnego okresu przechowywania 24-godzinny).
+- Do 1 MB na sekundę zdarzeń związanych z transferem danych przychodzących (zdarzeń wysyłanych do centrum zdarzeń), ale nie więcej niż 1000 zdarzeń związanych z transferem danych przychodzących, operacji zarządzania lub wywołań interfejsu API kontroli na sekundę.
+- Do 2 MB na sekundę zdarzeń związanych z ruchem wychodzącym (zdarzenia używane z centrum zdarzeń), ale nie więcej niż 4096 zdarzeń wychodzących.
+- Do 84 GB miejsca w magazynie zdarzeń (wystarczy dla domyślnego okresu przechowywania 24-godzinnego).
 
-### <a name="how-are-throughput-units-billed"></a>Jak jednostki przepływności są rozliczane?
-Jednostki przepływności (jednostek przepływności) są naliczane godzinowo. Rozliczenie opiera się na maksymalną liczbę jednostek, który został wybrany podczas danej godziny. 
+### <a name="how-are-throughput-units-billed"></a>Jak są rozliczane jednostki przepływności?
+Jednostki przepływności (TUs) są rozliczane godzinowo. Opłaty są naliczane na podstawie maksymalnej liczby jednostek, która została wybrana w danej godzinie. 
 
-### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Jak zoptymalizować użycie na Moje jednostki przepływności
-Rozpocznij najmniejsza jedną jednostkę przepływności (TU) i Włącz [automatyczne rozszerzanie](event-hubs-auto-inflate.md). Automatyczne rozszerzanie funkcja umożliwia Ci się rozwijać swoje jednostek przepływności w miarę wzrostu ruchu/ładunku. Można również ustawić górny limit liczby jednostek przepływności.
+### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Jak mogę zoptymalizować użycie w jednostkach przepływności?
+Możesz rozpocząć od jednej jednostki przepływności (jednostek PRZEPŁYWNOŚCI) i włączyć funkcję [autodostrajania](event-hubs-auto-inflate.md). Funkcja autostartu pozwala rozwijać TUs w miarę wzrostu ruchu sieciowego. Można również ustawić górny limit liczby TUs.
 
-### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Jak działa automatyczne rozszerzanie funkcji usługi Event hubs?
-Automatyczne rozszerzanie funkcji umożliwia skalowanie w górę jednostek przepływności (jednostek przepływności). Oznacza to, że można uruchomić kupując niski jednostek przepływności i automatyczne rozszerzanie skaluje się Twoje jednostek przepływności usługi transferu danych przychodzących wraz ze wzrostem. Oferuje on ekonomiczna opcja i pełną kontrolę nad liczbę jednostek przepływności do zarządzania. Ta funkcja jest **skalowanie w górę tylko** funkcji, a całkowicie kontrolowania skalowanie w dół liczbę jednostek przepływności, aktualizując je. 
+### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Jak działa funkcja autorozdęcie Event Hubs?
+Funkcja automatycznego rozszerzania umożliwia skalowanie jednostek przepływności (TUs). Oznacza to, że możesz zacząć od zakupu niskich TUs, a funkcja autodostrajania skaluje swój TUs w miarę wzrostu ruchu przychodzącego. Zapewnia ekonomiczne opcje i pełną kontrolę nad liczbą TUs do zarządzania. Ta funkcja jest funkcją **tylko do skalowania w górę** i można całkowicie kontrolować skalowanie liczby TUs przez ich aktualizację. 
 
-Możesz zaczynać się niskim jednostek przepływności (jednostek przepływności), na przykład 2 jednostek przepływności. Jeśli przewidzieć, że ruch sieciowy może przekroczyć 15 jednostek przepływności, wykonując automatyczne rozszerzanie funkcji w ramach przestrzeni nazw, a następnie ustaw maksymalny limit 15 jednostek przepływności. Możesz teraz rozwinąć swoje jednostek przepływności automatycznie wraz ze wzrostem natężenia ruchu.
+Możesz zacząć od jednostek o niskiej przepływności (TUs), na przykład 2 TUs. Jeśli przewidujesz, że ruch może wzrosnąć do 15 TUs, Włącz funkcję autorozszerzania w przestrzeni nazw i ustaw maksymalny limit na 15 TUs. Teraz możesz rozwijać TUs automatycznie w miarę wzrostu ruchu.
 
-### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Wiążą się po włączeniu automatyczne rozszerzanie funkcji?
-Brak **bez kosztów** skojarzone z tą funkcją. 
+### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Czy podczas włączania funkcji autostartu jest koszt skojarzony?
+**Brak kosztów** skojarzonych z tą funkcją. 
 
-### <a name="how-are-throughput-limits-enforced"></a>Jak są wymuszane limity przepustowości?
-Jeśli przepustowość łączny ruch przychodzący lub występowania zdarzeń łączny ruch przychodzący we wszystkich centrach zdarzeń w przestrzeni nazw przekroczy agregacji jednostek przepływności, nadawcy są ograniczane i otrzymywać komunikaty o błędach wskazujące, że przekroczony został przydział transferu danych przychodzących.
+### <a name="how-are-throughput-limits-enforced"></a>Jak są wymuszane limity przepływności?
+Jeśli całkowita przepływność transferu danych przychodzących lub całkowita szybkość zdarzeń związanych z transferem danych przychodzących we wszystkich centrach zdarzeń w przestrzeni nazw przekroczy zagregowany limit jednostek przepływności, nadawcy są ograniczane i odbierane są błędy wskazujące, że przekroczony został przydział transferu danych przychodzących.
 
-Jeśli przepływności łączny ruch wychodzący lub szybkość ruchu wychodzącego łączna liczba zdarzeń we wszystkich centrach zdarzeń w przestrzeni nazw przekroczy agregacji jednostek przepływności, odbiorcy są ograniczane i otrzymywać komunikaty o błędach wskazujące, że przekroczony został przydział ruchu wychodzącego. Przydziały transferu danych przychodzących i wychodzących są wymuszane oddzielnie, dlatego, że nadawca nie może spowodować spowolnienia przyjmowania zdarzeń, ani odbiorca uniemożliwi zdarzenia są wysyłane do Centrum zdarzeń.
+Jeśli całkowita przepływność transferu danych wychodzących lub całkowita szybkość zdarzeń związanych z transferem danych wychodzących we wszystkich centrach zdarzeń w przestrzeni nazw przekroczy zagregowany limit jednostek przepływności, odbiorcy zostaną ograniczeni i otrzymają błędy wskazujące, że przekroczono przydział ruchu wychodzącego. Limity przydziałów ruchu przychodzącego i wychodzącego są wymuszane oddzielnie, dzięki czemu żaden nadawca nie może spowodować spowolnienia użycia zdarzenia, a odbiorca nie może uniemożliwić wysyłania zdarzeń do centrum zdarzeń.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Czy istnieje limit liczby jednostek przepływności (jednostek przepływności), które mogą być zarezerwowana wybrane?
-W wielu dzierżawców, oferty jednostki przepływności można powiększać maksymalnie 40 jednostek przepływności (można wybrać maksymalnie 20 jednostek przepływności w portalu i zgłosić bilet pomocy technicznej, aby podnieść go do 40 jednostek przepływności na tej samej przestrzeni nazw). Po przekroczeniu 40 jednostek przepływności, usługa Event Hubs zapewnia modelu opartego na zasobach/pojemności, o nazwie **Event hubs w warstwie dedykowana klastrów**. Dedykowane klastry są sprzedawane w jednostek pojemności (CUs).
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Czy istnieje ograniczenie liczby jednostek przepływności (TUs), które mogą być zarezerwowane lub wybrane?
+W przypadku oferty z wieloma dzierżawcami jednostki przepływności mogą wzrosnąć do 40 TUs (można wybrać do 20 TUs w portalu i zgłosić bilet pomocy technicznej, aby zgłosić go do 40 TUs w tej samej przestrzeni nazw). Poza 40 TUs, Event Hubs oferuje model oparty na zasobach i pojemności nazywany **klastrami Event Hubs — warstwa dedykowana**. Dedykowane klastry są sprzedawane w jednostkach pojemności.
 
 ## <a name="dedicated-clusters"></a>Dedykowane klastry
 
-### <a name="what-are-event-hubs-dedicated-clusters"></a>Co to są klastry usługi Event hubs w warstwie dedykowana?
-Event hubs w warstwie dedykowana klastrów oferują wdrożenia pojedynczej dzierżawy dla klientów o najbardziej wygórowanych wymaganiach. Ta oferta tworzy klaster oparty na pojemności, który nie jest powiązany za jednostki przepływności. Oznacza to, że można wykorzystywać klastra i dotyczące odbierania oraz przesyłanie strumieniowe danych zgodnie z ustawieniem wykorzystanie Procesora i pamięci klastra. Aby uzyskać więcej informacji, zobacz [Event hubs w warstwie dedykowana klastrów](event-hubs-dedicated-overview.md).
+### <a name="what-are-event-hubs-dedicated-clusters"></a>Co to są klastry Event Hubs — warstwa Dedykowana?
+Klastry Event Hubs — warstwa Dedykowana oferują wdrożenia z jedną dzierżawą dla klientów z najbardziej wymaganymi wymaganiami. Ta oferta kompiluje klaster oparty na pojemności, który nie jest powiązany z jednostkami przepływności. Oznacza to, że można użyć klastra do pozyskiwania i przesyłania strumieniowego danych zgodnie z obciążeniem procesora i pamięci klastra. Aby uzyskać więcej informacji, zobacz [Event Hubs — warstwa dedykowana klastrów](event-hubs-dedicated-overview.md).
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Jaka jednostki pojemności pojedynczego Pozwól mi osiągnąć?
-W przypadku dedykowanego klastra ile pozyskiwania i przesyłanie strumieniowe zależy od różnych czynników, takich jak usługi producentów konsumentów, szybkość, z jaką są wprowadzane i przetwarzania i wiele więcej. 
+### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Ile jest jednostka o pojedynczej pojemności do osiągnięcia?
+W przypadku dedykowanego klastra ilość danych do pozyskania i przesyłania strumieniowego zależy od różnych czynników, takich jak producenci, konsumenci, szybkość pozyskiwania i przetwarzania oraz wiele innych. 
 
-Poniższej tabeli przedstawiono wyniki testów porównawczych, że możemy osiągnąć podczas testowania naszych:
+W poniższej tabeli przedstawiono wyniki testów porównawczych, które zostały osiągnięte podczas testowania:
 
-| Kształt ładunku | Odbiorniki | Przepustowość ruchu przychodzącego| Komunikaty przychodzące | Przepustowość danych wychodzących | Komunikaty wychodzące | Łączna liczba jednostek przepływności | Jednostek przepływności na jednostkę pojemności |
+| Kształt ładunku | Odbiorników | Przepustowość ruchu przychodzącego| Komunikaty dotyczące transferu danych przychodzących | Przepustowość ruchu wychodzącego | Komunikaty wychodzące | Łącznie TUs | TUs na CU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Partie 100x1KB | 2 | 400 MB/s | 400 wiad KB/s | 800 MB/s | 800 KB wiad. / s | 400 jednostek przepływności | 100 jednostek przepływności | 
-| Partie 10x10KB | 2 | 666 MB/s | 66.6 wiad KB/s | 1.33 GB/s | 133 wiad KB/s | 666 jednostek przepływności | 166 jednostek przepływności |
-| Partie 6x32KB | 1 | 1,05 GB/s | 34 wiad KB / s | 1,05 GB/s | 34 wiad KB/s | 1000 jednostek przepływności | 250 jednostek przepływności |
+| Partie 100x1KB | 2 | 400 MB/s | komunikaty 400 000/s | 800 MB/s | komunikaty 800k/s | 400 TUs | 100 TUs | 
+| Partie 10x10KB | 2 | 666 MB/s | 66.6 k komunikatów/s | 1,33 GB/s | komunikaty 133k/s | 666 TUs | 166 TUs |
+| Partie 6x32KB | 1 | 1,05 GB/s | komunikaty 34k/s | 1,05 GB/s | komunikaty 34k/s | 1000 TUs | 250 TUs |
 
-Podczas testowania, użyto następujących kryteriów:
+Podczas testowania użyto następujących kryteriów:
 
-- Dedykowany klaster usługi Event Hubs przy użyciu czterech jednostek pojemności (CUs) został użyty. 
-- Centrum zdarzeń, umożliwiający wprowadzanie ma partycje 200. 
-- Dane, które zostało pozyskane została odebrana przez dwie aplikacje odbiorcy odbieranie od wszystkich partycji.
+- Użyto dedykowanego klastra Event Hubs z czterema jednostkami pojemności (CUs). 
+- Centrum zdarzeń używane na potrzeby pozyskiwania ma 200 partycji. 
+- Dane, które zostały odebrane, są odbierane przez dwie aplikacje odbiornika odbierane ze wszystkich partycji.
 
-Wyniki daje wyobrażenie o perspektywę wykraczającą z klastrem dedykowany usługi Event Hubs. Ponadto klaster Dedykuj jest dostarczany z usługi Event Hubs Capture włączony dla Twoich scenariuszy micro-batch- i długoterminowego przechowywania.
+Wyniki przedstawiają informacje o tym, co można osiągnąć za pomocą dedykowanego klastra Event Hubs. Ponadto dedykowany klaster zawiera Event Hubs przechwytywania z włączonym scenariuszem dla mikropartii i długoterminowego przechowywania.
 
-### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Jak utworzyć klaster usługi Event hubs w warstwie dedykowana?
-Utworzyć dedykowany klaster usługi Event Hubs, przesyłając [żądania pomocy technicznej zwiększenia limitu przydziału](https://portal.azure.com/#create/Microsoft.Support) lub kontaktując się [zespołu usługi Event Hubs](mailto:askeventhubs@microsoft.com). Trwa zwykle około dwóch tygodni, można pobrać klastrów wdrożone i przekazywany do użytku przez Ciebie. Ten proces jest tymczasowy do momentu kompletna Samoobsługa są udostępniane za pośrednictwem witryny Azure portal lub szablonów usługi Azure Resource Manager, który trwa około 2 godziny do wdrożenia klastra.
+### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Jak mogę utworzyć klaster Event Hubs — warstwa Dedykowana?
+Tworzenie dedykowanego klastra Event Hubs przez przesłanie [żądania zwiększenia obsługi przydziału](https://portal.azure.com/#create/Microsoft.Support) lub skontaktowanie się z [zespołem Event Hubs](mailto:askeventhubs@microsoft.com). Przeważnie pobieranie klastra i przekazanie go do użycia przez użytkownika trwa od dwóch tygodni. Ten proces jest tymczasowy do momentu udostępnienia kompletnego samodzielnego działania za pomocą szablonów Azure Portal lub Azure Resource Manager, co trwa około dwóch godzin wdrożenia klastra.
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-### <a name="how-many-partitions-do-i-need"></a>Jak wiele partycji jest potrzebne?
-Liczba partycji jest określana podczas tworzenia i musi należeć do zakresu od 2 do 32. Liczby partycji nie można zmieniać, dlatego ustawiając liczbę partycji, trzeba planować długoterminowo. Partycje stanowią mechanizm organizacji danych powiązany z równoległością podrzędną wymaganą w aplikacjach korzystających z tych danych. Liczba partycji w centrum zdarzeń jest bezpośrednio związana z oczekiwaną liczbą jednoczesnych czytników. Aby uzyskać więcej informacji o partycjach, zobacz [partycje](event-hubs-features.md#partitions).
+### <a name="how-many-partitions-do-i-need"></a>Ile partycji jest potrzebnych?
+Liczba partycji jest określana podczas tworzenia i musi należeć do zakresu od 2 do 32. Liczba partycji nie jest zmieniana, dlatego należy rozważyć długoterminową skalę podczas ustawiania liczby partycji. Partycje stanowią mechanizm organizacji danych powiązany z równoległością podrzędną wymaganą w aplikacjach korzystających z tych danych. Liczba partycji w centrum zdarzeń jest bezpośrednio związana z oczekiwaną liczbą jednoczesnych czytników. Aby uzyskać więcej informacji o partycjach, zobacz [partycje](event-hubs-features.md#partitions).
 
-Może być konieczne ustawienie najwyższej możliwej wartości, która jest 32 w momencie tworzenia. Należy pamiętać, że z więcej niż jedną partycją będzie można wysyłać zdarzenia do wielu partycji bez zachowywania kolejności, chyba że skonfigurowano nadawców tylko do jednej partycji z 32, pozostawiając pozostałe 31 partycji. W poprzednim przypadku trzeba będzie odczytywać zdarzenia ze wszystkich partycji 32. W tym drugim przypadku nie ma żadnych oczywistych dodatkowych kosztów poza dodatkową konfiguracją, którą trzeba wykonać na hoście procesora zdarzeń.
+Może być konieczne ustawienie najwyższej możliwej wartości, która jest 32 w momencie tworzenia. Należy pamiętać, że z więcej niż jedną partycją będzie można wysyłać zdarzenia do wielu partycji bez zachowywania kolejności, chyba że skonfigurowano nadawców tylko do jednej partycji z 32, pozostawiając pozostałe 31 partycji. W poprzednim przypadku trzeba będzie odczytywać zdarzenia ze wszystkich partycji 32. W tym drugim przypadku nie ma żadnych oczywistych dodatkowych kosztów poza dodatkową konfiguracją, którą należy wykonać na hoście procesora zdarzeń.
 
-Usługa Event Hubs umożliwia czytnik jednej partycji dla każdej grupy odbiorców. W większości przypadków użycia domyślne ustawienie cztery partycje jest wystarczająca. Jeśli chcesz skalować przetwarzanie zdarzeń, warto rozważyć dodatkowe partycje. Nie ma żadnego limitu określonego przepływność na partycję, jednak zagregowanej przepływności w przestrzeni nazw jest ograniczona przez liczbę jednostek przepływności. Podczas zwiększysz liczbę jednostek przepływności w przestrzeni nazw, może okazać się dodatkowe partycje, aby umożliwić współbieżnych czytników do osiągnięcia własnych maksymalną przepustowość.
+Event Hubs jest zaprojektowana tak, aby zezwalała na pojedynczy czytnik partycji dla każdej grupy odbiorców. W większości przypadków użycia wystarcza domyślnie cztery partycje. Jeśli chcesz skalować przetwarzanie zdarzeń, warto rozważyć dodanie dodatkowych partycji. Nie ma określonego limitu przepływności dla partycji, ale agregowana przepływność w przestrzeni nazw jest ograniczona przez liczbę jednostek przepływności. W miarę zwiększania liczby jednostek przepływności w przestrzeni nazw mogą być potrzebne dodatkowe partycje pozwalające współbieżnym czytelnikom na osiąganie ich maksymalnej przepływności.
 
-Jednak w przypadku modelu, w którym aplikacja ma koligacji określonej partycji zwiększenie liczby partycji może nie być korzyści, użytkownik. Aby uzyskać więcej informacji, zobacz [availability and consistency i](event-hubs-availability-and-consistency.md).
+Jeśli jednak masz model, w którym aplikacja ma koligację z określoną partycją, zwiększenie liczby partycji może nie mieć żadnej korzyści. Aby uzyskać więcej informacji, zobacz [dostępność i spójność](event-hubs-availability-and-consistency.md).
 
 ## <a name="pricing"></a>Cennik
 
-### <a name="where-can-i-find-more-pricing-information"></a>Gdzie mogę znaleźć więcej informacji o cenach
+### <a name="where-can-i-find-more-pricing-information"></a>Gdzie można znaleźć więcej informacji o cenach?
 
-Aby uzyskać pełne informacje na temat cen usługi Event Hubs, zobacz [Event Hubs — cennik szczegóły](https://azure.microsoft.com/pricing/details/event-hubs/).
+Aby uzyskać pełne informacje na temat cennika Event Hubs, zobacz [szczegóły cennika Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Czy jest opłata za zachowywanie zdarzeń usługi Event Hubs przez więcej niż 24 godziny?
+### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Czy jest naliczana opłata za przechowywanie zdarzeń Event Hubs przez ponad 24 godziny?
 
-Warstwa standardowa centra zdarzeń umożliwiają przechowywanie komunikatów dłużej niż 24 godziny przez maksymalnie siedem dni. Jeśli z całkowitej liczby przechowywanych zdarzeń przekroczy limit magazynu dla liczby wybranych jednostek przepływności (84 GB na jednostkę), rozmiar który przekroczy limit jest rozliczany według stawki opublikowanych obiektów Blob platformy Azure storage. Limit magazynu dla każdej jednostki przepływności obejmuje wszystkie koszty przechowywania przez okres 24 godzin (ustawienie domyślne) nawet jeśli jednostka przepływności ma do limitu maksymalnej transferu danych przychodzących.
+Warstwa standardowa Event Hubs zezwala na okresy przechowywania komunikatów dłużej niż 24 godziny przez maksymalnie siedem dni. Jeśli całkowita liczba przechowywanych zdarzeń przekracza limit magazynu dla liczby wybranych jednostek przepływności (84 GB na jednostkę przepływności), rozmiar przekraczający limit jest naliczany według opublikowanej szybkości magazynu obiektów blob platformy Azure. Dopuszczalna ilość miejsca do magazynowania w poszczególnych jednostkach przepływności obejmuje wszystkie koszty przechowywania przez okres 24 godzin (domyślnie), nawet jeśli jednostka przepływności jest używana do maksymalnego limitu transferu danych przychodzących.
 
-### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Jak jest rozmiar magazynu usługi Event Hubs obliczane i rozliczane?
+### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Jak jest obliczany i naliczany rozmiar magazynu Event Hubs?
 
-Całkowity rozmiar wszystkich zapisanych zdarzeń wraz ze wszystkimi narzutami wewnętrznymi na nagłówki zdarzeń w strukturach przechowywania dysku we wszystkich centrach zdarzeń jest mierzony przez cały dzień. Na koniec dnia wyliczana jest szczytowa wielkość magazynu. Dzienny limit magazynu jest wyliczany na podstawie minimalnej liczby jednostek przepływności, które zostały wybrane w ciągu dnia (każda jednostka przepływności ma limit 84 GB). Jeśli całkowity rozmiar przekracza obliczeniowe dzienny limit magazynu, obszar magazynu przekraczający jest opłacie za magazyn obiektów Blob platformy Azure (w **magazyn lokalnie nadmiarowy** współczynnik).
+Całkowity rozmiar wszystkich przechowywanych zdarzeń, w tym dowolnych wewnętrznych nakładów dla nagłówków zdarzeń lub struktur magazynów dyskowych we wszystkich centrach zdarzeń, jest mierzony przez cały dzień. Na koniec dnia wyliczana jest szczytowa wielkość magazynu. Dzienny limit magazynu jest wyliczany na podstawie minimalnej liczby jednostek przepływności, które zostały wybrane w ciągu dnia (każda jednostka przepływności ma limit 84 GB). Jeśli całkowity rozmiar przekracza obliczony dzienny limit magazynu, nadmiarowy magazyn jest rozliczany przy użyciu stawek za magazyn obiektów blob platformy Azure (za **Magazyn lokalnie nadmiarowy** ).
 
-### <a name="how-are-event-hubs-ingress-events-calculated"></a>Jak są obliczane zdarzenia transferu danych przychodzących usługi Event Hubs?
+### <a name="how-are-event-hubs-ingress-events-calculated"></a>Jak Event Hubs są obliczane zdarzenia związane z transferem danych przychodzących?
 
-Każde zdarzenie przesłane do Centrum zdarzeń jest liczone jako płatny komunikat. *Transferu danych przychodzących zdarzenia* jest zdefiniowany jako jednostka danych o rozmiarze mniejszym niż 64 KB. Dowolne zdarzenie, która jest mniejsza niż lub równym 64 KB jest traktowane jako jako jedno płatne zdarzenie. Jeśli zdarzenie jest większa niż 64 KB, liczba płatnych zdarzeń jest obliczana rozmiar zdarzenia, wielokrotność 64 KB. Na przykład 8 KB wysłane do Centrum zdarzeń jest rozliczany jako jedno zdarzenie, ale komunikat rozmiarze 96 KB wysłany do Centrum zdarzeń jest rozliczany jako dwa zdarzenia.
+Każde zdarzenie wysyłane do centrum zdarzeń jest traktowane jako komunikat rozliczany. *Zdarzenie* przychodzące jest zdefiniowane jako jednostka danych, która jest mniejsza lub równa 64 KB. Każde zdarzenie o rozmiarze mniejszym lub równym 64 KB jest traktowane jako jedno konto rozliczane. Jeśli zdarzenie jest większe niż 64 KB, liczba zdarzeń rozliczanych jest obliczana zgodnie z rozmiarem zdarzenia (wielokrotność 64 KB). Na przykład zdarzenie 8 KB wysyłane do centrum zdarzeń jest rozliczane jako jedno zdarzenie, ale komunikat o 96 KB wysłany do centrum zdarzeń jest rozliczany jako dwa zdarzenia.
 
-Zdarzenia używane z Centrum zdarzeń, ponieważ także operacje zarządzania i wywołania kontrolki, takie jak punkty kontrolne, nie są liczone jako płatne przyjętych zdarzeń, ale są wliczane do limitu jednostek przepływności.
+Zdarzenia używane z centrum zdarzeń, a także operacje zarządzania i wywołania kontrolne, takie jak punkty kontrolne, nie są wliczane do płatnych zdarzeń związanych z transferem danych przychodzących, ale są naliczane do limitu jednostek przepływności.
 
-### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Czy opłaty za połączenia obsługiwane przez brokera dotyczą usługi Event Hubs?
+### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Czy opłaty za połączenia obsługiwane przez brokera dotyczą Event Hubs?
 
-Opłaty za połączenia się tylko wtedy, gdy jest używany protokół AMQP. Nie ma opłat za połączenia związane z przesyłaniem zdarzeń przez protokół HTTP niezależnie od liczby systemów lub urządzeń wysyłających. Jeśli planowane jest użycie połączeń AMQP (na przykład, aby osiągnąć bardziej efektywnego strumieniowego przesyłania zdarzeń lub zapewnienia komunikacji dwukierunkowej w poleceniu IoT i kontrolować scenariuszy), zobacz [usługi Event Hubs, informacje o cenach](https://azure.microsoft.com/pricing/details/event-hubs/) strony, aby uzyskać szczegółowe informacje, o ile połączenia są uwzględnione w poszczególnych warstwach usług.
+Opłaty za połączenia są stosowane tylko wtedy, gdy używany jest protokół AMQP. Nie ma opłat za połączenia związane z przesyłaniem zdarzeń przez protokół HTTP niezależnie od liczby systemów lub urządzeń wysyłających. Jeśli planujesz używać AMQP (na przykład w celu osiągnięcia bardziej wydajnego przesyłania strumieniowego zdarzeń lub umożliwienia dwukierunkowej komunikacji w scenariuszach poleceń i kontroli IoT), zobacz stronę [Informacje o cenach Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) , aby uzyskać szczegółowe informacje o liczbie połączeń uwzględnionych w poszczególnych warstwach usług.
 
 ### <a name="how-is-event-hubs-capture-billed"></a>W jaki sposób są naliczane opłaty za funkcję przechwytywanie usługi Event Hubs?
 
-Przechwytywanie jest włączona, gdy dowolne Centrum zdarzeń w przestrzeni nazw ma włączoną opcję przechwytywania. Funkcja przechwytywania usługi Event Hubs jest rozliczana co godzinę za zakupioną jednostkę przepływności. W miarę zwiększania lub zmniejszania liczby jednostek przepływności, rozliczanie usługi Event Hubs Capture odzwierciedla te zmiany wyrażane w pełnych. Aby uzyskać więcej informacji na temat rozliczeń przechwytywania usługi Event Hubs, zobacz [usługi Event Hubs, informacje o cenach](https://azure.microsoft.com/pricing/details/event-hubs/).
+Przechwytywanie jest włączone, gdy dowolne centrum zdarzeń w przestrzeni nazw ma włączoną opcję przechwytywania. Event Hubs przechwytywania jest rozliczana godzinowo za zakupioną jednostkę przepływności. W miarę zwiększania lub zmniejszania liczby jednostek przepływności, Event Hubs przechwycenia uwzględnia te zmiany w pełnych godzinach. Aby uzyskać więcej informacji na temat rozliczeń Event Hubs przechwytywania, zobacz [Event Hubs informacji o cenach](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Zostanie naliczona za konto magazynu wybrane dla przechwytywania usługi Event Hubs?
+### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Czy jest naliczana opłata za konto magazynu wybrane do przechwycenia Event Hubs?
 
-Przechwytywanie korzysta z konta magazynu, który podajesz podczas włączone w Centrum zdarzeń. Jako jest kontem magazynu, wszelkie zmiany w przypadku tej konfiguracji są doliczane do subskrypcji platformy Azure.
+Funkcja przechwytywania korzysta z konta magazynu, które jest dostępne, gdy jest włączone w centrum zdarzeń. Ponieważ jest to Twoje konto magazynu, wszelkie zmiany tej konfiguracji są rozliczane w ramach subskrypcji platformy Azure.
 
 ## <a name="quotas"></a>Przydziały
 
-### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Czy istnieją wykorzystani limitów przydziałów, skojarzone z usługą Event Hubs?
+### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Czy istnieją przydziały skojarzone z Event Hubs?
 
-Aby uzyskać listę wszystkich przydziałów usługi Event Hubs, zobacz [przydziały](event-hubs-quotas.md).
+Aby uzyskać listę wszystkich przydziałów Event Hubs, zobacz [przydziały](event-hubs-quotas.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Dlaczego nie mogę utworzyć przestrzeni nazw po usunięciu jej z innej subskrypcji? 
-Po usunięciu przestrzeni nazw z subskrypcji poczekaj 4 godziny, a następnie utwórz ją z tą samą nazwą w innej subskrypcji. W przeciwnym razie może zostać wyświetlony następujący komunikat o błędzie `Namespace already exists`:. 
+Po usunięciu przestrzeni nazw z subskrypcji poczekaj 4 godziny, a następnie utwórz ją z tą samą nazwą w innej subskrypcji. W przeciwnym razie może zostać wyświetlony następujący komunikat o błędzie: `Namespace already exists`. 
 
-### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Co to są wyjątki generowane przez centra zdarzeń i ich sugerowane akcje?
+### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Jakie są wyjątki generowane przez Event Hubs i ich sugerowane akcje?
 
-Aby uzyskać listę możliwych wyjątków usługi Event Hubs, zobacz [Przegląd wyjątki](event-hubs-messaging-exceptions.md).
+Listę możliwych wyjątków Event Hubs można znaleźć w temacie [wyjątki — Omówienie](event-hubs-messaging-exceptions.md).
 
 ### <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
-Usługa Event Hubs obsługuje dwa typy [dzienniki diagnostyczne](event-hubs-diagnostic-logs.md) — Przechwytywanie dzienniki błędów i operacyjne dzienniki — które są reprezentowane w formacie json i może zostać włączona w witrynie Azure portal.
+Event Hubs obsługuje dwa typy [dzienników diagnostycznych](event-hubs-diagnostic-logs.md) — przechwytywanie dzienników błędów i dzienników operacyjnych — obie są reprezentowane w formacie JSON i można je włączyć za pomocą Azure Portal.
 
 ### <a name="support-and-sla"></a>Pomoc techniczna i umowa SLA
 
-Pomoc techniczna dla usługi Event Hubs jest dostępna za pośrednictwem [forów społeczności użytkowników](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). Pomoc dotycząca rozliczeń i subskrypcji jest świadczona bezpłatnie.
+Pomoc techniczna dla Event Hubs jest dostępna na [forach społeczności użytkowników](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). Pomoc dotycząca rozliczeń i subskrypcji jest świadczona bezpłatnie.
 
-Aby dowiedzieć się więcej o umowach SLA, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/) strony.
+Aby dowiedzieć się więcej o umowie SLA, zobacz stronę [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
-* [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Tworzenie centrum zdarzeń](event-hubs-create.md)
-* [Event Hubs automatyczne rozszerzanie](event-hubs-auto-inflate.md)
+* [Event Hubs autodostrajania](event-hubs-auto-inflate.md)

@@ -1,6 +1,6 @@
 ---
-title: Przegląd cyklu życia aktora usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Wyjaśnia, Usługa Service Fabric Reliable Actor cyklu życia, wyrzucanie elementów bezużytecznych i ręczne usuwanie aktorów i ich stanu
+title: Omówienie cyklu życia aktora usługi Azure Service Fabric | Microsoft Docs
+description: Wyjaśniono Service Fabric niezawodnego cyklu życia aktora, wyrzucania elementów bezużytecznych i ręcznego usuwania uczestników i ich stanu
 services: service-fabric
 documentationcenter: .net
 author: amanbha
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: f81fde441a2f0dc2504601f82e5b890eb6e216de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a8e95c634a1d30b7c566fcd907cb06f34043fa9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105296"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706491"
 ---
-# <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Cykl życia aktora, automatyczne wyrzucanie elementów bezużytecznych i ręczne delete
-Aktor jest aktywowana po raz pierwszy następuje wywołanie do dowolnego z jego metod. Aktor jest dezaktywowany (zebranych przez środowisko uruchomieniowe aktorów pamięci), jeśli nie jest używany przez można skonfigurować czas. Aktor i jej stan można również zostaną usunięte ręcznie w dowolnym momencie.
+# <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Cykl życia aktora, automatyczne odzyskiwanie pamięci i usuwanie ręczne
+Aktor jest uaktywniany podczas pierwszego wywołania każdej z jego metod. Aktor jest dezaktywowany (elementy bezużyteczne zbierane przez środowisko uruchomieniowe aktorów), jeśli nie jest używany przez konfigurowalny okres czasu. Aktor i jego stan można również usunąć ręcznie w dowolnym momencie.
 
 ## <a name="actor-activation"></a>Aktywacja aktora
-Po aktywowaniu aktora są następujące operacje:
+Po aktywowaniu aktora następuje:
 
-* Podczas wywołania jest dostępna dla aktora i nie jest już aktywna, jest tworzony nowy aktora.
-* Stanu aktora jest ładowany, jeśli jest jego stan.
-* `OnActivateAsync` (C#) lub `onActivateAsync` wywoływana jest metoda (Java), (które mogą zostać zastąpione w implementacji aktora).
-* Aktor teraz jest uważany za aktywny.
+* Gdy wywołanie pochodzi z aktora, a jeden z nich nie jest już aktywny, tworzony jest nowy aktor.
+* Stan aktora jest ładowany, jeśli jest on konserwowany.
+* Wywoływana jest metodaC#`OnActivateAsync` () lub `onActivateAsync` (Java) (która może zostać przesłonięta w implementacji aktora).
+* Aktor jest teraz uznawany za aktywny.
 
 ## <a name="actor-deactivation"></a>Dezaktywacja aktora
-Po dezaktywacji aktora są następujące operacje:
+Gdy aktor zostanie zdezaktywowany, następuje:
 
-* Aktor nie jest używany przez pewien czas, spowoduje jego usunięcie z tabeli aktywnych aktorów.
-* `OnDeactivateAsync` (C#) lub `onDeactivateAsync` wywoływana jest metoda (Java), (które mogą zostać zastąpione w implementacji aktora). Czyści wszystkie czasomierze aktora. Aktor operacje, takie jak stan, w których zmiany nie powinna być wywoływana z tej metody.
+* Gdy aktor nie jest używany przez jakiś czas, jest usuwany z tabeli aktywnych aktorów.
+* Wywoływana jest metodaC#`OnDeactivateAsync` () lub `onDeactivateAsync` (Java) (która może zostać przesłonięta w implementacji aktora). Czyści wszystkie czasomierze aktora. Operacji aktora, takich jak zmiany stanu, nie należy wywoływać z tej metody.
 
 > [!TIP]
-> Środowisko uruchomieniowe aktorów sieci szkieletowej emituje niektóre [zdarzenia dotyczące aktora Aktywacja i dezaktywacja](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters). Są one przydatne w Diagnostyka i monitorowanie wydajności.
+> Środowisko uruchomieniowe aktorów sieci szkieletowych emituje niektóre [zdarzenia związane z aktywacją aktora i dezaktywacją](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters). Są one przydatne w przypadku diagnostyki i monitorowania wydajności.
 >
 >
 
-### <a name="actor-garbage-collection"></a>Aktor wyrzucania elementów bezużytecznych
-Po dezaktywacji aktora są zwalniane odwołania do obiektu aktora i może być bezużyteczne zwykle przez środowisko uruchomieniowe języka wspólnego (CLR) lub moduł odśmiecania pamięci maszyny wirtualnej (JVM) języka java. Wyrzucanie elementów bezużytecznych tylko czyści obiektu aktora. robi **nie** usunięcia stanu przechowywanego na Menedżera stanu aktora. Przy następnym aktora została aktywowana, tworzony jest nowy obiekt aktora i jej przywróceniu.
+### <a name="actor-garbage-collection"></a>Zbieranie elementów bezużytecznych aktora
+Gdy aktor zostanie zdezaktywowany, odwołania do obiektu aktora są zwalniane i może być nieelementowo gromadzony w normalny sposób przez moduł JVMer środowiska uruchomieniowego języka wspólnego (CLR) lub maszyny wirtualnej Java. Wyrzucanie elementów bezużytecznych czyści obiekt aktora; **nie usuwa stanu** przechowywanego w Menedżerze stanu aktora. Następnym razem, gdy aktor zostanie uaktywniony, zostanie utworzony nowy obiekt aktora i jego stan zostanie przywrócony.
 
-Co jest liczone jako "używane" na potrzeby dezaktywacji i wyrzucania elementów bezużytecznych?
+Co jest traktowane jako "używane" na potrzeby dezaktywacji i wyrzucania elementów bezużytecznych?
 
-* Odbieranie połączenia
-* `IRemindable.ReceiveReminderAsync` Metoda wywoływana (ma zastosowanie tylko wtedy, gdy aktor używa przypomnienia)
+* Otrzymywanie wywołania
+* Wywoływanie metody `IRemindable.ReceiveReminderAsync` (ma zastosowanie tylko wtedy, gdy aktor używa przypomnień)
 
 > [!NOTE]
-> Jeśli aktora używa czasomierze i jej wywołanie zwrotne czasomierza jest wywoływana, nie **nie** są liczone jako "używane".
+> Jeśli aktor wykorzystuje czasomierze i wywołanie zwrotne czasomierza jest wywoływane, **nie** jest liczone jako "używane".
 >
 >
 
-Zanim przejdziemy do szczegółów dezaktywacji, jest ważne zdefiniować następujące warunki:
+Przed przejściem do szczegółów dezaktywacji należy zdefiniować następujące warunki:
 
-* *Interwał skanowania*. Jest to interwał, jaką aktorów środowisko uruchomieniowe szuka aktorów, które będzie możliwa ich dezaktywacja swojej tabeli aktywnych aktorów i wyrzucania. Wartość domyślna to jest 1 minutę.
-* *Limit czasu bezczynności*. Jest to ilość czasu, który Aktor musi pozostać nieużywane (bezczynny), zanim możliwa ich Dezaktywacja i wyrzucania. Wartość domyślna to jest 60 minut.
+* *Interwał skanowania*. Jest to interwał, w którym uczestnicy środowiska uruchomieniowego skanuje swoją aktywną tabelę aktorów dla aktorów, które można dezaktywować i wyrzucać elementy bezużyteczne. Wartość domyślna tego ustawienia to 1 minutę.
+* *Limit czasu bezczynności*. Jest to czas, przez który aktor musi pozostać nieużywany (bezczynny), zanim będzie można go dezaktywować i wyrzucać elementy bezużyteczne. Wartość domyślna to 60 min.
 
-Zazwyczaj nie trzeba zmienić te ustawienia domyślne. Jednakże, jeśli to konieczne, interwałami można zmienić, modyfikując `ActorServiceSettings` podczas rejestrowania usługi [usługa aktora](service-fabric-reliable-actors-platform.md):
+Zazwyczaj nie trzeba zmieniać tych wartości domyślnych. Jednak w razie potrzeby te interwały można zmienić za `ActorServiceSettings` podczas rejestrowania [usługi aktora](service-fabric-reliable-actors-platform.md):
 
 ```csharp
 public class Program
@@ -94,36 +94,36 @@ public class Program
     }
 }
 ```
-Dla każdego aktywnego aktora w środowisku uruchomieniowym aktora przechowuje informacje o ilość czasu, która była ona bezczynna (tj. nie jest używany). W środowisku uruchomieniowym aktora sprawdza każdą z uczestnikami co `ScanIntervalInSeconds` aby zobaczyć, może być pamięci zbierane i pobiera ją, jeśli był bezczynny `IdleTimeoutInSeconds`.
+Dla każdego aktywnego aktora środowisko uruchomieniowe aktora śledzi ilość czasu, przez który był bezczynny (tj. nie jest używany). Środowisko wykonawcze aktora sprawdza każdy z uczestników każdego `ScanIntervalInSeconds`, aby sprawdzić, czy może być odzyskiwane jako elementy bezużyteczne i oznaczać, że jest bezczynna dla `IdleTimeoutInSeconds`.
 
-W dowolnym momencie aktora jest używany, jego czas bezczynności zostaje zresetowana do 0. Po tym aktora może zostać usunięte tylko wtedy, gdy ponownie węzeł pozostanie bezczynny dla `IdleTimeoutInSeconds`. Odwołaj aktora jest uważany zostały użyte, jeśli jest wykonywane metody interfejsu aktora lub wywołanie zwrotne przypomnienie aktora. Jest Aktor **nie** uważane za użyte, jeśli jej wywołanie zwrotne czasomierza jest wykonywane.
+Gdy aktor jest używany, jego czas bezczynności jest resetowany do wartości 0. Po wykonaniu tej czynności aktor może być odzyskiwany tylko wtedy, gdy jest on ponownie bezczynny dla `IdleTimeoutInSeconds`. Odwołaj, że aktor jest uznawany za używany, jeśli jest wykonywana metoda interfejsu aktora lub wywołanie zwrotne przypomnienia aktora. Aktor **nie** jest uważany za używany, jeśli jest wykonywane wywołanie zwrotne czasomierza.
 
-Na poniższym diagramie przedstawiono cykl życia pojedynczego aktora w celu zilustrowania koncepcji te.
+Na poniższym diagramie przedstawiono cykl życia pojedynczego aktora ilustrującego te koncepcje.
 
 ![Przykład czasu bezczynności][1]
 
-W przykładzie przedstawiono wpływ wywołania metody aktora, przypomnienia i zegary na okres istnienia tego aktora. Warto wspomnieć o następujących kwestiach dotyczących przykładu:
+W przykładzie pokazano wpływ wywołań metod aktorów, przypomnień i czasomierzy w okresie istnienia aktora. Następujące punkty dotyczące przykładu są wymieniane:
 
-* ScanInterval i IdleTimeout są ustawione na 5 i 10 odpowiednio. (Jednostki nie mają znaczenia, ponieważ naszym celem jest tylko w celu zilustrowania koncepcji.)
-* Skanowanie w poszukiwaniu Aktorzy stanowią bezużytecznych odbywa się na T = 0, 5, 10, 15, 20, 25, zgodnie z definicją interwał skanowania 5.
-* Okresowe czasomierz wyzwala T = 4, 8, 12, 16, 20, 24, i wykonuje jej wywołanie zwrotne. Nie ma wpływu na czas bezczynności, po aktora.
-* Wywołanie metody aktora w T = 7 resetuje czas bezczynności, po 0 i opóźnia wyrzucanie elementów bezużytecznych aktora.
-* Wywołanie zwrotne przypomnienie aktor wykonuje na T = 14 i dalsze opóźnienia wyrzucanie elementów bezużytecznych aktora.
-* Podczas skanowania kolekcji wyrzucania elementów na T = 25 aktora czas bezczynności, po wreszcie przekracza limit czasu bezczynności 10, a aktor jest bezużyteczne.
+* ScanInterval i IdleTimeout są odpowiednio ustawione na 5 i 10. (Jednostki nie mają tu znaczenia, ponieważ naszym celem jest tylko zilustrowanie koncepcji).
+* Skanowanie dla aktorów, które mają być odzyskiwane, ma miejsce w T = 0, 5, 10, 15, 20, 25, zgodnie z definicją w interwale skanowania równym 5.
+* Okresowe czasomierze są generowane w T = 4, 8, 12, 16, 20, 24, a jego wywołanie zwrotne jest wykonywane. Nie ma to wpływu na czas bezczynności aktora.
+* Wywołanie metody aktora w T = 7 resetuje czas bezczynności do 0 i opóźnia wyrzucanie elementów bezużytecznych aktora.
+* Wywołanie zwrotne przypomnień aktora jest wykonywane o godzinie T = 14 i dalsze opóźnia wyrzucanie elementów bezużytecznych aktora.
+* Podczas skanowania wyrzucania elementów bezużytecznych na poziomie T = 25 czas bezczynności aktora poza limitem czasu bezczynności wynoszącym 10 i aktora jest odzyskiwana.
 
-Aktor nigdy nie będą bezużyteczne podczas wykonywania jednej z jego metod, niezależnie od tego, ile jest zużywany czas podczas wykonywania tej metody. Jak wspomniano wcześniej, wykonywanie metod interfejsu aktora i wywołania zwrotne przypomnienie zapobiega wyrzucania elementów bezużytecznych poprzez zresetowanie aktora czas bezczynności, po na 0. Wykonywanie wywołań zwrotnych Czasomierz nie powoduje resetowania czas bezczynności, po na 0. Jednak wyrzucanie elementów bezużytecznych aktora jest odroczone do czasu, zakończyła wykonywanie zadania czasomierza wywołania zwrotnego.
+Aktor nigdy nie zostanie pobrany jako bezużyteczny podczas wykonywania jednej z jej metod, niezależnie od tego, ile czasu zajmuje się wykonywaniem tej metody. Jak wspomniano wcześniej, wykonywanie metod interfejsu aktora i wywołania zwrotne przypomnień uniemożliwia wyrzucanie elementów bezużytecznych przez zresetowanie czasu bezczynności aktora do wartości 0. Wykonanie wywołania zwrotnego czasomierza nie powoduje zresetowania czasu bezczynności do wartości 0. Jednak wyrzucanie elementów bezużytecznych aktora jest odroczone do momentu zakończenia wykonywania wywołania zwrotnego czasomierza.
 
-## <a name="manually-deleting-actors-and-their-state"></a>Ręczne usuwanie aktorów i ich stanu
-Wyrzucanie elementów bezużytecznych dezaktywowane aktorów tylko Czyści obiekt aktora, ale nie powoduje usunięcia danych, która jest przechowywana w Menedżer stanu aktora. Jeśli ponowna aktywacja jest Aktor, jego dane ponownie stają się dostępne za pośrednictwem Menedżera stanu. W przypadku gdy aktorów przechowywanie danych w State Manager i są dezaktywowane, ale nigdy aktywowany ponownie może być konieczne do wyczyszczenia ich danych.  Przykłady sposobu usuwania aktorów, przeczytaj [usuwanie aktorów i ich stan](service-fabric-reliable-actors-delete-actors.md).
+## <a name="manually-deleting-actors-and-their-state"></a>Ręczne usuwanie aktorów i ich Stanów
+Wyrzucanie elementów bezużytecznych nieaktywowanych aktorów jedynie czyści obiekt aktora, ale nie usuwa danych przechowywanych w Menedżerze stanu aktora. Po ponownym aktywowaniu aktora jego dane zostaną ponownie udostępnione za pomocą menedżera stanu. W przypadkach, gdy aktory przechowują dane w Menedżerze stanu i są dezaktywowane, ale nigdy nie są ponownie aktywowane, może być konieczne wyczyszczenie danych.  Przykłady usuwania aktorów, odczytu [i ich stanu](service-fabric-reliable-actors-delete-actors.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Aktor czasomierze i przypomnienia](service-fabric-reliable-actors-timers-reminders.md)
+## <a name="next-steps"></a>Następne kroki
+* [Czasomierze aktora i przypomnienia](service-fabric-reliable-actors-timers-reminders.md)
 * [Zdarzenia aktora](service-fabric-reliable-actors-events.md)
-* [Wielobieżność aktora](service-fabric-reliable-actors-reentrancy.md)
-* [Aktor Diagnostyka i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)
+* [Współużytkowania wątkowości aktora](service-fabric-reliable-actors-reentrancy.md)
+* [Diagnostyka aktora i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)
 * [Dokumentacja interfejsu API aktora](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Kod przykładowy w języku C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Kod przykładowy w języku Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [C#Przykładowy kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Przykładowy kod w języku Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

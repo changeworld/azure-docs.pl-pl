@@ -1,17 +1,17 @@
 ---
-title: 'Szybki Start: uruchamianie aplikacji przy użyciu usługi Maven — chmura Wiosenna Azure'
-description: Uruchamianie przykładowej aplikacji przy użyciu Maven
+title: Szybki Start — uruchamianie aplikacji przy użyciu usługi Maven z chmurą Azure wiosną
+description: W tym przewodniku Szybki Start Uruchom przykładową aplikację przy użyciu Maven
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ea840d1e133c213c907e596e5eb0a651820291c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384078"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708861"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu wtyczki Maven
 
@@ -33,7 +33,7 @@ Postępując zgodnie z tym przewodnikiem Szybki Start, dowiesz się, jak:
 >[!TIP]
 > Azure Cloud Shell to bezpłatna interaktywna powłoka, której można użyć do uruchomienia poleceń z tego artykułu. Ma ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje narzędzia Git, zestawu Java Development Kit (JDK), Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com). Aby uzyskać więcej informacji, zobacz [omówienie Azure Cloud Shell](../cloud-shell/overview.md).
 
-Aby ukończyć ten przewodnik Szybki start:
+Aby ukończyć ten przewodnik Szybki Start:
 
 1. [Zainstaluj oprogramowanie Git](https://git-scm.com/).
 2. [Zainstaluj program JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).

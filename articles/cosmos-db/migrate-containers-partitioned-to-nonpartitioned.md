@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844405"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706067"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrowanie kontenerów bez partycjonowania do kontenerów partycjonowanych
 
@@ -24,7 +24,7 @@ Kontenery bez partycjonowania są starsze i należy migrować istniejące konten
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Migrowanie kontenera przy użyciu klucza partycji zdefiniowanej przez system
 
-W celu obsługi migracji Azure Cosmos DB udostępnia klucz partycji zdefiniowany przez system o nazwie `/_partitionkey` we wszystkich kontenerach, które nie mają klucza partycji. Nie można zmienić definicji klucza partycji po migracji kontenerów. Na przykład definicja kontenera migrowanego do kontenera partycjonowanego będzie następująca:
+W celu obsługi migracji Azure Cosmos DB udostępnia klucz partycji zdefiniowany przez system o nazwie `/_partitionkey` na wszystkich kontenerach, które nie mają klucza partycji. Nie można zmienić definicji klucza partycji po migracji kontenerów. Na przykład definicja kontenera migrowanego do kontenera partycjonowanego będzie następująca:
 
 ```json
 {
@@ -91,11 +91,11 @@ ItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-Aby zapoznać się z kompletnym przykładem, zobacz repozytorium [.NET Samples](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) w witrynie GitHub.
+Aby zapoznać się z kompletnym przykładem, zobacz repozytorium [.NET Samples][1] w witrynie GitHub.
                       
 ## <a name="migrate-the-documents"></a>Migrowanie dokumentów
 
-Mimo że definicja kontenera jest rozszerzona za pomocą właściwości klucza partycji, dokumenty w kontenerze nie są migrowane. Oznacza to, że właściwość klucza partycji systemowej `/_partitionKey` ścieżka nie jest automatycznie dodawana do istniejących dokumentów. Musisz ponownie podzielić istniejące dokumenty, odczytując dokumenty, które zostały utworzone bez klucza partycji, i Zapisz je ponownie z właściwością `_partitionKey` w dokumentach.
+Mimo że definicja kontenera jest rozszerzona za pomocą właściwości klucza partycji, dokumenty w kontenerze nie są migrowane. Oznacza to, że właściwość klucza partycji systemowej `/_partitionKey` ścieżka nie jest automatycznie dodawana do istniejących dokumentów. Należy ponownie podzielić na partycje istniejące dokumenty, odczytując dokumenty, które zostały utworzone bez klucza partycji i ponownie zapisuje je przy użyciu właściwości `_partitionKey` w dokumentach.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Dostęp do dokumentów, które nie mają klucza partycji
 
@@ -110,7 +110,7 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-Aby zapoznać się z kompletnym przykładem na temat ponownego partycjonowania dokumentów, zobacz repozytorium [.NET Samples](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) w witrynie GitHub. 
+Aby zapoznać się z kompletnym przykładem na temat ponownego partycjonowania dokumentów, zobacz repozytorium [.NET Samples][1] w witrynie GitHub. 
 
 ## <a name="compatibility-with-sdks"></a>Zgodność z zestawami SDK
 
@@ -120,7 +120,9 @@ Jeśli migrowany kontener jest używany przez najnowszą wersję zestawu SDK/v3 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Partycjonowanie w Azure Cosmos DB](partitioning-overview.md)
-* [Jednostki żądań w Azure Cosmos DB](request-units.md)
-* [Obsługa przepływności na kontenerach i bazach danych](set-throughput.md)
+* [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)
+* [Jednostki żądania w usłudze Azure Cosmos DB](request-units.md)
+* [Aprowizacja przepływności kontenerów i baz danych](set-throughput.md)
 * [Współpraca z kontem usługi Azure Cosmos](account-overview.md)
+
+[1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

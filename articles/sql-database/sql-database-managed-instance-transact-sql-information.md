@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186441"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707647"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -26,10 +26,10 @@ Ten artykuł zawiera podsumowanie i wyjaśnienie różnic między składnią i z
 
 Istnieją pewne ograniczenia PaaS wprowadzane w wystąpieniu zarządzanym oraz zmiany zachowania w porównaniu z SQL Server. Różnice są podzielone na następujące kategorie:<a name="Differences"></a>
 
-- [Dostępność](#availability) obejmuje różnice w przypadku, gdy są [zawsze włączone](#always-on-availability) i [kopie zapasowe](#backup).
+- [Dostępność](#availability) obejmuje różnice w przypadku [grup dostępności](#always-on-availability-groups) , które są zawsze włączone i [kopie zapasowe](#backup).
 - [Zabezpieczenia](#security) obejmują różnice między [inspekcjami](#auditing), [certyfikatami](#certificates), [poświadczeniami](#credential), [dostawcami usług kryptograficznych](#cryptographic-providers), [logowania i użytkownikami](#logins-and-users)oraz [kluczem usługi i kluczem głównym usługi](#service-key-and-service-master-key).
 - [Konfiguracja](#configuration) obejmuje różnice w [rozszerzeniu puli buforów](#buffer-pool-extension), [Sortowanie](#collation), [poziomy zgodności](#compatibility-levels), [dublowanie bazy danych](#database-mirroring), [Opcje bazy danych](#database-options), [Agent SQL Server](#sql-server-agent)i [Opcje tabeli](#tables).
-- [Funkcje](#functionalities) obejmują [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcji rozproszonych](#distributed-transactions), [zdarzeń rozszerzonych](#extended-events), [bibliotek zewnętrznych](#external-libraries), [FILESTREAM i FileTable](#filestream-and-filetable), [pełnotekstowego Wyszukiwanie semantyczne](#full-text-semantic-search), [połączone serwery](#linked-servers), [baza](#polybase), [replikacja](#replication), [przywracanie](#restore-statement), [Service Broker](#service-broker), [procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-and-triggers).
+- [Funkcje](#functionalities) obejmują [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcji rozproszonych](#distributed-transactions), [zdarzeń rozszerzonych](#extended-events), [bibliotek zewnętrznych](#external-libraries), obiektów [FILESTREAM i FileTable](#filestream-and-filetable), [Wyszukiwanie semantyki pełnotekstowe](#full-text-semantic-search), [połączone serwery](#linked-servers), [bazy](#polybase), [replikację](#replication), [przywracanie](#restore-statement), [Service Broker](#service-broker), [procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-and-triggers).
 - [Ustawienia środowiska](#Environment) , takie jak sieci wirtualnych i konfiguracje podsieci.
 
 Większość z tych funkcji jest ograniczeniami architektury i reprezentuje funkcje usługi.
@@ -38,7 +38,7 @@ Ta strona zawiera również informacje o [tymczasowych znanych problemach](#Issu
 
 ## <a name="availability"></a>Dostępność
 
-### <a name="always-on-availability"></a>Zawsze włączone
+### <a name="always-on-availability-groups"></a>Zawsze włączone grupy dostępności
 
 [Wysoka dostępność](sql-database-high-availability.md) jest wbudowana w wystąpienie zarządzane i nie może być kontrolowana przez użytkowników. Następujące instrukcje nie są obsługiwane:
 
@@ -78,7 +78,7 @@ Ograniczenia:
 
 Aby uzyskać informacje o kopiach zapasowych przy użyciu języka T-SQL, zobacz [kopia zapasowa](/sql/t-sql/statements/backup-transact-sql).
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="auditing"></a>Inspekcja
 
@@ -163,7 +163,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do plików, więc nie możn
     - Wyeksportuj bazę danych z wystąpienia zarządzanego i zaimportuj do SQL Server (wersja 2012 lub nowsza).
       - W tej konfiguracji wszyscy użytkownicy usługi Azure AD są utworzeni jako podmioty zabezpieczeń bazy danych SQL (Użytkownicy) bez logowania. Typ użytkowników jest wymieniony jako SQL (widoczny jako SQL_USER w tabeli sys. database_principals). Ich uprawnienia i role pozostają w metadanych bazy danych SQL Server i mogą być używane do personifikacji. Nie można ich jednak używać do uzyskiwania dostępu do SQL Server i logowania się do nich przy użyciu swoich poświadczeń.
 
-- Tylko główna nazwa logowania na poziomie serwera, która jest tworzona przez proces aprowizacji wystąpienia zarządzanego, członkowie ról serwera, takie jak `securityadmin` lub `sysadmin`, lub inne logowania z uprawnieniem ALTER ANY LOGIN na poziomie serwera mogą utworzyć serwer usługi Azure AD podmioty zabezpieczeń (Logins) w bazie danych Master dla wystąpienia zarządzanego.
+- Tylko główna nazwa logowania na poziomie serwera, która jest tworzona przez proces aprowizacji wystąpienia zarządzanego, członkowie ról serwera, takie jak `securityadmin` lub `sysadmin`, lub inne logowania z uprawnieniami do zmiany nazwy logowania na poziomie serwera mogą tworzyć nazwy główne serwera usługi Azure AD w bazie danych Master dla wystąpienia zarządzanego.
 - Jeśli nazwa logowania jest podmiotem SQL, tylko nazwy logowania należące do roli `sysadmin` mogą używać polecenia CREATE do tworzenia logowań dla konta usługi Azure AD.
 - Identyfikator logowania usługi Azure AD musi być członkiem usługi Azure AD w tym samym katalogu, który jest używany na potrzeby Azure SQL Database wystąpienia zarządzanego.
 - Nazwy główne (Logins) serwera usługi Azure AD są widoczne w Eksplorator obiektów rozpoczynające się od SQL Server Management Studio 18,0 wersja zapoznawcza 5.
@@ -276,11 +276,11 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](/sql/t-sql/statements/a
 
 - Włączanie i wyłączanie agenta SQL Server nie jest obecnie obsługiwane w wystąpieniu zarządzanym. Agent SQL zawsze działa.
 - Ustawienia agenta SQL Server są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym. 
-- Zadania
+- Stanowiska
   - Obsługiwane są czynności zadania T-SQL.
   - Obsługiwane są następujące zadania replikacji:
     - Dziennik transakcji
-    - Snapshot
+    - Migawka
     - Dystrybutor
   - Obsługiwane są etapy zadania SSIS.
   - Inne typy kroków zadań nie są obecnie obsługiwane:
@@ -299,7 +299,7 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](/sql/t-sql/statements/a
 
 Następujące funkcje agenta SQL nie są obecnie obsługiwane:
 
-- Serwery proxy
+- Proxy
 - Planowanie zadań w bezczynnym procesorze CPU
 - Włączanie lub wyłączanie agenta
 - Alerty
@@ -389,7 +389,7 @@ Połączone serwery w wystąpieniach zarządzanych obsługują ograniczoną licz
 - Połączone serwery nie obsługują dystrybuowanych transakcji zapisywalnych (MS DTC).
 - Elementy docelowe, które nie są obsługiwane to pliki, Analysis Services i inne RDBMS. Spróbuj użyć natywnego importu CSV z platformy Azure Blob Storage przy użyciu `BULK INSERT` lub `OPENROWSET` jako alternatywy dla importu pliku.
 
-Operacje
+Operations
 
 - Transakcje zapisu między wystąpieniami nie są obsługiwane.
 - `sp_dropserver` jest obsługiwana w przypadku upuszczania połączonego serwera. Zobacz [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
@@ -526,10 +526,10 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 - Liczba rdzeni wirtualnych i typy wystąpień, które można wdrożyć w regionie, mają pewne [ograniczenia i](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)ograniczenia.
 - Istnieją pewne [reguły zabezpieczeń, które należy zastosować w podsieci](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
-### <a name="vnet"></a>Sieć wirtualna
+### <a name="vnet"></a>Environment
 - Sieć wirtualną można wdrożyć przy użyciu modelu zasobów — model klasyczny dla sieci wirtualnej nie jest obsługiwany.
 - Po utworzeniu wystąpienia zarządzanego przeniesienie wystąpienia zarządzanego lub sieci wirtualnej do innej grupy zasobów lub subskrypcji nie jest obsługiwane.
-- Niektóre usługi, takie jak środowiska App Service, Aplikacje logiki i wystąpienia zarządzane (używane na potrzeby replikacji geograficznej, replikacji transakcyjnej lub połączonych serwerów) nie mogą uzyskać dostępu do wystąpień zarządzanych w różnych regionach, jeśli ich sieci wirtualnych są połączone przy użyciu [globalnego Komunikacja równorzędna](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Możesz połączyć się z tymi zasobami za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
+- Niektóre usługi, takie jak środowiska App Service, Aplikacje logiki i wystąpienia zarządzane (używane na potrzeby replikacji geograficznej, replikacji transakcyjnej lub połączonych serwerów) nie mogą uzyskać dostępu do wystąpień zarządzanych w różnych regionach, jeśli ich sieci wirtualnych są połączone przy użyciu [globalnej komunikacji równorzędnej](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Możesz połączyć się z tymi zasobami za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
 
 ### <a name="tempdb"></a>TEMPDB
 
@@ -569,7 +569,7 @@ Ciągła instrukcja `RESTORE`, proces migracji usługi migracji danych oraz wbud
 
 **Data:** Wrz 2019
 
-Funkcja [gubernatora zasobów](/sql/relational-databases/resource-governor/resource-governor) , która umożliwia ograniczenie zasobów przypisanych do obciążenia użytkownikami, może nieprawidłowo sklasyfikować pewne obciążenie użytkownika po przejściu w tryb failover lub w przypadku zmiany warstwy usługi (na przykład zmiany maksymalnego rdzeń wirtualny lub maksymalnego wystąpienia). Rozmiar magazynu).
+Funkcja [zarządcy zasobów](/sql/relational-databases/resource-governor/resource-governor) , która umożliwia ograniczenie zasobów przypisanych do obciążenia użytkownikami, może nieprawidłowo sklasyfikować pewne obciążenie użytkownika po przejściu w tryb failover lub na zainicjowanej przez użytkownika zmianie warstwy usług (na przykład zmiana maksymalnego rozmiaru magazynu rdzeń wirtualny lub maksymalnego wystąpienia).
 
 **Obejście**: Uruchom `ALTER RESOURCE GOVERNOR RECONFIGURE` okresowo lub jako część zadania programu SQL Agent, które wykonuje zadanie SQL, gdy wystąpienie zostanie uruchomione, jeśli używasz [prezesa zasobów](/sql/relational-databases/resource-governor/resource-governor).
 

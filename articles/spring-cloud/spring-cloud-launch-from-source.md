@@ -1,19 +1,19 @@
 ---
-title: 'Szybki Start: uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego'
-description: Dowiedz się, jak uruchomić aplikację w chmurze ze sprężyną Azure bezpośrednio z poziomu kodu źródłowego
+title: Szybki Start — uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
+description: W tym przewodniku szybki start dowiesz się, jak uruchomić aplikację w chmurze Azure wiosennej bezpośrednio z kodu źródłowego
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 6e18ac6c0fa97125b89ea5760a5d7da6c1545393
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721277"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708887"
 ---
-# <a name="launch-your-spring-cloud-application-from-source-code"></a>Uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
+# <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Szybki Start: uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
 
 Chmura sprężynowa platformy Azure umożliwia łatwe uruchamianie aplikacji mikrousług opartych na chmurze na platformie Azure.
 

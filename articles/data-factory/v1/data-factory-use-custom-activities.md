@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990653"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703323"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -44,7 +44,7 @@ Poniższy przewodnik zawiera instrukcje krok po kroku dotyczące tworzenia niest
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Przewodnik: tworzenie działania niestandardowego
 ### <a name="prerequisites"></a>Wymagania wstępne
-* Visual Studio 2012/2013/2015/2017
+* Program Visual Studio 2012/2013/2015/2017
 * Pobierz i zainstaluj zestaw [SDK .NET Azure](https://azure.microsoft.com/downloads/).
 
 ### <a name="azure-batch-prerequisites"></a>Wymagania wstępne Azure Batch
@@ -551,10 +551,10 @@ W tym kroku utworzysz zestawy danych reprezentujące dane wejściowe i wyjściow
    | Cinek | Godzina rozpoczęcia | Plik wyjściowy |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016 – 11-16 -00. txt |
-   | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
-   | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
+   | 2 |2016-11-16T01:00:00 |2016 – 11-16 -01. txt |
+   | 3 |2016-11-16T02:00:00 |2016 – 11-16 -02. txt |
    | 4 |2016-11-16T03:00:00 |2016 – 11-16 -03. txt |
-   | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
+   | 5 |2016-11-16T04:00:00 |2016 – 11-16 -04. txt |
 
     Należy pamiętać, że wszystkie pliki w folderze wejściowym są częścią wycinka o powyższym czasie początkowym. Po przetworzeniu tego wycinka działanie niestandardowe skanuje każdy plik i tworzy wiersz w pliku wyjściowym z liczbą wystąpień wyszukiwanego terminu ("Microsoft"). Jeśli w folderze wejściowym znajdują się trzy pliki, w pliku wyjściowym znajdują się trzy wiersze: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt itd.
 3. Aby wdrożyć **OutputDataset**, kliknij przycisk **Wdróż** na pasku poleceń.
@@ -722,7 +722,7 @@ Rozwiązywanie problemów obejmuje kilka podstawowych technik:
 Jeśli zaktualizujesz kod dla działania niestandardowego, skompiluj go i Przekaż plik zip zawierający nowe pliki binarne do magazynu obiektów BLOB.
 
 ## <a name="appdomain-isolation"></a>Izolacja elementu AppDomain
-Zobacz [przykład Cross AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , który pokazuje, jak utworzyć niestandardowe działanie, które nie jest ograniczone do wersji zestawu używanych przez program do uruchamiania Data Factory (przykład: windowsazure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x itp.).
+Zobacz [przykład Cross AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) , który pokazuje, jak utworzyć niestandardowe działanie, które nie jest ograniczone do wersji zestawu używanych przez program do uruchamiania Data Factory (przykład: windowsazure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x itp.).
 
 ## <a name="access-extended-properties"></a>Dostęp do właściwości rozszerzonych
 Można zadeklarować rozszerzone właściwości w kodzie JSON działania, jak pokazano w następującym przykładzie:
@@ -1022,7 +1022,7 @@ namespace DataFactoryAPITestApp
 Przykład [środowiska Azure Data Factory-Local](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) w witrynie GitHub zawiera narzędzie, które pozwala debugować niestandardowe działania programu .NET w programie Visual Studio.
 
 ## <a name="sample-custom-activities-on-github"></a>Przykładowe działania niestandardowe w serwisie GitHub
-| Sample | Jakie działanie niestandardowe wykonuje |
+| Przykład | Jakie działanie niestandardowe wykonuje |
 | --- | --- |
 | Narzędzie do [pobierania danych http](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Pobiera dane z punktu końcowego HTTP do platformy Azure Blob Storage przy C# użyciu działania niestandardowego w Data Factory. |
 | [Przykład analiza tonacji Twitter](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Wywołuje model Azure Machine Learning Studio i tonacji analizę, ocenianie, prognozowanie itp. |

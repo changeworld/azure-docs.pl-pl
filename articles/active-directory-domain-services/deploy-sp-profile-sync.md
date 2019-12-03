@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 90d728ceee0b9a4ed5e5e33805de9358aca6530c
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: a24ff1d5f94a50dc30819e6ab86318592da72e45
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996333"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705207"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurowanie Azure Active Directory Domain Services do obsługi synchronizacji profilu użytkownika dla programu SharePoint Server
 
@@ -45,7 +45,7 @@ Aby wykonać ten artykuł, potrzebne są następujące zasoby i uprawnienia:
 W domenie zarządzanej usługi Azure AD DS Grupa zabezpieczeń o nazwie **konta usługi AAD DC** istnieje jako część jednostki organizacyjnej *Użytkownicy* (OU). Członkowie tej grupy zabezpieczeń mają delegowane następujące uprawnienia:
 
 - Uprawnienie **Replikuj zmiany katalogu** w katalogu głównym DSE.
-- Uprawnienie **Replikowanie zmian w katalogu** w kontekście nazewnictwa *konfiguracji* (`cn=configuration` kontener).
+- Uprawnienie **Replikuj zmiany katalogu** w kontekście nazewnictwa *konfiguracji* (`cn=configuration` kontener).
 
 Grupa zabezpieczeń **konta usługi AAD DC** jest również członkiem wbudowanej grupy **systemu sprzed Windows 2000**.
 
@@ -62,7 +62,7 @@ Na maszynie wirtualnej zarządzania AD DS platformy Azure wykonaj następujące 
 
 1. Na ekranie startowym wybierz pozycję **Narzędzia administracyjne**. Zostanie wyświetlona lista dostępnych narzędzi do zarządzania, które zostały zainstalowane w samouczku, aby [utworzyć maszynę wirtualną zarządzania][tutorial-create-management-vm].
 1. Aby zarządzać członkostwem w grupie, wybierz **Centrum administracyjne usługi Active Directory** z listy narzędzi administracyjnych.
-1. W lewym okienku wybierz domenę zarządzaną platformy Azure AD DS, na przykład *contoso.com*. Zostanie wyświetlona lista istniejących jednostek organizacyjnych i zasobów.
+1. W lewym okienku wybierz domenę zarządzaną platformy Azure AD DS, na przykład *aadds.contoso.com*. Zostanie wyświetlona lista istniejących jednostek organizacyjnych i zasobów.
 1. Wybierz jednostkę organizacyjną **Użytkownicy** , a następnie wybierz grupę zabezpieczeń *konta usługi AAD DC* .
 1. Wybierz pozycję **elementy członkowskie**, a następnie wybierz pozycję **Dodaj.**
 1. Wprowadź nazwę konta usługi programu SharePoint, a następnie wybierz przycisk **OK**. W poniższym przykładzie konto usługi programu SharePoint ma nazwę *SPAdmin*:

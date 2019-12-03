@@ -1,17 +1,17 @@
 ---
-title: Przygotowywanie aplikacji sprężynowej do wdrożenia w chmurze Azure wiosennej | Microsoft Docs
-description: W tym przewodniku szybki start przygotowano aplikację ze sprężyną Java do wdrożenia.
+title: Samouczek — przygotowywanie aplikacji sprężynowej do wdrożenia w chmurze Azure wiosennej
+description: W tym samouczku przygotowasz aplikację ze sprężyną Java do wdrożenia.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721254"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708729"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Samouczek: przygotowanie aplikacji ze sprężyną Java do wdrożenia w chmurze Azure wiosennej
 
@@ -176,4 +176,3 @@ W tym samouczku przedstawiono sposób konfigurowania aplikacji ze sprężyną Ja
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak skonfigurować serwer konfiguracji](spring-cloud-tutorial-config-server.md).
-

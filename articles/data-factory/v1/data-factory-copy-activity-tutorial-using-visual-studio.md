@@ -14,22 +14,22 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3d14b4a821f91486c396d5dae516d3a545c02321
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49f08721c0459e6bc74d440d63090fd8bad55a36
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682869"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703601"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu programu Visual Studio
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
-> * [Interfejs API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
 > 
 
@@ -280,7 +280,7 @@ Obecnie harmonogram jest prowadzony przy użyciu wyjściowego zestawu danych. W 
    - Dane wejściowe dla działania mają ustawienie **InputDataset**, a dane wyjściowe — **OutputDataset**. 
    - W sekcji **typeProperties** parametr **BlobSource** został określony jako typ źródłowy, a parametr **SqlSink** został określony jako typ ujścia. Aby uzyskać pełną listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia, zobacz informacje dotyczące [obsługiwanych magazynów danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Aby dowiedzieć się, jak używać określonego obsługiwanego magazynu danych jako źródła/ujścia, kliknij link w tabeli.  
      
-     Zastąp wartość właściwości **start** datą bieżącą, a wartość **end** datą jutrzejszą. Możesz określić tylko część daty i pominąć część godziny parametru data/godzina. Na przykład „2016-02-03” jest odpowiednikiem „2016-02-03T00:00:00Z”.
+     Zastąp wartość właściwości **start** bieżącym dniem, a wartość właściwości **end** następnym dniem. Możesz określić tylko część daty i pominąć część godziny parametru data/godzina. Na przykład „2016-02-03” jest odpowiednikiem „2016-02-03T00:00:00Z”.
      
      Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Przykładowo: 2016-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty. 
      
@@ -366,7 +366,7 @@ Przejdź do strony głównej fabryki danych:
 ## <a name="summary"></a>Podsumowanie
 W tym samouczku opisano tworzenie fabryki danych Azure w celu kopiowania danych z obiektu blob platformy Azure do bazy danych Azure SQL Database. Program Visual Studio został użyty do utworzenia fabryki danych, połączonych usług, zestawów danych oraz potoku. Główne kroki opisane w tym samouczku:  
 
-1. Utworzyć **fabrykę danych** Azure.
+1. Tworzenie **fabryki danych** Azure.
 2. Tworzenie **połączonych usług**:
    1. Połączona usługa **Azure Storage** w celu połączenia z kontem usługi Azure Storage, na którym przechowywane są dane wejściowe.     
    2. Połączona usługa **Azure SQL** w celu połączenia z bazą danych Azure SQL Database, w której przechowywane są dane wyjściowe. 
@@ -508,7 +508,7 @@ Aby opublikować jednostki w projekcie usługi Azure Data Factory przy użyciu p
 Podczas wdrażania wartości z pliku konfiguracji służą do ustawiania wartości właściwości w plikach JSON przed wdrożeniem jednostek w usłudze Azure Data Factory.   
 
 ## <a name="use-azure-key-vault"></a>Korzystanie z rozwiązania Azure Key Vault
-Przekazywanie poufnych danych (na przykład parametrów połączeń) do repozytorium kodu jest niezalecane, a często nawet sprzeczne z zasadami zabezpieczeń. Zobacz przykład [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFSecurePublish) w witrynie GitHub, aby dowiedzieć się więcej o przechowywaniu poufnych informacji w usłudze Azure Key Vault i korzystaniu z nich podczas publikowania jednostek usługi Data Factory. Rozszerzenie Secure Publish dla programu Visual Studio umożliwia przechowywanie kluczy tajnych w usłudze Key Vault, a w połączonych usługach/konfiguracjach wdrażania są określane tylko odwołania do tych kluczy. Te odwołania są rozpoznawane podczas publikowania jednostek usługi Data Factory na platformie Azure. Te pliki można następnie przekazać do repozytorium źródłowego bez ujawniania jakichkolwiek kluczy tajnych.
+Przekazywanie poufnych danych (na przykład parametrów połączeń) do repozytorium kodu jest niezalecane, a często nawet sprzeczne z zasadami zabezpieczeń. Zobacz przykład [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFSecurePublish) w witrynie GitHub, aby dowiedzieć się więcej o przechowywaniu poufnych informacji w usłudze Azure Key Vault i korzystaniu z nich podczas publikowania jednostek usługi Data Factory. Rozszerzenie Secure Publish dla programu Visual Studio umożliwia przechowywanie kluczy tajnych w usłudze Key Vault, a w połączonych usługach/konfiguracjach wdrażania są określane tylko odwołania do tych kluczy. Te odwołania są rozpoznawane podczas publikowania jednostek usługi Data Factory na platformie Azure. Te pliki można następnie przekazać do repozytorium źródłowego bez ujawniania jakichkolwiek kluczy tajnych.
 
 
 ## <a name="next-steps"></a>Następne kroki

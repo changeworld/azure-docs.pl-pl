@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 28a387b77c9a4db4be151dffc853617c426c6927
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666561"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707594"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>Sprawdzanie stanu szyfrowania obiektu BLOB
 
@@ -72,7 +72,7 @@ Aby określić, kiedy obiekt BLOB został utworzony, sprawdź wartość **utworz
 
 ---
 
-### <a name="force-encryption-of-a-blob"></a>Wymuś szyfrowanie obiektu BLOB
+## <a name="force-encryption-of-a-blob"></a>Wymuś szyfrowanie obiektu BLOB
 
 Jeśli obiekt BLOB, który został utworzony przed 20 października 2017, nie został jeszcze zaszyfrowany przez proces w tle, można wymusić natychmiastowe szyfrowanie, pobierając i ponownie przekazując obiekt BLOB. Prostym sposobem wykonania tej czynności jest AzCopy.
 

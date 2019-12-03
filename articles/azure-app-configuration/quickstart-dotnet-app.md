@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f1fd1c21789c272bf8deae72ef64f2bbb1c6b3cb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185056"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707431"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji .NET Framework przy użyciu konfiguracji aplikacji platformy Azure
 
@@ -49,7 +49,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 1. W obszarze **Utwórz nowy projekt**odfiltruj typ projektu **konsoli** i kliknij pozycję **Aplikacja konsolowa (.NET Framework)** . Kliknij przycisk **Dalej**.
 
-1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij pozycję **Utwórz**.
+1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij przycisk **Utwórz**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
@@ -112,7 +112,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i używał go z aplikacją konsolową .NET Framework. Wartość `AppSettings` `ConfiguratoinManager` nie zmieni się po uruchomieniu aplikacji. Biblioteka dostawcy konfiguracji .NET Standard konfiguracji aplikacji, ale również może być używana w aplikacji .NET Framework. Aby dowiedzieć się, jak włączyć dynamiczne Odświeżanie ustawień konfiguracji aplikacji .NET Framework, przejdź do następnego samouczka.
+W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i używał go z aplikacją konsolową .NET Framework. Wartość `AppSettings` `ConfigurationManager` nie zmieni się po uruchomieniu aplikacji. Biblioteka dostawcy konfiguracji .NET Standard konfiguracji aplikacji, ale również może być używana w aplikacji .NET Framework. Aby dowiedzieć się, jak włączyć dynamiczne Odświeżanie ustawień konfiguracji aplikacji .NET Framework, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Włącz konfigurację dynamiczną](./enable-dynamic-configuration-dotnet.md)

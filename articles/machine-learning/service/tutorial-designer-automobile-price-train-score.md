@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d0efbaec6905d0d24d9dc1c310d472958011960
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228348"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702076"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Samouczek: przewidywanie ceny za samochód przy użyciu projektanta (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Jeśli masz obszar roboczy Azure Machine Learning z wersją Enterprise, [Przejd�
 
 1. Wybierz pozycję **Projektant**.
 
-    ![Zrzut ekranu przedstawiający, jak uzyskać dostęp do projektanta](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
+    ![Zrzut ekranu przedstawiający, jak uzyskać dostęp do projektanta](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
 1. Wybierz **łatwe w użyciu wstępnie skompilowane moduły**.
 
@@ -170,7 +170,7 @@ Podziel dane na dwa osobne zestawy danych, aby przeanalizować model i przetesto
 
 1. W **okienku właściwości wpisz polecenie** *Podziel zestaw danych na zestaw szkoleniowy (0,7) i zestaw testów (0,3)* .
 
-### <a name="train-the-model"></a>Uczenie modelu
+### <a name="train-the-model"></a>Trenowanie modelu
 
 Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skanuje dane i wyszukuje korelacje między funkcjami samochodu a jego ceną do konstruowania modelu.
 
@@ -258,7 +258,7 @@ W pierwszej części tego samouczka zostały wykonane następujące zadania:
 
 * Tworzenie potoku
 * Przygotowywanie danych
-* Uczenie modelu
+* Trenowanie modelu
 * Ocena i Ocena modelu
 
 W części drugiej dowiesz się, jak wdrożyć model jako punkt końcowy w czasie rzeczywistym.

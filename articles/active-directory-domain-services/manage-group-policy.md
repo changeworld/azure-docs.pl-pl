@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32020341c7ac3bf33082ba365f053a613dcdffc2
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474534"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705085"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Administrowanie zasady grupy w Azure AD Domain Servicesej domenie zarządzanej
 
@@ -53,7 +53,7 @@ Aby utworzyć i skonfigurować zasady grupy obiektów (GPO), należy zainstalowa
 1. W okienku *pulpit nawigacyjny* okna **Menedżer serwera** wybierz pozycję **Dodaj role i funkcje**.
 1. Na stronie **zanim rozpoczniesz** *Kreatora dodawania ról i funkcji*wybierz pozycję **dalej**.
 1. W polu *Typ instalacji*pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub oparta na funkcjach** , a następnie wybierz pozycję **dalej**.
-1. Na stronie **Wybór serwera** wybierz bieżącą maszynę wirtualną z puli serwerów, takiej jak *MyVM.contoso.com*, a następnie wybierz przycisk **dalej**.
+1. Na stronie **Wybór serwera** wybierz bieżącą maszynę wirtualną z puli serwerów, takiej jak *MyVM.aadds.contoso.com*, a następnie wybierz przycisk **dalej**.
 1. Na stronie **role serwera** kliknij przycisk **dalej**.
 1. Na stronie **funkcje** wybierz funkcję **zarządzania zasady grupy** .
 
@@ -76,7 +76,7 @@ Istnieją domyślne obiekty zasad grupy (GPO) dla użytkowników i komputerów w
 
 Istnieją dwa wbudowane obiekty zasady grupy (GPO) w domenie zarządzanej AD DS platformy Azure — jeden dla kontenera *komputery AADDC* i jeden dla kontenera *Użytkownicy AADDC* . Te obiekty zasad grupy można dostosować w taki sposób, aby w ramach domeny zarządzanej na platformie Azure AD DS konfigurację zasad grup.
 
-1. W konsoli **zarządzania zasady grupy** rozwiń węzeł **Las: contoso.com** . Następnie rozwiń węzły **domeny** .
+1. W konsoli **zarządzania zasady grupy** rozwiń węzeł **Las: aadds.contoso.com** . Następnie rozwiń węzły **domeny** .
 
     Istnieją dwa wbudowane kontenery dla *komputerów AADDC* i *użytkowników AADDC*. Każdy z tych kontenerów ma zastosowany domyślny obiekt zasad grupy.
 

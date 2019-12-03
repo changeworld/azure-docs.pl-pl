@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 59708be1de53ab231ccb6dc89bd56c795734fccc
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1b40f8e070606a4c21def592fb6104e42e25f9f6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176818"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707932"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?
 
@@ -61,7 +61,7 @@ Jeśli korzystasz z kontroli dostępu opartej na rolach, sterowanie dostępem po
 
 ### <a name="role-definition"></a>Definicja roli
 
-*Definicja roli* to zbiór uprawnień. Czasami jest nazywana po prostu *rolą*. Definicja roli określa dozwolone operacje, na przykład odczyt, zapis, czy usuwanie. Role mogą być ogólne, na przykład „właściciel”, lub szczegółowe, na przykład „czytelnik maszyny wirtualnej”.
+*Definicja roli* to zbiór uprawnień. Zwykle jest nazywana *rolą*. Definicja roli określa dozwolone operacje, na przykład odczyt, zapis, czy usuwanie. Role mogą być ogólne, na przykład „właściciel”, lub szczegółowe, na przykład „czytelnik maszyny wirtualnej”.
 
 ![Definicja roli w przypisaniu roli](./media/overview/rbac-role-definition.png)
 

@@ -4,12 +4,12 @@ description: Więcej informacji na temat grup kontenerów w Azure Container Inst
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 9fbf9fea7da0896ee6c0e248d18e18d52798fbd7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482108"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706327"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
 
@@ -34,7 +34,7 @@ Ta przykładowa Grupa kontenerów:
 > [!NOTE]
 > Grupy wielokontenerowe obsługują obecnie tylko kontenery systemu Linux. W przypadku kontenerów systemu Windows Azure Container Instances obsługuje tylko wdrożenie jednego wystąpienia. Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w [przeglądzie](container-instances-overview.md#linux-and-windows-containers)usługi można znaleźć bieżące różnice między platformami.
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="deployment"></a>Wdrażanie
 
 Poniżej przedstawiono dwa typowe sposoby wdrażania grupy wielokontenerowej: Użyj [szablonu Menedżer zasobów][resource-manager template] lub [pliku YAML][yaml-file]. Szablon Menedżer zasobów jest zalecany, gdy konieczne jest wdrożenie dodatkowych zasobów usługi platformy Azure (na przykład [udziału Azure Files][azure-files]) podczas wdrażania wystąpień kontenerów. Ze względu na bardziej zwięzły YAML formatu pliku YAML zaleca się, gdy wdrożenie obejmuje tylko wystąpienia kontenerów. Aby uzyskać szczegółowe informacje na temat właściwości, które można ustawić, zapoznaj się z dokumentacją dotyczącą [szablonu Menedżer zasobów](/azure/templates/microsoft.containerinstance/containergroups) lub dokumentacji [referencyjnej YAML](container-instances-reference-yaml.md) .
 
@@ -48,15 +48,15 @@ Azure Container Instances przydzielać zasoby, takie jak procesory CPU, pamięć
 
 ### <a name="resource-usage-by-instances"></a>Użycie zasobów według wystąpień
 
-Każde wystąpienie kontenera ma przydzieloną zasoby określone w żądaniu zasobu. Jednak użycie zasobów przez wystąpienie kontenera w grupie zależy od sposobu skonfigurowania jego opcjonalnej właściwości [limitu zasobów][resource-limits] .
+Każde wystąpienie kontenera ma przydzieloną zasoby określone w żądaniu zasobu. Jednak użycie zasobów przez wystąpienie kontenera w grupie zależy od sposobu skonfigurowania jego opcjonalnej właściwości [limitu zasobów][resource-limits] . Limit zasobów musi być mniejszy niż wartość właściwości obowiązkowego [żądania zasobu][resource-requests] .
 
 * Jeśli nie określisz limitu zasobów, maksymalne użycie zasobów przez wystąpienie będzie takie samo jak jego żądanie zasobu.
 
 * W przypadku określenia limitu zasobów dla wystąpienia można dostosować użycie zasobów wystąpienia dla jego obciążenia, zmniejszając lub zwiększając użycie względem żądania zasobu. Maksymalny limit zasobów, który można ustawić, to łączna liczba zasobów przydzielono do grupy.
     
-    Na przykład w grupie z dwoma wystąpieniami żądającym 1 procesora CPU jeden z kontenerów może uruchamiać obciążenie, które wymaga więcej niż drugi procesor CPU.
+Na przykład w grupie z dwoma wystąpieniami żądającym 1 procesora CPU jeden z kontenerów może uruchamiać obciążenie, które wymaga więcej niż drugi procesor CPU.
 
-    W tym scenariuszu można ustawić limit zasobów 0,5 CPU dla jednego wystąpienia i limit 2 procesorów CPU dla drugiego. Ta konfiguracja ogranicza użycie zasobów pierwszego kontenera do 0,5 procesora CPU, co pozwala drugiemu kontenerowi używać do pełnych 2 procesorów CPU, jeśli są dostępne.
+W tym scenariuszu można ustawić limit zasobów 0,5 CPU dla jednego wystąpienia i limit 2 procesorów CPU dla drugiego. Ta konfiguracja ogranicza użycie zasobów pierwszego kontenera do 0,5 procesora CPU, co pozwala drugiemu kontenerowi używać do pełnych 2 procesorów CPU, jeśli są dostępne.
 
 Aby uzyskać więcej informacji, zobacz Właściwość [ResourceRequirements][resource-requirements] w interfejsie API REST grup kontenerów.
 
@@ -72,7 +72,7 @@ Grupy kontenerów udostępniają adresy IP i przestrzeń nazw portów na tym adr
 
 Opcjonalnie można wdrożyć grupy kontenerów w usłudze [Azure Virtual Network][virtual-network] (wersja zapoznawcza), aby umożliwić kontenerom bezpieczne komunikowanie się z innymi zasobami w sieci wirtualnej.
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Usługa Storage
 
 Możesz określić woluminy zewnętrzne do zainstalowania w obrębie grupy kontenerów. Te woluminy można mapować na określone ścieżki w poszczególnych kontenerach w grupie.
 

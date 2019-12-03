@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Definiowanie nowego typu urządzenia w usłudze Azure IoT Central'
+title: Samouczek — Definiowanie nowego typu urządzenia w usłudze Azure IoT Central
 description: Ten samouczek przedstawia, jak konstruktor może zdefiniować nowy typ urządzenia w aplikacji usługi Azure IoT Central. Zdefiniuj dane telemetryczne, stan, właściwości i ustawienia dla danego typu.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 3d79e710f2c71d96179ab8774ee89c90cb462ca4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d986ddcf4b8eccfbd4ac1819f96157b5dfe6fe91
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112357"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705890"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
 
@@ -193,7 +193,7 @@ Stan służy do definiowania i wizualizowania stanu urządzenia lub jego składn
      | Wartość                | 1                 |
      | Wyświetlana etykieta        | Działa         |
      | Wartość                | 0                 |
-     | Wyświetlana etykieta        | Zatrzymano           |
+     | Wyświetlana etykieta        | Zatrzymane           |
 
      Aby zapisać definicję pomiaru stanu, wybierz pozycję **Zapisz**:
 
@@ -411,7 +411,7 @@ Po zdefiniowaniu Twojego szablonu urządzenia **Połączony klimatyzator** może
 
 1. Dane symulowane dla Twojego połączonego klimatyzatora będą teraz widoczne na pulpicie nawigacyjnym. Możesz edytować kafelki i układ pulpitu nawigacyjnego:
 
-    ![Wyświetlanie pulpitu nawigacyjnego](./media/tutorial-define-device-type/dashboard.png)
+    ![Wyświetl pulpit nawigacyjny](./media/tutorial-define-device-type/dashboard.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

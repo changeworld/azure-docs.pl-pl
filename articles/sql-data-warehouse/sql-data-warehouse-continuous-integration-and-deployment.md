@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646144"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708671"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Ciągła integracja i wdrażanie dla Azure SQL Data Warehouse
 
@@ -25,12 +25,8 @@ W tym prostym samouczku przedstawiono sposób integrowania projektu bazy danych 
 
 - Zapoznaj się z [samouczkiem dotyczącym integracji kontroli źródła](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
 
-- Utwórz [agenta samoobsługowego](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install) z zainstalowaną usługą SSDT w wersji zapoznawczej (16,3 Preview 2 lub nowszą) dla SQL Data Warehouse (wersja zapoznawcza)
-
 - Konfigurowanie usługi Azure DevOps i nawiązywanie z nią połączenia
 
-  > [!NOTE]
-  > SSDT jest obecnie dostępna w wersji zapoznawczej, w której trzeba będzie korzystać z agenta samoobsługowego. Agenci hostowani przez firmę Microsoft zostaną zaktualizowani w ciągu następnych kilku miesięcy.
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Ciągła integracja z kompilacją programu Visual Studio
 
@@ -49,13 +45,13 @@ W tym prostym samouczku przedstawiono sposób integrowania projektu bazy danych 
 W tym momencie istnieje proste środowisko, w którym każde ewidencjonowanie gałęzi głównej repozytorium kontroli źródła powinno automatycznie wyzwolić pomyślną kompilację projektu bazy danych w programie Visual Studio. Sprawdź, czy Automatyzacja działa na zakończenie, wprowadzając zmianę w lokalnym projekcie bazy danych i sprawdzając tę zmianę w gałęzi głównej.
 
 
-## <a name="continuous-deployment-with-the-azure-sql-database-deployment-task"></a>Ciągłe wdrażanie za pomocą zadania wdrażania Azure SQL Database
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Ciągłe wdrażanie przy użyciu zadania wdrażania Azure SQL Data Warehouse (lub bazy danych)
 
-1. Dodaj nowe zadanie przy użyciu [zadania wdrażania Azure SQL Database](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) i Wypełnij wymagane pola, aby nawiązać połączenie z docelowym magazynem danych. Po uruchomieniu tego zadania DACPAC wygenerowanego przez poprzedni proces kompilacji jest wdrażany w docelowym magazynie danych.
+1. Dodaj nowe zadanie przy użyciu [zadania wdrażania Azure SQL Database](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) i Wypełnij wymagane pola, aby nawiązać połączenie z docelowym magazynem danych. Po uruchomieniu tego zadania DACPAC wygenerowanego przez poprzedni proces kompilacji jest wdrażany w docelowym magazynie danych. Można również użyć [zadania wdrożenia usługi Azure SQL DataWarehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) 
 
       ![Zadanie wdrażania](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Zadanie wdrażania")
 
-2. W przypadku korzystania z agenta samoobsługowego upewnij się, że ustawiono zmienną środowiskową, aby używać poprawnego elementu sqlpackage. exe dla SQL Data Warehouse. Ścieżka powinna wyglądać następująco:
+2. Jeśli używasz agenta samoobsługowego, upewnij się, że ustawisz zmienną środowiskową tak, aby używała poprawnego elementu sqlpackage. exe dla SQL Data Warehouse. Ścieżka powinna wyglądać następująco:
 
       ![Zmienna środowiskowa](media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Zmienna środowiskowa")
 

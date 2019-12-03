@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622411"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706359"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji SharePoint na potrzeby odzyskiwania po awarii przy użyciu Azure Site Recovery
 
 W tym artykule szczegółowo opisano sposób ochrony aplikacji programu SharePoint przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Microsoft SharePoint to zaawansowana aplikacja, która może pomóc grupie lub działowi w organizowaniu, współpracy i udostępnianiu informacji. Program SharePoint może udostępniać portale intranetowe, zarządzanie dokumentami i plikami, współpracę, sieci społecznościowe, ekstranety, witryny sieci Web, wyszukiwanie w przedsiębiorstwie i analizę biznesową. Ma także integrację systemu, integrację procesów i możliwości automatyzacji przepływu pracy. Zazwyczaj organizacje traktują je jako wrażliwe na przestoje i utratę danych.
 
@@ -82,7 +82,7 @@ Postępuj zgodnie z [poniższymi wskazówkami](site-recovery-vmware-to-azure.md)
 
 * Aby uzyskać wskazówki dotyczące ochrony Active Directory i systemu DNS, zobacz [ochrona Active Directory i dokumentu DNS](site-recovery-active-directory.md) .
 
-* Wskazówki dotyczące ochrony warstwy bazy danych działającej w programie SQL Server można znaleźć w temacie [ochrona SQL Server](site-recovery-active-directory.md) dokumentu.
+* Wskazówki dotyczące ochrony warstwy bazy danych działającej w programie SQL Server można znaleźć w temacie [ochrona SQL Server](site-recovery-sql.md) dokumentu.
 
 ## <a name="networking-configuration"></a>Konfiguracja sieci
 
@@ -170,7 +170,7 @@ Najczęściej używane skrypty Azure Site Recovery można wdrożyć na koncie us
 
     * W tej metodzie przyjęto założenie, że kopia zapasowa bazy danych "Search Administration" jest dostępna w witrynie odzyskiwania po awarii.
     * Ponieważ inne bazy danych aplikacji Search Service nie są replikowane, muszą zostać ponownie utworzone. W tym celu przejdź do okna Administracja centralna i Usuń aplikację Search Service. Na każdym serwerze, który hostuje indeks wyszukiwania, Usuń pliki indeksów.
-    * Utwórz ponownie aplikację Search Service i ponownie utworzy bazy danych. Zaleca się utworzenie przygotowanego skryptu, który odtwarza tę aplikację usługi, ponieważ nie jest możliwe wykonywanie wszystkich akcji za pośrednictwem graficznego interfejsu użytkownika. Na przykład ustawienie lokalizacji dysku indeksu i skonfigurowanie topologii wyszukiwania jest możliwe tylko przy użyciu poleceń cmdlet programu SharePoint PowerShell. Użyj polecenia cmdlet Restore-SPEnterpriseSearchServiceApplication programu Windows PowerShell i określ bazę danych z dziennikami i replikacją, Search_Service__DB. To polecenie cmdlet zapewnia konfigurację wyszukiwania, schemat, zarządzane właściwości, reguły i źródła, a następnie tworzy domyślny zestaw innych składników.
+    * Utwórz ponownie aplikację Search Service i ponownie utworzy bazy danych. Zaleca się utworzenie przygotowanego skryptu, który odtwarza tę aplikację usługi, ponieważ nie jest możliwe wykonywanie wszystkich akcji za pośrednictwem graficznego interfejsu użytkownika. Na przykład ustawienie lokalizacji dysku indeksu i skonfigurowanie topologii wyszukiwania jest możliwe tylko przy użyciu poleceń cmdlet programu SharePoint PowerShell. Użyj polecenia cmdlet Restore-SPEnterpriseSearchServiceApplication programu Windows PowerShell i określ bazę danych z dziennikami, które zostały wysłane i zreplikowane, Search_Service__DB. To polecenie cmdlet zapewnia konfigurację wyszukiwania, schemat, zarządzane właściwości, reguły i źródła, a następnie tworzy domyślny zestaw innych składników.
     * Po ponownym utworzeniu aplikacji Search Service należy uruchomić pełne przeszukiwanie dla każdego źródła zawartości, aby przywrócić Search Service. Niektóre informacje o analizie są tracone z farmy lokalnej, na przykład na podstawie zaleceń dotyczących wyszukiwania.
 
 7. Po zakończeniu wszystkich kroków Zapisz plan odzyskiwania, a końcowy plan odzyskiwania będzie wyglądać następująco.

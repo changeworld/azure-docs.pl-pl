@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473331"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706219"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planowanie wdrożenia automatycznego aprowizowania użytkowników
 
@@ -27,7 +27,7 @@ Usługa Azure Active Directory (Azure AD) automatyczne Inicjowanie obsługi uży
 
 Zapoznaj się [z automatyzacją aprowizacji użytkowników i cofaj obsługę administracyjną, aby SaaS aplikacje za pomocą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) w celu lepszego zrozumienia funkcjonalności.
 
-## <a name="learn"></a>Dowiedz się więcej
+## <a name="learn"></a>Nauka
 
 Inicjowanie obsługi użytkowników tworzy podstawę do ciągłego zarządzania tożsamościami i zwiększa jakość procesów biznesowych, które opierają się na autorytatywnych danych tożsamości.
 
@@ -70,7 +70,7 @@ W tym artykule są stosowane następujące warunki:
 | Zasoby| Link i opis |
 | - | - |
 | Seminaria internetowe na żądanie| [Zarządzanie aplikacjami przedsiębiorstwa za pomocą usługi Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Dowiedz się, jak usługa Azure AD może pomóc Ci w osiągnięciu rejestracji jednokrotnej w aplikacjach SaaS w przedsiębiorstwie i najlepszych rozwiązaniach dotyczących kontroli dostępu. |
-| Filmy wideo| [Co to jest inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak wdrożyć Inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrowanie usług Salesforce z usługą Azure AD: jak zautomatyzować Inicjowanie obsługi użytkowników](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
+| Filmy| [Co to jest inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak wdrożyć Inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrowanie usług Salesforce z usługą Azure AD: jak zautomatyzować Inicjowanie obsługi użytkowników](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Kursy online| SkillUp online: [Zarządzanie tożsamościami](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Dowiedz się, jak zintegrować usługę Azure AD z wieloma aplikacjami SaaS i zabezpieczyć dostęp użytkowników do tych aplikacji. |
 | Książki| [Nowoczesne uwierzytelnianie za pomocą Azure Active Directory dla aplikacji sieci Web (Dokumentacja dla deweloperów) wersja 1](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Jest to autorytatywny, głęboki szczegółowe Przewodnik dotyczący tworzenia rozwiązań uwierzytelniania Active Directory dla tych nowych środowisk. |
 | Samouczki| Zapoznaj się z [listą samouczków dotyczących integrowania aplikacji SaaS z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
@@ -98,7 +98,7 @@ W tym przykładzie użytkownicy i grupy są tworzone w bazie danych kadr połąc
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatyczne Inicjowanie obsługi użytkowników dla przedsiębiorstw korzystających tylko z chmury
 
-W tym przykładzie tworzenie użytkowników odbywa się w usłudze Azure AD, a usługa Azure AD Provisioning zarządza automatyczną obsługą użytkowników do aplikacji docelowych (SaaS):
+W tym przykładzie tworzenie użytkowników odbywa się w usłudze Azure AD, a usługa Azure AD Provisioning zarządza automatyczną obsługą użytkowników do aplikacji docelowych (SaaS).
 
 ![Obraz 2](media/auto-user-provision-dp/cloudprovisioning.png)
 
@@ -112,16 +112,17 @@ W tym przykładzie tworzenie użytkowników odbywa się w usłudze Azure AD, a u
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatyczne Inicjowanie obsługi administracyjnej użytkowników dla aplikacji usługi Cloud kadr 
 
-W tym przykładzie użytkownicy i grupy są tworzone w aplikacji KADRowej w chmurze, takiej jak Workday.
+W tym przykładzie użytkownicy i grupy są tworzone w aplikacji KADRowej w chmurze, takiej jak Workday i SuccessFactors. Usługa Azure AD Provisioning i Agent aprowizacji Azure AD Connect udostępniają dane użytkownika z dzierżawy aplikacji kadr w chmurze do usługi AD. Gdy konta zostaną zaktualizowane w usłudze AD, są synchronizowane z usługą Azure AD za pośrednictwem Azure AD Connect, a adresy e-mail i atrybuty nazwy użytkownika mogą być zapisywane z powrotem do dzierżawy aplikacji w chmurze.
 
 ![Obraz 2](media/auto-user-provision-dp/workdayprovisioning.png)
 
-1. Konta utworzone w systemie kadr w chmurze
-1. Dane są przesyłane w lokalnej usłudze AD za pomocą usługi Azure AD Provisioning i agenta aprowizacji.
-1. Azure AD Connect synchronizuje dane z usługą Azure AD
-1. Atrybut poczty e-mail i nazwy użytkownika można zapisać z powrotem do aplikacji w chmurze.
-
-Aby uzyskać więcej informacji o architekturze i wdrażaniu rozwiązań, zobacz [Samouczek: Konfigurowanie produktu Workday do automatycznego aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial).
+1.  **Zespół kadr** wykonuje transakcje w dzierżawie aplikacji kadrowej w chmurze.
+2.  **Usługa Azure AD Provisioning** uruchamia zaplanowane cykle z dzierżawy aplikacji kadr w chmurze i identyfikuje zmiany, które muszą zostać przetworzone w celu synchronizacji z usługą AD.
+3.  **Usługa Azure AD Provisioning** wywołuje Azure AD Connect agenta aprowizacji z ładunkiem żądania zawierającym funkcję tworzenia/aktualizowania/włączania/wyłączania konta usługi AD.
+4.  **Azure AD Connect Agent aprowizacji** używa konta usługi do zarządzania danymi kont usługi AD.
+5.  **Azure AD Connect** uruchamia synchronizację Delta w celu ściągnięcia aktualizacji w usłudze AD.
+6.  Aktualizacje **usługi AD** są synchronizowane z usługą Azure AD. 
+7.  **Usługa aprowizacji usługi Azure AD** zastornowania atrybutu poczty e-mail i nazwy użytkownika z usługi Azure AD do dzierżawy aplikacji kadrowej w chmurze.
 
 ## <a name="plan-the-deployment-project"></a>Planowanie projektu wdrożenia
 

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zadania usługi Stream Analytics i zarządzanie nim przy użyciu witryny Azure Portal
+title: Samouczek — Tworzenie Stream Analytics zadania i zarządzanie nim za pomocą Azure Portal
 description: Ten samouczek zawiera kompleksowy opis sposobu używania usługi Azure Stream Analytics do analizowania fałszywych połączeń w strumieniu połączeń telefonicznych.
 services: stream-analytics
 author: mamccrea
@@ -9,14 +9,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 128859a00402c3381edfa65918a7135c9fd775de
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cca9f25fae9646b4207db7aa98f4c334457fc426
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925273"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707394"
 ---
-# <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analizowanie danych połączeń telefonicznych za pomocą usługi Stream Analytics i wizualizowanie wyników na pulpicie nawigacyjnym usługi Power BI
+# <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Samouczek: analizowanie danych połączeń telefonicznych za pomocą Stream Analytics i wizualizacji wyników na pulpicie nawigacyjnym Power BI
 
 W tym samouczku pokazano, jak analizować dane połączeń telefonicznych przy użyciu usługi Azure Stream Analytics. Dane połączenia telefonicznego generowane przez aplikację kliencką zawierają pewne fałszywe wywołania, które będą filtrowane przez zadanie Stream Analytics.
 

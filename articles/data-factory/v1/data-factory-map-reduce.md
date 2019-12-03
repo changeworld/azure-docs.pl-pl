@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6d32cd12989262ebeaafee60a02bb7ea2a9b1e32
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139294"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703150"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Wywoływanie programów MapReduce z Data Factory
 > [!div class="op_single_selector" title1="Działania transformacji"]
@@ -36,10 +36,10 @@ ms.locfileid: "70139294"
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Przekształć dane przy użyciu działania MapReduce w Data Factory](../transform-data-using-hadoop-map-reduce.md).
 
 
-Działanie MapReduce usługi HDInsight w potoku [](data-factory-create-pipelines.md) Data Factory wykonuje programy MapReduce na [własnym](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) w klastrze HDInsight opartym na systemie Windows/Linux. W tym artykule przedstawiono artykuł [działania przekształcania danych](data-factory-data-transformation-activities.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
+Działanie MapReduce usługi HDInsight w [potoku](data-factory-create-pipelines.md) Data Factory wykonuje programy MapReduce na [własnym](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) w klastrze HDInsight opartym na systemie Windows/Linux. W tym artykule przedstawiono artykuł [działania przekształcania danych](data-factory-data-transformation-activities.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
 
 > [!NOTE] 
-> Jeśli jesteś nowym do Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](data-factory-introduction.md) i wykonaj samouczek: [Utwórz pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu.  
+> Jeśli dopiero zaczynasz Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](data-factory-introduction.md) i wykonaj samouczek: [Kompiluj pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu.  
 
 ## <a name="introduction"></a>Wprowadzenie
 Potok w usłudze Azure Data Factory przetwarza dane w połączonych usługach magazynu za pomocą połączonych usług obliczeniowych. Zawiera sekwencję działań, w których każde działanie wykonuje określoną operację przetwarzania. W tym artykule opisano użycie działania HDInsight MapReduce.
@@ -112,7 +112,7 @@ W definicji JSON dla działania usługi HDInsight:
    Możesz użyć działania MapReduce usługi HDInsight, aby uruchomić dowolny plik JAR MapReduce w klastrze usługi HDInsight. W poniższej przykładowej definicji JSON potoku, działanie usługi HDInsight jest skonfigurowane do uruchamiania pliku JAR Mahout.
 
 ## <a name="sample-on-github"></a>Przykład w witrynie GitHub
-Możesz pobrać przykład użycia działania MapReduce usługi HDInsight z: [Przykłady Data Factory w witrynie GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  
+Możesz pobrać przykład użycia działania HDInsight MapReduce z: [Data Factory Samples w witrynie GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample).  
 
 ## <a name="running-the-word-count-program"></a>Uruchamianie programu liczenia wyrazów
 Potok w tym przykładzie powoduje uruchomienie programu Word Count map/Zmniejsz program w klastrze usługi Azure HDInsight.   
@@ -184,10 +184,10 @@ Potok w tym przykładzie ma tylko jedno działanie, którego typem jest: HDInsig
 | Właściwość | Uwagi |
 |:--- |:--- |
 | type |Typ musi być ustawiony na **HDInsightMapReduce**. |
-| className |Nazwa klasy to: **WORDCOUNT** |
+| Nazwą |Nazwa klasy to: **WORDCOUNT** |
 | jarFilePath |Ścieżka do pliku JAR zawierającego klasę. Jeśli skopiujesz/wkleisz Poniższy kod, nie zapomnij zmienić nazwy klastra. |
 | jarLinkedService |Połączona usługa Azure Storage, która zawiera plik JAR. Ta połączona usługa odwołuje się do magazynu skojarzonego z klastrem usługi HDInsight. |
-| arguments |Program WORDCOUNT przyjmuje dwa argumenty, dane wejściowe i wyjściowe. Plik wejściowy jest plikiem DaVinci. txt. |
+| argumentu |Program WORDCOUNT przyjmuje dwa argumenty, dane wejściowe i wyjściowe. Plik wejściowy jest plikiem DaVinci. txt. |
 | frequency/interval |Wartości tych właściwości pasują do wyjściowego zestawu danych. |
 | linkedServiceName |odwołuje się do utworzonej wcześniej usługi HDInsight. |
 
@@ -250,5 +250,5 @@ Możesz użyć działania MapReduce, aby uruchomić programy platformy Spark w k
 * [Aktywność trzody chlewnej](data-factory-pig-activity.md)
 * [Działanie przesyłania strumieniowego Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Wywoływanie programów platformy Spark](data-factory-spark.md)
-* [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

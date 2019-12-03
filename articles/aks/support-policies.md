@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 8c1736fcd4356e0778c3b36301b4490764efab76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240881"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707220"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zasady pomocy technicznej dla usługi Azure Kubernetes Service
 
@@ -41,7 +41,7 @@ AKS nie jest rozwiązaniem w pełni zarządzanym klastrem. Niektóre składniki,
 Usługi są *zarządzane* w sensie, że firma Microsoft i zespół AKS wdrażają, działają i są odpowiedzialne za dostępność i funkcjonalność usługi. Klienci nie mogą zmieniać tych składników zarządzanych. Firma Microsoft ogranicza dostosowanie w celu zapewnienia spójnego i skalowalnego środowiska użytkownika. Aby uzyskać w pełni dostosowywalne rozwiązanie, zobacz [aparat AKS](https://github.com/Azure/aks-engine).
 
 > [!NOTE]
-> Węzły procesu roboczego AKS są wyświetlane w Azure Portal jako zwykłe zasoby IaaS platformy Azure. Jednak te maszyny wirtualne są wdrażane w niestandardowej grupie zasobów platformy Azure (z prefiksem\\MC *). Istnieje możliwość zmiany węzłów procesu roboczego AKS. Na przykład można użyć Secure Shell (SSH), aby zmienić AKS węzły procesu roboczego w sposób zmieniania normalnych maszyn wirtualnych (nie można jednak zmienić podstawowego obrazu systemu operacyjnego, a zmiany mogą nie zostać zachowane przez aktualizację lub ponowny rozruch), a także dołączyć inne zasoby platformy Azure do usługi AKS węzły procesu roboczego. Jednak po wprowadzeniu zmian w *zarządzaniu poza pasmem i dostosowaniu* klaster AKS może stać się nieobsługiwany. Należy unikać zmiany węzłów procesu roboczego, chyba że pomoc techniczna firmy Microsoft nie kieruje się do wprowadzania zmian.
+> Węzły procesu roboczego AKS są wyświetlane w Azure Portal jako zwykłe zasoby IaaS platformy Azure. Jednak te maszyny wirtualne są wdrażane w niestandardowej grupie zasobów platformy Azure (z prefiksem MC\\*). Istnieje możliwość zmiany węzłów procesu roboczego AKS. Na przykład można użyć Secure Shell (SSH), aby zmienić AKS węzły procesu roboczego w sposób zmieniania normalnych maszyn wirtualnych (nie można jednak zmienić podstawowego obrazu systemu operacyjnego, a zmiany mogą nie zostać zachowane przez aktualizację lub ponowny rozruch), a także dołączyć inne zasoby platformy Azure do usługi AKS węzły procesu roboczego. Jednak po wprowadzeniu zmian w *zarządzaniu poza pasmem i dostosowaniu* klaster AKS może stać się nieobsługiwany. Należy unikać zmiany węzłów procesu roboczego, chyba że pomoc techniczna firmy Microsoft nie kieruje się do wprowadzania zmian.
 
 ## <a name="shared-responsibility"></a>Wspólna odpowiedzialność
 
@@ -89,13 +89,13 @@ Firma Microsoft i klienci mogą korzystać z odpowiedzialności za węzły proce
 * Podstawowy obraz systemu operacyjnego ma wymagane Dodatki (na przykład monitorowanie i agenci sieci).
 * Węzły procesu roboczego automatycznie otrzymują poprawki systemu operacyjnego.
 * Problemy ze składnikami płaszczyzny kontrolnej Kubernetes, które działają w węzłach procesu roboczego, są automatycznie korygowane. Dostępne są następujące składniki:
-  * Kube-proxy
+  * Polecenia — proxy
   * Tunele sieciowe dostarczające ścieżki komunikacji do składników głównych Kubernetes
   * Kubelet
   * Demon Docker lub Moby
 
 > [!NOTE]
-> Jeśli składnik płaszczyzny kontroli nie działa w węźle procesu roboczego, zespół AKS może potrzebować ponownego uruchomienia poszczególnych składników lub całego węzła procesu roboczego. Te operacje ponownego uruchamiania są zautomatyzowane i zapewniają automatyczne korygowanie typowych problemów. Te ponownych uruchomień odbywa się tylko na poziomie _węzła_ , a nie w klastrze, chyba że jest to konserwacja awaryjna lub awaria.
+> Jeśli składnik płaszczyzny kontroli nie działa w węźle procesu roboczego, zespół AKS może potrzebować ponownego uruchomienia poszczególnych składników lub całego węzła procesu roboczego. Te operacje ponownego uruchamiania są zautomatyzowane i zapewniają automatyczne korygowanie typowych problemów. Te ponownych uruchomień odbywają się tylko na poziomie _węzła_ , a nie w klastrze, o ile nie istnieje awaryjna konserwacja lub przestoje.
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Obowiązki klienta dotyczące węzłów procesu roboczego AKS
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5d4bdd554fb7c8817ada80a294f3ecb1c6c85b00
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554133"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707029"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -246,7 +246,7 @@ Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjn
 > Te funkcje są obecnie opracowywane.
 >
 
-### <a name="group-administratorgroup-administrator"></a>[Administrator grupy](#group-administrator)
+### <a name="group-administratorgroup-administrator-permissions"></a>[Administrator grupy](#group-administrator-permissions)
 
 Użytkownicy w tej roli mogą tworzyć grupy i ich ustawienia, takie jak zasady nazewnictwa i wygasania, oraz zarządzać nimi. Ważne jest, aby zrozumieć, że przypisanie użytkownika do tej roli daje im możliwość zarządzania wszystkimi grupami w dzierżawie w różnych obciążeniach, takimi jak zespoły, SharePoint, Yammer w dodatku do programu Outlook. Ponadto użytkownik będzie mógł zarządzać różnymi ustawieniami grup w różnych portalach administracyjnych, takich jak centrum administracyjne firmy Microsoft, Azure Portal, a także obciążenie specyficzne dla zespołów i centrów administracyjnych programu SharePoint.
 
@@ -279,7 +279,9 @@ Ta rola była wcześniej nazywana "administratorem haseł" w [Azure Portal](http
 
 ### <a name="intune-administratorintune-service-administrator-permissions"></a>[Administrator usługi Intune](#intune-service-administrator-permissions)
 
-Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Intune online, gdy usługa jest obecna. Ponadto ta rola obejmuje możliwość zarządzania użytkownikami i urządzeniami w celu kojarzenia zasad, a także tworzenia grup i zarządzania nimi. Więcej informacji na temat [kontroli administracji opartej na rolach (RBAC) z Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
+Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Intune online, gdy usługa jest obecna. Ponadto ta rola obejmuje możliwość zarządzania użytkownikami i urządzeniami w celu kojarzenia zasad, a także tworzenia grup i zarządzania nimi. Więcej informacji na temat [kontroli administracji opartej na rolach (RBAC) z Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control).
+
+Ta rola może tworzyć wszystkie grupy zabezpieczeń i zarządzać nimi. Jednak administrator usługi Intune nie ma uprawnień administratora w grupach pakietu Office. Oznacza to, że administrator nie może zaktualizować właścicieli ani członkostw wszystkich grup pakietu Office w dzierżawie. Może jednak zarządzać utworzoną przez siebie grupą pakietu Office, która jest częścią swoich uprawnień użytkownika końcowego. W związku z tym wszystkie grupy pakietu Office (nie grupy zabezpieczeń), które tworzy, powinny być wliczane do limitu przydziału 250.
 
 > [!NOTE]
 > W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Intune". Jest to "administrator usługi Intune" w [Azure Portal](https://portal.azure.com).
@@ -1081,8 +1083,8 @@ Może odczytywać wszystko, co Administrator globalny może, ale nie edytować n
 | Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 | Microsoft. 365. webports/allEntities/Standard/Read   | Odczytywanie właściwości standardowych wszystkich zasobów w Microsoft. 365. webport. |
 
-### <a name="group-administrator"></a>Administrator grupy
-Może zarządzać wszystkimi aspektami grup i ustawień grup, takimi jak nazewnictwo i zasady wygasania
+### <a name="group-administrator-permissions"></a>Uprawnienia administratora grupy
+Może zarządzać wszystkimi aspektami grup i ustawień grup, takimi jak zasady nazewnictwa i wygasania.
 
 | **Akcje** | **Opis** |
 | --- | --- |

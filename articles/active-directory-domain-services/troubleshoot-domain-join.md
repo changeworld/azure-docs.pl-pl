@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 1016fbc1478ec713d50a2f04bcc80d08288b03f3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827237"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703653"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Rozwiązywanie problemów z przyłączaniem do domeny za pomocą Azure AD Domain Services domeny zarządzanej
 
@@ -32,7 +32,7 @@ Jeśli maszyna wirtualna nie może znaleźć domeny zarządzanej platformy Azure
 
 1. Upewnij się, że maszyna wirtualna jest połączona z tą samą lub równorzędną siecią wirtualną, która jest włączona dla usługi Azure AD DS. Jeśli nie, maszyna wirtualna nie może znaleźć domeny i połączyć się z nią w celu dołączenia.
     * Jeśli maszyna wirtualna nie jest połączona z tą samą siecią wirtualną, upewnij się, że wirtualne sieci równorzędne lub połączenie sieci VPN jest *aktywne* lub *połączone* , aby umożliwić poprawne przepływ ruchu.
-1. Spróbuj wysłać polecenie ping do domeny przy użyciu nazwy domeny zarządzanej przez usługę Azure AD DS, na przykład `ping contoso.com`.
+1. Spróbuj wysłać polecenie ping do domeny przy użyciu nazwy domeny zarządzanej przez usługę Azure AD DS, takiej jak `ping aadds.contoso.com`.
     * Jeśli odpowiedź ping nie powiedzie się, spróbuj wysłać polecenie ping do adresów IP dla domeny wyświetlanej na stronie Przegląd w portalu dla domeny zarządzanej platformy Azure AD DS, takiej jak `ping 10.0.0.4`.
     * Jeśli można pomyślnie wysłać polecenie ping do adresu IP, ale nie do domeny, może to spowodować niepoprawne skonfigurowanie usługi DNS. Upewnij się, że skonfigurowano serwery DNS domeny zarządzanej AD DS platformy Azure dla sieci wirtualnej.
 1. Spróbuj użyć opróżniania pamięci podręcznej programu rozpoznawania nazw DNS na maszynie wirtualnej, na przykład `ipconfig /flushdns`.

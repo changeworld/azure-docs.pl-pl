@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 2351e6a63723156cce646a6a1cdda837b18a8f91
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456835"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707778"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure
 
@@ -90,7 +90,7 @@ Podobnie jeśli zostanie wyświetlone to przypisanie roli przy użyciu interfejs
 }
 ```
 
-Nie ma problemu z tymi przypisaniami ról, ale można je usunąć za pomocą kroków, które są podobne do innych przypisań ról. Informacje o sposobach usuwania przypisań ról można znaleźć w temacie [Azure Portal](role-assignments-portal.md#remove-role-assignments), [Azure PowerShell](role-assignments-powershell.md#remove-access)lub [interfejs wiersza polecenia platformy Azure](role-assignments-cli.md#remove-access)
+Nie ma problemu z tymi przypisaniami ról, ale można je usunąć za pomocą kroków, które są podobne do innych przypisań ról. Informacje o sposobach usuwania przypisań ról można znaleźć w temacie [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)lub [interfejs wiersza polecenia platformy Azure](role-assignments-cli.md#remove-a-role-assignment)
 
 W programie PowerShell, jeśli spróbujesz usunąć przypisania roli przy użyciu identyfikatora obiektu i nazwy definicji roli, a więcej niż jedno przypisanie roli jest zgodne z parametrami, zostanie wyświetlony komunikat o błędzie: "podane informacje nie są mapowane na przypisanie roli". Poniżej przedstawiono przykładowy komunikat o błędzie:
 

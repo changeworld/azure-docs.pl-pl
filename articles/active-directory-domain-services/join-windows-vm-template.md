@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755701"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704998"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej Azure Active Directory Domain Services przy użyciu szablonu Menedżer zasobów
 
@@ -93,7 +93,7 @@ Aby utworzyć maszynę wirtualną z systemem Windows Server, Dołącz ją do dom
     | Istniejąca nazwa podsieci      | Nazwa istniejącej podsieci sieci wirtualnej, na przykład *obciążeń*. |
     | Prefiks etykiety DNS          | Wprowadź nazwę DNS, która ma być używana dla maszyny wirtualnej, na przykład *MyVM*. |
     | Rozmiar maszyny wirtualnej                   | Określ rozmiar maszyny wirtualnej, na przykład *Standard_DS2_v2*. |
-    | Domena do przyłączenia            | Nazwa DNS domeny zarządzanej przez usługę Azure AD DS, na przykład *contoso.com*. |
+    | Domena do przyłączenia            | Nazwa DNS domeny zarządzanej przez usługę Azure AD DS, na przykład *aadds.contoso.com*. |
     | Nazwa użytkownika domeny           | Konto użytkownika w domenie zarządzanej platformy Azure AD DS, które ma zostać użyte do przyłączenia maszyny wirtualnej do domeny zarządzanej. To konto musi być członkiem grupy *administratorzy kontrolera domeny usługi Azure AD* . |
     | Hasło domeny           | Hasło dla konta użytkownika określonego w poprzednim ustawieniu. |
     | Opcjonalna ścieżka jednostki organizacyjnej          | Niestandardowa jednostka organizacyjna, w której ma zostać dodana maszyna wirtualna. Jeśli nie określisz wartości tego parametru, maszyna wirtualna zostanie dodana do domyślnej jednostki organizacyjnej *domeny usługi AAD* . |

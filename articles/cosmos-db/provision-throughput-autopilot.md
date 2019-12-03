@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 584fedc2ebe93b2a3cfd8a3b538a410d29aebe9d
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2259343d2c7bca1f60a5256efcd572e6cc21b565
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383088"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706038"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Tworzenie kontenerów i baz danych usługi Azure Cosmos w trybie autopilotażu (wersja zapoznawcza)
 

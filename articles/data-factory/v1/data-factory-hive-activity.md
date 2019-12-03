@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f159f672c999d7877ef89cd78d23c4a608ccf1ab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666994"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703353"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania programu Hive w Azure Data Factory 
 > [!div class="op_single_selector" title1="Działania transformacji"]
@@ -72,7 +72,7 @@ Działanie programu Hive w [usłudze](data-factory-compute-linked-services.md#az
 }
 ```
 ## <a name="syntax-details"></a>Szczegóły składni
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | name |Nazwa działania |Tak |
 | description |Tekst opisujący działanie używanego działania |Nie |
@@ -80,7 +80,7 @@ Działanie programu Hive w [usłudze](data-factory-compute-linked-services.md#az
 | danych wejściowych |Dane wejściowe używane przez działanie Hive |Nie |
 | wydajności |Dane wyjściowe generowane przez działanie Hive |Tak |
 | linkedServiceName |Odwołanie do klastra usługi HDInsight zarejestrowanego jako połączona usługa w Data Factory |Tak |
-| napisy |Określ skrypt Hive w tekście |Nie |
+| Napisy |Określ skrypt Hive w tekście |Nie |
 | scriptPath |Zapisz skrypt Hive w magazynie obiektów blob platformy Azure i podaj ścieżkę do pliku. Użyj właściwości "Script" lub "scriptPath". Nie można jednocześnie używać obu tych metod. W nazwie pliku rozróżniana jest wielkość liter. |Nie |
 | definiuje |Określ parametry jako pary klucz/wartość dla odwołania w skrypcie Hive przy użyciu elementu "hiveconf" |Nie |
 
@@ -246,5 +246,5 @@ Aby użyć sparametryzowanego skryptu Hive, wykonaj następujące czynności:
 * [Działanie MapReduce](data-factory-map-reduce.md)
 * [Działanie przesyłania strumieniowego Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Wywoływanie programów platformy Spark](data-factory-spark.md)
-* [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

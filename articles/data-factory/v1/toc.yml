@@ -150,9 +150,9 @@
         - name: Niestandardowe działanie platformy .NET
           href: data-factory-use-custom-activities.md
         - name: Wywoływanie skryptów języka R
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample'
         - name: Ponowne przetwarzanie modeli w usługach Azure Analysis Services
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample'
         - name: Usługi połączone usługi Compute
           href: data-factory-compute-linked-services.md
     - name: Programowanie

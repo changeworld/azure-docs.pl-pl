@@ -182,8 +182,6 @@
           href: service-bus-end-to-end-tracing.md
         - name: Tworzenie wielowarstwowej aplikacji usługi Service Bus
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-        - name: Migrowanie aplikacji Java Enterprise Edition na platformę Azure
-          href: migrate-java-apps-wild-fly.md
     - name: Zarządzanie
       items:
         - name: Aprowizacja jednostek za pomocą programu Azure PowerShell

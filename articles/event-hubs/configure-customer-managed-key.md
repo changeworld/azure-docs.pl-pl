@@ -6,17 +6,20 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 63fe6c4a2d02489b5e25100aa6aa23407bbe6bc7
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809367"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705464"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Skonfiguruj klucze zarządzane przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal (wersja zapoznawcza)
 Usługa Azure Event Hubs zapewnia szyfrowanie danych przechowywanych przy użyciu usługi Azure szyfrowanie usługi Storage (SSE platformy Azure). Event Hubs opiera się na usłudze Azure Storage do przechowywania danych i domyślnie wszystkie dane przechowywane w usłudze Azure Storage są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. 
+
+>[!NOTE]
+> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Zaleca się, aby nie korzystać z programu w środowisku produkcyjnym.
 
 ## <a name="overview"></a>Przegląd
 Usługa Azure Event Hubs obsługuje teraz opcję szyfrowania danych przechowywanych przy użyciu kluczy zarządzanych przez firmę Microsoft lub kluczy zarządzanych przez klienta (Bring Your Own Key – BYOK). Ta funkcja umożliwia tworzenie, obracanie, wyłączanie i odwoływanie dostępu do kluczy zarządzanych przez klienta, które są używane do szyfrowania danych Event Hubs platformy Azure.
@@ -113,7 +116,7 @@ Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSO
 | keyVault | Pełna nazwa magazynu kluczy. |
 | key | Nazwa klucza służąca do szyfrowania przestrzeni nazw Event Hubs. |
 | version | Używana wersja klucza. |
-| Operacje | Operacja wykonywana na kluczu w magazynie kluczy. Na przykład Wyłącz/Włącz klucz, Zawijaj lub Odpakuj |
+| operacje | Operacja wykonywana na kluczu w magazynie kluczy. Na przykład Wyłącz/Włącz klucz, Zawijaj lub Odpakuj |
 | Kodu | Kod, który jest skojarzony z operacją. Przykład: kod błędu, 404 oznacza, że nie znaleziono klucza. |
 | message | Dowolny komunikat o błędzie skojarzony z operacją |
 

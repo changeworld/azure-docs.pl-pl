@@ -1,14 +1,14 @@
 ---
 title: Przykłady zakrytych w usłudze CIS Microsoft Azure przykładowe kontrolki testu
 description: Rekomendacja zaleceń usługi CIS Microsoft Azure przykłady planów testów porównawczych do Azure Policy.
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 55abac9f7479f0ee7d1adddea64cb81a1c7cf2b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544544"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707429"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Rekomendacja zaleceń przykładowego planu testów usługi CIS Microsoft Azure
 
@@ -40,6 +40,12 @@ Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , któ
 - Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
 - Konta zewnętrzne z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji
 - Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji
+
+## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1,23 upewnij się, że nie są tworzone role niestandardowego właściciela subskrypcji
+
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które pomagają monitorować niestandardowe role właściciela subskrypcji, które mogą wymagać usunięcia.
+
+- Role niestandardowego właściciela subskrypcji nie powinny istnieć
 
 ## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2,1 Upewnij się, że wybrano warstwę cenową standardowa
 
@@ -243,11 +249,35 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 
 - Dla serwerów baz danych MySQL powinna być włączona funkcja Wymuszaj połączenie SSL
 
+## <a name="412-ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>4,12 upewnij się, że parametr serwera "log_checkpoints" jest ustawiony na wartość "ON" dla serwera bazy danych PostgreSQL
+
+Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga zapewnić, że serwery baz danych PostgreSQL są dziennikami punktów kontrolnych.
+
+- Punkty kontrolne dziennika powinny być włączone dla serwerów baz danych PostgreSQL
+
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4,13 upewnij się, że ustawienie "Wymuszaj połączenie SSL" ma wartość "ENABLED" dla serwera bazy danych PostgreSQL
 
 Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga zapewnić, że serwery baz danych PostgreSQL wymuszania połączeń SSL.
 
 - Należy włączyć połączenie SSL dla serwerów bazy danych PostgreSQL
+
+## <a name="414-ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>4,14 upewnij się, że parametr serwera "log_connections" jest ustawiony na wartość "ON" dla serwera bazy danych PostgreSQL
+
+Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga zapewnić, że serwery bazy danych PostgreSQL będą rejestrować połączenia.
+
+- Należy włączyć połączenia dzienników dla serwerów baz danych PostgreSQL
+
+## <a name="415-ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>4,15 upewnij się, że parametr serwera "log_disconnections" jest ustawiony na wartość "ON" dla serwera bazy danych PostgreSQL
+
+Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga zapewnić, że serwery bazy danych PostgreSQL będą rejestrować odłączenia.
+
+- Odłączenia powinny być rejestrowane dla serwerów baz danych PostgreSQL.
+
+## <a name="416-ensure-server-parameter-log_duration-is-set-to-on-for-postgresql-database-server"></a>4,16 upewnij się, że parametr serwera "log_duration" jest ustawiony na wartość "ON" dla serwera bazy danych PostgreSQL
+
+Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga zapewnić, że serwery bazy danych PostgreSQL będą rejestrować czas trwania ukończonych instrukcji.
+
+- Czas trwania dziennika powinien być włączony dla serwerów baz danych PostgreSQL
 
 ## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4,17 upewnij się, że parametr serwera "connection_throttling" jest ustawiony na wartość "ON" dla serwera bazy danych PostgreSQL
 
@@ -350,6 +380,71 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga zapewnić, że aplikacje sieci Web są dostępne tylko za pośrednictwem bezpiecznych połączeń.
 
 - Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS
+
+## <a name="93-ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>9,3 Upewnij się, że aplikacja sieci Web używa najnowszej wersji szyfrowania TLS
+
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które pomagają zapewnić, że aplikacje sieci Web używają najnowszej wersji protokołu TLS.
+
+- Najnowsza wersja protokołu TLS powinna być używana w aplikacji interfejsu API
+- Najnowsza wersja protokołu TLS powinna być używana w aplikacja funkcji
+- Najnowsza wersja protokołu TLS powinna być używana w aplikacji sieci Web
+
+## <a name="94-ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>9,4 Upewnij się, że aplikacja sieci Web ma "certyfikaty klienta (przychodzące certyfikaty klienta") "on"
+
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które ułatwiają zapewnienie, że tylko klienci z prawidłowymi certyfikatami będą mogli uzyskać dostęp do aplikacji sieci Web.
+
+- Upewnij się, że aplikacja interfejsu API ma wartość "certyfikaty klienta (przychodzące certyfikaty klienta") "on"
+- Upewnij się, że aplikacja funkcji ma wartość "certyfikaty klienta (przychodzące certyfikaty klienta") "on"
+- Upewnij się, że aplikacja sieci WEB ma "certyfikaty klienta (przychodzące certyfikaty klienta") "on"
+
+## <a name="95-ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>9,5 Upewnij się, że rejestracja w Azure Active Directory jest włączona na App Service
+
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które ułatwiają zapewnienie, że aplikacje sieci Web używają tożsamości zarządzanej.
+
+- Upewnij się, że w aplikacji interfejsu API jest włączony rejestr z Azure Active Directory
+- Upewnij się, że Azure Active Directory jest włączona na aplikacja funkcji
+- Upewnij się, że w aplikacji sieci WEB jest włączony rejestr z Azure Active Directory
+
+## <a name="96-ensure-that-net-framework-version-is-the-latest-if-used-as-a-part-of-the-web-app"></a>9,6 Upewnij się, że wersja ".NET Framework" jest najnowsza, jeśli jest używana jako część aplikacji sieci Web
+
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które pomagają zagwarantować, że aplikacje sieci Web używają najnowszej wersji programu .NET Framework.
+
+- Upewnij się, że wersja ".NET Framework" jest najnowsza, jeśli jest używana jako część aplikacji interfejsu API
+- Upewnij się, że wersja ".NET Framework" jest najnowsza, jeśli jest używana jako część aplikacja funkcji
+- Upewnij się, że wersja ".NET Framework" jest najnowsza, jeśli jest używana jako część aplikacji sieci Web
+
+## <a name="97-ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>9,7 upewnij się, że "wersja PHP" jest najnowsza, jeśli zostanie użyta do uruchomienia aplikacji sieci Web
+
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które pomagają zagwarantować, że aplikacje sieci Web używają najnowszej wersji środowiska php.
+
+- Upewnij się, że wersja języka PHP jest najnowsza, jeśli jest używana jako część aplikacji interfejsu API
+- Upewnij się, że wersja języka PHP jest najnowsza, jeśli jest używana jako część aplikacji funkcji
+- Upewnij się, że wersja języka PHP jest najnowsza, jeśli jest używana jako część aplikacji sieci WEB
+
+## <a name="98-ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>9,8 upewnij się, że "wersja języka Python" jest najnowsza, jeśli zostanie użyta do uruchomienia aplikacji sieci Web
+
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które pomagają zagwarantować, że aplikacje sieci Web używają najnowszej wersji języka Python.
+
+- Upewnij się, że "wersja języka Python" jest najnowsza, jeśli jest używana jako część aplikacji interfejsu API
+- Upewnij się, że "wersja języka Python" jest najnowsza, jeśli jest używana jako część aplikacji funkcji
+- Upewnij się, że "wersja języka Python" jest najnowsza, jeśli jest używana jako część aplikacji sieci Web
+
+## <a name="99-ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>9,9 upewnij się, że "wersja Java" jest najnowsza, jeśli zostanie użyta do uruchomienia aplikacji sieci Web
+
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które pomagają zagwarantować, że aplikacje sieci Web używają najnowszej wersji środowiska Java.
+
+- Upewnij się, że wersja języka Java jest najnowsza, jeśli jest używana jako część aplikacji interfejsu API
+- Upewnij się, że "wersja Java" jest najnowsza, jeśli jest używana jako część aplikacji funtion
+- Upewnij się, że wersja języka Java jest najnowsza, jeśli jest używana jako część aplikacji sieci Web
+
+## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9,10 upewnij się, że wersja protokołu HTTP jest najnowsza, jeśli jest używana do uruchamiania aplikacji sieci Web
+
+Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które pomagają zagwarantować, że aplikacje sieci Web używają najnowszej wersji protokołu HTTP.
+
+- Upewnij się, że wersja protokołu HTTP jest najnowsza, jeśli jest używana do uruchamiania aplikacji interfejsu API
+- Upewnij się, że wersja protokołu HTTP jest najnowsza, jeśli jest używana do uruchamiania aplikacji funkcji
+- Upewnij się, że wersja protokołu HTTP jest najnowsza, jeśli jest używana do uruchamiania aplikacji sieci Web
+
 
 ## <a name="next-steps"></a>Następne kroki
 
