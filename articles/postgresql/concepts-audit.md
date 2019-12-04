@@ -1,17 +1,17 @@
 ---
-title: Inspekcja rejestrowania za pomocą pgAudit w Azure Database for PostgreSQL-pojedynczym serwerze
+title: Rejestrowanie inspekcji — Azure Database for PostgreSQL — pojedynczy serwer
 description: Pojęcia związane z rejestrowaniem inspekcji pgAudit w Azure Database for PostgreSQL-pojedynczym serwerze.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 49ad7334c418e29c821320608be729e060b4a8ae
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4a41e5eda3ca2bd92d78a81d73c1ad4c859e25a3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331328"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764563"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Rejestrowanie inspekcji w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -30,7 +30,7 @@ Alternatywnie można skonfigurować wszystkie dzienniki, które mają być emito
 
 Włączenie rozszerzenia pgAudit powoduje generowanie dużej liczby dzienników na serwerze, co ma wpływ na wydajność i magazyn dzienników. Zalecamy korzystanie z usługi dzienników diagnostycznych platformy Azure, która oferuje długoterminowe opcje magazynowania, a także funkcje analizy i alertów. Zalecamy wyłączenie standardowego rejestrowania, aby zmniejszyć wpływ dodatkowego rejestrowania na wydajność:
 
-   1. Ustaw parametr `logging_collector`. 
+   1. Ustaw parametr `logging_collector` na OFF. 
    2. Uruchom ponownie serwer, aby zastosować tę zmianę.
 
 Aby dowiedzieć się, jak skonfigurować rejestrowanie do usługi Azure Storage, Event Hubs lub dzienników Azure Monitor, odwiedź sekcję dzienniki diagnostyczne w [artykule Dzienniki serwera](concepts-server-logs.md).
@@ -65,18 +65,18 @@ pgAudit umożliwia skonfigurowanie rejestrowania inspekcji sesji lub obiektu. [R
 Po [zainstalowaniu pgAudit](#installing-pgaudit)można skonfigurować jego parametry, aby rozpocząć rejestrowanie. [Dokumentacja pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) zawiera definicje każdego z parametrów. Najpierw Przetestuj parametry i upewnij się, że otrzymujesz oczekiwane zachowanie.
 
 > [!NOTE]
-> Ustawienie `pgaudit.log_client` spowoduje przekierowanie dzienników do procesu klienta (na przykład PSQL) zamiast zapisywania do pliku. To ustawienie powinno być zwykle wyłączone.
+> Ustawienie `pgaudit.log_client` na włączone spowoduje przekierowanie dzienników do procesu klienta (na przykład PSQL) zamiast zapisywania do pliku. To ustawienie powinno być zwykle wyłączone.
 
 > [!NOTE]
-> `pgaudit.log_level` jest włączone tylko wtedy, gdy jest włączona funkcja `pgaudit.log_client`. Ponadto w Azure Portal istnieje obecnie usterka z `pgaudit.log_level`: pole kombi jest wyświetlane, co oznacza, że można wybrać wiele poziomów. Możliwe jest wybranie jednak tylko jednego poziomu. 
+> `pgaudit.log_level` jest włączona tylko wtedy, gdy `pgaudit.log_client` jest włączona. Ponadto w Azure Portal istnieje obecnie usterka z `pgaudit.log_level`: pole kombi jest wyświetlane, co oznacza, że można wybrać wiele poziomów. Możliwe jest wybranie jednak tylko jednego poziomu. 
 
 > [!NOTE]
-> W Azure Database for PostgreSQL nie można ustawić `pgaudit.log` przy użyciu skrótu podpisywanie `-` (minus) zgodnie z opisem w dokumentacji pgAudit. Wszystkie wymagane klasy instrukcji (READ, WRITE itp.) powinny zostać określone indywidualnie.
+> W Azure Database for PostgreSQL `pgaudit.log` nie można ustawić przy użyciu skrótu podpisywanie `-` (minus) zgodnie z opisem w dokumentacji pgAudit. Wszystkie wymagane klasy instrukcji (READ, WRITE itp.) powinny zostać określone indywidualnie.
 
 ### <a name="audit-log-format"></a>Format dziennika inspekcji
 Każdy wpis inspekcji jest wskazywany przez `AUDIT:` blisko początku wiersza dziennika. Format reszty wpisu jest szczegółowo opisany w [dokumentacji pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
 
-Jeśli potrzebujesz innych pól do spełnienia wymagań dotyczących inspekcji, użyj parametru Postgres `log_line_prefix`. `log_line_prefix` to ciąg, który jest wyprowadzany na początku każdego wiersza dziennika Postgres. Na przykład następujące ustawienie `log_line_prefix` zawiera sygnaturę czasową, nazwę użytkownika, nazwa bazy danych i identyfikator procesu:
+Jeśli potrzebujesz innych pól do spełnienia wymagań dotyczących inspekcji, użyj parametru Postgres `log_line_prefix`. `log_line_prefix` jest ciągiem, który jest wyprowadzany na początku każdego wiersza dziennika Postgres. Na przykład następujące ustawienie `log_line_prefix` zawiera sygnaturę czasową, nazwę użytkownika, nazwa bazy danych i identyfikator procesu:
 
 ```
 t=%m u=%u db=%d pid=[%p]:
@@ -85,7 +85,7 @@ t=%m u=%u db=%d pid=[%p]:
 Aby dowiedzieć się więcej na temat `log_line_prefix`, zapoznaj się z [dokumentacją PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
 
 ### <a name="getting-started"></a>Wprowadzenie
-Aby szybko rozpocząć pracę, ustaw wartość `pgaudit.log` na `WRITE` i Otwórz dzienniki, aby przejrzeć dane wyjściowe. 
+Aby szybko rozpocząć pracę, ustaw `pgaudit.log` `WRITE`i Otwórz dzienniki, aby przejrzeć dane wyjściowe. 
 
 
 ## <a name="next-steps"></a>Następne kroki

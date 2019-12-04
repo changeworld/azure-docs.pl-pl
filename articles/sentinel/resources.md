@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 04c4192293cbfa96eefcc1c84083dd54042ebe8f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484083"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762721"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Przydatne zasoby do pracy z platformą Azure — wskaźnikiem
 
@@ -40,8 +40,8 @@ Możliwe jest przeprowadzenie inspekcji następujących obsługiwanych operacji.
 |----|----|
 |Utwórz lub zaktualizuj skoroszyt  |Microsoft. Insights/skoroszyty|
 |Usuń skoroszyt    |Microsoft. Insights/skoroszyty|
-|Ustaw przepływ pracy   |Microsoft.Logic/workflows|
-|Usuń przepływ pracy    |Microsoft.Logic/workflows|
+|Ustaw przepływ pracy   |Microsoft. Logic/przepływy pracy|
+|Usuń przepływ pracy    |Microsoft. Logic/przepływy pracy|
 |Utwórz zapisane wyszukiwanie    |Microsoft. OperationalInsights/Workspaces/savedSearches|
 |Usuń zapisane wyszukiwanie    |Microsoft. OperationalInsights/Workspaces/savedSearches|
 |Ustawianie pulpitu nawigacyjnego  |Microsoft. Portal/pulpity nawigacyjne|
@@ -72,7 +72,7 @@ Te dane można wyświetlić, przesyłając je strumieniowo z dziennika aktywnoś
 
 | **Dostawca**  | **Korzystanie z zdarzeń na platformie Azure — wskaźnik** | **Link**|
 |----|----|----|
-| GitHub| Służy do uzyskiwania dostępu do strony społeczności| <https://github.com/Azure/Azure-Sentinel> |
+| Witryna GitHub| Służy do uzyskiwania dostępu do strony społeczności| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| Konfigurowanie CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kurs językowy zapytania Kusto| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 

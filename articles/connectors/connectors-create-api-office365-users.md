@@ -1,43 +1,39 @@
 ---
-title: Łączenie z usługą Office 365 Users — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Zarządzanie profilami użytkowników za pomocą interfejsów API REST użytkownicy usługi Office 365 i Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
+title: Nawiązywanie połączenia z użytkownikami pakietu Office 365
+description: Zarządzanie profilami użytkowników przy użyciu interfejsów API REST użytkowników pakietu Office 365 i Azure Logic Apps
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
-ms.service: logic-apps
-services: logic-apps
-ms.reviewer: klam, LADocs
-ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 3865fbc4fbc39da0860218565b0a8956b2dad8ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: addb64a9b43c51af8363caa6f0fb3261a618e893
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105875"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789527"
 ---
-# <a name="get-started-with-the-office-365-users-connector"></a>Rozpoczynanie pracy z usługą łącznika użytkowników usługi Office 365
-Połącz, aby użytkownicy usługi Office 365 można pobrać profilów, Wyszukaj użytkowników i nie tylko. Użytkownicy usługi Office 365 możesz:
+# <a name="get-started-with-the-office-365-users-connector"></a>Wprowadzenie do łącznika użytkowników pakietu Office 365
+Połącz się z użytkownikami pakietu Office 365, aby uzyskać profile, przeszukiwać użytkowników i nie tylko. Użytkownicy korzystający z pakietu Office 365 mogą:
 
-* Tworzenie przepływu biznesowych na podstawie danych, który jest pobierany z użytkownicy usługi Office 365. 
-* Użyj akcji, które Pobierz bezpośrednich podwładnych Pobierz profil użytkownika Menedżera i nie tylko. Te akcje uzyskać odpowiedzi, a następnie udostępnić dane wyjściowe do innych działań. Na przykład pobieranie raportów bezpośrednich osoby, a następnie pobierać te informacje i zaktualizować bazę danych SQL Azure. 
+* Utwórz przepływ biznesowy na podstawie danych uzyskanych od użytkowników pakietu Office 365. 
+* Użyj akcji, które uzyskują bezpośrednie raporty, uzyskaj profil użytkownika Menedżera i nie tylko. Te akcje odbierają odpowiedź, a następnie udostępniają dane wyjściowe dla innych akcji. Na przykład Pobierz raporty bezpośrednie osoby, a następnie podejmij te informacje i zaktualizuj bazę danych SQL Azure. 
 
-Możesz rozpocząć od teraz tworzenie aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Teraz możesz zacząć od utworzenia aplikacji logiki, zobacz [Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-office-365-users"></a>Utwórz połączenie użytkownicy usługi Office 365
-Po dodaniu tego łącznika do aplikacji usługi logic apps, musisz zalogować się do swojego konta użytkowników usługi Office 365 i zezwolić aplikacji logiki, aby połączyć się z kontem.
+## <a name="create-a-connection-to-office-365-users"></a>Utwórz połączenie z użytkownikami pakietu Office 365
+Po dodaniu tego łącznika do aplikacji logiki należy zalogować się do konta użytkowników pakietu Office 365 i zezwolić aplikacjom logiki na łączenie się ze swoim kontem.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
 > 
 
-Po utworzeniu połączenia, wprowadź właściwości użytkowników usługi Office 365, takich jak identyfikator użytkownika. **Dokumentacja interfejsu API REST** w tym artykule opisano te właściwości.
+Po utworzeniu połączenia należy wprowadzić właściwości użytkowników pakietu Office 365, takie jak identyfikator użytkownika. **Dokumentacja interfejsu API REST** w tym artykule opisuje te właściwości.
 
-## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
+## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
 
-Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze swagger i zobacz też jakiekolwiek ograniczenia w [szczegóły łącznika](/connectors/officeusers/).
+Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze Swagger, a także wszystkich ograniczeń w [szczegółach łącznika](/connectors/officeusers/).
 
 ## <a name="more-connectors"></a>Więcej łączników
 Wróć do [listy interfejsów API](apis-list.md).

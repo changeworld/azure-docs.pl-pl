@@ -1,42 +1,42 @@
 ---
-title: Optymalizowanie zbieranie statystyki zapytań w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano, jak można optymalizować zbieranie statystyki zapytań w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+title: Optymalizacja kolekcji statystyk zapytania — Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano, jak można zoptymalizować zbieranie danych statystycznych zapytania na Azure Database for PostgreSQL-pojedynczym serwerze
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 7425ee7916fd71625f336a7af35f6481d1ed2474
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f467f01118470eb51f7decf3bd6457917c566723
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068957"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770173"
 ---
-# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Optymalizowanie zbieranie statystyk zapytań w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-W tym artykule opisano, jak zoptymalizować zbieranie statystyk zapytań na usługi Azure Database for postgresql w warstwie serwera.
+# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Optymalizowanie zbierania statystyk zapytania na serwerze Azure Database for PostgreSQL-pojedynczym
+W tym artykule opisano, jak zoptymalizować zbieranie statystyk zapytania na serwerze Azure Database for PostgreSQL.
 
-## <a name="use-pgstatsstatements"></a>Użyj pg_stats_statements
-**Pg_stat_statements** to rozszerzenie PostgreSQL, które jest domyślnie włączona, w usłudze Azure Database for PostgreSQL. Rozszerzenie udostępnia środki do śledzenia wykonania statystyki dla wszystkich instrukcji SQL, wykonywane przez serwer. Ten moduł punkty zaczepienia do każdego wykonania zapytań i jest dostarczany z nietrywialnymi negatywnie na wydajność. Włączanie **pg_stat_statements** wymusza zapytania zapisów tekstu do plików na dysku.
+## <a name="use-pg_stats_statements"></a>Użyj pg_stats_statements
+**Pg_stat_statements** to rozszerzenie PostgreSQL, które jest domyślnie włączone w Azure Database for PostgreSQL. Rozszerzenie zapewnia metodę śledzenia statystyk wykonywania dla wszystkich instrukcji SQL wykonywanych przez serwer. Ten moduł jest podłączany do każdego wykonywania zapytania i ma nieuproszczony koszt wydajności. Włączenie **pg_stat_statements** wymusza zapisywanie tekstu zapytania do plików na dysku.
 
-Jeśli masz unikatowy zapytania z tekstem długie zapytania lub nie aktywnie monitoruje **pg_stat_statements**, wyłącz **pg_stat_statements** uzyskać najlepszą wydajność. Aby to zrobić, należy zmienić ustawienie, aby `pg_stat_statements.track = NONE`.
+Jeśli masz unikatowe zapytania z długim tekstem zapytania lub nie masz aktywnego monitorowania **pg_stat_statements**, wyłącz **pg_stat_statements** w celu uzyskania najlepszej wydajności. Aby to zrobić, Zmień ustawienie na `pg_stat_statements.track = NONE`.
 
-Zauważyliśmy już niektórych obciążeń klienta do poprawy wydajności 50 procent podczas **pg_stat_statements** jest wyłączona. Kompromisem za ułatwienie wprowadzone po wyłączeniu pg_stat_statements to niemożność Rozwiązywanie problemów z wydajnością.
+W przypadku niektórych obciążeń klientów zaobserwowano zwiększenie wydajności do 50%, gdy **pg_stat_statements** jest wyłączone. Przed wyłączeniem pg_stat_statements nie jest możliwe Rozwiązywanie problemów z wydajnością.
 
 Aby ustawić `pg_stat_statements.track = NONE`:
 
-- W witrynie Azure portal przejdź do [zarządzania zasobami PostgreSQL strony i wybierz blok parametrów serwera](howto-configure-server-parameters-using-portal.md).
+- W Azure Portal przejdź do [strony zarządzania zasobami PostgreSQL i wybierz blok parametry serwera](howto-configure-server-parameters-using-portal.md).
 
   ![Blok parametrów serwera PostgreSQL](./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png)
 
-- Użyj [wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md) az postgres server Konfiguracja ustawiona na `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE`.
+- Użyj [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md) AZ Postgres Server Configuration set do `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE`.
 
-## <a name="use-the-query-store"></a>Użyj Store zapytania 
-[Query Store](concepts-query-store.md) funkcji w usłudze Azure Database for PostgreSQL zapewnia bardziej efektywną metodę, aby śledzić statystyki zapytań. Firma Microsoft zaleca tej funkcji jako alternatywa dla użycia *pg_stats_statements*. 
+## <a name="use-the-query-store"></a>Korzystanie z magazynu zapytań 
+Funkcja [magazynu zapytań](concepts-query-store.md) w Azure Database for PostgreSQL zapewnia bardziej efektywną metodę śledzenia statystyk zapytań. Firma Microsoft zaleca korzystanie z tej funkcji jako alternatywy w odniesieniu do *pg_stats_statements*. 
 
-## <a name="next-steps"></a>Kolejne kroki
-Rozważ ustawienie `pg_stat_statements.track = NONE` w [witryny Azure portal](howto-configure-server-parameters-using-portal.md) lub za pomocą [wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).
+## <a name="next-steps"></a>Następne kroki
+Rozważ ustawienie `pg_stat_statements.track = NONE` w [Azure Portal](howto-configure-server-parameters-using-portal.md) lub przy użyciu [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).
 
 Aby uzyskać więcej informacji, zobacz: 
 - [Scenariusze użycia magazynu zapytań](concepts-query-store-scenarios.md) 
-- [Najlepsze rozwiązania Query Store](concepts-query-store-best-practices.md) 
+- [Najlepsze rozwiązania dotyczące magazynu zapytań](concepts-query-store-best-practices.md) 

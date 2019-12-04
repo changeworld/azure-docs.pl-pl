@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 752c43604349a2361a8f5b26cd6d0bce7b516bc0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: a7290e46a0c5e228689dd1f1a0dc7f9a1182ad60
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183492"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789650"
 ---
-### <a name="prerequisites"></a>Wymagania wstępne
-* A [MailChimp](https://www.MailChimp.com/) konta 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Zanim użyjesz swojego konta usługi MailChimp w aplikacji logiki, należy autoryzować aplikację logiki, aby połączyć się z kontem usługi MailChimp. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal. 
+* Konto [MailChimp](https://www.MailChimp.com/) 
 
-Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby połączyć się z kontem usługi MailChimp:
+Aby można było używać konta MailChimp w aplikacji logiki, należy autoryzować aplikację logiki do łączenia się z kontem MailChimp. Na szczęście można to łatwo zrobić w aplikacji logiki w witrynie Azure Portal. 
 
-1. Aby utworzyć połączenie do usługi MailChimp, w Projektancie aplikacji logiki, wybierz pozycję **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *MailChimp* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, którą Ci się spodoba do użycia:  
-   ![MailChimp step 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)
-2. Nie utworzono żadnych połączeń do usługi MailChimp, zanim będzie pobrać monit podaj swoje poświadczenia usługi MailChimp. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do Twojego konta usługi MailChimp danych:  
-   ![MailChimp step 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
-3. Podaj usługi MailChimp, nazwę użytkownika i hasło, aby autoryzować aplikację logiki:  
-   ![MailChimp step 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
-4. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:  
-   ![MailChimp step 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
+Poniżej przedstawiono procedurę autoryzacji aplikacji logiki w celu nawiązania połączenia z kontem MailChimp:
+
+1. Aby utworzyć połączenie z usługą MailChimp, w Projektancie aplikacji logiki wybierz pozycję **Pokaż interfejsy API zarządzane przez firmę Microsoft** na liście rozwijanej, a następnie wprowadź *MailChimp* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, której chcesz użyć:  
+   ![MailChimp krok 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)
+2. Jeśli nie utworzono żadnych połączeń z MailChimp przed, otrzymasz monit o podanie poświadczeń MailChimp. Te poświadczenia będą używane do autoryzacji aplikacji logiki do nawiązywania połączenia z usługą i uzyskiwania dostępu do danych konta MailChimp:  
+   ![MailChimp krok 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
+3. Podaj nazwę użytkownika MailChimp i hasło, aby autoryzować aplikację logiki:  
+   ![MailChimp krok 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
+4. Zwróć uwagę, że połączenie zostało utworzone i teraz możesz kontynuować wykonywanie innych czynności w aplikacji logiki:  
+   ![MailChimp krok 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
 

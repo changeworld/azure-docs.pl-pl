@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 26ebcc7f2196267719a5f49aeeb8de00d48b9c3e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483730"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769663"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Publikowanie wbudowanych aplikacji w systemie Windows Virtual Desktop
 
@@ -45,5 +45,8 @@ Proces używany do publikowania przeglądarki Microsoft Edge jest nieco inny ni�
 New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 
 ```
 
+## <a name="next-steps"></a>Następne kroki
 
+- Dowiedz się, jak skonfigurować źródła danych, aby zorganizować, jak aplikacje są wyświetlane dla użytkowników w obszarze [Dostosowywanie źródła dla użytkowników pulpitu wirtualnego systemu Windows](customize-feed-for-virtual-desktop-users.md).
+- Dowiedz się więcej na temat funkcji dołączania aplikacji MSIX w obszarze [Konfiguracja dołączania aplikacji MSIX](app-attach.md).
 

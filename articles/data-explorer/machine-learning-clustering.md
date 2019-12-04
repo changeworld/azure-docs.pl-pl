@@ -1,30 +1,32 @@
 ---
-title: Usługi Machine learning możliwości w Eksploratorze danych platformy Azure
-description: Korzystanie z uczenia maszynowego, klastrowania analizą głównych przyczyn problemów w Eksploratorze danych platformy Azure.
+title: Możliwość uczenia maszynowego w usłudze Azure Eksplorator danych
+description: Użyj klastrowania usługi Machine Learning na potrzeby analizy głównej przyczyny w usłudze Azure Eksplorator danych.
 author: orspod
 ms.author: orspodek
-ms.reviewer: jasonh
+ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: bc72cc21ab525ec82d9ce4b24e80ce82d92a5d21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe72031ef9ade7473dc4d5de7e090e92ef2a6843
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233495"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769935"
 ---
-# <a name="machine-learning-capability-in-azure-data-explorer"></a>Usługi Machine learning możliwości w Eksploratorze danych platformy Azure
+# <a name="machine-learning-capability-in-azure-data-explorer"></a>Możliwość uczenia maszynowego w usłudze Azure Eksplorator danych
 
-Eksplorator usługi Azure Data, platformy do analizy danych big Data jest używana do monitorowania kondycji usługi, QoS lub nieprawidłowo działający urządzeń nietypowe zachowanie przy użyciu wbudowanych [wykrywanie anomalii i przygotowywać trafniejsze prognozy](/azure/data-explorer/anomaly-detection) funkcji. Po wykryciu nietypowego wzorca analizy przyczyny głównej (RCA) jest przeprowadzana w celu złagodzenia lub rozwiązać anomalii.
+Usługa Azure Eksplorator danych, platforma do analizy danych Big Data, służy do monitorowania kondycji usługi, QoS lub wadliwych urządzeń w celu nietypowego zachowania przy użyciu wbudowanych funkcji [wykrywania anomalii i prognozowania](/azure/data-explorer/anomaly-detection) . Po wykryciu nietypowego wzorca analiza głównej przyczyny jest wykonywana w celu ograniczenia lub rozwiązania anomalii.
 
-Proces diagnostyki jest złożona i długich i gotowe przez ekspertów z konkretnych dziedzin. Proces obejmuje pobieranie i dołączenie dodatkowych danych dla tego samego horyzontu czasowego, wyszukiwanie zmiany w rozkładu wartości w wielu wymiarach, tworzenie wykresów dodatkowe zmienne z różnych źródeł i innych technik oparty na wiedzy specjalistycznej i intuition. Ponieważ te scenariusze diagnostyki są wspólne w Eksploratorze danych platformy Azure, machine learning wtyczki są dostępne dla ułatwienia fazy diagnostyki i skrócić czas trwania — analiza głównej przyczyny.
+Proces diagnostyki jest skomplikowany i długotrwały i wykonywany przez ekspertów domeny. Proces ten obejmuje pobieranie i sprzęganie dodatkowych danych z różnych źródeł dla tego samego przedziału czasowego, wyszukiwanie zmian w dystrybucji wartości w wielu wymiarach, tworzenie wykresów dodatkowych zmiennych i innych technik opartych na wiedzy domeny oraz intuition. Ponieważ te scenariusze diagnostyki są wspólne w usłudze Azure Eksplorator danych, wtyczki uczenia maszynowego są dostępne, aby uprościć fazę diagnostyki i skrócić czas trwania tego etapu.
 
-Eksplorator usługi Azure Data ma trzy wtyczki usługi Machine Learning: [ `autocluster` ](/azure/kusto/query/autoclusterplugin), [ `basket` ](/azure/kusto/query/basketplugin), i [ `diffpatterns` ](/azure/kusto/query/diffpatternsplugin). Wszystkie dodatki plug-in zaimplementować algorytmami klastrowego. `autocluster` i `basket` wtyczek klastra jeden zestaw rekordów i `diffpatterns` wtyczki klastrów różnice między dwoma zestawami rekordów.
+Usługa Azure Eksplorator danych ma trzy Machine Learning wtyczki: [`autocluster`](/azure/kusto/query/autoclusterplugin), [`basket`](/azure/kusto/query/basketplugin)i [`diffpatterns`](/azure/kusto/query/diffpatternsplugin). Wszystkie wtyczki implementują Algorytmy klastrowania. Wtyczki `autocluster` i `basket` klastra z jednym zestawem rekordów i wtyczka `diffpatterns` klastrów różnic między dwoma zestawami rekordów.
 
-## <a name="clustering-a-single-record-set"></a>Klastrowanie zestaw pojedynczy rekord
+## <a name="clustering-a-single-record-set"></a>Klastrowanie pojedynczego zestawu rekordów
 
-Typowy scenariusz obejmuje zestaw danych, wybranych przez określone kryteria, takich jak przedział czasu, która wykazuje nietypowego zachowania dotyczącego, temperatura urządzenie odczyty, czas trwania długiej poleceń i górnej wydatków użytkowników. Prosimy o poświęcenie prosty i szybki sposób znaleźć typowe wzorce (segmenty) w danych. Wzorce stanowią podzestaw zestawu danych, w której rekordy współużytkują te same wartości w wielu wymiarach (podzielone na kategorie kolumny). Następujące zapytanie, kompilacji i spowodują dłużej niż przez tydzień pojemniki 10 minutowy szeregów czasowych wyjątków usługi:
+Typowy scenariusz obejmuje zestaw danych wybrany na podstawie określonych kryteriów, takich jak przedział czasu, który wykazuje nietypowe zachowanie, odczyty urządzeń o wysokiej rozdzielczości, polecenia długiego czasu trwania i najczęstszych użytkowników. Chcemy w łatwy i szybki sposób znajdować typowe wzorce (segmenty) w danych. Wzorce są podzbiorem zestawu danych, którego rekordy współużytkują te same wartości w wielu wymiarach (kolumny kategorii). Następujące zapytanie kompiluje i pokazuje szereg czasowy wyjątków usługi w ciągu tygodnia w dziesięciu minut:
+
+**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPsaoCQQyF4d6nCFa7oHCtZd9B0F6G8ajByWTJZHS5+PDOgpVgYRn485EkOAnno9NAriWGFKw7QfQYUy0O43zZ0JNKFQnG/5jrbmeIXHBgwd6DjH2/JVqk2QrTL1aYvlifa4tni29YlzaiUK4yRK3Zu54006dBZ1N5/+X6PqpRI23+pFGGfIKRtz5egzk92K+dsycMyz3szhGEKWJ01lxI760O9ABuq0bMcvV2hqFoqnOz7F9BdSHlSgEAAA==) **\]**
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  
@@ -34,11 +36,13 @@ demo_clustering1
 | render timechart with(title="Service exceptions over a week, 10 minutes resolution")
 ```
 
-![Wykres czasu wyjątków usługi](media/machine-learning-clustering/service-exceptions-timechart.png)
+![Timechart wyjątków usługi](media/machine-learning-clustering/service-exceptions-timechart.png)
 
-Liczba wyjątków usługi mają związek z ogólnych ruch usługi. Wyraźnie widać wzorzec dzienny dla dni roboczych, z okresu od poniedziałku do piątku, z wzrost usługi wyjątek jest liczona środku dnia i mocno spadł w liczby w nocy. Płaskie niskiej liczby są widoczne w ciągu weekendu. Wyjątek wartości graniczne mogą zostać wykryte za pomocą [czasu wykrywania anomalii serii](/azure/data-explorer/anomaly-detection?#time-series-anomaly-detection) w Eksploratorze danych platformy Azure.
+Liczba wyjątków usług jest skorelowane z ogólnym ruchem usługi. Można jasno zobaczyć dzienny wzorzec dla dni roboczych od poniedziałku do piątku, ze wzrostem liczby wyjątków usługi w połowie dnia, a także w porze nocnej. Płaskie niskie liczby są widoczne w weekendie. Wyjątki wyjątków można wykryć przy użyciu [wykrywania anomalii szeregów czasowych](/azure/data-explorer/anomaly-detection?#time-series-anomaly-detection) w usłudze Azure Eksplorator danych.
 
-Druga Kolekcja danych odbywa się na wtorek po południu użycie. Następujące zapytanie służy w dalszym diagnozowaniu tej kolekcji. Użyj zapytania, aby odświeżyć wykresu wokół wzrost wyższa rozdzielczość (8 godzin w pojemnikach co minutę), aby sprawdzić, czy jest ono gwałtowny wzrost i wyświetl jego obramowania.
+Drugi skok danych odbywa się na wtorek. Poniższe zapytanie służy do dalszej diagnostyki tego wzrostu. Użyj zapytania, aby ponownie narysować wykres wokół skoku w wyższej rozdzielczości (osiem godzin w pojemnikach o pojedynczej minucie), aby sprawdzić, czy jest to ostry skok, i Wyświetl jego obramowania.
+
+**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNwQrCMBAE0Hu/YvHUooWkghSl/yDoyUsJyWpCk2xJNnjx403pbeYwbzwyBBdnnoxiZBewHYS89GLshzNIeRWiuzUGA83al8yYXPzI5gdBLdjnWjFDLGHSVCK3HVCEe0LtMj4r9mAVVngnCvsLMO3hOFqo2goyVCxhNJhgu9dWJYavY9uyY4/T4UV1XVm2CEM0kFe34AnkBhXGOs7kCzuKh+4P3/XM5M8AAAA=) **\]**
 
 ```kusto
 let min_t=datetime(2016-08-23 11:00);
@@ -47,9 +51,11 @@ demo_clustering1
 | render timechart with(title="Zoom on the 2nd spike, 1 minute resolution")
 ```
 
-![Skup się na wykres czasu kolekcji](media/machine-learning-clustering/focus-spike-timechart.png)
+![Skup się na timechart](media/machine-learning-clustering/focus-spike-timechart.png)
 
-Widzimy wąskie kolekcji dwóch minut od 15:00 do 15:02. W następującym zapytaniu liczba wyjątków w tym oknie dwie minuty:
+Zobaczymy wąskie 2-minutowe skoki od 15:00 do 15:02. W poniższym zapytaniu Policz wyjątki w tym dwuminutowym przedziale czasu:
+
+**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -59,11 +65,13 @@ demo_clustering1
 | count
 ```
 
-|Count |
+|Liczba |
 |---------|
 |972    |
 
-W następującym zapytaniu przykładowy 20 wyjątki poza 972:
+W poniższym zapytaniu przykładowe 20 wyjątków z 972:
+
+**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4XOsQrCMBSF4b1Pccd2aLmJKKL4DoLu4doeNDSJJb1SBx/eOHV0/37OCVCKPrkJMjo9DaJQH1FbNruW963dkNkemJtjFX5U3v+oLXRAfLo+vGZF9uluqg8tD2TQOaP3M66lu6jEiW7QBUj1+qHr1pGmhCojyPIX7QHvzakAAAA=) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -96,9 +104,11 @@ demo_clustering1
 | 2016-08-23 15:00:58.2222707 | scus   | su5       | 9dbd1b161d5b4779a73cf19a7836ebd6 | 10007007   | 8215dcf6-2de0-42bd-9c90-181c70486c9c |
 | 2016-08-23 15:00:59.9382620 | scus   | su3       | 90d3d2fc7ecc430c9621ece335651a01 | 10007006   | 451e3c4c-0808-4566-a64d-84d85cf30978 |
 
-### <a name="use-autocluster-for-single-record-set-clustering"></a>Autocluster() na użytek pojedynczy rekord, ustaw klastrowania
+### <a name="use-autocluster-for-single-record-set-clustering"></a>Użyj Autocluster () dla pojedynczego klastra zestawu rekordów
 
-Mimo że ma mniej niż tysiąc wyjątków, jest nadal trudno znaleźć wspólnego segmenty, jak wiele wartości w każdej kolumnie. Możesz użyć [ `autocluster()` ](/azure/kusto/query/autoclusterplugin) dodatek plug-in, aby natychmiast wyodrębnić krótką listę typowych segmenty i znajdowanie interesujących klastrów w ciągu dwóch minut w kolekcji, jak pokazano w następującym zapytaniu:
+Mimo że istnieją mniej niż tysiące wyjątków, nadal trudno jest znaleźć typowe segmenty, ponieważ w każdej kolumnie znajduje się wiele wartości. Możesz użyć wtyczki [`autocluster()`](/azure/kusto/query/autoclusterplugin) , aby natychmiast wyodrębnić niewielką listę typowych segmentów i znaleźć interesujące klastry w ciągu dwóch minut, jak pokazano w następującej kwerendzie:
+
+**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -108,7 +118,7 @@ demo_clustering1
 | evaluate autocluster()
 ```
 
-| SegmentId | Count | Procent | Region | ScaleUnit | DeploymentId | ServiceHost |
+| SegmentId | Liczba | Procent | Region | ScaleUnit | DeploymentId | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 1 | 94 | 9.67078189300411 | scus | su5 | 9dbd1b161d5b4779a73cf19a7836ebd6 |  |
@@ -116,13 +126,15 @@ demo_clustering1
 | 3 | 68 | 6.99588477366255 | scus | su3 | 90d3d2fc7ecc430c9621ece335651a01 |  |
 | 4 | 55 | 5.65843621399177 | UZE | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
 
-Powyższe wyniki można zobaczyć, najbardziej dominujący segment zawiera 65.74% rekordów łączna liczba wyjątków i udostępnia cztery wymiary. Następny segment jest znacznie mniej typowe, zawiera tylko 9.67% rekordów i udostępnia trzy wymiary. Inne segmenty są nawet rzadziej. 
+Można zobaczyć wyniki powyżej, że najbardziej dominujący segment zawiera 65,74% łącznej liczby rekordów wyjątków i udostępnia cztery wymiary. Następny segment jest znacznie mniej typowy, zawiera tylko 9,67% rekordów i udostępnia trzy wymiary. Pozostałe segmenty są jeszcze mniej popularne. 
 
-Autocluster korzysta z własnościowego algorytmu do wyszukiwania wiele wymiarów i wyodrębniania interesujące segmentów. "Interesujących" oznacza, że każdy z segmentów ma znaczące pokrycia zarówno zestaw rekordów, jak i zestaw funkcji. Segmenty są również zmieniały się różnice, co oznacza, że każdy z nich jest znacznie różnią się od innych. Co najmniej jeden z tych segmentach mogą być istotne dla procesu — analiza głównej przyczyny. Aby zminimalizować segmentu Przegląd i ocena, autocluster wyodrębnia listę niewielkich segmentów.
+Funkcja autoklaster używa własnościowego algorytmu do wyszukiwania wielu wymiarów i wyodrębniania interesujących segmentów. "Interesujące" oznacza, że każdy segment ma znaczące pokrycie zarówno zestawu rekordów, jak i zestawu funkcji. Segmenty są również rozbieżne, co oznacza, że każda z nich różni się znacznie od innych. Co najmniej jeden z tych segmentów może być istotny dla procesu. Aby zminimalizować przegląd i ocenę segmentu, autoklaster wyodrębnia tylko małą listę segmentów.
 
-### <a name="use-basket-for-single-record-set-clustering"></a>Basket() na użytek pojedynczy rekord, ustaw klastrowania
+### <a name="use-basket-for-single-record-set-clustering"></a>Użyj koszyka () dla pojedynczego klastra zestawu rekordów
 
-Można również użyć [ `basket()` ](/azure/kusto/query/basketplugin) wtyczki, jak pokazano w następującym zapytaniu:
+Możesz również użyć wtyczki [`basket()`](/azure/kusto/query/basketplugin) , jak pokazano w następującej kwerendzie:
+
+**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -132,7 +144,7 @@ demo_clustering1
 | evaluate basket()
 ```
 
-| SegmentId | Count | Procent | Region | ScaleUnit | DeploymentId | Punkt śledzenia | ServiceHost |
+| SegmentId | Liczba | Procent | Region | ScaleUnit | DeploymentId | Punkt śledzenia | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 1 | 642 | 66.0493827160494 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |
@@ -148,15 +160,17 @@ demo_clustering1
 | 11 | 90 | 9.25925925925926 |  |  |  | 10007006 |  |
 | 12 | 57 | 5.8641975308642 |  |  |  |  | 00000000-0000-0000-0000-000000000000 |
 
-Koszyk implementuje algorytm Apriori dla elementu zestawu wyszukiwania i wyodrębnia wszystkie segmenty, w których pokrycie zestawu rekordów jest powyżej wartości progowej (wartość domyślna to % 5). Aby zobaczyć, że więcej segmentów zostały wyodrębnione z podobnych (na przykład, segmentów 0,1 lub 2,3).
+Koszyk implementuje Algorytm Apriori dla wyszukiwania zestawu elementów i wyodrębnia wszystkie segmenty, których pokrycie zestawu rekordów przekracza próg (domyślnie 5%). Można zobaczyć, że więcej segmentów zostało wyodrębnionych z podobnymi (na przykład segmenty 0, 1 lub 2, 3).
 
-Wtyczki są wydajne i łatwy w użyciu, ale ich znaczne ograniczenie to z faktu, że ich klastra pojedynczy zestaw rekordów w sposób nienadzorowanych (z nie etykiety). Dlatego jest niejasny czy wyodrębnione wzorców scharakteryzowania wybranego zestawu rekordów (nietypowe rekordów) lub globalnego zestawu rekordów.
+Oba wtyczki są zaawansowane i łatwe w użyciu, ale ich znaczący ograniczenia polega na tym, że klastry obsługują pojedynczy zestaw rekordów w nienadzorowany sposób (bez etykiet). W związku z tym nie należy czyścić tego, czy wyodrębnione wzorce charakteryzuje wybrany zestaw rekordów (rekordy anomalii) czy globalny zestaw rekordów.
 
-## <a name="clustering-the-difference-between-two-records-sets"></a>Klastrowanie różnica między zestawami dwa rekordy
+## <a name="clustering-the-difference-between-two-records-sets"></a>Klastrowanie różnicy między dwoma zestawami rekordów
 
-[ `diffpatterns()` ](/azure/kusto/query/diffpatternsplugin) Wtyczka pozwala pokonać ograniczenia `autocluster` i `basket`. `Diffpatterns` przyjmuje dwa zestawy rekordów i wyodrębnia segmentów główne, które różnią się między nimi. Jeden zestaw zawiera zazwyczaj nietypowe rekordu, ustaw badamy (jeden analizowane przez `autocluster` i `basket`). Drugi zestaw zawiera odwołanie do zestawu rekordów (linia bazowa). 
+Wtyczka [`diffpatterns()`](/azure/kusto/query/diffpatternsplugin) przejdzie do ograniczenia `autocluster` i `basket`. `Diffpatterns` pobiera dwa zestawy rekordów i wyodrębnia główne segmenty, które różnią się między nimi. Jeden zestaw zwykle zawiera nietypowy badanie zestawu rekordów (jeden analizowany przez `autocluster` i `basket`). Drugi zestaw zawiera zestaw rekordów odwołań (linia bazowa). 
 
-W poniższym zapytaniu używamy `diffpatterns` Aby znaleźć interesujące klastrów w ciągu dwóch minut kolekcji, które różnią się od klastrów w ramach planu bazowego. Definiujemy okna bazowego ośmiu minut przed 15:00 (podczas uruchamiania kolekcji). Musimy również rozszerzyć, kolumna typu binary (AB) określający, czy określony rekord należy do linii bazowej lub nietypowych zestawu. `Diffpatterns` implementuje Algorytm uczenia nadzorowanego, w którym etykiety dwuklasowego zostały wygenerowane przez nietypowe i Flaga linii bazowej (AB).
+W poniższym zapytaniu używamy `diffpatterns`, aby znaleźć interesujące klastry w ciągu dwóch minut, które różnią się od klastrów w ramach linii bazowej. Definiujemy okno linii bazowej jako osiem minut przed 15:00 (po rozpoczęciu pracy). Musimy również przetworzyć kolumnę binarną (AB) określającą, czy konkretny rekord należy do linii bazowej, czy do zestawu anomalii. `Diffpatterns` implementuje algorytm uczenia nadzorowanego, gdzie dwie etykiety klas zostały wygenerowane przez anomalię zamiast flagi linii bazowej (AB).
+
+**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42QzU+DQBDF7/wVcwOi5UtrmhJM4OzBRO9kWqbtpssuYacfGv94t0CrxFTd02by5jfvPUkMtVBlQ7gtOauQiUVNXhLFD5NoNknuIJ7Oo8hPHXmS4vEvaXKWWuoCDUmh6Jr8fj79Tv6HfOanEIbwRLgnQFhjAwviA5EC3hCcCYCq6gamEVsC1oB7LfoRt6iMYKEVvGtFQXfeNFKc7mXe2MjNVzl+mARR6lRU63Ipd4apFWodOx9w2FBL4D23tBSGXi3mhbG+OPPGVQTB+ITvg24dGN7vlN5JTxhc+dYAHZls4LzIxGr1k/B4iXcLbq50jfLNtd9i8OB2jD3KnW0dKstokG08Zby8uLbyCfX/tG46AgAA) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -171,17 +185,19 @@ demo_clustering1
 | evaluate diffpatterns(AB, 'Anomaly', 'Baseline')
 ```
 
-| SegmentId | CountA | CountB | PercentA | percentB | PercentDiffAB | Region | ScaleUnit | DeploymentId | Punkt śledzenia |
+| SegmentId | CountA | CountB | Wartość procentowa | PercentB | PercentDiffAB | Region | ScaleUnit | DeploymentId | Punkt śledzenia |
 |-----------|--------|--------|----------|----------|---------------|--------|-----------|----------------------------------|------------|
-| 0 | 639 | 21 | 65.74 | 1.7 | 64.04 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |
-| 1 | 167 | 544 | 17.18 | 44.16 | 26.97 | scus |  |  |  |
-| 2 | 92 | 356 | 9.47 | 28.9 | 19.43 |  |  |  | 10007007 |
-| 3 | 90 | 336 | 9.26 | 27.27 | 18.01 |  |  |  | 10007006 |
-| 4 | 82 | 318 | 8.44 | 25.81 | 17.38 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |
-| 5 | 55 | 252 | 5.66 | 20.45 | 14.8 | UZE | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
-| 6 | 57 | 204 | 5.86 | 16.56 | 10.69 |  |  |  |  |
+| 0 | 639 | 21 | 65,74 | 1,7 | 64,04 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |
+| 1 | 167 | 544 | 17,18 | 44,16 | 26,97 | scus |  |  |  |
+| 2 | 92 | 356 | 9,47 | 28,9 | 19,43 |  |  |  | 10007007 |
+| 3 | 90 | 336 | 9,26 | 27,27 | 18,01 |  |  |  | 10007006 |
+| 4 | 82 | 318 | 8,44 | 25,81 | 17,38 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |
+| 5 | 55 | 252 | 5,66 | 20,45 | 14,8 | UZE | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
+| 6 | 57 | 204 | 5,86 | 16,56 | 10,69 |  |  |  |  |
 
-Segment najbardziej dominujący jest tym samym segmencie, który został wyodrębniony przez `autocluster`, jej zakresu w oknie nietypowe dwie minuty, jest również 65.74%. Ale jej zakresu w oknie minutę 8 odniesienia jest tylko % 1.7. Różnica polega na 64.04%. Różnica ta wydaje się być one związane z nietypowych kolekcji. Możesz sprawdzić to założenie, dzieląc oryginalny wykres na rekordy należące do tego odcinka problematyczne i innych klas, jak pokazano w poniższym zapytaniu:
+Najbardziej dominujący segment jest tym samym segmentem, który został wyodrębniony przez `autocluster`, jego pokrycie w oknie anomalii dwuminutowej jest również 65,74%. Jednak jego pokrycie w oknie planu bazowego osiem minut wynosi tylko 1,7%. Różnica wynosi 64,04%. Ta różnica wydaje się być związana z nietypowym wzrostem. Można sprawdzić to założenie przez podzielenie oryginalnego wykresu na rekordy należące do tego problematycznego segmentu, a pozostałe segmenty, jak pokazano w poniższym zapytaniu:
+
+**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRsWrDMBCG9zzF4cmGGuJUjh2Ktw7tUkLTzuEsnRNRnRQkuSQlD185yRTo0EWIO913/J8MRWBttxE6iC5INOhzRey20owhktd2V8EZwsiMXv/Q9Dpfe5I60Idm2kTkQ1E8AczMxMLjf1h4/IN1PzY7Ax0jWQWBdomvhyF/p512FroOMsIxA0zdTdpKn1bHSzmMzbX8TAfjTkw2vqpLp69VpYQaatEogXOBsqrbtl5WDake6yabXWjkv7WkFxeuPGqG5VzWqhQrIUqx6B/L1WKB6aBViy01imT2ANnau94QT9c35xlNVqQAjF9UhpSHAtiRO+lGG/MCUoZ7CTB4x7ePie5mNbk4QDVn6E+ThUT0SQh5iGlM7tHHX4WFgLHOAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  
@@ -193,12 +209,12 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 | render timechart
 ```
 
-![Sprawdzanie poprawności wykres czasu segmentu "diffpattern"](media/machine-learning-clustering/validating-diffpattern-timechart.png)
+![Weryfikowanie timechart segmentu "diffpattern"](media/machine-learning-clustering/validating-diffpattern-timechart.png)
 
-Ten wykres pozwala nam sprawdzenia, czy kolekcji na wtorek po południu użycie było ze względu na wyjątki z tego konkretnego segmentu odnalezione za pomocą `diffpatterns` wtyczki.
+Ten wykres pozwala nam zobaczyć, że skok na wtorek popołudniy był spowodowany wyjątkami z tego konkretnego segmentu, które zostały odnalezione przy użyciu wtyczki `diffpatterns`.
 
 ## <a name="summary"></a>Podsumowanie
 
-Wtyczki usługi Azure Data Explorer Machine Learning są przydatne w wielu scenariuszach. `autocluster` i `basket` implementować Algorytm uczenia nienadzorowanych i są łatwe w użyciu. `Diffpatterns` implementuje w trybie nadzorowanym algorytmu uczenia i chociaż bardziej skomplikowane, jest bardziej wydajne podczas wyodrębniania rozróżnienia odcinki dla — analiza głównej przyczyny.
+Wtyczki usługi Azure Eksplorator danych Machine Learning są przydatne w wielu scenariuszach. `autocluster` i `basket` implementują nienadzorowany algorytm uczenia i są łatwe w użyciu. `Diffpatterns` implementuje algorytm uczenia nadzorowanego, a chociaż bardziej skomplikowany, jest bardziej wydajny w wyodrębnianiu segmentów rozróżnienia.
 
-Te dodatki plug-in są używać hasła interaktywnie w scenariuszach ad hoc i automatyczne niemal w czasie rzeczywistym usługi monitorowania. W Eksploratorze danych platformy Azure wykrywanie anomalii w czasie serii następuje proces diagnostyki, wysoce zoptymalizowane pod kątem spełniać normy wydajności na potrzeby.
+Te wtyczki są używane interaktywnie w scenariuszach ad hoc i w ramach automatycznych usług monitorowania w czasie rzeczywistym. Na platformie Azure Eksplorator danych wykrywanie anomalii szeregów czasowych następuje przez proces diagnostyki, który jest wysoce zoptymalizowany pod kątem spełniania niezbędnych standardów wydajności.

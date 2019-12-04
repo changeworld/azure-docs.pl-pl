@@ -9,59 +9,75 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: e482cf9b5367beba00784e69c5bad88142df5225
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 278639b27d821e8d6440248a1add43bcd9de22c6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076214"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775229"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Jakie są domyślne i zalecane konfiguracje węzłów dla usługi Azure HDInsight?
 
 W tym artykule omówiono domyślne i zalecane konfiguracje węzłów dla klastrów usługi Azure HDInsight.
 
-## <a name="default-and-recommended-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Domyślna i zalecana konfiguracja węzłów oraz rozmiary maszyn wirtualnych dla klastrów
+## <a name="default-and-minimum-recommended-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Domyślna i minimalna zalecana konfiguracja węzła oraz rozmiary maszyn wirtualnych dla klastrów
 
-W poniższych tabelach przedstawiono domyślne i zalecane rozmiary maszyn wirtualnych dla klastrów usługi HDInsight.  Te informacje są niezbędne, aby zrozumieć rozmiary maszyn wirtualnych używane podczas tworzenia skryptów programu PowerShell lub interfejsu wiersza polecenia platformy Azure w celu wdrożenia klastrów usługi HDInsight. 
+W poniższych tabelach przedstawiono domyślne i zalecane rozmiary maszyn wirtualnych dla klastrów usługi HDInsight.  Te informacje są niezbędne, aby zrozumieć rozmiary maszyn wirtualnych używane podczas tworzenia skryptów programu PowerShell lub interfejsu wiersza polecenia platformy Azure w celu wdrożenia klastrów usługi HDInsight.
 
 Jeśli potrzebujesz więcej niż 32 węzłów procesu roboczego w klastrze, wybierz rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM. 
 
 Jedynymi typami klastrów z dyskami danych są klastry Kafka i HBase z włączoną funkcją przyspieszonego zapisywania. Usługa HDInsight obsługuje rozmiary dysków P30 i S30 w tych scenariuszach.
 
+W poniższej tabeli zestawiono specyfikacje wszystkich minimalnych zalecanych typów maszyn wirtualnych używanych w tym dokumencie.
+
+| Rozmiar              | vCPU | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+|-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standardowa_D3_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 16/16x500           | 4 / 3000                                       |
+| Standardowa_D4_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 32/32x500           | 8 / 6000                                       |
+| Standardowa_D5_v2 | 16   | 56          | 800                    | 48000 / 750 / 375                                          | 64/64x500           | 8 / 12000                                    |
+| Standardowa_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 3000                     |
+| Standardowa_D13_v2   | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 6000                     |
+| Standardowa_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64/64x500                       | 8 / 12000          |
+| Standardowa_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2 x 500               | 2 / 250                 |
+| Standardowa_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4 x 500               | 2 / 500                 |
+| Standardowa_A4_v2  | 4         | 8           | 40             | 4000 / 80 / 40                                           | 8 / 8 x 500               | 4 / 1000                     |
+
 Aby uzyskać szczegółowe informacje na temat specyfikacji poszczególnych typów maszyn wirtualnych, zobacz następujące dokumenty:
 
-* [Rozmiary maszyn wirtualnych ogólnego przeznaczenia: Seria Dv2 1-5](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dv2-series)
-* [Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci: Seria Dv2 11-15](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#dv2-series-11-15)
-* [Rozmiary maszyn wirtualnych ogólnego przeznaczenia: Seria Av2 1-8](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#av2-series)
+* [Rozmiary maszyn wirtualnych ogólnego przeznaczenia: Dv2 Series 1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
+* [Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci: Dv2 Series 11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
+* [Rozmiary maszyn wirtualnych ogólnego przeznaczenia: Av2 Series 1-8](../virtual-machines/linux/sizes-general.md#av2-series)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>Wszystkie obsługiwane regiony, z wyjątkiem Brazylii Południowe i Japonia Zachodnia
 
 > [!Note]
-> Aby uzyskać identyfikator jednostki SKU do użycia w programie PowerShell i innych skryptach `Standard_` , Dodaj na początku wszystkie jednostki SKU maszyny wirtualnej w poniższych tabelach. Na przykład `D12_v2`. `Standard_D12_v2`
+> Aby uzyskać identyfikator jednostki SKU do użycia w programie PowerShell i innych skryptach, Dodaj `Standard_` na początku wszystkich jednostek SKU maszyny wirtualnej w poniższych tabelach. Na przykład `D12_v2` stanie się `Standard_D12_v2`.
 
-| Typ klastra | Hadoop | HBase | Zapytanie interakcyjne | Storm | platforma Spark | ML Server | Kafka |
+| Typ klastra | Usługa Hadoop | HBase | Zapytanie interaktywne | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
-| Nagłówek: domyślny rozmiar maszyny wirtualnej | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 | D3_v2 |
-| Główna: zalecane rozmiary maszyn wirtualnych | D13_v2,<br/>D14_v2,<br/>D5_v2 | D3_v2,<br/>D4_v2,<br/>D12_v2 | D13_v2,<br/>D14_v2 | A4_v2,<br/>A8_v2 | D12_v2,<br/>D13_v2,<br/>D14_v2 | D12_v2,<br/>D13_v2,<br/>D14_v2 | D3_v2,<br/>D4_v2,<br/>D12_v2 |
+| Nagłówek: domyślny rozmiar maszyny wirtualnej | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
+| Nagłówek: minimalne zalecane rozmiary maszyn wirtualnych | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Proces roboczy: domyślny rozmiar maszyny wirtualnej | D4_v2 | D4_v2 | D14_v2 | D3_v2 | D13_v2 | D4_v2 | 4 D12_v2 z 2 dyskami S30 na brokera |
-| Proces roboczy: zalecane rozmiary maszyn wirtualnych | D5_v2,<br>D12_v2,<br/>D13_v2 | D3_v2,<br/>D4_v2,<br/>D13_v2 | D13_v2,<br/>D14_v2 | D3_v2<br/>D4_v2,<br/>D12_v2 | D12_v2,<br>D13_v2,<br>D14_v2 | D4_v2,<br/>D12_v2,<br>D13_v2,<br>D14_v2 | D3_v2,<br/>D4_v2,<br/>DS3_v2,<br/>DS4_v2 |
+| Proces roboczy: minimalne zalecane rozmiary maszyn wirtualnych | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 | D3_v2 |
 | Dozorcy: domyślny rozmiar maszyny wirtualnej |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 | A4_v2 |
-| Dozorcy: zalecane rozmiary maszyn wirtualnych |  | A4_v2, <br/>A8_v2, <br/>A2m_v2 | A4_v2,<br/>A8_v2,<br/>A2m_v2 | A4_v2,<br/>A2_v2,<br/>A8_v2 |  | A2_v2 | A4_v2,<br/> A8_v2,<br/>A2m_v2 |
+| Dozorcy: minimalne zalecane rozmiary maszyn wirtualnych |  | A4_v2 | A4_v2 | A2_v2 |  | A2_v2 | A4_v2 |
 | Usługi ML: domyślny rozmiar maszyny wirtualnej |  |  |  |  |  | D4_v2 |  |
-| Usługi w usłudze ML: zalecany rozmiar maszyny wirtualnej |  |  |  |  |  | D4_v2,<br/> D12_v2,<br/> D13_v2,<br/>D14_v2 |  |
+| Usługi ML: minimalny zalecany rozmiar maszyny wirtualnej |  |  |  |  |  | D4_v2 |  |
+
+\* = rozmiary maszyn wirtualnych dla klastrów usługi Spark pakiet Enterprise Security (ESP)
 
 ### <a name="brazil-south-and-japan-west-only"></a>Brazylia Południowa i Japonia Zachodnia
 
-| Typ klastra | Hadoop | HBase | Zapytanie interakcyjne | Storm | platforma Spark | ML Services |
+| Typ klastra | Usługa Hadoop | HBase | Zapytanie interaktywne | Storm | Spark | Usługi ML |
 |---|---|---|---|---|---|---|
 | Nagłówek: domyślny rozmiar maszyny wirtualnej | D12 | D12 | D13 | A4_v2 | D12 | D12 |
-| Główna: zalecane rozmiary maszyn wirtualnych | D5_v2,<br/> D13_v2,<br/> D14_v2 | D3_v2,<br/> D4_v2,<br/> D12_v2 | D13_v2,<br/> D14_v2 | A4_v2,<br/> A8_v2 | D12_v2,<br/> D13_v2,<br/> D14_v2 | D12_v2,<br/> D13_v2,<br/> D14_v2 |
+| Nagłówek: minimalne zalecane rozmiary maszyn wirtualnych | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |
 | Proces roboczy: domyślny rozmiar maszyny wirtualnej | D4 | D4 | D14 | D3 | D13 | D4 |
-| Proces roboczy: zalecane rozmiary maszyn wirtualnych | D5_v2,<br/> D12_v2,<br/> D13_v2 | D3_v2,<br/> D4_v2,<br/> D13_v2 | D13_v2,<br/> D14_v2 | D3_v2,<br/> D4_v2,<br/> D12_v2 | D12_v2,<br/> D13_v2,<br/> D14_v2 | D4_v2,<br/> D12_v2,<br/> D13_v2,<br/> D14_v2 |
+| Proces roboczy: minimalne zalecane rozmiary maszyn wirtualnych | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 |
 | Dozorcy: domyślny rozmiar maszyny wirtualnej |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| Dozorcy: zalecane rozmiary maszyn wirtualnych |  | A4_v2,<br/> A8_v2,<br/> A2m_v2 | A4_v2,<br/> A8_v2,<br/> A2m_v2 | A4_v2,<br/> A8_v2 |  | A2_v2 |
+| Dozorcy: minimalne zalecane rozmiary maszyn wirtualnych |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
 | Usługi ML: domyślne rozmiary maszyn wirtualnych |  |  |  |  |  | D4 |
-| Usługi w usłudze ML: zalecane rozmiary maszyn wirtualnych |  |  |  |  |  | D4_v2,<br/> D12_v2,<br/> D13_v2,<br/> D14_v2 |
+| Usługi ML: minimalne zalecane rozmiary maszyn wirtualnych |  |  |  |  |  | D4_v2 |
 
 > [!NOTE]
 > - Nagłówek jest znany jako *Nimbus* dla typu klastra burza.
@@ -70,4 +86,4 @@ Aby uzyskać szczegółowe informacje na temat specyfikacji poszczególnych typ�
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?](hdinsight-component-versioning.md)
+* [Jakie składniki Apache Hadoop i wersje są dostępne w usłudze HDInsight?](hdinsight-component-versioning.md)

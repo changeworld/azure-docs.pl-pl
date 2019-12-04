@@ -1,54 +1,54 @@
 ---
-title: Konfiguruj parametry usługi w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano jak skonfigurować parametry usługi w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia wiersza polecenia platformy Azure.
+title: Konfigurowanie parametrów-Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano sposób konfigurowania parametrów Postgres na pojedynczym serwerze Azure Database for PostgreSQL przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: f276247076438a03973148b5cf65ddbeb409b024
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 4e029428a3709bacdbcd50a6ac3714e730377242
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274778"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763627"
 ---
-# <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Dostosowywanie parametrów konfiguracji serwera dla usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
-Można wyświetlać, Pokaż i zaktualizuj parametry konfiguracji dla serwera Azure PostgreSQL za pomocą interfejsu wiersza polecenia (Azure CLI). Podzbiór aparatu konfiguracji jest narażony na poziomie serwera i może być modyfikowany. 
+# <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Dostosowywanie parametrów konfiguracji serwera dla Azure Database for PostgreSQL-pojedynczego serwera przy użyciu interfejsu wiersza polecenia platformy Azure
+Można wyświetlić, wyświetlić i zaktualizować parametry konfiguracji dla serwera usługi Azure PostgreSQL za pomocą interfejsu wiersza polecenia (CLI). Podzestaw konfiguracji aparatu jest narażony na poziomie serwera i można go modyfikować. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wykonania kroków w tym przewodniku, potrzebne są:
-- Tworzenie usługi Azure Database for postgresql w warstwie serwera i bazy danych, postępując zgodnie z [Tworzenie serwera usługi Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
-- Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) interfejsu wiersza polecenia na maszynie lub użyj [usługi Azure Cloud Shell](../cloud-shell/overview.md) w witrynie Azure portal przy użyciu przeglądarki.
+Aby krokowo poprowadzić ten przewodnik, musisz:
+- Utwórz serwer Azure Database for PostgreSQL i bazę danych, wykonując następujące czynności: [utwórz Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
+- Zainstaluj interfejs wiersza polecenia [platformy Azure](/cli/azure/install-azure-cli) na maszynie lub Użyj [Azure Cloud Shell](../cloud-shell/overview.md) w Azure Portal za pomocą przeglądarki.
 
-## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Lista parametrów konfiguracji serwera dla usługi Azure Database dla serwera PostgreSQL
-Aby wyświetlić listę wszystkich parametrów można modyfikować w serwera i ich wartości, należy uruchomić [az postgres server configuration list](/cli/azure/postgres/server/configuration) polecenia.
+## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Wyświetlanie listy parametrów konfiguracji serwera dla Azure Database for PostgreSQL Server
+Aby wyświetlić listę wszystkich modyfikowalnych parametrów na serwerze i ich wartości, uruchom polecenie [AZ Postgres Server Configuration list](/cli/azure/postgres/server/configuration) .
 
-Możesz wyświetlić listę parametrów konfiguracji serwera dla serwera **mydemoserver.postgres.database.azure.com** w ramach grupy zasobów **myresourcegroup**.
+Dla serwera **mydemoserver.Postgres.Database.Azure.com** można wyświetlić listę parametrów konfiguracji serwera w **obszarze Grupa zasobów**.
 ```azurecli-interactive
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="show-server-configuration-parameter-details"></a>Pokaż szczegóły parametrów konfiguracji serwera
-Aby wyświetlić szczegółowe informacje dotyczące parametru określonej konfiguracji dla serwera, uruchom [az postgres server configuration show](/cli/azure/postgres/server/configuration) polecenia.
+## <a name="show-server-configuration-parameter-details"></a>Pokaż szczegóły parametru konfiguracji serwera
+Aby wyświetlić szczegóły dotyczące określonego parametru konfiguracji dla serwera, uruchom polecenie [AZ Postgres Server Configuration show](/cli/azure/postgres/server/configuration) .
 
-Ten przykład przedstawia szczegółowe informacje o **dziennika\_min\_wiadomości** parametru konfiguracji serwera dla serwera **mydemoserver.postgres.database.azure.com** w ramach grupy zasobów **myresourcegroup.**
+W tym przykładzie przedstawiono szczegółowe informacje o **dzienniku\_minimalny** parametr konfiguracji serwera\_komunikatów dla serwera **mydemoserver.Postgres.Database.Azure.com** w obszarze Grupa zasobów **.**
 ```azurecli-interactive
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="modify-server-configuration-parameter-value"></a>Zmodyfikuj wartość parametru konfiguracji serwera
-Można również zmodyfikować wartości parametru niektórych serwera konfiguracji, która aktualizuje podstawowej wartości konfiguracji dla aparatu serwera PostgreSQL. Aby zaktualizować konfigurację, użyj [az postgres server configuration set](/cli/azure/postgres/server/configuration) polecenia. 
+## <a name="modify-server-configuration-parameter-value"></a>Modyfikuj wartość parametru konfiguracji serwera
+Można również zmodyfikować wartość określonego parametru konfiguracji serwera, który aktualizuje podstawową wartość konfiguracyjną dla aparatu serwera PostgreSQL. Aby zaktualizować konfigurację, użyj polecenia [AZ Postgres Server Configuration Set](/cli/azure/postgres/server/configuration) . 
 
-Aby zaktualizować **dziennika\_min\_wiadomości** serwera parametru konfiguracji serwera **mydemoserver.postgres.database.azure.com** w ramach grupy zasobów  **myresourcegroup.**
+Aby zaktualizować **dziennik\_minimum\_komunikatów** parametry konfiguracji serwera **mydemoserver.Postgres.Database.Azure.com** w obszarze Grupa zasobów **.**
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
-Jeśli chcesz zresetować wartość parametru konfiguracji, po prostu chcesz Opuść opcjonalnego `--value` parametr i usługa stosuje się wartością domyślną. W powyżej przykładzie to powiadomienie będzie wyglądać:
+Jeśli chcesz zresetować wartość parametru konfiguracji, po prostu wybierz opcję pozostawienia opcjonalnego parametru `--value`, a usługa zastosuje wartość domyślną. W powyższym przykładzie będzie wyglądać następująco:
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-To polecenie resetuje **dziennika\_min\_wiadomości** konfiguracji, wartość domyślna **ostrzeżenie**. Uzyskać więcej informacji na temat konfiguracji serwera i dopuszczalne wartości, zobacz dokumentację PostgreSQL [konfiguracji serwera](https://www.postgresql.org/docs/9.6/static/runtime-config.html).
+To polecenie resetuje **dziennik\_minimalną konfigurację\_komunikatów** **do wartości domyślnej**. Aby uzyskać więcej informacji na temat konfiguracji serwera i dozwolonych wartości, zobacz dokumentację PostgreSQL na [serwerze konfiguracji](https://www.postgresql.org/docs/9.6/static/runtime-config.html).
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Dowiedz się, jak uruchomić ponownie serwer](howto-restart-server-cli.md)
-- Aby skonfigurować i dostęp do dzienników serwera, zobacz [dzienników serwera w usłudze Azure Database for PostgreSQL](concepts-server-logs.md)
+## <a name="next-steps"></a>Następne kroki
+- [Dowiedz się, jak ponownie uruchomić serwer](howto-restart-server-cli.md)
+- Aby skonfigurować i uzyskać dostęp do dzienników serwera, zobacz [Dzienniki serwera w Azure Database for PostgreSQL](concepts-server-logs.md)

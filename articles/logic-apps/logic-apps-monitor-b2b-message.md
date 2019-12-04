@@ -1,20 +1,19 @@
 ---
-title: Monitorowanie komunikatów B2B przy użyciu Azure Monitor-Azure Logic Apps
+title: Monitorowanie komunikatów B2B przy użyciu Azure Monitor
 description: Konfigurowanie rejestrowania diagnostyki dla komunikatów AS2, X12 i EDIFACT w Azure Logic Apps przy użyciu Azure Monitor
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: cd96376f764ec3075b916bf2207ec6ee3dd3fcbd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680204"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791927"
 ---
 # <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Konfigurowanie rejestrowania diagnostyki dla komunikatów B2B w Azure Logic Apps przy użyciu Azure Monitor
 
@@ -51,7 +50,7 @@ Gdy skończysz, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
    | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure skojarzona z kontem integracji | 
    | **Grupa zasobów** | <*Azure-Resource-Group-name*> | Grupa zasobów platformy Azure dla konta integracji | 
    | **Typ zasobu** | **Integracja kont** | Typ zasobu platformy Azure, w którym ma zostać włączone rejestrowanie | 
-   | **Zasób** | <*integrację — nazwa konta* > | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
+   | **Zasób** | <*integrację — nazwa konta*> | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
    ||||  
 
    Na przykład:
@@ -93,7 +92,7 @@ Gdy skończysz, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
    | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure skojarzona z kontem integracji | 
    | **Grupa zasobów** | <*Azure-Resource-Group-name*> | Grupa zasobów platformy Azure dla konta integracji | 
    | **Typ zasobu** | **Integracja kont** | Typ zasobu platformy Azure, w którym ma zostać włączone rejestrowanie | 
-   | **Zasób** | <*integrację — nazwa konta* > | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
+   | **Zasób** | <*integrację — nazwa konta*> | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
    ||||  
 
    Na przykład:

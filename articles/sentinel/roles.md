@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 02d87ed5f26d36b7cd438b0d818c7bdcce43520d
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464116"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762706"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Uprawnienia na platformie Azure — wskaźnik
 
@@ -30,9 +30,9 @@ Za pomocą RBAC można użyć i utworzyć role w zespole operacji zabezpieczeń,
 
 Istnieją trzy specyficzne role kontrolki wskaźnikowej platformy Azure.  
 **Wszystkie wbudowane role funkcji wskaźnikowej platformy Azure umożliwiają dostęp do odczytu do danych w obszarze roboczym wskaźnikowego platformy Azure.**
-- **Czytnik wskaźnikowy platformy Azure**: Aby uzyskać więcej informacji, zobacz [role wbudowane](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
-- **Obiekt odpowiadający usługi Azure wskaźnikowej**: Aby uzyskać więcej informacji, zobacz [role wbudowane](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
-- **Współautor wskaźnikowego platformy Azure**: Aby uzyskać więcej informacji, zobacz [wbudowane role](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
+- [Czytnik wskaźnikowy platformy Azure](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
+- [Obiekt odpowiadający wskaźnikowi platformy Azure](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- [Współautor wskaźnikowego platformy Azure](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
 Oprócz ról RBAC opartych na platformie Azure, istnieją role RBAC platformy Azure i Log Analytics, które mogą udzielić szerszego zestawu uprawnień, które obejmują dostęp do obszaru roboczego wskaźnikowego platformy Azure i innych zasobów:
 

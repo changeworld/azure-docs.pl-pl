@@ -1,51 +1,51 @@
 ---
-title: Uruchom ponownie usługi Azure Database dla serwera MySQL przy użyciu witryny Azure portal
-description: W tym artykule opisano, jak można ponownie uruchomić serwer Azure Database for MySQL za pomocą witryny Azure portal.
+title: Uruchom ponownie serwer-Azure Portal-Azure Database for MySQL
+description: W tym artykule opisano, jak można ponownie uruchomić serwer Azure Database for MySQL przy użyciu Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 2/7/2019
-ms.openlocfilehash: a20030a1dc6cd8b89064731c283f9b462d30ec8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 1857c67a77b9600f3d8f7c222a8e06f899fba728
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61422574"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774055"
 ---
-# <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Uruchom ponownie usługi Azure Database dla serwera MySQL przy użyciu witryny Azure portal
-W tym temacie opisano, jak można ponownie uruchomić serwer Azure Database for MySQL. Może być konieczne ponowne uruchomienie serwera ze względu na konserwację powoduje krótki przestój serwera wykonuje operację.
+# <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Uruchom ponownie serwer Azure Database for MySQL przy użyciu Azure Portal
+W tym temacie opisano, jak można ponownie uruchomić serwer Azure Database for MySQL. Może być konieczne ponowne uruchomienie serwera ze względów konserwacyjnych, co powoduje krótkie przestoje, gdy serwer wykona operację.
 
-Ponowne uruchomienie serwera zostanie zablokowane, jeśli usługa jest zajęta. Na przykład usługa może przetwarzania wcześniej żądanej operacji, takich jak skalowanie rdzeni wirtualnych.
+Ponowne uruchomienie serwera zostanie zablokowane, jeśli usługa jest zajęta. Na przykład usługa może przetwarzać wcześniej żądaną operację, taką jak skalowanie rdzeni wirtualnych.
 
-Czas wymagany do ukończenia ponownego uruchomienia, zależy od procesu odzyskiwania MySQL. Celu skrócenia czasu ponownego uruchomienia, zalecane jest minimalizacja ilości działań mających miejsce na serwerze przed ponownym uruchomieniu.
+Czas wymagany do ukończenia ponownego uruchomienia zależy od procesu odzyskiwania MySQL. Aby skrócić czas ponownego uruchomienia, zalecamy zminimalizowanie liczby działań występujących na serwerze przed ponownym uruchomieniem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby ukończyć ten przewodnik, potrzebne są:
-- [— Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md)
+Aby ukończyć ten przewodnik, musisz:
+- [Serwer Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="perform-server-restart"></a>Wykonania ponownego uruchomienia serwera
+## <a name="perform-server-restart"></a>Wykonaj ponowne uruchomienie serwera
 
-Poniższe kroki, uruchom ponownie serwer MySQL:
+Wykonaj następujące kroki, aby ponownie uruchomić serwer MySQL:
 
-1. W witrynie Azure portal wybierz usługi Azure Database for MySQL server.
+1. W Azure Portal wybierz serwer Azure Database for MySQL.
 
-2. Na pasku narzędzi serwera **Przegląd** kliknij **ponowne uruchomienie**.
+2. Na pasku narzędzi na stronie **Przegląd** serwera kliknij pozycję **Uruchom ponownie**.
 
-   ![Usługa Azure Database for MySQL - Overview - Uruchom ponownie przycisk](./media/howto-restart-server-portal/2-server.png)
+   ![Azure Database for MySQL — przegląd — przycisk ponownego uruchamiania](./media/howto-restart-server-portal/2-server.png)
 
-3. Kliknij przycisk **tak** aby upewnić się, ponowne uruchomienie serwera.
+3. Kliknij przycisk **tak** , aby potwierdzić ponowne uruchomienie serwera.
 
-   ![Upewnij się, usługa Azure Database for MySQL — ponowne uruchomienie](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for MySQL — Potwierdź ponowne uruchomienie](./media/howto-restart-server-portal/3-restart-confirm.png)
 
-4. Sprawdź, czy stan serwera zmienia się na "Ponowne uruchamianie".
+4. Zwróć uwagę, że stan serwera zmieni się na "ponowne uruchomienie".
 
    ![Azure Database for MySQL — stan ponownego uruchomienia](./media/howto-restart-server-portal/4-restarting-status.png)
 
-5. Upewnij się, ponownego uruchomienia serwera zakończy się pomyślnie.
+5. Potwierdzenie ponownego uruchomienia serwera zakończyło się pomyślnie.
 
-   ![Azure Database for MySQL — Powodzenie z ponownym uruchomieniu](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for MySQL — pomyślne ponowne uruchomienie](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Szybki start: Tworzenie usługi Azure Database dla serwera MySQL przy użyciu witryny Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[Szybki Start: Tworzenie serwera Azure Database for MySQL przy użyciu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)

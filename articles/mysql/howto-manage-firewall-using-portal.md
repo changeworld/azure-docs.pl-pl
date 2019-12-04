@@ -1,17 +1,17 @@
 ---
-title: Tworzenie reguł zapory MySQL w programie Azure Database for MySQL i zarządzanie nimi
+title: Zarządzanie regułami zapory — Azure Portal — Azure Database for MySQL
 description: Tworzenie reguł zapory Azure Database for MySQL i zarządzanie nimi za pomocą Azure Portal
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 823226da671671eaf6380d48a35c20298ec6bf9d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 12/02/2019
+ms.openlocfilehash: b02bae528146a3f0c214b7fbb1d234c1a24b174f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933665"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774244"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Tworzenie reguł zapory Azure Database for MySQL i zarządzanie nimi za pomocą Azure Portal
 Reguły zapory na poziomie serwera mogą służyć do zarządzania dostępem do serwera Azure Database for MySQL z określonego adresu IP lub zakresu adresów IP. 

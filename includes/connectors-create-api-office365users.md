@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: ebae0fac5edc0bb79e6a19d8bdc741960f0b0e20
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 3ca8d631110f8b175e7dc68d61cc6da4ac87d375
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183489"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789526"
 ---
-### <a name="prerequisites"></a>Wymagania wstępne
-* [Użytkownicy usługi Office 365](https://office365.com) konta  
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Zanim użyjesz swojego konta użytkowników usługi Office 365 w aplikacji logiki, należy autoryzować aplikację logiki, aby połączyć się z kontem Użytkownicy usługi Office 365. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal.  
+* Konto [użytkowników pakietu Office 365](https://office365.com)  
 
-Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby połączyć się z kontem Użytkownicy usługi Office 365:  
+Aby można było używać konta użytkowników pakietu Office 365 w aplikacji logiki, należy autoryzować aplikację logiki do łączenia się z kontem użytkowników programu Office 365. Na szczęście można to łatwo zrobić w aplikacji logiki w witrynie Azure Portal.  
 
-1. Aby utworzyć połączenie użytkownicy usługi Office 365, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *użytkownicy usługi Office 365* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, którą Ci się spodoba do użycia:  
-   ![Kroku tworzenia połączenia użytkownicy usługi Office 365](./media/connectors-create-api-office365users/office365users-1.png)  
-2. Nie utworzono żadnych połączeń, aby użytkownicy usługi Office 365 przed będzie pobrać monit podaj poświadczenia usługi Office 365 Users. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do danych konta użytkowników usługi Office 365:  
-   ![Kroku tworzenia połączenia użytkownicy usługi Office 365](./media/connectors-create-api-office365users/office365users-2.png)  
-3. Podaj nazwę użytkownika w użytkownicy usługi Office 365 i hasło, aby autoryzować aplikację logiki:  
-   ![Kroku tworzenia połączenia użytkownicy usługi Office 365](./media/connectors-create-api-office365users/office365users-3.png)  
-4. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:  
-   ![Kroku tworzenia połączenia użytkownicy usługi Office 365](./media/connectors-create-api-office365users/office365users-4.png)  
+Poniżej przedstawiono procedurę autoryzacji aplikacji logiki w celu nawiązania połączenia z kontem użytkowników pakietu Office 365:  
+
+1. Aby utworzyć połączenie z użytkownikami pakietu Office 365, w Projektancie aplikacji logiki zaznacz opcję **Pokaż interfejsy API zarządzane przez firmę Microsoft** na liście rozwijanej, a następnie wprowadź w polu wyszukiwania pozycję *Użytkownicy z pakietem Office 365* . Wybierz wyzwalacz lub akcję, której chcesz użyć:  
+   ![krok tworzenia połączenia z użytkownikami pakietu Office 365](./media/connectors-create-api-office365users/office365users-1.png)  
+2. Jeśli wcześniej nie utworzono żadnych połączeń z użytkownikami pakietu Office 365, zostanie wyświetlony monit o podanie poświadczeń użytkowników pakietu Office 365. Te poświadczenia będą używane do autoryzacji aplikacji logiki do nawiązywania połączenia z danymi konta użytkowników pakietu Office 365 i uzyskiwania do nich dostępu:  
+   ![Krok tworzenia połączenia użytkowników pakietu Office 365](./media/connectors-create-api-office365users/office365users-2.png)  
+3. Podaj nazwę użytkownika i hasło dla użytkowników pakietu Office 365, aby autoryzować aplikację logiki:  
+   ![Krok tworzenia połączenia użytkowników pakietu Office 365](./media/connectors-create-api-office365users/office365users-3.png)  
+4. Zwróć uwagę, że połączenie zostało utworzone i teraz możesz kontynuować wykonywanie innych czynności w aplikacji logiki:  
+   ![Krok tworzenia połączenia użytkowników pakietu Office 365](./media/connectors-create-api-office365users/office365users-4.png)  
 

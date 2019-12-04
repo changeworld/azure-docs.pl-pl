@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: 49bfa4a0dbf0adc498d545a2908c20f0ffa35b4b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075731"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774012"
 ---
 # <a name="what-is-speech-to-text"></a>Co to jest zamiana mowy na tekst?
 
@@ -23,26 +23,28 @@ Zamiana mowy na tekst z usług Azure Speech Services, znana także jako Zamiana 
 
 Domyślnie usługa zamiany mowy na tekst używa modelu języka uniwersalnego. Ten model został przeszkolony przy użyciu danych firmy Microsoft i jest wdrażany w chmurze. Jest optymalny dla scenariuszy konwersacji i dyktowania. Jeśli używasz funkcji zamiany mowy na tekst do rozpoznawania i transkrypcji w unikatowym środowisku, możesz tworzyć i uczenia niestandardowych modeli akustycznych, językowych i wymowych w celu obsługi szumów otoczenia lub słownictwa specyficznego dla branż.
 
-Możesz łatwo przechwycić dźwięk z mikrofonu, odczytać ze strumienia lub uzyskać dostęp do plików audio z magazynu za pomocą zestawu Speech SDK i interfejsów API REST. Zestaw SDK usługi Mowa obsługuje na potrzeby rozpoznawania mowy jednokanałowy, 16-bitowy dźwięk w formacie WAV/PCM z częstotliwością próbkowania 16 kHz/8 kHz. Inne formaty dźwięku są obsługiwane za pomocą [punktu końcowego REST zamiany mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) lub [usługi transkrypcji wsadowej](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
+Możesz łatwo przechwycić dźwięk z mikrofonu, odczytać ze strumienia lub uzyskać dostęp do plików audio z magazynu za pomocą zestawu Speech SDK i interfejsów API REST. Zestaw SDK usługi Mowa obsługuje na potrzeby rozpoznawania mowy jednokanałowy, 16-bitowy dźwięk w formacie WAV/PCM z częstotliwością próbkowania 16 kHz/8 kHz. Dodatkowe formaty audio są obsługiwane za pomocą [punktu końcowego REST zamiany mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) lub [usługi transkrypcji partii](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
 ## <a name="core-features"></a>Podstawowe funkcje
 
-Poniżej przedstawiono funkcje dostępne za pośrednictwem zestawu Speech SDK i interfejsów API REST:
+Oto funkcje dostępne za pośrednictwem zestawu Speech SDK i interfejsów API REST:
 
 | Przypadek użycia | SDK | REST |
 |--------- | --- | ---- |
-| Transkrypcja Short wyrażenia długości (< 15 sekund). Obsługuje tylko końcowy wynik transkrypcji. | Yes | Yes |
-| Ciągła transkrypcja długich wyrażenia długości i przesyłania strumieniowego audio (> 15 sekund). Obsługuje tymczasowe i końcowe wyniki transkrypcji. | Yes | Nie |
-| Wyprowadzanie intencji z wyników rozpoznawania z [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Yes | Brak\* |
-| Asynchroniczne transkrypcja plików audio. | Nie  | Tak\*\* |
-| Twórz modele mowy i zarządzaj nimi. | Nie | Tak\*\* |
-| Twórz wdrożenia modelu niestandardowego i zarządzaj nimi. | Nie  | Tak\*\* |
-| Utwórz testy dokładności, aby zmierzyć dokładność modelu linii bazowej w porównaniu z modelami niestandardowymi. | Nie  | Tak\*\* |
-| Zarządzanie subskrypcjami. | Nie  | Tak\*\* |
+| Transkrypcja Short wyrażenia długości (< 15 sekund). Obsługuje tylko jeden końcowy wynik transkrypcji. | Tak | Tak\* |
+| Ciągła transkrypcja długich wyrażenia długości i przesyłania strumieniowego audio (> 15 sekund). Obsługuje tymczasowe i końcowe wyniki transkrypcji. | Tak | Nie |
+| Wyprowadzanie intencji z wyników rozpoznawania z [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Tak | Brak\*\* |
+| Asynchroniczne transkrypcja plików audio. | Nie  | Tak\*\*\* |
+| Twórz modele mowy i zarządzaj nimi. | Nie | Tak\*\*\* |
+| Twórz wdrożenia modelu niestandardowego i zarządzaj nimi. | Nie  | Tak\*\*\* |
+| Utwórz testy dokładności, aby zmierzyć dokładność modelu linii bazowej w porównaniu z modelami niestandardowymi. | Nie  | Tak\*\*\* |
+| Zarządzanie subskrypcjami. | Nie  | Tak\*\*\* |
 
-\*_intencje i jednostki mogą być wyprowadzane przy użyciu oddzielnej subskrypcji Luis. Dzięki tej subskrypcji zestaw SDK może wywoływać LUIS i dostarczać wyniki dla obiektów i zamierzeń. Korzystając z interfejsu API REST, możesz samodzielnie wywoływać LUIS, aby uzyskać intencje i jednostki z subskrypcją LUIS._
+\*_przy użyciu funkcji REST można przetransferować do 60 sekund audio i otrzymać jeden końcowy wynik transkrypcji._
 
-\*\*_te usługi są dostępne za pomocą punktu końcowego CRIS.AI. Zobacz [Dokumentacja struktury Swagger](https://westus.cris.ai/swagger/ui/index)._
+\*\*_Luis i jednostki mogą być wyprowadzane przy użyciu oddzielnej subskrypcji Luis. W przypadku tej subskrypcji zestaw SDK wywołuje LUIS dla Ciebie i dostarcza wyniki obiektów i zamierzeń. Korzystając z interfejsu API REST, LUIS siebie, aby wywoływać intencje i jednostki z subskrypcją LUIS._
+
+\*\*\*_te usługi są dostępne za pomocą punktu końcowego CRIS.AI. Zobacz [Dokumentacja struktury Swagger](https://westus.cris.ai/swagger/ui/index)._
 
 ## <a name="get-started-with-speech-to-text"></a>Wprowadzenie do zamiany mowy na tekst
 

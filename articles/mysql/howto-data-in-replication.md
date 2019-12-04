@@ -1,131 +1,131 @@
 ---
-title: Konfigurowanie replikacji danych w celu replikowania danych do usługi Azure Database for MySQL.
-description: W tym artykule opisano sposób konfigurowania danych replikacji dla usługi Azure Database for MySQL.
+title: Konfigurowanie replikacji danych — Azure Database for MySQL
+description: W tym artykule opisano sposób konfigurowania replikacja typu data-in Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/31/2018
-ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: eaebcf50084223e1c1f4df30294bece96cffda6d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459083"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774300"
 ---
-# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Jak skonfigurować bazę danych Azure do replikacji danych MySQL
+# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Jak skonfigurować replikacja typu data-in Azure Database for MySQL
 
-W tym artykule dowiesz się, sposobu konfigurowania replikacji danych w usłudze Azure Database for MySQL — usługi przez konfigurowanie serwerów głównego i repliki. Replikacji danych umożliwia synchronizowanie danych z głównego serwera MySQL lokalnie, w maszynach wirtualnych lub bazy danych usług hostowanych przez innych dostawców rozwiązań w chmurze do repliki w usługa Azure Database for MySQL. 
+W tym artykule opisano sposób konfigurowania replikacja typu data-in w usłudze Azure Database for MySQL przez skonfigurowanie serwerów głównych i replik. Replikacja typu data-in pozwala synchronizować dane z głównego serwera MySQL działającego lokalnie, na maszynach wirtualnych lub usług baz danych hostowanych przez innych dostawców chmury w replice w usłudze Azure Database for MySQL. 
 
-W tym artykule założono, że masz co najmniej pewne doświadczenie z serwerów MySQL i bazami danych.
+W tym artykule założono, że masz co najmniej Niektóre wcześniejsze środowisko z serwerami i bazami danych MySQL.
 
-## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Tworzenie serwera MySQL, który ma być używany jako repliki
+## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Utwórz serwer MySQL, który ma być używany jako replika
 
-1. Tworzenie nowego serwera Azure Database for MySQL
+1. Utwórz nowy serwer Azure Database for MySQL
 
-   Tworzenie nowego serwera MySQL (np.) "replica.mysql.database.azure.com"). Zapoznaj się [tworzenia serwera Azure Database for MySQL za pomocą witryny Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md) tworzenia serwera. Ten serwer jest serwerem "replica" w replikacji danych.
+   Utwórz nowy serwer MySQL (np. "replica.mysql.database.azure.com"). Zapoznaj się z tematem [Tworzenie serwera Azure Database for MySQL przy użyciu Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) do tworzenia serwera. Ten serwer jest serwerem "Replica" w replikacja typu data-in.
 
    > [!IMPORTANT]
-   > Azure Database for MySQL server musi zostać utworzona w warstw cenowych ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+   > Serwer Azure Database for MySQL należy utworzyć w warstwach cenowych Ogólnego przeznaczenia lub zoptymalizowanych pod kątem pamięci.
    > 
 
-2. Tworzenie tych samych kont użytkowników i odpowiednie uprawnienia.
+2. Tworzenie tych samych kont użytkowników i odpowiednich uprawnień
 
-   Konta użytkowników nie są replikowane na serwer repliki z serwera głównego. Jeśli planujesz, zapewniając użytkownikom dostęp do serwera repliki, należy ręcznie utworzyć wszystkich kont i odpowiednie uprawnienia na tę nowo utworzoną — Azure Database dla serwera MySQL.
+   Konta użytkowników nie są replikowane z serwera głównego do serwera repliki. Jeśli planujesz udostępnienie użytkownikom dostępu do serwera repliki, musisz ręcznie utworzyć wszystkie konta i odpowiednie uprawnienia na tym nowo utworzonym Azure Database for MySQL serwerze.
 
 ## <a name="configure-the-master-server"></a>Konfigurowanie serwera głównego
-Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w maszynę wirtualną lub usługę bazy danych pracujących w chmurze innych dostawców dla replikacji danych. Ten serwer jest "główną" w replikacji danych. 
+Poniższe kroki dotyczą przygotowania i skonfigurowania serwera MySQL hostowanego lokalnie, na maszynie wirtualnej lub usługi bazy danych hostowanej przez innych dostawców chmury dla replikacja typu data-in. Ten serwer jest "głównym" w replikacji danych. 
 
 1. Włącz rejestrowanie binarne
 
-   Sprawdź, jeśli włączono rejestrowania binarnego na wzorcu, uruchamiając następujące polecenie: 
+   Sprawdź, czy na serwerze głównym włączono rejestrowanie binarne, uruchamiając następujące polecenie: 
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   Jeśli zmienna [ `log_bin` ](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) jest zwracany za pomocą wartości "ON", rejestrowania binarnego jest włączona na tym serwerze. 
+   Jeśli zmienna [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) jest zwracana z wartością "on", rejestrowanie binarne jest włączone na serwerze. 
 
-   Jeśli `log_bin` jest zwracany za pomocą wartości "OFF", Włącz rejestrowanie, edytując plik my.cnf, więc plik binarny, `log_bin=ON` i uruchomić ponownie serwer, aby zmiana zaczęła obowiązywać.
+   Jeśli `log_bin` jest zwracana z wartością "OFF", Włącz rejestrowanie plików binarnych, edytując plik my. cnf tak, aby `log_bin=ON` i ponownie uruchomić serwer, aby zmiany zaczęły obowiązywać.
 
 2. Ustawienia serwera głównego
 
-   Replikacji danych wymaga, aby parametr `lower_case_table_names` będzie spójny między serwerami głównego i repliki. Tego parametru to 1 domyślnie w usłudze Azure Database for MySQL. 
+   Replikacja typu data-in wymaga spójności parametrów `lower_case_table_names` między serwerami głównymi i replikami. Domyślnie ten parametr jest 1 w Azure Database for MySQL. 
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. Utwórz nową rolę replikacji i ustaw uprawnienia
+3. Utwórz nową rolę replikacji i skonfiguruj uprawnienie
 
-   Utwórz konto użytkownika na serwerze głównym, który jest skonfigurowany z uprawnieniami replikacji. Można to zrobić za pomocą poleceń SQL lub narzędzia, takiego jak połączenia aplikacji MySQL Workbench. Należy rozważyć, czy planujesz replikacji przy użyciu protokołu SSL, ponieważ należy określić podczas tworzenia użytkownika. Zapoznaj się z dokumentacją MySQL, aby zrozumieć, jak [dodać konta użytkowników](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) na serwerze głównym. 
+   Utwórz konto użytkownika na serwerze głównym, który jest skonfigurowany z uprawnieniami replikacji. Można to zrobić za pomocą poleceń SQL lub narzędzi, takich jak MySQL Workbench. Należy rozważyć, czy ma być przeprowadzana replikacja przy użyciu protokołu SSL, ponieważ należy ją określić podczas tworzenia użytkownika. Zapoznaj się z dokumentacją programu MySQL, aby dowiedzieć się, jak [dodać konta użytkowników](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) na serwerze głównym. 
 
-   W poniższych poleceń uzyskiwać dostęp do wzorca z dowolnej maszyny, a nie tylko komputer, na którym znajduje się sam wzorzec jest nowa rola replikacji, utworzone. Jest to realizowane przez określenie "syncuser@'%" "w poleceniu Utwórz użytkownika. Zapoznaj się dokumentacją MySQL, aby dowiedzieć się więcej na temat [określania nazwy kont](https://dev.mysql.com/doc/refman/5.7/en/account-names.html).
+   W poniższych poleceniach Nowa rola replikacji jest w stanie uzyskać dostęp do serwera głównego z dowolnego komputera, a nie tylko z komputera, który hostuje wzorzec. W tym celu należy określić "syncuser@"% "w poleceniu Create User. Zapoznaj się z dokumentacją programu MySQL, aby dowiedzieć się więcej o [określaniu nazw kont](https://dev.mysql.com/doc/refman/5.7/en/account-names.html).
 
    **Polecenie SQL**
 
-   *Replikacja za pomocą protokołu SSL*
+   *Replikacja przy użyciu protokołu SSL*
 
-   Aby wymagać protokołu SSL dla wszystkich połączeń użytkownika, użyj następującego polecenia, aby utworzyć użytkownika: 
+   Aby wymagać protokołu SSL dla wszystkich połączeń użytkowników, użyj następującego polecenia, aby utworzyć użytkownika: 
 
    ```sql
    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
    GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%' REQUIRE SSL;
    ```
 
-   *Replikacji bez protokołu SSL*
+   *Replikacja bez protokołu SSL*
 
-   Jeśli protokół SSL nie jest wymagana dla wszystkich połączeń, użyj następującego polecenia, aby utworzyć użytkownika:
+   Jeśli protokół SSL nie jest wymagany dla wszystkich połączeń, użyj następującego polecenia, aby utworzyć użytkownika:
 
    ```sql
    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
    GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
    ```
 
-   **Aplikację MySQL Workbench**
+   **Workbench MySQL**
 
-   Aby utworzyć rolę replikacji w aplikacji MySQL Workbench, otwórz **użytkowników i uprawnień** panelu z **zarządzania** panelu. Następnie kliknij pozycję **Dodaj konto**. 
+   Aby utworzyć rolę replikacji w programie MySQL Workbench, Otwórz panel **Użytkownicy i uprawnienia** w panelu **zarządzania** . Następnie kliknij pozycję **Dodaj konto**. 
  
    ![Użytkownicy i uprawnienia](./media/howto-data-in-replication/users_privileges.png)
 
-   Wpisz nazwę w **nazwa logowania** pola. 
+   Wpisz nazwę użytkownika w polu **Nazwa logowania** . 
 
    ![Użytkownik synchronizacji](./media/howto-data-in-replication/syncuser.png)
  
-   Kliknij pozycję **ról administracyjnych** panelu, a następnie wybierz pozycję **podrzędny replikacji** z listy **uprawnień globalnych**. Następnie kliknij pozycję **Zastosuj** tworzenie roli replikacji.
+   Kliknij panel **role administracyjne** , a następnie wybierz pozycję **replikacja podrzędna** z listy **uprawnień globalnych**. Następnie kliknij przycisk **Zastosuj** , aby utworzyć rolę replikacji.
 
-   ![W przypadku replikacji](./media/howto-data-in-replication/replicationslave.png)
+   ![Replikacja podrzędna](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. Ustaw główny serwer do trybu tylko do odczytu
+4. Ustaw serwer główny do trybu tylko do odczytu
 
-   Przed rozpoczęciem zrzutu na poziomie bazy danych, serwer musi być umieszczone w trybie tylko do odczytu. W trybie tylko do odczytu, nie można przetworzyć żadnych transakcji zapisu będzie wzorca. Oceń wpływ na prowadzoną działalność i zaplanowania okna tylko do odczytu w poza godzinami szczytu w razie potrzeby.
+   Przed rozpoczęciem zrzutu bazy danych należy umieścić serwer w trybie tylko do odczytu. W trybie tylko do odczytu, główny nie będzie w stanie przetwarzać żadnych transakcji zapisu. Oceń wpływ na swoją firmę i w razie potrzeby Zaplanuj okno tylko do odczytu w czasie poza godzinami szczytu.
 
    ```sql
    FLUSH TABLES WITH READ LOCK;
    SET GLOBAL read_only = ON;
    ```
 
-5. Nazwa pliku binarnego dziennika i przesunięcia
+5. Pobieranie binarnej nazwy pliku dziennika i przesunięcia
 
-   Uruchom [ `show master status` ](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) polecenie, aby określić bieżącą nazwę pliku dziennik binarny i przesunięcie.
+   Uruchom [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) polecenie, aby określić bieżącą nazwę pliku dziennika binarnego i przesunięcia.
     
    ```sql
    show master status;
    ```
-   Wyniki powinny być podobną do poniższej. Koniecznie Zanotuj nazwę pliku binarnego, ponieważ zostaną użyte w kolejnych krokach.
+   Wyniki powinny wyglądać jak poniżej. Pamiętaj, aby zanotować nazwę pliku binarnego, ponieważ zostanie ona użyta w kolejnych krokach.
 
-   ![Wzorzec stan wyników](./media/howto-data-in-replication/masterstatus.png)
+   ![Wyniki stanu głównego](./media/howto-data-in-replication/masterstatus.png)
  
-## <a name="dump-and-restore-master-server"></a>Zrzucanie i przywracanie serwera głównego
+## <a name="dump-and-restore-master-server"></a>Zrzuć i przywróć serwer główny
 
-1. Zrzut wszystkich baz danych z serwera głównego
+1. Zrzuć wszystkie bazy danych z serwera głównego
 
-   Z głównej usługi, można użyć polecenia mysqldump zrzutu baz danych. Aby uzyskać szczegółowe informacje, zapoznaj się [zrzutu i przywracania](concepts-migrate-dump-restore.md). Nie jest konieczne do zrzutu MySQL biblioteki i biblioteki testowej.
+   Możesz użyć mysqldump, aby zrzucić bazy danych z serwera głównego. Aby uzyskać szczegółowe informacje, zobacz [zrzut & przywracanie](concepts-migrate-dump-restore.md). Nie jest konieczne zrzucanie biblioteki MySQL i biblioteki testowej.
 
 2. Ustaw serwer główny w trybie odczytu/zapisu
 
-   Gdy baza danych została zrzucany, zmienić wzorzec MySQL server wstecz do odczytu/zapisu trybu.
+   Po zrzucie bazy danych Zmień serwer główny MySQL z powrotem na tryb odczytu/zapisu.
 
    ```sql
    SET GLOBAL read_only = OFF;
@@ -134,36 +134,36 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
 
 3. Przywróć plik zrzutu na nowy serwer
 
-   Przywróć plik zrzutu do serwera utworzonego w usługa Azure Database for MySQL. Zapoznaj się [zrzutu i przywracania](concepts-migrate-dump-restore.md) na sposób przywracania pliku zrzutu do serwera MySQL. Jeśli plik zrzutu jest duży, przekaż go do maszyny wirtualnej na platformie Azure, w tym samym regionie co serwer repliki. Go przywrócić do usługi Azure Database for MySQL server z maszyny wirtualnej.
+   Przywróć plik zrzutu do serwera utworzonego w usłudze Azure Database for MySQL. Zapoznaj się z artykułem [zrzut & Przywróć](concepts-migrate-dump-restore.md) , aby przywrócić plik zrzutu do serwera MySQL. Jeśli plik zrzutu jest duży, przekaż go do maszyny wirtualnej na platformie Azure w tym samym regionie, w którym znajduje się serwer repliki. Przywróć go do serwera Azure Database for MySQL z maszyny wirtualnej.
 
-## <a name="link-master-and-replica-servers-to-start-data-in-replication"></a>Połącz serwery główne i repliki można uruchomić replikacji danych
+## <a name="link-master-and-replica-servers-to-start-data-in-replication"></a>Łączenie serwerów głównych i replik w celu uruchomienia replikacja typu data-in
 
-1. Serwer główny zestaw
+1. Ustaw serwer główny
 
-   Wszystkie funkcje replikacji danych są wykonywane tylko przez procedury składowane. Możesz znaleźć wszystkie procedury na [w danych replikacji procedur składowanych](reference-data-in-stored-procedures.md). Procedury składowane mogą być uruchamiane w powłoce MySQL lub połączenia aplikacji MySQL Workbench. 
+   Wszystkie funkcje replikacja typu data-in są wykonywane przez procedury składowane. Wszystkie procedury można znaleźć w [replikacja typu Data-in procedurach składowanych](reference-data-in-stored-procedures.md). Procedury składowane można uruchamiać w programie MySQL Shell lub MySQL Workbench. 
 
-   Aby połączyć dwa serwery i Rozpocznij replikację, zaloguj się do serwera docelowego repliki w usłudze Azure DB dla MySQL, usługi i ustaw wystąpienia zewnętrznego jako serwer główny. Jest to wykonywane przy użyciu `mysql.az_replication_change_master` procedury składowanej w usłudze Azure DB dla serwera MySQL.
+   Aby połączyć dwa serwery i rozpocząć replikację, zaloguj się do docelowego serwera repliki w usłudze Azure DB dla MySQL i ustaw wystąpienie zewnętrzne jako serwer główny. W tym celu należy użyć procedury składowanej `mysql.az_replication_change_master` na serwerze usługi Azure DB dla programu MySQL.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
 
-   - master_host: hostname of the master server
-   - master_user: nazwa użytkownika dla serwera głównego
-   - master_password: hasło dla tego serwera głównego
-   - master_log_file: Nazwa pliku dziennika binarne uruchamiania `show master status`
-   - master_log_pos: pozycja dziennik binarny uruchamianie `show master status`
-   - master_ssl_ca: Kontekst certyfikatu urzędu certyfikacji. Jeśli nie używasz protokołu SSL, należy przekazać pusty ciąg.
-       - Zalecane jest przekazanie tego parametru w jako zmienną. Poniżej przedstawiono przykłady, aby uzyskać więcej informacji.
+   - master_host: Nazwa hosta serwera głównego
+   - master_user: Nazwa użytkownika serwera głównego
+   - master_password: hasło dla serwera głównego
+   - master_log_file: nie uruchomiono binarnej nazwy pliku dziennika `show master status`
+   - master_log_pos: uruchamianie binarnej lokalizacji dziennika `show master status`
+   - master_ssl_ca: kontekst certyfikatu urzędu certyfikacji. Jeśli nie korzystasz z protokołu SSL, Przekaż pusty ciąg.
+       - Zalecane jest, aby przekazać ten parametr jako zmienną. Więcej informacji można znaleźć w poniższych przykładach.
 
 > [!NOTE]
-> Jeśli serwer główny znajduje się w Maszynie wirtualnej platformy Azure, należy ustawić, "Zezwalaj na dostęp do usług platformy Azure" na "ON", aby zezwolić na serwerach głównego i repliki, aby komunikować się ze sobą. Ustawienie to można zmienić z **zabezpieczenia połączeń** opcje. Zapoznaj się [zarządzanie regułami zapory za pomocą portalu](howto-manage-firewall-using-portal.md) Aby uzyskać więcej informacji.
+> Jeśli serwer główny jest hostowany na maszynie wirtualnej platformy Azure, ustaw opcję "Zezwalaj na dostęp do usług platformy Azure" na wartość "włączone", aby umożliwić serwerom głównym i replice komunikację ze sobą. To ustawienie można zmienić przy użyciu opcji **zabezpieczeń połączenia** . Aby uzyskać więcej informacji, zapoznaj się z tematem [Zarządzanie regułami zapory przy użyciu portalu](howto-manage-firewall-using-portal.md) .
 
    **Przykłady**
 
-   *Replikacja za pomocą protokołu SSL*
+   *Replikacja przy użyciu protokołu SSL*
 
-   Zmienna `@cert` jest tworzony, uruchamiając następujące polecenia MySQL: 
+   Zmienna `@cert` jest tworzona przez uruchomienie następujących poleceń MySQL: 
 
    ```sql
    SET @cert = '-----BEGIN CERTIFICATE-----
@@ -171,14 +171,14 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
    -----END CERTIFICATE-----'
    ```
 
-   Skonfigurowano replikację za pomocą protokołu SSL między głównym serwerem hostowanej w domenie "FirmaA.com" i serwerem repliki, hostowana w usłudze Azure Database for MySQL. Ta procedura składowana jest uruchamiany w replice. 
+   Replikacja przy użyciu protokołu SSL jest skonfigurowana między serwerem głównym hostowanym w domenie "companya.com" i serwerem repliki hostowanym w Azure Database for MySQL. Ta procedura składowana jest uruchamiana w replice. 
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
    ```
-   *Replikacji bez protokołu SSL*
+   *Replikacja bez protokołu SSL*
 
-   Skonfigurowano replikację bez zastosowania protokołu SSL między głównym serwerem hostowanej w domenie "FirmaA.com" i serwerem repliki, hostowana w usłudze Azure Database for MySQL. Ta procedura składowana jest uruchamiany w replice.
+   Replikacja bez protokołu SSL jest skonfigurowana między serwerem głównym hostowanym w domenie "companya.com" i serwerem repliki hostowanym w Azure Database for MySQL. Ta procedura składowana jest uruchamiana w replice.
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
@@ -186,7 +186,7 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
 
 1. Rozpocznij replikację
 
-   Wywołaj `mysql.az_replication_start` przechowywane procedury, aby zainicjować replikacji.
+   Wywołaj procedurę składowaną `mysql.az_replication_start`, aby zainicjować replikację.
 
    ```sql
    CALL mysql.az_replication_start;
@@ -194,19 +194,19 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
 
 1. Sprawdź stan replikacji
 
-   Wywołaj [ `show slave status` ](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) polecenia na serwerze repliki tak, aby wyświetlić stan replikacji.
+   Wywołaj polecenie [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) na serwerze repliki, aby wyświetlić stan replikacji.
     
    ```sql
    show slave status;
    ```
 
-   Jeśli stan `Slave_IO_Running` i `Slave_SQL_Running` "yes" i wartość `Seconds_Behind_Master` "0", replikacja działa prawidłowo. `Seconds_Behind_Master` Wskazuje wielkość opóźnienia jest repliką. Jeśli wartość nie jest "0", oznacza to, że replika jest przetwarzanie aktualizacji. 
+   Jeśli stan `Slave_IO_Running` i `Slave_SQL_Running` to "yes", a wartość `Seconds_Behind_Master` to "0", replikacja działa prawidłowo. `Seconds_Behind_Master` wskazuje, jak późna jest replika. Jeśli wartość nie jest równa "0", oznacza to, że replika przetwarza aktualizacje. 
 
 ## <a name="other-stored-procedures"></a>Inne procedury składowane
 
 ### <a name="stop-replication"></a>Zatrzymywanie replikacji
 
-Aby zatrzymać replikację między serwera głównego i repliki, użyj następującej procedury składowanej:
+Aby zatrzymać replikację między serwerem głównym a programem repliki, należy użyć następującej procedury składowanej:
 
 ```sql
 CALL mysql.az_replication_stop;
@@ -214,7 +214,7 @@ CALL mysql.az_replication_stop;
 
 ### <a name="remove-replication-relationship"></a>Usuń relację replikacji
 
-Aby usunąć relację między serwera głównego i repliki, użyj następującej procedury składowanej:
+Aby usunąć relację między serwerem głównym a programem repliki, należy użyć następującej procedury składowanej:
 
 ```sql
 CALL mysql.az_replication_remove_master;
@@ -222,11 +222,11 @@ CALL mysql.az_replication_remove_master;
 
 ### <a name="skip-replication-error"></a>Pomiń błąd replikacji
 
-Aby pominąć błąd replikacji i zezwolenie na replikację kontynuować, należy użyć następującej procedury składowanej:
+Aby pominąć błąd replikacji i umożliwić wykonanie replikacji, należy użyć następującej procedury składowanej:
     
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [replikacji danych](concepts-data-in-replication.md) dla usługi Azure Database for MySQL. 
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej na temat [replikacja typu data-in](concepts-data-in-replication.md) Azure Database for MySQL. 

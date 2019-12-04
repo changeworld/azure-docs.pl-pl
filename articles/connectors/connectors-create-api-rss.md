@@ -1,22 +1,18 @@
 ---
-title: Łączenie ze źródłami danych RSS z Azure Logic Apps | Microsoft Docs
+title: Łączenie ze źródłami danych RSS z Azure Logic Apps
 description: Automatyzowanie zadań i przepływów pracy, które monitorują kanały informacyjne RSS i zarządzają nimi przy użyciu Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 70b250074395977f70ac1b3eb0ce3ffdc96fced1
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 3f1e092c2ff325cdcbc32c617af316d6fbe6dd74
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050844"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789345"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Zarządzanie źródłami danych RSS przy użyciu Azure Logic Apps
 
@@ -47,7 +43,7 @@ Można użyć wyzwalacza RSS, który pobiera odpowiedzi ze źródła danych RSS 
 
    * W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź wartość "RSS" jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
-     —lub—
+     — lub —
 
    * W przypadku istniejących aplikacji logiki w kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. W polu wyszukiwania jako filtr wprowadź „rss”. Na liście Akcje wybierz żądaną akcję.
 
@@ -57,7 +53,7 @@ Można użyć wyzwalacza RSS, który pobiera odpowiedzi ze źródła danych RSS 
 
 Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/rss/)łącznika.
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).

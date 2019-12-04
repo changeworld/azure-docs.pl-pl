@@ -1,17 +1,17 @@
 ---
-title: Zarządzanie replikami odczytów dla Azure Database for PostgreSQL-pojedynczego serwera z Azure Portal
+title: Zarządzanie replikami odczytu — Azure Portal-Azure Database for PostgreSQL — pojedynczy serwer
 description: Dowiedz się, jak zarządzać replikami odczytu Azure Database for PostgreSQL-pojedynczym serwerem z Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995450"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770224"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Tworzenie replik odczytu i zarządzanie nimi w Azure Database for PostgreSQL-pojedynczym serwerze z Azure Portal
 
@@ -47,14 +47,14 @@ Te kroki muszą być używane do przygotowywania serwera głównego w warstwach 
 Włączanie obsługi replikacji jest operacją jednorazową na serwerze głównym. Przycisk **Wyłącz obsługę replikacji** jest dostępny dla wygody użytkownika. Nie zalecamy wyłączania obsługi replikacji, chyba że masz pewność, że nie utworzysz repliki na tym serwerze głównym. Nie można wyłączyć obsługi replikacji, gdy serwer główny ma istniejące repliki.
 
 
-## <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
+## <a name="create-a-read-replica"></a>Tworzenie repliki odczytu
 Aby utworzyć replikę odczytu, wykonaj następujące kroki:
 
 1. Wybierz istniejący serwer Azure Database for PostgreSQL, który ma być używany jako serwer główny. 
 
 2. Na pasku bocznym serwera w obszarze **Ustawienia**wybierz pozycję **replikacja**.
 
-3. Wybierz pozycję **Dodaj**replikę.
+3. Wybierz pozycję **Dodaj replikę**.
 
    ![Dodaj replikę](./media/howto-read-replicas-portal/add-replica.png)
 
@@ -81,7 +81,7 @@ Po utworzeniu repliki odczytu można ją wyświetlić w oknie **replikacja** :
 ![Wyświetl nową replikę w oknie replikacji](./media/howto-read-replicas-portal/list-replica.png)
  
 
-## <a name="stop-replication"></a>Zatrzymaj replikację
+## <a name="stop-replication"></a>Zatrzymywanie replikacji
 Można zatrzymać replikację między serwerem głównym a repliką odczytu.
 
 > [!IMPORTANT]
@@ -106,7 +106,7 @@ Aby zatrzymać replikację między serwerem głównym i repliką odczytu z Azure
    ![Potwierdź zatrzymanie replikacji](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master-server"></a>Usuń serwer główny
+## <a name="delete-a-master-server"></a>Usuwanie serwera głównego
 Aby usunąć serwer główny, należy wykonać te same czynności co w celu usunięcia autonomicznego serwera Azure Database for PostgreSQL. 
 
 > [!IMPORTANT]

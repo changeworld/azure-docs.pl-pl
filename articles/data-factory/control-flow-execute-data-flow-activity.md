@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f05b9ae490ea2b9d8e7b89ce02c7c1eb818bb0a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679942"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769579"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktywność przepływu danych w Azure Data Factory
 
@@ -49,7 +49,7 @@ Użyj działania przepływu danych do przekształcania i przenoszenia danych za 
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagany
+Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 przepływu danych | Odwołanie do przepływu danych, który jest wykonywany | DataFlowReference | Tak
 integrationRuntime | Środowisko obliczeniowe, w którym działa przepływ danych | IntegrationRuntimeReference | Tak
@@ -98,6 +98,43 @@ Potok debugowania działa w odniesieniu do aktywnego klastra debugowania, a nie 
 ## <a name="monitoring-the-data-flow-activity"></a>Monitorowanie działania przepływu danych
 
 Działanie przepływu danych ma specjalne środowisko monitorowania, w którym można wyświetlać partycjonowanie, czas etapów i informacje o pomieszczeniu danych. Otwórz okienko monitorowanie za pomocą ikony okularów w obszarze **Akcje**. Aby uzyskać więcej informacji, zobacz [monitorowanie przepływów danych](concepts-data-flow-monitoring.md).
+
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Korzystanie z wyników działania przepływu danych w kolejnym działaniu
+
+Działanie przepływu danych wyprowadza metryki dotyczące liczby wierszy zapisanych do każdego ujścia oraz wierszy odczytanych z każdego źródła. Te wyniki są zwracane w sekcji `output` wyniku uruchomienia działania. Zwracane metryki są w formacie poniższego kodu JSON.
+
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
+
+Aby na przykład uzyskać dostęp do liczby wierszy zapisanych w zlewie o nazwie "sink1" w działaniu o nazwie "Dataflow", użyj `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`.
+
+Aby uzyskać informacje o liczbie wierszy odczytanych ze źródła o nazwie "source1", które zostały użyte w tym ujścia, użyj `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`.
+
+> [!NOTE]
+> Jeśli ujścia nie ma zapisanych wierszy, nie będzie wyświetlana w metrykach. Istnienie można zweryfikować przy użyciu funkcji `contains`. Na przykład `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` sprawdzi, czy wszystkie wiersze zostały zapisaną w sink1.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,15 +1,15 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/09/2018
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 0bed11921c94776aa6b7e52c9154cf6a00c89333
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/09/2018
+ms.openlocfilehash: 01f9a3c74c555338e99776490ceb4828503cef23
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183825"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792070"
 ---
-**Q**: Dlaczego zmienia lokalizację dla mojej istniejącej bramy? <br/>
-**Odp.:** Zasoby bramy, utworzone przed 3 maja 2017 zostały przeniesione do oryginalnej lokalizacji dzierżawy usługi Azure AD dla pracy lub konta służbowego, które tworzone tych bram. Jednak te zmiany nie wpływa na aktualnie uruchomionej aplikacji logiki, które powinny nadal działać jak zwykle. Bramy ogólne udostępnienie w maju lokalizacje zasobów bramy może się różnić od lokalizacji aplikacji Logic Apps.
+**P**: Dlaczego lokalizacja Twojej istniejącej bramy zmieniła się? <br/>
+Odp **.: zasoby**bramy utworzone przed 3 maja 2017 zostały przeniesione do lokalizacji oryginalnej dzierżawy usługi Azure AD dla konta służbowego, które utworzyło te bramy. Jednak te zmiany nie mają wpływu na aktualnie uruchomione aplikacje logiki, które powinny działać normalnie. Ogólnie dostępną bramą w programie mogą być lokalizacje zasobów bramy, które różnią się od lokalizacji aplikacji logiki.

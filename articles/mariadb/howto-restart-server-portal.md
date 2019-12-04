@@ -1,51 +1,51 @@
 ---
-title: Uruchom ponownie usługi Azure Database dla serwera MariaDB przy użyciu witryny Azure portal
-description: W tym artykule opisano, jak można uruchomić ponownie usługi Azure Database dla serwera MariaDB przy użyciu witryny Azure Portal.
+title: Uruchom ponownie serwer-Azure Portal-Azure Database for MariaDB
+description: W tym artykule opisano, jak można ponownie uruchomić serwer Azure Database for MariaDB przy użyciu witryny Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 2/7/2019
-ms.openlocfilehash: 232037562c4a84ee9217e2e89a0da2ffdc37d560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: fb4e56a3f40573a65b679ee026c22dfc5d6e5fa2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745794"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769425"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Uruchom ponownie usługi Azure Database dla serwera MariaDB przy użyciu witryny Azure portal
-W tym temacie opisano, jak można uruchomić ponownie usługi Azure Database dla serwera MariaDB. Może być konieczne ponowne uruchomienie serwera ze względu na konserwację powoduje krótki przestój serwera wykonuje operację.
+# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Uruchom ponownie serwer Azure Database for MariaDB przy użyciu Azure Portal
+W tym temacie opisano, jak można ponownie uruchomić serwer Azure Database for MariaDB. Może być konieczne ponowne uruchomienie serwera ze względów konserwacyjnych, co powoduje krótkie przestoje, gdy serwer wykona operację.
 
-Ponowne uruchomienie serwera zostanie zablokowane, jeśli usługa jest zajęta. Na przykład usługa może przetwarzania wcześniej żądanej operacji, takich jak skalowanie rdzeni wirtualnych.
+Ponowne uruchomienie serwera zostanie zablokowane, jeśli usługa jest zajęta. Na przykład usługa może przetwarzać wcześniej żądaną operację, taką jak skalowanie rdzeni wirtualnych.
 
-Czas wymagany do ukończenia ponownego uruchomienia, zależy od MariaDB procesu odzyskiwania. Celu skrócenia czasu ponownego uruchomienia, zalecane jest minimalizacja ilości działań mających miejsce na serwerze przed ponownym uruchomieniu.
+Czas wymagany do ukończenia ponownego uruchomienia zależy od procesu odzyskiwania MariaDB. Aby skrócić czas ponownego uruchomienia, zalecamy zminimalizowanie liczby działań występujących na serwerze przed ponownym uruchomieniem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby ukończyć ten przewodnik, potrzebne są:
-- [— Azure Database dla serwera MariaDB](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+Aby ukończyć ten przewodnik, musisz:
+- [Serwer Azure Database for MariaDB](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="perform-server-restart"></a>Wykonania ponownego uruchomienia serwera
+## <a name="perform-server-restart"></a>Wykonaj ponowne uruchomienie serwera
 
-Poniższe kroki, uruchom ponownie serwer MariaDB:
+Wykonaj następujące kroki, aby ponownie uruchomić serwer MariaDB:
 
-1. W witrynie Azure portal wybierz usługi Azure Database dla serwera MariaDB.
+1. W Azure Portal wybierz serwer Azure Database for MariaDB.
 
-2. Na pasku narzędzi serwera **Przegląd** kliknij **ponowne uruchomienie**.
+2. Na pasku narzędzi na stronie **Przegląd** serwera kliknij pozycję **Uruchom ponownie**.
 
-   ![Azure Database dla przycisku MariaDB — Przegląd — ponowne uruchomienie](./media/howto-restart-server-portal/2-server.png)
+   ![Azure Database for MariaDB — przegląd — przycisk ponownego uruchamiania](./media/howto-restart-server-portal/2-server.png)
 
-3. Kliknij przycisk **tak** aby upewnić się, ponowne uruchomienie serwera.
+3. Kliknij przycisk **tak** , aby potwierdzić ponowne uruchomienie serwera.
 
-   ![Upewnij się, usługa Azure Database dla serwera MariaDB — ponowne uruchomienie](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for MariaDB — Potwierdź ponowne uruchomienie](./media/howto-restart-server-portal/3-restart-confirm.png)
 
-4. Sprawdź, czy stan serwera zmienia się na "Ponowne uruchamianie".
+4. Zwróć uwagę, że stan serwera zmieni się na "ponowne uruchomienie".
 
-   ![Azure Database dla serwera MariaDB — stan ponownego uruchomienia](./media/howto-restart-server-portal/4-restarting-status.png)
+   ![Azure Database for MariaDB — stan ponownego uruchomienia](./media/howto-restart-server-portal/4-restarting-status.png)
 
-5. Upewnij się, ponownego uruchomienia serwera zakończy się pomyślnie.
+5. Potwierdzenie ponownego uruchomienia serwera zakończyło się pomyślnie.
 
-   ![Azure Database dla serwera MariaDB — Powodzenie z ponownym uruchomieniu](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for MariaDB — pomyślne ponowne uruchomienie](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Szybki start: Tworzenie usługi Azure Database dla serwera MariaDB przy użyciu witryny Azure portal](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+[Szybki Start: Tworzenie serwera Azure Database for MariaDB przy użyciu Azure Portal](./quickstart-create-mariadb-server-database-using-azure-portal.md)

@@ -1,40 +1,40 @@
 ---
-title: Optymalizowanie zbiorcze operacje wstawiania w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano, jak można optymalizować operacji wstawiania zbiorczego w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
+title: Optymalizacja zbiorczych operacji wstawiania-Azure Database for PostgreSQL-pojedynczego serwera
+description: W tym artykule opisano, jak można zoptymalizować operacje wstawiania zbiorczego na jednym serwerze Azure Database for PostgreSQL.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c1ae29f7c498a79af09aaaf6d7aeae29561aa500
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067043"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770139"
 ---
-# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Optymalizuj zbiorcze operacje wstawiania i używać danych przejściowych w usłudze Azure Database for PostgreSQL — pojedynczy serwer 
-W tym artykule opisano, jak zoptymalizować operacji wstawiania zbiorczego i używać danych przejściowych w usłudze Azure Database dla serwera PostgreSQL.
+# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Optymalizacja zbiorczych operacji wstawiania i używania danych przejściowych na Azure Database for PostgreSQL-pojedynczym serwerze 
+W tym artykule opisano, jak można zoptymalizować operacje wstawiania zbiorczego i używać danych przejściowych na serwerze Azure Database for PostgreSQL.
 
-## <a name="use-unlogged-tables"></a>Korzystanie z tabel niezarejestrowanych
-Jeśli masz obciążenie operacje pociągające danych przejściowych lub dużych zestawów danych, wstawianie zbiorcze, należy rozważyć użycie tabel niezarejestrowanych.
+## <a name="use-unlogged-tables"></a>Korzystanie z niezarejestrowanych tabel
+Jeśli istnieją operacje związane z obciążeniem, które obejmują dane przejściowe lub wstawiają duże zbiory danych zbiorczo, należy rozważyć użycie niezarejestrowanych tabel.
 
-Tabele niezarejestrowanych jest funkcją PostgreSQL, która można skutecznie zoptymalizować zbiorcze operacje wstawiania. PostgreSQL używa zapisu z wyprzedzeniem rejestrowania (WAL). Udostępnia niepodzielność i odporność, domyślnie. Niepodzielności, spójności, izolacji i trwałości tworzą właściwości ACID. 
+Niezarejestrowane tabele to funkcja PostgreSQL, która może być efektywnie używana do optymalizacji zbiorczych operacji wstawiania. PostgreSQL używa funkcji zapisu z wyprzedzeniem (WAL). Domyślnie zapewnia ona niepodzielność i trwałość. Wartość niepodzielności, spójności, izolacji i trwałości tworzą właściwości KWAŚNe. 
 
-Wstawianie do tabeli niezarejestrowanych oznacza że PostgreSQL wstawia bez pisania na transakcji dziennika, która sama jest operacji We/Wy. Co w efekcie te tabele są znacznie szybsze niż zwykłe tabel.
+Wstawianie do nierejestrowanej tabeli oznacza, że PostgreSQL wstawia bez zapisywania w dzienniku transakcji, który sam jest operacją we/wy. W związku z tym te tabele są znacznie szybsze niż zwykłe tabele.
 
-Aby utworzyć tabelę niezarejestrowanych, należy użyć następujących opcji:
-- Utwórz nową tabelę niezarejestrowanych przy użyciu składni `CREATE UNLOGGED TABLE <tableName>`.
-- Konwertuj istniejącą rejestrowane tabeli niezarejestrowanych tabeli przy użyciu składni `ALTER TABLE <tableName> SET UNLOGGED`.  
+Użyj następujących opcji, aby utworzyć nierejestrowaną tabelę:
+- Utwórz nową nierejestrowaną tabelę przy użyciu składni `CREATE UNLOGGED TABLE <tableName>`.
+- Przekonwertuj istniejącą zarejestrowana tabelę na niezarejestrowana tabelę przy użyciu składni `ALTER TABLE <tableName> SET UNLOGGED`.  
 
-Aby cofnąć ten proces, należy użyć składni `ALTER TABLE <tableName> SET LOGGED`.
+Aby wycofać ten proces, użyj składni `ALTER TABLE <tableName> SET LOGGED`.
 
-## <a name="unlogged-table-tradeoff"></a>Kosztem niezarejestrowanych tabeli
-Niezarejestrowanych tabele nie są bezpieczne pod względem awarii. Tabela niezarejestrowanych automatycznie został obcięty po awarii lub zastrzeżeniem nieczyste zamknięcie. Zawartość niezarejestrowanych tabeli nie są replikowane serwery w stanie wstrzymania. Żadnych indeksów utworzona na niezarejestrowanych tabeli są także automatycznie niezarejestrowanych. Insert — po zakończeniu operacji, przekonwertuj tabelę rejestrowane tak, aby insert jest trwały.
+## <a name="unlogged-table-tradeoff"></a>Wady nierejestrowanej tabeli
+Niezarejestrowane tabele nie są bezpieczne. Nierejestrowana tabela jest automatycznie obcinana po awarii lub podlega nieczystemu zamknięciu. Zawartość niezarejestrowanej tabeli również nie jest replikowana na serwery rezerwy. Wszystkie indeksy utworzone w nierejestrowanej tabeli są również automatycznie rejestrowane. Po zakończeniu operacji wstawiania Konwertuj tabelę na zarejestrowaną, aby wstawić ją do postaci trwałej.
 
-Niektórych obciążeń klientów wystąpić około 15 do 20 procent zwiększenie wydajności stosowania niezarejestrowanych tabel.
+Niektóre obciążenia klientów miały około 15% do 20% poprawy wydajności podczas korzystania z niezarejestrowanej tabeli.
 
-## <a name="next-steps"></a>Kolejne kroki
-Przejrzyj swoje obciążenia do użycia dla danych przejściowych i dużych zbiorcze operacje wstawiania. Znajduje się poniższej dokumentacji PostgreSQL:
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z obciążeniem, aby korzystać z danych przejściowych i dużych wstawek zbiorczych. Zapoznaj się z następującą dokumentacją PostgreSQL:
  
-- [Tworzenie poleceń tabeli SQL](https://www.postgresql.org/docs/current/static/sql-createtable.html)
+- [Utwórz tabelę polecenia SQL](https://www.postgresql.org/docs/current/static/sql-createtable.html)

@@ -1,20 +1,19 @@
 ---
-title: Sprawdź stan, skonfiguruj rejestrowanie i Pobierz alerty — Azure Logic Apps
+title: Sprawdź stan, skonfiguruj rejestrowanie i Pobierz alerty
 description: Monitoruj stan, rejestruj dane diagnostyczne i Konfiguruj alerty dla Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/21/2017
-ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ca1e2836ddfb38de640a5a90cf53e416b8923c04
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680299"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791917"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, Konfigurowanie rejestrowania diagnostyki i włączanie alertów dla Azure Logic Apps
 
@@ -136,7 +135,7 @@ Aby uściślić zapytanie poprzez dodanie filtru, wybierz pozycję **+ Dodaj**.
 6. W obszarze **Dodaj filtry**wprowadź nazwę filtru, aby można było znaleźć żądany filtr. Wybierz filtr i wybierz pozycję **+ Dodaj**.
 
    W tym przykładzie za pomocą słowa "status" można znaleźć nieudane zdarzenia w obszarze **AzureDiagnostics**.
-   Tutaj jest już zaznaczony filtr dla **status_s** .
+   Tutaj jest już zaznaczony filtr **status_s** .
 
    ![Wybierz filtr](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
@@ -179,7 +178,7 @@ Aby monitorować określone metryki lub przekroczyły progi dla aplikacji logiki
 
 Aby skonfigurować alerty bez [dzienników Azure monitor](../log-analytics/log-analytics-overview.md), wykonaj następujące kroki. Aby uzyskać bardziej zaawansowane kryteria i akcje alertów, [Skonfiguruj również dzienniki Azure monitor](#azure-diagnostics) .
 
-1. W menu blok aplikacji logiki w obszarze **monitorowanie**wybierz pozycję **Diagnostyka**  > **reguły alertów**  > **Dodaj alert** , jak pokazano poniżej:
+1. W menu blok aplikacji logiki w obszarze **monitorowanie**wybierz pozycję **Diagnostyka** > **reguły alertów** > **Dodaj alert** , jak pokazano poniżej:
 
    ![Dodawanie alertu dla aplikacji logiki](media/logic-apps-monitor-your-logic-apps/set-up-alerts.png)
 

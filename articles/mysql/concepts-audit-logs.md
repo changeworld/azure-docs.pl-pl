@@ -1,17 +1,17 @@
 ---
-title: Dzienniki inspekcji dla Azure Database for MySQL
+title: Dzienniki inspekcji — Azure Database for MySQL
 description: Opisuje dzienniki inspekcji dostępne w Azure Database for MySQL i dostępne parametry umożliwiające włączenie poziomów rejestrowania.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.openlocfilehash: 42881fcb12f29ec14bbdc0ec4942b2eef17c7312
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 12/02/2019
+ms.openlocfilehash: ea536742b6481cb06fbd3130279ca5d08ba1bc08
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434403"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773572"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Inspekcja dzienników w Azure Database for MySQL
 
@@ -22,18 +22,18 @@ W Azure Database for MySQL dziennik inspekcji jest dostępny dla użytkowników.
 
 ## <a name="configure-audit-logging"></a>Konfigurowanie rejestrowania inspekcji
 
-Domyślnie dziennik inspekcji jest wyłączony. Aby ją włączyć, ustaw wartość `audit_log_enabled` na wartość włączone.
+Domyślnie dziennik inspekcji jest wyłączony. Aby ją włączyć, ustaw wartość `audit_log_enabled` na włączone.
 
 Inne parametry, które można dostosować, obejmują:
 
 - `audit_log_events`: kontroluje zdarzenia, które mają być rejestrowane. Szczegółowe zdarzenia inspekcji można znaleźć w poniższej tabeli.
 - `audit_log_include_users`: Użytkownicy programu MySQL mają być włączeni do rejestrowania. Wartość domyślna tego parametru jest pusta, co spowoduje uwzględnienie wszystkich użytkowników do rejestrowania. Ma wyższy priorytet niż `audit_log_exclude_users`. Maksymalna długość parametru to 512 znaków.
 > [!Note]
-> `audit_log_include_users` ma wyższy priorytet niż `audit_log_exclude_users` na przykład jeśli audit_log_include_users = `demouser` i audit_log_exclude_users = `demouser`, będzie przeprowadzać inspekcję dzienników, ponieważ `audit_log_include_users` ma wyższy priorytet.
+> `audit_log_include_users` ma wyższy priorytet niż `audit_log_exclude_users` na przykład, jeśli audit_log_include_users = `demouser` i audit_log_exclude_users = `demouser`, będzie przeprowadzać inspekcję dzienników, ponieważ `audit_log_include_users` ma wyższy priorytet.
 - `audit_log_exclude_users`: Użytkownicy programu MySQL mają być wykluczeni z rejestrowania. Maksymalna długość parametru to 512 znaków.
 
 > [!Note]
-> W przypadku `sql_text` Dziennik zostanie obcięty, jeśli przekracza 2048 znaków.
+> W przypadku `sql_text`Dziennik zostanie obcięty, jeśli przekracza 2048 znaków.
 
 | **Zdarzenie** | **Opis** |
 |---|---|
@@ -129,7 +129,7 @@ Poniższy schemat dotyczy typów zdarzeń GENERAL, DML_SELECT, DML_NONSELECT, DM
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Nazwa serwera |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` lub `DELETE` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`lub `DELETE` |
 | `connection_id_d` | Unikatowy identyfikator połączenia wygenerowany przez MySQL |
 | `db_s` | Nazwa bazy danych, do której uzyskano dostęp |
 | `table_s` | Nazwa tabeli, do której można uzyskać dostęp |

@@ -1,25 +1,25 @@
 ---
-title: Migrowanie bazy danych przy użyciu funkcji importowania i eksportowania w Azure Database for PostgreSQL — pojedynczy serwer
+title: Migrowanie bazy danych Azure Database for PostgreSQL-pojedynczego serwera
 description: Opisuje sposób wyodrębniania bazy danych PostgreSQL do pliku skryptu i importowania danych do docelowej bazy danych z tego pliku.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 0803f56312ca9b650987c2203c4271cff21df9f8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: f7cf5d245383b8a58f03e2e3610750866a2f4b5a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260362"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770207"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migrowanie bazy danych PostgreSQL przy użyciu funkcji eksportowania i importowania
-Możesz użyć [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) , aby wyodrębnić bazę danych PostgreSQL do pliku skryptu i [PSQL](https://www.postgresql.org/docs/current/static/app-psql.html) do zaimportowania danych do docelowej bazy danych z tego pliku.
+Za pomocą [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) można wyodrębnić bazę danych PostgreSQL do pliku skryptu i [PSQL](https://www.postgresql.org/docs/current/static/app-psql.html) do zaimportowania danych do docelowej bazy danych z tego pliku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby krokowo poprowadzić ten przewodnik, musisz:
 - [Serwer Azure Database for PostgreSQL](quickstart-create-server-database-portal.md) z regułami zapory, aby umożliwić dostęp do niego i bazę danych.
-- Narzędzie wiersza polecenia [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html)
+- Narzędzie wiersza polecenia [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) zainstalowane
 - Narzędzie wiersza polecenia [PSQL](https://www.postgresql.org/docs/current/static/app-psql.html)
 
 Wykonaj następujące kroki, aby wyeksportować i zaimportować bazę danych PostgreSQL.

@@ -1,20 +1,17 @@
 ---
-title: Wywoływanie, wyzwalanie lub zagnieżdżanie aplikacji logiki — Azure Logic Apps
+title: Wywoływanie, wyzwalanie lub zagnieżdżanie aplikacji logiki
 description: Konfigurowanie punktów końcowych HTTP do wywoływania, wyzwalania lub zagnieżdżania przepływów pracy aplikacji logiki w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.workload: integration
-author: ecfan
-ms.author: klam
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: 27a3bf036cce27a5f215068ff71928cb7e181452
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833908"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792033"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Wywoływanie, wyzwalanie lub zagnieżdżanie aplikacji logiki za pomocą punktów końcowych HTTP w Azure Logic Apps
 
@@ -39,7 +36,7 @@ Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zobacz [co to jest Azure Log
 
 ## <a name="create-a-callable-endpoint"></a>Utwórz możliwy do nawoływać punkt końcowy
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Utwórz i Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Utwórz i Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
    W tym przykładzie użyto wyzwalacza żądania, ale można użyć dowolnego wyzwalacza, który może odbierać przychodzące żądania HTTP. Wszystkie zasady identycznie stosują te wyzwalacze. Aby uzyskać więcej informacji na temat wyzwalacza żądania, zobacz [Odbieranie i odpowiadanie na przychodzące wywołania HTTPS przy użyciu Azure Logic Apps](../connectors/connectors-native-reqres.md).
 

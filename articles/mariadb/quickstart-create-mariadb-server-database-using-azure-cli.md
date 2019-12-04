@@ -1,19 +1,19 @@
 ---
-title: 'Szybki start: Tworzenie serwera usługi Azure Database for MariaDB — interfejs wiersza polecenia platformy Azure'
+title: 'Szybki Start: Tworzenie serwera — interfejs wiersza polecenia platformy Azure — Azure Database for MariaDB'
 description: W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MariaDB w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171426"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770037"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Tworzenie serwera usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -31,7 +31,7 @@ Jeśli masz wiele subskrypcji, wybierz tę subskrypcję, która zawiera zasób, 
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz [grupę zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy.
 
@@ -50,14 +50,14 @@ Ustawienie | Wartość przykładowa | Opis
 name | **mydemoserver** | Wprowadź unikatową nazwę, która identyfikuje Twój serwer usługi Azure Database for MariaDB. Nazwa serwera może zawierać tylko małe litery, cyfry i znaki łącznika (-). Musi zawierać od 3 do 63 znaków.
 resource-group | **myresourcegroup** | Wprowadź nazwę grupy zasobów platformy Azure.
 sku-name | **GP_Gen5_2** | Nazwa jednostki SKU. Zgodnie z konwencją *warstwa cenowa*\_*generacja obliczeniowa*\_*rdzenie wirtualne* w skrócie. Aby uzyskać więcej informacji na temat parametru **sku-name**, zobacz sekcję poniżej tabeli.
-backup-retention | **7** | Jak długo należy przechowywać kopię zapasową. Jednostka to dni. Zakres: od 7 do 35. 
-geo-redundant-backup | **Disabled (Wyłączone)** | Określa, czy dla tego serwera powinny być włączone geograficznie nadmiarowe kopie zapasowe. Dozwolone wartości: **Enabled (Włączone)** , **Disabled (Wyłączone)** .
-lokalizacja | **westus** | Lokalizacja platformy Azure dla serwera.
-ssl-enforcement | **Enabled (Włączone)** | Określa, czy dla tego serwera powinien być włączony protokół SSL. Dozwolone wartości: **Enabled (Włączone)** , **Disabled (Wyłączone)** .
+backup-retention | **7** | Jak długo należy przechowywać kopię zapasową. Jednostka to dni. Zakres: 7–35. 
+geo-redundant-backup | **Disabled (Wyłączone)** | Określa, czy dla tego serwera powinny być włączone geograficznie nadmiarowe kopie zapasowe. Dozwolone wartości: **Enabled (Włączone)** i **Disabled (Wyłączone)** .
+location | **westus** | Lokalizacja platformy Azure dla serwera.
+ssl-enforcement | **Enabled (Włączone)** | Określa, czy dla tego serwera powinien być włączony protokół SSL. Dozwolone wartości: **Enabled (Włączone)** i **Disabled (Wyłączone)** .
 storage-size | **51200** | Pojemność magazynu serwera (w megabajtach). Prawidłowy rozmiar magazynu to 5120 MB (minimum) rosnący z przyrostem 1024 MB. Aby uzyskać więcej informacji na temat limitów rozmiaru magazynu, zobacz [Warstwy cenowe](./concepts-pricing-tiers.md). 
 version | **10.2** | Wersja główna aparatu MariaDB.
 admin-user | **myadmin** | Nazwa użytkownika w przypadku logowania administratora. Parametr **admin-user** nie może mieć wartości **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-admin-password | *Twoje hasło* | Hasło użytkownika administratora. Twoje hasło musi zawierać od 8 do 128 znaków. Musi zawierać znaki z trzech z następujących kategorii: wielkie litery z alfabetu angielskiego, małe litery z alfabetu angielskiego, cyfry i znaki inne niż alfanumeryczne.
+admin-password | *Twoje hasło* | Hasło użytkownika administratora. Twoje hasło musi zawierać od 8 do 128 znaków. Musi ono zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry i znaki inne niż alfanumeryczne.
 
 Wartość parametru sku-name jest zgodna z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne}, jak pokazano w przykładach poniżej:
 + `--sku-name B_Gen5_1` — warstwa podstawowa, 5. generacja, 1 rdzeń wirtualny. Ta opcja to najmniejsza dostępna jednostka SKU.
@@ -217,7 +217,7 @@ Aby nawiązać połączenie z serwerem, używając narzędzia wiersza polecenia 
    | Metoda połączenia | **Standardowa (TCP/IP)** | Użyj protokołu TCP/IP do nawiązania połączenia z usługą Azure Database for MariaDB |
    | Nazwa hosta | **mydemoserver.mariadb.database.azure.com** | Zanotowana wcześniej nazwa serwera. |
    | Port | **3306** | Domyślny port dla usługi Azure Database for MariaDB. |
-   | Nazwa użytkownika | **myadmin\@mydemoserver** | Zanotowany wcześniej identyfikator logowania administratora serwera. |
+   | Nazwa użytkownika | **Administrator\@mydemoserver** | Zanotowany wcześniej identyfikator logowania administratora serwera. |
    | Hasło | *Twoje hasło* | Użyj skonfigurowanego wcześniej hasła konta administratora. |
 
 3. Aby sprawdzić, czy wszystkie parametry zostały skonfigurowane poprawnie, wybierz pozycję **Testuj połączenie**.
@@ -238,7 +238,7 @@ Jeśli chcesz usunąć tylko serwer, który został utworzony w tym przewodniku 
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Projektowanie bazy danych MariaDB za pomocą interfejsu wiersza polecenia platformy Azure](./tutorial-design-database-cli.md)

@@ -1,97 +1,97 @@
 ---
-title: Jak konfigurować parametry serwera w bazie danych platformy Azure dla serwera MariaDB
-description: W tym artykule opisano sposób konfigurowania parametrów serwera MariaDB w usłudze Azure Database dla serwera MariaDB przy użyciu witryny Azure portal.
+title: Konfigurowanie parametrów serwera-Azure Portal-Azure Database for MariaDB
+description: W tym artykule opisano sposób konfigurowania parametrów serwera MariaDB w Azure Database for MariaDB przy użyciu Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 3477820cb20d856c2e979cdfbe5528113bf4b562
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60922600"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769408"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Jak konfigurować parametry serwera w usłudze Azure Database dla serwera MariaDB przy użyciu witryny Azure portal
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Jak skonfigurować parametry serwera w Azure Database for MariaDB przy użyciu Azure Portal
 
-Azure Database dla serwera MariaDB obsługuje konfigurację niektórych parametrów serwera. W tym artykule opisano sposób konfigurowania tych parametrów przy użyciu witryny Azure portal. Nie wszystkie parametry serwera można dostosować.
+Azure Database for MariaDB obsługuje konfigurację niektórych parametrów serwera. W tym artykule opisano sposób konfigurowania tych parametrów przy użyciu Azure Portal. Nie wszystkie parametry serwera można dostosować.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Przejdź do parametrów serwera w witrynie Azure portal
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Przejdź do parametrów serwera na Azure Portal
 
-1. Zaloguj się do witryny Azure portal, a następnie zlokalizuj usługi Azure Database dla serwera MariaDB.
-2. W obszarze **ustawienia** kliknij **parametrów serwera** aby otworzyć stronę parametrów serwera usługi Azure Database dla serwera MariaDB.
-![Strona parametrów serwera portalu Azure](./media/howto-server-parameters/azure-portal-server-parameters.png)
-3. Znajdź wszystkie ustawienia, które należy dopasować. Przegląd **opis** kolumny zrozumienie przeznaczenia i dozwolonych wartości.
-![Wyliczanie listy w dół](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Kliknij przycisk **Zapisz** Aby zapisać zmiany.
+1. Zaloguj się do Azure Portal, a następnie zlokalizuj serwer Azure Database for MariaDB.
+2. W sekcji **Ustawienia** kliknij pozycję **parametry serwera** , aby otworzyć stronę parametry serwera dla serwera Azure Database for MariaDB.
+![strony parametrów serwera Azure Portal](./media/howto-server-parameters/azure-portal-server-parameters.png)
+3. Znajdź wszystkie ustawienia, które należy dostosować. Przejrzyj kolumnę **Description** , aby zrozumieć przeznaczenie i dozwolone wartości.
+Lista rozwijana ![wyliczania](./media/howto-server-parameters/3-toggle_parameter.png)
+4. Kliknij przycisk **Zapisz** , aby zapisać zmiany.
 ![Zapisz lub Odrzuć zmiany](./media/howto-server-parameters/4-save_parameters.png)
-5. Jeśli masz zapisane nowe wartości dla parametrów, zawsze możesz przywrócić wszystko, co do wartości domyślnych, wybierając **Zresetuj wszystkie do domyślnych**.
-![Zresetuj wszystkie do domyślnych](./media/howto-server-parameters/5-reset_parameters.png)
+5. Jeśli Zapisano nowe wartości parametrów, zawsze możesz przywrócić wszystkie elementy z powrotem do wartości domyślnych, wybierając pozycję **Zresetuj wszystkie do domyślnych**.
+![Resetuj wszystkie do domyślnych](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Lista parametrów można skonfigurować serwera
+## <a name="list-of-configurable-server-parameters"></a>Lista konfigurowalnych parametrów serwera
 
-Obsługiwany serwer z parametrów stale rośnie. Umożliwia karta parametry serwera w witrynie Azure portal Pobierz definicję i konfigurowanie parametrów serwera, w zależności od wymagań aplikacji.
+Lista obsługiwanych parametrów serwera stale rośnie. Karta parametry serwera w Azure Portal służy do uzyskiwania definicji i konfigurowania parametrów serwera na podstawie wymagań aplikacji.
 
-## <a name="non-configurable-server-parameters"></a>Parametry można skonfigurować bez serwera
+## <a name="non-configurable-server-parameters"></a>Parametry serwera, które nie zostały konfigurowalne
 
-Pula buforów aparatu InnoDB i maksymalna liczba połączeń nie są konfigurowalne i związane z [warstwy cenowej](concepts-pricing-tiers.md).
+Pula buforów InnoDB i Maksymalna liczba połączeń nie są konfigurowane i powiązane z [warstwą cenową](concepts-pricing-tiers.md).
 
-|**Warstwa cenowa**| **rdzenie wirtualne:**|**Pula buforów aparatu InnoDB (MB)**| **Maksymalna liczba połączeń**|
+|**Warstwa cenowa**| **Rdzeń wirtualny**|**Pula buforów InnoDB (MB)**| **Maksymalna liczba połączeń**|
 |---|---|---|---|
-|Podstawowa| 1| 1024| 50|
-|Podstawowa| 2| 2560| 100|
+|Basic| 1| 1024| 50|
+|Basic| 2| 2560| 100|
 |Ogólne zastosowanie| 2| 3584| 300|
 |Ogólne zastosowanie| 4| 7680| 625|
 |Ogólne zastosowanie| 8| 15360| 1250|
 |Ogólne zastosowanie| 16| 31232| 2500|
 |Ogólne zastosowanie| 32| 62976| 5000|
 |Ogólne zastosowanie| 64| 125952| 10 000|
-|Pamięć| 2| 7168| 600|
-|Pamięć| 4| 15360| 1250|
-|Pamięć| 8| 30720| 2500|
-|Pamięć| 16| 62464| 5000|
-|Pamięć| 32| 125952| 10 000|
+|Zoptymalizowane pod kątem pamięci| 2| 7168| 600|
+|Zoptymalizowane pod kątem pamięci| 4| 15360| 1250|
+|Zoptymalizowane pod kątem pamięci| 8| 30720| 2500|
+|Zoptymalizowane pod kątem pamięci| 16| 62464| 5000|
+|Zoptymalizowane pod kątem pamięci| 32| 125952| 10 000|
 
-Te parametry dodatkowy serwer nie są konfigurowane w systemie:
+Te dodatkowe parametry serwera nie są konfigurowane w systemie:
 
-|**Parametr**|**Stała wartość**|
+|**Konstruktora**|**Stała wartość**|
 | :------------------------ | :-------- |
-|innodb_file_per_table w warstwie podstawowa|WYŁĄCZONE|
+|innodb_file_per_table w warstwie Podstawowa|Logowanie|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|
 
-Inne parametry serwera, które nie są wymienione w tym miejscu są ustawione na ich wartości domyślne out-of-box MariaDB [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/).
+Inne parametry serwera, które nie są wymienione w tym miejscu, są ustawione na wartości domyślne MariaDB dla [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/).
 
-## <a name="working-with-the-time-zone-parameter"></a>Praca z parametr strefy czasowej
+## <a name="working-with-the-time-zone-parameter"></a>Praca z parametrem strefy czasowej
 
 ### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel strefy czasowej
 
-Tabele strefę czasową na serwerze można wypełnić przez wywołanie metody `az_load_timezone` przechowywane procedury przy użyciu narzędzia wiersza polecenia MySQL lub połączenia aplikacji MySQL Workbench.
+Tabele strefy czasowej na serwerze można wypełnić przez wywołanie procedury składowanej `az_load_timezone` z narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
 
 > [!NOTE]
-> Jeśli używasz `az_load_timezone` polecenia za pomocą aplikacji MySQL Workbench, konieczne może być pierwszym Wyłącz tryb awaryjny aktualizacji przy użyciu `SET SQL_SAFE_UPDATES=0;`.
+> Jeśli uruchamiasz polecenie `az_load_timezone` z Workbench MySQL, może być konieczne wyłączenie bezpiecznego trybu aktualizacji przy użyciu `SET SQL_SAFE_UPDATES=0;`.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
-Aby wyświetlić wartości dostępne strefy czasowej, uruchom następujące polecenie:
+Aby wyświetlić dostępne wartości strefy czasowej, uruchom następujące polecenie:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>Ustawienia globalne poziomu strefy czasowej
+### <a name="setting-the-global-level-time-zone"></a>Ustawianie strefy czasowej na poziomie globalnym
 
-To ustawienie globalne poziomu strefy czasowej **parametrów serwera** strony w witrynie Azure portal. Poniżej ustawia globalne strefy czasowej na wartość "US / Pacyfik".
+Strefę czasową na poziomie globalnym można ustawić na stronie **parametrów serwera** w Azure Portal. Poniżej ustawia globalną strefę czasową na wartość "US/Pacyfik".
 
 ![Ustaw parametr strefy czasowej](./media/howto-server-parameters/timezone.png)
 
-### <a name="setting-the-session-level-time-zone"></a>Ustawienie strefy czasowej z poziomu sesji
+### <a name="setting-the-session-level-time-zone"></a>Ustawianie strefy czasowej na poziomie sesji
 
-Sesji można ustawić poziomu strefy czasowej, uruchamiając `SET time_zone` polecenia za pomocą narzędzia wiersza polecenia MySQL lub połączenia aplikacji MySQL Workbench. Poniższy przykład ustawia strefę czasową **USA / Pacyfik** strefy czasowej.
+Strefę czasową na poziomie sesji można ustawić, uruchamiając polecenie `SET time_zone` za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench. W poniższym przykładzie ustawiono strefę czasową dla strefy czasowej **USA/Pacyfiku** .
 
 ```sql
 SET time_zone = 'US/Pacific';

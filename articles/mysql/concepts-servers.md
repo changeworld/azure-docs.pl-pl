@@ -1,57 +1,57 @@
 ---
-title: Pojęcia serwera w usłudze Azure Database for MySQL
-description: Ten temat zawiera zagadnienia i wytyczne dotyczące pracy z usługą Azure Database dla serwerów MySQL.
+title: Pojęcia dotyczące serwera — Azure Database for MySQL
+description: W tym temacie przedstawiono zagadnienia i wytyczne dotyczące pracy z serwerami Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 565e1bf7a4972e230b3cf56232ebd24519fcab5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: 9a2e2eb022d96af1437ea4189d11f5fa69339325
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525849"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770003"
 ---
-# <a name="server-concepts-in-azure-database-for-mysql"></a>Pojęcia serwera w usłudze Azure Database for MySQL
+# <a name="server-concepts-in-azure-database-for-mysql"></a>Pojęcia dotyczące serwerów w Azure Database for MySQL
 
-Ten artykuł zawiera zagadnienia i wytyczne dotyczące pracy z usługą Azure Database dla serwerów MySQL.
+W tym artykule przedstawiono zagadnienia i wytyczne dotyczące pracy z serwerami Azure Database for MySQL.
 
-## <a name="what-is-an-azure-database-for-mysql-server"></a>Co to jest usługi Azure Database for MySQL server?
+## <a name="what-is-an-azure-database-for-mysql-server"></a>Co to jest serwer Azure Database for MySQL?
 
-Serwer Azure Database for MySQL to centralny punkt administracyjny dla wielu baz danych. Jest tego samego serwera MySQL konstrukcja można zapoznać się z w środowisku lokalnym. W szczególności usługa Azure Database for MySQL jest zarządzany, zapewnia gwarancje wydajności i uwidacznia dostępu i funkcje na poziomie serwera.
+Serwer Azure Database for MySQL jest centralnym punktem administracyjnym dla wielu baz danych. Jest to ta sama konstrukcja serwera MySQL, która może być znana na świecie lokalnym. Usługa Azure Database for MySQL jest zarządzana, zapewnia gwarancje wydajności i udostępnia dostęp i funkcje na poziomie serwera.
 
 Serwer Azure Database for MySQL:
 
 - Jest tworzony w ramach subskrypcji platformy Azure.
 - Jest zasobem nadrzędnym dla baz danych.
-- Zapewnia przestrzeń nazw dla baz danych.
-- To kontener z silną semantyką okresu istnienia — usuwanie serwera, a następnie usuwane zawartych baz danych.
-- Rozmieszcza zasoby w regionie.
-- Udostępnia punkt końcowy połączenia dla serwera i dostępu do bazy danych.
-- Określa zakres dla zasad zarządzania, które są stosowane do jego baz danych: logowania, zapory, użytkowników, ról, konfiguracji itp.
-- Jest dostępna w wielu wersji. Aby uzyskać więcej informacji, zobacz [obsługiwane usługi Azure Database dla wersji bazy danych MySQL](./concepts-supported-versions.md).
+- Udostępnia przestrzeń nazw dla baz danych.
+- Jest kontenerem z semantyką silnego okresu istnienia — usuwa serwer i usuwa zawarte bazy danych.
+- Kolokacja zasobów w regionie.
+- Udostępnia punkt końcowy połączenia serwera i dostępu do bazy danych.
+- Zapewnia zakres zasad zarządzania, które mają zastosowanie do swoich baz danych: logowania, zapory, użytkowników, ról, konfiguracji itp.
+- Jest dostępny w wielu wersjach. Aby uzyskać więcej informacji, zobacz [obsługiwane wersje bazy danych Azure Database for MySQL](./concepts-supported-versions.md).
 
-Na serwerze usługi Azure Database for MySQL można utworzyć jedną lub wiele baz danych. Możesz zdecydować się na tworzenie pojedynczej bazy danych na serwer na korzystanie z zasobów lub utworzyć wiele baz danych, współdzielących zasoby. Cennik jest strukturą poszczególnych serwerów, na podstawie konfiguracji ceny warstwy, rdzeni wirtualnych i magazynu (GB). Aby uzyskać więcej informacji, zobacz [warstw cenowych](./concepts-service-tiers.md).
+Na serwerze usługi Azure Database for MySQL można utworzyć jedną lub wiele baz danych. Możesz wybrać opcję tworzenia pojedynczej bazy danych na serwerze w celu używania wszystkich zasobów lub tworzenia wielu baz danych w celu udostępniania zasobów. Cennik ma strukturę na serwer, na podstawie konfiguracji warstwy cenowej, rdzeni wirtualnych i magazynu (GB). Aby uzyskać więcej informacji, zobacz [warstwy cenowe](./concepts-service-tiers.md).
 
-## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Jak połączyć i uwierzytelniania usługi Azure Database for MySQL server?
+## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Jak mogę połączyć się i uwierzytelnić na serwerze Azure Database for MySQL?
 
-Następujące elementy zapewniają bezpieczny dostęp do bazy danych.
+Poniższe elementy zapewniają bezpieczny dostęp do bazy danych programu.
 
 |     |     |
 | :-- | :-- |
-| **Uwierzytelnianie i autoryzacja** | Usługa Azure Database for MySQL server obsługuje uwierzytelnianie za pomocą natywnego MySQL. Można połączyć i uwierzytelniać się na serwerze z identyfikatorem logowania administratora serwera. |
-| **Protokół** | Usługa obsługuje oparta na komunikatach protokół używany przez MySQL. |
-| **TCP/IP** | Protokół jest obsługiwany za pośrednictwem protokołu TCP/IP, jak i za pośrednictwem gniazd domeny systemu Unix. |
-| **Zapora** | Aby lepiej chronić swoje dane, regułę zapory uniemożliwia dostęp do serwera bazy danych, do momentu określenia komputerów, które mają uprawnienia. Zobacz [— Azure Database for reguły zapory serwera MySQL](./concepts-firewall-rules.md). |
-| **SSL** | Usługa obsługuje wymuszenie połączenia SSL między aplikacjami i serwer bazy danych.  Zobacz [Konfigurowanie łączności SSL w aplikacji w celu bezpiecznego nawiązywania połączeń z usługą Azure Database for MySQL](./howto-configure-ssl.md). |
+| **Uwierzytelnianie i autoryzacja** | Serwer Azure Database for MySQL obsługuje natywne uwierzytelnianie MySQL. Można nawiązać połączenie i uwierzytelnić się na serwerze z identyfikatorem logowania administratora serwera. |
+| **Protokół** | Usługa obsługuje protokół oparty na komunikatach używany przez MySQL. |
+| **TCP/IP** | Protokół jest obsługiwany za pośrednictwem protokołu TCP/IP i gniazd domen systemu UNIX. |
+| **Zapora** | Aby zapewnić ochronę danych, reguła zapory zapobiega wszystkim dostępowi do serwera bazy danych, dopóki nie określisz, które komputery mają uprawnienia. Zobacz [reguły zapory serwera Azure Database for MySQL](./concepts-firewall-rules.md). |
+| **ZASTOSOWANIA** | Usługa obsługuje wymuszanie połączeń SSL między aplikacjami a serwerem bazy danych.  Zobacz [Konfigurowanie łączności SSL w aplikacji w celu bezpiecznego nawiązywania połączeń z usługą Azure Database for MySQL](./howto-configure-ssl.md). |
 
-## <a name="how-do-i-manage-a-server"></a>Jak zarządzać serwerem?
+## <a name="how-do-i-manage-a-server"></a>Jak mogę zarządzać serwerem?
 
-Usługi Azure Database dla serwerów MySQL można zarządzać za pomocą witryny Azure portal lub interfejsu wiersza polecenia platformy Azure.
+Serwerami Azure Database for MySQL można zarządzać przy użyciu Azure Portal lub interfejsu wiersza polecenia platformy Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby zapoznać się z omówieniem usługi, zobacz [— Azure Database for MySQL — omówienie](./overview.md)
-- Aby uzyskać informacje dotyczące określonego zasobu Przydziały i ograniczenia na podstawie Twojej **warstwy usług**, zobacz [warstwy usług](./concepts-service-tiers.md)
-- Informacje dotyczące łączenia z usługą, zobacz [biblioteki połączeń dla usługi Azure Database for MySQL](./concepts-connection-libraries.md).
+- Aby zapoznać się z omówieniem usługi, zobacz [Azure Database for MySQL przegląd](./overview.md)
+- Aby uzyskać informacje na temat konkretnych przydziałów zasobów i ograniczeń na podstawie **warstwy usług**, zobacz [warstwy usług](./concepts-service-tiers.md)
+- Aby uzyskać informacje na temat nawiązywania połączenia z usługą, zobacz [biblioteki połączeń dla Azure Database for MySQL](./concepts-connection-libraries.md).

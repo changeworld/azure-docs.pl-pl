@@ -1,20 +1,19 @@
 ---
-title: Sprawdzanie poprawności kodu XML dla integracji z systemem B2B Enterprise — Azure Logic Apps
+title: Sprawdzanie poprawności kodu XML dla integracji B2B Enterprise
 description: Sprawdzanie poprawności kodu XML przy użyciu schematów w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 7813dcb375ff4a123b1314f8f9db453b1f0b187e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680246"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792161"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Sprawdzanie poprawności kodu XML dla integracji B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 

@@ -1,17 +1,17 @@
 ---
-title: Przegląd ciągłości działania z Azure Database for PostgreSQL — pojedynczy serwer
+title: Ciągłość działania — Azure Database for PostgreSQL — pojedynczy serwer
 description: W tym artykule opisano ciągłość biznesową (przywracanie do punktu w czasie, awaria centrum danych, przywracanie geograficzne) podczas korzystania z Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3623611bcd22486d90651c6e8b6880c6de1de0c5
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 13fbab52c16fcde72da8073b429fe6fb4665c21b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950095"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763882"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Przegląd ciągłości działania z Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -48,7 +48,7 @@ Jedną z opcji jest poczekanie, aż serwer powróci do trybu online po zakończe
 Funkcja przywracania geograficznego przywraca serwer przy użyciu geograficznie nadmiarowych kopii zapasowych. Kopie zapasowe są hostowane w [sparowanym regionie](../best-practices-availability-paired-regions.md)serwera. Można przywrócić z tych kopii zapasowych do dowolnego innego regionu. Przywracanie geograficzne tworzy nowy serwer z danymi z kopii zapasowych. Dowiedz się więcej o przywracaniu geograficznym z [artykułu dotyczącego tworzenia kopii zapasowych i przywracania](concepts-backup.md).
 
 > [!IMPORTANT]
-> Przywracanie geograficzne jest możliwe tylko w przypadku aprowizacji serwera z magazynem kopii zapasowych nadmiarowego. Aby przełączyć się z lokalnie nadmiarowego do geograficznie nadmiarowych kopii zapasowych na istniejącym serwerze, należy wykonać zrzut przy użyciu pg_dump istniejącego serwera i przywrócić go na nowo utworzony serwer skonfigurowany z użyciem geograficznie nadmiarowych kopii zapasowych.
+> Przywracanie geograficzne jest możliwe tylko w przypadku aprowizacji serwera z magazynem kopii zapasowych nadmiarowego. Aby przełączyć się z lokalnie nadmiarowego do geograficznie nadmiarowych kopii zapasowych dla istniejącego serwera, należy wykonać zrzut przy użyciu pg_dump istniejącego serwera i przywrócić go na nowo utworzonym serwerze skonfigurowanym z użyciem geograficznie nadmiarowych kopii zapasowych.
 
 ## <a name="cross-region-read-replicas"></a>Repliki odczytu między regionami
 Za pomocą replik odczytu między regionami można usprawnić planowanie ciągłości działania i odzyskiwania po awarii. Repliki odczytu są aktualizowane asynchronicznie za pomocą technologii replikacji fizycznej PostgreSQL. Dowiedz się więcej na temat odczytywania replik, dostępnych regionów i sposobu przełączenia w tryb failover z [artykułu pojęć dotyczących replik](concepts-read-replicas.md). 

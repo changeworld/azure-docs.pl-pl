@@ -1,5 +1,5 @@
 ---
-title: Praca bezserwerowa
+title: Bez serwerów
 description: W tym artykule opisano nową warstwę obliczeniową bez serwera i porównuje ją z istniejącą zainicjowaną warstwą obliczeniową
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: moslake
+author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 11/04/2019
-ms.openlocfilehash: fecc394080f54f023529ed2da8c9690c38c1da08
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/03/2019
+ms.openlocfilehash: a304b7fb0ba90d4ccf3805f47a5b04a2d3d8765e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818274"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775587"
 ---
 # <a name="azure-sql-database-serverless"></a>Bezserwerowa usługa Azure SQL Database
 
@@ -33,7 +33,7 @@ Warstwa obliczeń bezserwerowych dla pojedynczej bazy danych jest sparametryzowa
 - **Minimalna rdzeni wirtualnych** i **Maksymalna rdzeni wirtualnych** to konfigurowalne parametry, które definiują zakres wydajności obliczeniowej dostępny dla bazy danych. Limity pamięci i operacji we/wy są proporcjonalne do określonego zakresu rdzeń wirtualny.  
 - **Opóźnienie AutoPause** to konfigurowalny parametr, który określa okres czasu, przez który baza danych musi być nieaktywna, zanim zostanie automatycznie wstrzymana. Baza danych zostanie automatycznie wznowiona po wystąpieniu następnego logowania lub innego działania.  Alternatywnie można wyłączyć autowstrzymywanie.
 
-### <a name="cost"></a>Koszty
+### <a name="cost"></a>Koszt
 
 - Koszt bazy danych bezserwerowej to podsumowanie kosztów i kosztów magazynu obliczeniowego.
 - Gdy użycie obliczeniowe ma wartość z przedziału minimalnego i maksymalnego skonfigurowanego limitu, koszt obliczeń jest oparty na rdzeń wirtualny i używanej pamięci.
@@ -66,7 +66,7 @@ W poniższej tabeli zestawiono różnice między warstwą obliczeniową bezserwe
 | | **Obliczenia bezserwerowe** | **Zainicjowane obliczenie** |
 |:---|:---|:---|
 |**Wzorzec użycia bazy danych**| Sporadyczne, nieprzewidywalne użycie z niższym średnim wykorzystaniem obliczeń w czasie. |  Bardziej regularne wzorce użycia z wyższym średnim wykorzystaniem obliczeń w czasie lub wielu bazach danych korzystających z pul elastycznych.|
-| **Nakład pracy zarządzania wydajnością** |Dołu|Większych|
+| **Nakład pracy zarządzania wydajnością** |dołu|Większych|
 |**Skalowanie obliczeniowe**|Automatyczny|Ręczna|
 |**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Bezpośredniego|
 |**Stopień szczegółowości rozliczeń**|Na sekundę|Za godzinę|
@@ -126,12 +126,12 @@ Autowznawianie jest wyzwalane, jeśli w dowolnym momencie spełniony jest który
 
 |Funkcja|Wyzwalacz autowznawiania|
 |---|---|
-|Uwierzytelnianie i autoryzacja|Login|
+|Uwierzytelnianie i autoryzacja|Zaloguj się|
 |Wykrywanie zagrożeń|Włączanie/wyłączanie ustawień wykrywania zagrożeń na poziomie bazy danych lub serwera.<br>Modyfikowanie ustawień wykrywania zagrożeń na poziomie bazy danych lub serwera.|
 |Odnajdowanie i klasyfikacja danych|Dodawanie, modyfikowanie, usuwanie lub wyświetlanie etykiet czułości|
 |Inspekcja|Wyświetlanie rekordów inspekcji.<br>Aktualizowanie lub przeglądanie zasad inspekcji.|
 |Maskowanie danych|Dodawanie, modyfikowanie, usuwanie lub wyświetlanie reguł maskowania danych|
-|Transparent Data Encryption|Wyświetlanie stanu lub stanu przezroczystego szyfrowania danych|
+|Przezroczyste szyfrowanie danych|Wyświetlanie stanu lub stanu przezroczystego szyfrowania danych|
 |Zapytanie (wydajność) — magazyn danych|Modyfikowanie lub wyświetlanie ustawień magazynu zapytań|
 |Autodostrajanie|Aplikacja i weryfikacja zalecenia autodostrajania, takie jak indeksowanie automatycznego|
 |Kopiowanie bazy danych|Utwórz bazę danych jako kopię.<br>Eksportuj do pliku BACPAC.|
@@ -155,17 +155,17 @@ Tworzenie nowej bazy danych lub przeniesienie istniejącej bazy danych do warstw
 
 1. Określ nazwę celu usługi. Cel usługi określa warstwę usług, generowanie sprzętu i maksymalną rdzeni wirtualnych. W poniższej tabeli przedstawiono opcje celu usługi:
 
-   |Nazwa celu usługi|Warstwa usług|Generowanie sprzętu|Maksymalna rdzeni wirtualnych|
+   |Nazwa celu usługi|Warstwa usługi|Generowanie sprzętu|Maksymalna rdzeni wirtualnych|
    |---|---|---|---|
-   |GP_S_Gen5_1|Ogólnego przeznaczenia|5\. generacji|1|
-   |GP_S_Gen5_2|Ogólnego przeznaczenia|5\. generacji|2|
-   |GP_S_Gen5_4|Ogólnego przeznaczenia|5\. generacji|4|
-   |GP_S_Gen5_6|Ogólnego przeznaczenia|5\. generacji|6|
-   |GP_S_Gen5_8|Ogólnego przeznaczenia|5\. generacji|8|
-   |GP_S_Gen5_10|Ogólnego przeznaczenia|5\. generacji|10|
-   |GP_S_Gen5_12|Ogólnego przeznaczenia|5\. generacji|12|
-   |GP_S_Gen5_14|Ogólnego przeznaczenia|5\. generacji|14|
-   |GP_S_Gen5_16|Ogólnego przeznaczenia|5\. generacji|16|
+   |GP_S_Gen5_1|Ogólne zastosowanie|5\. generacji|1|
+   |GP_S_Gen5_2|Ogólne zastosowanie|5\. generacji|2|
+   |GP_S_Gen5_4|Ogólne zastosowanie|5\. generacji|4|
+   |GP_S_Gen5_6|Ogólne zastosowanie|5\. generacji|6|
+   |GP_S_Gen5_8|Ogólne zastosowanie|5\. generacji|8|
+   |GP_S_Gen5_10|Ogólne zastosowanie|5\. generacji|10|
+   |GP_S_Gen5_12|Ogólne zastosowanie|5\. generacji|12|
+   |GP_S_Gen5_14|Ogólne zastosowanie|5\. generacji|14|
+   |GP_S_Gen5_16|Ogólne zastosowanie|5\. generacji|16|
 
 2. Opcjonalnie można określić opóźnienie rdzeni wirtualnych i pauzę, aby zmienić wartości domyślne. W poniższej tabeli przedstawiono dostępne wartości tych parametrów.
 
@@ -181,7 +181,7 @@ Tworzenie nowej bazy danych lub przeniesienie istniejącej bazy danych do warstw
 
 Zobacz [Szybki Start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu Azure Portal](sql-database-single-database-get-started.md).
 
-#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+#### <a name="use-powershell"></a>Używanie programu PowerShell
 
 Poniższy przykład tworzy nową bazę danych w warstwie obliczeniowej bezserwerowej.  W tym przykładzie jawnie określono opóźnienie rdzeni wirtualnych, maks rdzeni wirtualnych i AutoPause.
 
@@ -211,7 +211,7 @@ Aby uzyskać szczegółowe informacje, zobacz [CREATE DATABASE](/sql/t-sql/state
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Przenoszenie bazy danych ze wstępnie zainicjowanej warstwy obliczeniowej do warstwy obliczeń bezserwerowych
 
-#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+#### <a name="use-powershell"></a>Używanie programu PowerShell
 
 Poniższy przykład przenosi bazę danych z zainicjowanej warstwy obliczeniowej do warstwy obliczeń bezserwerowych. W tym przykładzie jawnie określono opóźnienie rdzeni wirtualnych, maks rdzeni wirtualnych i AutoPause.
 
@@ -247,19 +247,19 @@ Bezserwerowa baza danych może zostać przeniesiona do warstwy obliczeń aprowiz
 
 ### <a name="maximum-vcores"></a>Maksymalna liczba rdzeni wirtualnych
 
-#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+#### <a name="use-powershell"></a>Używanie programu PowerShell
 
 Modyfikowanie maksymalnej rdzeni wirtualnych jest wykonywane przy użyciu polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentu `MaxVcore`.
 
 ### <a name="minimum-vcores"></a>Minimalna liczba rdzeni wirtualnych
 
-#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+#### <a name="use-powershell"></a>Używanie programu PowerShell
 
 Modyfikacja minimalnej rdzeni wirtualnych jest wykonywana za pomocą polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentu `MinVcore`.
 
 ### <a name="autopause-delay"></a>Opóźnienie AutoPause
 
-#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+#### <a name="use-powershell"></a>Używanie programu PowerShell
 
 Modyfikowanie opóźnienia AutoPause jest wykonywane przy użyciu polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentu `AutoPauseDelayInMinutes`.
 

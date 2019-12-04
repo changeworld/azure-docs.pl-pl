@@ -1,18 +1,18 @@
 ---
-title: Rozwiązywanie problemów z połączeniem do Azure Database for MySQL
+title: Rozwiązywanie problemów z połączeniami — Azure Database for MySQL
 description: Dowiedz się, jak rozwiązywać problemy z połączeniem do Azure Database for MySQL, w tym błędy przejściowe wymagające ponownych prób, problemy z zaporą i przestoje.
 keywords: połączenie MySQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 11/09/2018
-ms.openlocfilehash: a0203ceeb36352a16814345f5ecdff8271691fd0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 8c1c521488270ff0bfe3b306470345bc2cd885ce
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972845"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773534"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Rozwiązywanie problemów z połączeniem do Azure Database for MySQL
 
@@ -40,7 +40,7 @@ Błędy przejściowe występują, gdy konserwacja jest przeprowadzana, system na
 1. Sprawdź [pulpit nawigacyjny usługi Microsoft Azure](https://azure.microsoft.com/status) , aby uzyskać znane awarie, które wystąpiły w czasie, w którym błędy zostały zgłoszone przez aplikację.
 2. Aplikacje, które łączą się z usługą w chmurze, taką jak Azure Database for MySQL, powinny oczekiwać błędów przejściowych i implementować logikę ponawiania w celu obsługi tych błędów zamiast obsłużyć te błędy jako błędy aplikacji dla użytkowników. Przegląd [obsługi błędów łączności przejściowej dla Azure Database for MySQL](concepts-connectivity.md) w celu uzyskania najlepszych rozwiązań i projektowania wytycznych dotyczących obsługi błędów przejściowych.
 3. Ponieważ serwer zbliża się do limitów zasobów, może wydawać się, że problem z łącznością jest przejściowy. Zobacz [ograniczenia w Azure Database for MySQL](concepts-limits.md).
-4. Jeśli problemy z łącznością będą kontynuowane, lub jeśli czas, przez który aplikacja napotyka błąd, przekracza 60 sekund lub Jeśli zobaczysz wiele wystąpień błędu w danym dniu, zanotuj żądanie pomocy technicznej platformy Azure, wybierając pozycję **Uzyskaj pomoc techniczną** na [platformie Azure Witryna pomocy technicznej](https://azure.microsoft.com/support/options) .
+4. Jeśli problemy z łącznością będą kontynuowane lub jeśli czas, przez który aplikacja napotyka błąd, przekracza 60 sekund lub Jeśli zobaczysz wiele wystąpień błędu w danym dniu, Utwórz żądanie pomocy technicznej platformy Azure, wybierając pozycję **Uzyskaj pomoc** techniczną w witrynie [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options) .
 
 ## <a name="troubleshoot-persistent-errors"></a>Rozwiązywanie problemów z trwałymi błędami
 
@@ -48,7 +48,7 @@ Jeśli aplikacja trwale nie może nawiązać połączenia z Azure Database for M
 
 * Konfiguracja zapory serwera: Upewnij się, że Zapora serwera Azure Database for MySQL jest skonfigurowana tak, aby zezwalać na połączenia z klienta, w tym serwery proxy i bramy.
 * Konfiguracja zapory klienta: Zapora na kliencie musi zezwalać na połączenia z serwerem bazy danych. Adresy IP i porty serwera, które nie mogą być dozwolone, a także nazwy aplikacji, takie jak MySQL w niektórych zaporach.
-* Błąd użytkownika: być może masz błędne typy parametrów połączenia, takie jak nazwa serwera w parametrach połączenia lub brak sufiksu *\@servername* w nazwie użytkownika.
+* Błąd użytkownika: być może masz błędne typy parametrów połączenia, takie jak nazwa serwera w parametrach połączenia lub brak sufiksu *\@ServerName* w nazwie użytkownika.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroki rozwiązywania problemów z łącznością trwałą
 

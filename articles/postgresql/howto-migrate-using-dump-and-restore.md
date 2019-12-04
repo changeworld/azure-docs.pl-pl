@@ -1,20 +1,20 @@
 ---
-title: Jak zrzucić i przywracać w ramach Azure Database for PostgreSQL-pojedynczego serwera
-description: Opisuje sposób wyodrębniania bazy danych PostgreSQL do pliku zrzutu i przywracania z pliku utworzonego przez pg_dump w Azure Database for PostgreSQL-pojedynczym serwerze.
+title: Zrzuć i Przywróć-Azure Database for PostgreSQL-pojedynczy serwer
+description: Opisuje sposób wyodrębniania bazy danych PostgreSQL do pliku zrzutu i przywracania z pliku utworzonego przez pg_dump w ramach Azure Database for PostgreSQL-jednego serwera.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 4291db0bb1edbc366c42febed992a7c27d46eb15
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 4365338efa56593e80edcc19cba5944b213d2b72
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796752"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770241"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrowanie bazy danych PostgreSQL przy użyciu funkcji zrzutów i przywracania
-Możesz użyć [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) , aby wyodrębnić bazę danych PostgreSQL do pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) w celu przywrócenia bazy danych PostgreSQL z pliku archiwum utworzonego przez pg_dump.
+[Pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) można użyć do wyodrębnienia bazy danych PostgreSQL do pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) do przywrócenia bazy danych PostgreSQL z pliku archiwum utworzonego przez pg_dump.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby krokowo poprowadzić ten przewodnik, musisz:
@@ -23,7 +23,7 @@ Aby krokowo poprowadzić ten przewodnik, musisz:
 
 Wykonaj następujące kroki, aby zrzucić i przywrócić bazę danych PostgreSQL:
 
-## <a name="create-a-dump-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Utwórz plik zrzutu przy użyciu pg_dump, który zawiera dane do załadowania
+## <a name="create-a-dump-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Utwórz plik zrzutu za pomocą pg_dump, który zawiera dane do załadowania
 Aby utworzyć kopię zapasową istniejącej bazy danych PostgreSQL lokalnie lub na maszynie wirtualnej, uruchom następujące polecenie:
 ```bash
 pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> -f <database>.dump
@@ -42,7 +42,7 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 Dołączenie parametru--No-Owner powoduje, że wszystkie obiekty utworzone podczas przywracania będą własnością użytkownika określonego przy użyciu parametru--username. Aby uzyskać więcej informacji, zapoznaj się z oficjalną dokumentacją PostgreSQL na [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
 
 > [!NOTE]
-> Jeśli serwer PostgreSQL wymaga połączeń SSL (domyślnie na serwerach Azure Database for PostgreSQL), Ustaw zmienną środowiskową `PGSSLMODE=require`, aby narzędzie pg_restore łączyło się z protokołem SSL. Bez protokołu SSL, błąd może odczytywać `FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> Jeśli serwer PostgreSQL wymaga połączeń SSL (domyślnie na serwerach Azure Database for PostgreSQL), należy ustawić zmienną środowiskową `PGSSLMODE=require`, aby narzędzie pg_restore łączyło się z protokołem SSL. Bez protokołu SSL, błąd może odczytywać `FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
 > W wierszu polecenia systemu Windows uruchom polecenie `SET PGSSLMODE=require` przed uruchomieniem polecenia pg_restore. W systemie Linux lub bash Uruchom polecenie `export PGSSLMODE=require` przed uruchomieniem polecenia pg_restore.
 >
@@ -68,7 +68,7 @@ Jednym ze sposobów migrowania istniejącej bazy danych PostgreSQL do usługi Az
     ```
 
 ### <a name="for-the-restore"></a>Dla przywracania
-- Zalecamy przeniesienie pliku kopii zapasowej na maszynę wirtualną platformy Azure w tym samym regionie co serwer Azure Database for PostgreSQL, do którego jest przeprowadzana migracja, i przeprowadzenie pg_restore z tej maszyny wirtualnej w celu zmniejszenia opóźnień sieci. Zalecamy również, aby maszyna wirtualna została utworzona z włączoną obsługą [przyspieszonej sieci](../virtual-network/create-vm-accelerated-networking-powershell.md) .
+- Zalecamy przeniesienie pliku kopii zapasowej na maszynę wirtualną platformy Azure w tym samym regionie co serwer Azure Database for PostgreSQL, na którym przeprowadzana jest migracja, i przeprowadzenie pg_restore z tej maszyny wirtualnej w celu zmniejszenia opóźnień sieci. Zalecamy również, aby maszyna wirtualna została utworzona z włączoną obsługą [przyspieszonej sieci](../virtual-network/create-vm-accelerated-networking-powershell.md) .
 
 - Powinno to być już wykonywane domyślnie, ale otworzyć plik zrzutu, aby sprawdzić, czy instrukcje CREATE INDEX są po wstawieniu danych. Jeśli tak nie jest, Przenieś instrukcje tworzenia indeksu po wstawieniu danych.
 
@@ -78,10 +78,10 @@ Jednym ze sposobów migrowania istniejącej bazy danych PostgreSQL do usługi Az
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
     ```
 
-- Możesz również edytować plik zrzutu, dodając zestaw poleceń *synchronous_commit = off;* na początku i polecenie *Set synchronous_commit = on;* na końcu. Nie włączaj go na końcu, zanim aplikacje zmienią dane, może to spowodować utratę danych.
+- Możesz również edytować plik zrzutu, dodając zestaw poleceń *synchronous_commit = off;* na początku, a polecenie *Set synchronous_commit = on;* na końcu. Nie włączaj go na końcu, zanim aplikacje zmienią dane, może to spowodować utratę danych.
 
 - Na serwerze docelowym Azure Database for PostgreSQL rozważ wykonanie następujących czynności przed przystąpieniem do przywracania:
-    - Wyłącz śledzenie wydajności zapytań, ponieważ te statystyki nie są zbędne podczas migracji. Można to zrobić, ustawiając wartości pg_stat_statements. Track, pg_qs. query_capture_mode i pgms_wait_sampling. query_capture_mode na NONE.
+    - Wyłącz śledzenie wydajności zapytań, ponieważ te statystyki nie są zbędne podczas migracji. Można to zrobić, ustawiając pg_stat_statements. Track, pg_qs query_capture_mode i pgms_wait_sampling. query_capture_mode na NONE.
 
     - Aby przyspieszyć migrację, należy użyć dużej i dużej ilości pamięci SKU, na przykład 32 rdzeń wirtualny zoptymalizowanej pod kątem pamięci. Po zakończeniu przywracania można łatwo skalować z powrotem do preferowanej jednostki SKU. Im wyższa jednostka SKU, tym bardziej równoległości można osiągnąć przez zwiększenie odpowiedniego parametru `-j` w poleceniu pg_restore. 
 

@@ -1,34 +1,35 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 7cfce34cb2d6002dba5ec570bf859ec47e894c65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 951ab2300aa4ffed2c5f1039ff993cd7f6af543f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183487"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789658"
 ---
-#### <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
+
 * Konto platformy Azure; Możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free)
-* A [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) konta 
+* Konto w [usłudze OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) 
 
-Przed skorzystaniem z kontem usługi OneDrive w aplikacji logiki, Autoryzuj aplikację logiki, aby nawiązać połączenie z kontem usługi OneDrive.  Możesz to łatwo zrobić w aplikacji logiki w witrynie Azure portal. 
+Aby móc korzystać z konta usługi OneDrive w aplikacji logiki, Autoryzuj aplikację logiki w celu nawiązania połączenia z kontem w usłudze OneDrive.  Można to łatwo zrobić w aplikacji logiki na Azure Portal. 
 
-Autoryzuj aplikację logiki, aby nawiązać połączenie z kontem usługi OneDrive wykonując następujące czynności:
+Autoryzuj aplikację logiki, aby nawiązać połączenie z kontem w usłudze OneDrive, wykonując następujące czynności:
 
-1. Tworzenie aplikacji logiki. W Projektancie aplikacji logiki wybierz **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej listy i w polu wyszukiwania wprowadź "usługi onedrive". Wybierz jedną z wyzwalaczy i akcji:  
+1. Utwórz aplikację logiki. W projektancie Logic Apps wybierz pozycję **Pokaż zarządzane interfejsy API firmy Microsoft** na liście rozwijanej, a następnie w polu wyszukiwania wprowadź ciąg "OneDrive". Wybierz jeden z wyzwalaczy lub akcji:  
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Jeśli nie utworzono jeszcze żadnych połączeń w usłudze OneDrive, wyświetlany jest monit o zalogowanie się przy użyciu poświadczeń usługi OneDrive:  
+2. Jeśli nie utworzono wcześniej żadnych połączeń z usługą OneDrive, zostanie wyświetlony monit o zalogowanie się przy użyciu poświadczeń usługi OneDrive:  
    ![](./media/connectors-create-api-onedrive/onedrive-2.png)
-3. Wybierz **Zaloguj**, a następnie wprowadź nazwę użytkownika i hasło. Wybierz **Zaloguj**:  
+3. Wybierz pozycję **Zaloguj**, a następnie wprowadź nazwę użytkownika i hasło. Wybierz pozycję **Zaloguj się**:  
    ![](./media/connectors-create-api-onedrive/onedrive-3.png)   
    
-    Te poświadczenia są używane, aby autoryzować aplikację logiki, aby nawiązać połączenie i dostęp do danych na swoim koncie usługi OneDrive. 
-4. Wybierz **tak** Aby autoryzować aplikację logiki, aby użyć swojego konta usługi OneDrive:  
+    Te poświadczenia służą do autoryzacji aplikacji logiki do nawiązywania połączenia z usługą i uzyskiwania dostępu do danych na koncie usługi OneDrive. 
+4. Wybierz pozycję **tak** , aby autoryzować aplikację logiki do korzystania z Twojego konta w usłudze OneDrive:  
    ![](./media/connectors-create-api-onedrive/onedrive-4.png)   
-5. Należy zauważyć, że połączenie zostało utworzone. Teraz wykonaj kroki opisane w aplikacji logiki:  
+5. Zwróć uwagę na to, że połączenie zostało utworzone. Teraz wykonaj inne czynności w aplikacji logiki:  
    ![](./media/connectors-create-api-onedrive/onedrive-5.png)
 
