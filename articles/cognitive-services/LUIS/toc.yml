@@ -46,10 +46,10 @@
         - name: 2. Wyodrębnianie danych użytkowników
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+        - name: 3. Uzyskiwanie tonacji z wypowiedzi użytkowników
+          href: tutorial-publish-settings.md
     - name: Kompilowanie aplikacji
       items:
-        - name: Uzyskiwanie tonacji z wypowiedzi użytkowników
-          href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Uzyskiwanie dobrze sformatowanych danych za pomocą wyrażeń regularnych
           href: luis-quickstart-intents-regex-entity.md
         - name: Uzyskiwanie dokładnych dopasowań tekstu za pomocą list

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ef4ddc422041de623b96f3a0c85f067427cacd7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374228"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209443"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Oto jak to działa: Azure AD B2C uruchamia kod w przeglądarce klienta i korzyst
 
 Utwórz zawartość HTML z nazwą marki produktu w tytule.
 
-1. Skopiuj poniższy fragment kodu HTML. Jest to dobrze sformułowany plik HTML5 z pustym elementem o nazwie *\<DIV ID = "API" \> @ no__t-3/DIV @ no__t-4* znajdującym się w tagach *\<body @ no__t-7* . Ten element wskazuje, gdzie Azure AD B2C zawartość ma zostać wstawiona.
+1. Skopiuj poniższy fragment kodu HTML. Jest to dobrze sformułowany plik HTML5 z pustym elementem o nazwie *\<DIV ID = "API"\>\</div\>* znajdującym się w *\<* \>. Ten element wskazuje, gdzie Azure AD B2C zawartość ma zostać wstawiona.
 
    ```html
    <!DOCTYPE html>
@@ -56,15 +56,15 @@ Utwórz zawartość HTML z nazwą marki produktu w tytule.
 > [!NOTE]
 > Elementy formularza HTML zostaną usunięte ze względu na ograniczenia zabezpieczeń, jeśli używasz login.microsoftonline.com. Użyj b2clogin.com, jeśli chcesz użyć elementów formularza HTML w niestandardowej zawartości HTML. Zobacz [Korzystanie z b2clogin.com](b2clogin.md) , aby uzyskać inne korzyści.
 
-## <a name="create-an-azure-blob-storage-account"></a>Tworzenie konta usługi Azure Blob Storage
+## <a name="create-an-azure-blob-storage-account"></a>Tworzenie konta magazynu obiektów Blob platformy Azure
 
 >[!NOTE]
 > W tym artykule korzystamy z usługi Azure Blob Storage do obsługi naszej zawartości. Możesz wybrać hostowanie zawartości na serwerze sieci Web, ale należy [włączyć funkcję CORS na serwerze sieci Web](https://enable-cors.org/server.html).
 
 Aby hostować tę zawartość HTML w usłudze BLOB Storage, wykonaj następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. W menu **centrum** wybierz kolejno pozycje **Nowy** > **Magazyn** > **konto magazynu**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. W menu **centrum** wybierz kolejno pozycje **nowy** > **Magazyn** > **konto magazynu**.
 1. Wybierz **subskrypcję** dla konta magazynu.
 1. Utwórz **grupę zasobów** lub wybierz istniejącą.
 1. Wprowadź unikatową **nazwę** konta magazynu.
@@ -93,19 +93,19 @@ Aby utworzyć kontener publiczny w usłudze BLOB Storage, wykonaj następujące 
 1. Wybierz pozycję **Przekaż**.
 1. Wybierz obiekt BLOB **Customize-UI. html** , który został przekazany.
 1. Z prawej strony pola tekstowego **adres URL** wybierz ikonę **Kopiuj do schowka** , aby skopiować adres URL do Schowka.
-1. W przeglądarce internetowej przejdź do adresu URL skopiowanego w celu zweryfikowania dostępności przekazanego obiektu BLOB. Jeśli jest niedostępny, na przykład jeśli wystąpi błąd `ResourceNotFound`, upewnij się, że typ dostępu do kontenera jest ustawiony na **obiekt BLOB**.
+1. W przeglądarce internetowej przejdź do adresu URL skopiowanego w celu zweryfikowania dostępności przekazanego obiektu BLOB. Jeśli jest niedostępny, na przykład w przypadku wystąpienia błędu `ResourceNotFound` upewnij się, że typ dostępu do kontenera jest ustawiony na **obiekt BLOB**.
 
 ## <a name="configure-cors"></a>Konfigurowanie mechanizmu CORS
 
 Skonfiguruj magazyn obiektów BLOB dla udostępniania zasobów między źródłami, wykonując następujące czynności:
 
 1. Z menu wybierz pozycję **CORS**.
-1. Dla **dozwolonych źródeł**wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Podczas wprowadzania nazwy dzierżawy należy używać wszystkich małych liter.
-1. W przypadku **dozwolonych metod**zaznacz oba `GET` i `OPTIONS`.
+1. W przypadku **dozwolonych źródeł**wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Podczas wprowadzania nazwy dzierżawy należy używać wszystkich małych liter.
+1. Dla **dozwolonych metod**wybierz zarówno `GET`, jak i `OPTIONS`.
 1. Dla **dozwolonych nagłówków**Wprowadź gwiazdkę (*).
 1. W przypadku **widocznych nagłówków**Wprowadź gwiazdkę (*).
 1. W obszarze **Maksymalny wiek**wprowadź 200.
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij pozycję **Zapisz**.
 
 ## <a name="test-cors"></a>Testowanie CORS
 
@@ -123,7 +123,7 @@ Aby skonfigurować dostosowanie interfejsu użytkownika, skopiuj **ContentDefini
 1. Wyszukaj i Skopiuj całą zawartość elementu **ContentDefinitions** .
 1. Otwórz plik rozszerzenia. Na przykład *TrustFrameworkExtensions. XML*. Wyszukaj element **BuildingBlocks** . Jeśli element nie istnieje, Dodaj go.
 1. Wklej całą zawartość elementu **ContentDefinitions** , który został skopiowany jako element podrzędny elementu **BuildingBlocks** .
-1. Wyszukaj element **ContentDefinition** , który zawiera `Id="api.signuporsignin"` w KOPIOWANYM formacie XML.
+1. Wyszukaj element **ContentDefinition** , który zawiera `Id="api.signuporsignin"` w pliku XML, który został skopiowany.
 1. Zmień wartość **LoadUri** na adres URL pliku HTML, który został przekazany do magazynu. Na przykład `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
     Zasady niestandardowe powinny wyglądać następująco:
@@ -160,7 +160,7 @@ Aby skonfigurować dostosowanie interfejsu użytkownika, skopiuj **ContentDefini
 1. Wybierz przekazane zasady niestandardowe i kliknij przycisk **Uruchom teraz** .
 1. Należy mieć możliwość rejestrowania się przy użyciu adresu e-mail.
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Dokumentacja
 
 ### <a name="sample-templates"></a>Przykładowe szablony
 Przykładowe szablony do dostosowywania interfejsu użytkownika można znaleźć tutaj:
@@ -182,15 +182,15 @@ Folder sample_templates/Wingtip zawiera następujące pliki HTML:
 Poniżej przedstawiono procedurę korzystania z przykładu:
 
 1. Sklonuj repozytorium na komputerze lokalnym. Wybierz folder szablonu w obszarze sample_templates. Można użyć `wingtip` lub `contoso`.
-1. Przekaż wszystkie pliki w folderach `css`, `fonts` i `images` do magazynu obiektów blob, zgodnie z opisem w poprzednich sekcjach.
-1. Następnie otwórz każdy plik @no__t -0. html w folderze głównym `wingtip` lub `contoso` (w zależności od tego, który został wybrany w pierwszym kroku) i Zastąp wszystkie wystąpienia "http://localhost" adresami URL plików CSS, images i Fonts przekazanych w kroku 2.
-1. Zapisz @no__t pliki -0. html i przekaż je do magazynu obiektów BLOB.
+1. Przekaż wszystkie pliki w folderach `css`, `fonts`i `images` do magazynu obiektów blob, zgodnie z opisem w poprzednich sekcjach.
+1. Następnie otwórz każdy plik \*. html w folderze głównym `wingtip` lub `contoso` (zależnie od tego, co zostało wybrane w pierwszym kroku) i Zastąp wszystkie wystąpienia "http://localhost" adresami URL plików CSS, obrazów i czcionek przekazanych w kroku 2.
+1. Zapisz pliki \*. html i przekaż je do magazynu obiektów BLOB.
 1. Teraz zmodyfikuj plik rozszerzeń, jak wspomniano wcześniej w [Modyfikuj plik rozszerzeń](#modify-the-extensions-file).
-1. Jeśli widzisz brakujące czcionki, obrazy lub CSS, Sprawdź odwołania w zasadach rozszerzeń i plikach @no__t -0. html.
+1. Jeśli widzisz brakujące czcionki, obrazy lub CSS, Sprawdź odwołania w zasadach rozszerzeń i plikach \*. html.
 
 ### <a name="content-definition-ids"></a>Identyfikatory definicji zawartości
 
-W sekcji Modyfikuj swoją rejestrację lub logowanie w ramach zasad niestandardowych została skonfigurowana definicja zawartości dla `api.idpselections`. Pełny zestaw identyfikatorów definicji zawartości, które są rozpoznawane przez strukturę programu Azure AD B2C Identity Experience i ich opisy, znajdują się w poniższej tabeli:
+W sekcji Modyfikowanie zasad dotyczących rejestrowania lub logowania została skonfigurowana definicja zawartości dla `api.idpselections`. Pełny zestaw identyfikatorów definicji zawartości, które są rozpoznawane przez strukturę programu Azure AD B2C Identity Experience i ich opisy, znajdują się w poniższej tabeli:
 
 | Identyfikator definicji zawartości | Opis |
 |-----------------------|-------------|
@@ -207,4 +207,4 @@ W sekcji Modyfikuj swoją rejestrację lub logowanie w ramach zasad niestandardo
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat elementów interfejsu użytkownika, które można dostosować, zobacz [Przewodnik referencyjny dotyczący dostosowywania interfejsu użytkownika dla zasad wbudowanych](active-directory-b2c-reference-ui-customization.md).
+Aby uzyskać więcej informacji na temat elementów interfejsu użytkownika, które można dostosować, zobacz [Przewodnik referencyjny dotyczący dostosowywania interfejsu użytkownika dla przepływów użytkowników](active-directory-b2c-reference-ui-customization.md).
