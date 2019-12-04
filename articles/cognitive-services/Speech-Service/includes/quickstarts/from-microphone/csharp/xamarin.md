@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f67c98eb8417b66c3315bccb1d56b98a68aac839
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961185"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796032"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Przed rozpoczęciem:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=xamarin)
+> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
 
 Jeśli to już zrobione, świetnie. Kontynuujmy.
 
@@ -99,7 +100,7 @@ Teraz Dodaj C# kod definiujący część aplikacji określoną dla systemu iOS. 
 
 1. Jeśli tworzysz na komputerze z systemem Windows, nawiąż połączenie z urządzeniem Mac, aby skompilować za pośrednictwem **narzędzi** > **iOS** > **para do komputerów Mac**. Aby włączyć połączenie z urządzeniem Mac, postępuj zgodnie z instrukcjami wyświetlanymi przez program Visual Studio.
 
-#### <a name="uwptabhelloworlduwp"></a>[PLATFORMY UNIWERSALNEJ SYSTEMU WINDOWS](#tab/helloworlduwp)
+#### <a name="uwptabhelloworlduwp"></a>[PLATFORMY UWP](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodawanie przykładowego kodu dla projektu `helloworld.UWP`
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodaj przykładowy kod dla HelloWorld. Projekt platformy UWP

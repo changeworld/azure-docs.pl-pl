@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104397"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777600"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorowanie wydajności klastra w usłudze Azure HDInsight
 
@@ -33,7 +33,7 @@ Aby uzyskać ogólne omówienie węzłów klastra i ich ładowania, zaloguj się
 | Pomarańczowy | Co najmniej jeden składnik pomocniczy na hoście nie działa. Umieść kursor w celu wyświetlenia etykietki narzędzia, która wyświetla listę składników, których to dotyczy. |
 | Żółty | Serwer Ambari nie otrzymał pulsu od hosta przez więcej niż 3 minuty. |
 | Zielony | Normalny stan działania. |
-
+ 
 Zobaczysz również kolumny przedstawiające liczbę rdzeni i ilość pamięci RAM dla każdego hosta, a także użycie dysku i średnie obciążenie.
 
 ![Karta Apache Ambari hosts — Omówienie](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -52,7 +52,7 @@ PRZĘDZa dzieli dwie odpowiedzialności za JobTracker, zarządzanie zasobami i p
 
 Menedżer zasobów jest *czystym harmonogramem*i wyłącznie rozstrzyga dostępne zasoby między wszystkimi konkurującymi aplikacjami. Menedżer zasobów zapewnia, że wszystkie zasoby są zawsze używane, Optymalizacja pod kątem różnych stałych, takich jak umowy SLA, gwarancje wydajności i tak dalej. ApplicationMaster negocjuje zasoby z Menedżer zasobów i współpracuje z węzłów w celu wykonywania i monitorowania kontenerów oraz ich zużycia zasobów.
 
-Gdy wiele dzierżawców współużytkuje duży klaster, istnieje konkurencja dla zasobów klastra. CapacityScheduler to podłączany harmonogram, który ułatwia udostępnianie zasobów przez kolejkowanie żądań. CapacityScheduler obsługuje również *hierarchiczne kolejki* , aby zapewnić, że zasoby są współużytkowane przez kolejki podrzędne organizacji, zanim inne kolejki aplikacji będą mogły korzystać z bezpłatnych zasobów.
+Gdy wiele dzierżawców współużytkuje duży klaster, istnieje konkurs dla zasobów klastra. CapacityScheduler to podłączany harmonogram, który ułatwia udostępnianie zasobów przez kolejkowanie żądań. CapacityScheduler obsługuje również *hierarchiczne kolejki* , aby zapewnić, że zasoby są współużytkowane przez kolejki podrzędne organizacji, zanim inne kolejki aplikacji będą mogły korzystać z bezpłatnych zasobów.
 
 PRZĘDZa umożliwia przydzielanie zasobów do tych kolejek i pokazuje, czy są przypisane wszystkie dostępne zasoby. Aby wyświetlić informacje o kolejkach, zaloguj się do interfejsu użytkownika sieci Web Ambari, a następnie wybierz pozycję **Menedżer kolejki przędzy** w górnym menu.
 
@@ -72,9 +72,9 @@ W interfejsie użytkownika Menedżer zasobów wybierz pozycję **harmonogram** z
 
 ## <a name="storage-throttling"></a>Ograniczanie magazynu
 
-Na poziomie magazynu mogą wystąpić wąskie gardła wydajności klastra. Ten typ wąskich gardeł najczęściej wynika z *blokowania* operacji wejścia/wyjścia (IO), które są wykonywane, gdy uruchomione zadania wysyłają więcej operacji we/wy niż może obsłużyć usługa magazynu. Ten blok umożliwia utworzenie kolejki żądań we/wy oczekujących na przetworzenie do momentu przetworzenia bieżącego systemu IOs. Bloki są ze względu na *ograniczenie magazynu*, które nie jest limitem fizycznym, ale raczej limit narzucony przez usługę magazynu według umowy dotyczącej poziomu usług (SLA). Ten limit gwarantuje, że żaden pojedynczy klient lub dzierżawca nie może monopolize usługi. Umowa SLA ogranicza liczbę operacji we/wy na sekundę (IOPS) dla usługi Azure Storage — Aby uzyskać szczegółowe informacje, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+Na poziomie magazynu mogą wystąpić wąskie gardła wydajności klastra. Ten typ wąskich gardeł najczęściej z powodu *blokowania* operacji wejścia/wyjścia (IO), które są wykonywane, gdy uruchomione zadania wysyłają więcej operacji we/wy niż może obsłużyć usługa magazynu. Ten blok umożliwia utworzenie kolejki żądań we/wy oczekujących na przetworzenie do momentu przetworzenia bieżącego systemu IOs. Bloki są spowodowane *ograniczeniami magazynu*, które nie jest limitem fizycznym, ale raczej limitem narzuconym przez usługę magazynu przez umowę dotyczącą poziomu usług (SLA). Ten limit gwarantuje, że żaden pojedynczy klient lub dzierżawca nie może monopolize usługi. Umowa SLA ogranicza liczbę operacji we/wy na sekundę (IOPS) dla usługi Azure Storage — Aby uzyskać szczegółowe informacje, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
 
-W przypadku korzystania z usługi Azure Storage w celu uzyskania informacji na temat monitorowania problemów związanych z magazynem, w tym ograniczania przepustowości, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
+Jeśli używasz usługi Azure Storage, aby uzyskać informacje na temat monitorowania problemów związanych z magazynem, w tym ograniczania przepustowości, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 
 Jeśli magazyn zapasowy klastra jest Azure Data Lake Storage (ADLS), ograniczenie jest najprawdopodobniej spowodowane limitami przepustowości. Ograniczanie w tym przypadku może być identyfikowane przez obserwowanie błędów ograniczania w dziennikach zadań. Aby uzyskać ADLS, zobacz sekcję ograniczanie przepustowości dla odpowiedniej usługi w następujących artykułach:
 

@@ -1,21 +1,21 @@
 ---
-title: Uzyskiwanie dostępu do dzienników serwera w Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure
-description: W tym artykule opisano sposób uzyskiwania dostępu do dzienników serwera w Azure Database for MariaDB przy użyciu narzędzia wiersza polecenia platformy Azure.
-author: rachel-msft
-ms.author: raagyema
+title: Dostęp do dzienników wolnych zapytań — interfejs wiersza polecenia platformy Azure — Azure Database for MariaDB
+description: W tym artykule opisano, jak uzyskać dostęp do wolnych dzienników w Azure Database for MariaDB przy użyciu narzędzia wiersza polecenia platformy Azure.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: ffc724ef5133ee25643a966d2b6d8448a4c3a920
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 32e73835732538813f90de5cb737429373c3762a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023616"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767385"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurowanie i uzyskiwanie dostępu do dzienników serwera przy użyciu interfejsu wiersza polecenia platformy Azure
-Dzienniki serwera Azure Database for MariaDB można pobrać przy użyciu interfejsu wiersza polecenia platformy Azure, narzędzia wiersza poleceń platformy Azure.
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurowanie i uzyskiwanie dostępu do dzienników wolnych zapytań za pomocą interfejsu wiersza polecenia platformy Azure
+Możesz pobrać Azure Database for MariaDB dzienników wolnych zapytań za pomocą interfejsu wiersza polecenia platformy Azure, narzędzia wiersza poleceń platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby krokowo poprowadzić ten przewodnik, musisz:

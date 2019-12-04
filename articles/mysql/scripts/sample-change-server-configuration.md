@@ -1,5 +1,5 @@
 ---
-title: Skrypt interfejsu wiersza polecenia platformy Azure — zmiana konfiguracji serwera (MySQL)
+title: Skrypt interfejsu wiersza polecenia — zmiana parametrów serwera — Azure Database for MySQL
 description: Ten przykładowy skrypt interfejsu wiersza polecenia zwraca listę wszystkich dostępnych konfiguracji serwera i aktualizuje wartość opcji innodb_lock_wait_timeout.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: faeebc2b4c963b46a0cbb805269078dee562a3f4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: c8781ec34cb54afc4040d858722b28e10d68bccd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970626"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765795"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Uzyskiwanie listy i aktualizowanie konfiguracji serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure
 Ten przykładowy skrypt interfejsu wiersza polecenia zwraca listę wszystkich dostępnych parametrów konfiguracji oraz ich dopuszczalnych wartości dla serwera usługi Azure Database for MySQL, a także ustawia parametr *innodb_lock_wait_timeout* na wartość inną niż domyślna.

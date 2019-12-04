@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 3563b56e596f5c79f2107bdbf74219a19c6c0d06
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286980"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784616"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Znane problemy i rozwiązywanie problemów Azure Machine Learning
 
@@ -48,7 +48,7 @@ Poniższy obraz pokazuje, jak: ![visulize — dane](./media/resource-known-issue
 
 **Komunikat o błędzie: nie można odinstalować "PyYAML"**
 
-Zestaw Azure maszyny Learning SDK dla języka Python: PyYAML jest projektem distutils zainstalowane. W związku z tym nie można dokładnie określić, które pliki należą do niej, jeśli istnieje częściowe odinstalowanie. Aby kontynuować instalację zestawu SDK podczas ignorowanie tego błędu, należy użyć:
+Zestaw Azure Machine Learning SDK dla języka Python: PyYAML jest zainstalowaną distutils projektem. W związku z tym nie można dokładnie określić, które pliki należą do niej, jeśli istnieje częściowe odinstalowanie. Aby kontynuować instalowanie zestawu SDK przy ignorowaniu tego błędu, użyj:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -62,13 +62,13 @@ conda create -n <env-name> python=3.7.3
 ```
 Tworzy środowisko Conda przy użyciu języka Python 3.7.3, który nie ma problemu z instalacją w 3.7.4.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Problemy z utworzeniem obliczeniowego usługi Azure Machine Learning
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Problem z tworzeniem Azure Machine Learning obliczeń
 
-Brak rzadkich prawdopodobieństwo, że niektórych użytkowników, którzy utworzyli swój obszar roboczy usługi Azure Machine Learning w witrynie Azure portal przed wydaniem Ogólnodostępnej mogą nie można utworzyć obliczeniowego usługi Azure Machine Learning, w tym obszarze roboczym. Możesz zgłosić żądanie pomocy technicznej, korzystająca z usługi lub Utwórz nowy obszar roboczy za pośrednictwem portalu lub zestawu SDK, aby odblokować samodzielnie natychmiast.
+Istnieje rzadka szansa, że niektórzy użytkownicy, którzy utworzyli swój Azure Machine Learningy obszar roboczy z Azure Portal przed wydaniem GA, mogą nie być w stanie utworzyć Azure Machine Learning obliczeń w tym obszarze roboczym. Możesz zgłosić żądanie obsługi do usługi lub utworzyć nowy obszar roboczy za pomocą portalu lub zestawu SDK, aby natychmiast odblokować.
 
-## <a name="image-building-failure"></a>Błąd tworzenia obrazu
+## <a name="image-building-failure"></a>Niepowodzenie kompilowania obrazu
 
-Obraz tworzenia niepowodzenia podczas wdrażania usługi sieci web. Obejście polega na dodawanie "pynacl == 1.2.1" jako zależność pip Conda pliku konfiguracji obrazu.
+Niepowodzenie kompilowania obrazu podczas wdrażania usługi sieci Web. Obejście polega na dodaniu "pynacl = = 1.2.1" jako zależności od pliku Conda do konfiguracji obrazu.
 
 ## <a name="deployment-failure"></a>Niepowodzenie wdrożenia
 
@@ -76,7 +76,7 @@ Jeśli obserwujesz `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' di
 
 ## <a name="fpgas"></a>Układy FPGA
 
-Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają wymagane i zostało zatwierdzone dla limitu przydziału FPGA. Aby zażądać dostępu, Wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
+Nie będzie można wdrażać modeli w usłudze FPGA, dopóki nie zażądano i nie zatwierdzono do przydziału FPGA. Aby zażądać dostępu, Wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Zautomatyzowane uczenie maszynowe
 
@@ -108,7 +108,7 @@ pip install --upgrade azureml-dataprep
 
 ## <a name="databricks"></a>Usługa Databricks
 
-Problemy z usługi Databricks i Azure Machine Learning.
+Azure Machine Learning i problemy.
 
 ### <a name="failure-when-installing-packages"></a>Błąd podczas instalowania pakietów
 
@@ -161,11 +161,11 @@ Jeśli zobaczysz błąd `FailToSendFeather` podczas odczytywania danych w klastr
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Jeśli przejdziesz bezpośrednio, aby wyświetlić obszar roboczy z Udostępnij link z zestawu SDK lub w portalu, nie można wyświetlić strony z normalnej Przegląd informacji o subskrypcji w rozszerzeniu. Ponadto nie można przełączyć się do innego obszaru roboczego. Jeśli zachodzi potrzeba wyświetlenia innego obszaru roboczego, obejście to przejście bezpośrednio do [Azure Machine Learning Studio](https://ml.azure.com) i wyszukanie nazwy obszaru roboczego.
+Jeśli połączysz się bezpośrednio z obszarem roboczym z poziomu zestawu SDK lub portalu, nie będziesz w stanie wyświetlić standardowej strony przeglądu z informacjami o subskrypcji w rozszerzeniu. Nie będzie też możliwe przełączenie do innego obszaru roboczego. Jeśli zachodzi potrzeba wyświetlenia innego obszaru roboczego, obejście to przejście bezpośrednio do [Azure Machine Learning Studio](https://ml.azure.com) i wyszukanie nazwy obszaru roboczego.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
-Czasami może być przydatne Jeśli podasz informacje diagnostyczne podczas pytania o pomoc. Aby wyświetlić niektóre dzienniki, odwiedź stronę [Azure Machine Learning Studio](https://ml.azure.com) i przejdź do obszaru roboczego, a następnie wybierz pozycję **obszar roboczy > eksperymentuj > Uruchom > dzienników**.  
+Czasami pomocne może być podanie informacji diagnostycznych podczas pytania o pomoc. Aby wyświetlić niektóre dzienniki, odwiedź stronę [Azure Machine Learning Studio](https://ml.azure.com) i przejdź do obszaru roboczego, a następnie wybierz pozycję **obszar roboczy > eksperymentuj > Uruchom > dzienników**.  
 
 > [!NOTE]
 > Azure Machine Learning rejestruje informacje z różnych źródeł podczas szkolenia, takie jak AutoML lub kontener platformy Docker, który uruchamia zadanie szkoleniowe. Wiele z tych dzienników nie jest udokumentowane. Jeśli wystąpią problemy i skontaktuje się z działem pomocy technicznej firmy Microsoft, mogą oni korzystać z tych dzienników podczas rozwiązywania problemów.
@@ -278,10 +278,10 @@ Jest to znane ograniczenie bieżącej wersji.
 
 Ręcznie Odśwież stronę. Inicjalizacja powinna być w przybliżeniu 20 punktów, na sekundę. Brak autoodświeżania to znany problem. 
 
-### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>Nie można narysować pola ograniczenia do prawej krawędzi obrazu 
-
-Spróbuj zmienić rozmiar okna przeglądarki. Badamy, aby określić przyczynę tego zachowania. 
-
 ### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>Podczas przeglądania obrazów nie są wyświetlane nowe obrazy z etykietami
 
 Aby załadować wszystkie obrazy z etykietami, wybierz **pierwszy** przycisk. **Pierwszy** przycisk przeprowadzi Cię z powrotem do początku listy, ale ładuje wszystkie dane z etykietami.
+
+### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Naciśnięcie klawisza Esc podczas etykietowania dla wykrywania obiektów tworzy etykietę o zerowej wielkości w lewym górnym rogu. Przesyłanie etykiet w tym stanie nie powiodło się.
+
+Usuń etykietę, klikając znak krzyżyka obok niego.

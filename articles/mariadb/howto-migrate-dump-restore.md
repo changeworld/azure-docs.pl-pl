@@ -1,17 +1,17 @@
 ---
-title: Migrowanie bazy danych MariaDB przy użyciu zrzutów i przywracania w Azure Database for MariaDB
+title: Migrowanie z użyciem zrzutów i przywracania — Azure Database for MariaDB
 description: W tym artykule opisano dwa typowe sposoby tworzenia kopii zapasowych i przywracania baz danych w Azure Database for MariaDB przy użyciu narzędzi takich jak mysqldump, MySQL Workbench i PHPMyAdmin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 05626535a2ab2d8da29b8c817ebfe84c257c76aa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 12/02/2019
+ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845051"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776009"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrowanie bazy danych MariaDB do Azure Database for MariaDB przy użyciu zrzutów i przywracania
 W tym artykule opisano dwa typowe sposoby tworzenia kopii zapasowych i przywracania baz danych w Azure Database for MariaDB
@@ -34,23 +34,23 @@ Możesz użyć narzędzi MySQL, takich jak mysqldump i mysqlpump, aby zrzucić i
 
 - Podczas migrowania całej bazy danych używaj zrzutów baz danych. To zalecenie jest przechowywane w przypadku przeniesienia dużej ilości danych lub w celu zminimalizowania przerw w działaniu usługi dla witryn lub aplikacji na żywo. 
 -  Upewnij się, że podczas ładowania danych do usługi Azure Database for MariaDB wszystkie tabele w bazie danych korzystają z aparatu magazynu InnoDB. Azure Database for MariaDB obsługuje tylko aparat magazynu InnoDB i w związku z tym nie obsługuje alternatywnych aparatów pamięci masowej. Jeśli tabele są skonfigurowane z innymi aparatami magazynu, przed rozpoczęciem migracji do Azure Database for MariaDB należy je przekonwertować na format aparatu InnoDB.
-   Jeśli na przykład masz witrynę WordPress lub WebApp przy użyciu tabel MyISAM, najpierw przekonwertuj te tabele przez Migrowanie do formatu InnoDB przed przywróceniem do Azure Database for MariaDB. Użyj klauzuli `ENGINE=InnoDB` , aby ustawić aparat używany podczas tworzenia nowej tabeli, a następnie Przenieś dane do zgodnej tabeli przed przywróceniem. 
+   Jeśli na przykład masz witrynę WordPress lub WebApp przy użyciu tabel MyISAM, najpierw przekonwertuj te tabele przez Migrowanie do formatu InnoDB przed przywróceniem do Azure Database for MariaDB. Użyj klauzuli `ENGINE=InnoDB`, aby ustawić aparat używany podczas tworzenia nowej tabeli, a następnie Przenieś dane do zgodnej tabeli przed przywróceniem. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
-- Aby uniknąć problemów ze zgodnością, upewnij się, że w przypadku zrzucania baz danych w systemach źródłowym i docelowym jest używana ta sama wersja programu MariaDB. Na przykład jeśli istniejący serwer MariaDB jest w wersji 10,2, należy przeprowadzić migrację do Azure Database for MariaDB skonfigurowany do uruchamiania wersji 10,2. `mysql_upgrade` Polecenie nie działa na serwerze Azure Database for MariaDB i nie jest obsługiwane. Jeśli musisz przeprowadzić uaktualnienie w wersjach MariaDB, najpierw wykonaj zrzut lub wyeksportuj niższą wersję bazy danych do nowszej wersji MariaDB we własnym środowisku. Następnie uruchom `mysql_upgrade`polecenie, przed podjęciem próby migracji do Azure Database for MariaDB.
+- Aby uniknąć problemów ze zgodnością, upewnij się, że w przypadku zrzucania baz danych w systemach źródłowym i docelowym jest używana ta sama wersja programu MariaDB. Na przykład jeśli istniejący serwer MariaDB jest w wersji 10,2, należy przeprowadzić migrację do Azure Database for MariaDB skonfigurowany do uruchamiania wersji 10,2. Polecenie `mysql_upgrade` nie działa na serwerze Azure Database for MariaDB i nie jest obsługiwane. Jeśli musisz przeprowadzić uaktualnienie w wersjach MariaDB, najpierw wykonaj zrzut lub wyeksportuj niższą wersję bazy danych do nowszej wersji MariaDB we własnym środowisku. Następnie przed podjęciem próby migracji do Azure Database for MariaDB Uruchom `mysql_upgrade`.
 
-## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności
+## <a name="performance-considerations"></a>Zagadnienia związane z wydajnością
 Aby zoptymalizować wydajność, należy wziąć pod uwagę następujące kwestie w przypadku zatopienia dużych baz danych:
 -   Użyj opcji `exclude-triggers` w mysqldump, gdy zrzucane są bazy danych. Wyklucz wyzwalacze z plików zrzutów, aby uniknąć uruchamiania poleceń wyzwalacza podczas przywracania danych. 
--   `single-transaction` Użyj opcji, aby ustawić tryb izolacji transakcji na powtarzalne odczytywanie i wysyłanie instrukcji SQL Start Transaction do serwera przed zatopieniem danych. Zatopienie wielu tabel w ramach jednej transakcji powoduje, że niektóre dodatkowe magazyny mają być zużywane podczas przywracania. `single-transaction` Opcja`lock-tables` i opcja wykluczają się wzajemnie, ponieważ tabele blokad powodują niejawne zatwierdzenie oczekujących transakcji. Aby zrzucić duże tabele, Połącz `single-transaction` opcję `quick` z opcją. 
--   `extended-insert` Użyj składni wielowierszowej, która zawiera kilka list wartości. Powoduje to zmniejszenie pliku zrzutu i przyspieszenie operacji wstawiania podczas ponownego ładowania pliku.
--  `order-by-primary` Użyj opcji w mysqldump, gdy zrzucane są bazy danych, aby dane były określane w kolejności klucza podstawowego.
--   `disable-keys` Użyj opcji w mysqldump, gdy zrzucasz dane, aby wyłączyć ograniczenia klucza obcego przed załadowaniem. Wyłączenie kontroli kluczy obcych zapewnia wzrost wydajności. Włącz ograniczenia i sprawdź dane po załadowaniu, aby zapewnić integralność referencyjną.
+-   Użyj opcji `single-transaction`, aby ustawić tryb izolacji transakcji na POWTARZAjący ODCZYTYWANie i wysyłanie instrukcji SQL START TRANSACTION do serwera przed zatopieniem danych. Zatopienie wielu tabel w ramach jednej transakcji powoduje, że niektóre dodatkowe magazyny mają być zużywane podczas przywracania. Opcja `single-transaction` i opcja `lock-tables` wykluczają się wzajemnie, ponieważ tabele blokad powodują niejawne zatwierdzenie oczekujących transakcji. Aby zrzucić duże tabele, Połącz opcję `single-transaction` z opcją `quick`. 
+-   Użyj składni wielowierszowej `extended-insert`, która zawiera kilka list wartości. Powoduje to zmniejszenie pliku zrzutu i przyspieszenie operacji wstawiania podczas ponownego ładowania pliku.
+-  Użyj opcji `order-by-primary` w mysqldump w przypadku zrzucania baz danych, aby dane były określane w kolejności klucza podstawowego.
+-   Użyj opcji `disable-keys` w mysqldump, gdy zrzucasz dane, aby wyłączyć ograniczenia klucza obcego przed załadowaniem. Wyłączenie kontroli kluczy obcych zapewnia wzrost wydajności. Włącz ograniczenia i sprawdź dane po załadowaniu, aby zapewnić integralność referencyjną.
 -   W razie potrzeby użyj tabel partycjonowanych.
 -   Równoległe ładowanie danych. Należy unikać zbyt dużej liczby równoległości, która spowodowałaby osiągnięcie limitu zasobów i monitorowanie zasobów przy użyciu metryk dostępnych w Azure Portal. 
--   `defer-table-indexes` Użyj opcji w mysqlpump podczas zrzucania baz danych, dzięki czemu tworzenie indeksów odbywa się po załadowaniu danych tabeli.
+-   Użyj opcji `defer-table-indexes` w mysqlpump podczas zrzucania baz danych, dzięki czemu tworzenie indeksów odbywa się po załadowaniu danych tabeli.
 -   Skopiuj pliki kopii zapasowej do magazynu lub obiektów blob platformy Azure, a następnie wykonaj przywracanie z tego miejsca, które powinny być znacznie szybsze niż przeprowadzenie przywracania przez Internet.
 
 ## <a name="create-a-backup-file"></a>Utwórz plik kopii zapasowej
@@ -66,7 +66,7 @@ Parametry, które należy podać:
 - [backupfile. SQL] nazwa pliku kopii zapasowej bazy danych 
 - [--opt] Opcja mysqldump 
 
-Na przykład, aby utworzyć kopię zapasową bazy danych o nazwie "TestDB" na serwerze MariaDB przy użyciu nazwy użytkownika "Użytkownik testowy" i bez hasła do pliku testdb_backup. SQL, użyj następującego polecenia. Polecenie tworzy kopię zapasową `testdb` bazy danych w pliku o `testdb_backup.sql`nazwie, który zawiera wszystkie instrukcje SQL wymagane do ponownego utworzenia bazy danych. 
+Na przykład, aby utworzyć kopię zapasową bazy danych o nazwie "TestDB" na serwerze MariaDB z nazwą użytkownika "Użytkownik testowy" i bez hasła do pliku testdb_backup. SQL, użyj następującego polecenia. Polecenie tworzy kopię zapasową bazy danych `testdb` w pliku o nazwie `testdb_backup.sql`, który zawiera wszystkie instrukcje SQL wymagane do ponownego utworzenia bazy danych. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -114,7 +114,7 @@ W celu wyeksportowania można użyć typowego narzędzia phpMyAdmin, które mog�
 Importowanie bazy danych jest podobne do eksportowania. Wykonaj następujące czynności:
 1. Otwórz phpMyAdmin. 
 2. Na stronie Konfiguracja phpMyAdmin kliknij przycisk **Dodaj** , aby dodać serwer Azure Database for MariaDB. Podaj szczegóły połączenia i informacje logowania.
-3. Utwórz odpowiednio nazwę bazy danych i wybierz ją po lewej stronie ekranu. Aby ponownie zapisać istniejącą bazę danych, kliknij nazwę bazy danych, zaznacz wszystkie pola wyboru obok nazwy tabeli, a następnie wybierz pozycję Usuń, aby usunąć istniejące tabele. 
+3. Utwórz odpowiednio nazwę bazy danych i wybierz ją po lewej stronie ekranu. Aby ponownie zapisać istniejącą bazę danych, kliknij nazwę bazy danych, zaznacz wszystkie pola wyboru obok nazwy tabeli, a następnie wybierz pozycję **Usuń, aby usunąć** istniejące tabele. 
 4. Kliknij link **SQL** , aby wyświetlić stronę, na której można wpisywać polecenia SQL, lub Przekaż plik SQL. 
 5. Użyj przycisku **Przeglądaj** , aby znaleźć plik bazy danych. 
 6. Kliknij przycisk **Przejdź** , aby wyeksportować kopię zapasową, wykonać polecenia SQL i ponownie utworzyć bazę danych.

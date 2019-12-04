@@ -1,17 +1,17 @@
 ---
-title: Zgodność sterowników Azure Database for MySQL i narzędzi do zarządzania
+title: Zgodność sterowników i narzędzi — Azure Database for MySQL
 description: W tym artykule opisano sterowniki MySQL i narzędzia do zarządzania, które są zgodne z Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.openlocfilehash: 916c02c30f6d54aef44459775a7a437fe96a4ff9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/02/2019
+ms.openlocfilehash: 83c1463beec47ed3535811de822348cc7706f757
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720140"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765345"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Sterowniki MySQL i narzędzia do zarządzania zgodne z Azure Database for MySQL
 W tym artykule opisano sterowniki i narzędzia do zarządzania, które są zgodne z programem Azure Database for MySQL.
@@ -26,7 +26,7 @@ Azure Database for MySQL korzysta z najbardziej popularnej wersji Community Data
 | .NET | Łącznik MySQL/NET | https://github.com/mysql/mysql-connector-net | 8,0, 7,0, 6,10 |  | Usterka kodowania może spowodować niepowodzenie połączeń w niektórych systemach Windows bez kodowania UTF8. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Pakiet instalacyjny z NPM:<br> Uruchom `npm install mysql` z NPM | 2,15 | 2.14.1 i przed | |
 | Node.js | Node-mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4 + | | |
-| Przejdź | Przejdź do sterownika MySQL | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 i przed | Użyj `allowNativePasswords=true` w parametrach połączenia dla wersji 1,3. Wersja 1,4 zawiera poprawkę, a `allowNativePasswords=true` nie jest już wymagana. |
+| Go | Przejdź do sterownika MySQL | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 i przed | Użyj `allowNativePasswords=true` w parametrach połączenia dla wersji 1,3. Wersja 1,4 zawiera poprawkę, a `allowNativePasswords=true` nie jest już wymagana. |
 | Python | Łącznik MySQL/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2, używaj 8.0.16 + z MySQL 8,0  | 1.2.2 i przed | |
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3 + | 0.9.0-0.9.2 (regresja w web2py) | |
 | Java | Łącznik MariaDB/J | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 i przed | | 
@@ -50,7 +50,7 @@ Zalety zgodności rozszerzają się również do narzędzi do zarządzania bazam
 | Autouzupełnianie zapytań SQL | X | X |  |
 | Importowanie i eksportowanie danych | X | X | X | 
 | Eksportuj do wielu formatów | X | X | X |
-| Wykonywanie kopii zapasowych i przywracanie |  | X |  |
+| Wykonywanie kopii zapasowych i odzyskiwanie danych |  | X |  |
 | Wyświetl parametry serwera | X | X | X |
 | Wyświetlanie połączeń klientów | X | X | X |
 

@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek: projektowanie usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure'
+title: 'Samouczek: Projektowanie interfejsu wiersza polecenia platformy Azure Azure Database for MariaDB'
 description: W tym samouczku wyjaśniono, jak utworzyć serwer oraz bazę danych usługi Azure Database for MariaDB i zarządzać nimi przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/10/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 548f4f10758b2d69bf4fda00f8bf52d33d20306c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 91283b453e71e476d247e752b24e9eec0047a814
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999162"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776798"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Samouczek: projektowanie usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -23,7 +23,7 @@ Usługa Azure Database for MariaDB jest usługą relacyjnej bazy danych w chmurz
 > * Tworzenie usługi Azure Database for MariaDB
 > * Konfigurowanie zapory serwera
 > * Tworzenie bazy danych za pomocą [narzędzia wiersza polecenia mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)
-> * Ładowanie przykładowych danych
+> * Ładuj dane przykładowe
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych
@@ -41,7 +41,7 @@ Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zas�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 [Grupę zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) można utworzyć za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy.
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myresourcegroup` w lokalizacji `westus`.
@@ -78,7 +78,7 @@ Poniższy przykład powoduje utworzenie reguły zapory o nazwie `AllowMyIP`, kt�
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
 ```
 
-## <a name="get-the-connection-information"></a>Pobieranie informacji o połączeniu
+## <a name="get-the-connection-information"></a>Uzyskiwanie informacji o połączeniu
 
 Aby nawiązać połączenie z serwerem, musisz podać informacje o hoście i poświadczenia dostępu.
 ```azurecli-interactive
@@ -175,9 +175,9 @@ Załóżmy, że ta tabela została przypadkowo usunięta. W takiej sytuacji nie�
 Do wykonania przywrócenia potrzebne będą następujące informacje:
 
 - Punkt przywracania: wybierz punkt w czasie przed zmianą serwera. Musi mieć wartość większą od lub równą wartości Najstarsza kopia zapasowa źródłowej bazy danych.
-- Serwer docelowy: podaj nazwę nowego serwera, na który chcesz przywrócić dane
-- Serwer źródłowy: podaj nazwę serwera, z którego chcesz wykonać przywrócenie.
-- Lokalizacja: nie można wybrać regionu — domyślnie wartość jest taka sama jak w przypadku serwera źródłowego
+- Serwer docelowy: podaj nazwę nowego serwera, do którego chcesz wykonać przywrócenie
+- Serwer źródłowy: podaj nazwę serwera, z którego chcesz wykonać przywrócenie
+- Lokalizacja: nie można wybrać regionu; domyślnie wartość jest taka sama jak w przypadku serwera źródłowego
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -196,13 +196,13 @@ Przywrócenie serwera do określonego punktu w czasie powoduje utworzenie nowego
 
 Polecenie jest synchroniczne i zostanie zakończone po przywróceniu serwera. Po zakończeniu przywracania zlokalizuj nowy serwer, który został utworzony. Sprawdź, czy dane zostały przywrócone zgodnie z oczekiwaniami.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for MariaDB
 > * Konfigurowanie zapory serwera
 > * Tworzenie bazy danych za pomocą [narzędzia wiersza polecenia mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)
-> * Ładowanie przykładowych danych
+> * Ładuj dane przykładowe
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych

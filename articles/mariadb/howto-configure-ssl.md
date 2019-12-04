@@ -1,23 +1,23 @@
 ---
-title: Skonfiguruj połączenie SSL, aby bezpiecznie połączyć się z Azure Database for MariaDB
+title: Konfigurowanie protokołu SSL Azure Database for MariaDB
 description: Instrukcje dotyczące prawidłowego konfigurowania Azure Database for MariaDB i skojarzonych aplikacji w celu poprawnego używania połączeń SSL
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/02/2019
-ms.openlocfilehash: e57371bb7598a92f35dd4fd0ec22a55fad722987
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 12/02/2019
+ms.openlocfilehash: a0fb1bdf1aac9b3c5a2d8c83d0597326de38caaf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360505"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767368"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Skonfiguruj połączenie SSL w aplikacji, aby bezpiecznie połączyć się z Azure Database for MariaDB
 Azure Database for MariaDB obsługuje łączenie serwera Azure Database for MariaDB z aplikacjami klienckimi przy użyciu SSL (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
 
 ## <a name="obtain-ssl-certificate"></a>Uzyskiwanie certyfikatu SSL
-Pobierz certyfikat wymagany do komunikacji za pośrednictwem protokołu SSL z serwerem Azure Database for MariaDB [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) z i Zapisz plik certyfikatu na dysku lokalnym (na przykład w tym samouczku jest używany program c:\ssl).
+Pobierz certyfikat wymagany do komunikowania się za pośrednictwem protokołu SSL z serwerem Azure Database for MariaDB z poziomu [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) i Zapisz plik certyfikatu na dysku lokalnym (na przykład w tym samouczku jest używany program c:\ssl).
 **Dla programu Microsoft Internet Explorer i Microsoft Edge:** Po zakończeniu pobierania Zmień nazwę certyfikatu na BaltimoreCyberTrustRoot. CRT. pem.
 
 ## <a name="bind-ssl"></a>Wiązanie SSL
@@ -43,15 +43,15 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 ```
 
 > [!NOTE]
-> W przypadku korzystania z interfejsu wiersza polecenia MySQL w systemie Windows może zostać wyświetlony komunikat o `SSL connection error: Certificate signature check failed`błędzie. W takim przypadku należy zastąpić `--ssl-mode=REQUIRED --ssl-ca={filepath}` `--ssl`parametry parametrem.
+> W przypadku korzystania z interfejsu wiersza polecenia MySQL w systemie Windows może zostać wyświetlony komunikat o błędzie `SSL connection error: Certificate signature check failed`. Jeśli wystąpi taka sytuacja, Zastąp parametry `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametrem `--ssl`.
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Wymuszanie połączeń SSL na platformie Azure 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 Korzystając z Azure Portal, odwiedź Azure Database for MariaDB serwer, a następnie kliknij pozycję **zabezpieczenia połączeń**. Użyj przycisku przełącznika, aby włączyć lub wyłączyć ustawienie **Wymuszaj połączenie SSL** , a następnie kliknij przycisk **Zapisz**. Firma Microsoft zaleca, aby zawsze włączyć ustawienie **Wymuszaj połączenie SSL** w celu zwiększenia bezpieczeństwa.
-![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
+![Włącz](./media/howto-configure-ssl/enable-ssl.png) protokołu SSL
 
 ### <a name="using-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
-Parametr wymuszania **SSL** można włączyć lub wyłączyć, używając wartości włączone lub wyłączone odpowiednio w interfejsie wiersza polecenia platformy Azure.
+Parametr **wymuszania SSL** można włączyć lub wyłączyć, używając wartości włączone lub wyłączone odpowiednio w interfejsie wiersza polecenia platformy Azure.
 ```azurecli-interactive
 az mariadb server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
@@ -61,7 +61,7 @@ Wykonaj polecenie MySQL **status** , aby sprawdzić, czy nawiązano połączenie
 ```sql
 status
 ```
-Upewnij się, że połączenie jest zaszyfrowane, przeglądając dane wyjściowe, które powinny być wyświetlane:  **SSL: Szyfr w użyciu to AES256-SHA** 
+Upewnij się, że połączenie jest zaszyfrowane, przeglądając dane wyjściowe, które powinny być wyświetlane: **SSL: szyfr w użyciu jest AES256-SHA** 
 
 ## <a name="sample-code"></a>Przykładowy kod
 Aby nawiązać bezpieczne połączenie z Azure Database for MariaDB za pośrednictwem protokołu SSL z aplikacji, zapoznaj się z poniższymi przykładami kodu:

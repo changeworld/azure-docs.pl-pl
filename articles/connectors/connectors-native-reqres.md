@@ -1,23 +1,18 @@
 ---
-title: Odbieranie wywołań HTTPS i odpowiadanie na nie Azure Logic Apps
+title: Odbieranie wywołań HTTPS i odpowiadanie na nie
 description: Obsługa żądań HTTPS i zdarzeń w czasie rzeczywistym przy użyciu Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewers: klam, LADocs
-manager: carmonm
-ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
+ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264353"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786999"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Odbieraj przychodzące wywołania HTTPS i odpowiadaj na nie przy użyciu Azure Logic Apps
 
@@ -108,7 +103,7 @@ Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcow
    }
    ```
 
-   Po wprowadzeniu schematu JSON Projektant wyświetla przypomnienie, aby uwzględnić nagłówek `Content-Type` w żądaniu i ustawić wartość tego nagłówka na `application/json`. Aby uzyskać więcej informacji, zobacz temat [Obsługa typów zawartości](../logic-apps/logic-apps-content-type.md).
+   Po wprowadzeniu schematu JSON Projektant wyświetla przypomnienie, aby uwzględnić w żądaniu nagłówek `Content-Type` i ustawić wartość tego nagłówka na `application/json`. Aby uzyskać więcej informacji, zobacz temat [Obsługa typów zawartości](../logic-apps/logic-apps-content-type.md).
 
    ![Przypomnienie o uwzględnieniu nagłówka "Content-Type"](./media/connectors-native-reqres/include-content-type.png)
 
@@ -215,7 +210,7 @@ Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną mi
 
    W niektórych polach kliknięcie wewnątrz nich spowoduje otwarcie listy zawartości dynamicznej. Następnie można wybrać tokeny reprezentujące dostępne dane wyjściowe z poprzednich kroków w przepływie pracy. Właściwości ze schematu określonego w poprzednim przykładzie pojawiają się teraz na liście zawartości dynamicznej.
 
-   Na przykład dla pola **nagłówki** uwzględnij `Content-Type` jako nazwę klucza i ustaw wartość klucza na `application/json` jak wspomniano wcześniej w tym temacie. Dla pola **treść** możesz wybrać pozycję wyzwalanie danych wyjściowych z listy zawartości dynamicznej.
+   Na przykład dla pola **nagłówki** Dołącz `Content-Type` jako nazwę klucza, a następnie ustaw wartość klucza na `application/json` jak wspomniano wcześniej w tym temacie. Dla pola **treść** możesz wybrać pozycję wyzwalanie danych wyjściowych z listy zawartości dynamicznej.
 
    ![Szczegóły akcji odpowiedzi](./media/connectors-native-reqres/response-details.png)
 

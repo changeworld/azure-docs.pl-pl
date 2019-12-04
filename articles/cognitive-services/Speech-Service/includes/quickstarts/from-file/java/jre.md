@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0ba76ed2bd7d6259307e2e8046c4695786ff3045
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0dbfab9b1886b39f166b94447fed8dc6707404bd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504249"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795707"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -17,6 +17,8 @@ ms.locfileid: "73504249"
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=jre)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
@@ -108,6 +110,9 @@ ms.locfileid: "73504249"
 1. Zastąp ciąg `whatstheweatherlike.wav` własnymi nazwami.
 
 1. Zapisz zmiany w projekcie.
+
+> [!NOTE]
+> Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 

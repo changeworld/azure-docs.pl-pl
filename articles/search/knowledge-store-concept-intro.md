@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720093"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790028"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Wprowadzenie do magazynów wiedzy na platformie Azure Wyszukiwanie poznawcze
 
@@ -32,7 +32,7 @@ Aby korzystać ze sklepu z bazami danych, Dodaj `knowledgeStore` element do zest
 
 ## <a name="benefits-of-knowledge-store"></a>Zalety sklepu z bazami danych
 
-Magazyn wiedzy oferuje strukturę, kontekst i rzeczywistą zawartość — wydobyć z plików danych bez struktury i z częściową strukturą, takich jak obiekty blob, pliki obrazów, które zostały poddane analizie, a nawet dane strukturalne, które są przekształcane w nowe formularze. W [instruktażu krok po kroku](knowledge-store-howto.md)można zobaczyć pierwszy sposób partycjonowania dokumentu w postaci GĘSTej notacji JSON do podstruktur, które zostały przekształcone w nowe struktury i w inny sposób udostępnione dla procesów podrzędnych, takich jak uczenie maszynowe i analiza danych obciążeń.
+Magazyn wiedzy oferuje strukturę, kontekst i rzeczywistą zawartość — wydobyć z plików danych bez struktury i z częściową strukturą, takich jak obiekty blob, pliki obrazów, które zostały poddane analizie, a nawet dane strukturalne, które są przekształcane w nowe formularze. W [instruktażu krok po kroku](knowledge-store-howto.md)można zobaczyć, jak w pierwszej kolejności jest podzielony dokument o gęstym formacie JSON na podstruktury, który został przekształcony w nowe struktury i w inny sposób udostępniony dla procesów podrzędnych, takich jak obciążenia maszynowe i analizy danych.
 
 Mimo że warto zobaczyć, co można utworzyć za pomocą potoku wzbogacenia, rzeczywista moc magazynu wiedzy jest możliwość zmiany kształtu danych. Możesz zacząć od podstawowej zestawu umiejętności, a następnie wykonać iterację w celu dodania rosnących poziomów struktury, którą można następnie połączyć do nowych struktur, przydatnych w innych aplikacjach poza platformą Azure Wyszukiwanie poznawcze.
 
@@ -61,7 +61,9 @@ Poniższy kod JSON określa `knowledgeStore`, który jest częścią zestawu umi
 
 + Połączenie jest kontem magazynu w tym samym regionie co usługa Azure Wyszukiwanie poznawcze. 
 
-+ Projekcje to pary obiektów Tables. `Tables` zdefiniować fizyczne wyrażenie ulepszonych dokumentów w usłudze Azure Table Storage. `Objects` zdefiniować obiekty fizyczne w usłudze Azure Blob Storage.
++ Projekcje mogą być tabelaryczne, obiekty JSON lub pliki. `Tables` zdefiniować fizyczne wyrażenie ulepszonych dokumentów w usłudze Azure Table Storage. `Objects` zdefiniować fizyczne obiekty JSON w usłudze Azure Blob Storage. `Files` są plikami binarnymi, takimi jak obrazy wyodrębnione z dokumentu, które zostaną utrwalone.
+
++ Projekcje to kolekcja obiektów projekcji, każdy obiekt projekcji może zawierać `tables`, `objects` i `files`. Wzbogacania rzutowane w ramach jednego projekcji są powiązane nawet w przypadku prognozowania między typami (tabele, obiekty lub pliki). Projekcje w obiektach projekcji nie są powiązane i są niezależne. Ten sam kształt może być rzutowany na aross wiele obiektów projekcji.
 
 ```json
 {
@@ -109,7 +111,10 @@ Poniższy kod JSON określa `knowledgeStore`, który jest częścią zestawu umi
             ], 
             "objects": [ 
                
-            ]      
+            ], 
+            "files": [
+
+            ]  
         },
         { 
             "tables": [ 
@@ -121,18 +126,22 @@ Poniższy kod JSON określa `knowledgeStore`, który jest częścią zestawu umi
                 "source": "/document/Review", 
                 "key": "/document/Review/Id" 
                 } 
-            ]      
+            ],
+            "files": [
+                
+            ]  
         }        
     ]     
     } 
 }
 ```
 
+Ten przykład nie zawiera obrazów, aby zapoznać się z przykładem sposobu korzystania z projekcji plików, zobacz [Praca z projekcjami](knowledge-store-projection-overview.md).
 ### <a name="sources-of-data-for-a-knowledge-store"></a>Źródła danych dla sklepu z bazami wiedzy
 
 Jeśli magazyn wiedzy jest wyprowadzany z potoku wzbogacenia AI, jakie są dane wejściowe? Oryginalne dane, które mają zostać wyodrębnione, wzbogacone i ostatecznie zapisane w sklepie wiedzy, mogą pochodzić od dowolnego źródła danych platformy Azure obsługiwanego przez indeksatory wyszukiwania: 
 
-* [Usługi Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 
@@ -150,7 +159,7 @@ Tylko dwa interfejsy API mają rozszerzenia wymagane do tworzenia sklepu z bazam
 |--------|----------|-------------|
 | Źródło danych | [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source) (Tworzenie źródła danych)  | Zasób, który identyfikuje zewnętrzne źródło danych platformy Azure, dostarczając dane źródłowe używane do tworzenia wzbogaconych dokumentów.  |
 | zestawu umiejętności | [Create zestawu umiejętności (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób koordynujący korzystanie z [wbudowanych umiejętności](cognitive-search-predefined-skills.md) i [niestandardowych umiejętności poznawczych](cognitive-search-custom-skill-interface.md) używanych w potoku wzbogacenia podczas indeksowania. Zestawu umiejętności ma definicję `knowledgeStore` jako element podrzędny. |
-| index | [Utwórz indeks](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schemat przedstawiający indeks wyszukiwania. Pola w indeksie mapują do pól w danych źródłowych lub do pól wyprodukowanych w fazie wzbogacania (na przykład pola nazw organizacji utworzonych przez funkcję rozpoznawania jednostek). |
+| indeks | [Utwórz indeks](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schemat przedstawiający indeks wyszukiwania. Pola w indeksie mapują do pól w danych źródłowych lub do pól wyprodukowanych w fazie wzbogacania (na przykład pola nazw organizacji utworzonych przez funkcję rozpoznawania jednostek). |
 | indeksatora | [Create indeksator (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób definiujący składniki używane podczas indeksowania: w tym źródła danych, zestawu umiejętności, skojarzenia pól ze źródeł i pośrednich struktur danych do indeksu docelowego i samego indeksu. Uruchomienie indeksatora jest wyzwalaczem do pozyskiwania i wzbogacania danych. Wyjście jest indeksem wyszukiwania opartym na schemacie indeksu, wypełnionym danymi źródłowymi, wzbogaconym przez umiejętności.  |
 
 ### <a name="physical-composition-of-a-knowledge-store"></a>Fizyczna kompozycja sklepu z bazami danych

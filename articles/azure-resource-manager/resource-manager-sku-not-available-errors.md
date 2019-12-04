@@ -3,12 +3,12 @@ title: Błędy niedostępne dla jednostki SKU
 description: Opisuje sposób rozwiązywania problemów z niedostępnym jednostką SKU podczas wdrażania zasobów przy użyciu Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 10/19/2018
-ms.openlocfilehash: 56afca6b6a59ca08f3fd59c4d9b3ebf12bda415a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 0b3696d3207a88d87b11e65f4697473963f960d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150490"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769153"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Rozwiązywanie błędów dla jednostki SKU jest niedostępne
 
@@ -30,6 +30,8 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 Ten błąd występuje, gdy wybrana jednostka SKU zasobu (na przykład rozmiar maszyny wirtualnej) nie jest dostępna dla wybranej lokalizacji.
 
+Jeśli wdrażasz maszynę wirtualną platformy Azure lub wystąpienie zestawu skalowania punktowego, w tej lokalizacji nie ma żadnej pojemności dla platformy Azure. Aby uzyskać więcej informacji, zobacz [dodatkowe komunikaty o błędach](../virtual-machines/error-codes-spot.md).
+
 ## <a name="solution-1---powershell"></a>Rozwiązanie 1 — PowerShell
 
 Aby określić, które jednostki SKU są dostępne w regionie, użyj polecenia [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) . Filtruj wyniki według lokalizacji. Dla tego polecenia trzeba mieć najnowszą wersję programu PowerShell.
@@ -48,7 +50,7 @@ virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      M
 virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
-## <a name="solution-2---azure-cli"></a>Rozwiązanie 2 — interfejs wiersza polecenia Azure
+## <a name="solution-2---azure-cli"></a>Rozwiązanie 2 — interfejs wiersza polecenia platformy Azure
 
 Aby określić, które jednostki SKU są dostępne w regionie, użyj polecenia `az vm list-skus`. Użyj parametru `--location`, aby odfiltrować dane wyjściowe do lokalizacji, której używasz. Użyj parametru `--size`, aby wyszukać według częściowej nazwy rozmiaru.
 
@@ -68,7 +70,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>Rozwiązanie 3 - w witrynie Azure portal
+## <a name="solution-3---azure-portal"></a>Rozwiązanie 3 — Azure Portal
 
 Aby określić, które jednostki SKU są dostępne w regionie, użyj [portalu](https://portal.azure.com). Zaloguj się do portalu i Dodaj zasób za pomocą interfejsu. Podczas ustawiania wartości są wyświetlane dostępne jednostki SKU dla tego zasobu. Wdrożenie nie jest konieczne.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0af2d306a5f5923f5e14eb0ebc4707f9c5caee90
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288570"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769034"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps pokrycie pogodowe
 
@@ -23,14 +23,14 @@ Azure Maps nie ma tego samego poziomu informacji i dokładności dla wszystkich 
 
 Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które można zażądać od poszczególnych krajów/regionów.
 
-| Symbol | Znaczenie |
+| Symboliczn | Znaczenie |
 |--------|---------|
 |*       |Obejmuje Pogoda na trasie, bieżące warunki, prognozę godzinową, prognozę kwartalną i dzienne interfejsy API prognozowania |
 
 
 ## <a name="americas"></a>Ameryki
 
-| Country/region              |  Kafelki satelitarne | Prognoza minutowa, kafelki radarowe | Różnych | 
+| Kraj/region              |  Kafelki satelitarne | Prognoza minutowa, kafelki radarowe | Różnych | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Anguilla                                 | ✓ |   |  ✓| 
 | Antarktyda                               | ✓ |   |  ✓|
@@ -53,7 +53,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Kuba                                     | ✓ |   |  ✓| 
 | Curaçao                                  | ✓ |   |  ✓| 
 | Mini                                 | ✓ |   |  ✓| 
-| Republika Dominikańska                       | ✓ |   |  ✓| 
+| Dominikana                       | ✓ |   |  ✓| 
 | Ekwador                                  | ✓ |   |  ✓| 
 | Salwador                              | ✓ |   |  ✓| 
 | Falklandy                         | ✓ |   |  ✓| 
@@ -85,7 +85,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Wyspy Georgia Południowa i Sandwich Południowy | ✓ |   |  ✓| 
 | Surinam                                 | ✓ |   |  ✓| 
 | Trynidad i Tobago                      | ✓ |   |  ✓| 
-| Wyspy Turks i Caicos                 | ✓ |   |  ✓| 
+| Turks i Caicos                 | ✓ |   |  ✓| 
 | Odległe wyspy Stanów Zjednoczonych                    | ✓ |   |  ✓| 
 | Wyspy Dziewicze Stanów Zjednoczonych                      | ✓ |   |  ✓| 
 | Stany Zjednoczone                            | ✓ | ✓ |  ✓| 
@@ -95,7 +95,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 
 ## <a name="middle-east-and-africa"></a>Bliski Wschód i Afryka
 
-| Country/region              |  Kafelki satelitarne | Prognoza minutowa, kafelki radarowe | Różnych | 
+| Kraj/region              |  Kafelki satelitarne | Prognoza minutowa, kafelki radarowe | Różnych | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Algieria                     | ✓               |                              |        ✓| 
 | Angola                      | ✓               |                              |        ✓| 
@@ -120,7 +120,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Etiopia                    | ✓               |                              |        ✓| 
 | Francuskie Terytoria Południowe | ✓               |                              |        ✓| 
 | Gabon                       | ✓               |                              |        ✓| 
-| Gambia                      | ✓               |                              |        ✓| 
+| Przybrzeżn                      | ✓               |                              |        ✓| 
 | Ghana                       | ✓               |                              |        ✓| 
 | Gwinea                      | ✓               |                              |        ✓| 
 | Gwinea Bissau               | ✓               |                              |        ✓| 
@@ -133,7 +133,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Liban                     | ✓               |                              |        ✓| 
 | Lesotho                     | ✓               |                              |        ✓| 
 | Liberia                     | ✓               |                              |        ✓| 
-| Libya                       | ✓               |                              |        ✓| 
+| Libia                       | ✓               |                              |        ✓| 
 | Madagaskar                  | ✓               |                              |        ✓| 
 | Malawi                      | ✓               |                              |        ✓| 
 | Mali                        | ✓               |                              |        ✓| 
@@ -174,7 +174,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 
 ## <a name="asia-pacific"></a>Azja i Pacyfik
 
-| Country/region              |  Kafelki satelitarne | Prognoza minutowa, kafelki radarowe | Różnych | 
+| Kraj/region              |  Kafelki satelitarne | Prognoza minutowa, kafelki radarowe | Różnych | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afganistan                       | ✓ |   |  ✓| 
 | Samoa Amerykańskie                    | ✓ |   |  ✓| 
@@ -193,16 +193,16 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Polinezja Francuska                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
 | Wyspy Heard i McDonald | ✓ |   |  ✓| 
-| SRA Hongkong                     | ✓ |   |  ✓| 
+| Hongkong SAR                     | ✓ |   |  ✓| 
 | Indie                             | ✓ |   |  ✓| 
 | Indonezja                         | ✓ |   |  ✓| 
 | Japonia                             | ✓ | ✓ |  ✓| 
 | Kazachstan                        | ✓ |   |  ✓| 
 | Kiribati                          | ✓ |   |  ✓| 
-| Korea                             | ✓ | ✓ |  ✓| 
+| Korea Południowa                             | ✓ | ✓ |  ✓| 
 | Kirgistan                        | ✓ |   |  ✓| 
 | Laos                              | ✓ |   |  ✓| 
-| SRA Makau                         | ✓ |   |  ✓| 
+| Makau SAR                         | ✓ |   |  ✓| 
 | Malezja                          | ✓ |   |  ✓| 
 | Malediwy                          | ✓ |   |  ✓| 
 | Wyspy Marshalla                  | ✓ |   |  ✓| 
@@ -229,7 +229,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Tajwan                            | ✓ |   |  ✓| 
 | Tadżykistan                        | ✓ |   |  ✓| 
 | Tajlandia                          | ✓ |   |  ✓| 
-| Timor-Leste                       | ✓ |   |  ✓| 
+| Timor — Wschodni                       | ✓ |   |  ✓| 
 | Tokelau                           | ✓ |   |  ✓| 
 | Tonga                             | ✓ |   |  ✓| 
 | Turkmenistan                      | ✓ |   |  ✓| 
@@ -242,7 +242,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 
 ## <a name="europe"></a>Europa
 
-| Country/region              |  Kafelki satelitarne | Prognoza minutowa, kafelki radarowe | Różnych | 
+| Kraj/region              |  Kafelki satelitarne | Prognoza minutowa, kafelki radarowe | Różnych | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|
 | Albania                | ✓ |   |  ✓| 
 | Andora                | ✓ |   |  ✓| 
@@ -279,7 +279,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Północna Macedonia        | ✓ |   |  ✓| 
 | Malta                  | ✓ |   |  ✓| 
 | Mołdawia                | ✓ | ✓ |  ✓| 
-| Monaco                 | ✓ | ✓ |  ✓| 
+| Monako                 | ✓ | ✓ |  ✓| 
 | Czarnogóra             | ✓ | ✓ |  ✓| 
 | Holandia            | ✓ | ✓ |  ✓| 
 | Norwegia                 | ✓ | ✓ |  ✓| 
@@ -298,5 +298,5 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Szwajcaria            | ✓ | ✓ |  ✓| 
 | Turcja                 | ✓ |   |  ✓| 
 | Ukraina                | ✓ |   |  ✓| 
-| Wielka Brytania         | ✓ | ✓ |  ✓| 
+| Zjednoczone Królestwo         | ✓ | ✓ |  ✓| 
 | Watykan           | ✓ |   |  ✓| 

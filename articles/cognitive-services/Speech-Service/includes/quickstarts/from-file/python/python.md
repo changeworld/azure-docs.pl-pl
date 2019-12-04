@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 91b136b7986dc3551ebc28b7e35bfe206b273497
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 221a5ef40f2ebe59b0a40b3cd666b53fabf82e85
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504277"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795928"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -26,6 +26,8 @@ Przed rozpoczęciem upewnij się, że:
 > * [Tworzenie aplikacji LUIS i pobieranie klucza punktu końcowego](../../../../quickstarts/create-luis.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="support-and-updates"></a>Pomoc techniczna i aktualizacje
 
@@ -48,6 +50,9 @@ python quickstart.py
 Ewentualnie możesz pobrać ten samouczek Szybki start jako notes programu [Jupyter](https://jupyter.org) z [repozytorium przykładów zestawu Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) i uruchomić go jako notes.
 
 ### <a name="sample-code"></a>Przykładowy kod
+
+> [!NOTE]
+> Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 ````Python
 

@@ -1,20 +1,19 @@
 ---
-title: Konwertowanie danych JSON przy użyciu transformacji płynnej — Azure Logic Apps | Microsoft Docs
+title: Konwertowanie danych JSON przy użyciu transformacji płynnych
 description: Tworzenie transformacji lub map dla zaawansowanych przekształceń JSON przy użyciu szablonu Logic Apps i płynu
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900656"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792509"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonaj zaawansowane przekształcenia JSON przy użyciu szablonów płynnych w Azure Logic Apps
 
@@ -58,7 +57,7 @@ Aby można było wykonać transformację płynną w aplikacji logiki, należy na
    }
    ```
 
-2. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania Znajdź i wybierz swoje konto integracji.
+2. Zaloguj się do [portalu Azure](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania Znajdź i wybierz swoje konto integracji.
 
    ![Wybierz konto integracji](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
@@ -68,11 +67,11 @@ Aby można było wykonać transformację płynną w aplikacji logiki, należy na
 
 4. Wybierz pozycję **Dodaj** i podaj następujące szczegóły dotyczące mapy:
 
-   | Właściwość | Value | Opis | 
+   | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Nazwa** | JsonToJsonTemplate | Nazwa mapy, która jest w tym przykładzie "JsonToJsonTemplate" | 
    | **Typ mapy** | **obrotow** | Typ mapy. W przypadku transformacji JSON do formatu JSON należy wybrać pozycję **Liquid**. | 
-   | **Zmapować** | "SimpleJsonToJsonTemplate.liquid" | Istniejący szablon płynu lub plik mapy do użycia na potrzeby transformacji, czyli "SimpleJsonToJsonTemplate. Liquid" w tym przykładzie. Aby znaleźć ten plik, można użyć selektora plików. |
+   | **Zmapować** | "SimpleJsonToJsonTemplate. Liquid" | Istniejący szablon płynu lub plik mapy do użycia na potrzeby transformacji, czyli "SimpleJsonToJsonTemplate. Liquid" w tym przykładzie. Aby znaleźć ten plik, można użyć selektora plików. |
    ||| 
 
    ![Dodaj szablon płynny](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
@@ -84,7 +83,7 @@ Aby można było wykonać transformację płynną w aplikacji logiki, należy na
 2. W Projektancie aplikacji logiki Dodaj [wyzwalacz żądania](../connectors/connectors-native-reqres.md#add-request) do aplikacji logiki.
 
 3. W obszarze wyzwalacza wybierz pozycję **nowy krok**. 
-   W polu wyszukiwania wprowadź "Liquid" jako filtr, a następnie wybierz tę akcję: **Przekształć JSON do formatu JSON-Liquid**
+   W polu wyszukiwania wprowadź "Liquid" jako filtr, a następnie wybierz tę akcję: **Przekształć JSON do JSON-Liquid**
 
    ![Znajdź i wybierz akcję ciekłej](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -107,7 +106,7 @@ Aby można było wykonać transformację płynną w aplikacji logiki, należy na
 
 ## <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 
-Wyślij dane wejściowe JSON do aplikacji logiki z [](https://www.getpostman.com/postman) programu Poster lub podobnego narzędzia. Przekształcone dane wyjściowe JSON z aplikacji logiki wyglądają podobnie jak w tym przykładzie:
+Wyślij dane wejściowe JSON do aplikacji logiki z programu [Poster](https://www.getpostman.com/postman) lub podobnego narzędzia. Przekształcone dane wyjściowe JSON z aplikacji logiki wyglądają podobnie jak w tym przykładzie:
   
 ![Przykładowe dane wyjściowe](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
@@ -125,7 +124,7 @@ Płyn nie jest ograniczony tylko do transformacji JSON. Oto inne dostępne akcje
   
    ![Przykład danych wyjściowych JSON do tekstu](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
-* Przekształć element XML do formatu JSON
+* Przekształć XML w notację JSON
   
   Oto szablon płynu używany do tego przykładu:
    
@@ -152,6 +151,6 @@ Płyn nie jest ograniczony tylko do transformacji JSON. Oto inne dostępne akcje
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw] (../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw")  
-* [Dowiedz się więcej o mapach] (../logic-apps/logic-apps-enterprise-integration-maps.md "Dowiedz się więcej na temat map integracji przedsiębiorstwa")  
+* [Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw")  
+* [Dowiedz się więcej o mapach](../logic-apps/logic-apps-enterprise-integration-maps.md "Dowiedz się więcej na temat map integracji przedsiębiorstwa")  
 

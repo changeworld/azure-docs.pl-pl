@@ -1,19 +1,19 @@
 ---
-title: Zabezpieczenia w Azure Database for MariaDB — pojedynczy serwer
-description: Omówienie funkcji zabezpieczeń w ramach Azure Database for MariaDB-jednego serwera.
+title: Zabezpieczenia — Azure Database for MariaDB
+description: Omówienie funkcji zabezpieczeń w Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 1a2d7ac449c131519473afaa80eb3a57c287eb28
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: d23eabdacc57a3f5a10d9e3b132a6daac42fbd4d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485187"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772153"
 ---
-# <a name="security-in-azure-database-for-mariadb---single-server"></a>Zabezpieczenia w Azure Database for MariaDB — pojedynczy serwer
+# <a name="security-in-azure-database-for-mariadb"></a>Zabezpieczenia w usłudze Azure Database for MariaDB
 
 Istnieje wiele warstw zabezpieczeń, które są dostępne do ochrony danych na serwerze Azure Database for MariaDB. W tym artykule opisano opcje zabezpieczeń.
 

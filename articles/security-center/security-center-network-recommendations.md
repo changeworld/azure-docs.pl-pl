@@ -13,15 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: bf33fe29b18b09bf903e1fc331f1c378eacb3e17
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21feed73d025e0c0a4b2c7bb07d23f450780126e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201718"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766790"
 ---
-# <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w Azure Security Center
+# <a name="protect-your-network-resources"></a>Ochrona zasobów sieciowych
 Azure Security Center stale analizuje stan zabezpieczeń zasobów platformy Azure pod kątem najlepszych rozwiązań z zakresu zabezpieczeń sieci. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek do zabezpieczania i zabezpieczania zasobów.
+
+W tym artykule objaśniono stronę **sieci** w sekcji zabezpieczenia zasobów Azure Security Center i niektóre zalecenia, które zobaczysz.
+
+Aby zapoznać się z pełną listą zaleceń dotyczących sieci, zobacz [zalecenia dotyczące sieci](recommendations-network.md).
 
 Ten artykuł dotyczy zaleceń, które dotyczą zasobów platformy Azure z punktu widzenia zabezpieczeń sieci. Centrum zaleceń dotyczących sieci wokół zapór nowej generacji, sieciowych grup zabezpieczeń, JIT dostęp do maszyny wirtualnej za pośrednictwem reguł ruchu przychodzącego i innych. Aby zapoznać się z listą zaleceń dotyczących sieci i akcji korygowania, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md).
 
@@ -32,7 +36,7 @@ Ten artykuł dotyczy zaleceń, które dotyczą zasobów platformy Azure z punktu
 Strona **Sieć** zawiera przegląd sekcji, w których można szczegółowe, aby uzyskać więcej informacji na temat kondycji zasobów sieciowych:
 
 - Mapa sieci (tylko Azure Security Center warstwy Standardowa)
-- Adaptacyjne wzmacnianie zabezpieczeń sieci
+- Adaptacyjne wzmocnienie zabezpieczeń sieci
 - Zalecenia dotyczące zabezpieczeń sieci.
 - Blok starszej **sieci** (poprzedni blok sieci) 
  
@@ -75,8 +79,8 @@ Ponieważ mapa jest interaktywna i dynamiczna, każdy węzeł jest klikany, a wi
 
 1. Można modyfikować elementy widoczne na mapie sieci przy użyciu filtrów znajdujących się na górze. Możesz skupić się na mapie na podstawie:
 
-   -  **Kondycja zabezpieczeń**: Mapę można filtrować na podstawie ważności (wysoka, średnia, niska) zasobów platformy Azure.
-   - **Zalecenia**: Możesz wybrać, które zasoby są wyświetlane na podstawie zaleceń, które są aktywne dla tych zasobów. Można na przykład wyświetlić tylko zasoby, dla których Security Center zaleca się włączenie sieciowych grup zabezpieczeń.
+   -  **Kondycja zabezpieczeń**: można filtrować mapę na podstawie ważności (wysoka, średnia, niska) zasobów platformy Azure.
+   - **Zalecenia**: możesz wybrać, które zasoby są wyświetlane na podstawie zaleceń, które są aktywne dla tych zasobów. Można na przykład wyświetlić tylko zasoby, dla których Security Center zaleca się włączenie sieciowych grup zabezpieczeń.
    - **Strefy sieciowe**: Domyślnie mapa wyświetla tylko zasoby połączone z Internetem, można również wybrać wewnętrzne maszyny wirtualne.
  
 2. Możesz kliknąć pozycję **Zresetuj** w lewym górnym rogu w dowolnym momencie, aby przywrócić mapę do stanu domyślnego.
@@ -131,31 +135,8 @@ W tym widoku topologii pierwszy poziom wyświetla sieci wirtualnych. Drugi wyśw
 
 Trzeci poziom przedstawia maszyny wirtualne, które są podobne do opisanych wcześniej. Możesz kliknąć dowolny zasób, aby dowiedzieć się więcej lub zastosować wymaganą kontrolę zabezpieczeń lub konfigurację.
 
-## <a name="network-recommendations"></a>Zalecenia dotyczące sieci
-
-|Nazwa zalecenia|Opis|severity|Wskaźnik bezpieczeństwa|Typ zasobu|
-|----|----|----|----|----|----|
-|Sieciowe grupy zabezpieczeń na poziomie podsieci powinny być włączone|Włącz sieciowe grupy zabezpieczeń, aby kontrolować dostęp sieciowy do zasobów wdrożonych w podsieciach.|Wysoki/średni|30|Subnet|
-|Maszyny wirtualne powinny być skojarzone z sieciową grupą zabezpieczeń|Włącz sieciowe grupy zabezpieczeń, aby kontrolować dostęp sieciowy do maszyn wirtualnych.|Wysoki/średni|30|Maszyna wirtualna|
-|Dostęp powinien być ograniczony do ograniczeń sieciowych grup zabezpieczeń z maszynami wirtualnymi z Internetu|Podwyższenie poziomu bezpieczeństwa sieci maszyn wirtualnych połączonych z Internetem przez ograniczenie dostępu do istniejących reguł zezwalania.|Wysoka|20|Maszyna wirtualna|
-|Reguły dla aplikacji sieci Web na IaaS sieciowych grup zabezpieczeń powinny być zaostrzone|Zawzmacniaj grupę zabezpieczeń sieci (sieciowej grupy zabezpieczeń) dla maszyn wirtualnych, na których działają aplikacje sieci Web, z regułami sieciowej grupy zabezpieczeń, które są nadmiernie ograniczające w odniesieniu do portów aplikacji sieci Web.|Wysoka|20|Maszyna wirtualna|
-|Dostęp do App Services powinien być ograniczony|Ogranicz dostęp do App Services, zmieniając konfigurację sieci, aby odmówić ruchu przychodzącego z zakresów, które są zbyt szerokie.|Wysoka|10|App Service|
-|Porty zarządzania powinny być zamknięte na maszynach wirtualnych|Ogranicz grupę zabezpieczeń sieci maszyn wirtualnych, aby ograniczyć dostęp do portów zarządzania.|Wysoka|10|Maszyna wirtualna|
-Należy włączyć Standard DDoS Protection|Ochrona sieci wirtualnych zawierających aplikacje z publicznymi adresami IP przez włączenie usługi DDoS Protection Standard. Ochrona DDoS umożliwia łagodzenie ataków między pomiarami i protokołami sieciowymi.|Wysoka|10|Sieć wirtualna|
-|Przekazywanie adresów IP na maszynie wirtualnej powinno być wyłączone|Wyłącz przekazywanie adresów IP. Po włączeniu przekazywania adresów IP na karcie sieciowej maszyny wirtualnej komputer może odbierać ruch skierowany do innych miejsc docelowych. Przekazywanie adresów IP jest rzadko wymagane (na przykład w przypadku używania maszyny wirtualnej jako sieciowego urządzenia wirtualnego), dlatego powinno być przeglądane przez zespół ds. zabezpieczeń sieci.|Średni|10|Maszyna wirtualna|
-|Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS|Włącz dostęp tylko do protokołu HTTPS dla aplikacji sieci Web. Użycie protokołu HTTPS zapewnia uwierzytelnianie serwera/usługi i chroni dane podczas przesyłania przed atakami polegającymi na podsłuchu w warstwie sieciowej.|Średni|20|Aplikacja internetowa|
-|Kontrola dostępu do sieci just in Time powinna być stosowana na maszynach wirtualnych|Zastosuj kontrolę dostępu maszyny wirtualnej just-in-Time (JIT), aby trwale zablokować dostęp do wybranych portów i umożliwić autoryzowanym użytkownikom otwieranie ich za pośrednictwem JIT tylko przez ograniczoną ilość czasu.|Wysoka|20|Maszyna wirtualna|
-|Aplikacje funkcji powinny być dostępne tylko za pośrednictwem protokołu HTTPS|Włącz dostęp tylko do protokołu HTTPS dla aplikacji funkcji. Użycie protokołu HTTPS zapewnia uwierzytelnianie serwera/usługi i chroni dane podczas przesyłania przed atakami polegającymi na podsłuchu w warstwie sieciowej.|Średni|20|Aplikacja funkcji|
-|Należy włączyć bezpieczny transfer do kont magazynu|Włącz bezpieczny transfer do kont magazynu. Bezpieczny transfer to opcja, która wymusza akceptowanie przez konto magazynu żądań tylko z bezpiecznych połączeń (HTTPS). Użycie protokołu HTTPS zapewnia uwierzytelnianie między serwerem a usługą i chroni dane przesyłane przed atakami z warstwy sieci, takimi jak Man-in-the-Middle, podsłuchiwanie i przejmowanie sesji.|Wysoka|20|Konto magazynu|
-
 ## <a name="see-also"></a>Zobacz także
-Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
+Aby dowiedzieć się więcej o zaleceniach dotyczących innych typów zasobów platformy Azure, zobacz następujące tematy:
 
 * [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrona usługi Azure SQL w usłudze Azure Security Center](security-center-sql-service-recommendations.md)
-
-Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
-
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
-* [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
+* [Ochrona usługi Azure SQL w Azure Security Center](security-center-sql-service-recommendations.md)

@@ -1,97 +1,95 @@
 ---
-title: Kodowanie X12 komunikaty — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Sprawdź poprawność EDI i przekonwertować zakodowane w formacie XML komunikatów za pomocą X12 komunikatu kodera w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+title: Kodowanie komunikatów X12
+description: Weryfikowanie EDI i konwertowanie komunikatów zakodowanych w formacie XML za pomocą kodera komunikatów X12 w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
-ms.openlocfilehash: 871d6d2b2019372bd258f8909ed0feeeddac4af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705697"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792351"
 ---
-# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kodowanie X12 wiadomości w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Koduj komunikaty X12 w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
-Za pośrednictwem łącznika komunikat Koduj X12 weryfikowanie integracji EDI i właściwości specyficzne dla partnerów, przekonwertować zakodowane w formacie XML komunikatów EDI zestawów transakcji w wymianie, a żądania potwierdzenia technicznych i/lub funkcjonalności potwierdzenia.
-Aby użyć tego łącznika, łącznik należy dodać do istniejącego wyzwalacza w aplikacji logiki.
+Za pomocą łącznika komunikatu X12 można sprawdzić poprawność EDI i właściwości specyficzne dla partnera, konwertować komunikaty kodowane w formacie XML na zestawy transakcji EDI w ramach wymiany i żądać potwierdzenia technicznego, potwierdzenia funkcjonalności lub obu tych funkcji.
+Aby użyć tego łącznika, należy dodać Łącznik do istniejącego wyzwalacza w aplikacji logiki.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Oto elementy, które są potrzebne:
+Oto elementy, których potrzebujesz:
 
 * Konto platformy Azure; Możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free)
-* [Konta integracji](logic-apps-enterprise-integration-create-integration-account.md) który został już zdefiniowany i skojarzonych z subskrypcją platformy Azure. Konieczne jest posiadanie konta integracji do korzystania z łącznika komunikat Koduj X12.
-* Co najmniej dwóch [partnerów](logic-apps-enterprise-integration-partners.md) które zostały już zdefiniowane w ramach konta integracji
-* [X12 umowy](logic-apps-enterprise-integration-x12.md) jest już zdefiniowany w ramach konta integracji
+* [Konto integracji](logic-apps-enterprise-integration-create-integration-account.md) , które jest już zdefiniowane i skojarzone z subskrypcją platformy Azure. Musisz mieć konto integracji, aby używać łącznika wiadomości X12.
+* Co najmniej dwóch [partnerów](logic-apps-enterprise-integration-partners.md) , które są już zdefiniowane na koncie integracji
+* [Umowa X12](logic-apps-enterprise-integration-x12.md) , która jest już zdefiniowana na koncie integracji
 
-## <a name="encode-x12-messages"></a>Kodowanie X12 wiadomości
+## <a name="encode-x12-messages"></a>Kodowanie komunikatów X12
 
-1. [Tworzenie aplikacji logiki](quickstart-create-first-logic-app-workflow.md).
+1. [Utwórz aplikację logiki](quickstart-create-first-logic-app-workflow.md).
 
-2. Koduj X12 łącznika komunikat nie ma wyzwalacze, więc należy dodać wyzwalacza uruchamiającego twoją aplikację logiki, takich jak wyzwalacza żądania. W Projektancie aplikacji logiki Dodaj wyzwalacz, a następnie dodaj akcję do aplikacji logiki.
+2. Łącznik X12 komunikatów kodowania nie ma wyzwalaczy, dlatego należy dodać wyzwalacz do uruchamiania aplikacji logiki, jak wyzwalacz żądania. W Projektancie aplikacji logiki Dodaj wyzwalacz, a następnie Dodaj akcję do aplikacji logiki.
 
-3.  W polu wyszukiwania wprowadź "x12" jako filtr. Wybierz opcję **X12 — kodowanie X12 wiadomości według nazwy umowy** lub **X12 — kodowanie X12 wiadomości według tożsamości**.
+3.  W polu wyszukiwania wprowadź wartość "X12" dla filtra. Wybierz opcję **X12-encode, aby X12 wiadomość według nazwy umowy** lub **X12-Encode na komunikat X12 przez tożsamość**.
    
-    ![Wyszukaj "x12"](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
+    ![Wyszukaj ciąg "X12"](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
-3. Jeśli wcześniej nie utworzono żadnych połączeń z kontem integracji, zostanie wyświetlony monit Utwórz teraz tego połączenia. Nazwij połączenie, a następnie wybierz konto integracji, w którym chcesz się połączyć. 
+3. Jeśli nie utworzono wcześniej żadnych połączeń z kontem integracji, zostanie wyświetlony monit o utworzenie tego połączenia teraz. Nazwij połączenie i wybierz konto integracji, które chcesz połączyć. 
    
-    ![połączenie konta integracji](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
+    ![połączenie z kontem integracji](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
 
     Właściwości z gwiazdką są wymagane.
 
     | Właściwość | Szczegóły |
     | --- | --- |
-    | Nazwa połączenia * |Wprowadź dowolną nazwę połączenia. |
-    | Konto integracji * |Wprowadź nazwę dla swojego konta integracji. Upewnij się, że integracja aplikacji logiki i konta znajdują się w tej samej lokalizacji platformy Azure. |
+    | Nazwa połączenia * |Wprowadź dowolną nazwę dla połączenia. |
+    | Konto integracji * |Wprowadź nazwę konta integracji. Upewnij się, że Twoje konto integracji i aplikacja logiki znajdują się w tej samej lokalizacji platformy Azure. |
 
-5.  Gdy wszystko będzie gotowe, szczegóły połączenia powinien wyglądać podobnie do tego przykładu. Aby ukończyć tworzenie połączenia, wybierz opcję **Utwórz**.
+5.  Gdy wszystko będzie gotowe, szczegóły połączenia powinny wyglądać podobnie do tego przykładu. Aby zakończyć tworzenie połączenia, wybierz pozycję **Utwórz**.
 
-    ![utworzone połączenie konta integracji](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
+    ![utworzono połączenie z kontem integracji](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
-    Połączenie jest gotowy.
+    Połączenie zostało utworzone.
 
-    ![Szczegóły połączenia konta integracji](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage3.png) 
+    ![Szczegóły połączenia z kontem integracji](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage3.png) 
 
-#### <a name="encode-x12-messages-by-agreement-name"></a>Kodowanie X12 wiadomości według nazwy umowy
+#### <a name="encode-x12-messages-by-agreement-name"></a>Koduj komunikaty X12 według nazwy umowy
 
-Jeśli zdecydujesz się na kodowanie X12 Otwórz wiadomości według nazwy umowy **nazwa X12 umowy** listy wprowadź lub wybierz z istniejących X12 umowy. Wprowadź komunikat XML do zakodowania.
+W przypadku wybrania kodowania komunikatów X12 według nazwy umowy Otwórz nazwę listy **umów X12** , wprowadź lub wybierz istniejącą umowę X12. Wprowadź komunikat XML do zakodowania.
 
-![Wprowadź X12 Nazwa umowy i komunikat XML do zakodowania](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
+![Wprowadź nazwę umowy X12 i komunikat XML do zakodowania](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 
-#### <a name="encode-x12-messages-by-identities"></a>Kodowanie X12 wiadomości według tożsamości
+#### <a name="encode-x12-messages-by-identities"></a>Koduj komunikaty X12 według tożsamości
 
-Jeśli zdecydujesz się kodować X12 wiadomości według tożsamości, wprowadź identyfikator nadawcy, Kwalifikator nadawcy, identyfikator odbiorcy i kwalifikator odbiorcy, zgodnie z konfiguracją usługi X12 umowy. Wybierz komunikat XML do zakodowania.
+W przypadku wybrania kodowania komunikatów X12 według tożsamości wprowadź identyfikator nadawcy, kwalifikator nadawcy, identyfikator odbiorcy i kwalifikator odbiorcy zgodnie z konfiguracją w umowie X12. Wybierz komunikat XML do zakodowania.
    
-![Podaj tożsamości nadawcy i odbiorcy, wybierz komunikat XML do zakodowania](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
+![Podaj tożsamości dla nadawcy i odbiornika, wybierz wiadomość XML do zakodowania](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
-## <a name="x12-encode-details"></a>X12 kodowanie szczegóły
+## <a name="x12-encode-details"></a>Szczegóły kodowania X12
 
-X12 łącznika Koduj wykonuje te zadania:
+Łącznik kodowania X12 wykonuje następujące zadania:
 
-* Rozpoznanie umowy, dopasowując nadawcą i odbiorcą właściwości kontekstu.
-* Serializuje wymiany EDI, konwersji wiadomości w formacie XML do zestawów transakcji EDI w wymianie.
-* Stosuje segmentów nagłówka i elementu końcowego zestawu transakcji
-* Generuje numer kontrolny wymiany, numer kontrolny grupy i numer kontrolny zestawu transakcji, dla każdego wychodzących wymiany
-* Zastępuje separatory w danych ładunku
-* Weryfikuje EDI i właściwości specyficzne dla partnerów
-  * Sprawdzanie poprawności schematu elementów danych zestawu transakcji dla komunikatu schematu
-  * Walidacja EDI wykonywane na elementach danych zestawu transakcji.
-  * Rozszerzona Walidacja wykonywane na elementach danych zestawu transakcji
-* Żądania potwierdzenia technicznych i/lub funkcjonalnej (jeśli jest skonfigurowane).
-  * Potwierdzenie techniczne generuje w wyniku weryfikacji nagłówka. Potwierdzenie techniczne informuje o stanie przetwarzania nagłówka wymiany i przyczepy przez odbiorcę adresu
-  * Potwierdzenie funkcjonalności generuje w wyniku weryfikacji treści. Potwierdzenie funkcjonalności raporty każdy wystąpił błąd podczas przetwarzania odebranych dokumentu
+* Rozwiązywanie umowy przez dopasowanie właściwości kontekstu nadawcy i odbiorcy.
+* Serializacja wymiany EDI, konwertowanie komunikatów zakodowanych w formacie XML na zestawy transakcji EDI w wymianie.
+* Stosuje nagłówek i segmenty naczepy zestawu transakcji
+* Generuje numer kontrolny wymiany, numer kontrolny grupy i numer kontrolny zestawu transakcji dla każdej wychodzącej wymiany
+* Zamienia separatory w danych ładunku
+* Sprawdza poprawność EDI i właściwości specyficzne dla partnera
+  * Sprawdzanie poprawności schematu dla elementów danych zestawu transakcji względem schematu komunikatów
+  * Sprawdzanie poprawności EDI wykonane dla elementów danych zestawu transakcji.
+  * Przeprowadzono rozszerzoną weryfikację dla elementów danych zestawu transakcji
+* Żąda potwierdzeń technicznych i/lub funkcjonalnych (jeśli zostały skonfigurowane).
+  * Potwierdzenie techniczne generuje wynik weryfikacji nagłówka. Potwierdzenie techniczne zgłasza stan przetwarzania nagłówka wymiany i przyczepy przez odbiorcę adresu
+  * Potwierdzenie funkcjonalne generuje wynik weryfikacji treści. Potwierdzenie funkcjonalne zgłasza każdy błąd napotkany podczas przetwarzania otrzymanego dokumentu
 
-## <a name="view-the-swagger"></a>Wyświetlanie struktury swagger
-Zobacz [swagger szczegóły](/connectors/x12/). 
+## <a name="view-the-swagger"></a>Wyświetlanie struktury Swagger
+Zobacz [szczegóły struktury Swagger](/connectors/x12/). 
 
-## <a name="next-steps"></a>Kolejne kroki
-[Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw") 
+## <a name="next-steps"></a>Następne kroki
+[Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw") 
 

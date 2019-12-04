@@ -1,20 +1,17 @@
 ---
-title: Dodawanie uwierzytelniania do niestandardowych interfejsów API — Azure Logic Apps | Microsoft Docs
+title: Dodawanie uwierzytelniania do niestandardowych interfejsów API
 description: Konfigurowanie uwierzytelniania na potrzeby wywoływania niestandardowych interfejsów API z Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039127"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793146"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Bezpieczne wywołania niestandardowych interfejsów API z Azure Logic Apps
 
@@ -200,13 +197,13 @@ Otwórz definicję aplikacji logiki w widoku Kod, przejdź do definicji akcji **
 }
 ```
 
-| Właściwość | Wymagany | Opis | 
+| Właściwość | Wymagane | Opis | 
 | -------- | -------- | ----------- | 
-| tenant | Yes | Identyfikator GUID dzierżawy usługi Azure AD | 
-| audience | Yes | Identyfikator GUID zasobu docelowego, do którego chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci Web lub aplikacji interfejsu API | 
-| clientId | Yes | Identyfikator GUID klienta żądającego dostępu, który jest IDENTYFIKATORem klienta z tożsamości aplikacji dla aplikacji logiki | 
-| wpis tajny | Yes | Klucz lub hasło tożsamości aplikacji dla klienta żądającego tokenu dostępu | 
-| type | Yes | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. | 
+| dzierżaw | Tak | Identyfikator GUID dzierżawy usługi Azure AD | 
+| publiczn | Tak | Identyfikator GUID zasobu docelowego, do którego chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci Web lub aplikacji interfejsu API | 
+| clientId | Tak | Identyfikator GUID klienta żądającego dostępu, który jest IDENTYFIKATORem klienta z tożsamości aplikacji dla aplikacji logiki | 
+| wpis tajny | Tak | Klucz lub hasło tożsamości aplikacji dla klienta żądającego tokenu dostępu | 
+| type | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. | 
 |||| 
 
 Na przykład:
@@ -251,11 +248,11 @@ W sekcji **autoryzacja** uwzględnij następujące właściwości:
 } 
 ```
 
-| Właściwość | Wymagany | Opis |
+| Właściwość | Wymagane | Opis |
 | -------- | -------- | ----------- |
-| `type` | Yes | Typ uwierzytelniania. W przypadku certyfikatów klienta SSL wartość musi być `ClientCertificate`. |
+| `type` | Tak | Typ uwierzytelniania. W przypadku certyfikatów klienta SSL wartość musi być `ClientCertificate`. |
 | `password` | Nie | Hasło do uzyskiwania dostępu do certyfikatu klienta (plik PFX) |
-| `pfx` | Yes | Zakodowana w formacie base64 zawartość certyfikatu klienta (plik PFX) |
+| `pfx` | Tak | Zakodowana w formacie base64 zawartość certyfikatu klienta (plik PFX) |
 ||||
 
 <a name="basic"></a>
@@ -274,11 +271,11 @@ W sekcji **autoryzacja** uwzględnij następujące właściwości:
 }
 ```
 
-| Właściwość | Wymagany | Opis | 
+| Właściwość | Wymagane | Opis | 
 | -------- | -------- | ----------- | 
-| type | Yes | Typ uwierzytelniania, którego chcesz użyć. W przypadku uwierzytelniania podstawowego należy `Basic`wartość. | 
-| nazwa użytkownika | Yes | Nazwa użytkownika, która ma być używana do uwierzytelniania | 
-| hasło | Yes | Hasło, które ma być używane do uwierzytelniania | 
+| type | Tak | Typ uwierzytelniania, którego chcesz użyć. W przypadku uwierzytelniania podstawowego należy `Basic`wartość. | 
+| nazwa użytkownika | Tak | Nazwa użytkownika, która ma być używana do uwierzytelniania | 
+| hasło | Tak | Hasło, które ma być używane do uwierzytelniania | 
 |||| 
 
 <a name="azure-ad-code"></a>

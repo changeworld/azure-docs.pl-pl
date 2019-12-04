@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc3f21c95ad6f4bb033336018dddb9e966e9cc9a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: cc99b469701b3974a5b8a2f235ee3a9edb798368
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006897"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790202"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Tworzenie nowego środowiska usługi Time Series Insights w witrynie Azure Portal
 
@@ -28,19 +28,19 @@ Time Series Insights umożliwia rozpoczęcie wizualizacji i wykonywania zapytań
 
 Wykonaj następujące kroki, aby utworzyć środowisko:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. Wybierz przycisk **+ Utwórz zasób** .
 
 1. Wybierz kategorię **Internet rzeczy** i wybierz pozycję **Time Series Insights**.
 
-   [![utworzyć Time Series Insights środowiska](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
+   [![utworzyć środowisko Time Series Insights](media/time-series-insights-get-started/tsi-create-new-environment.png)](media/time-series-insights-get-started/tsi-create-new-environment.png#lightbox)
 
 1. Na stronie **Time Series Insights** wybierz pozycję **Utwórz**.
 
 1. Wypełnij wymagane parametry. W poniższej tabeli opisano każdy parametr:
    
-   [![utworzyć Time Series Insights grupę zasobów](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
+   [![utworzyć Time Series Insights grupę zasobów](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
    
    Ustawienie|Sugerowana wartość|Opis
    ---|---|---
@@ -55,13 +55,13 @@ Wykonaj następujące kroki, aby utworzyć środowisko:
 
 1. Aby monitorować proces wdrażania, wybierz symbol **powiadomienia** (ikona dzwonka).
 
-   [![Obejrzyj powiadomienia](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
+   [![Obejrzyj powiadomienia](media/time-series-insights-get-started/tsi-deploy-notifications.png)](media/time-series-insights-get-started/tsi-deploy-notifications.png#lightbox)
 
-    Po pomyślnym wdrożeniu możesz wybrać pozycję **Przejdź do zasobu** , aby skonfigurować inne właściwości, ustawić zabezpieczenia z zasadami dostępu do danych, dodać źródła zdarzeń i inne akcje.
+1. W **przeglądzie**zasobów Sprawdź ustawienia konfiguracji wdrożenia.
 
-1. W obszarze **Przegląd**zasobów wybierz **ikonę pinezki** w prawym górnym rogu, aby łatwo uzyskać dostęp do środowiska Time Series Insights w przyszłości.
+   [![utworzyć Time Series Insights numeru PIN do pulpitu nawigacyjnego](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
-   [![utworzyć Time Series Insights numeru PIN do pulpitu nawigacyjnego](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
+1. **(Opcjonalnie)** Wybierz **ikonę pinezki** w prawym górnym rogu, aby łatwo uzyskać dostęp do środowiska Time Series Insights w przyszłości.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -69,6 +69,6 @@ Wykonaj następujące kroki, aby utworzyć środowisko:
 
 * [Dodaj źródło zdarzeń centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md) do środowiska Azure Time Series Insightsowego.
 
-* [Wysyłanie zdarzeń](time-series-insights-send-events.md) do źródła zdarzenia.
+* [Wyślij zdarzenia](time-series-insights-send-events.md) do źródła zdarzeń.
 
 * Wyświetl swoje środowisko w [eksploratorze Time Series Insights](https://insights.timeseries.azure.com).

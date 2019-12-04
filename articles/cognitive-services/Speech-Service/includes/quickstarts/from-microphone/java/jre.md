@@ -4,19 +4,22 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: bcf353fa0783429702143b2bf0bdf2114dd4bed6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ebabeccc43998c229bcd28063b6cbabae4b046ea
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503661"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795656"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+Przed rozpoczęciem:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=jre)
+> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
@@ -35,6 +38,9 @@ ms.locfileid: "73503661"
 1. Zastąp ciąg `YourServiceRegion` [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
 1. Zapisz zmiany w projekcie.
+
+> [!NOTE]
+> Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 

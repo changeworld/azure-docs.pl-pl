@@ -1,6 +1,6 @@
 ---
-title: Aplikacja jednostronicowa (przenoszenie do środowiska produkcyjnego) — Platforma tożsamości firmy Microsoft
-description: Informacje o sposobie tworzenia aplikacji jednostronicowych (przenoszenie do środowiska produkcyjnego)
+title: Aplikacja jednostronicowa (przenoszona do produkcji) — platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację jednostronicową (Przenieś do środowiska produkcyjnego)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,42 +15,38 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a04f5d62ec750cfbe44765e833552bd694654d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2dbb481c75323304d71f85a722fc45a9b634055
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075013"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766110"
 ---
-# <a name="single-page-application---move-to-production"></a>Aplikacja jednostronicowa — przenoszenie do środowiska produkcyjnego
+# <a name="single-page-application-move-to-production"></a>Aplikacja jednostronicowa: Przenieś do środowiska produkcyjnego
 
-Teraz gdy wiesz, jak można uzyskać tokenu służącego do wywoływania interfejsów API sieci Web, Dowiedz się, jak przenieść do środowiska produkcyjnego.
+Teraz, gdy wiesz już, jak uzyskać token do wywoływania interfejsów API sieci Web, Dowiedz się, jak przejść do środowiska produkcyjnego.
 
-## <a name="improve-your-app"></a>Ulepszenie aplikacji
+## <a name="improve-your-app"></a>Ulepszanie aplikacji
 
-Wykonaj kroki wymagane do przygotowania aplikacji w środowisku produkcyjnym.
+[Włącz rejestrowanie](msal-logging.md) , aby przygotować aplikację do produkcji.
 
-- [Włącz rejestrowanie](msal-logging.md) w aplikacji.
+## <a name="test-your-integration"></a>Testowanie integracji
 
-## <a name="test-your-integration"></a>Testowanie integracji usługi
+Przetestuj integrację, postępując zgodnie z [listą kontrolną integracji z platformą Microsoft Identity](identity-platform-integration-checklist.md).
 
-- Testowanie integracji usługi wykonując [Microsoft tożsamości platformy integracji z listy kontrolnej](identity-platform-integration-checklist.md).
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
+Głębokie szczegółowe przykładu szybkiego startu, w którym wyjaśniono kod sposobu logowania użytkowników i uzyskiwania tokenu dostępu do wywoływania interfejsu API Microsoft Graph przy użyciu MSAL. js:
 
-Poniżej przedstawiono kilka przykładów/samouczków:
+> [!div class="nextstepaction"]
+> [Samouczek dotyczący SPA JavaScript](./tutorial-v2-javascript-spa.md)
 
-- Aby uzyskać szczegółowe informacje z tego przewodnika Szybki Start przykładowa, co wyjaśnia kod jak logować użytkowników i uzyskania tokenu dostępu do wywołania interfejsu API programu Graph MS przy użyciu MSAL.js
+Przykład demonstrujący, jak uzyskać tokeny dla własnego interfejsu API sieci Web zaplecza przy użyciu MSAL. js:
 
-    > [!div class="nextstepaction"]
-    > [Samouczek JavaScript SPA](./tutorial-v2-javascript-spa.md)
+> [!div class="nextstepaction"]
+> [SPA z zapleczem ASP.NET](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
 
-- Przykład przedstawiający sposób uzyskiwania tokenów dla własnego zaplecza internetowego interfejsu API przy użyciu MSAL.js
+Przykład, który pokazuje, jak używać MSAL. js do logowania użytkowników w aplikacji, która jest zarejestrowana w Azure Active Directory B2C (Azure AD B2C):
 
-     > [!div class="nextstepaction"]
-     > [SPA z zaplecza programu ASP.NET](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
-
-- Przykład pokazują, jak używać MSAL.js do logowania użytkowników w aplikacji zarejestrowanych w usłudze Azure AD B2C
-
-    > [!div class="nextstepaction"]
-    > [SPA za pomocą usługi Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+> [!div class="nextstepaction"]
+> [SPA z Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)

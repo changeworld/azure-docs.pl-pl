@@ -1,24 +1,21 @@
 ---
-title: Uwierzytelnianie za pomocą tożsamości zarządzanych — Azure Logic Apps
+title: Uwierzytelnianie przy użyciu tożsamości zarządzanych
 description: Dostęp do zasobów w innych dzierżawach Azure Active Directory bez logowania się przy użyciu poświadczeń lub wpisów tajnych za pomocą tożsamości zarządzanej
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200627"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792673"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie dostępu do zasobów platformy Azure przy użyciu tożsamości zarządzanych w programie Azure Logic Apps
 
-Aby uzyskać dostęp do zasobów w innych dzierżawach usługi Azure Active Directory (Azure AD) i uwierzytelnić swoją tożsamość bez logowania, aplikacja logiki może korzystać z [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) przypisanej przez system (znanej wcześniej jako tożsamość usługi ZARZĄDZANEJ lub MSI) zamiast poświadczenia lub wpisy tajne. Platforma Azure zarządza tą tożsamością i pomaga zabezpieczyć Twoje poświadczenia, ponieważ nie trzeba podawać ani obrócić wpisów tajnych. W tym artykule przedstawiono sposób konfigurowania tożsamości zarządzanej przypisanej przez system i używania jej w aplikacji logiki. Obecnie zarządzane tożsamości działają tylko z [określonymi wbudowanymi wyzwalaczami i akcjami](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls), niezarządzanymi łącznikami lub połączeniami.
+Aby uzyskać dostęp do zasobów w innych dzierżawach usługi Azure Active Directory (Azure AD) i uwierzytelnić swoją tożsamość bez logowania, aplikacja logiki może korzystać z [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) przypisanej przez system (znanej wcześniej jako tożsamość usługi ZARZĄDZANEJ lub MSI), a nie poświadczeń lub wpisów tajnych. Platforma Azure zarządza tą tożsamością i pomaga zabezpieczyć Twoje poświadczenia, ponieważ nie trzeba podawać ani obrócić wpisów tajnych. W tym artykule przedstawiono sposób konfigurowania tożsamości zarządzanej przypisanej przez system i używania jej w aplikacji logiki. Obecnie zarządzane tożsamości działają tylko z [określonymi wbudowanymi wyzwalaczami i akcjami](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls), niezarządzanymi łącznikami lub połączeniami.
 
 Aby uzyskać więcej informacji, zobacz następujące tematy:
 

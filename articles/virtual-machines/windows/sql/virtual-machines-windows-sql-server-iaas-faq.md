@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: eeda78c69c21fafcbe64071422bf7d73a4737249
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c3b4fabb319a3ea76ee62c8c699d4613184a4e76
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208320"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791049"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące SQL Server uruchomionych na maszynach wirtualnych z systemem Windows na platformie Azure
 
@@ -135,13 +135,13 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
 ## <a name="administration"></a>Administracja
 
-1. **Czy mogę zainstalować drugie wystąpienie programu SQL Server na tej samej maszynie wirtualnej? Czy mogę zmienić zainstalowane funkcje wystąpienia domyślnego?**
+1. **Czy mogę zainstalować drugie wystąpienie SQL Server na tej samej maszynie wirtualnej? Czy mogę zmienić zainstalowane funkcje wystąpienia domyślnego?**
 
    Tak. Nośnik instalacyjny SQL Server znajduje się w folderze na dysku **C** . Uruchom **plik Setup. exe** z tej lokalizacji, aby dodać nowe wystąpienia SQL Server lub zmienić inne zainstalowane funkcje SQL Server na komputerze. Należy zauważyć, że niektóre funkcje, takie jak automatyczne tworzenie kopii zapasowych, automatyczne stosowanie poprawek i integracja Azure Key Vault, działają tylko względem wystąpienia domyślnego lub nazwanego wystąpienia, które zostało prawidłowo skonfigurowane (zobacz pytanie 3). 
 
 1. **Czy mogę odinstalować domyślne wystąpienie programu SQL Server?**
 
-   Tak, ale należy wziąć pod uwagę pewne kwestie. Po pierwsze rozliczenia skojarzone z SQL Server mogą być nadal wykonywane w zależności od modelu licencji dla maszyny wirtualnej. Po drugie, zgodnie z opisem w poprzedniej odpowiedzi, istnieją funkcje, które opierają się na [rozszerzeniu SQL Server IaaS Agent](virtual-machines-windows-sql-server-agent-extension.md). W przypadku odinstalowania wystąpienia domyślnego bez usuwania rozszerzenia IaaS, rozszerzenie nadal szuka wystąpienia domyślnego i może generować błędy dziennika zdarzeń. Te błędy pochodzą z dwóch następujących źródeł: **Microsoft SQL Server Zarządzanie poświadczeniami** i **Microsoft SQL Server agenta IaaS**. Jeden z błędów może być podobny do następującego:
+   Tak, ale należy wziąć pod uwagę pewne kwestie. Po pierwsze rozliczenia skojarzone z SQL Server mogą być nadal wykonywane w zależności od modelu licencji dla maszyny wirtualnej. Po drugie, zgodnie z opisem w poprzedniej odpowiedzi, istnieją funkcje, które opierają się na [rozszerzeniu SQL Server IaaS Agent](virtual-machines-windows-sql-server-agent-extension.md). W przypadku odinstalowania wystąpienia domyślnego bez usuwania rozszerzenia IaaS, rozszerzenie nadal szuka wystąpienia domyślnego i może generować błędy dziennika zdarzeń. Te błędy pochodzą z następujących dwóch źródeł: **Microsoft SQL Server zarządzania poświadczeniami** i **Microsoft SQL Server agenta IaaS**. Jeden z błędów może być podobny do następującego:
 
       Podczas nawiązywania połączenia z serwerem SQL wystąpił błąd dotyczący sieci lub wystąpienia. Serwer nie został znaleziony lub był niedostępny.
 
@@ -171,7 +171,7 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
 1. **Czy mogę uaktualnić wystąpienie SQL Server 2008/2008 R2 po zarejestrowaniu go u dostawcy zasobów maszyny wirtualnej SQL Server?**
 
-   Tak. Możesz użyć dowolnego nośnika instalacyjnego, aby uaktualnić wersję i wydanie SQL Server, a następnie uaktualnić [tryb rozszerzenia SQL IaaS](virtual-machines-windows-sql-register-with-resource-provider.md#change-management-modes) _bez agenta_ do _pełnego_. Dzięki temu będzie można uzyskać dostęp do wszystkich korzyści z rozszerzenia IaaS języka SQL, takich jak Zarządzanie portalem, zautomatyzowane kopie zapasowe i automatyczne stosowanie poprawek. 
+   Tak. Możesz użyć dowolnego nośnika instalacyjnego, aby uaktualnić wersję i wydanie SQL Server, a następnie uaktualnić [tryb rozszerzenia SQL IaaS](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)) _bez agenta_ do _pełnego_. Dzięki temu będzie można uzyskać dostęp do wszystkich korzyści z rozszerzenia IaaS języka SQL, takich jak Zarządzanie portalem, zautomatyzowane kopie zapasowe i automatyczne stosowanie poprawek. 
 
 ## <a name="general"></a>Ogólne
 
@@ -180,11 +180,11 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
    Tak. Można [utworzyć klaster trybu failover systemu Windows w systemie Windows Server 2016](virtual-machines-windows-portal-sql-create-failover-cluster.md) i użyć bezpośrednie miejsca do magazynowania (S2D) dla magazynu klastra. Alternatywnie możesz użyć rozwiązań do obsługi klastrów lub magazynu innych firm zgodnie z opisem w temacie [wysoka dostępność i odzyskiwanie po awarii dla SQL Server na platformie Azure Virtual Machines](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions).
 
    > [!IMPORTANT]
-   > W tej chwili [SQL Server rozszerzenie agenta IaaS](virtual-machines-windows-sql-server-agent-extension.md) nie jest obsługiwane dla SQL Server FCI na platformie Azure. Zalecamy odinstalowanie _pełnego_ rozszerzenia z maszyn wirtualnych, które uczestniczą w FCI, i zamiast tego zainstaluj rozszerzenie w trybie uproszczonym. To rozszerzenie obsługuje funkcje, takie jak automatyczne tworzenie kopii zapasowych i stosowanie poprawek oraz niektóre funkcje portalu dla SQL Server. Te funkcje nie będą działały dla SQL Server maszyn wirtualnych po odinstalowaniu _pełnego_ agenta.
+   > _W tej_ chwili [SQL Server rozszerzenie agenta IaaS](virtual-machines-windows-sql-server-agent-extension.md) nie jest obsługiwane dla SQL Server FCI na platformie Azure. Zalecamy odinstalowanie _pełnego_ rozszerzenia z maszyn wirtualnych, które uczestniczą w FCI, i zamiast tego zainstaluj rozszerzenie w trybie _uproszczonym_ . To rozszerzenie obsługuje funkcje, takie jak automatyczne tworzenie kopii zapasowych i stosowanie poprawek oraz niektóre funkcje portalu dla SQL Server. Te funkcje nie będą działały dla SQL Server maszyn wirtualnych po odinstalowaniu _pełnego_ agenta.
 
 1. **Jaka jest różnica między maszynami wirtualnymi SQL Server a usługą SQL Database?**
 
-   Ze względu na to, że Uruchamianie SQL Server na maszynie wirtualnej platformy Azure nie różni się od uruchamiania SQL Server w zdalnym centrum danych. W przeciwieństwie [SQL Database](../../../sql-database/sql-database-technical-overview.md) oferuje bazę danych jako usługę. W przypadku SQL Database nie masz dostępu do maszyn, które obsługują bazy danych. Aby zapoznać się z pełnym porównaniem, zobacz [Wybieranie opcji SQL Server w chmurze: Baza danych Azure SQL (PaaS) lub SQL Server na maszynach wirtualnych platformy](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)Azure (IaaS).
+   Ze względu na to, że Uruchamianie SQL Server na maszynie wirtualnej platformy Azure nie różni się od uruchamiania SQL Server w zdalnym centrum danych. W przeciwieństwie [SQL Database](../../../sql-database/sql-database-technical-overview.md) oferuje bazę danych jako usługę. W przypadku SQL Database nie masz dostępu do maszyn, które obsługują bazy danych. Aby zapoznać się z pełnym porównaniem, zobacz [Wybieranie opcji SQL Server w chmurze: baza danych Azure SQL (PaaS) lub SQL Server na maszynach wirtualnych platformy Azure (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md).
 
 1. **Jak mogę zainstalować narzędzia SQL Data Tools na mojej maszynie wirtualnej platformy Azure?**
 

@@ -1,5 +1,5 @@
 ---
-title: Skrypt interfejsu wiersza polecenia platformy Azure — skalowanie serwera usługi Azure Database for MySQL
+title: Serwer skalowania skryptów interfejsu wiersza polecenia — Azure Database for MySQL
 description: Ten przykładowy skrypt interfejsu wiersza polecenia służy do skalowania serwera usługi Azure Database for MySQL na inny poziom wydajności po wykonaniu zapytania względem metryk.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 08/07/2019
-ms.openlocfilehash: f54b3f6fa8bb37f57479d6a9e7bc05340e411a48
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 12/02/2019
+ms.openlocfilehash: 54082daeeee2d5cc894aee49e2c3456e377637f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882938"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771315"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>Monitorowanie i skalowanie serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure
 Ten przykładowy skrypt interfejsu wiersza polecenia skaluje zasoby obliczeniowe i magazyn dla jednego serwera Azure Database for MySQL po wykonaniu zapytania o metryki. Obliczenia można skalować w górę lub w dół. Magazyn można skalować w górę.

@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 2f89b57257088b0b647fd5f0159a58c2ac03bda7
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c122baa21c5d94b57f29cb0530f0a2655faa87d0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897257"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790377"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Zmiany w dokumentacji dotyczące SQL Server na platformie Azure Virtual Machines
 
 System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Server wbudowane. Ten artykuł zawiera podsumowanie zmian w dokumentacji związanych z nowymi funkcjami i ulepszeniami w ostatnich wersjach [SQL Server na platformie Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/). 
 
 
-## <a name="october-2019"></a>Październik 2019
+## <a name="october-2019"></a>Październik 2019 r.
 
 | Wprowadzane | Szczegóły |
 | --- | --- |
@@ -56,7 +56,7 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 | --- | --- |
 | **Nowe tryby instalacji programu SQL IaaS** | Teraz można zainstalować rozszerzenie SQL Server IaaS w [trybie uproszczonym](virtual-machines-windows-sql-server-agent-extension.md) , aby uniknąć ponownego uruchomienia usługi SQL Server.  |
 | **Modyfikacja wersji SQL Server** | Teraz możesz zmienić [Właściwość wersji](virtual-machines-windows-sql-change-edition.md) dla maszyny wirtualnej SQL Server. |
-| **Zmiany dostawcy zasobów maszyny wirtualnej SQL** | [Maszynę wirtualną SQL Server można zarejestrować za pomocą dostawcy zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md) przy użyciu nowych trybów IaaS języka SQL. Ta możliwość obejmuje [obrazy systemu Windows 2008](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms).|
+| **Zmiany dostawcy zasobów maszyny wirtualnej SQL** | [Maszynę wirtualną SQL Server można zarejestrować za pomocą dostawcy zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md) przy użyciu nowych trybów IaaS języka SQL. Ta możliwość obejmuje obrazy [systemu Windows Server 2008](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) .|
 | **Korzystaj z obrazów własnych licencji przy użyciu Korzyść użycia hybrydowego platformy Azure** | Obrazy dotyczące przenoszenia własnych licencji wdrożone z portalu Azure Marketplace mogą teraz zmienić [Typ licencji na płatność zgodnie z rzeczywistym](virtual-machines-windows-sql-ahb.md#remarks)użyciem.| 
 | &nbsp; | &nbsp; |
 

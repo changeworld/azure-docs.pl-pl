@@ -1,36 +1,36 @@
 ---
-title: Pojęcia wysokiej dostępności w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: Ten artykuł zawiera informacje o wysokiej dostępności, gdy za pomocą usługi Azure Database for PostgreSQL — pojedynczy serwer.
+title: Wysoka dostępność — Azure Database for PostgreSQL — pojedynczy serwer
+description: Ten artykuł zawiera informacje o wysokiej dostępności na serwerze Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: f54c83099957b4d8795c4049be52d70e8a0e2a61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80229ff78c4570db583f1218d5d2f72da2dec388
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073452"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768575"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Pojęcia wysokiej dostępności w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-Usługa Azure Database for PostgreSQL oferuje gwarantowaną wysoką dostępność. Finansowo umowy dotyczącej poziomu usług (SLA) wynosi 99,99% po ogólnym udostępnieniu. Nie ma praktycznie nie aplikacji, czas przestoju podczas korzystania z tej usługi.
+# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Pojęcia dotyczące wysokiej dostępności w Azure Database for PostgreSQL-pojedynczym serwerze
+Usługa Azure Database for PostgreSQL zapewnia gwarantowany wysoki poziom dostępności. Umowa dotycząca poziomu usług (SLA 99,99) na finanse W przypadku korzystania z tej usługi nie ma praktycznie czasu na żadną aplikację.
 
 ## <a name="high-availability"></a>Wysoka dostępność
-Model o wysokiej dostępności (HA) opiera się na mechanizmów wbudowany tryb failover, po wystąpieniu przerwania poziomu węzła. Przerwanie poziomu węzła może wystąpić z powodu awarii sprzętu lub w odpowiedzi na wdrożenie usługi.
+Model wysokiej dostępności (HA) jest oparty na wbudowanych mechanizmach trybu failover w przypadku wystąpienia przerwy na poziomie węzła. Przyczyną może być zakłócenie na poziomie węzła ze względu na awarię sprzętu lub w odpowiedzi na wdrożenie usługi.
 
-Przez cały czas zmiany wprowadzone do usługi Azure Database for postgresql w warstwie serwera bazy danych występują w kontekście transakcji. Zmiany są rejestrowane w synchronicznie w usłudze Azure storage, gdy transakcja została zatwierdzona. W przypadku przerwania poziomu węzła serwera bazy danych powoduje utworzenie nowego węzła i automatycznie dołącza magazynu danych do nowego węzła. Wszystkie aktywne połączenia są odrzucane i wszystkich transakcji porządkowych nie są zatwierdzone.
+Przez cały czas zmiany wprowadzone do serwera bazy danych Azure Database for PostgreSQL są wykonywane w kontekście transakcji. Zmiany są rejestrowane synchronicznie w usłudze Azure Storage po zatwierdzeniu transakcji. Jeśli wystąpi zakłócenie na poziomie węzła, serwer bazy danych automatycznie utworzy nowy węzeł i dołączy magazyn danych do nowego węzła. Wszystkie aktywne połączenia są porzucane i wszystkie transakcje numerów porządkowych określających nie są zatwierdzane.
 
-## <a name="application-retry-logic-is-essential"></a>Istotne jest Logika ponawiania aplikacji
-Ważne jest, postgresql w warstwie aplikacji baz danych zostały opracowane w celu wykrycia, a następnie spróbuj ponownie usunąć połączenia i nie powiodło się transakcji. Ponawia próbę aplikacji, połączenie aplikacji w sposób niewidoczny dla użytkownika jest przekierowywany do nowo utworzone wystąpienie przejmuje dla tego wystąpienia nie powiodło się.
+## <a name="application-retry-logic-is-essential"></a>Logika ponawiania aplikacji jest istotna
+Należy pamiętać, że aplikacje bazy danych PostgreSQL są tworzone w celu wykrywania i ponawiania próby porzucenia połączeń i transakcji zakończonych niepowodzeniem. Po ponownym uruchomieniu aplikacji połączenie aplikacji jest w sposób niewidoczny do odkierowany do nowo utworzonego wystąpienia, które przejmuje wystąpienie zakończone niepowodzeniem.
 
-Na platformie Azure, bramy jest używana wewnętrznie do przekierowania połączenia w nowym wystąpieniu. Po przerwaniu całego procesu pracy awaryjnej zwykle trwa dziesiątki sekund. Ponieważ przekierowanie odbywa się wewnętrznie przez bramę, ciąg połączenia zewnętrznego nie zmienia się dla aplikacji klienckich.
+Wewnętrznie na platformie Azure Brama jest używana do przekierowywania połączeń do nowego wystąpienia. Po przerwie cały proces działający w trybie failover zazwyczaj trwa dziesiątki sekund. Ponieważ przekierowanie jest obsługiwane wewnętrznie przez bramę, parametry połączenia zewnętrznego pozostają takie same dla aplikacji klienckich.
 
 ## <a name="scaling-up-or-down"></a>Skalowanie w górę lub w dół
-Podobnie jak w modelu wysokiej dostępności usługi Azure Database for PostgreSQL jest skalowany w górę lub w dół, tworzone jest nowe wystąpienie serwera o określonym rozmiarze. Istniejący magazyn danych jest odłączona od oryginalnego wystąpienia i dołączyć do nowego wystąpienia.
+Podobnie jak w przypadku modelu HA, gdy Azure Database for PostgreSQL jest skalowane w górę lub w dół, tworzone jest nowe wystąpienie serwera o określonym rozmiarze. Istniejący magazyn danych jest odłączony od oryginalnego wystąpienia i dołączony do nowego wystąpienia.
 
-Podczas operacji skalowania odbywa się przerwę połączenia bazy danych. Aplikacje klienckie są odłączone, a następnie otwórz niezatwierdzone transakcje są anulowane. Gdy aplikacja kliencka ponawia próbę połączenia lub tworzy nowe połączenie, bramy kieruje połączenia z wystąpieniem o nowym rozmiarze. 
+Podczas operacji skalowania następuje przerwanie połączeń z bazą danych. Aplikacje klienckie są rozłączone, a otwieranie niezatwierdzonych transakcji zostało anulowane. Gdy aplikacja kliencka ponowi próbę nawiązania połączenia lub przetworzy nowe połączenie, Brama kieruje połączenie do nowego wystąpienia. 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [obsługi błędów przejściowych łączności](concepts-connectivity.md)
-- Dowiedz się, jak [replikowania danych za pomocą odczytu replik](howto-read-replicas-portal.md)
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej na temat [obsługi błędów łączności przejściowej](concepts-connectivity.md)
+- Dowiedz się, jak [replikować dane za pomocą replik odczytu](howto-read-replicas-portal.md)

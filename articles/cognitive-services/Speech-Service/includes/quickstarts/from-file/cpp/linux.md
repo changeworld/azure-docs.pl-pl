@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 4d03c0f8e8aa387bae68dda6aeb974efe155366d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5b3bbbe635d2165044dc827a0cc9abcfc09a8cd1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504172"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796120"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,6 +25,8 @@ Przed rozpoczęciem upewnij się, że:
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=linux)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
@@ -79,6 +81,9 @@ Przed rozpoczęciem upewnij się, że:
 1. Zastąp ciąg `YourServiceRegion` [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
 1. Zastąp ciąg `whatstheweatherlike.wav` własnymi nazwami.
+
+> [!NOTE]
+> Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 ## <a name="build-the-app"></a>Kompilacja aplikacji
 

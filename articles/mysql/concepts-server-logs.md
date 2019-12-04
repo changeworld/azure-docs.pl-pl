@@ -1,17 +1,17 @@
 ---
-title: Dzienniki serwera dla Azure Database for MySQL
+title: Dzienniki wolnych zapytań — Azure Database for MySQL
 description: Zawiera opis wolnych dzienników zapytań dostępnych w Azure Database for MySQL i dostępnych parametrów do włączania różnych poziomów rejestrowania.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: cd0d09e4d46747b7f3f8e6fb714dd711beef9484
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434287"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770847"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Wolne dzienniki zapytań w Azure Database for MySQL
 W Azure Database for MySQL dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
@@ -23,7 +23,7 @@ Można wyświetlać i pobierać Azure Database for MySQL wolnych dzienników zap
 
 W Azure Portal wybierz serwer Azure Database for MySQL. W obszarze nagłówek **monitorowania** wybierz stronę **Dzienniki serwera** .
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i dostęp do dzienników serwera przy użyciu interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-in-cli.md).
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i dostęp do dzienników wolnych zapytań za pomocą interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-in-cli.md)
 
 ## <a name="log-retention"></a>Przechowywanie dziennika
 Dzienniki są dostępne przez maksymalnie siedem dni od ich utworzenia. Jeśli całkowity rozmiar dostępnych dzienników przekracza 7 GB, najstarsze pliki zostaną usunięte do momentu udostępnienia miejsca. 
@@ -31,17 +31,17 @@ Dzienniki są dostępne przez maksymalnie siedem dni od ich utworzenia. Jeśli c
 Dzienniki są obracane co 24 godziny lub 7 GB, w zależności od tego, co nastąpi wcześniej.
 
 ## <a name="configure-slow-query-logging"></a>Skonfiguruj rejestrowanie wolnych zapytań 
-Domyślnie dziennik wolnych zapytań jest wyłączony. Aby ją włączyć, ustaw wartość opcji slow_query_log na włączone.
+Domyślnie dziennik wolnych zapytań jest wyłączony. Aby ją włączyć, ustaw wartość slow_query_log na włączone.
 
 Inne parametry, które można dostosować, obejmują:
 
 - **long_query_time**: Jeśli zapytanie trwa dłużej niż long_query_time (w sekundach), rejestrowane jest zapytanie. Wartość domyślna to 10 sekund.
-- **log_slow_admin_statements**: Jeśli on zawiera instrukcje administracyjne, takie jak ALTER_TABLE i ANALYZE_TABLE, w instrukcjach zapisywana w slow_query_log.
+- **log_slow_admin_statements**: Jeśli on zawiera instrukcje administracyjne, takie jak ALTER_TABLE i ANALYZE_TABLE w instrukcjach zapisanych do slow_query_log.
 - **log_queries_not_using_indexes**: określa, czy zapytania, które nie używają indeksów są rejestrowane w slow_query_log
-- **log_throttle_queries_not_using_indexes**: ten parametr ogranicza liczbę zapytań niebędących indeksami, które można zapisać w dzienniku wolnych zapytań. Ten parametr obowiązuje, gdy log_queries_not_using_indexes jest ustawiony na wartość włączone.
+- **log_throttle_queries_not_using_indexes**: ten parametr ogranicza liczbę zapytań, które nie są indeksami, które można zapisać w dzienniku wolnych zapytań. Ten parametr zacznie obowiązywać, gdy log_queries_not_using_indexes jest ustawiona na wartość włączone.
 
 > [!Note]
-> W przypadku `sql_text` Dziennik zostanie obcięty, jeśli przekracza 2048 znaków.
+> W przypadku `sql_text`Dziennik zostanie obcięty, jeśli przekracza 2048 znaków.
 
 Więcej opisów parametrów dziennika wolnych zapytań można znaleźć w [dokumentacji dziennika wolnych zapytań](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) programu MySQL.
 

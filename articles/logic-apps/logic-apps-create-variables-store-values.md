@@ -1,21 +1,17 @@
 ---
-title: Twórz zmienne do przechowywania wartości i zarządzaj nimi, Azure Logic Apps
+title: Twórz zmienne do przechowywania wartości i zarządzaj nimi
 description: Jak przechowywać wartości i zarządzać nimi za pomocą zmiennych w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180785"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793173"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Przechowywanie wartości i zarządzanie nimi przy użyciu zmiennych w Azure Logic Apps
 
@@ -39,7 +35,7 @@ Zmienne istnieją i są globalne tylko w ramach wystąpienia aplikacji logiki, k
 
 * Aplikacja logiki, w której ma zostać utworzona zmienna
 
-  Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md) i [szybki start: Utwórz swoją pierwszą aplikację](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiki.
+  Jeśli dopiero zaczynasz tworzyć aplikacje Logic Apps, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md) i [Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * [Wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako pierwszy krok w aplikacji logiki
 
@@ -47,7 +43,7 @@ Zmienne istnieją i są globalne tylko w ramach wystąpienia aplikacji logiki, k
 
 <a name="create-variable"></a>
 
-## <a name="initialize-variable"></a>Inicjuj zmienną
+## <a name="initialize-variable"></a>Zainicjuj zmienną
 
 Można utworzyć zmienną i zadeklarować jej typ danych i wartość początkową — wszystko w ramach jednej akcji w aplikacji logiki. Można zadeklarować zmienne tylko na poziomie globalnym, a nie w obrębie zakresów, warunków i pętli.
 
@@ -61,24 +57,24 @@ Można utworzyć zmienną i zadeklarować jej typ danych i wartość początkow�
 
      ![Dodaj akcję](./media/logic-apps-create-variables-store-values/add-action.png)
 
-   * Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę łączącą, aby pojawił się znak plus **+** (). Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
+   * Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę łączącą, tak aby znak plus ( **+** ) pojawiał się. Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
 
-1. W obszarze **Wybierz akcję**, w polu wyszukiwania wpisz `variables` jako filtr. Z listy Akcje wybierz pozycję **zainicjuj zmienną**.
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź `variables` jako filtr. Z listy Akcje wybierz pozycję **zainicjuj zmienną**.
 
    ![Wybierz akcję](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
 1. Podaj te informacje o zmiennej, zgodnie z poniższym opisem:
 
-   | Właściwość | Wymagany | Value |  Opis |
+   | Właściwość | Wymagane | Wartość |  Opis |
    |----------|----------|-------|--------------|
-   | **Nazwa** | Tak | <*Nazwa zmiennej*> | Nazwa zmiennej do zwiększenia |
-   | **Typ** | Tak | <*Typ zmiennej*> | Typ danych dla zmiennej. |
-   | **Wartość** | Nie | <*wartość początkowa*> | Początkowa wartość zmiennej <p><p>**Porada**: Chociaż opcjonalne, należy ustawić tę wartość jako najlepsze rozwiązanie, aby zawsze znać wartość początkową dla zmiennej. |
+   | **Nazwa** | Tak | *Nazwa zmiennej* <> | Nazwa zmiennej do zwiększenia |
+   | **Typ** | Tak | <> *typu zmiennej* | Typ danych dla zmiennej. |
+   | **Wartość** | Nie | <*wartość początkowa*> | Początkowa wartość zmiennej <p><p>**Porada**: Chociaż opcjonalna, ustaw tę wartość jako najlepsze rozwiązanie, aby zawsze znać wartość początkową dla zmiennej. |
    |||||
 
    Na przykład:
 
-   ![Inicjuj zmienną](./media/logic-apps-create-variables-store-values/initialize-variable.png)
+   ![Zainicjuj zmienną](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
 1. Teraz Kontynuuj dodawanie żądanych akcji. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
@@ -101,7 +97,7 @@ Jeśli przełączysz projektanta z edytorem widoku kodu, w tym miejscu zostanie 
 ```
 
 > [!NOTE]
-> Chociaż Akcja **zainicjuj zmienną** ma `variables` sekcję, która jest strukturą jako tablicą, akcja może utworzyć tylko jedną zmienną jednocześnie. Każda nowa zmienna wymaga pojedynczej akcji **inicjowania zmiennej** .
+> Chociaż Akcja **zainicjuj zmienną** ma `variables` sekcję, która jest zadana jako tablica, akcja może utworzyć tylko jedną zmienną jednocześnie. Każda nowa zmienna wymaga pojedynczej akcji **inicjowania zmiennej** .
 
 Oto przykłady dla innych typów zmiennych:
 
@@ -183,7 +179,7 @@ Oto przykłady dla innych typów zmiennych:
 
 Aby pobrać lub odwołać się do zawartości zmiennej, można również użyć [funkcji zmienne ()](../logic-apps/workflow-definition-language-functions-reference.md#variables) w Projektancie aplikacji logiki i edytorze widoku kodu. W przypadku odwoływania się do zmiennej Użyj nazwy zmiennej jako tokenu, a nie nazwy akcji, która jest zwykłym sposobem odwoływania się do danych wyjściowych akcji.
 
-Na przykład to wyrażenie Pobiera elementy z zmiennej tablicowej [utworzonej wcześniej w tym artykule](#append-value) przy użyciu `variables()` funkcji. `string()` Funkcja zwraca zawartość zmiennej w formacie ciągu:`"1, 2, 3, red"`
+Na przykład to wyrażenie Pobiera elementy z zmiennej tablicowej [utworzonej wcześniej w tym artykule](#append-value) przy użyciu funkcji `variables()`. Funkcja `string()` zwraca zawartość zmiennej w formacie ciągu: `"1, 2, 3, red"`
 
 ```json
 @{string(variables('myArrayVariable'))}
@@ -209,10 +205,10 @@ Aby *zwiększyć lub zwiększyć* zmienną przez wartość stałą, Dodaj akcję
 
 1. Podaj te informacje w celu zwiększenia wartości zmiennej:
 
-   | Właściwość | Wymagany | Value |  Opis |
+   | Właściwość | Wymagane | Wartość |  Opis |
    |----------|----------|-------|--------------|
-   | **Nazwa** | Tak | <*Nazwa zmiennej*> | Nazwa zmiennej do zwiększenia |
-   | **Wartość** | Nie | <*increment-value*> | Wartość używana do zwiększania wartości zmiennej. Wartość domyślna to 1. <p><p>**Porada**: Chociaż opcjonalne, należy ustawić tę wartość jako najlepsze rozwiązanie, aby zawsze znać konkretną wartość zwiększania zmiennej. |
+   | **Nazwa** | Tak | *Nazwa zmiennej* <> | Nazwa zmiennej do zwiększenia |
+   | **Wartość** | Nie | <*wartość przyrostu*> | Wartość używana do zwiększania wartości zmiennej. Wartość domyślna to 1. <p><p>**Porada**: Chociaż opcjonalna, ustaw tę wartość jako najlepsze rozwiązanie, aby zawsze znać konkretną wartość zwiększania zmiennej. |
    ||||
 
    Na przykład:
@@ -236,7 +232,7 @@ Jeśli przełączysz projektanta z edytorem widoku kodu, Oto sposób, w jaki Akc
 },
 ```
 
-## <a name="example-create-loop-counter"></a>Przykład: Utwórz licznik pętli
+## <a name="example-create-loop-counter"></a>Przykład: Tworzenie licznika pętli
 
 Zmienne są często używane do zliczania, ile razy działa pętla. Ten przykład pokazuje, jak tworzyć i używać zmiennych dla tego zadania, tworząc pętlę, która zlicza załączniki w wiadomości e-mail.
 
@@ -251,7 +247,7 @@ Zmienne są często używane do zliczania, ile razy działa pętla. Ten przykła
 
    ![Sprawdź, czy istnieją załączniki i Dołącz do nich](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-1. Dodaj akcję [ **zainicjuj zmienną** ](#create-variable). Utwórz zmienną całkowitą o nazwie `Count` o zerowej wartości początkowej.
+1. Dodaj akcję [ **zainicjuj zmienną** ](#create-variable). Utwórz zmienną całkowitą o nazwie `Count`, która ma zerową wartość początkową.
 
    ![Dodaj akcję dla "Initialize variable"](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -259,7 +255,7 @@ Zmienne są często używane do zliczania, ile razy działa pętla. Ten przykła
 
    1. W akcji **Inicjuj zmienną** wybierz pozycję **nowy krok**.
 
-   1. W obszarze **Wybierz akcję**wybierz pozycję **wbudowane**. W polu wyszukiwania wprowadź `for each` wartość jako filtr wyszukiwania, a następnie wybierz pozycję **dla każdej z nich**.
+   1. W obszarze **Wybierz akcję**wybierz pozycję **wbudowane**. W polu wyszukiwania wprowadź `for each` jako filtr wyszukiwania, a następnie wybierz pozycję **dla każdej z nich**.
 
       ![Dodaj pętlę "for each"](./media/logic-apps-create-variables-store-values/add-loop.png)
 
@@ -330,10 +326,10 @@ Aby zmniejszyć lub *zmniejszyć* zmienną przez wartość stałą, wykonaj krok
 
 Poniżej przedstawiono właściwości akcji **zmniejszania zmiennej** :
 
-| Właściwość | Wymagany | Value |  Opis |
+| Właściwość | Wymagane | Wartość |  Opis |
 |----------|----------|-------|--------------|
-| **Nazwa** | Tak | <*Nazwa zmiennej*> | Nazwa zmiennej do zmniejszenia | 
-| **Wartość** | Nie | <*increment-value*> | Wartość zmniejszania zmiennej. Wartość domyślna to 1. <p><p>**Porada**: Chociaż opcjonalne, należy ustawić tę wartość jako najlepsze rozwiązanie, aby zawsze znać konkretną wartość zmniejszenia wartości zmiennej. |
+| **Nazwa** | Tak | *Nazwa zmiennej* <> | Nazwa zmiennej do zmniejszenia | 
+| **Wartość** | Nie | <*wartość przyrostu*> | Wartość zmniejszania zmiennej. Wartość domyślna to 1. <p><p>**Porada**: Chociaż opcjonalna, ustaw tę wartość jako najlepsze rozwiązanie, aby zawsze znać konkretną wartość zmniejszenia wartości zmiennej. |
 ||||| 
 
 Jeśli przełączysz projektanta z edytorem widoku kodu, w tym miejscu zostanie wyświetlona Akcja **Zmniejsz zmienną** w definicji aplikacji logiki, która jest w formacie JSON.
@@ -363,10 +359,10 @@ Aby przypisać inną wartość do istniejącej zmiennej, postępuj zgodnie z ins
 
 Poniżej przedstawiono właściwości dla akcji **Ustaw zmienną** :
 
-| Właściwość | Wymagany | Value |  Opis |
+| Właściwość | Wymagane | Wartość |  Opis |
 |----------|----------|-------|--------------|
-| **Nazwa** | Tak | <*Nazwa zmiennej*> | Nazwa zmiennej do zmiany |
-| **Wartość** | Tak | <*Nowa wartość*> | Wartość, do której ma zostać przypisana zmienna. Oba muszą mieć ten sam typ danych. |
+| **Nazwa** | Tak | *Nazwa zmiennej* <> | Nazwa zmiennej do zmiany |
+| **Wartość** | Tak | <*nową wartość*> | Wartość, do której ma zostać przypisana zmienna. Oba muszą mieć ten sam typ danych. |
 ||||| 
 
 > [!NOTE]
@@ -378,7 +374,7 @@ Poniżej przedstawiono właściwości dla akcji **Ustaw zmienną** :
 >
 > 3. Przeciągnij suwak **stopień równoległości** na **1**.
 
-Jeśli przełączysz projektanta z edytorem widoku kodu, Oto sposób, w jaki Akcja **Ustaw zmienną** pojawia się w definicji aplikacji logiki, która jest w formacie JSON. Ten przykład zmienia `Count` bieżącą wartość zmiennej na inną wartość.
+Jeśli przełączysz projektanta z edytorem widoku kodu, Oto sposób, w jaki Akcja **Ustaw zmienną** pojawia się w definicji aplikacji logiki, która jest w formacie JSON. Ten przykład zmienia bieżącą wartość zmiennej `Count` na inną wartość.
 
 ```json
 "actions": {
@@ -421,13 +417,13 @@ W przypadku zmiennych, które przechowują ciągi lub tablice, można wstawić l
 
 Poniżej przedstawiono właściwości **dołączania do...** akcje:
 
-| Właściwość | Wymagany | Value |  Opis |
+| Właściwość | Wymagane | Wartość |  Opis |
 |----------|----------|-------|--------------|
-| **Nazwa** | Tak | <*Nazwa zmiennej*> | Nazwa zmiennej do zmiany |
-| **Wartość** | Tak | <*Dołącz wartość*> | Wartość, która ma zostać dołączona, która może mieć dowolny typ |
+| **Nazwa** | Tak | *Nazwa zmiennej* <> | Nazwa zmiennej do zmiany |
+| **Wartość** | Tak | <*dołączenia*> | Wartość, która ma zostać dołączona, która może mieć dowolny typ |
 |||||
 
-Jeśli przełączysz projektanta z edytorem widoku kodu, w tym miejscu zostanie wyświetlona Akcja **Dołącz do zmiennej tablicowej** w definicji aplikacji logiki, która jest w formacie JSON. Ten przykład tworzy zmienną tablicową i dodaje kolejną wartość jako ostatni element w tablicy. Wynik jest zaktualizowaną zmienną, która zawiera tę tablicę:`[1,2,3,"red"]`
+Jeśli przełączysz projektanta z edytorem widoku kodu, w tym miejscu zostanie wyświetlona Akcja **Dołącz do zmiennej tablicowej** w definicji aplikacji logiki, która jest w formacie JSON. Ten przykład tworzy zmienną tablicową i dodaje kolejną wartość jako ostatni element w tablicy. Wynik jest zaktualizowaną zmienną, która zawiera tę tablicę: `[1,2,3,"red"]`
 
 ```json
 "actions": {

@@ -1,19 +1,19 @@
 ---
-title: Szybki Start — Omówienie usługi Azure Table Storage
+title: Szybki Start — Tworzenie tabeli usługi Azure Storage w Azure Portal
 description: W tym przewodniku szybki start utworzysz tabelę Table service usługi Azure Storage w Azure Portal.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/23/2018
+ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5f397505c4b9d4b41353021fd9ab1f4d6a36ecfc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4cfb44964b06c811d6d587f2a406cdcfb8048a42
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702389"
+ms.locfileid: "74793343"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Szybki start: tworzenie tabeli usługi Azure Storage w witrynie Azure Portal 
 

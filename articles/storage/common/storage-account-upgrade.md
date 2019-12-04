@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495978"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791701"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2
 
-Konta magazynu ogólnego przeznaczenia w wersji 2 obsługują najnowsze funkcje usługi Azure Storage i obejmują wszystkie funkcje kont w ramach ogólnego przeznaczenia w wersji 1 i usługi BLOB Storage. Konta ogólnego przeznaczenia w wersji 2 są zalecane w przypadku większości scenariuszy magazynu. Konta ogólnego przeznaczenia w wersji 2 zapewniają najniższy poziom wydajności dla usługi Azure Storage, a także konkurencyjne w branży ceny transakcji.
+Konta magazynu ogólnego przeznaczenia w wersji 2 obsługują najnowsze funkcje usługi Azure Storage i obejmują wszystkie funkcje kont w ramach ogólnego przeznaczenia w wersji 1 i usługi BLOB Storage. Konta ogólnego przeznaczenia w wersji 2 są zalecane w przypadku większości scenariuszy magazynu. Konta ogólnego przeznaczenia w wersji 2 zapewniają najniższy poziom wydajności dla usługi Azure Storage, a także konkurencyjne w branży ceny transakcji. Konta General-pupose v2 obsługują domyślne warstwy dostępu do zasobów gorąca lub chłodna oraz poziom obiektów BLOB w warstwach gorąca, chłodna i archiwalna.
 
 Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2 z poziomu kont ogólnego przeznaczenia w wersji 1 lub magazynu obiektów BLOB jest proste. Uaktualnienie można wykonać przy użyciu Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
@@ -25,7 +25,7 @@ Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2 z poziomu kon
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Przejdź do swojego konta magazynu.
 3. W sekcji **Ustawienia** kliknij pozycję **Konfiguracja**.
 4. W obszarze **Rodzaj konta** kliknij pozycję **Uaktualnij**.
@@ -40,19 +40,19 @@ Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2 z poziomu kon
 
 Aby uaktualnić konto ogólnego przeznaczenia w wersji 1 do konta ogólnego przeznaczenia w wersji 2 przy użyciu programu PowerShell, najpierw zaktualizuj program PowerShell, aby używał najnowszej wersji modułu **AZ. Storage** . Aby uzyskać więcej informacji na temat instalowania programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiając nazwę grupy zasobów i konta magazynu:
+Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiając nazwę grupy zasobów, nazwę konta magazynu i odpowiednią warstwę dostępu do konta.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 Aby uaktualnić konto ogólnego przeznaczenia w wersji 1 do konta ogólnego przeznaczenia w wersji 2 przy użyciu interfejsu wiersza polecenia platformy Azure, najpierw zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na temat instalowania interfejsu wiersza polecenia, zobacz [Instalacja interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiając nazwę grupy zasobów i konta magazynu:
+Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiając nazwę grupy zasobów, nazwę konta magazynu i odpowiednią warstwę dostępu do konta.
 
 ```cli
-az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
+az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
 ---
@@ -72,7 +72,7 @@ W obu przypadkach pierwszy priorytet ma na celu oszacowanie kosztów przechowywa
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 
-Uaktualnianie konta magazynu w wersji 1 do konta ogólnego przeznaczenia w wersji 2 jest bezpłatne. Jednak zmiana warstwy dostępu do magazynu może spowodować zmianę rachunku. 
+Uaktualnianie konta magazynu w wersji 1 do konta ogólnego przeznaczenia w wersji 2 jest bezpłatne. W trakcie procesu uaktualniania można określić żądaną warstwę konta. Jeśli podczas uaktualniania nie zostanie określona warstwa konta, zostanie `Hot`domyślna warstwa konta uaktualnionego konta. Jednak zmiana warstwy dostępu do magazynu po uaktualnieniu może spowodować wprowadzenie zmian w rachunku, aby podczas uaktualniania zaleca się określenie nowej warstwy konta.
 
 Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów blob opartego na warstwie każdego obiektu blob. W przypadku korzystania z konta magazynu mają zastosowanie następujące zagadnienia dotyczące rozliczeń:
 

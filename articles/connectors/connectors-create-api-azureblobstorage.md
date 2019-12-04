@@ -1,22 +1,18 @@
 ---
-title: Nawiązywanie połączenia z usługą Azure Blob Storage — Azure Logic Apps
+title: Nawiązywanie połączenia z usługą Azure Blob Storage
 description: Tworzenie obiektów blob i zarządzanie nimi na kontach usługi Azure Storage przy użyciu Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/28/2019
 tags: connectors
-ms.openlocfilehash: c431f917f6fc1ac080b13184bd9ce205a20afbaa
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199662"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789923"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Tworzenie obiektów blob i zarządzanie nimi w usłudze Azure Blob Storage przy użyciu Azure Logic Apps
 
@@ -127,7 +123,7 @@ W tym przykładzie pobierana jest tylko zawartość obiektu BLOB. Aby wyświetli
 
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa połączenia** | Tak | <*Nazwa połączenia*> | Nazwa do utworzenia dla połączenia |
+   | **Nazwa połączenia** | Tak | <*nazwę połączenia*> | Nazwa do utworzenia dla połączenia |
    | **Konto magazynu** | Tak | <*konto magazynu*> | Wybierz konto magazynu z listy. |
    ||||
 

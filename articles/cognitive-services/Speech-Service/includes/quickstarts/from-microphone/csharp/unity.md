@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy z mikrofonu, C# (Unity) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,24 +10,27 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: babc6b1c0b6207d404091db3117f95f6d71c53ac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503500"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795725"
 ---
 > [!NOTE]
 > Zestaw Speech SDK for Unity obsługuje Pulpity systemu Windows (x86 i x64) lub platforma uniwersalna systemu Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) i iOS (x64 symulator, ARM32 i ARM64)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Przed rozpoczęciem:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=unity) Jeśli to już zrobione, świetnie. Kontynuujmy.
+> * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=unity)
+> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
+
+Jeśli to już zrobione, świetnie. Kontynuujmy.
 
 ## <a name="create-a-unity-project"></a>Tworzenie projektu środowiska Unity
 

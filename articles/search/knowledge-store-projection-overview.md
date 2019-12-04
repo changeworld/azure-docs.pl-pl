@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e7ed7eef961e357b8c1e4e59790f9f150c286c61
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326596"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790006"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Praca z projekcjami w sklepie z bazami danych na platformie Azure Wyszukiwanie poznawcze
 
@@ -28,11 +28,11 @@ Projekcje mogą być tabelaryczne, z danymi przechowywanymi w wierszach i kolumn
 
 Magazyn wiedzy obsługuje trzy typy projekcji:
 
-+ **Tabele**: w przypadku danych, które są najlepiej reprezentowane jako wiersze i kolumny, projekcje tabeli umożliwiają definiowanie kształtu schematized lub projekcji w magazynie tabel.
++ **Tabele**: w przypadku danych, które są najlepiej reprezentowane jako wiersze i kolumny, projekcje tabeli umożliwiają definiowanie kształtu schematized lub projekcji w magazynie tabel. Tylko prawidłowe obiekty JSON mogą być rzutowane jako tabele, wzbogacony dokument może zawierać węzły, które nie są obiektami JSON i podczas projekcji tych obiektów, tworzą prawidłowy obiekt JSON ze umiejętnością kształtu lub kształtem wbudowane.
 
-+ **Obiekty**: gdy potrzebna jest reprezentacja w formacie JSON danych i wzbogacania, projekcje obiektów są zapisywane jako obiekty blob.
++ **Obiekty**: gdy potrzebna jest reprezentacja w formacie JSON danych i wzbogacania, projekcje obiektów są zapisywane jako obiekty blob. Tylko prawidłowe obiekty JSON mogą być rzutowane jako obiekty, wzbogacony dokument może zawierać węzły, które nie są obiektami JSON i podczas projekcji tych obiektów, tworzą prawidłowy obiekt JSON ze umiejętnością kształtu lub kształtem wbudowane.
 
-+ **Pliki**: Jeśli zachodzi potrzeba zapisania obrazów wyodrębnionych z dokumentów, projekcje plików umożliwia zapisanie znormalizowanych obrazów.
++ **Pliki**: Jeśli zachodzi potrzeba zapisania obrazów wyodrębnionych z dokumentów, projekcje plików umożliwia zapisanie znormalizowanych obrazów w usłudze BLOB Storage.
 
 Aby wyświetlić projekcje zdefiniowane w kontekście, krok po kroku, [jak rozpocząć pracę z magazynem wiedzy](knowledge-store-howto.md).
 
@@ -47,7 +47,7 @@ Niezależność oznacza, że te same dane mogą wyglądać inaczej, ale powtórz
 
 ### <a name="relatedness"></a>Pokrewieństwo
 
-Grupy projekcji teraz umożliwiają projekcję dokumentów w typach projekcji przy zachowaniu relacji między typami projekcji. Cała zawartość zadana w ramach jednej grupy projekcji zachowuje relacje między danymi w typach projekcji. W tabelach relacje są oparte na wygenerowanym kluczu, a każdy węzeł podrzędny zachowuje odwołanie do węzła nadrzędnego. Relacje między typami (tabelami, obiektami i plikami) są zachowywane, gdy pojedynczy węzeł jest rzutowany na różne typy. Rozważmy na przykład scenariusz, w którym dokument zawiera obrazy i tekst. Można projektować tekst do tabel lub obiektów oraz obrazów do plików, w których tabele lub obiekty mają właściwość zawierającą adres URL pliku.
+Grupy projekcji teraz umożliwiają projekcję dokumentów w typach projekcji przy zachowaniu relacji między typami projekcji. Cała zawartość zadana w ramach jednej grupy projekcji zachowuje relacje między danymi w typach projekcji. W tabelach relacje są oparte na wygenerowanym kluczu, a każdy węzeł podrzędny zachowuje odwołanie do węzła nadrzędnego. W przypadku typów (tabel, obiektów i plików) relacje są zachowywane, gdy pojedynczy węzeł jest rzutowany na różne typy. Rozważmy na przykład scenariusz, w którym dokument zawiera obrazy i tekst. Można projektować tekst do tabel lub obiektów oraz obrazów do plików, w których tabele lub obiekty mają kolumnę/Właściwość zawierającą adres URL pliku.
 
 ## <a name="input-shaping"></a>Kształtowanie danych wejściowych
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0cfcbdaee5a39a947bd89c677f49214c8c3cb98a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fdb7d9ed5164171407443596de256df02cb7e8de
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162847"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790600"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Zautomatyzowana kopia zapasowa dla SQL Server 2014 Virtual Machines (Menedżer zasobów)
 
@@ -116,13 +116,12 @@ $resourcegroupname = "resourcegroupname"
 
 Jeśli zainstalowano rozszerzenie agenta SQL Server IaaS, powinno ono zostać wyświetlone na liście jako "SqlIaaSAgent" lub "SQLIaaSExtension". **ProvisioningState** dla rozszerzenia powinna również zawierać wartość "powodzenie".
 
-Jeśli nie jest zainstalowana lub nie można zainicjować obsługi administracyjnej, można zainstalować ją za pomocą poniższego polecenia. Oprócz nazwy maszyny wirtualnej i grupy zasobów należy również określić region ( **$region**), w którym znajduje się maszyna wirtualna.
+Jeśli nie jest zainstalowana lub nie można zainicjować obsługi administracyjnej, można zainstalować ją za pomocą poniższego polecenia. Oprócz nazwy maszyny wirtualnej i grupy zasobów należy również określić region ( **$region**), w którym znajduje się maszyna wirtualna. Określ typ licencji dla maszyny wirtualnej SQL Server, wybierając między opcją płatność zgodnie z rzeczywistym użyciem lub przeniesieniem własnych licencji za pośrednictwem [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). Aby uzyskać więcej informacji o licencjonowaniu, zobacz [model licencjonowania](virtual-machines-windows-sql-ahb.md). 
 
 ```powershell
-$region = "EASTUS2"
-Set-AzVMSqlServerExtension -VMName $vmname `
-    -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+New-AzSqlVM  -Name $vmname `
+    -ResourceGroupName $resourcegroupname `
+    -Location $region -LicenseType <PAYG/AHUB>
 ```
 
 > [!IMPORTANT]
@@ -191,7 +190,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 Zainstalowanie i skonfigurowanie agenta SQL Server IaaS może potrwać kilka minut.
 
 > [!NOTE]
-> Istnieją inne ustawienia dla elementu **New-AzVMSqlServerAutoBackupConfig** , które mają zastosowanie tylko do SQL Server 2016 i zautomatyzowanej kopii zapasowej v2. SQL Server 2014 nie obsługuje następujących ustawień: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours**i  **LogBackupFrequencyInMinutes**. Jeśli podjęto próbę skonfigurowania tych ustawień na maszynie wirtualnej SQL Server 2014, nie ma błędów, ale ustawienia nie zostaną zastosowane. Jeśli chcesz użyć tych ustawień na maszynie wirtualnej SQL Server 2016, zobacz [Automatyczne tworzenie kopii zapasowej v2 dla SQL Server 2016 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
+> Istnieją inne ustawienia dla elementu **New-AzVMSqlServerAutoBackupConfig** , które mają zastosowanie tylko do SQL Server 2016 i zautomatyzowanej kopii zapasowej v2. SQL Server 2014 nie obsługuje następujących ustawień: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours**i **LogBackupFrequencyInMinutes**. Jeśli podjęto próbę skonfigurowania tych ustawień na maszynie wirtualnej SQL Server 2014, nie ma błędów, ale ustawienia nie zostaną zastosowane. Jeśli chcesz użyć tych ustawień na maszynie wirtualnej SQL Server 2016, zobacz [Automatyczne tworzenie kopii zapasowej v2 dla SQL Server 2016 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
 
 Aby włączyć szyfrowanie, zmodyfikuj poprzedni skrypt, aby przekazać parametr **EnableEncryption** wraz z hasłem (bezpieczny ciąg) dla parametru **CertificatePassword** . Poniższy skrypt włącza ustawienia zautomatyzowanej kopii zapasowej w poprzednim przykładzie i dodaje szyfrowanie.
 
@@ -237,7 +236,7 @@ $retentionperiod = 10
 
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+    -Version "2.0" -Location $region
 
 # Creates/use a storage account to store the backups
 
@@ -266,11 +265,11 @@ Aby monitorować automatyczne kopie zapasowe na SQL Server 2014, dostępne są d
 Najpierw można sondować stan, wywołując metodę [msdb. smart_admin. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql). Lub wykonaj zapytanie dotyczące funkcji zwracającej tabelę [msdb. smart_admin. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) .
 
 > [!NOTE]
-> Schemat zarządzanej kopii zapasowej w SQL Server 2014 to **msdb. smart_admin**. W SQL Server 2016 został zmieniony na **msdb. managed_backup**, a tematy referencyjne używają tego nowszego schematu. Ale dla SQL Server 2014 należy nadal używać schematu **smart_admin** dla wszystkich obiektów zarządzanych kopii zapasowych.
+> Schemat zarządzanej kopii zapasowej w SQL Server 2014 ma wartość **msdb. smart_admin**. W SQL Server 2016 zmiana na **msdb. managed_backup**i tematy referencyjne używają tego nowszego schematu. Ale dla SQL Server 2014 należy nadal używać schematu **smart_admin** dla wszystkich obiektów zarządzanych kopii zapasowych.
 
 Innym rozwiązaniem jest skorzystanie z wbudowanej funkcji Poczta bazy danych na potrzeby powiadomień.
 
-1. Wywołaj procedurę składowaną [msdb. smart_admin. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) , aby przypisać do parametru **SSMBackup2WANotificationEmailIds** adres e-mail. 
+1. Wywołaj procedurę składowaną [msdb. smart_admin. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) , aby przypisać adres e-mail do parametru **SSMBackup2WANotificationEmailIds** . 
 1. Włącz [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) do wysyłania wiadomości e-mail z maszyny wirtualnej platformy Azure.
 1. Aby skonfigurować Poczta bazy danych, Użyj serwera SMTP i nazwy użytkownika. Poczta bazy danych można skonfigurować w SQL Server Management Studio lub za pomocą poleceń języka Transact-SQL. Aby uzyskać więcej informacji, zobacz [poczta bazy danych](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail).
 1. [Skonfiguruj SQL Server agenta, aby korzystał z poczta bazy danych](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).

@@ -2,21 +2,18 @@
 title: Eksportuj przepływy z automatyzacji, aby Azure Logic Apps
 description: Migrowanie przepływów z poziomu automatyzacji do Azure Logic Apps przez eksportowanie jako Azure Resource Manager szablonów
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e0dda5c2097243143d18851c47e7006c81769c87
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583250"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792647"
 ---
-# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Eksportuj przepływy z usługi Automatyzacja i wdróż je w Azure Logic Apps
+# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Eksportowanie przepływów z usługi Power Automate i wdrażanie w usłudze Azure Logic Apps
 
 Aby rozszerzać i rozszerzać możliwości przepływu, można migrować ten przepływ z [automatyzacji](https://flow.microsoft.com) , aby [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Możesz wyeksportować przepływ jako szablon Azure Resource Manager dla aplikacji logiki, wdrożyć ten szablon aplikacji logiki w grupie zasobów platformy Azure, a następnie otworzyć tę aplikację logiki w Projektancie aplikacji logiki.
 
@@ -59,7 +56,7 @@ Aby uzyskać więcej informacji, zobacz [zwiększanie do Azure Logic Apps](https
 
 1. Gdy w edytorze zostanie wyświetlony kod JSON, parametry i zasoby w szablonie, wybierz pozycję **Zapisz**.
   
-   ![Zapisywanie szablonu](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
+   ![Zapisz szablon](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
 
 1. Teraz określ następujące parametry wejściowe dla szablonu:
 

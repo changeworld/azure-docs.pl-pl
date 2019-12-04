@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e4778693e448b9a989d70d3ca8cf91c76ce380
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482062"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766076"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Aplikacja sieci Web, która loguje się do użytkowników: Rejestracja aplikacji
 
@@ -68,27 +68,27 @@ Możesz użyć tych linków do uruchomienia uruchamiania aplikacji sieci Web:
    1. W sekcji **Nazwa** wprowadź zrozumiałą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji. Na przykład wprowadź **MailApp-openidconnect-v2**.
    1. W sekcji **Identyfikator URI przekierowania (opcjonalnie)** wybierz pozycję **Sieć Web** w polu kombi i wprowadź następujący identyfikator URI przekierowania: **https://localhost:44326/** .
 1. Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
-1. Wybierz menu **uwierzytelnianie** . 
+1. Wybierz menu **uwierzytelnianie** .
 1. W sekcji **Ustawienia zaawansowane** | **niejawne przyznanie** wybierz pozycję **identyfikatory tokenów**. Ten przykład wymaga włączenia [niejawnego przepływu przydzielenia](v2-oauth2-implicit-grant-flow.md) w celu zalogowania użytkownika.
 1. Wybierz pozycję **Zapisz**.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-1. Gdy zostanie wyświetlona **Strona Zarejestruj aplikację** , wprowadź nazwę wyświetlaną aplikacji. Na przykład wprowadź **Java-webapp**. 
+1. Gdy zostanie wyświetlona **Strona Zarejestruj aplikację** , wprowadź nazwę wyświetlaną aplikacji. Na przykład wprowadź **Java-webapp**.
 1. Wybierz pozycję **konta w dowolnym katalogu organizacyjnym i osobiste konta Microsoft (np. Skype, Xbox, Outlook.com)** , a następnie wybierz pozycję **aplikacja sieci Web/interfejs API** dla **typu aplikacji**.
 1. Wybierz pozycję **zarejestruj** , aby zarejestrować aplikację.
-1. W menu po lewej stronie wybierz pozycję **uwierzytelnianie**. W obszarze **identyfikatory URI przekierowania**wybierz pozycję **Sieć Web**. 
+1. W menu po lewej stronie wybierz pozycję **uwierzytelnianie**. W obszarze **identyfikatory URI przekierowania**wybierz pozycję **Sieć Web**.
 
 1. Wprowadź dwa identyfikatory URI przekierowania: jeden dla strony logowania, a drugi dla strony Graf. W obu przypadkach Użyj tego samego hosta i numeru portu, a następnie **/msal4jsample/Secure/AAD** dla strony logowania i **msal4jsample/Graf/Me** dla strony informacje o użytkowniku.
- 
+
    Domyślnie użycie przykładu:
 
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-1. W sekcji **Ustawienia zaawansowane** Ustaw **adres URL wylogowania** na **http://localhost:8080/msal4jsample/sign_out** . Następnie wybierz pozycję **Zapisz**.
+  Następnie wybierz pozycję **Zapisz**.
 
-1. Wybierz pozycję **certyfikaty & wpisy tajne** z menu. 
+1. Wybierz pozycję **certyfikaty & wpisy tajne** z menu.
 1. W sekcji wpisy **tajne klienta** wybierz pozycję **nowy klucz tajny klienta**, a następnie:
 
    1. Wprowadź opis klucza.
@@ -104,7 +104,6 @@ Możesz użyć tych linków do uruchomienia uruchamiania aplikacji sieci Web:
    1. W sekcji **Identyfikator URI przekierowania (opcjonalnie)** wybierz pozycję **Sieć Web** w polu kombi i wprowadź następujący identyfikator URI przekierowania: **http://localhost:5000/getAToken** .
 1. Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 1. Na stronie **Przegląd** aplikacji Znajdź wartość **Identyfikator aplikacji (klienta)** i Zapisz ją jako nowszą. Będzie ona potrzebna do skonfigurowania pliku konfiguracji programu Visual Studio dla tego projektu.
-1. Wybierz sekcję **uwierzytelnianie** . W obszarze **Ustawienia zaawansowane**Ustaw **adres URL wylogowania** na **http://localhost:5000/logout** . Następnie wybierz pozycję **Zapisz**.
 1. W menu po lewej stronie wybierz pozycję **certyfikaty & wpisy tajne**.
 1. W sekcji wpisy **tajne klienta** wybierz pozycję **nowy klucz tajny klienta**, a następnie:
 

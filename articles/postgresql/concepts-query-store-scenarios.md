@@ -1,17 +1,17 @@
 ---
-title: Scenariusze użycia magazynu zapytań w Azure Database for PostgreSQL — pojedynczy serwer
+title: Scenariusze magazynu zapytań — Azure Database for PostgreSQL — pojedynczy serwer
 description: W tym artykule opisano niektóre scenariusze dla magazynu zapytań w Azure Database for PostgreSQL-pojedynczym serwerze.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 3cdb0d4e00e667b0369cdf612662830f18dc5fb8
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764270"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768354"
 ---
 # <a name="usage-scenarios-for-query-store"></a>Scenariusze użycia dla magazynu zapytań
 
@@ -19,7 +19,7 @@ ms.locfileid: "70764270"
 
 Magazynu zapytań można używać w wielu różnych scenariuszach, w których śledzenie i obsługa przewidywalna wydajność obciążeń ma kluczowe znaczenie. Rozważ następujące przykłady: 
 - Identyfikowanie i dostrajanie największych kosztownych zapytań 
-- A / B, testowanie 
+- Testowanie A/B 
 - Zachowywanie stabilności wydajności podczas uaktualniania 
 - Identyfikowanie i ulepszanie obciążeń ad hoc 
 
@@ -38,7 +38,7 @@ Po zidentyfikowaniu zapytania z nieoptymalną wydajnością, podejmowana akcja z
 - Rozważ ponowne zapisanie kosztownych zapytań. Na przykład Skorzystaj z zalet zapytania parametryzacja i zmniejsz użycie dynamicznego języka SQL. Zaimplementuj optymalną logikę podczas odczytywania danych, takich jak stosowanie filtrowania danych po stronie bazy danych, a nie po stronie aplikacji. 
 
 
-## <a name="ab-testing"></a>A / B, testowanie 
+## <a name="ab-testing"></a>Testowanie A/B 
 Użyj magazynu zapytań, aby porównać wydajność obciążeń przed zmianą i po zmianie aplikacji, którą planujesz wprowadzić. Przykłady scenariuszy dotyczących używania magazynu zapytań do oceny wpływu zmiany środowiska lub aplikacji na wydajność obciążeń: 
 - Wdrażanie nowej wersji aplikacji. 
 - Dodawanie dodatkowych zasobów do serwera programu. 

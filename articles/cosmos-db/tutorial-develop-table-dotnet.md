@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 05/20/2019
-ms.openlocfilehash: 677ea48244f8417670a2645ab67fa08c1f869f1a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 11179d6adc676ae99257442b186a15e69dcc4a03
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142600"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764477"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Rozpoczynanie pracy z usługą Azure Cosmos DB interfejs API tabel i usługą Azure Table Storage przy użyciu zestawu .NET SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "70142600"
 
 Za pomocą interfejs API tabel Azure Cosmos DB lub magazynu tabel platformy Azure można przechowywać strukturalne dane NoSQL w chmurze, zapewniając Magazyn kluczy/atrybutów ze schematem, który nie jest zaprojektowany. Ponieważ Azure Cosmos DB interfejs API tabel i magazyn tabel są mniej schematem, można łatwo dostosować dane w miarę rozwoju aplikacji. Za pomocą interfejs API tabel Azure Cosmos DB lub magazynu tabel można przechowywać elastyczne zestawy danych, takie jak dane użytkowników dla aplikacji sieci Web, książki adresowe, informacje o urządzeniach lub inne typy metadanych, których wymaga Twoja usługa. 
 
-W tym samouczku opisano przykład, w którym pokazano, jak używać [biblioteki tabel Microsoft Azure Cosmos DB dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) z usługami Azure Cosmo DB interfejs API tabel i Azure Table Storage. Musisz użyć połączenia specyficznego dla usługi platformy Azure. Te scenariusze zostały omówione przy użyciu C# przykładów, które ilustrują sposób tworzenia tabel, wstawiania/aktualizowania danych, wykonywania zapytań dotyczących danych i usuwania tabel.
+W tym samouczku opisano przykład, w którym pokazano, jak używać [biblioteki tabel Microsoft Azure Cosmos DB dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) z usługami Azure Cosmos DB interfejs API tabel i Azure Table Storage. Musisz użyć połączenia specyficznego dla usługi platformy Azure. Te scenariusze zostały omówione przy użyciu C# przykładów, które ilustrują sposób tworzenia tabel, wstawiania/aktualizowania danych, wykonywania zapytań dotyczących danych i usuwania tabel.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -59,7 +59,7 @@ Aby uzyskać pakiet NuGet, wykonaj następujące kroki:
 
 1. Kliknij projekt prawym przyciskiem myszy w **Eksploratorze rozwiązań** i wybierz polecenie **Zarządzaj pakietami NuGet**.
 
-1. Wyszukaj w trybie `Microsoft.Azure.Cosmos.Table`online `Microsoft.Extensions.Configuration`pozycję `Microsoft.Extensions.Configuration.Json`, `Microsoft.Extensions.Configuration.Binder` , i wybierz pozycję **Zainstaluj** , aby zainstalować bibliotekę tabel Microsoft Azure Cosmos DB.
+1. Wyszukaj w trybie online `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json``Microsoft.Extensions.Configuration.Binder` i wybierz pozycję **Zainstaluj** , aby zainstalować bibliotekę tabel Microsoft Azure Cosmos DB.
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 
@@ -108,7 +108,7 @@ Aby uzyskać pakiet NuGet, wykonaj następujące kroki:
 
 1. Kliknij prawym przyciskiem myszy projekt **CosmosTableSamples**. Wybierz pozycję **Dodaj**, **nowy element** i dodaj klasę o nazwie **Common.cs**. Napiszesz kod, aby zweryfikować szczegóły połączenia i utworzyć tabelę w tej klasie.
 
-1. Zdefiniuj metodę `CreateStorageAccountFromConnectionString` , jak pokazano poniżej. Ta metoda analizuje szczegóły parametrów połączenia i sprawdza, czy nazwa konta i szczegóły klucza konta podane w pliku "Settings. JSON" są prawidłowe. 
+1. Zdefiniuj `CreateStorageAccountFromConnectionString` metody, jak pokazano poniżej. Ta metoda analizuje szczegóły parametrów połączenia i sprawdza, czy nazwa konta i szczegóły klucza konta podane w pliku "Settings. JSON" są prawidłowe. 
 
  ```csharp
 using System;
@@ -149,7 +149,7 @@ namespace CosmosTableSamples
 
 ## <a name="create-a-table"></a>Tworzenie tabeli 
 
-Klasa [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) umożliwia pobieranie tabel i jednostek przechowywanych w usłudze Table Storage. Ponieważ nie mamy żadnych tabel na koncie Cosmos DB interfejs API tabel, dodajmy `CreateTableAsync` metodę do klasy **Common.cs** , aby utworzyć tabelę:
+Klasa [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) umożliwia pobieranie tabel i jednostek przechowywanych w usłudze Table Storage. Ponieważ nie mamy żadnych tabel na koncie Cosmos DB interfejs API tabel, dodajmy metodę `CreateTableAsync` do klasy **Common.cs** , aby utworzyć tabelę:
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)
@@ -318,7 +318,7 @@ public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity dele
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>Wykonywanie operacji CRUD na przykładowych danych
 
-Po zdefiniowaniu metod tworzenia tabeli, wstawiania lub scalania jednostek należy uruchomić te metody na przykładowych danych. Aby to zrobić, kliknij prawym przyciskiem myszy projekt **CosmosTableSamples**. Wybierz pozycję **Dodaj**, **nowy element** i dodaj klasę o nazwie **BasicSamples.cs** i Dodaj do niej następujący kod. Ten kod tworzy tabelę, dodaje do niej jednostki. Jeśli chcesz usunąć jednostkę i tabelę na końcu projektu, Usuń Komentarze z `table.DeleteIfExistsAsync()` i `SamplesUtils.DeleteEntityAsync(table, customer)` metod z następującego kodu:
+Po zdefiniowaniu metod tworzenia tabeli, wstawiania lub scalania jednostek należy uruchomić te metody na przykładowych danych. Aby to zrobić, kliknij prawym przyciskiem myszy projekt **CosmosTableSamples**. Wybierz pozycję **Dodaj**, **nowy element** i dodaj klasę o nazwie **BasicSamples.cs** i Dodaj do niej następujący kod. Ten kod tworzy tabelę, dodaje do niej jednostki. Jeśli chcesz usunąć jednostkę i tabelę na końcu projektu, Usuń Komentarze z `table.DeleteIfExistsAsync()` i `SamplesUtils.DeleteEntityAsync(table, customer)` metody z następującego kodu:
 
 ```csharp
 using System;

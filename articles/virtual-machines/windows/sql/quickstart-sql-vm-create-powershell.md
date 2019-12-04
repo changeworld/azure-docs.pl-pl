@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69781b7c5187bd9166946a96a8b47233d0f77208
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100690"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790907"
 ---
-# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Szybki start: Tworzenie maszyny wirtualnej z programem SQL Server 2017 i systemem Windows przy użyciu usługi Azure PowerShell
+# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Szybki start: tworzenie maszyny wirtualnej z programem SQL Server i systemem Windows przy użyciu usługi Azure PowerShell
 
 Ten przewodnik Szybki start przeprowadza użytkownika przez proces tworzenia maszyny wirtualnej z programem SQL Server przy użyciu usługi Azure PowerShell.
 
@@ -47,7 +47,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. Powinien zostać wyświetlony ekran z monitem o podanie poświadczeń. Użyj tego samego adresu e-mail i hasła, którego używasz do logowania w witrynie Azure Portal.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 1. Zdefiniuj zmienną z unikatową nazwą grupy zasobów. Aby uprościć pozostałą część poradnika Szybki start, reszta poleceń będzie używać tej nazwy jako podstawy dla innych nazw zasobów.
 
@@ -151,7 +151,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby uzyskać integrację portalu z funkcjami maszyny wirtualnej programu SQL, musisz zainstalować [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md). Aby zainstalować agenta na nowej maszynie wirtualnej, uruchom następujące polecenie po utworzeniu maszyny wirtualnej.
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
    ```
 
 ## <a name="remote-desktop-into-the-vm"></a>Łączenie pulpitu zdalnego z maszyną wirtualną

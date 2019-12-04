@@ -1,20 +1,17 @@
 ---
-title: Odwołanie do schematu dla typów wyzwalaczy i akcji — Azure Logic Apps
+title: Odwołanie do schematu dla typów wyzwalaczy i akcji
 description: Przewodnik odwołujący się do schematu dla wyzwalacza języka definicji przepływu pracy i typów akcji w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 7b4267f672ab5ad902c0f96dd7ba7e377316e4f5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a847e08f0249bd968060d10f7686b0e04ba037ca
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839779"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790858"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Przewodnik odwołujący się do schematu dla wyzwalaczy i typów akcji w Azure Logic Apps
 
@@ -63,10 +60,10 @@ Wyzwalacze mają te elementy najwyższego poziomu, chociaż niektóre są opcjon
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*array-with-conditions*> | Tablica | Tablica, która zawiera jeden lub więcej [warunków](#trigger-conditions) , które określają, czy należy uruchomić przepływ pracy. Dostępne tylko dla wyzwalaczy. | 
-| <*runtime-config-options*> | Obiekt JSON | Można zmienić zachowanie uruchamiania wyzwalacza przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
+| <*tablicę z warunkami*> | Tablica | Tablica, która zawiera jeden lub więcej [warunków](#trigger-conditions) , które określają, czy należy uruchomić przepływ pracy. Dostępne tylko dla wyzwalaczy. | 
+| <*Runtime-config-options*> | Obiekt JSON | Można zmienić zachowanie uruchamiania wyzwalacza przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
 | <*splitOn — wyrażenie*> | Ciąg | Dla wyzwalaczy, które zwracają tablicę, można określić wyrażenie [dzielące lub *departia* ](#split-on-debatch) elementów tablicowych na wiele wystąpień przepływu pracy do przetworzenia. | 
-| <*operation-option*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*operacji — opcja*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 ## <a name="trigger-types-list"></a>Lista typów wyzwalaczy
@@ -149,7 +146,7 @@ Ten wyzwalacz sprawdza lub *sonduje* punkt końcowy przy użyciu [interfejsów A
 | <*Max-uruchomienia*> | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
 | <*Maksymalna liczba uruchomień kolejki*> | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
 | <*splitOn — wyrażenie*> | Ciąg | Dla wyzwalaczy, które zwracają tablice, to wyrażenie odwołuje się do tablicy, która ma być używana, aby można było utworzyć i uruchomić wystąpienie przepływu pracy dla każdego elementu tablicy zamiast używać pętli "for each". <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracany w treści wyzwalacza: `@triggerbody()?['value']` |
-| <*operation-option*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). |
+| <*operacji — opcja*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). |
 ||||
 
 *Dane wyjściowe*
@@ -239,7 +236,7 @@ Ten wyzwalacz wysyła żądanie subskrypcji do punktu końcowego przy użyciu [i
 | <*Max-uruchomienia*> | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
 | <*Maksymalna liczba uruchomień kolejki*> | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
 | <*splitOn — wyrażenie*> | Ciąg | Dla wyzwalaczy, które zwracają tablice, to wyrażenie odwołuje się do tablicy, która ma być używana, aby można było utworzyć i uruchomić wystąpienie przepływu pracy dla każdego elementu tablicy zamiast używać pętli "for each". <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracany w treści wyzwalacza: `@triggerbody()?['value']` |
-| <*operation-option*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*operacji — opcja*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 *Przykład*
@@ -324,7 +321,7 @@ Ten wyzwalacz wysyła żądanie do określonego punktu końcowego HTTP lub HTTPS
 | `retryPolicy` > `type` | <*zachowanie ponowienia próby*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
 | `runs` | <*Max-uruchomienia*> | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). |
 | `maximumWaitingRuns` | <*Maksymalna liczba uruchomień kolejki*> | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). |
-| `operationOptions` | <*operation-option*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). |
+| `operationOptions` | <*operacji — opcja*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). |
 |||||
 
 *Dane wyjściowe*
@@ -340,7 +337,7 @@ Ten wyzwalacz wysyła żądanie do określonego punktu końcowego HTTP lub HTTPS
 
 Aby można było poprawnie współpracować z aplikacją logiki, punkt końcowy musi być zgodny z określonym wzorcem wyzwalacza lub umową i rozpoznawać te właściwości:  
   
-| Odpowiedź | Wymagany | Opis | 
+| Odpowiedź | Wymagane | Opis | 
 |----------|----------|-------------| 
 | Kod stanu | Tak | Kod stanu "200 OK" uruchamia uruchomienie. Każdy inny kod stanu nie uruchamia uruchomienia. | 
 | Ponowna próba po nagłówku | Nie | Liczba sekund do momentu ponownego sondowania punktu końcowego przez aplikację logiki | 
@@ -419,7 +416,7 @@ Niektóre wartości, takie jak <*typu metody*>, są dostępne zarówno dla obiek
 | <*zachowanie ponowienia próby*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*Max-uruchomienia*> | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
 | <*Maksymalna liczba uruchomień kolejki*> | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*operation-option*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*operacji — opcja*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 *Dane wyjściowe* 
@@ -513,7 +510,7 @@ Ten wyzwalacz jest uruchamiany na podstawie określonego harmonogramu cyklu i za
 | weekDays | Ciąg lub tablica ciągów | Jeśli określisz wartość "tydzień" dla `frequency`, możesz określić jeden lub więcej dni rozdzielonych przecinkami, gdy chcesz uruchomić przepływ pracy: "poniedziałek", "wtorek", "Środa", "czwartek", "piątek", "Sobota" i "Niedziela" | 
 | <*Max-uruchomienia*> | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
 | <*Maksymalna liczba uruchomień kolejki*> | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*operation-option*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*operacji — opcja*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 *Przykład 1*
@@ -620,7 +617,7 @@ Aby wywołać ten wyzwalacz, należy użyć interfejsu API `listCallbackUrl`, kt
 | <*Required — właściwości*> | Tablica | Co najmniej jedna właściwość, która wymaga wartości | 
 | <*Max-uruchomienia*> | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
 | <*Maksymalna liczba uruchomień kolejki*> | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*operation-option*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*operacji — opcja*> | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 *Przykład*
@@ -794,8 +791,8 @@ Akcje mają te elementy wysokiego poziomu, chociaż niektóre są opcjonalne:
 | Wartość | Typ | Opis | 
 |-------|------|-------------|
 | <*zachowanie ponowienia próby*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz zasady ponawiania. | 
-| <*runtime-config-options*> | Obiekt JSON | W przypadku niektórych akcji można zmienić zachowanie akcji w czasie wykonywania przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
-| <*operation-option*> | Ciąg | W przypadku niektórych akcji można zmienić zachowanie domyślne, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*Runtime-config-options*> | Obiekt JSON | W przypadku niektórych akcji można zmienić zachowanie akcji w czasie wykonywania przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
+| <*operacji — opcja*> | Ciąg | W przypadku niektórych akcji można zmienić zachowanie domyślne, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 ## <a name="action-types-list"></a>Lista typów akcji
@@ -1989,7 +1986,7 @@ Ta akcja zapętlenia wykonuje iterację przez tablicę i wykonuje akcje dla każ
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
 | *liczba* <> | Liczba całkowita | Domyślnie iteracja pętli "for each" jest uruchamiana w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana "dla każdego" współbieżności pętli](#change-for-each-concurrency). | 
-| <*operation-option*> | Ciąg | Aby uruchomić pętlę "for each" sekwencyjnie, a nie równolegle, należy ustawić opcję <*operacji*>, aby `Sequential` lub <*liczba*> do `1`, ale nie obu jednocześnie. Aby uzyskać więcej informacji, zobacz [Uruchom polecenie "for each" sekwencyjnie](#sequential-for-each). | 
+| <*operacji — opcja*> | Ciąg | Aby uruchomić pętlę "for each" sekwencyjnie, a nie równolegle, należy ustawić opcję <*operacji*>, aby `Sequential` lub <*liczba*> do `1`, ale nie obu jednocześnie. Aby uzyskać więcej informacji, zobacz [Uruchom polecenie "for each" sekwencyjnie](#sequential-for-each). | 
 |||| 
 
 *Przykład*

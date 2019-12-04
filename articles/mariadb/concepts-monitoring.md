@@ -1,17 +1,17 @@
 ---
-title: Monitorowanie w Azure Database for MariaDB
+title: Monitorowanie — Azure Database for MariaDB
 description: W tym artykule opisano metryki dotyczące monitorowania i generowania alertów dla Azure Database for MariaDB, w tym danych statystycznych dotyczących procesora, magazynu i połączeń.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: e3c25798be8af26c1f5e5c1178395cd1688bb132
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/02/2019
+ms.openlocfilehash: 15a396a86103f41f49d3b49878ec51c1e71add40
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382059"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772483"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorowanie w Azure Database for MariaDB
 Monitorowanie danych dotyczących serwerów ułatwia rozwiązywanie problemów i optymalizację w obciążeniu. Azure Database for MariaDB oferuje różne metryki, które dają wgląd w zachowanie serwera.
@@ -30,15 +30,15 @@ Te metryki są dostępne dla Azure Database for MariaDB:
 |memory_percent|Procent pamięci|Procent|Procent używanej pamięci.|
 |io_consumption_percent|Procent operacji we/wy|Procent|Procent operacji we/wy w użyciu.|
 |storage_percent|Procent miejsca do magazynowania|Procent|Wartość procentowa używanej przestrzeni dyskowej poza maksymalną.|
-|storage_used|Użyty magazyn|Bajty|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
+|storage_used|Użyty magazyn|Szybkość|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
 |serverlog_storage_percent|Procent magazynu dzienników serwera|Procent|Procent magazynu dzienników serwera używany poza maksymalnym magazynem dzienników serwera.|
-|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Ilość używanego magazynu dzienników serwera.|
-|serverlog_storage_limit|Limit magazynowania dziennika serwera|Bajty|Maksymalny magazyn dzienników serwera dla tego serwera.|
-|storage_limit|Limit magazynu|Bajty|Maksymalny magazyn dla tego serwera.|
+|serverlog_storage_usage|Używany magazyn dzienników serwera|Szybkość|Ilość używanego magazynu dzienników serwera.|
+|serverlog_storage_limit|Limit magazynowania dziennika serwera|Szybkość|Maksymalny magazyn dzienników serwera dla tego serwera.|
+|storage_limit|Limit magazynu|Szybkość|Maksymalny magazyn dla tego serwera.|
 |active_connections|Aktywne połączenia|Liczba|Liczba aktywnych połączeń z serwerem.|
 |connections_failed|Połączenia zakończone niepowodzeniem|Liczba|Liczba nieudanych połączeń z serwerem.|
-|network_bytes_egress|Sieć — wyjście|Bajty|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
-|network_bytes_ingress|Sieć — wejście|Bajty|Sieć w ramach aktywnych połączeń.|
+|network_bytes_egress|Sieć — wyjście|Szybkość|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
+|network_bytes_ingress|Sieć — wejście|Szybkość|Sieć w ramach aktywnych połączeń.|
 
 ## <a name="server-logs"></a>Dzienniki serwera
 

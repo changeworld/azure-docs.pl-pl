@@ -1,17 +1,17 @@
 ---
-title: Architektura łączności w Azure Database for MariaDB
+title: Architektura łączności — Azure Database for MariaDB
 description: Opisuje architekturę łączności dla serwera Azure Database for MariaDB.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 5c24a89ca12c36a54a84c61c6343ce960da012c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/02/2019
+ms.openlocfilehash: 6e2e39381e1500f86bce55726dda0286385d1674
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498074"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772896"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Architektura łączności w Azure Database for MariaDB
 W tym artykule opisano architekturę Azure Database for MariaDB łączności oraz sposób kierowania ruchu do wystąpienia Azure Database for MariaDB z klientów zarówno w ramach platformy Azure, jak i poza nią.
@@ -54,8 +54,8 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Dat
 | Korea Południowa | 52.231.200.86 |  |
 | Północno-środkowe stany USA | 23.98.55.75 | 23.96.178.199 |
 | Europa Północna | 191.235.193.75 | 40.113.93.91 |
-| Środkowo-południowe stany USA | 23.98.162.75 | 13.66.62.124 |
-| Azja Południowo-Wschodnia | 23.100.117.95 | 104.43.15.0 |
+| Południowo-środkowe stany USA | 23.98.162.75 | 13.66.62.124 |
+| Azja Południowo-wschodnia | 23.100.117.95 | 104.43.15.0 |
 | Północna Republika Południowej Afryki | 102.133.152.0 | |
 | Północna Republika Południowej Afryki | 102.133.24.0 | |
 | Północne Zjednoczone Emiraty Arabskie | 65.52.248.0 | |

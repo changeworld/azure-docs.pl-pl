@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e95b230d4f9699f15296ba94946c7063cabd0516
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847190"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766093"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja Azure AD Connect: atrybuty synchronizowane z Azure Active Directory
 W tym temacie wymieniono atrybuty, które są synchronizowane przez Azure AD Connect Sync.  
@@ -160,7 +160,7 @@ W takim przypadku należy zacząć od listy atrybutów w tym temacie i zidentyfi
 | reportToOwner | | |X | |
 | sery |X |X | | |
 | sourceAnchor |X |X |X |Właściwość mechaniczna. Niezmienny identyfikator do obsługi relacji między DODAWANIEm i usługą Azure AD. |
-| Krótkoterminow |X |X | | |
+| krótkoterminow |X |X | | |
 | streetAddress |X |X | | |
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
@@ -209,7 +209,7 @@ W takim przypadku należy zacząć od listy atrybutów w tym temacie i zidentyfi
 | hideDLMembership | | |X | |
 | HomePhone |X |X | | |
 | informacje |X |X |X | |
-| Inicjały |X |X | | |
+| inicjały |X |X | | |
 | ipPhone |X |X | | |
 | & |X |X | | |
 | mail (poczta) |X |X |X | |
@@ -242,7 +242,7 @@ W takim przypadku należy zacząć od listy atrybutów w tym temacie i zidentyfi
 | reportToOwner | | |X | |
 | sery |X |X | | |
 | sourceAnchor |X |X |X |Właściwość mechaniczna. Niezmienny identyfikator do obsługi relacji między DODAWANIEm i usługą Azure AD. |
-| Krótkoterminow |X |X | | |
+| krótkoterminow |X |X | | |
 | streetAddress |X |X | | |
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
@@ -295,7 +295,7 @@ W takim przypadku należy zacząć od listy atrybutów w tym temacie i zidentyfi
 | pwdLastSet |X | | |Właściwość mechaniczna. Używane do sprawdzania, kiedy unieważnia już wystawione tokeny. Używany w przypadku synchronizacji skrótów haseł, uwierzytelniania przekazywanego i Federacji. |
 | sery |X |X | | |
 | sourceAnchor |X |X |X |Właściwość mechaniczna. Niezmienny identyfikator do obsługi relacji między DODAWANIEm i usługą Azure AD. |
-| Krótkoterminow |X |X | | |
+| krótkoterminow |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
@@ -319,7 +319,7 @@ W takim przypadku należy zacząć od listy atrybutów w tym temacie i zidentyfi
 | usageLocation |X | | |Właściwość mechaniczna. Kraj/region użytkownika. Używany do przypisywania licencji. |
 | userPrincipalName |X | | |Ta nazwa UPN to identyfikator logowania użytkownika. Najczęściej taka sama jak wartość [mail]. |
 
-## <a name="intune"></a>Usługa Intune
+## <a name="intune"></a>Intune
 | Nazwa atrybutu | Użytkownik | Kontakt | Grupa | Komentarz |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Określa, czy konto jest włączone. |
@@ -362,7 +362,7 @@ W takim przypadku należy zacząć od listy atrybutów w tym temacie i zidentyfi
 | pwdLastSet |X | | |Właściwość mechaniczna. Używane do sprawdzania, kiedy unieważnia już wystawione tokeny. Używany w przypadku synchronizacji skrótów haseł, uwierzytelniania przekazywanego i Federacji. |
 | sery |X |X | | |
 | sourceAnchor |X |X |X |Właściwość mechaniczna. Niezmienny identyfikator do obsługi relacji między DODAWANIEm i usługą Azure AD. |
-| Krótkoterminow |X |X | | |
+| krótkoterminow |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | title |X |X | | |
@@ -430,7 +430,7 @@ Te atrybuty są zapisywane z powrotem z usługi Azure AD do Active Directory lok
 | msExchSafeRecipientsHash| MS-SafeRecipientsHash — wymiany  |X | | |Filtrowanie: zapisuje z powrotem lokalne filtrowanie oraz bezpieczne i zablokowane dane nadawcy w trybie online. |
 | msExchSafeSendersHash| MS-SafeSendersHash — wymiany  |X | | |Filtrowanie: zapisuje z powrotem lokalne filtrowanie oraz bezpieczne i zablokowane dane nadawcy w trybie online. |
 | msExchUCVoiceMailSettings| MS-UCVoiceMailSettings — wymiany |X | | |Włączanie ujednoliconych komunikatów (UM) — poczta głosowa w trybie online: używana przez integrację programu Microsoft Lync Server do wskazania, że użytkownik ma pocztę lokalną w Usługi online. |
-| msExchUserHoldPolicies| MS-wyłączne-hUserHoldPolicies |X | | |Wstrzymanie sądowe: umożliwia usługom w chmurze ustalenie, którzy użytkownicy podlegają postępowaniu sądowemu. |
+| msExchUserHoldPolicies| MS-UserHoldPolicies — wymiany |X | | |Wstrzymanie sądowe: umożliwia usługom w chmurze ustalenie, którzy użytkownicy podlegają postępowaniu sądowemu. |
 | proxyAddresses| proxyAddresses |X |X |X |Wstawiany jest tylko adres x500 z usługi Exchange Online. |
 | publicDelegates| MS-wymiany-Public-Delegats  |X | | |Zezwala na dostęp do skrzynki pocztowej usługi Exchange Online użytkownikom z lokalną skrzynek pocztowych programu Exchange. Wymaga Azure AD Connect build 1.1.552.0 lub After. |
 

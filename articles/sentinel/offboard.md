@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: a45f273078a622de5e256457fc45b6cb6cae512f
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 4c0c415235fd290bc47ac402a6b81a1afa7af903
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464138"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777438"
 ---
-# <a name="remove-azure-sentinel-from-your-tenant"></a>Usuń wskaźnik na platformie Azure z dzierżawy
+# <a name="remove-azure-sentinel-from-your-workspace"></a>Usuń wskaźnik platformy Azure z obszaru roboczego
 
-Jeśli nie chcesz już korzystać z platformy Azure, w tym artykule wyjaśniono, jak usunąć go z dzierżawy.
+Jeśli nie chcesz już korzystać z funkcji wskaźnikowej platformy Azure, w tym artykule wyjaśniono, jak usunąć go z obszaru roboczego.
 
 ## <a name="how-to-delete-azure-sentinel"></a>Jak usunąć wskaźnik na platformie Azure
 
@@ -69,7 +69,7 @@ W ciągu pierwszych 48 godzin reguły danych i alertów (w tym konfiguracja auto
 
 -   Reguły alertów
 
--   Zakładki
+-   zakładki
 
 Elementy PlayBook, zapisane skoroszyty, zapisane zapytania dotyczące polowań i notesy nie są usuwane. **Niektóre mogą zostać przerwane ze względu na usunięte dane. Można je usunąć ręcznie.**
 

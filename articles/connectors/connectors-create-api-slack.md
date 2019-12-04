@@ -1,22 +1,18 @@
 ---
-title: Łączenie z zapasem czasu z Azure Logic Apps | Microsoft Docs
+title: Połącz z zapasem czasu z Azure Logic Apps
 description: Automatyzuj zadania i przepływy pracy, które monitorują pliki i zarządzają kanałami, grupami i komunikatami w ramach konta zapasowego za pomocą Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 2606fdc15194264bc3d84496d2de258adfc314be
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050799"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789175"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitoruj zapasy czasu i zarządzaj nimi za pomocą Azure Logic Apps
 
@@ -49,7 +45,7 @@ Można użyć wyzwalaczy, które odbierają odpowiedzi z konta zapasowego i umo�
 
 1. W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź wartość "zapasowy" jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
-   —lub—
+   — lub —
 
    W przypadku istniejących aplikacji logiki w ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. 
    W polu wyszukiwania wprowadź wartość "zapasowy" jako filtr. 
@@ -72,7 +68,7 @@ Można użyć wyzwalaczy, które odbierają odpowiedzi z konta zapasowego i umo�
 
 Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/slack/)łącznika.
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).

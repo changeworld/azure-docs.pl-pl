@@ -1,19 +1,18 @@
 ---
-title: Przetwarzanie wsadowe komunikatów EDI jako grupy — Azure Logic Apps
+title: Przetwarzanie wsadowe komunikatów EDI jako grupy
 description: Wysyłanie i odbieranie komunikatów EDI jako partii, grup lub kolekcji w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680179"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793004"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Wysyłanie komunikatów EDI w partiach do partnerów handlowych przy użyciu Azure Logic Apps
 
@@ -168,7 +167,7 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki, która wysyła kom
 
       ![Wybierz aplikację logiki "odbiorca wsadowa"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Wybierz tę akcję: **Batch_messages <-*receiver* ->**
+   4. Wybierz tę akcję: **Batch_messages-<>-*Batch-Receiver***
 
       ![Wybierz akcję "Batch_messages"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 

@@ -1,18 +1,18 @@
 ---
-title: Jak utworzyć kopię zapasową i przywrócić serwer w Azure Database for MariaDB
+title: Tworzenie kopii zapasowych i przywracanie — interfejs wiersza polecenia platformy Azure — Azure Database for MariaDB
 description: Dowiedz się, jak utworzyć kopię zapasową i przywrócić serwer w Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: ae2e8049c58be312eed380fe2197985e61d28a26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 4564aff5e8fe2119a494af33e71ff927718646db
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965227"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765855"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Jak utworzyć kopię zapasową i przywrócić serwer w Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -117,7 +117,7 @@ Polecenie `az mariadb server georestore` wymaga następujących parametrów:
 |name | mydemoserver-georestore | Nazwa nowego serwera. |
 |source-server | mydemoserver | Nazwa istniejącego serwera, którego są używane geograficznie nadmiarowe kopie zapasowe. |
 |location | eastus | Lokalizacja nowego serwera. |
-|sku-name| GP_Gen5_8 | Ten parametr ustawia warstwę cenową, generowanie obliczeń i liczbę rdzeni wirtualnych nowego serwera. GP_Gen5_8 mapuje do Ogólnego przeznaczenia, generacji 5 Server z 8 rdzeni wirtualnych.|
+|sku-name| GP_Gen5_8 | Ten parametr ustawia warstwę cenową, generowanie obliczeń i liczbę rdzeni wirtualnych nowego serwera. GP_Gen5_8 Maps do Ogólnego przeznaczenia, generacji 5 Server z 8 rdzeni wirtualnych.|
 
 Podczas tworzenia nowego serwera przy użyciu przywracania geograficznego program dziedziczy ten sam rozmiar magazynu i warstwę cenową co serwer źródłowy. Nie można zmienić tych wartości podczas tworzenia. Po utworzeniu nowego serwera jego rozmiar magazynu może być skalowany w górę.
 

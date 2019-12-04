@@ -1,17 +1,17 @@
 ---
-title: Omówienie punktu końcowego usług sieci wirtualnej Azure Database for MariaDB serwera | Microsoft Docs
+title: Punkty końcowe usługi sieci wirtualnej — Azure Database for MariaDB
 description: Opisuje, jak działają punkty końcowe usługi sieci wirtualnej dla serwera Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 5ca7a62ed6b9cd132e0cae226c2123043c833ffa
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 12/02/2019
+ms.openlocfilehash: 72d8e58d1f4ca2955ed2469d061277949751d8b3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610419"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772702"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Użyj Virtual Network punktów końcowych usługi i reguł dla Azure Database for MariaDB
 
@@ -30,9 +30,9 @@ Aby utworzyć regułę sieci wirtualnej, musi być to [Sieć wirtualna][vm-virtu
 
 **Sieć wirtualna:** Możesz mieć sieci wirtualne skojarzone z subskrypcją platformy Azure.
 
-**Podsieci** Sieć wirtualna zawiera **podsieci**. Wszystkie maszyny wirtualne platformy Azure, które są przypisane do podsieci. Jedna podsieć może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Węzły obliczeniowe znajdujące się poza siecią wirtualną nie mogą uzyskać dostępu do sieci wirtualnej, chyba że skonfigurowano zabezpieczenia, aby zezwolić na dostęp.
+**Podsieć:** Sieć wirtualna zawiera **podsieci**. Wszystkie maszyny wirtualne platformy Azure, które są przypisane do podsieci. Jedna podsieć może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Węzły obliczeniowe znajdujące się poza siecią wirtualną nie mogą uzyskać dostępu do sieci wirtualnej, chyba że skonfigurowano zabezpieczenia, aby zezwolić na dostęp.
 
-**Virtual Network punkt końcowy usługi:** [Punkt końcowy usługi Virtual Network][vm-virtual-network-service-endpoints-overview-649d] jest podsiecią, której wartości właściwości zawierają co najmniej jedną formalną nazwę typu usługi platformy Azure. W tym artykule interesuje Cię nazwę typu **Microsoft. SQL**, która odnosi się do usługi platformy Azure o nazwie SQL Database. Ten tag usługi dotyczy również usług Azure Database for MariaDB, MySQL i PostgreSQL. Należy pamiętać, że podczas stosowania znacznika usługi **Microsoft. SQL** do punktu końcowego usługi sieci wirtualnej zostanie skonfigurowany ruch punktu końcowego usługi dla wszystkich Azure SQL Database, Azure Database for MariaDB, Azure Database for MySQL i Azure Database for PostgreSQL serwery w podsieci.
+**Virtual Network punkt końcowy usługi:** [Punkt końcowy usługi Virtual Network][vm-virtual-network-service-endpoints-overview-649d] jest podsiecią, której wartości właściwości zawierają co najmniej jedną formalną nazwę typu usługi platformy Azure. W tym artykule interesuje Cię nazwę typu **Microsoft. SQL**, która odnosi się do usługi platformy Azure o nazwie SQL Database. Ten tag usługi dotyczy również usług Azure Database for MariaDB, MySQL i PostgreSQL. Należy pamiętać, że podczas stosowania znacznika usługi **Microsoft. SQL** do punktu końcowego usługi sieci wirtualnej zostanie skonfigurowany ruch punktu końcowego usługi dla wszystkich serwerów Azure SQL Database, Azure Database for MariaDB, Azure Database for MySQL i Azure Database for PostgreSQL w podsieci.
 
 **Reguła sieci wirtualnej:** Reguła sieci wirtualnej dla serwera Azure Database for MariaDB to podsieć wymieniona na liście kontroli dostępu (ACL) serwera Azure Database for MariaDB. Aby znajdować się na liście ACL dla serwera Azure Database for MariaDB, podsieć musi zawierać nazwę typu **Microsoft. SQL** .
 
@@ -52,7 +52,7 @@ Do momentu podjęcia działania maszyny wirtualne w podsieciach nie mogą komuni
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Zezwalaj na dostęp do usług platformy Azure
 
-W okienku zabezpieczenia połączenia jest dostępny przycisk **włączania/** wyłączania, który ma etykietę **Zezwalaj na dostęp do usług platformy Azure**. Ustawienie **on** umożliwia komunikację ze wszystkimi adresami IP platformy Azure i wszystkimi podsieciami platformy Azure. Te adresy IP lub podsieci platformy Azure mogą nie należeć do użytkownika. To **ustawienie jest** prawdopodobnie dłużej otwierane, niż chcesz, aby baza danych Azure Database for MariaDB. Funkcja reguły sieci wirtualnej oferuje znacznie bardziej precyzyjną kontrolę.
+W okienku zabezpieczenia połączenia jest dostępny przycisk **włączania/WYłączania** , który ma etykietę **Zezwalaj na dostęp do usług platformy Azure**. Ustawienie **on** umożliwia komunikację ze wszystkimi adresami IP platformy Azure i wszystkimi podsieciami platformy Azure. Te adresy IP lub podsieci platformy Azure mogą nie należeć do użytkownika. To **ustawienie jest** prawdopodobnie dłużej otwierane, niż chcesz, aby baza danych Azure Database for MariaDB. Funkcja reguły sieci wirtualnej oferuje znacznie bardziej precyzyjną kontrolę.
 
 ### <a name="b-ip-rules"></a>B. Reguły adresów IP
 
@@ -88,8 +88,8 @@ Każda reguła sieci wirtualnej ma zastosowanie do całego serwera Azure Databas
 
 Istnieje separacja ról zabezpieczeń w administrowaniu punktami końcowymi usługi Virtual Network. Wymagana jest akcja z każdej z następujących ról:
 
-- **Administrator sieci:** &nbsp;Włącz punkt końcowy.
-- **Administrator bazy danych:** &nbsp;Zaktualizuj listę kontroli dostępu (ACL), aby dodać daną podsieć do serwera Azure Database for MariaDB.
+- **Administrator sieci:** &nbsp; włączyć punkt końcowy.
+- **Administrator bazy danych:** &nbsp; zaktualizowanie listy kontroli dostępu (ACL) w celu dodania danej podsieci do serwera Azure Database for MariaDB.
 
 *Alternatywa RBAC:*
 
@@ -117,7 +117,7 @@ W przypadku Azure Database for MariaDB funkcja reguł sieci wirtualnej ma nastę
 
 - Włączenie punktów końcowych usługi sieci wirtualnej do Azure Database for MariaDB przy użyciu znacznika usługi **Microsoft. SQL** włącza również punkty końcowe dla wszystkich usług Azure Database: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database i Azure SQL Data Warehouse.
 
-- Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+- Obsługa punktów końcowych usługi sieci wirtualnej jest obsługiwana tylko w przypadku serwerów Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
 - Na zaporze zakresy adresów IP dotyczą następujących elementów sieciowych, ale reguły sieci wirtualnej nie są:
     - [Wirtualna sieć prywatna (VPN) typu lokacja-lokacja (S2S)][vpn-gateway-indexmd-608y]
@@ -139,7 +139,7 @@ Flagę **IgnoreMissingServiceEndpoint** można ustawić za pomocą interfejsu wi
 - [Sieci wirtualne platformy Azure][vm-virtual-network-overview]
 - [Punkty końcowe usługi sieci wirtualnej platformy Azure][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Artykuły dotyczące tworzenia reguł sieci wirtualnej można znaleźć w temacie:
 - [Tworzenie reguł Azure Database for MariaDB sieci wirtualnej i zarządzanie nimi przy użyciu Azure Portal](howto-manage-vnet-portal.md)
  

@@ -1,5 +1,5 @@
 ---
-title: Użyj języka Java, aby nawiązać połączenie z usługą Azure Database for MySQL
+title: Nawiązywanie połączenia przy użyciu języka Java — Azure Database for MySQL
 description: Ten przewodnik Szybki Start zawiera przykładowy kod Java, którego można używać do nawiązywania połączeń i wykonywania zapytań dotyczących danych z bazy danych Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 08/08/2019
-ms.openlocfilehash: 9df95a754d4bd423ddd7f57c634b86bd33e906ca
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.date: 12/02/2019
+ms.openlocfilehash: 5f463434261dd782bb180f55986cc0f05c71cbe9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155543"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770751"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Szybki start: Używanie języka Java do nawiązywania połączenia i wykonywania zapytań dotyczących danych w Azure Database for MySQL
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Szybki Start: używanie języka Java do nawiązywania połączenia i wykonywania zapytań dotyczących danych w Azure Database for MySQL
 
 Ten przewodnik Szybki Start przedstawia sposób nawiązywania połączeń z Azure Database for MySQL przy użyciu aplikacji Java oraz [łącznika MariaDB/J](https://mariadb.com/kb/en/library/mariadb-connector-j/)sterownika JDBC. Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W tym artykule założono, że wiesz już, jak opracowywać zawartość za pomocą języka Java, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
 
@@ -310,7 +310,7 @@ public class UpdateTable {
 }
 ```
 
-## <a name="delete-data"></a>Usuń dane
+## <a name="delete-data"></a>Usuwanie danych
 Użyj poniższego kodu, aby usunąć dane za pomocą instrukcji **DELETE** języka SQL. Metoda [GetConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) jest używana do nawiązania połączenia z usługą MySQL.  Metody [prepareStatement ()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) i ExecuteUpdate () służą do przygotowania i uruchomienia instrukcji DELETE. 
 
 Zastąp parametry hosta, bazy danych, użytkownika i hasła wartościami, które zostały określone podczas tworzenia własnego serwera i bazy danych.

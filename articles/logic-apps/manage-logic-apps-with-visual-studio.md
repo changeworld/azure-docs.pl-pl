@@ -1,25 +1,22 @@
 ---
-title: Zarządzanie aplikacjami logiki przy użyciu programu Visual Studio — Azure Logic Apps
+title: Zarządzanie aplikacjami logiki przy użyciu programu Visual Studio
 description: Zarządzanie aplikacjami logiki i innymi zasobami platformy Azure przy użyciu programu Visual Studio z programem Cloud Explorer
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: e10683bcd5612db788d6dd5675425fec4130ffeb
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 29b1235ee319567e103267b9054b8c6b244e1ca7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796498"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790840"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki za pomocą programu Visual Studio
 
-Chociaż można tworzyć, edytować i wdrażać aplikacje logiki w [Azure Portal](https://portal.azure.com), można także użyć programu Visual Studio, jeśli chcesz dodać aplikacje logiki do kontroli źródła, opublikować różne wersje i utworzyć szablony [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla różne środowiska wdrażania. Za pomocą programu Visual Studio Cloud Explorer można znajdować aplikacje logiki i zarządzać nimi wraz z innymi zasobami platformy Azure. Można na przykład otwierać, pobierać, edytować, uruchamiać, wyświetlać historię uruchamiania, wyłączać i włączać Aplikacje logiki, które są już wdrożone w Azure Portal. Jeśli dopiero zaczynasz pracę z Azure Logic Apps w programie Visual Studio, Dowiedz się, [jak tworzyć aplikacje logiki za pomocą programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+Chociaż można tworzyć, edytować i wdrażać aplikacje logiki w [Azure Portal](https://portal.azure.com), można także użyć programu Visual Studio, jeśli chcesz dodać aplikacje logiki do kontroli źródła, opublikować różne wersje i utworzyć [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) szablony dla różnych środowisk wdrażania. Za pomocą programu Visual Studio Cloud Explorer można znajdować aplikacje logiki i zarządzać nimi wraz z innymi zasobami platformy Azure. Można na przykład otwierać, pobierać, edytować, uruchamiać, wyświetlać historię uruchamiania, wyłączać i włączać Aplikacje logiki, które są już wdrożone w Azure Portal. Jeśli dopiero zaczynasz pracę z Azure Logic Apps w programie Visual Studio, Dowiedz się, [jak tworzyć aplikacje logiki za pomocą programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 > [!IMPORTANT]
 > Wdrożenie lub opublikowanie aplikacji logiki z programu Visual Studio zastępuje wersję tej aplikacji w Azure Portal. Dlatego jeśli wprowadzisz zmiany w Azure Portal, które chcesz zachować, upewnij się, że [aplikacja logiki została odświeżona w programie Visual Studio](#refresh) z Azure Portal przed następnym wdrożeniem lub opublikowaniem w programie Visual Studio.

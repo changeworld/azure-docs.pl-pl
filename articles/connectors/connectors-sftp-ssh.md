@@ -1,25 +1,23 @@
 ---
-title: Nawiązywanie połączenia z serwerem SFTP przy użyciu protokołu SSH-Azure Logic Apps
+title: Nawiązywanie połączenia z serwerem SFTP przy użyciu protokołu SSH
 description: Automatyzowanie zadań, które monitorują, tworzą, zarządzają, wysyłają i odbierają pliki dla serwera SFTP przy użyciu protokołu SSH i Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 54a1d1183ac16f5ec3db5477cda75c6e1a776b3d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837146"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786892"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie i tworzenie plików SFTP oraz zarządzanie nimi za pomocą protokołów SSH i Azure Logic Apps
 
-Aby zautomatyzować zadania, które monitorują, tworzą, wysyłają i odbierają pliki na serwerze [bezpiecznym protokół transferu plików (SFTP)](https://www.ssh.com/ssh/sftp/) przy użyciu protokołu [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) , można tworzyć i automatyzować przepływy pracy integracji przy użyciu Azure Logic Apps i SFTP-SSH Łącznik. SFTP to protokół sieciowy, który zapewnia dostęp do plików, transfer plików i zarządzanie plikami za pośrednictwem dowolnego niezawodnego strumienia danych. Poniżej przedstawiono kilka przykładowych zadań, które można zautomatyzować:
+Aby zautomatyzować zadania, które monitorują, tworzą, wysyłają i odbierają pliki na serwerze [zabezpieczonym protokół transferu plików (SFTP)](https://www.ssh.com/ssh/sftp/) przy użyciu protokołu [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) , można tworzyć i automatyzować przepływy pracy integracji przy użyciu Azure Logic Apps oraz łącznika SFTP-SSH. SFTP to protokół sieciowy, który zapewnia dostęp do plików, transfer plików i zarządzanie plikami za pośrednictwem dowolnego niezawodnego strumienia danych. Poniżej przedstawiono kilka przykładowych zadań, które można zautomatyzować:
 
 * Monitoruj, gdy pliki są dodawane lub zmieniane.
 * Pobieranie, tworzenie, kopiowanie, zmienianie nazwy, aktualizowanie, wyświetlanie i usuwanie plików.
@@ -86,7 +84,7 @@ Poniżej przedstawiono inne kluczowe różnice między łącznikiem SFTP-SSH a �
 
 Protokół SFTP-SSH wyzwalacze działają przez sondowanie systemu plików SFTP i wyszukiwanie plików, które zostały zmienione od czasu ostatniego sondowania. Niektóre narzędzia pozwalają zachować sygnaturę czasową, gdy pliki zmienią się. W takich przypadkach należy wyłączyć tę funkcję, aby wyzwalacz mógł funkcjonować. Poniżej przedstawiono niektóre typowe ustawienia:
 
-| Klient SFTP | Akcja |
+| Klient SFTP | Działanie |
 |-------------|--------|
 | WinSCP | Przejdź do **opcji opcje** > **preferencje** > **transfer** > **edycja** > **Zachowaj sygnaturę czasową** > **Wyłącz** |
 | FileZilla | Przejdź do obszaru **Transfer** > **zachować sygnatury czasowe transferowanych plików** > **wyłączyć** |

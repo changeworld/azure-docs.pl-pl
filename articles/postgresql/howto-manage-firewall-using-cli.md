@@ -1,50 +1,50 @@
 ---
-title: Tworzenie i zarządzanie regułami zapory w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
-description: W tym artykule opisano sposób tworzenia i zarządzanie regułami zapory w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia z wiersza polecenia platformy Azure.
+title: Zarządzanie regułami zapory — interfejs wiersza polecenia platformy Azure — Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano sposób tworzenia reguł zapory i zarządzania nimi w Azure Database for PostgreSQL-pojedynczym serwerze przy użyciu wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 03b1c215994e4089ad0aed4eac3868b05c564c4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4af0fb288961689fb051bab8091c838f793cfcc3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067536"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765651"
 ---
-# <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Tworzenie i zarządzanie regułami zapory w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
-Reguły zapory na poziomie serwera mogą służyć do zarządzania dostępem do usługi Azure Database dla serwera PostgreSQL z określonego adresu IP lub zakres adresów IP. Przy użyciu wygodne poleceń interfejsu wiersza polecenia platformy Azure, możesz utworzyć, zaktualizować, Usuń listę i Pokaż reguły zapory, aby zarządzać serwerem. Omówienie usługi Azure Database dla PostgreSQL reguł zapory, zobacz [— Azure Database for reguły zapory serwera PostgreSQL](concepts-firewall-rules.md).
+# <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Tworzenie reguł zapory i zarządzanie nimi w Azure Database for PostgreSQL-pojedynczym serwerze przy użyciu interfejsu wiersza polecenia platformy Azure
+Reguły zapory na poziomie serwera mogą służyć do zarządzania dostępem do serwera Azure Database for PostgreSQL z określonego adresu IP lub zakresu adresów IP. Korzystając z wygodnych poleceń interfejsu wiersza polecenia platformy Azure, można tworzyć, aktualizować, usuwać i wyświetlać reguły zapory w celu zarządzania serwerem. Aby zapoznać się z omówieniem reguł zapory Azure Database for PostgreSQL, zobacz [reguły zapory Azure Database for PostgreSQL Server](concepts-firewall-rules.md).
 
-Wirtualne reguł sieci wirtualnej można również bezpieczny dostęp do serwera. Dowiedz się więcej o [creating and managing Virtual Network i punktów końcowych i reguł za pomocą wiersza polecenia platformy Azure usługi](howto-manage-vnet-using-cli.md).
+Reguły Virtual Network (VNet) mogą również służyć do zabezpieczania dostępu do serwera. Dowiedz się więcej o [tworzeniu i zarządzaniu Virtual Network punktów końcowych usługi i reguł przy użyciu interfejsu wiersza polecenia platformy Azure](howto-manage-vnet-using-cli.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wykonania kroków w tym przewodniku, potrzebne są:
-- Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) narzędzie wiersza polecenia lub użyj usługi Azure Cloud Shell w przeglądarce.
-- [— Azure Database for postgresql w warstwie serwera i bazy danych](quickstart-create-server-database-azure-cli.md).
+Aby krokowo poprowadzić ten przewodnik, musisz:
+- Zainstaluj narzędzie wiersza polecenia [platformy Azure](/cli/azure/install-azure-cli) lub użyj Azure Cloud Shell w przeglądarce.
+- [Serwer Azure Database for PostgreSQL i baza danych](quickstart-create-server-database-azure-cli.md).
 
-## <a name="configure-firewall-rules-for-azure-database-for-postgresql"></a>Konfigurowanie reguł zapory dla usługi Azure Database for PostgreSQL
-[Az postgres server-reguły zapory](/cli/azure/postgres/server/firewall-rule) polecenia są używane do konfigurowania reguł zapory.
+## <a name="configure-firewall-rules-for-azure-database-for-postgresql"></a>Konfigurowanie reguł zapory dla Azure Database for PostgreSQL
+Polecenia [AZ Postgres Server firewall-Rule](/cli/azure/postgres/server/firewall-rule) są używane do konfigurowania reguł zapory.
 
-## <a name="list-firewall-rules"></a>Lista reguł zapory 
-Aby wyświetlić listę istniejących reguł zapory serwera, uruchom [az postgres server reguły zapory na liście](/cli/azure/postgres/server/firewall-rule) polecenia.
+## <a name="list-firewall-rules"></a>Wyświetlanie listy reguł zapory 
+Aby wyświetlić listę istniejących reguł zapory serwera, uruchom polecenie [AZ Postgres Server firewall-Rule list](/cli/azure/postgres/server/firewall-rule) .
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
-Dane wyjściowe wyświetla reguł zapory, formatowanie dowolnej domyślnie w formacie JSON. Może użyć przełącznika `--output table` dla bardziej czytelnym formacie tabeli jako dane wyjściowe.
+W danych wyjściowych są wyświetlane reguły zapory (jeśli istnieją), domyślnie w formacie JSON. Możesz użyć `--output table` przełącznika, aby uzyskać bardziej czytelny Format tabeli jako dane wyjściowe.
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```
 ## <a name="create-firewall-rule"></a>Tworzenie reguły zapory
-Aby utworzyć nową regułę zapory na serwerze, uruchom [tworzenie az postgres server-reguły zapory](/cli/azure/postgres/server/firewall-rule) polecenia. 
+Aby utworzyć nową regułę zapory na serwerze, uruchom polecenie [AZ Postgres Server firewall-Rule Create](/cli/azure/postgres/server/firewall-rule) . 
 
 ```
 To allow access to a singular IP address, provide the same address in the `--start-ip-address` and `--end-ip-address`, as in this example, replacing the IP shown here with your specific IP.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name AllowSingleIpAddress --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
 ```
-Aby umożliwić aplikacjom z adresów IP platformy Azure, nawiązać połączenia z usługi Azure Database for postgresql w warstwie serwera, podaj adres IP 0.0.0.0 jako początkowy adres IP i końcowy adres IP, jak w poniższym przykładzie.
+Aby umożliwić aplikacjom z adresów IP platformy Azure Łączenie się z serwerem Azure Database for PostgreSQL, podaj adres IP 0.0.0.0 jako początkowy adres IP i końcowy adres IP, jak w tym przykładzie.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name AllowAllAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
@@ -53,33 +53,33 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 > Ta opcja konfiguruje zaporę w celu zezwalania na wszystkie połączenia z platformy Azure, w tym połączenia z subskrypcji innych klientów. W przypadku wybrania tej opcji upewnij się, że uprawnienia logowania i użytkownika zezwalają na dostęp tylko uprawnionym użytkownikom.
 > 
 
-W razie powodzenia dane wyjściowe polecenia Wyświetla szczegóły reguły zapory, które zostały utworzone domyślnie w formacie JSON. W przypadku awarii dane wyjściowe pokazują komunikat o błędzie zamiast tego.
+Po pomyślnym wykonaniu polecenia wyświetla szczegóły utworzonej reguły zapory, domyślnie w formacie JSON. Jeśli wystąpi błąd, w danych wyjściowych zostanie wyświetlony komunikat o błędzie.
 
-## <a name="update-firewall-rule"></a>Aktualizuj reguły zapory 
-Aktualizuj istniejącą regułę zapory na serwerze za pomocą [az postgres server reguły zapory na aktualizację](/cli/azure/postgres/server/firewall-rule) polecenia. Podaj nazwę istniejącej reguły zapory jako dane wejściowe, a początkiem adresów IP i końcowy atrybutów adresu IP do aktualizacji.
+## <a name="update-firewall-rule"></a>Aktualizowanie reguły zapory 
+Zaktualizuj istniejącą regułę zapory na serwerze za pomocą polecenia [AZ Postgres Server firewall-Rule Update](/cli/azure/postgres/server/firewall-rule) . Podaj nazwę istniejącej reguły zapory jako dane wejściowe i początkowy adres IP i końcowe atrybuty adresu IP do zaktualizowania.
 ```azurecli-interactive
 az postgres server firewall-rule update --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.0
 ```
-W razie powodzenia dane wyjściowe polecenia Wyświetla szczegóły reguły zapory, które zostały zaktualizowane, domyślnie w formacie JSON. W przypadku awarii dane wyjściowe pokazują komunikat o błędzie zamiast tego.
+Po pomyślnym wykonaniu polecenia wyświetlane są szczegóły zaktualizowanej reguły zapory, domyślnie w formacie JSON. Jeśli wystąpi błąd, w danych wyjściowych zostanie wyświetlony komunikat o błędzie.
 > [!NOTE]
-> Jeśli nie ma reguły zapory, tworzony przez polecenie aktualizacji.
+> Jeśli reguła zapory nie istnieje, zostanie utworzona za pomocą polecenia Update.
 
 ## <a name="show-firewall-rule-details"></a>Pokaż szczegóły reguły zapory
-Można również wyświetlić szczegółowe informacje o istniejącą regułę zapory na poziomie serwera, uruchamiając [az postgres server reguły zapory show](/cli/azure/postgres/server/firewall-rule) polecenia.
+Możesz również wyświetlić szczegóły istniejącej reguły zapory na poziomie serwera, uruchamiając polecenie [AZ Postgres Server firewall-Rule show](/cli/azure/postgres/server/firewall-rule) .
 ```azurecli-interactive
 az postgres server firewall-rule show --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange
 ```
-W razie powodzenia dane wyjściowe polecenia Wyświetla szczegóły reguły zapory, który został określony, domyślnie w formacie JSON. W przypadku awarii dane wyjściowe pokazują komunikat o błędzie zamiast tego.
+Po pomyślnym wykonaniu polecenia wyświetlane są szczegóły zdefiniowanej reguły zapory, domyślnie w formacie JSON. Jeśli wystąpi błąd, w danych wyjściowych zostanie wyświetlony komunikat o błędzie.
 
 ## <a name="delete-firewall-rule"></a>Usuń regułę zapory
-Aby odwołać dostęp dla zakresu adresów IP do serwera, należy usunąć istniejącą regułę zapory, wykonując [Usuń az postgres server-reguły zapory](/cli/azure/postgres/server/firewall-rule) polecenia. Podaj nazwę istniejącej reguły zapory.
+Aby odwołać dostęp do zakresu adresów IP na serwerze, Usuń istniejącą regułę zapory, wykonując polecenie [AZ Postgres Server firewall-Rule Delete](/cli/azure/postgres/server/firewall-rule) . Podaj nazwę istniejącej reguły zapory.
 ```azurecli-interactive
 az postgres server firewall-rule delete --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange
 ```
-W razie powodzenia nie ma żadnych danych wyjściowych. W przypadku awarii zwracany jest tekst komunikatu o błędzie.
+Po pomyślnym zakończeniu nie ma żadnych danych wyjściowych. W przypadku niepowodzenia zwracany jest tekst komunikatu o błędzie.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Podobnie, można użyć przeglądarki sieci web w taki sposób, aby [tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu witryny Azure portal](howto-manage-firewall-using-portal.md).
-- Dowiedzieć się więcej o [— Azure Database for reguły zapory serwera PostgreSQL](concepts-firewall-rules.md).
-- Dodatkowo zabezpieczyć dostęp do serwera przez [creating and managing Virtual Network i punktów końcowych i reguł za pomocą wiersza polecenia platformy Azure usługi](howto-manage-vnet-using-cli.md).
-- Aby uzyskać pomoc podczas nawiązywania połączenia z usługi Azure Database for postgresql w warstwie serwera, zobacz [biblioteki połączeń dla usługi Azure Database for postgresql w warstwie](concepts-connection-libraries.md).
+## <a name="next-steps"></a>Następne kroki
+- Podobnie można użyć przeglądarki sieci Web do [tworzenia reguł zapory Azure Database for PostgreSQL i zarządzania nimi przy użyciu Azure Portal](howto-manage-firewall-using-portal.md).
+- Dowiedz się więcej o [regułach zapory serwera Azure Database for PostgreSQL](concepts-firewall-rules.md).
+- Aby zapewnić bardziej bezpieczny dostęp do serwera, można [utworzyć i zarządzać Virtual Network punktami końcowymi usługi i regułami przy użyciu interfejsu wiersza polecenia platformy Azure](howto-manage-vnet-using-cli.md).
+- Aby uzyskać pomoc w połączeniu z serwerem Azure Database for PostgreSQL, zobacz [biblioteki połączeń dla Azure Database for PostgreSQL](concepts-connection-libraries.md).

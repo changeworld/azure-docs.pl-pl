@@ -1,30 +1,30 @@
 ---
-title: Połączenia SSL dla usługi Azure Database dla serwera MariaDB
-description: Informacje dotyczące konfigurowania usługi Azure Database for MariaDB oraz skojarzonych aplikacji, aby prawidłowo używać połączeń SSL
+title: Połączenie SSL — Azure Database for MariaDB
+description: Informacje dotyczące konfigurowania Azure Database for MariaDB i skojarzonych aplikacji w celu prawidłowego używania połączeń SSL
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 15bb28846b3409dd31bcdf8d42990facc94fd06d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: b7206db24c813c8f273dd57407c43974932ff110
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332690"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772031"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>Łączności SSL w usłudze Azure Database dla serwera MariaDB
-Azure Database dla serwera MariaDB obsługuje łączenie z serwerem bazy danych dla aplikacji klienckich przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
+# <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>Połączenie SSL w Azure Database for MariaDB
+Azure Database for MariaDB obsługuje łączenie serwera bazy danych z aplikacjami klienckimi przy użyciu protokołu SSL (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
 
 ## <a name="default-settings"></a>Ustawienia domyślne
-Domyślnie usługa bazy danych powinny być konfigurowane do Wymagaj połączeń SSL, podczas nawiązywania połączenia MariaDB.  Firma Microsoft zaleca, aby uniknąć wyłączenia opcji SSL, jeśli to możliwe.
+Domyślnie usługa bazy danych powinna być skonfigurowana w taki sposób, aby wymagała połączeń SSL podczas nawiązywania połączenia z usługą MariaDB.  Zalecamy uniknięcie wyłączania opcji SSL, jeśli jest to możliwe.
 
-Podczas aprowizacji nowej bazy danych Azure dla serwera MariaDB za pośrednictwem witryny Azure portal i interfejs wiersza polecenia, wymuszanie połączeń SSL jest domyślnie włączona.
+Podczas aprowizacji nowego serwera Azure Database for MariaDB za pośrednictwem Azure Portal i interfejsu wiersza polecenia wymuszanie połączeń SSL jest domyślnie włączone.
 
-Parametry połączenia dla różnych języków programowania są wyświetlane w witrynie Azure portal. Te parametry połączenia zawierają wymaganych parametrów protokołu SSL do łączenia z bazą danych. W witrynie Azure portal wybierz serwer. W obszarze **ustawienia** nagłówka, wybierz **parametry połączenia**. Parametr SSL zależy od łącznika, na przykład "ssl = true" lub "sslmode = wymagają" lub "sslmode = wymagane" i inne.
+W Azure Portal przedstawiono parametry połączenia dla różnych języków programowania. Te parametry połączenia obejmują wymagania SSL wymagane do nawiązania połączenia z bazą danych. W Azure Portal wybierz serwer. W polu Nagłówek **ustawień** wybierz **Parametry połączenia**. Parametr SSL zależy od łącznika, na przykład "SSL = true" lub "sslmode = wymagaj" lub "sslmode = Required" i innych wariantów.
 
-Aby dowiedzieć się, jak włączyć lub wyłączyć połączenia SSL, podczas tworzenia aplikacji, zapoznaj się [jak skonfigurować protokół SSL](howto-configure-ssl.md).
+Aby dowiedzieć się, jak włączyć lub wyłączyć połączenie SSL podczas tworzenia aplikacji, zapoznaj się z [tematem Konfigurowanie protokołu SSL](howto-configure-ssl.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [reguły zapory serwera](concepts-firewall-rules.md)
-- Dowiedz się, jak [Konfigurowanie certyfikatu SSL](howto-configure-ssl.md).
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [regułach zapory serwera](concepts-firewall-rules.md)
+- Dowiedz się, jak [skonfigurować protokół SSL](howto-configure-ssl.md).

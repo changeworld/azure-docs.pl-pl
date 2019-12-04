@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113646"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790888"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Zestawu umiejętności pojęć i kompozycji na platformie Azure Wyszukiwanie poznawcze
 
@@ -43,9 +43,9 @@ Gdy dokument znajduje się w potoku wzbogacenia, jest reprezentowany jako drzewo
 
 |Tryb Source\Parsing danych|Domyślne|JSON, wiersze JSON & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|Nie dotyczy |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|Nie dotyczy|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
+|SQL|/document/{column1}<br>/document/{column2}<br>...|ND |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|ND|
 
  W miarę wykonywania umiejętności Dodaj nowe węzły do drzewa wzbogacania. Te nowe węzły mogą być następnie używane jako dane wejściowe dla umiejętności podrzędnych, projekcja w sklepie wiedzy lub mapowanie do pól indeksu. Wzbogacania nie są modyfikowalne: po utworzeniu węzły nie mogą być edytowane. Ponieważ umiejętności jest bardziej skomplikowany, to drzewo wzbogacania, ale nie wszystkie węzły w drzewie wzbogacania muszą wprowadzić je do indeksu lub sklepu wiedzy. Można wybiórczo utrwalać tylko podzbiór wzbogaceń do indeksu lub sklepu z bazami danych.
 
@@ -65,7 +65,7 @@ Każda umiejętność wymaga kontekstu. Kontekst określa:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` jest używana tylko w [umiejętnościach](cognitive-search-skill-shaper.md) i [projekcjach](knowledge-store-projection-overview.md)kształtu. Służy do konstruowania obiektów zagnieżdżonych na wiele poziomów. `sourceContext` umożliwia konstruowanie obiektu hierarchicznego typu anonimowego, który będzie wymagał wielu umiejętności, jeśli używany jest tylko kontekst. Użycie `sourceContext` jest pokazane w następnej sekcji.
+`sourceContext` jest używana tylko w danych wejściowych i [projekcjach](knowledge-store-projection-overview.md)o umiejętnościach. Służy do konstruowania obiektów zagnieżdżonych na wiele poziomów. Może być konieczne utworzenie nowego oject, aby przekazać go jako dane wejściowe do umiejętności lub projektu w sklepie merytorycznym. Ponieważ węzły wzbogacania nie mogą być prawidłowym obiektem JSON w drzewie wzbogacania i refrencing węzeł w drzewie tylko zwraca ten stan węzła podczas jego tworzenia, przy użyciu wzbogacań jako dane wejściowe umiejętności lub projekcje wymagają utworzenia dobrze sformułowanego obiektu JSON. `sourceContext` umożliwia konstruowanie obiektu hierarchicznego typu anonimowego, który będzie wymagał wielu umiejętności, jeśli używany jest tylko kontekst. Użycie `sourceContext` jest pokazane w następnej sekcji. Spójrz na dane wyjściowe umiejętności, które wygenerowały wzbogacanie, aby określić, czy jest to prawidłowy obiekt JSON, a nie typ pierwotny.
 
 ### <a name="projections"></a>Projekcje
 

@@ -1,22 +1,22 @@
 ---
 title: Zarządzanie wpisami tajnymi podczas pracy z obszarem dev platformy Azure
 services: azure-dev-spaces
-ms.date: 05/11/2018
+ms.date: 12/03/2019
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 49f53683b2499e790414d139dcb0bc0833005647
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontenery
+ms.openlocfilehash: b184f72dfbbfe093443ab8a9b79bafbece3a3d51
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280007"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790174"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Zarządzanie wpisami tajnymi podczas pracy z obszarem dev platformy Azure
 
 Twoje usługi mogą wymagać pewnych haseł, parametrów połączenia i innych wpisów tajnych, takich jak bazy danych lub inne bezpieczne usługi platformy Azure. Ustawiając wartości tych kluczy tajnych w plikach konfiguracji, można udostępnić je w kodzie jako zmienne środowiskowe.  Należy zachować ostrożność, aby uniknąć naruszenia bezpieczeństwa wpisów tajnych.
 
-Azure Dev Spaces oferuje dwie zalecane, Usprawnione opcje przechowywania wpisów tajnych na wykresach Helm generowanych przez narzędzia klienta Azure Dev Spaces: w pliku wartości. dev. YAML i bezpośrednio w azds. YAML. Nie zaleca się przechowywania wpisów tajnych w wartościach. YAML. Poza dwoma podejściami dla wykresów Helm generowanych przez narzędzia klienta zdefiniowane w tym artykule, jeśli utworzysz własny wykres Helm, możesz użyć wykresu Helm bezpośrednio do zarządzania i przechowywania wpisów tajnych.
+Azure Dev Spaces oferuje dwie zalecane, Usprawnione opcje przechowywania wpisów tajnych na wykresach Helm generowanych przez narzędzia klienta Azure Dev Spaces: w pliku `values.dev.yaml` i wbudowane bezpośrednio w `azds.yaml`. Nie zaleca się przechowywania wpisów tajnych w `values.yaml`. Poza dwoma podejściami dla wykresów Helm generowanych przez narzędzia klienta zdefiniowane w tym artykule, jeśli utworzysz własny wykres Helm, możesz użyć wykresu Helm bezpośrednio do zarządzania i przechowywania wpisów tajnych.
 
 ## <a name="method-1-valuesdevyaml"></a>Metoda 1: Values. YAML
 1. Otwórz VS Code w projekcie, w którym włączono obsługę Azure Dev Spaces.
@@ -62,7 +62,7 @@ Azure Dev Spaces oferuje dwie zalecane, Usprawnione opcje przechowywania wpisów
 7. Upewnij się, że dodano _wartości. dev. YAML_ do pliku _. gitignore_ , aby uniknąć zatwierdzania wpisów tajnych w kontroli źródła.
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>Metoda 2: Wbudowana bezpośrednio w azds. YAML
+## <a name="method-2-azdsyaml"></a>Metoda 2: azds. YAML
 1.  W _azds. YAML_Ustaw wpisy tajne w sekcji YAML konfiguracje/projektowanie/Instalowanie. Chociaż w tym miejscu można wprowadzać wartości tajne, nie jest to zalecane, ponieważ _azds. YAML_ jest sprawdzany w kontroli źródła. Zamiast tego Dodaj symbole zastępcze przy użyciu składni "$PLACEHOLDER".
 
     ```yaml
@@ -104,6 +104,44 @@ Azure Dev Spaces oferuje dwie zalecane, Usprawnione opcje przechowywania wpisów
     ```
     kubectl get secret --namespace default -o yaml
     ```
+
+## <a name="passing-secrets-as-build-arguments"></a>Przekazywanie wpisów tajnych jako argumentów kompilacji
+
+W poprzednich sekcjach pokazano, jak przekazać klucze tajne do użycia w czasie wykonywania kontenera. W czasie kompilacji kontenera można także przekazać wpis tajny, taki jak hasło dla prywatnego NuGet, przy użyciu `azds.yaml`.
+
+W `azds.yaml`Ustaw klucze tajne czasu kompilacji w *konfiguracjach. opracowywać. Build. args* przy użyciu składni `<variable name>: ${secret.<secret name>.<secret key>}`. Na przykład:
+
+```yaml
+configurations:
+  develop:
+    build:
+      dockerfile: Dockerfile.develop
+      useGitIgnore: true
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}
+        MYTOKEN: ${secret.mynugetsecret.pattoken}
+```
+
+W powyższym przykładzie *mynugetsecret* jest istniejącym wpisem tajnym, a *pattoken* jest istniejącym kluczem.
+
+>[!NOTE]
+> Nazwy i klucze wpisów tajnych mogą zawierać znak `.`. Użyj `\`, aby wyjść `.` podczas przekazywania wpisów tajnych jako argumentów kompilacji. Na przykład, aby przekazać wpis tajny o nazwie *foo. bar* z kluczem *token*: `MYTOKEN: ${secret.foo\.bar.token}`. Ponadto wpisy tajne można ocenić przy użyciu prefiksu i przyrostka tekstu. Na przykład `MYURL: eus-${secret.foo\.bar.token}-version1`. Ponadto klucze tajne dostępne w obszarze nadrzędnym i nadrzędnym mogą być przekazane jako argumenty kompilacji.
+
+W pliku dockerfile Użyj dyrektywy *ARG* , aby użyć klucza tajnego, a następnie użyj tej samej zmiennej w dalszej części pliku dockerfile. Na przykład:
+
+```dockerfile
+...
+ARG MYTOKEN
+...
+ARG NUGET_EXTERNAL_FEED_ENDPOINTS="{'endpointCredentials': [{'endpoint':'PRIVATE_NUGET_ENDPOINT', 'password':'${MYTOKEN}'}]}"
+...
+```
+
+Zaktualizuj usługi działające w klastrze przy użyciu tych zmian. W wierszu polecenia Uruchom polecenie:
+
+```
+azds up
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

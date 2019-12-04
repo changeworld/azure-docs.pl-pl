@@ -1,17 +1,17 @@
 ---
-title: Magazyn zapytań w Azure Database for PostgreSQL — pojedynczy serwer
+title: Magazyn zapytań — Azure Database for PostgreSQL — pojedynczy serwer
 description: W tym artykule opisano funkcję magazynu zapytań w Azure Database for PostgreSQL-pojedynczym serwerze.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 198ef6889ffb7874c44f15338afbd8b3135ae3ef
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331318"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768269"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą magazynu zapytań
 
@@ -91,18 +91,18 @@ Po włączeniu magazynu zapytań dane są zapisywane w 15-minutowych oknach agre
 
 Następujące opcje są dostępne na potrzeby konfigurowania parametrów magazynu zapytań.
 
-| **Parametr** | **Opis** | **Domyślne** | **Zakres**|
+| **Konstruktora** | **Opis** | **Domyślne** | **Zakres**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Ustawia, które instrukcje są śledzone. | brak | Brak, Góra, wszystkie |
-| pg_qs.max_query_text_length | Ustawia maksymalną długość zapytania, którą można zapisać. Dłuższe zapytania zostaną obcięte. | 6000 | 100 – 10 tys. |
-| pg_qs.retention_period_in_days | Ustawia okres przechowywania. | 7 | 1 - 30 |
-| pg_qs.track_utility | Określa, czy polecenia narzędzi są śledzone | włączone | włączone, wyłączone |
+| pg_qs. query_capture_mode | Ustawia, które instrukcje są śledzone. | brak | Brak, Góra, wszystkie |
+| pg_qs. max_query_text_length | Ustawia maksymalną długość zapytania, którą można zapisać. Dłuższe zapytania zostaną obcięte. | 6000 | 100 – 10 tys. |
+| pg_qs. retention_period_in_days | Ustawia okres przechowywania. | 7 | 1 - 30 |
+| pg_qs. track_utility | Określa, czy polecenia narzędzi są śledzone | z | włączone, wyłączone |
 
 Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
 
-| **Parametr** | **Opis** | **Domyślne** | **Zakres**|
+| **Konstruktora** | **Opis** | **Domyślne** | **Zakres**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Ustawia, które instrukcje są śledzone pod kątem statystyk oczekiwania. | brak | Brak, wszystkie|
+| pgms_wait_sampling. query_capture_mode | Ustawia, które instrukcje są śledzone pod kątem statystyk oczekiwania. | brak | Brak, wszystkie|
 | Pgms_wait_sampling. history_period | Ustaw częstotliwość próbkowania zdarzeń oczekiwania (w milisekundach). | 100 | 1-600000 |
 
 > [!NOTE] 
@@ -116,14 +116,14 @@ Wyświetlanie magazynu zapytań i zarządzanie nim przy użyciu następujących 
 
 Zapytania są znormalizowane przez przejrzenie ich struktury po usunięciu literałów i stałych. Jeśli dwa zapytania są identyczne z wyjątkiem wartości literału, będą miały ten sam skrót.
 
-### <a name="query_storeqs_view"></a>query_store.qs_view
+### <a name="query_storeqs_view"></a>query_store. qs_view
 Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego identyfikatora bazy danych, identyfikatora użytkownika i identyfikatora zapytania istnieje jeden wiersz. 
 
 |**Nazwa**   |**Typ** | **Wołują**  | **Opis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | Identyfikator z tabeli runtime_stats_entries|
-|user_id    |oid    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcję|
-|db_id  |oid    |pg_database.oid    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
+|user_id    |OID    |pg_authid. OID  |Identyfikator OID użytkownika, który wykonał instrukcję|
+|db_id  |OID    |pg_database. OID    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
 |query_id   |bigint  || Wewnętrzny kod skrótu obliczony na podstawie drzewa analizy instrukcji|
 |query_sql_text |Varchar (10000)  || Tekst deklaracji reprezentatywnej. Różne zapytania o tej samej strukturze są klastrowane ze sobą. Ten tekst jest tekstem dla pierwszych zapytań w klastrze.|
 |plan_id    |bigint |   |Identyfikator planu odpowiadającego temu zapytaniem, nie jest jeszcze dostępny|
@@ -157,20 +157,20 @@ Ten widok zwraca dane tekstu zapytania w magazynie zapytań. Dla każdego oddzie
 |query_text_id  |bigint     |Identyfikator tabeli query_texts|
 |query_sql_text |Varchar (10000)     |Tekst deklaracji reprezentatywnej. Różne zapytania o tej samej strukturze są klastrowane ze sobą. Ten tekst jest tekstem dla pierwszych zapytań w klastrze.|
 
-### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
 Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden wiersz dla każdego identyfikatora bazy danych, identyfikatora użytkownika, identyfikatora zapytania i zdarzenia.
 
 |**Nazwa**|  **Typ**|   **Wołują**| **Opis**|
 |---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcję|
-|db_id  |oid    |pg_database.oid    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
+|user_id    |OID    |pg_authid. OID  |Identyfikator OID użytkownika, który wykonał instrukcję|
+|db_id  |OID    |pg_database. OID    |Identyfikator OID bazy danych, w której zostało wykonane wykonywanie instrukcji|
 |query_id   |bigint     ||Wewnętrzny kod skrótu obliczony na podstawie drzewa analizy instrukcji|
 |event_type |tekst       ||Typ zdarzenia, dla którego zaplecze oczekuje|
-|event  |tekst       ||Nazwa zdarzenia oczekiwania, jeśli obecnie trwa oczekiwanie na zaplecze|
+|wydarzen  |tekst       ||Nazwa zdarzenia oczekiwania, jeśli obecnie trwa oczekiwanie na zaplecze|
 |Rozmowa  |Liczba całkowita        ||Liczba przechwyconych zdarzeń|
 
 
-### <a name="functions"></a>Funkcje
+### <a name="functions"></a>Functions
 Query_store. qs_reset () zwraca wartość void
 
 `qs_reset` odrzuca wszystkie dane statystyczne zebrane do tej pory przez magazyn zapytań. Tę funkcję można wykonać tylko przez rolę administratora serwera.

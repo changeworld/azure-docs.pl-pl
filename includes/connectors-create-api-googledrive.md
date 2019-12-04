@@ -1,33 +1,34 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: fe726986b3f93ab3bb447b8973727a658ac1c706
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 96943405f3fce02b8a07158f797dd204eb4bb8e2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183493"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789722"
 ---
-### <a name="prerequisites"></a>Wymagania wstępne
-* A [połączeń z dyskiem Google](https://www.google.com/drive/) konta  
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z konta usługi GoogleDrive, w aplikacji logiki, należy autoryzować aplikację logiki, aby połączyć się z kontem usługi GoogleDrive. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal.  
+* Konto [dyskiem Google](https://www.google.com/drive/)  
 
-Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby połączyć się z kontem połączeń z dyskiem Google:  
+Aby można było używać konta dyskiem Google w aplikacji logiki, należy autoryzować aplikację logiki do łączenia się z kontem dyskiem Google. Na szczęście można to łatwo zrobić w aplikacji logiki w witrynie Azure Portal.  
 
-1. Aby utworzyć połączenie do usługi GoogleDrive, w Projektancie aplikacji logiki, wybierz pozycję **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *połączeń z dyskiem Google* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, którą Ci się spodoba do użycia:  
-   ![Kroku tworzenia połączenia dla połączeń z dyskiem Google](./media/connectors-create-api-googledrive/googledrive-1.png)  
-2. Nie utworzono żadnych połączeń do usługi GoogleDrive, zanim będzie pobrać monit podaj swoje poświadczenia usługi GoogleDrive. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do danych Twoje konto połączeń z dyskiem Google:  
-   ![Kroku tworzenia połączenia dla połączeń z dyskiem Google](./media/connectors-create-api-googledrive/googledrive-2.png)  
-3. Podaj swój adres e-mail połączeń z dyskiem Google:  
-   ![Kroku tworzenia połączenia dla połączeń z dyskiem Google](./media/connectors-create-api-googledrive/googledrive-3.png)  
-4. Podaj hasło połączeń z dyskiem Google, aby autoryzować aplikację logiki:  
-   ![Kroku tworzenia połączenia dla połączeń z dyskiem Google](./media/connectors-create-api-googledrive/googledrive-4.png)
-5. Zezwalaj na połączenie do usługi GoogleDrive  
-   ![Kroku tworzenia połączenia dla połączeń z dyskiem Google](./media/connectors-create-api-googledrive/googledrive-5.png)  
-6. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:  
-   ![Kroku tworzenia połączenia dla połączeń z dyskiem Google](./media/connectors-create-api-googledrive/googledrive-6.png)  
+Poniżej przedstawiono procedurę autoryzacji aplikacji logiki w celu nawiązania połączenia z kontem dyskiem Google:  
+
+1. Aby utworzyć połączenie z usługą dyskiem Google, w Projektancie aplikacji logiki wybierz pozycję **Pokaż interfejsy API zarządzane przez firmę Microsoft** na liście rozwijanej, a następnie wprowadź *dyskiem Google* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, której chcesz użyć:  
+   ![krok tworzenia połączenia dyskiem Google](./media/connectors-create-api-googledrive/googledrive-1.png)  
+2. Jeśli nie utworzono żadnych połączeń z dyskiem Google przed, otrzymasz monit o podanie poświadczeń dyskiem Google. Te poświadczenia będą używane do autoryzacji aplikacji logiki do nawiązywania połączenia z usługą i uzyskiwania dostępu do danych konta dyskiem Google:  
+   ![Krok tworzenia połączenia dyskiem Google](./media/connectors-create-api-googledrive/googledrive-2.png)  
+3. Podaj adres e-mail dyskiem Google:  
+   ![Krok tworzenia połączenia dyskiem Google](./media/connectors-create-api-googledrive/googledrive-3.png)  
+4. Podaj hasło dyskiem Google, aby autoryzować aplikację logiki:  
+   ![Krok tworzenia połączenia dyskiem Google](./media/connectors-create-api-googledrive/googledrive-4.png)
+5. Zezwalaj na połączenie z usługą dyskiem Google  
+   ![Krok tworzenia połączenia dyskiem Google](./media/connectors-create-api-googledrive/googledrive-5.png)  
+6. Zwróć uwagę, że połączenie zostało utworzone i teraz możesz kontynuować wykonywanie innych czynności w aplikacji logiki:  
+   ![Krok tworzenia połączenia dyskiem Google](./media/connectors-create-api-googledrive/googledrive-6.png)  
 

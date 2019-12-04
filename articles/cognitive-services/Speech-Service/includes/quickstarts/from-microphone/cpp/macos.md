@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 9b19cd1ff8340a22afb6713289bc3d7be42857ea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6f937683490df29e39bd2dc0a39cfc76d64ef41d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503577"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796020"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Przed rozpoczęciem:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=macos)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=macos)
+> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
@@ -35,6 +36,9 @@ Przed rozpoczęciem upewnij się, że:
 1. W tym nowym pliku Zastąp ciąg `YourSubscriptionKey` za pomocą klucza subskrypcji usługi Speech Services.
 
 1. Zastąp ciąg `YourServiceRegion` [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
+
+> [!NOTE]
+> Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 ## <a name="build-the-app"></a>Kompilacja aplikacji
 
@@ -61,7 +65,7 @@ Przed rozpoczęciem upewnij się, że:
    ./helloworld
    ```
 
-1. W oknie konsoli zostanie wyświetlony monit o wypowiedzenie tekstu. Wypowiedz zwrot lub zdanie w języku angielskim. Twoja Zamiana jest przekazywana do usługi mowy i uzyskanego do tekstu, który pojawia się w tym samym oknie.
+1. W oknie konsoli zostanie wyświetlony monit o wypowiedzenie tekstu. Wymów frazę lub zdanie w języku angielskim. Twoja Zamiana jest przekazywana do usługi mowy i uzyskanego do tekstu, który pojawia się w tym samym oknie.
 
    ```text
    Say something...

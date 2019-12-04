@@ -1,91 +1,91 @@
 ---
-title: Łączenie z usługą OneDrive — Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Nawiązywanie połączenia z usługą OneDrive
 description: Przekazywanie plików i zarządzanie nimi za pomocą interfejsów API REST usługi OneDrive i Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 10/18/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 840a010f8606387a250552d884621a96d0031f90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93528e257ab45644a79c58fbf600dca10317eb0b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62106231"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789689"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>Rozpoczynanie pracy z łącznikiem usługi OneDrive
-Łączenie z usługą OneDrive do zarządzania plikami, w tym przekazywane, pobieranie, usuwanie plików i inne. 
+# <a name="get-started-with-the-onedrive-connector"></a>Wprowadzenie do łącznika usługi OneDrive
 
-Z usługą OneDrive możesz: 
+Połącz się z usługą OneDrive, aby zarządzać plikami, w tym przekazywaniem, pobieraniem, usuwaniem plików itp. Za pomocą usługi OneDrive można wykonywać następujące zadania:
 
-* Tworzenie przepływu pracy przez przechowywanie plików w usłudze OneDrive lub zaktualizować istniejące pliki w usłudze OneDrive. 
-* Używanie wyzwalaczy do uruchomienia przepływu pracy, gdy plik jest tworzony lub aktualizowany w usłudze OneDrive.
-* Utwórz plik, usuń plik i nie tylko za pomocą akcji. Na przykład po odebraniu nowej wiadomości e-mail usługi Office 365 z załącznikiem (wyzwalacz) Utwórz nowy plik w usłudze OneDrive (akcję).
+* Kompilowanie przepływu pracy przez przechowywanie plików w usłudze OneDrive lub aktualizowanie istniejących plików w usłudze OneDrive. 
+* Użyj wyzwalaczy, aby uruchomić przepływ pracy po utworzeniu lub zaktualizowaniu pliku w usłudze OneDrive.
+* Użyj akcji, aby utworzyć plik, usunąć plik i nie tylko. Na przykład po odebraniu nowej wiadomości e-mail w usłudze Office 365 z załącznikiem (wyzwalaczem) Utwórz nowy plik w usłudze OneDrive (akcję).
 
-W tym artykule przedstawiono sposób korzystania z łącznika usługi OneDrive w aplikacji logiki, a także zawiera wyzwalacze i akcje.
+W tym artykule pokazano, jak używać łącznika usługi OneDrive w aplikacji logiki, a także wyświetlać wyzwalacze i akcje.
 
-Aby dowiedzieć się więcej o usłudze Logic Apps, zobacz [co to są aplikacje logiki](../logic-apps/logic-apps-overview.md) i [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Aby dowiedzieć się więcej na temat Logic Apps, zobacz [co to są aplikacje logiki](../logic-apps/logic-apps-overview.md) i [Utwórz aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="connect-to-onedrive"></a>Łączenie z usługą OneDrive
-Zanim aplikacja logiki może uzyskać dostęp do dowolnej usługi, należy najpierw utworzyć *połączenia* do usługi. Połączenie zapewnia łączność między aplikacją logiki i inną usługę. Na przykład, aby połączyć z usługą OneDrive, musisz najpierw usługi OneDrive *połączenia*. Aby utworzyć połączenie, wprowadź poświadczenia, zwykle używanego do uzyskania dostępu do usługi, którą chcesz połączyć się z. W związku z usługą OneDrive, wprowadź poświadczenia z kontem usługi OneDrive, aby utworzyć połączenie.
+## <a name="connect-to-onedrive"></a>Nawiązywanie połączenia z usługą OneDrive
+
+Zanim aplikacja logiki będzie mogła uzyskać dostęp do dowolnej usługi, należy najpierw utworzyć *połączenie* z usługą. Połączenie zapewnia łączność między aplikacją logiki a inną usługą. Na przykład, aby połączyć się z usługą OneDrive, najpierw musisz mieć *połączenie*z usługą OneDrive. Aby utworzyć połączenie, wprowadź poświadczenia, które zwykle są używane w celu uzyskania dostępu do usługi, z którą chcesz nawiązać połączenie. Aby utworzyć połączenie, w usłudze OneDrive wprowadź poświadczenia dla konta usługi OneDrive.
 
 ### <a name="create-the-connection"></a>Tworzenie połączenia
-> [!INCLUDE [Steps to create a connection to OneDrive](../../includes/connectors-create-api-onedrive.md)]
-> 
-> 
+
+[!INCLUDE [Steps to create a connection to OneDrive](../../includes/connectors-create-api-onedrive.md)]
 
 ## <a name="use-a-trigger"></a>Użyj wyzwalacza
-Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, zdefiniowane w aplikacji logiki. Wyzwalacze "sondować" Usługa interwał i częstotliwość, z którą chcesz. [Dowiedz się więcej na temat wyzwalaczy](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. W aplikacji logiki wpisz "usługi onedrive" w celu uzyskania listy z wyzwalaczy:  
-   
-    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Wybierz **po zmodyfikowaniu pliku**. Jeśli połączenie już istnieje, wybierz przycisk Pokaż narzędzie wyboru, aby wybrać folder.
-   
-    ![](./media/connectors-create-api-onedrive/sample-folder.png)
-   
-    Jeśli zostanie wyświetlony monit, aby zalogować się, wprowadź znak szczegóły, aby utworzyć połączenie. [Utwórz połączenie](connectors-create-api-onedrive.md#create-the-connection) w tym artykule przedstawiono kroki. 
-   
-   > [!NOTE]
-   > W tym przykładzie aplikacja logiki jest uruchamiana po pliku w folderze, który wybierzesz zostanie zaktualizowany. Aby zobaczyć wyniki tego wyzwalacza, Dodaj kolejną akcję, która spowoduje wysłanie wiadomości e-mail. Na przykład dodać usługi Office 365 Outlook *Wyślij wiadomość e-mail* akcję, która Ci wiadomości e-mail, gdy plik zostanie zaktualizowany. 
+Wyzwalacz to zdarzenie, którego można użyć do uruchomienia przepływu pracy zdefiniowanego w aplikacji logiki. Wyzwala "sondowanie" usługi z interwałem i częstotliwością. [Dowiedz się więcej o wyzwalaczach](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-3. Wybierz **Edytuj** przycisk i ustaw **częstotliwość** i **interwał** wartości. Na przykład, jeśli chcesz, aby wyzwalacz, aby wykonać sondowanie co 15 minut, następnie ustawić **częstotliwość** do **minutę**i ustaw **interwał** do **15**. 
-   
-    ![](./media/connectors-create-api-onedrive/trigger-properties.png)
-4. **Zapisz** zmiany (lewym górnym rogu paska narzędzi). Twoja aplikacja logiki jest zapisywana i może zostać automatycznie włączone.
+1. W aplikacji logiki wpisz "OneDrive", aby uzyskać listę wyzwalaczy:  
 
-## <a name="use-an-action"></a>Użyj akcji
-Akcja jest operacją przeprowadzanych przez przepływ pracy zdefiniowane w aplikacji logiki. [Dowiedz się więcej o akcjach](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+   ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
-1. Wybierz znak plus. Zostaną wyświetlone kilka opcji: **Dodaj akcję**, **Dodaj warunek**, lub jeden z **więcej** opcje.
-   
-    ![](./media/connectors-create-api-onedrive/add-action.png)
-2. Wybierz **Dodaj akcję**.
-3. W polu tekstowym wpisz "usługi onedrive", aby uzyskać listę dostępnych akcji.
-   
-    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
-4. W tym przykładzie wybierz **OneDrive — Utwórz plik**. Jeśli połączenie już istnieje, wybierz **ścieżka folderu** aby umieścić ten plik, wprowadź **nazwy pliku**i wybierz polecenie **zawartość pliku** chcesz:  
-   
-    ![](./media/connectors-create-api-onedrive/sample-action.png)
-   
-    Jeśli zostanie wyświetlony monit, aby uzyskać informacje o połączeniu, wprowadź szczegóły, aby utworzyć połączenie. [Utwórz połączenie](connectors-create-api-onedrive.md#create-the-connection) w tym artykule opisano te właściwości. 
-   
-   > [!NOTE]
-   > W tym przykładzie utworzymy nowego pliku w folderze usługi OneDrive. Dane wyjściowe z kolejnego wyzwalacza służy do tworzenia plików usługi OneDrive. Na przykład dodać usługi Office 365 Outlook *po nadejściu nowej wiadomości e-mail* wyzwalacza. Następnie Dodaj usługę OneDrive *Utwórz plik* akcję, która korzysta z typu zawartości i załączników pól w pętli ForEach, aby utworzyć nowy plik w usłudze OneDrive. 
-   > 
-   > ![](./media/connectors-create-api-onedrive/foreach-action.png)
+2. Wybierz **, kiedy plik zostanie zmodyfikowany**. Jeśli połączenie już istnieje, wybierz przycisk Pokaż selektor, aby wybrać folder.
 
-5. **Zapisz** zmiany (lewym górnym rogu paska narzędzi). Twoja aplikacja logiki jest zapisywana i może zostać automatycznie włączone.
+   ![](./media/connectors-create-api-onedrive/sample-folder.png)
 
+   Jeśli zostanie wyświetlony monit o zalogowanie się, wprowadź szczegóły logowania, aby utworzyć połączenie. [Utwórz połączenie](connectors-create-api-onedrive.md#create-the-connection) w tym artykule, aby uzyskać listę kroków.
 
-## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
+   W tym przykładzie aplikacja logiki jest uruchamiana, gdy zostanie zaktualizowany plik w wybranym folderze. Aby wyświetlić wyniki tego wyzwalacza, Dodaj kolejną akcję, która wysyła wiadomość e-mail. Na przykład Dodaj akcję *Wyślij wiadomość e-mail* do programu Outlook w usłudze Office 365, gdy plik zostanie zaktualizowany.
 
-Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze swagger i zobacz też jakiekolwiek ograniczenia w [szczegóły łącznika](/connectors/onedriveconnector/).
+3. Wybierz przycisk **Edytuj** i ustaw wartości parametrów **częstotliwość** i **Interwał** . Na przykład jeśli wyzwalacz ma sondować co 15 minut, należy ustawić **częstotliwość** na **minutę**i ustawić **Interwał** na **15**. 
 
-## <a name="more-connectors"></a>Więcej łączników
-Wróć do [listy interfejsów API](apis-list.md).
+   ![](./media/connectors-create-api-onedrive/trigger-properties.png)
+
+4. **Zapisz** zmiany (w lewym górnym rogu paska narzędzi). Aplikacja logiki jest zapisywana i może być automatycznie włączona.
+
+## <a name="use-an-action"></a>Korzystanie z akcji
+
+Akcja jest operacją wykonywaną przez przepływ pracy zdefiniowany w aplikacji logiki. [Dowiedz się więcej o akcjach](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+
+1. Wybierz znak plus. Zobaczysz kilka opcji: **Dodaj akcję**, **Dodaj warunek**lub jedną z opcji **więcej** .
+
+   ![](./media/connectors-create-api-onedrive/add-action.png)
+
+2. Wybierz pozycję **Dodaj akcję**.
+
+3. W polu tekstowym wpisz "OneDrive", aby wyświetlić listę wszystkich dostępnych akcji.
+
+   ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+
+4. W naszym przykładzie wybierz pozycję **OneDrive — Utwórz plik**. Jeśli połączenie już istnieje, wybierz **ścieżkę folderu** w celu umieszczenia pliku, wprowadź **nazwę pliku**i wybierz żądaną **zawartość pliku** :  
+
+   ![](./media/connectors-create-api-onedrive/sample-action.png)
+
+   Jeśli zostanie wyświetlony monit o podanie informacji o połączeniu, wprowadź szczegóły, aby [utworzyć połączenie zgodnie z opisem](#create-the-connection) w tym temacie.
+
+   W tym przykładzie utworzysz nowy plik w folderze usługi OneDrive. Możesz użyć danych wyjściowych z innego wyzwalacza, aby utworzyć plik usługi OneDrive. Na przykład Dodaj pakiet Office 365 Outlook *po nadejściu nowej wiadomości e-mail* . Następnie Dodaj akcję *Utwórz plik* w usłudze OneDrive, która używa pól załączniki i typ zawartości w instrukcji foreach, aby utworzyć nowy plik w usłudze OneDrive.
+
+   ![](./media/connectors-create-api-onedrive/foreach-action.png)
+
+5. **Zapisz** zmiany (w lewym górnym rogu paska narzędzi). Aplikacja logiki jest zapisywana i może być automatycznie włączona.
+
+## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+
+Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze Swagger, a także wszystkich ograniczeń w [szczegółach łącznika](/connectors/onedriveconnector/).
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Łączniki dla usługi Azure Logic Apps](apis-list.md)

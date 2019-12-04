@@ -1,22 +1,20 @@
 ---
-title: Łączenie z usługą Dynamics 365 — Azure Logic Apps
+title: Łączenie z usługą Dynamics 365
 description: Utwórz rekordy i zarządzaj nimi za pomocą interfejsów API REST usługi Dynamics 365 (online) i Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: Mattp123
 ms.author: matp
-manager: carmonm
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: ce83e6b1847a8f08467cb7877e517bdaace27953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9837b68fbfba783a468712d8ba1883b198af4954
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051008"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789890"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Zarządzanie rekordami systemu Dynamics 365 za pomocą Azure Logic Apps
 
@@ -43,7 +41,7 @@ Najpierw Dodaj wyzwalacz Dynamics 365, który jest uruchamiany po pojawieniu si�
 
 1. W [Azure Portal](https://portal.azure.com)Otwórz pustą aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
-1. W polu wyszukiwania wprowadź ciąg "Dynamics 365" jako filtr. Na potrzeby tego przykładu na liście Wyzwalacze wybierz następujący wyzwalacz: **Po utworzeniu rekordu**
+1. W polu wyszukiwania wprowadź ciąg "Dynamics 365" jako filtr. Na potrzeby tego przykładu na liście Wyzwalacze wybierz ten wyzwalacz: **po utworzeniu rekordu**
 
    ![Wybierz wyzwalacz](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -56,7 +54,7 @@ Najpierw Dodaj wyzwalacz Dynamics 365, który jest uruchamiany po pojawieniu si�
    | **Nazwa organizacji** | Tak | Nazwa wystąpienia usługi Dynamics 365 w organizacji do monitorowania, na przykład "contoso" |
    | **Nazwa jednostki** | Tak | Nazwa jednostki do monitorowania, na przykład "potencjalni klienci" | 
    | **Częstotliwość** | Tak | Jednostka czasu, która ma być używana z interwałami podczas sprawdzania aktualizacji związanych z wyzwalaczem |
-   | **Interval** | Tak | Liczba sekund, minut, godzin, dni, tygodnie lub miesięcy, które są przekazywane przed następnym sprawdzeniem |
+   | **Interwał** | Tak | Liczba sekund, minut, godzin, dni, tygodnie lub miesięcy, które są przekazywane przed następnym sprawdzeniem |
    ||| 
 
    ![Szczegóły wyzwalacza](./media/connectors-create-api-crmonline/trigger-details.png)
@@ -95,7 +93,7 @@ Teraz Dodaj akcję Dynamics 365, która tworzy rekord zadania dla nowego rekordu
 
 1. Aby ręcznie uruchomić aplikację logiki, na pasku narzędzi projektanta wybierz pozycję **Uruchom**.
 
-   ![Uruchom aplikację logiki](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
+   ![Uruchamianie aplikacji logiki](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
 
 1. Teraz Utwórz rekord potencjalnego klienta w usłudze Dynamics 365, aby móc wyzwolić przepływ pracy aplikacji logiki.
 
@@ -104,7 +102,7 @@ Teraz Dodaj akcję Dynamics 365, która tworzy rekord zadania dla nowego rekordu
 Aby określić sposób filtrowania danych w akcji Dynamics 365, wybierz pozycję **Pokaż opcje zaawansowane** w tej akcji. Następnie można dodać filtr lub kwerendę order by.
 Na przykład można użyć kwerendy filtru, aby uzyskać tylko aktywne konta i zamówić te rekordy według nazwy konta. W przypadku tego zadania wykonaj następujące kroki:
 
-1. W obszarze **zapytanie filtru**wprowadź następujące zapytanie filtru OData:`statuscode eq 1`
+1. W obszarze **zapytanie filtru**wprowadź następujące zapytanie filtru OData: `statuscode eq 1`
 
 2. Jeśli zostanie wyświetlona lista zawartość dynamiczna, w obszarze **kolejność według**wybierz pozycję **nazwa konta**. 
 
@@ -123,9 +121,9 @@ W tej tabeli opisano niektóre typy pól i wymagane typy danych dla ich wartośc
 
 | Typ pola | Wymagany typ danych | Opis | 
 |------------|--------------------|-------------|
-| Pola tekstowe | Pojedynczy wiersz tekstu | Te pola wymagają pojedynczego wiersza tekstu lub zawartości dynamicznej, która ma typ tekstu. <p><p>*Przykładowe pola*: **Opis** i **Kategoria** | 
-| Pola liczb całkowitych | Liczba całkowita | Niektóre pola wymagają liczby całkowitej lub zawartości dynamicznej, która ma typ Integer. <p><p>*Przykładowe pola*: **Procent ukończenia** i **czas trwania** | 
-| Pola daty | Data i godzina | Niektóre pola wymagają daty o formacie mm/dd/rrrr lub zawartości dynamicznej, która ma typ daty. <p><p>*Przykładowe pola*: **Utworzone w**dniu, **Data rozpoczęcia**, **rzeczywiste rozpoczęcie**, **rzeczywiste zakończenie**i **Data ukończenia** | 
+| Pola tekstowe | Pojedynczy wiersz tekstu | Te pola wymagają pojedynczego wiersza tekstu lub zawartości dynamicznej, która ma typ tekstu. <p><p>*Przykładowe pola*: **Description** i **Category** | 
+| Pola liczb całkowitych | Liczba całkowita | Niektóre pola wymagają liczby całkowitej lub zawartości dynamicznej, która ma typ Integer. <p><p>*Przykładowe pola*: **procent ukończenia** i **czas trwania** | 
+| Pola daty | Data i godzina | Niektóre pola wymagają daty o formacie mm/dd/rrrr lub zawartości dynamicznej, która ma typ daty. <p><p>*Przykładowe pola*: **utworzone**, **Data rozpoczęcia**, **rzeczywiste rozpoczęcie**, **rzeczywiste zakończenie**i **Data ukończenia** | 
 | Pola wymagające zarówno identyfikatora rekordu, jak i typu wyszukiwania | Klucz podstawowy | Niektóre pola, które odwołują się do innego rekordu jednostki, wymagają identyfikatora rekordu i typu wyszukiwania. | 
 ||||
 
@@ -134,11 +132,11 @@ Rozwijanie w tych typach pól, poniżej przedstawiono przykładowe pola w wyzwal
 | Pole | Opis |
 |-------|-------------|
 | **Właściciel** | Musi to być prawidłowy identyfikator użytkownika lub identyfikator rekordu zespołu. |
-| **Typ właściciela** | Musi być albo `systemusers`. `teams` |
+| **Typ właściciela** | Musi mieć wartość `systemusers` lub `teams`. |
 | **Dziedzinie** | Musi być prawidłowym IDENTYFIKATORem rekordu, np. IDENTYFIKATORem konta lub IDENTYFIKATORem rekordu osoby kontaktowej. |
-| **Typ dotyczący** | Musi być typem wyszukiwania, takim jak `accounts` lub. `contacts` |
-| **Odbiorcy** | Musi być prawidłowym IDENTYFIKATORem rekordu, np. IDENTYFIKATORem konta lub IDENTYFIKATORem rekordu osoby kontaktowej. |
-| **Typ klienta** | Musi być typem wyszukiwania, takim jak `accounts` lub. `contacts` |
+| **Typ dotyczący** | Musi być typem wyszukiwania, takim jak `accounts` lub `contacts`. |
+| **Dział** | Musi być prawidłowym IDENTYFIKATORem rekordu, np. IDENTYFIKATORem konta lub IDENTYFIKATORem rekordu osoby kontaktowej. |
+| **Typ klienta** | Musi być typem wyszukiwania, takim jak `accounts` lub `contacts`. |
 |||
 
 W tym przykładzie Akcja o nazwie **Utwórz nowy rekord** powoduje utworzenie nowego rekordu zadania:
@@ -161,10 +159,10 @@ Aby znaleźć identyfikator rekordu, wykonaj następujące kroki:
 
 2. Na pasku narzędzi Akcje wybierz jedną z następujących czynności:
 
-   * Wybierz pozycję wyskakujące **okienko**. ![popout rekord](./media/connectors-create-api-crmonline/popout-record.png) 
+   * Wybierz pozycję **wyskakujące okienko**. ![rekord popout](./media/connectors-create-api-crmonline/popout-record.png) 
    * Wybierz pozycję **Wyślij wiadomość e-mail** , aby można było skopiować pełny adres URL do domyślnego programu poczty e-mail.
 
-   Identyfikator rekordu pojawia się w adresie URL między `%7b` znakami i `%7d` :
+   Identyfikator rekordu pojawia się w adresie URL między `%7b` i `%7d` znaków kodowania:
 
    ![Znajdź identyfikator rekordu](./media/connectors-create-api-crmonline/find-record-ID.png)
 

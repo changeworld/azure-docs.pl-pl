@@ -1,24 +1,21 @@
 ---
-title: Tworzenie, edytowanie lub rozszerzone definicje aplikacji logiki — Azure Logic Apps
+title: Tworzenie, edytowanie lub rozszerzone definicje aplikacji logiki
 description: Jak pisać, edytować i zwiększać definicje JSON aplikacji logiki w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 03203a5fdb6d61ed95e96581a7e4a979c911cd02
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680025"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792593"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Tworzenie, edytowanie lub rozszerzone dane JSON dla definicji aplikacji logiki w Azure Logic Apps
 
-W przypadku tworzenia rozwiązań integracji dla przedsiębiorstw przy użyciu zautomatyzowanych przepływów pracy w [Azure Logic Apps](../logic-apps/logic-apps-overview.md), podstawowe definicje aplikacji logiki używają prostych i deklaratywnych JavaScript Object Notation (JSON) wraz z [językiem definicji przepływu pracy (WDL) Schemat](../logic-apps/logic-apps-workflow-definition-language.md) opisu i walidacji. Te formaty umożliwiają łatwiejsze odczytywanie i zrozumienie definicji aplikacji logiki, nie wiedząc o kodzie. Aby zautomatyzować tworzenie i wdrażanie aplikacji logiki, możesz uwzględnić definicje aplikacji logiki jako [zasoby platformy Azure](../azure-resource-manager/resource-group-overview.md) w ramach [szablonów Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md). Aby tworzyć i wdrażać aplikacje logiki oraz zarządzać nimi, można użyć [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)lub [interfejsów API REST Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
+W przypadku tworzenia rozwiązań integracji dla przedsiębiorstw przy użyciu zautomatyzowanych przepływów pracy w [Azure Logic Apps](../logic-apps/logic-apps-overview.md), bazowe definicje aplikacji logiki używają prostych i deklaratywnych JavaScript Object Notation (JSON) wraz ze [schematem języka definicji przepływu pracy (WDL)](../logic-apps/logic-apps-workflow-definition-language.md) do ich opisu i walidacji. Te formaty umożliwiają łatwiejsze odczytywanie i zrozumienie definicji aplikacji logiki, nie wiedząc o kodzie. Aby zautomatyzować tworzenie i wdrażanie aplikacji logiki, możesz uwzględnić definicje aplikacji logiki jako [zasoby platformy Azure](../azure-resource-manager/resource-group-overview.md) w ramach [szablonów Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md). Aby tworzyć i wdrażać aplikacje logiki oraz zarządzać nimi, można użyć [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)lub [interfejsów API REST Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
 
 Aby pracować z definicjami aplikacji logiki w formacie JSON, Otwórz Edytor widoku kodu podczas pracy w Azure Portal lub w programie Visual Studio lub skopiuj definicję do dowolnego edytora, który chcesz. Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj [się z tematem jak utworzyć swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -61,7 +58,7 @@ W programie Visual Studio można otwierać aplikacje logiki, które zostały utw
 
 ## <a name="parameters"></a>Parametry
 
-Cykl życia wdrożenia ma zwykle różne środowiska do projektowania, testowania, przemieszczania i produkcji. Jeśli masz wartości, które chcesz ponownie użyć w całej aplikacji logiki bez zakodowana lub które różnią się w zależności od potrzeb wdrażania, możesz utworzyć [szablon Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla definicji przepływu pracy, aby można było również zautomatyzować aplikację logiki mieszczeniu. 
+Cykl życia wdrożenia ma zwykle różne środowiska do projektowania, testowania, przemieszczania i produkcji. Jeśli masz wartości, które chcesz ponownie użyć w całej aplikacji logiki bez zakodowana lub które różnią się w zależności od potrzeb wdrożenia, możesz utworzyć [szablon Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla definicji przepływu pracy, aby można było również zautomatyzować wdrażanie aplikacji logiki. 
 
 Postępuj zgodnie z tymi ogólnymi krokami, aby *Sparametryzuj*lub definiować i używać parametrów dla tych wartości. Następnie można podać wartości w osobnym pliku parametrów, który przekazuje te wartości do szablonu. Dzięki temu można łatwiej zmieniać te wartości bez konieczności aktualizacji i ponownego wdrażania aplikacji logiki. Aby uzyskać szczegółowe informacje, zobacz [Omówienie: Automatyzowanie wdrażania dla usługi Logic Apps za pomocą szablonów Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
@@ -124,7 +121,7 @@ W tych krokach opisano, jak ten przykład przetwarza ten ciąg, pracując od wew
 
 2. Aby uzyskać krótszy ciąg, Odejmij `5`.
 
-3. Uzyskaj teraz [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md). Zacznij od indeksu `5` i przejdź do pozostałej części ciągu.
+3. Uzyskaj teraz [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md). Zacznij od indeksu `5`i przejdź do pozostałej części ciągu.
 
 4. Przekonwertuj ten podciąg na ciąg [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) .
 

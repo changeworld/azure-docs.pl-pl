@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3ea77eb5dd8a03f877164179e3accc3a6f6d0aef
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548320"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793350"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy z Azure Data Lake Storage Gen2
 
@@ -48,14 +48,12 @@ Niezarządzane dyski maszyny wirtualnej nie są obsługiwane na kontach z hierar
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="api-scope-for-data-lake-storage-client-library-for-sdk-powershell-and-cli"></a>Zakres interfejsu API dla Data Lake Storageej biblioteki klienckiej dla zestawów SDK, programu PowerShell i interfejsu wiersza polecenia
-
-### <a name="filesystem-support-in-sdks"></a>Obsługa systemu plików w zestawach SDK
+## <a name="filesystem-support-in-sdks"></a>Obsługa systemu plików w zestawach SDK
 
 - Programy .NET, Java i Python są dostępne w publicznej wersji zapoznawczej. Inne zestawy SDK nie są obecnie obsługiwane.
 - Operacje get i Set list ACL nie są obecnie cykliczne.
 
-### <a name="filesystem-support-in-powershell-and-azure-cli"></a>Obsługa systemu plików w programie PowerShell i interfejsie wiersza polecenia platformy Azure
+## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Obsługa systemu plików w programie PowerShell i interfejsie wiersza polecenia platformy Azure
 
 Operacje get i Set list ACL nie są obecnie cykliczne.
 
@@ -77,7 +75,6 @@ W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie s
 | **Rejestrowanie diagnostyczne** |Dzienniki diagnostyczne są obsługiwane (wersja zapoznawcza).<br><br>Włączanie dzienników w Azure Portal nie jest obecnie obsługiwane. Oto przykład sposobu włączania dzienników przy użyciu programu PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Upewnij się, że określono `Blob` jako wartość parametru `-ServiceType`, jak pokazano w tym przykładzie. <br><br>Obecnie nie można używać Eksplorator usługi Azure Storage do wyświetlania dzienników diagnostycznych. Aby wyświetlić dzienniki, użyj AzCopy lub zestawów SDK.
 | **Niezmienny magazyn** |Jeszcze nieobsługiwane <br><br>Niezmienny magazyn umożliwia przechowywanie danych w [robaku (zapis jeden raz, odczyt wielu)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Warstwy na poziomie obiektów** |Obsługiwane są warstwy chłodna i archiwalna. Warstwa archiwum jest w wersji zapoznawczej. Wszystkie inne warstwy dostępu nie są jeszcze obsługiwane. <br><br> Obecnie niektóre usterki mają wpływ na warstwę dostępu archiwizowania.  Utwórz konto w wersji zapoznawczej warstwy dostępu archiwalnego w [tym miejscu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).|
-| **Obsługa programu PowerShell i interfejsu wiersza polecenia** | Ograniczona funkcjonalność <br><br>Operacje obiektów BLOB są obsługiwane. Praca z katalogami i ustawianie list kontroli dostępu (ACL) nie jest jeszcze obsługiwana. |
 | **Statyczne witryny sieci Web** |Jeszcze nieobsługiwane <br><br>W oddzielnym zakresie możliwość obsługiwania plików do [statycznych witryn sieci Web](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
 | **Aplikacje innych firm** | Ograniczona pomoc techniczna <br><br>Aplikacje innych firm, które używają interfejsów API REST do pracy, będą nadal działały, jeśli są używane z Data Lake Storage Gen2. <br>Aplikacje wywołujące interfejsy API obiektów BLOB prawdopodobnie będą działały.|
 |**Usuwanie nietrwałe** |Jeszcze nieobsługiwane|

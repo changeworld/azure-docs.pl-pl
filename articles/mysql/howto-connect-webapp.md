@@ -1,53 +1,53 @@
 ---
-title: Łączenie z istniejącej usługi Azure App Service do usługi Azure Database for MySQL
-description: Instrukcje dotyczące nawiązywania prawidłowo istniejących w usłudze Azure App Service do usługi Azure Database for MySQL
+title: Nawiązywanie połączenia z Azure App Service-Azure Database for MySQL
+description: Instrukcje dotyczące prawidłowego łączenia istniejących Azure App Service z Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/21/2019
-ms.openlocfilehash: 3fbffc805afb540499e38f1c0853260968228b22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 63ef9ac55fcfaebfd58ae1ccdb34107d41900be5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002005"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770547"
 ---
-# <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Łączenie istniejących w usłudze Azure App Service do usługi Azure Database dla serwera MySQL
-W tym temacie wyjaśniono, jak połączyć istniejące w usłudze Azure App Service do usługi Azure Database for MySQL server.
+# <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Połącz istniejące Azure App Service z serwerem Azure Database for MySQL
+W tym temacie wyjaśniono, jak połączyć istniejące Azure App Service z serwerem Azure Database for MySQL.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Tworzenie usługi Azure Database dla serwera MySQL. Aby uzyskać szczegółowe informacje, zapoznaj się [sposób tworzenia usługi Azure Database dla serwera MySQL z witryny Portal](quickstart-create-mysql-server-database-using-azure-portal.md) lub [sposób tworzenia usługi Azure Database dla serwera MySQL przy użyciu interfejsu wiersza polecenia](quickstart-create-mysql-server-database-using-azure-cli.md).
+Zaloguj się do [portalu Azure](https://portal.azure.com). Utwórz serwer Azure Database for MySQL. Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć serwer Azure Database for MySQL z poziomu portalu](quickstart-create-mysql-server-database-using-azure-portal.md) lub [jak utworzyć serwer Azure Database for MySQL przy użyciu interfejsu wiersza polecenia](quickstart-create-mysql-server-database-using-azure-cli.md).
 
-Obecnie istnieją dwa rozwiązania umożliwiające dostęp z usługi Azure App Service do usługi Azure Database for MySQL. Oba rozwiązania wymagają konfigurowania reguł zapory na poziomie serwera.
+Obecnie istnieją dwa rozwiązania umożliwiające dostęp z Azure App Service do Azure Database for MySQL. Oba rozwiązania obejmują Konfigurowanie reguł zapory na poziomie serwera.
 
-## <a name="solution-1---allow-azure-services"></a>Rozwiązanie 1 — Zezwalaj usługom platformy Azure
-Usługa Azure Database for MySQL zapewnia zabezpieczenia dostępu do używania innej zapory, aby chronić dane. Podczas nawiązywania połączenia z usługi Azure App Service — Azure Database dla serwera MySQL, należy pamiętać o tym, że adresy IP ruchu wychodzącego usług App Service ma dynamiczny charakter. Wybranie opcji "Zezwalaj na dostęp do usług platformy Azure" umożliwi app service w celu łączenia się z serwerem MySQL.
+## <a name="solution-1---allow-azure-services"></a>Rozwiązanie 1 — Zezwalanie na usługi platformy Azure
+Azure Database for MySQL zapewnia zabezpieczenia dostępu przy użyciu zapory do ochrony danych. Podczas nawiązywania połączenia z Azure App Service z serwerem Azure Database for MySQL należy pamiętać, że wychodzące adresy IP App Service są dynamiczne. Wybranie opcji "Zezwalaj na dostęp do usług platformy Azure" pozwoli usłudze App Service na łączenie się z serwerem MySQL.
 
-1. W bloku serwera MySQL, w obszarze Ustawienia kliknij pozycję **zabezpieczenia połączeń** aby otworzyć blok zabezpieczenia połączeń dla usługi Azure Database for MySQL.
+1. W bloku ustawienia serwera MySQL kliknij pozycję **zabezpieczenia połączeń** , aby otworzyć blok zabezpieczenia połączenia dla Azure Database for MySQL.
 
-   ![Portal Azure — zabezpieczenia połączeń kliknij](./media/howto-connect-webapp/1-connection-security.png)
+   ![Azure Portal kliknij pozycję zabezpieczenia połączeń](./media/howto-connect-webapp/1-connection-security.png)
 
-2. Wybierz **ON** w **zezwolić na dostęp do usług platformy Azure**, następnie **Zapisz**.
-   ![Portal Azure — dostęp do Zezwalaj na platformie Azure](./media/howto-connect-webapp/allow-azure.png)
+2. Wybierz pozycję **włączone** w obszarze **Zezwalaj na dostęp do usług platformy Azure**, a następnie **Zapisz**.
+   ![Azure Portal — Zezwalanie na dostęp do platformy Azure](./media/howto-connect-webapp/allow-azure.png)
 
-## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>Rozwiązanie 2 — Tworzenie reguły zapory, aby jawnie zezwolić na adresy IP ruchu wychodzącego
-Można jawnie dodać wszystkie wychodzące adresy IP usługi Azure App Service.
+## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>Rozwiązanie 2 — Tworzenie reguły zapory w celu jawnego zezwalania na wychodzące adresy IP
+Można jawnie dodać wszystkie wychodzące adresy IP Azure App Service.
 
-1. W bloku właściwości usługi aplikacji, wyświetlić swoje **WYCHODZĄCY adres IP**.
+1. W bloku właściwości App Service Wyświetl **wychodzący adres IP**.
 
-   ![Witryna Azure portal — widok wychodzące adresy IP](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
+   ![Azure Portal — wyświetlanie wychodzących adresów IP](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
 
-2. W bloku zabezpieczeń połączenia z serwerem MySQL dodać wychodzące adresy IP jedno po drugim.
+2. W bloku zabezpieczenia połączenia MySQL Dodaj wychodzące adresy IP jeden według jednego.
 
-   ![Witryna Azure portal — Dodawanie jawnych adresów IP](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
+   ![Azure Portal — Dodawanie jawnych adresów IP](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
 
-3. Pamiętaj, aby **Zapisz** reguły zapory.
+3. Pamiętaj, aby **zapisać** reguły zapory.
 
-Chociaż usługa Azure App service próbuje zachować adresy IP stałych wraz z upływem czasu, istnieją przypadki, w których adresy IP mogą ulec zmianie. Na przykład, to może wystąpić, gdy występuje odtwarzanie aplikacji lub operację skalowania lub kiedy nowe komputery są dodawane w danych platformy Azure regionalnych centrów w celu zwiększenia pojemności. W przypadku zmiany adresów IP aplikacji mogą wystąpić przestój w przypadku, gdy nie można już połączyć z serwerem MySQL. Wybierając jedną z poprzedniego rozwiązania, należy pamiętać o tym zagadnieniem.
+Mimo że usługa Azure App Service próbuje zachować stałą adresy IP w czasie, istnieją przypadki, w których mogą się zmieniać adresy IP. Na przykład może się to zdarzyć, gdy następuje odtwarzanie aplikacji lub przeprowadzenie operacji skalowania lub gdy nowe komputery są dodawane w regionalnych centrach danych platformy Azure w celu zwiększenia pojemności. Gdy adresy IP zmienią się, aplikacja może spowodować przestoje w przypadku wystąpienia, w którym nie można już nawiązać połączenia z serwerem MySQL. Należy pamiętać o tym przy wyborze jednego z wcześniejszych rozwiązań.
 
 ## <a name="ssl-configuration"></a>Konfiguracja protokołu SSL
-Usługa Azure Database for MySQL jest domyślnie włączony protokół SSL. Jeśli aplikacja nie używa protokołu SSL do łączenia z bazą danych, musisz wyłączyć protokół SSL na serwerze MySQL. Aby uzyskać więcej informacji na temat konfigurowania protokołu SSL, zobacz [przy użyciu protokołu SSL z usługą Azure Database for MySQL](howto-configure-ssl.md).
+Azure Database for MySQL ma domyślnie włączony protokół SSL. Jeśli aplikacja nie korzysta z protokołu SSL w celu nawiązania połączenia z bazą danych, należy wyłączyć protokół SSL na serwerze MySQL. Aby uzyskać szczegółowe informacje na temat konfigurowania protokołu SSL, zobacz [Używanie protokołu SSL z Azure Database for MySQL](howto-configure-ssl.md).
 
 ### <a name="django-pymysql"></a>Django (PyMySQL)
 ```python
@@ -66,5 +66,5 @@ DATABASES = {
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat parametrów połączenia dotyczą [parametry połączenia](howto-connection-string.md).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji dotyczących parametrów połączenia, zobacz [Parametry połączenia](howto-connection-string.md).

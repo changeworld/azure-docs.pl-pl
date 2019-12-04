@@ -1,51 +1,51 @@
 ---
-title: Tworzenie i zarządzanie regułami zapory w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: Tworzenie i zarządzanie regułami zapory na potrzeby usługi Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal
+title: Zarządzanie regułami zapory — Azure Portal-Azure Database for PostgreSQL — pojedynczy serwer
+description: Utwórz reguły zapory dla Azure Database for PostgreSQL-pojedynczego serwera przy użyciu Azure Portal i zarządzaj nimi
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 7eed2e81c6781ca660cffa909f27962a7c5112cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aeef22bf96221061a444f40e16e33343fafe511c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65069005"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770309"
 ---
-# <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Tworzenie i zarządzanie regułami zapory na potrzeby usługi Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal
-Reguły zapory na poziomie serwera mogą służyć do zarządzania dostępem do usługi Azure Database dla serwera PostgreSQL z określonego adresu IP lub zakres adresów IP.
+# <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Utwórz reguły zapory dla Azure Database for PostgreSQL-pojedynczego serwera przy użyciu Azure Portal i zarządzaj nimi
+Reguły zapory na poziomie serwera mogą służyć do zarządzania dostępem do serwera Azure Database for PostgreSQL z określonego adresu IP lub zakresu adresów IP.
 
-Wirtualne reguł sieci wirtualnej można również bezpieczny dostęp do serwera. Dowiedz się więcej o [creating and managing Virtual Network i punktów końcowych i reguł za pomocą witryny Azure portal usługi](howto-manage-vnet-using-portal.md).
+Reguły Virtual Network (VNet) mogą również służyć do zabezpieczania dostępu do serwera. Dowiedz się więcej o [tworzeniu i zarządzaniu Virtual Network punktów końcowych usługi i reguł przy użyciu Azure Portal](howto-manage-vnet-using-portal.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wykonania kroków w tym przewodniku, potrzebne są:
-- Serwer [Tworzenie serwera usługi Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
+Aby krokowo poprowadzić ten przewodnik, musisz:
+- Serwer [tworzy Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Tworzenie reguły zapory na poziomie serwera w witrynie Azure Portal
-1. Na stronie serwer postgresql — w obszarze Ustawienia kliknij pozycję **zabezpieczenia połączeń** , aby otworzyć stronę Zabezpieczenia połączeń dla usługi Azure Database for PostgreSQL.
+1. Na stronie serwer PostgreSQL w obszarze Ustawienia kliknij pozycję **zabezpieczenia połączeń** , aby otworzyć stronę zabezpieczenia połączenia dla Azure Database for PostgreSQL.
 
-   ![Portal Azure — zabezpieczenia połączeń kliknij](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   ![Azure Portal kliknij pozycję zabezpieczenia połączeń](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
-2. Kliknij przycisk **Dodaj mój adres IP** na pasku narzędzi. Powoduje to automatyczne utworzenie reguły zapory z publicznym adresem IP Twojego komputera wyobrażenia systemu platformy Azure.
+2. Kliknij pozycję **Dodaj mój adres IP** na pasku narzędzi. Spowoduje to automatyczne utworzenie reguły zapory z publicznym adresem IP komputera, tak jak to zostało postrzegane przez system Azure.
 
-   ![Witryna Azure portal — kliknij przycisk Dodaj mój adres IP](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
+   ![Azure Portal — kliknij pozycję Dodaj mój adres IP](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
-3. Przed zapisaniem konfiguracji, należy zweryfikować swój adres IP. W niektórych sytuacjach adres IP zaobserwowane przez witryny Azure portal różni się od adres IP używany podczas uzyskiwania dostępu do Internetu i serwery usługi Azure. W związku z tym należy zmienić początkowy adres IP i końcowy adres IP funkcji reguły, zgodnie z oczekiwaniami.
-   Użyj aparatu wyszukiwania lub innego narzędzia do trybu online, aby sprawdzić adres IP. Na przykład wyszukiwanie "co to jest mój adres IP".
+3. Sprawdź swój adres IP przed zapisaniem konfiguracji. W niektórych sytuacjach adres IP zaobserwowany przez Azure Portal różni się od adresu IP używanego podczas uzyskiwania dostępu do Internetu i serwerów platformy Azure. W związku z tym może zajść potrzeba zmiany początkowego adresu IP i końcowego adresu IP, aby zapewnić działanie reguły zgodnie z oczekiwaniami.
+   Użyj wyszukiwarki lub innego narzędzia online do sprawdzenia własnego adresu IP. Na przykład wyszukaj ciąg "co to jest mój adres IP".
 
-   ![Co to jest mój adres IP wyszukiwanie Bing](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
+   ![Wyszukiwanie w usłudze Bing — mój adres IP](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. Dodaj zakresy adresów dodatkowe. W regułach zapory dla usługi Azure Database for PostgreSQL można określić pojedynczy adres IP lub zakresu adresów. Jeśli chcesz ograniczyć regułę do w pojedynczy adres IP, wpisz ten sam adres w polu, początkowy adres IP i końcowy adres IP. Otwarcie zapory pozwala administratorom, użytkownikom i aplikacjom do dostępu dowolną bazę danych na serwerze PostgreSQL, do którego mają prawidłowe poświadczenia.
+4. Dodaj dodatkowe zakresy adresów. W regułach zapory dla Azure Database for PostgreSQL można określić pojedynczy adres IP lub zakres adresów. Jeśli chcesz ograniczyć regułę do pojedynczego adresu IP, wpisz ten sam adres w polu dla początkowy adres IP i końcowy adres IP. Otwarcie zapory umożliwia administratorom, użytkownikom i aplikacjom dostęp do dowolnych baz danych na serwerze PostgreSQL, do których mają prawidłowe poświadczenia.
 
-   ![Witryna Azure portal — reguły zapory](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Azure Portal — reguły zapory](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
-5. Kliknij przycisk **Zapisz** na pasku narzędzi, aby zapisać tę regułę zapory na poziomie serwera. Czekaj na potwierdzenie, czy aktualizacja reguły zapory zakończyło się pomyślnie.
+5. Kliknij przycisk **Zapisz** na pasku narzędzi, aby zapisać tę regułę zapory na poziomie serwera. Poczekaj na potwierdzenie, że aktualizacja reguł zapory zakończyła się pomyślnie.
 
-   ![Witryna Azure portal — kliknij przycisk Zapisz](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
+   ![Azure Portal kliknij pozycję Zapisz](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>Łączenie z platformy Azure
-Aby umożliwić aplikacjom z platformy Azure, nawiązać połączenia z usługi Azure Database for postgresql w warstwie serwera, należy włączyć połączenia platformy Azure. Na przykład, aby hostować aplikację usługi Azure Web Apps lub aplikację, która działa na Maszynie wirtualnej platformy Azure lub do nawiązywania połączenia bramy zarządzania danymi usługi Azure Data Factory. Zasoby nie muszą znajdować się w tej samej sieci wirtualnej (VNet) lub grupy zasobów dla reguły zapory, aby włączyć te połączenia. Gdy aplikacja platformy Azure próbuje połączyć się z serwerem bazy danych, zapora sprawdza, czy połączenia platformy Azure są dozwolone. Istnieje kilka metod, aby włączyć te typy połączeń. Ustawienie zapory z początkowym i końcowym adresem równym 0.0.0.0 wskazuje, że te połączenia są dozwolone. Alternatywnie, można ustawić **zezwolić na dostęp do usług platformy Azure** opcję **ON** w portalu pochodzące ze **zabezpieczenia połączeń** okienka, a następnie wybierz pozycję **Zapisz**. Jeśli próba połączenia nie jest dozwolona, żądanie nie dociera usługi Azure Database for postgresql w warstwie serwera.
+Aby umożliwić aplikacjom z platformy Azure Łączenie się z serwerem Azure Database for PostgreSQL, należy włączyć połączenia platformy Azure. Na przykład w celu hostowania aplikacji Web Apps platformy Azure lub aplikacji działającej na maszynie wirtualnej platformy Azure lub w celu nawiązania połączenia z Azure Data Factory bramy zarządzania danymi. Zasoby nie muszą znajdować się w tej samej Virtual Network (VNet) lub grupie zasobów dla reguły zapory w celu włączenia tych połączeń. Gdy aplikacja platformy Azure próbuje połączyć się z serwerem bazy danych, zapora sprawdza, czy połączenia platformy Azure są dozwolone. Istnieje kilka metod włączania tych typów połączeń. Ustawienie zapory z początkowym i końcowym adresem równym 0.0.0.0 wskazuje, że te połączenia są dozwolone. Alternatywnie możesz ustawić opcję Zezwalaj na **dostęp do usług platformy Azure** **w portalu** w okienku **zabezpieczenia połączenia** i kliknąć przycisk **Zapisz**. Jeśli próba połączenia nie jest dozwolona, żądanie nie dociera do serwera Azure Database for PostgreSQL.
 
 > [!IMPORTANT]
 > Ta opcja konfiguruje zaporę w celu zezwalania na wszystkie połączenia z platformy Azure, w tym połączenia z subskrypcji innych klientów. W przypadku wybrania tej opcji upewnij się, że uprawnienia logowania i użytkownika zezwalają na dostęp tylko uprawnionym użytkownikom.
@@ -53,12 +53,12 @@ Aby umożliwić aplikacjom z platformy Azure, nawiązać połączenia z usługi 
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Zarządzanie istniejącymi regułami zapory na poziomie serwera przy użyciu witryny Azure Portal
 Powtórz kroki, aby zarządzać regułami zapory.
-* Aby dodać bieżący komputer, kliknij przycisk Tak, aby + **Dodaj mój adres IP**. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
+* Aby dodać bieżący komputer, kliknij przycisk, aby **dodać adres IP**. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
 * Aby dodać kolejne adresy IP, wpisz nazwę reguły, początkowy adres IP i końcowy adres IP. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
 * Aby zmodyfikować istniejącą regułę, kliknij dowolne pole w regule i wprowadź zmiany. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
-* Aby usunąć istniejącą regułę, kliknij przycisk wielokropka [...], a następnie kliknij przycisk **Usuń** można usunąć reguły. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
+* Aby usunąć istniejącą regułę, kliknij przycisk wielokropka [...], a następnie kliknij przycisk **Usuń** , aby usunąć regułę. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Podobnie, można utworzyć skrypty do [tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia platformy Azure](howto-manage-firewall-using-cli.md).
-- Dodatkowo zabezpieczyć dostęp do serwera przez [creating and managing Virtual Network i punktów końcowych i reguł za pomocą witryny Azure portal usługi](howto-manage-vnet-using-portal.md).
-- Aby uzyskać pomoc podczas nawiązywania połączenia z usługi Azure Database for postgresql w warstwie serwera, zobacz [biblioteki połączeń dla usługi Azure Database for postgresql w warstwie](concepts-connection-libraries.md).
+## <a name="next-steps"></a>Następne kroki
+- Podobnie można utworzyć skrypt do [tworzenia reguł zapory Azure Database for PostgreSQL i zarządzania nimi za pomocą interfejsu wiersza polecenia platformy Azure](howto-manage-firewall-using-cli.md).
+- Aby zapewnić bardziej bezpieczny dostęp do serwera, można [utworzyć i zarządzać Virtual Network punktami końcowymi usługi i regułami przy użyciu Azure Portal](howto-manage-vnet-using-portal.md).
+- Aby uzyskać pomoc w połączeniu z serwerem Azure Database for PostgreSQL, zobacz [biblioteki połączeń dla Azure Database for PostgreSQL](concepts-connection-libraries.md).

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226697"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784718"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -116,7 +116,7 @@ Poniższe kroki używają [apt](https://wiki.debian.org/Apt) do instalowania pod
     | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17.04    | `zesty`     |
+    | Ubuntu 17,04    | `zesty`     |
     | Ubuntu 16.04/Linux mennic 18    | `xenial`  |
 
 1. Uruchom aktualizację źródła APT:
@@ -517,7 +517,7 @@ Ten typ dzienników przesyłania strumieniowego wymaga [włączenia Application 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Azure Functions Core Tools to środowisko [Open Source i jest hostowane w witrynie GitHub](https://github.com/azure/azure-functions-cli).  
+Dowiedz się, jak opracowywać, testować i publikować Azure Functions przy użyciu Azure Functions Core Tools Azure Functions Core Tools [modułu Microsoft uczenie](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) się [w serwisie GitHub](https://github.com/azure/azure-functions-cli).  
 Aby zgłosić błąd lub żądanie funkcji, [Otwórz problem z usługą GitHub](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->

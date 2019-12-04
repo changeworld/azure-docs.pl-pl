@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274075"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769221"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpieczenia kontenera w Security Center
 
@@ -34,7 +34,7 @@ W tym artykule opisano, jak można usprawnić, monitorować i obsługiwać zabez
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Zarządzanie lukami w zabezpieczeniach — skanowanie obrazów kontenerów (wersja zapoznawcza)
 Aby monitorować Azure Container Registry, upewnij się, że korzystasz z warstwy Standardowa Security Center (zobacz [Cennik](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Następnie Włącz opcjonalny pakiet rejestrów kontenerów. Po wypchnięciu nowego obrazu Security Center skanuje obraz przy użyciu skanera od wiodącego w branży skanowania dostawcy, Qualys.
 
-Po znalezieniu problemów — według Qualys lub Security Center — otrzymasz powiadomienie na pulpicie nawigacyjnym Security Center. W przypadku każdej luki w zabezpieczeniach Security Center zawiera zalecenia z możliwością wykonania akcji, a także klasyfikację ważności oraz wskazówki dotyczące sposobu korygowania problemu. Aby uzyskać szczegółowe informacje na temat zaleceń dotyczących Security Center, zobacz listę zaleceń dotyczących [ochrony maszyny wirtualnej](security-center-virtual-machine-protection.md##compute-and-app-recs).
+Po znalezieniu problemów — według Qualys lub Security Center — otrzymasz powiadomienie na pulpicie nawigacyjnym Security Center. W przypadku każdej luki w zabezpieczeniach Security Center zawiera zalecenia z możliwością wykonania akcji, a także klasyfikację ważności oraz wskazówki dotyczące sposobu korygowania problemu. Aby uzyskać szczegółowe informacje na temat zaleceń dotyczących Security Center, zobacz listę zaleceń w [tym miejscu](recommendations-compute-and-apps.md).
 
 ## <a name="environment-hardening"></a>Ograniczanie funkcjonalności środowiska
 

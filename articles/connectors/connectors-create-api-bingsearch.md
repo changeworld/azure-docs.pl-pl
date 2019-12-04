@@ -1,22 +1,18 @@
 ---
-title: Nawiązywanie połączenia z Wyszukiwanie Bing-Azure Logic Apps
+title: Połącz z Wyszukiwanie Bing
 description: Znajdowanie wiadomości za pomocą interfejsów API REST Wyszukiwanie Bing i Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: f7558a5836d8f087e719346fb38bbf24ece2c8fb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026774"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789948"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Znajdź wiadomości Wyszukiwanie Bing i Azure Logic Apps
 
@@ -56,10 +52,10 @@ Lub, jeśli połączenie już istnieje, podaj niezbędne informacje dla wyzwalac
 
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | Search Query | Tak | <*Wyszukiwanie słów*> | Wprowadź słowa kluczowe wyszukiwania, które mają być używane. |
-   | Market | Tak | <*Ustawienia regionalne*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
-   | Safe Search | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
-   | Licznik | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
+   | Zapytanie wyszukiwania | Tak | <*Wyszukiwanie słów*> | Wprowadź słowa kluczowe wyszukiwania, które mają być używane. |
+   | Rynek | Tak | <*Ustawienia regionalne*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
+   | Bezpieczne wyszukiwanie | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
+   | Liczba | Nie | *wyniki <-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
    | Przesunięcie | Nie | <*wartość pomijania*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
@@ -107,10 +103,10 @@ Z listy Akcje wybierz żądaną akcję.
 
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | Search Query | Tak | <*search-expression*> | Wprowadź wyrażenie służące do wykonywania zapytań dotyczących wyników wyzwalacza. Możesz wybrać spośród pól na liście zawartości dynamicznej lub utworzyć wyrażenie przy użyciu Konstruktora wyrażeń. |
-   | Market | Tak | <*Ustawienia regionalne*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
-   | Safe Search | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
-   | Licznik | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
+   | Zapytanie wyszukiwania | Tak | *wyrażenie wyszukiwania* <> | Wprowadź wyrażenie służące do wykonywania zapytań dotyczących wyników wyzwalacza. Możesz wybrać spośród pól na liście zawartości dynamicznej lub utworzyć wyrażenie przy użyciu Konstruktora wyrażeń. |
+   | Rynek | Tak | <*Ustawienia regionalne*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
+   | Bezpieczne wyszukiwanie | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
+   | Liczba | Nie | *wyniki <-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
    | Przesunięcie | Nie | <*wartość pomijania*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
@@ -156,7 +152,7 @@ Z listy Akcje wybierz żądaną akcję.
    |----------|----------|-------|-------------|
    | Nazwa połączenia | Tak | <*nazwę połączenia*> | Nazwa do utworzenia dla połączenia |
    | Wersja interfejsu API | Tak | <*API-version*> | Domyślnie wersja interfejsu API Wyszukiwanie Bing jest ustawiona na bieżącą wersję. W razie potrzeby możesz wybrać wcześniejszą wersję. |
-   | Klucz interfejsu API | Tak | <*API-key*> | Wcześniej pobrano klucz interfejsu API Wyszukiwanie Bing. Jeśli nie masz klucza, Pobierz [klucz interfejsu API teraz](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Klucz interfejsu API | Tak | > <*API-Key* | Wcześniej pobrano klucz interfejsu API Wyszukiwanie Bing. Jeśli nie masz klucza, Pobierz [klucz interfejsu API teraz](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
    Na przykład:

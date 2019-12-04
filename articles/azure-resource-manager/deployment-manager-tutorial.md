@@ -1,16 +1,16 @@
 ---
-title: Używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager | Microsoft Docs
-description: Użyj szablonów usługi Resource Manager z usługą Azure Deployment Manager, aby wdrażać zasoby platformy Azure.
+title: Wdrażanie szablonów za pomocą usługi Azure Menedżer wdrażania
+description: Dowiedz się, jak wdrażać zasoby platformy Azure za pomocą szablonów Menedżer zasobów za pomocą usługi Azure Menedżer wdrażania.
 author: mumian
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: db130da9943007e647adf77411b456914af9886f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: f8091aedcf1f03ef83dbab3b27e9af6b2912d25a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307021"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789991"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Samouczek: używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (publiczna wersja zapoznawcza)
 
@@ -186,7 +186,7 @@ W dalszej części samouczka wdrożysz wprowadzenie. Tożsamość zarządzana pr
 
 Musisz utworzyć tożsamość zarządzaną przypisaną przez użytkownika i skonfigurować kontrolę dostępu dla subskrypcji.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Utwórz [tożsamość zarządzaną przypisaną przez użytkownika](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. W portalu wybierz opcję **Subskrypcje** z menu po lewej stronie, a następnie wybierz swoją subskrypcję.
 4. Wybierz opcję **Kontrola dostępu (IAM)** , a następnie wybierz opcję **Dodaj przypisanie roli**.

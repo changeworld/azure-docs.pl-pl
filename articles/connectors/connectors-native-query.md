@@ -1,27 +1,21 @@
 ---
-title: Dodaj akcję zapytania w usłudze Logic Apps | Microsoft Docs
-description: Przegląd akcji zapytania dotyczącej wykonywania akcji, takich jak Filtruj tablicę.
-services: ''
-documentationcenter: ''
-author: jeffhollan
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
-ms.service: logic-apps
+title: Dodawanie akcji zapytania w usłudze Logic Apps
+description: Przegląd akcji zapytania na potrzeby wykonywania akcji takich jak Filtruj tablicę
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/20/2016
-ms.author: jehollan
-ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+tags: connectors
+ms.openlocfilehash: 2e5c9d371a280b776699b2e10d3e8e94b5f41f6f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973763"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787136"
 ---
 # <a name="get-started-with-the-query-action"></a>Rozpocznij pracę z akcją zapytania
+
 Za pomocą akcji zapytania można współpracować z partiami i tablicami w celu wykonywania przepływów pracy w celu:
 
 * Utwórz zadanie dla wszystkich rekordów o wysokim priorytecie z bazy danych.
@@ -30,6 +24,7 @@ Za pomocą akcji zapytania można współpracować z partiami i tablicami w celu
 Aby rozpocząć pracę z akcją zapytania w aplikacji logiki, zobacz [Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-query-action"></a>Korzystanie z akcji zapytania
+
 Akcja jest operacją wykonywaną przez przepływ pracy zdefiniowany w aplikacji logiki. 
 [Dowiedz się więcej o akcjach](../connectors/apis-list.md).  
 

@@ -1,21 +1,18 @@
 ---
-title: Nawiązywanie połączenia z programem IBM DB2 — Azure Logic Apps
+title: Nawiązywanie połączenia z programem IBM DB2
 description: Zarządzanie zasobami za pomocą interfejsów API REST programu IBM DB2 i Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: plarsen, LADocs
+ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a7079115b381d094cec77f96015342b5bc568c27
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 3c2bb01254b19c42fdd704544a6812177fecf4ca
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051032"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789903"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Zarządzanie zasobami programu IBM DB2 przy użyciu Azure Logic Apps
 
@@ -29,7 +26,7 @@ W tym artykule pokazano, jak utworzyć aplikację logiki, która wykonuje różn
 
 Łącznik IBM DB2 obsługuje te platformy i wersje programu IBM DB2 wraz z produktami zgodnymi z programem IBM DB2, które obsługują architekturę DRDA (Distributed relacyjnej bazy danych) (SQLAM) w wersji 10 i 11:
 
-| Platforma | Version | 
+| Platforma | Wersja | 
 |----------|---------|
 | IBM DB2 dla systemu z/OS | 11,1, 10,1 |
 | IBM DB2 for i | 7,3, 7,2, 7,1 |
@@ -93,7 +90,7 @@ Aby skonfigurować połączenie, podaj te szczegóły połączenia po wyświetle
 | **Hasło** | Tak | Hasło do bazy danych |
 ||||
 
-Przykład:
+Na przykład:
 
 ![Szczegóły połączenia dla baz danych opartych na chmurze](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -144,7 +141,7 @@ Rozwiń akcję **Pobierz tabele** .
 
 ## <a name="get-row"></a>Pobierz wiersz
 
-Aby pobrać jeden rekord z tabeli bazy danych DB2, użyj akcji **Pobierz wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję DB2 `SELECT WHERE` , na `SELECT FROM AREA WHERE AREAID = '99999'`przykład.
+Aby pobrać jeden rekord z tabeli bazy danych DB2, użyj akcji **Pobierz wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję `SELECT WHERE` bazy danych DB2, na przykład `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 1. Jeśli w aplikacji logiki nigdy nie były używane akcje programu DB2, przejrzyj kroki w sekcji [Dodawanie akcji programu DB2 — Pobierz tabele](#add-db2-action) , ale zamiast tego Dodaj akcję **Pobierz wiersz** , a następnie wróć tutaj, aby kontynuować.
 
@@ -160,7 +157,7 @@ Aby pobrać jeden rekord z tabeli bazy danych DB2, użyj akcji **Pobierz wiersz*
    | **Identyfikator obszaru** | Tak | Identyfikator żądanego rekordu, na przykład "99999" w tym przykładzie |
    ||||
 
-   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
@@ -185,7 +182,7 @@ Rozwiń akcję **Pobierz wiersz** .
 
 ## <a name="get-rows"></a>Pobierz wiersze
 
-Aby pobrać wszystkie rekordy z tabeli bazy danych DB2, użyj akcji **Pobierz wiersze** w aplikacji logiki. Ta akcja uruchamia instrukcję DB2 `SELECT` , na `SELECT * FROM AREA`przykład.
+Aby pobrać wszystkie rekordy z tabeli bazy danych DB2, użyj akcji **Pobierz wiersze** w aplikacji logiki. Ta akcja uruchamia instrukcję `SELECT` bazy danych DB2, na przykład `SELECT * FROM AREA`.
 
 1. Jeśli w aplikacji logiki nigdy nie były używane akcje programu DB2, przejrzyj kroki w sekcji [Dodawanie akcji programu DB2 — Pobierz tabele](#add-db2-action) , ale zamiast tego Dodaj akcję **Pobierz wiersze** , a następnie wróć tutaj, aby kontynuować.
 
@@ -195,7 +192,7 @@ Aby pobrać wszystkie rekordy z tabeli bazy danych DB2, użyj akcji **Pobierz wi
 
 1. Otwórz listę **Nazwa tabeli** , a następnie wybierz żądaną tabelę, czyli "obszar" w tym przykładzie:
 
-   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. Aby określić filtr lub zapytanie dla wyników, wybierz pozycję **Pokaż opcje zaawansowane**.
 
@@ -222,7 +219,7 @@ Rozwiń akcję **Pobierz wiersze** .
 
 ## <a name="insert-row"></a>Wstaw wiersz
 
-Aby dodać pojedynczy rekord do tabeli bazy danych DB2, użyj akcji **Wstaw wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję DB2 `INSERT` , na `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`przykład.
+Aby dodać pojedynczy rekord do tabeli bazy danych DB2, użyj akcji **Wstaw wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję `INSERT` bazy danych DB2, na przykład `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 1. Jeśli w aplikacji logiki nigdy nie były używane akcje programu DB2, przejrzyj kroki w sekcji [Dodawanie akcji programu DB2 — Pobierz tabele](#add-db2-action) , ale zamiast tego Dodaj akcję **Wstaw wiersz** , a następnie wróć tutaj, aby kontynuować.
 
@@ -244,7 +241,7 @@ Aby dodać pojedynczy rekord do tabeli bazy danych DB2, użyj akcji **Wstaw wier
 
    Na przykład:
 
-   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
@@ -269,7 +266,7 @@ Rozwiń akcję **Wstaw wiersz** .
 
 ## <a name="update-row"></a>Aktualizuj wiersz
 
-Aby zaktualizować pojedynczy rekord w tabeli bazy danych DB2, użyj akcji **Aktualizuj wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję DB2 `UPDATE` , na `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`przykład.
+Aby zaktualizować pojedynczy rekord w tabeli bazy danych DB2, użyj akcji **Aktualizuj wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję `UPDATE` bazy danych DB2, na przykład `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`.
 
 1. Jeśli w aplikacji logiki nigdy nie były używane akcje programu DB2, przejrzyj kroki w sekcji [Dodawanie akcji programu DB2 — Pobierz tabele](#add-db2-action) , ale zamiast tego Dodaj akcję **Aktualizuj wiersz** , a następnie wróć tutaj, aby kontynuować.
 
@@ -292,7 +289,7 @@ Aby zaktualizować pojedynczy rekord w tabeli bazy danych DB2, użyj akcji **Akt
 
    Na przykład:
 
-   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
@@ -317,7 +314,7 @@ Rozwiń akcję **Aktualizuj wiersz** .
 
 ## <a name="delete-row"></a>Usuń wiersz
 
-Aby usunąć pojedynczy rekord z tabeli bazy danych DB2, użyj akcji **Usuń wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję DB2 `DELETE` , na `DELETE FROM AREA WHERE AREAID = '99999'`przykład.
+Aby usunąć pojedynczy rekord z tabeli bazy danych DB2, użyj akcji **Usuń wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję `DELETE` bazy danych DB2, na przykład `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 1. Jeśli w aplikacji logiki nigdy nie były używane akcje programu DB2, przejrzyj kroki w sekcji [Dodawanie akcji programu DB2 — Pobierz tabele](#add-db2-action) , ale zamiast tego Dodaj akcję **Usuń wiersz** , a następnie wróć tutaj, aby kontynuować.
 
@@ -337,7 +334,7 @@ Aby usunąć pojedynczy rekord z tabeli bazy danych DB2, użyj akcji **Usuń wie
 
    Na przykład:
 
-   ![Wybierz tabelę](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 

@@ -1,17 +1,17 @@
 ---
-title: Warstwy cenowe dla Azure Database for MariaDB
+title: Warstwy cenowe — Azure Database for MariaDB
 description: Poznaj różne warstwy cenowe dla Azure Database for MariaDB, w tym generacji obliczeń, typy magazynów, rozmiar magazynu, rdzeni wirtualnych, pamięć i okresy przechowywania kopii zapasowych.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: ca9552ee60237158bd570ede4a13dbc349b6d1d1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973578"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772401"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB warstw cenowych
 

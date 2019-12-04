@@ -1,17 +1,17 @@
 ---
-title: Zarządzanie Azure Database for MySQL-Azure Portal
+title: Zarządzanie serwerem Azure Portal-Azure Database for MySQL
 description: Dowiedz się, jak zarządzać serwerem Azure Database for MySQL przy użyciu Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 286209673e5743d08ddaa2fed2f507f84d622ea6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/02/2019
+ms.openlocfilehash: 553234410a7b8b798d26f0e2fee6132a2602b1cc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534021"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770513"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Zarządzanie serwerem Azure Database for MySQL przy użyciu Azure Portal
 W tym artykule pokazano, jak zarządzać bazą danych afire na serwerach MySQL. Zadania zarządzania obejmują skalowanie obliczeniowe i magazynowe, Resetowanie hasła administratora oraz wyświetlanie szczegółów serwera.

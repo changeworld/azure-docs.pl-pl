@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: alzam
-ms.openlocfilehash: 0319e3aec71d37b49a094861fdcbb3b96b6def67
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0572a919675ab363c55938f8731c691cd8129826
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585433"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767657"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Samouczek: Tworzenie połączenia sieci VPN użytkownika przy użyciu wirtualnej sieci WAN platformy Azure
 
@@ -134,7 +134,7 @@ Użyj pobranego profilu, aby skonfigurować klientów zdalnego dostępu. Procedu
 1. Pobierz i zainstaluj klienta OpenVPN z oficjalnej witryny internetowej.
 2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie konfiguracje sieci VPN użytkownika w Azure Portal lub polecenie New-AzureRmVpnClientConfiguration w programie PowerShell.
 3. Rozpakuj profil. Otwórz plik konfiguracji vpnconfig.ovpn z folderu OpenVPN w programie Notatnik.
-4. W sekcji certyfikatu klienta P2S wprowadź klucz publiczny certyfikatu klienta P2S w formacie base64. W przypadku certyfikatu w formacie PEM można po prostu otworzyć plik cer i skopiować klucz w formacie base64 znajdujący się pomiędzy nagłówkami certyfikatów. Sprawdź tutaj, w jaki sposób wyeksportować certyfikat, aby otrzymać zakodowany klucz publiczny.
+4. W sekcji certyfikatu klienta P2S wprowadź klucz publiczny certyfikatu klienta P2S w formacie base64. W przypadku certyfikatu w formacie PEM można po prostu otworzyć plik cer i skopiować klucz w formacie base64 znajdujący się pomiędzy nagłówkami certyfikatów. Zobacz tutaj [, jak wyeksportować certyfikat, aby uzyskać zakodowany klucz publiczny.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)
 5. W sekcji klucza prywatnego wprowadź klucz prywatny certyfikatu klienta P2S w formacie base64. Zobacz tutaj, w jaki sposób wyodrębnić klucz prywatny.
 6. Nie zmieniaj innych pól. Użyj konfiguracji wprowadzonej w danych wejściowych klienta, aby nawiązać połączenie z siecią VPN.
 7. Skopiuj plik vpnconfig.ovpn do folderu C:\Program Files\OpenVPN\config.
@@ -145,7 +145,7 @@ Użyj pobranego profilu, aby skonfigurować klientów zdalnego dostępu. Procedu
 1. Wybierz pliki konfiguracji klienta sieci VPN, które odpowiadają architekturze komputera z systemem Windows. W przypadku 64-bitowej architektury procesora wybierz pakiet instalatora „VpnClientSetupAmd64”. W przypadku 32-bitowej architektury procesora wybierz pakiet instalatora „VpnClientSetupX86”.
 2. Kliknij dwukrotnie pakiet, aby go zainstalować. Jeśli zostanie wyświetlone okno podręczne SmartScreen, kliknij pozycję Więcej informacji, a następnie pozycję Uruchom mimo to.
 3. Na komputerze klienckim przejdź do obszaru Ustawienia sieci i kliknij pozycję Sieć VPN. Połączenie z siecią VPN zawiera nazwę sieci wirtualnej, z którą jest nawiązywane połączenie.
-4. Zanim spróbujesz nawiązać połączenie, sprawdź, czy zainstalowano certyfikat klienta na komputerze klienckim. Certyfikat klienta jest wymagany w celu uwierzytelniania podczas korzystania z natywnego typu certyfikatu uwierzytelniania platformy Azure. Aby uzyskać więcej informacji na temat generowania certyfikatów, zobacz Generowanie certyfikatów. Aby dowiedzieć się, jak zainstalować certyfikat klienta, zobacz Instalowanie certyfikatu klienta.
+4. Zanim spróbujesz nawiązać połączenie, sprawdź, czy zainstalowano certyfikat klienta na komputerze klienckim. Certyfikat klienta jest wymagany w celu uwierzytelniania podczas korzystania z natywnego typu certyfikatu uwierzytelniania platformy Azure. Więcej informacji o generowaniu certyfikatów znajduje się w temacie [Generate Certificates](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site). Aby dowiedzieć się, jak zainstalować certyfikat klienta, zobacz Instalowanie certyfikatu klienta.
 
 ## <a name="viewwan"></a>Wyświetlanie wirtualnej sieci WAN
 

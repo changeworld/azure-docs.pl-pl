@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy z mikrofonu, C# (.NET) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 88ac0f05bf937af19a0bd6bf3cf2253fd3052f4c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 106a11959bdaf34f44faa0c6a2b031ccba537835
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503486"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795669"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Przed rozpoczęciem:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
 
 ## <a name="open-your-project-in-visual-studio"></a>Otwieranie projektu w programie Visual Studio
 
@@ -45,6 +46,7 @@ Przed zainicjowaniem obiektu `SpeechRecognizer` należy utworzyć konfigurację 
 > [!NOTE]
 > Ten przykład używa metody `FromSubscription()`, aby skompilować `SpeechConfig`. Aby uzyskać pełną listę dostępnych metod, zobacz [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=16)]
+> Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 ## <a name="initialize-a-speechrecognizer"></a>Inicjowanie elementu SpeechRecognizer
 

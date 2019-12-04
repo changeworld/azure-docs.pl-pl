@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c44228d7e1456bce870765935beb011cb24626d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113587"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790935"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Co to jest indeksowanie przyrostowe w usłudze Azure Wyszukiwanie poznawcze?
 
@@ -47,7 +47,7 @@ Aby rozpocząć korzystając z indeksowania przyrostowego, należy ustawić wła
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters":{}
+    "parameters": {}
 }
 ```
 
@@ -83,7 +83,7 @@ Indeksatory nie tylko przenoś i przetwarzają nowe dokumenty, ale teraz mogą p
 
 ### <a name="invalidating-changes"></a>Unieważnianie zmian
 
-Unieważnienie zmian jest rzadkie, ale ma znaczny wpływ na stan potoku wzbogacania. Zmiana na unieważnienie jest taka, gdzie cała pamięć podręczna nie jest już prawidłowa. Przykładem zmiany unieważnienia jest to, gdzie źródło danych jest aktualizowane. W przypadku scenariuszy, gdy wiadomo, że zmiana nie powinna unieważnić pamięci podręcznej, na przykład obracając klucz na koncie magazynu, parametr `ignoreResetRequirement` QueryString powinien być ustawiony na `true` operacji aktualizacji określonego zasobu, aby upewnić się, że operacja jest nie odrzucono.
+Unieważnienie zmian jest rzadkie, ale ma znaczny wpływ na stan potoku wzbogacania. Zmiana na unieważnienie jest taka, gdzie cała pamięć podręczna nie jest już prawidłowa. Przykładem zmiany unieważnienia jest to, gdzie źródło danych jest aktualizowane. W przypadku scenariuszy, gdy wiadomo, że zmiana nie powinna unieważnić pamięci podręcznej, na przykład obracając klucz na koncie magazynu, parametr `ignoreResetRequirement` QueryString powinien być ustawiony na `true` operacji aktualizacji określonego zasobu, aby upewnić się, że operacja nie została odrzucona.
 
 Oto pełna lista zmian, które spowodują unieważnienie pamięci podręcznej:
 
@@ -122,7 +122,7 @@ Pełna lista zmian spowodowanych niespójnością pamięci podręcznej:
 
 `api-version=2019-05-06-Preview` REST udostępnia interfejsy API do indeksowania przyrostowego, z dodatkiem do indeksatorów, umiejętności i źródeł danych. Dokumentacja referencyjna nie obejmuje obecnie tych dodatków. W poniższej sekcji opisano zmiany w interfejsie API.
 
-### <a name="indexers"></a>Indexers (Indeksatory)
+### <a name="indexers"></a>Indeksatory
 
 [Tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer) i [indeksatora aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-indexer) spowoduje teraz uwidocznienie nowych właściwości dotyczących pamięci podręcznej:
 

@@ -1,22 +1,18 @@
 ---
-title: Łączenie z usługą Wunderlist z Azure Logic Apps | Microsoft Docs
+title: Połącz z usługą Wunderlist z Azure Logic Apps
 description: Automatyzuj zadania i przepływy pracy, które monitorują listy, zadania, przypomnienia i nie tylko w ramach konta usługi Wunderlist oraz zarządzają nimi przy użyciu Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: d57ab4a7b655a7d49a7120d358dccc627099e5fd
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 5ac13595bd77238aaede5fa3bdc3a35ef69e8504
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050663"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789124"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Monitoruj i Zarządzaj usługą Wunderlist przy użyciu Azure Logic Apps
 
@@ -52,13 +48,13 @@ Korzystając z Azure Logic Apps i łącznika usługi Wunderlist, możesz tworzy�
    * W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź ciąg "Wunderlist" jako filtr. 
    Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
-     —lub—
+     — lub —
 
    * Dla istniejących aplikacji logiki: 
    
      * W ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. 
 
-       —lub—
+       — lub —
 
      * Między krokami, do których chcesz dodać akcję, przesuń wskaźnik myszy nad strzałkę między krokami. 
      Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
@@ -74,7 +70,7 @@ Korzystając z Azure Logic Apps i łącznika usługi Wunderlist, możesz tworzy�
 
 Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/wunderlist/)łącznika.
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).

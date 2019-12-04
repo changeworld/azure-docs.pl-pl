@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 452dfcc04d9fc9048493222ad2a82a5bcc8b78f4
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 009a480add9d808115f24a69a400118fec7cb293
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162870"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790577"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatyczna kopia zapasowa v2 dla Virtual Machines platformy Azure (Menedżer zasobów)
 
@@ -173,7 +173,7 @@ Jeśli nie jest zainstalowana lub nie można zainicjować obsługi administracyj
 $region = "EASTUS2"
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region 
+    -Version "2.0" -Location $region 
 ```
 
 ### <a id="verifysettings"></a>Weryfikuj bieżące ustawienia
@@ -290,7 +290,7 @@ $logbackupfrequency = "30"
 
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+    -Version "2.0" -Location $region
 
 # Creates/use a storage account to store the backups
 
@@ -323,7 +323,7 @@ Najpierw można sondować stan, wywołując metodę [msdb. managed_backup. sp_ge
 
 Innym rozwiązaniem jest skorzystanie z wbudowanej funkcji Poczta bazy danych na potrzeby powiadomień.
 
-1. Wywołaj procedurę składowaną [msdb. managed_backup. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) , aby przypisać do parametru **SSMBackup2WANotificationEmailIds** adres e-mail. 
+1. Wywołaj procedurę składowaną [msdb. managed_backup. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) , aby przypisać adres e-mail do parametru **SSMBackup2WANotificationEmailIds** . 
 1. Włącz [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) do wysyłania wiadomości e-mail z maszyny wirtualnej platformy Azure.
 1. Aby skonfigurować Poczta bazy danych, Użyj serwera SMTP i nazwy użytkownika. Poczta bazy danych można skonfigurować w SQL Server Management Studio lub za pomocą poleceń języka Transact-SQL. Aby uzyskać więcej informacji, zobacz [poczta bazy danych](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail).
 1. [Skonfiguruj SQL Server agenta, aby korzystał z poczta bazy danych](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).

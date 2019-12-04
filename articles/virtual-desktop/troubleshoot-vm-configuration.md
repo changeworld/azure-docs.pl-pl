@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607395"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791143"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej hosta sesji
 
 Ten artykuł służy do rozwiązywania problemów występujących podczas konfigurowania maszyn wirtualnych hosta sesji usług pulpitu wirtualnego systemu Windows.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 
 Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , aby omówić usługę pulpitu wirtualnego systemu Windows z zespołem produktu i aktywnymi członkami społeczności.
 
@@ -201,7 +201,7 @@ Sprawdź wpisy rejestru wymienione poniżej i upewnij się, że ich wartości pa
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Błąd: O_REVERSE_CONNECT_STACK_FAILURE
 
-![Kod błędu O_REVERSE_CONNECT_STACK_FAILURE.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![O_REVERSE_CONNECT_STACK_FAILURE kod błędu.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Przyczyna:** Stos równoległy nie jest zainstalowany na maszynie wirtualnej hosta sesji.
 
@@ -309,7 +309,7 @@ Jeśli zobaczysz jeden z tych komunikatów, oznacza to, że obraz nie ma zainsta
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Wyłącz ustawienie zasad grupy trybu licencjonowania Pulpit zdalny
 
-Sprawdź ustawienie zasad grupy, otwierając Edytor zasady grupy na maszynie wirtualnej i przechodząc do **Szablony administracyjne** > **składniki systemu Windows** > **usługi pulpitu zdalnego** > **hosta sesji** > **licencjonowanie** > **ustawić tryb licencjonowania pulpit zdalny**. Jeśli ustawienie zasad grupy jest **włączone**, zmień je na **wyłączone**. Jeśli jest już wyłączona, pozostaw ją jako-is.
+Sprawdź ustawienie zasad grupy, otwierając Edytor zasady grupy na maszynie wirtualnej i przechodząc do **Szablony administracyjne** > **składniki systemu Windows** > **usługi pulpitu zdalnego** > Pulpit zdalny **Host sesji** > **Licencjonowanie** > **Ustaw tryb licencjonowania pulpit zdalny**. Jeśli ustawienie zasad grupy jest **włączone**, zmień je na **wyłączone**. Jeśli jest już wyłączona, pozostaw ją jako-is.
 
 >[!NOTE]
 >Jeśli zasady grupy są ustawiane za pośrednictwem domeny, należy wyłączyć to ustawienie dla zasad przeznaczonych dla maszyn wirtualnych obejmujących wiele sesji systemu Windows 10 Enterprise.
@@ -333,7 +333,7 @@ Jeśli numer wersji jest taki sam, jak "1809", zainstaluj [aktualizację KB45160
 
 ### <a name="version-1903"></a>Wersja 1903
 
-Jeśli numer wersji jest taki sam, jak "1903", zainstaluj [aktualizację KB4517211](https://support.microsoft.com/help/4517211).
+Wdróż ponownie system operacyjny hosta z najnowszą wersją obrazu systemu Windows 10 w wersji 1903 z galerii platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 

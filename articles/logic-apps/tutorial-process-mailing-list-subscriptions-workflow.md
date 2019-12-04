@@ -1,22 +1,18 @@
 ---
-title: Tworzenie zautomatyzowanych przepływów pracy opartych na zatwierdzaniu — Azure Logic Apps
+title: Tworzenie zautomatyzowanych przepływów pracy opartych na zatwierdzaniu
 description: Samouczek — Tworzenie zautomatyzowanego przepływu pracy opartego na zatwierdzaniu, który przetwarza subskrypcje listy adresowej za pomocą Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: f720e22542533d17fc7ab581f8ba8d9c03a89570
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: bcd90859066911797d78737187cae6d361029ddd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025577"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784667"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Samouczek: tworzenie automatycznych przepływów pracy opartych na zatwierdzaniu przy użyciu Azure Logic Apps
 
@@ -51,7 +47,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu po
 
 ## <a name="create-your-logic-app"></a>Tworzenie aplikacji logiki
 
-1. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** > **integracja** > **aplikacji logiki**.
+1. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** > **integracji** > **aplikacji logiki**.
 
    ![Tworzenie nowego zasobu aplikacji logiki](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 

@@ -1,22 +1,18 @@
 ---
-title: Automatyzacja zadań za pomocą wielu usług platformy Azure — Azure Logic Apps
+title: Automatyzowanie zadań z wieloma usługami platformy Azure
 description: Samouczek — Tworzenie zautomatyzowanych przepływów pracy w celu przetwarzania wiadomości e-mail przy użyciu Azure Logic Apps, usługi Azure Storage i Azure Functions
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 52c9a23e3e00075e934b9f9f22a835090e02f1b9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 6486427753543e0f4fe9a197b6825a555ef2fc70
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820219"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793469"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Samouczek: Automatyzowanie zadań do przetwarzania wiadomości e-mail przy użyciu Azure Logic Apps, Azure Functions i usługi Azure Storage
 
@@ -61,9 +57,9 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
    | Ustawienie | Wartość | Opis |
    |---------|-------|-------------|
    | **Subskrypcja** | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |  
-   | **Grupa zasobów** | <*Azure-Resource-group*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. W tym przykładzie zastosowano "LA-samouczek-RG". <p>**Uwaga:** grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. |
-   | **Nazwa konta magazynu** | <*Azure-Storage-account-name* > | Nazwa konta magazynu, która musi mieć 3-24 znaków i może zawierać tylko małe litery i cyfry. W tym przykładzie zastosowano "attachmentstorageacct". |
-   | **Lokalizacja** | <*Azure-region*> | Region, w którym są przechowywane informacje o koncie magazynu. W tym przykładzie zastosowano "zachodnie stany USA". |
+   | **Grupa zasobów** | <*platformy Azure —> grupy zasobów* | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. W tym przykładzie zastosowano "LA-samouczek-RG". <p>**Uwaga:** grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. |
+   | **Nazwa konta magazynu** | <*Azure-Storage-account-name*> | Nazwa konta magazynu, która musi mieć 3-24 znaków i może zawierać tylko małe litery i cyfry. W tym przykładzie zastosowano "attachmentstorageacct". |
+   | **Lokalizacja** | <> *platformy Azure* | Region, w którym są przechowywane informacje o koncie magazynu. W tym przykładzie zastosowano "zachodnie stany USA". |
    | **Wydajność** | Standardowa (Standard) | To ustawienie określa obsługiwane typy danych oraz nośniki do przechowywania danych. Zobacz [Typy kont magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Rodzaj konta** | Zastosowania ogólne | [Typ konta magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **Replikacja** | Magazyn lokalnie nadmiarowy (LRS) | To ustawienie określa sposób kopiowania, przechowywania i synchronizowania danych oraz zarządzania nimi. Zobacz [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](../storage/common/storage-redundancy-lrs.md). |
@@ -144,7 +140,7 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
 
    | Ustawienie | Wartość | Opis |
    | ------- | ----- | ----------- |
-   | **Nazwa aplikacji** | <*funkcji — nazwa aplikacji* > | Nazwa aplikacji funkcji, która musi być globalnie unikatowa na platformie Azure. Ten przykład używa już "CleanTextFunctionApp", więc podaj inną nazwę, na przykład "MyCleanTextFunctionApp-<*nazwę*>" |
+   | **Nazwa aplikacji** | <*funkcji — nazwa aplikacji*> | Nazwa aplikacji funkcji, która musi być globalnie unikatowa na platformie Azure. Ten przykład używa już "CleanTextFunctionApp", więc podaj inną nazwę, na przykład "MyCleanTextFunctionApp-<*nazwę*>" |
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Ta sama subskrypcja platformy Azure, której użyto wcześniej |
    | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej |
    | **OS** | <> *systemu operacyjnego* | Wybierz system operacyjny, który obsługuje ulubiony język programowania funkcji. Na potrzeby tego przykładu wybierz pozycję **Windows**. |

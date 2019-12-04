@@ -1,17 +1,17 @@
 ---
-title: Koncepcje serwera w Azure Database for PostgreSQL — pojedynczy serwer
+title: Serwery — Azure Database for PostgreSQL — pojedynczy serwer
 description: Ten artykuł zawiera zagadnienia i wskazówki dotyczące konfigurowania Azure Database for PostgreSQL-pojedynczego serwera i zarządzania nim.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bd7c24489e8ac7b26cb703923ddf9cbb741cfd68
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029972"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768167"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL — pojedynczy serwer
 W tym artykule przedstawiono zagadnienia i wytyczne dotyczące pracy z serwerem Azure Database for PostgreSQL-pojedynczym.

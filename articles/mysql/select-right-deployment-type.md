@@ -1,17 +1,17 @@
 ---
-title: Wybieranie odpowiedniego typu wdrożenia dla Azure Database for MySQL
+title: Wybieranie odpowiedniego typu wdrożenia — Azure Database for MySQL
 description: W tym artykule opisano czynniki, które należy wziąć pod uwagę przed wdrożeniem Azure Database for MySQL jak infrastruktura jako usługa (IaaS) lub platforma jako usługa (PaaS).
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: 5cdd65d5509d8f46f095d91c509a1fda288517c4
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/02/2019
+ms.openlocfilehash: 3cc03ba1670299f1ea43a1fde666c2917eaf6b9d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132436"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770462"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Wybieranie odpowiedniej opcji serwera MySQL na platformie Azure
 
@@ -34,8 +34,8 @@ Główne różnice między tymi opcjami są wymienione w poniższej tabeli:
 |            | Azure Database for MySQL | Baza danych MySQL na maszynach wirtualnych platformy Azure    |
 |:-------------------|:-----------------------------|:--------------------|
 | Umowa dotycząca poziomu usług (SLA)                | Oferuje umowę SLA na 99,99% dostępności| Do 99,95% dostępności z co najmniej dwoma wystąpieniami w tym samym zestawie dostępności.<br/><br/>dostępność na 99,9% z maszyną wirtualną o pojedynczym wystąpieniu przy użyciu usługi Premium Storage.<br/><br/>99,99% przy użyciu Strefy dostępności z wieloma wystąpieniami w wielu zestawach dostępności.<br/><br/>Zobacz umowę [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)dotyczącą Virtual Machines. |
-| Stosowanie poprawek systemu operacyjnego        | Automatyczne  | Zarządzane przez klientów |
-| Stosowanie poprawek MySQL     | Automatyczne  | Zarządzane przez klientów |
+| Stosowanie poprawek systemu operacyjnego        | Automatyczny  | Zarządzane przez klientów |
+| Stosowanie poprawek MySQL     | Automatyczny  | Zarządzane przez klientów |
 | Wysoka dostępność | Model wysokiej dostępności (HA) jest oparty na wbudowanych mechanizmach trybu failover w przypadku wystąpienia przerwy na poziomie węzła. W takich przypadkach usługa automatycznie tworzy nowe wystąpienie i dołącza magazyn do tego wystąpienia. | Klienci mogą korzystać z architektów, implementować, testować i obsługiwać wysoką dostępność. Możliwości mogą obejmować zawsze włączone klaster trybu failover, zawsze włączone replikacje grupowe, wysyłanie dziennika lub replikację transakcyjną.|
 | Nadmiarowość stref | Obecnie nieobsługiwane | Maszyny wirtualne platformy Azure można skonfigurować do uruchamiania w różnych strefach dostępności. W przypadku rozwiązania lokalnego klienci muszą tworzyć i obsługiwać własne pomocnicze centrum danych oraz zarządzać nimi.|
 | Scenariusze hybrydowe | Za pomocą [replikacja typu Data-in](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)można synchronizować dane z zewnętrznego serwera MySQL do usługi Azure Database for MySQL. Serwer zewnętrzny może być lokalny, w maszynach wirtualnych lub w usłudze bazy danych hostowanej przez innych dostawców chmury.<br/><br/> Funkcja [Read Replica](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) umożliwia replikowanie danych z serwera głównego Azure Database for MySQL do maksymalnie pięciu serwerów repliki tylko do odczytu. Repliki są w tym samym regionie świadczenia usługi Azure lub w różnych regionach. Repliki tylko do odczytu są asynchronicznie aktualizowane przy użyciu technologii replikacji binlog.| Zarządzane przez klientów
@@ -49,7 +49,7 @@ Główne różnice między tymi opcjami są wymienione w poniższej tabeli:
 
 Istnieje kilka czynników, które mogą mieć wpływ na decyzję, aby wybrać PaaS lub IaaS do hostowania baz danych MySQL.
 
-### <a name="cost"></a>Koszty
+### <a name="cost"></a>Koszt
 
 Ograniczone finansowanie jest często podstawowym zagadnieniem, które określa najlepsze rozwiązanie do hostowania baz danych. Jest to prawdziwe, niezależnie od tego, czy jesteś w trakcie uruchamiania z małym środkiem pieniężnym czy zespołem w firmie, który działa w ramach ścisłych ograniczeń budżetowych. W tej sekcji opisano podstawowe informacje dotyczące rozliczeń i licencjonowania na platformie Azure, które mają zastosowanie do Azure Database for MySQL i MySQL na maszynach wirtualnych platformy Azure.
 

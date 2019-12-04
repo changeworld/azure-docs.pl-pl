@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 492fa7f4989a40ea1d5ec91a4fbf4dbbe79ef6ce
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383254"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790347"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Samouczek: otrzymywanie powiadomień z przestrzeni usługi Azure Digital Twins przy użyciu usługi Logic Apps
 
@@ -51,7 +51,7 @@ W tej sekcji skonfigurujesz usługę [Event Grid](../event-grid/overview.md), kt
 
 [Tematy usługi Event Grid](../event-grid/concepts.md#topics) udostępniają interfejs umożliwiający trasowanie zdarzeń wygenerowanych przez funkcję zdefiniowaną przez użytkownika. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**. 
 
@@ -116,11 +116,11 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
     [![utworzyć zasobu Logic Apps](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
 
-1. Otwórz zasób usługi Logic Apps, a następnie otwórz okienko **Projektant aplikacji logiki**. 
+1. Otwórz zasób Logic Apps podczas jego wdrażania, a następnie otwórz okienko **Projektant aplikacji logiki** . 
 
-1. Wybierz wyzwalacz **gdy wystąpi zdarzenie zasobów Event Grid** . Po wyświetleniu monitu zaloguj się w dzierżawie za pomocą konta platformy Azure. Jeśli zostanie wyświetlony monit, wybierz opcję **Zezwalaj na dostęp** do zasobu Event Grid. Wybierz przycisk **Kontynuuj**.
+1. Wybierz wyzwalacz **gdy wystąpi zdarzenie zasobów Event Grid** . Po wyświetleniu monitu rozwiń opcję **Azure Event Grid** i zaloguj się do dzierżawy przy użyciu konta platformy Azure. Jeśli zostanie wyświetlony monit, wybierz opcję **Zezwalaj na dostęp** do zasobu Event Grid. Wybierz przycisk **Kontynuuj**.
 
-1. W oknie **Gdy następuje zdarzenie usługi Event Grid (wersja zapoznawcza)** : 
+1. W oknie **po wystąpieniu zdarzenia zasobu** : 
    
    a. Wybierz **subskrypcję** użytą wcześniej do utworzenia tematu usługi Event Grid.
 
@@ -186,7 +186,7 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
    [![Logic Apps opcji "Wyślij wiadomość e-mail"](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
 
-1. Wybierz przycisk **Zapisz** u góry okienka **Projektant aplikacji logiki**.
+1. Wybierz przycisk **Zapisz** znajdujący się u góry okienka **projektanta aplikacji logiki** .
 
 1. Pamiętaj o symulowaniu danych z czujników — przejdź do folderu **device-connectivity** przykładu usługi Digital Twins w oknie polecenia i uruchom polecenie `dotnet run`.
 

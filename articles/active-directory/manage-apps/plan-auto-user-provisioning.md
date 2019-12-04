@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706219"
+ms.locfileid: "74786422"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planowanie wdrożenia automatycznego aprowizowania użytkowników
 
@@ -90,11 +90,11 @@ W tym przykładzie użytkownicy i grupy są tworzone w bazie danych kadr połąc
 
 1. Użytkownicy/grupy są tworzone w lokalnej aplikacji/systemie kadr, takiej jak SAP. 
 
-1. Agent Azure AD Connect uruchamia zaplanowane synchronizacje tożsamości (użytkowników i grup) z lokalnej usługi AD do usługi Azure AD.
+1. **Agent Azure AD Connect** uruchamia zaplanowane synchronizacje tożsamości (użytkowników i grup) z lokalnej usługi AD do usługi Azure AD.
 
-1. Usługa Azure AD Provisioning rozpoczyna [cykl początkowy](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) względem systemu źródłowego i systemu docelowego. 
+1. **Usługa Azure AD Provisioning** rozpoczyna [cykl początkowy](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) względem systemu źródłowego i systemu docelowego. 
 
-1. Usługa Azure AD Provisioning sprawdza system źródłowy dla wszystkich użytkowników i grup, które uległy zmianie od pierwszego cyklu i wypycha zmiany w [cyklach przyrostowych](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. **Usługa Azure AD Provisioning** sprawdza system źródłowy dla wszystkich użytkowników i grup, które uległy zmianie od pierwszego cyklu i wypycha zmiany w [cyklach przyrostowych](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatyczne Inicjowanie obsługi użytkowników dla przedsiębiorstw korzystających tylko z chmury
 
@@ -106,9 +106,9 @@ W tym przykładzie tworzenie użytkowników odbywa się w usłudze Azure AD, a u
 
 1. Użytkownicy/grupy są tworzone w usłudze Azure AD.
 
-1. Usługa Azure AD Provisioning rozpoczyna [cykl początkowy](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) względem systemu źródłowego i systemu docelowego. 
+1. **Usługa Azure AD Provisioning** rozpoczyna [cykl początkowy](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) względem systemu źródłowego i systemu docelowego. 
 
-1. Usługa Azure AD Provisioning jest kwerendą systemu źródłowego dla wszystkich użytkowników i grup zaktualizowanych od pierwszego cyklu i wykonuje wszystkie [cykle przyrostowe](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. **Usługa Azure AD Provisioning** jest kwerendą systemu źródłowego dla wszystkich użytkowników i grup zaktualizowanych od pierwszego cyklu i wykonuje wszystkie [cykle przyrostowe](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatyczne Inicjowanie obsługi administracyjnej użytkowników dla aplikacji usługi Cloud kadr 
 

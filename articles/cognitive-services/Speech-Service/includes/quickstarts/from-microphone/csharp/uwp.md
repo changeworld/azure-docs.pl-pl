@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy z mikrofonu, C# (platformy UWP) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d1da9a9ef32aed1975595bb15909b9531ab2400
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 50de8fd6ba28039c5ca7660c96c6d863f53cf02a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503556"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796008"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że:
+Przed rozpoczęciem:
 
 > [!div class="checklist"]
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=uwp)
+> * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
 
 Jeśli to już zrobione, świetnie. Kontynuujmy.
 

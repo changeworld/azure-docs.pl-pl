@@ -1,17 +1,17 @@
 ---
-title: Koncepcje zaawansowanej ochrony przed zagrożeniami — Azure Database for MySQL
+title: Zaawansowana ochrona przed zagrożeniami — Azure Database for MySQL
 description: Poznaj koncepcje dotyczące zaawansowanej ochrony przed zagrożeniami, która wykrywa nietypowe działania bazy danych wskazujące na potencjalne zagrożenia bezpieczeństwa bazy danych.
-author: bolzmj
-ms.author: mbolz
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 23f8679a2ae7d9dc299db42e45b5b06d42f94536
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 747e2f088b545026775feed45535b1f9bc90209f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970467"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771006"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL zaawansowaną ochronę przed zagrożeniami
 
@@ -23,7 +23,7 @@ Usługa Advanced Threat Protection dla usługi Azure Database for MySQL wykrywa 
 Zaawansowana ochrona przed zagrożeniami jest częścią zaawansowanej oferty zabezpieczeń danych, która jest ujednoliconym pakietem zaawansowanych funkcji zabezpieczeń. Dostęp do zaawansowanej ochrony przed zagrożeniami można uzyskać i zarządzać nimi za pomocą [Azure Portal](https://portal.azure.com) lub [interfejsu API REST](/rest/api/mysql/serversecurityalertpolicies). Ta funkcja jest dostępna dla serwerów Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
 > [!NOTE]
-> Funkcja zaawansowanej ochrony przed zagrożeniami **nie** jest dostępna w następujących regionach na platformie Azure dla instytucji rządowych i w ramach suwerennej chmury: US Gov Teksas, US Gov Arizona, US gov Iowa, US, gov wirginia, US DoD (region wschodni), US dod (region środkowy), Niemcy środkowe, Niemcy Północne, Chiny Wschodnie, Chiny Wschodnie 2. Odwiedź stronę [dostępne produkty według regionów,](https://azure.microsoft.com/global-infrastructure/services/) Aby uzyskać ogólną dostępność produktu.
+> Funkcja zaawansowanej ochrony przed zagrożeniami **nie** jest dostępna w następujących regionach na platformie Azure dla instytucji rządowych i w ramach suwerennej chmury: US Gov Teksas, US Gov Arizona, US gov Iowa, US, gov wirginia, US DoD (region wschodni), US dod (region środkowy), Niemcy środkowe, Niemcy północne, Chiny Wschodnie, Chiny Wschodnie 2. Odwiedź stronę [dostępne produkty według regionów,](https://azure.microsoft.com/global-infrastructure/services/) Aby uzyskać ogólną dostępność produktu.
 
 
 ## <a name="what-is-advanced-threat-protection"></a>Co to jest zaawansowana ochrona przed zagrożeniami?
@@ -35,7 +35,7 @@ Zaawansowana ochrona przed zagrożeniami dla Azure Database for MySQL zapewnia n
 ## <a name="advanced-threat-protection-alerts"></a>Alerty zaawansowanej ochrony przed zagrożeniami 
 Zaawansowana ochrona przed zagrożeniami dla Azure Database for MySQL wykrywa anomalie działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania i może wyzwolić następujące alerty:
 - **Dostęp z nietypowej lokalizacji**: ten alert jest wyzwalany w przypadku zmiany wzorca dostępu do serwera Azure Database for MySQL, w którym ktoś zalogował się do serwera Azure Database for MySQL z nietypowej lokalizacji geograficznej. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja lub konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).
-- **Dostęp z nietypowego centrum danych platformy Azure**: ten alert jest wyzwalany w przypadku zmiany wzorca dostępu do serwera Azure Database for MySQL, w którym ktoś zalogował się na serwerze z nietypowego centrum danych platformy Azure, które było widoczne na tym serwerze podczas Ostatni okres. W niektórych przypadkach alert wykrywa legalną akcję (nową aplikację na platformie Azure, Power BI, Azure Database for MySQL edytorze zapytań). W innych przypadkach ten alert wykrywa złośliwe działanie z zasobu/usługi platformy Azure (były pracownik, zewnętrzna osoba atakująca).
+- **Dostęp z nietypowego centrum danych platformy Azure**: ten alert jest wyzwalany w przypadku zmiany wzorca dostępu do serwera Azure Database for MySQL, w którym ktoś zalogował się na serwerze z nietypowego centrum danych platformy Azure, które było widoczne na tym serwerze w ostatnim okresie. W niektórych przypadkach alert wykrywa legalną akcję (nową aplikację na platformie Azure, Power BI, Azure Database for MySQL edytorze zapytań). W innych przypadkach ten alert wykrywa złośliwe działanie z zasobu/usługi platformy Azure (były pracownik, zewnętrzna osoba atakująca).
 - **Dostęp z nieznanego podmiotu zabezpieczeń**: ten alert jest wyzwalany w przypadku zmiany wzorca dostępu do serwera Azure Database for MySQL, w którym ktoś zalogował się na serwer przy użyciu nietypowego podmiotu zabezpieczeń (Azure Database for MySQL użytkownika). W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja, konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).
 - **Dostęp z potencjalnie szkodliwej aplikacji**: Ten alert jest wyzwalany, gdy potencjalnie szkodliwa aplikacja jest używana w celu uzyskania dostępu do bazy danych. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak przy użyciu typowych narzędzi ataku.
 - **Wymuszanie Azure Database for MySQL poświadczeń**: ten alert jest wyzwalany, gdy występuje nietypowa duża liczba nieudanych logowań z innymi poświadczeniami. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak siłowy.

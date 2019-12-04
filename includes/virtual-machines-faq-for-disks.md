@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008565"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795727"
 ---
 W tym artykule przedstawiono kilka często zadawanych pytań dotyczących usługi Azure Managed Disks i Azure SSD w warstwie Premium Disks.
 
@@ -137,7 +137,9 @@ W przypadku dysków zarządzanych nie można zmienić ich nazw. Można jednak zm
 
 **Czy można używać partycjonowania GPT na dysku platformy Azure?**
 
-Partycjonowanie GPT może być używane tylko na dyskach danych, a nie na dyskach systemu operacyjnego. Dyski systemu operacyjnego muszą używać stylu partycji MBR.
+Obrazy generacji 1 mogą używać tylko partycjonowania GPT na dyskach danych, a nie na dyskach systemu operacyjnego. Dyski systemu operacyjnego muszą używać stylu partycji MBR.
+
+[Obrazy generacji 2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) mogą używać partycjonowania GPT na dysku systemu operacyjnego, a także dysków z danymi.
 
 **Jakie typy dysków obsługują migawki?**
 
@@ -412,7 +414,7 @@ Nie musisz uaktualniać istniejących narzędzi platformy Azure, aby tworzyć, d
 
 |Narzędzia platformy Azure      | Obsługiwane wersje                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Numer wersji 4.1.0: wydanie 2017 czerwca lub nowszej|
+|Program Azure PowerShell | Numer wersji 4.1.0: wydanie 2017 czerwca lub nowszej|
 |Interfejs wiersza polecenia platformy Azure w wersji 1     | Numer wersji 0.10.13:2017 maja lub nowszej|
 |Interfejs wiersza polecenia platformy Azure w wersji 2     | Numer wersji 2.0.12: wydanie 2017 lipca lub nowszej|
 |Narzędzie AzCopy           | Numer wersji 6.1.0: wydanie 2017 czerwca lub nowszej|

@@ -1,20 +1,19 @@
 ---
-title: Odzyskiwanie po awarii dla kont integracji — Azure Logic Apps
+title: Odzyskiwanie po awarii dla kont integracji
 description: Skonfiguruj odzyskiwanie po awarii między regionami dla kont integracji w programie Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 321bfb673bab748176d75db7bcf21d76ddf0c819
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 5ab0b14a190461d4dfba74e277f3d2ec30d9981a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680397"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793135"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Skonfiguruj odzyskiwanie po awarii między regionami dla kont integracji w programie Azure Logic Apps
 
@@ -113,7 +112,7 @@ Aby włączyć odzyskiwanie awaryjne dla wiadomości przychodzących, wybierz us
 
    ![Dodaj lub zaktualizuj numery kontrolne](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. Aby połączyć akcję z kontem integracji regionu pomocniczego, wybierz pozycję **Zmień połączenie**  > **Dodaj nowe połączenie** , aby wyświetlić listę dostępnych kont integracji. Wprowadź nazwę połączenia i wybierz z listy *konto integracji regionu pomocniczego* , a następnie wybierz pozycję **Utwórz**. 
+7. Aby połączyć akcję z kontem integracji regionu pomocniczego, wybierz pozycję **Zmień połączenie** > **Dodaj nowe połączenie** , aby wyświetlić listę dostępnych kont integracji. Wprowadź nazwę połączenia i wybierz z listy *konto integracji regionu pomocniczego* , a następnie wybierz pozycję **Utwórz**. 
 
    ![Nazwa konta integracji regionu pomocniczego](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -168,7 +167,7 @@ Aby włączyć odzyskiwanie awaryjne dla wiadomości przychodzących, wybierz us
 
    ![Dodaj lub zaktualizuj numery kontrolne](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. Aby połączyć akcję z kontem integracji regionu pomocniczego, wybierz pozycję **Zmień połączenie**  > **Dodaj nowe połączenie** , aby wyświetlić listę dostępnych kont integracji. Wprowadź nazwę połączenia i wybierz z listy *konto integracji regionu pomocniczego* , a następnie wybierz pozycję **Utwórz**.
+8. Aby połączyć akcję z kontem integracji regionu pomocniczego, wybierz pozycję **Zmień połączenie** > **Dodaj nowe połączenie** , aby wyświetlić listę dostępnych kont integracji. Wprowadź nazwę połączenia i wybierz z listy *konto integracji regionu pomocniczego* , a następnie wybierz pozycję **Utwórz**.
 
    ![Nazwa konta integracji regionu pomocniczego](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -220,7 +219,7 @@ Ciągłość działania w przypadku dokumentów korzystających z protokołu AS2
 
    ![Dodanie lub aktualizacja mikrofonu](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. Aby połączyć akcję z pomocniczym kontem integracji, wybierz pozycję **Zmień połączenie**  > **Dodaj nowe połączenie** , aby wyświetlić listę dostępnych kont integracji. Wprowadź nazwę połączenia i wybierz z listy *konto integracji regionu pomocniczego* , a następnie wybierz pozycję **Utwórz**.
+7. Aby połączyć akcję z pomocniczym kontem integracji, wybierz pozycję **Zmień połączenie** > **Dodaj nowe połączenie** , aby wyświetlić listę dostępnych kont integracji. Wprowadź nazwę połączenia i wybierz z listy *konto integracji regionu pomocniczego* , a następnie wybierz pozycję **Utwórz**.
 
    ![Nazwa konta integracji regionu pomocniczego](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 

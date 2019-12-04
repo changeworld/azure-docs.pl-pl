@@ -1,17 +1,17 @@
 ---
-title: Magazyn zapytań w Azure Database for MySQL
+title: Magazyn zapytań — Azure Database for MySQL
 description: Dowiedz się więcej o funkcji magazynu zapytań w Azure Database for MySQL, aby ułatwić śledzenie wydajności w miarę upływu czasu.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: 4ac6e4c71b028b66ef50ac949c169a1e02a2c0e3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603027"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770848"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorowanie wydajności Azure Database for MySQL przy użyciu magazynu zapytań
 
@@ -87,7 +87,7 @@ Po włączeniu magazynu zapytań dane są zapisywane w 15-minutowych oknach agre
 
 Następujące opcje są dostępne na potrzeby konfigurowania parametrów magazynu zapytań.
 
-| **Parametr** | **Opis** | **Domyślne** | **Zakres** |
+| **Konstruktora** | **Opis** | **Domyślne** | **Zakres** |
 |---|---|---|---|
 | query_store_capture_mode | Włącz/Wyłącz funkcję magazynu zapytań na podstawie wartości. Uwaga: Jeśli performance_schema jest wyłączona, włączenie query_store_capture_mode spowoduje włączenie performance_schema i podzestawu narzędzi schematu wydajności wymaganych dla tej funkcji. | CAŁĄ | BRAK, WSZYSTKIE |
 | query_store_capture_interval | Interwał przechwytywania magazynu zapytań (w minutach). Umożliwia określenie interwału, w którym metryki zapytania są agregowane | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ Następujące opcje są dostępne na potrzeby konfigurowania parametrów magazyn
 
 Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
 
-| **Parametr** | **Opis** | **Domyślne** | **Zakres** |
+| **Konstruktora** | **Opis** | **Domyślne** | **Zakres** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Umożliwia włączenie/wyłączenie statystyk oczekiwania. | DAWAJ | BRAK, WSZYSTKIE |
 | query_store_wait_sampling_frequency | Zmienia częstotliwość próbkowania oczekiwania w sekundach. od 5 do 300 sekund. | 30 | 5-300 |
@@ -145,7 +145,7 @@ Ten widok zwraca wszystkie dane w magazynie zapytań. Dla każdego unikatowego i
 | `first_seen` | sygnatura czasowa| NO| Pierwsze wystąpienie (UTC) zapytania w oknie agregacji|
 | `last_seen` | sygnatura czasowa| NO| Ostatnie wystąpienie (UTC) zapytania w tym oknie agregacji|
 
-### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
 
 Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden wiersz dla każdego identyfikatora bazy danych, identyfikatora użytkownika, identyfikatora zapytania i zdarzenia.
 
@@ -161,7 +161,7 @@ Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden 
 | `count_star` | bigint (20) | NO| Liczba zdarzeń oczekiwania próbkowanych w przedziale czasu dla zapytania |
 | `sum_timer_wait_ms` | double | NO| Łączny czas oczekiwania (w milisekundach) tego zapytania w interwale |
 
-### <a name="functions"></a>Funkcje
+### <a name="functions"></a>Functions
 
 | **Nazwa**| **Opis** |
 |---|---|

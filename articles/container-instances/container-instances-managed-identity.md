@@ -3,12 +3,12 @@ title: Włącz zarządzaną tożsamość w grupie kontenerów
 description: Dowiedz się, jak włączyć zarządzaną tożsamość w Azure Container Instances, która może być uwierzytelniana za pomocą innych usług platformy Azure
 ms.topic: article
 ms.date: 10/22/2018
-ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ccf754fac0d884c8a2af9db01578f97b73d54ac4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533680"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776527"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Jak używać tożsamości zarządzanych z Azure Container Instances
 
@@ -31,7 +31,7 @@ Dostosuj przykłady, aby włączyć i użyć tożsamości w Azure Container Inst
 Użyj zarządzanej tożsamości w działającym kontenerze do uwierzytelniania w dowolnej [usłudze obsługującej uwierzytelnianie w usłudze Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) bez konieczności zarządzania poświadczeniami w kodzie kontenera. W przypadku usług, które nie obsługują uwierzytelniania usługi AD, można przechowywać wpisy tajne w Azure Key Vault i używać tożsamości zarządzanej do uzyskiwania dostępu Key Vault do pobierania poświadczeń. Aby uzyskać więcej informacji o korzystaniu z tożsamości zarządzanej, zobacz [co to jest tożsamość zarządzana dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna. Obecnie zarządzane tożsamości są obsługiwane tylko w wystąpieniach kontenera systemu Linux.
+> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna. Obecnie zarządzane tożsamości w Azure Container Instances są obsługiwane tylko w kontenerach systemu Linux i nie są jeszcze dostępne w kontenerach Windows.
 >  
 
 ### <a name="enable-a-managed-identity"></a>Włącz zarządzaną tożsamość

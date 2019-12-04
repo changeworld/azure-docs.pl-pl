@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 1e348adc06a970fcd7222ce612c13f0ff3e01585
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 818ebbf15cdbc985c7a1cc14597dc538e62894cf
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035102"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793392"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events dla maszyn wirtualnych z systemem Linux
 
@@ -48,7 +48,7 @@ Scheduled Events udostępnia zdarzenia w następujących przypadkach użycia:
 - [Konserwacja inicjowana przez platformę](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (na przykład ponowne uruchomienie maszyny wirtualnej, migracja na żywo lub zachowywanie pamięci na potrzeby hosta)
 - Sprzęt o obniżonej wydajności
 - Konserwacja inicjowana przez użytkownika (na przykład użytkownik uruchamia ponownie lub wdraża maszynę wirtualną)
-- [Wykluczanie maszyn wirtualnych o niskim priorytecie](https://azure.microsoft.com/blog/low-priority-scale-sets) w zestawach skalowania
+- Wykluczanie wystąpień [maszyn wirtualnych](spot-vms.md) i [zestawów skalowania](../../virtual-machine-scale-sets/use-spot.md) .
 
 ## <a name="the-basics"></a>Podstawowe informacje  
 
@@ -74,11 +74,11 @@ Jeśli maszyna wirtualna nie zostanie utworzona w ramach Virtual Network, domyś
 ### <a name="version-and-region-availability"></a>Dostępność wersji i regionu
 Usługa Scheduled Events jest w wersji. Wersje są obowiązkowe; Bieżąca wersja jest `2017-11-01`.
 
-| Wersja | Typ wydania | Regions | Informacje o wersji | 
+| Wersja | Typ wydania | Regiony | Informacje o wersji | 
 | - | - | - | - | 
-| 2017-11-01 | Ogólna dostępność | Wszystkie | <li> Dodano obsługę elementu EventType wykluczania maszyny wirtualnej o niskim priorytecie<br> | 
-| 2017-08-01 | Ogólna dostępność | Wszystkie | <li> Usunięto poprzedzony znak podkreślenia z nazw zasobów dla maszyn wirtualnych IaaS<br><li>Wymagania nagłówka metadanych wymuszone dla wszystkich żądań | 
-| 2017-03-01 | Wersja zapoznawcza | Wszystkie | <li>Wersja początkowa
+| 2017-11-01 | Ogólna dostępność | Wszystko | <li> Dodano obsługę elementu EventType wykluczania maszyny wirtualnej o niskim priorytecie<br> | 
+| 2017-08-01 | Ogólna dostępność | Wszystko | <li> Usunięto poprzedzony znak podkreślenia z nazw zasobów dla maszyn wirtualnych IaaS<br><li>Wymagania nagłówka metadanych wymuszone dla wszystkich żądań | 
+| 2017-03-01 | Wersja zapoznawcza | Wszystko | <li>Wersja początkowa
 
 
 > [!NOTE] 
@@ -128,7 +128,7 @@ W przypadku zaplanowanych zdarzeń odpowiedź zawiera tablicę zdarzeń.
 ### <a name="event-properties"></a>Właściwości zdarzenia
 |Właściwość  |  Opis |
 | - | - |
-| Identyfikator zdarzenia | Unikatowy identyfikator globalny dla tego zdarzenia. <br><br> Przykład: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| EventId | Unikatowy identyfikator globalny dla tego zdarzenia. <br><br> Przykład: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | Klasę | Ma to wpływ na przyczyny tego zdarzenia. <br><br> Wartości: <br><ul><li> `Freeze`: zaplanowano wstrzymanie maszyny wirtualnej przez kilka sekund. Połączenie procesora i sieci może być zawieszone, ale nie ma wpływu na pamięć lub otwieranie plików.<li>`Reboot`: zaplanowano ponowne uruchomienie maszyny wirtualnej (pamięć nietrwała zostanie utracona). <li>`Redeploy`: zaplanowano przeniesienie maszyny wirtualnej do innego węzła (dyski tymczasowe są tracone). <li>`Preempt`: trwa usuwanie maszyny wirtualnej o niskim priorytecie (dyski tymczasowe są tracone).|
 | ResourceType | Typ zasobu, którego dotyczy to zdarzenie. <br><br> Wartości: <ul><li>`VirtualMachine`|
 | Zasoby| Lista zasobów, których dotyczy to zdarzenie. Lista powinna zawierać maszyny z co najwyżej jednej [domeny aktualizacji](manage-availability.md), ale może nie zawierać wszystkich maszyn w ud. <br><br> Przykład: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |

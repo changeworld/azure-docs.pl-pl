@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 29014674cee4d6498ca7b56582313265da886122
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083666"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793325"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Tworzenie maszyny wirtualnej z systemem Linux za pomocą przyspieszonej sieci przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -62,7 +62,10 @@ W wystąpieniach, które obsługują wielowątkowość, przyspieszona sieć jest
 
 Aby uzyskać więcej informacji o wystąpieniach maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych z systemem Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="regions"></a>Regions
+### <a name="custom-images"></a>Obrazy niestandardowe
+Jeśli używasz obrazu niestandardowego, a obraz obsługuje przyspieszone sieci, upewnij się, że wymagane sterowniki współpracują z kartami interfejsu sieciowego Mellanox ConnectX-3 i ConnectX-4 LX na platformie Azure.
+
+### <a name="regions"></a>Regiony
 Dostępne we wszystkich publicznych regionach świadczenia usługi Azure oraz w Azure Government chmurach.
 
 <!-- ### Network interface creation 
@@ -197,7 +200,7 @@ ssh azureuser@<your-public-ip-address>
 
 Z poziomu powłoki bash wprowadź `uname -r` i upewnij się, że wersja jądra ma jedną z następujących wersji lub wyższą:
 
-* **Ubuntu 16.04**: 4.11.0-1013
+* **Ubuntu 16,04**: 4.11.0-1013
 * **SLES SP3**: 4.4.92-6.18
 * **RHEL**: 7.4.2017120423
 * **CentOS**: 7.4.20171206

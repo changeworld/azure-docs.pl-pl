@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 420a046ddf66270f52001d4ff4f3ad49895d4c11
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208394"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784559"
 ---
 # <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
 
@@ -78,7 +78,7 @@ Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie zostaną zablok
 Organizacje korzystają z różnych usług platformy Azure zarządzanych za pomocą interfejsu API Azure Resource Manager, w tym:
 
 - Azure Portal 
-- Azure PowerShell 
+- Program Azure PowerShell 
 - Interfejs wiersza polecenia platformy Azure
 
 Używanie Azure Resource Manager do zarządzania usługami to wysoce uprzywilejowana akcja. Azure Resource Manager mogą zmieniać konfiguracje dla całej dzierżawy, takie jak ustawienia usługi i rozliczenia subskrypcji. Uwierzytelnianie wieloskładnikowe jest podatne na różne ataki, takie jak phishing i rozpylanie haseł. 
@@ -124,6 +124,20 @@ Aby włączyć domyślne ustawienia zabezpieczeń w katalogu:
 1. Przejdź do **Azure Active Directory** > **Właściwości**.
 1. Wybierz pozycję **Zarządzaj ustawieniami domyślnymi zabezpieczeń**.
 1. Ustaw opcję **Włącz ustawienia domyślne zabezpieczeń** na **wartość tak**.
+1. Wybierz pozycję **Zapisz**.
+
+## <a name="disabling-security-defaults"></a>Wyłączanie ustawień domyślnych zabezpieczeń
+
+Organizacje, które zdecydują się zaimplementować zasady dostępu warunkowego, które zastępują domyślne ustawienia zabezpieczeń, muszą wyłączyć ustawienia domyślne zabezpieczeń. 
+
+![Komunikat ostrzegawczy Wyłącz ustawienia domyślne zabezpieczeń, aby włączyć dostęp warunkowy](./media/concept-conditional-access-security-defaults/security-defaults-disable-before-conditional-access.png)
+
+Aby wyłączyć domyślne ustawienia zabezpieczeń w katalogu:
+
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako administrator zabezpieczeń, administrator dostępu warunkowego lub Administrator globalny.
+1. Przejdź do **Azure Active Directory** > **Właściwości**.
+1. Wybierz pozycję **Zarządzaj ustawieniami domyślnymi zabezpieczeń**.
+1. Ustaw opcję **Włącz ustawienia domyślne zabezpieczeń** na wartość **nie**.
 1. Wybierz pozycję **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki

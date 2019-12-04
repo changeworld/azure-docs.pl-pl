@@ -1,17 +1,17 @@
 ---
-title: Dzienniki w Azure Database for PostgreSQL — pojedynczy serwer
-description: Pojęcia związane z konfiguracją rejestrowania, magazynem i analizą w ramach Azure Database for PostgreSQL — jeden serwer
+title: Dzienniki — Azure Database for PostgreSQL — pojedynczy serwer
+description: Opisuje konfigurację rejestrowania, magazyn i analizę w Azure Database for PostgreSQL-pojedynczym serwerze
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 9e8b1d08e950849773c9d8413c3ba4188d257d5b
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965933"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768218"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Dzienniki w Azure Database for PostgreSQL — pojedynczy serwer
 Azure Database for PostgreSQL umożliwia konfigurowanie i dostęp do standardowych dzienników Postgres. Dzienniki mogą służyć do identyfikowania, rozwiązywania problemów i naprawiania błędów konfiguracji oraz nieoptymalnej wydajności. Rejestrowane informacje można skonfigurować i uzyskać do nich dostęp, w tym błędy, informacje o zapytaniach, rekordy autopróżniowe, połączenia i punkty kontrolne. (Dostęp do dzienników transakcji nie jest dostępny).
@@ -111,7 +111,7 @@ W poniższej tabeli opisano pola dla typu **PostgreSQLLogs** . W zależności od
 | Zmienna | Poziom rejestrowania, przykład: LOG, błąd, Uwaga |
 | Wiadomość | Podstawowy komunikat dziennika | 
 | Domain | Wersja serwera, przykład: Postgres-10 |
-| Formant | Dodatkowy komunikat dziennika (jeśli dotyczy) |
+| formant | Dodatkowy komunikat dziennika (jeśli dotyczy) |
 | ColumnName | Nazwa kolumny (jeśli dotyczy) |
 | SchemaName | Nazwa schematu (jeśli dotyczy) |
 | Typ danych | Nazwa typu danych (jeśli dotyczy) |

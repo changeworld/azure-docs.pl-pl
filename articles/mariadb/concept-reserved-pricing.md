@@ -1,17 +1,17 @@
 ---
-title: Przedpłata za Azure Database for MariaDB zasoby obliczeniowe z zarezerwowaną pojemnością
+title: Przedpłata za obliczenia z zarezerwowaną pojemnością — Azure Database for MariaDB
 description: Przedpłata za Azure Database for MariaDB zasoby obliczeniowe z zarezerwowaną pojemnością
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 61736d4f7e6b17c6037837bfdfe6d9cb8a00c5f6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 12/02/2019
+ms.openlocfilehash: 5821fb03dcf4331cbab5744f056521468a56d5d2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076866"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773111"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Przedpłata za Azure Database for MariaDB zasoby obliczeniowe z zarezerwowaną pojemnością
 
@@ -22,10 +22,10 @@ Nie trzeba przypisywać rezerwacji do określonych serwerów Azure Database for 
 W [Azure Portal](https://portal.azure.com/)można kupić Azure Database for MariaDB zarezerwowaną pojemność. Aby kupić zarezerwowaną pojemność:
 
 * Musisz być w roli właściciela dla co najmniej jednej subskrypcji przedsiębiorstwa lub indywidualnej, która ma stawki płatność zgodnie z rzeczywistym użyciem.
-* W przypadku subskrypcji Enterprise w witrynie **EA Portal** musi być włączona opcja [Dodaj wystąpienia zarezerwowane](https://ea.azure.com/). Jeśli to ustawienie jest wyłączone, musisz być administratorem EA w subskrypcji.
+* W przypadku subskrypcji Enterprise w witrynie [EA Portal](https://ea.azure.com/) musi być włączona opcja **Dodaj wystąpienia zarezerwowane**. Jeśli to ustawienie jest wyłączone, musisz być administratorem EA w subskrypcji.
 * W przypadku programu Cloud Solution Provider (CSP) tylko agenci administracyjni lub agenci sprzedaży mogą zakupić Azure Database for MariaDB zarezerwowaną pojemność. </br>
 
-Szczegółowe informacje na temat tego, w jaki sposób Klienci korporacyjni i klienci korzystający z [usługi](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) płatność zgodnie z rzeczywistym użyciem są obciążani opłatami za [zakup rezerwacji. subskrypcja](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Szczegółowe informacje na temat tego, w jaki sposób Klienci korporacyjni i klienci korzystający z płatnej zgodnie z rzeczywistym [użyciem są](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) obciążani opłatami za zakup rezerwacji [.](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>Określ właściwy rozmiar serwera przed zakupem
@@ -37,7 +37,7 @@ Załóżmy na przykład, że korzystasz z jednego ogólnego celu, 5 rdzeń – 3
 
 ## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>Kupowanie Azure Database for MariaDB zarezerwowanej pojemności
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Wybierz pozycję **Wszystkie usługi** > **Rezerwacje**.
 3.  Wybierz pozycję **Dodaj** , a następnie w okienku rezerwacje zakupu wybierz pozycję **Azure Database for MariaDB** , aby zakupić nową rezerwację dla baz danych MariaDB.
 4.  Wypełnij pola wymagane. Istniejące lub nowe bazy danych zgodne z wybranymi atrybutami kwalifikują się do uzyskania rabatu zarezerwowanej pojemności. Rzeczywista liczba serwerów Azure Database for MariaDB, które pobierają rabat, zależą od wybranego zakresu i ilości.
@@ -55,12 +55,12 @@ W poniższej tabeli opisano wymagane pola.
 | Region | Region świadczenia usługi Azure objęty Azure Database for MariaDB rezerwacji zarezerwowanej pojemności.
 | Typ wdrożenia | Typ zasobu Azure Database for MariaDB, dla którego chcesz kupić rezerwację.
 | Warstwa wydajności | Warstwa usług dla serwerów Azure Database for MariaDB.
-| Termin | Jeden rok
-| Liczba | Ilość zasobów obliczeniowych zakupionych w ramach rezerwacji Azure Database for MariaDB zarezerwowanej. Ilość to liczba rdzeni wirtualnych w wybranym regionie i warstwie wydajności platformy Azure, które są zarezerwowane i pobierają rabat rozliczeń. Na przykład w przypadku uruchamiania programu lub planowania uruchamiania serwerów Azure Database for MariaDB z łączną pojemnością obliczeniową 5 rdzeń 16 rdzeni wirtualnych w regionie Wschodnie stany USA należy określić liczbę jako 16, aby zmaksymalizować korzyść dla wszystkich serwerów.
+| Okres obowiązywania Umowy | Jeden rok
+| Ilość | Ilość zasobów obliczeniowych zakupionych w ramach rezerwacji Azure Database for MariaDB zarezerwowanej. Ilość to liczba rdzeni wirtualnych w wybranym regionie i warstwie wydajności platformy Azure, które są zarezerwowane i pobierają rabat rozliczeń. Na przykład w przypadku uruchamiania programu lub planowania uruchamiania serwerów Azure Database for MariaDB z łączną pojemnością obliczeniową 5 rdzeń 16 rdzeni wirtualnych w regionie Wschodnie stany USA należy określić liczbę jako 16, aby zmaksymalizować korzyść dla wszystkich serwerów.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot kosztów rezerwacji
+## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot rezerwacji
 
-Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Self-service exchanges and refunds for Azure Reservations](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
+Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
 
 ## <a name="vcore-size-flexibility"></a>elastyczność rozmiaru rdzeń wirtualny
 
@@ -75,11 +75,11 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 Rabat rezerwacji rdzeń wirtualny jest automatycznie stosowany do liczby serwerów Azure Database for MariaDB, które pasują do Azure Database for MariaDB zakres rezerwacji zarezerwowanej pojemności i atrybuty. Możesz zaktualizować zakres rezerwacji zarezerwowanej pojemności usługi Azure Database for MariaDB za pomocą Azure Portal, programu PowerShell, interfejsu wiersza polecenia lub interfejsu API. </br></br>
 Aby dowiedzieć się, jak zarządzać zarezerwowaną Azure Database for MariaDB pojemności, zobacz Zarządzanie Azure Database for MariaDB zarezerwowaną pojemnością.
 
-Aby dowiedzieć się więcej na temat rezerwacji na platformie Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
 * [Co to są Azure Reservations](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
 * [Zarządzanie usługą Azure Reservations](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
 * [Informacje na temat rabatu na rezerwacje platformy Azure](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
 * [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mariadb)
 * [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](https://docs.microsoft.com/partner-center/azure-reservations) (Rezerwacje platformy Azure w programie Cloud Solution Provider w Centrum partnerskim)

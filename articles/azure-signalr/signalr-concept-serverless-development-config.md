@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: 68ada90699fe9a9db6faeb32a04e8eb02c176944
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74157655"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786779"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions opracowywanie i Konfigurowanie za pomocą usługi Azure Signal Service
 
@@ -40,7 +40,7 @@ Aplikacja kliencka wymaga ważnego tokenu dostępu, aby połączyć się z usłu
 
 Użyj wyzwalanej przez protokół HTTP funkcji platformy Azure i powiązania danych wejściowych *SignalRConnectionInfo* w celu wygenerowania obiektu informacji o połączeniu. Funkcja musi mieć trasę HTTP kończącą się na `/negotiate`.
 
-Aby uzyskać więcej informacji na temat tworzenia funkcji Negotiate, zobacz odwołanie do [powiązania danych wejściowych *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
+Aby uzyskać więcej informacji na temat tworzenia funkcji Negotiate, zobacz odwołanie do [powiązania danych wejściowych *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service.md#input).
 
 Aby dowiedzieć się więcej o sposobie tworzenia uwierzytelnionego tokenu, zapoznaj się z tematem [Korzystanie z uwierzytelniania App Service](#using-app-service-authentication).
 
@@ -50,7 +50,7 @@ Użyj powiązania danych wyjściowych *sygnalizującego* , aby wysyłać komunik
 
 Użytkowników można dodawać do co najmniej jednej grupy. Można również użyć powiązania danych wyjściowych *sygnalizującego* , aby dodać lub usunąć użytkowników do/z grup.
 
-Aby uzyskać więcej informacji, zobacz [Informacje o powiązaniach wyjściowych *sygnalizującego* ](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
+Aby uzyskać więcej informacji, zobacz [Informacje o powiązaniach wyjściowych *sygnalizującego* ](../azure-functions/functions-bindings-signalr-service.md#output).
 
 ### <a name="signalr-hubs"></a>Centra sygnałów
 

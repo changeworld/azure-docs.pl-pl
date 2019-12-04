@@ -1,17 +1,17 @@
 ---
-title: Reguły zapory w Azure Database for PostgreSQL-pojedynczym serwerze
-description: W tym artykule opisano reguły zapory dla Azure Database for PostgreSQL-pojedynczego serwera.
+title: Reguły zapory — Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano sposób używania reguł zapory do nawiązywania połączenia z serwerem Azure Database for PostgreSQL-pojedynczym.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 6b4896d78bcc6e9fc1f5d9cd47e60e3df7eba325
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 28c8bccaf6be49b7220a32c781b79f106ad86e52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965279"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768643"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Reguły zapory w Azure Database for PostgreSQL-pojedynczym serwerze
 Zapora serwera Azure Database for PostgreSQL uniemożliwia dostęp do serwera bazy danych do momentu określenia komputerów, które mają uprawnienia. Zapora przyznaje dostęp do serwera na podstawie źródłowego adresu IP każdego żądania.

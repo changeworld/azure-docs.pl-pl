@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 22c304b26eddaee4444f6eb12957e2a6fedf7810
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672582"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793286"
 ---
 # <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -34,12 +34,12 @@ Aby uzyskać dodatkową pomoc, Zapisz się do nas na farmbeatssupport@microsoft.
 
 **Działanie naprawcze**: odwiedź Azure Portal i wykonaj następujące kroki:
 
-1. Przejdź do grupy zasobów centrum danych FarmBeats.   
-2. Wybierz **centrum zdarzeń** (DatafeedEventHubNamespace....)  i sprawdź liczbę wiadomości przychodzących.   
+1. Przejdź do grupy zasobów centrum danych FarmBeats.   
+2. Wybierz **centrum zdarzeń** (DatafeedEventHubNamespace....) i sprawdź, czy liczba wiadomości przychodzących.   
 3. W przypadku **braku komunikatów przychodzących**skontaktuj się z partnerem urządzenia.  
 4. Jeśli istnieją **przychodzące komunikaty**, skontaktuj się farmbeatssupport@microsoft.com z centrum danych i dziennikami akceleratora i przechwyconą telemetrię.
 
-Zobacz [sekcję Logs](#collect-logs-manually) dokumentu, aby poznać sposób pobierania dzienników.  
+Zobacz [sekcję Logs](#collect-logs-manually) dokumentu, aby poznać sposób pobierania dzienników.  
 
 ### <a name="dont-have-the-eventhub-connection-string"></a>Nie ma parametrów połączenia usługi Eventhub
 
@@ -55,7 +55,7 @@ Zobacz [sekcję Logs](#collect-logs-manually) dokumentu, aby poznać sposób pob
 
 **Objawy**: urządzenia są zainstalowane i połączony FarmBeats z partnerem urządzenia. Urządzenia są w trybie online i wysyłają dane telemetryczne, ale są wyświetlane w trybie offline.
 
-**Działanie naprawcze**: Interwał raportowania nie jest skonfigurowany dla tego urządzenia. Skontaktuj się z producentem urządzenia, aby ustawić interwał raportowania. 
+**Działanie naprawcze**: Interwał raportowania nie jest skonfigurowany dla tego urządzenia. Skontaktuj się z producentem urządzenia, aby ustawić interwał raportowania. 
 
 ### <a name="error-deleting-a-resource"></a>Błąd usuwania zasobu
 
@@ -135,44 +135,44 @@ Zamknij wszystkie karty przeglądarki z otwartym akceleratorem, a następnie zam
 
 **Działanie naprawcze**: Uruchom ponownie zadanie zakończone niepowodzeniem lub Uruchom zadanie indeksów satelitarnych dla zakresu dat wynoszącego 5-7 dni i sprawdź, czy zadanie zakończyło się pomyślnie.
 
-### <a name="sentinel-hub-wrongurlor-not-accessible"></a>Nieprawidłowy adres URL centrum centrów kontrolnych lub jest niedostępny 
+### <a name="sentinel-hub-wrong-url-or-not-accessible"></a>Nieprawidłowy adres URL centrum centrów kontrolnych lub jest niedostępny 
 
-**Komunikat o niepowodzeniu zadania**: Niestety, wystąpił problem. Strona, do której próbujesz uzyskać dostęp, jest (tymczasowo) niedostępna. 
+**Komunikat o niepowodzeniu zadania**: Niestety, wystąpił problem. Strona, do której próbujesz uzyskać dostęp, jest (tymczasowo) niedostępna. 
 
 **Działanie naprawcze**:
-1.  Otwórz adres URL wskaźnikiem (https://scihub.copernicus.eu/dhus/) w przeglądarce i sprawdź, czy witryna sieci Web jest dostępna. 
-2.  Jeśli witryna sieci Web jest niedostępna, sprawdź, czy nie ma żadnej zapory lub sieci firmy itp., a następnie wykonaj wymagane kroki, aby zezwolić na powyższy adres URL. 
+1.  Otwórz adres URL wskaźnikiem (https://scihub.copernicus.eu/dhus/) w przeglądarce i sprawdź, czy witryna sieci Web jest dostępna. 
+2.  Jeśli witryna sieci Web jest niedostępna, sprawdź, czy nie ma żadnej zapory lub sieci firmy itp., a następnie wykonaj wymagane kroki, aby zezwolić na powyższy adres URL. 
 3.  Uruchom ponownie zadanie zakończone niepowodzeniem lub Uruchom zadanie indeksów satelitarnych dla zakresu dat 5-7 dni i sprawdź, czy zadanie zakończyło się pomyślnie.  
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Serwer wskaźnikowy do konserwacji
 
-**Komunikat o niepowodzeniu zadania**: Copernicus otwartym centrum dostępu zostanie wkrótce zajdzie! Przepraszamy za niedogodności, ale w tej chwili wykonujemy pewne czynności konserwacyjne. Wkrótce będziemy z powrotem w trybie online! 
+**Komunikat o niepowodzeniu zadania**: Copernicus otwartym centrum dostępu zostanie wkrótce zajdzie! Przepraszamy za niedogodności, ale w tej chwili wykonujemy pewne czynności konserwacyjne. Wkrótce będziemy z powrotem w trybie online! 
 
 **Działanie naprawcze**:
 
-1.  Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane jakiekolwiek działania konserwacyjne. 
-2.  Jeśli dowolne zadanie/potok zakończy się niepowodzeniem z powyższymi przyczynami, prześlij ponownie zadanie po pewnym czasie. 
-3.  Użytkownik może odwiedzić https://scihub.copernicus.eu/news/, aby sprawdzić informacje o wszelkich planowanych/nieplanowanych działaniach związanych z konserwacją.  
+1.  Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane jakiekolwiek działania konserwacyjne. 
+2.  Jeśli dowolne zadanie/potok zakończy się niepowodzeniem z powyższymi przyczynami, prześlij ponownie zadanie po pewnym czasie. 
+3.  Użytkownik może odwiedzić https://scihub.copernicus.eu/news/, aby sprawdzić informacje o wszelkich planowanych/nieplanowanych działaniach związanych z konserwacją.  
 4.  Uruchom ponownie zadanie zakończone niepowodzeniem lub Uruchom zadanie indeksów satelitarnych dla zakresu dat 5-7 dni i sprawdź, czy zadanie zakończyło się pomyślnie.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Osiągnięto maksymalną liczbę połączeń
 
-**Komunikat o niepowodzeniu zadania**: Maksymalna liczba dwóch współbieżnych przepływów osiągniętych przez użytkownika "<username>" 
+**Komunikat o niepowodzeniu zadania**: Maksymalna liczba dwóch współbieżnych przepływów osiągniętych przez użytkownika "<username>" 
 
 **Akcja naprawcza**
-1.  Jeśli jakieś zadanie zakończy się niepowodzeniem z powyższym powodem, w innym wdrożeniu/oprogramowaniu jest używane to samo konto wskaźnikowe. 
+1.  Jeśli jakieś zadanie zakończy się niepowodzeniem z powyższym powodem, w innym wdrożeniu/oprogramowaniu jest używane to samo konto wskaźnikowe. 
 2.  Użytkownik może utworzyć nowe konto wskaźnikowego i ponownie uruchomić Instalatora w celu uaktualnienia centrum danych przy użyciu nowej nazwy użytkownika i hasła.  
 3.  Uruchom ponownie zadanie zakończone niepowodzeniem lub Uruchom zadanie indeksów satelitarnych dla zakresu dat 5-7 dni i sprawdź, czy zadanie zakończyło się pomyślnie.
 
-### <a name="sentinel-server-refused-connection"></a>Serwer wskaźnikowy odmówił połączenia 
+### <a name="sentinel-server-refused-connection"></a>Serwer wskaźnikowy odmówił połączenia 
 
 **Komunikat o niepowodzeniu zadania**:
 
-Serwer odrzucił połączenie w: http://172.30.175.69:8983/solr/dhus 
+Serwer odrzucił połączenie w: http://172.30.175.69:8983/solr/dhus 
 
-**Działania naprawcze**: ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane jakiekolwiek działania konserwacyjne. 
-1.  Jeśli dowolne zadanie/potok zakończy się niepowodzeniem z powyższymi przyczynami, prześlij ponownie zadanie po pewnym czasie. 
-2.  Użytkownik może odwiedzić https://scihub.copernicus.eu/news/, aby sprawdzić informacje o wszelkich planowanych/nieplanowanych działaniach związanych z konserwacją.  
+**Działania naprawcze**: ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane jakiekolwiek działania konserwacyjne. 
+1.  Jeśli dowolne zadanie/potok zakończy się niepowodzeniem z powyższymi przyczynami, prześlij ponownie zadanie po pewnym czasie. 
+2.  Użytkownik może odwiedzić https://scihub.copernicus.eu/news/, aby sprawdzić informacje o wszelkich planowanych/nieplanowanych działaniach związanych z konserwacją.  
 3.  Uruchom ponownie zadanie zakończone niepowodzeniem lub Uruchom zadanie indeksów satelitarnych dla zakresu dat 5-7 dni i sprawdź, czy zadanie zakończyło się pomyślnie.
 
 
@@ -281,11 +281,11 @@ Na pulpicie nawigacyjnym grupy zasobów Wyszukaj konto magazynu (datahublogs....
 
 ## <a name="high-cpu-usage"></a>Wysokie użycie procesora
 
-**Błąd**: otrzymasz alert e-mail z informacją o wysokim alercie użycia procesora CPU. 
+**Błąd**: otrzymasz alert e-mail z informacją o wysokim alercie użycia procesora CPU. 
 
-**Działanie naprawcze**: 
+**Działanie naprawcze**: 
 1.  Przejdź do grupy zasobów centrum danych FarmBeats.
-2.  Wybierz usługę App Service.  
+2.  Wybierz usługę App Service.  
 3.  Przejdź do pozycji Skaluj w górę (plan App Service) i wybierz odpowiednią [warstwę cenową](https://azure.microsoft.com/pricing/details/app-service/windows/)
 
 ## <a name="next-steps"></a>Następne kroki

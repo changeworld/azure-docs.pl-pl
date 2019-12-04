@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 076f98cb240014bcc88a395902203413e31fe0f1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 28c463204080296e431edb3c30b4fdd66f07a189
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642125"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776596"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Podaj dane zwrotne do Azure Maps
 
-Azure Maps jest ogólnie dostępna od momentu 2018 maja, dostarczając dane z danych dotyczących mapy, łatwe do użycia interfejsy API REST i zaawansowane zestawy SDK do obsługi naszych klientów korporacyjnych w różnych przypadkach użycia biznesowego. Rzeczywista część świata jest zmieniana co sekundę i ma kluczowe znaczenie dla naszych klientów. Nasi klienci, którzy planują otwieranie i zamykanie udogodnień, muszą mieć pewność, że nasze mapy są aktualizowane bezzwłocznie, dzięki czemu mogą efektywnie planować dostarczanie, konserwację lub obsługę klienta w odpowiednich obiektach. Utworzyliśmy narzędzie do przesyłania opinii o danych Azure Maps, aby umożliwić naszym klientom dostarczanie bezpośrednich opinii o danych. Opinie o danych klientów przechodzą bezpośrednio do naszych dostawców danych i ich edytorów mapy, którzy mogą szybko oszacować i dołączyć Opinie do naszych produktów mapowania.  
+Azure Maps jest ogólnie dostępna od momentu 2018 maja, dostarczając dane z danych dotyczących mapy, łatwe do użycia interfejsy API REST i zaawansowane zestawy SDK do obsługi naszych klientów korporacyjnych w różnych przypadkach użycia biznesowego. Rzeczywista część świata jest zmieniana co sekundę i ma kluczowe znaczenie dla naszych klientów. Nasi klienci, którzy planują otwieranie i zamykanie udogodnień, muszą mieć pewność, że nasze mapy są aktualizowane bezzwłocznie, dzięki czemu mogą efektywnie planować dostarczanie, konserwację lub obsługę klienta w odpowiednich obiektach. Utworzyliśmy witrynę opinii o danych Azure Maps, aby umożliwić naszym klientom dostarczanie bezpośrednich opinii o danych. Opinie o danych klientów przechodzą bezpośrednio do naszych dostawców danych i ich edytorów mapy, którzy mogą szybko oszacować i dołączyć Opinie do naszych produktów mapowania.  
 
-[Narzędzie do przesyłania opinii o danych Azure Maps](https://feedback.azuremaps.com) umożliwia naszym klientom dostarczanie opinii na temat danych mapy, szczególnie w kwestiach związanych z zainteresowaniami i adresami firmowymi. W tym artykule opisano sposób udostępniania różnych rodzajów opinii przy użyciu narzędzia do Azure Maps Opinie.
+[Witryna opinii o danych Azure Maps](https://feedback.azuremaps.com) zapewnia klientom łatwą w obsłudze opinię na temat danych mapy, szczególnie w kwestiach związanych z zainteresowaniami i adresami lokalnymi. W tym artykule opisano sposób udostępniania różnych rodzajów opinii przy użyciu witryny Azure Maps opinię.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Dodaj miejsce biznesowe lub adres mieszkalny 
 
-Możesz podać opinię na temat brakującego punktu orientacyjnego lub adresu zamieszkania na mapie. Istnieją dwa sposoby, aby to zrobić, Otwórz narzędzie opinii o danych mapy platformy Azure, a następnie wyszukaj współrzędne brakującej lokalizacji, a następnie kliknij pozycję "Dodaj miejsce".
+Możesz podać opinię na temat brakującego punktu orientacyjnego lub adresu zamieszkania na mapie. Istnieją dwa sposoby, aby to zrobić, Otwórz witrynę opinii o danych mapy platformy Azure, a następnie wyszukaj współrzędne brakującej lokalizacji, a następnie kliknij pozycję "Dodaj miejsce".
 
   ![Wyszukaj brakującą lokalizację](./media/how-to-use-feedback-tool/search-poi.png)
 
@@ -38,7 +38,7 @@ Po kliknięciu nastąpi przekierowanie do formularza, aby podać odpowiednie szc
 
 ## <a name="fix-a-business-place-or-a-residential-address"></a>Napraw miejsce biznesowe lub adres mieszkalny 
 
-Narzędzie do przesyłania opinii umożliwia także wyszukiwanie i lokalizowanie miejsca w firmie lub adresu oraz przekazywanie informacji zwrotnych w celu naprawienia adresu lub lokalizacji kodu PIN, jeśli nie są one poprawne. Aby przekazać opinię dotyczącą naprawienia adresu, użyj paska wyszukiwania, aby wyszukać miejsce pracy lub adres zamieszkania. Kliknij lokalizację zainteresowania na liście wyników, a następnie kliknij pozycję "Napraw to miejsce".
+Witryna opinii umożliwia także wyszukiwanie i lokalizowanie miejsca biznesowego lub adresu oraz przekazywanie informacji zwrotnych w celu naprawienia adresu lub lokalizacji kodu PIN, jeśli nie są one poprawne. Aby przekazać opinię dotyczącą naprawienia adresu, użyj paska wyszukiwania, aby wyszukać miejsce pracy lub adres zamieszkania. Kliknij lokalizację zainteresowania na liście wyników, a następnie kliknij pozycję "Napraw to miejsce".
 
   ![Wyszukaj miejsce do rozwiązania](./media/how-to-use-feedback-tool/fix-place.png)
 
@@ -50,13 +50,13 @@ Jeśli lokalizacja numeru PIN dla miejsca jest nieprawidłowa, zaznacz pole wybo
 
   ![Przenieś lokalizację numeru PIN](./media/how-to-use-feedback-tool/move-pin.png)
 
-## <a name="add-a-comment"></a>Dodaj komentarz 
+## <a name="add-a-comment"></a>Dodawanie komentarza 
 
 Oprócz tego, aby wyszukać lokalizację, narzędzie do przesyłania opinii umożliwia również dodanie bezpłatnego komentarza do tekstu formularza w celu uzyskania szczegółowych informacji dotyczących lokalizacji. Aby dodać wyszukiwanie komentarzy do lokalizacji lub kliknij lokalizację, a następnie kliknij pozycję "Dodaj komentarz", Napisz komentarz, a następnie kliknij pozycję "Prześlij". 
 
   ![Dodaj komentarz](./media/how-to-use-feedback-tool/add-comment.png)
 
-## <a name="track-status"></a>Śledź stan 
+## <a name="track-status"></a>Śledzenie stanu 
 
 Możesz również śledzić stan żądania, sprawdzając pole "chcę śledzić status" i dostarczając swój adres e-mail podczas wykonywania żądania. W wiadomości e-mail zostanie wyświetlony link do śledzenia z aktualnym stanem żądania. 
 

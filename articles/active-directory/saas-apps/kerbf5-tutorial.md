@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9efaeb9d3fe0ec8684f10c58897f5490d0f28cb9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182189"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786490"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu klawisza F5
 
@@ -179,7 +179,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -269,7 +269,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
  
     ![Konfiguracja F5 (Kerberos)](./media/kerbf5-tutorial/configure12.png)
 
-1. Po kliknięciu przycisku **Zakończ**.
+1. Po skonfigurowaniu aplikacji kliknij przycisk **Zakończ**.
 
     ![Konfiguracja F5 (Kerberos)](./media/kerbf5-tutorial/configure13.png)
 
@@ -284,7 +284,7 @@ Serwer Active Directory AAA można skonfigurować w Menedżerze zasad dostępu (
 
 1.  Na karcie Główny kliknij pozycję **zasady dostępu > serwery AAA > Active Directory**. Zostanie otwarty ekran listy serwerów Active Directory.
 
-2.  Kliknij pozycję **Utwórz**. Zostanie otwarty ekran nowe właściwości serwera.
+2.  Kliknij przycisk **Utwórz**. Zostanie otwarty ekran nowe właściwości serwera.
 
 3.  W polu **Nazwa** wpisz unikatową nazwę serwera uwierzytelniania.
 
@@ -485,7 +485,7 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po kliknięciu kafelka F5 w panelu dostępu należy automatycznie zalogować się do F5, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -1,20 +1,19 @@
 ---
-title: Przenieś aplikacje z BizTalk Services do Azure Logic Apps | Microsoft Docs
+title: Przenieś aplikacje z BizTalk Services do Azure Logic Apps
 description: Migrowanie z usługi Azure BizTalk Services (serwera usługi MAB) do Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: jonfancey
 ms.author: jonfan
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: dfc0aa4fa7c70ae91f25f97671b15dacfe991594
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 97b498091451b0bf39741ed4340b8e02517c5447
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273184"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791873"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Migrowanie z BizTalk Services do Azure Logic Apps
 
@@ -33,7 +32,7 @@ BizTalk Services składa się z dwóch podusług:
 
 Ta tabela mapuje BizTalk Services możliwości Logic Apps.
 
-| BizTalk Services   | Logic Apps            | Cel                      |
+| BizTalk Services   | Aplikacje logiki            | Przeznaczenie                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Łącznik          | Łącznik             | Wyślij i Odbierz dane   |
 | Bridge             | Aplikacja logiki             | Procesor potoku           |
@@ -50,7 +49,7 @@ Ta tabela mapuje BizTalk Services możliwości Logic Apps.
 
 BizTalk Services ma kilka rodzajów artefaktów. 
 
-## <a name="connectors"></a>Łączniki
+## <a name="connectors"></a>Konektory
 
 Łączniki BizTalk Services ułatwiają wysyłanie i odbieranie danych, w tym mostków dwukierunkowych, które umożliwiają interakcje żądania/odpowiedzi oparte na protokole HTTP. Logic Apps używa tej samej terminologii i ma setki łączników, które służą do tego samego celu, łącząc się z szeroką gamę technologii i usług. Na przykład łączniki są dostępne dla usług Cloud SaaS i PaaS, takich jak OneDrive, Office 365, Dynamics CRM i inne, a także lokalnych systemów za pomocą lokalnej bramy danych, która zastępuje usługę adaptera BizTalk dla BizTalk Services. Źródła w BizTalk Services są ograniczone do kolejki FTP, SFTP i Service Bus lub subskrypcji tematu.
 
@@ -94,13 +93,13 @@ BizTalk Services wykonuje decyzję routingu dotyczącą tego, który punkt końc
 
 ![](media/logic-apps-move-from-mabs/route-filter.png)
 
-W BizTalk Services, jeśli istnieją tylko dwie opcje, użycie warunku jest najlepszym sposobem na konwersję filtrów routingu w programie BizTalk Services. Jeśli jest więcej niż dwa, użyj **przełącznika**.
+W BizTalk Services, jeśli istnieją tylko dwie opcje, użycie *warunku* jest najlepszym sposobem na konwersję filtrów routingu w programie BizTalk Services. Jeśli jest więcej niż dwa, użyj **przełącznika**.
 
 Logic Apps zapewnia zaawansowane możliwości logiki oraz zaawansowany przepływ sterowania i Routing przy użyciu [instrukcji warunkowych](../logic-apps/logic-apps-control-flow-conditional-statement.md) i [instrukcji switch](../logic-apps/logic-apps-control-flow-switch-statement.md).
 
 ### <a name="enrich"></a>Wzbogacanie
 
-W trakcie przetwarzania BizTalk Services na etapie wzbogacania są dodawane właściwości do kontekstu komunikatu skojarzonego z otrzymanymi danymi. Na przykład promowanie właściwości do użycia na potrzeby routingu z wyszukiwania bazy danych lub przez wyodrębnienie wartości przy użyciu wyrażenia XPath. Logic Apps zapewnia dostęp do wszystkich danych kontekstowych przed poprzednimi akcjami, co ułatwia replikację tego samego zachowania. Na przykład za pomocą `Get Row` akcji połączenia SQL zwracane są dane z bazy danych SQL Server i używane są dane w akcji decyzji dotyczącej routingu. Podobnie właściwości przychodzących Service Bus komunikatów umieszczonych w kolejce przez wyzwalacz są adresowane, a także XPath przy użyciu wyrażenia języka definicji przepływu pracy XPath.
+W trakcie przetwarzania BizTalk Services na etapie wzbogacania są dodawane właściwości do kontekstu komunikatu skojarzonego z otrzymanymi danymi. Na przykład promowanie właściwości do użycia na potrzeby routingu z wyszukiwania bazy danych lub przez wyodrębnienie wartości przy użyciu wyrażenia XPath. Logic Apps zapewnia dostęp do wszystkich danych kontekstowych przed poprzednimi akcjami, co ułatwia replikację tego samego zachowania. Na przykład przy użyciu akcji `Get Row` połączenia SQL dane są zwracane z bazy danych SQL Server, a dane w akcji podejmowanej w ramach decyzji dotyczącej routingu. Podobnie właściwości przychodzących Service Bus komunikatów umieszczonych w kolejce przez wyzwalacz są adresowane, a także XPath przy użyciu wyrażenia języka definicji przepływu pracy XPath.
 
 ### <a name="run-custom-code"></a>Uruchamianie kodu niestandardowego
 
@@ -113,7 +112,7 @@ Jeśli masz niestandardowy kod w zestawach, które są wywoływane z BizTalk Ser
 ### <a name="edi-processing-and-trading-partner-management"></a>Przetwarzanie EDI i zarządzanie partnerami handlowymi
 
 BizTalk Services i Logic Apps obejmują przetwórstwo EDI i B2B z obsługą AS2 (Applicability Statement 2), X12 i EDIFACT. W BizTalk Services tworzenia mostków EDI oraz tworzenia i zarządzania partnerami handlowymi oraz umowami w dedykowanym portalu śledzenia i zarządzania.
-W Logic Apps można uzyskać tę funkcję za pomocą [pakiet integracyjny dla przedsiębiorstw (EIP)](../logic-apps/logic-apps-enterprise-integration-overview.md). EIP zawiera [konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) i akcje B2B dla przetwarzania EDI i B2B. Do tworzenia i zarządzania [partnerami handlowymi](../logic-apps/logic-apps-enterprise-integration-partners.md) i umowami służy również konto [](../logic-apps/logic-apps-enterprise-integration-agreements.md)integracji. Po utworzeniu konta integracji można połączyć co najmniej jedną aplikację logiki z kontem. Następnie można użyć akcji B2B, aby uzyskać dostęp do informacji o partnerze handlowym z aplikacji logiki. Dostępne są następujące akcje:
+W Logic Apps można uzyskać tę funkcję za pomocą [pakiet integracyjny dla przedsiębiorstw (EIP)](../logic-apps/logic-apps-enterprise-integration-overview.md). EIP zawiera [konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) i akcje B2B dla przetwarzania EDI i B2B. Do tworzenia i zarządzania [partnerami handlowymi](../logic-apps/logic-apps-enterprise-integration-partners.md) i [umowami](../logic-apps/logic-apps-enterprise-integration-agreements.md)służy również konto integracji. Po utworzeniu konta integracji można połączyć co najmniej jedną aplikację logiki z kontem. Następnie można użyć akcji B2B, aby uzyskać dostęp do informacji o partnerze handlowym z aplikacji logiki. Dostępne są następujące akcje:
 
 * Kodowanie AS2
 * Dekodowanie AS2

@@ -1,33 +1,29 @@
 ---
-title: Przykłady operacji na danych — Azure Logic Apps
+title: Przykłady operacji na danych
 description: Przykłady kodu dla akcji operacji danych w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: d59e461fab52bddf9cb1f881d52a751931c7312b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179150"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793085"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Przykłady kodu operacji danych dla Azure Logic Apps
 
 Oto przykłady kodu dla definicji akcji operacji danych w artykule [wykonywanie operacji na danych](../logic-apps/logic-apps-perform-data-operations.md). Możesz użyć tych przykładów, jeśli chcesz wypróbować przykłady przy użyciu własnej definicji przepływu pracy aplikacji logiki, subskrypcji platformy Azure i połączeń interfejsu API. Po prostu skopiuj i wklej te definicje akcji w edytorze widoku kodu dla definicji przepływu pracy aplikacji logiki, a następnie zmodyfikuj definicje dla określonego przepływu pracy. 
 
-W oparciu o standardy JavaScript Object Notation (JSON) te definicje akcji są wyświetlane w kolejności alfabetycznej. Jednak w Projektancie aplikacji logiki każda definicja jest wyświetlana w prawidłowej kolejności w ramach przepływu pracy, ponieważ `runAfter` właściwość każdej definicji akcji określa kolejność uruchamiania.
+W oparciu o standardy JavaScript Object Notation (JSON) te definicje akcji są wyświetlane w kolejności alfabetycznej. Jednak w Projektancie aplikacji logiki każda definicja jest wyświetlana w prawidłowej kolejności w ramach przepływu pracy, ponieważ właściwość `runAfter` każdej definicji akcji określa kolejność uruchamiania.
 
 <a name="compose-action-example"></a>
 
 ## <a name="compose"></a>Redagowanie
 
-Aby wypróbować [ przykład tworzenia akcji](../logic-apps/logic-apps-perform-data-operations.md#compose-action), poniżej przedstawiono definicje akcji, których można użyć:
+Aby wypróbować przykład tworzenia akcji, poniżej przedstawiono definicje akcji, których można użyć: [ ](../logic-apps/logic-apps-perform-data-operations.md#compose-action)
 
 ```json
 "actions": {

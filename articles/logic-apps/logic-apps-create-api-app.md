@@ -1,21 +1,17 @@
 ---
-title: Tworzenie internetowych interfejsów API & interfejsów API REST dla Azure Logic Apps | Microsoft Docs
+title: Tworzenie internetowych interfejsów API & interfejsów API REST dla Azure Logic Apps
 description: Tworzenie internetowych interfejsów API & interfejsów API REST, które umożliwiają wywoływanie interfejsów API, usług lub systemów na potrzeby integracji systemu w programie Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 0d73f40c77c1b73a52522eafdb3c093b691d3e14
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583459"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793222"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Tworzenie niestandardowych interfejsów API, które można wywołać z Azure Logic Apps
 
@@ -224,7 +220,7 @@ Aby udostępnić niestandardowe interfejsy API innym użytkownikom Logic Apps na
 
 Aby udostępnić niestandardowe interfejsy API wszystkim użytkownikom w Logic Apps, w usłudze Automatyzacja i aplikacjach Microsoft PowerShell, musisz dodać zabezpieczenia, zarejestrować interfejsy API jako łączniki aplikacji logiki i wyznaczyć łączniki dla [programu certyfikowanego Microsoft Azure](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 * Aby uzyskać pomoc dotyczącą niestandardowych interfejsów API, skontaktuj się z [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com).
 

@@ -1,17 +1,17 @@
 ---
-title: Warstwy cenowe dla Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano warstwy cenowe dla Azure Database for PostgreSQL-pojedynczego serwera.
+title: Warstwy cenowe — Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano opcje obliczeń i magazynowania w Azure Database for PostgreSQL-pojedynczym serwerze.
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 4f8bbf22d1081948cf6effd5fdbd8b6a6b7d5332
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f7e5d3e681c86d5ecb014f95d838e6d3d51e1c48
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903294"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768371"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -21,18 +21,18 @@ Serwer Azure Database for PostgreSQL można utworzyć w jednej z trzech różnyc
 |:---|:----------|:--------------------|:---------------------|
 | Generowanie obliczeń | Gen 4, Gen 5 | Gen 4, Gen 5 | 5\. generacja |
 | Rdzeni wirtualnych | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Pamięć na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
+| Pamięć na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | od 5 GB do 1 TB | od 5 GB do 16 TB | od 5 GB do 16 TB |
-| Typ magazynu | Magazyn w warstwie Standardowa Azure | Azure Premium Storage | Azure Premium Storage |
+| Typ usługi Storage | Magazyn w warstwie Standardowa Azure | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowej bazy danych | od 7 do 35 dni | od 7 do 35 dni | od 7 do 35 dni |
 
 Aby wybrać warstwę cenową, należy użyć poniższej tabeli jako punktu wyjścia.
 
 | Warstwa cenowa | Docelowe obciążenia |
 |:-------------|:-----------------|
-| Podstawowa | Obciążenia, które wymagają lekkich obliczeń i wydajności operacji we/wy. Przykłady obejmują serwery używane do programowania lub testowania oraz nierzadko używane aplikacje. |
-| Ogólnego przeznaczenia | Większość obciążeń firmowych, które wymagają zrównoważonych obliczeń i pamięci dzięki skalowalnej przepływności we/wy. Przykłady obejmują serwery do hostowania aplikacji internetowych i mobilnych oraz inne aplikacje dla przedsiębiorstw.|
-| Pamięć | Obciążenia baz danych o wysokiej wydajności, które wymagają wydajności w pamięci w celu przyspieszenia przetwarzania transakcji i wyższego współbieżności. Przykładami mogą być serwery do przetwarzania danych w czasie rzeczywistym oraz aplikacji transakcyjnych lub analitycznych o wysokiej wydajności.|
+| Basic | Obciążenia, które wymagają lekkich obliczeń i wydajności operacji we/wy. Przykłady obejmują serwery używane do programowania lub testowania oraz nierzadko używane aplikacje. |
+| Ogólne zastosowanie | Większość obciążeń firmowych, które wymagają zrównoważonych obliczeń i pamięci dzięki skalowalnej przepływności we/wy. Przykłady obejmują serwery do hostowania aplikacji internetowych i mobilnych oraz inne aplikacje dla przedsiębiorstw.|
+| Zoptymalizowane pod kątem pamięci | Obciążenia baz danych o wysokiej wydajności, które wymagają wydajności w pamięci w celu przyspieszenia przetwarzania transakcji i wyższego współbieżności. Przykładami mogą być serwery do przetwarzania danych w czasie rzeczywistym oraz aplikacji transakcyjnych lub analitycznych o wysokiej wydajności.|
 
 Po utworzeniu serwera można zmienić liczbę rdzeni wirtualnych, generowanie sprzętu i warstwę cenową (oprócz i z Basic) w ciągu kilku sekund. Można także niezależnie dostosować ilość miejsca do magazynowania i okres przechowywania kopii zapasowych w górę lub w dół bez przestojów aplikacji. Po utworzeniu serwera nie można zmienić typu magazynu kopii zapasowej. Aby uzyskać więcej informacji, zobacz sekcję [skalowanie zasobów](#scale-resources) .
 
@@ -40,16 +40,16 @@ Po utworzeniu serwera można zmienić liczbę rdzeni wirtualnych, generowanie sp
 
 Zasoby obliczeniowe są udostępniane jako rdzeni wirtualnych, które reprezentują logicznego procesora bazowego sprzętu. Chiny Wschodnie 1, Chiny Północne 1, US DoD (region środkowy) i US DoD (region wschodni) używają logicznych procesorów CPU, które są oparte na procesorach Intel E5-2673 v3 (Haswell) 2,4 GHz. Wszystkie pozostałe regiony wykorzystują jednostki logiczne procesorów generacji 5, które są oparte na procesorach Intel E5-2673 v4 (Broadwell) 2,3 GHz.
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Usługa Storage
 
 Zapewniana ilość miejsca w magazynie to pojemność magazynu dostępna dla serwera Azure Database for PostgreSQL. Magazyn jest używany dla plików bazy danych, plików tymczasowych, dzienników transakcji i dzienników serwera PostgreSQL. Całkowita ilość dostępnego miejsca w magazynie określa również wydajność we/wy dostępną dla serwera.
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
-| Typ magazynu | Magazyn w warstwie Standardowa Azure | Azure Premium Storage | Azure Premium Storage |
+| Typ usługi Storage | Magazyn w warstwie Standardowa Azure | Azure Premium Storage | Azure Premium Storage |
 | Rozmiar magazynu | od 5 GB do 1 TB | od 5 GB do 16 TB | od 5 GB do 16 TB |
 | Rozmiar przyrostu pamięci masowej | 1 GB | 1 GB | 1 GB |
-| Liczba operacji we/wy na sekundę | Zmienna |3 IOPS/GB<br/>Minimalna liczba operacji we/wy 100<br/>Maksymalna liczba operacji we/wy 20 000 | 3 IOPS/GB<br/>Minimalna liczba operacji we/wy 100<br/>Maksymalna liczba operacji we/wy 20 000 |
+| Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Minimalna liczba operacji we/wy 100<br/>Maksymalna liczba operacji we/wy 20 000 | 3 IOPS/GB<br/>Minimalna liczba operacji we/wy 100<br/>Maksymalna liczba operacji we/wy 20 000 |
 
 > [!NOTE]
 > Magazyn o pojemności do 16TB i 20 000 operacji we/wy jest obsługiwany w następujących regionach: Wschodnie stany USA, Wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA, Europa Północna, Europa Zachodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Azja Południowo-Wschodnia, Azja Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Australia Wschodnia, Australia Południowo-Wschodnia.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b75d9e9fc88cabacab912efa17938708eb061b99
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8c5b932a1b44169cc50c8c7214d3f3410c581f4e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232429"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792265"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure
 
@@ -74,10 +74,10 @@ Obciążenie maszyny | Site Recovery obsługuje replikację wszystkich obciąże
 Windows Server 2019 | Obsługiwane przez [pakiet zbiorczy aktualizacji 34](https://support.microsoft.com/help/4490016) (wersja 9,22 usługi mobilności) lub nowszy.
 Windows Server 2016 64 — bit | Obsługiwane dla serwera Server Core, serwera z funkcją środowisko pulpitu.
 Windows Server 2012 R2/Windows Server 2012 | Obsługiwane.
-System Windows Server 2008 R2 z dodatkiem SP1 lub nowszym. | Obsługiwane.<br/><br/> Z wersji 9.30. x. x (oczekiwana wersja rozpoczyna się od listopada 2019) agenta usługi mobilności potrzebna jest aktualizacja [stosu aktualizacji (SSU)](https://support.microsoft.com/help/4490628) i [aktualizacje SHA-2](https://support.microsoft.com/help/4474419) zainstalowane na maszynach z systemem Windows 2008 R2 z dodatkiem SP1 lub nowszym. Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu algorytmu SHA-2 i wymaganiach](https://aka.ms/SHA-2KB).
-Windows Server 2008 z dodatkiem SP2 lub nowszym (64-bitowy/32-bitowy) |  Obsługiwane tylko w przypadku migracji. [Dowiedz się więcej](migrate-tutorial-windows-server-2008.md).<br/><br/> Z wersji 9.30. x. x (oczekiwana wersja rozpoczyna się od listopada 2019) agenta usługi mobilności potrzebna jest aktualizacja [stosu aktualizacji (SSU)](https://support.microsoft.com/help/4493730) i [aktualizacje SHA-2](h https://support.microsoft.com/help/4474419) zainstalowane na komputerach z systemem Windows 2008 SP2. ISHA-1 nie jest obsługiwane z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu algorytmu SHA-2 i wymaganiach](https://aka.ms/SHA-2KB).
+System Windows Server 2008 R2 z dodatkiem SP1 lub nowszym. | Obsługiwane.<br/><br/> Z wersji 9.30. x. x (oczekiwana wersja rozpoczyna się od listopada 2019) agenta usługi mobilności potrzebna jest aktualizacja [stosu aktualizacji (SSU)](https://support.microsoft.com/help/4490628) i [aktualizacje SHA-2](https://support.microsoft.com/help/4474419) zainstalowane na maszynach z systemem Windows 2008 R2 z dodatkiem SP1 lub nowszym. Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
+Windows Server 2008 z dodatkiem SP2 lub nowszym (64-bitowy/32-bitowy) |  Obsługiwane tylko w przypadku migracji. [Dowiedz się więcej](migrate-tutorial-windows-server-2008.md).<br/><br/> Z wersji 9.30. x. x (oczekiwana wersja rozpoczyna się od listopada 2019) agenta usługi mobilności potrzebna jest aktualizacja [stosu aktualizacji (SSU)](https://support.microsoft.com/help/4493730) i [aktualizacje SHA-2](h https://support.microsoft.com/help/4474419) zainstalowane na komputerach z systemem Windows 2008 SP2. ISHA-1 nie jest obsługiwane z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
 Windows 10, Windows 8.1, Windows 8 | Obsługiwane.
-Windows 7 z dodatkiem SP1 64 — bit | Obsługiwane przez [pakiet zbiorczy aktualizacji 36](https://support.microsoft.com/help/4503156) (wersja 9,22 usługi mobilności) lub nowszy. </br></br> Z wersji 9.30. x. x (oczekiwana wersja rozpoczyna się od listopada 2019) agenta usługi mobilności potrzebna jest aktualizacja [stosu aktualizacji (SSU)](https://support.microsoft.com/help/4490628) i [aktualizacje SHA-2](https://support.microsoft.com/help/4474419) zainstalowane na komputerach z systemem Windows 7 z dodatkiem SP1.  Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu algorytmu SHA-2 i wymaganiach](https://aka.ms/SHA-2KB).
+Windows 7 z dodatkiem SP1 64 — bit | Obsługiwane przez [pakiet zbiorczy aktualizacji 36](https://support.microsoft.com/help/4503156) (wersja 9,22 usługi mobilności) lub nowszy. </br></br> Z wersji 9.30. x. x (oczekiwana wersja rozpoczyna się od listopada 2019) agenta usługi mobilności potrzebna jest aktualizacja [stosu aktualizacji (SSU)](https://support.microsoft.com/help/4490628) i [aktualizacje SHA-2](https://support.microsoft.com/help/4474419) zainstalowane na komputerach z systemem Windows 7 z dodatkiem SP1.  Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami. Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
 Linux | Obsługiwany jest tylko system 64-bitowy. 32 — system bitowy nie jest obsługiwany.<br/><br/>Każdy serwer z systemem Linux powinien mieć zainstalowane [składniki systemu Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Jest to wymagane do uruchomienia serwera na platformie Azure po przetestowaniu trybu failover/przejścia w tryb failover. Jeśli brakuje składników usługi LIS, należy zainstalować [składniki](https://www.microsoft.com/download/details.aspx?id=55106) przed włączeniem replikacji dla maszyn na platformie Azure. <br/><br/> Site Recovery organizuje przejście w tryb failover na potrzeby uruchamiania serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux mogą ograniczyć obsługę tylko wersji dystrybucji, które nie dotarły do końca cyklu życia.<br/><br/> W przypadku dystrybucji systemu Linux obsługiwane są tylko jądra, które są częścią wersji pomocniczej dystrybucji/aktualizacji.<br/><br/> Uaktualnianie chronionych maszyn w ramach głównych wersji dystrybucji systemu Linux nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny, a następnie ponownie Włącz replikację.<br/><br/> [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) o pomocy technicznej dla systemów Linux i technologii open source na platformie Azure.
 Linux Red Hat Enterprise | 5,2 do 5,11</b><br/> 6,1 do 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> Serwery z systemem Red Hat Enterprise Linux 5.2 — 5.11 & 6.1-6.10 nie mają wstępnie zainstalowanych [składników systemu Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Przed włączeniem replikacji maszyn na platformie Azure upewnij się, że zostały zainstalowane [składniki](https://www.microsoft.com/download/details.aspx?id=55106) .
 Linux: CentOS | 5,2 do 5,11</b><br/> 6,1 do 6,10</b><br/> 7,0 do 7,6<br/> <br/> Serwery z systemem CentOS 5.2-5.11 & 6.1-6.10 nie mają wstępnie zainstalowanych [składników usług integracji systemu Linux (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Przed włączeniem replikacji maszyn na platformie Azure upewnij się, że zostały zainstalowane [składniki](https://www.microsoft.com/download/details.aspx?id=55106) .
@@ -86,6 +86,8 @@ Debian | Debian 7/Debian 8 [(Przejrzyj obsługiwane wersje jądra)](#debian-kern
 SUSE Linux | SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, SP3 i SP4 [(Przejrzyj obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Uaktualnianie zreplikowanych maszyn z programu SUSE Linux Enterprise Server 11 z dodatkiem SP3 do wersji SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz ją ponownie po uaktualnieniu.
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Uruchamianie jądra zgodnego z systemem Red Hat lub nieprzerwane wydanie jądra 3, 4 & 5 (UEK3, UEK4, UEK5) 
 
+> [!Note]
+> Dla każdej wersji systemu Windows Azure Site Recovery obsługuje tylko kompilacje [LTSC (Long-Term Servicing Channel)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) .  W tej chwili nie są obecnie obsługiwane [półroczne wersje kanałów](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) .
 
 ### <a name="ubuntu-kernel-versions"></a>Wersje jądra Ubuntu
 
@@ -174,21 +176,21 @@ Usługa ExpressRoute systemu Azure | Tak
 ILB | Tak
 ELB | Tak
 Azure Traffic Manager | Tak
-Multi-NIC | Tak
+Wiele kart sieciowych | Tak
 Zastrzeżony adres IP | Tak
-IPv4 | Tak
+Adresów | Tak
 Zachowaj źródłowy adres IP | Tak
 Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Tak
 Wydajniejsze sieci | Nie
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Usługa Storage
 **Składnik** | **Obsługiwane**
 --- | ---
 Dysk dynamiczny | Dysk systemu operacyjnego musi być dyskiem podstawowym. <br/><br/>Dyski danych mogą być dyskami dynamicznymi
 Konfiguracja dysku platformy Docker | Nie
 System plików NFS hosta | Tak dla oprogramowania VMware<br/><br/> Nie dla serwerów fizycznych
 Sieć SAN hosta (iSCSI/FC) | Tak
-Host vSAN | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
+Sieci vSAN hosta | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
 Wielościeżkowa hosta (MPIO) | Tak, przetestowano przy użyciu modułu Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM dla CLARiiON
 Woluminy wirtualne hosta (VVols) | Tak dla oprogramowania VMware<br/><br/> N/A dla serwerów fizycznych
 Gość/serwer VMDK | Tak
@@ -239,9 +241,9 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 (warstwy gorąca i chłodna) |
 
 **Funkcja** | **Obsługiwane**
 --- | ---
-Zestawy dostępności | Tak
+Zbiory dostępności | Tak
 Strefy dostępności | Nie
-HUB | Tak
+Centralny | Tak
 Dyski zarządzane | Tak
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny wirtualnej platformy Azure

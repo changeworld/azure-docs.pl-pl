@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy z pliku audio C# (.NET) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: fdb747212914769b8551d9cd12f1fbc8a01245dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a570ec7e7eaae13515edc268d465df18674fc22
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504193"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796007"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,6 +25,8 @@ Przed rozpoczęciem upewnij się, że:
 > * [Tworzenie zasobu usługi Azure Speech](../../../../get-started.md)
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=dotnet)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="open-your-project-in-visual-studio"></a>Otwieranie projektu w programie Visual Studio
 
@@ -66,6 +68,7 @@ Przed zainicjowaniem obiektu `SpeechRecognizer` należy utworzyć konfigurację 
 
 > [!NOTE]
 > Ten przykład używa metody `FromSubscription()`, aby skompilować `SpeechConfig`. Aby uzyskać pełną listę dostępnych metod, zobacz [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 ````C#
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");

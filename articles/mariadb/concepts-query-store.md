@@ -1,17 +1,17 @@
 ---
-title: Magazyn zapytań w Azure Database for MariaDB
+title: Magazyn zapytań — Azure Database for MariaDB
 description: Dowiedz się więcej o funkcji magazynu zapytań w Azure Database for MariaDB, aby ułatwić śledzenie wydajności w miarę upływu czasu.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 67ca6aa36166e8ae08bedec82441e45930976b80
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: fbc814b5d263e20cea1d961891afb19894b78965
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603994"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772220"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Monitorowanie wydajności Azure Database for MariaDB przy użyciu magazynu zapytań
 
@@ -102,7 +102,7 @@ Poniższe opcje są stosowane w odniesieniu do statystyk oczekiwania.
 | query_store_wait_sampling_frequency | Zmienia częstotliwość próbkowania oczekiwania w sekundach. od 5 do 300 sekund. | 30 | 5-300 |
 
 > [!NOTE]
-> Obecnie **query_store_capture_mode** zastępuje tę konfigurację, co oznacza, że zarówno **query_store_capture_mode** , jak i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** muszą być włączone dla wszystkich, aby statystyki oczekiwania mogły działać. Jeśli **query_store_capture_mode** jest wyłączone, a następnie zaczekaj, statystyki są również wyłączone, ponieważ statystyki oczekiwania wykorzystują performance_schema włączone i zapytanie_tekst przechwycone przez magazyn zapytań.
+> Obecnie **query_store_capture_mode** zastępuje tę konfigurację, co oznacza, że oba **query_store_capture_mode** i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** muszą być włączone dla wszystkich, aby statystyki oczekiwania mogły działać. Jeśli **query_store_capture_mode** jest wyłączone, a następnie zaczekaj, statystyki są również wyłączone, ponieważ statystyki oczekiwania wykorzystują performance_schema włączone i query_text przechwycone przez magazyn zapytań.
 
 Użyj [Azure Portal](howto-server-parameters.md) , aby uzyskać lub ustawić inną wartość dla parametru.
 
@@ -161,7 +161,7 @@ Ten widok zwraca dane zdarzeń oczekiwania w magazynie zapytań. Istnieje jeden 
 | `count_star` | bigint (20) | NO| Liczba zdarzeń oczekiwania próbkowanych w przedziale czasu dla zapytania |
 | `sum_timer_wait_ms` | double | NO| Łączny czas oczekiwania (w milisekundach) tego zapytania w interwale |
 
-### <a name="functions"></a>Funkcje
+### <a name="functions"></a>Functions
 
 | **Nazwa**| **Opis** |
 |---|---|

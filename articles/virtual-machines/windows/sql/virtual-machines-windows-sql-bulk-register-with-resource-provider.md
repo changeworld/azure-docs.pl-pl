@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489075"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790553"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Zbiorcze rejestrowanie maszyn wirtualnych SQL na platformie Azure przy użyciu dostawcy zasobów maszyny wirtualnej SQL
 
@@ -214,7 +214,7 @@ Raport jest generowany jako plik `.txt` o nazwie `RegisterSqlVMScriptReport<Time
 | Liczba pominiętych maszyn wirtualnych, ponieważ nie są one uruchomione SQL Server w systemie Windows | Liczba maszyn wirtualnych, które zostały pominięte, ponieważ nie działają SQL Server lub nie są maszynami wirtualnymi z systemem Windows. Maszyny wirtualne są wymienione w formacie `SubscriptionID, Resource Group, Virtual Machine`. | 
 | &nbsp; | &nbsp; |
 
-### <a name="log"></a>Log 
+### <a name="log"></a>Dziennik 
 
 Błędy są rejestrowane w pliku dziennika o nazwie `VMsNotRegisteredDueToError<Timestamp>.log`, gdzie sygnatura czasowa jest momentu uruchomienia skryptu. Jeśli błąd znajduje się na poziomie subskrypcji, dziennik zawiera identyfikator subskrypcji rozdzieloną przecinkami i komunikat o błędzie. Jeśli błąd dotyczy rejestracji maszyny wirtualnej, dziennik zawiera identyfikator subskrypcji, nazwę grupy zasobów, nazwę maszyny wirtualnej, kod błędu i komunikat rozdzielony przecinkami. 
 
@@ -222,7 +222,7 @@ Błędy są rejestrowane w pliku dziennika o nazwie `VMsNotRegisteredDueToError<
 
 Po zarejestrowaniu SQL Server maszyn wirtualnych z dostawcą zasobów przy użyciu dostarczonego skryptu należy wziąć pod uwagę następujące kwestie:
 
-- Rejestracja w ramach dostawcy zasobów wymaga agenta gościa działającego na maszynie wirtualnej SQL Server. Obrazy systemu Windows Server 2008 nie mają agenta gościa, dlatego te maszyny wirtualne będą kończyć się niepowodzeniem i muszą zostać zarejestrowane ręcznie przy użyciu [trybu zarządzania bez agenta](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms).
+- Rejestracja w ramach dostawcy zasobów wymaga agenta gościa działającego na maszynie wirtualnej SQL Server. Obrazy systemu Windows Server 2008 nie mają agenta gościa, dlatego te maszyny wirtualne będą kończyć się niepowodzeniem i muszą zostać zarejestrowane ręcznie przy użyciu [trybu zarządzania bez agenta](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes).
 - W celu przezwyciężenia przezroczystych błędów logika ponawiania jest wbudowana. Jeśli maszyna wirtualna została pomyślnie zarejestrowana, jest to szybka operacja. Jeśli jednak rejestracja nie powiedzie się, każda maszyna wirtualna zostanie ponowiona.  W związku z tym należy zapewnić znaczny czas na ukończenie procesu rejestracji — chociaż rzeczywiste wymaganie czasu zależy od typu i liczby błędów. 
 
 ## <a name="full-script"></a>Pełny skrypt

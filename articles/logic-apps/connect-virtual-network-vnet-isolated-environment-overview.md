@@ -1,20 +1,17 @@
 ---
-title: Dostęp do sieci wirtualnych platformy Azure — Azure Logic Apps
+title: Dostęp do sieci wirtualnych platformy Azure
 description: Omówienie sposobu, w jaki środowiska usług Integration Service (ISEs) ułatwiają aplikacjom logiki dostęp do sieci wirtualnych platformy Azure (sieci wirtualnych)
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: e06ac0c0647d9a9a6b5adee289b497f2fe94b222
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9c4dca6dc5def1b1c458f28aa2d3ab992bd705d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889369"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792728"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów platformy Azure Virtual Network z Azure Logic Apps przy użyciu środowisk usługi integracji (ISEs)
 
@@ -78,7 +75,7 @@ Po utworzeniu ISE można wybrać jednostkę SKU dla deweloperów lub jednostkę 
 
 * **Premium**
 
-  Udostępnia ISE, których można używać do produkcji i obejmuje obsługę umów SLA, wbudowanych wyzwalaczy i akcji, łączników standardowych, łączników przedsiębiorstwa, pojedynczej integracji [warstwy standardowej](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , opcje skalowania pojemności i nadmiarowości podczas Odtwarzanie przez ustaloną cenę miesięczną.
+  Oferuje ISE, którego można użyć do produkcji i obejmuje obsługę umów SLA, wbudowane wyzwalacze i akcje, łączniki standardowe, łączniki przedsiębiorstwa, pojedyncze konto integracji [warstwy standardowej](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , opcje skalowania pojemności i nadmiarowości podczas odtwarzania przez ustaloną cenę miesięczną.
 
 > [!IMPORTANT]
 > Opcja SKU jest dostępna tylko podczas tworzenia ISE i nie można jej później zmienić.

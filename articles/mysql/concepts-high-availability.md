@@ -1,36 +1,36 @@
 ---
-title: Pojęcia wysokiej dostępności w usłudze Azure Database for MySQL
-description: Ten temat zawiera informacje o wysokiej dostępności, gdy przy użyciu usługi Azure Database for MySQL
+title: Wysoka dostępność — Azure Database for MySQL
+description: Ten temat zawiera informacje o wysokiej dostępności podczas korzystania z Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 055727695bfa1ce8a6bb160a7e071c2a161afb3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 532cb62c371718a59adf2877517fcdb8f7047bcf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837836"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770972"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Pojęcia wysokiej dostępności w usłudze Azure Database for MySQL
-Usługa Azure Database for MySQL oferuje gwarantowaną wysoką dostępność. Finansowo umowy dotyczącej poziomu usług (SLA) wynosi 99,99% po ogólnym udostępnieniu. Nie ma praktycznie nie aplikacji, czas przestoju podczas korzystania z tej usługi.
+# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Pojęcia dotyczące wysokiej dostępności w Azure Database for MySQL
+Usługa Azure Database for MySQL zapewnia gwarantowany wysoki poziom dostępności. Umowa dotycząca poziomu usług (SLA 99,99) na finanse W przypadku korzystania z tej usługi nie ma praktycznie czasu na żadną aplikację.
 
 ## <a name="high-availability"></a>Wysoka dostępność
-Model o wysokiej dostępności (HA) opiera się na wbudowane mechanizmy trybu failover, po wystąpieniu przerwania poziomu węzła. Przerwanie poziomu węzła może wystąpić z powodu awarii sprzętu lub w odpowiedzi na wdrożenie usługi.
+Model wysokiej dostępności (HA) jest oparty na wbudowanych mechanizmach awaryjnych w przypadku wystąpienia przerwy na poziomie węzła. Przyczyną może być zakłócenie na poziomie węzła ze względu na awarię sprzętu lub w odpowiedzi na wdrożenie usługi.
 
-Przez cały czas zmiany wprowadzone do usługi Azure Database dla serwera bazy danych MySQL odbywają się w kontekście transakcji. Zmiany są rejestrowane w synchronicznie w usłudze Azure storage, gdy transakcja została zatwierdzona. W przypadku przerwania poziomu węzła serwera bazy danych powoduje utworzenie nowego węzła i automatycznie dołącza magazynu danych do nowego węzła. Wszystkie aktywne połączenia są odrzucane i wszystkich transakcji porządkowych nie są zatwierdzone.
+Przez cały czas zmiany wprowadzone do serwera bazy danych Azure Database for MySQL są wykonywane w kontekście transakcji. Zmiany są rejestrowane synchronicznie w usłudze Azure Storage po zatwierdzeniu transakcji. Jeśli wystąpi zakłócenie na poziomie węzła, serwer bazy danych automatycznie utworzy nowy węzeł i dołączy magazyn danych do nowego węzła. Wszystkie aktywne połączenia są porzucane i wszystkie transakcje numerów porządkowych określających nie są zatwierdzane.
 
-## <a name="application-retry-logic-is-essential"></a>Istotne jest Logika ponawiania aplikacji
-Ważne jest, MySQL, aplikacji baz danych zostały opracowane w celu wykrycia, a następnie spróbuj ponownie usunąć połączenia i nie powiodło się transakcji. Ponawia próbę aplikacji, połączenie aplikacji w sposób niewidoczny dla użytkownika jest przekierowywany do nowo utworzone wystąpienie przejmuje dla tego wystąpienia nie powiodło się.
+## <a name="application-retry-logic-is-essential"></a>Logika ponawiania aplikacji jest istotna
+Ważne jest, aby aplikacje bazy danych MySQL zostały skompilowane w celu wykrywania i ponawiania próby porzucenia połączeń i transakcji zakończonych niepowodzeniem. Po ponownym uruchomieniu aplikacji połączenie aplikacji jest w sposób niewidoczny do odkierowany do nowo utworzonego wystąpienia, które przejmuje wystąpienie zakończone niepowodzeniem.
 
-Na platformie Azure, bramy jest używana wewnętrznie do przekierowania połączenia w nowym wystąpieniu. Po przerwaniu całego procesu pracy awaryjnej zwykle trwa dziesiątki sekund. Ponieważ przekierowanie odbywa się wewnętrznie przez bramę, ciąg połączenia zewnętrznego nie zmienia się dla aplikacji klienckich.
+Wewnętrznie na platformie Azure Brama jest używana do przekierowywania połączeń do nowego wystąpienia. Po przerwie cały proces działający w trybie failover zazwyczaj trwa dziesiątki sekund. Ponieważ przekierowanie jest obsługiwane wewnętrznie przez bramę, parametry połączenia zewnętrznego pozostają takie same dla aplikacji klienckich.
 
 ## <a name="scaling-up-or-down"></a>Skalowanie w górę lub w dół
-Podobnie jak w modelu wysokiej dostępności usługi Azure Database for MySQL jest skalowany w górę lub w dół, tworzone jest nowe wystąpienie serwera o określonym rozmiarze. Istniejący magazyn danych jest odłączona od oryginalnego wystąpienia i dołączyć do nowego wystąpienia.
+Podobnie jak w przypadku modelu HA, gdy Azure Database for MySQL jest skalowane w górę lub w dół, tworzone jest nowe wystąpienie serwera o określonym rozmiarze. Istniejący magazyn danych jest odłączony od oryginalnego wystąpienia i dołączony do nowego wystąpienia.
 
-Podczas operacji skalowania odbywa się przerwę połączenia bazy danych. Aplikacje klienckie są odłączone, a następnie otwórz niezatwierdzone transakcje są anulowane. Gdy aplikacja kliencka ponawia próbę połączenia lub tworzy nowe połączenie, bramy kieruje połączenia z wystąpieniem o nowym rozmiarze. 
+Podczas operacji skalowania następuje przerwanie połączeń z bazą danych. Aplikacje klienckie są rozłączone, a otwieranie niezatwierdzonych transakcji zostało anulowane. Gdy aplikacja kliencka ponowi próbę nawiązania połączenia lub przetworzy nowe połączenie, Brama kieruje połączenie do nowego wystąpienia. 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [obsługi błędów przejściowych łączności](concepts-connectivity.md)
-- Dowiedz się, jak [replikowania danych za pomocą odczytu replik](howto-read-replicas-portal.md)
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej na temat [obsługi błędów łączności przejściowej](concepts-connectivity.md)
+- Dowiedz się, jak [replikować dane za pomocą replik odczytu](howto-read-replicas-portal.md)

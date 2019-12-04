@@ -1,17 +1,17 @@
 ---
-title: Rozwiązywanie problemów z wydajnością zapytań w Azure Database for MariaDB
+title: Rozwiązywanie problemów z wydajnością zapytań — Azure Database for MariaDB
 description: Informacje na temat rozwiązywania problemów z wydajnością zapytań w Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 11/09/2018
-ms.openlocfilehash: a2f5e7e7c9ca39c092e13242ecdac2675b09fc0d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 36571cc1ac4fbdcd5c0c6a4007a6c43858c97193
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973507"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770989"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak użyć WYJAŚNIj, aby uzyskać informacje o wydajności zapytań dotyczących profilów w Azure Database for MariaDB
 **Wyjaśnienie** to przydatne narzędzie do optymalizowania zapytań. Instrukcji WYJAŚNIj można użyć do uzyskania informacji o sposobie wykonywania instrukcji SQL. Poniższe dane wyjściowe przedstawiają przykład wykonania instrukcji WYJAŚNIeń.

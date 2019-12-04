@@ -1,21 +1,17 @@
 ---
-title: Wykonywanie operacji na Azure Logic Apps danych
+title: Wykonywanie operacji na danych
 description: Konwertowanie i formatowanie danych wyjściowych i formatów oraz zarządzanie nimi w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990574"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793120"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Wykonywanie operacji na danych w Azure Logic Apps
 
@@ -80,7 +76,7 @@ i tworzy następujące dane wyjściowe:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Aby wypróbować przykład, wykonaj następujące kroki przy użyciu projektanta aplikacji logiki. Lub, jeśli wolisz pracować w edytorze widoku kodu, możesz **skopiować przykładowe definicje** akcji tworzenia i **inicjowania zmiennych** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — Utwórz](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Aby wypróbować przykład, wykonaj następujące kroki przy użyciu projektanta aplikacji logiki. Lub, jeśli wolisz pracować w edytorze widoku kodu, możesz **skopiować przykładowe definicje** akcji tworzenia i **inicjowania zmiennych** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — Tworzenie](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
@@ -138,7 +134,7 @@ Aby potwierdzić, czy Akcja **redagowania** powoduje utworzenie oczekiwanych wyn
 
 Aby utworzyć tabelę wartości rozdzielanych przecinkami (CSV), która zawiera właściwości i wartości z obiektów JavaScript Object Notation (JSON) w tablicy, użyj akcji **Utwórz tabelę CSV** . Następnie można użyć tabeli w akcjach, które są zgodne z akcją **Utwórz tabelę CSV** .
 
-Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykład **tworzenia tabeli CSV** i **inicjować zmienne** definicje akcji z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — Utwórz tabelę CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykłady **Tworzenie tabeli CSV** i **zainicjuj zmienne** definicje akcji z tego artykułu do własnej definicji przepływu pracy aplikacji logiki. [przykłady kodu operacji danych — Tworzenie tabeli CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
 1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
@@ -289,7 +285,7 @@ Aby sprawdzić, czy Akcja **Utwórz tabelę CSV** tworzy oczekiwane wyniki, Wyś
 
 Aby utworzyć tabelę HTML zawierającą właściwości i wartości z obiektów JavaScript Object Notation (JSON) w tablicy, użyj akcji **Utwórz tabelę HTML** . Następnie można użyć tabeli w akcjach, które są zgodne z akcją **Tworzenie tabeli HTML** .
 
-Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykład **tworzenia tabeli HTML** i **zainicjować zmienne** definicje akcji z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — Utwórz tabelę HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładowe definicje akcji **Create HTML** i **Initialize Variable** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — Tworzenie tabeli HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
@@ -448,7 +444,7 @@ Aby utworzyć mniejszą tablicę zawierającą elementy, które spełniają okre
 > 
 > Aby akcje używały danych wyjściowych macierzy z akcji **filtrowania tablicy** , te akcje muszą akceptować tablice jako dane wejściowe lub trzeba przekształcić tablicę wyjściową w inny zgodny format.
 
-Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładową **tablicę filtrów** i **zainicjuj zmienne** definicje akcji z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — Filtruj tablicę](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładową **tablicę filtrów** i **zainicjuj zmienne** definicje akcji z tego artykułu do podstawowej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — tablica filtrów](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
@@ -497,7 +493,7 @@ Aby potwierdzić, czy Akcja **Filtruj tablicę** tworzy oczekiwane wyniki, Wyśl
 
    `@actionBody('Filter_array')`
 
-   W tym przykładzie zostanie użyta akcja **Wyślij wiadomość e-mail** w programie Outlook 365, która zawiera dane wyjściowe z wyrażenia **ActionBody ("Filter_array")** w treści wiadomości e-mail:
+   W tym przykładzie zostanie użyta akcja **Wyślij wiadomość e-mail** w programie Outlook 365, która zawiera dane wyjściowe z wyrażenia **actionBody ("Filter_array")** w treści wiadomości e-mail:
 
    ![Wyniki akcji z akcji "Filtruj tablicę"](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
@@ -573,7 +569,7 @@ Aby sprawdzić, czy Akcja **łączenia** tworzy oczekiwane wyniki, Wyślij do si
 
 Aby uzyskać odwołanie lub uzyskać dostęp do właściwości w zawartości JavaScript Object Notation (JSON), możesz utworzyć przyjazne dla użytkownika pola lub tokeny dla tych właściwości przy użyciu akcji **Przeanalizuj dane JSON** . Dzięki temu można wybrać te właściwości z listy zawartości dynamicznej po określeniu danych wejściowych dla aplikacji logiki. Dla tej akcji można dostarczyć schemat JSON lub wygenerować schemat JSON z przykładowej zawartości lub ładunku JSON.
 
-Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładowe definicje akcji w formacie **JSON** i **zainicjujania zmiennej** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — analizowanie KOD JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładowe definicje akcji **Przeanalizuj dane JSON** i **zainicjuj zmienne** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — Analiza JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
@@ -648,7 +644,7 @@ Aby utworzyć tablicę z obiektami JSON utworzonymi z wartości w istniejącej t
 > [!NOTE]
 > Aby akcje używały danych wyjściowych macierzy z akcji **SELECT** , te akcje muszą akceptować tablice jako dane wejściowe lub być może trzeba przekształcić tablicę wyjściową w inny zgodny format. 
 
-Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykład **wyboru** i zainicjować definicje akcji **zmiennych** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — wybierz ](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykład **wyboru** i zainicjować definicje akcji **zmiennych** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [przykłady kodu operacji danych — wybierz](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 

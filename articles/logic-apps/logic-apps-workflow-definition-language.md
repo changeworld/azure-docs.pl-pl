@@ -1,20 +1,17 @@
 ---
-title: Schemat definicji przepływu pracy Azure Logic Apps
+title: Schemat języka definicji przepływu pracy
 description: Dokumentacja schematu dotycząca języka definicji przepływu pracy w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 64c01baf0852e7e09ce9ffed2d079b47e95f7190
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680079"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790808"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Przewodnik odwołujący się do schematu definicji przepływu pracy w Azure Logic Apps
 
@@ -79,14 +76,14 @@ Oto ogólna struktura definicji parametru:
 
 | Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
-| *Nazwa parametru* < > | Tak | Ciąg | Nazwa parametru, który ma zostać zdefiniowany |
-| <*Typ parametru* > | Tak | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Uwaga**: dla wszystkich haseł, kluczy i wpisów tajnych użyj typów `securestring` lub `secureobject`, ponieważ operacja `GET` nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zapoznaj się z [zaleceniami dotyczącymi zabezpieczeń i parametrami wejściowymi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
-| <*domyślny parametr-wartość* > | Tak | Taki sam jak `type` | Wartość domyślna parametru, która ma być używana, jeśli żadna wartość nie zostanie określona podczas tworzenia wystąpienia przepływu pracy. Atrybut `defaultValue` jest wymagany, aby projektant aplikacji logiki mógł poprawnie pokazać parametr, ale można określić wartość pustą. |
-| <*tablicę z wartościami dozwolonymi parametrami* > | Nie | Tablica | Tablica z wartościami, które parametr może zaakceptować |
-| <*parametru-description* > | Nie | Obiekt JSON | Wszystkie inne szczegóły parametrów, takie jak opis parametru |
+| *Nazwa parametru* <> | Tak | Ciąg | Nazwa parametru, który ma zostać zdefiniowany |
+| <*Typ parametru*> | Tak | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Uwaga**: dla wszystkich haseł, kluczy i wpisów tajnych użyj typów `securestring` lub `secureobject`, ponieważ operacja `GET` nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zapoznaj się z [zaleceniami dotyczącymi zabezpieczeń i parametrami wejściowymi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
+| <*domyślny parametr-wartość*> | Tak | Taki sam jak `type` | Wartość domyślna parametru, która ma być używana, jeśli żadna wartość nie zostanie określona podczas tworzenia wystąpienia przepływu pracy. Atrybut `defaultValue` jest wymagany, aby projektant aplikacji logiki mógł poprawnie pokazać parametr, ale można określić wartość pustą. |
+| <*tablicę z wartościami dozwolonymi parametrami*> | Nie | Tablica | Tablica z wartościami, które parametr może zaakceptować |
+| <*parametru-description*> | Nie | Obiekt JSON | Wszystkie inne szczegóły parametrów, takie jak opis parametru |
 ||||
 
-Następnie Utwórz [szablon Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla definicji przepływu pracy, zdefiniuj parametry szablonu, które akceptują wartości, które mają być używane podczas wdrażania, Zastąp wartości stałe wartościami z odwołaniami do parametrów definicji szablonu lub przepływu pracy jako odpowiednie i przechowywanie wartości do użycia we wdrożeniu w osobnym [pliku parametrów](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Dzięki temu można łatwiej zmieniać te wartości za pomocą pliku parametrów bez konieczności aktualizacji i ponownego wdrażania aplikacji logiki. Aby uzyskać informacje poufne lub zabezpieczone, takie jak nazwy użytkowników, hasła i wpisy tajne, można przechowywać te wartości w Azure Key Vault i mieć plik parametrów pobiera te wartości z magazynu kluczy. Aby uzyskać więcej informacji i przykłady dotyczące definiowania parametrów na poziomach definicji i przepływu pracy, zobacz [Omówienie: Automatyzowanie wdrażania dla aplikacji logiki za pomocą szablonów Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Następnie Utwórz [szablon Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla definicji przepływu pracy, zdefiniuj parametry szablonu, które akceptują wartości, które mają być używane podczas wdrażania, Zastąp wartości stałe wartościami z odwołaniami do parametrów szablonu lub definicji przepływu pracy, a następnie przechowuj wartości do użycia we wdrożeniu w osobnym [pliku parametrów](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Dzięki temu można łatwiej zmieniać te wartości za pomocą pliku parametrów bez konieczności aktualizacji i ponownego wdrażania aplikacji logiki. Aby uzyskać informacje poufne lub zabezpieczone, takie jak nazwy użytkowników, hasła i wpisy tajne, można przechowywać te wartości w Azure Key Vault i mieć plik parametrów pobiera te wartości z magazynu kluczy. Aby uzyskać więcej informacji i przykłady dotyczące definiowania parametrów na poziomach definicji i przepływu pracy, zobacz [Omówienie: Automatyzowanie wdrażania dla aplikacji logiki za pomocą szablonów Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 <a name="static-results"></a>
 
@@ -117,11 +114,11 @@ W atrybucie `staticResults`, zdefiniuj `outputs` makiety akcji i `status`, że a
 
 | Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
-| <*nazwy static-Result-definition* > | Tak | Ciąg | Nazwa statycznej definicji wyniku, którą definicja akcji może odwoływać się za pomocą obiektu `runtimeConfiguration.staticResult`. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Możesz użyć dowolnej unikatowej nazwy. Domyślnie ta unikatowa nazwa jest dołączana do liczby, która jest zwiększana w miarę potrzeb. |
-| <*dane wyjściowe — atrybuty i wartości zwracane* > | Tak | Różna | Wymagania dotyczące tych atrybutów różnią się w zależności od różnych warunków. Na przykład gdy `status` jest `Succeeded`, atrybut `outputs` zawiera atrybuty i wartości zwracane jako dane wyjściowe makiety przez akcję. Jeśli `status` jest `Failed`, atrybut `outputs` zawiera atrybut `errors`, który jest tablicą zawierającą co najmniej jeden błąd `message` obiektów, które zawierają informacje o błędzie. |
-| <*wartości nagłówka* > | Nie | JSON | Wszystkie wartości nagłówka zwrócone przez akcję |
-| <*Stan — zwrócony kod* > | Tak | Ciąg | Kod stanu zwracany przez akcję |
-| *akcja < — stan* > | Tak | Ciąg | Stan akcji, na przykład `Succeeded` lub `Failed` |
+| <*nazwy static-Result-definition*> | Tak | Ciąg | Nazwa statycznej definicji wyniku, którą definicja akcji może odwoływać się za pomocą obiektu `runtimeConfiguration.staticResult`. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Możesz użyć dowolnej unikatowej nazwy. Domyślnie ta unikatowa nazwa jest dołączana do liczby, która jest zwiększana w miarę potrzeb. |
+| <*dane wyjściowe — atrybuty i wartości zwracane*> | Tak | Różna | Wymagania dotyczące tych atrybutów różnią się w zależności od różnych warunków. Na przykład gdy `status` jest `Succeeded`, atrybut `outputs` zawiera atrybuty i wartości zwracane jako dane wyjściowe makiety przez akcję. Jeśli `status` jest `Failed`, atrybut `outputs` zawiera atrybut `errors`, który jest tablicą zawierającą co najmniej jeden błąd `message` obiektów, które zawierają informacje o błędzie. |
+| <*wartości nagłówka*> | Nie | JSON | Wszystkie wartości nagłówka zwrócone przez akcję |
+| <*Stan — zwrócony kod*> | Tak | Ciąg | Kod stanu zwracany przez akcję |
+| *akcja <— stan*> | Tak | Ciąg | Stan akcji, na przykład `Succeeded` lub `Failed` |
 |||||
 
 Na przykład w tej definicji akcji HTTP `runtimeConfiguration.staticResult.name` atrybut odwołuje się `HTTP0` wewnątrz atrybutu `staticResults`, gdzie są zdefiniowane dane wyjściowe makiety dla akcji. Atrybut `runtimeConfiguration.staticResult.staticResultOptions` określa, że ustawienie wyniku statycznego jest `Enabled` w akcji HTTP.
@@ -202,7 +199,7 @@ Wynik jest zawsze ciągiem, dzięki czemu ta funkcja jest podobna do funkcji `co
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Jeśli masz ciąg literału, który rozpoczyna się od znaku \@, poprzedź znak \@ innym znakiem \@ jako znak ucieczki: \@ \@
+Jeśli masz ciąg literału, który rozpoczyna się od znaku \@, poprzedź znak \@ innym znakiem \@ jako znak ucieczki: \@\@
 
 W poniższych przykładach pokazano, jak są oceniane wyrażenia:
 
@@ -210,7 +207,7 @@ W poniższych przykładach pokazano, jak są oceniane wyrażenia:
 |------------|--------|
 | "Sophia Owen" | Zwróć następujące znaki: "Sophia Owen" |
 | "Array [1]" | Zwróć następujące znaki: "Array [1]" |
-| "\@ \@" | Zwracaj te znaki jako ciąg jednoznakowy: "\@" |
+| "\@\@" | Zwracaj te znaki jako ciąg jednoznakowy: "\@" |
 | "\@" | Zwróć te znaki jako ciąg dwubajtowy: "\@" |
 |||
 
@@ -225,13 +222,13 @@ W poniższych przykładach pokazano, jak są oceniane następujące wyrażenia:
 
 | Wyrażenie JSON | Wynik |
 |-----------------|--------|
-| "\@parameters (" myBirthMonth ")" | Zwróć ten ciąg: "Styczeń" |
-| "\@ {Parameters (" myBirthMonth ")}" | Zwróć ten ciąg: "Styczeń" |
-| "\@parameters (" myAge ")" | Zwróć ten numer: 42 |
-| "\@ {Parameters (" myAge ")}" | Zwróć tę liczbę jako ciąg: "42" |
-| "Mój wiek jest \@ {Parameters (" myAge ")}" | Zwróć ten ciąg: "Mój wiek to 42" |
+| "\@parametry (" myBirthMonth ")" | Zwróć ten ciąg: "Styczeń" |
+| "\@{Parameters (" myBirthMonth ")}" | Zwróć ten ciąg: "Styczeń" |
+| "\@parametry (" myAge ")" | Zwróć ten numer: 42 |
+| "\@{Parameters (" myAge ")}" | Zwróć tę liczbę jako ciąg: "42" |
+| "Mój wiek jest \@{Parameters (" myAge ")}" | Zwróć ten ciąg: "Mój wiek to 42" |
 | "\@concat (" Mój wiek to ", String (parametry (" myAge ")))" | Zwróć ten ciąg: "Mój wiek to 42" |
-| "Mój wiek jest \@ \@ {Parameters (" myAge ")}" | Zwróć ten ciąg, który zawiera wyrażenie: "Mój wiek jest \@ {Parameters (" myAge ")}" |
+| "Mój wiek jest \@\@{Parameters (" myAge ")}" | Zwróć ten ciąg, który zawiera wyrażenie: "Mój wiek jest \@{Parameters (" myAge ")}" |
 |||
 
 Gdy pracujesz wizualnie w projektancie Logic Apps, możesz tworzyć wyrażenia za pomocą Konstruktora wyrażeń, na przykład:
@@ -280,9 +277,9 @@ Oto ogólna struktura definicji danych wyjściowych:
 
 | Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
-| *Nazwa klucza* < > | Tak | Ciąg | Nazwa klucza dla wyjściowej wartości zwracanej |
-| < >*typu klucza* | Tak | int, float, String, SecureString, bool, Array, obiekt JSON | Typ wyjściowej wartości zwracanej |
-| <*klucz-wartość* > | Tak | Analogicznie jak*klucz typu* < > | Zwracana wartość wyjściowa |
+| *Nazwa klucza* <> | Tak | Ciąg | Nazwa klucza dla wyjściowej wartości zwracanej |
+| <> *typu klucza* | Tak | int, float, String, SecureString, bool, Array, obiekt JSON | Typ wyjściowej wartości zwracanej |
+| <*klucz-wartość*> | Tak | Analogicznie jak*klucz typu* <> | Zwracana wartość wyjściowa |
 |||||
 
 Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, przejrzyj historię uruchamiania aplikacji logiki oraz szczegóły w Azure Portal lub Użyj [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Możesz również przekazać dane wyjściowe do systemów zewnętrznych, na przykład Power BI, aby można było tworzyć pulpity nawigacyjne.

@@ -1,49 +1,49 @@
 ---
-title: Obsługa błędów przejściowych łączności dla usługi Azure Database for PostgreSQL — pojedynczy serwer
-description: Informacje o sposobie obsługi błędów przejściowych łączności dla usługi Azure Database for PostgreSQL — pojedynczy serwer.
-keywords: połączenie postgresql, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
+title: Obsługa błędów łączności przejściowej — Azure Database for PostgreSQL — pojedynczy serwer
+description: Dowiedz się, jak obsługiwać błędy połączeń przejściowych dla Azure Database for PostgreSQL-pojedynczego serwera.
+keywords: Połączenie PostgreSQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ea90de612dcfb2559b29fbffce8306278beb45b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe5b772946bece165a4e09f170355dc7b595a48f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073513"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768847"
 ---
-# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Obsługa błędów przejściowych łączności dla usługi Azure Database for PostgreSQL — pojedynczy serwer
+# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Obsługa błędów łączności przejściowej dla Azure Database for PostgreSQL-pojedynczego serwera
 
-W tym artykule opisano sposób obsługi błędów przejściowych, łączenia z bazą danych Azure database for PostgreSQL.
+W tym artykule opisano sposób obsługi błędów przejściowych łączących się z Azure Database for PostgreSQL.
 
 ## <a name="transient-errors"></a>Błędy przejściowe
 
-Błąd przejściowy, znany także jako błędów przejściowych, jest błąd, który zostanie rozwiązany automatycznie. Najczęściej te błędy manifestu, ponieważ połączenie z serwerem bazy danych Trwa porzucanie. Ponadto nie można otworzyć nowego połączenia z serwerem. Błędy przejściowe może wystąpić na przykład po awarii sprzętu lub sieci się dzieje. Inną przyczyną może być nowa wersja usługi PaaS, która jest wdrażana. Większość z tych zdarzeń są automatycznie skorygowany przez system w mniej niż 60 sekund. Najlepszym rozwiązaniem dla projektowania i tworzenia aplikacji w chmurze jest oczekiwany błędów przejściowych. Załóżmy, że ich może nastąpić w dowolnej części w dowolnym momencie i mieć odpowiednią logikę w celu obsługi tych sytuacji.
+Błąd przejściowy, nazywany także błędem przejściowym, jest błędem, który zostanie rozwiązany. Zazwyczaj te błędy manifestuje jako połączenie z serwerem bazy danych, który jest usuwany. Nie można również otworzyć nowych połączeń z serwerem. Błędy przejściowe mogą wystąpić na przykład wtedy, gdy wystąpi awaria sprzętu lub sieci. Kolejną przyczyną może być Nowa wersja usługi PaaS, która jest wdrażana. Większość z tych zdarzeń jest automatycznie zmniejszana przez system w mniej niż 60 sekund. Najlepszym rozwiązaniem w przypadku projektowania i opracowywania aplikacji w chmurze jest oczekiwanie na błędy przejściowe. Załóżmy, że mogą wystąpić w dowolnym składniku w dowolnym momencie i mają odpowiednią logikę w celu obsługi takich sytuacji.
 
 ## <a name="handling-transient-errors"></a>Obsługa błędów przejściowych
 
-Błędy przejściowe z niepoprawnymi przy użyciu logikę ponawiania próby. Sytuacje, które należy wziąć pod uwagę:
+Błędy przejściowe powinny być obsługiwane za pomocą logiki ponawiania. Sytuacje, które należy wziąć pod uwagę:
 
-* Występuje błąd podczas próby otwarcia połączenia
-* Połączenie zostało porzucone po stronie serwera. Podczas próby wydać polecenie nie można wykonać
-* Aktywnego połączenia, który aktualnie wykonuje polecenie zostało porzucone.
+* Wystąpił błąd podczas próby otwarcia połączenia
+* Połączenie bezczynne zostanie usunięte po stronie serwera. Gdy próbujesz wydać polecenie, którego nie można wykonać
+* Aktywne połączenie, które aktualnie wykonuje polecenie, jest porzucane.
 
-W przypadku pierwszego i drugiego są stosunkowo proste do obsługi. Spróbuj otworzyć ponownie nawiązać połączenie. Gdy powiedzie, błąd przejściowy ma zostały skorygowane przez system. Można ponownie użyć usługi Azure Database for PostgreSQL. Firma Microsoft zaleca posiadanie czeka przed ponowieniem próby połączenia. Możesz się wycofać w przypadku awarii początkowej ponownych prób. Dzięki temu system można użyć wszystkich zasobów dostępnych do pokonania sytuacji błędu. Dobre wzorzec do wykonania jest:
+Pierwszy i drugi przypadek są stosunkowo proste do obsłużenia. Spróbuj ponownie otworzyć połączenie. Po pomyślnym zakończeniu Wystąpił błąd przejściowy przez system. Możesz użyć Azure Database for PostgreSQL ponownie. Zaleca się, aby przed ponowieniem próby nawiązać połączenie. Wycofaj, jeśli początkowe próby nie powiodą się. W ten sposób system może korzystać ze wszystkich dostępnych zasobów, aby przezwyciężyć sytuację błędu. Dobrym wzorcem do wykonania jest:
 
-* Poczekaj 5 sekund przed swoje pierwsze ponowienie.
-* Dla każdego następujących ponawiania próby, zwiększyć czas oczekiwania wykładniczo, maksymalnie 60 sekund.
-* Ustaw maksymalną liczbę ponownych prób w tym momencie aplikacji uwzględnia operacja nie powiodła się.
+* Poczekaj 5 sekund przed pierwszym ponowieniem próby.
+* Dla każdego kolejnego ponowienia próby Zwiększ czas oczekiwania na 60 sekund.
+* Ustaw maksymalną liczbę ponownych prób, w których aplikacja uzna, że operacja nie powiodła się.
 
-Połączenie z aktywnej transakcji nie powiedzie się, jest trudniejsze do odzyskiwania poprawnie. Są dwa przypadki: Jeśli transakcja została tylko do odczytu z natury, jest bezpieczne, aby ponownie otworzyć połączenie i spróbuj ponownie wykonać transakcję. Jeśli jednak jeśli transakcja została również zapisuje w bazie danych, należy określić, jeśli transakcja została wycofana, czy udało mu się przed wystąpił błąd przejściowy. W takiej sytuacji może po prostu nie otrzymano potwierdzenia zatwierdzenie z serwera bazy danych.
+Jeśli połączenie z aktywną transakcją zakończy się niepowodzeniem, trudno jest prawidłowo obsłużyć odzyskiwanie. Istnieją dwa przypadki: Jeśli transakcja miała charakter tylko do odczytu, można bezpiecznie ponownie otworzyć połączenie i ponowić próbę wykonania transakcji. Jeśli jednak transakcja była również zapisywany w bazie danych, należy ustalić, czy transakcja została wycofana, czy też powiodła się przed wykonaniem przejściowego błędu. W takim przypadku użytkownik może po prostu nie otrzymać potwierdzenia zatwierdzenia z serwera bazy danych.
 
-Jest jednym ze sposobów to zrobić, można wygenerować unikatowy identyfikator klienta, który jest używany dla wszystkich ponownych prób. Przekażesz ten unikatowy identyfikator w ramach transakcji do serwera i zapisz go w kolumnie z unikatowego ograniczenia. Dzięki temu można bezpiecznie spróbuj ponownie wykonać transakcję. Zakończy się pomyślnie, jeśli poprzednia transakcja została wycofana i unikatowy identyfikator klienta generowany jeszcze nie istnieje w systemie. Zakończy się niepowodzeniem, wskazująca zduplikowane naruszenie klucza, czy unikatowy identyfikator wcześniej została zapisana, ponieważ poprzednia transakcja została ukończona pomyślnie.
+Jednym ze sposobów wykonania tej czynności jest wygenerowanie unikatowego identyfikatora na kliencie używanym do wszystkich ponownych prób. Ten unikatowy identyfikator zostanie przekazany jako część transakcji do serwera i zapisany w kolumnie z unikatowym ograniczeniem. W ten sposób można bezpiecznie ponowić próbę wykonania transakcji. Jeśli poprzednia transakcja została wycofana, a unikatowy identyfikator wygenerowany przez klienta nie istnieje jeszcze w systemie, zostanie wykonana pomyślnie. To nie powiedzie się, jeśli unikatowy identyfikator został wcześniej zapisany, ponieważ Poprzednia transakcja została ukończona pomyślnie.
 
-Gdy program komunikuje się z usługą Azure Database for PostgreSQL za pomocą oprogramowania pośredniczącego innych firm, należy poprosić dostawcę, czy oprogramowanie pośredniczące zawiera logikę ponowień w przypadku błędów przejściowych.
+Gdy program komunikuje się z Azure Database for PostgreSQL za pomocą oprogramowania pośredniczącego innej firmy, należy polecić dostawcę, czy oprogramowanie pośredniczące zawiera logikę ponawiania prób w przypadku błędów przejściowych.
 
-Upewnij się, że można przetestować Logika ponawiania próby. Na przykład spróbuj wykonywanie kodu podczas skalowania w górę lub w dół zasobów obliczeniowych, bazy danych Azure Database dla serwera PostgreSQL. Aplikacja powinna obsługiwać krótki Przestój, które zostanie osiągnięty podczas tej operacji bez problemów.
+Upewnij się, że test logiki ponawiania prób. Na przykład spróbuj wykonać swój kod podczas skalowania w górę lub w dół zasobów obliczeniowych Azure Database for PostgreSQL Server. Aplikacja powinna obsługiwać krótki czas przestoju, który został napotkany podczas tej operacji bez żadnych problemów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Rozwiązywanie problemów z połączeniem z usługą Azure Database for PostgreSQL](howto-troubleshoot-common-connection-issues.md)

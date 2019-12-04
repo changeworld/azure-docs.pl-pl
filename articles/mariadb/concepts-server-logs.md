@@ -1,17 +1,17 @@
 ---
-title: Dzienniki serwera dla Azure Database for MariaDB
+title: Dzienniki wolnych zapytań — Azure Database for MariaDB
 description: Opisuje dzienniki dostępne w Azure Database for MariaDB i dostępne parametry dotyczące włączania różnych poziomów rejestrowania.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 10dbd4d7fa838ee7f8a3f70b3caadb570877d685
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 12/02/2019
+ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259970"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772108"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Wolne dzienniki zapytań w Azure Database for MariaDB
 W Azure Database for MariaDB dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
@@ -31,14 +31,14 @@ Dzienniki są dostępne przez maksymalnie siedem dni od ich utworzenia. Jeśli c
 Dzienniki są obracane co 24 godziny lub 7 GB, w zależności od tego, co nastąpi wcześniej.
 
 ## <a name="configure-slow-query-logging"></a>Skonfiguruj rejestrowanie wolnych zapytań
-Domyślnie dziennik wolnych zapytań jest wyłączony. Aby ją włączyć, ustaw wartość opcji slow_query_log na włączone.
+Domyślnie dziennik wolnych zapytań jest wyłączony. Aby ją włączyć, ustaw wartość slow_query_log na włączone.
 
 Inne parametry, które można dostosować, obejmują:
 
 - **long_query_time**: Jeśli zapytanie trwa dłużej niż long_query_time (w sekundach), rejestrowane jest zapytanie. Wartość domyślna to 10 sekund.
-- **log_slow_admin_statements**: Jeśli on zawiera instrukcje administracyjne, takie jak ALTER_TABLE i ANALYZE_TABLE, w instrukcjach zapisywana w slow_query_log.
+- **log_slow_admin_statements**: Jeśli on zawiera instrukcje administracyjne, takie jak ALTER_TABLE i ANALYZE_TABLE w instrukcjach zapisanych do slow_query_log.
 - **log_queries_not_using_indexes**: określa, czy zapytania, które nie używają indeksów są rejestrowane w slow_query_log
-- **log_throttle_queries_not_using_indexes**: Ten parametr ogranicza liczbę zapytań niebędących indeksami, które można zapisać w dzienniku wolnych zapytań. Ten parametr obowiązuje, gdy log_queries_not_using_indexes jest ustawiony na wartość włączone.
+- **log_throttle_queries_not_using_indexes**: ten parametr ogranicza liczbę zapytań, które nie są indeksami, które można zapisać w dzienniku wolnych zapytań. Ten parametr zacznie obowiązywać, gdy log_queries_not_using_indexes jest ustawiona na wartość włączone.
 
 Zapoznaj się z [dokumentacją dziennika wolnych zapytań](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB w celu uzyskania pełnych opisów parametrów dziennika wolnych zapytań.
 
@@ -46,26 +46,26 @@ Zapoznaj się z [dokumentacją dziennika wolnych zapytań](https://mariadb.com/k
 Azure Database for MariaDB jest zintegrowana z Azure Monitor dzienników diagnostycznych. Po włączeniu wolnych dzienników zapytań na serwerze MariaDB można je wyemitować do dzienników Azure Monitor, Event Hubs lub Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję jak [znaleźć w dokumentacji dzienników diagnostycznych](../azure-monitor/platform/resource-logs-overview.md).
 
 > [!IMPORTANT]
-> Ta funkcja diagnostyczna dla dzienników serwera jest dostępna tylko w warstwach cenowych [](concepts-pricing-tiers.md)ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
+> Ta funkcja diagnostyczna dla dzienników serwera jest dostępna tylko w [warstwach cenowych](concepts-pricing-tiers.md)ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
 W poniższej tabeli opisano zawartość poszczególnych dzienników. W zależności od metody Output pola uwzględnione i kolejność ich wyświetlania mogą się różnić.
 
-| **Property** | **Opis** |
+| **Właściwość** | **Opis** |
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
-| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
+| `TimeGenerated` [UTC] | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
+| `Type` | Typ dziennika. Zawsze `AzureDiagnostics` |
 | `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Nazwa serwera |
-| `start_time_t`UTC | Godzina rozpoczęcia zapytania |
+| `start_time_t` [UTC] | Godzina rozpoczęcia zapytania |
 | `query_time_s` | Łączny czas wykonywania zapytania |
 | `lock_time_s` | Łączny czas zablokowania zapytania |
 | `user_host_s` | Nazwa użytkownika |

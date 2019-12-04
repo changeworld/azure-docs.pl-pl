@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176937"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786949"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Pracuj z bazami danych, kontenerami i elementami w Azure Cosmos DB
 
@@ -82,7 +82,7 @@ Kontener usługi Azure Cosmos ma zestaw właściwości zdefiniowanych przez syst
 
 | Właściwość zdefiniowana przez system | Generowane przez system lub użytkownik — konfigurowalne | Przeznaczenie | Interfejs SQL API | Interfejs API rozwiązania Cassandra | Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB | Interfejs API języka Gremlin | Interfejs API tabel |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|Identyfikator \_ | Generowane przez system | Unikatowy identyfikator kontenera | Tak | Nie | Nie | Nie | Nie |
+|\_RID | Generowane przez system | Unikatowy identyfikator kontenera | Tak | Nie | Nie | Nie | Nie |
 |\_ETag | Generowane przez system | Tag jednostki używany do optymistycznej kontroli współbieżności | Tak | Nie | Nie | Nie | Nie |
 |\_TS | Generowane przez system | Ostatnia aktualizacja sygnatury czasowej kontenera | Tak | Nie | Nie | Nie | Nie |
 |\_siebie | Generowane przez system | Adres URI adresu URL kontenera | Tak | Nie | Nie | Nie | Nie |
@@ -110,7 +110,7 @@ W zależności od używanego interfejsu API element platformy Azure Cosmos może
 
 | Jednostka Cosmos | Interfejs SQL API | Interfejs API rozwiązania Cassandra | Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB | Interfejs API języka Gremlin | Interfejs API tabel |
 | --- | --- | --- | --- | --- | --- |
-|Element usługi Azure Cosmos | Dokumentowa | wiersza | Dokumentowa | Węzeł lub krawędź | Element |
+|Element usługi Azure Cosmos | Dokumentowa | Wiersza | Dokumentowa | Węzeł lub krawędź | Element |
 
 ### <a name="properties-of-an-item"></a>Właściwości elementu
 

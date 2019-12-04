@@ -7,20 +7,20 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 10c27c18b8003bf286789e478f504bca98ebe7ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824377"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766486"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informacje o partnerach MSP sieci platformy Azure
 
-[Program partnerski dostawcy usług zarządzanych przez sieć Azure (msp)](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) umożliwia aplikacjom opartym na msp, telcos i systemowym integratorom systemów (SIS) oferowanie usług sieciowych w chmurze i hybrydowych w całym portfolio platformy Azure. i usług.
+[Program partnerski dostawcy usług zarządzanych przez sieć Azure (msp)](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) umożliwia aplikacjom opartym na msp, telcos i systemowym integratorom systemów (SIS) oferowanie usług sieciowych w chmurze i hybrydowych na platformie Azure.
 
 Usługa Azure Network msp to wyspecjalizowany zbiór dostawców usług zarządzanych, które zaspokajają potrzeby i wyzwania sieci w chmurze przedsiębiorstwa we wszystkich aspektach sieci chmurowej i hybrydowej. Zarządzane usługi sieciowe obejmują co najmniej jedną z następujących usług: Architektura sieci, planowanie, wdrażanie, operacje, konserwacja i optymalizacja.
 
-![MSP][0]
+![WYMIENIONE][0]
 
 Klienci mogą kupić oferty usług zarządzanych przez MSP w portalu Azure Marketplace lub bezpośrednio z MSP. Usługa msp umożliwia wdrażanie zasobów sieciowych platformy Azure i zarządzanie nimi w ramach subskrypcji i grup zasobów klientów przy użyciu [usługi Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/).
 
@@ -28,12 +28,13 @@ Klienci mogą kupić oferty usług zarządzanych przez MSP w portalu Azure Marke
 
 Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarządzanych usług sieciowych w chmurze oferowanych przez partnerów MSP dla sieci platformy Azure. Jeśli partner usług sieci w chmurze nie jest wymieniony w poniższej sekcji, skontaktuj się z nami. Mogą skontaktować się z nami, wysyłając wiadomość e-mail na adres ManagedVirtualWAN@microsoft.com. 
 
-| **MSP** | **Usługi transformacji sieci w chmurze** | **Zarządzane ExpressRoute** | **Zarządzana wirtualna sieć WAN** | **Zarządzane usługi zabezpieczeń sieci** |**Obliczenia krawędzi zarządzanej sieci** |
+| **WYMIENIONE** | **Usługi transformacji sieci w chmurze** | **Zarządzane ExpressRoute** | **Zarządzana wirtualna sieć WAN** | **Zarządzane usługi zabezpieczeń sieci** |**Zarządzane obliczenia wielodostępnych krawędzi** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||Tak|
 |[ANS — Grupa UK](https://www.ans.co.uk/)|Tak|Tak||||
 |[Sieci aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|Tak |Tak |Tak | | |
-|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|Tak|Tak|Tak|||
+|[TESTY](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|Tak|Tak|Tak|||
+|[Rozwoje](https://www.coevolve.com/services/azure-networking-services/)|Tak||Tak|Tak||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|Tak|||||
 |[Dane wymiaru](https://www.dimensiondata.com/)|Tak|||||
 |[Equinix](https://www.equinix.com/)|Tak|Tak||||
@@ -50,7 +51,7 @@ Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarz
 |[Cloud Services oncore]( https://www.oncore.cloud/services/ue-for-expressroute/)|Tak|Tak||||
 |[Orixcom]( https://www.orixcom.com/cloud-solutions/)|Tak|Tak||||
 |[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)|Tak|Tak||||
-|[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|Tak|Tak|Tak|Tak||
+|[Komunikacja tata](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|Tak|Tak|Tak|Tak||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|Tak|Tak|Tak|||
 |[Mahindra Tech](https://networkservices.techmahindra.com/pages/default.aspx)|Tak||||Tak|
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)|Tak|Tak|Tak|||

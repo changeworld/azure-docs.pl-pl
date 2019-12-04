@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/02/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5343387da7b2027e1071b19be826e329494cdd3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452950"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766365"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Włącz klucz zabezpieczeń bezhasłem Zaloguj się na urządzeniach z systemem Windows 10 (wersja zapoznawcza)
 
@@ -56,22 +56,22 @@ Urządzenia przyłączone do usługi Azure AD, które będą używane do pilota�
 Organizacje mogą wybrać jedną lub więcej z poniższych metod, aby umożliwić korzystanie z kluczy zabezpieczeń logowania systemu Windows zgodnie z wymaganiami organizacji.
 
 - [Włącz w usłudze Intune](#enable-with-intune)
-   - [Planowane wdrożenie usługi Intune](#targeted-intune-deployment)
+- [Planowane wdrożenie usługi Intune](#targeted-intune-deployment)
 - [Włącz z pakietem aprowizacji](#enable-with-a-provisioning-package)
 
 ### <a name="enable-with-intune"></a>Włącz w usłudze Intune
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Przejdź do **Microsoft Intune** > **rejestracji urządzeń** > **Rejestracja systemu Windows** > **Właściwości**usługi **Windows Hello dla firm** > .
 1. W obszarze **Ustawienia** Ustaw **Użyj kluczy zabezpieczeń do logowania** do **włączenia**.
 
 Konfiguracja kluczy zabezpieczeń dla logowania nie zależy od konfigurowania funkcji Windows Hello dla firm.
 
-#### <a name="targeted-intune-deployment"></a>Planowane wdrożenie usługi Intune
+### <a name="targeted-intune-deployment"></a>Planowane wdrożenie usługi Intune
 
 Aby włączyć dostawcę poświadczeń dla określonych grup urządzeń, użyj następujących ustawień niestandardowych za pośrednictwem usługi Intune.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Przejdź do **Microsoft Intune** > **Konfiguracja urządzenia** > **Profile** > **Utwórz profil**.
 1. Skonfiguruj nowy profil przy użyciu następujących ustawień
    1. Name: klucze zabezpieczeń logowania systemu Windows
@@ -80,7 +80,7 @@ Aby włączyć dostawcę poświadczeń dla określonych grup urządzeń, użyj n
    1. Typ profilu: niestandardowy
    1. Niestandardowe ustawienia OMA-URI:
       1. Nazwa: Włącz klucze zabezpieczeń FIDO dla logowania do systemu Windows
-      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
+      1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Typ danych: liczba całkowita
       1. Wartość: 1
 1. Te zasady mogą być przypisane do określonych użytkowników, urządzeń lub grup. Więcej informacji można znaleźć w artykule [przypisywanie profilów użytkowników i urządzeń w Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).

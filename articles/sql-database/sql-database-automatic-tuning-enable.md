@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/03/2019
+ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821908"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767776"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Włączanie dostrajania automatycznego w celu monitorowania zapytań i zwiększania wydajności obciążeń
 
@@ -92,7 +92,7 @@ Aby skonfigurować poszczególne opcje dostrajania automatycznego za pośrednict
 ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
 ```
 
-Ustawienie opcji dostrajania pojedynczej na włączone spowoduje zastąpienie wszystkich ustawień dziedziczonych przez bazę danych i włączenie opcji dostrajania. Ustawienie go na OFF spowoduje również zastąpienie wszystkich ustawień dziedziczonych przez bazę danych i wyłączenie opcji dostrajania. Opcja dostrajania automatycznego, dla której określono wartość domyślną, dziedziczy konfigurację z ustawień dostrajania automatycznego na poziomie bazy danych.  
+Ustawienie opcji dostrajania pojedynczej na włączone spowoduje zastąpienie wszystkich ustawień dziedziczonych przez bazę danych i włączenie opcji dostrajania. Ustawienie go na OFF spowoduje również zastąpienie wszystkich ustawień dziedziczonych przez bazę danych i wyłączenie opcji dostrajania. Opcja dostrajania automatycznego, dla której określono wartość domyślną, będzie dziedziczyć konfigurację dostrajania automatycznego z ustawień na poziomie serwera.  
 
 > [!IMPORTANT]
 > W przypadku [aktywnej replikacji geograficznej](sql-database-auto-failover-group.md), dostrajanie automatyczne należy skonfigurować tylko w podstawowej bazie danych. Automatycznie stosowane akcje dostrajania, takie jak na przykład tworzenie lub usuwanie indeksu, zostaną automatycznie zreplikowane do pomocniczego elementu tylko do odczytu. Próba włączenia dostrajania automatycznego przy użyciu języka T-SQL na pomocniczym serwerze z uprawnieniami tylko do odczytu spowoduje wystąpienie błędu z nieobsługiwaną konfiguracją dla elementu pomocniczego tylko do odczytu.

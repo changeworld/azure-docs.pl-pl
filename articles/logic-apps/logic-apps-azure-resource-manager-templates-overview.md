@@ -2,19 +2,16 @@
 title: Przegląd — Automatyzowanie wdrożenia dla Azure Logic Apps
 description: Dowiedz się więcej na temat Azure Resource Manager szablonów do automatyzowania wdrażania Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: bc61e39a02d16827521758ca8248488e46c109b5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838096"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792554"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Przegląd: Automatyzowanie wdrażania Azure Logic Apps przy użyciu szablonów Azure Resource Manager
 
@@ -322,7 +319,7 @@ Definicja zasobu aplikacji logiki rozpoczyna się od obiektu `properties`, któr
 
 Poniżej znajdują się atrybuty specyficzne dla definicji zasobu aplikacji logiki:
 
-| Atrybut | Wymagany | Typ | Opis |
+| Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
 | `state` | Tak | Ciąg | Stan aplikacji logiki przy wdrożeniu, gdzie `Enabled` oznacza, że aplikacja logiki działa, a `Disabled` oznacza, że aplikacja logiki jest nieaktywna. Jeśli na przykład nie masz gotowości do korzystania z aplikacji logiki, ale chcesz wdrożyć wersję roboczą, możesz użyć opcji `Disabled`. |
 | `integrationAccount` | Nie | Obiekt | Jeśli aplikacja logiki korzysta z konta integracji, które przechowuje artefakty dla scenariuszy biznes-to-Business (B2B), ten obiekt zawiera atrybut `id`, który określa identyfikator konta integracji. |

@@ -1,43 +1,43 @@
 ---
-title: Uruchom ponownie usługi Azure Database dla serwera MariaDB przy użyciu wiersza polecenia platformy Azure
-description: W tym artykule opisano, jak można uruchomić ponownie usługi Azure Database dla serwera MariaDB przy użyciu wiersza polecenia platformy Azure.
+title: Uruchom ponownie serwer — interfejs wiersza polecenia platformy Azure — Azure Database for MariaDB
+description: W tym artykule opisano, jak można ponownie uruchomić serwer Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/28/2019
-ms.openlocfilehash: a6e0509d941d9bfdfe6db7a8b93ee49c5bece1a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 9c3b86cb278d25b6200753f2f418c5aa82ca86ce
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171443"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771057"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Uruchom ponownie usługi Azure Database dla serwera MariaDB przy użyciu wiersza polecenia platformy Azure
-W tym temacie opisano, jak można uruchomić ponownie usługi Azure Database dla serwera MariaDB. Może być konieczne ponowne uruchomienie serwera ze względu na konserwację powoduje krótki przestój serwera wykonuje operację.
+# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Ponowne uruchamianie Azure Database for MariaDB serwera przy użyciu interfejsu wiersza polecenia platformy Azure
+W tym temacie opisano, jak można ponownie uruchomić serwer Azure Database for MariaDB. Może być konieczne ponowne uruchomienie serwera ze względów konserwacyjnych, co powoduje krótkie przestoje, gdy serwer wykona operację.
 
-Ponowne uruchomienie serwera zostanie zablokowane, jeśli usługa jest zajęta. Na przykład usługa może przetwarzania wcześniej żądanej operacji, takich jak skalowanie rdzeni wirtualnych.
+Ponowne uruchomienie serwera zostanie zablokowane, jeśli usługa jest zajęta. Na przykład usługa może przetwarzać wcześniej żądaną operację, taką jak skalowanie rdzeni wirtualnych.
 
-Czas wymagany do ukończenia ponownego uruchomienia, zależy od MariaDB procesu odzyskiwania. Celu skrócenia czasu ponownego uruchomienia, zalecane jest minimalizacja ilości działań mających miejsce na serwerze przed ponownym uruchomieniu.
+Czas wymagany do ukończenia ponownego uruchomienia zależy od procesu odzyskiwania MariaDB. Aby skrócić czas ponownego uruchomienia, zalecamy zminimalizowanie liczby działań występujących na serwerze przed ponownym uruchomieniem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby ukończyć ten przewodnik, potrzebne są:
-- [— Azure Database dla serwera MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
+Aby ukończyć ten przewodnik, musisz:
+- [Serwer Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Ten poradnik wymaga użycie wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Aby sprawdzić, która wersja, w wierszu polecenia wiersza polecenia platformy Azure, wprowadź `az --version`. Aby zainstalować lub uaktualnić, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj]( /cli/azure/install-azure-cli).
+> Ten przewodnik zawiera informacje wymagające użycia interfejsu wiersza polecenia platformy Azure w wersji 2,0 lub nowszej. Aby potwierdzić wersję programu, w wierszu polecenia wiersza poleceń platformy Azure wpisz `az --version`. Aby zainstalować lub uaktualnić, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 
-## <a name="restart-the-server"></a>Uruchom ponownie serwer
+## <a name="restart-the-server"></a>Uruchom ponownie serwer.
 
-Uruchom ponownie serwer za pomocą następującego polecenia:
+Uruchom ponownie serwer przy użyciu następującego polecenia:
 
 ```azurecli-interactive
 az mariadb server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [sposób ustawiania parametrów w usłudze Azure Database dla serwera MariaDB](howto-configure-server-parameters-cli.md)
+Dowiedz się więcej [na temat sposobu ustawiania parametrów w Azure Database for MariaDB](howto-configure-server-parameters-cli.md)

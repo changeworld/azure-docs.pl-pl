@@ -8,17 +8,18 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: a01455da36e8ab573773fec2a6da1f7903b8ea20
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: eb2d663a56084fc625c95f1f1a6236385880180d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224422"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796033"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Maszyny wirtualne na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |25 000<sup>1</sup> na region. |25 000 na region. |
 | Całkowita liczba rdzeni maszyn wirtualnych na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region. | Skontaktuj się z pomocą techniczną. |
+| Łączna liczba rdzeni maszyn wirtualnych platformy Azure na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region. | Skontaktuj się z pomocą techniczną. |
 | Maszyny wirtualne na serię, takie jak Dv2 i F, rdzenie na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region. | Skontaktuj się z pomocą techniczną. |
 | [Współadministratorzy](../articles/billing-add-change-azure-subscription-administrator.md) na subskrypcję |Ograniczona. |Ograniczona. |
 | [Konta magazynu](../articles/storage/common/storage-quickstart-create-account.md) na region na subskrypcję |250 |250 |

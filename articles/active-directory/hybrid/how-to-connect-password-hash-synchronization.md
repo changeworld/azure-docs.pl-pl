@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: dfb4b7d2cb34855208eb54c6d30b29e4bbff636b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539021"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766620"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z synchronizacją Azure AD Connect
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z wystąpienia lokalnego Active Directory do wystąpienia Azure Active Directory opartego na chmurze (Azure AD).
@@ -123,13 +123,9 @@ Typowo, aby wymusić zmianę hasła przez użytkownika podczas pierwszego logowa
   
 Funkcja hasła tymczasowego pomaga zapewnić, że przeniesienie własności poświadczenia odbywa się przy pierwszym użyciu, aby zminimalizować czas, w którym więcej niż jedna osoba ma wiedzę na temat tego poświadczenia.
 
-Aby obsługiwać tymczasowe hasła w usłudze Azure AD dla synchronizowanych użytkowników, można włączyć funkcję *ForcePasswordResetOnLogonFeature* , uruchamiając następujące polecenie na serwerze Azure AD Connect, zastępując <AAD Connector Name> nazwą łącznika specyficzną dla danego środowiska:
+Aby obsłużyć tymczasowe hasła w usłudze Azure AD dla synchronizowanych użytkowników, można włączyć funkcję *ForcePasswordResetOnLogonFeature* , uruchamiając następujące polecenie na serwerze Azure AD Connect:
 
-`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
-
-Aby określić nazwę łącznika, można użyć następującego polecenia:
-
-`(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
 Zastrzeżenie: wymuszanie użytkownikowi zmiany hasła przy następnym logowaniu wymaga zmiany hasła w tym samym czasie.  Program AD Connect nie wybierze samej flagi "Wymuszaj zmianę hasła", która jest uzupełnieniem wykrytej zmiany hasła, która występuje podczas synchronizacji skrótów haseł.
 

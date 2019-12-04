@@ -1,5 +1,5 @@
 ---
-title: Co to jest zautomatyzowany ML/automl
+title: Co to jest zautomatyzowany ML/AutoML
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, w jaki sposób Azure Machine Learning automatycznie wybierać algorytm i generować z niego model, aby zaoszczędzić czas, korzystając z parametrów i kryteriów, które podajesz, aby wybrać najlepszy algorytm dla modelu.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 1320448b88fa3851196a3dfcb3107921721d364d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4ed27009a3549757881c84d92b3b29b60ecbfbc1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707680"
+ms.locfileid: "74790568"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczne Uczenie maszynowe?
 
@@ -100,8 +100,58 @@ Dostępne są również dodatkowe zaawansowane procesy przetwarzania wstępnego 
 
 + Zestaw SDK języka Python: Określanie `"feauturization": auto' / 'off' / FeaturizationConfig` dla [klasy`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py).
 
+## <a name="prevent-over-fitting"></a>Zapobiegaj nadmiernemu dopasowaniu
+
+Nadmierne dopasowanie do uczenia maszynowego występuje, gdy model dopasowuje dane szkoleniowe, a w efekcie nie może precyzyjnie przewidzieć niewidocznych danych testowych. Innymi słowy, model ma po prostu Memorized określonych wzorców i szumów w danych szkoleniowych, ale nie jest wystarczająco elastyczny, aby wykonywać przewidywania dotyczące rzeczywistych danych. W większości przypadków egregious model z nadmiernym dopasowaniem zakłada, że kombinacje wartości funkcji widoczne podczas uczenia będą zawsze powodowały dokładne te same dane wyjściowe dla elementu docelowego. 
+
+Najlepszym sposobem, aby uniknąć nadmiernego dopasowania, jest przestrzeganie najlepszych rozwiązań z zakresu, w tym:
+
+* Użycie większej ilości danych szkoleniowych i wyeliminowanie statystycznej różnicy
+* Zapobieganie wyciekowi docelowemu
+* Korzystanie z mniej funkcji
+* **Optymalizacja pod kątem i przeparametrem**
+* **Ograniczenia złożoności modelu**
+* **Wzajemne sprawdzanie poprawności**
+
+W kontekście zautomatyzowanej ML, pierwsze trzy elementy powyżej są **implementacją najlepszych**rozwiązań. Ostatnie trzy elementy pogrubione to najlepsze w obsłużeniu **Automatyczne implementacje** , które domyślnie chronią przed nadmiernym dopasowaniem. W obszarze Ustawienia inne niż automatyczna ML warto uzyskać wszystkie sześć najlepszych rozwiązań, aby uniknąć nadmiernego dopasowania modeli.
+
+### <a name="best-practices-you-implement"></a>Najlepsze rozwiązania zaimplementowane
+
+Użycie **większej ilości danych** jest najprostszym i najlepszym sposobem, aby zapobiec nadmiernemu dopasowywaniu, a w miarę wzrostu zwiększy się dokładność. W przypadku korzystania z większej ilości danych stać się trudniejsze dla modelu, aby znają dokładne wzorce i wymusić osiągnięcie rozwiązań, które są bardziej elastyczne, aby pomieścić więcej warunków. Ważne jest również, aby rozpoznawać **odchylenie statystyczne**, aby upewnić się, że dane szkoleniowe nie obejmują izolowanych wzorców, które nie znajdują się w danych prognozowania na żywo. Ten scenariusz może być trudny do rozwiązania, ponieważ nie można nadmiernie zamontować między zestawem danych i zestawów testów, ale może istnieć nadmierne dopasowanie w porównaniu z danymi testu na żywo.
+
+Docelowy wyciek jest podobnym problemem, gdzie nie można zobaczyć nadmiernego dopasowania między zestawami uczenia i testu, ale nie jest wyświetlany w czasie przewidywania. Docelowy wyciek występuje, gdy model "oszustwo" podczas uczenia się przez uzyskanie dostępu do danych, które nie powinny być zwykle w czasie przewidywania. Na przykład jeśli Twój problem jest przewidywany w poniedziałek, co cena asortymentu będzie w piątek, ale jedna z funkcji przypadkowo dodaliśmy dane z czwartki, które byłyby dane, model nie będzie miał w czasie przewidywania, ponieważ nie będzie widoczny w przyszłości. Docelowy wyciek jest łatwą pomyłką, ale często charakteryzuje się nietypowej dokładnością problemu. Jeśli próbujesz przewidzieć cenę giełdową i przeszkolony model z dokładnością do 95%, w swoich funkcjach występuje bardzo prawdopodobnie docelowy wyciek.
+
+Usuwanie funkcji może być również pomocne w przypadku nadmiernego dopasowania, uniemożliwiając modelowi posiadanie zbyt wielu pól do użycia w celu znają określonych wzorców, co sprawia, że jest to bardziej elastyczne. Może być trudne zmierzenie ilości, ale jeśli można usunąć funkcje i zachować taką samą dokładność, prawdopodobnie model jest bardziej elastyczny i zmniejsza ryzyko nadmiernego dopasowania.
+
+### <a name="best-practices-automated-ml-implements"></a>Implementacje zautomatyzowanych rozwiązań z najlepszymi rozwiązaniami
+
+Uregulowanie to proces minimalizowania funkcji kosztu w celu karania złożonych i nadmiernie dopasowanych modeli. Istnieją różne rodzaje funkcji uregulowania, ale ogólnie rzecz biorąc, wszyscy mają kara rozmiar, wariancję i złożoność modelu. Zautomatyzowana ML używa L1 (Lasso), L2 (pierścieni) i ElasticNet (L1 i L2 jednocześnie) w różnych kombinacjach z różnymi ustawieniami parametrów modelu, które sterują nadmiernym dopasowywaniem. W prostych terminach, zautomatyzowany ML będzie różnicować, jak dużo modelu jest regulowany, i wybrać najlepszy wynik.
+
+Zautomatyzowanej ML również implementuje jawne ograniczenia złożoności modelu, aby zapobiec nadmiernemu dopasowywaniu. W większości przypadków jest to przeznaczone tylko dla algorytmów drzewa decyzyjnego lub lasu, w których maksymalna głębokość dla poszczególnych drzew jest ograniczona, a łączna liczba drzew używanych w ramach technik lasu lub kompletu jest ograniczona.
+
+Krzyżowe sprawdzanie poprawności (CV) to proces tworzenia wielu podzbiorów danych pełnego szkolenia i uczenia modelu w każdym podzestawie. Pomysłem jest to, że model może uzyskać "Cieszymy" i mieć dużą dokładność z jednym podzbiorem, ale przy użyciu wielu podzestawów model nie będzie osiągał tej dużej dokładności za każdym razem. Podczas wykonywania operacji CV należy dostarczyć zestaw danych wstrzymania weryfikacji, określić swoje zgięcia CV (liczba podzbiorów), a zautomatyzowany ML będzie szkolić model i dostrajał parametry w celu zminimalizowania błędu w zestawie walidacji. Jedno zgięcie CV może być nadmiernie dopasowane, ale przy użyciu wielu z nich zmniejsza prawdopodobieństwo, że ostateczny model jest nadmiernie dopasowany. Wadą jest to, że CV skutkuje dłuższym czasem uczenia się, a tym samym większym kosztem, ponieważ zamiast uczenia się modelu jeden raz, przeszkoluje go raz dla każdego podzestawu *n* CV.
+
+> [!NOTE]
+> Sprawdzanie krzyżowe nie jest domyślnie włączone; musi być skonfigurowany w ustawieniach zautomatyzowanej ML. Jednak po skonfigurowaniu CV i otrzymaniu zestawu danych sprawdzania poprawności proces jest zautomatyzowany.
+
+### <a name="identifying-over-fitting"></a>Identyfikowanie nadmiernego dopasowania
+
+Należy wziąć pod uwagę następujące przeszkolone modele i ich odpowiadające im uczenia i testy.
+
+| Model | Dokładność szkolenia | Dokładność testu |
+|-------|----------------|---------------|
+| A | 99,9% | 95% |
+| B | 87% | 87% |
+| C | 99,9% | 45% |
+
+Biorąc pod uwagę model **A**, istnieje powszechna koncepcja, że jeśli dokładność testu dla niewidocznych danych jest mniejsza niż dokładność szkolenia, model jest nadmiernie dopasowany. Jednak dokładność testu powinna być zawsze mniejsza od dokładności szkolenia, a rozróżnienie dla nadmiernego dopasowania a odpowiednio dopasowane, przydaje się do *znacznie* mniejszej dokładności. 
+
+**W przypadku** porównywania modeli a i **B**model **a** jest lepszym modelem, ponieważ ma wyższą dokładność testu, a chociaż dokładność testu jest nieco mniejsza o 95%, nie jest to znacząca różnica, która sugeruje nadmierne dopasowanie. Nie możesz wybrać modelu **B** po prostu, ponieważ ścisłe nauczenie i testy są bliżej siebie.
+
+Model **C** reprezentuje wyraźny przypadek nadmiernego dopasowania; dokładność uczenia jest bardzo wysoka, ale dokładność testu nie jest w dowolnym miejscu w dużej okolicy. Takie rozróżnienie jest nieco subiektywne, ale pochodzi z wiedzy o problemie i danych oraz o tym, jakie wielkości błędów są akceptowalne. 
 
 ## <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych
+
 Tworzenie prognoz jest integralną częścią dowolnej firmy, bez względu na to, czy chodzi o dochody, spisy, sprzedaż czy zapotrzebowanie na klienta. Możesz użyć zautomatyzowanej ML do łączenia technik i podejścia i uzyskania zalecanej wysokiej jakości prognozy szeregów czasowych.
 
 Zautomatyzowany eksperyment szeregów czasowych jest traktowany jako problem z regresją wieloczynnikowa. Poprzednie wartości serii czasowych są "przestawne", aby stać się dodatkowymi wymiarami regresor wraz z innymi predykcyjnymi. Takie podejście, w przeciwieństwie do klasycznych metod szeregów czasowych, ma zaletę naturalnie dołączania wielu zmiennych kontekstowych i ich relacji do siebie podczas uczenia się. Zautomatyzowana ML zdobywa pojedynczy, ale często wewnętrznie rozgałęzienie modelu dla wszystkich elementów w zestawie danych i prognozowanie Horizons. W tym celu można uzyskać więcej danych w celu oszacowania parametrów modelu i generalizacji do niewidocznej serii.

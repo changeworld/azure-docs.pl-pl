@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823016"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791353"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Komercyjne możliwości i zagadnienia dotyczące transakcji w witrynie Marketplace
 
@@ -66,7 +66,7 @@ W zależności od używanej opcji transakcji można przedstawić opłaty za lice
 
 * Płatność zgodnie z rzeczywistym użyciem: opłaty za licencje na oprogramowanie są prezentowane jako stawka cenowa za godzinę (vCPU) na podstawie używanej infrastruktury platformy Azure. Dotyczy to tylko aplikacji Virtual Machines i platformy Azure.
 
-* • Cennik subskrypcji: opłaty za licencje na oprogramowanie są prezentowane jako comiesięczne lub roczne, opłata cykliczna jest naliczana jako stała stawka lub za stanowisko. Dotyczy to tylko aplikacji SaaS i aplikacji zarządzanych przez aplikacje platformy Azure.
+* Cennik subskrypcji: opłaty za licencje na oprogramowanie są prezentowane jako comiesięczne lub roczne, opłata cykliczna jest naliczana jako stała stawka lub za stanowisko. Dotyczy to tylko aplikacji SaaS i aplikacji zarządzanych przez aplikacje platformy Azure.
 
 * Bezpłatna wersja próbna oprogramowania: Brak opłat za licencje na oprogramowanie przez 30 dni lub 90 dni.
 
@@ -163,7 +163,7 @@ Klienci mogą również skorzystać z karty kredytowej i faktury miesięcznej. W
 
 Na przykład jeśli klient kupił zakupy przy użyciu karty kredytowej:
 
-|Opis    |    Date  |
+|Opis    |    Data  |
 |----------|----------|
 |Okres zamówienia   | 15 sierpnia 2018 — 30 sierpnia, 2018 |
 |Zakończenie okresu (miesiąc)   | 30 sie 2018 |
@@ -177,12 +177,12 @@ Na przykład jeśli klient kupił zakupy przy użyciu karty kredytowej:
 
 Jeśli klient kupuje przy użyciu Umowa Enterprise:
 
-| Opis |    Date  |
+| Opis |    Data  |
 |----------|----------|
 |Okres zamówienia | 15 sierpnia 2018 — 30 sierpnia, 2018 |
 |Zakończenie okresu (kwartał) | Września 30, 2018 |
 |Data rozliczenia | 15 października 2018 |
-|Okres płatności (tylko karty kredytowe:, 30 dni) | Nie dotyczy |
+|Okres płatności (tylko karty kredytowe:, 30 dni) | nd. |
 |Początek okresu zbierania | 15 października 2018 |
 |Koniec okresu zbierania danych (maksymalnie 90 dni) | 15 stycznia 2019 |
 |Data płatności klienta | 30 grudnia, 2018 |

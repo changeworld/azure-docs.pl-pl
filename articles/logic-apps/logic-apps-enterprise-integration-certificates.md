@@ -1,22 +1,19 @@
 ---
-title: Zabezpieczanie komunikatów B2B przy użyciu certyfikatów — Azure Logic Apps | Microsoft Docs
+title: Zabezpieczanie komunikatów B2B przy użyciu certyfikatów
 description: Dodawanie certyfikatów do zabezpieczania komunikatów B2B w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-manager: jeconnoc
-ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: be3dbc386b0ac89a85bc1719081df944523c28ce
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997837"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790687"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpieczanie komunikatów B2B przy użyciu certyfikatów
 
@@ -37,7 +34,7 @@ Możesz użyć tych certyfikatów w aplikacjach integracji przedsiębiorstwa:
 
 Aby używać *publicznego certyfikatu* w usłudze Logic Apps z możliwościami B2B, należy najpierw przekazać certyfikat do konta integracji. Po zdefiniowaniu właściwości w tworzonych [umowach](logic-apps-enterprise-integration-agreements.md) certyfikat jest dostępny, aby pomóc w zabezpieczeniu wiadomości B2B.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania wprowadź nazwę konta integracji, a następnie wybierz odpowiednie konto integracji.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania wprowadź nazwę konta integracji, a następnie wybierz odpowiednie konto integracji.
 
    ![Znajdź i wybierz swoje konto integracji](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -47,11 +44,11 @@ Aby używać *publicznego certyfikatu* w usłudze Logic Apps z możliwościami B
 
 3. W obszarze **Certyfikaty**wybierz pozycję **Dodaj**. W obszarze **Dodawanie certyfikatu**podaj te szczegóły certyfikatu. Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
 
-   | Właściwość | Value | Opis | 
+   | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
-   | **Nazwa** | <*Nazwa certyfikatu*> | Nazwa certyfikatu, czyli "publicCert" w tym przykładzie | 
-   | **Typ certyfikatu** | Public | Typ certyfikatu |
-   | **Certyfikat** | <*certificate-file-name*> | Aby znaleźć i wybrać plik certyfikatu, który ma zostać przekazany, wybierz ikonę folderu obok pola **certyfikat** . |
+   | **Nazwa** | <*nazwę certyfikatu*> | Nazwa certyfikatu, czyli "publicCert" w tym przykładzie | 
+   | **Typ certyfikatu** | Publiczne | Typ certyfikatu |
+   | **Certyfikat** | <*Nazwa pliku certyfikatu*> | Aby znaleźć i wybrać plik certyfikatu, który ma zostać przekazany, wybierz ikonę folderu obok pola **certyfikat** . |
    ||||
 
    ![Wybierz pozycję "Dodaj", podaj szczegóły certyfikatu](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
@@ -76,7 +73,7 @@ Po zdefiniowaniu właściwości w tworzonych [umowach](logic-apps-enterprise-int
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania wprowadź nazwę konta integracji, a następnie wybierz odpowiednie konto integracji.
+3. Zaloguj się do [portalu Azure](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania wprowadź nazwę konta integracji, a następnie wybierz odpowiednie konto integracji.
 
    ![Znajdowanie konta integracji](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
@@ -86,14 +83,14 @@ Po zdefiniowaniu właściwości w tworzonych [umowach](logic-apps-enterprise-int
 
 5. W obszarze **Certyfikaty**wybierz pozycję **Dodaj**. W obszarze **Dodawanie certyfikatu**podaj te szczegóły certyfikatu. Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
 
-   | Właściwość | Value | Opis | 
+   | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
-   | **Nazwa** | <*Nazwa certyfikatu*> | Nazwa certyfikatu, czyli "privateCert" w tym przykładzie | 
-   | **Typ certyfikatu** | Prywatna | Typ certyfikatu |
-   | **Certyfikat** | <*certificate-file-name*> | Aby znaleźć i wybrać plik certyfikatu, który ma zostać przekazany, wybierz ikonę folderu obok pola **certyfikat** . W przypadku korzystania z magazynu kluczy dla klucza prywatnego przekazany plik będzie certyfikatem publicznym. | 
-   | **Grupa zasobów** | <*integration-account-resource-group*> | Grupa zasobów konta integracji, która jest w tym przykładzie "grupą zasobów" | 
+   | **Nazwa** | <*nazwę certyfikatu*> | Nazwa certyfikatu, czyli "privateCert" w tym przykładzie | 
+   | **Typ certyfikatu** | Prywatne | Typ certyfikatu |
+   | **Certyfikat** | <*Nazwa pliku certyfikatu*> | Aby znaleźć i wybrać plik certyfikatu, który ma zostać przekazany, wybierz ikonę folderu obok pola **certyfikat** . W przypadku korzystania z magazynu kluczy dla klucza prywatnego przekazany plik będzie certyfikatem publicznym. | 
+   | **Grupa zasobów** | <*Integration-Account-resource-group*> | Grupa zasobów konta integracji, która jest w tym przykładzie "grupą zasobów" | 
    | **Usługa Key Vault** | <*Nazwa magazynu kluczy*> | Nazwa magazynu kluczy platformy Azure |
-   | **Nazwa klucza** | <*Nazwa klucza*> | Nazwa klucza |
+   | **Nazwa klucza** | *Nazwa klucza* <> | Nazwa klucza |
    ||||
 
    ![Wybierz pozycję "Dodaj", podaj szczegóły certyfikatu](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)

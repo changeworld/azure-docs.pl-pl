@@ -1,21 +1,19 @@
 ---
-title: Nawiązywanie połączenia z kontem SFTP — Azure Logic Apps
+title: Połącz z kontem SFTP
 description: Automatyzowanie zadań i procesów, które monitorują, tworzą, zarządzają i odbierają pliki dla serwera SFTP za pośrednictwem protokołu SSH przy użyciu Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: divswa, klam, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 20702f5bc0dfc513d1fba84b69595dec885613ac
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837111"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789277"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorowanie i tworzenie plików SFTP oraz zarządzanie nimi za pomocą Azure Logic Apps
 
@@ -57,7 +55,7 @@ Można użyć wyzwalaczy, które monitorują zdarzenia na serwerze SFTP i udost�
 
 Wyzwalacze SFTP działają przez sondowanie systemu plików SFTP i wyszukiwanie wszystkich plików, które zostały zmienione od czasu ostatniego sondowania. Niektóre narzędzia pozwalają zachować sygnaturę czasową, gdy pliki zmienią się. W takich przypadkach należy wyłączyć tę funkcję, aby wyzwalacz mógł funkcjonować. Poniżej przedstawiono niektóre typowe ustawienia:
 
-| Klient SFTP | Akcja |
+| Klient SFTP | Działanie |
 |-------------|--------|
 | WinSCP | Przejdź do **opcji opcje** > **preferencje** > **transfer** > **edycja** > **Zachowaj sygnaturę czasową** > **Wyłącz** |
 | FileZilla | Przejdź do obszaru **Transfer** > **zachować sygnatury czasowe transferowanych plików** > **wyłączyć** |

@@ -1,20 +1,19 @@
 ---
-title: Przetwarzaj komunikaty wsadowe jako grupy Azure Logic Apps
+title: Przetwarzanie wsadowe komunikatów jako grupy
 description: Wysyłanie i odbieranie komunikatów jako partii w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, jonfan, LADocs
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: b56a50fceec8ac6be966c0c58a82e94e0c977143
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680442"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791563"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Wysyłanie, odbieranie i przetwarzanie wsadowe komunikatów w Azure Logic Apps
 
@@ -88,7 +87,7 @@ Przed wysłaniem wiadomości do partii, ta partia musi znajdować się jako miej
       Jeśli masz konto usługi Gmail, wybierz pozycję Łącznik usługi Gmail. 
       W tym przykładzie zastosowano pakiet Office 365 Outlook. 
 
-   3. Wybierz tę akcję: **Wyślij wiadomość e-mail <*dostawcy poczty e-mail* >**
+   3. Wybierz tę akcję: **Wyślij wiadomość e-mail <*dostawcy poczty e-mail*>**
 
       Na przykład:
 
@@ -163,9 +162,9 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki nadawcy partii, kt�
       > 
       > Jeśli używasz programu Visual Studio i nie widzisz żadnych odbiorników usługi Batch do wybrania, sprawdź, czy Twój odbiornik usługi Batch został wdrożony na platformie Azure. Jeśli nie, Dowiedz się, jak [wdrożyć aplikację logiki odbiorcy usługi Batch na platformie Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). 
 
-   4. Wybierz tę akcję: **Batch_messages <-*receiver* ->**
+   4. Wybierz tę akcję: **Batch_messages-<>-*Batch-Receiver***
 
-      ![Wybierz tę akcję: "Batch_messages-<-Logic-App->"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      ![Wybierz tę akcję: "Batch_messages-< > aplikacji logiki](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
 3. Ustaw właściwości nadawcy partii:
 
@@ -181,7 +180,7 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki nadawcy partii, kt�
 
    2. Gdy zostanie wyświetlona lista zawartości dynamicznej, wybierz pozycję **wyrażenie**. 
 
-   3. Wprowadź `utcnow()` wyrażenia, a następnie wybierz przycisk **OK**. 
+   3. Wprowadź `utcnow()`wyrażenia, a następnie wybierz przycisk **OK**. 
 
       ![W obszarze "zawartość wiadomości" Wybierz pozycję "wyrażenie", wpisz "UtcNow ()", a następnie wybierz pozycję "OK".](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
@@ -199,7 +198,7 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki nadawcy partii, kt�
 
    2. Na liście zawartości dynamicznej wybierz pozycję **Wyrażenie**.
    
-   3. Wprowadź `rand(1,6)` wyrażenia, a następnie wybierz przycisk **OK**.
+   3. Wprowadź `rand(1,6)`wyrażenia, a następnie wybierz przycisk **OK**.
 
       ![Konfigurowanie partycji dla docelowej partii](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 

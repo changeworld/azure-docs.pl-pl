@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 4aa9e93831b902ff9f0a0659c650cd2ca123b1a3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74124011"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775837"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów Eksplorator usługi Azure Storage
 
@@ -95,7 +95,7 @@ Jeśli nie możesz znaleźć żadnych certyfikatów z podpisem własnym, wykonaj
 
 Puste okna dialogowe logowania najczęściej występują, gdy Active Directory Federation Services (AD FS) poprosi Eksplorator usługi Storage o przeprowadzenie przekierowania, który jest nieobsługiwany przez elektron. Aby obejść ten problem, możesz spróbować użyć przepływu kodu urządzenia do logowania. Aby to zrobić, wykonaj następujące kroki:
 
-1. W menu Przejdź do pozycji **podgląd** > **Użyj logowania przy użyciu kodu urządzenia**.
+1. Na pasku narzędzi po lewej stronie, Otwórz pozycję **Ustawienia**. W panelu Ustawienia przejdź do pozycji **aplikacja** > **Zaloguj się**. Włącz **Logowanie za pomocą przepływu kodu urządzenia**.
 2. Otwórz okno dialogowe **łączenie** (za pomocą ikony wtyczki na pasku pionowym po lewej stronie lub wybierając pozycję **Dodaj konto** w panelu konta).
 3. Wybierz środowisko, do którego chcesz się zalogować.
 4. Wybierz pozycję **Zaloguj**.
@@ -364,7 +364,7 @@ Jeśli przycisk **Otwórz w Eksploratorze** na Azure Portal nie działa, upewnij
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
-* Microsoft Internet Explorer
+* Program Microsoft Internet Explorer
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,20 +1,19 @@
 ---
-title: Śledzenie komunikatów B2B przy użyciu dzienników Azure Monitor — Azure Logic Apps | Microsoft Docs
+title: Śledzenie komunikatów B2B przy użyciu dzienników usługi Azure Monitor
 description: Śledzenie komunikacji B2B dla kont integracji i Azure Logic Apps przy użyciu usługi Azure Log Analytics
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 33c4efb2b783b5071513f069beac9cdf73c373a8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997844"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792934"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Śledzenie komunikatów B2B przy użyciu dzienników usługi Azure Monitor
 
@@ -53,7 +52,7 @@ Aby dzienniki Azure Monitor śledzić wiadomości B2B dla aplikacji logiki, Doda
 
    ![Wybierz Log Analytics obszar roboczy](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-1. W obszarze **wprowadzenie do log Analytics** > **konfigurowania rozwiązań monitorowania**wybierz pozycję **Wyświetl rozwiązania**.
+1. W obszarze **wprowadzenie do Log Analytics** > **skonfigurować rozwiązania do monitorowania**wybierz pozycję **Wyświetl rozwiązania**.
 
    ![Wybierz pozycję "Wyświetl rozwiązania"](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
@@ -148,15 +147,15 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu AS2.
 
 | Właściwość | Opis |
 | --- | --- |
-| Nadawcy | Partner gościa określony w **ustawieniach odbierania**lub partner hosta określony w polu **Wyślij ustawienia** dla umowy AS2 |
+| Nadawca | Partner gościa określony w **ustawieniach odbierania**lub partner hosta określony w polu **Wyślij ustawienia** dla umowy AS2 |
 | Odbiornik | Partner hosta określony w obszarze **Ustawienia odbierania**lub partner gościa określony w polu **Wyślij ustawienia** dla umowy AS2 |
 | Aplikacja logiki | Aplikacja logiki, w której są konfigurowane akcje AS2 |
-| State | Stan komunikatu AS2 <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat AS2. Nie skonfigurowano żadnych powiadomienia MDN. <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat AS2. POWIADOMIENIA MDN jest skonfigurowany i odbierany lub wysyłany jest powiadomienia MDN. <br>Niepowodzenie = Odebrano nieprawidłowy komunikat AS2. Nie skonfigurowano żadnych powiadomienia MDN. <br>Oczekiwanie: Odebrano lub wysłano prawidłowy komunikat AS2. POWIADOMIENIA MDN jest skonfigurowany, a powiadomienia MDN jest oczekiwany. |
+| Stan | Stan komunikatu AS2 <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat AS2. Nie skonfigurowano żadnych powiadomienia MDN. <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat AS2. POWIADOMIENIA MDN jest skonfigurowany i odbierany lub wysyłany jest powiadomienia MDN. <br>Niepowodzenie = Odebrano nieprawidłowy komunikat AS2. Nie skonfigurowano żadnych powiadomienia MDN. <br>Oczekiwanie: Odebrano lub wysłano prawidłowy komunikat AS2. POWIADOMIENIA MDN jest skonfigurowany, a powiadomienia MDN jest oczekiwany. |
 | Komunikaty | Stan komunikatu powiadomienia MDN <br>Zaakceptowano = odebrano lub wysłano pozytywny powiadomienia MDN. <br>Oczekiwanie = oczekiwanie na otrzymanie lub wysłanie powiadomienia MDN. <br>Odrzucono = odebrano lub wysłano ujemną powiadomienia MDN. <br>Niewymagane = powiadomienia MDN nie jest skonfigurowany w umowie. |
-| Direction | Kierunek komunikatu AS2 |
+| Kierunek | Kierunek komunikatu AS2 |
 | Identyfikator korelacji | Identyfikator, który jest skorelowany ze wszystkimi wyzwalaczami i akcjami w aplikacji logiki |
 | Identyfikator komunikatu | Identyfikator komunikatu AS2 z nagłówków wiadomości AS2 |
-| Timestamp | Godzina przetworzenia komunikatu przez akcję AS2 |
+| Znacznik czasu | Godzina przetworzenia komunikatu przez akcję AS2 |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
@@ -167,8 +166,8 @@ Poniżej przedstawiono formaty nazw pobranych plików i folderów wiadomości AS
 
 | Folder lub plik | Format nazwy |
 | :------------- | :---------- |
-| Folder wiadomości | Sender \_\_[odbiornik]\_AS2\_[korelacja-identyfikator] [Identyfikator komunikatu] [timestamp] \_ |
-| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzania | **Ładunek wejściowy**\_: [nadawca] [odbiornik\_]\_AS2 [korelacja\_-ID] input_payload. txt </p>**Ładunek wyjściowy**: [nadawca\_] [odbiornik\_]\_AS2 [korelacja-\_ID\_] Output ładunek. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik\_]\_AS2 [korelacja\_-ID] Inputs. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_AS2\_[korelacja\_-ID] Output. txt |
+| Folder wiadomości | [nadawca]\_[odbiornik]\_AS2\_[korelacja-identyfikator]\_[Message-ID]\_[timestamp] |
+| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzania | **Ładunek wejściowy**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-identyfikator]\_input_payload. txt </p>**Ładunek wyjściowy**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-identyfikator]\_dane wyjściowe\_ładunku. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-ID]\_Input. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-ID]\_Output. txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -179,17 +178,17 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu X12.
 
 | Właściwość | Opis |
 | --- | --- |
-| Nadawcy | Partner gościa określony w **ustawieniach odbierania**lub partner hosta określony w polu **Wyślij ustawienia** dla umowy X12 |
+| Nadawca | Partner gościa określony w **ustawieniach odbierania**lub partner hosta określony w polu **Wyślij ustawienia** dla umowy X12 |
 | Odbiornik | Partner hosta określony w obszarze **Ustawienia odbierania**lub partner gościa określony w polu **Wyślij ustawienia** dla umowy X12 |
 | Aplikacja logiki | Aplikacja logiki, w której są konfigurowane akcje X12 |
-| State | Stan komunikatu X12 <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat X12. Nie skonfigurowano żadnego potwierdzenia funkcjonalności. <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat X12. Zostanie skonfigurowana i odebrana potwierdzenie funkcjonalne lub zostanie wysłane potwierdzenie funkcjonalne. <br>Niepowodzenie = odebrano lub wysłano nieprawidłowy komunikat X12. <br>Oczekiwanie: Odebrano lub wysłano prawidłowy komunikat X12. Zostanie skonfigurowane potwierdzenie funkcjonalne i oczekiwana jest potwierdzenie funkcjonalne. |
+| Stan | Stan komunikatu X12 <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat X12. Nie skonfigurowano żadnego potwierdzenia funkcjonalności. <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat X12. Zostanie skonfigurowana i odebrana potwierdzenie funkcjonalne lub zostanie wysłane potwierdzenie funkcjonalne. <br>Niepowodzenie = odebrano lub wysłano nieprawidłowy komunikat X12. <br>Oczekiwanie: Odebrano lub wysłano prawidłowy komunikat X12. Zostanie skonfigurowane potwierdzenie funkcjonalne i oczekiwana jest potwierdzenie funkcjonalne. |
 | Komunikaty | Stan potwierdzenia funkcjonalnego (997) <br>Zaakceptowano = odebrano lub wysłano pozytywne potwierdzenie funkcjonalne. <br>Odrzucono = odebrano lub wysłano negatywną funkcję potwierdzenia funkcjonalności. <br>Oczekiwanie = oczekiwano funkcji ACK, ale nie została ona odebrana. <br>Oczekiwanie = Wygenerowano funkcję ACK, ale nie można wysłać jej do partnera. <br>Niewymagane = nie jest skonfigurowane potwierdzenie funkcjonalne. |
-| Direction | Kierunek komunikatu X12 |
+| Kierunek | Kierunek komunikatu X12 |
 | Identyfikator korelacji | Identyfikator, który jest skorelowany ze wszystkimi wyzwalaczami i akcjami w aplikacji logiki |
 | Typ komunikatu | Typ komunikatu EDI X12 |
 | ICN | Numer kontrolny wymiany komunikatu X12 |
 | TSCN | Numer kontrolny zestawu transakcji dla komunikatu X12 |
-| Timestamp | Godzina przetworzenia komunikatu przez akcję X12 |
+| Znacznik czasu | Godzina przetworzenia komunikatu przez akcję X12 |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
@@ -200,8 +199,8 @@ Poniżej przedstawiono formaty nazw pobranych plików i folderów wiadomości X1
 
 | Folder lub plik | Format nazwy |
 | :------------- | :---------- |
-| Folder wiadomości | Sender \_\_\_[odbiornik]\_X12\_[wymiany-Control-Number] [Global-Control-Number] [Transaction-Set-Control-Number] [timestamp] \_ |
-| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzania | **Ładunek wejściowy**\_: [nadawca] [odbiornik\_]\_X12 [wymiana-Control-\_Number] input_payload. txt </p>**Ładunek wyjściowy**: [nadawca\_] [odbiornik\_]\_X12 [wymiana-Control-Number\_]\_Output ładunek. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik\_]\_X12 [wymiana-Control-\_Number] Inputs. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_X12\_[wymiana-Control-\_Number] Output. txt |
+| Folder wiadomości | [nadawca]\_[odbiornik]\_X12\_[wymiany-Control-Number]\_[Global-Control-Number]\_[Transaction-Set-Control-Number]\_[timestamp] |
+| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzania | **Ładunek wejściowy**: [nadawca]\_[odbiornik]\_X12\_[wymiana-Control-number]\_input_payload. txt </p>**Ładunek wyjściowy**: [nadawca]\_[odbiornik]\_X12\_[wymiany-Control-number]\_dane wyjściowe\_ładunku. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik]\_X12\_[wymiana-Control-number]\_Input. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_X12\_[wymiany-Control-number]\_Output. txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -212,17 +211,17 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu EDIFACT.
 
 | Właściwość | Opis |
 | --- | --- |
-| Nadawcy | Partner gościa określony w **ustawieniach odbierania**lub partner hosta określony w polu **Wyślij ustawienia** dla umowy EDIFACT |
+| Nadawca | Partner gościa określony w **ustawieniach odbierania**lub partner hosta określony w polu **Wyślij ustawienia** dla umowy EDIFACT |
 | Odbiornik | Partner hosta określony w obszarze **Ustawienia odbierania**lub partner gościa określony w polu **Wyślij ustawienia** dla umowy EDIFACT |
 | Aplikacja logiki | Aplikacja logiki, w której są konfigurowane akcje EDIFACT |
-| State | Stan komunikatu EDIFACT <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat EDIFACT. Nie skonfigurowano żadnego potwierdzenia funkcjonalności. <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat EDIFACT. Zostanie skonfigurowana i odebrana potwierdzenie funkcjonalne lub zostanie wysłane potwierdzenie funkcjonalne. <br>Niepowodzenie = odebrano lub wysłano nieprawidłowy komunikat EDIFACT <br>Oczekiwanie: Odebrano lub wysłano prawidłowy komunikat EDIFACT. Zostanie skonfigurowane potwierdzenie funkcjonalne i oczekiwana jest potwierdzenie funkcjonalne. |
+| Stan | Stan komunikatu EDIFACT <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat EDIFACT. Nie skonfigurowano żadnego potwierdzenia funkcjonalności. <br>Powodzenie = odebrano lub wysłano prawidłowy komunikat EDIFACT. Zostanie skonfigurowana i odebrana potwierdzenie funkcjonalne lub zostanie wysłane potwierdzenie funkcjonalne. <br>Niepowodzenie = odebrano lub wysłano nieprawidłowy komunikat EDIFACT <br>Oczekiwanie: Odebrano lub wysłano prawidłowy komunikat EDIFACT. Zostanie skonfigurowane potwierdzenie funkcjonalne i oczekiwana jest potwierdzenie funkcjonalne. |
 | Komunikaty | Stan potwierdzenia funkcjonalności (CONTRL) <br>Zaakceptowano = odebrano lub wysłano pozytywne potwierdzenie funkcjonalne. <br>Odrzucono = odebrano lub wysłano negatywną funkcję potwierdzenia funkcjonalności. <br>Oczekiwanie = oczekiwano funkcji ACK, ale nie została ona odebrana. <br>Oczekiwanie = Wygenerowano funkcję ACK, ale nie można wysłać jej do partnera. <br>Niewymagane = nie jest skonfigurowane potwierdzenie funkcjonalne. |
-| Direction | Kierunek komunikatu EDIFACT |
+| Kierunek | Kierunek komunikatu EDIFACT |
 | Identyfikator korelacji | Identyfikator, który jest skorelowany ze wszystkimi wyzwalaczami i akcjami w aplikacji logiki |
 | Typ komunikatu | Typ komunikatu EDIFACT |
 | ICN | Numer kontrolny wymiany komunikatu EDIFACT |
 | TSCN | Numer kontrolny zestawu transakcji dla komunikatu EDIFACT |
-| Timestamp | Godzina przetworzenia komunikatu przez akcję EDIFACT |
+| Znacznik czasu | Godzina przetworzenia komunikatu przez akcję EDIFACT |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>
@@ -233,8 +232,8 @@ Poniżej przedstawiono formaty nazw pobranych plików i folderów wiadomości ED
 
 | Folder lub plik | Format nazwy |
 | :------------- | :---------- |
-| Folder wiadomości | Sender \_\_\_[odbiornik]\_EDIFACT\_[wymiany-Control-Number] [Global-Control-Number] [Transaction-Set-Control-Number] [timestamp] \_ |
-| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzania | **Ładunek wejściowy**\_: [nadawca] [odbiornik\_]\_EDIFACT [wymiana-Control-\_Number] input_payload. txt </p>**Ładunek wyjściowy**: [nadawca\_] [odbiornik\_]\_EDIFACT [wymiana-Control-Number\_]\_Output ładunek. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik\_]\_EDIFACT [wymiana-Control-\_Number] Inputs. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiana-Control-\_Number] Output. txt |
+| Folder wiadomości | [nadawca]\_[odbiornik]\_EDIFACT\_[wymiany-Control-Number]\_[Global-Control-Number]\_[Transaction-Set-Control-Number]\_[timestamp] |
+| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzania | **Ładunek wejściowy**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiana-Control-number]\_input_payload. txt </p>**Ładunek wyjściowy**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiany-Control-number]\_dane wyjściowe\_ładunku. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiana-Control-number]\_Input. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiany-Control-number]\_Output. txt |
 |          |             |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Projektowanie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure'
-description: W tym samouczku pokazano, jak tworzenie, konfigurowanie i zapytania pierwszej bazy danych Azure database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure.
+title: 'Samouczek: projektowanie serwera Azure Database for PostgreSQL-pojedynczego — interfejs wiersza polecenia platformy Azure'
+description: W tym samouczku przedstawiono sposób tworzenia, konfigurowania i wykonywania zapytań dotyczących pierwszego serwera Azure Database for PostgreSQL-pojedynczego przy użyciu interfejsu wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,20 +8,20 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: db0ff9facbd8609955c5ef1918b0f8a6aa53ea65
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0f1f4c07f3dc694bcae9b540c71a11e53a00eb7f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447221"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773697"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Samouczek: Projektowanie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Samouczek: projektowanie serwera Azure Database for PostgreSQL-pojedynczego przy użyciu interfejsu wiersza polecenia platformy Azure 
 W tym samouczku dowiesz się, jak wykonywać następujące czynności, używając interfejsu wiersza polecenia platformy Azure:
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for PostgreSQL
 > * Konfigurowanie zapory serwera
 > * Użycie narzędzia [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) do utworzenia bazy danych
-> * Ładowanie przykładowych danych
+> * Ładuj dane przykładowe
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych
@@ -37,7 +37,7 @@ Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zas�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myresourcegroup` w lokalizacji `westus`.
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -51,7 +51,7 @@ W poniższym przykładzie zostanie utworzony serwer o nazwie `mydemoserver` w gr
 az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 Wartość parametru sku-name jest zgodna z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne}, jak pokazano w przykładach poniżej:
-+ `--sku-name B_Gen5_2` mapuje do podstawowa, ogólnego 5 i 2 rdzenie wirtualne.
++ `--sku-name B_Gen5_2` Maps do podstawowych, generacji 5 i 2 rdzeni wirtualnych.
 + `--sku-name GP_Gen5_32` — warstwa ogólnego przeznaczenia, 5. generacja, 32 rdzenie wirtualne.
 + `--sku-name MO_Gen5_2` — warstwa zoptymalizowana pod kątem pamięci, 5. generacja, 2 rdzenie wirtualne.
 
@@ -132,7 +132,7 @@ Jeśli na Twoim komputerze klienckim jest zainstalowana baza danych PostgreSQL, 
    ```
 
    > [!TIP]
-   > Jeśli wolisz Użyj ścieżki adresu URL, aby nawiązać połączenie z Postgres kodowanie adresu URL @ logowania dla nazwy użytkownika z `%40`. Na przykład będzie ciąg połączenia dla narzędzia psql
+   > Jeśli wolisz używać ścieżki URL w celu nawiązania połączenia z usługą Postgres, adres URL Koduj znak @ w nazwie użytkownika z `%40`. Na przykład parametry połączenia dla PSQL byłyby,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -211,15 +211,15 @@ Przywrócenie serwera do określonego punktu w czasie powoduje utworzenie nowego
 Polecenie jest synchroniczne i zostanie zakończone po przywróceniu serwera. Po zakończeniu przywracania zlokalizuj nowy serwer, który został utworzony. Sprawdź, czy dane zostały przywrócone zgodnie z oczekiwaniami.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku omówiono sposób użycia interfejsu wiersza polecenia platformy Azure i innych narzędzi w celu wykonania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for PostgreSQL
 > * Konfigurowanie zapory serwera
 > * Użycie narzędzia [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) do utworzenia bazy danych
-> * Ładowanie przykładowych danych
+> * Ładuj dane przykładowe
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych
 
-W następnym samouczku dowiesz się, jak wykonywać podobne zadania w witrynie Azure Portal: [Projektowanie pierwszej bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal](tutorial-design-database-using-azure-portal.md)
+Następnie, aby dowiedzieć się, jak można użyć witryny Azure Portal do wykonywania podobnych zadań, przejrzyj następujący samouczek: [Projektowanie pierwszej bazy danych Azure Database for PostgreSQL przy użyciu witryny Azure Portal](tutorial-design-database-using-azure-portal.md)

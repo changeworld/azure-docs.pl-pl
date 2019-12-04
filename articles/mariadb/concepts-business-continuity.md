@@ -1,17 +1,17 @@
 ---
-title: Zrozumienie ciągłości działania w Azure Database for MariaDB
+title: Ciągłość działania — Azure Database for MariaDB
 description: Dowiedz się więcej o ciągłości działania (przywracanie do punktu w czasie, awaria centrum danych, przywracanie geograficzne) podczas korzystania z usługi Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: d364c3a5fafaca514baade25cd3f5b4c0f10dc26
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 76e749b26be5a5204b247d294f26da169f84094c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973611"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773021"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Zrozumienie ciągłości działania w Azure Database for MariaDB
 

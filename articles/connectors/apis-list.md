@@ -2,19 +2,16 @@
 title: Łączniki dla usługi Azure Logic Apps
 description: Automatyzowanie przepływów pracy za pomocą łączników dla Azure Logic Apps, w tym wbudowanego, zarządzanego, lokalnego konta integracji i łączników przedsiębiorstwa
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 3d828e6e365864c2c23e1d9f178a556ff3c07515
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 642eef8b804a7b71ec16f5834e4989cb7299c408
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430184"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789972"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Łączniki dla usługi Azure Logic Apps
 
@@ -128,7 +125,7 @@ Poniżej przedstawiono kilka typowych łączników standardowych, które Logic A
 
 |   |   |   |   |   | 
 |---|---|---|---|---| 
-| Ikona interfejsu API ![][biztalk-server-icon]<br/>**BizTalk**</br> **Serwer** | [Ikona interfejsu API ![][file-system-icon]<br/>**System</br> plików**][file-system-doc] | [Ikona interfejsu API ![][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [Ikona interfejsu API ![][ibm-informix-icon]<br/>**IBM**</br> **Informix**][ibm-informix-doc] | Ikona interfejsu API ![][mysql-icon]<br/>**MySQL** | 
+| Ikona interfejsu API ![][biztalk-server-icon]<br/>**Dokument**</br> **Serwer** | [Ikona interfejsu API ![][file-system-icon]<br/>**System</br> plików**][file-system-doc] | [Ikona interfejsu API ![][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [Ikona interfejsu API ![][ibm-informix-icon]<br/>**IBM**</br> **Informix**][ibm-informix-doc] | Ikona interfejsu API ![][mysql-icon]<br/>**MySQL** | 
 | [Ikona interfejsu API ![][oracle-db-icon]<br/>**Oracle DB**][oracle-db-doc] | Ikona interfejsu API ![][postgre-sql-icon]<br/>**PostgreSQL** | [Ikona interfejsu API ![][sharepoint-server-icon]<br/>**SharePoint</br> Server**][sharepoint-server-doc] | [Ikona interfejsu API ![][sql-server-icon]<br/>**SQL</br> Server**][sql-server-doc] | Ikona interfejsu API ![][teradata-icon]<br/>**Teradata** | 
 |||||
 

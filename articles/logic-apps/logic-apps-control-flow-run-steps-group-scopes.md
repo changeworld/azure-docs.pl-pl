@@ -1,20 +1,17 @@
 ---
-title: Grupuj i uruchamiaj akcje według zakresu — Azure Logic Apps
+title: Grupuj i uruchamiaj akcje według zakresu
 description: Tworzenie akcji w zakresie, które są uruchamiane na podstawie stanu grupy w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b0f53d1dbcd5b8bbbe38ffe3dd9ba62087ed3432
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680016"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791491"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Uruchamianie akcji na podstawie stanu grupy przy użyciu zakresów w Azure Logic Apps
 
@@ -78,8 +75,8 @@ Aplikację logiki można zapisać w dowolnym momencie, dlatego Zapisz swoją sł
 
       | Ustawienie | Wartość | Opis |
       | ------- | ----- | ----------- |
-      | **Punkt nawigacyjny 1** | < >*Start* | Wprowadź Początek trasy. | 
-      | **Punkt nawigacyjny 2** | >*końcowy* < | Wprowadź lokalizację docelową trasy. | 
+      | **Punkt nawigacyjny 1** | <> *Start* | Wprowadź Początek trasy. | 
+      | **Punkt nawigacyjny 2** | > *końcowy* < | Wprowadź lokalizację docelową trasy. | 
       | **Unikaj** | Brak | Wprowadź elementy, które mają być unikane na trasie, takie jak Autostrade, opłaty i tak dalej. Aby uzyskać możliwe wartości, zobacz [Obliczanie trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optymalizacja** | timeWithTraffic | Wybierz parametr, aby zoptymalizować trasę, na przykład odległość, czas z bieżącymi informacjami o ruchu itd. Ten przykład używa tej wartości: "timeWithTraffic" | 
       | **Jednostka odległości** | <*według_preferencji*> | Wprowadź jednostkę odległości do obliczenia trasy. Ten przykład używa tej wartości: "mila" | 
@@ -150,7 +147,7 @@ Aplikację logiki można zapisać w dowolnym momencie, dlatego Zapisz swoją sł
   
        Pole **treści** wygląda teraz następująco:
 
-       ![Finished pole "treść" ](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       Zakończono ![pola "Body"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
 1. Zapisz aplikację logiki.

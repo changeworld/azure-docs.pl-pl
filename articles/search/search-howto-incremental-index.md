@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 348bc2d92f636d1f3c3b50ea31334355da59a60f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112575"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790504"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Jak skonfigurować przyrostowe indeksowanie ulepszonych dokumentów na platformie Azure Wyszukiwanie poznawcze
 
@@ -41,13 +41,32 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>Krok 2. Dodawanie właściwości pamięci podręcznej
 
-Edytuj odpowiedź z żądania GET, aby dodać właściwość `cache` do indeksatora. Obiekt pamięci podręcznej wymaga tylko pojedynczej właściwości, a to parametry połączenia z kontem usługi Azure Storage.
+< < < < < < < NAGŁÓWKowym edytować odpowiedź z żądania GET, aby dodać właściwość `cache` do indeksatora. Obiekt pamięci podręcznej wymaga tylko pojedynczej właściwości, `storageConnectionString` która jest parametrami połączenia do konta magazynu. = = = = = = = Edytuj odpowiedź z żądania GET, aby dodać właściwość `cache` do indeksatora. Obiekt pamięci podręcznej wymaga tylko pojedynczej właściwości, a to parametry połączenia z kontem usługi Azure Storage.
+>>>>>>> 3519a330aa86b6827d31403690529105825b1b16
 
 ```json
-    "cache": {
-        "storageConnectionString": "[your storage connection string]"
+{
+    "name": "myIndexerName",
+    "targetIndexName": "myIndex",
+    "dataSourceName": "myDatasource",
+    "skillsetName": "mySkillset",
+    "cache" : {
+        "storageConnectionString" : "Your storage account connection string",
+        "enableReprocessing": true,
+        "id" : "Auto generated Id you do not need to set"
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": {
+        "configuration": {
+            "enableAnnotationCache": true
+        }
     }
+}
 ```
+#### <a name="enable-reporocessing"></a>Włącz reporocessing
+
+Opcjonalnie można ustawić właściwość `enableReprocessing` Boolean w pamięci podręcznej, która domyślnie ma wartość true. Flaga `enableReprocessing` pozwala kontrolować zachowanie indeksatora. W scenariuszach, w których indeksator ma określić priorytety dodawania nowych dokumentów do indeksu, należy ustawić flagę na wartość false. Gdy indeksator zostanie przechwycony przy użyciu nowych dokumentów, przerzucenie flagi do wartości true spowoduje, że indeksator rozpocznie działanie istniejących dokumentów w celu zapewnienia spójności ostatecznej. W czasie, gdy flaga `enableReprocessing` ma wartość false, indeksator zapisuje tylko w pamięci podręcznej, ale nie przetwarza żadnych istniejących dokumentów na podstawie zidentyfikowanych zmian potoku wzbogacania.
 
 ### <a name="step-3-reset-the-indexer"></a>Krok 3. Resetowanie indeksatora
 

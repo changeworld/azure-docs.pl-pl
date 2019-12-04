@@ -1,17 +1,17 @@
 ---
-title: Szczegółowe informacje o wydajności zapytań w Azure Database for MariaDB
+title: Szczegółowe informacje o wydajności zapytań — Azure Database for MariaDB
 description: W tym artykule opisano funkcję Szczegółowe informacje o wydajności zapytań w programie Azure Database for MariaDB
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 31aacfea7c68614add0229c3a9c494de4714fe16
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: eb124f40ff915b56011d5f16cd83a9358960621e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604035"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772306"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Szczegółowe informacje o wydajności zapytań w Azure Database for MariaDB
 

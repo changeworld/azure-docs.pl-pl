@@ -1,31 +1,29 @@
 ---
-title: Aktualizacje schematu Czerwiec-1-2016 — Azure Logic Apps | Microsoft Docs
+title: Aktualizacje schematu Czerwiec-1-2016
 description: Zaktualizowano wersję schematu 2016-06-01 dla definicji aplikacji logiki w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
-ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 0558c309cc22f39c2ed439b7930443ca0adb071e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385374"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792880"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizacje schematu dla Azure Logic Apps — 1 czerwca 2016
 
-Zaktualizowana wersja [schematu](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) i interfejsu API dla Azure Logic Apps obejmuje kluczowe ulepszenia, dzięki którym Aplikacje logiki są bardziej niezawodne i łatwiejsze w użyciu:
+[Zaktualizowana wersja schematu](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) i interfejsu API dla Azure Logic Apps obejmuje kluczowe ulepszenia, dzięki którym Aplikacje logiki są bardziej niezawodne i łatwiejsze w użyciu:
 
 * [Zakresy](#scopes) umożliwiają grupowanie lub zagnieżdżanie akcji jako kolekcji akcji.
 * [Warunki i pętle](#conditions-loops) są teraz akcjami pierwszej klasy.
-* Dokładniejsza kolejność uruchamiania akcji z `runAfter` właściwością, zastępując`dependsOn`
+* Dokładniejsza kolejność uruchamiania akcji z właściwością `runAfter`, zastępując `dependsOn`
 
-Aby uaktualnić Aplikacje logiki z 1 sierpnia 2015 schematu wersji zapoznawczej do schematu 1 czerwca 2016, zapoznaj [się z sekcją uaktualniania](#upgrade-your-schema).
+Aby uaktualnić Aplikacje logiki z 1 sierpnia 2015 schematu wersji zapoznawczej do schematu 1 czerwca 2016, [zapoznaj się z sekcją uaktualniania](#upgrade-your-schema).
 
 <a name="scopes"></a>
 
@@ -87,7 +85,7 @@ W poprzednich wersjach schematu warunki i pętle były parametrami skojarzonymi 
 
 ## <a name="runafter-property"></a>Właściwość "runAfter"
 
-`runAfter` Właściwość zastępuje`dependsOn`, co zapewnia większą precyzję podczas określania kolejności uruchamiania dla akcji na podstawie stanu poprzednich akcji. `dependsOn` Właściwość wskazuje, czy "akcja została uruchomiona i powiodła się", w zależności od tego, czy Poprzednia akcja zakończyła się powodzeniem, zakończyła się niepowodzeniem lub jako pominięcia — nie liczba uruchomień akcji. `runAfter` Właściwość zapewnia elastyczność jako obiekt, który określa wszystkie nazwy akcji, po których działa obiekt. Ta właściwość definiuje również tablicę Stanów, które są akceptowane jako wyzwalacze. Na przykład jeśli chcesz, aby akcja działała po pomyślnym wykonaniu akcji, a także po pomyślnym wykonaniu akcji B lub `runAfter` niepowodzeniem, skonfiguruj tę właściwość:
+Właściwość `runAfter` zastępuje `dependsOn`, co zapewnia większą precyzję podczas określania kolejności uruchamiania dla akcji na podstawie stanu poprzednich akcji. Właściwość `dependsOn` wskazuje, czy "akcja została wykonana i powiodła się", w zależności od tego, czy Poprzednia akcja zakończyła się powodzeniem, zakończyła się niepowodzeniem lub jako pominięcia — nie liczbę uruchomień akcji. Właściwość `runAfter` zapewnia elastyczność jako obiekt, który określa wszystkie nazwy akcji, po których działa obiekt. Ta właściwość definiuje również tablicę Stanów, które są akceptowane jako wyzwalacze. Na przykład jeśli chcesz, aby akcja działała po pomyślnym wykonaniu akcji, a także po pomyślnym wykonaniu akcji B lub niepowodzeniem, skonfiguruj tę `runAfter` Właściwość:
 
 ```json
 {
@@ -129,7 +127,7 @@ Aby uaktualnić do najnowszego [schematu](https://schema.management.azure.com/sc
 
 ### <a name="mapping-conditions"></a>Warunki mapowania
 
-W uaktualnionej definicji Narzędzie to najlepiej sprawdza się w przypadku grupowania prawdy i fałszywych akcji rozgałęzień jednocześnie jako zakresu. `@equals(actions('a').status, 'Skipped')` W`else` odniesieniu do wzorca projektanta pojawia się jako akcja. Jeśli jednak narzędzie wykryje nierozpoznawalne wzorce, narzędzie może utworzyć osobne warunki zarówno dla gałęzi true, jak i false. W razie potrzeby można ponownie mapować akcje po uaktualnieniu.
+W uaktualnionej definicji Narzędzie to najlepiej sprawdza się w przypadku grupowania prawdy i fałszywych akcji rozgałęzień jednocześnie jako zakresu. W odniesieniu do wzorca projektanta `@equals(actions('a').status, 'Skipped')` pojawia się jako akcja `else`. Jeśli jednak narzędzie wykryje nierozpoznawalne wzorce, narzędzie może utworzyć osobne warunki zarówno dla gałęzi true, jak i false. W razie potrzeby można ponownie mapować akcje po uaktualnieniu.
 
 #### <a name="foreach-loop-with-condition"></a>Pętla "foreach" z warunkiem
 
@@ -143,19 +141,19 @@ Po uaktualnieniu Tagi zasobów zostaną usunięte, dlatego należy je zresetowa�
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>Zmieniono nazwę wyzwalacza "Manual" na wyzwalacz "Request"
 
-Typ wyzwalacza został uznany za przestarzały, `request` a jego nazwa została zmieniona na typ `http`. `manual` Ta zmiana powoduje utworzenie większej spójności dla rodzaju wzorca używanego przez wyzwalacz do kompilowania.
+Typ wyzwalacza `manual` był przestarzały i zmieniono jego nazwę na `request` z typem `http`. Ta zmiana powoduje utworzenie większej spójności dla rodzaju wzorca używanego przez wyzwalacz do kompilowania.
 
 ### <a name="new-filter-action"></a>Nowa akcja "filter"
 
-Aby odfiltrować dużą tablicę w dół do mniejszego zestawu elementów, `filter` nowy typ akceptuje tablicę i warunek, oblicza warunek dla każdego elementu i zwraca tablicę zawierającą elementy spełniające warunek.
+Aby odfiltrować dużą tablicę w dół do mniejszego zestawu elementów, nowy typ `filter` akceptuje tablicę i warunek, oblicza warunek dla każdego elementu i zwraca tablicę zawierającą elementy spełniające warunek.
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>Ograniczenia dotyczące akcji "foreach" i "until"
 
-Pętla `until` i jest ograniczona do pojedynczej akcji. `foreach`
+Pętla `foreach` i `until` są ograniczone do jednej akcji.
 
 ### <a name="new-trackedproperties-for-actions"></a>Nowe "trackedProperties" dla akcji
 
-Akcje mogą teraz mieć dodatkową właściwość o nazwie `trackedProperties`, która jest elementem równorzędnym `runAfter` dla `type` właściwości i. Ten obiekt Określa pewne dane wejściowe lub wyjściowe akcji, które mają zostać dołączone do telemetrii diagnostyki platformy Azure, emitowane w ramach przepływu pracy. Na przykład:
+Akcje mogą teraz mieć dodatkową właściwość o nazwie `trackedProperties`, która jest elementem równorzędnym dla właściwości `runAfter` i `type`. Ten obiekt Określa pewne dane wejściowe lub wyjściowe akcji, które mają zostać dołączone do telemetrii diagnostyki platformy Azure, emitowane w ramach przepływu pracy. Na przykład:
 
 ``` json
 {
@@ -174,7 +172,7 @@ Akcje mogą teraz mieć dodatkową właściwość o nazwie `trackedProperties`, 
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie definicji przepływu pracy dla aplikacji logiki](../logic-apps/logic-apps-author-definitions.md)
 * [Automatyzowanie wdrożenia aplikacji logiki](logic-apps-azure-resource-manager-templates-overview.md)

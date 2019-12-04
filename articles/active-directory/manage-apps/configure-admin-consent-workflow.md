@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d1654556df455accb7f615442d3a97952c5e50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180422"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786439"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurowanie przepływu pracy zgody administratora (wersja zapoznawcza)
 
@@ -33,10 +33,10 @@ Aby można było zatwierdzić żądania, Recenzent musi być administratorem glo
 
 Aby włączyć przepływ pracy zgody administratora i wybrać recenzentów:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny.
-2. Kliknij pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.  zostanie otwarte **rozszerzenie Azure Active Directory** .
-3. W polu wyszukiwania filtru wpisz "**Azure Active Directory**" i wybierz **Azure Active Directory** elementu.
-4. W menu nawigacji kliknij pozycję **aplikacje dla przedsiębiorstw**. 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) jako administrator globalny.
+2. Kliknij pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie. Zostanie otwarte **rozszerzenie Azure Active Directory** .
+3. W polu wyszukiwania filtru wpisz "**Azure Active Directory**" i wybierz element **Azure Active Directory** .
+4. W menu nawigacji kliknij pozycję **aplikacje dla przedsiębiorstw**. 
 5. W obszarze **Zarządzaj**wybierz pozycję **Ustawienia użytkownika**.
 6. W obszarze **prośby o zgodę administratora (wersja zapoznawcza)** ustaw, aby **użytkownicy mogli żądać zgody administratora na aplikacje, których nie mogą wyrazić zgody** na **wartość tak**.
 
@@ -74,10 +74,10 @@ Po włączeniu przepływu pracy zgody administratora użytkownicy mogą zażąda
 
 Aby przejrzeć żądania zgody administratora i podjąć działania:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako jeden z zarejestrowanych recenzentów przepływu pracy zgody administratora.
-2. Wybierz pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.  zostanie otwarte **rozszerzenie Azure Active Directory** .
-3. W polu wyszukiwania filtru wpisz "**Azure Active Directory**" i wybierz **Azure Active Directory** elementu.
-4. W menu nawigacji kliknij pozycję **aplikacje dla przedsiębiorstw**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako jeden z zarejestrowanych recenzentów przepływu pracy zgody administratora.
+2. Wybierz pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie. Zostanie otwarte **rozszerzenie Azure Active Directory** .
+3. W polu wyszukiwania filtru wpisz "**Azure Active Directory**" i wybierz element **Azure Active Directory** .
+4. W menu nawigacji kliknij pozycję **aplikacje dla przedsiębiorstw**.
 5. W obszarze **działanie**wybierz pozycję **żądania zgody administratora (wersja zapoznawcza)** .
 
    > [!NOTE]
@@ -120,12 +120,12 @@ W poniższej tabeli przedstawiono scenariusze i wartości inspekcji dostępne dl
 
 |Scenariusz  |Usługa inspekcji  |Kategorii inspekcji  |Inspekcja aktywności  |Aktor inspekcji  |Ograniczenia dziennika inspekcji  |
 |---------|---------|---------|---------|---------|---------|
-|Administrator włączania przepływu pracy żądania zgody        |Przeglądy dostępu           |UserManagement           |Utwórz szablon zasad ładu          |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika            |
-|Administrator wyłączający przepływ pracy żądania zgody       |Przeglądy dostępu           |UserManagement           |Usuń szablon zasad ładu          |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika           |
-|Administrator zaktualizował konfiguracje przepływu pracy zgody        |Przeglądy dostępu           |UserManagement           |Aktualizuj szablon zasad ładu          |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika           |
-|Użytkownik końcowy tworzy żądanie zgody administratora dla aplikacji       |Przeglądy dostępu           |Zasady         |Utwórz żądanie           |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika           |
-|Recenzenci zatwierdzający żądanie zgody administratora       |Przeglądy dostępu           |UserManagement           |Zatwierdź wszystkie żądania w usłudze Flow          |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika lub identyfikatora aplikacji, dla którego udzielono zgody administratora.           |
-|Recenzenci odmawiają żądania zgody administratora       |Przeglądy dostępu           |UserManagement           |Zatwierdź wszystkie żądania w usłudze Flow          |Kontekst aplikacji            | Obecnie nie można znaleźć kontekstu użytkownika aktora, który odmówił żądania zgody administratora          |
+|Administrator włączania przepływu pracy żądania zgody        |Przeglądy dostępu           |UserManagement           |Utwórz szablon zasad ładu          |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika            |
+|Administrator wyłączający przepływ pracy żądania zgody       |Przeglądy dostępu           |UserManagement           |Usuń szablon zasad ładu          |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika           |
+|Administrator zaktualizował konfiguracje przepływu pracy zgody        |Przeglądy dostępu           |UserManagement           |Aktualizuj szablon zasad ładu          |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika           |
+|Użytkownik końcowy tworzy żądanie zgody administratora dla aplikacji       |Przeglądy dostępu           |Zasady         |Utwórz żądanie           |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika           |
+|Recenzenci zatwierdzający żądanie zgody administratora       |Przeglądy dostępu           |UserManagement           |Zatwierdź wszystkie żądania w usłudze Flow          |Kontekst aplikacji            |Obecnie nie można znaleźć kontekstu użytkownika lub identyfikatora aplikacji, dla którego udzielono zgody administratora.           |
+|Recenzenci odmawiają żądania zgody administratora       |Przeglądy dostępu           |UserManagement           |Zatwierdź wszystkie żądania w usłudze Flow          |Kontekst aplikacji            | Obecnie nie można znaleźć kontekstu użytkownika aktora, który odmówił żądania zgody administratora          |
 
 ## <a name="faq"></a>Często zadawane pytania 
 

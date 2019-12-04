@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819341"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784599"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Eksplorowanie dzienników śledzenia Java w Application Insights
 Jeśli używasz programu Logback lub Log4J (w wersji 1.2 lub 2.0) do śledzenia, dzienniki śledzenia mogą być automatycznie wysyłane do Application Insights, w którym można eksplorować i wyszukiwać.
@@ -22,27 +22,41 @@ Jeśli używasz programu Logback lub Log4J (w wersji 1.2 lub 2.0) do śledzenia,
 
 ## <a name="using-the-application-insights-java-agent"></a>Korzystanie z Application Insights agenta Java
 
-Można skonfigurować Application Insights agenta Java do automatycznego przechwytywania dzienników, włączając funkcję w pliku `AI-Agent.xml`:
+Domyślnie agent programu Application Insights Java automatycznie przechwytuje rejestrowanie wykonywane na poziomie `WARN` i wyższym.
+
+Można zmienić próg rejestrowania przechwytywanego za pomocą pliku `AI-Agent.xml`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsightsAgent>
    <Instrumentation>
-      <BuiltIn enabled="true">
-         <Logging enabled="true" />
+      <BuiltIn>
+         <Logging threshold="info"/>
       </BuiltIn>
    </Instrumentation>
-   <AgentLogger />
 </ApplicationInsightsAgent>
 ```
 
-Alternatywnie można postępować zgodnie z poniższymi instrukcjami.
+Przechwytywanie rejestrowania agenta Java można wyłączyć przy użyciu pliku `AI-Agent.xml`:
 
-## <a name="install-the-java-sdk"></a>Instalowanie zestawu Java SDK
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>Alternatywnie (w przeciwieństwie do użycia agenta Java) można postępować zgodnie z poniższymi instrukcjami
+
+### <a name="install-the-java-sdk"></a>Instalowanie zestawu Java SDK
 
 Postępuj zgodnie z instrukcjami, aby zainstalować [Application INSIGHTS SDK dla języka Java][java], jeśli jeszcze tego nie zrobiono.
 
-## <a name="add-logging-libraries-to-your-project"></a>Dodawanie bibliotek rejestrowania do projektu
+### <a name="add-logging-libraries-to-your-project"></a>Dodawanie bibliotek rejestrowania do projektu
 *Wybierz odpowiedni sposób dla danego projektu.*
 
 #### <a name="if-youre-using-maven"></a>Jeśli używasz narzędzia Maven...
@@ -120,10 +134,10 @@ Postępuj zgodnie z instrukcjami, aby ręcznie zainstalować Application Insight
 | --- | --- | --- |
 | Logback |[Logback Dołącz do jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |ApplicationInsights-Logging-logback |
 | Log4J v 2.0 |[Log4J v2 — plik JAR](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |ApplicationInsights-Logging-log4j2 |
-| Log4J v 1.2 |[Log4J v 1.2 dołączanie jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |ApplicationInsights-Logging-log4j1_2 |
+| Log4J v 1.2 |[Log4J v 1.2 dołączanie jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |ApplicationInsights — rejestrowanie log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Dodawanie dołączania do struktury rejestrowania
+### <a name="add-the-appender-to-your-logging-framework"></a>Dodawanie dołączania do struktury rejestrowania
 Aby rozpocząć pobieranie śladów, Scal odpowiedni fragment kodu z plikiem konfiguracji Log4J lub Logback: 
 
 *Logback*

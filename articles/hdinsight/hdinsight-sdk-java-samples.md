@@ -1,20 +1,20 @@
 ---
-title: 'Azure HDInsight: Przykłady w języku Java'
+title: 'Azure HDInsight: przykłady dla języka Java'
 description: Przykłady języka Java w witrynie GitHub dla typowych zadań przy użyciu zestawu HDInsight SDK dla języka Java.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.openlocfilehash: 4a9bfe83c9fc1ccbc496ec97822305720dc52c10
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/29/2019
+ms.openlocfilehash: e277814bda41a70f9ac8ff02b6e8018fba4b6f52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076837"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775367"
 ---
-# <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Przykłady w języku Java
+# <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: przykłady dla języka Java
 
 > [!div class="op_single_selector"]
 > * [Przykłady kodu Java](hdinsight-sdk-java-samples.md)
@@ -27,11 +27,11 @@ Ten artykuł zawiera:
 * Linki do przykładów dla zadań tworzenia klastra.
 * Linki do zawartości referencyjnej dla innych zadań zarządzania.
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Zestaw SDK usługi Azure HDInsight dla środowiska Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisites"></a>Wymagania wstępne
+
+[Zestaw SDK usługi Azure HDInsight dla środowiska Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>Zarządzanie klastrem — tworzenie
 

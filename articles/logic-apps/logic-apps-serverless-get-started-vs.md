@@ -1,21 +1,17 @@
 ---
-title: Tworzenie pierwszej aplikacji bezserwerowej w programie Visual Studio — Azure Logic Apps
+title: Tworzenie pierwszej aplikacji bezserwerowej w programie Visual Studio
 description: Kompilowanie i wdrażanie aplikacji bezserwerowej oraz zarządzanie nią przy użyciu Azure Logic Apps i Azure Functions w programie Visual Studio
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: vs-azure
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 76ab76440ddc25f4b1cf51f7d540a6e21614541d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 4ed2ad2d2ff92e9320a7b9c773c4d6e5857fb905
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680125"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792972"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Tworzenie pierwszej aplikacji bezserwerowej przy użyciu Azure Logic Apps i Azure Functions w programie Visual Studio
 
@@ -68,7 +64,7 @@ Aby rozpocząć, Utwórz [projekt grupy zasobów platformy Azure](../azure-resou
 
    ![Utwórz nowy projekt w programie Visual Studio](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. W obszarze **Zainstalowane** wybierz pozycję **Visual C#** lub **Visual Basic**. Następnie wybierz pozycję **Cloud**  > **grupie zasobów platformy Azure**.
+1. W obszarze **Zainstalowane** wybierz pozycję **Visual C#** lub **Visual Basic**. Następnie wybierz pozycję **Cloud** > **grupie zasobów platformy Azure**.
 
    > [!NOTE]
    > Jeśli nie istnieje kategoria **chmury** lub projekt **grupy zasobów platformy Azure** , upewnij się, że zainstalowano zestaw Azure SDK dla programu Visual Studio.
@@ -104,7 +100,7 @@ Aby rozpocząć, Utwórz [projekt grupy zasobów platformy Azure](../azure-resou
 
 Aby można było otworzyć aplikację logiki w Projektancie aplikacji logiki w programie Visual Studio, musisz mieć grupę zasobów platformy Azure, która została już wdrożona na platformie Azure. Projektant może następnie utworzyć połączenia z zasobami i usługami w aplikacji logiki. W przypadku tego zadania wykonaj następujące kroki, aby wdrożyć rozwiązanie z programu Visual Studio w Azure Portal:
 
-1. W Eksplorator rozwiązań z menu skrótów projektu zasobów wybierz pozycję **wdróż**  > **nowe**.
+1. W Eksplorator rozwiązań z menu skrótów projektu zasobów wybierz pozycję **wdróż** > **nowe**.
 
    ![Utwórz nowe wdrożenie dla grupy zasobów](./media/logic-apps-serverless-get-started-vs/deploy.png)
 

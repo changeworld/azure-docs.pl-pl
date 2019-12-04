@@ -1,18 +1,18 @@
 ---
 title: Przedpłata za usługę Azure Eksplorator danych Markup, aby zaoszczędzić pieniądze
 description: Dowiedz się, jak kupić usługę Azure Eksplorator danych zarezerwowaną pojemność, aby zaoszczędzić na kosztach Eksplorator danych na platformie Azure.
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 66c5644df7d796669105693d08788548334ae93a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681624"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769102"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Przedpłata za usługę Azure Eksplorator danych Markup Unit przy użyciu zarezerwowanej pojemności platformy Azure Eksplorator danych
 
@@ -23,7 +23,7 @@ Zakup rezerwacji polega na przedpłaceniu za koszty związane z oznaczeniem prze
 Możesz kupić zastrzeżoną pojemność platformy Azure Eksplorator danych w [Azure Portal](https://portal.azure.com). Aby kupić zastrzeżoną pojemność platformy Azure Eksplorator danych:
 
 * Musisz być właścicielem co najmniej jednej subskrypcji w przedsiębiorstwie lub z opcją płatność zgodnie z rzeczywistym użyciem.
-* W przypadku subskrypcji Enterprise w witrynie **EA Portal** musi być włączona opcja [Dodaj wystąpienia zarezerwowane](https://ea.azure.com). Alternatywnie, jeśli to ustawienie jest wyłączone, musisz być administratorem EA w subskrypcji.
+* W przypadku subskrypcji Enterprise w witrynie [EA Portal](https://ea.azure.com) musi być włączona opcja **Dodaj wystąpienia zarezerwowane**. Alternatywnie, jeśli to ustawienie jest wyłączone, musisz być administratorem EA w subskrypcji.
 * W przypadku programu Cloud Solution Provider (CSP) tylko agenci administracyjni lub agenci sprzedaży mogą zakupić zastrzeżoną pojemność platformy Azure Eksplorator danych.
 
 Aby uzyskać szczegółowe informacje na temat sposobu, w jaki Klienci korporacyjni i klienci korzystający z usługi płatność zgodnie z rzeczywistym użyciem są obciążani zakupami rezerwacji, zobacz:
@@ -36,7 +36,7 @@ Rozmiar rezerwacji powinien opierać się na całkowitej liczbie jednostek znacz
 
 ## <a name="buy-azure-data-explorer-reserved-capacity"></a>Kupowanie zarezerwowanej pojemności platformy Azure Eksplorator danych
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Wybierz pozycję **wszystkie usługi** > **rezerwacje** > **Kup teraz**. Wybierz pozycję **Dodaj**.
 1. W okienku **Wybierz typ produktu** wybierz pozycję **Azure Eksplorator danych** , aby zakupić nową rezerwację dla jednostek znaczników usługi Azure Eksplorator danych. 
 1. Wybierz pozycję **Kup**
@@ -69,7 +69,7 @@ Rabat zarezerwowany dla jednostek znaczników Eksplorator danych platformy Azure
 
 Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
-* [Co to są rezerwacje platformy Azure?](../billing/billing-save-compute-costs-reservations.md)
+* [Czym są rezerwacje platformy Azure?](../billing/billing-save-compute-costs-reservations.md)
 * [Zarządzanie usługą Azure Reservations](../billing/billing-manage-reserved-vm-instance.md)
 * [Informacje na temat rabatu na rezerwacje platformy Azure](../billing/billing-understand-reservation-charges.md)
 * [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](../billing/billing-understand-reserved-instance-usage.md)

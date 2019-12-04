@@ -1,20 +1,19 @@
 ---
-title: Zarządzanie metadanymi artefaktów konta integracji — Azure Logic Apps
+title: Zarządzaj metadanymi artefaktów konta integracji
 description: Dodawanie lub Pobieranie metadanych artefaktów z kont integracji w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
-ms.openlocfilehash: e8e2daf1de9223766c8cec835f7718007a8cf309
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679972"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792471"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Zarządzanie metadanymi artefaktów na kontach integracji z Azure Logic Apps i Pakiet integracyjny dla przedsiębiorstw
 
@@ -54,7 +53,7 @@ Można zdefiniować niestandardowe metadane dla artefaktów na kontach integracj
 
 1. W Azure Portal Otwórz aplikację logiki, która jest połączona z żądanym kontem integracji. 
 
-1. W Projektancie aplikacji logiki, jeśli dodajesz krok pobierania metadanych w ramach wyzwalacza lub ostatniej akcji w przepływie pracy, wybierz pozycję **nowy krok**  > **Dodaj akcję**. 
+1. W Projektancie aplikacji logiki, jeśli dodajesz krok pobierania metadanych w ramach wyzwalacza lub ostatniej akcji w przepływie pracy, wybierz pozycję **nowy krok** > **Dodaj akcję**. 
 
 1. W polu wyszukiwania wprowadź ciąg "konto integracji". W polu wyszukiwania wybierz pozycję **Wszystko**. Z listy Akcje wybierz tę akcję: **Wyszukiwanie artefaktów konta integracji — konto integracji**
 
@@ -65,7 +64,7 @@ Można zdefiniować niestandardowe metadane dla artefaktów na kontach integracj
    | Właściwość | Wymagane | Wartość | Opis | 
    |----------|---------|-------|-------------| 
    | **Typ artefaktu** | Tak | **Schemat**, **Mapa**, **partner**, **Umowa**lub typ niestandardowy | Typ żądanego artefaktu | 
-   | **Nazwa artefaktu** | Tak | <*nazwę artefaktu* > | Nazwa żądanego artefaktu | 
+   | **Nazwa artefaktu** | Tak | <*nazwę artefaktu*> | Nazwa żądanego artefaktu | 
    ||| 
 
    Załóżmy na przykład, że chcesz pobrać metadane artefaktu partnera handlowego:
@@ -86,10 +85,10 @@ Można zdefiniować niestandardowe metadane dla artefaktów na kontach integracj
 
       | Właściwość | Wymagane | Wartość | Opis | 
       |----------|----------|-------|-------------| 
-      | **Metoda** | Tak | <*operacji do uruchomienia* > | Operacja HTTP do uruchomienia na artefaktie. Na przykład ta akcja HTTP używa metody **Get** . | 
-      | **ADRESU** | Tak | <*lokalizacji metadanych* > | Aby uzyskać dostęp do wartości metadanych `routingUrl` z pobranego artefaktu, można użyć wyrażenia, na przykład: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Nagłówki** | Nie | <*wartości nagłówka* > | Wszystkie dane wyjściowe nagłówka z wyzwalacza, które chcesz przekazać do akcji HTTP. Na przykład, aby przekazać wartość właściwości `headers` wyzwalacza: można użyć wyrażenia, na przykład: <p>`@triggeroutputs()['headers']` | 
-      | **Treść** | Nie | < treść *— > zawartości* | Każda inna zawartość, która ma zostać przekazana przez właściwość `body` akcji HTTP. Ten przykład przekazuje wartości `properties` artefaktu do akcji HTTP: <p>1. kliknij wewnątrz właściwości **Body** , aby wyświetlić listę zawartości dynamicznej. Jeśli nie zostaną wyświetlone żadne właściwości, wybierz pozycję **Zobacz więcej**. <br>2. z listy zawartości dynamicznej w obszarze **Wyszukiwanie artefaktów konta integracji**wybierz pozycję **Właściwości**. | 
+      | **Metoda** | Tak | <*operacji do uruchomienia*> | Operacja HTTP do uruchomienia na artefaktie. Na przykład ta akcja HTTP używa metody **Get** . | 
+      | **ADRESU** | Tak | <*lokalizacji metadanych*> | Aby uzyskać dostęp do wartości metadanych `routingUrl` z pobranego artefaktu, można użyć wyrażenia, na przykład: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Nagłówki** | Nie | <*wartości nagłówka*> | Wszystkie dane wyjściowe nagłówka z wyzwalacza, które chcesz przekazać do akcji HTTP. Na przykład, aby przekazać wartość właściwości `headers` wyzwalacza: można użyć wyrażenia, na przykład: <p>`@triggeroutputs()['headers']` | 
+      | **Treść** | Nie | <treść *—> zawartości* | Każda inna zawartość, która ma zostać przekazana przez właściwość `body` akcji HTTP. Ten przykład przekazuje wartości `properties` artefaktu do akcji HTTP: <p>1. kliknij wewnątrz właściwości **Body** , aby wyświetlić listę zawartości dynamicznej. Jeśli nie zostaną wyświetlone żadne właściwości, wybierz pozycję **Zobacz więcej**. <br>2. z listy zawartości dynamicznej w obszarze **Wyszukiwanie artefaktów konta integracji**wybierz pozycję **Właściwości**. | 
       |||| 
 
       Na przykład:

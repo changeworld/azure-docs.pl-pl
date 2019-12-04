@@ -1,17 +1,17 @@
 ---
-title: Tworzenie kopii zapasowych i przywracanie w Azure Database for MySQL
+title: Tworzenie kopii zapasowych i przywracanie Azure Database for MySQL
 description: Dowiedz się więcej o automatycznych kopiach zapasowych i przywracaniu serwera Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: a2a1fb5f84612630d4168c8af908ed86330938c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/02/2019
+ms.openlocfilehash: d5941ef7ac2236137fada7202a8dd3cf2ebcc120
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213121"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776294"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Tworzenie kopii zapasowych i przywracanie w Azure Database for MySQL
 
@@ -23,7 +23,7 @@ Azure Database for MySQL wykonuje kopie zapasowe plików danych i dziennika tran
 
 ### <a name="backup-frequency"></a>Częstotliwość wykonywania kopii zapasowych
 
-Ogólnie rzecz biorąc, pełne kopie zapasowe są wykonywane co tydzień, różnicowe kopie zapasowe są wykonywane dwa razy dziennie dla serwerów z maksymalną obsługiwaną ilością pamięci 4 TB. Kopie zapasowe migawek odbywają się co najmniej raz dziennie dla serwerów, które obsługują do 16 TB pamięci masowej. Kopie zapasowe dziennika transakcji w obu przypadkach są wykonywane co pięć minut. Pierwsza migawka pełnej kopii zapasowej jest zaplanowana natychmiast po utworzeniu serwera. Początkowa pełna kopia zapasowa może trwać dłużej na dużym przywracanym serwerze. Najwcześniejszym punktem w czasie, w którym można przywrócić nowy serwer, jest czas, w którym zostanie ukończona początkowa pełna kopia zapasowa. Ponieważ migawki są instantanious, serwery z obsługą do 16 TB pamięci masowej mogą być przywracane z powrotem do czasu utworzenia.
+Ogólnie rzecz biorąc, pełne kopie zapasowe są wykonywane co tydzień, różnicowe kopie zapasowe są wykonywane dwa razy dziennie dla serwerów z maksymalną obsługiwaną ilością pamięci 4 TB. Kopie zapasowe migawek są wykonywane co najmniej raz dziennie dla serwerów, które obsługują do 16 TB miejsca do magazynowania. Kopie zapasowe dziennika transakcji w obu przypadkach są wykonywane co pięć minut. Pierwsza migawka pełnej kopii zapasowej jest zaplanowana natychmiast po utworzeniu serwera. Początkowa pełna kopia zapasowa może trwać dłużej na dużym przywracanym serwerze. Najwcześniejszym punktem w czasie, w którym można przywrócić nowy serwer, jest czas, w którym zostanie ukończona początkowa pełna kopia zapasowa. Ponieważ migawki są instantanious, serwery z obsługą do 16 TB pamięci masowej mogą być przywracane z powrotem do czasu utworzenia.
 
 ### <a name="backup-redundancy-options"></a>Opcje nadmiarowości kopii zapasowej
 

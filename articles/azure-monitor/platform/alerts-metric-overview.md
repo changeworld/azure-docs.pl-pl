@@ -7,12 +7,12 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484248"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775725"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informacje o tym, jak alerty metryk działają w Azure Monitor
 
@@ -133,7 +133,7 @@ Zakres monitorowania można określić za pomocą pojedynczego alertu dotyczące
 - wszystkie maszyny wirtualne (w jednym regionie świadczenia usługi Azure) w jednej lub większej liczbie grup zasobów w subskrypcji
 - wszystkie maszyny wirtualne (w jednym regionie świadczenia usługi Azure) w jednej subskrypcji
 
-Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów, jest podobne do [tworzenia dowolnego innego alertu dotyczącego metryki](alerts-metric.md) monitorującego pojedynczy zasób. Tylko różnica polega na tym, że należy wybrać wszystkie zasoby, które mają być monitorowane. Te reguły można również utworzyć za poorednictwem [szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Zostaną odebrane indywidualne powiadomienia dla każdej maszyny wirtualnej.
+Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów, jest podobne do [tworzenia dowolnego innego alertu dotyczącego metryki](alerts-metric.md) monitorującego pojedynczy zasób. Tylko różnica polega na tym, że należy wybrać wszystkie zasoby, które mają być monitorowane. Te reguły można również utworzyć za poorednictwem [szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). Zostaną odebrane indywidualne powiadomienia dla każdej maszyny wirtualnej.
 
 ## <a name="typical-latency"></a>Typowe opóźnienia
 

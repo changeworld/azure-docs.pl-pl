@@ -1,17 +1,17 @@
 ---
-title: Monitorowanie w Azure Database for MySQL
+title: Monitorowanie — Azure Database for MySQL
 description: W tym artykule opisano metryki dotyczące monitorowania i generowania alertów dla Azure Database for MySQL, w tym danych statystycznych dotyczących procesora, magazynu i połączeń.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: df03f8ba0e522aacd305b6337e506f53e309660a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/02/2019
+ms.openlocfilehash: ec99db9406c5c83cdcbf322c45cea40c6643ee8f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384044"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770887"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorowanie w Azure Database for MySQL
 Monitorowanie danych dotyczących serwerów ułatwia rozwiązywanie problemów i optymalizację w obciążeniu. Azure Database for MySQL oferuje różne metryki, które dają wgląd w zachowanie serwera.
@@ -28,17 +28,17 @@ Te metryki są dostępne dla Azure Database for MySQL:
 |memory_percent|Procent pamięci|Procent|Procent używanej pamięci.|
 |io_consumption_percent|Procent operacji we/wy|Procent|Procent operacji we/wy w użyciu.|
 |storage_percent|Procent miejsca do magazynowania|Procent|Wartość procentowa używanej przestrzeni dyskowej poza maksymalną.|
-|storage_used|Użyty magazyn|Bajty|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
+|storage_used|Użyty magazyn|Szybkość|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
 |serverlog_storage_percent|Procent magazynu dzienników serwera|Procent|Procent magazynu dzienników serwera używany poza maksymalnym magazynem dzienników serwera.|
-|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Ilość używanego magazynu dzienników serwera.|
-|serverlog_storage_limit|Limit magazynowania dziennika serwera|Bajty|Maksymalny magazyn dzienników serwera dla tego serwera.|
-|storage_limit|Limit magazynu|Bajty|Maksymalny magazyn dla tego serwera.|
+|serverlog_storage_usage|Używany magazyn dzienników serwera|Szybkość|Ilość używanego magazynu dzienników serwera.|
+|serverlog_storage_limit|Limit magazynowania dziennika serwera|Szybkość|Maksymalny magazyn dzienników serwera dla tego serwera.|
+|storage_limit|Limit magazynu|Szybkość|Maksymalny magazyn dla tego serwera.|
 |active_connections|Aktywne połączenia|Liczba|Liczba aktywnych połączeń z serwerem.|
 |connections_failed|Połączenia zakończone niepowodzeniem|Liczba|Liczba nieudanych połączeń z serwerem.|
 |seconds_behind_master|Opóźnienie replikacji w sekundach|Liczba|Liczba sekund, przez jaką serwer repliki jest opóźniony względem serwera głównego.|
-|network_bytes_egress|Sieć — wyjście|Bajty|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
-|network_bytes_ingress|Sieć — wejście|Bajty|Sieć w ramach aktywnych połączeń.|
-|backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Ilość używanego magazynu kopii zapasowych.|
+|network_bytes_egress|Sieć — wyjście|Szybkość|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
+|network_bytes_ingress|Sieć — wejście|Szybkość|Sieć w ramach aktywnych połączeń.|
+|backup_storage_used|Używany magazyn kopii zapasowych|Szybkość|Ilość używanego magazynu kopii zapasowych.|
 
 ## <a name="server-logs"></a>Dzienniki serwera
 Na serwerze można włączyć opcję wolnego zapytania i rejestrowania inspekcji. Te dzienniki są również dostępne za pomocą dzienników diagnostycznych platformy Azure w Azure Monitor dziennikach, Event Hubs i koncie magazynu. Aby dowiedzieć się więcej o rejestrowaniu, odwiedź artykuły [dzienniki inspekcji](concepts-audit-logs.md) i [dzienniki wolnych zapytań](concepts-server-logs.md) .

@@ -1,17 +1,17 @@
 ---
-title: Zaawansowana ochrona przed zagrożeniami — Azure Database for MariaDB | Microsoft Docs
+title: Zaawansowana ochrona przed zagrożeniami — Azure Portal-Azure Database for MariaDB
 description: Ochrona przed zagrożeniami wykrywa nietypowe działania bazy danych wskazujące na potencjalne zagrożenia bezpieczeństwa bazy danych.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: f77d9f105d5c2ff10753f2b4b1ecc962c84eee6e
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 12/02/2019
+ms.openlocfilehash: 1d6eafd38d418066ddf5933139bd4caf6e69ddea
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869653"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766977"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Zaawansowana ochrona przed zagrożeniami dla Azure Database for MariaDB
 
@@ -23,10 +23,10 @@ Zaawansowana ochrona przed zagrożeniami jest częścią zaawansowanej oferty za
 > Zaawansowana ochrona przed zagrożeniami jest w publicznej wersji zapoznawczej. Ta funkcja jest dostępna we wszystkich regionach platformy Azure, w których wdrożono Azure Database for MariaDB dla serwerów Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
 > [!NOTE]
-> Funkcja zaawansowanej ochrony przed zagrożeniami **nie** jest dostępna w następujących regionach na platformie Azure dla instytucji rządowych i w ramach suwerennej chmury: US Gov Teksas, US Gov Arizona, US Gov Iowa, US, gov Wirginia, US DoD (region wschodni), US DoD (region środkowy), Niemcy środkowe, Niemcy Północne, Chiny Wschodnie, Chiny Wschodnie 2. Odwiedź stronę [dostępne produkty według regionów,](https://azure.microsoft.com/global-infrastructure/services/) Aby uzyskać ogólną dostępność produktu.
+> Funkcja zaawansowanej ochrony przed zagrożeniami **nie** jest dostępna w następujących regionach na platformie Azure dla instytucji rządowych i w ramach suwerennej chmury: US Gov Teksas, US Gov Arizona, US gov Iowa, US, gov wirginia, US DoD (region wschodni), US dod (region środkowy), Niemcy środkowe, Niemcy północne, Chiny Wschodnie, Chiny Wschodnie 2. Odwiedź stronę [dostępne produkty według regionów,](https://azure.microsoft.com/global-infrastructure/services/) Aby uzyskać ogólną dostępność produktu.
 
 ## <a name="set-up-threat-detection"></a>Konfigurowanie wykrywania zagrożeń
-1. Uruchom Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+1. Uruchom Azure Portal w [https://portal.azure.com](https://portal.azure.com).
 2. Przejdź do strony konfiguracji serwera Azure Database for MariaDB, który ma być chroniony. W obszarze Ustawienia zabezpieczeń wybierz pozycję **Zaawansowana ochrona przed zagrożeniami (wersja zapoznawcza)** .
 3. Na stronie Konfiguracja **zaawansowanej ochrony przed zagrożeniami (wersja zapoznawcza)** :
 

@@ -1,22 +1,18 @@
 ---
-title: Tworzenie zautomatyzowanych przepływów pracy opartych na harmonogramie — Azure Logic Apps
+title: Kompilowanie zautomatyzowanych przepływów pracy opartych na harmonogramie
 description: Samouczek — Tworzenie cyklicznego, zautomatyzowanego przepływu pracy opartego na harmonogramie przy użyciu Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034645"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790288"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Samouczek: Tworzenie zautomatyzowanych, cyklicznych przepływów pracy opartych na harmonogramach przy użyciu Azure Logic Apps
 
@@ -50,7 +46,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu po
 
 ## <a name="create-your-logic-app"></a>Tworzenie aplikacji logiki
 
-1. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** > **integracja** > **aplikacji logiki**.
+1. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** > **integracji** > **aplikacji logiki**.
 
    ![Tworzenie zasobu aplikacji logiki](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 

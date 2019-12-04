@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 072c58377645c807328bfcd79028daad70df7338
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102107"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790631"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak zainicjować obsługę administracyjną SQL Server maszyn wirtualnych za pomocą Azure PowerShell
 
@@ -103,7 +103,7 @@ $OSDiskName = $VMName + "OSDisk"
 
 Użyj następujących zmiennych, aby zdefiniować obraz SQL Server do użycia dla maszyny wirtualnej. 
 
-1. Najpierw Wyewidencjonuj wszystkie oferty obrazu SQL Server za pomocą `Get-AzVMImageOffer` polecenia. To polecenie wyświetla listę bieżących obrazów, które są dostępne w witrynie Azure Portal, a także starszych obrazów, które można zainstalować tylko przy użyciu programu PowerShell:
+1. Najpierw Wyewidencjonuj wszystkie oferty obrazu SQL Server za pomocą polecenia `Get-AzVMImageOffer`. To polecenie wyświetla listę bieżących obrazów, które są dostępne w witrynie Azure Portal, a także starszych obrazów, które można zainstalować tylko przy użyciu programu PowerShell:
 
    ```powershell
    Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
@@ -129,7 +129,7 @@ Użyj następujących zmiennych, aby zdefiniować obraz SQL Server do użycia dl
    $Sku = "SQLDEV"
    ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 W modelu wdrażania Menedżer zasobów pierwszy tworzony obiekt jest grupą zasobów. Użyj polecenia cmdlet [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) , aby utworzyć grupę zasobów platformy Azure i jej zasoby. Określ zmienne, które wcześniej zainicjowano dla nazwy i lokalizacji grupy zasobów.
 
 Uruchom to polecenie cmdlet, aby utworzyć nową grupę zasobów.
@@ -337,12 +337,13 @@ Maszyna wirtualna została utworzona.
 > Jeśli wystąpi błąd dotyczący diagnostyki rozruchu, możesz go zignorować. Konto magazynu w warstwie Standardowa jest tworzone na potrzeby diagnostyki rozruchu, ponieważ określone konto magazynu dla dysku maszyny wirtualnej jest kontem magazynu w warstwie Premium.
 
 ## <a name="install-the-sql-iaas-agent"></a>Instalacja agenta SQL IaaS
-SQL Server maszyny wirtualne obsługują zautomatyzowane funkcje zarządzania przy użyciu [rozszerzenia agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Aby zainstalować agenta na nowej maszynie wirtualnej, uruchom następujące polecenie po jego utworzeniu.
+SQL Server maszyny wirtualne obsługują zautomatyzowane funkcje zarządzania przy użyciu [rozszerzenia agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Aby zainstalować agenta na nowej maszynie wirtualnej i zarejestrować go u dostawcy zasobów, uruchom polecenie [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) po utworzeniu maszyny wirtualnej. Określ typ licencji dla maszyny wirtualnej SQL Server, wybierając między opcją płatność zgodnie z rzeczywistym użyciem lub przeniesieniem własnych licencji za pośrednictwem [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). Aby uzyskać więcej informacji o licencjonowaniu, zobacz [model licencjonowania](virtual-machines-windows-sql-ahb.md). 
 
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
 
 ## <a name="stop-or-remove-a-vm"></a>Zatrzymywanie lub usuwanie maszyny wirtualnej
 
@@ -419,8 +420,8 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $Publis
 # Create the VM in Azure
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
-# Add the SQL IaaS Extension
-Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+# Add the SQL IaaS Extension, and choose the license type
+New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
 ```
 
 ## <a name="next-steps"></a>Następne kroki

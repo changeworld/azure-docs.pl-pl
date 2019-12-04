@@ -1,17 +1,17 @@
 ---
-title: Monitorowanie i dostrajanie w Azure Database for PostgreSQL-pojedynczym serwerze
+title: Monitorowanie i dostrajanie-Azure Database for PostgreSQL-pojedynczy serwer
 description: W tym artykule opisano funkcje monitorowania i dostrajania w Azure Database for PostgreSQL-pojedynczym serwerze.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 799b2b6ee6074472a951e69dec7e9a87056373b4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 283ffdd32dbb5b2c80106da98b846ab81aca9608
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384019"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768558"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitorowanie i dostrajanie Azure Database for PostgreSQL-pojedynczego serwera
 Monitorowanie danych dotyczących serwerów ułatwia rozwiązywanie problemów i optymalizację w obciążeniu. Azure Database for PostgreSQL oferuje różne opcje monitorowania w celu zapewnienia wglądu w zachowanie serwera programu.
@@ -28,17 +28,17 @@ Te metryki są dostępne dla Azure Database for PostgreSQL:
 |memory_percent|Procent pamięci|Procent|Procent używanej pamięci.|
 |io_consumption_percent|Procent operacji we/wy|Procent|Procent operacji we/wy w użyciu.|
 |storage_percent|Procent miejsca do magazynowania|Procent|Wartość procentowa używanej przestrzeni dyskowej poza maksymalną.|
-|storage_used|Użyty magazyn|Bajty|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
-|storage_limit|Limit magazynu|Bajty|Maksymalny magazyn dla tego serwera.|
+|storage_used|Użyty magazyn|Szybkość|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
+|storage_limit|Limit magazynu|Szybkość|Maksymalny magazyn dla tego serwera.|
 |serverlog_storage_percent|Procent magazynu dzienników serwera|Procent|Procent magazynu dzienników serwera używany poza maksymalnym magazynem dzienników serwera.|
-|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Ilość używanego magazynu dzienników serwera.|
-|serverlog_storage_limit|Limit magazynowania dziennika serwera|Bajty|Maksymalny magazyn dzienników serwera dla tego serwera.|
+|serverlog_storage_usage|Używany magazyn dzienników serwera|Szybkość|Ilość używanego magazynu dzienników serwera.|
+|serverlog_storage_limit|Limit magazynowania dziennika serwera|Szybkość|Maksymalny magazyn dzienników serwera dla tego serwera.|
 |active_connections|Aktywne połączenia|Liczba|Liczba aktywnych połączeń z serwerem.|
 |connections_failed|Połączenia zakończone niepowodzeniem|Liczba|Liczba nieudanych połączeń z serwerem.|
-|network_bytes_egress|Sieć — wyjście|Bajty|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
-|network_bytes_ingress|Sieć — wejście|Bajty|Sieć w ramach aktywnych połączeń.|
-|backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Ilość używanego magazynu kopii zapasowych.|
-|pg_replica_log_delay_in_bytes|Maksymalne opóźnienie między replikami|Bajty|Zwłoka w bajtach między wzorcem i najbardziej opóźnioną repliką. Ta Metryka jest dostępna tylko na serwerze głównym.|
+|network_bytes_egress|Sieć — wyjście|Szybkość|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
+|network_bytes_ingress|Sieć — wejście|Szybkość|Sieć w ramach aktywnych połączeń.|
+|backup_storage_used|Używany magazyn kopii zapasowych|Szybkość|Ilość używanego magazynu kopii zapasowych.|
+|pg_replica_log_delay_in_bytes|Maksymalne opóźnienie między replikami|Szybkość|Zwłoka w bajtach między wzorcem i najbardziej opóźnioną repliką. Ta Metryka jest dostępna tylko na serwerze głównym.|
 |pg_replica_log_delay_in_seconds|Zwłoka repliki|Sekundy|Czas od ostatniej odtworzonej transakcji. Ta Metryka jest dostępna tylko dla serwerów repliki.|
 
 ## <a name="server-logs"></a>Dzienniki serwera

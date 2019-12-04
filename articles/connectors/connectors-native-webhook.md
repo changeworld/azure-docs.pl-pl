@@ -1,21 +1,18 @@
 ---
-title: Zaczekaj i Odpowiedz na zdarzenia — Azure Logic Apps
+title: Zaczekaj i Odpowiedz na zdarzenia
 description: Automatyzowanie przepływów pracy wyzwalających, wstrzymuje i wznawiane na podstawie zdarzeń w punkcie końcowym usługi przy użyciu Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804262"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787050"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Tworzenie i uruchamianie zautomatyzowanych przepływów zadań opartych na zdarzeniach za pomocą elementów webhook protokołu HTTP w Azure Logic Apps
 
@@ -83,7 +80,7 @@ Ten wbudowany wyzwalacz rejestruje adres URL wywołania zwrotnego z określoną 
 
    Zapisanie aplikacji logiki wywołuje punkt końcowy subskrypcji i rejestruje adres URL wywołania zwrotnego dla wyzwalania tej aplikacji logiki.
 
-1. Teraz za każdym razem, gdy usługa docelowa wysyła żądanie `HTTP POST` do adresu URL wywołania zwrotnego, uruchamiana jest aplikacja logiki i zawiera wszystkie dane przesyłane przez żądanie.
+1. Teraz za każdym razem, gdy usługa docelowa wysyła żądanie `HTTP POST` do adresu URL wywołania zwrotnego, zostanie wyzwolona aplikacja logiki, która zawiera wszystkie dane przesyłane przez żądanie.
 
 ## <a name="add-an-http-webhook-action"></a>Dodaj akcję elementu webhook protokołu HTTP
 
@@ -107,7 +104,7 @@ Ta wbudowana akcja rejestruje adres URL wywołania zwrotnego z określoną usłu
 
    ![Wprowadź parametry akcji elementu webhook protokołu HTTP](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   Podczas wykonywania, aplikacja logiki wywołuje punkt końcowy subskrypcji podczas wykonywania tej akcji. Aplikacja logiki wstrzymuje przepływ pracy i czeka na wysłanie żądania `HTTP POST` do adresu URL wywołania zwrotnego przez usługę docelową. Jeśli akcja zostanie zakończona pomyślnie, Akcja anuluje subskrypcję z punktu końcowego, a aplikacja logiki wznowi działanie przepływu pracy.
+   Podczas wykonywania, aplikacja logiki wywołuje punkt końcowy subskrypcji podczas wykonywania tej akcji. Następnie aplikacja logiki wstrzymuje przepływ pracy i czeka na wysłanie żądania `HTTP POST` do adresu URL wywołania zwrotnego przez usługę docelową. Jeśli akcja zostanie zakończona pomyślnie, Akcja anuluje subskrypcję z punktu końcowego, a aplikacja logiki wznowi działanie przepływu pracy.
 
 1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
 
@@ -125,7 +122,7 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 
 | Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
-| Nagłówka | obiekt | Nagłówki żądania |
+| nagłówka | obiekt | Nagłówki żądania |
 | jednostce | obiekt | Obiekt JSON | Obiekt z zawartością treści z żądania |
 | kod stanu | int | Kod stanu z żądania |
 |||

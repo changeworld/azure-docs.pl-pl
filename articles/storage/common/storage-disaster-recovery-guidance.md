@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889785"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775932"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Odzyskiwanie po awarii i tryb failover konta magazynu (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -120,7 +120,7 @@ Konto można zainicjować w trybie failover z poziomu Azure Portal, programu Pow
 Tryb failover konta jest dostępny w wersji zapoznawczej dla wszystkich klientów korzystających z usługi GRS lub RA-GRS z wdrożeniami Azure Resource Manager. Obsługiwane są tylko typy kont ogólnego przeznaczenia w wersji 1, ogólnego przeznaczenia w wersji 2 i BLOB Storage. Tryb failover konta jest obecnie dostępny w następujących regionach:
 
 - Azja Wschodnia
-- Azja Południowo-Wschodnia
+- Azja Południowo-wschodnia
 - Australia Wschodnia
 - Australia Południowo-Wschodnia
 - Środkowe stany USA
@@ -139,7 +139,7 @@ Connect-AzAccount -SubscriptionId <subscription-id>
 Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
-Zatwierdzenie w wersji zapoznawczej może potrwać od 1-2 dni. Aby sprawdzić, czy rejestracja została zatwierdzona, uruchom następujące polecenie:
+Zatwierdzenie w wersji zapoznawczej może potrwać od 5-7 dni. Aby sprawdzić, czy rejestracja została zatwierdzona, uruchom następujące polecenie:
 
 ```powershell
 Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
@@ -186,7 +186,7 @@ Jeśli konto magazynu jest skonfigurowane dla usługi RA-GRS, masz dostęp do od
 
 W skrajnych okolicznościach, gdy region zostanie utracony ze względu na znaczną awarię, firma Microsoft może zainicjować regionalną pracę w trybie failover. W takim przypadku nie jest wymagana żadna akcja z Twojej strony. Do momentu ukończenia pracy w trybie failover zarządzanej przez firmę Microsoft nie będziesz mieć dostępu do zapisu na koncie magazynu. Aplikacje mogą odczytywać z regionu pomocniczego, jeśli konto magazynu jest skonfigurowane dla usługi RA-GRS. 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Inicjowanie trybu failover konta (wersja zapoznawcza)](storage-initiate-account-failover.md)
 * [Projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](storage-designing-ha-apps-with-ragrs.md)

@@ -1,20 +1,19 @@
 ---
-title: Łączenie z systemami plików lokalnie Azure Logic Apps
+title: Połącz z systemami plików lokalnie
 description: Automatyzowanie zadań i przepływów pracy łączących się z lokalnymi systemami plików z łącznikiem systemu plików za pomocą lokalnej bramy danych w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 1b5cf27c49a003042086cd9452f288c7f348d343
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799706"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792771"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Łączenie z lokalnymi systemami plików przy użyciu Azure Logic Apps
 
@@ -68,7 +67,7 @@ W tym artykule pokazano, jak połączyć się z lokalnym systemem plików zgodni
 
    | Właściwość | Wymagane | Wartość | Opis |
    | -------- | -------- | ----- | ----------- |
-   | **Nazwa połączenia** | Tak | <*Nazwa połączenia*> | Nazwa, która ma być używany dla połączenia |
+   | **Nazwa połączenia** | Tak | <*nazwę połączenia*> | Nazwa, która ma być używany dla połączenia |
    | **Folder główny** | Tak | *nazwa <głównego-folderu*> | Folder główny systemu plików, na przykład jeśli zainstalowano lokalną bramę danych, taką jak folder lokalny na komputerze, na którym jest zainstalowana lokalna Brama danych lub folder udziału sieciowego, do którego komputer ma dostęp. <p>Na przykład: `\\PublicShare\\DropboxFiles` <p>Folder główny jest głównym folderem nadrzędnym, który jest używany dla ścieżek względnych dla wszystkich akcji związanych z plikami. |
    | **Typ uwierzytelniania** | Nie | <*Typ uwierzytelniania*> | Typ uwierzytelniania używany przez system plików, na przykład **Windows** |
    | **Nazwa użytkownika** | Tak | <*domeny*>\\<*Nazwa użytkownika*> | Nazwa użytkownika komputera, na którym znajduje się system plików |

@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy, zamiar i jednostek, C++ usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 277548c859370a700973d9f60556fe38e94548b0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 04b6193299004996862a577176dfb9c52a7709cd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280415"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795603"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ Przed rozpoczęciem upewnij się, że:
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=windows)
 
-## <a name="open-your-project-in-visual-studio"></a>Otwórz projekt w programie Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otwieranie projektu w programie Visual Studio
 
 Pierwszym krokiem jest upewnienie się, że projekt jest otwarty w programie Visual Studio.
 
@@ -46,6 +46,7 @@ Dodajmy kod, który działa jako szkielet dla projektu. Należy pamiętać, że 
 Przed zainicjowaniem obiektu `IntentRecognizer` należy utworzyć konfigurację, która używa klucza i regionu punktu końcowego LUIS. Wstaw ten kod w metodzie `recognizeIntent()`.
 
 Ten przykład używa metody `FromSubscription()`, aby skompilować `SpeechConfig`. Aby uzyskać pełną listę dostępnych metod, zobacz [SpeechConfig Class](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig).
+Zestaw Speech SDK będzie domyślnie rozpoznawał użycie języka en-us w celu uzyskania informacji na temat wybierania [języka źródłowego.](../../../../how-to-specify-source-language.md)
 
 > [!NOTE]
 > Ważne jest, aby użyć klucza punktu końcowego LUIS, a nie kluczy początkowych lub autorskich, ponieważ tylko klucz punktu końcowego jest prawidłowy dla rozpoznawania mowy dla konwersji. Zobacz [Tworzenie aplikacji Luis i Uzyskiwanie klucza punktu końcowego,](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) Aby uzyskać instrukcje dotyczące pobierania poprawnego klucza.

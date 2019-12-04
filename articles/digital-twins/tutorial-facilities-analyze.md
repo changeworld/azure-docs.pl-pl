@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383058"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790336"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Samouczek: wizualizacja i analiza zdarzeń z usługi Azure Digital bliźniaczych reprezentacji przy użyciu Time Series Insights
 
@@ -48,7 +48,7 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
 
 ### <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 
@@ -82,7 +82,7 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
     > [!TIP]
     > Upewnij się, że tworzysz zasady sygnatury dostępu współdzielonego dla wystąpienia centrum zdarzeń, a nie przestrzeń nazw.
 
-1. Otwórz utworzoną zasadę **ManageSend** i skopiuj wartości **Parametry połączenia — klucz podstawowy** i **Parametry połączenia — klucz pomocniczy** do pliku tymczasowego. Te wartości będą potrzebne do utworzenia punktu końcowego centrum zdarzeń w kolejnej sekcji.
+1. Otwórz utworzone zasady **ManageSend** i skopiuj wartości **parametrów połączenia — klucz podstawowy** i **Parametry połączenia — klucz pomocniczy** do pliku tymczasowego. Te wartości będą potrzebne do utworzenia punktu końcowego centrum zdarzeń w kolejnej sekcji.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Tworzenie punktu końcowego dla centrum zdarzeń
 
@@ -108,13 +108,13 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
       path: Name_of_your_Event_Hub
     ```
 
-1. Zastąp symbole zastępcze `Primary_connection_string_for_your_event_hub` wartością **Parametry połączenia — klucz podstawowy** dla centrum zdarzeń. Upewnij się, że format parametrów połączenia jest następujący:
+1. Zastąp symbole zastępcze `Primary_connection_string_for_your_event_hub` wartością **parametrów połączenia — kluczem podstawowym** dla centrum zdarzeń. Upewnij się, że format parametrów połączenia jest następujący:
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Zastąp symbole zastępcze `Secondary_connection_string_for_your_event_hub` wartością **Parametry połączenia — klucz pomocniczy** dla centrum zdarzeń. Upewnij się, że format parametrów połączenia jest następujący: 
+1. Zastąp symbole zastępcze `Secondary_connection_string_for_your_event_hub` wartością **parametrów połączenia — klucz pomocniczy** centrum zdarzeń. Upewnij się, że format parametrów połączenia jest następujący: 
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
@@ -145,7 +145,7 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
 
     [![wybór dla tworzenia wystąpienia Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. Na karcie **Źródło zdarzenia** wprowadź **nazwę**, wybierz pozycję **centrum zdarzeń** jako **Typ źródła**i upewnij się, że pozostałe wartości są wybrane prawidłowo. W polu **Nazwa zasad dostępu do centrum zdarzeń**wybierz pozycję **ManageSend** , a następnie wybierz grupę odbiorców utworzoną w poprzedniej sekcji dla **grupy użytkowników centrum zdarzeń**. Wybierz pozycję **Przegląd + utwórz**.
+1. Na karcie **Źródło zdarzenia** wprowadź **nazwę**, wybierz pozycję **centrum zdarzeń** jako **Typ źródła**i upewnij się, że pozostałe wartości są prawidłowo wybrane, aby odwołać się do utworzonego centrum zdarzeń. W polu **Nazwa zasad dostępu do centrum zdarzeń**wybierz pozycję **ManageSend** , a następnie wybierz grupę odbiorców utworzoną w poprzedniej sekcji dla **grupy użytkowników centrum zdarzeń**. Wybierz pozycję **Przegląd + utwórz**.
 
     [![wybór dla tworzenia źródła zdarzeń](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 

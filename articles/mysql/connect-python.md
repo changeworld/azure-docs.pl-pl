@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: łączenie się z Azure Database for MySQL przy użyciu języka Python'
+title: Nawiązywanie połączenia przy użyciu języka Python-Azure Database for MySQL
 description: Ten przewodnik Szybki start zawiera kilka przykładów kodu w języku Python, których można używać do nawiązywania połączeń z danymi usługi Azure Database for MySQL i wykonywania zapytań względem nich.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 08/08/2019
-ms.openlocfilehash: 9f9d432bc2f7d70396bca5d140f1a66a75fd7231
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 12/02/2019
+ms.openlocfilehash: ff30cdc1af0bd9596220d84556c985b9ea80d554
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434320"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770700"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Szybki Start: używanie języka Python do łączenia i wykonywania zapytań dotyczących danych za pomocą Azure Database for MySQL
 W tym artykule pokazano, jak połączyć się z Azure Database for MySQL przy użyciu języka [Python](https://python.org) . Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych na platformach Mac OS, Ubuntu Linux i Windows. 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 90dc42ed6ca16947902622cba0e5a81a2bc900e3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382021"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785998"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Wprowadzenie do uwierzytelniania opartego na certyfikatach w Azure Active Directory
 
@@ -36,13 +36,16 @@ Ten temat:
 
 Aby skonfigurować uwierzytelnianie oparte na certyfikatach, należy wykonać następujące instrukcje:
 
-- Uwierzytelnianie oparte na certyfikatach (OBSŁUGIWANIE) jest obsługiwane tylko w środowiskach federacyjnych dla aplikacji przeglądarki lub natywnych klientów korzystających z nowoczesnego uwierzytelniania (ADAL). Jedynym wyjątkiem jest Exchange Active Sync (EAS) dla usługi Exchange Online (EXO), który może być używany w przypadku kont federacyjnych i zarządzanych.
+- Uwierzytelnianie oparte na certyfikatach (OBSŁUGIWANIE) jest obsługiwane tylko dla środowisk federacyjnych dla aplikacji przeglądarki, natywnych klientów korzystających z nowoczesnego uwierzytelniania (ADAL) lub bibliotek MSAL. Jedynym wyjątkiem jest Exchange Active Sync (EAS) dla usługi Exchange Online (EXO), który może być używany w przypadku kont federacyjnych i zarządzanych.
 - Główny urząd certyfikacji i wszystkie pośrednie urzędy certyfikacji muszą być skonfigurowane w Azure Active Directory.
 - Każdy urząd certyfikacji musi mieć listę odwołania certyfikatów (CRL), do której można odwoływać się za pośrednictwem internetowego adresu URL.
 - Musisz mieć co najmniej jeden skonfigurowany urząd certyfikacji w Azure Active Directory. Powiązane kroki można znaleźć w sekcji [Konfigurowanie urzędów certyfikacji](#step-2-configure-the-certificate-authorities) .
 - W przypadku klientów programu Exchange ActiveSync certyfikat klienta musi mieć adres e-mail z obsługą routingu użytkownika w usłudze Exchange Online w nazwie głównej lub RFC822 wartość pola Alternatywna nazwa podmiotu. Azure Active Directory mapuje wartość RFC822 na atrybut adresu serwera proxy w katalogu.
 - Urządzenie klienckie musi mieć dostęp do co najmniej jednego urzędu certyfikacji, który wystawia certyfikaty klienta.
 - Certyfikat klienta na potrzeby uwierzytelniania klienta musi zostać wystawiony dla klienta.
+
+>[!IMPORTANT]
+>Maksymalny rozmiar listy CRL dla Azure Active Directory do pomyślnego pobrania i pamięci podręcznej to baza, a czas wymagany do pobrania listy CRL nie może przekroczyć 10 sekund.  Jeśli Azure Active Directory nie może pobrać listy CRL, uwierzytelnianie oparte na certyfikatach używające certyfikatów wystawionych przez odpowiedni urząd certyfikacji zakończy się niepowodzeniem. Najlepsze rozwiązania mające na celu zagwarantowanie, że w ramach ograniczeń rozmiaru pliki list CRL mają na celu zachowanie okresów ważności certyfikatów w ramach rozsądnych limitów i oczyszczenie wygasłych certyfikatów. 
 
 ## <a name="step-1-select-your-device-platform"></a>Krok 1. Wybieranie platformy urządzenia
 
@@ -96,7 +99,7 @@ Konfiguracja programu umożliwia korzystanie z programu [Azure Active Directory 
 
 Jako pierwszy krok konfiguracji należy nawiązać połączenie z dzierżawcą. Gdy tylko połączenie z dzierżawcą istnieje, możesz przejrzeć, dodać, usunąć i zmodyfikować zaufane urzędy certyfikacji, które są zdefiniowane w Twoim katalogu.
 
-### <a name="connect"></a>Połączenie
+### <a name="connect"></a>Łączenie
 
 Aby nawiązać połączenie z dzierżawcą, użyj polecenia cmdlet [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) :
 
@@ -108,7 +111,7 @@ Aby pobrać zaufane urzędy certyfikacji zdefiniowane w katalogu, należy użyć
 
     Get-AzureADTrustedCertificateAuthority
 
-### <a name="add"></a>Dodaj
+### <a name="add"></a>Dodawanie
 
 Aby utworzyć zaufany urząd certyfikacji, użyj polecenia cmdlet [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) i ustaw poprawną wartość atrybutu **crlDistributionPoint** :
 

@@ -1,16 +1,16 @@
 ---
-title: Korzystanie z usługi Azure Menedżer wdrażania z szablonami
-description: Użyj szablonów usługi Resource Manager z usługą Azure Deployment Manager, aby wdrażać zasoby platformy Azure.
+title: Korzystanie z usługi Azure Menedżer wdrażania Health Check
+description: Za pomocą funkcji Kontrola kondycji bezpiecznie Wdrażaj zasoby platformy Azure za pomocą usługi Azure Menedżer wdrażania.
 author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0ce37a744cdf22beddcef433fca1a64252e1673d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 355a40db7714ddae39c4171aaa0ebe4b5e5f777e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149894"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784684"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: korzystanie z kontroli kondycji w usłudze Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 

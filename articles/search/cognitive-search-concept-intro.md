@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 5dc33de19ef71a0714052a6457bef9f32fc159c3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720164"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791033"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Wprowadzenie do AI na platformie Azure Wyszukiwanie poznawcze
 
@@ -69,7 +69,7 @@ Potok wzbogacania jest oparty na [*indeksatorach*](search-indexer-overview.md) ,
 
 Na początku potoku znajduje się tekst bez struktury lub zawartość nietekstowa (na przykład obrazy i zeskanowane pliki JPEG). Dane muszą istnieć w usłudze Azure Data Storage, do której można uzyskać dostęp za pomocą indeksatora. Indeksatory mogą "pęknięcia" dokumenty źródłowe w celu wyodrębnienia tekstu z danych źródłowych.
 
-![Faza łamania dokumentu](./media/cognitive-search-intro/document-cracking-phase-blowup.png "Łamanie dokumentów")
+![Faza łamania dokumentu](./media/cognitive-search-intro/document-cracking-phase-blowup.png "łamanie dokumentów")
 
  Obsługiwane źródła obejmują usługę Azure Blob Storage, usługę Azure Table Storage, Azure SQL Database i Azure Cosmos DB. Zawartość oparta na tekście można wyodrębnić z następujących typów plików: PDF, Word, PowerPoint i CSV. Aby zapoznać się z pełną listą, zobacz [obsługiwane formaty](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
@@ -116,6 +116,8 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola, atr
 | Indeksator |  Przeszukiwarka, która wyodrębnia dane z możliwością wyszukiwania i metadane z zewnętrznego źródła danych i wypełnia indeks na podstawie mapowań pól między indeksem i źródłem danych na potrzeby łamania dokumentów. W przypadku wzbogacania AI indeksator wywołuje zestawu umiejętności i zawiera mapowania pól, które kojarzą dane wyjściowe wzbogacania z polami docelowymi w indeksie. Definicja indeksatora zawiera wszystkie instrukcje i odwołania do operacji potoku, a potok jest wywoływany po uruchomieniu indeksatora. W przypadku dodatkowej konfiguracji można użyć istniejącej operacji przetwarzania i wykonać tylko te czynności i umiejętności, które zostały zmienione. | Zobacz [indeksatory](search-indexer-overview.md) i [indeksowanie przyrostowe (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md). |
 | Źródło danych  | Obiekt używany przez indeksator do nawiązywania połączenia z zewnętrznym źródłem danych obsługiwanych typów na platformie Azure. | Zobacz [Omówienie indeksatorów](search-indexer-overview.md) |
 | Indeks | Utrwalony indeks wyszukiwania na platformie Azure Wyszukiwanie poznawcze utworzony na podstawie schematu indeksu, który definiuje strukturę pól i użycie. | Zobacz [Tworzenie indeksu podstawowego](search-what-is-an-index.md) | 
+| Magazyn wiedzy | Konto magazynu, w którym wzbogacone dokumenty mogą być widoczne i rzutowane poza indeks wyszukiwania | Zobacz [wprowadzenie do sklepu merytorycznego](knowledge-store-concept-intro.md) | 
+| Pamięć podręczna indeksatora | Dane wyjściowe umiejętności konta magazynu są buforowane przez indeksator. Pamięć podręczna umożliwia indexeer do zminimalizowania kosztów ponownego przetwarzania dużej liczby dokumentów podczas edytowania zestawu umiejętności. | Zobacz [indeksowanie przyrostowe](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 

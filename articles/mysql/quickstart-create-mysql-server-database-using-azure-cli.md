@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie serwera usługi Azure Database for MySQL — interfejs wiersza polecenia platformy Azure'
+title: 'Szybki Start: Tworzenie serwera — interfejs wiersza polecenia platformy Azure — Azure Database for MySQL'
 description: W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MySQL w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 10acb353e282508c838bee89b131d94dcd3fa7ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: acf5f3cdf761e1773d6e9384a4ceb99a645ed7cc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160406"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773521"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Szybki start: Tworzenie serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Szybki Start: Tworzenie serwera Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure
 
 > [!TIP]
-> Należy wziąć pod uwagę przy użyciu prostszej [az mysql w górę](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) polecenia wiersza polecenia platformy Azure (obecnie w wersji zapoznawczej). Wypróbuj [Szybki Start](./quickstart-create-server-up-azure-cli.md).
+> Rozważ użycie prostszego polecenia [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI (obecnie w wersji zapoznawczej). Wypróbuj [Przewodnik Szybki Start](./quickstart-create-server-up-azure-cli.md).
 
 W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MySQL w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure w czasie około pięciu minut. Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów.
 
@@ -33,7 +33,7 @@ Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zas�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 Utwórz [grupę zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy.
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myresourcegroup` w lokalizacji `westus`.
@@ -51,13 +51,13 @@ name | mydemoserver | Wybierz unikatową nazwę, która identyfikuje serwer usł
 resource-group | myresourcegroup | Podaj nazwę grupy zasobów platformy Azure.
 sku-name | GP_Gen5_2 | Nazwa jednostki SKU. Zgodnie z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne} w skrócie. Zobacz poniższą tabelę, aby uzyskać więcej informacji na temat parametru sku-name.
 backup-retention | 7 | Jak długo należy przechowywać kopię zapasową. Jednostka to dni. Zakres wynosi od 7 do 35. 
-geo-redundant-backup | Wyłączono | Określa, czy dla tego serwera powinny być włączone kopie zapasowe geograficznie nadmiarowe. Dozwolone wartości: Enabled (Włączone), Disabled (Wyłączone).
-lokalizacja | westus | Lokalizacja platformy Azure dla serwera.
-ssl-enforcement | Enabled (Włączony) | Określa, czy dla serwera powinien być włączony protokół SSL. Dozwolone wartości: Enabled (Włączone), Disabled (Wyłączone).
+geo-redundant-backup | Disabled (Wyłączony) | Określa, czy dla tego serwera powinny być włączone kopie zapasowe geograficznie nadmiarowe. Dozwolone wartości: Enabled (włączone) i Disabled (wyłączone).
+location | westus | Lokalizacja platformy Azure dla serwera.
+ssl-enforcement | Enabled (Włączony) | Określa, czy dla serwera powinien być włączony protokół SSL. Dozwolone wartości: Enabled (włączone) i Disabled (wyłączone).
 storage-size | 51200 | Pojemność magazynu serwera (w megabajtach). Rozmiar magazynu powinien wynosić co najmniej 5120 MB i można go zwiększać o wielokrotność 1024 MB. Zobacz dokument dotyczący [warstw cenowych](./concepts-pricing-tiers.md), aby uzyskać więcej informacji na temat limitu rozmiaru magazynu. 
 version | 5.7 | Wersja główna MySQL.
 admin-user | myadmin | Nazwa użytkownika w przypadku logowania administratora. Nie może być to **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-admin-password | *bezpieczne hasło* | Hasło użytkownika administratora. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery z alfabetu angielskiego, małe litery z alfabetu angielskiego, cyfry i znaki inne niż alfanumeryczne.
+admin-password | *bezpieczne hasło* | Hasło użytkownika administratora. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry i znaki inne niż alfanumeryczne.
 
 
 Wartość parametru sku-name jest zgodna z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne}, jak pokazano w przykładach poniżej:
@@ -100,7 +100,7 @@ W poniższym przykładzie jest wyłączane wymuszanie protokołu SSL na Twoim se
  az mysql server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
  ```
 
-## <a name="get-the-connection-information"></a>Pobieranie informacji o połączeniu
+## <a name="get-the-connection-information"></a>Uzyskiwanie informacji o połączeniu
 
 Aby nawiązać połączenie z serwerem, musisz podać informacje o hoście i poświadczenia dostępu.
 
@@ -228,7 +228,7 @@ Jeśli po prostu chcesz usunąć jeden z nowo utworzonych serwerów, możesz uru
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Projektowanie bazy danych MySQL za pomocą interfejsu wiersza polecenia platformy Azure](./tutorial-design-database-using-cli.md)

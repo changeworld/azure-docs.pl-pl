@@ -1,53 +1,53 @@
 ---
-title: Azure Database dla sterowników MariaDB oraz zgodność z narzędziami narzędzia do zarządzania
-description: W tym artykule opisano MariaDB sterowników i narzędzi do zarządzania, które są zgodne z usługą Azure Database dla serwera MariaDB.
+title: Zgodność sterowników i narzędzi — Azure Database for MariaDB
+description: W tym artykule opisano sterowniki MariaDB i narzędzia do zarządzania, które są zgodne z Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: 7a3d9a5f87a565625052fc54e3ecccc99fd928a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: daec0aaf04cae26b6467cc4472305e75517cee5d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61386821"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772991"
 ---
-# <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB sterowników i narzędzi do zarządzania zgodne z usługą Azure Database dla serwera MariaDB
+# <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>Sterowniki MariaDB i narzędzia do zarządzania zgodne z Azure Database for MariaDB
 
-W tym artykule opisano, sterowników i narzędzi do zarządzania, które są zgodne z usługą Azure Database dla serwera MariaDB.
+W tym artykule opisano sterowniki i narzędzia do zarządzania, które są zgodne z programem Azure Database for MariaDB.
 
 ## <a name="mariadb-drivers"></a>Sterowniki MariaDB
 
-Azure Database dla serwera MariaDB korzysta z wersji community serwera MariaDB. Dlatego jest zgodny z szerokiej gamy języków i sterowniki programowania. Firmy MariaDB interfejsu API i protokół są zgodne z tych używanych przez MySQL. Oznacza to, że łączników, które działają z bazą danych MySQL, również powinny współpracować z MariaDB.
+Azure Database for MariaDB używa wersji Community programu MariaDB Server. W związku z tym jest zgodny z szeroką gamą języków programowania i sterowników. Interfejs API i protokół MariaDB są zgodne z używanymi przez MySQL. Oznacza to, że łączniki, które współpracują z bazą danych MySQL, powinny również współpracować z usługą MariaDB.
 
-Celem jest zapewnienie pomocy technicznej trzy najnowsze wersje sterowników MariaDB, i Kontynuuj wysiłków autorów ze społeczności "open source" w celu stale funkcjonalność i użyteczność MariaDB sterowników. Lista sterowników, które zostały sprawdzone i ocenione jako zgodne z usługą Azure Database dla MariaDB 10.2 znajduje się w poniższej tabeli:
+Celem jest wsparcie trzech najnowszych wersji sterowników MariaDB oraz podejmowanie wysiłków z członkami społeczności typu open source, aby stale ulepszać funkcje i użyteczność sterowników MariaDB. W poniższej tabeli przedstawiono listę sterowników, które zostały przetestowane i zostały uznane za zgodne z Azure Database for MariaDB 10,2:
 
-**Sterownik** | **Łącza** | **Zgodne wersje** | **Niezgodne wersje** | **Uwagi**
+**Kierowc** | **Linki** | **Zgodne wersje** | **Niezgodne wersje** | **Uwagi**
 ---|---|---|---|---
-PHP | https://secure.php.net/downloads.php | 5.5, 5.6, 7.x | 5.3 | Środowisko PHP 7.0 połączenia z MySQLi protokołu SSL należy dodać MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT w parametrach połączenia. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Zestaw PDO: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` opcji na wartość false.
-.NET | [MySqlConnector w witrynie GitHub](https://github.com/mysql-net/MySqlConnector) <br> [Instalacja pakietu Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0.27 oraz po | 0.26.5 i przed |
-MySQL Connector/NET | [MySQL Connector/NET](https://github.com/mysql/mysql-connector-net) | 8.0, 7.0, 6.10 |  | Kodowanie błędów może spowodować połączeń w niektórych systemach Windows bez UTF8.
-Node.js |  [MySQLjs w witrynie GitHub](https://github.com/mysqljs/mysql/) <br> Pakiet instalacyjny z poziomu narzędzia NPM:<br> Uruchom `npm install mysql` z poziomu narzędzia NPM | 2.15 | 2.14.1 i przed
-PRZEJDŹ | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2 i przed | Użyj `allowNativePasswords=true` w parametrach połączenia dla wersji 1.3. W wersji 1.4 zawiera poprawki i `allowNativePasswords=true` nie jest już wymagane.
-Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 | 1.2.2 i przed |
-Java | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 i przed |
+PHP | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5,3 | W przypadku połączenia PHP 7,0 z protokołem SSL MySQLi Dodaj MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT w parametrach połączenia. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Zestaw PDO: opcja ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` wartość false.
+.NET | [MySqlConnector w serwisie GitHub](https://github.com/mysql-net/MySqlConnector) <br> [Pakiet instalacyjny z narzędzia NuGet](https://www.nuget.org/packages/MySqlConnector/) | 0,27 i po | 0.26.5 i przed |
+Łącznik MySQL/NET | [Łącznik MySQL/NET](https://github.com/mysql/mysql-connector-net) | 8,0, 7,0, 6,10 |  | Usterka kodowania może spowodować niepowodzenie połączeń w niektórych systemach Windows bez kodowania UTF8.
+Node.js |  [MySQLjs w serwisie GitHub](https://github.com/mysqljs/mysql/) <br> Pakiet instalacyjny z NPM:<br> Uruchom `npm install mysql` z NPM | 2,15 | 2.14.1 i przed
+JĘZYK GO | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 i przed | Użyj `allowNativePasswords=true` w parametrach połączenia dla wersji 1,3. Wersja 1,4 zawiera poprawkę, a `allowNativePasswords=true` nie jest już wymagana.
+Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2 | 1.2.2 i przed |
+Java | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 i przed |
 
 ## <a name="management-tools"></a>Narzędzia do zarządzania
 
-Zaletą zgodności obejmuje również narzędzia do zarządzania bazą danych. Z istniejących narzędzi będą nadal działać z usługą Azure Database dla serwera MariaDB, tak długo, jak Manipulowanie bazą danych działa w granicach uprawnień użytkownika. Trzy wspólnej bazy danych narzędzi do zarządzania, które zostały sprawdzone i ocenione jako zgodne z usługą Azure Database dla MariaDB 10.2 są wymienione w poniższej tabeli:
+Zalety zgodności rozszerzają się również do narzędzi do zarządzania bazami danych. Istniejące narzędzia powinny nadal działać z Azure Database for MariaDB, o ile manipulowanie bazami danych działa w ramach ograniczonych uprawnień użytkownika. Trzy popularne narzędzia do zarządzania bazami danych, które zostały przetestowane i zostały uznane za zgodne z Azure Database for MariaDB 10,2, są wymienione w poniższej tabeli:
 
-| | **Aplikację MySQL Workbench 6.x i nowsze** | **Navicat 12** | **Narzędzia PHPMyAdmin 4.x i nowsze**
+| | **MySQL Workbench 6. x i w górę** | **Navicat 12** | **PHPMyAdmin 4. x i w górę**
 ---|---|---|---
-Create, Update, Read, Write, Delete | X | X | X
-Połączenia SSL | X | X | X
-Okno Autouzupełnianie zapytań SQL | X | X |
+Tworzenie, aktualizowanie, Odczyt, zapis, usuwanie | X | X | X
+Połączenie SSL | X | X | X
+Autouzupełnianie zapytań SQL | X | X |
 Importowanie i eksportowanie danych | X | X | X
-Eksportowanie do wielu formatów | X | X | X
-Wykonywanie kopii zapasowych i przywracanie |  | X |
+Eksportuj do wielu formatów | X | X | X
+Wykonywanie kopii zapasowych i odzyskiwanie danych |  | X |
 Wyświetl parametry serwera | X | X | X
-Wyświetlanie połączeń klienta | X | X | X
+Wyświetlanie połączeń klientów | X | X | X
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozwiązywanie problemów z połączeniem z usługą Azure Database for MariaDB](howto-troubleshoot-common-connection-issues.md)

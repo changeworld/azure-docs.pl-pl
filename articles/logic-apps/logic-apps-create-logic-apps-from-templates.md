@@ -1,42 +1,40 @@
 ---
-title: Tworzenie przepływów pracy za pomocą szablonów — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Tworzenie przepływów pracy, szybciej przy użyciu szablonów aplikacji logiki w usłudze Azure Logic Apps
+title: Tworzenie przepływów pracy na podstawie szablonów
+description: Szybsze Kompilowanie przepływów pracy przy użyciu szablonów aplikacji logiki w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7033185ac3a5411568195d788242a674b569183
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459697"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793185"
 ---
-# <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Tworzenie przepływów pracy aplikacji logiki z wbudowanych szablonów
+# <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Tworzenie przepływów pracy aplikacji logiki na podstawie wbudowanych szablonów
 
-Aby rozpocząć pracę, szybsze tworzenie przepływów pracy, Logic Apps oferuje szablonów, które są aplikacje logiki ze wstępnie utworzonych, które należy wykonać często używane wzorce. Korzystanie z tych szablonów, zgodnie z postanowieniami lub Edytuj ich odpowiednio do scenariusza.
+Aby szybciej rozpocząć tworzenie przepływów pracy, Logic Apps udostępnia szablony, które są wstępnie skompilowanymi aplikacjami logiki, które są zgodne z powszechnie używanymi wzorcami. Użyj tych szablonów jako dostarczonych lub edytuj je w celu dopasowania do Twojego scenariusza.
 
-Poniżej przedstawiono niektóre kategorie szablonu:
+Oto kilka kategorii szablonów:
 
 | Typ szablonu | Opis | 
 | ------------- | ----------- | 
-| Szablony chmury przedsiębiorstwa | Do integrowania obiektów Blob platformy Azure, Dynamics CRM, Salesforce, Box i zawiera inne łączniki potrzeby chmurą przedsiębiorstwa. Na przykład można użyć tych szablonów do organizowania potencjalni klienci i kopii zapasowej danych plików firmowych. | 
-| Szablony zwiększające produktywność użytkowników | Zwiększyć produktywność, ustawiając codzienne przypomnienia, włączając ważne elementy robocze do listy zadań do wykonania i automatyzację długich zadań w dół, aby krok zatwierdzenia pojedynczego użytkownika. | 
-| Szablony chmury konsumentów | Integrowanie usług mediów społecznościowych, takich jak Twitter, Slack i poczty e-mail. Przydatne do wzmocnienia mediów społecznościowych, marketing inicjatyw. Te szablony są także zadań, takich jak kopiowanie, chmury, które zwiększają produktywność, zaoszczędzić czas tradycyjnie powtarzających się zadań. | 
-| Szablony pakietów integracji przedsiębiorstw | Do konfigurowania VETER (Sprawdzanie poprawności, wyodrębnianie, przekształcanie, wzbogacanie, trasy) potoków odbieranie X12 dokumentu EDI, AS2 i Przekształcanie XML oraz obsługa X12, EDIFACT i komunikatów AS2. | 
-| Protokół wzorzec szablonów | Do implementowania protokołu wzorców, takich jak odpowiedź na żądanie za pośrednictwem protokołu HTTP i integracji między FTP i SFTP. Zgodnie z postanowieniami za pomocą tych szablonów lub kompilacji na nich protokołu złożonych wzorców. | 
+| Szablony chmury przedsiębiorstwa | Do integracji obiektów blob platformy Azure, Dynamics CRM, Salesforce, Box i zawiera inne łączniki dla potrzeb chmury przedsiębiorstwa. Można na przykład użyć tych szablonów do organizowania potencjalnych klientów lub tworzenia kopii zapasowej danych plików firmy. | 
+| Osobiste szablony produktywności | Zwiększ produktywność osobistą przez ustawienie codziennych przypomnień, przekształcenie ważnych elementów roboczych na listy zadań do wykonania i zautomatyzowanie długich zadań w dół do jednego etapu zatwierdzania przez użytkownika. | 
+| Szablony chmury konsumenckiej | Do integrowania usług mediów społecznościowych, takich jak Twitter, zapasy i poczta e-mail. Przydatne w przypadku wzmacniania inicjatyw marketingowych mediów społecznościowych. Szablony te obejmują również zadania, takie jak kopiowanie w chmurze, które zwiększają produktywność dzięki zapisywaniu czasu na tradycyjnie powtarzające się zadania. | 
+| Szablony pakietu integracyjnego dla przedsiębiorstw | Do konfigurowania potoków VETER (walidacji, wyodrębniania, przekształcania, wzbogacania, tras), otrzymywania dokumentu X12 EDI przez AS2 i przekształcania w formacie XML oraz obsługi komunikatów X12, EDIFACT i AS2. | 
+| Szablony wzorców protokołów | Do implementowania wzorców protokołów, takich jak żądanie-odpowiedź za pośrednictwem protokołu HTTP i integracji w ramach protokołu FTP i SFTP. Użyj tych szablonów jako dostarczonych lub skompiluj je na potrzeby złożonych wzorców protokołów. | 
 ||| 
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). Aby uzyskać więcej informacji dotyczących tworzenia aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). Aby uzyskać więcej informacji na temat tworzenia aplikacji logiki, zobacz [Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-logic-apps-from-templates"></a>Tworzenie aplikacji logiki z szablonów
+## <a name="create-logic-apps-from-templates"></a>Tworzenie aplikacji logiki na podstawie szablonów
 
-1. Jeśli jeszcze nie, zaloguj się do [witryny Azure portal](https://portal.azure.com "witryny Azure portal").
+1. Jeśli jeszcze tego nie zrobiono, zaloguj się do [Azure Portal](https://portal.azure.com "Azure Portal").
 
 2. Z głównego menu platformy Azure wybierz pozycję **Utwórz zasób** > **Integracja dla przedsiębiorstw** > **Aplikacja logiki**.
 
@@ -50,9 +48,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
    | ------- | ----- | ----------- | 
    | **Nazwa** | *Twoja nazwa aplikacji logiki* | Podaj unikatową nazwę aplikacji logiki. | 
    | **Subskrypcja** | *nazwa_Twojej_susbkrypcji_Azure* | Wybierz subskrypcję platformy Azure, której chcesz użyć. | 
-   | **Grupa zasobów** | *nazwa_Twojej_grupy_zasobów_Azure* | Utwórz lub wybierz [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) dla tej aplikacji logiki i organizowania wszystkie zasoby skojarzone z tą aplikacją. | 
+   | **Grupa zasobów** | *nazwa_Twojej_grupy_zasobów_Azure* | Utwórz lub wybierz [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) dla tej aplikacji logiki i zorganizuj wszystkie zasoby skojarzone z tą aplikacją. | 
    | **Lokalizacja** | *region_Twojego_centrum_danych_Azure* | Wybierz region centrum danych do wdrożenia swojej aplikacji logiki, na przykład Zachodnie stany USA. | 
-   | **Log Analytics** | **Wyłącz** (ustawienie domyślne) lub **na** | Włącz [rejestrowania diagnostycznego](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) aplikacji logiki za pomocą [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md). Wymaga się, że masz już obszar roboczy usługi Log Analytics. | 
+   | **Log Analytics** | **Wyłączone** (domyślnie) lub **na** | Włącz [rejestrowanie diagnostyczne](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) dla aplikacji logiki za poorednictwem [dzienników Azure monitor](../log-analytics/log-analytics-overview.md). Wymaga, aby masz już obszar roboczy Log Analytics. | 
    |||| 
 
 4. Gdy wszystko będzie gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego**. Dzięki temu aplikacja logiki automatycznie pojawi się na pulpicie nawigacyjnym platformy Azure i zostanie otwarta po wdrożeniu. Wybierz pozycję **Utwórz**.
@@ -63,97 +61,97 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
    Gdy platforma Azure wdroży aplikację logiki, zostanie otwarty Projektant aplikacji usługi Logic Apps wyświetlający stronę z wprowadzającym wideo. 
    Pod wideo znajdziesz szablony typowych wzorców aplikacji logiki. 
 
-5. Przewiń poza wprowadzenie wideo i typowe wyzwalacze do **szablony**. Wybierz szablon wbudowanych. Na przykład:
+5. Przewiń zawartość wideo z wprowadzeniem i typowe wyzwalacze do **szablonów**. Wybierz wstępnie utworzony szablon. Na przykład:
 
    ![Wybieranie szablonu aplikacji logiki](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
    > [!TIP]
-   > Aby utworzyć aplikację logiki od podstaw, wybierz **pusta aplikacja logiki**.
+   > Aby utworzyć aplikację logiki od podstaw, wybierz pozycję **pusta aplikacja logiki**.
 
-   Po wybraniu wstępnie utworzonych szablonów, można wyświetlić więcej informacji na temat tego szablonu. 
+   Po wybraniu prekompilowanego szablonu można wyświetlić więcej informacji na temat tego szablonu. 
    Na przykład:
 
-   ![Wybierz szablon wstępnie](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
+   ![Wybieranie wstępnie skompilowanego szablonu](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-6. Aby kontynuować z wybranego szablonu, wybierz **za pomocą tego szablonu**. 
+6. Aby kontynuować wybrany szablon, wybierz opcję **Użyj tego szablonu**. 
 
-7. Oparte na łączniki w szablonie, zostanie wyświetlony monit o wykonaj jedną z następujących czynności:
+7. Na podstawie łączników w szablonie zostanie wyświetlony monit o wykonanie jednej z następujących czynności:
 
-   * Zaloguj się przy użyciu poświadczeń do systemów lub usług, które są przywoływane przez szablon.
+   * Zaloguj się przy użyciu swoich poświadczeń do systemów lub usług, do których odwołuje się szablon.
 
-   * Tworzenie połączeń dla dowolnej usługi lub systemy dołączane do szablonu. Aby utworzyć połączenie, podaj nazwę połączenia, a jeśli to konieczne, wybierz zasób, którego chcesz używać. 
+   * Utwórz połączenia dla dowolnych usług lub systemów, do których odwołuje się szablon. Aby utworzyć połączenie, podaj nazwę połączenia i w razie potrzeby wybierz zasób, którego chcesz użyć. 
 
-   * Jeśli skonfigurowano już tych połączeń, wybierz opcję **Kontynuuj**.
+   * Jeśli te połączenia zostały już skonfigurowane, wybierz pozycję **Kontynuuj**.
 
    Na przykład:
 
    ![Tworzenie połączeń](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
-   Gdy wszystko będzie gotowe, aplikacja logiki zostanie otwarty i pojawia się w Projektancie aplikacji logiki.
+   Gdy skończysz, aplikacja logiki zostanie otwarta i będzie wyświetlana w projektancie Logic Apps.
 
    > [!TIP]
-   > Aby powrócić do podglądu szablonu, wybierz **szablony** na pasku narzędzi projektanta. Ta akcja odrzuca wszystkie niezapisane zmiany, aby potwierdzić żądanie pojawi się komunikat ostrzegawczy.
+   > Aby powrócić do przeglądarki szablonów, wybierz pozycję **Szablony** na pasku narzędzi projektanta. Ta akcja odrzuca wszystkie niezapisane zmiany, dlatego komunikat ostrzegawczy informujący o konieczności potwierdzenia Twojego żądania.
 
-8. Kontynuuj tworzenie aplikacji logiki.
+8. Kontynuuj Kompilowanie aplikacji logiki.
 
    > [!NOTE] 
-   > Wiele szablonów obejmują łączników, które mogą już mieć wstępnie wymaganych właściwości. Jednak niektóre szablony mogą nadal wymagać, podaj wartości, można było prawidłowo wdrożyć aplikację logiki. Jeśli zostanie podjęta próba wdrożenia nie kończą działania brakujące pola właściwości, otrzymasz komunikat o błędzie. 
+   > Wiele szablonów zawiera łączniki, które mogą już wstępnie wypełnić wymagane właściwości. Jednak niektóre szablony mogą nadal wymagać podania wartości, aby można było poprawnie wdrożyć aplikację logiki. Jeśli spróbujesz wdrożyć bez wykonywania pól właściwości brakujące, zostanie wyświetlony komunikat o błędzie. 
 
-## <a name="update-logic-apps-with-templates"></a>Aktualizowanie aplikacji logiki przy użyciu szablonów
+## <a name="update-logic-apps-with-templates"></a>Aktualizowanie aplikacji logiki za pomocą szablonów
 
-1. W [witryny Azure portal](https://portal.azure.com "witryny Azure portal"), Znajdź i Otwórz swoją aplikację logiki w tym projektancie aplikacji logiki.
+1. W [Azure Portal](https://portal.azure.com "Azure Portal")Znajdź i Otwórz aplikację logiki w programie Logic App Designer.
 
-2. Na pasku narzędzi Projektanta wybierz **szablony**. Ta akcja odrzuca wszystkie niezapisane zmiany, tak aby można było stwierdzić, czy chcesz kontynuować pojawi się komunikat ostrzegawczy. Aby upewnić się, wybierz **OK**. Na przykład:
+2. Na pasku narzędzi projektanta wybierz pozycję **Szablony**. Ta akcja odrzuca wszystkie niezapisane zmiany, dlatego zostanie wyświetlony komunikat ostrzegawczy, aby potwierdzić, że chcesz kontynuować. Aby potwierdzić, wybierz **przycisk OK**. Na przykład:
 
-   ![Wybierz pozycję "Templates"](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
+   ![Wybieranie "szablonów"](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
-3. Przewiń poza wprowadzenie wideo i typowe wyzwalacze do **szablony**. Wybierz szablon wbudowanych. Na przykład:
+3. Przewiń zawartość wideo z wprowadzeniem i typowe wyzwalacze do **szablonów**. Wybierz wstępnie utworzony szablon. Na przykład:
 
    ![Wybieranie szablonu aplikacji logiki](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
-   Po wybraniu wstępnie utworzonych szablonów, można wyświetlić więcej informacji na temat tego szablonu. 
+   Po wybraniu prekompilowanego szablonu można wyświetlić więcej informacji na temat tego szablonu. 
    Na przykład:
 
-   ![Wybierz szablon wstępnie](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
+   ![Wybieranie wstępnie skompilowanego szablonu](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-4. Aby kontynuować z wybranego szablonu, wybierz **za pomocą tego szablonu**. 
+4. Aby kontynuować wybrany szablon, wybierz opcję **Użyj tego szablonu**. 
 
-5. Oparte na łączniki w szablonie, zostanie wyświetlony monit o wykonaj jedną z następujących czynności:
+5. Na podstawie łączników w szablonie zostanie wyświetlony monit o wykonanie jednej z następujących czynności:
 
-   * Zaloguj się przy użyciu poświadczeń do systemów lub usług, które są przywoływane przez szablon.
+   * Zaloguj się przy użyciu swoich poświadczeń do systemów lub usług, do których odwołuje się szablon.
 
-   * Tworzenie połączeń dla dowolnej usługi lub systemy dołączane do szablonu. Aby utworzyć połączenie, podaj nazwę połączenia, a jeśli to konieczne, wybierz zasób, którego chcesz używać. 
+   * Utwórz połączenia dla dowolnych usług lub systemów, do których odwołuje się szablon. Aby utworzyć połączenie, podaj nazwę połączenia i w razie potrzeby wybierz zasób, którego chcesz użyć. 
 
-   * Jeśli skonfigurowano już tych połączeń, wybierz opcję **Kontynuuj**.
+   * Jeśli te połączenia zostały już skonfigurowane, wybierz pozycję **Kontynuuj**.
 
    ![Tworzenie połączeń](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
-   Twoja aplikacja logiki teraz otwiera i pojawia się w Projektancie aplikacji logiki.
+   Aplikacja logiki zostanie teraz otwarta i pojawi się w projektancie Logic Apps.
 
-8. Kontynuuj tworzenie aplikacji logiki. 
+8. Kontynuuj Kompilowanie aplikacji logiki. 
 
    > [!TIP]
-   > Jeśli nie zostały zapisane zmiany, możesz odrzucić swoją pracę i powrócić do poprzedniej aplikacji logiki. Na pasku narzędzi Projektanta wybierz **odrzucić**.
+   > Jeśli zmiany nie zostały zapisane, możesz odrzucić swoją służbę i wrócić do poprzedniej aplikacji logiki. Na pasku narzędzi projektanta wybierz pozycję **Odrzuć**.
 
 > [!NOTE] 
-> Wiele szablonów obejmują łączników, które może mieć już wstępnie wypełnione wymaganych właściwości. Jednak niektóre szablony mogą nadal wymagać, podaj wartości, można było prawidłowo wdrożyć aplikację logiki. Jeśli zostanie podjęta próba wdrożenia nie kończą działania brakujące pola właściwości, otrzymasz komunikat o błędzie.
+> Wiele szablonów zawiera łączniki, które mogą już wstępnie wypełnić wymagane właściwości. Jednak niektóre szablony mogą nadal wymagać podania wartości, aby można było poprawnie wdrożyć aplikację logiki. Jeśli spróbujesz wdrożyć bez wykonywania pól właściwości brakujące, zostanie wyświetlony komunikat o błędzie.
 
-## <a name="deploy-logic-apps-built-from-templates"></a>Wdrażanie aplikacji logiki utworzone za pomocą szablonów
+## <a name="deploy-logic-apps-built-from-templates"></a>Wdróż Aplikacje logiki skompilowane z szablonów
 
-Po wprowadzeniu zmian do szablonu, można zapisać zmiany. Ta akcja automatycznie publikuje aplikację logiki.
+Po wprowadzeniu zmian do szablonu można zapisać zmiany. Ta akcja powoduje również automatyczne opublikowanie aplikacji logiki.
 
 Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 ![Zapisywanie i publikowanie aplikacji logiki](./media/logic-apps-create-logic-apps-from-templates/logic-app-save.png)  
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji na temat tworzenia aplikacji logiki za pomocą przykłady, scenariusze, historie i przewodniki.
+Dowiedz się więcej na temat tworzenia aplikacji logiki poprzez przykłady, scenariusze, historie klientów i instruktaże.
 
 > [!div class="nextstepaction"]
-> [Przejrzyj przykłady aplikacji logiki, scenariusze i przewodniki](../logic-apps/logic-apps-examples-and-scenarios.md)
+> [Przejrzyj przykłady, scenariusze i przewodniki dotyczące aplikacji logiki](../logic-apps/logic-apps-examples-and-scenarios.md)

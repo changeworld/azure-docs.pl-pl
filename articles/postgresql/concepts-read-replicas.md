@@ -1,17 +1,17 @@
 ---
-title: Odczytaj repliki w Azure Database for PostgreSQL — pojedynczy serwer
+title: Odczytaj repliki — Azure Database for PostgreSQL — pojedynczy serwer
 description: W tym artykule opisano funkcję Read Replica w Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 5d3d752f549fe336f584fa3534b61cb5a009c3bd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158805"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792309"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytaj repliki w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -40,7 +40,9 @@ Serwer główny może być w dowolnym [regionie Azure Database for PostgreSQL](h
 ### <a name="universal-replica-regions"></a>Regiony uniwersalnej repliki
 Można zawsze utworzyć replikę odczytu w jednym z następujących regionów, niezależnie od tego, gdzie znajduje się serwer główny. Są to uniwersalne regiony repliki:
 
-Australia Wschodnia, Australia Wschodnia, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Ameryka Północna, Południowe stany USA, Europa Północna, Południowo-środkowe stany USA, Zachodnie Zjednoczone Królestwo Południowe Zjednoczone Królestwo Azja Południowo-Wschodnia
+Australia Wschodnia, Australia Południowo-Wschodnia, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowo-Wschodnia, Płn. Północno-środkowe stany USA, Europa Północna, Południowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Europa Zachodnia i zachodnie stany USA.
+
+\* Zachodnie stany USA 2 są tymczasowo niedostępne jako lokalizacja repliki między regionami.
 
 
 ### <a name="paired-regions"></a>Sparowane regiony

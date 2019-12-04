@@ -1,58 +1,54 @@
 ---
-title: Wdrażanie i wywoływanie interfejsów API i interfejsów API REST w sieci web z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Wdrażanie i wywoływanie interfejsów API i interfejsów API REST w sieci web dla systemu dotyczących przepływów w usłudze Azure Logic Apps
+title: Wdróż i Wywołaj interfejsy API sieci Web & interfejsy API REST z Azure Logic Apps
+description: Wdrażanie i wywoływanie interfejsów API sieci Web & interfejsów API REST dla przepływów pracy integracji systemu w programie Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, stepsic, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.openlocfilehash: a9049ba1fbd7d3bdce061d277f6a7a02d9b1e4b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1305be54a22b1460000a357074cbb1f67123bd6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740408"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790755"
 ---
-# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Wdrażanie i wywoływanie niestandardowych interfejsów API z przepływów pracy w usłudze Azure Logic Apps
+# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Wdrażanie i wywoływanie niestandardowych interfejsów API z przepływów pracy w Azure Logic Apps
 
-Po zakończeniu [Tworzenie niestandardowych interfejsów API](./logic-apps-create-api-app.md) do użycia w przepływach pracy aplikacji logiki, należy wdrożyć swoje interfejsy API, zanim można je wywoływać. Interfejsy API, co można wdrożyć [aplikacje sieci web](../app-service/overview.md), ale zaleca się wdrożenie interfejsów API jako [aplikacje API apps](../app-service/app-service-web-tutorial-rest-api.md), które ułatwią Ci pracę po tworzenie, hostowanie i używanie interfejsów API w chmurze i lokalnie. Nie trzeba zmieniać żadnego kodu w Twoich interfejsów API — wystarczy go wdrożyć w aplikacji interfejsu API. Możesz hostować swoje interfejsy API na [usługi Azure App Service](../app-service/overview.md), platformy as-a-service (PaaS) oferty, zapewniająca o wysokim stopniu skalowalności, łatwe hostowanie interfejsu API.
+Po [utworzeniu niestandardowych interfejsów API](./logic-apps-create-api-app.md) do użycia w przepływach pracy aplikacji logiki należy wdrożyć interfejsy API, aby można było je wywoływać. Interfejsy API można wdrożyć jako [aplikacje sieci Web](../app-service/overview.md), ale warto rozważyć wdrożenie interfejsów API jako [aplikacji interfejsu API](../app-service/app-service-web-tutorial-rest-api.md), co ułatwia wykonywanie zadań podczas kompilowania, hostowania i używania interfejsów API w chmurze i lokalnie. Nie trzeba zmieniać żadnego kodu w interfejsach API — wystarczy wdrożyć kod w aplikacji interfejsu API. Interfejsy API można hostować w [Azure App Service](../app-service/overview.md), oferującej platformę jako usługę (PaaS), która zapewnia wysoce skalowalne i łatwe hosting interfejsów API.
 
-Chociaż możesz wywołać dowolny interfejs API z aplikacji logiki, aby uzyskać najlepsze wyniki, należy dodać [OpenAPI (wcześniej struktury Swagger) metadane](https://swagger.io/specification/) opisujący operacje i parametry interfejsu API. Ten plik OpenAPI pomaga interfejsu API łatwiej integrować i lepszą współpracę z usługą logic apps.
+Chociaż można wywołać dowolny interfejs API z poziomu aplikacji logiki, aby uzyskać najlepsze środowisko, Dodaj [metadane openapi (poprzednio Swagger)](https://swagger.io/specification/) opisujące operacje i parametry interfejsu API. Ten plik OpenAPI ułatwia korzystanie z interfejsu API w łatwiejszy i wydajny sposób.
 
-## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Wdrażanie interfejsu API jako aplikację sieci web lub aplikacji interfejsu API
+## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Wdrażanie interfejsu API jako aplikacji sieci Web lub aplikacji interfejsu API
 
-Zanim wywołasz niestandardowego interfejsu API z aplikacji logiki Wdróż interfejs API jako aplikację sieci web lub aplikacji interfejsu API w usłudze Azure App Service. Ponadto aby pliku OpenAPI plik odczytany przez Projektant aplikacji logiki, ustaw właściwości definicji interfejsu API i Włącz [współużytkowanie zasobów między źródłami (cors)](../app-service/overview.md) dla aplikacji sieci web lub aplikacji interfejsu API.
+Aby można było wywołać niestandardowy interfejs API z poziomu aplikacji logiki, wdróż swój interfejs API jako aplikację sieci Web lub aplikację interfejsu API w celu Azure App Service. Ponadto, aby plik OpenAPI był możliwy do odczytania przez projektanta Logic Apps, ustaw właściwości definicji interfejsu API i Włącz [udostępnianie zasobów między źródłami (CORS)](../app-service/overview.md) dla aplikacji sieci Web lub aplikacji interfejsu API.
 
-1. W [witryny Azure portal](https://portal.azure.com), Wybieranie aplikacji sieci web lub aplikacji interfejsu API.
+1. W [Azure Portal](https://portal.azure.com)wybierz aplikację sieci Web lub aplikację interfejsu API.
 
-2. W menu aplikacji, które otwiera w obszarze **API**, wybierz **definicji interfejsu API**. Ustaw **Lokalizacja definicji interfejsu API** na adres URL pliku swagger.json interfejsu OpenAPI.
+2. W otwartym menu aplikacji w obszarze **interfejs API**wybierz pozycję **definicja interfejsu API**. Ustaw **lokalizację definicji interfejsu API** na adres URL pliku openapi Swagger. JSON.
 
-   Zazwyczaj adres URL pojawia się w następującym formacie: `https://{name}.azurewebsites.net/swagger/docs/v1)`
+   Zazwyczaj adres URL jest wyświetlany w tym formacie: `https://{name}.azurewebsites.net/swagger/docs/v1)`
 
    ![Link do pliku OpenAPI dla niestandardowego interfejsu API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. W obszarze **API**, wybierz **CORS**. Ustawianie zasad CORS dla **dozwolone źródła** do **' *'** (Zezwalaj na wszystkie).
+3. W obszarze **interfejs API**wybierz pozycję **CORS**. Ustaw zasady CORS dla **dozwolonych źródeł** na **"*"** (Zezwalaj na wszystko).
 
-   To ustawienie zezwala na żądania z projektanta aplikacji logiki.
+   To ustawienie umożliwia żądanie od projektanta aplikacji logiki.
 
-   ![Zezwolić na żądania z projektanta aplikacji logiki do niestandardowego interfejsu API](./media/logic-apps-custom-api-deploy-call/custom-api-cors.png)
+   ![Zezwalanie na żądania od projektanta aplikacji logiki do niestandardowego interfejsu API](./media/logic-apps-custom-api-deploy-call/custom-api-cors.png)
 
-Aby uzyskać więcej informacji, zobacz [hostowanie interfejsu API RESTful z mechanizmem CORS w usłudze Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
+Aby uzyskać więcej informacji, zobacz [hostowanie interfejsu API RESTful z mechanizmem CORS w Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
-## <a name="call-your-custom-api-from-logic-app-workflows"></a>Wywoływanie niestandardowego interfejsu API z logiki przepływów pracy aplikacji
+## <a name="call-your-custom-api-from-logic-app-workflows"></a>Wywoływanie niestandardowego interfejsu API z przepływów pracy aplikacji logiki
 
-Po skonfigurowaniu właściwości definicji interfejsu API i mechanizmu CORS, wyzwalacze i akcje niestandardowego interfejsu API powinny być dostępne dla Ciebie do uwzględnienia w przepływie pracy aplikacji logiki. 
+Po skonfigurowaniu właściwości definicji interfejsu API i mechanizmu CORS należy udostępnić niestandardowe wyzwalacze i akcje interfejsu API, które mają być dołączane do przepływu pracy aplikacji logiki. 
 
-*  Aby wyświetlić witryny, które mają adresy URL interfejsu OpenAPI, możesz przeglądać witryny sieci Web Twojej subskrypcji w Projektancie aplikacji logiki.
+*  Aby wyświetlić witryny sieci Web z adresami URL OpenAPI, możesz przeglądać witryny sieci Web subskrypcji w programie Logic Apps Designer.
 
-*  Aby wyświetlić dostępne akcje i dane wejściowe, wskazując dokument w standardzie OpenAPI, użyj [protokołu HTTP + Swagger akcji](../connectors/connectors-native-http-swagger.md).
+*  Aby wyświetlić dostępne akcje i dane wejściowe, wskazując na dokument OpenAPI, użyj [akcji protokołu HTTP + Swagger](../connectors/connectors-native-http-swagger.md).
 
-*  Do wywołania dowolnego interfejsu API, między innymi interfejsów API, które nie zawiera lub udostępnić dokument w standardzie OpenAPI, zawsze można utworzyć żądania o [Akcja HTTP](../connectors/connectors-native-http.md).
+*  Aby wywołać dowolny interfejs API, w tym interfejsy API, które nie mają lub nie uwidaczniają dokumentu OpenAPI, można zawsze utworzyć żądanie z [akcją http](../connectors/connectors-native-http.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Omówienie łączników niestandardowych](../logic-apps/custom-connector-overview.md)
+* [Omówienie łącznika niestandardowego](../logic-apps/custom-connector-overview.md)

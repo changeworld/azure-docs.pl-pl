@@ -2,20 +2,17 @@
 title: Połącz się z punktami końcowymi REST z Azure Logic Apps
 description: Monitoruj punkty końcowe REST w zautomatyzowanych zadaniach, procesach i przepływach pracy przy użyciu Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824816"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787373"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Wywoływanie punktów końcowych REST przy użyciu Azure Logic Apps
 
@@ -33,7 +30,7 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 
   * Plik struktury Swagger musi mieć włączoną funkcję [udostępniania zasobów między źródłami (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
-  Aby odwołać się do pliku struktury Swagger, który nie jest hostowany lub który nie spełnia wymagań dotyczących zabezpieczeń i między źródłami danych, można [przekazać plik Swagger do kontenera obiektów BLOB na koncie usługi Azure Storage](#host-swagger)i włączyć funkcję CORS na tym koncie magazynu, aby można było odwołać się do plik.
+  Aby odwołać się do pliku struktury Swagger, który nie jest hostowany lub który nie spełnia wymagań dotyczących zabezpieczeń i między źródłami danych, można [przekazać plik Swagger do kontenera obiektów BLOB na koncie usługi Azure Storage](#host-swagger)i włączyć funkcję CORS dla tego konta magazynu, aby można było odwołać się do pliku.
 
   W przykładach w tym temacie użyto [interfejs API rozpoznawania twarzy Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/face/overview), który wymaga [Cognitive Services konta i klucza dostępu](../cognitive-services/cognitive-services-apis-create-account.md).
 
@@ -45,7 +42,7 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 
 Ten wbudowany wyzwalacz wysyła żądanie HTTP do adresu URL pliku struktury Swagger opisującego interfejs API REST i zwraca odpowiedź zawierającą zawartość tego pliku.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
 1. W projektancie w polu wyszukiwania wprowadź ciąg "Swagger" jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http + Swagger** .
 
@@ -81,7 +78,7 @@ Ten wbudowany wyzwalacz wysyła żądanie HTTP do adresu URL pliku struktury Swa
 
 Ta wbudowana akcja wysyła żądanie HTTP do adresu URL pliku struktury Swagger opisującego interfejs API REST i zwraca odpowiedź zawierającą zawartość tego pliku.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
 1. W kroku, w którym chcesz dodać akcję protokołu HTTP + Swagger, wybierz pozycję **nowy krok**.
 

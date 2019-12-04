@@ -1,18 +1,18 @@
 ---
-title: 'Samouczek: projektowanie bazy danych usługi Azure Database for MariaDB za pomocą witryny Azure Portal'
+title: 'Samouczek: projektowanie Azure Portal Azure Database for MariaDB'
 description: W tym samouczku wyjaśniono, jak utworzyć serwer oraz bazę danych usługi Azure Database for MariaDB i zarządzać nimi przy użyciu witryny Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 1938a84d3e9c0ba8c84cbdbd2eee5b7ca448554d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 28a20325fac92d0b296c336e2e1186487d1e0272
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515652"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776712"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Samouczek: projektowanie bazy danych usługi Azure Database for MariaDB za pomocą witryny Azure Portal
 
@@ -24,7 +24,7 @@ W tym samouczku nauczysz się wykonywać następujące czynności, używając wi
 > * Tworzenie usługi Azure Database for MariaDB
 > * Konfigurowanie zapory serwera
 > * Tworzenie bazy danych za pomocą narzędzia wiersza polecenia mysql
-> * Ładowanie przykładowych danych
+> * Ładuj dane przykładowe
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych
@@ -41,7 +41,7 @@ Serwer usługi Azure Database for MariaDB jest tworzony za pomocą zdefiniowaneg
 
 1. Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu.
 
-2. Wybierz **baz danych** > **Azure Database dla serwera MariaDB**. Możesz również wpisać **MariaDB** w polu wyszukiwania, aby znaleźć tę usługę.
+2. Wybierz pozycję **bazy danych** > **Azure Database for MariaDB**. Możesz również wpisać **MariaDB** w polu wyszukiwania, aby znaleźć usługę.
    
    ![Przechodzenie do bazy danych MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
@@ -56,16 +56,16 @@ Serwer usługi Azure Database for MariaDB jest tworzony za pomocą zdefiniowaneg
     Grupa zasobów | **myresourcegroup** | Wprowadź nazwę nowej grupy zasobów lub wybierz istniejącą grupę zasobów.
     Wybierz źródło | **Puste** | Wybierz pozycję **Puste**, aby utworzyć nowy serwer. W przypadku tworzenia serwera z geograficznej kopii zapasowej istniejącego serwera usługi Azure Database for MariaDB należy wybrać pozycję **Kopia zapasowa**.
     Identyfikator logowania administratora serwera | **myadmin** | Konto logowania do użycia podczas nawiązywania połączenia z serwerem. Nazwą logowania administratora nie może być **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-    Hasło | *wartość wybrana przez użytkownika* | Wprowadź nowe hasło dla konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery z alfabetu angielskiego, małe litery z alfabetu angielskiego, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % i tak dalej).
+    Hasło | *wartość wybrana przez użytkownika* | Wprowadź nowe hasło dla konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % itp.).
     Potwierdź hasło | *wartość wybrana przez użytkownika*| Potwierdź hasło do konta administratora.
     Lokalizacja | *region najbliżej Twoich użytkowników*| Wybierz lokalizację najbliżej użytkowników lub innych aplikacji platformy Azure.
     Wersja | *najnowsza wersja*| Najnowsza wersja, chyba że z konkretnych powodów wymagane jest użycie innej wersji.
-    Warstwa cenowa | Patrz opis. | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz pozycję **Warstwa cenowa** > **Ogólnego przeznaczenia**. Zachowaj wartości domyślne dla następujących ustawień:<br><ul><li>**Generacja obliczeń** (5. generacja)</li><li>**Rdzeń wirtualny** (4 rdzenie wirtualne)</li><li>**Magazyn** (100 GB)</li><li>**Okres przechowywania kopii zapasowej** (7 dni)</li></ul><br>Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, w obszarze **Opcje nadmiarowości kopii zapasowej** wybierz pozycję **Geograficznie nadmiarowy**. <br><br>Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
+    Warstwa cenowa | Patrz opis. | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz pozycję **Warstwa cenowa** > **Ogólnego przeznaczenia**. Zachowaj wartości domyślne dla następujących ustawień:<br><ul><li>**Generacja obliczeń** (5. generacja)</li><li>**rdzeń wirtualny** (4 rdzeni wirtualnych)</li><li>**Magazyn** (100 GB)</li><li>**Okres przechowywania kopii zapasowej** (7 dni)</li></ul><br>Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, w obszarze **Opcje nadmiarowości kopii zapasowej** wybierz pozycję **Geograficznie nadmiarowy**. <br><br>Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
     
    ![Warstwa cenowa](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
-   > Za pomocą **automatycznego wzrostu** włączone, serwer zwiększa magazynu, gdy zbliża się limit przydzielone, bez wywierania wpływu na obciążenia.
+   > Po włączeniu **automatycznego wzrostu** serwer zwiększa magazyn, gdy zbliża się limit przydziału, bez wywierania wpływu na obciążenie.
 
 4. Wybierz pozycję **Utwórz**. Po około dwóch minutach nowy serwer usługi Azure Database for MariaDB będzie działać w chmurze. Aby monitorować proces wdrażania, wybierz pozycję **Powiadomienia** na pasku narzędzi.
 
@@ -75,7 +75,7 @@ Baza danych usługi Azure Database for MariaDB jest chroniona przez zaporę. Dom
 
 1. Kliknij nowo utworzony serwer, a następnie wybierz pozycję **Zabezpieczenia połączeń**.
    
-   ![Zabezpieczenia połączeń](./media/tutorial-design-database-using-portal/1-Connection-security.png)
+   ![Bezpieczeństwo połączenia](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. W tym miejscu możesz wybrać pozycję **Dodaj mój adres IP** lub skonfigurować reguły zapory. Pamiętaj o wybraniu pozycji **Zapisz** po utworzeniu zasad.
 
 Teraz możesz nawiązać połączenie z serwerem za pomocą narzędzia wiersza polecenia mysql lub aplikacji MySQL Workbench.
@@ -93,7 +93,7 @@ Uzyskaj z witryny Azure Portal wartości pól **Nazwa serwera** (w pełni kwalif
 
    ![Właściwości serwera](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-W naszym przykładzie nazwa serwera jest **mydemoserver.mariadb.database.azure.com** i nazwę logowania administratora serwera **myadmin\@mydemoserver**.
+W naszym przykładzie nazwa serwera to **mydemoserver.MariaDB.Database.Azure.com** , a nazwa logowania administratora serwera to administrator **\@mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Nawiązywanie połączenia z serwerem za pomocą narzędzia mysql
 
@@ -175,20 +175,20 @@ Załóżmy, że przypadkowo usunięto ważną tabelę bazy danych i nie można j
    ![Formularz Przywracanie](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
    - **Punkt przywracania**: wybierz punkt w czasie w podanym przedziale czasowym, do którego chcesz wykonać przywrócenie. Pamiętaj o przekonwertowaniu lokalnej strefy czasowej na czas UTC.
-   - **Przywróć na nowy serwer**: wprowadź nazwę nowego serwera do przywrócenia.
+   - **Przywróć na nowy serwer**: wprowadź nazwę nowego serwera, do którego chcesz wykonać przywrócenie.
    - **Lokalizacja**: region jest taki sam jak w przypadku serwera źródłowego i nie można go zmienić.
    - **Warstwa cenowa**: warstwa cenowa jest taka sama jak w przypadku serwera źródłowego i nie można jej zmienić.
    
 3. Wybierz przycisk **OK**, aby [przywrócić serwer do punktu w czasie](./howto-restore-server-portal.md) przed usunięciem tabeli. Przywrócenie serwera powoduje utworzenie nowej kopii serwera od wybranego punktu w czasie. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku opisano, jak wykonywać następujące czynności, używając witryny Azure Portal:
 
 > [!div class="checklist"]
 > * Tworzenie usługi Azure Database for MariaDB
 > * Konfigurowanie zapory serwera
 > * Tworzenie bazy danych za pomocą narzędzia wiersza polecenia mysql
-> * Ładowanie przykładowych danych
+> * Ładuj dane przykładowe
 > * Zapytania o dane
 > * Aktualizowanie danych
 > * Przywracanie danych

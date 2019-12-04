@@ -1,20 +1,17 @@
 ---
-title: Bezpieczny dostęp i Azure Logic Apps danych
+title: Zabezpieczanie dostępu i danych
 description: Dodawanie zabezpieczeń w celu ochrony wejść, danych wyjściowych, wyzwalaczy opartych na żądaniach, historii uruchamiania, zadań zarządzania i dostępu do innych zasobów w Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: c9dfc4ed6fce186fea9474222875a072edb32f59
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084721"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792913"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpieczanie dostępu i danych w Azure Logic Apps
 
@@ -347,11 +344,11 @@ Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) nale
 
   **Bezpieczne ustawienie danych wejściowych**
 
-  Po ręcznym włączeniu **zabezpieczeń danych wejściowych** w wyzwalaczu lub akcji Logic Apps zabezpiecza te dane wejściowe w historii uruchamiania. Jeśli akcja w trybie podrzędnym jawnie używa widocznego wyjścia z tego wyzwalacza lub akcji jako danych wejściowych, Logic Apps ukrywa dane wejściowe akcji podrzędnej w historii uruchamiania, ale *nie włącza* **zabezpieczeń danych wejściowych** w tej akcji i nie ukrywa tej akcji. wydajności.
+  Po ręcznym włączeniu **zabezpieczeń danych wejściowych** w wyzwalaczu lub akcji Logic Apps zabezpiecza te dane wejściowe w historii uruchamiania. Jeśli akcja przekroczenia jawnie używa widocznego wyjścia z tego wyzwalacza lub akcji jako danych wejściowych, Logic Apps ukrywa dane wejściowe akcji podrzędnej w historii uruchamiania, ale *nie włącza* **bezpiecznego wejścia** w tej akcji i nie ukrywa danych wyjściowych tej akcji.
 
   ![Zabezpieczanie danych wejściowych i wpływu na wpływ na większość akcji](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
-  Jeśli akcje redagowania, analizy JSON i odpowiedzi jawnie używają widocznych danych wyjściowych wyzwalacza lub akcji, które mają zabezpieczone dane wejściowe, Logic Apps ukrywają dane wejściowe i wyjściowe akcji, ale *nie włączą* **zabezpieczonych danych wejściowych** tej akcji konfigurowania. Jeśli akcja w trybie podrzędnym jawnie używa ukrytych danych wyjściowych z akcji Redaguj, Analizuj dane JSON lub odpowiedzi jako dane wejściowe, Logic Apps *nie ukrywa danych wejściowych lub wyjściowych akcji podrzędnej*.
+  Jeśli akcje redagowania, analizy JSON i odpowiedzi jawnie używają widocznych danych wyjściowych wyzwalacza lub akcji, które mają zabezpieczone dane wejściowe, Logic Apps ukrywają dane wejściowe i wyjściowe akcji, ale *nie włączają* ustawienia **zabezpieczonych danych wejściowych** tej akcji. Jeśli akcja w trybie podrzędnym jawnie używa ukrytych danych wyjściowych z akcji Redaguj, Analizuj dane JSON lub odpowiedzi jako dane wejściowe, Logic Apps *nie ukrywa danych wejściowych lub wyjściowych akcji podrzędnej*.
 
   ![Zabezpieczone wejścia i wpływ na określone akcje](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
@@ -359,7 +356,7 @@ Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) nale
 
 ## <a name="access-to-parameter-inputs"></a>Dostęp do danych wejściowych parametrów
 
-W przypadku wdrażania w różnych środowiskach należy rozważyć parametryzacja wartości w definicji przepływu pracy, które różnią się w zależności od tych środowisk. Dzięki temu można uniknąć zakodowanych danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md) , aby wdrożyć aplikację logiki, chronić poufne dane przez zdefiniowanie zabezpieczonych parametrów i przekazać te dane jako osobny dane wejściowe za pomocą [parametrów szablonu](../azure-resource-manager/template-parameters.md) za pomocą [plik parametrów](../azure-resource-manager/resource-manager-parameter-files.md).
+W przypadku wdrażania w różnych środowiskach należy rozważyć parametryzacja wartości w definicji przepływu pracy, które różnią się w zależności od tych środowisk. Dzięki temu można uniknąć zakodowanych danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md) , aby wdrożyć aplikację logiki, chronić poufne dane przez zdefiniowanie zabezpieczonych parametrów i przekazać te dane jako osobny dane wejściowe za pomocą [parametrów szablonu](../azure-resource-manager/template-parameters.md) przy użyciu [pliku parametrów](../azure-resource-manager/resource-manager-parameter-files.md).
 
 Na przykład jeśli uwierzytelniasz akcje HTTP za pomocą [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication), możesz zdefiniować i zabezpieczyć parametry akceptujące identyfikator klienta i klucz tajny klienta, które są używane do uwierzytelniania. Aby zdefiniować te parametry w aplikacji logiki, użyj sekcji `parameters` w definicji przepływu pracy aplikacji logiki i szablonu Menedżer zasobów do wdrożenia. Aby ukryć wartości parametrów, które nie mają być wyświetlane podczas edytowania aplikacji logiki lub wyświetlania historii uruchamiania, zdefiniuj parametry przy użyciu `securestring` lub `secureobject` typu i użyj kodowania w razie potrzeby. Parametry, które mają ten typ nie są zwracane z definicją zasobu i nie są dostępne podczas wyświetlania zasobu po wdrożeniu. Aby uzyskać dostęp do tych wartości parametrów podczas wykonywania, użyj wyrażenia `@parameters('<parameter-name>')` wewnątrz definicji przepływu pracy. To wyrażenie jest oceniane tylko w czasie wykonywania i jest opisane przez [Język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md).
 
@@ -373,7 +370,7 @@ Aby uzyskać więcej informacji, zobacz następujące sekcje w tym temacie:
 
 W przypadku [automatyzowania wdrażania aplikacji logiki za pomocą szablonów Menedżer zasobów](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)można definiować zabezpieczone [Parametry szablonu](../azure-resource-manager/template-parameters.md), które są oceniane we wdrożeniu, przy użyciu typów `securestring` i `secureobject`. Aby zdefiniować parametry szablonu, użyj sekcji najwyższego poziomu szablonu `parameters`, która jest odrębna i inna od sekcji `parameters` definicji przepływu pracy. Aby podać wartości parametrów szablonu, użyj oddzielnego [pliku parametrów](../azure-resource-manager/resource-manager-parameter-files.md).
 
-Na przykład, jeśli używasz wpisów tajnych, możesz definiować i używać zabezpieczonych parametrów szablonu, które pobierają te wpisy tajne z [Azure Key Vault](../key-vault/key-vault-overview.md) we wdrożeniu. Następnie można odwołać się do magazynu kluczy i wpisu tajnego w pliku parametrów. Aby uzyskać więcej informacji zobacz następujące tematy:
+Na przykład, jeśli używasz wpisów tajnych, możesz definiować i używać zabezpieczonych parametrów szablonu, które pobierają te wpisy tajne z [Azure Key Vault](../key-vault/key-vault-overview.md) we wdrożeniu. Następnie można odwołać się do magazynu kluczy i wpisu tajnego w pliku parametrów. Aby uzyskać więcej informacji, zobacz następujące tematy:
 
 * [Przekaż wartości poufne podczas wdrażania przy użyciu Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 * [Zabezpieczanie parametrów w szablonach Azure Resource Manager](#secure-parameters-deployment-template) w dalszej części tego tematu
@@ -627,7 +624,7 @@ Jeśli opcja [podstawowa](../active-directory-b2c/active-directory-b2c-custom-re
 
 | Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Uwierzytelnianie** | `type` | Tak | Podstawowa | Typ uwierzytelniania do użycia |
+| **Uwierzytelnianie** | `type` | Tak | Basic | Typ uwierzytelniania do użycia |
 | **Nazwa użytkownika** | `username` | Tak | <*nazwy użytkownika*>| Nazwa użytkownika służąca do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
 | **Hasło** | `password` | Tak | <*hasło*> | Hasło do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
 ||||||
@@ -700,7 +697,7 @@ Jeśli dostępna jest opcja [Active Directory OAuth](../active-directory/develop
 | **Uwierzytelnianie** | `type` | Tak | **Active Directory OAuth** <br>lub <br>`ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia. Logic Apps jest obecnie zgodny z [protokołem OAuth 2,0](../active-directory/develop/v2-overview.md). |
 | **Dzierżaw** | `tenant` | Tak | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
 | **Publiczn** | `audience` | Tak | <> *zasobów do autoryzacji* | Zasób, który ma być używany na potrzeby autoryzacji, na przykład `https://management.core.windows.net/` |
-| **Identyfikator klienta** | `clientId` | Tak | *Identyfikator klienta* <> | Identyfikator klienta aplikacji żądającej autoryzacji |
+| **Client ID (Identyfikator klienta)** | `clientId` | Tak | *Identyfikator klienta* <> | Identyfikator klienta aplikacji żądającej autoryzacji |
 | **Typ poświadczeń** | `credentialType` | Tak | Certyfikat <br>lub <br>Wpis tajny | Typ poświadczeń, którego klient używa do żądania autoryzacji. Ta właściwość i wartość nie pojawiają się w podstawowej definicji aplikacji logiki, ale określają właściwości, które są wyświetlane dla wybranego typu poświadczenia. |
 | **Wpis tajny** | `secret` | Tak, ale tylko dla typu poświadczeń "wpis tajny" | <> *klucza tajnego klienta* | Wpis tajny klienta na potrzeby żądania autoryzacji |
 | **PFX** | `pfx` | Tak, ale tylko dla typu poświadczeń "certyfikat" | <*zakodowany plik PFX* —> zawartości | Zawartość zakodowana algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
@@ -751,7 +748,7 @@ W wyzwalaczu lub akcji, która obsługuje uwierzytelnianie surowe, określ nast�
 
 | Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Uwierzytelnianie** | `type` | Tak | surowców | Typ uwierzytelniania do użycia |
+| **Uwierzytelnianie** | `type` | Tak | Surowców | Typ uwierzytelniania do użycia |
 | **Wartość** | `value` | Tak | <> *wartości nagłówka autoryzacji* | Wartość nagłówka autoryzacji do użycia na potrzeby uwierzytelniania |
 ||||||
 

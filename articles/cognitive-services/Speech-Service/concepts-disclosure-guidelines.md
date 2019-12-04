@@ -3,21 +3,21 @@ title: Wskazówki dotyczące projektowania ujawniania
 titleSuffix: Azure Cognitive Services
 description: Wprowadzenie do ujawnienia wytycznych dotyczących projektowania i oceniania poziomu ujawniania.
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837377"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776389"
 ---
-# <a name="disclosure-design-guidelines"></a>Wskazówki dotyczące projektowania ujawniania
+# <a name="disclosure-design-guidelines"></a>Wytyczne dotyczące projektowania ujawniania
 Dowiedz się, jak tworzyć i obsługiwać relacje zaufania z klientami, ponieważ są one przejrzyste na temat syntetycznego charakteru Twojego środowiska głosowego.
 
 ## <a name="what-is-disclosure"></a>Co to jest ujawnienie?

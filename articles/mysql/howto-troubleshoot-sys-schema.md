@@ -1,21 +1,21 @@
 ---
-title: Użyj sys_schema, aby dostroić wydajność i zachować Azure Database for MySQL
-description: Dowiedz się, jak za pomocą programu sys_schema znaleźć problemy z wydajnością i zachować bazę danych w Azure Database for MySQL.
+title: Użyj sys_schema-Azure Database for MySQL
+description: Dowiedz się, jak używać sys_schema do znajdowania problemów z wydajnością i konserwowania bazy danych w Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 08/01/2018
-ms.openlocfilehash: 7dc6b4744c74c56803127f63a8a6f29ca5a15090
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972790"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775949"
 ---
-# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Jak używać sys_schema do dostrajania wydajności i konserwacji bazy danych w Azure Database for MySQL
+# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Jak używać sys_schema na potrzeby dostrajania wydajności i konserwacji bazy danych w programie Azure Database for MySQL
 
-Program MySQL performance_schema, dostępny w pierwszej kolejności w programie MySQL 5,5, zapewnia instrumentację dla wielu najważniejszych zasobów serwera, takich jak alokacja pamięci, programy przechowywane, blokowanie metadanych itp. Jednak performance_schema zawiera więcej niż 80 tabel i uzyskanie niezbędnych informacji często wymaga sprzężenia tabel w performance_schema, a także tabel z INFORMATION_SCHEMA. W przypadku kompilowania zarówno performance_schema, jak i INFORMATION_SCHEMA, sys_schema zapewnia zaawansowaną kolekcję [widoków przyjaznych dla użytkownika](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) w bazie danych tylko do odczytu i jest w pełni włączona w Azure Database for MySQL wersji 5,7.
+Baza danych MySQL performance_schema, najpierw dostępna w programie MySQL 5,5, oferuje instrumentację dla wielu najważniejszych zasobów serwera, takich jak alokacja pamięci, programy przechowywane, blokowanie metadanych itp. Jednak performance_schema zawiera więcej niż 80 tabel i uzyskanie niezbędnych informacji często wymaga sprzęgania tabel w performance_schema, a także tabel z information_schema. Kompilowanie na performance_schema i information_schema sys_schema zapewnia zaawansowaną kolekcję [widoków przyjaznych dla użytkownika](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) w bazie danych tylko do odczytu i jest w pełni włączona w Azure Database for MySQL wersji 5,7.
 
 ![widoki sys_schema](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
@@ -51,7 +51,7 @@ Pomimo starannego planowania wiele zapytań nadal może prowadzić do pełnego s
 
 ### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
 
-Aby rozwiązać problemy z wydajnością bazy danych, może być korzystne zidentyfikowanie zdarzeń występujących w bazie danych, a korzystanie z widoku *sys. user_summary_by_statement_type* może wystarczy zrobić.
+Aby rozwiązać problemy z wydajnością bazy danych, może być korzystne zidentyfikowanie zdarzeń występujących w bazie danych, a korzystanie z widoku *sys. user_summary_by_statement_type* może wystarczyć do wzięcia końca.
 
 ![Podsumowanie według instrukcji](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
@@ -77,7 +77,7 @@ Indeksy to doskonałe narzędzia pozwalające zwiększyć wydajność odczytu, a
 
 ## <a name="conclusion"></a>Podsumowanie
 
-Podsumowując, sys_schema to doskonałe narzędzie do dostrajania wydajności i konserwacji bazy danych. Upewnij się, że korzystasz z tej funkcji w Azure Database for MySQL. 
+Podsumowując, sys_schema jest doskonałym narzędziem do dostrajania wydajności i konserwacji bazy danych. Upewnij się, że korzystasz z tej funkcji w Azure Database for MySQL. 
 
 ## <a name="next-steps"></a>Następne kroki
 - Aby znaleźć odpowiedzi na najczęściej zadawane pytania lub opublikować nowe pytanie/odpowiedź, odwiedź [forum MSDN](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

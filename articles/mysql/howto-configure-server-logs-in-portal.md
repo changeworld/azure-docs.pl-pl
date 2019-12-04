@@ -1,17 +1,17 @@
 ---
-title: Skonfiguruj i uzyskaj dostęp do dzienników wolnych zapytań w Azure Database for MySQL z Azure Portal
+title: Dostęp do dzienników wolnych zapytań — Azure Portal-Azure Database for MySQL
 description: W tym artykule opisano sposób konfigurowania i uzyskiwania dostępu do powolnych dzienników w Azure Database for MySQL z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 7eeeb729973e484e9acb26f3ac8cc42693f72eea
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 12/02/2019
+ms.openlocfilehash: 52d219a94676e0f1ce4ceac31b0b50c9d36665ba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841561"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770581"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Skonfiguruj i uzyskaj dostęp do dzienników wolnych zapytań z Azure Portal
 
@@ -23,9 +23,9 @@ Kroki opisane w tym artykule wymagają, aby [Azure Database for MySQL Server](qu
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania
 Skonfiguruj dostęp do dziennika wolnych zapytań programu MySQL. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
-2. Wybierz usługi Azure Database for MySQL server.
+2. Wybierz serwer Azure Database for MySQL.
 
 3. W sekcji **monitorowanie** na pasku bocznym wybierz pozycję **Dzienniki serwera**. 
    ![zrzut ekranu opcji dzienników serwera](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
@@ -45,7 +45,7 @@ Po rozpoczęciu rejestrowania można wyświetlić listę dostępnych wolnych dzi
 
 1. Otwórz witrynę Azure Portal.
 
-2. Wybierz usługi Azure Database for MySQL server.
+2. Wybierz serwer Azure Database for MySQL.
 
 3. W sekcji **monitorowanie** na pasku bocznym wybierz pozycję **Dzienniki serwera**. Na stronie zostanie wyświetlona lista plików dziennika.
 

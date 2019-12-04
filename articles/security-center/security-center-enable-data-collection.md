@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: ae645f15672693466ba87f2364c756ed164ce629
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 795661912633f0d225aef4de8ea7620a8766e096
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669166"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766994"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w Azure Security Center
 Security Center zbiera dane z maszyn wirtualnych platformy Azure, zestawów skalowania maszyn wirtualnych, kontenerów IaaS oraz innych niż platformy Azure (w tym komputerów lokalnych) do monitorowania luk w zabezpieczeniach i zagrożeń. Dane są zbierane przy użyciu agenta Log Analytics, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z komputera i kopiuje dane do obszaru roboczego w celu przeprowadzenia analizy. Przykładami takich danych są: typ i wersja systemu operacyjnego, Dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, Nazwa maszyny, adresy IP i zalogowany użytkownik. Agent Log Analytics kopiuje także pliki zrzutu awaryjnego do obszaru roboczego.
@@ -304,7 +304,12 @@ Można ręcznie zainstalować agenta Log Analytics, aby Security Center mógł z
 -  Aby zidentyfikować wymagania sieciowe agenta monitorowania, zobacz [Rozwiązywanie problemów z wymaganiami sieci agenta monitorowania](security-center-troubleshooting-guide.md#mon-network-req).
 -   Aby identyfikować ręczne problemy z dołączaniem, zobacz [Jak rozwiązywać problemy z dołączaniem do pakietu Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
-- Aby zidentyfikować problemy dotyczące niemonitorowanych maszyn wirtualnych i komputerów, zobacz [Niemonitorowane maszyny wirtualne i komputery](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers).
+- Aby zidentyfikować problemy dotyczące niemonitorowanych maszyn wirtualnych i komputerów:
+
+    Maszyna wirtualna lub komputer nie jest monitorowany przez Security Center, jeśli na komputerze nie jest uruchomione rozszerzenie Microsoft Monitoring Agent. Na komputerze może być już zainstalowany agent lokalny, na przykład Agent usługi OMS Direct lub Agent System Center Operations Manager. Maszyny z tymi agentami są identyfikowane jako niemonitorowane, ponieważ nie są w pełni obsługiwane w Security Center. Aby w pełni skorzystać ze wszystkich funkcji usługi Security Center, wymagane jest rozszerzenie programu Microsoft Monitoring Agent.
+
+    Aby uzyskać więcej informacji na temat przyczyn, Security Center nie może pomyślnie monitorować maszyn wirtualnych i komputerów zainicjowanych do automatycznej aprowizacji, zobacz [monitorowanie problemów z kondycją agenta](security-center-troubleshooting-guide.md#mon-agent).
+
 
 ## <a name="next-steps"></a>Następne kroki
 W tym artykule pokazano, jak działa zbieranie danych i automatyczne Inicjowanie obsługi w Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:

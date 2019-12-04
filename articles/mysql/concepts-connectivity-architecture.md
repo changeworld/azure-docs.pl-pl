@@ -1,17 +1,17 @@
 ---
-title: Architektura łączności w Azure Database for MySQL
+title: Architektura łączności — Azure Database for MySQL
 description: Opisuje architekturę łączności dla serwera Azure Database for MySQL.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: c4fecfadefedf10f7e11534b4efbd197c4d7fdae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/02/2019
+ms.openlocfilehash: 22c77bee95533606156ec6cc337af1d743018005
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213156"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765328"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura łączności w Azure Database for MySQL
 W tym artykule opisano architekturę Azure Database for MySQL łączności oraz sposób kierowania ruchu do wystąpienia Azure Database for MySQL z klientów zarówno w ramach platformy Azure, jak i poza nią.
@@ -50,10 +50,10 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Dat
 | Japonia Zachodnia | 191.238.68.11 | 104.214.148.156 |
 | Korea Środkowa | 52.231.32.42 | |
 | Korea Południowa | 52.231.200.86 |  |
-| Środkowo-północne stany USA | 23.98.55.75 | 23.96.178.199 |
+| Północno-środkowe stany USA | 23.98.55.75 | 23.96.178.199 |
 | Europa Północna | 191.235.193.75 | 40.113.93.91 |
-| Środkowo-południowe stany USA | 23.98.162.75 | 13.66.62.124 |
-| Azja Południowo-Wschodnia | 23.100.117.95 | 104.43.15.0 |
+| Południowo-środkowe stany USA | 23.98.162.75 | 13.66.62.124 |
+| Azja Południowo-wschodnia | 23.100.117.95 | 104.43.15.0 |
 | Północna Republika Południowej Afryki | 102.133.152.0 | |
 | Północna Republika Południowej Afryki | 102.133.24.0 | |
 | Północne Zjednoczone Emiraty Arabskie | 65.52.248.0 | |
@@ -66,14 +66,6 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Dat
 
 > [!NOTE]
 > *Wschodnie stany USA 2* również mają adres IP trzeciego rzędu `52.167.104.0`.
-
-## <a name="connection-redirection"></a>Przekierowanie połączenia
-
-Azure Database for MySQL obsługuje dodatkowe zasady połączeń, **przekierowania**, które ułatwiają skrócenie opóźnienia sieci między aplikacjami klienckimi i serwerami MySQL. Po nawiązaniu początkowej sesji TCP z serwerem Azure Database for MySQL przy użyciu tej funkcji serwer zwraca adres zaplecza węzła, który hostuje serwer MySQL, do klienta programu. Następnie wszystkie kolejne pakiety przepływają bezpośrednio do serwera, pomijając bramę. Ponieważ pakiety są przesyłane bezpośrednio na serwer, opóźnienia i przepływność zwiększają wydajność.
-
-Ta funkcja jest obsługiwana na serwerach Azure Database for MySQL z wersjami Engine 5,6, 5,7 i 8,0.
-
-Obsługa wersji zapoznawczej dla przekierowania jest dostępna w rozszerzeniu [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) , opracowanym przez firmę Microsoft i jest dostępny w witrynie [PECL](https://pecl.php.net/package/mysqlnd_azure). Aby uzyskać więcej informacji na temat korzystania z przekierowania w aplikacjach, zobacz artykuł [Konfigurowanie przekierowania](./howto-redirection.md) . 
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,24 +1,21 @@
 ---
-title: Tworzenie szablonów aplikacji logiki na potrzeby wdrożenia — Azure Logic Apps
+title: Tworzenie szablonów aplikacji logiki na potrzeby wdrożenia
 description: Dowiedz się, jak utworzyć szablony Azure Resource Manager do automatyzowania wdrażania w programie Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 57e9cec16326068cc7de74b8f7266fbe47808fed
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845451"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793210"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Tworzenie Azure Resource Manager szablonów w celu zautomatyzowania wdrożenia Azure Logic Apps
 
-Aby ułatwić automatyzację tworzenia i wdrażania aplikacji logiki, w tym artykule opisano sposoby tworzenia [szablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla aplikacji logiki. Aby zapoznać się z omówieniem struktury i składni szablonu, który zawiera definicję przepływu pracy i inne zasoby niezbędne do wdrożenia, zobacz [Omówienie: Automatyzowanie wdrażania aplikacji logiki za pomocą szablonów](logic-apps-azure-resource-manager-templates-overview.md)Azure Resource Manager.
+Aby ułatwić automatyzację tworzenia i wdrażania aplikacji logiki, w tym artykule opisano sposoby tworzenia [szablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla aplikacji logiki. Aby zapoznać się z omówieniem struktury i składni szablonu zawierającego definicję przepływu pracy i inne zasoby niezbędne do wdrożenia, zobacz [Omówienie: Automatyzowanie wdrażania dla aplikacji logiki za pomocą szablonów Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md).
 
 Azure Logic Apps udostępnia [wstępnie utworzony szablon Azure Resource Manager aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) , którego można użyć ponownie, nie tylko do tworzenia aplikacji logiki, ale także do definiowania zasobów i parametrów do użycia w ramach wdrożenia. Możesz użyć tego szablonu do własnych scenariuszy firmy lub dostosować szablon w celu spełnienia wymagań.
 
@@ -37,7 +34,7 @@ Aby uzyskać więcej informacji na temat szablonów Azure Resource Manager, zoba
 
 Aby Najprostszym sposobem utworzyć prawidłowe, sparametryzowane szablony aplikacji logiki, które są głównie gotowe do wdrożenia, użyj programu Visual Studio (wersja bezpłatna lub nowsza) oraz narzędzi Azure Logic Apps Tools for Visual Studio. Następnie możesz [utworzyć aplikację logiki w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) lub [znaleźć i pobrać istniejącą aplikację logiki z Azure Portal do programu Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
-Pobierając aplikację logiki, uzyskasz szablon zawierający definicje aplikacji logiki oraz inne zasoby, takie jak połączenia. Szablon *parameterizes*również lub definiuje parametry dla, wartości używane do wdrażania aplikacji logiki i innych zasobów. Można podać wartości tych parametrów w osobnym pliku parametrów. Dzięki temu można łatwiej zmienić te wartości w zależności od potrzeb wdrożenia. Aby uzyskać więcej informacji zobacz następujące tematy:
+Pobierając aplikację logiki, uzyskasz szablon zawierający definicje aplikacji logiki oraz inne zasoby, takie jak połączenia. Szablon *parameterizes*również lub definiuje parametry dla, wartości używane do wdrażania aplikacji logiki i innych zasobów. Można podać wartości tych parametrów w osobnym pliku parametrów. Dzięki temu można łatwiej zmienić te wartości w zależności od potrzeb wdrożenia. Aby uzyskać więcej informacji, zobacz następujące tematy:
 
 * [Tworzenie aplikacji logiki za pomocą programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Zarządzanie aplikacjami logiki w programie Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
@@ -52,10 +49,10 @@ Załóżmy na przykład, że masz aplikację logiki, która odbiera komunikat z 
 
 W poniższych przykładach pokazano, jak tworzyć i wdrażać aplikacje logiki przy użyciu szablonów Azure Resource Manager, Azure Pipelines w usłudze Azure DevOps i Azure PowerShell:
 
-* [Przykład: Łączenie z kolejkami Azure Service Bus z poziomu Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Przykład: Łączenie z kontami usługi Azure Storage z poziomu Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Przykład: Skonfiguruj akcję aplikacji funkcji dla Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Przykład: Nawiązywanie połączenia z kontem integracji z poziomu usługi Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Przykład: łączenie z kolejkami Azure Service Bus z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Przykład: łączenie z kontami usługi Azure Storage z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Przykład: skonfiguruj akcję aplikacji funkcji dla Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Przykład: Nawiązywanie połączenia z kontem integracji z poziomu Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>Zainstaluj moduły programu PowerShell
 
@@ -79,7 +76,7 @@ Lub, aby zainstalować je ręcznie, wykonaj kroki opisane w temacie usługi GitH
 
 Aby moduł LogicAppTemplate działał z dowolnym tokenem dostępu dzierżawy i subskrypcji platformy Azure, zainstaluj [narzędzie Azure Resource Manager Client](https://github.com/projectkudu/ARMClient), czyli proste narzędzie wiersza polecenia, które wywołuje interfejs API Azure Resource Manager.
 
-Po uruchomieniu `Get-LogicAppTemplate` polecenia za pomocą tego narzędzia, polecenie najpierw pobiera token dostępu za pomocą narzędzia ARMClient, przekazuje token do skryptu programu PowerShell i tworzy szablon jako plik JSON. Aby uzyskać więcej informacji na temat narzędzia, zobacz ten [artykuł dotyczący narzędzia Azure Resource Manager Client](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html).
+Gdy uruchomisz polecenie `Get-LogicAppTemplate` za pomocą tego narzędzia, polecenie najpierw pobierze token dostępu za pomocą narzędzia ARMClient, potokuje token z skryptem programu PowerShell, a następnie utworzy szablon jako plik JSON. Aby uzyskać więcej informacji na temat narzędzia, zobacz ten [artykuł dotyczący narzędzia Azure Resource Manager Client](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html).
 
 ### <a name="generate-template-with-powershell"></a>Generowanie szablonu przy użyciu programu PowerShell
 
@@ -89,7 +86,7 @@ Aby wygenerować szablon po zainstalowaniu modułu LogicAppTemplate i [interfejs
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
-Aby postępować zgodnie z zaleceniami dotyczącymi instalacji rurowej w tokenie przy użyciu [narzędzia klienta Azure Resource Manager](https://github.com/projectkudu/ARMClient), należy uruchomić to polecenie zamiast `$SubscriptionId` identyfikatora subskrypcji platformy Azure:
+Aby postępować zgodnie z zaleceniami dotyczącymi instalacji rurowej w tokenie przy użyciu [narzędzia klienta Azure Resource Manager](https://github.com/projectkudu/ARMClient), Uruchom to polecenie zamiast tego, gdy `$SubscriptionId` jest identyfikatorem subskrypcji platformy Azure:
 
 ```text
 PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json

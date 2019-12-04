@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 12/03/2019
 ms.author: lahugh
-ms.openlocfilehash: 02ab7cdcbf0f150157eb44ef5e28e8284621b813
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cfa8d28a41bb5551277bca29c118698ecaa8d112
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173950"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791739"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Obsługa maszyn wirtualnych 2. generacji na platformie Azure
 
@@ -53,13 +53,11 @@ Maszyny wirtualne generacji 1 są obsługiwane przez wszystkie rozmiary maszyn w
 
 Maszyny wirtualne 2. generacji obsługują następujące obrazy w portalu Marketplace:
 
-* Windows Server 2019 Datacenter
-* Windows Server 2016 Datacenter
-* Windows Server 2012 R2 Datacenter
-* Windows Server 2012 Datacenter
+* Windows Server 2019, 2016, 2012 R2, 2012
+* Windows 10
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04, 18.04, 19,04, 19,10 
+* Ubuntu Server 16,04, 18,04, 19,04, 19,10 
 * RHEL 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokalna a maszyny wirtualne 2. generacji platformy Azure
@@ -86,7 +84,7 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiw
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Możliwości generacji 1 a generacja 2
 
-| Możliwości | Generacja 1 | Generacja 2 |
+| Możliwość | Generacja 1 | Generacja 2 |
 |------------|--------------|--------------|
 | Dysk systemu operacyjnego > 2 TB                    | y                | :heavy_check_mark: |
 | Niestandardowy dysk/obraz/system operacyjny wymiany         | :heavy_check_mark: | :heavy_check_mark: |
@@ -140,7 +138,7 @@ Zapoznaj się z sekcją [funkcje i możliwości](#features-and-capabilities) , a
 
 Maszynę wirtualną generacji 2 można utworzyć na podstawie zarządzanego obrazu lub dysku zarządzanego w taki sam sposób jak w przypadku tworzenia maszyny wirtualnej generacji 1.
 
-### <a name="virtual-machine-scale-sets"></a>Zestawy skalowania maszyn wirtualnych
+### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 Można również tworzyć maszyny wirtualne 2. generacji przy użyciu zestawów skalowania maszyn wirtualnych. W interfejsie wiersza polecenia platformy Azure Użyj zestawów skalowania platformy Azure, aby utworzyć maszyny wirtualne 2. generacji.
 

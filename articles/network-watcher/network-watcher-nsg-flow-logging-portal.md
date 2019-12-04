@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a5d600e761ce3c3cebbe155c6be7e0f5a377eb32
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: afa1d2ca59bacec2695aaff0cacb119a8fbf787b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419636"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766603"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Samouczek: rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -51,7 +51,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Subskrypcja| Wybierz subskrypcję.|
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę **myResourceGroup**.|
-    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**|
+    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
 
 4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
 5. W obszarze **Ustawienia** zaakceptuj wszystkie wartości domyślne i wybierz przycisk **OK**.
@@ -90,7 +90,7 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
     | Ustawienie        | Wartość                                                        |
     | ---            | ---   |
     | Nazwa           | Od 3 do 24 znaków, może zawierać tylko małe litery i cyfry i musi być unikatowa dla wszystkich kont usługi Azure Storage.                                                               |
-    | Lokalizacja       | Wybierz pozycję **Wschodnie stany USA**                                           |
+    | Lokalizacja       | Wybierz pozycję **Wschodnie stany USA**.                                           |
     | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
 
     Tworzenie konta usługi Storage może potrwać około minuty. Nie wykonuj pozostałych kroków, dopóki konto usługi Storage nie zostanie utworzone. Jeśli zamiast tworzyć nowe konto usługi Storage używasz istniejącego konta, upewnij się, że wybierasz konto usługi Storage, które ma pozycję **Wszystkie sieci** (ustawienie domyślne) wybraną dla pozycji **Zapory i sieci wirtualne** w obszarze **USTAWIENIA** na koncie usługi Storage. We wszystkich przypadkach konto magazynu musi znajdować się w tym samym regionie co sieciowej grupy zabezpieczeń. 
@@ -127,7 +127,7 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
    ![Pobieranie dzienników przepływu](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Wybierz konto usługi Storage skonfigurowane w kroku 2 sekcji [Włączanie dziennika przepływu sieciowej grupy zabezpieczeń](#enable-nsg-flow-log).
-4. W obszarze **BLOB Service**wybierz pozycję **obiekty blob**, a następnie wybierz kontener **Insights-Logs-networksecuritygroupflowevent** .
+4. W obszarze **BLOB Service**wybierz pozycję **kontenery**, a następnie wybierz kontener **Insights-Logs-networksecuritygroupflowevent** .
 5. W kontenerze przejdź do hierarchii folderów do momentu uzyskania pliku PT1H. JSON, jak pokazano na poniższej ilustracji. Pliki dziennika są zapisywane w hierarchii folderów, która następuje po następującej konwencji nazewnictwa: https://{storageAccountName}. blob. Core. Windows. NET/Insights-Logs-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {miesiąc}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
 
    ![Dziennik przepływu](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -216,9 +216,9 @@ Wartość elementu **mac** w poprzednich danych wyjściowych to adres MAC interf
 | 13.67.143.118     | Docelowy adres IP | Docelowy adres IP, do którego był skierowany przepływ.                                                                                  |
 | 44931        | Port źródłowy            | Port źródłowy, z którego pochodził przepływ.                                           |
 | 443         | Port docelowy       | Port docelowy, do którego był skierowany przepływ. Ponieważ ruch był przeznaczony do portu 443, reguła o nazwie **UserRule_default-allow-rdp** w pliku dziennika przetworzyła przepływ.                                                |
-| T            | Protokół               | Określa rodzaj protokołu przepływu: TCP (T) lub UDP (U).                                  |
+| trylionów            | Protocol (Protokół)               | Określa rodzaj protokołu przepływu: TCP (T) lub UDP (U).                                  |
 | O            | Kierunek              | Określa, czy ruch był przychodzący (I), czy wychodzący (O).                                     |
-| A            | Akcja                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).  
+| A            | Działanie                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).  
 | C            | Stan przepływu **tylko w wersji 2** | Rejestruje stan przepływu. Możliwe stany to **B**: początek — gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: kontynuacja — dotyczy ciągłego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: koniec — gdy przepływ zostanie zakończony. Statystyki są podawane. |
 | 30 | Wysłane pakiety — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. |
 | 16978 | Wysłane bajty — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu. |

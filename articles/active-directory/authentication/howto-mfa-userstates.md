@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258675a343387eb6930cd3511bf885bf510050c6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404214"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785861"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak wymagać weryfikacji dwuetapowej dla użytkownika
 
@@ -41,11 +41,14 @@ Włączone przez Azure AD Identity Protection — ta metoda korzysta z zasad ryz
 
 Konta użytkowników na platformie Azure Multi-Factor Authentication mają trzy różne stany:
 
+> [!IMPORTANT]
+> Włączenie usługi Azure MFA za pomocą zasad dostępu warunkowego nie spowoduje zmiany stanu użytkownika. Nie są wyświetlane alarmy, które są wyłączone. Dostęp warunkowy nie zmienia stanu. **Organizacje nie powinny włączać ani wymuszać użytkowników, jeśli korzystają z zasad dostępu warunkowego.**
+
 | Stan | Opis | Uwzględnione aplikacje nie korzystające z przeglądarki | Uwzględnione aplikacje przeglądarki | Zmodyfikowane nowoczesne uwierzytelnianie |
-|:---:|:---:|:---:|:--:|:--:|
-| Disabled (Wyłączony) |Stan domyślny dla nowego użytkownika, który nie jest zarejestrowany w usłudze Azure MFA. |Nie |Nie |Nie |
-| Włączono |Użytkownik został zarejestrowany w usłudze Azure MFA, ale nie została zarejestrowana. Otrzymują monit o zarejestrowanie się przy następnym logowaniu. |Nie.  Nadal działają do momentu zakończenia procesu rejestracji. | Tak. Po wygaśnięciu sesji wymagana jest rejestracja w usłudze Azure MFA.| Tak. Po wygaśnięciu tokenu dostępu wymagana jest rejestracja w usłudze Azure MFA. |
-| Enforced (Wymuszony) |Użytkownik został zarejestrowany i ukończył proces rejestracji w usłudze Azure MFA. |Tak. Aplikacje wymagają haseł aplikacji. |Tak. Usługa Azure MFA jest wymagana podczas logowania. | Tak. Usługa Azure MFA jest wymagana podczas logowania. |
+|:---:| --- |:---:|:--:|:--:|
+| Disabled (Wyłączony) | Stan domyślny dla nowego użytkownika, który nie jest zarejestrowany w usłudze Azure MFA. | Nie | Nie | Nie |
+| Enabled (Włączony) | Użytkownik został zarejestrowany w usłudze Azure MFA, ale nie została zarejestrowana. Otrzymują monit o zarejestrowanie się przy następnym logowaniu. | Nie.  Nadal działają do momentu zakończenia procesu rejestracji. | Tak. Po wygaśnięciu sesji wymagana jest rejestracja w usłudze Azure MFA.| Tak. Po wygaśnięciu tokenu dostępu wymagana jest rejestracja w usłudze Azure MFA. |
+| Enforced (Wymuszony) | Użytkownik został zarejestrowany i ukończył proces rejestracji w usłudze Azure MFA. | Tak. Aplikacje wymagają haseł aplikacji. | Tak. Usługa Azure MFA jest wymagana podczas logowania. | Tak. Usługa Azure MFA jest wymagana podczas logowania. |
 
 Stan użytkownika wskazuje, czy administrator zarejestrował je w usłudze Azure MFA, oraz czy ukończył proces rejestracji.
 
@@ -78,11 +81,11 @@ Wykonaj następujące kroki, aby uzyskać dostęp do strony, na której można w
 
 Po włączeniu użytkowników Powiadom ich pocztą e-mail. Poinformuj ich o konieczności zarejestrowania się podczas następnego logowania. Ponadto, jeśli w organizacji są używane aplikacje nie korzystające z przeglądarki, które nie obsługują nowoczesnego uwierzytelniania, muszą one tworzyć hasła aplikacji. Możesz również dołączyć link do [podręcznika użytkownika końcowego usługi Azure MFA](../user-help/multi-factor-authentication-end-user.md) , aby ułatwić Ci rozpoczęcie pracy.
 
-### <a name="use-powershell"></a>Korzystanie z programu PowerShell
+### <a name="use-powershell"></a>Używanie programu PowerShell
 
 Aby zmienić stan użytkownika przy użyciu [programu Azure AD PowerShell](/powershell/azure/overview), Zmień `$st.State`. Istnieją trzy możliwe stany:
 
-* Włączono
+* Enabled (Włączony)
 * Enforced (Wymuszony)
 * Disabled (Wyłączony)  
 

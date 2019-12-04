@@ -1,17 +1,17 @@
 ---
-title: Wybieranie odpowiedniego typu wdrożenia dla Azure Database for MariaDB
+title: Wybieranie odpowiedniego typu wdrożenia — Azure Database for MariaDB
 description: W tym artykule opisano czynniki, które należy wziąć pod uwagę przed wdrożeniem Azure Database for MariaDB jak infrastruktura jako usługa (IaaS) lub platforma jako usługa (PaaS).
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: 59064c71d19f81a5edc322bc4c8158773a104b5d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/02/2019
+ms.openlocfilehash: d53a3f270c1de3c8d533b5886e0051f6aa1ef10d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151985"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776742"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Wybierz odpowiednią opcję serwera MariaDB na platformie Azure
 
@@ -34,8 +34,8 @@ Główne różnice między tymi opcjami są wymienione w poniższej tabeli:
 |            | Azure Database for MariaDB | MariaDB na maszynach wirtualnych platformy Azure    |
 |:-------------------|:-----------------------------|:--------------------|
 | Umowa dotycząca poziomu usług (SLA)                | Oferuje umowę SLA na 99,99% dostępności| Do 99,95% dostępności z co najmniej dwoma wystąpieniami w tym samym zestawie dostępności.<br/><br/>dostępność na 99,9% z maszyną wirtualną o pojedynczym wystąpieniu przy użyciu usługi Premium Storage.<br/><br/>99,99% przy użyciu Strefy dostępności z wieloma wystąpieniami w wielu zestawach dostępności.<br/><br/>Zobacz umowę [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)dotyczącą Virtual Machines. |
-| Stosowanie poprawek systemu operacyjnego        | Automatyczne  | Zarządzane przez klientów |
-| Stosowanie poprawek MariaDB     | Automatyczne  | Zarządzane przez klientów |
+| Stosowanie poprawek systemu operacyjnego        | Automatyczny  | Zarządzane przez klientów |
+| Stosowanie poprawek MariaDB     | Automatyczny  | Zarządzane przez klientów |
 | Wysoka dostępność | Model wysokiej dostępności (HA) jest oparty na wbudowanych mechanizmach trybu failover w przypadku wystąpienia przerwy na poziomie węzła. W takich przypadkach usługa automatycznie tworzy nowe wystąpienie i dołącza magazyn do tego wystąpienia. | Klienci mogą korzystać z architektów, implementować, testować i obsługiwać wysoką dostępność. Możliwości mogą obejmować zawsze włączone klaster trybu failover, zawsze włączone replikacje grupowe, wysyłanie dziennika lub replikację transakcyjną.|
 | Nadmiarowość stref | Obecnie nieobsługiwane | Maszyny wirtualne platformy Azure można skonfigurować do uruchamiania w różnych strefach dostępności. W przypadku rozwiązania lokalnego klienci muszą tworzyć i obsługiwać własne pomocnicze centrum danych oraz zarządzać nimi.|
 | Scenariusze hybrydowe | Za pomocą [replikacja typu Data-in](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)można synchronizować dane z zewnętrznego serwera MariaDB do usługi Azure Database for MariaDB. Serwer zewnętrzny może być lokalny, w maszynach wirtualnych lub w usłudze bazy danych hostowanej przez innych dostawców chmury.<br/><br/> Funkcja [Read Replica](https://docs.microsoft.com/azure/mariadb/concepts-read-replicas) umożliwia replikowanie danych z serwera głównego Azure Database for MariaDB do maksymalnie pięciu serwerów repliki tylko do odczytu. Repliki są w tym samym regionie świadczenia usługi Azure lub w różnych regionach. Repliki tylko do odczytu są asynchronicznie aktualizowane przy użyciu technologii replikacji binlog.<br/><br/>Replikacja odczytu między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.| Zarządzane przez klientów
@@ -49,7 +49,7 @@ Główne różnice między tymi opcjami są wymienione w poniższej tabeli:
 
 Istnieje kilka czynników, które mogą mieć wpływ na decyzję o wyborze PaaS lub IaaS do hostowania baz danych MariaDB.
 
-### <a name="cost"></a>Koszty
+### <a name="cost"></a>Koszt
 
 Ograniczone finansowanie jest często podstawowym zagadnieniem, które określa najlepsze rozwiązanie do hostowania baz danych. Jest to prawdziwe, niezależnie od tego, czy jesteś w trakcie uruchamiania z małym środkiem pieniężnym czy zespołem w firmie, który działa w ramach ścisłych ograniczeń budżetowych. W tej sekcji opisano podstawowe informacje dotyczące rozliczeń i licencjonowania na platformie Azure, które mają zastosowanie do Azure Database for MariaDB i MariaDB na maszynach wirtualnych platformy Azure.
 
