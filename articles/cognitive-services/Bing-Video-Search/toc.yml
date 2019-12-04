@@ -1,5 +1,5 @@
 - name: Dokumentacja interfejsu API wyszukiwania wideo Bing
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Omówienie
   expanded: true
   items:

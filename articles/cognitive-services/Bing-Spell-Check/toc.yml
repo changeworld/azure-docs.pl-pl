@@ -1,5 +1,5 @@
 - name: Dokumentacja interfejsu API sprawdzania pisowni Bing
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Omówienie
   items:
     - name: Czym jest interfejs API sprawdzania pisowni Bing?
