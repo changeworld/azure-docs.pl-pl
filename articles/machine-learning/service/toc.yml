@@ -300,7 +300,7 @@
         - name: Uruchamianie prognoz partii
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
-        - name: Prognozowanie partii za pomocą projektanta
+        - name: Prognozy partii projektanta
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
     - name: Monitorowanie modeli

@@ -190,6 +190,8 @@
       href: /javascript/api/overview/azure/container-registry
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.containerregistry/registries
+    - name: Plik YAML zadań
+      href: container-registry-tasks-reference-yaml.md
     - name: Schemat elementów webhook
       href: container-registry-webhook-reference.md
     - name: Schemat usługi Event Grid

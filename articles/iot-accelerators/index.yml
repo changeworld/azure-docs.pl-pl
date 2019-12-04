@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Dokumentacja akceleratorów rozwiązań Azure IoT
+summary: Akceleratory rozwiązań Azure IoT to kompletne, gotowe do wdrożenia rozwiązania IoT, w których zaimplementowano typowe scenariusze IoT, takie jak zdalne monitorowanie.
+metadata:
+  title: Dokumentacja akceleratorów rozwiązań Azure IoT
+  description: Akceleratory rozwiązań IoT to kompletne, gotowe do wdrożenia rozwiązania IoT, w których zaimplementowano typowe scenariusze IoT. Te scenariusze to na przykład zdalne monitorowanie, połączona fabryka, konserwacja predykcyjna i symulacja urządzenia. Podczas wdrażania akceleratora rozwiązania uwzględniane są wszystkie wymagane usługi w chmurze wraz z wszelkim wymaganym kodem aplikacji.
+  services: iot-accelerators
+  ms.service: iot-accelerators
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  manager: philmea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74781630"
+landingContent:
+- title: Akceleratory rozwiązań Azure IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to są akceleratory rozwiązań Azure IoT?
+      url: about-iot-accelerators.md
+    - text: Witryna AzureIoTSolutions.com
+      url: iot-accelerators-permissions.md
+- title: Wprowadzenie do zdalnego monitorowania
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Omówienie akceleratora rozwiązania do monitorowania zdalnego
+      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Testowanie opartego na chmurze rozwiązania do monitorowania zdalnego
+      url: quickstart-remote-monitoring-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Monitorowanie urządzeń
+      url: iot-accelerators-remote-monitoring-monitor.md
+    - text: Wykrywanie problemów z urządzeniami
+      url: iot-accelerators-remote-monitoring-automate.md
+- title: Wprowadzenie do przemysłowego Internetu rzeczy
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Omówienie przemysłowego Internetu rzeczy
+      url: overview-iot-industrial.md
+    - text: Bliźniacza reprezentacja OPC — omówienie
+      url: overview-opc-twin.md
+    - text: Magazyn OPC — omówienie
+      url: overview-opc-vault.md
+    - text: Wydawca OPC — omówienie
+      url: overview-opc-publisher.md
+    - text: Co to jest przemysłowy Internet rzeczy?
+      url: iot-accelerators-connected-factory-features.md
+  - linkListType: quickstart
+    links:
+    - text: Testowanie opartego na chmurze rozwiązania połączonej fabryki
+      url: quickstart-connected-factory-deploy.md
+- title: Wprowadzenie do symulacji urządzeń
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Omówienie akceleratora rozwiązań do symulacji urządzeń
+      url: iot-accelerators-device-simulation-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Testowanie rozwiązania do symulacji urządzeń
+      url: quickstart-device-simulation-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie i uruchamianie symulacji urządzeń IoT
+      url: iot-accelerators-device-simulation-create-simulation.md
+    - text: Tworzenie niestandardowego symulowanego urządzenia
+      url: iot-accelerators-device-simulation-create-custom-device.md
+- title: Rozpoczynanie pracy z konserwacja predykcyjną
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Omówienie akceleratora rozwiązania do konserwacji predykcyjnej
+      url: iot-accelerators-predictive-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Testowanie rozwiązania do konserwacji predykcyjnej
+      url: quickstart-predictive-maintenance-deploy.md

@@ -14,8 +14,14 @@
       href: add-columns.md
     - name: Dodawanie wierszy
       href: add-rows.md
+    - name: Stosowanie operacji matematycznej
+      href: apply-math-operation.md
     - name: Stosowanie przekształcenia SQL
       href: apply-sql-transformation.md
+    - name: Czyszczenie brakujących danych
+      href: clean-missing-data.md
+    - name: Obcinanie wartości
+      href: clip-values.md
     - name: Konwertowanie na plik CSV
       href: convert-to-csv.md
     - name: Konwertowanie na zestaw danych
@@ -28,74 +34,28 @@
       href: join-data.md
     - name: Normalizowanie danych
       href: normalize-data.md
+    - name: Partycjonowanie i próbkowanie
+      href: partition-and-sample.md
     - name: Usuwanie zduplikowanych wierszy
       href: remove-duplicate-rows.md
+    - name: SMOTE
+      href: smote.md
     - name: Wybieranie przekształcenia kolumn
       href: select-columns-transform.md
     - name: Wybieranie kolumn w zestawie danych
       href: select-columns-in-dataset.md
-- name: Próbkowanie
-  items:
-    - name: Krzyżowa weryfikacja modelu
-      href: cross-validate-model.md
-    - name: Partycjonowanie i próbkowanie
-      href: partition-and-sample.md
-    - name: SMOTE
-      href: smote.md
-    - name: Dzielenie danych
-      href: split-data.md
 - name: Wybieranie funkcji
   items:
     - name: Wybór funkcji oparty na filtrze
       href: filter-based-feature-selection.md
     - name: Ważność funkcji permutacji
       href: permutation-feature-importance.md
-- name: Języki Python i R
+- name: Funkcje statystyczne
   items:
-    - name: Tworzenie modelu języka Python
-      href: create-python-model.md
-    - name: Wykonywanie skryptu w języku Python
-      href: execute-python-script.md
-    - name: Wykonywanie skryptu języka R
-      href: execute-r-script.md
-- name: Analiza tekstu
-  items:
-    - name: Wyodrębnianie cech n-gramów z tekstu
-      href: extract-n-gram-features-from-text.md
-    - name: Tworzenie skrótów funkcji
-      href: feature-hashing.md
-    - name: Wstępne przetwarzanie tekstu
-      href: preprocess-text.md
+    - name: Podsumowywanie danych
+      href: summarize-data.md
 - name: Algorytmy uczenia maszynowego
   items:
-    - name: Klasyfikacja
-      items:
-        - name: Wieloklasowy las decyzyjny
-          href: multiclass-decision-forest.md
-        - name: Wieloklasowe wzmocnione drzewo decyzyjne
-          href: multiclass-boosted-decision-tree.md
-        - name: Wieloklasowa regresja logistyczna
-          href: multiclass-logistic-regression.md
-        - name: Wieloklasowa sieć neuronowa
-          href: multiclass-neural-network.md
-        - name: Jeden przeciw wszystkim — moduł wieloklasowy
-          href: one-vs-all-multiclass.md
-        - name: Dwuklasowa regresja logistyczna
-          href: two-class-logistic-regression.md
-        - name: Dwuklasowy uśredniony perceptron
-          href: two-class-averaged-perceptron.md
-        - name: Two-Class Boosted Decision Tree (Dwuklasowe wzmocnione drzewo decyzyjne)
-          href: two-class-boosted-decision-tree.md
-        - name: Dwuklasowy las decyzyjny
-          href: two-class-decision-forest.md
-        - name: Dwuklasowa sieć neuronowa
-          href: two-class-neural-network.md
-        - name: Dwuklasowa maszyna wektorów nośnych
-          href: two-class-support-vector-machine.md
-    - name: Klastrowanie
-      items:
-        - name: Klastrowanie metodą k-średnich
-          href: k-means-clustering.md
     - name: Regresja
       items:
         - name: Regresja wzmocnionego drzewa decyzyjnego
@@ -106,37 +66,79 @@
           href: linear-regression.md
         - name: Regresja sieci neuronowej
           href: neural-network-regression.md
-    - name: Moduł poleceń
+    - name: Klastrowanie
       items:
-        - name: Trenowanie modułu poleceń SVD
-          href: train-svd-recommender.md
+        - name: Klastrowanie metodą k-średnich
+          href: k-means-clustering.md
+    - name: Klasyfikacja
+      items:
+        - name: Wieloklasowe wzmocnione drzewo decyzyjne
+          href: multiclass-boosted-decision-tree.md
+        - name: Wieloklasowy las decyzyjny
+          href: multiclass-decision-forest.md
+        - name: Wieloklasowa regresja logistyczna
+          href: multiclass-logistic-regression.md
+        - name: Wieloklasowa sieć neuronowa
+          href: multiclass-neural-network.md
+        - name: Jeden przeciw wszystkim — moduł wieloklasowy
+          href: one-vs-all-multiclass.md
+        - name: Dwuklasowy uśredniony perceptron
+          href: two-class-averaged-perceptron.md
+        - name: Two-Class Boosted Decision Tree (Dwuklasowe wzmocnione drzewo decyzyjne)
+          href: two-class-boosted-decision-tree.md
+        - name: Dwuklasowy las decyzyjny
+          href: two-class-decision-forest.md
+        - name: Dwuklasowa regresja logistyczna
+          href: two-class-logistic-regression.md
+        - name: Dwuklasowa sieć neuronowa
+          href: two-class-neural-network.md
+        - name: Dwuklasowa maszyna wektorów nośnych
+          href: two-class-support-vector-machine.md
 - name: Trenowanie modelu
   items:
-    - name: Trenowanie modelu
-      href: train-model.md
     - name: Trenowanie modelu klastrowania
       href: train-clustering-model.md
+    - name: Trenowanie modelu
+      href: train-model.md
     - name: Dostrajanie hiperparametrów modelu
       href: tune-model-hyperparameters.md
-- name: Ocena modelu
-  items:
-    - name: Ocena modelu
-      href: evaluate-model.md
-    - name: Ocena modułu poleceń
-      href: evaluate-recommender.md
-- name: Klasyfikacja modelu
+- name: Ocenianie i ewaluacja modelu
   items:
     - name: Stosowanie przekształcenia
       href: apply-transformation.md
     - name: Przypisywanie danych do klastrów
       href: assign-data-to-clusters.md
+    - name: Krzyżowa weryfikacja modelu
+      href: cross-validate-model.md
+    - name: Ocena modelu
+      href: evaluate-model.md
     - name: Klasyfikacja modelu
       href: score-model.md
+- name: Język Python
+  items:
+    - name: Tworzenie modelu języka Python
+      href: create-python-model.md
+    - name: Wykonywanie skryptu w języku Python
+      href: execute-python-script.md
+- name: Język R
+  items:
+    - name: Wykonywanie skryptu języka R
+      href: execute-r-script.md
+- name: Analiza tekstu
+  items:
+    - name: Wyodrębnianie cech n-gramów z tekstu
+      href: extract-n-gram-features-from-text.md
+    - name: Tworzenie skrótów funkcji
+      href: feature-hashing.md
+    - name: Wstępne przetwarzanie tekstu
+      href: preprocess-text.md
+- name: Zalecenie
+  items:
+    - name: Ocena modułu poleceń
+      href: evaluate-recommender.md
     - name: Wynik modułu poleceń SVD
       href: score-svd-recommender.md
-- name: Funkcje statystyczne
-  items:
-    - name: Stosowanie operacji matematycznej
-      href: apply-math-operation.md
-    - name: Podsumowywanie danych
-      href: summarize-data.md
+    - name: Trenowanie modułu poleceń SVD
+      href: train-svd-recommender.md
+- name: Błędy modułów i rozwiązywanie problemów
+  href: machine-learning-module-error-codes.md

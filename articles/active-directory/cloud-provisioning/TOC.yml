@@ -1,0 +1,66 @@
+- name: Aprowizacja w chmurze
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Co to jest aprowizacja tożsamości?
+      href: what-is-provisioning.md
+    - name: Co to jest aprowizacja w chmurze programu Azure AD Connect?
+      href: what-is-cloud-provisioning.md
+      maintainContext: true
+- name: Samouczki
+  expanded: true
+  items:
+    - name: Integrowanie pojedynczego lasu usługi AD z jedną dzierżawą usługi Azure AD
+      href: tutorial-single-forest.md
+    - name: Integrowanie istniejącego i nowego lasu z jedną dzierżawą usługi Azure AD
+      href: tutorial-existing-forest.md
+    - name: Pilotażowa aprowizacja w chmurze dla istniejącego zsynchronizowanego lasu usługi AD
+      href: tutorial-pilot-aadc-aadccp.md
+- name: Pojęcia
+  items:
+    - name: Co to jest synchronizacja skrótów haseł?
+      href: /azure/active-directory/hybrid/whatis-phs?context=azure/active-directory/cloud-provisioning/context/cloud-provisioning-context
+    - name: 'Informacje o schemacie, atrybutach i wyrażeniach usługi Azure AD'
+      href: concept-attributes.md
+    - name: Pisanie wyrażeń na potrzeby mapowania atrybutów w usłudze Azure Active Directory
+      href: reference-expressions.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Instalacja i uaktualnianie
+      items:
+        - name: Wymagania wstępne dotyczące instalacji
+          href: how-to-prerequisites.md
+        - name: Instalowanie agenta aprowizacji w chmurze programu Azure AD Connect
+          href: how-to-install.md
+        - name: Konfiguracja aprowizacji w chmurze
+          href: how-to-configure.md
+    - name: Planowanie i projektowanie
+      items:
+        - name: Topologie i scenariusze dotyczące aprowizacji w chmurze programu Azure AD Connect
+          href: plan-cloud-provisioning-topologies.md
+    - name: Zarządzanie
+      items:
+        - name: Automatyczne uaktualnianie agenta
+          href: how-to-automatic-upgrade.md
+    - name: Programowanie
+      items:
+        - name: Przekształcenia
+          href: how-to-transformation.md
+        - name: Interfejs API synchronizacji usługi Azure AD
+          href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Rozwiązywanie problemów z aprowizacją w chmurze
+          href: how-to-troubleshoot.md
+        - name: Zduplikowane atrybuty
+          href: 'https://docs.microsoft.com/office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync'
+- name: Dokumentacja
+  items:
+    - name: Historia wersji agenta aprowizacji w chmurze programu Azure AD Connect
+      href: /azure/active-directory/manage-apps/provisioning-agent-release-version-history?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: Często zadawane pytania dotyczące aprowizacji w chmurze programu Azure AD Connect
+      href: reference-cloud-provisioning-faq.md
+    - name: Synchronizowane atrybuty
+      href: /azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: Podstawowe środowisko usług Active Directory i Azure AD
+      href: tutorial-basic-ad-azure.md

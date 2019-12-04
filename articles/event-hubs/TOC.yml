@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: Włączanie integracji sieci wirtualnych i zapór ogniowych w przestrzeni nazw usługi Event Hubs
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Konfigurowanie zarządzanych przez klienta kluczy na potrzeby szyfrowania danych magazynowanych
+        - name: Konfigurowanie zarządzanych przez klienta kluczy na potrzeby szyfrowania danych magazynowanych (wersja zapoznawcza)
           href: configure-customer-managed-key.md
     - name: Rozwiązywanie problemów
       items:
