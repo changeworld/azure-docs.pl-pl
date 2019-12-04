@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e9d484da1b59c456b30cf0b465ec6de5af77d1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014293"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786371"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 
@@ -107,7 +107,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |50128|Nieprawidłowa nazwa domeny — nie znaleziono informacji identyfikacyjnych dzierżawy w żądaniu lub IMPLIKOWANYCH przez żadne podane poświadczenia.|
 |50129|Urządzenie nie jest dołączone do miejsca pracy — do zarejestrowania urządzenia wymagane jest **dołączenie do miejsca pracy** .|
 |50130|Nie można zinterpretować wartości Claim jako znanej metody uwierzytelniania.|
-|50131|Używane w różnych błędach dostępu warunkowego. Na przykład Zły stan urządzenia z systemem Windows albo żądanie zablokowane z powodu podejrzanych decyzji związanych z działaniami, zasadami dostępu i zasadami zabezpieczeń.|
+|50131|Używane w różnych błędach dostępu warunkowego. Przykład: Zły stan urządzenia z systemem Windows albo żądanie zablokowane z powodu podejrzanych decyzji związanych z działaniami, zasadami dostępu i zasadami zabezpieczeń.|
 |50132|Poświadczenia zostały odwołane z następujących powodów:<ul><li>Artefakt logowania jednokrotnego jest nieprawidłowy lub wygasł</li><li>Sesja nie jest wystarczająco świeża dla aplikacji</li><li>Wysłano żądanie logowania dyskretnego, ale sesja użytkownika z usługą Azure AD jest nieprawidłowy lub wygasła.</li></ul>|
 |50133|Sesja jest nieprawidłowa z powodu wygaśnięcia lub niedawnej zmiany hasła.|
 |50135|Zmiana hasła jest wymagana ze względu na ryzyko związane z kontem.|
@@ -181,7 +181,8 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |90051| Nieprawidłowy token delegowania. Określono nieprawidłowy identyfikator chmury krajowej ({cloudId}).|
 |90072| Konto musi zostać najpierw dodane jako użytkownik zewnętrzny w dzierżawie. Wyloguj się i zaloguj ponownie przy użyciu innego konta usługi Azure AD.|
 |90094| Przydzielenie wymaga uprawnień administratora. Poproszenie administratora dzierżawy o zgodę na tę aplikację.|
-|500021|Dzierżawca jest ograniczony przez firmowy serwer proxy. Odmawianie dostępu do zasobów.|
+|500011| Nie znaleziono podmiotu zabezpieczeń o nazwie <site address> w dzierżawie o nazwie <tenant ID>. Taka sytuacja może wystąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub nie została wysłana przez żadnego użytkownika w dzierżawie. Żądanie uwierzytelniania mogło zostać wysłane do nieprawidłowej dzierżawy.|
+|500021| Dzierżawca jest ograniczony przez firmowy serwer proxy. Odmawianie dostępu do zasobów.|
 |500121| Uwierzytelnianie w trakcie silnego żądania uwierzytelniania nie powiodło się.|
 |500133| Potwierdzenie nie znajduje się w prawidłowym zakresie czasu. Upewnij się, że token dostępu nie wygasł przed użyciem go do potwierdzenia przez użytkownika lub zażądaj nowego tokenu.|
 |530021|Aplikacja nie spełnia wymagań dotyczących zatwierdzonej aplikacji dostępu warunkowego.|

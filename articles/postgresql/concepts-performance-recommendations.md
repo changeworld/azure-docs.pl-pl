@@ -1,17 +1,17 @@
 ---
-title: Zalecenia dotyczące wydajności w Azure Database for PostgreSQL-pojedynczym serwerze
+title: Zalecenia dotyczące wydajności — Azure Database for PostgreSQL — pojedynczy serwer
 description: W tym artykule opisano funkcję rekomendacji dotyczących wydajności w ramach Azure Database for PostgreSQL-jednego serwera.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 5f1b64753d19158b17d4de1b3fbbe50d30ea0254
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764671"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768473"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Zalecenia dotyczące wydajności w Azure Database for PostgreSQL-pojedynczym serwerze
 
@@ -22,7 +22,7 @@ Funkcja zalecenia dotyczące wydajności analizuje bazy danych w celu utworzenia
 ## <a name="permissions"></a>Uprawnienia
 Uprawnienia **Właściciel** lub **Współautor** są wymagane do uruchamiania analiz przy użyciu funkcji Zalecenia dotyczące wydajności.
 
-## <a name="performance-recommendations"></a>Zalecenie dotyczące wydajności
+## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
 Funkcja [Zalecenia dotyczące wydajności](concepts-performance-recommendations.md) analizuje obciążenia na serwerze, aby zidentyfikować indeksy z potencjałem poprawy wydajności.
 
 Zaleceń dotyczących **wydajności** z **inteligentnej wydajności** na pasku menu na stronie Azure Portal serwera PostgreSQL.
@@ -39,7 +39,7 @@ Zalecenia nie są automatycznie stosowane. Aby zastosować zalecenie, skopiuj te
 
 ## <a name="recommendation-types"></a>Typy rekomendacji
 
-Obecnie obsługiwane są dwa typy zaleceń: *Utwórz indeks* i *upuść indeks*.
+Obecnie obsługiwane są dwa typy rekomendacji: *create index* i *Drop index*.
 
 ### <a name="create-index-recommendations"></a>Tworzenie zaleceń dotyczących indeksów
 *Tworzenie* zaleceń dotyczących indeksów Sugeruj nowe indeksy, aby przyspieszyć najczęściej wykonywane lub czasochłonne zapytania w obciążeniu. Ten typ rekomendacji wymaga włączenia [magazynu zapytań](concepts-query-store.md) . Magazyn zapytań zbiera informacje o zapytaniach i zawiera szczegółowe dane dotyczące środowiska uruchomieniowego zapytań i częstotliwości, których analiza używa do wykonania zalecenia.
