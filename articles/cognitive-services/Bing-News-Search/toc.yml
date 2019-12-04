@@ -1,5 +1,5 @@
 - name: Dokumentacja funkcji wyszukiwania wiadomości Bing
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Omówienie
   expanded: true
   items:

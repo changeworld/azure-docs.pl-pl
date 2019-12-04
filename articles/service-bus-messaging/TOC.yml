@@ -205,7 +205,7 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Rozwiązywanie problemów
       items:
-        - name: Wyjątki
+        - name: Przewodnik rozwiązywania problemów
           href: service-bus-messaging-exceptions.md
 - name: Dokumentacja
   items:

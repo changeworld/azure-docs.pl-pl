@@ -1,5 +1,5 @@
 - name: Dokumentacja funkcji wyszukiwania wizualnego w usłudze Bing
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Omówienie
   items:
     - name: Czym jest interfejs API wyszukiwania wizualnego Bing?

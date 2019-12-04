@@ -1,5 +1,5 @@
 - name: Dokumentacja funkcji automatycznego sugerowania Bing
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Omówienie
   items:
     - name: Czym jest funkcja automatycznego sugerowania Bing?
