@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906239"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773555"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Tworzenie woluminu NFS dla usługi Azure NetApp Files
 
@@ -32,9 +32,6 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 [Delegowanie podsieci do usługi Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia 
-
-> [!IMPORTANT] 
-> Dostęp do funkcji NFSv 4.1 wymaga listy dozwolonych.  Aby zażądać listy dozwolonych, Prześlij żądanie do <anffeedback@microsoft.com>. 
 
 * Wybór wersji systemu plików NFS do użycia  
   NFSv3 może obsługiwać wiele różnych przypadków użycia i jest często wdrażany w większości aplikacji dla przedsiębiorstw. Należy sprawdzić poprawność wersji (NFSv3 lub NFSv 4.1) wymaganej przez aplikację i utworzyć wolumin przy użyciu odpowiedniej wersji. Jeśli na przykład używasz platformy [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave), zalecane jest blokowanie plików z nfsv 4.1 w NFSv3. 

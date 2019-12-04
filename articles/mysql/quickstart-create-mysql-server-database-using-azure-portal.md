@@ -1,18 +1,18 @@
 ---
-title: 'Szybki start: tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal'
+title: 'Szybki Start: Tworzenie serwera Azure Portal-Azure Database for MySQL'
 description: W tym artykule podano instrukcje pozwalające utworzyć przykładowy serwer usługi Azure Database for MySQL za pomocą witryny Azure Portal w czasie około pięciu minut.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 04/15/2019
-ms.openlocfilehash: ae19ff5adc220326e32b82bdba676a037e98fabe
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 12/02/2019
+ms.openlocfilehash: 1dfe4840d49983c4ae273c16ae16f6df253d509e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195131"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770360"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal
 
@@ -41,15 +41,15 @@ Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for MyS
     **Ustawienie** | **Sugerowana wartość** | **Opis pola** 
     ---|---|---
     Nazwa serwera | Unikatowa nazwa serwera | Wprowadź unikatową nazwę identyfikującą serwer Azure Database for MySQL. Na przykład mydemoserver. Nazwa domeny *.mysql.database.azure.com* jest dołączana do podawanej nazwy serwera. Nazwa serwera może zawierać tylko małe litery, cyfry i znaki łącznika (-). Musi zawierać od 3 do 63 znaków.
-    Subscription | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla serwera. Jeśli masz wiele subskrypcji, wybierz tę, w ramach której są naliczane opłaty za ten zasób.
-    Resource group | *myresourcegroup* | Podaj nazwę nowej lub istniejącej grupy zasobów.
+    Subskrypcja | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla serwera. Jeśli masz wiele subskrypcji, wybierz tę, w ramach której są naliczane opłaty za ten zasób.
+    Grupa zasobów | *myresourcegroup* | Podaj nazwę nowej lub istniejącej grupy zasobów.
     Wybierz źródło | *Puste* | Wybierz opcję *Puste*, aby utworzyć nowy serwer od początku. (Opcję *Kopia zapasowa* należy wybrać w przypadku tworzenia serwera z geograficznej kopii zapasowej istniejącego serwera usługi Azure Database for MySQL).
     Identyfikator logowania administratora serwera | myadmin | Konto logowania do użycia podczas łączenia z serwerem. Nazwą logowania administratora nie może być **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-    Hasło | *Wartość wybrana przez użytkownika* | Podaj nowe hasło dla konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery z alfabetu angielskiego, małe litery z alfabetu angielskiego, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % i tak dalej).
+    Hasło | *Wartość wybrana przez użytkownika* | Podaj nowe hasło dla konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % itp.).
     Potwierdź hasło | *Wartość wybrana przez użytkownika*| Potwierdź hasło do konta administratora.
     Lokalizacja | *Region najbliżej Twoich użytkowników*| Wybierz lokalizację najbliżej użytkowników lub innych aplikacji Azure.
-    Version | *Najnowsza wersja główna*| Najnowsza wersja główna, chyba że z konkretnych powodów wymagana jest inna wersja.
-    Warstwa cenowa | **Ogólnego przeznaczenia**, **Generacja 5**, **2 rdzenie wirtualne**, **5 GB**, **7 dni**, **Geograficznie nadmiarowy** | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz **warstwę cenową**. Następnie wybierz kartę **Ogólnego przeznaczenia**. Wartość domyślna dla **generacji obliczeń**, **rdzeń wirtualny**, **magazynu**i **okresu przechowywania kopii zapasowych**wynosi *5* *rdzeni wirtualnych*, *100 GB*i *7 dni* . Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**. Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
+    Wersja | *Najnowsza wersja główna*| Najnowsza wersja główna, chyba że z konkretnych powodów wymagana jest inna wersja.
+    Warstwa cenowa | **Ogólnego przeznaczenia**, **Generacja 5**, **2 rdzenie wirtualne**, **5 GB**, **7 dni**, **Geograficznie nadmiarowy** | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz **warstwę cenową**. Następnie wybierz kartę **ogólnego przeznaczenia** . generacji *5*, *4 rdzeni wirtualnych*, *100 GB*i *7 dni* są wartościami domyślnymi dla okresu przechowywania **obliczeń**, **rdzeń wirtualny**, **magazynu**i **przetrzymywania kopii zapasowych**. Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**. Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
   
    > [!NOTE]
    > Jeśli niewielkie zasoby obliczeniowe i we/wy są wystarczające dla Twojego obciążenia, warto rozważyć użycie warstwy cenowej Podstawowa. Pamiętaj, że serwerów utworzonych w warstwie cenowej Podstawowa nie można później przeskalować do warstwy Ogólnego przeznaczenia lub Zoptymalizowana pod kątem pamięci. Przejdź na [stronę cennika](https://azure.microsoft.com/pricing/details/mysql/), aby uzyskać więcej informacji.
@@ -83,7 +83,7 @@ Usługa Azure Database for MySQL tworzy zaporę na poziomie serwera. Uniemożliw
    > Połączenia z usługą Azure Database for MySQL korzystają z portu 3306. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 3306 może być zablokowany. W takim przypadku nie będzie można nawiązać połączenia z serwerem, chyba że dział informatyczny otworzy port 3306.
    > 
 
-## <a name="get-the-connection-information"></a>Pobieranie informacji o połączeniu
+## <a name="get-the-connection-information"></a>Uzyskiwanie informacji o połączeniu
 Aby można było nawiązać połączenie z serwerem bazy danych, potrzebne są pełna nazwa serwera i poświadczenia logowania administratora. Być może te wartości zostały zanotowane wcześniej podczas pracy z artykułem Szybki start. W przeciwnym razie możesz łatwo odnaleźć nazwę serwera i informacje dotyczące logowania na stronie **Przegląd** lub **Właściwości** serwera w witrynie Azure Portal.
 
 Aby znaleźć te wartości, wykonaj następujące czynności: 
@@ -111,8 +111,8 @@ Nawiąż połączenia z serwerem za pomocą narzędzia wiersza polecenia **mysql
 
     Parametr narzędzia mysql |Sugerowana wartość|Opis
     ---|---|---
-    --host | *Nazwa serwera* | Wartość nazwy serwera, która została użyta wcześniej podczas tworzenia serwera usługi Azure Database for MySQL. Przykładowy serwer to **mydemoserver.mysql.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny ( **\*.mysql.database.azure.com**), tak jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. 
-    --user | *Nazwa logowania administratora serwera* |Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for MySQL. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *username\@ServerName*.
+    --host | *Nazwa serwera* | Wartość nazwy serwera, która została użyta wcześniej podczas tworzenia serwera usługi Azure Database for MySQL. Przykładowy serwer to **mydemoserver.mysql.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny ( **\*. MySQL.Database.Azure.com**), jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. 
+    --user | *Nazwa logowania administratora serwera* |Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for MySQL. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *Nazwa użytkownika\@ServerName*.
     -p | *Zaczekaj, aż zostanie wyświetlony monit* |Wtedy wpisz hasło podane podczas tworzenia serwera. Weź pod uwagę, że wpisywane znaki nie są wyświetlane w wierszu polecenia powłoki Bash. Po wprowadzeniu hasła wybierz klawisz **Enter**.
 
    Po nawiązaniu połączenia narzędzie mysql wyświetli monit `mysql>` umożliwiający wpisywanie poleceń. 
@@ -175,7 +175,7 @@ Aby nawiązać połączenie z serwerem za pomocą narzędzia z graficznym interf
 
 2. Utwórz nowe połączenie. Wybierz ikonę plus (+) obok nagłówka **połączenia MySQL** .
 
-3. W oknie dialogowym **Konfigurowanie nowego połączenia** wprowadź informacje dotyczące połączenia serwera na karcie **Parametry**. Wartości zastępcze są wyświetlane jako przykład. Zamień nazwę hosta, nazwę użytkownika i hasło na własne wartości.
+3. W oknie dialogowym **Konfigurowanie nowego połączenia** wprowadź informacje o połączeniu z serwerem na karcie **Parametry** . wartości symboli zastępczych są wyświetlane jako przykład. Zamień nazwę hosta, nazwę użytkownika i hasło na własne wartości.
 
    ![Konfigurowanie nowego połączenia](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
@@ -183,9 +183,9 @@ Aby nawiązać połączenie z serwerem za pomocą narzędzia z graficznym interf
     |---|---|---|
      Nazwa połączenia | Połączenie demonstracyjne | Etykieta dla tego połączenia. |
     Metoda połączenia | Standardowa (TCP/IP) | Metoda Standardowa (TCP/IP) jest wystarczająca. |
-    Nazwa hosta | *Nazwa serwera* | Wartość nazwy serwera, która została użyta podczas tworzenia serwera usługi Azure Database for MySQL. Przykładowy serwer to **mydemoserver.mysql.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny ( **\*.mysql.database.azure.com**), tak jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia.|
+    Nazwa hosta | *Nazwa serwera* | Wartość nazwy serwera, która została użyta podczas tworzenia serwera usługi Azure Database for MySQL. Przykładowy serwer to **mydemoserver.mysql.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny ( **\*. MySQL.Database.Azure.com**), jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia.|
      Port | 3306 | Port używany podczas łączenia z serwerem usługi Azure Database for MySQL. |
-    Nazwa użytkownika |  *Nazwa logowania administratora serwera* | Informacje dotyczące logowania administratora serwera, które podano wcześniej podczas tworzenia serwera usługi Azure Database for MySQL. Nasza przykładowa nazwa użytkownika to **\@mydemoserver**. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *username\@ServerName*.
+    Nazwa użytkownika |  *Nazwa logowania administratora serwera* | Informacje dotyczące logowania administratora serwera, które podano wcześniej podczas tworzenia serwera usługi Azure Database for MySQL. Nasza przykładowa nazwa użytkownika to **webadmin\@mydemoserver**. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *Nazwa użytkownika\@ServerName*.
     Hasło | *Twoje hasło* | Wybierz pozycję **Zapisz w magazynie** , aby zapisać hasło. |
 
 4. Wybierz pozycję **Testuj połączenie**, aby sprawdzić, czy wszystkie parametry zostały skonfigurowane poprawnie. Następnie wybierz przycisk **OK**, aby zapisać połączenie. 

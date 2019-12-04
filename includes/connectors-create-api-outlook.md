@@ -1,27 +1,27 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: e42292f7848eba0b4545b713f7bbc491f35fe4a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183485"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789374"
 ---
-1. W polu wyszukiwania wprowadź "outlook.com" jako filtr. W tym przykładzie wybierz następujący wyzwalacz: **Po nadejściu nowej wiadomości e-mail**
+1. W polu wyszukiwania wprowadź ciąg "outlook.com" jako filtr. Na potrzeby tego przykładu wybierz ten wyzwalacz: **po nadejściu nowej wiadomości e-mail**
 
-   ![Wyszukiwanie wyzwalaczy usługi Outlook.com lub akcje](./media/connectors-create-api-outlook/select-outlook.png)
+   ![Znajdź wyzwalacze lub akcje Outlook.com](./media/connectors-create-api-outlook/select-outlook.png)
 
-1. Po wybraniu wyzwalacza (lub działanie), zostanie wyświetlony monit logowania się na konto usługi Outlook.com w Jeśli już nie. Wybierz **Zaloguj**.
+1. Po wybraniu wyzwalacza (lub akcji) zostanie wyświetlony monit o zalogowanie się do konta Outlook.com, jeśli już nie zalogowanie się. Wybierz pozycję **Zaloguj**.
 
-   ![Zaloguj się do swojego konta usługi Outlook.com](./media/connectors-create-api-outlook/sign-in-outlook.png)  
+   ![Zaloguj się do konta Outlook.com](./media/connectors-create-api-outlook/sign-in-outlook.png)  
 
-3. Wybierz poświadczenia konta usługi Outlook.com.
+1. Wybierz poświadczenia konta Outlook.com.
 
    ![Wybierz konto logowania](./media/connectors-create-api-outlook/outlook-sign-in.png)  
 
-   Poświadczenia są używane do łączenia i uzyskiwania dostępu do danych na konto usługi Outlook.com.
-   W ramach subskrypcji platformy Azure, można ponownie użyć tego połączenia z dowolną inną aplikację logiki. 
+   Twoje poświadczenia służą do nawiązywania połączenia i uzyskiwania dostępu do danych konta usługi Outlook.com.
+   Możesz ponownie użyć tego połączenia z dowolną inną aplikacją logiki w ramach subskrypcji platformy Azure. 

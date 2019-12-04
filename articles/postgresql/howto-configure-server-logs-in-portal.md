@@ -1,17 +1,17 @@
 ---
-title: Skonfiguruj i uzyskaj dostęp do dzienników serwera w Azure Database for PostgreSQL-pojedynczym serwerze z Azure Portal
-description: W tym artykule opisano sposób konfigurowania i uzyskiwania dostępu do dzienników serwera w Azure Database for PostgreSQL-pojedynczym serwerze z Azure Portal.
+title: Zarządzanie dziennikami — Azure Portal-Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano sposób konfigurowania i uzyskiwania dostępu do dzienników serwera (plików dziennika) w Azure Database for PostgreSQL-pojedynczym serwerze z Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c77e708e14d34545754ca38095aedb63ff0172a1
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 3da48a9b6d3acb1f2811bc279de7963fa1d83918
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841521"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763695"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Konfigurowanie i dostęp do Azure Database for PostgreSQL-pojedynczych dzienników serwera z Azure Portal
 
@@ -53,7 +53,7 @@ Po rozpoczęciu rejestrowania można wyświetlić listę dostępnych dzienników
    ![Zrzut ekranu strony dzienników serwera z wyróżnioną listą dzienników](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > Konwencja nazewnictwa dziennika to **PostgreSQL-yyyy-mm-dd_hh0000. log**. Data i godzina użyta w nazwie pliku to czas, kiedy dziennik został wystawiony. Pliki dziennika obracają się co godzinę lub 100 MB, w zależności od tego, co nastąpi wcześniej.
+   > Konwencja nazewnictwa dziennika to **PostgreSQL-rrrr-mm-dd_hh0000. log**. Data i godzina użyta w nazwie pliku to czas, kiedy dziennik został wystawiony. Pliki dziennika obracają się co godzinę lub 100 MB, w zależności od tego, co nastąpi wcześniej.
 
 4. W razie potrzeby użyj pola wyszukiwania, aby szybko zawęzić do określonego dziennika na podstawie daty i godziny. Wyszukiwanie znajduje się na nazwie dziennika.
 

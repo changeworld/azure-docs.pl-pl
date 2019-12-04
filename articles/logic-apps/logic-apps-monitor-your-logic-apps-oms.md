@@ -1,20 +1,19 @@
 ---
-title: Monitorowanie aplikacji logiki za pomocą Azure Monitor-Azure Logic Apps
+title: Monitorowanie aplikacji logiki za pomocą Azure Monitor
 description: Uzyskaj szczegółowe informacje i Debuguj dane, aby rozwiązywać problemy i diagnozować uruchomienia aplikacji logiki przy użyciu dzienników Azure Monitor
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/29/2019
-ms.openlocfilehash: a038a05f03ce7a209ae82203441750749bc6c4c4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 305b50c86a468354f049fcc57fcb79b537e8dfed
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138793"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791897"
 ---
 # <a name="get-insights-and-debugging-data-for-logic-apps-by-using-azure-monitor-logs"></a>Uzyskiwanie szczegółowych informacji i debugowanie danych dla aplikacji logiki przy użyciu dzienników Azure Monitor
 
@@ -31,7 +30,7 @@ Przed rozpoczęciem potrzebny jest obszar roboczy Log Analytics. Dowiedz się [,
 
 ## <a name="turn-on-logging-for-new-logic-apps"></a>Włącz rejestrowanie dla nowych aplikacji logiki
 
-1. W [Azure Portal](https://portal.azure.com)Utwórz aplikację logiki. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** >  > **aplikacja logiki**.
+1. W [Azure Portal](https://portal.azure.com)Utwórz aplikację logiki. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** > **integracji** > **aplikacji logiki**.
 
    ![Utwórz nową aplikację logiki](media/logic-apps-monitor-your-logic-apps-oms/create-new-logic-app.png)
 
@@ -65,7 +64,7 @@ Jeśli skonfigurowano już dzienniki Azure Monitor podczas tworzenia aplikacji l
 
    ![Wybierz obszar roboczy Log Analytics](./media/logic-apps-monitor-your-logic-apps-oms/select-log-analytics-workspace.png)
 
-1. W okienku Przegląd w obszarze **wprowadzenie do log Analytics** > **konfigurowania rozwiązań monitorowania**wybierz pozycję **Wyświetl rozwiązania**.
+1. W okienku Przegląd w obszarze **wprowadzenie do Log Analytics** > **skonfigurować monitorowanie rozwiązań**wybierz pozycję **Wyświetl rozwiązania**.
 
    ![Wybierz pozycję "Wyświetl rozwiązania"](media/logic-apps-monitor-your-logic-apps-oms/log-analytics-workspace.png)
 
@@ -95,7 +94,7 @@ Jeśli skonfigurowano już dzienniki Azure Monitor podczas tworzenia aplikacji l
 
 Po uruchomieniu aplikacji logiki można wyświetlić stan i licznik dla tych przebiegów na kafelku **zarządzanie Logic Apps** .
 
-1. Przejdź do obszaru roboczego log Analytics i wybierz > opcję **Podsumowanie obszaru roboczego** **Logic Apps zarządzanie**.
+1. Przejdź do obszaru roboczego Log Analytics i wybierz pozycję **Podsumowanie obszaru roboczego** > **Zarządzanie Logic Apps**.
 
    ![Stan i liczba uruchomień aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/logic-app-runs-summary.png)
 
@@ -111,23 +110,23 @@ Po uruchomieniu aplikacji logiki można wyświetlić stan i licznik dla tych prz
 
    Ta strona zawiera opcje zaawansowane: 
 
-   * Kolumna **śledzonych właściwości** : W przypadku aplikacji logiki, w której można skonfigurować śledzone właściwości, które są pogrupowane według akcji, można wyświetlić te właściwości z tej kolumny. Aby wyświetlić te śledzone właściwości, wybierz pozycję **Widok**. Aby wyszukać śledzone właściwości, Użyj filtru kolumn.
+   * Kolumna **śledzonych właściwości** : dla aplikacji logiki, w której można skonfigurować śledzone właściwości, które są pogrupowane według akcji, można wyświetlić te właściwości z tej kolumny. Aby wyświetlić te śledzone właściwości, wybierz pozycję **Widok**. Aby wyszukać śledzone właściwości, Użyj filtru kolumn.
 
       ![Wyświetlanie śledzonych właściwości aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
       Wszystkie nowo dodane właściwości śledzone mogą upłynąć od 10-15 minut, zanim pojawią się po raz pierwszy. Dowiedz się [, jak dodać śledzone właściwości do aplikacji logiki](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
 
-   * **Prześlij ponownie**: Można ponownie przesłać co najmniej jedno uruchomienie aplikacji logiki, które zakończyły się niepowodzeniem, powiodło się lub nadal działają. Zaznacz pola wyboru dla przebiegów, które chcesz ponownie przesłać, a następnie wybierz pozycję **Prześlij ponownie**.
+   * **Prześlij ponownie**: można ponownie przesłać co najmniej jedno uruchomienie aplikacji logiki, które zakończyły się niepowodzeniem, powiodło się lub nadal działają. Zaznacz pola wyboru dla przebiegów, które chcesz ponownie przesłać, a następnie wybierz pozycję **Prześlij ponownie**.
 
      ![Prześlij ponownie uruchomienia aplikacji logiki](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 1. Aby filtrować wyniki, można wykonać filtrowanie po stronie klienta i po stronie serwera.
 
-   * **Filtr po stronie klienta**: Dla każdej kolumny wybierz odpowiednie filtry, na przykład:
+   * **Filtr po stronie klienta**: dla każdej kolumny wybierz odpowiednie filtry, na przykład:
 
      ![Przykładowe filtry kolumn](media/logic-apps-monitor-your-logic-apps-oms/filters.png)
 
-   * **Filtr po stronie serwera**: Aby wybrać określony przedział czasu lub ograniczyć liczbę uruchomionych uruchomień, użyj kontrolki zakres w górnej części strony. Domyślnie w danym momencie są wyświetlane tylko 1 000 rekordów.
+   * **Filtr po stronie serwera**: aby wybrać określony przedział czasu lub ograniczyć liczbę uruchomionych uruchomień, użyj kontrolki zakres w górnej części strony. Domyślnie w danym momencie są wyświetlane tylko 1 000 rekordów.
 
      ![Zmień przedział czasu](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
 

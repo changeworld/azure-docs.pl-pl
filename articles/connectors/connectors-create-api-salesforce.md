@@ -1,22 +1,18 @@
 ---
-title: Nawiązywanie połączenia z usługą Salesforce z poziomu Azure Logic Apps | Microsoft Docs
+title: Łączenie z usługą Salesforce z Azure Logic Apps
 description: Automatyzowanie zadań i przepływów pracy, które monitorują i tworzą rekordy i zadania usługi Salesforce oraz zarządzają nimi przy użyciu Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: e3e9f7c841d25fa988ae7e0c97adf64a51d8ef87
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 000f4381ef2a7c0a2099a021b991087725ff2070
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050830"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789294"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Monitorowanie i tworzenie zasobów usług Salesforce oraz zarządzanie nimi za pomocą Azure Logic Apps
 
@@ -48,7 +44,7 @@ Można użyć wyzwalaczy usługi Salesforce, które uzyskują odpowiedzi z usłu
    * W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź ciąg "Salesforce" jako filtr. 
    Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
-     —lub—
+     — lub —
 
    * W przypadku istniejących aplikacji logiki w kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. W polu wyszukiwania wprowadź ciąg "Salesforce" jako filtr. Na liście Akcje wybierz żądaną akcję.
 
@@ -62,7 +58,7 @@ Można użyć wyzwalaczy usługi Salesforce, które uzyskują odpowiedzi z usłu
 
 Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/salesforce/)łącznika.
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
