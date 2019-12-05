@@ -102,8 +102,12 @@
           href: data-lake-query-data.md
         - name: Wykonywanie zapytań dotyczących danych w usłudze Azure Monitor
           href: query-monitor-data.md
-        - name: Python
-          href: python-query-data.md
+        - name: Debugowanie kodu Python wstawionego w kodzie KQL
+          href: debug-inline-python.md
+        - name: przy użyciu zestawów SDK
+          items:
+            - name: Python
+              href: python-query-data.md
         - name: Analiza szeregów czasowych i uczenie maszynowe
           items:
             - name: Analiza szeregów czasowych

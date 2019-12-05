@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: 7ca7256cbe42949141bc216ee1cb5c89ceac935c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd561f616c9e120a38f1c6b125e349684f82942e
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226367"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665614"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Tworzenie dodatkowej subskrypcji platformy Azure
 
@@ -36,7 +36,7 @@ Do tworzenia subskrypcji wymagane są następujące uprawnienia:
 |---------|---------|
 |Umowa Enterprise Agreement (EA) |  Rola właściciela konta rejestracji umowy Enterprise Aby uzyskać więcej informacji, zobacz [Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure](billing-understand-ea-roles.md).    |
 |Umowa klienta firmy Microsoft (MCA) |  Rola właściciela lub współautora w sekcji faktury, profilu rozliczeń lub koncie rozliczeniowym Rola twórcy subskrypcji platformy Azure w sekcji faktury  Aby uzyskać więcej informacji, zobacz [Role rozliczeniowe i zadania w subskrypcji](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks).    |
-|Umowa partnerska firmy Microsoft |   Rola administratora globalnego i agenta administratora w organizacji partnerskiej Aby dowiedzieć się więcej, zobacz [Centrum partnerskie — Przypisywanie ról i uprawnień użytkowników](https://docs.microsoft.com/partner-center/permissions-overview).  |
+|Umowa partnerska firmy Microsoft |   Rola administratora globalnego i agenta administratora w organizacji partnera CSP. Aby dowiedzieć się więcej, zobacz [Centrum partnerskie — Przypisywanie ról i uprawnień użytkowników](https://docs.microsoft.com/partner-center/permissions-overview).  Użytkownik musi zalogować się do dzierżawy partnera w celu utworzenia subskrypcji platformy Azure.   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Tworzenie subskrypcji w witrynie Azure Portal
 

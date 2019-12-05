@@ -40,6 +40,10 @@
       href: virtual-wan-custom-ipsec-portal.md
     - name: Konfigurowanie certyfikatów dla sieci VPN użytkownika (punkt-lokacja)
       href: certificates-point-to-site.md
+    - name: Konfigurowanie dzierżawy usługi Azure AD dla sieci VPN użytkownika
+      href: openvpn-azure-ad-tenant.md
+    - name: Włączanie uwierzytelniania wieloskładnikowego dla sieci VPN użytkownika
+      href: openvpn-azure-ad-mfa.md
     - name: Konfigurowanie uwierzytelniania w usłudze Azure AD na potrzeby sieci VPN użytkownika (wersja zapoznawcza)
       href: virtual-wan-point-to-site-azure-ad.md
     - name: Konfigurowanie automatyzacji (partnerzy usługi Virtual WAN)
