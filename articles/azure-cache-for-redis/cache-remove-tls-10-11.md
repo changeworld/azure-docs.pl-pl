@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 585828855cdbd3a585ced1aa6803482c3f26f0f4
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121583"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812843"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Usuń protokoły TLS 1,0 i 1,1 z używania z usługą Azure cache for Redis
 
@@ -33,7 +33,7 @@ Większość aplikacji korzysta z bibliotek klienckich Redis do obsługi komunik
 
 Klienci platformy Redis .NET domyślnie używają najstarszej wersji protokołu TLS w .NET Framework 4.5.2 lub starszym i używają najnowszej wersji protokołu TLS na platformie .NET Framework 4,6 lub nowszej. Jeśli używasz starszej wersji .NET Framework, można ręcznie włączyć protokół TLS 1,2:
 
-* **Stackexchange. Redis:** W parametrach połączenia należy ustawić `ssl=true` i `sslprotocls=tls12`.
+* **Stackexchange. Redis:** W parametrach połączenia należy ustawić `ssl=true` i `sslprotocols=tls12`.
 * **ServiceStack. Redis:** Postępuj zgodnie z [instrukcjami dotyczącymi ServiceStack. Redis](https://github.com/ServiceStack/ServiceStack.Redis/pull/247).
 
 ### <a name="net-core"></a>.NET Core

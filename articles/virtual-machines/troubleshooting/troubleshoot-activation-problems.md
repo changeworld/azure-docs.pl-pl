@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: f3ad58c4094e9f39bcf9782b7b98e351e9d7809b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058144"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819105"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Rozwiązywanie problemów z aktywacją maszyn wirtualnych systemu Windows Azure
 
@@ -26,7 +26,7 @@ Jeśli występują problemy podczas aktywowania maszyny wirtualnej systemu Windo
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Informacje o punktach końcowych usługi Azure KMS na potrzeby aktywacji produktu Windows Virtual Machines
 
-Platforma Azure używa różnych punktów końcowych do aktywacji usługi KMS w zależności od regionu w chmurze, w którym znajduje się maszyna wirtualna. Korzystając z tego przewodnika rozwiązywania problemów, należy użyć odpowiedniego punktu końcowego usługi KMS, który jest stosowany w Twoim regionie.
+Platforma Azure używa różnych punktów końcowych dla aktywacji usługi KMS (usług zarządzania kluczami) w zależności od regionu w chmurze, w którym znajduje się maszyna wirtualna. Korzystając z tego przewodnika rozwiązywania problemów, należy użyć odpowiedniego punktu końcowego usługi KMS, który jest stosowany w Twoim regionie.
 
 * Regiony chmury publicznej platformy Azure: kms.core.windows.net:1688
 * Azure Chiny — narodowe regiony w chmurze 21Vianet: kms.core.chinacloudapi.cn:1688
@@ -37,7 +37,7 @@ Platforma Azure używa różnych punktów końcowych do aktywacji usługi KMS w 
 
 Podczas próby aktywowania maszyny wirtualnej z systemem Windows Azure zostanie wyświetlony komunikat o błędzie podobny do następującego:
 
-**Błąd: 0xC004F074 LicensingService oprogramowania zgłosiła, że nie można aktywować komputera. Nie można skontaktować się z usługą Key ManagementService (KMS). Więcej informacji można znaleźć w dzienniku zdarzeń aplikacji.**
+**Błąd: 0xC004F074 LicensingService oprogramowania zgłosił, że nie można aktywować komputera. Nie można skontaktować się z usługą Key ManagementService (KMS). Więcej informacji można znaleźć w dzienniku zdarzeń aplikacji.**
 
 ## <a name="cause"></a>Przyczyna
 
@@ -54,7 +54,7 @@ Ogólnie rzecz biorąc, występują problemy z aktywacją maszyn wirtualnych pla
 
 W przypadku maszyny wirtualnej utworzonej na podstawie obrazu niestandardowego należy skonfigurować odpowiedni klucz instalacji klienta usługi KMS dla maszyny wirtualnej.
 
-1. Uruchom polecenie **slmgr. vbs/dlv** w wierszu polecenia z podwyższonym poziomem uprawnień. Sprawdź wartość Opis w danych wyjściowych, a następnie ustal, czy została ona utworzona na podstawie nośnika licencji sprzedaży detalicznej lub woluminu (VOLUME_KMSCLIENT):
+1. Uruchom polecenie **slmgr. vbs/dlv** w wierszu polecenia z podwyższonym poziomem uprawnień. Sprawdź wartość Opis w danych wyjściowych, a następnie ustal, czy została ona utworzona na podstawie nośnika licencji detalicznej lub woluminu (VOLUME_KMSCLIENT):
   
 
     ```
@@ -87,14 +87,14 @@ W przypadku maszyny wirtualnej utworzonej na podstawie obrazu niestandardowego n
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
 
-    Polecenie powinno zwrócić następujący wynik: Nazwa maszyny usługi zarządzania kluczami została pomyślnie ustawiona na kms.core.windows.net:1688.
+    Polecenie powinno zostać zwrócone: Nazwa maszyny usługi zarządzania kluczami ustawiona na kms.core.windows.net:1688 pomyślnie.
 
 4. Sprawdź, czy korzystasz z Psping, że masz połączenie z serwerem usługi KMS. Przejdź do folderu, w którym wyodrębniono pobrany plik Pstools.zip, a następnie uruchom:
   
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-   W drugim od końca wierszu danych wyjściowych upewnij się, że widzisz: Wysłano = 4, odebrano = 4, utrata = 0 (0% straty).
+   W drugim wierszu danych wyjściowych upewnij się, że zobaczysz: wysłane = 4, odebrane = 4, utrata = 0 (0% straty).
 
    Jeśli wartość utracona jest większa niż 0 (zero), maszyna wirtualna nie ma łączności z serwerem usługi KMS. W takiej sytuacji, jeśli maszyna wirtualna znajduje się w sieci wirtualnej i ma określony niestandardowy serwer DNS, należy upewnić się, że serwer DNS jest w stanie rozpoznać kms.core.windows.net. Lub Zmień serwer DNS na taki, który rozwiązuje kms.core.windows.net.
 
@@ -132,4 +132,4 @@ Po wygaśnięciu okresu prolongaty, gdy system Windows nadal nie jest aktywowany
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
-Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać problem.
+Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), aby szybko rozwiązać problem.

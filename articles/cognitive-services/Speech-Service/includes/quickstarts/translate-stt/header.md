@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: translacja zamiany mowy na tekst — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: c45e75038d1731c933ccf8bf26f9de573e409292
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cd45657beacd04eb2376af3e4297eae051157778
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502786"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816926"
 ---
 W tym przewodniku szybki start użyjesz [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) , aby interaktywnie przetłumaczyć mowę z jednego języka na tekst w innym języku. Po spełnieniu kilku wymagań wstępnych, przetłumaczenie zamiany mowy na tekst obejmuje tylko pięć kroków:
 > [!div class="checklist"]

@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: synteza mowy C# , usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/19/2019
 ms.author: erhopf
-ms.openlocfilehash: 0415159aaacbe1c03c92f1106fe68a4ce6ff6c0c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 800afbca58d78da28034e0fad785688b9d4b2251
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260821"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818225"
 ---
 **Wybierz środowisko docelowe**
 
@@ -25,7 +25,7 @@ ms.locfileid: "74260821"
 [!INCLUDE [dotnetcore](./dotnetcore.md)]
 #### <a name="unitytabunity"></a>[Unity](#tab/unity)
 [!INCLUDE [unity](./unity.md)]
-#### <a name="uwptabuwp"></a>[PLATFORMY UWP](#tab/uwp)
+#### <a name="uwptabuwp"></a>[PLATFORMY UNIWERSALNEJ SYSTEMU WINDOWS](#tab/uwp)
 [!INCLUDE [uwp](./uwp.md)]
 
 * * *

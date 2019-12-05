@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 72029d1d56c9d561e629cc750244fd7de8ec113a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507177"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806222"
 ---
 # <a name="about-direct-line-speech"></a>Informacje o bezpośredniej mowie wiersza
 
@@ -35,11 +35,11 @@ Aby zapoznać się z kompletnym przewodnikiem krok po kroku dotyczącym tworzeni
 
 Oferujemy również Przewodniki Szybki Start, które umożliwiają uruchamianie kodu w mniej niż 10 minut. Ta tabela zawiera listę przewodników szybki start dla asystenta głosowego zorganizowanych według języka.
 
-| Szybki start | Platforma | Dokumentacja interfejsu API |
+| Szybki start | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
-| C#, Platformy UWP | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Przycisku](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Przycisku](https://aka.ms/csspeech/javaref) |
+| C#, Platformy UWP | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Przeglądaj](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
@@ -50,7 +50,7 @@ Przykładowy kod służący do tworzenia asystenta głosowego jest dostępny w w
 
 ## <a name="customization"></a>Dostosowywanie
 
-W przypadku asystentów głosowych utworzonych przy użyciu usługi Azure Speech Services można używać pełnego zakresu opcji dostosowywania dostępnych na potrzeby [zamiany mowy na tekst](speech-to-text.md), zamiany [tekstu na mowę](text-to-speech.md)oraz [niestandardowego słowa kluczowego](speech-devices-sdk-create-kws.md).
+Asystentów głosowych utworzonych za pomocą usługi mowy mogą korzystać z pełnego zakresu opcji dostosowywania dostępnych na potrzeby [zamiany mowy na tekst](speech-to-text.md), zamiany [tekstu na mowę](text-to-speech.md)i [niestandardowego słowa kluczowego](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
 > Opcje dostosowywania różnią się w zależności od języka/ustawień regionalnych (zobacz [obsługiwane języki](supported-languages.md)).
@@ -64,7 +64,7 @@ Bezpośrednia obsługa mowy liniowej i skojarzonych z nią funkcji dla asystent�
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
+* [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
 * [Pobieranie zestawu Speech SDK](speech-sdk.md)
 * [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Pobierz rozwiązanie dla Asystenta wirtualnego i szablonu przedsiębiorstwa](https://github.com/Microsoft/AI)

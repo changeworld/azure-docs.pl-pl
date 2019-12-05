@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110163"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805896"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Jak rozpoznać intencje z mowy przy użyciu zestawu Speech SDK dlaC#
 
@@ -44,7 +44,7 @@ Przed rozpoczęciem tego przewodnika upewnij się, że masz następujące elemen
 
 ## <a name="luis-and-speech"></a>Usługa LUIS i mowa
 
-LUIS integruje się z usługami mowy, aby rozpoznawać intencje z mowy. Nie potrzebujesz subskrypcji usługi Speech Services — tylko LUIS.
+Usługa LUIS integruje się z usługą rozpoznawania mowy, aby rozpoznawać intencje z mowy. Nie potrzebujesz subskrypcji usługi rozpoznawania mowy, tylko usługi LUIS.
 
 LUIS używa trzech rodzajów kluczy:
 
@@ -52,11 +52,11 @@ LUIS używa trzech rodzajów kluczy:
 | --------- | ----------------------------------------------------- |
 | Tworzenie | Umożliwia programowe tworzenie i modyfikowanie aplikacji LUIS |
 | Starter (początkowy)   | Umożliwia testowanie aplikacji LUIS przy użyciu tylko tekstu   |
-| Endpoint  | Autoryzuje dostęp do określonej aplikacji LUIS            |
+| Punkt końcowy  | Autoryzuje dostęp do określonej aplikacji LUIS            |
 
 W tym przewodniku potrzebny jest typ klucza punktu końcowego. W tym przewodniku użyto przykładowej aplikacji LUIS Automation, którą można utworzyć, korzystając z przewodnika Szybki Start dla [aplikacji do automatyzacji domowej](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) . Jeśli utworzono własną aplikację LUIS, można jej użyć zamiast niej.
 
-Gdy tworzysz aplikację LUIS, LUIS automatycznie generuje klucz początkowy, aby można było przetestować aplikację przy użyciu zapytań tekstowych. Ten klucz nie umożliwia integracji usługi rozpoznawania mowy i nie współpracuje z tym przewodnikiem. Utwórz zasób LUIS na pulpicie nawigacyjnym platformy Azure i przypisz go do aplikacji LUIS. W tym przewodniku możesz użyć bezpłatnej warstwy subskrypcji.
+Gdy tworzysz aplikację LUIS, LUIS automatycznie generuje klucz początkowy, aby można było przetestować aplikację przy użyciu zapytań tekstowych. Ten klucz nie umożliwia integracji usługi mowy i nie współpracuje z tym przewodnikiem. Utwórz zasób LUIS na pulpicie nawigacyjnym platformy Azure i przypisz go do aplikacji LUIS. W tym przewodniku możesz użyć bezpłatnej warstwy subskrypcji.
 
 Po utworzeniu zasobu LUIS na pulpicie nawigacyjnym platformy Azure Zaloguj się do [portalu Luis](https://www.luis.ai/home), wybierz aplikację na stronie **Moje aplikacje** , a następnie przejdź do strony **zarządzania** aplikacji. Na koniec wybierz pozycję **klucze i punkty końcowe** na pasku bocznym.
 
@@ -128,7 +128,7 @@ Poniższe sekcje zawierają omówienie kodu.
 Najpierw należy utworzyć konfigurację mowy z poziomu klucza i regionu punktu końcowego LUIS. Konfiguracje mowy umożliwiają tworzenie aparatów rozpoznawania dla różnych funkcji zestawu Speech SDK. Konfiguracja mowy ma wiele sposobów na określenie subskrypcji, której chcesz użyć; tutaj używamy `FromSubscription`, które pobierają klucz subskrypcji i region.
 
 > [!NOTE]
-> Użyj klucza i regionu subskrypcji LUIS, a nie subskrypcji usługi Speech Services.
+> Użyj klucza i regionu subskrypcji LUIS, a nie subskrypcji usługi mowy.
 
 Następnie utwórz aparat rozpoznawania mowy przy użyciu elementu `new IntentRecognizer(config)`. Ponieważ konfiguracja wie już, której subskrypcji użyć, nie musisz ponownie podawać klucza subskrypcji i punktu końcowego podczas tworzenia aparatu rozpoznawania.
 

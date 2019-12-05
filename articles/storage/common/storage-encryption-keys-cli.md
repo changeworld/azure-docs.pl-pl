@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/20/2019
+ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: df65267924cfbfdc856b81928c4b6d7029f61184
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: fd3b7767bad104f4074b2460ecba3fe89d5a23e1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665971"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806630"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Konfigurowanie kluczy zarządzanych przez klienta usługi Azure Storage przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -91,7 +91,7 @@ az keyvault key create
 
 Domyślnie szyfrowanie usługi Azure Storage używa kluczy zarządzanych przez firmę Microsoft. Skonfiguruj konto usługi Azure Storage dla kluczy zarządzanych przez klienta i określ klucz, który ma zostać skojarzony z kontem magazynu.
 
-Aby zaktualizować ustawienia szyfrowania konta magazynu, wywołaj polecenie [AZ Storage account Update](/cli/azure/storage/account#az-storage-account-update). W tym przykładzie zawarto również zapytania dotyczące identyfikatora URI i wersji klucza magazynu kluczy, obie wartości są konieczne do skojarzenia klucza z kontem magazynu. Pamiętaj, aby zastąpić wartości zastępcze w nawiasach własnymi wartościami.
+Aby zaktualizować ustawienia szyfrowania konta magazynu, wywołaj polecenie [AZ Storage account Update](/cli/azure/storage/account#az-storage-account-update). W tym przykładzie zawarto również zapytania dotyczące identyfikatora URI magazynu kluczy i najnowszej wersji klucza, obie wartości są konieczne do skojarzenia klucza z kontem magazynu. Pamiętaj, aby zastąpić wartości zastępcze w nawiasach własnymi wartościami.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -102,7 +102,7 @@ key_vault_uri=$(az keyvault show \
 key_version=$(az keyvault key list-versions \
     --name <key> \
     --vault-name <key-vault> \
-    --query [].kid \
+    --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
 az storage account update 
     --name <storage-account> \

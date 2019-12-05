@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 106a11959bdaf34f44faa0c6a2b031ccba537835
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c4aee9604df98fbf5fbd18f527c4d40cff044bb9
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795669"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818845"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -27,7 +27,7 @@ Przed rozpoczęciem:
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=dotnet)
 > * Upewnij się, że masz dostęp do mikrofonu do przechwytywania audio
 
-## <a name="open-your-project-in-visual-studio"></a>Otwieranie projektu w programie Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otwórz projekt w programie Visual Studio
 
 Pierwszym krokiem jest upewnienie się, że projekt jest otwarty w programie Visual Studio.
 

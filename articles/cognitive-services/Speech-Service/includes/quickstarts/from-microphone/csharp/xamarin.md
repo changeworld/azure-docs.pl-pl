@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: f67c98eb8417b66c3315bccb1d56b98a68aac839
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ecfdc74c72284da97ebf3107140911e666a3a12d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796032"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818731"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -100,7 +100,7 @@ Teraz Dodaj C# kod definiujący część aplikacji określoną dla systemu iOS. 
 
 1. Jeśli tworzysz na komputerze z systemem Windows, nawiąż połączenie z urządzeniem Mac, aby skompilować za pośrednictwem **narzędzi** > **iOS** > **para do komputerów Mac**. Aby włączyć połączenie z urządzeniem Mac, postępuj zgodnie z instrukcjami wyświetlanymi przez program Visual Studio.
 
-#### <a name="uwptabhelloworlduwp"></a>[PLATFORMY UWP](#tab/helloworlduwp)
+#### <a name="uwptabhelloworlduwp"></a>[PLATFORMY UNIWERSALNEJ SYSTEMU WINDOWS](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodawanie przykładowego kodu dla projektu `helloworld.UWP`
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Dodaj przykładowy kod dla HelloWorld. Projekt platformy UWP
@@ -136,7 +136,7 @@ Teraz Dodaj C# kod, który definiuje część aplikacji platformy UWP.
 
    ![Żądanie uprawnienia dostępu do mikrofonu](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. Wybierz kolejno pozycje **Uruchom rozpoznawanie mowy**i mów do mikrofonu w języku angielskim lub zdania. Twoja Zamiana jest przesyłana do usługi mowy i uzyskanego do tekstu, który pojawia się w oknie.
+1. Wybierz kolejno pozycje **Uruchom rozpoznawanie mowy**i mów do mikrofonu w języku angielskim lub zdania. Mowa zostanie przesłana do usługi rozpoznawania mowy i transkrybowana na tekst, który zostanie wyświetlony w tym oknie.
 
    ![Interfejs użytkownika rozpoznawania mowy](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *
