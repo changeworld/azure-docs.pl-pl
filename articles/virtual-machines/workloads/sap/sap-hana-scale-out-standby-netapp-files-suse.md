@@ -86,7 +86,7 @@ Przed rozpoczęciem zapoznaj się z następującymi informacjami i dokumentami S
 * [SAP HANA w systemach NetApp z systemem plików NFS](https://www.netapp.com/us/media/tr-4435.pdf): Przewodnik konfiguracji, który zawiera informacje o sposobach konfigurowania SAP HANA przy użyciu Azure NFS by NetApp
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Jedną z metod osiągania wysokiej dostępności platformy HANA jest skonfigurowanie trybu failover dla hosta. Aby skonfigurować funkcję autoprzełączania do trybu failover hosta, należy dodać co najmniej jedną maszynę wirtualną do systemu HANA i skonfigurować je jako węzły w stanie wstrzymania. Gdy aktywny węzeł ulegnie awarii, węzeł w stanie wstrzymania zostanie automatycznie przełączone. W prezentowanej konfiguracji z maszynami wirtualnymi platformy Azure można uzyskać funkcję automatycznej pracy awaryjnej przy użyciu [systemu plików NFS na Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).  
 
