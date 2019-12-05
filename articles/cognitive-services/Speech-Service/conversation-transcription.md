@@ -1,5 +1,5 @@
 ---
-title: Co to jest transkrypcja konwersacji (wersja zapoznawcza) — usługa mowy
+title: Co to jest transkrypcja konwersacji (wersja zapoznawcza)? — Usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Transkrypcja konwersacji to rozwiązanie typu "Zamiana mowy na tekst", które łączy rozpoznawanie mowy, identyfikację osoby mówiącej i wyrażenie zdania z każdym głośnikem (znanym także jako diarization), aby zapewnić w czasie rzeczywistym i/lub asynchroniczne transkrypcję dowolnego konwersacji.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075846"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806290"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Co to jest transkrypcja konwersacji (wersja zapoznawcza)?
 
-Transkrypcja konwersacji to rozwiązanie typu ["Zamiana mowy na tekst](speech-to-text.md) ", które łączy rozpoznawanie mowy, identyfikację osoby mówiącej i wyrażenie zdania z każdym głośnikem (znanym także jako _diarization_) w celu zapewnienia czasu rzeczywistego i/lub asynchronicznego Transkrypcja każdej konwersacji. Transkrypcja konwersacji odróżnia głośniki w konwersacji, aby określić, którzy z nich korzystają i kiedy ułatwiają deweloperom Dodawanie mowy do tekstu do aplikacji, które wykonują wiele diarizationów.
+Transkrypcja konwersacji to rozwiązanie typu ["Zamiana mowy na tekst](speech-to-text.md) ", które łączy rozpoznawanie mowy, identyfikację osoby mówiącej i wyrażenie zdania z każdym głośnikem (znanym także jako _diarization_), aby zapewnić w czasie rzeczywistym i/lub asynchroniczne transkrypcję każdej konwersacji. Transkrypcja konwersacji odróżnia głośniki w konwersacji, aby określić, którzy z nich korzystają i kiedy ułatwiają deweloperom Dodawanie mowy do tekstu do aplikacji, które wykonują wiele diarizationów.
 
 ## <a name="key-features"></a>Najważniejsze funkcje
 
@@ -44,7 +44,7 @@ Aby zapewnić, że dla wszystkich osób, takich jak uczestnicy niesłyszący i s
 
 Uczestnicy spotkania mogą skoncentrować się na spotkaniu i pozostawiać uwagę na transkrypcję. Uczestnicy mogą aktywnie uczestniczyć w spotkaniu i szybko postępować zgodnie z kolejnymi krokami, korzystając z transkrypcji, a nie Robienie notatek i potencjalnie brakujących coś podczas spotkania.
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Jest to ogólny przegląd sposobu działania transkrypcji konwersacji.
 
@@ -59,11 +59,11 @@ Jest to ogólny przegląd sposobu działania transkrypcji konwersacji.
 
 Transkrypcja konwersacji oferuje trzy tryby transkrypcji:
 
-### <a name="real-time"></a>W czasie rzeczywistym
+### <a name="real-time"></a>Przesyłanie w czasie rzeczywistym
 
 Dane audio są przetwarzane na żywo w celu zwrócenia identyfikatora głośnika + transkrypcji. Wybierz ten tryb, jeśli wymaganie dotyczące rozwiązania transkrypcji ma dostarczyć uczestnikom konwersacji dynamiczny widok transkrypcji trwającej konwersacji. Na przykład utworzenie aplikacji w celu zapewnienia większej dostępności spotkań niesłyszących i słabo-słyszących jest idealnym rozwiązaniem w przypadku transkrypcji w czasie rzeczywistym.
 
-### <a name="asynchronous"></a>Komunikacji
+### <a name="asynchronous"></a>Asynchroniczne
 
 Dane audio to przetwarzanie wsadowe w celu zwrócenia identyfikatora i transkrypcji osoby mówiącej. Wybierz ten tryb, jeśli wymagania dotyczące rozwiązania transkrypcji mają zapewnić większą dokładność bez aktywnego widoku transkrypcji. Jeśli na przykład chcesz skompilować aplikację, aby umożliwić uczestnikom spotkania łatwe przechwycenie nieodebranych spotkań, użyj trybu transkrypcji asynchronicznej, aby uzyskać wyniki transkrypcji o wysokiej dokładności.
 

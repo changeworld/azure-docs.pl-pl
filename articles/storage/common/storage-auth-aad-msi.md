@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3e24cb2d4b5b82f6878647cdd631bd8ebca16199
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666169"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806591"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autoryzuj dostęp do obiektów blob i kolejek przy użyciu tożsamości Azure Active Directory i zarządzanych dla zasobów platformy Azure
 
@@ -36,13 +36,13 @@ Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [zarząd
 
 ## <a name="authenticate-with-the-azure-identity-library"></a>Uwierzytelnianie przy użyciu biblioteki tożsamości platformy Azure
 
-Zaletą biblioteki klienta tożsamości platformy Azure jest możliwość użycia tego samego kodu w celu uwierzytelnienia, czy aplikacja działa w środowisku programistycznym, czy na platformie Azure. W kodzie uruchomionym w środowisku platformy Azure Biblioteka klienta uwierzytelnia zarządzaną tożsamość zasobów platformy Azure. W środowisku programistycznym, zarządzana tożsamość nie istnieje, więc Biblioteka klienta uwierzytelnia użytkownika lub jednostkę usługi na potrzeby testowania.
+Biblioteka klienta tożsamości platformy Azure zapewnia obsługę uwierzytelniania tokenów usługi Azure AD dla [zestawu Azure SDK](https://github.com/Azure/azure-sdk). Najnowsze wersje bibliotek klienckich usługi Azure Storage dla platform .NET, Java, Python i JavaScript integrują się z biblioteką tożsamości platformy Azure, aby zapewnić prosty i bezpieczny sposób uzyskiwania tokenu OAuth 2,0 na potrzeby autoryzacji żądań usługi Azure Storage.
 
-Biblioteka klienta tożsamości platformy Azure dla platformy .NET uwierzytelnia podmiot zabezpieczeń. Gdy kod jest uruchomiony na platformie Azure, podmiot zabezpieczeń jest zarządzaną tożsamością dla zasobów platformy Azure.
+Zaletą biblioteki klienta tożsamości platformy Azure jest możliwość użycia tego samego kodu w celu uwierzytelnienia, czy aplikacja działa w środowisku programistycznym, czy na platformie Azure. Biblioteka klienta tożsamości platformy Azure dla platformy .NET uwierzytelnia podmiot zabezpieczeń. Gdy kod jest uruchomiony na platformie Azure, podmiot zabezpieczeń jest zarządzaną tożsamością dla zasobów platformy Azure. W środowisku programistycznym, zarządzana tożsamość nie istnieje, więc Biblioteka klienta uwierzytelnia użytkownika lub jednostkę usługi na potrzeby testowania.
 
 Po uwierzytelnieniu Biblioteka klienta tożsamości platformy Azure Pobiera poświadczenia tokenu. To poświadczenie tokenu jest następnie hermetyzowane w obiekcie klienta usługi tworzonym w celu wykonywania operacji w usłudze Azure Storage. Biblioteka obsługuje ten sposób bezproblemowo, pobierając odpowiednie poświadczenia tokenu.
 
-Aby uzyskać więcej informacji na temat biblioteki klienta tożsamości platformy Azure, zobacz [Biblioteka klienta tożsamości platformy Azure dla platformy .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+Aby uzyskać więcej informacji na temat biblioteki klienta tożsamości platformy Azure dla platformy .NET, zobacz [Biblioteka klienta tożsamości platformy Azure dla platformy .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity). Aby uzyskać dokumentację referencyjną dla biblioteki klienta tożsamości platformy Azure, zobacz [przestrzeń nazw Azure. Identity](/dotnet/api/azure.identity).
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Przypisywanie ról kontroli dostępu opartej na rolach (RBAC) na potrzeby dostępu do danych
 
@@ -50,7 +50,7 @@ Gdy podmiot zabezpieczeń usługi Azure AD próbuje uzyskać dostęp do danych o
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>Uwierzytelnianie użytkownika w środowisku programistycznym
 
-Gdy kod jest uruchomiony w środowisku programistycznym, uwierzytelnianie może być obsługiwane automatycznie lub może wymagać logowania w przeglądarce, w zależności od tego, które narzędzia są używane. Microsoft Visual Studio obsługuje logowanie jednokrotne (SSO), dzięki czemu aktywne konto użytkownika usługi Azure AD jest automatycznie używane do uwierzytelniania. Aby uzyskać więcej informacji na temat rejestracji jednokrotnej, zobacz Logowanie jednokrotne [do aplikacji](../../active-directory/manage-apps/what-is-single-sign-on.md).
+Gdy kod jest uruchomiony w środowisku programistycznym, uwierzytelnianie może być obsługiwane automatycznie lub może wymagać logowania w przeglądarce, w zależności od tego, które narzędzia są używane. Na przykład Microsoft Visual Studio obsługuje logowanie jednokrotne (SSO), dzięki czemu aktywne konto użytkownika usługi Azure AD jest automatycznie używane do uwierzytelniania. Aby uzyskać więcej informacji na temat rejestracji jednokrotnej, zobacz Logowanie jednokrotne [do aplikacji](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
 Inne narzędzia programistyczne mogą monitować o zalogowanie się za pośrednictwem przeglądarki sieci Web.
 
@@ -105,7 +105,7 @@ Aby uzyskać więcej informacji, zobacz [Tworzenie tożsamości dla aplikacji pl
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-## <a name="net-code-example-create-a-block-blob"></a>Przykład kodu platformy .NET: Tworzenie blokowego obiektu BLOB
+## <a name="net-code-example-create-a-block-blob"></a>Przykładowy kod platformy .NET: Utwórz blokowy obiekt blob
 
 Dodaj do kodu następujące dyrektywy `using`, aby użyć tożsamości platformy Azure i bibliotek klienckich usługi Azure Storage.
 
@@ -161,6 +161,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej o rolach RBAC dla usługi Azure Storage, zobacz [Zarządzanie prawami dostępu do danych magazynu za pomocą RBAC](storage-auth-aad-rbac.md).
-- Aby dowiedzieć się, jak autoryzować dostęp do kontenerów i kolejek z poziomu aplikacji magazynu, zobacz [Korzystanie z usługi Azure AD z aplikacjami magazynu](storage-auth-aad-app.md).
-- Aby dowiedzieć się, jak uruchomić interfejs wiersza polecenia platformy Azure i poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD, zobacz [Uruchamianie interfejsu wiersza polecenia platformy Azure lub poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektów](storage-auth-aad-script.md)
+- [Zarządzanie prawami dostępu do danych magazynu za pomocą RBAC](storage-auth-aad-rbac.md).
+- [Korzystanie z usługi Azure AD z aplikacjami magazynu](storage-auth-aad-app.md).
+- [Uruchamianie interfejsu wiersza polecenia platformy Azure lub poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektu BLOB lub kolejki](storage-auth-aad-script.md).

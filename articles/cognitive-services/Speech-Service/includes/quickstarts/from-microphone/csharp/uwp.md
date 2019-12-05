@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 50de8fd6ba28039c5ca7660c96c6d863f53cf02a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5f83f249228c96021979edc14c092eded03b96e4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796008"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818862"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ Przed rozpoczęciem:
 
 Jeśli to już zrobione, świetnie. Kontynuujmy.
 
-## <a name="open-your-project-in-visual-studio"></a>Otwieranie projektu w programie Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otwórz projekt w programie Visual Studio
 
 Pierwszym krokiem jest upewnienie się, że projekt jest otwarty w programie Visual Studio.
 
@@ -87,7 +87,7 @@ Teraz możesz przystąpić do kompilowania i testowania aplikacji.
 
    ![Żądanie uprawnienia dostępu do mikrofonu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Wybierz opcję **Speech recognition with microphone input** (Rozpoznawanie mowy z użyciem danych wejściowych z mikrofonu) i wypowiedz zwrot lub zdanie w języku angielskim do mikrofonu urządzenia. Twoja Zamiana jest przekazywana do usługi mowy i uzyskanego do tekstu, który pojawia się w oknie.
+1. Wybierz opcję **Speech recognition with microphone input** (Rozpoznawanie mowy z użyciem danych wejściowych z mikrofonu) i wypowiedz zwrot lub zdanie w języku angielskim do mikrofonu urządzenia. Mowa zostanie przesłana do usługi rozpoznawania mowy i transkrybowana na tekst, który zostanie wyświetlony w tym oknie.
 
    ![Interfejs użytkownika rozpoznawania mowy](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-11-ui-result.png)
 

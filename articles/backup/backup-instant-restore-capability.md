@@ -4,12 +4,12 @@ description: Funkcja błyskawicznego przywracania platformy Azure i często zada
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: c87dc98ddd1d5799f3363d7574063ef752fd8239
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172343"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806375"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskiwanie ulepszonej wydajności tworzenia kopii zapasowych i przywracania dzięki funkcji Azure Backup natychmiastowego przywracania
 
@@ -21,7 +21,7 @@ Nowy model do natychmiastowego przywracania zapewnia następujące udoskonalenia
 
 * Możliwość korzystania z migawek wykonanych w ramach zadania tworzenia kopii zapasowej, które jest dostępne do odzyskania bez oczekiwania na zakończenie transferu danych do magazynu. Skraca czas oczekiwania na skopiowanie migawek do magazynu przed wyzwoleniem przywracania.
 * Skraca czas wykonywania kopii zapasowej i przywracania przez zachowywanie migawek lokalnie, domyślnie przez dwa dni. Domyślna wartość przechowywania migawek jest konfigurowalna dla dowolnej wartości z zakresu od 1 do 5 dni.
-* Obsługuje rozmiary dysków do 4 TB. Nie zaleca się zmiany rozmiarów dysków Azure Backup. Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB i o długości do 30 TB, zobacz [Tworzenie kopii zapasowych maszyn wirtualnych z dyskami o rozmiarze do 30 TB](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+* Obsługuje rozmiary dysków do 32 TB. Nie zaleca się zmiany rozmiarów dysków Azure Backup.
 * Program obsługuje dyski SSD w warstwie Standardowa razem z dyskami HDD w warstwie Standardowa i dyskami SSD w warstwie Premium.
 * Możliwość korzystania z niezarządzanych maszyn wirtualnych (na dysku) podczas przywracania. Ta możliwość istnieje nawet wtedy, gdy maszyna wirtualna zawiera dyski rozproszone na kontach magazynu. Przyspiesza operacje przywracania w różnych konfiguracjach maszyn wirtualnych.
 * W przypadku tworzenia kopii zapasowych maszyn wirtualnych korzystających z usługi Premium Storage z natychmiastowym przywróceniem zaleca się alokowanie *50%* wolnego miejsca w łącznym przydzielonym miejscu do magazynowania, które jest wymagane **tylko** dla pierwszej kopii zapasowej. Ilość wolnego miejsca na 50% nie jest wymagana w przypadku kopii zapasowych po wykonaniu pierwszej kopii zapasowej.
@@ -65,7 +65,7 @@ W Azure Portal można zobaczyć pole dodane w bloku **zasady kopii zapasowych ma
 
 ![Możliwość natychmiastowego przywrócenia](./media/backup-azure-vms/instant-restore-capability.png)
 
-### <a name="using-powershell"></a>Korzystanie z programu PowerShell
+### <a name="using-powershell"></a>Używanie programu PowerShell
 
 >[!NOTE]
 > Za pomocą polecenia AZ PowerShell w wersji 1.6.0 lub nowszej można zaktualizować okres przechowywania migawki przywracania natychmiast w zasadach przy użyciu programu PowerShell

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Lista głosów zamiany tekstu na mowę, Node. js-Speech Service'
+title: 'Szybki Start: Lista głosów zamiany tekstu na mowę, Node. js-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start dowiesz się, jak uzyskać pełną listę głosów standardowych i neuronowych dla regionu/punktu końcowego przy użyciu środowiska Node. js. Lista jest zwracana w formacie JSON i dostępność głosu różni się w zależności od regionu.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1044519110d8b0ae7b5a50860c8116d73b6b70bc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bd063102a4c0cbdc4b62df027e643b117b412278
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559380"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812855"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Szybki start: Pobieranie listy głosów zamiany tekstu na mowę przy użyciu środowiska Node. js
+# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Szybki Start: Pobieranie listy głosów zamiany tekstu na mowę przy użyciu środowiska Node. js
 
 W tym przewodniku szybki start dowiesz się, jak uzyskać pełną listę głosów standardowych i neuronowych dla regionu/punktu końcowego przy użyciu środowiska Node. js. Lista jest zwracana w formacie JSON i dostępność głosu różni się w zależności od regionu. Aby zapoznać się z listą obsługiwanych regionów, zobacz [regiony](regions.md).
 
-Ten przewodnik Szybki Start wymaga [konta Cognitive Services platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem usługi Speech Services. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](get-started.md), aby uzyskać klucz subskrypcji.
+Ten przewodnik Szybki Start wymaga [konta Cognitive Services platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](get-started.md), aby uzyskać klucz subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 * Środowisko [Node w wersji 8.12.x lub nowszej](https://nodejs.org/en/)
 * Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
-* Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj bezpłatnie!](get-started.md).
+* Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie!](get-started.md).
 
 ## <a name="create-a-project-and-require-dependencies"></a>Tworzenie projektu i wymaganie zależności
 
@@ -48,9 +48,9 @@ const fs = require('fs');
 
 ## <a name="get-an-access-token"></a>Pobranie tokenu dostępu
 
-Zamiany tekstu na mowę interfejsu API REST wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. Ta funkcja wymienia klucz subskrypcji usług mowy dla tokenu dostępu przy użyciu `issueToken` punktu końcowego.
+Zamiany tekstu na mowę interfejsu API REST wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. Ta funkcja wymienia klucz subskrypcji usługi mowy dla tokenu dostępu przy użyciu punktu końcowego `issueToken`.
 
-W tym przykładzie przyjęto założenie, że subskrypcja usługi Speech Services znajduje się w regionie zachodnie stany USA. Jeśli używasz innego regionu, zaktualizuj wartość `uri`. Aby uzyskać pełną listę, zobacz [regionów](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+W tym przykładzie przyjęto założenie, że subskrypcja usługi mowy znajduje się w regionie zachodnie stany USA. Jeśli używasz innego regionu, zaktualizuj wartość `uri`. Aby uzyskać pełną listę, zobacz [regionów](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Skopiuj ten kod do projektu:
 
@@ -106,7 +106,7 @@ function textToSpeech(accessToken) {
 
 To już prawie koniec. Ostatnim krokiem jest utworzenie funkcji asynchronicznej. Ta funkcja odczyta swój klucz subskrypcji ze zmiennej środowiskowej, Pobierz token, poczekaj na zakończenie żądania, a następnie Napisz odpowiedź JSON do pliku.
 
-Jeśli nie znasz zmiennych środowiskowych ani wolisz testować przy użyciu klucza subskrypcji stałe jako ciąg, Zamień `process.env.SPEECH_SERVICE_KEY` na klucz subskrypcji jako ciąg.
+Jeśli nie znasz zmiennych środowiskowych ani wolisz testować przy użyciu klucza subskrypcji stałe jako ciąg, Zastąp `process.env.SPEECH_SERVICE_KEY` kluczem subskrypcji jako ciągiem.
 
 ```javascript
 // Use async and await to get the token before attempting

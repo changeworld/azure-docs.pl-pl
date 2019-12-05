@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860230"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806720"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Sceny, ujęcia i klatki kluczowe
 
@@ -30,7 +30,7 @@ Video Indexer określa, kiedy scena zmienia się w wideo na podstawie podpowiedz
 > [!NOTE]
 > Dotyczy wideo, które zawiera co najmniej 3 sceny.
 
-## <a name="shot-detection"></a>Wykrywanie ujęć
+## <a name="shot-detection"></a>Wykrywanie zrzutu
 
 Video Indexer określa, kiedy zrzut zmienia się w filmie wideo na podstawie podpowiedzi wizualizacji, śledząc jednocześnie przekroczenia i stopniowe przejścia w schemacie kolorów sąsiadujących ramek. Metadane zrzutu obejmują godzinę początkową i końcową oraz listę klatek kluczowych zawartych w tym zrzucie. Zrzuty to kolejne ramki pobierane z tego samego aparatu w tym samym czasie.
 
@@ -38,9 +38,71 @@ Video Indexer określa, kiedy zrzut zmienia się w filmie wideo na podstawie pod
 
 Wybiera ramki, które najlepiej reprezentują zrzut. Klatki kluczowe to reprezentatywne ramki wybrane z całego wideo w oparciu o właściwości estetyczne (na przykład kontrast i trwałość). Video Indexer pobiera listę identyfikatorów klatek kluczowych jako część metadanych zrzutu, na podstawie których klienci mogą wyodrębnić miniaturę klatki kluczowej. 
 
-Ramki kluczowe są skojarzone ze zrzutami w wyjściowym kodzie JSON. 
+### <a name="extracting-keyframes"></a>Wyodrębnianie klatek kluczowych
+
+Aby wyodrębnić ramki kluczowe o wysokiej rozdzielczości dla filmu wideo, należy najpierw przekazać i zindeksować wideo.
+
+![Ramki kluczowe](./media/scenes-shots-keyframes/extracting-keyframes.png)
+
+#### <a name="with-the-video-indexer-website"></a>Z witryną Video Indexer
+
+Aby wyodrębnić ramki kluczowe przy użyciu witryny sieci Web Video Indexer, Przekaż i Indeksuj wideo. Po zakończeniu zadania indeksowania kliknij przycisk **Pobierz** i wybierz pozycję **artefakty (zip)** . Spowoduje to pobranie folderu artefaktów do komputera. 
+
+![Ramki kluczowe](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+ 
+Rozpakuj i Otwórz folder. W folderze *_KeyframeThumbnail* i znajdziesz wszystkie ramki kluczowe, które zostały wyodrębnione z filmu wideo. 
+
+#### <a name="with-the-video-indexer-api"></a>Za pomocą interfejsu API Video Indexer
+
+Aby uzyskać ramki kluczowe przy użyciu interfejsu API Video Indexer, Przekaż i Indeksuj wideo przy użyciu połączenia [przekazywania wideo](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) . Po zakończeniu zadania indeksowania Wywołaj polecenie [Pobierz indeks wideo](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?). Pozwoli to uzyskać wszystkie szczegółowe informacje, które Video Indexer wyodrębnione z zawartości w pliku JSON.  
+
+Otrzymasz listę identyfikatorów klatek kluczowych w ramach metadanych poszczególnych zrzutów. 
+
+```json
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
+      ],
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+
+]
+```
+
+Teraz musisz uruchomić każdy z tych identyfikatorów klatek kluczowych w wywołaniu Get thumbnails ( [Pobierz miniatury](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) ). Spowoduje to pobranie wszystkich obrazów klatek kluczowych do komputera. 
 
 ## <a name="editorial-shot-type-detection"></a>Wykrywanie typu zrzutu redakcyjnego
+
+Ramki kluczowe są skojarzone ze zrzutami w wyjściowym kodzie JSON. 
 
 Typ zrzutu skojarzony z pojedynczym zdjęciem w formacie JSON usługi Insights reprezentuje jego typ redakcyjny. Te cechy typów zastrzelonych mogą być przydatne podczas edytowania wideo do klipów, przyczep lub podczas wyszukiwania określonego stylu klatki kluczowej dla celów artystycznych. Różne typy są określane na podstawie analizy pierwszej klatki kluczowej każdego z nich. Zrzuty są identyfikowane przez skalę, rozmiar i lokalizację powierzchni występujących w pierwszej klatce kluczowej. 
 
@@ -63,6 +125,7 @@ Dodatkowe cechy:
 
 * Dwa zrzuty: pokazuje powierzchnie dwóch osób o średnim rozmiarze.
 * Wiele twarzy: więcej niż dwie osoby.
+
 
 ## <a name="next-steps"></a>Następne kroki
 

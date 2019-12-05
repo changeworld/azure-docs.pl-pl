@@ -1,7 +1,7 @@
 ---
 title: Koder-dekoder audio skompresowany dźwięk przy użyciu zestawu mowy SDK-Speech Service
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przesyłać strumieniowo skompresowane audio do usługi Azure Speech Services przy użyciu zestawu Speech SDK. Dostępne dla C++systemów C#, i Java dla systemu Linux, Java w systemach Android i w środowisku C w systemie iOS.
+description: Dowiedz się, jak przesyłać strumieniowo skompresowane audio do usługi mowy przy użyciu zestawu Speech SDK. Dostępne dla C++systemów C#, i Java dla systemu Linux, Java w systemach Android i w środowisku C w systemie iOS.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 668964c597b8d748220cbeec68e0ba68300cb406
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 36e4506ea290d6109e1d1ae874b7e0f7c11bf50d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464346"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805828"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Używanie kodera-dekoder skompresowanego audio z zestawem Speech SDK
 
@@ -27,7 +27,7 @@ Interfejs API **strumienia danych wejściowych audio** zestawu Speech SDK umożl
 
 W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej.  Na zewnątrz WAV/PCM obsługiwane są następujące skompresowane formaty danych wejściowych kodera-dekoder:
 
-- FORMATU
+- MP3
 - OPUS/OGG
 - FLAC
 - ALAW w kontenerze WAV

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cba54c65a314919b5509e1de029ad05f8722baa2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075458"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828973"
 ---
 |**Generowanie<br><br>bramy sieci VPN** |**SKU**   | **Połączenia typu lokacja-lokacja/Połączenia między sieciami wirtualnymi<br>Tunele** | **Połączenia typu punkt-lokacja<br> Połączenia SSTP** | **P2S<br> połączenia IKEv2/OpenVPN** | **Test porównawczy<br>agregowanej przepływności** | **BGP** | **Strefa nadmiarowa** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
@@ -21,18 +21,18 @@ ms.locfileid: "74075458"
 |**Generation1**|**VpnGw1**  | Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 250       | 650 Mb/s  | Obsługiwane | Nie |
 |**Generation1**|**VpnGw2**  | Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 500       | 1 Gb/s    | Obsługiwane | Nie |
 |**Generation1**|**VpnGw3**  | Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 1,25 Gb/s | Obsługiwane | Nie |
-|**Generation1**|**VpnGw1AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 250       | 650 Mb/s  | Obsługiwane | Yes |
-|**Generation1**|**VpnGw2AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 500       | 1 Gb/s    | Obsługiwane | Yes |
-|**Generation1**|**VpnGw3AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 1,25 Gb/s | Obsługiwane | Yes |
+|**Generation1**|**VpnGw1AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 250       | 650 Mb/s  | Obsługiwane | Tak |
+|**Generation1**|**VpnGw2AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 500       | 1 Gb/s    | Obsługiwane | Tak |
+|**Generation1**|**VpnGw3AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 1,25 Gb/s | Obsługiwane | Tak |
 |        |            |            |           |                |           |           |     |
 |**Generation2**|**VpnGw2**  | Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 500       | 1,25 Gb/s | Obsługiwane | Nie |
 |**Generation2**|**VpnGw3**  | Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 2,5 GB/s  | Obsługiwane | Nie |
-|**Generation2**|**VpnGw4**  | Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 5 Gb/s    | Obsługiwane | Nie |
-|**Generation2**|**VpnGw5**  | Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 10 Gb/s   | Obsługiwane | Nie |
-|**Generation2**|**VpnGw2AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 500       | 1,25 Gb/s | Obsługiwane | Yes |
-|**Generation2**|**VpnGw3AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 2,5 GB/s  | Obsługiwane | Yes |
-|**Generation2**|**VpnGw4AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 5 Gb/s    | Obsługiwane | Yes |
-|**Generation2**|**VpnGw5AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 10 Gb/s   | Obsługiwane | Yes |
+|**Generation2**|**VpnGw4**  | Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 5000      | 5 Gb/s    | Obsługiwane | Nie |
+|**Generation2**|**VpnGw5**  | Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 10 000      | 10 Gb/s   | Obsługiwane | Nie |
+|**Generation2**|**VpnGw2AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 500       | 1,25 Gb/s | Obsługiwane | Tak |
+|**Generation2**|**VpnGw3AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 1000      | 2,5 GB/s  | Obsługiwane | Tak |
+|**Generation2**|**VpnGw4AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 5000      | 5 Gb/s    | Obsługiwane | Tak |
+|**Generation2**|**VpnGw5AZ**| Maksymalnie z 30*   | Maksymalnie z 128  | Maksymalnie z 10 000      | 10 Gb/s   | Obsługiwane | Tak |
 
 (*) Jeśli potrzebujesz więcej niż 30 tuneli sieci VPN S2S, skorzystaj z usługi [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md).
 

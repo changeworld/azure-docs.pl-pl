@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cd1f516b3d3840262d9221db772f2c186650462e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580704"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807395"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "73580704"
 W tym artykule dowiesz się, jak szkolić model regresji prognozowania szeregów czasowych przy użyciu funkcji automatycznego uczenia maszynowego w Azure Machine Learning. Konfigurowanie modelu prognozowania jest podobne do konfigurowania modelu regresji standardowej przy użyciu automatycznego uczenia maszynowego, ale niektóre opcje konfiguracji i wstępne kroki przetwarzania istnieją do pracy z danymi szeregów czasowych. W poniższych przykładach pokazano, jak:
 
 * Przygotowywanie danych do modelowania szeregów czasowych
-* Konfigurowanie określonych parametrów szeregów czasowych w obiekcie [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig)
+* Konfigurowanie określonych parametrów szeregów czasowych w obiekcie [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)
 * Uruchamianie prognoz z danymi szeregów czasowych
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
@@ -113,7 +113,7 @@ W przypadku zadań prognozowania automatyczne Uczenie maszynowe korzysta z krok�
 
 Obiekt `AutoMLConfig` definiuje ustawienia i dane niezbędne do automatycznego zadania uczenia maszynowego. Podobnie jak w przypadku problemu z regresją, definiuje się standardowe parametry szkolenia, takie jak typ zadania, liczba iteracji, dane szkoleniowe i liczba operacji krzyżowych. W przypadku zadań prognozowania należy ustawić dodatkowe parametry, które mają wpływ na eksperyment. W poniższej tabeli opisano każdy parametr i jego użycie.
 
-| Param | Opis | Wymagany |
+| Param | Opis | Wymagane |
 |-------|-------|-------|
 |`time_column_name`|Służy do określania kolumny DateTime w danych wejściowych używanych do kompilowania szeregów czasowych i wywnioskowania jej częstotliwości.|✓|
 |`grain_column_names`|Nazwy definiujące poszczególne grupy serii w danych wejściowych. Jeśli ziarno nie jest zdefiniowane, zakłada się, że zestaw danych jest jedną serią czasową.||
@@ -122,7 +122,7 @@ Obiekt `AutoMLConfig` definiuje ustawienia i dane niezbędne do automatycznego z
 |`target_rolling_window_size`|*n* okresy historyczne używane do generowania prognozowanych wartości, < = rozmiar zestawu szkoleniowego. W przypadku pominięcia *n* to pełny rozmiar zestawu szkoleniowego. Określ ten parametr, jeśli chcesz wziąć pod uwagę tylko określoną ilość historii podczas uczenia modelu.||
 |`enable_dnn`|Włącz prognozowanie DNNs.||
 
-Aby uzyskać więcej informacji, zobacz [dokumentację referencyjną](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) .
+Aby uzyskać więcej informacji, zobacz [dokumentację referencyjną](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
 
 Utwórz ustawienia szeregów czasowych jako obiekt słownika. Ustaw `time_column_name` na pole `day_datetime` w zestawie danych. Zdefiniuj parametr `grain_column_names`, aby mieć pewność, że dla danych są tworzone **dwie osobne grupy szeregów czasowych** . jeden dla sklepu A i B. na koniec Ustaw `max_horizon` na 50, aby przewidzieć cały zestaw testów. Ustaw okno prognozy na 10 okresów z `target_rolling_window_size`, a następnie określ pojedyncze opóźnienie dla wartości docelowych dla 2 okresów z parametrem `target_lags`.
 

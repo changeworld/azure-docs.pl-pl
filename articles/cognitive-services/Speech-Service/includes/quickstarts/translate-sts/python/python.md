@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Tłumaczenie mowy na mowę, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: e09d3fd2e880a01522b59d60a80f448192c0b689
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db6cbce03805b904dbac80eb8d2c6fcd38ede6ee
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503213"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817391"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -101,7 +101,7 @@ Przed rozpoczęciem upewnij się, że:
    python quickstart.py
    ```
 
-1. Wypowiedz zwrot lub zdanie w języku angielskim. Aplikacja przesyła mowę do usług mowy, które tłumaczą i przekształca na tekst (w tym przypadku do języka niemieckiego). Usługi mowy wysyłają następnie dźwięk, a następnie tekst z powrotem do aplikacji do wyświetlenia.
+1. Wymów frazę lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która tłumaczy i przekształca na tekst (w tym przypadku do języka niemieckiego). Usługa mowy wysyła następnie dźwięk, a następnie tekst z powrotem do aplikacji do wyświetlenia.
 
    ```
    Say something...

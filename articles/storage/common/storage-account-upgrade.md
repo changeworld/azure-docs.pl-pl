@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791701"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806987"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2
 
-Konta magazynu ogólnego przeznaczenia w wersji 2 obsługują najnowsze funkcje usługi Azure Storage i obejmują wszystkie funkcje kont w ramach ogólnego przeznaczenia w wersji 1 i usługi BLOB Storage. Konta ogólnego przeznaczenia w wersji 2 są zalecane w przypadku większości scenariuszy magazynu. Konta ogólnego przeznaczenia w wersji 2 zapewniają najniższy poziom wydajności dla usługi Azure Storage, a także konkurencyjne w branży ceny transakcji. Konta General-pupose v2 obsługują domyślne warstwy dostępu do zasobów gorąca lub chłodna oraz poziom obiektów BLOB w warstwach gorąca, chłodna i archiwalna.
+Konta magazynu ogólnego przeznaczenia w wersji 2 obsługują najnowsze funkcje usługi Azure Storage i obejmują wszystkie funkcje kont w ramach ogólnego przeznaczenia w wersji 1 i usługi BLOB Storage. Konta ogólnego przeznaczenia w wersji 2 są zalecane w przypadku większości scenariuszy magazynu. Konta ogólnego przeznaczenia w wersji 2 zapewniają najniższy poziom wydajności dla usługi Azure Storage, a także konkurencyjne w branży ceny transakcji. Konta ogólnego przeznaczenia w wersji 2 obsługują domyślne warstwy dostępu do zasobów gorąca i chłodna oraz poziomu obiektów BLOB między gorącą, chłodną lub archiwalną.
 
 Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2 z poziomu kont ogólnego przeznaczenia w wersji 1 lub magazynu obiektów BLOB jest proste. Uaktualnienie można wykonać przy użyciu Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
@@ -40,7 +40,7 @@ Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2 z poziomu kon
 
 Aby uaktualnić konto ogólnego przeznaczenia w wersji 1 do konta ogólnego przeznaczenia w wersji 2 przy użyciu programu PowerShell, najpierw zaktualizuj program PowerShell, aby używał najnowszej wersji modułu **AZ. Storage** . Aby uzyskać więcej informacji na temat instalowania programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiając nazwę grupy zasobów, nazwę konta magazynu i odpowiednią warstwę dostępu do konta.
+Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiając nazwę grupy zasobów, nazwę konta magazynu i żądaną warstwę dostępu do konta.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
@@ -49,7 +49,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 Aby uaktualnić konto ogólnego przeznaczenia w wersji 1 do konta ogólnego przeznaczenia w wersji 2 przy użyciu interfejsu wiersza polecenia platformy Azure, najpierw zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na temat instalowania interfejsu wiersza polecenia, zobacz [Instalacja interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiając nazwę grupy zasobów, nazwę konta magazynu i odpowiednią warstwę dostępu do konta.
+Następnie Wywołaj następujące polecenie, aby uaktualnić konto, podstawiając nazwę grupy zasobów, nazwę konta magazynu i żądaną warstwę dostępu do konta.
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
@@ -59,11 +59,11 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Określanie warstwy dostępu dla danych obiektów BLOB
 
-Konta ogólnego przeznaczenia w wersji 2 obsługują wszystkie usługi Azure Storage i obiekty danych, ale warstwy dostępu są dostępne tylko dla blokowych obiektów BLOB w magazynie obiektów BLOB. Podczas uaktualniania do konta magazynu ogólnego przeznaczenia w wersji 2 można określić warstwę dostępu dla danych obiektów BLOB.
+Konta ogólnego przeznaczenia w wersji 2 obsługują wszystkie usługi Azure Storage i obiekty danych, ale warstwy dostępu są dostępne tylko w przypadku blokowych obiektów BLOB w magazynie obiektów BLOB. W przypadku uaktualniania do konta magazynu ogólnego przeznaczenia w wersji 2 można określić domyślną warstwę dostępu do konta gorąca lub chłodna, która wskazuje warstwę domyślną dane obiektów BLOB zostaną przekazane, tak jakby nie określono indywidualnego parametru warstwy dostępu do obiektów BLOB.
 
-Warstwy dostępu umożliwiają wybranie najbardziej ekonomicznego magazynu w oparciu o przewidywane wzorce użycia. Blokowe obiekty blob mogą być przechowywane w warstwie gorąca, chłodna lub archiwalna. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [Azure Blob Storage: warstwy magazynowania gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
+Warstwy dostępu do obiektów BLOB umożliwiają wybranie najbardziej ekonomicznego magazynu w oparciu o przewidywane wzorce użycia. Blokowe obiekty blob mogą być przechowywane w warstwach gorąca, chłodna lub archiwalna. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [Azure Blob Storage: warstwy magazynowania gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
 
-Domyślnie nowe konto magazynu jest tworzone w warstwie dostępu gorąca, a konto magazynu ogólnego przeznaczenia w wersji 1 zostanie uaktualnione do warstwy dostępu gorąca. Jeśli szukasz warstwy dostępu, która ma być używana na potrzeby uaktualniania po uaktualnieniu, weź pod uwagę swój scenariusz. Istnieją dwa typowe scenariusze dotyczące migracji do konta ogólnego przeznaczenia w wersji 2:
+Domyślnie nowe konto magazynu jest tworzone w warstwie dostępu gorąca, a konto magazynu ogólnego przeznaczenia w wersji 1 można uaktualnić do warstwy konta gorąca lub chłodna. Jeśli podczas uaktualniania nie określono warstwy dostępu do konta, zostanie ona domyślnie uaktualniona do wersji gorąca. Jeśli szukasz warstwy dostępu, która ma być używana na potrzeby uaktualnienia, weź pod uwagę bieżący scenariusz użycia danych. Istnieją dwa typowe scenariusze dotyczące migracji do konta ogólnego przeznaczenia w wersji 2:
 
 * Masz już istniejące konto magazynu ogólnego przeznaczenia w wersji 1 i chcesz oszacować uaktualnienie do konta magazynu ogólnego przeznaczenia w wersji 2, z odpowiednią warstwą dostępu do magazynu dla danych obiektów BLOB.
 * Użytkownik zdecydował się użyć konta magazynu ogólnego przeznaczenia w wersji 2 lub już go i chcieć sprawdzić, czy w przypadku danych obiektów BLOB należy używać warstwy dostępu do magazynu gorąca lub chłodna.

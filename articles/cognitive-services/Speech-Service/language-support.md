@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 87b065d2ecf9d80c072918c14e7861f72b8d7aba
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 8db70ccbabfc165dbe3f7b9a61dbe5023a87f708
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304913"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815385"
 ---
-# <a name="language-and-region-support-for-the-speech-services"></a>Obsługa języka i regionu dla usług mowy
+# <a name="language-and-region-support-for-the-speech-service"></a>Obsługa języka i regionu dla usługi mowy
 
 Obsługa języka zależy od funkcjonalności usługi mowy. W poniższych tabelach przedstawiono obsługę języka dla ofert [zamiany mowy na tekst](#speech-to-text), zamiany [tekstu na mowę](#text-to-speech)i usługi [tłumaczenia mowy](#speech-translation) .
 
@@ -28,45 +28,45 @@ Zarówno zestaw Microsoft Speech SDK, jak i interfejs API REST obsługują nast�
 
  Ustawienia regionalne | Język | Obsługiwane | Modyfikowalne
 ------|------------|-----------|-------------
-`ar-EG` | Arabski (Egipt), standard nowoczesne | Yes | Yes
-`ar-SA` | Arabski (Arabia Saudyjska) | Yes | Yes
-`ar-AE` | Arabski (Zjednoczone Emiraty Arabskie) | Yes | Yes
-`ar-KW` | Arabski (Kuwejt) | Yes | Yes
-`ar-QA` | Arabski (katar) | Yes | Yes
-`ca-ES` | Kataloński | Yes | Nie
-`da-DK` | Duński (Dania) | Yes | Nie
-`de-DE` | Niemiecki (Niemcy) | Yes | Yes
-`en-AU` | Angielski (Australia) | Yes | Yes
-`en-CA` | Angielski (Kanada) | Yes | Yes
-`en-GB` | Angielski (Zjednoczone Królestwo) | Yes | Yes
-`en-IN` | English (India) | Yes | Yes
-`en-NZ` | Angielski (Nowa Zelandia) | Yes | Yes
-`en-US` | Angielski (Stany Zjednoczone) | Yes | Yes
-`es-ES` | Hiszpański (Hiszpania) | Yes | Yes
-`es-MX` | Hiszpański (Meksyk) | Yes | Yes
-`fi-FI` | Fiński (Finlandia) | Yes | Nie
-`fr-CA` | Francuski (Kanada) | Yes | Yes
-`fr-FR` | Francuski (Francja) | Yes | Yes
-`gu-IN` | Gudżarati (Indyjski) | Yes | Yes
-`hi-IN` | Hindi (Indie) | Yes | Yes
-`it-IT` | Włoski (Włochy) | Yes | Yes
-`ja-JP` | Japoński (Japonia) | Yes | Yes
-`ko-KR` | Koreański (Korea) | Yes | Yes
-`mr-IN` | Marathi (Indie) | Yes | Yes
-`nb-NO` | Norweski (Bokmal) (Norwegia) | Yes | Nie
-`nl-NL` | Holenderski (Holandia) | Yes | Yes
-`pl-PL` | Polski (Polska) | Yes | Nie
-`pt-BR` | Portugalski (Brazylia) | Yes | Yes
-`pt-PT` | Portugalski (Portugalia) | Yes | Yes
-`ru-RU` | Rosyjski (Rosja) | Yes | Yes
-`sv-SE` | Szwedzki (Szwecja) | Yes | Nie
-`ta-IN` | Tamilski (Indie) | Yes | Yes
-`te-IN` | Telugu (Indie) | Yes | Yes
-`zh-CN` | Chiński (mandaryński uproszczony) | Yes | Yes
-`zh-HK` | Chiński (kantoński, tradycyjny) | Yes | Yes
-`zh-TW` | Chiński (mandaryński tajwańskie) | Yes | Yes
-`th-TH` | Tajski (Tajlandia) | Yes | Nie
-`tr-TR` | Turcja | Yes | Yes
+`ar-EG` | Arabski (Egipt), standard nowoczesne | Tak | Tak
+`ar-SA` | Arabski (Arabia Saudyjska) | Tak | Tak
+`ar-AE` | Arabski (Zjednoczone Emiraty Arabskie) | Tak | Tak
+`ar-KW` | Arabski (Kuwejt) | Tak | Tak
+`ar-QA` | Arabski (katar) | Tak | Tak
+`ca-ES` | Kataloński | Tak | Nie
+`da-DK` | Duński (Dania) | Tak | Nie
+`de-DE` | Niemiecki (Niemcy) | Tak | Tak
+`en-AU` | Angielski (Australia) | Tak | Tak
+`en-CA` | Angielski (Kanada) | Tak | Tak
+`en-GB` | Angielski (Zjednoczone Królestwo) | Tak | Tak
+`en-IN` | English (India) | Tak | Tak
+`en-NZ` | Angielski (Nowa Zelandia) | Tak | Tak
+`en-US` | Angielski (Stany Zjednoczone) | Tak | Tak
+`es-ES` | Hiszpański (Hiszpania) | Tak | Tak
+`es-MX` | Hiszpański (Meksyk) | Tak | Tak
+`fi-FI` | Fiński (Finlandia) | Tak | Nie
+`fr-CA` | Francuski (Kanada) | Tak | Tak
+`fr-FR` | Francuski (Francja) | Tak | Tak
+`gu-IN` | Gudżarati (Indyjski) | Tak | Tak
+`hi-IN` | Hindi (India) | Tak | Tak
+`it-IT` | Włoski (Włochy) | Tak | Tak
+`ja-JP` | Japoński (Japonia) | Tak | Tak
+`ko-KR` | Koreański (Korea) | Tak | Tak
+`mr-IN` | Marathi (Indie) | Tak | Tak
+`nb-NO` | Norweski (Bokmal) (Norwegia) | Tak | Nie
+`nl-NL` | Holenderski (Holandia) | Tak | Tak
+`pl-PL` | Polski (Polska) | Tak | Nie
+`pt-BR` | Portugalski (Brazylia) | Tak | Tak
+`pt-PT` | Portugalski (Portugalia) | Tak | Tak
+`ru-RU` | Rosyjski (Rosja) | Tak | Tak
+`sv-SE` | Szwedzki (Szwecja) | Tak | Nie
+`ta-IN` | Tamilski (Indie) | Tak | Tak
+`te-IN` | Telugu (Indie) | Tak | Tak
+`zh-CN` | Chiński (mandaryński uproszczony) | Tak | Tak
+`zh-HK` | Chiński (kantoński, tradycyjny) | Tak | Tak
+`zh-TW` | Chiński (mandaryński tajwańskie) | Tak | Tak
+`th-TH` | Tajski (Tajlandia) | Tak | Nie
+`tr-TR` | Turcja | Tak | Tak
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
@@ -104,7 +104,7 @@ Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka
 `ar-SA` | Arabski (Arabia Saudyjska) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (ar-SA Naayf)" | "ar-SA-Naayf"
 `bg-BG` | Bułgarski | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (bg-BG Ivanowi)" | "BG-BG-Ivan"
 `ca-ES` | Kataloński | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (Kanada ES, HerenaRUS)" | "CA-ES-HerenaRUS"
-`cs-CZ` | Czeski | Mężczyzna | "Microsoft Server mowy tekstu na głos mowy (cs-CZ, Jakub)" | "CS-CZ-Jakub"
+`cs-CZ` | czeski | Mężczyzna | "Microsoft Server mowy tekstu na głos mowy (cs-CZ, Jakub)" | "CS-CZ-Jakub"
 `da-DK` | Duński | Kobieta | "Microsoft Server mowy Text na głos mowy (da-DK HelleRUS)" | "da-DK-HelleRUS"
 `de-AT` | Niemiecki (Austria) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (de-AT, Michael)" | "de-AT-Michael"
 `de-CH` | Niemiecki (Szwajcaria) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (de-CH, Karsten)" | "de-CH-Karsten"
@@ -141,11 +141,11 @@ Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka
 | | | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (fr-FR, HortenseRUS)" | "fr-FR-HortenseRUS"
 | | | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (fr-FR, Paul, Apollo)" | "fr-FR-Paul-Apollo"
 `he-IL` | Hebrajski (Izrael) | Mężczyzna| "Microsoft Server mowy Text na głos mowy (he-IL Asaf)" | "IT-IL-Asaf"
-`hi-IN` | Hindi (Indie) | Kobieta | "Microsoft Server mowy Text na głos mowy (hi-IN, Kalpana, Apollo)" | "Hi-IN-Kalpana-Apollo"
+`hi-IN` | Hindi (India) | Kobieta | "Microsoft Server mowy Text na głos mowy (hi-IN, Kalpana, Apollo)" | "Hi-IN-Kalpana-Apollo"
 | | | Kobieta | "Microsoft Server mowy Text na głos mowy (cześć IN, Kalpana)" | "Witaj w Kalpana"
 | | | Mężczyzna | "Microsoft Server mowy Text na głos mowy (cześć IN, Hemant)" | "Witaj w Hemant"
 `hr-HR` | Chorwacki | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (hr-HR Matej)" | "HR-HR-Matej"
-`hu-HU` | Węgierski | Mężczyzna | "Microsoft Server mowy Text na głos mowy (hu-HU, Szabolcs)" | "hu-HU-Szabolcs"
+`hu-HU` | węgierski | Mężczyzna | "Microsoft Server mowy Text na głos mowy (hu-HU, Szabolcs)" | "hu-HU-Szabolcs"
 `id-ID` | Indonezyjski| Mężczyzna | "Microsoft Server mowy Text na głos mowy (identyfikator ID, Andika)" | "ID-ID-andika"
 `it-IT` | Włoski | Mężczyzna | "Microsoft Server mowy Text na głos mowy (it-IT, Cosimo, Apollo)" | "IT-Cosimo-Apollo"
 | | | Kobieta | "Microsoft Server mowy Text na głos mowy (it-IT, LuciaRUS)" | "IT-LuciaRUS"
@@ -161,7 +161,7 @@ Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka
 | | | Mężczyzna |"Microsoft Server mowy zamiany tekstu na mowę głosowych (pt-BR, Daniel, Apollo)" | "pt-BR-Daniel-Apollo"
 `pt-PT` | Portugalski (Portugalia) | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (pt-PT, HeliaRUS)" | "pt-PT-HeliaRUS"
 `ro-RO` | Rumuński | Mężczyzna | "Microsoft Server mowy Text na głos mowy (ro-RO Andrei)" | "RO-RO-Andrei"
-`ru-RU` |rosyjski| Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ru-RU, Irina, Apollo)" | "ru-RU-Irina-Apollo"
+`ru-RU` |Rosyjski| Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ru-RU, Irina, Apollo)" | "ru-RU-Irina-Apollo"
 | | | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (Apollo Pavel, ru-RU)" | "ru-RU-Pavel-Apollo"
 | | | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ru-RU, EkaterinaRUS)" | ru — RU — EkaterinaRUS
 `sk-SK` | Słowacki | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (sk-SK Filip)" | "sk-SK-Filip"
@@ -182,7 +182,7 @@ Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka
 | | | Kobieta | "Microsoft Server mowy Text na głos mowy (zh-TW HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *AR-EG obsługuje nowoczesne standardowe arabski (MSA).*
+&dagger; *ar np obsługuje nowoczesnych standardowa arabski (MSA).*
 
 > [!NOTE]
 > Możesz użyć pełnego mapowania nazw usług lub krótkiej nazwy głosu w żądaniach syntezy mowy.
@@ -196,7 +196,7 @@ Dostosowanie głosu jest dostępne dla `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-M
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
-Interfejs API **tłumaczenia mowy** obsługuje różne języki dla tłumaczenia mowy na mowę i zamiany mowy na tekst. Język źródłowy musi być zawsze z tabeli języka zamiany mowy na tekst. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu. Możesz przetłumaczyć przychodzącą mowę na więcej niż [60 języków](https://www.microsoft.com/translator/business/languages/). Podzbiór języków jest dostępny dla [syntezy mowy](language-support.md#text-languages).
+**Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy musi być zawsze z tabeli języka zamiany mowy na tekst. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu. Może być tłumaczenie mowy przychodzących do więcej niż [60 języków](https://www.microsoft.com/translator/business/languages/). Podzbiór języków jest dostępny dla [syntezy mowy](language-support.md#text-languages).
 
 ### <a name="text-languages"></a>Tekstu/wszystkie języki
 
@@ -212,7 +212,7 @@ Interfejs API **tłumaczenia mowy** obsługuje różne języki dla tłumaczenia 
 | Chiński uproszczony      | `zh-Hans`          |
 | Chiński tradycyjny      | `zh-Hant`          |
 | Chorwacki      | `hr`          |
-| Czeski      | `cs`          |
+| czeski      | `cs`          |
 | Duński      | `da`          |
 | Holenderski      | `nl`          |
 | Polski      | `en`          |
@@ -220,14 +220,14 @@ Interfejs API **tłumaczenia mowy** obsługuje różne języki dla tłumaczenia 
 | Fidżi      | `fj`          |
 | Filipino      | `fil`          |
 | Fiński      | `fi`          |
-| Francuski      | `fr`          |
-| Niemiecki      | `de`          |
+| francuski      | `fr`          |
+| niemiecki      | `de`          |
 | Grecki      | `el`          |
 | Haitański      | `ht`          |
 | Hebrajski      | `he`          |
 | Hindi      | `hi`          |
 | Hmong Daw      | `mww`          |
-| Węgierski      | `hu`          |
+| węgierski      | `hu`          |
 | Indonezyjski      | `id`          |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
@@ -246,7 +246,7 @@ Interfejs API **tłumaczenia mowy** obsługuje różne języki dla tłumaczenia 
 | Portugalski      | `pt`          |
 | Queretaro Otomi      | `otq`          |
 | Rumuński      | `ro`          |
-| rosyjski      | `ru`          |
+| Rosyjski      | `ru`          |
 | (Samoa)      | `sm`          |
 | Serbski (Cyrylica)      | `sr-Cyrl`          |
 | Serbski (łaciński)      | `sr-Latn`          |
@@ -269,5 +269,5 @@ Interfejs API **tłumaczenia mowy** obsługuje różne języki dla tłumaczenia 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Pobierz subskrypcję wersji próbnej usługi Speech Services](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz, jak rozpoznać mowęC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Pobierz subskrypcję wersji próbnej usługi Speech Service](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz, jak rozpoznawanie mowy w języku C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

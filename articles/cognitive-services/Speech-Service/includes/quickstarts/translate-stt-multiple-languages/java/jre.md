@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Tłumaczenie mowy na wiele języków, Java (Windows, Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a5228faa7d02bbaa8cfde55c5dcdf76e9417d3d4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 556974ceff1e41f1956a358d48cec72a6029b184
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502996"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817038"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -136,7 +136,7 @@ Przed rozpoczęciem upewnij się, że:
 
 Naciśnij klawisz F11 lub wybierz kolejno pozycje **Uruchom** > **Debugowanie**.
 
-1. Wypowiedz zwrot lub zdanie w języku angielskim. Aplikacja przesyła mowę do usług mowy, które tłumaczą i przekształca na tekst (w tym przypadku do języka francuskiego i niemieckiego). Usługi mowy wysyłają następnie tekst z powrotem do aplikacji do wyświetlenia.
+1. Wymów frazę lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która tłumaczy i przekształca na tekst (w tym przypadku w języku francuskim i niemieckim). Usługa mowy wysyła następnie tekst z powrotem do aplikacji do wyświetlenia.
 
 ````
 Say something...

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422609"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815442"
 ---
 # <a name="support-and-help-options"></a>Pomoc techniczna i opcje pomocy
 
-Czy dopiero zaczynasz Eksplorowanie funkcji usługi Speech Services? Czy wdrażasz nową funkcję w aplikacji? Poniżej znajdują się sugestie dotyczące tego, gdzie można uzyskać pomoc jako deweloper.
+Czy dopiero zaczynasz Eksplorowanie funkcjonalności usługi mowy? Czy wdrażasz nową funkcję w aplikacji? Poniżej znajdują się sugestie dotyczące tego, gdzie można uzyskać pomoc jako deweloper.
 
 > [!div class="checklist"]
 > * Bądź na bieżąco z nowymi zmianami w usłudze *Azure Cognitive Services*lub Znajdź najnowsze wiadomości dotyczące *usługi Speech*.
@@ -31,13 +31,13 @@ Czy dopiero zaczynasz Eksplorowanie funkcji usługi Speech Services? Czy wdraża
 
 ## <a name="stay-informed"></a>Bądź na bieżąco z informacjami
 
-Wiadomości dotyczące Cognitive Services są zbierane w [blogu Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/). Aby uzyskać najnowsze informacje na temat usługi Speech Services, śledź [blog usługi Speech Services](https://azure.microsoft.com/blog/tag/speech-service/).
+Wiadomości dotyczące Cognitive Services są zbierane w [blogu Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/). Aby uzyskać najnowsze informacje na temat usługi Speech, śledź [blog usługi Speech](https://azure.microsoft.com/blog/tag/speech-service/).
 
 ## <a name="release-notes"></a>Informacje o wersji
 
 [Informacje o wersji](https://aka.ms/csspeech/whatsnew) są aktualizowane zaraz po udostępnieniu nowej wersji. Notatki zawierają informacje dotyczące nowych funkcji, ulepszeń i poprawek błędów.
 
-## <a name="search"></a>Wyszukaj
+## <a name="search"></a>Search
 
 Możesz znaleźć wymaganą odpowiedź w dokumentacji, przykłady lub odpowiedzi na pytania [Stack Overflow](https://www.stackoverflow.com) lub przykłady.
 

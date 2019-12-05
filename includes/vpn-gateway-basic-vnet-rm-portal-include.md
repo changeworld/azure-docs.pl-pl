@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a601b0c40f84832101e97a7abf7dd7418a0a5c69
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5bf93980a8be86c77240ab981eb812a738a96204
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673459"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829122"
 ---
 Możesz utworzyć sieć wirtualną w modelu wdrożenia usługi Resource Manager w witrynie Azure Portal, wykonując poniższe kroki. Aby uzyskać więcej informacji na temat sieci wirtualnych, zobacz [Virtual network overview](../articles/virtual-network/virtual-networks-overview.md) (Omówienie sieci wirtualnych).
 
@@ -22,15 +22,17 @@ Możesz utworzyć sieć wirtualną w modelu wdrożenia usługi Resource Manager 
 >
 >
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozycję **Utwórz zasób**. Zostanie otwarta strona **Nowy**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).  W menu Azure Portal lub na stronie **głównej** , a następnie wybierz pozycję **Utwórz zasób**. Zostanie otwarta strona **Nowy**.
 
-2. W polu **Wyszukaj w witrynie Marketplace** wpisz *sieć wirtualna* i wybierz pozycję **Sieć wirtualna** na liście wyników. Zostanie otwarta strona **Sieć wirtualna**.
+2. W obszarze **Wyszukaj w portalu Marketplace**wprowadź *sieć wirtualną* i wybierz **Virtual Network** z wyników.
 
-   ![Znajdowanie strony zasobów sieci wirtualnej](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "Znajdowanie strony zasobów sieci wirtualnej")
+   ![Lokalizowanie strony zasobów Virtual Network](./media/vpn-gateway-basic-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "Strona lokalizowanie zasobu sieci wirtualnej")
+
+   Zostanie otwarta strona **Sieć wirtualna**.
 
 3. Z listy **Wybierz model wdrożenia** w dolnej części strony wybierz pozycję **Resource Manager**, a następnie kliknij polecenie **Utwórz**. Spowoduje to otwarcie strony **Tworzenie sieci wirtualnej**.
 
-   ![Strona Tworzenie sieci wirtualnej](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet.png "Strona Tworzenie sieci wirtualnej")
+   ![Strona tworzenie sieci wirtualnej](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet.png "Strona Tworzenie sieci wirtualnej")
 
 4. Na stronie **Tworzenie sieci wirtualnej** skonfiguruj ustawienia sieci wirtualnej. Po wypełnieniu pól czerwony wykrzyknik zmieni się na zielony znacznik wyboru, jeśli znaki wprowadzone w polu są prawidłowe. Niektóre wartości są wypełnione automatycznie — możesz je zastąpić własnymi wartościami:
 
@@ -38,12 +40,12 @@ Możesz utworzyć sieć wirtualną w modelu wdrożenia usługi Resource Manager 
 
    - **Przestrzeń adresowa**: Wprowadź przestrzeń adresową. Jeśli masz wiele przestrzeni adresowych do dodania, tutaj wprowadź pierwszą przestrzeń adresową. Możesz dodać dodatkowe przestrzenie adresowe później, po utworzeniu sieci wirtualnej.
 
-   - **Subskrypcja**: Sprawdź, czy wyświetlana jest prawidłowa subskrypcja. Subskrypcje można zmieniać, korzystając z listy rozwijanej.
+   - **Subskrypcja**: Sprawdź, czy jest wyświetlana prawidłowa subskrypcja. Subskrypcje można zmieniać, korzystając z listy rozwijanej.
 
-   - **Grupa zasobów**: Wybierz istniejącą grupę zasobów lub utwórz nową, wpisując nazwę nowej grupy zasobów. Jeśli tworzysz nową grupę, nadaj jej nazwę odpowiadającą wartościom planowanej konfiguracji. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+   - **Grupa zasobów**: wybierz istniejącą grupę zasobów lub Utwórz nową, wprowadzając nazwę nowej grupy zasobów. Jeśli tworzysz nową grupę, nadaj jej nazwę odpowiadającą wartościom planowanej konfiguracji. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
 
    - **Lokalizacja**: Wybierz lokalizację sieci wirtualnej. Lokalizacja określa miejsce, w którym zostaną umieszczone zasoby wdrażane w tej sieci wirtualnej.
 
-   - **Podsieć**: Dodaj **nazwę** podsieci i **zakres adresów** podsieci. Możesz dodać dodatkowe podsieci później, po utworzeniu sieci wirtualnej. 
+   - **Podsieć**: Dodaj **nazwę** podsieci i **zakres adresów**podsieci. Możesz dodać dodatkowe podsieci później, po utworzeniu sieci wirtualnej. 
      
 5. Wybierz pozycję **Utwórz**.

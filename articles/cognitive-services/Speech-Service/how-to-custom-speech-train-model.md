@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7630659deeece7fbf8d0ca1fd00b539a8de83b0e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0f28d984cfc29e67c3b5c3a90137ee09868b471c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072501"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806032"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Uczenie modelu dla Custom Speech
 
@@ -34,7 +34,7 @@ Jeśli napotykasz problemy z rozpoznawaniem z modelem, używanie transkrypcji z 
 > [!IMPORTANT]
 > Jeśli zestaw danych nie został przekazany, zapoznaj się [z tematem przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md). Ten dokument zawiera instrukcje dotyczące przekazywania danych oraz wskazówki dotyczące tworzenia zestawów danych o wysokiej jakości.
 
-## <a name="train-and-evaluate-a-model"></a>Uczenie i testowanie modelu
+## <a name="train-and-evaluate-a-model"></a>Trenowanie i ocenianie modelu
 
 Pierwszym krokiem do uczenia modelu jest przekazanie danych szkoleniowych. Użyj opcji [Przygotuj i przetestuj dane](how-to-custom-speech-test-data.md) , aby uzyskać instrukcje krok po kroku w celu przygotowania oznakowania i powiązanego tekstu (wyrażenia długości i wymowy). Po przesłaniu danych szkoleniowych postępuj zgodnie z poniższymi instrukcjami, aby rozpocząć uczenie modelu:
 
@@ -62,7 +62,7 @@ Jeśli zdecydowano się na przetestowanie dokładności, ważne jest, aby wybra�
 
 - [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
 - [Inspekcja danych](how-to-custom-speech-inspect-data.md)

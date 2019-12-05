@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801546"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806100"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Oceń Custom Speech dokładność
 
@@ -29,9 +29,9 @@ Standardem branżowym do mierzenia dokładności modelu jest *Współczynnik bł
 
 Niepoprawnie zidentyfikowane słowa dzielą się na trzy kategorie:
 
-* Wstawianie (I): Wyrazy, które są nieprawidłowo dodawane w transkrypcji hipotezy
-* Usunięcie (D): Wyrazy, które nie są wykrywane w transkrypcji hipotezy
-* Podstawienia: Wyrazy, które zostały zastąpione przez odwołanie i hipotezę
+* Wstawianie (I): wyrazy, które są niepoprawnie dodane w transkrypcji hipotezy
+* Usuwanie (D): wyrazy, które nie są wykrywane w transkrypcji hipotezy
+* Substytucje: słowa, które zostały zastąpione przez odwołanie i hipotezę
 
 Oto przykład:
 
@@ -69,7 +69,7 @@ Po zakończeniu testu, wskazywanym przez zmianę stanu na *powodzenie*, można z
 * [Uczenie modelu](how-to-custom-speech-train-model.md)
 * [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
 * [Inspekcja danych](how-to-custom-speech-inspect-data.md)

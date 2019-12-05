@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: e96f27a7a99bcb6600ab0c3d01b1fb509d4e554e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 5cd7173d2df6f08b79d544a3a371039c24d5882a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795735"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819217"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -76,7 +76,7 @@ Przed rozpoczęciem upewnij się, że:
 
    ````
 
-1. W tym nowym pliku Zastąp ciąg `YourSubscriptionKey` za pomocą klucza subskrypcji usługi Speech Services.
+1. W nowym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi rozpoznawania mowy.
 
 1. Zastąp ciąg `YourServiceRegion` [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 

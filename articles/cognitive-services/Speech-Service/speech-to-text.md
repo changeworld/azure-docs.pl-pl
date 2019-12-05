@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 651a30bbcba7b4d4f5d00765c651be73953cd748
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774012"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815499"
 ---
 # <a name="what-is-speech-to-text"></a>Co to jest zamiana mowy na tekst?
 
-Zamiana mowy na tekst z usług Azure Speech Services, znana także jako Zamiana mowy na tekst, umożliwia zapisanie strumieni audio w czasie rzeczywistym w postaci tekstu, w którym aplikacje, narzędzia lub urządzenia mogą zużywać, wyświetlać i podejmować działania przy użyciu poleceń wejściowych. Ta usługa jest oparta na tej samej technologii rozpoznawania, która jest stosowana przez firmę Microsoft dla Cortany i produktów pakietu Office i bezproblemowo współpracuje z translacją i zamianą tekstu na mowę. Aby uzyskać pełną listę dostępnych języków zamiany mowy na tekst, zobacz [obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
+Zamiana mowy na tekst z usługi mowy, znanej również jako Zamiana mowy na tekst, umożliwia zapisanie strumieni dźwiękowych w czasie rzeczywistym w postaci tekstu, w którym aplikacje, narzędzia lub urządzenia mogą zużywać, wyświetlać i podejmować działania przy użyciu danych wejściowych polecenia. Ta usługa jest oparta na tej samej technologii rozpoznawania, która jest stosowana przez firmę Microsoft dla Cortany i produktów pakietu Office i bezproblemowo współpracuje z translacją i zamianą tekstu na mowę. Aby uzyskać pełną listę dostępnych języków zamiany mowy na tekst, zobacz [obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
 
 Domyślnie usługa zamiany mowy na tekst używa modelu języka uniwersalnego. Ten model został przeszkolony przy użyciu danych firmy Microsoft i jest wdrażany w chmurze. Jest optymalny dla scenariuszy konwersacji i dyktowania. Jeśli używasz funkcji zamiany mowy na tekst do rozpoznawania i transkrypcji w unikatowym środowisku, możesz tworzyć i uczenia niestandardowych modeli akustycznych, językowych i wymowych w celu obsługi szumów otoczenia lub słownictwa specyficznego dla branż.
 
@@ -54,7 +54,7 @@ Jeśli wolisz używać usługi REST do zamiany mowy na tekst, zobacz [interfejsy
 
 ## <a name="tutorials-and-sample-code"></a>Samouczki i przykładowy kod
 
-Jeśli masz szansę na korzystanie z usług mowy, wypróbuj nasz samouczek, który uczy się, jak rozpoznać intencje z mowy przy użyciu zestawu Speech SDK i LUIS.
+Jeśli masz szansę na korzystanie z usługi Speech, wypróbuj nasz samouczek, który uczy się, jak rozpoznać intencje z mowy przy użyciu zestawu Speech SDK i LUIS.
 
 - [Samouczek: Rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK i LUIS,C#](how-to-recognize-intents-from-speech-csharp.md)
 
@@ -65,7 +65,7 @@ Przykładowy kod dla zestawu Speech SDK jest dostępny w witrynie GitHub. Te prz
 
 ## <a name="customization"></a>Dostosowywanie
 
-Oprócz standardowego modelu linii bazowej używanego przez usługi mowy, można dostosować modele do własnych potrzeb, korzystając z dostępnych danych, aby przezwyciężyć bariery rozpoznawania mowy, takie jak styl mowy, słownictwo i hałas w tle, zobacz [Custom Speech](how-to-custom-speech.md)
+Poza standardowym modelem linii bazowej używanym przez usługę mowy można dostosować modele do własnych potrzeb z dostępnymi danymi, aby przezwyciężyć bariery rozpoznawania mowy, takie jak styl mowy, słownictwo i hałas w tle, zobacz [Custom Speech](how-to-custom-speech.md)
 
 > [!NOTE]
 > Opcje dostosowywania różnią się w zależności od języka/ustawień regionalnych (zobacz [obsługiwane języki](supported-languages.md)).
@@ -75,7 +75,7 @@ Oprócz standardowego modelu linii bazowej używanego przez usługi mowy, można
 > [!WARNING]
 > Rozpoznawanie mowy Bing został zlikwidowany 15 października 2019.
 
-Jeśli Twoje aplikacje, narzędzia lub produkty używają rozpoznawanie mowy Bing interfejsów API lub Custom Speech, zostały utworzone przewodniki ułatwiające Migrowanie do usługi Speech Services.
+Jeśli Twoje aplikacje, narzędzia lub produkty używają rozpoznawanie mowy Bing interfejsów API lub Custom Speech, zostały utworzone przewodniki ułatwiające Migrowanie do usługi mowy.
 
 - [Migrowanie z rozpoznawanie mowy Bing do usługi mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
 - [Migrowanie z Custom Speech do usługi mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
@@ -90,5 +90,5 @@ Jeśli Twoje aplikacje, narzędzia lub produkty używają rozpoznawanie mowy Bin
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
+- [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
 - [Pobieranie zestawu Speech SDK](speech-sdk.md)

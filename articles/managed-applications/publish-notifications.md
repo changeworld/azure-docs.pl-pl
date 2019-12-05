@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: a00e5be4493b8c8116e2925e88a3ce4bf8cfb722
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8cf9fc0b3d9c13ebc5309be6d27c7be0f2e60878
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085319"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805692"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications z powiadomieniami
 
@@ -69,9 +69,9 @@ Aby uzyskać więcej informacji, zobacz [Tworzenie oferty aplikacji platformy Az
 ## <a name="event-triggers"></a>Wyzwalacze zdarzeń
 W poniższej tabeli opisano wszystkie możliwe kombinacje elementu EventType + ProvisioningState i ich wyzwalacze:
 
-Klasę | ProvisioningState | Wyzwalacz dla powiadomienia
+Typ zdarzenia | ProvisioningState | Wyzwalacz dla powiadomienia
 ---|---|---
-PUT | Przyjmować | Utworzono zarządzaną grupę zasobów i została ona pomyślnie umieszczona po umieszczeniu aplikacji. (Przed rozpoczęciem wdrażania wewnątrz zarządzanego RG).
+PUT | Zaakceptowano | Utworzono zarządzaną grupę zasobów i została ona pomyślnie umieszczona po umieszczeniu aplikacji. (Przed rozpoczęciem wdrażania wewnątrz zarządzanego RG).
 PUT | Powodzenie | Pełna aprowizacji aplikacji zarządzanej zakończyła się pomyślnie po UMIESZCZENIU.
 PUT | Niepowodzenie | Niepowodzenie inicjowania aprowizacji wystąpienia aplikacji w dowolnym momencie.
 PATCH | Powodzenie | Po pomyślnej poprawek w wystąpieniu aplikacji zarządzanej w celu zaktualizowania tagów, zasad dostępu JIT lub tożsamości zarządzanej.
@@ -132,6 +132,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -152,6 +155,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -175,12 +181,13 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 Parametr | Opis
 ---|---
 eventType | Typ zdarzenia, które wyzwoliło powiadomienie. (np. "PUT", "PATCH", "DELETE")
-Identyfikator | W pełni kwalifikowany identyfikator zasobu zarządzanej aplikacji, dla którego zostało wyzwolone powiadomienie. 
+applicationId | W pełni kwalifikowany identyfikator zasobu zarządzanej aplikacji, dla którego zostało wyzwolone powiadomienie. 
 eventTime | Sygnatura czasowa zdarzenia, które wyzwoliło powiadomienie. (Data i godzina w formacie UTC ISO 8601).
 ProvisioningState | Stan aprowizacji wystąpienia aplikacji zarządzanej. (np. "powodzenie", "nie powiodło się", "Usuwanie", "usunięte")
+billingDetails | Szczegóły rozliczeń wystąpienia aplikacji zarządzanej. Zawiera resourceUsageId, którego można użyć do zbadania szczegółowych informacji o użyciu witryny Marketplace.
 error | *Określone tylko w przypadku niepowodzenia provisioningState*. Zawiera kod błędu, komunikat i szczegóły problemu, który spowodował awarię.
 applicationDefinitionId | *Określona tylko dla aplikacji zarządzanych przez katalog usług*. Reprezentuje w pełni kwalifikowany identyfikator zasobu definicji aplikacji, dla którego Zainicjowano obsługę administracyjną wystąpienia aplikacji zarządzanej.
-zamierza | *Określone tylko dla aplikacji zarządzanych w portalu Marketplace*. Reprezentuje wydawcę, ofertę, jednostkę SKU i wersję wystąpienia aplikacji zarządzanej.
+plan | *Określone tylko dla aplikacji zarządzanych w portalu Marketplace*. Reprezentuje wydawcę, ofertę, jednostkę SKU i wersję wystąpienia aplikacji zarządzanej.
 
 ## <a name="endpoint-authentication"></a>Uwierzytelnianie punktu końcowego
 Aby zabezpieczyć punkt końcowy elementu webhook i zapewnić autentyczność powiadomienia:

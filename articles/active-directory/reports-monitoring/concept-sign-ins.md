@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 12/03/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e7b0c379783af2f9131d487f45c0f4e2009e258
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 706cc38c997c91efc890b213444ff779eb86d5c1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232149"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805268"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -47,7 +47,7 @@ Ten artykuł zawiera omówienie raportu logowania.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaka licencja usługi Azure AD jest wymagana w celu uzyskania dostępu do informacji dotyczących logowania?
 
-* Dzierżawca musi mieć skojarzoną licencję Azure AD — wersja Premium, aby wyświetlić raport dotyczący wszystkich działań związanych z logowaniem. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Wyświetlenie danych w raportach po przeprowadzeniu uaktualnienia do licencji Premium bez działań związanych z danymi przed uaktualnieniem zajmie kilka dni.
+* Do wyświetlenia podsumowującego raportu aktywności związanej z logowaniem wymagane jest skojarzenie dzierżawy z licencją usługi Azure AD Premium. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Wyświetlenie danych w raportach po przeprowadzeniu uaktualnienia do licencji Premium bez działań związanych z danymi przed uaktualnieniem zajmie kilka dni.
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań
 
@@ -81,7 +81,7 @@ Możesz dostosować widok listy, klikając pozycję **Kolumny** na pasku narzęd
 
 Wyświetla dodatkowe pola lub usuwa pola, które są już wyświetlane.
 
-![Aktywność logowania](./media/concept-sign-ins/02.png "Aktywność związana z logowaniem")
+![Aktywność logowania](./media/concept-sign-ins/columns.png "Aktywność związana z logowaniem")
 
 Wybierz element w widoku listy, aby uzyskać bardziej szczegółowe informacje.
 
@@ -140,11 +140,11 @@ Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie do
 - **Inni klienci**
     - **PROTOKOŁU**  
         Starsza wersja klienta poczty używającej protokołu IMAP do pobierania poczty e-mail.
-    - **OBSŁUGUJĄC**  
+    - **MAPI**  
         Pakiet Office 2013, gdzie Biblioteka ADAL jest włączona i używa interfejsu MAPI.
     - **Stara klienci pakietu Office**  
         Pakiet Office 2013 w konfiguracji domyślnej, gdzie Biblioteka ADAL nie jest włączona i używa interfejsu MAPI lub pakietu Office 2016, gdzie ADAL została wyłączona.
-    - **SKAKUJĄC**  
+    - **POP**  
         Starsza wersja klienta poczty używającej protokołu POP3 do pobierania poczty e-mail.
     - **SMTP**  
         Starszego klienta poczty e-mail korzystającego z protokołu SMTP do wysyłania wiadomości.
@@ -191,9 +191,9 @@ Klikając pozycję, można uzyskać więcej szczegółowych informacji na temat 
 - Identyfikator aplikacji
 - Aplikacja
 - Klient
-- Location
+- Lokalizacja
 - Adres IP
-- Date
+- Data
 - Wymagane uwierzytelnianie wieloskładnikowe
 - Stan logowania
 

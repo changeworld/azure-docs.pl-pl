@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Tłumaczenie mowy na wiele języków — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 6c65fd9a504b5f399afa99280ca2a75b476c750c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bc35c1efcad2ca9ebb5eaf23dd84f7189858a159
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502814"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817326"
 ---
 W tym przewodniku szybki start użyjesz [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) , aby interaktywnie przetłumaczyć mowę z jednego języka na mowę w innym języku. Po spełnieniu kilku wymagań wstępnych przetłumaczenie mowy na tekst w wielu językach obejmuje tylko sześć kroków:
 > [!div class="checklist"]

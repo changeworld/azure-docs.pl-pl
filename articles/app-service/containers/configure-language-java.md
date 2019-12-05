@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: edb8f25ff1e4fa01e905c3ae5c7d0ec7ab58f8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705934"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805743"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java dla systemu Linux dla Azure App Service
 
@@ -247,6 +247,9 @@ Aby można było zaszyfrować połączenie JDBC, może być wymagana dodatkowa k
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+- [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
+- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
+
 
 #### <a name="manually-initialize-and-load-the-key-store"></a>Ręczne inicjowanie i ładowanie magazynu kluczy
 
@@ -616,7 +619,7 @@ Poniższe kroki wyjaśniają wymagania dotyczące łączenia istniejących App S
 
 6. Użyj interfejsu wiersza polecenia platformy Azure, aby dodać ustawienia do App Service, w którym przechowywane są informacje o połączeniu z bazą danych. Zastąp `<resource group>` i `<webapp name>` wartościami używanymi przez App Service. Zastąp `<database server name>`, `<database name>`, `<admin name>`i `<admin password>` informacjami o połączeniu z bazą danych. Możesz uzyskać informacje o App Service i bazie danych z Azure Portal.
 
-    **PostgreSQL**
+    **PostgreSQL:**
 
     ```bash
     az webapp config appsettings set \
@@ -628,7 +631,7 @@ Poniższe kroki wyjaśniają wymagania dotyczące łączenia istniejących App S
             DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
     ```
 
-    **MySQL**
+    **MySQL:**
 
     ```bash
     az webapp config appsettings set \

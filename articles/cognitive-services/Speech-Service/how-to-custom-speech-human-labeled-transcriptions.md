@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1eeb2e7ccf5c365fedd02a8de4c6b442dd3d5bc8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075812"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806066"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak utworzyć transkrypcje z etykietami ludzkimi
 
@@ -31,7 +31,7 @@ Oto kilka przykładów:
 
 | Znaki do uniknięcia | Podstawienia | Uwagi |
 | ------------------- | ------------ | ----- |
-| "Hello World" | "Hello World" | Znaczniki otwierania i zamykania cudzysłowu zostały zastąpione odpowiednimi znakami ASCII. |
+| "Hello World" | „Witaj świecie!” | Znaczniki otwierania i zamykania cudzysłowu zostały zastąpione odpowiednimi znakami ASCII. |
 | Dzień Jan | Dzień Jan | Apostrof został zastąpiony odpowiednim znakiem ASCII. |
 | to dobry — nie, był doskonały! | to dobry — nie, był doskonały! | Pauza została zastąpiona dwoma łącznikami. |
 

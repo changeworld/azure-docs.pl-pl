@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Konfiguracja C++ platformy Speech SDK (Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego przewodnika, aby skonfigurować platformę dla C++ systemu Linux za pomocą zestawu SDK usługi Speech Services.
+description: Skorzystaj z tego przewodnika, aby skonfigurować platformę dla C++ systemu Linux za pomocą zestawu Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 96e4c12d7b0aaceea3d652a81f2df8721c43954c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 03aafb133f1d4a18ffe2b46ae5ec36225865a239
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502618"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819032"
 ---
 W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla systemu Linux
 
@@ -29,7 +29,7 @@ Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)
 
 Aby ukończyć ten przewodnik Szybki Start, musisz wykonać następujące czynności:
 
-* [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
 * Obsługiwane platformy Linux wymagają zainstalowanych niektórych bibliotek (`libssl` do obsługi protokołu Secure Sockets Layer i `libasound2` do obsługi dźwięku). Zapoznaj się z dystrybucją poniżej, aby zapoznać się z poleceniami wymaganymi do zainstalowania odpowiednich wersji tych bibliotek.
 

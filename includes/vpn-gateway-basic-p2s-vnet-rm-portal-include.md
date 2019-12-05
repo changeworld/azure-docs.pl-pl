@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3d9826e3eae2a60b217df1406d26d83c78fbdefb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a826bb01a906153b4ca2a3c854623c83b6192aec
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67673462"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828799"
 ---
 Aby utworzyć sieć wirtualną w modelu wdrożenia usługi Resource Manager w witrynie Azure Portal, wykonaj poniższe kroki. Zamieszczone zrzuty ekranu są przykładowe. Przedstawione wartości należy zastąpić własnymi. Aby uzyskać więcej informacji dotyczących pracy z sieciami wirtualnymi, zobacz temat [Omówienie sieci wirtualnych](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -22,10 +22,12 @@ Aby utworzyć sieć wirtualną w modelu wdrożenia usługi Resource Manager w wi
 >
 >
 
-1. W przeglądarce przejdź do witryny [Azure Portal](https://portal.azure.com) i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure.
-2. Kliknij pozycję **+** . W polu **Szukaj w witrynie Marketplace** wpisz „Sieć wirtualna”. Znajdź pozycję **Sieć wirtualna** na liście wyników i kliknij, aby otworzyć stronę **Sieć wirtualna**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).  W menu Azure Portal lub na stronie **głównej** , a następnie wybierz pozycję **Utwórz zasób**. Zostanie otwarta strona **Nowy**.
 
-   ![Lokalizowanie strony zasobów Virtual Network](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "Strona lokalizowanie zasobu sieci wirtualnej")
+2. W obszarze **Wyszukaj w portalu Marketplace**wprowadź *sieć wirtualną* i wybierz **Virtual Network** z wyników.
+
+   ![Lokalizowanie strony zasobów Virtual Network](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "Strona lokalizowanie zasobu sieci wirtualnej")
+
 3. Z listy **Wybierz model wdrożenia** w dolnej części strony Sieć wirtualna wybierz pozycję **Menedżer zasobów**, a następnie kliknij przycisk **Utwórz**.
 
    ![Wybierz Menedżer zasobów](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "Wybór opcji Menedżer zasobów")

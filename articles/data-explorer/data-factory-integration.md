@@ -8,12 +8,12 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: dd2b3bd584bb39810e0a5c9acde1a961330c273d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093763"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819141"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Integracja Eksplorator danych platformy Azure z usługą Azure Data Factory
 
@@ -90,7 +90,7 @@ W poniższej tabeli przedstawiono porównanie działania kopiowania i poleceń p
 
 W poniższej tabeli wymieniono uprawnienia wymagane do różnych kroków integracji z Azure Data Factory.
 
-| Krok | Operacja | Minimalny poziom uprawnień | Uwagi |
+| Czynność | Operacja | Minimalny poziom uprawnień | Uwagi |
 |---|---|---|---|
 | **Tworzenie połączonej usługi** | Nawigacja w bazie danych | *Przeglądarka bazy danych* <br>Zalogowany użytkownik korzystający z funkcji ADF powinien mieć autoryzację do odczytu metadanych bazy danych. | Użytkownik może ręcznie podać nazwę bazy danych. |
 | | Testuj połączenie | *monitor bazy danych* lub pozyskiwanie *tabel* <br>Jednostka usługi powinna mieć autoryzację do wykonywania poleceń `.show` poziomu bazy danych lub pozyskiwania poziomów tabeli. | <ul><li>TestConnection weryfikuje połączenie z klastrem, a nie z bazą danych. Może się to powieść, nawet jeśli baza danych nie istnieje.</li><li>Uprawnienia administratora tabeli nie są wystarczające.</li></ul>|
@@ -118,13 +118,90 @@ Ta sekcja dotyczy korzystania z działania kopiowania w przypadku, gdy usługa A
 | **Złożoność przetwarzania danych** | Opóźnienie zależy od formatu pliku źródłowego, mapowania kolumn i kompresji.|
 | **Maszyna wirtualna, na której działa środowisko Integration Runtime** | <ul><li>W przypadku kopii na platformie Azure nie można zmieniać maszyn wirtualnych i jednostek SKU komputera.</li><li> W przypadku funkcji premium na platformie Azure należy określić, że maszyna wirtualna obsługująca własne środowisko IR jest wystarczająco mocna.</li></ul>|
 
-## <a name="monitor-activity-progress"></a>Monitorowanie postępu aktywności
+## <a name="tips-and-common-pitfalls"></a>Porady i typowe pułapek
+
+### <a name="monitor-activity-progress"></a>Monitorowanie postępu aktywności
 
 * Podczas monitorowania postępu działania Właściwość *zapisywana dane* może być znacznie większa niż Właściwość *odczytywania danych* , ponieważ *Odczyt danych* jest obliczany zgodnie z rozmiarem pliku binarnego, podczas gdy *zapisywane dane* są obliczane zgodnie z rozmiarem w pamięci, po deserializacji i dekompresji danych.
 
 * Podczas monitorowania postępu działania można zobaczyć, że dane są zapisywane w usłudze Azure Eksplorator danych sink. Podczas wykonywania zapytania dotyczącego tabeli Eksplorator danych platformy Azure zobaczysz, że dane nie dotarły. Wynika to z faktu, że podczas kopiowania na platformę Azure Eksplorator danych istnieją dwa etapy. 
     * Pierwszy etap odczytuje dane źródłowe, dzieli je na fragmenty 900-MB i przekazuje każdy fragment do obiektu blob platformy Azure. Pierwszy etap jest widoczny w widoku postępu działania dotyczącego ADF. 
     * Drugi etap rozpoczyna się po przesłaniu wszystkich danych do obiektów blob platformy Azure. Węzły aparatu usługi Azure Eksplorator danych pobierają obiekty blob i pozyskają dane do tabeli sink. Dane są następnie widoczne w tabeli Eksplorator danych platformy Azure.
+
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Nie można pozyskać plików CSV z powodu nieprawidłowego ucieczki
+
+Usługa Azure Eksplorator danych oczekuje, że pliki CSV mają być wyrównane ze [specyfikacją RFC 4180](https://www.ietf.org/rfc/rfc4180.txt).
+Oczekuje:
+* Pola, które zawierają znaki wymagające ucieczki (takie jak "i nowe linie), powinny zaczynać i kończyć się znakiem **"** , bez odstępów. Wszystkie **znaki** *w* polu są wyprowadzane przy użyciu podwójnego znaku **"** **" (""** ). Na przykład _"Witaj," World "" "_ jest prawidłowym plikiem CSV z pojedynczym rekordem zawierającym pojedynczą kolumnę lub pole z zawartością _Hello" World "_ .
+* Wszystkie rekordy w pliku muszą mieć taką samą liczbę kolumn i pól.
+
+Azure Data Factory umożliwia znak ukośnika odwrotnego (ucieczki). Jeśli wygenerujesz plik CSV z ukośnikiem odwrotnym przy użyciu Azure Data Factory, pozyskiwanie pliku do usługi Azure Eksplorator danych zakończy się niepowodzeniem.
+
+#### <a name="example"></a>Przykład
+
+Następujące wartości tekstowe: Hello, "World"<br/>
+DOMYŚLNA ABC<br/>
+"ABC\D" EF<br/>
+"ABC DEF<br/>
+
+Powinien pojawić się w prawidłowym pliku CSV w następujący sposób: "Witaj," World "" "<br/>
+"ABC DEF"<br/>
+"" "WARTOŚĆ ABC DEF"<br/>
+"" "ABC\D" "EF"<br/>
+
+Używając domyślnego znaku ucieczki (ukośnik odwrotny), następujący wolumin CSV nie będzie działał z platformą Azure Eksplorator danych: "Hello, \"świecie\""<br/>
+"ABC DEF"<br/>
+"\"ABC DEF"<br/>
+"\"ABC\D\"EF"<br/>
+
+### <a name="nested-json-objects"></a>Zagnieżdżone obiekty JSON
+
+Podczas kopiowania pliku JSON do usługi Azure Eksplorator danych należy pamiętać, że:
+* Tablice nie są obsługiwane.
+* Jeśli struktura JSON zawiera typy danych obiektów, Azure Data Factory spłaszcza elementy podrzędne obiektu i spróbuje zmapować każdy element podrzędny do innej kolumny w tabeli Eksplorator danych platformy Azure. Jeśli chcesz, aby cały obiekt obiektu był mapowany do pojedynczej kolumny w usłudze Azure Eksplorator danych:
+    * Pozyskanie całego wiersza JSON w jednej kolumnie dynamicznej na platformie Azure Eksplorator danych.
+    * Ręcznie Edytuj definicję potoku przy użyciu edytora JSON Azure Data Factory. W **mapowaniu**
+       * Usuń wiele mapowań, które zostały utworzone dla każdego elementu podrzędnego, i Dodaj pojedyncze mapowanie, które mapuje typ obiektu do kolumny tabeli.
+       * Po zamykającym nawiasie kwadratowym Dodaj przecinek, po którym następuje:<br/>
+       `"mapComplexValuesToString": true`.
+
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>Określ AdditionalProperties podczas kopiowania na platformę Azure Eksplorator danych
+
+> [!NOTE]
+> Ta funkcja jest obecnie dostępna przez ręczną edycję ładunku JSON. 
+
+Dodaj pojedynczy wiersz w sekcji "ujścia" działania kopiowania w następujący sposób:
+
+```json
+"sink": {
+    "type": "AzureDataExplorerSink",
+    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
+},
+```
+
+Anulowanie wartości może być kłopotliwe. Użyj poniższego fragmentu kodu jako odwołania:
+
+```csharp
+static void Main(string[] args)
+{
+       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
+       additionalProperties.Add("ignoreFirstRecord", "false");
+       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
+       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
+       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
+       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
+       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
+       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
+       Console.WriteLine(additionalPropertiesForPayload);
+       Console.ReadLine();
+}
+```
+
+Wydrukowana wartość:
+
+```json
+{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

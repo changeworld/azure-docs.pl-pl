@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: synteza mowy do pliku audio, usługa Python-Speech'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: d6f6519ea5df630a914243046e74c315b4bd7db9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 314a5302c76157810557036370a18ad6fb605033
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503360"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818033"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj bezpłatnie](~/articles/cognitive-services/Speech-Service/get-started.md).
+* Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](~/articles/cognitive-services/Speech-Service/get-started.md).
 * [Środowisko Python 3.5 lub nowsze](https://www.python.org/downloads/).
 * Pakiet zestawu Speech SDK dla języka Python jest dostępny dla tych systemów operacyjnych:
     * Windows: x64 i x86.
@@ -127,7 +127,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
    ![Tworzenie pliku](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-newfile.png)
 
 1. Skopiuj, wklej i zapisz [kod języka Python](#sample-code) w nowo utworzonym pliku.
-1. Wstaw informacje o subskrypcji usługi Speech Services.
+1. Wstaw informacje dotyczące subskrypcji usługi rozpoznawania mowy.
 1. Jeśli został wybrany interpreter języka Python, zostanie wyświetlony po lewej stronie paska stanu u dołu okna.
    W przeciwnym razie możesz wyświetlić listę dostępnych interpreterów języka Python. Otwórz paletę poleceń (Ctrl + Shift + P) i wprowadź **Python: SELECT interpreter**. Wybierz odpowiedni.
 1. Możesz zainstalować pakiet języka Python zestawu Speech SDK z poziomu programu Visual Studio Code. Zrób to, jeśli nie został on jeszcze zainstalowany dla wybranego interpretera języka Python.
@@ -146,7 +146,7 @@ Jeśli masz problemy z wykonaniem tych instrukcji, zapoznaj się z obszerniejszy
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Tworzenie niestandardowego głosu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Rejestruj niestandardowe przykłady głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

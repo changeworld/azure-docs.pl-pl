@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 281fbcf3f42160b18adcad3f06f6ef4a7b8de243
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f3b3d68e0154913e3eb6d101965ad33530502954
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502926"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818119"
 ---
 > [!NOTE]
 > Środowisko Unity obsługuje Pulpity systemu Windows (x86 i x64) lub platforma uniwersalna systemu Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) i iOS (x64 symulator, ARM32 i ARM64).
@@ -64,7 +64,7 @@ Po zakończeniu interfejs użytkownika powinien wyglądać podobnie do tego zrzu
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/text-to-speech/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Znajdź i Zastąp ciąg `YourSubscriptionKey` za pomocą klucza subskrypcji usługi Speech Services.
+1. Znajdź i Zastąp ciąg `YourSubscriptionKey`m kluczem subskrypcji usługi rozpoznawania mowy.
 
 1. Znajdź i zastąp ciąg `YourServiceRegion` [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z Twoją subskrypcją. Na przykład region jest `westus` w przypadku korzystania z bezpłatnej wersji próbnej.
 
@@ -83,7 +83,7 @@ Po zakończeniu interfejs użytkownika powinien wyglądać podobnie do tego zrzu
 ## <a name="run-the-application-in-the-unity-editor"></a>Uruchamianie aplikacji w edytorze środowiska Unity
 
 * Wybierz przycisk **odtwarzania** na pasku narzędzi edytora aparatu Unity poniżej paska menu.
-* Po uruchomieniu aplikacji wprowadź tekst w polu wejściowym, a następnie wybierz przycisk. Twój tekst jest przesyłany do usługi Speech Service i jest on wydawany na mowę, który jest odtwarzany na Twoim głośnikze.
+* Po uruchomieniu aplikacji wprowadź tekst w polu wejściowym, a następnie wybierz przycisk. Twój tekst jest przesyłany do usługi mowy i można go wyrównać do mowy, który jest odtwarzany na głośniku.
 
   [![zrzut ekranu przedstawiający uruchomiony przewodnik szybkiego startu w oknie gry Unity](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-inline.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
 
@@ -98,7 +98,7 @@ Zapoznaj się z [przykładowym repozytorium](https://aka.ms/csspeech/samples) w 
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Tworzenie niestandardowego głosu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Rejestruj niestandardowe przykłady głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

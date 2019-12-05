@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e40ca55a9cd198e1b086362a2559ab2fc0ba95e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464517"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805964"
 ---
 # <a name="get-started-with-custom-voice"></a>Wprowadzenie do usługi Custom Voice
 
@@ -23,13 +23,13 @@ ms.locfileid: "73464517"
 
 ## <a name="whats-in-custom-voice"></a>Co znajduje się w niestandardowym głosowaniu?
 
-Przed rozpoczęciem pracy z niestandardowym głosem musisz mieć konto platformy Azure i subskrypcję usługi Speech Services. Po utworzeniu konta możesz przygotować swoje dane, wyszkolić i przetestować modele, oszacować jakość głosu i ostatecznie wdrożyć niestandardowy model głosowy.
+Przed rozpoczęciem pracy z niestandardowym głosem musisz mieć konto platformy Azure i subskrypcję usługi mowy. Po utworzeniu konta możesz przygotować swoje dane, wyszkolić i przetestować modele, oszacować jakość głosu i ostatecznie wdrożyć niestandardowy model głosowy.
 
 Na poniższym diagramie przedstawiono kroki umożliwiające utworzenie niestandardowego modelu głosu przy użyciu [niestandardowego portalu głosu](https://aka.ms/customvoice). Skorzystaj z linków, aby dowiedzieć się więcej.
 
 ![Niestandardowy diagram architektury głosu](media/custom-voice/custom-voice-diagram.png)
 
-1.  [Subskrybuj i Utwórz projekt](#set-up-your-azure-account) — Utwórz konto platformy Azure i Utwórz subskrypcję usługi Speech Services. Ta ujednolicona subskrypcja zapewnia dostęp do funkcji zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenia mowy i niestandardowego portalu głosu. Następnie za pomocą subskrypcji usługi Speech Services Utwórz swój pierwszy niestandardowy projekt głosowy.
+1.  [Subskrybuj i Utwórz projekt](#set-up-your-azure-account) — Utwórz konto platformy Azure i Utwórz subskrypcję usługi mowy. Ta ujednolicona subskrypcja zapewnia dostęp do funkcji zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenia mowy i niestandardowego portalu głosu. Następnie za pomocą subskrypcji usługi mowy Utwórz swój pierwszy niestandardowy projekt głosowy.
 
 2.  [Przekazuj](how-to-custom-voice-create-voice.md#upload-your-datasets) dane — przekazywanie danych (audio i tekstowych) przy użyciu niestandardowego portalu głosu lub niestandardowego interfejsu API mowy. Z poziomu portalu można zbadać i oszacować wyniki wymowy oraz współczynnik sygnałów do szumów. Aby uzyskać więcej informacji, zobacz [jak przygotować dane dla niestandardowego głosu](how-to-custom-voice-prepare-data.md).
 
@@ -46,11 +46,11 @@ Możliwość dostosowania głosu neuronowych jest obecnie dostępna w publicznej
 
 ## <a name="set-up-your-azure-account"></a>Skonfiguruj swoje konto platformy Azure
 
-Przed rozpoczęciem korzystania z portalu Custom Speech w celu utworzenia modelu niestandardowego należy skorzystać z subskrypcji usługi Speech Services. Postępuj zgodnie z tymi instrukcjami, aby utworzyć subskrypcję usługi Speech Services na platformie Azure. Jeśli nie masz konta platformy Azure, możesz utworzyć nowe konto.  
+Wymagana jest subskrypcja usługi mowy, aby można było użyć portalu Custom Speech w celu utworzenia modelu niestandardowego. Postępuj zgodnie z tymi instrukcjami, aby utworzyć subskrypcję usługi mowy na platformie Azure. Jeśli nie masz konta platformy Azure, możesz utworzyć nowe konto.  
 
-Po utworzeniu konta platformy Azure i subskrypcji usługi Speech Services należy zalogować się do portalu niestandardowego i połączyć się z subskrypcją.
+Po utworzeniu konta platformy Azure i subskrypcji usługi mowy należy zalogować się do portalu niestandardowego programu Voice i połączyć swoją subskrypcję.
 
-1. Pobierz klucz subskrypcji usługi Speech Services z Azure Portal.
+1. Pobierz klucz subskrypcji usługi rozpoznawania mowy z Azure Portal.
 2. Zaloguj się do [niestandardowego portalu głosowego](https://aka.ms/custom-voice).
 3. Wybierz swoją subskrypcję i Utwórz projekt mowy.
 4. Jeśli chcesz przełączyć się na inną subskrypcję mowy, użyj ikony koło zębate znajdującej się w górnym obszarze nawigacji.

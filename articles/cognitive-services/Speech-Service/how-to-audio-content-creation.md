@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2fa4bcb9db6f836346167b76e609a1437df88b04
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554994"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806209"
 ---
 # <a name="audio-content-creation"></a>Tworzenie zawartości audio
 
@@ -52,13 +52,13 @@ Wykonaj następujące kroki, aby utworzyć zasób mowy i połączyć go z usług
 
 Istnieją dwa sposoby na uzyskanie zawartości do narzędzia tworzenia zawartości audio.
 
-**Opcja 1:**
+**Opcja 1.**
 
 1. Po zalogowaniu się do [tworzenia zawartości audio](https://aka.ms/audiocontentcreation)kliknij pozycję **dostrajanie audio** , aby utworzyć nowy plik strojenia audio.
 2. Po wyświetleniu okna edycji można wprowadzić do 10 000 znaków.
 3. Nie zapomnij zapisać.
 
-**Opcja 2:**
+**Opcja 2.**
 
 1. Po zalogowaniu się do [tworzenia zawartości audio](https://aka.ms/audiocontentcreation)kliknij przycisk **Przekaż** , aby zaimportować jeden lub więcej plików tekstowych. Obsługiwane są zarówno zwykły tekst, jak i SSML.
 2. Po przekazaniu plików tekstowych upewnij się, że zawartość spełnia te wymagania.

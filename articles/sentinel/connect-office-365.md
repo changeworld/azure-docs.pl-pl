@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: a38beb0700e470d325545a2523143ecdab9f6dfb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: df5aade7244f69e7264f901364ecc164351eec50
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777421"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815788"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Łączenie danych z dzienników pakietu Office 365
 
@@ -42,12 +42,12 @@ Dzienniki inspekcji z [pakietu Office 365](https://docs.microsoft.com/office365/
 
 1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych** , a następnie kliknij kafelek **Office 365** .
 
-2. Jeśli jeszcze tego nie zrobiono, możesz to zrobić, przechodząc do bloku **Łączniki danych** i wybierając pozycję Łącznik **pakietu Office 365** . W tym miejscu możesz kliknąć **stronę Otwórz łącznik** i w obszarze Konfiguracja **włączyć rozwiązanie Office 365 w obszarze roboczym** , korzystając z przycisku **Zainstaluj rozwiązanie** , aby je włączyć. Jeśli została już włączona, zostanie ona zidentyfikowana na ekranie połączenia, ponieważ jest już włączona.
+2. Jeśli jeszcze tego nie zrobiono, możesz to zrobić, przechodząc do bloku **Łączniki danych** i wybierając pozycję Łącznik **pakietu Office 365** . W tym miejscu możesz kliknąć **stronę Otwórz łącznik** i w obszarze Konfiguracja z etykietą **włącz rozwiązanie Office 365 w obszarze roboczym** Użyj przycisku **Zainstaluj rozwiązanie** , aby je włączyć. Jeśli została już włączona, zostanie ona zidentyfikowana na ekranie połączenia, ponieważ jest już włączona.
 1. Pakiet Office 365 umożliwia przesyłanie strumieniowe danych z wielu dzierżawców do usługi Azure wskaźnikowej. Dla każdej dzierżawy, z którą chcesz nawiązać połączenie, Dodaj dzierżawcę w obszarze **łączenie dzierżawców z platformą Azure**. 
 1. Zostanie otwarty ekran Active Directory. Zostanie wyświetlony monit o uwierzytelnienie z uprawnieniami administratora globalnego dla każdej dzierżawy, którą chcesz połączyć z usługą Azure wskaźnikiem, i podawanie uprawnień do usługi Azure wskaźnikowej na potrzeby odczytywania dzienników. 
-5. W obszarze strumienie dzienników aktywności pakietu Office 365 kliknij pozycję **Wybierz** , aby wybrać, które typy dzienników mają być przesyłane strumieniowo do usługi Azure wskaźnikowej. Obecnie platforma Azure — Wskaźnikowanie obsługuje programy Exchange i SharePoint.
+5. Na liście dzierżawców zobaczysz identyfikator katalogu usługi Azure AD (identyfikator dzierżawy) i dwa pola wyboru dla dzienników programu Exchange i programu SharePoint. Możesz wybrać dowolną lub wszystkie usługi wymienione na liście, które mają być pozyskiwane na wskaźniku. Obecnie w ramach istniejących usług Office na platformie Azure Wskaźnikowanie obejmuje dzienniki programu Exchange i programu SharePoint.
 
-4. Kliknij przycisk **Zastosuj zmiany**.
+4. Po wybraniu usług (Exchange, SharePoint itp.) można kliknąć pozycję Zapisz w ramce dodawania dzierżawy na stronie. 
 
 3. Aby użyć odpowiedniego schematu w Log Analytics dla dzienników pakietu Office 365, Wyszukaj pozycję **Office**.
 

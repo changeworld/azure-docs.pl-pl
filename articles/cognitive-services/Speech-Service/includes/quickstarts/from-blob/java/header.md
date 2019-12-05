@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy przechowywanej w usłudze BLOB Storage, Java-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 7e5e59ab9f68771f3c79c9ceb779b214e79fa5f9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 017c53354700671d75415aaf18684e89271bb41e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504011"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829127"
 ---
 Jeśli wolisz przejść bezpośrednio do programu, Wyświetl lub Pobierz wszystkie <a href="https://aka.ms/speech/github-java">przykłady języka Java dotyczące zestawu Speech SDK</a> w witrynie GitHub. W przeciwnym razie Zacznijmy.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 58f6c97ac819947f84735bc0bc4c125b43db58dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075797"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805794"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Włączanie rejestrowania w zestawie mowy SDK
 
@@ -24,7 +24,7 @@ Logowanie do pliku to opcjonalna funkcja dla zestawu Speech SDK. Podczas rejestr
 > [!NOTE]
 > Funkcja rejestrowania jest dostępna, ponieważ zestaw SDK mowy w wersji 1.4.0 we wszystkich obsługiwanych językach programowania zestawu SDK mowy, z wyjątkiem języka JavaScript.
 
-## <a name="sample"></a>Sample
+## <a name="sample"></a>Przykład
 
 Nazwa pliku dziennika jest określona w obiekcie konfiguracji. Pobieranie `SpeechConfig` na przykład przy założeniu, że utworzono wystąpienie o nazwie `config`:
 
@@ -57,7 +57,7 @@ Aparat rozpoznawania można utworzyć przy użyciu obiektu konfiguracji. Spowodu
 
 W przypadku systemu Windows lub Linux plik dziennika może znajdować się w dowolnej ścieżce, do której użytkownik ma uprawnienia do zapisu. Uprawnienia do zapisu w lokalizacjach systemu plików w innych systemach operacyjnych mogą być domyślnie ograniczone lub ograniczone.
 
-### <a name="universal-windows-platform-uwp"></a>Platforma uniwersalna systemu Windows (UWP)
+### <a name="universal-windows-platform-uwp"></a>Platforma uniwersalna systemu Windows
 
 Aplikacje platformy UWP muszą być umieszczane w plikach dziennika w jednej z lokalizacji danych aplikacji (lokalnego, mobilnego lub tymczasowego). Plik dziennika można utworzyć w folderze aplikacji lokalnej:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fcd3e5fd6db0d7c18a5f9bfba030cd3d809b452f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e41653e4644b09cc357510223e5ee86c3806ae2c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802525"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806117"
 ---
 # <a name="deploy-a-custom-model"></a>Wdrażanie modelu niestandardowego
 
@@ -44,7 +44,7 @@ Dane rejestrowania są dostępne do pobrania w obszarze **punkt końcowy > szcze
 
 * Używanie niestandardowego punktu końcowego z [zestawem SDK mowy](speech-sdk.md)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
 * [Inspekcja danych](how-to-custom-speech-inspect-data.md)

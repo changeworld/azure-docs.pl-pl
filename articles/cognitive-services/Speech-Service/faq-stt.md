@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 277d8e3fe8f54b8e95d8acc93d26100d3ac64db1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110707"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814858"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst często zadawanych pytań
 
@@ -65,11 +65,32 @@ Odp **.: wdrożenia**nie będą automatycznie aktualizowane.
 
 Jeśli dostosowano i wdrożono model z linią bazową 1.0, to wdrożenie pozostanie bez zmian. Klienci mogą zlikwidować wdrożony model, ponownie dostosować ją przy użyciu nowszej wersji planu bazowego i ponownie wdrożyć.
 
+**P: Czy można pobrać model i uruchomić go lokalnie?**
+
+Odp **.: nie**można pobrać i wykonać lokalnie modeli.
+
+**P: Czy moje żądania są zarejestrowane?**
+
+Odp **.: masz**możliwość wyboru podczas tworzenia wdrożenia w celu wyłączenia śledzenia. W tym momencie żadne audio ani transkrypcje nie będą rejestrowane. W przeciwnym razie żądania są zwykle rejestrowane na platformie Azure w bezpiecznym magazynie.
+
+**P: Czy moje żądania są ograniczone?**
+
+Odp **.: interfejs**API REST ogranicza liczbę żądań do 25 na 5 sekund. Szczegółowe informacje znajdują się na stronach na potrzeby [zamiany mowy na tekst](speech-to-text.md).
+
+**P: jak opłaty są naliczane za dwa kanały audio?**
+
+Odp.: **w**przypadku przesłania każdego kanału osobno (każdego kanału w osobnym pliku) opłata zostanie naliczona za okres istnienia pliku. Jeśli przesyłasz pojedynczy plik z każdym kanałem, który zostanie przyładowany, zostanie naliczona opłata za czas trwania pojedynczego pliku.
+
+> [!IMPORTANT]
+> Jeśli masz jeszcze inne problemy z ochroną prywatności, które uniemożliwiają korzystanie z usługi Custom Speech Service, skontaktuj się z jednym z kanałów pomocy technicznej.
+
+## <a name="increasing-concurrency"></a>Zwiększanie współbieżności
+
 **P: co zrobić, jeśli potrzebuję wyższego współbieżności dla mojego wdrożonego modelu niż to, co jest oferowane w portalu?**
 
 Odp **.: można**skalować w górę modelu w przyrostach 20 współbieżnych żądań.
 
-Skontaktuj się z [pomocą techniczną mowy](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) , jeśli potrzebujesz wyższej skali.
+Korzystając z wymaganych informacji, Utwórz żądanie pomocy technicznej w [portalu pomocy technicznej systemu Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Nie Publikuj informacji na żadnym z publicznych kanałów (GitHub, StackOverflow,...) wymienionym na [stronie pomocy technicznej](support.md).
 
 Aby zwiększyć współbieżność ***modelu niestandardowego***, potrzebne są następujące informacje:
 
@@ -97,25 +118,6 @@ lub
   - z wyświetlanych usług wybierz usługę mowy, dla której chcesz zwiększyć współbieżność,
   - Wyświetl `Properties` dla tej usługi,
   - Skopiuj kompletną `Resource ID`.
-
-**P: Czy można pobrać model i uruchomić go lokalnie?**
-
-Odp **.: nie**można pobrać i wykonać lokalnie modeli.
-
-**P: Czy moje żądania są zarejestrowane?**
-
-Odp **.: masz**możliwość wyboru podczas tworzenia wdrożenia w celu wyłączenia śledzenia. W tym momencie żadne audio ani transkrypcje nie będą rejestrowane. W przeciwnym razie żądania są zwykle rejestrowane na platformie Azure w bezpiecznym magazynie.
-
-**P: Czy moje żądania są ograniczone?**
-
-Odp **.: interfejs**API REST ogranicza liczbę żądań do 25 na 5 sekund. Szczegółowe informacje znajdują się na stronach na potrzeby [zamiany mowy na tekst](speech-to-text.md).
-
-**P: jak opłaty są naliczane za dwa kanały audio?**
-
-Odp.: **w**przypadku przesłania każdego kanału osobno (każdego kanału w osobnym pliku) opłata zostanie naliczona za okres istnienia pliku. Jeśli przesyłasz pojedynczy plik z każdym kanałem, który zostanie przyładowany, zostanie naliczona opłata za czas trwania pojedynczego pliku.
-
-> [!IMPORTANT]
-> Jeśli masz jeszcze inne problemy z ochroną prywatności, które uniemożliwiają korzystanie z usługi Custom Speech Service, skontaktuj się z jednym z kanałów pomocy technicznej.
 
 ## <a name="importing-data"></a>Importowanie danych
 
@@ -189,7 +191,7 @@ Odp **.:** Model dzierżawy jest tworzony przy użyciu [publicznych grup](https:
 
 **P: jakie środowiska mowy zostały ulepszone przez model dzierżawców?**
 
-Odp **.:** Gdy model dzierżawy jest włączony, tworzony i publikowany, jest używany do ulepszania rozpoznawania dla dowolnych aplikacji przedsiębiorstwa utworzonych przy użyciu usługi Speech. to również przekazanie tokenu usługi AAD użytkownika wskazującego na członkostwo w przedsiębiorstwie.
+Odp **.:** Gdy model dzierżawy jest włączony, tworzony i publikowany, służy do ulepszania rozpoznawania dla dowolnych aplikacji przedsiębiorstwa utworzonych przy użyciu usługi Speech. to również przekazanie tokenu usługi AAD użytkownika wskazującego na członkostwo w przedsiębiorstwie.
 
 Funkcje mowy wbudowane w pakiet Office 365, takie jak dyktowanie i podpisy programu PowerPoint, nie ulegają zmianie podczas tworzenia modelu dzierżawców dla aplikacji usługi Speech.
 

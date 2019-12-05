@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 8e522b49c53dd40a4438755520481383984c1e01
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535888"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807089"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Konserwacja maszyn wirtualnych na platformie Azure
 
@@ -29,7 +29,7 @@ Aktualizacje rzadko wpływają na hostowane maszyny wirtualne. Gdy aktualizacje 
 
 Na tej stronie opisano, jak platforma Azure wykonuje oba typy konserwacji. Aby uzyskać więcej informacji o nieplanowanych zdarzeniach (przestoju), zobacz [Zarządzanie dostępnością maszyn wirtualnych w systemie Windows](./windows/manage-availability.md) lub odpowiednim artykule dla systemu [Linux](./linux/manage-availability.md).
 
-W ramach maszyny wirtualnej można otrzymywać powiadomienia o nadchodzącej konserwacji przy [użyciu Scheduled Events dla systemu Windows](/windows/scheduled-events.md) lub [Linux](/linux/scheduled-events.md).
+W ramach maszyny wirtualnej można otrzymywać powiadomienia o nadchodzącej konserwacji przy [użyciu Scheduled Events dla systemu Windows](./windows/scheduled-events.md) lub [Linux](./linux/scheduled-events.md).
 
 
 
@@ -43,7 +43,7 @@ Konserwacja pamięci jest zachowywana przez ponad 90 procent maszyn wirtualnych 
 
 Te operacje konserwacji, które nie wymagają ponownego uruchomienia, są stosowane w jednej domenie błędów jednocześnie. Są one przerywane, jeśli otrzymają ostrzeżenia o kondycji ostrzegawcze. 
 
-Te typy aktualizacji mogą mieć wpływ na niektóre aplikacje. Gdy maszyna wirtualna jest migrowana na żywo na inny host, niektóre wrażliwe obciążenia mogą pokazać niewielki spadek wydajności w ciągu kilku minut, co prowadzi do wstrzymania maszyny wirtualnej. Aby przygotować się do obsługi maszyny wirtualnej i ograniczyć wpływ na konserwację platformy Azure, spróbuj [użyć Scheduled Events dla systemu Windows](/windows/scheduled-events.md) lub [Linux](/linux/scheduled-events.md) dla takich aplikacji. 
+Te typy aktualizacji mogą mieć wpływ na niektóre aplikacje. Gdy maszyna wirtualna jest migrowana na żywo na inny host, niektóre wrażliwe obciążenia mogą pokazać niewielki spadek wydajności w ciągu kilku minut, co prowadzi do wstrzymania maszyny wirtualnej. Aby przygotować się do obsługi maszyny wirtualnej i ograniczyć wpływ na konserwację platformy Azure, spróbuj [użyć Scheduled Events dla systemu Windows](./windows/scheduled-events.md) lub [Linux](./linux/scheduled-events.md) dla takich aplikacji. 
 
 W publicznej wersji zapoznawczej znajduje się również funkcja kontroli konserwacji, która może ułatwić zarządzanie konserwacją, która nie wymaga ponownego uruchomienia. Musisz korzystać z [dedykowanych hostów platformy Azure](./linux/dedicated-hosts.md) lub [izolowanej maszyny wirtualnej](../security/fundamentals/isolation-choices.md). Sterowanie konserwacją udostępnia opcję pomijania aktualizacji platformy i stosowania aktualizacji w wybranym momencie w ciągu 35 dni. Aby uzyskać więcej informacji, zobacz [Kontrolowanie aktualizacji przy użyciu sterowania konserwacją i interfejsu wiersza polecenia platformy Azure](maintenance-control-cli.md).
 

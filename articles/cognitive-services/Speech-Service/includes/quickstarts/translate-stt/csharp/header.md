@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: tłumaczenie zamiany mowy na tekst C# , usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 88eac4ed2811131724486c379c612f998e1252d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1dff9f7e72fca5fe6327b23e462c1d221dbaf503
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502772"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816702"
 ---
 Jeśli wolisz przejść bezpośrednio do programu, Wyświetl lub Pobierz wszystkie <a href="https://aka.ms/speech/github-csharp">przykłady zestawu C# Speech SDK</a> w witrynie GitHub. W przeciwnym razie Zacznijmy.

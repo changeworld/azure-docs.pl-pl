@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Tłumaczenie mowy na wiele języków C# (.NET Core Windows) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 947c0dd8a15efa8ac296aa598d883951816e759d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ea3c0bd1ab12004b51c3c9b56eb8a8370da6f36
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502800"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817091"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -117,7 +117,7 @@ Przed rozpoczęciem upewnij się, że:
 
 1. Wybierz **debuguj** > **Rozpocznij debugowanie** (lub naciśnij klawisz **F5**), aby uruchomić aplikację **HelloWorld** .
 
-1. Wypowiedz zwrot lub zdanie w języku angielskim. Aplikacja przesyła mowę do usług mowy, które tłumaczą i przekształca na tekst (w tym przypadku do języka francuskiego i niemieckiego). Usługi mowy wysyłają następnie tekst z powrotem do aplikacji do wyświetlenia.
+1. Wymów frazę lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która tłumaczy i przekształca na tekst (w tym przypadku w języku francuskim i niemieckim). Usługa mowy wysyła następnie tekst z powrotem do aplikacji do wyświetlenia.
 
 ````
 Say something...

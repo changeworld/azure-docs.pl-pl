@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 077f34e94423918d324eb41b56ab84c64a0db719
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111791"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816196"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Szybki Start: Tworzenie asystenta głosowego w języku Java w systemie Android przy użyciu zestawu Speech SDK
 
@@ -30,7 +30,7 @@ Ta aplikacja jest zbudowana z pakietem Maven zestawu mowy SDK i Android Studio 3
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
+- Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
 - Wcześniej utworzono bot skonfigurowany za pomocą [kanału Direct line](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Android Studio](https://developer.android.com/studio/) v 3.3 lub nowszy
 
@@ -260,7 +260,7 @@ Tekst i graficzna reprezentacja interfejsu użytkownika powinny teraz wyglądać
 
     * Zastąp element `YourSpeechSubscriptionKey` kluczem subskrypcji.
 
-    * Zastąp `YourServiceRegion` w [regionie](regions.md) skojarzonym z subskrypcją tylko podzbiór regionów usługi Speech Services jest obecnie obsługiwany przez funkcję Direct line Speech. Aby uzyskać więcej informacji, zobacz [regiony](regions.md#voice-assistants).
+    * Zastąp `YourServiceRegion` w [regionie](regions.md) skojarzonym z subskrypcją tylko podzbiór regionów usługi mowy jest obecnie obsługiwany w przypadku bezpośredniego rozpoznawania mowy w wierszu. Aby uzyskać więcej informacji, zobacz [regiony](regions.md#voice-assistants).
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
@@ -285,7 +285,7 @@ Po uruchomieniu aplikacji i jej działania kliknij przycisk, aby rozpocząć roz
 
 ## <a name="see-also"></a>Zobacz także
 - [Asystenci głosu — informacje](voice-assistants.md)
-- [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
+- [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
 - [Niestandardowe słowa kluczowe](speech-devices-sdk-create-kws.md)
 - [Połącz bezpośrednią mowę wiersza z bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [Zapoznaj się z przykładami dla języka Java w serwisie GitHub](https://aka.ms/csspeech/samples)
+- [Zapoznaj się z przykładami dla języka Java w usłudze GitHub](https://aka.ms/csspeech/samples)

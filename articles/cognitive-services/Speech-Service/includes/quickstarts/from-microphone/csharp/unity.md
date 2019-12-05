@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b0a9eddf147eedfa972e0574e62c9e7c2eace84f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795725"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818875"
 ---
 > [!NOTE]
 > Zestaw Speech SDK for Unity obsługuje Pulpity systemu Windows (x86 i x64) lub platforma uniwersalna systemu Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) i iOS (x64 symulator, ARM32 i ARM64)
@@ -89,7 +89,7 @@ Aby dodać przykładowy kod skryptu dla projektu Unity, wykonaj następujące kr
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Znajdź i Zastąp ciąg `YourSubscriptionKey` za pomocą klucza subskrypcji usługi Speech Services.
+1. Znajdź i Zastąp ciąg `YourSubscriptionKey`m kluczem subskrypcji usługi rozpoznawania mowy.
 
 1. Znajdź i Zamień ciąg `YourServiceRegion` z [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją. Jeśli na przykład używasz bezpłatnej wersji próbnej, region to `westus`.
 
@@ -120,7 +120,7 @@ Teraz wszystko jest gotowe do uruchomienia aplikacji w edytorze aparatu Unity.
 
 1. Przejdź do [widoku **gry** ](https://docs.unity3d.com/Manual/GameView.html)i poczekaj na wyświetlenie obiektu **tekstowego** w **celu rozpoznania mowy**. (Wyświetla **Nowy tekst** , gdy aplikacja nie została uruchomiona lub nie jest gotowa do odpowiedzi).
 
-1. Wybierz przycisk i zacznij mówić do angielskiej frazy lub zdania na mikrofon komputera. Twoja Zamiana jest przekazywana do usługi mowy i uzyskanego do tekstu, który jest wyświetlany w widoku **gry** .
+1. Wybierz przycisk i zacznij mówić do angielskiej frazy lub zdania na mikrofon komputera. Twoja Zamiana jest przesyłana do usługi mowy i uzyskanego do tekstu, która jest wyświetlana w widoku **gry** .
 
    [![widoku gry w edytorze aparatu Unity](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 

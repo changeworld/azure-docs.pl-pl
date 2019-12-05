@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464561"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816407"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotuj dane dla Custom Speech
 
@@ -25,11 +25,11 @@ Bez względu na to, czy testujesz, jak Precyzyjna funkcja rozpoznawania mowy fir
 
 Ta tabela zawiera listę akceptowanych typów danych, gdy należy użyć poszczególnych typów danych i zalecanej ilości. Do utworzenia modelu nie jest wymagany każdy typ danych. Wymagania dotyczące danych będą się różnić w zależności od tego, czy tworzysz test czy uczenie modelu.
 
-| Typ danych | Używane do testowania | Liczba | Używany do szkolenia | Liczba |
+| Typ danych | Używane do testowania | Zalecana ilość | Używany do szkolenia | Zalecana ilość |
 |-----------|-----------------|----------|-------------------|----------|
-| [Dźwięku](#audio-data-for-testing) | Tak<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | nie dotyczy |
+| [Audio](#audio-data-for-testing) | Tak<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | Nie dotyczy |
 | [Zapisy audio + oznakowane przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Tak<br>Służy do obliczania dokładności | 0,5 – 5 godzin audio | Tak | 1 – 1 000 godzin audio |
-| [Powiązany tekst](#related-text-data-for-training) | Nie | nie dotyczy | Tak | 1-200 MB powiązanego tekstu |
+| [Powiązany tekst](#related-text-data-for-training) | Nie | Nie dotyczy | Tak | 1-200 MB powiązanego tekstu |
 
 Pliki powinny być pogrupowane według typu w zestawie danych i przekazywane jako plik zip. Każdy zestaw danych może zawierać tylko jeden typ danych.
 
@@ -138,7 +138,7 @@ Jeśli istnieją nietypowe terminy bez standardowych wymowy, których użytkowni
 
 Obejmuje to przykłady mówionych wypowiedź i niestandardową wymowę dla każdej z nich:
 
-| Rozpoznany/wyświetlany formularz | Formularz mówiony |
+| Rozpoznany/wyświetlany formularz | Mówionej formy |
 |--------------|--------------------------|
 | 3CPO | trzy c p o |  
 | CNTK | c n t k |
@@ -148,10 +148,10 @@ Mówiony formularz jest wyszukiwaną sekwencją fonetyczną. Może składać si�
 
 Dostosowana wymowa jest dostępna w języku angielskim (EN-US) i niemiecki (de-DE). W tej tabeli przedstawiono obsługiwane znaki według języka:
 
-| Język | Ustawienia regionalne | Znaków |
+| Język | Ustawienia regionalne | Znaki |
 |----------|--------|------------|
-| Polski | pl-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
-| Niemiecki | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Polski | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| niemiecki | de-DE. | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 Użyj tej tabeli, aby upewnić się, że plik powiązanych danych dla wymowy jest sformatowany prawidłowo. Pliki wymowy są małe i nie powinny przekraczać kilku artykułów bazy wiedzy.
 

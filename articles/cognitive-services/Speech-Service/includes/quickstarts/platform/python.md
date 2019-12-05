@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: konfiguracja zestawu Speech SDK dla platformy Python — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego przewodnika, aby skonfigurować platformę do korzystania z języka Python z zestawem SDK usługi Speech Services.
+description: Skorzystaj z tego przewodnika, aby skonfigurować platformę do korzystania z języka Python z zestawem SDK usługi Speech Service.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: d4a81c6dd2b44efd432345627e78bb69fff1688d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 095c591f63cb228b48681ffc67499820631bbaf5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502429"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816464"
 ---
 W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla języka Python.
 

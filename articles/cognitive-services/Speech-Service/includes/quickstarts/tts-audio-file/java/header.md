@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: synteza mowy w pliku audio, usługa Java-Speech'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b23e69f7e007666f9bd811e034cdd09ad40455bf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c9ede604bb8897fc9e9c1f08ea7789e5b130777f
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503325"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818026"
 ---
 Jeśli wolisz przejść bezpośrednio do programu, Wyświetl lub Pobierz wszystkie <a href="https://aka.ms/speech/github-java">przykłady języka Java dotyczące zestawu Speech SDK</a> w witrynie GitHub. W przeciwnym razie Zacznijmy.

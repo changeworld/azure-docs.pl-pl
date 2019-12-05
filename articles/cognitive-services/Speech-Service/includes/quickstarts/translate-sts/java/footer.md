@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Tłumaczenie mowy na mowę, Java (Windows, Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 5e31d620c3b297f3b355f5a60598758aaba954db
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6c3ecfb892af357bd6f77d1e27a632caf6f58872
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503297"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817636"
 ---
 > [!div class="nextstepaction"]
-> [Zapoznaj się z przykładami dla języka Java w serwisie GitHub](https://aka.ms/speech/github-java)
+> [Zapoznaj się z przykładami dla języka Java w usłudze GitHub](https://aka.ms/speech/github-java)

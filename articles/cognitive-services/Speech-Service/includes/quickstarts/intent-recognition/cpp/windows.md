@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 04b6193299004996862a577176dfb9c52a7709cd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 78fbf35fab69dd91d5ba1841fee1fb5290fb1347
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795603"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816048"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ Przed rozpoczęciem upewnij się, że:
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=windows)
 
-## <a name="open-your-project-in-visual-studio"></a>Otwieranie projektu w programie Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otwórz projekt w programie Visual Studio
 
 Pierwszym krokiem jest upewnienie się, że projekt jest otwarty w programie Visual Studio.
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: b6ab1e3e01f66e071e3d16b196b3ecdcd30c2620
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701808"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807429"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Zrozumienie i Używanie modułu bliźniaczych reprezentacji w IoT Hub
 
@@ -33,7 +33,7 @@ Zapoznaj się ze [wskazówkami dotyczącymi komunikacji między urządzeniami i 
 
 Zapoznaj się ze [wskazówkami dotyczącymi komunikacji między chmurą i urządzeniami](iot-hub-devguide-c2d-guidance.md) , aby uzyskać wskazówki dotyczące używania żądanych właściwości, metod bezpośrednich lub komunikatów z chmury do urządzenia.
 
-## <a name="module-twins"></a>Moduł bliźniaczych reprezentacji
+## <a name="module-twins"></a>Bliźniaczych reprezentacjach modułów
 
 Moduł bliźniaczych reprezentacji magazynu informacje dotyczące modułu, które:
 
@@ -179,14 +179,14 @@ Zaplecze rozwiązania działa na sznurze module przy użyciu następujących ope
     | Nazwa | Wartość |
     | --- | --- |
     Typ $content | application/json |
-    $iothub — enqueuedtime |  Godzina wysłania powiadomienia |
-    $iothub-komunikat-Źródło | twinChangeEvents |
+    $iothub-enqueuedtime |  Godzina wysłania powiadomienia |
+    $iothub-message-source | twinChangeEvents |
     $content — kodowanie | UTF-8 |
     deviceId | Identyfikator urządzenia |
     moduleId | Identyfikator modułu |
     hubName | Nazwa IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) sygnatura czasowa operacji |
-    iothub — komunikat-schemat | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" lub "updateTwin" |
 
     Właściwości systemu komunikatów są poprzedzone symbolem `$`.

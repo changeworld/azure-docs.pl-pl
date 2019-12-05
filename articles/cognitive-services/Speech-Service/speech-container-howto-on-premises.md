@@ -1,5 +1,5 @@
 ---
-title: Używanie kontenera usługi mowy z Kubernetes i Helm
+title: Korzystanie z kontenerów usługi mowy z Kubernetes i Helm
 titleSuffix: Azure Cognitive Services
 description: Za pomocą Kubernetes i Helm do definiowania obrazów kontenerów zamiany mowy na tekst i zamiany tekstu na mowę utworzysz pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 42585ae09435e67b7cdea0b437681e2ce044ecd3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b7f8b98e8241b4502c86cce8c893beb315767d55
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383653"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816494"
 ---
-# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Używanie kontenera usługi mowy z Kubernetes i Helm
+# <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Korzystanie z kontenerów usługi mowy z Kubernetes i Helm
 
 Jedną z opcji zarządzania kontenerami mowy w środowisku lokalnym jest użycie Kubernetes i Helm. Za pomocą Kubernetes i Helm do definiowania obrazów kontenerów zamiany mowy na tekst i zamiany tekstu na mowę utworzysz pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie. Na koniec dowiesz się, jak przetestować wdrożone usługi i różne opcje konfiguracji. Aby uzyskać więcej informacji na temat uruchamiania kontenerów platformy Docker bez aranżacji Kubernetes, zobacz [Install and run Speech Service Containers](speech-container-howto.md).
 
@@ -25,7 +25,7 @@ Jedną z opcji zarządzania kontenerami mowy w środowisku lokalnym jest użycie
 
 Poniższe wymagania wstępne przed użyciem kontenerów mowy w środowisku lokalnym:
 
-|Wymagany|Przeznaczenie|
+|Wymagane|Przeznaczenie|
 |--|--|
 | Azure Account | Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][free-azure-account]. |
 | Dostęp Container Registry | Aby Kubernetes do ściągania obrazów platformy Docker do klastra, będzie potrzebny dostęp do rejestru kontenerów. |

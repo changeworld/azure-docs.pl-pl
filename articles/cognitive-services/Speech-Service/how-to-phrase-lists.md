@@ -1,7 +1,7 @@
 ---
 title: Listy fraz — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak dostarczać usługi mowy z listą fraz przy użyciu obiektu `PhraseListGrammar`, aby poprawić wyniki rozpoznawania zamiany mowy na tekst.
+description: Dowiedz się, jak dostarczać usługę mowy z listą fraz przy użyciu obiektu `PhraseListGrammar`, aby poprawić wyniki rozpoznawania zamiany mowy na tekst.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 052e02ef562da0637b6b5b9683120f0c397dbfd5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464547"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805879"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Listy fraz dla zamiany mowy na tekst
 
-Dostarczając usługi mowy z listą fraz, można poprawić dokładność rozpoznawania mowy. Listy fraz są używane do identyfikowania znanych fraz w danych audio, takich jak nazwa osoby lub określonej lokalizacji.
+Dostarczając usługę mowy z listą fraz, można poprawić dokładność rozpoznawania mowy. Listy fraz są używane do identyfikowania znanych fraz w danych audio, takich jak nazwa osoby lub określonej lokalizacji.
 
 Jeśli na przykład masz polecenie "Przenieś do" i możliwe miejsce docelowe "do wewnątrz", które może być wymawiane, możesz dodać wpis "przejdź do samego". Dodanie frazy spowoduje zwiększenie prawdopodobieństwa, że gdy dźwięk zostanie rozpoznany, że "Przenieś do wewnątrz" zostanie rozpoznany zamiast "Przenieś w stronę".
 

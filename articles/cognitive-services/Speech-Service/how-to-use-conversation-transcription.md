@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 4ee597f96d28b43b9c69d1515634aadde2f0ab7c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608053"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805811"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Transkrypcja konwersacji w czasie rzeczywistym (wersja zapoznawcza)
 
-Interfejs API **ConversationTranscriber** zestawu mowy SDK umożliwia transkrypcja spotkań i innych konwersacji z możliwością dodawania, usuwania i identyfikowania wielu uczestników przez przesyłanie strumieniowe plików audio do usługi Speech Services przy użyciu `PullStream` lub `PushStream`. Ten temat wymaga, aby dowiedzieć się, jak używać zamiany mowy na tekst za pomocą zestawu Speech SDK (wersja 1.8.0 lub nowsza). Aby uzyskać więcej informacji, zobacz [co to jest usługa Speech Services](overview.md).
+Interfejs API **ConversationTranscriber** zestawu mowy SDK umożliwia transkrypcja spotkań i innych konwersacji z możliwością dodawania, usuwania i identyfikowania wielu uczestników przez przesyłanie strumieniowe plików audio do usługi mowy przy użyciu `PullStream` lub `PushStream`. Ten temat wymaga, aby dowiedzieć się, jak używać zamiany mowy na tekst za pomocą zestawu Speech SDK (wersja 1.8.0 lub nowsza). Aby uzyskać więcej informacji, zobacz [co to jest usługa Speech Services](overview.md).
 
 ## <a name="limitations"></a>Ograniczenia
 
@@ -37,7 +37,7 @@ Zestaw SDK urządzenia mowy zawiera przykładowy kod w języku Java do przechwyt
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Subskrypcja usługi Speech Services. Jeśli go nie masz, możesz [uzyskać subskrypcję wersji próbnej](https://azure.microsoft.com/try/cognitive-services/) .
+Subskrypcja usługi mowy. Jeśli go nie masz, możesz [uzyskać subskrypcję wersji próbnej](https://azure.microsoft.com/try/cognitive-services/) .
 
 ## <a name="create-voice-signatures"></a>Tworzenie podpisów głosowych
 

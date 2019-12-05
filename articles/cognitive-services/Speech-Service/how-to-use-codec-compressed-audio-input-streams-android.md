@@ -1,7 +1,7 @@
 ---
 title: Skompresowane audio kodera-dekoder strumienia przy użyciu zestawu Speech SDK w systemie Android
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przesyłać strumieniowo skompresowane audio do usługi Azure Speech Services przy użyciu zestawu Speech SDK w systemie Android.
+description: Dowiedz się, jak przesyłać strumieniowo skompresowane audio do usługi mowy przy użyciu zestawu Speech SDK w systemie Android.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109908"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805845"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Instrukcje: korzystanie z kodera-dekoder kompresji audio przy użyciu zestawu Speech SDK w systemie Android
 
@@ -37,7 +37,7 @@ W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej. Na zewn�
 
 Koder-dekoder skompresowany audio jest implementowany przy użyciu [GStreamer](https://gstreamer.freedesktop.org). Ze względów licencjonowania GStreamer pliki binarne nie są kompilowane z zestawem SDK. Musisz użyć wstępnie skompilowanych plików binarnych dla systemu Android. Aby pobrać wstępnie skompilowane biblioteki, zobacz [Instalowanie aplikacji dla systemu Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-`libgstreamer_android.so` jest wymagana. Upewnij się, że wtyczki GStreamer są połączone w `libgstreamer_android.so`.
+Ciąg `libgstreamer_android.so` jest wymagany. Upewnij się, że wtyczki GStreamer są połączone w `libgstreamer_android.so`.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac

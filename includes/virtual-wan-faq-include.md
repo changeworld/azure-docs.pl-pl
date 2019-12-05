@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: acd601512f2240802de47483a015f03a226da115
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795880"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828790"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Jaka jest różnica między bramą sieci wirtualnej platformy Azure (VPN Gateway) i bramą sieci VPN Azure Virtual WAN?
 
@@ -113,7 +113,9 @@ Możesz połączyć sieć wirtualną w innym regionie niż wirtualna sieć WAN.
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Czy sieci wirtualne będące szprychami połączone z koncentratorem wirtualnym mogą komunikować się ze sobą?
 
-Tak. Sieci wirtualne będące szprychami mogą komunikować się bezpośrednio za pomocą komunikacji równorzędnej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Wirtualne sieci równorzędne](../articles/virtual-network/virtual-network-peering-overview.md). Obsługujemy również sieci wirtualnychą komunikację przechodnią przez centrum.
+Tak. Standardowa wirtualna sieć WAN obsługuje połączenia sieci wirtualnej z siecią wirtualną za pośrednictwem wirtualnego koncentratora sieci WAN, z którym są połączone sieci wirtualnych. W terminologii wirtualnej sieci WAN odnoszą się do tych ścieżek jako "lokalna wirtualna sieć WAN — tranzyt wirtualny" dla sieci wirtualnych połączonej z koncentratorem wirtualnym sieci WAN w jednym regionie i "globalna wirtualna sieć WAN — tranzyt wirtualny" dla sieci wirtualnych połączonych przez wiele wirtualnych koncentratorów sieci WAN w dwóch lub więcej regionach. Tranzyt sieci wirtualnej obsługuje do 3 GB/s przepustowości w publicznej wersji zapoznawczej. Przepływność zostanie rozwinięta, gdy globalne Tranzyty staną się ogólnie dostępne.   
+
+W niektórych scenariuszach sieci wirtualnych może być również bezpośrednio komunikacji równorzędnej ze sobą przy użyciu [Virtual Network komunikacji równorzędnej](../articles/virtual-network/virtual-network-peering-overview.md) , a nie lokalnego lub globalnego tranzytu wirtualnego sieci WAN. W takim przypadku Komunikacja równorzędna sieci wirtualnej ma pierwszeństwo przed połączeniem przechodnim za pośrednictwem wirtualnego koncentratora sieci WAN. 
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Co to jest połączenie gałęzi z wirtualną siecią WAN platformy Azure?
 

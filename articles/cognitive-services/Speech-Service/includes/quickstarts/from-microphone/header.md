@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/20/2019
 ms.author: erhopf
-ms.openlocfilehash: bee3b64ece3faac6258fe4d017f12833b12e370d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: a72597163a8c11cd8b515d052dc69992784e61e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74536349"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818821"
 ---
 W tym przewodniku szybki start użyjesz [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) , aby interaktywnie rozpoznać mowę z wejścia mikrofonu i uzyskać transkrypcję tekstu z przechwyconego dźwięku. Tę funkcję można łatwo zintegrować z aplikacjami lub urządzeniami w celu wykonywania typowych zadań rozpoznawania, takich jak Konwersacje jego przepisywania. Można go również użyć w celu uzyskania bardziej złożonej integracji, na przykład przy użyciu platformy bot z zestawem SDK mowy do tworzenia asystentów głosowych.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: konfiguracja zestawu C# Speech SDK dla platformy Unity — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Skorzystaj z tego przewodnika, aby skonfigurować platformę dla C# aparatu Unity z zestawem SDK usługi Speech Services.
+description: Skorzystaj z tego przewodnika, aby skonfigurować platformę dla C# aparatu Unity z zestawem SDK usługi Speech Service.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 6fa1024b68bae6a8353cc71f2749b221ab7e3bc4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 064916c0dad52749f724be8a1912f247128114b6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502492"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816263"
 ---
 W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla [aparatu Unity](https://unity3d.com/).
 
@@ -29,7 +29,7 @@ W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/arti
 Ten przewodnik Szybki start wymaga następujących elementów:
 
 - Aparat [unity 2018,3 lub nowszy](https://store.unity.com/) z funkcją [Unity 2019,1 Dodawanie obsługi platformy UWP arm64](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal).
-- [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/). Wersja 15,9 lub nowsza programu Visual Studio 2017 jest również akceptowalna.
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/). Wersja 15,9 lub nowsza programu Visual Studio 2017 jest również akceptowalna.
 - Aby uzyskać pomoc techniczną dla systemu Windows ARM64, zainstaluj [opcjonalne narzędzia kompilacji dla arm64 i zestaw Windows 10 SDK dla arm64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/).
 
 ## <a name="install-the-speech-sdk"></a>Instalowanie zestawu SDK usługi Mowa

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: caa1959ec64bb3a123c60763750267b107685b82
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d1c709beb225dff0ae616a23eb67eb57f4643ac9
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111254"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812761"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Szybki Start: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)
 
@@ -37,11 +37,11 @@ W tym artykule zostanie rozbudowana ta aplikacja z parametrami, aby umożliwić 
    | Ustawienie            | Sugerowana wartość | Opis                                                                                               |
    | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
    | Nazwa               | OnOff           | Opisowa nazwa parametru                                                                     |
-   | Jest globalny          | Unchecked       | Pole wyboru wskazujące, czy wartość tego parametru jest stosowana globalnie do wszystkich poleceń w projekcie |
-   | Wymagane           | Dane         | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru          |
+   | Jest globalny          | niezaznaczony       | Pole wyboru wskazujące, czy wartość tego parametru jest stosowana globalnie do wszystkich poleceń w projekcie |
+   | Wymagane           | checked         | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru          |
    | Szablon odpowiedzi  | Włączać lub wyłączać?      | Monit o podanie wartości tego parametru, gdy nie jest on znany                                       |
    | Typ               | Ciąg          | Typ parametru, taki jak Number, String lub Data Time                                               |
-   | Konfiguracja      | Lista ciągów     | W przypadku ciągów lista ciągów ogranicza dane wejściowe do zestawu możliwych wartości                                      |
+   | Konfigurowanie      | Lista ciągów     | W przypadku ciągów lista ciągów ogranicza dane wejściowe do zestawu możliwych wartości                                      |
    | Wartości listy ciągów | włączone, wyłączone         | Dla parametru lista ciągów, zestaw możliwych wartości i ich synonimów                                |
 
    - Następnie wybierz ponownie ikonę `+`, aby dodać drugi parametr reprezentujący nazwę urządzeń. Na potrzeby tego przykładu telewizora i wentylatoru
@@ -49,11 +49,11 @@ W tym artykule zostanie rozbudowana ta aplikacja z parametrami, aby umożliwić 
    | Ustawienie            | Sugerowana wartość   | Opis                                                                                               |
    | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
    | Nazwa               | SubjectDevice     | Opisowa nazwa parametru                                                                     |
-   | Jest globalny          | Unchecked         | Pole wyboru wskazujące, czy wartość tego parametru jest stosowana globalnie do wszystkich poleceń w projekcie |
-   | Wymagane           | Dane           | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru          |
+   | Jest globalny          | niezaznaczony         | Pole wyboru wskazujące, czy wartość tego parametru jest stosowana globalnie do wszystkich poleceń w projekcie |
+   | Wymagane           | checked           | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru          |
    | Szablon odpowiedzi  | Które urządzenie?     | Monit o podanie wartości tego parametru, gdy nie jest on znany                                       |
    | Typ               | Ciąg            | Typ parametru, taki jak Number, String lub Data Time                                               |
-   | Konfiguracja      | Lista ciągów       | W przypadku ciągów lista ciągów ogranicza dane wejściowe do zestawu możliwych wartości                                      |
+   | Konfigurowanie      | Lista ciągów       | W przypadku ciągów lista ciągów ogranicza dane wejściowe do zestawu możliwych wartości                                      |
    | Wartości listy ciągów | Telewizja, wentylator           | Dla parametru lista ciągów, zestaw możliwych wartości i ich synonimów                                |
    | Synonimy (telewizja)      | Telewizja, informowanie | Opcjonalne synonimy dla każdej możliwej wartości parametru listy ciągów                                      |
 
@@ -94,7 +94,7 @@ Zmodyfikuj regułę ukończenia utworzoną w [poprzednim przewodniku szybki star
    Ok, turning {OnOff} the {SubjectDevice}
    ```
 
-## <a name="try-it-out"></a>Testowanie
+## <a name="try-it-out"></a>Wypróbuj
 
 Otwórz panel rozmowy testowej i spróbuj wykonać kilka interakcji.
 

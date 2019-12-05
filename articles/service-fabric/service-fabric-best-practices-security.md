@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 75edb385a86be849ec7c165759d3b451eab804f6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: fec81e843753656d651c6d5d0b73077a964be9d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828505"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807446"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpieczenia usługi Azure Service Fabric 
 
 Aby uzyskać więcej informacji na temat najlepszych rozwiązań dotyczących [zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/), zobacz [najlepsze rozwiązania dotyczące usługi Azure Service Fabric Security](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)
 
-## <a name="key-vault"></a>Key Vault
+## <a name="key-vault"></a>Magazyn kluczy
 
 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) to zalecana usługa zarządzania kluczami tajnymi dla aplikacji i klastrów usługi Azure Service Fabric.
 > [!NOTE]
@@ -79,7 +79,7 @@ Aby zastosować listę ACL do certyfikatów dla procesów klastra Service Fabric
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Zabezpiecz certyfikat klastra Service Fabric według nazwy pospolitej
 
-Aby zabezpieczyć klaster Service Fabric przy użyciu certyfikatu `Common Name`, użyj właściwości [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)szablonu Menedżer zasobów w następujący sposób:
+Aby zabezpieczyć klaster Service Fabric przy użyciu `Common Name`certyfikatów, użyj właściwości [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)szablonu Menedżer zasobów w następujący sposób:
 
 ```json
 "certificateCommonNames": {
@@ -96,16 +96,16 @@ Aby zabezpieczyć klaster Service Fabric przy użyciu certyfikatu `Common Name`,
 > [!NOTE]
 > Klastry Service Fabric będą używać pierwszego ważnego certyfikatu, który znajduje się w magazynie certyfikatów hosta. W systemie Windows będzie to certyfikat z najnowszą datą wygaśnięcia zgodną z nazwą pospolitą i odciskiem palca wystawcy.
 
-Domeny platformy Azure, takie jak * \<YOUR SUBDOMAIN\>.cloudapp.azure.com lub \<YOUR SUBDOMAIN\>.trafficmanager.net, należą do firmy Microsoft. Urzędy certyfikacji nie będą wystawiać certyfikatów dla domen dla nieautoryzowanych użytkowników. Większość użytkowników będzie musiał zakupić domenę od rejestratora lub być uprawnionym administratorem domeny, aby Urząd certyfikacji wystawiał certyfikat z tą nazwą pospolitą.
+Domeny platformy Azure, takie jak *\<swoją poddomeną\>. cloudapp.azure.com lub \<poddomeny\>. trafficmanager.net, należą do firmy Microsoft. Urzędy certyfikacji nie będą wystawiać certyfikatów dla domen dla nieautoryzowanych użytkowników. Większość użytkowników będzie musiał zakupić domenę od rejestratora lub być uprawnionym administratorem domeny, aby Urząd certyfikacji wystawiał certyfikat z tą nazwą pospolitą.
 
 Aby uzyskać dodatkowe informacje na temat konfigurowania usługi DNS w celu rozpoznania domeny w adresie IP firmy Microsoft, zapoznaj się z tematem Konfigurowanie [Azure DNS do hostowania domeny](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns).
 
 > [!NOTE]
 > Po delegowaniu serwerów nazw domen do Azure DNS serwerów nazw strefy, Dodaj następujące dwa rekordy do strefy DNS:
-> - Rekord "A" dla WIERZCHOŁKa domeny, który nie jest `Alias record set` do wszystkich adresów IP, które zostaną rozpoznane przez domenę niestandardową.
+> - Jest to rekord "A" dla WIERZCHOŁKa domeny, który nie jest `Alias record set` do wszystkich adresów IP, które zostaną rozpoznane przez domenę niestandardową.
 > - Rekord "C" dla domen podrzędnych firmy Microsoft, które nie są `Alias record set`. Można na przykład użyć nazwy DNS Traffic Manager lub Load Balancer.
 
-Aby zaktualizować Portal tak, aby wyświetlał niestandardową nazwę DNS klastra Service Fabric `"managementEndpoint"`, zaktualizuj następujące właściwości szablonu Service Fabric klastra Menedżer zasobów:
+Aby zaktualizować Portal tak, aby wyświetlał niestandardową nazwę DNS `"managementEndpoint"`klastra Service Fabric, zaktualizuj następujące właściwości szablonu Service Fabric klastra Menedżer zasobów:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -166,7 +166,7 @@ Aby zapewnić aplikacji dostęp do wpisów tajnych, Uwzględnij certyfikat przez
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Uwierzytelnianie aplikacji Service Fabric w zasobach platformy Azure przy użyciu tożsamość usługi zarządzanej (MSI)
 
-Aby dowiedzieć się więcej o tożsamościach zarządzanych dla zasobów platformy Azure, zobacz [co to jest tożsamość zarządzana dla zasobów platformy Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work).
+Aby dowiedzieć się więcej o tożsamościach zarządzanych dla zasobów platformy Azure, zobacz [co to jest tożsamość zarządzana dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
 Klastry usługi Azure Service Fabric są hostowane na Virtual Machine Scale Sets, które obsługują [tożsamość usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources).
 Aby uzyskać listę usług, których można użyć do uwierzytelniania za pomocą pliku MSI, zobacz [usługi platformy Azure, które obsługują uwierzytelnianie Azure Active Directory](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
 
@@ -216,21 +216,21 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 ## <a name="windows-security-baselines"></a>Linie bazowe zabezpieczeń systemu Windows
 [Zalecamy wdrożenie standardowej konfiguracji branżowej, która jest szeroko znana i dobrze sprawdzona, takich jak linie bazowe zabezpieczeń firmy Microsoft, a nie do samodzielnego tworzenia linii bazowej](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); Opcja aprowizacji tych danych na Virtual Machine Scale Sets polega na użyciu programu obsługi rozszerzeń konfiguracji żądanego stanu (DSC) platformy Azure w celu skonfigurowania maszyn wirtualnych w trybie online, tak aby korzystały z oprogramowania produkcyjnego.
 
-## <a name="azure-firewall"></a>Zapora platformy Azure
-[Zapora systemu Azure to zarządzana, oparta na chmurze usługa zabezpieczeń sieci, która chroni zasoby Virtual Network platformy Azure. Jest to w pełni stanowa Zapora jako usługa z wbudowaną wysoką dostępnością i nieograniczoną skalowalnością chmury.](https://docs.microsoft.com/azure/firewall/overview) Dzięki temu można ograniczyć ruch wychodzący HTTP/S do określonej listy w pełni kwalifikowanych nazw domen (FQDN), w tym symboli wieloznacznych. Ta funkcja nie wymaga zakończenia protokołu SSL. Zalecane jest użycie [tagów FQDN zapory platformy Azure](https://docs.microsoft.com/azure/firewall/fqdn-tags) dla aktualizacji systemu Windows i włączenie ruchu sieciowego do punktów końcowych Windows Update firmy Microsoft przez zaporę. [Wdrażanie zapory platformy Azure przy użyciu szablonu](https://docs.microsoft.com/azure/firewall/deploy-template) zawiera przykład definicji szablonu zasobów Microsoft. Network/azureFirewalls. Reguły zapory, które są wspólne dla aplikacji Service Fabric, to Zezwalanie na następujące sieci wirtualne klastrów:
+## <a name="azure-firewall"></a>Azure Firewall
+[Zapora systemu Azure to zarządzana, oparta na chmurze usługa zabezpieczeń sieci, która chroni zasoby Virtual Network platformy Azure. Jest to w pełni stanowa Zapora jako usługa z wbudowaną wysoką dostępnością i nieograniczoną skalowalnością chmury.](https://docs.microsoft.com/azure/firewall/overview) Dzięki temu można ograniczyć ruch wychodzący HTTP/S do określonej listy w pełni kwalifikowanych nazw domen (FQDN), w tym symboli wieloznacznych. Ta funkcja nie wymaga kończenia żądań protokołu SSL. Zalecane jest użycie [tagów FQDN zapory platformy Azure](https://docs.microsoft.com/azure/firewall/fqdn-tags) dla aktualizacji systemu Windows i włączenie ruchu sieciowego do punktów końcowych Windows Update firmy Microsoft przez zaporę. [Wdrażanie zapory platformy Azure przy użyciu szablonu](https://docs.microsoft.com/azure/firewall/deploy-template) zawiera przykład definicji szablonu zasobów Microsoft. Network/azureFirewalls. Reguły zapory, które są wspólne dla aplikacji Service Fabric, to Zezwalanie na następujące sieci wirtualne klastrów:
 
 - \* download.microsoft.com
-- \* servicefabric.azure.com
-- *. core.windows.net
+- *servicefabric.azure.com
+- *.core.windows.net
 
 Te reguły zapory uzupełniają dozwolone grupy zabezpieczeń sieci wychodzącej, które będą obejmować usługi servicefabric i magazyn, jako dozwolone miejsca docelowe z sieci wirtualnej.
 
-## <a name="tls-12"></a>TLS 1,2
+## <a name="tls-12"></a>TLS 1.2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
-## <a name="windows-defender"></a>Usługa Windows Defender 
+## <a name="windows-defender"></a>Windows Defender 
 
-Domyślnie program antywirusowy Windows Defender jest instalowany w systemie Windows Server 2016. Aby uzyskać szczegółowe informacje, zobacz Program [antywirusowy Windows Defender w systemie Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016). Interfejs użytkownika jest instalowany domyślnie w niektórych jednostkach SKU, ale nie jest wymagany. Aby zmniejszyć wpływ wydajności i obciążenia zasobów poniesione przez usługę Windows Defender, a jeśli zasady zabezpieczeń umożliwiają wykluczenie procesów i ścieżek dla oprogramowania open source, zadeklaruj następujący zasób rozszerzenia zestawu skalowania maszyn wirtualnych Właściwości szablonu Menedżera, aby wykluczyć klaster Service Fabric z skanów:
+Domyślnie program antywirusowy Windows Defender jest instalowany w systemie Windows Server 2016. Aby uzyskać szczegółowe informacje, zobacz Program [antywirusowy Windows Defender w systemie Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016). Interfejs użytkownika jest domyślnie instalowany w przypadku niektórych jednostek SKU, ale nie jest to wymagane. Aby zmniejszyć wpływ wydajności i obciążenia zasobów poniesione przez usługę Windows Defender, a jeśli zasady zabezpieczeń umożliwiają wykluczenie procesów i ścieżek dla oprogramowania open source, zadeklaruj następujący zasób rozszerzenia zestawu skalowania maszyn wirtualnych Właściwości szablonu Menedżera, aby wykluczyć klaster Service Fabric z skanów:
 
 
 ```json
@@ -263,7 +263,7 @@ Domyślnie program antywirusowy Windows Defender jest instalowany w systemie Win
 > Jeśli nie korzystasz z usługi Windows Defender, zapoznaj się z dokumentacją dotyczącą ochrony przed złośliwym kodem. Usługa Windows Defender nie jest obsługiwana w systemie Linux.
 
 ## <a name="platform-isolation"></a>Izolacja platformy
-Domyślnie Service Fabric aplikacje uzyskują dostęp do środowiska uruchomieniowego Service Fabric, który jest używany w różnych formularzach: [zmienne środowiskowe](service-fabric-environment-variables-reference.md) wskazujące ścieżki plików na hoście odpowiadającym plikom aplikacji i sieci szkieletowej, punkt końcowy komunikacji między procesami, który akceptuje żądania specyficzne dla aplikacji, oraz certyfikat klienta, który jest oczekiwany przez aplikację do samodzielnego uwierzytelnienia. W przypadku, gdy usługa hostuje sam niezaufany kod, zaleca się wyłączenie tego dostępu do środowiska uruchomieniowego SF — o ile nie jest to konieczne jawnie. Dostęp do środowiska uruchomieniowego jest usuwany przy użyciu następującej deklaracji w sekcji zasady manifestu aplikacji: 
+Domyślnie Service Fabric aplikacje uzyskują dostęp do środowiska uruchomieniowego Service Fabric, który jest używany w różnych formularzach: [zmienne środowiskowe](service-fabric-environment-variables-reference.md) wskazujące ścieżki plików na hoście odpowiadające plikom aplikacji i sieci szkieletowej, punkt końcowy komunikacji między procesami, który akceptuje żądania specyficzne dla aplikacji, oraz certyfikat klienta, który jest oczekiwany przez aplikację do uwierzytelniania w sieci szkieletowej. W przypadku, gdy usługa hostuje sam niezaufany kod, zaleca się wyłączenie tego dostępu do środowiska uruchomieniowego SF — o ile nie jest to konieczne jawnie. Dostęp do środowiska uruchomieniowego jest usuwany przy użyciu następującej deklaracji w sekcji zasady manifestu aplikacji: 
 
 ```xml
 <ServiceManifestImport>

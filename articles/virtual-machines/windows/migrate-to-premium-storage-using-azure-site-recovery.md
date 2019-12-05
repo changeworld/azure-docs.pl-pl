@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 1dc119f0f5949b37603bbc1100a4d89d4f420fd6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033449"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819061"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrowanie do Premium Storage przy użyciu Azure Site Recovery
 
@@ -79,7 +79,7 @@ Za pomocą Site Recovery można migrować maszyny wirtualne IaaS platformy Azure
 1. Otwórz [portal Azure](https://portal.azure.com).
 2. Wybierz pozycję **Utwórz zasób** > **zarządzania** > **Backup and Site Recovery (OMS)** . Alternatywnie możesz wybrać pozycję **przeglądaj** > **Magazyn Recovery Services** > **Dodaj**.
    >[!NOTE]
-   >Kopia zapasowa i Site Recovery była wcześniej częścią ![pakietu OMS](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand).
+   >Kopia zapasowa i Site Recovery była wcześniej częścią [pakietu OMS](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand).
 1. Określ region, do którego zostaną zreplikowane maszyny wirtualne. Na potrzeby migracji w tym samym regionie wybierz region, w którym źródłowe maszyny wirtualne i źródłowe konta magazynu są. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Krok 2. Wybieranie celów ochrony 
@@ -163,7 +163,7 @@ Aby sprawdzić, czy serwer konfiguracji został pomyślnie skojarzony z zasadami
    4. W kroku 3 Dodaj chronione maszyny wirtualne według adresu IP. (Może być potrzebny wewnętrzny adres IP, aby je znaleźć).
    5. W kroku 4 skonfiguruj właściwości, wybierając konta, które zostały wcześniej skonfigurowane na serwerze przetwarzania.
    6. W kroku 5 wybierz zasady replikacji utworzone wcześniej w sekcji "krok 5. Konfigurowanie ustawień replikacji".
-   7. Wybierz **OK**.
+   7. Kliknij przycisk **OK**.
 
    > [!NOTE]
    > Po cofnięciu przydziału i ponownym uruchomieniu maszyny wirtualnej platformy Azure nie ma gwarancji, że będzie ona mieć ten sam adres IP. Jeśli adres IP serwera konfiguracji/serwera przetwarzania lub chronionych maszyn wirtualnych platformy Azure ulegnie zmianie, replikacja w tym scenariuszu może nie funkcjonować prawidłowo.
@@ -195,7 +195,7 @@ Upewnij się, że wybrano opcję **Zamknij maszyny wirtualne i zsynchronizuj naj
 
 Site Recovery utworzy wystąpienie maszyny wirtualnej, którego typ jest taki sam jak lub podobny do maszyny wirtualnej obsługującej Premium Storage. Możesz sprawdzić wydajność i cenę różnych wystąpień maszyn wirtualnych, przechodząc do [Windows Virtual Machines cenach](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) lub [Linux Virtual Machines cenniku](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-## <a name="post-migration-steps"></a>Kroki po migracji
+## <a name="post-migration-steps"></a>Kroki do wykonania po migracji
 
 1. **Skonfiguruj zreplikowane maszyny wirtualne do zestawu dostępności, jeśli ma to zastosowanie**. Site Recovery nie obsługuje migrowania maszyn wirtualnych wraz z zestawem dostępności. W zależności od wdrożenia zreplikowanej maszyny wirtualnej wykonaj jedną z następujących czynności:
    * W przypadku maszyny wirtualnej utworzonej za pomocą klasycznego modelu wdrażania: Dodaj maszynę wirtualną do zestawu dostępności w Azure Portal. Aby uzyskać szczegółowe instrukcje, przejdź do sekcji [Dodawanie istniejącej maszyny wirtualnej do zestawu dostępności](../linux/classic/configure-availability-classic.md).

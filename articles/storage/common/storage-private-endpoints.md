@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: e9781d9c277d19257d9b00bea3106adb3b04ffd6
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: fff92057bc9812a5ef1488a46ed469382ad3ace3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672525"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806885"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Używanie prywatnych punktów końcowych usługi Azure Storage (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ Prywatny punkt końcowy jest specjalnym interfejsem sieciowym dla usługi platfo
 
 Aplikacje w sieci wirtualnej mogą bezproblemowo łączyć się z usługą magazynu za pośrednictwem prywatnego punktu końcowego, **używając tych samych parametrów połączenia i mechanizmów autoryzacji, które mogą być używane w inny sposób**. Prywatnych punktów końcowych można używać ze wszystkimi protokołami obsługiwanymi przez konto magazynu, w tym REST i SMB.
 
-Prywatne punkty końcowe można utworzyć w podsieciach, które korzystają z [punktów końcowych usługi](/azure/virtual-network/virtual-network-service-endpoints-overview.md). Klienci w podsieci mogą w ten sposób łączyć się z jednym kontem magazynu przy użyciu prywatnego punktu końcowego, jednocześnie używając punktów końcowych usługi, aby uzyskiwać dostęp do innych osób.
+Prywatne punkty końcowe można utworzyć w podsieciach, które korzystają z [punktów końcowych usługi](../../virtual-network/virtual-network-service-endpoints-overview.md). Klienci w podsieci mogą w ten sposób łączyć się z jednym kontem magazynu przy użyciu prywatnego punktu końcowego, jednocześnie używając punktów końcowych usługi, aby uzyskiwać dostęp do innych osób.
 
 Podczas tworzenia prywatnego punktu końcowego dla usługi magazynu w sieci wirtualnej, żądanie zgody jest wysyłane do zatwierdzenia przez właściciela konta magazynu. Jeśli użytkownik żądający utworzenia prywatnego punktu końcowego jest również właścicielem konta magazynu, to żądanie zgody jest automatycznie zatwierdzane.
 
@@ -91,7 +91,7 @@ Rekordy zasobów DNS dla StorageAccountA, po rozwiązaniu przez klienta w sieci 
 | Nazwa                                                  | Typ  | Wartość                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | klienta 10.1.1.5                                              |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
 Takie podejście umożliwia dostęp do konta magazynu **przy użyciu tych samych parametrów połączenia** dla klientów w sieci wirtualnej, które obsługują prywatne punkty końcowe, a także klientów spoza sieci wirtualnej.
 
@@ -107,7 +107,7 @@ Zalecane nazwy stref DNS dla prywatnych punktów końcowych usług magazynu to:
 | Usługa Obiekty Blob           | `privatelink.blob.core.windows.net`  |
 | Data Lake Storage 2. generacji | `privatelink.dfs.core.windows.net`   |
 | Usługa plików           | `privatelink.file.core.windows.net`  |
-| usługa kolejki          | `privatelink.queue.core.windows.net` |
+| Usługa kolejki          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
 | Statyczne witryny sieci Web        | `privatelink.web.core.windows.net`   |
 
@@ -115,8 +115,8 @@ Zalecane nazwy stref DNS dla prywatnych punktów końcowych usług magazynu to:
 
 Aby uzyskać więcej informacji na temat konfigurowania własnego serwera DNS do obsługi prywatnych punktów końcowych, zapoznaj się z następującymi artykułami:
 
-- [Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [Konfiguracja DNS dla prywatnych punktów końcowych](/private-link/private-endpoint-overview#dns-configuration)
+- [Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [Konfiguracja DNS dla prywatnych punktów końcowych](/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ## <a name="pricing"></a>Cennik
 

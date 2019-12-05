@@ -69,6 +69,8 @@
   items:
     - name: Obszar roboczy
       href: concept-workspace.md
+    - name: Dane
+      href: concept-data.md
     - name: Trenowanie modelu
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md

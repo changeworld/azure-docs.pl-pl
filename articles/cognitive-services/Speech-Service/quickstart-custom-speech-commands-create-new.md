@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111367"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815820"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Szybki Start: Tworzenie polecenia niestandardowego (wersja zapoznawcza)
 
@@ -108,7 +108,7 @@ Teraz Dodaj regułę ukończenia, aby odpowiedzieć użytkownikowi, który wskaz
 | Warunki | Brak                                   | Warunki określające, kiedy można uruchomić regułę    |
 | Akcje    | SpeechResponse "OK", włączając telewizor " | Akcja, która ma zostać podjęta po spełnieniu warunku reguły |
 
-## <a name="try-it-out"></a>Testowanie
+## <a name="try-it-out"></a>Wypróbuj
 
 Przetestuj zachowanie przy użyciu panelu rozmowa testowa.
 

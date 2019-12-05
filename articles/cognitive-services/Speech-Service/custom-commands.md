@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd3e27aefe03ee30e721fcbb915d9ad4b3821618
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579700"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806307"
 ---
 # <a name="custom-commands-preview"></a>Polecenia niestandardowe (wersja zapoznawcza)
 
@@ -49,7 +49,7 @@ Przykładowy kod służący do tworzenia asystenta głosowego z poleceniami nies
 
 ## <a name="customization"></a>Dostosowywanie
 
-W przypadku asystentów głosowych utworzonych przy użyciu usługi Azure Speech Services można używać pełnego zakresu opcji dostosowywania dostępnych na potrzeby [zamiany mowy na tekst](speech-to-text.md), zamiany [tekstu na mowę](text-to-speech.md)oraz [niestandardowego słowa kluczowego](speech-devices-sdk-create-kws.md).
+Asystentzy głosu Skompilowani przy użyciu usługi mowy mogą korzystać z pełnego zakresu opcji dostosowywania dostępnych na potrzeby [zamiany mowy na tekst](speech-to-text.md), zamiany [tekstu na mowę](text-to-speech.md)i [niestandardowego słowa kluczowego](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
 > Opcje dostosowywania różnią się w zależności od języka/ustawień regionalnych (zobacz [obsługiwane języki](supported-languages.md)).
@@ -60,5 +60,5 @@ W przypadku asystentów głosowych utworzonych przy użyciu usługi Azure Speech
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
+* [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
 * [Pobieranie zestawu Speech SDK](speech-sdk.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 47e1f8bf178723a5d4be323f24724214a67499e2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b5cf375b1e5e4c09617dc6ae74513d303a9a6a4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559196"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816674"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Próbki głosu rekord do utworzenia niestandardowych voice
 
@@ -191,7 +191,7 @@ Zarejestruj dobre pięć sekund wyciszenia przed pierwszym rejestrowania do prze
 Posłuchaj ściśle, użycie słuchawek wydajności talent głosu. Szukasz diction dobra, ale fizycznych, poprawna wymowa i braku niechciane dźwięki. Nie wahaj się poproś użytkownika talent, aby ponownie zarejestrować wypowiedź, które nie spełniają te standardy.
 
 > [!TIP]
-> Jeśli używasz dużej liczby wypowiedzi pojedynczego wypowiedź utracić znaczącego wpływu na wynikowe niestandardowych voice. Może być wskazane więcej po prostu pamiętać wypowiedzi z problemami, wykluczyć je z zestawu danych i zobacz, jak Twój głos niestandardowych, okaże się nim. Zawsze możesz wrócić do studio i później zarejestrować brakujących przykładów.
+> Jeśli używasz dużej liczby wypowiedzi pojedynczego wypowiedź utracić znaczącego wpływu na wynikowe niestandardowych voice. Może być bardziej przydatny do zwykłego zanotowania wszelkich wyrażenia długości z problemami, wykluczania ich z zestawu danych i sprawdzenia, jak nastąpi wyłączenie niestandardowego głosu. Zawsze możesz wrócić do programu Studio i nagrać pominięte próbki później.
 
 Należy pamiętać, liczba take lub kod, nad skryptem czasu dla każdego wypowiedź. Poproś inżynier do oznaczania każdej wypowiedź w metadanych nagrywania lub także arkuszu wskaźnika.
 
@@ -215,7 +215,7 @@ Na koniec Utwórz *transkrypcji* który kojarzy każdy plik WAV z to tekstowa we
 
 Archiwizowanie oryginalnego nagrania w bezpiecznym miejscu, w przypadku, gdy będą potrzebne później. Zachowaj skryptu i notatki, zbyt.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Możesz już przekazywać nagrań i utworzyć niestandardowe głosu.
 

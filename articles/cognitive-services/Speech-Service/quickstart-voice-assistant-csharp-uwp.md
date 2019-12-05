@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 75ecbe8351e68b77a59b40709a2beb15d09b16df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504088"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816226"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Szybki Start: Tworzenie asystenta głosowego za pomocą zestawu Speech SDK, platformy UWP
 
@@ -30,8 +30,8 @@ W tym artykule opisano tworzenie aplikacji C# platforma uniwersalna systemu Wind
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
-* Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
+* Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
 * Wcześniej utworzono bot skonfigurowany za pomocą [kanału bezpośredniej linii mowy](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
   > [!NOTE]
@@ -292,7 +292,7 @@ Aby dodać Źródło związane z kodem, wykonaj następujące kroki:
 1. Dodaj następujący fragment kodu do treści metody `InitializeDialogServiceConnector`. Ten kod tworzy `DialogServiceConnector` z informacjami o subskrypcji.
 
     ```csharp
-    // Create a BotFrameworkConfig by providing a Speech Service subscription key
+    // Create a BotFrameworkConfig by providing a Speech service subscription key
     // the RecoLanguage property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
@@ -419,10 +419,10 @@ Teraz możesz przystąpić do kompilowania i testowania aplikacji.
 > [!div class="nextstepaction"]
 > [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Asystenci głosu — informacje](voice-assistants.md)
-- [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
+- [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
 - [Niestandardowe słowa kluczowe](speech-devices-sdk-create-kws.md)
 - [Połącz bezpośrednią mowę wiersza z bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)

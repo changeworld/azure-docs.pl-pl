@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9a68e9d71324ba05e24ba98802863211a569689
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839939"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815803"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki Start: Tworzenie i wykonywanie zapytań dotyczących Azure SQL Data Warehouse w Azure Portal
 
@@ -33,7 +33,7 @@ Pobierz i zainstaluj najnowszą wersję programu [SQL Server Management Studio](
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Tworzenie magazynu danych
 
@@ -51,23 +51,21 @@ Wykonaj następujące kroki, aby utworzyć SQL Data Warehouse zawierający przyk
 
     | Ustawienie | Sugerowana wartość | Opis |
     | :------ | :-------------- | :---------- |
-    | **Nazwa bazy danych** | mySampleDataWarehouse | Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). Pamiętaj, że magazyn danych to typ bazy danych.|
     | **Subskrypcja** | Twoja subskrypcja | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
     | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
-    | **Wybierz źródło** | Sample | Wskazuje, aby załadować przykładową bazę danych. Pamiętaj, że magazyn danych jest jednym z typów bazy danych. |
-    | **Wybierz przykład** | AdventureWorksDW | Wskazuje, aby załadować przykładową bazę danych AdventureWorksDW. |
+    | **Nazwa magazynu danych** | mySampleDataWarehouse | Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). Pamiętaj, że magazyn danych jest jednym z typów bazy danych.|
     ||||
 
     ![tworzenie magazynu danych](media/create-data-warehouse-portal/select-sample.png)
 
-4. Kliknij pozycję **Serwer**, aby utworzyć i skonfigurować nowy serwer dla nowej bazy danych. Wypełnij **formularz nowego serwera**, używając następujących informacji: 
+4. Wybierz istniejący **serwer** lub kliknij pozycję **Utwórz nowy** , aby utworzyć i skonfigurować nowy serwer dla nowej bazy danych. Wypełnij **formularz nowego serwera**, używając następujących informacji: 
 
     | Ustawienie | Sugerowana wartość | Opis |
     | :------ | :-------------- | :---------- |
     | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |
+    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
     ||||
 
     ![tworzenie serwera bazy danych](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
@@ -82,7 +80,7 @@ Wykonaj następujące kroki, aby utworzyć SQL Data Warehouse zawierający przyk
 
 8. Kliknij przycisk **Zastosuj**.
 
-9. Po ukończeniu formularza SQL Data Warehouse kliknij przycisk **Utwórz** , aby zainicjować obsługę administracyjną bazy danych. Aprowizacja zajmuje kilka minut.
+9. Po zakończeniu karty podstawowe w formularzu SQL Data Warehouse kliknij pozycję **Przegląd + Utwórz** , aby zainicjować obsługę administracyjną bazy danych. Aprowizacja zajmuje kilka minut.
 
     ![kliknięcie przycisku utwórz](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -113,7 +111,7 @@ Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera. Ta zapora uniemo�
 
 1. Aby dodać bieżący adres IP do nowej reguły zapory, kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi. Reguła zapory może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
-1. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
+1. Kliknij przycisk **Save** (Zapisz). Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
 
 1. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
 
@@ -126,7 +124,7 @@ Teraz możesz łączyć się z serwerem SQL i jego magazynami danych przy użyci
 
 Uzyskaj w pełni kwalifikowaną nazwę serwera dla swojego serwera SQL w witrynie Azure Portal. Nazwa ta będzie używana później przy nawiązywaniu połączenia z serwerem.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Wybierz pozycję **SQL Data Warehouses** w menu po lewej stronie, a następnie kliknij swój magazyn danych w witrynie usługi **SQL Data Warehouse** .
 3. W okienku **Essentials** na stronie bazy danych w witrynie Azure Portal zlokalizuj i skopiuj **nazwę serwera**. W tym przykładzie w pełni kwalifikowana nazwa to mynewserver-20180430.database.windows.net.
 
@@ -144,8 +142,8 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
    | :------ | :-------------- | :---------- |
    | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Oto przykład: **mynewserver-20180430.Database.Windows.NET**. |
-   | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-   | Login | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
+   | Uwierzytelnianie | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
+   | Zaloguj się | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
    | Hasło | Hasło konta administratora serwera | Hasło określone podczas tworzenia serwera. |
    ||||
 

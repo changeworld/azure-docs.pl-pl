@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Rozpoznawanie mowy przechowywanej w usłudze C# BLOB Storage, usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 40b226796b4dfb9aced3c6b00eba1a12bad66894
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9223fa484d45b927059c73e23e0607526e70fae4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504025"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828815"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -36,7 +36,7 @@ Wykonaj następujące kroki instalacji:
 
 1. Przejdź do pozycji https://editor.swagger.io (Plik > Nowy > Inny).
 1. Kliknij pozycję **plik**, a następnie kliknij pozycję **Importuj adres URL**.
-1. Wprowadź adres URL programu Swagger, w tym Region subskrypcji usługi Speech Services: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
+1. Wprowadź adres URL programu Swagger, w tym Region subskrypcji usługi mowy: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
 1. Kliknij przycisk **Generuj klienta** i wybierz język **Python**.
 1. Zapisz bibliotekę kliencką.
 1. Wyodrębnij pobrane Python-Client-generated. zip w systemie plików.

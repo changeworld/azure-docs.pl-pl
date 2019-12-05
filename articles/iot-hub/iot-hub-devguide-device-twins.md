@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: a800336fb6fda8a0ed0af71f243936d29e8079e7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706846"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807038"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używanie bliźniaczych reprezentacji urządzeń w IoT Hub
 
@@ -185,13 +185,13 @@ Zaplecze rozwiązania działa na bliźniaczych urządzeniach przy użyciu nastę
     | Nazwa | Wartość |
     | --- | --- |
     Typ $content | application/json |
-    $iothub — enqueuedtime |  Godzina wysłania powiadomienia |
-    $iothub-komunikat-Źródło | twinChangeEvents |
+    $iothub-enqueuedtime |  Godzina wysłania powiadomienia |
+    $iothub-message-source | twinChangeEvents |
     $content — kodowanie | UTF-8 |
     deviceId | Identyfikator urządzenia |
     hubName | Nazwa IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) sygnatura czasowa operacji |
-    iothub — komunikat-schemat | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" lub "updateTwin" |
 
     Właściwości systemu komunikatów są poprzedzone symbolem `$`.

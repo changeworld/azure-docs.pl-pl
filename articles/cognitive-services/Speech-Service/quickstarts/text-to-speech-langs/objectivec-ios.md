@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 460d2069bea8809b7d453bbe1cf27284109df9b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 09ee7f0918bce469186688a5d0e82441bb2e5457
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503472"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817775"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Szybki Start: wykluczanie mowy w celu języka C w systemie iOS przy użyciu zestawu Speech SDK
 
@@ -25,7 +25,7 @@ W tym artykule dowiesz się, jak utworzyć aplikację dla systemu iOS w celu uż
 
 Przed rozpoczęciem pracy zapoznaj się z poniższą listą wymagań wstępnych:
 
-* [Klucz subskrypcji](~/articles/cognitive-services/Speech-Service/get-started.md) dla usługi Mowa
+* [Klucz subskrypcji](~/articles/cognitive-services/Speech-Service/get-started.md) usługi mowy
 * Maszyna z systemem macOS z oprogramowaniem [Xcode w wersji 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) lub nowszej
 * Element docelowy jest ustawiony na system iOS w wersji 9,3 lub nowszej
 

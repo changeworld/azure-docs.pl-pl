@@ -4,19 +4,19 @@ description: W tym artykule opisano nową warstwę obliczeniową bez serwera i p
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: test
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: a304b7fb0ba90d4ccf3805f47a5b04a2d3d8765e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775587"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807021"
 ---
 # <a name="azure-sql-database-serverless"></a>Bezserwerowa usługa Azure SQL Database
 
@@ -66,9 +66,9 @@ W poniższej tabeli zestawiono różnice między warstwą obliczeniową bezserwe
 | | **Obliczenia bezserwerowe** | **Zainicjowane obliczenie** |
 |:---|:---|:---|
 |**Wzorzec użycia bazy danych**| Sporadyczne, nieprzewidywalne użycie z niższym średnim wykorzystaniem obliczeń w czasie. |  Bardziej regularne wzorce użycia z wyższym średnim wykorzystaniem obliczeń w czasie lub wielu bazach danych korzystających z pul elastycznych.|
-| **Nakład pracy zarządzania wydajnością** |dołu|Większych|
+| **Nakład pracy zarządzania wydajnością** |Niższe|Wyższe|
 |**Skalowanie obliczeniowe**|Automatyczny|Ręczna|
-|**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Bezpośredniego|
+|**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Natychmiastowe|
 |**Stopień szczegółowości rozliczeń**|Na sekundę|Za godzinę|
 
 ## <a name="purchasing-model-and-service-tier"></a>Model zakupów i warstwa usług
@@ -334,7 +334,7 @@ W takim przypadku baza danych jest rozliczana za obliczenia i przechowywanie w c
 
 Dokładniejszy rachunek obliczeń w tym przykładzie jest obliczany w następujący sposób:
 
-|Przedział czasu|Rdzeni wirtualnych używane w każdej sekundzie|GB używanych w każdej sekundzie|Wymiar obliczeniowy rozliczany|Rdzeń wirtualny s rozliczane w przedziale czasu|
+|Interwał czasowy|Rdzeni wirtualnych używane w każdej sekundzie|GB używanych w każdej sekundzie|Wymiar obliczeniowy rozliczany|Rdzeń wirtualny s rozliczane w przedziale czasu|
 |---|---|---|---|---|
 |0:00-1:00|4|9|Rdzeni wirtualnych używane|4 rdzeni wirtualnych * 3600 sekund = 14400 rdzeń wirtualny s|
 |1:00-2:00|1|12|Używana pamięć|12 GB * 1/3 * 3600 sekund = 14400 rdzeń wirtualny s|

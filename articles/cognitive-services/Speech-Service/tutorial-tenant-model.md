@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578215"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816385"
 ---
 # <a name="create-a-tenant-model-preview"></a>Tworzenie modelu dzierżawy (wersja zapoznawcza)
 
@@ -54,14 +54,14 @@ Jeśli musisz wyłączyć model dzierżawców, przejdź z powrotem do tego ekran
 
 Aby można było używać modelu dzierżawy z zestawem SDK mowy, potrzebny będzie zasób mowy i skojarzony z nim klucz subskrypcji.
 
-1. Zaloguj się w witrynie [Azure Portal](https://aka.ms/azureportal).
+1. Zaloguj się do [Azure Portal](https://aka.ms/azureportal).
 2. Wybierz pozycję **Utwórz zasób**.
 3. Na pasku wyszukiwania wpisz: **Speech**.
 4. Wybierz pozycję **Speech**, a następnie kliknij pozycję **Utwórz**.
 5. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby utworzyć zasób. Upewnij się:
    * **Lokalizacja** jest ustawiona na **Wschodnie** lub **zachodnie**.
    * **Warstwa cenowa** jest ustawiona na **S0**.
-6. Kliknij pozycję **Utwórz**.
+6. Kliknij przycisk **Utwórz**.
 7. Po kilku minutach zasób zostanie utworzony. Klucz subskrypcji jest dostępny w sekcji **Przegląd** dla zasobu.
 
 ## <a name="create-a-model"></a>Tworzenie modelu
@@ -71,7 +71,7 @@ Gdy administrator włączył model dzierżawy dla Twojej organizacji, możesz ut
 1. Zaloguj się do programu [Speech Studio](https://speech.microsoft.com/).
 2. W prawym górnym rogu Znajdź i kliknij ikonę koła zębatego (Ustawienia), a następnie wybierz pozycję **Ustawienia modelu dzierżawy**.
 
-   ![Menu Ustawienia](media/tenant-language-model/tenant-language-settings.png)
+   ![Menu ustawień](media/tenant-language-model/tenant-language-settings.png)
 
 3. W tym momencie zobaczysz komunikat informujący o tym, że masz kwalifikacje do utworzenia modelu dzierżawy.
    > [!NOTE]
@@ -89,7 +89,7 @@ Gdy model dzierżawy jest gotowy, wykonaj następujące kroki, aby wdrożyć mod
 1. Kliknij przycisk **Wyświetl model** w otrzymanej wiadomości e-mail z potwierdzeniem lub Zaloguj się do programu [Speech Studio](https://speech.microsoft.com/).
 2. W prawym górnym rogu Znajdź i kliknij ikonę koła zębatego (Ustawienia), a następnie wybierz pozycję **Ustawienia modelu dzierżawy**.
 
-   ![Menu Ustawienia](media/tenant-language-model/tenant-language-settings.png)
+   ![Menu ustawień](media/tenant-language-model/tenant-language-settings.png)
 
 3. Kliknij przycisk **Deploy (Wdróż)** .
 4. Po wdrożeniu modelu stan zmieni się na **wdrożone**.

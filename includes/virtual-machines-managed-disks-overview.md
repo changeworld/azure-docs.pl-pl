@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796286"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828968"
 ---
 ## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
 
@@ -37,7 +37,7 @@ Usługa Managed disks obsługuje [strefy dostępności](../articles/availability
 
 ### <a name="azure-backup-support"></a>Obsługa Azure Backup
 
-Aby chronić przed awariami regionalnymi, [Azure Backup](../articles/backup/backup-overview.md) może służyć do tworzenia zadania tworzenia kopii zapasowej z użyciem kopii zapasowych opartych na czasie i zasad przechowywania kopii zapasowych. Dzięki temu można wykonywać proste przywracanie maszyny wirtualnej. Obecnie Azure Backup obsługuje rozmiary dysków do czterech dysków tebibyte (TiB).  Azure Backup obsługuje tworzenie kopii zapasowych i przywracanie dysków zarządzanych. [Dowiedz się więcej](../articles/backup/backup-support-matrix-iaas.md) o obsłudze kopii zapasowych maszyny wirtualnej platformy Azure.
+Aby chronić przed awariami regionalnymi, [Azure Backup](../articles/backup/backup-overview.md) może służyć do tworzenia zadania tworzenia kopii zapasowej z użyciem kopii zapasowych opartych na czasie i zasad przechowywania kopii zapasowych. Dzięki temu można wykonywać proste przywracanie maszyny wirtualnej. Azure Backup obsługuje tworzenie kopii zapasowych i przywracanie dysków zarządzanych. [Dowiedz się więcej](../articles/backup/backup-support-matrix-iaas.md) o obsłudze kopii zapasowych maszyny wirtualnej platformy Azure.
 
 ### <a name="granular-access-control"></a>Szczegółowa kontrola dostępu
 
@@ -57,11 +57,11 @@ Dyski zarządzane oferują dwa różne rodzaje szyfrowania. Pierwszy jest szyfro
 
 [Szyfrowanie po stronie serwera platformy Azure](../articles/virtual-machines/windows/disk-encryption.md) zapewnia szyfrowanie w czasie spoczynku i zabezpiecza dane zgodnie z zobowiązaniami dotyczącymi bezpieczeństwa i zgodności w organizacji. Szyfrowanie po stronie serwera jest domyślnie włączone dla wszystkich dysków zarządzanych, migawek i obrazów we wszystkich regionach, w których są dostępne usługi Managed Disks. Możesz zezwolić na platformę Azure do zarządzania kluczami, które są kluczami zarządzanymi przez platformę, lub samodzielnie nimi zarządzać. Klucze te są kluczami zarządzanymi przez klienta (wersja zapoznawcza). Aby uzyskać więcej informacji, odwiedź [stronę Managed disks często zadawanych pytań](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
 
-### <a name="azure-disk-encryption"></a>Usługa Azure Disk Encryption
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Azure Disk Encryption pozwala na szyfrowanie dysków systemu operacyjnego i danych używanych przez maszynę wirtualną IaaS. To szyfrowanie obejmuje dyski zarządzane. W przypadku systemu Windows dyski są szyfrowane przy użyciu standardowej technologii szyfrowania funkcji BitLocker. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Proces szyfrowania jest zintegrowany z usługą Azure Key Vault, aby umożliwić kontrolowanie kluczy szyfrowania dysków i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [Azure Disk Encryption dla maszyn wirtualnych IaaS](../articles/security/azure-security-disk-encryption-overview.md).
 
-## <a name="disk-roles"></a>Role dysków
+## <a name="disk-roles"></a>Role dysku
 
 Na platformie Azure istnieją trzy role dysków głównych: dysk danych, dysk systemu operacyjnego i dysk tymczasowy. Role te są mapowane na dyski dołączone do maszyny wirtualnej.
 
@@ -117,9 +117,9 @@ Na poniższym diagramie przedstawiono alokację przepustowości i liczby operacj
 
 Wstępne Inicjowanie obsługi określa liczbę operacji we/wy na dysku i przypisanie przepustowości.  Na drugim poziomie Host serwera obliczeniowego implementuje obsługę dysków SSD, stosując ją tylko do danych przechowywanych na dysku SSD serwera, który obejmuje dyski z buforowaniem (ReadWrite i ReadOnly), a także dyski lokalne i tymczasowe. Na koniec Inicjowanie obsługi sieci maszyn wirtualnych odbywa się na trzecim poziomie dla wszystkich operacji we/wy, które Host obliczeń wysyła do zaplecza usługi Azure Storage. W tym schemacie wydajność maszyny wirtualnej zależy od różnych czynników, od tego, jak maszyna wirtualna używa lokalnego dysku SSD, do liczby podłączonych dysków, a także typu wydajności i buforowania dysków, które zostały podłączone.
 
-Na przykład te ograniczenia: maszyna wirtualna Standard_DS1v1 jest niedostępna z powodu osiągnięcia możliwości 5 000 operacji we/wy dysku P30, niezależnie od tego, czy jest ona buforowana, czy nie, ze względu na limity na dyskach SSD i sieci.
+Na przykład te ograniczenia Standard_DS1v1 maszyna wirtualna jest niedostępna przed osiągnięciem możliwości 5 000 IOPS dysku P30, niezależnie od tego, czy jest buforowana, czy nie, ze względu na limity na dyskach SSD i sieci:
 
-![Przykładowa alokacja Standard_DS1v1](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+![Standard_DS1v1 przykład alokacji](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
 
 Platforma Azure używa priorytetowego kanału sieciowego dla ruchu dyskowego, który uzyskuje pierwszeństwo przed innym niskim priorytetem ruchu sieciowego. Ułatwia to dyskom zachowanie oczekiwanej wydajności w przypadku rywalizacji o sieć. Podobnie usługa Azure Storage obsługuje rywalizacje zasobów i inne problemy w tle z automatycznym równoważeniem obciążenia. Usługa Azure Storage przydziela wymagane zasoby podczas tworzenia dysku oraz stosuje aktywne i ponownie aktywne równoważenie zasobów w celu obsługi ruchu. Dzięki temu dyski mogą utrzymać oczekiwaną liczbę operacji we/wy na sekundę i przepływności. Możesz użyć metryk na poziomie maszyny wirtualnej i na poziomie dysku do śledzenia wydajności i konfiguracji alertów zgodnie z wymaganiami.
 

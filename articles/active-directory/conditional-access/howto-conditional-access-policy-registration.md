@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08c1db1a8e377edd1bf9b8f1b942e65b970edf56
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322729"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803686"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Dostęp warunkowy: Wymagaj zaufanej lokalizacji rejestracji usługi MFA
 
@@ -26,7 +26,7 @@ Zabezpieczanie, kiedy i jak użytkownicy rejestrują się w usłudze Azure Multi
 
 Poniższe zasady mają zastosowanie do wszystkich wybranych użytkowników, którzy próbują zarejestrować się przy użyciu połączonego środowiska rejestracji i blokują dostęp, chyba że nawiązują połączenie z lokalizacji oznaczonej jako zaufane sieci.
 
-1. W **Azure Portal**przejdź do **Azure Active Directory** > **dostęp warunkowy**.
+1. W **Azure Portal**przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy**.
 1. Wybierz pozycję **nowe zasady**.
 1. W polu Nazwa wprowadź nazwę dla tych zasad. Na przykład **połączona informacja dotycząca zabezpieczeń Rejestracja w zaufanych sieciach**.
 1. W obszarze **przypisania**kliknij pozycję **Użytkownicy i grupy**, a następnie wybierz użytkowników i grupy, do których te zasady mają być stosowane.
@@ -44,7 +44,7 @@ Poniższe zasady mają zastosowanie do wszystkich wybranych użytkowników, któ
 1. W obszarze **kontroli dostępu** > **Udziel**.
    1. Kliknij przycisk **Blokuj dostęp**.
    1. Następnie kliknij pozycję **Wybierz**.
-1. Ustaw opcję **Włącz zasady** na **włączone**.
+1. Ustaw przełącznik **Włącz zasady** na wartość **Włączone**.
 1. Następnie kliknij przycisk **Save** (Zapisz).
 
 ## <a name="next-steps"></a>Następne kroki

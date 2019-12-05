@@ -9,12 +9,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 29edd7da42a5eb4586cd52cc0f913a56e199a5ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e1638c9779ca50507a1ce30dd3bbc9c18248964a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808277"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807072"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Importowanie lub eksportowanie bazy danych za pomocą usługi Azure SQL Database Import/Export
 
@@ -22,7 +22,7 @@ W przypadku korzystania z usługi Azure SQL Database Import/Export proces może 
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database usługi Import/Export
 
-Usługa Azure SQL Database Import/Export to usługa sieci Web oparta na protokole REST, która działa w każdym centrum danych platformy Azure. Ta usługa jest wywoływana w przypadku używania opcji [Importuj bazę danych](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal) lub [Eksportuj](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) , aby przenieść bazę danych SQL do Azure Portal. Usługa udostępnia bezpłatne usługi kolejkowania żądań i usług obliczeniowych w celu przeprowadzania importu i eksportu między bazą danych Azure SQL Database i usługą Azure Blob Storage.
+Usługa Azure SQL Database Import/Export to usługa sieci Web oparta na protokole REST, która działa w każdym centrum danych platformy Azure. Ta usługa jest wywoływana w przypadku używania opcji [Importuj bazę danych](sql-database-import.md#using-azure-portal) lub [Eksportuj](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) , aby przenieść bazę danych SQL do Azure Portal. Usługa udostępnia bezpłatne usługi kolejkowania żądań i usług obliczeniowych w celu przeprowadzania importu i eksportu między bazą danych Azure SQL Database i usługą Azure Blob Storage.
 
 Operacje importu i eksportu nie reprezentują tradycyjnej fizycznej kopii zapasowej bazy danych, ale zamiast logicznej kopii zapasowej bazy danych, która używa specjalnego formatu BACPAC. Format BACPAC pozwala uniknąć konieczności używania fizycznego formatu, który może się różnić między wersjami Microsoft SQL Server i Azure SQL Database. Z tego względu można użyć go do bezpiecznego przywrócenia bazy danych do bazy danych SQL Server i bazy danych SQL.
 

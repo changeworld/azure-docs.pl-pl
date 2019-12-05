@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110074"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806154"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Instrukcje: spełnienie poleceń na kliencie przy użyciu zestawu mowy SDK (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ W tym artykule przedstawiono następujące:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Klucz subskrypcji platformy Azure dla usługi Speech Services
+- Klucz subskrypcji platformy Azure dla usługi mowy
   - [Pobierz bezpłatnie](get-started.md) lub utwórz je na [Azure Portal](https://portal.azure.com)
 - Wcześniej utworzona aplikacja poleceń niestandardowych
   - [Szybki Start: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)](./quickstart-custom-speech-commands-create-parameters.md)
@@ -131,7 +131,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>Testowanie
+## <a name="try-it-out"></a>Wypróbuj
 
 1. Uruchamianie aplikacji
 1. Wybierz pozycję Włącz mikrofon

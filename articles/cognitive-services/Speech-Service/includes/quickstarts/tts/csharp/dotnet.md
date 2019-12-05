@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/27/2019
 ms.author: yinhew
-ms.openlocfilehash: af101862e824d6527c08c232812913565536bb4a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38dac73d253245fce86ac419c7a4eb3a106df3f0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503150"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818322"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,7 +32,7 @@ Przed rozpoczęciem upewnij się, że:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/text-to-speech/helloworld/Program.cs#code)]
 
-1. Znajdź ciąg `YourSubscriptionKey`i zastąp go kluczem subskrypcji usługi Speech Services.
+1. Znajdź ciąg `YourSubscriptionKey`i zastąp go kluczem subskrypcji usługi rozpoznawania mowy.
 
 1. Znajdź ciąg `YourServiceRegion`i zastąp go [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją. Na przykład jeśli używasz bezpłatnej subskrypcji wersji próbnej, region jest `westus`.
 
@@ -44,7 +44,7 @@ Przed rozpoczęciem upewnij się, że:
 
 1. Wybierz **debuguj** > **Rozpocznij debugowanie** (lub wybierz **F5**), aby uruchomić aplikację **HelloWorld** .
 
-1. Wprowadź frazę lub zdanie w języku angielskim. Aplikacja przesyła swój tekst do usług mowy, które wysyłają do aplikacji aplikację, która ma zostać przegrana przez prelegenta.
+1. Wprowadź frazę lub zdanie w języku angielskim. Aplikacja przesyła swój tekst do usługi mowy, która wysyła do aplikacji aplikację, która ma być odtwarzana na głos.
 
    ![Interfejs użytkownika syntezy mowy](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 
@@ -52,7 +52,7 @@ Przed rozpoczęciem upewnij się, że:
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Tworzenie niestandardowego głosu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Rejestruj niestandardowe przykłady głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

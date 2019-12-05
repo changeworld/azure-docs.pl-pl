@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 85022d52c9513e53da31cc3c962f3a54dd538371
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075711"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815486"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiana tekstu na mowę?
 
-Zamiana tekstu na mowę z usługi Azure Speech Services to usługa, która umożliwia aplikacjom, narzędziom i urządzeniom Konwertowanie tekstu na rozpoznawanie mowy w postaci zwykłej, podobnej do ludzkiej. Wybieraj spośród standardowych i neuronowychych głosów lub twórz własny niestandardowy głos unikatowy dla danego produktu lub marki. 75 standardowych głosów jest dostępnych w więcej niż 45 językach i ustawieniach regionalnych oraz 5 neuronowych głosów jest dostępnych w 4 językach i ustawieniach regionalnych. Aby zapoznać się z pełną listą, zobacz [obsługiwane języki](language-support.md#text-to-speech).
+Zamiana tekstu na mowę z usługi mowy umożliwia aplikacjom, narzędziom i urządzeniom Konwertowanie tekstu na rozpoznawanie mowy w postaci zwykłej, podobnej do ludzkiej. Wybieraj spośród standardowych i neuronowychych głosów lub twórz własny niestandardowy głos unikatowy dla danego produktu lub marki. 75 standardowych głosów jest dostępnych w więcej niż 45 językach i ustawieniach regionalnych oraz 5 neuronowych głosów jest dostępnych w 4 językach i ustawieniach regionalnych. Aby zapoznać się z pełną listą, zobacz [obsługiwane języki](language-support.md#text-to-speech).
 
 Technologia zamiany tekstu na mowę umożliwia twórcom zawartości współpracującie z użytkownikami na różne sposoby. Zamiana tekstu na mowę może zwiększyć dostępność, dostarczając użytkownikom możliwość korzystania z audibly zawartości. Bez względu na to, czy użytkownik ma niedowidzącość wizualną, nie ma możliwości uczenia się, czy wymaga informacji nawigacyjnych podczas prowadzenia pracy, funkcja zamiany tekstu na mowę może poprawić istniejące środowisko. Funkcja zamiany tekstu na mowę jest również cennym dodatkiem dla botów głosu i asystentów głosowych.
 
@@ -31,7 +31,7 @@ Standardowe głosy są tworzone przy użyciu statystycznych parametrów syntezy 
 
 ### <a name="neural-voices"></a>Głosy neuronowych
 
-Głosy neuronowych używają głębokiej sieci neuronowych, aby przezwyciężyć limity tradycyjnych systemów zamiany tekstu na mowę w celu dopasowania wzorców obciążeniowych i intonation w języku mówionym oraz w syntezie jednostek mowy w głos komputerowy. Funkcja zamiany tekstu na mowę (Text-to-Speech) dzieli Prosody na oddzielne analizy językowe i rozłożenia akustyczne, które podlegają niezależnym modelom, co może spowodować przebicie głosu. Nasza funkcja neuronowych umożliwia jednocześnie Prosody prognozowanie i głosowanie, co pozwala na bardziej płynny i naturalny dźwięk.
+Głosy neuronowych używają głębokiej sieci neuronowych, aby przezwyciężyć limity tradycyjnych systemów zamiany tekstu na mowę w celu dopasowania wzorców obciążeniowych i intonation w języku mówionym oraz w syntezie jednostek mowy w głos komputerowy. Funkcja zamiany tekstu na mowę (Text-to-Speech) dzieli Prosody na oddzielne analizy językowe i rozłożenia akustyczne, które podlegają niezależnym modelom, co może spowodować przebicie głosu. W przypadku naszej funkcji syntezy neuronowej przewidywanie prozodii i synteza głosu odbywają się jednocześnie, dzięki czemu głos jest bardziej płynny i naturalny.
 
 Głosy neuronowych mogą służyć do współdziałania z rozszerzenie czatbotów i asystentów głosowych bardziej naturalnych i atrakcyjnych, dzięki czemu można konwertować cyfrowe teksty, takie jak książki elektroniczne, na Audiobooks i ulepszać systemy nawigacyjne w samodzielnym zakresie. Podobnie jak naturalna prosodya i wyraźny zbiór wyrazów, głosy neuronowych znacząco zmniejszają zmęczenie nasłuchiwania podczas pracy z systemami AI.
 
@@ -69,7 +69,7 @@ W tej tabeli przedstawiono podstawowe funkcje zamiany tekstu na mowę:
 
 | Przypadek użycia                                  | SDK | REST  |
 | ----------------------------------------- | --- | ----- |
-| Konwertuj tekst na mowę.                   | Yes | Yes   |
+| Konwertuj tekst na mowę.                   | Tak | Tak   |
 | Przekazywanie zestawów danych do adaptacji głosowej.     | Nie  | Tak\* |
 | Twórz modele czcionek głosowych i zarządzaj nimi.      | Nie  | Tak\* |
 | Twórz wdrożenia czcionek głosowych i zarządzaj nimi. | Nie  | Tak\* |
@@ -125,5 +125,5 @@ Przykładowy kod dla zamiany tekstu na mowę jest dostępny w witrynie GitHub. T
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Uzyskaj bezpłatną subskrypcję usługi Speech Services](get-started.md)
+- [Pobierz bezpłatną subskrypcję usługi mowy](get-started.md)
 - [Tworzenie niestandardowych voice czcionek](how-to-customize-voice-font.md)

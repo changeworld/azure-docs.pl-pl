@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 84b1712ac89751ca8eb5b1161221f511cf699374
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c7e63008e6c54d517c0d4c0e1661a9836f9f38c3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795601"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815877"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ Przed rozpoczęciem upewnij się, że:
 > * [Konfigurowanie środowiska deweloperskiego](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Tworzenie pustego przykładowego projektu](../../../../quickstarts/create-project.md?tabs=dotnet)
 
-## <a name="open-your-project-in-visual-studio"></a>Otwieranie projektu w programie Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otwórz projekt w programie Visual Studio
 
 Pierwszym krokiem jest upewnienie się, że projekt jest otwarty w programie Visual Studio.
 

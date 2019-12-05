@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: tłumaczenie zamiany mowy na tekst C# (.NET Framework Windows) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: erhopf
-ms.openlocfilehash: e003b8358931b4891af6ce97ab82710b241c3da2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a8b8f05195f829507b83df5d968358749a290aa
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502779"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816827"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -114,7 +114,7 @@ Przed rozpoczęciem upewnij się, że:
 
 1. Wybierz **debuguj** > **Rozpocznij debugowanie** (lub naciśnij klawisz **F5**), aby uruchomić aplikację **HelloWorld** .
 
-1. Wypowiedz zwrot lub zdanie w języku angielskim. Aplikacja przesyła mowę do usług mowy, które tłumaczą i przekształca na tekst (w tym przypadku do języka niemieckiego). Usługi mowy wysyłają następnie tekst z powrotem do aplikacji do wyświetlenia.
+1. Wymów frazę lub zdanie w języku angielskim. Aplikacja przesyła mowę do usługi mowy, która tłumaczy i przekształca na tekst (w tym przypadku do języka niemieckiego). Usługa mowy wysyła następnie tekst z powrotem do aplikacji do wyświetlenia.
 
 ````
 Say something...

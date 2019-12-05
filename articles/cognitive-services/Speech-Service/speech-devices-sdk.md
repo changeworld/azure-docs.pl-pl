@@ -1,7 +1,7 @@
 ---
 title: Informacje o zestawie SDK urządzeń mowy — Speech Service
 titleSuffix: Azure Cognitive Services
-description: Wprowadzenie do zestawu Speech Devices SDK. Usługa rozpoznawania mowy współpracuje z szerokiej gamy urządzeń i źródła audio. Zestawu Speech Devices SDK jest biblioteką wstępnie dostosowane, który jest powiązany z systemom, mikrofon tablicy development Kit.
+description: Wprowadzenie do zestawu Speech Devices SDK. Usługa mowy współpracuje z wieloma urządzeniami i źródłami audio. Zestawu Speech Devices SDK jest biblioteką wstępnie dostosowane, który jest powiązany z systemom, mikrofon tablicy development Kit.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 31d1a60cc6c1316dcfccb4f9ba2571708fddd991
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7f6793cab3d2d7cc54252bae3a7393f836256bdd
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072375"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815531"
 ---
-# <a name="about-the-speech-devices-sdk"></a>Informacje o zestawie SDK urządzeń mowy
+# <a name="about-the-speech-devices-sdk"></a>Informacje o zestawie Speech Devices SDK
 
-[Usługi mowy](overview.md) współpracują z szeroką gamą urządzeń i źródeł audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. Zestawu Speech Devices SDK jest biblioteką pretuned, który jest powiązany z systemom, mikrofon tablicy development Kit.
+[Usługa mowy](overview.md) współpracuje z wieloma urządzeniami i źródłami audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. Zestawu Speech Devices SDK jest biblioteką pretuned, który jest powiązany z systemom, mikrofon tablicy development Kit.
 
 Zestawu Speech Devices SDK może ułatwić:
 
 - Szybko przetestować nowe scenariusze głosu.
-- Łatwiejsza integracja opartych na chmurze usług mowy z urządzeniem.
+- Łatwo zintegrować usługę rozpoznawania mowy opartej na chmurze urządzenia.
 - Utwórz środowisko użytkownika wyjątkowych dla swoich klientów.
 
-Korzysta z zestawu Speech Devices SDK [zestaw SDK rozpoznawania mowy](speech-sdk.md). Używa zestawu Speech SDK do wysyłania audio, który jest przetwarzany przez nasz algorytm zaawansowanego przetwarzania dźwięku z macierzy mikrofonu urządzenia do [usługi mowy](overview.md). Aby zapewnić bardziej precyzyjne daleko pole używa audio wielokanałowe [rozpoznawania mowy](speech-to-text.md) za pośrednictwem pomijanie szumu, echa i kształtowaniem wiązki oraz dereverberation.
+Korzysta z zestawu Speech Devices SDK [zestaw SDK rozpoznawania mowy](speech-sdk.md). Zestaw SDK rozpoznawania mowy używa do wysyłania dźwięk, który jest przetwarzany przez naszych algorytm zaawansowane przetwarzanie audio z tablicy mikrofonu urządzenia do [usługa rozpoznawania mowy](overview.md). Aby zapewnić bardziej precyzyjne daleko pole używa audio wielokanałowe [rozpoznawania mowy](speech-to-text.md) za pośrednictwem pomijanie szumu, echa i kształtowaniem wiązki oraz dereverberation.
 
 Za pomocą zestawu Speech Devices SDK można także tworzyć urządzenia otoczenia, które mają własne [niestandardowe słowo kluczowe](speech-devices-sdk-create-kws.md) , dzięki czemu wskaźnik inicjujący interakcję użytkownika jest unikatowy dla Twojej marki.
 

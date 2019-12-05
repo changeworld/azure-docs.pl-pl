@@ -1,5 +1,5 @@
 ---
-title: Grupy umieszczania bliskości platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP | Microsoft Docs
+title: Grupy umieszczania zbliżeniowe platformy Azure dla aplikacji SAP | Microsoft Docs
 description: Opisuje scenariusze wdrażania SAP przy użyciu grup umieszczania usługi Azure zbliżeniowe
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: deffcb81a4f66783fedc89c3e21ea46b15ad1c64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719994"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805709"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Grupy umieszczania bliskości platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP
 Aplikacje SAP oparte na architekturze SAP NetWeaver lub SAP S/4HANA są wrażliwe na opóźnienie sieci między warstwą aplikacji SAP a warstwą bazy danych SAP. Ta czułość jest wynikiem większości logiki biznesowej działającej w warstwie aplikacji. Ze względu na to, że warstwa aplikacji SAP uruchamia logikę biznesową, wystawia zapytania do warstwy bazy danych z dużą częstotliwością, a liczba tysięcy lub dziesiątki tysięcy na sekundę. W większości przypadków charakter tych zapytań jest prosty. Często można je uruchamiać w warstwie bazy danych w 500 mikrosekundach lub mniej.
@@ -65,7 +65,7 @@ Oto, jak opisano idealną konfigurację, która wygląda następująco:
 W takim przypadku pojedyncze systemy SAP są pogrupowane w jednej grupie zasobów, z każdą każdą grupą umieszczenia sąsiedztwa. Nie ma zależności od tego, czy używane są konfiguracje skalowania w poziomie i w systemie DBMS.
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>Grupy umieszczania zbliżeniowe i duże wystąpienia HANA
-Jeśli niektóre systemy SAP korzystają z [dużych wystąpień platformy Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) dla warstwy aplikacji, można napotkać znaczne ulepszenia opóźnienia sieci między jednostką dużej liczby wystąpień Hana i maszynami wirtualnymi platformy Azure w przypadku korzystania z jednostek usługi Hana Large Instances, które są wdrożone w [wersji 4 wiersze lub sygnatury](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Jedno Ulepszenie polega na tym, że jednostki w dużych wystąpieniach platformy HANA są wdrażane i wdrażane przy użyciu grupy umieszczania sąsiedztwa. Aby wdrożyć maszyny wirtualne warstwy aplikacji, można użyć tej grupy umieszczania w sąsiedztwie. W związku z tym te maszyny wirtualne zostaną wdrożone w tym samym centrum danych, które obsługuje jednostkę duże wystąpienia platformy HANA.
+Jeśli niektóre systemy SAP korzystają z [dużych wystąpień platformy Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) dla warstwy aplikacji, można napotkać znaczne ulepszenia opóźnienia sieci między jednostką dużej liczby wystąpień Hana i maszynami wirtualnymi platformy Azure w przypadku korzystania z jednostek usługi Hana Large Instances, które są wdrażane w [wersji 4 wierszy lub sygnaturach](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Jedno Ulepszenie polega na tym, że jednostki w dużych wystąpieniach platformy HANA są wdrażane i wdrażane przy użyciu grupy umieszczania sąsiedztwa. Aby wdrożyć maszyny wirtualne warstwy aplikacji, można użyć tej grupy umieszczania w sąsiedztwie. W związku z tym te maszyny wirtualne zostaną wdrożone w tym samym centrum danych, które obsługuje jednostkę duże wystąpienia platformy HANA.
 
 Aby określić, czy jednostka usługi HANA Large Instances została wdrożona w sygnaturze lub wierszu poprawki 4, zapoznaj się z artykułem [Kontrola dużych wystąpień usługi Azure Hana przez Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit). W omówieniu atrybutów jednostki dużego wystąpienia usługi HANA można także określić nazwę grupy umieszczania bliskości, ponieważ została ona utworzona podczas wdrażania jednostki usługi HANA Large Instances. Nazwa, która pojawia się w przeglądzie atrybutów, to nazwa grupy położenia bliskości, w której należy wdrożyć maszyny wirtualne warstwy aplikacji.
 

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 08bac7cd833f52d2dfec4561c2f87330a4119748
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552865"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815580"
 ---
-# <a name="device-roobo-smart-audio-dev-kit"></a>Urządzenie: Roobo Smart audio dev Kit
+# <a name="device-roobo-smart-audio-dev-kit"></a>Urządzenie: roobo Smart audio dev Kit
 
 Ten artykuł zawiera informacje dotyczące urządzeń dla zestawu roobo Smart audio dev Kit.
 
@@ -54,12 +54,12 @@ Ten artykuł zawiera informacje dotyczące urządzeń dla zestawu roobo Smart au
     > [!NOTE]
     > Te polecenia korzystają z mostka debugowania systemu Android, `adb.exe`, który jest częścią instalacji programu Android Studio. To narzędzie znajduje się w C:\Users\[nazwa_użytkownika] \AppData\Local\Android\Sdk\platform narzędzia. Ten katalog można dodać do swojej ścieżki, aby był bardziej wygodne do wywołania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji adb.exe w każdego polecenia, który wywołuje `adb`.
     >
-    > Jeśli zobaczysz błąd `no devices/emulators found` , sprawdź, czy kabel USB jest podłączony i jest kablem wysokiej jakości. Możesz użyć `adb devices` , aby sprawdzić, czy komputer może komunikować się z zestawem deweloperskim, ponieważ zwróci listę urządzeń.
+    > Jeśli zostanie wyświetlony komunikat o błędzie `no devices/emulators found`, sprawdź, czy kabel USB jest podłączony i jest kablem wysokiej jakości. Możesz użyć `adb devices`, aby sprawdzić, czy komputer może komunikować się z zestawem deweloperskim, ponieważ zwróci listę urządzeń.
     >
     > [!TIP]
     > Wyciszenia mikrofonu i głośników, należy upewnić się, że pracujesz z mikrofon zestaw development kit Twojego komputera. W ten sposób przypadkowo nie spowoduje wyzwolenia z urządzenia z dźwięku z komputera.
 
-1. Aby dołączyć osoby mówiącej do zestawu dla deweloperów, należy go połączyć z wierszem audio out. Należy wybrać głośnik o wysokiej jakości z dwukierunkowym złączem 3,5 mm.
+1. Jeśli chcesz dołączyć prelegenta do zestawu deweloperów, możesz połączyć go z linią dźwiękową. Należy wybrać głośnik o wysokiej jakości z dwukierunkowym złączem 3,5 mm.
 
     ![Vysor audio](media/speech-devices-sdk/qsg-14.png)
 
@@ -71,6 +71,6 @@ Aby uzyskać więcej informacji na temat programowania, zobacz [Przewodnik progr
 
 Roobo zapewnia narzędzie, które przechwytuje cały dźwięk do pamięci flash. Mogą pomóc rozwiązać problemy. Wersja narzędzia towarzyszy konfiguracjami development kit. W [witrynie roobo](https://ddk.roobo.com/)wybierz urządzenie, a następnie wybierz łącze **Narzędzia roobo** w dolnej części strony.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Uruchamianie przykładowej aplikacji dla systemu Android](speech-devices-sdk-android-quickstart.md)

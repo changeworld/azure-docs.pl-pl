@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554983"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806015"
 ---
 # <a name="what-is-custom-speech"></a>Co to jest Custom Speech?
 
@@ -23,13 +23,13 @@ ms.locfileid: "74554983"
 
 ## <a name="whats-in-custom-speech"></a>Co znajduje się w Custom Speech?
 
-Przed rozpoczęciem wykonywania jakichkolwiek czynności mających Custom Speech musisz mieć konto platformy Azure i subskrypcję usługi Speech Services. Po otrzymaniu konta możesz przygotować swoje dane, wyszkolić i przetestować modele, sprawdzić jakość rozpoznawania, oszacować dokładność i ostatecznie wdrożyć i korzystać z niestandardowego modelu zamiany mowy na tekst.
+Przed rozpoczęciem pracy z Custom Speech musisz mieć konto platformy Azure i subskrypcję usługi mowy. Po otrzymaniu konta możesz przygotować swoje dane, wyszkolić i przetestować modele, sprawdzić jakość rozpoznawania, oszacować dokładność i ostatecznie wdrożyć i korzystać z niestandardowego modelu zamiany mowy na tekst.
 
 Ten diagram przedstawia elementy wchodzące w skład [portalu Custom Speech](https://aka.ms/customspeech). Skorzystaj z poniższych linków, aby dowiedzieć się więcej o każdym z kroków.
 
 ![Wyróżnia różne składniki wchodzące w skład portalu Custom Speech.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Subskrybuj i Utwórz projekt](#set-up-your-azure-account) — Utwórz konto platformy Azure i Zasubskrybuj usługi mowy. Ta ujednolicona subskrypcja zapewnia dostęp do funkcji zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenia mowy i [portalu Custom Speech](https://speech.microsoft.com/customspeech). Następnie za pomocą subskrypcji usługi Speech Services Utwórz pierwszy projekt Custom Speech.
+1. [Subskrybowanie i tworzenie projektu](#set-up-your-azure-account) — Tworzenie konta platformy Azure i Subskrybowanie usługi Speech. Ta ujednolicona subskrypcja zapewnia dostęp do funkcji zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenia mowy i [portalu Custom Speech](https://speech.microsoft.com/customspeech). Następnie za pomocą subskrypcji usługi mowy Utwórz pierwszy projekt Custom Speech.
 
 2. [Przekazywanie danych testowych](how-to-custom-speech-test-data.md) — przekazywanie danych testowych (plików audio) w celu oszacowania oferty zamiany mowy na tekst firmy Microsoft dla aplikacji, narzędzi i produktów.
 
@@ -43,14 +43,14 @@ Ten diagram przedstawia elementy wchodzące w skład [portalu Custom Speech](htt
 
 ## <a name="set-up-your-azure-account"></a>Skonfiguruj swoje konto platformy Azure
 
-Przed rozpoczęciem korzystania z [portalu Custom Speech](https://speech.microsoft.com/customspeech) w celu utworzenia modelu niestandardowego należy skorzystać z subskrypcji usługi Speech Services. Postępuj zgodnie z tymi instrukcjami, aby utworzyć standardową subskrypcję usługi Speech Services: [Utwórz subskrypcję mowy](get-started.md#try-the-speech-service-using-a-new-azure-account).
+Wymagana jest subskrypcja usługi mowy, aby można było użyć [portalu Custom Speech](https://speech.microsoft.com/customspeech) w celu utworzenia modelu niestandardowego. Postępuj zgodnie z tymi instrukcjami, aby utworzyć standardową subskrypcję usługi mowy: [Utwórz subskrypcję mowy](get-started.md#try-the-speech-service-using-a-new-azure-account).
 
 > [!NOTE]
 > Pamiętaj, aby utworzyć standardowe subskrypcje (S0) i subskrypcje bezpłatnej wersji próbnej (F0) nie są obsługiwane.
 
-Po utworzeniu konta platformy Azure i subskrypcji usługi Speech Services należy zalogować się do [portalu Custom Speech](https://speech.microsoft.com/customspeech) i połączyć swoją subskrypcję.
+Po utworzeniu konta platformy Azure i subskrypcji usługi mowy należy zalogować się do [portalu Custom Speech](https://speech.microsoft.com/customspeech) i połączyć swoją subskrypcję.
 
-1. Pobierz klucz subskrypcji usługi Speech Services z Azure Portal.
+1. Pobierz klucz subskrypcji usługi rozpoznawania mowy z Azure Portal.
 2. Zaloguj się do [portalu Custom Speech](https://aka.ms/custom-speech).
 3. Wybierz subskrypcję, na której chcesz korzystać, i Utwórz projekt mowy.
 4. Jeśli chcesz zmodyfikować swoją subskrypcję, użyj ikony **koło zębate** znajdującej się w górnym obszarze nawigacji.

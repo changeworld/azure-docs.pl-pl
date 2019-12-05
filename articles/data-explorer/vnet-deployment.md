@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668572"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812724"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Wdróż Eksplorator danych platformy Azure w Virtual Network (wersja zapoznawcza)
 
@@ -54,7 +54,7 @@ Nie można zmienić rozmiaru podsieci używanej do hostowania klastra Eksplorato
 | Usługa zarządzania danymi | 2 |
 | Wewnętrzne moduły równoważenia obciążenia | 2 |
 | Adresy zastrzeżone platformy Azure | 5 |
-| **Ogólnego** | **#engine_instances + 9** |
+| **Łączna liczba** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
 > Rozmiar podsieci musi być zaplanowany z wyprzedzeniem, ponieważ nie można go zmienić po wdrożeniu usługi Azure Eksplorator danych. W związku z tym należy odpowiednio zarezerwować wymagany rozmiar podsieci.
@@ -75,7 +75,7 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 
 #### <a name="inbound-nsg-configuration"></a>Konfiguracja sieciowej grupy zabezpieczeń ruchu przychodzącego
 
-| **Korzystanie**   | **Wniosek**   | **Do**   | **Protokół**   |
+| **Korzystanie**   | **From**   | **Do**   | **Protokół**   |
 | --- | --- | --- | --- |
 | Zarządzanie  |[ADX Management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | Podsieć ADX: 443  | TCP  |
 | Monitorowanie kondycji  | [ADX adresy monitorowania kondycji](#health-monitoring-addresses)  | Podsieć ADX: 443  | TCP  |
@@ -84,7 +84,7 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 
 #### <a name="outbound-nsg-configuration"></a>Konfiguracja wychodzącej sieciowej grupy zabezpieczeń
 
-| **Korzystanie**   | **Wniosek**   | **Do**   | **Protokół**   |
+| **Korzystanie**   | **From**   | **Do**   | **Protokół**   |
 | --- | --- | --- | --- |
 | Zależność od usługi Azure Storage  | Podsieć ADX  | Magazyn: 443  | TCP  |
 | Zależność od Azure Data Lake  | Podsieć ADX  | AzureDataLake: 443  | TCP  |
@@ -236,7 +236,6 @@ azureprofilerfrontdoor.cloudapp.net:443
 *.core.windows.net:443
 *.servicebus.windows.net:443
 shoebox2.metrics.nsatc.net:443
-production.diagnostics.monitoring.core.windows.net:443
 prod-dsts.dsts.core.windows.net:443
 ocsp.msocsp.com:80
 *.windowsupdate.com:80

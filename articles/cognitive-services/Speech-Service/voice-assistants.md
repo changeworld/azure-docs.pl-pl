@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195936"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812906"
 ---
 # <a name="about-voice-assistants"></a>Asystenci głosu — informacje
 
-Asystenci głosowani korzystający z usług Azure Speech Services umożliwiają deweloperom tworzenie naturalnych, przypominających konwersacje interfejsów dla swoich aplikacji i środowisk.
+Asystenci głosu korzystający z usługi mowy umożliwiają deweloperom tworzenie naturalnych, przypominających konwersacje interfejsów dla aplikacji i środowisk.
 
 Usługa asystenta głosowego zapewnia szybką i niezawodną interakcję między urządzeniem a implementacją asystenta, która używa albo (1) bezpośredniego kanału mowy w programie bot Framework lub (2) zintegrowanej usługi poleceń niestandardowych (wersja zapoznawcza) w celu ukończenia zadania.
 
@@ -29,7 +29,7 @@ Aplikacje nawiązują połączenie z usługą asystenta głosowego za pomocą ze
 
 ## <a name="choosing-an-assistant-solution"></a>Wybieranie rozwiązania Asystenta
 
-Pierwszym krokiem tworzenia asystenta głosowego jest podjęcie decyzji o tym, co należy zrobić. Usługi Azure Speech Services udostępniają wiele, uzupełniających się rozwiązań do przedstawiania interakcji z asystentem. Bez względu na to, czy chcesz elastyczną i uniwersalną infrastrukturę mowy w ramach [linii Direct line](direct-line-speech.md) bot Framework, czy prostota [poleceń niestandardowych (wersja zapoznawcza)](custom-commands.md) w przypadku prostych scenariuszy, wybranie odpowiednich narzędzi zostanie rozpoczęte.
+Pierwszym krokiem tworzenia asystenta głosowego jest podjęcie decyzji o tym, co należy zrobić. Usługa mowy oferuje wiele, uzupełniających się rozwiązań do przedstawiania interakcji z asystentem. Bez względu na to, czy chcesz elastyczną i uniwersalną infrastrukturę mowy w ramach [linii Direct line](direct-line-speech.md) bot Framework, czy prostota [poleceń niestandardowych (wersja zapoznawcza)](custom-commands.md) w przypadku prostych scenariuszy, wybranie odpowiednich narzędzi zostanie rozpoczęte.
 
 | Jeśli chcesz... | Następnie Rozważmy... | Na przykład... |
 |-------------------|------------------|----------------|
@@ -49,18 +49,18 @@ Bez względu na to, czy wybierasz [bezpośrednią mowę liniową](direct-line-sp
 | Kategoria | Funkcje |
 |----------|----------|
 |[Custom — słowo kluczowe](speech-devices-sdk-create-kws.md) | Użytkownicy mogą uruchamiać konwersacje z asystentami przy użyciu niestandardowego słowa kluczowego, takiego jak "Hej contoso". Aplikacja wykonuje tę funkcję za pomocą niestandardowego aparatu słów kluczowych w zestawie mowy SDK, który można skonfigurować za pomocą niestandardowego słowa kluczowego [, które można wygenerować w tym miejscu](speech-devices-sdk-create-kws.md). Asystenci głosu mogą korzystać z weryfikacji słowa kluczowego po stronie usługi, aby poprawić dokładność aktywacji słowa kluczowego (w przeciwieństwie do samego urządzenia).
-|[Zamiana mowy na tekst](speech-to-text.md) | Asystenci głosu konwertują dźwięk w czasie rzeczywistym na rozpoznany tekst przy użyciu [zamiany mowy na tekst](speech-to-text.md) z usług Azure Speech Services. Ten tekst jest dostępny, ponieważ jest uzyskanego, zarówno w implementacji asystenta, jak i aplikacji klienckiej.
-|[Zamiana tekstu na mowę](text-to-speech.md) | Odpowiedzi na tekst od asystenta są syntezą przy użyciu zamiany [tekstu na mowę](text-to-speech.md) z usług Azure Speech Services. Ta synteza jest następnie udostępniana aplikacji klienckiej jako strumień audio. Firma Microsoft oferuje możliwość tworzenia własnego, niestandardowego głosu neuronowych TTS, który daje głos do marki. Aby dowiedzieć się więcej, [skontaktuj się z nami](mailto:mstts@microsoft.com).
+|[Zamiana mowy na tekst](speech-to-text.md) | Asystenci głosu konwertują dźwięk w czasie rzeczywistym na rozpoznany tekst przy użyciu [zamiany mowy na tekst](speech-to-text.md) z usługi mowy. Ten tekst jest dostępny, ponieważ jest uzyskanego, zarówno w implementacji asystenta, jak i aplikacji klienckiej.
+|[Zamiana tekstu na mowę](text-to-speech.md) | Odpowiedzi na tekst od asystenta są syntezą przy użyciu zamiany [tekstu na mowę](text-to-speech.md) z usługi mowy. Ta synteza jest następnie udostępniana aplikacji klienckiej jako strumień audio. Firma Microsoft oferuje możliwość tworzenia własnego, niestandardowego głosu neuronowych TTS, który daje głos do marki. Aby dowiedzieć się więcej, [skontaktuj się z nami](mailto:mstts@microsoft.com).
 
 ## <a name="getting-started-with-voice-assistants"></a>Wprowadzenie do asystentów głosowych
 
 Oferujemy Przewodniki Szybki Start zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Ta tabela zawiera listę przewodników szybki start dla asystenta głosowego uporządkowanych według języka.
 
-| Szybki start | Platforma | Dokumentacja interfejsu API |
+| Szybki start | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
-| C#, Platformy UWP | Windows | [Przycisku](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Przycisku](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Przycisku](https://aka.ms/csspeech/javaref) |
+| C#, Platformy UWP | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Przeglądaj](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
@@ -75,7 +75,7 @@ Samouczek dotyczący sposobu [obsługi głosu — Włącz asystenta przy użyciu
 
 ## <a name="customization"></a>Dostosowywanie
 
-W przypadku asystentów głosowych utworzonych przy użyciu usługi Azure Speech Services można używać pełnego zakresu opcji dostosowywania dostępnych na potrzeby [zamiany mowy na tekst](speech-to-text.md), zamiany [tekstu na mowę](text-to-speech.md)oraz [niestandardowego słowa kluczowego](speech-devices-sdk-create-kws.md).
+Asystentzy głosu Skompilowani przy użyciu usługi mowy mogą korzystać z pełnego zakresu opcji dostosowywania dostępnych na potrzeby [zamiany mowy na tekst](speech-to-text.md), zamiany [tekstu na mowę](text-to-speech.md)i [niestandardowego słowa kluczowego](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
 > Opcje dostosowywania różnią się w zależności od języka/ustawień regionalnych (zobacz [obsługiwane języki](supported-languages.md)).
@@ -87,7 +87,7 @@ W przypadku asystentów głosowych utworzonych przy użyciu usługi Azure Speech
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
+* [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
 * [Pobieranie zestawu Speech SDK](speech-sdk.md)
 * [Dowiedz się więcej na temat poleceń niestandardowych (wersja zapoznawcza)](custom-commands.md)
 * [Dowiedz się więcej na temat bezpośredniej obsługi mowy w wierszu](direct-line-speech.md)

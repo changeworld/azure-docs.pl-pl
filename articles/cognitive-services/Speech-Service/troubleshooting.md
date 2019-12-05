@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 3beda852b3e711ee969b7f80f8f326285cc2cad6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558877"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815417"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Rozwiązywanie problemów z zestawem Speech SDK
 
 Ten artykuł zawiera informacje ułatwiające rozwiązywanie problemów, które mogą wystąpić podczas korzystania z zestawu Speech SDK.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd: Uaktualnianie protokołu WebSocket nie powiodło się z powodu błędu uwierzytelniania (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd: Uaktualnienie WebSocket nie powiodło się z powodu błędu uwierzytelniania (403)
 
 Konieczne może być nieprawidłowy punkt końcowy dla Twojego regionu lub usługi. Sprawdź identyfikator URI, aby upewnić się, że jest on poprawny.
 
 Ponadto może być problem z Twoim klucz subskrypcji lub autoryzacji tokenu. Aby uzyskać więcej informacji zobacz następną sekcję.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Błąd: HTTP 403 — Dostęp zabroniony lub HTTP 401 bez autoryzacji
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Błąd: HTTP 403 Dostęp zabroniony lub HTTP 401 Brak autoryzacji
 
 Ten błąd jest często spowodowane przez problemy z uwierzytelnianiem. Żądania połączenia bez prawidłowego `Ocp-Apim-Subscription-Key` lub `Authorization` nagłówka zostały odrzucone ze stanem 403 lub 401.
 
@@ -107,11 +107,11 @@ Jeśli wprowadzono prawidłowy token autoryzacji, polecenie zwróci transkrypcj�
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Błąd: Nieprawidłowe żądanie HTTP 400
+## <a name="error-http-400-bad-request"></a>Błąd: HTTP 400 Niewłaściwe żądanie
 
 Ten błąd występuje zazwyczaj, gdy treść żądania zawiera nieprawidłowe dane audio. Jest obsługiwany tylko format WAV. Sprawdź, czy nagłówki żądania, aby upewnić się, można określić odpowiednie wartości dla `Content-Type` i `Content-Length`.
 
-## <a name="error-http-408-request-timeout"></a>Błąd: Limit czasu żądania HTTP 408
+## <a name="error-http-408-request-timeout"></a>Błąd: Limit czasu z 408 żądania HTTP
 
 Najbardziej prawdopodobną błąd występuje, ponieważ nie dane audio są wysyłane do usługi. Ten błąd może być także spowodowany przez problemy z siecią.
 
@@ -123,6 +123,6 @@ Ten problem jest zazwyczaj spowodowane danych audio. Może zostać wyświetlony 
 
 * Audio w formacie nieobsługiwanego kodera-dekodera, co powoduje, że dane audio powinien być traktowany jako wyciszenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zapoznaj się z informacjami o wersji](releasenotes.md)

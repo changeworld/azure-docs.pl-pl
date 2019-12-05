@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Tłumaczenie mowy na wiele języków C++ , (Windows) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: do ustalenia
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 4bb792db4008092e164218024f19a445ebe3d149
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f58da03807a4fc4109c0524ea95517faeb2f31fe
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502870"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817349"
 ---
 > [!div class="nextstepaction"]
-> [Zapoznaj się z przykładami dla języka C++ w serwisie GitHub](https://aka.ms/speech/github-cpp)
+> [Zapoznaj się z przykładami dla języka C++ w usłudze GitHub](https://aka.ms/speech/github-cpp)

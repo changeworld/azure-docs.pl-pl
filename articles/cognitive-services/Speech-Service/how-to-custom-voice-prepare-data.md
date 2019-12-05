@@ -1,7 +1,7 @@
 ---
 title: Jak przygotować dane dla niestandardowej usługi rozpoznawania mowy
 titleSuffix: Azure Cognitive Services
-description: Utwórz niestandardowy głos dla marki za pomocą usługi Speech. Podajesz nagrania programu Studio i skojarzone skrypty, Usługa generuje unikatowy model głosowy dostosowany do zapisanego głosu. Użyj tego głosu, aby wypróbować mowę w produktach, narzędziach i aplikacjach.
+description: Utwórz niestandardowy głos dla swojej marki za pomocą usługi mowy. Podajesz nagrania programu Studio i skojarzone skrypty, Usługa generuje unikatowy model głosowy dostosowany do zapisanego głosu. Użyj tego głosu, aby wypróbować mowę w produktach, narzędziach i aplikacjach.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: a954118cd0697213674bb9981f0d94100488fb38
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464507"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805981"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Przygotowywanie danych do tworzenia niestandardowego głosu
 
-Gdy wszystko jest gotowe do utworzenia niestandardowego głosu zamiany tekstu na mowę dla aplikacji, pierwszym krokiem jest zebranie nagrań audio i skojarzonych skryptów, aby rozpocząć uczenie modelu głosowego. Usługa używa tych danych do utworzenia unikatowego głosu dopasowanego do głosu w nagraniach. Po przeszkoleniu głosu możesz rozpocząć uczenie mowy w aplikacjach.
+Gdy wszystko jest gotowe do utworzenia niestandardowego głosu zamiany tekstu na mowę dla aplikacji, pierwszym krokiem jest zebranie nagrań audio i skojarzonych skryptów, aby rozpocząć uczenie modelu głosowego. Usługa mowy używa tych danych do utworzenia unikatowego głosu dopasowanego do głosu w nagraniach. Po przeszkoleniu głosu możesz rozpocząć uczenie mowy w aplikacjach.
 
 Możesz zacząć od małej ilości danych, aby utworzyć weryfikację koncepcji. Jednak im więcej danych jest zapewnianych przez użytkownika, tym bardziej naturalnie jest dźwięk. Aby można było nauczyć własny model głosu zamiany tekstu na mowę, potrzebne są nagrania audio i powiązane transkrypcje tekstu. Na tej stronie zostanie przejrzane typy danych, sposób ich użycia oraz sposób zarządzania każdym z nich.
 

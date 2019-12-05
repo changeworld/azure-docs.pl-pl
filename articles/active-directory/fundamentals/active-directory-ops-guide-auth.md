@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 6b9d5eb3adb8cad963ec513d327d237e73f94878
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535589"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803737"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Przewodnik dotyczący operacji zarządzania uwierzytelnianiem Azure Active Directory
 
@@ -141,7 +141,7 @@ Jeśli zarządzasz urządzeniami za pomocą rozwiązania MDM lub Microsoft Intun
 #### <a name="device-trust-access-policies-recommended-reading"></a>Zalecane odczytywanie zasad dostępu zaufania urządzeń
 
 - [Instrukcje: planowanie implementacji dołączania hybrydowego Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Konfiguracje i dostęp do urządzeń](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Konfiguracje dostępu tożsamości i urządzenia](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello dla firm
 
@@ -205,7 +205,7 @@ Z [nazwanymi lokalizacjami](https://docs.microsoft.com/azure/active-directory/re
 
 Na podstawie priorytetu Skorzystaj z poniższej tabeli, aby znaleźć zalecane rozwiązanie, które najlepiej spełnia wymagania organizacji:
 
-| **Priorytet** | **Scenariusz** | **Zaleca** |
+| **Priorytet** | **Scenariusz** | **Zalecenie** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | Jeśli używasz PHS lub PTA i nazwane lokalizacje nie zostały zdefiniowane | Definiowanie nazwanych lokalizacji w celu usprawnienia wykrywania zdarzeń o podwyższonym ryzyku |
 | 2 | Jeśli jesteś federacyjnym i nie używasz żądania "insideCorporateNetwork" i nazwanych lokalizacji nie zostały zdefiniowane | Definiowanie nazwanych lokalizacji w celu usprawnienia wykrywania zdarzeń o podwyższonym ryzyku |
@@ -256,7 +256,7 @@ Dostęp warunkowy jest ważnym narzędziem do ulepszania stan zabezpieczeń orga
 #### <a name="conditional-access-recommended-reading"></a>Zalecane odczytywanie dostępu warunkowego
 
 - [Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Konfiguracje i dostęp do urządzeń](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Konfiguracje dostępu tożsamości i urządzenia](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory informacje o ustawieniach dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Typowe zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -302,7 +302,7 @@ Poniżej znajdują się uprawnienia, które mogą chcieć Scrutinize dla usług 
 
 | Zasób | Uprawnienie |
 | -------------------------- | -------------------- |
-| Pakiet Office 365 Exchange Online | Posiada. AccessAsUser. All |
+| Office 365 Exchange Online | Posiada. AccessAsUser. All |
 | | Interfejs. AccessAsUser. All |
 | | Poczta. Przeczytaj |
 | Microsoft Graph | Poczta. Przeczytaj |
@@ -363,7 +363,7 @@ Mając dostęp do działania związanego z logowaniem, inspekcje i zdarzenia zwi
 - [Pobieranie danych przy użyciu interfejsu API raportowania usługi Azure AD z certyfikatami](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
 - [Microsoft Graph Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 - [Dokumentacja interfejsu API działania zarządzania pakietu Office 365](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
-- [Jak używać pakietu zawartości Azure Active Directory Power BI](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
+- [Jak używać pakietu zawartości Azure Active Directory Power BI](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>Podsumowanie
 

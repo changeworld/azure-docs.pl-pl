@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072456"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816653"
 ---
-# <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
+# <a name="speech-service-supported-regions"></a>Obsługiwane regiony usługi Speech
 
 Usługa mowy umożliwia aplikacji konwertowanie dźwięku na tekst, wykonać tłumaczenie mowy i konwertowania tekstu na mowę. Usługa jest dostępna w wielu regionach za pomocą punktów końcowych unikatowy zestaw SDK rozpoznawania mowy i interfejsów API REST.
 
@@ -39,8 +39,8 @@ Zestaw Speech SDK jest dostępny w tych regionach na potrzeby **rozpoznawania mo
 | Wschodnie stany USA          | `eastus`             | https://eastus.cris.ai         |
 | Wschodnie stany USA 2        | `eastus2`            | https://eastus2.cris.ai        |
 | Środkowe stany USA       | `centralus`          | https://centralus.cris.ai      |
-| Środkowo-północne stany USA | `northcentralus`     | https://northcentralus.cris.ai |
-| Środkowo-południowe stany USA | `southcentralus`     | https://southcentralus.cris.ai |
+| Północno-środkowe stany USA | `northcentralus`     | https://northcentralus.cris.ai |
+| Południowo-środkowe stany USA | `southcentralus`     | https://southcentralus.cris.ai |
 | Indie Środkowe    | `centralindia`       | https://centralindia.cris.ai   |
 | Azja Wschodnia        | `eastasia`           | https://eastasia.cris.ai       |
 | Azja Południowo-Wschodnia   | `southeastasia`      | https://southeastasia.cris.ai  |
@@ -66,8 +66,8 @@ Dostępne regiony do **rozpoznawania intencji** za pośrednictwem zestawu Speech
 | Europa        | Europa Zachodnia      | `westeurope`         |
 | Ameryka Północna | Wschodnie stany USA          | `eastus`             |
 | Ameryka Północna | Wschodnie stany USA 2        | `eastus2`            |
-| Ameryka Północna | Środkowo-południowe stany USA | `southcentralus`     |
-| Ameryka Północna | Środkowo-zachodnie stany USA  | `westcentralus`      |
+| Ameryka Północna | Południowo-środkowe stany USA | `southcentralus`     |
+| Ameryka Północna | Zachodnio-środkowe stany USA  | `westcentralus`      |
 | Ameryka Północna | Zachodnie stany USA          | `westus`             |
 | Ameryka Północna | Zachodnie stany USA 2        | `westus2`            |
 | Ameryka Południowa | Brazylia Południowa     | `brazilsouth`        |
@@ -92,7 +92,7 @@ Jest to podzestaw regionów publikowania obsługiwanych przez [usługę Language
 
 Usługa rozpoznawania mowy udostępnia również punkty końcowe REST dla żądania zamiany mowy na tekst i zamiany tekstu na mowę.
 
-### <a name="speech-to-text"></a>Zamiany mowy na tekst
+### <a name="speech-to-text"></a>Zamiana mowy na tekst
 
 Aby zapoznać się z dokumentacją dotyczącą zamiany mowy na tekst, zobacz [interfejs API REST zamiany mowy na tekst](rest-speech-to-text.md).
 

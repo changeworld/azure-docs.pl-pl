@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 102371f8af45a1a51715dbfb11afc3f0f4e457d7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e4130b05be1a4abb2166514b730c3d21bd5ece97
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150698"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803584"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Dostęp warunkowy: dostęp warunkowy oparty na ryzyku
 
@@ -84,4 +84,4 @@ Większości użytkowników dotyczy zachowanie normalne, które można śledzić
 
 [Jak to działa: usługa Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 
-[Co to jest Azure Active Directory Identity Protection?](../identity-protection/overview.md)
+[Co to jest usługa Azure Active Directory Identity Protection?](../identity-protection/overview.md)

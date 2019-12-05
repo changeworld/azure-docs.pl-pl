@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 54a5be769ace97ffa9a4f5f38a9227d9565abfd1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111713"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815858"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Szybki Start: Tworzenie asystenta głosowego za pomocą zestawu Speech SDK, Java (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 - System operacyjny: Windows (64-bitowy), Ubuntu Linux 16.04/18.04 (64-bitowy) lub macOS 10,13 lub nowszy.
 - [Zaćmienie IDE Java](https://www.eclipse.org/downloads/).
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-- Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go w [Azure Portal](https://portal.azure.com).
+- Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go w [Azure Portal](https://portal.azure.com).
 - Wstępnie skonfigurowany bot utworzony przy użyciu platformy bot Framework w wersji 4,2 lub nowszej. Bot musi subskrybować nowy kanał mowy linii bezpośredniej do odbierania danych wejściowych głosowych.
 
   > [!NOTE]
@@ -469,7 +469,7 @@ W tym momencie Porozmawiaj z angielską frazą lub zdaniem bot. Twoja Zamiana je
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dodatkowe przykłady, dotyczące m.in. odczytywania mowy z pliku audio, są dostępne w serwisie GitHub.
+Dodatkowe przykłady, dotyczące np. sposobu odczytywania mowy z pliku audio, są dostępne w witrynie GitHub.
 
 > [!div class="nextstepaction"]
 > [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
@@ -477,7 +477,7 @@ Dodatkowe przykłady, dotyczące m.in. odczytywania mowy z pliku audio, są dost
 ## <a name="see-also"></a>Zobacz także
 
 - [Asystenci głosu — informacje](voice-assistants.md)
-- [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
+- [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
 - [Niestandardowe słowa kluczowe](speech-devices-sdk-create-kws.md)
 - [Połącz bezpośrednią mowę wiersza z bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [Zapoznaj się z przykładami dla języka Java w serwisie GitHub](https://aka.ms/csspeech/samples)
+- [Zapoznaj się z przykładami dla języka Java w usłudze GitHub](https://aka.ms/csspeech/samples)

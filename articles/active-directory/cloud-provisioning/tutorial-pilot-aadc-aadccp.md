@@ -11,12 +11,12 @@ ms.date: 12/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a130eb5e1777259a0c74285ead526b3b995466
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 163d1f7f457dcbca7fbb9e331ec889bcc0894dfc
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793619"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814467"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Obsługa administracyjna chmury pilotażowej dla istniejącego synchronizowanego lasu usługi AD 
 
@@ -72,7 +72,7 @@ Synchronizacja Azure AD Connect synchronizuje zmiany występujące w katalogu lo
 
     |Reguła|Atrybut|Operator|Wartość|
     |-----|----|----|-----|
-    |Określanie zakresu jednostki organizacyjnej|WYRÓŻNIAJĄC|ENDSWITH|Nazwa wyróżniająca jednostki organizacyjnej.|
+    |Określanie zakresu jednostki organizacyjnej|NAZWA WYRÓŻNIAJĄCA|ENDSWITH|Nazwa wyróżniająca jednostki organizacyjnej.|
     |Grupa określania zakresu||ISMEMBEROF|Nazwa wyróżniająca grupy zabezpieczeń.|
 
     ![Reguła niestandardowa](media/how-to-cloud-custom-user-rule/user3.png)</br>
@@ -132,37 +132,25 @@ Synchronizacja Azure AD Connect synchronizuje zmiany występujące w katalogu lo
 3.  Uruchom polecenie `Start-ADSyncSyncCycle`.  Naciśnij klawisz ENTER.  
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Zainstaluj agenta aprowizacji Azure AD Connect
-1. Zaloguj się na serwerze, który będzie używany z uprawnieniami administratora przedsiębiorstwa.  Jeśli używasz podstawowego samouczka [środowiska usług AD i Azure](tutorial-basic-ad-azure.md) , będzie on CP1.
-2. Pobierz [tutaj](https://go.microsoft.com/fwlink/?linkid=2109037)agenta aprowizacji Azure AD Connect w chmurze.
-3. Uruchamianie Azure AD Connect aprowizacji w chmurze (AADConnectProvisioningAgent. Installer)
-3. Na ekranie powitalnym **Zaakceptuj** postanowienia licencyjne, a następnie kliknij przycisk **Instaluj**.</br>
+1. Zaloguj się na serwerze przyłączonym do domeny.  Jeśli używasz podstawowego samouczka [usługi AD i środowiska Azure](tutorial-basic-ad-azure.md) , będzie to DC1.
+2. Zaloguj się do Azure Portal przy użyciu poświadczeń administratora globalnego tylko w chmurze.
+3. Po lewej stronie wybierz pozycję **Azure Active Directory**, kliknij pozycję **Azure AD Connect** i w centrum wybierz pozycję **Zarządzaj Provisioning (wersja zapoznawcza)** .</br>
+![Azure Portal](media/how-to-install/install6.png)</br>
+4. Kliknij pozycję "Pobierz agenta"
+5. Uruchom agenta aprowizacji Azure AD Connect
+6. Na ekranie powitalnym **Zaakceptuj** postanowienia licencyjne, a następnie kliknij przycisk **Instaluj**.</br>
 ![Ekran powitalny](media/how-to-install/install1.png)</br>
 
-4. Po zakończeniu tej operacji zostanie uruchomiony Kreator konfiguracji.  Zaloguj się przy użyciu konta administratora globalnego usługi Azure AD.
-5. Na ekranie **połącz Active Directory** kliknij pozycję **Dodaj katalog** , a następnie zaloguj się przy użyciu konta administratora Active Directory.  Ta operacja spowoduje dodanie katalogu lokalnego.  Kliknij przycisk **Dalej**.</br>
+7. Po zakończeniu tej operacji zostanie uruchomiony Kreator konfiguracji.  Zaloguj się przy użyciu konta administratora globalnego usługi Azure AD.  Należy pamiętać, że jeśli masz włączone rozszerzone zabezpieczenia programu IE, spowoduje to zablokowanie logowania.  W takim przypadku Zamknij instalację, wyłącz zaawansowane zabezpieczenia programu IE w Menedżer serwera, a następnie kliknij **Kreatora agenta aprowizacji usługi AAD Connect** , aby ponownie uruchomić instalację.
+8. Na ekranie **połącz Active Directory** kliknij pozycję **Dodaj katalog** , a następnie zaloguj się przy użyciu konta administratora domeny Active Directory.  Uwaga: konto administratora domeny nie powinno mieć wymagań dotyczących zmiany hasła. W przypadku wygaśnięcia lub zmiany hasła należy ponownie skonfigurować agenta przy użyciu nowych poświadczeń. Ta operacja spowoduje dodanie katalogu lokalnego.  Kliknij przycisk **Dalej**.</br>
 ![Ekran powitalny](media/how-to-install/install3.png)</br>
 
-6. Na ekranie **Konfiguracja ukończona** kliknij przycisk **Potwierdź**.  Ta operacja spowoduje zarejestrowanie i ponowne uruchomienie agenta.</br>
+9. Na ekranie **Konfiguracja ukończona** kliknij przycisk **Potwierdź**.  Ta operacja spowoduje zarejestrowanie i ponowne uruchomienie agenta.</br>
 ![Ekran powitalny](media/how-to-install/install4.png)</br>
 
-7. Po zakończeniu tej operacji powinna zostać wyświetlona informacja o **tym, że została pomyślnie zweryfikowana.**  Możesz kliknąć przycisk **Zakończ**.</br>
+10. Po zakończeniu tej operacji powinna zostać wyświetlona informacja: **Konfiguracja agenta została pomyślnie zweryfikowana.**  Możesz kliknąć przycisk **Zakończ**.</br>
 ![Ekran powitalny](media/how-to-install/install5.png)</br>
-8. Jeśli nadal widzisz początkowy ekran powitalny, kliknij przycisk **Zamknij**. 1. Zaloguj się na serwerze, który będzie używany z uprawnieniami administratora przedsiębiorstwa.
-2. Pobierz [tutaj](https://go.microsoft.com/fwlink/?linkid=2109037)agenta aprowizacji Azure AD Connect w chmurze.
-3. Uruchamianie Azure AD Connect aprowizacji w chmurze (AADConnectProvisioningAgent. Installer)
-3. Na ekranie powitalnym **Zaakceptuj** postanowienia licencyjne, a następnie kliknij przycisk **Instaluj**.</br>
-![Ekran powitalny](media/how-to-install/install1.png)</br>
-
-4. Po zakończeniu tej operacji zostanie uruchomiony Kreator konfiguracji.  Zaloguj się przy użyciu konta administratora globalnego usługi Azure AD.
-5. Na ekranie **połącz Active Directory** kliknij pozycję **Dodaj katalog** , a następnie zaloguj się przy użyciu konta administratora Active Directory.  Ta operacja spowoduje dodanie katalogu lokalnego.  Kliknij przycisk **Dalej**.</br>
-![Ekran powitalny](media/how-to-install/install3.png)</br>
-
-6. Na ekranie **Konfiguracja ukończona** kliknij przycisk **Potwierdź**.  Ta operacja spowoduje zarejestrowanie i ponowne uruchomienie agenta.</br>
-![Ekran powitalny](media/how-to-install/install4.png)</br>
-
-7. Po zakończeniu tej operacji powinna zostać wyświetlona informacja o **tym, że została pomyślnie zweryfikowana.**  Możesz kliknąć przycisk **Zakończ**.</br>
-![Ekran powitalny](media/how-to-install/install5.png)</br>
-8. Jeśli nadal widzisz początkowy ekran powitalny, kliknij przycisk **Zamknij**.
+11. Jeśli nadal widzisz początkowy ekran powitalny, kliknij przycisk **Zamknij**.
 
 ## <a name="verify-agent-installation"></a>Weryfikuj instalację agenta
 Weryfikacja agenta odbywa się w Azure Portal i na serwerze lokalnym, na którym jest uruchomiony Agent programu.
@@ -220,7 +208,7 @@ Teraz sprawdź, czy użytkownicy, którzy mieli dostęp do naszego katalogu loka
 
 Ponadto możesz sprawdzić, czy użytkownik i Grupa istnieją w usłudze Azure AD.
 
-## <a name="something-went-wrong"></a>Wystąpił problem
+## <a name="something-went-wrong"></a>Wystąpił błąd
 W przypadku, gdy pilotaż nie działa zgodnie z oczekiwaniami, możesz wrócić do konfiguracji synchronizacji Azure AD Connect, wykonując poniższe kroki:
 1.  Wyłącz konfigurację aprowizacji w Azure Portal. 
 2.  Wyłącz wszystkie niestandardowe reguły synchronizacji utworzone na potrzeby aprowizacji w chmurze za pomocą narzędzia Edytor reguł synchronizacji. Wyłączenie powinno spowodować pełną synchronizację wszystkich łączników.

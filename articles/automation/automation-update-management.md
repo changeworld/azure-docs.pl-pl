@@ -4,17 +4,17 @@ description: W tym artykule opisano sposób korzystania z rozwiązania Update Ma
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 05/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66acb1284f0814eec91715284259272a065dbae2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690891"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806545"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -31,16 +31,16 @@ Update Management dla maszyn wirtualnych (VM) można włączyć bezpośrednio z 
 
 Komputery zarządzane przez Update Management używają następujących konfiguracji do przeprowadzania oceny i aktualizacji wdrożeń:
 
-* Microsoft Monitoring Agent (MMA) dla systemu Windows lub Linux
+* Program Microsoft Monitoring Agent (MMA) dla systemu Windows lub Linux
 * Platforma PowerShell Desired State Configuration (DSC) dla systemu Linux
 * Hybrydowy proces roboczy elementu runbook usługi Automation
-* Microsoft Update lub Windows Server Update Services (WSUS) dla komputerów z systemem Windows
+* Usługa Microsoft Update lub Windows Server Update Services (WSUS) dla komputerów z systemem Windows
 
 Na poniższym diagramie przedstawiono sposób, w jaki rozwiązanie ocenia i stosuje aktualizacje zabezpieczeń do wszystkich połączonych komputerów z systemem Windows Server i Linux w obszarze roboczym:
 
 ![Przepływ procesu Update Management](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Update Management może służyć do natywnego dołączania maszyn w ramach wielu subskrypcji w ramach tej samej dzierżawy.
+Rozwiązanie Update Management pozwala natywnie dołączać maszyny z różnych subskrypcji do jednej dzierżawy.
 
 Po wydaniu pakietu trwa od 2 do 3 godzin, aby poprawka była wyświetlana dla maszyn z systemem Linux na potrzeby oceny. W przypadku maszyn z systemem Windows trwa od 12 do 15 godzin, aby poprawka była wyświetlana na potrzeby oceny po jej udostępnieniu.
 
@@ -69,7 +69,7 @@ Posiadanie maszyny zarejestrowanej dla Update Management w więcej niż jednym L
 
 ## <a name="clients"></a>Klienci
 
-### <a name="supported-client-types"></a>Obsługiwane typy klientów
+### <a name="supported-client-types"></a>Typy obsługiwanych klientów
 
 W poniższej tabeli wymieniono systemy operacyjne obsługiwane w przypadku ocen aktualizacji. Stosowanie poprawek wymaga hybrydowego procesu roboczego elementu Runbook. Aby uzyskać informacje na temat wymagań hybrydowych procesów roboczych elementu Runbook, zobacz Przewodniki instalacji dotyczące instalowania [hybrydowego procesu roboczego elementu Runbook systemu Windows](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) i [hybrydowego procesu roboczego elementu Runbook](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)w systemie Linux
 
@@ -85,17 +85,17 @@ W poniższej tabeli wymieniono systemy operacyjne obsługiwane w przypadku ocen 
 > Zestawy skalowania maszyn wirtualnych platformy Azure mogą być zarządzane za pomocą Update Management. Update Management działa na samych wystąpieniach, a nie na obrazie podstawowym. Należy zaplanować aktualizacje w sposób przyrostowy, aby nie wszystkie wystąpienia maszyn wirtualnych były aktualizowane jednocześnie.
 > Węzły dla zestawów skalowania maszyn wirtualnych można dodać, wykonując czynności opisane w sekcji [dołączanie maszyny spoza platformy Azure](automation-tutorial-installed-software.md#onboard-a-non-azure-machine).
 
-### <a name="unsupported-client-types"></a>Nieobsługiwane typy klientów
+### <a name="unsupported-client-types"></a>Typy klientów nieobsługiwanych
 
 W poniższej tabeli wymieniono nieobsługiwane systemy operacyjne:
 
 |System operacyjny  |Uwagi  |
 |---------|---------|
-|Klient systemu Windows     | Systemy operacyjne klienta (takie jak Windows 7 i Windows 10) nie są obsługiwane.        |
-|Windows Server 2016 nano Server     | Nieobsługiwane.       |
+|Klient systemu Windows     | Systemy operacyjne klienta (takich jak Windows 7 i Windows 10) nie są obsługiwane.        |
+|Windows Server 2016 Nano Server     | Nieobsługiwane.       |
 |Węzły usługi Azure Kubernetes | Nieobsługiwane. Użyj procesu poprawek opisanego w temacie [stosowanie aktualizacji zabezpieczeń i jądra do węzłów systemu Linux w usłudze Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md)|
 
-### <a name="client-requirements"></a>Wymagania dotyczące klienta
+### <a name="client-requirements"></a>Wymagania dotyczące klientów
 
 Poniższe informacje opisują wymagania klienta specyficzne dla systemu operacyjnego. Aby uzyskać dodatkowe wskazówki, zobacz [Planowanie sieci](#ports).
 
@@ -132,13 +132,13 @@ Rozwiązanie składa się z następujących zasobów. Zasoby są dodawane do kon
 
 Po włączeniu tego rozwiązania każdy komputer z systemem Windows, który jest bezpośrednio połączony z obszarem roboczym Log Analytics, zostanie automatycznie skonfigurowany jako hybrydowy proces roboczy elementu Runbook w celu obsługi elementów Runbook uwzględnionych w tym rozwiązaniu.
 
-Każdy komputer z systemem Windows, który jest zarządzany przez rozwiązanie, znajduje się w okienku **grupy hybrydowych procesów roboczych** jako **Grupa hybrydowych procesów roboczych systemu** dla konta usługi Automation. Rozwiązania używają konwencji nazewnictwa *nazwy hosta FQDN_GUID* . Nie można kierować tymi grupami do elementów Runbook na Twoim koncie. Jeśli spróbujesz, próba zakończy się niepowodzeniem. Te grupy mają na celu obsługę tylko rozwiązania do zarządzania.
+Każdy komputer z systemem Windows, który jest zarządzany przez rozwiązanie, znajduje się w okienku **grupy hybrydowych procesów roboczych** jako **Grupa hybrydowych procesów roboczych systemu** dla konta usługi Automation. Rozwiązania używają konwencji nazewnictwa *FQDN_GUID nazwy hosta* . Nie można kierować tymi grupami do elementów Runbook na Twoim koncie. Jeśli spróbujesz, próba zakończy się niepowodzeniem. Te grupy mają na celu obsługę tylko rozwiązania do zarządzania.
 
 Komputery z systemem Windows można dodać do grupy hybrydowych procesów roboczych elementu Runbook na koncie usługi Automation w celu obsługi elementów Runbook usługi Automation, jeśli używasz tego samego konta zarówno dla tego rozwiązania, jak i dla członkostwa w grupie hybrydowych procesów roboczych elementu Runbook. Ta funkcja została dodana w wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.
 
 ### <a name="management-packs"></a>Pakiety administracyjne
 
-Jeśli grupa zarządzania System Center Operations Manager jest połączona z obszarem roboczym Log Analytics, następujące pakiety administracyjne są instalowane w Operations Manager. Te pakiety administracyjne są również instalowane na komputerach z systemem Windows bezpośrednio połączonym po dodaniu rozwiązania. Nie trzeba konfigurować tych pakietów administracyjnych ani nimi zarządzać.
+Jeśli grupa zarządzania programu System Center Operations Manager jest połączona z obszarem roboczym usługi Log Analytics, to w programie Operations Manager są instalowane następujące pakiety administracyjne. Te pakiety administracyjne są również instalowane na bezpośrednio połączonych komputerach z systemem Windows po dodaniu rozwiązania. Pakietów administracyjnych nie trzeba konfigurować ani zarządzać nimi.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -162,7 +162,7 @@ W poniższej tabeli opisano połączone źródła obsługiwane przez to rozwiąz
 | --- | --- | --- |
 | Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów systemu Windows, a następnie inicjuje instalację wymaganych aktualizacji. |
 | Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów z systemem Linux, a następnie inicjuje instalację wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/><br/>Bezpośrednie połączenie z agentem Operations Manager do Azure Monitor dzienników nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego Log Analytics. |
+| Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/><br/>Bezpośrednie połączenie z agentem Operations Manager do Azure Monitor dzienników nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
@@ -170,7 +170,7 @@ Skanowanie jest wykonywane dwa razy dziennie dla każdego zarządzanego komputer
 
 Skanowanie jest wykonywane co godzinę dla każdego zarządzanego komputera z systemem Linux.
 
-Wyświetlenie zaktualizowanych danych z zarządzanych komputerów przez pulpit nawigacyjny może potrwać od 30 minut do 6 godzin.
+Wyświetlenie zaktualizowanych danych z zarządzanych komputerów na pulpicie nawigacyjnym może potrwać od 30 minut do 6 godzin.
 
 Średnie użycie danych przez Azure Monitor dzienników dla maszyny używającej Update Management wynosi około 25 megabajtów (MB) miesięcznie. Ta wartość jest tylko przybliżeniem i może ulec zmianie, w zależności od środowiska. Zalecamy monitorowanie środowiska, aby śledzić dokładne użycie.
 
@@ -178,11 +178,11 @@ Wyświetlenie zaktualizowanych danych z zarządzanych komputerów przez pulpit n
 
 Poniższe adresy są wymagane dla Update Management. Komunikacja z tymi adresami odbywa się za pośrednictwem portu 443.
 
-|Usługa Azure Public  |Platforma Azure dla instytucji rządowych  |
+|Azure Public  |Platforma Azure dla instytucji rządowych  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 W przypadku maszyn z systemem Windows należy również zezwolić na ruch do wszystkich punktów końcowych wymaganych przez Windows Update. Zaktualizowaną listę wymaganych punktów końcowych można znaleźć w przypadku [problemów związanych z protokołem HTTP/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Jeśli masz lokalny [serwer Windows Update](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musisz również zezwolić na ruch do serwera określonego w [kluczu WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry).
@@ -228,7 +228,7 @@ W poniższej tabeli wymieniono klasyfikacje aktualizacji w Update Management z d
 |Narzędzia     | Narzędzie lub funkcja, która pomaga wykonać jedno lub więcej zadań.        |
 |Aktualizacje     | Aktualizacja aplikacji lub pliku, który jest aktualnie zainstalowany.        |
 
-### <a name="linux-2"></a>System
+### <a name="linux-2"></a>Linux
 
 |Klasyfikacja  |Opis  |
 |---------|---------|

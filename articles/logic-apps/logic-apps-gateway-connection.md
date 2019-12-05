@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 5adb342b733563fd0b062dd263a4fdd83259d166
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792048"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815199"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps
 
@@ -70,7 +70,7 @@ Po zainstalowaniu bramy na komputerze lokalnym Utwórz zasób platformy Azure dl
 
 1. W polu wyszukiwania Azure Portal wprowadź wartość "lokalna Brama danych", a następnie wybierz pozycję **lokalne bramy danych**.
 
-   ![Znajdź "lokalna Brama danych"](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
+   ![Znajdź "lokalna Brama danych"](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
 1. W obszarze **lokalne bramy danych**wybierz pozycję **Dodaj**.
 
@@ -89,7 +89,7 @@ Po zainstalowaniu bramy na komputerze lokalnym Utwórz zasób platformy Azure dl
 
    Oto przykład, w którym jest wyświetlana instalacja bramy znajdująca się w tym samym regionie, co zasób bramy i jest połączona z tym samym kontem platformy Azure:
 
-   ![Podaj szczegóły w celu utworzenia zasobu bramy danych](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
+   ![Podaj szczegóły w celu utworzenia zasobu bramy danych](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -128,7 +128,7 @@ Aby zaktualizować ustawienia dla połączenia bramy, można edytować połącze
 
 1. Aby znaleźć wszystkie połączenia interfejsu API tylko dla aplikacji logiki, w menu aplikacji logiki, w obszarze **Narzędzia programistyczne**wybierz pozycję **połączenia interfejsu API**.
 
-   ![W menu aplikacji logiki wybierz pozycję "połączenia interfejsu API"](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
+   ![W menu aplikacji logiki wybierz pozycję "połączenia interfejsu API"](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
 1. Wybierz połączenie bramy, którego chcesz użyć, a następnie wybierz pozycję **Edytuj połączenie z interfejsem API**.
 
@@ -137,8 +137,8 @@ Aby zaktualizować ustawienia dla połączenia bramy, można edytować połącze
 
 Aby znaleźć wszystkie połączenia interfejsu API skojarzone z subskrypcją platformy Azure:
 
-* W głównym menu platformy Azure przejdź do pozycji **wszystkie usługi** > **połączenia interfejsu API** > **sieci Web** .
-* Lub w głównym menu platformy Azure przejdź do pozycji **wszystkie zasoby**. Ustaw filtr **typu** dla **połączenia interfejsu API**.
+* Z menu Azure Portal wybierz pozycję **wszystkie usługi** > **połączenia interfejsu API** > **sieci Web** .
+* Lub z menu Azure Portal wybierz pozycję **wszystkie zasoby**. Ustaw filtr **typu** dla **połączenia interfejsu API**.
 
 <a name="change-delete-gateway-resource"></a>
 
@@ -146,13 +146,13 @@ Aby znaleźć wszystkie połączenia interfejsu API skojarzone z subskrypcją pl
 
 Aby utworzyć inny zasób bramy, Połącz instalację bramy z innym zasobem bramy lub Usuń zasób bramy, a następnie usuń zasób bramy bez wpływu na instalację bramy.
 
-1. Z głównego menu platformy Azure wybierz pozycję **wszystkie zasoby**. Znajdź i wybierz zasób bramy.
+1. Z menu Azure Portal wybierz pozycję **wszystkie zasoby**lub Wyszukaj i wybierz pozycję **wszystkie zasoby** z dowolnej strony. Znajdź i wybierz zasób bramy.
 
 1. Jeśli jeszcze tego nie zrobiono, w menu zasobów bramy wybierz pozycję **lokalna Brama danych**. Na pasku narzędzi zasobów bramy wybierz pozycję **Usuń**.
 
    Na przykład:
 
-   ![Usuwanie zasobu bramy na platformie Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
+   ![Usuwanie zasobu bramy na platformie Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
 <a name="faq"></a>
 

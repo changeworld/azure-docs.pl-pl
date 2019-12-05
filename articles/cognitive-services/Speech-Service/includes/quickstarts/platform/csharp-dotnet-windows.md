@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: zestaw Speech SDK dla .NET Framework (Windows) Konfiguracja platformy — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Ten przewodnik umożliwia skonfigurowanie platformy .NET Framework dla C# systemu Windows za pomocą zestawu SDK usługi Speech Services.
+description: Ten przewodnik umożliwia skonfigurowanie platformy .NET Framework dla C# systemu Windows za pomocą zestawu Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 2caa5124144146e2286b102bf6ded9c5d120f904
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a858a078f8e22a7176fc0eeb09ae0133e2ea11a4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502513"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818568"
 ---
 W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla .NET Framework (Windows).
 
@@ -25,7 +25,7 @@ W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/arti
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Tworzenie projektu programu Visual Studio i Instalowanie zestawu Speech SDK
 
@@ -33,7 +33,7 @@ Musisz zainstalować [pakiet NuGet zestawu Speech SDK](https://aka.ms/csspeech/n
 
 ### <a name="create-helloworld-project"></a>Utwórz projekt HelloWorld
 
-1. Otwórz program Visual Studio 2019.
+1. Open Visual Studio 2019.
 
 1. W oknie uruchamiania wybierz pozycję **Utwórz nowy projekt**. 
 
