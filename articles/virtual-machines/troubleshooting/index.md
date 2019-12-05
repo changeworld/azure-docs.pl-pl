@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: d7ceb3acb1d2e3d174f3b665ec6210d3ddac9970
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bdb459a69557269a20d36f05acc2da502064efb9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059168"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851353"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Rozwiązywanie problemów z maszynami wirtualnymi platformy Azure
 
 ## <a name="tools-for-troubleshooting"></a>Narzędzia do rozwiązywania problemów
 
-- [Konsola szeregowa](serial-console-windows.md)
+- [Konsola szeregowa](serial-console-overview.md)
 - [Diagnostyka rozruchu](boot-diagnostics.md)
 - [Windows VM: Attach the OS disk to another VM for troubleshooting (Maszyna wirtualna z systemem Windows: dołączanie dysku twardego systemu operacyjnego do innej maszyny wirtualnej w celu rozwiązania problemów)](troubleshoot-recovery-disks-portal-windows.md)
 - [Linux VM: Attach the OS disk to another VM for troubleshooting (Maszyna wirtualna z systemem Linux: dołączanie dysku twardego systemu operacyjnego do innej maszyny wirtualnej w celu rozwiązania problemów)](troubleshoot-recovery-disks-portal-linux.md)
@@ -46,7 +46,7 @@ ms.locfileid: "71059168"
 
 **Błąd rozruchu maszyny wirtualnej**
 
-* [Błąd rozruchu funkcji BitLocker](troubleshoot-bitlocker-boot-error.md) 
+* [Błąd rozruchu funkcji BitLocker](troubleshoot-bitlocker-boot-error.md)
 * [W systemie Windows jest wyświetlany komunikat „Sprawdzanie systemu plików” podczas rozruchu](troubleshoot-check-disk-boot-error.md)
 * [Błędy z błękitnym ekranem](troubleshoot-common-blue-screen-error.md)
 * [Uruchamianie maszyny wirtualnej zatrzymuje się na komunikacie „Przygotowywanie systemu Windows”](troubleshoot-vm-boot-configure-update.md)

@@ -21,6 +21,8 @@
   items:
     - name: Wdrażanie projektu FarmBeats
       href: prepare-for-deployment.md
+    - name: Zarządzanie użytkownikami
+      href: manage-users.md
     - name: Zarządzanie farmami
       href: manage-farms.md
     - name: Pobieranie danych czujników
