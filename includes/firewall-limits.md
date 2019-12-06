@@ -5,20 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 7/16/2019
+ms.date: 12/06/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: d4797232a51739238a88576a1fdd95bc62d6afaa
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a7b6867033e750f476b3d995926f0b670965a5d7
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975330"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875428"
 ---
 | Zasób | Limit domyślny |
 | --- | --- |
 | Przepływność danych |30 GB/s<sup>1</sup> |
-|Reguły|10 000 wszystkie typy reguł są łączone.|
+|Reguły|10 000. Wszystkie typy reguł połączone.|
+|DNAT reguły na publiczny adres IP|299|
 |Minimalny rozmiar AzureFirewallSubnet |/26|
 |Zakres portów w regułach sieci i aplikacji|0 – 64000. Trwają prace, aby osłabić to ograniczenie.|
 |Publiczne adresy IP|100 maksymalny (obecnie porty protokołu reportowego są dodawane tylko dla pierwszych pięciu publicznych adresów IP).|

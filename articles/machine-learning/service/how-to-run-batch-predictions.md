@@ -11,21 +11,21 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 207e8def168227cb419d25c8e98aa15c09c72b2c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671560"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851608"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Uruchamiaj wnioskowanie wsadowe dla dużych ilości danych za pomocą Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym instruktażu dowiesz się, jak uzyskać informacje o dużej ilości danych asynchronicznie i równolegle przy użyciu Azure Machine Learning. Opisana tutaj funkcja wnioskowania o partie jest dostępna w publicznej wersji zapoznawczej. Jest to wysoka wydajność i Wysoka przepływność na potrzeby generowania wnioskowania i przetwarzania danych. Zapewnia asynchroniczne funkcje z pola.
+Dowiedz się, jak uzyskać informacje o dużej ilości danych asynchronicznie i równolegle przy użyciu Azure Machine Learning. Opisana tutaj funkcja wnioskowania o partie jest dostępna w publicznej wersji zapoznawczej. Jest to wysoka wydajność i Wysoka przepływność na potrzeby generowania wnioskowania i przetwarzania danych. Zapewnia asynchroniczne funkcje z pola.
 
 Wnioskowanie wsadowe umożliwia skalowanie odliczeń w trybie offline do dużych klastrów maszyn na terabajtach danych produkcyjnych w celu zwiększenia produktywności i optymalnego kosztu.
 
-W tym instruktażu przedstawiono następujące zadania:
+Ten artykuł zawiera informacje o następujących zadaniach:
 
 > * Utwórz zdalny zasób obliczeniowy.
 > * Napisz niestandardowy skrypt wnioskowania.
@@ -40,7 +40,7 @@ W tym instruktażu przedstawiono następujące zadania:
 
 * Aby zarządzać własnym środowiskiem i zależnościami, zobacz [Przewodnik](how-to-configure-environment.md) po konfigurowaniu własnego środowiska. Uruchom `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` w swoim środowisku, aby pobrać wymagane zależności.
 
-## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów uczenia maszynowego
+## <a name="set-up-machine-learning-resources"></a>Konfigurowanie zasobów w machine learning
 
 Poniższe akcje umożliwiają skonfigurowanie zasobów potrzebnych do uruchomienia potoku wnioskowania partii:
 
@@ -149,7 +149,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-## <a name="prepare-the-model"></a>Przygotuj model
+## <a name="prepare-the-model"></a>Przygotowanie modelu
 
 [Pobierz model klasyfikacji wstępnie nauczonego obrazu](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz), a następnie wyodrębnij go do katalogu `models`.
 
@@ -189,7 +189,7 @@ model = Model.register(model_path="models/",
 Skrypt *musi zawierać* dwie funkcje:
 - `init()`: Użyj tej funkcji do dowolnego kosztu lub wspólnego przygotowania do późniejszego wnioskowania. Na przykład użyj go do załadowania modelu do obiektu globalnego.
 -  `run(mini_batch)`: funkcja będzie uruchamiana dla każdego wystąpienia `mini_batch`.
-    -  `mini_batch`: wnioskowanie wsadowe wywoła metodę Run i przekaże element list lub Pandas Frame jako argument do metody. Każdy wpis w min_batch będzie parametrem FilePath, jeśli dane wejściowe to FileDataset, Pandas Dataframe, jeśli Input jest TabularDataset.
+    -  `mini_batch`: wnioskowanie wsadowe wywoła metodę Run i przekaże element list lub Pandas Frame jako argument do metody. Każdy wpis w min_batch będzie ścieżką pliku, jeśli dane wejściowe to FileDataset, Pandas Dataframe, jeśli dane wejściowe to TabularDataset.
     -  `response`: Metoda Run () powinna zwracać element Pandas Dataframe lub tablicę. W przypadku append_row output_action te zwrócone elementy są dołączane do wspólnego pliku wyjściowego. W przypadku summary_only zawartość elementów jest ignorowana. Dla wszystkich akcji wyjściowych każdy zwrócony element wyjściowy wskazuje jeden pomyślne wnioskowanie elementu wejściowego w danych wejściowych. Użytkownik powinien upewnić się, że wystarczająca ilość danych jest uwzględniona w wyniku wnioskowania o zamapowanie danych wejściowych na wnioskowanie. Dane wyjściowe wnioskowania będą zapisywane w pliku wyjściowym i nie będą gwarantowane w kolejności, użytkownik powinien użyć pewnego klucza w danych wyjściowych, aby zmapować go na dane wejściowe.
 
 ```python
@@ -237,6 +237,15 @@ def run(mini_batch):
     return resultList
 ```
 
+### <a name="how-to-access-other-files-in-init-or-run-functions"></a>Jak uzyskać dostęp do innych plików w `init()` lub funkcjach `run()`
+
+Jeśli masz inny plik lub folder w tym samym katalogu, co skrypt wnioskowania, możesz odwoływać się do niego, wyszukując bieżący katalog roboczy.
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
 ## <a name="build-and-run-the-batch-inference-pipeline"></a>Kompilowanie i uruchamianie potoku wnioskowania partii
 
 Teraz masz wszystko, co jest potrzebne do skompilowania potoku.
@@ -261,11 +270,11 @@ batch_env.spark.precache_packages = False
 
 ### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Określ parametry dla etapu potoku wnioskowania dotyczącego partii
 
-`ParallelRunConfig` to główna konfiguracja nowo wprowadzonego wystąpienia wnioskowania partii `ParallelRunStep` w ramach potoku Azure Machine Learning. Służy do zawijania skryptu i konfigurowania niezbędnych parametrów, w tym wszystkich następujących elementów:
+`ParallelRunConfig` to główna konfiguracja nowo wprowadzonego wystąpienia wnioskowania partii `ParallelRunStep` w ramach potoku Azure Machine Learning. Służy do zawijania skryptu i konfigurowania niezbędnych parametrów, w tym wszystkich następujących parametrów:
 - `entry_script`: skrypt użytkownika jako ścieżka do pliku lokalnego, która będzie uruchamiana równolegle na wielu węzłach. Jeśli `source_directly` jest obecny, użyj ścieżki względnej. W przeciwnym razie użyj dowolnej ścieżki dostępnej na komputerze.
 - `mini_batch_size`: rozmiar mini-Batch przeszedł do pojedynczego wywołania `run()`. (Opcjonalnie wartość domyślna to `1`).
     - W przypadku `FileDataset`jest to liczba plików o minimalnej wartości `1`. Można połączyć wiele plików w jedną minimalną partię.
-    - W przypadku `TabularDataset`jest to rozmiar danych. Przykładowe wartości to `1024`, `1024KB`, `10MB`i `1GB`. Zalecana wartość to `1MB`. Należy zauważyć, że minimalna partia z `TabularDataset` nigdy nie będzie przekraczać granic plików. Jeśli na przykład pliki CSV mają różne rozmiary, najmniejszy plik to 100 KB, a największy to 10 MB. Jeśli ustawisz `mini_batch_size = 1MB`, pliki o rozmiarze mniejszym niż 1 MB będą traktowane jako jedna mini-Batch. Pliki o rozmiarze większym niż 1 MB zostaną podzielone na wiele kart Mini-Part.
+    - W przypadku `TabularDataset`jest to rozmiar danych. Przykładowe wartości to `1024`, `1024KB`, `10MB`i `1GB`. Zalecana wartość to `1MB`. Minimalna partia z `TabularDataset` nigdy nie będzie przekraczać granic plików. Jeśli na przykład pliki CSV mają różne rozmiary, najmniejszy plik to 100 KB, a największy to 10 MB. Jeśli ustawisz `mini_batch_size = 1MB`, pliki o rozmiarze mniejszym niż 1 MB będą traktowane jako jedna mini-Batch. Pliki o rozmiarze większym niż 1 MB zostaną podzielone na wiele kart Mini-Part.
 - `error_threshold`: liczba niepowodzeń rekordów dla `TabularDataset` i błędów plików dla `FileDataset`, które powinny zostać zignorowane podczas przetwarzania. Jeśli liczba błędów dla całego danych wejściowych spadnie powyżej tej wartości, zadanie zostanie zatrzymane. Próg błędu dotyczy całego danych wejściowych, a nie dla pojedynczych partii, które są wysyłane do metody `run()`. Zakres jest `[-1, int.max]`. Część `-1` wskazuje, że wszystkie błędy zostaną zignorowane podczas przetwarzania.
 - `output_action`: jedna z następujących wartości wskazuje, w jaki sposób dane wyjściowe będą zorganizowane:
     - `summary_only`: skrypt użytkownika będzie przechowywał dane wyjściowe. `ParallelRunStep` będzie używać danych wyjściowych tylko dla obliczeń progu błędu.
@@ -292,7 +301,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>Tworzenie kroku potoku
+### <a name="create-the-pipeline-step"></a>Tworzenie etap potoku
 
 Utwórz krok potoku przy użyciu skryptu, konfiguracji środowiska i parametrów. Określ miejsce docelowe obliczeń, które zostało już dołączone do obszaru roboczego jako element docelowy wykonywania skryptu. Użyj `ParallelRunStep`, aby utworzyć etap potoku wnioskowania partii, który przyjmuje wszystkie następujące parametry:
 - `name`: Nazwa kroku z następującymi ograniczeniami nazewnictwa: Unique, 3-32 znaków i wyrażenie regularne ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
@@ -348,6 +357,8 @@ pipeline_run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>Następne kroki
 
 Aby zobaczyć, jak to działa, wypróbuj w [notesie wnioskowania o przetwarzanie wsadowe](https://aka.ms/batch-inference-notebooks). 
+
+Wskazówki dotyczące debugowania i rozwiązywania problemów z programem ParallelRunStep można znaleźć w [przewodniku krok po kroku](how-to-debug-batch-predictions.md).
 
 Wskazówki dotyczące debugowania i rozwiązywania problemów z potokami znajdują się w [przewodniku krok po kroku](how-to-debug-pipelines.md).
 

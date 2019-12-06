@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 2bfa65117bf31ad9cb9917fd8a643a0358e02be0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384220"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851710"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Samouczek: synchronizacja danych z SQL Database Edge do usługi Azure Blob Storage za pomocą Azure Data Factory
 
@@ -177,7 +177,7 @@ Utwórz fabrykę danych, wykonując instrukcje podane w [tym samouczku](../data-
 
 27. Przejdź do karty **połączenie** w SinkDataset i wykonaj następujące kroki:
 
-    1. W obszarze **ścieżka pliku**wpisz *asdedatasync/incrementalcopy*, gdzie *adftutorial* jest nazwą kontenera obiektów blob, a *incrementalcopy* to nazwa folderu. Utwórz kontener, jeśli nie istnieje, lub użyj nazwy istniejącej. Azure Data Factory automatycznie tworzy folder wyjściowy *incrementalcopy* , jeśli nie istnieje. Można również za pomocą przycisku **Przeglądaj** pola **Ścieżka pliku** przejść do folderu w kontenerze obiektów blob.
+    1. W obszarze **ścieżka pliku**wpisz *asdedatasync/incrementalcopy*, gdzie *asdedatasync* jest nazwą kontenera obiektów blob, a *incrementalcopy* to nazwa folderu. Utwórz kontener, jeśli nie istnieje, lub użyj nazwy istniejącej. Azure Data Factory automatycznie tworzy folder wyjściowy *incrementalcopy* , jeśli nie istnieje. Można również za pomocą przycisku **Przeglądaj** pola **Ścieżka pliku** przejść do folderu w kontenerze obiektów blob.
 
     2. W polu część **pliku** **ścieżka pliku**wybierz pozycję **Dodaj zawartość dynamiczną [Alt + P]** , a następnie wprowadź **@CONCAT("przyrostowy", Potok (). RunId, ". txt")** w otwartym oknie. Wybierz pozycję **Finish** (Zakończ). Nazwa pliku jest generowana dynamicznie przez wyrażenie. Każde uruchomienie potoku ma unikatowy identyfikator. Działanie kopiowania używa identyfikatora uruchomienia do wygenerowania nazwy pliku.
 
@@ -197,7 +197,7 @@ Utwórz fabrykę danych, wykonując instrukcje podane w [tym samouczku](../data-
 
     |Nazwa|Typ|Wartość|
     |-----|----|-----|
-    |LastModifiedtime|DateTime|@ {Activity ("NewWaterMark"). Output. firstRow. NewWatermarkvalue}|
+    |LastModifiedtime|Data i godzina|@ {Activity ("NewWaterMark"). Output. firstRow. NewWatermarkvalue}|
     |TableName|Ciąg|@ {Activity ("OldWaterMark"). Output. firstRow. TableName}|
 
 33. Aby sprawdzić poprawność ustawień potoku, wybierz pozycję **Weryfikuj** na pasku narzędzi. Potwierdź, że weryfikacja nie zwróciła błędów. Aby zamknąć okno **raport weryfikacji potoku** , wybierz pozycję **>>** .

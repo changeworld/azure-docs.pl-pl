@@ -1,18 +1,18 @@
 ---
 title: 'Samouczek Azure Cosmos DB: samouczek dotyczący dystrybucji globalnej dla interfejsu API SQL'
-description: 'Samouczek: informacje o konfigurowaniu Azure Cosmos DB globalnej dystrybucji przy użyciu interfejsu API SQL.'
+description: 'Samouczek: informacje o konfigurowaniu Azure Cosmos DB globalnej dystrybucji przy użyciu interfejsu API SQL z platformą .NET, Java i Python oraz różnymi innymi zestawami SDK'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7c7ea4ca8fc28ef47e60d5010c804223c3cfab3b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 541fcdd966ec1e0443fa6211d894bab3ed965f93
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173834"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870330"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Samouczek: Konfigurowanie globalnej dystrybucji Azure Cosmos DB przy użyciu interfejsu API SQL
 
@@ -44,7 +44,7 @@ Aplikacja może zweryfikować bieżący punkt końcowy zapisu i punkt końcowy o
 
 Jeśli właściwość PreferredLocations nie została określona, wszystkie żądania są obsługiwane z bieżącego regionu zapisu.
 
-## <a name="net-sdk"></a>Zestaw SDK .NET
+## <a name="net-sdk"></a>Zestaw SDK dla platformy .NET
 Zestawu SDK można używać bez konieczności wprowadzania jakichkolwiek zmian kodu. W takim przypadku zestaw SDK automatycznie kieruje operacje odczytu i zapisu do bieżącego regionu zapisu.
 
 W wersji 1.8 (i nowszych) zestawu SDK .NET parametr ConnectionPolicy dla konstruktora DocumentClient ma właściwość o nazwie Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Jest to właściwość typu Collection `<string>`, która powinna zawierać listę nazw regionów. Wartości ciągu są formatowane według kolumny Nazwa regionu na stronie [regiony platformy Azure][regions] , bez spacji przed ani po pierwszym i ostatnim znakiem.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085264"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875445"
 ---
 Udostępniona Galeria obrazów to usługa, która ułatwia tworzenie struktury i organizacji na całym zarządzanym obrazie. Udostępnione Galerie obrazów zapewniają następujące:
 
@@ -34,7 +34,7 @@ Funkcja galerii obrazów udostępnionych ma wiele typów zasobów:
 | Zasób | Opis|
 |----------|------------|
 | **Obraz zarządzany** | Podstawowy obraz, który może być używany samodzielnie lub do tworzenia **wersji obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie [uogólnionych](#generalized-and-specialized-images) maszyn wirtualnych. Obraz zarządzany jest specjalnym typem dysku VHD, który może służyć do tworzenia wielu maszyn wirtualnych i może być teraz używany do utworzenia wersji obrazu udostępnionego. |
-| **Zdjęcie** | Kopia dysku VHD, której można użyć do udostępnienia **wersji obrazu**. Migawki mogą być pobierane z [wyspecjalizowanej](#generalized-and-specialized-images) maszyny wirtualnej (która nie została uogólniona), a następnie używana samodzielnie lub z migawkami dysków danych, aby utworzyć wyspecjalizowaną wersję obrazu.
+| **Migawka** | Kopia dysku VHD, której można użyć do udostępnienia **wersji obrazu**. Migawki mogą być pobierane z [wyspecjalizowanej](#generalized-and-specialized-images) maszyny wirtualnej (która nie została uogólniona), a następnie używana samodzielnie lub z migawkami dysków danych, aby utworzyć wyspecjalizowaną wersję obrazu.
 | **Galeria obrazów** | Podobnie jak w przypadku portalu Azure Marketplace, **Galeria obrazów** jest repozytorium do zarządzania i udostępniania obrazów, ale ty kontrolujesz, kto ma dostęp. |
 | **Definicja obrazu** | Obrazy są zdefiniowane w galerii i zawierają informacje o obrazie i wymaganiach dotyczących używania go w organizacji. Można dołączyć informacje takie jak uogólnione lub wyspecjalizowane obrazy, system operacyjny, minimalne i maksymalne wymagania dotyczące pamięci oraz informacje o wersji. Jest to definicja typu obrazu. |
 | **Wersja obrazu** | **Wersja obrazu** jest używana do tworzenia maszyny wirtualnej w przypadku korzystania z galerii. Dla danego środowiska można mieć wiele wersji obrazu. Podobnie jak w przypadku obrazu zarządzanego, w przypadku tworzenia maszyny wirtualnej przy użyciu **wersji obrazu** wersja obrazu jest używana do tworzenia nowych dysków dla maszyny wirtualnej. Wersje obrazów można wielokrotnie używać. |
@@ -49,11 +49,11 @@ Definicje obrazów są logiczną grupą dla wersji obrazu. Definicja obrazu zawi
 
 Istnieją trzy parametry dla każdej definicji obrazu, które są używane w połączeniu **wydawcy**, **oferty** i **jednostki SKU**. Są one używane do znajdowania konkretnej definicji obrazu. Możesz mieć wersje obrazów, które współdzielą jeden lub dwa, ale nie wszystkie trzy wartości.  Na przykład poniżej przedstawiono trzy definicje obrazów i ich wartości:
 
-|Definicja obrazu|Wydawca|Oferta|SKU|
+|Definicja obrazu|Publisher|Oferta|Jednostka SKU|
 |---|---|---|---|
-|myImage1|Contoso|Finanse|Danych|
-|myImage2|Contoso|Finanse|Frontonu|
-|myImage3|Testowanie|Finanse|Frontonu|
+|myImage1|Contoso|Finanse|Zaplecze|
+|myImage2|Contoso|Finanse|Fronton|
+|myImage3|Testowanie|Finanse|Fronton|
 
 Wszystkie trzy z nich mają unikatowe zestawy wartości. Ten format jest podobny do tego, jak obecnie można określić wydawcy, oferty i jednostki SKU dla [obrazów portalu Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) w Azure PowerShell, aby uzyskać najnowszą wersję obrazu portalu Marketplace. Każda definicja obrazu musi mieć unikatowy zestaw tych wartości.
 
@@ -96,13 +96,13 @@ Regiony źródłowe są wymienione w poniższej tabeli. Wszystkie regiony public
 | Australia Środkowa     | Chiny Wschodnie        | Indie Południowe        | Europa Zachodnia        |
 | Australia Środkowa 2   | Chiny Wschodnie 2      | Azja Południowo-Wschodnia     | Południowe Zjednoczone Królestwo           |
 | Australia Wschodnia        | Chiny Północne       | Japonia Wschodnia         | Zachodnie Zjednoczone Królestwo            |
-| Australia Południowo-Wschodnia   | Chiny Północne 2     | Japonia Zachodnia         | US DoD — środkowe stany     |
-| Brazylia Południowa          | Azja Wschodnia         | Korea Środkowa      | US DoD — wschodnie stany        |
-| Kanada Środkowa        | Wschodnie stany USA           | Korea Południowa        | Administracja USA — Arizona     |
-| Kanada Wschodnia           | Wschodnie stany USA 2         | Środkowo-północne stany USA   | Administracja USA — Teksas       |
-| Indie Środkowe         | Wschodnie stany USA 2 — EUAP    | Europa Północna       | Administracja USA — Wirginia    |
-| Środkowe stany USA            | Francja Środkowa    | Środkowo-południowe stany USA   | Indie Zachodnie         |
-| Środkowe stany USA — EUAP       | Francja Południowa      | Środkowo-zachodnie stany USA    | Zachodnie stany USA            |
+| Australia Południowo-Wschodnia   | Chiny Północne 2     | Japonia Zachodnia         | US DoD (region środkowy)     |
+| Brazylia Południowa          | Azja Wschodnia         | Korea Środkowa      | US DoD (region wschodni)        |
+| Kanada Środkowa        | Wschodnie stany USA           | Korea Południowa        | US Gov Arizona     |
+| Kanada Wschodnia           | Wschodnie stany USA 2         | Północno-środkowe stany USA   | US Gov Teksas       |
+| Indie Środkowe         | Wschodnie stany USA 2 — EUAP    | Europa Północna       | US Gov Wirginia    |
+| Środkowe stany USA            | Francja Środkowa    | Południowo-środkowe stany USA   | Indie Zachodnie         |
+| Środkowe stany USA — EUAP       | Francja Południowa      | Zachodnio-środkowe stany USA    | Zachodnie stany USA            |
 |                       |                   |                    | Zachodnie stany USA 2          |
 
 
@@ -113,6 +113,7 @@ Istnieją limity dla każdej subskrypcji dotyczące wdrażania zasobów przy uż
 - 100 udostępnione Galerie obrazów na subskrypcję na region
 - 1 000 definicji obrazów na subskrypcję na region
 - 10 000 wersje obrazów na subskrypcję na region
+- Dowolny dysk dołączony do obrazu musi być mniejszy lub równy 1 TB
 
 Aby uzyskać więcej informacji, zobacz [Sprawdzanie użycia zasobów względem limitów](https://docs.microsoft.com/azure/networking/check-usage-against-limits) na potrzeby przykładów sprawdzania bieżącego użycia.
  
@@ -143,7 +144,7 @@ Regiony, w których jest replikowana wersja udostępnionego obrazu, mogą zosta�
 
 ![Ilustracja przedstawiająca sposób replikowania obrazów](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Dostęp
 
 Jako Galeria obrazów udostępnionych, definicja obrazu i wersja obrazu są wszystkie zasoby, które można udostępniać przy użyciu wbudowanych kontrolek kontroli RBAC platformy Azure. Za pomocą RBAC można udostępniać te zasoby innym użytkownikom, podmiotom usługi i grupom. Możesz nawet udostępnić dostęp osobom spoza dzierżawy, w ramach której zostały utworzone. Gdy użytkownik ma dostęp do udostępnionej wersji obrazu, może wdrożyć maszynę wirtualną lub zestaw skalowania maszyn wirtualnych.  Oto macierz udostępniania, która pomaga zrozumieć, do czego użytkownik uzyskuje dostęp:
 

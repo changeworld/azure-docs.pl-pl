@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: fad850da6a7fccb6b97b86532a8d246049942a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014657"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872413"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Samouczek: Tworzenie środowiska usługi Azure Time Series Insights
 
@@ -40,7 +40,7 @@ Ten samouczek przeprowadzi Cię przez proces tworzenia środowiska Azure Time Se
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Środowisko Time Series Insights polega na zbieraniu i przechowywaniu danych urządzeń. Po zapisaniu można używać [eksploratora Azure Time Series Insights](time-series-quickstart.md) i [interfejsu API zapytania Time Series Insights](/rest/api/time-series-insights/ga-query-api) do wykonywania zapytań i analizowania danych.
 
@@ -55,11 +55,11 @@ Ten samouczek używa również [akceleratora rozwiązania IoT](https://www.azure
 
 Najpierw utwórz rozwiązanie do symulacji urządzenia, które generuje dane testowe, aby wypełnić środowisko Time Series Insights.
 
-1. W osobnym oknie lub karcie przejdź do [azureiotsolutions.com](https://www.azureiotsolutions.com). Zaloguj się przy użyciu tego samego konta subskrypcji platformy Azure i wybierz akcelerator **symulacji urządzenia** . Wybierz pozycję **Wypróbuj teraz**.
+1. W osobnym oknie lub karcie przejdź do [azureiotsolutions.com](https://www.azureiotsolutions.com). Zaloguj się przy użyciu tego samego konta subskrypcji platformy Azure i wybierz akcelerator **symulacji urządzenia** .
 
-   [![uruchomić akceleratora symulacji urządzenia](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+   [![uruchomić akceleratora symulacji urządzenia](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png#lightbox)
 
-1. Wprowadź parametry wymagane na stronie **Utwórz rozwiązanie symulacji urządzenia** .
+1.  Wybierz pozycję **Wypróbuj teraz**. Następnie wprowadź wymagane parametry na stronie **Tworzenie rozwiązania symulacji urządzenia** .
 
    Parametr|Opis
    ---|---
@@ -70,18 +70,18 @@ Najpierw utwórz rozwiązanie do symulacji urządzenia, które generuje dane tes
 
    Po zakończeniu wybierz pozycję **Utwórz** , aby udostępnić zasoby platformy Azure rozwiązania. Ukończenie tego procesu może potrwać do 20 minut.
 
-   [![aprowizacji rozwiązania do symulacji urządzeń](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+   [![aprowizacji rozwiązania do symulacji urządzeń](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Po zakończeniu aprowizacji tekst powyżej nowego rozwiązania zostanie zmieniony z **aprowizacji** na **gotowe**.
+1. Po zakończeniu aprowizacji zobaczysz dwie aktualizacje zawierające stan wdrożenia przeniesiono z **aprowizacji** na **gotowe**. 
 
    >[!IMPORTANT]
-   > Nie wybieraj jeszcze opcji **Uruchom** ! Pozostaw Tę stronę sieci Web otwartą, ponieważ wrócisz do niej później.
+   > Nie wprowadzaj jeszcze akceleratora rozwiązania. Pozostaw Tę stronę sieci Web otwartą, ponieważ wrócisz do niej później.
 
-   [Zakończono Inicjowanie obsługi rozwiązania symulacji urządzenia ![](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+   [Zakończono Inicjowanie obsługi rozwiązania symulacji urządzenia ![](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
 1. Teraz Sprawdź nowo utworzone zasoby w Azure Portal. Na stronie **grupy zasobów** Zwróć uwagę, że nowa grupa zasobów została utworzona przy użyciu **nazwy rozwiązania** podanej w ostatnim kroku. Zanotuj zasoby, które zostały utworzone dla symulacji urządzenia.
 
-   [zasoby symulacji urządzenia ![](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
+   [zasoby symulacji urządzenia ![](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>Tworzenie środowiska
 
@@ -91,7 +91,7 @@ Następnie Utwórz środowisko Time Series Insights w ramach subskrypcji platfor
 1. W menu u góry po lewej stronie wybierz pozycję **+ Utwórz zasób**. 
 1. Wybierz kategorię **Internet rzeczy**, a następnie wybierz pozycję **Time Series Insights**. 
 
-   [![Wybierz opcję Tworzenie środowiska usługi Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png#lightbox)
+   [![Wybierz opcję Tworzenie środowiska usługi Time Series Insights](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png)](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png#lightbox)
 
 1. Na stronie **środowisko Time Series Insights** wprowadź wymagane parametry.
 
@@ -106,17 +106,17 @@ Następnie Utwórz środowisko Time Series Insights w ramach subskrypcji platfor
 
    Po zakończeniu wybierz pozycję **Dalej: Źródło zdarzenia** , aby przejść do następnego kroku.
 
-   [![utworzyć zasobu środowiska Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+   [![utworzyć zasobu środowiska Time Series Insights](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
 
 1. Teraz podłącz środowisko Time Series Insights do centrum IoT Hub utworzonego przez Akcelerator rozwiązania. Ustaw **opcję Wybierz Hub** do `Select existing`. Następnie wybierz pozycję IoT Hub utworzoną przez Akcelerator rozwiązania, gdy zostanie ustawiona **nazwa IoT Hub**.
 
-   [![połączyć środowisko Time Series Insights z utworzonym Centrum IoT Hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+   [![połączyć środowisko Time Series Insights z utworzonym Centrum IoT Hub](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
 
    Na koniec wybierz pozycję **Przegląd + Utwórz**.
 
 1. Sprawdź panel **powiadomień** , aby monitorować ukończenie wdrożenia. 
 
-   [wdrożenie środowiska Time Series Insights ![zakończyło się pomyślnie](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
+   [wdrożenie środowiska Time Series Insights ![zakończyło się pomyślnie](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png#lightbox)
 
 ## <a name="run-device-simulation"></a>Uruchamianie symulacji urządzenia
 
@@ -126,19 +126,19 @@ Wraz z Centrum IoT jest generowana Azure App Service aplikacja sieci Web służ�
 
 1. Wróć do swojego [Pulpitu nawigacyjnego akceleratorów rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard). Zaloguj się ponownie, w razie potrzeby, przy użyciu tego samego konta platformy Azure, którego używasz w tym samouczku. Wybierz swoje urządzenie, a następnie **Przejdź do akceleratora rozwiązania** , aby uruchomić wdrożone rozwiązanie.
 
-     [Pulpit nawigacyjny akceleratorów rozwiązań ![](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
+   [Pulpit nawigacyjny akceleratorów rozwiązań ![](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
-1. Aplikacja sieci Web symulacji urządzenia rozpoczyna się od wyświetlenia monitu o przyznanie aplikacji sieci Web uprawnienia "Logowanie użytkownika i odczytanie Twojego profilu". To uprawnienie umożliwia aplikacji pobranie informacji o profilu użytkownika niezbędnych do obsługi aplikacji.
+1. Aplikacja sieci Web symulacji urządzenia rozpoczyna się od wyświetlenia monitu o przyznanie aplikacji sieci Web **i zalogowanie się i odczytanie** uprawnienia do profilu. To uprawnienie umożliwia aplikacji pobranie informacji o profilu użytkownika niezbędnych do obsługi aplikacji.
 
-     [wyrażanie zgody aplikacji sieci Web ![symulacji urządzenia](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
+   [wyrażanie zgody aplikacji sieci Web ![symulacji urządzenia](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
-1. Po załadowaniu strony **konfiguracji symulacji** wprowadź wymagane parametry.
+1. Wybierz pozycję **+ Nowa symulacja**. Po załadowaniu strony **konfiguracji symulacji** wprowadź wymagane parametry.
 
    Parametr|Opis
    ---|---
    **Docelowa usługa IoT Hub** | Wybierz opcję **Użyj wstępnie zainicjowanej IoT Hub**.
    **Model urządzenia** | Wybierz pozycję **Chiller** (Chłodnia).
-   **Liczba urządzeń**  | Wprowadź `1000` w obszarze **Kwota**.
+   **Liczba urządzeń**  | Wprowadź `10` w obszarze **Kwota**.
    **Częstotliwość telemetrii** | Wprowadź `10` sekund.
    **Czas trwania symulacji** | Wybierz pozycję **Zakończ w:** i wprowadź `5` min.
 

@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: 04cb91a62536c493240998270b5bd8d29fd331ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230628"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849840"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Samouczek: Tworzenie funkcji w języku Java przy użyciu wyzwalacza centrum zdarzeń i powiązania danych wyjściowych Azure Cosmos DB
 
@@ -36,8 +36,6 @@ Aby ukończyć ten samouczek, musisz mieć zainstalowane następujące elementy:
 
 > [!IMPORTANT]
 > Aby ukończyć ten samouczek, zmienna środowiskowa `JAVA_HOME` musi być ustawiona na lokalizację instalacji JDK.
-
-Jeśli wolisz użyć kodu dla tego samouczka bezpośrednio, zobacz repozytorium przykładu [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -73,7 +71,7 @@ LOCATION=<value>
 
 W pozostałej części tego samouczka są używane te zmienne. Należy pamiętać, że te zmienne utrzymują się tylko w czasie trwania bieżącego interfejsu wiersza polecenia platformy Azure lub sesji Cloud Shell. Musisz ponownie uruchomić te polecenia, jeśli używasz innego lokalnego okna terminalu lub sesji Cloud Shell przekroczyć limit czasu.
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Platforma Azure używa grup zasobów do zbierania wszystkich powiązanych zasobów na koncie. Dzięki temu można je wyświetlić jako jednostkę i usunąć je za pomocą jednego polecenia, gdy skończysz z nimi pracować.
 

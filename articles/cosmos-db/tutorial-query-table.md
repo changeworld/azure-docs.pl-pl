@@ -1,6 +1,6 @@
 ---
 title: Jak wykonywać zapytania względem danych tabeli w usłudze Azure Cosmos DB?
-description: Dowiedz się, jak wykonywać zapytania względem danych tabeli w usłudze Azure Cosmos DB
+description: Dowiedz się, jak wykonywać zapytania dotyczące danych przechowywanych na koncie Azure Cosmos DB interfejs API tabel przy użyciu filtrów OData i zapytań LINQ
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 161b424c5c89d34eaa55181c0d6ca0515b376168
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7dc2c00f273f327755dab52a4bda02840d911f96
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978769"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869922"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Samouczek: wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API tabel
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API tabel
 
 [Interfejs API tabel](table-introduction.md) usługi Azure Cosmos DB obsługuje zapytania OData i [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) dla danych klucz-wartość (tabeli).  
 
@@ -26,7 +26,7 @@ W tym artykule opisano następujące zadania:
 
 Zapytania w tym artykule korzystają z następującej przykładowej tabeli `People`:
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | Adres e-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -50,7 +50,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **Results**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | Adres e-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -76,7 +76,7 @@ Aby uzyskać więcej informacji na temat sposobu tworzenia wyrażenia filtru dla
 
 **Results**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | Adres e-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
@@ -98,7 +98,7 @@ TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
 await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wykonano następujące czynności:
 

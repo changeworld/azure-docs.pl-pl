@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ada64d6bbce4fe7401bbfc078ba0903a28f06971
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795992"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875549"
 ---
 ### <a name="regions"></a>Które regiony są dostępne?
 
@@ -59,3 +59,7 @@ Usługa Azure bastionu obecnie obsługuje układ klawiatury en-us-QWERTY wewnąt
 
 Nie. UDR nie jest obsługiwana w podsieci bastionu platformy Azure.
 W przypadku scenariuszy obejmujących zarówno usługę Azure bastionu, jak i zaporę sieci wirtualnej (urządzenie WUS) w tej samej sieci wirtualnej, nie trzeba wymuszać ruchu z podsieci bastionu platformy Azure do zapory platformy Azure, ponieważ komunikacja między usługą Azure bastionu i maszynami wirtualnymi jest prywatna. Aby uzyskać więcej informacji, zobacz [Uzyskiwanie dostępu do maszyn wirtualnych za zaporą platformy Azure za pomocą bastionu](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
+
+### <a name="filetransfer"></a>Czy transfer plików jest obsługiwany przez sesję RDP usługi Azure bastionu?
+
+Pracujemy nad dodaniem nowych funkcji. Obecnie transfer plików nie jest obsługiwany, ale jest częścią naszego planu. Możesz bezpłatnie podzielić się swoją opinią na temat nowych funkcji na [stronie opinii o usłudze Azure bastionu](https://feedback.azure.com/forums/217313-networking?category_id=367303).

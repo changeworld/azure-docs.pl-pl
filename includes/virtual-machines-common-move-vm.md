@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 61990e785741799fcbcd4e6df965953bd9944f4d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c3f485765e0bbbb91de0938261b587c27bf414bf
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183203"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875557"
 ---
-## <a name="use-the-azure-portal-to-move-a-vm-to-a-different-subscription"></a>Przenoszenie maszyny Wirtualnej do innej subskrypcji za pomocą witryny Azure portal
-Można przenieść Maszynę wirtualną i skojarzone z nią zasoby do innej subskrypcji przy użyciu witryny Azure portal.
+## <a name="use-the-azure-portal-to-move-a-vm-to-a-different-subscription"></a>Użyj Azure Portal, aby przenieść maszynę wirtualną do innej subskrypcji
+Za pomocą Azure Portal można przenieść maszynę wirtualną i skojarzone z nią zasoby do innej subskrypcji.
 
-1. Otwórz [portal Azure](https://portal.azure.com).
-2. Kliknij przycisk **Przeglądaj** > **grup zasobów** i wybierz grupę zasobów zawierającą maszyny Wirtualnej, który chcesz przenieść.
-3. W górnej części strony dla grupy zasobów wybierz **przenieść** , a następnie wybierz **przenieść do innej subskrypcji**. **Przenoszenia zasobów** zostanie otwarta strona.
-4. Zaznacz wszystkie zasoby do przeniesienia. W większości przypadków należy przenieść wszystkie powiązane zasoby, które są wymienione.
-5. Wybierz **subskrypcji** miejscu maszyny Wirtualnej do przeniesienia.
-6. Wybierz istniejącą **grupy zasobów**, lub wprowadź nazwę, aby utworzyć nową grupę zasobów.
-7. Jeśli jesteś gotowy, wybierz opcję, że rozumiesz nowych identyfikatorów zasobów zostanie utworzona i nowych identyfikatorów będzie musiał być używane z maszyny Wirtualnej, po przeniesieniu, a następnie wybierz **OK**.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarządzać grupą zasobów zawierającą maszynę wirtualną, która ma zostać przeniesiona. Wyszukaj i wybierz pozycję **grupy zasobów**.
+2. Wybierz grupę zasobów zawierającą maszynę wirtualną, którą chcesz przenieść.
+3. W górnej części strony grupy zasobów wybierz pozycję **Przenieś** , a następnie wybierz pozycję **Przenieś do innej subskrypcji**. Zostanie otwarta strona **przenoszenie zasobów** .
+4. Wybierz wszystkie zasoby do przeniesienia. W większości przypadków należy przenieść wszystkie powiązane zasoby znajdujące się na liście.
+5. Wybierz **subskrypcję** , w której chcesz przenieść maszynę wirtualną.
+6. Wybierz istniejącą **grupę zasobów**lub wprowadź nazwę, aby utworzyć nową grupę zasobów.
+7. Gdy skończysz, wybierz, czy chcesz zrozumieć, że nowe identyfikatory zasobów zostaną utworzone i że nowe identyfikatory będą musiały być używane z maszyną wirtualną po jej przeniesieniu, a następnie wybierz przycisk **OK**.
 
-## <a name="use-the-azure-portal-to-move-a-vm-to-another-resource-group"></a>Przenoszenie maszyny Wirtualnej do innej grupy zasobów za pomocą witryny Azure portal
-Można przenieść Maszynę wirtualną i skojarzone z nią zasoby do innej grupy zasobów za pomocą witryny Azure portal.
+## <a name="use-the-azure-portal-to-move-a-vm-to-another-resource-group"></a>Przenoszenie maszyny wirtualnej do innej grupy zasobów przy użyciu Azure Portal
+Za pomocą Azure Portal można przenieść maszynę wirtualną i skojarzone z nią zasoby do innej grupy zasobów.
 
-1. Otwórz [portal Azure](https://portal.azure.com).
-2. Kliknij przycisk **Przeglądaj** > **maszyn wirtualnych** i wybierz maszynę Wirtualną, czy chcesz przenieść na liście.
-3. Na stronie dla maszyny Wirtualnej, obok etykiety dla grupy zasobów wybierz **zmiany**. **Przenoszenia zasobów** zostanie otwarta strona.
-4. Zaznacz wszystkie zasoby do przeniesienia. W większości przypadków należy przenieść wszystkie powiązane zasoby, które są wymienione.
-5. Wybierz istniejącą **grupy zasobów**, lub wprowadź nazwę, aby utworzyć nową grupę zasobów.
-6. Jeśli jesteś gotowy, wybierz opcję, że rozumiesz nowych identyfikatorów zasobów zostanie utworzona i nowych identyfikatorów będzie musiał być używane z maszyny Wirtualnej, po przeniesieniu, a następnie wybierz **OK**.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarządzać grupą zasobów zawierającą maszynę wirtualną, która ma zostać przeniesiona. Wyszukaj i wybierz pozycję **grupy zasobów**.
+2. Wybierz grupę zasobów zawierającą maszynę wirtualną, którą chcesz przenieść.
+3. W górnej części strony grupy zasobów wybierz pozycję **Przenieś** , a następnie wybierz pozycję **Przenieś do innej grupy zasobów**. Zostanie otwarta strona **przenoszenie zasobów** .
+4. Wybierz wszystkie zasoby do przeniesienia. W większości przypadków należy przenieść wszystkie powiązane zasoby znajdujące się na liście.
+5. Wybierz istniejącą **grupę zasobów**lub wprowadź nazwę, aby utworzyć nową grupę zasobów.
+6. Gdy skończysz, wybierz, czy chcesz zrozumieć, że nowe identyfikatory zasobów zostaną utworzone i że nowe identyfikatory będą musiały być używane z maszyną wirtualną po jej przeniesieniu, a następnie wybierz przycisk **OK**.
 

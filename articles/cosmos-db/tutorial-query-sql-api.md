@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: jak wykonywać zapytania przy użyciu języka SQL w Azure Cosmos DB?'
-description: 'Samouczek: Naucz się wysyłać zapytania przy użyciu języka SQL w Azure Cosmos DB'
+description: 'Samouczek: informacje na temat wykonywania zapytań za pomocą zapytań SQL w Azure Cosmos DB przy użyciu zapytania THW plac zabaw'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 295b4168d858238a94e737b1abc3a38e2419370f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720745"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870075"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API SQL
 

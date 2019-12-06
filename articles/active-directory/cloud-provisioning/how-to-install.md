@@ -1,5 +1,5 @@
 ---
-title: Instalowanie Azure AD Connect agenta aprowizacji
+title: Instalowanie Azure AD Connect agenta aprowizacji w chmurze
 description: W tym temacie opisano krok po kroku dotyczące instalowania agenta aprowizacji.
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf479d4962f6d7aa9a0ba43b48f99bd67566fb6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 11e3b2a113d46ff3d8799927f56fa66601c94ed5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794486"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846236"
 ---
-# <a name="install-azure-ad-connect-provisioning-agent"></a>Zainstaluj Azure AD Connect agenta aprowizacji
+# <a name="install-azure-ad-connect-cloud-provisioning-agent"></a>Zainstaluj Azure AD Connect agenta aprowizacji w chmurze
 Ten dokument przeprowadzi Cię przez proces instalacji agenta aprowizacji Azure AD Connect i sposób jego wstępnego skonfigurowania w Azure Portal.
 
 >[!IMPORTANT]
@@ -26,7 +26,7 @@ Ten dokument przeprowadzi Cię przez proces instalacji agenta aprowizacji Azure 
 
 Instalowanie i Konfigurowanie Azure AD Connect aprowizacji jest realizowane w następujących krokach:
     
-- [Zainstaluj agenta](#install-the-agent)
+- [Instalowanie agenta](#install-the-agent)
 - [Weryfikuj instalację agenta](#verify-agent-installation)
 
 

@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 01/31/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125174"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846355"
 ---
-# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Samouczek: Wykrywanie zmian Multi-Factor Authentication i haseł przy użyciu wykrywania ryzyka
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Samouczek: używanie wykrywania ryzyka do wyzwalania zmian Multi-Factor Authentication i haseł
 
 W tym samouczku włączysz funkcje usługi Azure Active Directory (Azure AD) Identity Protection, funkcję usługi Azure AD w warstwie Premium P2, która jest więcej niż tylko narzędziem do monitorowania i raportowania. Aby chronić tożsamości w organizacji, można skonfigurować zasady oparte na ryzykach, które reagują automatycznie na ryzykowne zachowania. Te zasady mogą automatycznie stosować blokadę lub inicjować rozwiązanie problemu, w tym wymaganie zmiany hasła lub wymuszanie uwierzytelniania wieloskładnikowego.
 
@@ -54,12 +54,12 @@ Włączanie zasad opartych na ryzykach jest dość proste. Poniższe kroki przep
 
 Usługa Azure AD Identity Protection zawiera domyślne zasady, które ułatwiają rejestrowanie użytkowników w celu uwierzytelniania wieloskładnikowego oraz określanie bieżącego stanu rejestracji. Włączenie tych zasad nie powoduje, że od użytkowników będzie wymagane uwierzytelnianie wieloskładnikowe. Zostaną oni jedynie poproszeni o wstępną rejestrację.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Kliknij pozycję **Wszystkie usługi**, a następnie przejdź do usługi **Azure AD Identity Protection**.
 1. Kliknij pozycję **Rejestracja w usłudze MFA**.
 1. Dla opcji Wymuś zasady ustaw wartość **Włączone**.
    1. Ustawienie tych zasad spowoduje, że wszyscy użytkownicy będą musieli zarejestrować metody w celu przygotowania ich do używania w usłudze Multi-Factor Authentication.
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
    ![Wymagaj od użytkowników zarejestrowania się na potrzeby uwierzytelniania wieloskładnikowego podczas logowania](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
@@ -73,7 +73,7 @@ Firma Microsoft współpracuje z naukowcami, organami ścigania, różnymi zespo
 1. W obszarze **Dostęp** wybierz pozycję **Zezwól na dostęp**, a następnie wybierz pozycję **Wymagaj zmiany hasła**.
 1. Kliknij pozycję „Wybierz”
 1. Dla opcji Wymuś zasady ustaw wartość **Włączone**.
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij pozycję **Zapisz**
 
 ### <a name="enable-risk-based-multi-factor-authentication"></a>Włączanie uwierzytelniania wieloskładnikowego opartego na ryzykach
 
@@ -85,7 +85,7 @@ Większości użytkowników dotyczy zachowanie normalne, które można śledzić
 1. W obszarze **Dostęp** wybierz pozycję **Zezwól na dostęp**, a następnie wybierz pozycję **Wymagaj uwierzytelniania wieloskładnikowego**.
 1. Kliknij pozycję „Wybierz”
 1. Dla opcji Wymuś zasady ustaw wartość **Włączone**.
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij pozycję **Zapisz**
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

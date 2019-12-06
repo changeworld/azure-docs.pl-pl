@@ -1,15 +1,15 @@
 ---
 title: Użyj Data Manager łańcucha bloków, aby zaktualizować Azure Cosmos DB — usługa Azure łańcucha bloków Service
 description: Wysyłanie danych łańcucha bloków do Azure Cosmos DB za pomocą łańcucha bloków Data Manager dla usługi Azure łańcucha bloków
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 497652f91d46592212a17a0a22832c02a696df62
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326258"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849977"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Samouczek: wysyłanie danych do Azure Cosmos DB za pomocą łańcucha bloków Data Manager
 
@@ -41,7 +41,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 Wystąpienie Data Manager łańcucha bloków nawiązuje połączenie i monitoruje węzeł transakcji usługi Azure łańcucha bloków. Wystąpienie przechwytuje wszystkie nieprzetworzone i nieprzetworzone dane transakcji z węzła transakcji. Połączenie wychodzące wysyła dane łańcucha bloków do Azure Event Grid. Podczas tworzenia wystąpienia można skonfigurować pojedyncze połączenie wychodzące.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków, który został utworzony w ramach wymagania wstępnego [przewodnika Szybki Start: Tworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal](create-member.md). Wybierz pozycję **łańcucha bloków Data Manager**.
 1. Wybierz pozycję **Dodaj**.
 
@@ -115,7 +115,7 @@ W poniższym przykładzie przedstawiono pliki *ABI. JSON* i *unformating. JSON* 
 1. Wybierz kontener, a następnie wybierz pozycję **Przekaż**.
 1. Wybierz pliki JSON, które zostały utworzone w sekcji [Pobierz kontrakt ABI i kod bajtowy](#get-contract-abi-and-bytecode) .
 
-    ![Przekaż obiekt BLOB](./media/data-manager-cosmosdb/upload-blobs.png)
+    ![Przekazywanie obiektu blob](./media/data-manager-cosmosdb/upload-blobs.png)
 
     Wybierz pozycję **Przekaż**.
 

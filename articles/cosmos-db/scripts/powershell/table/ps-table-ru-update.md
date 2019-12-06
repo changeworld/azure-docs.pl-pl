@@ -1,18 +1,18 @@
 ---
 title: Azure PowerShell skryptu — Azure Cosmos DB aktualizacji RU/s dla interfejs API tabel
-description: Azure PowerShell skryptu — Azure Cosmos DB aktualizacji RU/s dla interfejs API tabel
+description: Dowiedz się, jak za pomocą skryptu programu PowerShell zaktualizować przepływność dla bazy danych lub kontenera na koncie Azure Cosmos DB interfejs API tabel
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: c9a210636dc277eec106248b13ea42ec58bf15b5
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 8188089f216fa33ba958cf670bb321816387f5c9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178674"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871878"
 ---
 # <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Aktualizowanie RU/s tabeli dla Azure Cosmos DB-interfejs API tabel
 
