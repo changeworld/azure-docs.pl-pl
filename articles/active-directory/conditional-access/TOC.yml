@@ -64,8 +64,6 @@
           href: howto-conditional-access-policy-compliant-device.md
     - name: Blokowanie starszego uwierzytelniania
       href: block-legacy-authentication.md
-    - name: Dostęp warunkowy na potrzeby rejestracji uwierzytelniania wieloskładnikowego
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Wymaganie zatwierdzonych aplikacji klienckich
       href: app-based-conditional-access.md
     - name: Wymaganie zasad ochrony aplikacji

@@ -24,8 +24,6 @@
           href: migrate-from-hub-spoke-topology.md
         - name: Architektura globalnej sieci tranzytowej
           href: virtual-wan-global-transit-network-architecture.md
-        - name: Płaszczyzna kontroli usługi Office 365 w wirtualnej sieci WAN
-          href: virtual-wan-office365-overview.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Łączenie bramy sieci wirtualnej z usługą Virtual WAN

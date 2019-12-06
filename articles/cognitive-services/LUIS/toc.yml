@@ -60,9 +60,6 @@
         - name: Grupowanie i wyodrębnianie powiązanych danych za pomocą jednostek złożonych
           href: luis-tutorial-composite-entity.md
           displayName: roles
-        - name: Uzyskiwanie nazw za pomocą prostych jednostek
-          href: luis-quickstart-primary-and-secondary-data.md
-          displayName: roles
     - name: Usprawnianie aplikacji
       items:
         - name: Rozwiązywanie problemów z niepewnymi przewidywaniami
